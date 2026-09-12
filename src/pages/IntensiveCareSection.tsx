@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { CaseBankCallout } from "@/components/cases/CaseBankCallout";
+import { DrugDosesCallout } from "@/components/icu/DrugDosesCallout";
 import { icuCaseBank } from "@/data/cases/icuCases";
 import { SectionHeader } from "@/components/layout/SectionHeader";
 import { SectionSubNav } from "@/components/layout/SectionSubNav";
@@ -43,6 +44,8 @@ const IntensiveCareSection = () => {
       />
 
       <CaseBankCallout bank={icuCaseBank} />
+
+      <DrugDosesCallout />
 
       <section id="topics" className="scroll-mt-28">
         <SectionTopicsList section="intensive-care" topics={visibleTopics} />

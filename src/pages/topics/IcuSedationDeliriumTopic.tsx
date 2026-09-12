@@ -8,6 +8,7 @@ import { CAMICUFlowchartDiagram } from "@/components/diagrams/intensive-care/CAM
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { Cite } from "@/components/references/Cite";
+import { DrugDosesCallout } from "@/components/icu/DrugDosesCallout";
 
 const icuSedationDeliriumFaqs: Array<[string, string]> = [
   ["What does the ABCDEF bundle entail?", "Assess/treat pain, Both spontaneous awakening and breathing trials, Choice of sedation, Delirium monitoring, Early mobility, Family engagement; bundle adherence reduces ICU mortality and delirium (Pun et al., Crit Care Med 2019)."],
@@ -138,6 +139,7 @@ const IcuSedationDeliriumTopic = () => {
         <>
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
         <section className="space-y-6">
+          <DrugDosesCallout focus="sedation, analgesia and neuromuscular blocking infusions" />
           {/* RASS */}
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sedation Assessment (RASS)</h2>
