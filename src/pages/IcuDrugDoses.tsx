@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { icuDrugDoseGroups, icuDrugCount, type DrugDose } from "@/data/icuDrugDoses";
 import { drugSlug } from "@/lib/caseDoseReferences";
+import { mechanismLinkForDrug } from "@/lib/icuDrugMechanismLinks";
 
 type AgeMode = "adult" | "paediatric" | "neonatal";
 
@@ -230,6 +231,14 @@ const IcuDrugDoses = () => {
                       >
                         <th scope="row" className="p-3 text-left font-medium text-foreground">
                           {d.drug}
+                          {mechanismLinkForDrug(d.drug) && (
+                            <Link
+                              to={mechanismLinkForDrug(d.drug)!}
+                              className="mt-1 block text-xs font-normal text-icu underline-offset-4 hover:underline"
+                            >
+                              Kinetics &amp; metabolism
+                            </Link>
+                          )}
                         </th>
                         <td className="p-3 text-muted-foreground">{doseFor(d, age)}</td>
                         <td className="p-3 text-muted-foreground">{d.route}</td>
@@ -255,6 +264,14 @@ const IcuDrugDoses = () => {
                     className="scroll-mt-24 rounded-xl border border-border bg-card p-4"
                   >
                     <h3 className="font-semibold text-foreground">{d.drug}</h3>
+                    {mechanismLinkForDrug(d.drug) && (
+                      <Link
+                        to={mechanismLinkForDrug(d.drug)!}
+                        className="mt-1 inline-block text-xs text-icu underline-offset-4 hover:underline"
+                      >
+                        Kinetics &amp; metabolism
+                      </Link>
+                    )}
                     <dl className="mt-2 space-y-1.5 text-sm">
                       <div>
                         <dt className="inline font-medium">

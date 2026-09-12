@@ -1,11 +1,14 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft, FlaskConical, Search, TriangleAlert } from "lucide-react";
+import { ArrowLeft, ArrowRight, FlaskConical, Search, TriangleAlert } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { icuDrugMechanismGroups, icuDrugMechanismCount } from "@/data/icuDrugMechanisms";
+import { DrugPharmacokineticsPanel } from "@/components/icu/DrugPharmacokineticsPanel";
+import { pharmacokineticsFor } from "@/data/pk";
+import { drugSlug } from "@/lib/caseDoseReferences";
 
 const IcuDrugMechanisms = () => {
   const [search, setSearch] = useState("");
@@ -19,7 +22,14 @@ const IcuDrugMechanisms = () => {
         ...g,
         drugs: q
           ? g.drugs.filter((d) =>
-              [d.drug, d.drugClass, d.pharmacodynamics, d.metabolism, d.adverseEffects]
+              [
+                d.drug,
+                d.drugClass,
+                d.pharmacodynamics,
+                d.metabolism,
+                d.adverseEffects,
+                ...Object.values(pharmacokineticsFor(d.slug) ?? {}),
+              ]
                 .join(" ")
                 .toLowerCase()
                 .includes(q),
@@ -34,10 +44,10 @@ const IcuDrugMechanisms = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>ICU Drug Mechanisms: Pharmacodynamics &amp; Adverse Effects</title>
+        <title>ICU Drug Mechanisms, Pharmacokinetics &amp; Metabolism</title>
         <meta
           name="description"
-          content="Pharmacodynamics, metabolism and adverse effects of 50 adult intensive care drugs — sedatives, opioids, neuromuscular blockers, vasopressors, antiarrhythmics, anticonvulsants, anticoagulants, antidotes and antimicrobials."
+          content="Pharmacodynamics, pharmacokinetics, metabolism and adverse effects of 50 adult intensive care drugs — half-life, volume of distribution, protein binding, active metabolites and dosing in liver failure, renal failure and RRT."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-mechanisms" />
       </Helmet>
@@ -154,6 +164,15 @@ const IcuDrugMechanisms = () => {
                         <dd className="mt-1 text-muted-foreground">{d.adverseEffects}</dd>
                       </div>
                     </dl>
+
+                    <DrugPharmacokineticsPanel slug={d.slug} />
+
+                    <Link
+                      to={`/intensive-care/drug-doses?drug=${drugSlug(d.drug)}#drug-${drugSlug(d.drug)}`}
+                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-icu underline-offset-4 hover:underline"
+                    >
+                      Doses for {d.drug} <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
                   </article>
                 ))}
               </div>
