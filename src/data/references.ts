@@ -70,7 +70,7 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "anaesthetic-machine": [
     { label: "Al-Shaikh & Stacey Ch.1-4", citation: "Al-Shaikh B, Stacey S. Essentials of Anaesthetic Equipment. 5th ed. Elsevier; 2019. Chapters 1-4: Anaesthetic Machine." },
-    { label: "AAGBI 2012", citation: "Association of Anaesthetists. Checking Anaesthetic Equipment. AAGBI Guidelines; 2012.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Checking-anaesthetic-equipment" },
+    { label: "RCoA/AoA 2024 Machine Check", citation: "Association of Anaesthetists / Royal College of Anaesthetists. Anaesthesia, anaesthetic machines and patient safety. 2024.", url: "https://www.rcoa.ac.uk/safety-standards-quality/guidelines-standards-and-publications/anaesthesia-anaesthetic-machines-and" },
     { label: "Cross & Plunkett Ch.10", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 10: The Anaesthetic Machine." },
   ],
   "breathing-circuits": [
