@@ -164,7 +164,7 @@ const AntiemeticsTopic = () => {
               <li><strong>Opioid-sparing multimodal analgesia</strong> — paracetamol, NSAIDs, regional/fascial plane blocks, local infiltration, ketamine, dexmedetomidine, gabapentinoids where appropriate</li>
               <li><strong>Adequate hydration</strong> — supplemental crystalloid 20–30 mL/kg reduces PONV after day surgery; avoid prolonged fasting and encourage clear fluids up to 2 h and carbohydrate loading</li>
               <li><strong>Minimise neostigmine</strong> — high-dose reversal is emetogenic; sugammadex is an alternative</li>
-              <li><strong>P6 (Neiguan) acupoint stimulation</strong> — acupuncture, acupressure bands or transcutaneous electrical stimulation are as effective as a single antiemetic drug and free of drug side effects<InlineRef topicId="antiemetics" refLabel="Cochrane 2015 P6" /></li>
+              <li><strong>P6 (Neiguan) acupoint stimulation</strong> — acupuncture, acupressure bands or transcutaneous electrical stimulation are as effective as a single antiemetic drug and free of drug side effects<InlineRef topicId="antiemetics" refLabel="Cochrane 2015 P6" /><InlineRef topicId="antiemetics" refLabel="BJA 1999 Paediatric PONV" /></li>
               <li><strong>Aromatherapy (isopropyl alcohol, peppermint)</strong> and <strong>chewing gum</strong> have modest evidence for treating established nausea in recovery</li>
               <li><strong>Avoid gastric insufflation and blood in the stomach</strong>; gentle mask ventilation, orogastric suction after ENT/upper GI surgery</li>
               <li><strong>Supplemental oxygen alone does not prevent PONV</strong> — a common exam misconception</li>
@@ -189,7 +189,7 @@ const AntiemeticsTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Bariatric, gynaecological and laparoscopic</p>
-                <p className="text-sm text-muted-foreground mt-1">High baseline risk (female sex, pneumoperitoneum, opioids). Combine TIVA, ≥2–3 agents from different classes, opioid-sparing blocks (TAP, rectus sheath), and generous fluid. Avoid nitrous oxide with bowel distension.</p>
+                <p className="text-sm text-muted-foreground mt-1">High baseline risk (female sex, pneumoperitoneum, opioids). Combine TIVA, ≥2–3 agents from different classes, opioid-sparing blocks (TAP, rectus sheath)<InlineRef topicId="antiemetics" refLabel="BJA 2009 TAP Caesarean" />, and generous fluid. Avoid nitrous oxide with bowel distension.</p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Elderly and cardiac disease</p>
@@ -206,7 +206,7 @@ const AntiemeticsTopic = () => {
           <ExamSection id="paediatric-ponv" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Paediatric PONV">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Vomiting is roughly twice as common in children as in adults and is measured as <strong>postoperative vomiting (POV)</strong> because young children cannot report nausea. The Eberhart/POVOC score uses four factors — <strong>surgery ≥ 30 min, age ≥ 3 years, strabismus surgery, and a history of POV in the child or PONV in a first-degree relative</strong> — giving risks of 9%, 10%, 30%, 55% and 70% for 0–4 factors<InlineRef topicId="antiemetics" refLabel="Eberhart 2004 POVOC" />.
+              Vomiting is roughly twice as common in children as in adults and is measured as <strong>postoperative vomiting (POV)</strong> because young children cannot report nausea. The Eberhart/POVOC score uses four factors — <strong>surgery ≥ 30 min, age ≥ 3 years, strabismus surgery, and a history of POV in the child or PONV in a first-degree relative</strong> — giving risks of 9%, 10%, 30%, 55% and 70% for 0–4 factors<InlineRef topicId="antiemetics" refLabel="Eberhart 2004 POVOC" /><InlineRef topicId="antiemetics" refLabel="BJA 1999 Paediatric PONV" />.
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Prophylaxis:</strong> ≥2 risk factors → two agents. Ondansetron <strong>0.1 mg/kg (max 4 mg)</strong> plus dexamethasone <strong>0.15 mg/kg (max 8 mg)</strong> is the standard combination; add droperidol 10–15 mcg/kg only in refractory cases with ECG review.</li>
@@ -221,7 +221,7 @@ const AntiemeticsTopic = () => {
           <ExamSection id="rescue" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Rescue Therapy for Established PONV">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Treatment of established PONV follows two rules: <strong>exclude a treatable cause</strong>, then <strong>use a drug from a class not already given</strong>. Repeating a drug already used within 6 h adds side effects without benefit<InlineRef topicId="antiemetics" refLabel="Gan et al. 2020" />.
+              Treatment of established PONV follows two rules: <strong>exclude a treatable cause</strong>, then <strong>use a drug from a class not already given</strong>. Repeating a drug already used within 6 h adds side effects without benefit<InlineRef topicId="antiemetics" refLabel="Gan et al. 2020" /><InlineRef topicId="antiemetics" refLabel="A&A 2022 PONV Rescue" />.
             </p>
             <ol className="space-y-2 text-sm text-muted-foreground list-decimal list-inside leading-relaxed">
               <li><strong>Look for a cause:</strong> hypotension or hypovolaemia, hypoxia, pain, opioid excess or PCA misuse, bleeding or swallowed blood, bowel obstruction or ileus, raised ICP, hypoglycaemia or hyponatraemia, drugs (antibiotics, uterotonics), vestibular stimulation on movement.</li>
