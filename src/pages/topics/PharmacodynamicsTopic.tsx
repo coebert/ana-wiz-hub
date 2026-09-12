@@ -193,6 +193,42 @@ const PharmacodynamicsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="schild" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Primary — Pharmacology"]}>
+            <CollapsibleSubsection title="Quantifying Antagonism: The Schild Plot">
+              <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  A competitive antagonist shifts the agonist log dose-response curve to the right without depressing Emax. The
+                  size of that shift can be measured and used to quantify antagonist potency <InlineRef topicId="pharmacodynamics" refLabel="Rang & Dale Ch.2" />.
+                </p>
+                <div className="rounded-lg border border-border p-4">
+                  <p className="font-semibold text-foreground">1. Dose ratio (DR)</p>
+                  <p className="mt-1">DR = EC₅₀′ / EC₅₀ — the agonist concentration needed for a given response <em>with</em> antagonist divided by the concentration needed <em>without</em> it. A DR of 10 means ten times as much agonist is required.</p>
+                </div>
+                <div className="rounded-lg border border-border p-4">
+                  <p className="font-semibold text-foreground">2. The Schild equation</p>
+                  <p className="mt-1">log(DR − 1) = log[B] − log(K<sub>B</sub>), where [B] is antagonist concentration and K<sub>B</sub> its equilibrium dissociation constant (the concentration occupying half the receptors).</p>
+                </div>
+                <div className="rounded-lg border border-border p-4">
+                  <p className="font-semibold text-foreground">3. The Schild plot</p>
+                  <p className="mt-1">Plot log(DR − 1) on the y-axis against log[B] on the x-axis. For pure, reversible <strong>competitive</strong> antagonism the points fall on a <strong>straight line of slope 1</strong>. A slope differing from unity, or a curved plot, indicates that the antagonism is not simple competition — allosteric or irreversible block, saturable removal of the antagonist, or receptor heterogeneity.</p>
+                </div>
+                <div className="rounded-lg border border-border p-4">
+                  <p className="font-semibold text-foreground">4. pA₂</p>
+                  <p className="mt-1">pA₂ is the x-axis intercept (where log(DR − 1) = 0, i.e. DR = 2) and equals −log K<sub>B</sub>. In words: pA₂ is the negative logarithm of the molar antagonist concentration that requires the agonist concentration to be <strong>doubled</strong> to reproduce the original response. A <strong>higher pA₂ means a more potent</strong> competitive antagonist — each unit represents a ten-fold difference in potency.</p>
+                </div>
+                <div className="rounded-lg border border-border p-4">
+                  <p className="font-semibold text-foreground">5. Why it matters clinically</p>
+                  <p className="mt-1">pA₂ allows objective, agonist-independent comparison of antagonists at the same receptor: different non-depolarising neuromuscular blockers at the nicotinic receptor, opioid antagonists at μ, or β-blockers at β₁. It also underpins the classification of a new drug as competitive (Schild slope 1, pA₂ reproducible) rather than non-competitive.</p>
+                </div>
+                <p className="text-xs">
+                  Exam tip: read the shift from a <strong>log</strong> dose axis. A depressed Emax cannot be analysed by Schild
+                  because the antagonism is insurmountable <InlineRef topicId="pharmacodynamics" refLabel="Peck & Hill Ch.2" />.
+                </p>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+
           <ExamSection id="receptors" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Receptor Types & Signal Transduction">
             <div className="overflow-x-auto">

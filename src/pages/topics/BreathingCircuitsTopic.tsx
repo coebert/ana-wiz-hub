@@ -40,7 +40,9 @@ const objectives = [
   "Justify the choice of Mapleson A (Magill / Lack) for spontaneous ventilation and Mapleson D (Bain) for controlled ventilation in adults.",
   "Describe the seven essential components of a circle system and the rationale for low-flow anaesthesia.",
   "Outline the chemistry of soda lime, the production of Compound A (sevoflurane + desiccated absorbent) and carbon monoxide (desflurane + desiccated KOH-containing absorbent), and the role of Amsorb®.",
-  "Specify the AAGBI 2012 pre-use circuit checks (two-bag test) and the safety design of scavenging systems (30 mm connector, ±0.5 cmH₂O safety valves).",
+  "Specify the Association of Anaesthetists / RCoA 2024 pre-use checks of the breathing system (two-bag test) and the safety design of scavenging systems (30 mm connector, ±0.5 cmH₂O safety valves).",
+  "Explain how breathing systems conserve heat and humidity, and the role of HMEs and heated humidifiers.",
+
 ];
 
 const workedExamples: WorkedExample[] = [
@@ -184,9 +186,10 @@ const keyPoints = [
     cites: ["Al-Shaikh & Stacey Ch.6-7"],
   },
   {
-    text: "AAGBI 2012 pre-use circuit check: visual inspection, two-bag test (machine bag + circuit bag occluded at patient end — APL closed for leak, opened for ventilator function), unidirectional valve movement, and vapouriser interlock.",
-    cites: ["BJA Educ 2005"],
+    text: "Pre-use check (Association of Anaesthetists / RCoA 2024, 'Anaesthesia, anaesthetic machines and patient safety'): self-test the machine, then check the breathing system yourself before every patient — visual inspection for correct configuration and patency, a two-bag test (reservoir bag on the machine end and a second bag at the patient end, occluded: APL closed to confirm no leak and correct pressure rise, then opened and the ventilator run to confirm bag movement and valve function), unidirectional valve movement, vapouriser fill/seating and interlock, alternative oxygen supply and a working self-inflating bag immediately available, plus capnography and airway-pressure alarms confirmed. A checklist is completed and recorded for each machine each session and after any change to the system.",
+    cites: ["RCoA/AoA 2024 Machine Check"],
   },
+
 ];
 
 const BreathingCircuitsTopic = () => {
@@ -316,6 +319,45 @@ const BreathingCircuitsTopic = () => {
                 </p>
               </div>
             </div>
+
+            <div id="heat-humidity">
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heat and humidity conservation</h2>
+              <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  Medical gases leave a cylinder or pipeline essentially <strong>dry (0 mg H₂O/L) and at room temperature</strong>.
+                  Normally the upper airway warms and saturates inspired gas so that by the carina it is at 32–34 °C with ~30 mg/L of
+                  water, reaching <strong>37 °C and 44 mg/L (100 % relative humidity)</strong> at the alveoli. A tracheal tube or
+                  supraglottic airway bypasses this air-conditioning function, so the burden falls on the lower airway or on the
+                  breathing system.
+                </p>
+                <p>
+                  <strong>Consequences of dry, cold gas:</strong> loss of the periciliary fluid layer with <strong>impaired
+                  mucociliary clearance</strong>, thick secretions, mucosal ulceration, atelectasis and sputum retention (important in
+                  long cases and in the ICU); loss of <strong>latent heat of vaporisation</strong> as the airway humidifies gas, plus
+                  convective loss, contributing perhaps 10 % of intra-operative heat loss and aggravating hypothermia with its coagulopathy,
+                  wound-infection and shivering consequences.
+                </p>
+                <p>
+                  <strong>How a circle system conserves both:</strong> exhaled gas is already warm and saturated and is returned to the
+                  patient, and the <strong>soda lime reaction is exothermic</strong> (CO₂ + Ca(OH)₂ → CaCO₃ + H₂O + heat), generating both
+                  heat and water of neutralisation. Inspired gas from a circle typically reaches ~28–32 °C with 20–30 mg/L of water after
+                  20–30 minutes. The <strong>lower the fresh gas flow, the greater the proportion of rebreathed, conditioned gas</strong> — so
+                  low-flow (0.5–1 L/min) and closed-circuit anaesthesia give the best heat and humidity preservation, whereas high FGF or a
+                  non-rebreathing Mapleson system delivers essentially dry, cold gas <InlineRef topicId="breathing-circuits" refLabel="Davey & Diba Ch.5" />.
+                </p>
+                <p>
+                  <strong>Added devices:</strong> a <strong>heat and moisture exchanger (HME)</strong> is a passive hygroscopic/hydrophobic
+                  element at the patient end that traps expired heat and water and returns them on inspiration, achieving ~25–30 mg/L; it is
+                  cheap and simple but adds dead space and resistance and becomes less effective when wet or contaminated. <strong>Active
+                  heated humidifiers</strong> (hot-water bath with a heated wire circuit) deliver 37 °C and 44 mg/L, and are preferred for
+                  prolonged ventilation, paediatric practice, and where secretions are tenacious; risks are circuit condensation, scalding,
+                  extra dead space where a chamber is used, and microbial colonisation. Practical measures alongside these — warmed intravenous
+                  fluids, forced-air warming and a low fresh gas flow — matter more for whole-body temperature than the circuit alone
+                  <InlineRef topicId="breathing-circuits" refLabel="Al-Shaikh & Stacey Ch.6-7" />.
+                </p>
+              </div>
+            </div>
+
 
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Breathing-system filters and HMEs</h2>

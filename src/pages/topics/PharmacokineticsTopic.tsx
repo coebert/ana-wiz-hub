@@ -104,7 +104,9 @@ const PharmacokineticsTopic = () => {
             <div className="space-y-3 text-foreground/90 leading-relaxed">
               <p>Clearance (Cl) is the volume of plasma completely cleared of drug per unit time: <strong>Cl = elimination rate / plasma concentration</strong>. Total clearance is additive: <strong>Cl<sub>total</sub> = Cl<sub>renal</sub> + Cl<sub>hepatic</sub> + Cl<sub>other</sub></strong>.</p>
               <p>The organ extraction ratio is the fraction removed in one pass: <strong>ER = (C<sub>in</sub> − C<sub>out</sub>) / C<sub>in</sub></strong>, and organ clearance approximates blood flow × ER. High-ER (&gt;0.7) drugs such as propofol, lidocaine and morphine are flow-limited. Low-ER (&lt;0.3) drugs such as warfarin, diazepam and phenytoin are capacity-limited and depend more on unbound fraction and intrinsic enzyme activity <InlineRef topicId="pharmacokinetics" refLabel="Peck & Hill Ch.2" />.</p>
-              <p>Renal clearance combines filtration of unbound drug, active secretion and reabsorption; it falls with renal dysfunction and can exceed GFR when tubular secretion is important.</p>
+              <p><strong>Renal clearance</strong> is the net result of three processes. <strong>Glomerular filtration</strong> handles only <em>unbound</em> drug — a highly protein-bound drug such as warfarin is filtered poorly regardless of GFR, so changes in free fraction matter more than changes in total concentration. <strong>Active tubular secretion</strong> in the proximal tubule uses OAT and OCT transporters and is not limited by protein binding, so clearance can exceed GFR; penicillins, methotrexate and diuretics are secreted this way, and probenecid competitively blocks the anionic transporter (historically used to prolong penicillin levels). <strong>Passive tubular reabsorption</strong> returns lipid-soluble, un-ionised drug to the blood down the concentration gradient created by water reabsorption.</p>
+              <p>Because only the un-ionised form is reabsorbed, urine pH manipulation alters excretion: <strong>urinary alkalinisation</strong> with sodium bicarbonate ionises weak acids such as salicylate and phenobarbitone, trapping them in the tubular lumen and increasing elimination; acidification would conversely trap weak bases. Renal clearance falls with reduced GFR, competition for secretion, and drugs that reduce renal blood flow (NSAIDs, ACE inhibitors) <InlineRef topicId="pharmacokinetics" refLabel="Peck & Hill Ch.2" />.</p>
+
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -120,8 +122,39 @@ const PharmacokineticsTopic = () => {
             <CollapsibleSubsection title="Pharmacokinetics in Critical Illness">
               <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed"><li><strong>Distribution:</strong> capillary leak, oedema and fluid resuscitation enlarge hydrophilic-drug Vd; hypoalbuminaemia increases free acidic drug, while raised α₁-acid glycoprotein alters basic-drug binding.</li><li><strong>Clearance:</strong> shock and hepatic/renal failure reduce clearance, but augmented renal clearance in younger hyperdynamic patients can make standard β-lactam doses subtherapeutic.</li><li><strong>Organ support:</strong> CKRT adds extracorporeal clearance according to membrane, modality, flow and protein binding; ECMO circuitry adds an apparent compartment and may sequester lipophilic, protein-bound drugs.</li><li><strong>Practice:</strong> use loading doses based on altered Vd, then individualise maintenance to measured clearance, organ support and therapeutic drug monitoring.</li></ul>
               <InlineRef topicId="pharmacokinetics" refLabel="Intensive Care Med PK 2014" />
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">Standard dosing derived from healthy volunteers frequently fails in the ICU: hydrophilic drugs are diluted into an expanded Vd, hypoalbuminaemia raises the free fraction of highly bound drugs such as ceftriaxone and phenytoin, and clearance may be either augmented (creatinine clearance &gt;130 mL/min in young hyperdynamic sepsis) or collapsed by renal and hepatic failure. The practical answer is a generous loading dose, extended or continuous infusion for time-dependent antibiotics, and therapeutic drug monitoring where available <InlineRef topicId="pharmacokinetics" refLabel="ICM 2013 (Antibiotic PK in critical illness)" />.</p>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <ExamSection id="special-populations-pk" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PH_BK_01"]}>
+            <CollapsibleSubsection title="Pharmacokinetics in Special Populations">
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div className="rounded-lg border border-border p-4">
+                  <p className="font-semibold text-foreground">Neonates and children</p>
+                  <ul className="mt-1 space-y-1 text-muted-foreground list-disc list-inside leading-relaxed">
+                    <li><strong>Body composition:</strong> total body water ~75–80 % at birth (adult ~60 %) with low fat and muscle → larger Vd for water-soluble drugs (suxamethonium 2 mg/kg in neonates vs 1 mg/kg in adults), smaller Vd for lipid-soluble drugs.</li>
+                    <li><strong>Protein binding:</strong> low albumin and α₁-acid glycoprotein, plus competition from bilirubin, raise the free fraction.</li>
+                    <li><strong>Metabolism:</strong> immature phase I oxidation and especially <strong>glucuronidation</strong> (mature by ~6–12 months); sulphation partly compensates. Morphine clearance is markedly reduced in the neonate → prolonged half-life and apnoea risk.</li>
+                    <li><strong>Maturation:</strong> tramadol clearance rises from 5.5 L/h/70 kg at 25 weeks post-conception age to 84 % of the mature value by 44 weeks when scaled allometrically <InlineRef topicId="pharmacokinetics" refLabel="BJA 2005 Tramadol Neonates" />.</li>
+                    <li><strong>Renal:</strong> GFR ~30 % of adult (per surface area) at term, mature by ~1 year — reduce doses of renally cleared drugs (aminoglycosides, vancomycin).</li>
+                    <li><strong>Beyond infancy:</strong> toddlers have higher weight-normalised clearance than adults (larger liver and kidney mass per kg) and often need larger mg/kg doses at shorter intervals.</li>
+                  </ul>
+                </div>
+                <div className="rounded-lg border border-border p-4">
+                  <p className="font-semibold text-foreground">The elderly</p>
+                  <ul className="mt-1 space-y-1 text-muted-foreground list-disc list-inside leading-relaxed">
+                    <li><strong>Body composition:</strong> total body water and lean mass fall while fat fraction rises → smaller central compartment (higher initial concentration after a bolus — hence slow, reduced induction doses) but larger Vd and longer terminal half-life for lipophilic drugs such as diazepam and thiopentone.</li>
+                    <li><strong>Protein binding:</strong> modest fall in albumin increases free fraction of acidic drugs.</li>
+                    <li><strong>Hepatic:</strong> liver mass and blood flow decline ~30–40 % → reduced clearance of flow-limited, high-extraction drugs (propofol, lidocaine, morphine); phase I oxidation declines more than conjugation, so lorazepam and oxazepam are relatively spared.</li>
+                    <li><strong>Renal:</strong> GFR falls ~1 mL/min/year from mid-life; creatinine may remain normal despite low clearance because muscle mass is reduced.</li>
+                    <li><strong>Net effect:</strong> prolonged half-lives, slower recovery and accumulation on infusion — plus increased pharmacodynamic sensitivity. Reduce doses, lengthen intervals and titrate to effect.</li>
+                  </ul>
+                </div>
+              </div>
+              <p className="mt-3 text-xs text-muted-foreground">Also consider pregnancy (increased plasma volume and GFR, reduced albumin) and obesity (dose induction agents to lean body weight, maintenance infusions to adjusted body weight) <InlineRef topicId="pharmacokinetics" refLabel="Peck & Hill Ch.2" />.</p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="Half-Life and Steady State">

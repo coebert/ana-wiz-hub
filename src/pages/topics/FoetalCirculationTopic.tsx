@@ -228,8 +228,26 @@ const FoetalCirculationTopic = () => {
               <li>Pre- vs post-ductal SpO₂ difference &gt;5% suggests PDA shunting.</li>
               <li>Management: optimise oxygenation and ventilation, inhaled nitric oxide (iNO 20 ppm), correct acidosis, consider ECMO.</li>
             </ul>
+            <div className="mt-4 space-y-3 text-sm text-muted-foreground leading-relaxed">
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground">Stepwise management (FFICM level)</p>
+                <ul className="mt-1 space-y-1 list-disc list-inside">
+                  <li><strong>Supportive foundation:</strong> correct hypothermia, hypoglycaemia, hypocalcaemia and acidosis; treat sepsis; minimise handling and noise, since agitation raises PVR. <strong>Sedation and often neuromuscular blockade</strong> reduce oxygen consumption, prevent desaturation episodes and allow controlled ventilation.</li>
+                  <li><strong>Ventilation:</strong> recruit and maintain optimal lung volume — atelectasis and over-distension both raise PVR. Gentle conventional ventilation targeting PaCO₂ 5.5–7 kPa; escalate to <strong>high-frequency oscillatory ventilation</strong> to recruit at lower tidal excursion and limit volutrauma, particularly in meconium aspiration and congenital diaphragmatic hernia. Surfactant is given for parenchymal disease. Routine hyperventilation and alkali infusion are no longer recommended.</li>
+                  <li><strong>Pulmonary vasodilators:</strong> iNO 20 ppm first line (wean in steps once oxygenation improves; watch for rebound and methaemoglobin). If iNO fails or is unavailable — <strong>sildenafil</strong> (PDE5 inhibitor), <strong>milrinone</strong> (PDE3, also inodilator for RV dysfunction) and inhaled or intravenous <strong>prostacyclin/epoprostenol</strong> (or iloprost). Bosentan is occasionally used in refractory cases.</li>
+                  <li><strong>Systemic pressure:</strong> deliberately maintain systemic arterial pressure at or above pulmonary pressure to reduce right-to-left shunt — volume as needed plus dopamine or dobutamine for output, noradrenaline or vasopressin where systemic vasodilatation dominates. Support the right ventricle and avoid excessive afterload.</li>
+                  <li><strong>ECMO:</strong> consider when maximal therapy fails. The usual trigger is an <strong>Oxygenation Index &gt; 40</strong> on two or more measurements (some centres refer at OI &gt; 25), where <strong>OI = (mean airway pressure × FiO₂ × 100) / post-ductal PaO₂ (mmHg)</strong>. Other criteria: refractory hypoxaemia or acidosis, unresponsive shock, birthweight ≳2 kg and ≳34 weeks gestation with no major intracranial haemorrhage <InlineRef topicId="foetal-circulation" refLabel="BJA Educ 2015" />.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground">Maternal hyperoxia and the foetal duct</p>
+                <p className="mt-1">The issue arises where a high FiO₂ is used deliberately — most often pre-oxygenation and maintenance during <strong>general anaesthesia for caesarean section</strong>, historically with FiO₂ 1.0. Doppler studies of mothers breathing 100 % oxygen show a <strong>transient, reversible constriction</strong> of the foetal ductus arteriosus (with a rise in ductal velocity and some increase in pulmonary flow), which resolves when the FiO₂ is reduced. No adverse neonatal outcome has been convincingly attributed to it, so the clinical significance stays debated; foetal oxygenation studies also show little benefit from maternal hyperoxia at elective caesarean section.</p>
+                <p className="mt-2">Practical position: the overriding priority in obstetric general anaesthesia is preventing maternal desaturation, so pre-oxygenate to an end-tidal oxygen target with a high FiO₂. Once the airway is secured, many now titrate maintenance FiO₂ down (around 0.8, or lower guided by saturation) rather than continuing 1.0 — consistent with OAA/AAGBI and APAGBI-informed obstetric and neonatal guidance <InlineRef topicId="foetal-circulation" refLabel="Power & Kam Ch.18" />.</p>
+              </div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
+
 
           <ExamSection id="duct-dependent-chd" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PA_BK_02"]}>
             <CollapsibleSubsection title="Duct-Dependent Congenital Heart Disease">
