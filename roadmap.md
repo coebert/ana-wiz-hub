@@ -5,4 +5,3 @@
 - [x] Investigate and fix the content audit getting stuck
 - [x] Add a discussion section (questions + replies) to each topic page, live on the site
 - [ ] Batch 1 of 10 content-audit fixes (7 topics, 24 findings) + mark fixed in DB
-- [ ] Fill in ARDS case dosing and tapering rates so withdrawal links open real numbers
