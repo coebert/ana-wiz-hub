@@ -13,6 +13,7 @@ import HITPathophysiologyDiagram from "@/components/diagrams/intensive-care/HITP
 import HITAssessmentBlock from "@/components/clinical/HITAssessmentBlock";
 import RebalancedHaemostasisDiagram from "@/components/diagrams/intensive-care/RebalancedHaemostasisDiagram";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const haematologyIcuFaqs: Array<[string, string]> = [
   ["What restrictive transfusion threshold is recommended in ICU?", "Transfuse RBC when Hb <70 g/L in stable ICU patients (TRICC, TRISS); use a 80 g/L threshold in acute coronary syndromes or active bleeding."],
