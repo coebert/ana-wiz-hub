@@ -527,8 +527,8 @@ const PerioperativeCaseBank = () => {
   return (
     <SectionLayout
       title="Perioperative Case Bank"
-      subtitle="Twenty-four progressive, exam-focused composite cases in steroid cover, phaeochromocytoma, antifibrinolytic therapy and anaesthesia for co-existing disease."
-      metaDescription="Work through 24 progressive perioperative cases covering steroid cover, phaeochromocytoma, tranexamic acid and co-existing renal, cardiac, hepatic, psychiatric, transplant and rheumatoid disease."
+      subtitle="Thirty progressive, exam-focused composite cases in steroid cover, phaeochromocytoma, antifibrinolytic therapy, anaesthesia for co-existing disease and paediatric anaesthesia."
+      metaDescription="Work through 30 progressive perioperative cases covering steroid cover, phaeochromocytoma, tranexamic acid, co-existing disease and paediatric anaesthesia including Fontan circulation, neonatal resuscitation, pyloric stenosis and tet spells."
       backPath="/perioperative"
       backLabel="Perioperative Medicine"
       accentColor="text-perioperative"
