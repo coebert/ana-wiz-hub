@@ -48,6 +48,9 @@ export const ProgressiveCase = ({ caseData }: ProgressiveCaseProps) => {
   const [open, setOpen] = useState(false);
   const [revealed, setRevealed] = useState(0);
   const [detailedOpen, setDetailedOpen] = useState(false);
+  // Revealed answers stay collapsible so a long case is still scannable on a
+  // phone: reading stage 4 should not mean scrolling past three model answers.
+  const [collapsedAnswers, setCollapsedAnswers] = useState<number[]>([]);
 
   useEffect(() => {
     if (window.location.hash !== `#${caseData.id}`) return;
@@ -60,6 +63,56 @@ export const ProgressiveCase = ({ caseData }: ProgressiveCaseProps) => {
   const toggleOpen = () => {
     setOpen((current) => !current);
   };
+
+  const toggleAnswer = (index: number) => {
+    setCollapsedAnswers((current) =>
+      current.includes(index) ? current.filter((i) => i !== index) : [...current, index],
+    );
+  };
+
+  const allCollapsed = revealed > 0 && collapsedAnswers.length >= revealed;
+
+  const summary = useMemo(() => {
+    const lines = [
+      caseData.title,
+      `${caseData.category} · ${caseData.difficulty}`,
+      "",
+      caseData.patient,
+      caseData.presentation,
+      "",
+      ...caseData.stages.flatMap((stage, index) => [
+        `${index + 1}. ${stage.title}`,
+        ...stage.answer.map((point) => `   • ${point}`),
+        "",
+      ]),
+      `Take-home: ${caseData.takeHome}`,
+      "",
+      `Sources: ${caseData.sourceLinks.map((s) => `${s.label} (${s.href})`).join("; ")}`,
+    ];
+    return lines.join("\n");
+  }, [caseData]);
+
+  const shareCase = async () => {
+    const url = `${window.location.origin}${window.location.pathname}#${caseData.id}`;
+    const text = `${summary}\n\n${url}`;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: caseData.title, text: summary, url });
+        return;
+      }
+      await navigator.clipboard.writeText(text);
+      toast.success("Case summary copied");
+    } catch (error) {
+      if ((error as Error)?.name === "AbortError") return;
+      try {
+        await navigator.clipboard.writeText(text);
+        toast.success("Case summary copied");
+      } catch {
+        toast.error("Could not share this case summary");
+      }
+    }
+  };
+
 
   return (
     <article id={caseData.id} className="scroll-mt-24 border border-border bg-card rounded-lg overflow-hidden shadow-sm">
