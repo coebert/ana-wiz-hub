@@ -129,6 +129,10 @@ const NeuroanaesthesiaTopic = () => {
           <div id="agents" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CN_BK_03"]}>
             <CollapsibleSubsection title="Anaesthetic Effects on CBF & CMRO₂">
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              Every agent used in neuroanaesthesia can be characterised by four properties: its effect on cerebral blood flow, on cerebral metabolic rate (CMRO₂), on intracranial pressure, and whether flow–metabolism coupling and pressure autoregulation are preserved. Intravenous agents (except ketamine) are cerebral vasoconstrictors that reduce CBF <em>because</em> they reduce CMRO₂ — coupling is preserved. Volatiles are intrinsic cerebral vasodilators: at low dose the metabolic suppression dominates, but above ~1 MAC direct vasodilation uncouples flow from metabolism, raises CBF and ICP, and blunts autoregulation. Adding nitrous oxide to a volatile confers no protection against anaesthetic-induced increases in CBF <InlineRef topicId="neuroanaesthesia" refLabel="BJA 1989 N₂O & Volatiles" />.
+            </p>
+            <p className="text-xs font-semibold text-foreground mt-3 mb-1">Intravenous agents</p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -137,20 +141,94 @@ const NeuroanaesthesiaTopic = () => {
                     <th className="text-left py-2 text-foreground font-semibold">CBF</th>
                     <th className="text-left py-2 text-foreground font-semibold">CMRO₂</th>
                     <th className="text-left py-2 text-foreground font-semibold">ICP</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Autoregulation / CO₂ reactivity</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Key clinical points</th>
                   </tr>
                 </thead>
                 <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Propofol</td><td>↓↓</td><td>↓↓</td><td>↓↓</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Thiopentone</td><td>↓↓</td><td>↓↓↓</td><td>↓↓↓ (used for burst suppression)</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Sevoflurane</td><td>↑ (dose-dependent)</td><td>↓</td><td>↑ (acceptable &lt;1 MAC)</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">N₂O</td><td>↑↑</td><td>↑</td><td>↑↑ (avoid in neurosurgery)</td></tr>
-                  <tr><td className="py-2 font-medium text-foreground">Remifentanil</td><td>↓</td><td>↓</td><td>↓ (minimal effect)</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Propofol</td><td>↓↓</td><td>↓↓</td><td>↓↓</td><td>Preserved</td><td>Agent of choice for TIVA: coupled reduction in CBF/CMRO₂, reduces ICP, preserves autoregulation and CO₂ reactivity, compatible with evoked-potential monitoring. Watch MAP — CPP may fall if hypotension is untreated.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Thiopentone</td><td>↓↓</td><td>↓↓↓</td><td>↓↓↓</td><td>Preserved</td><td>Greatest metabolic suppression; used for burst suppression in refractory ICP (Tier 3). Cumulative, prolonged recovery, myocardial depression, immunosuppression with prolonged infusion.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Etomidate</td><td>↓</td><td>↓</td><td>↓</td><td>Preserved</td><td>Cardiostable induction preserves CPP in the unstable patient, but adrenal suppression and myoclonus (which may be mistaken for seizure) limit use; not used for maintenance.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Ketamine</td><td>↑ (↔ if ventilated/co-sedated)</td><td>↑</td><td>↑ (traditionally)</td><td>Preserved</td><td>Historically avoided. Modern evidence suggests that with controlled ventilation and background propofol/benzodiazepine, ICP does not rise; useful for its haemodynamic support (maintaining CPP), analgesia and possible anti-epileptic effect in refractory status.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Opioids (fentanyl, remifentanil)</td><td>↓ / ↔</td><td>↓ / ↔</td><td>Minimal</td><td>Preserved</td><td>Essentially neutral if ventilation and MAP are maintained; blunt the pressor response to laryngoscopy, pinning and dural incision. Remifentanil allows deep intra-operative suppression with rapid neurological assessment on emergence.</td></tr>
                 </tbody>
               </table>
+            </div>
+            <p className="text-xs font-semibold text-foreground mt-4 mb-1">Inhalational agents</p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Agent</th>
+                    <th className="text-left py-2 text-foreground font-semibold">CBF</th>
+                    <th className="text-left py-2 text-foreground font-semibold">CMRO₂</th>
+                    <th className="text-left py-2 text-foreground font-semibold">ICP</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Key clinical points</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Sevoflurane</td><td>↑ (dose-dependent)</td><td>↓</td><td>↑ (acceptable &lt;1 MAC)</td><td>The modern volatile default; least vasodilating of the ethers and preserves CO₂ reactivity best up to 1 MAC. Acceptable for routine craniotomy with normal ICP.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Isoflurane</td><td>↑↑</td><td>↓↓</td><td>↑↑</td><td>Potent vasodilator with marked luxury perfusion above 1 MAC; largely superseded but historically used for its high ischaemic tolerance.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Desflurane</td><td>↑↑</td><td>↓</td><td>↑↑ (greatest rise in ICP)</td><td>Fast offset but the largest increase in CSF production and ICP; also the highest global-warming potential — rarely first choice in neuroanaesthesia.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Nitrous oxide</td><td>↑↑</td><td>↑</td><td>↑↑</td><td>Avoid: raises CBF, CMRO₂ and ICP, expands pneumocephalus and worsens venous air embolism. Substituting N₂O for extra volatile gives no cerebrovascular advantage <InlineRef topicId="neuroanaesthesia" refLabel="BJA 1989 N₂O & Volatiles" />.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs font-semibold text-foreground mt-4 mb-1">Adjuncts</p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+              <li><strong className="text-foreground">Dexmedetomidine</strong> — α₂ agonist; reduces CBF with little change in CMRO₂ (a theoretical concern for flow–metabolism mismatch), no respiratory depression, preserves cooperativeness. Mainstay of sedation for awake craniotomy and useful for smooth emergence and haemodynamic control; causes bradycardia and hypotension.</li>
+              <li><strong className="text-foreground">Benzodiazepines</strong> — modest coupled reduction in CBF/CMRO₂ and anticonvulsant, but delay neurological assessment; avoid as routine premedication when serial GCS matters.</li>
+              <li><strong className="text-foreground">Neuromuscular blockers</strong> — no direct cerebral effect; prevent coughing and straining, which are potent causes of acute ICP surges. Suxamethonium causes a small, transient ICP rise (blunted by adequate anaesthetic depth) — rocuronium 1.2 mg/kg with sugammadex available is preferred when a modified RSI is needed. Remember neuromuscular block abolishes motor evoked potentials.</li>
+              <li><strong className="text-foreground">Vasoactive drugs</strong> — noradrenaline/phenylephrine raise CPP without direct cerebral vasodilation and are the preferred pressors; systemic vasodilators (GTN, sodium nitroprusside, hydralazine) dilate cerebral vessels and can raise ICP.</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
+
+          <div id="neuromonitoring" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CN_BK_03"]}>
+            <CollapsibleSubsection title="Intraoperative Neuromonitoring">
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              Modern practice has shifted towards functional and minimally invasive neurosurgery, so the anaesthetist is expected to preserve neurocognitive function, minimise interference with electrophysiological monitoring, and still deliver a rapid, high-quality recovery <InlineRef topicId="neuroanaesthesia" refLabel="BJA 2007 Elective Neurosurgery" />. Each modality differs in its anaesthetic sensitivity: the general rule is that the more synapses and the more cortex a pathway traverses, the more vulnerable the signal is to anaesthesia. Signals are judged on <strong className="text-foreground">amplitude</strong> and <strong className="text-foreground">latency</strong>; the classic alarm criteria are a &gt;50% fall in amplitude or a &gt;10% increase in latency. Before attributing any change to surgery, exclude the anaesthetic causes — a step change in agent or dose, hypotension, hypothermia, hypocapnia, anaemia, malposition and limb ischaemia.
+            </p>
+            <div className="space-y-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Motor evoked potentials (MEPs)</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li><strong className="text-foreground">Mechanism:</strong> transcranial electrical (or direct cortical) stimulation of motor cortex, with compound muscle action potentials recorded from peripheral muscles — a corticospinal tract test crossing a cortical synapse and the neuromuscular junction.</li>
+                  <li><strong className="text-foreground">Applications:</strong> corrective spinal deformity surgery, intramedullary cord tumours, tumour resection adjacent to motor pathways, thoraco-abdominal aortic surgery.</li>
+                  <li><strong className="text-foreground">Anaesthetic implications:</strong> the most anaesthetic-sensitive modality. Volatile agents abolish MEPs in a dose-dependent way — <strong className="text-foreground">TIVA (propofol + remifentanil) is effectively mandatory</strong>, ideally with the lowest propofol Ce that maintains hypnosis. Neuromuscular blockade must be absent for the muscle recordings, so a train-of-four count of 4 is needed; if a relaxant technique is unavoidable a stable partial block is used, but a TOF count of 0 makes recording impossible. Ketamine and low-dose etomidate augment amplitude. Bite blocks are essential because transcranial stimulation causes jaw clenching and tongue laceration.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Somatosensory evoked potentials (SSEPs)</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li><strong className="text-foreground">Mechanism:</strong> stimulation of a peripheral nerve (median/ulnar at the wrist, posterior tibial at the ankle) with cortical and subcortical recording — tests the dorsal column–medial lemniscal pathway.</li>
+                  <li><strong className="text-foreground">Applications:</strong> spinal instrumentation and deformity correction, carotid endarterectomy (cerebral ischaemia during cross-clamp), posterior fossa and aneurysm surgery, positioning-related brachial plexus injury.</li>
+                  <li><strong className="text-foreground">Anaesthetic implications:</strong> more robust than MEPs. Recordable with volatile up to about 0.5 MAC, but TIVA remains preferable and is required if MEPs are also monitored. Unaffected by neuromuscular blockade (which improves signal quality by removing EMG noise). Amplitude is attenuated by hypotension, hypothermia, hypocapnia, anaemia and haemodilution — keep these stable and communicate every deliberate change to the neurophysiologist.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Brainstem auditory evoked potentials (BAEPs)</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li><strong className="text-foreground">Mechanism:</strong> repetitive auditory clicks with recording of the far-field brainstem response (waves I–V) from scalp electrodes.</li>
+                  <li><strong className="text-foreground">Applications:</strong> posterior fossa surgery, vestibular schwannoma (acoustic neuroma) resection with hearing preservation, microvascular decompression, brainstem lesions.</li>
+                  <li><strong className="text-foreground">Anaesthetic implications:</strong> the most resistant modality — reliable under volatile or TIVA and unaffected by neuromuscular blockade, because the generators are subcortical with few synapses. Still sensitive to hypothermia (latency prolongs), local cold irrigation, retraction and drilling artefact.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Electrocorticography (ECoG) &amp; direct cortical stimulation</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li><strong className="text-foreground">Mechanism:</strong> subdural grid or strip electrodes record cortical activity to localise epileptogenic tissue; bipolar direct cortical/subcortical stimulation maps motor, speech and cognitive function.</li>
+                  <li><strong className="text-foreground">Applications:</strong> awake craniotomy for tumour resection in eloquent cortex and for epilepsy surgery.</li>
+                  <li><strong className="text-foreground">Anaesthetic implications:</strong> language mapping requires an awake, cooperative and comfortable patient — meticulous six-nerve scalp block, dexmedetomidine ± low-dose remifentanil or propofol titrated to a rousable state, and a rehearsed rescue airway plan (LMA + videolaryngoscope). Propofol and benzodiazepines suppress epileptiform discharges and are paused before ECoG; volatiles and low-dose propofol may need reducing to unmask spikes. Stimulation-induced focal seizure is treated with irrigation using iced saline, stopping stimulation, and a small propofol or midazolam bolus with the airway supported. Nausea, pain and hypercapnia (which swells the brain) all threaten the awake phase.</li>
+                </ul>
+              </div>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
           </div>
+
 
           <div id="icp" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CC1.4"]}>
