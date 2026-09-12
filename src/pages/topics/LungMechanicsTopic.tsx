@@ -23,6 +23,7 @@ import { PVRecruitmentDiagram } from "@/components/diagrams/physiology/PVRecruit
 import { ControlOfBreathingDiagram } from "@/components/diagrams/physiology/ControlOfBreathingDiagram";
 import { DiffusionCapacityDiagram } from "@/components/diagrams/physiology/DiffusionCapacityDiagram";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const lungMechanicsFaqs: Array<[string, string]> = [
   [
@@ -278,6 +279,12 @@ const LungMechanicsTopic = () => {
               <p className="text-foreground/90 leading-relaxed mb-4">
                 Flow-volume loops are essential for distinguishing obstructive from restrictive patterns and identifying upper airway obstruction.
               </p>
+              <ul className="mb-4 grid md:grid-cols-2 gap-3 text-sm text-foreground/85">
+                <li className="rounded-lg border border-border p-3"><strong>Normal:</strong> expiration rises rapidly to PEFR then declines; inspiration forms the smooth lower limb. FVC is loop width and FEF₂₅–₇₅% is mean mid-expiratory flow.</li>
+                <li className="rounded-lg border border-border p-3"><strong>Obstructive:</strong> asthma/COPD produce reduced PEFR and a concave “scooped” expiratory limb from dynamic airway compression.</li>
+                <li className="rounded-lg border border-border p-3"><strong>Restrictive:</strong> a small, narrow version of normal with reduced FVC but preserved or relatively high flow for lung volume.</li>
+                <li className="rounded-lg border border-border p-3"><strong>Upper airway:</strong> fixed lesions flatten both limbs; variable extrathoracic lesions flatten inspiration; variable intrathoracic lesions flatten expiration.</li>
+              </ul>
               <div className="bg-card rounded-xl border border-border p-4">
                 <FlowVolumeLoopDiagram />
               </div>
@@ -288,10 +295,10 @@ const LungMechanicsTopic = () => {
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Work of Breathing</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
-                Work = Pressure × Volume (area on the PV loop). Normal WOB ≈ 0.3–0.6 J/L. Elastic work (overcoming compliance)
-                dominates at normal breathing. Resistive work dominates during tachypnoea or in obstructive disease. Total WOB
-                normally consumes 2–3% of total body oxygen consumption but can rise to &gt;30% in respiratory failure.
+                Work = ∫P·dV, measured in joules and represented by area on the pressure–volume loop. Normal WOB is approximately 0.3–0.6 J/L and consumes only 1–3% of whole-body oxygen consumption, but may exceed 30% during respiratory distress, causing muscle fatigue and prompting ventilatory support.
               </p>
+              <div className="grid md:grid-cols-3 gap-3 mb-4 text-sm"><div className="rounded-lg border border-border p-3"><strong>Elastic work</strong><p className="mt-1 text-foreground/80">Overcomes lung/chest-wall recoil. It rises in fibrosis, pulmonary oedema and ARDS and is represented by inspiratory work against the compliance curve.</p></div><div className="rounded-lg border border-border p-3"><strong>Resistive work</strong><p className="mt-1 text-foreground/80">Overcomes airway and tissue resistance. It rises in asthma, COPD and with a small ETT; the inspiratory–expiratory loop area reflects resistive loss.</p></div><div className="rounded-lg border border-border p-3"><strong>Inertial work</strong><p className="mt-1 text-foreground/80">Accelerates gas and respiratory tissues and is normally negligible.</p></div></div>
+              <p className="text-sm text-foreground/80 mb-4">Patients minimise total work by taking rapid shallow breaths in restrictive disease (less elastic work per breath) and slower deeper breaths in obstructive disease (lower flow-related resistive work).</p>
               <div className="bg-card rounded-xl border border-border p-4">
                 <PVLoopWOBDiagram />
               </div>
@@ -535,6 +542,8 @@ const LungMechanicsTopic = () => {
                 Ventilator-induced lung injury results from excessive stress (transpulmonary pressure) and strain (tidal deformation relative to FRC).
                 Mechanical power unifies VT, driving pressure, RR, flow, and PEEP into a single energy-based metric for VILI risk assessment.
               </p>
+              <div className="grid md:grid-cols-2 gap-4 mb-4 text-sm"><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Stress</h3><p className="mt-1 text-foreground/80">Force per unit lung area, clinically approximated by transpulmonary pressure: P<sub>L</sub> = P<sub>aw</sub> − P<sub>pl</sub>. Plateau and driving pressure are practical surrogates when pleural pressure is unavailable.</p></div><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Strain</h3><p className="mt-1 text-foreground/80">Deformation relative to resting lung volume: dynamic strain ≈ Vt/FRC; static strain reflects the PEEP-related increase in end-expiratory volume. Global strain above roughly 1.5–2 is injurious, and large dynamic strain is generally more damaging than equivalent static strain <InlineRef topicId="lung-mechanics" refLabel="Crit Care Med 2013 Stress Strain" />.</p></div></div>
+              <p className="text-sm text-foreground/80 mb-4">Low Vt limits dynamic strain; limiting plateau pressure and driving pressure limits stress. PEEP may prevent cyclic collapse but becomes harmful if it overdistends already open lung.</p>
               <div className="bg-card rounded-xl border border-border p-4">
                 <VILIDiagram />
               </div>
@@ -551,6 +560,7 @@ const LungMechanicsTopic = () => {
               <div className="bg-card rounded-xl border border-border p-4">
                 <PVRecruitmentDiagram />
               </div>
+              <div className="mt-4 space-y-3 text-sm text-foreground/85"><p><strong>Goal:</strong> reopen atelectatic units, improve compliance and gas exchange, and “unshrink” the functional baby lung. Methods include sustained inflation (classically 40 cmH₂O for 40 s), stepwise PEEP/driving-pressure increments, or pressure-controlled ventilation at high PEEP <InlineRef topicId="lung-mechanics" refLabel="BJA 1999 Recruitment" />.</p><p><strong>After recruitment:</strong> titrate down to an “open-lung PEEP” that prevents re-collapse without overdistension, following oxygenation, dynamic compliance, driving pressure and—where available—electrical impedance tomography.</p><p><strong>Risks:</strong> reduced venous return and cardiac output, hypotension, barotrauma/pneumothorax and volutrauma. Avoid routine aggressive recruitment in haemodynamic instability, untreated pneumothorax or predominantly focal lung disease; use selectively in ARDS or to reverse anaesthesia-related atelectasis.</p></div>
             </section>
           </ExamSection>
 

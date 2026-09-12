@@ -9,6 +9,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { ChevronDown } from "lucide-react";
 import { Exam } from "@/data/curriculum";
 import { WestZonesDiagram } from "@/components/diagrams/physiology/WestZonesDiagram";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const ventilationPerfusionFaqs: Array<[string, string]> = [
   [
@@ -199,6 +200,19 @@ const VentilationPerfusionTopic = () => {
                 <li><strong>Physiological</strong> = anatomical + alveolar dead space</li>
                 <li>Increased by: ↓ CO, PE, excessive PEEP, anaesthesia (↓ FRC), ageing</li>
               </ul>
+              <div className="mt-4 rounded-lg border border-border p-4 text-sm text-foreground/85">
+                <h3 className="font-semibold text-foreground">Fowler’s single-breath nitrogen washout</h3>
+                <ol className="mt-2 list-decimal pl-5 space-y-1"><li>The subject takes one vital-capacity breath of 100% O₂, replacing N₂ in the conducting airways.</li><li>Slow expiration is measured simultaneously for volume and nitrogen concentration.</li><li><strong>Phase I:</strong> N₂-free anatomical dead-space gas; <strong>Phase II:</strong> rapid rise as dead-space and alveolar gas mix; <strong>Phase III:</strong> alveolar plateau.</li><li>An equal-area line through phase II is positioned so the areas above and below the curve are equal; exhaled volume to that line is anatomical dead space.</li></ol>
+              </div>
+            </div>
+          </ExamSection>
+
+          <ExamSection id="alveolar-gas-equation" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_02"]}>
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Alveolar Gas Equation and A–a Gradient</h2>
+              <div className="rounded-lg border border-border bg-secondary/20 p-4 text-center font-mono text-sm text-foreground">P<sub>A</sub>O₂ = FiO₂ × (P<sub>atm</sub> − P<sub>H₂O</sub>) − (PaCO₂ / R)</div>
+              <p className="mt-3 text-sm text-foreground/85">At sea level, P<sub>atm</sub> is 760 mmHg, saturated water-vapour pressure at 37°C is 47 mmHg, and respiratory quotient R is usually 0.8. On air (FiO₂ 0.21) with PaCO₂ 40 mmHg: P<sub>A</sub>O₂ = 0.21 × (760 − 47) − 40/0.8 ≈ <strong>100 mmHg</strong> <InlineRef topicId="ventilation-perfusion" refLabel="West Ch.5" />.</p>
+              <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm"><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Definition and normal value</h3><p className="mt-1 text-foreground/80">A–a gradient = P<sub>A</sub>O₂ − PaO₂. If PaO₂ is 90 mmHg in the example, the gradient is 10 mmHg. An approximate expected upper value on air is age/4 + 4 mmHg; it rises with age and inspired oxygen.</p></div><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Clinical interpretation</h3><p className="mt-1 text-foreground/80">Hypoxaemia with a normal gradient suggests hypoventilation or low inspired PO₂. A raised gradient indicates V/Q mismatch, shunt or diffusion limitation. The equation therefore separates inadequate alveolar oxygen from impaired alveolar-to-arterial transfer.</p></div></div>
             </div>
           </ExamSection>
 
@@ -337,6 +351,10 @@ const VentilationPerfusionTopic = () => {
                 <li><strong>OLV</strong>: shunt 20–30%; preserve HPV with TIVA, avoid prolonged high FiO₂.</li>
               </ul>
             </SynthesisBlock>
+            <div className="mt-5 rounded-lg border border-border p-4">
+              <h3 className="font-serif font-semibold text-foreground">Prone Positioning in ARDS</h3>
+              <p className="mt-2 text-sm text-foreground/85 leading-relaxed">In supine ARDS, oedematous dorsal lung is compressed by gravity, the mediastinum and abdominal contents. These collapsed regions remain preferentially perfused, creating shunt. Proning makes dorsal units non-dependent and recruits them, while the heart rests on the sternum and no longer compresses the left lower lobe. Perfusion remains relatively dorsal, so it is redirected through newly ventilated units. Ventilation, stress and strain become more homogeneous, reducing shunt and improving oxygenation <InlineRef topicId="ventilation-perfusion" refLabel="Intensive Care Med 2020 Prone" />.</p>
+            </div>
           </ExamSection>
 
           <ExamPitfallsCallout

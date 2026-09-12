@@ -12,6 +12,7 @@ import DichroticNotchComparisonPanel from "@/components/diagrams/physiology/Dich
 import JVPWaveformDiagram from "@/components/diagrams/physiology/JVPWaveformDiagram";
 import { cardiacCycleQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const cardiacCycleFaqs: Array<[string, string]> = [
   [
@@ -294,7 +295,7 @@ const CardiacCycleTopic = () => {
               <strong>S1</strong> is caused by closure of the mitral and tricuspid valves at the onset of
               ventricular systole. It is best heard at the apex. <strong>S2</strong> results from closure of
               the aortic and pulmonary valves at the end of systole. Physiological splitting of S2 occurs
-              during inspiration when increased venous return delays pulmonary valve closure.
+              during inspiration: negative intrathoracic pressure increases systemic venous return and RV preload, increasing RV stroke volume and prolonging RV ejection so P2 is delayed. At the same time, transient pooling in the expanded pulmonary vascular bed slightly reduces LV filling and shortens LV ejection, bringing A2 earlier. The A2–P2 interval therefore becomes audible and narrows again on expiration <InlineRef topicId="cardiac-cycle" refLabel="Power & Kam Ch.4" />.
             </p>
             <ul className="mt-3 space-y-1 text-sm text-foreground/80">
               <li><strong>S3</strong> — early diastolic, rapid filling against a stiff or volume-loaded ventricle (HF, MR; normal in young).</li>
@@ -376,21 +377,21 @@ const CardiacCycleTopic = () => {
                 <p className="text-sm text-foreground/80 mt-1">
                   LVEDV — determined by venous return, atrial contraction, ventricular compliance,
                   intrathoracic pressure and cycle length. Estimated by CVP, PCWP, IVC distensibility or
-                  dynamic indices (PPV, SVV).
+                  dynamic indices (PPV, SVV). Static filling pressures describe current loading but poorly predict fluid response. PPV/SVV exploit cyclic heart–lung interactions during positive-pressure ventilation: a preload-responsive ventricle shows larger respiratory changes in stroke volume. They are unreliable with spontaneous breathing, arrhythmia, low tidal volume, open chest, RV failure or poor lung compliance.
                 </p>
               </div>
               <div className="rounded-lg border border-border p-4">
                 <h3 className="font-semibold text-foreground">Afterload</h3>
                 <p className="text-sm text-foreground/80 mt-1">
                   Wall stress during ejection; approximated by SVR and aortic impedance. Influenced by
-                  aortic compliance, viscosity and outflow obstruction (AS, HOCM). Laplace: σ = P·r / 2h.
+                  aortic compliance, viscosity and outflow obstruction (AS, HOCM). Laplace: σ = P·r / 2h. SVR = 80 × (MAP − CVP) / CO, normally about 800–1200 dyn·s·cm⁻⁵; it is only an approximation of LV afterload because it omits pulsatile impedance and wall geometry.
                 </p>
               </div>
               <div className="rounded-lg border border-border p-4">
                 <h3 className="font-semibold text-foreground">Contractility</h3>
                 <p className="text-sm text-foreground/80 mt-1">
                   Load-independent inotropy. Best assessed by ESPVR slope, dP/dt<sub>max</sub>, or ejection
-                  fraction (load-dependent). Modulated by sympathetic tone, calcium, pH and drugs.
+                  fraction (load-dependent). dP/dt<sub>max</sub> is the maximal rate of LV or arterial pressure rise and reflects contractile force, although loading and arterial waveform affect non-invasive estimates. Pulse-contour systems such as LiDCO and PiCCO provide continuous CO and derived indices/trends; interpret changes rather than treating any single value as load-independent <InlineRef topicId="cardiac-cycle" refLabel="ICM 2013 Pulse Wave" />.
                 </p>
               </div>
               <div className="rounded-lg border border-border p-4">
@@ -403,6 +404,7 @@ const CardiacCycleTopic = () => {
               </div>
             </div>
             <div className="mt-4 space-y-4">
+              <div className="rounded-lg border border-border p-4 text-sm text-foreground/85"><h3 className="font-semibold text-foreground">Reading the pressure–volume loop</h3><ol className="mt-2 list-decimal pl-5 space-y-1"><li><strong>Bottom right:</strong> mitral valve closes at LVEDV; isovolumetric contraction rises vertically at constant volume.</li><li><strong>Top right:</strong> LV pressure exceeds aortic pressure and the aortic valve opens; ejection moves left across the top.</li><li><strong>Top left:</strong> aortic valve closes at LVESV; isovolumetric relaxation falls vertically.</li><li><strong>Bottom left:</strong> LV pressure falls below LA pressure and the mitral valve opens; diastolic filling returns rightwards.</li></ol><p className="mt-2">Loop width is <strong>stroke volume</strong>; enclosed area is <strong>stroke work</strong>. Increased preload shifts the right boundary right and widens the loop; increased afterload makes it taller and narrower with higher ESV; increased contractility steepens ESPVR, shifts ESV left and widens the loop. Use the sliders below to reproduce each change <InlineRef topicId="cardiac-cycle" refLabel="BJA Educ 2018" />.</p></div>
               <div className="bg-card rounded-xl border border-border p-4 md:p-6">
                 <h3 className="text-base font-semibold text-foreground mb-3">Pressure–Volume Loop</h3>
                 <PVLoopDiagram />

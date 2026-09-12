@@ -16,6 +16,16 @@ import BradyarrhythmiaDiagram from "@/components/diagrams/intensive-care/Bradyar
 import PacingDevicesDiagram from "@/components/diagrams/intensive-care/PacingDevicesDiagram";
 import { DiagramTabs } from "@/components/diagrams/physiology/DiagramTabs";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
+
+const vaughanWilliamsRows = [
+  ["Ia", "Intermediate Na⁺ block + K⁺ block", "Quinidine, procainamide, disopyramide", "↑QRS, ↑QT", "Atrial/ventricular arrhythmias; procainamide for stable VT/WPW", "Cinchonism (quinidine), torsades, hypotension"],
+  ["Ib", "Fast Na⁺ block; shortens APD", "Lidocaine, mexiletine, phenytoin", "Little PR/QRS effect; ↓QT", "Ischaemic ventricular arrhythmias/post-MI VT", "CNS toxicity, seizures"],
+  ["Ic", "Slow, potent Na⁺ block; little APD change", "Flecainide, propafenone", "↑PR, marked ↑QRS", "AF/SVT in structurally normal hearts", "Pro-arrhythmia; avoid post-MI/structural disease (CAST)"],
+  ["II", "β-blockade; ↓cAMP and phase-4 slope", "Esmolol, metoprolol, bisoprolol", "↓HR, ↑PR", "Rate control, SVT, post-MI", "Bradycardia, AV block, bronchospasm"],
+  ["III", "K⁺ block; prolongs APD/ERP", "Amiodarone, sotalol, dronedarone", "↑QT", "Atrial and ventricular arrhythmias", "Torsades (especially sotalol); amiodarone lung, thyroid and liver toxicity"],
+  ["IV", "L-type Ca²⁺ block in nodal tissue", "Verapamil, diltiazem", "↓HR, ↑PR", "SVT and AF rate control", "Bradycardia, AV block, hypotension, negative inotropy"],
+];
 
 const cardiacElectrophysiologyFaqs: Array<[string, string]> = [
   [
@@ -184,6 +194,17 @@ const CardiacElectrophysiologyTopic = () => {
                 <IonChannelTimelineDiagram />
               </div>
             </div>
+            <div className="mt-5 overflow-x-auto rounded-lg border border-border">
+              <table className="min-w-[900px] w-full text-xs"><thead className="bg-secondary/50"><tr>{["Class", "Mechanism", "Examples", "ECG", "Uses", "Major adverse effects"].map(h => <th key={h} className="p-2 text-left font-semibold text-foreground">{h}</th>)}</tr></thead><tbody className="divide-y divide-border">{vaughanWilliamsRows.map(row => <tr key={row[0]}>{row.map((cell, index) => <td key={cell} className={`p-2 align-top text-foreground/80 ${index === 0 ? "font-bold text-foreground" : ""}`}>{cell}</td>)}</tr>)}</tbody></table>
+            </div>
+            <p className="mt-3 text-sm text-foreground/80">Amiodarone has actions in all four classes, a very large volume of distribution and an exceptionally long terminal half-life (weeks), so loading is required and toxicity/interactions persist after withdrawal <InlineRef topicId="cardiac-electrophysiology" refLabel="Vaughan Williams" />.</p>
+            <div className="mt-4 rounded-lg border border-border p-4 text-sm text-foreground/85"><h3 className="font-semibold text-foreground">Hypothermia</h3><p className="mt-1">Cooling slows SA-node automaticity and conduction, producing sinus bradycardia and interval prolongation, while J (Osborn) waves appear. Experimental whole-body hypothermia lowered conduction velocity, ventricular effective refractory period and the ventricular-fibrillation threshold, making the myocardium more arrhythmogenic; defibrillation energy requirements were not significantly altered <InlineRef topicId="cardiac-electrophysiology" refLabel="Crit Care Med 2001 Hypothermia" />.</p></div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="arrhythmia-mechanisms" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_02"]}>
+            <CollapsibleSubsection title="Mechanisms of Arrhythmia">
+              <div className="grid md:grid-cols-2 gap-4 text-sm"><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Disorders of impulse formation</h3><ul className="mt-2 list-disc pl-5 space-y-1 text-foreground/80"><li><strong>Enhanced automaticity:</strong> steeper phase-4 depolarisation in pacemaker cells, for example with catecholamines or ischaemia.</li><li><strong>Abnormal automaticity:</strong> injured non-pacemaker cells depolarise spontaneously as resting potential becomes less negative.</li><li><strong>EADs:</strong> triggered during phases 2–3 when repolarisation/QT is prolonged.</li><li><strong>DADs:</strong> triggered in phase 4 by intracellular Ca²⁺ overload, for example digoxin toxicity or catecholamine excess.</li></ul></div><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Disorders of impulse conduction</h3><p className="mt-2 text-foreground/80"><strong>Re-entry</strong> requires two parallel pathways with different conduction/refractory properties, unidirectional block in one, and sufficiently slow conduction in the other for previously refractory tissue to recover. The returning impulse then perpetuates a circuit, as in AVNRT; multiple re-entrant wavelets contribute to AF.</p></div></div>
             </CollapsibleSubsection>
           </ExamSection>
 
