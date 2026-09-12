@@ -328,7 +328,7 @@ const PerioperativeCaseBank = () => {
   const [query, setQuery] = useState("");
   const visibleCases = useMemo(() => {
     const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-    return cases.filter((item) => {
+    return perioperativeCases.filter((item) => {
       if (category !== "All" && item.category !== category) return false;
       if (difficulty !== "All" && item.difficulty !== difficulty) return false;
       if (terms.length === 0) return true;
