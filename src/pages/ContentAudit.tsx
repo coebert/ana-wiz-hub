@@ -951,6 +951,17 @@ const ContentAudit = () => {
     return () => clearInterval(t);
   }, [running]);
 
+  // A sweep advances one topic at a time via an internal hand-off. If no
+  // progress has been written for a few minutes it has stalled — surface that
+  // instead of showing a spinner forever. A background check also resumes it
+  // automatically every few minutes.
+  const stalledMs =
+    running && job?.updated_at
+      ? Date.now() - new Date(job.updated_at).getTime()
+      : 0;
+  const stalled = stalledMs > 4 * 60 * 1000;
+
+
   const elapsedMs = job ? Date.now() - new Date(job.created_at).getTime() : 0;
 
   // Average per-topic duration from completed topic logs for this job.
