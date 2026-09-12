@@ -280,6 +280,18 @@ const GastrointestinalPhysiologyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="gut-microbiome" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
+            <CollapsibleSubsection title="The Gut Microbiome and Perioperative Significance">
+              <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+                <p><strong>Role:</strong> around 10<sup>14</sup> commensal organisms ferment non-digestible carbohydrate to short-chain fatty acids (butyrate fuels colonocytes), synthesise vitamin K and B vitamins, deconjugate bile acids, contribute to drug and hormone metabolism, and train mucosal immunity while competing with pathogens for niche and nutrients.</p>
+                <p><strong>Dysbiosis:</strong> loss of diversity with expansion of virulent organisms. It is driven by surgical stress, starvation and altered nutrition, opioids, proton-pump inhibitors, broad-spectrum antibiotics, hypoperfusion and prolonged critical illness — the ICU pattern of a low-diversity, pathogen-dominated flora.</p>
+                <p><strong>Perioperative impact:</strong> dysbiotic collagenase-producing organisms (Enterococcus faecalis, Pseudomonas) are implicated in anastomotic leak; dysbiosis is also associated with surgical site and healthcare-associated infection, <em>Clostridioides difficile</em> colitis, ventilator-associated pneumonia and delirium <InlineRef topicId="gi-physiology" refLabel="BJS 2017 Microbiome" />.</p>
+                <p><strong>Therapeutic potential:</strong> ERAS elements that limit fasting, maintain enteral nutrition and avoid unnecessary antibiotics help preserve flora. Probiotics/synbiotics reduce infectious complications in some elective abdominal surgery meta-analyses but evidence is heterogeneous and they are avoided in immunocompromised or severely ill patients; faecal microbiota transplantation is established only for recurrent <em>C. difficile</em> infection.</p>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+
           <ExamSection id="anaesthetic-implications" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OA_BK_03"]}>
             <CollapsibleSubsection title="Anaesthetic Implications">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
