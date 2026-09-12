@@ -1,2 +1,2 @@
 - [ ] Fix all current preview typecheck/build errors
-- [ ] Build perioperative case bank using steroid cover, phaeochromocytoma and antifibrinolytic content
+- [x] Build perioperative case bank using steroid cover, phaeochromocytoma and antifibrinolytic content
