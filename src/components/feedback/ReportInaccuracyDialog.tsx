@@ -15,6 +15,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
+import {
+  buildInaccuracyReportPayload,
+  getFirstValidationError,
+  inaccuracyReportSchema,
+} from "@/lib/inaccuracy-report";
 
 /**
  * Report-an-inaccuracy dialog.
@@ -51,24 +56,23 @@ export const ReportInaccuracyDialog = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (message.trim().length < 5) {
-      toast.error("Please describe the issue (at least a few words).");
+    const parsed = inaccuracyReportSchema.safeParse({
+      topicId,
+      topicTitle,
+      topicUrl: typeof window !== "undefined" ? window.location.href.slice(0, 1024) : "",
+      quotedText: quoted,
+      message,
+      suggestedCorrection: correction,
+      contactEmail: email,
+    });
+    if (!parsed.success) {
+      toast.error(getFirstValidationError(parsed.error));
       return;
     }
     setSubmitting(true);
-    const { error } = await supabase.from("inaccuracy_reports").insert({
-      topic_id: topicId,
-      topic_title: topicTitle,
-      topic_url: typeof window !== "undefined" ? window.location.href.slice(0, 1024) : null,
-      quoted_text: quoted.trim() ? quoted.trim().slice(0, 1000) : null,
-      message: message.trim().slice(0, 4000),
-      suggested_correction: correction.trim() ? correction.trim().slice(0, 4000) : null,
-      contact_email: email.trim() ? email.trim().slice(0, 320) : null,
-      user_agent:
-        typeof navigator !== "undefined" ? navigator.userAgent.slice(0, 512) : null,
-      // status / public_note / reviewed_* are set by the editor workflow,
-      // and the RLS INSERT policy refuses any client-side override.
-    });
+    const { error } = await supabase
+      .from("inaccuracy_reports")
+      .insert(buildInaccuracyReportPayload(parsed.data));
     setSubmitting(false);
     if (error) {
       console.error("inaccuracy_report submit failed", error);

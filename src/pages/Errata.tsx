@@ -1,9 +1,18 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { AlertTriangle, CheckCircle2, Loader2 } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Loader2, Send } from "lucide-react";
 import { SectionLayout } from "@/components/layout/SectionLayout";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
+import {
+  buildInaccuracyReportPayload,
+  getFirstValidationError,
+  inaccuracyReportSchema,
+} from "@/lib/inaccuracy-report";
 
 /**
  * Public errata page — `/errata`.
@@ -41,6 +50,55 @@ const formatDate = (iso: string | null) =>
 const Errata = () => {
   const [rows, setRows] = useState<ErratumRow[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
+  const [topic, setTopic] = useState("");
+  const [topicUrl, setTopicUrl] = useState("");
+  const [quotedText, setQuotedText] = useState("");
+  const [message, setMessage] = useState("");
+  const [suggestedCorrection, setSuggestedCorrection] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitError(null);
+    setSubmitted(false);
+
+    const parsed = inaccuracyReportSchema.safeParse({
+      topicId: topic,
+      topicTitle: topic,
+      topicUrl,
+      quotedText,
+      message,
+      suggestedCorrection,
+      contactEmail,
+    });
+    if (!parsed.success) {
+      setSubmitError(getFirstValidationError(parsed.error));
+      return;
+    }
+
+    setSubmitting(true);
+    const { error: submissionError } = await supabase
+      .from("inaccuracy_reports")
+      .insert(buildInaccuracyReportPayload(parsed.data));
+    setSubmitting(false);
+
+    if (submissionError) {
+      console.error("inaccuracy_report submit failed", submissionError);
+      setSubmitError("We couldn’t submit your report. Please try again shortly.");
+      return;
+    }
+
+    setTopic("");
+    setTopicUrl("");
+    setQuotedText("");
+    setMessage("");
+    setSuggestedCorrection("");
+    setContactEmail("");
+    setSubmitted(true);
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -85,6 +143,123 @@ const Errata = () => {
             button. Confirmed reports are published here with a short editor’s note so the
             correction is visible in the open.
           </p>
+        </div>
+
+        <section aria-labelledby="report-correction-heading" className="rounded-lg border bg-card p-5 sm:p-6">
+          <div className="mb-5">
+            <h2 id="report-correction-heading" className="font-semibold text-xl text-foreground">
+              Report a correction
+            </h2>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+              Tell us what needs reviewing. An editor checks every report before any correction appears in the public ledger.
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="space-y-1.5">
+                <Label htmlFor="errata-topic">Affected topic or page</Label>
+                <Input
+                  id="errata-topic"
+                  value={topic}
+                  onChange={(event) => setTopic(event.target.value)}
+                  placeholder="e.g. Pulse oximetry"
+                  maxLength={256}
+                  required
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="errata-url">
+                  Page address <span className="font-normal text-muted-foreground">(optional)</span>
+                </Label>
+                <Input
+                  id="errata-url"
+                  value={topicUrl}
+                  onChange={(event) => setTopicUrl(event.target.value)}
+                  placeholder="/topics/pulse-oximetry"
+                  maxLength={1024}
+                />
+              </div>
+            </div>
+
+            <div className="space-y-1.5">
+              <Label htmlFor="errata-quote">
+                Text being reported <span className="font-normal text-muted-foreground">(optional)</span>
+              </Label>
+              <Textarea
+                id="errata-quote"
+                value={quotedText}
+                onChange={(event) => setQuotedText(event.target.value)}
+                placeholder="Paste the exact sentence or value here."
+                rows={2}
+                maxLength={1000}
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <Label htmlFor="errata-message">What is incorrect?</Label>
+              <Textarea
+                id="errata-message"
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
+                placeholder="Describe the issue and include a reliable source where possible."
+                rows={4}
+                maxLength={4000}
+                required
+              />
+              <p className="text-xs text-muted-foreground text-right">{message.length}/4,000</p>
+            </div>
+
+            <div className="space-y-1.5">
+              <Label htmlFor="errata-suggestion">
+                Suggested correction <span className="font-normal text-muted-foreground">(optional)</span>
+              </Label>
+              <Textarea
+                id="errata-suggestion"
+                value={suggestedCorrection}
+                onChange={(event) => setSuggestedCorrection(event.target.value)}
+                placeholder="What should the page say instead?"
+                rows={3}
+                maxLength={4000}
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <Label htmlFor="errata-email">
+                Contact email <span className="font-normal text-muted-foreground">(optional)</span>
+              </Label>
+              <Input
+                id="errata-email"
+                type="email"
+                value={contactEmail}
+                onChange={(event) => setContactEmail(event.target.value)}
+                placeholder="Used only if an editor needs to follow up"
+                maxLength={320}
+              />
+            </div>
+
+            {submitError && (
+              <p role="alert" className="text-sm text-destructive">{submitError}</p>
+            )}
+            {submitted && (
+              <div role="status" className="flex items-start gap-2 rounded-md border border-perioperative/30 bg-perioperative/10 p-3 text-sm text-foreground">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-perioperative" />
+                <span>Thank you. Your report is in the editorial review queue and will appear below only if it is confirmed and published.</span>
+              </div>
+            )}
+
+            <div className="flex justify-end">
+              <Button type="submit" disabled={submitting}>
+                {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+                Submit report
+              </Button>
+            </div>
+          </form>
+        </section>
+
+        <div className="pt-2">
+          <h2 className="font-semibold text-xl text-foreground">Published corrections</h2>
+          <p className="mt-1 text-sm text-muted-foreground">Confirmed reports and the action taken by an editor.</p>
         </div>
 
         {error && (
