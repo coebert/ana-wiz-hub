@@ -393,6 +393,8 @@ export const TopicTemplate = ({
               />
             )}
             <KeyLearningPoints points={keyPoints} topicId={topicId} />
+            <TopicOverrideKeyPoints points={liveEdits.keyPoints} />
+
             {resolvedSources.keyPoints && resolvedSources.keyPoints.length > 0 && (
               <SectionReferences
                 topicId={topicId}
