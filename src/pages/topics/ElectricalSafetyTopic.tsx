@@ -315,24 +315,106 @@ const ElectricalSafetyTopic = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Defibrillation</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground">Diathermy in Patients with Pacemakers and ICDs</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Cardiac implantable electronic devices (CIEDs) are common, and diathermy is the main perioperative electrical hazard
+            to them: radiofrequency energy can be sensed as intrinsic cardiac activity (inhibiting pacing), can be interpreted as
+            a tachyarrhythmia (triggering an inappropriate ICD shock), can cause electrical reset to a back-up mode, and can very
+            rarely conduct down a lead to cause endocardial thermal injury
+            <InlineRef topicId="electrical-safety" refLabel="Assoc Anaesth CIED 2022" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="text-sm font-semibold text-foreground mb-1">Preoperative risk assessment</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Identify device <strong className="text-foreground">type</strong> (pacemaker, ICD, CRT, loop recorder), manufacturer, indication and date of last check (within 12 months for a pacemaker, 6 months for an ICD).</li>
+                <li>Establish <strong className="text-foreground">pacing dependence</strong> — the underlying rhythm on the device check determines whether loss of pacing is immediately life-threatening.</li>
+                <li>Discuss with the cardiology or cardiac physiology team; reprogramming (asynchronous pacing, deactivating anti-tachycardia therapies) is required for high-risk surgery, especially above the umbilicus.</li>
+                <li>Site of surgery matters: monopolar diathermy more than ~15 cm from the device and generator, with a current path away from it, is low risk.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="text-sm font-semibold text-foreground mb-1">Intraoperative precautions</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li><strong className="text-foreground">Bipolar diathermy in preference</strong> — current is confined between the forceps tips, so no current traverses the thorax.</li>
+                <li>If monopolar is unavoidable: lowest effective power, <strong className="text-foreground">short irregular bursts (&lt;5 s)</strong>, cutting rather than coagulation mode where possible, and the return plate positioned so the current path <em>does not cross</em> the generator or leads (e.g. thigh for lower-limb or pelvic surgery).</li>
+                <li>Continuous ECG plus a mechanical means of confirming perfusion (pulse oximetry plethysmograph or invasive arterial trace) — diathermy artefact obscures the ECG.</li>
+                <li>Immediately available: external defibrillator/pacing pads, a <strong className="text-foreground">magnet</strong>, chronotropic drugs (atropine, isoprenaline, adrenaline) and the ability to contact the device team.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+            <p className="text-sm font-medium text-foreground">What does a magnet do?</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Over a <strong>pacemaker</strong>, a magnet usually switches it to asynchronous (VOO/DOO) pacing at a fixed
+              manufacturer-specific rate, preventing diathermy-induced inhibition — but responses vary and some devices ignore
+              magnets or enter a diagnostic mode. Over an <strong>ICD</strong>, a magnet suspends anti-tachycardia detection and
+              shock delivery without altering the bradycardia pacing settings; the patient is then unprotected and must be
+              continuously monitored with external defibrillation available. Magnet response should be confirmed with the device
+              team rather than assumed, and every patient needs a <strong>postoperative device check</strong> before discharge from
+              monitored care.
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Defibrillation & Synchronised Cardioversion</h2>
           <p className="text-foreground/90 leading-relaxed">
             Defibrillation delivers a large DC current (~30–40 A peak) to simultaneously depolarise a critical mass of
-            myocardium, allowing the SA node to resume normal conduction. <strong>Transthoracic impedance (TTI)</strong> is the
-            opposition to current flow through the chest, typically ~70–80 Ω. It falls with larger electrodes, conductive gel,
-            firm paddle pressure, shock delivery during expiration and repeated shocks; poor contact, chest hair, small electrodes,
-            obesity and hyperinflation increase it.
+            myocardium, allowing the SA node to resume normal conduction
+            <InlineRef topicId="electrical-safety" refLabel="RCUK 2021 ALS" />.
           </p>
+          <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">The capacitor: charge and discharge</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            A defibrillator cannot take enough current directly from the mains, so energy is accumulated slowly in a
+            <strong> capacitor</strong> (typically ~30–60 µF charged to several thousand volts) and released rapidly. Stored energy
+            is <strong>E = ½CV²</strong>, so energy rises with the <em>square</em> of the charging voltage; charge Q = CV. Charging
+            follows an exponential rise (V = V<sub>max</sub>(1 − e<sup>−t/RC</sup>)) taking a few seconds, while discharge through
+            the ~70–80 Ω thorax is an exponential decay with a time constant of only a few milliseconds. An
+            <strong> inductor</strong> in series lengthens and smooths the pulse to ~5–20 ms, because a very short high-current
+            spike causes myocardial injury without improving defibrillation.
+          </p>
+          <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">Waveforms</h3>
+          <ul className="text-foreground/90 mt-1 space-y-1 list-disc list-inside">
+            <li><strong>Monophasic damped sinusoidal</strong> — current flows in one direction only; historically 200 J escalating to 360 J.</li>
+            <li><strong>Biphasic truncated exponential (BTE)</strong> — current flows one way then reverses, and the waveform is truncated rather than allowed to decay to zero.</li>
+            <li><strong>Rectilinear biphasic</strong> — the device actively holds current near-constant during the first phase.</li>
+            <li>Biphasic devices <strong>measure transthoracic impedance</strong> and compensate by adjusting voltage or phase duration, so a similar current reaches the myocardium in a small and a large patient.</li>
+          </ul>
           <p className="text-foreground/90 leading-relaxed mt-3">
-            Monophasic devices pass current in one direction and traditionally use up to 360 J. Modern biphasic devices reverse
-            polarity; a <strong>biphasic truncated exponential (BTE)</strong> waveform measures TTI and adjusts voltage or phase
-            duration to compensate, improving efficacy at lower selected energies (commonly 120–200 J) and reducing myocardial and
-            skin injury. <strong>Synchronised cardioversion</strong> triggers on the R wave to avoid shock delivery during the
-            vulnerable T wave and is used for unstable tachyarrhythmias with a pulse; VF and pulseless VT require immediate
-            unsynchronised defibrillation <InlineRef topicId="electrical-safety" refLabel="Anaesthesia 1996 Cardioversion" />.
+            Biphasic shocks achieve a higher first-shock success rate at <strong>lower selected energy (typically 120–200 J)</strong>
+            than monophasic 360 J. The reversed second phase lowers the defibrillation threshold (partly by reducing the
+            after-potential and post-shock electroporation of myocytes), so less current and less myocardial stunning, arrhythmia
+            and skin burning are produced <InlineRef topicId="electrical-safety" refLabel="RCUK 2021 ALS" />.
+          </p>
+          <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">Transthoracic impedance</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            <strong>Transthoracic impedance (TTI)</strong> is the opposition to current flow through the chest, typically
+            ~70–80 Ω, and determines what fraction of delivered energy reaches the myocardium (I = V/Z). It <em>falls</em> with
+            larger electrodes, conductive gel or gel pads, firm paddle pressure (~8 kg), shock delivery during expiration
+            (smaller lung volume) and with each successive shock. It <em>rises</em> with poor skin contact, chest hair, air
+            trapping or hyperinflation, obesity, and a short interval since the last shock has not yet lowered it.
+          </p>
+          <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">Safety during defibrillation</h3>
+          <ul className="text-foreground/90 mt-1 space-y-1 list-disc list-inside">
+            <li>Operator safety: a clear verbal "stand clear" with visual check, oxygen source moved at least 1 m away, no contact with the trolley or wet surfaces, self-adhesive pads in preference to paddles, and charging only once the pads are applied.</li>
+            <li>Patient safety: correct pad placement (sternal–apical, or anterior–posterior for cardioversion of AF and for patients with a CIED, keeping pads &gt;8 cm from the generator), dry skin, removal of GTN patches, and avoidance of repeated shocks over the same skin to limit burns.</li>
+            <li>Chest compressions continue while the device charges; the pre-shock pause should be under 5 s.</li>
+          </ul>
+          <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">Synchronised DC cardioversion</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            For a tachyarrhythmia <em>with</em> a pulse, the shock is <strong>synchronised to the R wave</strong>. Delivering
+            energy during the relative refractory period of repolarisation (on the T wave) can induce VF — the
+            <strong> R-on-T phenomenon</strong> — so the device senses the QRS and times delivery to it. VF and pulseless VT
+            require immediate <strong>unsynchronised</strong> defibrillation because there is no organised QRS to synchronise to.
+            Anaesthesia for elective cardioversion aims to provide brief hypnosis and analgesia with minimal cardiovascular
+            depression and rapid recovery — typically a small dose of propofol (or etomidate/ketamine in haemodynamic
+            compromise) with preoxygenation, full monitoring, aspiration precautions and airway rescue equipment, in an area
+            equipped for resuscitation <InlineRef topicId="electrical-safety" refLabel="Anaesthesia 1996 Cardioversion" />.
           </p>
           <DefibrillatorCapacitorDiagram />
         </section>
+
           <ElectricalSafetyDiagram />
           <ExamPitfallsCallout
             accent="physics"
