@@ -606,6 +606,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2018", citation: "Gao Smith F. One-lung anaesthesia. BJA Education. 2017;17(1):24-28.", url: "https://doi.org/10.1093/bjaed/mkw039" },
     { label: "Kaplan's Cardiac", citation: "Kaplan JA, Augoustides JGT, et al. Kaplan's Cardiac Anesthesia. 7th ed. Elsevier; 2017." },
     { label: "BJA Educ 2015", citation: "Maguire S, Slinger P. Cardiopulmonary bypass. BJA Education. 2005;5(3):100-104.", url: "https://doi.org/10.1093/bjaceaccp/mki027" },
+    { label: "POAF JCVA 2024", citation: "Postoperative atrial fibrillation after cardiac surgery: mechanisms, prophylaxis and management. J Cardiothorac Vasc Anesth. 2024.", url: "https://doi.org/10.1053/j.jvca.2024.07.043" },
+    { label: "Warren 2009 CPB Inflammation", citation: "Warren OJ, Smith AJ, Alexiou C, et al. The inflammatory response to cardiopulmonary bypass: part 1 — mechanisms of pathogenesis. J Cardiothorac Vasc Anesth. 2009;23(2):223-231.", url: "https://doi.org/10.1053/j.jvca.2008.08.007" },
   ],
   "pain-medicine": [
     { label: "BJA Educ 2018", citation: "Gan TJ. Mechanisms of acute pain. BJA Education. 2013;13(3):87-90.", url: "https://doi.org/10.1093/bjaceaccp/mks063" },
