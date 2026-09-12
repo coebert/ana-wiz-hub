@@ -173,6 +173,12 @@ const ElectricalSafetyTopic = () => {
             <li><strong>100 mA</strong> — ventricular fibrillation</li>
             <li><strong>&gt;5 A</strong> — sustained asystole, burns</li>
           </ul>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            These thresholds are for 50 Hz mains-frequency current applied for ≥1 s; sensitivity is maximal at 50–60 Hz and falls
+            sharply above ~1 kHz, which is why megahertz diathermy current does not stimulate nerve or muscle
+            <InlineRef topicId="electrical-safety" refLabel="ATOTW 193 (Electricity II)" />
+            <InlineRef topicId="electrical-safety" refLabel="BJA Educ 2017" />.
+          </p>
         </section>
 
         <section className="mb-10">
@@ -187,7 +193,8 @@ const ElectricalSafetyTopic = () => {
             <p className="text-sm text-muted-foreground mt-1">
               Patients with intracardiac catheters are "electrically susceptible." All equipment contacting the patient must
               have leakage current &lt;10 µA (Type CF equipment) — a 10× safety margin below the 100 µA VF threshold.
-              Saline-filled CVP lines can act as conductors.
+              Saline-filled CVP lines can act as conductors
+              <InlineRef topicId="electrical-safety" refLabel="IEC 60601-1" />.
             </p>
           </div>
         </section>
@@ -195,7 +202,8 @@ const ElectricalSafetyTopic = () => {
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Isolation Transformer & Line Isolation Monitor (LIM)</h2>
           <p className="text-foreground/90 leading-relaxed">
-            In critical-care areas (operating theatres, cardiac cath labs, ICU bedspaces) the standard earthed mains supply is
+            In UK practice, operating theatres, cardiac catheter laboratories and critical care bedspaces are
+            <strong>Group 2 medical locations</strong>, in which the standard earthed mains supply is
             replaced by an <strong>isolated power system</strong>. A 1:1 isolation transformer magnetically couples power to the
             theatre but removes the earth reference — both downstream conductors "float" relative to earth. Because no normal
             return path exists through earth, a patient or staff member touching a single live conductor cannot complete a
@@ -203,8 +211,9 @@ const ElectricalSafetyTopic = () => {
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
             A <strong>Line Isolation Monitor (LIM)</strong> continuously measures the impedance from each line to earth. A
-            single insulation fault is detected and alarmed (typically when a prospective fault current would exceed
-            ~5 mA, with thresholds in practice ranging from 2–5 mA depending on the standard), but the supply is deliberately
+            single insulation fault is detected and alarmed when the fault would permit a <strong>prospective fault current of
+            about 2–5 mA</strong> to flow were a second fault to occur (the exact set point depends on the standard and the
+            device), but the supply is deliberately
             <em> not</em> automatically interrupted — abrupt loss of power to a ventilator or bypass pump may be more
             dangerous than the fault itself. Two simultaneous faults are required for a hazardous shock.
           </p>
@@ -218,7 +227,9 @@ const ElectricalSafetyTopic = () => {
               Outside theatre, an earthed mains supply is protected by a <strong>Residual Current Device (RCD / RCCB)</strong>.
               An RCD compares the live and neutral currents through a single toroidal current transformer; any imbalance &gt; 30 mA
               triggers disconnection within 40 ms — fast enough to prevent ventricular fibrillation in most macroshock scenarios.
-              In theatre this auto-disconnect is itself a hazard, which is why an isolated supply with a LIM is preferred.
+              RCD-protected earthed mains is the arrangement used in general clinical areas; in Group 2 locations this
+              auto-disconnect is itself a hazard, so an isolated supply with insulation monitoring is required instead
+              <InlineRef topicId="electrical-safety" refLabel="HTM 06-01" />.
             </p>
             <RCDDiagram />
           </div>
@@ -308,7 +319,8 @@ const ElectricalSafetyTopic = () => {
                 <li>Combined with a <strong className="text-foreground">conductive floor</strong> (resistance 20 kΩ – 5 MΩ between two
                   electrodes 60 cm apart), the staff member–shoe–floor system acts as a controlled, slow discharge path.</li>
                 <li>Pure rubber boots (very high resistance) would <em>protect against macroshock</em> but allow <strong className="text-foreground">static
-                  build-up</strong> — and so are not used in theatre.</li>
+                  build-up</strong> — and so are not used in theatre
+                  <InlineRef topicId="electrical-safety" refLabel="Middleton Ch.16" />.</li>
               </ul>
             </div>
           </div>
