@@ -20,8 +20,12 @@ const tocItems = [
   { id: "principles", label: "Free flap principles", group: "Core" },
   { id: "prolonged", label: "Prolonged surgery", group: "Management" },
   { id: "procedures", label: "Specific procedures", group: "Procedures" },
+  { id: "blocks", label: "Flap-specific regional blocks", group: "Procedures" },
   { id: "anticoagulation", label: "Anticoagulation & monitoring", group: "Postoperative" },
+  { id: "vte", label: "DVT prophylaxis & Caprini risk", group: "Postoperative" },
+  { id: "complications", label: "Postoperative complications", group: "Postoperative" },
   { id: "faq", label: "FAQ", group: "Reference" },
+
 ];
 
 const plasticFaqs: Array<[string, string]> = [
