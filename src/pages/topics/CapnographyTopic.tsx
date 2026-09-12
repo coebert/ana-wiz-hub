@@ -104,7 +104,7 @@ const workedExamples: WorkedExample[] = [
         CO₂ (carbonated drinks, mask ventilation pre-induction). Sustained
         EtCO₂ of a normal shape and value across <strong>≥ 6 consecutive
         breaths</strong> is the gold standard for tracheal placement
-        (NAP4, DAS 2025). A flat or vanishing trace is presumed
+        (NAP4; PUMA consensus 2022; DAS 2025). A flat or vanishing trace is presumed
         oesophageal until proven otherwise.
       </>
     ),
