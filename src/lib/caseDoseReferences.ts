@@ -1,10 +1,13 @@
 import { icuDrugDoseGroups } from "@/data/icuDrugDoses";
 import type { PerioperativeCase } from "@/components/perioperative/ProgressiveCase";
 
+export type CaseAgeGroup = "adult" | "paediatric" | "neonatal";
+
 export interface CaseDoseReference {
   drug: string;
   dose: string;
   route: string;
+  ageGroup: CaseAgeGroup;
   groupId: string;
   groupTitle: string;
   slug: string;
@@ -17,7 +20,9 @@ export const drugSlug = (drug: string): string =>
     .replace(/[^a-z]+/g, "-")
     .replace(/^-|-$/g, "");
 
-interface IndexedDrug extends CaseDoseReference {
+interface IndexedDrug extends Omit<CaseDoseReference, "ageGroup"> {
+  paediatricDose?: string;
+  neonatalDose?: string;
   terms: string[];
 }
 
@@ -42,12 +47,28 @@ const indexedDrugs: IndexedDrug[] = icuDrugDoseGroups.flatMap((group) =>
     drug: drug.drug,
     dose: drug.dose,
     route: drug.route,
+    paediatricDose: drug.paediatricDose,
+    neonatalDose: drug.neonatalDose,
     groupId: group.id,
     groupTitle: group.title,
     slug: drugSlug(drug.drug),
     terms: drugTerms(drug.drug),
   })),
 );
+
+/**
+ * Neonatal, paediatric or adult scenario — decides which dose column a case
+ * should be pointed at.
+ */
+export const caseAgeGroup = (caseData: PerioperativeCase): CaseAgeGroup => {
+  const text = [caseData.title, caseData.category, caseData.patient, caseData.presentation]
+    .join(" ")
+    .toLowerCase();
+  if (/\bneonat|newborn|\bpreterm|ex-prem|\bday-old|\bhours old|birth\b/.test(text)) return "neonatal";
+  if (/paediatric|\bchild|\binfant|\bbaby|\bboy\b|\bgirl\b|month-old|year-old girl|year-old boy|\bschool-age/.test(text))
+    return "paediatric";
+  return "adult";
+};
 
 const caseText = (caseData: PerioperativeCase): string =>
   [
@@ -70,11 +91,21 @@ export const doseReferencesForCase = (
   limit = 6,
 ): CaseDoseReference[] => {
   const text = caseText(caseData);
+  const ageGroup = caseAgeGroup(caseData);
   const matches = indexedDrugs.filter((entry) =>
     entry.terms.some((term) => new RegExp(`\\b${term.replace(/[-]/g, "[- ]")}`, "i").test(text)),
   );
-  return matches.slice(0, limit).map(({ terms: _terms, ...rest }) => rest);
+  return matches.slice(0, limit).map(({ terms: _terms, paediatricDose, neonatalDose, ...rest }) => ({
+    ...rest,
+    ageGroup,
+    dose:
+      ageGroup === "neonatal"
+        ? neonatalDose ?? paediatricDose ?? rest.dose
+        : ageGroup === "paediatric"
+          ? paediatricDose ?? rest.dose
+          : rest.dose,
+  }));
 };
 
 export const drugDoseHref = (reference: CaseDoseReference): string =>
-  `/intensive-care/drug-doses?drug=${encodeURIComponent(reference.slug)}#drug-${reference.slug}`;
+  `/intensive-care/drug-doses?drug=${encodeURIComponent(reference.slug)}&age=${reference.ageGroup}#drug-${reference.slug}`;

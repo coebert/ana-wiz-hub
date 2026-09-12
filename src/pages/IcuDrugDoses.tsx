@@ -5,14 +5,38 @@ import { ArrowLeft, Pill, Search, TriangleAlert } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { icuDrugDoseGroups, icuDrugCount } from "@/data/icuDrugDoses";
+import { icuDrugDoseGroups, icuDrugCount, type DrugDose } from "@/data/icuDrugDoses";
 import { drugSlug } from "@/lib/caseDoseReferences";
+
+type AgeMode = "adult" | "paediatric" | "neonatal";
+
+const ageOptions: Array<{ id: AgeMode; label: string }> = [
+  { id: "adult", label: "Adult" },
+  { id: "paediatric", label: "Child" },
+  { id: "neonatal", label: "Neonate" },
+];
+
+const doseFor = (drug: DrugDose, age: AgeMode): string => {
+  if (age === "paediatric") return drug.paediatricDose ?? "No separate paediatric dose listed — see local PICU guideline";
+  if (age === "neonatal")
+    return drug.neonatalDose ?? drug.paediatricDose ?? "No neonatal dose listed — seek neonatal/PICU advice";
+  return drug.dose;
+};
+
+const cautionFor = (drug: DrugDose, age: AgeMode): string | undefined =>
+  age === "adult" ? drug.notes : drug.paediatricNotes ?? drug.notes;
 
 const IcuDrugDoses = () => {
   const [searchParams] = useSearchParams();
   const requestedDrug = searchParams.get("drug") ?? "";
+  const requestedAge = searchParams.get("age") ?? "";
   const [search, setSearch] = useState("");
   const [activeGroup, setActiveGroup] = useState<string>("all");
+  const [age, setAge] = useState<AgeMode>("adult");
+
+  useEffect(() => {
+    if (requestedAge === "paediatric" || requestedAge === "neonatal") setAge(requestedAge);
+  }, [requestedAge]);
 
   // A case-bank dosing link arrives as ?drug=<slug>: prefill the search with
   // that drug name and scroll to its row.
@@ -41,7 +65,17 @@ const IcuDrugDoses = () => {
         ...g,
         drugs: q
           ? g.drugs.filter((d) =>
-              [d.drug, d.dose, d.route, d.frequency, d.indications, d.notes ?? ""]
+              [
+                d.drug,
+                d.dose,
+                d.route,
+                d.frequency,
+                d.indications,
+                d.notes ?? "",
+                d.paediatricDose ?? "",
+                d.neonatalDose ?? "",
+                d.paediatricNotes ?? "",
+              ]
                 .join(" ")
                 .toLowerCase()
                 .includes(q),
@@ -56,10 +90,10 @@ const IcuDrugDoses = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>ICU Drug Dosing Table — AnaesthesiaCore</title>
+        <title>ICU Drug Dosing Table: Adult, Paediatric and Neonatal — AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Searchable adult intensive care drug dosing table: sedation, analgesia, neuromuscular blockade, vasopressors, inotropes, antiarrhythmics, neurocritical care, anticoagulation, metabolic and antimicrobial drugs with dose, route, frequency and key indications."
+          content="Searchable intensive care drug dosing table with adult, paediatric and neonatal doses: sedation, analgesia, neuromuscular blockade, vasopressors, inotropes, antiarrhythmics, neurocritical care, anticoagulation, metabolic and antimicrobial drugs with dose, route, frequency and key indications."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-doses" />
       </Helmet>
@@ -80,8 +114,9 @@ const IcuDrugDoses = () => {
             <h1 className="text-3xl font-bold tracking-tight">ICU Drug Dosing Table</h1>
             <p className="mt-2 max-w-2xl text-muted-foreground">
               Dose, route, frequency and key indications for the drugs used every
-              day in adult critical care, grouped by clinical purpose. Use it for
-              revision and viva preparation alongside the linked topics.
+              day in critical care, grouped by clinical purpose, with adult,
+              paediatric and neonatal doses. Use it for revision and viva
+              preparation alongside the linked topics.
             </p>
           </div>
         </div>
@@ -129,6 +164,29 @@ const IcuDrugDoses = () => {
           ))}
         </div>
 
+        <div className="mt-4 flex flex-wrap items-center gap-2" role="group" aria-label="Choose patient age group">
+          <span className="text-sm text-muted-foreground">Doses for:</span>
+          {ageOptions.map((option) => (
+            <Button
+              key={option.id}
+              size="sm"
+              variant={age === option.id ? "default" : "outline"}
+              onClick={() => setAge(option.id)}
+              aria-pressed={age === option.id}
+            >
+              {option.label}
+            </Button>
+          ))}
+        </div>
+
+        {age !== "adult" && (
+          <p className="mt-3 rounded-lg border border-border bg-muted/40 p-3 text-sm text-muted-foreground">
+            {age === "paediatric"
+              ? "Paediatric doses are per kg and must never exceed the adult dose. Check every calculation against the BNF for Children and your local PICU guideline."
+              : "Neonatal doses assume a term baby; adjust for postmenstrual age, weight and renal function, and confirm with the BNF for Children and your neonatal or PICU guideline."}
+          </p>
+        )}
+
         <p className="mt-3 text-sm text-muted-foreground">
           {shown} of {icuDrugCount} drugs shown
         </p>
@@ -154,7 +212,9 @@ const IcuDrugDoses = () => {
                   <thead className="bg-muted/50 text-left">
                     <tr>
                       <th scope="col" className="p-3 font-semibold">Drug</th>
-                      <th scope="col" className="p-3 font-semibold">Dose</th>
+                      <th scope="col" className="p-3 font-semibold">
+                        {age === "adult" ? "Adult dose" : age === "paediatric" ? "Paediatric dose" : "Neonatal dose"}
+                      </th>
                       <th scope="col" className="p-3 font-semibold">Route</th>
                       <th scope="col" className="p-3 font-semibold">Frequency</th>
                       <th scope="col" className="p-3 font-semibold">Key indications</th>
@@ -171,13 +231,13 @@ const IcuDrugDoses = () => {
                         <th scope="row" className="p-3 text-left font-medium text-foreground">
                           {d.drug}
                         </th>
-                        <td className="p-3 text-muted-foreground">{d.dose}</td>
+                        <td className="p-3 text-muted-foreground">{doseFor(d, age)}</td>
                         <td className="p-3 text-muted-foreground">{d.route}</td>
                         <td className="p-3 text-muted-foreground">{d.frequency}</td>
                         <td className="p-3 text-muted-foreground">
                           {d.indications}
-                          {d.notes && (
-                            <span className="mt-1.5 block text-xs italic">{d.notes}</span>
+                          {cautionFor(d, age) && (
+                            <span className="mt-1.5 block text-xs italic">{cautionFor(d, age)}</span>
                           )}
                         </td>
                       </tr>
@@ -197,8 +257,10 @@ const IcuDrugDoses = () => {
                     <h3 className="font-semibold text-foreground">{d.drug}</h3>
                     <dl className="mt-2 space-y-1.5 text-sm">
                       <div>
-                        <dt className="inline font-medium">Dose: </dt>
-                        <dd className="inline text-muted-foreground">{d.dose}</dd>
+                        <dt className="inline font-medium">
+                          {age === "adult" ? "Adult dose" : age === "paediatric" ? "Paediatric dose" : "Neonatal dose"}:{" "}
+                        </dt>
+                        <dd className="inline text-muted-foreground">{doseFor(d, age)}</dd>
                       </div>
                       <div>
                         <dt className="inline font-medium">Route: </dt>
@@ -212,10 +274,10 @@ const IcuDrugDoses = () => {
                         <dt className="inline font-medium">Indications: </dt>
                         <dd className="inline text-muted-foreground">{d.indications}</dd>
                       </div>
-                      {d.notes && (
+                      {cautionFor(d, age) && (
                         <div>
                           <dt className="inline font-medium">Cautions: </dt>
-                          <dd className="inline text-muted-foreground">{d.notes}</dd>
+                          <dd className="inline text-muted-foreground">{cautionFor(d, age)}</dd>
                         </div>
                       )}
                     </dl>

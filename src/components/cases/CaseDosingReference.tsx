@@ -11,11 +11,14 @@ interface CaseDosingReferenceProps {
 export const CaseDosingReference = ({ caseData }: CaseDosingReferenceProps) => {
   const references = doseReferencesForCase(caseData);
   if (references.length === 0) return null;
+  const ageGroup = references[0].ageGroup;
+  const ageLabel =
+    ageGroup === "neonatal" ? "Neonatal doses" : ageGroup === "paediatric" ? "Paediatric doses" : "Dosing reference";
 
   return (
     <aside className="rounded-md border border-border bg-muted/40 p-4">
       <p className="flex items-center gap-2 text-xs font-semibold uppercase text-muted-foreground">
-        <Pill className="h-3.5 w-3.5" aria-hidden /> Dosing reference
+        <Pill className="h-3.5 w-3.5" aria-hidden /> {ageLabel}
       </p>
       <ul className="mt-2 space-y-1.5 text-sm">
         {references.map((reference) => (
@@ -33,11 +36,18 @@ export const CaseDosingReference = ({ caseData }: CaseDosingReferenceProps) => {
         ))}
       </ul>
       <p className="mt-2 text-xs text-muted-foreground">
-        Typical adult starting doses from the{" "}
+        {ageGroup === "adult"
+          ? "Typical adult starting doses from the "
+          : ageGroup === "neonatal"
+            ? "Weight-based neonatal doses from the "
+            : "Weight-based paediatric doses from the "}
         <Link to="/intensive-care/drug-doses" className="underline underline-offset-4 hover:text-foreground">
           ICU drug dosing table
         </Link>
-        . Always check the BNF and local guidelines.
+        .{" "}
+        {ageGroup === "adult"
+          ? "Always check the BNF and local guidelines."
+          : "Always check the BNF for Children and your local PICU or neonatal guideline, and never exceed the adult dose."}
       </p>
     </aside>
   );
