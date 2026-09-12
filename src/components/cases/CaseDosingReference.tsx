@@ -67,7 +67,7 @@ export const CaseDosingReference = ({ caseData }: CaseDosingReferenceProps) => {
                   </Link>
                   <span aria-hidden>·</span>
                   <Link
-                    to={`/intensive-care/drug-cards?drug=${safetySlug}#card-${safetySlug}`}
+                    to={`/intensive-care/drug-cards?slug=${safetySlug}#card-${safetySlug}`}
                     className="underline underline-offset-4 hover:text-foreground"
                   >
                     Full drug card
