@@ -215,6 +215,111 @@ const PaediatricIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+
+            <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Respiratory physiology — why children desaturate in seconds</h3>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>
+                <strong>High demand, small store.</strong> Oxygen consumption is{" "}
+                <strong>6–8 mL/kg/min in a neonate versus 3–4 mL/kg/min in an adult</strong>, while FRC is
+                similar per kg (~25–30 mL/kg) and closing volume lies <em>within</em> tidal breathing. Alveolar
+                ventilation is ~130 mL/kg/min against an FRC of 30 mL/kg — a V<sub>A</sub>:FRC ratio of ~5:1
+                (adult 1.5:1), so alveolar gas — and inhalational agent — equilibrates fast and apnoea causes
+                desaturation within 15–20 s.
+              </li>
+              <li>
+                <strong>Mechanically disadvantaged.</strong> Horizontal ribs, a cartilaginous compliant chest
+                wall, a flat diaphragm with few type-I fatigue-resistant fibres (~25% at term vs 55% by 8
+                months), and highly compliant airways. The result is early diaphragmatic fatigue, dynamic
+                airway collapse, and reliance on laryngeal braking/grunting to generate auto-PEEP — which is
+                abolished by intubation, so <strong>always apply PEEP</strong>.
+              </li>
+              <li>
+                <strong>Airway resistance</strong> is governed by Poiseuille: 1 mm of circumferential oedema
+                halves the diameter of a 4 mm infant airway and increases resistance ~16-fold (turbulent flow,
+                &gt;30-fold), versus a ~3-fold rise in an adult. Neonates are preferential nasal breathers, so
+                nasal secretions or an NG tube meaningfully increase work of breathing.
+              </li>
+              <li>
+                <strong>Control of breathing</strong> is immature: hypoxia causes biphasic ventilatory response
+                then apnoea; apnoea of prematurity persists until ~60 weeks post-conceptual age.
+              </li>
+            </ul>
+
+            <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Cardiovascular physiology</h3>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>
+                <strong>Rate-dependent output.</strong> Neonatal myocardium has fewer contractile elements
+                (~30% vs 60% of cell mass), poorly developed sarcoplasmic reticulum with dependence on{" "}
+                <strong>extracellular calcium</strong>, and a non-compliant ventricle operating near the top of
+                its Starling curve. Stroke volume is therefore near-fixed — cardiac output falls with{" "}
+                <strong>bradycardia</strong> and rises little with volume loading. Cardiac index is high
+                (~300 mL/kg/min at birth vs 100 mL/kg/min in adults).
+              </li>
+              <li>
+                <strong>Autonomic imbalance</strong> — parasympathetic dominance means vagal stimuli
+                (laryngoscopy, suction, hypoxia) readily produce bradycardia. In a child, bradycardia is treated
+                as <strong>hypoxia until proved otherwise</strong>: oxygenate and ventilate first, then atropine
+                20 mcg/kg (min 100 mcg) and adrenaline 10 mcg/kg if HR &lt;60 with poor perfusion.
+              </li>
+              <li>
+                <strong>Compensated shock is the rule.</strong> Vasoconstriction maintains blood pressure until
+                ~30–40% of circulating volume is lost, so <strong>hypotension is a pre-terminal sign</strong>.
+                Track tachycardia, capillary refill &gt;2 s, core-peripheral temperature gap, lactate, urine
+                output and conscious level instead. The 5th-centile systolic BP ≈{" "}
+                <strong>70 + (2 × age in years)</strong> mmHg.
+              </li>
+              <li>
+                <strong>Circulating volume</strong> is proportionally large but absolutely tiny:{" "}
+                <strong>90 mL/kg (preterm), 80–85 mL/kg (neonate), 75–80 mL/kg (infant), 70 mL/kg (child)</strong>{" "}
+                — a 400 mL loss is an entire blood volume in a 5 kg infant, so weigh swabs and measure losses.
+              </li>
+              <li>
+                <strong>Transitional circulation:</strong> for the first days–weeks, hypoxia, acidosis,
+                hypercapnia, hypothermia and pain raise PVR and can reopen the ductus arteriosus or foramen
+                ovale, causing right-to-left shunt and profound desaturation (persistent pulmonary hypertension
+                of the newborn).
+              </li>
+            </ul>
+
+            <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Renal, hepatic, haematological and thermal</h3>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>
+                <strong>Renal:</strong> GFR at term is ~20–30% of adult values (corrected for surface area),
+                doubling by 2 weeks and reaching adult levels by 1–2 years. Limited concentrating ability (max
+                ~600 mosmol/kg vs 1200) and obligate sodium loss in preterms mean{" "}
+                <strong>poor tolerance of both dehydration and fluid overload</strong>, and delayed clearance of
+                renally excreted drugs.
+              </li>
+              <li>
+                <strong>Hepatic:</strong> reduced phase-I oxidation and phase-II conjugation at birth (immature
+                glucuronidation — hence morphine sensitivity and slow paracetamol conjugation, with sulphation
+                predominating). Low glycogen stores plus a brain that consumes proportionally more glucose gives
+                rapid <strong>hypoglycaemia</strong> with fasting or illness. Vitamin-K-dependent factors are
+                low for the first days of life.
+              </li>
+              <li>
+                <strong>Haematological:</strong> HbF (~70–80% at birth) has a left-shifted dissociation curve
+                (P₅₀ ~19 mmHg) and 2,3-DPG resistance — good for placental uptake, poor for tissue offloading.
+                It is replaced by HbA over 3–6 months, and with iron stores exhausted the{" "}
+                <strong>physiological nadir of Hb (~9.5–11 g/dL) occurs at 2–3 months</strong>.
+              </li>
+              <li>
+                <strong>Thermoregulation:</strong> a high surface-area:weight ratio (a neonate ~3× the adult
+                value per kg), thin subcutaneous fat and a large head lose heat by radiation, convection,
+                conduction and evaporation. Below ~3 months there is <strong>no shivering</strong>; heat is
+                produced by uncoupled oxidative phosphorylation in{" "}
+                <strong>brown adipose tissue (non-shivering thermogenesis)</strong>, which costs oxygen and
+                glucose and generates acid. Hypothermia therefore causes hypoxia, hypoglycaemia, acidosis, raised
+                PVR and coagulopathy — actively warm every child with forced-air warming, warmed fluids, hat and
+                a raised ambient temperature.
+              </li>
+              <li>
+                <strong>Neurological:</strong> open fontanelles and unfused sutures buffer slowly rising ICP but
+                allow a large occult volume of intracranial blood; a large head:body ratio and weak neck muscles
+                predispose to injury; the spinal cord ends at L3 at birth (L1 by adulthood) and the intercristal
+                line is more caudal, which matters for neuraxial procedures.
+              </li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -339,10 +444,144 @@ const PaediatricIcuTopic = () => {
 
           <ExamSection id="fluids" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Fluids, Electrolytes & Nutrition">
-            <p className="text-muted-foreground text-sm mb-2">
-              <strong>Holliday-Segar:</strong> 4 ml/kg/h (first 10 kg) + 2 ml/kg/h (10–20 kg) + 1 ml/kg/h (each kg &gt;20). <strong>Use isotonic fluids only</strong> (0.9% NaCl + 5% dextrose) — hypotonic fluids cause fatal hyponatraemia (NICE NG29).
-              Hypoglycaemia (&lt;2.6 mmol/L): 2 ml/kg of 10% dextrose (NOT 50%). Enteral feeding within 24–48 h; PN by day 5–7 if enteral not possible. Avoid overfeeding.
+            <p className="text-muted-foreground text-sm mb-3">
+              Fluid prescribing in children is a recognised cause of avoidable death — from hyponatraemic
+              encephalopathy with hypotonic fluid, and from unrecognised hypovolaemia. Prescribe{" "}
+              <strong>resuscitation, deficit, maintenance and replacement of ongoing losses separately</strong>,
+              recording the total daily volume and reviewing electrolytes at least once daily
+              <InlineRef topicId="paediatric-icu" refLabel="NICE NG29" />.
             </p>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30 mb-3">
+              <p className="font-semibold text-foreground text-sm">1 · Maintenance — Holliday-Segar &ldquo;4-2-1&rdquo;</p>
+              <div className="overflow-x-auto mt-2">
+                <table className="w-full text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left py-2 text-foreground font-semibold">Weight band</th>
+                      <th className="text-left py-2 text-foreground font-semibold">Hourly</th>
+                      <th className="text-left py-2 text-foreground font-semibold">Per 24 h</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">First 10 kg</td><td>4 mL/kg/h</td><td>100 mL/kg/day</td></tr>
+                    <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Second 10 kg (10–20 kg)</td><td>+2 mL/kg/h</td><td>+50 mL/kg/day</td></tr>
+                    <tr><td className="py-2 font-medium text-foreground">Each kg above 20 kg</td><td>+1 mL/kg/h</td><td>+20 mL/kg/day</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm text-muted-foreground mt-2">
+                Worked examples: a <strong>6 kg</strong> infant = 24 mL/h (576 mL/day); a{" "}
+                <strong>15 kg</strong> child = 40 + 10 = 50 mL/h; a <strong>30 kg</strong> child = 40 + 20 + 10 =
+                70 mL/h. Cap maintenance at ~2 L/day (female) / 2.5 L/day (male), and note that the daily-volume
+                form (100/50/20 mL/kg) is the version used for prescribing on a fluid chart.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                <strong>Restrict in PICU:</strong> most ventilated, septic or brain-injured children are given{" "}
+                <strong>50–70% of full maintenance</strong> because SIADH, positive-pressure ventilation and
+                humidified circuits reduce free-water losses; a cumulative positive balance{" "}
+                <strong>&gt;10%</strong> of body weight is independently associated with mortality. Include all
+                infusion volumes, drug diluents and flushes in the total.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                <strong>Which fluid:</strong> an <strong>isotonic</strong> crystalloid — 0.9% sodium chloride or
+                balanced solution, with 5% glucose and potassium added as needed (e.g. 0.9% NaCl + 5% glucose
+                + 10–20 mmol/L KCl). <strong>Never use 0.18% or 0.45% saline or 4%/5% glucose as routine
+                maintenance</strong>; sick children have high ADH levels and hypotonic fluid causes fatal
+                hyponatraemic encephalopathy. Neonates (&lt;28 days) are the exception, needing 10% glucose-based
+                regimens with sodium titrated to age and measured losses.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30 mb-3">
+              <p className="font-semibold text-foreground text-sm">2 · Resuscitation and deficit</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Bolus:</strong> 10 mL/kg isotonic crystalloid over 5–10 min with reassessment after each
+                (20 mL/kg only for profound shock; <strong>5 mL/kg in DKA, trauma and neonates</strong>)
+                <InlineRef topicId="paediatric-icu" refLabel="APLS 2021" />. After 40–60 mL/kg without
+                improvement, start vasoactive support and re-examine for hepatomegaly, crepitations and rising
+                oxygen requirement — signs of fluid overload.
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Estimating deficit:</strong> % dehydration × weight(kg) × 10 = mL deficit. Clinically 5%
+                = dry mucous membranes and reduced urine output; 10% = sunken eyes/fontanelle, reduced skin
+                turgor, tachycardia, prolonged capillary refill; &gt;10% = shock. Replace the deficit{" "}
+                <strong>over 24 h alongside maintenance</strong> (over 48 h in DKA and in hypernatraemic
+                dehydration, keeping the sodium fall &lt;0.5 mmol/L/h). Acute weight loss is the most reliable
+                measure — 1 kg = 1 L.
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Blood:</strong> transfuse 10–15 mL/kg packed cells (raises Hb by ~2 g/dL); platelets
+                10–15 mL/kg; FFP 15–20 mL/kg; cryoprecipitate 5–10 mL/kg. Major haemorrhage: 1:1 red
+                cells:plasma in 10–20 mL/kg aliquots plus tranexamic acid 15 mg/kg (max 1 g) then 2 mg/kg/h.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30 mb-3">
+              <p className="font-semibold text-foreground text-sm">3 · Special situations</p>
+              <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground mt-1">
+                <li>
+                  <strong>DKA:</strong> 10 mL/kg bolus only if shocked, then deficit (assume 5% if pH ≥7.1, 10%
+                  if pH &lt;7.1) replaced <strong>over 48 h</strong> plus maintenance; insulin 0.05–0.1
+                  units/kg/h started 1–2 h after fluids; no bicarbonate. Cerebral oedema — headache,
+                  bradycardia with hypertension, falling GCS — is treated with{" "}
+                  <strong>hypertonic 2.7% saline 3 mL/kg or mannitol 0.5–1 g/kg</strong> and a reduction in
+                  fluid rate.
+                </li>
+                <li>
+                  <strong>Burns:</strong> resuscitate over 10% TBSA in children using{" "}
+                  <strong>2–4 mL/kg/%TBSA Hartmann&rsquo;s in 24 h (half in the first 8 h from time of
+                  injury)</strong>, and — unlike adults —{" "}
+                  <strong>give maintenance fluid containing glucose in addition</strong>, because of limited
+                  glycogen reserves. Titrate to urine output 1–2 mL/kg/h.
+                </li>
+                <li>
+                  <strong>Neonatal (day-of-life) regimen:</strong> 60 mL/kg/day on day 1, increasing by ~20–30
+                  mL/kg/day to 150 mL/kg/day by day 4–5, using 10% glucose; sodium is usually withheld for the
+                  first 24–48 h until the postnatal diuresis and weight loss occur.
+                </li>
+                <li>
+                  <strong>Post-operative / brain-injured:</strong> isotonic fluid only, target normonatraemia
+                  (aim Na⁺ 145–150 mmol/L in raised ICP), avoid glucose-containing fluid unless hypoglycaemic,
+                  and treat hyponatraemia with a seizure using 2.7% saline 3 mL/kg (max 150 mL) boluses.
+                </li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30 mb-3">
+              <p className="font-semibold text-foreground text-sm">4 · Electrolytes and glucose</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Daily requirements: <strong>Na⁺ 2–4</strong>, <strong>K⁺ 1–2</strong>,{" "}
+                <strong>Ca²⁺ 0.5</strong>, <strong>Mg²⁺ 0.2</strong> and{" "}
+                <strong>PO₄ 0.5–1 mmol/kg/day</strong> (neonates need more calcium and phosphate).
+                Correction doses: potassium 0.5 mmol/kg over 1–2 h (peripheral max 40 mmol/L; central for
+                anything stronger); calcium gluconate 10% 0.5 mL/kg (or calcium chloride 10% 0.2 mL/kg) for
+                hypocalcaemia or hyperkalaemia; magnesium sulfate 25–50 mg/kg (max 2 g) for torsade or severe
+                asthma.
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Hypoglycaemia (&lt;2.6 mmol/L, or &lt;3.5 in a sick neonate):</strong>{" "}
+                <strong>2 mL/kg of 10% glucose</strong> (= 200 mg/kg) — never 50% glucose, which is
+                hyperosmolar and sclerosant — then an infusion delivering a glucose delivery rate of{" "}
+                <strong>4–8 mg/kg/min</strong> and recheck at 15–30 min. Persistent or recurrent hypoglycaemia
+                needs a hypoglycaemia screen (insulin, cortisol, GH, ketones, lactate, ammonia, acylcarnitines)
+                taken <em>before</em> correction where possible.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">5 · Nutrition</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Start enteral feed within 24–48 h, gastrically, and do not stop for modest inotrope doses.
+                Energy needs are much higher per kg than adults and fall with age:{" "}
+                <strong>~100–120 kcal/kg/day (neonate/infant), 75–90 (1–3 y), 60–75 (4–6 y), 45–55 (7–10 y),
+                30–40 (adolescent)</strong>; in the acute PICU phase target roughly two-thirds of this to avoid
+                overfeeding. Protein <strong>1.5 g/kg/day (infants up to 2–3 g/kg/day; 1.5 g/kg/day in older
+                children, more with burns or CRRT)</strong>. Reserve PN for failure to establish enteral feeding
+                by day 5–7 (earlier in neonates and the malnourished), and give thiamine plus phosphate cover
+                where there is refeeding risk.
+              </p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
