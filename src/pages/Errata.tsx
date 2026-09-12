@@ -10,8 +10,8 @@ import { supabase } from "@/integrations/supabase/client";
  *
  * Shows every report an editor has explicitly marked `status='published'`,
  * along with the editor's `public_note` (the correction or context the
- * reader sees). RLS guarantees nothing else from the reports table reaches
- * the browser — see `inaccuracy_reports` policies in the migration.
+ * reader sees). The restricted `public_errata` view exposes only these safe
+ * public fields and applies the published-row access policy.
  *
  * Publishing accuracy corrections in the open is the post-publish feedback
  * loop's final step: it lets readers verify that reports are acted on, and
@@ -46,11 +46,10 @@ const Errata = () => {
     let cancelled = false;
     (async () => {
       const { data, error } = await supabase
-        .from("inaccuracy_reports")
+        .from("public_errata")
         .select(
           "id, topic_id, topic_title, topic_url, quoted_text, message, public_note, reviewed_at, created_at",
         )
-        .eq("status", "published")
         .order("reviewed_at", { ascending: false })
         .limit(200);
       if (cancelled) return;
