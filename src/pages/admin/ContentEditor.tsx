@@ -17,6 +17,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics } from "@/data/curriculum";
+import { topicPath } from "@/lib/study-plan";
 import type { ContentOverride, OverrideKind, OverrideStatus } from "@/hooks/useContentOverrides";
 import { Trash2, Eye, Save, Plus, ExternalLink, Copy } from "lucide-react";
 
@@ -247,7 +248,7 @@ export default function ContentEditor() {
         </div>
         {topic && (
           <Button asChild variant="outline">
-            <Link to={`/topic/${topic.id}`} target="_blank">
+            <Link to={topicPath(topic)} target="_blank">
               View page <ExternalLink className="ml-1 h-3.5 w-3.5" />
             </Link>
           </Button>
