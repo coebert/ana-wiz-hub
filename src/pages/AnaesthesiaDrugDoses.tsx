@@ -96,6 +96,18 @@ const AnaesthesiaDrugDoses = () => {
           </p>
         </div>
 
+        <p className="mt-5 text-sm text-muted-foreground">
+          Need the numbers for a specific patient?{" "}
+          <Link
+            to="/perioperative/calculator"
+            className="font-medium text-perioperative underline-offset-2 hover:underline"
+          >
+            Open the anaesthesia drug calculator
+          </Link>{" "}
+          to work out induction, maintenance and reversal doses by weight, with the volume to draw
+          up and infusion rates in mL/hour.
+        </p>
+
         <div className="relative mt-6 max-w-md">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
