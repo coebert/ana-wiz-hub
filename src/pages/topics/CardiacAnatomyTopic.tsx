@@ -75,6 +75,93 @@ const CardiacAnatomyTopic = () => {
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
+            <CollapsibleSubsection title="Cardiac Valves in Detail">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Valve anatomy underpins echocardiographic assessment, surgical repair and the localisation of conduction
+              tissue <InlineRef topicId="cardiac-anatomy" refLabel="BJA Educ 2005" />.
+            </p>
+            <div className="space-y-2">
+              {[
+                { v: "Mitral valve", d: "Two leaflets — a large anterior (aortic) leaflet continuous with the aortic root, and a shallow posterior (mural) leaflet, usually scalloped into three segments. Chordae insert onto two papillary muscles: the anterolateral muscle has a dual supply (LAD diagonal + circumflex), whereas the posteromedial muscle usually has a single supply (PDA), explaining its vulnerability to rupture and acute severe mitral regurgitation after inferior MI. Annular dilation or papillary tethering after infarction produces functional/ischaemic regurgitation with structurally normal leaflets." },
+                { v: "Aortic valve", d: "Three semilunar cusps — right coronary, left coronary and non-coronary — each with a dilated sinus of Valsalva above it. The right and left coronary arteries arise from their respective sinuses; the non-coronary sinus sits adjacent to the interatrial septum and the AV node. The free edge of each cusp carries a central fibrous thickening, the nodule of Arantius, which helps the cusps coapt." },
+                { v: "Tricuspid valve", d: "Three leaflets — anterior, posterior and septal. The septal leaflet attaches directly to the interventricular septum; the AV node lies at the apex of the triangle of Koch just above its annular attachment, so surgery or ablation in this region risks complete heart block. Larger orifice and thinner chordae than the mitral valve." },
+                { v: "Pulmonary valve", d: "Three semilunar cusps — anterior, right and left. It is the most anterior of the four valves, lying immediately behind the left third costal cartilage, which is why it is the valve most readily injured in penetrating anterior chest trauma and best heard at the left second interspace." },
+              ].map((x) => (
+                <div key={x.v} className="p-3 rounded border border-border">
+                  <p className="font-semibold text-foreground text-sm">{x.v}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{x.d}</p>
+                </div>
+              ))}
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
+            <CollapsibleSubsection title="Coronary Venous Drainage">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              About 60–70% of coronary venous return reaches the right atrium through the <strong>coronary sinus</strong>,
+              a short wide channel in the posterior atrioventricular groove that opens into the RA between the IVC orifice
+              and the tricuspid annulus, guarded by the rudimentary Thebesian valve. It is the route used for retrograde
+              cardioplegia and for placing the left-ventricular lead of a biventricular pacemaker
+              <InlineRef topicId="cardiac-anatomy" refLabel="Ellis & Feldman Ch.3" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Great cardiac vein</strong> — ascends with the LAD in the anterior interventricular groove, then turns into the left AV groove to become the coronary sinus.</li>
+              <li><strong>Middle cardiac vein</strong> — accompanies the posterior descending artery in the posterior interventricular groove.</li>
+              <li><strong>Small cardiac vein</strong> — runs with the acute (right) marginal artery along the inferior border of the right heart.</li>
+              <li><strong>Posterior vein of the left ventricle</strong> and the <strong>oblique vein of Marshall</strong> also drain into the sinus.</li>
+              <li><strong>Anterior cardiac veins</strong> — several small veins draining the RV free wall directly into the right atrium, bypassing the coronary sinus.</li>
+              <li><strong>Thebesian veins (venae cordis minimae)</strong> — minute vessels draining myocardium straight into the adjacent chambers; part of the small physiological shunt that contributes to normal A–a gradient.</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
+            <CollapsibleSubsection title="Fibrous Skeleton of the Heart">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              A dense collagenous framework at the atrioventricular junction that anchors the valves and myocardium,
+              resists dilation of the valve orifices during systole, and electrically insulates atrial from ventricular
+              muscle <InlineRef topicId="cardiac-anatomy" refLabel="Ellis & Feldman Ch.3" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Components</strong>: four fibrous rings (annuli) around the mitral, tricuspid, aortic and pulmonary orifices, joined by the right and left fibrous trigones and continuous with the membranous interventricular septum.</li>
+              <li><strong>Electrical insulation</strong>: the <strong>bundle of His</strong> is normally the only structure penetrating the skeleton, so it is the sole route of atrioventricular conduction — accessory pathways crossing the annulus (e.g. Kent bundle) cause pre-excitation.</li>
+              <li><strong>Clinical relevance</strong>: annuloplasty rings restore the annulus; annular calcification distorts conduction tissue; aortic–mitral continuity through the left trigone means aortic root abscess can involve the mitral valve and the His bundle.</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
+            <CollapsibleSubsection title="Surface Anatomy & Auscultation">
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Right border</strong>: gentle curve from the right 3rd to the right 6th costal cartilage, about 1–2 cm lateral to the sternal edge (right atrium).</li>
+              <li><strong>Inferior border</strong>: right 6th costal cartilage to the apex (mainly right ventricle).</li>
+              <li><strong>Left border</strong>: left 2nd costal cartilage to the apex (left ventricle and left atrial appendage).</li>
+              <li><strong>Apex</strong>: 5th left intercostal space, just medial to the mid-clavicular line.</li>
+            </ul>
+            <div className="mt-3 space-y-2">
+              {[
+                { s: "Aortic area", p: "2nd right intercostal space, parasternal — ejection systolic murmur of aortic stenosis radiating to the carotids." },
+                { s: "Pulmonary area", p: "2nd left intercostal space, parasternal — pulmonary flow murmurs, loud P2 in pulmonary hypertension." },
+                { s: "Tricuspid area", p: "4th/5th left intercostal space at the lower left sternal edge — tricuspid regurgitation, VSD." },
+                { s: "Mitral area", p: "5th left intercostal space at the mid-clavicular line (apex) — pansystolic murmur of mitral regurgitation radiating to the axilla." },
+              ].map((x) => (
+                <div key={x.s} className="p-3 rounded border border-border">
+                  <p className="font-semibold text-foreground text-sm">{x.s}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{x.p}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              Auscultation points lie downstream of each valve rather than over it, because sound travels with the
+              turbulent blood flow. The same landmarks guide pre-operative examination, ultrasound windows for focused
+              echocardiography and safe placement of chest drains and internal defibrillator pads
+              <InlineRef topicId="cardiac-anatomy" refLabel="Power & Kam Ch.3" />.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
             <CollapsibleSubsection title="Coronary Arteries">
             <div className="space-y-2">
               {[
