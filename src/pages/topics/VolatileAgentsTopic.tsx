@@ -91,7 +91,7 @@ const VolatileAgentsTopic = () => {
       sectionSources={{
         objectives: ["BJA Educ 2014", "Peck & Hill Ch.4", "Eger"],
         keyPoints: ["BJA Educ 2014", "Peck & Hill Ch.4", "Eger"],
-        workedExamples: ["AAGBI MH 2020", "Peck & Hill Ch.7"],
+        workedExamples: ["AAGBI MH 2020", "Peck & Hill Ch.7", "BJA Volatile Cardioprotection 2006", "BJA Open Environmental 2024"],
       }}
       coreConcepts={
         <>

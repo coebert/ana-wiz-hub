@@ -124,7 +124,7 @@ const StarlingForcesTopic = () => {
       sectionSources={{
         objectives: ["Levick & Michel 2010", "Woodcock & Woodcock 2012"],
         workedExamples: ["Levick & Michel 2010", "Woodcock & Woodcock 2012", "SSC 2021"],
-        keyPoints: ["Levick & Michel 2010", "Power & Kam Ch.6", "Woodcock & Woodcock 2012"],
+        keyPoints: ["Levick & Michel 2010", "Power & Kam Ch.6", "Woodcock & Woodcock 2012", "BJA Educ Fluid Balance 2017"],
       }}
       keyPoints={[
         { text: "Revised Starling model: glycocalyx is the barrier, not endothelial junctions — no venular reabsorption", cites: ["Power & Kam Ch.6"] },

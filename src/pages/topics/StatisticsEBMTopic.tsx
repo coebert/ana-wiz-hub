@@ -87,7 +87,7 @@ const StatisticsEBMTopic = () => {
           "Petrie & Sabin",
           "BJA Educ 2015",
         ],
-        workedExamples: ["BJA Educ 2015", "Petrie & Sabin"],
+        workedExamples: ["BJA Educ 2015", "Petrie & Sabin", "BJA Educ Measures of Association 2020", "BJA Educ Diagnostic Tests 2017", "BJA Educ Confidence Intervals 2019", "BJA Educ EBM 2021"],
       }}
       keyPoints={[
         { text: "A p-value is the probability of observing a result at least as extreme as the data, assuming the null hypothesis is true — NOT the probability the null is true", cites: ["BJA Educ 2016"] },

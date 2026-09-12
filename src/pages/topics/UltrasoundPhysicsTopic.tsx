@@ -75,7 +75,7 @@ const UltrasoundPhysicsTopic = () => {
       }}
       sectionSources={{
         workedExamples: ["BJA Educ 2017", "BJA Educ 2017", "Middleton Ch.13", "Cross & Plunkett Ch.17"],
-        keyPoints: ["BJA Educ 2017", "Middleton Ch.13", "Cross & Plunkett Ch.17"],
+        keyPoints: ["BJA Educ 2017", "Middleton Ch.13", "Cross & Plunkett Ch.17", "BJA Educ Ultrasound 2017"],
       }}
       keyPoints={[
         { text: "Piezoelectric crystals (PZT) convert electrical to mechanical energy (transmit) and vice versa (receive) — the basis of all ultrasound transducers", cites: ["BJA Educ 2017"] },

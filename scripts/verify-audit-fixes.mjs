@@ -114,6 +114,14 @@ const rows = psql(
    ORDER BY topic_id`,
 );
 
+const normaliseUrl = (u) =>
+  u
+    .trim()
+    .toLowerCase()
+    .replace(/^https?:\/\//, "")
+    .replace(/([^:])\/\/+/g, "$1/")
+    .replace(/\/$/, "");
+
 const failures = [];
 const warnings = [];
 let checked = 0;
@@ -164,7 +172,7 @@ for (const [id, topicId, section, summary, unverifiable, urlsJoined] of rows) {
   for (const url of urls) {
     let label = null;
     for (const [lbl, refUrl] of refMap) {
-      if (refUrl && refUrl === url) {
+      if (refUrl && normaliseUrl(refUrl) === normaliseUrl(url)) {
         label = lbl;
         break;
       }
