@@ -585,7 +585,7 @@ export const icuCaseBank: CaseBank = {
         { title: "Exam pitfall", content: "Do not treat a new infiltrate as pneumonia without considering atelectasis, oedema and ARDS, do not start broad therapy without cultures, and do not extend courses beyond seven days without a specific reason." },
       ],
       takeHome: "Confirm ventilator-associated pneumonia clinically and microbiologically, start ecology-guided empirical cover with adequate exposure, then de-escalate and stop at seven days while running the prevention bundle.",
-      sourceLinks: [s.vap, s.antimicrobial ?? s.ssc],
+      sourceLinks: [s.vap, s.ssc],
     },
   ],
 };
