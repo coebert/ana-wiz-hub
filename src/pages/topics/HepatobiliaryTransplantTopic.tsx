@@ -21,6 +21,8 @@ const tocItems = [
   { id: "resection", label: "Major liver resection", group: "Procedures" },
   { id: "transplant", label: "Liver transplantation", group: "Transplant" },
   { id: "cirrhosis", label: "The cirrhotic patient", group: "Physiology" },
+  { id: "meld", label: "MELD & MELD-Na scores", group: "Physiology" },
+  { id: "tipss", label: "Anaesthesia for TIPSS", group: "Procedures" },
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
 
