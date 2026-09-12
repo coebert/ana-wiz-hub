@@ -44,19 +44,25 @@ export function parseHalfLifeHours(text: string): NumericRange | undefined {
   const lower = text.toLowerCase();
   // Prefer the elimination/terminal phase when the text describes several phases.
   const anchors = ["elimination half-life", "terminal", "half-life", "half life"];
+  const units = [
+    { pattern: String.raw`days?\b`, factor: 24 },
+    { pattern: String.raw`h\b|hours?\b`, factor: 1 },
+    { pattern: String.raw`min\b|minutes?\b`, factor: 1 / 60 },
+  ];
+  const search = (text: string) => {
+    for (const { pattern, factor } of units) {
+      const r = matchRange(text, pattern);
+      if (r) return range(r.low * factor, r.high * factor);
+    }
+    return undefined;
+  };
   for (const anchor of anchors) {
     const idx = lower.indexOf(anchor);
     if (idx === -1) continue;
-    const window = text.slice(idx, idx + 160);
-    const hours = matchRange(window, String.raw`h\b|hours?\b`);
-    if (hours) return hours;
-    const mins = matchRange(window, String.raw`min\b|minutes?\b`);
-    if (mins) return range(mins.low / 60, mins.high / 60);
+    const found = search(text.slice(idx, idx + 160));
+    if (found) return found;
   }
-  const hours = matchRange(text, String.raw`h\b|hours?\b`);
-  if (hours) return hours;
-  const mins = matchRange(text, String.raw`min\b|minutes?\b`);
-  return mins ? range(mins.low / 60, mins.high / 60) : undefined;
+  return search(text);
 }
 
 export function buildPkTimeline(pk: DrugPharmacokinetics | undefined): PkTimelineModel | undefined {
