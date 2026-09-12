@@ -50,6 +50,8 @@ type Job = {
   current_topic: string | null;
   last_error: string | null;
   created_at: string;
+  updated_at: string;
+
   completed_at: string | null;
 };
 
@@ -463,6 +465,21 @@ const ContentAudit = () => {
     }
   };
 
+  const resumeAudit = async () => {
+    if (!job) return;
+    const headers = await getAdminFunctionHeaders();
+    const { error } = await supabase.functions.invoke("audit-topics", {
+      body: { action: "resume", job_id: job.id },
+      headers,
+    });
+    if (error) {
+      toast.error(error.message ?? "Could not resume the audit");
+      return;
+    }
+    toast.success("Audit resumed");
+    setTimeout(fetchLatestJob, 1500);
+  };
+
   const cancelAudit = async () => {
     if (!job) return;
     const headers = await getAdminFunctionHeaders();
@@ -473,6 +490,7 @@ const ContentAudit = () => {
     toast.message("Cancellation requested");
     setTimeout(fetchLatestJob, 1000);
   };
+
 
   const updateFindingStatus = async (
     id: string,
@@ -933,6 +951,17 @@ const ContentAudit = () => {
     return () => clearInterval(t);
   }, [running]);
 
+  // A sweep advances one topic at a time via an internal hand-off. If no
+  // progress has been written for a few minutes it has stalled — surface that
+  // instead of showing a spinner forever. A background check also resumes it
+  // automatically every few minutes.
+  const stalledMs =
+    running && job?.updated_at
+      ? Date.now() - new Date(job.updated_at).getTime()
+      : 0;
+  const stalled = stalledMs > 4 * 60 * 1000;
+
+
   const elapsedMs = job ? Date.now() - new Date(job.created_at).getTime() : 0;
 
   // Average per-topic duration from completed topic logs for this job.
@@ -1072,12 +1101,19 @@ const ContentAudit = () => {
                   ))}
                 </SelectContent>
               </Select>
+              {stalled && (
+                <Button variant="outline" onClick={resumeAudit}>
+                  <RefreshCw className="w-4 h-4 mr-1" />
+                  Resume audit
+                </Button>
+              )}
               {running && (
                 <Button variant="destructive" onClick={cancelAudit}>
                   <Square className="w-4 h-4 mr-1" />
                   Cancel topic audit
                 </Button>
               )}
+
             </div>
             <p className="text-xs text-muted-foreground">
               <strong>Run all checks</strong> kicks off the topic audit, the formulary verification,
@@ -1100,7 +1136,10 @@ const ContentAudit = () => {
                         }`}
                       />
                     )}
-                    <span className="font-medium capitalize">{job.status}</span>
+                    <span className="font-medium capitalize">
+                      {stalled ? "stalled" : job.status}
+                    </span>
+
                     <Badge variant="secondary" className="text-xs">
                       {job.trigger}
                     </Badge>

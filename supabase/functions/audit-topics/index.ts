@@ -1438,7 +1438,11 @@ async function auditTopic(
 // runtime's ~150s limit. Invocations must run strictly one-at-a-time for a
 // given job; scheduling the successor before the current topic completed led
 // to overlapping workers, false "failed" states, and racing job counters.
-const LEASE_MS = 10 * 60 * 1000;
+// Lease lifetime is deliberately just over one topic's hard timeout and is
+// renewed after every topic. A worker that dies mid-sweep therefore frees the
+// lease within ~5 minutes instead of blocking recovery for 10.
+const LEASE_MS = 5 * 60 * 1000;
+
 const BATCH_SIZE = 1;
 // Hard cap per topic. Stage budgets sum to ~70s in the happy path
 // (scrape 30 + search 10 + AI text 25 + diagram 0–15); the extra headroom
@@ -1448,26 +1452,91 @@ const BATCH_SIZE = 1;
 const PER_TOPIC_TIMEOUT_MS = 130_000;
 const STALE_RUNNING_LOG_MS = 5 * 60_000;
 
-async function reinvokeContinue(jobId: string) {
-  try {
-    await fetchJsonWithTimeout(
-      `${SUPABASE_URL}/functions/v1/audit-topics`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
-          "Content-Type": "application/json",
-          apikey: SUPABASE_SERVICE_ROLE_KEY,
-          "x-internal-token": SUPABASE_SERVICE_ROLE_KEY,
+// A stalled job = status running/pending, no live lease, and no progress
+// written for this long. The self-chain is the only thing that advances a
+// sweep, so a single dropped chain call (edge worker evicted, transient 5xx,
+// network blip) used to freeze the audit forever at e.g. 23/143. The
+// watchdog below re-chains those jobs.
+const STALL_AFTER_MS = 4 * 60 * 1000;
+
+async function reinvokeContinue(jobId: string): Promise<boolean> {
+  // The chain call is the single point of failure for the whole sweep, so
+  // retry it a few times before giving up.
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      await fetchJsonWithTimeout(
+        `${SUPABASE_URL}/functions/v1/audit-topics`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+            "Content-Type": "application/json",
+            apikey: SUPABASE_SERVICE_ROLE_KEY,
+            "x-internal-token": SUPABASE_SERVICE_ROLE_KEY,
+          },
+          body: JSON.stringify({ action: "continue", job_id: jobId }),
         },
-        body: JSON.stringify({ action: "continue", job_id: jobId }),
-      },
-      10_000,
-    );
-  } catch (e) {
-    console.error(`failed to re-invoke for job ${jobId}`, e);
+        15_000,
+      );
+      return true;
+    } catch (e) {
+      console.error(
+        `[audit-topics] chain attempt ${attempt}/3 failed for job ${jobId}`,
+        e,
+      );
+      if (attempt < 3) await new Promise((r) => setTimeout(r, attempt * 1500));
+    }
   }
+  // Leave the job running so the watchdog picks it up, but make the stall
+  // visible in the dashboard instead of looking silently frozen.
+  await supa
+    .from("topic_audit_jobs")
+    .update({
+      last_error:
+        "The audit could not schedule its next topic (3 attempts failed). It will be resumed automatically; you can also press Resume.",
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", jobId);
+  return false;
 }
+
+/**
+ * Re-chain any sweep that stopped making progress. Safe to call at any time:
+ * the per-job lease still guarantees one worker per job.
+ */
+async function resumeStalledJobs(): Promise<string[]> {
+  const cutoff = new Date(Date.now() - STALL_AFTER_MS).toISOString();
+  const { data: stalled } = await supa
+    .from("topic_audit_jobs")
+    .select("id, status, processed, total, updated_at")
+    .in("status", ["pending", "running"])
+    .lt("updated_at", cutoff)
+    .order("created_at", { ascending: false })
+    .limit(5);
+
+  const resumed: string[] = [];
+  for (const job of stalled ?? []) {
+    // Clear an expired lease so the resumed worker can acquire it.
+    const nowIso = new Date().toISOString();
+    await supa
+      .from("audit_job_state")
+      .update({ lease_owner: null, lease_expires_at: null, updated_at: nowIso })
+      .eq("id", "content-audit")
+      .lt("lease_expires_at", nowIso);
+
+    console.warn(
+      `[audit-topics] resuming stalled job ${job.id} (${job.processed}/${job.total}, idle since ${job.updated_at})`,
+    );
+    // Bump updated_at so a second watchdog tick doesn't double-resume.
+    await supa
+      .from("topic_audit_jobs")
+      .update({ updated_at: nowIso })
+      .eq("id", job.id);
+    if (await reinvokeContinue(job.id)) resumed.push(job.id);
+  }
+  return resumed;
+}
+
 
 
 function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
@@ -1533,6 +1602,16 @@ async function runBatch(jobId: string) {
     console.warn("[audit-topics] another audit batch holds the lease — exiting");
     return;
   }
+  const renewLease = async () => {
+    await supa
+      .from("audit_job_state")
+      .update({
+        lease_expires_at: new Date(Date.now() + LEASE_MS).toISOString(),
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", "content-audit")
+      .eq("lease_owner", leaseOwner);
+  };
   const releaseLease = async () => {
     await supa
       .from("audit_job_state")
@@ -1540,6 +1619,7 @@ async function runBatch(jobId: string) {
       .eq("id", "content-audit")
       .eq("lease_owner", leaseOwner);
   };
+
 
   try {
   if (
@@ -1808,6 +1888,8 @@ async function runBatch(jobId: string) {
         options: { ...opts, cursor },
         updated_at: new Date().toISOString(),
       }).eq("id", jobId);
+      await renewLease();
+
 
       // Abort the entire job if the upstream scraper is clearly down — there
       // is no point burning through 141 topics that all return zero content.
@@ -2016,8 +2098,78 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Watchdog: re-chain any sweep that stopped progressing. Called by cron
+    // every few minutes and by the dashboard's Resume button.
+    if (action === "watchdog" || action === "resume") {
+      if (body.job_id) {
+        const nowIso = new Date().toISOString();
+        await supa
+          .from("audit_job_state")
+          .update({ lease_owner: null, lease_expires_at: null, updated_at: nowIso })
+          .eq("id", "content-audit")
+          .lt("lease_expires_at", nowIso);
+        await supa
+          .from("topic_audit_jobs")
+          .update({ last_error: null, updated_at: nowIso })
+          .eq("id", body.job_id);
+        // @ts-ignore EdgeRuntime global
+        EdgeRuntime.waitUntil(runBatch(body.job_id));
+        return new Response(
+          JSON.stringify({ ok: true, resumed: [body.job_id] }),
+          { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+      const resumed = await resumeStalledJobs();
+      return new Response(JSON.stringify({ ok: true, resumed }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     // start a new sweep
     let topics: TopicRef[] | undefined = body.topics;
+
+    // Never leave an in-flight sweep behind: if one is already open, resume it
+    // rather than starting a competing job that the global lease would block.
+    {
+      const { data: openJob } = await supa
+        .from("topic_audit_jobs")
+        .select("id, status, processed, total, updated_at")
+        .in("status", ["pending", "running"])
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      if (openJob) {
+        const idleMs = Date.now() - new Date(openJob.updated_at).getTime();
+        if (idleMs > STALL_AFTER_MS) {
+          const nowIso = new Date().toISOString();
+          await supa
+            .from("audit_job_state")
+            .update({ lease_owner: null, lease_expires_at: null, updated_at: nowIso })
+            .eq("id", "content-audit")
+            .lt("lease_expires_at", nowIso);
+          await supa
+            .from("topic_audit_jobs")
+            .update({ last_error: null, updated_at: nowIso })
+            .eq("id", openJob.id);
+          // @ts-ignore EdgeRuntime global
+          EdgeRuntime.waitUntil(runBatch(openJob.id));
+          return new Response(
+            JSON.stringify({ ok: true, job_id: openJob.id, resumed: true }),
+            { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+          );
+        }
+        return new Response(
+          JSON.stringify({
+            ok: true,
+            job_id: openJob.id,
+            already_running: true,
+            message: `An audit is already running (${openJob.processed}/${openJob.total}).`,
+          }),
+          { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+    }
+
 
     // Scheduled / no-payload path: discover topics from the live sitemaps
     if (!topics || topics.length === 0) {
