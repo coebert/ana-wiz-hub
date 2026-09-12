@@ -4,16 +4,21 @@ import { Helmet } from "react-helmet-async";
 import {
   ArrowLeft,
   Baby,
-  BookOpenCheck,
+  Calculator,
   Droplets,
   ListOrdered,
   Pill,
   TriangleAlert,
+  BookOpenCheck,
 } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   caseBankHref,
+  calculableInfusions,
+  calculatorHref,
   infusionHref,
   paedDrugDoseHref,
   paediatricIcuFlows,
@@ -23,6 +28,11 @@ const PaediatricIcuFlows = () => {
   const [activeFlow, setActiveFlow] = useState(paediatricIcuFlows[0].id);
   const flow = paediatricIcuFlows.find((f) => f.id === activeFlow) ?? paediatricIcuFlows[0];
   const neonatal = flow.id === "neonatal-resus";
+  const [weight, setWeight] = useState("");
+  const parsedWeight = parseFloat(weight);
+  const weightValue =
+    Number.isFinite(parsedWeight) && parsedWeight > 0 ? parsedWeight : neonatal ? 3.5 : 20;
+
 
   return (
     <main className="min-h-screen bg-background">
@@ -81,6 +91,32 @@ const PaediatricIcuFlows = () => {
             </Button>
           ))}
         </nav>
+
+        <div className="mt-4 flex flex-wrap items-end gap-3 rounded-lg border border-icu/25 bg-icu/5 p-3">
+          <div className="w-full max-w-[180px]">
+            <Label htmlFor="paed-flow-weight" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Child's weight (kg)
+            </Label>
+            <Input
+              id="paed-flow-weight"
+              type="number"
+              inputMode="decimal"
+              min={0.5}
+              step={0.5}
+              value={weight}
+              placeholder={String(neonatal ? 3.5 : 20)}
+              onChange={(e) => setWeight(e.target.value)}
+              className="mt-1"
+            />
+          </div>
+          <p className="flex-1 text-xs text-muted-foreground">
+            Used by the “Calculate infusion rate” links in each step — they open the ICU calculator
+            with the drug and this weight already filled in (default{" "}
+            {neonatal ? "3.5 kg neonate" : "20 kg child"}).
+          </p>
+        </div>
+
+
 
         <article className="mt-8">
           <h2 className="text-2xl font-semibold tracking-tight">{flow.title}</h2>
@@ -157,6 +193,31 @@ const PaediatricIcuFlows = () => {
                     </div>
                   </div>
                 )}
+
+                {(() => {
+                  const calcDrugs = calculableInfusions([step.infusions, step.drugs]);
+                  if (calcDrugs.length === 0) return null;
+                  return (
+                    <div className="mt-4">
+                      <h4 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                        <Calculator className="h-3.5 w-3.5" aria-hidden /> Calculate infusion rate at{" "}
+                        {weightValue} kg
+                      </h4>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {calcDrugs.map((d) => (
+                          <Link
+                            key={d}
+                            to={calculatorHref(d, weightValue)}
+                            className="inline-flex items-center gap-1.5 rounded-full border border-icu/40 bg-icu/5 px-3 py-1 text-xs font-medium text-icu transition-colors hover:bg-icu/10"
+                          >
+                            <Calculator className="h-3 w-3" aria-hidden /> Calculate {d} rate
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
+
 
                 {step.pitfall && (
                   <p className="mt-4 rounded-lg border border-border bg-muted/40 p-3 text-sm text-muted-foreground">
