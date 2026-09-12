@@ -367,7 +367,24 @@ const AcutePancreatitisTopic = () => {
               },
               {
                 topic: "H — Specific therapies",
-                detail: "ERCP within 24–72h if acute cholangitis or persistent biliary obstruction (NOT routinely for all gallstone pancreatitis). Cholecystectomy on same admission for mild gallstone pancreatitis (reduces recurrence). For HTG-induced: insulin infusion ± plasmapheresis if persistent TG &gt;11 mmol/L with organ failure.",
+                detail: (
+                  <>
+                    ERCP within 24–72h if acute cholangitis or persistent biliary obstruction (NOT routinely for all
+                    gallstone pancreatitis). Cholecystectomy on same admission for mild gallstone pancreatitis
+                    (reduces recurrence).
+                    <br /><br />
+                    <strong>Hypertriglyceridaemia-induced pancreatitis</strong> — diagnosed when triglycerides
+                    &gt;11.3 mmol/L (1000 mg/dL); the goal is rapid reduction to &lt;5.6 mmol/L (500 mg/dL).{" "}
+                    <strong>Insulin infusion</strong> activates lipoprotein lipase and is first-line: fixed rate
+                    ~0.1 units/kg/h with concurrent 5–10% glucose to maintain euglycaemia, with hourly glucose and
+                    potassium monitoring. <strong>Plasmapheresis/apheresis</strong> physically removes chylomicrons
+                    and should be considered for organ failure, extreme levels &gt;22.6 mmol/L, or failure to
+                    respond to insulin. <strong>Supportive measures</strong>: no oral fat, strict glycaemic control,
+                    stop offending drugs (oestrogens, thiazides, alcohol, and propofol as an ongoing lipid load), and
+                    start fibrate and omega-3 therapy with lipid-clinic follow-up on recovery.{" "}
+                    <InlineRef topicId="acute-pancreatitis" refLabel="IAP/APA 2013" />
+                  </>
+                ),
               },
             ].map((s) => (
               <div key={s.topic} className="p-4 rounded-lg border border-border">
