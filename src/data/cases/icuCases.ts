@@ -743,7 +743,7 @@ export const icuCaseBank: CaseBank = {
       category: "Infection & immunity",
       difficulty: "Advanced",
       summary: "Sepsis-induced immunoparalysis, HLA-DR and opportunistic infection late in critical illness.",
-      topicIds: ["immunology-intensivists", "prognostication-ethics-icu", "sepsis", "vap-hap"],
+      topicIds: ["immunology-intensivists", "prognostication-ethics-icu", "sepsis", "infectious-disease-icu"],
       patient: "A patient ventilated for three weeks after severe sepsis develops a new fever, rising inflammatory markers and Candida growing from two separate blood cultures, having already been treated for two prior bacterial infections.",
       presentation: "Lymphocyte counts have been persistently low throughout the admission, and the patient remains delirious and profoundly weak with minimal progress in physiotherapy.",
       stages: [
