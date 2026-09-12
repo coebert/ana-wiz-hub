@@ -414,7 +414,7 @@ const PainMedicineTopic = () => {
         <div id="opioid-stewardship" className="scroll-mt-24">
         <CollapsibleSubsection title="Peri-operative Opioid Stewardship &amp; the Patient on Long-Term Opioids">
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Surgery is a common gateway to long-term opioid use: 3–7% of previously opioid-naive patients are still taking opioids months after an operation. Stewardship of perioperative opioids starts with judicious prescribing; before surgery it is important to assess risk factors for continued opioid use and to identify patients with pre-existing chronic pain, some of whom are already taking opioids, and to formulate a multidisciplinary perioperative care plan. For opioid-naive patients, no more than <strong>7 days</strong> of opioid prescription is recommended <InlineRef topicId="pain-medicine" refLabel="BJA 2021 Surgery &amp; Opioids" />.
+            Surgery is a common gateway to long-term opioid use: 3–7% of previously opioid-naive patients are still taking opioids months after an operation. Stewardship of perioperative opioids starts with judicious prescribing; before surgery it is important to assess risk factors for continued opioid use and to identify patients with pre-existing chronic pain, some of whom are already taking opioids, and to formulate a multidisciplinary perioperative care plan. For opioid-naive patients, no more than <strong>7 days</strong> of opioid prescription is recommended <InlineRef topicId="pain-medicine" refLabel={"BJA 2021 Surgery & Opioids"} />.
           </p>
           <div className="grid sm:grid-cols-2 gap-3 mb-3">
             <div className="p-4 rounded-lg border border-border">
