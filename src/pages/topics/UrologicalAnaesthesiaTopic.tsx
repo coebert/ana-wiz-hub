@@ -141,7 +141,24 @@ const UrologicalAnaesthesiaTopic = () => {
                 Spinal anaesthesia for TURP allows early detection of TURP syndrome — the awake patient develops confusion, restlessness, and nausea. Under GA these signs are masked. Spinal block to T10 is sufficient.
               </p>
             </div>
+            <h3 className="font-semibold text-foreground text-sm mt-4 mb-2">Correcting the hyponatraemia — practical regimen</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li><strong>Symptomatic (seizures, obtundation, pulmonary oedema)</strong>: give 3% sodium chloride 100 mL (or 2 mL/kg) IV over 10 minutes, repeated up to three times until symptoms stop, aiming to raise serum Na⁺ by 3–5 mmol/L acutely — this is enough to reverse cerebral oedema<InlineRef topicId="urological-anaesthesia" refLabel="Hyponatraemia Guideline 2014" /></li>
+              <li><strong>Preparing 3% saline if unavailable ready-made</strong>: add 30 mL of 30% sodium chloride (or 60 mL of 15%) to 470 mL of 0.9% saline; label clearly, give through a reliable large vein and ideally by infusion pump with a doctor present</li>
+              <li><strong>Correction limit</strong>: total rise must not exceed 8–10 mmol/L in the first 24 hours (and 8 mmol/L per 24 h thereafter) to avoid osmotic demyelination; stop hypertonic saline once symptoms resolve and Na⁺ is around 125–130 mmol/L</li>
+              <li><strong>Fluid handling</strong>: stop all hypotonic fluid, restrict free water, and give furosemide only where there is fluid overload or pulmonary oedema — furosemide alone in the euvolaemic patient worsens sodium loss</li>
+              <li><strong>Monitoring</strong>: hourly serum sodium and U&amp;E until stable, hourly GCS and neurological observations, continuous ECG, and invasive arterial monitoring with HDU/ICU care if there is cardiovascular instability, seizures or a Na⁺ &lt;120 mmol/L</li>
+            </ul>
+            <h3 className="font-semibold text-foreground text-sm mt-4 mb-2">Glycine toxicity and hyperammonaemia</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li><strong>Metabolism</strong>: glycine is deaminated in the liver by glycine oxidase to glyoxylic acid and ammonia; oxalate is a further metabolite (a cause of postoperative renal injury)<InlineRef topicId="urological-anaesthesia" refLabel="CEACCP TURP 2009" /></li>
+              <li><strong>Clinical effects</strong>: glycine is an inhibitory retinal and spinal neurotransmitter — transient blindness and dilated unreactive pupils lasting hours to 48 h; ammonia accumulation causes encephalopathy with nausea, vomiting, agitation then coma, and is markedly worse in patients with pre-existing liver disease or reduced arginine availability</li>
+              <li><strong>Investigation</strong>: measure plasma ammonia (levels &gt;150 µmol/L correlate with encephalopathy), serum osmolality and osmolar gap, glucose, and liver function<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURP 2014" /></li>
+              <li><strong>Treatment</strong>: supportive — stop absorption (abandon resection), secure the airway if GCS falls, correct sodium as above; for significant hyperammonaemia consider L-arginine, sodium benzoate or sodium phenylacetate, and haemodialysis/haemofiltration if ammonia is very high or the patient has liver failure</li>
+              <li><strong>Prevention</strong>: limit resection to 60 minutes and 60 g of tissue, keep irrigation bag height &lt;60 cm, use bipolar resection with normal saline irrigation in high-risk patients, and prefer spinal anaesthesia so early neurological signs are visible</li>
+            </ul>
             <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+
               <TURPSyndromeDiagram />
             </div>
             </CollapsibleSubsection>
