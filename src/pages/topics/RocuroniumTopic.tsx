@@ -9,6 +9,7 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TOFPatternDiagram } from "@/components/diagrams/pharmacology/TOFPatternDiagram";
 import { NMBATimelineDiagram } from "@/components/diagrams/pharmacology/NMBATimelineDiagram";
 import SugammadexDiagram from "@/components/diagrams/pharmacology/SugammadexDiagram";
+import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
 
 const workedExamples: WorkedExample[] = [
   {
@@ -348,6 +349,7 @@ const RocuroniumTopic = () => {
               ]}
             />
           </div>
+        <AnaesthesiaDosingCallout focus="rocuronium dosing and sugammadex reversal" />
         </ExamSection>
       }
     />

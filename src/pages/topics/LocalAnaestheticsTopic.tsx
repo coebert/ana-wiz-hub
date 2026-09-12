@@ -10,6 +10,7 @@ import LocalAnaestheticStructures from "@/components/diagrams/pharmacology/Local
 import PropofolLidocaineMechanismDiagram from "@/components/diagrams/pharmacology/PropofolLidocaineMechanismDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
 
 const localAnaestheticsFaqs: Array<[string, string]> = [
   [
@@ -386,6 +387,7 @@ const LocalAnaestheticsTopic = () => {
         </div>
       </ExamSection>
           <TopicFaqs faqs={localAnaestheticsFaqs} />
+          <AnaesthesiaDosingCallout focus="local anaesthetic maximum doses" />
         </>
       }
     />

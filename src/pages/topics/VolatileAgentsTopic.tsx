@@ -10,6 +10,7 @@ import SecondGasEffectDiagram from "@/components/diagrams/pharmacology/SecondGas
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
 
 const volatileAgentsFaqs: Array<[string, string]> = [
   [
@@ -467,6 +468,7 @@ const VolatileAgentsTopic = () => {
         </div>
       </ExamSection>
           <TopicFaqs faqs={volatileAgentsFaqs} />
+          <AnaesthesiaDosingCallout focus="inhalational maintenance agents" />
         </>
       }
     />

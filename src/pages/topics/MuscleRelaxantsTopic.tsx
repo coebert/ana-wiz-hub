@@ -10,6 +10,7 @@ import { NMBATimelineDiagram } from "@/components/diagrams/pharmacology/NMBATime
 import SugammadexDiagram from "@/components/diagrams/pharmacology/SugammadexDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
 
 const workedExamples: WorkedExample[] = [
   {
@@ -623,6 +624,7 @@ const MuscleRelaxantsTopic = () => {
             ]}
           />
         </div>
+      <AnaesthesiaDosingCallout focus="neuromuscular blockers and their reversal" />
       </ExamSection>
       }
     />

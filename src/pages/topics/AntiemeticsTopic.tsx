@@ -9,6 +9,7 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import VomitingControlDiagram from "@/components/diagrams/pharmacology/VomitingControlDiagram";
 import { InlineRef } from "@/components/references/InlineRef";
+import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
 
 const antiemeticsFaqs: Array<[string, string]> = [
   [
@@ -163,6 +164,7 @@ const AntiemeticsTopic = () => {
           />
           <TopicFaqs faqs={antiemeticsFaqs} />
 
+          <AnaesthesiaDosingCallout focus="PONV prophylaxis and treatment" />
         </>
       }
     />

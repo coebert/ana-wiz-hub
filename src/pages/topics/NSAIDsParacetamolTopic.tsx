@@ -9,6 +9,7 @@ import { Exam } from "@/data/curriculum";
 import { NSAIDMechanismDiagram } from "@/components/diagrams/pharmacology/NSAIDMechanismDiagram";
 import { AAShuntAnimation } from "@/components/diagrams/pharmacology/AAShuntAnimation";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
 
 const nsaidsParacetamolFaqs: Array<[string, string]> = [
   [
@@ -213,6 +214,7 @@ const NSAIDsParacetamolTopic = () => {
           />
           <TopicFaqs faqs={nsaidsParacetamolFaqs} />
 
+          <AnaesthesiaDosingCallout focus="non-opioid multimodal analgesia" />
         </>
       }
     />
