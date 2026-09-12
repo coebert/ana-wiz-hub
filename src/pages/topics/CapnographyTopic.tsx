@@ -14,11 +14,11 @@ const capnographyFaqs: Array<[string, string]> = [
   ],
   [
     "What are the four phases of a normal capnography waveform?",
-    "Phase I (inspiratory baseline, CO₂-free gas from the airway dead space, value 0). Phase II (expiratory upstroke, rapid rise as alveolar gas reaches the sensor). Phase III (alveolar plateau, gently rising; the value at its end is ETCO₂). Phase 0 (inspiratory downstroke back to baseline). The alpha angle (II–III) widens with airflow obstruction (shark-fin); the beta angle (III–0) widens with rebreathing.",
+    "Phase I (expiratory baseline, CO₂-free gas from the apparatus and anatomical dead space, value 0). Phase II (expiratory upstroke, rapid rise as alveolar gas reaches the sensor). Phase III (alveolar plateau, gently rising; the value at its end is ETCO₂). Phase 0 (inspiratory downstroke back to baseline). The alpha angle (II–III) is normally ~100–110° and widens with airflow obstruction (shark-fin); the beta angle (III–0) is ~90° and widens with rebreathing.",
   ],
   [
     "What does a shark-fin capnography waveform mean?",
-    "A shark-fin (sloped) trace reflects prolonged, uneven alveolar emptying — the alpha angle becomes obtuse and the plateau slopes upward. It indicates expiratory airflow obstruction: acute severe asthma, COPD exacerbation, anaphylaxis, kinked tracheal tube or partial circuit obstruction. Treat the cause; do not increase ventilator rate before addressing obstruction or you will generate auto-PEEP.",
+    "A shark-fin (sloped) trace reflects prolonged, uneven alveolar emptying — the alpha angle becomes obtuse and the plateau slopes upward. It indicates expiratory airflow obstruction: acute severe asthma, COPD exacerbation, anaphylaxis, kinked tracheal tube or partial circuit obstruction. Anaphylaxis is a key perioperative cause: NAP6 found bronchospasm and reduced or absent end-tidal CO₂ among the commonest features, so anaphylaxis can present either as a shark-fin obstructive trace or as sudden loss of the trace with cardiovascular collapse and PEA arrest. Treat the cause; do not increase ventilator rate before addressing obstruction or you will generate auto-PEEP.",
   ],
   [
     "What is a curare cleft on capnography?",
@@ -86,7 +86,7 @@ const workedExamples: WorkedExample[] = [
         haemodynamically and consider TOE / CT once stabilised.
       </>
     ),
-    cites: ["BJA Educ 2017 Capnography", "AAGBI Monitoring 2015"],
+    cites: ["BJA Educ 2017 Capnography", "Association of Anaesthetists 2021"],
   },
   {
     title: "Confirming tracheal intubation in an obese patient",
@@ -104,7 +104,7 @@ const workedExamples: WorkedExample[] = [
         CO₂ (carbonated drinks, mask ventilation pre-induction). Sustained
         EtCO₂ of a normal shape and value across <strong>≥ 6 consecutive
         breaths</strong> is the gold standard for tracheal placement
-        (NAP4, DAS 2025). A flat or vanishing trace is presumed
+        (NAP4; PUMA consensus 2022; DAS 2025). A flat or vanishing trace is presumed
         oesophageal until proven otherwise.
       </>
     ),
@@ -117,7 +117,7 @@ const workedExamples: WorkedExample[] = [
         confirmation.
       </>
     ),
-    cites: ["NAP4", "DAS 2025"],
+    cites: ["NAP4", "PUMA 2022", "DAS 2025"],
   },
   {
     title: "EtCO₂ as a CPR feedback monitor",
@@ -191,7 +191,7 @@ const keyPoints = [
     cites: ["Bhavani-Shankar & Philip 2000"],
   },
   {
-    text: "Capnography is mandatory monitoring for all general anaesthesia, sedation requiring airway support, advanced airways including LMA, and intubated transfers (Association of Anaesthetists 2021; NAP4).",
+    text: "Capnography is mandatory monitoring for all general anaesthesia, sedation requiring airway support, advanced airways including LMA, and intubated transfers. The Association of Anaesthetists 2021 standards reinforce that waveform capnography is required during sedation and during regional anaesthesia with sedation, not general anaesthesia alone (Association of Anaesthetists 2021; NAP4).",
     cites: ["Association of Anaesthetists 2021", "NAP4"],
   },
   {
@@ -220,7 +220,7 @@ const CapnographyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
-        objectives: ["BJA Educ 2017 Capnography", "AAGBI Monitoring 2015"],
+        objectives: ["BJA Educ 2017 Capnography", "Association of Anaesthetists 2021"],
         keyPoints: ["BJA Educ 2017 Capnography", "Bhavani-Shankar & Philip 2000", "Al-Shaikh & Stacey Ch.10-11"],
         workedExamples: ["BJA Educ 2017 Capnography", "NAP4", "RCUK 2021 ALS"],
       }}
@@ -344,6 +344,46 @@ const CapnographyTopic = () => {
                 <li><strong>Hypotension and arrest</strong> — the gradient becomes infinite (EtCO₂ → 0 with preserved PaCO₂).</li>
               </ul>
             </div>
+
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+                Capnography in perioperative anaphylaxis
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Anaphylaxis has a dual capnographic presentation. Where mediator release causes
+                bronchospasm, the trace becomes obstructive — a sloping phase II with no true plateau
+                (shark-fin) and an obtuse α-angle. Where the dominant problem is circulatory, EtCO₂
+                falls abruptly or disappears as pulmonary blood flow collapses, culminating in PEA
+                arrest with a flat trace despite a correctly placed tube. NAP6 found hypotension,
+                bronchospasm and reduced or absent EtCO₂ to be among the commonest presenting features
+                of perioperative anaphylaxis <InlineRef topicId="capnography" refLabel="NAP6 2018" />.
+              </p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                <li>Shark-fin trace after induction or on giving antibiotic/neuromuscular blocker — think anaphylaxis before "light" bronchospasm.</li>
+                <li>Sudden EtCO₂ fall with rising airway pressure and a vanishing pulse — treat as anaphylactic cardiovascular collapse: adrenaline, fluid, stop the trigger.</li>
+                <li>Recovery of the plateau shape and rising EtCO₂ are useful bedside markers of response to adrenaline.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+                Capnography in the ICU intubation bundle
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Waveform capnography is a core component of safe intubation protocols in critical care.
+                A prospective multicentre study of an intubation management bundle reduced
+                life-threatening complications from 34% to 21% and other complications from 21% to 9%
+                <InlineRef topicId="capnography" refLabel="Jaber 2010 Intubation Bundle" />.
+              </p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                <li><strong>Pre-intubation</strong> — two operators, fluid loading unless contraindicated, prepared vasopressor, planned induction and sedation, pre-oxygenation with NIV or high-flow oxygen.</li>
+                <li><strong>During</strong> — rapid sequence induction with cricoid pressure where indicated, and capnography connected before the first attempt.</li>
+                <li><strong>Post-intubation</strong> — immediate confirmation of tracheal placement by sustained waveform capnography, lung-protective ventilation, and vasopressor titration to target pressure.</li>
+                <li>NAP4 showed airway events in ICU carry a disproportionate share of death and brain damage, frequently where capnography was absent or misinterpreted <InlineRef topicId="capnography" refLabel="NAP4" />. Continuous capnography is therefore mandatory for every intubated ICU patient, including during transfer.</li>
+              </ul>
+            </div>
+
+
 
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">

@@ -41,13 +41,13 @@ const workedExamples: WorkedExample[] = [
     working:
       "τ = Volume / Flow = 2.5 L / 8 L·min⁻¹ = 0.31 min ≈ 19 s.\nWash-in is a negative exponential rise: 1 τ → 63%, 3 τ → 95%, 5 τ → 99%.\nTime to ~95% ≈ 3 τ = 3 × 19 s ≈ 57 s.",
     answer:
-      "End-tidal O₂ reaches ~95% after roughly one minute (3 time constants). This underpins the Association of Anaesthetists' recommendation (Recommendations for standards of monitoring during anaesthesia and recovery 2021) for ≥3 minutes of tidal-volume pre-oxygenation, which provides a comfortable safety margin to ≥99% (5τ).",
+      "End-tidal O₂ reaches ~95% after roughly one minute (3 time constants). The Association of Anaesthetists recommends pre-oxygenation for at least 3 minutes of tidal breathing, or until end-tidal O₂ exceeds 90% (Recommendations for standards of monitoring during anaesthesia and recovery 2021). The guideline itself is not framed in terms of time constants, but this calculation illustrates the safety margin it provides: 3 minutes extends well beyond the ~1 minute (3τ) needed for 95% wash-in, so the process is effectively complete (>5τ).",
     cites: ["Assoc Anaesth 2021", "Peck & Hill Appendix"],
   },
   {
     title: "Why a single time constant fails for remifentanil",
     scenario:
-      "A trainee tries to model remifentanil's offset by taking its context-sensitive half-time (CSHT) of ~3 min after a 4-hour infusion (Ultiva SmPC) and converting it to a single time constant. Critique this approach and contrast it with a true single-compartment example.",
+      "A trainee tries to model remifentanil's offset by taking its context-sensitive half-time (CSHT), which is known to be short — around 3–4 minutes even after prolonged infusion (Ultiva SmPC) — and converting it to a single time constant. Critique this approach and contrast it with a true single-compartment example.",
     working:
       "Naïve calculation: τ = t½ / 0.693 = 3 / 0.693 ≈ 4.3 min, predicting ~95% decline at 3τ ≈ 13 min.\nWhy this is wrong: remifentanil is described by a 3-compartment PK model. Plasma concentration after stopping an infusion is a sum of exponentials (rapid, slow and terminal phases), not a single first-order decay. CSHT was defined precisely because no single half-life or τ adequately describes a multi-compartment drug — it is the time for plasma concentration to fall by 50% after a continuous infusion of a given duration, and it varies with infusion length.\nA true single-compartment exponential — and therefore a setting where one τ is appropriate — is nitrogen wash-out during pre-oxygenation (τ = FRC / alveolar ventilation), or the discharge of a defibrillator capacitor (τ = RC).",
     answer:
@@ -152,7 +152,7 @@ const MathConceptsTopic = () => {
           <ExamSection id="time-constants" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Time Constants (τ)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              The time constant τ is central to understanding exponential processes. After one time constant, 63% of the change has occurred. After three time constants, 95%. After five, 99.3% — effectively complete.
+              The time constant τ is central to understanding exponential processes. After one time constant, 63% of the change has occurred. After three time constants, 95%. After five, &gt;99% — effectively complete (the exact figure is 99.3%).
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
@@ -221,7 +221,7 @@ const MathConceptsTopic = () => {
             accent="physics"
             pitfalls={[
               "A semi-log plot turns a single exponential decay into a straight line — used to derive elimination rate constants.",
-              "Half-life (t½) = 0.693/k; time constant (τ) = 1/k. Three time constants ≈ 95% complete, five ≈ 99.3%.",
+              "Half-life (t½) = 0.693/k; time constant (τ) = 1/k. Three time constants ≈ 95% complete, five ≈ >99%.",
               "Sigmoid (Hill) curves describe cooperative binding (O₂–Hb) and dose-response; the Hill coefficient quantifies cooperativity.",
               "Log scales compress wide dynamic ranges (pH, decibels, drug potency) — a one-unit change is a tenfold change.",
               "Exponential wash-in and wash-out share the same time constant for first-order processes.",
