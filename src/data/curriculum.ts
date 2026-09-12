@@ -140,6 +140,7 @@ export const clinicalTopics: Topic[] = [
   // Major sub-specialties
   { id: "obstetric-anaesthesia", title: "Obstetric Anaesthesia", description: "Caesarean section, epidural labour analgesia, high-risk obstetrics, PPH", section: "clinical", examTags: ["final"], available: true },
   { id: "paediatric-anaesthesia", title: "Paediatric Anaesthesia", description: "Neonatal physiology, paediatric pharmacology, common procedures", section: "clinical", examTags: ["final"], available: true },
+  { id: "paediatric-core", title: "Paediatric Core Essentials", description: "Age-specific physiology, maintenance and resuscitation fluids, weight-based dosing and pain scoring", section: "clinical", examTags: ["primary", "final"], available: true },
   { id: "neuroanaesthesia", title: "Neuroanaesthesia", description: "ICP management, posterior fossa surgery, neuromonitoring, awakening", section: "clinical", examTags: ["final"], available: true },
   { id: "cardiothoracic", title: "Cardiothoracic Anaesthesia", description: "Cardiopulmonary bypass, one-lung ventilation, TOE basics", section: "clinical", examTags: ["final"], available: true },
   // Surgical specialties
