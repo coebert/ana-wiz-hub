@@ -321,7 +321,10 @@ const IcuDrugSafety = () => {
                       if (!wd) return null;
                       const pk = icuDrugPharmacokinetics[d.slug];
                       return (
-                        <div className="mt-3 rounded-lg border border-border bg-muted/30 p-3 text-sm">
+                        <div
+                          id={`${d.slug}-withdrawal`}
+                          className="mt-3 scroll-mt-24 rounded-lg border border-border bg-muted/30 p-3 text-sm"
+                        >
                           <div className="flex flex-wrap items-center gap-2">
                             <p className="flex items-center gap-1.5 font-semibold text-foreground">
                               <TrendingDown className="h-4 w-4 text-icu" aria-hidden /> Stopping and
