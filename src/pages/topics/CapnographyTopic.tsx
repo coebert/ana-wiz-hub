@@ -347,6 +347,46 @@ const CapnographyTopic = () => {
 
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+                Capnography in perioperative anaphylaxis
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Anaphylaxis has a dual capnographic presentation. Where mediator release causes
+                bronchospasm, the trace becomes obstructive — a sloping phase II with no true plateau
+                (shark-fin) and an obtuse α-angle. Where the dominant problem is circulatory, EtCO₂
+                falls abruptly or disappears as pulmonary blood flow collapses, culminating in PEA
+                arrest with a flat trace despite a correctly placed tube. NAP6 found hypotension,
+                bronchospasm and reduced or absent EtCO₂ to be among the commonest presenting features
+                of perioperative anaphylaxis <InlineRef topicId="capnography" refLabel="NAP6 2018" />.
+              </p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                <li>Shark-fin trace after induction or on giving antibiotic/neuromuscular blocker — think anaphylaxis before "light" bronchospasm.</li>
+                <li>Sudden EtCO₂ fall with rising airway pressure and a vanishing pulse — treat as anaphylactic cardiovascular collapse: adrenaline, fluid, stop the trigger.</li>
+                <li>Recovery of the plateau shape and rising EtCO₂ are useful bedside markers of response to adrenaline.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+                Capnography in the ICU intubation bundle
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Waveform capnography is a core component of safe intubation protocols in critical care.
+                A prospective multicentre study of an intubation management bundle reduced
+                life-threatening complications from 34% to 21% and other complications from 21% to 9%
+                <InlineRef topicId="capnography" refLabel="Jaber 2010 Intubation Bundle" />.
+              </p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                <li><strong>Pre-intubation</strong> — two operators, fluid loading unless contraindicated, prepared vasopressor, planned induction and sedation, pre-oxygenation with NIV or high-flow oxygen.</li>
+                <li><strong>During</strong> — rapid sequence induction with cricoid pressure where indicated, and capnography connected before the first attempt.</li>
+                <li><strong>Post-intubation</strong> — immediate confirmation of tracheal placement by sustained waveform capnography, lung-protective ventilation, and vasopressor titration to target pressure.</li>
+                <li>NAP4 showed airway events in ICU carry a disproportionate share of death and brain damage, frequently where capnography was absent or misinterpreted <InlineRef topicId="capnography" refLabel="NAP4" />. Continuous capnography is therefore mandatory for every intubated ICU patient, including during transfer.</li>
+              </ul>
+            </div>
+
+
+
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
                 Common exam pitfalls
               </h2>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
