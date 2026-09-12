@@ -7,6 +7,8 @@ import { daySurgeryQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
+
 
 const daySurgeryFaqs: Array<[string, string]> = [
   [
@@ -58,7 +60,10 @@ const tocItems = [
   { id: "section-selection", label: "Patient Selection", group: "Core" },
   { id: "section-anaesthetic-technique", label: "Anaesthetic Principles", group: "Core" },
   { id: "section-discharge", label: "Discharge Criteria", group: "Core" },
+  { id: "section-information", label: "Patient Information & Consent", group: "Core" },
+  { id: "section-paediatric", label: "Paediatric Day Surgery", group: "Special groups" },
 ];
+
 
 const DaySurgeryTopic = () => {
   return (
@@ -80,8 +85,9 @@ const DaySurgeryTopic = () => {
       }}
       sectionSources={{
         workedExamples: ["BADS Guidelines", "AAGBI Day Surgery 2019", "BJA Educ 2016"],
-        keyPoints: ["AAGBI Day Surgery 2019", "BJA Educ 2016", "BADS Guidelines"],
+        keyPoints: ["AAGBI Day Surgery 2019", "BJA Educ 2016", "BADS Guidelines", "PADSS Review 2023", "APAGBI Paediatric Day Case 2019"],
       }}
+
       keyPoints={[
         { text: "BADS target: ~80% of elective surgery as day case. ASA I–III with stable comorbidities suitable", cites: ["AAGBI Day Surgery 2019"] },
         { text: "Short-acting agents preferred: propofol, remifentanil, desflurane. Avoid long-acting opioids", cites: ["BJA Educ 2016"] },
