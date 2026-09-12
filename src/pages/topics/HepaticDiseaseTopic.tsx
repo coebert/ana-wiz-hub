@@ -15,6 +15,11 @@ const tocItems = [
   { id: "section-pharmacology-in-hepatic-impairment", label: "Pharmacology in Hepatic Impairment", group: "Pharmacology" },
   { id: "section-intraoperative-management", label: "Intraoperative Management", group: "Management" },
   { id: "section-perioperative-decompensation", label: "Perioperative Decompensation", group: "Complications" },
+  { id: "section-portal-hypertension-assessment", label: "Portal Hypertension & Variceal Bleeding", group: "Complications" },
+  { id: "section-ascites-and-electrolyte-disorders", label: "Ascites, Paracentesis & Electrolyte Disorders", group: "Complications" },
+  { id: "section-viral-hepatitis-and-acute-liver-injury", label: "Viral Hepatitis, Acute Hepatitis & DILI", group: "Core" },
+  { id: "section-postoperative-liver-dysfunction", label: "Postoperative Liver Dysfunction", group: "Complications" },
+  { id: "section-nafld-masld-and-obesity", label: "NAFLD/MASLD and Obesity", group: "Core" },
 ];
 
 const objectives = [

@@ -242,6 +242,24 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Intraoperative seizure management: ensure oxygenation, midazolam 2–5 mg IV, propofol bolus, thiopentone for refractory seizures</li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Parenteral Equivalents & Perioperative AED Continuity</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>If the enteral route is unavailable, convert to IV equivalents rather than omitting doses: levetiracetam has 1:1 oral:IV bioavailability (typical 500–1500 mg BD, infused over 15 min); sodium valproate IV is also 1:1 with oral dose; phenytoin can be given IV (loading 15–20 mg/kg, maintenance 100 mg every 6–8 h) with cardiac monitoring (risk of hypotension/arrhythmia with rapid administration, max rate 50 mg/min); carbamazepine has no parenteral formulation — bridge with an alternative (e.g. IV levetiracetam or phenytoin) if NBM for a prolonged period</li>
+                <li>Missing even a single dose of a long-term AED can precipitate seizures or status epilepticus — liaise with pharmacy/neurology early for complex regimens and prioritise same-day surgery to minimise fasting time</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Status Epilepticus: Stepwise Escalation</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Definition: a single seizure lasting &gt;5 minutes, or ≥2 seizures within 5 minutes without full recovery of consciousness between them</li>
+                <li><strong>0–5 min (stabilisation):</strong> ABC, high-flow oxygen, check glucose (give 100 mg IV thiamine + 50 mL 50% glucose if hypoglycaemic or alcohol-dependent), IV access, note time of onset</li>
+                <li><strong>5–20 min (first-line benzodiazepine):</strong> lorazepam 4 mg IV (repeat once after 10 min if seizure continues) — preferred IV agent; if no IV access, buccal midazolam 10 mg or rectal diazepam 10–20 mg</li>
+                <li><strong>20–40 min (second-line):</strong> levetiracetam 60 mg/kg IV (max 4.5 g) over 15 min, OR phenytoin 20 mg/kg IV loading (max 2 g, rate ≤50 mg/min with ECG/BP monitoring), OR sodium valproate 40 mg/kg IV (max 3 g) — choice guided by local protocol and comorbidity (avoid valproate in known/possible hepatic disease or childbearing potential)</li>
+                <li><strong>40–60 min (refractory status — general anaesthesia):</strong> rapid sequence induction with thiopentone 3–5 mg/kg or propofol 2 mg/kg ± infusion, intubate and ventilate, continuous EEG monitoring where available, involve ICU/neurology</li>
+                <li>Enzyme induction relevance during escalation: patients on enzyme-inducing AEDs (carbamazepine, phenytoin) will have accelerated clearance of induction agents, benzodiazepines and NMBAs — anticipate higher maintenance requirements and more rapid emergence from single bolus doses</li>
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -283,6 +301,16 @@ const NeurologicalDiseaseTopic = () => {
                 <li>General anaesthesia: all agents considered safe; avoid suxamethonium if significant motor deficit (hyperkalaemia risk from denervation)</li>
                 <li>Document all pre-existing neurological deficits preoperatively (medicolegal importance)</li>
                 <li>Disease-modifying therapies (natalizumab, fingolimod): immunosuppressive — infection risk; discuss with neurologist</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Relapse Risk, Disease-Modifying Therapy & Spasticity</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Perioperative pyrexia (even &lt;1°C rise) can transiently worsen conduction block in demyelinated axons (Uhthoff phenomenon) and is associated with relapse — maintain strict normothermia with active warming and antipyretics for fever</li>
+                <li>Physiological and psychological stress of surgery/illness is an independent relapse trigger, independent of anaesthetic technique — counsel patients that relapse risk relates more to the surgical stress response and infection than to the anaesthetic agents chosen</li>
+                <li>Disease-modifying therapies: interferon-beta and glatiramer acetate carry low infection/interaction risk; natalizumab, fingolimod, alemtuzumab and ocrelizumab are more potently immunosuppressive — increased risk of infection (including opportunistic, e.g. PML with natalizumab) and may need surgery timed relative to dosing/lymphocyte recovery in discussion with neurology</li>
+                <li>Baclofen (oral or intrathecal pump) is first-line for MS spasticity; abrupt withdrawal (pump failure, catheter disconnection, running out of oral drug) causes a life-threatening baclofen withdrawal syndrome — high fever, rebound spasticity/rigidity, pruritus, altered mental status progressing to rhabdomyolysis, multi-organ failure and seizures; treatment is prompt restoration of baclofen (oral or intrathecal), IV benzodiazepines for symptom control, and supportive critical care</li>
+                <li>Continue baclofen perioperatively wherever possible; if an intrathecal pump is in situ, involve the pain/neurosurgical pump team before surgery near the pump/catheter or before any interruption in delivery</li>
               </ul>
             </div>
           </div>

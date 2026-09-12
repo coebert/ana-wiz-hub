@@ -195,8 +195,9 @@ const EndocrineDiseaseTopic = () => {
                 <li>Cardiovascular effects: tachycardia, AF, increased cardiac output, widened pulse pressure</li>
                 <li>Must be euthyroid before elective surgery — carbimazole/propylthiouracil + β-blocker</li>
                 <li>Anaesthetic implications: exaggerated response to catecholamines, increased MAC, risk of thyroid storm</li>
-                <li>Thyroid storm: hyperthermia (&gt;40°C), tachycardia, altered consciousness — mortality &gt;20%</li>
-                <li>Treatment: propranolol, Lugol's iodine, PTU, dexamethasone, active cooling, ICU admission</li>
+                <li>Thyroid storm: hyperthermia (&gt;40°C), severe tachycardia/AF, agitation or coma, vomiting/diarrhoea, high-output cardiac failure — mortality &gt;20% untreated</li>
+                <li>Thyroid storm treatment (stepwise, with exact doses): propranolol 60–80 mg orally 4-hourly or 1–2 mg IV boluses (titrated) to control the adrenergic surge; propylthiouracil (PTU) 500–1000 mg loading dose then 250 mg orally 4-hourly (blocks new hormone synthesis and peripheral T4→T3 conversion — preferred over carbimazole in storm); hydrocortisone 100 mg IV 6–8-hourly (reduces T4→T3 conversion and covers relative adrenal insufficiency); Lugol's iodine (aqueous iodine oral solution) 0.3–0.5 mL 8-hourly, started at least 1 hour after the first dose of PTU/carbimazole to avoid the iodine being incorporated into new hormone synthesis (Wolff–Chaikoff-mediated block of hormone release)</li>
+                <li>Supportive care: active cooling (paracetamol, cooling blankets — avoid aspirin which displaces T4 from binding proteins), IV fluids, treat the precipitant (infection, surgery, iodine load), ICU admission for cardiovascular support and monitoring</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
@@ -206,14 +207,19 @@ const EndocrineDiseaseTopic = () => {
                 <li>Increased sensitivity to anaesthetic agents and opioids; reduced MAC</li>
                 <li>Delayed gastric emptying, hypothermia, and impaired drug metabolism</li>
                 <li>Mild/moderate hypothyroidism: safe to proceed with surgery; severe (myxoedema coma) is a contraindication</li>
-                <li>Myxoedema coma: IV T3, hydrocortisone, rewarming, ventilatory support — ICU management</li>
+                <li>Myxoedema coma: medical emergency with mortality up to 30–50%; features include hypothermia, bradycardia, hyponatraemia, hypoglycaemia, hypoventilation, and depressed consciousness</li>
+                <li>Myxoedema coma treatment: IV levothyroxine (T4) 200–500 µg loading dose then 50–100 µg daily, often with IV liothyronine (T3) 5–20 µg (faster onset) given cautiously due to arrhythmia risk; IV hydrocortisone 100 mg 6–8-hourly (until co-existing adrenal insufficiency excluded); gradual passive rewarming (rapid rewarming risks vasodilatation and cardiovascular collapse); ventilatory support for hypoventilation/CO2 retention; cautious fluid and glucose correction; ICU management</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Thyroidectomy Considerations</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Airway assessment: retrosternal extension, tracheal deviation/compression, CT thorax if stridor</li>
-                <li>Postoperative complications: recurrent laryngeal nerve palsy (hoarseness), bilateral RLN palsy (stridor → reintubation), hypocalcaemia (parathyroid damage), haematoma (surgical emergency — open wound at bedside)</li>
+                <li>Airway assessment for goitre: assess for tracheal deviation/compression, stridor, positional dyspnoea, and voice change; flow–volume loops may show a fixed extrathoracic or intrathoracic obstruction pattern</li>
+                <li>Retrosternal extension: examine for a goitre that disappears below the sternal notch, "sail sign" on CXR, or symptoms exacerbated by arms raised above the head (Pemberton's sign, suggesting thoracic inlet obstruction); obtain CT thorax/neck if retrosternal extension, significant tracheal compression, or stridor is present — informs decision on awake fibreoptic intubation, armoured tube use, and availability of rigid bronchoscopy/ECMO standby for severe compression</li>
+                <li>Postoperative haematoma: surgical emergency causing airway compromise from tracheal compression and venous/lymphatic obstruction (laryngeal oedema) rather than the haematoma volume alone; immediate management is to remove the skin clips/sutures and evacuate the haematoma at the bedside before returning to theatre, as this can rapidly relieve the airway obstruction</li>
+                <li>Recurrent laryngeal nerve (RLN) palsy: unilateral injury causes hoarseness with a normal airway (ipsilateral vocal cord in a paramedian position); bilateral RLN palsy causes both cords to lie paramedian, producing stridor and airway obstruction that may require immediate reintubation or emergency tracheostomy</li>
+                <li>Hypocalcaemia: from inadvertent parathyroid gland damage/devascularisation; typically develops 24–48 h post-op with perioral tingling, paraesthesiae, Chvostek's and Trousseau's signs, and can progress to laryngospasm or seizures — check serum calcium routinely post-thyroidectomy and treat with IV calcium gluconate if symptomatic</li>
+                <li>Tracheomalacia: long-standing goitre compression may weaken the tracheal cartilage, so that after gland removal the trachea can collapse dynamically on extubation, causing stridor and respiratory distress; consider a leak test before extubation and have a plan for re-intubation or staged extubation over an airway exchange catheter</li>
               </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
