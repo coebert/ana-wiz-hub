@@ -269,7 +269,7 @@ const GynaecologicalAnaesthesiaTopic = () => {
                   <li><strong>Analgesia</strong>: thoracic epidural (T8–T10 level) or TAP/QL blocks; multimodal approach with regular paracetamol, NSAIDs if appropriate, and opioid PCA</li>
                   <li><strong>VTE prophylaxis</strong>: LMWH + intermittent pneumatic compression; high-risk population for PE</li>
                   <li><strong>ERAS protocols</strong>: increasingly adopted — preoperative carbohydrate loading, avoid long-acting opioids, early oral intake, early mobilisation, minimal drain use, avoid NG tubes<InlineRef topicId="gynaecological-anaesthesia" refLabel="ERAS Gynae 2019" /></li>
-                  <li><strong>HIPEC</strong>: hyperthermic intraperitoneal chemotherapy after debulking requires core temperature management, renal protection, and electrolyte monitoring</li>
+                  <li><strong>HIPEC</strong>: see the dedicated subsection below for the physiological and monitoring demands of hyperthermic intraperitoneal chemotherapy</li>
                 </ul>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {[
