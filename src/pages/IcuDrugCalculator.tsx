@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { ArrowLeft, Calculator, Syringe, AlertTriangle } from "lucide-react";
 import { icuInfusionGroups, type Infusion } from "@/data/icuInfusions";
 import { Input } from "@/components/ui/input";
