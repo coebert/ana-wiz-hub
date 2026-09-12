@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { BookOpenCheck, Search, ShieldCheck, X } from "lucide-react";
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { Button } from "@/components/ui/button";
@@ -33,7 +33,9 @@ const caseSearchText = (caseData: CaseBankCase): string =>
 export const CaseBankPage = ({ bank }: CaseBankPageProps) => {
   const [category, setCategory] = useState<string>("All");
   const [difficulty, setDifficulty] = useState<string>("All");
-  const [query, setQuery] = useState("");
+  // A management-flow link can arrive as ?q=<terms> to pre-filter the bank.
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("q") ?? "");
   const filters = useMemo(() => ["All", ...bank.categories], [bank.categories]);
   const visibleCases = useMemo(() => {
     const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
