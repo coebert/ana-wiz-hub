@@ -328,6 +328,36 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Endocrine disease", "Diabetes mellitus surgery", "Thyroid storm", "Phaeochromocytoma anaesthesia", "Adrenal insufficiency", "Carcinoid syndrome", "Steroid supplementation"],
     keywords: ["endocrine disease FRCA", "diabetes perioperative", "phaeochromocytoma anaesthesia", "thyroid storm", "steroid cover surgery", "carcinoid syndrome"],
   },
+  "renal-disease": {
+    title: "Renal Disease: CKD, Dialysis & AKI Risk | FRCA",
+    description: "Perioperative renal co-existing disease for FRCA Final and FFICM: CKD staging, dialysis timing, altered drug handling, electrolyte emergencies, transplant recipients and AKI prevention.",
+    aliases: ["Renal disease", "Chronic kidney disease anaesthesia", "Dialysis patient surgery", "Anaesthesia in renal failure", "Renal transplant recipient"],
+    keywords: ["renal disease FRCA", "CKD anaesthesia", "dialysis perioperative", "hyperkalaemia anaesthesia", "perioperative AKI prevention", "renal transplant anaesthesia"],
+  },
+  "musculoskeletal-disease": {
+    title: "Rheumatoid, Ankylosing Spondylitis & MSK Disease | FRCA",
+    description: "Musculoskeletal and rheumatological disease for FRCA Final: rheumatoid airway and cervical spine risk, ankylosing spondylitis, connective tissue disease, DMARDs and biologics.",
+    aliases: ["Rheumatological disease", "Rheumatoid arthritis anaesthesia", "Ankylosing spondylitis anaesthesia", "Connective tissue disease", "Cervical spine instability"],
+    keywords: ["rheumatoid arthritis anaesthesia", "ankylosing spondylitis intubation", "atlantoaxial subluxation", "DMARD perioperative", "biologics before surgery"],
+  },
+  "gastrointestinal-disease": {
+    title: "GI Disease: Reflux, IBD & Malnutrition | FRCA",
+    description: "Gastrointestinal co-existing disease for FRCA Final: reflux and aspiration risk, inflammatory bowel disease, malnutrition and refeeding syndrome, intestinal failure and bowel obstruction.",
+    aliases: ["Gastrointestinal disease", "GORD anaesthesia", "Inflammatory bowel disease surgery", "Malnutrition perioperative", "Refeeding syndrome", "Intestinal failure"],
+    keywords: ["GORD aspiration risk", "IBD anaesthesia", "refeeding syndrome", "malnutrition surgery", "bowel obstruction anaesthesia", "short bowel syndrome"],
+  },
+  "psychiatric-substance-disease": {
+    title: "Psychiatric Disease & Substance Misuse | FRCA",
+    description: "Psychiatric disease and substance misuse for FRCA Final: antidepressants, antipsychotics, lithium, ECT, serotonin syndrome, alcohol and opioid dependence, capacity and withdrawal.",
+    aliases: ["Psychiatric disease anaesthesia", "Substance misuse anaesthesia", "Serotonin syndrome", "Lithium perioperative", "ECT anaesthesia", "Opioid dependence surgery"],
+    keywords: ["psychiatric drugs anaesthesia", "serotonin syndrome", "lithium surgery", "ECT anaesthesia", "alcohol withdrawal perioperative", "buprenorphine perioperative"],
+  },
+  "immunosuppression-hiv": {
+    title: "Immunosuppression, Transplant & HIV | FRCA",
+    description: "Immunosuppression and HIV for FRCA Final and FFICM: transplant immunosuppressants, biologics, steroid cover, antiretroviral interactions, asplenia and infection precautions.",
+    aliases: ["Immunosuppression anaesthesia", "HIV anaesthesia", "Transplant recipient surgery", "Biologic therapy perioperative", "Asplenia"],
+    keywords: ["immunosuppression anaesthesia", "HIV antiretroviral interactions", "tacrolimus perioperative", "steroid cover surgery", "asplenia prophylaxis"],
+  },
   "hepatic-disease": {
     title: "Hepatic Disease: Cirrhosis, MELD & HRS | FRCA",
     description: "Perioperative hepatic disease for FRCA Final: Child-Pugh and MELD risk, cirrhosis physiology, rebalanced coagulation, drug choices and hepatorenal syndrome.",
