@@ -57,9 +57,10 @@ const workedExamples: WorkedExample[] = [
             tryptase, histamine, leukotrienes, PAF release within minutes.
           </li>
           <li>
-            <strong>Mast cell tryptase</strong> peaks 1–2 h post-event; obtain three samples (immediately
-            after resuscitation, 1–2 h, &gt;24 h baseline). A rise of ≥20% + 2 ng/mL above baseline
-            confirms mast cell activation (NAP6, AAGBI 2018).
+            <strong>Mast cell tryptase</strong>: current RCoA/Association of Anaesthetists guidance is a first
+            sample as soon as feasible once the patient is stable, a second sample 1–2 h after symptom onset, and a
+            baseline sample at 24 h or later (usually taken in the allergy clinic). A rise of ≥20% + 2 ng/mL above
+            baseline confirms mast cell activation <InlineRef topicId="haematology-immunity" refLabel="AAGBI Anaphylaxis 2021" />.
           </li>
           <li>
             Refer to a specialist allergy clinic (UK: 3–6 weeks post-event) for skin prick + intradermal
