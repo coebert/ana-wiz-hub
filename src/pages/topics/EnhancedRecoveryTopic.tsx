@@ -8,6 +8,7 @@ import { enhancedRecoveryQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import { TrendingDown, TrendingUp, Award, FlaskConical } from "lucide-react";
 import { InlineRef } from "@/components/references/InlineRef";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 
@@ -156,6 +157,26 @@ const EnhancedRecoveryTopic = () => {
               </div>
             </div>
 
+            <CollapsibleSubsection title="The anaesthetist's role in ERAS">
+              <div className="space-y-3">
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Preoperative</p>
+                  <p className="text-sm text-muted-foreground mt-1">Assessment and risk stratification; prehabilitation and anaemia optimisation; avoiding sedative premedication; patient education and expectation setting; carbohydrate drinks up to 2 h preoperatively.</p>
+                </div>
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Intraoperative</p>
+                  <p className="text-sm text-muted-foreground mt-1">Short-acting agents (TIVA vs volatile); depth-of-anaesthesia monitoring; regional/neuraxial and fascial plane blocks; IV lidocaine infusion for laparoscopic surgery; goal-directed fluid therapy avoiding salt/water overload; active maintenance of normothermia; lung-protective ventilation; ≥ 2 antiemetic agents according to PONV risk.</p>
+                </div>
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Postoperative</p>
+                  <p className="text-sm text-muted-foreground mt-1">Multimodal opioid-sparing analgesia; structured PACU management; supporting early oral intake and mobilisation; structured handover communicating the ERAS plan; audit of compliance with pathway elements.</p>
+                </div>
+                <p className="text-xs text-muted-foreground italic">
+                  Consensus statement<InlineRef topicId="enhanced-recovery" refLabel="ERAS Anaesthesia Consensus 2016" /> defines the anaesthetist as a central perioperative physician within the ERAS multidisciplinary team, spanning all three phases of the pathway.
+                </p>
+              </div>
+            </CollapsibleSubsection>
+
             <div id="section-surgical-stress-response" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Surgical Stress Response</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PO_BK_03"]} />
@@ -302,6 +323,39 @@ const EnhancedRecoveryTopic = () => {
                     "Pre-op: carb load if not diabetic; correct anaemia (IV iron); insulin sliding scale (target 7.8–10 mmol/L)",
                     "Intra-op: bilateral parasternal / erector spinae blocks; opioid-sparing TIVA option; goal-directed perfusion on bypass; rigid sternal fixation in selected pts",
                     "Post-op: extubation within 6h ('fast-track'); chest drain removal day 1 if drainage < 150 mL/8h; early mobilisation; multimodal analgesia (paracetamol + dexmedetomidine + regional)",
+                  ],
+                },
+                {
+                  title: "Pancreatoduodenectomy",
+                  subtitle: "ERAS® Society 2019 (Melloul et al, World J Surg)",
+                  refLabel: "ERAS Pancreatoduodenectomy 2019",
+                  evidence: "High-risk major HPB resection — protocol tailored to delayed gastric emptying and pancreatic fistula risk.",
+                  elements: [
+                    "Pre-op: nutritional intervention if severe weight loss (>15%); carbohydrate loading; avoidance of hypothermia",
+                    "Intra-op: goal-directed fluid therapy; wound infiltration catheters or TAP blocks as an alternative to epidural; no routine prophylactic nasogastric decompression",
+                    "Post-op: early oral intake and mobilisation; single-dose antimicrobial prophylaxis with extended thromboprophylaxis (4 weeks); early drain removal guided by day-3 amylase; vigilance for delayed gastric emptying and pancreatic fistula",
+                  ],
+                },
+                {
+                  title: "Liver Surgery",
+                  subtitle: "ERAS® Society 2016 (Melloul et al, World J Surg)",
+                  refLabel: "ERAS Liver 2016",
+                  evidence: "Emphasis on minimising blood loss during parenchymal transection while preserving early recovery principles.",
+                  elements: [
+                    "Omit prophylactic nasogastric tubes and routine abdominal drains; oral laxatives to promote bowel recovery",
+                    "Goal-directed fluid therapy aiming for low CVP to limit blood loss during parenchymal transection",
+                    "Early oral intake and mobilisation; no clear preference for epidural over other analgesic techniques (wound catheters or intrathecal opioid)",
+                  ],
+                },
+                {
+                  title: "Lumbar Spinal Fusion",
+                  subtitle: "ERAS® Society 2021 consensus statement",
+                  refLabel: "ERAS Lumbar Fusion 2021",
+                  evidence: "A developing field — consensus identified 22 ERAS items across the perioperative pathway.",
+                  elements: [
+                    "Multimodal opioid-sparing analgesia; tranexamic acid to limit blood loss",
+                    "Avoidance of routine drains and urinary catheters",
+                    "Early mobilisation as a core recovery milestone",
                   ],
                 },
               ].map((p) => (
