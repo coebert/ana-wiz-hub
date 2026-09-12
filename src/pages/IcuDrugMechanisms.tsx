@@ -177,12 +177,22 @@ const IcuDrugMechanisms = () => {
 
                     <DrugPharmacokineticsPanel slug={d.slug} />
 
-                    <Link
-                      to={`/intensive-care/drug-doses?drug=${drugSlug(d.drug)}#drug-${drugSlug(d.drug)}`}
-                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-icu underline-offset-4 hover:underline"
-                    >
-                      Doses for {d.drug} <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
+                    <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+                      <Link
+                        to={`/intensive-care/drug-doses?drug=${drugSlug(d.drug)}#drug-${drugSlug(d.drug)}`}
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-icu underline-offset-4 hover:underline"
+                      >
+                        Doses for {d.drug} <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
+                      <Link
+                        to={`/intensive-care/drug-safety?slug=${d.slug}#${d.slug}`}
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-icu underline-offset-4 hover:underline"
+                      >
+                        Interactions, contraindications and monitoring{" "}
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
+                    </div>
+
                   </article>
                 ))}
               </div>
