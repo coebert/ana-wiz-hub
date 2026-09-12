@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Pill } from "lucide-react";
+import { Pill, ShieldCheck } from "lucide-react";
 import { doseReferencesForCase, drugDoseHref } from "@/lib/caseDoseReferences";
+import { mechanismSlugForDrug } from "@/lib/icuDrugMechanismLinks";
 import type { PerioperativeCase } from "@/components/perioperative/ProgressiveCase";
 
 interface CaseDosingReferenceProps {
