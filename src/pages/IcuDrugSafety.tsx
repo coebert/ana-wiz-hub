@@ -10,6 +10,7 @@ import {
   Activity,
   Link2,
   FlaskConical,
+  TrendingDown,
 } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
@@ -17,6 +18,20 @@ import { Button } from "@/components/ui/button";
 import { icuDrugSafetyGroups, icuDrugSafetyCount } from "@/data/icuDrugSafety";
 import { icuDrugMechanismGroups } from "@/data/icuDrugMechanisms";
 import { icuDrugPharmacokinetics } from "@/data/pk";
+import {
+  icuDrugWithdrawal,
+  withdrawalRiskLabel,
+  type WithdrawalRisk,
+} from "@/data/icuDrugWithdrawal";
+
+/** Badge colouring for the withdrawal/rebound risk of each drug. */
+const riskBadgeClass: Record<WithdrawalRisk, string> = {
+  high: "border-destructive/40 bg-destructive/10 text-destructive",
+  moderate: "border-icu/40 bg-icu/10 text-icu",
+  low: "border-border bg-muted text-muted-foreground",
+  none: "border-border bg-muted text-muted-foreground",
+};
+
 
 /** Mechanism records keyed by slug so each safety card can explain *why* it behaves that way. */
 const mechanismBySlug = new Map(
@@ -35,6 +50,7 @@ const IcuDrugSafety = () => {
   const [searchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get("drug") ?? "");
   const [activeGroup, setActiveGroup] = useState<string>("all");
+  const [riskOnly, setRiskOnly] = useState(false);
 
   const targetSlug = searchParams.get("slug");
 
@@ -51,17 +67,30 @@ const IcuDrugSafety = () => {
       .filter((g) => activeGroup === "all" || g.id === activeGroup)
       .map((g) => ({
         ...g,
-        drugs: q
-          ? g.drugs.filter((d) =>
-              [d.drug, ...d.interactions, ...d.contraindications, ...d.monitoring, d.alert ?? ""]
-                .join(" ")
-                .toLowerCase()
-                .includes(q),
-            )
-          : g.drugs,
+        drugs: g.drugs
+          .filter((d) => {
+            if (!riskOnly) return true;
+            const risk = icuDrugWithdrawal[d.slug]?.risk;
+            return risk === "high" || risk === "moderate";
+          })
+          .filter((d) => {
+            if (!q) return true;
+            const wd = icuDrugWithdrawal[d.slug];
+            return [
+              d.drug,
+              ...d.interactions,
+              ...d.contraindications,
+              ...d.monitoring,
+              d.alert ?? "",
+              wd ? [wd.why, wd.offset, ...wd.taper, ...wd.monitoring, wd.rescue ?? ""].join(" ") : "",
+            ]
+              .join(" ")
+              .toLowerCase()
+              .includes(q);
+          }),
       }))
       .filter((g) => g.drugs.length > 0);
-  }, [search, activeGroup]);
+  }, [search, activeGroup, riskOnly]);
 
   const shown = groups.reduce((n, g) => n + g.drugs.length, 0);
 
@@ -94,8 +123,8 @@ const IcuDrugSafety = () => {
               The interactions, contraindications and monitoring that go with each of the{" "}
               {icuDrugSafetyCount} drugs in the adult critical care formulary — each with key pharmacokinetic
               parameters (onset, half-life, clearance, volume of distribution, protein binding and
-              elimination) alongside its interactions, contraindications and monitoring — the companion to
-              the{" "}
+              elimination) and a withdrawal guide covering how fast the drug offsets, how to taper it and
+              what to monitor as it comes off — the companion to the{" "}
               <Link
                 to="/intensive-care/drug-doses"
                 className="font-medium text-icu underline-offset-4 hover:underline"
@@ -129,7 +158,7 @@ const IcuDrugSafety = () => {
             <Input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search a drug, interaction or monitoring test"
+              placeholder="Search a drug, interaction, monitoring test or taper"
               className="pl-9"
               aria-label="Search ICU drug safety information"
             />
@@ -157,9 +186,19 @@ const IcuDrugSafety = () => {
             ))}
           </div>
 
-          <p className="text-sm text-muted-foreground">
-            Showing {shown} of {icuDrugSafetyCount} drugs
-          </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button
+              size="sm"
+              variant={riskOnly ? "default" : "outline"}
+              onClick={() => setRiskOnly((v) => !v)}
+              aria-pressed={riskOnly}
+            >
+              <TrendingDown className="mr-1.5 h-4 w-4" aria-hidden /> Withdrawal risk only
+            </Button>
+            <p className="text-sm text-muted-foreground">
+              Showing {shown} of {icuDrugSafetyCount} drugs
+            </p>
+          </div>
         </div>
 
         {shown === 0 && (
@@ -270,6 +309,74 @@ const IcuDrugSafety = () => {
                       );
                     })()}
 
+
+                    {(() => {
+                      const wd = icuDrugWithdrawal[d.slug];
+                      if (!wd) return null;
+                      const pk = icuDrugPharmacokinetics[d.slug];
+                      return (
+                        <div className="mt-3 rounded-lg border border-border bg-muted/30 p-3 text-sm">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <p className="flex items-center gap-1.5 font-semibold text-foreground">
+                              <TrendingDown className="h-4 w-4 text-icu" aria-hidden /> Stopping and
+                              withdrawal
+                            </p>
+                            <span
+                              className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${riskBadgeClass[wd.risk]}`}
+                            >
+                              {withdrawalRiskLabel[wd.risk]}
+                            </span>
+                          </div>
+
+                          <p className="mt-2 text-muted-foreground">
+                            <span className="font-medium text-foreground">Why: </span>
+                            {wd.why}
+                          </p>
+
+                          <dl className="mt-2 grid gap-2 rounded-md border border-border bg-background/60 p-2.5 sm:grid-cols-2">
+                            <div>
+                              <dt className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                                Half-life
+                              </dt>
+                              <dd className="mt-0.5 text-xs leading-snug text-foreground">
+                                {pk?.halfLife ?? "See the mechanisms page"}
+                              </dd>
+                            </div>
+                            <div>
+                              <dt className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                                Offset and what it means for the wean
+                              </dt>
+                              <dd className="mt-0.5 text-xs leading-snug text-foreground">{wd.offset}</dd>
+                            </div>
+                          </dl>
+
+                          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                            Tapering
+                          </p>
+                          <ul className="mt-1 list-disc space-y-1 pl-5 text-muted-foreground">
+                            {wd.taper.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+
+                          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                            Monitoring during and after the wean
+                          </p>
+                          <ul className="mt-1 list-disc space-y-1 pl-5 text-muted-foreground">
+                            {wd.monitoring.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+
+                          {wd.rescue && (
+                            <p className="mt-3 rounded-md border border-icu/25 bg-icu/5 p-2.5 text-sm text-foreground">
+                              <span className="font-semibold">If withdrawal declares itself: </span>
+                              {wd.rescue}
+                            </p>
+                          )}
+                        </div>
+                      );
+                    })()}
 
                     <dl className="mt-4 space-y-4 text-sm leading-relaxed">
                       <div>
