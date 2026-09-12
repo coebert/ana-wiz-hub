@@ -24,6 +24,7 @@ import {
 const tocItems = [
   { id: "physiology", label: "Ocular physiology & IOP", group: "Foundations" },
   { id: "regional", label: "Regional techniques", group: "Techniques" },
+  { id: "conduct", label: "Anaesthetic conduct & fasting", group: "Techniques" },
   { id: "open-globe", label: "Open-globe injury", group: "Emergency" },
   { id: "strabismus", label: "Strabismus surgery", group: "Paediatric" },
   { id: "brainstem", label: "Brainstem anaesthesia", group: "Complications" },
@@ -189,7 +190,22 @@ const OphthalmicAnaesthesiaTopic = () => {
             <TopicalIntracameralIllustration />
           </DiagramSection>
 
+          <div id="conduct" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Anaesthetic Conduct & Modern Fasting Guidance">
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Routine fasting is no longer recommended</strong> for low-risk ophthalmic surgery performed under topical or regional block (topical/intracameral, sub-Tenon&apos;s, peribulbar) without planned sedation — patients may continue normal food and drink up to the point of surgery<InlineRef topicId="ophthalmic-anaesthesia" refLabel="Ambulatory Ophthalmic 2025" /></li>
+              <li><strong>Why it matters</strong>: the population is elderly and frequently diabetic; prolonged starvation causes dehydration, hypoglycaemia, hypotension, delirium and discomfort, all of which make patients less able to lie still and cooperate. Allowing normal intake improves comfort, list throughput and glycaemic stability, and permits usual medication timing (including oral hypoglycaemics with food)</li>
+              <li><strong>When conventional fasting still applies</strong>: general anaesthesia, deep or moderate procedural sedation, and any case where conversion to GA is likely (open globe, uncooperative patient, complex vitreoretinal or paediatric surgery) — 6 h food, 2 h clear fluids</li>
+              <li><strong>Practical conduct under block</strong>: shared verbal contact and reassurance, arm-touch signalling, supplemental oxygen with capnography if the face is draped, and a clear plan and drugs available for the oculocardiac reflex, local anaesthetic systemic toxicity and brainstem anaesthesia</li>
+              <li><strong>Documentation</strong>: record the fasting decision and the reason on the anaesthetic chart so subsequent teams do not re-starve the patient if the list overruns</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
+
           <div id="open-globe" className="scroll-mt-24">
+
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Open Globe Injury">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
