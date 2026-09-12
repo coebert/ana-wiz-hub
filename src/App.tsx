@@ -77,6 +77,7 @@ const PharmacologySection = lazy(() => import("./pages/PharmacologySection"));
 const ClinicalSection = lazy(() => import("./pages/ClinicalSection"));
 const IntensiveCareSection = lazy(() => import("./pages/IntensiveCareSection"));
 const PerioperativeSection = lazy(() => import("./pages/PerioperativeSection"));
+const CoExistingDiseaseOverview = lazy(() => import("./pages/CoExistingDiseaseOverview"));
 const PerioperativeCaseBank = lazy(() => import("./pages/PerioperativeCaseBank"));
 const PhysicsCaseBank = lazy(() => import("./pages/PhysicsCaseBank"));
 const PhysiologyCaseBank = lazy(() => import("./pages/PhysiologyCaseBank"));
@@ -179,6 +180,7 @@ const App = () => (
           <Route path="/intensive-care/case-bank" element={<IntensiveCareCaseBank />} />
           <Route path="/perioperative" element={<PerioperativeSection />} />
           <Route path="/perioperative/case-bank" element={<PerioperativeCaseBank />} />
+          <Route path="/perioperative/co-existing-disease" element={<CoExistingDiseaseOverview />} />
 
           <Route path="/anatomy" element={<AnatomySection />} />
           <Route path="/chemistry" element={<ChemistrySection />} />
