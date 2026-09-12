@@ -92,6 +92,32 @@ const PaediatricIcuFlows = () => {
           ))}
         </nav>
 
+        <div className="mt-4 flex flex-wrap items-end gap-3 rounded-lg border border-icu/25 bg-icu/5 p-3">
+          <div className="w-full max-w-[180px]">
+            <Label htmlFor="paed-flow-weight" className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Child's weight (kg)
+            </Label>
+            <Input
+              id="paed-flow-weight"
+              type="number"
+              inputMode="decimal"
+              min={0.5}
+              step={0.5}
+              value={weight}
+              placeholder={String(neonatal ? 3.5 : 20)}
+              onChange={(e) => setWeight(e.target.value)}
+              className="mt-1"
+            />
+          </div>
+          <p className="flex-1 text-xs text-muted-foreground">
+            Used by the “Calculate infusion rate” links in each step — they open the ICU calculator
+            with the drug and this weight already filled in (default{" "}
+            {neonatal ? "3.5 kg neonate" : "20 kg child"}).
+          </p>
+        </div>
+
+
+
         <article className="mt-8">
           <h2 className="text-2xl font-semibold tracking-tight">{flow.title}</h2>
           <p className="mt-2 max-w-3xl text-muted-foreground">{flow.blurb}</p>
