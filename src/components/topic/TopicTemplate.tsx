@@ -333,6 +333,9 @@ export const TopicTemplate = ({
 
         <section className="space-y-8">{coreConcepts}</section>
 
+        <TopicOverrideBlocks blocks={liveEdits.blocks} />
+
+
         {diagrams && showDiagrams && (
           <section id="diagrams" className="scroll-mt-24">
             <h2 className="h2 mb-4">
