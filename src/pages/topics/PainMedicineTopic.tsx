@@ -51,6 +51,9 @@ const workedExamples: WorkedExample[] = [
 const tocItems = [
   { id: "pathways", label: "Pain Pathways & Classification", group: "Core" },
   { id: "multimodal", label: "Multimodal Analgesia", group: "Core" },
+  { id: "regional-analgesia", label: "Regional Analgesia", group: "Core" },
+  { id: "cannabinoids", label: "Cannabinoids", group: "Adjuncts" },
+  { id: "opioid-stewardship", label: "Perioperative Opioid Stewardship", group: "Core" },
   { id: "magnesium", label: "IV Magnesium", group: "Adjuncts" },
   { id: "lidocaine", label: "IV Lidocaine", group: "Adjuncts" },
   { id: "neuropathic", label: "Neuropathic Pain", group: "Chronic" },
