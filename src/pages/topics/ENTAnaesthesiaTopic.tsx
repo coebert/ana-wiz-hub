@@ -25,6 +25,7 @@ const tocItems = [
   { id: "laser", label: "Microlaryngoscopy & laser surgery", group: "Core" },
   { id: "nasal", label: "Nasal surgery", group: "Specialty" },
   { id: "middle-ear", label: "Middle ear surgery", group: "Specialty" },
+  { id: "paediatric-ent", label: "Other paediatric ENT", group: "Specialty" },
   { id: "stridor", label: "Airway obstruction & stridor", group: "Emergency" },
   { id: "tracheostomy", label: "Tracheostomy & laryngectomy", group: "Airway" },
   { id: "ionm", label: "Intra-operative nerve monitoring", group: "Monitoring" },
@@ -379,8 +380,9 @@ const ENTAnaesthesiaTopic = () => {
 
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Immediate bedside management — the SCOOP sequence</h3>
             <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-3">
-              <li><strong>S — Steri-strips off, Sit up:</strong> sit the patient upright (improves venous drainage, reduces work of breathing) and call for senior anaesthetic, ENT/general surgical and theatre help simultaneously. 100% O₂ via non-rebreathe; large-bore IV access; bloods including crossmatch, coagulation.</li>
-              <li><strong>C — Cut sutures / Clips out:</strong> at the bedside, open <em>both</em> skin and the deeper strap-muscle layer using a stitch cutter or the suture-removal scissors kept on every post-thyroidectomy patient ('thyroid emergency box': scissors, clip-remover, gloves). Evacuate clot manually. This is a nursing/medical bedside skill — do not wait for the surgeon.</li>
+              <li><strong>S — Steri-strips off, Sit up:</strong> sit the patient upright (improves venous drainage, reduces work of breathing) and <strong>call for help simultaneously, not sequentially</strong> — senior anaesthetist, ENT/general surgeon, theatre coordinator and a second pair of hands; state clearly "post-thyroidectomy neck haematoma, airway at risk". 100% O₂ via non-rebreathe; large-bore IV access; bloods including crossmatch and coagulation<InlineRef topicId="ent-anaesthesia" refLabel="Iliff 2022 Haematoma" /></li>
+              <li><strong>C — Cut sutures / Clips out:</strong> at the bedside open <em>every</em> layer — skin sutures or clips <em>and</em> the deeper strap-muscle/platysma layer — then evacuate clot bluntly with a gloved finger or forceps; blood may be deep to the strap muscles, so removing skin clips alone does not decompress the airway. Every post-thyroidectomy patient should have a <strong>thyroid emergency box</strong> at the bedside: clip remover, stitch cutter, suture scissors, forceps, gloves and a face shield. Perform this immediately as a nurse or doctor at the bedside — <strong>do not wait for the surgeon or for transfer to theatre</strong><InlineRef topicId="ent-anaesthesia" refLabel="Iliff 2022 Haematoma" /></li>
+
               <li><strong>O — Oxygenate:</strong> continue 100% O₂; consider nebulised adrenaline 1 mg in 5 mL and IV dexamethasone 8 mg for laryngeal oedema as a temporising bridge.</li>
               <li><strong>O — Operating theatre:</strong> transfer immediately for definitive haemostasis and airway control. Take the suture-removal kit and a senior with the patient.</li>
               <li><strong>P — Plan the airway:</strong> see below.</li>
@@ -398,6 +400,8 @@ const ENTAnaesthesiaTopic = () => {
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">After haemostasis</h3>
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-3">
               <li>Continue intubated and ventilated until laryngeal oedema settles — typically 24–48 h. Cuff-leak test, fibreoptic look at the cords, and dexamethasone before any extubation attempt.</li>
+              <li><strong>Decompression does not always relieve the obstruction</strong>: venous and lymphatic congestion causes laryngeal and supraglottic oedema that persists after the clot has been evacuated, so a patient may still obstruct with an open wound. Keep the definitive airway plan (theatre, tracheostomy-ready surgeon) active until the airway is demonstrably safe<InlineRef topicId="ent-anaesthesia" refLabel="Iliff 2022 Haematoma" /></li>
+
               <li><strong>Check calcium</strong> (parathyroid disturbance) and <strong>vocal cord function</strong> (RLN injury) postoperatively — both can compound airway risk after extubation.</li>
               <li>Critical incident review and bedside emergency-box restock; ensure all post-thyroidectomy patients are nursed in an area trained and equipped to perform bedside wound decompression.</li>
             </ul>
