@@ -18,6 +18,20 @@ import { Button } from "@/components/ui/button";
 import { icuDrugSafetyGroups, icuDrugSafetyCount } from "@/data/icuDrugSafety";
 import { icuDrugMechanismGroups } from "@/data/icuDrugMechanisms";
 import { icuDrugPharmacokinetics } from "@/data/pk";
+import {
+  icuDrugWithdrawal,
+  withdrawalRiskLabel,
+  type WithdrawalRisk,
+} from "@/data/icuDrugWithdrawal";
+
+/** Badge colouring for the withdrawal/rebound risk of each drug. */
+const riskBadgeClass: Record<WithdrawalRisk, string> = {
+  high: "border-destructive/40 bg-destructive/10 text-destructive",
+  moderate: "border-icu/40 bg-icu/10 text-icu",
+  low: "border-border bg-muted text-muted-foreground",
+  none: "border-border bg-muted text-muted-foreground",
+};
+
 
 /** Mechanism records keyed by slug so each safety card can explain *why* it behaves that way. */
 const mechanismBySlug = new Map(
