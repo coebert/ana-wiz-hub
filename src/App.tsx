@@ -183,6 +183,7 @@ const App = () => (
           <Route path="/intensive-care/case-bank" element={<IntensiveCareCaseBank />} />
           <Route path="/intensive-care/drug-doses" element={<IcuDrugDoses />} />
           <Route path="/intensive-care/infusions" element={<IcuInfusions />} />
+          <Route path="/intensive-care/drug-mechanisms" element={<IcuDrugMechanisms />} />
           <Route path="/perioperative" element={<PerioperativeSection />} />
           <Route path="/perioperative/case-bank" element={<PerioperativeCaseBank />} />
           <Route path="/perioperative/co-existing-disease" element={<CoExistingDiseaseOverview />} />
