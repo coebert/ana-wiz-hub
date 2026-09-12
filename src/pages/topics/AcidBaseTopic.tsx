@@ -110,7 +110,6 @@ const AcidBaseTopic = () => {
       ]}
       coreConcepts={
         <>
-        <>
           <TopicTableOfContents items={tocItems} />
           <ExamSection id="section-systematic-abg" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4"]}>
             <CollapsibleSubsection title="Systematic ABG Interpretation" defaultOpen>
@@ -638,7 +637,6 @@ const AcidBaseTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
-          </ExamSection>
 
           <ExamSection id="section-citrate" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Acid-Base Effects of Regional Citrate Anticoagulation">
@@ -707,7 +705,6 @@ const AcidBaseTopic = () => {
               "Expected compensation rules: metabolic acidosis ΔPaCO₂ = 1.2 × Δ HCO₃⁻; respiratory acute ΔHCO₃⁻ = 1 per 10 ΔPaCO₂.",
             ]}
           />
-        </>
           <TopicFaqs faqs={acidBaseFaqs} />
         </>
       }
