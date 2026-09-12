@@ -13,6 +13,7 @@ import CoandaEffectDiagram from "@/components/diagrams/physics/CoandaEffectDiagr
 import { flowMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const flowMeasurementFaqs: Array<[string, string]> = [
   [
