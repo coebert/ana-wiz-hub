@@ -1213,6 +1213,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "AAGBI Lithotomy 2015", citation: "Association of Anaesthetists. Safe practice in lithotomy and lateral positions. AAGBI guidance.", url: "https://anaesthetists.org" },
     { label: "BJA Educ Cystectomy 2017", citation: "Pillai P et al. Anaesthesia for radical cystectomy and urinary diversion. BJA Education. 2018;18(2):54-60.", url: "https://doi.org/10.1016/j.bjae.2017.11.005" },
     { label: "ERAS Cystectomy 2013", citation: "Cerantola Y et al. Guidelines for perioperative care after radical cystectomy for bladder cancer: ERAS Society recommendations. Clin Nutr. 2013;32(6):879-887.", url: "https://doi.org/10.1016/j.clnu.2013.09.014" },
+    { label: "CEACCP TURP 2009", citation: "O'Donnell AM, Foo ITH. Anaesthesia for transurethral resection of the prostate. Contin Educ Anaesth Crit Care Pain. 2009;9(3):92-96.", url: "https://doi.org/10.1093/bjaceaccp/mkp012" },
+    { label: "Hyponatraemia Guideline 2014", citation: "Spasovski G, Vanholder R, Allolio B, et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. Eur J Endocrinol. 2014;170(3):G1-G47.", url: "https://doi.org/10.1530/EJE-13-1020" },
+    { label: "EAU Urolithiasis 2016", citation: "Türk C, Petřík A, Sarica K, et al. EAU guidelines on interventional treatment for urolithiasis. Eur Urol. 2016;69(3):475-482.", url: "https://doi.org/10.1016/j.eururo.2015.07.041" },
+    { label: "Ganpule 2016 PCNL", citation: "Ganpule AP, Vijayakumar M, Malpani A, Desai MR. Percutaneous nephrolithotomy (PCNL) a critical review. Int J Surg. 2016;36:660-664.", url: "https://doi.org/10.1016/j.ijsu.2016.11.028" },
   ],
   "hepatobiliary-transplant": [
     { label: "BJA Educ LT 2010", citation: "Mandell MS, Lindenfeld J, Tsou MY, Zimmerman M. Cardiac evaluation of liver transplant candidates. World J Gastroenterol. 2008;14(22):3445-3451.", url: "https://doi.org/10.3748/wjg.14.3445" },
