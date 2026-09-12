@@ -465,6 +465,18 @@ const PaediatricCoreTopic = () => {
               </p>
               <div className="grid sm:grid-cols-2 gap-3">
                 <Link
+                  to="/physiology/paediatric-physiology"
+                  className="flex items-start gap-3 rounded-lg border border-border p-3 hover:border-primary/50 transition-colors"
+                >
+                  <Activity className="h-5 w-5 text-physiology mt-0.5 shrink-0" aria-hidden="true" />
+                  <div>
+                    <div className="font-medium text-foreground text-sm">Paediatric Physiology</div>
+                    <div className="text-xs text-muted-foreground">
+                      Neonatal cardiac output, oxygen consumption and thermoregulation in depth
+                    </div>
+                  </div>
+                </Link>
+                <Link
                   to="/intensive-care/paediatric-icu"
                   className="flex items-start gap-3 rounded-lg border border-border p-3 hover:border-primary/50 transition-colors"
                 >
