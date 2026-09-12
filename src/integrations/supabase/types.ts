@@ -1104,6 +1104,50 @@ export type Database = {
         }
         Relationships: []
       }
+      topic_discussions: {
+        Row: {
+          author_label: string
+          body: string
+          created_at: string
+          id: string
+          parent_id: string | null
+          topic_id: string
+          topic_title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          author_label: string
+          body: string
+          created_at?: string
+          id?: string
+          parent_id?: string | null
+          topic_id: string
+          topic_title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          author_label?: string
+          body?: string
+          created_at?: string
+          id?: string
+          parent_id?: string | null
+          topic_id?: string
+          topic_title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "topic_discussions_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "topic_discussions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       topic_references: {
         Row: {
           created_at: string
