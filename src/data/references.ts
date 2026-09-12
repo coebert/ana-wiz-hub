@@ -268,7 +268,7 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "lung-mechanics": [
     { label: "BJA Educ 2015", citation: "Lumb AB. Respiratory physiology — mechanics of breathing. BJA Education. 2012;12(2):57-61.", url: "https://doi.org/10.1093/bjaceaccp/mkr054" },
-    { label: "West Ch.7", citation: "West JB, Luks AM. West's Respiratory Physiology: The Essentials. 11th ed. Chapter 7: Mechanics of Breathing." },
+    { label: "West Ch.7", citation: "West JB, Luks AM. West's Respiratory Physiology: The Essentials. 11th ed. Chapter 7: Mechanics of Breathing.", url: "https://shop.lww.com/West-s-Respiratory-Physiology/p/9781975152837" },
     { label: "Lumb Ch.2-3", citation: "Lumb AB. Nunn's Applied Respiratory Physiology. 9th ed. Elsevier; 2021. Chapters 2-3: Elastic and Resistive Properties of the Lung." },
     { label: "Crit Care Med 2013 Stress Strain", citation: "Protti A, Andreis DT, Monti M, et al. Lung stress and strain during mechanical ventilation: any difference between statics and dynamics? Crit Care Med. 2013;41(4):1046-1055.", url: "https://doi.org/10.1097/CCM.0b013e31827417a6", excerpt: "Tidal volume and volume of gas caused by positive end-expiratory pressure generate dynamic and static lung strains, respectively." },
     { label: "BJA 1999 Recruitment", citation: "Tusman G, Böhm SH, Vazquez de Anda GF, do Campo JL, Lachmann B. 'Alveolar recruitment strategy' improves arterial oxygenation during general anaesthesia. Br J Anaesth. 1999;82(1):8-13.", url: "https://doi.org/10.1093/bja/82.1.8", excerpt: "An initial increase in pressure would open collapsed alveoli; if this inspiratory recruitment is combined with sufficient end-expiratory pressure, alveoli will remain open during general anaesthesia." },
