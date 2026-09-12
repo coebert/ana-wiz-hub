@@ -165,7 +165,25 @@ const GynaecologicalAnaesthesiaTopic = () => {
                   <p className="text-xs text-muted-foreground">
                     CO₂ is 20× more blood-soluble than nitrogen, making small emboli dissolve rapidly. The lethal volume for CO₂ embolism (~1,000 mL) is far greater than for air embolism (~50 mL). Nevertheless, CO₂ gas embolism remains a recognised cause of intraoperative cardiovascular collapse during laparoscopy.
                   </p>
-                </div>
+          </div>
+
+          <div id="shoulder-tip" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia (specialty)"]}>
+              <CollapsibleSubsection title="Shoulder-Tip Pain — Prevention & Management">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Shoulder-tip pain affects up to a third of women after laparoscopy and is often the dominant complaint delaying day-case discharge.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+                  <li><strong>Mechanism</strong>: residual subdiaphragmatic CO₂ and carbonic acid irritate the diaphragmatic peritoneum; pain is referred to the shoulder tip through the phrenic nerve (C3, 4, 5), which shares dermatomal representation with the shoulder</li>
+                  <li><strong>Surgical technique</strong>: use the lowest effective insufflation pressure, humidified/warmed gas where available, and active evacuation of CO₂ under direct vision at the end of the case rather than passive deflation</li>
+                  <li><strong>Anaesthetic technique</strong>: a pulmonary recruitment manoeuvre before extubation — sustained manual inflation to about 30 cmH₂O held for 5 seconds, repeated a few times with the patient in Trendelenburg — expels residual subdiaphragmatic gas and significantly reduces shoulder pain and analgesic requirement<InlineRef topicId="gynaecological-anaesthesia" refLabel="Phelps 2008" /></li>
+                  <li><strong>Pharmacological</strong>: regular paracetamol and an NSAID unless contraindicated; intraperitoneal instillation of local anaesthetic (e.g. levobupivacaine to the subdiaphragmatic surface) and port-site infiltration give modest additional benefit; short-acting opioid rescue only</li>
+                  <li><strong>Counselling</strong>: warn the patient preoperatively that shoulder pain is expected, self-limiting over 24–72 hours, and not cardiac in origin — otherwise it triggers unplanned admission and ECG work-up</li>
+                </ul>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
               </CollapsibleSubsection>
             </ExamSection>
           </div>
