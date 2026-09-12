@@ -2,7 +2,7 @@ import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/exam/ExamSection";
-import { InlineRef } from "@/components/topic/InlineRef";
+import { InlineRef } from "@/components/references/InlineRef";
 import { vaporizersQuiz } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { VaporizerDiagram } from "@/components/diagrams/physics/VaporizerDiagram";
