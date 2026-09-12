@@ -12,6 +12,7 @@ import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { DrugDosesCallout } from "@/components/icu/DrugDosesCallout";
 
 const vasoactiveAgentsFaqs: Array<[string, string]> = [
   [
