@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { DrugDosesCallout } from "@/components/icu/DrugDosesCallout";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/exam/ExamSection";
