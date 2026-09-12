@@ -85,6 +85,8 @@ import { topicRouteEntries, TOPIC_REDIRECTS } from "@/routes/topicRoutes";
 import { RequireAdmin } from "@/components/layout/RequireAdmin";
 const SpoofedDomains = lazy(() => import("./pages/admin/SpoofedDomains"));
 const AdminWebVitals = lazy(() => import("./pages/admin/WebVitals"));
+const AdminContentEditor = lazy(() => import("./pages/admin/ContentEditor"));
+
 
 const Loading = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">
