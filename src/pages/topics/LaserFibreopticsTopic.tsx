@@ -114,9 +114,14 @@ const LaserFibreopticsTopic = () => {
                 by external energy input (pumping) — optical, electrical, or chemical.
               </p>
               <p>
-                The gain medium sits within an <strong>optical cavity</strong> bounded by two mirrors. The total mirror reflects all
-                light back; the partial mirror allows a fraction to escape as the laser beam. Multiple passes through the gain medium
-                amplify the light exponentially. The resulting beam is <strong>monochromatic</strong> (single wavelength),
+                The gain medium sits within an <strong>optical cavity</strong> — also called the <strong>resonator</strong> —
+                bounded by two mirrors. Light is reflected back and forth through the gain medium, being amplified by stimulated
+                emission on every pass. The mirror separation is set so that it is an integer multiple of half the desired
+                wavelength, so the reflected waves reinforce as a <strong>standing wave</strong> (resonance) and only that
+                wavelength and direction survive. The totally reflective mirror returns all light to the cavity; the
+                <strong> partially reflective</strong> mirror lets a fraction escape as the beam. This resonant amplification and
+                geometric filtering is what produces the beam's high intensity and collimation.<InlineRef topicId="lasers-fibreoptics" refLabel="Middleton Ch.14" />
+                Multiple passes through the gain medium amplify the light exponentially. The resulting beam is <strong>monochromatic</strong> (single wavelength),
                 <strong> coherent</strong> (waves in phase), and <strong>collimated</strong> (parallel, minimal divergence).
               </p>
               <div className="overflow-x-auto">
@@ -186,6 +191,22 @@ const LaserFibreopticsTopic = () => {
                  thermal and inhalational injury and remove debris
                  <InlineRef topicId="lasers-fibreoptics" refLabel="BJA Educ 2017" />.
               </p>
+              <div className="rounded-lg border border-border bg-secondary/30 p-4">
+                <h3 className="font-serif text-lg font-bold text-foreground">After the fire — ongoing management</h3>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
+                  <li><strong>Airway plan:</strong> after bronchoscopy, decide between continued intubation (progressive oedema
+                    is likely with any supraglottic or tracheal burn) and extubation with close observation; consider a leak test
+                    and have difficult-airway and surgical-airway equipment immediately available.</li>
+                  <li><strong>Supportive care:</strong> warmed humidified oxygen, nebulised bronchodilators as required, regular
+                    chest physiotherapy and suction of carbonaceous debris, and adequate analgesia.</li>
+                  <li><strong>Observation:</strong> admit to a critical care environment for at least 24 h to monitor for
+                    progressive airway oedema and deteriorating gas exchange.</li>
+                  <li><strong>Investigations:</strong> the initial chest radiograph is frequently normal — radiological and
+                    clinical signs of inhalational injury are often delayed by 24–48 h, so repeat imaging and blood gases.</li>
+                  <li><strong>Medication:</strong> there is little evidence for routine prophylactic antibiotics or
+                    corticosteroids; treat proven infection and document the incident, debrief the team and report the event.<InlineRef topicId="lasers-fibreoptics" refLabel="Assoc Anaesth Airway Fire" /></li>
+                </ul>
+              </div>
               <p>
                 <strong>Eye protection</strong> is mandatory for all theatre personnel. The goggles must be specific to the laser
                 wavelength in use and have an optical density sufficient to reduce exposure below the maximum permissible level
