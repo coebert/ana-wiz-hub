@@ -56,6 +56,11 @@ const tocItems = [
   { id: "section-anaemia", label: "Anaemia & Iron Deficiency", group: "Core" },
   { id: "section-thrombocytopenia", label: "Thrombocytopenia", group: "Core" },
   { id: "section-neutropenia", label: "Neutropenia", group: "Core" },
+  { id: "section-haemoglobinopathies", label: "Haemoglobinopathies", group: "Advanced" },
+  { id: "section-bleeding-disorders", label: "Inherited Bleeding Disorders", group: "Advanced" },
+  { id: "section-acquired-coagulopathy", label: "Acquired Coagulopathy & Platelet Disorders", group: "Advanced" },
+  { id: "section-thrombophilia-anticoag", label: "Thrombophilia & Perioperative Anticoagulation", group: "Advanced" },
+  { id: "section-malignancy", label: "Haematological Malignancy & Its Treatment", group: "Advanced" },
 ];
 
 const haematologicalDiseaseFaqs: Array<[string, string]> = [

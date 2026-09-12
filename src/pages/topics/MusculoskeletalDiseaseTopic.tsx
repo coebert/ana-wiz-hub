@@ -3,6 +3,7 @@ import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
 import { InlineRef } from "@/components/references/InlineRef";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { musculoskeletalDiseaseQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
@@ -372,6 +373,8 @@ const MusculoskeletalDiseaseTopic = () => {
                 </div>
               </div>
             </section>
+
+            <TopicFaqs faqs={musculoskeletalDiseaseFaqs} />
           </div>
         </ExamSection>
       }

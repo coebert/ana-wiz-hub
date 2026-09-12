@@ -48,6 +48,7 @@ const tocItems = [
   { id: "section-muscular-dystrophies", label: "Muscular Dystrophies", group: "Muscular" },
   { id: "section-spinal-cord-injury", label: "Spinal Cord Injury", group: "Spinal" },
   { id: "section-guillain-barre", label: "Guillain–Barré Syndrome", group: "Neuropathy" },
+  { id: "section-stroke-cognitive", label: "Stroke, Perioperative Cognition & ICP Cross-Links", group: "Cerebrovascular" },
 ];
 
 const keyPoints = [
@@ -184,6 +185,17 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Myasthenic crisis: weakness from disease exacerbation — needs more anticholinesterase or immunotherapy</li>
                 <li>Cholinergic crisis: weakness from excess anticholinesterase — excessive secretions, bradycardia, miosis</li>
                 <li>Edrophonium (Tensilon) test can differentiate — improvement = myasthenic; worsening = cholinergic</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Quantitative Monitoring, Immunotherapy & Drug Conversion</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Quantitative (objective) neuromuscular monitoring — acceleromyography or mechanomyography with TOF ratio — is mandatory throughout, since qualitative/visual TOF assessment cannot reliably detect fade at the safety margins seen in MG; aim for TOF ratio &gt;0.9 before extubation</li>
+                <li>Sugammadex 2–4 mg/kg reverses rocuronium-induced block reliably even in MG and avoids anticholinesterase-related complications (secretions, bradycardia, unmasking cholinergic crisis); higher doses (up to 16 mg/kg) may be needed for immediate reversal of deep block</li>
+                <li>Leventhal criteria predict need for postoperative ventilation: disease duration &gt;6 years, coexisting COPD, pyridostigmine dose &gt;750 mg/day, vital capacity &lt;2.9 L — 2 or more positive criteria predicts a high likelihood of requiring postoperative ventilatory support</li>
+                <li>Pyridostigmine–neostigmine conversion: oral pyridostigmine 60 mg ≈ IV neostigmine 0.5–1 mg (roughly 1/30th the oral pyridostigmine dose) if the enteral route is temporarily unavailable perioperatively; give with glycopyrronium to limit muscarinic side effects</li>
+                <li>Preoperative optimisation for severe/bulbar/respiratory disease: plasma exchange (typically 5 exchanges over 7–14 days) or IVIG 0.4 g/kg/day for 5 days (total 2 g/kg) — both produce rapid but temporary improvement (weeks); equivalent efficacy, do not combine</li>
+                <li>Lambert-Eaton myasthenic syndrome (LEMS) — a key exam contrast: presynaptic voltage-gated calcium channel antibodies (often paraneoplastic, small cell lung cancer) cause proximal weakness that <em>improves</em> with repeated activity (post-tetanic potentiation), autonomic dysfunction (dry mouth) is prominent, and patients are sensitive to <strong>both</strong> depolarising and non-depolarising NMBAs — reduce doses of all NMBAs and anticipate a poor/absent response to anticholinesterases</li>
               </ul>
             </div>
           </div>

@@ -106,6 +106,42 @@ const CardiovascularDiseaseTopic = () => {
          </p>
          <TopicTableOfContents items={tocItems} />
 
+         {/* Perioperative Risk Stratification */}
+         <section id="section-risk-stratification" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Perioperative Cardiac Risk Stratification</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Risk Prediction Tools</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Revised Cardiac Risk Index (RCRI, Lee 1999)</strong> — one point each for: high-risk surgery (intraperitoneal/intrathoracic/suprainguinal vascular), history of IHD, history of heart failure, history of cerebrovascular disease, insulin-dependent diabetes, creatinine &gt;177 µmol/L (2.0 mg/dL). Risk of major cardiac complication: 0 points ≈0.4%, 1 point ≈1%, 2 points ≈2.4%, ≥3 points ≈5.4%</li>
+                <li><strong>ACS-NSQIP Surgical Risk Calculator / MICA model</strong> — incorporates ASA grade, functional status, procedure type and comorbidities to give a continuous predicted risk of MI or cardiac arrest; performs better than RCRI at the extremes of risk and is endorsed by ACC/AHA 2014 and 2024 as the preferred first step</li>
+                <li>ESC/ESA 2022 stepwise pathway: (1) urgency of surgery, (2) active cardiac conditions (unstable angina, decompensated HF, severe arrhythmia, severe valve disease), (3) surgery-specific risk (low &lt;1%, intermediate 1–5%, high &gt;5% 30-day cardiovascular death/MI), (4) functional capacity, (5) further testing only if it will change management</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Functional Capacity & CPET</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Functional capacity expressed in metabolic equivalents (METs): 1 MET = resting O₂ consumption (3.5 mL/kg/min). Climbing a flight of stairs or walking briskly on the flat ≈4 METs; the inability to achieve 4 METs on self-report (Duke Activity Status Index) is associated with increased perioperative and long-term cardiac risk (METS trial 2018 confirmed self-reported METs poorly predict complications, favouring objective testing)</li>
+                <li>Cardiopulmonary exercise testing (CPET) gives objective, reproducible values: anaerobic threshold (AT) &lt;11 mL/kg/min identifies increased perioperative risk, and AT &lt;11 mL/kg/min combined with myocardial ischaemia on ECG during CPET carries the highest risk</li>
+                <li>Peak VO₂ &lt;15 mL/kg/min (or &lt;15–20 mL/kg/min depending on surgery/procedure) is also used as a threshold for high risk before major surgery (e.g. lung resection, major intra-abdominal or intrathoracic surgery)</li>
+                <li>Ventilatory equivalent for CO₂ (VE/VCO₂ slope) &gt;34–36 is an additional adverse prognostic marker, particularly relevant in heart failure and pulmonary hypertension</li>
+                <li>CPET use is limited by peripheral vascular disease, musculoskeletal limitation and poor patient effort — use pharmacological or imaging stress tests as an alternative when CPET is not feasible</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Biomarkers: BNP/NT-proBNP and Troponin</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Preoperative BNP &gt;92 pg/mL or NT-proBNP &gt;300 pg/mL (age &lt;70) / &gt;450 pg/mL (age ≥70, or per local assay) independently predicts postoperative myocardial injury and death, and is recommended by ESC/ESA 2022 and Canadian Cardiovascular Society guidance in patients ≥65 y or 45–64 y with cardiovascular disease undergoing intermediate/high-risk non-cardiac surgery</li>
+                <li>An elevated biomarker should trigger postoperative troponin surveillance rather than automatic cancellation or further non-invasive testing (which rarely changes management)</li>
+                <li><strong>Myocardial Injury after Non-Cardiac Surgery (MINS)</strong> — defined by the VISION study as a troponin rise attributable to ischaemia (with or without symptoms) within 30 days of surgery; independently predicts 30-day mortality. Diagnostic troponin T threshold for MINS ≥65 ng/L (or any rise/fall pattern with peak ≥20 ng/L plus ischaemic features) depending on assay generation</li>
+                <li>Recommended surveillance: measure troponin pre-operatively and at 6–12 h and on day 1–2 post-op in patients with RCRI ≥1, age &gt;65, or significant cardiovascular disease undergoing intermediate/high-risk non-cardiac surgery (ESC/ESA 2022; ACC/AHA 2024)</li>
+                <li>Management of MINS/perioperative MI: cardiology review, dual antiplatelet/anticoagulation balanced against bleeding risk, echocardiography, and secondary prevention (statin, ACE-I, β-blocker) as tolerated — most perioperative MIs are Type 2 (supply–demand mismatch) rather than plaque rupture</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
          {/* Ischaemic Heart Disease */}
          <section id="section-ischaemic-heart-disease" className="scroll-mt-24">
            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ischaemic Heart Disease</h2>
