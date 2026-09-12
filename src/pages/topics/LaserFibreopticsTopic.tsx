@@ -204,7 +204,7 @@ const LaserFibreopticsTopic = () => {
                 <p className="mt-3 text-sm">
                   Class 4 use requires a controlled area, wavelength-specific eye protection, key control, entrance warning signs,
                   restricted access and a designated Laser Safety Officer
-                  <InlineRef topicId="lasers-fibreoptics" refLabel="Middleton Ch.14" />.
+                  <InlineRef topicId="lasers-fibreoptics" refLabel="BJA Educ 2004" />.
                 </p>
               </div>
             </div>
