@@ -13,6 +13,7 @@ import { DwellTimeInfographic } from "@/components/diagrams/perioperative/DwellT
 import { vascularAccessDevicesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const VascularAccessDevicesTopicWorkedExamples: WorkedExample[] = [
   {
@@ -53,6 +54,10 @@ const tocItems = [
   { id: "section-vascath-haemodialysis", label: "Vascath & Haemodialysis", group: "Devices" },
   { id: "section-trauma-lines", label: "Trauma Lines", group: "Devices" },
   { id: "section-swan-ganz-long-term", label: "Swan-Ganz & Long-term Devices", group: "Specialist" },
+  { id: "section-cvc-tip-confirmation", label: "CVC Tip Confirmation", group: "Specialist" },
+  { id: "section-arterial-lines", label: "Arterial Lines", group: "Specialist" },
+  { id: "section-intraosseous-access", label: "Intraosseous Access", group: "Specialist" },
+  { id: "section-coagulopathy-anticoagulation", label: "Coagulopathy & Anticoagulation", group: "Specialist" },
   { id: "section-dwell-times-scenarios", label: "Dwell Times & Clinical Scenarios", group: "Evidence" },
 ];
 
