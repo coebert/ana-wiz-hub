@@ -191,6 +191,55 @@ const CardiothoracicTopic = () => {
           </div>
         </CollapsibleSubsection>
 
+        <CollapsibleSubsection title="Complications of CPB — a system-by-system structure">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Blood contact with the non-endothelial circuit, ischaemia–reperfusion, endotoxaemia and surgical trauma trigger a systemic inflammatory response with complement, contact-system, neutrophil, platelet and cytokine activation. Every organ complication of bypass can be traced back to that response plus embolism and non-pulsatile perfusion<InlineRef topicId="cardiothoracic" refLabel="Warren 2009 CPB Inflammation" />.
+          </p>
+          <div className="space-y-2">
+            {[
+              { effect: "Systemic (SIRS)", detail: "Post-perfusion syndrome: fever, capillary leak, oedema, vasoplegia and raised vasopressor requirement, occasionally progressing to multi-organ dysfunction. Risk rises with bypass duration; mitigation includes biocompatible circuits, minimised prime, TXA, and avoidance of unnecessary transfusion." },
+              { effect: "Haematological", detail: "Platelet activation, adhesion and consumption with acquired platelet dysfunction; dilution and consumption of clotting factors; hyperfibrinolysis; heparin rebound; haemolysis from shear and suction. Protamine reactions range from histamine-mediated hypotension to true anaphylaxis and catastrophic pulmonary vasoconstriction with right ventricular failure — give slowly, be ready with vasopressors, adrenaline and reheparinisation." },
+              { effect: "Neurological", detail: "Stroke in roughly 1–3% (higher after valve and arch surgery) from macroemboli (atheroma, air, thrombus) and hypoperfusion; postoperative cognitive dysfunction in up to 30–50% early, from microemboli, inflammation and cerebral hypoperfusion; delirium is common. Mitigation: epiaortic scanning, careful de-airing, α-stat pH management in adults, MAP maintenance, glycaemic control, cerebral oximetry in arch work." },
+              { effect: "Renal", detail: "AKI in 5–30%, dialysis-requiring in 1–5% — non-pulsatile flow, haemodilution, haemolysis with free haemoglobin, inflammation, nephrotoxins and low perfusion pressure. Keep MAP ≥65–70 mmHg (higher in hypertensive/CKD patients), avoid hypovolaemia, limit haemodilution and avoid NSAIDs and unnecessary starch/nephrotoxins." },
+              { effect: "Pulmonary", detail: "'Pump lung' — neutrophil sequestration in the pulmonary vasculature during the non-ventilated bypass period causes increased permeability, atelectasis, reduced compliance and impaired gas exchange; a small proportion progress to ARDS. Lung-protective ventilation before and after bypass, recruitment on separation, and restrictive transfusion reduce risk." },
+              { effect: "Cardiovascular", detail: "Myocardial stunning and reperfusion injury after cardioplegic arrest with a nadir in function at 4–6 h, arrhythmias (especially AF), coronary or graft air embolism, and vasoplegia refractory to catecholamines (vasopressin or methylene blue may be needed). Inotropic support, careful preload optimisation and pacing wires are routine." },
+              { effect: "Metabolic & other", detail: "Hyperglycaemia and insulin resistance, hypokalaemia/hyperkalaemia from cardioplegia, hypocalcaemia after citrated blood, hypomagnesaemia, hypothermia-related coagulopathy, gastrointestinal hypoperfusion with ileus or (rarely) mesenteric ischaemia, hepatic and pancreatic enzyme rises, and splanchnic endotoxin translocation feeding the inflammatory response." },
+            ].map((e) => (
+              <div key={e.effect} className="flex gap-3 p-3 rounded border border-border">
+                <span className="font-bold text-primary text-sm whitespace-nowrap">{e.effect}</span>
+                <span className="text-sm text-muted-foreground">{e.detail}</span>
+              </div>
+            ))}
+          </div>
+        </CollapsibleSubsection>
+
+        <CollapsibleSubsection title="Postoperative Atrial Fibrillation (POAF)">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            POAF complicates around <strong>30%</strong> of cardiac surgery (20–40%; up to 60% after combined valve and coronary procedures), peaking on postoperative days 2–3. It is not benign: it is associated with stroke, longer ICU and hospital stay, heart failure and increased long-term mortality<InlineRef topicId="cardiothoracic" refLabel="POAF JCVA 2024" />.
+          </p>
+          <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+            <li><strong>Mechanism</strong>: an inflammatory and oxidative-stress substrate (pericardiotomy, bypass-related SIRS) acting on atrial stretch, catecholamine surge, electrolyte shifts and pre-existing atrial fibrosis.</li>
+            <li><strong>Risk factors</strong>: increasing age (the strongest), hypertension, obesity, valve surgery, left atrial enlargement, prior AF, COPD, chronic kidney disease, heart failure, and abrupt withdrawal of chronic beta-blockade.</li>
+            <li><strong>Prophylaxis</strong>: continue or restart beta-blockers perioperatively (never stop them abruptly); correct potassium to 4.5–5.0 mmol/L and magnesium to &gt;1.0 mmol/L; consider amiodarone prophylaxis in high-risk patients; posterior pericardiotomy and biatrial pacing reduce incidence in selected centres; statins and good analgesia/volume management help.</li>
+            <li><strong>Haemodynamically unstable AF</strong> (hypotension, ischaemia, pulmonary oedema): synchronised DC cardioversion under sedation/anaesthesia, correct electrolytes, exclude tamponade, ischaemia, pneumothorax and hypovolaemia.</li>
+            <li><strong>Stable AF</strong>: rate control with a beta-blocker (or diltiazem if beta-blockade contraindicated), or rhythm control with IV amiodarone 300 mg over 20–60 min then 900 mg over 24 h; digoxin is a second-line adjunct in heart failure. Treat the reversible drivers — pain, hypovolaemia, hypoxia, hypokalaemia, hypomagnesaemia, sepsis, inotropes.</li>
+            <li><strong>Anticoagulation</strong>: consider once AF persists or recurs beyond <strong>48 hours</strong>, weighing surgical bleeding risk against stroke risk (CHA₂DS₂-VASc); most patients are transitioned to a DOAC or warfarin with a planned review at 4–6 weeks, since POAF predicts later documented AF and merits follow-up rather than assumption of cure<InlineRef topicId="cardiothoracic" refLabel="POAF JCVA 2024" />.</li>
+          </ul>
+        </CollapsibleSubsection>
+
+        <CollapsibleSubsection title="Transoesophageal Echocardiography (TOE) in Cardiac Surgery">
+          <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+            <li><strong>Indications</strong>: all valve repair/replacement and congenital surgery; confirming and refining the surgical plan; assessing ventricular function, filling and regional wall motion; diagnosing the cause of haemodynamic instability (hypovolaemia, RV failure, tamponade, dynamic LVOT obstruction, aortic dissection); guiding cannula, ECMO and intra-aortic balloon placement; confirming de-airing and assessing repair adequacy after separation from bypass.</li>
+            <li><strong>Absolute contraindications</strong>: oesophageal stricture, tumour, perforation or recent oesophageal/gastric surgery, active upper GI bleeding, and an unwilling or uninformed conscious patient. <strong>Relative</strong>: oesophageal varices or diverticulum, hiatus hernia, previous radiotherapy, severe cervical spine instability, and coagulopathy.</li>
+            <li><strong>Core views</strong>: mid-oesophageal four-chamber, two-chamber, long-axis (LVOT and aortic valve), aortic valve short-axis, bicaval, RV inflow–outflow, plus transgastric mid-papillary short-axis and deep transgastric views for Doppler alignment.</li>
+            <li><strong>Assessments</strong>: valve morphology and regurgitant/stenotic severity, ventricular systolic and diastolic function, chamber sizes, pericardium, aorta, intracardiac shunts, and quantification with planimetry, pressure gradients, PISA and continuity-equation methods.</li>
+            <li><strong>De-airing</strong>: after any open-chamber procedure, TOE identifies residual air in the left atrium, left ventricular apex and pulmonary veins in the head-down position, guiding venting before the cross-clamp comes off — a key step in preventing coronary and cerebral air embolism.</li>
+            <li><strong>Insertion technique</strong>: anaesthetised, intubated patient, head neutral, jaw lifted with a lubricated probe passed in the midline without force; never force against resistance and consider laryngoscope-assisted or bougie-guided insertion after a failed pass. Bite protection, gentle manipulation, minimal freeze-frame time and probe removal before extubation.</li>
+            <li><strong>Complications</strong>: national ACTACC audit data show a major complication rate of about <strong>1 in 1300</strong> examinations (oesophageal or gastric injury, perforation, significant bleeding) and TOE-related death around <strong>1 in 3000</strong>; minor odynophagia, lip and dental trauma are considerably more common<InlineRef topicId="cardiothoracic" refLabel="ACTACC TOE Audit 2019" />.</li>
+          </ul>
+        </CollapsibleSubsection>
+
+
         <CollapsibleSubsection title="Key Cardiac Surgery Considerations">
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
