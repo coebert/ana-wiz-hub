@@ -88,6 +88,7 @@ const IcuInfusions = lazy(() => import("./pages/IcuInfusions"));
 const IcuManagementFlows = lazy(() => import("./pages/IcuManagementFlows"));
 const PaediatricIcuFlows = lazy(() => import("./pages/PaediatricIcuFlows"));
 const PaediatricWithdrawalFlows = lazy(() => import("./pages/PaediatricWithdrawalFlows"));
+const AdultWithdrawalFlows = lazy(() => import("./pages/AdultWithdrawalFlows"));
 const IcuDrugCalculator = lazy(() => import("./pages/IcuDrugCalculator"));
 const IcuNursingProtocols = lazy(() => import("./pages/IcuNursingProtocols"));
 const IcuDrugMechanisms = lazy(() => import("./pages/IcuDrugMechanisms"));
