@@ -57,13 +57,15 @@ const CardiovascularDiseaseTopicWorkedExamples: WorkedExample[] = [
 ];
 
 const tocItems = [
+  { id: "section-risk-stratification", label: "Perioperative Cardiac Risk Stratification", group: "Core" },
   { id: "section-ischaemic-heart-disease", label: "Ischaemic Heart Disease", group: "Core" },
   { id: "section-valvular-heart-disease", label: "Valvular Heart Disease", group: "Core" },
   { id: "section-hypertension", label: "Hypertension", group: "Core" },
-  { id: "section-heart-failure", label: "Heart Failure", group: "Management" },
+  { id: "section-heart-failure", label: "Heart Failure & Cardiomyopathy", group: "Management" },
   { id: "section-arrhythmias-pacemakers-and-icds", label: "Arrhythmias, Pacemakers & ICDs", group: "Devices" },
   { id: "section-pulmonary-hypertension", label: "Pulmonary Hypertension", group: "Specialist" },
   { id: "section-adult-congenital-heart-disease", label: "Adult Congenital Heart Disease", group: "Specialist" },
+  { id: "section-postoperative-care", label: "Postoperative Cardiac Care", group: "Management" },
 ];
 
 const cardiovascularDiseaseFaqs: Array<[string, string]> = [

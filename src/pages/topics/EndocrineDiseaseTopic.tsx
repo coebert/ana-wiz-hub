@@ -66,6 +66,8 @@ const tocItems = [
   { id: "section-adrenal-disorders", label: "Adrenal Disorders", group: "Adrenal" },
   { id: "section-phaeochromocytoma", label: "Phaeochromocytoma", group: "Neuroendocrine" },
   { id: "section-carcinoid-syndrome", label: "Carcinoid Syndrome", group: "Neuroendocrine" },
+  { id: "section-pituitary-disease", label: "Pituitary Disease", group: "Neuroendocrine" },
+  { id: "section-obesity-endocrine", label: "Obesity-Related Endocrine/Metabolic Issues", group: "Neuroendocrine" },
 ];
 
 const endocrineDiseaseFaqs: Array<[string, string]> = [
@@ -115,6 +117,20 @@ const EndocrineDiseaseTopic = () => {
                 <li>Assess for end-organ damage: autonomic neuropathy (gastroparesis, silent MI, postural hypotension), nephropathy, retinopathy</li>
                 <li>Stiff joint syndrome (limited joint mobility): "prayer sign" — may indicate difficult intubation</li>
                 <li>Coronary artery disease screening — diabetic patients have 2–4× increased cardiovascular risk</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Day-of-Surgery Drug Modification by Class</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Metformin: continue if eGFR normal and only one meal missed; omit on the day if a prolonged (&gt;1 meal) fast is planned or renal function is impaired (lactic acidosis risk)</li>
+                <li>Sulfonylureas (gliclazide, glimepiride): omit on the morning of surgery — hypoglycaemia risk from ongoing insulin secretion without oral intake</li>
+                <li>SGLT2 inhibitors (dapagliflozin, empagliflozin, canagliflozin, ertugliflozin): omit for 3 days before major surgery (and on the day of minor surgery) — risk of euglycaemic diabetic ketoacidosis (normal or mildly raised glucose with raised ketones and metabolic acidosis) driven by glycosuria-induced volume depletion and enhanced ketogenesis; restart only once eating/drinking normally and ketones normal</li>
+                <li>DPP-4 inhibitors (sitagliptin, linagliptin) and pioglitazone: continue as usual on the day of surgery</li>
+                <li>GLP-1 receptor agonists (semaglutide, liraglutide, dulaglutide, tirzepatide): delay gastric emptying via vagally-mediated pyloric slowing — solid gastric residue and aspiration risk persist despite standard fasting even when the drug is correctly omitted</li>
+                <li>Association of Anaesthetists advice: omit daily preparations on the day of surgery; omit weekly preparations for at least one week before surgery (guidance continues to evolve)</li>
+                <li>If not omitted as advised, manage as high aspiration risk: consider prolonged clear-fluid-only fasting, point-of-care gastric ultrasound where available, and rapid sequence induction <InlineRef topicId="endocrine-disease" refLabel="BJA Educ Diabetes 2024" /></li>
+                <li>All basal (long-acting/background) insulin: continue but reduce by ~20% (i.e. give 80% of usual dose) the night before/morning of surgery in both type 1 and type 2 DM</li>
+                <li>Short-acting/prandial and mixed insulins: omit the dose that coincides with a missed meal</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
