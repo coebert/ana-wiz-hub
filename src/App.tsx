@@ -78,6 +78,11 @@ const ClinicalSection = lazy(() => import("./pages/ClinicalSection"));
 const IntensiveCareSection = lazy(() => import("./pages/IntensiveCareSection"));
 const PerioperativeSection = lazy(() => import("./pages/PerioperativeSection"));
 const PerioperativeCaseBank = lazy(() => import("./pages/PerioperativeCaseBank"));
+const PhysicsCaseBank = lazy(() => import("./pages/PhysicsCaseBank"));
+const PhysiologyCaseBank = lazy(() => import("./pages/PhysiologyCaseBank"));
+const PharmacologyCaseBank = lazy(() => import("./pages/PharmacologyCaseBank"));
+const IntensiveCareCaseBank = lazy(() => import("./pages/IntensiveCareCaseBank"));
+
 const AnatomySection = lazy(() => import("./pages/AnatomySection"));
 const ChemistrySection = lazy(() => import("./pages/ChemistrySection"));
 
