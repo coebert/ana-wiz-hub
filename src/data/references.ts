@@ -179,6 +179,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2004", citation: "Dorsch JA. Fibreoptics and light transmission. BJA Education. 2004;4(4):128-131.", url: "https://doi.org/10.1093/bjaceaccp/mkh035" },
     { label: "BJA Educ 2004 (Spectrophotometry)", citation: "Moyle JTB. Spectrophotometry. BJA Education. 2004;4(4):135-138.", url: "https://doi.org/10.1093/bjaceaccp/mkh037" },
     { label: "BJA Educ 2017 (Pulse oximetry)", citation: "Nitzan M, Romem A, Koppel R. Pulse oximetry: fundamentals and technology update. BJA Education. 2017;17(1):1-5. (AC/DC pulsatile-vs-static principle, CO and MetHb behaviour.)", url: "https://doi.org/10.2147/MDER.S47319" },
+    { label: "NEJM 2009 (CO poisoning)", citation: "Weaver LK. Carbon monoxide poisoning. N Engl J Med. 2009;360(12):1217-1225. Carboxyhaemoglobin half-life falls from approximately 300 minutes breathing air to about 90 minutes on high-flow oxygen and 30 minutes at 2.5–3 atmospheres absolute.", url: "https://doi.org/10.1056/NEJMcp0808891" },
+    { label: "NEJM 2002 (HBO for CO)", citation: "Weaver LK, Hopkins RO, Chan KJ, et al. Hyperbaric oxygen for acute carbon monoxide poisoning. N Engl J Med. 2002;347(14):1057-1067.", url: "https://doi.org/10.1056/NEJMoa013121" },
+    { label: "MHRA Lasers 2015", citation: "Medicines and Healthcare products Regulatory Agency. Lasers, intense light source systems and LEDs — guidance for safe use in medical, surgical, dental and aesthetic practices. 2015.", url: "https://www.gov.uk/government/publications/lasers-intense-light-source-systems-and-leds-guidance-for-safe-use-in-medical-surgical-dental-and-aesthetic-practices" },
+    { label: "BS EN 60825-1", citation: "British Standards Institution. BS EN 60825-1: Safety of laser products — equipment classification and requirements (laser classes 1–4 and wavelength-specific eye protection)." },
   ],
 
   "mri-physics": [
