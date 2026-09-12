@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { ArrowLeft, Calculator, Syringe, AlertTriangle } from "lucide-react";
 import { icuInfusionGroups, type Infusion } from "@/data/icuInfusions";
 import { Input } from "@/components/ui/input";
@@ -67,12 +67,30 @@ function fmt(n: number, dp = 2): string {
   return n.toLocaleString("en-GB", { maximumFractionDigits: dp });
 }
 
+/** Match a ?drug= param (exact name or slug-ish fragment) to an infusion. */
+function findInfusionParam(value: string | null) {
+  if (!value) return null;
+  const needle = value.toLowerCase().replace(/[^a-z]/g, "");
+  return (
+    allInfusions.find((i) => i.drug.toLowerCase() === value.toLowerCase()) ??
+    allInfusions.find((i) => i.drug.toLowerCase().replace(/[^a-z]/g, "").startsWith(needle)) ??
+    null
+  );
+}
+
 const IcuDrugCalculator = () => {
-  const [drugKey, setDrugKey] = useState(allInfusions[0].drug);
-  const [weight, setWeight] = useState("70");
-  const [dose, setDose] = useState(String(allInfusions[0].startDose));
+  const [searchParams] = useSearchParams();
+  const preset = findInfusionParam(searchParams.get("drug")) ?? allInfusions[0];
+  const presetDose = searchParams.get("dose");
+  const presetWeight = searchParams.get("weight");
+
+  const [drugKey, setDrugKey] = useState(preset.drug);
+  const [weight, setWeight] = useState(presetWeight && parseFloat(presetWeight) > 0 ? presetWeight : "70");
+  const [dose, setDose] = useState(
+    presetDose && parseFloat(presetDose) > 0 ? presetDose : String(preset.startDose),
+  );
   const [route, setRoute] = useState("IV infusion (central preferred)");
-  const [concentration, setConcentration] = useState(String(allInfusions[0].concentrationPerMl));
+  const [concentration, setConcentration] = useState(String(preset.concentrationPerMl));
 
   const infusion = allInfusions.find((i) => i.drug === drugKey) ?? allInfusions[0];
 

@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
-import { Pill, ShieldCheck } from "lucide-react";
-import { doseReferencesForCase, drugDoseHref } from "@/lib/caseDoseReferences";
+import { Pill, ShieldCheck, Calculator } from "lucide-react";
+import {
+  caseWeightKg,
+  doseReferencesForCase,
+  drugCalculatorHref,
+  drugDoseHref,
+} from "@/lib/caseDoseReferences";
 import { mechanismSlugForDrug } from "@/lib/icuDrugMechanismLinks";
 import type { PerioperativeCase } from "@/components/perioperative/ProgressiveCase";
 
@@ -13,6 +18,7 @@ export const CaseDosingReference = ({ caseData }: CaseDosingReferenceProps) => {
   const references = doseReferencesForCase(caseData);
   if (references.length === 0) return null;
   const ageGroup = references[0].ageGroup;
+  const weightKg = caseWeightKg(caseData);
   const ageLabel =
     ageGroup === "neonatal" ? "Neonatal doses" : ageGroup === "paediatric" ? "Paediatric doses" : "Dosing reference";
 
@@ -24,6 +30,7 @@ export const CaseDosingReference = ({ caseData }: CaseDosingReferenceProps) => {
       <ul className="mt-2 space-y-1.5 text-sm">
         {references.map((reference) => {
           const safetySlug = mechanismSlugForDrug(reference.drug);
+          const calculatorHref = drugCalculatorHref(reference, weightKg);
           return (
             <li key={reference.slug} className="leading-relaxed">
               <Link
@@ -50,6 +57,18 @@ export const CaseDosingReference = ({ caseData }: CaseDosingReferenceProps) => {
                     className="underline underline-offset-4 hover:text-foreground"
                   >
                     Mechanism &amp; metabolism
+                  </Link>
+                </span>
+              ) : null}
+              {calculatorHref ? (
+                <span className="mt-0.5 flex items-center gap-1.5 text-xs text-muted-foreground">
+                  <Calculator className="h-3 w-3 shrink-0" aria-hidden />
+                  <Link
+                    to={calculatorHref}
+                    className="underline underline-offset-4 hover:text-foreground"
+                  >
+                    Calculate infusion rate
+                    {weightKg ? ` (prefilled at ${weightKg} kg)` : ""}
                   </Link>
                 </span>
               ) : null}

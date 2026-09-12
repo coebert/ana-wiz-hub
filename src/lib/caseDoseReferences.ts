@@ -109,3 +109,50 @@ export const doseReferencesForCase = (
 
 export const drugDoseHref = (reference: CaseDoseReference): string =>
   `/intensive-care/drug-doses?drug=${encodeURIComponent(reference.slug)}&age=${reference.ageGroup}#drug-${reference.slug}`;
+
+/* ------------------------------------------------------------------ */
+/* Calculator prefill                                                  */
+/* ------------------------------------------------------------------ */
+
+import { icuInfusionGroups } from "@/data/icuInfusions";
+
+const infusionIndex = icuInfusionGroups.flatMap((group) =>
+  group.infusions.map((infusion) => ({
+    drug: infusion.drug,
+    startDose: infusion.startDose,
+    /** first alphabetic token, e.g. "propofol" from "Propofol 1%" */
+    key: drugSlug(infusion.drug).split("-")[0],
+  })),
+);
+
+/** The infusion record (if any) that matches a dosing-table drug name. */
+export const infusionForDrug = (drug: string) => {
+  const key = drugSlug(drug).split("-")[0];
+  return infusionIndex.find((entry) => entry.key === key);
+};
+
+/**
+ * Patient weight stated in the scenario text (e.g. "82 kg", "3.2kg"), so the
+ * calculator can prefill it. Falls back to a typical neonatal weight.
+ */
+export const caseWeightKg = (caseData: PerioperativeCase): number | null => {
+  const text = [caseData.title, caseData.patient, caseData.presentation].join(" ");
+  const match = /(\d{1,3}(?:\.\d)?)\s?kg\b/i.exec(text);
+  if (match) {
+    const value = parseFloat(match[1]);
+    if (isFinite(value) && value > 0.4 && value <= 250) return value;
+  }
+  return caseAgeGroup(caseData) === "neonatal" ? 3.5 : null;
+};
+
+/** Deep link that opens the ICU drug calculator prefilled for this case. */
+export const drugCalculatorHref = (
+  reference: CaseDoseReference,
+  weightKg: number | null,
+): string | null => {
+  const infusion = infusionForDrug(reference.drug);
+  if (!infusion) return null;
+  const params = new URLSearchParams({ drug: infusion.drug, dose: String(infusion.startDose) });
+  if (weightKg) params.set("weight", String(weightKg));
+  return `/intensive-care/calculator?${params.toString()}`;
+};
