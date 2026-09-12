@@ -678,6 +678,9 @@ const ACCURACY_SYSTEM = `You are a UK anaesthetic and intensive-care content aud
 
 You will be given:
 - The current text of one topic on the AnaesthesiaCore revision site.
+- Any case-bank cases mapped to this topic (staged model answers + discussion) and viva model answers
+  generated for it. These are published learner-facing content: audit them exactly as you audit the
+  topic prose, and label such findings via in_topic_section ("Case bank: <title>" / "Viva model answer: ...").
 - The topic's stated scope (title + description).
 - Excerpts from authoritative UK and international reference sources.
 - A list of previously-raised findings, INCLUDING any already confirmed as FALSE POSITIVES by a human reviewer.
@@ -689,7 +692,7 @@ Raise findings ONLY for:
 - citation    — a specific number/threshold/dose is asserted with NO authoritative source AND a supplied reference contradicts or qualifies it
 
 Hard rules (violations are discarded):
-1. EVERY finding MUST include a verbatim topic_quote (≤300 char, copy-pasted from the markdown — no paraphrase, no ellipsis).
+1. EVERY finding MUST include a verbatim topic_quote (≤300 char, copy-pasted from the topic markdown OR from the case-bank / viva model-answer blocks — no paraphrase, no ellipsis).
 2. EVERY finding MUST include a verbatim source_quote from one of the supplied reference excerpts that explicitly contradicts or supersedes the topic_quote.
 3. If no supplied excerpt explicitly contradicts the topic_quote, DO NOT raise the finding. Conservative is correct.
 4. NEVER re-raise a finding that appears in the FALSE POSITIVES list — those have been reviewed and dismissed.
@@ -710,7 +713,8 @@ Return ONLY the tool call.`;
 const COVERAGE_SYSTEM = `You are a UK FRCA / FFICM examiner reviewing one revision topic for COVERAGE AND DEPTH. You are NOT auditing accuracy.
 
 You will be given:
-- The current text of one topic.
+- The current text of one topic, plus any case-bank cases and viva model answers attached to it
+  (these count as part of the topic's teaching content for coverage purposes).
 - The topic's stated scope (title + description).
 - Reference excerpts from BJA Education / RCoA / FICM / NICE / Resus Council / ESICM.
 - A list of previously-raised coverage findings (open + dismissed as false positive).
