@@ -203,10 +203,48 @@ const OrthopaedicAnaesthesiaTopic = () => {
           <div id="fat-embolism" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Fat Embolism Syndrome">
-            <p className="text-muted-foreground leading-relaxed">Occurs 24-72h after long bone fractures. Classic triad: respiratory distress (earliest), neurological changes, petechial rash (pathognomonic, ~50%). Diagnosis clinical (Gurd's criteria). Treatment supportive: O₂, ventilation, haemodynamic support. Prevention: early fracture stabilisation.</p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Fat embolism syndrome (FES) is a clinical diagnosis, typically appearing <strong>24–72 hours</strong> after long-bone or pelvic fracture (occasionally within 12 h, rarely beyond 2 weeks) and also after intramedullary reaming, cemented arthroplasty, liposuction and bone-marrow harvest. The classic triad is respiratory distress (earliest and commonest), neurological change and a petechial rash<InlineRef topicId="orthopaedic-anaesthesia" refLabel="Kwiatt 2013 FES" />.
+            </p>
+            <h3 className="font-semibold text-foreground text-sm mb-2">Gurd &amp; Wilson criteria (≥1 major + ≥4 minor)</h3>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="text-xs text-muted-foreground mb-1">Major</p>
+                <p className="text-sm text-foreground">Axillary/subconjunctival petechial rash; hypoxaemia (PaO₂ &lt;8 kPa on FiO₂ 0.4); CNS depression disproportionate to hypoxaemia; pulmonary oedema</p>
+              </div>
+              <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="text-xs text-muted-foreground mb-1">Minor</p>
+                <p className="text-sm text-foreground">Tachycardia &gt;110/min; pyrexia &gt;38.5 °C; retinal fat or petechiae (Purtscher retinopathy); jaundice; renal impairment/oliguria; thrombocytopenia or falling haematocrit; raised ESR; fat globules in sputum or urine</p>
+              </div>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              <strong>Schonfeld fat embolism index</strong> scores petechiae 5, diffuse alveolar infiltrates 4, hypoxaemia 3, confusion 1, fever &gt;38 °C 1, tachycardia &gt;120/min 1 and tachypnoea &gt;30/min 1 — a total &gt;5 supports the diagnosis. Lindeque's criteria rely on respiratory variables alone (sustained PaO₂ &lt;8 kPa, PaCO₂ &gt;7.3 kPa, respiratory rate &gt;35 despite sedation, increased work of breathing)<InlineRef topicId="orthopaedic-anaesthesia" refLabel="Kwiatt 2013 FES" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
+              <li><strong>Investigations</strong>: ABG shows hypoxaemia with a widened A–a gradient; CXR is initially normal then shows bilateral patchy 'snowstorm' infiltrates; FBC shows unexplained anaemia and thrombocytopenia; CT pulmonary angiogram excludes thromboembolism and CT/MRI brain may show scattered ischaemic or 'starfield' lesions; fundoscopy may reveal retinal fat globules. No test is diagnostic — BAL fat-laden macrophages are supportive only</li>
+              <li><strong>Differentials</strong>: pulmonary thromboembolism, aspiration, pneumonia and ARDS from other causes, sepsis, transfusion reaction/TRALI, cardiac contusion or failure, and — for the neurological features — head injury, delirium tremens, hypoxic encephalopathy or hyponatraemia. Timing (24–72 h), the rash and thrombocytopenia point to FES rather than PE</li>
+              <li><strong>Management</strong>: supportive — oxygen, CPAP or lung-protective ventilation for respiratory failure, careful fluid balance and haemodynamic support (right ventricle may be strained), analgesia, VTE prophylaxis and correction of coagulopathy. Steroids and heparin are not evidence-based treatments</li>
+              <li><strong>Prevention</strong>: early (within 24 h) operative fracture fixation, gentle reaming with venting and lower intramedullary pressures, and avoiding prolonged traction</li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
           </div>
+
+          <div id="txa" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Tranexamic Acid in Orthopaedic Surgery">
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Mechanism</strong>: synthetic lysine analogue that competitively blocks the lysine-binding sites of plasminogen and plasmin, preventing their attachment to fibrin and so inhibiting fibrinolysis and clot breakdown. It does not promote clot formation, which underlies its favourable thrombotic profile</li>
+              <li><strong>Evidence in trauma</strong>: CRASH-2 randomised 20,211 trauma patients with, or at risk of, significant bleeding and showed reduced all-cause mortality (14.5% vs 16.0%) and death due to bleeding (4.9% vs 5.7%) with 1 g over 10 minutes then 1 g over 8 hours, with no increase in vascular occlusive events; benefit was confined to treatment within 3 hours of injury and treatment after 3 hours was harmful<InlineRef topicId="orthopaedic-anaesthesia" refLabel="CRASH-2 2010" /></li>
+              <li><strong>Evidence in elective arthroplasty</strong>: in primary hip and knee replacement TXA reduces total blood loss by roughly 300–500 mL and approximately halves transfusion requirement, without an increase in venous thromboembolism; it is now a routine ERAS component and is also effective in spinal surgery and hip fracture fixation</li>
+              <li><strong>Dosing</strong>: intravenous 15 mg/kg (commonly 1 g) before incision or tourniquet release, ± a second 1 g dose or an infusion of 1 mg/kg/h intraoperatively. Topical/intra-articular 1.5–3 g in 50–100 mL saline achieves comparable blood-loss reduction with minimal systemic absorption — useful where systemic TXA is felt to be relatively contraindicated. Reduce the dose in significant renal impairment (renally excreted)</li>
+              <li><strong>Cautions</strong>: known thrombophilia or recent arterial/venous thrombosis, active intravascular coagulation, subarachnoid haemorrhage (risk of cerebral ischaemia), acquired colour-vision defects, and seizures — dose-dependent, mediated by glycine-receptor antagonism and mainly reported after high-dose cardiac surgery use. Avoid intrathecal administration; ampoule confusion with bupivacaine has caused catastrophic injury, so check the label meticulously</li>
+              <li><strong>Practical points</strong>: give with other blood-conservation measures (preoperative anaemia optimisation, cell salvage, restrictive transfusion triggers, normothermia) and document the dose, route and timing</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
+
 
           <div id="regional" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
