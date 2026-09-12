@@ -263,6 +263,69 @@ export type Database = {
         }
         Relationships: []
       }
+      content_overrides: {
+        Row: {
+          anchor: string | null
+          body: string
+          created_at: string
+          created_by: string | null
+          heading: string | null
+          id: string
+          kind: string
+          original_text: string | null
+          position: number
+          queued: boolean
+          ref_excerpt: string | null
+          ref_label: string | null
+          ref_pmid: string | null
+          ref_url: string | null
+          status: string
+          topic_id: string
+          topic_title: string
+          updated_at: string
+        }
+        Insert: {
+          anchor?: string | null
+          body?: string
+          created_at?: string
+          created_by?: string | null
+          heading?: string | null
+          id?: string
+          kind: string
+          original_text?: string | null
+          position?: number
+          queued?: boolean
+          ref_excerpt?: string | null
+          ref_label?: string | null
+          ref_pmid?: string | null
+          ref_url?: string | null
+          status?: string
+          topic_id: string
+          topic_title?: string
+          updated_at?: string
+        }
+        Update: {
+          anchor?: string | null
+          body?: string
+          created_at?: string
+          created_by?: string | null
+          heading?: string | null
+          id?: string
+          kind?: string
+          original_text?: string | null
+          position?: number
+          queued?: boolean
+          ref_excerpt?: string | null
+          ref_label?: string | null
+          ref_pmid?: string | null
+          ref_url?: string | null
+          status?: string
+          topic_id?: string
+          topic_title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       drug_verification_jobs: {
         Row: {
           completed_at: string | null
