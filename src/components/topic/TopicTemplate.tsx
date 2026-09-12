@@ -13,6 +13,13 @@ import { TopicCompletionToggle } from "@/components/topic/TopicCompletionToggle"
 import { ReportInaccuracyDialog } from "@/components/feedback/ReportInaccuracyDialog";
 import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
 import { ExamBadgeDedupeProvider } from "@/components/exam/ExamBadgeDedupeContext";
+import {
+  TopicOverrideBlocks,
+  TopicOverrideKeyPoints,
+  TopicOverrideReferences,
+} from "@/components/topic/TopicOverrides";
+import { useLiveContentOverrides } from "@/hooks/useContentOverrides";
+
 
 import { LazyDiagrams } from "@/components/topic/LazyDiagrams";
 import { ExamSummary } from "@/components/exam/ExamSummary";
