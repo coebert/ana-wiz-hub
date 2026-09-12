@@ -25,7 +25,7 @@ const StarlingForcesDiagram = () => {
       venValue: "−2 mmHg",
       direction: "in",
       color: "hsl(200, 65%, 50%)",
-      desc: "Pressure in the interstitial space, normally slightly sub-atmospheric (−2 mmHg) due to lymphatic drainage. Acts to draw fluid OUT of the capillary (opposing Pc minimally). Becomes positive in oedema, reducing further filtration (safety factor).",
+      desc: "Pressure in the interstitial space, normally slightly sub-atmospheric (−2 mmHg) due to lymphatic drainage. Being sub-atmospheric it adds slightly to the outward hydrostatic gradient (Pc − Pi); as it rises towards and above zero it promotes absorption by opposing filtration. Becomes positive in oedema, reducing further filtration (safety factor).",
     },
     {
       id: "πc",
@@ -205,7 +205,7 @@ const StarlingForcesDiagram = () => {
                       opacity={selectedForce === f.id ? 1 : 0.5} />
                     <text x="12" y="7" fontSize="6" fill="hsl(var(--foreground))"
                       fontWeight={selectedForce === f.id ? "700" : "400"} opacity="0.7">
-                      {f.id} — {f.direction === "out" ? "filtration ↑" : "absorption ↑"}
+                      {f.id} — {f.direction === "out" ? "promotes filtration" : "promotes absorption"}
                     </text>
                   </g>
                 ))}
