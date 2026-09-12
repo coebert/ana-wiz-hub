@@ -1,2 +1,4 @@
 - [x] Fix all current preview typecheck/build errors
 - [x] Build perioperative case bank using steroid cover, phaeochromocytoma and antifibrinolytic content
+- [ ] Complete the 23 physics content-audit expansions and sync actioned findings
+- [ ] Expand the perioperative case bank with additional anonymised, evidence-based clinical scenarios in the established two-pass format
