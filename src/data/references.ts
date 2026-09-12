@@ -135,6 +135,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Deranged Physiology Arterial Line", citation: "Yartsev A. The Arterial Line Waveform. Deranged Physiology, CICM Primary Required Reading.", url: "https://derangedphysiology.com/main/cicm-primary-exam/required-reading/cardiovascular-system/Chapter%20018/arterial-line-waveform" },
   ],
   "temperature-measurement": [
+    { label: "NICE NG125", citation: "National Institute for Health and Care Excellence. Perioperative care in adults / surgical site infection guidance referenced for perioperative temperature standards (NG125). 2019.", url: "https://www.nice.org.uk/guidance/ng125" },
+    { label: "BJA Educ Temperature 2020", citation: "Temperature monitoring and management during anaesthesia. BJA Education. 2020;20(9):305-312. Tympanic membrane infrared thermometry estimates core temperature from the aural canal, sharing blood supply with the hypothalamus via the carotid circulation.", url: "https://bjanaesthesia.org/article/S2058-5349(20)30172-8/fulltext" },
     { label: "BJA Educ 2014", citation: "Bindu B, Bindra A, Rath G. Temperature management under general anesthesia. Anesth Essays Res. 2017;11(2):306-316.", url: "https://doi.org/10.4103/aer.AER_123_16" },
     { label: "NICE CG65", citation: "National Institute for Health and Care Excellence. Hypothermia: prevention and management in adults having surgery (CG65). 2008 (updated 14 December 2016).", url: "https://www.nice.org.uk/guidance/cg65", excerpt: "Induction of anaesthesia should not begin unless the patient's temperature is 36.0°C or above (unless there is a need to expedite surgery because of clinical urgency). The patient's temperature should be measured and documented before induction of anaesthesia and then every 30 minutes until the end of surgery. The temperature setting on forced-air warming devices should be set at maximum and then adjusted to maintain a patient temperature of at least 36.5°C. Hypothermia is defined as a core temperature below 36.0°C." },
     { label: "NICE NG180", citation: "National Institute for Health and Care Excellence. Perioperative care in adults (NG180). Published 19 August 2020.", url: "https://www.nice.org.uk/guidance/ng180" },
@@ -151,6 +153,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA 1983 Pneumotachography", citation: "Principles of pneumotachography and the Fleisch capillary resistance. British Journal of Anaesthesia. 1983.", url: "https://doi.org/10.1093/bja/55.12.1239", excerpt: "The Fleisch pneumotachograph consists of a metal housing that contains a capillary bundle. The resistance to flow is linear and is produced by the bundle of capillaries." },
   ],
   "ultrasound-physics": [
+    { label: "BJA Educ Ultrasound 2017", citation: "Gadsden J, Choi D, Lin E. Ultrasound physics. BJA Education. 2017;17(7):229-234.", url: "https://doi.org/10.1093/bjaed/mkw061" },
     { label: "BJA Educ 2017", citation: "Defined A, Sites BD. Ultrasound physics for the anaesthetist. BJA Education. 2006;6(1):21-25.", url: "https://doi.org/10.1093/bjaceaccp/mki064" },
     { label: "Cross & Plunkett Ch.17", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 17: Ultrasound." },
     { label: "Middleton Ch.13", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 13: Ultrasound." },
@@ -242,6 +245,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Davey & Diba Ch.7", citation: "Davey AJ, Diba A. Ward's Anaesthetic Equipment. 6th ed. Chapter 7: Automatic Ventilators." },
   ],
   "statistics-ebm": [
+    { label: "BJA Educ Measures of Association 2020", citation: "Sedgwick P. Measures of association: odds ratio, relative risk and risk reduction. BJA Education. 2020;20(1):2-8.", url: "https://bjanaesthesia.org/article/S2058-5349(20)30012-7/fulltext" },
+    { label: "BJA Educ Diagnostic Tests 2017", citation: "Understanding diagnostic tests: sensitivity, specificity and predictive values. BJA Education. 2017;17(9):301-306.", url: "https://bjanaesthesia.org/article/S2058-5349(17)30188-7/fulltext" },
+    { label: "BJA Educ Confidence Intervals 2019", citation: "How to interpret a confidence interval. BJA Education. 2019;19(12):386-392. A 95% CI is the range that, on repeated sampling, would contain the true population value 95% of the time.", url: "https://bjanaesthesia.org/article/S2058-5349(19)30252-8/fulltext" },
+    { label: "BJA Educ EBM 2021", citation: "Evidence-based medicine: an introduction for anaesthetists. BJA Education. 2021;21(6):215-221.", url: "https://bjanaesthesia.org/article/S2058-5349(21)00030-8/fulltext" },
     { label: "BJA Educ 2016", citation: "McCluskey A, Lalkhen AG. Statistics I–IV. BJA Education. 2007;7(1-4).", url: "https://doi.org/10.1093/bjaceaccp/mkl068" },
     { label: "Petrie & Sabin", citation: "Petrie A, Sabin C. Medical Statistics at a Glance. 4th ed. Wiley-Blackwell; 2019." },
     { label: "BJA Educ 2015", citation: "Greenhalgh T. How to read a paper: Statistics for the non-statistician. BMJ. 1997;315:422-425.", url: "https://doi.org/10.1136/bmj.315.7105.422" },
@@ -357,6 +364,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Gray's Anatomy 42e Ch.70", citation: "Standring S, editor. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020. Ch. 70 — Liver." },
   ],
   "starling-forces": [
+    { label: "BJA Educ Fluid Balance 2017", citation: "Tatara T. Physiology of fluid balance and volume kinetics. BJA Education. 2017;17(11):353-358. Revised Starling principle: filtration occurs along the whole capillary length with return via lymphatics rather than venular reabsorption.", url: "https://www.bjaed.org/article/S2058-5349(17)30095-2/fulltext" },
     { label: "Levick & Michel 2010", citation: "Levick JR, Michel CC. Microvascular fluid exchange and the revised Starling principle. Cardiovasc Res. 2010;87(2):198-210. Total safety factor against oedema ≈ 17 mmHg from rising interstitial pressure, lymphatic recruitment and falling subglycocalyx oncotic pressure.", url: "https://doi.org/10.1093/cvr/cvq062" },
     { label: "Woodcock & Woodcock 2012", citation: "Woodcock TE, Woodcock TM. Revised Starling equation and the glycocalyx model of transvascular fluid exchange. Br J Anaesth. 2012;108(3):384-394. Glycocalyx thickness 0.5–1 µm in capillaries, up to 4 µm in larger arteries.", url: "https://doi.org/10.1093/bja/aer515" },
     { label: "Power & Kam Ch.6", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 6: Capillary Physiology and Fluid Exchange." },
@@ -395,6 +403,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ Remimazolam", citation: "Kilpatrick GJ. Remimazolam: non-clinical and clinical profile of a new sedative/anaesthetic agent. Front Pharmacol. 2021;12:690875.", url: "https://doi.org/10.3389/fphar.2021.690875" },
   ],
   "volatile-agents": [
+    { label: "BJA Volatile Cardioprotection 2006", citation: "Symons JA, Myles PS. Myocardial protection with volatile anaesthetic agents during coronary artery bypass surgery: a meta-analysis. Br J Anaesth. 2006;97(2):127-136.", url: "https://doi.org/10.1093/bja/ael149" },
+    { label: "BJA Open Environmental 2024", citation: "Environmental impact of commonly used anaesthetic agents: systematic literature review with narrative synthesis. BJA Open. 2024;12:100362.", url: "https://doi.org/10.1016/j.bjao.2024.100362" },
     { label: "BJA Educ 2014", citation: "Khan KS, Hayes I, Buggy DJ. Pharmacology of anaesthetic agents II: inhalation anaesthetic agents. BJA Education. 2014;14(3):106-111.", url: "https://doi.org/10.1093/bjaceaccp/mkt038" },
     { label: "Peck & Hill Ch.4", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 4: Inhalational Anaesthetic Agents." },
     { label: "Eger", citation: "Eger EI. Uptake and distribution. In: Miller RD, ed. Miller's Anesthesia. 9th ed. Chapter 24." },
