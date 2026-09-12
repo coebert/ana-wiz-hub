@@ -123,8 +123,8 @@ const IcuDrugSafety = () => {
               The interactions, contraindications and monitoring that go with each of the{" "}
               {icuDrugSafetyCount} drugs in the adult critical care formulary — each with key pharmacokinetic
               parameters (onset, half-life, clearance, volume of distribution, protein binding and
-              elimination) alongside its interactions, contraindications and monitoring — the companion to
-              the{" "}
+              elimination) and a withdrawal guide covering how fast the drug offsets, how to taper it and
+              what to monitor as it comes off — the companion to the{" "}
               <Link
                 to="/intensive-care/drug-doses"
                 className="font-medium text-icu underline-offset-4 hover:underline"
