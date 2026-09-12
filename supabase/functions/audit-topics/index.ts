@@ -952,6 +952,13 @@ type Stages = {
   evidence_reputable?: number;
   evidence_retracted?: number;
 
+  // Extra auditable content beyond the topic prose
+  case_bank_cases?: number;
+  case_bank_chars?: number;
+  viva_answers?: number;
+  viva_answers_chars?: number;
+  viva_error?: string;
+
 };
 
 async function auditTopic(
