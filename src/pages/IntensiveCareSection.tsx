@@ -44,6 +44,8 @@ const IntensiveCareSection = () => {
 
       <CaseBankCallout bank={icuCaseBank} />
 
+      <DrugDosesCallout />
+
       <section id="topics" className="scroll-mt-28">
         <SectionTopicsList section="intensive-care" topics={visibleTopics} />
       </section>
