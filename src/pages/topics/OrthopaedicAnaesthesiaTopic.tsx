@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
