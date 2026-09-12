@@ -296,13 +296,31 @@ const SIUnitsThermodynamicsTopic = () => {
               <p>
                 The <strong>first law</strong> (conservation of energy: ΔU = Q − W) states energy cannot be created or destroyed. In an <strong>adiabatic expansion against a piston</strong>
                 (Q = 0), the work done by the gas comes at the expense of its internal energy, so the gas cools. A related but distinct phenomenon, the <strong>Joule–Thomson effect</strong>,
-                is the cooling seen when a <em>real</em> gas undergoes <strong>isenthalpic</strong> expansion (throttling) through a valve or orifice with no work done and no heat exchange —
-                the mechanism operating in cylinder pressure regulators and cryotherapy probes<InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2017 (Gas Supply)" />.
-                The <strong>Joule-Thomson coefficient</strong> is positive for most gases at room temperature (so they cool on throttling) but negative for hydrogen and helium, which warm.
+                is the temperature change seen when a <em>real</em> gas undergoes <strong>isenthalpic</strong> expansion (throttling) through a valve or orifice with no work done and no heat
+                exchange — the mechanism operating in cylinder pressure regulators and cryotherapy probes<InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2017 (Gas Supply)" />.
+                The <strong>Joule-Thomson coefficient (μ<sub>JT</sub>)</strong> is the change in temperature per unit change in pressure at constant enthalpy, and its sign determines the
+                direction of the effect: most gases (except hydrogen and helium) have a <strong>positive μ<sub>JT</sub> at room temperature and cool on expansion</strong>, while hydrogen and
+                helium have a negative μ<sub>JT</sub> and warm unless pre-cooled below their inversion temperature.
+              </p>
+              <p>
+                <strong>Clinical applications and risks.</strong> <strong>Cryotherapy probes</strong> exploit the effect: rapid expansion of N₂O or CO₂ at the probe tip produces intense
+                cooling (around <strong>−75 °C</strong>) used for tissue ablation. Opening a cylinder valve rapidly expands gas into the regulator, so <strong>ice can form on cylinder valves
+                and regulators</strong>, potentially causing sticking or malfunction. The converse also matters: <strong>rapid compression</strong> of gas (for example when a cylinder valve is
+                snapped open) generates intense heat, which can ignite oil or grease contaminants — the reason cylinder valves must be opened slowly and kept grease-free
+                <InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2017 (Gas Supply)" />.
               </p>
               <p>
                 The <strong>second law</strong> states heat flows spontaneously hot → cold and entropy of an isolated system always increases. This explains
-                perioperative heat loss to the cold theatre. UK-focused reviews (BJA Education 2016) cite typical proportions of <strong>radiation ≈ 40–60%</strong>, <strong>convection ≈ 30%</strong>, and <strong>evaporation up to 20%</strong><InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2016 (Thermo)" />, with conduction contributing only a small share; an older, widely-quoted breakdown from Sessler (Anesthesiology 2008) gives radiation ≈ 40%, convection ≈ 30%, evaporation ≈ 25% and conduction ≈ 5%. Under <strong>general anaesthesia</strong> these proportions change significantly as behavioural and autonomic responses are lost: radiation becomes the dominant mechanism, accounting for up to <strong>60%</strong> of heat loss, while convective and evaporative losses are comparatively smaller<InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2018 (Temperature)" />. Both data sets vary considerably with exposed surface area, ambient airflow, surgical irrigation and whether the patient is awake or anaesthetised. The <strong>third law</strong>
+                perioperative heat loss to the cold theatre via the four mechanisms of heat transfer:
+              </p>
+              <ul className="list-disc list-inside space-y-1.5 text-sm">
+                <li><strong>Conduction</strong> — heat transfer through direct physical contact, e.g. from the patient to a cold operating table; normally a small share (&lt;5%).</li>
+                <li><strong>Convection</strong> — heat carried away by the bulk movement of fluids (gases or liquids), e.g. theatre air currents (laminar flow) sweeping warmed air from the skin surface.</li>
+                <li><strong>Radiation</strong> — heat transfer via infrared electromagnetic waves, which requires no medium, e.g. an exposed patient radiating to cold theatre walls and equipment; usually the largest single mechanism.</li>
+                <li><strong>Evaporation</strong> — heat lost as liquid turns to gas, drawing on the latent heat of vaporisation, from skin, the respiratory tract and open surgical wounds.</li>
+              </ul>
+              <p>
+                UK-focused reviews (BJA Education 2016) cite typical proportions of <strong>radiation ≈ 40–60%</strong>, <strong>convection ≈ 30%</strong>, and <strong>evaporation up to 20%</strong><InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2016 (Thermo)" />, with conduction contributing only a small share; an older, widely-quoted breakdown from Sessler (Anesthesiology 2008) gives radiation ≈ 40%, convection ≈ 30%, evaporation ≈ 25% and conduction ≈ 5%. Under <strong>general anaesthesia</strong> these proportions change significantly as behavioural and autonomic responses are lost: radiation becomes the dominant mechanism, accounting for up to <strong>60%</strong> of heat loss, while convective and evaporative losses are comparatively smaller<InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2018 (Temperature)" />. Both data sets vary considerably with exposed surface area, ambient airflow, surgical irrigation and whether the patient is awake or anaesthetised. The <strong>third law</strong>
                 establishes absolute zero (0 K = −273.15 °C) as the point where entropy approaches zero — defining the Kelvin scale used in gas law calculations.
               </p>
 
