@@ -366,6 +366,21 @@ const VolatileAgentsTopic = () => {
             <p className="text-foreground/90 leading-relaxed mb-3">
               Volatile agents are persistent greenhouse gases. Their 100-year global-warming impact is not equal: desflurane is greatest, followed by isoflurane, then sevoflurane; climate impact also rises with fresh-gas flow and agent consumption <InlineRef topicId="volatile-agents" refLabel="BJA Open Sustainability 2024" />.
             </p>
+            <div className="overflow-x-auto rounded-lg border border-border mb-3">
+              <table className="w-full text-sm">
+                <thead className="bg-secondary/40"><tr><th className="p-3 text-left">Agent</th><th className="p-3 text-left">GWP₁₀₀ (CO₂ = 1)</th><th className="p-3 text-left">Atmospheric lifetime</th><th className="p-3 text-left">Practical point</th></tr></thead>
+                <tbody className="divide-y divide-border text-muted-foreground">
+                  <tr><td className="p-3 font-medium text-foreground">Desflurane</td><td className="p-3">≈2540</td><td className="p-3">~14 years</td><td className="p-3">One hour at 1 MAC with 2 L/min fresh gas is comparable to driving several hundred kilometres; largely withdrawn from UK practice.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Isoflurane</td><td className="p-3">≈539</td><td className="p-3">~3.2 years</td><td className="p-3">Intermediate impact; low cost keeps it in use, and low potency means more agent is consumed per MAC-hour.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Sevoflurane</td><td className="p-3">≈144</td><td className="p-3">~1.1 years</td><td className="p-3">Lowest-impact volatile in routine use and the preferred inhalational agent.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Nitrous oxide</td><td className="p-3">≈273</td><td className="p-3">~109 years</td><td className="p-3">Also depletes stratospheric ozone; piped-supply leakage may exceed clinical use, so decommissioning manifolds delivers large gains.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Propofol (TIVA)</td><td className="p-3">Negligible atmospheric effect</td><td className="p-3">—</td><td className="p-3">Impact is via pharmaceutical manufacture and plastic/clinical waste, roughly two orders of magnitude lower in CO₂ equivalent terms.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-muted-foreground mb-3">
+              Emissions scale with <strong>fresh-gas flow × delivered concentration × duration</strong>, so low-flow anaesthesia is the single most effective mitigation once the agent has been chosen<InlineRef topicId="volatile-agents" refLabel="BJA Open GWP 2024" />.
+            </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li>Use the lowest safe fresh-gas flow, avoiding unnecessary wash-in and prolonged high-flow periods.</li>
               <li>Avoid desflurane and nitrous oxide where a clinically suitable lower-impact technique exists; consider sevoflurane or TIVA.</li>
@@ -386,6 +401,38 @@ const VolatileAgentsTopic = () => {
               </table>
             </div>
             <InlineRef topicId="volatile-agents" refLabel="BJA Organ Effects 2006" />
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Organ-Protective Effects: Preconditioning and Postconditioning</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Brief exposure to a volatile agent before an ischaemic insult (<strong>anaesthetic preconditioning</strong>) or during early
+              reperfusion (<strong>postconditioning</strong>) reduces ischaemia–reperfusion injury. The mechanisms mirror ischaemic
+              preconditioning: opening of mitochondrial and sarcolemmal ATP-sensitive K⁺ channels, a small burst of reactive oxygen species
+              acting as a signal, activation of protein kinase C and the survival kinase pathways (PI3K–Akt, ERK), nitric oxide signalling,
+              and — the final common step — inhibition of mitochondrial permeability transition pore opening, which preserves ATP synthesis
+              and prevents necrotic and apoptotic cell death<InlineRef topicId="volatile-agents" refLabel="Anaesthesia 2021 Preconditioning" />.
+            </p>
+            <div className="grid md:grid-cols-2 gap-3 text-sm">
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground mb-1">Time course</p>
+                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                  <li><strong>Early window:</strong> protection within minutes, lasting 1–2 h, mediated by post-translational changes to existing proteins.</li>
+                  <li><strong>Late (second) window:</strong> appears at 12–24 h and lasts up to 72 h, requiring gene transcription of protective proteins (iNOS, COX-2, heat shock proteins, superoxide dismutase).</li>
+                  <li><strong>Postconditioning:</strong> volatile given at reperfusion is also protective, which is clinically convenient because reperfusion timing is predictable in cardiac surgery.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground mb-1">Clinical relevance and caveats</p>
+                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                  <li>Meta-analyses of coronary surgery show lower troponin release, less inotrope requirement and shorter ICU stay with volatile-based rather than purely intravenous anaesthesia<InlineRef topicId="volatile-agents" refLabel="BJA Volatile Cardioprotection 2006" />.</li>
+                  <li>The large MYRIAD randomised trial found no mortality difference between volatile and TIVA in CABG, so protection is best regarded as biochemically real but of uncertain outcome benefit.</li>
+                  <li>Protection is blunted by hyperglycaemia, diabetes, sulfonylureas (K<sub>ATP</sub> blockade), advanced age and ventricular hypertrophy.</li>
+                  <li>Analogous protective effects are described in brain, kidney, liver, lung (reduced inflammatory injury in one-lung ventilation) and intestine, but human evidence outside the heart is weak.</li>
+                  <li>Balance against the environmental cost and against situations where TIVA is indicated for other reasons (malignant hyperthermia susceptibility, severe PONV risk, neuromonitoring).</li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           <section className="mb-10">

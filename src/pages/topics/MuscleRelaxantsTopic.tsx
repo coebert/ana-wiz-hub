@@ -107,6 +107,9 @@ const MuscleRelaxantsTopic = () => {
                     <li><a href="#determinants-of-onset-bowmans-principle" className="hover:text-pharmacology hover:underline">Determinants of Onset (Bowman's Principle)</a></li>
                   </ul>
                 </li>
+                <li><a href="#anaphylaxis-and-nap6" className="text-pharmacology hover:underline">Anaphylaxis and NMBAs: NAP6</a></li>
+                <li><a href="#novel-agents" className="text-pharmacology hover:underline">Novel Agents: Gantacurium and the Fumarates</a></li>
+                <li><a href="#nmba-use-in-intensive-care" className="text-pharmacology hover:underline">NMBA Use in Intensive Care</a></li>
                 <li><a href="#reversal-agents" className="text-pharmacology hover:underline">Reversal Agents</a></li>
                 <li><a href="#neuromuscular-monitoring" className="text-pharmacology hover:underline">Neuromuscular Monitoring</a></li>
                 <li><a href="#residual-neuromuscular-block-postoperative-outcomes" className="text-pharmacology hover:underline">Residual Neuromuscular Block & Postoperative Outcomes</a></li>
