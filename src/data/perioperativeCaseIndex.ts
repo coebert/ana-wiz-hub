@@ -3,7 +3,7 @@ export type CaseDifficulty = "Foundation" | "Intermediate" | "Advanced";
 export interface PerioperativeCaseIndexEntry {
   id: string;
   title: string;
-  category: "Steroid cover" | "Phaeochromocytoma" | "Antifibrinolytics";
+  category: "Steroid cover" | "Phaeochromocytoma" | "Antifibrinolytics" | "Co-existing disease" | "Paediatric anaesthesia";
   difficulty: CaseDifficulty;
   summary: string;
   topicIds: string[];
