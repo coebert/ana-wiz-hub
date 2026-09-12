@@ -52,13 +52,7 @@ export interface AuditCorpusEntry {
    * detailed discussion in full — audited alongside the topic prose so the
    * clinical reasoning in cases is held to the same accuracy standard.
    */
-  case_bank: Array<{
-    case_id: string;
-    title: string;
-    bank: string;
-    path: string;
-    text: string;
-  }>;
+  case_ids: string[];
   case_bank_chars: number;
 }
 
@@ -133,6 +127,19 @@ function buildCaseIndex(): Map<string, CaseBankTextEntry[]> {
 }
 
 const CASE_INDEX = buildCaseIndex();
+
+/**
+ * Every case, stored once and referenced by id from each topic entry. A case can
+ * belong to four topics, so inlining its text per topic bloated the corpus JSON
+ * past the edge-function deploy limit.
+ */
+export function buildCaseDictionary(): Record<string, CaseBankTextEntry> {
+  const dict: Record<string, CaseBankTextEntry> = {};
+  for (const list of CASE_INDEX.values()) {
+    for (const entry of list) dict[entry.case_id] = entry;
+  }
+  return dict;
+}
 
 // ---------------------------------------------------------------- source reading
 
@@ -369,7 +376,7 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
       excerpt: r.excerpt,
     })),
     text_chars: text.length,
-    case_bank: caseEntries,
+    case_ids: caseEntries.map((c) => c.case_id),
     case_bank_chars: caseEntries.reduce((n, c) => n + c.text.length, 0),
   };
 }
