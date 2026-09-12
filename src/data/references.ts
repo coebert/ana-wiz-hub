@@ -1219,6 +1219,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ LiverResection 2017", citation: "Hartog A, Mills G. Anaesthesia for hepatic resection surgery. BJA Education. 2009;9(1):1-5.", url: "https://doi.org/10.1093/bjaceaccp/mkn049" },
     { label: "AAGBI Cirrhosis 2017", citation: "Vaja R et al. Anaesthesia for patients with liver disease. BJA Education. 2010;10(1):15-19.", url: "https://doi.org/10.1093/bjaceaccp/mkp040" },
     { label: "ITLS Reperfusion", citation: "Aggarwal S et al. Postreperfusion syndrome: hypotension after reperfusion of the transplanted liver. J Crit Care. 1993;8(3):154-160." },
+    { label: "AASLD TIPS 2010", citation: "Boyer TD, Haskal ZJ. The role of transjugular intrahepatic portosystemic shunt (TIPS) in the management of portal hypertension: update 2009. Hepatology. 2010;51(1):306.", url: "https://doi.org/10.1002/hep.23383" },
+    { label: "MELD Kamath 2001", citation: "Kamath PS, Wiesner RH, Malinchoc M, et al. A model to predict survival in patients with end-stage liver disease. Hepatology. 2001;33(2):464-470.", url: "https://doi.org/10.1053/jhep.2001.22172" },
+    { label: "MELD-Na 2008", citation: "Kim WR, Biggins SW, Kremers WK, et al. Hyponatremia and mortality among patients on the liver-transplant waiting list. N Engl J Med. 2008;359(10):1018-1026.", url: "https://doi.org/10.1056/NEJMoa0801209" },
   ],
   "renal-disease": [
     { label: "KDIGO CKD 2024", citation: "Kidney Disease: Improving Global Outcomes (KDIGO) CKD Work Group. KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. Kidney Int. 2024;105(4S):S117-S314.", url: "https://kdigo.org/guidelines/ckd-evaluation-and-management/" },
