@@ -354,6 +354,19 @@ const PulseOximetryTopic = () => {
           </section>
 
           <section className="mb-10">
+            <h3 className="text-xl font-serif font-bold text-foreground">Principle of Infrared Analysis</h3>
+            <ul className="mt-2 list-disc pl-5 text-foreground/90 space-y-1">
+              <li><strong>Components:</strong> a broad-spectrum infrared source (heated wire or ceramic element), a sample chamber with sapphire or crystal windows (glass absorbs IR), a rotating chopper wheel carrying a measurement filter and a reference filter, and a photodetector (photoconductive or thermopile) with an amplifier.</li>
+              <li><strong>Single-beam, positive-filter principle:</strong> one beam passes through the sample chamber and the chopper wheel alternately places the 4.26 µm measurement filter and a filter at a non-absorbed wavelength (reference) in the path. The detector therefore sees alternating &ldquo;absorbed&rdquo; and &ldquo;unabsorbed&rdquo; signals, and their ratio gives CO₂ concentration.</li>
+              <li><strong>Why 4.26 µm:</strong> this is the peak of the CO₂ asymmetric-stretch absorption band and is well separated from the absorption peaks of N₂O (4.5 µm) and water vapour, minimising cross-sensitivity.</li>
+              <li><strong>Reference filter:</strong> corrects for drift in lamp output, detector sensitivity, window contamination and stray light, so background effects cancel in the ratio rather than appearing as a false reading.</li>
+              <li><strong>Collision (pressure) broadening:</strong> collisions between CO₂ and N₂O (and to a lesser extent O₂) broaden the CO₂ absorption band and falsely elevate the measured CO₂ by up to a few mmHg. Modern analysers compensate by measuring the N₂O and O₂ concentrations in the same multigas bench and applying a correction algorithm; older machines needed manual N₂O compensation.</li>
+              <li>Absorption follows the Beer&ndash;Lambert law, so the relationship is exponential rather than linear and analysers are calibrated against known gas mixtures with a linearising algorithm.</li>
+            </ul>
+            <InlineRef topicId={TOPIC_ID} refLabel="Cross & Plunkett Ch.15" />
+          </section>
+
+          <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">The Capnograph Waveform</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>Phase I</strong>: baseline (inspired gas, CO₂ ≈ 0). <strong>Phase II</strong>: rapid rise (mixing of
