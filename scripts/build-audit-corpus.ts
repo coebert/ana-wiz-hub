@@ -406,6 +406,7 @@ function main() {
         generated_at: new Date().toISOString(),
         topic_count: entries.length,
         entries,
+        cases: buildCaseDictionary(),
       },
       null,
       0,
