@@ -25,7 +25,11 @@ const IcuDrugDoses = () => {
     setActiveGroup("all");
     setSearch(match.drug.replace(/\s*[0-9].*$/, "").trim());
     window.requestAnimationFrame(() => {
-      document.getElementById(`drug-${requestedDrug}`)?.scrollIntoView({ block: "center" });
+      const targets = Array.from(
+        document.querySelectorAll<HTMLElement>(`[data-drug="${requestedDrug}"]`),
+      );
+      const visible = targets.find((el) => el.offsetParent !== null) ?? targets[0];
+      visible?.scrollIntoView({ block: "center" });
     });
   }, [requestedDrug]);
 
@@ -161,6 +165,7 @@ const IcuDrugDoses = () => {
                       <tr
                         key={d.drug}
                         id={`drug-${drugSlug(d.drug)}`}
+                        data-drug={drugSlug(d.drug)}
                         className="border-t border-border align-top scroll-mt-24"
                       >
                         <th scope="row" className="p-3 text-left font-medium text-foreground">
@@ -186,7 +191,7 @@ const IcuDrugDoses = () => {
                 {group.drugs.map((d) => (
                   <li
                     key={d.drug}
-                    id={`drug-${drugSlug(d.drug)}`}
+                    data-drug={drugSlug(d.drug)}
                     className="scroll-mt-24 rounded-xl border border-border bg-card p-4"
                   >
                     <h3 className="font-semibold text-foreground">{d.drug}</h3>
