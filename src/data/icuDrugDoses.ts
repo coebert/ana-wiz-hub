@@ -5,6 +5,12 @@ export interface DrugDose {
   frequency: string;
   indications: string;
   notes?: string;
+  /** Typical dose for infants and children (per kg, adult ceiling applies). */
+  paediatricDose?: string;
+  /** Dose for term neonates and infants under about 1 month, where different. */
+  neonatalDose?: string;
+  /** Paediatric-specific cautions. */
+  paediatricNotes?: string;
   topicIds?: string[];
 }
 
@@ -34,6 +40,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Short-term sedation of the ventilated patient; status epilepticus; rapid neurological wake-up testing",
         notes: "Keep below 4 mg/kg/h and review after 48 h — propofol-related infusion syndrome (lactic acidosis, rhabdomyolysis, arrhythmia). Provides 1.1 kcal/mL as lipid; causes vasodilatation and myocardial depression.",
         topicIds: ["icu-sedation-delirium", "intravenous-anaesthetics"],
+        paediatricDose: "Sedation 1–4 mg/kg/h; procedural bolus 1–2 mg/kg",
+        neonatalDose: "Avoid — not licensed for neonatal/paediatric ICU sedation",
+        paediatricNotes: "Prolonged high-dose infusion in children carries a high PRIS risk; use for short-term sedation only and monitor lactate and CK.",
       },
       {
         drug: "Fentanyl",
@@ -43,6 +52,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Analgesia and ventilator tolerance",
         notes: "Highly lipid soluble — accumulates in prolonged infusions with a context-sensitive half-time that lengthens markedly.",
         topicIds: ["icu-sedation-delirium", "opioids"],
+        paediatricDose: "Bolus 1–2 microgram/kg; infusion 1–4 microgram/kg/h",
+        neonatalDose: "Bolus 0.5–1 microgram/kg; infusion 0.5–2 microgram/kg/h",
+        paediatricNotes: "Give neonatal boluses slowly over 5 min — rapid injection causes chest-wall rigidity and bradycardia.",
       },
       {
         drug: "Morphine",
@@ -52,6 +64,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Analgesia, dyspnoea at end of life",
         notes: "Active metabolite morphine-6-glucuronide accumulates in renal failure — reduce dose or switch to fentanyl/alfentanil.",
         topicIds: ["opioids", "end-of-life-care"],
+        paediatricDose: "Bolus 50–100 microgram/kg; infusion 10–40 microgram/kg/h",
+        neonatalDose: "Bolus 25–50 microgram/kg; infusion 5–10 microgram/kg/h",
+        paediatricNotes: "Neonatal clearance is immature (glucuronidation matures over the first months) — halve the dose and monitor apnoea.",
       },
       {
         drug: "Alfentanil",
@@ -61,6 +76,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Analgesia in renal failure; short procedures",
         notes: "No active metabolites; offset largely independent of renal function.",
         topicIds: ["opioids", "aki-rrt"],
+        paediatricDose: "Infusion 10–60 microgram/kg/h ventilated",
+        neonatalDose: "10–20 microgram/kg/h; specialist use only",
+        paediatricNotes: "Short context-sensitive half-time makes it useful for neonatal ventilation and procedures.",
       },
       {
         drug: "Midazolam",
@@ -70,6 +88,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Sedation where haemodynamic instability limits propofol; seizure control; alcohol withdrawal",
         notes: "Benzodiazepine sedation is associated with more delirium and longer ventilation; active metabolite accumulates in renal failure.",
         topicIds: ["icu-sedation-delirium", "benzodiazepines"],
+        paediatricDose: "Bolus 100 microgram/kg; infusion 60–240 microgram/kg/h (1–4 microgram/kg/min)",
+        neonatalDose: "Infusion 30–60 microgram/kg/h; avoid boluses",
+        paediatricNotes: "Boluses cause hypotension in neonates; infusion is linked to withdrawal and delirium — wean over days after prolonged use.",
       },
       {
         drug: "Dexmedetomidine",
@@ -79,6 +100,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Light, cooperative sedation; weaning agitation; hyperactive delirium",
         notes: "Central α2 agonist — causes bradycardia and hypotension; does not depress respiration.",
         topicIds: ["icu-sedation-delirium"],
+        paediatricDose: "0.2–1.4 microgram/kg/h; no loading dose",
+        neonatalDose: "0.05–0.3 microgram/kg/h; limited data",
+        paediatricNotes: "Useful for extubation and delirium sparing; watch bradycardia, especially in infants.",
       },
       {
         drug: "Clonidine",
@@ -88,6 +112,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Sedation sparing, opioid and alcohol withdrawal",
         notes: "Rebound hypertension on abrupt withdrawal.",
         topicIds: ["icu-sedation-delirium"],
+        paediatricDose: "0.1–2 microgram/kg/h IV, or 1–5 microgram/kg 6-hourly enterally",
+        neonatalDose: "0.1–0.5 microgram/kg/h",
+        paediatricNotes: "Widely used in PICU as an opioid/benzodiazepine-sparing agent and for withdrawal; rebound hypertension on abrupt stop.",
       },
       {
         drug: "Ketamine",
@@ -97,6 +124,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Analgesia-sparing sedation, severe bronchospasm, opioid-tolerant pain, cardiostable induction",
         notes: "Preserves airway reflexes and sympathetic tone; may cause emergence phenomena and hypersalivation.",
         topicIds: ["intravenous-anaesthetics", "bronchospastic-failure"],
+        paediatricDose: "Induction 1–2 mg/kg IV; infusion 0.5–2 mg/kg/h",
+        neonatalDose: "Induction 0.5–1 mg/kg; infusion 0.3–0.6 mg/kg/h",
+        paediatricNotes: "Preserves airway tone and drive; first choice for the shocked or asthmatic child.",
       },
       {
         drug: "Haloperidol",
@@ -106,6 +136,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Distressing hyperactive delirium after non-pharmacological measures",
         notes: "Monitor QTc; avoid in Parkinson's disease and prolonged QT. Does not prevent or shorten delirium.",
         topicIds: ["icu-sedation-delirium"],
+        paediatricDose: "10–25 microgram/kg 8–12 hourly (max 5 mg/dose)",
+        neonatalDose: "Avoid",
+        paediatricNotes: "Rarely used; ECG monitoring for QT prolongation and dystonic reactions in children.",
       },
     ],
   },
@@ -122,6 +155,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Intubation, severe ventilator dyssynchrony, early severe ARDS, raised ICP",
         notes: "Reversed by sugammadex 2 mg/kg (routine) or 16 mg/kg (immediate after 1.2 mg/kg).",
         topicIds: ["neuromuscular-blockers", "ards"],
+        paediatricDose: "Intubation 0.6–1 mg/kg; infusion 300–600 microgram/kg/h",
+        neonatalDose: "Intubation 0.45–0.6 mg/kg",
+        paediatricNotes: "Onset is faster and duration longer in infants because of a larger volume of distribution; sugammadex 16 mg/kg reverses a full block.",
       },
       {
         drug: "Atracurium / cisatracurium",
@@ -131,6 +167,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Prolonged blockade in hepatic or renal failure; severe ARDS",
         notes: "Hofmann elimination — organ-independent offset. Atracurium releases histamine; laudanosine accumulation is rarely clinically relevant.",
         topicIds: ["neuromuscular-blockers", "ards"],
+        paediatricDose: "Atracurium 0.5 mg/kg then 300–600 microgram/kg/h; cisatracurium 0.1 mg/kg then 60–180 microgram/kg/h",
+        neonatalDose: "Atracurium 0.3–0.5 mg/kg then 300 microgram/kg/h",
+        paediatricNotes: "Organ-independent Hofmann elimination makes these the agents of choice in neonatal renal or hepatic failure.",
       },
       {
         drug: "Suxamethonium",
@@ -140,6 +179,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Rapid sequence induction",
         notes: "Avoid after ~5 days of immobility, burns, spinal cord injury or in hyperkalaemia — risk of lethal potassium rise.",
         topicIds: ["neuromuscular-blockers"],
+        paediatricDose: "1–2 mg/kg (infants and neonates 2–3 mg/kg)",
+        neonatalDose: "2–3 mg/kg",
+        paediatricNotes: "Give atropine 20 microgram/kg with it in infants — bradycardia is common; avoid where undiagnosed myopathy is possible.",
       },
     ],
   },
@@ -156,6 +198,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "First-line vasopressor in septic and most vasodilatory shock; target MAP ≥65 mmHg",
         notes: "α1 >> β1. Extravasation causes local ischaemia — treat with phentolamine infiltration.",
         topicIds: ["vasoactive-agents", "sepsis", "shock"],
+        paediatricDose: "0.02–1 microgram/kg/min, start 0.05 microgram/kg/min",
+        neonatalDose: "0.02–0.5 microgram/kg/min",
+        paediatricNotes: "Central access preferred but may be given dilute peripherally while access is obtained in shock.",
       },
       {
         drug: "Adrenaline",
@@ -165,6 +210,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Cardiac arrest, anaphylaxis, low cardiac output with hypotension, post-cardiotomy shock",
         notes: "Causes hyperglycaemia, hypokalaemia and a rise in lactate that does not necessarily reflect hypoperfusion.",
         topicIds: ["vasoactive-agents", "anaphylaxis", "shock"],
+        paediatricDose: "Arrest 10 microgram/kg IV/IO (max 1 mg); infusion 0.02–1 microgram/kg/min",
+        neonatalDose: "Resuscitation 10–30 microgram/kg IV/UVC; infusion 0.05–0.3 microgram/kg/min",
+        paediatricNotes: "First-line inotrope in paediatric septic and cardiogenic shock; 10 microgram/kg is 0.1 mL/kg of 1:10,000.",
       },
       {
         drug: "Vasopressin",
@@ -174,6 +222,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Catecholamine-sparing second agent in septic shock; vasoplegia",
         notes: "V1 receptor agonist, effective in acidosis; risk of digital and mesenteric ischaemia. Do not titrate upward beyond 0.03–0.04 units/min.",
         topicIds: ["vasoactive-agents", "sepsis"],
+        paediatricDose: "0.0003–0.002 units/kg/min (0.18–1.2 milliunits/kg/min)",
+        neonatalDose: "0.0001–0.001 units/kg/min",
+        paediatricNotes: "Catecholamine-sparing in refractory shock and useful in pulmonary hypertension; watch for digital and splanchnic ischaemia and hyponatraemia.",
       },
       {
         drug: "Dobutamine",
@@ -183,6 +234,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Low cardiac output with adequate filling and perfusion pressure; cardiogenic shock",
         notes: "β1 > β2 — may drop systemic vascular resistance and blood pressure; tachyarrhythmia common.",
         topicIds: ["vasoactive-agents", "circulatory-failure"],
+        paediatricDose: "2.5–20 microgram/kg/min",
+        neonatalDose: "5–20 microgram/kg/min",
+        paediatricNotes: "Useful for low cardiac output with adequate blood pressure, e.g. myocarditis or post-cardiac surgery.",
       },
       {
         drug: "Milrinone",
@@ -192,6 +246,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Inodilator for right ventricular failure, pulmonary hypertension, β-receptor downregulation",
         notes: "PDE-3 inhibitor; accumulates in renal impairment; vasodilatation often needs noradrenaline cover.",
         topicIds: ["vasoactive-agents", "pulmonary-hypertension"],
+        paediatricDose: "0.25–0.75 microgram/kg/min; loading dose usually omitted",
+        neonatalDose: "0.25–0.5 microgram/kg/min",
+        paediatricNotes: "Inodilator of choice for low cardiac output syndrome after paediatric cardiac surgery; accumulates in renal impairment.",
       },
       {
         drug: "Metaraminol",
@@ -201,6 +258,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Short-term peripheral vasopressor while central access is obtained",
         notes: "Predominantly α1; reflex bradycardia expected.",
         topicIds: ["vasoactive-agents"],
+        paediatricDose: "Bolus 1–10 microgram/kg; infusion 0.1–0.5 microgram/kg/min",
+        neonatalDose: "Not used",
+        paediatricNotes: "Rarely used in children — adrenaline or noradrenaline is preferred.",
       },
       {
         drug: "Hydrocortisone",
@@ -210,6 +270,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Septic shock on ongoing vasopressor support; adrenal insufficiency",
         notes: "Monitor glucose; taper as vasopressors wean.",
         topicIds: ["sepsis", "steroids"],
+        paediatricDose: "1–2 mg/kg 6-hourly (max 100 mg per dose)",
+        neonatalDose: "1 mg/kg 8-hourly",
+        paediatricNotes: "For catecholamine-resistant shock and suspected adrenal insufficiency (including known CAH, where doses are higher).",
       },
     ],
   },
@@ -226,6 +289,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Atrial fibrillation with instability, ventricular tachyarrhythmia, shock-refractory VF/pVT",
         notes: "Phlebitis peripherally; causes hypotension when given fast; long-term thyroid, hepatic and pulmonary toxicity.",
         topicIds: ["arrhythmias-icu", "antiarrhythmics"],
+        paediatricDose: "Shockable arrest 5 mg/kg IV/IO bolus (max 300 mg); perfusing tachycardia 5 mg/kg over 20 min, then 5–15 microgram/kg/min",
+        neonatalDose: "5 mg/kg over 30 min; specialist advice",
+        paediatricNotes: "Give slowly outside arrest — rapid injection causes hypotension; central access preferred.",
       },
       {
         drug: "Magnesium sulfate",
@@ -235,6 +301,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Torsades de pointes, refractory AF, severe asthma, eclampsia, hypomagnesaemia",
         notes: "Monitor reflexes and respiratory rate; antidote is calcium gluconate 10 mL of 10%.",
         topicIds: ["arrhythmias-icu", "electrolytes", "obstetric-emergencies"],
+        paediatricDose: "25–50 mg/kg (0.1–0.2 mmol/kg) over 20 min, max 2 g",
+        neonatalDose: "25–50 mg/kg over 30 min",
+        paediatricNotes: "For torsade, severe asthma and hypomagnesaemia; monitor for hypotension and areflexia.",
       },
       {
         drug: "Digoxin",
@@ -244,6 +313,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Rate control in AF, particularly with poor left ventricular function",
         notes: "Renally cleared, narrow therapeutic index; toxicity potentiated by hypokalaemia.",
         topicIds: ["arrhythmias-icu"],
+        paediatricDose: "Loading 15 microgram/kg total in divided doses; maintenance 3–5 microgram/kg/day",
+        neonatalDose: "Loading 20 microgram/kg divided; maintenance 4–5 microgram/kg/day",
+        paediatricNotes: "Used for supraventricular tachycardia and heart failure in infants; narrow margin — check levels and potassium.",
       },
       {
         drug: "Esmolol",
@@ -253,6 +325,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Rapid rate control, thyroid storm, aortic dissection, catecholamine excess",
         notes: "Very short acting (half-life ~9 min) — quickly reversible if hypotension occurs.",
         topicIds: ["arrhythmias-icu", "beta-blockers"],
+        paediatricDose: "Load 100–500 microgram/kg over 1 min; infusion 25–200 microgram/kg/min",
+        neonatalDose: "Specialist use only, 25–100 microgram/kg/min",
+        paediatricNotes: "Short half-life makes it useful for coarctation repair and thyroid storm; stop if cardiac output falls.",
       },
       {
         drug: "Glyceryl trinitrate",
@@ -262,6 +337,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Acute pulmonary oedema, hypertensive emergency, myocardial ischaemia",
         notes: "Tachyphylaxis within 24–48 h; avoid in severe aortic stenosis and right ventricular infarction.",
         topicIds: ["circulatory-failure", "vasoactive-agents"],
+        paediatricDose: "0.5–5 microgram/kg/min",
+        neonatalDose: "0.5–3 microgram/kg/min",
+        paediatricNotes: "Titrate to blood pressure; tachyphylaxis develops within 24–48 h.",
       },
       {
         drug: "Labetalol",
@@ -271,6 +349,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Hypertensive emergency, pre-eclampsia, controlled reduction after intracerebral haemorrhage",
         notes: "Combined α and β blockade; avoid in asthma and severe bradycardia.",
         topicIds: ["neuro-icu", "obstetric-emergencies"],
+        paediatricDose: "Bolus 0.25–0.5 mg/kg; infusion 0.5–3 mg/kg/h",
+        neonatalDose: "Avoid; specialist advice",
+        paediatricNotes: "Used for hypertensive emergencies such as post-transplant or phaeochromocytoma after alpha blockade.",
       },
     ],
   },
@@ -287,6 +368,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "First-line status epilepticus",
         notes: "Midazolam 10 mg buccal or IM if no IV access.",
         topicIds: ["status-epilepticus", "neuro-icu"],
+        paediatricDose: "100 microgram/kg IV (max 4 mg), repeat once after 10 min",
+        neonatalDose: "100 microgram/kg IV",
+        paediatricNotes: "First-line for convulsive status epilepticus in children per APLS; buccal midazolam 300–500 microgram/kg if no access.",
       },
       {
         drug: "Levetiracetam",
@@ -296,6 +380,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Second-line status epilepticus; seizure prophylaxis",
         notes: "Few interactions; reduce dose in renal impairment; behavioural effects.",
         topicIds: ["status-epilepticus", "anticonvulsants"],
+        paediatricDose: "Load 40 mg/kg over 5 min (max 3 g); maintenance 20–30 mg/kg 12-hourly",
+        neonatalDose: "Load 20–40 mg/kg; maintenance 10–20 mg/kg 12-hourly",
+        paediatricNotes: "Second-line in paediatric status (as in the EcLiPSE trial) and widely used for neonatal seizures.",
       },
       {
         drug: "Phenytoin",
@@ -305,6 +392,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Second-line status epilepticus",
         notes: "Causes hypotension and arrhythmia if infused fast; zero-order kinetics; monitor levels and albumin.",
         topicIds: ["status-epilepticus", "anticonvulsants"],
+        paediatricDose: "Load 20 mg/kg over 20 min with ECG monitoring; maintenance 2.5 mg/kg 12-hourly",
+        neonatalDose: "Load 20 mg/kg over 20 min; maintenance 2.5 mg/kg 12-hourly",
+        paediatricNotes: "Give into a large vein with saline — extravasation causes severe tissue injury; monitor for bradycardia while loading.",
       },
       {
         drug: "Hypertonic saline 2.7–5%",
@@ -314,6 +404,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Raised intracranial pressure, cerebral oedema, symptomatic hyponatraemia (100 mL 2.7–3%)",
         notes: "Target sodium 145–155 mmol/L for ICP control; monitor sodium at least 4-hourly and limit correction to 8–10 mmol/L per 24 h in chronic hyponatraemia.",
         topicIds: ["icp-management", "neuro-icu", "electrolytes"],
+        paediatricDose: "3% sodium chloride 3–5 mL/kg over 10–20 min for raised ICP; infusion 0.1–1 mL/kg/h",
+        neonatalDose: "3 mL/kg of 3% over 20 min; specialist advice",
+        paediatricNotes: "Target sodium 145–155 mmol/L for intracranial hypertension; central line preferred for concentrations above 3%.",
       },
       {
         drug: "Mannitol 20%",
@@ -323,6 +416,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Acutely raised intracranial pressure",
         notes: "Osmotic diuresis causes hypovolaemia and hypokalaemia; keep osmolality below ~320 mosmol/kg.",
         topicIds: ["icp-management", "traumatic-brain-injury"],
+        paediatricDose: "0.25–0.5 g/kg (1.25–2.5 mL/kg of 20%) over 20 min",
+        neonatalDose: "0.25 g/kg",
+        paediatricNotes: "Check serum osmolality and volume status; ensure euvolaemia before repeat doses.",
       },
       {
         drug: "Nimodipine",
@@ -332,6 +428,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Delayed cerebral ischaemia prophylaxis after aneurysmal subarachnoid haemorrhage",
         notes: "Hypotension is the dose-limiting effect; reduce or split doses rather than stopping.",
         topicIds: ["subarachnoid-haemorrhage", "neuro-icu"],
+        paediatricDose: "Not routinely used; specialist advice for paediatric subarachnoid haemorrhage",
+        neonatalDose: "Not used",
+        paediatricNotes: "Aneurysmal subarachnoid haemorrhage is rare in children — discuss with the neurosurgical centre.",
       },
     ],
   },
@@ -348,6 +447,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Trauma haemorrhage, obstetric haemorrhage, surgical bleeding, hyperfibrinolysis",
         notes: "Give as early as possible; benefit lost and possible harm after 3 h in trauma.",
         topicIds: ["transfusion-coagulation", "trauma-resuscitation"],
+        paediatricDose: "15 mg/kg (max 1 g) over 10 min, then 2 mg/kg/h for 8 h",
+        neonatalDose: "15 mg/kg over 10 min; cardiac surgery per local protocol",
+        paediatricNotes: "Give within 3 h of major trauma; also used for surgical and mucosal bleeding.",
       },
       {
         drug: "Enoxaparin",
@@ -357,6 +459,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "VTE prophylaxis and treatment",
         notes: "Accumulates in renal failure — use unfractionated heparin if eGFR is very low or bleeding risk high.",
         topicIds: ["transfusion-coagulation", "aki-rrt"],
+        paediatricDose: "Prophylaxis 0.5 mg/kg 12-hourly; treatment 1 mg/kg 12-hourly",
+        neonatalDose: "Under 2 months: prophylaxis 0.75 mg/kg and treatment 1.5 mg/kg 12-hourly",
+        paediatricNotes: "Monitor anti-Xa in infants and renal impairment — dose requirements per kg are higher than in adults.",
       },
       {
         drug: "Unfractionated heparin",
@@ -366,6 +471,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Treatment-dose anticoagulation with renal failure or high bleeding risk; circuit anticoagulation",
         notes: "Reversed by protamine 1 mg per 100 units; monitor platelets for HIT.",
         topicIds: ["transfusion-coagulation", "aki-rrt"],
+        paediatricDose: "Load 75 units/kg then 20 units/kg/h",
+        neonatalDose: "Load 75 units/kg then 28 units/kg/h (under 1 year)",
+        paediatricNotes: "Higher weight-based rates are needed because antithrombin levels are low in infancy; titrate to anti-Xa or APTT ratio.",
       },
       {
         drug: "Prothrombin complex concentrate",
@@ -375,6 +483,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Warfarin reversal with major bleeding (with vitamin K 5–10 mg IV); factor deficiency bleeding",
         notes: "Faster and lower volume than fresh frozen plasma; thrombotic risk.",
         topicIds: ["transfusion-coagulation"],
+        paediatricDose: "25–50 units/kg guided by INR and weight",
+        neonatalDose: "25–50 units/kg; haematology advice",
+        paediatricNotes: "Reserve for life-threatening warfarin or vitamin K-dependent bleeding, with vitamin K 250–300 microgram/kg IV.",
       },
       {
         drug: "Andexanet alfa / idarucizumab",
@@ -384,6 +495,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Life-threatening bleeding on dabigatran (idarucizumab) or apixaban/rivaroxaban (andexanet)",
         notes: "Availability is local and restricted; PCC is the fallback for factor Xa inhibitor bleeding.",
         topicIds: ["transfusion-coagulation"],
+        paediatricDose: "Not licensed in children; discuss with haematology",
+        neonatalDose: "Not used",
+        paediatricNotes: "Direct oral anticoagulant use is rare in children; PCC and supportive care are usually used instead.",
       },
       {
         drug: "Regional citrate (CRRT)",
@@ -393,6 +507,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "First-line circuit anticoagulation for continuous renal replacement therapy",
         notes: "Watch total:ionised calcium ratio >2.5 as a marker of citrate accumulation in liver failure or shock.",
         topicIds: ["aki-rrt"],
+        paediatricDose: "Citrate dosed to circuit blood flow, target post-filter ionised calcium 0.25–0.35 mmol/L",
+        neonatalDose: "Same targets; use paediatric circuits and low blood-flow settings",
+        paediatricNotes: "Watch total:ionised calcium ratio above 2.5 as a marker of citrate accumulation, which occurs earlier in liver failure.",
       },
     ],
   },
@@ -409,6 +526,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Hyperglycaemia (target ~6–10 mmol/L), DKA, hyperkalaemia (10 units with 25 g glucose)",
         notes: "Hourly glucose while titrating; continue insulin in DKA until ketones <0.6 mmol/L, adding glucose-containing fluid.",
         topicIds: ["diabetes-emergencies", "electrolytes"],
+        paediatricDose: "DKA 0.05–0.1 units/kg/h (no bolus); hyperglycaemia 0.02–0.1 units/kg/h",
+        neonatalDose: "0.01–0.05 units/kg/h",
+        paediatricNotes: "In paediatric DKA start insulin 1–2 h after fluids, use 0.05 units/kg/h where cerebral oedema risk is high, and add glucose when blood glucose falls below 14 mmol/L.",
       },
       {
         drug: "Calcium gluconate 10%",
@@ -418,6 +538,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Hyperkalaemic ECG change, hypocalcaemia, citrate toxicity, magnesium or calcium-channel blocker toxicity",
         notes: "Membrane stabilisation only — does not lower potassium; use central line for calcium chloride.",
         topicIds: ["electrolytes", "aki-rrt", "toxicology"],
+        paediatricDose: "0.5 mL/kg (max 20 mL) slowly with cardiac monitoring",
+        neonatalDose: "0.5 mL/kg over 5–10 min",
+        paediatricNotes: "For hyperkalaemia with ECG change, hypocalcaemia and calcium-channel blocker toxicity; extravasation causes necrosis.",
       },
       {
         drug: "Potassium chloride",
@@ -427,6 +550,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Hypokalaemia, especially with arrhythmia or DKA",
         notes: "Never give as a bolus; correct magnesium simultaneously or potassium will not stay corrected.",
         topicIds: ["electrolytes"],
+        paediatricDose: "0.5 mmol/kg over 1–2 h, maximum 0.2 mmol/kg/h (central access for concentrated solutions)",
+        neonatalDose: "0.5 mmol/kg over 2 h",
+        paediatricNotes: "Never give undiluted; use ready-made bags and continuous ECG monitoring for rapid replacement.",
       },
       {
         drug: "Pantoprazole / omeprazole",
@@ -436,6 +562,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Stress ulcer prophylaxis in the ventilated or coagulopathic patient; GI bleeding",
         notes: "Stop when risk factors resolve — associated with C. difficile and pneumonia.",
         topicIds: ["gi-bleeding", "nutrition-icu"],
+        paediatricDose: "Omeprazole 0.5–1 mg/kg once daily IV (max 40 mg)",
+        neonatalDose: "0.7 mg/kg once daily",
+        paediatricNotes: "Stress-ulcer prophylaxis for the ventilated or coagulopathic child; review daily once feeding.",
       },
       {
         drug: "Terlipressin",
@@ -445,6 +574,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Variceal haemorrhage; hepatorenal syndrome (with albumin)",
         notes: "Ischaemic complications and hyponatraemia; avoid in ischaemic heart disease.",
         topicIds: ["acute-liver-failure", "gi-bleeding"],
+        paediatricDose: "5–20 microgram/kg 4-hourly; specialist use",
+        neonatalDose: "Not used",
+        paediatricNotes: "Occasionally used for variceal bleeding or hepatorenal syndrome under hepatology guidance; monitor sodium and perfusion.",
       },
       {
         drug: "N-acetylcysteine",
@@ -454,6 +586,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Paracetamol overdose, non-paracetamol acute liver failure",
         notes: "Do not stop for non-IgE anaphylactoid reactions — slow or pause, treat, then restart.",
         topicIds: ["toxicology", "acute-liver-failure"],
+        paediatricDose: "Weight-banded 21-h regimen (SNAP-style two-bag) with reduced fluid volumes below 20 kg",
+        neonatalDose: "20 kg or less: use paediatric fluid volumes to avoid hyponatraemia",
+        paediatricNotes: "Use the paediatric infusion volumes on TOXBASE — adult bag volumes cause fluid overload and hyponatraemia in small children.",
       },
       {
         drug: "Thiamine (Pabrinex)",
@@ -463,6 +598,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Suspected Wernicke's encephalopathy, alcohol dependence, refeeding risk",
         notes: "Give before carbohydrate load in malnutrition or alcohol excess.",
         topicIds: ["nutrition-icu", "toxicology"],
+        paediatricDose: "Specialist use; 25–50 mg IV daily for suspected deficiency",
+        neonatalDose: "Not routinely used",
+        paediatricNotes: "Consider in malnutrition, prolonged parenteral nutrition and refeeding.",
       },
     ],
   },
@@ -479,6 +617,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Broad-spectrum empirical cover for severe sepsis and hospital-acquired infection",
         notes: "Adjust in renal impairment; augmented renal clearance may require higher or extended-infusion dosing.",
         topicIds: ["sepsis", "antimicrobials"],
+        paediatricDose: "90 mg/kg 6–8 hourly (max 4.5 g per dose)",
+        neonatalDose: "90 mg/kg 8-hourly; 12-hourly if under 32 weeks corrected",
+        paediatricNotes: "Extended infusions are increasingly used in sepsis; adjust for renal function.",
       },
       {
         drug: "Meropenem",
@@ -488,6 +629,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "ESBL or resistant organisms, severe intra-abdominal or CNS infection",
         notes: "Lowers seizure threshold; reduces valproate levels.",
         topicIds: ["sepsis", "antimicrobials"],
+        paediatricDose: "20–40 mg/kg 8-hourly (40 mg/kg for CNS infection, max 2 g)",
+        neonatalDose: "20 mg/kg 12-hourly, rising to 8-hourly with maturity",
+        paediatricNotes: "Preferred where ESBL or resistant Gram-negative organisms are likely; good CSF penetration.",
       },
       {
         drug: "Vancomycin",
@@ -497,6 +641,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "MRSA, line infection, Gram-positive cover",
         notes: "Nephrotoxic — monitor levels and renal function; infusion reactions if given fast.",
         topicIds: ["sepsis", "antimicrobials"],
+        paediatricDose: "15 mg/kg 6-hourly, then adjust to AUC or trough 10–15 mg/L",
+        neonatalDose: "15 mg/kg every 8–24 h according to postmenstrual age and renal function",
+        paediatricNotes: "Loading 20–25 mg/kg is used in severe sepsis; levels are essential in neonates.",
       },
       {
         drug: "Ceftriaxone",
@@ -506,6 +653,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Community-acquired pneumonia, meningitis, meningococcal sepsis",
         notes: "Add amoxicillin for Listeria cover in the over-60s and immunosuppressed; give dexamethasone 10 mg 6-hourly in bacterial meningitis.",
         topicIds: ["cns-infection", "sepsis"],
+        paediatricDose: "50–80 mg/kg once daily; 80–100 mg/kg daily for meningitis (max 4 g)",
+        neonatalDose: "Avoid in jaundiced neonates and with calcium-containing infusions — use cefotaxime 50 mg/kg 6–12 hourly",
+        paediatricNotes: "Ceftriaxone displaces bilirubin and precipitates with calcium in neonates.",
       },
       {
         drug: "Co-trimoxazole",
@@ -515,6 +665,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Pneumocystis jirovecii pneumonia treatment and prophylaxis in immunosuppression",
         notes: "Add corticosteroid in PCP with PaO₂ <9.3 kPa; monitor potassium, renal function and marrow.",
         topicIds: ["haematology-icu", "immunology-intensivists"],
+        paediatricDose: "Pneumocystis treatment 120 mg/kg/day in divided doses; prophylaxis 24 mg/kg once daily on 3 days a week",
+        neonatalDose: "Prophylaxis from 4 weeks in HIV-exposed infants",
+        paediatricNotes: "Monitor potassium, renal function and blood counts; give folinic acid on prolonged high-dose treatment.",
       },
       {
         drug: "Aciclovir",
@@ -524,6 +677,9 @@ export const icuDrugDoseGroups: DrugDoseGroup[] = [
         indications: "Suspected herpes simplex encephalitis, severe varicella",
         notes: "Crystal nephropathy — hydrate well and adjust for renal function.",
         topicIds: ["cns-infection"],
+        paediatricDose: "20 mg/kg 8-hourly (herpes encephalitis; 500 mg/m² in older children)",
+        neonatalDose: "20 mg/kg 8-hourly for 14–21 days",
+        paediatricNotes: "Ensure good hydration and dose-adjust in renal impairment; neonatal HSV needs 21 days of treatment for disseminated or CNS disease.",
       },
     ],
   },
