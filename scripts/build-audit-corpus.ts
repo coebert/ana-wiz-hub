@@ -347,6 +347,8 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
     .join("\n")
     .slice(0, MAX_TEXT_CHARS);
 
+  const caseEntries = CASE_INDEX.get(topic.id) ?? [];
+
   return {
     topic_id: topic.id,
     topic_title: topic.title,
