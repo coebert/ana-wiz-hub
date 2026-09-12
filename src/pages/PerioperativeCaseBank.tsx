@@ -305,10 +305,35 @@ const cases: PerioperativeCase[] = caseSeeds.map((caseData) => ({
 }));
 
 const categories: Array<"All" | CaseCategory> = ["All", "Steroid cover", "Phaeochromocytoma", "Antifibrinolytics"];
+const difficulties: Array<"All" | PerioperativeCase["difficulty"]> = ["All", "Foundation", "Intermediate", "Advanced"];
+
+const caseSearchText = (caseData: PerioperativeCase): string => [
+  caseData.title,
+  caseData.category,
+  caseData.difficulty,
+  caseData.patient,
+  caseData.presentation,
+  caseData.takeHome,
+  ...caseData.stages.flatMap((stage) => [stage.title, stage.prompt, ...stage.answer]),
+  ...caseData.detailedAnswer.flatMap((section) => [section.title, section.content]),
+].join(" ").toLowerCase();
 
 const PerioperativeCaseBank = () => {
   const [category, setCategory] = useState<"All" | CaseCategory>("All");
-  const visibleCases = useMemo(() => category === "All" ? cases : cases.filter((item) => item.category === category), [category]);
+  const [difficulty, setDifficulty] = useState<"All" | PerioperativeCase["difficulty"]>("All");
+  const [query, setQuery] = useState("");
+  const visibleCases = useMemo(() => {
+    const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+    return cases.filter((item) => {
+      if (category !== "All" && item.category !== category) return false;
+      if (difficulty !== "All" && item.difficulty !== difficulty) return false;
+      if (terms.length === 0) return true;
+      const haystack = caseSearchText(item);
+      return terms.every((term) => haystack.includes(term));
+    });
+  }, [category, difficulty, query]);
+  const hasFilters = category !== "All" || difficulty !== "All" || query.trim() !== "";
+  const clearFilters = () => { setCategory("All"); setDifficulty("All"); setQuery(""); };
 
   return (
     <SectionLayout
