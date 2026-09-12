@@ -14,7 +14,7 @@ const capnographyFaqs: Array<[string, string]> = [
   ],
   [
     "What are the four phases of a normal capnography waveform?",
-    "Phase I (inspiratory baseline, CO₂-free gas from the airway dead space, value 0). Phase II (expiratory upstroke, rapid rise as alveolar gas reaches the sensor). Phase III (alveolar plateau, gently rising; the value at its end is ETCO₂). Phase 0 (inspiratory downstroke back to baseline). The alpha angle (II–III) widens with airflow obstruction (shark-fin); the beta angle (III–0) widens with rebreathing.",
+    "Phase I (expiratory baseline, CO₂-free gas from the apparatus and anatomical dead space, value 0). Phase II (expiratory upstroke, rapid rise as alveolar gas reaches the sensor). Phase III (alveolar plateau, gently rising; the value at its end is ETCO₂). Phase 0 (inspiratory downstroke back to baseline). The alpha angle (II–III) is normally ~100–110° and widens with airflow obstruction (shark-fin); the beta angle (III–0) is ~90° and widens with rebreathing.",
   ],
   [
     "What does a shark-fin capnography waveform mean?",
