@@ -10,6 +10,8 @@ import { DiagramSection } from "@/components/topic/DiagramSection";
 import { CheckCircle2, AlertTriangle, XCircle, FlaskConical, Heart } from "lucide-react";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 
 const PreoperativeAssessmentTopicWorkedExamples: WorkedExample[] = [
   {
@@ -119,6 +121,55 @@ const PreoperativeAssessmentTopic = () => {
             ))}
           </div>
         </div>
+
+        <CollapsibleSubsection title="Cognitive function & frailty assessment">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Cognitive impairment and frailty independently predict postoperative delirium, postoperative cognitive dysfunction (POCD), morbidity, mortality and prolonged hospital stay. Approximately <strong>12%</strong> of apparently previously cognitively well patients undergoing anaesthesia and non-cardiac surgery will develop symptoms of cognitive dysfunction after their procedure
+            <InlineRef topicId="preoperative-assessment" refLabel="BJA POCD 2017" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Cognitive screening</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>Mini-Cog</strong> or <strong>4AT</strong> — brief bedside tools to identify patients at higher risk of delirium and POCD before major surgery. Positive screen prompts further assessment and delirium-prevention planning.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Frailty screening</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>Clinical Frailty Scale (CFS)</strong>: 5–8 represents mild to very severe frailty. Supplement with objective measures — <strong>grip strength</strong> and <strong>gait speed</strong> — to refine risk estimation.</p>
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground mt-3">
+            Implications: capacity and consent may need formal assessment; use shared decision-making with patient and family; institute delirium-prevention bundles (orientation, sensory aids, sleep hygiene, early mobilisation, avoidance of deliriogenic drugs); and plan postoperative care (level of observation, involvement of geriatric/liaison teams, discharge planning) accordingly <InlineRef topicId="preoperative-assessment" refLabel="BJA POCD 2017" />.
+          </p>
+        </CollapsibleSubsection>
+
+        <CollapsibleSubsection title="Pulmonary risk assessment">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Postoperative pulmonary complications (PPCs) occur in roughly <strong>5–10%</strong> of patients undergoing major surgery and are associated with substantial increases in morbidity, mortality and length of stay <InlineRef topicId="preoperative-assessment" refLabel="BJA Lung-Protective 2019" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Patient factors</p>
+              <p className="text-sm text-muted-foreground mt-1">Age, COPD, current smoking, obstructive sleep apnoea, low resting SpO₂, anaemia, recent respiratory tract infection, and frailty.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Procedure factors</p>
+              <p className="text-sm text-muted-foreground mt-1">Thoracic or upper abdominal/aortic surgery, duration &gt; 2–3 h, emergency surgery, and open (vs minimally invasive) approach.</p>
+            </div>
+          </div>
+          <div className="p-3 rounded-lg border border-border mt-3">
+            <p className="font-semibold text-foreground text-sm">ARISCAT score and risk bands</p>
+            <p className="text-sm text-muted-foreground mt-1">A validated, weighted risk score (age, preoperative SpO₂, recent respiratory infection, preoperative anaemia, surgical incision site, duration of surgery, emergency procedure) stratifies patients into: <strong>&lt;26 = low risk</strong>, <strong>26–44 = intermediate risk</strong>, <strong>≥45 = high risk</strong> of PPCs <InlineRef topicId="preoperative-assessment" refLabel="BJA Lung-Protective 2019" />.</p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-3">
+            <strong>Optimisation:</strong> smoking cessation, ideally ≥ 4–8 weeks before surgery; treat active respiratory infection and bronchospasm; inspiratory muscle training and physiotherapy; prehabilitation programmes; and intraoperative lung-protective ventilation (low tidal volumes, individualised PEEP, recruitment manoeuvres, lowest effective FiO₂) <InlineRef topicId="preoperative-assessment" refLabel="BJA Lung-Protective 2019" />.
+          </p>
+        </CollapsibleSubsection>
+
+        <CollapsibleSubsection title="Sleep and preoperative risk">
+          <p className="text-muted-foreground leading-relaxed">
+            Preoperative sleep disturbance is common — a pooled prevalence of around <strong>60%</strong> across surgical populations — and is associated with postoperative delirium and poorer recovery <InlineRef topicId="preoperative-assessment" refLabel="Sleep Med Rev 2023" />. Simple screening with Pittsburgh Sleep Quality Index (PSQI) questions, or brief sleep-quality questions at preoperative assessment, can flag patients who may benefit from targeted counselling and perioperative sleep-hygiene measures. A related, distinct risk group is patients with known or suspected <strong>obstructive sleep apnoea (OSA)</strong>, screened for using <strong>STOP-BANG</strong>.
+          </p>
+        </CollapsibleSubsection>
 
         {/* 2. Bedside clinical assessment — airway */}
         <div id="section-airway-assessment" className="scroll-mt-24">
@@ -261,7 +312,7 @@ const PreoperativeAssessmentTopic = () => {
 
           <div className="p-3 rounded-lg border-l-4 border-perioperative bg-perioperative/5">
             <p className="text-sm text-foreground">
-              <span className="font-semibold">Key evidence base:</span> NICE NG45 (2016, updated 2020) — <em>Routine preoperative tests for elective surgery</em>; ESC/ESA 2022 non-cardiac surgery guideline; CCS 2017 cardiac risk assessment; METREPAIR (Lancet 2018); POISE-3 (NEJM 2023). Routine 'panel' bloods in fit patients have number-needed-to-test &gt; 1,000 to alter management — and a high false-positive rate that delays surgery.
+              <span className="font-semibold">Key evidence base:</span> NICE NG45 (2016, updated 2024) — <em>Routine preoperative tests for elective surgery</em>; ESC/ESA 2022 non-cardiac surgery guideline; CCS 2017 cardiac risk assessment; METREPAIR (Lancet 2018); POISE-3 (NEJM 2023). Routine 'panel' bloods in fit patients have number-needed-to-test &gt; 1,000 to alter management — and a high false-positive rate that delays surgery.
             </p>
           </div>
         </div>
