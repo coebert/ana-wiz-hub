@@ -44,10 +44,10 @@ const IcuDrugMechanisms = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>ICU Drug Mechanisms: Pharmacodynamics &amp; Adverse Effects</title>
+        <title>ICU Drug Mechanisms, Pharmacokinetics &amp; Metabolism</title>
         <meta
           name="description"
-          content="Pharmacodynamics, metabolism and adverse effects of 50 adult intensive care drugs — sedatives, opioids, neuromuscular blockers, vasopressors, antiarrhythmics, anticonvulsants, anticoagulants, antidotes and antimicrobials."
+          content="Pharmacodynamics, pharmacokinetics, metabolism and adverse effects of 50 adult intensive care drugs — half-life, volume of distribution, protein binding, active metabolites and dosing in liver failure, renal failure and RRT."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-mechanisms" />
       </Helmet>
