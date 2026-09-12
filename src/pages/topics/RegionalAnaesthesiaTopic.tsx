@@ -264,6 +264,37 @@ const RegionalAnaesthesiaTopic = () => {
             ))}
           </div>
 
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Recognising and Managing the Major Complications</h3>
+          <div className="space-y-3">
+            <div className="p-4 rounded-lg border border-border bg-card">
+              <p className="font-semibold text-foreground text-sm">Vertebral canal haematoma</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Signs:</strong> sharp or severe back pain (often at the insertion level), a new or progressive motor or sensory deficit, a block that is denser or lasting longer than expected, and sphincter dysfunction (urinary retention, faecal incontinence).
+                <strong> Timing:</strong> may present early but is frequently delayed 24–48 h, and can appear after catheter removal — hence the need for regular neurological observation on the ward.
+                <strong> Immediate actions:</strong> stop all anticoagulants and antiplatelets, stop any epidural infusion so the block can regress and be reassessed, discuss urgently with neurosurgery, and arrange <strong>emergency MRI</strong> (CT only if MRI is unavailable) without waiting for the block to wear off. Surgical decompression within roughly <strong>8–12 h</strong> of the onset of deficit offers the best chance of neurological recovery
+                <InlineRef topicId="regional-anaesthesia" refLabel="Anaesthesia 2018 Spinal Injury" />.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-card">
+              <p className="font-semibold text-foreground text-sm">Spinal epidural abscess</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Classic triad:</strong> fever, back pain and neurological deficit (all three present in a minority — suspect it on back pain and fever alone).
+                <strong> Risk factors:</strong> immunosuppression, diabetes, malignancy, chronic renal failure, intravenous drug use, bacteraemia, prolonged indwelling catheter and breaches of asepsis. Onset is typically days after the block.
+                <strong> Investigation:</strong> WCC, CRP, blood cultures (before antibiotics where possible), catheter tip culture, and <strong>urgent MRI with contrast</strong>.
+                <strong> Management:</strong> remove the catheter, start empirical intravenous antibiotics covering <em>Staphylococcus aureus</em> (including MRSA cover locally as indicated) after cultures, and refer immediately for neurosurgical drainage/decompression if there is any deficit or cord compression; conservative antibiotic therapy is only for selected patients without deficit under close monitoring
+                <InlineRef topicId="regional-anaesthesia" refLabel="Anaesthesia 2018 Spinal Injury" />.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-card">
+              <p className="font-semibold text-foreground text-sm">Total spinal anaesthesia</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Recognition:</strong> rapidly ascending block after intrathecal or subdural injection of an epidural dose — profound hypotension and bradycardia (T1–T4 cardiac sympathetic block), arm and hand weakness or tingling, difficulty speaking, dyspnoea then apnoea from intercostal and diaphragmatic paralysis, and loss of consciousness with pupillary dilatation.
+                <strong> Management (ABC):</strong> call for help; 100 % oxygen, secure the airway and <strong>intubate and ventilate</strong>; treat hypotension aggressively with fluids, vasopressors (metaraminol/phenylephrine, escalating to adrenaline or noradrenaline infusion) and <strong>atropine</strong> or glycopyrronium for bradycardia; left lateral tilt in pregnancy and consider immediate delivery; maintain sedation once ventilated because the patient may be awake but paralysed; continue support until the block regresses (usually 1–3 h) and document/debrief afterwards.
+              </p>
+            </div>
+          </div>
+
+
           <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">
             Anticoagulation & Bleeding Risk — Interactive Stratification
           </h3>
