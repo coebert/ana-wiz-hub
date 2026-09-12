@@ -520,6 +520,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2015", citation: "Hebbard PD et al. Transversus abdominis plane block — anatomy and technique. BJA Education. 2007;7(5):171-174.", url: "https://doi.org/10.1093/bjaceaccp/mkm033" },
     { label: "Miller Ch.47", citation: "Miller RD, ed. Miller's Anesthesia. 9th ed. Chapter 47: Nerve Blocks of the Trunk." },
     { label: "BJA Educ 2018 (Abdominal wall blocks)", citation: "Onwochei DN, Borglum J, Pawa A. Abdominal wall blocks for intra-abdominal surgery. BJA Education. 2018;18(10):317-322.", url: "https://doi.org/10.1016/j.bjae.2018.07.002" },
+    { label: "Chin RAPM 2017", citation: "Chin KJ, McDonnell JG, Carvalho B, Sharkey A, Pawa A, Gadsden J. Essentials of our current understanding: abdominal wall blocks. Reg Anesth Pain Med. 2017;42(2):133-183. Describes rectus sheath, TAP and quadratus lumborum plane anatomy, the arcuate line and the posterior rectus sheath as the target for rectus sheath block.", url: "https://doi.org/10.1097/AAP.0000000000000545" },
+    { label: "HerniaSurge 2018", citation: "HerniaSurge Group. International guidelines for groin hernia management. Hernia. 2018;22(1):1-165. Covers groin anatomy (deep and superficial rings, Hesselbach's triangle, myopectineal orifice) and anaesthetic options for open and laparoscopic repair.", url: "https://doi.org/10.1007/s10029-017-1668-x" },
+    { label: "Gray's Anatomy 42e", citation: "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020. Chapters on the anterior abdominal wall, peritoneum, retroperitoneum and pelvis." },
   ],
   "head-neck-anatomy": [
     { label: "Ellis & Feldman Ch.5", citation: "Ellis H, Feldman S, Harrop-Griffiths W. Anatomy for Anaesthetists. 9th ed. Chapter 5: The Head and Neck." },
