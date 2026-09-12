@@ -195,7 +195,7 @@ const PaediatricCoreTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="physiology" exams={[Exam.Primary, Exam.Final]} className="scroll-mt-24">
+          <ExamSection id="physiology" exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
             <CollapsibleSubsection title="Age-Specific Physiology" defaultOpen>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Children are not small adults. The neonatal period (0–28 days) and infancy carry the
@@ -262,7 +262,7 @@ const PaediatricCoreTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="fluids" exams={[Exam.Primary, Exam.Final]} className="scroll-mt-24">
+          <ExamSection id="fluids" exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
             <CollapsibleSubsection title="Fluid Therapy: Maintenance, Deficit and Resuscitation">
               <p className="text-muted-foreground leading-relaxed mb-3">
                 <strong>Maintenance</strong> uses the Holliday-Segar formula: 100 mL/kg/day for the
@@ -322,7 +322,7 @@ const PaediatricCoreTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="dosing" exams={[Exam.Primary, Exam.Final]} className="scroll-mt-24">
+          <ExamSection id="dosing" exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
             <CollapsibleSubsection title="Drug Dosing & Weight Estimation">
               <p className="text-muted-foreground leading-relaxed mb-3">
                 All paediatric prescribing is <strong>weight-based with an adult-dose ceiling</strong>.
@@ -387,7 +387,7 @@ const PaediatricCoreTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="pain-scoring" exams={[Exam.Primary, Exam.Final]} className="scroll-mt-24">
+          <ExamSection id="pain-scoring" exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
             <CollapsibleSubsection title="Pain Assessment & Scoring">
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Choose the tool by developmental age, not chronological age.{" "}
@@ -444,7 +444,7 @@ const PaediatricCoreTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="picu-link" exams={[Exam.Final, Exam.FFICM]} className="scroll-mt-24">
+          <ExamSection id="picu-link" exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
             <CollapsibleSubsection title="When to Escalate: Paediatric Intensive Care">
               <p className="text-muted-foreground leading-relaxed mb-4">
                 These core skills are the foundation, but critically unwell children need
