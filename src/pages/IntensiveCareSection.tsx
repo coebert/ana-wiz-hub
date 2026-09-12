@@ -76,7 +76,12 @@ const IntensiveCareSection = () => {
         and the{" "}
         <a href="/intensive-care/drug-comparison" className="font-medium text-icu underline-offset-4 hover:underline">
           drug comparison tool
-        </a>
+        </a>{" "}
+        and the{" "}
+        <a href="/intensive-care/drug-cards" className="font-medium text-icu underline-offset-4 hover:underline">
+          full drug cards
+        </a>{" "}
+        (class, mechanism, dosing, kinetics, safety and withdrawal on one card)
         .
 
       </p>
