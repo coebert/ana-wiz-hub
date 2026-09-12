@@ -387,7 +387,7 @@ const RenalDiseaseTopic = () => {
             </section>
 
             <ExamPitfallsCallout
-              exam={Exam.FINAL}
+              accent="perioperative"
               pitfalls={[
                 "Dialysing on the same day as surgery instead of the day before — leaves residual heparin effect and volume instability.",
                 "Using morphine or pethidine in significant renal impairment — active metabolites accumulate.",

@@ -196,6 +196,29 @@ const CardiovascularDiseaseTopic = () => {
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
           <ValvularHaemodynamicsDiagram />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4 overflow-x-auto">
+              <h3 className="font-semibold text-foreground mb-2">Haemodynamic Goals — Summary Table (Preload / Afterload / Rate / Rhythm / Contractility)</h3>
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border text-foreground">
+                    <th className="text-left py-1 pr-2">Lesion</th>
+                    <th className="text-left py-1 pr-2">Preload</th>
+                    <th className="text-left py-1 pr-2">Afterload (SVR)</th>
+                    <th className="text-left py-1 pr-2">Heart rate</th>
+                    <th className="text-left py-1 pr-2">Rhythm</th>
+                    <th className="text-left py-1 pr-2">Contractility</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border/50"><td className="py-1 pr-2">Aortic stenosis</td><td className="py-1 pr-2">Full/high</td><td className="py-1 pr-2">Maintain/high</td><td className="py-1 pr-2">60–80 (avoid tachy/brady)</td><td className="py-1 pr-2">Sinus essential</td><td className="py-1 pr-2">Maintain</td></tr>
+                  <tr className="border-b border-border/50"><td className="py-1 pr-2">Aortic regurgitation</td><td className="py-1 pr-2">Full</td><td className="py-1 pr-2">Reduce (vasodilate)</td><td className="py-1 pr-2">80–100 (avoid brady)</td><td className="py-1 pr-2">Sinus preferred</td><td className="py-1 pr-2">Maintain</td></tr>
+                  <tr className="border-b border-border/50"><td className="py-1 pr-2">Mitral stenosis</td><td className="py-1 pr-2">Full but avoid overload</td><td className="py-1 pr-2">Maintain</td><td className="py-1 pr-2">60–80 (avoid tachy)</td><td className="py-1 pr-2">Sinus essential; treat AF promptly</td><td className="py-1 pr-2">Maintain</td></tr>
+                  <tr className="border-b border-border/50"><td className="py-1 pr-2">Mitral regurgitation</td><td className="py-1 pr-2">Full</td><td className="py-1 pr-2">Reduce (vasodilate)</td><td className="py-1 pr-2">80–100</td><td className="py-1 pr-2">Sinus preferred</td><td className="py-1 pr-2">Maintain</td></tr>
+                  <tr><td className="py-1 pr-2">HOCM</td><td className="py-1 pr-2">Full (avoid hypovolaemia)</td><td className="py-1 pr-2">Maintain/high (avoid drops)</td><td className="py-1 pr-2">Slow-normal (avoid tachy)</td><td className="py-1 pr-2">Sinus essential</td><td className="py-1 pr-2">Reduce/avoid inotropes</td></tr>
+                </tbody>
+              </table>
+              <p className="text-xs mt-2">Fixed-obstruction lesions (AS, MS, HOCM) and dynamic-obstruction HOCM all share a requirement for adequate preload and avoidance of vasodilatation/tachycardia; regurgitant lesions (AR, MR) benefit from afterload reduction and a slightly faster heart rate to shorten diastole/reduce regurgitant time.</p>
+            </div>
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Aortic Stenosis</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
