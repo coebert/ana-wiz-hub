@@ -20,6 +20,10 @@ const s = {
   bnfc: { label: "BNF for Children: paracetamol", href: "https://bnfc.nice.org.uk/drugs/paracetamol/" },
   pris: { label: "Intensive Care Med: pathophysiology of propofol infusion syndrome", href: "https://doi.org/10.1007/s00134-003-1761-8" },
   padis: { label: "PADIS 2018 sedation, analgesia and delirium guideline", href: "https://doi.org/10.1097/CCM.0000000000003299" },
+  elderlyAssess: { label: "BJA Educ: preoperative assessment of the older patient", href: "https://doi.org/10.1016/j.bjae.2021.03.005" },
+  serotonin: { label: "BJA Educ: serotonin syndrome in the perioperative period", href: "https://doi.org/10.1016/j.bjae.2019.10.003" },
+  allergy: { label: "BJA Educ: allergy and anaesthesia, managing the risk", href: "https://doi.org/10.1016/j.bjae.2020.04.005" },
+  liverDisease: { label: "BJA Educ: perioperative management of patients with liver disease", href: "https://doi.org/10.1016/j.bjae.2021.11.006" },
 };
 
 export const pharmacologyCaseBank: CaseBank = {
@@ -27,7 +31,7 @@ export const pharmacologyCaseBank: CaseBank = {
   path: "/pharmacology/case-bank",
   title: "Pharmacology Case Bank",
   subtitle: "Progressive scenarios that apply kinetics, dynamics and drug-specific safety to real decisions.",
-  metaDescription: "Twelve progressive pharmacology cases on TIVA kinetics, opioid tolerance, malignant hyperthermia, local anaesthetic toxicity, reversal and ICU sedation.",
+  metaDescription: "Eighteen progressive pharmacology cases on TIVA kinetics, volatile agents, opioid tolerance, malignant hyperthermia, serotonin syndrome, TDM and NMB anaphylaxis.",
   backPath: "/pharmacology",
   backLabel: "Pharmacology",
   accentColor: "text-pharmacology",
@@ -584,6 +588,282 @@ export const pharmacologyCaseBank: CaseBank = {
       ],
       takeHome: "Unexplained acidosis with rhabdomyolysis and arrhythmia during prolonged propofol is infusion syndrome: stop the drug, support organs, then sedate lightly with an analgesia-first strategy.",
       sourceLinks: [s.pris, s.padis],
+    },
+    {
+      id: "pharmacology-mac-second-gas-elderly",
+      title: "Slow induction and awareness risk in a frail elderly patient",
+      category: "Kinetics & delivery",
+      difficulty: "Intermediate",
+      summary: "Minimum alveolar concentration, the second gas effect and age-related changes in volatile uptake.",
+      topicIds: ["volatile-agents", "pharmacokinetics", "elderly-anaesthesia", "vaporisers", "gas-laws"],
+      patient: "An 84-year-old with reduced cardiac output and a low functional residual capacity is anaesthetised with sevoflurane in oxygen and nitrous oxide for a fractured neck of femur repair.",
+      presentation: "The team notes a slower-than-expected rise in end-tidal sevoflurane and asks whether the concentration is adequate, while also being cautious about cardiovascular depression.",
+      stages: [
+        {
+          title: "Explain the uptake",
+          prompt: "Why does end-tidal concentration rise more slowly, and how does nitrous oxide change this?",
+          answer: [
+            "Uptake depends on blood/gas solubility, cardiac output and the alveolar-to-venous partial pressure gradient; a low cardiac output paradoxically speeds the rise in alveolar concentration because less agent is carried away, so a slow rise here suggests good perfusion or a leak rather than a purely age-related delay.",
+            "Nitrous oxide's high uptake volume concentrates the companion volatile agent in the remaining alveolar gas and augments inflow (the second gas effect), while the concentration effect from nitrous oxide itself accelerates its own rise.",
+            "Reduced functional residual capacity and increased closing capacity in the elderly promote ventilation-perfusion mismatch and can slow equilibration despite normal delivered concentration.",
+          ],
+        },
+        {
+          title: "Adjust the dose",
+          prompt: "How should minimum alveolar concentration guide dosing in this patient?",
+          answer: [
+            "MAC falls by roughly 6% per decade after about 40 years of age, so an 84-year-old needs substantially less volatile agent than a young adult for the same depth of anaesthesia.",
+            "Titrate to processed EEG depth monitoring rather than a fixed age-uncorrected MAC value, since both under- and overdosing carry risk — awareness with paralysis versus profound hypotension and postoperative delirium.",
+            "Remember that MAC is reduced further by hypothermia, opioids, pregnancy and acute alcohol intoxication, and increased by chronic alcohol use and hyperthermia.",
+          ],
+        },
+        {
+          title: "Manage the haemodynamics",
+          prompt: "How do you balance depth against cardiovascular stability?",
+          answer: [
+            "Use a slower, staged induction with invasive or frequent non-invasive pressure monitoring, and favour agents and doses that preserve perfusion, such as reduced volatile concentration supplemented by regional or neuraxial blockade.",
+            "Treat hypotension promptly with small vasopressor boluses rather than simply reducing anaesthetic depth, which risks awareness.",
+            "Plan for delayed emergence: lower solubility agents such as sevoflurane and desflurane offset faster than more soluble agents, which matters more in older patients with reduced clearance reserve.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Alveolar concentration rises towards inspired concentration at a rate set by the balance between delivery (fresh gas flow, inspired concentration) and removal (uptake into blood, determined by solubility, cardiac output and the alveolar-venous gradient). Low cardiac output slows removal and so speeds equilibration, an effect used deliberately as a rapid-induction sign in shocked patients; a genuinely slow rise more often reflects circuit leak, low fresh gas flow or a soda lime problem. The second gas effect and concentration effect from nitrous oxide inflate the delivered volatile fraction and increase alveolar ventilation, effects that are exaggerated with high nitrous oxide concentrations." },
+        { title: "Management and monitoring", content: "Dose according to age-corrected MAC and titrate against processed EEG rather than end-tidal percentage alone, since equipotent MAC still produces different plasma and cerebral concentrations with different comorbidities. Anticipate cardiovascular depression in the frail elderly, use invasive monitoring where appropriate, treat hypotension pharmacologically rather than by under-anaesthetising, and use multimodal, opioid-sparing and regional techniques to permit a lower volatile requirement. Plan for slower emergence and postoperative delirium risk, and document depth monitoring values." },
+        { title: "Exam pitfall", content: "Do not say low cardiac output slows induction — it speeds it. Define the second gas and concentration effects separately, and quote the approximate 6% per decade fall in MAC with age." },
+      ],
+      takeHome: "MAC and volatile uptake both change predictably with age and physiology: correct the target for age, use depth monitoring, and treat hypotension without simply lightening anaesthesia.",
+      sourceLinks: [s.volatiles, s.elderlyAssess],
+    },
+    {
+      id: "pharmacology-serotonin-syndrome",
+      title: "Agitation and clonus after postoperative tramadol",
+      category: "Critical care drugs",
+      difficulty: "Advanced",
+      summary: "Serotonergic drug interactions, recognition of serotonin syndrome and differentiation from neuroleptic malignant syndrome.",
+      topicIds: ["opioids", "toxicology", "pain-medicine", "icu-sedation-delirium", "neurological-disease"],
+      patient: "A patient established on a monoamine oxidase inhibitor for depression is given tramadol and ondansetron after surgery; a second scenario involves a patient on linezolid for a resistant infection who also receives fentanyl and citalopram.",
+      presentation: "Within hours the patient becomes agitated and confused, with sweating, tremor, hyperreflexia and inducible clonus greatest in the lower limbs, tachycardia and a temperature of 38.9 °C.",
+      stages: [
+        {
+          title: "Make the diagnosis",
+          prompt: "What is happening and which drug combinations caused it?",
+          answer: [
+            "This is serotonin syndrome: excess serotonergic activity at central and peripheral 5-HT receptors, clinically diagnosed (Hunter criteria) from the combination of clonus, agitation, hyperreflexia, diaphoresis, tremor and hyperthermia in a patient exposed to serotonergic drugs.",
+            "Tramadol, pethidine and dextromethorphan inhibit serotonin reuptake and are the highest-risk opioids; monoamine oxidase inhibitors block serotonin breakdown, so the combination is particularly dangerous and can be fatal.",
+            "Linezolid is a weak but clinically significant monoamine oxidase inhibitor and interacts with selective serotonin reuptake inhibitors, serotonin-noradrenaline reuptake inhibitors and serotonergic opioids; ondansetron and metoclopramide are also mildly serotonergic and can contribute.",
+          ],
+        },
+        {
+          title: "Distinguish it from mimics",
+          prompt: "How do you separate this from neuroleptic malignant syndrome and malignant hyperthermia?",
+          answer: [
+            "Serotonin syndrome typically develops within hours of a precipitant, with hyperreflexia and clonus (especially lower limb and ocular), whereas neuroleptic malignant syndrome evolves over days after dopamine antagonist exposure with lead-pipe rigidity and hyporeflexia.",
+            "Malignant hyperthermia follows a volatile agent or suxamethonium trigger and presents with rising CO₂ and muscle rigidity rather than the neuromuscular hyperactivity pattern seen here.",
+            "Creatine kinase can rise in all three, so the drug history and reflex/tone findings are more discriminating than a single blood test.",
+          ],
+        },
+        {
+          title: "Treat it",
+          prompt: "What is the management?",
+          answer: [
+            "Stop all serotonergic drugs immediately, give supportive care with intravenous fluids, cooling and benzodiazepines for agitation and to reduce muscle activity, and monitor in a critical care area.",
+            "For moderate to severe cases, give cyproheptadine as a serotonin antagonist; avoid physical restraint, which can worsen hyperthermia through isometric muscle activity, and avoid further serotonergic or dopaminergic drugs.",
+            "Most cases resolve within 24–72 hours of stopping the causative drugs; document the interaction clearly and flag it for future prescribing.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Serotonin syndrome is a dose-related, mechanistically predictable toxicity rather than an idiosyncratic reaction, arising from additive serotonergic effect across drug classes: reuptake inhibitors, monoamine oxidase inhibitors, serotonin-releasing agents and some opioids and antiemetics. Perioperative risk is high because analgesic and antiemetic prescribing routinely adds serotonergic drugs to a patient's existing psychiatric or antidepressant medication without the interaction being flagged." },
+        { title: "Management and monitoring", content: "Prevention means medication reconciliation before prescribing tramadol, pethidine, ondansetron or linezolid in a patient on antidepressants or monoamine oxidase inhibitors, and choosing alternatives such as morphine or fentanyl with a non-serotonergic antiemetic where risk is high. Once suspected, stop the causative agents, support airway, breathing and circulation, treat hyperthermia aggressively (external cooling, sedation, and neuromuscular blockade with intubation in severe cases because antipyretics do not work on muscle-generated heat), and use cyproheptadine or chlorpromazine for antagonism in refractory cases." },
+        { title: "Exam pitfall", content: "Do not confuse this with neuroleptic malignant syndrome on the exam — examiners expect the timeframe, reflex findings and drug triggers named correctly. State that paracetamol will not lower a serotonin syndrome or malignant hyperthermia fever because the mechanism is not hypothalamic." },
+      ],
+      takeHome: "Agitation, clonus, hyperreflexia and hyperthermia after adding a serotonergic drug is serotonin syndrome: stop the triggers, support and cool, and consider cyproheptadine for severe cases.",
+      sourceLinks: [s.serotonin, s.opioids],
+    },
+    {
+      id: "pharmacology-nmb-anaphylaxis",
+      title: "Cardiovascular collapse at induction with rocuronium",
+      category: "Analgesia & anaesthetics",
+      difficulty: "Advanced",
+      summary: "Immunoglobulin E-mediated anaphylaxis to neuromuscular blocking drugs, immediate treatment and tryptase-guided follow-up.",
+      topicIds: ["muscle-relaxants", "clinical-incidents", "genetic-syndromes", "toxicology", "neuromuscular"],
+      patient: "Within two minutes of induction with propofol, fentanyl and rocuronium, an adult develops a widespread erythematous rash, bronchospasm, a blood pressure of 60/30 mmHg and difficulty ventilating.",
+      presentation: "There is no prior anaesthetic exposure documented, but the patient has previously reacted to an over-the-counter cough remedy and uses various cosmetic products.",
+      stages: [
+        {
+          title: "Recognise and treat immediately",
+          prompt: "What is the diagnosis and immediate management?",
+          answer: [
+            "This is grade III/IV perioperative anaphylaxis, most commonly due to neuromuscular blocking drugs, which account for the largest single group of triggers, often through IgE sensitisation to quaternary ammonium ions present in many household and cosmetic products.",
+            "Call for help, stop the likely trigger and any colloid or antibiotic running, give 100% oxygen, lay the patient flat with legs raised, and give intramuscular adrenaline 0.5 mg (repeated every 5 minutes) or titrated intravenous boluses of 50 microgram increments if experienced and monitored.",
+            "Give a rapid intravenous fluid bolus (10–20 mL/kg crystalloid), and proceed to advanced life support if cardiac arrest occurs, following the Resuscitation Council UK and Association of Anaesthetists algorithm.",
+          ],
+        },
+        {
+          title: "Support and refine treatment",
+          prompt: "What second-line measures might be needed?",
+          answer: [
+            "Refractory bronchospasm may need salbutamol, and refractory hypotension may need a noradrenaline or vasopressin infusion and additional fluid; glucagon is useful if the patient is on a beta-blocker and unresponsive to adrenaline.",
+            "Antihistamines and corticosteroids are given as second-line adjuncts but are not first-line treatment and must not delay adrenaline.",
+            "Take a timed mast cell tryptase sample as soon as feasible after resuscitation, then at 1–2 hours and at 24 hours or convalescence for a baseline, since tryptase rises acutely and falls over hours.",
+          ],
+        },
+        {
+          title: "Investigate and plan future care",
+          prompt: "What happens after stabilisation?",
+          answer: [
+            "Refer to a specialist perioperative allergy clinic with the anaesthetic chart, drug timings and tryptase results for skin prick and intradermal testing against all drugs given, including cross-reactivity testing against other neuromuscular blocking drugs.",
+            "Report the reaction through the relevant national reporting scheme and to the manufacturer, and give the patient a written record and a MedicAlert-type warning.",
+            "Plan future anaesthesia around the confirmed allergen; because of quaternary ammonium cross-reactivity, a full panel of relaxants should be tested even if only one drug was given, since a substantial proportion of patients cross-react with other neuromuscular blocking drugs.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Perioperative anaphylaxis is a type I, IgE-mediated hypersensitivity causing mast cell and basophil degranulation with histamine, tryptase and other mediator release, producing vasodilation, capillary leak, bronchospasm and cardiovascular collapse within minutes of exposure. Neuromuscular blocking drugs are implicated in a large proportion of severe perioperative reactions, and sensitisation can occur without previous anaesthetic exposure because quaternary and tertiary ammonium epitopes are present in many everyday products, explaining reactions on first exposure to a relaxant." },
+        { title: "Management and monitoring", content: "Adrenaline is the definitive treatment and should not be delayed for diagnostic certainty; intramuscular dosing is appropriate for less experienced responders while trained anaesthetists may titrate small intravenous boluses with full monitoring. Fluid resuscitation addresses profound capillary leak, and second-line therapies address ongoing bronchospasm or refractory shock. Timed tryptase sampling is essential to confirm the diagnosis retrospectively and distinguish it from other causes of intraoperative collapse; a normal tryptase does not exclude anaphylaxis, particularly if not sampled at the ideal time." },
+        { title: "Exam pitfall", content: "Do not give antihistamine or hydrocortisone as first-line treatment, and do not omit the timed tryptase samples. State that testing should include all relaxants because of cross-reactivity, not just the one given." },
+      ],
+      takeHome: "Treat suspected NMB anaphylaxis with immediate adrenaline and fluid, take serial timed tryptase samples, and refer for allergy testing against all neuromuscular blocking drugs because of cross-reactivity.",
+      sourceLinks: [s.allergy, s.als],
+    },
+    {
+      id: "pharmacology-hepatic-drug-handling",
+      title: "Sedation and coagulopathy in decompensated cirrhosis",
+      category: "Kinetics & delivery",
+      difficulty: "Advanced",
+      summary: "Phase I and II metabolism, protein binding and drug selection in significant hepatic impairment.",
+      topicIds: ["hepatic-disease", "hepatic-physiology", "pharmacokinetics", "transfusion-coagulation", "aki-rrt"],
+      patient: "A patient with decompensated cirrhosis, ascites, an albumin of 22 g/L and an INR of 1.9 needs sedation and analgesia for a bedside procedure and later a general anaesthetic.",
+      presentation: "The team asks which sedative, analgesic and muscle relaxant are safest, and whether the deranged INR should influence neuraxial or invasive procedures.",
+      stages: [
+        {
+          title: "Explain the pharmacokinetic changes",
+          prompt: "How does cirrhosis alter drug handling?",
+          answer: [
+            "Phase I oxidative metabolism (cytochrome P450) is impaired earlier and more severely than phase II conjugation, so drugs cleared by glucuronidation (for example, morphine, lorazepam, oxazepam) are often more predictable than those needing oxidation.",
+            "Hypoalbuminaemia increases the free fraction of highly protein-bound drugs, increasing effect and toxicity at a normal total dose; portosystemic shunting reduces first-pass metabolism and increases bioavailability of oral drugs.",
+            "Reduced hepatic blood flow lowers clearance of high-extraction drugs, and ascites increases volume of distribution for hydrophilic drugs, complicating simple weight-based dosing.",
+          ],
+        },
+        {
+          title: "Choose the drugs",
+          prompt: "What sedative, analgesic and relaxant choices are preferred?",
+          answer: [
+            "Prefer drugs with extrahepatic elimination or short context-sensitive profiles: propofol (though clearance can still fall in severe disease), remifentanil (esterase metabolism independent of the liver) and atracurium or cisatracurium (Hofmann elimination and ester hydrolysis).",
+            "Reduce and titrate opioids carefully, since clearance is impaired and encephalopathy risk rises; avoid long-acting oral opioids and be cautious with paracetamol dose reduction in significant hepatic impairment while still treating pain adequately.",
+            "Avoid or use with extreme caution long-acting benzodiazepines, which can precipitate or unmask hepatic encephalopathy; if sedation is needed, use the shortest-acting agent titrated to effect.",
+          ],
+        },
+        {
+          title: "Address the coagulopathy",
+          prompt: "How do you interpret the INR before an invasive procedure?",
+          answer: [
+            "A prolonged INR in cirrhosis reflects reduced synthesis of both pro- and anticoagulant factors and does not reliably predict bleeding risk; routine correction with plasma is not indicated for a stable, moderately elevated INR alone.",
+            "Use viscoelastic testing (thromboelastography or rotational thromboelastometry) where available to guide blood product use, since global rebalanced haemostasis is common despite an abnormal standard INR.",
+            "Neuraxial and other invasive procedures still need individualised risk assessment including platelet count, fibrinogen and clinical bleeding history; vitamin K should be given if deficiency is likely, and specific factor or platelet support reserved for active bleeding or per-procedure protocol.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Chronic liver disease alters both pharmacokinetics and pharmacodynamics: reduced hepatocyte mass and blood flow lower clearance of hepatically metabolised drugs, hypoalbuminaemia raises free drug fraction, and increased cerebral sensitivity to sedatives and opioids raises the risk of precipitating encephalopathy at doses that would be safe in health. The standard INR was designed to monitor warfarin and correlates poorly with bleeding risk in cirrhosis because it reflects only the procoagulant arm of a rebalanced but fragile haemostatic system." },
+        { title: "Management and monitoring", content: "Select drugs independent of hepatic metabolism where possible, titrate everything to effect with lower starting doses and longer intervals, and monitor for early signs of encephalopathy. Avoid reflexive correction of a mildly deranged INR with plasma, which exposes the patient to volume overload and transfusion risk without proven benefit; use viscoelastic-guided transfusion for bleeding or high-risk procedures, and treat vitamin K deficiency where relevant (malnutrition, cholestasis). Involve hepatology and correct precipitants of decompensation (infection, gastrointestinal bleeding, diuretic-induced electrolyte disturbance, constipation) before any elective procedure." },
+        { title: "Exam pitfall", content: "Do not equate INR with bleeding risk in liver disease, and do not routinely give fresh frozen plasma to 'correct' it before a low-risk procedure. Name specific drugs with extrahepatic clearance rather than a generic answer of 'reduce all doses'." },
+      ],
+      takeHome: "In cirrhosis, choose drugs with extrahepatic elimination, titrate cautiously to avoid encephalopathy, and use viscoelastic testing rather than the INR alone to guide bleeding management.",
+      sourceLinks: [s.liverDisease, s.pk],
+    },
+    {
+      id: "pharmacology-vancomycin-tdm",
+      title: "Vancomycin dosing and levels in a septic patient with fluctuating renal function",
+      category: "Critical care drugs",
+      difficulty: "Intermediate",
+      summary: "Area-under-the-curve dosing, trough monitoring and nephrotoxicity avoidance for glycopeptide and aminoglycoside therapy.",
+      topicIds: ["antimicrobials-icu", "pharmacokinetics", "aki-rrt", "sepsis", "infectious-disease-icu"],
+      patient: "A patient with methicillin-resistant Staphylococcus aureus bacteraemia is started on intravenous vancomycin. Creatinine has risen from 70 to 130 micromol/L over 48 hours amid ongoing fluid resuscitation.",
+      presentation: "The laboratory reports a pre-dose (trough) vancomycin level of 22 mg/L, and the team asks whether the dose or interval should change and whether gentamicin, also prescribed empirically, needs separate monitoring.",
+      stages: [
+        {
+          title: "Interpret the level",
+          prompt: "What does this trough tell you, and what is the current preferred target?",
+          answer: [
+            "A trough of 22 mg/L is above the traditional target of 15–20 mg/L for invasive infection and raises nephrotoxicity risk, especially with a rising creatinine and probable renal hypoperfusion or tubular injury.",
+            "Current guidance favours dosing to an area-under-the-curve to minimum inhibitory concentration ratio of around 400–600 rather than trough alone, since trough-only dosing over-exposes many patients; where AUC dosing is not available, trough monitoring remains a reasonable surrogate.",
+            "Vancomycin is time- and exposure-dependent with a nephrotoxicity signal that increases with higher troughs, prolonged therapy and concurrent nephrotoxins.",
+          ],
+        },
+        {
+          title: "Adjust the regimen",
+          prompt: "What do you change?",
+          answer: [
+            "Withhold or reduce the next dose and extend the interval, then re-dose guided by a repeat level and estimated creatinine clearance rather than reflexively continuing the same regimen.",
+            "Ensure adequate loading was given initially (dosing based on actual body weight, with a higher loading dose in critical illness) since underdosing early risks treatment failure and resistance, while overdosing later risks toxicity.",
+            "Review and stop other nephrotoxins where possible (NSAIDs, contrast, other antibiotics), optimise volume status and blood pressure, and reassess renal function daily during therapy.",
+          ],
+        },
+        {
+          title: "Manage the aminoglycoside in parallel",
+          prompt: "How does gentamicin monitoring differ?",
+          answer: [
+            "Gentamicin is concentration-dependent, so once-daily extended-interval dosing targeting a high peak is preferred, monitored by a level at a defined time point (for example, using a dosing nomogram) rather than a trough.",
+            "An elevated or undetectable trough indicates delayed clearance and needs interval extension rather than dose reduction, since dose reduction lowers the therapeutic peak.",
+            "Combined use of vancomycin and an aminoglycoside meaningfully increases nephrotoxicity risk; limit duration, monitor renal function daily, and de-escalate to a less nephrotoxic regimen as soon as cultures allow.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Therapeutic drug monitoring exists because these agents have a narrow therapeutic index and pharmacokinetics that change rapidly in critical illness: fluid resuscitation expands volume of distribution and can cause early underdosing, while evolving acute kidney injury reduces clearance and risks accumulation later in the same admission. Area-under-the-curve-guided vancomycin dosing better predicts efficacy and toxicity than trough alone and is now the preferred approach where software or sampling supports it, but trough monitoring remains widely used and is a reasonable proxy in most units." },
+        { title: "Management and monitoring", content: "Load adequately based on actual body weight, then individualise maintenance dosing to renal function trends rather than a single creatinine value, re-checking levels after each dose adjustment and at least twice weekly during a stable course. For aminoglycosides, use extended-interval dosing with nomogram-timed levels, and avoid dosing that produces a persistently detectable trough, which signals reduced clearance. Combine antimicrobial monitoring with daily review of renal function, other nephrotoxins, fluid balance and clinical response, and de-escalate to narrower or less nephrotoxic agents guided by culture results." },
+        { title: "Exam pitfall", content: "Do not describe vancomycin dosing purely by trough as the current gold standard without mentioning AUC-guided dosing, and do not reduce a gentamicin dose (rather than extend the interval) in response to an elevated trough." },
+      ],
+      takeHome: "Load antimicrobials fully, then use area-under-the-curve or timed-level monitoring to individualise maintenance dose and interval as renal function changes, watching closely for nephrotoxicity.",
+      sourceLinks: [s.antimicrobial, s.pk],
+    },
+    {
+      id: "pharmacology-warfarin-enzyme-interaction",
+      title: "Unstable INR after starting a new antibiotic and antiepileptic",
+      category: "Kinetics & delivery",
+      difficulty: "Intermediate",
+      summary: "Cytochrome P450 enzyme induction and inhibition and their practical effect on warfarin control.",
+      topicIds: ["anticoagulants", "pharmacokinetics", "transfusion-coagulation", "preoperative-assessment", "hepatic-physiology"],
+      patient: "A patient on long-term warfarin for a mechanical heart valve is started on phenytoin for a new seizure disorder, then some weeks later requires a course of metronidazole for an intra-abdominal infection.",
+      presentation: "The INR falls to 1.4 after starting phenytoin, then rises sharply to 6.8 with bruising and gum bleeding two days into metronidazole.",
+      stages: [
+        {
+          title: "Explain the first change",
+          prompt: "Why did the INR fall after starting phenytoin?",
+          answer: [
+            "Phenytoin is a potent inducer of hepatic cytochrome P450 enzymes (notably CYP3A4 and CYP2C9), which increases the metabolic clearance of warfarin and reduces its anticoagulant effect over one to three weeks as enzyme activity upregulates.",
+            "Phenytoin and warfarin are also both highly protein-bound and can displace each other, producing complex, sometimes biphasic interactions, but the dominant long-term effect here is induction lowering the INR.",
+            "Enzyme induction is a delayed effect requiring new enzyme synthesis, so the interaction develops and resolves over days to weeks rather than immediately.",
+          ],
+        },
+        {
+          title: "Explain the second change",
+          prompt: "Why did the INR rise sharply with metronidazole?",
+          answer: [
+            "Metronidazole inhibits CYP2C9, the principal enzyme metabolising the more potent S-warfarin enantiomer, rapidly reducing warfarin clearance and raising the INR within days.",
+            "Enzyme inhibition acts immediately on existing enzyme molecules, unlike induction, so its onset and offset are much faster.",
+            "Other significant interacting antibiotics include fluconazole, co-trimoxazole and macrolides (inhibition, raising INR), and rifampicin (induction, lowering INR); many antibiotics also reduce vitamin K-producing gut flora, compounding the effect.",
+          ],
+        },
+        {
+          title: "Manage the bleeding risk now",
+          prompt: "What do you do with an INR of 6.8 and mucosal bleeding?",
+          answer: [
+            "Withhold warfarin, give oral or intravenous vitamin K according to the degree of INR elevation and bleeding severity, and consider prothrombin complex concentrate if bleeding is major.",
+            "Identify and, where possible, avoid or substitute the interacting drug, and monitor the INR closely (daily or more often) until stable, anticipating further change for one to two weeks after any dose or drug change because of the delayed pharmacokinetics of induction and inhibition.",
+            "Educate the patient and prescribing teams that any new drug, herbal remedy or major dietary change (vitamin K intake) needs an anticoagulation review, and document the interaction clearly in the notes and discharge summary.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Warfarin's narrow therapeutic index and near-total dependence on cytochrome P450 metabolism make it exquisitely sensitive to enzyme induction and inhibition. Induction requires transcription and translation of new enzyme protein, so onset and offset are slow (days to weeks); inhibition acts on existing enzyme and is fast in onset, though offset still depends on clearance of the inhibitor. Because S-warfarin is several times more potent than R-warfarin and is metabolised mainly by CYP2C9, drugs that inhibit this specific isoform (metronidazole, fluconazole, several sulfonamides) produce large INR rises even at standard antibiotic doses." },
+        { title: "Management and monitoring", content: "Anticipate interactions whenever a new drug is started or stopped in a patient on warfarin, checking INR sooner than the routine interval and warning the patient of the expected direction and timescale of change. Treat significant over-anticoagulation according to bleeding severity: minor elevation without bleeding often needs only dose omission and monitoring, while bleeding or very high INR needs vitamin K with or without factor concentrate. Reassess the ongoing need for the interacting drug and consider a direct oral anticoagulant alternative where clinically appropriate and not contraindicated (mechanical valves remain an exception requiring warfarin)." },
+        { title: "Exam pitfall", content: "Do not describe interaction timing as immediate for both induction and inhibition — only inhibition is rapid. Name CYP2C9 specifically for warfarin and state that mechanical heart valves are not suitable for direct oral anticoagulants." },
+      ],
+      takeHome: "Enzyme inducers slowly lower INR while inhibitors rapidly raise it: anticipate the timescale, monitor INR closely around any drug change, and treat over-anticoagulation according to bleeding severity.",
+      sourceLinks: [s.andexanet, s.pk],
     },
   ],
 };
