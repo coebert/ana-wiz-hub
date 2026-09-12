@@ -71,7 +71,7 @@ const IcuDrugSafety = () => {
         <title>ICU Drug Safety: Interactions, Contraindications, Monitoring</title>
         <meta
           name="description"
-          content="Interactions, contraindications and monitoring requirements for 50 adult intensive care drugs — sedatives, neuromuscular blockers, vasopressors, antiarrhythmics, anticonvulsants, anticoagulants and antimicrobials."
+          content="Pharmacokinetics, half-life, clearance, interactions, contraindications and monitoring for 50 adult intensive care drugs — sedatives, neuromuscular blockers, vasopressors, antiarrhythmics, anticonvulsants, anticoagulants and antimicrobials."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-safety" />
       </Helmet>
@@ -92,7 +92,10 @@ const IcuDrugSafety = () => {
             <h1 className="text-3xl font-bold tracking-tight">ICU Drug Safety</h1>
             <p className="mt-2 max-w-2xl text-muted-foreground">
               The interactions, contraindications and monitoring that go with each of the{" "}
-              {icuDrugSafetyCount} drugs in the adult critical care formulary — the companion to the{" "}
+              {icuDrugSafetyCount} drugs in the adult critical care formulary — each with key pharmacokinetic
+              parameters (onset, half-life, clearance, volume of distribution, protein binding and
+              elimination) alongside its interactions, contraindications and monitoring — the companion to
+              the{" "}
               <Link
                 to="/intensive-care/drug-doses"
                 className="font-medium text-icu underline-offset-4 hover:underline"
@@ -231,10 +234,31 @@ const IcuDrugSafety = () => {
                             {firstSentences(mech.metabolism)}
                           </p>
                           {pk && (
-                            <p className="mt-1.5 text-muted-foreground">
-                              <span className="font-medium text-foreground">Handling: </span>
-                              {pk.organImpairment}
-                            </p>
+                            <>
+                              <dl className="mt-2 grid grid-cols-2 gap-x-4 gap-y-2 rounded-md border border-icu/20 bg-background/60 p-2.5 sm:grid-cols-3">
+                                {(
+                                  [
+                                    ["Onset", pk.onset],
+                                    ["Half-life", pk.halfLife],
+                                    ["Clearance", pk.clearance],
+                                    ["Vd", pk.volumeOfDistribution],
+                                    ["Protein binding", pk.proteinBinding],
+                                    ["Elimination", pk.elimination],
+                                  ] as const
+                                ).map(([label, value]) => (
+                                  <div key={label}>
+                                    <dt className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                                      {label}
+                                    </dt>
+                                    <dd className="mt-0.5 text-xs leading-snug text-foreground">{value}</dd>
+                                  </div>
+                                ))}
+                              </dl>
+                              <p className="mt-1.5 text-muted-foreground">
+                                <span className="font-medium text-foreground">Handling: </span>
+                                {pk.organImpairment}
+                              </p>
+                            </>
                           )}
                           <Link
                             to={`/intensive-care/drug-mechanisms?slug=${d.slug}#${d.slug}`}
