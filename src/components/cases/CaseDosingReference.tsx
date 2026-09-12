@@ -44,6 +44,10 @@ export const CaseDosingReference = ({ caseData }: CaseDosingReferenceProps) => {
         <Link to="/intensive-care/drug-doses" className="underline underline-offset-4 hover:text-foreground">
           ICU drug dosing table
         </Link>
+        . Work out infusion rates for this patient's weight with the{" "}
+        <Link to="/intensive-care/calculator" className="underline underline-offset-4 hover:text-foreground">
+          ICU drug calculator
+        </Link>
         .{" "}
         {ageGroup === "adult"
           ? "Always check the BNF and local guidelines."
