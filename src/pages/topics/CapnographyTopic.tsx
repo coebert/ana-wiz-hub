@@ -18,7 +18,7 @@ const capnographyFaqs: Array<[string, string]> = [
   ],
   [
     "What does a shark-fin capnography waveform mean?",
-    "A shark-fin (sloped) trace reflects prolonged, uneven alveolar emptying — the alpha angle becomes obtuse and the plateau slopes upward. It indicates expiratory airflow obstruction: acute severe asthma, COPD exacerbation, anaphylaxis, kinked tracheal tube or partial circuit obstruction. Treat the cause; do not increase ventilator rate before addressing obstruction or you will generate auto-PEEP.",
+    "A shark-fin (sloped) trace reflects prolonged, uneven alveolar emptying — the alpha angle becomes obtuse and the plateau slopes upward. It indicates expiratory airflow obstruction: acute severe asthma, COPD exacerbation, anaphylaxis, kinked tracheal tube or partial circuit obstruction. Anaphylaxis is a key perioperative cause: NAP6 found bronchospasm and reduced or absent end-tidal CO₂ among the commonest features, so anaphylaxis can present either as a shark-fin obstructive trace or as sudden loss of the trace with cardiovascular collapse and PEA arrest. Treat the cause; do not increase ventilator rate before addressing obstruction or you will generate auto-PEEP.",
   ],
   [
     "What is a curare cleft on capnography?",
