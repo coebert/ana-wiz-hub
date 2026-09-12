@@ -34,6 +34,16 @@ const s = {
   plasmic: { label: "PLASMIC score validation", href: "https://doi.org/10.1016/S2352-3026(16)30018-7" },
   hercules: { label: "HERCULES: caplacizumab in acquired TTP", href: "https://doi.org/10.1056/NEJMoa1806311" },
   ercEsicm: { label: "ERC/ESICM 2021 neuroprognostication guideline", href: "https://doi.org/10.1007/s00134-021-06548-2" },
+  bspedDka: { label: "BSPED interim guideline: management of DKA in children and young people", href: "https://www.bsped.org.uk/clinical-resources/guidelines/" },
+  paedCerebralOedema: { label: "PECARN: fluid therapy and cerebral injury in paediatric DKA", href: "https://doi.org/10.1056/NEJMoa1716816" },
+  niceBronchiolitis: { label: "NICE NG9: bronchiolitis in children", href: "https://www.nice.org.uk/guidance/ng9" },
+  firstAbc: { label: "FIRST-ABC: high-flow nasal cannula versus CPAP in children", href: "https://doi.org/10.1001/jama.2022.9615" },
+  stecHus: { label: "Shiga toxin-associated haemolytic uraemic syndrome review", href: "https://doi.org/10.1056/NEJMra0902814" },
+  paedTbiGuideline: { label: "Brain Trauma Foundation: severe paediatric traumatic brain injury guideline, 3rd edition", href: "https://doi.org/10.1097/PCC.0000000000001735" },
+  pccsTransfer: { label: "PCCS standards for the care of critically ill children and retrieval", href: "https://pccsociety.uk/publications/" },
+  meningococcal: { label: "NICE NG240: meningitis and meningococcal disease", href: "https://www.nice.org.uk/guidance/ng240" },
+  squeeze: { label: "SQUEEZE: fluid sparing versus usual care in paediatric septic shock", href: "https://doi.org/10.1186/s13063-021-05892-4" },
+  paedEcmo: { label: "ELSO guidelines for paediatric respiratory failure", href: "https://www.elso.org/ecmo-resources/elso-guidelines.aspx" },
 };
 
 export const icuCaseBank: CaseBank = {
