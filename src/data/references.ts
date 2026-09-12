@@ -54,6 +54,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2004", citation: "Patel S, Glendenning C. Measurement of gas flow and volume. BJA Education. 2004;4(5):150-153.", url: "https://doi.org/10.1093/bjaceaccp/mkh041" },
     { label: "Cross & Plunkett Ch.8", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 8: Flow." },
     { label: "Middleton Ch.6", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 6: Fluid Flow." },
+    { label: "A&ICM 2023 (Gas flow)", citation: "Gilbey JD. Measurement of gas flow and volume. Anaesthesia & Intensive Care Medicine. 2023;24(12):776-780.", url: "https://doi.org/10.1016/j.mpaic.2023.09.016" },
+    { label: "BJA Educ 2018 (Physics)", citation: "Magee P. Physics for anaesthesia. BJA Education. 2018;18(4):102-108.", url: "https://doi.org/10.1016/j.bjae.2017.12.004" },
   ],
   "vaporizers": [
     { label: "BJA Educ 2014", citation: "Srivastava U. Anaesthetic vaporisers. BJA Education. 2014;14(1):14-19.", url: "https://doi.org/10.1093/bjaceaccp/mkt032" },
@@ -193,6 +195,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NICE NG180", citation: "National Institute for Health and Care Excellence. Perioperative care in adults (NG180). Published 19 August 2020. Cross-refers to CG65 for prevention and management of inadvertent perioperative hypothermia.", url: "https://www.nice.org.uk/guidance/ng180" },
     { label: "BJA Educ 2017 (Pressure)", citation: "Hutchinson J, Whittaker M. Pressure measurement. BJA Education. 2017;17(9):316-21. (1 atm ≈ 1033 cmH₂O.)", url: "https://doi.org/10.1093/bjaed/mkx019" },
     { label: "NIST SI Guide App B.8", citation: "Thompson A, Taylor BN. Guide for the Use of the International System of Units (SI). NIST Special Publication 811, Appendix B.8: Factors for Units Listed Alphabetically — entry for 'atmosphere, standard (atm)'. (1 atm = 101 325 Pa ≈ 10.33 m H₂O ≈ 1033 cmH₂O.)", url: "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b8", excerpt: "atmosphere, standard (atm) ... 1.013 25 E+05 Pa. (One standard atmosphere equals 101 325 pascals; equivalent to a column of water approximately 10.33 metres — i.e. ≈1033 cmH₂O — at standard gravity.)" },
+    { label: "NICE NG125", citation: "National Institute for Health and Care Excellence. Surgical site infections: prevention and treatment. NICE guideline NG125; recommendations on maintaining normothermia in the perioperative period.", url: "https://www.nice.org.uk/guidance/ng125/chapter/Recommendations#maintaining-normothermia" },
   ],
   "math-concepts": [
     { label: "Cross & Plunkett Ch.1", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapter 1: Mathematical Concepts." },
@@ -294,6 +297,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Ganong Ch.30", citation: "Barrett KE, Barman SM, Boitano S, Brooks HL. Ganong's Review of Medical Physiology. 26th ed. McGraw-Hill; 2019. Chapter 30: The Heart as a Pump." },
     { label: "Power & Kam Ch.4", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. CRC Press; 2015. Chapter 4: Cardiac Physiology.", url: "https://www.routledge.com/Principles-of-Physiology-for-the-Anaesthetist/Power-Kam/p/book/9781444135237" },
     { label: "ICM 2013 Pulse Wave", citation: "Monnet X, Anguel N, Naudin B, et al. Assessment of left ventricular function by pulse wave analysis in critically ill patients. Intensive Care Med. 2013;39:1025-1033.", url: "https://doi.org/10.1007/s00134-013-2861-8", excerpt: "Pulse wave analysis systems can also monitor cardiac function but in a continuous fashion." },
+    { label: "BJA Educ 2023 (Cardiac muscle)", citation: "Szedlak P, Steele D, Hopkins P. Cardiac muscle physiology. BJA Education. 2023;23(9):350-357.", url: "https://doi.org/10.1016/j.bjae.2023.05.004" },
   ],
   "oxygen-haemoglobin": [
     { label: "BJA Educ 2004", citation: "Collins JA, Rudenski A. Oxygen transport and tissue oxygenation. BJA Education. 2015;15(3):148-152.", url: "https://doi.org/10.1093/bjaceaccp/mku040" },
@@ -301,6 +305,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Power & Kam Ch.7", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 7: Oxygen Transport." },
     { label: "BJA Educ 2018 (CO)", citation: "Rose JJ, Wang L, Xu Q, et al. Carbon monoxide poisoning: pathogenesis, management and future directions of therapy. BJA Education. 2018;18(2):46-52. Indications for hyperbaric oxygen include COHb >25%, loss of consciousness, neurological signs, pregnancy and persistent symptoms.", url: "https://doi.org/10.1016/j.bjae.2017.12.001" },
     { label: "BNF Methylthioninium", citation: "Joint Formulary Committee. Methylthioninium chloride (methylene blue). British National Formulary. London: BMJ Group and Pharmaceutical Press. Methaemoglobinaemia: 1–2 mg/kg IV over 5 minutes; may be repeated after 1 h (max 7 mg/kg).", url: "https://bnf.nice.org.uk/drugs/methylthioninium-chloride/" },
+    { label: "BJA Educ 2016 (O2 transport)", citation: "Dunn JOC, Mythen MG, Grocott MP. Physiology of oxygen transport. BJA Education. 2016;16(10):341-348.", url: "https://doi.org/10.1093/bjaed/mkw012" },
   ],
   "lung-mechanics": [
     { label: "BJA Educ 2015", citation: "Lumb AB. Respiratory physiology — mechanics of breathing. BJA Education. 2012;12(2):57-61.", url: "https://doi.org/10.1093/bjaceaccp/mkr054" },
@@ -336,6 +341,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2021 (Bradycardia)", citation: "Management of intraoperative bradycardia. BJA Education. 2021. Doses of atropine (10–20 µg/kg IV) and glycopyrrolate (4–8 µg/kg IV) for perioperative bradycardia.", url: "https://doi.org/10.1016/j.bjae.2021.05.001" },
     { label: "BNFc Atropine", citation: "British National Formulary for Children (BNFc). Atropine sulfate — bradycardia (paediatric): 20 micrograms/kg IV (max per dose 600 micrograms), repeated if needed. Joint Formulary Committee, BMJ Group and Pharmaceutical Press; updated continuously.", url: "https://bnfc.nice.org.uk/drugs/atropine-sulfate/", excerpt: "Bradycardia (by intravenous injection): Child 1 month–11 years, 20 micrograms/kg (max. per dose 600 micrograms), to be repeated if necessary; Child 12–17 years, 300–600 micrograms, to be repeated if necessary." },
     { label: "Ann Med 2022 Dysautonomia", citation: "Yong SJ. Pathophysiology and mechanism of long COVID: a comprehensive review. Ann Med. 2022;54(1):1473-1487.", url: "https://doi.org/10.1080/07853890.2022.2076901", excerpt: "Autonomic nervous system damage could account for many symptoms without clear evidence of organ damage." },
+    { label: "BNF", citation: "Joint Formulary Committee. British National Formulary. London: BMJ Group and Pharmaceutical Press (current edition) - reference source for autonomic drug doses.", url: "https://www.bnf.org/" },
   ],
   "neuromuscular": [
     { label: "BJA Educ 2005", citation: "Bowman WC. Neuromuscular block. BJA Education. 2006;6(1):2-6.", url: "https://doi.org/10.1093/bjaceaccp/mki067" },
@@ -399,6 +405,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Stanski & Shafer", citation: "Shafer SL, Stanski DR. Defining depth of anesthesia. Handb Exp Pharmacol. 2008;182:409-423.", url: "https://doi.org/10.1007/978-3-540-74806-9_19" },
     { label: "BJA Educ PK 2018", citation: "Coppens M, Van Limmen JGM, Schnider T, et al. Pharmacokinetics of anaesthetic drugs. BJA Education. 2018.", url: "https://www.bjaed.org/article/S2058-5349(17)30509-3/fulltext", excerpt: "After an intravenous bolus, the plasma concentration–time profile of a drug that is best described by a two-compartment model is bi-exponential, with a rapid initial fall (the α or distribution phase) followed by a slower decline (the β or elimination phase)." },
     { label: "Intensive Care Med PK 2014", citation: "Roberts JA, Abdul-Aziz MH, Lipman J, et al. Individualised antibiotic dosing for patients who are critically ill. Lancet Infect Dis. 2014;14(6):498-509.", url: "https://doi.org/10.1016/S1473-3099(14)70036-8", excerpt: "The pathophysiological changes associated with critical illness can lead to substantial variations in the pharmacokinetics of antimicrobials." },
+    { label: "ICM 2013 (Antibiotic PK in critical illness)", citation: "Udy AA, Roberts JA, Lipman J. Clinical implications of antibiotic pharmacokinetic principles in the critically ill. Intensive Care Med. 2013;39(12):2070-2082.", url: "https://doi.org/10.1007/s00134-013-3088-4" },
   ],
   "iv-anaesthetics": [
     { label: "BJA Educ 2014", citation: "Sahinovic MM, Struys MMRF, Absalom AR. Clinical pharmacokinetics and pharmacodynamics of propofol. Clin Pharmacokinet. 2018;57(12):1539-1558.", url: "https://doi.org/10.1007/s40262-018-0672-3" },
@@ -512,6 +519,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Ellis & Feldman Ch.4", citation: "Ellis H, Feldman S, Harrop-Griffiths W. Anatomy for Anaesthetists. 9th ed. Chapter 4: The Abdomen." },
     { label: "BJA Educ 2015", citation: "Hebbard PD et al. Transversus abdominis plane block — anatomy and technique. BJA Education. 2007;7(5):171-174.", url: "https://doi.org/10.1093/bjaceaccp/mkm033" },
     { label: "Miller Ch.47", citation: "Miller RD, ed. Miller's Anesthesia. 9th ed. Chapter 47: Nerve Blocks of the Trunk." },
+    { label: "BJA Educ 2018 (Abdominal wall blocks)", citation: "Onwochei DN, Borglum J, Pawa A. Abdominal wall blocks for intra-abdominal surgery. BJA Education. 2018;18(10):317-322.", url: "https://doi.org/10.1016/j.bjae.2018.07.002" },
   ],
   "head-neck-anatomy": [
     { label: "Ellis & Feldman Ch.5", citation: "Ellis H, Feldman S, Harrop-Griffiths W. Anatomy for Anaesthetists. 9th ed. Chapter 5: The Head and Neck." },
@@ -543,6 +551,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ SAD 2011", citation: "Cook TM, Howes B. Supraglottic airway devices: recent advances. Continuing Education in Anaesthesia Critical Care & Pain. 2011;11(2):56-61.", url: "https://doi.org/10.1093/bjaceaccp/mkq058" },
     { label: "Aintree Catheter", citation: "Heard AMB, Lacquiere DA, Riley RH. Remodelling the fibreoptic approach to difficult intubation: use of the Aintree Intubation Catheter through a supraglottic airway. Anaesthesia. 2010." },
     { label: "Cochrane Spinal Needles", citation: "Arevalo-Rodriguez I, Muñoz L, Godoy-Casasbuenas N, et al. Needle gauge and tip designs for preventing post-dural puncture headache. Cochrane Database Syst Rev. 2017;4:CD010807.", url: "https://doi.org/10.1002/14651858.CD010807.pub2" },
+    { label: "HSE EH40/2005", citation: "Health and Safety Executive. EH40/2005 Workplace exposure limits: containing the list of workplace exposure limits for use with COSHH. 4th ed. HSE Books. Occupational exposure standards include nitrous oxide 100 ppm and isoflurane 50 ppm as 8-hour time-weighted averages.", url: "https://www.hse.gov.uk/pubns/priced/eh40.pdf" },
+    { label: "AoA Standards of Monitoring 2021", citation: "Klein AA, Meek T, Allcock E, et al. Recommendations for standards of monitoring during anaesthesia and recovery 2021. Association of Anaesthetists. Anaesthesia. 2021;76(9):1212-1223.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Standards-of-Monitoring-2021" },
+    { label: "AoA Equipment Checklist", citation: "Association of Anaesthetists. Checking anaesthetic equipment (anaesthetic equipment safety checklist). Association of Anaesthetists guideline.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Anaesthetic-equipment-safety-checklist" },
   ],
 
   // ──────── CLINICAL ────────
@@ -988,6 +999,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Peck & Hill Ch.2", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 2: Pharmacodynamics." },
     { label: "BJA Educ 2016", citation: "Pleuvry BJ. Receptors, agonists and antagonists. BJA Education. 2004;4(6):171-174.", url: "https://doi.org/10.1093/bjaceaccp/mkh046" },
     { label: "Rang & Dale Ch.2", citation: "Rang HP, et al. Rang & Dale's Pharmacology. 9th ed. Elsevier; 2019. Chapter 2: How Drugs Act." },
+    { label: "BJA Educ 2022 (Drug-receptor)", citation: "McDonald J, Lambert DG. Drug-receptor interactions in anaesthesia. BJA Education. 2022;22(1):20-25.", url: "https://doi.org/10.1016/j.bjae.2021.07.009" },
   ],
   "nsaids-paracetamol": [
     { label: "Peck & Hill Ch.15", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 15: Non-opioid Analgesics." },

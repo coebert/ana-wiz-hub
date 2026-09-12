@@ -80,7 +80,7 @@ const SIUnitsThermodynamicsTopic = () => {
           "Middleton Ch.1",
           "Middleton Ch.8",
         ],
-        keyPoints: [
+        keyPoints: ["NICE NG125", 
           "Cross & Plunkett Ch.1-2",
           "Middleton Ch.1",
           "Middleton Ch.8",

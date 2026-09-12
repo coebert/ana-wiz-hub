@@ -128,7 +128,7 @@ const CardiacCycleTopic = () => {
       sectionSources={{
         objectives: ["Power & Kam Ch.4", "Ganong Ch.30"],
         workedExamples: ["BJA Educ 2018", "BJA Educ 2018", "Ganong Ch.30"],
-        keyPoints: ["Power & Kam Ch.4", "BJA Educ 2018", "Ganong Ch.30"],
+        keyPoints: ["BJA Educ 2023 (Cardiac muscle)", "Power & Kam Ch.4", "BJA Educ 2018", "Ganong Ch.30"],
       }}
       keyPoints={[
         { text: "Cardiac cycle = systole (~300 ms) + diastole (~560 ms) at HR 70; diastole shortens disproportionately with tachycardia.", cites: ["BJA Educ 2018"] },

@@ -81,7 +81,7 @@ const FlowMeasurementTopic = () => {
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.8"],
         workedExamples: ["Cross & Plunkett Ch.8", "BJA Educ 2004"],
-        keyPoints: ["Middleton Ch.6", "Cross & Plunkett Ch.8", "BJA Educ 2004"],
+        keyPoints: ["A&ICM 2023 (Gas flow)", "BJA Educ 2018 (Physics)", "Middleton Ch.6", "Cross & Plunkett Ch.8", "BJA Educ 2004"],
       }}
       keyPoints={[
         { text: "Hagen-Poiseuille: Q = πΔPr⁴/8ηl. Flow ∝ r⁴ — halving radius reduces flow 16-fold.", cites: ["Middleton Ch.6"] },

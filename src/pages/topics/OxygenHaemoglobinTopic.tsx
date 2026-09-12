@@ -116,7 +116,7 @@ const OxygenHaemoglobinTopic = () => {
       sectionSources={{
         objectives: ["West Ch.6"],
         workedExamples: ["BJA Educ 2004", "Power & Kam Ch.7", "BJA Educ 2018 (CO)", "BNF Methylthioninium"],
-        keyPoints: ["West Ch.6", "BJA Educ 2004", "Power & Kam Ch.7"],
+        keyPoints: ["BJA Educ 2016 (O2 transport)", "West Ch.6", "BJA Educ 2004", "Power & Kam Ch.7"],
       }}
       keyPoints={[
         { text: "The ODC is sigmoid due to cooperative O₂ binding to haemoglobin's four haem groups (T → R conformational change).", cites: ["West Ch.6"] },
