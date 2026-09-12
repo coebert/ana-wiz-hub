@@ -11,7 +11,7 @@ import InhalationInjuryFlowchart from "@/components/diagrams/intensive-care/Inha
 import ParklandCalculator from "@/components/diagrams/intensive-care/ParklandCalculator";
 import BurnsIcuCaseStepper from "@/components/diagrams/intensive-care/BurnsIcuCaseStepper";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
-import { InlineRef } from "@/components/topic/InlineRef";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const burnsIcuFaqs: Array<[string, string]> = [
   ["How is fluid resuscitation calculated for major burns?", "Modified Parkland: 3–4 mL/kg/%TBSA Hartmann's in the first 24 h, half in the first 8 h from time of burn; titrate to urine output 0.5 mL/kg/h (adults), 1 mL/kg/h (children) — avoid fluid creep."],
