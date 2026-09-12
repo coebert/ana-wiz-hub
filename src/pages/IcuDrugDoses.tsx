@@ -301,6 +301,13 @@ const IcuDrugDoses = () => {
           >
             ICU drug mechanisms
           </Link>
+          . For interactions, contraindications and monitoring, open{" "}
+          <Link
+            to="/intensive-care/drug-safety"
+            className="font-medium text-icu underline-offset-4 hover:underline"
+          >
+            ICU drug safety
+          </Link>
           .
         </p>
       </PageSection>
