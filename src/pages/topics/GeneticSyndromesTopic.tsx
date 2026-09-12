@@ -6,6 +6,7 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { geneticSyndromesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 const tocItems = [
   { id: "section-framework", label: "Why Genetics Matter", group: "Framework" },
   { id: "section-malignant-hyperthermia", label: "Malignant Hyperthermia", group: "Core" },
@@ -62,7 +63,7 @@ const GeneticSyndromesTopic = () => {
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-framework" className="scroll-mt-24">
             <CollapsibleSubsection title="Why genetics matter to the anaesthetist" defaultOpen>
             <p className="text-muted-foreground leading-relaxed">
-              A handful of inherited disorders are over-represented in critical incidents because they alter the response to commonly used drugs (suxamethonium, volatiles, NMBAs, barbiturates) or because they affect the airway, the cervical spine, the heart or the lungs in ways that surprise the unprepared anaesthetist. A structured framework — <strong>airway, cardiorespiratory, neuromuscular, pharmacology, regional, transfusion</strong> — lets you assess any unfamiliar syndromic patient.
+              A handful of inherited disorders are over-represented in critical incidents because they alter the response to commonly used drugs (suxamethonium, volatiles, NMBAs, barbiturates) or because they affect the airway, the cervical spine, the heart or the lungs in ways that surprise the unprepared anaesthetist. A structured framework — <strong>airway, cardiorespiratory, neuromuscular, pharmacology, regional, transfusion</strong> — lets you assess any unfamiliar syndromic patient.<InlineRef topicId="genetic-syndromes" refLabel="BJA Educ MH 2011" />
             </p>
             </CollapsibleSubsection>
           </ExamSection>
@@ -72,7 +73,7 @@ const GeneticSyndromesTopic = () => {
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-malignant-hyperthermia" className="scroll-mt-24">
             <CollapsibleSubsection title="Malignant Hyperthermia (RYR1 / CACNA1S)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Autosomal dominant; uncontrolled SR Ca²⁺ release on exposure to volatiles or suxamethonium → hypermetabolism, masseter spasm, ↑EtCO₂, hyperthermia, rhabdomyolysis, hyperkalaemia, DIC.
+              Autosomal dominant; uncontrolled SR Ca²⁺ release on exposure to volatiles or suxamethonium → hypermetabolism, masseter spasm, ↑EtCO₂, hyperthermia, rhabdomyolysis, hyperkalaemia, DIC.<InlineRef topicId="genetic-syndromes" refLabel="AAGBI MH 2020" /><InlineRef topicId="genetic-syndromes" refLabel="EMHG 2020 Guidelines" />
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
@@ -96,7 +97,7 @@ const GeneticSyndromesTopic = () => {
             <CollapsibleSubsection title="Muscular dystrophies (DMD, BMD)">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Anaesthesia-induced rhabdomyolysis (AIR)</strong>: hyperkalaemic cardiac arrest with sux ± volatiles — clinically resembles MH but is a different mechanism (membrane fragility, not RYR1).</li>
-              <li><strong>Avoid</strong>: suxamethonium absolutely; volatiles relatively (use TIVA).</li>
+              <li><strong>Avoid</strong>: suxamethonium absolutely; volatiles relatively (use TIVA).<InlineRef topicId="genetic-syndromes" refLabel="BJA Educ DMD 2017" /></li>
               <li><strong>Cardiomyopathy</strong>: dilated cardiomyopathy in &gt;90% of DMD by late teens; preop echo + ECG.</li>
               <li><strong>Respiratory</strong>: restrictive lung disease, weak cough, OSA — preop FVC, consider postop NIV.</li>
               <li><strong>Sensitivity</strong>: exaggerated response to non-depolarising NMBAs; titrate carefully with TOF; sugammadex preferred for reversal of rocuronium.</li>
@@ -112,7 +113,7 @@ const GeneticSyndromesTopic = () => {
               <li>Cardiac conduction disease (AV block) — preop ECG ± Holter; pacemaker if symptomatic. Risk of sudden death.</li>
               <li>Bulbar weakness → aspiration risk; slow gastric emptying.</li>
               <li>Exquisite sensitivity to opioids, benzodiazepines and propofol — use minimal doses with monitoring.</li>
-              <li>Avoid sux and neostigmine; use sugammadex.</li>
+              <li>Avoid sux and neostigmine; use sugammadex.<InlineRef topicId="genetic-syndromes" refLabel="BJA Educ Myotonic 2017" /></li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
@@ -120,7 +121,7 @@ const GeneticSyndromesTopic = () => {
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-pseudocholinesterase-deficiency" className="scroll-mt-24">
             <CollapsibleSubsection title="Pseudocholinesterase deficiency">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Reduced or absent butyrylcholinesterase (BChE) → prolonged sux block (2–8 h with homozygous atypical genotype). TOF shows phase II block (fade, post-tetanic facilitation).
+              Reduced or absent butyrylcholinesterase (BChE) → prolonged sux block (2–8 h with homozygous atypical genotype). TOF shows phase II block (fade, post-tetanic facilitation).<InlineRef topicId="genetic-syndromes" refLabel="BJA Educ BChE 2014" />
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li>Management: keep sedated and ventilated until block resolves; do NOT give neostigmine early (prolongs block); sugammadex does NOT reverse sux.</li>
@@ -153,7 +154,7 @@ const GeneticSyndromesTopic = () => {
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-marfan-syndrome" className="scroll-mt-24">
             <CollapsibleSubsection title="Marfan syndrome (FBN1)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Autosomal dominant disorder of fibrillin-1 (FBN1) causing abnormal elastic tissue. Cardinal features are aortic root dilatation, arachnodactyly, lens dislocation, and tall stature with arm span exceeding height. Anaesthetic risk is dominated by the aorta — progressive root dilatation and dissection — but the lungs, eyes, spine and joints all matter.
+              Autosomal dominant disorder of fibrillin-1 (FBN1) causing abnormal elastic tissue. Cardinal features are aortic root dilatation, arachnodactyly, lens dislocation, and tall stature with arm span exceeding height. Anaesthetic risk is dominated by the aorta — progressive root dilatation and dissection — but the lungs, eyes, spine and joints all matter.<InlineRef topicId="genetic-syndromes" refLabel="BJA Educ Marfan 2016" />
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
@@ -179,7 +180,7 @@ const GeneticSyndromesTopic = () => {
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-loeys-dietz-syndrome" className="scroll-mt-24">
             <CollapsibleSubsection title="Loeys-Dietz syndrome (LDS)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Autosomal dominant disorder of TGF-β signalling caused by mutations in <em>TGFBR1</em> or <em>TGFBR2</em> (and less commonly <em>SMAD3</em>, <em>TGFB2</em>). It produces a more aggressive aortopathy than Marfan syndrome — dissection can occur at aortic root diameters &lt;4.5 cm, so surgical thresholds are lower and follow-up imaging more frequent. Unlike Marfan, tortuosity and aneurysm formation are widespread throughout the arterial tree (not confined to the root), and craniofacial features — bifid or broad uvula, cleft palate, hypertelorism and craniosynostosis — help distinguish LDS clinically.
+              Autosomal dominant disorder of TGF-β signalling caused by mutations in <em>TGFBR1</em> or <em>TGFBR2</em> (and less commonly <em>SMAD3</em>, <em>TGFB2</em>). It produces a more aggressive aortopathy than Marfan syndrome — dissection can occur at aortic root diameters &lt;4.5 cm, so surgical thresholds are lower and follow-up imaging more frequent. Unlike Marfan, tortuosity and aneurysm formation are widespread throughout the arterial tree (not confined to the root), and craniofacial features — bifid or broad uvula, cleft palate, hypertelorism and craniosynostosis — help distinguish LDS clinically.<InlineRef topicId="genetic-syndromes" refLabel="GeneReviews Loeys-Dietz" />
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li>Strict blood pressure control is paramount: continue β-blockade/ARB (losartan), and blunt hypertensive surges at laryngoscopy, intubation and emergence with opioid ± esmolol/labetalol.</li>
@@ -194,7 +195,7 @@ const GeneticSyndromesTopic = () => {
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-ehlers-danlos-syndromes" className="scroll-mt-24">
             <CollapsibleSubsection title="Ehlers-Danlos syndromes (2017 international classification)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              The EDS family comprises 13 subtypes of collagen/connective-tissue disorder. Two ends of the spectrum dominate exam practice: the common <strong>hypermobile type (hEDS)</strong>, and the rare but life-threatening <strong>vascular type (vEDS, COL3A1)</strong>.
+              The EDS family comprises 13 subtypes of collagen/connective-tissue disorder. Two ends of the spectrum dominate exam practice: the common <strong>hypermobile type (hEDS)</strong>, and the rare but life-threatening <strong>vascular type (vEDS, COL3A1)</strong>.<InlineRef topicId="genetic-syndromes" refLabel="Malfait EDS 2017" />
             </p>
             <div className="grid sm:grid-cols-2 gap-3 mb-3">
               {[

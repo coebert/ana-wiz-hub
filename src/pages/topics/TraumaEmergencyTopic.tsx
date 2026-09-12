@@ -7,6 +7,7 @@ import { traumaEmergencyQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
 import {
   Accordion,
   AccordionContent,
@@ -207,7 +208,7 @@ const TraumaEmergencyTopic = () => {
             <p className="text-muted-foreground leading-relaxed">
               Trauma is a leading cause of death in young adults. Anaesthetists play a key role in airway management, resuscitation,
               and perioperative care. The ATLS &lt;C&gt;ABCDE approach, damage control resuscitation, and massive transfusion protocols
-              are fundamental.
+              are fundamental.<InlineRef topicId="trauma-emergency" refLabel="ATLS 10th ed" />
             </p>
           </ExamSection>
 
@@ -243,7 +244,7 @@ const TraumaEmergencyTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Permissive hypotension</strong>: target SBP 80-90 mmHg (except TBI) until surgical haemorrhage control</li>
               <li><strong>Haemostatic resuscitation</strong>: 1:1:1 ratio (PRBC : FFP : platelets)</li>
-              <li><strong>Tranexamic acid</strong>: 1g IV within 3 hours of injury (CRASH-2)</li>
+              <li><strong>Tranexamic acid</strong>: 1g IV within 3 hours of injury (CRASH-2)<InlineRef topicId="trauma-emergency" refLabel="CRASH-2 2010" /></li>
               <li><strong>Limit crystalloid</strong>: avoid haemodilution and worsening coagulopathy</li>
               <li><strong>Warm fluids/patient</strong>: active warming to prevent hypothermia</li>
               <li><strong>Point-of-care testing</strong>: TEG/ROTEM to guide targeted blood product therapy</li>
@@ -256,7 +257,7 @@ const TraumaEmergencyTopic = () => {
             <p className="text-muted-foreground leading-relaxed">
               Activated when anticipated need for ≥10 units PRBC in 24h or &gt;4 units in 1 hour. Trigger: uncontrolled haemorrhage,
               haemodynamic instability despite fluids, or anticipated major blood loss. Emergency O-negative blood should be available
-              within minutes. Monitor for complications: hyperkalaemia, hypocalcaemia (citrate toxicity), hypothermia, TRALI, TACO.
+              within minutes. Monitor for complications: hyperkalaemia, hypocalcaemia (citrate toxicity), hypothermia, TRALI, TACO.<InlineRef topicId="trauma-emergency" refLabel="BJA Educ 2016" />
             </p>
             </CollapsibleSubsection>
           </ExamSection>

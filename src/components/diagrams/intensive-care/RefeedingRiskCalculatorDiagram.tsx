@@ -17,7 +17,7 @@ import { DiagramFigure } from "../_shared/DiagramFigure";
  *     - BMI < 16
  *     - Weight loss > 15% in 3–6 months
  *     - Little / no nutrition > 10 days
- *     - Low pre-feeding K⁺ / PO₄³⁻ / Mg²⁺
+ *     - Low pre-feeding K⁺ / phosphate (Pi) / Mg²⁺
  *   OR ANY TWO of:
  *     - BMI < 18.5
  *     - Weight loss > 10% in 3–6 months
@@ -165,7 +165,7 @@ export const RefeedingRiskCalculatorDiagram = () => {
   
             <div className="flex items-center justify-between rounded-lg border border-border p-3">
               <Label className="text-sm leading-tight">
-                Low pre-feed K⁺ / PO₄³⁻ / Mg²⁺
+                Low pre-feed K⁺ / phosphate (Pi) / Mg²⁺
               </Label>
               <Switch
                 checked={inputs.lowElectrolytes}
@@ -233,7 +233,7 @@ export const RefeedingRiskCalculatorDiagram = () => {
                     Vitamin B compound + multivitamin / trace elements
                   </li>
                   <li>
-                    Replace K⁺, PO₄³⁻ and Mg²⁺ <em>before</em> and <em>during</em> feeding (do not delay feed for normal levels)
+                    Replace K⁺, phosphate (Pi) and Mg²⁺ <em>before</em> and <em>during</em> feeding (do not delay feed for normal levels)
                   </li>
                   <li>
                     Daily K⁺ / PO₄ / Mg²⁺ for the first week; ECG monitoring if extreme risk
