@@ -355,16 +355,60 @@ const PerioperativeCaseBank = () => {
         </div>
       </section>
 
-      <div className="-mx-1 px-1 mb-6 flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible" role="group" aria-label="Filter cases by subject">
-        {categories.map((item) => (
-          <Button key={item} type="button" size="sm" className="shrink-0" variant={category === item ? "primary" : "outline"} onClick={() => setCategory(item)} aria-pressed={category === item}>
-            {item}
-          </Button>
-        ))}
+      <div className="mb-6 space-y-4">
+        <div>
+          <Label htmlFor="case-search" className="text-sm font-medium">Search by condition, specialty or keyword</Label>
+          <div className="relative mt-1.5">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" aria-hidden />
+            <Input
+              id="case-search"
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="e.g. obstetric, seizure, adrenal crisis, orthopaedic…"
+              className="pl-9 pr-9"
+            />
+            {query && (
+              <button
+                type="button"
+                onClick={() => setQuery("")}
+                aria-label="Clear search"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded p-1 text-muted-foreground hover:text-foreground"
+              >
+                <X className="h-4 w-4" aria-hidden />
+              </button>
+            )}
+          </div>
+        </div>
+        <div className="-mx-1 px-1 flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible" role="group" aria-label="Filter cases by subject">
+          {categories.map((item) => (
+            <Button key={item} type="button" size="sm" className="shrink-0" variant={category === item ? "primary" : "outline"} onClick={() => setCategory(item)} aria-pressed={category === item}>
+              {item}
+            </Button>
+          ))}
+        </div>
+        <div className="-mx-1 px-1 flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible" role="group" aria-label="Filter cases by difficulty">
+          {difficulties.map((item) => (
+            <Button key={item} type="button" size="sm" className="shrink-0" variant={difficulty === item ? "primary" : "outline"} onClick={() => setDifficulty(item)} aria-pressed={difficulty === item}>
+              {item === "All" ? "Any difficulty" : item}
+            </Button>
+          ))}
+        </div>
       </div>
 
-
-      <p className="text-sm text-muted-foreground mb-4">Showing {visibleCases.length} of {cases.length} cases</p>
+      <p className="text-sm text-muted-foreground mb-4" aria-live="polite">
+        Showing {visibleCases.length} of {cases.length} cases
+        {hasFilters && (
+          <Button type="button" variant="link" size="sm" className="ml-2 h-auto p-0 align-baseline" onClick={clearFilters}>
+            Clear filters
+          </Button>
+        )}
+      </p>
+      {visibleCases.length === 0 && (
+        <p className="rounded-md border border-dashed border-border p-6 text-sm text-muted-foreground">
+          No cases match “{query.trim()}”. Try a different condition, specialty or keyword, or clear the filters.
+        </p>
+      )}
       <div className="space-y-5">
         {visibleCases.map((caseData) => <ProgressiveCase key={caseData.id} caseData={caseData} />)}
       </div>
