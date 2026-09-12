@@ -78,9 +78,44 @@ Deno.serve(async (req) => {
       page++;
     }
 
-    return new Response(JSON.stringify({ total, confirmed }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    // Engagement: how many accounts actually complete topics / tick subsections.
+    const collect = async (table: "user_topic_progress" | "user_subsection_progress") => {
+      const PAGE_SIZE = 1000;
+      const users = new Set<string>();
+      let rows = 0;
+      let from = 0;
+      // Cap at 50k rows to keep the response fast.
+      while (from < 50000) {
+        const { data, error } = await admin
+          .from(table)
+          .select("user_id")
+          .range(from, from + PAGE_SIZE - 1);
+        if (error) throw error;
+        const batch = data ?? [];
+        for (const r of batch) if (r.user_id) users.add(r.user_id as string);
+        rows += batch.length;
+        if (batch.length < PAGE_SIZE) break;
+        from += PAGE_SIZE;
+      }
+      return { learners: users.size, rows };
+    };
+
+    const [topics, subsections] = await Promise.all([
+      collect("user_topic_progress"),
+      collect("user_subsection_progress"),
+    ]);
+
+    return new Response(
+      JSON.stringify({
+        total,
+        confirmed,
+        learnersCompletingTopics: topics.learners,
+        topicCompletions: topics.rows,
+        learnersTickingSubsections: subsections.learners,
+        subsectionTicks: subsections.rows,
+      }),
+      { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
   } catch (e) {
     console.error("admin-user-count error:", e);
     return new Response(

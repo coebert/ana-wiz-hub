@@ -15,7 +15,10 @@ export default function Login() {
   const location = useLocation();
   const redirect = (location.state as { from?: string } | null)?.from ?? "/review";
 
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
+  // Allow deep-linking straight to the create-account tab (?mode=signup).
+  const initialMode =
+    new URLSearchParams(location.search).get("mode") === "signup" ? "signup" : "signin";
+  const [mode, setMode] = useState<"signin" | "signup">(initialMode);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);

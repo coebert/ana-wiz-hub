@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Flame, Sparkles, ChevronRight, LayoutDashboard, BarChart3, Timer, CalendarClock } from "lucide-react";
+import { Flame, Sparkles, ChevronRight, LayoutDashboard, BarChart3, Timer, CalendarClock, CheckCircle2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useProgress } from "@/contexts/ProgressContext";
@@ -142,21 +142,41 @@ export const HomeDashboard = () => {
 
   if (!user) {
     return (
-      <section className="rounded-2xl border border-dashed border-border bg-muted/30 p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        <div>
-          <p className="text-sm font-medium text-foreground">
-            Sync your progress across devices
-          </p>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            Sign in to save what you&rsquo;ve completed, track streaks, and get exam-scoped next steps.
+      <section
+        aria-label="Create a free account"
+        className="rounded-2xl border border-border bg-card p-5 sm:p-6 space-y-4"
+      >
+        <div className="space-y-1">
+          <h2 className="text-lg font-serif font-semibold text-foreground">
+            Create a free account
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            Tick off topics and subsections as you revise &mdash; your progress is saved and follows you to any device.
           </p>
         </div>
-        <Link
-          to="/login"
-          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 self-start sm:self-auto"
-        >
-          <Sparkles className="h-4 w-4" aria-hidden /> Sign in
-        </Link>
+        <ul className="grid gap-2 sm:grid-cols-3">
+          {[
+            { icon: CheckCircle2, text: "Mark topics and subsections complete" },
+            { icon: Flame, text: "Build a daily study streak" },
+            { icon: BarChart3, text: "See progress, stats and a study plan" },
+          ].map(({ icon: Icon, text }) => (
+            <li key={text} className="flex items-start gap-2 text-xs text-muted-foreground">
+              <Icon className="h-4 w-4 mt-0.5 text-primary shrink-0" aria-hidden />
+              <span>{text}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            to="/login?mode=signup"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90"
+          >
+            <Sparkles className="h-4 w-4" aria-hidden /> Sign up free
+          </Link>
+          <Link to="/login" className="text-sm text-muted-foreground hover:text-foreground underline">
+            Already have an account? Sign in
+          </Link>
+        </div>
       </section>
     );
   }
