@@ -12,7 +12,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 
 const toxicologyFaqs: Array<[string, string]> = [
   ["When is haemodialysis indicated in poisoning?", "For low-Vd, low-protein-bound, water-soluble toxins: salicylates (≥7.2 mmol/L or AKI), methanol/ethylene glycol, lithium (>4 mmol/L acute), valproate (severe), metformin-associated lactic acidosis, and theophylline."],
-  ["How is lipid emulsion used in local anaesthetic toxicity?", "20% Intralipid 1.5 mL/kg bolus followed by 0.25 mL/kg/min infusion, repeat boluses up to 3 doses and double the infusion if circulation not restored (AAGBI 2010); maximum 12 mL/kg in 30 min."],
+  ["How is lipid emulsion used in local anaesthetic toxicity?", "Association of Anaesthetists 2023: patients >70 kg receive a fixed 100 mL bolus of 20% lipid emulsion then an infusion at 1000 mL/hr; patients <70 kg receive 1.5 mL/kg then 15 mL/kg/hr (0.25 mL/kg/min). Up to two repeat boluses at 5-minute intervals (three boluses in total) and the infusion may be doubled if circulation is not restored; maximum 12 mL/kg."],
   ["What is the antidote and threshold for paracetamol overdose?", "N-acetylcysteine using the 21-h SNAP/IV regimen; treat if plasma paracetamol crosses the single 100 mg/L at 4 h treatment line, with staggered ingestion or unknown timing, or in established hepatotoxicity."],
 ];
 
@@ -121,9 +121,11 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        Intralipid 20%: <strong>1.5 mL/kg bolus</strong> over 1 min (≈ 100 mL in a 70 kg adult),
-        then <strong>15 mL/kg/h infusion</strong>. Repeat bolus up to 2× and double infusion if
-        still arrested. Maximum cumulative dose 12 mL/kg. Continue CPR &gt;1 h — recovery
+        Intralipid 20% (Association of Anaesthetists 2023, weight-banded): if <strong>&gt;70 kg</strong>,
+        a fixed <strong>100 mL bolus</strong> over 2–3 min then an infusion at{" "}
+        <strong>1000 mL/hr</strong>; if <strong>&lt;70 kg</strong>, <strong>1.5 mL/kg bolus</strong> then{" "}
+        <strong>15 mL/kg/hr</strong>. Up to <strong>two repeat boluses</strong> at 5-min intervals (three
+        boluses in total) and the infusion may be doubled if circulation is not restored. Maximum cumulative dose 12 mL/kg. Continue CPR &gt;1 h — recovery
         documented after prolonged arrest. Report to{" "}
         <a href="https://www.lipidrescue.org" className="text-primary underline">lipidrescue.org</a>.
       </>
@@ -151,7 +153,7 @@ const ToxicologyTopic = () => {
         { text: "Salicylate: respiratory alkalosis → mixed → metabolic acidosis. Urinary alkalinisation, dialyse if level >700 mg/L or severe", cites: ["BJA Educ 2016"] },
         { text: "EXTRIP HD criteria: low Vd (<1 L/kg), low protein binding, MW <500 Da — methanol, ethylene glycol, lithium, salicylates, valproate, metformin", cites: ["NPIS Toxbase"] },
         { text: "TCAs, digoxin, CCBs, β-blockers (most), iron and phenytoin are NOT effectively dialysed — use specific antidotes", cites: ["AAGBI Lipid Rescue"] },
-        { text: "Intralipid 20% for LAST: 1.5 mL/kg bolus then 15 mL/kg/h; max 12 mL/kg", cites: ["BJA Educ 2016"] },
+        { text: "Intralipid 20% for LAST (AoA 2023): >70 kg — 100 mL bolus then 1000 mL/hr; <70 kg — 1.5 mL/kg bolus then 15 mL/kg/hr; up to 2 repeat boluses (3 total), max 12 mL/kg", cites: ["AAGBI Lipid Rescue"] },
         { text: "Naloxone: titrate to respiratory rate, not GCS; short t½ — anticipate re-narcotisation, consider infusion", cites: ["NPIS Toxbase"] },
       ]}
       topicId="toxicology"
@@ -204,7 +206,7 @@ const ToxicologyTopic = () => {
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Organophosphates</td><td>Atropine + pralidoxime</td><td>Atropine (large doses, titrate to secretions). Pralidoxime reactivates AChE if given early (&lt;24 h)</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Methanol / ethylene glycol</td><td>Fomepizole (or ethanol)</td><td>Inhibit alcohol dehydrogenase. Prevent toxic metabolite formation. Dialysis for severe cases</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Digoxin</td><td>Digoxin-specific Fab fragments</td><td>Binds free digoxin. Indicated for life-threatening arrhythmias or K⁺ &gt;5 mmol/L</td></tr>
-                  <tr><td className="py-2 font-medium text-foreground">Local anaesthetic toxicity</td><td>Intralipid 20%</td><td>1.5 mL/kg bolus then 15 mL/kg/h infusion. Acts as 'lipid sink' + metabolic support</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Local anaesthetic toxicity</td><td>Intralipid 20%</td><td>&gt;70 kg: 100 mL bolus then 1000 mL/hr. &lt;70 kg: 1.5 mL/kg bolus then 15 mL/kg/hr (AoA 2023). Acts as 'lipid sink' + metabolic support</td></tr>
                 </tbody>
               </table>
             </div>
@@ -427,7 +429,7 @@ const ToxicologyTopic = () => {
               "ABC first, then specific antidote; consult TOXBASE.",
               "Paracetamol — NAC by nomogram (140 mg/kg load); opioid — naloxone titrated (start 100–400 µg IV); β-blocker/CCB — glucagon, high-dose insulin euglycaemia.",
               "TCA overdose: wide QRS + hypotension → sodium bicarbonate 1–2 mmol/kg; treat seizures and arrhythmias.",
-              "LAST: 20% Intralipid 1.5 mL/kg bolus + 0.25 mL/kg/min infusion (max 12 mL/kg).",
+              "LAST: 20% Intralipid — >70 kg 100 mL bolus then 1000 mL/hr; <70 kg 1.5 mL/kg bolus then 15 mL/kg/hr (= 0.25 mL/kg/min); up to 2 repeat boluses, max 12 mL/kg.",
               "Toxidromes: cholinergic (DUMBELS — atropine + pralidoxime), anticholinergic (hot/dry/mad), sympathomimetic, opioid, sedative.",
             ]}
           />

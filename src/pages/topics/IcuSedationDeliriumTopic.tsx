@@ -9,6 +9,7 @@ import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { Cite } from "@/components/references/Cite";
 import { DrugDosesCallout } from "@/components/icu/DrugDosesCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const icuSedationDeliriumFaqs: Array<[string, string]> = [
   ["What does the ABCDEF bundle entail?", "Assess/treat pain, Both spontaneous awakening and breathing trials, Choice of sedation, Delirium monitoring, Early mobility, Family engagement; bundle adherence reduces ICU mortality and delirium (Pun et al., Crit Care Med 2019)."],
@@ -144,9 +145,44 @@ const IcuSedationDeliriumTopic = () => {
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sedation Assessment (RASS)</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Target light sedation (RASS 0 to −2) unless specific indication for deep sedation (refractory
-              ICP, severe ARDS with paralysis, status epilepticus). Daily sedation holds (SAT) paired with
-              spontaneous breathing trials (SBT) — the ABC trial — reduce ventilator days and mortality.
+              Target light sedation (RASS 0 to −2) unless a specific indication for deep sedation exists
+              <InlineRef topicId="icu-sedation-delirium" refLabel="ESICM Analgosedation 2020" />. Daily
+              sedation holds (SAT) paired with spontaneous breathing trials (SBT) — the ABC trial — reduce
+              ventilator days and mortality. Deep sedation (RASS −4 to −5) increases delirium, ICU-acquired
+              weakness, ventilator days and mortality, so each day of deep sedation must be justified
+              against one of the following indications:
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground mb-3">
+              <li>
+                <strong>Severe ARDS</strong> — to secure ventilator synchrony, permit low tidal volume /
+                prone positioning and prevent patient self-inflicted lung injury (P-SILI); mandatory when
+                neuromuscular blockade is used.
+              </li>
+              <li>
+                <strong>Refractory intracranial hypertension</strong> — reduces CMRO₂ and cerebral blood
+                volume, blunts coughing and ventilator dyssynchrony that spike ICP.
+              </li>
+              <li>
+                <strong>Status epilepticus</strong> — anaesthetic infusions titrated to seizure suppression
+                or EEG burst suppression.
+              </li>
+              <li>
+                <strong>Targeted temperature management / therapeutic hypothermia</strong> — to abolish
+                shivering, which raises CMRO₂, CO₂ production and metabolic demand.
+              </li>
+              <li>
+                <strong>Unmanageable agitation</strong> posing immediate danger to the patient (line/tube
+                removal) or staff, after non-pharmacological measures and analgesia have failed.
+              </li>
+              <li>
+                Other short-lived needs: <strong>ECMO cannulation</strong>, transport of the unstable
+                patient, and open-abdomen/proning procedures.
+              </li>
+            </ul>
+            <p className="text-sm text-muted-foreground mb-3">
+              Where an indication exists, document it, set an explicit RASS target, and reassess daily for
+              de-escalation. Adopt an <strong>analgesia-first</strong> approach — treat pain before
+              deepening sedation.
             </p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -220,6 +256,61 @@ const IcuSedationDeliriumTopic = () => {
               </div>
             </div>
             <CAMICUFlowchartDiagram />
+          </div>
+
+          {/* Pain assessment in the non-verbal patient */}
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Pain Assessment in the Non-Verbal Patient
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Untreated pain is a leading driver of agitation, ventilator dyssynchrony and delirium, so the
+              &lsquo;A&rsquo; of the ABCDEF bundle must be delivered with a validated tool.{" "}
+              <strong>Patient self-report (0–10 NRS) remains the gold standard</strong>; where sedation,
+              delirium or an artificial airway makes self-report impossible, a validated behavioural scale is
+              recommended — either the <strong>Critical-Care Pain Observation Tool (CPOT)</strong> or the{" "}
+              <strong>Behavioural Pain Scale (BPS)</strong>
+              <InlineRef topicId="icu-sedation-delirium" refLabel="SCCM PADIS 2018" />. Vital signs alone
+              (tachycardia, hypertension) are <em>not</em> valid indicators of pain and should only prompt
+              formal assessment.
+            </p>
+            <div className="overflow-x-auto mb-3">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">CPOT domain</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Score 0</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Score 1</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Score 2</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Facial expression</td><td>Relaxed, neutral</td><td>Tense (brow lowering, orbit tightening)</td><td>Grimacing, eyelids tightly closed</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Body movements</td><td>Absence of movement</td><td>Protective — slow, cautious, guarding site</td><td>Restless — pulling tube, striking staff, out of bed</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Muscle tension (passive flexion of forearm)</td><td>Relaxed</td><td>Tense, rigid</td><td>Very tense or rigid, resists passive movement</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Compliance with ventilator (intubated) <em>or</em> vocalisation (extubated)</td><td>Tolerating ventilator / normal tone or silent</td><td>Coughing but tolerating / sighing, moaning</td><td>Fighting ventilator, alarms triggered / crying out, sobbing</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>Each of the four domains scores <strong>0–2</strong>, giving a total of <strong>0–8</strong>.</li>
+              <li>
+                A <strong>CPOT &gt; 2</strong> indicates significant pain and should trigger analgesia and
+                reassessment (BPS equivalent: score &gt; 5 of 3–12).
+              </li>
+              <li>
+                Assess at least once per shift, before and after procedures (turning, suctioning, dressing
+                changes) and after any analgesic intervention.
+              </li>
+              <li>
+                Adopt <strong>analgo-sedation</strong>: treat pain first with opioid ± regional or
+                multimodal adjuncts before adding or deepening sedation.
+              </li>
+              <li>
+                Neuromuscular blockade abolishes every behavioural cue — rely on depth-of-sedation
+                monitoring plus a fixed analgesic regimen rather than a behavioural score.
+              </li>
+            </ul>
           </div>
 
           {/* Prevention & treatment */}

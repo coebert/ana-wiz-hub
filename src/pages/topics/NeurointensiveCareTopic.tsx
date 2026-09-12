@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { InlineRef } from "@/components/references/InlineRef";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { StickyTOC } from "@/components/layout/StickyTOC";
 import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
@@ -98,8 +99,13 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        UK criteria: PaCO₂ must rise to <strong>&gt;6.65 kPa</strong> AND pH &lt;7.40, with no
-        respiratory effort observed. Both met. Test confirms absent respiratory drive.
+        UK (AoMRC 2008) criteria: starting from a <strong>normal baseline PaCO₂ (4.5–6.0 kPa)</strong>,
+        the PaCO₂ must be allowed to rise to <strong>&gt;6.65 kPa</strong> AND the arterial pH must fall
+        to <strong>&lt;7.40</strong>, with no respiratory effort observed throughout — this confirms a
+        maximal respiratory stimulus has been delivered. Here baseline PaCO₂ 5.0 kPa rose to 7.2 kPa with
+        pH 7.20: both criteria met, so the test confirms absent respiratory drive. PaCO₂ rises at roughly
+        0.5 kPa/min, which is used only to estimate the required duration of disconnection (usually ≥5
+        min) — it is not itself a diagnostic criterion.
       </>
     ),
     answer: (
@@ -249,13 +255,36 @@ const NeurointensiveCareTopic = () => {
         <ExamSection id="toc-status" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="Status Epilepticus">
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Continuous seizure ≥5 minutes or ≥2 seizures without regaining consciousness. Medical emergency — time-critical escalation.
+            <strong>Definition (ILAE operational):</strong> a convulsive seizure lasting ≥5 minutes, or ≥2
+            seizures without full recovery of consciousness between them. A neurological emergency —
+            mortality rises with every 30 min of ongoing seizure activity, and each stage of escalation
+            becomes progressively less effective as GABA<sub>A</sub> receptors internalise.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            <strong>Classification:</strong> convulsive status epilepticus (overt motor activity) versus{" "}
+            <strong>non-convulsive status epilepticus (NCSE)</strong> — subtle or absent motor signs with
+            persistent impaired consciousness. NCSE accounts for a substantial share of unexplained coma
+            after convulsive status is treated, so <strong>EEG is mandatory</strong> when consciousness does
+            not recover within 30–60 min, in any brain-injured or comatose ICU patient with unexplained
+            persistent altered consciousness, and continuously in refractory status.
+            <InlineRef topicId="neurointensive-care" refLabel="ESICM EEG 2013" />
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            <strong>Staging:</strong> early (5–20 min) → established (20–40 min) → refractory (&gt;40 min or
+            failure of two adequately dosed agents, requiring anaesthesia) → super-refractory (continuing or
+            recurring ≥24 h after anaesthesia started, or on weaning anaesthesia). Alongside drug therapy:
+            ABC, high-flow oxygen, capillary glucose (give 100 mL 20% glucose if &lt;4 mmol/L, with
+            <strong> Pabrinex/thiamine</strong> if alcohol excess or malnourishment), IV access, temperature,
+            electrolytes (Na⁺, Ca²⁺, Mg²⁺), toxicology screen, pregnancy test (eclampsia → magnesium 4 g),
+            and early CT head ± LP for a structural or infective cause.
           </p>
           <div className="space-y-2">
             {[
-              { stage: "Stage 1 (0–5 min)", rx: "Benzodiazepine: IV lorazepam 0.1 mg/kg (max 4 mg), repeat once. Buccal midazolam or rectal diazepam if no IV access." },
-              { stage: "Stage 2 (5–20 min)", rx: "IV levetiracetam 60 mg/kg (max 4.5g) OR IV phenytoin 20 mg/kg (max rate 50 mg/min, ECG monitoring) OR IV sodium valproate 40 mg/kg." },
-              { stage: "Stage 3 (>30 min) — RSE", rx: "Refractory: intubate, propofol or midazolam or thiopentone infusion. Continuous EEG. Aim burst suppression." },
+              { stage: "0–5 min — stabilisation", rx: "ABC, high-flow O₂, airway adjunct/recovery position, monitoring, IV access, capillary glucose, timed documentation of seizure onset." },
+              { stage: "5–20 min — early SE (first line)", rx: "Benzodiazepine: IV lorazepam 4 mg (0.1 mg/kg), repeat once after 5–10 min. No IV access: buccal midazolam 10 mg or IM midazolam 10 mg, or rectal diazepam 10–20 mg. Do not exceed two doses (respiratory depression, ↓efficacy)." },
+              { stage: "20–40 min — established SE (second line)", rx: "IV levetiracetam 60 mg/kg (max 4.5 g) — fewest interactions, first choice in most UK units; OR sodium valproate 40 mg/kg (max 3 g) — avoid in pregnancy/women of childbearing potential and in suspected mitochondrial disease/hepatic failure; OR phenytoin 20 mg/kg at ≤50 mg/min (fosphenytoin 20 mg PE/kg at ≤100–150 mg PE/min) with continuous ECG/BP — risk of hypotension, bradyarrhythmia and purple glove syndrome. ESETT: all three equivalent (~45–50% seizure cessation)." },
+              { stage: ">40 min — refractory SE (third line)", rx: "Transfer to ICU, RSI and mechanical ventilation. Anaesthetic infusion: propofol 2–5 mg/kg/h (watch PRIS), midazolam 0.05–0.4 mg/kg/h, or thiopentone (accumulates, prolonged wake-up). Continuous EEG titrated to seizure suppression or burst suppression for 24–48 h before weaning; maintain a maintenance AED throughout, plus vasopressors for anaesthesia-induced hypotension." },
+              { stage: ">24 h — super-refractory SE", rx: "Continuing or recurring ≥24 h after anaesthesia. Consider ketamine infusion, magnesium, pyridoxine, ketogenic diet, immunotherapy (steroids/IVIG/plasma exchange) if autoimmune encephalitis suspected, and repeat imaging. Seek specialist neurology input; treat hyperthermia, rhabdomyolysis, aspiration and cerebral oedema." },
             ].map((s) => (
               <div key={s.stage} className="p-3 rounded-lg bg-secondary/30 border border-border">
                 <p className="font-semibold text-foreground text-sm">{s.stage}</p>
@@ -430,7 +459,16 @@ const NeurointensiveCareTopic = () => {
         <ExamSection id="toc-bsd" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="Brain Death & Brainstem Testing">
           <p className="text-muted-foreground leading-relaxed mb-2">
-            UK criteria: known irreversible cause of brain damage. Exclude confounders (hypothermia &lt;34°C, drugs, metabolic/endocrine derangement). Two sets of tests by two senior doctors (one ≥5 years registered).
+            UK criteria: known irreversible cause of brain damage. Exclude confounders (hypothermia &lt;34°C, drugs, metabolic/endocrine derangement). Two sets of tests by two senior doctors (one ≥5 years registered); the certified <strong>time of death is the completion of the second set</strong> of tests.<InlineRef topicId="neurointensive-care" refLabel="AoMRC 2008" />
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-2">
+            <strong>Apnoea test criteria (AoMRC 2008):</strong> pre-oxygenate, confirm a{" "}
+            <strong>normal baseline PaCO₂ (4.5–6.0 kPa)</strong> and pH, then disconnect with apnoeic
+            oxygen insufflation and allow the PaCO₂ to rise to <strong>&gt;6.65 kPa</strong> with an
+            arterial <strong>pH &lt;7.40</strong>, observing for any respiratory effort. PaCO₂ climbs at
+            approximately 0.5 kPa/min, so ≥5 min of disconnection is usually needed — the rate of rise
+            estimates test duration only and is not a diagnostic threshold. In chronic CO₂ retention the
+            baseline is higher and the target PaCO₂ must be raised accordingly.<InlineRef topicId="neurointensive-care" refLabel="AoMRC 2008" />
           </p>
           <div className="grid sm:grid-cols-3 gap-2">
             {[
@@ -703,7 +741,31 @@ const NeurointensiveCareTopic = () => {
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Ventilation Strategy</p>
               <p className="text-sm text-muted-foreground mt-1">
-                Monitor VC serially (intubate if VC &lt;15 ml/kg or falling trend). Use lung-protective ventilation if intubated. Early tracheostomy (day 7–10) for cervical injuries — facilitates weaning, secretion clearance, and communication. NIV may bridge in incomplete injuries with adequate bulbar function.
+                <strong>Early intubation</strong> — a low threshold in injuries at C5 or above because
+                ascending cord oedema over the first 48–72 h can abolish diaphragmatic function; intubate
+                for VC &lt;15 ml/kg (or ~1 L in an adult), a falling VC trend, weak cough, rising PaCO₂,
+                exhaustion, or before transfer/prone positioning. Use manual in-line stabilisation with
+                videolaryngoscopy; suxamethonium is safe within the first 48 h but is contraindicated from
+                ~72 h to 9 months (denervation upregulation of acetylcholine receptors → hyperkalaemia).
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Initial settings</strong> — lung-protective ventilation (V<sub>T</sub> 6–8 ml/kg
+                IBW, P<sub>plat</sub> &lt;30 cmH₂O, driving pressure &lt;15 cmH₂O, PEEP 5–10 cmH₂O) since
+                these patients are at high risk of atelectasis, aspiration pneumonia and ARDS; target
+                normocapnia and SpO₂ 94–98%, and use recruitment plus regular position changes rather than
+                large tidal volumes.
+                <InlineRef topicId="neurointensive-care" refLabel="ESICM Brain-Injury Ventilation 2020" />
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Weaning</strong> is slow and often fails on standard SBTs: progressive resistance /
+                inspiratory muscle training, twice-daily physiotherapy, abdominal binder and supine
+                positioning (paradoxically improves diaphragm mechanics in tetraplegia), aggressive
+                secretion clearance, and nutrition/glycaemic optimisation. <strong>NIV or high-flow nasal
+                oxygen</strong> can avert intubation in lower-level or incomplete injuries with adequate
+                bulbar function and cough, and is a useful bridge after extubation (often nocturnal,
+                long-term). <strong>Early tracheostomy (day 7–10)</strong> in high cervical injuries
+                unlikely to wean quickly reduces sedation, improves comfort, secretion clearance and
+                communication and accelerates rehabilitation.
               </p>
             </div>
             <div className="p-4 rounded-lg border border-border">

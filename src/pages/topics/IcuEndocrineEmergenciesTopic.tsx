@@ -217,6 +217,47 @@ const IcuEndocrineEmergenciesTopic = () => {
                 </p>
               </div>
             </div>
+            <div className="p-4 rounded-lg border border-border mt-4">
+              <p className="font-semibold text-foreground text-sm">
+                HHS — managing the hypernatraemia and hyperosmolality (JBDS-IP 2022)
+              </p>
+              <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground mt-2">
+                <li>
+                  <strong>Resuscitate with 0.9% sodium chloride</strong> — 1 L over the first hour, then
+                  0.5–1 L/h titrated to haemodynamics; expect 3–6 L positive by 12 h and total replacement
+                  of the 100–220 ml/kg deficit over 24–48 h. Fluid alone lowers glucose and osmolality; the
+                  serum sodium will often <em>rise</em> initially as glucose falls, and this is expected.
+                </li>
+                <li>
+                  <strong>Corrected (osmolality-adjusted) sodium</strong> = measured Na⁺ + 0.4 ×
+                  (glucose − 5.5) mmol/L. Track this alongside calculated osmolality hourly, and plot the
+                  trend rather than reacting to a single value.
+                </li>
+                <li>
+                  <strong>Switch to 0.45% sodium chloride</strong> if the corrected sodium is rising, or
+                  remains high, while osmolality is not falling despite an adequate rate of 0.9% saline and
+                  a positive fluid balance — 0.45% saline delivers the free water needed to correct the
+                  hyperosmolar state once the patient is haemodynamically stable.
+                </li>
+                <li>
+                  <strong>Rate limits:</strong> do not change sodium by &gt; 10 mmol/L in any 24 h, keep the
+                  fall in osmolality to 3–8 mosmol/kg/h and the fall in glucose ≤ 5 mmol/L/h. Rapid
+                  correction risks cerebral oedema and osmotic demyelination (central pontine
+                  myelinolysis).
+                </li>
+                <li>
+                  <strong>Insulin only once fluids are running</strong> — start fixed-rate 0.05 units/kg/h
+                  when glucose stops falling with fluid alone (or immediately if significant ketonaemia).
+                  Starting insulin early accelerates the intracellular shift of water, sodium and
+                  potassium, and worsens cardiovascular collapse.
+                </li>
+                <li>
+                  Add 10% glucose alongside saline once glucose reaches 10–15 mmol/L, replace potassium as
+                  in DKA, monitor for foot ulceration, and give full-dose LMWH prophylaxis for the duration
+                  of admission (very high thrombotic risk).
+                </li>
+              </ul>
+            </div>
             <div className="grid md:grid-cols-2 gap-4 mt-4">
               <div className="bg-card rounded-xl border border-border p-4 md:p-6">
                 <DKAAnimation />
@@ -289,12 +330,49 @@ const IcuEndocrineEmergenciesTopic = () => {
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Pituitary apoplexy</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Haemorrhage / infarction of a pituitary tumour. Sudden severe headache
-                  + visual field defect + ophthalmoplegia (CN III, IV, VI compression in
-                  cavernous sinus) + hypopituitarism. Give{" "}
-                  <strong>hydrocortisone 100 mg IV stat</strong> (cortisol replacement
-                  is life-saving), urgent MRI, neurosurgical referral. Replace cortisol
-                  BEFORE thyroxine — otherwise precipitates adrenal crisis.
+                  <strong>Pathophysiology:</strong> haemorrhagic infarction of a pre-existing
+                  pituitary adenoma (often previously undiagnosed) — the expanding gland outgrows its
+                  tenuous portal blood supply within the confined sella, compressing the optic chiasm
+                  above and the cavernous sinus laterally, and destroying the anterior pituitary.
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>Precipitants:</strong> often spontaneous, but consider dynamic pituitary
+                  testing, head trauma, major surgery (especially cardiac surgery / cardiopulmonary
+                  bypass), anticoagulation or thrombolysis, dopamine agonists or GnRH analogues, severe
+                  hypertension, and pregnancy/postpartum haemorrhage (Sheehan&rsquo;s syndrome —
+                  infarction of a physiologically enlarged gland).
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>Clinical features:</strong> abrupt &lsquo;thunderclap&rsquo; headache
+                  (retro-orbital or frontal) with vomiting; meningism and photophobia from blood in the
+                  CSF; visual failure — <em>bitemporal hemianopia</em> or reduced acuity from chiasmal
+                  compression; ophthalmoplegia from CN III (commonest — ptosis, dilated pupil), IV and
+                  VI in the cavernous sinus; reduced consciousness. Acute
+                  <strong> ACTH deficiency</strong> gives hypotension resistant to vasopressors,
+                  hyponatraemia and hypoglycaemia; also hypothyroidism, and either SIADH or (less often)
+                  diabetes insipidus with polyuria and rising sodium.
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>Differential:</strong> subarachnoid haemorrhage, bacterial meningitis,
+                  cavernous sinus thrombosis, posterior circulation stroke, migraine, and
+                  ophthalmoplegic causes such as posterior communicating artery aneurysm — CT is often
+                  normal, so <strong>MRI pituitary is the investigation of choice</strong>.
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>Initial ICU management:</strong> ABC with airway protection if obtunded;{" "}
+                  <strong>hydrocortisone 100 mg IV stat then 200 mg/24 h</strong> before any other
+                  hormone (cortisol replacement is life-saving and is given empirically — take a random
+                  cortisol first if it does not delay treatment); cautious isotonic fluid resuscitation
+                  with vasopressors as required; treat hypoglycaemia and correct sodium slowly (≤ 10
+                  mmol/L/24 h); full anterior pituitary profile (cortisol, ACTH, TFTs, prolactin, IGF-1,
+                  LH/FSH, testosterone/oestradiol) plus hourly urine output and paired osmolalities for
+                  diabetes insipidus; formal visual field and acuity assessment; and joint
+                  endocrinology/neurosurgical/ophthalmology review. <strong>Urgent transsphenoidal
+                  decompression</strong> is indicated for acute or deteriorating visual loss, declining
+                  consciousness or progressive ophthalmoplegia; isolated ophthalmoplegia with intact
+                  vision can often be managed conservatively. Replace cortisol{" "}
+                  <strong>before thyroxine</strong> — thyroid hormone accelerates cortisol metabolism and
+                  will precipitate adrenal crisis.
                 </p>
               </div>
               <div className="p-4 rounded-lg border border-border">
@@ -320,7 +398,7 @@ const IcuEndocrineEmergenciesTopic = () => {
             <div className="space-y-2">
               {[
                 { topic: "Etomidate", detail: "Single induction dose suppresses 11β-hydroxylase for 24 h — avoid in septic / adrenally compromised patients; consider hydrocortisone cover if used." },
-                { topic: "SGLT2 inhibitors", detail: "Stop ≥ 3 days pre-op. Cause euglycaemic DKA — measure ketones in any unwell perioperative patient on these drugs even if glucose normal." },
+                { topic: "SGLT2 inhibitors", detail: "Stop ≥ 3 days pre-op (MHRA). Cause euglycaemic DKA — measure ketones in any unwell perioperative patient on these drugs even if glucose normal. See the dedicated euglycaemic DKA panel below." },
                 { topic: "Iodinated contrast", detail: "Can precipitate thyroid storm in untreated hyperthyroidism, and contrast-induced thyrotoxicosis weeks later. Check TFTs in known thyroid disease before contrast." },
                 { topic: "Vasopressor failure", detail: "MAP not responding to noradrenaline ≥ 0.4 mcg/kg/min in shock → think adrenal crisis (give hydrocortisone) and check cortisol; also consider vasopressin and methylene blue." },
                 { topic: "Beta-blockers in phaeo", detail: "Never first-line. Even labetalol's α:β ratio (1:7 PO) is insufficient — use phentolamine or magnesium for crisis." },
@@ -338,6 +416,44 @@ const IcuEndocrineEmergenciesTopic = () => {
               <div className="bg-card rounded-xl border border-border p-4 md:p-6">
                 <EndocrineEmergencyDrugs />
               </div>
+            </div>
+            <div className="p-4 rounded-lg border border-border mt-4">
+              <p className="font-semibold text-foreground text-sm">
+                Euglycaemic DKA — the diagnosis that is missed
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Definition:</strong> significant ketoacidosis (capillary ketones ≥ 3.0 mmol/L or
+                urine ketones ≥ 2+, with pH &lt; 7.30 and/or HCO₃⁻ &lt; 15) in a patient whose glucose is{" "}
+                <strong>&lt; 14 mmol/L</strong> — and often entirely normal. Because the usual trigger for
+                a DKA pathway (hyperglycaemia) is absent, the diagnosis is repeatedly delayed.
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Mechanism:</strong> SGLT2 inhibition (dapagliflozin, empagliflozin, canagliflozin)
+                causes glycosuria, lowering plasma glucose and insulin secretion while raising glucagon;
+                the fall in the insulin:glucagon ratio drives lipolysis and hepatic ketogenesis, and
+                ketone reabsorption is increased. Superimposed on fasting, surgery, sepsis, vomiting,
+                dehydration, low-carbohydrate diet, alcohol excess or reduced insulin dose, ketoacidosis
+                develops with a normal glucose. The same picture occurs in pregnancy, prolonged starvation
+                and after bariatric surgery.
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Who to test:</strong> measure blood ketones and a venous gas in{" "}
+                <em>any</em> unwell, vomiting, tachypnoeic, acidotic or perioperative patient taking an
+                SGLT2 inhibitor, regardless of glucose — and in any unexplained high-anion-gap metabolic
+                acidosis. Stop the SGLT2 inhibitor at least 3 days before elective surgery (MHRA) and
+                immediately on acute illness.
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Management:</strong> treat as DKA but give the carbohydrate first — stop the SGLT2
+                inhibitor, start <strong>fixed-rate intravenous insulin 0.1 units/kg/h</strong> (insulin is
+                needed to switch off ketogenesis) <strong>with concurrent 10% glucose</strong> at
+                125 ml/h from the outset to prevent hypoglycaemia, plus 0.9% sodium chloride with
+                potassium for volume and electrolyte replacement. Continue long-acting basal insulin.
+                Track resolution by <strong>ketones and bicarbonate/pH, not glucose</strong> — aim ketone
+                fall ≥ 0.5 mmol/L/h, HCO₃⁻ rise ≥ 3 mmol/L/h; only convert to variable-rate insulin once
+                ketones &lt; 0.6 mmol/L and the acidosis has resolved. Ketosis may persist 24–48 h because
+                the drug&rsquo;s effect outlasts the last dose.
+              </p>
             </div>
             <GuidelineSources sources={PITFALLS_SOURCES} />
             </CollapsibleSubsection>
