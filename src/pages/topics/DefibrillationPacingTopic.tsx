@@ -7,6 +7,7 @@ import DefibrillationPacingDiagram from "@/components/diagrams/physics/Defibrill
 import { defibrillationPacingQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import InlineRef from "@/components/references/InlineRef";
 
 const defibrillationPacingFaqs: Array<[string, string]> = [
   [
@@ -231,8 +232,11 @@ const DefibrillationPacingTopic = () => {
               </p>
               <p>
                 <strong>VVI</strong> (ventricular demand) is the most common single-chamber mode — it paces and senses the ventricle,
-                inhibiting output when intrinsic activity is detected. Its main limitation is <strong>pacemaker syndrome</strong> caused
-                by loss of AV synchrony. <strong>DDD</strong> is the most physiological mode, pacing and sensing both chambers to
+                inhibiting output when intrinsic activity is detected. Its main limitation is <strong>pacemaker syndrome</strong>:
+                ventricular pacing without AV synchrony permits atrial contraction against closed mitral and tricuspid valves,
+                reducing cardiac output and producing fatigue, dizziness, syncope, hypotension and prominent neck pulsations
+                (cannon waves in the JVP). Upgrading to a dual-chamber system restores AV synchrony and usually resolves it.
+                <strong> DDD</strong> is the most physiological mode, pacing and sensing both chambers to
                 maintain AV synchrony, and is the mode of choice for complete heart block.
               </p>
               <p>
@@ -241,6 +245,28 @@ const DefibrillationPacingTopic = () => {
                 information about battery status (rate decreases as battery depletes).
               </p>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="temporary-pacing" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.5"]}>
+            <CollapsibleSubsection title="Temporary Cardiac Pacing">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  <strong>Indications</strong> include haemodynamically significant symptomatic bradycardia unresponsive to drugs,
+                  high-grade AV block after myocardial infarction, drug toxicity, and a bridge to recovery or permanent pacing.
+                </p>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="rounded-lg border border-border p-4">
+                    <h3 className="font-semibold text-foreground">Transcutaneous pacing</h3>
+                    <p className="mt-2 text-sm">Apply anterolateral or anteroposterior multifunction pads, select demand mode and a rate around 60–80 min⁻¹, then increase current from about 50 mA until electrical and mechanical capture occurs (often 50–100 mA). Confirm a pulse for every paced complex; provide sedation and analgesia because skeletal-muscle contraction is painful. Limitations are discomfort, artefact and failure to capture.</p>
+                  </div>
+                  <div className="rounded-lg border border-border p-4">
+                    <h3 className="font-semibold text-foreground">Transvenous pacing</h3>
+                    <p className="mt-2 text-sm">Insert via the internal jugular or subclavian vein and advance the electrode to the right-ventricular apex under fluoroscopy, intracavitary ECG or pressure-waveform guidance. A typical initial mode is VVI at 70 min⁻¹; set output above the measured capture threshold and sensitivity below the sensed R-wave amplitude. Complications include arrhythmia, failure to sense/capture, pneumothorax, cardiac perforation/tamponade, infection and venous thrombosis.</p>
+                  </div>
+                </div>
+                <p className="text-sm">Transcutaneous pacing is a rapid bridge, not a substitute for prompt definitive planning when ongoing pacing is required <InlineRef topicId="defibrillation-pacing" refLabel="RCUK 2021 Bradycardia" />.</p>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -259,10 +285,22 @@ const DefibrillationPacingTopic = () => {
                 defibrillation pads must be applied before disabling the ICD.
               </p>
               <p>
-                Key perioperative precautions include using <strong>bipolar diathermy</strong> where possible, placing the return pad
-                away from the generator, using short bursts (&lt;5 seconds), and maintaining continuous monitoring with ECG, pulse
-                oximetry, and ideally arterial blood pressure. All devices must be <strong>re-interrogated post-operatively</strong> to
-                confirm settings and function.
+                Follow the hierarchy in the Association of Anaesthetists/MHRA perioperative guidance: use
+                <strong> bipolar diathermy</strong> first; consider a harmonic scalpel when monopolar energy is otherwise required;
+                if conventional monopolar diathermy is essential, use the lowest effective energy in short intermittent bursts.
+                Position the return pad so the current path does not cross the CIED and keep the active electrode and cables away
+                from the generator <InlineRef topicId="defibrillation-pacing" refLabel="Assoc Anaesth CIED 2022" />.
+              </p>
+              <p>
+                A magnet is a <strong>temporary, device-specific intervention</strong>, not a universal off switch. Many pacemakers
+                pace asynchronously, some have a programmable or absent response, while an ICD magnet usually suspends
+                anti-tachycardia therapy without changing bradycardia pacing. Pre-operative identification, interrogation and a
+                documented pacing-team plan are therefore essential; reprogram when the magnet response is unknown or unreliable.
+              </p>
+              <p>
+                Monitor ECG continuously, but also use a pulse oximeter waveform or arterial pressure trace to confirm
+                <strong> mechanical capture</strong> while diathermy obscures the ECG. External pacing/defibrillation must be
+                immediately available, and all altered therapies must be restored with post-operative interrogation.
               </p>
             </div>
             </CollapsibleSubsection>

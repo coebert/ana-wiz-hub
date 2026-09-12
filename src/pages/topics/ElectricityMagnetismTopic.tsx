@@ -111,6 +111,57 @@ const ElectricityMagnetismTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="electrical-safety" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <CollapsibleSubsection title="Electrical Safety">
+              <div className="space-y-3 text-muted-foreground leading-relaxed">
+                <p>
+                  <strong>Macroshock</strong> is current passing through the body from an external contact: at 50 Hz, about 1 mA
+                  is perceived, 15 mA may prevent release and approximately 100 mA across the chest may cause VF.
+                  <strong> Microshock</strong> bypasses skin resistance through an intracardiac conductor such as a pacing wire;
+                  only about 100 µA delivered directly to myocardium may cause VF
+                  <InlineRef topicId="electricity-magnetism" refLabel="BJA Educ 2008 (Electricity)" />.
+                </p>
+                <div className="grid gap-3 md:grid-cols-2">
+                  <div className="rounded-lg border border-border p-4 text-sm"><strong className="text-foreground">Equipment classes</strong><ul className="mt-2 list-disc space-y-1 pl-5"><li>Class I: basic insulation plus protective earth.</li><li>Class II: double/reinforced insulation, without an earth.</li><li>Class III: separated extra-low-voltage (SELV) supply.</li></ul></div>
+                  <div className="rounded-lg border border-border p-4 text-sm"><strong className="text-foreground">Applied parts</strong><ul className="mt-2 list-disc space-y-1 pl-5"><li>Type B: body contact, least leakage protection.</li><li>Type BF: body floating, isolated from earth.</li><li>Type CF: cardiac floating, greatest protection and lowest permitted leakage for direct cardiac connection.</li></ul></div>
+                </div>
+                <p>
+                  A theatre <strong>isolation transformer</strong> removes the earth reference and permits continued operation after
+                  one insulation fault; the <strong>line isolation monitor (LIM)</strong> alarms so the fault can be located before a
+                  second fault completes a hazardous circuit. A domestic <strong>residual current device (RCD)</strong> compares live
+                  and neutral current and rapidly disconnects an earthed supply when leakage exceeds its threshold. It does not
+                  protect against microshock and automatic disconnection is inappropriate for an isolated theatre supply where
+                  interruption of life-support equipment may itself be dangerous.
+                </p>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="cied-management" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Perioperative Management of Cardiac Implantable Electronic Devices (CIEDs)">
+              <div className="space-y-3 text-muted-foreground leading-relaxed">
+                <p>
+                  Before surgery identify whether the device is a pacemaker, ICD or cardiac resynchronisation device; establish its
+                  indication, underlying rhythm and pacing dependence, battery status, last interrogation and programmed mode. Obtain
+                  the device card or chest radiograph when needed and agree a written plan with the cardiology/device team
+                  <InlineRef topicId="electricity-magnetism" refLabel="Assoc Anaesth CIED 2022" />.
+                </p>
+                <p>
+                  Prefer bipolar diathermy. If monopolar current is unavoidable, use the lowest effective power in bursts under five
+                  seconds and position the return electrode so current does not pass near the generator or leads. A pacing-dependent
+                  pacemaker may need temporary asynchronous programming; a magnet can do this in many models, but manufacturer and
+                  programmable responses vary and some devices do not respond.
+                </p>
+                <p>
+                  ICD anti-tachycardia detection and therapy must be suspended to prevent inappropriate shocks, while external
+                  defibrillation/pacing remains immediately available. An ICD magnet commonly suspends shock therapy but does not
+                  alter bradycardia pacing. Monitor a mechanical pulse as well as ECG, then remove the magnet or restore programming,
+                  re-interrogate after significant EMI or shocks, and confirm original therapies before leaving monitored care.
+                </p>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Interactive Diagrams">
             <ElectricityMagnetismDiagram />

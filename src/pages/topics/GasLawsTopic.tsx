@@ -10,6 +10,7 @@ import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { gasLawsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import InlineRef from "@/components/references/InlineRef";
 
 const gasLawsFaqs: Array<[string, string]> = [
   [
@@ -149,6 +150,32 @@ const GasLawsTopic = () => {
               carrier gases for volatile agents, and in various monitoring systems. The gas laws describe the relationships
               between pressure, volume, temperature, and amount of gas under defined conditions.
             </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PH_BK_01"]}>
+            <CollapsibleSubsection title="Gas Laws in Hyperbaric Medicine">
+              <div className="space-y-3 text-foreground/90 leading-relaxed">
+                <p>
+                  Hyperbaric oxygen therapy exposes the patient to oxygen at supra-atmospheric pressure. By
+                  <strong> Boyle's law</strong>, increasing ambient pressure compresses gas-filled spaces, so an untreated
+                  pneumothorax is dangerous and failure to equalise the middle ear or sinuses causes barotrauma. Gas density also
+                  rises, increasing airway and ventilator resistance
+                  <InlineRef topicId="gas-laws" refLabel="Intensive Care Med 2012 (Hyperbaric ventilator)" />.
+                </p>
+                <p>
+                  <strong>Dalton's law</strong> predicts the marked rise in inspired and arterial oxygen partial pressure.
+                  <strong> Henry's law</strong> predicts that more oxygen dissolves directly in plasma as its partial pressure rises,
+                  increasing oxygen carriage independently of haemoglobin. Hyperoxia causes vasoconstriction while preserving tissue
+                  oxygen delivery and supports angiogenesis/neovascularisation and oxygen-dependent antimicrobial function.
+                </p>
+                <p>
+                  In decompression illness, recompression reduces bubble volume by Boyle's law and raises ambient nitrogen pressure;
+                  breathing 100% oxygen then creates a gradient for nitrogen to leave bubbles and dissolve back into blood according
+                  to Henry's law before pulmonary elimination. Important harms are middle-ear, sinus and pulmonary barotrauma,
+                  reversible pulmonary oxygen toxicity, and CNS oxygen toxicity with seizures.
+                </p>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 

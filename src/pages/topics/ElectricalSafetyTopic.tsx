@@ -11,6 +11,7 @@ import { MicroshockDiagram } from "@/components/diagrams/physics/MicroshockDiagr
 import { DiathermyDiagram } from "@/components/diagrams/physics/DiathermyDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import InlineRef from "@/components/references/InlineRef";
 
 const electricalSafetyFaqs: Array<[string, string]> = [
   [
@@ -124,6 +125,29 @@ const ElectricalSafetyTopic = () => {
             protective systems that limit leakage current — isolated power supplies with line isolation monitors,
             RCDs, theatre humidity and antistatic flooring. The same physics underpins the safe use
             of <strong>monopolar and bipolar diathermy</strong> and capacitor-based <strong>defibrillation</strong>.
+          </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Electrical Safety in the MRI Environment</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            MRI adds time-varying radiofrequency (RF) and gradient fields to the static magnetic-field hazard. Conductive loops
+            formed by ECG leads, monitoring cables or pacing wires can act as aerials: RF energy produces focal heating and burns,
+            while rapidly switched gradients can induce currents and unwanted stimulation. Route leads straight, avoid loops and
+            skin-to-skin contact, insulate cables from the patient and use the minimum necessary monitoring
+            <InlineRef topicId="electrical-safety" refLabel="BJA Educ 2019 (MRI)" />.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Equipment labelled <strong>MR Safe</strong> poses no known hazard; <strong>MR Conditional</strong> equipment is safe only
+            within its specified field strength, spatial gradient, RF exposure and positioning conditions. Standard pumps,
+            ventilators and monitors must remain outside the controlled area unless specifically approved. Fibre-optic monitoring
+            and signal transmission avoid conductive cables and therefore reduce induced-current and heating risks.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Pacemakers, ICDs, neurostimulators and other active implants require exact device and lead identification, confirmation
+            of MR-conditional status, specialist risk assessment and a documented programme-and-monitor protocol. Risks include
+            lead-tip heating, inappropriate sensing or therapy, device movement, power-on reset and pacing failure; abandoned or
+            fractured leads may increase heating.
           </p>
         </section>
 
@@ -294,8 +318,18 @@ const ElectricalSafetyTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground">Defibrillation</h2>
           <p className="text-foreground/90 leading-relaxed">
             Defibrillation delivers a large DC current (~30–40 A peak) to simultaneously depolarise a critical mass of
-            myocardium, allowing the SA node to resume normal conduction. Modern biphasic defibrillators are more effective
-            at lower energy (120–200 J) than monophasic (360 J). Transthoracic impedance (~70–80 Ω) affects current delivery.
+            myocardium, allowing the SA node to resume normal conduction. <strong>Transthoracic impedance (TTI)</strong> is the
+            opposition to current flow through the chest, typically ~70–80 Ω. It falls with larger electrodes, conductive gel,
+            firm paddle pressure, shock delivery during expiration and repeated shocks; poor contact, chest hair, small electrodes,
+            obesity and hyperinflation increase it.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Monophasic devices pass current in one direction and traditionally use up to 360 J. Modern biphasic devices reverse
+            polarity; a <strong>biphasic truncated exponential (BTE)</strong> waveform measures TTI and adjusts voltage or phase
+            duration to compensate, improving efficacy at lower selected energies (commonly 120–200 J) and reducing myocardial and
+            skin injury. <strong>Synchronised cardioversion</strong> triggers on the R wave to avoid shock delivery during the
+            vulnerable T wave and is used for unstable tachyarrhythmias with a pulse; VF and pulseless VT require immediate
+            unsynchronised defibrillation <InlineRef topicId="electrical-safety" refLabel="Anaesthesia 1996 Cardioversion" />.
           </p>
           <DefibrillatorCapacitorDiagram />
         </section>
