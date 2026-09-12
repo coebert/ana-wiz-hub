@@ -285,7 +285,22 @@ const BariatricAnaesthesiaTopic = () => {
           <div className="mt-4">
             <StopBangCalculator />
           </div>
+
+          <div className="mt-4 bg-card border border-border rounded-lg p-4">
+            <h3 className="font-semibold text-foreground mb-2">GLP-1 Receptor Agonist Management</h3>
+            <p className="text-sm text-muted-foreground mb-2">
+              GLP-1 receptor agonists (semaglutide, liraglutide, dulaglutide, tirzepatide) are now common in obese and diabetic surgical patients. They <strong className="text-foreground">delay gastric emptying</strong>, and residual gastric contents have been demonstrated despite adherence to standard fasting rules<InlineRef topicId="bariatric-anaesthesia" refLabel="GLP-1 Consensus 2025" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Continue the drug</strong>: the multidisciplinary consensus is that GLP-1 receptor agonists are <em>continued</em> peri-operatively for elective surgery — stopping them risks loss of glycaemic control and offers no proven aspiration benefit</li>
+              <li><strong>Assess symptoms</strong>: ask specifically about nausea, vomiting, bloating, early satiety, dyspepsia and abdominal pain, and about recent dose escalation — symptomatic patients are the group with a genuinely increased aspiration risk</li>
+              <li><strong>Individualised aspiration-risk assessment</strong>: combine GLP-1 symptoms with the usual risk factors (GORD, hiatus hernia, diabetic gastroparesis, raised intra-abdominal pressure, emergency surgery)</li>
+              <li><strong>Where risk is judged increased</strong>: consider gastric ultrasound to assess antral contents, and/or a rapid sequence induction with tracheal intubation; a longer clear-fluid-only period may be used, but is not a substitute for airway protection when the stomach is not empty</li>
+              <li><strong>Shared decision-making</strong>: discuss the residual aspiration risk, the plan, and the alternative of deferring surgery with the patient, and document that conversation</li>
+            </ul>
+          </div>
         </div>
+
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intraoperative Management</h2>
