@@ -77,6 +77,7 @@ const PharmacologySection = lazy(() => import("./pages/PharmacologySection"));
 const ClinicalSection = lazy(() => import("./pages/ClinicalSection"));
 const IntensiveCareSection = lazy(() => import("./pages/IntensiveCareSection"));
 const PerioperativeSection = lazy(() => import("./pages/PerioperativeSection"));
+const PerioperativeCaseBank = lazy(() => import("./pages/PerioperativeCaseBank"));
 const AnatomySection = lazy(() => import("./pages/AnatomySection"));
 const ChemistrySection = lazy(() => import("./pages/ChemistrySection"));
 
@@ -168,6 +169,7 @@ const App = () => (
           <Route path="/clinical" element={<ClinicalSection />} />
           <Route path="/intensive-care" element={<IntensiveCareSection />} />
           <Route path="/perioperative" element={<PerioperativeSection />} />
+          <Route path="/perioperative/case-bank" element={<PerioperativeCaseBank />} />
           <Route path="/anatomy" element={<AnatomySection />} />
           <Route path="/chemistry" element={<ChemistrySection />} />
           {/* Topic pages — data-driven, see src/routes/topicRoutes.ts */}
