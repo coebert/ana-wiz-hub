@@ -508,6 +508,107 @@ const OpioidsTopic = () => {
 
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PR_BK_05"]}>
+            <CollapsibleSubsection title="Opioid side effects by system">
+            <div className="grid md:grid-cols-2 gap-3 text-sm text-foreground/90">
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Central nervous system</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Sedation and drowsiness; euphoria or, with κ activity, dysphoria.</li>
+                  <li><strong>Miosis</strong> (Edinger–Westphal nucleus) — retained even in tolerant patients.</li>
+                  <li>Nausea and vomiting through stimulation of the chemoreceptor trigger zone and delayed gastric emptying.<InlineRef topicId="opioids" refLabel="BJA 2012 PONV Risk Factors" /></li>
+                  <li>Muscle rigidity, especially chest wall and vocal cords, after rapid high-dose fentanyl or remifentanil.</li>
+                  <li>Convulsions — rare; classically pethidine via the metabolite <strong>norpethidine</strong>, and tramadol
+                    at high dose or with other pro-convulsant drugs.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Respiratory system</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Dose-dependent respiratory depression: the ventilatory response to CO₂ is blunted and the CO₂ response
+                    curve shifted right and flattened, with a rising apnoeic threshold; respiratory rate falls before tidal volume.<InlineRef topicId="opioids" refLabel="BJA 2008 Opioids & Respiration" /></li>
+                  <li>Loss of hypoxic ventilatory drive and of the arousal response — the reason for continuous monitoring in
+                    at-risk patients.</li>
+                  <li>Antitussive (cough suppression) — useful for tube tolerance, unhelpful for sputum clearance.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Cardiovascular system</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Bradycardia from central vagotonic effect (marked with remifentanil and high-dose fentanyl).</li>
+                  <li>Hypotension from reduced sympathetic tone, venodilatation and, with morphine and pethidine, histamine release.</li>
+                  <li>Pethidine is the exception — antimuscarinic effect causes tachycardia; it is also negatively inotropic.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Gastrointestinal &amp; other</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Constipation from delayed gastric emptying and reduced propulsive peristalsis — tolerance does not develop;
+                    prescribe laxatives with any regular opioid.</li>
+                  <li>Biliary colic from spasm of the sphincter of Oddi and raised biliary pressure.</li>
+                  <li>Urinary retention from increased detrusor and sphincter tone, particularly after neuraxial opioid.</li>
+                  <li>Pruritus (central, µ-mediated as well as histamine-related) — responds to low-dose naloxone or nalbuphine
+                    rather than antihistamines.</li>
+                  <li>Endocrine/immune: chronic use causes hypogonadotrophic hypogonadism, hyperprolactinaemia, adrenal
+                    suppression and mild immunosuppression.<InlineRef topicId="opioids" refLabel="CDC Opioid Guideline 2022" /></li>
+                </ul>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PR_BK_05"]}>
+            <CollapsibleSubsection title="Considerations in specific populations">
+            <div className="grid md:grid-cols-2 gap-3 text-sm text-foreground/90">
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Elderly</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Increased sensitivity to both analgesic and respiratory-depressant effects (pharmacodynamic, not only
+                    pharmacokinetic).</li>
+                  <li>Reduced hepatic and renal clearance of morphine and accumulation of <strong>M6G</strong>; smaller lean mass
+                    and lower protein binding.</li>
+                  <li>Start low, go slow — reduce the bolus by roughly half and lengthen the interval; anticipate delirium risk
+                    and combine with multimodal, opioid-sparing analgesia.<InlineRef topicId="opioids" refLabel="CDC Opioid Guideline 2022" /></li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Paediatrics &amp; neonates</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Weight-based dosing throughout (µg/kg or mg/kg); higher V<sub>d</sub> for water-soluble drugs and immature
+                    hepatic conjugation in the first months of life.</li>
+                  <li>Neonates have reduced clearance, an immature blood–brain barrier and blunted ventilatory response to CO₂ —
+                    they are especially prone to apnoea, so use quarter-to-half adult weight-based doses with apnoea monitoring.</li>
+                  <li>Avoid codeine in children (CYP2D6 ultra-rapid metabolisers; contraindicated under 12 years and after
+                    tonsillectomy for obstructive sleep apnoea).</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Obstetrics</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>All opioids cross the placenta; neonatal respiratory depression and reduced Apgar scores follow maternal
+                    administration close to delivery (pethidine and norpethidine have long neonatal half-lives).</li>
+                  <li>They delay gastric emptying, increasing aspiration risk, and may reduce fetal heart-rate variability.</li>
+                  <li><strong>Remifentanil PCA</strong> (typically 20–40 µg bolus with a lock-out) is the common alternative when
+                    neuraxial analgesia is contraindicated, but demands one-to-one midwifery care, oxygen saturation monitoring
+                    and immediate availability of naloxone because of maternal apnoea risk.</li>
+                  <li>Opioids are secreted in breast milk in small amounts; morphine is preferred to codeine while breastfeeding.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Obesity &amp; obstructive sleep apnoea</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Greatly increased risk of airway obstruction, oxygen desaturation and postoperative respiratory depression;
+                    a major contributor to critical incidents on the ward.</li>
+                  <li>Dose lipophilic opioids on <strong>ideal or lean body weight</strong>, not total body weight; fentanyl
+                    sequesters in fat, prolonging effect after repeated dosing or infusion.</li>
+                  <li>Prefer short-acting agents, regional and multimodal techniques, head-up position, CPAP continuation and
+                    extended monitored recovery; avoid background infusions on PCA.<InlineRef topicId="opioids" refLabel="BJA 2008 Opioids & Respiration" /></li>
+                </ul>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PR_BK_05"]}>
             <CollapsibleSubsection title="Naloxone">
             <p className="text-foreground/90 leading-relaxed">
               Competitive µ, κ, δ antagonist. IV dose 1–4 µg/kg titrated. Onset 1–2 min. Duration 30–60 min — shorter than most
