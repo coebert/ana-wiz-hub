@@ -5,3 +5,5 @@
 - [x] Investigate and fix the content audit getting stuck
 - [x] Add a discussion section (questions + replies) to each topic page, live on the site
 - [ ] Batch 1 of 10 content-audit fixes (7 topics, 24 findings) + mark fixed in DB
+- [ ] Batch 1 of 9 content-audit fixes (8 specialty topics, 23 findings) + mark fixed in DB
+- [ ] Ongoing: close remaining open audit findings in batches (expand topics, add real citations, fix pages failing to load)
