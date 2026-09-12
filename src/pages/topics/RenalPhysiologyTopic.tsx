@@ -460,6 +460,20 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
+          <ExamSection id="pressure-natriuresis" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_02"]}>
+            <section className="mb-8">
+              <h2 className="text-2xl font-serif font-bold text-foreground">Pressure Natriuresis & Diuresis</h2>
+              <p className="text-foreground/90 leading-relaxed mb-3">
+                <strong>Definition:</strong> a rise in renal arterial pressure produces a steep increase in sodium (natriuresis) and water (diuresis) excretion; a fall in pressure produces avid sodium retention.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Mechanism</p><p className="mt-1 text-muted-foreground">Because autoregulation holds RBF and GFR nearly constant between about 75 and 160 mmHg, the response is chiefly <em>tubular</em> rather than filtration-driven. Higher perfusion pressure raises renal interstitial hydrostatic pressure (helped by a rigid capsule and medullary blood flow that is less well autoregulated), which reduces proximal tubule and loop of Henle sodium reabsorption — partly through internalisation of NHE3 and Na⁺/K⁺-ATPase — and increases back-leak of reabsorbed sodium. Reduced renin, angiotensin II and aldosterone, and local nitric oxide and prostaglandins, reinforce the effect.</p></div>
+                <div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Significance</p><p className="mt-1 text-muted-foreground">Pressure natriuresis provides the infinite-gain feedback loop for long-term blood pressure control: sodium balance can only be restored at a pressure that matches intake. A steep curve lets the kidney clear a salt load with a minimal pressure rise, whereas RAAS activation, sympathetic drive, renal disease or nephron loss shifts the curve rightwards and flattens it, so a higher pressure is required for the same excretion — the basis of salt-sensitive hypertension. ACE inhibitors, ARBs, mineralocorticoid antagonists and diuretics reset the curve leftwards <InlineRef topicId="renal-physiology" refLabel="Ganong Ch.37-38" /></p></div>
+              </div>
+              <p className="mt-3 text-sm text-muted-foreground">Perioperative relevance: hypotension, raised intra-abdominal pressure and venous congestion all reduce the transrenal pressure gradient and interstitial pressure changes that drive natriuresis, contributing to oliguria and fluid accumulation in critical illness.</p>
+            </section>
+          </ExamSection>
+
           <ExamSection id="raas" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">RAAS Cascade</h2>
