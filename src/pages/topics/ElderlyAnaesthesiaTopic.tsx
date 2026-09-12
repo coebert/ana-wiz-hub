@@ -373,8 +373,9 @@ const ElderlyAnaesthesiaTopic = () => {
                 <li>Post-event: arterial blood gas, ECG and echocardiography to assess right ventricular function, and critical care admission for grade 2–3 events</li>
               </ul>
             </div>
-
+          </div>
         </section>
+
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
