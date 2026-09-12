@@ -14,12 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { supabase } from "@/integrations/supabase/client";
-import {
-  buildInaccuracyReportPayload,
-  getFirstValidationError,
-  inaccuracyReportSchema,
-} from "@/lib/inaccuracy-report";
+import { submitInaccuracyReport } from "@/lib/inaccuracy-report";
 
 /**
  * Report-an-inaccuracy dialog.
@@ -46,17 +41,21 @@ export const ReportInaccuracyDialog = ({
   const [message, setMessage] = useState("");
   const [correction, setCorrection] = useState("");
   const [email, setEmail] = useState("");
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const reset = () => {
     setQuoted("");
     setMessage("");
     setCorrection("");
     setEmail("");
+    setSubmitError(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const parsed = inaccuracyReportSchema.safeParse({
+    setSubmitError(null);
+    setSubmitting(true);
+    const result = await submitInaccuracyReport({
       topicId,
       topicTitle,
       topicUrl: typeof window !== "undefined" ? window.location.href.slice(0, 1024) : "",
@@ -65,18 +64,9 @@ export const ReportInaccuracyDialog = ({
       suggestedCorrection: correction,
       contactEmail: email,
     });
-    if (!parsed.success) {
-      toast.error(getFirstValidationError(parsed.error));
-      return;
-    }
-    setSubmitting(true);
-    const { error } = await supabase
-      .from("inaccuracy_reports")
-      .insert(buildInaccuracyReportPayload(parsed.data));
     setSubmitting(false);
-    if (error) {
-      console.error("inaccuracy_report submit failed", error);
-      toast.error("Could not submit report. Please try again later.");
+    if (!result.ok) {
+      setSubmitError(result.message);
       return;
     }
     toast.success("Thank you — an editor will review your report.");
@@ -88,7 +78,10 @@ export const ReportInaccuracyDialog = ({
     <Dialog
       open={open}
       onOpenChange={(next) => {
-        if (!submitting) setOpen(next);
+        if (!submitting) {
+          setOpen(next);
+          if (!next) setSubmitError(null);
+        }
       }}
     >
       <DialogTrigger asChild>
@@ -169,6 +162,11 @@ export const ReportInaccuracyDialog = ({
               maxLength={320}
             />
           </div>
+          {submitError && (
+            <p role="alert" className="text-sm text-destructive">
+              {submitError}
+            </p>
+          )}
           <DialogFooter className="gap-2 sm:gap-2">
             <a
               href="/errata"
