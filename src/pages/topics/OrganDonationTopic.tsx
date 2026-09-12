@@ -152,6 +152,10 @@ const OrganDonationTopic = () => {
                 </div>
               ))}
             </div>
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Coroner (England &amp; Wales) / Procurator Fiscal (Scotland)</h3>
+            <p className="text-sm text-muted-foreground">
+              Approval is required in any reportable death — unnatural death, death in custody, or an industrial accident. The coroner/procurator fiscal may object and prevent donation where retrieval would compromise forensic evidence, but they cannot themselves consent to donation on behalf of the deceased or their family. The SN-OD normally liaises directly with the coroner's office to obtain approval; outright objections are rare <InlineRef topicId="organ-donation" refLabel="ACCM End-of-Life 2008" />.
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -213,6 +217,23 @@ const OrganDonationTopic = () => {
                 <div key={s.system} className="flex gap-3 p-3 rounded border border-border">
                   <span className="font-bold text-primary text-sm whitespace-nowrap">{s.system}</span>
                   <span className="text-sm text-muted-foreground">{s.goal}</span>
+                </div>
+              ))}
+            </div>
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Hormonal Replacement Therapy</h3>
+            <p className="text-sm text-muted-foreground mb-3">
+              Loss of pituitary function after brainstem death drives cardiovascular instability, diabetes insipidus and hyperglycaemia; a hormonal "cocktail" is used to attenuate this and improve donor organ yield/quality <InlineRef topicId="organ-donation" refLabel="BJA Donor Management 2012" />.
+            </p>
+            <div className="space-y-2">
+              {[
+                { agent: "Methylprednisolone", detail: "15 mg/kg single IV dose — attenuates the systemic inflammatory response and improves lung function/oxygenation, increasing lungs suitable for retrieval." },
+                { agent: "Vasopressin", detail: "Infusion 0.5–2.4 units/h — dual role treating vasoplegia and diabetes insipidus; spares catecholamines and reduces noradrenaline requirement." },
+                { agent: "Thyroid hormone (T3/T4)", detail: "Controversial evidence but commonly used with cardiovascular instability, e.g. thyroxine (T4) 20 mcg bolus then 10 mcg/h infusion." },
+                { agent: "Insulin", detail: "Infusion targeting glucose ~6–10 mmol/L — counters steroid- and stress-induced hyperglycaemia and improves pancreas/whole-organ viability." },
+              ].map((h) => (
+                <div key={h.agent} className="flex gap-3 p-3 rounded border border-border">
+                  <span className="font-bold text-primary text-sm whitespace-nowrap">{h.agent}</span>
+                  <span className="text-sm text-muted-foreground">{h.detail}</span>
                 </div>
               ))}
             </div>

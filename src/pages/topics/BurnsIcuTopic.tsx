@@ -11,6 +11,7 @@ import InhalationInjuryFlowchart from "@/components/diagrams/intensive-care/Inha
 import ParklandCalculator from "@/components/diagrams/intensive-care/ParklandCalculator";
 import BurnsIcuCaseStepper from "@/components/diagrams/intensive-care/BurnsIcuCaseStepper";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/topic/InlineRef";
 
 const burnsIcuFaqs: Array<[string, string]> = [
   ["How is fluid resuscitation calculated for major burns?", "Modified Parkland: 3–4 mL/kg/%TBSA Hartmann's in the first 24 h, half in the first 8 h from time of burn; titrate to urine output 0.5 mL/kg/h (adults), 1 mL/kg/h (children) — avoid fluid creep."],
@@ -246,6 +247,62 @@ const BurnsIcuTopic = () => {
               <li><strong>Thromboprophylaxis</strong>: high VTE risk — chemical and mechanical from day 1 if not actively bleeding. Heparin requirements often higher than predicted.</li>
               <li><strong>Temperature</strong>: ambient theatre 28–30 °C, warming blankets, fluid warmers; hypothermia worsens coagulopathy and graft survival.</li>
               <li><strong>Stress ulcer prophylaxis</strong>: Curling’s ulcer is the burn-specific equivalent — PPI from day 1.</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="special-burns" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Special Burn Types">
+            <div className="space-y-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Electrical burns</p>
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                  Divided into <strong>high-voltage</strong> (&gt;1000 V) and <strong>low-voltage</strong> injury; alternating current (AC) is more dangerous
+                  than direct current (DC) at the same voltage because it induces tetanic muscle contraction and repetitive cardiac
+                  depolarisation, precipitating <strong>VF or asystole</strong>. Lightning strike is a massive DC-like discharge that can produce
+                  characteristic branching skin markings (<strong>Lichtenberg figures</strong>) which are not true burns and resolve spontaneously.
+                  Surface burns are often deceptively modest while current tracks along vessels and nerves causing extensive
+                  <strong> deep tissue injury</strong> — always suspect more damage than the skin suggests. <strong>Rhabdomyolysis and myoglobinuria</strong> are
+                  common; resuscitate to a higher urine output target (1–2 mL/kg/h) rather than the standard 0.5 mL/kg/h, and consider
+                  urinary alkalinisation. High risk of occult <strong>compartment syndrome</strong> — have a low threshold for fasciotomy/escharotomy and
+                  serial compartment pressure checks. All patients need a <strong>12-lead ECG and 24 h continuous cardiac monitoring</strong> after
+                  significant electrical exposure <InlineRef topicId="burns-icu" refLabel="BJA Educ Special Burns 2012" />.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Chemical burns</p>
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                  <strong>Acids</strong> cause coagulative necrosis — the resulting eschar tends to self-limit the depth of injury. <strong>Alkalis</strong> cause
+                  liquefactive necrosis, allowing continued penetration and typically producing deeper, more extensive injury than
+                  acids of a comparable exposure. Management is <strong>copious irrigation</strong> — running water, or a chelating/amphoteric
+                  solution such as Diphoterine where available — continued for at least 20–30 minutes and re-assessed rather than
+                  timed rigidly; remove contaminated clothing early. <strong>Hydrofluoric acid</strong> is a special case: the fluoride ion penetrates
+                  deeply and chelates calcium and magnesium, causing severe local tissue destruction plus systemic
+                  <strong> hypocalcaemia</strong> that can precipitate life-threatening cardiac arrhythmias even after small burns. Treat with topical
+                  calcium gluconate gel, and intradermal, intra-arterial or IV calcium gluconate for deeper/larger exposures, with close
+                  monitoring of serum calcium and cardiac rhythm. Any chemical burn with systemic absorption warrants monitoring for
+                  wider systemic toxicity <InlineRef topicId="burns-icu" refLabel="BJA Educ Special Burns 2012" />.
+                </p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="haematological-management" exams={[Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Haematological Management">
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Anaemia</strong> is near-universal in major burns — driven by burn-related haemolysis, repeated operative blood loss
+                during excision and grafting, and inflammatory suppression of erythropoiesis. A <strong>restrictive transfusion trigger of
+                ~70 g/L</strong> is appropriate outside of active bleeding or haemodynamic instability <InlineRef topicId="burns-icu" refLabel="ISBI 2016" />.</li>
+              <li><strong>Biphasic coagulopathy</strong>: an early <strong>hypercoagulable</strong> phase (driven by the acute-phase response) increases VTE risk,
+                followed later by a <strong>consumptive coagulopathy</strong> that emerges with sepsis and large-volume operative loss. <strong>Viscoelastic
+                testing (ROTEM/TEG)</strong> helps target factor and platelet replacement during major excision surgery rather than
+                transfusing empirically <InlineRef topicId="burns-icu" refLabel="BJA Educ Burns 2017" />.</li>
+              <li><strong>VTE risk is very high</strong> in major burns — immobility, hypercoagulability, central lines and repeated surgery combine.
+                Use both mechanical (compression devices, where limbs allow) and chemical prophylaxis from admission if not actively
+                bleeding. LMWH dosing requirements are frequently increased above standard weight-based doses because of altered
+                pharmacokinetics; <strong>anti-Xa level monitoring</strong> should be used to confirm adequate prophylactic effect
+                <InlineRef topicId="burns-icu" refLabel="ISBI 2016" />.</li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
