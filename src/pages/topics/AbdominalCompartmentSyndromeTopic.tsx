@@ -336,6 +336,65 @@ const AbdominalCompartmentSyndromeTopic = () => {
               </ul>
             </div>
 
+            <CollapsibleSubsection title="Management of the Open Abdomen">
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                The WSACS/Björck open-abdomen classification grades the wound by contamination and fixation, and
+                guides the urgency and technique of closure<InlineRef topicId="abdominal-compartment-syndrome" refLabel="Björck 2016" />.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3 mb-4">
+                {[
+                  { g: "Grade 1a", v: "Clean, no fixation." },
+                  { g: "Grade 1b", v: "Contaminated, no fixation." },
+                  { g: "Grade 1c", v: "Enteric leak, no fixation." },
+                  { g: "Grade 2a", v: "Clean, developing fixation." },
+                  { g: "Grade 2b", v: "Contaminated, developing fixation." },
+                  { g: "Grade 2c", v: "Enteric leak, developing fixation." },
+                  { g: "Grade 3", v: "Frozen abdomen, without enteric leak." },
+                  { g: "Grade 4", v: "Frozen abdomen with established enteroatmospheric fistula." },
+                ].map((s) => (
+                  <div key={s.g} className="p-3 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground text-sm">{s.g}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{s.v}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                <strong>Goals of temporary abdominal closure</strong>: prevent evisceration, control fluid loss,
+                prevent fistula formation, and preserve fascia and abdominal domain<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3 mb-4">
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Bogotá bag</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Cheap and simple, but provides no fascial traction and carries a high rate of incisional hernia
+                    and loss of domain.
+                  </p>
+                </div>
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Negative-pressure with fascial traction</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    ABThera or Wittmann patch systems combine negative-pressure wound therapy with active fascial
+                    traction, improving rates of same-admission fascial closure<InlineRef topicId="abdominal-compartment-syndrome" refLabel="Björck 2016" />.
+                  </p>
+                </div>
+              </div>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                <strong>Complications of the open abdomen</strong>:
+              </p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
+                <li>High-output effluent — 1–2 L/day of protein-rich fluid loss.</li>
+                <li>Enterocutaneous or enteroatmospheric fistula formation.</li>
+                <li>Loss of domain as the abdominal wall retracts.</li>
+                <li>Recurrent intra-abdominal hypertension despite an already-open abdomen.</li>
+                <li>Ventral hernia at the time of eventual closure.</li>
+              </ul>
+              <p className="text-muted-foreground leading-relaxed">
+                <strong>Definitive closure</strong> should aim for delayed primary fascial closure within 7–10 days.
+                Beyond this window, options include component separation, biological or synthetic mesh, or a planned
+                ventral hernia for staged reconstruction<InlineRef topicId="abdominal-compartment-syndrome" refLabel="Björck 2016" /><InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
+              </p>
+            </CollapsibleSubsection>
+
             {/* Prognosis */}
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Prognosis</h2>

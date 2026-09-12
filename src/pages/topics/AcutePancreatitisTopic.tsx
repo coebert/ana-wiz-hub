@@ -11,6 +11,7 @@ import PancreatitisEvolutionTimeline from "@/components/diagrams/intensive-care/
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const acutePancreatitisFaqs: Array<[string, string]> = [
   ["How is severity stratified in acute pancreatitis?", "Use the revised Atlanta classification: mild (no organ failure or complications), moderate (transient organ failure <48 h or local complications), severe (persistent organ failure >48 h); supplement with APACHE II and CRP >150 at 48 h."],
@@ -181,6 +182,40 @@ const AcutePancreatitisTopic = () => {
           <p className="text-xs text-muted-foreground mt-3 italic">
             Organ failure is defined by the modified Marshall score (≥2 in respiratory, cardiovascular or renal systems).
           </p>
+          <div className="mt-4 overflow-x-auto rounded-lg border border-border">
+            <table className="w-full text-xs min-w-[600px]">
+              <thead>
+                <tr className="bg-secondary/40 text-foreground">
+                  <th className="text-left p-2 font-semibold border-b border-border">Score</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">Respiratory (PaO₂/FiO₂)</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">Renal (creatinine, µmol/L)</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">Cardiovascular (systolic BP)</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground align-top">
+                {[
+                  { score: "0", resp: ">400", renal: "<134", cvs: ">90 mmHg" },
+                  { score: "1", resp: "301–400", renal: "134–169", cvs: "<90, fluid-responsive" },
+                  { score: "2", resp: "201–300", renal: "170–310", cvs: "<90, not fluid-responsive" },
+                  { score: "3", resp: "101–200", renal: "311–439", cvs: "<90, pH <7.3" },
+                  { score: "4", resp: "≤101", renal: ">439", cvs: "<90, pH <7.2" },
+                ].map((row) => (
+                  <tr key={row.score} className="border-b border-border last:border-b-0 hover:bg-secondary/20">
+                    <td className="p-2 font-semibold text-foreground">{row.score}</td>
+                    <td className="p-2">{row.resp}</td>
+                    <td className="p-2">{row.renal}</td>
+                    <td className="p-2">{row.cvs}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-muted-foreground mt-2">
+            Organ failure = score ≥2 in any one system. <strong>Transient</strong> organ failure resolves within 48h
+            (moderately severe disease); <strong>persistent</strong> organ failure lasts &gt;48h (severe disease).{" "}
+            <InlineRef topicId="acute-pancreatitis" refLabel="Atlanta 2012" />{" "}
+            <InlineRef topicId="acute-pancreatitis" refLabel="Marshall 1995" />
+          </p>
         </div>
 
         <div>
@@ -297,7 +332,24 @@ const AcutePancreatitisTopic = () => {
               },
               {
                 topic: "D — Analgesia",
-                detail: "Multimodal. Paracetamol + opioid (morphine or fentanyl PCA). Opioid concerns about Sphincter of Oddi spasm are largely theoretical — do not withhold. Consider thoracic epidural in severe cases (improves splanchnic perfusion, may reduce mortality — small trials).",
+                detail: (
+                  <>
+                    Multimodal. Paracetamol + opioid (morphine or fentanyl PCA). Opioid concerns about Sphincter of
+                    Oddi spasm are largely theoretical — do not withhold.
+                    <br /><br />
+                    <strong>Thoracic epidural analgesia</strong> — insertion at T8–T10 — should be considered in
+                    severe pancreatitis. <strong>Benefits</strong>: superior dynamic pain relief, opioid sparing,
+                    improved splanchnic and pancreatic microcirculatory perfusion, reduced ileus, fewer respiratory
+                    complications, and a signal of mortality benefit in small trials and observational data (evidence
+                    remains mixed with no large RCT). <strong>Risks/contraindications</strong>: coagulopathy and
+                    thrombocytopenia are common in severe disease, sepsis/bacteraemia, haemodynamic instability from
+                    sympathectomy, technical difficulty and positioning in the unwell patient, and epidural
+                    haematoma/abscess. <strong>Practicalities</strong>: check platelets and coagulation before
+                    insertion and before removal, ensure adequate volume status and vasopressor availability, and use
+                    dilute low-dose local anaesthetic with regular neurological review.{" "}
+                    <InlineRef topicId="acute-pancreatitis" refLabel="BJA Educ 2018" />
+                  </>
+                ),
               },
               {
                 topic: "E — Nutrition",
