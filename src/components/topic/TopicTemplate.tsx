@@ -9,6 +9,7 @@ import { QuizSection } from "@/components/quiz/QuizSection";
 import { ReferencesList } from "@/components/references/ReferencesList";
 import { SectionReferences } from "@/components/topic/SectionReferences";
 import { SeeAlso } from "@/components/topic/SeeAlso";
+import { RelatedCases } from "@/components/topic/RelatedCases";
 import { TopicCompletionToggle } from "@/components/topic/TopicCompletionToggle";
 import { ReportInaccuracyDialog } from "@/components/feedback/ReportInaccuracyDialog";
 import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
@@ -435,6 +436,7 @@ export const TopicTemplate = ({
         <ReferencesList topicId={topicId} />
         <TopicOverrideReferences refs={liveEdits.references} />
 
+        <RelatedCases topicId={topicId} />
         <SeeAlso topicId={topicId} />
         <TopicCompletionToggle topicId={topicId} topicTitle={topicTitle ?? title} />
         <div className="flex justify-end pt-2 -mt-2">
