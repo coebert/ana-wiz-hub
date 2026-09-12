@@ -1140,6 +1140,83 @@ async function auditTopic(
   // Larger content window — coverage pass particularly needs it.
   const pageExcerpt = pageMarkdown.slice(0, 20000);
 
+  // 2c. Extra auditable content that lives outside the topic prose but is read
+  // by learners as if it were part of the topic:
+  //   - case-bank cases mapped to this topic (staged model answers + discussion)
+  //   - viva model answers generated for this topic
+  // Both make clinical assertions (doses, thresholds, algorithms), so they are
+  // audited against the same evidence as the topic itself.
+  const caseBank = corpusEntry.case_bank ?? [];
+  stages.case_bank_cases = caseBank.length;
+  stages.case_bank_chars = caseBank.reduce((n, c) => n + c.text.length, 0);
+  const caseBankBlock = caseBank.length === 0
+    ? ""
+    : [
+        "=== CASE-BANK CASES MAPPED TO THIS TOPIC (audit these too) ===",
+        "Each case below is published on the site and linked from this topic. The staged",
+        "'Model answer' lines and 'Discussion' paragraphs are model answers a candidate is",
+        "expected to learn, so they are auditable content. When a finding concerns a case,",
+        'set in_topic_section to "Case bank: <case title>" and quote the case text verbatim in topic_quote.',
+        "",
+        caseBank
+          .map((c) => `--- [${c.bank}] ${c.path}\n${c.text}`)
+          .join("\n\n")
+          .slice(0, 26_000),
+      ].join("\n");
+
+  // Viva model answers live in the database (generated per question), not in the
+  // source corpus, so they are fetched at audit time.
+  let vivaBlock = "";
+  try {
+    const { data: vivaRows } = await supa
+      .from("viva_model_answers")
+      .select("question, exam, model_answer, high_yield_points, pitfalls")
+      .eq("topic_title", topic.title)
+      .order("created_at", { ascending: false })
+      .limit(25);
+    const viva = vivaRows ?? [];
+    stages.viva_answers = viva.length;
+    if (viva.length > 0) {
+      const asList = (v: unknown): string[] =>
+        Array.isArray(v) ? v.map((x) => String(x)) : [];
+      const body = viva
+        .map((r, i) =>
+          [
+            `--- Viva question ${i + 1} (${String(r.exam ?? "").toUpperCase()}): ${r.question}`,
+            `Model answer: ${String(r.model_answer ?? "")}`,
+            asList(r.high_yield_points).length
+              ? `High-yield points: ${asList(r.high_yield_points).join(" · ")}`
+              : "",
+            asList(r.pitfalls).length ? `Pitfalls: ${asList(r.pitfalls).join(" · ")}` : "",
+          ]
+            .filter(Boolean)
+            .join("\n"),
+        )
+        .join("\n\n")
+        .slice(0, 26_000);
+      stages.viva_answers_chars = body.length;
+      vivaBlock = [
+        "=== VIVA MODEL ANSWERS FOR THIS TOPIC (audit these too) ===",
+        "These are the model answers shown to candidates in the viva question library.",
+        "They assert doses, thresholds and algorithms and must be held to the same",
+        'accuracy standard as the topic prose. When a finding concerns one of them, set',
+        'in_topic_section to "Viva model answer: <first 8 words of the question>" and quote',
+        "the model answer verbatim in topic_quote.",
+        "",
+        body,
+      ].join("\n");
+    }
+  } catch (e) {
+    stages.viva_error = (e as Error).message;
+    console.warn(`[audit-topics] viva model answers unavailable for ${topic.id}: ${(e as Error).message}`);
+  }
+
+  const extraContentBlock = [caseBankBlock, vivaBlock].filter(Boolean).join("\n\n");
+  console.log(
+    `[audit-topics] extra content ${topic.id}: ${caseBank.length} cases, ` +
+      `${stages.viva_answers ?? 0} viva model answers`,
+  );
+
   const refsBody = refs.length === 0
     ? "(no literature records retrieved — for the accuracy pass, do NOT raise findings without a source quote; for the coverage pass, name the specific BJA Education / RCoA / NICE document by title + year inside details)"
     : refs
