@@ -377,6 +377,64 @@ const BreathingCircuitsTopic = () => {
               </div>
             </div>
 
+            {/* 2024 machine-safety guideline */}
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+                The 2024 AoA/RCoA machine-safety guideline — beyond the checklist
+              </h2>
+              <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  The joint Association of Anaesthetists / Royal College of Anaesthetists guideline
+                  <em> Anaesthesia, anaesthetic machines and patient safety</em> (2024)
+                  <InlineRef topicId="breathing-circuits" refLabel="RCoA/AoA 2024 Machine Check" /> supersedes the AAGBI 2012
+                  <em> Checking Anaesthetic Equipment</em> guidance and deliberately widens the scope: the pre-use check is only one
+                  element of keeping patients safe around anaesthetic machines. Its recommendations cover the whole life-cycle of the
+                  workstation.
+                </p>
+                <ul className="list-disc list-inside space-y-1.5">
+                  <li>
+                    <strong>Pre-use checking.</strong> A full structured check at the start of every session, following an
+                    upstream-to-downstream sequence (power and self-test → gas supplies and back-up cylinders → flowmeters and
+                    anti-hypoxia device → vapourisers → breathing system → ventilator, suction and scavenging → monitoring and
+                    alarms → airway equipment). The breathing system itself must be checked by the anaesthetist personally before
+                    every patient using the <strong>two-bag test</strong>, and an abbreviated check is repeated between cases and
+                    after any change to the configuration. Every check is <strong>recorded and signed</strong> for each machine,
+                    each session.
+                  </li>
+                  <li>
+                    <strong>Equipment standards and procurement.</strong> Machines should comply with current standards and be
+                    purchased, maintained and decommissioned under a documented departmental equipment-management programme, with
+                    scheduled servicing and electrical-safety testing.
+                  </li>
+                  <li>
+                    <strong>Human factors and standardisation.</strong> Workstation layout, gas connections, controls and monitors
+                    should be standardised within a department so that a familiar machine in one theatre behaves identically in
+                    another — reducing error when staff move between rooms or work out of hours.
+                  </li>
+                  <li>
+                    <strong>Alarms and monitoring.</strong> Capnography and airway-pressure alarms must be verified as functioning
+                    before use; alarm limits should be set appropriately and restored after temporary silencing, never permanently
+                    disabled.
+                  </li>
+                  <li>
+                    <strong>Fallbacks.</strong> An alternative oxygen supply (full cylinder) and a tested <strong>self-inflating
+                    bag</strong> — a means of ventilation entirely independent of the machine — must be immediately available at every
+                    location where anaesthesia is given, including remote sites.
+                  </li>
+                  <li>
+                    <strong>Training and competence.</strong> Every anaesthetist must be trained and demonstrably competent on the
+                    specific machine model in use, including its self-test, vaporiser mounting and ventilator modes; departments must
+                    provide that training for new equipment.
+                  </li>
+                </ul>
+                <p>
+                  For the exam, know the checklist sequence in order, but be ready to discuss why the 2024 document reframes machine
+                  safety as a <strong>system property</strong> — procurement, standardisation, maintenance, alarms and training —
+                  rather than a morning ritual <InlineRef topicId="breathing-circuits" refLabel="RCoA/AoA 2024 Machine Check" />.
+                </p>
+              </div>
+            </div>
+
             {/* Soda lime chemistry */}
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
@@ -424,7 +482,7 @@ const BreathingCircuitsTopic = () => {
                 <li>Forgetting that the Jackson-Rees (F) bag is open-tailed; squeezing it gives both ventilation and a visual cue of compliance and effort.</li>
                 <li>Listing six (not seven) components of the circle system — the reservoir bag is often the forgotten one.</li>
                 <li>Claiming Amsorb® is a soda lime — it is a calcium-hydroxide-only absorbent designed to eliminate Compound A and CO.</li>
-                <li>Confusing the two-bag test (circuit integrity) with the AAGBI machine check as a whole.</li>
+                <li>Confusing the two-bag test (circuit integrity) with the full AoA/RCoA 2024 machine check as a whole.</li>
               </ul>
             </div>
           </section>
