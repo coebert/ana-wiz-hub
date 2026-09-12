@@ -11,7 +11,7 @@ import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/comp
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick, Headphones, Mic2, Map as MapIcon, Info, UserCheck } from "lucide-react";
+import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3, CheckCircle2, UserPlus, Repeat, Clock, Activity, Layers, Globe, CalendarIcon, Search, Link2, Share2, MousePointerClick, Headphones, Mic2, Map as MapIcon, Info, UserCheck, FileEdit } from "lucide-react";
 import VisitorsWorldMap from "@/components/admin/VisitorsWorldMap";
 import SeoAnalyticsPanel from "@/components/admin/SeoAnalyticsPanel";
 import SpoofedDomainsPanel from "@/components/admin/SpoofedDomainsPanel";
@@ -1098,6 +1098,17 @@ const AdminDashboard = () => {
               <CheckCircle2 className="w-4 h-4 mr-1" aria-hidden="true" />
               Content Audit
             </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => navigate("/admin/content-editor")}
+              aria-label="Open the content editor to update topics, subsections and references"
+            >
+              <FileEdit className="w-4 h-4 mr-1" aria-hidden="true" />
+              Content Editor
+            </Button>
+
+
 
             <Button
               variant="outline"

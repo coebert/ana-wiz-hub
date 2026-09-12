@@ -85,6 +85,8 @@ import { topicRouteEntries, TOPIC_REDIRECTS } from "@/routes/topicRoutes";
 import { RequireAdmin } from "@/components/layout/RequireAdmin";
 const SpoofedDomains = lazy(() => import("./pages/admin/SpoofedDomains"));
 const AdminWebVitals = lazy(() => import("./pages/admin/WebVitals"));
+const AdminContentEditor = lazy(() => import("./pages/admin/ContentEditor"));
+
 
 const Loading = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">
@@ -183,6 +185,8 @@ const App = () => (
           <Route path="/admin/audit-report" element={<RequireAdmin><AuditReport /></RequireAdmin>} />
           <Route path="/admin/spoofed-domains" element={<RequireAdmin><SpoofedDomains /></RequireAdmin>} />
           <Route path="/admin/web-vitals" element={<RequireAdmin><AdminWebVitals /></RequireAdmin>} />
+          <Route path="/admin/content-editor" element={<RequireAdmin><AdminContentEditor /></RequireAdmin>} />
+
           <Route path="/admin/esicm-validator" element={<Navigate to="/admin/audit" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

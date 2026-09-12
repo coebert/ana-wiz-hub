@@ -13,6 +13,13 @@ import { TopicCompletionToggle } from "@/components/topic/TopicCompletionToggle"
 import { ReportInaccuracyDialog } from "@/components/feedback/ReportInaccuracyDialog";
 import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
 import { ExamBadgeDedupeProvider } from "@/components/exam/ExamBadgeDedupeContext";
+import {
+  TopicOverrideBlocks,
+  TopicOverrideKeyPoints,
+  TopicOverrideReferences,
+} from "@/components/topic/TopicOverrides";
+import { useLiveContentOverrides } from "@/hooks/useContentOverrides";
+
 
 import { LazyDiagrams } from "@/components/topic/LazyDiagrams";
 import { ExamSummary } from "@/components/exam/ExamSummary";
@@ -128,6 +135,9 @@ export const TopicTemplate = ({
   const { activeExam } = useExamFilter();
   useRecordRecentTopic(topicId);
   useTrackStudyTime(topicId);
+  // Admin-published edits layered on top of the built-in page content.
+  const liveEdits = useLiveContentOverrides(topicId);
+
 
   // Auto-derive section sources from inline `cites` arrays so authors don't
   // have to maintain a parallel `sectionSources` map. Explicit props always
@@ -323,6 +333,9 @@ export const TopicTemplate = ({
 
         <section className="space-y-8">{coreConcepts}</section>
 
+        <TopicOverrideBlocks blocks={liveEdits.blocks} />
+
+
         {diagrams && showDiagrams && (
           <section id="diagrams" className="scroll-mt-24">
             <h2 className="h2 mb-4">
@@ -380,6 +393,8 @@ export const TopicTemplate = ({
               />
             )}
             <KeyLearningPoints points={keyPoints} topicId={topicId} />
+            <TopicOverrideKeyPoints points={liveEdits.keyPoints} />
+
             {resolvedSources.keyPoints && resolvedSources.keyPoints.length > 0 && (
               <SectionReferences
                 topicId={topicId}
@@ -418,6 +433,8 @@ export const TopicTemplate = ({
           )}
         />
         <ReferencesList topicId={topicId} />
+        <TopicOverrideReferences refs={liveEdits.references} />
+
         <SeeAlso topicId={topicId} />
         <TopicCompletionToggle topicId={topicId} topicTitle={topicTitle ?? title} />
         <div className="flex justify-end pt-2 -mt-2">
