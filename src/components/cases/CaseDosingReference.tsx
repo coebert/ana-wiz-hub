@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Pill } from "lucide-react";
+import { Pill, ShieldCheck } from "lucide-react";
 import { doseReferencesForCase, drugDoseHref } from "@/lib/caseDoseReferences";
+import { mechanismSlugForDrug } from "@/lib/icuDrugMechanismLinks";
 import type { PerioperativeCase } from "@/components/perioperative/ProgressiveCase";
 
 interface CaseDosingReferenceProps {
@@ -21,19 +22,40 @@ export const CaseDosingReference = ({ caseData }: CaseDosingReferenceProps) => {
         <Pill className="h-3.5 w-3.5" aria-hidden /> {ageLabel}
       </p>
       <ul className="mt-2 space-y-1.5 text-sm">
-        {references.map((reference) => (
-          <li key={reference.slug} className="leading-relaxed">
-            <Link
-              to={drugDoseHref(reference)}
-              className="font-medium text-foreground underline underline-offset-4 hover:text-primary"
-            >
-              {reference.drug}
-            </Link>{" "}
-            <span className="text-muted-foreground">
-              — {reference.dose} · {reference.route}
-            </span>
-          </li>
-        ))}
+        {references.map((reference) => {
+          const safetySlug = mechanismSlugForDrug(reference.drug);
+          return (
+            <li key={reference.slug} className="leading-relaxed">
+              <Link
+                to={drugDoseHref(reference)}
+                className="font-medium text-foreground underline underline-offset-4 hover:text-primary"
+              >
+                {reference.drug}
+              </Link>{" "}
+              <span className="text-muted-foreground">
+                — {reference.dose} · {reference.route}
+              </span>
+              {safetySlug ? (
+                <span className="mt-0.5 flex items-center gap-1.5 text-xs text-muted-foreground">
+                  <ShieldCheck className="h-3 w-3 shrink-0" aria-hidden />
+                  <Link
+                    to={`/intensive-care/drug-safety?slug=${safetySlug}#${safetySlug}`}
+                    className="underline underline-offset-4 hover:text-foreground"
+                  >
+                    Safety profile
+                  </Link>
+                  <span aria-hidden>·</span>
+                  <Link
+                    to={`/intensive-care/drug-mechanisms?slug=${safetySlug}#${safetySlug}`}
+                    className="underline underline-offset-4 hover:text-foreground"
+                  >
+                    Mechanism &amp; metabolism
+                  </Link>
+                </span>
+              ) : null}
+            </li>
+          );
+        })}
       </ul>
       <p className="mt-2 text-xs text-muted-foreground">
         {ageGroup === "adult"
