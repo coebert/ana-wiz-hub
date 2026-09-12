@@ -12,6 +12,7 @@ import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { tivaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const objectives = [
   "Describe 3-compartment mammillary PK models and the role of V1, V2, V3, k10 and ke0",
