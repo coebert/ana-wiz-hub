@@ -178,8 +178,8 @@ const keyPoints = [
     cites: ["Davey & Diba Ch.3"],
   },
   {
-    text: "Pre-use check (AAGBI 2012): correct agent and adequate fill level, no leaks (single-vaporiser test with occluded common gas outlet), interlock function, and that vaporiser dials return to zero.",
-    cites: ["BJA Educ 2014"],
+    text: "Pre-use check (Association of Anaesthetists / RCoA 2024, 'Anaesthesia, anaesthetic machines and patient safety'): correct agent and adequate fill level with the filler cap closed, vaporiser seated and locked on the back bar with the interlock preventing two agents running simultaneously, dials returning to zero, and no leaks (single-vaporiser leak test with the common gas outlet occluded, repeated at each dial setting).",
+    cites: ["RCoA/AoA 2024 Machine Check", "BJA Educ 2014"],
   },
 ];
 

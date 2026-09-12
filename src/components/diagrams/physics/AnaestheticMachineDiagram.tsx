@@ -437,7 +437,7 @@ const SafetyFeaturesDiagram = () => (
     </div>
 
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <h5 className="font-semibold text-foreground mb-2">Pre-Use Check (Association of Anaesthetists 2023 — supersedes AAGBI 2012)</h5>
+      <h5 className="font-semibold text-foreground mb-2">Pre-Use Check (Association of Anaesthetists / RCoA 2024, 'Anaesthesia, anaesthetic machines and patient safety')</h5>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-muted-foreground">
         {[
           "Check pipeline connections — confirm correct gas at each outlet (tug test)",
