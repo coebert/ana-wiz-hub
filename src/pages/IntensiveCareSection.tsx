@@ -60,11 +60,15 @@ const IntensiveCareSection = () => {
         <a href="/intensive-care/calculator" className="font-medium text-icu underline-offset-4 hover:underline">
           drug calculator
         </a>{" "}
-        and{" "}
+        ,{" "}
         <a href="/intensive-care/drug-safety" className="font-medium text-icu underline-offset-4 hover:underline">
           drug safety
         </a>{" "}
-        (interactions, contraindications and monitoring).
+        (interactions, contraindications and monitoring) and the{" "}
+        <a href="/intensive-care/interaction-checker" className="font-medium text-icu underline-offset-4 hover:underline">
+          interaction checker
+        </a>
+        .
       </p>
 
       <section id="topics" className="scroll-mt-28">

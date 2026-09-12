@@ -232,9 +232,13 @@ const IcuDrugSafety = () => {
           <Link to="/intensive-care/infusions" className="font-medium text-icu underline-offset-4 hover:underline">
             key ICU drug infusions
           </Link>{" "}
-          and the{" "}
+          , the{" "}
           <Link to="/intensive-care/drug-mechanisms" className="font-medium text-icu underline-offset-4 hover:underline">
             drug mechanisms page
+          </Link>{" "}
+          and the{" "}
+          <Link to="/intensive-care/interaction-checker" className="font-medium text-icu underline-offset-4 hover:underline">
+            interaction checker
           </Link>
           .
         </p>
