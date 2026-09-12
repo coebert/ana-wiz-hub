@@ -13,6 +13,7 @@ import PulmonaryFibrosisDiagram from "@/components/diagrams/perioperative/Pulmon
 import UrtiAirwayDiagram from "@/components/diagrams/perioperative/UrtiAirwayDiagram";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const objectives = [
   "Optimise asthma and COPD preoperatively and select bronchodilator-friendly anaesthetic agents.",
@@ -166,6 +167,18 @@ const RespiratoryDiseaseTopic = () => {
                 <li>Extubation: awake, upright, with bronchodilator nebuliser; consider NIV postoperatively in high-risk patients</li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Risk Stratification</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>ARISCAT score</strong> predicts postoperative pulmonary complications from seven weighted variables: age, preoperative SpO₂, respiratory infection in the last month, preoperative anaemia (Hb ≤100 g/L), surgical incision site (intrathoracic or upper abdominal scores highest), surgical duration &gt;2 hours, and emergency surgery</li>
+                <li>Risk bands: low risk &lt;26 points (~1–5% PPC rate), intermediate 26–44 points (~10–15%), high risk ≥45 points (~30–45%) — guides intensity of preoperative optimisation and postoperative monitoring</li>
+                <li><strong>BODE index</strong> combines four COPD severity domains: <strong>B</strong>MI, airflow <strong>O</strong>bstruction (FEV₁ % predicted), <strong>D</strong>yspnoea (mMRC scale), and <strong>E</strong>xercise capacity (6-minute walk distance), scored 0–10 in quartiles and originally validated to predict all-cause and respiratory mortality — useful contextual information alongside ARISCAT for perioperative risk discussion</li>
+                <li>Complementary tools: ASA physical status grade, formal assessment of functional capacity (METs, CPET with anaerobic threshold and VO₂ peak), and the earlier Celli/ATS multidimensional indices that BODE superseded</li>
+              </ul>
+              <p className="text-sm mt-2">
+                <InlineRef topicId="respiratory-disease" refLabel="ARISCAT 2010" /> <InlineRef topicId="respiratory-disease" refLabel="BODE Index 2004" />
+              </p>
+            </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
               <CopdPathophysDiagram />
             </div>
@@ -189,6 +202,19 @@ const RespiratoryDiseaseTopic = () => {
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
               <OsaCycleDiagram />
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Obesity Hypoventilation Syndrome (OHS)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Diagnostic triad: obesity (BMI &gt;30 kg/m²), daytime hypercapnia (PaCO₂ &gt;6.0 kPa), and sleep-disordered breathing — after excluding other causes of alveolar hypoventilation (severe COPD, neuromuscular disease, chest wall deformity, hypothyroidism)</li>
+                <li>Pathophysiology: blunted central ventilatory drive with relative leptin resistance, increased work of breathing from reduced chest wall/lung compliance and reduced FRC, and nocturnal hypoventilation compounding daytime CO₂ retention</li>
+                <li>Distinguishing OHS from simple OSA: daytime hypercapnia (not just nocturnal desaturation), serum bicarbonate &gt;27 mmol/L is a useful screening clue for chronic CO₂ retention, more profound hypoxaemia, and a higher rate of pulmonary hypertension and cor pulmonale</li>
+                <li>Perioperative risk: markedly higher rates of postoperative respiratory failure, delayed extubation, and need for ICU admission or NIV compared with OSA alone, with increased perioperative mortality</li>
+                <li>Management: preoperative identification with ABG/bicarbonate screening, referral for CPAP or NIV titration where time allows and continuation of the patient's own device perioperatively, ramped position with HFNO/CPAP preoxygenation, opioid-sparing multimodal analgesia with cautious sedation, and planned high-care (HDU/ICU) postoperative destination with NIV readily available</li>
+              </ul>
+              <p className="text-sm mt-2">
+                <InlineRef topicId="respiratory-disease" refLabel="ATS OHS 2019" />
+              </p>
             </div>
           </div>
         </section>
