@@ -71,10 +71,12 @@ const workedExamples: WorkedExample[] = [
       <>
         No bolus. Run Hartmann's at ~ 105 mL/h (1.5 mL/kg/h). Reassess at 12, 24, 48 and 72 h targeting
         MAP ≥ 65, UO ≥ 0.5 mL/kg/h, falling lactate, BUN and HCT. Use noradrenaline if MAP target unmet
-        once euvolaemic — do not chase MAP with more fluid.
+        once euvolaemic — do not chase MAP with more fluid. WATERFALL showed aggressive resuscitation
+        caused significantly more fluid overload (20.5 % vs 6.3 %) without reducing progression to
+        moderate/severe disease, so moderate goal-directed resuscitation is now the standard of care.
       </>
     ),
-   cites: ["Atlanta 2012"],
+   cites: ["WATERFALL 2022", "BSG 2024", "AGA 2024"],
   },
   {
     title: "Suspected infected necrosis at day 12",
