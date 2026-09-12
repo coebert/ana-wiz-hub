@@ -195,6 +195,13 @@ const IcuDrugMechanisms = () => {
                         Interactions, contraindications and monitoring{" "}
                         <ArrowRight className="h-3.5 w-3.5" />
                       </Link>
+                      <Link
+                        to={`/intensive-care/interaction-matrix?slug=${d.slug}#drug`}
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-icu underline-offset-4 hover:underline"
+                      >
+                        What {d.drug} interacts with <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
+
                     </div>
 
                   </article>
