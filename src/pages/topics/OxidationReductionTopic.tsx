@@ -7,6 +7,7 @@ const oxidationReductionFaqs: Array<[string, string]> = [
   ["Which inhaled anaesthetics are degraded by CO₂ absorbents?", "Sevoflurane reacts with strong bases (KOH, NaOH) in soda-lime to form Compound A, a vinyl ether with renal toxicity in rats. Desflurane, isoflurane and enflurane react with dry CO₂ absorbent to generate carbon monoxide. Both risks are mitigated by using KOH/NaOH-free absorbents (e.g. Amsorb Plus) and avoiding desiccated absorbent."],
 ];
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { InlineRef } from "@/components/references/InlineRef";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { RedoxElectrochemistryDiagram } from "@/components/diagrams/chemistry/RedoxElectrochemistryDiagram";
@@ -101,6 +102,42 @@ const OxidationReductionTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+
+          <ExamSection id="electrode-potentials" exams={[Exam.PRIMARY]}>
+            <CollapsibleSubsection title="Standard Electrode Potentials">
+            <div className="text-muted-foreground leading-relaxed space-y-3">
+              <p>
+                The <strong>standard electrode potential (E⁰)</strong> of a half-reaction is measured relative to the
+                <strong> standard hydrogen electrode</strong> (2H⁺ + 2e⁻ ⇌ H₂, defined as E⁰ = 0.0 V) under standard conditions
+                (298 K, 1 atm, 1 M concentration). A <strong>positive E⁰</strong> indicates a strong oxidising agent (high
+                affinity for electrons); a <strong>negative E⁰</strong> indicates a strong reducing agent (tends to donate
+                electrons). <InlineRef topicId="oxidation-reduction" refLabel="Cross & Plunkett Ch.3" />
+              </p>
+              <p>
+                Selected half-reactions, arranged as an electrochemical series (most oxidising at top):
+              </p>
+              <ul className="list-disc list-inside space-y-1">
+                <li>O₂ + 4H⁺ + 4e⁻ → 2H₂O: E⁰ = <strong>+1.23 V</strong> (standard conditions); falls to ≈ <strong>+0.82 V at pH 7</strong> because the Nernst equation is H⁺-dependent</li>
+                <li>Cytochrome c (Fe³⁺/Fe²⁺): E⁰ ≈ <strong>+0.25 V</strong></li>
+                <li>NAD⁺/NADH: E⁰ = <strong>−0.32 V</strong> (strong reducing couple)</li>
+              </ul>
+              <p>
+                In the mitochondrial electron transport chain, electrons flow from couples with the most negative E⁰ (NADH) to
+                the most positive (O₂), releasing free energy at each step (ΔG = −nFΔE⁰) that is used to pump protons and drive
+                ATP synthase. The larger the potential difference between donor and acceptor, the greater the energy released.
+              </p>
+              <p>
+                The <strong>Nernst equation</strong>, E = E⁰ − (RT/nF)lnQ, describes how the actual electrode potential varies
+                with the concentration (activity) of reactants and products (Q) around the standard value, where R is the gas
+                constant, T absolute temperature, n the number of electrons transferred, and F the Faraday constant. This
+                concentration-dependence is the working principle of ion-selective electrodes (pH glass electrode, Na⁺/K⁺
+                electrodes) and explains why electrode readings shift predictably with analyte concentration rather than being
+                fixed. <InlineRef topicId="oxidation-reduction" refLabel="BJA Educ 2010" />
+              </p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="methaemoglobin" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Methaemoglobinaemia">
             <div className="text-muted-foreground leading-relaxed space-y-3">
@@ -133,8 +170,21 @@ const OxidationReductionTopic = () => {
                 converted to PCO₂.
               </p>
               <p>
-                <strong>Galvanic (fuel) cell</strong>: self-generating O₂ analyser used in anaesthetic machines. A lead anode is
-                gradually consumed (oxidised); no external voltage is required. Slow response (~20 s) but no calibration drift.
+                <strong>Galvanic (fuel) cell</strong>: a self-contained battery-like O₂ analyser used for the constant-threshold
+                O₂ alarm on the anaesthetic machine backbar. It generates a current proportional to pO₂ without needing any
+                external polarising voltage — the chemical reaction itself is the power source. A <strong>lead anode</strong>
+                and <strong>gold cathode</strong> sit in a <strong>potassium hydroxide (KOH)</strong> electrolyte: at the anode,
+                Pb + 2OH⁻ → PbO + H₂O + 2e⁻; at the cathode, O₂ + 2H₂O + 4e⁻ → 4OH⁻. Because the lead anode is progressively
+                consumed, cell lifespan is finite — typically <strong>1–2 years</strong>, and cells are rated in
+                <strong> ampere-hours (or "oxygen-hours")</strong> of remaining life. Response is relatively slow
+                (~<strong>20 s</strong>), but there is no calibration drift over the short term, making it well suited to
+                constant-threshold alarm duty rather than breath-by-breath analysis.
+              </p>
+              <p>
+                By contrast, the <strong>polarographic (Clark) electrode</strong> requires an externally applied polarising
+                voltage (~<strong>600 mV</strong>) to drive O₂ reduction at its platinum cathode. It responds faster but is
+                prone to calibration drift and membrane fouling, requiring more frequent recalibration than the galvanic cell.
+                <InlineRef topicId="oxidation-reduction" refLabel="Cross & Plunkett Ch.3" />
               </p>
             </div>
             </CollapsibleSubsection>
@@ -153,6 +203,16 @@ const OxidationReductionTopic = () => {
                 xanthine oxidase during ischaemia, producing superoxide on reperfusion. This is a major contributor to post-ROSC
                 organ damage, hepatic transplant failure and stunned myocardium. <strong>N-acetylcysteine</strong> replenishes
                 glutathione and is used to detoxify NAPQI in paracetamol overdose.
+              </p>
+              <p>
+                <strong>Propofol infusion syndrome (PRIS)</strong> illustrates redox-linked cellular energy failure rather than
+                pure free-radical injury: propofol impairs the mitochondrial respiratory chain at <strong>Complex I and Complex
+                IV</strong> and inhibits <strong>carnitine palmitoyltransferase I</strong>, blocking entry of long-chain fatty
+                acids into mitochondria and preventing β-oxidation. The resulting failure of ATP generation produces
+                rhabdomyolysis, bradyarrhythmia progressing to cardiac failure, severe lactic acidosis, and hepatomegaly.
+                Accumulation of ROS from a dysfunctional electron transport chain contributes to the picture, but the primary
+                pathology is cellular energy failure rather than oxidative injury per se. Risk rises with infusions
+                <strong> &gt;4 mg/kg/h continued beyond 48 hours</strong>. <InlineRef topicId="oxidation-reduction" refLabel="BJA PRIS 2019" />
               </p>
             </div>
             </CollapsibleSubsection>

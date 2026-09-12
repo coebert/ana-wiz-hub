@@ -110,6 +110,26 @@ const SolutionsConcentrationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="molarity-molality" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <CollapsibleSubsection title="Molarity and Molality">
+            <div className="text-muted-foreground leading-relaxed space-y-3">
+              <p>
+                <strong>Molarity</strong> (mol/L) expresses moles of solute per litre of <em>solution</em>. Because it is defined
+                by volume, molarity is temperature- and pressure-dependent — a solution's volume expands slightly on warming,
+                subtly reducing its molarity. <strong>Molality</strong> (mol/kg) expresses moles of solute per kilogram of
+                <em> solvent</em>, a mass-based quantity unaffected by temperature or pressure.
+              </p>
+              <p>
+                In dilute aqueous clinical solutions the two are numerically very similar, since the density of water is
+                approximately 1 kg/L. This is why plasma osmolality (mOsm/kg, the value a laboratory osmometer actually measures
+                by freezing-point depression) and calculated osmolarity (mOsm/L) are often used interchangeably at the bedside,
+                even though osmolality is the physically correct, temperature-independent unit and the standard in physical
+                chemistry and laboratory osmometry.
+              </p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="osmolality-tonicity" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Osmolality, Osmolarity & Tonicity">
             <div className="text-muted-foreground leading-relaxed space-y-3">
@@ -154,6 +174,28 @@ const SolutionsConcentrationTopic = () => {
                 lowering</strong>. Freezing-point depression is exploited by clinical osmometers; osmotic pressure underlies fluid
                 shifts across capillary and cellular membranes.
               </p>
+              <p>
+                <strong>Osmotic pressure</strong> is described quantitatively by <strong>van't Hoff's law, π = nCRT</strong> (or
+                equivalently π = iMRT), where π is osmotic pressure, C (or M) is molar concentration, R is the gas constant, T is
+                absolute temperature and n (or i, the van't Hoff factor) is the number of particles produced per mole of solute —
+                the formula is analogous to the ideal gas law and treats dissolved particles as if exerting pressure on a
+                semi-permeable membrane. <strong>Oncotic (colloid osmotic) pressure</strong> is the fraction of total plasma osmotic
+                pressure exerted by large, membrane-impermeant plasma proteins — mainly <strong>albumin</strong>, which contributes
+                roughly 75–80% of it — and is normally around <strong>25–28 mmHg (≈3.3 kPa)</strong>, small compared with total
+                plasma osmotic pressure (~5,600 mmHg) but critical because it is the pressure that opposes capillary hydrostatic
+                pressure.
+              </p>
+              <p>
+                The classical <strong>Starling principle</strong> describes net capillary filtration as the balance of hydrostatic
+                and oncotic pressure gradients across the capillary wall. The <strong>revised Starling principle</strong>
+                incorporates the endothelial glycocalyx layer, showing that the subglycocalyx oncotic pressure (not interstitial
+                oncotic pressure) opposes filtration, and that under normal conditions there is little or no absorption at the
+                venous end of most capillaries — filtered fluid is instead returned via lymphatics. Clinically, this explains why
+                <strong> hypoalbuminaemia</strong> (nephrotic syndrome, liver disease, sepsis, critical illness) lowers oncotic
+                pressure and promotes oedema, and why the benefit of infused <strong>colloids</strong> in expanding plasma volume
+                is less durable than once assumed once the glycocalyx is damaged (e.g. by inflammation, sepsis, or excessive
+                crystalloid administration), allowing colloid to leak into the interstitium.
+              </p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -170,6 +212,22 @@ const SolutionsConcentrationTopic = () => {
               <p>
                 Always classify by volume status (hypovolaemic, euvolaemic, hypervolaemic) and urine osmolality/Na⁺ before treatment.
                 SIADH is the commonest perioperative cause of euvolaemic hyponatraemia.
+              </p>
+              <p>
+                <strong>Sodium deficit (mmol) = TBW × (target [Na⁺] − measured [Na⁺])</strong>, where total body water (TBW) is
+                approximated as 0.6 × weight (kg) in men and 0.5 × weight in women, falling further to around 0.5 (men) / 0.45
+                (women) in the elderly and in obesity, reflecting reduced lean mass and relatively greater fat (which contains
+                little water). For example, a 70 kg man with Na⁺ 118 mmol/L targeted to a safe interim value of 126 mmol/L has
+                TBW ≈ 42 L, giving a deficit of 42 × (126 − 118) = 336 mmol that must be replaced gradually, not as a single bolus.
+              </p>
+              <p>
+                The <strong>Adrogué–Madias formula</strong> predicts the change in serum sodium produced by one litre of a given
+                infusate: <strong>ΔNa⁺ = (infusate [Na⁺] − serum [Na⁺]) / (TBW + 1)</strong>. It allows the infusion rate to be
+                titrated to stay within the safe correction limits above, but it assumes a closed, single-compartment system and
+                <strong> ignores ongoing renal or gastrointestinal losses</strong>, which can make correction faster or slower than
+                predicted (particularly as a suppressed ADH switches off and a brisk water diuresis begins). Serum sodium should
+                therefore be re-measured frequently — every 2–4 hours during active correction — with the infusion adjusted or
+                desmopressin/5% dextrose given to slow an overly rapid rise.
               </p>
             </div>
             </CollapsibleSubsection>

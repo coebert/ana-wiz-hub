@@ -14,6 +14,8 @@ const tocItems = [
   { id: "section-pseudocholinesterase-deficiency", label: "Pseudocholinesterase Deficiency", group: "Core" },
   { id: "section-down-syndrome", label: "Down Syndrome", group: "Syndromic" },
   { id: "section-marfan-syndrome", label: "Marfan Syndrome", group: "Syndromic" },
+  { id: "section-loeys-dietz-syndrome", label: "Loeys-Dietz Syndrome", group: "Syndromic" },
+  { id: "section-ehlers-danlos-syndromes", label: "Ehlers-Danlos Syndromes", group: "Syndromic" },
   { id: "section-connective-tissue-disorders", label: "Other Connective Tissue Disorders", group: "Syndromic" },
   { id: "section-achondroplasia", label: "Achondroplasia", group: "Syndromic" },
   { id: "section-haemoglobinopathies", label: "Haemoglobinopathies", group: "Metabolic" },
@@ -53,7 +55,7 @@ const GeneticSyndromesTopic = () => {
       sectionSources={{
         objectives: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020"],
         workedExamples: ["EMHG 2020 Guidelines", "TAPS 2013", "BJA Educ DMD 2017", "AAGBI MH 2020"],
-        keyPoints: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020", "British Porphyria Association Drug Database", "AAGBI MH 2020", "BJA Educ DMD 2017", "BJA Educ Myotonic 2017", "BJA Educ BChE 2014", "BJA Educ Down 2016", "BJA Educ Marfan 2016", "TAPS 2013", "BJA Educ Porphyria 2017", "Drug Database Porphyria", "BJA Educ Achondroplasia 2018", "Berkowitz Achondroplasia 1990"],
+        keyPoints: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020", "British Porphyria Association Drug Database", "AAGBI MH 2020", "BJA Educ DMD 2017", "BJA Educ Myotonic 2017", "BJA Educ BChE 2014", "BJA Educ Down 2016", "BJA Educ Marfan 2016", "GeneReviews Loeys-Dietz", "Malfait EDS 2017", "TAPS 2013", "BJA Educ Porphyria 2017", "Drug Database Porphyria", "BJA Educ Achondroplasia 2018", "Berkowitz Achondroplasia 1990"],
       }}
       coreConcepts={
         <>
@@ -162,6 +164,49 @@ const GeneticSyndromesTopic = () => {
             <p className="text-xs text-muted-foreground mt-3">
               No association with MH. Suxamethonium and volatile agents are safe from an MH perspective, but avoid hypertensive responses to laryngoscopy and intubation.
             </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-loeys-dietz-syndrome" className="scroll-mt-24">
+            <CollapsibleSubsection title="Loeys-Dietz syndrome (LDS)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Autosomal dominant disorder of TGF-β signalling caused by mutations in <em>TGFBR1</em> or <em>TGFBR2</em> (and less commonly <em>SMAD3</em>, <em>TGFB2</em>). It produces a more aggressive aortopathy than Marfan syndrome — dissection can occur at aortic root diameters &lt;4.5 cm, so surgical thresholds are lower and follow-up imaging more frequent. Unlike Marfan, tortuosity and aneurysm formation are widespread throughout the arterial tree (not confined to the root), and craniofacial features — bifid or broad uvula, cleft palate, hypertelorism and craniosynostosis — help distinguish LDS clinically.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li>Strict blood pressure control is paramount: continue β-blockade/ARB (losartan), and blunt hypertensive surges at laryngoscopy, intubation and emergence with opioid ± esmolol/labetalol.</li>
+              <li>Lower the threshold for aortic imaging and surgical referral compared with Marfan given the propensity for dissection at smaller calibre vessels.</li>
+              <li>Generalised vascular and soft-tissue fragility affects arterial and central line placement — use ultrasound guidance and gentle technique; consider avoiding arterial cannulation unless essential.</li>
+              <li>Cervical spine instability has been described — take care with positioning and neck extension during airway management.</li>
+              <li>Caution with regional/neuraxial techniques given tissue fragility and the theoretical risk of vascular injury; dural ectasia may also occur as in Marfan.</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-ehlers-danlos-syndromes" className="scroll-mt-24">
+            <CollapsibleSubsection title="Ehlers-Danlos syndromes (2017 international classification)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              The EDS family comprises 13 subtypes of collagen/connective-tissue disorder. Two ends of the spectrum dominate exam practice: the common <strong>hypermobile type (hEDS)</strong>, and the rare but life-threatening <strong>vascular type (vEDS, COL3A1)</strong>.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              {[
+                { label: "Hypermobile EDS (hEDS)", value: "Generalised joint hypermobility, chronic widespread pain, easy bruising and skin laxity. Associated with postural orthostatic tachycardia syndrome (POTS) — expect exaggerated haemodynamic swings with position change and induction. Chronic pain and long-term opioid use commonly produce opioid tolerance and hyperalgesia — anticipate higher perioperative analgesic requirements and use multimodal/regional strategies. Joint laxity demands careful positioning and padding; dislocation risk during airway manoeuvres and limb positioning." },
+                { label: "Vascular EDS (vEDS, COL3A1)", value: "Defective type III collagen causes fragile arteries, bowel and uterus. Spontaneous arterial dissection or rupture (including of major vessels), spontaneous rupture of hollow organs (classically the sigmoid colon, or the gravid uterus in pregnancy) and spontaneous pneumothorax are recognised catastrophic presentations. Diagnosis is often only made after a sentinel vascular or bowel event." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs text-muted-foreground">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-2 text-sm font-semibold">Anaesthetic implications of vEDS</p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li>Meticulous blood pressure control — avoid both hypertension (risk of dissection/rupture) and hypotension (risk of malperfusion in already fragile vasculature); smooth induction and emergence, blunt the pressor response to laryngoscopy.</li>
+              <li>Gentle tissue and airway handling throughout: careful, minimal-force laryngoscopy; avoid nasal intubation and nasogastric tubes (mucosal/vascular fragility and epistaxis risk).</li>
+              <li>Avoid intramuscular injections — risk of haematoma; ultrasound-guided venous access to minimise vessel trauma from blind puncture.</li>
+              <li>Avoid arterial line placement unless essential given the risk of arterial injury/pseudoaneurysm; if unavoidable, use ultrasound guidance and the smallest gauge feasible.</li>
+              <li>Have cross-matched blood available and maintain a high index of suspicion for catastrophic, occult haemorrhage (retroperitoneal, intra-abdominal) — unexplained hypotension or abdominal pain should prompt urgent imaging.</li>
+              <li>Obstetric risk is markedly elevated: uterine and vascular rupture, especially peripartum — vEDS pregnancies should be managed in a tertiary unit with vascular surgery/interventional radiology on standby.</li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
 

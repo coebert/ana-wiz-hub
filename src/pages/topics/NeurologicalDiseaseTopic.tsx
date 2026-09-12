@@ -29,6 +29,7 @@ import {
   sciMechanisms,
 } from "@/components/diagrams/neuroDiseaseDrugMappings";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const objectives = [
   "Choose neuromuscular blockers and reversal strategies for myasthenia gravis and other neuromuscular disorders.",
@@ -46,6 +47,7 @@ const tocItems = [
   { id: "section-motor-neuron-disease", label: "Motor Neuron Disease", group: "Motor Neuron" },
   { id: "section-muscular-dystrophies", label: "Muscular Dystrophies", group: "Muscular" },
   { id: "section-spinal-cord-injury", label: "Spinal Cord Injury", group: "Spinal" },
+  { id: "section-guillain-barre", label: "Guillain–Barré Syndrome", group: "Neuropathy" },
 ];
 
 const keyPoints = [
@@ -438,7 +440,11 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Autonomic dysreflexia: occurs with lesions ≥T6; uninhibited sympathetic discharge below lesion</li>
                 <li>Triggers: bladder distension (most common), bowel distension, skin stimulation below lesion, uterine contractions</li>
                 <li>Presentation: severe hypertension (can cause CVA, MI), reflex bradycardia, headache, flushing/sweating above lesion, pallor below</li>
-                <li>Management: sit patient up, remove trigger, GTN spray/infusion, nifedipine, labetalol; regional/general anaesthesia for surgical procedures</li>
+                <li>Management: sit patient up immediately and loosen restrictive clothing; identify and remove the trigger first (check/empty bladder — catheter kink/blockage is the commonest cause — then check for faecal impaction)</li>
+                <li>First-line pharmacotherapy: GTN 1–2 sublingual sprays (400–800 microgram) or IV infusion 10–20 microgram/min titrated to effect — contraindicated within 24 h of phosphodiesterase-5 inhibitors (sildenafil, tadalafil) because of profound refractory hypotension; nifedipine 5–10 mg orally as a bite-and-swallow capsule (avoid sublingual administration — absorption is unpredictable and can produce precipitous, hard-to-reverse hypotension)</li>
+                <li>Second-line/refractory hypertension: labetalol 10–20 mg IV boluses, phentolamine 1–5 mg IV, or sodium nitroprusside infusion in a critical care setting with arterial monitoring</li>
+                <li>Reflex bradycardia: treat only if haemodynamically compromising (atropine 300–600 microgram IV) — do not treat the bradycardia in isolation while hypertension persists untreated</li>
+                <li>For surgery in patients at risk (e.g. cystoscopy, urodynamics, obstetric delivery), deep general anaesthesia or dense spinal/epidural block prevents recurrence by blocking the afferent limb of the reflex — light GA is inadequate <InlineRef topicId="neurological-disease" refLabel="Autonomic Dysreflexia" /></li>
                 <li>Chronic SCI: osteoporosis (fracture risk with positioning), pressure areas, thermoregulation impairment (poikilothermia), latex allergy (repeated catheterisations)</li>
                 <li>Respiratory: lesion above C3–5 → diaphragm paralysis (phrenic nerve); thoracic lesions → reduced FVC (loss of intercostal/abdominal muscles)</li>
               </ul>
