@@ -4,16 +4,21 @@ import { Helmet } from "react-helmet-async";
 import {
   ArrowLeft,
   Baby,
-  BookOpenCheck,
+  Calculator,
   Droplets,
   ListOrdered,
   Pill,
   TriangleAlert,
+  BookOpenCheck,
 } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   caseBankHref,
+  calculableInfusions,
+  calculatorHref,
   infusionHref,
   paedDrugDoseHref,
   paediatricIcuFlows,
@@ -23,6 +28,11 @@ const PaediatricIcuFlows = () => {
   const [activeFlow, setActiveFlow] = useState(paediatricIcuFlows[0].id);
   const flow = paediatricIcuFlows.find((f) => f.id === activeFlow) ?? paediatricIcuFlows[0];
   const neonatal = flow.id === "neonatal-resus";
+  const [weight, setWeight] = useState("");
+  const parsedWeight = parseFloat(weight);
+  const weightValue =
+    Number.isFinite(parsedWeight) && parsedWeight > 0 ? parsedWeight : neonatal ? 3.5 : 20;
+
 
   return (
     <main className="min-h-screen bg-background">
