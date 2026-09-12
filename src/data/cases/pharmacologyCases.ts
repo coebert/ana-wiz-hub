@@ -27,7 +27,7 @@ export const pharmacologyCaseBank: CaseBank = {
   path: "/pharmacology/case-bank",
   title: "Pharmacology Case Bank",
   subtitle: "Progressive scenarios that apply kinetics, dynamics and drug-specific safety to real decisions.",
-  metaDescription: "Twelve progressive pharmacology cases on TIVA kinetics, opioid tolerance, malignant hyperthermia, reversal, vasopressors, antimicrobial dosing, local anaesthetic toxicity, suxamethonium apnoea, anticoagulant reversal, arrhythmia drugs, paediatric analgesia and ICU sedation.",
+  metaDescription: "Twelve progressive pharmacology cases on TIVA kinetics, opioid tolerance, malignant hyperthermia, local anaesthetic toxicity, reversal and ICU sedation.",
   backPath: "/pharmacology",
   backLabel: "Pharmacology",
   accentColor: "text-pharmacology",

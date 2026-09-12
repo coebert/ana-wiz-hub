@@ -29,7 +29,7 @@ export const icuCaseBank: CaseBank = {
   path: "/intensive-care/case-bank",
   title: "Intensive Care Case Bank",
   subtitle: "Progressive critical care scenarios covering acid–base interpretation, ventilation strategy, sepsis, organ support, neuroprotection and resuscitation.",
-  metaDescription: "Twelve progressive intensive care cases on DKA, mixed COPD acid–base disease, ARDS and proning, auto-PEEP, neutropenic sepsis, asplenia, AKI and renal replacement, paracetamol overdose, massive transfusion, traumatic brain injury, post-arrest care and ventilator-associated pneumonia.",
+  metaDescription: "Twelve progressive intensive care cases on acid–base, ARDS and proning, sepsis, renal replacement, poisoning, trauma, brain injury and post-arrest care.",
   backPath: "/intensive-care",
   backLabel: "Intensive Care",
   accentColor: "text-icu",

@@ -27,7 +27,7 @@ export const physiologyCaseBank: CaseBank = {
   path: "/physiology/case-bank",
   title: "Physiology Case Bank",
   subtitle: "Progressive scenarios that apply cardiovascular, respiratory, renal, maternal, hepatic, neuromuscular and autonomic physiology at the bedside.",
-  metaDescription: "Twelve progressive physiology cases on aortic stenosis, tamponade, long QT, one-lung ventilation, oxygen dissociation, compliance, oliguria, residual block, dysreflexia, pre-eclampsia, neonatal transition and liver coagulopathy.",
+  metaDescription: "Twelve progressive physiology cases covering cardiovascular, respiratory, renal, maternal, neonatal and hepatic physiology for FRCA and FFICM revision.",
   backPath: "/physiology",
   backLabel: "Physiology",
   accentColor: "text-physiology",
