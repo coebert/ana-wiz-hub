@@ -324,6 +324,13 @@ const IcuDrugDoses = () => {
             className="font-medium text-icu underline-offset-4 hover:underline"
           >
             ICU drug safety
+          </Link>{" "}
+          or check a pair of drugs in the{" "}
+          <Link
+            to="/intensive-care/interaction-checker"
+            className="font-medium text-icu underline-offset-4 hover:underline"
+          >
+            interaction checker
           </Link>
           .
         </p>
