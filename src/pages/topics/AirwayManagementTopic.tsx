@@ -27,6 +27,7 @@ import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { airwayFolio } from "@/components/diagrams/anatomyFolios";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { Link } from "react-router-dom";
+import { InlineRef } from "@/components/references/InlineRef";
 
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 
