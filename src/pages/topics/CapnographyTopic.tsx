@@ -117,7 +117,7 @@ const workedExamples: WorkedExample[] = [
         confirmation.
       </>
     ),
-    cites: ["NAP4", "DAS 2025"],
+    cites: ["NAP4", "PUMA 2022", "DAS 2025"],
   },
   {
     title: "EtCO₂ as a CPR feedback monitor",
