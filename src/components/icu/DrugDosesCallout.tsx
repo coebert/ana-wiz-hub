@@ -21,8 +21,13 @@ export const DrugDosesCallout = ({ focus }: DrugDosesCalloutProps) => (
         </p>
       </div>
     </div>
-    <Button asChild variant="outline" className="mt-4 shrink-0 sm:mt-0">
-      <Link to="/intensive-care/drug-doses">Open dosing table</Link>
-    </Button>
+    <div className="mt-4 flex shrink-0 flex-col gap-2 sm:mt-0">
+      <Button asChild variant="outline">
+        <Link to="/intensive-care/drug-doses">Open dosing table</Link>
+      </Button>
+      <Button asChild variant="outline">
+        <Link to="/intensive-care/infusions">ICU infusions guide</Link>
+      </Button>
+    </div>
   </section>
 );
