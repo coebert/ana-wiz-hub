@@ -378,7 +378,11 @@ const VascularAnaesthesiaTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Lee's RCRI</strong>: 6 predictors — high-risk surgery, IHD, CCF, CVA/TIA, DM (insulin), creatinine &gt;177 µmol/L. ≥3 points = high risk</li>
               <li><strong>CPET</strong>: AT &lt;11 ml/kg/min = high risk. VE/VCO₂ &gt;34 also associated with poor outcomes</li>
-              <li><strong>Cardiac medications</strong>: continue statins, beta-blockers, aspirin. Withhold ACEi/ARBs on day of surgery (hypotension risk). Dual antiplatelet management — MDT discussion</li>
+              <li><strong>Cardiac medications</strong>: continue statins, beta-blockers, aspirin. Dual antiplatelet management — MDT discussion</li>
+              <li><strong>ACE inhibitors and ARBs</strong>: omit the morning dose before major vascular surgery. Chronic ACEI/ARB therapy blunts the renin–angiotensin response to anaesthesia and hypovolaemia, so induction produces exaggerated vasodilatation with hypotension that is often refractory to fluid and to conventional catecholamines<InlineRef topicId="vascular-anaesthesia" refLabel="ACEI Anaesthesia 1994" /></li>
+              <li><strong>Treating refractory ACEI-related hypotension</strong>: escalate stepwise — fluid loading, then a direct α₁-agonist (metaraminol/phenylephrine), then a noradrenaline infusion; when hypotension persists despite escalating catecholamines the angiotensin pathway is the missing limb, so vasopressin 1–2 unit bolus or an infusion of 0.01–0.04 units/min is usually rapidly effective (methylene blue and calcium have been used in vasoplegia). Reduce anaesthetic depth, exclude other causes (bleeding, ischaemia, anaphylaxis — a major cause of perioperative cardiac arrest in NAP7) and site invasive monitoring early<InlineRef topicId="vascular-anaesthesia" refLabel="NAP7 2023" /></li>
+              <li><strong>Restarting</strong>: recommence ACEI/ARB once the patient is euvolaemic, off vasopressors and renal function is stable — usually 24–48 h postoperatively; document the plan so the drug is not omitted indefinitely</li>
+
               <li><strong>Coronary stents</strong>: BMS — defer elective surgery 6 weeks; DES — defer 6–12 months (or 3 months with newer-generation DES). Continue aspirin perioperatively if possible</li>
             </ul>
             </CollapsibleSubsection>
