@@ -285,7 +285,7 @@ const LumbosacralPlexusDiagram = () => {
                 <path d="M148,200 C155,212 162,225 170,240"
                   stroke={nerves.peroneal.color} strokeWidth="2" fill="none" />
                 {selected === "peroneal" && <>
-                  <text x="172" y="238" fontSize="5.5" fill={nerves.peroneal.color} fontWeight="600">Common peroneal</text>
+                  <text x="172" y="238" fontSize="5.5" fill={nerves.peroneal.color} fontWeight="600">Common fibular</text>
                   <text x="172" y="246" fontSize="4" fill={nerves.peroneal.color} opacity="0.6">→ fibular neck (vulnerable!)</text>
                   <circle cx="148" cy="200" r="3" fill="none" stroke={nerves.peroneal.color} strokeWidth="1.5" />
                 </>}

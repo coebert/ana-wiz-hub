@@ -16,6 +16,7 @@ import AnticoagRestartTimeline from "@/components/diagrams/clinical/AnticoagRest
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 import {
   Accordion,
   AccordionContent,
