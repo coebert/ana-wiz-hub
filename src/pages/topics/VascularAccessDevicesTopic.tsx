@@ -454,7 +454,7 @@ const VascularAccessDevicesTopic = () => {
               cardiac tamponade and infusate extravasation into the
               pleural or mediastinal space, so tip position should be
               confirmed before non-emergency use of any new central line
-              (<InlineRef label="BJA Educ 2016" />).
+              (<InlineRef topicId="vascular-access-devices" refLabel="BJA Educ 2016" />).
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
@@ -528,7 +528,7 @@ const VascularAccessDevicesTopic = () => {
               leaving the cannula in situ, injecting saline/vasodilator or
               local anaesthetic through it, systemic anticoagulation and
               urgent vascular/anaesthetic review; do NOT remove the cannula
-              immediately) (<InlineRef label="BJA Educ 2016" />).
+              immediately) (<InlineRef topicId="vascular-access-devices" refLabel="BJA Educ 2016" />).
             </p>
             <p className="text-muted-foreground leading-relaxed">
               <strong className="text-foreground">Waveform physics:</strong>{" "}
@@ -556,7 +556,7 @@ const VascularAccessDevicesTopic = () => {
               exploiting the non-collapsible venous sinusoids that drain
               into the central venous circulation — a reliable bridge when
               intravenous access is impossible or too slow
-              (<InlineRef label="AoA Vascular Access 2025" />).
+              (<InlineRef topicId="vascular-access-devices" refLabel="AoA Vascular Access 2025" />).
             </p>
             <div className="grid sm:grid-cols-2 gap-3 mb-3">
               <div className="p-4 rounded-lg border border-border">
@@ -610,7 +610,7 @@ const VascularAccessDevicesTopic = () => {
               pressure). Any resuscitation drug, crystalloid/colloid fluid,
               or blood product can be given via the IO route, with an onset
               of action equivalent to intravenous administration
-              (<InlineRef label="AoA Vascular Access 2025" />).
+              (<InlineRef topicId="vascular-access-devices" refLabel="AoA Vascular Access 2025" />).
             </p>
           </ExamSection>
 
@@ -621,7 +621,7 @@ const VascularAccessDevicesTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               Risk is a balance between bleeding from the puncture site and
               the delay/harm of withholding necessary access
-              (<InlineRef label="AoA Vascular Access 2025" />).
+              (<InlineRef topicId="vascular-access-devices" refLabel="AoA Vascular Access 2025" />).
             </p>
             <div className="grid sm:grid-cols-2 gap-3 mb-3">
               <div className="p-4 rounded-lg border border-border">
