@@ -231,6 +231,67 @@ const PlasticSurgeryTopic = () => {
             </ExamSection>
           </div>
 
+          <div id="blocks" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
+              <CollapsibleSubsection title="Flap-Specific Regional Analgesia">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Multimodal analgesia (paracetamol, NSAIDs where haemostasis permits, ketamine or magnesium infusion, opioid-sparing regimens) is combined with a block chosen for the specific donor and recipient sites. Blocks reduce opioid requirement, allow earlier mobilisation, and the accompanying sympathetic blockade may improve flap perfusion<InlineRef topicId="plastic-surgery" refLabel="BAPRAS 2020" />.
+                </p>
+                <div className="overflow-x-auto -mx-4 px-4 mb-3">
+                  <table className="w-full min-w-[520px] text-sm border-collapse">
+                    <thead>
+                      <tr className="border-b border-border text-left">
+                        <th className="p-2.5 font-semibold text-foreground">Flap / site</th>
+                        <th className="p-2.5 font-semibold text-foreground">Block</th>
+                        <th className="p-2.5 font-semibold text-foreground">Notes</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-muted-foreground">
+                      <tr className="border-b border-border">
+                        <td className="p-2.5">Fibula free flap (lower limb donor)</td>
+                        <td className="p-2.5 font-medium text-foreground">Popliteal sciatic block + saphenous (adductor canal) block</td>
+                        <td className="p-2.5">Covers the leg donor site; the saphenous nerve supplies the medial calf missed by the sciatic block. Use a catheter for prolonged analgesia and document motor block so compartment syndrome is not masked</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="p-2.5">Radial forearm free flap</td>
+                        <td className="p-2.5 font-medium text-foreground">Brachial plexus block — axillary or supraclavicular</td>
+                        <td className="p-2.5">Provides donor-site analgesia and sympathetic blockade (vasodilation). Avoid an interscalene approach for forearm work; check the Allen test and the surgeon's plan before blocking the operative limb</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="p-2.5">Anterolateral thigh (ALT) flap</td>
+                        <td className="p-2.5 font-medium text-foreground">Fascia iliaca or femoral nerve block</td>
+                        <td className="p-2.5">Covers the anterolateral thigh donor site (lateral cutaneous nerve of thigh territory is included by a fascia iliaca block). Single shot or catheter; balance quadriceps weakness against early mobilisation</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="p-2.5">DIEP / TRAM breast reconstruction</td>
+                        <td className="p-2.5 font-medium text-foreground">TAP block or rectus sheath block (± pectoralis/serratus plane for the chest)</td>
+                        <td className="p-2.5">Abdominal donor site is the dominant pain source. Catheters or liposomal/long-acting techniques reduce opioid need and improve respiratory function; discuss surgical infiltration to avoid local anaesthetic dose stacking</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="p-2.5">Head & neck reconstruction</td>
+                        <td className="p-2.5 font-medium text-foreground">Superficial cervical plexus block</td>
+                        <td className="p-2.5">Supplements general anaesthesia for neck dissection and recipient-site incisions; keep volumes modest and avoid deep cervical injection near a flap pedicle or after prior neck surgery</td>
+                      </tr>
+                      <tr>
+                        <td className="p-2.5">Digital replantation</td>
+                        <td className="p-2.5 font-medium text-foreground">Axillary or supraclavicular brachial plexus catheter</td>
+                        <td className="p-2.5">Sympathetic blockade produces vasodilation and improves digital perfusion — analgesia is almost a secondary benefit</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
+                  <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
+                  <p className="text-xs text-muted-foreground">
+                    Always state the anticoagulation caveat: many units avoid neuraxial catheters when postoperative heparin, therapeutic LMWH or dextran is planned, and fascial-plane blocks are the safer alternative. Keep the total local anaesthetic dose within safe limits when several blocks plus surgical infiltration are used.
+                  </p>
+                </div>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
+
+
           <div id="anticoagulation" className="scroll-mt-24">
             <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
               <CollapsibleSubsection title="Anticoagulation & Flap Monitoring">
