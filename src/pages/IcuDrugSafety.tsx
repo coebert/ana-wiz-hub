@@ -303,6 +303,7 @@ const IcuDrugSafety = () => {
                                 <span className="font-medium text-foreground">Handling: </span>
                                 {pk.organImpairment}
                               </p>
+                              <PkTimelineChart drug={d.drug} pk={pk} />
                             </>
                           )}
                           <Link
