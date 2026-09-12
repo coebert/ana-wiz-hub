@@ -1602,6 +1602,16 @@ async function runBatch(jobId: string) {
     console.warn("[audit-topics] another audit batch holds the lease — exiting");
     return;
   }
+  const renewLease = async () => {
+    await supa
+      .from("audit_job_state")
+      .update({
+        lease_expires_at: new Date(Date.now() + LEASE_MS).toISOString(),
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", "content-audit")
+      .eq("lease_owner", leaseOwner);
+  };
   const releaseLease = async () => {
     await supa
       .from("audit_job_state")
@@ -1609,6 +1619,7 @@ async function runBatch(jobId: string) {
       .eq("id", "content-audit")
       .eq("lease_owner", leaseOwner);
   };
+
 
   try {
   if (
