@@ -32,6 +32,7 @@ export const pkMetabolicInfection: DrugPharmacokineticsMap = {
     volumeOfDistribution: "Apparent Vd is large because ~98% of total-body potassium (~3000 mmol) is intracellular; serum concentration is therefore a poor index of total deficit — a fall of 1 mmol/L may reflect a 200–400 mmol deficit.",
     proteinBinding: "None — potassium is an unbound cation.",
     metabolicPathway: "Not metabolised.",
+    activeMetabolites: "None — potassium is the active moiety.",
     elimination: "Renal excretion (regulated by aldosterone and distal tubular flow) accounts for ~90%, with the remainder lost in stool and sweat.",
     organImpairment: "Renal impairment markedly reduces excretory capacity, predisposing to hyperkalaemia with standard replacement doses — reduce dose and monitor closely; concurrent magnesium deficiency perpetuates renal potassium wasting and must be corrected.",
     infusionBehaviour: "Peripheral infusion is limited to 10 mmol/hour (40 mmol/L) to avoid phlebitis and cardiotoxicity; central venous administration allows faster rates (up to 20 mmol/hour) with continuous ECG monitoring.",
