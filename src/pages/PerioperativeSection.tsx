@@ -7,7 +7,7 @@ import { perioperativeTopics } from "@/data/curriculum";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { Link } from "react-router-dom";
-import { BookOpenCheck, Pill, Stethoscope } from "lucide-react";
+import { BookOpenCheck, Pill, Stethoscope, Milestone } from "lucide-react";
 import { anaesthesiaDrugCount } from "@/data/anaesthesiaDrugDoses";
 import { Button } from "@/components/ui/button";
 
