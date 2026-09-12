@@ -256,7 +256,7 @@ export const topicReferences: Record<string, Reference[]> = {
   "cardiac-cycle": [
     { label: "BJA Educ 2018", citation: "Brown D, Edwards H. The cardiac cycle. BJA Education. 2005;5(3):82-86.", url: "https://doi.org/10.1093/bjaceaccp/mki024" },
     { label: "Ganong Ch.30", citation: "Barrett KE, Barman SM, Boitano S, Brooks HL. Ganong's Review of Medical Physiology. 26th ed. McGraw-Hill; 2019. Chapter 30: The Heart as a Pump." },
-    { label: "Power & Kam Ch.4", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. CRC Press; 2015. Chapter 4: Cardiac Physiology." },
+    { label: "Power & Kam Ch.4", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. CRC Press; 2015. Chapter 4: Cardiac Physiology.", url: "https://www.routledge.com/Principles-of-Physiology-for-the-Anaesthetist/Power-Kam/p/book/9781444135237" },
     { label: "ICM 2013 Pulse Wave", citation: "Monnet X, Anguel N, Naudin B, et al. Assessment of left ventricular function by pulse wave analysis in critically ill patients. Intensive Care Med. 2013;39:1025-1033.", url: "https://doi.org/10.1007/s00134-013-2861-8", excerpt: "Pulse wave analysis systems can also monitor cardiac function but in a continuous fashion." },
   ],
   "oxygen-haemoglobin": [
