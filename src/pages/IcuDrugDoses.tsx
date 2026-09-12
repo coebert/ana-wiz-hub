@@ -200,7 +200,15 @@ const IcuDrugDoses = () => {
           <Link to="/intensive-care/infusions" className="font-medium text-icu underline-offset-4 hover:underline">
             key ICU drug infusions
           </Link>{" "}
-          for diluents, concentrations and mL/hour rates.
+          for diluents, concentrations and mL/hour rates. For pharmacodynamics,
+          metabolism and adverse effects of every drug listed here, open{" "}
+          <Link
+            to="/intensive-care/drug-mechanisms"
+            className="font-medium text-icu underline-offset-4 hover:underline"
+          >
+            ICU drug mechanisms
+          </Link>
+          .
         </p>
       </PageSection>
     </main>
