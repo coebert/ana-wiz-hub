@@ -331,8 +331,16 @@ const IcuDrugDoses = () => {
             className="font-medium text-icu underline-offset-4 hover:underline"
           >
             interaction checker
+          </Link>{" "}
+          or side by side in the{" "}
+          <Link
+            to="/intensive-care/drug-comparison"
+            className="font-medium text-icu underline-offset-4 hover:underline"
+          >
+            drug comparison tool
           </Link>
           .
+
         </p>
       </PageSection>
     </main>
