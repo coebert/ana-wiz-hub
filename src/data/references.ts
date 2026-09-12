@@ -261,6 +261,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Stewart 1983", citation: "Stewart PA. Modern quantitative acid-base chemistry. Can J Physiol Pharmacol. 1983;61(12):1444-1461.", url: "https://doi.org/10.1139/y83-207" },
   ],
   "solutions-concentration": [
+    { label: "Adrogue & Madias 2000", citation: "Adrogue HJ, Madias NE. Hyponatremia. N Engl J Med. 2000;342(21):1581-1589. Source of the predictive formula for the change in serum sodium after infusion of 1 L of a given fluid.", url: "https://doi.org/10.1056/NEJM200005253422107" },
     { label: "Cross & Plunkett Ch.3", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 3: Solutions, Osmolality and Tonicity." },
     { label: "Severs 2015", citation: "Severs D, Hoorn EJ, Rookmaaker MB. A critical appraisal of intravenous fluids: from the physiological basis to clinical evidence. Nephrol Dial Transplant. 2015;30(2):178-187.", url: "https://doi.org/10.1093/ndt/gfu005" },
     { label: "NICE CG174", citation: "National Institute for Health and Care Excellence. Intravenous fluid therapy in adults in hospital. NICE Clinical Guideline CG174; updated 2017.", url: "https://www.nice.org.uk/guidance/cg174" },
@@ -273,6 +274,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Nau & Strichartz 2002", citation: "Nau C, Strichartz GR. Drug chirality in anesthesia. Anesthesiology. 2002;97(2):497-502.", url: "https://doi.org/10.1097/00000542-200208000-00029" },
   ],
   "oxidation-reduction": [
+    { label: "BJA PRIS 2019", citation: "Hemphill S, McMenamin L, Bellamy MC, Hopkins PM. Propofol infusion syndrome: a structured literature review and analysis of published case reports. Br J Anaesth. 2019;122(4):448-459.", url: "https://doi.org/10.1016/j.bja.2018.12.025" },
     { label: "BJA Educ 2010", citation: "Skinner H. Electrochemistry and the measurement of blood gases. BJA Education. 2010;10(1):19-22.", url: "https://doi.org/10.1093/bjaceaccp/mkp043" },
     { label: "Cross & Plunkett Ch.3", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 3: Oxidation, Reduction and Electrochemistry." },
     { label: "Wright 1999 (MetHb)", citation: "Wright RO, Lewander WJ, Woolf AD. Methemoglobinemia: etiology, pharmacology, and clinical management. Ann Emerg Med. 1999;34(5):646-656.", url: "https://doi.org/10.1016/S0196-0644(99)70167-8" },
@@ -647,6 +649,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Cochrane PIVC 2019", citation: "Webster J et al. Clinically-indicated replacement versus routine replacement of peripheral venous catheters. Cochrane Database Syst Rev. 2019;1(1):CD007798.", url: "https://doi.org/10.1002/14651858.CD007798.pub5" },
   ],
   "genetic-syndromes": [
+    { label: "GeneReviews Loeys-Dietz", citation: "Loeys BL, Dietz HC. Loeys-Dietz Syndrome. In: GeneReviews. University of Washington, Seattle; updated 2018.", url: "https://www.ncbi.nlm.nih.gov/books/NBK1133/" },
+    { label: "Malfait EDS 2017", citation: "Malfait F, Francomano C, Byers P, et al. The 2017 international classification of the Ehlers-Danlos syndromes. Am J Med Genet C Semin Med Genet. 2017;175(1):8-26.", url: "https://doi.org/10.1002/ajmg.c.31552" },
     { label: "BJA Educ MH 2011", citation: "Hopkins PM. Malignant hyperthermia: pharmacology of triggering. BJA Education. 2011;107(1):48-56.", url: "https://doi.org/10.1093/bja/aer132" },
     { label: "AAGBI MH 2020", citation: "Association of Anaesthetists. Malignant hyperthermia 2020: Guidelines from the Association of Anaesthetists. Anaesthesia. 2021;76(5):655-664.", url: "https://doi.org/10.1111/anae.15317" },
     { label: "BJA Educ DMD 2017", citation: "Marsh S, Ross N, Pittard A. Anaesthesia for the patient with Duchenne muscular dystrophy. BJA Education. 2011;11(4):115-118.", url: "https://doi.org/10.1093/bjaceaccp/mkr020" },
@@ -987,6 +991,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "ACC/AHA 2024 Periop", citation: "Thompson A, Fleischmann KE, Smilowitz NR, et al. 2024 AHA/ACC/ACS/ASNC/HRS/SCA/SCCT/SCMR/SVM Guideline for Perioperative Cardiovascular Management for Noncardiac Surgery. Circulation. 2024;150:e351-e442.", url: "https://doi.org/10.1161/CIR.0000000000001285" },
   ],
   "respiratory-disease": [
+    { label: "ARISCAT 2010", citation: "Canet J, Gallart L, Gomar C, et al. Prediction of postoperative pulmonary complications in a population-based surgical cohort. Anesthesiology. 2010;113(6):1338-1350.", url: "https://doi.org/10.1097/ALN.0b013e3181fc6e0a" },
+    { label: "BODE Index 2004", citation: "Celli BR, Cote CG, Marin JM, et al. The body-mass index, airflow obstruction, dyspnea, and exercise capacity index in chronic obstructive pulmonary disease. N Engl J Med. 2004;350(10):1005-1012.", url: "https://doi.org/10.1056/NEJMoa021322" },
+    { label: "ATS OHS 2019", citation: "Mokhlesi B, Masa JF, Brozek JL, et al. Evaluation and Management of Obesity Hypoventilation Syndrome. An Official American Thoracic Society Clinical Practice Guideline. Am J Respir Crit Care Med. 2019;200(3):e6-e24.", url: "https://doi.org/10.1164/rccm.201905-1071ST" },
     { label: "BJA Educ Asthma 2017", citation: "Woods BD, Sladen RN. Perioperative considerations for the patient with asthma and bronchospasm. Br J Anaesth. 2009;103(s1):i57-i65.", url: "https://doi.org/10.1093/bja/aep271" },
     { label: "BTS/SIGN 2019", citation: "British Thoracic Society/SIGN. British guideline on the management of asthma (SIGN 158). 2019.", url: "https://www.brit-thoracic.org.uk/quality-improvement/guidelines/asthma/" },
     { label: "NICE NG115", citation: "National Institute for Health and Care Excellence. Chronic obstructive pulmonary disease in over 16s: diagnosis and management (NG115). 2019.", url: "https://www.nice.org.uk/guidance/ng115" },
@@ -994,6 +1001,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Lumb Ch.27", citation: "Lumb AB. Nunn's Applied Respiratory Physiology. 9th ed. Elsevier; 2021. Chapter 27: Anaesthesia and Respiratory Disease." },
   ],
   "endocrine-disease": [
+    { label: "BJA Educ Diabetes 2024", citation: "Diabetes and anaesthesia: a practical review of current national guidance. BJA Education. 2024;24(1):27-34.", url: "https://doi.org/10.1016/j.bjae.2023.09.006", excerpt: "The Association of Anaesthetists recommends that GLP-1 receptor agonists taken daily should be omitted on the day of surgery, whereas those taken weekly should be omitted for at least one week before surgery. This advice is likely to change as more evidence becomes available. If GLP-1 receptor agonists have not been omitted, a rapid sequence induction may be considered after assessing the patient's risk of aspiration." },
+    { label: "JBDS HHS 2022", citation: "Joint British Diabetes Societies for Inpatient Care. The management of the hyperosmolar hyperglycaemic state (HHS) in adults. JBDS 06; 2022.", url: "https://abcd.care/joint-british-diabetes-societies-jbds-inpatient-care-group" },
+    { label: "BJA Educ Carcinoid 2011", citation: "Powell B, Al Mukhtar A, Mills GH. Carcinoid: the disease and its implications for anaesthesia. Contin Educ Anaesth Crit Care Pain. 2011;11(1):9-13.", url: "https://doi.org/10.1093/bjaceaccp/mkq045", excerpt: "Heart disease occurs in 50% of patients, primarily affecting the right side (tricuspid regurgitation and pulmonary stenosis) due to serotonin-induced endocardial fibrosis; the left side is usually spared as the lungs metabolise the vasoactive amines. Pre-operative echocardiography is therefore mandatory." },
     { label: "BJA Educ DM 2015", citation: "Barker P et al. Peri-operative management of the surgical patient with diabetes. BJA Education. 2015;15(1):41-46.", url: "https://doi.org/10.1093/bjaceaccp/mku002" },
     { label: "JBDS-IP 2021", citation: "Joint British Diabetes Societies for Inpatient Care. Management of adults with diabetes undergoing surgery and elective procedures. 2021.", url: "https://www.diabetes.org.uk/guide-to-diabetes/managing-your-diabetes/hospital/jbds" },
     { label: "BJA Educ Thyroid 2014", citation: "Farling PA. Thyroid disease. BJA Education. 2000;14(5):143-148.", url: "https://doi.org/10.1093/bjaceaccp/54.5.143" },
@@ -1001,6 +1011,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Addison's Guidelines", citation: "Woodcock T et al. Guidelines for the management of glucocorticoids during the peri-operative period. Anaesthesia. 2020;75:654-663.", url: "https://doi.org/10.1111/anae.14963" },
   ],
   "neurological-disease": [
+    { label: "Lancet GBS 2016", citation: "Willison HJ, Jacobs BC, van Doorn PA. Guillain-Barre syndrome. Lancet. 2016;388(10045):717-727.", url: "https://doi.org/10.1016/S0140-6736(16)00339-1" },
+    { label: "NICE NG42 (MND)", citation: "National Institute for Health and Care Excellence. Motor neurone disease: assessment and management (NG42). 2016 (updated 2019).", url: "https://www.nice.org.uk/guidance/ng42" },
+    { label: "NICE NG71 (Parkinsons)", citation: "National Institute for Health and Care Excellence. Parkinson's disease in adults (NG71). 2017.", url: "https://www.nice.org.uk/guidance/ng71" },
     { label: "BJA Educ MG 2018", citation: "Blichfeldt-Lauridsen L, Hansen BD. Anesthesia and myasthenia gravis. Acta Anaesthesiol Scand. 2012;56:17-22.", url: "https://doi.org/10.1111/j.1399-6576.2011.02558.x" },
     { label: "BJA Educ PD 2014", citation: "Nicholson G et al. Parkinson's disease and anaesthesia. BJA Education. 2002;2(4):115-119.", url: "https://doi.org/10.1093/bjaceaccp/2.4.115" },
     { label: "BJA Educ Epilepsy 2015", citation: "Perks A et al. Anaesthesia and epilepsy. Br J Anaesth. 2012;108(4):562-571.", url: "https://doi.org/10.1093/bja/aes027" },
@@ -1008,6 +1021,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Autonomic Dysreflexia", citation: "Krassioukov A et al. A systematic review of the management of autonomic dysreflexia after spinal cord injury. Arch Phys Med Rehabil. 2009;90:682-695.", url: "https://doi.org/10.1016/j.apmr.2008.10.017" },
   ],
   "haematological-disease": [
+    { label: "ASH HIT 2018", citation: "Cuker A, Arepally GM, Chong BH, et al. American Society of Hematology 2018 guidelines for management of venous thromboembolism: heparin-induced thrombocytopenia. Blood Adv. 2018;2(22):3360-3392.", url: "https://doi.org/10.1182/bloodadvances.2018024489" },
+    { label: "MHRA IV Iron 2013", citation: "Medicines and Healthcare products Regulatory Agency. Drug Safety Update: intravenous iron and serious hypersensitivity reactions - strengthened EU advice. 2013.", url: "https://www.gov.uk/drug-safety-update/intravenous-iron-and-serious-hypersensitivity-reactions-strengthened-eu-advice" },
     { label: "CPOC Anaemia 2023", citation: "Centre for Perioperative Care. Anaemia in the perioperative pathway. CPOC; 2023.", url: "https://cpoc.org.uk/sites/cpoc/files/documents/2023-09/CPOC-Anaemia-Guideline-2023.pdf" },
     { label: "NICE NG24", citation: "National Institute for Health and Care Excellence. Blood transfusion (NG24). 2015 (updated).", url: "https://www.nice.org.uk/guidance/ng24" },
     { label: "AAGBI PBM 2016", citation: "Klein AA, Arnold P, Bingham RM, et al. AAGBI guidelines: the use of blood components and their alternatives 2016. Anaesthesia. 2016;71(7):829-842.", url: "https://doi.org/10.1111/anae.13489" },
