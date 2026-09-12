@@ -4,6 +4,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { cardiacArrestPostResusQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
+import { InlineRef } from "@/components/references/InlineRef";
 
 /**
  * Dedicated FFICM / EDIC topic page for multimodal neuroprognostication after
@@ -254,18 +255,37 @@ const NeuroprognosticationTopic = () => {
               <div className="space-y-2 text-sm text-muted-foreground">
                 <p>
                   <strong className="text-foreground">Highly malignant (poor outcome):</strong> suppressed
-                  background (&lt; 10 µV) with or without periodic discharges; burst-suppression with
-                  <em> identical</em> bursts. Specificity approaches 100 % at &gt; 24 h post-ROSC.
+                  background (&lt; 10 µV) with or without superimposed periodic discharges; or
+                  burst-suppression with <em>identical</em> bursts (stereotyped, repetitive burst
+                  morphology). Specificity approaches 100 % at &gt; 24 h post-ROSC
+                  <InlineRef topicId="neuroprognostication" refLabel="ERC/ESICM 2021 Post-Resus" />.
                 </p>
                 <p>
-                  <strong className="text-foreground">Malignant (intermediate):</strong> burst-suppression
-                  with non-identical bursts; abundant rhythmic/periodic discharges; electrographic status
-                  epilepticus. Not by itself sufficient — combine with another modality.
+                  <strong className="text-foreground">Malignant but not uniformly fatal (intermediate):</strong>{" "}
+                  electrographic status epilepticus meeting <strong>Salzburg criteria</strong>
+                  (epileptiform discharges &gt; 2.5 Hz for &gt; 10 s, or discharges/rhythmic activity &lt; 2.5 Hz
+                  or spike-wave with subtle clinical correlate/evolution lasting &gt; 10 min); abundant
+                  periodic discharges (lateralised — LPDs, or generalised — GPDs); burst-suppression with
+                  <em> non-identical</em> (variable) bursts. Not sufficient alone — combine with another
+                  concordant modality
+                  <InlineRef topicId="neuroprognostication" refLabel="EHJ-ACC 2023 (Neuroprognostication)" />.
                 </p>
                 <p>
-                  <strong className="text-foreground">Benign:</strong> continuous background with
-                  reactivity. Strong predictor of <em>good</em> outcome when seen early.
+                  <strong className="text-foreground">Benign / favourable:</strong> continuous background,
+                  <strong> reactivity</strong> to external stimulation, and presence of
+                  <strong> sleep–wake cycles</strong>. Strong predictor of <em>good</em> outcome when seen
+                  early, particularly when all three features co-exist.
                 </p>
+                <div className="p-3 rounded-lg border border-border bg-secondary/20 mt-2">
+                  <p className="text-xs font-semibold text-foreground mb-1">Defining reactivity</p>
+                  <p className="text-xs text-muted-foreground">
+                    A reproducible change in EEG background frequency and/or amplitude in response to an
+                    external stimulus (auditory, tactile or noxious), assessed away from spontaneous
+                    fluctuation. Stimulus-induced rhythmic, periodic or ictal discharges (SIRPIDs) are
+                    excluded from this definition and are not evidence of reactivity
+                    <InlineRef topicId="neuroprognostication" refLabel="EHJ-ACC 2023 (Neuroprognostication)" />.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -287,13 +307,41 @@ const NeuroprognosticationTopic = () => {
 
             {/* Modality 4: Biomarkers */}
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">4. Biomarkers — Neuron-Specific Enolase</h2>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">4. Biomarkers</h2>
+              <p className="text-muted-foreground leading-relaxed mb-2 text-sm">
+                <strong className="text-foreground">Neuron-specific enolase (NSE)</strong> remains the only
+                biomarker formally embedded in the ERC/ESICM algorithm.
+              </p>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
-                <li>NSE released from injured neurons; concentrations peak 48–72 h after ROSC.</li>
+                <li>Released from injured neurons; concentrations peak 48–72 h after ROSC.</li>
                 <li>Threshold for poor outcome: <strong>NSE &gt; 60 µg/L at 48 h and/or 72 h</strong>; a <em>rising</em> trend strengthens the prediction.</li>
                 <li>Reject haemolysed samples — NSE is abundant in erythrocytes and even mild haemolysis falsely elevates results.</li>
                 <li>Other sources of false elevation: neuroendocrine tumours, small-cell lung cancer, ECMO-related haemolysis.</li>
-                <li>S100B and neurofilament light chain (NfL) are promising but not yet in the ERC algorithm.</li>
+              </ul>
+              <p className="text-muted-foreground leading-relaxed mb-2 text-sm">
+                <strong className="text-foreground">Emerging biomarkers</strong> (not yet part of the
+                formal ERC/ESICM criteria, but increasingly reported in exam-level and clinical literature):
+              </p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
+                <li>
+                  <strong>GFAP (glial fibrillary acidic protein)</strong> — released from injured
+                  astrocytes; peaks slightly later than NSE, at around <strong>48–72 h</strong> post-ROSC.
+                  Meta-analytic data show good discriminatory accuracy for poor outcome (AUC ≈ 0.88 at
+                  72 h), but it remains <em>investigational</em> pending standardised assay cut-offs and
+                  external validation before routine clinical use
+                  <InlineRef topicId="neuroprognostication" refLabel="GFAP Meta-analysis 2026" />.
+                </li>
+                <li>
+                  <strong>Neurofilament light chain (NfL)</strong> — a marker of axonal injury with a
+                  later and more prolonged peak than NSE or GFAP; may add prognostic value for
+                  <strong> later</strong> assessment (&gt; 7 days post-ROSC) in patients with an initially
+                  indeterminate multimodal result, but is not part of the 72 h algorithm.
+                </li>
+                <li>
+                  <strong>S100B</strong> — released from astrocytes and adipocytes (less neurospecific
+                  than NSE or GFAP); still <strong>not incorporated</strong> into the ERC/ESICM
+                  algorithm.
+                </li>
               </ul>
             </div>
 
@@ -349,6 +397,23 @@ const NeuroprognosticationTopic = () => {
                 <li><strong>Metabolic</strong> — severe hyponatraemia, hypoglycaemia/hyperglycaemia, uraemia, hepatic encephalopathy all confound clinical and EEG findings.</li>
                 <li><strong>Shock / multi-organ failure</strong> — drug accumulation, impaired clearance, and global hypoperfusion can mimic irreversible HIBI.</li>
                 <li><strong>Recent seizure</strong> — postictal state may produce a transient highly malignant EEG. Repeat after 24 h.</li>
+              </ul>
+            </div>
+
+            {/* Cognitive-motor dissociation */}
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cognitive-motor dissociation (covert consciousness)</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                <strong>Cognitive-motor dissociation (CMD)</strong> describes a state in which a patient
+                shows no behavioural or motor response to command (motor score M1–M3) despite
+                demonstrable, preserved higher-order cortical processing detectable only on
+                neurophysiological or functional imaging testing
+                <InlineRef topicId="neuroprognostication" refLabel="EHJ-ACC 2023 (Neuroprognostication)" />.
+              </p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
+                <li><strong>Significance:</strong> a proportion of behaviourally unresponsive patients (M1–M3) who appear to lack awareness on bedside examination retain some degree of covert consciousness — a critical caveat for prognostication and WLST decision-making.</li>
+                <li><strong>Detection:</strong> EEG motor-imagery paradigms — asking the patient to imagine repetitive movement (e.g. "keep imagining opening and closing your right hand") and looking for a reproducible, task-appropriate EEG response over sensorimotor cortex; equivalent paradigms using functional MRI (imagined motor or spatial-navigation tasks) can show appropriate cortical activation despite absent overt behaviour.</li>
+                <li><strong>Implications:</strong> CMD is a key argument for <strong>multimodal</strong> assessment and against decisions based on clinical examination or a single test alone. Extreme caution is warranted before WLST in patients with an indeterminate multimodal result, particularly where the EEG background is benign/reactive with sleep–wake cycles, as this combination raises the possibility of covert awareness or later recovery.</li>
               </ul>
             </div>
 

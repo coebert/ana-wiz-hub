@@ -14,6 +14,7 @@ import AlbuminFluidShiftDiagram from "@/components/diagrams/intensive-care/Album
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const sepsisTocItems = [
   { id: "sepsis-3", label: "Sepsis-3 definitions & scores", group: "Core" },
@@ -22,6 +23,9 @@ const sepsisTocItems = [
   { id: "fluids", label: "Fluid resuscitation", group: "Management" },
   { id: "vasopressors", label: "Vasopressors & inotropes", group: "Management" },
   { id: "steroids", label: "Hydrocortisone", group: "Management" },
+  { id: "septic-cardiomyopathy", label: "Septic cardiomyopathy", group: "Management" },
+  { id: "special-populations", label: "Special populations", group: "Special situations" },
+  { id: "specific-syndromes", label: "Specific sepsis syndromes", group: "Special situations" },
   { id: "biomarkers", label: "Lactate, CRP & PCT", group: "Monitoring" },
   { id: "trial-evidence", label: "Landmark trials", group: "Evidence" },
   { id: "pitfalls", label: "Exam pitfalls", group: "Reference" },
@@ -422,6 +426,94 @@ const SepsisTopic = () => {
           <p className="text-muted-foreground leading-relaxed">
             IV hydrocortisone 200 mg/day (50 mg QDS or continuous infusion) if haemodynamic instability persists despite adequate fluid resuscitation and vasopressor therapy. ADRENAL and APROCCHSS trials support use in refractory septic shock for faster shock reversal but no mortality benefit is definitively proven.
           </p>
+        </div>
+
+        <div id="septic-cardiomyopathy" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Septic Cardiomyopathy</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Septic cardiomyopathy is a <strong>transient, stress-induced global myocardial dysfunction</strong> occurring in up to 40–60% of septic shock, distinct from acute coronary syndrome or fixed structural heart disease.
+          </p>
+          <div className="space-y-3">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Pathophysiology</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Circulating TNF-α and IL-1β directly depress myocardial contractility; mitochondrial dysfunction impairs myocyte energetics; excess nitric oxide production causes further contractile depression and vasoplegia; β-adrenoceptor downregulation and uncoupling reduce catecholamine responsiveness.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Clinical & echocardiographic features</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Reduced left and right ventricular ejection fraction with ventricular dilatation (a compensatory Frank–Starling response that preserves stroke volume). Stroke volume is often relatively preserved or even elevated overall because of compensatory tachycardia and profoundly reduced systemic vascular resistance — the depressed EF can therefore be masked clinically unless specifically sought.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Investigation</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Transthoracic or transoesophageal echocardiography shows global hypokinesis and ventricular dilatation, typically evolving over the first 24–48 h. Troponin is frequently raised (myocardial strain/microvascular injury) but is non-diagnostic and does not indicate coronary occlusion.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Management</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Treat the underlying sepsis (source control, antibiotics). If cardiac output remains low despite adequate filling and an appropriate vasopressor (noradrenaline) achieving MAP targets, add <strong>dobutamine</strong> as the inotrope of choice <InlineRef topicId="sepsis" refLabel="SSC 2012 (Inotropes)" />. Avoid excessive fluid loading, which worsens ventricular dilatation without improving output. Levosimendan has been trialled as a calcium-sensitiser alternative but is not routinely recommended given lack of consistent outcome benefit and vasodilatory/hypotensive effects.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Prognosis</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Septic cardiomyopathy is usually fully reversible, with echocardiographic recovery typically within 7–10 days in survivors; persistence beyond this should prompt reconsideration of the diagnosis (e.g. underlying ischaemic or structural heart disease).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="special-populations" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sepsis in Special Populations</h2>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-2 mb-2">Paediatric sepsis</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Vital-sign thresholds are strongly age-dependent (normal heart rate and respiratory rate fall, and normal blood pressure rises, with increasing age), so adult-derived cut-offs cannot be applied directly. Presentation is often non-specific — poor feeding, lethargy or irritability, temperature instability (fever <em>or</em> hypothermia), prolonged capillary refill and mottling — rather than the overt hypotension seen in adults, since children compensate for a long period before decompensating suddenly.
+          </p>
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
+            <li><strong>Fluid resuscitation:</strong> boluses of <strong>10–20 mL/kg</strong> balanced crystalloid with reassessment after each bolus, rather than a fixed adult-style 30 mL/kg <InlineRef topicId="sepsis" refLabel="SSC Children 2020" />. Children are at higher risk of fluid overload (pulmonary oedema, hepatomegaly) — stop and reassess for signs of overload after each aliquot.</li>
+            <li><strong>Vasoactive choice:</strong> adrenaline is used early for "cold shock" (poor perfusion, narrow pulse pressure, cool peripheries — the more common paediatric phenotype), while noradrenaline is preferred for "warm shock" (bounding pulses, wide pulse pressure, warm peripheries) <InlineRef topicId="sepsis" refLabel="SSC 2012 (Paediatric considerations)" />.</li>
+            <li><strong>Antibiotics:</strong> chosen per local/national paediatric antimicrobial guidelines, reflecting age-specific pathogens (e.g. Group B Streptococcus, E. coli and Listeria in neonates) and weight-based dosing.</li>
+            <li><strong>Glucose:</strong> infants have low glycogen reserves and a high risk of hypoglycaemia during sepsis — check and correct blood glucose promptly and monitor closely.</li>
+          </ul>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Sepsis in pregnancy</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Normal physiological adaptations of pregnancy — resting tachycardia, peripheral vasodilatation with a lower baseline blood pressure, and a physiological leucocytosis — can mask or mimic the early signs of sepsis, delaying recognition <InlineRef topicId="sepsis" refLabel="RCOG Green-top 64" />. Common sources include chorioamnionitis, endometritis (particularly postpartum), urinary tract infection/pyelonephritis, and wound infection after caesarean section.
+          </p>
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
+            <li><strong>Mother first:</strong> maternal resuscitation takes priority — optimising maternal physiology is the most effective way to support the fetus.</li>
+            <li><strong>Early multidisciplinary involvement:</strong> obstetric, neonatal, anaesthetic and critical-care teams should be involved early, particularly as gestation advances.</li>
+            <li><strong>Source control and delivery:</strong> if the uterus/fetus is the source (e.g. chorioamnionitis, septic miscarriage), delivery should proceed once the mother is adequately stabilised — delivery does not need to wait for full resolution of sepsis if it is required for source control.</li>
+            <li><strong>Antibiotics:</strong> pregnancy-safe broad-spectrum agents such as piperacillin–tazobactam or meropenem, ± clindamycin/metronidazole for anaerobic or streptococcal cover, dosed promptly per the Hour-1 approach.</li>
+            <li><strong>Positioning:</strong> place in the left lateral tilt (or manual uterine displacement) from ~20 weeks' gestation to relieve aortocaval compression and improve venous return/cardiac output during resuscitation.</li>
+          </ul>
+        </div>
+
+        <div id="specific-syndromes" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Specific Sepsis Syndromes</h2>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-2 mb-2">Toxic shock syndrome</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Caused by superantigen exotoxins — <em>Staphylococcus aureus</em> TSST-1 or <em>Streptococcus pyogenes</em> SpeA — which bypass conventional antigen processing to cross-link MHC-II and the T-cell receptor directly, producing massive, non-specific T-cell activation and a cytokine storm. Classically associated with retained tampons/nasal packing/surgical wound infection (staphylococcal) or invasive Group A streptococcal infection, but often <strong>no clear focus is found</strong>.
+          </p>
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
+            <li><strong>Features:</strong> abrupt high fever, diffuse sunburn-like erythroderma, hypotension/shock, multi-organ failure, with <strong>desquamation of the palms and soles</strong> typically occurring 1–2 weeks later.</li>
+            <li><strong>Management:</strong> standard resuscitation and broad-spectrum antibiotics <strong>plus clindamycin</strong>, which suppresses toxin synthesis (protein-synthesis inhibition) independent of its antibacterial action <InlineRef topicId="sepsis" refLabel="IDSA SSTI 2014" />. Consider IV immunoglobulin to neutralise circulating superantigen in severe/refractory cases. Source control is essential — remove the tampon/nasal pack, drain any collection.</li>
+          </ul>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Necrotising soft tissue infection (NSTI)</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Rapidly progressive infection of the fascial planes and subcutaneous tissue. <strong>Type I</strong> is polymicrobial (mixed aerobic/anaerobic, often post-surgical or in diabetics/immunocompromised); <strong>Type II</strong> is typically monomicrobial, classically Group A <em>Streptococcus</em> (± staphylococcal co-infection), and can affect previously healthy patients.
+          </p>
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
+            <li><strong>Clinical clues:</strong> pain markedly out of proportion to visible signs, rapidly advancing erythema/cellulitis beyond marked margins, skin bullae, crepitus (gas-forming organisms), woody induration, and systemic toxicity disproportionate to the apparent skin findings. The LRINEC score (CRP, WCC, haemoglobin, sodium, creatinine, glucose) is suggestive but neither sensitive nor specific enough to exclude the diagnosis.</li>
+            <li><strong>Management:</strong> the cornerstone is <strong>urgent surgical exploration and debridement</strong> — do not wait for imaging confirmation if clinical suspicion is high, as delay increases mortality. Broad-spectrum antibiotics plus <strong>clindamycin</strong> (toxin/exotoxin suppression) are given alongside <InlineRef topicId="sepsis" refLabel="IDSA SSTI 2014" />. Hyperbaric oxygen therapy has theoretical rationale but remains unproven and must never delay debridement. IV immunoglobulin may be considered in streptococcal NSTI complicated by toxic shock, though evidence is limited.</li>
+          </ul>
         </div>
 
         {/* ---- Sepsis Biomarkers ---- */}

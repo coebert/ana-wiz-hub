@@ -9,6 +9,7 @@ import PHPathophysiologyDiagram from "@/components/diagrams/intensive-care/PHPat
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const pulmonaryHypertensionFaqs: Array<[string, string]> = [
   ["What is the haemodynamic definition of pulmonary hypertension?", "Mean PAP >20 mmHg at rest by right heart catheterisation (ESC/ERS 2022); precapillary if PAWP ≤15 and PVR >2 WU, postcapillary if PAWP >15."],
@@ -309,6 +310,66 @@ const PulmonaryHypertensionTopic = () => {
           </ExamSection>
 
           <ExamSection
+            id="preop-risk-assessment"
+            exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}
+            curriculumCodes={["FRCA Final CV", "FFICM 4.5", "EDIC 3"]}
+            className="scroll-mt-24"
+          >
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pre-operative Risk Assessment &amp; Optimisation</h2>
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Goals and the AHA Multistep Approach</h3>
+                <p className="text-sm mb-2">
+                  The aims of pre-operative assessment are to stratify perioperative risk, identify reversible factors, and decide whether — and where — surgery should proceed
+                  <InlineRef topicId="pulmonary-hypertension" refLabel="AHA PH Noncardiac Surgery 2023" />.
+                  The 2023 AHA scientific statement recommends a multistep process: (1) classify the WHO pulmonary hypertension group to define the underlying pathology; (2) assess perioperative risk; (3) optimise PH therapy before surgery; and (4) plan intraoperative management to avoid right ventricular dysfunction and maintain cardiac output
+                  <InlineRef topicId="pulmonary-hypertension" refLabel="AHA PH Noncardiac Surgery 2023" />.
+                </p>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Patient-Related Risk Factors</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>WHO functional class III–IV; previous episode of right heart failure or clinical decompensation</li>
+                  <li>Reduced 6-minute walk distance</li>
+                  <li>RV dysfunction and dilatation on echocardiography, with reduced TAPSE</li>
+                  <li>Right heart catheterisation findings: elevated right atrial pressure (RAP) and reduced cardiac index</li>
+                  <li>Renal impairment and significant comorbidities (e.g. connective tissue disease, obstructive sleep apnoea)</li>
+                </ul>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Procedure-Related Risk Factors</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Emergency surgery</li>
+                  <li>Major thoracic or intra-abdominal surgery</li>
+                  <li>Laparoscopic surgery with pneumoperitoneum (raised intra-abdominal pressure increases PVR and reduces venous return)</li>
+                  <li>Prolonged surgery (&gt;3 hours)</li>
+                  <li>Prone or lateral positioning</li>
+                  <li>Anticipated significant blood loss</li>
+                  <li>One-lung ventilation</li>
+                </ul>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Optimisation Principles</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Refer to, or discuss with, a specialist pulmonary hypertension centre for elective surgery in moderate-to-severe disease
+                    <InlineRef topicId="pulmonary-hypertension" refLabel="Thunberg BJA Educ 2017" />
+                  </li>
+                  <li>Continue all pulmonary vasodilator therapy up to and including the day of surgery — never abruptly stop, particularly IV prostacyclins, which have very short half-lives and risk fatal rebound PH</li>
+                  <li>Consider escalating or optimising targeted therapy before elective surgery in decompensated or high-risk patients</li>
+                  <li>Correct anaemia and optimise volume status before theatre</li>
+                  <li>Review anticoagulation (many CTEPH and idiopathic PAH patients are anticoagulated) and plan bridging</li>
+                  <li>Treat sleep-disordered breathing and any active infection pre-operatively</li>
+                  <li>Agree a written perioperative haemodynamic plan with the multidisciplinary team, including vasopressor/inotrope choice and thresholds for escalation</li>
+                  <li>Arrange a critical care bed and appropriate postoperative monitoring in advance</li>
+                  <li>Consider deferring or avoiding elective surgery altogether in decompensated PH, given perioperative mortality as high as 4–25%
+                    <InlineRef topicId="pulmonary-hypertension" refLabel="AHA PH Noncardiac Surgery 2023" />
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </ExamSection>
+
+          <ExamSection
             id="perioperative"
             exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FRCA Final CV", "FFICM 4.5", "EDIC 3"]}
@@ -413,6 +474,36 @@ const PulmonaryHypertensionTopic = () => {
                   <li>Cautious fluid (≤500 mL); avoid over-filling the dilated RV. Noradrenaline + dobutamine; iNO if available</li>
                 </ul>
               </div>
+              <div className="bg-card border border-border rounded-lg p-4">
+
+                <h3 className="font-semibold text-foreground mb-2">Persistent Pulmonary Hypertension of the Newborn (PPHN)</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Failure of the normal circulatory transition at birth: pulmonary vascular resistance remains pathologically high, causing right-to-left shunting through the patent ductus arteriosus and/or foramen ovale</li>
+                  <li>Diagnosis supported by a pre- versus post-ductal saturation gradient (&gt;5–10%), confirmed with echocardiography</li>
+                  <li>Ventilation strategy: gentle lung recruitment to achieve optimal lung volume, avoiding both atelectasis (worsens hypoxic vasoconstriction) and overdistension (compresses alveolar vessels and raises PVR)</li>
+                  <li>Target pre-ductal SpO₂ &gt;95%; correct acidosis, hypothermia, hypocalcaemia and hypoglycaemia, all of which raise PVR</li>
+                  <li>Inhaled nitric oxide 20 ppm is first-line selective pulmonary vasodilator therapy; wean gradually to avoid rebound pulmonary hypertension on cessation</li>
+                  <li>Sildenafil and milrinone are used in iNO-refractory disease — milrinone requires close attention to systemic hypotension</li>
+                  <li>ECMO is reserved for cases refractory to maximal medical therapy</li>
+                </ul>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Congenital Diaphragmatic Hernia (CDH)</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Pulmonary hypoplasia with abnormally muscularised pulmonary vasculature produces severe, often fixed, pulmonary hypertension
+                    <InlineRef topicId="pulmonary-hypertension" refLabel="JICM 2024 (CDH)" />
+                  </li>
+                  <li>Ventilation: gentle strategy with permissive hypercapnia, keeping peak inspiratory pressures low; avoid mask ventilation before intubation (risks gastric/bowel distension and further lung compression)</li>
+                  <li>Inhaled nitric oxide has limited benefit where left ventricular hypoplasia coexists, since pulmonary vasodilatation can precipitate pulmonary oedema and worsen left heart failure</li>
+                  <li>Echocardiography is essential to characterise the severity of pulmonary hypertension and biventricular function, and to guide therapy</li>
+                  <li>Surgical repair is delayed until physiological stabilisation, rather than performed as an emergency
+                    <InlineRef topicId="pulmonary-hypertension" refLabel="ESC/ERS PH 2022" />
+                  </li>
+                  <li>Management should occur in a specialist high-volume centre with on-site ECMO availability; despite this, mortality and morbidity remain persistently high
+                    <InlineRef topicId="pulmonary-hypertension" refLabel="JICM 2024 (CDH)" />
+                  </li>
+                </ul>
+              </div>
             </div>
           </ExamSection>
 
@@ -440,8 +531,8 @@ const PulmonaryHypertensionTopic = () => {
               "PH crisis: noradrenaline/vasopressin for systemic BP, inhaled pulmonary vasodilator, treat trigger — high mortality.",
             ]}
           />
-        </>
           <TopicFaqs faqs={pulmonaryHypertensionFaqs} />
+
         </>
       }
     />

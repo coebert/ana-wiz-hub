@@ -10,6 +10,7 @@ import MCSPressureVolumeLoopDiagram from "@/components/diagrams/intensive-care/M
 import VAECMOCircuitDiagram from "@/components/diagrams/intensive-care/VAECMOCircuitDiagram";
 import CPPSpiralDiagram from "@/components/diagrams/intensive-care/CPPSpiralDiagram";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const circulatoryFailureFaqs: Array<[string, string]> = [
   ["Which dynamic indices predict fluid responsiveness and when are they invalid?", "PPV, SVV and passive leg raise predict a ≥10–15% SV rise after fluid; they are unreliable in spontaneous breathing, arrhythmia, low tidal volumes (<8 mL/kg), open chest or raised intra-abdominal pressure — use PLR or end-expiratory occlusion instead."],
@@ -195,10 +196,38 @@ const coreConcepts = (
           <p className="text-xs text-muted-foreground italic mb-2">35-year-old, IV teicoplanin at induction.</p>
           <p className="text-sm text-foreground/90">Sudden ↓ETCO₂, peak airway pressure 38, urticaria, BP 50/30, tryptase rising. <strong>Pattern:</strong> profound vasodilation + capillary leak + bronchospasm. <strong>Treat:</strong> stop trigger, IM adrenaline 500 µg (or IV 50 µg boluses titrated), 100% O₂, IV fluid bolus, second-line: salbutamol, hydrocortisone, chlorphenamine.</p>
         </div>
-        <div className="rounded-lg border border-border bg-card p-4">
+        <div className="rounded-lg border border-border bg-card p-4 md:col-span-2">
           <h3 className="font-serif font-semibold text-foreground mb-1">Distributive — neurogenic</h3>
           <p className="text-xs text-muted-foreground italic mb-2">28-year-old, fall from height, complete C5 cord injury.</p>
-          <p className="text-sm text-foreground/90">HR 48 (loss of cardiac sympathetic outflow T1–T4), BP 78/40, warm dry skin <em>below</em> the lesion, priapism. <strong>Pattern:</strong> ↓SVR + bradycardia. <strong>Treat:</strong> cautious fluids, noradrenaline (α + modest β), atropine/glycopyrrolate or pacing for bradycardia, MAP target 85–90 for spinal cord perfusion.</p>
+          <p className="text-sm text-foreground/90 mb-2">HR 48 (loss of cardiac sympathetic outflow T1–T4), BP 78/40, warm dry skin <em>below</em> the lesion, priapism. <strong>Pattern:</strong> ↓SVR + bradycardia, in contrast to hypovolaemic shock (tachycardic, cool, vasoconstricted).</p>
+          <p className="text-sm text-foreground/90 mb-2">
+            <strong>Why MAP 80–90 mmHg for the first 5–7 days:</strong> the target is set to preserve <strong>spinal cord perfusion pressure</strong>
+            (SCPP = MAP − intraspinal/CSF pressure), directly analogous to CPP = MAP − ICP in traumatic brain injury. Following acute cord injury,
+            cord oedema raises intraspinal pressure within the (relatively) fixed dural sac, so a supranormal MAP is needed to maintain adequate SCPP
+            and limit secondary ischaemic injury to the penumbra around the primary lesion <InlineRef topicId="circulatory-failure" refLabel="BJA Educ 2014" />.
+          </p>
+          <p className="text-sm text-foreground/90 mb-2">
+            <strong>Why noradrenaline first-line:</strong> its α₁ effect directly counters the loss of sympathetic vasomotor tone (the primary problem),
+            while its modest β₁ activity supports a heart rendered bradycardic and inotropically unopposed by unopposed vagal tone
+            <InlineRef topicId="circulatory-failure" refLabel="SSC 2021 Haemodynamics" />. Pure α-agonists (phenylephrine) are a reasonable alternative
+            if tachyarrhythmia is a concern, but by raising afterload without chronotropic support they <strong>may worsen reflex bradycardia</strong> and
+            are used cautiously.
+          </p>
+          <p className="text-sm text-foreground/90 mb-2">
+            <strong>Bradycardia adjuncts:</strong> atropine or glycopyrrolate for symptomatic bradycardia; adrenaline, dopamine, or temporary
+            chronotropic (transcutaneous/transvenous) pacing if bradycardia is profound or refractory to anticholinergics — vagal stimulation
+            (suctioning, turning) can precipitate severe bradyarrhythmia or asystole in high cervical lesions.
+          </p>
+          <p className="text-sm text-foreground/90 mb-2">
+            <strong>Avoid aggressive fluid loading</strong> — the problem is vasodilatation, not hypovolaemia, and over-resuscitation risks pulmonary
+            oedema without correcting SVR. However, in trauma, <strong>occult haemorrhage must always be actively excluded</strong> before attributing
+            hypotension to neurogenic shock — the two frequently coexist, and haemorrhagic shock will not respond to vasopressors alone.
+          </p>
+          <p className="text-sm text-foreground/90">
+            <strong>Anatomy:</strong> lesions <strong>above T6</strong> lose the majority of cardiac sympathetic outflow (cardioaccelerator fibres T1–T4)
+            and splanchnic vasoconstrictor tone, producing the full triad of hypotension, bradycardia and vasodilated warm skin below the level; lower
+            thoracic/lumbar injuries cause vasodilatation with preserved cardiac sympathetics and less bradycardia.
+          </p>
         </div>
         <div className="rounded-lg border border-border bg-card p-4">
           <h3 className="font-serif font-semibold text-foreground mb-1">Obstructive — massive PE</h3>
@@ -343,6 +372,63 @@ const coreConcepts = (
         <li><strong className="text-foreground">IABP-SHOCK II</strong> — no mortality benefit from routine IABP in cardiogenic shock complicating MI; IABP no longer Class I indication.</li>
         <li><strong className="text-foreground">Contraindications:</strong> irreversible underlying disease, futility, uncontrolled bleeding, advanced directive against. Severe AR contraindicates VA-ECMO (worsens LV distension).</li>
       </ul>
+    </div>
+
+    <div>
+      <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Weaning from Vasopressor Support</h2>
+      <p className="text-muted-foreground leading-relaxed mb-3">
+        Vasopressors should be weaned as soon as the patient is haemodynamically stable rather than continued
+        "for safety" — prolonged high-dose catecholamine exposure carries its own morbidity
+        <InlineRef topicId="circulatory-failure" refLabel="SSC 2021 Haemodynamics" />.
+      </p>
+
+      <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Rationale for early weaning</h3>
+      <ul className="list-disc pl-6 space-y-1 text-foreground/90 text-sm">
+        <li>Reduces tachyarrhythmias and increased myocardial oxygen demand (MVO₂) from ongoing β-adrenergic stimulation.</li>
+        <li>Limits digital and splanchnic ischaemia from sustained peripheral α₁-vasoconstriction.</li>
+        <li>Reduces line-related risk (central line duration, extravasation/tissue necrosis, catheter-related bloodstream infection).</li>
+      </ul>
+
+      <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Prerequisites before weaning</h3>
+      <ul className="list-disc pl-6 space-y-1 text-foreground/90 text-sm">
+        <li>Source controlled and infection adequately treated (in septic shock).</li>
+        <li>Lactate clearing and improving organ function, including urine output &gt; 0.5 mL/kg/h.</li>
+        <li>MAP at target achieved on a low, stable dose of noradrenaline (not rising).</li>
+        <li>Adequate but not excessive preload — further fluid is not required to sustain the current MAP.</li>
+        <li>Reversible contributors to vasoplegia corrected: hypocalcaemia, acidosis, hypothyroidism, and residual
+          sedation/anaesthetic-agent vasodilatation.</li>
+      </ul>
+
+      <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Order of weaning</h3>
+      <p className="text-foreground/90 leading-relaxed text-sm mb-2">
+        Where vasopressin has been added as a second agent, it should generally be weaned <strong>last-in, first-out</strong>
+        with caution: because vasopressin cannot be titrated in the same graded way as noradrenaline (fixed low-dose infusion,
+        e.g. 0.03 U/min), stopping it first commonly precipitates clinically significant rebound hypotension. Most units
+        therefore reduce noradrenaline first and only stop vasopressin once the noradrenaline dose is already low
+        <InlineRef topicId="circulatory-failure" refLabel="SSC 2021 Haemodynamics" />. If hydrocortisone was started for
+        catecholamine-refractory shock, it is weaned <em>after</em> catecholamines have been discontinued, typically tapered
+        over several days rather than stopped abruptly (risk of rebound hypotension/adrenal insufficiency).
+      </p>
+
+      <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Practical method</h3>
+      <p className="text-foreground/90 leading-relaxed text-sm mb-2">
+        Reduce noradrenaline in small increments (e.g. 0.02–0.05 µg/kg/min steps) every 15–30 minutes against a
+        defined MAP target (typically ≥ 65 mmHg, higher in chronic hypertension or neurogenic/spinal injury), reassessing
+        haemodynamics after each step before proceeding further.
+      </p>
+
+      <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Monitoring during the wean</h3>
+      <ul className="list-disc pl-6 space-y-1 text-foreground/90 text-sm">
+        <li>MAP — continuous arterial line monitoring against the target.</li>
+        <li>Lactate trend — rising lactate suggests inadequate perfusion despite an apparently acceptable MAP.</li>
+        <li>Urine output — falling below 0.5 mL/kg/h suggests the wean has outpaced renal perfusion.</li>
+        <li>Peripheral perfusion — capillary refill time and skin mottling (e.g. mottling score).</li>
+        <li>Mentation — new confusion or reduced consciousness may indicate cerebral hypoperfusion.</li>
+      </ul>
+      <p className="text-foreground/90 leading-relaxed text-sm mt-2">
+        If MAP falls below target, lactate rises, urine output drops, mottling worsens, or mentation deteriorates, pause the
+        wean and step the dose back up rather than continuing to taper on a fixed schedule.
+      </p>
     </div>
 
     <ExamPitfallsCallout
