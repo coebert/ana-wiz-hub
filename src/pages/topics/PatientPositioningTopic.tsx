@@ -224,6 +224,36 @@ const PatientPositioningTopic = () => {
               gel / vacuum mattress, a bean-bag or a memory-foam pad with the arms tucked at the sides instead.
             </p>
             <TrendelenburgIllustration />
+            <h3 className="text-base font-bold text-foreground mt-4 mb-2">Physiological effects of steep Trendelenburg</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              <strong>Respiratory</strong> — the abdominal viscera shift the diaphragm cephalad, reducing FRC by
+              roughly 20–25% and lowering respiratory compliance; peak and plateau airway pressures rise, basal
+              atelectasis develops, and the endobronchial tube tip can migrate further into the right main bronchus,
+              so re-check air entry after tilting (<InlineRef topicId="patient-positioning" refLabel="BJA Educ Positioning 2018" />).
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              <strong>Cardiovascular</strong> — the response is biphasic. Initially, auto-transfusion from the legs
+              and lower body raises preload, CVP and cardiac output, with baroreceptor-mediated reflex changes in
+              heart rate and vascular tone. With prolongation, afterload rises and contractility is impaired, so
+              cardiac output falls — an effect magnified in patients with cardiac disease and compounded by
+              pneumoperitoneum during laparoscopic/robotic surgery.
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              <strong>Neurological</strong> — impaired cerebral venous drainage raises ICP and reduces cerebral
+              perfusion pressure, can worsen cerebral oedema, and may delay emergence after prolonged steep tilt.
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              <strong>Ophthalmic</strong> — impaired aqueous and retinal venous drainage raises intraocular pressure;
+              prolonged steep head-down (especially combined with robotic pneumoperitoneum) has been linked to
+              postoperative visual loss and ischaemic optic neuropathy.
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              <strong>Practical mitigation</strong> — limit the degree and duration of tilt where possible, level the
+              table periodically during long cases, use PEEP and recruitment manoeuvres to counter atelectasis,
+              limit fluid administration, protect the eyes, and secure the patient (non-slip mattress/bean-bag) to
+              prevent cephalad sliding without resorting to shoulder braces, which risk brachial plexus injury
+              (<InlineRef topicId="patient-positioning" refLabel="BJA Educ Positioning 2018" />).
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -237,6 +267,32 @@ const PatientPositioningTopic = () => {
             </p>
             <LithotomyIllustration />
             <PeronealNerveLithotomyAnimation />
+            <h3 className="text-base font-bold text-foreground mt-4 mb-2">Respiratory and cardiovascular effects</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Raising the legs pushes the abdominal contents cephalad against the diaphragm, reducing FRC and vital
+              capacity — significant in obese or spontaneously ventilating patients. Simultaneously, elevating the
+              legs auto-transfuses roughly 100–250 mL of blood per leg into the central circulation, raising preload;
+              conversely, lowering the legs at the end of the case can precipitate a sudden fall in venous return and
+              hypotension, an effect exaggerated by hypovolaemia and by sympathetic blockade from neuraxial anaesthesia.
+            </p>
+            <h3 className="text-base font-bold text-foreground mt-4 mb-2">Nerve injuries in lithotomy</h3>
+            <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
+              <li><strong>Common peroneal</strong> — the lateral fibular head compressed against a candy-cane pole/stirrup; causes foot drop.</li>
+              <li><strong>Sciatic</strong> — hip hyperflexion combined with knee extension and external rotation stretches the nerve.</li>
+              <li><strong>Femoral</strong> — retractor pressure or compression under the inguinal ligament, worsened by excessive hip abduction.</li>
+              <li><strong>Obturator</strong> — excessive hip flexion and abduction stretches the nerve as it exits the obturator canal.</li>
+              <li><strong>Saphenous</strong> — compression of the medial calf against the medial tibial condyle/stirrup pole.</li>
+              <li><strong>Lateral cutaneous nerve of the thigh</strong> — compressed at the anterior superior iliac spine by excessive hip flexion.</li>
+            </ul>
+            <h3 className="text-base font-bold text-foreground mt-4 mb-2">Well-leg compartment syndrome and prevention</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Risk rises sharply beyond ~4 h in stirrups; where prolonged, lower the legs to the horizontal every 2 h
+              and avoid excessive elevation above the heart and concurrent hypotension, both of which reduce
+              calf perfusion pressure. Prevention: use padded boot-style supports (not candy-cane poles) that
+              distribute load along the calf, keep hip flexion &lt; 90°, limit hip abduction and external rotation,
+              raise and lower both legs simultaneously to avoid pelvic torsion, pad all bony prominences, and
+              document positioning, timing and any leg-lowering breaks in the anaesthetic record.
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -362,6 +418,49 @@ const PatientPositioningTopic = () => {
                 </tbody>
               </table>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="prone-ards" exams={[Exam.FFICM]}>
+            <CollapsibleSubsection title="Prone Positioning in ARDS">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Prone positioning is a mainstay of severe ARDS management in intensive care, distinct from prone
+              surgical positioning above. It improves V/Q matching by redistributing perfusion more evenly relative
+              to a more homogeneous distribution of ventilation, recruits dependent (dorsal) lung regions that are
+              typically most affected by atelectasis and consolidation, and produces more uniform transpulmonary
+              stress and strain across the lung — reducing ventilator-induced lung injury. Prone positioning also
+              improves chest-wall and lung mechanics (the dorsal lung is less compressed by the heart and abdominal
+              contents) and unloads the right ventricle by reducing hypoxic pulmonary vasoconstriction and pulmonary
+              vascular resistance (<InlineRef topicId="patient-positioning" refLabel="PROSEVA 2013" />, <InlineRef topicId="patient-positioning" refLabel="ESICM ARDS 2023 (Prone)" />).
+            </p>
+            <h3 className="text-base font-bold text-foreground mt-3 mb-2">Indication</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Severe ARDS with PaO₂/FiO₂ &lt; 150 mmHg (≈ 20 kPa) on FiO₂ ≥ 0.6 and PEEP ≥ 5 cmH₂O. Sessions should
+              last at least 12–16 h, as in the landmark <InlineRef topicId="patient-positioning" refLabel="PROSEVA 2013" /> trial, which showed a mortality benefit with early, prolonged proning in severe ARDS.
+            </p>
+            <h3 className="text-base font-bold text-foreground mt-3 mb-2">Contraindications</h3>
+            <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-2">
+              <li><strong>Absolute/relative:</strong> unstable spine or pelvic fracture, open abdomen, raised intracranial pressure, recent sternotomy, severe haemodynamic instability, massive haemoptysis, pregnancy (particularly later gestation).</li>
+            </ul>
+            <h3 className="text-base font-bold text-foreground mt-3 mb-2">Turning procedure</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Requires 4–5 trained staff plus a dedicated airway lead controlling the head and ETT. A pre-turn
+              checklist confirms tube and line security, feeds are held/aspirated beforehand, eye and pressure-area
+              care is applied, and the time of turning and post-turn checks are documented.
+            </p>
+            <h3 className="text-base font-bold text-foreground mt-3 mb-2">Ventilator management while prone</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Continue lung-protective ventilation — 6 mL/kg predicted body weight, plateau pressure &lt; 30 cmH₂O,
+              driving pressure &lt; 15 cmH₂O — with PEEP titrated to oxygenation and compliance. Reassess the
+              response to proning at 1–4 h; a PaO₂/FiO₂ improvement is a good prognostic sign
+              (<InlineRef topicId="patient-positioning" refLabel="ESICM ARDS 2023 (Prone)" />).
+            </p>
+            <h3 className="text-base font-bold text-foreground mt-3 mb-2">Complications</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              Pressure sores (face, chest, iliac crests, knees), facial and airway oedema, ETT and line
+              displacement during turning, arrhythmias and haemodynamic instability, vomiting or feed intolerance,
+              and brachial plexus injury from arm positioning.
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 

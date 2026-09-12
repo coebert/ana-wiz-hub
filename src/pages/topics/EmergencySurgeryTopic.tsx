@@ -9,6 +9,7 @@ import { EmergencyLaparotomyBundleDiagram } from "@/components/diagrams/clinical
 import { EmergencySurgeryGlossaryDrawer } from "@/components/clinical/EmergencySurgeryGlossaryDrawer";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const emergencySurgeryFaqs: Array<[string, string]> = [
   [
@@ -137,6 +138,38 @@ const EmergencySurgeryTopic = () => {
               <li><strong>Fasting status</strong>: often irrelevant as RSI is indicated regardless; do not delay life-saving surgery for fasting</li>
               <li><strong>Team briefing</strong>: WHO checklist adapted for emergency; clear communication of plan A/B/C</li>
             </ul>
+
+          <div>
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Management of Anticoagulation</h3>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Patients on anticoagulants presenting for emergency surgery require rapid assessment of drug, timing of last dose, renal function, and bleeding severity. <InlineRef topicId="emergency-surgery" refLabel="ACC Bleeding 2020" /> <InlineRef topicId="emergency-surgery" refLabel="Anaesthesia 2013 (Emergency organisation)" />
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Agent</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Mechanism / handling</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Relevant test</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Reversal</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Warfarin</td><td>Vitamin K antagonist; half-life 20–60 h; hepatic metabolism</td><td>INR</td><td>4-factor PCC 25–50 units/kg (per INR and weight) + IV vitamin K 5–10 mg</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Apixaban</td><td>Direct factor Xa inhibitor; half-life ~12 h; ~25% renal</td><td>Anti-Xa activity (drug-calibrated)</td><td>Andexanet alfa where available, or PCC 50 units/kg</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Rivaroxaban</td><td>Direct factor Xa inhibitor; half-life 7–11 h; ~33% renal</td><td>Anti-Xa activity</td><td>Andexanet alfa where available, or PCC 50 units/kg</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Edoxaban</td><td>Direct factor Xa inhibitor; half-life ~10–14 h; ~35% renal</td><td>Anti-Xa activity</td><td>Andexanet alfa where available, or PCC 50 units/kg</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Dabigatran</td><td>Direct thrombin (IIa) inhibitor; half-life 12–17 h; ~80% renal — accumulates in AKI</td><td>Dilute thrombin time / anti-IIa activity (TT/APTT screen)</td><td>Idarucizumab 5 g IV (two 2.5 g doses); dialysable</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">LMWH</td><td>Indirect factor Xa (± IIa) inhibition via antithrombin; renally cleared, accumulates in AKI</td><td>Anti-Xa activity</td><td>Protamine partially effective for enoxaparin (~60% neutralisation)</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mt-3">
+              <li><strong>Antiplatelet-associated bleeding</strong>: platelet transfusion (1 adult dose) if life-threatening haemorrhage or intracranial surgery, regardless of platelet count.</li>
+              <li><strong>Adjuncts</strong>: tranexamic acid (1 g IV, repeat/infusion as per protocol), fibrinogen replacement (cryoprecipitate or fibrinogen concentrate) if fibrinogen &lt;1.5 g/L, guided by viscoelastic testing (TEG/ROTEM) rather than fixed-ratio empirical products where available.</li>
+              <li><strong>Neuraxial techniques</strong>: respect standard time-based cessation/reintroduction intervals for each agent before and after block/catheter removal — do not proceed with neuraxial anaesthesia solely on the basis of a normalised INR/anti-Xa if timing criteria are not met.</li>
+            </ul>
+          </div>
           </div>
 
           <div>
@@ -204,6 +237,32 @@ const EmergencySurgeryTopic = () => {
           </div>
 
           <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Total Intravenous Anaesthesia for Emergency Surgery</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              TIVA is well established electively but historically under-used for emergency RSI. Rationale includes reduced PONV, avoidance of volatile agents in malignant hyperthermia susceptibility, elimination of theatre volatile pollution during rapid turnover, and smoother haemodynamics with careful titration in the shocked patient. <InlineRef topicId="emergency-surgery" refLabel="Anaesthesia 2026 (TIVA emergency)" />
+            </p>
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">TIVA-based RSI technique</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li>Target-controlled infusion using the Marsh (blood-target) or Schnider (effect-site, age/lean-body-mass adjusted) propofol models; effect-site targeting reduces the delay to loss of consciousness relevant to RSI timing.</li>
+              <li>Co-induction with a short-acting opioid (remifentanil TCI/effect-site) smooths the pressor response and reduces propofol dose requirement.</li>
+              <li>Reduced target concentrations in shock — hypovolaemia and low cardiac output increase effect-site drug delivery for a given plasma target, risking cardiovascular collapse if targets are not reduced.</li>
+              <li>Use a pre-checked dedicated IV line with anti-reflux and anti-siphon valves, and keep the cannula and connection visible throughout to detect extravasation or disconnection promptly.</li>
+            </ul>
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Safety considerations from national reports</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li>Risk of accidental awareness is higher with TIVA than volatile anaesthesia, particularly when combined with neuromuscular blockade masking clinical signs (NAP5).</li>
+              <li>Pump programming errors, line disconnection, and drug/diluent dilution errors are recurring themes in incident reports.</li>
+              <li>Processed EEG (e.g. BIS/entropy) monitoring is recommended whenever TIVA is combined with neuromuscular blockade.</li>
+              <li>Local protocols, checklists and structured training reduce error rates and are advocated for departments extending TIVA to emergency practice.</li>
+            </ul>
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Patient selection</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li><strong>Favourable</strong>: severe PONV history, malignant hyperthermia susceptibility, shared airway/airway surgery where volatile scavenging is difficult.</li>
+              <li><strong>Challenging</strong>: profound haemorrhagic shock (unpredictable pharmacokinetics, awareness risk if targets under-delivered) and difficult venous access (risk of undetected extravasation/line failure).</li>
+            </ul>
+          </div>
+
+          <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Emergency Laparotomy</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Emergency laparotomy carries 10–15% overall mortality (NELA data), rising to &gt;25% in high-risk patients. The National Emergency Laparotomy Audit (NELA) has driven quality improvement through standardised care bundles.
@@ -234,6 +293,40 @@ const EmergencySurgeryTopic = () => {
             <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
               <EmergencyLaparotomyBundleDiagram />
             </div>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Damage-Control Laparotomy — Anaesthetic Management</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Damage-control laparotomy is indicated when the "lethal triad" (acidosis, hypothermia, coagulopathy) or ongoing massive transfusion make definitive repair unsafe; surgery is truncated to haemorrhage and contamination control only, with planned relook after physiological correction. <InlineRef topicId="emergency-surgery" refLabel="Anaesthesia 2013 (Emergency conduct)" />
+            </p>
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Physiological goals</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li>Permissive hypotension (SBP 80–90 mmHg) until surgical haemorrhage control — avoid in traumatic brain injury, where adequate cerebral perfusion pressure takes priority.</li>
+              <li>Minimise crystalloid; favour early 1:1:1 blood component (or whole-blood) resuscitation to limit dilutional coagulopathy.</li>
+              <li>Tranexamic acid within 3 h of injury/onset of bleeding.</li>
+              <li>Calcium replacement (ionised calcium falls rapidly with citrated blood products), active warming, and correction of acidosis.</li>
+            </ul>
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Haemostatic resuscitation</h3>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Resuscitation is targeted at restoring haemostasis rather than simply volume, guided by viscoelastic testing (TEG/ROTEM) to direct component and fibrinogen replacement rather than fixed empirical ratios alone once results are available.
+            </p>
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Induction and maintenance</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li>Ketamine or markedly reduced-dose induction agents to avoid vasodilation and cardiovascular collapse.</li>
+              <li>Consider TIVA with careful target reduction; high-dose opioid to blunt surgical stimulus while minimising further myocardial depression.</li>
+              <li>Awareness risk is increased by deliberately reduced anaesthetic dosing in shock — document rationale and consider processed EEG monitoring.</li>
+            </ul>
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Monitoring</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li>Invasive arterial and central venous access; serial arterial blood gas, lactate and ionised calcium.</li>
+              <li>Continuous temperature monitoring with active warming; thromboelastography to guide component therapy.</li>
+              <li>Cell salvage and rapid infuser devices for high-volume blood loss.</li>
+            </ul>
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Transfer and relook</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Safe transfer to critical care for ongoing resuscitation and correction of the lethal triad (temperature, coagulopathy, acidosis) before a planned return to theatre for definitive repair at 24–48 h.
+            </p>
           </div>
 
           <div>
