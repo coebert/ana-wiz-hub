@@ -22,6 +22,8 @@ const tocItems = [
   { id: "robotic", label: "Robotic gynaecological surgery", group: "Techniques" },
   { id: "hysteroscopy", label: "Hysteroscopy & fluid absorption", group: "Techniques" },
   { id: "oncology", label: "Major gynaecological oncology", group: "Major surgery" },
+  { id: "shoulder-tip", label: "Shoulder-tip pain", group: "Complications" },
+  { id: "hipec", label: "HIPEC", group: "Major surgery" },
   { id: "ectopic", label: "Ectopic pregnancy", group: "Emergency" },
   { id: "gas-embolism", label: "CO₂ gas embolism", group: "Complications" },
   { id: "faq", label: "FAQ", group: "Reference" },
