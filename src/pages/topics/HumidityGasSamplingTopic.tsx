@@ -217,6 +217,18 @@ const HumidityGasSamplingTopic = () => {
                 use the Bernoulli relationship and are more density dependent <InlineRef topicId="humidity-gas-sampling" refLabel="BJA 1983 Pneumotachography" />.
               </p>
               <p>
+                <strong>Lilly type in detail.</strong> A single fine stainless-steel or nylon <strong>mesh screen</strong> (sometimes
+                two in series) placed across the gas path provides the fixed resistance, and ΔP measured either side obeys the same
+                relationship <strong>ΔP = Flow × R</strong>. Compared with the Fleisch head, the Lilly screen is
+                <strong> more robust, lighter and much shorter</strong> (less dead space), easier to clean or replace, and less easily
+                blocked by droplets of water because there are no long narrow capillaries to occlude. Its weakness is that the mesh
+                resistance <strong>changes if it is contaminated</strong> with secretions, blood or nebulised drug, or if the screen
+                is damaged or partly torn — either way the calibration is lost and readings drift. Like the Fleisch head it must be
+                <strong> heated to around body temperature</strong> (or placed proximal to an HME) to prevent condensation on the
+                screen, and it is sensitive to gas composition, so calibration should match the gas mixture in use
+                <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
+              </p>
+              <p>
                 The flow signal is <strong>integrated electronically</strong> to derive volume (tidal volume, minute ventilation).
                 Both types must be <strong>heated to body temperature</strong> to prevent condensation on the resistance element,
                 which would increase resistance and cause inaccuracy. Changes in gas composition (viscosity, density) also affect readings
