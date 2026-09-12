@@ -493,7 +493,7 @@ export const perioperativeCases: PerioperativeCase[] = caseSeeds.map((caseData) 
   detailedAnswer: detailedAnswers[caseData.id] ?? [],
 }));
 
-const categories: Array<"All" | CaseCategory> = ["All", "Steroid cover", "Phaeochromocytoma", "Antifibrinolytics", "Co-existing disease"];
+const categories: Array<"All" | CaseCategory> = ["All", "Steroid cover", "Phaeochromocytoma", "Antifibrinolytics", "Co-existing disease", "Paediatric anaesthesia"];
 const difficulties: Array<"All" | PerioperativeCase["difficulty"]> = ["All", "Foundation", "Intermediate", "Advanced"];
 
 const caseSearchText = (caseData: PerioperativeCase): string => [
