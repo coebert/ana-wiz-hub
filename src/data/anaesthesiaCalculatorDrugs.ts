@@ -453,7 +453,7 @@ export const anaesthesiaCalcDrugs: AnaesthesiaCalcDrug[] = [
   {
     drug: "Fentanyl",
     groupId: "opioids",
-    kind: "micrograms/kg" as unknown as AnaesthesiaDoseKind extends never ? never : "bolus",
+    kind: "bolus",
     unit: "micrograms/kg",
     startDose: 1.5,
     minDose: 1,
