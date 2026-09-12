@@ -218,6 +218,10 @@ const IcuDrugCards = () => {
           and the{" "}
           <Link to="/intensive-care/calculator" className="font-medium text-icu underline-offset-4 hover:underline">
             infusion calculator
+          </Link>{" "}
+          ·{" "}
+          <Link to="/intensive-care/paediatric-pharmacokinetics" className="font-medium text-icu underline-offset-4 hover:underline">
+            Paediatric pharmacokinetics
           </Link>
           .
         </p>

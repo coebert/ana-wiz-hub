@@ -90,8 +90,17 @@ const IntensiveCareSection = () => {
         <a href="/intensive-care/drug-cards" className="font-medium text-icu underline-offset-4 hover:underline">
           full drug cards
         </a>{" "}
-        (class, mechanism, dosing, kinetics, safety and withdrawal on one card)
+        (class, mechanism, dosing, kinetics, safety and withdrawal on one card),
+        plus{" "}
+        <a
+          href="/intensive-care/paediatric-pharmacokinetics"
+          className="font-medium text-icu underline-offset-4 hover:underline"
+        >
+          paediatric pharmacokinetics
+        </a>{" "}
+        (weight-based clearance, volume of distribution and half-life by age band)
         .
+
 
       </p>
 

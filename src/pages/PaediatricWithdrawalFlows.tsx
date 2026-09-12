@@ -288,6 +288,14 @@ const PaediatricWithdrawalFlows = () => {
             ICU drug cards
           </Link>{" "}
           ·{" "}
+          <Link
+            to="/intensive-care/paediatric-pharmacokinetics"
+            className="font-medium text-icu underline-offset-4 hover:underline"
+          >
+            paediatric pharmacokinetics
+          </Link>{" "}
+          ·{" "}
+
           <Link to="/intensive-care/paediatric-flows" className="font-medium text-icu underline-offset-4 hover:underline">
             paediatric management flows
           </Link>{" "}
