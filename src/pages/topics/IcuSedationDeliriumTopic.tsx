@@ -258,6 +258,61 @@ const IcuSedationDeliriumTopic = () => {
             <CAMICUFlowchartDiagram />
           </div>
 
+          {/* Pain assessment in the non-verbal patient */}
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Pain Assessment in the Non-Verbal Patient
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Untreated pain is a leading driver of agitation, ventilator dyssynchrony and delirium, so the
+              &lsquo;A&rsquo; of the ABCDEF bundle must be delivered with a validated tool.{" "}
+              <strong>Patient self-report (0–10 NRS) remains the gold standard</strong>; where sedation,
+              delirium or an artificial airway makes self-report impossible, a validated behavioural scale is
+              recommended — either the <strong>Critical-Care Pain Observation Tool (CPOT)</strong> or the{" "}
+              <strong>Behavioural Pain Scale (BPS)</strong>
+              <InlineRef topicId="icu-sedation-delirium" refLabel="SCCM PADIS 2018" />. Vital signs alone
+              (tachycardia, hypertension) are <em>not</em> valid indicators of pain and should only prompt
+              formal assessment.
+            </p>
+            <div className="overflow-x-auto mb-3">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">CPOT domain</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Score 0</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Score 1</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Score 2</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Facial expression</td><td>Relaxed, neutral</td><td>Tense (brow lowering, orbit tightening)</td><td>Grimacing, eyelids tightly closed</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Body movements</td><td>Absence of movement</td><td>Protective — slow, cautious, guarding site</td><td>Restless — pulling tube, striking staff, out of bed</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Muscle tension (passive flexion of forearm)</td><td>Relaxed</td><td>Tense, rigid</td><td>Very tense or rigid, resists passive movement</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Compliance with ventilator (intubated) <em>or</em> vocalisation (extubated)</td><td>Tolerating ventilator / normal tone or silent</td><td>Coughing but tolerating / sighing, moaning</td><td>Fighting ventilator, alarms triggered / crying out, sobbing</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>Each of the four domains scores <strong>0–2</strong>, giving a total of <strong>0–8</strong>.</li>
+              <li>
+                A <strong>CPOT &gt; 2</strong> indicates significant pain and should trigger analgesia and
+                reassessment (BPS equivalent: score &gt; 5 of 3–12).
+              </li>
+              <li>
+                Assess at least once per shift, before and after procedures (turning, suctioning, dressing
+                changes) and after any analgesic intervention.
+              </li>
+              <li>
+                Adopt <strong>analgo-sedation</strong>: treat pain first with opioid ± regional or
+                multimodal adjuncts before adding or deepening sedation.
+              </li>
+              <li>
+                Neuromuscular blockade abolishes every behavioural cue — rely on depth-of-sedation
+                monitoring plus a fixed analgesic regimen rather than a behavioural score.
+              </li>
+            </ul>
+          </div>
+
           {/* Prevention & treatment */}
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Delirium Prevention &amp; Treatment</h2>
