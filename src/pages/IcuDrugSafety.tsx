@@ -1,11 +1,35 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft, ShieldAlert, Search, TriangleAlert, Ban, Activity, Link2 } from "lucide-react";
+import {
+  ArrowLeft,
+  ShieldAlert,
+  Search,
+  TriangleAlert,
+  Ban,
+  Activity,
+  Link2,
+  FlaskConical,
+} from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { icuDrugSafetyGroups, icuDrugSafetyCount } from "@/data/icuDrugSafety";
+import { icuDrugMechanismGroups } from "@/data/icuDrugMechanisms";
+import { icuDrugPharmacokinetics } from "@/data/pk";
+
+/** Mechanism records keyed by slug so each safety card can explain *why* it behaves that way. */
+const mechanismBySlug = new Map(
+  icuDrugMechanismGroups.flatMap((g) => g.drugs).map((d) => [d.slug, d]),
+);
+
+/** Trim a long narrative to its first couple of sentences for the summary line. */
+const firstSentences = (text: string, count = 2) => {
+  const parts = text.match(/[^.!?]+[.!?]+/g);
+  if (!parts) return text;
+  const summary = parts.slice(0, count).join(" ").trim();
+  return parts.length > count ? summary : summary;
+};
 
 const IcuDrugSafety = () => {
   const [searchParams] = useSearchParams();
@@ -19,6 +43,7 @@ const IcuDrugSafety = () => {
     const el = document.getElementById(targetSlug);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [targetSlug]);
+
 
   const groups = useMemo(() => {
     const q = search.trim().toLowerCase();
