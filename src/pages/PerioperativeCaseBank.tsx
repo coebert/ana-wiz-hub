@@ -74,6 +74,36 @@ const detailedAnswers: Record<string, DetailedAnswerSection[]> = {
     { title: "Management and monitoring", content: "Treat infection and restore perfusion first. For clinically important bleeding, replace platelets, fibrinogen and plasma according to serial laboratory and viscoelastic assessment; common pragmatic targets include platelets above 50 ×10⁹/L and fibrinogen above 1.5 g/L, individualised to the bleeding site. Consider TXA only for exceptional life-threatening bleeding with demonstrated predominant hyperfibrinolysis and specialist input." },
     { title: "Exam pitfall", content: "Bleeding plus a high D-dimer is not an automatic TXA indication. State the DIC phenotype, evidence of fibrinolysis and the risk of worsening thrombosis." },
   ],
+  "steroid-dental": [
+    { title: "Clinical reasoning", content: "A minor procedure under local anaesthesia usually produces little physiological stress. A patient taking a stable physiological replacement dose should continue it; indiscriminate high-dose hydrocortisone adds hyperglycaemia, infection and wound-healing harms without clear benefit." },
+    { title: "Management and monitoring", content: "Confirm adherence, recent illness and ability to take oral medication. Continue the usual morning hydrocortisone, use effective local anaesthesia and analgesia, and give written sick-day advice. Escalate only if the procedure becomes prolonged, the patient cannot absorb oral medication or haemodynamic features suggest crisis." },
+    { title: "Exam pitfall", content: "Steroid cover is proportional to surgical stress and baseline replacement. ‘Any steroid history means 100 mg hydrocortisone’ is not a defensible rule." },
+  ],
+  "steroid-pituitary": [
+    { title: "Clinical reasoning", content: "Pituitary disease may cause secondary adrenal insufficiency without hyperkalaemia because aldosterone is largely preserved. Fasting, vomiting and omission of hydrocortisone can still precipitate hypotension and hypoglycaemia during major surgery." },
+    { title: "Management and monitoring", content: "Continue replacement, give hydrocortisone 100 mg IV at induction and 200 mg over 24 hours for major stress, then taper toward baseline as recovery permits. Monitor sodium, glucose, pressure and fluid balance; account for coexisting diabetes insipidus or hypothyroidism." },
+    { title: "Exam pitfall", content: "Normal potassium does not exclude secondary adrenal crisis. Replace glucocorticoid before starting or increasing thyroxine in untreated combined pituitary deficiency." },
+  ],
+  "phaeo-pregnancy": [
+    { title: "Clinical reasoning", content: "Phaeochromocytoma in pregnancy threatens both maternal and fetal circulation. Episodic hypertension, headache, sweating and palpitations that predate pre-eclampsia should prompt metanephrine testing and MRI without gadolinium." },
+    { title: "Management and monitoring", content: "Coordinate endocrine, obstetric, anaesthetic, neonatal and surgical care. Establish alpha blockade before any beta blocker, restore volume carefully and use invasive monitoring for surgery or delivery. Timing of adrenalectomy and delivery depends on gestation, tumour anatomy and control." },
+    { title: "Exam pitfall", content: "Do not treat tachycardia first with isolated beta blockade, and do not assume all hypertension after 20 weeks is pre-eclampsia." },
+  ],
+  "phaeo-incidental": [
+    { title: "Clinical reasoning", content: "An adrenal incidentaloma with biochemical catecholamine excess creates risk even when symptoms are mild. Elective unrelated surgery can trigger crisis through induction, intubation, surgical stress or interacting drugs." },
+    { title: "Management and monitoring", content: "Postpone non-urgent surgery, confirm biochemistry and imaging, assess end-organ effects and establish alpha blockade with volume restoration. If emergency surgery cannot wait, use an arterial line, senior multidisciplinary input and prepared short-acting vasodilator and vasopressor infusions." },
+    { title: "Exam pitfall", content: "Do not dismiss an asymptomatic tumour or proceed after simply adding a beta blocker. Explain why the unrelated operation should usually be deferred." },
+  ],
+  "txa-renal": [
+    { title: "Clinical reasoning", content: "TXA is eliminated predominantly unchanged by the kidney. Advanced renal impairment prolongs exposure, so repeated or high dosing increases accumulation and seizure risk; the indication and local renal-adjustment protocol must be explicit." },
+    { title: "Management and monitoring", content: "Verify current renal function, indication, timing and cumulative dose. Use the lowest evidence-based renal-adjusted regimen in consultation with local guidance, avoid accidental repeat dosing and monitor neurological recovery. New myoclonus or seizures require drug review and supportive seizure management." },
+    { title: "Exam pitfall", content: "Do not copy a normal-renal-function regimen into advanced kidney disease. Separate efficacy evidence from dosing safety." },
+  ],
+  "txa-cardiac": [
+    { title: "Clinical reasoning", content: "Cardiac surgery activates fibrinolysis and often benefits from antifibrinolysis, but cardiopulmonary bypass, renal dysfunction and high cumulative TXA exposure all increase postoperative seizure risk." },
+    { title: "Management and monitoring", content: "Use the unit’s weight- and renal-function-adjusted protocol, document all loading, bypass-prime and infusion doses, and coordinate blood conservation with surgical haemostasis, cell salvage and point-of-care coagulation testing. Protect against medication-route errors." },
+    { title: "Exam pitfall", content: "More TXA is not automatically better. State the trade-off between reduced transfusion and dose-related neurological toxicity." },
+  ],
 };
 
 type CaseSeed = Omit<PerioperativeCase, "detailedAnswer">;
@@ -211,6 +241,60 @@ const caseSeeds: CaseSeed[] = [
     ],
     takeHome: "Bleeding is not synonymous with an indication for TXA. In DIC, correct the cause and replace deficient components; use antifibrinolytics only for demonstrated dominant hyperfibrinolysis.", sourceLinks: [sources.crash2],
   },
+  {
+    id: "steroid-dental", title: "Minor procedure on replacement hydrocortisone", category: "Steroid cover", difficulty: "Foundation",
+    patient: "An adult with stable primary adrenal insufficiency is listed for a short dental extraction under local anaesthesia.", presentation: "They are well, have taken their usual morning hydrocortisone and ask whether an injection is mandatory.",
+    stages: [
+      { title: "Grade the stress", prompt: "Does every procedure require parenteral stress dosing?", answer: ["No: supplementation should reflect procedural stress, illness and ability to absorb usual treatment.", "A short uncomplicated procedure under effective local anaesthesia is minor stress.", "Confirm emergency steroid and sick-day plans."] },
+      { title: "Make a proportionate plan", prompt: "What would you do today?", answer: ["Continue the usual oral replacement.", "Use effective local anaesthesia, analgesia and minimise fasting.", "Escalate if the procedure becomes prolonged, oral medication is missed or systemic illness develops."] },
+      { title: "Recognise deterioration", prompt: "What if vomiting and hypotension develop?", answer: ["Treat suspected adrenal crisis immediately with hydrocortisone 100 mg IV or IM.", "Give isotonic fluid and glucose where required and seek urgent care.", "Do not wait for cortisol testing."] },
+    ], takeHome: "Match glucocorticoid supplementation to physiological stress; continue baseline replacement and retain a clear rescue plan.", sourceLinks: [sources.steroid],
+  },
+  {
+    id: "steroid-pituitary", title: "Pituitary insufficiency before major surgery", category: "Steroid cover", difficulty: "Intermediate",
+    patient: "An adult with panhypopituitarism takes hydrocortisone and levothyroxine and is listed for open abdominal surgery.", presentation: "They have fasted, omitted morning medicines and have glucose 3.5 mmol/L with normal potassium.",
+    stages: [
+      { title: "Interpret the pattern", prompt: "Does normal potassium exclude adrenal risk?", answer: ["No. Secondary adrenal insufficiency often preserves aldosterone and potassium.", "Missed glucocorticoid, fasting and major stress create crisis risk.", "Review diabetes insipidus and other pituitary replacement."] },
+      { title: "Provide major-stress cover", prompt: "What regimen is appropriate?", answer: ["Give hydrocortisone 100 mg IV at induction.", "Continue 200 mg over 24 hours or 50 mg six-hourly initially.", "Correct hypoglycaemia and monitor sodium, glucose and fluid balance."] },
+      { title: "Sequence endocrine treatment", prompt: "What endocrine ordering matters?", answer: ["Ensure glucocorticoid replacement before initiating or escalating thyroid hormone in combined deficiency.", "Taper toward baseline when stable and absorbing orally.", "Seek endocrine input for complex fluid or sodium disturbance."] },
+    ], takeHome: "Secondary adrenal insufficiency can present without hyperkalaemia; major stress still requires timely glucocorticoid replacement.", sourceLinks: [sources.steroid],
+  },
+  {
+    id: "phaeo-pregnancy", title: "Catecholamine symptoms in pregnancy", category: "Phaeochromocytoma", difficulty: "Advanced",
+    patient: "A pregnant adult at 24 weeks has episodic hypertension, headache, sweating and palpitations.", presentation: "Urine protein is absent and symptoms began early in pregnancy; plasma metanephrines are markedly elevated.",
+    stages: [
+      { title: "Differentiate the diagnosis", prompt: "Why is this not automatically pre-eclampsia?", answer: ["Paroxysmal symptoms and early onset suggest catecholamine excess.", "Confirm biochemistry and localise with pregnancy-appropriate imaging, commonly MRI without gadolinium.", "Assess maternal cardiac and fetal effects."] },
+      { title: "Prepare safely", prompt: "What is the pharmacological sequence?", answer: ["Establish alpha blockade first and restore circulating volume cautiously.", "Add beta blockade only after adequate alpha control for persistent tachycardia.", "Coordinate a specialist multidisciplinary plan."] },
+      { title: "Plan definitive care", prompt: "How is timing decided?", answer: ["Balance gestation, tumour location, haemodynamic control and maternal-fetal risk.", "Use invasive monitoring and short-acting vasoactive drugs for surgery or delivery.", "Agree neonatal and postoperative critical-care provision."] },
+    ], takeHome: "Phaeochromocytoma in pregnancy requires early recognition, alpha-before-beta blockade and coordinated maternal-fetal planning.", sourceLinks: [sources.phaeo],
+  },
+  {
+    id: "phaeo-incidental", title: "Adrenal incidentaloma before elective surgery", category: "Phaeochromocytoma", difficulty: "Intermediate",
+    patient: "An adult awaiting elective joint replacement has an adrenal incidentaloma and elevated metanephrines.", presentation: "They report few symptoms and the surgical team asks whether the unrelated operation can proceed.",
+    stages: [
+      { title: "Assess hidden risk", prompt: "Can an asymptomatic patient still develop crisis?", answer: ["Yes. Anaesthesia, intubation and surgical stress can trigger catecholamine release.", "Review biochemical certainty, imaging and end-organ effects.", "Do not equate few symptoms with low perioperative risk."] },
+      { title: "Prioritise procedures", prompt: "What happens to elective surgery?", answer: ["Postpone non-urgent surgery for endocrine evaluation and preparation.", "Institute alpha blockade and volume restoration before definitive management.", "Avoid isolated beta blockade."] },
+      { title: "Handle an emergency exception", prompt: "What if unrelated surgery cannot wait?", answer: ["Use senior multidisciplinary planning and invasive arterial monitoring.", "Prepare titratable vasodilators, vasopressors and postoperative critical care.", "Avoid known catecholamine-provoking drugs where alternatives exist."] },
+    ], takeHome: "Biochemically active phaeochromocytoma makes unrelated elective anaesthesia unsafe until appropriately prepared.", sourceLinks: [sources.phaeo],
+  },
+  {
+    id: "txa-renal", title: "Tranexamic acid in advanced kidney disease", category: "Antifibrinolytics", difficulty: "Advanced",
+    patient: "An adult with stage 4 chronic kidney disease is listed for revision arthroplasty with anticipated major blood loss.", presentation: "A standard repeated-dose TXA regimen has been copied onto the chart.",
+    stages: [
+      { title: "Identify accumulation risk", prompt: "Why must the prescription be reconsidered?", answer: ["TXA is predominantly renally eliminated.", "Reduced clearance increases exposure from repeated or high dosing.", "High exposure is associated with postoperative seizures."] },
+      { title: "Prescribe safely", prompt: "What practical safeguards are required?", answer: ["Confirm current renal function and follow the local renal-adjusted protocol.", "Document timing and cumulative dose to prevent repetition.", "Use blood conservation and haemostatic measures in parallel."] },
+      { title: "Respond to neurological signs", prompt: "What if postoperative myoclonus occurs?", answer: ["Consider TXA accumulation among metabolic and neurological causes.", "Stop further TXA, correct reversible factors and treat seizures promptly.", "Escalate monitoring and specialist review."] },
+    ], takeHome: "Renal impairment changes TXA exposure: use an evidence-based adjusted regimen and monitor cumulative dose and neurological toxicity.", sourceLinks: [sources.poise3],
+  },
+  {
+    id: "txa-cardiac", title: "High-dose TXA during cardiac surgery", category: "Antifibrinolytics", difficulty: "Advanced",
+    patient: "An older adult with impaired renal function undergoes complex redo valve surgery with cardiopulmonary bypass.", presentation: "Several TXA doses are planned in the loading dose, pump prime and infusion.",
+    stages: [
+      { title: "Balance benefit and harm", prompt: "Why is careful cumulative dosing important?", answer: ["Antifibrinolysis can reduce bleeding and transfusion in cardiac surgery.", "Bypass, renal dysfunction and high cumulative exposure increase seizure risk.", "Benefit does not justify untracked dose escalation."] },
+      { title: "Coordinate blood conservation", prompt: "What belongs in the complete plan?", answer: ["Use a weight- and renal-adjusted institutional regimen.", "Record every loading, prime and infusion dose.", "Combine surgical haemostasis, cell salvage and point-of-care coagulation guidance."] },
+      { title: "Plan postoperative surveillance", prompt: "What should handover emphasise?", answer: ["State cumulative TXA exposure and renal function.", "Distinguish seizure from delayed emergence, shivering and embolic stroke.", "Maintain route separation so TXA cannot enter a neuraxial pathway."] },
+    ], takeHome: "In cardiac surgery, TXA should be protocolised and dose-accounted; renal function and seizure risk constrain exposure.", sourceLinks: [sources.poise3],
+  },
 ];
 
 const cases: PerioperativeCase[] = caseSeeds.map((caseData) => ({
@@ -227,8 +311,8 @@ const PerioperativeCaseBank = () => {
   return (
     <SectionLayout
       title="Perioperative Case Bank"
-      subtitle="Twelve progressive, exam-focused composite cases in steroid cover, phaeochromocytoma and antifibrinolytic therapy."
-      metaDescription="Work through 12 progressive perioperative cases covering steroid cover, phaeochromocytoma and tranexamic acid for FRCA and FFICM revision."
+      subtitle="Eighteen progressive, exam-focused composite cases in steroid cover, phaeochromocytoma and antifibrinolytic therapy."
+      metaDescription="Work through 18 progressive perioperative cases covering steroid cover, phaeochromocytoma and tranexamic acid for FRCA and FFICM revision."
       backPath="/perioperative"
       backLabel="Perioperative Medicine"
       accentColor="text-perioperative"
