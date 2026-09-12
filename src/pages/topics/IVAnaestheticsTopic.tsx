@@ -238,10 +238,22 @@ const IVAnaestheticsTopic = () => {
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
             <strong>Mechanism</strong>: GABA_A agonist (opens chloride channel directly at high doses, potentiates at low doses).
-            <strong> CVS</strong>: tachycardia (baroreceptor reflex to vasodilation), myocardial depression. <strong>CNS</strong>:
-            powerful anticonvulsant, cerebral protectant (reduces CMRO₂). <strong>Other</strong>: porphyria is an absolute
+            <strong> CNS</strong>: powerful anticonvulsant, cerebral protectant (reduces CMRO₂). <strong>Other</strong>: porphyria is an absolute
             contraindication. Histamine release. No analgesic properties.
           </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            <strong>Cardiovascular effects</strong>: the dominant vascular action is <strong>venodilation</strong> — dilatation of
+            capacitance vessels causes blood to pool in the splanchnic and peripheral venous beds, so venous return and
+            <strong> preload fall</strong>, reducing stroke volume, cardiac output and arterial pressure. A baroreceptor-mediated
+            tachycardia follows, which raises myocardial oxygen demand and is poorly tolerated in ischaemic heart disease or
+            fixed-output states (aortic stenosis, tamponade). Superimposed <strong>direct negative inotropy</strong> compounds the
+            fall in output, and histamine release may add a further drop in tone. This is a different mechanism from propofol,
+            whose hypotension is driven mainly by <strong>arterial (arteriolar) vasodilation with reduced SVR</strong> and blunting
+            of the baroreflex, so heart rate does not rise. Practical consequence: in hypovolaemia, where preload is already
+            reduced, thiopentone produces exaggerated hypotension — reduce the dose, give it slowly, and restore volume first
+            <InlineRef topicId="iv-anaesthetics" refLabel="Peck & Hill Ch.5" />.
+          </p>
+
         </section>
 
         <section className="mb-10">
@@ -252,10 +264,20 @@ const IVAnaestheticsTopic = () => {
             open and maintained airway reflexes (relatively).
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
-            <strong>CVS</strong>: indirect sympathomimetic (↑HR, ↑BP, ↑SVR) — useful in haemodynamically compromised patients
-            and tamponade. Direct myocardial depressant in catecholamine-depleted states. <strong>RS</strong>: bronchodilator,
-            preserves respiratory drive (relatively), increased secretions. <strong>CNS</strong>: raises ICP and IOP. Emergence
-            phenomena (hallucinations, vivid dreams) — reduced with benzodiazepines.
+            <strong>CVS</strong>: ketamine's haemodynamic profile is a <strong>dual action</strong>.
+
+            Centrally mediated sympathetic activation plus inhibition of neuronal noradrenaline reuptake raises heart rate,
+            arterial pressure, SVR and cardiac output — the <strong>indirect sympathomimetic</strong> effect that predominates in
+            most patients and makes it attractive in hypovolaemia, tamponade and trauma. In parallel ketamine is a
+            <strong> direct negative inotrope</strong>, demonstrable in isolated myocardium. Where catecholamine reserve is
+            exhausted — prolonged critical illness, late septic shock, high endogenous sympathetic tone, patients on chronic
+            beta-blockade or with autonomic failure — the sympathetic component is blunted or absent and the direct depressant
+            effect is <strong>unmasked</strong>, producing hypotension and falling output. Titrate carefully and have a
+            vasopressor drawn up in these patients <InlineRef topicId="iv-anaesthetics" refLabel="Peck & Hill Ch.5" />.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            <strong>RS</strong>: bronchodilator, preserves respiratory drive (relatively), increased secretions. <strong>CNS</strong>:
+            raises ICP and IOP. Emergence phenomena (hallucinations, vivid dreams) — reduced with benzodiazepines.
           </p>
           <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
             <p className="text-sm font-medium text-foreground">Unique Properties</p>
@@ -265,6 +287,7 @@ const IVAnaestheticsTopic = () => {
               doses for chronic pain and treatment-resistant depression.
             </p>
           </div>
+
 
           <div className="mt-6">
             <KetaminePharmacologyDiagram />

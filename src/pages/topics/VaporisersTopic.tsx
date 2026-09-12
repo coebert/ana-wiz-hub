@@ -280,6 +280,73 @@ const VaporisersTopic = () => {
               </ul>
             </div>
 
+            {/* Aladin cassette */}
+            <div id="aladin-cassette">
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+                The Aladin cassette system (Datex-Ohmeda / GE workstations)
+              </h2>
+              <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  The Aladin is a hybrid: a <strong>single electronic control unit built into the workstation</strong> plus a set of
+                  lightweight, <strong>interchangeable agent-specific cassettes</strong> (sevoflurane, isoflurane, desflurane,
+                  halothane, enflurane). Only the cassette — essentially a sump of liquid agent with a wick and one gas connection —
+                  is changed; the measurement and control electronics stay in the machine.
+                </p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li><strong>Identification:</strong> each cassette is colour-coded, keyed, and carries a <strong>magnetic identifier</strong> that the machine reads, so the workstation knows the agent, its SVP characteristics and cannot be filled or run as the wrong agent.</li>
+                  <li><strong>Flow control:</strong> the machine measures fresh gas flow, temperature and pressures and uses an <strong>electronically controlled valve to divert a calculated portion of fresh gas into the cassette sump</strong> — the splitting is computed, not mechanical.</li>
+                  <li><strong>Vapour delivery:</strong> gas leaves the cassette <strong>saturated</strong> and rejoins the bypass flow inside the machine; a flow measurement on the cassette limb allows closed-loop correction of the delivered concentration, so output stays accurate across flows and altitude.</li>
+                  <li><strong>Safety and convenience:</strong> cassettes are light and easy to swap, <strong>can be tipped or carried without spilling liquid into the bypass</strong> (unlike a Tec, which must be flushed after tilting &gt;45°), agent level is shown digitally, the interlock is electronic rather than mechanical, and agent use is logged automatically for record keeping. Failure of electronics or power means no vapour delivery — an alternative vaporiser or a TIVA plan is essential.</li>
+                  <li><strong>Desflurane is the exception:</strong> the desflurane cassette is <strong>heated</strong> (with its own heating element and pressure control) because desflurane boils at 22.8 °C; functionally it behaves like a Tec 6-style measured-vapour injector rather than a passive saturating sump.</li>
+                </ul>
+                <p><InlineRef topicId="vaporisers" refLabel="Al-Shaikh & Stacey Ch.5" /> <InlineRef topicId="vaporisers" refLabel="Davey & Diba Ch.3" /></p>
+              </div>
+            </div>
+
+            {/* Altitude */}
+            <div id="altitude">
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+                Vaporiser output at altitude
+              </h2>
+              <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  Work through it in steps — the exam wants the mechanism, not just the conclusion
+                  <InlineRef topicId="vaporisers" refLabel="BJA Educ 2014" />.
+                </p>
+                <ol className="list-decimal list-inside space-y-1">
+                  <li><strong>The output equation.</strong> For a variable-bypass vaporiser, delivered concentration
+                    C<sub>out</sub> ≈ [SVP / (P<sub>atm</sub> − SVP)] × (Flow<sub>chamber</sub> / Flow<sub>total</sub>) × 100 %, i.e.
+                    C<sub>out</sub> is proportional to P<sub>atm</sub> / (P<sub>atm</sub> − SVP) for a fixed splitting ratio.</li>
+                  <li><strong>SVP is a property of the agent and its temperature only</strong> — it does not change with altitude. P<sub>atm</sub> does fall (≈60 kPa at 4000 m).</li>
+                  <li><strong>Therefore the saturated chamber concentration rises</strong> (sevoflurane 21.3/101.3 ≈ 21 % at sea level, 21.3/60 ≈ 36 % at 60 kPa), so for the same splitting ratio the <em>volumes per cent</em> leaving the vaporiser <strong>increases</strong>.</li>
+                  <li><strong>Partial pressure is preserved.</strong> P<sub>out</sub> = C<sub>out</sub> × P<sub>atm</sub>: the rise in concentration almost exactly offsets the fall in atmospheric pressure, so the delivered <strong>partial pressure — the determinant of MAC and clinical effect — is essentially unchanged</strong>. Practically, a plenum vaporiser is self-compensating: leave the dial where you normally would, and accept that the rotameter/agent monitor will read a higher percentage than usual.</li>
+                  <li><strong>Contrast the Tec 6.</strong> It injects pure vapour to achieve the dialled <em>concentration</em>, so at altitude concentration is held constant and the delivered <strong>partial pressure falls in proportion to P<sub>atm</sub></strong> — the patient is under-dosed. Compensate by increasing the dial roughly by the factor 101/P<sub>atm</sub> (e.g. dial ~10 % at 60 kPa to obtain a sea-level 6 % equivalent), guided by an agent monitor and depth-of-anaesthesia assessment. The reverse applies in a hyperbaric chamber.</li>
+                </ol>
+              </div>
+            </div>
+
+            {/* Flow and viscosity effects */}
+            <div id="flow-effects">
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+                Effects of fresh gas flow and gas composition on output
+              </h2>
+              <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  Modern plenum vaporisers are calibrated and accurate to about ±10 % over a stated range, typically
+                  <strong> 0.25–15 L/min</strong>. Outside that range the assumption that chamber gas leaves fully saturated, in the
+                  designed splitting ratio, breaks down <InlineRef topicId="vaporisers" refLabel="BJA Educ 2014" />.
+                </p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li><strong>Very low flows (&lt;250 mL/min):</strong> output is unpredictable and typically <strong>lower than dialled</strong>. Flow within the chamber is too slow and too laminar to mix and sweep vapour off the wicks efficiently, and back-diffusion and the relatively greater effect of internal resistances distort the splitting ratio.</li>
+                  <li><strong>Very high flows (&gt;15 L/min):</strong> output again falls <strong>below</strong> the dial because gas transit time through the chamber is too short for <strong>complete saturation</strong>, and the cooling effect of rapid vaporisation outstrips temperature compensation.</li>
+                  <li><strong>Gas composition and viscosity/density:</strong> switching from oxygen to a nitrous oxide–oxygen mixture alters gas viscosity and density and therefore the distribution of flow between the low-resistance bypass and the chamber channels, causing a small change in output. There is also a transient dip as nitrous oxide dissolves in the liquid agent when it is first introduced. Modern designs keep resistances similar in both limbs, so these effects are small and clinically minor — but they are the reason a vaporiser is calibrated for a specific carrier gas.</li>
+                  <li><strong>Practical corollary:</strong> at very low or very high flows, and after changing carrier gas, confirm the delivered concentration with an <strong>agent monitor</strong> rather than trusting the dial.</li>
+                </ul>
+              </div>
+            </div>
+
+
+
             {/* Comparison table */}
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
