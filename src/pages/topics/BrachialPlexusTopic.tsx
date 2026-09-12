@@ -216,6 +216,81 @@ const BrachialPlexusTopic = () => {
             </p>
           </ExamSection>
 
+          <ExamSection id="adjuvants" exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Regional Anaesthesia"]}>
+            <CollapsibleSubsection title="Pharmacological Adjuvants for Brachial Plexus Block">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Adjuvants are added to prolong analgesia beyond the 8–14 h given by plain long-acting local anaesthetic, without the catheter burden. None is licensed for perineural use in the UK, so use is off-label and must be documented and preservative-free.<Cite topicId="brachial-plexus" labels={["BJA 2024 Dexamethasone ISB", "Miller Ch.46"]} />
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Adjuvant</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Dose</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Mechanism</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Effect &amp; cautions</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Dexamethasone</td><td>4–8 mg perineural or IV</td><td>Local vasoconstriction, inhibition of ectopic C-fibre discharge, anti-inflammatory; some effect is systemic</td><td>Prolongs analgesia by 6–8 h. Perineural gives about 2 h more than the same IV dose, so IV is a reasonable and non-off-label alternative. Transient hyperglycaemia.<Cite topicId="brachial-plexus" labels={["BJA 2024 Dexamethasone ISB"]} /></td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Dexmedetomidine</td><td>0.5–1 mcg/kg (typically 50–100 mcg)</td><td>α₂-adrenoceptor agonism; hyperpolarisation-activated cation current block in C and Aδ fibres</td><td>Prolongs block by ~3–5 h and speeds onset. Dose-dependent bradycardia, hypotension and sedation — avoid in heart block and unmonitored patients.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Clonidine</td><td>0.5–1 mcg/kg (max ~150 mcg)</td><td>α₂ agonism</td><td>Prolongs analgesia by ~2 h; weaker than dexmedetomidine. Sedation, hypotension, bradycardia; avoid in the elderly.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Buprenorphine</td><td>100–300 mcg</td><td>Partial µ agonist with local sodium-channel blocking action</td><td>Prolongs analgesia by ~8 h but causes nausea and vomiting in up to a third of patients; anti-emetic cover advised.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Adrenaline</td><td>1:200,000–1:400,000 (2.5–5 mcg/mL)</td><td>Vasoconstriction reducing systemic uptake</td><td>Marker of intravascular injection and reduces peak plasma concentration; modest prolongation. Avoid where perfusion is precarious or in patients with severe cardiovascular disease.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              Sodium bicarbonate, midazolam, tramadol, ketamine and magnesium have all been described but evidence is weak or neurotoxicity is a concern; midazolam and ketamine should not be given perineurally. Liposomal bupivacaine offers prolonged release but its clinical superiority over adjuvant-supplemented plain bupivacaine is not established.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="injury-patterns" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <CollapsibleSubsection title="Traction Injury Patterns: Erb's and Klumpke's">
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Erb–Duchenne palsy (upper, C5–C6)</p>
+                <p className="text-sm text-muted-foreground mt-1"><strong>Mechanism:</strong> forcible downward traction on the arm or lateral flexion of the neck away from the shoulder — shoulder dystocia at delivery, a fall onto the shoulder, motorcycle injury, or excessive arm abduction and head rotation under anaesthesia. <strong>Site:</strong> superior trunk, classically Erb's point where C5 and C6 unite. <strong>Motor loss:</strong> deltoid and supraspinatus (abduction), biceps and brachialis (elbow flexion), supinator, infraspinatus (lateral rotation). <strong>Posture:</strong> arm adducted and internally rotated, elbow extended, forearm pronated, wrist flexed — the "waiter's tip" deformity. <strong>Sensory:</strong> lateral arm and forearm (regimental badge and lateral cutaneous of forearm). <strong>Reflexes:</strong> biceps and supinator lost, triceps preserved. Hand function is intact.<Cite topicId="brachial-plexus" labels={["Ellis & Feldman Ch.8"]} /></p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Klumpke's palsy (lower, C8–T1)</p>
+                <p className="text-sm text-muted-foreground mt-1"><strong>Mechanism:</strong> forcible upward traction on the abducted arm — breech delivery with the arm above the head, grabbing for a hold during a fall, apical lung tumour (Pancoast), cervical rib or thoracic outlet compression, and sternal retraction during cardiac surgery. <strong>Site:</strong> inferior trunk. <strong>Motor loss:</strong> intrinsic hand muscles (interossei, lumbricals, thenar and hypothenar), long finger flexors — producing a <strong>claw hand</strong> with metacarpophalangeal hyperextension and interphalangeal flexion. <strong>Sensory:</strong> medial forearm and hand (medial cutaneous nerves, ulnar territory). <strong>Associated Horner's syndrome</strong> (ptosis, miosis, anhidrosis, enophthalmos) if the T1 root is avulsed proximally, because the preganglionic sympathetic fibres to the stellate ganglion travel with T1 — its presence suggests a proximal, poor-prognosis root avulsion.<Cite topicId="brachial-plexus" labels={["Ellis & Feldman Ch.8", "Miller Ch.46"]} /></p>
+              </div>
+              <div className="p-4 rounded-lg border border-border sm:col-span-2">
+                <p className="font-semibold text-foreground text-sm">Perioperative prevention and assessment</p>
+                <p className="text-sm text-muted-foreground mt-1">Limit arm abduction to &lt; 90° on arm boards, avoid external rotation and posterior shoulder displacement, pad the elbow, avoid shoulder braces in steep Trendelenburg, and document neurological status before regional block. Distinguish a <strong>preganglionic root avulsion</strong> (Horner's, paraspinal muscle denervation, preserved sensory nerve action potentials on nerve conduction studies, pseudomeningocoele on MRI — poor prognosis, needs early nerve transfer) from a <strong>postganglionic rupture or neurapraxia</strong> (recoverable, often within 3 months). Serial examination, EMG at 3–4 weeks and MRI guide surgical referral.</p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="chronic-pain" exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Pain Medicine"]}>
+            <CollapsibleSubsection title="Chronic Pain, CRPS and the Brachial Plexus">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              The upper limb is the commonest site of <strong>complex regional pain syndrome (CRPS)</strong>, typically after distal radius fracture, carpal tunnel surgery or a minor crush injury. Diagnosis is clinical, using the <strong>Budapest criteria</strong>: continuing pain disproportionate to the inciting event, plus symptoms and confirmed signs in at least two of four categories — sensory (hyperalgesia, allodynia), vasomotor (temperature asymmetry, skin colour change), sudomotor/oedema (sweating change, swelling), and motor/trophic (weakness, tremor, dystonia, nail and hair change) — with no better explanation. CRPS type I has no identifiable nerve lesion; type II follows a definable nerve injury (causalgia).
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Mechanisms</p>
+                <p className="text-sm text-muted-foreground mt-1">Peripheral and central sensitisation, neurogenic inflammation with release of substance P and CGRP, altered sympathetic–afferent coupling and adrenoreceptor upregulation, microvascular dysfunction, glial activation and maladaptive cortical reorganisation of the somatosensory map. Disuse amplifies each mechanism.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Management</p>
+                <p className="text-sm text-muted-foreground mt-1">Evidence for individual treatments is weak; systematic review evidence supports early multidisciplinary rehabilitation as the cornerstone, with graded motor imagery and mirror therapy, physiotherapy and desensitisation, and psychological therapy.<Cite topicId="brachial-plexus" labels={["Cochrane 2023 CRPS"]} /> Drugs: paracetamol and NSAIDs, gabapentinoids or amitriptyline/duloxetine for neuropathic pain, short courses of oral corticosteroid in the early inflammatory phase, bisphosphonates, and topical lidocaine or capsaicin. Opioids are of limited value.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Interventional options</p>
+                <p className="text-sm text-muted-foreground mt-1">Stellate ganglion block or continuous brachial plexus catheter can provide a window for intensive physiotherapy in sympathetically maintained pain; benefit is often short-lived and evidence is low quality. Spinal cord and dorsal root ganglion stimulation are considered in refractory cases. Intravenous regional guanethidine is no longer recommended.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Other chronic upper-limb pain</p>
+                <p className="text-sm text-muted-foreground mt-1">Post-amputation phantom and stump pain (pre-emptive plexus catheters may help acute but not chronic pain), post-traumatic plexus avulsion deafferentation pain (poorly opioid-responsive, may need dorsal root entry zone lesioning), persistent post-surgical pain after shoulder or breast surgery, thoracic outlet syndrome, and neuropathic pain after chemotherapy or radiotherapy plexopathy. Prevention rests on good acute pain control, early mobilisation and avoiding immobilisation in a splint for longer than necessary.</p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="terminal-nerves" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Key Terminal Nerves">
             <div className="overflow-x-auto">

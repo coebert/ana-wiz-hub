@@ -154,6 +154,31 @@ const HeadNeckAnatomyTopic = () => {
               The internal surface of the skull base is divided into anterior, middle, and posterior cranial fossae. Each foramen transmits specific cranial nerves and vessels — knowledge of these is essential for understanding cranial nerve palsies, skull base fractures, and neurosurgical approaches.
             </p>
             <SkullBaseDiagram />
+            <div className="overflow-x-auto mt-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Fossa</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Foramen / fissure</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Contents</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Clinical relevance</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Anterior</td><td>Cribriform plate</td><td>Olfactory nerve (CN I) filaments; anterior ethmoidal vessels</td><td>Anosmia and CSF rhinorrhoea after base-of-skull fracture; avoid nasal airways and nasogastric tubes</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Anterior</td><td>Optic canal</td><td>Optic nerve (CN II), ophthalmic artery, sympathetic fibres</td><td>Visual loss with orbital apex injury or retrobulbar haemorrhage</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Middle</td><td>Superior orbital fissure</td><td>CN III, IV, VI, V1 branches (frontal, lacrimal, nasociliary), superior ophthalmic vein</td><td>Total ophthalmoplegia after peribulbar or retrobulbar block spread; cavernous sinus pathology</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Middle</td><td>Foramen rotundum</td><td>Maxillary nerve (V2)</td><td>Route for maxillary nerve block; mid-face sensory loss</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Middle</td><td>Foramen ovale</td><td>Mandibular nerve (V3), accessory meningeal artery, lesser petrosal nerve</td><td>Target for trigeminal ganglion (Gasserian) radiofrequency in trigeminal neuralgia</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Middle</td><td>Foramen spinosum</td><td>Middle meningeal artery and vein</td><td>Torn in pterional fracture → extradural haematoma</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Middle</td><td>Foramen lacerum / carotid canal</td><td>Internal carotid artery with sympathetic plexus (canal); greater petrosal nerve (lacerum)</td><td>Carotid injury in skull-base fracture; Horner's from plexus damage</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Posterior</td><td>Internal acoustic meatus</td><td>CN VII, CN VIII, labyrinthine artery</td><td>Vestibular schwannoma; facial palsy after temporal bone fracture</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Posterior</td><td>Jugular foramen</td><td>CN IX, X, XI, internal jugular vein, inferior petrosal and sigmoid sinuses</td><td>Glomus tumour; bulbar palsy; landmark for IJV cannulation</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Posterior</td><td>Hypoglossal canal</td><td>CN XII</td><td>Tongue deviation towards the lesion</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Posterior</td><td>Foramen magnum</td><td>Medulla/spinal cord, vertebral arteries, spinal roots of CN XI, meninges</td><td>Site of tonsillar herniation ("coning") with raised ICP; Chiari malformation</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <div id="orbit-muscles">
@@ -210,8 +235,26 @@ const HeadNeckAnatomyTopic = () => {
           <div id="cervical-plexus">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">B3. Cervical Plexus</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Formed by C1–C4 ventral rami. Superficial cervical plexus emerges at the posterior border of SCM (Erb's point). Provides sensory innervation to neck, ear, and shoulder. Deep cervical plexus block targets C2–C4 transverse processes — used for carotid endarterectomy. Phrenic nerve (C3,4,5) arises from cervical plexus — risk of paralysis with deep block.
+              Formed by the ventral rami of C1–C4, lying on the prevertebral fascia over the scalenus medius and levator scapulae, deep to the internal jugular vein and sternocleidomastoid. It has cutaneous (superficial), muscular (deep) and communicating branches.
             </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Superficial (cutaneous) branches</p>
+                <p className="text-sm text-muted-foreground mt-1">All four emerge together at the midpoint of the posterior border of sternocleidomastoid (<strong>Erb's point</strong>, roughly at the level of the cricoid, C6): <strong>lesser occipital (C2)</strong> — scalp behind the ear; <strong>great auricular (C2,3)</strong> — lower pinna, angle of jaw, parotid skin (blocked for tympanomastoid and awake fibreoptic ear procedures); <strong>transverse cervical (C2,3)</strong> — anterior neck; <strong>supraclavicular (C3,4)</strong> — clavicle and skin to the second rib, explaining shoulder-tip and "cape" referral and the need to supplement an interscalene block for shoulder surgery.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Deep (muscular) branches</p>
+                <p className="text-sm text-muted-foreground mt-1"><strong>Phrenic nerve (C3,4,5)</strong> — sole motor supply to the diaphragm; passes over the anterior surface of scalenus anterior. <strong>Ansa cervicalis</strong> (superior root C1 travelling with the hypoglossal nerve, inferior root C2,3) — supplies the infrahyoid strap muscles. Segmental branches to the prevertebral muscles, rectus capitis, longus capitis and colli, scalenes, and via C2–C4 contributions to sternocleidomastoid, trapezius and levator scapulae (proprioceptive, with motor supply from CN XI).</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Blocks</p>
+                <p className="text-sm text-muted-foreground mt-1"><strong>Superficial block:</strong> 10 mL of local anaesthetic subcutaneously along the posterior border of sternocleidomastoid at its midpoint (or an ultrasound-guided injection deep to the investing fascia but superficial to the prevertebral fascia). Used for carotid endarterectomy, thyroid surgery, clavicular fracture, superficial neck lesions and tunnelled line insertion. <strong>Intermediate/deep block:</strong> injection at the C2–C4 transverse processes or deep to the prevertebral fascia — better surgical anaesthesia for carotid endarterectomy but a higher complication rate; largely superseded by intermediate ultrasound-guided injection.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Complications of deep block</p>
+                <p className="text-sm text-muted-foreground mt-1">Phrenic nerve palsy (near-universal with deep block — avoid bilateral blocks and use with caution in respiratory disease), recurrent laryngeal nerve palsy with hoarseness, Horner's syndrome from cervical sympathetic spread, vertebral artery or carotid puncture and rapid local anaesthetic systemic toxicity or seizure, intrathecal or epidural injection via a dural cuff, and accessory nerve injury. Aspirate frequently, inject incrementally, and monitor for LAST.</p>
+              </div>
+            </div>
             <CervicalPlexusDiagram />
           </div>
 
@@ -330,8 +373,51 @@ const HeadNeckAnatomyTopic = () => {
               <strong className="text-foreground">Cricothyroid membrane:</strong> Avascular midline between thyroid and cricoid cartilages. 9 × 30 mm. Used for emergency surgical airway. Structures at risk: superior cricothyroid artery (runs transversely across upper membrane).
             </p>
             <p className="text-muted-foreground leading-relaxed mt-2">
-              <strong className="text-foreground">Tracheostomy:</strong> Usually between rings 2–3 or 3–4. Structures encountered: skin → subcutaneous fat → platysma → investing fascia → strap muscles (sternohyoid/sternothyroid) → pretracheal fascia → thyroid isthmus (may need dividing) → trachea. Brachiocephalic artery crosses anterior to trachea in children (risk of erosion).
+              <strong className="text-foreground">Tracheostomy:</strong> The stoma is placed between rings 2–3 or 3–4 — above this risks subglottic stenosis from cricoid damage, below it risks tracheo-innominate fistula and a tube too deep for the flange. Layers traversed, superficial to deep: skin → subcutaneous fat → platysma → investing (superficial) layer of deep cervical fascia → the midline "linea alba cervicalis" between the strap muscles (sternohyoid and sternothyroid) → pretracheal fascia → thyroid isthmus, which usually overlies rings 2–4 and may need retracting or dividing → pretracheal fat with the inferior thyroid vein plexus → anterior tracheal wall.
             </p>
+            <div className="grid sm:grid-cols-2 gap-3 mt-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Structures at risk</p>
+                <p className="text-sm text-muted-foreground mt-1">Anterior jugular veins and the jugular venous arch (extend the neck and stay strictly midline), thyroid isthmus and the inferior thyroid venous plexus (haemorrhage), thyroid ima artery (present in ~10%), high-riding brachiocephalic (innominate) artery — normally crossing the trachea at the level of the sternal notch but sitting higher in children and in the kyphotic elderly, causing catastrophic tracheo-innominate fistula. The recurrent laryngeal nerves lie in the tracheo-oesophageal grooves and are spared by a midline approach; the posterior tracheal wall and oesophagus are at risk from over-deep needle or dilator passage.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Relational anatomy and practical points</p>
+                <p className="text-sm text-muted-foreground mt-1">Landmarks in the extended neck from above: thyroid notch → cricothyroid membrane → cricoid (C6) → rings 2–4 → sternal notch. The isthmus lies about 2–3 cm below the cricoid. Position with a shoulder roll and full extension to bring the trachea anterior and increase the working distance from the sternal notch. Pre-procedure ultrasound identifies aberrant vessels, a high brachiocephalic artery, thyroid size and tracheal depth and midline position. Percutaneous dilatational tracheostomy is guided by bronchoscopy to confirm midline puncture below ring 1 and to avoid a paratracheal or posterior-wall track. Obesity, short neck, fixed flexion, previous neck surgery, radiotherapy and coagulopathy favour a surgical approach.</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="neck-fascia" className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D5. Fascial Layers of the Neck &amp; Deep Neck Spaces</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              The deep cervical fascia divides the neck into compartments that both limit and direct the spread of infection, haematoma and air. Understanding these planes explains airway compromise from an expanding haematoma, the mediastinal spread of dental and retropharyngeal infection, and the anatomy of fascial plane blocks and central venous access.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Superficial fascia</p>
+                <p className="text-sm text-muted-foreground mt-1">Subcutaneous layer containing <strong>platysma</strong>, cutaneous nerves of the cervical plexus, superficial veins (anterior and external jugular) and lymph nodes. Not part of the deep cervical fascia; the plane of superficial cervical plexus block.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Investing (superficial) layer of deep cervical fascia</p>
+                <p className="text-sm text-muted-foreground mt-1">Encircles the neck like a collar from the external occipital protuberance and mandible to the clavicles, sternum and scapular spine. Splits to enclose sternocleidomastoid, trapezius, the submandibular and parotid glands. Its unyielding nature is why a post-thyroidectomy or post-carotid haematoma compresses the airway rather than expanding outwards — a surgical emergency requiring immediate release of the sutures.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Pretracheal (visceral) fascia</p>
+                <p className="text-sm text-muted-foreground mt-1">Encloses thyroid, trachea and oesophagus and the strap muscles, continuing with the pericardium and the fibrous pericardium in the superior mediastinum. Infection and air track directly into the anterior mediastinum. Contains the recurrent laryngeal nerves in the tracheo-oesophageal grooves.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Prevertebral fascia</p>
+                <p className="text-sm text-muted-foreground mt-1">Covers the prevertebral and scalene muscles and the cervical sympathetic chain, extending from the skull base to T3 and laterally as the axillary sheath around the brachial plexus. Injection deep to it produces deep cervical plexus block with a high incidence of phrenic palsy; injection superficial to it (intermediate block) is safer.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Carotid sheath</p>
+                <p className="text-sm text-muted-foreground mt-1">Formed by contributions from all three deep layers; contains the common/internal carotid artery (medial), internal jugular vein (lateral), vagus nerve (posterolateral, between them) and deep cervical lymph nodes. Extends from the skull base to the arch of the aorta and is the route for the spread of infection to the mediastinum.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Retropharyngeal space and the danger space</p>
+                <p className="text-sm text-muted-foreground mt-1">The retropharyngeal space lies between the buccopharyngeal (visceral) fascia and the alar fascia, extending to about T4; the <strong>"danger space"</strong> lies between the alar and prevertebral fascia and runs uninterrupted to the diaphragm — hence descending necrotising mediastinitis from Ludwig's angina, dental or retropharyngeal abscess. Airway assessment must anticipate trismus, limited neck extension, distorted anatomy and a friable, bleeding pharynx; awake fibreoptic or inhalational induction with a surgical airway plan is preferred.</p>
+              </div>
+            </div>
           </div>
 
           {/* ==================================================================== */}
