@@ -399,6 +399,155 @@ const HepaticDiseaseTopic = () => {
               </div>
             </section>
 
+            {/* Portal hypertension */}
+            <section id="section-portal-hypertension-assessment" className="scroll-mt-24">
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Portal Hypertension Assessment &amp; TIPSS</h2>
+              <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Hepatic Venous Pressure Gradient (HVPG)</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Gold-standard invasive measurement (wedged minus free hepatic venous pressure) of portal pressure.</li>
+                    <li><strong>&gt; 5 mmHg</strong> — portal hypertension present (normal 1–5 mmHg).</li>
+                    <li><strong>&gt; 10 mmHg</strong> — "clinically significant portal hypertension" (CSPH): threshold for varices, ascites, and decompensation; independently doubles perioperative mortality even at lower MELD scores<InlineRef topicId="hepatic-disease" refLabel="Bhangui 2012" />.</li>
+                    <li><strong>&gt; 12 mmHg</strong> — threshold above which oesophageal varices bleed; non-selective β-blockade or band ligation reduces HVPG and bleeding risk below this level<InlineRef topicId="hepatic-disease" refLabel="AASLD 2012" />.</li>
+                    <li>HVPG is rarely available outside specialist hepatology centres — non-invasive surrogates are used for risk stratification pre-anaesthesia.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Non-Invasive Surrogates</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>Platelet count</strong>: &lt; 150 × 10⁹/L raises suspicion of portal hypertension (splenic sequestration); &lt; 100 × 10⁹/L combined with splenomegaly is a strong predictor of varices.</li>
+                    <li><strong>Transient elastography (FibroScan)</strong>: liver stiffness &gt; 20–25 kPa strongly predicts CSPH; combined with platelet count and spleen size (Baveno VI/VII criteria: liver stiffness &lt; 15 kPa and platelets &gt; 150 × 10⁹/L) can safely rule out high-risk varices and avoid screening endoscopy.</li>
+                    <li>Imaging signs of portal hypertension: splenomegaly, portosystemic collaterals, recanalised umbilical vein, ascites on ultrasound/CT.</li>
+                    <li>These surrogates are used preoperatively to flag patients who need OGD variceal screening and closer perioperative haemodynamic control before elective surgery.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">TIPSS In Situ — Anaesthetic Implications</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>A transjugular intrahepatic portosystemic shunt decompresses portal pressure and reduces variceal bleeding and refractory ascites, but shunts portal blood directly into the systemic circulation.</li>
+                    <li><strong>Hepatic encephalopathy</strong> occurs or worsens in up to 30–50% after TIPSS (loss of hepatic first-pass clearance of gut-derived ammonia and toxins) — heightened sensitivity to sedatives, opioids and benzodiazepines.</li>
+                    <li>Reduced hepatic synthetic reserve may become apparent post-TIPSS as portal flow to the liver falls — anticipate a worse coagulation profile and drug handling than pre-TIPSS labs suggest.</li>
+                    <li>Shunt patency should be confirmed (Doppler ultrasound) before major elective surgery; a stenosed/occluded shunt restores portal hypertension and variceal risk.</li>
+                    <li>TIPSS does not eliminate the need for perioperative variceal precautions, sodium restriction or ascites management, but does reduce the acute risk of intraoperative variceal haemorrhage from raised intra-abdominal pressure.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            {/* Ascites and electrolytes */}
+            <section id="section-ascites-and-electrolyte-disorders" className="scroll-mt-24">
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ascites, Paracentesis &amp; Electrolyte Disorders</h2>
+              <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Large-Volume Paracentesis</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>First-line for tense/refractory ascites; drain to dryness where tolerated under close haemodynamic monitoring.</li>
+                    <li><strong>Human albumin 6–8 g per litre of ascites removed</strong> when &gt; 5 L is drained, to prevent post-paracentesis circulatory dysfunction (further splanchnic vasodilatation → HRS, hyponatraemia); typically given as 20% albumin at the end of the procedure<InlineRef topicId="hepatic-disease" refLabel="EASL 2018 Decompensated" />.</li>
+                    <li>Below 5 L drained, albumin is often omitted or synthetic plasma expanders used, per local protocol — but exam answer defaults to the 6–8 g/L rule for &gt; 5 L.</li>
+                    <li>Consider preoperative therapeutic paracentesis before abdominal surgery to reduce intra-abdominal pressure, aid ventilation and reduce wound dehiscence risk; refractory ascites is an indication to consider TIPSS.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Hyponatraemia — Correction Limits</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Common in decompensated cirrhosis from non-osmotic ADH release and splanchnic vasodilatation (dilutional, hypervolaemic hyponatraemia); captured in MELD-Na.</li>
+                    <li><strong>Correct no faster than 8–10 mmol/L in any 24-hour period</strong> (some guidelines advise an even more cautious ≤ 8 mmol/L/24 h in cirrhosis) — over-rapid correction risks <strong>osmotic demyelination syndrome</strong> (central pontine/extrapontine myelinolysis), which is more likely in chronic liver disease because of coexisting malnutrition.</li>
+                    <li>Management is usually fluid restriction (&lt; 1–1.5 L/day) rather than hypertonic saline unless severely symptomatic (seizures, coma); avoid rapid diuresis and correct slowly with frequent (4–6 hourly) sodium checks if levels are &lt; 125 mmol/L.</li>
+                    <li>Vaptans (tolvaptan) are generally avoided in cirrhosis because of hepatotoxicity risk and difficulty controlling correction rate.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Alcohol Withdrawal &amp; Thiamine in the Surgical Cirrhotic</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Alcohol-related cirrhosis is a leading aetiology presenting for surgery; unplanned admission removes access to alcohol and can precipitate withdrawal from 6–24 h post-last drink, peaking at 24–72 h (delirium tremens, seizures).</li>
+                    <li>Screen with a validated tool (e.g. AUDIT, CIWA-Ar) and use a symptom-triggered benzodiazepine regimen (chlordiazepoxide or short-acting lorazepam if hepatic impairment severe) — titrate cautiously given reduced hepatic clearance and risk of precipitating encephalopathy.</li>
+                    <li><strong>IV thiamine (Pabrinex) before any glucose-containing fluid</strong> to prevent Wernicke's encephalopathy — malnourished/alcohol-dependent surgical patients are at high risk; continue oral thiamine postoperatively.</li>
+                    <li>Avoid untreated withdrawal perioperatively — autonomic instability, seizures and delirium tremens compound surgical risk and are easily mistaken for hepatic encephalopathy or sepsis.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            {/* Viral hepatitis and acute liver injury */}
+            <section id="section-viral-hepatitis-and-acute-liver-injury" className="scroll-mt-24">
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Viral Hepatitis, Acute Hepatitis &amp; Drug-Induced Liver Injury</h2>
+              <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Hepatitis B and C — Occupational Exposure &amp; Infection Control</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Standard precautions (gloves, eye protection, safe sharps handling, single-use needles) for every patient; do not rely on a negative history to exclude bloodborne virus carriage.</li>
+                    <li>Vaccination against hepatitis B is mandatory for healthcare workers with exposure-prone procedures; check and document immune status (anti-HBs titre).</li>
+                    <li>Percutaneous or mucocutaneous occupational exposure: wash the area, do not squeeze the wound aggressively, report immediately to occupational health for risk assessment and baseline bloods (source and recipient).</li>
+                    <li>Post-exposure management: HBV — non-immune recipients receive accelerated vaccination ± hepatitis B immunoglobulin depending on source status; HCV — no immunoglobulin/vaccine available, so serial PCR follow-up at 6 weeks and antivirals (direct-acting agents) if seroconversion occurs; HIV PEP considered per local protocol if source status unknown/high-risk.</li>
+                    <li>Active untreated HBV/HCV increases perioperative decompensation risk; antiviral therapy before elective major surgery reduces this risk and should be arranged with hepatology where time allows<InlineRef topicId="hepatic-disease" refLabel="BJA Educ Cirrhosis 2017" />.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Acute Hepatitis and Drug-Induced Liver Injury (DILI)</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>Defer elective surgery</strong> in any patient with acute hepatitis (viral, autoimmune, ischaemic, or drug-induced) or an acute rise in transaminases of unclear cause — anaesthesia and surgical stress in acute hepatocellular injury carries markedly increased mortality and risk of progression to acute liver failure.</li>
+                    <li>Investigate before proceeding: viral serology, autoimmune screen, drug/toxin history (including paracetamol, anti-tuberculous drugs, herbal remedies, recreational drugs, halogenated volatile re-exposure), liver ultrasound and hepatology referral.</li>
+                    <li>DILI patterns: hepatocellular (ALT-predominant), cholestatic (ALP-predominant) or mixed; Hy's Law (ALT &gt; 3× ULN with bilirubin &gt; 2× ULN) predicts a high risk of severe liver injury and mortality and should prompt urgent hepatology review before any anaesthetic.</li>
+                    <li>Halothane hepatitis is the classic anaesthetic-drug example — immune-mediated injury after repeat exposure; avoid halothane entirely and note any prior severe unexplained postoperative jaundice as a contraindication to re-exposure to related volatile agents.</li>
+                    <li>If surgery cannot be deferred (e.g. trauma, perforation), treat as acute liver failure risk: avoid further hepatotoxins, monitor coagulation and glucose closely, involve a liver unit early, and apply King's College Criteria if progression to acute liver failure is suspected.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            {/* Postoperative liver dysfunction */}
+            <section id="section-postoperative-liver-dysfunction" className="scroll-mt-24">
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postoperative Liver Dysfunction</h2>
+              <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  New jaundice or deranged liver function in the first postoperative week has a broad differential; a structured approach based on timing and the pattern of derangement (hepatocellular vs cholestatic) narrows the diagnosis quickly.
+                </p>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Differential Diagnosis</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>Ischaemic hepatitis ("shock liver")</strong>: intraoperative or postoperative hypotension, hypovolaemia or low cardiac output — massive rise in transaminases (often &gt; 1000 IU/L) within 24–48 h, rapid resolution over 1–2 weeks if the circulation is restored; treat by optimising cardiac output and perfusion pressure.</li>
+                    <li><strong>Obstructive/surgical</strong>: bile duct injury, retained stone, anastomotic stricture or leak after biliary/hepatobiliary surgery — cholestatic pattern (↑ALP, ↑GGT, ↑bilirubin), pain, fever; imaging (ultrasound/MRCP) and early surgical/ERCP review.</li>
+                    <li><strong>Drug-related</strong>: volatile agents (rare halothane-type hepatitis), antibiotics (co-amoxiclav, flucloxacillin), paracetamol overdose/accumulation, total parenteral nutrition-associated cholestasis — review the drug chart and timing of onset relative to each agent.</li>
+                    <li><strong>Sepsis-associated cholestasis</strong>: intrahepatic cholestasis of sepsis is common in critically ill postoperative patients — bilirubin and ALP rise with systemic infection independent of direct hepatic insult; treat the underlying source.</li>
+                    <li><strong>Pre-existing/undiagnosed liver disease</strong> unmasked by surgical stress, transfusion-related (rare transfusion-transmitted infection), or benign postoperative intrahepatic cholestasis after prolonged surgery/hypotension.</li>
+                    <li><strong>Haemolysis and resorption of large haematomas</strong> can cause an isolated unconjugated hyperbilirubinaemia without true hepatocellular injury.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Management Approach</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Serial LFTs, coagulation, glucose and lactate; classify pattern (hepatocellular vs cholestatic) using the R-ratio; liver ultrasound with Doppler to exclude vascular occlusion (hepatic artery/portal vein thrombosis) and biliary obstruction.</li>
+                    <li>Review anaesthetic and drug chart in detail; stop any potentially hepatotoxic agent; treat sepsis empirically pending cultures.</li>
+                    <li>Optimise haemodynamics and oxygen delivery if an ischaemic pattern is suspected; avoid further hypotensive episodes.</li>
+                    <li>Escalate to hepatology/liver unit if synthetic function deteriorates (rising INR, falling albumin, encephalopathy) — this indicates evolving acute-on-chronic or acute liver failure requiring organ support and consideration of transplant referral.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            {/* NAFLD/MASLD */}
+            <section id="section-nafld-masld-and-obesity" className="scroll-mt-24">
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">NAFLD/MASLD and Obesity — An Emerging Cause</h2>
+              <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Non-alcoholic fatty liver disease (NAFLD), recently re-termed <strong>metabolic dysfunction-associated steatotic liver disease (MASLD)</strong>, is now the commonest cause of chronic liver disease presenting for surgery in high-income countries, driven by the obesity and type 2 diabetes epidemic.</li>
+                    <li>Spectrum ranges from simple steatosis (usually benign) through steatohepatitis (NASH/MASH) to fibrosis and cirrhosis; a significant proportion of "cryptogenic" cirrhosis is now attributed to burnt-out NASH.</li>
+                    <li>These patients frequently present for <strong>bariatric or general surgery</strong> without a prior diagnosis of liver disease — unexplained mild transaminase elevation, hepatomegaly or incidental steatosis on imaging in an obese/diabetic patient should prompt consideration of fibrosis staging (elastography, NAFLD fibrosis score) before major elective surgery.</li>
+                    <li>Perioperative relevance mirrors alcohol-related cirrhosis once fibrosis/cirrhosis is established: same MELD/Child-Pugh/VOCAL-Penn risk stratification, same coagulation and pharmacological principles apply<InlineRef topicId="hepatic-disease" refLabel="Mahmud VOCAL-Penn 2021" />.</li>
+                    <li>Additional considerations specific to the metabolic phenotype: obstructive sleep apnoea, difficult airway/positioning, insulin resistance and perioperative glycaemic control, higher cardiovascular risk (metabolic syndrome), and altered drug dosing from obesity and hepatic steatosis affecting volume of distribution and clearance.</li>
+                    <li>Weight loss (bariatric surgery or medical, including GLP-1 agonists) is disease-modifying for early MASLD/NASH and may be recommended before elective major surgery where time and clinical urgency allow<InlineRef topicId="hepatic-disease" refLabel="NICE NG50" />.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
             <ExamPitfallsCallout
               accent="clinical"
               pitfalls={[
