@@ -16,7 +16,7 @@ const laserFibreopticsFaqs: Array<[string, string]> = [
   ],
   [
     "What is the management of an airway fire?",
-    "Stop ventilation and disconnect O₂. Remove the burning tube. Pour saline into the airway to extinguish. Re-mask ventilate on air. Re-intubate (often with a smaller tube), perform bronchoscopy to assess thermal injury, administer steroids and humidified O₂. Admit to critical care for observation of progressive airway oedema (peaks 12–24 h)."
+    "Stop ventilation and disconnect O₂. Remove the burning tube. Pour saline into the airway to extinguish. Re-mask ventilate on air. Re-intubate (often with a smaller tube), then perform flexible or rigid bronchoscopy to assess thermal and inhalational injury and remove debris. Administer humidified O₂ and admit to critical care for observation of progressive airway oedema."
   ],
   [
     "How does an optical fibre transmit light?",
@@ -119,11 +119,28 @@ const LaserFibreopticsTopic = () => {
                 amplify the light exponentially. The resulting beam is <strong>monochromatic</strong> (single wavelength),
                 <strong> coherent</strong> (waves in phase), and <strong>collimated</strong> (parallel, minimal divergence).
               </p>
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[720px] text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b border-border text-foreground">
+                      <th className="py-2 pr-3 text-left">Laser / active medium</th>
+                      <th className="py-2 pr-3 text-left">Chromophore and tissue effect</th>
+                      <th className="py-2 pr-3 text-left">Clinical uses</th>
+                      <th className="py-2 text-left">Fibre transmission</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    <tr><td className="py-2 pr-3"><strong>CO₂</strong><br />CO₂/N₂/He gas mixture; 10,600 nm</td><td className="py-2 pr-3">Water; very shallow penetration gives precise cutting and vaporisation with limited coagulation.</td><td className="py-2 pr-3">Laryngeal and airway lesions, skin resurfacing and microsurgery.</td><td className="py-2">Not through conventional silica fibre; delivered by articulated mirrors or specialised hollow fibres.</td></tr>
+                    <tr><td className="py-2 pr-3"><strong>Nd:YAG</strong><br />Neodymium-doped yttrium aluminium garnet crystal; 1,064 nm</td><td className="py-2 pr-3">Relatively weak water/haemoglobin absorption permits deep penetration and strong coagulation, with greater collateral injury.</td><td className="py-2 pr-3">Endoscopic tumour debulking, haemostasis and posterior capsulotomy.</td><td className="py-2">Yes — readily transmitted through flexible silica fibre.</td></tr>
+                    <tr><td className="py-2 pr-3"><strong>KTP</strong><br />Frequency-doubled Nd:YAG through potassium titanyl phosphate; 532 nm</td><td className="py-2 pr-3">Oxyhaemoglobin; selective superficial photocoagulation with little tissue penetration.</td><td className="py-2 pr-3">Vocal-cord papilloma/vascular lesions, nasal and dermatological vascular lesions.</td><td className="py-2">Yes — transmitted through fibre.</td></tr>
+                    <tr><td className="py-2 pr-3"><strong>Argon</strong><br />Ionised argon gas; 488/514 nm</td><td className="py-2 pr-3">Haemoglobin and melanin; superficial photocoagulation.</td><td className="py-2 pr-3">Retinal photocoagulation and superficial vascular lesions.</td><td className="py-2">Yes — transmitted through fibre.</td></tr>
+                    <tr><td className="py-2 pr-3"><strong>Excimer</strong><br />Excited halide dimer, commonly ArF; 193 nm ultraviolet</td><td className="py-2 pr-3">Proteins/nucleic acids; photoablation breaks molecular bonds with minimal thermal spread.</td><td className="py-2 pr-3">Corneal refractive surgery (PRK/LASIK) and angioplasty.</td><td className="py-2">Not through standard silica fibre; UV-compatible delivery systems are required.</td></tr>
+                  </tbody>
+                </table>
+              </div>
               <p>
-                <strong>CO₂ laser</strong> (10,600 nm, far infrared): strongly absorbed by water → precise cutting and vaporisation.
-                Used extensively in airway surgery. <strong>Nd:YAG</strong> (1,064 nm, near infrared): penetrates deeply into tissue,
-                good for coagulation. Can be transmitted via fibreoptic. <strong>KTP</strong> (532 nm, green): frequency-doubled
-                Nd:YAG, absorbed by haemoglobin, used for superficial vascular lesions and vocal cord surgery.
+                Choice of laser therefore balances penetration, haemostasis and collateral thermal injury
+                <InlineRef topicId="lasers-fibreoptics" refLabel="Cross & Plunkett Ch.18" />.
               </p>
             </div>
             </CollapsibleSubsection>
@@ -166,14 +183,30 @@ const LaserFibreopticsTopic = () => {
                 guideline drill is: <strong>(1)</strong> simultaneously stop the airway gases and remove the burning tracheal
                 tube; <strong>(2)</strong> extinguish the fire with saline; <strong>(3)</strong> re-establish ventilation with
                 air, titrating FiO₂ upward only as needed; <strong>(4)</strong> re-intubate and perform bronchoscopy to assess
-                thermal and inhalational injury.
+                 thermal and inhalational injury and remove debris
+                 <InlineRef topicId="lasers-fibreoptics" refLabel="BJA Educ 2017" />.
               </p>
               <p>
                 <strong>Eye protection</strong> is mandatory for all theatre personnel. The goggles must be specific to the laser
-                wavelength in use (CO₂ goggles do not protect against Nd:YAG). The patient's eyes are taped shut and covered with wet
+                wavelength in use and have an optical density sufficient to reduce exposure below the maximum permissible level
+                (CO₂ goggles do not protect against Nd:YAG). The patient's eyes are taped shut and covered with wet
                 gauze. Warning signs must be displayed on all theatre doors, and the laser should be key-operated with a designated
                 laser safety officer.
               </p>
+              <div className="rounded-lg border border-border bg-secondary/30 p-4">
+                <h3 className="font-serif text-lg font-bold text-foreground">Laser Classification</h3>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm">
+                  <li><strong>Class 1:</strong> safe under all conditions of normal use, including enclosed higher-power systems.</li>
+                  <li><strong>Class 2:</strong> visible light only; momentary viewing for less than 0.25 s is normally limited by the blink reflex (for example barcode scanners).</li>
+                  <li><strong>Class 3R:</strong> direct viewing is potentially hazardous, although risk is lower than Class 3B. <strong>Class 3B</strong> can injure the eye after brief direct exposure; diffuse reflections are usually safer.</li>
+                  <li><strong>Class 4:</strong> high-power beams hazardous to eyes and skin, with hazardous diffuse reflections, smoke and fire risk. Most surgical lasers are Class 4.</li>
+                </ul>
+                <p className="mt-3 text-sm">
+                  Class 4 use requires a controlled area, wavelength-specific eye protection, key control, entrance warning signs,
+                  restricted access and a designated Laser Safety Officer
+                  <InlineRef topicId="lasers-fibreoptics" refLabel="Middleton Ch.14" />.
+                </p>
+              </div>
             </div>
             </CollapsibleSubsection>
           </ExamSection>

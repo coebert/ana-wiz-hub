@@ -38,6 +38,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2017", citation: "Thomas G. Gas laws and physics relevant to anaesthesia. BJA Education. 2017;17(3):73-78.", url: "https://doi.org/10.1093/bjaed/mkw052" },
     { label: "BJA Educ 2017 (Medical gases)", citation: "Das S, Chattopadhyay S, Bose P. Medical gases: production, applications and storage. BJA Education. 2017;17(8):253-258. (Authoritative UK reference for critical temperatures/pressures, filling ratios, Entonox pseudo-critical temperature and N₂O SVP.)", url: "https://doi.org/10.1093/bjaed/mkx004" },
     { label: "BJA Educ 2007 (Gas laws)", citation: "Davis PD, Kenny GNC. The gas laws. BJA Education. 2007;7(5):169-172. Explicitly derives PV = nRT from Boyle's, Charles', Gay-Lussac's and Avogadro's laws.", url: "https://doi.org/10.1093/bjaceaccp/mkm029" },
+    { label: "Intensive Care Med 2012 (Hyperbaric ventilator)", citation: "Lafère P, Germonpré P, Balestra C. Bench testing of a new hyperbaric chamber ventilator at different atmospheric pressures. Intensive Care Med. 2012.", url: "https://doi.org/10.1007/s00134-012-2590-4" },
   ],
   "pressure-measurement": [
     { label: "BJA Educ 2015", citation: "Magee P, Tooley M. The physics of arterial pressure measurement. BJA Education. 2005;5(4):132-135.", url: "https://doi.org/10.1093/bjaceaccp/mki036" },
@@ -93,6 +94,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Cross & Plunkett Ch.14", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapter 14: Electrical Safety." },
     { label: "Middleton Ch.16", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 16: Electrical Safety." },
     { label: "IEC 60601-1", citation: "International Electrotechnical Commission. IEC 60601-1:2005+AMD1:2012+AMD2:2020 — Medical electrical equipment: General requirements for basic safety and essential performance." },
+    { label: "BJA Educ 2019 (MRI)", citation: "Reddy U, Chowdhury T, Bhatt H. MRI for the anaesthetist. BJA Education. 2019;19(8):235-241.", url: "https://doi.org/10.1016/j.bjae.2019.04.004" },
+    { label: "Anaesthesia 1996 Cardioversion", citation: "Anaesthesia for cardioversion. Anaesthesia. 1996.", url: "https://doi.org/10.1111/j.1365-2044.1996.tb12566.x" },
   ],
   "electricity-magnetism": [
     { label: "Cross & Plunkett Ch.12-13", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapters 12-13: Electricity and Magnetism." },
@@ -101,6 +104,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2013 (Basic physics)", citation: "Davis PD, Kenny GNC. Basic physics for the anaesthetist. BJA Education. 2013;13(4):115-119. Covers Ohm's law, capacitance, inductance (E = ½LI²) and the macroshock current ranges (50–100 mA → VF).", url: "https://doi.org/10.1093/bjaceaccp/mks065" },
     { label: "BJA Educ 2008 (Electricity)", citation: "Boumphrey S, Marshall N. Electricity and safety. BJA Education. 2008;8(4):133-137.", url: "https://doi.org/10.1093/bjaceaccp/mkn029" },
     { label: "ATOTW 193 (Electricity II)", citation: "Davies M, Jenkins B. Electricity in Anaesthesia – Part Two: Safety. Anaesthesia Tutorial of the Week 193. World Federation of Societies of Anaesthesiologists.", url: "https://resources.wfsahq.org/atotw/electricity-in-anaesthesia-part-two-safety/", excerpt: "At around 100 mA, ventricular fibrillation (VF) will occur if the current passes through the heart. Lower currents cause perception (≈1 mA) and loss of let-go ability (≈15 mA); currents above ≈100 mA produce sustained myocardial contraction and respiratory arrest." },
+    { label: "Assoc Anaesth CIED 2022", citation: "Association of Anaesthetists. Peri-operative management of patients with cardiac implantable electronic devices. Anaesthesia. 2022.", url: "https://doi.org/10.1111/anae.15728" },
   ],
   "pulse-oximetry": [
     { label: "BJA Educ 2014", citation: "Jubran A. Pulse oximetry. Critical Care. 2015;19:272.", url: "https://doi.org/10.1186/s13054-015-0984-8" },
@@ -181,6 +185,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Resuscitation Council UK 2021", citation: "Resuscitation Council UK. Advanced Life Support Guidelines. 2021.", url: "https://www.resus.org.uk/library/2021-resuscitation-guidelines" },
     { label: "Cross & Plunkett Ch.14", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 14: Defibrillation." },
     { label: "BJA Educ 2005", citation: "Nolan JP, Soar J. Defibrillation in clinical practice. BJA Education. 2005;5(1):8-11.", url: "https://doi.org/10.1093/bjaceaccp/mki003" },
+    { label: "Assoc Anaesth CIED 2022", citation: "Association of Anaesthetists. Peri-operative management of patients with cardiac implantable electronic devices. Anaesthesia. 2022.", url: "https://doi.org/10.1111/anae.15728" },
+    { label: "RCUK 2021 Bradycardia", citation: "Resuscitation Council UK. Adult bradycardia algorithm and Advanced Life Support guidance. 2021.", url: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/adult-advanced-life-support-guidelines" },
   ],
   "arrhythmias-ecg-icu": [
     { label: "Resuscitation Council UK 2021", citation: "Resuscitation Council UK. Adult Advanced Life Support, Tachycardia and Bradycardia algorithms. 2021.", url: "https://www.resus.org.uk/library/2021-resuscitation-guidelines" },
