@@ -40,7 +40,7 @@ const objectives = [
   "Compare plenum vs draw-over and TEC 5/7 vs TEC 6 vaporizers, including the splitting ratio calculation.",
   "Classify Mapleson circuits and identify the most efficient system for spontaneous and controlled ventilation.",
   "Classify ventilators by power source, mechanism and cycling, citing representative theatre, ICU and transport machines.",
-  "List Association of Anaesthetists minimum monitoring standards and outline the Association of Anaesthetists 2023 pre-use machine check (which superseded the AAGBI 2012 guideline).",
+  "List Association of Anaesthetists minimum monitoring standards and outline the joint Association of Anaesthetists / RCoA 2024 machine-safety guideline ('Anaesthesia, anaesthetic machines and patient safety'), including the pre-use machine check.",
   "Describe key airway equipment (laryngoscope blades, neuraxial needles) and the rationale for their design.",
 ];
 
@@ -57,7 +57,7 @@ const keyPoints = [
   { text: "Ritchie whistle is gas-powered (Venturi/Bernoulli) — sounds even during power failure.", cites: ["Cormack & Lehane 1984"] },
   { text: "AAGBI minimum monitoring: SpO₂, ECG, NIBP, EtCO₂, FiO₂, agent, airway pressure, temperature; TOF if NMBs.", cites: ["McCoy & Mirakhur 1993"] },
   { text: "Pencil-point spinal needles (Whitacre/Sprotte) reduce PDPH vs Quincke; Tuohy directs epidural catheter via Huber tip.", cites: ["Miller 1941"] },
-  { text: "Pre-use Association of Anaesthetists 2023 check (supersedes AAGBI 2012): upstream-to-downstream sequence; two-bag test for circuit integrity; self-inflating bag immediately available.", cites: ["AAGBI Check 2023"] },
+  { text: "Pre-use machine check per the AoA/RCoA 2024 guideline ('Anaesthesia, anaesthetic machines and patient safety'): full check at the start of every session with an upstream-to-downstream sequence, two-bag test for circuit integrity, self-inflating bag immediately available, and a recorded, signed checklist — repeated after any change to the equipment configuration.", cites: ["RCoA/AoA 2024 Machine Check", "AAGBI Check 2023"] },
 ];
 
 import manleyImg from "@/assets/ventilators/manley-mp3.jpg";
@@ -814,15 +814,26 @@ const EquipmentMonitoringTopic = () => {
         </CollapsibleSubsection>
 
         {/* ───── 7. Pre-Use Check ───── */}
-        <CollapsibleSubsection title="7 · Standard Pre-Use Check (Association of Anaesthetists 2023)">
+        <CollapsibleSubsection title="7 · Standard Pre-Use Check (AoA / RCoA 2024 machine-safety guideline)">
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
-              A structured check is mandatory at the <strong>start of every operating list</strong>, with an abbreviated check
-              between cases (Association of Anaesthetists, <em>Checking Anaesthetic Equipment 2023</em>
-              <InlineRef topicId="equipment-monitoring" refLabel="AAGBI Check 2023" /> — supersedes the AAGBI 2012 guideline).
+              The joint Association of Anaesthetists / Royal College of Anaesthetists 2024 guideline
+              <em> Anaesthesia, anaesthetic machines and patient safety</em>
+              <InlineRef topicId="equipment-monitoring" refLabel="RCoA/AoA 2024 Machine Check" /> frames the pre-use check as one
+              component of machine safety. A structured full check is mandatory at the <strong>start of every session</strong> and
+              <strong> after any change to the equipment configuration</strong>, with an abbreviated breathing-system check between
+              cases <InlineRef topicId="equipment-monitoring" refLabel="AAGBI Check 2023" />.
               Follow a logical "<strong>upstream-to-downstream</strong>" sequence — from gas supply, through the
               machine, to the breathing system and patient. A <strong>self-inflating bag</strong> must be immediately available
-              and is itself checked. Document and attach a "Machine Checked" label.
+              and is itself checked. The completed checklist is <strong>recorded and signed</strong> for each machine, providing an
+              auditable trail.
+            </p>
+            <p>
+              Beyond the checklist, the 2024 guideline requires departments to address the machine as a system: procurement to current
+              standards, standardised workstation layout to reduce human error, scheduled servicing and electrical-safety testing,
+              alarm defaults that are restored rather than permanently silenced, a back-up oxygen supply and manual means of
+              ventilation at every location where anaesthesia is given, and training so that every anaesthetist is competent with the
+              specific machine model in use.
             </p>
             <ol className="list-decimal list-inside space-y-2 pl-2">
               <li><strong>Self-test & power.</strong> Mains plugged in, battery back-up ≥30 min, electronic self-test completes uninterrupted.</li>
