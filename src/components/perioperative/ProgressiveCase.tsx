@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { CaseDosingReference } from "@/components/cases/CaseDosingReference";
 
 
 export type CaseCategory = "Steroid cover" | "Phaeochromocytoma" | "Antifibrinolytics" | "Co-existing disease" | "Paediatric anaesthesia";
@@ -226,6 +227,8 @@ export const ProgressiveCase = ({ caseData }: ProgressiveCaseProps) => {
                 <p className="text-xs font-semibold uppercase text-primary">Take-home</p>
                 <p className="mt-1 text-sm leading-relaxed text-foreground">{caseData.takeHome}</p>
               </aside>
+
+              <CaseDosingReference caseData={caseData} />
 
               <section className="rounded-md border border-border bg-card overflow-hidden">
                 <Button

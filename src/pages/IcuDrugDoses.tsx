@@ -1,15 +1,37 @@
-import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Pill, Search, TriangleAlert } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { icuDrugDoseGroups, icuDrugCount } from "@/data/icuDrugDoses";
+import { drugSlug } from "@/lib/caseDoseReferences";
 
 const IcuDrugDoses = () => {
+  const [searchParams] = useSearchParams();
+  const requestedDrug = searchParams.get("drug") ?? "";
   const [search, setSearch] = useState("");
   const [activeGroup, setActiveGroup] = useState<string>("all");
+
+  // A case-bank dosing link arrives as ?drug=<slug>: prefill the search with
+  // that drug name and scroll to its row.
+  useEffect(() => {
+    if (!requestedDrug) return;
+    const match = icuDrugDoseGroups
+      .flatMap((group) => group.drugs)
+      .find((drug) => drugSlug(drug.drug) === requestedDrug);
+    if (!match) return;
+    setActiveGroup("all");
+    setSearch(match.drug.replace(/\s*[0-9].*$/, "").trim());
+    window.requestAnimationFrame(() => {
+      const targets = Array.from(
+        document.querySelectorAll<HTMLElement>(`[data-drug="${requestedDrug}"]`),
+      );
+      const visible = targets.find((el) => el.offsetParent !== null) ?? targets[0];
+      visible?.scrollIntoView({ block: "center" });
+    });
+  }, [requestedDrug]);
 
   const groups = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -140,7 +162,12 @@ const IcuDrugDoses = () => {
                   </thead>
                   <tbody>
                     {group.drugs.map((d) => (
-                      <tr key={d.drug} className="border-t border-border align-top">
+                      <tr
+                        key={d.drug}
+                        id={`drug-${drugSlug(d.drug)}`}
+                        data-drug={drugSlug(d.drug)}
+                        className="border-t border-border align-top scroll-mt-24"
+                      >
                         <th scope="row" className="p-3 text-left font-medium text-foreground">
                           {d.drug}
                         </th>
@@ -162,7 +189,11 @@ const IcuDrugDoses = () => {
               {/* Stacked cards on mobile */}
               <ul className="mt-4 space-y-3 md:hidden">
                 {group.drugs.map((d) => (
-                  <li key={d.drug} className="rounded-xl border border-border bg-card p-4">
+                  <li
+                    key={d.drug}
+                    data-drug={drugSlug(d.drug)}
+                    className="scroll-mt-24 rounded-xl border border-border bg-card p-4"
+                  >
                     <h3 className="font-semibold text-foreground">{d.drug}</h3>
                     <dl className="mt-2 space-y-1.5 text-sm">
                       <div>
