@@ -55,7 +55,7 @@ export const icuCaseBank: CaseBank = {
   backPath: "/intensive-care",
   backLabel: "Intensive Care",
   accentColor: "text-icu",
-  categories: ["Acid–base", "Ventilation", "Infection & immunity", "Organ support & metabolic", "Neuro & resuscitation"],
+  categories: ["Acid–base", "Ventilation", "Infection & immunity", "Organ support & metabolic", "Neuro & resuscitation", "Paediatric critical care"],
   cases: [
     {
       id: "icu-hagma-dka",
