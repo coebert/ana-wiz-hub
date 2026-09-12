@@ -11,6 +11,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { Link } from "react-router-dom";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const clinicalIncidentsFaqs: Array<[string, string]> = [
   [
@@ -159,7 +160,7 @@ const ClinicalIncidentsTopic = () => {
         { text: "MH: rising EtCO₂ + tachycardia is the earliest sign. Dantrolene 2.5 mg/kg IV, repeat to 10 mg/kg", cites: ["AAGBI 2011"] },
         { text: "LAST: Intralipid 20% bolus 1.5 mL/kg, infusion 15 mL/kg/h. AVOID propofol, lidocaine, and amiodarone in arrest", cites: ["BJA Educ 2011"] },
         { text: "Awareness: NAP5 incidence ~1:19,000. BIS 40-60 reduces risk in TIVA; document, acknowledge, and refer for psychological follow-up", cites: ["NAP Reports"] },
-        { text: "NMBAs cause ~60% of perioperative anaphylaxis (NAP6). Chlorhexidine and antibiotics are next commonest", cites: ["AAGBI 2009"] },
+        { text: <>NMBAs cause ~38% of perioperative anaphylaxis (NAP6), followed by antibiotics (26%) and chlorhexidine (9%) <InlineRef topicId="clinical-incidents" refLabel="NAP6 2018 (Triggers)" /></>, cites: ["AAGBI 2009"] },
       ]}
       coreConcepts={
         <>
@@ -248,7 +249,7 @@ const ClinicalIncidentsTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li><strong>Call for help early</strong> — declare "cardiac arrest" out loud; activate theatre arrest call; second anaesthetist + ODP/anaesthetic assistant to the head; runner for drugs/blood.</li>
                 <li><strong>ALS algorithm adapted to theatre</strong>: turn off volatile/TIVA, FiO₂ 1.0, confirm ETT position with ETCO₂ (a sudden ETCO₂ drop is often the first sign), high-quality CPR — surgeons stop and step back from the field; consider open chest cardiac massage in cardiothoracic / abdominal surgery already opened.</li>
-                <li><strong>Reversible causes (4 Hs &amp; 4 Ts) with anaesthesia-specific add-ons</strong>: anaphylaxis (give IM/IV adrenaline early), LAST (Intralipid 20% 1.5 mL/kg bolus + 0.25 mL/kg/min), MH (stop trigger, dantrolene), high spinal, gas embolism, haemorrhage, vagal reflex (e.g. peritoneal traction), tension pneumothorax (especially after CVC, brachial plexus, intercostal block), tamponade.</li>
+                <li><strong>Reversible causes (4 Hs &amp; 4 Ts) with anaesthesia-specific add-ons</strong>: anaphylaxis (give IM/IV adrenaline early), LAST (Intralipid 20% 1.5 mL/kg bolus then 15 mL/kg/h), MH (stop trigger, dantrolene), high spinal, gas embolism, haemorrhage, vagal reflex (e.g. peritoneal traction), tension pneumothorax (especially after CVC, brachial plexus, intercostal block), tamponade.</li>
                 <li><strong>Surgical control of haemorrhage</strong> takes priority alongside resuscitation — activate major haemorrhage protocol, give TXA, use cell salvage, accept permissive hypotension until source controlled.</li>
                 <li><strong>Decision to stop</strong>: by consensus of the senior anaesthetist and senior surgeon, after exclusion of reversible causes and an adequate ALS effort. Document time of death, rhythm, and last interventions.</li>
               </ul>
@@ -295,9 +296,10 @@ const ClinicalIncidentsTopic = () => {
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
-              "Anaphylaxis (NAP6): NMBDs, antibiotics and chlorhexidine top the list — adrenaline IM 0.5 mg first line; mast-cell tryptase at 1, 4 and 24 h.",
+              "Anaphylaxis (NAP6): NMBAs (38%), antibiotics (26%) and chlorhexidine (9%) top the list — adrenaline IM 0.5 mg first line.",
+              <>Tryptase sampling: ASAP after resuscitation, at 1–2 h, and a baseline at ≥ 24 h — an uninterpretable acute value without the 24 h baseline is a common exam trap <InlineRef topicId="clinical-incidents" refLabel="RCUK Anaphylaxis 2021" /></>,
               "Malignant hyperthermia: stop trigger, hyperventilate 100% O₂ high flows, dantrolene 2.5 mg/kg repeated to 10 mg/kg, cool, treat hyperkalaemia.",
-              "LAST: stop injection, ABC, manage seizures, 20% Intralipid 1.5 mL/kg bolus + 0.25 mL/kg/min infusion (AAGBI).",
+              <>LAST: stop injection, ABC, manage seizures, 20% Intralipid 1.5 mL/kg bolus then 15 mL/kg/h infusion (max cumulative 12 mL/kg) <InlineRef topicId="clinical-incidents" refLabel="AAGBI LAST 2010" /></>,
               "Accidental awareness (NAP5): risk highest with TIVA + NMB; use processed EEG; debrief and refer for psychological support.",
               "Cannot intubate, cannot oxygenate: declare CICO, call for help, scalpel-bougie-tube cricothyroidotomy without delay.",
             ]}

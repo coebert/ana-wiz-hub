@@ -140,6 +140,7 @@ const workedExamples: WorkedExample[] = [
 const tocItems = [
   { id: "section-pathophysiology", label: "Pathophysiology", group: "Core" },
   { id: "section-berlin", label: "Berlin Definition", group: "Core" },
+  { id: "section-workup", label: "Diagnostic Workup", group: "Core" },
   { id: "section-management", label: "Management Strategy", group: "Core" },
   { id: "section-prone", label: "Prone Positioning", group: "Therapies" },
   { id: "section-historical", label: "Therapies of Uncertain Benefit", group: "Therapies" },
@@ -283,6 +284,32 @@ const ARDSTopic = () => {
           <p className="text-sm text-muted-foreground mt-2">
             All with: onset within 7 days, bilateral opacities on CXR/CT, not fully explained by cardiac failure/fluid overload, PEEP ≥5 cmH₂O.
           </p>
+          </CollapsibleSubsection>
+        </ExamSection>
+
+        <ExamSection id="section-workup" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC2.4"]}>
+          <CollapsibleSubsection title="Diagnostic Workup in ARDS">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Identifying and treating the underlying cause of ARDS is as important as lung-protective ventilation, since the trigger dictates targeted therapy and prognosis <InlineRef topicId="ards" refLabel="Intensive Care Med 2016 (ARDS workup)" />. The first step is a structured search for <strong>obvious causes</strong>: sepsis (a clear source of infection — pneumonia, urinary, intra-abdominal, line-related), major trauma or burns, aspiration of gastric contents, acute pancreatitis, and transfusion-related acute lung injury (TRALI) following recent blood product administration. History, examination and initial cultures/imaging will identify a clear precipitant in the majority of cases.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              When there is <strong>no obvious cause</strong>, or when a <strong>direct pulmonary insult</strong> such as pneumonia is suspected, <strong>bronchoalveolar lavage (BAL)</strong> should be strongly considered to identify a causative microorganism <InlineRef topicId="ards" refLabel="Intensive Care Med 2016 (ARDS workup)" />. Quantitative culture thresholds are used to distinguish infection from colonisation: growth &gt;10⁴ CFU/mL on BAL (or &gt;10³ CFU/mL on protected specimen brush) is considered significant. Where bronchoscopy is unavailable or the patient too unstable, a <strong>non-directed (blind/mini) BAL</strong> performed via a catheter wedged in a bronchus is a reasonable alternative and yields comparable microbiological information in ventilated patients.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Supplementary investigations should include <strong>blood cultures</strong> and adjunctive biomarkers: <strong>procalcitonin</strong> to support (though not replace) the diagnosis of bacterial infection and guide antimicrobial duration, <strong>respiratory viral PCR</strong> (influenza, SARS-CoV-2, and other respiratory viruses), <strong>urinary antigen testing</strong> for <em>Legionella</em> and <em>Streptococcus pneumoniae</em>, and, in immunosuppressed patients, <strong>beta-D-glucan and galactomannan</strong> to screen for invasive fungal disease (<em>Pneumocystis</em>, <em>Aspergillus</em>).
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Cross-sectional imaging extends the search beyond the chest: <strong>CT chest</strong> characterises the pattern of lung injury and may reveal cavitation, abscess or empyema, while <strong>CT abdomen</strong> is used to exclude an <strong>occult intra-abdominal source of sepsis</strong> (e.g. missed collection, perforation, ischaemic bowel) as the extrapulmonary driver of ARDS.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              <strong>Echocardiography</strong> is essential to assess left and right ventricular function — the Berlin definition explicitly requires that respiratory failure not be fully explained by cardiac failure or fluid overload, and objective assessment (echo) is mandated when no clear risk factor for ARDS is present. Echo also identifies acute cor pulmonale, a key driver of mortality in this population. <strong>Point-of-care lung ultrasound</strong> complements this by rapidly distinguishing cardiogenic pulmonary oedema (B-lines with preserved pleural sliding, effusions) from ARDS, and by detecting pleural effusions and pneumothorax at the bedside without transfer for CT.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              If initial infective and cardiac work-up is unrevealing, a <strong>second-line non-infectious screen</strong> should be pursued <InlineRef topicId="ards" refLabel="Intensive Care Med 2016 (ARDS workup)" />: autoimmune serology (<strong>ANA, ANCA, anti-GBM antibodies</strong>) to screen for vasculitis and diffuse alveolar haemorrhage, <strong>eosinophil count</strong> (peripheral or BAL) to suggest acute eosinophilic pneumonia, a careful <strong>drug history</strong> for drug-induced interstitial lung disease (DIILD — e.g. amiodarone, methotrexate, nitrofurantoin, chemotherapy agents), and targeted <strong>interstitial lung disease serology</strong> where a connective tissue disease is suspected.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              In selected patients where the diagnosis remains obscure despite this work-up — particularly with an atypical course, failure to improve, or suspicion of a treatable non-infectious process — <strong>open lung biopsy or transbronchial biopsy</strong> can be considered to secure a histological diagnosis, accepting the procedural risk in a critically ill, often hypoxaemic patient. This is reserved for cases where the result would materially change management (e.g. confirming vasculitis, organising pneumonia or malignancy amenable to specific therapy).
+            </p>
           </CollapsibleSubsection>
         </ExamSection>
 
