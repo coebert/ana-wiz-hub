@@ -55,7 +55,7 @@ const tocItems = [
 
 const preoperativeAssessmentFaqs: Array<[string, string]> = [
   ["What is the prognostic value of CPET anaerobic threshold (AT) before major surgery?", "An AT <11 mL/kg/min predicts increased postoperative cardiopulmonary morbidity and 30/90-day mortality after major non-cardiac surgery; 11–14 mL/kg/min is intermediate risk and >14 mL/kg/min low risk (Older 1993; POM-HR)."],
-  ["When should elective non-cardiac surgery be deferred after PCI?", "At least 4 weeks after balloon angioplasty, 6 weeks (ideally 3 months) after a bare-metal stent, and 6 months (ideally 12 months) after a drug-eluting stent — to allow dual antiplatelet therapy without premature interruption (ACC/AHA 2024)."],
+  ["When should elective non-cardiac surgery be deferred after PCI?", "Elective non-cardiac surgery should be delayed at least 1 month after PCI regardless of stent type. Beyond this, whether to continue or interrupt dual antiplatelet therapy is a multidisciplinary (heart team) decision balancing individual thrombotic risk against surgical bleeding risk (ESC Non-Cardiac Surgery 2022)."],
   ["How is the Revised Cardiac Risk Index (Lee) interpreted?", "Six predictors (high-risk surgery, IHD, heart failure, cerebrovascular disease, insulin-treated diabetes, creatinine >177 µmol/L): 0 ≈ 0.4%, 1 ≈ 1%, 2 ≈ 2.4%, ≥3 ≈ 5.4% risk of a major cardiac event at 30 days."],
 ];
 

@@ -210,6 +210,17 @@ const BurnsIcuTopic = () => {
               ‘Fluid creep’ — excess crystalloid resuscitation — drives abdominal compartment syndrome, ARDS, peripheral compartment
               syndromes and ocular compartment syndrome. The formula is a starting point; the patient is the monitor.
             </p>
+            <CollapsibleSubsection title="Monitoring Adequacy of Resuscitation">
+              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+                <li><strong>Urine output</strong> (0.5 mL/kg/h adult, 1 mL/kg/h child): the mainstay end-point, but osmotic diuresis (glucose, myoglobin), diuretics or pre-existing renal disease can mislead it in either direction.</li>
+                <li><strong>Heart rate</strong>: tachycardia is sensitive but non-specific — pain, anxiety, catecholamine surge and sepsis all confound it as a resuscitation marker.</li>
+                <li><strong>Blood pressure</strong>: often preserved until late due to high SVR in the shock phase — a normal BP does not exclude under-resuscitation.</li>
+                <li><strong>Lactate clearance and base deficit</strong>: better reflect global tissue perfusion than vital signs; failure to clear lactate or a worsening base deficit suggests ongoing under-resuscitation or occult injury.</li>
+                <li><strong>Cardiac-output monitoring</strong> (PiCCO, LiDCO): increasingly used in large burns to guide fluid and vasopressor therapy objectively, particularly once capillary leak and oedema make clinical assessment unreliable.</li>
+                <li><strong>Fluid creep</strong> is defined as crystalloid volumes exceeding 6 mL/kg/%TBSA or &gt; 250 mL/kg in the first 24 h above formula predictions; it is strongly associated with abdominal, orbital and limb compartment syndromes and should prompt review of resuscitation strategy (colloid, cardiac-output-guided titration).</li>
+                <li><strong>Microdialysis</strong> is an experimental tissue-level monitoring tool that can demonstrate ongoing dermal/muscle hypoxia and metabolic derangement despite apparently adequate systemic resuscitation end-points <InlineRef topicId="burns-icu" refLabel="Burns Microdialysis 2007" />.</li>
+              </ul>
+            </CollapsibleSubsection>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -218,7 +229,16 @@ const BurnsIcuTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Escharotomy</strong> for circumferential limb / torso burns to relieve compartment pressures (CRT &gt; 4 s, absent doppler, ↑ peak airway pressures). Mid-axial limb incisions, transverse chest extension if respiratory restriction.</li>
               <li><strong>Early excision &amp; grafting</strong> within 5 days reduces sepsis, length of stay and mortality. Plan and book theatres early; expect ~ 3–5 % blood-volume loss per 1 % TBSA excised.</li>
-              <li><strong>Analgesia &amp; sedation</strong>: multimodal — opioid (background + PCA), ketamine infusion, paracetamol, gabapentinoid; consider clonidine / dexmedetomidine to limit opioid load. Procedural ketamine for dressing changes.</li>
+              <li><strong>Analgesia &amp; sedation</strong>: distinguish <strong>background</strong>, <strong>breakthrough</strong>, <strong>procedural</strong> and <strong>neuropathic</strong> pain — each needs a different strategy.
+                <ul className="list-disc list-inside ml-4 mt-1 space-y-1">
+                  <li><strong>Background pain</strong>: continuous opioid infusion (morphine or fentanyl) ± background ketamine infusion for its opioid-sparing and anti-hyperalgesic effect; regional techniques and donor-site nerve blocks reduce total opioid load where feasible.</li>
+                  <li><strong>Breakthrough pain</strong>: PCA (morphine/fentanyl) titrated on top of the background infusion.</li>
+                  <li><strong>Procedural pain</strong> (dressing changes, physiotherapy): pre-emptive analgesia before the procedure, short-acting agents (alfentanil, remifentanil) or dissociative/deep procedural sedation with propofol and/or ketamine.</li>
+                  <li><strong>Neuropathic pain</strong>: common as burns heal and nerves regenerate — start gabapentinoids (gabapentin/pregabalin) or amitriptyline early rather than waiting for established neuropathic symptoms.</li>
+                  <li><strong>Non-pharmacological adjuncts</strong>: virtual reality distraction, guided distraction techniques and hypnosis reduce procedural pain and anxiolytic/opioid requirements.</li>
+                  <li>Expect rapid <strong>tolerance</strong> and escalating opioid requirements over days–weeks — anticipate and titrate proactively rather than chasing pain.</li>
+                </ul>
+              </li>
               <li><strong>Nutrition</strong>: enteral within 24 h via NG/NJ; 25–30 kcal/kg/day, protein 1.5–2 g/kg/day; supplement glutamine, vitamin C, zinc, selenium. Indirect calorimetry where available.</li>
               <li><strong>Glycaemic control</strong>: target 4–10 mmol/L with insulin infusion; hyperglycaemia worsens infection and graft loss.</li>
               <li><strong>Anti-catabolic therapy</strong>: propranolol 1–4 mg/kg/day attenuates the catecholamine-driven hypermetabolic response; oxandrolone in selected adults reduces lean-body-mass loss.</li>
