@@ -245,7 +245,103 @@ const RegionalAnaesthesiaTopic = () => {
             <UpperLimbBranchesDiagram />
             <LowerLimbBranchesDiagram />
           </div>
+
+          <h3 id="truncal-blocks" className="text-lg font-serif font-semibold text-foreground mt-8 mb-2 scroll-mt-24">Truncal & Abdominal Wall Blocks</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+            Fascial plane blocks deposit a large volume of dilute local anaesthetic into a plane containing sensory nerves. They are technically straightforward, spare motor function and avoid the sympathetic block of an epidural, but they are <strong>analgesic rather than anaesthetic</strong>, rely on volume-dependent spread, and use doses close to maximum — so calculate mg/kg carefully and monitor for LAST
+            <InlineRef topicId="regional-anaesthesia" refLabel="BJA Educ 2020 Fascial Planes" />.
+          </p>
+          <div className="space-y-3">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Transversus abdominis plane (TAP) block</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Landmarks:</strong> mid-axillary line between the costal margin and iliac crest (posterior approach gives more reliable spread); the classic landmark technique used the lumbar triangle of Petit. <strong>Ultrasound:</strong> in-plane needling of the three-layer sandwich (external oblique, internal oblique, transversus abdominis), hydrodissecting 15–20 ml of 0.25 % levobupivacaine per side between internal oblique and transversus. <strong>Coverage:</strong> anterior abdominal wall somatic sensation, roughly <strong>T10–L1</strong> with the subcostal approach extending to T7–T9; no visceral or midline coverage. <strong>Risks:</strong> peritoneal or bowel/liver puncture, intravascular injection and LAST from bilateral large-volume dosing, transient femoral nerve palsy from anterior spread.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Rectus sheath block</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Indication:</strong> midline incisions — laparotomy, umbilical and epigastric hernia, laparoscopic port sites. <strong>Technique:</strong> ultrasound lateral to the umbilicus, needle tip between the posterior surface of rectus abdominis and the posterior rectus sheath, 10–20 ml per side (0.2–0.3 ml/kg in children), targeting the terminal branches of T9–T11 as they cross the sheath. <strong>Risks:</strong> peritoneal or bowel puncture, inferior epigastric vessel injury and haematoma, short duration unless catheters are placed.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Pectoral nerve blocks (PECS I & II / serratus plane)</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Indications:</strong> breast surgery (mastectomy, axillary clearance, implants), pacemaker/ICD insertion, and — for serratus plane — rib fractures and thoracotomy. <strong>PECS I:</strong> 10 ml between pectoralis major and minor at the 3rd rib, blocking the <strong>medial and lateral pectoral nerves</strong>. <strong>PECS II:</strong> a second injection of 20 ml deeper, between pectoralis minor and serratus anterior at the 4th rib, blocking the <strong>lateral cutaneous branches of the intercostal nerves T2–T6</strong>, the long thoracic and thoracodorsal nerves. <strong>Risks:</strong> pneumothorax, vascular puncture (thoracoacromial vessels), LAST
+                <InlineRef topicId="regional-anaesthesia" refLabel="BJA Educ 2020 Fascial Planes" />.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Erector spinae plane (ESP) block</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Mechanism:</strong> local anaesthetic injected between the erector spinae muscle and the transverse process spreads craniocaudally over several levels and, at least in part, anteriorly through the costotransverse space towards the <strong>paravertebral space and dorsal/ventral rami</strong> — giving wide multi-dermatomal, and partly visceral, analgesia. <strong>Technique:</strong> transverse process identified at T5 (thoracic) or T7–T9 (abdominal), needle contacts bone, 20–30 ml injected with visible linear spread lifting the muscle; catheters can be sited. <strong>Uses:</strong> rib fractures, thoracic and cardiac surgery, breast surgery, spinal and major abdominal surgery, especially when anticoagulation precludes neuraxial technique. <strong>Risks:</strong> pneumothorax (very rare — injection is posterior to the transverse process), LAST with large volumes, unpredictable spread and variable block quality.
+              </p>
+            </div>
+          </div>
+
+          <h3 id="pnb-adjuncts" className="text-lg font-serif font-semibold text-foreground mt-8 mb-2 scroll-mt-24">Adjuncts for Peripheral Nerve Blocks</h3>
+          <div className="space-y-3">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Dexamethasone</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>4–8 mg</strong> perineural (or the same dose intravenously) prolongs analgesic duration by roughly <strong>20–30 %</strong> — typically several hours with a long-acting local anaesthetic. Mechanism is thought to combine attenuation of the local inflammatory response with vasoconstriction and effects on potassium channels reducing nociceptive C-fibre firing. Intravenous administration achieves a very similar prolongation and avoids the off-licence perineural route, so it is often preferred; watch glycaemic control in diabetes
+                <InlineRef topicId="regional-anaesthesia" refLabel="BJA Educ 2020 Adjuvants" />.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Alpha-2 agonists</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Clonidine 50–100 mcg</strong> or <strong>dexmedetomidine 25–50 mcg</strong> perineural extend both sensory and motor block by 2–3 hours. They act largely independently of α2 receptors on peripheral nerve, by blocking the <strong>hyperpolarisation-activated cation current (I<sub>h</sub>)</strong> so the nerve cannot repolarise back towards resting potential after an impulse. Dose-dependent <strong>sedation, hypotension and bradycardia</strong> limit their use, and dexmedetomidine is the more potent of the two.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Opioids</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Perineural opioids (including buprenorphine and fentanyl) are <strong>not recommended</strong>: peripheral nerve has few opioid receptors, benefit over the same dose given systemically is unproven, and there are concerns about neurotoxicity as well as the usual nausea, pruritus and sedation. This contrasts with <em>intrathecal</em> and <em>epidural</em> opioids, where spinal cord dorsal horn receptors make them highly effective.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Ketamine and others</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Perineural <strong>ketamine</strong> (NMDA antagonist) and agents such as midazolam, magnesium, tramadol and neostigmine have all been trialled, but psychomimetic effects, injection-site pain and concerns about neurotoxicity mean none is in routine use. <strong>Adrenaline 1:200,000–1:400,000</strong> remains useful mainly as an intravascular marker and to slow systemic absorption; avoid it where perfusion is precarious.
+              </p>
+            </div>
+          </div>
+
+          <h3 id="paediatric-regional" className="text-lg font-serif font-semibold text-foreground mt-8 mb-2 scroll-mt-24">Paediatric Regional Anaesthesia</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+            Paediatric blocks are usually placed <strong>after induction of general anaesthesia</strong>, are extremely safe in registry data, and are the mainstay of opioid-sparing analgesia in children
+            <InlineRef topicId="regional-anaesthesia" refLabel="Anaesthesia 2021 Paed Regional" />.
+          </p>
+          <div className="space-y-3">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Anatomical differences</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                The <strong>conus medullaris ends at about L3</strong> in the neonate (L1 by ~1 year), and the dural sac ends at <strong>S3–S4</strong> rather than S2 — so neuraxial puncture must be performed low (L4/5 or L5/S1) and a caudal needle advanced only minimally. The <strong>sacral hiatus</strong> is easily palpable between the sacral cornua at the apex of an equilateral triangle with the posterior superior iliac spines, and is relatively more cephalad in infants. The epidural space is small with loose, unfused fat allowing easy cephalad spread of solution (and catheter threading from the caudal route in neonates), ligaments are softer so loss of resistance is subtle, and CSF volume per kg is much higher (≈4 ml/kg vs 2 ml/kg), which is why spinal doses per kg are larger and blocks shorter.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Pharmacological differences</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Larger <strong>volumes per kilogram</strong> are needed for equivalent spread, while <strong>toxicity risk is higher</strong>: neonates have reduced albumin and α1-acid glycoprotein (more free drug), immature hepatic CYP metabolism with slower clearance, and higher cardiac output speeding absorption. Use dilute solutions, respect a maximum of <strong>2 mg/kg levobupivacaine/bupivacaine</strong> (infusions ≤0.2 mg/kg/h in neonates, 0.4 mg/kg/h in older children), and remember that early toxicity signs are masked under anaesthesia — an unexplained arrhythmia or widening QRS may be the first sign. <strong>2-chloroprocaine</strong> (ester, plasma-cholinesterase hydrolysis, very short half-life) is increasingly used for neonatal epidural infusions precisely because it does not accumulate.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Common techniques</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Caudal epidural</strong> — the workhorse block for sub-umbilical surgery (circumcision, hypospadias, orchidopexy, inguinal hernia, lower limb). Lateral position, 22–23 G short-bevelled or cannula needle at 45° through the sacrococcygeal ligament, then flatten and advance a few millimetres only; confirm with ultrasound or the "whoosh"/swirl test and aspirate. Dose (Armitage): <strong>0.5 ml/kg</strong> of 0.25 % (or 0.125–0.25 %) bupivacaine/levobupivacaine for sacral, <strong>1 ml/kg</strong> for upper abdominal/mid-thoracic spread, maximum ~20 ml. <strong>Infant "awake" spinal</strong> — for ex-premature infants having inguinal hernia repair, avoiding airway instrumentation and postoperative apnoea: 0.5 % heavy bupivacaine <strong>0.5–1 mg/kg</strong>, lasting only 60–90 min, with strict avoidance of leg elevation (which can produce a high block). Peripheral blocks (ilioinguinal, penile, rectus sheath, brachial plexus, fascia iliaca) follow adult principles with ml/kg dosing.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Safety</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Placing blocks <strong>under general anaesthesia</strong> is accepted practice in children and, in large registry series, is not associated with excess neurological injury — the loss of patient report is offset by an immobile patient and the use of imaging. <strong>Ultrasound guidance</strong> improves block success and reduces the volume needed, and it is now standard for truncal and neuraxial blocks in infants; the Cochrane review found better success rates but no clear effect on rare severe complications. Always run a stop-before-you-block check, use test doses with adrenaline where appropriate, keep 20 % lipid emulsion immediately available with a weight-based LAST plan, and prescribe simple analgesia so the child is not left in pain as the block regresses
+                <InlineRef topicId="regional-anaesthesia" refLabel="Cochrane 2019 US Blocks" />.
+              </p>
+            </div>
+          </div>
         </div>
+
 
         <div id="complications" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Complications of Neuraxial Blockade</h2>
