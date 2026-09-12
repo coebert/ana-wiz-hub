@@ -282,6 +282,10 @@ const IcuInfusions = () => {
           <Link to="/intensive-care/drug-doses" className="font-medium text-icu underline-offset-4 hover:underline">
             ICU drug dosing table
           </Link>
+          . Need a rate for a specific dose and weight? Try the{" "}
+          <Link to="/intensive-care/calculator" className="font-medium text-icu underline-offset-4 hover:underline">
+            ICU drug calculator
+          </Link>
           .
         </p>
       </PageSection>
