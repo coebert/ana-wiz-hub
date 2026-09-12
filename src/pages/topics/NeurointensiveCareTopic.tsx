@@ -435,7 +435,16 @@ const NeurointensiveCareTopic = () => {
         <ExamSection id="toc-bsd" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="Brain Death & Brainstem Testing">
           <p className="text-muted-foreground leading-relaxed mb-2">
-            UK criteria: known irreversible cause of brain damage. Exclude confounders (hypothermia &lt;34°C, drugs, metabolic/endocrine derangement). Two sets of tests by two senior doctors (one ≥5 years registered).
+            UK criteria: known irreversible cause of brain damage. Exclude confounders (hypothermia &lt;34°C, drugs, metabolic/endocrine derangement). Two sets of tests by two senior doctors (one ≥5 years registered); the certified <strong>time of death is the completion of the second set</strong> of tests.<Cite ids={["AoMRC 2008"]} />
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-2">
+            <strong>Apnoea test criteria (AoMRC 2008):</strong> pre-oxygenate, confirm a{" "}
+            <strong>normal baseline PaCO₂ (4.5–6.0 kPa)</strong> and pH, then disconnect with apnoeic
+            oxygen insufflation and allow the PaCO₂ to rise to <strong>&gt;6.65 kPa</strong> with an
+            arterial <strong>pH &lt;7.40</strong>, observing for any respiratory effort. PaCO₂ climbs at
+            approximately 0.5 kPa/min, so ≥5 min of disconnection is usually needed — the rate of rise
+            estimates test duration only and is not a diagnostic threshold. In chronic CO₂ retention the
+            baseline is higher and the target PaCO₂ must be raised accordingly.<Cite ids={["AoMRC 2008"]} />
           </p>
           <div className="grid sm:grid-cols-3 gap-2">
             {[
