@@ -413,7 +413,7 @@ const MuscleRelaxantsTopic = () => {
             <p className="text-foreground/90 leading-relaxed">
               Indications in critical care are narrow: tracheal intubation, severe ventilator dyssynchrony or very high airway
               pressures, facilitating prone positioning, therapeutic hypothermia with shivering, status asthmaticus, tetanus, raised
-              intracranial pressure refractory to sedation, and abdominal compartment syndrome.
+              intracranial pressure refractory to sedation, and abdominal compartment syndrome<InlineRef topicId="muscle-relaxants" refLabel="CCM 2006 ICU NMBA" />.
             </p>
             <ul className="list-disc list-inside text-foreground/90 leading-relaxed mt-3 space-y-1">
               <li><strong>Agent choice:</strong> cisatracurium 1–3 µg/kg/min is preferred for infusions — Hofmann elimination is independent of hepatic and renal function, and laudanosine accumulation is clinically insignificant at these doses. Rocuronium and vecuronium accumulate in organ failure (vecuronium's active 3-desacetyl metabolite is renally cleared).</li>
