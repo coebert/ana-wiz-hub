@@ -204,6 +204,7 @@ const SepsisTopic = () => {
     <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <section className="space-y-6">
         <TopicTableOfContents items={sepsisTocItems} />
+        <DrugDosesCallout focus="antimicrobials, vasopressors and hydrocortisone in septic shock" />
 
 
         <div>
