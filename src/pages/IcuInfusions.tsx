@@ -1,11 +1,12 @@
-import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Droplets, Search, TriangleAlert } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import InfusionCalculator from "@/components/icu/InfusionCalculator";
+import { drugSlug } from "@/lib/caseDoseReferences";
 import {
   formatMlPerHour,
   icuInfusionCount,
@@ -27,6 +28,25 @@ const IcuInfusions = () => {
   const [search, setSearch] = useState("");
   const [activeGroup, setActiveGroup] = useState<string>("all");
   const [weightInput, setWeightInput] = useState(String(DEFAULT_WEIGHT));
+  const [searchParams] = useSearchParams();
+  const requestedDrug = searchParams.get("drug") ?? "";
+
+  // A management-flow link arrives as ?drug=<slug>: prefill the search and
+  // scroll the matching recipe into view.
+  useEffect(() => {
+    if (!requestedDrug) return;
+    const match = icuInfusionGroups
+      .flatMap((g) => g.infusions)
+      .find((i) => drugSlug(i.drug) === requestedDrug);
+    if (!match) return;
+    setActiveGroup("all");
+    setSearch(match.drug.replace(/\s*\([^)]*\)/g, "").replace(/\s*[0-9].*$/, "").trim());
+    window.requestAnimationFrame(() => {
+      document
+        .querySelector(`[data-infusion="${requestedDrug}"]`)
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }, [requestedDrug]);
   const weight = Number(weightInput) > 0 ? Number(weightInput) : DEFAULT_WEIGHT;
 
   const groups = useMemo(() => {
@@ -178,7 +198,7 @@ const IcuInfusions = () => {
                     {group.infusions.map((i) => {
                       const r = rangeFor(i, weight);
                       return (
-                        <tr key={i.drug} className="border-t border-border align-top">
+                        <tr key={i.drug} data-infusion={drugSlug(i.drug)} className="border-t border-border align-top scroll-mt-24">
                           <th scope="row" className="p-3 text-left font-medium text-foreground">
                             {i.drug}
                             {i.notes && (
@@ -214,7 +234,7 @@ const IcuInfusions = () => {
                 {group.infusions.map((i) => {
                   const r = rangeFor(i, weight);
                   return (
-                    <li key={i.drug} className="rounded-xl border border-border bg-card p-4">
+                    <li key={i.drug} data-infusion={drugSlug(i.drug)} className="scroll-mt-24 rounded-xl border border-border bg-card p-4">
                       <h3 className="font-semibold text-foreground">{i.drug}</h3>
                       <dl className="mt-2 space-y-1.5 text-sm">
                         <div>
