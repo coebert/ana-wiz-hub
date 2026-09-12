@@ -1101,12 +1101,19 @@ const ContentAudit = () => {
                   ))}
                 </SelectContent>
               </Select>
+              {stalled && (
+                <Button variant="outline" onClick={resumeAudit}>
+                  <RefreshCw className="w-4 h-4 mr-1" />
+                  Resume audit
+                </Button>
+              )}
               {running && (
                 <Button variant="destructive" onClick={cancelAudit}>
                   <Square className="w-4 h-4 mr-1" />
                   Cancel topic audit
                 </Button>
               )}
+
             </div>
             <p className="text-xs text-muted-foreground">
               <strong>Run all checks</strong> kicks off the topic audit, the formulary verification,
