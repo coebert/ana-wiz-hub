@@ -116,29 +116,50 @@ export const ProgressiveCase = ({ caseData }: ProgressiveCaseProps) => {
 
   return (
     <article id={caseData.id} className="scroll-mt-24 border border-border bg-card rounded-lg overflow-hidden shadow-sm">
-      <div className="p-4 sm:p-5">
+      <div className="p-3 sm:p-5">
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <Badge variant="secondary">{caseData.category}</Badge>
           <Badge variant="outline">{caseData.difficulty}</Badge>
         </div>
-        <h2 className="text-xl font-serif font-bold text-foreground">{caseData.title}</h2>
+        <h2 className="text-lg sm:text-xl font-serif font-bold text-foreground break-words">{caseData.title}</h2>
         <p className="mt-2 text-sm font-medium text-foreground">{caseData.patient}</p>
         <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{caseData.presentation}</p>
-        <Button
-          type="button"
-          variant="outline"
-          className="mt-4 w-full sm:w-auto"
-          onClick={toggleOpen}
-          aria-expanded={open}
-          aria-controls={`${caseData.id}-stages`}
-        >
-          {open ? <ChevronDown aria-hidden /> : <ChevronRight aria-hidden />}
-          {open ? "Close case" : "Start case"}
-        </Button>
+        <div className="mt-4 flex flex-col sm:flex-row gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full sm:w-auto"
+            onClick={toggleOpen}
+            aria-expanded={open}
+            aria-controls={`${caseData.id}-stages`}
+          >
+            {open ? <ChevronDown aria-hidden /> : <ChevronRight aria-hidden />}
+            {open ? "Close case" : "Start case"}
+          </Button>
+          <Button type="button" variant="ghost" className="w-full sm:w-auto" onClick={shareCase}>
+            <Share2 aria-hidden />
+            Share summary
+          </Button>
+        </div>
       </div>
 
       {open && (
-        <div id={`${caseData.id}-stages`} className="border-t border-border bg-surface p-4 sm:p-5 space-y-4">
+        <div id={`${caseData.id}-stages`} className="border-t border-border bg-surface p-3 sm:p-5 space-y-4">
+          {revealed > 0 && (
+            <div className="flex justify-end">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={() =>
+                  setCollapsedAnswers(allCollapsed ? [] : caseData.stages.map((_, index) => index))
+                }
+              >
+                {allCollapsed ? "Show all answers" : "Hide all answers"}
+              </Button>
+            </div>
+          )}
+
           {caseData.stages.map((stage, index) => {
             const isRevealed = index < revealed;
             const isAvailable = index <= revealed;
