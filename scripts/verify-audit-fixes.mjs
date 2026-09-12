@@ -65,6 +65,20 @@ for (const m of appSrc.matchAll(
   if (file) topicFiles.set(topicId, file);
 }
 
+// Current routes are data-driven in src/routes/topicRoutes.ts. Keep support
+// for the legacy App.tsx declarations above so the verifier works during
+// incremental route migrations as well as against the current registry.
+const topicRoutesSrc = readFileSync(
+  resolve(ROOT, "src/routes/topicRoutes.ts"),
+  "utf8",
+);
+for (const m of topicRoutesSrc.matchAll(
+  /\["\/(?:[^"/]+\/)*([a-z0-9-]+)",\s*"([A-Za-z0-9_]+)"\]/g,
+)) {
+  const [, topicId, moduleName] = m;
+  topicFiles.set(topicId, `src/pages/topics/${moduleName}.tsx`);
+}
+
 // 2. Load references.ts and parse per-topic { label -> url } maps
 const refsSrc = readFileSync(resolve(ROOT, "src/data/references.ts"), "utf8");
 // Very simple parse: split on top-level `"topic-id": [` blocks.
