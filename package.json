@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "predev": "tsx scripts/generate-sitemap.ts && npm run gen:diagram-snapshots",
+    "predev": "tsx scripts/generate-citation-stats.ts && tsx scripts/generate-sitemap.ts && npm run gen:diagram-snapshots",
     "build": "vite build",
     "build:dev": "vite build --mode development",
-    "prebuild": "npm run check -- --rule=citation-stats && tsx scripts/generate-sitemap.ts && npm run gen:diagram-snapshots",
+    "prebuild": "tsx scripts/generate-citation-stats.ts && npm run check -- --rule=citation-stats && tsx scripts/generate-sitemap.ts && npm run gen:diagram-snapshots",
     "gen:sitemap": "tsx scripts/generate-sitemap.ts",
     "submit:sitemap": "tsx scripts/submit-sitemap.ts",
     "prerender:seo": "tsx scripts/prerender-seo.ts",
