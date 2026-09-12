@@ -13,6 +13,11 @@ const sources = {
   crash2: { label: "CRASH-2", href: "https://doi.org/10.1016/S0140-6736(10)60835-5" },
   woman: { label: "WOMAN trial", href: "https://doi.org/10.1016/S0140-6736(17)30638-4" },
   poise3: { label: "POISE-3", href: "https://doi.org/10.1056/NEJMoa2201171" },
+  apagbi: { label: "APAGBI guidelines and standards", href: "https://www.apagbi.org.uk/guidelines" },
+  nls: { label: "Resuscitation Council UK: newborn resuscitation and support of transition", href: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/newborn-resuscitation-and-support-transition-infants-birth" },
+  pals: { label: "Resuscitation Council UK: paediatric advanced life support", href: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/paediatric-advanced-life-support" },
+  bnfc: { label: "BNF for Children", href: "https://bnfc.nice.org.uk/" },
+  achd: { label: "ESC 2020 guidelines for the management of adult congenital heart disease", href: "https://doi.org/10.1093/eurheartj/ehaa554" },
 };
 
 const detailedAnswers: Record<string, DetailedAnswerSection[]> = {
