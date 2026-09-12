@@ -538,7 +538,7 @@ const PaediatricIcuTopic = () => {
                   units/kg/h started 1–2 h after fluids; no bicarbonate. Cerebral oedema — headache,
                   bradycardia with hypertension, falling GCS — is treated with{" "}
                   <strong>hypertonic 2.7% saline 3 mL/kg or mannitol 0.5–1 g/kg</strong> and a reduction in
-                  fluid rate.
+                  fluid rate <InlineRef topicId="paediatric-icu" refLabel="ISPAD DKA 2022" />.
                 </li>
                 <li>
                   <strong>Burns:</strong> resuscitate over 10% TBSA in children using{" "}
@@ -590,8 +590,10 @@ const PaediatricIcuTopic = () => {
                 30–40 (adolescent)</strong>; in the acute PICU phase target roughly two-thirds of this to avoid
                 overfeeding. Protein <strong>1.5 g/kg/day (infants up to 2–3 g/kg/day; 1.5 g/kg/day in older
                 children, more with burns or CRRT)</strong>. Reserve PN for failure to establish enteral feeding
-                by day 5–7 (earlier in neonates and the malnourished), and give thiamine plus phosphate cover
-                where there is refeeding risk.
+                by day 5–7 (earlier in neonates and the malnourished) — withholding early PN reduced new
+                infections and shortened PICU stay <InlineRef topicId="paediatric-icu" refLabel="PEPaNIC 2016" />{" "}
+                <InlineRef topicId="paediatric-icu" refLabel="ASPEN/SCCM Paeds 2017" /> — and give thiamine plus
+                phosphate cover where there is refeeding risk.
               </p>
             </div>
             </CollapsibleSubsection>
