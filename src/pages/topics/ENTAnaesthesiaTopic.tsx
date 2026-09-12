@@ -241,15 +241,38 @@ const ENTAnaesthesiaTopic = () => {
           <div id="middle-ear" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Middle Ear Surgery">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Tympanoplasty, myringoplasty, ossiculoplasty, stapedectomy and mastoid surgery share four anaesthetic goals: a bloodless microscopic field, an immobile patient, preserved facial nerve responses, and a smooth emergence with aggressive PONV prophylaxis<InlineRef topicId="ent-anaesthesia" refLabel="Liang 2010 Middle Ear" />.
+            </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li><strong>N₂O</strong>: avoid — diffuses into non-compliant middle ear cavity 34× faster than N₂ leaves. ↑ middle ear pressure → tympanic membrane graft displacement, disruption of ossicular reconstruction</li>
-              <li><strong>TIVA preferred</strong>: avoids N₂O, provides bloodless field (remifentanil-based controlled hypotension)</li>
-              <li><strong>Facial nerve monitoring</strong>: avoid or limit neuromuscular blockade (no maintenance paralysis). TOF monitoring essential. Short-acting NMBA for intubation only</li>
-              <li><strong>PONV</strong>: very high incidence (vestibular stimulation). Aggressive prophylaxis: dexamethasone + ondansetron + consider TIVA (propofol is antiemetic)</li>
+              <li><strong>N₂O — why it is contraindicated</strong>: nitrous oxide is 34× more soluble than nitrogen, so it diffuses into the closed middle-ear cavity faster than nitrogen leaves. Pressure rises within minutes (up to 20–40 cmH₂O when the Eustachian tube is blocked), displacing a tympanic membrane graft or a newly positioned ossicular prosthesis; on discontinuation the reverse gradient produces negative pressure, serous effusion and PONV. Omit it entirely for grafting procedures, or stop at least 15–30 minutes before graft placement</li>
+              <li><strong>Bloodless field</strong>: 10–15° head-up tilt to improve venous drainage, mild controlled hypotension (MAP 60–70 mmHg in fit patients) with a remifentanil-based TIVA technique, normocapnia (hypercapnia causes vasodilatation and oozing), infiltration with local anaesthetic plus adrenaline, avoidance of coughing and straining, and smooth ventilation without high airway pressures</li>
+              <li><strong>Facial nerve monitoring</strong>: commonly used in mastoid, stapes and cholesteatoma surgery — avoid maintenance neuromuscular blockade, use a short-acting relaxant for intubation only (or intubate under propofol/remifentanil), and confirm recovery with quantitative TOF before the surgeon stimulates</li>
+              <li><strong>Emergence</strong>: coughing, bucking and Valsalva can displace a graft — deep extubation or LMA removal, IV lidocaine 1–1.5 mg/kg, gentle suction under adequate depth, and instructions to avoid nose-blowing postoperatively</li>
+              <li><strong>PONV</strong>: incidence up to 60–80% because of vestibular stimulation — combine dexamethasone, ondansetron and cyclizine (an antihistamine covers the vestibular component), use propofol TIVA, avoid N₂O, keep the patient well hydrated and provide opioid-sparing analgesia</li>
+              <li><strong>Other practicalities</strong>: microscope means limited access with the head turned and taped; secure the tube on the non-operative side, protect the eyes, and use a reinforced or oral RAE tube. Position the head carefully — excessive rotation risks cervical strain and venous obstruction</li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
           </div>
+
+          <div id="paediatric-ent" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
+            <CollapsibleSubsection title="Other Paediatric ENT Procedures">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Children make up most ENT lists. Beyond tonsillectomy, the recurring themes are a shared airway, very short procedures, rapid desaturation and a low threshold for senior help<InlineRef topicId="ent-anaesthesia" refLabel="Ravi 2007 Paed ENT" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Adenoidectomy</strong>: usually an LMA (flexible/reinforced) or south-facing RAE with a throat pack; risks are bleeding into the nasopharynx, pack dislodgement or retention (always document insertion and removal), and laryngospasm on emergence from blood at the cords. Extubate/remove the LMA awake in the lateral head-down position and observe for at least 4 h; children with severe OSA need overnight monitoring</li>
+              <li><strong>Myringotomy and grommets</strong>: very short (5–10 minutes) day-case procedure — inhalational or IV induction, LMA with spontaneous ventilation on a volatile agent, and paracetamol plus ibuprofen given early. No neuromuscular blockade needed. Avoid N₂O when a graft or tympanoplasty is performed; brief exposure for simple grommet insertion is generally accepted but many avoid it routinely</li>
+              <li><strong>Laryngoscopy and bronchoscopy (diagnostic)</strong>: discuss the airway plan with the surgeon first. Options are spontaneous ventilation on sevoflurane or propofol/remifentanil TIVA with topical lidocaine (max 3 mg/kg) to the larynx, intermittent apnoea with reoxygenation between passes, apnoeic oxygenation/high-flow nasal oxygen, or jet ventilation via the rigid scope. Keep the child deep to avoid laryngospasm and monitor CO₂ and saturation continuously</li>
+              <li><strong>Inhaled foreign body</strong>: a genuinely high-risk case — complete obstruction can occur on instrumentation or if a ball-valve object moves. Keep the child calm and upright, avoid instrumentation outside theatre, use inhalational induction with maintained spontaneous ventilation, have an experienced ENT surgeon with a rigid bronchoscope and a range of optical forceps immediately available, and be prepared to push a distal obstruction back into a main bronchus to restore ventilation. Steroids and nebulised adrenaline for post-procedure oedema; observe for pneumothorax and post-obstructive pulmonary oedema</li>
+              <li><strong>General paediatric points</strong>: weight-based dosing, temperature management, avoid codeine, prescribe regular paracetamol and NSAID, involve parents in induction and recovery, and use age-appropriate fasting (6 h food, 1 h clear fluids)</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
+
 
           <div id="stridor" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
