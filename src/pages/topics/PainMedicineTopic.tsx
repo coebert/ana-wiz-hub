@@ -231,6 +231,88 @@ const PainMedicineTopic = () => {
         </CollapsibleSubsection>
         </div>
 
+        <div id="regional-analgesia" className="scroll-mt-24">
+        <CollapsibleSubsection title="Regional Analgesia within a Multimodal Plan">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Regional techniques are the most effective opioid-sparing component of a multimodal plan, providing site-specific analgesia with dynamic pain control that no systemic drug matches. Ultrasound guidance has become the gold standard: there is a growing weight of evidence, matched by improving technology, that it has significant benefits over landmark and nerve-stimulator techniques, and the improved safety and efficacy it brings helps realise the advantages of regional anaesthesia — decreased morbidity and mortality, superior postoperative analgesia, cost-effectiveness, fewer postoperative complications and an improved postoperative course <InlineRef topicId="pain-medicine" refLabel="Anaesthesia 2010 Ultrasound RA" />.
+          </p>
+          <div className="overflow-x-auto mb-3">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Surgical site</th>
+                  <th className="text-left py-2 text-foreground font-semibold">First-choice block</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Notes</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Thoracotomy / thoracic</td><td>Thoracic epidural or paravertebral block</td><td>Paravertebral gives comparable analgesia with less hypotension, urinary retention and pulmonary complication; erector spinae plane block is a lower-risk alternative in the anticoagulated patient</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Open abdominal</td><td>Epidural (open) or TAP/rectus sheath ± IV lidocaine (laparoscopic)</td><td>Epidural benefit is smallest in laparoscopic surgery within an ERAS pathway; quadratus lumborum block extends to visceral pain better than TAP</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Breast</td><td>Pectoral (PECS I/II) or serratus plane block</td><td>Reduces PONV and persistent post-surgical pain risk; useful in patients where opioid is poorly tolerated</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Hip fracture / hip surgery</td><td>Fascia iliaca or femoral nerve block, ± PENG block</td><td>Give in the emergency department for hip fracture — reduces opioid, delirium and time to mobilisation</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Knee arthroplasty</td><td>Adductor canal block + local infiltration analgesia</td><td>Preserves quadriceps power and permits same-day mobilisation, unlike femoral block</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Shoulder / upper limb</td><td>Interscalene (shoulder), supraclavicular or axillary brachial plexus</td><td>Interscalene causes near-universal ipsilateral phrenic palsy — avoid in severe respiratory disease; consider a low-volume or suprascapular/axillary nerve alternative</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Prolonging the block</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Continuous catheter infusion (e.g. 0.2% ropivacaine 5–10 ml/h) for severe or prolonged pain, with a documented monitoring plan</li>
+                <li>Perineural dexamethasone 4 mg or IV dexamethasone extends duration by several hours</li>
+                <li>Clonidine and dexmedetomidine prolong block at the cost of sedation and hypotension; liposomal bupivacaine evidence remains unconvincing</li>
+                <li>Always plan the "analgesic cliff" — prescribe oral multimodal analgesia to start <em>before</em> block regression</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border-l-4 border-destructive bg-destructive/5">
+              <p className="font-semibold text-foreground text-sm">Safety essentials</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Stop Before You Block, block-room checklist, and ultrasound visualisation of needle tip throughout</li>
+                <li>Calculate the maximum dose in mg/kg lean body weight (bupivacaine 2 mg/kg, ropivacaine 3 mg/kg, lidocaine with adrenaline 7 mg/kg) before drawing up</li>
+                <li>LAST: stop injection, 100% O₂, control seizures with benzodiazepine, ALS, and Intralipid 20% 1.5 ml/kg bolus then 15 ml/kg/h; prolonged CPR may be required</li>
+                <li>Regional block does not remove the need for observation of a compartment at risk — a dense block can mask compartment syndrome, so use low-concentration solutions and document neurovascular checks</li>
+              </ul>
+            </div>
+          </div>
+        </CollapsibleSubsection>
+        </div>
+
+        <div id="cannabinoids" className="scroll-mt-24">
+        <CollapsibleSubsection title="Cannabinoids in Pain Medicine">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Cannabinoid signalling occurs via G-protein-coupled receptors distributed throughout the body. Endocannabinoids (anandamide, 2-arachidonoylglycerol) are arachidonic-acid derivatives functioning in diverse physiological systems: neuronal <strong>CB₁</strong> receptors modulate synaptic transmission and mediate psychoactivity, while immune-cell <strong>CB₂</strong> receptors may down-regulate neuroinflammation and influence cyclo-oxygenase-dependent pathways. Animal models show that cannabinoid receptors play a fundamental role in peripheral, spinal and supraspinal nociception <InlineRef topicId="pain-medicine" refLabel="BJA 2008 Cannabinoids" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Pharmacology</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>CB₁</strong> — presynaptic, dense in periaqueductal grey, rostral ventromedial medulla, dorsal horn and peripheral nociceptors; retrograde inhibition of glutamate and substance P release. Responsible for analgesia <em>and</em> for psychoactive and cognitive effects.</li>
+                <li><strong>CB₂</strong> — microglia and immune cells; anti-inflammatory and antihyperalgesic without psychoactivity, making it an attractive but so far unrealised drug target.</li>
+                <li>Δ⁹-THC is a partial CB₁/CB₂ agonist; cannabidiol (CBD) has low receptor affinity and acts on TRPV1, 5-HT1A and adenosine signalling and inhibits endocannabinoid reuptake.</li>
+                <li>High lipid solubility gives a large volume of distribution, extensive hepatic CYP metabolism (2C9, 3A4), a prolonged terminal half-life and significant interaction potential (warfarin, clobazam, opioids, sedatives).</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">UK clinical position</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Cannabis-based medicinal products have been prescribable by specialists since November 2018, but <strong>NICE NG144 does not recommend them for chronic pain</strong> outside a clinical trial.</li>
+                <li>Licensed products: <strong>nabiximols</strong> (THC:CBD oromucosal spray) for MS spasticity, <strong>nabilone</strong> for chemotherapy-induced nausea, <strong>cannabidiol</strong> for Dravet/Lennox–Gastaut and tuberous sclerosis seizures.</li>
+                <li>Trial evidence in neuropathic pain shows small effect sizes (NNT ~20 for 30% pain relief) with a low number needed to harm; effects on nociceptive and cancer pain are weaker still.</li>
+                <li>Adverse effects: dizziness, sedation, dry mouth, cognitive impairment, tachycardia and postural hypotension, nausea, psychosis in the predisposed, cannabinoid hyperemesis, and dependence.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="p-4 rounded-lg border border-border">
+            <p className="font-semibold text-foreground text-sm">Perioperative relevance</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Ask specifically about prescribed and recreational cannabinoid use. Chronic users often need higher doses of propofol and volatile agent, report higher postoperative pain scores and use more opioid; acute intoxication is associated with airway irritability, tachycardia and, rarely, myocardial ischaemia. Continue licensed products perioperatively where possible to avoid withdrawal (irritability, insomnia, nausea), and rely on a robust multimodal and regional plan rather than escalating cannabinoids for acute pain.
+            </p>
+          </div>
+        </CollapsibleSubsection>
+        </div>
+
+
         <div id="magnesium" className="scroll-mt-24">
         <CollapsibleSubsection title="IV Magnesium as an Analgesic">
           <p className="text-muted-foreground leading-relaxed mb-3">
