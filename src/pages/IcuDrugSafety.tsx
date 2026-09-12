@@ -300,7 +300,7 @@ const IcuDrugSafety = () => {
                                 Half-life
                               </dt>
                               <dd className="mt-0.5 text-xs leading-snug text-foreground">
-                                {pk?.halFLifeFallback ?? pk?.halfLife ?? "See mechanisms page"}
+                                {pk?.halfLife ?? "See the mechanisms page"}
                               </dd>
                             </div>
                             <div>
