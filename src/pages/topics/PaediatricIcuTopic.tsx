@@ -585,6 +585,97 @@ const PaediatricIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="drug-dosing" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Drug Dosing in Small Patients">
+            <p className="text-muted-foreground text-sm mb-3">
+              Children are not scaled-down adults: body composition, protein binding, enzyme maturation and
+              renal clearance all change with age, and the same mg/kg dose can be sub-therapeutic in a
+              toddler and toxic in a neonate. Every prescription needs a{" "}
+              <strong>documented weight</strong>, a <strong>mg/kg calculation checked by a second person</strong>,
+              and a <strong>stated maximum (usually the adult dose)</strong> — the commonest severe paediatric
+              medication errors are ten-fold decimal errors, dose-per-kg given as a total dose, and total dose
+              given per kg.
+            </p>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Developmental pharmacokinetics</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Parameter</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Neonate / infant</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Dosing consequence</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Total body water</td><td>75–80% at term (85% preterm) vs 60% adult; ECF 40–45% vs 20%</td><td>Larger V<sub>d</sub> for water-soluble drugs → <strong>higher mg/kg loading dose</strong> (suxamethonium 2 mg/kg, aminoglycosides, propofol induction ~3–5 mg/kg in infants)</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Body fat / muscle</td><td>Low muscle bulk, fat 12–15% at birth</td><td>Less redistribution → prolonged effect of lipophilic drugs; unreliable IM absorption</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Protein binding</td><td>Low albumin and α₁-acid glycoprotein; fetal albumin binds poorly; bilirubin competes</td><td>Higher free fraction of phenytoin, diazepam, bupivacaine → reduce dose and watch toxicity; sulphonamides/ceftriaxone displace bilirubin (kernicterus)</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Blood–brain barrier</td><td>Immature, more permeable</td><td>Increased CNS sensitivity to opioids and sedatives — <strong>morphine dose halved in neonates</strong></td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Hepatic metabolism</td><td>Phase I and glucuronidation immature at birth, mature by 6–12 months, then <em>exceeds</em> adult clearance per kg in toddlers</td><td>Prolonged half-lives in neonates; <strong>1–6 year olds often need larger mg/kg doses and shorter intervals</strong> (e.g. paracetamol, midazolam)</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Renal clearance</td><td>GFR ~20–30% of adult at term, adult values by 1–2 y</td><td>Extend dosing intervals for gentamicin, vancomycin, morphine metabolites (M6G) — interval, not dose, is reduced first</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Receptor / NMJ maturity</td><td>Immature neuromuscular junction, small ACh reserve</td><td>Increased sensitivity to non-depolarising blockers but larger V<sub>d</sub> — net dose similar per kg with a longer duration; always monitor with a nerve stimulator</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Surface area</td><td>BSA:weight ratio ~3× adult</td><td>Cytotoxics, some vasoactives and dialysis prescriptions are dosed per m²: BSA(m²) = √(height cm × weight kg / 3600)</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Emergency drugs — mg/kg to remember</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Drug</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Dose</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Notes / maximum</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Adrenaline (arrest)</td><td>10 mcg/kg IV/IO = <strong>0.1 mL/kg of 1:10,000</strong></td><td>Every 3–5 min. Never give the 1:1000 ampoule undiluted IV</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Adrenaline (anaphylaxis)</td><td>IM 1:1000 — 150 mcg &lt;6 y, 300 mcg 6–12 y, 500 mcg &gt;12 y</td><td>Anterolateral thigh; repeat at 5 min</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Atropine</td><td>20 mcg/kg</td><td>Minimum 100 mcg (smaller doses cause paradoxical bradycardia), max 600 mcg</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Amiodarone</td><td>5 mg/kg after 3rd and 5th shock</td><td>Max 300 mg</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Adenosine</td><td>100 mcg/kg, then 200, then 300 mcg/kg</td><td>Max single dose 12 mg; rapid flush, large proximal vein</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Lorazepam / midazolam (seizure)</td><td>Lorazepam 100 mcg/kg IV (max 4 mg); buccal midazolam 300 mcg/kg (max 10 mg)</td><td>Two doses maximum before escalating</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Levetiracetam / phenytoin</td><td>Levetiracetam 40–60 mg/kg (max 4.5 g); phenytoin 20 mg/kg over 20 min</td><td>Cardiac monitoring for phenytoin; levetiracetam preferred (no monitoring, fewer interactions)</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Induction agents</td><td>Ketamine 1–2 mg/kg; propofol 2–4 mg/kg (higher per kg in infants); thiopentone 4–6 mg/kg (2–3 in neonates)</td><td>Halve doses in shock; ketamine is the usual choice for haemodynamic instability</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Neuromuscular blockers</td><td>Rocuronium 1 mg/kg (RSI); suxamethonium <strong>2 mg/kg &lt;1 y, 1.5 mg/kg child</strong>; atracurium 0.5 mg/kg</td><td>Sugammadex 2–4 mg/kg (16 mg/kg for immediate reversal); atropine before sux in infants</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Analgesia / antipyretics</td><td>Paracetamol IV 15 mg/kg 6-hourly (max 60 mg/kg/day; 7.5 mg/kg and 30 mg/kg/day in neonates &lt;10 kg); ibuprofen 5–10 mg/kg 8-hourly; morphine 100 mcg/kg IV (<strong>25–50 mcg/kg in neonates</strong>)</td><td>Titrate opioids in 20 mcg/kg increments; naloxone 10 mcg/kg (400 mcg max) if needed</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Antibiotics (sepsis)</td><td>Ceftriaxone 80 mg/kg od (max 4 g); cefotaxime 50 mg/kg 6–8-hourly; amoxicillin 30 mg/kg tds; gentamicin 7 mg/kg od (5 mg/kg neonates, extended interval); vancomycin 15 mg/kg 6–8-hourly (level-guided); aciclovir 10–20 mg/kg tds</td><td>Meningitic doses are higher; add dexamethasone 150 mcg/kg qds in bacterial meningitis &gt;3 months</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Hypertonic saline / mannitol</td><td>2.7% saline 3 mL/kg (max 150 mL); mannitol 0.5–1 g/kg</td><td>For raised ICP or hyponatraemic seizure</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Salbutamol / magnesium (asthma)</td><td>Salbutamol IV 15 mcg/kg load (max 250 mcg) then 1–2 mcg/kg/min; magnesium sulfate 40–50 mg/kg (max 2 g) over 20 min</td><td>Check K⁺ and lactate on salbutamol infusion</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Infusions — the &ldquo;per kg per minute&rdquo; habit</h3>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>
+                Vasoactive infusions are prescribed in <strong>mcg/kg/min</strong>: adrenaline and noradrenaline
+                0.05–1 mcg/kg/min (start 0.05–0.1), dopamine/dobutamine 5–20 mcg/kg/min, milrinone 0.25–0.75
+                mcg/kg/min, vasopressin 0.0003–0.002 units/kg/min. Sedation runs in mcg/kg/h or mg/kg/h —
+                morphine 10–40 mcg/kg/h, fentanyl 1–4 mcg/kg/h, midazolam 1–4 mcg/kg/min, dexmedetomidine
+                0.2–1.4 mcg/kg/h, ketamine 5–20 mcg/kg/min.
+              </li>
+              <li>
+                <strong>Use standard concentrations</strong> from a national paediatric monograph rather than
+                improvising: fluid-restricted infants need double- or quadruple-strength bags, which multiplies
+                the consequence of a rate error. Cross-check the mL/h a pump is delivering against the intended
+                mcg/kg/min before and after every change of bag or syringe.
+              </li>
+              <li>
+                <strong>Account for hidden volumes and calories:</strong> flushes, drug diluents and propofol
+                lipid (1.1 kcal/mL) all count towards the daily fluid and energy total in a 4 kg infant.
+              </li>
+              <li>
+                <strong>Avoid in the very young:</strong> prolonged propofol infusion (PRIS), codeine (variable
+                CYP2D6 — contraindicated &lt;12 y), NSAIDs in neonates or dehydration, and ceftriaxone in
+                jaundiced neonates or with calcium-containing fluids.
+              </li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="resus" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Resuscitation Key Numbers">
             <div className="overflow-x-auto">
