@@ -89,6 +89,7 @@ const IcuManagementFlows = lazy(() => import("./pages/IcuManagementFlows"));
 const IcuDrugCalculator = lazy(() => import("./pages/IcuDrugCalculator"));
 const IcuNursingProtocols = lazy(() => import("./pages/IcuNursingProtocols"));
 const IcuDrugMechanisms = lazy(() => import("./pages/IcuDrugMechanisms"));
+const IcuDrugSafety = lazy(() => import("./pages/IcuDrugSafety"));
 const AnaesthesiaDrugDoses = lazy(() => import("./pages/AnaesthesiaDrugDoses"));
 
 const AnatomySection = lazy(() => import("./pages/AnatomySection"));
@@ -191,6 +192,7 @@ const App = () => (
           <Route path="/intensive-care/calculator" element={<IcuDrugCalculator />} />
           <Route path="/intensive-care/nursing-protocols" element={<IcuNursingProtocols />} />
           <Route path="/intensive-care/drug-mechanisms" element={<IcuDrugMechanisms />} />
+          <Route path="/intensive-care/drug-safety" element={<IcuDrugSafety />} />
           <Route path="/perioperative" element={<PerioperativeSection />} />
           <Route path="/perioperative/case-bank" element={<PerioperativeCaseBank />} />
           <Route path="/perioperative/co-existing-disease" element={<CoExistingDiseaseOverview />} />

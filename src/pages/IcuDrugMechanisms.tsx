@@ -170,6 +170,10 @@ const IcuDrugMechanisms = () => {
           <Link to="/intensive-care/infusions" className="font-medium text-icu underline-offset-4 hover:underline">
             key ICU drug infusions
           </Link>
+          . For interactions, contraindications and monitoring, open{" "}
+          <Link to="/intensive-care/drug-safety" className="font-medium text-icu underline-offset-4 hover:underline">
+            ICU drug safety
+          </Link>
           .
         </p>
       </PageSection>
