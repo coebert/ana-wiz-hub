@@ -158,7 +158,7 @@ const IcuDrugSafety = () => {
             <Input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search a drug, interaction or monitoring test"
+              placeholder="Search a drug, interaction, monitoring test or taper"
               className="pl-9"
               aria-label="Search ICU drug safety information"
             />
