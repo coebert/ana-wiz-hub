@@ -177,7 +177,8 @@ const ElectricalSafetyTopic = () => {
             These thresholds are for 50 Hz mains-frequency current applied for ≥1 s; sensitivity is maximal at 50–60 Hz and falls
             sharply above ~1 kHz, which is why megahertz diathermy current does not stimulate nerve or muscle
             <InlineRef topicId="electrical-safety" refLabel="ATOTW 193 (Electricity II)" />
-            <InlineRef topicId="electrical-safety" refLabel="BJA Educ 2017" />.
+            <InlineRef topicId="electrical-safety" refLabel="BJA Educ 2017" />
+            <InlineRef topicId="electrical-safety" refLabel="BJA Educ 2017 (Electrical safety)" />.
           </p>
         </section>
 
@@ -213,7 +214,7 @@ const ElectricalSafetyTopic = () => {
             A <strong>Line Isolation Monitor (LIM)</strong> continuously measures the impedance from each line to earth. A
             single insulation fault is detected and alarmed when the fault would permit a <strong>prospective fault current of
             about 2–5 mA</strong> to flow were a second fault to occur (the exact set point depends on the standard and the
-            device), but the supply is deliberately
+            device) <InlineRef topicId="electrical-safety" refLabel="BJA Educ 2017 (Electrical safety)" />, but the supply is deliberately
             <em> not</em> automatically interrupted — abrupt loss of power to a ventilator or bypass pump may be more
             dangerous than the fault itself. Two simultaneous faults are required for a hazardous shock.
           </p>

@@ -174,7 +174,8 @@ const OpticsLightTopic = () => {
               <p>
                 It is the theoretical basis of <strong>pulse oximetry</strong>, <strong>co-oximetry</strong>,
                 <strong>capnography</strong> (infrared CO₂ absorption), and <strong>anaesthetic agent analysis</strong>
-                <InlineRef topicId="optics-light" refLabel="BJA Educ 2004 (Spectrophotometry)" />.
+                <InlineRef topicId="optics-light" refLabel="BJA Educ 2004 (Spectrophotometry)" />
+                <InlineRef topicId="optics-light" refLabel="BJA Educ Spectrophotometry (full text)" />.
               </p>
               <p className="font-medium text-foreground">Assumptions and limitations (commonly examined)</p>
               <ul className="list-disc list-inside space-y-1">
@@ -210,7 +211,8 @@ const OpticsLightTopic = () => {
                 arriving arterial blood and rejects everything else. R is calibrated empirically against arterial blood gas
                 measurements in healthy volunteers; at R = 1, SpO₂ ≈ 85%. Pulse oximetry reports <strong>functional
                 saturation</strong>: HbO₂/(HbO₂ + Hb), and with only two wavelengths cannot resolve COHb or MetHb
-                <InlineRef topicId="optics-light" refLabel="BJA Educ 2017 (Pulse oximetry)" />.
+                <InlineRef topicId="optics-light" refLabel="BJA Educ 2017 (Pulse oximetry)" />
+                <InlineRef topicId="optics-light" refLabel="BJA Educ Pulse Oximetry (full text)" />.
               </p>
               <p>
                 <strong>Co-oximetry</strong> uses 4 or more wavelengths to measure <strong>fractional saturation</strong>: HbO₂/
@@ -222,14 +224,14 @@ const OpticsLightTopic = () => {
                 The <strong>isobestic point</strong> (805 nm) is the wavelength at which HbO₂ and Hb absorb equally. At this
                 wavelength, absorption depends only on total haemoglobin concentration, independent of oxygenation — it is used
                 for calibration and total Hb estimation
-                <InlineRef topicId="optics-light" refLabel="BJA Educ 2004 (Spectrophotometry)" />.
+                <InlineRef topicId="optics-light" refLabel="BJA Educ Spectrophotometry (full text)" />.
               </p>
               <p>
                 <strong>Methaemoglobin (MetHb)</strong> has approximately equal absorbance at 660 nm and 940 nm. This drives the
                 ratio of ratios toward R ≈ 1, which corresponds to an SpO₂ of approximately <strong>85%</strong>, irrespective
                 of the true arterial saturation. Clinically this produces a falsely low SpO₂ in well-oxygenated patients and a
                 falsely high SpO₂ in those who are profoundly hypoxic — co-oximetry is required to quantify MetHb
-                <InlineRef topicId="optics-light" refLabel="BJA Educ 2017 (Pulse oximetry)" />.
+                <InlineRef topicId="optics-light" refLabel="BJA Educ Pulse Oximetry (full text)" />.
               </p>
             </div>
             </CollapsibleSubsection>
