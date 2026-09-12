@@ -287,16 +287,68 @@ const TIVATopic = () => {
                   <div className="grid sm:grid-cols-2 gap-3">
                     <div className="p-4 rounded-lg border border-border bg-secondary/30">
                       <p className="font-semibold text-foreground text-sm">Advantages of TIVA</p>
-                      <p className="text-xs text-muted-foreground mt-1">No atmospheric pollution, no trigger for malignant hyperthermia, reduced PONV (propofol is anti-emetic), smooth induction/emergence, essential when volatile delivery impossible (e.g., rigid bronchoscopy, laryngeal surgery, jet ventilation), ↓ airway reactivity.</p>
+                      <ul className="text-xs text-muted-foreground mt-1 list-disc list-inside space-y-1">
+                        <li><strong className="text-foreground">Recovery quality:</strong> less PONV (propofol is directly anti-emetic — a number needed to treat of about 5 in high-risk patients), less emergence agitation and delirium in children, and a clear-headed, comfortable emergence.</li>
+                        <li><strong className="text-foreground">Airway and respiratory:</strong> obtunded airway reflexes with propofol/remifentanil, so useful in asthma and reactive airways, tubeless and shared-airway surgery, rigid bronchoscopy, laser airway surgery, jet ventilation and awake fibreoptic intubation.</li>
+                        <li><strong className="text-foreground">Specific indications:</strong> known or suspected malignant hyperthermia susceptibility and other myopathies, severe PONV history, prolonged transfer or remote-site anaesthesia (no scavenging), intra-operative neurophysiological monitoring (MEPs/SSEPs), awake craniotomy, and neurosurgery where a slack brain and preserved autoregulation matter.</li>
+                        <li><strong className="text-foreground">Occupational and environmental:</strong> no theatre pollution or occupational volatile exposure, and a much lower greenhouse-gas footprint than desflurane or nitrous oxide.</li>
+                        <li><strong className="text-foreground">Control:</strong> effect-site targeting with predictable decrement times allows deliberate deep anaesthesia with rapid emergence, and the same infusion can be continued seamlessly into ICU sedation or transfer.</li>
+                        <li>TIVA is now used in about 25% of UK general anaesthetics; meta-analysis shows TIVA and inhalational anaesthesia are comparably safe, with TIVA reducing PONV and agitation while inhalational anaesthesia offers slightly faster recovery and lower cost <InlineRef topicId="tiva" refLabel="BJA 2025 TIVA vs Inhalational" />.</li>
+                      </ul>
                     </div>
                     <div className="p-4 rounded-lg border border-border bg-secondary/30">
-                      <p className="font-semibold text-foreground text-sm">Risks & Considerations</p>
+                      <p className="font-semibold text-foreground text-sm">Risks &amp; Considerations</p>
                       <p className="text-xs text-muted-foreground mt-1">Higher awareness risk (NAP5: 1:8,000 vs 1:135,000 with volatile). No end-tidal agent to confirm delivery. Requires processed EEG monitoring (BIS/Entropy). IV line disconnection = awareness. Propofol infusion syndrome with prolonged high-dose use (&gt;4 mg/kg/hr for &gt;48h).</p>
                     </div>
                   </div>
                 </div>
               </CollapsibleSubsection>
             </div>
+
+            <div id="organ-protection" className="scroll-mt-24">
+              <CollapsibleSubsection title="TIVA vs Volatile — Cardioprotection, Neurocognition &amp; Oncology">
+                <div className="space-y-4">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
+                    Whether the choice of maintenance agent alters long-term outcome is one of the most contested questions in anaesthesia. Candidates should be able to state the mechanistic rationale on each side, cite the pivotal evidence, and then conclude honestly that current data do not justify choosing an agent on outcome grounds alone.
+                  </p>
+                  <div className="p-4 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground text-sm">Cardioprotection</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Volatile agents produce <strong>anaesthetic-induced conditioning</strong> — opening of mitochondrial K<sub>ATP</sub> channels, reduced reactive-oxygen-species-mediated injury and inhibition of the mitochondrial permeability transition pore — reducing troponin release in animal and small human cardiac-surgery studies. However, the MYRIAD trial (2019) randomised 5400 patients undergoing CABG to volatile or TIVA and found no difference in 1-year mortality, and propofol also has antioxidant properties. Practical position: use volatile or TIVA according to the haemodynamic needs of the case; ensure adequate depth, coronary perfusion pressure and avoidance of tachycardia, which matter far more than agent choice.
+                    </p>
+                  </div>
+                  <div className="p-4 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground text-sm">Neurocognitive outcome</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Volatiles promote amyloid-β oligomerisation and tau phosphorylation in laboratory models, whereas propofol is neutral or protective. Human evidence is observational and confounded: a large propensity-matched cohort of older adults with hip fracture reported a dementia incidence rate ratio of 1.19 (95% CI 1.14–1.25) for inhalational GA versus TIVA-GA, 1.51 (1.15–1.66) for inhalational GA versus regional anaesthesia, and 1.28 (1.09–1.51) for TIVA-GA versus regional anaesthesia <InlineRef topicId="tiva" refLabel="BJA 2023 Dementia After Hip Fracture" />. Randomised data (including depth-of-anaesthesia trials) have not confirmed causality. Delirium prevention remains driven by avoiding excessive depth and burst suppression, treating pain, and non-pharmacological measures.
+                    </p>
+                  </div>
+                  <div className="p-4 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground text-sm">Cancer recurrence</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Proposed mechanisms favour propofol: volatiles up-regulate hypoxia-inducible factor 1α and insulin-like growth factor signalling and impair natural-killer-cell and T-cell function, while propofol inhibits cyclo-oxygenase-2 and preserves cell-mediated immunity. Retrospective cohorts have suggested a survival advantage with TIVA, but the first large randomised trial in breast-cancer surgery (Cochrane/GA-CARE-type evidence) has not shown a difference in recurrence-free survival. Current guidance is that oncological outcome should <em>not</em> drive the choice of anaesthetic technique; minimising opioid, providing regional analgesia, avoiding hypothermia, transfusion and hyperglycaemia are more defensible interventions.
+                    </p>
+                  </div>
+                </div>
+              </CollapsibleSubsection>
+            </div>
+
+            <div id="pharmacogenomics" className="scroll-mt-24">
+              <CollapsibleSubsection title="Propofol Pharmacogenomics">
+                <div className="space-y-3">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
+                    Dose requirements for propofol vary several-fold between patients of the same age and weight, and part of this variability is genetic. Propofol is metabolised principally by uridine 5′-diphosphate-glucuronosyltransferase and cytochrome P450 pathways — specifically <strong>UGT1A9 (~70%)</strong> and <strong>CYP2B6/CYP2C9 (~29%)</strong> — and polymorphisms that alter enzyme transcription or function can influence propofol metabolism and clearance, and thereby potentially affect anaesthesia-related clinical outcomes <InlineRef topicId="tiva" refLabel="BJA 2025 Propofol Pharmacogenomics" />.
+                  </p>
+                  <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                    <li><strong className="text-foreground">Metabolic (pharmacokinetic) variants:</strong> UGT1A9 promoter variants (e.g. −331/−440) increase glucuronidation and are associated with higher propofol requirements; reduced-function CYP2B6*6 and CYP2C9*2/*3 alleles slow oxidative metabolism, giving higher plasma concentrations and slower recovery.</li>
+                    <li><strong className="text-foreground">Pharmacodynamic variants:</strong> polymorphisms in GABA<sub>A</sub> subunit genes (GABRE, GABRB), the NMDA receptor subunit GRIN2B, and the μ-opioid receptor OPRM1 A118G have been linked to differences in hypnotic dose requirement, BIS response and postoperative pain/PONV.</li>
+                    <li><strong className="text-foreground">Related genotype effects in TIVA practice:</strong> butyrylcholinesterase variants prolong suxamethonium and mivacurium block; CYP2D6 poor or ultra-rapid metabolism alters codeine and tramadol response; RYR1/CACNA1S variants define malignant-hyperthermia susceptibility, one of the strongest indications for TIVA.</li>
+                    <li><strong className="text-foreground">Clinical bottom line:</strong> effect sizes remain modest relative to age, weight, cardiac output and co-administered opioid, and no genotype-guided TCI model is in routine use. Pharmacogenomics therefore explains part of the observed variability and reinforces the need to <em>titrate</em> — using processed EEG and clinical signs rather than trusting a model-predicted concentration.</li>
+                  </ul>
+                </div>
+              </CollapsibleSubsection>
+            </div>
+
 
             <div id="models" className="scroll-mt-24">
               <CollapsibleSubsection title="Pharmacokinetic Compartment Models">
