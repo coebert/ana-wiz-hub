@@ -125,6 +125,7 @@ const RenalPhysiologyTopic = () => {
         ],
         keyPoints: [
           "BJA Educ 2018",
+          "BJA Educ 2015 (Renal)",
           "Power & Kam Ch.9",
           "Ganong Ch.37-38",
         ],
@@ -269,7 +270,7 @@ const RenalPhysiologyTopic = () => {
           <ExamSection id="potassium-handling" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Renal Potassium Handling</h2>
-              <p className="text-foreground/90 leading-relaxed mb-3">K⁺ is freely filtered. About 65–70% is reabsorbed passively/paracellularly in the proximal tubule and 20–25% through NKCC2 in the thick ascending limb. Final balance is set in the distal nephron <InlineRef topicId="renal-physiology" refLabel="Ganong Ch.37-38" />.</p>
+              <p className="text-foreground/90 leading-relaxed mb-3">K⁺ is freely filtered. About 65–70% is reabsorbed passively/paracellularly in the proximal tubule and 20–25% through NKCC2 in the thick ascending limb. Final balance is set in the distal nephron <InlineRef topicId="renal-physiology" refLabel="Ganong Renal Potassium" />.</p>
               <div className="grid md:grid-cols-2 gap-4 text-sm"><div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Secretion</p><p className="mt-1 text-muted-foreground">Principal cells secrete K⁺ through ROMK and flow-sensitive BK channels. Aldosterone increases ENaC and basolateral Na⁺/K⁺-ATPase, making the lumen negative and promoting secretion. High plasma K⁺ directly stimulates aldosterone and ROMK.</p></div><div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Conservation</p><p className="mt-1 text-muted-foreground">During K⁺ depletion, α-intercalated cells reabsorb K⁺ through H⁺/K⁺-ATPase. Mineral acidosis generally reduces distal K⁺ secretion, whereas alkalosis and high distal sodium/flow increase it.</p></div></div>
               <p className="mt-3 text-sm text-muted-foreground">Clinical links: loop/thiazide diuretics increase distal Na⁺ delivery and K⁺ loss; ACE inhibitors, potassium-sparing diuretics, renal failure and hypoaldosteronism predispose to hyperkalaemia.</p>
             </section>
