@@ -784,7 +784,7 @@ export const topicReferences: Record<string, Reference[]> = {
   "cardiac-electrophysiology": [
     { label: "Peck & Hill Ch.4", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 4: Cardiac Electrophysiology." },
     { label: "BJA Educ 2015", citation: "Pinnell J, Turner S, Howell S. Cardiac muscle physiology. BJA Education. 2007;7(3):85-88.", url: "https://doi.org/10.1093/bjaceaccp/mkm013" },
-    { label: "Ganong Ch.29", citation: "Barrett KE, et al. Ganong's Review of Medical Physiology. 26th ed. McGraw-Hill; 2019. Chapter 29: The Heart as a Pump." },
+    { label: "Ganong Ch.29", citation: "Barrett KE, et al. Ganong's Review of Medical Physiology. 26th ed. McGraw-Hill; 2019. Chapter 29: The Heart as a Pump.", url: "https://accessmedicine.mhmedical.com/book.aspx?bookID=2525" },
     { label: "Vaughan Williams", citation: "Vaughan Williams EM. Classification of antiarrhythmic drugs. Pharmacol Ther B. 1975;1(1):115-138.", url: "https://doi.org/10.1016/0306-039X(75)90019-7" },
     { label: "Crit Care Med 2001 Hypothermia", citation: "Ujhelyi MR, Sims JJ, Dubin SA, Vender J, Miller AW. Defibrillation energy requirements and electrical heterogeneity during total body hypothermia. Crit Care Med. 2001;29(5):1006-1011.", url: "https://doi.org/10.1097/00003246-200105000-00025", excerpt: "Hypothermia profoundly affected cardiac electrophysiology, decreasing ventricular fibrillation threshold by 72%, conduction velocity by 25%, and ventricular effective refractory period by 23%." },
   ],
