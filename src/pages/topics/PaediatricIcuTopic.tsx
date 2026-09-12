@@ -192,7 +192,11 @@ const PaediatricIcuTopic = () => {
           <ExamSection id="wetflag" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="WETFLAG & Age-Specific Vital Signs" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              <strong>WETFLAG</strong> is the standard APLS pre-calculation performed when any unwell child arrives in resus — generating the seven weight-based numbers (<strong>W</strong>eight · <strong>E</strong>nergy · <strong>T</strong>ube · <strong>F</strong>luids · <strong>L</strong>orazepam · <strong>A</strong>drenaline · <strong>G</strong>lucose) needed to deliver immediate therapy without doing arithmetic under stress. Alongside it, the vitals table gives age-banded normal ranges for HR, RR, SBP and urine output so deviations can be recognised at a glance.
+              <strong>WETFLAG</strong> is the standard APLS pre-calculation performed when any unwell child arrives in resus — generating the seven weight-based numbers (<strong>W</strong>eight · <strong>E</strong>nergy · <strong>T</strong>ube · <strong>F</strong>luids · <strong>L</strong>orazepam · <strong>A</strong>drenaline · <strong>G</strong>lucose) needed to deliver immediate therapy without doing arithmetic under stress. Alongside it, the vitals table gives age-banded normal ranges for HR, RR, SBP and urine output so deviations can be recognised at a glance. For the underlying age-specific physiology, maintenance fluid prescribing, weight-based dosing and pain scoring, see the{" "}
+              <Link to="/clinical/paediatric-core" className="text-primary underline underline-offset-2 font-medium">
+                Paediatric Core Essentials
+              </Link>{" "}
+              topic.
             </p>
             <div className="grid lg:grid-cols-2 gap-4 items-start">
               <WETFLAGDiagram />
