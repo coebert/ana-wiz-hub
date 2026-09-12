@@ -919,8 +919,9 @@ export const icuCaseBank: CaseBank = {
           answer: [
             "Tidal volume 5–8 mL/kg predicted body weight, falling to 3–6 mL/kg when respiratory system compliance is poor; limit plateau pressure to 28 cmH₂O (up to 29–32 cmH₂O if chest wall compliance is reduced) and driving pressure to about 15 cmH₂O.",
             "Titrate PEEP 10–15 cmH₂O in severe disease against oxygenation, haemodynamics and compliance; accept permissive hypercapnia with pH 7.15–7.30 and SpO₂ 88–92% once PEEP exceeds 10 cmH₂O, provided lactate, central venous saturation and perfusion are acceptable.",
-            "Use cuffed tubes with cuff pressure monitoring, avoid routine high-frequency oscillatory ventilation as a first-line rescue (no mortality benefit and possible harm), and reserve neuromuscular blockade for children in whom sedation alone cannot achieve lung-protective settings.",
+            "Sedate to a defined score with a morphine and midazolam infusion (adding clonidine or dexmedetomidine as an opioid- and benzodiazepine-sparing adjunct), use cuffed tubes with cuff pressure monitoring, avoid routine high-frequency oscillatory ventilation as a first-line rescue (no mortality benefit and possible harm), and reserve a rocuronium or cisatracurium infusion for children in whom sedation alone cannot achieve lung-protective settings.",
           ],
+
         },
         {
           title: "Escalate",
