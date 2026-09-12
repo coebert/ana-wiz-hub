@@ -466,7 +466,7 @@ const RegionalAnaesthesiaTopic = () => {
           <li><strong>LA toxicity (LAST)</strong>: max safe doses (lidocaine 3 mg/kg plain / 7 with adrenaline; bupivacaine 2 mg/kg). Treat with 20% Intralipid 1.5 ml/kg bolus + 0.25 ml/kg/min infusion.</li>
           <li><strong>Neuraxial — anticoagulation</strong>: follow AAGBI 2013 — LMWH prophylactic 12 h gap, treatment 24 h; remove catheter only when coagulation back to baseline.</li>
           <li><strong>Block height assessment</strong>: cold (Aδ, C-fibres) — most reliable bedside test; pinprick = surgical anaesthesia; T4 needed for upper-abdominal surgery.</li>
-          <li><strong>Ultrasound vs nerve stimulator</strong>: US improves success and reduces complications (Cochrane 2015). Combination is standard for deep blocks.</li>
+          <li><strong>Ultrasound vs nerve stimulator</strong>: US improves block success rate (Cochrane 2019) and may reduce minor complications, though its effect on severe neurological complications is unclear. Combination with nerve stimulation is often used for deep blocks.</li>
           <li><strong>Adjuvants</strong>: dexamethasone (perineural or IV) prolongs analgesia; clonidine and dexmedetomidine prolong block but cause sedation/hypotension.</li>
         </ul>
       </SynthesisBlock>
