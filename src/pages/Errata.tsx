@@ -8,11 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
-import {
-  buildInaccuracyReportPayload,
-  getFirstValidationError,
-  inaccuracyReportSchema,
-} from "@/lib/inaccuracy-report";
+import { submitInaccuracyReport } from "@/lib/inaccuracy-report";
 
 /**
  * Public errata page — `/errata`.
@@ -47,6 +43,16 @@ const formatDate = (iso: string | null) =>
       })
     : "";
 
+const getTopicPath = (topicUrl: string | null) => {
+  if (!topicUrl) return null;
+  if (topicUrl.startsWith("/")) return topicUrl;
+  try {
+    return new URL(topicUrl).pathname;
+  } catch {
+    return null;
+  }
+};
+
 const Errata = () => {
   const [rows, setRows] = useState<ErratumRow[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -65,7 +71,8 @@ const Errata = () => {
     setSubmitError(null);
     setSubmitted(false);
 
-    const parsed = inaccuracyReportSchema.safeParse({
+    setSubmitting(true);
+    const result = await submitInaccuracyReport({
       topicId: topic,
       topicTitle: topic,
       topicUrl,
@@ -74,20 +81,9 @@ const Errata = () => {
       suggestedCorrection,
       contactEmail,
     });
-    if (!parsed.success) {
-      setSubmitError(getFirstValidationError(parsed.error));
-      return;
-    }
-
-    setSubmitting(true);
-    const { error: submissionError } = await supabase
-      .from("inaccuracy_reports")
-      .insert(buildInaccuracyReportPayload(parsed.data));
     setSubmitting(false);
-
-    if (submissionError) {
-      console.error("inaccuracy_report submit failed", submissionError);
-      setSubmitError("We couldn’t submit your report. Please try again shortly.");
+    if (!result.ok) {
+      setSubmitError(result.message);
       return;
     }
 
@@ -102,7 +98,7 @@ const Errata = () => {
 
   useEffect(() => {
     let cancelled = false;
-    (async () => {
+    const loadErrata = async () => {
       const { data, error } = await supabase
         .from("public_errata")
         .select(
@@ -112,10 +108,21 @@ const Errata = () => {
         .limit(200);
       if (cancelled) return;
       if (error) setError(error.message);
-      else setRows(data ?? []);
-    })();
+      else {
+        setError(null);
+        setRows(data ?? []);
+      }
+    };
+    void loadErrata();
+    const refreshWhenVisible = () => {
+      if (document.visibilityState === "visible") void loadErrata();
+    };
+    const interval = window.setInterval(refreshWhenVisible, 30_000);
+    window.addEventListener("focus", refreshWhenVisible);
     return () => {
       cancelled = true;
+      window.clearInterval(interval);
+      window.removeEventListener("focus", refreshWhenVisible);
     };
   }, []);
 
@@ -296,7 +303,7 @@ const Errata = () => {
           <ol className="space-y-4">
             {rows.map((r) => {
               const dateLabel = formatDate(r.reviewed_at ?? r.created_at);
-              const topicHref = r.topic_url ?? undefined;
+              const topicHref = getTopicPath(r.topic_url);
               return (
                 <li
                   key={r.id}
@@ -307,11 +314,7 @@ const Errata = () => {
                     <h2 className="font-semibold text-foreground text-base">
                       {topicHref ? (
                         <Link
-                          to={
-                            topicHref.startsWith("http")
-                              ? new URL(topicHref).pathname
-                              : topicHref
-                          }
+                          to={topicHref}
                           className="hover:underline"
                         >
                           {r.topic_title}
