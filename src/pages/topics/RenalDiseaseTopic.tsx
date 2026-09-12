@@ -5,6 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { renalDiseaseQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
@@ -183,6 +184,7 @@ const RenalDiseaseTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
           <div className="space-y-8">
+            <TopicTableOfContents items={tocItems} />
             <p className="text-muted-foreground leading-relaxed">
               Chronic kidney disease is common in the surgical population and its severity — not merely its presence — drives perioperative risk through anaemia, cardiovascular disease, electrolyte instability and altered drug handling. This topic covers CKD staging and uraemic physiology, preoperative optimisation of the dialysis-dependent patient, renal-adjusted pharmacology, intraoperative management, electrolyte/acid-base emergencies, perioperative acute kidney injury, and the specific needs of the renal transplant recipient.
             </p>
