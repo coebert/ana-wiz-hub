@@ -182,8 +182,9 @@ const SIUnitsThermodynamicsTopic = () => {
               <p>
                 <strong>Core temperature</strong> is best reflected by the <strong>pulmonary artery catheter</strong> (gold
                 standard), <strong>distal oesophageal probe</strong> (lower third, near the heart), and <strong>nasopharyngeal probe</strong>
-                (reflects brain temperature). <strong>Tympanic membrane</strong> thermometry uses infrared detection (shared blood supply
-                with hypothalamus via the internal carotid artery) for a rapid, non-invasive estimate of core temperature.
+                (reflects brain temperature). <strong>Tympanic membrane</strong> thermometry uses infrared detection (its proximity to the
+                internal carotid artery allows a rapid, non-invasive estimate of core brain temperature)<InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2018 (Temperature)" />.
+
               </p>
               <p>
                 <strong>Peripheral sites</strong> (axillary, skin) are 0.5–1 °C lower than core. The <strong>core-peripheral gradient</strong>
