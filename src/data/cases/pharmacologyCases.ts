@@ -12,6 +12,14 @@ const s = {
   nmbGuideline: { label: "Assoc Anaesth 2023: neuromuscular blockade", href: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.16114" },
   vasopressor: { label: "BJA Educ: vasoactive drugs", href: "https://doi.org/10.1093/bjaed/mkw066" },
   antimicrobial: { label: "Antimicrobial PK/PD in critical illness", href: "https://doi.org/10.1007/s00134-020-06050-1" },
+  last: { label: "Assoc Anaesth: management of severe local anaesthetic toxicity", href: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Management-of-severe-local-anaesthetic-toxicity" },
+  la: { label: "BJA Educ: local anaesthetic pharmacology", href: "https://doi.org/10.1093/bjaceaccp/mkl001" },
+  bnfSux: { label: "BNF: suxamethonium chloride", href: "https://bnf.nice.org.uk/drugs/suxamethonium-chloride/" },
+  als: { label: "Resuscitation Council UK: adult advanced life support", href: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/adult-advanced-life-support" },
+  andexanet: { label: "NICE TA697: andexanet alfa for reversing apixaban or rivaroxaban", href: "https://www.nice.org.uk/guidance/ta697" },
+  bnfc: { label: "BNF for Children: paracetamol", href: "https://bnfc.nice.org.uk/drugs/paracetamol/" },
+  pris: { label: "Intensive Care Med: pathophysiology of propofol infusion syndrome", href: "https://doi.org/10.1007/s00134-003-1761-8" },
+  padis: { label: "PADIS 2018 sedation, analgesia and delirium guideline", href: "https://doi.org/10.1097/CCM.0000000000003299" },
 };
 
 export const pharmacologyCaseBank: CaseBank = {
@@ -19,7 +27,7 @@ export const pharmacologyCaseBank: CaseBank = {
   path: "/pharmacology/case-bank",
   title: "Pharmacology Case Bank",
   subtitle: "Progressive scenarios that apply kinetics, dynamics and drug-specific safety to real decisions.",
-  metaDescription: "Six progressive pharmacology cases on TIVA and context-sensitive half-time, opioid tolerance and ketamine, malignant hyperthermia, reversal, vasopressor choice and antimicrobial dosing.",
+  metaDescription: "Twelve progressive pharmacology cases on TIVA kinetics, opioid tolerance, malignant hyperthermia, local anaesthetic toxicity, reversal and ICU sedation.",
   backPath: "/pharmacology",
   backLabel: "Pharmacology",
   accentColor: "text-pharmacology",
@@ -300,6 +308,282 @@ export const pharmacologyCaseBank: CaseBank = {
       ],
       takeHome: "Load fully, then adjust maintenance to real clearance: beta-lactams need time above MIC, aminoglycosides need peaks, and filtration removes drug.",
       sourceLinks: [s.antimicrobial, s.pk],
+    },
+    {
+      id: "pharmacology-la-toxicity",
+      title: "Collapse after an interscalene block",
+      category: "Analgesia & anaesthetics",
+      difficulty: "Advanced",
+      summary: "Local anaesthetic dose limits, sodium-channel toxicity and lipid emulsion rescue.",
+      topicIds: ["local-anaesthetics", "regional-anaesthesia", "brachial-plexus", "clinical-incidents", "cardiac-arrest-post-resus"],
+      patient: "A 60 kg adult receives 30 mL of 0.5% levobupivacaine for an interscalene block. Two minutes later there is perioral tingling, agitation, then a seizure and broad-complex bradycardia.",
+      presentation: "The block was performed with ultrasound but with rapid injection and no intermittent aspiration.",
+      stages: [
+        {
+          title: "Recognise the toxicity",
+          prompt: "Why is this local anaesthetic systemic toxicity, and what dose was given?",
+          answer: [
+            "30 mL of 0.5% solution is 150 mg, which is 2.5 mg/kg — within usual limits, so the pattern points to intravascular injection or rapid vascular uptake in a highly vascular neck.",
+            "Progression from tongue tingling, tinnitus and agitation to seizure then cardiovascular collapse is the classic sequence; bupivacaine and levobupivacaine cause cardiotoxicity early because of avid, slowly dissociating sodium-channel binding.",
+            "Cardiac features include conduction delay, broad complexes, refractory ventricular arrhythmias and asystole; hypoxia and acidosis worsen toxicity.",
+          ],
+        },
+        {
+          title: "Treat immediately",
+          prompt: "What is the immediate management?",
+          answer: [
+            "Stop injecting, call for help, secure the airway with 100% oxygen and avoid hypoxia, hypercapnia and acidosis, which all increase toxicity.",
+            "Control seizures with a benzodiazepine — or small-dose propofol if that is what is available and cardiovascular stability allows — and start advanced life support if arrest occurs.",
+            "Give 20% lipid emulsion: an initial bolus of 1.5 mL/kg over one minute followed by an infusion of 15 mL/kg/hour, with up to two further boluses and doubling of the infusion rate for persistent instability, to a maximum of about 12 mL/kg.",
+          ],
+        },
+        {
+          title: "Sustain the resuscitation",
+          prompt: "What are the pitfalls during and after resuscitation?",
+          answer: [
+            "Resuscitation may need to be prolonged — recovery has been described after over an hour of cardiopulmonary resuscitation — so continue while lipid emulsion redistributes the drug, and consider cardiopulmonary bypass or extracorporeal support if available.",
+            "Avoid lidocaine as an antiarrhythmic, use small doses of adrenaline (under 1 microgram/kg) and avoid vasopressin, calcium channel blockers and beta-blockers.",
+            "Observe in a monitored setting for at least 12 hours because of the risk of recurrence, check amylase or lipase, and report the event.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Local anaesthetics block voltage-gated sodium channels preferentially in the inactivated state; potency, lipid solubility and protein binding determine toxicity, and bupivacaine's stereospecific, slowly dissociating cardiac binding explains its narrow safety margin. Levobupivacaine and ropivacaine are less cardiotoxic than racemic bupivacaine but not safe in overdose. The central nervous system usually shows signs first because inhibitory interneurones are blocked before excitatory pathways, but with rapid intravascular injection cardiovascular collapse may be the presenting feature." },
+        { title: "Management and monitoring", content: "Prevention is the priority: lowest effective dose, ultrasound guidance, incremental injection with intermittent aspiration, and awareness of higher risk at vascular sites and in the elderly, cachectic, pregnant or those with cardiac or hepatic disease. Rescue depends on immediate lipid emulsion available in every block area, an airway and oxygenation strategy, and prolonged resuscitation. Monitor rhythm, gases and glucose during recovery, and admit for observation because late deterioration can occur as tissue depots release drug." },
+        { title: "Exam pitfall", content: "Do not quote a single milligram-per-kilogram limit as guaranteeing safety, and do not delay lipid emulsion until arrest. State the bolus and infusion doses and the maximum cumulative dose." },
+      ],
+      takeHome: "Suspect systemic toxicity from any progressive neurological then cardiac deterioration after a block: oxygenate, control seizures, give 1.5 mL/kg of 20% lipid emulsion early and resuscitate for a long time.",
+      sourceLinks: [s.last, s.la],
+    },
+    {
+      id: "pharmacology-sux-apnoea",
+      title: "Prolonged apnoea after suxamethonium",
+      category: "Kinetics & delivery",
+      difficulty: "Intermediate",
+      summary: "Plasma cholinesterase genetics, dibucaine number and management of a phase II block.",
+      topicIds: ["muscle-relaxants", "pharmacokinetics", "neuromuscular", "genetic-syndromes", "airway-management"],
+      patient: "After a rapid sequence induction with 100 mg suxamethonium, an adult remains apnoeic and flaccid 25 minutes later, despite no other relaxant being given.",
+      presentation: "Anaesthesia was maintained with sevoflurane; the train-of-four shows no response, then fade with post-tetanic facilitation.",
+      stages: [
+        {
+          title: "Explain the pharmacology",
+          prompt: "Why is suxamethonium normally so short-acting, and what has gone wrong?",
+          answer: [
+            "Suxamethonium is hydrolysed by plasma (butyryl)cholinesterase, with such rapid metabolism that only a small fraction reaches the neuromuscular junction, giving a duration of 3–5 minutes.",
+            "Reduced enzyme quantity (liver disease, pregnancy, malnutrition, cardiac failure, plasmapheresis) or quality (atypical BCHE variants) prolongs the block.",
+            "Homozygous atypical variants prolong block to hours; heterozygotes typically prolong it to roughly 20–30 minutes. Prolonged exposure also converts the depolarising phase I block into a phase II block with fade and post-tetanic facilitation.",
+          ],
+        },
+        {
+          title: "Manage the patient",
+          prompt: "What do you do now?",
+          answer: [
+            "Maintain anaesthesia, sedation and ventilation until neuromuscular function recovers fully — never allow awareness in a paralysed patient — and confirm recovery with quantitative train-of-four monitoring to a ratio of 0.9.",
+            "Exclude other causes of failure to breathe: opioid effect, hypocapnia, hypothermia, hypermagnesaemia, cerebral event and inadvertent administration of another relaxant.",
+            "Do not attempt neostigmine reversal of a phase I block; transfer to critical care or recovery ventilated if the block persists, and avoid unnecessary fresh frozen plasma.",
+          ],
+        },
+        {
+          title: "Follow up properly",
+          prompt: "What must happen afterwards?",
+          answer: [
+            "Explain the event to the patient, document it clearly and issue written information plus a warning card or alert.",
+            "Refer for plasma cholinesterase phenotyping (dibucaine number) and genotyping, and offer family screening, since inheritance is autosomal.",
+            "Record that suxamethonium and mivacurium — also metabolised by plasma cholinesterase — should be avoided in future anaesthetics.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "The dibucaine number describes enzyme quality, not quantity: dibucaine inhibits normal enzyme by about 80% and homozygous atypical enzyme by only about 20%, with heterozygotes intermediate around 40–60%. This is why a normal cholinesterase concentration can coexist with prolonged block. Phase II block reflects desensitisation of the postjunctional receptor with prolonged depolarisation, producing non-depolarising-like fade — which is a monitoring finding, not an indication to give an anticholinesterase blindly." },
+        { title: "Management and monitoring", content: "Management is supportive: continue anaesthesia and ventilation, monitor quantitatively, keep the patient warm and normocapnic, and wait. Suxamethonium's other hazards belong in the same answer: hyperkalaemia in burns, denervation and prolonged immobility; bradycardia with repeat dosing; raised intraocular and intragastric pressure; myalgia; masseter spasm; and its role as a malignant hyperthermia trigger. Mivacurium shares the metabolic pathway and must also be avoided." },
+        { title: "Exam pitfall", content: "Do not wake the patient to check breathing, and do not give neostigmine for a phase I block. Quote the dibucaine number ranges and mention mivacurium." },
+      ],
+      takeHome: "Prolonged suxamethonium block is managed by continued anaesthesia and ventilation with quantitative monitoring, then phenotyping, documentation and family screening.",
+      sourceLinks: [s.nmbGuideline, s.bnfSux],
+    },
+    {
+      id: "pharmacology-anticoagulant-reversal",
+      title: "Intracranial haemorrhage on an anticoagulant",
+      category: "Critical care drugs",
+      difficulty: "Advanced",
+      summary: "Warfarin, direct oral anticoagulant and heparin reversal strategies with their limitations.",
+      topicIds: ["anticoagulants", "neuroanaesthesia", "transfusion-coagulation", "neurointensive-care", "trauma-emergency"],
+      patient: "An adult on apixaban for atrial fibrillation has a large intracerebral haemorrhage. A second patient the same night is on warfarin with an INR of 4.6, and a third has just received therapeutic heparin.",
+      presentation: "The neurosurgeons want all three reversed as fast as possible.",
+      stages: [
+        {
+          title: "Reverse warfarin",
+          prompt: "How do you reverse the vitamin K antagonist?",
+          answer: [
+            "Give four-factor prothrombin complex concentrate, dosed by weight and INR, because it restores factors II, VII, IX and X within minutes in a small volume.",
+            "Give intravenous vitamin K 5–10 mg at the same time, since prothrombin complex concentrate has a short half-life and rebound anticoagulation follows without it.",
+            "Avoid fresh frozen plasma as first-line reversal in intracranial haemorrhage: it is slower, less complete and requires a large volume; recheck the INR after treatment.",
+          ],
+        },
+        {
+          title: "Reverse the direct oral anticoagulant",
+          prompt: "What are the options for apixaban and for dabigatran?",
+          answer: [
+            "For factor Xa inhibitors, use a specific agent (andexanet alfa) where available and indicated, or prothrombin complex concentrate at around 50 units/kg as an alternative.",
+            "For dabigatran, idarucizumab 5 g intravenously provides rapid, near-complete reversal; dabigatran is also dialysable because of low protein binding.",
+            "Establish the timing of the last dose and renal function, since a dose taken more than 24–48 hours earlier in normal renal function may need no reversal, and send anti-Xa or thrombin time assays where available.",
+          ],
+        },
+        {
+          title: "Reverse the heparins and think beyond drugs",
+          prompt: "What else must you cover?",
+          answer: [
+            "Protamine 1 mg neutralises approximately 100 units of unfractionated heparin, dosed against time since administration; it only partially reverses low molecular weight heparin and carries a risk of hypotension, pulmonary hypertension and anaphylaxis.",
+            "Control blood pressure to a systolic of about 140 mmHg, treat raised intracranial pressure, correct thrombocytopenia and hypofibrinogenaemia, and involve neurosurgery early.",
+            "Plan restarting anticoagulation deliberately: balance thrombotic risk, especially with mechanical valves, against rebleeding, and document the decision.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Reversal strategy follows mechanism. Warfarin depletes functional vitamin K-dependent factors, so replacing those factors plus giving vitamin K addresses both the immediate deficit and continued enzyme inhibition. Direct oral anticoagulants bind their target reversibly with short half-lives, so timing and renal clearance often matter more than drug reversal, and specific antidotes bind the drug rather than replacing factors. Protamine forms an inactive complex with heparin's highly anionic chains, which is why it works poorly for the shorter, less sulfated low molecular weight heparins." },
+        { title: "Management and monitoring", content: "Treat this as a time-critical bundle: identify the agent and last dose, give the mechanism-specific reversal, control blood pressure, treat intracranial pressure and correct other haemostatic deficits with viscoelastic or laboratory guidance. Recheck coagulation after reversal, watch for thrombosis after prothrombin complex concentrate or andexanet, and repeat imaging for haematoma expansion. Restarting anticoagulation is a multidisciplinary decision usually deferred for at least one to two weeks in intracerebral haemorrhage." },
+        { title: "Exam pitfall", content: "Do not offer plasma as the primary warfarin reversal in intracranial bleeding, do not omit vitamin K, and do not claim protamine fully reverses low molecular weight heparin." },
+      ],
+      takeHome: "Match reversal to mechanism: prothrombin complex concentrate plus vitamin K for warfarin, specific antidotes or factor concentrate for direct oral anticoagulants, and protamine only partially for low molecular weight heparin.",
+      sourceLinks: [s.andexanet, s.vasopressor],
+    },
+    {
+      id: "pharmacology-arrhythmia-drugs",
+      title: "Fast atrial fibrillation after thoracic surgery",
+      category: "Critical care drugs",
+      difficulty: "Intermediate",
+      summary: "Vaughan Williams classes in practice, amiodarone's profile and when electricity beats drugs.",
+      topicIds: ["antiarrhythmics", "arrhythmias-ecg-icu", "cardiothoracic", "cardiac-electrophysiology", "circulatory-failure"],
+      patient: "On the first night after lobectomy, an adult develops atrial fibrillation at 165 beats per minute with blood pressure 88/54 mmHg, chest discomfort and a lactate of 3.1 mmol/L.",
+      presentation: "Potassium is 3.2 mmol/L, magnesium 0.62 mmol/L, and the patient is in pain with a 400 mL/hour drain loss earlier in the evening.",
+      stages: [
+        {
+          title: "Decide the priority",
+          prompt: "Rate control, rhythm control or electricity?",
+          answer: [
+            "There are adverse features — hypotension, ischaemic chest pain and evidence of poor perfusion — so synchronised cardioversion under sedation or anaesthesia is the treatment of choice, with up to three attempts.",
+            "Amiodarone 300 mg intravenously over 10–20 minutes then 900 mg over 24 hours is the drug of choice if cardioversion fails or as adjunct.",
+            "Simultaneously correct the drivers: potassium and magnesium replacement, analgesia, volume and haemoglobin assessment, sepsis screen and review for pneumothorax or bleeding.",
+          ],
+        },
+        {
+          title: "Use the classification",
+          prompt: "How do Vaughan Williams classes map onto your choices?",
+          answer: [
+            "Class I agents block sodium channels (Ia quinidine, Ib lidocaine, Ic flecainide) — flecainide is effective in structurally normal hearts but proarrhythmic after infarction or with ventricular dysfunction.",
+            "Class II beta-blockers slow the sinus and atrioventricular nodes and reduce postoperative atrial fibrillation, but risk bronchospasm after thoracic surgery and hypotension when stroke volume is fixed.",
+            "Class III agents prolong repolarisation by blocking potassium channels (amiodarone, sotalol) and class IV calcium channel blockers slow nodal conduction; digoxin, adenosine and magnesium sit outside the classification.",
+          ],
+        },
+        {
+          title: "Handle amiodarone safely",
+          prompt: "What are the practical problems with amiodarone?",
+          answer: [
+            "It has class I to IV actions, an enormous volume of distribution and a terminal half-life of weeks, so loading and offset are slow.",
+            "Give it centrally where possible because of thrombophlebitis, expect hypotension with rapid infusion, and monitor for QT prolongation, bradycardia and heart block.",
+            "Long-term toxicity includes thyroid dysfunction, pulmonary fibrosis, hepatitis, corneal deposits and photosensitivity, and it raises digoxin and warfarin levels; plan a review and exit strategy rather than indefinite therapy.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Postoperative atrial fibrillation after thoracic surgery is usually a symptom of something else: catecholamines, pain, hypovolaemia, electrolyte depletion, hypoxia, sepsis, atrial stretch or pericardial irritation. Rate is tolerated poorly when preload is low and the ventricle is dependent on atrial filling, since loss of the atrial contribution reduces stroke volume by up to a fifth. The presence of adverse features moves treatment from pharmacology to synchronised cardioversion." },
+        { title: "Management and monitoring", content: "Follow the algorithm: assess for adverse features, cardiovert if present, otherwise correct precipitants and use rate or rhythm control. Replace potassium to above 4.0 mmol/L and magnesium to above 0.8 mmol/L, provide effective analgesia including regional techniques, and reassess volume status. Monitor rhythm, pressure, lactate and urine output; if the arrhythmia persists beyond 48 hours, address thromboembolic risk with anticoagulation weighed against surgical bleeding." },
+        { title: "Exam pitfall", content: "Do not give a beta-blocker or verapamil reflexively to a hypotensive patient with fixed stroke volume, and do not treat the rhythm while ignoring hypokalaemia, hypomagnesaemia, pain and hypovolaemia." },
+      ],
+      takeHome: "Unstable fast atrial fibrillation needs synchronised cardioversion, amiodarone as backup, and simultaneous correction of electrolytes, pain and volume.",
+      sourceLinks: [s.als, s.vasopressor],
+    },
+    {
+      id: "pharmacology-paediatric-analgesia",
+      title: "Analgesia for a 14 kg child after tonsillectomy",
+      category: "Analgesia & anaesthetics",
+      difficulty: "Foundation",
+      summary: "Weight-based dosing, developmental pharmacokinetics and codeine avoidance in children.",
+      topicIds: ["paediatric-anaesthesia", "nsaids-paracetamol", "opioids", "ent-anaesthesia", "pain-medicine"],
+      patient: "A three-year-old weighing 14 kg has a tonsillectomy for recurrent tonsillitis and obstructive symptoms.",
+      presentation: "The parents ask what pain relief will be given, and the recovery nurse asks about a codeine prescription for home.",
+      stages: [
+        {
+          title: "Prescribe the simple analgesics",
+          prompt: "What doses do you use?",
+          answer: [
+            "Paracetamol 15 mg/kg (210 mg) every 4–6 hours, to a maximum of 60 mg/kg in 24 hours, avoiding cumulative overdose when intravenous and oral routes are combined.",
+            "Ibuprofen 5–10 mg/kg up to three or four times daily is effective and does not increase clinically important post-tonsillectomy bleeding in current evidence; check for asthma sensitivity, dehydration and renal impairment.",
+            "Add intraoperative dexamethasone for pain, swelling and vomiting, and use local anaesthetic infiltration or topical techniques where the surgeon prefers.",
+          ],
+        },
+        {
+          title: "Choose the opioid carefully",
+          prompt: "Why is codeine contraindicated, and what do you use instead?",
+          answer: [
+            "Codeine is a prodrug requiring CYP2D6 conversion to morphine; ultrarapid metabolisers, who may be around 1–2% of the population, generate high morphine concentrations, and deaths after paediatric tonsillectomy led to a contraindication in children under 12 and in all children after tonsillectomy for obstructive sleep apnoea.",
+            "Poor metabolisers get little analgesia, so codeine is unpredictable in both directions.",
+            "Use morphine cautiously and titrated instead — for example 100 micrograms/kg intravenously in divided doses intraoperatively — or oral morphine at low dose with clear instructions, keeping doses low in obstructive sleep apnoea.",
+          ],
+        },
+        {
+          title: "Adapt for developmental physiology",
+          prompt: "What paediatric pharmacokinetic differences matter?",
+          answer: [
+            "A higher proportion of body water and larger volume of distribution for water-soluble drugs mean higher initial per-kilogram doses; neonates additionally have immature glucuronidation and renal clearance, so intervals are longer.",
+            "Clearance scales with size allometrically rather than linearly, and reduced protein binding raises the free fraction of highly bound drugs.",
+            "Children with obstructive sleep apnoea are more sensitive to opioid-induced respiratory depression and need reduced doses with prolonged monitored recovery.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Paediatric analgesia is a multimodal, weight-based prescription in which the opioid-sparing components do most of the work. Paracetamol and a non-steroidal anti-inflammatory drug plus dexamethasone provide reliable baseline analgesia; the opioid is titrated to effect. Codeine's problem is pharmacogenetic variability at CYP2D6 combined with an at-risk population, which is why regulators restricted it rather than simply reducing the dose. Tramadol shares partial dependence on CYP2D6 and warrants similar caution." },
+        { title: "Management and monitoring", content: "Prescribe regular rather than as-required simple analgesia for the first 48 hours, give clear written parental instructions about maximum daily paracetamol, encourage oral intake, and provide an antiemetic plan. Watch for the two serious post-tonsillectomy complications: bleeding, which may present as swallowing and pallor rather than visible blood, and opioid-related respiratory depression in children with obstructive symptoms, who should recover in a monitored area and may need overnight admission." },
+        { title: "Exam pitfall", content: "Do not prescribe codeine to a child, do not exceed 60 mg/kg/day of paracetamol across routes, and do not withhold ibuprofen on the basis of outdated bleeding concerns without justifying it." },
+      ],
+      takeHome: "Use regular weight-based paracetamol and ibuprofen with dexamethasone, titrate morphine cautiously in obstructive sleep apnoea, and never prescribe codeine to children.",
+      sourceLinks: [s.bnfc, s.opioids],
+    },
+    {
+      id: "pharmacology-icu-sedation",
+      title: "Metabolic acidosis on day three of propofol sedation",
+      category: "Critical care drugs",
+      difficulty: "Advanced",
+      summary: "Propofol infusion syndrome, sedation targets and the alternatives when propofol must stop.",
+      topicIds: ["icu-sedation-delirium", "iv-anaesthetics", "acid-base", "mechanical-ventilation", "toxicology"],
+      patient: "A ventilated adult has received propofol at 4.5 mg/kg/hour for 60 hours plus a noradrenaline infusion. Lactate is 5.6 mmol/L, base excess −11, creatine kinase 4200 units/L, triglycerides 6.2 mmol/L and new bradyarrhythmias have appeared.",
+      presentation: "There is no obvious sepsis source and cardiac output monitoring shows a falling index despite fluid.",
+      stages: [
+        {
+          title: "Make the diagnosis",
+          prompt: "What is happening, and what are the risk factors?",
+          answer: [
+            "This is propofol infusion syndrome: metabolic acidosis with raised lactate, rhabdomyolysis, hypertriglyceridaemia, arrhythmia and cardiac failure, thought to reflect impaired mitochondrial fatty acid oxidation and respiratory chain function.",
+            "Risk rises with doses above about 4 mg/kg/hour, duration beyond 48 hours, critical illness, catecholamine and steroid administration, low carbohydrate intake and young age.",
+            "Exclude alternatives — sepsis, ischaemia, occult bleeding, metformin, thiamine deficiency, toxic alcohols — but do not delay stopping the drug.",
+          ],
+        },
+        {
+          title: "Treat it",
+          prompt: "What is your management?",
+          answer: [
+            "Stop propofol immediately and switch sedation strategy; provide adequate carbohydrate intake and supportive care.",
+            "Support the circulation, treat hyperkalaemia and rhabdomyolysis, and start renal replacement therapy for refractory acidosis, hyperkalaemia or clearance of the metabolic derangement; consider extracorporeal support for refractory cardiac failure.",
+            "Monitor lactate, base excess, creatine kinase, triglycerides, potassium, renal function and the electrocardiogram closely during recovery.",
+          ],
+        },
+        {
+          title: "Re-plan sedation",
+          prompt: "How should sedation be delivered instead?",
+          answer: [
+            "Aim for light, goal-directed sedation with a validated score, prioritising analgesia first and assessing delirium routinely.",
+            "Use alpha-2 agonists such as dexmedetomidine or clonidine — sedation without significant respiratory depression, but bradycardia and hypotension are common — or a titrated benzodiazepine only where specifically indicated, accepting its delirium and accumulation risks.",
+            "Combine with non-pharmacological measures: daily sedation interruption or targeted light sedation, early mobilisation, sleep promotion, and family engagement.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Propofol is ideal for short-term sedation because of rapid, context-sensitive offset, but prolonged high-dose infusion in a catabolic, catecholamine-exposed patient can uncouple mitochondrial fatty acid metabolism, producing lactataemia, myocyte injury and cardiac dysfunction. The lipid vehicle contributes hypertriglyceridaemia and a significant calorie load — about 1.1 kcal/mL — which must be counted in nutrition. The syndrome is a diagnosis of pattern recognition, and mortality is high once cardiac failure appears." },
+        { title: "Management and monitoring", content: "Prevention matters most: keep the infusion below about 4 mg/kg/hour, review daily need, monitor lactate, creatine kinase and triglycerides during prolonged infusions, and ensure adequate carbohydrate. Once suspected, stop propofol and treat organ failure aggressively with renal replacement and circulatory support. Then rebuild the sedation plan around analgesia-first, light targets, delirium screening and mobilisation, which shortens ventilation and intensive care stay." },
+        { title: "Exam pitfall", content: "Do not attribute a new lactic acidosis in a sedated patient to sepsis alone without reviewing the propofol dose and duration, and do not describe deep sedation as protective." },
+      ],
+      takeHome: "Unexplained acidosis with rhabdomyolysis and arrhythmia during prolonged propofol is infusion syndrome: stop the drug, support organs, then sedate lightly with an analgesia-first strategy.",
+      sourceLinks: [s.pris, s.padis],
     },
   ],
 };

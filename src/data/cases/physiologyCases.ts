@@ -14,18 +14,24 @@ const s = {
   nmbGuideline: { label: "Assoc Anaesth 2023: neuromuscular blockade", href: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.16114" },
   autonomic: { label: "BJA Educ: autonomic nervous system", href: "https://doi.org/10.1093/bjaceaccp/mkm023" },
   bradycardia: { label: "BJA Educ: perioperative bradycardia", href: "https://doi.org/10.1016/j.bjae.2021.05.001" },
+  pericardial: { label: "ESC 2015 pericardial disease guideline", href: "https://doi.org/10.1093/eurheartj/ehv318" },
+  odc: { label: "Severinghaus: oxyhaemoglobin dissociation equations", href: "https://doi.org/10.1152/jappl.1979.46.3.599" },
+  able: { label: "ABLE trial: age of transfused red cells", href: "https://doi.org/10.1056/NEJMoa1500704" },
+  nicePreeclampsia: { label: "NICE NG133: hypertension in pregnancy", href: "https://www.nice.org.uk/guidance/ng133" },
+  newbornLifeSupport: { label: "Resuscitation Council UK: newborn resuscitation and support of transition", href: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/newborn-resuscitation-and-support-transition-infants-birth" },
+  liverCoag: { label: "NEJM: the coagulopathy of chronic liver disease", href: "https://doi.org/10.1056/NEJMra1011170" },
 };
 
 export const physiologyCaseBank: CaseBank = {
   slug: "physiology",
   path: "/physiology/case-bank",
   title: "Physiology Case Bank",
-  subtitle: "Progressive scenarios that apply cardiovascular, respiratory, renal, neuromuscular and autonomic physiology at the bedside.",
-  metaDescription: "Seven progressive physiology cases on aortic stenosis, long QT, one-lung ventilation, compliance, postoperative oliguria, residual block and autonomic dysreflexia.",
+  subtitle: "Progressive scenarios that apply cardiovascular, respiratory, renal, maternal, hepatic, neuromuscular and autonomic physiology at the bedside.",
+  metaDescription: "Twelve progressive physiology cases covering cardiovascular, respiratory, renal, maternal, neonatal and hepatic physiology for FRCA and FFICM revision.",
   backPath: "/physiology",
   backLabel: "Physiology",
   accentColor: "text-physiology",
-  categories: ["Cardiovascular", "Respiratory", "Renal, neuromuscular & autonomic"],
+  categories: ["Cardiovascular", "Respiratory", "Renal, neuromuscular & autonomic", "Maternal & neonatal", "Hepatic & metabolic"],
   cases: [
     {
       id: "physiology-aortic-stenosis",
@@ -348,6 +354,236 @@ export const physiologyCaseBank: CaseBank = {
       ],
       takeHome: "Sensory loss does not prevent autonomic dysreflexia: block the afferent stimulus with neuraxial or general anaesthesia, and treat a crisis by removing the trigger.",
       sourceLinks: [s.autonomic, s.bradycardia],
+    },
+    {
+      id: "physiology-tamponade",
+      title: "Hypotension after central line insertion",
+      category: "Cardiovascular",
+      difficulty: "Advanced",
+      summary: "Venous return curves, pericardial constraint and why induction can be fatal in tamponade.",
+      topicIds: ["starling-forces", "cardiac-cycle", "cardiac-anatomy", "vascular-access-devices", "circulatory-failure"],
+      patient: "An adult becomes progressively hypotensive an hour after difficult internal jugular cannulation. Pressure is 78/58 mmHg, heart rate 128 beats per minute, and the venous pressure trace is elevated with a pulsus paradoxus of 18 mmHg.",
+      presentation: "Echocardiography shows a moderate pericardial collection with right atrial systolic collapse and respiratory variation in mitral inflow.",
+      stages: [
+        {
+          title: "Explain the physiology",
+          prompt: "Why does a modest volume of pericardial fluid cause shock?",
+          answer: [
+            "The pericardium is poorly compliant acutely, so once the reserve volume is taken up, intrapericardial pressure rises steeply and equalises with diastolic chamber pressures.",
+            "Transmural filling pressure — chamber pressure minus intrapericardial pressure — falls, so ventricular end-diastolic volume and hence stroke volume fall despite a high measured central venous pressure.",
+            "Output becomes rate-dependent and preload-dependent: tachycardia and sympathetic vasoconstriction are the compensations, and both fail abruptly when abolished.",
+          ],
+        },
+        {
+          title: "Manage the circulation",
+          prompt: "What do you do before drainage?",
+          answer: [
+            "Give volume to maintain the filling gradient, keep the patient sitting up and spontaneously breathing, and support pressure with vasopressor rather than vasodilating agents.",
+            "Avoid positive pressure ventilation and high intrathoracic pressure, which further reduce venous return, and avoid drugs that drop heart rate or systemic vascular resistance.",
+            "Arrange urgent echocardiography-guided pericardiocentesis or surgical drainage; treat definitively rather than persisting with medical support.",
+          ],
+        },
+        {
+          title: "Plan the anaesthetic",
+          prompt: "The surgeon wants general anaesthesia for a pericardial window. How do you proceed?",
+          answer: [
+            "Drain under local anaesthesia first wherever possible, so that induction occurs after the pericardial pressure has been relieved.",
+            "If general anaesthesia is unavoidable, induce in theatre with the surgeon scrubbed, using a cautious ketamine-based technique, arterial monitoring, volume loading and immediate vasopressor availability.",
+            "Anticipate decompression effects: a sudden rise in stroke volume, and occasionally pericardial decompression syndrome with pulmonary oedema or ventricular dysfunction.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Tamponade is a disease of transmural filling pressure rather than of absolute volume. Because the acute pericardium is stiff, the pressure–volume relationship becomes near vertical once reserve volume is exhausted, and diastolic pressures equalise across the chambers. Pulsus paradoxus reflects competition between the ventricles within a fixed pericardial space during inspiration. High central venous pressure with low output and a small hyperdynamic left ventricle is the classic haemodynamic signature." },
+        { title: "Management and monitoring", content: "Maintain preload, rate and afterload while arranging drainage, guided by echocardiography with right atrial or right ventricular diastolic collapse and inflow variation. Positive pressure ventilation, vasodilation and bradycardia all convert compensated tamponade into arrest, which is why awake drainage under local anaesthesia is preferred. After drainage, expect a large increase in stroke volume and watch for reperfusion pulmonary oedema and ongoing bleeding from the causative injury." },
+        { title: "Exam pitfall", content: "Do not describe fluid volume as the determinant of severity — rate of accumulation and pericardial compliance matter more. Do not offer a standard intravenous induction with positive pressure ventilation before drainage." },
+      ],
+      takeHome: "Tamponade kills by abolishing transmural filling pressure: keep the patient full, fast, vasoconstricted and spontaneously breathing until the pericardium is drained.",
+      sourceLinks: [s.pericardial, s.cardiacCycle],
+    },
+    {
+      id: "physiology-oxygen-dissociation",
+      title: "Normal saturation with tissue hypoxia in sepsis",
+      category: "Respiratory",
+      difficulty: "Intermediate",
+      summary: "Oxygen dissociation curve shifts, oxygen delivery arithmetic and the limits of pulse oximetry.",
+      topicIds: ["oxygen-haemoglobin", "abg-analyser", "pulse-oximetry", "sepsis", "transfusion-coagulation"],
+      patient: "A septic patient has an oxygen saturation of 96%, haemoglobin 71 g/L, lactate 4.8 mmol/L, temperature 38.9°C and pH 7.28.",
+      presentation: "The registrar is reassured by the saturation and asks whether transfusion is needed.",
+      stages: [
+        {
+          title: "Do the delivery arithmetic",
+          prompt: "Why is a saturation of 96% not reassuring here?",
+          answer: [
+            "Arterial oxygen content is dominated by haemoglobin: roughly 1.34 mL of oxygen per gram of haemoglobin per percent saturation, plus a small dissolved component of about 0.023 mL per mmHg.",
+            "At 71 g/L and 96% saturation, content is only about 9–10 mL per 100 mL, around half of normal, so delivery depends heavily on cardiac output.",
+            "Oxygen delivery equals cardiac output multiplied by arterial content; saturation alone says nothing about content, output or tissue extraction.",
+          ],
+        },
+        {
+          title: "Explain the curve shifts",
+          prompt: "How do this patient's derangements move the dissociation curve?",
+          answer: [
+            "Acidosis, pyrexia, hypercapnia and raised 2,3-diphosphoglycerate shift the curve right, reducing affinity and favouring tissue unloading — the P50 rises from its normal value of about 3.5 kPa (26 mmHg).",
+            "A right shift also means a lower saturation for a given partial pressure, so the same oximeter reading reflects a slightly higher arterial oxygen tension.",
+            "Alkalosis, hypothermia, low 2,3-diphosphoglycerate, methaemoglobin, carboxyhaemoglobin and stored blood shift the curve left and impair unloading.",
+          ],
+        },
+        {
+          title: "Decide on transfusion",
+          prompt: "What threshold and endpoints do you use?",
+          answer: [
+            "Use a restrictive threshold of 70 g/L for most critically ill patients, transfusing single units and reassessing, with a higher threshold around 80 g/L in acute coronary syndrome.",
+            "Judge the effect on markers of global perfusion — lactate, central venous oxygen saturation, capillary refill — rather than on the saturation trace.",
+            "Optimise the other determinants of delivery: cardiac output, arterial oxygen tension, and reduction of demand through analgesia, fever control and treating agitation.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Pulse oximetry measures the fraction of functional haemoglobin that is saturated; it measures neither how much haemoglobin is present nor whether oxygen reaches mitochondria. In sepsis, low content combines with microcirculatory shunting and impaired mitochondrial extraction, so a normal saturation and normal arterial oxygen tension can coexist with an oxygen debt. Understanding the sigmoid curve is what allows this to be explained: the steep portion protects tissue unloading, while the flat upper portion means additional inspired oxygen adds little content once saturation is high." },
+        { title: "Management and monitoring", content: "Treat the cause, restore perfusion pressure and flow, and use a restrictive transfusion threshold of 70 g/L with single-unit reassessment; trials of fresher versus older red cells show no outcome benefit from fresher blood. Track lactate clearance, central venous oxygen saturation and clinical perfusion, and remember that pulse oximetry is unreliable in dyshaemoglobinaemia, poor perfusion, and — with a positive bias — in patients with darker skin pigmentation." },
+        { title: "Exam pitfall", content: "Do not equate saturation with oxygenation or with delivery, and do not quote a 100 g/L transfusion trigger for general critical care. Give the content equation and the P50 with its units." },
+      ],
+      takeHome: "Saturation describes affinity, not delivery: calculate content, allow for curve shifts, and transfuse to a restrictive threshold guided by perfusion markers.",
+      sourceLinks: [s.odc, s.able],
+    },
+    {
+      id: "physiology-preeclampsia",
+      title: "Severe pre-eclampsia at 33 weeks",
+      category: "Maternal & neonatal",
+      difficulty: "Advanced",
+      summary: "Maternal cardiovascular and colloid osmotic changes, magnesium physiology and safe neuraxial planning.",
+      topicIds: ["maternal-physiology", "obstetric-anaesthesia", "starling-forces", "regional-anaesthesia", "haematological-disease"],
+      patient: "A woman at 33 weeks' gestation has blood pressure 172/112 mmHg, proteinuria, headache, brisk reflexes, platelets 88 × 10⁹/L and rising transaminases. Caesarean delivery is planned.",
+      presentation: "She has received labetalol, and the obstetric team asks about magnesium and the choice of anaesthetic.",
+      stages: [
+        {
+          title: "Explain the physiology",
+          prompt: "Which maternal adaptations and pre-eclamptic changes matter here?",
+          answer: [
+            "Normal pregnancy brings a 40–50% rise in cardiac output and plasma volume, a fall in systemic vascular resistance, dilutional anaemia and reduced colloid osmotic pressure.",
+            "Pre-eclampsia adds widespread endothelial dysfunction with vasoconstriction, increased capillary permeability, intravascular volume depletion and a low colloid osmotic pressure, so pulmonary oedema occurs at modest fluid loads.",
+            "Airway oedema, reduced functional residual capacity, raised oxygen consumption and delayed gastric emptying all increase the risk of general anaesthesia.",
+          ],
+        },
+        {
+          title: "Control pressure and prevent seizures",
+          prompt: "What are your treatment targets?",
+          answer: [
+            "Treat severe hypertension urgently with labetalol, nifedipine or hydralazine, aiming for a systolic below 150 mmHg and a diastolic of 80–100 mmHg to reduce the risk of intracranial haemorrhage.",
+            "Give magnesium sulfate for eclampsia prophylaxis in severe disease: a 4 g loading dose over 5–15 minutes followed by 1 g per hour, continued for 24 hours after delivery or the last seizure.",
+            "Monitor for magnesium toxicity clinically — loss of patellar reflexes, respiratory depression — and treat with calcium gluconate; restrict fluids to about 80 mL per hour to avoid pulmonary oedema.",
+          ],
+        },
+        {
+          title: "Choose the anaesthetic",
+          prompt: "Spinal, epidural or general anaesthesia?",
+          answer: [
+            "Neuraxial anaesthesia is preferred when coagulation is acceptable: it avoids airway instrumentation and the hypertensive response to laryngoscopy, and hypotension is often less marked than in healthy parturients.",
+            "Check a recent platelet count and trend; a count above 70–80 × 10⁹/L with normal coagulation and no antiplatelet or anticoagulant effect generally permits spinal anaesthesia, but a rapidly falling count argues against it.",
+            "If general anaesthesia is required, obtund the pressor response with remifentanil or additional antihypertensives, anticipate a difficult oedematous airway with a smaller tube, and note that magnesium potentiates neuromuscular block.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Pre-eclampsia is a placental disease expressed as maternal endothelial injury. The physiological consequences that drive anaesthetic decisions are intravascular volume depletion with interstitial oedema, a low colloid osmotic pressure, exaggerated pressor responses, and consumptive thrombocytopenia with possible HELLP. Magnesium works partly by cerebral vasodilation and by antagonism at N-methyl-D-aspartate receptors and calcium channels; it also relaxes uterine and skeletal muscle." },
+        { title: "Management and monitoring", content: "Deliver definitive treatment — the fetus and placenta — while controlling pressure, preventing seizures and restricting fluid. Use invasive arterial monitoring for severe or labile hypertension, hourly urine output with total input capped near 80 mL per hour, and repeated platelet counts and liver function tests. Post-delivery risks continue: eclampsia, pulmonary oedema and hypertension may all worsen in the first 24–48 hours, and avoid non-steroidal anti-inflammatory drugs where renal impairment or thrombocytopenia is significant." },
+        { title: "Exam pitfall", content: "Do not fluid-load before spinal anaesthesia in severe pre-eclampsia, and do not quote a platelet threshold without mentioning the trend and coagulation. Remember magnesium's interaction with neuromuscular blockers." },
+      ],
+      takeHome: "Severe pre-eclampsia is a leaky, volume-depleted, pressor-sensitive state: control pressure, give magnesium, restrict fluid and prefer neuraxial anaesthesia when platelets allow.",
+      sourceLinks: [s.nicePreeclampsia, s.autonomic],
+    },
+    {
+      id: "physiology-neonatal-transition",
+      title: "Failure of transition in a term newborn",
+      category: "Maternal & neonatal",
+      difficulty: "Intermediate",
+      summary: "Closure of the fetal shunts, pulmonary vascular resistance and reversion to fetal circulation.",
+      topicIds: ["foetal-circulation", "paediatric-anaesthesia", "paediatric-icu", "pulmonary-hypertension", "maternal-physiology"],
+      patient: "A term newborn is cyanosed and grunting ten minutes after delivery, with pre-ductal saturation 78%, post-ductal saturation 66% and a loud second heart sound.",
+      presentation: "Echocardiography shows structurally normal anatomy with right-to-left ductal shunting and high right ventricular pressure.",
+      stages: [
+        {
+          title: "Explain normal transition",
+          prompt: "What must happen at birth for the circulation to become adult in pattern?",
+          answer: [
+            "Lung aeration and the rise in alveolar oxygen tension cause a steep fall in pulmonary vascular resistance, so pulmonary blood flow increases several-fold.",
+            "Left atrial pressure rises above right atrial pressure as pulmonary venous return increases, closing the foramen ovale functionally; removal of the low-resistance placenta raises systemic vascular resistance.",
+            "The ductus arteriosus constricts in response to a rising arterial oxygen tension and falling prostaglandin E2, closing functionally within 24–72 hours and anatomically over weeks; the ductus venosus closes as umbilical flow ceases.",
+          ],
+        },
+        {
+          title: "Interpret the split saturations",
+          prompt: "What does a pre-ductal to post-ductal gradient tell you?",
+          answer: [
+            "A pre-ductal saturation more than 5–10% higher than the post-ductal value indicates right-to-left shunting across the duct, as pulmonary artery pressure exceeds aortic pressure.",
+            "This is the hallmark of persistent pulmonary hypertension of the newborn, which may be triggered by hypoxia, acidosis, meconium aspiration, sepsis, hypothermia, hypoglycaemia or hypoplastic lungs.",
+            "Structural cyanotic heart disease must be excluded by echocardiography before attributing hypoxaemia to persistent pulmonary hypertension alone.",
+          ],
+        },
+        {
+          title: "Treat the physiology",
+          prompt: "How do you lower pulmonary vascular resistance?",
+          answer: [
+            "Correct the drivers: adequate oxygenation, normocapnia to mild hypocapnia, correction of acidosis, normothermia, normoglycaemia and treatment of sepsis.",
+            "Optimise lung recruitment with careful positive pressure or surfactant where indicated, since both atelectasis and overdistension raise pulmonary vascular resistance, and minimise handling and noxious stimuli.",
+            "Add inhaled nitric oxide as the specific pulmonary vasodilator, support systemic pressure to reduce right-to-left shunting, and escalate to extracorporeal support if oxygenation remains critical.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "The fetal circulation is a parallel circuit dependent on three shunts — ductus venosus, foramen ovale and ductus arteriosus — with high pulmonary vascular resistance and a low-resistance placenta. Transition converts it to a series circuit. Because the pulmonary vasculature remains reactive for days, hypoxia, acidosis, hypothermia or sepsis can raise pulmonary artery pressure above systemic pressure and reopen right-to-left shunting, producing profound hypoxaemia with normal cardiac anatomy." },
+        { title: "Management and monitoring", content: "Follow structured newborn support: dry, warm, assess, and provide inflation breaths with air or blended oxygen guided by pre-ductal saturation targets that rise over the first ten minutes. Then treat the pulmonary hypertension physiologically — oxygen, ventilation to normocapnia, acidosis correction, lung recruitment, minimal handling — before adding inhaled nitric oxide and systemic pressure support. Monitor pre-ductal and post-ductal saturations, blood gases, glucose, lactate and echocardiographic estimates of shunt direction." },
+        { title: "Exam pitfall", content: "Do not attribute all neonatal cyanosis to lung disease; look for the pre-ductal to post-ductal gradient and exclude duct-dependent structural lesions. Avoid hyperventilation to extreme hypocapnia, which harms the cerebral circulation." },
+      ],
+      takeHome: "Transition depends on falling pulmonary vascular resistance and shunt closure: hypoxia, acidosis and cold reopen the fetal pattern, so treat those before reaching for nitric oxide.",
+      sourceLinks: [s.newbornLifeSupport, s.vq],
+    },
+    {
+      id: "physiology-liver-coagulopathy",
+      title: "Prolonged INR in decompensated cirrhosis",
+      category: "Hepatic & metabolic",
+      difficulty: "Advanced",
+      summary: "Rebalanced haemostasis, hepatic synthetic and clearance function, and why the INR misleads.",
+      topicIds: ["hepatic-physiology", "hepatic-disease", "transfusion-coagulation", "acute-liver-failure", "anticoagulants"],
+      patient: "A patient with Child–Pugh C cirrhosis needs an ascitic drain and later a hernia repair. The INR is 2.1, platelets 62 × 10⁹/L and fibrinogen 1.4 g/L.",
+      presentation: "The ward team has requested fresh frozen plasma to 'correct' the INR before the drain.",
+      stages: [
+        {
+          title: "Explain the haemostatic physiology",
+          prompt: "Why does a raised INR not equal a bleeding tendency here?",
+          answer: [
+            "The liver synthesises both procoagulant factors (II, V, VII, IX, X, fibrinogen) and anticoagulant proteins (protein C, protein S, antithrombin), so both arms fall together in a rebalanced state.",
+            "The INR is calibrated for vitamin K antagonism and reflects only the factor VII-dependent initiation phase; it does not measure the raised von Willebrand factor, reduced ADAMTS13 or thrombin generation seen in cirrhosis.",
+            "Patients with cirrhosis are therefore at risk of both bleeding and thrombosis, including portal vein and deep vein thrombosis, and remain candidates for thromboprophylaxis.",
+          ],
+        },
+        {
+          title: "Assess bleeding risk properly",
+          prompt: "What tests and factors guide you?",
+          answer: [
+            "Weigh procedural risk, portal pressure, renal function, sepsis and anaemia, which drive bleeding more than the INR does.",
+            "Use viscoelastic testing where available to look at clot initiation, amplitude and lysis, and treat measured deficits — fibrinogen below about 1.5 g/L, or hyperfibrinolysis — rather than an isolated number.",
+            "Correct vitamin K deficiency where cholestasis or malnutrition is present, and manage anaemia, sepsis and renal dysfunction as part of haemostatic optimisation.",
+          ],
+        },
+        {
+          title: "Plan the procedures",
+          prompt: "How do you proceed with the drain and the hernia repair?",
+          answer: [
+            "Do not give prophylactic plasma for a low-risk procedure such as ascitic drainage: plasma raises portal pressure through volume loading and rarely corrects thrombin generation.",
+            "For surgery, target measured deficits with fibrinogen concentrate or cryoprecipitate and platelets, consider tranexamic acid for surgical bleeding, and keep the transfusion strategy restrictive.",
+            "Adjust anaesthesia for altered pharmacology: reduced protein binding, altered volume of distribution, unpredictable clearance of drugs with hepatic metabolism, and greater sensitivity to sedatives with encephalopathy; avoid renal insults.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Cirrhosis produces a rebalanced rather than a hypocoagulable haemostatic system: procoagulant and anticoagulant synthesis both fall, platelet count falls with splenic sequestration and reduced thrombopoietin, while von Willebrand factor rises. Conventional coagulation tests capture only part of this and were never validated as bleeding predictors in liver disease, so they drive unnecessary transfusion. Portal hypertension, endothelial dysfunction, renal failure and infection are the dominant clinical drivers of variceal and procedural bleeding." },
+        { title: "Management and monitoring", content: "Use goal-directed haemostatic therapy with viscoelastic testing and fibrinogen levels, correct vitamin K where deficient, treat infection and renal impairment, and avoid volume-driven rises in portal pressure. Provide venous thromboembolism prophylaxis unless actively bleeding. Anaesthetically, plan for altered drug handling, hypoalbuminaemia, ascites and restrictive respiratory physiology, hepatic hydrothorax, hepatopulmonary and portopulmonary syndromes, and the risk of hepatorenal deterioration; score risk with Child–Pugh and MELD." },
+        { title: "Exam pitfall", content: "Do not describe cirrhosis simply as auto-anticoagulation, and do not transfuse plasma to chase an INR before a low-risk procedure. Mention thrombosis risk and thromboprophylaxis explicitly." },
+      ],
+      takeHome: "Cirrhotic haemostasis is rebalanced, not simply impaired: treat measured deficits and clinical drivers, not the INR, and remember these patients also clot.",
+      sourceLinks: [s.liverCoag, s.renal],
     },
   ],
 };
