@@ -71,13 +71,14 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <ul className="list-disc pl-5 space-y-1">
-        <li>Cockcroft-Gault eCrCl = (140 − age) × wt × 1.04 / Cr = (140 − 65) × 60 × 1.04 / 90 ≈ <strong>52 mL/min</strong>.</li>
-        <li>Calvert: dose (mg) = AUC × (GFR + 25) = 5 × (52 + 25) = <strong>385 mg</strong>.</li>
-        <li>Use measured Cr-EDTA GFR if accuracy critical (chemotherapy, transplant donor).</li>
+        <li>CKD-EPI 2021 (female, age 65, creatinine 90 μmol/L) gives an indexed eGFR of approximately <strong>61 mL/min/1.73 m²</strong> <InlineRef topicId="renal-physiology" refLabel="NICE NG203" />.</li>
+        <li>For Calvert dosing, de-index to absolute GFR. Mosteller BSA = √(160 × 60 / 3600) ≈ 1.63 m²; absolute GFR ≈ 61 × 1.63 / 1.73 = <strong>58 mL/min</strong>.</li>
+        <li>Calvert: dose (mg) = AUC × (GFR + 25) = 5 × (58 + 25) ≈ <strong>415 mg</strong>.</li>
+        <li>Historically Cockcroft–Gault creatinine clearance was often substituted, but current CKD assessment uses race-free CKD-EPI 2021. Use measured GFR when carboplatin accuracy is critical.</li>
       </ul>
     ),
-    answer: <p>≈ 385 mg carboplatin. Re-check GFR before each cycle; consider Cr-EDTA in elderly/borderline cases.</p>,
-    cites: ["Power & Kam Ch.9"],
+    answer: <p>Approximately 415 mg using de-indexed CKD-EPI 2021. Re-check renal function before each cycle and use measured GFR when precision is critical.</p>,
+    cites: ["Power & Kam Ch.9", "NICE NG203"],
   },
   {
     title: "Hyponatraemia workup",
@@ -91,11 +92,11 @@ const workedExamples: WorkedExample[] = [
       <ul className="list-disc pl-5 space-y-1">
         <li>Hypotonic hyponatraemia (low plasma osm).</li>
         <li>Inappropriately concentrated urine (osm &gt;100) and urine Na &gt;30 with euvolaemia → <strong>SIADH</strong> picture, exacerbated by hypotonic fluids.</li>
-        <li>Stop dextrose; restrict fluid; if symptomatic → 150 mL 3% saline bolus (ESICM/ESE 2014).</li>
+        <li>Stop dextrose; restrict fluid; if moderately symptomatic → 150 mL 3% saline bolus (Spasovski et al., 2017) <InlineRef topicId="renal-physiology" refLabel="European Hyponatraemia 2017" />.</li>
       </ul>
     ),
     answer: <p>Hospital-acquired hyponatraemia from hypotonic fluids on a background of SIADH. Switch to isotonic saline + fluid restriction; correct ≤10 mmol/L in 24 h to avoid ODS.</p>,
-    cites: ["BJA Educ 2018"],
+    cites: ["BJA Educ 2018", "European Hyponatraemia 2017"],
   },
 ];
 
@@ -298,6 +299,19 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
+          <ExamSection id="diuretic-resistance" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_02"]}>
+            <section className="mb-8">
+              <h2 className="text-2xl font-serif font-bold text-foreground">Diuretic Resistance in Critical Care</h2>
+              <p className="text-foreground/90 leading-relaxed mb-3">
+                <strong>Diuretic resistance</strong> is failure to achieve adequate natriuresis and decongestion despite escalating loop-diuretic doses. Reduced renal perfusion and tubular drug delivery in cardiorenal syndrome, acute tolerance (the “braking phenomenon”), and chronic distal convoluted-tubule hypertrophy all promote downstream sodium reclamation <InlineRef topicId="renal-physiology" refLabel="BJA 2025 Diuretics" />.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Recognise and optimise</h3><ul className="mt-2 list-disc pl-5 space-y-1 text-foreground/80"><li>Confirm congestion, adherence, adequate perfusion and exclude urinary obstruction.</li><li>Use an adequate IV loop dose; assess early urine output and urinary sodium response.</li><li>Repeated boluses or continuous infusion can maintain tubular exposure; infusion is not universally superior, so titrate to response.</li></ul></div>
+                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Sequential nephron blockade</h3><ul className="mt-2 list-disc pl-5 space-y-1 text-foreground/80"><li>Add a thiazide or thiazide-like drug such as metolazone to block compensatory distal NaCl uptake.</li><li>Consider acetazolamide to inhibit proximal bicarbonate-linked sodium reabsorption.</li><li>Monitor volume status, Na⁺, K⁺, Mg²⁺, acid–base balance and renal function closely.</li></ul></div>
+              </div>
+            </section>
+          </ExamSection>
+
           <ExamSection id="urine-simulator" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RU_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Urine Concentration & Dilution Simulator</h2>
@@ -425,6 +439,12 @@ const RenalPhysiologyTopic = () => {
                 reabsorption in PCT (85%) via carbonic anhydrase. (2) Titratable acid excretion (H₂PO₄⁻). (3) Ammonium (NH₄⁺)
                 production and excretion — the most important adaptive mechanism in chronic acidosis.
               </p>
+              <ol className="mt-4 space-y-2 text-sm text-foreground/85 list-decimal pl-5">
+                <li><strong>Ammoniagenesis:</strong> proximal-tubule glutamine is metabolised through glutamate to α-ketoglutarate, generating two NH₄⁺ and two new HCO₃⁻ ions per glutamine.</li>
+                <li><strong>Proximal secretion:</strong> NH₄⁺ substitutes for H⁺ on NHE3 and enters the tubular lumen while newly generated bicarbonate returns to blood.</li>
+                <li><strong>Medullary recycling:</strong> NH₄⁺ substitutes for K⁺ on NKCC2 in the thick ascending limb and accumulates in the medullary interstitium.</li>
+                <li><strong>Ammonia trapping:</strong> lipid-soluble NH₃ diffuses into the collecting duct, where secreted H⁺ converts it to poorly permeable NH₄⁺. It is trapped in acidic urine and excreted. Chronic acidosis markedly increases this adaptive pathway <InlineRef topicId="renal-physiology" refLabel="Ganong Ch.37-38" />.</li>
+              </ol>
             </section>
           </ExamSection>
 

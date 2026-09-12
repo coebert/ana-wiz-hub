@@ -9,6 +9,7 @@ import { NMJDiagram } from "@/components/diagrams/physiology/NMJDiagram";
 import NeuromuscularMonitoringDiagram from "@/components/diagrams/physiology/NeuromuscularMonitoringDiagram";
 import { neuromuscularQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const neuromuscularFaqs: Array<[string, string]> = [
   [
@@ -264,6 +265,28 @@ const NeuromuscularTopic = () => {
                 <li>• <strong>Aminoglycosides</strong> — reduce pre-synaptic Ca²⁺ entry and potentiate neuromuscular block</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="phase-two-block" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_03"]}>
+            <CollapsibleSubsection title="Suxamethonium: Phase I and Phase II Block">
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Phase I: depolarising block</h3><p className="mt-2 text-foreground/80">Persistent end-plate depolarisation follows a usual dose. TOF twitches are uniformly reduced without fade and there is no post-tetanic facilitation.</p></div>
+                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Phase II: desensitising block</h3><p className="mt-2 text-foreground/80">After large or repeated cumulative doses (often &gt;4–5 mg/kg) or prolonged infusion, the membrane repolarises but the nAChR/end plate remains desensitised. It resembles non-depolarising block, with TOF fade and post-tetanic facilitation. Anticholinesterases do not reverse it reliably and may worsen block; continue sedation, ventilation and quantitative monitoring until recovery <InlineRef topicId="neuromuscular" refLabel="BJA Educ 2005" />.</p></div>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="cip-cim" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_03"]}>
+            <CollapsibleSubsection title="Critical Illness Polyneuropathy and Myopathy">
+              <p className="text-foreground/90 leading-relaxed">ICU-acquired weakness commonly combines <strong>CIP</strong>, a distal axonal sensorimotor polyneuropathy, and <strong>CIM</strong>, an acute primary myopathy. Risk rises with sepsis/SIRS, multiorgan failure, hyperglycaemia, immobility, corticosteroids and prolonged neuromuscular blockade <InlineRef topicId="neuromuscular" refLabel="Crit Care Med 1996 CIP CIM" />.</p>
+              <ul className="mt-3 list-disc pl-5 space-y-1 text-sm text-foreground/80"><li>Both cause symmetrical flaccid limb and respiratory-muscle weakness, preserved cranial nerves, and difficult ventilator weaning.</li><li>CIP: reduced compound muscle action potential (CMAP) and sensory nerve action potential (SNAP) amplitudes.</li><li>CIM: reduced CMAP with preserved SNAP; direct muscle stimulation and muscle biopsy can distinguish primary myopathy.</li><li>Management is supportive: treat sepsis, avoid unnecessary deep sedation/NMB, control glucose reasonably, mobilise early and rehabilitate.</li></ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="block-modifiers" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_03"]}>
+            <CollapsibleSubsection title="Factors Affecting Neuromuscular Blockade">
+              <div className="grid md:grid-cols-2 gap-4 text-sm"><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Potentiation of block</h3><p className="mt-2 text-foreground/80"><strong>Physiological:</strong> hypothermia, respiratory acidosis, metabolic alkalosis, hypokalaemia, hypocalcaemia and hypermagnesaemia.</p><p className="mt-2 text-foreground/80"><strong>Drugs:</strong> volatile anaesthetics, local anaesthetics, aminoglycosides, clindamycin, furosemide and chronic phenytoin exposure. Magnesium reduces presynaptic Ca²⁺-dependent ACh release and prolongs recovery <InlineRef topicId="neuromuscular" refLabel="Anaesthesia 2003 Magnesium" />.</p></div><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Inhibition or resistance</h3><p className="mt-2 text-foreground/80"><strong>Physiological:</strong> hypercalcaemia and hypomagnesaemia increase ACh release.</p><p className="mt-2 text-foreground/80"><strong>Drugs:</strong> acute phenytoin can potentiate block, whereas chronic phenytoin and carbamazepine induce resistance through altered clearance/receptor effects. Dose to quantitative monitoring rather than relying on a fixed list.</p></div></div>
             </CollapsibleSubsection>
           </ExamSection>
 
