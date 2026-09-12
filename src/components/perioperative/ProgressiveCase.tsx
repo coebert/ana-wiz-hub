@@ -227,6 +227,8 @@ export const ProgressiveCase = ({ caseData }: ProgressiveCaseProps) => {
                 <p className="mt-1 text-sm leading-relaxed text-foreground">{caseData.takeHome}</p>
               </aside>
 
+              <CaseDosingReference caseData={caseData} />
+
               <section className="rounded-md border border-border bg-card overflow-hidden">
                 <Button
                   type="button"
