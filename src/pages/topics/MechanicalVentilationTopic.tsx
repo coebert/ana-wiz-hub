@@ -244,6 +244,40 @@ const MechanicalVentilationTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             Every breath is defined by three variables: <strong>trigger</strong> (what starts it), <strong>limit / target</strong> (what controls it during inspiration), and <strong>cycle</strong> (what ends it).
           </p>
+          <div className="grid sm:grid-cols-3 gap-3 mb-4">
+            <div className="rounded-lg border border-border bg-muted/20 p-3">
+              <p className="font-semibold text-foreground text-sm mb-1">Trigger — what starts the breath</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                The ventilator senses either a fall in circuit pressure or a drop in flow below baseline as patient effort begins (patient trigger), or a pre-set interval has elapsed (time/mandatory trigger). Trigger sensitivity is set to balance responsiveness against auto-triggering.
+              </p>
+            </div>
+            <div className="rounded-lg border border-border bg-muted/20 p-3">
+              <p className="font-semibold text-foreground text-sm mb-1">Limit / target — what is controlled during inspiration</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                The variable held at (or not allowed to exceed) a set value throughout inspiration — a set pressure that is held constant, or a set flow/volume that is delivered. The limit does not itself end the breath; it simply constrains it while it continues.
+              </p>
+            </div>
+            <div className="rounded-lg border border-border bg-muted/20 p-3">
+              <p className="font-semibold text-foreground text-sm mb-1">Cycle — what ends the breath</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Inspiration terminates when the set tidal volume has been delivered (volume-cycled), a pre-set inspiratory time has elapsed (time-cycled), or inspiratory flow decays to a set percentage of peak flow — typically 25–30% (flow-cycled).
+              </p>
+            </div>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-3 mb-4">
+            <div className="rounded-lg bg-secondary/30 border border-border p-3">
+              <p className="font-semibold text-foreground text-sm mb-1">Worked example — VCV</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">Time-triggered (set RR) or patient-triggered; <strong>limited by a constant set flow</strong> which determines the pressure waveform; <strong>cycled off once the set tidal volume has been delivered</strong>. Pressure is the dependent variable — it rises or falls with compliance/resistance.</p>
+            </div>
+            <div className="rounded-lg bg-secondary/30 border border-border p-3">
+              <p className="font-semibold text-foreground text-sm mb-1">Worked example — PCV</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">Time- or patient-triggered; <strong>limited by a set inspiratory pressure held constant</strong> (decelerating flow to maintain it); <strong>cycled off after a set inspiratory time</strong>. Tidal volume is the dependent variable — it varies with compliance/resistance.</p>
+            </div>
+            <div className="rounded-lg bg-secondary/30 border border-border p-3">
+              <p className="font-semibold text-foreground text-sm mb-1">Worked example — PSV</p>
+              <p className="text-xs text-muted-foreground leading-relaxed"><strong>Patient-triggered</strong> only (no mandatory rate); <strong>limited by a set pressure support level</strong> held constant above PEEP; <strong>cycled off when inspiratory flow decays to ~25–30% of peak flow</strong> (flow-cycled), not by time or volume.</p>
+            </div>
+          </div>
           <div className="overflow-x-auto mb-4">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -259,7 +293,7 @@ const MechanicalVentilationTopic = () => {
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">VCV</td><td>Time / patient</td><td>Flow (constant)</td><td>Volume</td><td>Guaranteed minute volume; ARDSNet protocol</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PCV</td><td>Time / patient</td><td>Pressure (decelerating flow)</td><td>Time</td><td>Limits airway pressure; better recruitment; paeds</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PRVC / Autoflow</td><td>Time / patient</td><td>Pressure (adjusted to deliver target Vt)</td><td>Time</td><td>Volume guarantee with pressure-limited safety</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PSV</td><td>Patient (flow/pressure)</td><td>Pressure</td><td>Flow (% of peak — usually 25%)</td><td>Spontaneous mode; weaning</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PSV</td><td>Patient (flow/pressure) only</td><td>Pressure (set support level)</td><td>Flow (decays to ~25–30% of peak)</td><td>Overcoming ETT/circuit resistance; weaning; SBTs</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">SIMV ± PS</td><td>Mixed (mandatory + spontaneous)</td><td>Volume or pressure</td><td>Volume / time / flow</td><td>Largely historical — associated with prolonged weaning</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">APRV / BiLevel</td><td>Time + spontaneous overlay</td><td>Pressure (P<sub>high</sub> / P<sub>low</sub>)</td><td>Time (T<sub>high</sub> → T<sub>low</sub>)</td><td>Refractory hypoxaemia; spontaneous breathing throughout</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">NAVA</td><td>Diaphragmatic EMG (Edi catheter)</td><td>Pressure proportional to Edi</td><td>Drop in Edi</td><td>Improved synchrony; weaning; paediatrics</td></tr>
@@ -361,8 +395,22 @@ const MechanicalVentilationTopic = () => {
               </a>.
             </p>
           </div>
-          <p className="text-xs text-muted-foreground italic">
+          <p className="text-xs text-muted-foreground italic mb-4">
             Aside: SIMV is no longer recommended for routine weaning (Brochard 1994; Esteban 1995) — direct PSV or T-piece SBTs are superior.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Pressure Support Ventilation (PSV) in Detail</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            PSV is <strong>patient-triggered, pressure-limited and flow-cycled</strong> — every breath must be initiated by the patient (there is no mandatory backup rate on pure PSV), the ventilator holds airway pressure at the set support level throughout inspiration, and inspiration ends when inspiratory flow has decayed to a set percentage of its peak value (typically ~25–30%, the <em>expiratory trigger sensitivity</em> or ETS). Because the patient controls timing and duration, PSV is the most physiologically synchronous mode for a patient with intact respiratory drive.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            <strong>Key settings:</strong> the <em>pressure support level</em> (above PEEP) is the main determinant of delivered tidal volume — for a given effort, higher PS gives a larger Vt; <em>PEEP</em> maintains recruitment and offsets intrinsic PEEP; <em>FiO₂</em> and <em>inspiratory trigger sensitivity</em> (flow or pressure) determine how easily the patient can initiate a breath; and the <em>ETS</em> can be adjusted (e.g. raised in COPD to cycle off earlier and avoid dynamic hyperinflation, or lowered in restrictive disease to allow a longer inspiratory time).
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            <strong>Uses:</strong> overcoming the resistive work imposed by the endotracheal tube and ventilator circuit during otherwise spontaneous breathing; stepwise weaning by progressively reducing the PS level (e.g. from 15–20 down to 5–8 cmH₂O) as respiratory muscle strength recovers; and as the standard mode for spontaneous breathing trials (PSV 5–8/PEEP 5, or T-piece).
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            <strong>Pitfalls:</strong> <em>delayed cycling</em> (ETS set too low, e.g. in COPD with slow expiratory flow decay) causes breath-stacking and dynamic hyperinflation; <em>premature cycling</em> (ETS too high, or high resistance/low compliance causing flow to fall quickly) causes double-triggering as the patient's neural inspiration continues after the ventilator has cycled off; <em>auto-triggering</em> occurs when trigger sensitivity is set too low relative to circuit leak or cardiac oscillation, delivering unwanted breaths; and patients with a very high respiratory drive (e.g. severe sepsis, metabolic acidosis) may experience air hunger on PSV because tidal volume — not minute ventilation — is what is guaranteed, so an unstable or inadequate PS level can leave the patient dyspnoeic despite a "normal" set pressure.
           </p>
           </CollapsibleSubsection>
         </ExamSection>
@@ -660,6 +708,17 @@ const MechanicalVentilationTopic = () => {
             <li>Inhaled pulmonary vasodilator (epoprostenol or iNO) as oxygenation bridge</li>
             <li>Consider ECMO referral if P/F &lt;80 for &gt;6 hours or pH &lt;7.20 with Pplat &gt;30 despite above</li>
           </ol>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Electrical Impedance Tomography (EIT)</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            EIT is a non-invasive, radiation-free bedside monitoring adjunct for regional lung ventilation. A belt of 16–32 electrodes is placed around the thorax (usually at the 4th–6th intercostal space); a small, imperceptible alternating current is injected sequentially between electrode pairs and the resulting surface voltages are used to reconstruct a real-time cross-sectional image. Because aerated lung is a poor conductor, cyclical impedance changes track regional gas entry/exit and can be mapped to give a functional image of ventilation (and, with some algorithms, perfusion) distribution breath-by-breath.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            <strong>Applications:</strong> individualised <em>PEEP titration</em> to find the level that minimises the co-existing burden of tidal overdistension (non-dependent regions) and collapse/atelectasis (dependent regions) rather than relying on population-based FiO₂/PEEP tables; assessing the response to <em>recruitment manoeuvres</em> in real time; quantifying <em>regional tidal volume distribution</em> and asymmetry (e.g. unilateral lung disease, one-lung ventilation); guiding and confirming benefit from <em>prone positioning</em> by showing redistribution of ventilation to previously dependent regions; and rapid bedside detection of <em>pneumothorax</em> or endobronchial intubation from a sudden regional loss of ventilation signal.<InlineRef topicId="mechanical-ventilation" refLabel="ESICM ARDS 2023" /><InlineRef topicId="mechanical-ventilation" refLabel="ESICM ARDS 2023 (Full guideline PDF)" />
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            <strong>Limitations:</strong> device availability and cost restrict use to specialist centres; interpretation requires training and experience, and there is no universally standardised protocol for PEEP titration by EIT; the technique images only a single transverse thoracic slice and cannot assess more cranial or caudal lung regions; and image quality is degraded by patient movement, obesity, chest wall oedema, surgical dressings/drains, and electrode contact issues.
+          </p>
           </CollapsibleSubsection>
         </ExamSection>
 
@@ -1413,7 +1472,7 @@ const MechanicalVentilationTopic = () => {
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
           <CollapsibleSubsection title="Post-Intensive Care Syndrome (PICS)">
           <p className="text-muted-foreground leading-relaxed mb-3">
-            PICS describes the new or worsening impairments in <span className="font-semibold text-foreground">physical, cognitive, and psychological</span> health that persist after critical illness. First defined by the Society of Critical Care Medicine (2012), it affects <span className="font-semibold text-foreground">50–70%</span> of ICU survivors and significantly reduces quality of life for months to years. <span className="font-semibold text-foreground">PICS-Family (PICS-F)</span> recognises the psychological burden on caregivers.
+            PICS describes the new or worsening impairments in <span className="font-semibold text-foreground">physical, cognitive, and psychological</span> health that persist after critical illness. First defined by the Society of Critical Care Medicine (2012)<InlineRef topicId="mechanical-ventilation" refLabel="SCCM PICS 2012" />, it affects <span className="font-semibold text-foreground">50–70%</span> of ICU survivors and significantly reduces quality of life for months to years. <span className="font-semibold text-foreground">PICS-Family (PICS-F)</span> recognises the psychological burden on caregivers.
           </p>
 
           <h3 className="text-lg font-semibold text-foreground mb-2">The Three Domains of PICS</h3>
@@ -1435,7 +1494,7 @@ const MechanicalVentilationTopic = () => {
               <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
                 <li><span className="font-semibold text-foreground">Prevalence:</span> 25–80% of ICU survivors at hospital discharge; 20–40% persist at 1 year (Pandharipande et al., 2013 — BRAIN-ICU study).</li>
                 <li><span className="font-semibold text-foreground">Deficits:</span> Executive function, memory, attention, processing speed, and visuospatial ability. Severity comparable to mild traumatic brain injury or early Alzheimer's disease.</li>
-                <li><span className="font-semibold text-foreground">Risk factors:</span> Delirium duration (strongest predictor — each additional day increases cognitive impairment risk), hypoxia, hypotension, dysglycaemia, sepsis, and pre-existing cognitive reserve.</li>
+                <li><span className="font-semibold text-foreground">Risk factors:</span> Delirium duration (strongest predictor — each additional day increases cognitive impairment risk), hypoxia, hypotension, dysglycaemia, sepsis, and pre-existing cognitive reserve.<InlineRef topicId="mechanical-ventilation" refLabel="Crit Care Med 2010 (Delirium & cognition)" /></li>
                 <li><span className="font-semibold text-foreground">BRAIN-ICU:</span> Longer delirium duration was independently associated with worse global cognition at 3 and 12 months, irrespective of sedative exposure or age.</li>
                 <li><span className="font-semibold text-foreground">Assessment:</span> Montreal Cognitive Assessment (MoCA), Mini-Mental State Examination (MMSE), neuropsychological testing battery for detailed assessment.</li>
               </ul>

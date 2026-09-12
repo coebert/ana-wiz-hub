@@ -8,6 +8,7 @@ import ContrastReactionDiagram from "@/components/diagrams/clinical/ContrastReac
 import tipssIllustration from "@/assets/ir/tipss-procedure.jpg";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const interventionalRadiologyFaqs: Array<[string, string]> = [
   [
@@ -113,6 +114,55 @@ const InterventionalRadiologyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="mri-anaesthesia" exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Anaesthesia in the MRI Suite">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              MRI anaesthesia carries hazards distinct from other IR settings, governed by <InlineRef topicId="interventional-radiology" refLabel="Assoc Anaesth MRI 2021" />. The scanner room is divided into <strong className="text-foreground">four zones</strong> with progressively restricted access, from Zone 1 (public) through Zone 4 (the scanner room itself), and only appropriately screened and trained staff should enter Zone 3/4.
+            </p>
+            <div className="bg-card border border-border rounded-lg p-4 mb-3">
+              <h3 className="font-semibold text-foreground mb-2">Static Field Hazards</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li><strong className="text-foreground">Projectile effect</strong> — ferromagnetic objects (oxygen cylinders, laryngoscopes, drug trolleys) can be violently attracted into the bore</li>
+                <li>Torque and heating of ferromagnetic implants (aneurysm clips, some prostheses)</li>
+                <li>Device malfunction in pacemakers, ICDs and neurostimulators — reprogramming, inappropriate pacing/shock, or inhibition</li>
+                <li>Any implanted device must be checked as MR-conditional and scanned within its approved conditions before entry</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4 mb-3">
+              <h3 className="font-semibold text-foreground mb-2">RF and Gradient Hazards</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>Radiofrequency energy causes tissue and lead heating — risk of skin and internal burns, particularly from looped cables, ECG leads or monitoring wires forming conductive loops</li>
+                <li>Gradient coil switching produces loud acoustic noise — ear protection is mandatory for patient and staff</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4 mb-3">
+              <h3 className="font-semibold text-foreground mb-2">Equipment Requirements</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>MR-conditional anaesthetic machine, monitors and syringe pumps sited within the approved field strength</li>
+                <li>Long breathing circuits and extended infusion/monitoring lines running from Zone 3 equipment through a waveguide</li>
+                <li>Non-ferrous laryngoscopes and aluminium/non-ferromagnetic gas cylinders only</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4 mb-3">
+              <h3 className="font-semibold text-foreground mb-2">Monitoring Challenges</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>ECG shows spike and T-wave artefact from gradient switching and the magnetohydrodynamic effect on flowing blood</li>
+                <li>Pulse oximetry is prone to interference and burn risk — use fibre-optic probes routed without loops</li>
+                <li>Capnography has a lag due to long sampling lines</li>
+                <li>Limited patient access and direct visualisation once inside the bore</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Emergency Planning</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>A rehearsed cardiac arrest protocol with immediate removal of the patient from Zone 4 to a designated resuscitation area outside the field</li>
+                <li>No ferromagnetic resuscitation equipment is taken into the scanner room</li>
+                <li><strong className="text-foreground">Quench</strong> (rapid loss of superconductivity, releasing helium gas) risks room asphyxia, cryogenic burns and a rapid pressure rise — know the location of the emergency quench button and door release</li>
+              </ul>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="contrast" exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Contrast Media Reactions">
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
@@ -143,16 +193,45 @@ const InterventionalRadiologyTopic = () => {
           <ExamSection id="radiation" exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Radiation Safety">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              All staff in the IR suite are exposed to ionising radiation. The <strong className="text-foreground">ALARA principle</strong> (As Low As Reasonably Achievable) guides practice.
+              All staff in the IR suite are exposed to ionising radiation. The <strong className="text-foreground">ALARA principle</strong> (As Low As Reasonably Achievable) guides practice, underpinned in the UK by <InlineRef topicId="interventional-radiology" refLabel="IR(ME)R 2017" /> which sets out duties for employers, referrers and practitioners in medical exposures.
             </p>
-            <div className="bg-card border border-border rounded-lg p-4">
-              <h3 className="font-semibold text-foreground mb-2">Radiation Protection Measures</h3>
+            <div className="bg-card border border-border rounded-lg p-4 mb-3">
+              <h3 className="font-semibold text-foreground mb-2">Stochastic vs Deterministic Effects</h3>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                <li><strong className="text-foreground">Distance</strong> — inverse square law: doubling distance reduces exposure by 75%</li>
-                <li><strong className="text-foreground">Shielding</strong> — lead apron (0.5 mm Pb), thyroid shield, lead glasses</li>
-                <li><strong className="text-foreground">Time</strong> — minimise time near the radiation source</li>
-                <li><strong className="text-foreground">Monitoring</strong> — personal dosimeter (TLD or electronic); pregnant staff need additional limits</li>
-                <li>Annual dose limits: whole body 20 mSv; lens of eye 20 mSv; extremities 500 mSv</li>
+                <li><strong className="text-foreground">Stochastic effects</strong> — no threshold dose; probability (not severity) rises with dose — malignancy, heritable genetic effects</li>
+                <li><strong className="text-foreground">Deterministic effects</strong> — require a threshold dose to be exceeded, then severity increases with dose — erythema and skin burns, epilation, cataract, tissue necrosis</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4 mb-3">
+              <h3 className="font-semibold text-foreground mb-2">Sources of Exposure</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li><strong className="text-foreground">Primary beam</strong> — direct exposure from the X-ray tube, highest intensity</li>
+                <li><strong className="text-foreground">Scatter</strong> — the dominant source of staff exposure, arising from the patient; greatest on the X-ray tube side of the table (versus the image-intensifier side)</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4 mb-3">
+              <h3 className="font-semibold text-foreground mb-2">Staff Dose Reduction</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li><strong className="text-foreground">Distance</strong> — inverse square law: doubling distance reduces exposure by 75%; stand on the image-intensifier side, step back during acquisitions, use remote contrast injectors</li>
+                <li><strong className="text-foreground">Shielding</strong> — ceiling-suspended lead screens, table-mounted lead skirts, lead aprons (0.35–0.5 mm lead-equivalent), thyroid shield, lead glasses</li>
+                <li><strong className="text-foreground">Monitoring</strong> — personal dosimeter badges; annual dose limit 20 mSv/year for classified workers; pregnancy must be declared promptly with a reduced fetal dose limit applied</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4 mb-3">
+              <h3 className="font-semibold text-foreground mb-2">Patient Dose Reduction</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>Pulsed rather than continuous fluoroscopy; low-dose modes and last-image-hold</li>
+                <li>Tight collimation of the beam; avoid unnecessary magnification (magnification markedly increases dose)</li>
+                <li>Keep the image intensifier as close to the patient as possible; minimise total screening time</li>
+                <li>Record dose-area product (DAP) and compare against diagnostic reference levels (DRLs)</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Units</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li><strong className="text-foreground">Absorbed dose</strong> — gray (Gy), energy deposited per unit mass</li>
+                <li><strong className="text-foreground">Equivalent and effective dose</strong> — sievert (Sv), weighted for radiation type and tissue sensitivity</li>
+                <li><strong className="text-foreground">Dose-area product</strong> — gray·centimetres² (Gy·cm²), reflecting both dose and exposed area</li>
               </ul>
             </div>
             </CollapsibleSubsection>
@@ -191,13 +270,41 @@ const InterventionalRadiologyTopic = () => {
                 <li>Post-embolisation syndrome: pain, fever, nausea — common and self-limiting</li>
               </ul>
             </div>
-            <div className="bg-card border border-border rounded-lg p-4">
+            <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">EVAR (Endovascular Aortic Repair)</h3>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                 <li>Elective EVAR: may be performed under local/regional anaesthesia with sedation</li>
                 <li>Emergency ruptured AAA: GA with invasive monitoring, cell salvage, massive transfusion protocol</li>
                 <li>Permissive hypotension (systolic 70–80 mmHg) until aortic balloon/stent deployed</li>
                 <li>Complications: endoleak, renal artery occlusion, limb ischaemia, contrast nephropathy</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Interventional Neuroradiology</h3>
+              <p className="text-sm text-muted-foreground mb-2">
+                Anaesthesia for endovascular neurointervention requires close cooperation with the neuroradiologist, per <InlineRef topicId="interventional-radiology" refLabel="Anesthesiol Clin 2012 (INR)" />.
+              </p>
+              <h4 className="font-medium text-foreground mt-3 mb-1 text-sm">Aneurysm Coiling</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>GA versus conscious sedation — GA gives absolute immobility for precise coil deployment, but limits neurological monitoring</li>
+                <li>Tight blood pressure control throughout; heparinisation with activated clotting time (ACT) monitoring once access is achieved</li>
+                <li>Adenosine-induced transient flow arrest, or controlled hypotension, may be used to aid deployment in wide-necked or complex aneurysms</li>
+                <li>Intraprocedural rupture: reverse heparin with protamine, control ICP, mannitol/hypertonic saline, prepare for EVD, deepen anaesthesia and support rapid coil deployment to seal the rupture; plan for urgent CT and ICU admission</li>
+                <li>Post-procedure vasospasm managed with nimodipine, maintaining euvolaemia, with intra-arterial vasodilators considered for refractory cases</li>
+              </ul>
+              <h4 className="font-medium text-foreground mt-3 mb-1 text-sm">AVM Embolisation</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>Usually performed under GA for immobility during glue or Onyx embolisation</li>
+                <li>Risk of normal perfusion pressure breakthrough — sudden redistribution of flow into previously hypoperfused adjacent brain causing oedema and haemorrhage</li>
+                <li>Large AVMs are often treated in staged procedures; controlled blood pressure and a smooth, controlled emergence minimise haemorrhage risk</li>
+                <li>Provocative testing and awake mapping may be needed where eloquent cortex is at risk, requiring a sedation technique compatible with neurological testing</li>
+              </ul>
+              <h4 className="font-medium text-foreground mt-3 mb-1 text-sm">Carotid Artery Stenting</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>Typically local anaesthesia/sedation with invasive arterial monitoring, allowing continuous neurological assessment</li>
+                <li>Carotid sinus stimulation during balloon angioplasty/stent deployment causes bradycardia and hypotension — have atropine or glycopyrronium prepared</li>
+                <li>Risk of distal embolisation and stroke — mitigated with cerebral protection devices</li>
+                <li>Watch for post-procedure hyperperfusion syndrome — strict blood pressure targets and close postoperative neurological observation are required</li>
               </ul>
             </div>
             </CollapsibleSubsection>

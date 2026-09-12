@@ -11,6 +11,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { Link } from "react-router-dom";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const clinicalIncidentsFaqs: Array<[string, string]> = [
   [
@@ -112,6 +113,7 @@ const tocItems = [
   { id: "section-last", label: "LAST", group: "Incidents" },
   { id: "section-awareness", label: "Accidental Awareness", group: "Incidents" },
   { id: "section-death-on-table", label: "Death on the Table", group: "Incidents" },
+  { id: "section-cico", label: "Cannot Intubate, Cannot Oxygenate", group: "Incidents" },
 ];
 
 const ClinicalIncidentsTopic = () => {
@@ -159,7 +161,7 @@ const ClinicalIncidentsTopic = () => {
         { text: "MH: rising EtCO₂ + tachycardia is the earliest sign. Dantrolene 2.5 mg/kg IV, repeat to 10 mg/kg", cites: ["AAGBI 2011"] },
         { text: "LAST: Intralipid 20% bolus 1.5 mL/kg, infusion 15 mL/kg/h. AVOID propofol, lidocaine, and amiodarone in arrest", cites: ["BJA Educ 2011"] },
         { text: "Awareness: NAP5 incidence ~1:19,000. BIS 40-60 reduces risk in TIVA; document, acknowledge, and refer for psychological follow-up", cites: ["NAP Reports"] },
-        { text: "NMBAs cause ~60% of perioperative anaphylaxis (NAP6). Chlorhexidine and antibiotics are next commonest", cites: ["AAGBI 2009"] },
+        { text: <>NMBAs cause ~38% of perioperative anaphylaxis (NAP6), followed by antibiotics (26%) and chlorhexidine (9%) <InlineRef topicId="clinical-incidents" refLabel="NAP6 2018 (Triggers)" /></>, cites: ["AAGBI 2009"] },
       ]}
       coreConcepts={
         <>
@@ -231,9 +233,32 @@ const ClinicalIncidentsTopic = () => {
 
           <ExamSection id="section-awareness" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Accidental Awareness Under Anaesthesia">
-            <p className="text-muted-foreground leading-relaxed">
-              NAP5 (2014): incidence ~1:19,000. Risk factors: TIVA without BIS, RSI, cardiac surgery, CS under GA, junior anaesthetist, failure to check equipment. Prevention: processed EEG monitoring (BIS 40–60), end-tidal agent monitoring for volatiles, avoid paralysis unless necessary. Management: immediate acknowledgement, psychological support, formal follow-up.
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              The <strong>5th National Audit Project (NAP5, 2014)</strong> found an incidence of accidental awareness of roughly <strong>1:19,000</strong> general anaesthetics overall, with the highest rates during rapid sequence induction, obstetric GA, cardiac surgery, and TIVA without processed EEG monitoring. Around <strong>50% of reports involved significant distress</strong>, most characteristically the sensation of paralysis combined with helplessness — patients could hear, sometimes feel pain or surgical manipulation, but could not move or signal. A substantial minority go on to develop longer-term psychological harm: of those who reported distress, approximately <strong>41% described features consistent with PTSD</strong>, sometimes persisting for years <InlineRef topicId="clinical-incidents" refLabel="NAP5 2014" />.
             </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-1">Prevention</p>
+                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                  <li>End-tidal anaesthetic agent monitoring with low-agent alarms for all volatile-based anaesthesia.</li>
+                  <li>Processed EEG (e.g. BIS 40–60) strongly advised whenever TIVA is combined with neuromuscular blockade, where there is no volatile agent to monitor.</li>
+                  <li>Routine vaporiser level and anaesthetic delivery-system checks before and during the case (empty vaporiser, disconnected TIVA line, and IV extravasation are recurrent NAP5 themes).</li>
+                  <li>Extra vigilance at handover/transfer and during the high-risk periods of RSI and emergence, when neuromuscular blockade may outlast hypnosis.</li>
+                  <li>Use of a nerve stimulator to confirm adequate neuromuscular blockade and guide safe reversal.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-1">Post-event management (NAP5 framework)</p>
+                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                  <li>Immediate acknowledgement and sympathy — believe the patient, do not dismiss the report.</li>
+                  <li>Early senior anaesthetist review with a detailed explanation of what is known and a genuine apology (Duty of Candour).</li>
+                  <li>Referral to clinical psychology for assessment and support.</li>
+                  <li>Careful, structured documentation of the history and any contributory factors identified.</li>
+                  <li>Local incident reporting (Datix) to drive learning and system change.</li>
+                  <li>Planned follow-up appointment(s) to review recovery and screen for PTSD.</li>
+                </ul>
+              </div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -248,7 +273,7 @@ const ClinicalIncidentsTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li><strong>Call for help early</strong> — declare "cardiac arrest" out loud; activate theatre arrest call; second anaesthetist + ODP/anaesthetic assistant to the head; runner for drugs/blood.</li>
                 <li><strong>ALS algorithm adapted to theatre</strong>: turn off volatile/TIVA, FiO₂ 1.0, confirm ETT position with ETCO₂ (a sudden ETCO₂ drop is often the first sign), high-quality CPR — surgeons stop and step back from the field; consider open chest cardiac massage in cardiothoracic / abdominal surgery already opened.</li>
-                <li><strong>Reversible causes (4 Hs &amp; 4 Ts) with anaesthesia-specific add-ons</strong>: anaphylaxis (give IM/IV adrenaline early), LAST (Intralipid 20% 1.5 mL/kg bolus + 0.25 mL/kg/min), MH (stop trigger, dantrolene), high spinal, gas embolism, haemorrhage, vagal reflex (e.g. peritoneal traction), tension pneumothorax (especially after CVC, brachial plexus, intercostal block), tamponade.</li>
+                <li><strong>Reversible causes (4 Hs &amp; 4 Ts) with anaesthesia-specific add-ons</strong>: anaphylaxis (give IM/IV adrenaline early), LAST (Intralipid 20% 1.5 mL/kg bolus then 15 mL/kg/h), MH (stop trigger, dantrolene), high spinal, gas embolism, haemorrhage, vagal reflex (e.g. peritoneal traction), tension pneumothorax (especially after CVC, brachial plexus, intercostal block), tamponade.</li>
                 <li><strong>Surgical control of haemorrhage</strong> takes priority alongside resuscitation — activate major haemorrhage protocol, give TXA, use cell salvage, accept permissive hypotension until source controlled.</li>
                 <li><strong>Decision to stop</strong>: by consensus of the senior anaesthetist and senior surgeon, after exclusion of reversible causes and an adequate ALS effort. Document time of death, rhythm, and last interventions.</li>
               </ul>
@@ -277,12 +302,23 @@ const ClinicalIncidentsTopic = () => {
                 <li><strong>Mortality &amp; Morbidity meeting</strong> in the department; anonymised case discussion within 4–6 weeks.</li>
               </ul>
 
-              <h3 className="text-base font-semibold text-foreground mt-3">5. Staff welfare &amp; second-victim support</h3>
+              <h3 className="text-base font-semibold text-foreground mt-3">5. Non-technical skills during the arrest</h3>
+              <p className="text-sm">
+                Outcomes from critical incidents are shaped as much by <strong>non-technical skills</strong> as by technical resuscitation knowledge <InlineRef topicId="clinical-incidents" refLabel="BJA 2006 (Non-technical skills)" />.
+              </p>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Recognise the <strong>"second victim"</strong> phenomenon — anaesthetists, ODPs, scrub teams and surgeons commonly suffer acute stress, sleep disturbance, intrusive recollection and loss of confidence.</li>
-                <li>Offer <strong>structured peer support</strong> (e.g. AAGBI/Royal College mentor, TRiM, occupational health). Avoid mandatory single-session psychological debriefing — evidence suggests it does not reduce PTSD.</li>
-                <li>Consider time off from clinical duties; do not allow the involved anaesthetist to be the sole clinician for the next case.</li>
-                <li>Provide ongoing follow-up — anniversary of the event, inquest preparation, Coroner's hearing support, GMC/legal advice via the medical defence organisation.</li>
+                <li><strong>Leadership and explicit role allocation</strong>: one clinician declares themselves CPR leader and stands back from hands-on tasks to direct; nominate a <strong>scribe</strong> to log times/drugs/rhythm and a <strong>runner</strong> for equipment and blood products. Ambiguous or absent leadership is a recurring theme in incident reports.</li>
+                <li><strong>Situational awareness</strong>: the leader should continuously scan the surgical field (ongoing blood loss, surgical manipulation), physiological trends on the monitor (not just the current number), and the state of the team (fatigue, task fixation, rising stress).</li>
+                <li><strong>Closed-loop communication</strong>: instructions are directed at a named individual, acknowledged back, and confirmed once complete (e.g. "give 1 mg adrenaline" → "giving 1 mg adrenaline now" → "1 mg adrenaline given"). This reduces omitted or duplicated interventions.</li>
+                <li><strong>Structured hot debrief</strong> immediately after the event, using a simple framework such as <strong>STOP5</strong> (Summarise, Things that went well, Opportunities to improve, Points to action, Set a follow-up date) or a <strong>diamond debrief</strong> (facts → feelings → future actions, widening from the individual to the team). Keep it brief, blame-free, and focused on systems.</li>
+              </ul>
+
+              <h3 className="text-base font-semibold text-foreground mt-3">6. Staff welfare &amp; second-victim support</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Recognise the <strong>"second victim" phenomenon</strong> in detail — the involved clinician(s) themselves become a casualty of the event, with acute stress reactions, sleep disturbance, intrusive recollection, guilt, loss of confidence, and risk of subsequent defensive practice or burnout. This can affect anaesthetists, ODPs, scrub staff, and surgeons alike, and may be underestimated by colleagues.</li>
+                <li>Offer <strong>structured peer support</strong>, including formal <strong>TRiM (Trauma Risk Management)</strong> assessment where available, an AAGBI/Royal College mentor scheme, and occupational health referral. Avoid mandatory single-session psychological debriefing ("psychological first aid" delivered as a one-off) — evidence suggests this does not reduce, and may worsen, PTSD risk; support should instead be proactive, staged, and opt-in.</li>
+                <li><strong>Proactive departmental support</strong>: the department (not just the individual) should check in with all staff involved within 24–48 h, again at 1–2 weeks, and around key dates (inquest, anniversary). Do not allow the involved anaesthetist to be the sole clinician for the next case; consider time off from clinical duties.</li>
+                <li>Provide ongoing follow-up and signposting — inquest preparation, Coroner's hearing support, GMC/legal advice via the medical defence organisation, and access to formal counselling or psychology services if symptoms persist beyond a few weeks.</li>
               </ul>
 
               <h3 className="text-base font-semibold text-foreground mt-3">Key references</h3>
@@ -292,12 +328,34 @@ const ClinicalIncidentsTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <ExamSection id="section-cico" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
+            <CollapsibleSubsection title="Cannot Intubate, Cannot Oxygenate (CICO)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              CICO is defined as failed tracheal intubation <strong>plus</strong> failure to oxygenate — e.g. SpO₂ &lt; 90% on FiO₂ 1.0 despite optimised face-mask ventilation and at least one attempt with a supraglottic airway device. It is a "can't breathe" surgical airway emergency and demands immediate front-of-neck access (FONA) rather than repeated intubation attempts <InlineRef topicId="clinical-incidents" refLabel="DAS 2015 (CICO)" />.
+            </p>
+            <div className="rounded-xl border border-border bg-card p-5 space-y-2">
+              <p className="font-semibold text-foreground text-sm">Sequence of actions</p>
+              <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
+                <li><strong>Declare "CICO" out loud</strong> and call for help — second anaesthetist and ENT/surgical colleague to attend immediately.</li>
+                <li><strong>Position</strong> the neck extended (unless contraindicated) to optimise access to the cricothyroid membrane.</li>
+                <li>Make one <strong>final attempt</strong> at oxygenation (optimised SGA or facemask with two-person technique, airway adjuncts) only while FONA equipment is being opened and prepared in parallel — do not delay FONA waiting for this to succeed.</li>
+                <li><strong>Scalpel–bougie–tube technique</strong>: palpate or use the laryngeal handshake to identify the cricothyroid membrane; make a transverse stab incision through skin and membrane; rotate the scalpel blade 90° caudally to open the tract; pass a bougie through the incision, angled caudally, into the trachea; railroad a size 6.0 cuffed tracheal tube over the bougie; inflate the cuff; ventilate; confirm placement with capnography and bilateral chest movement.</li>
+                <li>If the cricothyroid membrane is <strong>impalpable</strong> (e.g. obesity, distorted anatomy), make a vertical skin incision first, then use blunt finger dissection down to the trachea before proceeding with the scalpel–bougie–tube technique.</li>
+              </ol>
+            </div>
+            <div className="mt-3 p-4 rounded-lg bg-destructive/5 border border-destructive/20">
+              <p className="font-semibold text-foreground text-sm">After a successful FONA</p>
+              <p className="text-sm text-muted-foreground mt-1">Secure the tube carefully, arrange ICU admission and ENT review for formal airway assessment and possible surgical tracheostomy, formulate a definitive airway plan for extubation, document the event and technique in detail, explain to the patient, and issue a written airway alert (and register with a national difficult-airway database where available).</p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
-              "Anaphylaxis (NAP6): NMBDs, antibiotics and chlorhexidine top the list — adrenaline IM 0.5 mg first line; mast-cell tryptase at 1, 4 and 24 h.",
+              "Anaphylaxis (NAP6): NMBAs (38%), antibiotics (26%) and chlorhexidine (9%) top the list — adrenaline IM 0.5 mg first line.",
+              <>Tryptase sampling: ASAP after resuscitation, at 1–2 h, and a baseline at ≥ 24 h — an uninterpretable acute value without the 24 h baseline is a common exam trap <InlineRef topicId="clinical-incidents" refLabel="RCUK Anaphylaxis 2021" /></>,
               "Malignant hyperthermia: stop trigger, hyperventilate 100% O₂ high flows, dantrolene 2.5 mg/kg repeated to 10 mg/kg, cool, treat hyperkalaemia.",
-              "LAST: stop injection, ABC, manage seizures, 20% Intralipid 1.5 mL/kg bolus + 0.25 mL/kg/min infusion (AAGBI).",
+              <>LAST: stop injection, ABC, manage seizures, 20% Intralipid 1.5 mL/kg bolus then 15 mL/kg/h infusion (max cumulative 12 mL/kg) <InlineRef topicId="clinical-incidents" refLabel="AAGBI LAST 2010" /></>,
               "Accidental awareness (NAP5): risk highest with TIVA + NMB; use processed EEG; debrief and refer for psychological support.",
               "Cannot intubate, cannot oxygenate: declare CICO, call for help, scalpel-bougie-tube cricothyroidotomy without delay.",
             ]}

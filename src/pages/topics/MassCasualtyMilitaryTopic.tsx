@@ -8,6 +8,7 @@ import { Exam } from "@/data/curriculum";
 import { MajorIncidentTriageDiagram } from "@/components/diagrams/clinical/MajorIncidentTriageDiagram";
 import { MilitaryRolesFlowDiagram } from "@/components/diagrams/clinical/MilitaryRolesFlowDiagram";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import InlineRef from "@/components/references/InlineRef";
 
 const massCasualtyMilitaryFaqs: Array<[string, string]> = [
   [
@@ -193,24 +194,100 @@ const MassCasualtyMilitaryTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="triage-ethics" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Ethical Principles of Triage">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Major-incident triage requires a deliberate shift from the everyday duty of individual patient advocacy
+              towards a utilitarian, public-health ethic: the goal becomes the greatest good for the greatest number.
+              "Save the most lives" may override sickest-first or first-come-first-served norms of routine practice <InlineRef topicId="mass-casualty-military" refLabel="FICM Major Incident Ethics" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Duty to care</strong> — obligation to respond and treat persists, but is balanced against duties to the wider casualty population</li>
+              <li><strong>Equity of access</strong> — resources allocated by clinical need and chance of benefit, not by queue position, status or ability to pay</li>
+              <li><strong>Proportionality</strong> — the restriction of normal individual care (e.g. withholding resource-intensive intervention) must be proportionate to the scale of the resource shortfall</li>
+              <li><strong>Reciprocity</strong> — a system obligation to support staff who make and carry out these decisions (welfare, indemnity, debrief)</li>
+              <li><strong>Transparency</strong> — triage criteria and decision-making process should be explicit, pre-agreed and open to scrutiny, not ad hoc</li>
+              <li><strong>Consistency</strong> — the same criteria applied to all casualties regardless of who they are</li>
+            </ul>
+            <p className="text-muted-foreground leading-relaxed mt-3">
+              Categorising a casualty as P4/expectant is one of the most ethically weighty decisions in a major incident.
+              It should be made and documented by a senior team (not a single individual acting alone), remains reviewable
+              and reversible as resources or casualty numbers change, and does not discharge the obligation to provide
+              analgesia and palliative care to expectant patients <InlineRef topicId="mass-casualty-military" refLabel="GMC Good Medical Practice 2024" />.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mt-3">
+              Robust documentation and audit of triage decisions protect both patients and staff and support learning.
+              Moral distress among staff who must apply population-level rationing is a recognised occupational hazard —
+              anticipate it, name it, and build in hot and cold debrief and welfare support as part of the response plan.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="crm" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 11"]}>
             <CollapsibleSubsection title="Crisis Resource Management (CRM)">
             <p className="text-muted-foreground leading-relaxed mb-3">
               CRM (Gaba, Rall, Howard) translates aviation human-factors science into the operating theatre and ICU.
               In a mass-casualty event, technical skill is rarely the bottleneck — coordination, communication and cognition are.
+              These are observable, assessable behaviours (analogous to the ANTS non-technical skills framework), not abstract theory <InlineRef topicId="mass-casualty-military" refLabel="Gaba CRM 2015" />.
             </p>
-            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li><strong>Know the environment</strong> — equipment, drugs, who is in the room and their capability</li>
-              <li><strong>Anticipate and plan</strong>; verbalise the plan; "share the mental model"</li>
-              <li><strong>Call for help early</strong> — the senior, the porter, the runner, blood bank, theatres</li>
-              <li><strong>Leadership &amp; followership</strong>: clear leader (hands-off when possible), explicit role allocation by name</li>
-              <li><strong>Communicate effectively</strong>: closed-loop ("give 1 g TXA" → "1 g TXA given"), SBAR, no ambiguity</li>
-              <li><strong>Distribute workload</strong>; allocate the cognitive task to the leader, technical tasks to the team</li>
-              <li><strong>Use all available information</strong> (monitors, labs, history) and cross-check</li>
-              <li><strong>Mobilise resources</strong>: cognitive aids (checklists, action cards), pre-prepared kit, mass-haemorrhage proformas</li>
-              <li><strong>Re-evaluate</strong> repeatedly; avoid fixation error; "Is the patient getting better?"</li>
-              <li><strong>Hot &amp; cold debrief</strong>: psychological safety, learning not blaming, document for governance</li>
-            </ul>
+            <div className="space-y-3">
+              {[
+                {
+                  principle: "Leadership",
+                  good: "One named leader declared aloud, stays hands-off to retain overview, makes and owns decisions.",
+                  poor: "No declared leader; the most senior person scrubs in and loses situational overview; decisions drift or are duplicated.",
+                },
+                {
+                  principle: "Role allocation",
+                  good: "Explicit, named roles (\"you — airway; you — IV access and bloods; you — scribe\") assigned before the casualty arrives.",
+                  poor: "Ambiguous \"someone should...\" instructions; several staff attempt the same task while others are neglected.",
+                },
+                {
+                  principle: "Communication (closed-loop)",
+                  good: "\"Give 1 g TXA now\" → \"1 g TXA given\" spoken back and confirmed; SBAR used for handover.",
+                  poor: "Instructions shouted into the room with no name attached; no confirmation that a drug or task was actually completed.",
+                },
+                {
+                  principle: "Situational awareness (10-for-10)",
+                  good: "Leader calls a deliberate 10-second pause every 10 minutes to step back, summarise progress and re-plan.",
+                  poor: "Continuous task-focus with no scheduled pause; fixation on one casualty while others deteriorate unnoticed.",
+                },
+                {
+                  principle: "Resource allocation",
+                  good: "Blood products, theatres and staff tracked on a whiteboard and actively redirected to the sickest survivable casualties.",
+                  poor: "First-come-first-served use of blood/theatre capacity with no overview of competing demand elsewhere.",
+                },
+                {
+                  principle: "Task distribution / workload management",
+                  good: "Cognitive tasks (planning, prioritising) kept with the leader; technical tasks delegated to the team, matched to competence.",
+                  poor: "The leader also tries to cannulate, intubate and document — cognitive overload, missed developments elsewhere.",
+                },
+                {
+                  principle: "Verbalising the mental model",
+                  good: "Leader states the plan aloud (\"we are treating this as haemorrhagic shock, aiming for permissive hypotension, theatre is being prepared\") so the whole team shares it.",
+                  poor: "Plan exists only in the leader's head; team members act on their own assumptions, leading to conflicting actions.",
+                },
+                {
+                  principle: "Re-evaluation",
+                  good: "Repeated, explicit reassessment: \"is the patient getting better?\"; triage category and plan revised as physiology changes.",
+                  poor: "Initial diagnosis or triage category treated as fixed; deterioration missed because no one re-assessed.",
+                },
+                {
+                  principle: "Calling for help",
+                  good: "Help requested early and specifically (named senior, blood bank, second surgeon) before the situation is unrecoverable.",
+                  poor: "Help sought only once the team is overwhelmed, or not sought at all due to perceived loss of face.",
+                },
+              ].map(row => (
+                <div key={row.principle} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{row.principle}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed"><span className="text-foreground font-medium">Good practice:</span> {row.good}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed"><span className="text-foreground font-medium">Poor practice:</span> {row.poor}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-muted-foreground leading-relaxed mt-3">
+              Debrief (hot immediately, cold later) should explicitly assess these behaviours alongside clinical outcomes: psychological safety, learning rather than blaming, and documentation for governance.
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 
