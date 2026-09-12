@@ -14,6 +14,16 @@ const s = {
   radiation: { label: "BJA Educ: radiation safety", href: "https://doi.org/10.1093/bjaed/mkv055" },
   irmer: { label: "IR(ME)R 2017", href: "https://www.legislation.gov.uk/uksi/2017/1322/contents/made" },
   arterialLine: { label: "BJA: arterial pressure measurement", href: "https://doi.org/10.1016/j.bjae.2020.06.047" },
+  cardiacOutput: { label: "BJA Educ: cardiac output monitoring", href: "https://doi.org/10.1016/j.bjae.2020.06.001" },
+  gasLaws: { label: "BJA Educ: physical principles of gas storage", href: "https://doi.org/10.1093/bjaceaccp/mkl047" },
+  breathingCircuits: { label: "BJA Educ: breathing circuits and soda lime", href: "https://doi.org/10.1093/bjaceaccp/mki063" },
+  temperature: { label: "NICE NG65: hypothermia prevention", href: "https://www.nice.org.uk/guidance/cg65" },
+  ultrasoundVascular: { label: "BJA Educ: ultrasound-guided vascular access", href: "https://doi.org/10.1016/j.bjae.2019.11.002" },
+  humidification: { label: "BJA Educ: humidification and HMEs", href: "https://doi.org/10.1093/bjaceaccp/mkm001" },
+  scavenging: { label: "APSF/HSE: anaesthetic gas scavenging", href: "https://www.hse.gov.uk/pubns/priced/hsg137.pdf" },
+  defibrillation: { label: "Resuscitation Council UK: defibrillation", href: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/adult-advanced-life-support-guidelines" },
+  vaporiserSafety: { label: "BJA Educ: vaporisers", href: "https://doi.org/10.1093/bjaceaccp/mki016" },
+  centralLine: { label: "NICE IPG411: ultrasound-guided catheterisation", href: "https://www.nice.org.uk/guidance/ipg411" },
 };
 
 export const physicsCaseBank: CaseBank = {
@@ -21,7 +31,7 @@ export const physicsCaseBank: CaseBank = {
   path: "/physics/case-bank",
   title: "Physics & Measurement Case Bank",
   subtitle: "Progressive scenarios in monitoring artefact, equipment safety and imaging hazards, built from the referenced physics topics.",
-  metaDescription: "Seven progressive physics and clinical measurement cases on oximetry error, capnography shapes, electrical and laser safety, MRI and radiation for FRCA revision.",
+  metaDescription: "Eighteen FRCA physics and clinical measurement cases: monitoring artefact, equipment safety, gas laws and imaging/radiation for exam revision.",
   backPath: "/physics",
   backLabel: "Physics & Clinical Measurement",
   accentColor: "text-physics",

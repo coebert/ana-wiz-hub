@@ -20,6 +20,10 @@ const s = {
   bnfc: { label: "BNF for Children: paracetamol", href: "https://bnfc.nice.org.uk/drugs/paracetamol/" },
   pris: { label: "Intensive Care Med: pathophysiology of propofol infusion syndrome", href: "https://doi.org/10.1007/s00134-003-1761-8" },
   padis: { label: "PADIS 2018 sedation, analgesia and delirium guideline", href: "https://doi.org/10.1097/CCM.0000000000003299" },
+  elderlyAssess: { label: "BJA Educ: preoperative assessment of the older patient", href: "https://doi.org/10.1016/j.bjae.2021.03.005" },
+  serotonin: { label: "BJA Educ: serotonin syndrome in the perioperative period", href: "https://doi.org/10.1016/j.bjae.2019.10.003" },
+  allergy: { label: "BJA Educ: allergy and anaesthesia, managing the risk", href: "https://doi.org/10.1016/j.bjae.2020.04.005" },
+  liverDisease: { label: "BJA Educ: perioperative management of patients with liver disease", href: "https://doi.org/10.1016/j.bjae.2021.11.006" },
 };
 
 export const pharmacologyCaseBank: CaseBank = {
@@ -27,7 +31,7 @@ export const pharmacologyCaseBank: CaseBank = {
   path: "/pharmacology/case-bank",
   title: "Pharmacology Case Bank",
   subtitle: "Progressive scenarios that apply kinetics, dynamics and drug-specific safety to real decisions.",
-  metaDescription: "Twelve progressive pharmacology cases on TIVA kinetics, opioid tolerance, malignant hyperthermia, local anaesthetic toxicity, reversal and ICU sedation.",
+  metaDescription: "Eighteen progressive pharmacology cases on TIVA kinetics, volatile agents, opioid tolerance, malignant hyperthermia, serotonin syndrome, TDM and NMB anaphylaxis.",
   backPath: "/pharmacology",
   backLabel: "Pharmacology",
   accentColor: "text-pharmacology",

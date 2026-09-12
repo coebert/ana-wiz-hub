@@ -20,6 +20,9 @@ const s = {
   nicePreeclampsia: { label: "NICE NG133: hypertension in pregnancy", href: "https://www.nice.org.uk/guidance/ng133" },
   newbornLifeSupport: { label: "Resuscitation Council UK: newborn resuscitation and support of transition", href: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/newborn-resuscitation-and-support-transition-infants-birth" },
   liverCoag: { label: "NEJM: the coagulopathy of chronic liver disease", href: "https://doi.org/10.1056/NEJMra1011170" },
+  altitude: { label: "BJA Educ: humans at altitude", href: "https://doi.org/10.1093/bjaceaccp/mks047" },
+  myasthenia: { label: "BJA Educ: perioperative management of myasthenia gravis", href: "https://doi.org/10.1016/j.bjae.2021.07.001" },
+  cerebralCO2: { label: "Anesthesiology: regulation of cerebral autoregulation by carbon dioxide", href: "https://doi.org/10.1097/ALN.0000000000000506" },
 };
 
 export const physiologyCaseBank: CaseBank = {
@@ -27,11 +30,11 @@ export const physiologyCaseBank: CaseBank = {
   path: "/physiology/case-bank",
   title: "Physiology Case Bank",
   subtitle: "Progressive scenarios that apply cardiovascular, respiratory, renal, maternal, hepatic, neuromuscular and autonomic physiology at the bedside.",
-  metaDescription: "Twelve progressive physiology cases covering cardiovascular, respiratory, renal, maternal, neonatal and hepatic physiology for FRCA and FFICM revision.",
+  metaDescription: "Eighteen physiology cases covering cardiovascular, respiratory, renal, neurological, maternal, neonatal and hepatic physiology for FRCA/FFICM revision.",
   backPath: "/physiology",
   backLabel: "Physiology",
   accentColor: "text-physiology",
-  categories: ["Cardiovascular", "Respiratory", "Renal, neuromuscular & autonomic", "Maternal & neonatal", "Hepatic & metabolic"],
+  categories: ["Cardiovascular", "Respiratory", "Renal, neuromuscular & autonomic", "Neurological", "Maternal & neonatal", "Hepatic & metabolic"],
   cases: [
     {
       id: "physiology-aortic-stenosis",
