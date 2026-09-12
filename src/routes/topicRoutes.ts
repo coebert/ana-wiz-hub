@@ -68,6 +68,7 @@ export const TOPIC_ROUTES: ReadonlyArray<readonly [string, string]> = [
   ["/physiology/autonomic-nervous", "AutonomicNervousTopic"],
   ["/physiology/maternal-physiology", "MaternalPhysiologyTopic"],
   ["/physiology/foetal-circulation", "FoetalCirculationTopic"],
+  ["/physiology/paediatric-physiology", "PaediatricPhysiologyTopic"],
   ["/physiology/hepatic-physiology", "HepaticPhysiologyTopic"],
   ["/physiology/starling-forces", "StarlingForcesTopic"],
   ["/physiology/gi-physiology", "GastrointestinalPhysiologyTopic"],

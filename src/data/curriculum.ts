@@ -88,6 +88,7 @@ export const physiologyTopics: Topic[] = [
   // Developmental physiology
   { id: "maternal-physiology", title: "Maternal Physiology", description: "Cardiovascular, respiratory, haematological and pharmacological changes in pregnancy", section: "physiology", examTags: ["primary", "final"], available: true },
   { id: "foetal-circulation", title: "Foetal Circulation", description: "Foetal shunts, HbF, transitional circulation, persistent pulmonary hypertension", section: "physiology", examTags: ["primary", "final"], available: true },
+  { id: "paediatric-physiology", title: "Paediatric Physiology", description: "Neonatal and infant cardiac output, oxygen consumption, ventilation and thermoregulation", section: "physiology", examTags: ["primary", "final"], available: true },
 ];
 
 export const pharmacologyTopics: Topic[] = [
