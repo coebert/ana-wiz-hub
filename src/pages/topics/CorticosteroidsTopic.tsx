@@ -16,7 +16,7 @@ const corticosteroidsFaqs: Array<[string, string]> = [
   ],
   [
     "When is perioperative steroid cover required and what regimen is used?",
-    "Required for patients on >5 mg prednisolone/day for >3 weeks (HPA suppression). Minor surgery (e.g. hernia): usual oral dose + 25 mg hydrocortisone IV at induction. Moderate surgery (e.g. colectomy): 25 mg at induction + 100 mg/day for 24 h. Major surgery/critically ill: 100 mg at induction + 200 mg/day for 48–72 h then taper. Continue maintenance dose throughout. Failure to cover risks Addisonian crisis: profound hypotension unresponsive to fluids/pressors, hyponatraemia, hyperkalaemia."
+    "Required for patients on >5 mg prednisolone/day for >3 weeks (HPA suppression). Minor surgery (e.g. hernia): usual oral dose + hydrocortisone 25 mg IV at induction. Moderate surgery (e.g. hemicolectomy): usual dose + 25 mg at induction then 100 mg over 24 h. Major surgery (e.g. laparotomy, cardiac surgery): usual dose + 50 mg at induction then 200 mg over 24 h, continued while the stress response persists then tapered. Continue maintenance dose throughout. Failure to cover risks Addisonian crisis: profound hypotension unresponsive to fluids/pressors, hyponatraemia, hyperkalaemia."
   ],
   [
     "What are the major side effects of long-term corticosteroids?",
@@ -41,17 +41,17 @@ const workedExamples: WorkedExample[] = [
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li><strong>Decide if HPA suppression is likely.</strong> Prednisolone ≥ 5 mg/day for &gt; 4 weeks → assume axis is suppressed.</li>
+          <li><strong>Decide if HPA suppression is likely.</strong> Prednisolone ≥ 5 mg/day for &gt; 3 weeks → assume axis is suppressed.</li>
           <li><strong>Convert to hydrocortisone equivalent.</strong> 10 mg prednisolone × 4 (potency) = 40 mg hydrocortisone equivalent (her endogenous output is essentially abolished).</li>
           <li><strong>Stratify the surgical stress.</strong> Hemicolectomy = MAJOR surgery (per AAGBI/AOMRC 2020).</li>
-          <li><strong>Prescribe.</strong> Continue usual prednisolone 10 mg PO morning of surgery + <strong>hydrocortisone 100 mg IV at induction</strong>, then <strong>200 mg/24 h infusion</strong> (or 50 mg IV 6-hourly) for 24 h. Wean to oral usual dose over 48–72 h.</li>
+          <li><strong>Prescribe.</strong> Continue usual prednisolone 10 mg PO morning of surgery + <strong>hydrocortisone 50 mg IV at induction</strong>, then <strong>200 mg/24 h</strong> (continuous infusion, or 50 mg IV 6-hourly) for 24 h. Wean to oral usual dose over 48–72 h.</li>
           <li><strong>Monitor.</strong> BP, glucose 4-hourly, U&amp;E daily. Watch for refractory hypotension → suspect adrenal crisis.</li>
         </ol>
         <p className="font-semibold text-foreground mt-2">Quick reference (AOMRC 2020)</p>
         <ul className="list-disc list-inside space-y-1">
-          <li>Minor (e.g. cataract): usual dose only.</li>
-          <li>Moderate (e.g. lap chole): 50 mg IV at induction → 25 mg 8-hourly × 24 h.</li>
-          <li>Major (e.g. laparotomy): 100 mg IV at induction → 200 mg/24 h × 24–48 h.</li>
+          <li>Minor (e.g. cataract, hernia): usual dose + hydrocortisone 25 mg IV at induction.</li>
+          <li>Moderate (e.g. lap chole, hemicolectomy): usual dose + hydrocortisone 25 mg IV at induction → 100 mg over 24 h.</li>
+          <li>Major (e.g. laparotomy, cardiac surgery): usual dose + hydrocortisone 50 mg IV at induction → 200 mg over 24 h, then wean as stress resolves.</li>
         </ul>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
@@ -64,7 +64,7 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer:
-      "Continue her usual prednisolone, give hydrocortisone 100 mg IV at induction and 200 mg/24 h for 24 h, then wean back to her baseline dose over 48–72 h. Monitor BP and glucose closely; treat any refractory hypotension as an Addisonian crisis with a 100 mg bolus.",
+      "Continue her usual prednisolone, give hydrocortisone 50 mg IV at induction and 200 mg over 24 h, then wean back to her baseline dose over 48–72 h. Monitor BP and glucose closely; treat any refractory hypotension as an Addisonian crisis with a 100 mg bolus.",
     cites: ["BJA Educ 2012"],
   },
   {
@@ -142,7 +142,7 @@ const CorticosteroidsTopic = () => {
       }}
       keyPoints={[
         { text: "Dexamethasone: 25× glucocorticoid potency of hydrocortisone, ZERO mineralocorticoid effect, long duration (36–72 h)", cites: ["AAGBI Steroid Cover"] },
-        { text: "HPA suppression likely if ≥ 5 mg prednisolone/day for &gt; 4 weeks — perioperative steroid cover needed (AAGBI/AOMRC 2020)", cites: ["BJA Educ 2012"] },
+        { text: "HPA suppression likely if ≥ 5 mg prednisolone/day for &gt; 3 weeks — perioperative steroid cover needed (AAGBI/AOMRC 2020)", cites: ["BJA Educ 2012"] },
         { text: "Addisonian crisis: refractory hypotension + hypoglycaemia + hyperkalaemia + hyponatraemia. IV hydrocortisone 100 mg", cites: ["Peck & Hill Ch.17"] },
         { text: "Type 1 diabetes: NEVER stop basal insulin (DKA risk). Continue Lantus at 80% the night before surgery", cites: ["AAGBI Steroid Cover"] },
         { text: "Carbimazole inhibits thyroid peroxidase; takes 4–6 weeks. PTU also blocks peripheral T₄→T₃. Risk: agranulocytosis", cites: ["BJA Educ 2012"] },
@@ -155,6 +155,24 @@ const CorticosteroidsTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               Corticosteroids bind the cytoplasmic glucocorticoid receptor (GR) → nuclear translocation → gene transcription modulation. Therapeutic anti-inflammatory effects are largely <strong>transrepression</strong> (↓ NF-κB, ↓ cytokines, ↓ COX-2, ↓ phospholipase A₂ via lipocortin-1); many side effects come from <strong>transactivation</strong> (gluconeogenesis, Na⁺ retention). A small subset of effects is <strong>non-genomic</strong> and acts within minutes.
             </p>
+            <div className="mb-4 grid md:grid-cols-2 gap-4 text-sm">
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground">Genomic actions (hours to days)</p>
+                <ul className="mt-1 space-y-1 text-muted-foreground list-disc list-inside">
+                  <li><strong>Receptor step</strong>: the lipophilic steroid crosses the membrane and binds the cytoplasmic glucocorticoid receptor, which sheds chaperone proteins and translocates to the nucleus.</li>
+                  <li><strong>Transactivation</strong>: two receptor molecules dimerise and bind glucocorticoid response elements (GREs) in DNA, recruiting co-activators and upregulating transcription — e.g. PEPCK and glucose-6-phosphatase. This underlies most metabolic side effects (hyperglycaemia, protein catabolism, fat redistribution).</li>
+                  <li><strong>Transrepression</strong>: a receptor monomer binds pro-inflammatory transcription factors such as NF-κB and AP-1, preventing them reaching DNA, so cytokine, COX-2 and inducible NOS transcription falls. This carries most of the therapeutic anti-inflammatory effect.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground">Non-genomic actions (minutes) and clinical relevance</p>
+                <ul className="mt-1 space-y-1 text-muted-foreground list-disc list-inside">
+                  <li>Membrane-associated receptor and physicochemical effects on cell membranes and kinase cascades explain the rapid haemodynamic improvement after IV hydrocortisone in adrenal crisis, before any transcriptional change.</li>
+                  <li>Separating the two genomic pathways is the rationale for selective glucocorticoid receptor agonists (SEGRAs/SEGRMs), designed to maximise transrepression while minimising transactivation and therefore metabolic harm.</li>
+                  <li>Dose matters: anti-inflammatory transrepression predominates at lower doses, while transactivation-driven metabolic effects escalate with dose and duration.</li>
+                </ul>
+              </div>
+            </div>
             <CorticosteroidPharmacodynamicsDiagram />
             <div className="mt-4">
               <HPAAxisSuppressionDiagram />
@@ -187,11 +205,29 @@ const CorticosteroidsTopic = () => {
           <ExamSection id="cover" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
             <CollapsibleSubsection title="Perioperative Steroid Cover (AAGBI/AOMRC 2020)">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li><strong>HPA suppression</strong>: likely if prednisolone ≥ 5 mg/day for &gt; 4 weeks (or equivalent), Cushing's appearance, or recent cessation of long-term steroids</li>
-              <li><strong>Minor surgery</strong>: continue usual dose only</li>
-              <li><strong>Moderate surgery</strong>: usual dose + hydrocortisone 50 mg IV at induction then 25 mg 8-hourly for 24 h</li>
-              <li><strong>Major surgery</strong>: usual dose + hydrocortisone 100 mg IV at induction then 200 mg/24 h infusion for 24–48 h</li>
+              <li><strong>HPA suppression</strong>: likely if prednisolone ≥ 5 mg/day for &gt; 3 weeks (or equivalent), Cushing's appearance, or recent cessation of long-term steroids</li>
+              <li><strong>Minor surgery</strong> (e.g. cataract, hernia): usual dose + hydrocortisone 25 mg IV at induction</li>
+              <li><strong>Moderate surgery</strong> (e.g. hemicolectomy, joint replacement): usual dose + hydrocortisone 25 mg IV at induction then 100 mg over 24 h (infusion or 25 mg 6-hourly)</li>
+              <li><strong>Major surgery</strong> (e.g. laparotomy, cardiac surgery): usual dose + hydrocortisone 50 mg IV at induction then 200 mg over 24 h (infusion or 50 mg 6-hourly), continued while the stress response persists then tapered <InlineRef topicId="corticosteroids" refLabel="Anaesthesia 2020 Glucocorticoids" /></li>
+              <li><strong>Critical illness / septic shock</strong>: 200 mg/24 h is the same target dose — it is not an escalation above major surgery</li>
               <li><strong>Addisonian crisis</strong>: hypotension refractory to fluids/vasopressors + hypoglycaemia + hyperkalaemia + hyponatraemia → IV hydrocortisone 100 mg stat then 200 mg/24 h</li>
+            </ul>
+            </CollapsibleSubsection>
+            <CollapsibleSubsection title="Assessing HPA Axis Suppression — Short Synacthen Test">
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Purpose</strong>: formally assess adrenal reserve before stopping long-term steroids, or when adrenal insufficiency is suspected but the history is equivocal.</li>
+              <li><strong>Procedure</strong>: baseline serum cortisol (ideally 08:00–09:00), then 250 µg synthetic ACTH (tetracosactide/Synacthen) IV or IM, with further cortisol samples at 30 and/or 60 min.</li>
+              <li><strong>Interpretation</strong>: a peak cortisol above roughly 420–500 nmol/L (assay- and laboratory-dependent) indicates an adequate response; failure to reach it indicates adrenal insufficiency.</li>
+              <li><strong>Clinical relevance</strong>: an adequate response in a patient with previous steroid exposure supports omitting perioperative cover; an inadequate response mandates cover. Note the test is unreliable in acute-onset (recent pituitary) disease, and exogenous hydrocortisone cross-reacts with the assay — omit the morning dose or use dexamethasone before sampling <InlineRef topicId="corticosteroids" refLabel="Anaesthesia 2020 Glucocorticoids" /></li>
+            </ul>
+            </CollapsibleSubsection>
+            <CollapsibleSubsection title="Stress-Dose Steroids in Septic Shock">
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Indication</strong>: septic shock with an ongoing vasopressor requirement despite adequate fluid resuscitation (typically noradrenaline ≥ 0.25 µg/kg/min for ≥ 4 h).</li>
+              <li><strong>Rationale</strong>: critical-illness-related corticosteroid insufficiency (&ldquo;relative adrenal insufficiency&rdquo;) plus the permissive effect of cortisol on catecholamine signalling — steroids restore vascular tone and adrenoceptor responsiveness and dampen the inflammatory response.</li>
+              <li><strong>Dose</strong>: hydrocortisone 200 mg/day, as a continuous infusion or 50 mg IV 6-hourly, weaned as vasopressors are withdrawn. A Synacthen test is not required before starting.</li>
+              <li><strong>Evidence</strong>: ADRENAL showed faster shock resolution and shorter ICU stay but no 90-day mortality benefit, while APROCCHSS (hydrocortisone plus fludrocortisone) showed lower 90-day mortality — hence continued debate <InlineRef topicId="corticosteroids" refLabel="ADRENAL 2018" />. The Surviving Sepsis Campaign 2021 nonetheless suggests IV corticosteroids for adults with septic shock and an ongoing vasopressor requirement <InlineRef topicId="corticosteroids" refLabel="SSC 2021 Steroids" /></li>
+              <li><strong>Cautions</strong>: hyperglycaemia, hypernatraemia, and possible myopathy or delayed wound healing with prolonged courses.</li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
