@@ -6,11 +6,18 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { z } from "npm:zod@3.23.8";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+// sendBeacon uses credentials mode "include", so a wildcard
+// Access-Control-Allow-Origin is rejected by browsers. Echo the request
+// Origin instead and allow credentials.
+function corsHeadersFor(req: Request) {
+  return {
+    "Access-Control-Allow-Origin": req.headers.get("origin") ?? "*",
+    "Access-Control-Allow-Credentials": "true",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+    Vary: "Origin",
+  };
+}
 
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
 const serviceRole = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
