@@ -325,6 +325,47 @@ const PainMedicineTopic = () => {
         </CollapsibleSubsection>
         </div>
 
+        <div id="opioid-stewardship" className="scroll-mt-24">
+        <CollapsibleSubsection title="Peri-operative Opioid Stewardship &amp; the Patient on Long-Term Opioids">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Surgery is a common gateway to long-term opioid use: 3–7% of previously opioid-naive patients are still taking opioids months after an operation. Stewardship of perioperative opioids starts with judicious prescribing; before surgery it is important to assess risk factors for continued opioid use and to identify patients with pre-existing chronic pain, some of whom are already taking opioids, and to formulate a multidisciplinary perioperative care plan. For opioid-naive patients, no more than <strong>7 days</strong> of opioid prescription is recommended <InlineRef topicId="pain-medicine" refLabel="BJA 2021 Surgery &amp; Opioids" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Before surgery</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Document the exact opioid, dose and duration; convert to oral morphine equivalent daily dose (OMEDD). Doses &gt;120 mg OMEDD/day carry markedly higher harm and predict difficult postoperative control.</li>
+                <li>Screen for risk factors for persistent use: pre-existing chronic pain, current opioid or benzodiazepine use, substance-use disorder, smoking, catastrophising, depression/anxiety, and high pain expectation.</li>
+                <li>Set realistic expectations — the goal is <em>function and tolerable pain</em>, not zero pain — and agree a written stop date for any new opioid.</li>
+                <li>Where feasible, reduce high-dose opioids preoperatively over weeks with pain-service input; do not attempt a rapid taper immediately before surgery.</li>
+                <li>Continue buprenorphine and methadone maintenance through surgery (do not stop them) and involve the acute pain and addiction services early.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Intra-operative &amp; inpatient</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Opioid-sparing multimodal analgesia: paracetamol, NSAID/COX-2 where safe, regional block or local infiltration, ketamine, IV lidocaine, magnesium, dexamethasone, α₂ agonists.</li>
+                <li>Continue the patient's baseline opioid requirement (or an equivalent) and treat surgical pain <em>on top</em> of it — expect 30–100% higher requirements in the opioid-tolerant.</li>
+                <li>Anticipate opioid-induced hyperalgesia (diffuse pain, allodynia, worsening with dose escalation) — the answer is ketamine and regional analgesia, not more opioid.</li>
+                <li>Avoid combining opioids with sedatives; screen for OSA and use continuous oximetry in high-risk patients.</li>
+                <li>Use immediate-release oral opioids on a PRN basis rather than modified-release preparations for acute postoperative pain in opioid-naive patients.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="p-4 rounded-lg border border-border">
+            <p className="font-semibold text-foreground text-sm">Discharge &amp; follow-up</p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+              <li>Prescribe the smallest quantity needed, ≤7 days for opioid-naive patients, with an explicit tapering and stopping plan communicated to the patient and GP.</li>
+              <li>Never discharge on modified-release opioids started for acute pain; do not issue repeat prescriptions from secondary care.</li>
+              <li>Give written advice on safe storage, disposal of unused tablets, driving, constipation prophylaxis, and not sharing medication.</li>
+              <li>For patients on long-term opioids, return to (or below) the preoperative dose within 4–6 weeks with named clinician follow-up; if this fails, refer to a chronic pain service rather than escalating.</li>
+              <li>Tapering in chronic use: reduce by 10% of the current dose every 1–4 weeks, slower below 30% of the starting dose; treat withdrawal symptoms and expect a temporary increase in pain and anxiety.</li>
+            </ul>
+          </div>
+        </CollapsibleSubsection>
+        </div>
+
+
         <div id="chronic" className="scroll-mt-24">
         <CollapsibleSubsection title="Chronic Pain — General Principles">
           <p className="text-muted-foreground leading-relaxed mb-3">
