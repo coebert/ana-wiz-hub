@@ -180,6 +180,7 @@ const App = () => (
           <Route path="/intensive-care/case-bank" element={<IntensiveCareCaseBank />} />
           <Route path="/perioperative" element={<PerioperativeSection />} />
           <Route path="/perioperative/case-bank" element={<PerioperativeCaseBank />} />
+          <Route path="/perioperative/co-existing-disease" element={<CoExistingDiseaseOverview />} />
 
           <Route path="/anatomy" element={<AnatomySection />} />
           <Route path="/chemistry" element={<ChemistrySection />} />
