@@ -154,6 +154,15 @@ const IcuDrugMechanisms = () => {
                         <dd className="mt-1 text-muted-foreground">{d.adverseEffects}</dd>
                       </div>
                     </dl>
+
+                    <DrugPharmacokineticsPanel slug={d.slug} />
+
+                    <Link
+                      to={`/intensive-care/drug-doses?drug=${drugSlug(d.drug)}#drug-${drugSlug(d.drug)}`}
+                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-icu underline-offset-4 hover:underline"
+                    >
+                      Doses for {d.drug} <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
                   </article>
                 ))}
               </div>
