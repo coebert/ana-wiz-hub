@@ -1,11 +1,14 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft, FlaskConical, Search, TriangleAlert } from "lucide-react";
+import { ArrowLeft, ArrowRight, FlaskConical, Search, TriangleAlert } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { icuDrugMechanismGroups, icuDrugMechanismCount } from "@/data/icuDrugMechanisms";
+import { DrugPharmacokineticsPanel } from "@/components/icu/DrugPharmacokineticsPanel";
+import { pharmacokineticsFor } from "@/data/pk";
+import { drugSlug } from "@/lib/caseDoseReferences";
 
 const IcuDrugMechanisms = () => {
   const [search, setSearch] = useState("");
