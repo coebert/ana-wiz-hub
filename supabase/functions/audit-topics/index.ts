@@ -1438,7 +1438,11 @@ async function auditTopic(
 // runtime's ~150s limit. Invocations must run strictly one-at-a-time for a
 // given job; scheduling the successor before the current topic completed led
 // to overlapping workers, false "failed" states, and racing job counters.
-const LEASE_MS = 10 * 60 * 1000;
+// Lease lifetime is deliberately just over one topic's hard timeout and is
+// renewed after every topic. A worker that dies mid-sweep therefore frees the
+// lease within ~5 minutes instead of blocking recovery for 10.
+const LEASE_MS = 5 * 60 * 1000;
+
 const BATCH_SIZE = 1;
 // Hard cap per topic. Stage budgets sum to ~70s in the happy path
 // (scrape 30 + search 10 + AI text 25 + diagram 0–15); the extra headroom
