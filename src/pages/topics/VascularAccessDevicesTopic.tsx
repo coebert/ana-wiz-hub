@@ -13,6 +13,7 @@ import { DwellTimeInfographic } from "@/components/diagrams/perioperative/DwellT
 import { vascularAccessDevicesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const VascularAccessDevicesTopicWorkedExamples: WorkedExample[] = [
   {
@@ -53,6 +54,10 @@ const tocItems = [
   { id: "section-vascath-haemodialysis", label: "Vascath & Haemodialysis", group: "Devices" },
   { id: "section-trauma-lines", label: "Trauma Lines", group: "Devices" },
   { id: "section-swan-ganz-long-term", label: "Swan-Ganz & Long-term Devices", group: "Specialist" },
+  { id: "section-cvc-tip-confirmation", label: "CVC Tip Confirmation", group: "Specialist" },
+  { id: "section-arterial-lines", label: "Arterial Lines", group: "Specialist" },
+  { id: "section-intraosseous-access", label: "Intraosseous Access", group: "Specialist" },
+  { id: "section-coagulopathy-anticoagulation", label: "Coagulopathy & Anticoagulation", group: "Specialist" },
   { id: "section-dwell-times-scenarios", label: "Dwell Times & Clinical Scenarios", group: "Evidence" },
 ];
 
@@ -437,6 +442,230 @@ const VascularAccessDevicesTopic = () => {
               field) is observed and the device has been flushed and
               aspirates blood freely; document use in the notes so the
               oncology / nutrition team can re-lock it post-op.
+            </p>
+          </ExamSection>
+
+          <ExamSection id="section-cvc-tip-confirmation" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              CVC tip confirmation
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              A malpositioned tip risks arrhythmia, vessel perforation,
+              cardiac tamponade and infusate extravasation into the
+              pleural or mediastinal space, so tip position should be
+              confirmed before non-emergency use of any new central line
+              (<InlineRef topicId="vascular-access-devices" refLabel="BJA Educ 2016" />).
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Chest X-ray (CXR)</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Standard of practice — tip should lie above the carina, parallel to the SVC wall</li>
+                  <li>Limitations: ionising radiation, delay before the line can be used, needs patient transport/portable film, poor at excluding malposition into the azygos or contralateral brachiocephalic vein</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Intra-atrial ECG (P-wave) guidance</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>A saline-filled guidewire/catheter acts as an intracardiac electrode; the P wave grows progressively taller and peaks (biphasic) at the cavo-atrial junction</li>
+                  <li>Real-time, no radiation, cheap, allows immediate use of the line</li>
+                  <li>Unreliable in atrial fibrillation or other rhythms without an organised P wave, and in paced rhythms</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Fluoroscopy</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Gold standard — direct real-time visualisation of the guidewire and catheter tip against bony/cardiac landmarks</li>
+                  <li>Needs radiation exposure, specialist kit and an interventional radiology/cath-lab setting — impractical for routine bedside insertion</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Echocardiography (TTE/TOE)</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Direct visualisation of the guidewire "flick" or catheter tip in the right atrium via a bicaval or subcostal view</li>
+                  <li>Useful in complex anatomy, difficult positioning and to confirm a femoral wire has reached the IVC rather than a lumbar or renal vein</li>
+                  <li>No radiation; requires an operator skilled in echocardiography</li>
+                </ul>
+              </div>
+            </div>
+          </ExamSection>
+
+          <ExamSection id="section-arterial-lines" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Arterial lines
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              A short, wide-bore catheter (typically 20 G radial) placed by
+              Seldinger technique into an artery and connected to a
+              pressure transducer via non-compliant tubing.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Indications</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Real-time beat-to-beat blood pressure in haemodynamic instability or major surgery</li>
+                  <li>Frequent arterial blood gas / lactate sampling</li>
+                  <li>Pulse-contour cardiac output monitoring (e.g. LiDCO/PiCCO)</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Site selection</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li><strong className="text-foreground">Radial</strong> — first-line; superficial, collateral flow via the ulnar artery (confirm with Allen's test/Doppler), lowest complication rate</li>
+                  <li><strong className="text-foreground">Brachial</strong> — no collateral supply, so distal ischaemia if occluded carries a higher risk; end artery at the elbow near the median nerve</li>
+                  <li><strong className="text-foreground">Femoral</strong> — larger waveform with more distal-pulse overshoot/resonance; easier to palpate and cannulate in shocked patients but higher infection and retroperitoneal haematoma risk</li>
+                  <li><strong className="text-foreground">Dorsalis pedis</strong> — useful alternative when upper-limb sites are unavailable; smallest, most distal waveform with greatest amplification/overshoot</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              <strong className="text-foreground">Complications:</strong>{" "}
+              thrombosis and distal ischaemia, haematoma, pseudoaneurysm,
+              arteriovenous fistula, nerve injury (median nerve at the
+              brachial/wrist, femoral nerve), local and bloodstream
+              infection, and accidental intra-arterial drug injection
+              (causes severe pain and distal ischaemia/gangrene — manage by
+              leaving the cannula in situ, injecting saline/vasodilator or
+              local anaesthetic through it, systemic anticoagulation and
+              urgent vascular/anaesthetic review; do NOT remove the cannula
+              immediately) (<InlineRef topicId="vascular-access-devices" refLabel="BJA Educ 2016" />).
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              <strong className="text-foreground">Waveform physics:</strong>{" "}
+              an under-damped (resonant) system overestimates systolic and
+              underestimates diastolic pressure with an "overshoot" spike,
+              typically from long/compliant tubing or air bubbles causing
+              a system with too little damping relative to its natural
+              frequency; an over-damped system (kinked catheter, clot,
+              air bubble, loose connection) flattens the waveform and
+              underestimates systolic pressure. The square-wave (fast)
+              flush test opens the flush device briefly to generate a
+              square pressure wave — an optimally damped system settles
+              back to the arterial trace after 1–2 oscillations; more
+              oscillations indicate under-damping, none indicate
+              over-damping.
+            </p>
+          </ExamSection>
+
+          <ExamSection id="section-intraosseous-access" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Intraosseous access
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              A needle inserted into the medullary cavity of a bone,
+              exploiting the non-collapsible venous sinusoids that drain
+              into the central venous circulation — a reliable bridge when
+              intravenous access is impossible or too slow
+              (<InlineRef topicId="vascular-access-devices" refLabel="AoA Vascular Access 2025" />).
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Indications</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Cardiac arrest</li>
+                  <li>Major trauma with haemodynamic compromise</li>
+                  <li>Status epilepticus</li>
+                  <li>Failed peripheral IV access, or IV access likely to take &gt; 90 seconds in an emergency</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Sites</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Proximal tibia (anteromedial, 2 cm below tibial tuberosity) — first-line, easily palpable</li>
+                  <li>Distal tibia (proximal to medial malleolus)</li>
+                  <li>Proximal humerus (greater tubercle) — higher flow, useful in arrest</li>
+                  <li>Sternum (manubrium) — dedicated device (e.g. FAST1), avoids interruption of chest compressions on the limbs</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Contraindications</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Fracture or previous surgery in the target bone</li>
+                  <li>Overlying infection or burns at the site</li>
+                  <li>Previous IO attempt in the same bone (within 48 h) — extravasation into the fracture/puncture site</li>
+                  <li>Bone disease, e.g. osteogenesis imperfecta, or severe osteoporosis</li>
+                  <li>Prosthesis or hardware at/near the intended site</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Technique</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Powered drill devices (e.g. EZ-IO) or spring-loaded/impact devices (e.g. B.I.G.) — needle length selected by site and patient habitus</li>
+                  <li>Confirm placement by aspirating marrow (not always possible) and by flushing 10 mL saline in adults, watching for free flow without swelling</li>
+                  <li>In conscious patients, instil intraosseous lidocaine before flushing/infusing to reduce the significant pain of infusion</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              <strong className="text-foreground">Complications:</strong>{" "}
+              extravasation (most common — check regularly for swelling),
+              compartment syndrome, osteomyelitis, fracture, and fat/marrow
+              embolism.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              <strong className="text-foreground">Flow:</strong> gravity
+              alone gives slow flow through the medullary sinusoids, so a
+              pressure bag or manual syringe/three-way tap push is required
+              to achieve clinically useful rates (~50–100 mL/min under
+              pressure). Any resuscitation drug, crystalloid/colloid fluid,
+              or blood product can be given via the IO route, with an onset
+              of action equivalent to intravenous administration
+              (<InlineRef topicId="vascular-access-devices" refLabel="AoA Vascular Access 2025" />).
+            </p>
+          </ExamSection>
+
+          <ExamSection id="section-coagulopathy-anticoagulation" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Vascular access in coagulopathy and anticoagulation
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Risk is a balance between bleeding from the puncture site and
+              the delay/harm of withholding necessary access
+              (<InlineRef topicId="vascular-access-devices" refLabel="AoA Vascular Access 2025" />).
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Pre-procedural risk assessment</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Site compressibility: internal jugular and femoral veins are compressible if bleeding occurs; subclavian is non-compressible and carries the highest risk of an uncontrollable/occult haemorrhage or haemothorax</li>
+                  <li>Operator experience — a more experienced operator with real-time ultrasound reduces the number of passes and thus bleeding risk</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Pragmatic thresholds</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Platelets &gt; 50 × 10⁹/L</li>
+                  <li>INR &lt; 1.5</li>
+                  <li>Avoid routine/reflex correction of mild derangement with FFP or platelets — correction itself carries risk and delays access; treat the patient, not the number</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Anticoagulant/antiplatelet management</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Warfarin: hold and allow INR to fall towards &lt; 1.5, or reverse if urgent</li>
+                  <li>DOACs: omit for ≥ 24–48 h before an elective procedure, longer if renal impairment (drug accumulates) — timing depends on the specific agent and creatinine clearance</li>
+                  <li>Unfractionated heparin infusion: stop and allow APTT to normalise, or time insertion around dosing; therapeutic LMWH: omit one dose pre-procedure (typically 12–24 h)</li>
+                  <li>Aspirin can usually be continued; clopidogrel (and other P2Y12 inhibitors) carry a higher bleeding risk and should prompt a case-by-case risk discussion, favouring compressible sites</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">High-risk strategies</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Real-time ultrasound guidance for every pass</li>
+                  <li>Smallest calibre catheter and fewest lumens needed for the clinical purpose</li>
+                  <li>Most experienced operator performs (or directly supervises) the procedure</li>
+                  <li>Avoid the subclavian route; prefer internal jugular or femoral (compressible)</li>
+                  <li>Consider a micropuncture (21 G) needle/kit to minimise venotomy size before upsizing</li>
+                  <li>Extended post-procedure observation for expanding haematoma, stridor/airway compromise (especially internal jugular) and delayed bleeding</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-muted-foreground leading-relaxed">
+              <strong className="text-foreground">Removal:</strong> apply
+              firm, prolonged direct pressure over compressible sites after
+              line removal (longer than in a non-coagulopathic patient),
+              and time removal to coincide with the trough of anticoagulant
+              effect where a procedure/planned removal can be scheduled.
             </p>
           </ExamSection>
 

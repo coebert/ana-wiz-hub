@@ -241,6 +241,67 @@ const PrognosticationEthicsIcuTopic = () => {
               <li><strong>Symptom management</strong>: titrate opioids to comfort, not RR. Syringe driver for continuous infusion.</li>
               <li><strong>Organ donation pathway is separate</strong> from withdrawal. SN-OD involved early.</li>
             </ul>
+            <CollapsibleSubsection title="Organ Donation after Death (DBD vs DCD)">
+              <p className="text-sm text-muted-foreground mb-2">
+                The decision to withdraw life-sustaining treatment must always be made <strong>independently of, and prior to</strong>, any
+                consideration of organ donation — donation never influences the withdrawal decision itself
+                <InlineRef topicId="prognostication-ethics-icu" refLabel="GMC 2022" />.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3 mb-3">
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">DBD — donation after brainstem death</p>
+                  <p className="text-xs text-muted-foreground mt-1">Retrieval proceeds after death is confirmed by neurological (brainstem) criteria while the heart is still beating. The donor remains ventilated and perfused until retrieval, so warm ischaemic time is minimal and more organs — including the heart — are usable.</p>
+                </div>
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">DCD — donation after circulatory death</p>
+                  <p className="text-xs text-muted-foreground mt-1">Withdrawal of life-sustaining treatment precedes death, which is confirmed by circulatory criteria. A mandatory <strong>5-minute</strong> continuous observation of asystole/absent cardiac output is required before death is declared, followed by rapid retrieval. The resulting functional warm ischaemic time limits which organs remain viable (kidneys/liver more tolerant than heart/lungs).</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground mb-2">
+                <strong>Maastricht categories</strong>: <strong>Controlled DCD (category III/IV)</strong> — death is anticipated after planned withdrawal of treatment (category III) or occurs after brainstem death testing has begun (IV); this is the predominant form of DCD in the UK. <strong>Uncontrolled DCD (category I/II)</strong> — unexpected cardiac arrest, either out of hospital and found dead (I) or with unsuccessful resuscitation (II); rare in UK practice.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                The <strong>specialist nurse for organ donation (SN-OD)</strong> should be referred to early whenever WLST or brainstem death is being considered. The SN-OD checks the Organ Donor Register, approaches the family jointly with the clinical team, coordinates retrieval logistics, and manages consent/authorisation under the UK "opt-out" (deemed consent) system — family involvement remains central even though consent is presumed
+                <InlineRef topicId="prognostication-ethics-icu" refLabel="NHSBT Deceased Donation" />. Referral itself does not commit the family or clinical team to donation proceeding.
+              </p>
+            </CollapsibleSubsection>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="brainstem-death" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Diagnosing Death by Neurological Criteria (Brainstem Death)">
+              <p className="text-sm text-muted-foreground mb-2">
+                Death by neurological criteria (brainstem death, BSD) is the <strong>irreversible cessation of brainstem function</strong>, which is legally recognised as death throughout the UK
+                <InlineRef topicId="prognostication-ethics-icu" refLabel="AoMRC DNC 2008" />.
+              </p>
+              <h3 className="text-base font-semibold text-foreground mb-1">Preconditions</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-2">
+                <li>Fixed structural brain damage of known cause, consistent with irreversible loss of brainstem function.</li>
+                <li>Patient is apnoeic and dependent on mechanical ventilation.</li>
+                <li>Reversible causes of coma must be excluded: residual sedative/hypnotic drug effect and neuromuscular blockade, core temperature ≥34 °C, no significant metabolic, endocrine or acid–base derangement, and an adequate mean arterial pressure.</li>
+              </ul>
+              <h3 className="text-base font-semibold text-foreground mb-1">Clinical tests of brainstem reflexes</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-2">
+                <li>Absent pupillary response to light.</li>
+                <li>Absent corneal reflex.</li>
+                <li>Absent oculovestibular reflex (caloric testing).</li>
+                <li>Absent gag and cough reflex.</li>
+                <li>No motor response within the cranial nerve territory to supraorbital pressure.</li>
+              </ul>
+              <h3 className="text-base font-semibold text-foreground mb-1">Apnoea test</h3>
+              <p className="text-sm text-muted-foreground mb-2">
+                Pre-oxygenate, then disconnect from the ventilator with a starting PaCO₂ &gt;6.0 kPa and pH &lt;7.40. Observe for 5 minutes: the test is positive (confirms absent respiratory drive) if PaCO₂ rises by ≥0.5 kPa with no respiratory effort observed.
+              </p>
+              <h3 className="text-base font-semibold text-foreground mb-1">Procedural requirements</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-2">
+                <li>Two registered medical practitioners, each with &gt;5 years' post-registration experience, one of whom must be a consultant.</li>
+                <li>Neither practitioner may be a member of the transplant team.</li>
+                <li>Two complete sets of testing are performed (may be done together or sequentially); the legal time of death is recorded as the time of the <em>first</em> set that confirms death.</li>
+                <li>Full documentation of preconditions, exclusions and both sets of tests is required.</li>
+              </ul>
+              <p className="text-sm text-muted-foreground">
+                Diagnosing death by neurological criteria is a <strong>discrete legal and clinical act of confirming death</strong> — it is distinct from a decision to withdraw life-sustaining treatment (a best-interests decision made in a dying but living patient) and distinct from neurological <strong>prognostication</strong> after cardiac arrest (predicting future outcome in a patient who does not meet these strict diagnostic criteria).
+              </p>
             </CollapsibleSubsection>
           </ExamSection>
 

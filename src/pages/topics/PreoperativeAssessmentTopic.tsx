@@ -10,6 +10,8 @@ import { DiagramSection } from "@/components/topic/DiagramSection";
 import { CheckCircle2, AlertTriangle, XCircle, FlaskConical, Heart } from "lucide-react";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 
 const PreoperativeAssessmentTopicWorkedExamples: WorkedExample[] = [
   {
@@ -120,6 +122,55 @@ const PreoperativeAssessmentTopic = () => {
           </div>
         </div>
 
+        <CollapsibleSubsection title="Cognitive function & frailty assessment">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Cognitive impairment and frailty independently predict postoperative delirium, postoperative cognitive dysfunction (POCD), morbidity, mortality and prolonged hospital stay. Approximately <strong>12%</strong> of apparently previously cognitively well patients undergoing anaesthesia and non-cardiac surgery will develop symptoms of cognitive dysfunction after their procedure
+            <InlineRef topicId="preoperative-assessment" refLabel="BJA POCD 2017" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Cognitive screening</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>Mini-Cog</strong> or <strong>4AT</strong> — brief bedside tools to identify patients at higher risk of delirium and POCD before major surgery. Positive screen prompts further assessment and delirium-prevention planning.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Frailty screening</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>Clinical Frailty Scale (CFS)</strong>: 5–8 represents mild to very severe frailty. Supplement with objective measures — <strong>grip strength</strong> and <strong>gait speed</strong> — to refine risk estimation.</p>
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground mt-3">
+            Implications: capacity and consent may need formal assessment; use shared decision-making with patient and family; institute delirium-prevention bundles (orientation, sensory aids, sleep hygiene, early mobilisation, avoidance of deliriogenic drugs); and plan postoperative care (level of observation, involvement of geriatric/liaison teams, discharge planning) accordingly <InlineRef topicId="preoperative-assessment" refLabel="BJA POCD 2017" />.
+          </p>
+        </CollapsibleSubsection>
+
+        <CollapsibleSubsection title="Pulmonary risk assessment">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Postoperative pulmonary complications (PPCs) occur in roughly <strong>5–10%</strong> of patients undergoing major surgery and are associated with substantial increases in morbidity, mortality and length of stay <InlineRef topicId="preoperative-assessment" refLabel="BJA Lung-Protective 2019" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Patient factors</p>
+              <p className="text-sm text-muted-foreground mt-1">Age, COPD, current smoking, obstructive sleep apnoea, low resting SpO₂, anaemia, recent respiratory tract infection, and frailty.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Procedure factors</p>
+              <p className="text-sm text-muted-foreground mt-1">Thoracic or upper abdominal/aortic surgery, duration &gt; 2–3 h, emergency surgery, and open (vs minimally invasive) approach.</p>
+            </div>
+          </div>
+          <div className="p-3 rounded-lg border border-border mt-3">
+            <p className="font-semibold text-foreground text-sm">ARISCAT score and risk bands</p>
+            <p className="text-sm text-muted-foreground mt-1">A validated, weighted risk score (age, preoperative SpO₂, recent respiratory infection, preoperative anaemia, surgical incision site, duration of surgery, emergency procedure) stratifies patients into: <strong>&lt;26 = low risk</strong>, <strong>26–44 = intermediate risk</strong>, <strong>≥45 = high risk</strong> of PPCs <InlineRef topicId="preoperative-assessment" refLabel="BJA Lung-Protective 2019" />.</p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-3">
+            <strong>Optimisation:</strong> smoking cessation, ideally ≥ 4–8 weeks before surgery; treat active respiratory infection and bronchospasm; inspiratory muscle training and physiotherapy; prehabilitation programmes; and intraoperative lung-protective ventilation (low tidal volumes, individualised PEEP, recruitment manoeuvres, lowest effective FiO₂) <InlineRef topicId="preoperative-assessment" refLabel="BJA Lung-Protective 2019" />.
+          </p>
+        </CollapsibleSubsection>
+
+        <CollapsibleSubsection title="Sleep and preoperative risk">
+          <p className="text-muted-foreground leading-relaxed">
+            Preoperative sleep disturbance is common — a pooled prevalence of around <strong>60%</strong> across surgical populations — and is associated with postoperative delirium and poorer recovery <InlineRef topicId="preoperative-assessment" refLabel="Sleep Med Rev 2023" />. Simple screening with Pittsburgh Sleep Quality Index (PSQI) questions, or brief sleep-quality questions at preoperative assessment, can flag patients who may benefit from targeted counselling and perioperative sleep-hygiene measures. A related, distinct risk group is patients with known or suspected <strong>obstructive sleep apnoea (OSA)</strong>, screened for using <strong>STOP-BANG</strong>.
+          </p>
+        </CollapsibleSubsection>
+
         {/* 2. Bedside clinical assessment — airway */}
         <div id="section-airway-assessment" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Assessment</h2>
@@ -158,13 +209,37 @@ const PreoperativeAssessmentTopic = () => {
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">ACE-I / ARBs</td><td>Omit on day of surgery</td><td>Risk of refractory hypotension under anaesthesia</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Beta-blockers</td><td>Continue</td><td>Withdrawal → rebound tachycardia, ischaemia. POISE trial: perioperative initiation harmful.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Anticoagulants</td><td>Bridge or hold per guideline</td><td>DOACs: stop 24–48h pre-op (renal function dependent). Warfarin: stop 5 days, bridge with LMWH if high thromboembolic risk.</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Metformin</td><td>Omit on day of surgery</td><td>Risk of lactic acidosis with renal impairment/contrast. Resume when eating and drinking.</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Insulin</td><td>Reduce long-acting by 20–30%</td><td>Variable-rate insulin infusion (VRII) if fasting {'>'} 1 missed meal. Target glucose 6–10.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Metformin</td><td>Continue for short fasts; omit on the day if multiple daily doses, renal impairment, or contrast expected</td><td>Risk of lactic acidosis, particularly with AKI or iodinated contrast. Resume when eating and drinking.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">SGLT2 inhibitors (gliflozins)</td><td>Stop 3 days before surgery — omit on the day and the 2 preceding days</td><td>Risk of euglycaemic diabetic ketoacidosis (normal or near-normal glucose despite ketoacidosis).</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Sulfonylureas (e.g. gliclazide)</td><td>Omit on the morning of surgery</td><td>Hypoglycaemia risk while fasting.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Insulin</td><td>Continue long-acting basal at 80% of usual dose the evening before and on the morning of surgery; omit short-acting/rapid-acting while fasting</td><td>Start a variable-rate intravenous insulin infusion (VRIII) if fasting spans more than one meal, with hourly capillary glucose targeting <strong>6–10 mmol/L</strong>. Elective HbA1c target &lt; 69 mmol/mol.</td></tr>
                 <tr><td className="py-2 font-medium text-foreground">GLP-1 RA</td><td>Weekly (semaglutide): hold 7 days. Daily (liraglutide): hold day of surgery</td><td>Delayed gastric emptying → aspiration risk. If not held, treat as full stomach (RSI). ASA 2023 guidance.</td></tr>
               </tbody>
             </table>
           </div>
+          <p className="text-xs text-muted-foreground mt-2">
+            Diabetes drug management above follows <InlineRef topicId="{TOPIC_ID}" refLabel="CPOC Diabetes 2021" /> guidance.
+          </p>
         </div>
+
+        <CollapsibleSubsection title="Perioperative glucocorticoid cover">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Patients on long-term glucocorticoid therapy may have suppression of the hypothalamic-pituitary-adrenal (HPA) axis and are at risk of an Addisonian (adrenal) crisis under the physiological stress of surgery if steroid cover is inadequate <InlineRef topicId="{TOPIC_ID}" refLabel="AoA Glucocorticoids 2024" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Who is at risk</p>
+              <p className="text-sm text-muted-foreground mt-1">Prednisolone ≥ 5 mg/day (or equivalent) for ≥ 1 month, or recent high-dose/intra-articular steroid use.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Dosing regimen</p>
+              <p className="text-sm text-muted-foreground mt-1">Hydrocortisone <strong>100 mg IV at induction</strong>, then <strong>200 mg/24 h by infusion</strong> (or 50 mg 6-hourly) for major surgery; shorter cover for minor/intermediate procedures. Resume the usual oral dose once eating and drinking.</p>
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground mt-3">
+            All at-risk patients should receive <strong>sick-day advice</strong> and carry a <strong>steroid emergency card</strong>, per the 2024 Association of Anaesthetists and Society for Endocrinology guideline <InlineRef topicId="{TOPIC_ID}" refLabel="AoA Glucocorticoids 2024" />.
+          </p>
+        </CollapsibleSubsection>
       </section>
 
       {/* 4. Broad evidence-based investigation framework */}
@@ -261,7 +336,7 @@ const PreoperativeAssessmentTopic = () => {
 
           <div className="p-3 rounded-lg border-l-4 border-perioperative bg-perioperative/5">
             <p className="text-sm text-foreground">
-              <span className="font-semibold">Key evidence base:</span> NICE NG45 (2016, updated 2020) — <em>Routine preoperative tests for elective surgery</em>; ESC/ESA 2022 non-cardiac surgery guideline; CCS 2017 cardiac risk assessment; METREPAIR (Lancet 2018); POISE-3 (NEJM 2023). Routine 'panel' bloods in fit patients have number-needed-to-test &gt; 1,000 to alter management — and a high false-positive rate that delays surgery.
+              <span className="font-semibold">Key evidence base:</span> NICE NG45 (2016, updated 2024) — <em>Routine preoperative tests for elective surgery</em>; ESC/ESA 2022 non-cardiac surgery guideline; CCS 2017 cardiac risk assessment; METREPAIR (Lancet 2018); POISE-3 (NEJM 2023). Routine 'panel' bloods in fit patients have number-needed-to-test &gt; 1,000 to alter management — and a high false-positive rate that delays surgery.
             </p>
           </div>
         </div>
