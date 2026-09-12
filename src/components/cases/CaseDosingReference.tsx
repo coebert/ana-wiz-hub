@@ -65,8 +65,16 @@ export const CaseDosingReference = ({ caseData }: CaseDosingReferenceProps) => {
                   >
                     Withdrawal &amp; tapering
                   </Link>
+                  <span aria-hidden>·</span>
+                  <Link
+                    to={`/intensive-care/drug-cards?slug=${safetySlug}#card-${safetySlug}`}
+                    className="underline underline-offset-4 hover:text-foreground"
+                  >
+                    Full drug card
+                  </Link>
                 </span>
               ) : null}
+
               {calculatorHref ? (
                 <span className="mt-0.5 flex items-center gap-1.5 text-xs text-muted-foreground">
                   <Calculator className="h-3 w-3 shrink-0" aria-hidden />
