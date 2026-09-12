@@ -140,7 +140,8 @@ const PressureMeasurementTopic = () => {
                   Limitations: mechanical hysteresis and wear of the linkage, susceptibility to mechanical shock, a slow response that makes
                   it unsuitable for dynamic waveforms, temperature-dependent tube elasticity, and the need for periodic recalibration; a
                   ruptured tube is directed away from the operator by a blow-out disc
-                  <InlineRef topicId="pressure-measurement" refLabel="Al-Shaikh & Stacey Ch.19" />.
+                  <InlineRef topicId="pressure-measurement" refLabel="Al-Shaikh & Stacey Ch.19" />
+                  <InlineRef topicId="pressure-measurement" refLabel="BJA Educ 2018 (Physics)" />.
                 </p>
               </div>
             </DiagramSection>
