@@ -142,8 +142,6 @@ const DepthOfAnaesthesiaMonitoringTopicWorkedExamples: WorkedExample[] = [
           </ul>
         </div>
       </div>
-
-      <section className="space-y-4 mb-10"><h2 className="text-2xl font-serif font-bold text-foreground">Auditory Evoked Potentials</h2><p className="text-muted-foreground">Mid-latency auditory evoked potentials are recorded from scalp electrodes after repeated ear clicks. The A-Line ARX Index (AAI) runs from 0–100; approximately 15–25 is used for general anaesthesia. MLAEPs are less contaminated by EMG or neuromuscular blockade and may be less distorted by ketamine, but are less extensively validated than BIS, ambient noise can interfere and prolonged acoustic stimulation carries a theoretical auditory risk. <InlineRef topicId="depth-of-anaesthesia" refLabel="BJA 2006 Depth Monitors" /></p></section>
     ),
     answer: "Check TIVA delivery, deepen anaesthesia to target BIS 40–60, and document. NAP5 mandates depth-of-anaesthesia monitoring when NMB is used with TIVA.",
     cites: ["NAP5 2014", "NICE DG6", "BJA Educ 2014"],
@@ -416,6 +414,8 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
         </div>
 
         {/* Clinical Practice */}
+        <section className="space-y-4 mb-10"><h2 className="text-2xl font-serif font-bold text-foreground">Auditory Evoked Potentials</h2><p className="text-muted-foreground">Mid-latency auditory evoked potentials are recorded from scalp electrodes after repeated ear clicks. The A-Line ARX Index (AAI) runs from 0–100; approximately 15–25 is used for general anaesthesia. MLAEPs are less contaminated by EMG or neuromuscular blockade and may be less distorted by ketamine, but are less extensively validated than BIS, ambient noise can interfere and prolonged acoustic stimulation carries a theoretical auditory risk. <InlineRef topicId="depth-of-anaesthesia" refLabel="BJA 2006 Depth Monitors" /></p></section>
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Clinical Practice Recommendations</h2>
           <div className="space-y-2">
@@ -432,6 +432,7 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
               </div>
             ))}
           </div>
+          <div className="grid md:grid-cols-2 gap-3 mt-4"><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Obstetric general anaesthesia</h3><p className="mt-2 text-sm text-muted-foreground">Awareness is relatively frequent during GA caesarean delivery (approximately 1 in 250–400), so it is treated as high risk. Pregnancy physiology and urgent, deliberately light anaesthesia can confound interpretation; no algorithm is specifically obstetric-validated, but consensus supports processed EEG alongside clinical and agent monitoring. It may also reduce excessive agent use and speed recovery. <InlineRef topicId="depth-of-anaesthesia" refLabel="IJOA 2023 pEEG" /></p></div><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Use in intensive care</h3><p className="mt-2 text-sm text-muted-foreground">Processed EEG can help titrate sedation, avoid over- and under-sedation and facilitate weaning; lighter ICU targets such as BIS/SE 60–80 are often used, but must complement sedation scales. Sepsis, encephalopathy, metabolic disturbance and temperature alter EEG, while shivering, movement, electrical noise and EMG cause artefact. Raw EEG remains necessary when non-convulsive status or post-arrest neurological assessment is suspected—an index alone is not prognostication. <InlineRef topicId="depth-of-anaesthesia" refLabel="Anaesthesia 2017 ICU EEG" /></p></div></div>
         </div>
       </section>
 
