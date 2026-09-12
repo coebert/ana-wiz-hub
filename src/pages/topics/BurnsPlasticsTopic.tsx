@@ -23,7 +23,9 @@ const tocItems = [
   { id: "airway", label: "Airway & inhalation injury", group: "Emergency" },
   { id: "pharmacology", label: "Pharmacological considerations", group: "Management" },
   { id: "surgery", label: "Burns surgery", group: "Procedures" },
+  { id: "special", label: "Special types of burns", group: "Emergency" },
   { id: "plastics", label: "Plastic & reconstructive", group: "Procedures" },
+
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
 
@@ -320,14 +322,66 @@ const BurnsPlasticsTopic = () => {
                   </ul>
                 </div>
                 <div className="bg-card border border-border rounded-lg p-4">
-                  <h3 className="font-semibold text-foreground mb-2">Escharotomy & Fasciotomy</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Circumferential full-thickness burns cause constriction → distal ischaemia (limbs) or respiratory compromise (chest). Escharotomy is an emergency bedside procedure releasing the constricting eschar through the burnt skin into subcutaneous fat. Fasciotomy is needed if compartment pressures remain elevated after escharotomy. Longitudinal incisions are made along the mid-axial lines of limbs and along the costal margins for thoracic constriction. Bleeding can be significant — coordinate with surgical team.
+                  <h3 className="font-semibold text-foreground mb-2">Escharotomy &amp; Fasciotomy</h3>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    <strong className="text-foreground">Escharotomy</strong> is incision of the inelastic, full-thickness burnt eschar to relieve the tourniquet effect it exerts as tissue oedema develops. <strong className="text-foreground">Fasciotomy</strong> is incision of the deep investing fascia to decompress a muscle compartment, and is a separate, deeper operation<InlineRef topicId="burns-plastics" refLabel="BBA EMSB" />.
                   </p>
+                  <p className="text-sm font-semibold text-foreground mb-1">Indications</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-2">
+                    <li>Escharotomy: circumferential or near-circumferential full-thickness limb burn with progressive pain, tense woody swelling, reduced capillary refill, loss of Doppler signal or pulse, paraesthesia or cool distal limb; circumferential chest or abdominal burn causing rising airway pressures, poor chest expansion or hypoventilation; and circumferential digital burns threatening perfusion</li>
+                    <li>Fasciotomy: compartment pressure &gt;30 mmHg (or within 30 mmHg of diastolic) persisting after escharotomy, high-voltage electrical injury with deep muscle necrosis, associated crush or fracture, or rising creatine kinase with myoglobinuria</li>
+                  </ul>
+                  <p className="text-sm font-semibold text-foreground mb-1">Incision and depth</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-2">
+                    <li>Longitudinal incisions along the <strong className="text-foreground">mid-medial and mid-lateral axial lines</strong> of the limb, crossing joints with care and avoiding superficial nerves (ulnar at the elbow, common peroneal at the fibular neck) and vessels</li>
+                    <li>Chest: bilateral anterior axillary line incisions joined by a transverse incision along the costal margin (a "shield" pattern); abdominal decompression may also be required for burn-related intra-abdominal hypertension</li>
+                    <li>Depth: incise <strong className="text-foreground">through eschar into subcutaneous fat only</strong> — the wound edges should spring apart. Deliberately deeper dissection through fascia constitutes a fasciotomy and should be a considered decision, not an accident</li>
+                    <li>Reassess perfusion (pulses, Doppler, compartment pressure, airway pressures) immediately after release and repeatedly thereafter — incomplete release is a common reason for failure</li>
+                  </ul>
+                  <p className="text-sm font-semibold text-foreground mb-1">Anaesthetic considerations at the bedside</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li>Often performed in the emergency department or ICU as a time-critical procedure. Full monitoring, oxygen, suction, resuscitation drugs and a trained assistant are mandatory — treat it as an anaesthetic in a remote site</li>
+                    <li>Analgesia and sedation: <strong className="text-foreground">ketamine</strong> (0.25–0.5 mg/kg IV increments, or 1–2 mg/kg for dissociative anaesthesia) is the agent of choice because it preserves airway reflexes, respiratory drive and blood pressure in a hypovolaemic patient; combine with an opioid (fentanyl 0.5–1 µg/kg) and small midazolam doses if needed, and add an antisialogogue. Propofol titration is an alternative in the intubated, haemodynamically stable patient. Many patients are already ventilated and simply need bolus opioid, sedation and neuromuscular blockade</li>
+                    <li>Airway: anticipate deterioration in facial or inhalational injury — if intubation is likely to be needed, secure the airway <em>before</em> starting rather than mid-procedure. Suxamethonium is safe within the first 24 hours only</li>
+                    <li><strong className="text-foreground">Bleeding</strong> can be substantial and diffuse from the burn wound edges: have blood available and cross-matched for large releases, use diathermy and adrenaline-soaked packs, keep the patient warm, and correct coagulopathy — hypothermia and dilutional coagulopathy compound the loss</li>
+                    <li><strong className="text-foreground">Reperfusion and metabolic monitoring</strong>: releasing an ischaemic compartment washes out potassium, hydrogen ions, lactate and myoglobin. Watch for hyperkalaemia and arrhythmia, acidosis, sudden hypotension and pigmented urine; check ABG, potassium, calcium, lactate and creatine kinase before and after release, maintain generous fluid resuscitation with urine output 1–2 mL/kg/h if myoglobinuria is present, and treat hyperkalaemia promptly with calcium, insulin–dextrose and bicarbonate</li>
+                    <li>Afterwards: escharotomy wounds are dressed and later grafted; plan continued analgesia (regional techniques where the burn permits), tetanus cover, and repeat compartment assessment</li>
+                  </ul>
                 </div>
               </CollapsibleSubsection>
             </ExamSection>
           </div>
+
+          <div id="special" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
+              <CollapsibleSubsection title="Special Types of Burns">
+                <div className="bg-card border border-border rounded-lg p-4 mb-3">
+                  <h3 className="font-semibold text-foreground mb-2">Electrical Injury</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong className="text-foreground">Low voltage (&lt;1000 V, domestic 240 V)</strong>: small entry/exit wounds, tetanic muscle contraction that may prevent the victim letting go, and a real risk of arrhythmia because alternating current at 50 Hz is highly arrhythmogenic. Tissue damage is usually limited but may be locally deep</li>
+                    <li><strong className="text-foreground">High voltage (≥1000 V, overhead cables, railway lines)</strong>: extensive deep tissue destruction, associated flash and flame burns, blast injury and falls (spinal and long-bone fractures) — manage as major trauma</li>
+                    <li><strong className="text-foreground">"Tip of the iceberg" phenomenon</strong>: current follows the path of least resistance along nerves, blood vessels and muscle, so cutaneous entry and exit wounds grossly underestimate the deep muscle necrosis beneath intact-looking skin. Never estimate resuscitation needs from surface area alone in high-voltage injury, and expect progressive necrosis requiring repeated debridement<InlineRef topicId="burns-plastics" refLabel="Bittner 2015" /></li>
+                    <li><strong className="text-foreground">Cardiac</strong>: obtain an immediate 12-lead ECG. Arrhythmias include VF or asystole at the scene, atrial fibrillation, and conduction abnormalities; troponin may rise. Continuous cardiac monitoring for at least 24 hours is indicated after high-voltage injury, loss of consciousness, an abnormal initial ECG, transthoracic current path or documented arrhythmia; an asymptomatic low-voltage injury with a normal ECG generally does not need admission for monitoring</li>
+                    <li><strong className="text-foreground">Rhabdomyolysis, myoglobinuria and AKI</strong>: dark tea-coloured urine, creatine kinase often in the tens of thousands, hyperkalaemia, hyperphosphataemia, hypocalcaemia and metabolic acidosis. Give generous crystalloid targeting urine output <strong>1–2 mL/kg/h</strong> (higher than the standard 0.5 mL/kg/h burn target), monitor potassium and CK serially, consider urinary alkalinisation, and involve critical care early — renal replacement therapy may be needed</li>
+                    <li><strong className="text-foreground">Compartment syndrome</strong>: deep muscle oedema within intact fascia. Look for pain out of proportion, tense compartments and pain on passive stretch, measure compartment pressures, and proceed to fasciotomy (not just escharotomy) early</li>
+                    <li>Also consider: cataracts and neurological sequelae (delayed peripheral neuropathy, myelopathy), tympanic membrane rupture, oral commissure burns in children biting cables (delayed labial artery haemorrhage), and safeguarding/incident reporting</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Chemical Injury</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong className="text-foreground">General principle — copious irrigation</strong>: remove contaminated clothing, brush off dry powder first, then irrigate with running water for at least 20–30 minutes (longer, often 1–2 hours, for alkalis, which saponify fat and penetrate deeply). Protect staff with gloves, apron and eye protection, contain run-off, and check the safety data sheet or contact the national poisons service. Alkali burns are typically deeper and progress for longer than acid burns; check surface pH to guide when irrigation is adequate</li>
+                    <li><strong className="text-foreground">Hydrofluoric acid</strong>: fluoride ion chelates calcium and magnesium, causing severe pain out of proportion to the visible burn plus <em>systemic</em> hypocalcaemia, hypomagnesaemia, hyperkalaemia and fatal arrhythmias. Treat with topical <strong>calcium gluconate 2.5% gel</strong> massaged in, then intradermal/subcutaneous infiltration of 5% calcium gluconate (0.5 mL/cm²), intra-arterial or intravenous regional calcium gluconate for digital or extensive exposure, nebulised 2.5% calcium gluconate for inhalation, and aggressive IV calcium with continuous ECG monitoring and repeated ionised calcium and magnesium measurement</li>
+                    <li><strong className="text-foreground">Phenol</strong>: poorly water-soluble and readily absorbed, causing systemic toxicity (arrhythmia, seizures, hepatic and renal injury) and a white coagulum locally. Decontaminate with <strong>polyethylene glycol (PEG 300/400)</strong> — or 50% isopropyl alcohol if PEG is unavailable — followed by water irrigation, as water alone can increase dermal absorption</li>
+                    <li><strong className="text-foreground">Cement (wet concrete)</strong>: calcium oxide is a strong alkali that causes insidious, painless, progressive full-thickness injury, classically to the knees and ankles of kneeling workers hours after exposure. Remove all clothing and cement debris and <strong>irrigate copiously with water</strong>, then reassess repeatedly because the depth evolves over 12–24 hours</li>
+                    <li><strong className="text-foreground">Exceptions — do not irrigate with water first</strong>: <em>elemental sodium, potassium and lithium</em> ignite explosively with water — cover with mineral oil and remove particles mechanically; dry lime and other dry powders should be brushed off before any water is used; elemental phosphorus is kept wet and debrided under water or covered in oil to prevent ignition (copper sulphate identification is now discouraged because of systemic toxicity)</li>
+                    <li>All chemical injuries: full trauma and eye assessment (irrigate eyes separately with an eyelid speculum and topical anaesthetic), analgesia, tetanus cover, monitor electrolytes and acid–base status, and refer to a burns centre for anything more than a trivial, fully decontaminated superficial injury<InlineRef topicId="burns-plastics" refLabel="BJA Educ 2019" /></li>
+                  </ul>
+                </div>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
 
           <div id="plastics" className="scroll-mt-24">
             <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
@@ -345,10 +399,18 @@ const BurnsPlasticsTopic = () => {
                 </div>
                 <div className="bg-card border border-border rounded-lg p-4">
                   <h3 className="font-semibold text-foreground mb-2">Tumescent Anaesthesia</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Large volumes of dilute LA (lidocaine 0.05–0.1% with adrenaline 1:1,000,000) infiltrated subcutaneously. Used for liposuction. Maximum lidocaine dose with tumescence: up to 35 mg/kg (vs standard 7 mg/kg with adrenaline) due to slow absorption from adipose tissue. Risk of delayed LAST — monitor for up to 18 h post-procedure.
+                  <p className="text-sm text-muted-foreground mb-2">
+                    Large volumes of very dilute local anaesthetic with adrenaline are infiltrated into the subcutaneous fat until the tissue is firm and blanched ("tumescent"). It is used for liposuction, large-area harvesting and some burn debridement, providing analgesia and marked vasoconstriction that reduces blood loss<InlineRef topicId="burns-plastics" refLabel="BJA Educ 2019" />.
                   </p>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong className="text-foreground">Klein solution</strong> (the classic recipe): lidocaine 0.05–0.1% (500–1000 mg) with adrenaline 1:1,000,000 (1 mg) and sodium bicarbonate 8.4% 10 mL (12.5 mmol, to reduce injection pain) made up in 1 L of warmed 0.9% sodium chloride; triamcinolone is added in some formulations</li>
+                    <li><strong className="text-foreground">Dose</strong>: because absorption from vasoconstricted fat is so slow, doses of <strong>35–55 mg/kg</strong> lidocaine are described as safe with tumescent infiltration, versus a conventional maximum of 7 mg/kg with adrenaline. Stay at the lower end in the elderly, in hepatic impairment, and with CYP3A4/1A2 inhibitors</li>
+                    <li><strong className="text-foreground">Delayed absorption</strong>: plasma lidocaine peaks late — approximately <strong>12 hours</strong> after infiltration (range 10–14 h) — and remains measurable for 24–36 hours, so toxicity typically appears after the patient has left theatre</li>
+                    <li><strong className="text-foreground">Risks</strong>: delayed local anaesthetic systemic toxicity (perioral tingling, tinnitus, agitation, seizures, arrhythmia, cardiac arrest — treat with 20% lipid emulsion per the AAGBI LAST protocol); fluid overload and pulmonary oedema from litres of infiltrate plus reabsorbed fluid and IV crystalloid; hypothermia from cold infiltration fluid (always warm it); methaemoglobinaemia with prilocaine-containing solutions; and adrenaline effects (tachycardia, hypertension, arrhythmia)</li>
+                    <li><strong className="text-foreground">Monitoring</strong>: keep the patient monitored for <strong>at least 12 hours, and beyond 12 hours where large doses were used</strong> — overnight observation with cardiorespiratory monitoring is appropriate after high-dose or large-volume tumescence rather than same-day discharge. Record the total lidocaine dose in mg/kg on the anaesthetic chart, keep a strict fluid balance including the infiltrate volume, and ensure lipid emulsion is immediately available</li>
+                  </ul>
                 </div>
+
               </CollapsibleSubsection>
             </ExamSection>
           </div>
