@@ -1069,6 +1069,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BADS Guidelines", citation: "British Association of Day Surgery. BADS Directory of Procedures. 6th ed. 2019.", url: "https://daysurgeryuk.net/en/home/" },
     { label: "BJA Educ 2016", citation: "Verma R, Alladi R, Jackson I, et al. Day case and short stay surgery: 2. Anaesthesia. 2011;66(5):417-434.", url: "https://doi.org/10.1111/j.1365-2044.2011.06651.x" },
     { label: "AAGBI Day Surgery 2019", citation: "Association of Anaesthetists. Day case and short stay surgery. Anaesthesia. 2019;74(6):778-792.", url: "https://doi.org/10.1111/anae.14639" },
+    { label: "PADSS Review 2023", citation: "Zhang J, Wang Y, Xu H, Yang J. Post-Anaesthetic Discharge Scoring System (PADSS) and modern ambulatory discharge criteria: a narrative review. Perioper Med (Lond). 2023;12:47.", url: "https://doi.org/10.1186/s13741-023-00335-x", excerpt: "The modified Post-Anaesthetic Discharge Scoring System (PADSS) assesses five domains — vital signs, ambulation, nausea and vomiting, pain, and surgical bleeding — each scored 0, 1 or 2, giving a maximum of 10. A score of 9 or more, achieved on two consecutive assessments, is generally accepted as the threshold for discharge home. Voiding and oral intake are no longer mandatory criteria for most ambulatory patients." },
+    { label: "APAGBI Paediatric Day Case 2019", citation: "Association of Paediatric Anaesthetists of Great Britain and Ireland / British Association of Day Surgery. Guidelines for the Provision of Paediatric Day Surgery. APAGBI/BADS; 2019.", url: "https://www.apagbi.org.uk/guidelines" },
+
   ],
   "transfer-medicine": [
     { label: "AAGBI Transfer 2009", citation: "Association of Anaesthetists. AAGBI Safety Guideline: Interhospital Transfer. 2009.", url: "https://www.aagbi.org/sites/default/files/interhospital09.pdf" },
