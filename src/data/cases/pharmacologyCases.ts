@@ -24,6 +24,15 @@ const s = {
   serotonin: { label: "BJA Educ: serotonin syndrome in the perioperative period", href: "https://doi.org/10.1016/j.bjae.2019.10.003" },
   allergy: { label: "BJA Educ: allergy and anaesthesia, managing the risk", href: "https://doi.org/10.1016/j.bjae.2020.04.005" },
   liverDisease: { label: "BJA Educ: perioperative management of patients with liver disease", href: "https://doi.org/10.1016/j.bjae.2021.11.006" },
+  sugammadex: { label: "BJA Educ: sugammadex and neuromuscular reversal", href: "https://doi.org/10.1016/j.bjae.2020.03.008" },
+  doacReversal: { label: "BJA Educ: management of direct oral anticoagulants in the perioperative period", href: "https://doi.org/10.1016/j.bjae.2019.11.002" },
+  andexanetTrial: { label: "NEJM: andexanet alfa for acute major bleeding associated with factor Xa inhibitors", href: "https://doi.org/10.1056/NEJMoa1607887" },
+  vasoplegia: { label: "BJA Educ: vasoplegic syndrome after cardiac surgery", href: "https://doi.org/10.1016/j.bjae.2021.07.002" },
+  vasopressin: { label: "Surviving Sepsis Campaign: international guidelines for management of sepsis and septic shock 2021", href: "https://doi.org/10.1097/CCM.0000000000005337" },
+  clozapine: { label: "BJA Educ: anaesthesia for patients with psychiatric illness", href: "https://doi.org/10.1016/j.bjae.2021.12.003" },
+  qtc: { label: "BJA Educ: drug-induced QT prolongation and torsade de pointes", href: "https://doi.org/10.1093/bjaceaccp/mkr061" },
+  crrtDrugs: { label: "BJA Educ: drug dosing in acute kidney injury and renal replacement therapy", href: "https://doi.org/10.1016/j.bjae.2018.07.002" },
+  vancomycinAUC: { label: "ASHP/IDSA consensus guideline for therapeutic monitoring of vancomycin", href: "https://doi.org/10.1093/ajhp/zxaa036" },
 };
 
 export const pharmacologyCaseBank: CaseBank = {
@@ -31,7 +40,7 @@ export const pharmacologyCaseBank: CaseBank = {
   path: "/pharmacology/case-bank",
   title: "Pharmacology Case Bank",
   subtitle: "Progressive scenarios that apply kinetics, dynamics and drug-specific safety to real decisions.",
-  metaDescription: "Eighteen progressive pharmacology cases on TIVA kinetics, volatile agents, opioid tolerance, malignant hyperthermia, serotonin syndrome, TDM and NMB anaphylaxis.",
+  metaDescription: "Twenty-four progressive pharmacology cases on TIVA kinetics, volatile agents, opioid tolerance, malignant hyperthermia, serotonin syndrome, TDM, NMB anaphylaxis, reversal agents, anticoagulant reversal, vasoplegic shock, psychiatric drug interactions, renal replacement drug dosing and local anaesthetic toxicity.",
   backPath: "/pharmacology",
   backLabel: "Pharmacology",
   accentColor: "text-pharmacology",
