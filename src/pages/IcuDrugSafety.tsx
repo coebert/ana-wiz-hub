@@ -231,10 +231,31 @@ const IcuDrugSafety = () => {
                             {firstSentences(mech.metabolism)}
                           </p>
                           {pk && (
-                            <p className="mt-1.5 text-muted-foreground">
-                              <span className="font-medium text-foreground">Handling: </span>
-                              {pk.organImpairment}
-                            </p>
+                            <>
+                              <dl className="mt-2 grid grid-cols-2 gap-x-4 gap-y-2 rounded-md border border-icu/20 bg-background/60 p-2.5 sm:grid-cols-3">
+                                {(
+                                  [
+                                    ["Onset", pk.onset],
+                                    ["Half-life", pk.halfLife],
+                                    ["Clearance", pk.clearance],
+                                    ["Vd", pk.volumeOfDistribution],
+                                    ["Protein binding", pk.proteinBinding],
+                                    ["Elimination", pk.elimination],
+                                  ] as const
+                                ).map(([label, value]) => (
+                                  <div key={label}>
+                                    <dt className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                                      {label}
+                                    </dt>
+                                    <dd className="mt-0.5 text-xs leading-snug text-foreground">{value}</dd>
+                                  </div>
+                                ))}
+                              </dl>
+                              <p className="mt-1.5 text-muted-foreground">
+                                <span className="font-medium text-foreground">Handling: </span>
+                                {pk.organImpairment}
+                              </p>
+                            </>
                           )}
                           <Link
                             to={`/intensive-care/drug-mechanisms?slug=${d.slug}#${d.slug}`}
