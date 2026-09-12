@@ -85,6 +85,7 @@ const PharmacologyCaseBank = lazy(() => import("./pages/PharmacologyCaseBank"));
 const IntensiveCareCaseBank = lazy(() => import("./pages/IntensiveCareCaseBank"));
 const IcuDrugDoses = lazy(() => import("./pages/IcuDrugDoses"));
 const IcuInfusions = lazy(() => import("./pages/IcuInfusions"));
+const IcuManagementFlows = lazy(() => import("./pages/IcuManagementFlows"));
 const IcuDrugMechanisms = lazy(() => import("./pages/IcuDrugMechanisms"));
 const AnaesthesiaDrugDoses = lazy(() => import("./pages/AnaesthesiaDrugDoses"));
 
@@ -184,6 +185,7 @@ const App = () => (
           <Route path="/intensive-care/case-bank" element={<IntensiveCareCaseBank />} />
           <Route path="/intensive-care/drug-doses" element={<IcuDrugDoses />} />
           <Route path="/intensive-care/infusions" element={<IcuInfusions />} />
+          <Route path="/intensive-care/management-flows" element={<IcuManagementFlows />} />
           <Route path="/intensive-care/drug-mechanisms" element={<IcuDrugMechanisms />} />
           <Route path="/perioperative" element={<PerioperativeSection />} />
           <Route path="/perioperative/case-bank" element={<PerioperativeCaseBank />} />
