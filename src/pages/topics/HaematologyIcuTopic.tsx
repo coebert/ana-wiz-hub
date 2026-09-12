@@ -262,6 +262,29 @@ const HaematologyIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="dic" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Disseminated Intravascular Coagulation (DIC)">
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              DIC is an acquired syndrome of widespread intravascular activation of coagulation, driven by unregulated tissue factor exposure and thrombin generation. Diffuse microvascular fibrin deposition contributes to organ dysfunction, while consumption of platelets and clotting factors — with secondary hyperfibrinolysis — produces a concurrent bleeding tendency. Commonest cause is sepsis; others include major trauma, pancreatitis, malignancy (especially acute promyelocytic leukaemia), and obstetric emergencies (amniotic fluid embolism, placental abruption).
+            </p>
+            <div className="rounded-xl border border-border bg-card p-5 mb-4">
+              <h3 className="font-semibold text-foreground mb-2">ISTH overt-DIC score</h3>
+              <p className="text-sm text-muted-foreground">
+                Applied only in a patient with an underlying condition known to cause DIC. Components: platelet count, fibrin-related marker (D-dimer/FDP) rise, prolongation of prothrombin time, and fibrinogen level, each scored and summed. A score <strong>≥5 points</strong> is compatible with overt DIC <InlineRef topicId="haematology-icu" refLabel="ISTH DIC 2009" />; scores below this warrant serial repeat testing ("non-overt" DIC).
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-card p-5 mb-4">
+              <h3 className="font-semibold text-foreground mb-2">Management</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>Treat the underlying cause — DIC will not resolve until the trigger (sepsis source control, delivery, chemotherapy for APML) is addressed.</li>
+                <li>Blood product replacement is reserved for patients who are <strong>actively bleeding</strong> or require an invasive procedure — target platelets &gt;50 ×10⁹/L and fibrinogen &gt;1.5 g/L, using platelet concentrate, FFP and cryoprecipitate/fibrinogen concentrate as guided by laboratory results and viscoelastic testing.</li>
+                <li>Prophylactic replacement in the absence of bleeding is not routinely recommended and may worsen microvascular thrombosis.</li>
+                <li>Therapeutic or low-dose (prophylactic-intensity) heparin is controversial but may be considered in a thrombosis-dominant phenotype (e.g. purpura fulminans, acral ischaemia, venous thromboembolism) where bleeding risk is low <InlineRef topicId="haematology-icu" refLabel="BJA Educ DIC 2017" />.</li>
+              </ul>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="hus" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Haemolytic Uraemic Syndrome (HUS)">
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -296,8 +319,8 @@ const HaematologyIcuTopic = () => {
               <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
                 <li>Treat the trigger (antimicrobials, chemotherapy).</li>
                 <li>HLH-94/2004: dexamethasone 10 mg/m² + etoposide 150 mg/m² biweekly.</li>
-                <li>Anakinra (IL-1 RA) — increasingly used in adult MAS/HLH.</li>
-                <li>Ruxolitinib (JAK1/2) for refractory disease.</li>
+                <li><strong>Anakinra</strong> — recombinant IL-1 receptor antagonist; increasingly used first-line alongside steroids in sepsis-induced HLH/MAS given its short half-life and favourable safety profile in critical illness compared with etoposide (less myelosuppression, easier to titrate/withdraw if infection is uncontrolled) <InlineRef topicId="haematology-icu" refLabel="HLH Anakinra" />.</li>
+                <li><strong>Ruxolitinib</strong> — JAK1/2 inhibitor acting downstream of IFN-γ and other pro-inflammatory cytokines in the HLH cascade; used as salvage therapy for disease refractory to steroids and etoposide.</li>
                 <li>Organ support; track ferritin trend as marker of activity.</li>
               </ol>
             </div>
@@ -306,6 +329,36 @@ const HaematologyIcuTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">
                 ~90% sensitivity, 96% specificity for HLH. Check ferritin early in any unexplained multi-organ failure.
               </p>
+            </div>
+            </CollapsibleSubsection>
+
+            <CollapsibleSubsection title="Immunosuppression in the ICU">
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Critically ill haematology patients are frequently immunosuppressed — from the underlying disease itself (autoimmune flare, haematological malignancy, transplant conditioning) or iatrogenically as treatment (e.g. rituximab/steroids for TTP, dexamethasone/etoposide/anakinra for HLH). The cumulative <strong>"net state of immunosuppression"</strong> — combining disease burden, drug dose/duration, neutropenia, breach of mucocutaneous barriers, and comorbidity (renal failure, malnutrition) — determines infective risk better than any single agent or dose.
+            </p>
+            <div className="rounded-xl border border-border bg-card p-5 mb-4">
+              <h3 className="font-semibold text-foreground mb-2">Risks of the immunosuppressed state</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>Opportunistic viral (CMV, HSV/VZV, EBV-driven PTLD), fungal (invasive aspergillosis, candidiasis, PCP) and protozoal infection.</li>
+                <li>Delayed wound healing and higher risk of line/wound infection.</li>
+                <li>Masked or blunted inflammatory signs (fever, leucocytosis, localising signs) — sepsis can present atypically or late, so a high index of suspicion is needed even with reassuring observations.</li>
+              </ul>
+            </div>
+            <div className="rounded-xl border border-border bg-card p-5 mb-4">
+              <h3 className="font-semibold text-foreground mb-2">Prophylaxis</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li><strong>PCP prophylaxis:</strong> co-trimoxazole 480–960 mg daily, or 960 mg three times weekly, indicated for patients on rituximab or prednisolone ≥20 mg/day for &gt;4 weeks <InlineRef topicId="haematology-icu" refLabel="BSH TTP 2023" />.</li>
+                <li><strong>Antifungal prophylaxis:</strong> posaconazole (or equivalent mould-active azole) in high-risk haematology patients (e.g. prolonged neutropenia, AML induction, GvHD).</li>
+                <li><strong>Antiviral prophylaxis:</strong> aciclovir for HSV/VZV reactivation; CMV surveillance (PCR monitoring) with pre-emptive therapy in seropositive/high-risk transplant patients.</li>
+              </ul>
+            </div>
+            <div className="rounded-xl border border-border bg-card p-5 mb-4">
+              <h3 className="font-semibold text-foreground mb-2">Vaccination principles</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>Vaccinate before starting immunosuppression wherever possible (ideally ≥2 weeks prior).</li>
+                <li>Avoid live/live-attenuated vaccines during immunosuppression.</li>
+                <li>Expect reduced vaccine immunogenicity/response, particularly after B-cell depletion (rituximab) — consider re-vaccination once immune reconstitution has occurred.</li>
+              </ul>
             </div>
             </CollapsibleSubsection>
           </ExamSection>

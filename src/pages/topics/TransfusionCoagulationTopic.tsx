@@ -11,6 +11,7 @@ import CitrateWashSeparationDiagram from "@/components/diagrams/intensive-care/C
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const transfusionCoagulationFaqs: Array<[string, string]> = [
   ["What ratios are used in major haemorrhage protocols?", "Empirical 1:1:1 (RBC:FFP:platelets) until ROTEM/TEG-guided, based on PROPPR trial; activate at predicted 4+ units in 1 h, give TXA 1 g within 3 h (CRASH-2) and target ionised Ca²⁺ >1.0 mmol/L."],
@@ -144,6 +145,18 @@ const TransfusionCoagulationTopic = () => {
                   <tr><td className="py-2 font-medium text-foreground">PCC (4-factor)</td><td>II, VII, IX, X + Protein C/S</td><td>Warfarin reversal: dose by INR. Give with IV vit K 5–10 mg. Recheck INR at 30 min and 6–8 h.</td></tr>
                 </tbody>
               </table>
+            </div>
+            <div className="mt-4">
+              <h3 className="text-lg font-serif font-bold text-foreground mb-2">The Red Cell Storage Lesion</h3>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                During storage, red cells undergo progressive biochemical and structural change. Biochemically: ↓2,3-DPG and ↓ATP, ↑extracellular K⁺, a falling pH, oxidative membrane damage, ↑cell-free haemoglobin (which scavenges nitric oxide and may impair microvascular flow), and accumulation of bioactive lipids and cytokines from residual leucocytes/platelets. Morphologically, cells progress from the normal biconcave disc → echinocyte → spherocyte, with reduced deformability that may impair microcirculatory passage <InlineRef topicId="transfusion-coagulation" refLabel="BPA Transfusion 2026" />.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                Functionally, depleted 2,3-DPG left-shifts the oxyhaemoglobin dissociation curve, impairing immediate oxygen offloading at the tissues in freshly transfused units; this reverses over a few hours in vivo as 2,3-DPG regenerates.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Clinically, the large randomised trials ABLE and RECESS showed no outcome benefit from using fresher red cells over standard-issue units in critically ill and cardiac surgical populations <InlineRef topicId="transfusion-coagulation" refLabel="ABLE 2015" /> <InlineRef topicId="transfusion-coagulation" refLabel="RECESS 2015" />. However, the accumulated extracellular potassium remains clinically relevant during rapid massive transfusion, in neonates, and in renal failure — favour fresher or washed units in these settings, and note that irradiated units leak more potassium during storage <InlineRef topicId="transfusion-coagulation" refLabel="BPA Transfusion 2026" />.
+              </p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -299,6 +312,26 @@ const TransfusionCoagulationTopic = () => {
                 Hypothermia + acidosis + coagulopathy form a self-perpetuating cycle. Damage control resuscitation: permissive hypotension (SBP 80–90), minimise crystalloid, early blood products, TXA &lt;3 h, correct hypothermia and Ca²⁺, expedite definitive haemorrhage control.
               </p>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="tic" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
+            <CollapsibleSubsection title="Trauma-Induced Coagulopathy (TIC)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              TIC is present on admission in up to 25% of severely injured patients, before any fluid resuscitation has been given — it is an endogenous coagulopathy of injury, not simply dilution <InlineRef topicId="transfusion-coagulation" refLabel="Anaesthesia 2017 TIC" />.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Drivers include tissue factor release from injured tissue, shock/hypoperfusion with endothelial activation, activated protein C-mediated anticoagulation (consuming factors V and VIII and impairing PAI-1), fibrinogen depletion, endotheliopathy with glycocalyx shedding, and hyperfibrinolysis. This is then amplified by the lethal triad of acidosis, hypothermia and hypocalcaemia, plus iatrogenic dilution from resuscitation fluid <InlineRef topicId="transfusion-coagulation" refLabel="Anaesthesia 2017 TIC" />.
+            </p>
+            <div className="p-3 rounded-lg bg-secondary/50 border border-destructive/30 mb-3">
+              <p className="text-sm font-semibold text-foreground mb-1">⚠️ TIC vs DIC — contrasting phenotypes</p>
+              <p className="text-sm text-muted-foreground">
+                TIC is a bleeding phenotype driven by hyperfibrinolysis and factor consumption from injury and shock. This contrasts with the predominantly thrombotic microvascular phenotype of sepsis-driven DIC (see above), where anticoagulation may occasionally be considered and TXA is usually avoided. In TIC, early TXA is beneficial; in thrombosis-dominant DIC it may cause harm.
+              </p>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Management follows damage-control resuscitation principles: empirical 1:1:1 ratios or viscoelastic (ROTEM/TEG) goal-directed factor therapy, tranexamic acid 1 g IV within 3 hours of injury followed by 1 g over 8 hours, correction of ionised calcium to &gt;1.0 mmol/L, active warming to reverse hypothermia, and permissive hypotension until surgical or radiological control of bleeding is achieved <InlineRef topicId="transfusion-coagulation" refLabel="Anaesthesia 2017 TIC" />.
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -530,6 +563,19 @@ const TransfusionCoagulationTopic = () => {
                 </div>
               ))}
             </div>
+
+            <p className="text-muted-foreground leading-relaxed mb-2">
+              Treatment of the underlying trigger is paramount and DIC will not resolve without it — appropriate antimicrobials and source control in sepsis, expedited delivery in obstetric causes, and ATRA (all-trans retinoic acid) in acute promyelocytic leukaemia <InlineRef topicId="transfusion-coagulation" refLabel="ISTH DIC 2009" />.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-2">
+              Haemostatic support is reserved for active bleeding or before an invasive procedure, targeted to clinical rather than purely numerical thresholds: platelets &gt;50 ×10⁹/L if bleeding (a lower threshold of 20–30 ×10⁹/L is used if not bleeding but at high risk, e.g. sepsis with marrow suppression); fibrinogen &gt;1.5–2.0 g/L with cryoprecipitate or fibrinogen concentrate; and FFP 15 mL/kg for bleeding with a prolonged PT/APTT ratio &gt;1.5 <InlineRef topicId="transfusion-coagulation" refLabel="ISTH DIC 2009" />.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-2">
+              Anticoagulation is controversial. A low-dose unfractionated heparin infusion may be considered in thrombosis-dominant DIC — purpura fulminans, acral ischaemia, large-vessel thrombosis — once any bleeding is controlled, aiming to interrupt ongoing consumption; there is no good trial evidence of mortality benefit and the risk-benefit balance must be individualised <InlineRef topicId="transfusion-coagulation" refLabel="ISTH DIC 2009" />.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              TXA is generally avoided in DIC because it can worsen microvascular thrombosis by inhibiting fibrinolysis of already-forming clot; the exception is demonstrated hyperfibrinolysis on viscoelastic testing (ROTEM/TEG maximum lysis &gt;15%) with severe bleeding, where antifibrinolytic therapy may be justified <InlineRef topicId="transfusion-coagulation" refLabel="ISTH DIC 2009" />.
+            </p>
 
             <div className="p-3 rounded-lg bg-secondary/50 border border-destructive/30">
               <p className="text-sm font-semibold text-foreground mb-1">⚠️ DIC vs TTP/HUS</p>

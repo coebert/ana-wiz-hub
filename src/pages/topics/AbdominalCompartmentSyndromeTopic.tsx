@@ -4,6 +4,8 @@ import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { abdominalCompartmentSyndromeQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const abdominalCompartmentSyndromeFaqs: Array<[string, string]> = [
   ["How is intra-abdominal pressure measured and what defines ACS?", "Bladder pressure with 25 mL saline at end-expiration, supine, transduced at the mid-axillary line; intra-abdominal hypertension ≥12 mmHg, ACS = sustained IAP >20 mmHg with new organ dysfunction (WSACS 2013)."],
@@ -200,6 +202,13 @@ const AbdominalCompartmentSyndromeTopic = () => {
                 Raised IAP transmits to every adjacent compartment and impairs venous return globally. Even moderate
                 IAH (12–15 mmHg) reduces splanchnic perfusion before any clinical sign is apparent.
               </p>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                <strong>Polycompartment syndrome</strong> describes raised pressure in two or more anatomical compartments
+                simultaneously. Raised IAP is transmitted through the diaphragm to raise intrathoracic pressure, which
+                reduces venous return and raises central venous pressure; this in turn raises intracranial pressure and
+                worsens cerebral perfusion. The abdominal, thoracic, cranial and limb compartments interact — a rise in
+                one compartment's pressure, and abdominal-wall compliance itself, influences the others<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
+              </p>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
                   { sys: "Cardiovascular", detail: "↓ IVC return → ↓ preload, ↓ CO; ↑ intrathoracic pressure → falsely elevated CVP/PAOP; ↑ SVR and PVR. Cardiac output falls long before BP, masked by vasopressors." },
@@ -291,15 +300,20 @@ const AbdominalCompartmentSyndromeTopic = () => {
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Management — WSACS Medical Bundle</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Apply <strong>all five domains</strong> in parallel as IAH worsens; reassess IAP every 1–2 h. Escalate
-                to surgical decompression if IAP remains ≥ 20 mmHg with organ failure.
+                to surgical decompression if IAP remains ≥ 20 mmHg with organ failure<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Enteral nutrition should be delayed or stopped in established ACS or severe intra-abdominal
+                hypertension with gut dysfunction; trophic, post-pyloric or parenteral feeding routes are considered
+                once intra-abdominal pressures fall<InlineRef topicId="abdominal-compartment-syndrome" refLabel="ESICM EN 2017" />.
               </p>
               <div className="space-y-3">
                 {[
-                  { topic: "1. Evacuate intraluminal contents", detail: "Large-bore NG tube on free drainage, rectal tube, prokinetics (metoclopramide, erythromycin), stop enteral feed, neostigmine for pseudo-obstruction, endoscopic decompression if needed." },
-                  { topic: "2. Evacuate intra/extra-abdominal fluid collections", detail: "Percutaneous catheter drainage of large-volume ascites, haematoma or abscess under US/CT guidance — can avoid laparotomy in selected cases." },
-                  { topic: "3. Improve abdominal-wall compliance", detail: "Deepen sedation, trial of neuromuscular blockade (often dramatic effect within minutes), nurse supine / head-up < 20°, decompressive escharotomy for circumferential torso burns, treat pain and ventilator dyssynchrony." },
-                  { topic: "4. Optimise fluid balance", detail: "Avoid further positive balance — switch from crystalloid to colloid (20 % HAS) for ongoing losses, diuretics (furosemide) once euvolaemic, early CRRT for negative balance and uraemia. Target neutral-to-negative balance after the first 24 h." },
-                  { topic: "5. Optimise systemic and regional perfusion", detail: "Resuscitate to APP ≥ 60 mmHg (MAP target rises as IAP rises), noradrenaline first-line, avoid excessive PEEP that does not recruit, treat the underlying cause (source control, definitive haemostasis)." },
+                  { topic: "1. Evacuate intraluminal contents", detail: "Large-bore NG tube on free drainage and rectal decompression; prokinetics — metoclopramide 10 mg TDS and erythromycin 250 mg QDS; neostigmine for pseudo-obstruction; endoscopic or colonoscopic decompression; stop enteral feed." },
+                  { topic: "2. Evacuate intra/extra-abdominal fluid collections", detail: "Image-guided percutaneous drainage of ascites, haematoma or abscess under ultrasound or CT guidance — can avoid laparotomy in selected cases." },
+                  { topic: "3. Improve abdominal-wall compliance", detail: "Adequate analgesia and sedation; neuromuscular blockade can drop IAP dramatically and is a useful temporising measure; nurse supine / head-up < 20°; escharotomy for circumferential torso burns; avoid tight dressings and prone positioning." },
+                  { topic: "4. Optimise fluid balance", detail: "De-resuscitate — aim for a neutral-to-negative fluid balance once initial resuscitation is complete: 20 % albumin with furosemide, early renal replacement therapy with ultrafiltration, avoid excessive crystalloid, and use balanced blood-component ratios rather than crystalloid in ongoing haemorrhage." },
+                  { topic: "5. Optimise systemic and regional perfusion", detail: "Target abdominal perfusion pressure (APP = MAP − IAP) ≥ 60 mmHg — noradrenaline first-line, avoiding over-zealous fluid administration purely to raise MAP." },
                 ].map((m) => (
                   <div key={m.topic} className="p-3 rounded-lg border border-border">
                     <p className="font-semibold text-foreground text-sm">{m.topic}</p>
@@ -321,6 +335,65 @@ const AbdominalCompartmentSyndromeTopic = () => {
                 <li>Continue IAP monitoring even with an open abdomen — recurrent ACS can occur through the dressing.</li>
               </ul>
             </div>
+
+            <CollapsibleSubsection title="Management of the Open Abdomen">
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                The WSACS/Björck open-abdomen classification grades the wound by contamination and fixation, and
+                guides the urgency and technique of closure<InlineRef topicId="abdominal-compartment-syndrome" refLabel="Björck 2016" />.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3 mb-4">
+                {[
+                  { g: "Grade 1a", v: "Clean, no fixation." },
+                  { g: "Grade 1b", v: "Contaminated, no fixation." },
+                  { g: "Grade 1c", v: "Enteric leak, no fixation." },
+                  { g: "Grade 2a", v: "Clean, developing fixation." },
+                  { g: "Grade 2b", v: "Contaminated, developing fixation." },
+                  { g: "Grade 2c", v: "Enteric leak, developing fixation." },
+                  { g: "Grade 3", v: "Frozen abdomen, without enteric leak." },
+                  { g: "Grade 4", v: "Frozen abdomen with established enteroatmospheric fistula." },
+                ].map((s) => (
+                  <div key={s.g} className="p-3 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground text-sm">{s.g}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{s.v}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                <strong>Goals of temporary abdominal closure</strong>: prevent evisceration, control fluid loss,
+                prevent fistula formation, and preserve fascia and abdominal domain<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3 mb-4">
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Bogotá bag</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Cheap and simple, but provides no fascial traction and carries a high rate of incisional hernia
+                    and loss of domain.
+                  </p>
+                </div>
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Negative-pressure with fascial traction</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    ABThera or Wittmann patch systems combine negative-pressure wound therapy with active fascial
+                    traction, improving rates of same-admission fascial closure<InlineRef topicId="abdominal-compartment-syndrome" refLabel="Björck 2016" />.
+                  </p>
+                </div>
+              </div>
+              <p className="text-muted-foreground leading-relaxed mb-2">
+                <strong>Complications of the open abdomen</strong>:
+              </p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
+                <li>High-output effluent — 1–2 L/day of protein-rich fluid loss.</li>
+                <li>Enterocutaneous or enteroatmospheric fistula formation.</li>
+                <li>Loss of domain as the abdominal wall retracts.</li>
+                <li>Recurrent intra-abdominal hypertension despite an already-open abdomen.</li>
+                <li>Ventral hernia at the time of eventual closure.</li>
+              </ul>
+              <p className="text-muted-foreground leading-relaxed">
+                <strong>Definitive closure</strong> should aim for delayed primary fascial closure within 7–10 days.
+                Beyond this window, options include component separation, biological or synthetic mesh, or a planned
+                ventral hernia for staged reconstruction<InlineRef topicId="abdominal-compartment-syndrome" refLabel="Björck 2016" /><InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
+              </p>
+            </CollapsibleSubsection>
 
             {/* Prognosis */}
             <div>

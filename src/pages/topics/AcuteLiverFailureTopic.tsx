@@ -7,6 +7,8 @@ import CLIFCACLFDiagram from "@/components/diagrams/intensive-care/CLIFCACLFDiag
 import ALFCerebralOedemaDiagram from "@/components/diagrams/intensive-care/ALFCerebralOedemaDiagram";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const acuteLiverFailureFaqs: Array<[string, string]> = [
   ["What are the King's College criteria for liver transplantation in paracetamol-induced ALF?", "Arterial pH <7.30 after resuscitation, OR all three of: PT >100 s (INR >6.5), creatinine >300 µmol/L, and grade III/IV encephalopathy."],
@@ -181,7 +183,11 @@ const AcuteLiverFailureTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Management</h2>
           <div className="space-y-2">
             {[
-              { system: "Neurological", management: "Grade encephalopathy (West Haven I–IV). ICP monitoring if grade III/IV. Target ICP {'<'}20 mmHg, CPP {'>'} 60 mmHg. Avoid stimulation, head-up 30°, mannitol/hypertonic saline." },
+              { system: "Neurological", management: (
+                <>
+                  Grade encephalopathy using the <strong>West Haven</strong> scale (I: mild confusion/altered sleep; II: lethargy, disorientation; III: marked confusion, somnolent but rousable; IV: coma). Target ICP {'<'}20–25 mmHg and CPP {'>'}50–60 mmHg. Treat surges with mannitol 0.5–1 g/kg boluses or hypertonic saline 2 mL/kg of 3–5%, maintaining serum sodium 145–155 mmol/L with regular osmolality monitoring. Ammonia {'>'}150–200 µmol/L, and a rapidly rising trend, are risk markers for cerebral oedema and intracranial hypertension — early continuous renal replacement therapy has a role in ammonia clearance independent of renal indication. In refractory intracranial hypertension, moderate hypothermia (35–36°C) and short-acting sedation can act as a bridge to transplantation. Avoid stimulation, nurse head-up 30°, control seizures, and maintain normocapnia — brief hyperventilation is reserved as rescue therapy for acute ICP surges only, not routine management. Invasive ICP monitoring remains controversial: it is used mainly in grade III/IV encephalopathy awaiting transplant to guide osmotherapy, but has no demonstrated survival benefit and carries a risk of intracranial haemorrhage — particularly in non-paracetamol aetiologies with more deranged coagulation — so its use is centre-specific and guided by local expertise and bleeding risk<InlineRef topicId="acute-liver-failure" refLabel="USALFSG 2007" />.
+                </>
+              ) },
               { system: "Cardiovascular", management: "Hyperdynamic circulation (high CO, low SVR) — similar to sepsis. Noradrenaline first-line. Relative adrenal insufficiency — consider hydrocortisone." },
               { system: "Coagulation", management: "Balanced coagulopathy (↓ pro- and anti-coagulant factors). Do NOT correct INR unless actively bleeding or pre-procedure — INR used for prognostication (King's criteria)." },
               { system: "Metabolic", management: "Hypoglycaemia (impaired gluconeogenesis — 10% dextrose infusion). Metabolic acidosis (lactate). Hypokalaemia, hyponatraemia, hypophosphataemia." },
@@ -204,11 +210,47 @@ const AcuteLiverFailureTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">pH {'<'} 7.3 after resuscitation (strongest predictor). OR all three: INR {'>'} 6.5, creatinine {'>'} 300 µmol/L, grade III/IV encephalopathy.</p>
             </div>
             <div className="p-4 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Non-Paracetamol ALF</p>
-              <p className="text-sm text-muted-foreground mt-1">INR {'>'} 6.5 (irrespective of grade). OR any 3 of 5: age {'<'}10 or {'>'} 40, non-A/non-B hepatitis, drug reaction, jaundice {'>'} 7 days before encephalopathy, INR {'>'} 3.5, bilirubin {'>'} 300.</p>
+              <p className="font-semibold text-foreground text-sm">Non-Paracetamol ALF<InlineRef topicId="acute-liver-failure" refLabel="King's Criteria" /></p>
+              <p className="text-sm text-muted-foreground mt-1">
+                INR {'>'} 6.5 (irrespective of grade of encephalopathy). OR any 3 of the following 5: (1) age {'<'}10 or {'>'} 40 years; (2) aetiology non-A non-B non-C hepatitis, drug-induced liver injury, or halothane hepatitis; (3) jaundice-to-encephalopathy interval {'>'} 7 days; (4) INR {'>'} 3.5; (5) serum bilirubin {'>'} 300 µmol/L.
+              </p>
             </div>
           </div>
+          <p className="text-muted-foreground leading-relaxed mt-3">
+            <strong>Role of lactate:</strong> post-resuscitation arterial lactate is an independent prognostic marker in ALF, correlating with the burden of SIRS and SOFA-defined organ dysfunction. The Bernal lactate modification adds arterial lactate {'>'} 3.5 mmol/L after early fluid resuscitation, or {'>'} 3.0 mmol/L at 12 hours, as an additional trigger for listing — this improves sensitivity for identifying patients who will need transplantation, though it has not clearly outperformed the original King's criteria in subsequent validation studies<InlineRef topicId="acute-liver-failure" refLabel="Bernal Lactate 2006" />.
+          </p>
         </div>
+
+        <CollapsibleSubsection title="Paracetamol Overdose Management">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The toxic dose is approximately 150 mg/kg (or {'>'}12 g total) in a single ingestion. Paracetamol is normally conjugated safely, but a minor CYP450 pathway generates the reactive metabolite NAPQI, which is detoxified by hepatic glutathione. In overdose (or with glutathione depletion — malnutrition, chronic alcohol excess, enzyme-inducing drugs), glutathione stores are overwhelmed and NAPQI causes centrilobular hepatocyte necrosis<InlineRef topicId="acute-liver-failure" refLabel="NPIS Toxbase" />.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The Rumack–Matthew nomogram (UK treatment line at 100 mg/L at 4 hours) applies <strong>only</strong> to a single, acute ingestion with a known time of overdose, plotted between 4 and 15 hours post-ingestion. Treat empirically with acetylcysteine, without waiting for a paracetamol level, in: staggered or repeated supratherapeutic ingestion; unknown or uncertain timing of ingestion; presentation {'>'}8 hours post-ingestion where a delay to level/treatment is anticipated; or any clinical or biochemical evidence of liver injury<InlineRef topicId="acute-liver-failure" refLabel="NPIS Toxbase" />.
+          </p>
+          <p className="text-sm font-semibold text-foreground mb-2">UK 21-hour IV acetylcysteine (NAC) regimen</p>
+          <div className="space-y-2 mb-4">
+            {[
+              { step: "Bag 1", action: "150 mg/kg in 200 mL 5% glucose over 1 hour." },
+              { step: "Bag 2", action: "50 mg/kg in 500 mL 5% glucose over 4 hours." },
+              { step: "Bag 3", action: "100 mg/kg in 1000 mL 5% glucose over 16 hours." },
+            ].map((s) => (
+              <div key={s.step} className="flex gap-3 p-3 rounded border border-border">
+                <span className="font-bold text-primary text-sm whitespace-nowrap">{s.step}</span>
+                <span className="text-sm text-muted-foreground">{s.action}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The SNAP two-bag 12-hour regimen (a higher initial dose over a longer first infusion, then a single maintenance infusion) is an alternative with fewer infusion-rate changes and a lower rate of anaphylactoid reactions.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            <strong>Prolonged treatment:</strong> continue NAC beyond the standard 21 hours if INR remains {'>'}1.3–1.5, ALT is rising, creatinine is rising, encephalopathy is present, or paracetamol is still detectable. However, prolonged NAC infusion may delay hepatic regeneration, so ongoing need should be reassessed regularly against trend in liver function rather than continued indefinitely by default<InlineRef topicId="acute-liver-failure" refLabel="NAC Prolonged 2009" />.
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            <strong>Anaphylactoid reactions</strong> (flushing, urticaria, bronchospasm — usually during the first infusion) are common and dose/rate-related, not true IgE-mediated allergy. Manage by pausing the infusion, giving an antihistamine (and nebulised salbutamol for bronchospasm), then restarting at a slower rate once symptoms settle — treatment should not be abandoned. Refer early to a specialist liver/transplant centre using King's College Criteria if there is evidence of severe hepatotoxicity or evolving ALF.
+          </p>
+        </CollapsibleSubsection>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Acute-on-Chronic Liver Failure (ACLF)</h2>

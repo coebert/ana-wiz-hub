@@ -8,6 +8,7 @@ import ToxidromeComparatorDiagram from "@/components/diagrams/intensive-care/Tox
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const toxicologyFaqs: Array<[string, string]> = [
   ["When is haemodialysis indicated in poisoning?", "For low-Vd, low-protein-bound, water-soluble toxins: salicylates (≥7.2 mmol/L or AKI), methanol/ethylene glycol, lithium (>4 mmol/L acute), valproate (severe), metformin-associated lactic acidosis, and theophylline."],
@@ -214,12 +215,33 @@ const ToxicologyTopic = () => {
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="High-Dose Insulin Euglycaemia Therapy (HIET)">
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Mechanism</strong>: direct positive inotropy, shifts myocardial metabolism from free fatty acids to carbohydrate substrate, and improves myocardial and peripheral glucose uptake in the insulin-resistant, hypoinsulinaemic state of severe CCB/beta-blocker toxicity</li>
+              <li><strong>Indication</strong>: refractory cardiogenic shock in beta-blocker and calcium-channel-blocker overdose; increasingly used as a first-line agent (alongside calcium and fluids) in CCB toxicity rather than a rescue therapy</li>
+              <li><strong>Protocol</strong>: short-acting (Actrapid) insulin 1 unit/kg IV bolus, then infusion 0.5–2 units/kg/h; give 50 mL of 50% glucose bolus alongside, followed by 10% glucose infusion titrated to keep glucose &gt;5.5 mmol/L</li>
+              <li><strong>Monitoring</strong>: capillary glucose hourly (reducing to 2-hourly once stable), potassium 2–4 hourly with supplementation as it falls intracellularly; use central venous access given large glucose/insulin volumes and risk of hyponatraemia from free water load</li>
+              <li><strong>Titration and weaning</strong>: titrate insulin infusion to haemodynamic effect (may take 30–60 min to see benefit); wean gradually over 12–24 h once haemodynamics recover, and continue glucose monitoring for several hours after stopping because of the risk of delayed hypoglycaemia</li>
+            </ul>
+            <p className="text-xs text-muted-foreground mt-2">
+              <InlineRef topicId="toxicology" refLabel="BJA Educ 2021 Cardiotox" />
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Tricyclic Antidepressant OD">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Mechanism of toxicity</strong>: Na⁺ channel blockade (→ wide QRS, arrhythmias), anticholinergic effects, α₁ blockade (→ hypotension), serotonin/noradrenaline reuptake inhibition</li>
               <li><strong>ECG features</strong>: sinus tachycardia, QRS &gt;100 ms (risk of seizures), QRS &gt;160 ms (risk of VT/VF). Right axis deviation of terminal 40 ms (R in aVR &gt;3 mm)</li>
-              <li><strong>Treatment</strong>: IV sodium bicarbonate 8.4% (50–100 mL) for QRS &gt;120 ms or arrhythmias. Target pH 7.45–7.55. Overcomes Na⁺ channel block. Avoid class Ia antiarrhythmics</li>
+              <li><strong>Treatment</strong>: IV sodium bicarbonate 8.4% (50–100 mL) for QRS &gt;120 ms or R in aVR &gt;3 mm, or for arrhythmias. Target pH 7.45–7.55. Overcomes Na⁺ channel block. Avoid class Ia antiarrhythmics</li>
+              <li><strong>Hypotension is multifactorial</strong>: α₁ blockade causes both venodilatation (reduced preload) and arteriolar dilatation (reduced afterload), while Na⁺-channel blockade reduces myocardial contractility and cardiac output. Treat with an initial IV fluid bolus, then noradrenaline as the vasopressor of choice; ensure adequate sodium bicarbonate (QRS &gt;120 ms or R in aVR, target pH 7.45–7.55) is running concurrently as it also improves inotropy and reverses hypotension</li>
+              <li><strong>Refractory shock</strong>: consider methylene blue 1–2 mg/kg (caution in serotonin syndrome/serotonergic co-ingestion — risk of precipitating it), lipid emulsion therapy, and mechanical circulatory support (e.g. VA-ECMO) as a bridge to toxin clearance</li>
+              <li><strong>Antiarrhythmic caution</strong>: avoid class Ia and Ic (further Na⁺-channel blockade) and class III agents (further QT prolongation); use magnesium for torsade de pointes</li>
             </ul>
+            <p className="text-xs text-muted-foreground mt-2">
+              <InlineRef topicId="toxicology" refLabel="BJA Educ 2021 Cardiotox" />
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -229,7 +251,14 @@ const ToxicologyTopic = () => {
               <li>Early: respiratory alkalosis (central stimulation) → mixed metabolic acidosis + respiratory alkalosis → late: metabolic acidosis predominates</li>
               <li>Other features: tinnitus, hypoglycaemia (children), hyperthermia, non-cardiogenic pulmonary oedema, coagulopathy</li>
               <li><strong>Treatment</strong>: activated charcoal (if &lt;1 h), urinary alkalinisation (NaHCO₃ to pH 7.5–8.5), haemodialysis (level &gt;700 mg/L, renal failure, pulmonary oedema, seizures)</li>
+              <li><strong>Urinary alkalinisation protocol</strong>: 8.4% sodium bicarbonate 1–2 mmol/kg IV bolus, then a 1.26% infusion (or 150 mmol NaHCO₃ in 1 L 5% glucose) titrated to a urine pH of 7.5–8.5, while keeping serum pH ≤7.55 to avoid iatrogenic alkalaemia</li>
+              <li>Correct <strong>hypokalaemia</strong> aggressively — the kidney preferentially reabsorbs K⁺ and secretes H⁺ when hypokalaemic, which prevents effective urinary alkalinisation despite bicarbonate administration</li>
+              <li>Use urinary alkalinisation with caution (or avoid) in pulmonary or cerebral oedema, heart failure and renal failure, where volume/sodium load is poorly tolerated and haemodialysis should be considered instead</li>
+              <li><strong>Haemodialysis indications</strong>: level &gt;700 mg/L (or &gt;500 mg/L with renal impairment), altered consciousness, seizures, refractory metabolic acidosis, or pulmonary oedema</li>
             </ul>
+            <p className="text-xs text-muted-foreground mt-2">
+              <InlineRef topicId="toxicology" refLabel="NPIS Toxbase" /> <InlineRef topicId="toxicology" refLabel="BJA Educ 2016" />
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -299,10 +328,13 @@ const ToxicologyTopic = () => {
                 <tbody className="text-muted-foreground">
                   <tr className="border-b border-border/50"><td className="py-2 font-medium text-foreground">Intermittent HD</td><td>Diffusion across semipermeable membrane (concentration gradient)</td><td>Small, water-soluble, low Vd toxins (methanol, ethylene glycol, lithium, salicylates)</td><td>Rebound after session if large Vd. Haemodynamic instability</td></tr>
                   <tr className="border-b border-border/50"><td className="py-2 font-medium text-foreground">CVVH / CVVHDF</td><td>Convection (haemofiltration) ± diffusion. Continuous</td><td>Haemodynamically unstable patients. Lithium (rebound prevention). Larger molecules up to ~20 kDa</td><td>Lower clearance per unit time vs intermittent HD. Prolonged treatment needed</td></tr>
-                  <tr><td className="py-2 font-medium text-foreground">Haemoperfusion</td><td>Adsorption onto activated charcoal or resin cartridge</td><td>Protein-bound or lipophilic toxins (theophylline, carbamazepine). Now rarely used</td><td>Cartridge saturation, thrombocytopenia, hypocalcaemia. Largely replaced by high-flux HD</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Haemoperfusion</td><td>Adsorption onto activated charcoal or resin cartridge</td><td>Protein-bound or lipophilic toxins (theophylline, carbamazepine) not well cleared by HD</td><td>Limited availability, cartridge saturation, thrombocytopenia, hypocalcaemia, hypoglycaemia. Largely replaced by high-flux HD</td></tr>
                 </tbody>
               </table>
             </div>
+            <p className="text-sm text-muted-foreground leading-relaxed mt-3">
+              Charcoal haemoperfusion clears protein-bound and lipophilic toxins more effectively than haemodialysis and remains an EXTRIP-recommended treatment for severe theophylline poisoning (seizures, life-threatening ventricular arrhythmias, refractory hypotension) and for carbamazepine toxicity refractory to standard supportive care. Its use is constrained by limited availability, cartridge saturation with time, thrombocytopenia, hypocalcaemia and hypoglycaemia. <InlineRef topicId="toxicology" refLabel="EXTRIP Theophylline" />
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 
