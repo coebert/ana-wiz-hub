@@ -7,7 +7,9 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { icuDrugMechanismGroups, icuDrugMechanismCount } from "@/data/icuDrugMechanisms";
 import { DrugPharmacokineticsPanel } from "@/components/icu/DrugPharmacokineticsPanel";
+import { DrugPharmacodynamicsPanel } from "@/components/icu/DrugPharmacodynamicsPanel";
 import { pharmacokineticsFor } from "@/data/pk";
+import { pharmacodynamicsText } from "@/data/pd";
 import { drugSlug } from "@/lib/caseDoseReferences";
 
 const IcuDrugMechanisms = () => {
@@ -39,6 +41,7 @@ const IcuDrugMechanisms = () => {
                 d.metabolism,
                 d.adverseEffects,
                 ...Object.values(pharmacokineticsFor(d.slug) ?? {}),
+                pharmacodynamicsText(d.slug),
               ]
                 .join(" ")
                 .toLowerCase()
@@ -176,6 +179,7 @@ const IcuDrugMechanisms = () => {
                     </dl>
 
                     <DrugPharmacokineticsPanel slug={d.slug} />
+                    <DrugPharmacodynamicsPanel slug={d.slug} />
 
                     <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
                       <Link

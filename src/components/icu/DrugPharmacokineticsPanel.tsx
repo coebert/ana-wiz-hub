@@ -1,4 +1,6 @@
+import { ArrowRight } from "lucide-react";
 import { pharmacokineticsFor } from "@/data/pk";
+import { pharmacodynamicsFor } from "@/data/pd";
 
 interface DrugPharmacokineticsPanelProps {
   /** Mechanism-page slug for the drug. */
@@ -34,10 +36,11 @@ const rowSource = () => ({
 
 export const DrugPharmacokineticsPanel = ({ slug }: DrugPharmacokineticsPanelProps) => {
   const pk = pharmacokineticsFor(slug);
+  const hasPd = Boolean(pharmacodynamicsFor(slug));
   if (!pk) return null;
 
   return (
-    <div className="mt-4 rounded-lg border border-border bg-muted/30 p-4">
+    <div id={`pk-${slug}`} className="mt-4 scroll-mt-24 rounded-lg border border-border bg-muted/30 p-4">
       <h4 className="text-sm font-semibold">Pharmacokinetics and metabolism</h4>
       <dl className="mt-3 grid gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
         {ROWS.map(({ key, label }) => {
@@ -51,6 +54,16 @@ export const DrugPharmacokineticsPanel = ({ slug }: DrugPharmacokineticsPanelPro
           );
         })}
       </dl>
+
+      {hasPd && (
+        <a
+          href={`#pd-${slug}`}
+          className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-icu underline-offset-4 hover:underline"
+        >
+          Pharmacodynamics: dose–response, therapeutic window, side effects and interactions
+          <ArrowRight className="h-3.5 w-3.5" />
+        </a>
+      )}
     </div>
   );
 };
