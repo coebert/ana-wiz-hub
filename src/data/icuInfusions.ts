@@ -8,7 +8,7 @@ export interface Infusion {
   concentrationPerMl: number;
   concentrationLabel: string;
   /** Dosing unit for the range */
-  unit: "micrograms/kg/min" | "micrograms/kg/h" | "micrograms/min" | "units/min" | "units/h" | "mg/kg/h";
+  unit: "micrograms/kg/min" | "micrograms/kg/h" | "micrograms/min" | "units/min" | "units/h" | "units/kg/h" | "mg/kg/h";
   startDose: number;
   minDose: number;
   maxDose: number;
