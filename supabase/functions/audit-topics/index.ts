@@ -1448,26 +1448,91 @@ const BATCH_SIZE = 1;
 const PER_TOPIC_TIMEOUT_MS = 130_000;
 const STALE_RUNNING_LOG_MS = 5 * 60_000;
 
-async function reinvokeContinue(jobId: string) {
-  try {
-    await fetchJsonWithTimeout(
-      `${SUPABASE_URL}/functions/v1/audit-topics`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
-          "Content-Type": "application/json",
-          apikey: SUPABASE_SERVICE_ROLE_KEY,
-          "x-internal-token": SUPABASE_SERVICE_ROLE_KEY,
+// A stalled job = status running/pending, no live lease, and no progress
+// written for this long. The self-chain is the only thing that advances a
+// sweep, so a single dropped chain call (edge worker evicted, transient 5xx,
+// network blip) used to freeze the audit forever at e.g. 23/143. The
+// watchdog below re-chains those jobs.
+const STALL_AFTER_MS = 4 * 60 * 1000;
+
+async function reinvokeContinue(jobId: string): Promise<boolean> {
+  // The chain call is the single point of failure for the whole sweep, so
+  // retry it a few times before giving up.
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      await fetchJsonWithTimeout(
+        `${SUPABASE_URL}/functions/v1/audit-topics`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+            "Content-Type": "application/json",
+            apikey: SUPABASE_SERVICE_ROLE_KEY,
+            "x-internal-token": SUPABASE_SERVICE_ROLE_KEY,
+          },
+          body: JSON.stringify({ action: "continue", job_id: jobId }),
         },
-        body: JSON.stringify({ action: "continue", job_id: jobId }),
-      },
-      10_000,
-    );
-  } catch (e) {
-    console.error(`failed to re-invoke for job ${jobId}`, e);
+        15_000,
+      );
+      return true;
+    } catch (e) {
+      console.error(
+        `[audit-topics] chain attempt ${attempt}/3 failed for job ${jobId}`,
+        e,
+      );
+      if (attempt < 3) await new Promise((r) => setTimeout(r, attempt * 1500));
+    }
   }
+  // Leave the job running so the watchdog picks it up, but make the stall
+  // visible in the dashboard instead of looking silently frozen.
+  await supa
+    .from("topic_audit_jobs")
+    .update({
+      last_error:
+        "The audit could not schedule its next topic (3 attempts failed). It will be resumed automatically; you can also press Resume.",
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", jobId);
+  return false;
 }
+
+/**
+ * Re-chain any sweep that stopped making progress. Safe to call at any time:
+ * the per-job lease still guarantees one worker per job.
+ */
+async function resumeStalledJobs(): Promise<string[]> {
+  const cutoff = new Date(Date.now() - STALL_AFTER_MS).toISOString();
+  const { data: stalled } = await supa
+    .from("topic_audit_jobs")
+    .select("id, status, processed, total, updated_at")
+    .in("status", ["pending", "running"])
+    .lt("updated_at", cutoff)
+    .order("created_at", { ascending: false })
+    .limit(5);
+
+  const resumed: string[] = [];
+  for (const job of stalled ?? []) {
+    // Clear an expired lease so the resumed worker can acquire it.
+    const nowIso = new Date().toISOString();
+    await supa
+      .from("audit_job_state")
+      .update({ lease_owner: null, lease_expires_at: null, updated_at: nowIso })
+      .eq("id", "content-audit")
+      .lt("lease_expires_at", nowIso);
+
+    console.warn(
+      `[audit-topics] resuming stalled job ${job.id} (${job.processed}/${job.total}, idle since ${job.updated_at})`,
+    );
+    // Bump updated_at so a second watchdog tick doesn't double-resume.
+    await supa
+      .from("topic_audit_jobs")
+      .update({ updated_at: nowIso })
+      .eq("id", job.id);
+    if (await reinvokeContinue(job.id)) resumed.push(job.id);
+  }
+  return resumed;
+}
+
 
 
 function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
