@@ -144,9 +144,44 @@ const IcuSedationDeliriumTopic = () => {
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sedation Assessment (RASS)</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Target light sedation (RASS 0 to −2) unless specific indication for deep sedation (refractory
-              ICP, severe ARDS with paralysis, status epilepticus). Daily sedation holds (SAT) paired with
-              spontaneous breathing trials (SBT) — the ABC trial — reduce ventilator days and mortality.
+              Target light sedation (RASS 0 to −2) unless a specific indication for deep sedation exists
+              <InlineRef topicId="icu-sedation-delirium" refLabel="ESICM Analgosedation 2020" />. Daily
+              sedation holds (SAT) paired with spontaneous breathing trials (SBT) — the ABC trial — reduce
+              ventilator days and mortality. Deep sedation (RASS −4 to −5) increases delirium, ICU-acquired
+              weakness, ventilator days and mortality, so each day of deep sedation must be justified
+              against one of the following indications:
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground mb-3">
+              <li>
+                <strong>Severe ARDS</strong> — to secure ventilator synchrony, permit low tidal volume /
+                prone positioning and prevent patient self-inflicted lung injury (P-SILI); mandatory when
+                neuromuscular blockade is used.
+              </li>
+              <li>
+                <strong>Refractory intracranial hypertension</strong> — reduces CMRO₂ and cerebral blood
+                volume, blunts coughing and ventilator dyssynchrony that spike ICP.
+              </li>
+              <li>
+                <strong>Status epilepticus</strong> — anaesthetic infusions titrated to seizure suppression
+                or EEG burst suppression.
+              </li>
+              <li>
+                <strong>Targeted temperature management / therapeutic hypothermia</strong> — to abolish
+                shivering, which raises CMRO₂, CO₂ production and metabolic demand.
+              </li>
+              <li>
+                <strong>Unmanageable agitation</strong> posing immediate danger to the patient (line/tube
+                removal) or staff, after non-pharmacological measures and analgesia have failed.
+              </li>
+              <li>
+                Other short-lived needs: <strong>ECMO cannulation</strong>, transport of the unstable
+                patient, and open-abdomen/proning procedures.
+              </li>
+            </ul>
+            <p className="text-sm text-muted-foreground mb-3">
+              Where an indication exists, document it, set an explicit RASS target, and reassess daily for
+              de-escalation. Adopt an <strong>analgesia-first</strong> approach — treat pain before
+              deepening sedation.
             </p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
