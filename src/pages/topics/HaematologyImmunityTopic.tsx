@@ -412,7 +412,7 @@ const HaematologyImmunityTopic = () => {
 
           <ExamPitfallsCallout
             pitfalls={[
-              <><strong>Suspected anaphylaxis</strong>: mast cell tryptase at 1–2 h, 6–24 h and baseline; refer to specialist allergy clinic. Adrenaline IV bolus 50 µg titrated to response.</>,
+              <><strong>Suspected anaphylaxis</strong>: tryptase as soon as feasible, again 1–2 h after onset, and a baseline sample at ≥24 h (RCoA/Association of Anaesthetists 2021); refer to a specialist allergy clinic. Adrenaline IV bolus 50 µg titrated to response.</>,
               <><strong>Asplenic patients</strong> are at lifelong risk of overwhelming infection by encapsulated organisms — confirm pneumococcal, meningococcal ACWY+B and Hib vaccination plus penicillin prophylaxis.</>,
               <><strong>Liver disease coagulopathy</strong> is balanced — INR overestimates bleeding risk; use TEG/ROTEM and avoid empiric FFP.</>,
               <><strong>Massive transfusion</strong>: anticipate dilutional thrombocytopenia, hypocalcaemia (citrate), hyperkalaemia and hypothermia — give in 1:1:1 ratio.</>,
