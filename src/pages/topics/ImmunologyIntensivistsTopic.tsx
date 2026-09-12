@@ -785,6 +785,99 @@ const ImmunologyIntensivistsTopic = () => {
             </div>
           </section>
 
+          {/* ---------------- Sepsis-induced immunosuppression ---------------- */}
+          <section className="space-y-3">
+            <h2 className="text-2xl font-serif font-bold text-foreground">
+              Sepsis-induced immunosuppression (CARS / immunoparalysis)
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Sepsis is not simply a hyperinflammatory storm — a state of profound
+              immune hyporesponsiveness develops alongside it, historically labelled
+              <strong> compensatory anti-inflammatory response syndrome (CARS)</strong>.
+              Hyperinflammatory and immunosuppressive gene programmes are now understood
+              to run <strong>concurrently rather than in strict sequence</strong>, with the
+              net balance shifting toward immunoparalysis in patients who survive the
+              initial insult.<InlineRef topicId={TOPIC_ID} refLabel="Janeway's Immunobiology 9e" />
+            </p>
+            <div className="grid gap-4 md:grid-cols-2">
+              <article className="rounded-xl border border-border bg-card p-5 space-y-2">
+                <h3 className="text-lg font-serif font-semibold text-foreground">
+                  Triggers &amp; cellular features
+                </h3>
+                <ul className="text-sm text-muted-foreground leading-relaxed list-disc list-inside space-y-1">
+                  <li>Prolonged hyperinflammation, endotoxin tolerance and apoptosis of immune cells drive the shift</li>
+                  <li>Lymphocyte apoptosis, especially <strong>CD4⁺ T cells</strong></li>
+                  <li>Reduced monocyte <strong>HLA-DR</strong> expression (impaired antigen presentation)</li>
+                  <li>Th1 → Th2 cytokine shift</li>
+                  <li>Expansion of regulatory T cells (Tregs) and myeloid-derived suppressor cells (MDSCs)</li>
+                  <li>T-cell exhaustion with upregulation of <strong>PD-1 / PD-L1</strong></li>
+                </ul>
+              </article>
+              <article className="rounded-xl border border-border bg-card p-5 space-y-2">
+                <h3 className="text-lg font-serif font-semibold text-foreground">
+                  Consequences, biomarkers &amp; experimental therapy
+                </h3>
+                <ul className="text-sm text-muted-foreground leading-relaxed list-disc list-inside space-y-1">
+                  <li>Secondary/nosocomial infection — VAP, line sepsis</li>
+                  <li>Reactivation of latent viruses — CMV, HSV</li>
+                  <li>Associated with poor late (post-ICU) outcomes</li>
+                  <li>Biomarkers: low monocyte HLA-DR; persistently high IL-10 with low TNF-α; persistent lymphopenia</li>
+                  <li>Experimental immunostimulant therapies: <strong>IL-7, GM-CSF, anti-PD-1</strong></li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          {/* ---------------- Hypersensitivity — Gell and Coombs ---------------- */}
+          <section className="space-y-3">
+            <h2 className="text-2xl font-serif font-bold text-foreground">
+              Hypersensitivity reactions — Gell and Coombs
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              The Gell and Coombs classification groups immune-mediated tissue damage
+              into four mechanistic types.<InlineRef topicId={TOPIC_ID} refLabel="Peakman & Vergani 3e" />
+            </p>
+            <div className="overflow-x-auto rounded-xl border border-border">
+              <table className="w-full text-sm">
+                <thead className="bg-secondary/40 text-foreground">
+                  <tr>
+                    <th className="text-left px-3 py-2 font-semibold">Type</th>
+                    <th className="text-left px-3 py-2 font-semibold">Mechanism</th>
+                    <th className="text-left px-3 py-2 font-semibold">Examples</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-t border-border align-top">
+                    <td className="px-3 py-2 font-medium text-foreground whitespace-nowrap">I — Immediate</td>
+                    <td className="px-3 py-2 text-muted-foreground">IgE-mediated mast-cell/basophil degranulation on allergen re-exposure</td>
+                    <td className="px-3 py-2 text-muted-foreground">Anaphylaxis, urticaria, atopy (asthma, hay fever)</td>
+                  </tr>
+                  <tr className="border-t border-border align-top">
+                    <td className="px-3 py-2 font-medium text-foreground whitespace-nowrap">II — Cytotoxic</td>
+                    <td className="px-3 py-2 text-muted-foreground">IgG/IgM bind cell-surface antigen → complement activation or antibody-dependent cell-mediated cytotoxicity (ADCC)</td>
+                    <td className="px-3 py-2 text-muted-foreground">Haemolytic transfusion reaction, autoimmune haemolytic anaemia, Goodpasture's syndrome; HIT is a clinical variant</td>
+                  </tr>
+                  <tr className="border-t border-border align-top">
+                    <td className="px-3 py-2 font-medium text-foreground whitespace-nowrap">III — Immune complex</td>
+                    <td className="px-3 py-2 text-muted-foreground">Antigen–antibody complexes deposit in tissue and activate complement</td>
+                    <td className="px-3 py-2 text-muted-foreground">Serum sickness, post-streptococcal glomerulonephritis, SLE</td>
+                  </tr>
+                  <tr className="border-t border-border align-top">
+                    <td className="px-3 py-2 font-medium text-foreground whitespace-nowrap">IV — Delayed (T-cell)</td>
+                    <td className="px-3 py-2 text-muted-foreground">Antigen-specific T cells (no antibody) drive delayed-onset (24–72 h) inflammation</td>
+                    <td className="px-3 py-2 text-muted-foreground">Tuberculin skin test, contact dermatitis (latex), graft-versus-host disease, DRESS/SJS</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              <strong>Anaesthetic relevance:</strong> latex allergy can present as either an
+              immediate Type I reaction (anaphylaxis on glove/catheter contact — IgE-mediated,
+              rapid) or a delayed Type IV contact dermatitis (T-cell mediated, hours to days) —
+              the two require entirely different avoidance and emergency management strategies.
+            </p>
+          </section>
+
           {/* ---------------- Clinical pearls ---------------- */}
           <section className="rounded-xl border border-icu/40 bg-icu/5 p-5 space-y-2">
             <h2 className="text-xl font-serif font-semibold text-foreground">

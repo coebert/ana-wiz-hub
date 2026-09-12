@@ -94,7 +94,7 @@ const PreoperativeAssessmentTopic = () => {
       }}
       sectionSources={{
         objectives: ["NICE NG45", "AAGBI 2010", "BJA Educ 2019"],
-        keyPoints: ["NICE NG45", "AAGBI 2010", "BJA Educ 2019"],
+        keyPoints: ["NICE NG45", "AAGBI 2010", "BJA Educ 2019", "ESC Non-Cardiac Surgery 2022"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
