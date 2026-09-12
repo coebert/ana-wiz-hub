@@ -166,6 +166,14 @@ const VentilationPerfusionTopic = () => {
                   </tbody>
                 </table>
               </div>
+              <div className="mt-5 rounded-lg border border-border p-4">
+                <h3 className="font-serif font-semibold text-foreground">Measuring V/Q mismatch</h3>
+                <p className="mt-2 text-sm text-foreground/85 leading-relaxed">Direct measurement is complex and remains largely a research technique; at the bedside V/Q mismatch is inferred rather than measured.</p>
+                <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+                  <li><strong>MIGET (multiple inert gas elimination technique)</strong>: an infusion of six inert gases of widely differing blood solubility (e.g. SF₆, ethane, cyclopropane, enflurane, ether, acetone) reaches steady state, then arterial, mixed venous and expired concentrations are measured. Poorly soluble gases are excreted almost entirely from high-V/Q units, while highly soluble gases are retained in low-V/Q units, so the pattern of retention and excretion can be inverted mathematically into a continuous distribution of blood flow and ventilation against V/Q ratio, including true shunt and true dead space. It is the gold standard but is invasive, slow and confined to research <InlineRef topicId="ventilation-perfusion" refLabel="West Ch.5" /></li>
+                  <li><strong>Clinical surrogates</strong>: the PaO₂ response to supplemental oxygen (mismatch corrects, true shunt does not), the A–a gradient and PaO₂/FiO₂ ratio, the shunt fraction from the shunt equation, the arterial-to-end-tidal CO₂ gradient for alveolar dead space, and imaging or electrical impedance tomography for regional distribution.</li>
+                </ul>
+              </div>
             </div>
           </ExamSection>
 
