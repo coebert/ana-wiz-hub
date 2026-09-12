@@ -133,9 +133,13 @@ const PressureMeasurementTopic = () => {
                 </p>
                 <p className="text-sm text-muted-foreground mt-2">
                   An <strong>aneroid gauge</strong> uses an evacuated flexible metal capsule or bellows that expands or contracts with
-                  pressure and drives a dial through linkages. A <strong>Bourdon gauge</strong> uses a curved, flattened hollow metal tube
-                  open to the pressure source; rising pressure makes it straighten, and a lever-and-gear mechanism amplifies movement of
-                  the free end to turn a pointer. Its robust high-pressure range suits gas cylinders and regulators
+                  pressure and drives a dial through linkages. A <strong>Bourdon gauge</strong> uses a coiled, flattened hollow metal tube
+                  of elliptical cross-section open to the pressure source; rising pressure makes the tube uncoil, and a lever-and-gear
+                  mechanism amplifies movement of the free end to turn a pointer over a calibrated dial. It reads gauge pressure (zero at
+                  atmospheric), spans cylinder pressures up to ~250 bar, and is used on cylinder yokes, pipeline gauges and regulators.
+                  Limitations: mechanical hysteresis and wear of the linkage, susceptibility to mechanical shock, a slow response that makes
+                  it unsuitable for dynamic waveforms, temperature-dependent tube elasticity, and the need for periodic recalibration; a
+                  ruptured tube is directed away from the operator by a blow-out disc
                   <InlineRef topicId="pressure-measurement" refLabel="Al-Shaikh & Stacey Ch.19" />.
                 </p>
               </div>
