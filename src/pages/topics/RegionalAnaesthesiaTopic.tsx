@@ -74,7 +74,7 @@ const regionalFaqs: Array<[string, string]> = [
   ],
   [
     "How is block height tested at the bedside?",
-    "Use ethyl chloride cold spray to test loss of cold sensation (Aδ-fibre block — the most reliable correlate of surgical anaesthesia). Calibrate by spraying an unblocked forearm, then start from a blocked dermatome and move cranially until cold returns; document the highest bilateral level. T4 (nipple) is required for caesarean section, T6 (xiphisternum) for upper abdominal, T10 (umbilicus) for hernia and lower abdominal surgery. Pinprick (Aβ) tests touch; Bromage 0–3 grades motor.",
+    "Use ethyl chloride cold spray to test loss of cold sensation (Aδ- and C-fibre block — the most reliable correlate of surgical anaesthesia). Calibrate by spraying an unblocked forearm, then start from a blocked dermatome and move cranially until cold returns; document the highest bilateral level. T4 (nipple) is required for caesarean section, T6 (xiphisternum) for upper abdominal, T10 (umbilicus) for hernia and lower abdominal surgery. Pinprick tests sharp sensation carried by Aδ fibres, which together with loss of cold indicates surgical anaesthesia; light touch (Aβ) is lost later and at a lower level. Bromage 0–3 grades motor block.",
   ],
   [
     "How long should anticoagulants be stopped before a neuraxial block?",
