@@ -43,13 +43,12 @@ export const TopicOverrideBlocks = ({
   anchor,
 }: {
   blocks: ContentOverride[];
-  /** Only render blocks pinned to this section name; omit for unpinned blocks. */
+  /** Optional: only render blocks pinned to this section name. */
   anchor?: string;
 }) => {
-  const visible = blocks.filter((b) =>
-    anchor ? b.anchor === anchor : !b.anchor || b.anchor.trim().length === 0,
-  );
+  const visible = anchor ? blocks.filter((b) => b.anchor === anchor) : blocks;
   if (visible.length === 0) return null;
+
 
   return (
     <div className="space-y-4">
