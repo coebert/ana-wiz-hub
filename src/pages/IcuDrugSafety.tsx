@@ -186,9 +186,19 @@ const IcuDrugSafety = () => {
             ))}
           </div>
 
-          <p className="text-sm text-muted-foreground">
-            Showing {shown} of {icuDrugSafetyCount} drugs
-          </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button
+              size="sm"
+              variant={riskOnly ? "default" : "outline"}
+              onClick={() => setRiskOnly((v) => !v)}
+              aria-pressed={riskOnly}
+            >
+              <TrendingDown className="mr-1.5 h-4 w-4" aria-hidden /> Withdrawal risk only
+            </Button>
+            <p className="text-sm text-muted-foreground">
+              Showing {shown} of {icuDrugSafetyCount} drugs
+            </p>
+          </div>
         </div>
 
         {shown === 0 && (
