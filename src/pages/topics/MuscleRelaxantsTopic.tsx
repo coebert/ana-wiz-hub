@@ -11,6 +11,7 @@ import SugammadexDiagram from "@/components/diagrams/pharmacology/SugammadexDiag
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const workedExamples: WorkedExample[] = [
   {
@@ -211,6 +212,16 @@ const MuscleRelaxantsTopic = () => {
               (cumulative dose &gt;3–5 mg/kg) characteristics resemble non-depolarising block (fade, PTP).
             </p>
             <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+              <p className="text-sm font-medium text-foreground">Mechanism of phase II (desensitisation) block</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                <li>Prolonged exposure to suxamethonium keeps the post-junctional receptor occupied; the membrane gradually <strong>repolarises</strong> yet remains unresponsive to acetylcholine because the receptor enters a desensitised, non-conducting conformation.</li>
+                <li>Additional contributions come from ion channel block of the open receptor pore, pre-junctional effects reducing acetylcholine mobilisation, and receptor down-regulation.</li>
+                <li>Clinical signature: <strong>fade</strong> on train-of-four (TOF ratio &lt;0.7), post-tetanic potentiation, tachyphylaxis (escalating dose requirement) and prolonged recovery — indistinguishable at the bedside from non-depolarising block.</li>
+                <li>Occurs after repeated boluses or an infusion, typically once the cumulative dose exceeds 3–5 mg/kg, and earlier in atypical plasma cholinesterase.</li>
+                <li>Management: stop suxamethonium, sedate and ventilate, and monitor with a quantitative nerve stimulator. Anticholinesterase reversal is unreliable and may deepen block if any phase I component remains, so it is not routinely recommended.</li>
+              </ul>
+            </div>
+            <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
               <p className="text-sm font-medium text-foreground">Side Effects & Contraindications</p>
               <p className="text-sm text-muted-foreground mt-1">
                 <strong>Hyperkalaemia</strong> (~0.5 mmol/L rise normally; massive release with burns &gt;24h, denervation injuries,
@@ -358,6 +369,56 @@ const MuscleRelaxantsTopic = () => {
                 </tbody>
               </table>
             </div>
+          </section>
+
+          <section className="mb-10">
+            <h2 id="anaphylaxis-and-nap6" className="text-2xl font-serif font-bold text-foreground">Anaphylaxis and NMBAs: NAP6</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              The 6th National Audit Project of the Royal College of Anaesthetists studied life-threatening perioperative anaphylaxis
+              across the UK. Antibiotics and neuromuscular blocking drugs were the two commonest culprits, with
+              <strong> suxamethonium and rocuronium</strong> the most frequently implicated NMBAs; atracurium and vecuronium were
+              implicated less often and cisatracurium rarely<InlineRef topicId="muscle-relaxants" refLabel="NAP6 2018" />.
+            </p>
+            <ul className="list-disc list-inside text-foreground/90 leading-relaxed mt-3 space-y-1">
+              <li><strong>Incidence:</strong> approximately 1 in 10,000 anaesthetics overall, with mortality around 4%; NMBA reactions accounted for roughly a third of cases.</li>
+              <li><strong>Presentation:</strong> hypotension is the dominant feature (present in the great majority), with bronchospasm in about half; cutaneous signs are frequently absent or noticed late under drapes.</li>
+              <li><strong>Immediate management:</strong> stop the trigger, call for help, 100% oxygen, intramuscular or intravenous adrenaline (IV 50 µg boluses titrated by an anaesthetist), aggressive fluid resuscitation, and an adrenaline infusion for refractory cases.</li>
+              <li><strong>Investigation:</strong> mast cell tryptase at presentation, 1–2 h and &gt;24 h; referral to a specialist allergy clinic for skin prick/intradermal testing and IgE assays; document and issue written patient information and an alert.</li>
+              <li><strong>Cross-reactivity:</strong> common between aminosteroid agents; where NMBA allergy is confirmed, use a structurally unrelated agent with prior testing, or avoid NMBAs altogether. Sugammadex does not treat rocuronium anaphylaxis reliably and is not a substitute for adrenaline.</li>
+            </ul>
+          </section>
+
+          <section className="mb-10">
+            <h2 id="novel-agents" className="text-2xl font-serif font-bold text-foreground">Novel Agents: Gantacurium and the Fumarates</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              The search for an agent with suxamethonium-like onset and offset without its side effects has produced the
+              <strong> asymmetric mixed-onium chlorofumarates</strong>. Gantacurium (GW280430A) has an onset of about 1–1.5 min and
+              an ultra-short duration (5–10 min) because it is inactivated by two non-enzymatic chemical routes: rapid adduction with
+              endogenous L-cysteine and slower ester hydrolysis. Administration of exogenous L-cysteine antagonises the block within
+              1–2 min from any depth — a fundamentally different reversal mechanism from anticholinesterases or sugammadex<InlineRef topicId="muscle-relaxants" refLabel="Gantacurium 2010" />.
+            </p>
+            <ul className="list-disc list-inside text-foreground/90 leading-relaxed mt-3 space-y-1">
+              <li><strong>Advantages:</strong> organ-independent elimination, no MH trigger, no hyperkalaemia, no myalgia, and reversibility at profound block.</li>
+              <li><strong>Limitations:</strong> histamine release and cardiovascular effects at higher multiples of ED₉₅; gantacurium is not licensed for clinical use.</li>
+              <li><strong>CW002 (nimacalcin-type intermediate-acting fumarate):</strong> same cysteine-reversal principle with a longer duration and better cardiovascular profile; under investigation.</li>
+              <li><strong>Other developments:</strong> calabadion (an acyclic cucurbituril container molecule) binds and reverses both steroidal and benzylisoquinolinium agents, and adamgammadex is a modified cyclodextrin intended to reduce sugammadex hypersensitivity.</li>
+            </ul>
+          </section>
+
+          <section className="mb-10">
+            <h2 id="nmba-use-in-intensive-care" className="text-2xl font-serif font-bold text-foreground">NMBA Use in Intensive Care</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              Indications in critical care are narrow: tracheal intubation, severe ventilator dyssynchrony or very high airway
+              pressures, facilitating prone positioning, therapeutic hypothermia with shivering, status asthmaticus, tetanus, raised
+              intracranial pressure refractory to sedation, and abdominal compartment syndrome.
+            </p>
+            <ul className="list-disc list-inside text-foreground/90 leading-relaxed mt-3 space-y-1">
+              <li><strong>Agent choice:</strong> cisatracurium 1–3 µg/kg/min is preferred for infusions — Hofmann elimination is independent of hepatic and renal function, and laudanosine accumulation is clinically insignificant at these doses. Rocuronium and vecuronium accumulate in organ failure (vecuronium's active 3-desacetyl metabolite is renally cleared).</li>
+              <li><strong>ARDS evidence:</strong> ACURASYS suggested a survival benefit from 48 h of early cisatracurium, but the larger ROSE trial found no difference in 90-day mortality with a high-PEEP strategy and lighter sedation in the control arm<InlineRef topicId="muscle-relaxants" refLabel="ROSE 2019" />. Current practice is therefore targeted, short-course blockade for refractory hypoxaemia or dyssynchrony rather than routine use.</li>
+              <li><strong>Safety essentials:</strong> confirmed deep sedation and analgesia before and during paralysis (risk of awareness), airway disconnection alarms, eye care and lubrication, pressure area care, VTE prophylaxis, and physiotherapy planning.</li>
+              <li><strong>Monitoring:</strong> quantitative TOF (aim 1–2 twitches) or post-tetanic count with daily interruption to reassess need; avoid deeper block than the indication requires.</li>
+              <li><strong>Complications:</strong> ICU-acquired weakness and critical illness polyneuromyopathy (risk increased by prolonged blockade, corticosteroids, hyperglycaemia and sepsis), prolonged ventilation, corneal abrasion, diaphragm atrophy, and masked seizures or neurological deterioration.</li>
+            </ul>
           </section>
 
           <section className="mb-10">
