@@ -179,6 +179,7 @@ const App = () => (
           <Route path="/clinical" element={<ClinicalSection />} />
           <Route path="/intensive-care" element={<IntensiveCareSection />} />
           <Route path="/intensive-care/case-bank" element={<IntensiveCareCaseBank />} />
+          <Route path="/intensive-care/drug-doses" element={<IcuDrugDoses />} />
           <Route path="/perioperative" element={<PerioperativeSection />} />
           <Route path="/perioperative/case-bank" element={<PerioperativeCaseBank />} />
           <Route path="/perioperative/co-existing-disease" element={<CoExistingDiseaseOverview />} />
