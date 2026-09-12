@@ -54,6 +54,17 @@ const PerioperativeSection = () => {
         <Button asChild className="shrink-0"><Link to="/perioperative/case-bank">Open case bank</Link></Button>
       </section>
 
+      <section className="border-b border-border py-5 mb-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex items-start gap-3">
+          <Stethoscope className="h-6 w-6 shrink-0 text-perioperative mt-0.5" aria-hidden />
+          <div>
+            <h2 className="font-semibold text-foreground">Co-Existing Disease Overview</h2>
+            <p className="mt-1 text-sm text-muted-foreground">All co-existing disease topics on one revision page with the key exam points for each.</p>
+          </div>
+        </div>
+        <Button asChild variant="outline" className="shrink-0"><Link to="/perioperative/co-existing-disease">Open overview</Link></Button>
+      </section>
+
       <section id="topics" className="scroll-mt-28">
         <SectionTopicsList section="perioperative" topics={visibleTopics} />
       </section>
