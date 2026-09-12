@@ -16,6 +16,10 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { resolve, dirname } from "path";
 import { allTopics, sectionMeta } from "../src/data/curriculum";
 import { topicReferences } from "../src/data/references";
+import { caseBanks } from "../src/data/cases";
+import { perioperativeCaseIndex } from "../src/data/perioperativeCaseIndex";
+import { perioperativeCases } from "../src/pages/PerioperativeCaseBank";
+import type { PerioperativeCase } from "../src/components/perioperative/ProgressiveCase";
 
 const ROOT = resolve(import.meta.dirname ?? __dirname, "..");
 const OUT = resolve(ROOT, "supabase/functions/audit-topics/audit-corpus.json");
