@@ -207,6 +207,87 @@ const LaserFibreopticsTopic = () => {
                     corticosteroids; treat proven infection and document the incident, debrief the team and report the event.<InlineRef topicId="lasers-fibreoptics" refLabel="Assoc Anaesth Airway Fire" /></li>
                 </ul>
               </div>
+              <div>
+                <h3 className="font-serif text-lg font-bold text-foreground">Laser Plume Hazard</h3>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Laser (and diathermy) plume contains steam, cellular and blood debris, carbon particles, and toxic
+                  chemicals including <strong>benzene, formaldehyde and acrolein</strong>, together with viable virus
+                  particles — notably <strong>HPV</strong>, with case reports of transmitted respiratory papillomatosis
+                  in theatre staff. Plume is an inhalation hazard to <em>everyone</em> in theatre, not only the patient:
+                  the plume generated from just 1 g of tissue has been likened to the particulate load of several
+                  unfiltered cigarettes. Mitigation requires <strong>high-efficiency smoke evacuation</strong> with the
+                  suction nozzle kept within ~2 cm of the surgical site, filters changed per local policy, and adequate
+                  theatre ventilation/air changes. Standard surgical masks filter poorly at the particle sizes found in
+                  plume, so <strong>FFP3 or equivalent high-filtration respirators</strong> are advised for staff at
+                  risk of significant exposure
+                  <InlineRef topicId="lasers-fibreoptics" refLabel="MHRA Lasers 2015" contextTitle="Laser plume hazard" keyPoints={["Plume contains benzene, formaldehyde, acrolein, carbon particles and viable virus (e.g. HPV).", "Inhalation risk to all theatre staff, not just the patient.", "High-efficiency smoke evacuation with nozzle within ~2 cm of the site.", "Standard masks filter poorly at plume particle sizes — FFP3 advised."]} accentColor="hsl(25, 75%, 50%)" />.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-serif text-lg font-bold text-foreground">Laser–Tissue Interaction</h3>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Three mechanisms underlie clinical laser effects, distinguished mainly by power density and pulse duration:
+                </p>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                  <li><strong>Photothermal</strong>: absorbed light energy is converted to heat. Progressive tissue effects with
+                    rising temperature — 43–60 °C causes protein denaturation/hyperthermic injury, &gt;60 °C causes coagulation,
+                    ~100 °C causes vaporisation and ablation, and temperatures above this cause charring. The depth of effect
+                    depends on the wavelength-specific absorption by the target chromophore and on pulse duration (this is the
+                    mechanism behind most surgical CO₂, Nd:YAG and KTP applications).</li>
+                  <li><strong>Photochemical</strong>: light drives a chemical change without significant heating. Includes
+                    <strong> photoablation</strong> by UV excimer lasers, which directly break molecular bonds (e.g. corneal
+                    refractive surgery), and <strong>photodynamic therapy</strong>, in which a photosensitiser drug is activated
+                    by light to generate cytotoxic singlet oxygen within the target tissue.</li>
+                  <li><strong>Photodisruption (electromechanical)</strong>: very high-power, ultra-short pulses generate a
+                    plasma and an accompanying acoustic shockwave that mechanically disrupts tissue, largely independent of
+                    absorption/heating — e.g. Nd:YAG posterior capsulotomy and lithotripsy.</li>
+                </ul>
+                <p className="text-xs text-muted-foreground mt-2">
+                  <InlineRef topicId="lasers-fibreoptics" refLabel="Middleton Ch.14" contextTitle="Laser–tissue interaction mechanisms" keyPoints={["Photothermal: 43–60°C denaturation, >60°C coagulation, ~100°C vaporisation/ablation.", "Photochemical: photoablation (UV excimer) and photodynamic therapy (singlet oxygen).", "Photodisruption: ultrashort high-power pulses generate plasma/shockwave — Nd:YAG capsulotomy, lithotripsy."]} accentColor="hsl(280, 50%, 55%)" />
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-serif text-lg font-bold text-foreground">Laser-Resistant Tracheal Tubes</h3>
+                <div className="mt-2 overflow-x-auto rounded-lg border border-border">
+                  <table className="w-full min-w-[640px] text-sm border-collapse">
+                    <thead>
+                      <tr className="border-b border-border text-foreground">
+                        <th className="py-2 pr-3 text-left">Tube type</th>
+                        <th className="py-2 pr-3 text-left">Advantages</th>
+                        <th className="py-2 text-left">Disadvantages</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-border">
+                      <tr>
+                        <td className="py-2 pr-3"><strong>Metal/stainless-steel spiral</strong> (e.g. Laser-Flex)</td>
+                        <td className="py-2 pr-3">Shaft itself is non-flammable.</td>
+                        <td className="py-2">Rigid; prone to kinking at the connector; may reflect the beam onto adjacent tissue; thicker walls reduce internal diameter; the cuff remains vulnerable and unprotected.</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-3"><strong>Foil-wrapped red rubber</strong></td>
+                        <td className="py-2 pr-3">Cheap and widely available.</td>
+                        <td className="py-2">Tape/foil may detach; rough or ridged surface can traumatise mucosa; wrapping overlap is operator-dependent; distal portion and cuff are often unprotected — no longer recommended as first choice.</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2 pr-3"><strong>Purpose-built PVC/silicone</strong> (e.g. Laser-Shield II)</td>
+                        <td className="py-2 pr-3">Outer aluminium/Teflon wrap; cuff filled with methylene-blue-dyed saline so a stain on secretions signals cuff perforation.</td>
+                        <td className="py-2">Still combustible if the beam dwells on an unprotected area.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-sm text-muted-foreground mt-2">
+                  General principles regardless of tube type: use a tube with <strong>two cuffs</strong> where available
+                  (inflate the proximal cuff, keep the distal as a reserve if the first is breached), fill the cuff with
+                  <strong> saline ± methylene blue</strong> as a visual leak indicator, place <strong>saline-soaked pledgets</strong>
+                  over the cuff, use the <strong>lowest clinically acceptable FiO₂</strong> (ideally ≤0.30), and
+                  <strong> avoid nitrous oxide</strong>, which behaves as an oxidiser at laser temperatures
+                  <InlineRef topicId="lasers-fibreoptics" refLabel="Assoc Anaesth Airway Fire" />.
+                </p>
+              </div>
+
               <p>
                 <strong>Eye protection</strong> is mandatory for all theatre personnel. The goggles must be specific to the laser
                 wavelength in use and have an optical density sufficient to reduce exposure below the maximum permissible level

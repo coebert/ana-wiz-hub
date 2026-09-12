@@ -108,8 +108,86 @@ const PressureMeasurementTopic = () => {
             <p className="text-foreground/90 leading-relaxed">
               Pressure = Force / Area. The SI unit is the Pascal (Pa), where 1 Pa = 1 N/m². In clinical practice, pressures are
               commonly expressed in mmHg (arterial BP), cmH₂O (CVP, airway pressure), kPa (gas partial pressures), and bar (gas
-              cylinders). Key conversions: 1 atm = 101.3 kPa = 760 mmHg = 1033 cmH₂O.
+              cylinders). Key conversions: 1 atm = 101.3 kPa = 760 mmHg = 1033 cmH₂O
+              <InlineRef topicId="pressure-measurement" refLabel="Al-Shaikh & Stacey Ch.19" />.
             </p>
+
+            <div className="overflow-x-auto rounded-lg border border-border mt-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-secondary/50">
+                    <th className="text-left p-3 border border-border font-semibold text-foreground">Unit</th>
+                    <th className="text-left p-3 border border-border font-semibold text-foreground">Equivalents</th>
+                  </tr>
+                </thead>
+                <tbody className="text-foreground/90">
+                  <tr>
+                    <td className="p-3 border border-border font-medium">1 kPa</td>
+                    <td className="p-3 border border-border">7.5 mmHg = 10.2 cmH₂O = 0.01 bar</td>
+                  </tr>
+                  <tr className="bg-secondary/20">
+                    <td className="p-3 border border-border font-medium">1 mmHg</td>
+                    <td className="p-3 border border-border">0.133 kPa = 1.36 cmH₂O</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 border border-border font-medium">1 cmH₂O</td>
+                    <td className="p-3 border border-border">0.098 kPa = 0.74 mmHg</td>
+                  </tr>
+                  <tr className="bg-secondary/20">
+                    <td className="p-3 border border-border font-medium">1 atm</td>
+                    <td className="p-3 border border-border">101.3 kPa = 760 mmHg = 1033 cmH₂O = 1.013 bar</td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 border border-border font-medium">1 bar</td>
+                    <td className="p-3 border border-border">100 kPa ≈ 750 mmHg</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p className="text-foreground/90 leading-relaxed mt-4">
+              Pressure from a liquid column follows <strong>P = ρgh</strong>, so for a given pressure the column height needed is
+              inversely proportional to the fluid's density. Mercury (13.6 × 10³ kg/m³) is 13.6 times denser than water, so
+              1 mmHg = 13.6 mmH₂O = 1.36 cmH₂O — which is also why a mercury manometer can be compact enough to be practical,
+              whereas a water manometer for arterial pressure would need to stand over a metre tall
+              <InlineRef topicId="pressure-measurement" refLabel="Cross & Plunkett Ch.7" />.
+            </p>
+
+            <div className="grid gap-3 mt-4 md:grid-cols-3">
+              <div className="rounded-lg border border-border bg-card p-4">
+                <p className="text-sm font-medium text-foreground">Worked example 1</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  A ventilator shows a peak inspiratory pressure of 25 cmH₂O. What is this in mmHg?
+                </p>
+                <p className="text-sm text-foreground mt-2">25 ÷ 1.36 ≈ <strong>18 mmHg</strong> (or 25 × 0.74).</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Airway pressures are conventionally expressed in cmH₂O because the numbers are conveniently large — a legacy of
+                  the historical water manometer.
+                </p>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-4">
+                <p className="text-sm font-medium text-foreground">Worked example 2</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  A blood gas reports PaO₂ 12 kPa. What is this in mmHg?
+                </p>
+                <p className="text-sm text-foreground mt-2">12 × 7.5 = <strong>90 mmHg</strong>.</p>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-4">
+                <p className="text-sm font-medium text-foreground">Worked example 3</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  CVP is reported as 8 mmHg. What is this in cmH₂O?
+                </p>
+                <p className="text-sm text-foreground mt-2">8 × 1.36 ≈ <strong>11 cmH₂O</strong>.</p>
+              </div>
+            </div>
+
+            <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+              <p className="text-sm text-muted-foreground">
+                These conversions are routinely tested in Primary FRCA MCQ/SBA and OSCE equipment stations. Mixing units — e.g.
+                comparing a CVP reported in mmHg with an airway pressure in cmH₂O when estimating cerebral or abdominal perfusion
+                pressure — is a classic error <InlineRef topicId="pressure-measurement" refLabel="BJA Educ 2018 (Physics)" />.
+              </p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -244,6 +322,145 @@ const PressureMeasurementTopic = () => {
               a flush device (300 mmHg pressure bag with heparinised saline delivering 3–4 ml/hr), and the transducer. The system
               must faithfully reproduce the arterial waveform.
             </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="cvp" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <CollapsibleSubsection title="Central Venous Pressure (CVP) Monitoring">
+              <div className="text-foreground/90 leading-relaxed space-y-3">
+                <p>
+                  CVP is the pressure in the great veins/right atrium at the level of the tricuspid valve, measured with the
+                  transducer zeroed at the mid-axillary line (phlebostatic axis) and read at <strong>end-expiration</strong>.
+                  Normal values are <strong>2–6 mmHg</strong> (up to 8 mmHg is often quoted), higher when ventilated with PEEP
+                  <InlineRef topicId="pressure-measurement" refLabel="Cross & Plunkett Ch.7" />.
+                </p>
+                <p>
+                  Measurement uses a fluid-filled catheter–transducer system identical in principle to an arterial line
+                  (strain-gauge Wheatstone bridge, zeroing to atmosphere, levelling, flush test, and the same damping/resonance
+                  considerations) <InlineRef topicId="pressure-measurement" refLabel="Al-Shaikh & Stacey Ch.19" />.
+                </p>
+                <div className="bg-secondary/30 rounded-lg p-4 border border-border">
+                  <p className="text-sm font-medium text-foreground">Waveform components and the cardiac cycle</p>
+                  <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                    <li><strong>a wave</strong> — atrial contraction (end-diastole, follows the ECG P wave)</li>
+                    <li><strong>c wave</strong> — bulging of the closed tricuspid valve into the atrium in early systole (± transmitted carotid pulsation)</li>
+                    <li><strong>x descent</strong> — atrial relaxation and downward pull of the tricuspid annulus during systole</li>
+                    <li><strong>v wave</strong> — atrial filling against a closed tricuspid valve in late systole</li>
+                    <li><strong>y descent</strong> — tricuspid valve opens and rapid ventricular filling begins</li>
+                  </ul>
+                </div>
+                <div className="overflow-x-auto rounded-lg border border-border">
+                  <table className="w-full text-sm border-collapse">
+                    <thead>
+                      <tr className="bg-secondary/50">
+                        <th className="text-left p-3 border border-border font-semibold text-foreground">Abnormality</th>
+                        <th className="text-left p-3 border border-border font-semibold text-foreground">Cause</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-foreground/90">
+                      <tr>
+                        <td className="p-3 border border-border font-medium">Large a waves</td>
+                        <td className="p-3 border border-border">Obstruction to RA emptying or reduced RV compliance — tricuspid stenosis, pulmonary hypertension, RV hypertrophy</td>
+                      </tr>
+                      <tr className="bg-secondary/20">
+                        <td className="p-3 border border-border font-medium">Cannon (giant) a waves</td>
+                        <td className="p-3 border border-border">Atrium contracts against a closed tricuspid valve — complete AV dissociation/junctional rhythm, ventricular pacing</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 border border-border font-medium">Absent a waves</td>
+                        <td className="p-3 border border-border">Atrial fibrillation</td>
+                      </tr>
+                      <tr className="bg-secondary/20">
+                        <td className="p-3 border border-border font-medium">Large fused cv waves</td>
+                        <td className="p-3 border border-border">Tricuspid regurgitation</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 border border-border font-medium">Steep y descent (M/W trace)</td>
+                        <td className="p-3 border border-border">Constrictive pericarditis</td>
+                      </tr>
+                      <tr className="bg-secondary/20">
+                        <td className="p-3 border border-border font-medium">Blunted y descent</td>
+                        <td className="p-3 border border-border">Cardiac tamponade</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 border border-border font-medium">Kussmaul's sign</td>
+                        <td className="p-3 border border-border">Paradoxical inspiratory rise in CVP — constrictive pericarditis</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p>
+                  <strong>Limitations as a measure of fluid responsiveness</strong>: CVP is a static pressure reflecting the
+                  interaction of venous return with RV function and compliance, confounded by PEEP, intra-abdominal pressure,
+                  valvular disease and vasomotor tone. Meta-analyses show no useful correlation between CVP (or ΔCVP) and fluid
+                  responsiveness, so it should not be used alone to guide fluid therapy. Dynamic indices — stroke volume
+                  variation and pulse pressure variation (requiring sinus rhythm, controlled ventilation with tidal volume
+                  ≥8 mL/kg, a closed chest and no significant arrhythmia), the passive leg raise with a flow measure, the
+                  end-expiratory occlusion test, and echocardiographic assessment are generally more informative. CVP remains
+                  useful as a marker of venous congestion (afterload on organ perfusion, e.g. renal) and as a safety limit
+                  <InlineRef topicId="pressure-measurement" refLabel="Cross & Plunkett Ch.7" />
+                  <InlineRef topicId="pressure-measurement" refLabel="BJA Educ 2020 (Resonance)" />.
+                </p>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="pac" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Advanced Haemodynamic Monitoring: the Pulmonary Artery Catheter">
+              <div className="text-foreground/90 leading-relaxed space-y-3">
+                <p>
+                  The pulmonary artery catheter (PAC) is a flow-directed, balloon-tipped catheter with a distal thermistor used
+                  for thermodilution cardiac output measurement. During insertion, waveform morphology identifies catheter
+                  position: <strong>RA</strong> (low-pressure venous trace with a-c-v waves) → <strong>RV</strong> (large
+                  systolic step-up with a low diastolic pressure close to zero) → <strong>PA</strong> (a dicrotic notch and a
+                  diastolic step-up above RV diastolic pressure, reflecting the closed pulmonary valve) →
+                  <strong> wedge/occlusion</strong> trace once the balloon occludes a distal branch
+                  <InlineRef topicId="pressure-measurement" refLabel="Al-Shaikh & Stacey Ch.19" />.
+                </p>
+                <div className="overflow-x-auto rounded-lg border border-border">
+                  <table className="w-full text-sm border-collapse">
+                    <thead>
+                      <tr className="bg-secondary/50">
+                        <th className="text-left p-3 border border-border font-semibold text-foreground">Chamber</th>
+                        <th className="text-left p-3 border border-border font-semibold text-foreground">Normal pressure</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-foreground/90">
+                      <tr>
+                        <td className="p-3 border border-border font-medium">RAP / CVP</td>
+                        <td className="p-3 border border-border">2–6 mmHg</td>
+                      </tr>
+                      <tr className="bg-secondary/20">
+                        <td className="p-3 border border-border font-medium">RV</td>
+                        <td className="p-3 border border-border">15–30 / 0–8 mmHg</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 border border-border font-medium">PAP</td>
+                        <td className="p-3 border border-border">15–30 / 4–12 mmHg (mean 9–18 mmHg)</td>
+                      </tr>
+                      <tr className="bg-secondary/20">
+                        <td className="p-3 border border-border font-medium">PAOP (wedge)</td>
+                        <td className="p-3 border border-border">2–15 mmHg</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p>
+                  <strong>PAOP</strong> approximates left atrial pressure and hence LVEDP, but this is valid only in West zone 3
+                  lung, with no mitral valve disease and low airway/PEEP pressure; it is overestimated by mitral
+                  stenosis/regurgitation and by high airway pressure transmitted through the pulmonary vasculature.
+                </p>
+                <p>
+                  <strong>Derived variables</strong>: cardiac output and index (thermodilution), <strong>SVR = 80 × (MAP −
+                  CVP)/CO</strong>, <strong>PVR = 80 × (mean PAP − PAOP)/CO</strong> (normal ~50–150 dyn·s·cm⁻⁵), stroke volume,
+                  mixed venous saturation (SvO₂), and oxygen delivery/consumption.
+                </p>
+                <p>
+                  Routine PAC use has declined following outcome trials showing no mortality benefit over less invasive
+                  monitoring, but it retains a role in pulmonary hypertension, right ventricular failure, complex cardiac
+                  surgery and transplant assessment <InlineRef topicId="pressure-measurement" refLabel="BJA Educ 2020 (Resonance)" />.
+                </p>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 

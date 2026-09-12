@@ -157,6 +157,56 @@ const FlowMeasurementTopic = () => {
               upstream tube leaks.
             </p>
             <RotameterDiagram />
+            <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border space-y-2">
+              <p className="text-sm font-medium text-foreground">Rotameter safety features</p>
+              <ol className="text-sm text-muted-foreground list-decimal list-inside space-y-1.5">
+                <li><strong>Oxygen flow-control knob</strong> — fluted profile and larger diameter than the other gas knobs, and colour-coded, so it can be identified by touch alone; one knob per gas, turned anticlockwise to open.</li>
+                <li><strong>Position of the oxygen flowmeter</strong> — placed downstream of the other gases (right-hand tube in the UK, left-hand in the USA) so that a leak from any other flowmeter tube cannot produce a hypoxic mixture.</li>
+                <li><strong>Thorpe tube design</strong> — rib guides/ridges centre the rotating bobbin and stop it sticking to the glass, an antistatic coating prevents electrostatic adherence, and an integral stop or cage at the top prevents the bobbin disappearing from view or into the back bar.</li>
+                <li><strong>Illumination and protective screen</strong> — back-lighting aids reading, and a clear plastic screen in front of the glass tubes protects both tubes and user.</li>
+                <li><strong>Anti-hypoxia devices</strong> — mechanical links (Link-25 chain-and-sprocket, or the Dräger Oxygen Ratio Monitor Controller) or electronic links between N₂O and O₂ flow guarantee a minimum FiO₂ of about 25%; electronic workstations instead alarm and limit N₂O delivery.</li>
+                <li><strong>Non-interchangeable, keyed blocks</strong> — flowmeter blocks and their gas inlets are pin-indexed/keyed so they cannot be reassembled in the wrong order on the back bar after servicing, and each tube is gas-specific and individually calibrated for that gas's viscosity and density so it cannot be swapped between gases.</li>
+              </ol>
+              <p className="text-sm text-muted-foreground mt-2">
+                <strong>Failure modes</strong>: dirt or static causing the bobbin to stick (read as a spuriously low flow), a cracked tube causing loss of gas into the room, and inaccuracy at altitude or in hyperbaric conditions (calibration is pressure- and density-dependent)
+                <InlineRef topicId="flow-measurement" refLabel="Middleton Ch.6" />.
+              </p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="critical-flow" exams={[Exam.PRIMARY]}>
+            <CollapsibleSubsection title="Critical Flow (Choked Flow)">
+            <p className="text-foreground/90 leading-relaxed">
+              For gas flowing through a constriction, raising the upstream pressure increases flow only until the gas velocity in
+              the throat reaches the local <strong>speed of sound</strong>. Beyond this point flow is <strong>critical</strong>
+              (choked) and cannot rise further, however much the downstream pressure is lowered
+              <InlineRef topicId="flow-measurement" refLabel="BJA Educ 2018 (Physics)" />.
+            </p>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              This is reached when the absolute upstream pressure is roughly <strong>1.9 times</strong> the downstream pressure
+              for air or oxygen (approximately a 2:1 ratio) — the exact figure depends on the ratio of specific heats of the gas
+              in question. Once flow in the throat is sonic, pressure-change information cannot propagate upstream against it,
+              so the constriction becomes "blind" to downstream conditions and mass flow depends only on upstream pressure and
+              temperature <InlineRef topicId="flow-measurement" refLabel="Middleton Ch.6" />.
+            </p>
+            <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+              <p className="text-sm font-medium text-foreground">Clinical relevance</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                This is why a cylinder pressure regulator, or a second-stage regulator supplying the flowmeters, delivers a
+                steady flow as cylinder pressure falls from ~137 bar towards empty — the pressure ratio across the valve stays
+                well above critical for most of the cylinder's life, and flow only becomes pressure-dependent near the end. It
+                also underlies fixed-performance Venturi devices, jet ventilation injectors, and the constant flow through a
+                needle-valve/flow restrictor — explaining the "constant" flow reading of a flow restrictor and why entrainment
+                ratios remain stable <InlineRef topicId="flow-measurement" refLabel="BJA Educ 2004" />.
+              </p>
+            </div>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              <strong>Distinction</strong>: critical flow (a velocity/pressure-ratio phenomenon) is quite different from
+              <strong> critical temperature</strong> (the temperature above which a gas cannot be liquefied by pressure alone —
+              36.5 °C for nitrous oxide) and from <strong>critical pressure</strong> (the SVP at the critical temperature);
+              examiners commonly probe this confusion.
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -175,13 +225,14 @@ const FlowMeasurementTopic = () => {
                 capillaries; the <strong>Lilly</strong> type uses one or more fine mesh screens, which are lighter and better suited to
                 rapid respiratory waveforms <InlineRef topicId="flow-measurement" refLabel="A&ICM 2023 (Gas flow)" />.
               </p>
-              <p className="text-sm text-muted-foreground">
-                Errors arise from: <strong>gas composition</strong> — pressure drop depends on viscosity, so a N₂O/O₂ mixture reads
-                differently from air/O₂ unless recalibrated; <strong>temperature</strong> — the head is heated to about body temperature to
-                prevent condensation and to keep viscosity stable; <strong>water vapour and secretions</strong> — deposition on the screen
-                or capillaries raises resistance and over-reads flow; and <strong>turbulence</strong> — if flow becomes turbulent the
-                pressure drop varies with flow <em>squared</em>, so the linear calibration under-reads high flows
-                <InlineRef topicId="flow-measurement" refLabel="BJA Educ 2004" />.
+              <ol className="text-sm text-muted-foreground list-decimal list-inside space-y-1.5">
+                <li><strong>Temperature and water vapour</strong> — expired gas cools, its density and viscosity change, and water condenses on the resistive element, narrowing the effective radius (ΔP ∝ 1/r⁴) and increasing resistance, so the device over-reads. Mitigated by an integral heating element holding the head at about 37–40 °C and by BTPS correction.</li>
+                <li><strong>Gas viscosity</strong> — since ΔP is proportional to viscosity (Hagen–Poiseuille), adding N₂O, changing FiO₂ or adding volatile agent alters the reading unless the device is calibrated for, or electronically compensates for, the measured gas mixture — contrast with density-dependent orifice devices.</li>
+                <li><strong>Maintaining laminar flow</strong> — linearity depends on laminar flow. The Fleisch bundle of parallel narrow capillaries (each with a low Reynolds number) and the Lilly fine mesh screen, with smoothly tapered inlets, are designed to secure this; high peak flows, a partly blocked element, or turbulence from a sharp connector make ΔP rise with the square of flow and cause under-reading.</li>
+                <li><strong>Zero drift and calibration</strong> — because volume is obtained by integrating flow over time, a small transducer baseline offset accumulates into a large volume error; the device must be zeroed at no flow and calibrated with a known volume (1- or 3-litre calibration syringe) for the gas mixture in use.</li>
+              </ol>
+              <p className="text-sm text-muted-foreground mt-2">
+                <InlineRef topicId="flow-measurement" refLabel="BJA Educ 2004" />
               </p>
             </div>
             <p className="text-foreground/90 leading-relaxed mt-3 mb-4">
@@ -196,12 +247,16 @@ const FlowMeasurementTopic = () => {
                 a pointer over a dial calibrated in litres. It therefore measures <strong>volume</strong> by counting vane rotations, and
                 minute volume is read over 60 seconds <InlineRef topicId="flow-measurement" refLabel="Cross &amp; Plunkett Ch.8" />.
               </p>
-              <p className="text-sm text-muted-foreground">
-                Because the vane has <strong>inertia and friction</strong>, low flows (&lt;2 L/min) may fail to overcome them so the device
-                <em> under-reads</em>; at high flows (&gt;300 L/min) the vane keeps spinning after flow ceases, so it <em>over-reads</em>.
-                Readings are also affected by <strong>gas density and viscosity</strong> (calibration is for air/O₂), and by
-                <strong> condensation</strong> of water vapour, which loads the vane and gums the gearing. It is unidirectional and must be
-                placed on the expiratory limb the correct way round <InlineRef topicId="flow-measurement" refLabel="A&ICM 2023 (Gas flow)" />.
+              <ol className="text-sm text-muted-foreground list-decimal list-inside space-y-1.5">
+                <li><strong>Inertia at low flows</strong> — the vane's inertia must be overcome before it starts to turn, so at low tidal volumes or low flows it fails to register part of the flow and <em>under-reads</em> (very inaccurate below about 2 L/min).</li>
+                <li><strong>Momentum at high flows</strong> — at high flows the vane continues to spin after flow ceases and <em>over-reads</em> (above roughly 100 L/min, by 10–20% at high minute volumes).</li>
+                <li><strong>Gas composition</strong> — calibrated for air at ambient temperature; changes in density and viscosity (high FiO₂, N₂O, volatile agent, heliox) alter the driving force on the vane and therefore its accuracy.</li>
+                <li><strong>Water vapour and secretions</strong> — condensation adds weight and inertia to the vane and can make the mechanism stick, causing under-reading and eventual damage; it is also a route for cross-infection. It should be sited where condensation is minimised — on the inspiratory limb, or if used expiratory, distal to a HME/filter and oriented so water drains away — and it must not be autoclaved.</li>
+              </ol>
+              <p className="text-sm text-muted-foreground mt-2">
+                It measures <strong>volume</strong> by integrating flow, is unidirectional, and traditionally reads only expired
+                volume; modern workstations have largely replaced it with heated pneumotachographs and hot-wire anemometers
+                <InlineRef topicId="flow-measurement" refLabel="A&ICM 2023 (Gas flow)" />.
               </p>
             </div>
             <p className="text-foreground/90 leading-relaxed mt-4">
