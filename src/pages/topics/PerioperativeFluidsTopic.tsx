@@ -127,7 +127,7 @@ const PerioperativeFluidsTopic = () => {
               </div>
             </div>
             <p className="text-sm text-muted-foreground mt-3">
-              Failure to progress through these phases — continuing "resuscitation-style" boluses into stabilisation, or never actively de-resuscitating — is a major driver of fluid-overload morbidity seen in trials such as RELIEF and underlies GDFT protocols. <InlineRef label="Front Med Fluids 2025" /> <InlineRef label="RELIEF 2018" /> <InlineRef label="BJA Educ GDFT 2016" />
+              Failure to progress through these phases — continuing "resuscitation-style" boluses into stabilisation, or never actively de-resuscitating — is a major driver of fluid-overload morbidity seen in trials such as RELIEF and underlies GDFT protocols. <InlineRef topicId="perioperative-fluids" refLabel="Front Med Fluids 2025" /> <InlineRef topicId="perioperative-fluids" refLabel="RELIEF 2018" /> <InlineRef topicId="perioperative-fluids" refLabel="BJA Educ GDFT 2016" />
             </p>
             </CollapsibleSubsection>
           </ExamSection>
@@ -144,10 +144,10 @@ const PerioperativeFluidsTopic = () => {
               </p>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Historically, hypotonic maintenance fluids (0.18% saline/4% dextrose) were used, but these caused a wave of iatrogenic hyponatraemia and hyponatraemic encephalopathy. The mechanism is non-osmotic ADH release driven by surgical stress, pain, nausea and opioids, which promotes free-water retention — administering hypotonic fluid in this state produces dilutional hyponatraemia. <InlineRef label="BJA Paediatric Fluids 2006" />
+              Historically, hypotonic maintenance fluids (0.18% saline/4% dextrose) were used, but these caused a wave of iatrogenic hyponatraemia and hyponatraemic encephalopathy. The mechanism is non-osmotic ADH release driven by surgical stress, pain, nausea and opioids, which promotes free-water retention — administering hypotonic fluid in this state produces dilutional hyponatraemia. <InlineRef topicId="perioperative-fluids" refLabel="BJA Paediatric Fluids 2006" />
             </p>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Current NICE CG174 and APAGBI guidance therefore recommends isotonic balanced/crystalloid solutions (e.g. Plasma-Lyte, Hartmann's) for both maintenance and replacement in children, with glucose added where hypoglycaemia risk is significant (e.g. neonates and infants, or prolonged fasting). Postoperatively, maintenance is often restricted to 50–70% of calculated requirement, with regular monitoring of serum sodium to detect evolving hyponatraemia early. <InlineRef label="NICE CG174" />
+              Current NICE CG174 and APAGBI guidance therefore recommends isotonic balanced/crystalloid solutions (e.g. Plasma-Lyte, Hartmann's) for both maintenance and replacement in children, with glucose added where hypoglycaemia risk is significant (e.g. neonates and infants, or prolonged fasting). Postoperatively, maintenance is often restricted to 50–70% of calculated requirement, with regular monitoring of serum sodium to detect evolving hyponatraemia early. <InlineRef topicId="perioperative-fluids" refLabel="NICE CG174" />
             </p>
             </CollapsibleSubsection>
           </ExamSection>
@@ -167,7 +167,7 @@ const PerioperativeFluidsTopic = () => {
               Guyton's framing is useful conceptually: organ perfusion pressure = MAP − CVP (or venous pressure). Raising CVP with further fluid, without a corresponding rise in MAP, narrows the perfusion pressure gradient and can worsen organ perfusion despite an apparently "positive" fluid challenge.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Practical implication: in right ventricular dysfunction or established venous congestion, further boluses risk worsening RV distension and downstream congestion — prefer a vasopressor/inotrope to support MAP and consider active de-resuscitation (diuretics/ultrafiltration) rather than continued fluid loading. <InlineRef label="Front Med Fluids 2025" />
+              Practical implication: in right ventricular dysfunction or established venous congestion, further boluses risk worsening RV distension and downstream congestion — prefer a vasopressor/inotrope to support MAP and consider active de-resuscitation (diuretics/ultrafiltration) rather than continued fluid loading. <InlineRef topicId="perioperative-fluids" refLabel="Front Med Fluids 2025" />
             </p>
             </CollapsibleSubsection>
           </ExamSection>
