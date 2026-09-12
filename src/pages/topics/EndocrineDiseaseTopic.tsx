@@ -329,9 +329,10 @@ const EndocrineDiseaseTopic = () => {
                 <li>Consequences of right heart failure: raised JVP, hepatic congestion, ascites, peripheral oedema, and a low fixed cardiac output that tolerates vasodilatation poorly</li>
                 <li>Management: mandatory preoperative echocardiography, NT-proBNP and 5-HIAA <InlineRef topicId="endocrine-disease" refLabel="BJA Educ Carcinoid 2011" />; maintain preload, avoid rises in pulmonary vascular resistance (hypoxia, hypercapnia, acidosis), use invasive monitoring, cover with an octreotide infusion for crisis prevention, avoid histamine-releasing drugs, and be prepared to treat right ventricular failure with inotropes and pulmonary vasodilators</li>
                 <li>Diagnosis: urinary 5-HIAA, serum chromogranin A</li>
-                <li>Perioperative octreotide infusion (50–100 µg/h) — blocks mediator release; have bolus available</li>
-                <li>Avoid histamine-releasing drugs, sympathomimetics, and suxamethonium (may trigger carcinoid crisis)</li>
-                <li>Carcinoid crisis: IV octreotide 100–500 µg bolus; avoid catecholamines (may worsen); use vasopressin for hypotension</li>
+                <li>Preoperative octreotide loading: 100–500 µg subcutaneously 8-hourly (or a continuous infusion) for 1–2 days before major surgery in symptomatic patients, in addition to intraoperative cover</li>
+                <li>Perioperative octreotide infusion: 50–100 µg/h IV started at induction (some protocols use 25–50 µg/h) to suppress hormone release during handling of the tumour; have IV bolus doses drawn up and immediately available throughout the case</li>
+                <li>Avoid histamine-releasing drugs (morphine, atracurium, mivacurium), sympathomimetics/catecholamines (adrenaline, ephedrine, dopamine — may paradoxically stimulate further mediator release), and suxamethonium (fasciculation-related mediator release may trigger carcinoid crisis)</li>
+                <li>Carcinoid crisis (profound flushing, bronchospasm, labile blood pressure, arrhythmia): treat with IV octreotide 100–500 µg bolus (repeated as needed); avoid catecholamines/adrenergic vasopressors which may worsen mediator release — use vasopressin or phenylephrine cautiously for hypotension, and treat bronchospasm avoiding histamine-releasing agents</li>
               </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
@@ -339,6 +340,64 @@ const EndocrineDiseaseTopic = () => {
             </div>
           </div>
         </section>
+        {/* Pituitary Disease */}
+         <section id="section-pituitary-disease" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pituitary Disease</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_08"]} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Acromegaly</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Excess growth hormone (usually from a GH-secreting pituitary adenoma) causes soft tissue and skeletal overgrowth affecting airway management at every level</li>
+                <li>Airway difficulty predictors: macroglossia, mandibular prognathism and overgrowth, thickened pharyngeal/laryngeal soft tissue, glottic and subglottic narrowing, and a high incidence of obstructive sleep apnoea — anticipate difficult mask ventilation, difficult laryngoscopy, and potential difficult front-of-neck access</li>
+                <li>Consider awake fibreoptic intubation and a range of smaller endotracheal tubes; check for recurrent laryngeal nerve involvement/voice change and prior transsphenoidal surgery scarring</li>
+                <li>Systemic associations: hypertension, cardiomyopathy, glucose intolerance/diabetes, and peripheral neuropathy (nerve entrapment) — screen and optimise before elective surgery</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Diabetes Insipidus (DI)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Deficiency of (cranial DI) or renal resistance to (nephrogenic DI) antidiuretic hormone (ADH/vasopressin) causes production of large volumes of dilute urine with hypernatraemia and hyperosmolar plasma if free water intake cannot keep pace</li>
+                <li>Commonly seen after pituitary surgery/trauma, or as a feature of brain death — often transient/triphasic (DI → transient antidiuresis from stored ADH release → permanent DI) after pituitary stalk injury</li>
+                <li>Diagnosis: urine output &gt;3 mL/kg/h with dilute urine (low urine osmolality) despite rising plasma osmolality/sodium</li>
+                <li>Management: replace free water losses (enteral water or IV 5% dextrose/hypotonic fluid) matched to urine output, and give desmopressin (DDAVP) — typically 1–2 µg IV/SC or 10–20 µg intranasal, titrated to urine output and serum sodium</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">SIADH</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Syndrome of inappropriate antidiuretic hormone secretion causes euvolaemic hyponatraemia with inappropriately concentrated urine (urine osmolality &gt;100 mosmol/kg) despite low plasma osmolality</li>
+                <li>Causes relevant to perioperative practice: intracranial pathology/surgery (including pituitary surgery), pulmonary disease, malignancy, and drugs (e.g. carbamazepine, SSRIs, opioids)</li>
+                <li>Management: fluid restriction (typically 750–1000 mL/day) as first-line for chronic/asymptomatic hyponatraemia; correct severe/symptomatic hyponatraemia cautiously with hypertonic saline under specialist guidance, limiting the rate of sodium correction (generally no more than 8–10 mmol/L in 24 hours) to avoid osmotic demyelination syndrome</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Panhypopituitarism</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Global anterior pituitary failure (tumour, surgery, radiotherapy, Sheehan's syndrome, pituitary apoplexy) causes combined deficiency of ACTH (secondary adrenal insufficiency), TSH (secondary hypothyroidism), gonadotrophins, and GH, plus possible posterior pituitary (ADH) involvement</li>
+                <li>Perioperative priority: secondary adrenal insufficiency takes precedence — give perioperative glucocorticoid replacement/cover as for chronic steroid users (see Adrenal Disorders) before correcting hypothyroidism, since thyroxine replacement alone can precipitate an adrenal crisis by increasing metabolic clearance of cortisol</li>
+                <li>Ensure thyroid hormone replacement is optimised where possible, and monitor for diabetes insipidus if the posterior pituitary/stalk is involved (e.g. after pituitary apoplexy or transsphenoidal surgery)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Obesity-Related Endocrine and Metabolic Considerations */}
+         <section id="section-obesity-endocrine" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Obesity-Related Endocrine and Metabolic Considerations</h2>
+          <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_08"]} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Obesity is strongly associated with type 2 diabetes, metabolic syndrome, obstructive sleep apnoea, and non-alcoholic fatty liver disease, each of which independently affects perioperative risk and drug handling</li>
+                <li>Increasing use of GLP-1 receptor agonists and dual GIP/GLP-1 agonists for weight management (as well as diabetes) means gastric-emptying and aspiration considerations discussed above apply to an expanding non-diabetic surgical population — always ask specifically about these drugs during preoperative assessment</li>
+                <li>Bariatric/metabolic surgery patients may have post-surgical hypoglycaemia (post-gastric-bypass hyperinsulinaemic hypoglycaemia) and nutritional deficiencies (B12, iron, thiamine) requiring perioperative attention</li>
+                <li>See the dedicated Obesity and Bariatric Surgery topic for full airway, drug dosing, and positioning considerations in this population</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
