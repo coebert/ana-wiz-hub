@@ -33,6 +33,10 @@ const s = {
   qtc: { label: "BJA Educ: drug-induced QT prolongation and torsade de pointes", href: "https://doi.org/10.1093/bjaceaccp/mkr061" },
   crrtDrugs: { label: "BJA Educ: drug dosing in acute kidney injury and renal replacement therapy", href: "https://doi.org/10.1016/j.bjae.2018.07.002" },
   vancomycinAUC: { label: "ASHP/IDSA consensus guideline for therapeutic monitoring of vancomycin", href: "https://doi.org/10.1093/ajhp/zxaa036" },
+  toxbase: { label: "TOXBASE (National Poisons Information Service)", href: "https://www.toxbase.org" },
+  extrip: { label: "EXTRIP workgroup recommendations on extracorporeal treatment in poisoning", href: "https://www.extrip-workgroup.org" },
+  snap: { label: "SNAP trial: modified 12-hour acetylcysteine regimen", href: "https://doi.org/10.1016/S0140-6736(13)62062-0" },
+  pals: { label: "Resuscitation Council UK: paediatric advanced life support", href: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/paediatric-advanced-life-support" },
 };
 
 export const pharmacologyCaseBank: CaseBank = {
