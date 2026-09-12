@@ -5,6 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { capnographyQuiz } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import CapnographyWaveformDiagram from "@/components/diagrams/physics/CapnographyWaveformDiagram";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const capnographyFaqs: Array<[string, string]> = [
   [
@@ -48,7 +49,7 @@ const objectives = [
   "Identify the four phases of a normal capnograph and the alpha and beta angles.",
   "Recognise abnormal capnograph patterns: obstructive (shark-fin), curare cleft, raised baseline (rebreathing), sudden loss (disconnection / oesophageal / arrest) and cardiac oscillations.",
   "Explain why EtCO₂ underestimates PaCO₂ and how that gradient changes in disease.",
-  "Justify capnography as mandatory monitoring for all general anaesthesia, sedation requiring airway support, and intubated transfer (AAGBI 2015, NAP4).",
+  "Justify capnography as mandatory monitoring for all general anaesthesia, sedation requiring airway support, and intubated transfer (Association of Anaesthetists 2021, NAP4).",
   "Use EtCO₂ as a marker of cardiac output during CPR (RCUK 2021) and ROSC.",
 ];
 
@@ -103,7 +104,7 @@ const workedExamples: WorkedExample[] = [
         CO₂ (carbonated drinks, mask ventilation pre-induction). Sustained
         EtCO₂ of a normal shape and value across <strong>≥ 6 consecutive
         breaths</strong> is the gold standard for tracheal placement
-        (NAP4, DAS 2015). A flat or vanishing trace is presumed
+        (NAP4, DAS 2025). A flat or vanishing trace is presumed
         oesophageal until proven otherwise.
       </>
     ),
@@ -116,7 +117,7 @@ const workedExamples: WorkedExample[] = [
         confirmation.
       </>
     ),
-    cites: ["NAP4", "DAS 2015"],
+    cites: ["NAP4", "DAS 2025"],
   },
   {
     title: "EtCO₂ as a CPR feedback monitor",
@@ -158,7 +159,7 @@ const keyPoints = [
     cites: ["Al-Shaikh & Stacey Ch.10-11"],
   },
   {
-    text: "Normal capnograph has four phases: I — dead-space gas (zero), II — rapid upstroke (mixed dead-space + alveolar), III — alveolar plateau (slope < 5°), and 0 — inspiratory baseline (back to zero). The α-angle (II–III) and β-angle (III–0) both ~90°.",
+    text: "Normal capnograph has four phases: I — dead-space gas (zero), II — rapid upstroke, III — alveolar plateau, and 0 — inspiration. The α-angle (II–III) is normally about 100–110°; the β-angle (III–0) is about 90°.",
     cites: ["Bhavani-Shankar & Philip 2000"],
   },
   {
@@ -179,7 +180,7 @@ const keyPoints = [
   },
   {
     text: "Sudden loss of trace is a never-event signal — work through tube position (oesophageal, dislodged), circuit (disconnection, sample-line failure) and circulation (arrest) in that order. Oesophageal CO₂ from a stomach full of carbonated fluid is the classic trap — it dies away within ~6 breaths.",
-    cites: ["NAP4", "DAS 2015"],
+    cites: ["NAP4", "DAS 2025"],
   },
   {
     text: "EtCO₂ in CPR: < 1.3 kPa (10 mmHg) after 20 min of optimal compressions predicts non-survival in adult cardiac arrest; an abrupt rise of > 1 kPa heralds ROSC and should not be misinterpreted as a need for more compressions.",
@@ -190,8 +191,8 @@ const keyPoints = [
     cites: ["Bhavani-Shankar & Philip 2000"],
   },
   {
-    text: "Capnography is mandatory monitoring for all general anaesthesia, all sedation requiring airway support, all advanced airways including LMA, and all intubated transfers within and between hospitals (AAGBI 2015, NAP4 recommendation 1).",
-    cites: ["AAGBI Monitoring 2015", "NAP4"],
+    text: "Capnography is mandatory monitoring for all general anaesthesia, sedation requiring airway support, advanced airways including LMA, and intubated transfers (Association of Anaesthetists 2021; NAP4).",
+    cites: ["Association of Anaesthetists 2021", "NAP4"],
   },
   {
     text: "Limitations: infrared analysers do not measure O₂ (no changing dipole moment); N₂O and volatile agents broaden the CO₂ absorption peak — modern machines compensate. Water vapour and high O₂ can introduce small errors if not corrected.",
@@ -310,7 +311,7 @@ const CapnographyTopic = () => {
                     </tr>
                     <tr className="border-b border-border">
                       <td className="p-2 font-medium text-foreground">Weight / dead space at airway</td>
-                      <td className="p-2">Minimal</td>
+                       <td className="p-2">Adds some dead space via the T-piece connector</td>
                       <td className="p-2">Adds bulk and dead space — significant in neonates</td>
                     </tr>
                     <tr>
@@ -321,6 +322,7 @@ const CapnographyTopic = () => {
                   </tbody>
                 </table>
               </div>
+              <p className="mt-3 text-sm text-muted-foreground">Mainstream systems respond rapidly, remove no gas and cannot kink or block a sample line, but add airway weight/dead space, may heat the adaptor, can be contaminated by secretions and are awkward without an advanced airway. Sidestream systems are light, work with nasal cannulae and permit multigas analysis, but delay the trace, remove gas, need scavenging and are vulnerable to leaks, kinks, water and secretions. <InlineRef topicId="capnography" refLabel="Al-Shaikh & Stacey Ch.10-11" /></p>
             </div>
 
             <div>
