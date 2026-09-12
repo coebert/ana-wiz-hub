@@ -299,7 +299,11 @@ const caseSeeds: CaseSeed[] = [
   },
 ];
 
-const cases: PerioperativeCase[] = caseSeeds.map((caseData) => ({
+/**
+ * Exported so the content-audit corpus builder can read the full case text
+ * (stages, model answers and detailed answers) without rendering the page.
+ */
+export const perioperativeCases: PerioperativeCase[] = caseSeeds.map((caseData) => ({
   ...caseData,
   detailedAnswer: detailedAnswers[caseData.id] ?? [],
 }));
