@@ -50,6 +50,7 @@ const IcuDrugSafety = () => {
   const [searchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get("drug") ?? "");
   const [activeGroup, setActiveGroup] = useState<string>("all");
+  const [riskOnly, setRiskOnly] = useState(false);
 
   const targetSlug = searchParams.get("slug");
 
