@@ -4,6 +4,7 @@ import {
   caseBankHref,
   type ManagementFlow,
 } from "@/data/icuManagementFlows";
+import { icuInfusionGroups } from "@/data/icuInfusions";
 
 export { drugDoseHref, infusionHref, caseBankHref };
 
@@ -257,3 +258,29 @@ export const paediatricIcuFlows: ManagementFlow[] = [
 ];
 
 export const paediatricIcuFlowCount = paediatricIcuFlows.length;
+
+/**
+ * Link into the ICU infusion calculator with the drug and the child's weight
+ * pre-filled, so a pathway step can be turned straight into a pump rate.
+ */
+export const calculatorHref = (drug: string, weightKg: number) =>
+  `/intensive-care/calculator?drug=${encodeURIComponent(drug)}&weight=${weightKg}`;
+
+const infusionNames = icuInfusionGroups.flatMap((g) => g.infusions.map((i) => i.drug));
+
+const normalise = (value: string) => value.toLowerCase().replace(/[^a-z]/g, "");
+
+/** Match the drug/infusion names quoted in a step to calculable infusions. */
+export function calculableInfusions(names: (string[] | undefined)[]): string[] {
+  const wanted = names.flatMap((n) => n ?? []);
+  const matched = wanted
+    .map((name) => {
+      const needle = normalise(name);
+      return (
+        infusionNames.find((d) => normalise(d) === needle) ??
+        infusionNames.find((d) => normalise(d).startsWith(needle.slice(0, 6)) && needle.length > 4)
+      );
+    })
+    .filter((d): d is string => Boolean(d));
+  return Array.from(new Set(matched));
+}
