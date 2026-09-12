@@ -36,6 +36,7 @@ const tocItems = [
   { id: "toc-inotropes", label: "Inotropes & Inodilators" },
   { id: "toc-vasodilators", label: "Vasodilators" },
   { id: "toc-salvage", label: "Salvage Therapy" },
+  { id: "toc-paediatric", label: "Paediatric" },
   { id: "toc-synthesis", label: "Comparison Table" },
 ];
 
@@ -354,10 +355,12 @@ const VasoactiveAgentsTopic = () => {
         <section className="mb-10">
           <h3 className="text-xl font-serif font-bold text-foreground">Metaraminol</h3>
           <ul className="text-foreground/90 space-y-1">
-            <li>Predominantly indirect sympathomimetic with direct α₁ agonism</li>
-            <li>Bolus: 0.5–1 mg IV. Infusion: 0.5–5 mg/hr</li>
-            <li>Acts as a false transmitter — displaces NA but is a weaker agonist → tachyphylaxis</li>
-            <li>Longer acting than phenylephrine (15–20 min). Causes reflex bradycardia</li>
+            <li><strong>Mechanism:</strong> dual action — direct agonism at α₁-adrenoceptors on vascular smooth muscle, plus an indirect effect from displacing noradrenaline from sympathetic nerve-terminal vesicles. It is also a weak β₁ agonist.</li>
+            <li><strong>Haemodynamics:</strong> ↑ SVR with ↑ systolic, diastolic and mean arterial pressure; reflex vagal bradycardia is usual, so cardiac output is unchanged or slightly reduced. Weak indirect β₁ stimulation gives a mild positive inotropic effect, so it is often better tolerated than phenylephrine in mild myocardial depression.</li>
+            <li><strong>Dose:</strong> bolus 0.5–1 mg IV (dilute to 0.5 mg/mL); infusion 0.5–5 mg/hr titrated to MAP.</li>
+            <li><strong>Kinetics:</strong> onset 1–2 min, duration of a single bolus 20–60 min — considerably longer than phenylephrine. It is a poor substrate for COMT and is not metabolised by MAO in the way noradrenaline is; elimination pathways are incompletely characterised, with conjugation and renal excretion of metabolites.</li>
+            <li><strong>Tachyphylaxis:</strong> repeated doses deplete noradrenaline stores and replace them with metaraminol acting as a “false transmitter” — a weaker agonist than noradrenaline — so responses diminish. Switch to a directly acting agent (phenylephrine, noradrenaline) rather than escalating.</li>
+            <li><strong>Clinical use:</strong> mainstay for hypotension after spinal or epidural blockade, and a peripherally safe bridge while central access and a noradrenaline infusion are established. Extravasation is less injurious than noradrenaline but still warrants care <InlineRef topicId="vasoactive-agents" refLabel="Peck &amp; Hill Ch.11" /></li>
           </ul>
         </section>
 
@@ -598,12 +601,38 @@ const VasoactiveAgentsTopic = () => {
           </ul>
         </section>
 
+        <section className="mb-10">
+          <h3 className="text-xl font-serif font-bold text-foreground">Hydralazine</h3>
+          <ul className="text-foreground/90 space-y-1">
+            <li><strong>Mechanism:</strong> direct-acting arteriolar vasodilator with little venous effect, so it reduces afterload rather than preload. The proposed mechanism is interference with IP₃-mediated calcium release from vascular smooth-muscle sarcoplasmic reticulum, with a contribution from NO release and hyperpolarisation.</li>
+            <li><strong>Haemodynamics:</strong> ↓ SVR and ↓ BP with diastolic fall exceeding systolic; baroreceptor-mediated reflex tachycardia, ↑ stroke volume and ↑ cardiac output, plus renin release and sodium/water retention with repeated dosing.</li>
+            <li><strong>Kinetics:</strong> extensive first-pass metabolism by hepatic N-acetyltransferase, so oral bioavailability is low and highly variable. Slow acetylators (about half of a European population) achieve higher plasma levels, needing lower doses and carrying greater risk of hypotension and drug-induced lupus; fast acetylators may appear resistant to oral therapy. Elimination half-life is 2–4 h but the hypotensive effect outlasts it (up to 8–12 h).</li>
+            <li><strong>Indications:</strong> severe hypertension including hypertensive emergencies, pre-eclampsia and eclampsia (a long-standing obstetric choice alongside labetalol and nifedipine), and as part of vasodilator therapy in chronic heart failure with nitrates.</li>
+            <li><strong>Dose:</strong> 5–10 mg by slow IV injection over 20 min, repeatable after 20–30 min; infusion 200–300 µg/min initially, maintenance typically 50–150 µg/min <InlineRef topicId="vasoactive-agents" refLabel="BNF Hydralazine" /></li>
+            <li><strong>Adverse effects:</strong> reflex tachycardia (avoid in aortic dissection and severe ischaemic heart disease unless β-blocked), unpredictable prolonged hypotension, headache, flushing, fluid retention, and with chronic oral use drug-induced lupus erythematosus, peripheral neuropathy (pyridoxine-responsive) and blood dyscrasias.</li>
+          </ul>
+        </section>
+
         {/* ================= 9. SALVAGE THERAPY ================= */}
         <section id="toc-salvage" className="mb-6 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2">Salvage Therapy for Refractory Vasoplegia</h2>
           <p className="text-foreground/90 leading-relaxed mt-3">
             Non-adrenergic, non-vasopressinergic agents reserved for shock unresponsive to conventional therapy.
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h3 className="text-xl font-serif font-bold text-foreground">Angiotensin II</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            Synthetic human angiotensin II (Giapreza) restores tone through the renin–angiotensin axis when catecholamine and vasopressin receptor pathways are exhausted or desensitised.
+          </p>
+          <ul className="text-foreground/90 space-y-1 mt-2">
+            <li><strong>Mechanism:</strong> direct agonist at vascular AT₁ receptors → Gq-coupled phospholipase C, IP₃/DAG, rise in intracellular Ca²⁺ and potent arterial and venous constriction. It also stimulates aldosterone and ADH release and enhances sodium/water retention.</li>
+            <li><strong>Indications:</strong> catecholamine-refractory distributive shock (septic, post-CPB or other vasoplegic shock) despite adequate fluid resuscitation, noradrenaline and vasopressin. Also used in ACE-inhibitor-associated vasoplegia, where the angiotensin pathway is specifically deficient.</li>
+            <li><strong>Evidence:</strong> the ATHOS-3 randomised trial showed angiotensin II raised MAP to target or by ≥ 10 mmHg at 3 h in 70% versus 23% of patients and allowed background vasopressor doses to be reduced; it was not powered for mortality <InlineRef topicId="vasoactive-agents" refLabel="ATHOS-3 2017" /></li>
+            <li><strong>Dose:</strong> start 20 ng/kg/min IV via central line, titrate in 15 ng/kg/min steps every 5 min; maximum 80 ng/kg/min in the first 3 h, then usually ≤ 40 ng/kg/min. Wean in 2–15 ng/kg/min decrements as other vasopressors are reduced.</li>
+            <li><strong>Adverse effects and cautions:</strong> arterial and venous thrombosis — VTE prophylaxis is recommended; peripheral, digital and mesenteric ischaemia; tachyphylaxis is not typical but excess vasoconstriction can reduce cardiac output in the failing ventricle. Monitor lactate, perfusion and limb/gut ischaemia. Availability and cost restrict use in the UK, where it is not routinely commissioned.</li>
+          </ul>
         </section>
 
         <section className="mb-10">
@@ -676,6 +705,23 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         {/* ================= 10. INTEGRATED COMPARISON ================= */}
+        {/* ================= PAEDIATRIC CONSIDERATIONS ================= */}
+        <section id="toc-paediatric" className="mb-6 scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2">Paediatric Considerations</h2>
+        </section>
+
+        <section className="mb-10">
+          <ul className="text-foreground/90 space-y-1">
+            <li><strong>Physiology:</strong> neonates and small infants have a relatively non-compliant, poorly compliant ventricle with limited contractile reserve and a near-fixed stroke volume, so cardiac output is rate-dependent and bradycardia is poorly tolerated. Immature sympathetic innervation, lower catecholamine stores and higher β-receptor sensitivity change the dose–response relationship, and the transitional circulation means high PVR states may need pulmonary vasodilators rather than more systemic vasoconstriction.</li>
+            <li><strong>Recognition of shock:</strong> hypotension is a late sign; tachycardia, prolonged capillary refill, cool or flushed peripheries, reduced urine output and altered conscious level come first. Use age-related MAP targets rather than adult thresholds.</li>
+            <li><strong>Septic shock:</strong> current paediatric sepsis guidance recommends adrenaline or noradrenaline in preference to dopamine as first-line vasoactive support, starting them early (including via peripheral or intraosseous access at low concentration) if perfusion remains poor after 40–60 mL/kg of fluid. Adrenaline is conventionally chosen for “cold” low-output shock with high SVR, and noradrenaline for “warm” vasodilated shock <InlineRef topicId="vasoactive-agents" refLabel="SCCM Paediatric Sepsis 2020" /></li>
+            <li><strong>Typical infusion ranges:</strong> adrenaline and noradrenaline 0.05–1 µg/kg/min; dobutamine 5–20 µg/kg/min; milrinone 0.25–0.75 µg/kg/min (accumulates in renal impairment); dopamine 5–20 µg/kg/min — still used more often in neonates than adults, particularly for hypotension of prematurity; vasopressin 0.0003–0.002 units/kg/min as an adjunct.</li>
+            <li><strong>Steroids and adjuncts:</strong> consider hydrocortisone in fluid- and catecholamine-refractory shock, and remember that hypocalcaemia and hypoglycaemia commonly contribute to poor contractility in infants.</li>
+            <li><strong>Practical safety:</strong> weight-based, standardised concentrations and double-checked pump calculations, dedicated lines, and vigilance for extravasation (small vessels, high risk of tissue injury). Escalate to advice from a paediatric intensive care retrieval service early.</li>
+          </ul>
+          <p className="mt-3 text-sm text-muted-foreground">See also the paediatric infusion and dosing tools in the Intensive Care section for weight-based rate calculations.</p>
+        </section>
+
         <div id="toc-synthesis" className="scroll-mt-24">
           <SynthesisBlock
             title="Haemodynamic Effects — Side-by-Side Comparison"
