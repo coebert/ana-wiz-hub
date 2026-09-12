@@ -210,6 +210,7 @@ const BurnsIcuTopic = () => {
               ‘Fluid creep’ — excess crystalloid resuscitation — drives abdominal compartment syndrome, ARDS, peripheral compartment
               syndromes and ocular compartment syndrome. The formula is a starting point; the patient is the monitor.
             </p>
+            </CollapsibleSubsection>
             <CollapsibleSubsection title="Monitoring Adequacy of Resuscitation">
               <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
                 <li><strong>Urine output</strong> (0.5 mL/kg/h adult, 1 mL/kg/h child): the mainstay end-point, but osmotic diuresis (glucose, myoglobin), diuretics or pre-existing renal disease can mislead it in either direction.</li>
@@ -220,7 +221,6 @@ const BurnsIcuTopic = () => {
                 <li><strong>Fluid creep</strong> is defined as crystalloid volumes exceeding 6 mL/kg/%TBSA or &gt; 250 mL/kg in the first 24 h above formula predictions; it is strongly associated with abdominal, orbital and limb compartment syndromes and should prompt review of resuscitation strategy (colloid, cardiac-output-guided titration).</li>
                 <li><strong>Microdialysis</strong> is an experimental tissue-level monitoring tool that can demonstrate ongoing dermal/muscle hypoxia and metabolic derangement despite apparently adequate systemic resuscitation end-points <InlineRef topicId="burns-icu" refLabel="Burns Microdialysis 2007" />.</li>
               </ul>
-            </CollapsibleSubsection>
             </CollapsibleSubsection>
           </ExamSection>
 
