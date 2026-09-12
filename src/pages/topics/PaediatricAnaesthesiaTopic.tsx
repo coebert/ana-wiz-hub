@@ -445,14 +445,19 @@ const PaediatricAnaesthesiaTopic = () => {
                   <p className="text-xs text-muted-foreground mt-2">Max bupivacaine 2 mg/kg; max ropivacaine 3 mg/kg.</p>
                 </div>
                 <div className="p-4 rounded-lg border border-border">
-                  <p className="font-semibold text-foreground text-sm">Adjuncts (extend duration ~50–100%)</p>
-                  <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
-                    <li><strong className="text-foreground">Clonidine</strong> 1–2 µg/kg — most evidence; risk of sedation/hypotension</li>
-                    <li><strong className="text-foreground">Dexmedetomidine</strong> 1 µg/kg — emerging evidence, less hypotension</li>
-                    <li><strong className="text-foreground">Ketamine</strong> (preservative-free) 0.5 mg/kg — concerns over neurotoxicity, falling out of favour</li>
-                    <li><strong className="text-foreground">Morphine</strong> (preservative-free) 30 µg/kg — long duration but late respiratory depression; HDU monitoring required</li>
+                  <p className="font-semibold text-foreground text-sm">Adjuncts — mechanism, dose &amp; safety <InlineRef topicId="paediatric-anaesthesia" refLabel="Anaesthesia 2021 Paed Regional" /></p>
+                  <p className="text-xs text-muted-foreground mt-1">A single-shot caudal with plain local anaesthetic lasts only 4–6 h. Adjuncts extend this by roughly 50–100% and are the main alternative to a catheter technique in day-case surgery.</p>
+                  <ul className="text-sm text-muted-foreground mt-2 list-disc list-inside space-y-1">
+                    <li><strong className="text-foreground">Clonidine</strong> 1–2 µg/kg — α₂ agonist acting on dorsal-horn α₂ adrenoceptors (and by local vasoconstriction/spinal noradrenergic inhibition of substance P release); best-evidenced adjunct, extends analgesia by 2–4 h. Dose-dependent sedation, bradycardia and hypotension; avoid &gt;2 µg/kg and avoid in neonates and ex-preterm infants because of apnoea risk.</li>
+                    <li><strong className="text-foreground">Dexmedetomidine</strong> 1 µg/kg — more selective α₂ agonist with similar or slightly longer prolongation and less hypotension than clonidine, plus a lower incidence of emergence agitation; still off-licence for neuraxial use.</li>
+                    <li><strong className="text-foreground">Ketamine</strong> (preservative-free S-ketamine) 0.5 mg/kg — NMDA-receptor antagonism in the dorsal horn gives the longest prolongation of any adjunct, but preservative-containing preparations and animal neuro-apoptosis data have led most UK centres to abandon it.</li>
+                    <li><strong className="text-foreground">Morphine</strong> (preservative-free) 30 µg/kg — µ-opioid action on dorsal-horn receptors gives 12–24 h analgesia, but its hydrophilicity permits rostral spread with <em>delayed</em> respiratory depression up to 12–24 h; also pruritus, nausea and urinary retention. Requires HDU-level respiratory monitoring and is therefore unsuitable for day cases.</li>
+                    <li><strong className="text-foreground">Adrenaline</strong> 1:200,000 (5 µg/ml) — used chiefly as a marker of intravascular injection in the test dose; only modest prolongation of block.</li>
+                    <li><strong className="text-foreground">Avoid</strong> midazolam, neostigmine and tramadol neuraxially — the evidence is weak, they are unlicensed by this route, and preservative-related neurotoxicity is a real concern.</li>
                   </ul>
+                  <p className="text-xs text-muted-foreground mt-2">General safety rules: use preservative-free preparations only, calculate the total local anaesthetic dose against the mg/kg maximum <em>before</em> adding volume, and document the adjunct and dose so ward staff know what monitoring is required.</p>
                 </div>
+
               </div>
               <div className="p-4 rounded-lg border-l-4 border-destructive bg-destructive/5 mt-3">
                 <p className="font-semibold text-foreground text-sm">Complications &amp; cautions</p>
