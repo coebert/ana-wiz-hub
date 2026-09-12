@@ -115,6 +115,70 @@ const MathConceptsTopic = () => {
                 phenytoin at high concentrations and salicylate in overdose
                 <InlineRef topicId="math-concepts" refLabel="BJA Educ 2004 (PK)" />.
               </p>
+              <div className="mt-3 rounded-lg border border-border p-4 text-sm text-muted-foreground space-y-2">
+                <h3 className="font-semibold text-foreground">Half-life, clearance and volume of distribution</h3>
+                <p>
+                  <strong>Volume of distribution (Vd)</strong> is the theoretical volume that would be required to contain the total
+                  amount of drug in the body at the same concentration as in plasma; a large Vd (e.g. amiodarone, digoxin) implies
+                  extensive tissue binding. <strong>Clearance (CL)</strong> is the volume of plasma irreversibly cleared of drug per
+                  unit time (e.g. mL/min), reflecting hepatic metabolism and renal excretion. The elimination rate constant links
+                  them: <strong>k = CL ÷ Vd</strong>.
+                </p>
+                <p>
+                  Since <strong>t½ = 0.693 ÷ k</strong>, substitution gives <strong>t½ = (0.693 × Vd) ÷ CL</strong>. Half-life is
+                  therefore directly proportional to Vd and inversely proportional to clearance: a drug with a large Vd (more
+                  reservoir to empty) has a long half-life even with normal clearance, and halving clearance (renal failure)
+                  doubles the half-life at constant Vd. This is why changing half-life cannot be predicted from clearance alone
+                  <InlineRef topicId="math-concepts" refLabel="BJA Educ 2004 (PK)" />.
+                </p>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="michaelis-menten" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Michaelis-Menten Kinetics">
+              <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  Enzyme-mediated metabolism and carrier-mediated transport are <strong>saturable</strong>: as substrate
+                  concentration rises, the reaction rate approaches a ceiling. The <strong>Michaelis-Menten equation</strong>
+                  describes this formally:
+                </p>
+                <p className="text-center font-mono text-primary">
+                  Rate = (V<sub>max</sub> × [C]) ÷ (K<sub>m</sub> + [C])
+                </p>
+                <p>
+                  <strong>V<sub>max</sub></strong> is the maximum rate of reaction when every enzyme is saturated, and{" "}
+                  <strong>K<sub>m</sub></strong> (the Michaelis constant) is the substrate concentration at which the rate is half
+                  of V<sub>max</sub>. K<sub>m</sub> is inversely related to the enzyme's <strong>affinity</strong> for its
+                  substrate: a low K<sub>m</sub> means high affinity (half-maximal rate reached at low concentration).
+                </p>
+                <div className="rounded-lg border border-border p-4">
+                  <svg viewBox="0 0 320 200" className="w-full h-auto" role="img" aria-label="Michaelis-Menten curve: reaction rate versus substrate concentration, rising steeply then plateauing at Vmax">
+                    <line x1="40" y1="170" x2="310" y2="170" stroke="currentColor" className="text-border" strokeWidth="1.5" />
+                    <line x1="40" y1="170" x2="40" y2="15" stroke="currentColor" className="text-border" strokeWidth="1.5" />
+                    <text x="175" y="190" textAnchor="middle" className="fill-muted-foreground text-[10px]">Substrate concentration [C]</text>
+                    <text x="15" y="95" textAnchor="middle" className="fill-muted-foreground text-[10px]" transform="rotate(-90 15 95)">Rate</text>
+                    <path d="M40 170 C 90 70, 160 45, 310 38" fill="none" className="stroke-primary" strokeWidth="2.5" />
+                    <line x1="40" y1="38" x2="310" y2="38" strokeDasharray="5 4" className="stroke-muted-foreground" strokeWidth="1" />
+                    <text x="305" y="32" textAnchor="end" className="fill-muted-foreground text-[10px]">Vmax (zero-order plateau)</text>
+                    <line x1="120" y1="170" x2="120" y2="104" strokeDasharray="4 3" className="stroke-muted-foreground" strokeWidth="1" />
+                    <line x1="40" y1="104" x2="120" y2="104" strokeDasharray="4 3" className="stroke-muted-foreground" strokeWidth="1" />
+                    <text x="120" y="184" textAnchor="middle" className="fill-muted-foreground text-[10px]">Km</text>
+                    <text x="34" y="104" textAnchor="end" className="fill-muted-foreground text-[10px]">½Vmax</text>
+                    <text x="55" y="150" className="fill-muted-foreground text-[9px]">First-order: rate ∝ [C]</text>
+                  </svg>
+                </div>
+                <p>
+                  At low concentrations ([C] ≪ K<sub>m</sub>) the equation simplifies to Rate ≈ (V<sub>max</sub>/K<sub>m</sub>) × [C] —
+                  rate is proportional to concentration, i.e. <strong>first-order kinetics</strong>. At high concentrations
+                  ([C] ≫ K<sub>m</sub>) it simplifies to Rate ≈ V<sub>max</sub> — a constant amount eliminated per unit time, i.e.{" "}
+                  <strong>zero-order kinetics</strong>. The graph therefore transitions smoothly from first-order to zero-order as
+                  enzymes saturate. Clinically this is the model for <strong>phenytoin</strong> (small dose increments cause
+                  disproportionate rises in plasma level near saturation) and <strong>ethanol</strong> (saturated even at social
+                  doses, giving a constant elimination of roughly one unit per hour), as well as salicylates and thiopentone in
+                  overdose <InlineRef topicId="math-concepts" refLabel="BJA Educ 2004 (PK)" />.
+                </p>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -215,6 +279,18 @@ const MathConceptsTopic = () => {
             <p className="text-muted-foreground leading-relaxed">
               The sigmoid (S-shaped) curve arises when binding or response is <strong>cooperative</strong>. The empirical Hill equation is fractional occupancy = [A]ⁿ/(K<sub>0.5</sub>ⁿ + [A]ⁿ), where the <strong>Hill coefficient n</strong> is an index of cooperativity and curve steepness. When n &gt; 1, binding is positively cooperative: one ligand increases affinity for the next (oxygen binding to haemoglobin; n ≈ 2.7). When n = 1, sites behave independently with no cooperativity (for example myoglobin or a simple drug–receptor interaction). When n &lt; 1, binding is negatively cooperative: one ligand reduces affinity for subsequent ligand. The coefficient is <strong>not necessarily the number of binding sites</strong>; it is an empirical summary of interaction. In pharmacology, plotting <strong>dose on a logarithmic axis</strong> converts the hyperbolic dose-response into its familiar sigmoid shape, with EC₅₀ at the midpoint. The central portion can be linearised using a probit or logit transformation <InlineRef topicId="math-concepts" refLabel="Cross & Plunkett Ch.1" /> <InlineRef topicId="math-concepts" refLabel="BJA Educ 2007 (Stats)" />.
             </p>
+            <div className="mt-3 rounded-lg border border-border p-4 text-sm text-muted-foreground space-y-2">
+              <h3 className="font-semibold text-foreground">Probit and logit transformations</h3>
+              <p>
+                Probit ("probability unit") and logit are statistical functions that transform the cumulative proportion of
+                subjects responding so as to <strong>'stretch' the y-axis</strong> of the sigmoid quantal dose-response curve,
+                converting its central portion into a straight line. Linearisation allows simple <strong>linear regression</strong>{" "}
+                to be fitted to the data, from which <strong>ED₅₀ and ED₉₅</strong> are read off accurately and the potency
+                (position) and slope (variability of response) of different drugs compared statistically. Probit analysis assumes
+                an underlying normal distribution of individual effective doses; the logit assumes a logistic distribution and
+                gives almost identical results in practice <InlineRef topicId="math-concepts" refLabel="BJA Educ 2007 (Stats)" />.
+              </p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout

@@ -224,15 +224,42 @@ const SIUnitsThermodynamicsTopic = () => {
                 (constant T, n → P₁V₁ = P₂V₂), <strong>Charles' law</strong> (constant P, n → V₁/T₁ = V₂/T₂), and <strong>Gay-Lussac's law</strong> (constant V, n → P₁/T₁ = P₂/T₂).
               </p>
               <p>
+                <strong>Avogadro's hypothesis</strong> states that equal volumes of all ideal gases, at the same temperature and
+                pressure, contain the same number of molecules (V ∝ n). <strong>Avogadro's constant</strong> (6.022 × 10²³ mol⁻¹)
+                is the number of elementary entities in one mole, and it follows that <strong>one mole of any ideal gas at STP
+                occupies 22.4 L</strong>. Clinical example: a size E oxygen cylinder contains about 680 L of gas ≈ 30 mol
+                (680 ÷ 22.4), so the available volume and duration at a given flow can be calculated from moles; the same logic
+                underlies vaporiser output calculations <InlineRef topicId="si-units-thermodynamics" refLabel="Middleton Ch.1" />.
+              </p>
+              <p>
                 <strong>Dalton's law</strong> (total pressure = sum of partial pressures) underpins the alveolar gas equation:
                 PAO₂ = FiO₂(P<sub>atm</sub> − PH₂O) − PaCO₂/RQ. <strong>Henry's law</strong> (amount dissolved ∝ partial pressure × solubility) explains
                 nitrogen narcosis, decompression sickness, and blood gas analysis.
               </p>
-              <p>
-                Real gases deviate from ideal behaviour at <strong>high pressures</strong> and <strong>low temperatures</strong> (near the critical point).
-                N₂O in cylinders is a real gas (stored as liquid), while O₂ behaves close to an ideal gas at clinical temperatures. The <strong>van der Waals equation</strong>
-                accounts for intermolecular forces and molecular volume in real gases.
-              </p>
+              <div className="rounded-lg border border-border p-4 space-y-2">
+                <h3 className="font-semibold text-foreground">Real gases and the van der Waals equation</h3>
+                <p>
+                  Ideal-gas theory makes two assumptions that real gases violate: (1) <strong>molecules have negligible
+                  volume</strong> compared with the container, and (2) <strong>there are no intermolecular forces</strong>. At
+                  high pressures the molecules' own volume becomes significant, and at low temperatures (near liquefaction)
+                  attractive intermolecular (van der Waals) forces become significant. The <strong>van der Waals equation</strong>{" "}
+                  corrects for both: <strong>(P + a(n/V)²)(V − nb) = nRT</strong>, where the constant <em>a</em> corrects the
+                  measured pressure for intermolecular attraction (which reduces the force of collisions with the walls) and{" "}
+                  <em>b</em> corrects the available volume for the finite size of the molecules.
+                </p>
+                <p>
+                  The <strong>critical temperature</strong> of a gas is the temperature above which it cannot be liquefied by
+                  pressure alone, and the <strong>critical pressure</strong> is the pressure needed to liquefy it at that
+                  temperature. <strong>Nitrous oxide has a critical temperature of 36.5 °C</strong> — above room temperature — so
+                  it can be stored as a <strong>liquid under pressure</strong> in cylinders. Because the cylinder contains liquid
+                  in equilibrium with its vapour, the pressure gauge reads a constant <strong>saturated vapour pressure</strong>
+                  (~44 bar in the UK) for as long as any liquid remains, and only falls once the liquid is exhausted. The gauge is
+                  therefore an unreliable measure of contents: N₂O cylinders must be <strong>weighed</strong> (filling ratio 0.75
+                  in temperate climates). Oxygen, with a critical temperature of −118 °C, behaves almost ideally at clinical
+                  temperatures and its cylinder gauge does track contents
+                  <InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2017 (Gas Supply)" />.
+                </p>
+              </div>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -269,13 +296,31 @@ const SIUnitsThermodynamicsTopic = () => {
               <p>
                 The <strong>first law</strong> (conservation of energy: ΔU = Q − W) states energy cannot be created or destroyed. In an <strong>adiabatic expansion against a piston</strong>
                 (Q = 0), the work done by the gas comes at the expense of its internal energy, so the gas cools. A related but distinct phenomenon, the <strong>Joule–Thomson effect</strong>,
-                is the cooling seen when a <em>real</em> gas undergoes <strong>isenthalpic</strong> expansion (throttling) through a valve or orifice with no work done and no heat exchange —
-                the mechanism operating in cylinder pressure regulators and cryotherapy probes<InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2017 (Gas Supply)" />.
-                The <strong>Joule-Thomson coefficient</strong> is positive for most gases at room temperature (so they cool on throttling) but negative for hydrogen and helium, which warm.
+                is the temperature change seen when a <em>real</em> gas undergoes <strong>isenthalpic</strong> expansion (throttling) through a valve or orifice with no work done and no heat
+                exchange — the mechanism operating in cylinder pressure regulators and cryotherapy probes<InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2017 (Gas Supply)" />.
+                The <strong>Joule-Thomson coefficient (μ<sub>JT</sub>)</strong> is the change in temperature per unit change in pressure at constant enthalpy, and its sign determines the
+                direction of the effect: most gases (except hydrogen and helium) have a <strong>positive μ<sub>JT</sub> at room temperature and cool on expansion</strong>, while hydrogen and
+                helium have a negative μ<sub>JT</sub> and warm unless pre-cooled below their inversion temperature.
+              </p>
+              <p>
+                <strong>Clinical applications and risks.</strong> <strong>Cryotherapy probes</strong> exploit the effect: rapid expansion of N₂O or CO₂ at the probe tip produces intense
+                cooling (around <strong>−75 °C</strong>) used for tissue ablation. Opening a cylinder valve rapidly expands gas into the regulator, so <strong>ice can form on cylinder valves
+                and regulators</strong>, potentially causing sticking or malfunction. The converse also matters: <strong>rapid compression</strong> of gas (for example when a cylinder valve is
+                snapped open) generates intense heat, which can ignite oil or grease contaminants — the reason cylinder valves must be opened slowly and kept grease-free
+                <InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2017 (Gas Supply)" />.
               </p>
               <p>
                 The <strong>second law</strong> states heat flows spontaneously hot → cold and entropy of an isolated system always increases. This explains
-                perioperative heat loss to the cold theatre. UK-focused reviews (BJA Education 2016) cite typical proportions of <strong>radiation ≈ 40–60%</strong>, <strong>convection ≈ 30%</strong>, and <strong>evaporation up to 20%</strong><InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2016 (Thermo)" />, with conduction contributing only a small share; an older, widely-quoted breakdown from Sessler (Anesthesiology 2008) gives radiation ≈ 40%, convection ≈ 30%, evaporation ≈ 25% and conduction ≈ 5%. Under <strong>general anaesthesia</strong> these proportions change significantly as behavioural and autonomic responses are lost: radiation becomes the dominant mechanism, accounting for up to <strong>60%</strong> of heat loss, while convective and evaporative losses are comparatively smaller<InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2018 (Temperature)" />. Both data sets vary considerably with exposed surface area, ambient airflow, surgical irrigation and whether the patient is awake or anaesthetised. The <strong>third law</strong>
+                perioperative heat loss to the cold theatre via the four mechanisms of heat transfer:
+              </p>
+              <ul className="list-disc list-inside space-y-1.5 text-sm">
+                <li><strong>Conduction</strong> — heat transfer through direct physical contact, e.g. from the patient to a cold operating table; normally a small share (&lt;5%).</li>
+                <li><strong>Convection</strong> — heat carried away by the bulk movement of fluids (gases or liquids), e.g. theatre air currents (laminar flow) sweeping warmed air from the skin surface.</li>
+                <li><strong>Radiation</strong> — heat transfer via infrared electromagnetic waves, which requires no medium, e.g. an exposed patient radiating to cold theatre walls and equipment; usually the largest single mechanism.</li>
+                <li><strong>Evaporation</strong> — heat lost as liquid turns to gas, drawing on the latent heat of vaporisation, from skin, the respiratory tract and open surgical wounds.</li>
+              </ul>
+              <p>
+                UK-focused reviews (BJA Education 2016) cite typical proportions of <strong>radiation ≈ 40–60%</strong>, <strong>convection ≈ 30%</strong>, and <strong>evaporation up to 20%</strong><InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2016 (Thermo)" />, with conduction contributing only a small share; an older, widely-quoted breakdown from Sessler (Anesthesiology 2008) gives radiation ≈ 40%, convection ≈ 30%, evaporation ≈ 25% and conduction ≈ 5%. Under <strong>general anaesthesia</strong> these proportions change significantly as behavioural and autonomic responses are lost: radiation becomes the dominant mechanism, accounting for up to <strong>60%</strong> of heat loss, while convective and evaporative losses are comparatively smaller<InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2018 (Temperature)" />. Both data sets vary considerably with exposed surface area, ambient airflow, surgical irrigation and whether the patient is awake or anaesthetised. The <strong>third law</strong>
                 establishes absolute zero (0 K = −273.15 °C) as the point where entropy approaches zero — defining the Kelvin scale used in gas law calculations.
               </p>
 
