@@ -56,6 +56,11 @@ const IntensiveCareSection = () => {
         <a href="/intensive-care/management-flows" className="font-medium text-icu underline-offset-4 hover:underline">
           management flows
         </a>{" "}
+        (adult and{" "}
+        <a href="/intensive-care/paediatric-flows" className="font-medium text-icu underline-offset-4 hover:underline">
+          paediatric
+        </a>
+        ){" "}
         , the{" "}
         <a href="/intensive-care/calculator" className="font-medium text-icu underline-offset-4 hover:underline">
           drug calculator

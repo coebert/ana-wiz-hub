@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Baby, Syringe, Droplets, Activity } from "lucide-react";
+import { Baby, Syringe, Droplets, Activity, ListOrdered } from "lucide-react";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
@@ -501,7 +501,19 @@ const PaediatricCoreTopic = () => {
                   </div>
                 </Link>
                 <Link
-                  to="/intensive-care/drug-doses?age=child"
+                  to="/intensive-care/paediatric-flows"
+                  className="flex items-start gap-3 rounded-lg border border-border p-3 hover:border-primary/50 transition-colors"
+                >
+                  <ListOrdered className="h-5 w-5 text-icu mt-0.5 shrink-0" aria-hidden="true" />
+                  <div>
+                    <div className="font-medium text-foreground text-sm">Paediatric ICU Management Flows</div>
+                    <div className="text-xs text-muted-foreground">
+                      Step-by-step sepsis, PARDS, neonatal and neuroprotection pathways
+                    </div>
+                  </div>
+                </Link>
+                <Link
+                  to="/intensive-care/drug-doses?age=paediatric"
                   className="flex items-start gap-3 rounded-lg border border-border p-3 hover:border-primary/50 transition-colors"
                 >
                   <Syringe className="h-5 w-5 text-icu mt-0.5 shrink-0" aria-hidden="true" />

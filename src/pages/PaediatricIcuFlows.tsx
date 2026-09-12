@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import {
   ArrowLeft,
+  Baby,
   BookOpenCheck,
   Droplets,
   ListOrdered,
@@ -13,24 +14,25 @@ import { PageSection } from "@/components/layout/PageSection";
 import { Button } from "@/components/ui/button";
 import {
   caseBankHref,
-  drugDoseHref,
-  icuManagementFlows,
   infusionHref,
-} from "@/data/icuManagementFlows";
+  paedDrugDoseHref,
+  paediatricIcuFlows,
+} from "@/data/paediatricIcuFlows";
 
-const IcuManagementFlows = () => {
-  const [activeFlow, setActiveFlow] = useState(icuManagementFlows[0].id);
-  const flow = icuManagementFlows.find((f) => f.id === activeFlow) ?? icuManagementFlows[0];
+const PaediatricIcuFlows = () => {
+  const [activeFlow, setActiveFlow] = useState(paediatricIcuFlows[0].id);
+  const flow = paediatricIcuFlows.find((f) => f.id === activeFlow) ?? paediatricIcuFlows[0];
+  const neonatal = flow.id === "neonatal-resus";
 
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>ICU Management Flows — Sepsis, ARDS, Shock — AnaesthesiaCore</title>
+        <title>Paediatric ICU Management Flows — Sepsis, PARDS, Neonatal — AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Step-by-step intensive care management pathways for sepsis, ARDS, undifferentiated shock and multi-organ dysfunction, with direct links to ICU drug doses, infusion recipes and matching case bank scenarios."
+          content="Step-by-step paediatric critical care pathways for sepsis, paediatric ARDS, neonatal resuscitation and neuroprotection, with age-specific links to drug doses, infusions and matching case bank scenarios."
         />
-        <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/management-flows" />
+        <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/paediatric-flows" />
       </Helmet>
 
       <PageSection className="pt-8 pb-16">
@@ -43,14 +45,14 @@ const IcuManagementFlows = () => {
 
         <div className="mt-4 flex items-start gap-3">
           <div className="rounded-lg bg-icu/10 p-2.5 text-icu">
-            <ListOrdered className="h-6 w-6" />
+            <Baby className="h-6 w-6" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">ICU Management Flows</h1>
+            <h1 className="text-3xl font-bold tracking-tight">Paediatric ICU Management Flows</h1>
             <p className="mt-2 max-w-2xl text-muted-foreground">
-              What to do, in what order, for the four commonest critical care
-              presentations — each step linked to the drug doses, infusion
-              recipes and case bank scenarios you need alongside it.
+              What to do, in what order, for the commonest paediatric critical
+              care presentations — with age-specific dosing links, infusion
+              recipes and case bank scenarios at every step.
             </p>
           </div>
         </div>
@@ -58,15 +60,15 @@ const IcuManagementFlows = () => {
         <div className="mt-5 flex items-start gap-2.5 rounded-lg border border-border bg-muted/40 p-4 text-sm text-muted-foreground">
           <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0 text-icu" aria-hidden />
           <p>
-            Revision aid only, based on current UK and international guidance.
-            Always follow your local critical care protocols and senior
-            clinical judgement at the bedside.
+            Revision aid only, based on Surviving Sepsis (children), PALICC-2,
+            Resuscitation Council UK and BSUKED guidance. Children compensate
+            late and decompensate fast — always follow local PICU protocols and
+            involve the retrieval service early.
           </p>
         </div>
 
-        {/* Pathway picker */}
-        <nav aria-label="Management pathways" className="mt-6 flex gap-2 overflow-x-auto pb-1">
-          {icuManagementFlows.map((f) => (
+        <nav aria-label="Paediatric management pathways" className="mt-6 flex gap-2 overflow-x-auto pb-1">
+          {paediatricIcuFlows.map((f) => (
             <Button
               key={f.id}
               size="sm"
@@ -121,13 +123,13 @@ const IcuManagementFlows = () => {
                 {step.drugs && step.drugs.length > 0 && (
                   <div className="mt-4">
                     <h4 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                      <Pill className="h-3.5 w-3.5" aria-hidden /> Dosing
+                      <Pill className="h-3.5 w-3.5" aria-hidden /> {neonatal ? "Neonatal" : "Paediatric"} dosing
                     </h4>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {step.drugs.map((d) => (
                         <Link
                           key={d}
-                          to={drugDoseHref(d)}
+                          to={paedDrugDoseHref(d, neonatal)}
                           className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-foreground transition-colors hover:border-icu hover:text-icu"
                         >
                           {d}
@@ -204,8 +206,12 @@ const IcuManagementFlows = () => {
 
         <p className="mt-10 text-sm text-muted-foreground">
           Reference tables:{" "}
-          <Link to="/intensive-care/drug-doses" className="font-medium text-icu underline-offset-4 hover:underline">
-            ICU drug dosing table
+          <Link to="/intensive-care/drug-doses?age=paediatric" className="font-medium text-icu underline-offset-4 hover:underline">
+            ICU drug dosing table (child)
+          </Link>{" "}
+          ·{" "}
+          <Link to="/intensive-care/drug-doses?age=neonatal" className="font-medium text-icu underline-offset-4 hover:underline">
+            neonatal dosing
           </Link>{" "}
           ·{" "}
           <Link to="/intensive-care/infusions" className="font-medium text-icu underline-offset-4 hover:underline">
@@ -216,12 +222,12 @@ const IcuManagementFlows = () => {
             ICU case bank
           </Link>{" "}
           ·{" "}
-          <Link to="/intensive-care/nursing-protocols" className="font-medium text-icu underline-offset-4 hover:underline">
-            ICU nursing protocols
+          <Link to="/intensive-care/management-flows" className="font-medium text-icu underline-offset-4 hover:underline">
+            adult management flows
           </Link>{" "}
           ·{" "}
-          <Link to="/intensive-care/paediatric-flows" className="font-medium text-icu underline-offset-4 hover:underline">
-            paediatric management flows
+          <Link to="/clinical/paediatric-core" className="font-medium text-icu underline-offset-4 hover:underline">
+            paediatric core essentials
           </Link>
         </p>
       </PageSection>
@@ -229,4 +235,4 @@ const IcuManagementFlows = () => {
   );
 };
 
-export default IcuManagementFlows;
+export default PaediatricIcuFlows;
