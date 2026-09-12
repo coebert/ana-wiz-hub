@@ -60,12 +60,18 @@ export const TopicOverrideBlocks = ({
             key={b.id}
             className="rounded-lg border border-border bg-muted/30 p-4 sm:p-5 space-y-3"
           >
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <Icon className="h-4 w-4 text-primary shrink-0" aria-hidden />
               <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                 {meta.label}
               </p>
+              {b.anchor && (
+                <p className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                  · {b.anchor}
+                </p>
+              )}
             </div>
+
             {b.heading && <h3 className="h3">{b.heading}</h3>}
             {b.kind === "correction" && b.original_text && (
               <blockquote className="border-l-2 border-destructive/60 pl-3 text-sm italic text-muted-foreground">
