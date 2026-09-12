@@ -81,7 +81,9 @@ const tocItems = [
   { id: "section-obstetric-medicine-and-labour-management-for-the-anaesthetist", label: "Obstetric Medicine & Labour", group: "Labour" },
   { id: "section-labour-analgesia", label: "Labour Analgesia", group: "Labour" },
   { id: "section-remifentanil-pca-for-labour-analgesia", label: "Remifentanil PCA", group: "Labour" },
+  { id: "section-immediate-management-of-accidental-dural-puncture", label: "Accidental Dural Puncture", group: "Labour" },
   { id: "section-labour-and-delivery-after-intra-uterine-fetal-death", label: "IUFD Delivery", group: "Labour" },
+  { id: "section-quality-improvement-and-key-indicators-in-obstetric-anaesthesia", label: "Quality Indicators", group: "Reference" },
   { id: "section-postpartum-bladder-bowel-and-lower-limb-neurological-symptoms-after-neuraxial-bl", label: "Postpartum Neurology", group: "Postpartum" },
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
