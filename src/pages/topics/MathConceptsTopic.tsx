@@ -221,7 +221,7 @@ const MathConceptsTopic = () => {
             accent="physics"
             pitfalls={[
               "A semi-log plot turns a single exponential decay into a straight line — used to derive elimination rate constants.",
-              "Half-life (t½) = 0.693/k; time constant (τ) = 1/k. Three time constants ≈ 95% complete, five ≈ 99.3%.",
+              "Half-life (t½) = 0.693/k; time constant (τ) = 1/k. Three time constants ≈ 95% complete, five ≈ >99%.",
               "Sigmoid (Hill) curves describe cooperative binding (O₂–Hb) and dose-response; the Hill coefficient quantifies cooperativity.",
               "Log scales compress wide dynamic ranges (pH, decibels, drug potency) — a one-unit change is a tenfold change.",
               "Exponential wash-in and wash-out share the same time constant for first-order processes.",
