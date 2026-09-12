@@ -27,6 +27,7 @@ import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { airwayFolio } from "@/components/diagrams/anatomyFolios";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { Link } from "react-router-dom";
+import { InlineRef } from "@/components/references/InlineRef";
 
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 
@@ -38,6 +39,9 @@ const tocItems = [
   { id: "section-awake-fibreoptic-intubation", label: "Awake Fibreoptic", group: "Techniques" },
   { id: "section-front-of-neck-access-fona", label: "Front-of-neck Access (FONA)", group: "Techniques" },
   { id: "section-partial-airway-obstruction-level-specific-management", label: "Partial Obstruction", group: "Clinical" },
+  { id: "section-obstetric-airway", label: "Obstetric Difficult Airway", group: "Clinical" },
+  { id: "section-paediatric-airway", label: "Paediatric & Neonatal Airway", group: "Clinical" },
+  { id: "section-critically-ill-airway", label: "Critically Ill Adult", group: "Clinical" },
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
 
