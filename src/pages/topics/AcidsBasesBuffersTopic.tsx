@@ -10,6 +10,7 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { AcidsBasesDiagram } from "@/components/diagrams/chemistry/AcidsBasesDiagram";
+import { InlineRef } from "@/components/references/InlineRef";
 import { acidsBasesQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
@@ -188,7 +189,122 @@ const AcidsBasesBuffersTopic = () => {
               </p>
             </div>
             </CollapsibleSubsection>
+
+            <CollapsibleSubsection title="Buffer Capacity and Titration Curves">
+            <div className="text-muted-foreground space-y-3 leading-relaxed">
+              <p>
+                A buffer's ability to resist pH change — its <strong>buffer capacity</strong> — is not constant across the whole
+                titration curve. It is greatest when <strong>pH = pKa</strong>, because at that point [A⁻] = [HA]: equal
+                concentrations of weak acid and conjugate base are present, so the system can mop up an added strong acid
+                (converting A⁻ → HA) or an added strong base (converting HA → A⁻) with almost equal ease. Moving away from the
+                pKa in either direction leaves one species in short supply, so the same amount of added acid or base produces a
+                much bigger swing in pH.
+              </p>
+              <svg viewBox="0 0 400 220" className="w-full h-auto" role="img" aria-label="Titration curve of a weak acid showing pH versus volume of strong base added, with the flat buffering region centred on the pKa">
+                <rect x="55" y="105" width="290" height="70" fill="hsl(160 55% 45% / 0.15)" />
+                <text x="200" y="118" textAnchor="middle" className="fill-muted-foreground" fontSize="9">flat buffering region (pKa ± 1, ratio 10:1 to 1:10)</text>
+                <line x1="55" y1="190" x2="55" y2="20" stroke="currentColor" strokeWidth="1.5" />
+                <line x1="55" y1="190" x2="360" y2="190" stroke="currentColor" strokeWidth="1.5" />
+                <text x="12" y="105" className="fill-muted-foreground" fontSize="10">pH</text>
+                <text x="200" y="210" textAnchor="middle" className="fill-muted-foreground" fontSize="10">Volume of strong base added</text>
+                <path d="M 60 178 C 90 176, 120 165, 150 140 C 175 120, 190 110, 200 105 C 210 110, 225 120, 250 140 C 280 165, 310 176, 340 25"
+                  fill="none" stroke="hsl(160 55% 35%)" strokeWidth="2.5" />
+                <line x1="200" y1="105" x2="200" y2="190" stroke="currentColor" strokeWidth="1" strokeDasharray="3,3" />
+                <line x1="55" y1="140" x2="200" y2="140" stroke="currentColor" strokeWidth="1" strokeDasharray="3,3" />
+                <circle cx="200" cy="140" r="3.5" fill="hsl(160 55% 35%)" />
+                <text x="205" y="135" fontSize="10" fontWeight="600" className="fill-foreground">pKa (midpoint, 50% ionised)</text>
+                <text x="65" y="55" fontSize="9" className="fill-muted-foreground">steep — buffer exhausted (mostly A⁻)</text>
+                <text x="65" y="185" fontSize="9" className="fill-muted-foreground" transform="translate(0,0)">steep — buffer exhausted (mostly HA)</text>
+              </svg>
+              <p>
+                Within roughly ±1 pH unit of the pKa the curve is nearly flat — this is the <strong>useful buffering range</strong>,
+                corresponding to a ratio of conjugate base to acid between 10:1 and 1:10. Beyond this range one component is
+                nearly used up, so the curve steepens sharply and small further additions of acid or base cause large pH swings —
+                the buffer is said to be <strong>exhausted</strong>. Buffer capacity therefore depends on two things: how close the
+                system's pKa is to the prevailing pH, and the <strong>total concentration</strong> of buffer pair present — a more
+                concentrated buffer (more HA + A⁻ in absolute terms) can absorb a larger amount of acid or base before the same
+                pH change occurs, even though the shape of the curve is unchanged. <InlineRef topicId="acids-bases-buffers" refLabel="Peck & Hill Ch.2" />
+              </p>
+            </div>
+            </CollapsibleSubsection>
           </ExamSection>
+
+          <ExamSection id="buffer-systems" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Buffer Systems">
+            <div className="text-muted-foreground space-y-3 leading-relaxed">
+              <p>
+                The body relies on several buffer systems working in parallel: bicarbonate/carbonic acid (the dominant ECF
+                buffer, made effective by being an <strong>open system</strong> — CO₂ generated is exhaled by the lungs),
+                phosphate (important intracellularly and in urine), plasma proteins, and haemoglobin.
+              </p>
+              <p>
+                <strong>Haemoglobin</strong> accounts for roughly <strong>35% of total body buffering capacity</strong>, chiefly
+                through the imidazole side chains of histidine residues, which have a pKa close to physiological pH. Deoxygenated
+                haemoglobin is a <strong>weaker acid (better proton acceptor)</strong> than oxyhaemoglobin, because removing O₂
+                changes the protein's conformation (T-state) and lowers the pKa-relevant histidine environment, allowing it to
+                bind H⁺ more readily.
+              </p>
+              <p>
+                <strong>Bohr effect:</strong> at the tissues, raised PCO₂ and the resulting increase in [H⁺] shift the
+                oxyhaemoglobin dissociation curve to the <strong>right</strong>, reducing Hb's affinity for O₂ and favouring O₂
+                unloading where it is needed. <strong>Haldane effect:</strong> the reverse coupling — as haemoglobin gives up O₂
+                at the tissues, it becomes better able to carry CO₂, both as carbamino compounds (bound to deoxygenated globin
+                amino groups) and by buffering the H⁺ generated from carbonic acid dissociation. The Haldane effect accounts for
+                a substantial proportion (often quoted as roughly half) of the CO₂ released from venous blood at the lungs.
+              </p>
+              <p>
+                This coupling underlies <strong>isohydric carriage</strong>: as CO₂ enters red cells and is hydrated to H₂CO₃ →
+                H⁺ + HCO₃⁻, the H⁺ produced is immediately buffered by the newly deoxygenated haemoglobin (which is simultaneously
+                releasing its O₂ to the tissues). Because of this near-instantaneous buffering, mixed venous blood picks up a
+                large CO₂ load yet its pH falls by only around <strong>0.03 units</strong> compared with arterial blood.
+                <InlineRef topicId="acids-bases-buffers" refLabel="Cross & Plunkett Ch.3" />
+              </p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="stewart-model" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Stewart's Quantitative Acid-Base Model">
+            <div className="text-muted-foreground space-y-3 leading-relaxed">
+              <p>
+                Stewart's approach reframes acid-base balance around three <strong>independent variables</strong> that determine
+                [H⁺] and [HCO₃⁻] in plasma: the <strong>strong ion difference (SID)</strong>, <strong>PCO₂</strong>, and
+                <strong> ATOT</strong> (the total concentration of non-volatile weak acids, principally albumin and phosphate).
+                [H⁺] and [HCO₃⁻] are treated as <strong>dependent</strong> variables — they cannot be changed directly, only as a
+                consequence of changes in SID, PCO₂ or ATOT, constrained by electroneutrality and the dissociation of water.
+                <InlineRef topicId="acids-bases-buffers" refLabel="Stewart 1983" />
+              </p>
+              <p>
+                <strong>Apparent SID (SIDa)</strong> = ([Na⁺] + [K⁺] + [Ca²⁺] + [Mg²⁺]) − ([Cl⁻] + [lactate⁻]), normally around
+                <strong> 40–42 mEq/L</strong>. A fall in SID (relative excess of strong anions over cations) drives water
+                dissociation to increase [H⁺] and cause acidosis; a rise in SID causes alkalosis — entirely independent of
+                bicarbonate itself, which is simply a dependent marker.
+              </p>
+              <p>
+                <strong>Effective SID (SIDe)</strong> is calculated instead from measured PCO₂, pH and ATOT (accounting for the
+                buffering effect of albumin and phosphate). The difference between SIDa and SIDe is the
+                <strong> strong ion gap (SIG)</strong>, which represents unmeasured anions (e.g. ketoacids, sulphates, or
+                unidentified anions in critical illness) not captured by the standard anion gap.
+              </p>
+              <p>
+                The model explains phenomena that are awkward to rationalise with Henderson-Hasselbalch alone:
+                <strong> 0.9% saline-induced hyperchloraemic acidosis</strong> — normal saline has a SID of 0 (equal Na⁺ and Cl⁻),
+                so large-volume infusion lowers plasma SID and causes acidosis; <strong>dilutional acidosis</strong> from any
+                SID-neutral fluid diluting the buffer base; and <strong>hypoalbuminaemic alkalosis</strong>, where a fall in ATOT
+                (less weak acid) causes a mild alkalosis, often masked in critically ill patients whose SIG-driven unmeasured
+                anions are simultaneously pushing towards acidosis.
+              </p>
+              <p>
+                Compared with the traditional Henderson-Hasselbalch/base excess approach, Stewart's model gives a more complete,
+                mechanistic account of quantitatively complex derangements (e.g. mixed disorders in sepsis or after large-volume
+                resuscitation), but its practical criticism is that the underlying algebra is <strong>cumbersome for bedside
+                use</strong>, and simplified derivatives (corrected anion gap, base excess) usually give equivalent clinical
+                conclusions with far less calculation.
+              </p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <TopicFaqs faqs={acidsBasesBuffersFaqs} />
         </>
       }

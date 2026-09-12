@@ -13,6 +13,7 @@ import IsomerismDiagram from "@/components/diagrams/chemistry/IsomerismDiagram";
 import ChiralityAnaesthesiaDiagram from "@/components/diagrams/chemistry/ChiralityAnaesthesiaDiagram";
 import AmineComparisonDiagram from "@/components/diagrams/chemistry/AmineComparisonDiagram";
 import { organicChemistryQuiz } from "@/data/quizzes";
+import { InlineRef } from "@/components/references/InlineRef";
 import { Exam } from "@/data/curriculum";
 
 const OrganicChemistryTopic = () => {
@@ -115,6 +116,98 @@ const OrganicChemistryTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_02"]}>
+            <CollapsibleSubsection title="Functional Groups and Their Pharmacological Consequences">
+            <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
+              <p>
+                Every functional group hung off a drug's carbon skeleton has predictable consequences for its chemistry,
+                its pharmacokinetics, and its interaction with receptors. Learning to "read" a structure this way lets you
+                predict behaviour of drugs you have never seen before — a favourite viva technique.
+              </p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="border-b border-border text-foreground">
+                      <th className="text-left py-1 pr-2">Group</th>
+                      <th className="text-left py-1 pr-2">Chemical properties</th>
+                      <th className="text-left py-1 pr-2">Pharmacokinetic effect</th>
+                      <th className="text-left py-1 pr-2">Pharmacodynamic effect</th>
+                      <th className="text-left py-1">Example</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-border/50 align-top">
+                      <td className="py-1 pr-2 font-semibold text-foreground">Hydroxyl / phenol (−OH)</td>
+                      <td className="py-1 pr-2">Polar, hydrogen-bond donor and acceptor; phenolic −OH on a benzene ring is weakly acidic (pKa ~10), largely un-ionised at pH 7.4</td>
+                      <td className="py-1 pr-2">Increases water solubility; a prime site for Phase II <strong>glucuronidation</strong> or sulphation, producing water-soluble conjugates for renal excretion</td>
+                      <td className="py-1 pr-2">Hydrogen bonding to receptor serine/tyrosine residues; contributes to antioxidant activity</td>
+                      <td className="py-1"><strong>Propofol</strong> (phenol ring gives antioxidant, membrane-stabilising and pain-on-injection properties); <strong>morphine</strong> (3- and 6- hydroxyls)</td>
+                    </tr>
+                    <tr className="border-b border-border/50 align-top">
+                      <td className="py-1 pr-2 font-semibold text-foreground">Carbonyl (C=O)</td>
+                      <td className="py-1 pr-2">Polar, strong hydrogen-bond acceptor (no donor H); ketones are chemically stable, resist hydrolysis</td>
+                      <td className="py-1 pr-2">Susceptible to Phase I reduction to a hydroxyl (e.g. ketone → alcohol) rather than hydrolysis</td>
+                      <td className="py-1 pr-2">Dipole allows binding to receptor sites without the lability of an ester bond</td>
+                      <td className="py-1"><strong>Ketamine</strong> (cyclohexanone ring carbonyl)</td>
+                    </tr>
+                    <tr className="border-b border-border/50 align-top">
+                      <td className="py-1 pr-2 font-semibold text-foreground">Carboxyl (−COOH)</td>
+                      <td className="py-1 pr-2">Acidic (pKa ~4–5) — almost fully ionised (−COO⁻) at pH 7.4, highly polar</td>
+                      <td className="py-1 pr-2">High water solubility, extensive plasma protein (albumin) binding; a direct substrate for Phase II <strong>glucuronidation</strong> (acyl glucuronides)</td>
+                      <td className="py-1 pr-2">Ionic bonding to cationic receptor residues; poor passive membrane crossing when ionised, limiting CNS penetration</td>
+                      <td className="py-1"><strong>Morphine-3-glucuronide / morphine-6-glucuronide</strong> (carboxyl-linked conjugates); NSAIDs (ibuprofen, ketorolac)</td>
+                    </tr>
+                    <tr className="border-b border-border/50 align-top">
+                      <td className="py-1 pr-2 font-semibold text-foreground">Amine, −NH₂ (incl. quaternary ammonium)</td>
+                      <td className="py-1 pr-2">Basic; tertiary amines (pKa typically 7.5–8.5) are partly protonated at pH 7.4 (Henderson–Hasselbalch); quaternary ammonium (R₄N⁺) carries a fixed, permanent positive charge with no neutral form</td>
+                      <td className="py-1 pr-2">Tertiary amines partition between ionised/un-ionised forms, allowing membrane crossing; quaternary compounds are obligately water-soluble, poorly absorbed orally, and excreted renally largely unchanged</td>
+                      <td className="py-1 pr-2">The protonated amine forms an ionic bond with the anionic subsite of the receptor; the quaternary ammonium group mimics the choline moiety of acetylcholine and docks directly into the anionic recognition site of the nicotinic ACh receptor</td>
+                      <td className="py-1"><strong>Suxamethonium</strong> and <strong>rocuronium</strong> (quaternary ammonium groups engage the nicotinic receptor's ACh recognition site directly)</td>
+                    </tr>
+                    <tr className="border-b border-border/50 align-top">
+                      <td className="py-1 pr-2 font-semibold text-foreground">Ester (−COO−)</td>
+                      <td className="py-1 pr-2">Polar carbonyl-oxygen linkage; the C−O bond is chemically labile and readily attacked by water</td>
+                      <td className="py-1 pr-2">Rapidly hydrolysed by plasma (pseudo)cholinesterase and tissue esterases — Phase I metabolism completes in the plasma itself, giving very short half-lives</td>
+                      <td className="py-1 pr-2">Short duration of action; hydrolysis products (e.g. PABA from ester local anaesthetics) can trigger true allergy</td>
+                      <td className="py-1"><strong>Remifentanil</strong> (ester hydrolysed by non-specific plasma/tissue esterases, context-insensitive half-life ~3 min); <strong>atracurium</strong> (partly by non-specific esterase, alongside Hofmann elimination); <strong>cocaine</strong> and <strong>tetracaine</strong> (ester local anaesthetics)</td>
+                    </tr>
+                    <tr className="border-b border-border/50 align-top">
+                      <td className="py-1 pr-2 font-semibold text-foreground">Amide (−CONH−)</td>
+                      <td className="py-1 pr-2">Resonance-stabilised C−N bond, much more resistant to hydrolysis than an ester</td>
+                      <td className="py-1 pr-2">Requires hepatic microsomal (CYP) metabolism, so it is slower — half-lives of hours rather than minutes</td>
+                      <td className="py-1 pr-2">Longer duration of action; hepatic clearance is dose- and perfusion-dependent, so hepatic impairment prolongs effect</td>
+                      <td className="py-1"><strong>Lidocaine</strong> and <strong>bupivacaine</strong> (amide LAs, two "i"s before "-caine") contrasted with the ester LAs <strong>cocaine</strong> and <strong>tetracaine</strong></td>
+                    </tr>
+                    <tr className="border-b border-border/50 align-top">
+                      <td className="py-1 pr-2 font-semibold text-foreground">Ether (C−O−C)</td>
+                      <td className="py-1 pr-2">Weakly polar, chemically inert, does not readily hydrolyse or ionise</td>
+                      <td className="py-1 pr-2">Confers the moderate lipid solubility and volatility exploited by inhalational agents; largely eliminated unchanged by exhalation rather than metabolism</td>
+                      <td className="py-1 pr-2">Stability under clinical conditions (low metabolism → low risk of toxic metabolite formation, e.g. compared with older halogenated agents)</td>
+                      <td className="py-1"><strong>Sevoflurane</strong> (fluorinated methyl isopropyl ether)</td>
+                    </tr>
+                    <tr className="align-top">
+                      <td className="py-1 pr-2 font-semibold text-foreground">Benzene ring</td>
+                      <td className="py-1 pr-2">Planar, highly lipophilic, delocalised π-electron cloud allows π–π stacking interactions</td>
+                      <td className="py-1 pr-2">Increases lipid solubility, protein binding and volume of distribution; promotes hepatic oxidative (CYP) rather than renal clearance</td>
+                      <td className="py-1 pr-2">Drives partitioning into lipid-rich CNS tissue, enhancing potency and speed of onset for centrally-acting drugs</td>
+                      <td className="py-1"><strong>Propofol</strong>, <strong>thiopentone</strong> and <strong>midazolam</strong> (aromatic rings underpin rapid CNS penetration)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                Two Phase II conjugation reactions recur across these examples: <strong>glucuronidation</strong> (UDP-glucuronosyltransferase
+                attaches glucuronic acid to a hydroxyl, carboxyl, or amine group) and <strong>sulphation</strong> (attachment of a sulphate
+                group, mainly to phenolic hydroxyls). Both dramatically increase water solubility and molecular size, terminating
+                pharmacological activity and enabling renal or biliary excretion — morphine's phenolic 3-OH is glucuronidated to the
+                largely inactive morphine-3-glucuronide, while its 6-OH forms the potent, active morphine-6-glucuronide.
+                <InlineRef topicId="organic-chemistry" refLabel="BJA Educ 2008" />
+              </p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_02"]}>
             <CollapsibleSubsection title="Lipophilicity & Drug Delivery">
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
@@ -159,6 +252,33 @@ const OrganicChemistryTopic = () => {
           answer: "Glycopyrrolate (quaternary, no central effects, matched onset) with neostigmine.",
     cites: ["Nau & Strichartz 2002"],
   },
+        {
+          title: "Viva: Why does it matter that a drug is a racemic mixture?",
+          scenario: "The examiner shows you the structure of bupivacaine and asks you to explain the clinical significance of chirality and racemic mixtures, using bupivacaine and ketamine as examples.",
+          working: (
+            <div className="space-y-2">
+              <p className="font-semibold text-foreground">Model answer structure</p>
+              <ol className="list-decimal list-inside space-y-1">
+                <li>A racemic mixture contains a 50:50 mix of two enantiomers — non-superimposable mirror images differing only in the spatial arrangement around a chiral centre.</li>
+                <li>Receptors are themselves chiral (built from L-amino acids), so the two enantiomers can interact with a binding site differently. The <strong>Easson–Stedman hypothesis</strong> explains why: stereoselective activity requires at least <strong>three points of simultaneous contact</strong> between drug and receptor. Only one enantiomer's three substituents can align correctly with all three complementary receptor sites at once; its mirror image can achieve at best two of the three contacts, so it binds more weakly (or not at all).</li>
+                <li>The more potent, "better-fitting" enantiomer is termed the <strong>eutomer</strong>; the less potent (or less desirable) mirror image is the <strong>distomer</strong>. The ratio of their potencies is the <strong>eudismic ratio</strong> — a large ratio means high stereoselectivity and a strong case for using the single eutomer clinically.</li>
+                <li>Bupivacaine: the eutomer S(-)-bupivacaine (<strong>levobupivacaine</strong>) is the therapeutically desired isomer, with a similar local anaesthetic potency to the racemate but less affinity for cardiac Na⁺ channels. The distomer, R(+)-bupivacaine, contributes disproportionately to <strong>cardiotoxicity</strong> (fast-in/slow-out sodium channel block, refractory ventricular arrhythmias) seen with racemic bupivacaine — the rationale for preferring levobupivacaine or ropivacaine (a pure S-enantiomer from first synthesis) in high-dose regional blocks.</li>
+                <li>Ketamine: S(+)-ketamine is the eutomer, roughly 3–4× more potent as an NMDA-receptor antagonist and analgesic than R(-)-ketamine, with a more favourable emergence and recovery profile; the eudismic ratio favours using S-ketamine alone where available.</li>
+                <li>Dexmedetomidine is itself a single, pharmacologically active enantiomer (the S-enantiomer of medetomidine) selected specifically for its high α2:α1 selectivity — a further example of enantiomer selection improving the therapeutic index rather than using a racemate.</li>
+              </ol>
+              <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+                <p className="text-xs font-semibold text-destructive uppercase">Common traps</p>
+                <ul className="list-disc list-inside text-foreground">
+                  <li>Saying enantiomers have "identical" pharmacology because they share a molecular formula — physical properties (melting point, solubility) are identical, but receptor interactions and hence pharmacodynamics/toxicity often are not.</li>
+                  <li>Confusing eutomer/distomer with agonist/antagonist — both enantiomers usually act at the same receptor with the same general mechanism, just different affinity.</li>
+                  <li>Forgetting that a racemate is not simply "half as potent"; distomer effects (e.g. bupivacaine cardiotoxicity) may be disproportionately harmful rather than merely inactive.</li>
+                </ul>
+              </div>
+            </div>
+          ),
+          answer: "Chiral receptors need three simultaneous points of contact (Easson-Stedman) for full activity, so only one enantiomer (the eutomer) binds optimally; the eudismic ratio quantifies its potency advantage over the distomer. Levobupivacaine/S-bupivacaine is the safer eutomer versus the more cardiotoxic R(+)-distomer in racemic bupivacaine; S-ketamine is the more potent eutomer of ketamine; dexmedetomidine is used as a single active enantiomer for receptor selectivity.",
+          cites: ["Nau & Strichartz 2002", "Cross & Plunkett Ch.4"],
+        },
       ]}
       keyPoints={[
         { text: "Ester bonds (—COO—) are rapidly hydrolysed by plasma esterases → short-acting drugs (remifentanil, mivacurium, ester LAs)", cites: ["BJA Educ 2008"] },

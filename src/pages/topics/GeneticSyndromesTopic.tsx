@@ -14,6 +14,8 @@ const tocItems = [
   { id: "section-pseudocholinesterase-deficiency", label: "Pseudocholinesterase Deficiency", group: "Core" },
   { id: "section-down-syndrome", label: "Down Syndrome", group: "Syndromic" },
   { id: "section-marfan-syndrome", label: "Marfan Syndrome", group: "Syndromic" },
+  { id: "section-loeys-dietz-syndrome", label: "Loeys-Dietz Syndrome", group: "Syndromic" },
+  { id: "section-ehlers-danlos-syndromes", label: "Ehlers-Danlos Syndromes", group: "Syndromic" },
   { id: "section-connective-tissue-disorders", label: "Other Connective Tissue Disorders", group: "Syndromic" },
   { id: "section-achondroplasia", label: "Achondroplasia", group: "Syndromic" },
   { id: "section-haemoglobinopathies", label: "Haemoglobinopathies", group: "Metabolic" },
@@ -53,7 +55,7 @@ const GeneticSyndromesTopic = () => {
       sectionSources={{
         objectives: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020"],
         workedExamples: ["EMHG 2020 Guidelines", "TAPS 2013", "BJA Educ DMD 2017", "AAGBI MH 2020"],
-        keyPoints: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020", "British Porphyria Association Drug Database", "AAGBI MH 2020", "BJA Educ DMD 2017", "BJA Educ Myotonic 2017", "BJA Educ BChE 2014", "BJA Educ Down 2016", "BJA Educ Marfan 2016", "TAPS 2013", "BJA Educ Porphyria 2017", "Drug Database Porphyria", "BJA Educ Achondroplasia 2018", "Berkowitz Achondroplasia 1990"],
+        keyPoints: ["BJA Educ MH 2011", "BJA Educ MuscularDystrophy 2017", "AAGBI Sickle 2020", "British Porphyria Association Drug Database", "AAGBI MH 2020", "BJA Educ DMD 2017", "BJA Educ Myotonic 2017", "BJA Educ BChE 2014", "BJA Educ Down 2016", "BJA Educ Marfan 2016", "GeneReviews Loeys-Dietz", "Malfait EDS 2017", "TAPS 2013", "BJA Educ Porphyria 2017", "Drug Database Porphyria", "BJA Educ Achondroplasia 2018", "Berkowitz Achondroplasia 1990"],
       }}
       coreConcepts={
         <>
@@ -125,6 +127,15 @@ const GeneticSyndromesTopic = () => {
               <li>Send dibucaine number to confirm; family screening — autosomal recessive.</li>
               <li>Acquired BChE reduction: pregnancy, liver failure, plasmapheresis, ecothiopate eye drops.</li>
             </ul>
+            <p className="text-muted-foreground leading-relaxed mt-3 mb-2 text-sm font-semibold">Intraoperative and follow-up management</p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li>Keep the patient sedated, mechanically ventilated and normothermic until neuromuscular function recovers — hypothermia and acidosis further prolong block.</li>
+              <li>Use quantitative (objective) neuromuscular monitoring with a peripheral nerve stimulator; do not attempt extubation until the train-of-four ratio recovers to &gt;0.9.</li>
+              <li>Neostigmine is contraindicated in the early phase — it inhibits residual plasma cholinesterase activity and paradoxically prolongs the block; sugammadex has no affinity for suxamethonium (a depolarising, non-steroidal agent) and is ineffective.</li>
+              <li>Fresh frozen plasma or purified/recombinant BChE has been used to supply active enzyme, but its role is limited and controversial given the risks of transfusion (TRALI, infection) versus simply ventilating until natural recovery.</li>
+              <li>After recovery: explain the event fully to the patient and family, document clearly in the anaesthetic record and a letter to the GP, arrange an alert bracelet/card, and refer for dibucaine number/fluoride number testing and genotyping to confirm the atypical variant.</li>
+              <li>Offer screening to first-degree relatives — autosomal recessive inheritance means homozygous atypical individuals may show block lasting 2–8 hours, while heterozygotes typically show only mild prolongation of minutes.</li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -162,6 +173,49 @@ const GeneticSyndromesTopic = () => {
             <p className="text-xs text-muted-foreground mt-3">
               No association with MH. Suxamethonium and volatile agents are safe from an MH perspective, but avoid hypertensive responses to laryngoscopy and intubation.
             </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-loeys-dietz-syndrome" className="scroll-mt-24">
+            <CollapsibleSubsection title="Loeys-Dietz syndrome (LDS)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Autosomal dominant disorder of TGF-β signalling caused by mutations in <em>TGFBR1</em> or <em>TGFBR2</em> (and less commonly <em>SMAD3</em>, <em>TGFB2</em>). It produces a more aggressive aortopathy than Marfan syndrome — dissection can occur at aortic root diameters &lt;4.5 cm, so surgical thresholds are lower and follow-up imaging more frequent. Unlike Marfan, tortuosity and aneurysm formation are widespread throughout the arterial tree (not confined to the root), and craniofacial features — bifid or broad uvula, cleft palate, hypertelorism and craniosynostosis — help distinguish LDS clinically.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li>Strict blood pressure control is paramount: continue β-blockade/ARB (losartan), and blunt hypertensive surges at laryngoscopy, intubation and emergence with opioid ± esmolol/labetalol.</li>
+              <li>Lower the threshold for aortic imaging and surgical referral compared with Marfan given the propensity for dissection at smaller calibre vessels.</li>
+              <li>Generalised vascular and soft-tissue fragility affects arterial and central line placement — use ultrasound guidance and gentle technique; consider avoiding arterial cannulation unless essential.</li>
+              <li>Cervical spine instability has been described — take care with positioning and neck extension during airway management.</li>
+              <li>Caution with regional/neuraxial techniques given tissue fragility and the theoretical risk of vascular injury; dural ectasia may also occur as in Marfan.</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} id="section-ehlers-danlos-syndromes" className="scroll-mt-24">
+            <CollapsibleSubsection title="Ehlers-Danlos syndromes (2017 international classification)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              The EDS family comprises 13 subtypes of collagen/connective-tissue disorder. Two ends of the spectrum dominate exam practice: the common <strong>hypermobile type (hEDS)</strong>, and the rare but life-threatening <strong>vascular type (vEDS, COL3A1)</strong>.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              {[
+                { label: "Hypermobile EDS (hEDS)", value: "Generalised joint hypermobility, chronic widespread pain, easy bruising and skin laxity. Associated with postural orthostatic tachycardia syndrome (POTS) — expect exaggerated haemodynamic swings with position change and induction. Chronic pain and long-term opioid use commonly produce opioid tolerance and hyperalgesia — anticipate higher perioperative analgesic requirements and use multimodal/regional strategies. Joint laxity demands careful positioning and padding; dislocation risk during airway manoeuvres and limb positioning." },
+                { label: "Vascular EDS (vEDS, COL3A1)", value: "Defective type III collagen causes fragile arteries, bowel and uterus. Spontaneous arterial dissection or rupture (including of major vessels), spontaneous rupture of hollow organs (classically the sigmoid colon, or the gravid uterus in pregnancy) and spontaneous pneumothorax are recognised catastrophic presentations. Diagnosis is often only made after a sentinel vascular or bowel event." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs text-muted-foreground">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-2 text-sm font-semibold">Anaesthetic implications of vEDS</p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li>Meticulous blood pressure control — avoid both hypertension (risk of dissection/rupture) and hypotension (risk of malperfusion in already fragile vasculature); smooth induction and emergence, blunt the pressor response to laryngoscopy.</li>
+              <li>Gentle tissue and airway handling throughout: careful, minimal-force laryngoscopy; avoid nasal intubation and nasogastric tubes (mucosal/vascular fragility and epistaxis risk).</li>
+              <li>Avoid intramuscular injections — risk of haematoma; ultrasound-guided venous access to minimise vessel trauma from blind puncture.</li>
+              <li>Avoid arterial line placement unless essential given the risk of arterial injury/pseudoaneurysm; if unavoidable, use ultrasound guidance and the smallest gauge feasible.</li>
+              <li>Have cross-matched blood available and maintain a high index of suspicion for catastrophic, occult haemorrhage (retroperitoneal, intra-abdominal) — unexplained hypotension or abdominal pain should prompt urgent imaging.</li>
+              <li>Obstetric risk is markedly elevated: uterine and vascular rupture, especially peripartum — vEDS pregnancies should be managed in a tertiary unit with vascular surgery/interventional radiology on standby.</li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -236,6 +290,16 @@ const GeneticSyndromesTopic = () => {
             <p className="text-xs text-muted-foreground mt-3">
               <strong>Acute attack</strong>: stop trigger, IV haem arginate 3 mg/kg/day for 4 days, high-carbohydrate IV (10% glucose), analgesia, monitor sodium and respiratory function. Always cross-check drugs against an up-to-date porphyria database before prescribing.
             </p>
+            <p className="text-muted-foreground leading-relaxed mt-3 mb-2 text-sm font-semibold">Detailed management of an acute attack</p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li><strong>Haem arginate</strong> 3 mg/kg/day (max ~250 mg/day) for 4 days via a large-bore central vein or a large peripheral vein — it is highly irritant and causes thrombophlebitis in small/peripheral veins. It provides negative feedback that downregulates hepatic ALA synthase, switching off overproduction of the neurotoxic precursors ALA and PBG.</li>
+              <li><strong>High-carbohydrate load</strong> (10% glucose, aiming ≥300 g/day, e.g. via a central line if peripheral tolerance is limited) also suppresses ALA synthase, but large volumes of dextrose risk dilutional hyponatraemia — monitor sodium closely and balance against SIADH-driven hyponatraemia from the attack itself.</li>
+              <li><strong>Analgesia</strong>: opioids are safe and often required in large doses for severe visceral pain; avoid diclofenac and other NSAIDs, and cross-check any adjunct against a porphyria drug database before use.</li>
+              <li><strong>Nausea and vomiting</strong>: ondansetron is regarded as safe; avoid metoclopramide (porphyrinogenic).</li>
+              <li><strong>Seizures</strong>: levetiracetam or gabapentin are preferred anticonvulsants (avoid phenytoin, sodium valproate and barbiturates).</li>
+              <li><strong>Monitoring</strong>: serial sodium (SIADH), assessment for evolving motor neuropathy (may progress to quadriparesis) and serial vital capacity/respiratory function — escalate early to critical care if bulbar or respiratory muscle weakness develops, as respiratory failure can progress rapidly.</li>
+              <li>Involve the <strong>National Acute Porphyria Service (NAPS)</strong> early for expert advice on drug safety, diagnosis confirmation (urinary PBG/ALA) and ongoing management.</li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
 

@@ -12,6 +12,7 @@ import AddisonianCrisisDiagram from "@/components/diagrams/perioperative/Addison
 import CarcinoidSyndromeDiagram from "@/components/diagrams/perioperative/CarcinoidSyndromeDiagram";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const objectives = [
   "Apply JBDS-IP perioperative diabetes pathway, including VRIII indications and glucose targets.",
@@ -123,7 +124,10 @@ const EndocrineDiseaseTopic = () => {
                 <li>Type 1 DM: never omit insulin — always requires background insulin or VRIII</li>
                 <li>Type 2 DM on oral agents: omit metformin day of surgery (lactic acidosis risk); omit SGLT2 inhibitors 3 days before (euglycaemic DKA risk)</li>
                 <li>Sulfonylureas: omit on morning of surgery (hypoglycaemia risk)</li>
-                <li>GLP-1 agonists (semaglutide): consider omitting — associated with delayed gastric emptying and increased aspiration risk</li>
+                <li>GLP-1 receptor agonists (semaglutide, liraglutide, tirzepatide): delay gastric emptying via vagally-mediated pyloric slowing, so solid gastric residue and aspiration risk persist despite standard fasting</li>
+                <li>Association of Anaesthetists advice: omit daily preparations on the day of surgery; omit weekly preparations for at least one week before surgery (guidance continues to evolve as evidence accumulates)</li>
+                <li>If not omitted as advised, manage as high aspiration risk — consider prolonged clear-fluid-only fasting, point-of-care gastric ultrasound where available, and rapid sequence induction</li>
+                <li>Omission has glycaemic consequences (rebound hyperglycaemia) — monitor glucose and use variable-rate insulin infusion if required <InlineRef topicId="endocrine-disease" refLabel="BJA Educ Diabetes 2024" /></li>
                 <li>VRIII (sliding scale): dextrose 5%/10% with KCl + separate insulin syringe; hourly glucose monitoring</li>
                 <li>Schedule diabetic patients first on morning list to minimise fasting duration</li>
               </ul>
@@ -134,6 +138,16 @@ const EndocrineDiseaseTopic = () => {
                 <li>DKA: insulin infusion (0.1 U/kg/h), IV fluids, potassium replacement, monitor for cerebral oedema</li>
                 <li>Hypoglycaemia (&lt;4 mmol/L): 75–100 mL of 20% glucose IV; glucagon 1 mg IM if no IV access</li>
                 <li>Euglycaemic DKA: suspect in patients on SGLT2 inhibitors — normal glucose but raised ketones and metabolic acidosis</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Hyperosmolar Hyperglycaemic State (HHS)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Definition: hypovolaemia with marked hyperglycaemia (glucose ≥30 mmol/L), serum osmolality ≥320 mosmol/kg, and no significant ketonaemia (&lt;3 mmol/L) or acidosis (pH &gt;7.3, bicarbonate &gt;15 mmol/L)</li>
+                <li>Typical patient: older person with type 2 diabetes, precipitated by infection, MI, corticosteroids, or missed medication; gradual onset over days rather than the hours typical of DKA</li>
+                <li>Features: profound dehydration (often 100–220 mL/kg fluid deficit), obtundation, focal neurology or seizures, high thrombosis risk and hyperviscosity</li>
+                <li>Management: 0.9% sodium chloride 1 L/h initially; aim for osmolality to fall by 3–8 mosmol/kg/h and glucose to fall no faster than ~5 mmol/L/h to avoid cerebral oedema; switch to 0.45% saline only if osmolality is not falling despite adequate fluid replacement</li>
+                <li>Low-dose fixed-rate insulin infusion (0.05 units/kg/h) started once glucose stops falling with fluids alone; potassium replacement, prophylactic LMWH, and meticulous foot/pressure care; treat the precipitant <InlineRef topicId="endocrine-disease" refLabel="JBDS HHS 2022" /></li>
               </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
@@ -241,6 +255,10 @@ const EndocrineDiseaseTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Neuroendocrine tumour secreting serotonin (5-HT), histamine, kallikrein, and prostaglandins</li>
                 <li>Features: flushing, diarrhoea, bronchospasm, right-sided cardiac valvular fibrosis (carcinoid heart disease)</li>
+                <li>Carcinoid heart disease: endocardial fibrous plaques deposited by serotonin and other vasoactive amines; occurs in around half of patients with carcinoid syndrome <InlineRef topicId="endocrine-disease" refLabel="BJA Educ Carcinoid 2011" /></li>
+                <li>Predominantly right-sided — tricuspid regurgitation (commonest) and pulmonary stenosis; the left side is typically spared because mediators are metabolised on first pass through the lungs (unless bronchial carcinoid, a right-to-left shunt, or very high tumour burden allows mediators to bypass pulmonary clearance)</li>
+                <li>Consequences of right heart failure: raised JVP, hepatic congestion, ascites, peripheral oedema, and a low fixed cardiac output that tolerates vasodilatation poorly</li>
+                <li>Management: mandatory preoperative echocardiography, NT-proBNP and 5-HIAA <InlineRef topicId="endocrine-disease" refLabel="BJA Educ Carcinoid 2011" />; maintain preload, avoid rises in pulmonary vascular resistance (hypoxia, hypercapnia, acidosis), use invasive monitoring, cover with an octreotide infusion for crisis prevention, avoid histamine-releasing drugs, and be prepared to treat right ventricular failure with inotropes and pulmonary vasodilators</li>
                 <li>Diagnosis: urinary 5-HIAA, serum chromogranin A</li>
                 <li>Perioperative octreotide infusion (50–100 µg/h) — blocks mediator release; have bolus available</li>
                 <li>Avoid histamine-releasing drugs, sympathomimetics, and suxamethonium (may trigger carcinoid crisis)</li>

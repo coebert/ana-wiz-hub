@@ -85,7 +85,7 @@ const HaematologicalDiseaseTopic = () => {
       }}
       sectionSources={{
         objectives: ["CPOC Anaemia 2023", "NATA 2017", "NICE NG24", "NICE NG141"],
-        keyPoints: ["CPOC Anaemia 2023", "NATA 2017", "NICE NG24", "AAGBI PBM 2016", "BSH Platelets 2017", "AAGBI Regional 2013", "NICE NG141", "POISE-3 TXA 2022", "BJA Educ Haem 2020"],
+        keyPoints: ["CPOC Anaemia 2023", "NATA 2017", "NICE NG24", "AAGBI PBM 2016", "BSH Platelets 2017", "AAGBI Regional 2013", "NICE NG141", "POISE-3 TXA 2022", "BJA Educ Haem 2020", "MHRA IV Iron 2013", "ASH HIT 2018"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
@@ -116,10 +116,23 @@ const HaematologicalDiseaseTopic = () => {
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Screen at the point of listing — allow ≥6 weeks before surgery for investigation and treatment</li>
                   <li>Minimum panel: FBC, ferritin, TSAT, B12/folate, U&amp;Es, CRP (functional iron deficiency = ferritin &lt;100 µg/L or TSAT &lt;20% with inflammation)</li>
-                  <li>Iron deficiency: oral iron (ferrous sulphate 200 mg od/alt-day) first-line if surgery is &gt;6 weeks away; otherwise <strong>IV iron</strong> (ferric carboxymaltose up to 1000 mg or ferric derisomaltose up to 20 mg/kg) — single dose, response in 1–2 weeks</li>
+                  <li>Iron deficiency: oral iron (ferrous sulphate 200 mg od/alt-day) first-line if surgery is &gt;6 weeks away; otherwise <strong>IV iron</strong> — single dose, response in 1–2 weeks, so give ≥2 weeks before surgery</li>
                   <li>Treat B12/folate deficiency, refer for GI evaluation in unexplained IDA</li>
                   <li>Consider erythropoiesis-stimulating agents in selected renal/chemotherapy-related anaemia (specialist input)</li>
                   <li>Do <strong>not</strong> transfuse to "top up" preoperatively — outcomes are worse than treating the underlying cause</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">IV Iron: Choice, Risks &amp; Contraindications (MHRA 2013)</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li><strong>Ferric carboxymaltose:</strong> up to 1000 mg per dose (max ~20 mg/kg), infused over ≥15 minutes; can usually be given as a single dose</li>
+                  <li><strong>Ferric derisomaltose (iron isomaltoside):</strong> up to 20 mg/kg as a single dose, infused over ~20–30 minutes regardless of dose size</li>
+                  <li><strong>Hypersensitivity/anaphylaxis:</strong> all IV iron carries a small but real risk — give only where staff are trained to recognise and treat anaphylaxis, resuscitation facilities are immediately available, and the patient is observed for at least 30 minutes after completion of the infusion (MHRA 2013)</li>
+                  <li><strong>Fishbane reaction:</strong> a non-allergic, self-limiting flushing/chest-tightness/back-pain reaction — slow or pause the infusion; does not require adrenaline or discontinuation of future IV iron</li>
+                  <li><strong>Hypophosphataemia:</strong> more common and potentially more prolonged/symptomatic with ferric carboxymaltose (FGF23-mediated renal phosphate wasting) — check phosphate if bone pain, myalgia or fatigue develop post-infusion, particularly with repeated dosing</li>
+                  <li><strong>Contraindications:</strong> known hypersensitivity to the product, anaemia not due to iron deficiency, evidence of iron overload or disturbances of iron utilisation, active infection/sepsis (may fuel bacterial growth), first trimester of pregnancy</li>
+                  <li>Expect a haemoglobin response within 1–2 weeks — give IV iron at least 2 weeks before surgery wherever the pathway allows</li>
                 </ul>
               </div>
 
@@ -179,6 +192,21 @@ const HaematologicalDiseaseTopic = () => {
                   <li>Use TXA, careful surgical haemostasis and intra-operative monitoring of platelet count in prolonged surgery</li>
                   <li><strong>Do not transfuse platelets in HIT, TTP, or chronic ITP without haematology advice</strong> — risk of thrombotic catastrophe</li>
                   <li>HIT: stop all heparin (including line flushes), switch to argatroban or fondaparinux, send HIT antibody screen</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border-2 border-clinical/40 rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Heparin-Induced Thrombocytopenia (HIT)</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li><strong>Pathophysiology:</strong> IgG antibodies form against platelet factor 4 (PF4)–heparin complexes; immune complexes cross-link and activate platelets via the FcγRIIa receptor, triggering thrombin generation and a paradoxically <em>prothrombotic</em> state despite a falling platelet count (ASH 2018)</li>
+                  <li><strong>4Ts pre-test probability score</strong> — Thrombocytopenia (magnitude/pattern of fall), Timing (onset 5–10 days after heparin exposure, or &lt;24 h with recent heparin exposure in past 100 days), Thrombosis (new venous/arterial event, skin necrosis, or acute systemic reaction), oTher causes excluded: score 0–3 low probability (HIT essentially excluded, do not test), 4–5 intermediate, 6–8 high probability (send immunoassay and consider empirical non-heparin anticoagulation while awaiting results)</li>
+                  <li><strong>Diagnostics:</strong> PF4–heparin immunoassay (ELISA) is sensitive but poorly specific (many false positives, especially post-cardiac surgery); confirm a positive or intermediate/high 4Ts result with a functional assay — serotonin release assay (SRA) or heparin-induced platelet activation assay (HIPA)</li>
+                  <li><strong>Immediate management:</strong> stop <em>all</em> heparin exposure — unfractionated heparin, LMWH, heparin flushes and heparin-bonded catheters — and start therapeutic-dose non-heparin anticoagulation even in the absence of confirmed thrombosis (subclinical/occult thrombosis is common)</li>
+                  <li><strong>Non-heparin anticoagulants:</strong> argatroban (direct thrombin inhibitor, hepatically cleared — preferred in renal failure; start ~0.5–2 microgram/kg/min, lower end in critical illness or hepatic dysfunction, titrate to APTT 1.5–3.0× baseline; falsely prolongs INR, complicating warfarin transition); bivalirudin; fondaparinux (weight-banded 5 mg &lt;50 kg / 7.5 mg 50–100 kg / 10 mg &gt;100 kg subcutaneously once daily — avoid in significant renal impairment); DOACs once platelets have recovered</li>
+                  <li><strong>Platelet transfusion:</strong> avoid unless active, significant bleeding — transfusion may fuel the prothrombotic process and precipitate arterial or venous thrombosis</li>
+                  <li><strong>Warfarin:</strong> defer until platelets have recovered to &gt;150 ×10⁹/L, and overlap with a therapeutic non-heparin anticoagulant for at least 5 days — starting warfarin early risks venous limb gangrene from unopposed protein C/S depletion</li>
+                  <li><strong>Duration of anticoagulation:</strong> at least 4 weeks if no thrombosis identified; at least 3 months if HIT-associated thrombosis has occurred</li>
+                  <li>Document a clear heparin allergy/alert on the drug chart and discharge summary — re-exposure risk persists for years</li>
                 </ul>
               </div>
 

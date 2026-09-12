@@ -29,6 +29,7 @@ import {
   sciMechanisms,
 } from "@/components/diagrams/neuroDiseaseDrugMappings";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const objectives = [
   "Choose neuromuscular blockers and reversal strategies for myasthenia gravis and other neuromuscular disorders.",
@@ -46,6 +47,7 @@ const tocItems = [
   { id: "section-motor-neuron-disease", label: "Motor Neuron Disease", group: "Motor Neuron" },
   { id: "section-muscular-dystrophies", label: "Muscular Dystrophies", group: "Muscular" },
   { id: "section-spinal-cord-injury", label: "Spinal Cord Injury", group: "Spinal" },
+  { id: "section-guillain-barre", label: "Guillain–Barré Syndrome", group: "Neuropathy" },
 ];
 
 const keyPoints = [
@@ -315,6 +317,16 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Propofol may cause dyskinesia in some patients; remifentanil and rocuronium are safe</li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Advanced Therapies</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Deep brain stimulation (DBS):</strong> check device manufacturer, battery status and current settings preoperatively with the neurology/functional neurosurgery team; use bipolar diathermy only, with the return (neutral) pad sited remote from the implanted pulse generator and leads; switch the device off before diathermy or external defibrillation to prevent current induction, tissue heating and hardware damage, then confirm settings on reprogramming; stimulation on/off state affects emergence (rigidity/tremor may return when off) and can produce artefact on EEG-based depth-of-anaesthesia monitoring; MRI is generally contraindicated or requires MR-conditional mode and specialist protocols</li>
+                <li><strong>Duodopa (levodopa–carbidopa intestinal gel):</strong> delivered continuously via a jejunal (PEG-J) tube; protect the PEG-J site and stoma during positioning and surgery, and continue the pump perioperatively wherever feasible; if interrupted (e.g. abdominal surgery, tube displacement), plan an equivalent oral, enteral or transdermal replacement using levodopa-equivalent dosing to avoid acute akinesia and NMS-like withdrawal</li>
+                <li><strong>Apomorphine infusion:</strong> a potent subcutaneous dopamine agonist used for severe motor fluctuations; causes severe nausea and vomiting — pretreat/cover with domperidone; avoid ondansetron and other 5-HT3 antagonists in combination, as this can precipitate profound, severe hypotension and collapse</li>
+                <li><strong>Rotigotine transdermal patch:</strong> useful bridging therapy when the patient is nil by mouth or the enteral route is unavailable perioperatively; convert the usual oral dopaminergic regimen using published levodopa-equivalent dose tables</li>
+                <li>Across all regimens, avoid metoclopramide, prochlorperazine, haloperidol and droperidol — central D2-antagonism can precipitate severe rigidity and an NMS-like crisis <InlineRef topicId="neurological-disease" refLabel="BJA Educ PD 2014" /> <InlineRef topicId="neurological-disease" refLabel="NICE NG71 (Parkinsons)" /></li>
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -355,6 +367,27 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Respiratory: bulbar dysfunction (aspiration risk), restrictive defect, weak cough — may not tolerate supine position</li>
                 <li>Consider awake fibreoptic intubation if difficult airway anticipated</li>
                 <li>Discuss advance care planning: DNR status, NIV preferences, feeding decisions</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Respiratory Assessment and Ventilatory Support</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Symptoms of respiratory muscle weakness: orthopnoea, morning headache (nocturnal hypercapnia), daytime somnolence and fatigue, weak/ineffective cough with poor secretion clearance</li>
+                <li>Bedside measures: sniff nasal inspiratory pressure (SNIP), supine vs erect FVC (a fall of &gt;20–25% supine indicates diaphragmatic weakness), FVC &lt;50% predicted marks significant respiratory muscle involvement and prompts NIV assessment</li>
+                <li>NIV (typically bilevel) for nocturnal hypoventilation improves quality of life and survival; initiate for symptomatic nocturnal hypoventilation, orthopnoea, or FVC/SNIP decline even before daytime hypercapnia develops — early initiation is key <InlineRef topicId="neurological-disease" refLabel="NICE NG42 (MND)" /></li>
+                <li>Sialorrhoea management: glycopyrronium (reduces secretions with less CNS penetration than hyoscine), hyoscine hydrobromide transdermal patch, atropine eye drops given sublingually, or botulinum toxin injection into salivary glands for refractory cases</li>
+                <li>Aspiration risk from bulbar weakness drives early consideration of gastrostomy (PEG/RIG) for nutrition — ideally performed before FVC falls below ~50% predicted, as respiratory reserve dictates procedural risk and anaesthetic technique</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Anaesthetic Care and Advance Care Planning</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Suxamethonium absolutely avoided — denervation-related upregulation of extra-junctional receptors risks life-threatening hyperkalaemia</li>
+                <li>Marked sensitivity to non-depolarising NMBAs — use reduced doses with mandatory quantitative (TOF) monitoring; sugammadex reversal for rocuronium</li>
+                <li>Increased sensitivity to opioids and sedatives — titrate cautiously, favour short-acting agents, and anticipate exaggerated respiratory depression</li>
+                <li>Use regional or local anaesthetic techniques wherever feasible to avoid airway instrumentation and systemic sedation</li>
+                <li>High risk of postoperative ventilator dependence in patients with pre-existing respiratory muscle weakness — plan critical care disposition and discuss realistic weaning/extubation goals before surgery</li>
+                <li>Early and ongoing advance care planning is essential: agree a ceiling of treatment and complete a ReSPECT (or equivalent) form; discuss tracheostomy ventilation as a treatment option and the patient's wishes regarding it; where ventilatory support is to be withdrawn, plan this with anticipatory symptom control (opioids, benzodiazepines) and specialist palliative care input <InlineRef topicId="neurological-disease" refLabel="NICE NG42 (MND)" /></li>
               </ul>
             </div>
           </div>
@@ -438,9 +471,68 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Autonomic dysreflexia: occurs with lesions ≥T6; uninhibited sympathetic discharge below lesion</li>
                 <li>Triggers: bladder distension (most common), bowel distension, skin stimulation below lesion, uterine contractions</li>
                 <li>Presentation: severe hypertension (can cause CVA, MI), reflex bradycardia, headache, flushing/sweating above lesion, pallor below</li>
-                <li>Management: sit patient up, remove trigger, GTN spray/infusion, nifedipine, labetalol; regional/general anaesthesia for surgical procedures</li>
+                <li>Management: sit patient up immediately and loosen restrictive clothing; identify and remove the trigger first (check/empty bladder — catheter kink/blockage is the commonest cause — then check for faecal impaction)</li>
+                <li>First-line pharmacotherapy: GTN 1–2 sublingual sprays (400–800 microgram) or IV infusion 10–20 microgram/min titrated to effect — contraindicated within 24 h of phosphodiesterase-5 inhibitors (sildenafil, tadalafil) because of profound refractory hypotension; nifedipine 5–10 mg orally as a bite-and-swallow capsule (avoid sublingual administration — absorption is unpredictable and can produce precipitous, hard-to-reverse hypotension)</li>
+                <li>Second-line/refractory hypertension: labetalol 10–20 mg IV boluses, phentolamine 1–5 mg IV, or sodium nitroprusside infusion in a critical care setting with arterial monitoring</li>
+                <li>Reflex bradycardia: treat only if haemodynamically compromising (atropine 300–600 microgram IV) — do not treat the bradycardia in isolation while hypertension persists untreated</li>
+                <li>For surgery in patients at risk (e.g. cystoscopy, urodynamics, obstetric delivery), deep general anaesthesia or dense spinal/epidural block prevents recurrence by blocking the afferent limb of the reflex — light GA is inadequate <InlineRef topicId="neurological-disease" refLabel="Autonomic Dysreflexia" /></li>
                 <li>Chronic SCI: osteoporosis (fracture risk with positioning), pressure areas, thermoregulation impairment (poikilothermia), latex allergy (repeated catheterisations)</li>
                 <li>Respiratory: lesion above C3–5 → diaphragm paralysis (phrenic nerve); thoracic lesions → reduced FVC (loss of intercostal/abdominal muscles)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Guillain-Barre Syndrome */}
+        <section id="section-guillain-barre" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Guillain–Barré Syndrome</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09", "NA_BK_01"]} />
+          <FRCARelevanceCallout
+            bottomLine="An acute, often post-infectious, immune-mediated polyradiculoneuropathy with ascending weakness, autonomic instability and a real risk of ventilatory failure — suxamethonium is contraindicated and respiratory trends (the 20/30/40 rule) drive intubation timing."
+            implications={[
+              "Suxamethonium contraindicated — denervation hyperkalaemia can cause cardiac arrest.",
+              "Marked sensitivity to non-depolarising NMBAs — reduce dose and use quantitative monitoring.",
+              "Labile autonomic function — use invasive arterial monitoring and titrate vasoactive drugs cautiously; exaggerated pressor/depressor responses.",
+              "20/30/40 rule for elective intubation: VC <20 ml/kg, MIP <30 cmH₂O, MEP <40 cmH₂O.",
+              "IVIG 0.4 g/kg/day for 5 days or plasma exchange — equivalent efficacy, do not combine.",
+            ]}
+            buzzwords={[
+              "Ascending symmetrical weakness",
+              "Areflexia",
+              "AMAN / Miller Fisher variant",
+              "Post-Campylobacter jejuni",
+              "20/30/40 rule",
+              "IVIG vs plasma exchange",
+              "Autonomic lability",
+            ]}
+            vivaStem="A previously fit 30-year-old develops ascending weakness two weeks after a diarrhoeal illness and is now on the ward with a rising respiratory rate — how do you assess and manage them?"
+          />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Pathophysiology and Presentation</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Acute inflammatory demyelinating polyradiculoneuropathy (AIDP), the commonest variant of Guillain–Barré syndrome (GBS); typically occurs 1–3 weeks after an infective trigger — <em>Campylobacter jejuni</em>, cytomegalovirus, or Epstein–Barr virus — via molecular mimicry against peripheral nerve gangliosides</li>
+                <li>Progressive, ascending, broadly symmetrical limb weakness with hyporeflexia/areflexia; sensory symptoms often precede motor signs; bulbar involvement (dysphagia, facial weakness) and respiratory muscle weakness occur in a significant proportion</li>
+                <li>Recognised variants: acute motor axonal neuropathy (AMAN, pure motor, axonal, associated with anti-GM1 antibodies), and Miller Fisher syndrome (ophthalmoplegia, ataxia, areflexia, anti-GQ1b antibodies)</li>
+                <li>Autonomic dysfunction is common and can be severe: labile blood pressure, tachyarrhythmias or bradyarrhythmias, and exaggerated/unpredictable responses to vasoactive drugs and positional change <InlineRef topicId="neurological-disease" refLabel="Lancet GBS 2016" /></li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Anaesthetic Considerations</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Suxamethonium is contraindicated — denervation-related upregulation of extra-junctional acetylcholine receptors risks massive potassium efflux and cardiac arrest</li>
+                <li>Marked sensitivity to non-depolarising NMBAs — use reduced doses with mandatory quantitative (TOF) neuromuscular monitoring</li>
+                <li>Autonomic instability warrants invasive arterial blood pressure monitoring for any anaesthetic or major intervention, with cautious, incremental use of vasopressors/vasodilators given exaggerated responses</li>
+                <li>Neuraxial techniques should be used cautiously (and generally avoided in the acute phase) because of autonomic lability and the theoretical risk of triggering/confounding evolving neurology</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Critical Care Management</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Serial bedside spirometry to track deterioration — the "20/30/40 rule" flags the need for elective intubation: vital capacity &lt;20 ml/kg, maximum inspiratory pressure (MIP) &lt;30 cmH₂O, or maximum expiratory pressure (MEP) &lt;40 cmH₂O</li>
+                <li>Bulbar signs (weak cough, pooling secretions, dysphagia) and rapid rate of progression (e.g. the EGRIS — Erasmus GBS Respiratory Insufficiency Score) should also prompt early, controlled/elective intubation rather than waiting for crisis</li>
+                <li>Disease-modifying treatment: intravenous immunoglobulin 0.4 g/kg/day for 5 days, or plasma exchange — these have equivalent efficacy and should not be combined</li>
+                <li>Supportive critical care: VTE prophylaxis (immobility and dysautonomia increase risk), neuropathic pain management (gabapentinoids, e.g. gabapentin or pregabalin), meticulous pressure area care, early physiotherapy and rehabilitation planning given the prolonged recovery trajectory <InlineRef topicId="neurological-disease" refLabel="Lancet GBS 2016" /></li>
               </ul>
             </div>
           </div>
