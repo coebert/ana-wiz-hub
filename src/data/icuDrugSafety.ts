@@ -565,8 +565,7 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
           "Rapid IV infusion — never exceed 50 mg/min (25 mg/min in the elderly or cardiac disease).",
           "Extravasation risk: purple glove syndrome; hypersensitivity or previous DRESS.",
         ],
-        monitoring
-: [
+        monitoring: [
           "Continuous ECG and blood pressure during loading.",
           "Trough level (total 10–20 mg/L) with albumin — measure free phenytoin in hypoalbuminaemia, renal failure or critical illness.",
           "Full blood count, liver function and rash (Stevens–Johnson, DRESS); nystagmus and ataxia indicate toxicity.",
@@ -827,8 +826,7 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
           "Uncontrolled sepsis in hepatorenal syndrome; respiratory failure (increased risk of respiratory failure in the CONFIRM trial).",
           "Pregnancy.",
         ],
-        monitoring
-: [
+        monitoring: [
           "ECG and continuous oxygen saturation — respiratory failure and myocardial ischaemia are the key harms.",
           "Sodium daily (dilutional hyponatraemia can be rapid), fluid balance and skin/digital perfusion.",
           "Renal function and urine output to judge efficacy in hepatorenal syndrome; give with albumin.",
