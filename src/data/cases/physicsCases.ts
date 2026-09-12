@@ -31,7 +31,7 @@ export const physicsCaseBank: CaseBank = {
   path: "/physics/case-bank",
   title: "Physics & Measurement Case Bank",
   subtitle: "Progressive scenarios in monitoring artefact, equipment safety and imaging hazards, built from the referenced physics topics.",
-  metaDescription: "Eighteen FRCA physics and clinical measurement cases: monitoring artefact, equipment safety, gas laws and imaging/radiation for exam revision.",
+  metaDescription: "Twenty-one FRCA physics and clinical measurement cases: monitoring artefact, equipment safety, gas laws and imaging or radiation hazards for revision.",
   backPath: "/physics",
   backLabel: "Physics & Clinical Measurement",
   accentColor: "text-physics",
