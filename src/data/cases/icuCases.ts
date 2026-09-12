@@ -182,8 +182,9 @@ export const icuCaseBank: CaseBank = {
           answer: [
             "Reduce tidal volume to 6 mL/kg predicted body weight, keep plateau pressure below 30 cmH₂O and driving pressure below about 15 cmH₂O.",
             "Titrate PEEP to oxygenation and compliance, accept permissive hypercapnia while pH is tolerable, and use conservative fluid management once shock has resolved.",
-            "Optimise sedation and consider neuromuscular blockade for severe dyssynchrony.",
+            "Deepen sedation with a propofol infusion plus fentanyl (or morphine) to abolish dyssynchrony, support pressure with noradrenaline if sedation unmasks vasodilation, and add a cisatracurium infusion for 24–48 hours when severe dyssynchrony or breath stacking persists despite adequate sedation.",
           ],
+
         },
         {
           title: "Escalate",
