@@ -10,6 +10,7 @@ import { ReferencesList } from "@/components/references/ReferencesList";
 import { SectionReferences } from "@/components/topic/SectionReferences";
 import { SeeAlso } from "@/components/topic/SeeAlso";
 import { RelatedCases } from "@/components/topic/RelatedCases";
+import { TopicDiscussion } from "@/components/topic/TopicDiscussion";
 import { TopicCompletionToggle } from "@/components/topic/TopicCompletionToggle";
 import { ReportInaccuracyDialog } from "@/components/feedback/ReportInaccuracyDialog";
 import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
@@ -439,6 +440,7 @@ export const TopicTemplate = ({
         <RelatedCases topicId={topicId} />
         <SeeAlso topicId={topicId} />
         <TopicCompletionToggle topicId={topicId} topicTitle={topicTitle ?? title} />
+        <TopicDiscussion topicId={topicId} topicTitle={topicTitle ?? title} />
         <div className="flex justify-end pt-2 -mt-2">
           <ReportInaccuracyDialog topicId={topicId} topicTitle={topicTitle ?? title} />
         </div>
