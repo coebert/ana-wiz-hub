@@ -6,6 +6,7 @@ import { breathingCircuitsQuiz } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import BreathingCircuitsDiagram from "@/components/diagrams/physics/BreathingCircuitsDiagram";
 import MaplesonEfficiencyDiagram from "@/components/diagrams/physics/MaplesonEfficiencyDiagram";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const breathingCircuitsFaqs: Array<[string, string]> = [
   [
@@ -252,6 +253,38 @@ const BreathingCircuitsTopic = () => {
               </div>
             </div>
 
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Humphrey ADE and Aintree catheter</h2>
+              <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  The <strong>Humphrey ADE</strong> combines Mapleson A, D and E functions in one coaxial system. In
+                  <strong> A mode</strong>, its lever routes expiration to an APL valve near the patient, so it behaves like a
+                  Lack circuit and is efficient for spontaneous ventilation. In <strong>D/E mode</strong>, that valve is isolated,
+                  the reservoir bag lies on the expiratory limb and fresh gas reaches the patient end, making it efficient for
+                  controlled ventilation. The mode can therefore change without replacing the circuit
+                  <InlineRef topicId="breathing-circuits" refLabel="Anaesthesia 1989 ADE" />.
+                </p>
+                <p>
+                  The <strong>Aintree Intubation Catheter</strong> is an airway-exchange catheter, not a Mapleson class. It is passed
+                  over a flexible bronchoscope through a suitable supraglottic airway, the SAD is removed, and a tracheal tube is
+                  railroaded over the catheter. Its 15 mm connector permits oxygen insufflation or connection to a breathing system,
+                  but gas egress must remain unobstructed to avoid barotrauma.
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Work of breathing</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Circuit work is the integral of pressure against volume for each breath. Every breathing system adds work, with the
+                expiratory component often increasing more than inspiration <InlineRef topicId="breathing-circuits" refLabel="BJA 1983 Work of Breathing" />.
+                Mapleson systems have no absorber or unidirectional valves and are relatively low resistance; circle systems add valve,
+                tubing and absorber resistance, worsened by small-bore components, wet filters or compacted granules. Excess FGF can
+                oppose expiration and increase expiratory work. Low-resistance E/F circuits are therefore valuable in infants and in
+                patients with limited ventilatory reserve, balanced against their high FGF requirement.
+              </p>
+            </div>
+
             {/* Circle system */}
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
@@ -271,6 +304,35 @@ const BreathingCircuitsTopic = () => {
                 components: any failure converts a circle into a Mapleson
                 A-equivalent with massive rebreathing.
               </p>
+              <div className="mt-4 border-t border-border pt-4">
+                <h3 className="font-semibold text-foreground">Closed-circuit anaesthesia</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  A true closed circuit reduces total FGF to match patient uptake—approximately <strong>200–300 mL/min</strong> in a
+                  resting adult—after an initial high-flow wash-in. Oxygen and agent delivery must then track consumption continuously.
+                  It maximises gas and agent economy, limits theatre pollution, and preserves heat and humidity, but inspired oxygen and
+                  agent concentrations change slowly and can drift dangerously. Nitrogen, methane and carbon monoxide may accumulate,
+                  and leaks defeat the technique; continuous FiO₂, inspired/expired agent, capnography and volume monitoring are mandatory
+                  <InlineRef topicId="breathing-circuits" refLabel="BJA 1986 Closed Loop" />.
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Breathing-system filters and HMEs</h2>
+              <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  <strong>Electrostatic filters</strong> attract charged particles; pleated hydrophobic filters combine interception,
+                  inertial impaction and diffusion. An <strong>HME</strong> additionally retains expired heat and water in hygroscopic
+                  material and returns them during inspiration. At the patient Y-piece, one device protects the circuit and humidifies
+                  gas but adds apparatus dead space; at the machine end it protects equipment with less patient dead space but does not
+                  humidify the airway or isolate the whole circuit <InlineRef topicId="breathing-circuits" refLabel="Anaesthesia 1999 Filters" />.
+                </p>
+                <p>
+                  Resistance rises with secretions, blood, condensation or nebulised drug deposition and may cause occult obstruction,
+                  especially in children or spontaneous ventilation. Select the smallest appropriate dead space, monitor airway pressure
+                  and capnography, inspect after nebulisation or bleeding, and replace a visibly wet or contaminated device.
+                </p>
+              </div>
             </div>
 
             {/* Soda lime chemistry */}

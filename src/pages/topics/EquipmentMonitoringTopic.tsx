@@ -651,6 +651,8 @@ const EquipmentMonitoringTopic = () => {
                   keyPoints: [
                     "DAS 2015: VL is an alternative Plan A device and rescue tool — immediate availability mandated.",
                     "Mac-shaped (C-MAC, McGRATH) vs hyperangulated (GlideScope, X-blade — needs styletted ETT).",
+                    "Channelled blades guide the tube along a built-in track; non-channelled devices require a stylet or bougie and independent tube delivery.",
+                    "Video-screen devices permit indirect shared viewing; optical-only devices provide a single-eyepiece image without a camera screen.",
                     "Cochrane 2022: improves first-pass success and reduces failed intubation vs DL.",
                     "NAP4: most major airway events were unanticipated — VL improves view but \"can see, can't intubate\" remains a risk.",
                   ],
@@ -724,6 +726,17 @@ const EquipmentMonitoringTopic = () => {
                     <strong>Pearl:</strong> A better view does not always mean an easier intubation — particularly with hyperangulated VL where ETT delivery requires a pre-shaped stylet.
                     <Cite blade="videolaryngoscope" refLabel="NAP4 2011" />
                   </p>
+                  <div className="mt-3 overflow-x-auto rounded-lg border border-border">
+                    <table className="w-full text-xs">
+                      <thead className="bg-secondary/40"><tr><th className="p-2 text-left">Class</th><th className="p-2 text-left">Mechanics</th><th className="p-2 text-left">Main limitation</th></tr></thead>
+                      <tbody>
+                        <tr className="border-t border-border"><td className="p-2">Macintosh-shaped</td><td className="p-2">Direct or indirect view; conventional blade path and bougie technique.</td><td className="p-2">May not overcome a markedly anterior larynx.</td></tr>
+                        <tr className="border-t border-border"><td className="p-2">Hyperangulated</td><td className="p-2">Looks around the tongue; ETT must match blade curvature with a rigid stylet.</td><td className="p-2">Excellent view may coexist with difficult tube delivery.</td></tr>
+                        <tr className="border-t border-border"><td className="p-2">Channelled</td><td className="p-2">Built-in guide aligns and advances ETT toward the image.</td><td className="p-2">Bulkier; limited mouth opening and tube-size compatibility.</td></tr>
+                        <tr className="border-t border-border"><td className="p-2">Optical-only</td><td className="p-2">Prism/lens image viewed through eyepiece rather than external screen.</td><td className="p-2">Team cannot share the view; fogging/secretions impair optics.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </>
               );
             })()}
@@ -736,6 +749,24 @@ const EquipmentMonitoringTopic = () => {
           </div>
 
           <div>
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Supraglottic airway devices and Aintree catheter</h3>
+            <div className="grid gap-3 sm:grid-cols-3 text-sm">
+              <div className="rounded-lg border border-border p-3"><p className="font-semibold text-foreground">First generation</p><p className="mt-1 text-muted-foreground">A single ventilation channel and perilaryngeal seal (classic LMA). Simple rescue oxygenation, but no gastric drainage and less protection from regurgitation.</p></div>
+              <div className="rounded-lg border border-border p-3"><p className="font-semibold text-foreground">Second generation</p><p className="mt-1 text-muted-foreground">Higher oropharyngeal seal plus gastric drain and often bite block (i-gel, ProSeal, Supreme). Favoured for difficult-airway rescue and selected positive-pressure ventilation.</p></div>
+              <div className="rounded-lg border border-border p-3"><p className="font-semibold text-foreground">Intubating devices</p><p className="mt-1 text-muted-foreground">Designed as a conduit for tracheal intubation. Some permit fibreoptic-guided passage; blind passage is less reliable and risks trauma.</p></div>
+            </div>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              Choose size by manufacturer guidance and confirm ventilation, capnography and leak pressure. Contraindications are relative
+              and include active vomiting, major aspiration risk, severe restricted mouth opening, upper-airway obstruction below the
+              glottis and poor compliance requiring pressures above the seal. A <strong>second-generation SAD</strong> is recommended for
+              rescue oxygenation in difficult intubation <InlineRef topicId="equipment-monitoring" refLabel="BJA Educ SAD 2011" />.
+              The <strong>Aintree Intubation Catheter</strong> can be passed over a bronchoscope through a compatible SAD; after SAD removal,
+              a tracheal tube is railroaded over it. Its 15 mm connector allows oxygen insufflation, but only at low pressure with a patent
+              route for expiration <InlineRef topicId="equipment-monitoring" refLabel="Aintree Catheter" />.
+            </p>
+          </div>
+
+          <div>
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">Neuraxial & regional needles</h3>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Needle design profoundly affects tissue trauma, post-dural-puncture headache (PDPH) risk, and procedural feel.
@@ -744,6 +775,16 @@ const EquipmentMonitoringTopic = () => {
               <div className="rounded-lg bg-secondary/30 border border-border p-3">
                 <p className="font-semibold text-foreground text-sm">Quincke (cutting)</p>
                 <p className="text-xs text-muted-foreground mt-1">Sharp medium-bevel — cuts dural fibres → higher PDPH. Standard for diagnostic LP; 25–27G for spinal.</p>
+              </div>
+              <div className="rounded-lg bg-secondary/30 border border-border p-3 sm:col-span-2">
+                <p className="font-semibold text-foreground text-sm">Depth estimation and localisation</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Epidural depth varies with body habitus and cannot be safely predicted by a single formula. Pre-procedure ultrasound can
+                  identify midline, interspace and an estimated skin-to-epidural depth, but needle advancement remains controlled by loss
+                  of resistance to saline. A Tuohy depth mark gives only an estimate; excessive insertion risks dural puncture. For spinal
+                  anaesthesia, free CSF confirms intrathecal placement. Pencil-point needles reduce PDPH compared with cutting needles
+                  <InlineRef topicId="equipment-monitoring" refLabel="Cochrane Spinal Needles" />.
+                </p>
               </div>
               <div className="rounded-lg bg-secondary/30 border border-border p-3">
                 <p className="font-semibold text-foreground text-sm">Whitacre (pencil-point)</p>

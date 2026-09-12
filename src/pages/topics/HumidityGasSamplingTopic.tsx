@@ -125,6 +125,15 @@ const HumidityGasSamplingTopic = () => {
                 At 37°C, the saturated vapour pressure of water is 6.3 kPa, giving an absolute humidity of 44 mg/L at 100% RH
                 <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ 2007" />.
               </p>
+              <div className="rounded-lg border border-border p-3">
+                <p className="font-semibold text-foreground">Complications of humidification</p>
+                <ul className="mt-2 list-disc list-inside text-sm space-y-1">
+                  <li><strong>HMEF:</strong> apparatus dead space and resistance; abrupt obstruction by secretions or blood; inadequate humidification with large leaks, high minute ventilation or prolonged use.</li>
+                  <li><strong>Heated humidifier:</strong> overheating and airway thermal injury; under-heating and rain-out causing resistance, ventilator malfunction or aspiration.</li>
+                  <li>Water reservoirs and condensate can become colonised; circuit complexity adds leak and disconnection points. Handle condensate away from the patient and use infection-control procedures.</li>
+                </ul>
+                <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ Humidification 2018" />
+              </div>
               <p>
                 The nose warms, humidifies, and filters inspired gas. The point at which gas is fully conditioned to 37 °C and
                 100% RH (44 mg/L) is the <strong>isothermic saturation boundary (ISB)</strong>. In a healthy, resting adult this
@@ -146,12 +155,20 @@ const HumidityGasSamplingTopic = () => {
 
           <ExamSection id="hygrometers" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Measurement of Humidity — Hygrometers">
-            <p className="text-muted-foreground leading-relaxed mb-3">
+            <div className="text-muted-foreground leading-relaxed mb-3 space-y-3">
+            <p>
               Four hygrometer types are commonly examined: the <strong>hair</strong> hygrometer (mechanical), the
               <strong> wet-and-dry bulb</strong> psychrometer (latent heat of evaporation), <strong>Regnault's dew-point</strong>
               hygrometer (the gold-standard absolute method), and the modern <strong>electrical / capacitance</strong> sensor
               found in every contemporary anaesthetic monitor. Step through each animation to see the underlying physics.
             </p>
+            <ul className="list-disc list-inside text-sm space-y-1">
+              <li><strong>Wet-and-dry bulb psychrometer:</strong> one thermometer is dry and one is wrapped in a water-soaked wick. Evaporation removes latent heat and cools the wet bulb; a larger temperature difference means drier gas, and a psychrometric chart converts the pair of readings to relative humidity.</li>
+              <li><strong>Regnault dew-point hygrometer:</strong> cool a polished silvered surface until condensation first appears. At that dew point the adjacent gas is saturated, allowing absolute humidity to be read from saturated water-vapour data.</li>
+              <li><strong>Hair hygrometer:</strong> degreased organic fibres lengthen as humidity rises and mechanically move a pointer; it is simple but slow and requires calibration.</li>
+            </ul>
+            <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ 2007" />
+            </div>
             <HygrometersDiagram />
             </CollapsibleSubsection>
           </ExamSection>
@@ -166,10 +183,17 @@ const HumidityGasSamplingTopic = () => {
                 while flow remains laminar <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
               <p>
+                For laminar flow, Hagen–Poiseuille gives <strong>Q = ΔP/R</strong>, with resistance proportional to gas viscosity,
+                tube length and 1/radius⁴. The parallel capillaries of a Fleisch head and mesh of a Lilly head create a known,
+                approximately linear resistance, so a differential transducer converts ΔP into flow. Variable-orifice devices instead
+                use the Bernoulli relationship and are more density dependent <InlineRef topicId="humidity-gas-sampling" refLabel="BJA 1983 Pneumotachography" />.
+              </p>
+              <p>
                 The flow signal is <strong>integrated electronically</strong> to derive volume (tidal volume, minute ventilation).
                 Both types must be <strong>heated to body temperature</strong> to prevent condensation on the resistance element,
                 which would increase resistance and cause inaccuracy. Changes in gas composition (viscosity, density) also affect readings
-                <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
+                <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />. At high flow, turbulence breaks the
+                linear ΔP–flow relationship; N₂O, oxygen and air differ in viscosity, so calibration must match gas composition.
               </p>
             </div>
             <CrossReferenceCallout

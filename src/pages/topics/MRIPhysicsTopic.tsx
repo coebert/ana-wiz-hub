@@ -8,6 +8,7 @@ import MRISuiteFloorPlanDiagram from "@/components/diagrams/physics/MRISuiteFloo
 import { mriPhysicsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const mriPhysicsFaqs: Array<[string, string]> = [
   [
@@ -138,7 +139,11 @@ const MRIPhysicsTopic = () => {
               <p>
                 <strong>T2 (spin-spin/transverse) relaxation</strong> describes the loss of transverse magnetisation as protons lose
                 phase coherence through interactions with neighbouring spins. T2 is the time to 37% remaining signal. <strong>T2*</strong>
-                is always shorter than T2 because it includes additional dephasing from B₀ field inhomogeneities.
+                is always shorter than T2 because it combines irreversible spin-spin dephasing with reversible dephasing caused by local
+                B₀ inhomogeneity: <strong>1/T2* = 1/T2 + γΔB₀</strong>. A 180° pulse in a spin-echo sequence rephases the static
+                field component and therefore measures true T2; gradient-echo sequences omit it and retain T2* susceptibility contrast.
+                This makes GRE fast but sensitive to metal, air-tissue interfaces and blood products; susceptibility-weighted imaging
+                exploits the effect to demonstrate deoxyhaemoglobin and haemosiderin <InlineRef topicId="mri-physics" refLabel="Middleton Ch.17" />.
               </p>
               <p>
                 <strong>Image weighting</strong> is controlled by TR (repetition time) and TE (echo time). T1-weighted images (short
@@ -146,6 +151,18 @@ const MRIPhysicsTopic = () => {
                 show water as bright and fat as dark — best for detecting pathology (oedema, inflammation, CSF).
               </p>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="pulse-sequences" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <CollapsibleSubsection title="Common Pulse Sequences">
+              <div className="grid gap-3 sm:grid-cols-2 text-sm">
+                <div className="rounded-lg border border-border p-3"><p className="font-semibold text-foreground">Spin echo (SE)</p><p className="mt-1 text-muted-foreground">A 90° excitation followed by a 180° rephasing pulse corrects static-field dephasing, producing true T2 contrast with fewer susceptibility artefacts, but taking longer.</p></div>
+                <div className="rounded-lg border border-border p-3"><p className="font-semibold text-foreground">Gradient recalled echo (GRE)</p><p className="mt-1 text-muted-foreground">Gradient reversal forms the echo without a 180° pulse. It is fast and T2*-weighted, making haemorrhage, haemosiderin, calcification and metal conspicuous.</p></div>
+                <div className="rounded-lg border border-border p-3"><p className="font-semibold text-foreground">FLAIR</p><p className="mt-1 text-muted-foreground">Fluid-attenuated inversion recovery is T2-weighted with CSF nulled by an inversion pulse. Periventricular oedema, demyelination and subarachnoid pathology stand out against dark CSF.</p></div>
+                <div className="rounded-lg border border-border p-3"><p className="font-semibold text-foreground">DWI with ADC</p><p className="mt-1 text-muted-foreground">Diffusion weighting detects restricted Brownian water motion. Acute cytotoxic oedema is bright on DWI and dark on the ADC map, often within minutes of ischaemic stroke.</p></div>
+              </div>
+              <p className="mt-3 text-sm text-muted-foreground"><InlineRef topicId="mri-physics" refLabel="Middleton Ch.17" /></p>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -163,6 +180,15 @@ const MRIPhysicsTopic = () => {
                 — RF energy deposits heat in tissue (measured as SAR, W/kg) and loops of wire/ECG leads can act as antennae causing
                 focal burns; (3) <strong>Device malfunction</strong> — pacemakers, cochlear implants, and certain aneurysm clips
                 may malfunction, move, or heat.
+              </p>
+              <p>
+                <strong>Specific absorption rate (SAR)</strong> is RF energy absorbed per unit body mass (W/kg). It rises approximately
+                with B₀² and also with flip angle, RF pulse number/duty cycle and patient size. In normal operating mode, the commonly
+                quoted whole-body limit is <strong>2 W/kg averaged over 6 minutes</strong>; first-level controlled operation permits up
+                to <strong>4 W/kg averaged over 6 minutes</strong> under supervision. The scanner estimates SAR and can lengthen TR,
+                reduce slices or reduce flip angle to remain within limits, prolonging the study. Sedated or anaesthetised patients cannot
+                report heating, so remove cable loops, insulate skin-to-skin contact and maintain particular vigilance during long 3 T scans
+                <InlineRef topicId="mri-physics" refLabel="IEC MRI SAR" />.
               </p>
               <p>
                 <strong>Practical considerations</strong>: all equipment must be MR Safe or MR Conditional. Use fibreoptic ECG cables,
