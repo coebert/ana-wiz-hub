@@ -217,7 +217,7 @@ const PaediatricIcuTopic = () => {
                   </tr>
                 </thead>
                 <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Airway</td><td>Large head/tongue, anterior larynx, cricoid narrowest &lt;8 yrs</td><td>Cuffed ETT now acceptable from neonates</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Airway</td><td>Large head/tongue, anterior larynx, cricoid narrowest &lt;8 yrs</td><td>Cuffed ETT now acceptable from neonates <InlineRef topicId="paediatric-icu" refLabel="Litman 2013" /></td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Respiratory</td><td>O₂ consumption 6–8 ml/kg/min, low FRC, obligate nasal &lt;6 mo</td><td>Rapid desaturation — HFNO during intubation</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cardiovascular</td><td>HR-dependent CO, higher resting HR</td><td>Bradycardia ≈ pre-arrest; atropine 20 mcg/kg. Hypotension is LATE</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Renal</td><td>Immature GFR until ~2 y</td><td>Fluid overload risk; weight-based dosing</td></tr>
@@ -235,7 +235,7 @@ const PaediatricIcuTopic = () => {
                 similar per kg (~25–30 mL/kg) and closing volume lies <em>within</em> tidal breathing. Alveolar
                 ventilation is ~130 mL/kg/min against an FRC of 30 mL/kg — a V<sub>A</sub>:FRC ratio of ~5:1
                 (adult 1.5:1), so alveolar gas — and inhalational agent — equilibrates fast and apnoea causes
-                desaturation within 15–20 s.
+                desaturation within 15–20 s <InlineRef topicId="paediatric-icu" refLabel="BJA Educ 2019" />.
               </li>
               <li>
                 <strong>Mechanically disadvantaged.</strong> Horizontal ribs, a cartilaginous compliant chest
@@ -270,7 +270,8 @@ const PaediatricIcuTopic = () => {
                 <strong>Autonomic imbalance</strong> — parasympathetic dominance means vagal stimuli
                 (laryngoscopy, suction, hypoxia) readily produce bradycardia. In a child, bradycardia is treated
                 as <strong>hypoxia until proved otherwise</strong>: oxygenate and ventilate first, then atropine
-                20 mcg/kg (min 100 mcg) and adrenaline 10 mcg/kg if HR &lt;60 with poor perfusion.
+                20 mcg/kg (min 100 mcg) and adrenaline 10 mcg/kg if HR &lt;60 with poor perfusion{" "}
+                <InlineRef topicId="paediatric-icu" refLabel="Resuscitation Council UK 2021" />.
               </li>
               <li>
                 <strong>Compensated shock is the rule.</strong> Vasoconstriction maintains blood pressure until
@@ -306,7 +307,7 @@ const PaediatricIcuTopic = () => {
                 glucuronidation — hence morphine sensitivity and slow paracetamol conjugation, with sulphation
                 predominating). Low glycogen stores plus a brain that consumes proportionally more glucose gives
                 rapid <strong>hypoglycaemia</strong> with fasting or illness. Vitamin-K-dependent factors are
-                low for the first days of life.
+                low for the first days of life <InlineRef topicId="paediatric-icu" refLabel="Anderson & Holford 2008" />.
               </li>
               <li>
                 <strong>Haematological:</strong> HbF (~70–80% at birth) has a left-shifted dissociation curve
@@ -339,15 +340,15 @@ const PaediatricIcuTopic = () => {
             <div className="space-y-3">
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">ETT Sizing</p>
-                <p className="text-sm text-muted-foreground mt-1"><strong>Uncuffed:</strong> Age/4 + 4 (ID mm). <strong>Cuffed:</strong> Age/4 + 3.5. <strong>Depth (oral):</strong> Age/2 + 12 cm. Neonates: 3.0–3.5 mm.</p>
+                <p className="text-sm text-muted-foreground mt-1"><strong>Uncuffed:</strong> Age/4 + 4 (ID mm). <strong>Cuffed:</strong> Age/4 + 3.5. <strong>Depth (oral):</strong> Age/2 + 12 cm. Neonates: 3.0–3.5 mm. Cuffed tubes are appropriate from the neonatal period provided cuff pressure is monitored <InlineRef topicId="paediatric-icu" refLabel="Litman 2013" />.</p>
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Lung-Protective Ventilation</p>
-                <p className="text-sm text-muted-foreground mt-1">VT 5–8 ml/kg IBW, plateau &lt;28 cmH₂O, age-appropriate RR, PEEP 5–8. Permissive hypercapnia (pH &gt;7.25). HFOV considered earlier than adults.</p>
+                <p className="text-sm text-muted-foreground mt-1">VT 5–8 ml/kg IBW, plateau &lt;28 cmH₂O, age-appropriate RR, PEEP 5–8. Permissive hypercapnia (pH &gt;7.25). HFOV considered earlier than adults <InlineRef topicId="paediatric-icu" refLabel="PARDS Global 2023" />.</p>
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Non-Invasive Support</p>
-                <p className="text-sm text-muted-foreground mt-1">HFNC at 1–2 L/kg/min — commonly used in bronchiolitis, but recent reviews question its evidence base and routine place in standard care <InlineRef topicId="paediatric-icu" refLabel="RSV Lancet 2024" />. CPAP/BiPAP increasingly first-line for moderate respiratory failure.</p>
+                <p className="text-sm text-muted-foreground mt-1">HFNC at 1–2 L/kg/min — commonly used in bronchiolitis, but recent reviews question its evidence base and routine place in standard care <InlineRef topicId="paediatric-icu" refLabel="RSV Lancet 2024" />. CPAP/BiPAP increasingly first-line for moderate respiratory failure, and CPAP is recommended for impending respiratory failure in bronchiolitis <InlineRef topicId="paediatric-icu" refLabel="NICE NG9" />.</p>
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Paediatric ARDS (PARDS)</p>
@@ -381,15 +382,15 @@ const PaediatricIcuTopic = () => {
             <div className="space-y-3">
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Single Ventricle Physiology</p>
-                <p className="text-sm text-muted-foreground mt-1">Parallel circulation; target SpO₂ 75–85%. Excessive O₂ → pulmonary vasodilation → systemic steal. Manage with subambient FiO₂ or CO₂ addition.</p>
+                <p className="text-sm text-muted-foreground mt-1">Parallel circulation; target SpO₂ 75–85%. Excessive O₂ → pulmonary vasodilation → systemic steal. Manage with subambient FiO₂ or CO₂ addition. After Fontan completion, flow is passive and depends on low PVR, adequate preload and sinus rhythm <InlineRef topicId="paediatric-icu" refLabel="Fontan AHA 2019" />.</p>
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Post-CPB / LCOS</p>
-                <p className="text-sm text-muted-foreground mt-1">Low cardiac output syndrome peaks 6–18 h post-bypass. Milrinone (load 50 mcg/kg, infusion 0.25–0.75 mcg/kg/min). Avoid hypothermia. Delayed sternal closure common in neonates.</p>
+                <p className="text-sm text-muted-foreground mt-1">Low cardiac output syndrome peaks 6–18 h post-bypass; prophylactic high-dose milrinone reduces its incidence (load 50 mcg/kg, infusion 0.25–0.75 mcg/kg/min) <InlineRef topicId="paediatric-icu" refLabel="PRIMACORP 2003" />. Avoid hypothermia. Delayed sternal closure common in neonates.</p>
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">PH Crisis</p>
-                <p className="text-sm text-muted-foreground mt-1">Sedate/paralyse, FiO₂ 1.0, alkalosis (pH 7.45–7.50), iNO 10–20 ppm, IV sildenafil. Avoid disconnection.</p>
+                <p className="text-sm text-muted-foreground mt-1">Sedate/paralyse, FiO₂ 1.0, alkalosis (pH 7.45–7.50), iNO 10–20 ppm, IV sildenafil. Avoid disconnection <InlineRef topicId="paediatric-icu" refLabel="AHA/ATS PH 2015" />.</p>
               </div>
             </div>
             </CollapsibleSubsection>
@@ -406,10 +407,10 @@ const PaediatricIcuTopic = () => {
                   </tr>
                 </thead>
                 <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">TBI</td><td>CPP age-dependent (40–50 infant, 50–60 child). ICP &gt;20. Hypertonic saline preferred over mannitol. Earlier decompression.</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Status Epilepticus</td><td>Lorazepam 0.1 mg/kg ×2 → phenytoin 20 mg/kg → RSI/thiopentone. Check glucose.</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">DKA</td><td>Cerebral oedema risk highest in children — limit fluid, rehydrate over 48 h. Insulin 0.05–0.1 U/kg/h. Hourly GCS.</td></tr>
-                  <tr><td className="py-2 font-medium text-foreground">NAI</td><td>Unexplained injuries, retinal haemorrhages, infant SDH. Mandatory safeguarding referral.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">TBI</td><td>CPP age-dependent (40–50 infant, 50–60 child). Treat ICP &gt;20. Hypertonic saline preferred over mannitol. Earlier decompression <InlineRef topicId="paediatric-icu" refLabel="Paediatric TBI 2019" /></td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Status Epilepticus</td><td>Lorazepam 0.1 mg/kg ×2 → levetiracetam, phenytoin or valproate → RSI/thiopentone. Check glucose <InlineRef topicId="paediatric-icu" refLabel="NICE NG217" /></td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">DKA</td><td>Cerebral oedema risk highest in children — limit fluid, rehydrate over 24–48 h. Insulin 0.05–0.1 U/kg/h. Hourly GCS <InlineRef topicId="paediatric-icu" refLabel="ISPAD DKA 2022" /></td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">NAI</td><td>Unexplained injuries, retinal haemorrhages, infant SDH. Mandatory safeguarding referral <InlineRef topicId="paediatric-icu" refLabel="NICE NG76" /></td></tr>
                 </tbody>
               </table>
             </div>
@@ -605,10 +606,16 @@ const PaediatricIcuTopic = () => {
               <strong>documented weight</strong>, a <strong>mg/kg calculation checked by a second person</strong>,
               and a <strong>stated maximum (usually the adult dose)</strong> — the commonest severe paediatric
               medication errors are ten-fold decimal errors, dose-per-kg given as a total dose, and total dose
-              given per kg.
+              given per kg. Use a national paediatric formulary for every dose and maximum{" "}
+              <InlineRef topicId="paediatric-icu" refLabel="BNF for Children" />.
             </p>
 
             <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Developmental pharmacokinetics</h3>
+            <p className="text-sm text-muted-foreground mb-2">
+              Size and maturation are separate effects: allometric scaling of clearance plus maturation
+              functions explains low neonatal clearance and the higher per-kg clearance of toddlers{" "}
+              <InlineRef topicId="paediatric-icu" refLabel="Anderson & Holford 2008" />.
+            </p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
@@ -709,7 +716,7 @@ const PaediatricIcuTopic = () => {
               </table>
             </div>
             <div className="mt-3 p-4 rounded-lg border border-destructive/30 bg-destructive/5">
-              <p className="text-sm font-semibold text-destructive">⚠ Most paediatric arrests are respiratory — give 5 rescue breaths first.</p>
+              <p className="text-sm font-semibold text-destructive">⚠ Most paediatric arrests are respiratory — give 5 rescue breaths first <InlineRef topicId="paediatric-icu" refLabel="Resuscitation Council UK 2021" />.</p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
