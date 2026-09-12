@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { icuDrugSafetyGroups, icuDrugSafetyCount } from "@/data/icuDrugSafety";
 import { icuDrugMechanismGroups } from "@/data/icuDrugMechanisms";
 import { icuDrugPharmacokinetics } from "@/data/pk";
+import { PkTimelineChart } from "@/components/icu/PkTimelineChart";
 import {
   icuDrugWithdrawal,
   withdrawalRiskLabel,
