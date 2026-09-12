@@ -161,6 +161,37 @@ const UltrasoundPhysicsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="display-modes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Display Modes: A-, B- and M-mode">
+              <div className="text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  Every image is built from the amplitude and return time of received echoes; the modes differ only in
+                  how that information is displayed
+                  <InlineRef topicId="ultrasound-physics" refLabel="BJA Educ Ultrasound Physics 2020" />.
+                </p>
+                <p>
+                  <strong>A-mode (amplitude)</strong> — a one-dimensional plot of echo amplitude against depth along a
+                  single beam line. Historically the first clinical display; it survives in ophthalmology for accurate
+                  axial-length (biometry) and lesion-height measurement, and conceptually underlies every scan line of a
+                  modern image.
+                </p>
+                <p>
+                  <strong>B-mode (brightness)</strong> — the standard 2D grey-scale image. Many scan lines, swept
+                  electronically across the array, are assembled into a sector or rectangle, with echo amplitude coded
+                  as pixel brightness and depth from the round-trip time (assuming 1,540 m/s). This is the foundation of
+                  nerve-block, vascular-access, FAST and lung imaging; frame rate falls as depth and sector width
+                  increase, because each line must return before the next is sent.
+                </p>
+                <p>
+                  <strong>M-mode (motion)</strong> — a single B-mode line displayed against time, giving very high
+                  temporal resolution for moving structures. Used for valve and chamber-wall motion and diaphragmatic
+                  excursion in echocardiography, and in lung ultrasound to demonstrate the "seashore sign" of normal
+                  sliding versus the "barcode/stratosphere sign" of pneumothorax.
+                </p>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="doppler" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Doppler Ultrasound">
             <div className="text-muted-foreground leading-relaxed space-y-3">
