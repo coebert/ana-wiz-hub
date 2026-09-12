@@ -7,6 +7,8 @@ import FrailtyAssessmentDiagram from "@/components/diagrams/clinical/FrailtyAsse
 import POCDPathophysiologyCascadeDiagram from "@/components/diagrams/clinical/POCDPathophysiologyCascadeDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
+
 
 const elderlyAnaesthesiaFaqs: Array<[string, string]> = [
   [
@@ -116,10 +118,11 @@ const ElderlyAnaesthesiaTopic = () => {
                 <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Reduced cardiac output (↓1% per year after age 30); ↓ maximal heart rate (220 − age)</li>
                 <li>Increased arterial stiffness → isolated systolic hypertension, increased afterload, LV hypertrophy</li>
-                <li>Impaired baroreceptor reflex → exaggerated hypotension with induction agents, neuraxial blockade, and positional changes</li>
-                <li>Reduced β-receptor sensitivity → attenuated response to catecholamines</li>
-                <li>Diastolic dysfunction common — dependent on atrial contraction; AF poorly tolerated</li>
+                <li><strong className="text-foreground">Impaired baroreceptor reflex</strong> → blunted reflex tachycardia and vasoconstriction, so hypotension from induction agents, neuraxial blockade, IPPV and positional change is exaggerated and slow to correct<InlineRef topicId="elderly-anaesthesia" refLabel="BJA 2010 Ageing CVS" /></li>
+                <li><strong className="text-foreground">Reduced β-adrenoceptor sensitivity</strong> → attenuated chronotropic and inotropic response to endogenous and exogenous catecholamines; higher doses of ephedrine/dobutamine may be needed, and α-agonists (metaraminol, phenylephrine, noradrenaline) are often more effective<InlineRef topicId="elderly-anaesthesia" refLabel="BJA 2010 Ageing CVS" /></li>
+                <li><strong className="text-foreground">Diastolic dysfunction</strong> from ventricular stiffening → filling depends on atrial contraction and adequate preload; the patient is preload-dependent yet intolerant of fluid overload, and atrial fibrillation (loss of atrial kick with a short diastole) causes abrupt falls in cardiac output<InlineRef topicId="elderly-anaesthesia" refLabel="BJA 2010 Ageing CVS" /></li>
               </ul>
+
             </div>
             <div className="bg-card border border-border rounded-lg p-4 mt-3">
               <h3 className="font-semibold text-foreground mb-2">Respiratory</h3>
@@ -138,7 +141,13 @@ const ElderlyAnaesthesiaTopic = () => {
                 <li>Reduced hepatic blood flow and Phase I metabolism (oxidation, reduction) — Phase II (conjugation) relatively preserved</li>
                 <li>Reduced plasma albumin → increased free fraction of protein-bound drugs</li>
                 <li>Increased body fat, decreased total body water → altered volume of distribution</li>
+                <li><strong className="text-foreground">Renally cleared drugs accumulate</strong>: rocuronium and pancuronium depend substantially on renal excretion, so a single "standard" bolus has a markedly prolonged duration — use neuromuscular monitoring and consider reduced, TOF-guided top-ups<InlineRef topicId="elderly-anaesthesia" refLabel="AAGBI Elderly 2014" /></li>
+                <li><strong className="text-foreground">Active metabolites accumulate</strong>: morphine-6-glucuronide (from morphine) and norpethidine (from pethidine) are renally excreted — M6G causes delayed sedation and respiratory depression, and norpethidine is neurotoxic and pro-convulsant. Avoid pethidine in the elderly and reduce/extend morphine dosing</li>
+                <li><strong className="text-foreground">Phase I versus Phase II metabolism</strong>: diazepam undergoes Phase I oxidation to long-lived active metabolites (desmethyldiazepam) and is greatly prolonged with age, whereas lorazepam is conjugated (Phase II) and is comparatively little affected — if a benzodiazepine is unavoidable, lorazepam is the safer choice</li>
+                <li><strong className="text-foreground">Flow-dependent (high-extraction) drugs</strong>: fentanyl and lignocaine have hepatic extraction ratios approaching unity, so their clearance falls with reduced hepatic blood flow (cardiac failure, hypovolaemia, β-blockade, pneumoperitoneum) — reduce infusion rates and expect prolonged effect</li>
+                <li><strong className="text-foreground">Organ-independent elimination is advantageous</strong>: atracurium and cisatracurium undergo Hofmann elimination and ester hydrolysis, and remifentanil is cleared by non-specific plasma and tissue esterases, so their offset is essentially unchanged by age or by renal and hepatic impairment</li>
               </ul>
+
             </div>
             <div className="bg-card border border-border rounded-lg p-4 mt-3">
               <h3 className="font-semibold text-foreground mb-2">Central Nervous System</h3>
@@ -333,11 +342,38 @@ const ElderlyAnaesthesiaTopic = () => {
                 <li><strong className="text-foreground">Fascia iliaca block</strong> on admission — reduces opioid requirements and delirium incidence</li>
                 <li>Spinal anaesthesia is recommended by NICE — associated with reduced 30-day mortality (REGAIN trial considerations noted)</li>
                 <li>Avoid hypotension: MAP &gt;65 mmHg or within 20% of baseline; careful fluid management</li>
-                <li>Cement implantation syndrome: hypotension, hypoxia, cardiac arrest during cementation — monitor closely, ensure adequate preload</li>
+                <li>Cement implantation syndrome — see below</li>
                 <li>Early mobilisation, orthogeriatric review, delirium prevention protocols</li>
               </ul>
             </div>
-          </div>
+            <div className="bg-card border border-border rounded-lg p-4 mt-3">
+              <h3 className="font-semibold text-foreground mb-2">Bone Cement Implantation Syndrome (BCIS)</h3>
+              <p className="text-sm mb-2">
+                BCIS is cardiorespiratory collapse occurring during cementation, prosthesis insertion, joint reduction or limb tourniquet deflation — classically during cemented hemiarthroplasty for hip fracture in an elderly, frail, dehydrated patient with limited cardiac reserve<InlineRef topicId="elderly-anaesthesia" refLabel="AAGBI Elderly 2014" />.
+              </p>
+              <p className="text-sm font-semibold text-foreground mb-1">Pathophysiology</p>
+              <ul className="list-disc list-inside space-y-1 text-sm mb-2">
+                <li>Pressurised insertion of methylmethacrylate cement into the femoral canal raises intramedullary pressure to several hundred mmHg, embolising fat, marrow, bone fragments, air and cement into the femoral vein</li>
+                <li>Embolic and mediator-driven (histamine, complement, thromboxane, endothelin) pulmonary vascular obstruction → acute rise in pulmonary vascular resistance, right ventricular strain and failure</li>
+                <li>Reduced left ventricular filling and cardiac output; increased dead space and V/Q mismatch cause hypoxia and a fall in end-tidal CO₂</li>
+                <li>An exothermic, mildly vasodilating monomer effect contributes to hypotension; the ageing heart cannot compensate because of baroreflex impairment and diastolic dependence on preload</li>
+              </ul>
+              <p className="text-sm font-semibold text-foreground mb-1">Clinical triad and grading</p>
+              <ul className="list-disc list-inside space-y-1 text-sm mb-2">
+                <li>Triad: <strong className="text-foreground">hypoxia, hypotension and loss of consciousness</strong> (or unexpected loss of cardiac output under general anaesthesia); often accompanied by a sudden fall in EtCO₂, arrhythmia and raised CVP</li>
+                <li>Severity grading: grade 1 — moderate hypoxia (SpO₂ &lt;94%) or hypotension (systolic fall &gt;20%); grade 2 — severe hypoxia (SpO₂ &lt;88%) or hypotension (fall &gt;40%) or unexpected loss of consciousness; grade 3 — cardiovascular collapse requiring CPR</li>
+                <li><strong className="text-foreground">Timing</strong>: onset typically within seconds to a few minutes of cementation, prosthesis insertion, joint reduction or tourniquet release — usually within 5 minutes, and the highest-risk moments should be anticipated and announced by the surgeon</li>
+              </ul>
+              <p className="text-sm font-semibold text-foreground mb-1">Prevention and management (supportive)</p>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Prevent: correct hypovolaemia before cementation, avoid excessive anaesthetic depth or neuraxial-induced hypotension, and ask the surgeon about thorough canal lavage, retrograde cement insertion with a suction/venting catheter, and minimal pressurisation. Consider uncemented prostheses in the highest-risk patients</li>
+                <li>Increase FiO₂ to 1.0 and support ventilation; treat hypoxia aggressively</li>
+                <li>Optimise preload with rapid fluid; treat hypotension with α-agonists (metaraminol, phenylephrine) and add adrenaline or noradrenaline for right ventricular support in grade 2–3 disease</li>
+                <li>Follow ALS if cardiac arrest occurs; there is no specific antidote — management is entirely supportive</li>
+                <li>Post-event: arterial blood gas, ECG and echocardiography to assess right ventricular function, and critical care admission for grade 2–3 events</li>
+              </ul>
+            </div>
+
         </section>
           <ExamPitfallsCallout
             accent="clinical"
