@@ -3,4 +3,4 @@
 - [x] Complete the 23 physics content-audit expansions and sync actioned findings
 - [x] Expand the perioperative case bank with additional anonymised, evidence-based clinical scenarios in the established two-pass format
 - [x] Investigate and fix the content audit getting stuck
-- [ ] Add a discussion section (questions + replies) to each topic page, live on the site
+- [x] Add a discussion section (questions + replies) to each topic page, live on the site
