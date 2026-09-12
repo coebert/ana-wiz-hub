@@ -209,13 +209,37 @@ const PreoperativeAssessmentTopic = () => {
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">ACE-I / ARBs</td><td>Omit on day of surgery</td><td>Risk of refractory hypotension under anaesthesia</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Beta-blockers</td><td>Continue</td><td>Withdrawal → rebound tachycardia, ischaemia. POISE trial: perioperative initiation harmful.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Anticoagulants</td><td>Bridge or hold per guideline</td><td>DOACs: stop 24–48h pre-op (renal function dependent). Warfarin: stop 5 days, bridge with LMWH if high thromboembolic risk.</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Metformin</td><td>Omit on day of surgery</td><td>Risk of lactic acidosis with renal impairment/contrast. Resume when eating and drinking.</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Insulin</td><td>Reduce long-acting by 20–30%</td><td>Variable-rate insulin infusion (VRII) if fasting {'>'} 1 missed meal. Target glucose 6–10.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Metformin</td><td>Continue for short fasts; omit on the day if multiple daily doses, renal impairment, or contrast expected</td><td>Risk of lactic acidosis, particularly with AKI or iodinated contrast. Resume when eating and drinking.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">SGLT2 inhibitors (gliflozins)</td><td>Stop 3 days before surgery — omit on the day and the 2 preceding days</td><td>Risk of euglycaemic diabetic ketoacidosis (normal or near-normal glucose despite ketoacidosis).</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Sulfonylureas (e.g. gliclazide)</td><td>Omit on the morning of surgery</td><td>Hypoglycaemia risk while fasting.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Insulin</td><td>Continue long-acting basal at 80% of usual dose the evening before and on the morning of surgery; omit short-acting/rapid-acting while fasting</td><td>Start a variable-rate intravenous insulin infusion (VRIII) if fasting spans more than one meal, with hourly capillary glucose targeting <strong>6–10 mmol/L</strong>. Elective HbA1c target &lt; 69 mmol/mol.</td></tr>
                 <tr><td className="py-2 font-medium text-foreground">GLP-1 RA</td><td>Weekly (semaglutide): hold 7 days. Daily (liraglutide): hold day of surgery</td><td>Delayed gastric emptying → aspiration risk. If not held, treat as full stomach (RSI). ASA 2023 guidance.</td></tr>
               </tbody>
             </table>
           </div>
+          <p className="text-xs text-muted-foreground mt-2">
+            Diabetes drug management above follows <InlineRef topicId="{TOPIC_ID}" refLabel="CPOC Diabetes 2021" /> guidance.
+          </p>
         </div>
+
+        <CollapsibleSubsection title="Perioperative glucocorticoid cover">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Patients on long-term glucocorticoid therapy may have suppression of the hypothalamic-pituitary-adrenal (HPA) axis and are at risk of an Addisonian (adrenal) crisis under the physiological stress of surgery if steroid cover is inadequate <InlineRef topicId="{TOPIC_ID}" refLabel="AoA Glucocorticoids 2024" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Who is at risk</p>
+              <p className="text-sm text-muted-foreground mt-1">Prednisolone ≥ 5 mg/day (or equivalent) for ≥ 1 month, or recent high-dose/intra-articular steroid use.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Dosing regimen</p>
+              <p className="text-sm text-muted-foreground mt-1">Hydrocortisone <strong>100 mg IV at induction</strong>, then <strong>200 mg/24 h by infusion</strong> (or 50 mg 6-hourly) for major surgery; shorter cover for minor/intermediate procedures. Resume the usual oral dose once eating and drinking.</p>
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground mt-3">
+            All at-risk patients should receive <strong>sick-day advice</strong> and carry a <strong>steroid emergency card</strong>, per the 2024 Association of Anaesthetists and Society for Endocrinology guideline <InlineRef topicId="{TOPIC_ID}" refLabel="AoA Glucocorticoids 2024" />.
+          </p>
+        </CollapsibleSubsection>
       </section>
 
       {/* 4. Broad evidence-based investigation framework */}
