@@ -12,6 +12,8 @@ import { SedationDecisionGate } from "@/components/clinical/SedationDecisionGate
 import { SedationDischargeChecklist } from "@/components/clinical/SedationDischargeChecklist";
 import { SedationCaseScenarios } from "@/components/clinical/SedationCaseScenarios";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
+
 
 const proceduralSedationFaqs: Array<[string, string]> = [
   [
@@ -274,16 +276,34 @@ const ProceduralSedationTopic = () => {
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Patient-controlled sedation (PCS)</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Patient triggers small boluses (e.g. propofol 0.5 mg/kg, lockout 1 min) within preset limits. High satisfaction in dental, endoscopy and labour analgesia. Inherent safety: an over-sedated patient cannot press the button.
+                  <strong>Concept</strong>: the patient self-administers small pre-set boluses through a PCA-style pump, titrating sedation to their own comfort rather than to an observer's judgement. This exploits an inherent
+                  <strong> safety feedback loop</strong> — a patient who becomes over-sedated can no longer press the demand button, so the technique is largely self-limiting. It does not remove the need for a dedicated sedationist, capnography and rescue capability.
                 </p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-0.5">
+                  <li><strong>Propofol regimens</strong>: demand bolus 0.2–0.5 mg/kg (commonly 10–20 mg) with a 1–3 min lockout, no background infusion; some units use a low background TCI (Ce 0.5–1.0 µg/mL) with patient-triggered increments of 0.2 µg/mL.</li>
+                  <li><strong>Alternatives</strong>: midazolam 0.5 mg demand boluses with 3–5 min lockout; remifentanil 0.2–0.5 µg/kg demand boluses (analgesia-led sedation, e.g. labour, ESWL) — needs one-to-one care because apnoea can occur.</li>
+                  <li><strong>Patient selection</strong>: cooperative, able to understand the device, adequate hand function, ASA I–III, and a procedure that is uncomfortable rather than painful. Avoid in confusion, cognitive impairment, children, severe OSA and where the patient cannot be positioned to reach the handset.</li>
+                  <li><strong>Monitoring</strong>: identical to any moderate sedation — continuous SpO₂, capnography, ECG, NIBP every 3–5 min, level of consciousness, supplemental oxygen and immediate access to reversal agents and airway equipment.</li>
+                  <li><strong>Applications</strong>: dental surgery, gastrointestinal endoscopy, ESWL, oocyte retrieval, awake regional-anaesthesia cases and dressing changes; consistently high patient satisfaction with lower total drug dose than clinician-administered sedation.</li>
+                </ul>
               </div>
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Inhalational</p>
                 <p className="text-sm text-muted-foreground mt-1">
                   <strong>Nitrous oxide 50%</strong> (Entonox) — analgesia &amp; light sedation for labour, dressings, dental. Self-administered; avoids IV.
-                  <strong> Sevoflurane</strong> (low FiSevo) — paediatric procedural sedation in some centres.
                 </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  <strong>Sevoflurane sedation</strong>: low inspired concentrations of sevoflurane produce titratable sedation with preserved spontaneous ventilation<InlineRef topicId="procedural-sedation" refLabel="AAGBI/RCoA 2021" />.
+                </p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-0.5">
+                  <li><strong>Equipment</strong>: this is anaesthetic-machine practice — calibrated vaporiser, scavenging, breathing system with reservoir bag, and end-tidal agent plus capnography monitoring. It cannot be delivered safely without a full anaesthetic environment and a trained anaesthetist.</li>
+                  <li><strong>Technique</strong>: titrate to a low end-tidal concentration (typically 0.3–0.8%, i.e. well below 1 MAC) delivered by facemask or nasal hood, often with nitrous oxide as carrier; sedation deepens rapidly if concentration is increased, so increments must be small.</li>
+                  <li><strong>Advantages</strong>: rapid onset and offset with no IV access needed (valuable in needle-phobic and developmentally delayed children), easily reversed by turning the vaporiser off, and depth is continuously measurable as end-tidal concentration.</li>
+                  <li><strong>Disadvantages</strong>: airway irritability and laryngospasm on deepening, emergence agitation, PONV, theatre pollution, dose-dependent respiratory depression and airway obstruction, and a narrow margin between sedation and general anaesthesia.</li>
+                  <li><strong>Paediatric use</strong>: widely used for radiology (MRI, CT), radiotherapy sessions and painless imaging where immobility is needed; also as a bridge to IV cannulation before propofol or dexmedetomidine sedation.</li>
+                </ul>
               </div>
+
             </div>
             <CrossReferenceCallout
               variant="inline"
@@ -319,6 +339,8 @@ const ProceduralSedationTopic = () => {
                     { drug: "Fentanyl", routes: "IV, intranasal, transmucosal", dose: "25–50 µg IV titrated", onset: "3–5 min", peak: "3–5 min", duration: "30–60 min", reversal: "Naloxone 40 µg increments", combos: "+ midazolam (endoscopy, dental)" },
                     { drug: "Remifentanil", routes: "IV infusion, TCI (Minto)", dose: "TCI Ce 1–3 ng/mL; infusion 0.05–0.1 µg/kg/min", onset: "1–2 min", peak: "1–2 min (t½keo ~1.2 min)", duration: "3–5 min (CSHT-independent)", reversal: "Naloxone (rarely needed)", combos: "+ propofol TCI; + dexmedetomidine (AFOI)" },
                     { drug: "Dexmedetomidine", routes: "IV infusion (± intranasal off-label)", dose: "Load 1 µg/kg over 10 min, then 0.2–1.4 µg/kg/h", onset: "10–20 min (load)", peak: "~15–30 min after load", duration: "60–120 min after stopping", reversal: "None (atipamezole not licensed)", combos: "+ remifentanil (AFOI, MRI, awake craniotomy)" },
+                    { drug: "Remimazolam", routes: "IV bolus ± infusion", dose: "5 mg bolus, then 2.5 mg increments ≥2 min apart (procedural sedation); infusion 0.1–0.3 mg/kg/h", onset: "1–2 min", peak: "~3 min", duration: "10–15 min", reversal: "Flumazenil 100–200 µg", combos: "+ fentanyl/remifentanil (endoscopy, bronchoscopy, cardioversion)" },
+
                   ].map((r) => (
                     <tr key={r.drug} className="border-t border-border align-top">
                       <th scope="row" className="p-2 font-semibold text-foreground whitespace-nowrap">{r.drug}</th>
@@ -364,6 +386,20 @@ const ProceduralSedationTopic = () => {
                   drug: "Dexmedetomidine",
                   detail: "Highly selective α₂-agonist. Produces 'cooperative' sedation (patient rousable to verbal command), analgesia, anxiolysis without significant respiratory depression. Load 1 µg/kg over 10 min, infusion 0.2–1.4 µg/kg/h. Side effects: bradycardia, biphasic BP (initial ↑ from peripheral α₂B then ↓ from central α₂A), dry mouth. Slow onset limits suitability for short procedures.",
                 },
+                {
+                  drug: "Remimazolam",
+                  detail: (
+                    <>
+                      <strong>Mechanism</strong>: ultra-short-acting benzodiazepine — positive allosteric modulator at the GABA<sub>A</sub> receptor, producing anxiolysis, amnesia and dose-dependent sedation with the familiar benzodiazepine profile.{" "}
+                      <strong>Kinetics</strong>: a "soft drug" hydrolysed by tissue carboxylesterase-1 to the inactive metabolite CNS7054, giving organ-independent elimination, a context-insensitive offset and no accumulation in hepatic or renal impairment.{" "}
+                      <strong>Dosing</strong>: procedural sedation 5 mg IV bolus then 2.5 mg increments no more often than every 2 min (lower in the elderly and ASA III–IV); infusion 0.1–0.3 mg/kg/h.{" "}
+                      <strong>Advantages</strong>: greater haemodynamic stability and less respiratory depression than propofol, no injection pain, rapid predictable recovery, and full reversibility with flumazenil.{" "}
+                      <strong>Disadvantages</strong>: no analgesic effect (needs an opioid co-adjunct, which restores synergistic respiratory depression), re-sedation risk after flumazenil, cost, less UK familiarity, and hypersensitivity to dextran 40 in the formulation.{" "}
+                      <strong>Uses</strong>: GI endoscopy, bronchoscopy, cardioversion, dental and interventional radiology sedation, and induction/maintenance of general anaesthesia in the cardiovascularly frail<InlineRef topicId="procedural-sedation" refLabel="Remimazolam Review 2022" />.
+                    </>
+                  ),
+                },
+
               ].map((d) => (
                 <div key={d.drug} className="p-3 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">{d.drug}</p>
@@ -450,17 +486,21 @@ const ProceduralSedationTopic = () => {
             <h3 className="font-serif font-bold text-foreground text-base mt-6 mb-2">
               Other complications to recognise
             </h3>
+            <p className="text-sm text-muted-foreground mb-3">
+              The World SIVA International Sedation Task Force classifies events as <strong>sentinel</strong> (cardiac arrest, aspiration, death, unplanned admission), <strong>intermediate</strong> (apnoea, laryngospasm, airway obstruction needing intervention, desaturation, bradycardia, hypotension, need for assisted ventilation or reversal) and <strong>minor</strong>; recording the intervention used alongside the event is what makes sedation audit meaningful<InlineRef topicId="procedural-sedation" refLabel="World SIVA AE 2012" />.
+            </p>
             <div className="space-y-3">
               {[
-                { c: "Respiratory depression / apnoea", d: "Most common serious event. Stop sedative, jaw thrust, supplemental O₂, assist ventilation with bag-mask. Reverse benzodiazepines (flumazenil 100–200 µg) and opioids (naloxone 40 µg increments) — beware re-sedation." },
-                { c: "Airway obstruction", d: "Often positional in deep sedation (especially obese, OSA). Chin lift, jaw thrust, airway adjunct (oropharyngeal/nasopharyngeal), reposition. Convert to GA with LMA/ETT if persistent." },
-                { c: "Aspiration", d: "Risk in unfasted patients, GORD, pregnancy, bowel obstruction. Suction, lateral position, escalate to GA with ETT if airway protection needed. Consider ICU/respiratory support." },
-                { c: "Hypotension", d: "Propofol effect (vasodilation + reduced sympathetic tone). Reduce infusion, fluid bolus, vasopressor (metaraminol/phenylephrine). Worse in elderly, hypovolaemia, β-blockade." },
-                { c: "Bradycardia", d: "Vagal reflex (endoscopy, eye surgery), opioid effect, dexmedetomidine. Stop stimulus, atropine 300–600 µg if symptomatic." },
+                { c: "Respiratory depression / apnoea", d: "Most common serious event. Recognise by falling EtCO₂ trace with rising then absent waveform, reduced respiratory rate, desaturation. Stop the sedative, stimulate, 100% O₂, jaw thrust and airway adjunct, then assist ventilation with bag-mask. Reverse benzodiazepines (flumazenil 100–200 µg, repeat to 1 mg) and opioids (naloxone 40 µg increments) — beware re-sedation because both antagonists are shorter-acting than the agonists. Escalate to LMA/ETT if apnoea persists." },
+                { c: "Airway obstruction", d: "Often positional in deep sedation (especially obese, OSA, short neck, large tonsils). Signs: snoring or silent chest with paradoxical movement, flattened capnograph, desaturation. Chin lift, jaw thrust, head reposition, oropharyngeal/nasopharyngeal airway, reduce sedation depth, CPAP via bag-mask; convert to GA with supraglottic airway or ETT if persistent. Distinguish from laryngospasm (stridor/silent chest with effort — treat with CPAP 100% O₂, deepen, and suxamethonium 0.5–1 mg/kg if unresolving)." },
+                { c: "Aspiration", d: "Risk in unfasted patients, GORD, pregnancy, obesity, bowel obstruction, emergency procedures. Suspect with coughing, desaturation, wheeze or new infiltrate. Stop the procedure, head-down lateral position, suction the pharynx, 100% O₂; intubate and suction the trachea if the airway is unprotected and soiling is substantial. Do not give prophylactic antibiotics or steroids routinely; observe, provide respiratory support and involve ICU if oxygenation deteriorates." },
+                { c: "Hypotension", d: "Propofol effect (vasodilation + reduced sympathetic tone), or opioid/dexmedetomidine-mediated. Stop or halve the infusion, give 250–500 mL balanced crystalloid, head-down, and a vasopressor (metaraminol 0.5 mg or phenylephrine 50–100 µg increments). Exclude other causes — bleeding, vagal stimulation, anaphylaxis, tension pneumothorax after thoracic procedures. Worse in elderly, hypovolaemia, β-blockade, aortic stenosis." },
+                { c: "Bradycardia", d: "Vagal reflex (endoscopy, oculocardiac, cervical dilatation), opioid effect, dexmedetomidine loading, or hypoxia. Stop the stimulus, exclude hypoxia, give atropine 300–600 µg (or glycopyrrolate 200–400 µg) if symptomatic or HR <40; adrenaline and pacing for refractory bradycardia with hypotension." },
+                { c: "Agitation / paradoxical reaction", d: "Disinhibition and restlessness — most common with benzodiazepines in the elderly, children and alcohol misuse, and during ketamine emergence. First exclude hypoxia, hypercapnia, hypoglycaemia, pain, full bladder and inadequate sedation depth before assuming a drug reaction. Manage with re-orientation and a quiet environment; flumazenil reverses benzodiazepine disinhibition; small doses of midazolam settle ketamine emergence phenomena. Switch agent (e.g. to propofol or dexmedetomidine) for repeat procedures and document the reaction." },
                 { c: "Over-sedation / loss of verbal contact", d: "By definition this is general anaesthesia. Manage as GA: airway, ventilation, monitor depth, plan recovery." },
-                { c: "Paradoxical reaction (benzodiazepines)", d: "Disinhibition, agitation — more common in elderly, children, alcohol misuse. Reverse with flumazenil; consider alternative agent." },
                 { c: "Awareness / recall", d: "Document explicitly during consent — moderate sedation is NOT amnesia. Add midazolam if amnesia desired and clinically appropriate." },
                 { c: "Allergy / anaphylaxis", d: "Manage per AAGBI guidelines. Common triggers: chlorhexidine, latex, antibiotics, NMBs (less likely in sedation)." },
+
               ].map((x) => (
                 <div key={x.c} className="p-3 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">{x.c}</p>
