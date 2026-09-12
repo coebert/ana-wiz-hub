@@ -161,6 +161,7 @@ const MRIPhysicsTopic = () => {
                 <div className="rounded-lg border border-border p-3"><p className="font-semibold text-foreground">Gradient recalled echo (GRE)</p><p className="mt-1 text-muted-foreground">Gradient reversal forms the echo without a 180° pulse. It is fast and T2*-weighted, making haemorrhage, haemosiderin, calcification and metal conspicuous.</p></div>
                 <div className="rounded-lg border border-border p-3"><p className="font-semibold text-foreground">FLAIR</p><p className="mt-1 text-muted-foreground">Fluid-attenuated inversion recovery is T2-weighted with CSF nulled by an inversion pulse. Periventricular oedema, demyelination and subarachnoid pathology stand out against dark CSF.</p></div>
                 <div className="rounded-lg border border-border p-3"><p className="font-semibold text-foreground">DWI with ADC</p><p className="mt-1 text-muted-foreground">Diffusion weighting detects restricted Brownian water motion. Acute cytotoxic oedema is bright on DWI and dark on the ADC map, often within minutes of ischaemic stroke.</p></div>
+                <div className="rounded-lg border border-border p-3 sm:col-span-2"><p className="font-semibold text-foreground">SWI</p><p className="mt-1 text-muted-foreground">Susceptibility-weighted imaging combines T2*-weighted magnitude and phase data, making it exquisitely sensitive to paramagnetic blood products. It is used for diffuse axonal injury microbleeds after traumatic brain injury, cerebral cavernomas, cerebral venous sinus thrombosis and to distinguish calcification from haemorrhage.</p></div>
               </div>
               <p className="mt-3 text-sm text-muted-foreground"><InlineRef topicId="mri-physics" refLabel="Middleton Ch.17" /></p>
             </CollapsibleSubsection>
@@ -198,6 +199,42 @@ const MRIPhysicsTopic = () => {
                 ventilation must be available.
               </p>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="contrast" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <CollapsibleSubsection title="Gadolinium-Based Contrast Agents">
+              <div className="text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  Gadolinium is strongly paramagnetic and <strong>shortens T1</strong> (and to a lesser extent T2) in tissues where it
+                  accumulates, so enhancing lesions appear bright on T1-weighted images. Free Gd³⁺ is toxic, so it is chelated. Chelates
+                  are classified by <strong>ligand structure</strong> — <strong>linear</strong> (open chain, less stable, more prone to
+                  transmetallation and dechelation) versus <strong>macrocyclic</strong> (a rigid cage that holds the ion far more
+                  stably) — and by charge, <strong>ionic</strong> versus <strong>non-ionic</strong>.
+                </p>
+                <div className="grid gap-3 sm:grid-cols-3 text-sm">
+                  <div className="rounded-lg border border-border p-3"><p className="font-semibold text-foreground">Group I — high NSF risk</p><p className="mt-1">Non-ionic linear agents (gadodiamide, gadoversetamide) and ionic linear gadopentetate. Withdrawn or contraindicated in the UK/EU.</p></div>
+                  <div className="rounded-lg border border-border p-3"><p className="font-semibold text-foreground">Group II — low risk</p><p className="mt-1">Macrocyclic agents: <strong>gadoterate</strong> (ionic), <strong>gadobutrol</strong> and <strong>gadoteridol</strong> (non-ionic). Standard UK practice; may be used with caution in renal impairment at the lowest diagnostic dose.</p></div>
+                  <div className="rounded-lg border border-border p-3"><p className="font-semibold text-foreground">Group III — intermediate/hepatobiliary</p><p className="mt-1">Protein-binding linear agents (gadobenate, gadoxetate) with partial biliary excretion, used for liver imaging.</p></div>
+                </div>
+                <p>
+                  <strong>Nephrogenic systemic fibrosis (NSF)</strong> is a rare, often irreversible fibrosing disorder of skin, joints
+                  and viscera occurring weeks to months after exposure. Risk is greatest with linear agents, high or repeated doses and
+                  impaired clearance. At-risk groups extend beyond chronic kidney disease with eGFR &lt;30 mL/min/1.73 m² to include
+                  <strong> acute kidney injury</strong> (however mild), patients on any form of dialysis, the
+                  <strong> peri-liver-transplant period</strong>, and neonates under 4 weeks whose renal function is immature.
+                  Pregnancy exposure should be avoided unless essential <InlineRef topicId="mri-physics" refLabel="RCR GBCA" />.
+                </p>
+                <p>
+                  Other adverse effects include nausea, headache, injection-site pain, mild urticaria, and rare anaphylaxis (far less
+                  frequent than with iodinated contrast). Long-term gadolinium retention in bone and brain is recognised but of unproven
+                  clinical significance; regulators nonetheless restrict linear agents and advise the lowest effective dose
+                  <InlineRef topicId="mri-physics" refLabel="MHRA GBCA" />. Practical anaesthetic points: check renal function and
+                  allergy history before sedating a patient for a contrast study, secure a reliable MR-compatible cannula with an
+                  extension so injection can occur from outside the bore, and be ready to manage anaphylaxis in Zone IV — where the
+                  patient must first be evacuated to a safe area for resuscitation.
+                </p>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout

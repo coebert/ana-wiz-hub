@@ -191,6 +191,36 @@ const ClinicalMeasurementTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-xl font-bold text-foreground mb-2">Dynamic Indices of Fluid Responsiveness</h2>
+          <div className="text-muted-foreground leading-relaxed space-y-3">
+            <p>
+              <strong>Physiological basis:</strong> pulse pressure variation (PPV) and stroke volume variation (SVV) arise from
+              heart–lung interaction during positive-pressure ventilation. Each mechanical breath raises intrathoracic pressure,
+              reducing venous return and right ventricular preload while transiently squeezing pulmonary blood into the left
+              ventricle; a few beats later left ventricular stroke volume falls. The size of this cyclical swing depends on where
+              both ventricles sit on the Frank–Starling curve <InlineRef topicId="clinical-measurement" refLabel="Michard & Teboul 2002" />.
+            </p>
+            <p>
+              <strong>Interpretation:</strong> PPV = (PP<sub>max</sub> − PP<sub>min</sub>)/PP<sub>mean</sub> × 100. A value above
+              roughly <strong>12–15%</strong> indicates that both ventricles are on the steep part of the curve and the patient is
+              likely to increase stroke volume with a fluid bolus; values below ~9% predict non-response, with a "grey zone" in
+              between <InlineRef topicId="clinical-measurement" refLabel="Marik CCM 2009 (PPV)" />.
+            </p>
+            <div className="rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Prerequisites and limitations</h3>
+              <ul className="mt-2 list-disc pl-5 text-sm space-y-1">
+                <li>Fully controlled mechanical ventilation with no spontaneous effort (triggered breaths invalidate the swing).</li>
+                <li>Tidal volume ≥8 mL/kg predicted body weight; low tidal volumes under-read PPV.</li>
+                <li>Regular sinus rhythm — atrial fibrillation or frequent ectopics produce beat-to-beat variation unrelated to preload.</li>
+                <li>Closed chest and normal intra-abdominal pressure; open thorax and raised IAP distort transmission.</li>
+                <li>Unreliable in right ventricular failure, very high PEEP, low lung compliance and with vasoactive changes in tone.</li>
+                <li>Alternatives when prerequisites fail: passive leg raise, end-expiratory occlusion test or a 100–250 mL mini-fluid challenge with cardiac output monitoring.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
           <h2 className="text-xl font-bold text-foreground mb-2">Cardiac Output Measurement</h2>
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
@@ -212,6 +242,28 @@ const ClinicalMeasurementTopic = () => {
               clinical scenarios.
             </p>
             <p><strong>Pulse contour analysis</strong> derives stroke volume from the systolic arterial-waveform area/pulse pressure and a model of vascular impedance. Calibrated LiDCO uses lithium dilution to generate a patient-specific scaling factor for pulse-power analysis. Uncalibrated FloTrac estimates impedance from pressure variability plus age, sex, height and weight. Both require a clean waveform and become less reliable with arrhythmia, profound instability or rapidly changing vascular tone, including sepsis and vasopressors. <InlineRef topicId="clinical-measurement" refLabel="BJA Educ 2005" /></p>
+            <div className="mt-2 grid gap-3 sm:grid-cols-2 text-sm">
+              <div className="rounded-lg border border-border p-3">
+                <p className="font-semibold text-foreground">PAC — measured variables</p>
+                <p className="mt-1">CVP (right atrial pressure), pulmonary artery systolic/diastolic/mean pressure, pulmonary artery occlusion ("wedge") pressure, cardiac output by thermodilution, mixed venous saturation (SvO₂) and core blood temperature.</p>
+              </div>
+              <div className="rounded-lg border border-border p-3">
+                <p className="font-semibold text-foreground">PAC — derived variables</p>
+                <p className="mt-1">Cardiac index, stroke volume and stroke volume index, systemic vascular resistance ((MAP−CVP)×80/CO), pulmonary vascular resistance ((mPAP−PAOP)×80/CO), oxygen delivery (DO₂) and consumption (VO₂), and right/left ventricular stroke work index.</p>
+              </div>
+              <div className="rounded-lg border border-border p-3">
+                <p className="font-semibold text-foreground">Waveforms on insertion</p>
+                <p className="mt-1">Right atrium: low amplitude 0–8 mmHg with a/c/v waves. Right ventricle: systolic step-up to ~25 mmHg with a low diastolic pressure and upsloping diastole. Pulmonary artery: same systolic pressure but diastolic rises to ~10 mmHg with a dicrotic notch. Wedge: damped trace ~6–12 mmHg on balloon inflation, returning to a PA trace on deflation <InlineRef topicId="clinical-measurement" refLabel="NEJM 2013 (PAC)" />.</p>
+              </div>
+              <div className="rounded-lg border border-border p-3">
+                <p className="font-semibold text-foreground">Indications and contraindications</p>
+                <p className="mt-1">Considered in complex cardiac surgery, severe pulmonary hypertension or right ventricular failure, refractory cardiogenic or mixed shock, transplant assessment and to titrate therapy when less invasive monitors are unreliable. Avoid with tricuspid or pulmonary stenosis, prosthetic tricuspid/pulmonary valves, right-sided mass or thrombus, and in severe untreated coagulopathy or complete heart block without pacing back-up.</p>
+              </div>
+              <div className="rounded-lg border border-border p-3 sm:col-span-2">
+                <p className="font-semibold text-foreground">Complications</p>
+                <p className="mt-1">Arrhythmia (especially transient RV ectopy or ventricular tachycardia) and right bundle branch block during passage; central venous access complications (pneumothorax, arterial puncture); catheter knotting or entrapment; balloon rupture and air embolism; valvular or endocardial damage; pulmonary infarction from persistent wedging; catheter-related bloodstream infection; and rare but frequently fatal pulmonary artery rupture — never over-inflate the balloon and never wedge for longer than a few respiratory cycles.</p>
+              </div>
+            </div>
           </div>
         </div>
           <ExamPitfallsCallout
