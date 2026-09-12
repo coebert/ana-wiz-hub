@@ -304,11 +304,11 @@ const AbdominalCompartmentSyndromeTopic = () => {
               </p>
               <div className="space-y-3">
                 {[
-                  { topic: "1. Evacuate intraluminal contents", detail: "Large-bore NG tube on free drainage, rectal tube, prokinetics (metoclopramide, erythromycin), stop enteral feed, neostigmine for pseudo-obstruction, endoscopic decompression if needed." },
-                  { topic: "2. Evacuate intra/extra-abdominal fluid collections", detail: "Percutaneous catheter drainage of large-volume ascites, haematoma or abscess under US/CT guidance — can avoid laparotomy in selected cases." },
-                  { topic: "3. Improve abdominal-wall compliance", detail: "Deepen sedation, trial of neuromuscular blockade (often dramatic effect within minutes), nurse supine / head-up < 20°, decompressive escharotomy for circumferential torso burns, treat pain and ventilator dyssynchrony." },
-                  { topic: "4. Optimise fluid balance", detail: "Avoid further positive balance — switch from crystalloid to colloid (20 % HAS) for ongoing losses, diuretics (furosemide) once euvolaemic, early CRRT for negative balance and uraemia. Target neutral-to-negative balance after the first 24 h." },
-                  { topic: "5. Optimise systemic and regional perfusion", detail: "Resuscitate to APP ≥ 60 mmHg (MAP target rises as IAP rises), noradrenaline first-line, avoid excessive PEEP that does not recruit, treat the underlying cause (source control, definitive haemostasis)." },
+                  { topic: "1. Evacuate intraluminal contents", detail: "Large-bore NG tube on free drainage and rectal decompression; prokinetics — metoclopramide 10 mg TDS and erythromycin 250 mg QDS; neostigmine for pseudo-obstruction; endoscopic or colonoscopic decompression; stop enteral feed." },
+                  { topic: "2. Evacuate intra/extra-abdominal fluid collections", detail: "Image-guided percutaneous drainage of ascites, haematoma or abscess under ultrasound or CT guidance — can avoid laparotomy in selected cases." },
+                  { topic: "3. Improve abdominal-wall compliance", detail: "Adequate analgesia and sedation; neuromuscular blockade can drop IAP dramatically and is a useful temporising measure; nurse supine / head-up < 20°; escharotomy for circumferential torso burns; avoid tight dressings and prone positioning." },
+                  { topic: "4. Optimise fluid balance", detail: "De-resuscitate — aim for a neutral-to-negative fluid balance once initial resuscitation is complete: 20 % albumin with furosemide, early renal replacement therapy with ultrafiltration, avoid excessive crystalloid, and use balanced blood-component ratios rather than crystalloid in ongoing haemorrhage." },
+                  { topic: "5. Optimise systemic and regional perfusion", detail: "Target abdominal perfusion pressure (APP = MAP − IAP) ≥ 60 mmHg — noradrenaline first-line, avoiding over-zealous fluid administration purely to raise MAP." },
                 ].map((m) => (
                   <div key={m.topic} className="p-3 rounded-lg border border-border">
                     <p className="font-semibold text-foreground text-sm">{m.topic}</p>
