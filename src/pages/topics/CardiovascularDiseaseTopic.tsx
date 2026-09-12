@@ -150,11 +150,31 @@ const CardiovascularDiseaseTopic = () => {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Preoperative Assessment</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Functional capacity assessment (METs): patients unable to achieve 4 METs (climb one flight of stairs) are at increased risk</li>
+                <li>Functional capacity assessment (METs): patients unable to achieve 4 METs (climb one flight of stairs) are at increased risk (see Risk Stratification section for CPET thresholds)</li>
                 <li>Revised Cardiac Risk Index (Lee index): IHD, heart failure, CVA/TIA, insulin-dependent DM, creatinine &gt;177 µmol/L, high-risk surgery</li>
-                <li>Recent MI: ideally delay elective surgery ≥6 weeks (bare metal stent) or ≥12 months (drug-eluting stent)</li>
+                <li>Recent MI without revascularisation: ideally delay elective surgery ≥60 days (ACC/AHA 2024); if urgent, involve cardiology and plan invasive monitoring</li>
                 <li>Continue aspirin for most surgery; discuss DAPT with cardiologist and surgeon</li>
                 <li>Continue β-blockers and statins — do NOT start high-dose β-blockers de novo (POISE trial)</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Timing of Surgery After Coronary Stenting</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Bare-metal stent (BMS):</strong> delay elective non-cardiac surgery for at least <strong>1 month</strong> (minimum) to allow endothelialisation and completion of at least a short course of dual antiplatelet therapy (DAPT)</li>
+                <li><strong>Drug-eluting stent (DES) — newer-generation:</strong> delay elective surgery for at least <strong>6 months</strong> after implantation where possible; surgery between 1–6 months may proceed if delay carries greater risk than continuing at least aspirin monotherapy, after multidisciplinary discussion (cardiology, surgeon, anaesthetist)</li>
+                <li>Balloon angioplasty without stent: delay elective surgery ≥2 weeks (14 days) if possible</li>
+                <li>Time-critical/cancer surgery within the DAPT window: continue aspirin, stop the P2Y12 inhibitor (clopidogrel 5 days, ticagrelor 3–5 days, prasugrel 7 days pre-op) after cardiology input, and restart as soon as safely possible post-op — never stop both agents simultaneously in the early post-stent period (acute stent thrombosis risk)</li>
+                <li>DAPT management framework: continue aspirin perioperatively in almost all cases (bleeding risk from stopping is usually outweighed by thrombotic risk); interrupt the P2Y12 inhibitor only, for the shortest safe period, with a defined restart plan</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Perioperative β-blockade, Statins and Antiplatelets — The Evidence</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>POISE trial (2008):</strong> extended-release metoprolol started 2–4 h pre-op reduced non-fatal MI (RR 0.73) but significantly increased stroke (RR 2.17) and all-cause mortality (RR 1.33), largely due to hypotension and bradycardia from a high, rapidly-titrated dose — this established that β-blockers should never be initiated on the day of surgery</li>
+                <li>Current guidance (ESC/ESA 2022, ACC/AHA 2024): continue chronic β-blocker therapy perioperatively without interruption; if starting for a new indication, begin ≥7 days (ideally 2–4 weeks) before surgery with careful dose titration, not on the day</li>
+                <li>Statins: continue perioperatively in all patients already on therapy (rebound endothelial dysfunction and myocardial injury with abrupt withdrawal); consider starting a statin pre-operatively in high-risk vascular surgery patients even if statin-naïve (pleiotropic plaque-stabilising effect, evidence strongest in vascular surgery cohorts)</li>
+                <li>Aspirin: POISE-2 (2014) showed no benefit and increased major bleeding when aspirin was continued/started purely for perioperative cardiac protection in patients without recent coronary stents — so aspirin is not routinely continued "for the heart" in stent-naïve patients, but should be continued in those with a coronary stent per the DAPT principles above</li>
+                <li>ACE-I/ARB: see Hypertension section — omit on the morning of surgery in patients taking them purely for hypertension; continue in decompensating heart failure per specialist advice</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
@@ -164,7 +184,7 @@ const CardiovascularDiseaseTopic = () => {
                 <li>Avoid tachycardia (HR &lt;80 bpm ideal) — increases myocardial oxygen demand and reduces diastolic filling time</li>
                 <li>Maintain normothermia — hypothermia causes catecholamine release, tachycardia, and increased SVR</li>
                 <li>Invasive BP monitoring for major surgery; consider cardiac output monitoring</li>
-                <li>Postoperative troponin surveillance for high-risk patients (VISION study — myocardial injury after non-cardiac surgery, MINS)</li>
+                <li>Postoperative troponin surveillance for high-risk patients (VISION study — myocardial injury after non-cardiac surgery, MINS) — see Risk Stratification section for thresholds and surveillance schedule</li>
               </ul>
             </div>
           </div>
