@@ -708,6 +708,17 @@ const MechanicalVentilationTopic = () => {
             <li>Inhaled pulmonary vasodilator (epoprostenol or iNO) as oxygenation bridge</li>
             <li>Consider ECMO referral if P/F &lt;80 for &gt;6 hours or pH &lt;7.20 with Pplat &gt;30 despite above</li>
           </ol>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Electrical Impedance Tomography (EIT)</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            EIT is a non-invasive, radiation-free bedside monitoring adjunct for regional lung ventilation. A belt of 16–32 electrodes is placed around the thorax (usually at the 4th–6th intercostal space); a small, imperceptible alternating current is injected sequentially between electrode pairs and the resulting surface voltages are used to reconstruct a real-time cross-sectional image. Because aerated lung is a poor conductor, cyclical impedance changes track regional gas entry/exit and can be mapped to give a functional image of ventilation (and, with some algorithms, perfusion) distribution breath-by-breath.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            <strong>Applications:</strong> individualised <em>PEEP titration</em> to find the level that minimises the co-existing burden of tidal overdistension (non-dependent regions) and collapse/atelectasis (dependent regions) rather than relying on population-based FiO₂/PEEP tables; assessing the response to <em>recruitment manoeuvres</em> in real time; quantifying <em>regional tidal volume distribution</em> and asymmetry (e.g. unilateral lung disease, one-lung ventilation); guiding and confirming benefit from <em>prone positioning</em> by showing redistribution of ventilation to previously dependent regions; and rapid bedside detection of <em>pneumothorax</em> or endobronchial intubation from a sudden regional loss of ventilation signal.<InlineRef topicId="mechanical-ventilation" refLabel="ESICM ARDS 2023" />
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            <strong>Limitations:</strong> device availability and cost restrict use to specialist centres; interpretation requires training and experience, and there is no universally standardised protocol for PEEP titration by EIT; the technique images only a single transverse thoracic slice and cannot assess more cranial or caudal lung regions; and image quality is degraded by patient movement, obesity, chest wall oedema, surgical dressings/drains, and electrode contact issues.
+          </p>
           </CollapsibleSubsection>
         </ExamSection>
 
@@ -1461,7 +1472,7 @@ const MechanicalVentilationTopic = () => {
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
           <CollapsibleSubsection title="Post-Intensive Care Syndrome (PICS)">
           <p className="text-muted-foreground leading-relaxed mb-3">
-            PICS describes the new or worsening impairments in <span className="font-semibold text-foreground">physical, cognitive, and psychological</span> health that persist after critical illness. First defined by the Society of Critical Care Medicine (2012), it affects <span className="font-semibold text-foreground">50–70%</span> of ICU survivors and significantly reduces quality of life for months to years. <span className="font-semibold text-foreground">PICS-Family (PICS-F)</span> recognises the psychological burden on caregivers.
+            PICS describes the new or worsening impairments in <span className="font-semibold text-foreground">physical, cognitive, and psychological</span> health that persist after critical illness. First defined by the Society of Critical Care Medicine (2012)<InlineRef topicId="mechanical-ventilation" refLabel="SCCM PICS 2012" />, it affects <span className="font-semibold text-foreground">50–70%</span> of ICU survivors and significantly reduces quality of life for months to years. <span className="font-semibold text-foreground">PICS-Family (PICS-F)</span> recognises the psychological burden on caregivers.
           </p>
 
           <h3 className="text-lg font-semibold text-foreground mb-2">The Three Domains of PICS</h3>
@@ -1483,7 +1494,7 @@ const MechanicalVentilationTopic = () => {
               <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
                 <li><span className="font-semibold text-foreground">Prevalence:</span> 25–80% of ICU survivors at hospital discharge; 20–40% persist at 1 year (Pandharipande et al., 2013 — BRAIN-ICU study).</li>
                 <li><span className="font-semibold text-foreground">Deficits:</span> Executive function, memory, attention, processing speed, and visuospatial ability. Severity comparable to mild traumatic brain injury or early Alzheimer's disease.</li>
-                <li><span className="font-semibold text-foreground">Risk factors:</span> Delirium duration (strongest predictor — each additional day increases cognitive impairment risk), hypoxia, hypotension, dysglycaemia, sepsis, and pre-existing cognitive reserve.</li>
+                <li><span className="font-semibold text-foreground">Risk factors:</span> Delirium duration (strongest predictor — each additional day increases cognitive impairment risk), hypoxia, hypotension, dysglycaemia, sepsis, and pre-existing cognitive reserve.<InlineRef topicId="mechanical-ventilation" refLabel="Crit Care Med 2010 (Delirium & cognition)" /></li>
                 <li><span className="font-semibold text-foreground">BRAIN-ICU:</span> Longer delirium duration was independently associated with worse global cognition at 3 and 12 months, irrespective of sedative exposure or age.</li>
                 <li><span className="font-semibold text-foreground">Assessment:</span> Montreal Cognitive Assessment (MoCA), Mini-Mental State Examination (MMSE), neuropsychological testing battery for detailed assessment.</li>
               </ul>
