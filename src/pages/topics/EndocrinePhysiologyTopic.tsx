@@ -278,10 +278,114 @@ const EndocrinePhysiologyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="perioperative-diabetes" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
+            <CollapsibleSubsection title="Perioperative Management of Diabetes">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              Diabetes affects around 15% of surgical inpatients and independently increases length of stay, infection and
+              mortality. UK practice follows CPOC/JBDS: optimise before admission, minimise starvation, keep the patient
+              on their own regimen wherever possible, and use a variable rate intravenous insulin infusion (VRIII) only
+              when it is genuinely needed <InlineRef topicId="endocrine-physiology" refLabel="CPOC Diabetes 2021" />{" "}
+              <InlineRef topicId="endocrine-physiology" refLabel="JBDS Surgery 2022" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li>
+                <strong>Pre-operative assessment</strong>: check HbA1c within 3 months. HbA1c &lt;69 mmol/mol (8.5%) is the
+                usual threshold for proceeding with elective surgery; higher values warrant referral for optimisation
+                unless surgery is urgent. Assess end-organ disease (nephropathy, autonomic neuropathy, ischaemic heart
+                disease, stiff-joint syndrome and difficult airway in long-standing type 1).
+              </li>
+              <li>
+                <strong>Medication review</strong>: omit <strong>SGLT2 inhibitors</strong> for at least 3 days before major
+                surgery and on the day of any procedure (euglycaemic DKA risk); omit <strong>metformin</strong> on the day
+                of surgery if more than one meal is missed or contrast/renal impairment is expected; omit sulfonylureas on
+                the morning of surgery (hypoglycaemia); GLP-1 receptor agonists may be continued but consider gastric
+                residue and aspiration risk.
+              </li>
+              <li>
+                <strong>Type 1 diabetes</strong>: <em>never</em> stop basal insulin. Reduce long-acting basal by ~20% the
+                evening before, omit morning short-acting if fasting, and start a VRIII with substrate (0.45% saline with
+                5% glucose and potassium) if a meal will be missed. Continuous subcutaneous insulin infusion (pump) may
+                continue for short procedures at a reduced basal rate with hourly capillary glucose.
+              </li>
+              <li>
+                <strong>Type 2 diabetes</strong>: diet or single-agent control usually needs only omission of oral agents,
+                hourly glucose and early return to normal diet. Insulin-treated type 2 patients follow the type 1 pathway.
+              </li>
+              <li>
+                <strong>By surgical magnitude</strong>: minor/short day-case surgery — first on the list, omit relevant
+                oral agents, no VRIII. Intermediate — VRIII if more than one missed meal or poor control. Major surgery,
+                emergency surgery, sepsis or critical illness — VRIII from the outset with substrate infusion.
+              </li>
+              <li>
+                <strong>Running a VRIII</strong>: 50 units soluble insulin in 50 mL 0.9% saline (1 unit/mL) via a
+                dedicated line with a non-return valve. Target capillary glucose <strong>6–10 mmol/L</strong> (acceptable
+                4–12 mmol/L), measured hourly and titrated against a written sliding scale (e.g. glucose &lt;4 → stop and
+                treat hypoglycaemia; 4–7 → 0.5–1 unit/h; 7–11 → 2 units/h; 11–14 → 3 units/h; &gt;14 → 4 units/h and
+                review for ketones). Always co-infuse substrate and monitor potassium and sodium at least daily.
+              </li>
+              <li>
+                <strong>Coming off the VRIII</strong>: overlap with the first subcutaneous dose — give short-acting insulin
+                with a meal and stop the infusion 30–60 min later, or continue basal analogue throughout so no gap occurs.
+              </li>
+              <li>
+                <strong>Perioperative emergencies</strong>: DKA and HHS (see above). Suspect{" "}
+                <strong>euglycaemic DKA</strong> in any patient on an SGLT2 inhibitor who is acidotic, nauseated or
+                tachypnoeic despite a near-normal glucose — check blood ketones, and treat with fixed-rate insulin plus
+                glucose rather than waiting for hyperglycaemia.
+              </li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="adh-disorders" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
+            <CollapsibleSubsection title="ADH Disorders — Diabetes Insipidus & SIADH">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              ADH (vasopressin) is synthesised in the hypothalamic supraoptic and paraventricular nuclei and released from
+              the posterior pituitary, acting on renal V₂ receptors to insert aquaporin-2 channels in the collecting duct.
+              Too little produces dilute polyuria; too much produces dilutional hyponatraemia. Both are common after
+              pituitary and neurosurgical procedures and in the head-injured ICU patient{" "}
+              <InlineRef topicId="endocrine-physiology" refLabel="BJA Educ 2015" />.
+            </p>
+            <div className="grid md:grid-cols-2 gap-4 text-sm">
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground">Diabetes insipidus</p>
+                <ul className="mt-1 space-y-1 text-muted-foreground list-disc list-inside">
+                  <li><strong>Cranial (central)</strong>: failure of ADH secretion — pituitary surgery, TBI, hypoxic brain injury, brain-stem death, tumour, infiltration.</li>
+                  <li><strong>Nephrogenic</strong>: renal resistance to ADH — lithium, demeclocycline, hypercalcaemia, hypokalaemia, chronic kidney disease, congenital V₂/aquaporin defects.</li>
+                  <li><strong>Features</strong>: polyuria &gt;3 L/day (often &gt;4 mL/kg/h), polydipsia if conscious, hypernatraemia and rising plasma osmolality with inappropriately dilute urine.</li>
+                  <li><strong>Diagnosis</strong>: plasma osmolality &gt;295 mOsm/kg with urine osmolality &lt;300 mOsm/kg and urine specific gravity &lt;1.005; water-deprivation test with desmopressin distinguishes cranial (urine concentrates after dDAVP) from nephrogenic (no response). Copeptin assay is now used in place of formal water deprivation in many centres.</li>
+                  <li><strong>Management</strong>: replace the measured urinary losses (hourly input/output charting), correct hypernatraemia no faster than ~10 mmol/L per 24 h, and give <strong>desmopressin</strong> — 0.25–1 microgram IV/SC or 10–20 micrograms intranasally, titrated to urine output. Recheck sodium 4–6 hourly perioperatively; in nephrogenic DI use thiazides, low-solute diet and remove the offending drug.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground">SIADH</p>
+                <ul className="mt-1 space-y-1 text-muted-foreground list-disc list-inside">
+                  <li><strong>Causes</strong>: CNS pathology (subarachnoid haemorrhage, meningitis, TBI), lung disease (pneumonia, tuberculosis), small-cell lung cancer and other ectopic ADH, drugs (SSRIs, carbamazepine, cyclophosphamide, opioids, thiazides), pain, nausea and surgery itself.</li>
+                  <li><strong>Features</strong>: <em>euvolaemic</em> hypotonic hyponatraemia with concentrated urine (urine osmolality &gt;100 mOsm/kg, urinary sodium &gt;30 mmol/L) and normal thyroid and adrenal function.</li>
+                  <li><strong>Management</strong>: fluid restriction (usually 800–1000 mL/day) plus treatment of the cause; consider oral sodium/urea or a vasopressin-receptor antagonist if restriction fails. Severe symptomatic hyponatraemia (seizures, coma) — 100–150 mL of 3% saline boluses, limiting the rise to 8–10 mmol/L in 24 h to avoid osmotic demyelination <InlineRef topicId="endocrine-physiology" refLabel="Verbalis Hyponatraemia 2013" />.</li>
+                  <li><strong>Differentiate from cerebral salt wasting</strong>: both hyponatraemic with natriuresis, but CSW patients are hypovolaemic and need salt and volume replacement, not restriction.</li>
+                </ul>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="steroid-cover" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
             <CollapsibleSubsection title="Perioperative Steroid Cover">
-              <p className="text-sm text-muted-foreground leading-relaxed mb-3">Prednisolone ≥10 mg/day for more than 3 weeks is likely to suppress the HPA axis; 5–10 mg/day may suppress it depending on duration and timing. Continue the usual steroid and match supplementation to surgical stress <InlineRef topicId="endocrine-physiology" refLabel="AAGBI Steroid Cover" />.</p>
-              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside"><li><strong>Minor:</strong> usual dose plus hydrocortisone 25 mg IV at induction.</li><li><strong>Moderate:</strong> usual dose, 25 mg at induction, then hydrocortisone 100 mg over 24 h for 24–48 h.</li><li><strong>Major:</strong> usual dose, hydrocortisone 100 mg at induction, then 200 mg over 24 h for 48–72 h before tapering towards baseline.</li></ul>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">Aim to match, not exceed, the physiological cortisol response — normal output is ~5–10 mg/m²/day of cortisol, rising to 75–150 mg/day after major surgery. Continue the patient's usual glucocorticoid and add supplementation according to risk and surgical stress <InlineRef topicId="endocrine-physiology" refLabel="AAGBI Steroid Cover" />.</p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-2"><strong>Risk stratification</strong></p>
+              <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside mb-3">
+                <li><strong>Assume adrenal suppression</strong>: prednisolone ≥5 mg/day (or equivalent) for &gt;4 weeks, any dose of long-term steroid within the past 3 months, known primary/secondary adrenal insufficiency, or high-dose inhaled/topical/intra-articular steroid exposure.</li>
+                <li><strong>Unlikely to be suppressed</strong>: &lt;5 mg/day prednisolone, or any dose for less than 3 weeks — usual dose alone is sufficient.</li>
+                <li><strong>Uncertain</strong>: consider a short Synacthen test if surgery is elective and time allows; otherwise treat as suppressed.</li>
+              </ul>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-2"><strong>Matching cover to surgical stress</strong> — minor = short, superficial or day-case procedures under local/brief general anaesthesia (e.g. hernia repair, cataract); moderate = intra-abdominal, joint replacement or laparoscopic surgery of 1–2 hours; major = prolonged, cardiothoracic, major bowel, obstetric or emergency surgery and critical illness.</p>
+              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside"><li><strong>Minor:</strong> take the usual morning dose — this is often sufficient; hydrocortisone 25 mg IV at induction if in doubt or the patient is fasted.</li><li><strong>Moderate:</strong> usual dose, hydrocortisone 25–50 mg at induction, then 100 mg over 24 h for 24–48 h.</li><li><strong>Major:</strong> usual dose, hydrocortisone 100 mg at induction, then 200 mg per 24 h by infusion for 48–72 h.</li></ul>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground list-disc list-inside">
+                <li><strong>Avoid routine high-dose regimens</strong> — supraphysiological steroid worsens hyperglycaemia, wound healing and infection risk without benefit.</li>
+                <li><strong>Postoperatively</strong>: continue supplementation until oral intake and normal physiology resume, then halve the daily dose each day back to the baseline oral regimen; double the usual oral dose for 24–48 h after discharge-level stress or intercurrent illness (sick-day rules), and issue a steroid emergency card.</li>
+                <li><strong>Watch for addisonian crisis</strong>: unexplained hypotension unresponsive to fluid and vasopressors, tachycardia, nausea and vomiting, abdominal pain, hypoglycaemia, hyponatraemia with hyperkalaemia, confusion or fever. Treat immediately with hydrocortisone 100 mg IV, 0.9% saline and glucose — do not wait for cortisol results.</li>
+              </ul>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -290,9 +394,19 @@ const EndocrinePhysiologyTopic = () => {
             <p className="text-muted-foreground leading-relaxed">
               Surgical injury activates the HPA axis and sympathetic nervous system. Key features: ↑ cortisol,
               catecholamines, ADH, aldosterone, glucagon, GH, IL-6/TNF-α. Results in: hyperglycaemia, sodium/water
-              retention, protein catabolism, immunosuppression. Attenuated by: regional anaesthesia (neuraxial blocks
-              best), opioids, minimally invasive surgery, ERAS protocols.
+              retention, protein catabolism, immunosuppression.
             </p>
+            <p className="text-sm text-muted-foreground leading-relaxed mt-3">
+              Cuthbertson described two phases <InlineRef topicId="endocrine-physiology" refLabel="Finnerty Stress Response 2013" />:
+            </p>
+            <ul className="mt-2 space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Ebb phase</strong> (first 24–48 h): hypovolaemia, reduced cardiac output and oxygen consumption, hypothermia and a fall in metabolic rate — a resuscitation-dependent survival phase.</li>
+              <li><strong>Flow phase</strong> (days to weeks): hypermetabolism with raised cardiac output and oxygen consumption, catabolism of muscle protein and fat, followed by an anabolic recovery phase once the insult resolves.</li>
+              <li><strong>Mediators beyond cortisol</strong>: catecholamines (adrenaline, noradrenaline) drive glycogenolysis and lipolysis; glucagon and growth hormone add to gluconeogenesis; cytokines IL-1, IL-6 and TNF-α trigger the acute-phase response; ADH and aldosterone retain sodium and water.</li>
+              <li><strong>Metabolic consequences</strong>: insulin resistance and stress hyperglycaemia, protein catabolism with negative nitrogen balance (urinary nitrogen loss up to 15–20 g/day after major surgery), lipolysis, sodium and water retention with a fall in urine output, and hypokalaemia.</li>
+              <li><strong>Systemic effects</strong>: fever, leucocytosis, thrombocytosis, hepatic acute-phase protein synthesis (CRP, fibrinogen, ferritin) with reduced albumin and transferrin, and transient immunosuppression.</li>
+              <li><strong>Attenuation</strong>: neuraxial blockade (most effective — an epidural to T4 for lower-body surgery blocks the afferent limb), effective opioid analgesia and regional techniques, minimally invasive/laparoscopic surgery, avoidance of hypothermia, early enteral feeding and carbohydrate loading, and the wider ERAS bundle.</li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
 
