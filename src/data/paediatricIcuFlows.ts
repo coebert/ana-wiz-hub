@@ -36,7 +36,7 @@ export const paediatricIcuFlows: ManagementFlow[] = [
           "Balanced crystalloid in 10–20 mL/kg boluses, reassessing after each for hepatomegaly, crackles and perfusion — up to 40–60 mL/kg in the first hour where intensive care is available.",
           "Consider early intubation with ketamine or a reduced-dose induction if work of breathing or coma threatens the airway — have a vasoactive infusion ready first.",
         ],
-        drugs: ["Ceftriaxone", "Cefotaxime", "Amoxicillin / ampicillin", "Gentamicin"],
+        drugs: ["Ceftriaxone", "Meropenem", "Vancomycin", "Piperacillin–tazobactam"],
         pitfall:
           "Stopping fluid at 20 mL/kg out of pulmonary oedema fear — in septic shock with ICU backup the greater danger is under-resuscitation; reassess, don't ration.",
       },
@@ -180,7 +180,7 @@ export const paediatricIcuFlows: ManagementFlow[] = [
           "Blood culture and antibiotics for any resuscitated baby with sepsis risk factors; maintain glucose with 10% dextrose at 60–90 mL/kg/day.",
           "Umbilical arterial and venous lines if ventilated or on vasoactive drugs; cranial ultrasound and CFAM where encephalopathy is suspected.",
         ],
-        drugs: ["Ampicillin / benzylpenicillin", "Gentamicin", "Cefotaxime", "Phenobarbital"],
+        drugs: ["Ceftriaxone", "Phenytoin", "Morphine"],
       },
     ],
     rescue: [
@@ -228,8 +228,7 @@ export const paediatricIcuFlows: ManagementFlow[] = [
           "Tier 3: decompressive craniectomy or barbiturate coma (thiopentone) for refractory intracranial hypertension after neurosurgical discussion.",
           "Lumbar drains are contraindicated with mass effect; image before any CSF diversion.",
         ],
-        drugs: ["Hypertonic saline 2.7–5%", "Mannitol", "Phenobarbital", "Levetiracetam"],
-        infusions: ["Hypertonic saline 2.7%"],
+        drugs: ["Hypertonic saline 2.7–5%", "Mannitol 20%", "Phenytoin", "Levetiracetam"],
         pitfall:
           "Mannitol in a hypotensive, hypovolaemic child causes an osmotic diuresis that collapses cerebral perfusion pressure — prefer hypertonic saline in shock.",
       },
