@@ -9,10 +9,10 @@ import { CascadePerfBadge } from "@/components/diagrams/_dev/CascadePerfBadge";
 import { VisitTrackerWrapper } from "@/components/layout/VisitTrackerWrapper";
 import Landing from "./pages/Landing";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import AdminLogin from "./pages/AdminLogin";
-import AdminDashboard from "./pages/AdminDashboard";
-import ContentAudit from "./pages/ContentAudit";
+const NotFound = lazy(() => import("./pages/NotFound"));
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const ContentAudit = lazy(() => import("./pages/ContentAudit"));
 const AuditDashboard = lazy(() => import("./pages/AuditDashboard"));
 const AuditReport = lazy(() => import("./pages/AuditReport"));
 // Standalone ESICM validator + formulary tab are now unified into Content Audit

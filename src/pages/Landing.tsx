@@ -1,10 +1,9 @@
+import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown, BookMarked, Sparkles, GraduationCap } from "lucide-react";
 import NeonSplash from "@/components/layout/NeonSplash";
-import { SupportSection } from "@/components/feedback/SupportSection";
-import { CommentWall } from "@/components/feedback/CommentWall";
-import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/viva/DemoVivaStepper";
+import type { DemoVivaQuestion } from "@/components/viva/DemoVivaStepper";
 import { ContinueBand } from "@/components/landing/ContinueBand";
 import { HomeDashboard } from "@/components/landing/HomeDashboard";
 import { Button } from "@/components/ui/button";
@@ -12,6 +11,16 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { PageSection } from "@/components/layout/PageSection";
 import { citationStats } from "@/lib/citationStats";
+
+// Below-the-fold bands are code-split so the hero + dashboard paint without
+// waiting on the comment wall, support widgets, or the viva stepper bundle.
+const SupportSection = lazy(() =>
+  import("@/components/feedback/SupportSection").then((m) => ({ default: m.SupportSection })),
+);
+const CommentWall = lazy(() =>
+  import("@/components/feedback/CommentWall").then((m) => ({ default: m.CommentWall })),
+);
+const DemoVivaStepper = lazy(() => import("@/components/viva/DemoVivaStepper"));
 
 
 const nf = new Intl.NumberFormat("en-GB");
@@ -331,15 +340,18 @@ const Landing = () => {
               <p className="small mb-6 max-w-2xl mt-4">
                 A worked example: three viva questions, model candidate answers, and the kind of constructive feedback the AI examiner gives.
               </p>
-              <DemoVivaStepper questions={DEMO_QUESTIONS} />
+              <Suspense fallback={null}>
+                <DemoVivaStepper questions={DEMO_QUESTIONS} />
+              </Suspense>
             </div>
           </details>
         </section>
       </PageSection>
 
-      <CommentWall />
-
-      <SupportSection />
+      <Suspense fallback={null}>
+        <CommentWall />
+        <SupportSection />
+      </Suspense>
 
       <SiteFooter extraLinks={[{ label: "Admin", href: "/admin" }]} />
 
