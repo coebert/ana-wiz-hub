@@ -207,7 +207,6 @@ export const icuDrugWithdrawal: Record<string, DrugWithdrawal> = {
       "Ventilatory effort, cough and grip strength; early physiotherapy assessment for ICU-acquired weakness.",
       "Depth-of-anaesthesia monitoring while paralysed, since sedation cannot be assessed clinically.",
     ],
-    alertRescue: undefined as never,
   },
   "atracurium-cisatracurium": {
     slug: "atracurium-cisatracurium",
@@ -734,7 +733,6 @@ export const icuDrugWithdrawal: Record<string, DrugWithdrawal> = {
     risk: "low",
     why: "No withdrawal. The stewardship imperative is stronger still: prolonged carbapenem exposure selects resistant Gram-negative organisms.",
     offset: "Half-life 1 h (longer in renal failure), with time-above-MIC the determinant of effect.",
-    toDo: undefined as never,
     taper: [
       "Stop at the end of a defined course; de-escalate as soon as sensitivities allow.",
       "Do not extend the course for a persistently raised CRP alone — look for undrained source or a new focus.",
