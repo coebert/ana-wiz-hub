@@ -293,6 +293,12 @@ const AdminDashboard = () => {
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [registeredUsers, setRegisteredUsers] = useState<number | null>(null);
   const [confirmedUsers, setConfirmedUsers] = useState<number | null>(null);
+  const [learnerStats, setLearnerStats] = useState<{
+    learnersCompletingTopics: number;
+    topicCompletions: number;
+    learnersTickingSubsections: number;
+    subsectionTicks: number;
+  } | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"overview" | "topics" | "seo">("overview");
   const [mapMetric, setMapMetric] = useState<"users" | "visits">("users");
