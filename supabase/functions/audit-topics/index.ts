@@ -756,7 +756,9 @@ Return ONLY the tool call.`;
 const FRESHNESS_SYSTEM = `You are a UK FRCA / FFICM curriculum maintainer auditing ONE revision topic for content freshness.
 
 You will be given:
-- The current text of one topic on the AnaesthesiaCore revision site.
+- The current text of one topic on the AnaesthesiaCore revision site, plus any case-bank cases and
+  viva model answers attached to it — these are published learner-facing content and are equally
+  subject to freshness drift (label such findings via in_topic_section).
 - The topic's stated scope (title + description) and FRCA/FFICM curriculum section.
 - Recent (last ~3 years) reference excerpts from authoritative UK / international bodies — BJA Education, RCoA, FICM, ICS, NICE, BNF, Resus Council UK, ESICM, AAGBI / Anaesthetists.org.
 - Hints about which guidelines / consensus statements are commonly tested for this section (use as prompts, not gospel).
