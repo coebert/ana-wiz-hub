@@ -361,6 +361,44 @@ const VolatileAgentsTopic = () => {
           </section>
 
           <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Environmental Considerations</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Volatile agents are persistent greenhouse gases. Their 100-year global-warming impact is not equal: desflurane is greatest, followed by isoflurane, then sevoflurane; climate impact also rises with fresh-gas flow and agent consumption <InlineRef topicId="volatile-agents" refLabel="BJA Open Sustainability 2024" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li>Use the lowest safe fresh-gas flow, avoiding unnecessary wash-in and prolonged high-flow periods.</li>
+              <li>Avoid desflurane and nitrous oxide where a clinically suitable lower-impact technique exists; consider sevoflurane or TIVA.</li>
+              <li>Use agent capture or recycling systems where validated, while recognising that preventing consumption has the largest immediate benefit.</li>
+            </ul>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Systemic Effects of Volatile Agents</h2>
+            <div className="overflow-x-auto rounded-lg border border-border">
+              <table className="w-full text-sm"><thead className="bg-secondary/40"><tr><th className="p-3 text-left">System</th><th className="p-3 text-left">Shared effects</th><th className="p-3 text-left">Important differences</th></tr></thead>
+                <tbody className="divide-y divide-border text-muted-foreground">
+                  <tr><td className="p-3 font-medium text-foreground">Cardiovascular</td><td className="p-3">Dose-dependent fall in MAP, principally from reduced SVR, with myocardial depression.</td><td className="p-3">Isoflurane causes marked coronary vasodilatation; a rapid desflurane increase can produce transient sympathetic tachycardia and hypertension.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Respiratory</td><td className="p-3">Bronchodilatation, reduced tidal volume, raised respiratory rate, depressed ventilatory response to CO₂ and dose-dependent inhibition of HPV.</td><td className="p-3">Sevoflurane is least irritant; desflurane and isoflurane are pungent and may provoke coughing or laryngospasm.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Neurological</td><td className="p-3">Reduce CMRO₂ but vasodilate cerebral vessels, so CBF and ICP may rise when autoregulation or ventilation is impaired; high concentrations cause EEG burst suppression.</td><td className="p-3">These effects are dose- and PaCO₂-dependent; controlled ventilation limits ICP rise.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Renal/hepatic</td><td className="p-3">MAP-dependent reductions in renal and hepatic blood flow; preserve oxygen balance when hypotension is avoided.</td><td className="p-3">Sevoflurane is metabolised about 3–5% to fluoride/HFIP; isoflurane about 0.2% and desflurane about 0.02%.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <InlineRef topicId="volatile-agents" refLabel="BJA Organ Effects 2006" />
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Agent-Specific Hazards and Contraindications</h2>
+            <div className="grid md:grid-cols-2 gap-3 text-sm">
+              <div className="rounded-lg border border-border p-4"><strong>Sevoflurane</strong><p className="mt-1 text-muted-foreground">Compound A forms with CO₂ absorbents, especially low flow and dry absorbent; nephrotoxicity is established in rats but clinically important human injury is unproven. Desiccated strong-base absorbents can generate heat and carbon monoxide, creating a fire hazard.</p></div>
+              <div className="rounded-lg border border-border p-4"><strong>Desflurane</strong><p className="mt-1 text-muted-foreground">Pungent and unsuitable for inhalational induction. Rapid concentration increases stimulate the sympathetic system. Its boiling point near room temperature requires a heated, pressurised vaporiser.</p></div>
+              <div className="rounded-lg border border-border p-4"><strong>Isoflurane</strong><p className="mt-1 text-muted-foreground">Pungent, slow to wash out and a potent coronary vasodilator. “Coronary steal” is a largely historical concern, but avoid hypotension and tachycardia in severe coronary disease.</p></div>
+              <div className="rounded-lg border border-border p-4"><strong>Nitrous oxide</strong><p className="mt-1 text-muted-foreground">Expands closed gas spaces (pneumothorax, bowel, middle ear and intracranial air), increases PONV, and oxidises vitamin B₁₂-dependent methionine synthase; prolonged or repeated exposure may cause megaloblastic anaemia and subacute combined degeneration.</p></div>
+            </div>
+            <p className="mt-3 text-sm text-muted-foreground">All potent halogenated agents are contraindicated in malignant-hyperthermia susceptibility <InlineRef topicId="volatile-agents" refLabel="AAGBI MH 2020" />.</p>
+          </section>
+
+          <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Clinical Comparison</h2>
             <div className="space-y-4 mt-4">
               <div className="rounded-lg border border-border p-4">

@@ -6,6 +6,7 @@ import { DiagramSection } from "@/components/topic/DiagramSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { pharmacodynamicsQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 import { DoseResponseCurveDiagram } from "@/components/diagrams/pharmacology/DoseResponseCurveDiagram";
 import { AgonismSpectrumDiagram } from "@/components/diagrams/pharmacology/AgonismSpectrumDiagram";
 import { ReceptorTimescaleDiagram } from "@/components/diagrams/pharmacology/ReceptorTimescaleDiagram";
@@ -213,6 +214,19 @@ const PharmacodynamicsTopic = () => {
             <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
               <ReceptorTimescaleDiagram />
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="spare-receptors" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <CollapsibleSubsection title="Spare Receptors (Receptor Reserve)">
+              <p className="text-sm text-muted-foreground leading-relaxed">Spare receptors exist when maximal effect occurs before every receptor is occupied: <strong>EC₅₀ is therefore lower than K<sub>D</sub></strong>. Signal amplification increases sensitivity and can accelerate response. A competitive antagonist must occupy more receptors before response falls, while an irreversible antagonist may initially appear surmountable because receptors can be removed without reducing Emax. Cardiac β-adrenoceptors are the classic example: near-maximal inotropy may occur with only a fraction occupied <InlineRef topicId="pharmacodynamics" refLabel="Rang & Dale Ch.2" />.</p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="hysteresis" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Hysteresis and Effect-Site Delay">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3"><strong>Hysteresis</strong> is a lag between plasma concentration (Cp) and clinical effect. Plotting effect against Cp produces a loop because equal plasma concentrations on the rising and falling limbs produce different effects. A counter-clockwise loop means effect peaks after Cp, as with slow fentanyl CNS equilibration, active-metabolite formation, slow receptor kinetics or delayed signal transduction. A clockwise loop (proteresis) suggests acute tolerance, antagonistic metabolites or physiological counter-regulation <InlineRef topicId="pharmacodynamics" refLabel="Peck & Hill Ch.2" />.</p>
+              <div className="grid grid-cols-2 gap-4 rounded-lg border border-border p-4 text-sm"><div><p className="font-semibold text-foreground">Counter-clockwise</p><p className="text-muted-foreground">Effect-site delay: peak effect follows peak plasma concentration.</p></div><div><p className="font-semibold text-foreground">Clockwise</p><p className="text-muted-foreground">Effect wanes despite concentration: tolerance or counter-regulation.</p></div></div>
             </CollapsibleSubsection>
           </ExamSection>
 

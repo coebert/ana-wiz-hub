@@ -7,6 +7,7 @@ import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { foetalCirculationQuestions } from "@/data/quizzes";
 import FoetalCirculationDiagram from "@/components/diagrams/physiology/FoetalCirculationDiagram";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const foetalCirculationFaqs: Array<[string, string]> = [
   [
@@ -227,6 +228,14 @@ const FoetalCirculationTopic = () => {
               <li>Pre- vs post-ductal SpO₂ difference &gt;5% suggests PDA shunting.</li>
               <li>Management: optimise oxygenation and ventilation, inhaled nitric oxide (iNO 20 ppm), correct acidosis, consider ECMO.</li>
             </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="duct-dependent-chd" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PA_BK_02"]}>
+            <CollapsibleSubsection title="Duct-Dependent Congenital Heart Disease">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">A duct-dependent circulation requires a patent ductus arteriosus (PDA) to maintain pulmonary or systemic blood flow until definitive intervention <InlineRef topicId="foetal-circulation" refLabel="BJA Educ Neonatal CHD" />. Suspect it in a collapsing or cyanotic neonate as the duct closes; start alprostadil while obtaining urgent echocardiography.</p>
+              <div className="grid md:grid-cols-2 gap-4 text-sm"><div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Duct-dependent pulmonary flow</p><p className="mt-1 text-muted-foreground">The PDA carries blood <strong>from systemic circulation/aorta → pulmonary artery → lungs</strong>. Examples: pulmonary atresia, critical pulmonary stenosis, tricuspid atresia and severe tetralogy of Fallot.</p></div><div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Duct-dependent systemic flow</p><p className="mt-1 text-muted-foreground">Right-ventricular output passes <strong>pulmonary artery → PDA → descending systemic circulation</strong>. Examples: hypoplastic left-heart syndrome, critical coarctation, interrupted aortic arch and critical aortic stenosis.</p></div></div>
+              <p className="mt-3 text-sm text-muted-foreground"><strong>Mixing lesions:</strong> transposition of the great arteries requires mixing through an ASD/PFO, VSD or PDA; prostaglandin may improve mixing, but urgent balloon atrial septostomy may be required.</p>
             </CollapsibleSubsection>
           </ExamSection>
 

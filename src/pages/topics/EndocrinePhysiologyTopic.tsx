@@ -220,6 +220,10 @@ const EndocrinePhysiologyTopic = () => {
                 </div>
               ))}
             </div>
+            <div className="mt-4 rounded-lg border border-border p-4 text-sm text-muted-foreground leading-relaxed">
+              <p className="font-semibold text-foreground">Phaeochromocytoma preparation</p>
+              <p className="mt-1">Block for 10–14 days. Start phenoxybenzamine about 10 mg twice daily and titrate, or use selective α₁ blockade such as doxazosin. Liberal salt and fluid intake correct chronic catecholamine-mediated volume contraction. Add β-blockade only after effective α-blockade if reflex tachycardia persists. Targets include seated BP &lt;130/80 mmHg, standing systolic BP &gt;90 mmHg, HR 60–70 seated and 70–80 standing, with ECG review for ischaemia/arrhythmia <InlineRef topicId="endocrine-physiology" refLabel="BJA Educ Phaeochromocytoma" />.</p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -233,6 +237,9 @@ const EndocrinePhysiologyTopic = () => {
               <li>
                 <strong>Thyroid storm</strong>: tachycardia, hyperthermia, agitation. Treatment: β-blocker, PTU/carbimazole,
                 iodine (≥1 h after PTU), hydrocortisone, active cooling.
+              </li>
+              <li>
+                <strong>Myxoedema coma</strong>: decompensated severe hypothyroidism, classically altered consciousness, hypothermia and a precipitant such as infection or surgery, with bradycardia, hypotension, hypoventilation, hyponatraemia and hypoglycaemia. Admit to ICU, support ventilation/circulation, correct glucose and electrolytes, rewarm cautiously, give IV levothyroxine with or without liothyronine, and empirical hydrocortisone until adrenal insufficiency is excluded <InlineRef topicId="endocrine-physiology" refLabel="ATA Hypothyroidism 2014" />.
               </li>
               <li>
                 <strong>Calcium</strong>: normal 2.2–2.6 mmol/L. ~50% ionised (active), ~40% albumin-bound. PTH ↑ Ca²⁺
@@ -266,6 +273,15 @@ const EndocrinePhysiologyTopic = () => {
                 diabetic patients unable to eat. Avoid hypoglycaemia (&lt;4 mmol/L) — brain injury risk.
               </li>
             </ul>
+            <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm"><div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">DKA</p><p className="mt-1 text-muted-foreground">Glucose &gt;11 mmol/L (or known diabetes), blood ketones &gt;3 mmol/L and bicarbonate &lt;15 mmol/L or venous pH &lt;7.3. Begin 0.9% saline, check K⁺ before insulin, then fixed-rate insulin 0.1 units/kg/h; replace potassium according to serial values, add glucose as glucose falls, and treat the precipitant.</p></div><div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">HHS</p><p className="mt-1 text-muted-foreground">Usually glucose ≥30 mmol/L, osmolality ≥320 mOsm/kg, profound dehydration and little ketonaemia/acidosis. Correct fluid and osmolality more slowly than DKA; insulin is generally delayed until initial fluid replacement unless significant ketonaemia is present.</p></div></div>
+            <p className="mt-3 text-sm text-muted-foreground">The five practical pillars are fluids, insulin, potassium, glucose/ketone monitoring and identification of the precipitant <InlineRef topicId="endocrine-physiology" refLabel="JBDS DKA 2023" /> <InlineRef topicId="endocrine-physiology" refLabel="JBDS HHS 2022" />.</p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="steroid-cover" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
+            <CollapsibleSubsection title="Perioperative Steroid Cover">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">Prednisolone ≥10 mg/day for more than 3 weeks is likely to suppress the HPA axis; 5–10 mg/day may suppress it depending on duration and timing. Continue the usual steroid and match supplementation to surgical stress <InlineRef topicId="endocrine-physiology" refLabel="AAGBI Steroid Cover" />.</p>
+              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside"><li><strong>Minor:</strong> usual dose plus hydrocortisone 25 mg IV at induction.</li><li><strong>Moderate:</strong> usual dose, 25 mg at induction, then hydrocortisone 100 mg over 24 h for 24–48 h.</li><li><strong>Major:</strong> usual dose, hydrocortisone 100 mg at induction, then 200 mg over 24 h for 48–72 h before tapering towards baseline.</li></ul>
             </CollapsibleSubsection>
           </ExamSection>
 

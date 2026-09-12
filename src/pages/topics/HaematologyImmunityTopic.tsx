@@ -13,6 +13,7 @@ import VaccineTypesDiagram from "@/components/diagrams/physiology/VaccineTypesDi
 import AsplenicVaccinationFlowchart from "@/components/diagrams/physiology/AsplenicVaccinationFlowchart";
 import ImmuneCellLineageDiagram from "@/components/diagrams/physiology/ImmuneCellLineageDiagram";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const haematologyImmunityFaqs: Array<[string, string]> = [
   [
@@ -191,14 +192,30 @@ const HaematologyImmunityTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="liver-haemostasis" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_01"]}>
+            <CollapsibleSubsection title="Rebalanced Haemostasis in Liver Disease">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">Liver disease reduces procoagulants (II, V, VII, IX, X, XI and sometimes fibrinogen) <em>and</em> endogenous anticoagulants (protein C, protein S and antithrombin). Thrombocytopenia reflects portal-hypertensive splenic sequestration and reduced thrombopoietin; platelet dysfunction coexists with increased von Willebrand factor. Fibrinolysis is also unstable because plasminogen falls while tPA clearance falls <InlineRef topicId="haematology-immunity" refLabel="ISTH Rebalanced Haemostasis 2021" />.</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">The new equilibrium is fragile and may tip towards bleeding or thrombosis. PT/INR measures selected procoagulants but not anticoagulant loss, platelets or fibrinolysis, so it does not predict procedural bleeding reliably. TEG/ROTEM provides a global dynamic assessment and can target fibrinogen, platelets or antifibrinolytic treatment rather than empirical FFP.</p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="blood-groups" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_02"]}>
             <CollapsibleSubsection title="Blood Groups & Transfusion">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>ABO system</strong>: Group O = universal donor (no A/B antigens); Group AB = universal recipient. Naturally occurring IgM antibodies → immediate haemolytic reaction if mismatched</li>
               <li><strong>Rhesus system</strong>: D antigen most important. Rh− patients develop anti-D IgG after sensitisation → delayed reaction. Anti-D prophylaxis in Rh− mothers</li>
-              <li><strong>Transfusion reactions</strong>: acute haemolytic (ABO mismatch, most dangerous), febrile non-haemolytic (WBC antibodies), allergic (IgA deficiency), TRALI (donor anti-HLA antibodies), TACO (fluid overload)</li>
-              <li><strong>Massive transfusion</strong>: &gt;10 units RBC in 24h or &gt;1 blood volume. Complications: hypocalcaemia (citrate), hyperkalaemia, hypothermia, coagulopathy (dilutional). Use 1:1:1 RBC:FFP:platelets ratio</li>
+              <li><strong>TRALI</strong>: a two-hit process — recipient neutrophils are primed by sepsis/surgery, then donor anti-HLA/HNA antibodies or biological response modifiers activate them, causing capillary leak and non-cardiogenic pulmonary oedema. Plasma-rich FFP and platelets carry greater risk.</li>
+              <li><strong>TACO</strong>: rapid transfusion exceeds cardiac reserve, producing hydrostatic oedema; elderly patients and those with cardiac/renal failure are vulnerable. Hypertension, raised JVP and BNP support TACO rather than TRALI.</li>
+              <li><strong>Febrile non-haemolytic reaction</strong>: recipient antibodies recognise donor leucocyte antigens, or storage cytokines trigger fever/rigors; universal UK leucodepletion reduces incidence.</li>
+              <li><strong>Massive transfusion</strong>: citrate chelates ionised calcium (a common rule is 10 mL 10% calcium chloride or 30 mL 10% calcium gluconate per four units, guided by ionised Ca²⁺). Stored-cell K⁺ leakage makes rapid older-blood transfusion hazardous in neonates and renal failure. Also prevent hypothermia and dilutional coagulopathy.</li>
             </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="antifibrinolytics" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_02"]}>
+            <CollapsibleSubsection title="Tranexamic Acid and Antifibrinolysis">
+              <p className="text-sm text-muted-foreground leading-relaxed">Tranexamic acid is a synthetic lysine analogue that competitively occupies plasminogen lysine-binding sites, reducing binding to fibrin and conversion to plasmin. It is renally excreted, so reduce repeated dosing in renal impairment. High exposure, especially in cardiac surgery or renal failure, increases seizure risk.</p>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground list-disc list-inside"><li><strong>Trauma:</strong> CRASH-2 showed lower death from bleeding when TXA was given early; give 1 g IV over 10 min then 1 g over 8 h, within 3 h of injury <InlineRef topicId="haematology-immunity" refLabel="CRASH-2 2010" />.</li><li><strong>Postpartum haemorrhage:</strong> WOMAN reduced death due to bleeding; give 1 g IV promptly, repeating 1 g after 30 min if bleeding continues or within 24 h if it restarts <InlineRef topicId="haematology-immunity" refLabel="WOMAN 2017" />.</li><li><strong>Combat trauma:</strong> MATTERs associated TXA with improved survival in severely injured transfused casualties, while recognising its observational design <InlineRef topicId="haematology-immunity" refLabel="MATTERs 2012" />.</li></ul>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -220,7 +237,7 @@ const HaematologyImmunityTopic = () => {
               {[
                 { title: "Innate Immunity", desc: "Non-specific, immediate. Physical barriers (skin, mucosa), complement cascade (classical, alternative, lectin pathways), phagocytes (neutrophils, macrophages), NK cells. Pattern recognition receptors (TLRs) detect PAMPs/DAMPs." },
                 { title: "Adaptive Immunity", desc: "Specific, delayed (days). T cells: CD4⁺ helper (Th1 → cell-mediated, Th2 → humoral), CD8⁺ cytotoxic. B cells → plasma cells → antibodies (IgM first, then IgG class switch). Memory cells for secondary response." },
-                { title: "Hypersensitivity", desc: "Type I (IgE, immediate — anaphylaxis): mast cell degranulation → histamine, tryptase. Type II (IgG/IgM — transfusion reactions). Type III (immune complex — SLE). Type IV (delayed, T-cell — contact dermatitis)." },
+                 { title: "Hypersensitivity", desc: "Type I: immediate IgE-mediated mast-cell degranulation. Type II: IgG/IgM targets cell-surface antigen; complement and phagocytes act within minutes–hours (ABO incompatibility, HIT). Type III: circulating immune complexes deposit and activate complement/neutrophils over about 3–8 h (drug vasculitis, post-streptococcal GN). Type IV: sensitised Th1/CTL cells release IFN-γ/TNF-α and recruit macrophages over 48–72 h (chlorhexidine contact dermatitis, non-IgE latex dermatitis, tuberculin test)." },
                 { title: "SIRS & Sepsis", desc: "Systemic inflammation (↑ TNF-α, IL-1, IL-6) → vasodilation, capillary leak, coagulopathy. SIRS criteria now replaced by SOFA/qSOFA in Sepsis-3." },
               ].map(item => (
                 <div key={item.title} className="p-4 rounded-lg border border-border">
