@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 
-export type CaseCategory = "Steroid cover" | "Phaeochromocytoma" | "Antifibrinolytics" | "Co-existing disease";
+export type CaseCategory = "Steroid cover" | "Phaeochromocytoma" | "Antifibrinolytics" | "Co-existing disease" | "Paediatric anaesthesia";
 
 export interface CaseStage {
   title: string;
