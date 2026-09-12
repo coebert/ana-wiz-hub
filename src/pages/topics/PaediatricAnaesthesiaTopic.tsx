@@ -27,6 +27,8 @@ const tocItems = [
   { id: "procedures", label: "Key surgical procedures", group: "Clinical" },
   { id: "tiva", label: "Paediatric TIVA & remi-mix", group: "Technique" },
   { id: "analgesia", label: "PCA, NCA & caudal block", group: "Technique" },
+  { id: "emergence-agitation", label: "Emergence agitation & delirium", group: "Clinical" },
+  { id: "urti", label: "The child with a URTI", group: "Clinical" },
   { id: "fluids", label: "Fluid management", group: "Clinical" },
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
@@ -445,14 +447,19 @@ const PaediatricAnaesthesiaTopic = () => {
                   <p className="text-xs text-muted-foreground mt-2">Max bupivacaine 2 mg/kg; max ropivacaine 3 mg/kg.</p>
                 </div>
                 <div className="p-4 rounded-lg border border-border">
-                  <p className="font-semibold text-foreground text-sm">Adjuncts (extend duration ~50–100%)</p>
-                  <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
-                    <li><strong className="text-foreground">Clonidine</strong> 1–2 µg/kg — most evidence; risk of sedation/hypotension</li>
-                    <li><strong className="text-foreground">Dexmedetomidine</strong> 1 µg/kg — emerging evidence, less hypotension</li>
-                    <li><strong className="text-foreground">Ketamine</strong> (preservative-free) 0.5 mg/kg — concerns over neurotoxicity, falling out of favour</li>
-                    <li><strong className="text-foreground">Morphine</strong> (preservative-free) 30 µg/kg — long duration but late respiratory depression; HDU monitoring required</li>
+                  <p className="font-semibold text-foreground text-sm">Adjuncts — mechanism, dose &amp; safety <InlineRef topicId="paediatric-anaesthesia" refLabel="Anaesthesia 2021 Paed Regional" /></p>
+                  <p className="text-xs text-muted-foreground mt-1">A single-shot caudal with plain local anaesthetic lasts only 4–6 h. Adjuncts extend this by roughly 50–100% and are the main alternative to a catheter technique in day-case surgery.</p>
+                  <ul className="text-sm text-muted-foreground mt-2 list-disc list-inside space-y-1">
+                    <li><strong className="text-foreground">Clonidine</strong> 1–2 µg/kg — α₂ agonist acting on dorsal-horn α₂ adrenoceptors (and by local vasoconstriction/spinal noradrenergic inhibition of substance P release); best-evidenced adjunct, extends analgesia by 2–4 h. Dose-dependent sedation, bradycardia and hypotension; avoid &gt;2 µg/kg and avoid in neonates and ex-preterm infants because of apnoea risk.</li>
+                    <li><strong className="text-foreground">Dexmedetomidine</strong> 1 µg/kg — more selective α₂ agonist with similar or slightly longer prolongation and less hypotension than clonidine, plus a lower incidence of emergence agitation; still off-licence for neuraxial use.</li>
+                    <li><strong className="text-foreground">Ketamine</strong> (preservative-free S-ketamine) 0.5 mg/kg — NMDA-receptor antagonism in the dorsal horn gives the longest prolongation of any adjunct, but preservative-containing preparations and animal neuro-apoptosis data have led most UK centres to abandon it.</li>
+                    <li><strong className="text-foreground">Morphine</strong> (preservative-free) 30 µg/kg — µ-opioid action on dorsal-horn receptors gives 12–24 h analgesia, but its hydrophilicity permits rostral spread with <em>delayed</em> respiratory depression up to 12–24 h; also pruritus, nausea and urinary retention. Requires HDU-level respiratory monitoring and is therefore unsuitable for day cases.</li>
+                    <li><strong className="text-foreground">Adrenaline</strong> 1:200,000 (5 µg/ml) — used chiefly as a marker of intravascular injection in the test dose; only modest prolongation of block.</li>
+                    <li><strong className="text-foreground">Avoid</strong> midazolam, neostigmine and tramadol neuraxially — the evidence is weak, they are unlicensed by this route, and preservative-related neurotoxicity is a real concern.</li>
                   </ul>
+                  <p className="text-xs text-muted-foreground mt-2">General safety rules: use preservative-free preparations only, calculate the total local anaesthetic dose against the mg/kg maximum <em>before</em> adding volume, and document the adjunct and dose so ward staff know what monitoring is required.</p>
                 </div>
+
               </div>
               <div className="p-4 rounded-lg border-l-4 border-destructive bg-destructive/5 mt-3">
                 <p className="font-semibold text-foreground text-sm">Complications &amp; cautions</p>
@@ -462,6 +469,83 @@ const PaediatricAnaesthesiaTopic = () => {
               </div>
             </DiagramSection>
           </ExamSection>
+
+          <ExamSection id="emergence-agitation" exams={[Exam.FINAL]} className="scroll-mt-24">
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Emergence Agitation &amp; Delirium</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Emergence agitation (EA) is a self-limiting state of inconsolable crying, thrashing, disorientation and non-purposeful movement in the first 30 min after anaesthesia, distinct from pain and from the more prolonged emergence <em>delirium</em>. It affects up to 80% of preschool children after sevoflurane or desflurane anaesthesia and matters because of self-extubation, wound and cannula disruption, falls, parental distress and unplanned admission.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Risk factors</p>
+                  <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
+                    <li>Age 2–6 years; pre-existing anxious, impulsive or non-adaptable temperament</li>
+                    <li>Insoluble volatile agents (sevoflurane, desflurane) and rapid emergence</li>
+                    <li>ENT and ophthalmic surgery (bandaging, throat pack, altered sensory input)</li>
+                    <li>Untreated pain, high preoperative anxiety, absence of premedication, hunger/thirst, full bladder</li>
+                  </ul>
+                </div>
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Assessment</p>
+                  <p className="text-sm text-muted-foreground mt-1">Use the <strong className="text-foreground">PAED scale</strong> (five items scored 0–4; ≥10 suggests emergence delirium) alongside a pain score such as FLACC. The key clinical step is to exclude treatable causes — pain, hypoxaemia, hypercapnia, hypoglycaemia, hyponatraemia, bladder distension, residual neuromuscular block and hypothermia — before labelling the child as agitated.</p>
+                </div>
+              </div>
+              <div className="p-4 rounded-lg border border-border mt-3">
+                <p className="font-semibold text-foreground text-sm">Prevention &amp; treatment</p>
+                <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-1">
+                  <li><strong className="text-foreground">Propofol 1 mg/kg or fentanyl 1 µg/kg at the end of sevoflurane anaesthesia</strong> comparably reduce the incidence and severity of EA; propofol is preferable because it produces less nausea and vomiting <InlineRef topicId="paediatric-anaesthesia" refLabel="BJA 2013 Emergence Agitation" />.</li>
+                  <li><strong className="text-foreground">Propofol TIVA</strong> throughout (remi-prop) has the lowest incidence of all and is a rational choice for the anxious preschool child or repeated procedures.</li>
+                  <li><strong className="text-foreground">α₂ agonists:</strong> clonidine 1–2 µg/kg IV or dexmedetomidine 0.15–1 µg/kg IV (or 1–2 µg/kg intranasal premedication) markedly reduce EA; expect mild sedation and bradycardia and a slightly longer recovery-room stay.</li>
+                  <li><strong className="text-foreground">Ketamine</strong> 0.25 mg/kg and midazolam 0.05 mg/kg are effective but delay discharge; midazolam may paradoxically disinhibit some children.</li>
+                  <li><strong className="text-foreground">Non-pharmacological:</strong> effective regional block or local infiltration, quiet dimmed recovery area, early parental presence, familiar comfort object, and preoperative preparation/play therapy.</li>
+                  <li><strong className="text-foreground">Acute episode:</strong> keep the child safe, give oxygen, exclude hypoxia and pain, treat pain first, then a small titrated dose of propofol (0.5–1 mg/kg) or dexmedetomidine; explain to parents that it is short-lived and does not indicate psychological harm.</li>
+                </ul>
+              </div>
+            </div>
+          </ExamSection>
+
+          <ExamSection id="urti" exams={[Exam.FINAL]} className="scroll-mt-24">
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Child with an Upper Respiratory Tract Infection</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Preschool children have 6–8 URTIs a year, so a blanket cancellation policy would make elective surgery almost impossible. Children with a URTI have an increased risk of perioperative respiratory adverse events (PRAE) — cough, breath-holding, desaturation &lt;95%, laryngospasm, bronchospasm and, rarely, cardiorespiratory arrest — and PRAE are among the most serious consequences of paediatric anaesthesia; optimising modifiable respiratory risk factors reduces that risk <InlineRef topicId="paediatric-anaesthesia" refLabel="BJA 2024 Paediatric URTI" />. The decision is therefore one of risk stratification, not a simple yes/no.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="p-4 rounded-lg border-l-4 border-destructive bg-destructive/5">
+                  <p className="font-semibold text-foreground text-sm">Defer (usually 2–4 weeks, and up to 6 weeks after LRTI)</p>
+                  <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
+                    <li>Fever &gt;38°C, lethargy, poor feeding, or a systemically unwell child</li>
+                    <li>Purulent nasal or airway secretions, productive/wet cough</li>
+                    <li>Wheeze, crepitations, or clinical signs of lower respiratory tract involvement</li>
+                    <li>Child &lt;1 year, ex-premature, congenital heart or airway disease, poorly controlled asthma</li>
+                    <li>Major or airway surgery planned, or a long procedure requiring tracheal intubation</li>
+                  </ul>
+                </div>
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Proceed with an optimised plan</p>
+                  <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
+                    <li>Afebrile, well, clear secretions, dry cough only, chest clear</li>
+                    <li>Older child, short peripheral procedure, no significant comorbidity</li>
+                    <li>Recognise that airway hyper-reactivity persists for up to 4–6 weeks after symptoms clear, so deferral does not abolish risk</li>
+                    <li>Weigh the harms of cancellation: repeated fasting, parental work loss, delayed surgery, and a high chance of another URTI at the next date</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="p-4 rounded-lg border border-border mt-3">
+                <p className="font-semibold text-foreground text-sm">Risk-reduction strategy when proceeding</p>
+                <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-1">
+                  <li><strong className="text-foreground">Personnel:</strong> the most experienced available anaesthetist should manage the airway — seniority is one of the strongest modifiable determinants of PRAE.</li>
+                  <li><strong className="text-foreground">Premedication:</strong> salbutamol 2.5 mg nebulised (or 200–400 µg via spacer) 10–30 min preoperatively reduces PRAE; avoid drying agents as routine but consider them for copious secretions.</li>
+                  <li><strong className="text-foreground">Airway device:</strong> prefer a facemask or supraglottic airway over a tracheal tube where the surgery permits; if intubation is needed use a cuffed tube of correct size and avoid multiple attempts.</li>
+                  <li><strong className="text-foreground">Technique:</strong> propofol induction and TIVA (or propofol before instrumentation) reduces airway reactivity relative to desflurane; sevoflurane is acceptable, desflurane is avoided in the instrumented airway.</li>
+                  <li><strong className="text-foreground">Depth and emergence:</strong> instrument and extubate either deeply anaesthetised or fully awake, never in the light plane; suction secretions before waking; lateral recovery position with oxygen; consider deep extubation in the child with a very reactive airway.</li>
+                  <li><strong className="text-foreground">Preparedness:</strong> have suxamethonium (1–2 mg/kg IV / 4 mg/kg IM), atropine, salbutamol and CPAP immediately available and a rehearsed laryngospasm plan; plan for extended recovery observation and warn parents of a possible unplanned overnight stay.</li>
+                </ul>
+              </div>
+            </div>
+          </ExamSection>
+
 
           <ExamSection id="fluids" exams={[Exam.FINAL]}>
             <div>

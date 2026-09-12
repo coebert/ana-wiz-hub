@@ -14,6 +14,7 @@ import { SpinalCordStimulatorDiagram } from "@/components/diagrams/clinical/Spin
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const objectives = [
   "Distinguish nociceptive, neuropathic and nociplastic pain mechanisms and tailor pharmacotherapy accordingly",
@@ -50,6 +51,9 @@ const workedExamples: WorkedExample[] = [
 const tocItems = [
   { id: "pathways", label: "Pain Pathways & Classification", group: "Core" },
   { id: "multimodal", label: "Multimodal Analgesia", group: "Core" },
+  { id: "regional-analgesia", label: "Regional Analgesia", group: "Core" },
+  { id: "cannabinoids", label: "Cannabinoids", group: "Adjuncts" },
+  { id: "opioid-stewardship", label: "Perioperative Opioid Stewardship", group: "Core" },
   { id: "magnesium", label: "IV Magnesium", group: "Adjuncts" },
   { id: "lidocaine", label: "IV Lidocaine", group: "Adjuncts" },
   { id: "neuropathic", label: "Neuropathic Pain", group: "Chronic" },
@@ -231,6 +235,88 @@ const PainMedicineTopic = () => {
         </CollapsibleSubsection>
         </div>
 
+        <div id="regional-analgesia" className="scroll-mt-24">
+        <CollapsibleSubsection title="Regional Analgesia within a Multimodal Plan">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Regional techniques are the most effective opioid-sparing component of a multimodal plan, providing site-specific analgesia with dynamic pain control that no systemic drug matches. Ultrasound guidance has become the gold standard: there is a growing weight of evidence, matched by improving technology, that it has significant benefits over landmark and nerve-stimulator techniques, and the improved safety and efficacy it brings helps realise the advantages of regional anaesthesia — decreased morbidity and mortality, superior postoperative analgesia, cost-effectiveness, fewer postoperative complications and an improved postoperative course <InlineRef topicId="pain-medicine" refLabel="Anaesthesia 2010 Ultrasound RA" />.
+          </p>
+          <div className="overflow-x-auto mb-3">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Surgical site</th>
+                  <th className="text-left py-2 text-foreground font-semibold">First-choice block</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Notes</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Thoracotomy / thoracic</td><td>Thoracic epidural or paravertebral block</td><td>Paravertebral gives comparable analgesia with less hypotension, urinary retention and pulmonary complication; erector spinae plane block is a lower-risk alternative in the anticoagulated patient</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Open abdominal</td><td>Epidural (open) or TAP/rectus sheath ± IV lidocaine (laparoscopic)</td><td>Epidural benefit is smallest in laparoscopic surgery within an ERAS pathway; quadratus lumborum block extends to visceral pain better than TAP</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Breast</td><td>Pectoral (PECS I/II) or serratus plane block</td><td>Reduces PONV and persistent post-surgical pain risk; useful in patients where opioid is poorly tolerated</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Hip fracture / hip surgery</td><td>Fascia iliaca or femoral nerve block, ± PENG block</td><td>Give in the emergency department for hip fracture — reduces opioid, delirium and time to mobilisation</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Knee arthroplasty</td><td>Adductor canal block + local infiltration analgesia</td><td>Preserves quadriceps power and permits same-day mobilisation, unlike femoral block</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Shoulder / upper limb</td><td>Interscalene (shoulder), supraclavicular or axillary brachial plexus</td><td>Interscalene causes near-universal ipsilateral phrenic palsy — avoid in severe respiratory disease; consider a low-volume or suprascapular/axillary nerve alternative</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Prolonging the block</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Continuous catheter infusion (e.g. 0.2% ropivacaine 5–10 ml/h) for severe or prolonged pain, with a documented monitoring plan</li>
+                <li>Perineural dexamethasone 4 mg or IV dexamethasone extends duration by several hours</li>
+                <li>Clonidine and dexmedetomidine prolong block at the cost of sedation and hypotension; liposomal bupivacaine evidence remains unconvincing</li>
+                <li>Always plan the "analgesic cliff" — prescribe oral multimodal analgesia to start <em>before</em> block regression</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border-l-4 border-destructive bg-destructive/5">
+              <p className="font-semibold text-foreground text-sm">Safety essentials</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Stop Before You Block, block-room checklist, and ultrasound visualisation of needle tip throughout</li>
+                <li>Calculate the maximum dose in mg/kg lean body weight (bupivacaine 2 mg/kg, ropivacaine 3 mg/kg, lidocaine with adrenaline 7 mg/kg) before drawing up</li>
+                <li>LAST: stop injection, 100% O₂, control seizures with benzodiazepine, ALS, and Intralipid 20% 1.5 ml/kg bolus then 15 ml/kg/h; prolonged CPR may be required</li>
+                <li>Regional block does not remove the need for observation of a compartment at risk — a dense block can mask compartment syndrome, so use low-concentration solutions and document neurovascular checks</li>
+              </ul>
+            </div>
+          </div>
+        </CollapsibleSubsection>
+        </div>
+
+        <div id="cannabinoids" className="scroll-mt-24">
+        <CollapsibleSubsection title="Cannabinoids in Pain Medicine">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Cannabinoid signalling occurs via G-protein-coupled receptors distributed throughout the body. Endocannabinoids (anandamide, 2-arachidonoylglycerol) are arachidonic-acid derivatives functioning in diverse physiological systems: neuronal <strong>CB₁</strong> receptors modulate synaptic transmission and mediate psychoactivity, while immune-cell <strong>CB₂</strong> receptors may down-regulate neuroinflammation and influence cyclo-oxygenase-dependent pathways. Animal models show that cannabinoid receptors play a fundamental role in peripheral, spinal and supraspinal nociception <InlineRef topicId="pain-medicine" refLabel="BJA 2008 Cannabinoids" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Pharmacology</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>CB₁</strong> — presynaptic, dense in periaqueductal grey, rostral ventromedial medulla, dorsal horn and peripheral nociceptors; retrograde inhibition of glutamate and substance P release. Responsible for analgesia <em>and</em> for psychoactive and cognitive effects.</li>
+                <li><strong>CB₂</strong> — microglia and immune cells; anti-inflammatory and antihyperalgesic without psychoactivity, making it an attractive but so far unrealised drug target.</li>
+                <li>Δ⁹-THC is a partial CB₁/CB₂ agonist; cannabidiol (CBD) has low receptor affinity and acts on TRPV1, 5-HT1A and adenosine signalling and inhibits endocannabinoid reuptake.</li>
+                <li>High lipid solubility gives a large volume of distribution, extensive hepatic CYP metabolism (2C9, 3A4), a prolonged terminal half-life and significant interaction potential (warfarin, clobazam, opioids, sedatives).</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">UK clinical position</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Cannabis-based medicinal products have been prescribable by specialists since November 2018, but <strong>NICE NG144 does not recommend them for chronic pain</strong> outside a clinical trial.</li>
+                <li>Licensed products: <strong>nabiximols</strong> (THC:CBD oromucosal spray) for MS spasticity, <strong>nabilone</strong> for chemotherapy-induced nausea, <strong>cannabidiol</strong> for Dravet/Lennox–Gastaut and tuberous sclerosis seizures.</li>
+                <li>Trial evidence in neuropathic pain shows small effect sizes (NNT ~20 for 30% pain relief) with a low number needed to harm; effects on nociceptive and cancer pain are weaker still.</li>
+                <li>Adverse effects: dizziness, sedation, dry mouth, cognitive impairment, tachycardia and postural hypotension, nausea, psychosis in the predisposed, cannabinoid hyperemesis, and dependence.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="p-4 rounded-lg border border-border">
+            <p className="font-semibold text-foreground text-sm">Perioperative relevance</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Ask specifically about prescribed and recreational cannabinoid use. Chronic users often need higher doses of propofol and volatile agent, report higher postoperative pain scores and use more opioid; acute intoxication is associated with airway irritability, tachycardia and, rarely, myocardial ischaemia. Continue licensed products perioperatively where possible to avoid withdrawal (irritability, insomnia, nausea), and rely on a robust multimodal and regional plan rather than escalating cannabinoids for acute pain.
+            </p>
+          </div>
+        </CollapsibleSubsection>
+        </div>
+
+
         <div id="magnesium" className="scroll-mt-24">
         <CollapsibleSubsection title="IV Magnesium as an Analgesic">
           <p className="text-muted-foreground leading-relaxed mb-3">
@@ -324,6 +410,47 @@ const PainMedicineTopic = () => {
           </div>
         </CollapsibleSubsection>
         </div>
+
+        <div id="opioid-stewardship" className="scroll-mt-24">
+        <CollapsibleSubsection title="Peri-operative Opioid Stewardship &amp; the Patient on Long-Term Opioids">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Surgery is a common gateway to long-term opioid use: 3–7% of previously opioid-naive patients are still taking opioids months after an operation. Stewardship of perioperative opioids starts with judicious prescribing; before surgery it is important to assess risk factors for continued opioid use and to identify patients with pre-existing chronic pain, some of whom are already taking opioids, and to formulate a multidisciplinary perioperative care plan. For opioid-naive patients, no more than <strong>7 days</strong> of opioid prescription is recommended <InlineRef topicId="pain-medicine" refLabel="BJA 2021 Surgery &amp; Opioids" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Before surgery</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Document the exact opioid, dose and duration; convert to oral morphine equivalent daily dose (OMEDD). Doses &gt;120 mg OMEDD/day carry markedly higher harm and predict difficult postoperative control.</li>
+                <li>Screen for risk factors for persistent use: pre-existing chronic pain, current opioid or benzodiazepine use, substance-use disorder, smoking, catastrophising, depression/anxiety, and high pain expectation.</li>
+                <li>Set realistic expectations — the goal is <em>function and tolerable pain</em>, not zero pain — and agree a written stop date for any new opioid.</li>
+                <li>Where feasible, reduce high-dose opioids preoperatively over weeks with pain-service input; do not attempt a rapid taper immediately before surgery.</li>
+                <li>Continue buprenorphine and methadone maintenance through surgery (do not stop them) and involve the acute pain and addiction services early.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Intra-operative &amp; inpatient</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Opioid-sparing multimodal analgesia: paracetamol, NSAID/COX-2 where safe, regional block or local infiltration, ketamine, IV lidocaine, magnesium, dexamethasone, α₂ agonists.</li>
+                <li>Continue the patient's baseline opioid requirement (or an equivalent) and treat surgical pain <em>on top</em> of it — expect 30–100% higher requirements in the opioid-tolerant.</li>
+                <li>Anticipate opioid-induced hyperalgesia (diffuse pain, allodynia, worsening with dose escalation) — the answer is ketamine and regional analgesia, not more opioid.</li>
+                <li>Avoid combining opioids with sedatives; screen for OSA and use continuous oximetry in high-risk patients.</li>
+                <li>Use immediate-release oral opioids on a PRN basis rather than modified-release preparations for acute postoperative pain in opioid-naive patients.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="p-4 rounded-lg border border-border">
+            <p className="font-semibold text-foreground text-sm">Discharge &amp; follow-up</p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+              <li>Prescribe the smallest quantity needed, ≤7 days for opioid-naive patients, with an explicit tapering and stopping plan communicated to the patient and GP.</li>
+              <li>Never discharge on modified-release opioids started for acute pain; do not issue repeat prescriptions from secondary care.</li>
+              <li>Give written advice on safe storage, disposal of unused tablets, driving, constipation prophylaxis, and not sharing medication.</li>
+              <li>For patients on long-term opioids, return to (or below) the preoperative dose within 4–6 weeks with named clinician follow-up; if this fails, refer to a chronic pain service rather than escalating.</li>
+              <li>Tapering in chronic use: reduce by 10% of the current dose every 1–4 weeks, slower below 30% of the starting dose; treat withdrawal symptoms and expect a temporary increase in pain and anxiety.</li>
+            </ul>
+          </div>
+        </CollapsibleSubsection>
+        </div>
+
 
         <div id="chronic" className="scroll-mt-24">
         <CollapsibleSubsection title="Chronic Pain — General Principles">
@@ -512,6 +639,34 @@ const PainMedicineTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             Pain affects ~55% of patients during cancer treatment and ~66% of those with advanced disease (van den Beuken-van Everdingen, 2016). Despite decades of guidance it remains <strong>under-treated in around one-third</strong> of patients (the "pain treatment gap"). Modern cancer pain care is mechanism-based, multimodal, integrated with oncology and palliative care, and increasingly involves interventional techniques alongside opioids.
           </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Phenotyping pain after cancer — the nociplastic dimension</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Increasing numbers of people live for years after cancer treatment, and their pain is often not explained by residual disease. Classifying post-cancer pain into the three major phenotypes — <strong>nociceptive</strong>, <strong>neuropathic</strong> and <strong>nociplastic</strong> — and tailoring treatment accordingly is an emerging priority, because nociplastic pain is present in an important subgroup of patients with pain after cancer <InlineRef topicId="pain-medicine" refLabel="BJA 2023 Nociplastic Cancer Pain" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Recognising nociplastic pain after cancer</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Regional, widespread or multifocal pain in a distribution not explicable by tissue damage or a nerve territory</li>
+                <li>Duration &gt;3 months with evolution over time and disproportion to imaging findings</li>
+                <li>Hypersensitivity phenomena — allodynia, hyperalgesia, sensitivity to light, sound, touch or smell</li>
+                <li>Comorbid fatigue, non-restorative sleep, cognitive difficulty ("brain fog"), and mood/distress</li>
+                <li>Poor or paradoxical response to opioids and NSAIDs despite dose escalation</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Treatment implications</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Always first exclude recurrence, progression or a new structural cause before applying a nociplastic label</li>
+                <li>Shift emphasis to pain neuroscience education, graded activity and exercise, sleep and stress management, and psychological therapy</li>
+                <li>Where drugs are used, favour centrally acting agents (duloxetine, amitriptyline) over escalating opioids</li>
+                <li>Deprescribe long-term opioids where they are not delivering functional benefit, using a planned taper</li>
+                <li>Mixed phenotypes are common — treat the nociceptive or neuropathic component conventionally while addressing central sensitisation in parallel</li>
+              </ul>
+            </div>
+          </div>
+
 
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">WHO Analgesic Ladder — Revisited (2018 update)</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
