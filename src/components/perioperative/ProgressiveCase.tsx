@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BookOpenCheck, CheckCircle2, ChevronDown, ChevronRight, Circle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -39,12 +39,20 @@ export const ProgressiveCase = ({ caseData }: ProgressiveCaseProps) => {
   const [revealed, setRevealed] = useState(0);
   const [detailedOpen, setDetailedOpen] = useState(false);
 
+  useEffect(() => {
+    if (window.location.hash !== `#${caseData.id}`) return;
+    setOpen(true);
+    window.requestAnimationFrame(() => {
+      document.getElementById(caseData.id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [caseData.id]);
+
   const toggleOpen = () => {
     setOpen((current) => !current);
   };
 
   return (
-    <article className="border border-border bg-card rounded-lg overflow-hidden shadow-sm">
+    <article id={caseData.id} className="scroll-mt-24 border border-border bg-card rounded-lg overflow-hidden shadow-sm">
       <div className="p-4 sm:p-5">
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <Badge variant="secondary">{caseData.category}</Badge>
