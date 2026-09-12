@@ -359,4 +359,338 @@ export const icuDrugMechanismGroups: DrugMechanismGroup[] = [
       },
     ],
   },
+  {
+    id: "neuro",
+    title: "Neurocritical care and seizures",
+    blurb:
+      "Anticonvulsants, osmotherapy and calcium channel blockade — where metabolism and monitoring dominate safe use.",
+    drugs: [
+      {
+        drug: "Lorazepam",
+        slug: "lorazepam",
+        drugClass: "Intermediate-acting benzodiazepine",
+        pharmacodynamics:
+          "GABA_A positive allosteric modulator (benzodiazepine site), increasing chloride channel opening frequency to raise the seizure threshold and terminate status epilepticus, with anxiolysis, amnesia and sedation. Longer duration of anticonvulsant effect than midazolam or diazepam because of high receptor affinity and limited redistribution out of the brain, making it first-line IV therapy for convulsive status epilepticus (0.1 mg/kg, repeated once).",
+        metabolism:
+          "Less lipophilic than diazepam, Vd ~1.3 L/kg, 90% protein bound. Hepatic glucuronidation only (phase II, UGT2B7) to an inactive glucuronide — no CYP involvement and no active metabolites, so it is comparatively safe in hepatic impairment and the elderly, though the glucuronide accumulates in renal failure. Elimination half-life 10–20 h; onset 2–3 min IV with clinical effect lasting 6–12 h.",
+        adverseEffects:
+          "Respiratory depression and apnoea (particularly with opioids or after repeated doses in status), hypotension, over-sedation with delayed neurological assessment, delirium in the elderly, paradoxical agitation, tolerance and withdrawal seizures. Propylene glycol in the IV preparation can cause lactic acidosis, hyperosmolarity and renal dysfunction with high-dose prolonged infusions. Flumazenil reversal risks seizures.",
+        topicIds: ["benzodiazepines", "neurointensive-care"],
+      },
+      {
+        drug: "Levetiracetam",
+        slug: "levetiracetam",
+        drugClass: "Pyrrolidone anticonvulsant (SV2A ligand)",
+        pharmacodynamics:
+          "Binds synaptic vesicle protein 2A, modulating vesicle exocytosis and reducing presynaptic neurotransmitter release; also inhibits N-type calcium currents and negative allosteric effects on GABA/glycine current inhibition. Broad-spectrum anticonvulsant used as second-line therapy in status epilepticus (ESETT showed equivalence to phenytoin and valproate) and for seizure prophylaxis after traumatic brain injury, with the practical advantages of no enzyme induction, no need for cardiac monitoring during loading and no serum level requirement.",
+        metabolism:
+          "Nearly 100% oral bioavailability, <10% protein bound, small Vd (~0.6 L/kg). Two-thirds is excreted unchanged in the urine and the remainder undergoes non-hepatic enzymatic hydrolysis to an inactive carboxylic acid metabolite — so there are essentially no CYP interactions, but the dose must be reduced in renal impairment and supplemented after haemodialysis. Half-life 6–8 h (longer in renal failure).",
+        adverseEffects:
+          "Behavioural and psychiatric effects are the main problem — irritability, agitation, aggression, mood disturbance, psychosis and suicidality, which may be mistaken for ICU delirium; also somnolence, dizziness, headache, asthenia and thrombocytopenia or leucopenia. Rare severe cutaneous reactions including DRESS and Stevens–Johnson syndrome. Accumulation causes excess sedation in undiagnosed renal impairment.",
+        topicIds: ["neurointensive-care", "anticonvulsants"],
+      },
+      {
+        drug: "Phenytoin",
+        slug: "phenytoin",
+        drugClass: "Hydantoin anticonvulsant (class Ib antiarrhythmic activity)",
+        pharmacodynamics:
+          "Use-dependent blockade of voltage-gated sodium channels in their inactivated state, prolonging recovery and preventing high-frequency repetitive firing without impairing normal transmission — anticonvulsant in status epilepticus (20 mg/kg load) and in seizure prophylaxis. Also shortens the action potential in Purkinje tissue (used historically in digoxin-induced arrhythmia).",
+        metabolism:
+          "90% protein bound to albumin — free (active) fraction rises in hypoalbuminaemia, uraemia, pregnancy and with displacement by valproate or salicylates, so total levels mislead in ICU patients (correct with the Sheiner–Tozer equation or measure free phenytoin; therapeutic total range 10–20 mg/L). Hepatic CYP2C9/2C19 hydroxylation is saturable: kinetics are zero-order at therapeutic concentrations, so small dose increases cause large, unpredictable rises in level. A potent inducer of CYP3A4 and P-glycoprotein, reducing the effect of many drugs. Fosphenytoin is a water-soluble prodrug with less infusion-site toxicity.",
+        adverseEffects:
+          "Infusion-related: hypotension, bradycardia and arrhythmia if infused faster than 50 mg/min (propylene glycol diluent) — cardiac monitoring mandatory; 'purple glove syndrome' and severe tissue injury on extravasation (the solution is strongly alkaline, pH ~12). Dose-related: nystagmus, ataxia, dysarthria, sedation and coma. Idiosyncratic: rash, DRESS, Stevens–Johnson syndrome and toxic epidermal necrolysis (HLA-B*15:02), hepatitis, agranulocytosis and aplastic anaemia. Chronic: gingival hyperplasia, hirsutism, coarse facies, cerebellar atrophy, megaloblastic anaemia (folate), osteomalacia and teratogenicity.",
+        topicIds: ["neurointensive-care", "anticonvulsants"],
+      },
+      {
+        drug: "Hypertonic saline 2.7–5%",
+        slug: "hypertonic-saline",
+        drugClass: "Hyperosmolar crystalloid osmotherapy",
+        pharmacodynamics:
+          "Raises plasma osmolality and, because sodium has a high reflection coefficient at an intact blood–brain barrier, draws water from the cerebral interstitium and cells into the intravascular compartment, reducing brain water and ICP within minutes. Unlike mannitol it also expands intravascular volume and raises MAP, so cerebral perfusion pressure improves — an advantage in the hypovolaemic or hypotensive patient. Additional effects include improved rheology and microcirculatory flow, and immunomodulation. Also the specific treatment of symptomatic hyponatraemia (3% boluses).",
+        metabolism:
+          "Not metabolised: sodium and chloride distribute through the extracellular fluid and are excreted renally. The effect is monitored with serum sodium (target commonly 145–155 mmol/L) and osmolality; a functioning kidney is needed to excrete the load. Boluses of 2.7–5% may be given peripherally in most protocols, whereas concentrations above 5% are given centrally.",
+        adverseEffects:
+          "Hypernatraemia and hyperchloraemic metabolic acidosis; fluid overload and pulmonary oedema in cardiac or renal failure; phlebitis and (with high concentrations) tissue necrosis; hypokalaemia; coagulopathy and platelet dysfunction at high volumes; rebound intracranial hypertension when stopped abruptly; and osmotic demyelination syndrome if chronic hyponatraemia is corrected faster than 8–10 mmol/L in 24 h. Renal impairment occurs with sustained sodium >160 mmol/L.",
+        topicIds: ["neurointensive-care", "traumatic-brain-injury"],
+      },
+      {
+        drug: "Mannitol 20%",
+        slug: "mannitol",
+        drugClass: "Osmotic diuretic (six-carbon sugar alcohol)",
+        pharmacodynamics:
+          "Osmotically active and largely excluded from cells and the intact blood–brain barrier, creating an osmotic gradient that removes water from brain tissue and reduces ICP within 15–30 min for 2–6 h; there is also an early rheological effect (reduced blood viscosity and haematocrit with reflex cerebral vasoconstriction) and free-radical scavenging. In the nephron it remains in the tubular lumen, obliging water excretion — an osmotic diuresis with loss of sodium, potassium and magnesium. Transient plasma volume expansion precedes the diuresis.",
+        metabolism:
+          "Given IV only; minimally metabolised (<10% hepatic to glycogen). Freely filtered by the glomerulus and not reabsorbed, so elimination depends entirely on renal function — half-life 0.5–2.5 h, markedly prolonged in acute kidney injury, when accumulation causes hyperosmolar hyponatraemia. It crystallises at low temperature (warm and use a filter) and its effect is monitored with serum osmolality and the osmolar gap (stop if osmolality >320 mOsm/kg or gap >55).",
+        adverseEffects:
+          "Hypovolaemia and hypotension from brisk diuresis, with reduced cerebral perfusion pressure if not replaced; hypernatraemia, hypokalaemia, hypomagnesaemia; initially dilutional hyponatraemia and (in renal failure) hyperkalaemia; acute pulmonary oedema during the volume-expansion phase in cardiac failure; osmotic nephrosis and acute kidney injury; rebound raised ICP with repeated dosing or a disrupted blood–brain barrier; tissue necrosis on extravasation. Avoid in anuria, established severe AKI and hypovolaemia.",
+        topicIds: ["neurointensive-care", "diuretics"],
+      },
+      {
+        drug: "Nimodipine",
+        slug: "nimodipine",
+        drugClass: "Dihydropyridine calcium channel blocker with cerebral selectivity",
+        pharmacodynamics:
+          "Blocks L-type voltage-gated calcium channels in vascular smooth muscle, and its high lipophilicity gives preferential cerebral vascular action. In aneurysmal subarachnoid haemorrhage it improves neurological outcome and reduces delayed cerebral ischaemia — the benefit is neuroprotective rather than simply angiographic (it does not reliably reverse large-vessel vasospasm), probably through effects on the microcirculation, cortical spreading depolarisation and calcium-mediated neuronal injury. Standard therapy is 60 mg orally/NG 4-hourly for 21 days.",
+        metabolism:
+          "Well absorbed but subject to extensive first-pass CYP3A4 metabolism, giving an oral bioavailability of only 5–15%; >95% protein bound. Metabolised to inactive dehydronimodipine and other metabolites, excreted in bile and urine; half-life 1–2 h (biphasic terminal up to 9 h). Interactions are important — CYP3A4 inhibitors (macrolides, azoles, grapefruit juice) markedly raise concentrations and inducers (rifampicin, phenytoin, carbamazepine) abolish the effect. IV administration is used where enteral access fails; the oral solution must never be injected.",
+        adverseEffects:
+          "Hypotension is the dose-limiting effect and may threaten cerebral perfusion pressure — reduce to 30 mg 2-hourly rather than omitting doses, and support with vasopressors/fluid. Also headache, flushing, reflex tachycardia, peripheral oedema, nausea, ileus, deranged liver enzymes and thrombocytopenia. Potentiates other antihypertensives and, with IV β-blockers, can cause profound hypotension.",
+        topicIds: ["neurointensive-care", "subarachnoid-haemorrhage"],
+      },
+    ],
+  },
+  {
+    id: "coagulation",
+    title: "Haemostasis and anticoagulation",
+    blurb:
+      "Antifibrinolytics, heparins, factor concentrates and reversal agents — pharmacology defined by the coagulation cascade step each drug touches.",
+    drugs: [
+      {
+        drug: "Tranexamic acid",
+        slug: "tranexamic-acid",
+        drugClass: "Synthetic lysine analogue antifibrinolytic",
+        pharmacodynamics:
+          "Competitively blocks the lysine-binding (kringle) sites on plasminogen and plasmin, preventing their attachment to fibrin so fibrinolysis cannot proceed; clot is stabilised rather than newly formed. Mortality benefit in trauma (CRASH-2) and in post-partum haemorrhage (WOMAN) is time-critical — within 3 h of injury or bleeding onset — and it reduces surgical blood loss and mortality in isolated head injury given early (CRASH-3). No effect on platelet function or the coagulation factors themselves.",
+        metabolism:
+          "Oral bioavailability ~45%; minimal protein binding (~3%, to plasminogen), Vd ~0.4 L/kg with good tissue penetration including CSF. Barely metabolised — more than 90% is excreted unchanged in the urine by glomerular filtration, so the dose must be reduced substantially in renal impairment. Half-life 2–3 h.",
+        adverseEffects:
+          "Hypotension, flushing and nausea with rapid IV injection; visual disturbance and colour-vision change; seizures at high dose (glycine-receptor antagonism) especially in cardiac surgery and renal failure; and a theoretical thrombotic risk — the large trials did not show excess venous thromboembolism, but avoid in active intravascular coagulation or known DIC with thrombosis. Fatal outcomes have followed inadvertent intrathecal administration — a critical drug-error risk near neuraxial procedures.",
+        topicIds: ["transfusion-coagulation", "major-haemorrhage"],
+      },
+      {
+        drug: "Enoxaparin",
+        slug: "enoxaparin",
+        drugClass: "Low molecular weight heparin",
+        pharmacodynamics:
+          "Binds antithrombin III via its pentasaccharide sequence, accelerating inhibition of factor Xa (with an anti-Xa:anti-IIa ratio of about 3–4:1 because the shorter chains cannot bridge to thrombin). Used for venous thromboembolism prophylaxis and treatment and in acute coronary syndrome; a more predictable dose–response than unfractionated heparin means routine monitoring is unnecessary, though anti-Xa levels can be checked in renal failure, pregnancy and extremes of body weight.",
+        metabolism:
+          "Given subcutaneously with ~90% bioavailability; peak anti-Xa activity at 3–5 h. Partly depolymerised in the liver but predominantly cleared by the kidney, giving a half-life of 4–7 h that is significantly prolonged in renal impairment — reduce the dose when eGFR <30 mL/min or use unfractionated heparin. Absorption is unreliable in shock and marked oedema.",
+        adverseEffects:
+          "Bleeding — including epidural/spinal haematoma, hence strict neuraxial timing intervals (12 h after a prophylactic and 24 h after a treatment dose before a block; 4 h after catheter removal before the next dose); heparin-induced thrombocytopenia (much less common than with unfractionated heparin but still possible — monitor platelets); hyperkalaemia from aldosterone suppression; injection-site bruising; transaminitis; and osteoporosis with prolonged use. Only partially reversed by protamine (approximately 60%); consider andexanet is not indicated — use protamine and supportive measures.",
+        topicIds: ["transfusion-coagulation", "venous-thromboembolism"],
+      },
+      {
+        drug: "Unfractionated heparin",
+        slug: "unfractionated-heparin",
+        drugClass: "Indirect thrombin inhibitor (glycosaminoglycan mixture)",
+        pharmacodynamics:
+          "Binds antithrombin III and induces a conformational change that accelerates its inhibition of thrombin (IIa) and factor Xa by around 1000-fold, and additionally IXa, XIa and XIIa; long chains bridge antithrombin to thrombin, giving an anti-Xa:anti-IIa ratio of 1:1. Used where rapid onset and offset or reversibility matter — ACS, extracorporeal circuits, CRRT, and in severe renal failure. Monitored by APTT ratio (1.5–2.5) or anti-Xa, and by ACT in cardiopulmonary bypass and ECMO.",
+        metabolism:
+          "IV or subcutaneous (erratic absorption); highly protein bound with a large negative charge. Saturable, dose-dependent clearance — rapid reticuloendothelial and endothelial uptake and depolymerisation at low doses, and slower renal elimination at higher doses — so the half-life rises from ~30 min to over 2 h with increasing dose. Effect is reduced in antithrombin deficiency (a common cause of 'heparin resistance' in sepsis and after cardiac surgery, treated with antithrombin concentrate or FFP) and by high factor VIII and fibrinogen levels.",
+        adverseEffects:
+          "Bleeding; heparin-induced thrombocytopenia type II — an IgG antibody against platelet factor 4–heparin complexes causing a fall in platelets after 5–10 days with paradoxical arterial and venous thrombosis (use the 4Ts score, stop all heparin including flushes and switch to argatroban, danaparoid or bivalirudin — never warfarin alone or platelets); hyperkalaemia; osteoporosis and alopecia with long-term use; transaminitis; hypersensitivity. Reversal is with protamine 1 mg per 100 units of heparin given in the preceding hour — which itself can cause hypotension, bradycardia, anaphylaxis and pulmonary hypertension.",
+        topicIds: ["transfusion-coagulation", "renal-replacement-therapy"],
+      },
+      {
+        drug: "Prothrombin complex concentrate",
+        slug: "prothrombin-complex-concentrate",
+        drugClass: "Plasma-derived concentrate of vitamin K-dependent factors (II, VII, IX, X plus protein C/S and heparin)",
+        pharmacodynamics:
+          "Directly replaces the vitamin K-dependent clotting factors, restoring thrombin generation within 10–30 min — far faster and in a much smaller volume than fresh frozen plasma. First-line, with intravenous vitamin K 5–10 mg, for warfarin reversal in major or intracranial bleeding (dose 25–50 units/kg by INR and weight), and used for factor Xa inhibitor-associated life-threatening bleeding where andexanet alfa is unavailable, and in liver disease-associated bleeding guided by viscoelastic testing.",
+        metabolism:
+          "Given IV; the factors follow the pharmacokinetics of their native counterparts — factor VII has the shortest half-life (4–6 h), while factor II persists 60–72 h. This mismatch is why vitamin K must always be co-administered for warfarin reversal: otherwise the INR rebounds as factor VII falls. Virally inactivated and heparin-containing (avoid in known HIT).",
+        adverseEffects:
+          "Thromboembolism — myocardial infarction, stroke, venous thrombosis and DIC — particularly with repeated or high doses and in patients with active thrombotic risk; hypersensitivity and anaphylaxis; heparin-induced thrombocytopenia from the heparin content; theoretical transmission of infection despite viral inactivation; and a falsely reassuring INR after administration that does not reflect ongoing haemostatic failure. Recheck INR and clinical bleeding 30 min after dosing.",
+        topicIds: ["transfusion-coagulation", "major-haemorrhage"],
+      },
+      {
+        drug: "Andexanet alfa / idarucizumab",
+        slug: "andexanet-idarucizumab",
+        drugClass: "Targeted anticoagulant reversal agents — recombinant decoy factor Xa and a humanised monoclonal antibody fragment",
+        pharmacodynamics:
+          "Andexanet alfa is a modified, catalytically inactive recombinant factor Xa that acts as a high-affinity decoy, sequestering apixaban and rivaroxaban (and, indirectly, low molecular weight heparin/fondaparinux via antithrombin binding) so anti-Xa activity falls within minutes; it is given as a bolus followed by a 2-hour infusion because rebound occurs. Idarucizumab is a Fab fragment with an affinity for dabigatran some 350 times that of thrombin, binding free and thrombin-bound drug and neutralising it almost completely within minutes after 5 g IV; it has no intrinsic procoagulant activity.",
+        metabolism:
+          "Both are proteins given intravenously. Andexanet has an initial half-life of ~1 h and anti-Xa inhibition returns towards baseline within 2 h of stopping the infusion. Idarucizumab is cleared renally and by proteolytic catabolism with a half-life of ~45 min; because dabigatran redistributes from tissue, a plasma rebound can occur at 12–24 h, sometimes needing a second dose. Neither requires dose adjustment for renal function, though dabigatran itself accumulates markedly in renal failure (and is dialysable).",
+        adverseEffects:
+          "Andexanet alfa: thrombotic events (ischaemic stroke, myocardial infarction, venous thromboembolism) in around 10% — anticoagulation should be restarted as soon as clinically safe; infusion reactions; and interference with heparin-based anticoagulation, so it must not be given before cardiopulmonary bypass. Idarucizumab: thromboembolism from the unopposed underlying prothrombotic condition, hypersensitivity, and caution in hereditary fructose intolerance (sorbitol excipient). Both are extremely expensive and use is protocolised — confirm significant drug levels and life-threatening bleeding first.",
+        topicIds: ["transfusion-coagulation", "major-haemorrhage"],
+      },
+      {
+        drug: "Regional citrate (CRRT)",
+        slug: "regional-citrate-anticoagulation",
+        drugClass: "Regional (circuit-limited) anticoagulant — calcium chelator",
+        pharmacodynamics:
+          "Citrate infused into the pre-filter limb chelates ionised calcium, lowering post-filter iCa to 0.25–0.35 mmol/L; because calcium is an essential cofactor for the tenase and prothrombinase complexes, coagulation is arrested inside the circuit only. Calcium is replaced systemically to keep patient iCa at 1.1–1.3 mmol/L, so there is no systemic anticoagulation — the KDIGO-recommended first-line strategy for continuous renal replacement therapy, giving longer filter life and less bleeding than heparin.",
+        metabolism:
+          "Citrate that returns to the patient is rapidly metabolised in the mitochondrial Krebs cycle of liver, skeletal muscle and renal cortex, generating bicarbonate (each mmol yields ~3 mmol) — hence a mild metabolic alkalosis is expected. Metabolism is impaired in severe hepatic failure, shock with tissue hypoperfusion and profound lactic acidosis, when citrate accumulates. Monitoring is by patient ionised calcium, total calcium, the total:ionised calcium ratio and acid–base status.",
+        adverseEffects:
+          "Citrate accumulation ('citrate lock') — a rising total:ionised calcium ratio >2.5, worsening metabolic acidosis, an increasing anion gap and falling ionised calcium despite rising calcium replacement, requiring reduction or cessation of citrate; metabolic alkalosis with over-delivery; hypocalcaemia or hypercalcaemia from mis-set replacement; hypomagnesaemia (also chelated); hypernatraemia and hyperglycaemia from the citrate solution's sodium and dextrose load. Relative contraindications are severe liver failure and refractory shock with lactate >8 mmol/L.",
+        topicIds: ["renal-replacement-therapy", "acid-base-balance"],
+      },
+    ],
+  },
+  {
+    id: "metabolic-gi",
+    title: "Metabolic, endocrine and gastrointestinal",
+    blurb:
+      "Hormones, electrolytes, antidotes and acid suppression — mechanisms that explain both the therapeutic effect and the monitoring required.",
+    drugs: [
+      {
+        drug: "Insulin (soluble)",
+        slug: "insulin",
+        drugClass: "Endogenous polypeptide hormone (recombinant human short-acting)",
+        pharmacodynamics:
+          "Binds the insulin receptor, a transmembrane tyrosine kinase; autophosphorylation recruits IRS proteins and activates PI3K/Akt, causing GLUT4 translocation to the membrane of skeletal muscle and adipocytes (glucose uptake), glycogen synthesis, lipogenesis, protein synthesis, and inhibition of gluconeogenesis, glycogenolysis, lipolysis and ketogenesis. Also drives potassium, phosphate and magnesium intracellularly via Na⁺/K⁺-ATPase stimulation — the basis of its use in hyperkalaemia with glucose — and it is the cornerstone of DKA/HHS management, where suppression of ketogenesis matters more than glucose lowering.",
+        metabolism:
+          "Given IV in critical illness (or subcutaneously); the IV half-life is only 5–10 min, so an infusion is required and the effect stops soon after cessation — a common cause of rebound ketosis in DKA if the infusion is stopped before ketones clear. Degraded by insulin-degrading enzyme and glutathione insulin transhydrogenase in the liver (~50% first pass), kidney and muscle; requirements fall in renal and hepatic failure. Adsorbs to plastic — flush the giving set. Sensitivity is reduced by catecholamines, steroids, sepsis and obesity.",
+        adverseEffects:
+          "Hypoglycaemia is the major hazard — masked by sedation, so hourly glucose monitoring is essential and severe hypoglycaemia carries increased mortality (NICE-SUGAR); hypokalaemia, hypophosphataemia and hypomagnesaemia (especially during DKA treatment and refeeding); rebound hyperglycaemia and ketosis if stopped abruptly; fluid retention and weight gain; local lipohypertrophy or allergy with subcutaneous use. Cerebral oedema risk in DKA is compounded by rapid osmolar shifts; use a fixed-rate weight-based infusion with glucose once the level falls below 14 mmol/L.",
+        topicIds: ["icu-endocrine-emergencies", "electrolyte-disorders"],
+      },
+      {
+        drug: "Calcium gluconate 10%",
+        slug: "calcium-gluconate",
+        drugClass: "Divalent cation salt — membrane stabiliser and inotrope",
+        pharmacodynamics:
+          "Raises extracellular ionised calcium, restoring the transmembrane gradient so the cardiac resting potential and threshold potential separate again — this reverses the ECG changes and arrhythmia risk of hyperkalaemia within minutes without lowering potassium. Calcium is also an essential cofactor for excitation–contraction coupling (positive inotropy), for vascular smooth muscle tone (raising SVR) and for coagulation factors, and it antagonises magnesium toxicity, calcium channel blocker overdose and hydrofluoric acid burns. 10 mL of 10% calcium gluconate provides 2.2 mmol of calcium — roughly a third of the equivalent volume of calcium chloride.",
+        metabolism:
+          "Given IV; the gluconate salt requires hepatic metabolism to liberate calcium, so calcium chloride is preferred in severe hepatic dysfunction and cardiac arrest, though gluconate is less irritant and safer peripherally. Ionised calcium is regulated by parathyroid hormone, vitamin D and calcitonin, with renal excretion and bone buffering; effect duration is 30–60 min, so definitive potassium-lowering therapy must follow.",
+        adverseEffects:
+          "Bradycardia and arrhythmia with rapid injection; severe tissue necrosis and calcinosis on extravasation; hypercalcaemia with confusion, nausea, arrhythmia and renal impairment; precipitation with bicarbonate and phosphate in the same line; and — importantly — potentiation of digoxin toxicity, so calcium is avoided in digoxin-related hyperkalaemia. It does not treat the total body potassium load and can mask ongoing hyperkalaemia if repeated without addressing the cause.",
+        topicIds: ["electrolyte-disorders", "icu-arrhythmias"],
+      },
+      {
+        drug: "Potassium chloride",
+        slug: "potassium-chloride",
+        drugClass: "Electrolyte replacement",
+        pharmacodynamics:
+          "Restores the extracellular potassium concentration and hence the resting membrane potential of excitable tissue, reducing the arrhythmia risk, muscle weakness and ileus of hypokalaemia and correcting the potassium losses of diuretics, diarrhoea, DKA treatment, refeeding and renal replacement therapy. Because 98% of body potassium is intracellular, serum concentration is a poor guide to total deficit — a fall of 1 mmol/L may represent a 200–400 mmol deficit — and magnesium must be replaced concurrently or renal potassium wasting continues.",
+        metabolism:
+          "Given by central infusion for concentrated preparations (peripheral lines tolerate up to 40 mmol/L) at a rate usually limited to 10 mmol/h without cardiac monitoring, or up to 20 mmol/h with monitoring in critical hypokalaemia. Not metabolised; ~90% is excreted by the kidney under aldosterone control, with the rest in stool. Excretion is impaired in renal failure, hypoaldosteronism, and with ACE inhibitors, ARBs, potassium-sparing diuretics, trimethoprim and heparin, all of which greatly increase the risk of iatrogenic hyperkalaemia.",
+        adverseEffects:
+          "Hyperkalaemia with peaked T waves, broad QRS, sine-wave pattern and asystole — the commonest severe iatrogenic error, with fatal outcomes from concentrated ampoules given as a bolus (never give undiluted potassium); phlebitis and pain on peripheral infusion; tissue necrosis on extravasation; nausea and gastrointestinal ulceration with oral preparations. Check magnesium, renal function and urine output before and during replacement, and recheck potassium after each 20–40 mmol.",
+        topicIds: ["electrolyte-disorders", "icu-arrhythmias"],
+      },
+      {
+        drug: "Pantoprazole / omeprazole",
+        slug: "proton-pump-inhibitors",
+        drugClass: "Proton pump inhibitors (substituted benzimidazoles)",
+        pharmacodynamics:
+          "Lipophilic prodrugs that concentrate in the acidic secretory canaliculus of the gastric parietal cell, where they are protonated to a reactive sulfenamide that covalently and irreversibly binds cysteine residues on the H⁺/K⁺-ATPase, abolishing acid secretion until new pumps are synthesised. This gives profound, prolonged acid suppression (raising intragastric pH above 4) used for stress ulcer prophylaxis in high-risk ventilated or coagulopathic patients, for treatment of upper GI bleeding after endoscopy, and for reflux and peptic ulcer disease.",
+        metabolism:
+          "Acid-labile so given as enteric-coated oral formulations or IV. Extensively hepatically metabolised by CYP2C19 and CYP3A4; CYP2C19 polymorphism produces poor and ultra-rapid metabolisers, and omeprazole inhibits CYP2C19, reducing the activation of clopidogrel (pantoprazole is preferred in patients on clopidogrel) and raising phenytoin, diazepam and warfarin levels. Plasma half-life is only 1–2 h but the pharmacodynamic effect lasts 24–48 h because inhibition is irreversible. No dose adjustment in renal failure; reduce in severe hepatic impairment.",
+        adverseEffects:
+          "Increased risk of Clostridioides difficile infection, hospital-acquired and ventilator-associated pneumonia (loss of the gastric acid barrier); hypomagnesaemia (with secondary hypokalaemia and hypocalcaemia) with prolonged use; hyponatraemia; interstitial nephritis; hypergastrinaemia and rebound acid hypersecretion on withdrawal; B12, iron and calcium malabsorption with fracture risk; diarrhoea, headache and rash; microscopic colitis; and masking of gastric malignancy. Review the indication daily — stress ulcer prophylaxis should stop when enteral feeding is established and risk factors resolve.",
+        topicIds: ["gi-bleeding", "icu-nutrition"],
+      },
+      {
+        drug: "Terlipressin",
+        slug: "terlipressin",
+        drugClass: "Synthetic vasopressin analogue (V₁-selective prodrug of lysine-vasopressin)",
+        pharmacodynamics:
+          "Relatively V₁-selective agonist causing splanchnic arteriolar vasoconstriction, which reduces portal venous inflow and portal pressure — controlling variceal haemorrhage — and improves effective arterial volume, raising renal perfusion pressure in hepatorenal syndrome-acute kidney injury (used with albumin). Systemic vasoconstriction also raises MAP, and V₂ activity is much weaker than native vasopressin, though not absent.",
+        metabolism:
+          "Given IV as boluses or infusion; it is a prodrug slowly cleaved by endothelial peptidases to release lysine-vasopressin over hours, which is why intermittent 4–6 hourly dosing is possible (half-life ~50 min for the parent, with a sustained effect). Cleared by peptidases in liver and kidney; no specific dose adjustment but caution in severe cardiovascular disease and reduce or stop for ischaemic complications.",
+        adverseEffects:
+          "Ischaemic events are the key concern — digital, skin, bowel and myocardial ischaemia, and peripheral gangrene; hyponatraemia, sometimes profound and rapid (a residual V₂ effect — monitor sodium daily); bradycardia and arrhythmia; abdominal cramps and diarrhoea; hypertension; and respiratory failure/fluid overload, which drove increased mortality signals in hepatorenal syndrome trials (CONFIRM) when albumin was given liberally. Avoid in severe ischaemic heart or peripheral vascular disease and in significant hypoxaemia.",
+        topicIds: ["acute-liver-failure", "gi-bleeding"],
+      },
+      {
+        drug: "N-acetylcysteine",
+        slug: "n-acetylcysteine",
+        drugClass: "Sulfhydryl-donating antidote and mucolytic",
+        pharmacodynamics:
+          "Provides cysteine for glutathione synthesis, replenishing the hepatic glutathione that conjugates and detoxifies NAPQI — the CYP2E1-generated reactive metabolite of paracetamol — and it can also directly conjugate NAPQI and act as a sulfate precursor. Beyond this it improves microcirculatory flow, oxygen delivery and mitochondrial function through free-radical scavenging and nitric oxide effects, which is why it also benefits non-paracetamol acute liver failure. As a mucolytic it cleaves disulfide bridges in mucus, and it is used in preventing contrast nephropathy (evidence negative) and in acetaminophen-independent oxidative injury.",
+        metabolism:
+          "IV (or oral, with extensive first-pass metabolism giving ~10–30% bioavailability). Rapidly deacetylated to cysteine and incorporated into glutathione, protein and sulfate; plasma half-life ~5–6 h with mostly renal excretion of metabolites. Efficacy is time-dependent — maximal if started within 8 h of paracetamol ingestion, still worthwhile beyond 24 h and in established hepatotoxicity. The SNAP 12-hour two-bag regimen (100 mg/kg over 2 h then 200 mg/kg over 10 h) causes fewer adverse reactions than the traditional three-bag regimen.",
+        adverseEffects:
+          "Non-immune anaphylactoid reactions in 10–20% — flushing, urticaria, bronchospasm, hypotension and nausea, concentration- and rate-dependent (commoner in asthmatics and with low paracetamol levels); managed by pausing the infusion, giving an antihistamine and restarting at a slower rate rather than abandoning treatment. Also nausea and vomiting, a slight prolongation of INR (~1.3) through interference with factor assays that can be mistaken for hepatic failure, hyponatraemia if made up in excess 5% dextrose in children, and rarely seizures with dosing errors. It is not a treatment for the airway alone — nebulised use can cause bronchospasm.",
+        topicIds: ["toxicology-poisoning", "acute-liver-failure"],
+      },
+      {
+        drug: "Thiamine (Pabrinex)",
+        slug: "thiamine",
+        drugClass: "Water-soluble vitamin B1 (co-formulated B and C vitamins)",
+        pharmacodynamics:
+          "Thiamine pyrophosphate is the essential cofactor for pyruvate dehydrogenase, α-ketoglutarate dehydrogenase, branched-chain ketoacid dehydrogenase and transketolase. Without it pyruvate cannot enter the Krebs cycle, so aerobic metabolism fails and lactate accumulates (type B lactic acidosis) and cerebral energy failure occurs — hence treatment and prevention of Wernicke's encephalopathy (confusion, ophthalmoplegia, ataxia), wet and dry beriberi and refeeding syndrome. Stores last only 2–3 weeks, and requirements rise with carbohydrate load, so it must precede glucose administration in the at-risk patient.",
+        metabolism:
+          "Absorbed in the jejunum by an active saturable process (limiting oral repletion to a few mg per dose — the reason IV therapy is required in Wernicke's); given IV/IM as Pabrinex. Not protein bound, distributes to tissues where it is phosphorylated to the active pyrophosphate; excess is freely excreted in urine, so overdose is not a concern and half-life is short (~1.5 h for the parent). Depleted by alcohol excess, malnutrition, hyperemesis, bariatric surgery, prolonged parenteral nutrition without supplementation, diuretic therapy and renal replacement therapy.",
+        adverseEffects:
+          "Very well tolerated. Rare anaphylaxis with IV administration (give over 10 min or more with resuscitation facilities available); local pain, phlebitis and skin reactions; nausea; discoloured urine. Under-treatment is the real risk — high-dose regimens (e.g. 500 mg IV three times daily) are needed for suspected Wernicke's, and giving glucose before thiamine in the at-risk patient may precipitate encephalopathy.",
+        topicIds: ["icu-nutrition", "icu-endocrine-emergencies"],
+      },
+    ],
+  },
+  {
+    id: "infection",
+    title: "Antimicrobials and immunity",
+    blurb:
+      "Cell-wall, ribosomal and nucleic-acid targets, plus the pharmacokinetic/pharmacodynamic index — time above MIC, peak:MIC or AUC:MIC — that dictates dosing in critical illness.",
+    drugs: [
+      {
+        drug: "Piperacillin–tazobactam",
+        slug: "piperacillin-tazobactam",
+        drugClass: "Ureidopenicillin plus β-lactamase inhibitor",
+        pharmacodynamics:
+          "Piperacillin binds penicillin-binding proteins, inhibiting the transpeptidase cross-linking of peptidoglycan so the bacterial cell wall fails and autolysis follows — bactericidal against Gram-negatives including Pseudomonas, streptococci, enterococci and anaerobes. Tazobactam irreversibly inhibits many class A β-lactamases, restoring activity against β-lactamase-producing organisms (but not AmpC hyperproducers, ESBL reliably, or carbapenemases). Killing is time-dependent, so the goal is time above MIC — favouring extended (4-hourly or 4-hour) infusions in septic shock and in patients with augmented renal clearance.",
+        metabolism:
+          "IV only; low protein binding (~30%) and a small Vd (~0.2 L/kg) that expands substantially with oedema and capillary leak, causing sub-therapeutic early concentrations in sepsis. Minimal hepatic metabolism — 70–80% is excreted unchanged in the urine by glomerular filtration and tubular secretion; half-life ~1 h, prolonged in renal impairment (dose interval extension needed) and shortened in augmented renal clearance and CRRT (where doses often need increasing).",
+        adverseEffects:
+          "Hypersensitivity and anaphylaxis (cross-reactivity with other penicillins; ~1–2% with cephalosporins); rash and drug fever; Clostridioides difficile and antibiotic-associated diarrhoea; interstitial nephritis; an association with acute kidney injury when combined with vancomycin; hypokalaemia and metabolic alkalosis from the sodium load; thrombocytopenia, neutropenia and platelet dysfunction; deranged liver enzymes; seizures at very high concentrations in renal failure; and false-positive galactomannan assays. Review de-escalation daily and take cultures before the first dose.",
+        topicIds: ["sepsis", "antimicrobial-stewardship"],
+      },
+      {
+        drug: "Meropenem",
+        slug: "meropenem",
+        drugClass: "Carbapenem β-lactam",
+        pharmacodynamics:
+          "Binds PBP2 and PBP3 with high affinity, inhibiting peptidoglycan cross-linking; the fused β-lactam ring resists most β-lactamases including ESBL and AmpC, giving very broad activity against Gram-positive, Gram-negative and anaerobic organisms (but not MRSA, Enterococcus faecium, Stenotrophomonas or Legionella, and not carbapenemase producers). Time-dependent killing means extended or continuous infusion improves target attainment (MERCY and pharmacokinetic data) in critically ill patients with high MICs.",
+        metabolism:
+          "IV; only 2% protein bound with a Vd of ~0.25 L/kg. Partly hydrolysed by renal dehydropeptidase-1 to an inactive metabolite (unlike imipenem it does not need cilastatin), with ~70% excreted unchanged in the urine. Half-life ~1 h, requiring dose reduction in renal impairment and increased doses in augmented renal clearance, CRRT and ECMO; it is readily removed by dialysis so dose after the session. Excellent tissue and CSF penetration, hence its use in meningitis.",
+        adverseEffects:
+          "Lower seizure risk than imipenem but still epileptogenic (GABA_A antagonism) in renal failure, high doses and CNS pathology; hypersensitivity and rash; Clostridioides difficile colitis; thrombocytopenia and neutropenia; deranged liver enzymes and cholestasis; and — importantly — it reduces valproate concentrations markedly, risking seizures. Ecological harm through carbapenem resistance selection makes stewardship and de-escalation essential.",
+        topicIds: ["sepsis", "antimicrobial-stewardship"],
+      },
+      {
+        drug: "Vancomycin",
+        slug: "vancomycin",
+        drugClass: "Glycopeptide antibiotic",
+        pharmacodynamics:
+          "Binds the D-alanyl-D-alanine terminus of peptidoglycan precursors, sterically preventing transglycosylation and transpeptidation — a different step from the β-lactams — giving slow, concentration-independent bactericidal activity against Gram-positive organisms including MRSA, coagulase-negative staphylococci and (orally, for C. difficile, where it is not absorbed) Clostridioides difficile. Efficacy tracks the AUC₂₄:MIC ratio (target 400–600 for MRSA), which is why AUC-guided dosing is replacing trough-only monitoring; resistance occurs through D-ala-D-lac substitution (VRE).",
+        metabolism:
+          "IV for systemic infection (negligible oral absorption); ~50% protein bound, Vd ~0.7 L/kg, poor penetration of CSF, lung and bone. Almost entirely eliminated unchanged by glomerular filtration, so the half-life of 4–6 h extends to days in renal failure and dosing must be level-guided; loading doses (25–30 mg/kg) are based on actual body weight and are unaffected by renal function. Cleared by CRRT and high-flux dialysis.",
+        adverseEffects:
+          "Nephrotoxicity, particularly with troughs >20 mg/L, prolonged courses and co-administration of piperacillin–tazobactam, aminoglycosides or NSAIDs; ototoxicity and vestibular toxicity; vancomycin infusion reaction ('red man syndrome') — a rate-dependent, direct mast-cell histamine release causing flushing, pruritus and hypotension, prevented by infusing over at least 60 min (500 mg/h) and treated with antihistamine; neutropenia and thrombocytopenia; DRESS and linear IgA bullous dermatosis; phlebitis; and rare anaphylaxis. Monitor levels, renal function and daily need.",
+        topicIds: ["sepsis", "antimicrobial-stewardship"],
+      },
+      {
+        drug: "Ceftriaxone",
+        slug: "ceftriaxone",
+        drugClass: "Third-generation cephalosporin",
+        pharmacodynamics:
+          "Inhibits penicillin-binding proteins and hence peptidoglycan cross-linking, with a broad Gram-negative spectrum, good activity against Streptococcus pneumoniae, Neisseria meningitidis and Haemophilus influenzae, and excellent CSF penetration when the meninges are inflamed — hence first-line for community-acquired bacterial meningitis (with amoxicillin for Listeria in the over-50s or immunosuppressed, and dexamethasone) and for community-acquired pneumonia, pyelonephritis and gonorrhoea. Poor activity against Pseudomonas, MRSA, enterococci and anaerobes. Time-dependent killing, but a long half-life allows once-daily dosing.",
+        metabolism:
+          "IV/IM; unusually high protein binding (85–95%, concentration-dependent) and a half-life of 6–9 h. Dual elimination — 40–60% unchanged in the urine and the rest in bile as unchanged drug and inactive metabolites — so no dose reduction is needed in isolated mild-to-moderate renal or hepatic impairment, though the dose is capped when both fail. Displaces bilirubin from albumin, which is critical in neonates.",
+        adverseEffects:
+          "Hypersensitivity including anaphylaxis and cross-reactivity with penicillins; Clostridioides difficile colitis (a high-risk agent) and selection of ESBL organisms; biliary sludge/pseudolithiasis with abdominal pain, especially in children and with high doses; immune haemolytic anaemia (occasionally fatal), neutropenia and thrombocytopenia; interstitial nephritis and, in children, renal precipitation with calcium; encephalopathy and seizures in renal failure. Contraindicated in neonates receiving IV calcium (fatal calcium–ceftriaxone precipitation) and in jaundiced neonates (kernicterus risk).",
+        topicIds: ["sepsis", "cns-infection"],
+      },
+      {
+        drug: "Co-trimoxazole",
+        slug: "co-trimoxazole",
+        drugClass: "Trimethoprim–sulfamethoxazole (sequential folate pathway inhibitor)",
+        pharmacodynamics:
+          "Sulfamethoxazole is a structural analogue of para-aminobenzoic acid and inhibits dihydropteroate synthase, while trimethoprim inhibits dihydrofolate reductase — sequential blockade of bacterial folate synthesis that is synergistic and bactericidal. Human cells use preformed folate and have a far lower affinity target, giving selectivity. It is the treatment of choice for Pneumocystis jirovecii pneumonia (high dose 120 mg/kg/day in divided doses, with corticosteroids if PaO₂ <9.3 kPa) and its prophylaxis, and is used for Nocardia, Stenotrophomonas, Listeria and MRSA soft-tissue infection.",
+        metabolism:
+          "Excellent oral bioavailability (>90%) with IV available; trimethoprim is more lipophilic with a large Vd and good tissue/lung penetration, sulfamethoxazole is more protein bound (~65%). Sulfamethoxazole is acetylated and glucuronidated hepatically (slow acetylators are at higher risk of hypersensitivity), trimethoprim is partly metabolised and largely renally excreted; both need dose reduction when eGFR falls below 30 mL/min. Half-lives 8–12 h allow 6–12 hourly dosing.",
+        adverseEffects:
+          "Hyperkalaemia — trimethoprim blocks the distal tubular epithelial sodium channel like amiloride, a very common problem at PCP treatment doses; a rise in creatinine from inhibited tubular secretion without true GFR change; myelosuppression, megaloblastic anaemia and agranulocytosis (folinic acid rescue, never folic acid, in PCP); severe cutaneous reactions including Stevens–Johnson syndrome, toxic epidermal necrolysis and DRESS; hepatitis and cholestasis; aseptic meningitis; hyponatraemia; crystalluria and interstitial nephritis; and haemolysis in G6PD deficiency. Interactions with methotrexate, warfarin, phenytoin, ACE inhibitors and potassium-sparing diuretics are clinically important. Avoid in pregnancy (first and third trimester).",
+        topicIds: ["immunology-intensivists", "sepsis"],
+      },
+      {
+        drug: "Aciclovir",
+        slug: "aciclovir",
+        drugClass: "Acyclic guanosine nucleoside analogue antiviral",
+        pharmacodynamics:
+          "A prodrug selectively phosphorylated by viral thymidine kinase to aciclovir monophosphate, then by cellular kinases to the triphosphate, which competitively inhibits viral DNA polymerase and is incorporated into the growing DNA chain causing termination. This dual dependence on a viral enzyme gives high selectivity and low host toxicity. Active against herpes simplex 1 and 2 and varicella zoster (weakly against EBV/CMV — ganciclovir is required for CMV). Empirical high-dose IV therapy (10 mg/kg 8-hourly) is started in suspected HSV encephalitis before PCR results, since delay worsens outcome.",
+        metabolism:
+          "Poor oral bioavailability (10–20%; valaciclovir is the better-absorbed prodrug), low protein binding (~15%) and a Vd near total body water with good CSF penetration (~50% of plasma). Minimal hepatic metabolism to 9-carboxymethoxymethylguanine; 60–90% is excreted unchanged in the urine by filtration and tubular secretion, so the half-life of 2–3 h rises markedly in renal impairment and the dose interval must be extended. Well dialysed. Doses in obesity are based on ideal or adjusted body weight to limit toxicity.",
+        adverseEffects:
+          "Crystal nephropathy and acute kidney injury from intratubular precipitation — prevented by slow infusion over at least 1 h and generous hydration; neurotoxicity with confusion, hallucinations, tremor, myoclonus and seizures (from the CMMG metabolite, especially with renal impairment and high doses, and often mistaken for the encephalitis being treated); phlebitis and local irritation with extravasation injury; nausea and vomiting; deranged liver enzymes; thrombocytopenia and neutropenia; and rare thrombotic thrombocytopenic purpura at very high doses in the immunocompromised. Monitor renal function daily during high-dose therapy.",
+        topicIds: ["cns-infection", "immunology-intensivists"],
+      },
+    ],
+  },
 ];
+
+export const icuDrugMechanismCount = icuDrugMechanismGroups.reduce((n, g) => n + g.drugs.length, 0);
