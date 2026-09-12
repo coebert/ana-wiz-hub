@@ -7,7 +7,8 @@ import { perioperativeTopics } from "@/data/curriculum";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { Link } from "react-router-dom";
-import { BookOpenCheck, Stethoscope } from "lucide-react";
+import { BookOpenCheck, Pill, Stethoscope } from "lucide-react";
+import { anaesthesiaDrugCount } from "@/data/anaesthesiaDrugDoses";
 import { Button } from "@/components/ui/button";
 
 const PerioperativeSection = () => {
@@ -63,6 +64,17 @@ const PerioperativeSection = () => {
           </div>
         </div>
         <Button asChild variant="outline" className="shrink-0"><Link to="/perioperative/co-existing-disease">Open overview</Link></Button>
+      </section>
+
+      <section className="border-b border-border py-5 mb-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex items-start gap-3">
+          <Pill className="h-6 w-6 shrink-0 text-perioperative mt-0.5" aria-hidden />
+          <div>
+            <h2 className="font-semibold text-foreground">Anaesthesia Drug Dosing Table</h2>
+            <p className="mt-1 text-sm text-muted-foreground">Dose, route, frequency and key indications for {anaesthesiaDrugCount} anaesthetic drugs — induction, maintenance, analgesia and reversal — in one searchable table.</p>
+          </div>
+        </div>
+        <Button asChild variant="outline" className="shrink-0"><Link to="/perioperative/drug-doses">Open dosing table</Link></Button>
       </section>
 
       <section id="topics" className="scroll-mt-28">

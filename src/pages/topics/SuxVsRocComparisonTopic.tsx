@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { SectionLayout } from "@/components/layout/SectionLayout";
+import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
 
 /**
  * Comparison guide: Suxamethonium vs Rocuronium for RSI.
@@ -291,6 +292,7 @@ const SuxVsRocComparisonTopic = () => {
             <li><Link to="/pharmacology/iv-anaesthetics" className="text-pharmacology underline">IV Anaesthetics</Link> — induction agents paired with NMBAs for RSI.</li>
           </ul>
         </section>
+      <AnaesthesiaDosingCallout focus="suxamethonium and rocuronium dosing" />
       </article>
     </SectionLayout>
   );
