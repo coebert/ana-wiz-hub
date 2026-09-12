@@ -126,6 +126,51 @@ const NeuroanaesthesiaTopic = () => {
           </ExamSection>
           </div>
 
+          <div id="brain-relaxation" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CN_BK_03"]}>
+            <CollapsibleSubsection title="Achieving a Relaxed (Slack) Brain">
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              "Brain relaxation" describes the size and firmness of the brain seen through the craniotomy. It is related to, but distinct from, intracranial pressure — a patient with a normal ICP can still have a tight brain, and relaxation determines operating conditions, the degree of retraction needed, retraction injury and likely outcome <InlineRef topicId="neuroanaesthesia" refLabel="BJA 2016 Brain Relaxation" />. It is graded intra-operatively by the surgeon on a four-point scale (1 = perfectly relaxed/slack, 2 = satisfactory, 3 = tight/swollen, 4 = bulging or herniating through the craniotomy); scores of 3–4 should prompt a systematic anaesthetic response rather than more retraction.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Venous outflow &amp; positioning</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li>Head up 15–30°, neutral neck, no jugular kinking or compression from tube ties or the pin frame.</li>
+                  <li>Avoid coughing, straining, bucking and PEEP higher than needed — all raise cerebral venous pressure and brain volume.</li>
+                  <li>Ensure the drapes are not compressing the neck and the eyes/ears are free.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Ventilation</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li>PaCO₂ 4.5–5.0 kPa routinely; brief reduction to 4.0–4.5 kPa is an effective rescue for a tight brain but not a sustained strategy (ischaemia risk).</li>
+                  <li>Maintain normoxia; avoid high airway pressures.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Anaesthetic agents</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li>Propofol/remifentanil TIVA gives the most reliably slack brain; volatile &gt;1 MAC and nitrous oxide worsen relaxation.</li>
+                  <li>Deepen anaesthesia and add neuromuscular blockade before considering osmotherapy.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Osmotherapy &amp; CSF drainage</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li>Mannitol 0.25–1 g/kg over 15–20 min (osmolality &lt;320 mOsm/kg) or hypertonic saline 2.7–3% (Na⁺ &lt;155 mmol/L); hypertonic saline is preferred if hypovolaemic.</li>
+                  <li>CSF drainage via EVD or lumbar drain; surgical decompression of the lesion itself.</li>
+                  <li>Dexamethasone reduces peritumoural vasogenic oedema over hours to days — give preoperatively, not as an intra-operative rescue, and never in TBI or cSDH.</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              <strong className="text-foreground">Fluids and glucose:</strong> use isotonic crystalloid (0.9% saline or a balanced solution), avoid all hypotonic fluids and glucose-containing solutions, keep the patient euvolaemic rather than dry, and treat hyperglycaemia (target 6–10 mmol/L) because it worsens ischaemic injury.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
+
           <div id="agents" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CN_BK_03"]}>
             <CollapsibleSubsection title="Anaesthetic Effects on CBF & CMRO₂">
