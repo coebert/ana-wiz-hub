@@ -13,6 +13,8 @@ export interface DrugPharmacokinetics {
   volumeOfDistribution: string;
   /** Plasma protein binding and the binding protein. */
   proteinBinding: string;
+  /** Total plasma clearance with units, and renal vs hepatic contribution. */
+  clearance: string;
   /** Enzymes / pathways responsible for biotransformation. */
   metabolicPathway: string;
   /** Active metabolites and their clinical significance. */
