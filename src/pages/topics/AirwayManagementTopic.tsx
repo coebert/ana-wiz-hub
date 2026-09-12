@@ -467,6 +467,104 @@ const AirwayManagementTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <ExamSection id="section-obstetric-airway" exams={[Exam.FINAL]} className="scroll-mt-24">
+            <CollapsibleSubsection title="The Obstetric Difficult Airway">
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              Failed intubation occurs in roughly 1 in 200–300 obstetric general anaesthetics — about eight times the general surgical rate — because of airway oedema and vascularity, breast and chest-wall interference, reduced FRC with high oxygen consumption (desaturation within 2–3 min), aspiration risk, and the urgency of category 1 delivery. The OAA and DAS produced the first national obstetric guidelines for difficult and failed tracheal intubation, advocating <strong>nasal oxygenation and mask ventilation immediately after induction</strong>, <strong>limiting intubation attempts to two</strong> (a third only by a more experienced colleague), and <strong>early release of cricoid pressure</strong> if difficulty is encountered <InlineRef topicId="airway-management" refLabel="OAA/DAS 2015" />.
+            </p>
+            <div className="grid md:grid-cols-2 gap-3 mb-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Preparation &amp; induction</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li>Antacid prophylaxis (ranitidine/omeprazole ± sodium citrate), ramped head-up position, left lateral tilt after delivery of the uterus, and a rehearsed team brief with the obstetric team.</li>
+                  <li>Pre-oxygenate to FE′O₂ ≥0.9 (3 min or 8 vital-capacity breaths) with nasal high-flow or standard nasal cannulae for apnoeic oxygenation.</li>
+                  <li>Videolaryngoscope, short-handled laryngoscope, size 6.0–7.0 tubes, second-generation supraglottic airway and FONA set immediately available.</li>
+                  <li>Thiopentone 5–7 mg/kg or propofol 2–2.5 mg/kg with suxamethonium 1–1.5 mg/kg, or rocuronium 1 mg/kg with sugammadex 16 mg/kg drawn up.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">The failed-intubation drill</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li><strong className="text-foreground">Plan A:</strong> two attempts maximum, optimising with head position, external laryngeal manipulation, videolaryngoscopy, bougie and reduced or released cricoid pressure.</li>
+                  <li><strong className="text-foreground">Plan B:</strong> declare failed intubation, insert a second-generation SAD (up to two attempts), maintain oxygenation.</li>
+                  <li><strong className="text-foreground">Plan C:</strong> face-mask ventilation with two-person technique and airway adjuncts; then the explicit <em>wake-or-proceed</em> decision using the guideline's table — maternal condition, fetal condition, surgical urgency, obesity, aspiration risk, anaesthetist's experience and the feasibility of regional anaesthesia.</li>
+                  <li><strong className="text-foreground">Plan D:</strong> CICO — scalpel cricothyroidotomy without delay; deliver the baby to improve maternal physiology if arrest occurs (perimortem caesarean within 5 min).</li>
+                  <li>Continue cricoid pressure only while it does not impede oxygenation; keep the patient head-up and suction ready as aspiration risk persists into recovery.</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              <strong className="text-foreground">Afterwards:</strong> extubate awake, sitting up, with full reversal confirmed; document the airway findings, complete an airway alert letter to the woman and her GP, debrief the team, and arrange anaesthetic review before any future pregnancy. The strongest preventive measure remains avoiding general anaesthesia — early effective epidural analgesia in labour and antenatal anaesthetic review of high-risk women.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="section-paediatric-airway" exams={[Exam.FINAL]} className="scroll-mt-24">
+            <CollapsibleSubsection title="The Paediatric &amp; Neonatal Airway">
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              Neonates and infants are the highest-risk airway group in anaesthesia: a large occiput and tongue, obligate nasal breathing, a short trachea, cephalad and anterior larynx, floppy omega-shaped epiglottis, narrow subglottis, high oxygen consumption (6–8 ml/kg/min) and low FRC with early airway closure. Desaturation follows apnoea within seconds, and hypoxia rapidly produces bradycardia. The joint ESAIC/BJA neonatal and infant airway guidelines recommend using a <strong>videolaryngoscope with an age-adapted standard blade as the first choice for tracheal intubation</strong> and <strong>applying apnoeic oxygenation during intubation</strong> <InlineRef topicId="airway-management" refLabel="ESAIC/BJA 2024 Neonatal Airway" />.
+            </p>
+            <div className="grid md:grid-cols-2 gap-3 mb-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Anatomical &amp; physiological differences</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li>Neutral or slightly extended head with shoulder roll for neonates (a pillow under the head worsens the view); the "sniffing" position is for older children.</li>
+                  <li>Narrowest point is the subglottis/cricoid in infants, becoming the glottis with growth — use correctly sized <em>cuffed</em> tubes with cuff pressure &lt;20 cmH₂O and check for a leak.</li>
+                  <li>Sizing: cuffed ETT = age/4 + 3.5 (neonate 3.0–3.5 mm), oral length = age/2 + 12 cm (neonate ≈ 7–9 cm at the lip, or weight + 6 cm).</li>
+                  <li>Compliant chest wall and high closing volume — apply CPAP/PEEP early and avoid prolonged apnoea.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">2024 recommendations in practice</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li>Videolaryngoscopy first-line (improves first-pass success and allows supervision/teaching); limit attempts and call for senior help early.</li>
+                  <li>Apnoeic oxygenation via nasal cannulae or high-flow throughout laryngoscopy.</li>
+                  <li>Adequate depth of anaesthesia and neuromuscular blockade before instrumentation reduce laryngospasm and desaturation.</li>
+                  <li>The most experienced available clinician manages a known difficult paediatric airway; second-generation SADs are the rescue of choice and are effective as a conduit.</li>
+                  <li>Maintain normothermia, normoglycaemia and normocapnia — hypoxia in neonates causes pulmonary vasoconstriction and can reopen a right-to-left shunt.</li>
+                  <li>Emergency drugs by weight (WETFLAG): suxamethonium 1–2 mg/kg IV or 4 mg/kg IM and atropine 20 µg/kg immediately available for laryngospasm and bradycardia.</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Anticipate the syndromic airway (Pierre Robin, Treacher Collins, Goldenhar, Down syndrome — with atlanto-axial instability and subglottic stenosis) and refer elective difficult paediatric airways to a specialist centre. See <Link to="/clinical/paediatric-anaesthesia" className="text-clinical underline">Paediatric Anaesthesia</Link> for sizing, fluids and emergency drug doses.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="section-critically-ill-airway" exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Airway Management in the Critically Ill Adult">
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              Intubation outside the operating theatre carries a far higher complication rate: severe hypoxaemia, cardiovascular collapse and death are an order of magnitude more common than in elective practice, and NAP4 highlighted deficient management of these extremely vulnerable patients. The ICS/FICM/DAS guidelines set out a comprehensive strategy to optimise oxygenation, airway management and intubation in critically ill adults in all hospital locations, stressing the role of the <strong>airway team, a shared mental model, planning and communication</strong>, recommending a <strong>modified rapid-sequence approach</strong>, and presenting optimal management in an algorithm that combines Plans B and C <InlineRef topicId="airway-management" refLabel="ICS/FICM/DAS 2018 ICU Intubation" />.
+            </p>
+            <div className="grid md:grid-cols-2 gap-3 mb-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Why it is different</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li><strong className="text-foreground">Physiologically difficult airway:</strong> shunt and low FRC give little oxygen reserve; hypovolaemia, high vasopressor requirement, acidosis and right-ventricular strain mean induction agents and positive-pressure ventilation can precipitate arrest.</li>
+                  <li>Full stomach, delayed gastric emptying, raised intra-abdominal pressure and non-fasted status.</li>
+                  <li>Unfamiliar environment, limited assistance, poor positioning, cervical collars, blood and secretions, agitation or delirium.</li>
+                  <li>Human factors: fatigue, task fixation, out-of-hours staffing, and reluctance to escalate.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">The bundle</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li><strong className="text-foreground">Plan &amp; prepare:</strong> intubation checklist, verbalised A–D plan, two trained operators, capnography mandatory (including during CPR), suction, functioning IV access, difficult-airway trolley and FONA equipment at the bedside.</li>
+                  <li><strong className="text-foreground">Optimise physiology:</strong> pre-oxygenate 3–5 min with a tight-fitting mask, NIV or high-flow nasal oxygen in the ramped 25–30° position; give fluid and start a vasopressor infusion (or push-dose vasopressor) <em>before</em> induction; correct severe acidosis and consider ECG/ultrasound assessment of the right ventricle.</li>
+                  <li><strong className="text-foreground">Modified RSI:</strong> reduced-dose induction agent (ketamine 1–2 mg/kg or propofol 0.5–1 mg/kg, with a small opioid dose) plus full-dose rocuronium 1–1.2 mg/kg or suxamethonium 1–1.5 mg/kg; gentle mask ventilation is permitted to prevent hypoxaemia, and cricoid pressure is released if it hinders laryngoscopy.</li>
+                  <li><strong className="text-foreground">Videolaryngoscopy</strong> for the first attempt where available; maximum three attempts by the operator plus one by a more experienced colleague; declare failure early and move to a second-generation SAD, then FONA.</li>
+                  <li><strong className="text-foreground">After intubation:</strong> confirm with continuous capnography, secure the tube, lung-protective ventilation (6 ml/kg predicted body weight), sedation and analgesia plan, chest radiograph, and documentation with a debrief. Anticipate post-intubation hypotension and pneumothorax.</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              The same principles govern tracheostomy emergencies (see the National Tracheostomy Safety Project algorithms) and extubation of the critically ill, where reintubation risk is high and a planned, staged extubation strategy with airway-exchange catheter or NIV/HFNO support should be documented in advance.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
