@@ -62,6 +62,11 @@ const IntensiveCareSection = () => {
         </a>
         ){" "}
         , the{" "}
+        <a href="/intensive-care/paediatric-withdrawal" className="font-medium text-icu underline-offset-4 hover:underline">
+          paediatric withdrawal flow
+        </a>{" "}
+        (tapering, half-life timing, monitoring and rescue){" "}
+        , the{" "}
         <a href="/intensive-care/calculator" className="font-medium text-icu underline-offset-4 hover:underline">
           drug calculator
         </a>{" "}

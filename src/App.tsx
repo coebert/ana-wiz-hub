@@ -87,6 +87,7 @@ const IcuDrugDoses = lazy(() => import("./pages/IcuDrugDoses"));
 const IcuInfusions = lazy(() => import("./pages/IcuInfusions"));
 const IcuManagementFlows = lazy(() => import("./pages/IcuManagementFlows"));
 const PaediatricIcuFlows = lazy(() => import("./pages/PaediatricIcuFlows"));
+const PaediatricWithdrawalFlows = lazy(() => import("./pages/PaediatricWithdrawalFlows"));
 const IcuDrugCalculator = lazy(() => import("./pages/IcuDrugCalculator"));
 const IcuNursingProtocols = lazy(() => import("./pages/IcuNursingProtocols"));
 const IcuDrugMechanisms = lazy(() => import("./pages/IcuDrugMechanisms"));
@@ -196,6 +197,7 @@ const App = () => (
           <Route path="/intensive-care/infusions" element={<IcuInfusions />} />
           <Route path="/intensive-care/management-flows" element={<IcuManagementFlows />} />
           <Route path="/intensive-care/paediatric-flows" element={<PaediatricIcuFlows />} />
+          <Route path="/intensive-care/paediatric-withdrawal" element={<PaediatricWithdrawalFlows />} />
           <Route path="/intensive-care/calculator" element={<IcuDrugCalculator />} />
           <Route path="/intensive-care/nursing-protocols" element={<IcuNursingProtocols />} />
           <Route path="/intensive-care/drug-mechanisms" element={<IcuDrugMechanisms />} />
