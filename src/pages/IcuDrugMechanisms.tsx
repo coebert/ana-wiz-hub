@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, ArrowRight, FlaskConical, Search, TriangleAlert } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
@@ -11,8 +11,18 @@ import { pharmacokineticsFor } from "@/data/pk";
 import { drugSlug } from "@/lib/caseDoseReferences";
 
 const IcuDrugMechanisms = () => {
+  const [searchParams] = useSearchParams();
   const [search, setSearch] = useState("");
   const [activeGroup, setActiveGroup] = useState<string>("all");
+
+  /** Deep links from the safety and dosing pages arrive as ?slug=propofol — scroll to that card. */
+  const targetSlug = searchParams.get("slug");
+  useEffect(() => {
+    if (!targetSlug) return;
+    const el = document.getElementById(targetSlug);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [targetSlug]);
+
 
   const groups = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -167,12 +177,22 @@ const IcuDrugMechanisms = () => {
 
                     <DrugPharmacokineticsPanel slug={d.slug} />
 
-                    <Link
-                      to={`/intensive-care/drug-doses?drug=${drugSlug(d.drug)}#drug-${drugSlug(d.drug)}`}
-                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-icu underline-offset-4 hover:underline"
-                    >
-                      Doses for {d.drug} <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
+                    <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+                      <Link
+                        to={`/intensive-care/drug-doses?drug=${drugSlug(d.drug)}#drug-${drugSlug(d.drug)}`}
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-icu underline-offset-4 hover:underline"
+                      >
+                        Doses for {d.drug} <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
+                      <Link
+                        to={`/intensive-care/drug-safety?slug=${d.slug}#${d.slug}`}
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-icu underline-offset-4 hover:underline"
+                      >
+                        Interactions, contraindications and monitoring{" "}
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
+                    </div>
+
                   </article>
                 ))}
               </div>

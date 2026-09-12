@@ -1,11 +1,35 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft, ShieldAlert, Search, TriangleAlert, Ban, Activity, Link2 } from "lucide-react";
+import {
+  ArrowLeft,
+  ShieldAlert,
+  Search,
+  TriangleAlert,
+  Ban,
+  Activity,
+  Link2,
+  FlaskConical,
+} from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { icuDrugSafetyGroups, icuDrugSafetyCount } from "@/data/icuDrugSafety";
+import { icuDrugMechanismGroups } from "@/data/icuDrugMechanisms";
+import { icuDrugPharmacokinetics } from "@/data/pk";
+
+/** Mechanism records keyed by slug so each safety card can explain *why* it behaves that way. */
+const mechanismBySlug = new Map(
+  icuDrugMechanismGroups.flatMap((g) => g.drugs).map((d) => [d.slug, d]),
+);
+
+/** Trim a long narrative to its first couple of sentences for the summary line. */
+const firstSentences = (text: string, count = 2) => {
+  const parts = text.match(/[^.!?]+[.!?]+/g);
+  if (!parts) return text;
+  const summary = parts.slice(0, count).join(" ").trim();
+  return parts.length > count ? summary : summary;
+};
 
 const IcuDrugSafety = () => {
   const [searchParams] = useSearchParams();
@@ -19,6 +43,7 @@ const IcuDrugSafety = () => {
     const el = document.getElementById(targetSlug);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [targetSlug]);
+
 
   const groups = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -163,10 +188,16 @@ const IcuDrugSafety = () => {
                           Dose
                         </Link>
                         <Link
-                          to={`/intensive-care/drug-mechanisms#${d.slug}`}
+                          to={`/intensive-care/drug-mechanisms?slug=${d.slug}#${d.slug}`}
                           className="font-medium text-icu underline-offset-4 hover:underline"
                         >
-                          Mechanism
+                          Mechanism &amp; kinetics
+                        </Link>
+                        <Link
+                          to={`/intensive-care/drug-comparison?a=${d.slug}`}
+                          className="font-medium text-icu underline-offset-4 hover:underline"
+                        >
+                          Compare
                         </Link>
                       </div>
                     </div>
@@ -177,6 +208,44 @@ const IcuDrugSafety = () => {
                         <span>{d.alert}</span>
                       </p>
                     )}
+
+                    {(() => {
+                      const mech = mechanismBySlug.get(d.slug);
+                      const pk = icuDrugPharmacokinetics[d.slug];
+                      if (!mech) return null;
+                      return (
+                        <div className="mt-3 rounded-lg border border-icu/25 bg-icu/5 p-3 text-sm">
+                          <p className="flex items-center gap-1.5 font-semibold text-foreground">
+                            <FlaskConical className="h-4 w-4 text-icu" aria-hidden /> Why — mechanism
+                            behind this safety profile
+                          </p>
+                          <p className="mt-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                            {mech.drugClass}
+                          </p>
+                          <p className="mt-2 text-muted-foreground">
+                            <span className="font-medium text-foreground">Pharmacodynamics: </span>
+                            {firstSentences(mech.pharmacodynamics)}
+                          </p>
+                          <p className="mt-1.5 text-muted-foreground">
+                            <span className="font-medium text-foreground">Metabolism: </span>
+                            {firstSentences(mech.metabolism)}
+                          </p>
+                          {pk && (
+                            <p className="mt-1.5 text-muted-foreground">
+                              <span className="font-medium text-foreground">Handling: </span>
+                              {pk.organImpairment}
+                            </p>
+                          )}
+                          <Link
+                            to={`/intensive-care/drug-mechanisms?slug=${d.slug}#${d.slug}`}
+                            className="mt-2 inline-block text-sm font-medium text-icu underline-offset-4 hover:underline"
+                          >
+                            Full pharmacodynamics, metabolism and kinetics for {d.drug}
+                          </Link>
+                        </div>
+                      );
+                    })()}
+
 
                     <dl className="mt-4 space-y-4 text-sm leading-relaxed">
                       <div>
