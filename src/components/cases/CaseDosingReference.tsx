@@ -39,7 +39,7 @@ export const CaseDosingReference = ({ caseData }: CaseDosingReferenceProps) => {
                 <span className="mt-0.5 flex items-center gap-1.5 text-xs text-muted-foreground">
                   <ShieldCheck className="h-3 w-3 shrink-0" aria-hidden />
                   <Link
-                    to={`/intensive-care/drug-safety?drug=${encodeURIComponent(safetySlug)}#${safetySlug}`}
+                    to={`/intensive-care/drug-safety?slug=${safetySlug}#${safetySlug}`}
                     className="underline underline-offset-4 hover:text-foreground"
                   >
                     Safety profile
