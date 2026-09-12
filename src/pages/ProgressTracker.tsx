@@ -494,7 +494,7 @@ const ProgressTracker = () => {
                       .filter((id) => !knownIds.has(id))
                       .map((id) => ({ id, label: readableSubsectionId(id) })),
                   ];
-                  const subsectionTotal = Math.max(catalog.length, checkedIds.size);
+                  const subsectionTotal = catalog.length;
                   const topicPercent = done
                     ? 100
                     : subsectionTotal > 0
@@ -521,7 +521,9 @@ const ProgressTracker = () => {
                                 ? "Topic complete"
                                 : subsectionTotal > 0
                                   ? `${checkedIds.size}/${subsectionTotal} subsections · ${topicPercent}%`
-                                  : "Not started"}
+                                  : checkedIds.size > 0
+                                    ? `${checkedIds.size} subsection${checkedIds.size === 1 ? "" : "s"} complete`
+                                    : "Not started"}
                             </span>
                           </div>
                           <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted">
