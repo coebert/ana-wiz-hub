@@ -1,0 +1,353 @@
+import type { CaseBank } from "./types";
+
+const s = {
+  oximetryPigment: { label: "Physiol Meas 2023 (skin pigmentation)", href: "https://doi.org/10.1088/1361-6579/acd51a" },
+  oximetryPrinciples: { label: "BJA Educ: pulse oximetry", href: "https://doi.org/10.1093/bjaceaccp/mkg038" },
+  capnography: { label: "BJA Educ: capnography", href: "https://doi.org/10.1093/bjaed/mkx004" },
+  capnoShape: { label: "Bhavani-Shankar & Philip 2000", href: "https://doi.org/10.1097/00000539-200010000-00038" },
+  monitoring: { label: "Assoc Anaesth monitoring standards", href: "https://doi.org/10.1111/anae.13316" },
+  electrical: { label: "BJA Educ: electrical safety", href: "https://doi.org/10.1093/bjaed/mkx035" },
+  lasers: { label: "BJA Educ: lasers in surgery", href: "https://doi.org/10.1093/bjaed/mkx009" },
+  airwayFire: { label: "Assoc Anaesth: airway fire", href: "https://onlinelibrary.wiley.com/doi/10.1111/anae.15941" },
+  mri: { label: "BJA Educ: MRI physics and safety", href: "https://doi.org/10.1016/j.bjae.2019.04.004" },
+  mriGuideline: { label: "Assoc Anaesth 2021: MRI", href: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.15517" },
+  radiation: { label: "BJA Educ: radiation safety", href: "https://doi.org/10.1093/bjaed/mkv055" },
+  irmer: { label: "IR(ME)R 2017", href: "https://www.legislation.gov.uk/uksi/2017/1322/contents/made" },
+  arterialLine: { label: "BJA: arterial pressure measurement", href: "https://doi.org/10.1016/j.bjae.2020.06.047" },
+};
+
+export const physicsCaseBank: CaseBank = {
+  slug: "physics",
+  path: "/physics/case-bank",
+  title: "Physics & Measurement Case Bank",
+  subtitle: "Progressive scenarios in monitoring artefact, equipment safety and imaging hazards, built from the referenced physics topics.",
+  metaDescription: "Seven progressive physics and clinical measurement cases on oximetry error, capnography shapes, electrical and laser safety, MRI and radiation for FRCA revision.",
+  backPath: "/physics",
+  backLabel: "Physics & Clinical Measurement",
+  accentColor: "text-physics",
+  categories: ["Monitoring artefact", "Equipment safety", "Imaging & radiation"],
+  cases: [
+    {
+      id: "physics-oximetry-pigment",
+      title: "Reassuring saturations, hypoxaemic blood gas",
+      category: "Monitoring artefact",
+      difficulty: "Intermediate",
+      summary: "Occult hypoxaemia, skin pigmentation and the limits of the calibrated SpO₂ ratio.",
+      topicIds: ["pulse-oximetry", "clinical-measurement", "oxygen-haemoglobin", "equipment-monitoring"],
+      patient: "An adult with darkly pigmented skin is recovering after laparotomy. The oximeter reads SpO₂ 92% on oxygen, but an arterial sample shows SaO₂ 86% with PaO₂ 7.4 kPa.",
+      presentation: "The nurse asks whether the probe is faulty. The trace is well formed with a good plethysmographic waveform and no vasopressor infusion is running.",
+      stages: [
+        {
+          title: "Explain the measurement principle",
+          prompt: "What does the oximeter actually compute, and why can it disagree with SaO₂?",
+          answer: [
+            "Red (660 nm) and infrared (940 nm) absorbances are pulse-synchronous; the device derives R, the ratio of the AC:DC ratios at the two wavelengths.",
+            "R is converted to SpO₂ by an empirical calibration curve obtained from healthy volunteers, not by the Beer–Lambert law alone.",
+            "Any factor shifting absorbance or the calibration population — pigmentation, low perfusion, dyshaemoglobins, dyes — biases the reading rather than flagging an error.",
+          ],
+        },
+        {
+          title: "Quantify the clinical risk",
+          prompt: "Why does this matter for escalation decisions?",
+          answer: [
+            "Bias in darker skin is typically positive: the oximeter overestimates true saturation, so hypoxaemia can be missed.",
+            "Occult hypoxaemia (SaO₂ under 88% with SpO₂ 92–96%) is reported several times more often in patients with darker skin.",
+            "Oxygen titration, escalation triggers and trial eligibility driven by SpO₂ alone therefore risk systematic undertreatment.",
+          ],
+        },
+        {
+          title: "Act on the discrepancy",
+          prompt: "How do you manage this patient and the monitoring plan?",
+          answer: [
+            "Treat the blood gas, not the oximeter: increase oxygen, assess for atelectasis, splinting, pulmonary embolism and sepsis, and recruit with sitting up and physiotherapy.",
+            "Set an explicitly higher SpO₂ target and confirm with intermittent co-oximetry where accuracy matters.",
+            "Document the measured SpO₂–SaO₂ gap in the notes and handover so the same trap is not repeated overnight.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "The oximeter reports a calibrated estimate, not a measurement of arterial saturation. Because calibration curves are derived from volunteer desaturation studies in mostly light-skinned participants, melanin-related absorbance and low signal-to-noise conditions can bias the derived R value. The steep part of the oxyhaemoglobin dissociation curve means a small bias in saturation corresponds to a large change in PaO₂ — here 92% versus 86% represents clinically important hypoxaemia." },
+        { title: "Management and monitoring", content: "Confirm true oxygenation with co-oximetry on a blood gas when clinical suspicion and SpO₂ disagree, and repeat sampling after any change in respiratory support. Optimise probe site and perfusion, check for methaemoglobinaemia or carboxyhaemoglobinaemia if the gap persists, and use the plethysmographic waveform quality as a signal-adequacy check. Raise the SpO₂ alarm threshold in patients known to have a positive bias." },
+        { title: "Exam pitfall", content: "Do not answer that pulse oximetry is 'accurate to ±2%' without stating the conditions of that claim: accuracy degrades below 80% saturation, in poor perfusion, with motion, in the presence of dyshaemoglobins and with increased skin pigmentation. Name the AC:DC ratio and the empirical calibration explicitly." },
+      ],
+      takeHome: "SpO₂ is an empirically calibrated estimate: when it conflicts with the clinical picture, measure SaO₂ by co-oximetry and treat the patient.",
+      sourceLinks: [s.oximetryPigment, s.oximetryPrinciples, s.monitoring],
+    },
+    {
+      id: "physics-capnogram-shape",
+      title: "Sloping capnogram in a wheezy patient",
+      category: "Monitoring artefact",
+      difficulty: "Foundation",
+      summary: "Distinguishing bronchospasm from upper airway obstruction on the capnogram.",
+      topicIds: ["capnography", "clinical-measurement", "equipment-monitoring", "bronchospastic-failure", "airway-management"],
+      patient: "A 40-year-old with asthma becomes difficult to ventilate shortly after intubation. Peak pressures rise and the capnogram loses its plateau.",
+      presentation: "The trace shows a slurred, prolonged phase II and an upsloping phase III with no true alveolar plateau. Auscultation reveals widespread wheeze.",
+      stages: [
+        {
+          title: "Read the waveform",
+          prompt: "Which phases are abnormal and what does that indicate?",
+          answer: [
+            "Phase I is the inspiratory baseline (dead-space gas), phase II the rapid expiratory upstroke, phase III the alveolar plateau and phase 0 the inspiratory downstroke.",
+            "Bronchospasm produces a shark-fin shape: slurred phase II merging into a steeply sloping phase III because emptying time constants are heterogeneous.",
+            "Upper airway or circuit obstruction impedes flow uniformly, so the capnogram keeps a recognisable plateau but the whole expiratory limb is prolonged and low-amplitude if ventilation falls.",
+          ],
+        },
+        {
+          title: "Exclude the equipment causes",
+          prompt: "What must you rule out before treating bronchospasm?",
+          answer: [
+            "Check tube position and patency, kinking, secretions, herniated cuff and a blocked filter or HME.",
+            "Confirm expiratory valve function and exclude rebreathing, which raises phase I above zero.",
+            "Verify the sampling line and sidestream water trap: a partially obstructed line damps the whole waveform and mimics disease.",
+          ],
+        },
+        {
+          title: "Treat and reassess",
+          prompt: "What do you do next?",
+          answer: [
+            "Deepen anaesthesia, give inhaled or intravenous bronchodilator and adjust the ventilator for a longer expiratory time to limit gas trapping.",
+            "Watch the capnogram slope and the expiratory flow trace for resolution rather than relying on peak pressure alone.",
+            "Remember the widened arterial-to-end-tidal gradient in severe obstruction: end-tidal CO₂ underestimates PaCO₂, so confirm with a blood gas.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Waveform shape reflects mechanics. In bronchospasm, regional time constants differ, so alveolar units with long time constants continue to empty throughout expiration and phase III slopes upward; a normal plateau slope is under about 5 degrees. Fixed extrathoracic obstruction reduces flow at all times without the same regional heterogeneity, so the plateau is preserved while inspiratory and expiratory times lengthen." },
+        { title: "Management and monitoring", content: "Treat the mechanics and the cause together: bronchodilation, adequate anaesthetic depth, permissive hypercapnia, reduced respiratory rate and longer expiratory time. Continuous waveform capnography is a mandatory standard for tracheal intubation and remains the earliest monitor of oesophageal intubation, disconnection, low cardiac output and return of circulation during resuscitation." },
+        { title: "Exam pitfall", content: "Do not describe every abnormal capnogram as 'bronchospasm'. Name the phase that is abnormal, state whether the plateau is preserved and give a mechanical explanation before assigning a diagnosis." },
+      ],
+      takeHome: "Sloping phase III with a slurred upstroke means heterogeneous emptying (bronchospasm); a preserved plateau with prolonged expiration points to fixed obstruction or circuit problems.",
+      sourceLinks: [s.capnography, s.capnoShape, s.monitoring],
+    },
+    {
+      id: "physics-arterial-damping",
+      title: "The arterial line that under-reads",
+      category: "Monitoring artefact",
+      difficulty: "Intermediate",
+      summary: "Damping, resonance and zeroing errors in invasive pressure measurement.",
+      topicIds: ["pressure-measurement", "clinical-measurement", "equipment-monitoring", "cardiac-output-monitoring"],
+      patient: "A patient in theatre has a radial arterial line. The trace looks rounded, the systolic reading is 30 mmHg lower than a cuff measurement, and vasopressor is being escalated.",
+      presentation: "The flush test shows a slow return to baseline without oscillation. There is a long compliant extension and an air bubble near the transducer.",
+      stages: [
+        {
+          title: "Interpret the flush test",
+          prompt: "What does the square-wave test tell you?",
+          answer: [
+            "Optimal damping gives one or two brisk oscillations before the trace settles.",
+            "Overdamping — a sluggish return with no oscillation — under-reads systolic and over-reads diastolic pressure while mean pressure stays comparatively reliable.",
+            "Underdamping (resonance) produces prolonged ringing and falsely high systolic values.",
+          ],
+        },
+        {
+          title: "Find the physical cause",
+          prompt: "Which components produce this pattern?",
+          answer: [
+            "Air bubbles, clot, kinks, compliant tubing, excessive tubing length, a partially open tap or arterial spasm all add damping.",
+            "Zeroing at the wrong height changes mean pressure by roughly 7.5 mmHg for every 10 cm of height error.",
+            "Transducer natural frequency must be well above the pressure waveform harmonics for faithful reproduction.",
+          ],
+        },
+        {
+          title: "Correct before you treat",
+          prompt: "What action do you take?",
+          answer: [
+            "Aspirate and flush, remove bubbles, shorten and stiffen the tubing, and re-zero at the phlebostatic axis.",
+            "Base decisions on mean arterial pressure and perfusion while the trace is unreliable, cross-checked with a cuff.",
+            "Do not escalate vasopressor for an artefact; document the corrected values.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "The catheter–tubing–transducer assembly is a second-order system whose behaviour depends on natural frequency and damping coefficient. Because the arterial waveform contains harmonics up to about 20 Hz, a low natural frequency or excessive damping distorts systolic and diastolic peaks. Mean pressure is the most robust derived value, which is why it guides therapy when the trace quality is uncertain." },
+        { title: "Management and monitoring", content: "Perform and document a square-wave test at set-up and whenever readings look implausible. Keep tubing short, stiff and bubble-free, avoid multiple taps and extensions, re-zero after any patient or transducer movement, and reconcile with non-invasive measurement. Persistent damping despite optimisation suggests thrombus or spasm and may need a new line." },
+        { title: "Exam pitfall", content: "Do not say 'the arterial line is wrong' without a systematic answer: state zeroing and levelling, the flush test result, the direction of error for over- and underdamping, and which derived value remains usable." },
+      ],
+      takeHome: "Test damping before treating a number: overdamped traces under-read systolic pressure, and mean pressure is the value to trust while you fix the system.",
+      sourceLinks: [s.arterialLine, s.monitoring],
+    },
+    {
+      id: "physics-microshock",
+      title: "Diathermy, a pacing wire and an electrical alarm",
+      category: "Equipment safety",
+      difficulty: "Advanced",
+      summary: "Microshock risk, isolated power supplies and safe diathermy technique.",
+      topicIds: ["electrical-safety", "electricity-magnetism", "operating-theatre-environment", "defibrillation-pacing"],
+      patient: "A patient with a temporary transvenous pacing wire is having emergency abdominal surgery. The line isolation monitor alarms as monopolar diathermy is used.",
+      presentation: "The theatre team asks whether surgery can continue. The patient is haemodynamically dependent on pacing and the return electrode is on the contralateral thigh.",
+      stages: [
+        {
+          title: "Define the hazard",
+          prompt: "Why is this patient a class CF/microshock risk?",
+          answer: [
+            "A conductor in direct contact with myocardium concentrates current over a tiny area, so currents as small as around 50–100 µA can cause ventricular fibrillation.",
+            "Macroshock thresholds are far higher (mains-frequency current of about 50–100 mA), so ordinary body protection is not enough.",
+            "Only class CF equipment, with an isolated and current-limited patient circuit, should be connected to intracardiac conductors.",
+          ],
+        },
+        {
+          title: "Interpret the alarm",
+          prompt: "What does the line isolation monitor actually indicate?",
+          answer: [
+            "An isolated power supply has no deliberate connection to earth, so a single fault does not create a shock path.",
+            "The monitor warns that leakage current to earth has risen — the isolation is degraded, not that a shock is occurring.",
+            "Response is to identify and remove the most recently connected or faulty device rather than to silence the alarm.",
+          ],
+        },
+        {
+          title: "Make the operation safe",
+          prompt: "How do you proceed?",
+          answer: [
+            "Prefer bipolar diathermy, keep the return plate large, well applied and positioned so current does not traverse the heart, and use short bursts.",
+            "Insulate exposed pacing terminals, avoid touching them, and have the pacing box, external pacing and defibrillation immediately available.",
+            "Monitor rhythm continuously, anticipate diathermy interference with the ECG, and plan for pacing inhibition or reprogramming needs with cardiology.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Electrical injury depends on current density, duration, frequency and pathway. Mains frequency (50 Hz) is the most arrhythmogenic; diathermy uses radiofrequency currents around 0.3–3 MHz, which do not stimulate excitable tissue but generate heat at high current density. An intracardiac conductor bypasses skin impedance entirely, converting a trivial leakage current into a lethal one." },
+        { title: "Management and monitoring", content: "Combine equipment measures (class CF devices, isolated supply, residual current devices where used, regular electrical testing) with technique (bipolar diathermy, correct plate siting, avoiding a heart-crossing current path). Keep defibrillation and external pacing at hand, and document rhythm and pacing thresholds before and after. Investigate the alarm with the theatre team and biomedical engineering rather than continuing blindly." },
+        { title: "Exam pitfall", content: "Do not confuse macroshock and microshock thresholds, and do not describe an isolated power supply as preventing all shock. Explain that isolation converts a first fault into a warning rather than an injury." },
+      ],
+      takeHome: "An intracardiac conductor turns microamps into a lethal risk: use class CF equipment, bipolar diathermy and a current path away from the heart, and treat an isolation alarm as a fault to find.",
+      sourceLinks: [s.electrical],
+    },
+    {
+      id: "physics-airway-fire",
+      title: "Airway fire during laser laryngeal surgery",
+      category: "Equipment safety",
+      difficulty: "Advanced",
+      summary: "Fire triad control, laser-safe technique and immediate management of an airway fire.",
+      topicIds: ["lasers-fibreoptics", "optics-light", "ent-anaesthesia", "airway-management", "operating-theatre-environment"],
+      patient: "During CO₂ laser resection of a laryngeal lesion, a flash and smoke appear in the surgical field while the patient is ventilated with 60% oxygen.",
+      presentation: "The tube is in situ. The surgeon has stopped lasing and the team looks to you.",
+      stages: [
+        {
+          title: "Prevent it first",
+          prompt: "What reduces the risk before the laser is fired?",
+          answer: [
+            "Minimise the oxidiser: use the lowest tolerated FiO₂, ideally under 30%, and avoid nitrous oxide, which supports combustion.",
+            "Use laser-resistant tubes or jet ventilation, saline-filled cuffs, wet swabs and matt instruments to limit reflection.",
+            "Apply theatre-wide laser controls: signage, restricted access, wavelength-specific eye protection, smoke evacuation and a trained laser safety officer.",
+          ],
+        },
+        {
+          title: "Manage the fire",
+          prompt: "What is the immediate sequence?",
+          answer: [
+            "Stop lasing, stop gas flow and disconnect the circuit, remove the burning tube and any flammable material, and flood the field with saline.",
+            "Re-establish ventilation on air, then reintubate and inspect the airway with bronchoscopy for thermal injury and debris.",
+            "Continue with humidified oxygen as required, consider critical care admission, and treat inhalational injury and oedema.",
+          ],
+        },
+        {
+          title: "Close the loop",
+          prompt: "What follows the immediate management?",
+          answer: [
+            "Document the event, retain equipment for examination and report through local governance and national incident systems.",
+            "Debrief the team and inform the patient and family openly about what happened and the follow-up plan.",
+            "Review protocols: FiO₂ limits, tube choice, cuff protection and communication before lasing.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Laser output combines high irradiance with a specific wavelength. CO₂ lasers (10.6 µm) are absorbed by water and cut superficially, while Nd:YAG (1064 µm) penetrates deeper — determining both tissue effect and eye-protection requirements. A fire needs fuel (tube, swabs, drapes), an oxidiser (oxygen or nitrous oxide) and an ignition source (the laser); anaesthetic control is mainly over the oxidiser and the fuel." },
+        { title: "Management and monitoring", content: "Rehearse the fire drill so the sequence is automatic: stop laser, stop gases, remove fuel, extinguish with saline, then reassess airway and ventilation. After the fire, expect airway oedema, mucosal burn and carbonaceous debris; plan bronchoscopy, consider corticosteroids case-by-case and secure critical care support. Non-technical skills — a pre-lasing brief and clear shared FiO₂ target — prevent most events." },
+        { title: "Exam pitfall", content: "Do not begin with 'remove the tube' without stopping the oxygen supply, and do not omit the wider laser-safety framework (eye protection, controlled area, smoke evacuation) which examiners expect alongside fire management." },
+      ],
+      takeHome: "Control the oxidiser and the fuel before lasing; if fire occurs, stop the laser and gases, remove the burning tube, flood with saline, then reassess the airway.",
+      sourceLinks: [s.lasers, s.airwayFire],
+    },
+    {
+      id: "physics-mri-hazards",
+      title: "Anaesthesia in the MRI scanner",
+      category: "Imaging & radiation",
+      difficulty: "Intermediate",
+      summary: "Static field projectile risk, radiofrequency heating and zone-based MRI safety.",
+      topicIds: ["mri-physics", "electricity-magnetism", "neuroanaesthesia", "paediatric-anaesthesia", "equipment-monitoring"],
+      patient: "A child needs general anaesthesia for a 3 T MRI brain scan. A non-MR-conditional syringe pump has been brought to the scanner door and the patient has an unlabelled implant.",
+      presentation: "The radiographer asks you to proceed quickly because the list is delayed.",
+      stages: [
+        {
+          title: "Name the physical hazards",
+          prompt: "Which fields cause which risks?",
+          answer: [
+            "The always-on static field causes projectile injury, implant torque and displacement, and disables non-MR-safe equipment.",
+            "Radiofrequency pulses deposit energy, quantified as specific absorption rate, and can heat tissue, loops of wire and ECG leads, causing burns.",
+            "Rapidly switching gradients generate acoustic noise (often over 100 dB) and peripheral nerve stimulation; cryogen loss during a quench causes asphyxiation risk from displaced oxygen.",
+          ],
+        },
+        {
+          title: "Apply the safety system",
+          prompt: "How is access controlled and screening performed?",
+          answer: [
+            "Zones I–IV restrict access, with the scanner room (zone IV) entered only after checklist-based screening by trained staff.",
+            "Every implant and device must be documented as MR safe, MR conditional or MR unsafe; unlabelled implants are treated as unsafe until identified.",
+            "Only MR-conditional monitoring, pumps and airway equipment enter zone IV, with long extension lines for infusions and remote-controlled ventilation.",
+          ],
+        },
+        {
+          title: "Plan the anaesthetic",
+          prompt: "What practical anaesthetic issues follow?",
+          answer: [
+            "Remote and partly obscured patient access means secured airway, capnography, reliable IV access and a clear evacuation plan to a resuscitation area outside zone IV.",
+            "Provide ear protection, temperature care and dose-appropriate depth for immobility, and remove loops from cables and leads.",
+            "Rehearse quench and cardiac arrest responses; resuscitation takes place outside the scanner room.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "MRI safety follows directly from physics: a permanent superconducting static field, pulsed radiofrequency excitation and switched gradients each create a distinct hazard. Field strength increases signal but also projectile force and radiofrequency energy deposition, so 3 T scanning demands stricter screening than 1.5 T. Contrast agents raise separate concerns, with gadolinium-based agent choice restricted by renal function." },
+        { title: "Management and monitoring", content: "Use a documented screening checklist for patient, staff and equipment; never rely on verbal assurance under time pressure. Anaesthetise where possible outside the magnet or use MR-conditional systems with waveguide-passed lines. Monitor temperature and depth, protect hearing, keep the resuscitation trolley outside zone IV and know who holds the quench button and evacuation responsibility." },
+        { title: "Exam pitfall", content: "Do not say the magnet is 'switched off between scans' — the static field is permanent. Distinguish MR safe, MR conditional and MR unsafe precisely, and mention SAR heating as a burn mechanism, not just projectile risk." },
+      ],
+      takeHome: "The static field is always on: screen every person, implant and device, use only MR-conditional equipment in zone IV, and resuscitate outside the scanner room.",
+      sourceLinks: [s.mri, s.mriGuideline],
+    },
+    {
+      id: "physics-radiation-dose",
+      title: "Radiation exposure in the hybrid theatre",
+      category: "Imaging & radiation",
+      difficulty: "Foundation",
+      summary: "Inverse square law, ALARP practice and statutory duties during prolonged fluoroscopy.",
+      topicIds: ["xray-radiation-safety", "interventional-radiology", "vascular-anaesthesia", "operating-theatre-environment"],
+      patient: "A long endovascular aneurysm repair requires prolonged fluoroscopy. You are managing infusions close to the table without a dosimeter or lead apron.",
+      presentation: "A colleague says scatter is negligible at your distance from the image intensifier.",
+      stages: [
+        {
+          title: "Quantify the exposure",
+          prompt: "What determines your dose?",
+          answer: [
+            "Scatter dose falls with the inverse square of distance: doubling distance quarters intensity.",
+            "Dose also rises with screening time, frame rate, magnification, patient size and steep angulation.",
+            "Effective dose in millisieverts weights organ sensitivity; stochastic risk has no threshold, so any exposure carries some risk.",
+          ],
+        },
+        {
+          title: "Apply protection",
+          prompt: "What practical measures reduce your dose?",
+          answer: [
+            "Time, distance and shielding: step back or behind the lead screen during acquisition, wear a correctly fitting lead apron and thyroid shield, and use eye protection for long procedures.",
+            "Ask for pulsed fluoroscopy, collimation, last-image hold and reduced magnification.",
+            "Wear and read personal dosimetry, and know local dose constraints and pregnancy notification arrangements.",
+          ],
+        },
+        {
+          title: "Know the framework",
+          prompt: "What are the regulatory expectations?",
+          answer: [
+            "Justification, optimisation and dose limitation underpin practice; exposures should be as low as reasonably practicable.",
+            "Employers must provide classification, monitoring, local rules and controlled areas; individuals must follow them.",
+            "Record patient dose, escalate unusually long screening and report incidents through governance systems.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Occupational exposure in interventional theatres comes almost entirely from scatter, which is greatest on the X-ray tube side of the patient. Because intensity follows the inverse square law, small increases in distance produce large dose reductions, making stepping back the single most effective free intervention. Deterministic effects (skin injury, cataract) have thresholds, whereas stochastic effects are treated as having none." },
+        { title: "Management and monitoring", content: "Combine engineering and behavioural controls: ceiling-mounted and under-table shields, lead aprons and thyroid collars, dosimeters worn at the correct site, pulsed low-dose fluoroscopy and collimation. Plan infusion lines and monitoring so you can work at distance, and use remote lines rather than repeatedly returning to the table. Anyone who is or may be pregnant should follow the local declared-pregnancy pathway." },
+        { title: "Exam pitfall", content: "Do not answer only 'wear lead'. Cover justification and optimisation, the inverse square law with a worked statement, screening-time factors, dosimetry and the employer/employee duties in the regulations." },
+      ],
+      takeHome: "Scatter dominates staff dose: shorten screening time, step back (dose falls with the square of distance), shield properly and monitor exposure.",
+      sourceLinks: [s.radiation, s.irmer],
+    },
+  ],
+};

@@ -1,4 +1,6 @@
 import { SectionLayout } from "@/components/layout/SectionLayout";
+import { CaseBankCallout } from "@/components/cases/CaseBankCallout";
+import { physicsCaseBank } from "@/data/cases/physicsCases";
 import { SectionHeader } from "@/components/layout/SectionHeader";
 import { SectionSubNav } from "@/components/layout/SectionSubNav";
 import { SectionTopicsList } from "@/components/topic/SectionTopicsList";
@@ -43,6 +45,8 @@ const PhysicsSection = () => {
           </p>
         }
       />
+
+      <CaseBankCallout bank={physicsCaseBank} />
 
       <section id="topics" className="scroll-mt-28">
         <SectionTopicsList section="physics" topics={visibleTopics} />

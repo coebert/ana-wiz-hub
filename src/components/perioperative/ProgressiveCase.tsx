@@ -30,7 +30,7 @@ export interface DetailedAnswerSection {
 export interface PerioperativeCase {
   id: string;
   title: string;
-  category: CaseCategory;
+  category: string;
   difficulty: "Foundation" | "Intermediate" | "Advanced";
   patient: string;
   presentation: string;
