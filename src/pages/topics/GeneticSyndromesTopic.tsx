@@ -127,6 +127,15 @@ const GeneticSyndromesTopic = () => {
               <li>Send dibucaine number to confirm; family screening — autosomal recessive.</li>
               <li>Acquired BChE reduction: pregnancy, liver failure, plasmapheresis, ecothiopate eye drops.</li>
             </ul>
+            <p className="text-muted-foreground leading-relaxed mt-3 mb-2 text-sm font-semibold">Intraoperative and follow-up management</p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li>Keep the patient sedated, mechanically ventilated and normothermic until neuromuscular function recovers — hypothermia and acidosis further prolong block.</li>
+              <li>Use quantitative (objective) neuromuscular monitoring with a peripheral nerve stimulator; do not attempt extubation until the train-of-four ratio recovers to &gt;0.9.</li>
+              <li>Neostigmine is contraindicated in the early phase — it inhibits residual plasma cholinesterase activity and paradoxically prolongs the block; sugammadex has no affinity for suxamethonium (a depolarising, non-steroidal agent) and is ineffective.</li>
+              <li>Fresh frozen plasma or purified/recombinant BChE has been used to supply active enzyme, but its role is limited and controversial given the risks of transfusion (TRALI, infection) versus simply ventilating until natural recovery.</li>
+              <li>After recovery: explain the event fully to the patient and family, document clearly in the anaesthetic record and a letter to the GP, arrange an alert bracelet/card, and refer for dibucaine number/fluoride number testing and genotyping to confirm the atypical variant.</li>
+              <li>Offer screening to first-degree relatives — autosomal recessive inheritance means homozygous atypical individuals may show block lasting 2–8 hours, while heterozygotes typically show only mild prolongation of minutes.</li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -281,6 +290,16 @@ const GeneticSyndromesTopic = () => {
             <p className="text-xs text-muted-foreground mt-3">
               <strong>Acute attack</strong>: stop trigger, IV haem arginate 3 mg/kg/day for 4 days, high-carbohydrate IV (10% glucose), analgesia, monitor sodium and respiratory function. Always cross-check drugs against an up-to-date porphyria database before prescribing.
             </p>
+            <p className="text-muted-foreground leading-relaxed mt-3 mb-2 text-sm font-semibold">Detailed management of an acute attack</p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li><strong>Haem arginate</strong> 3 mg/kg/day (max ~250 mg/day) for 4 days via a large-bore central vein or a large peripheral vein — it is highly irritant and causes thrombophlebitis in small/peripheral veins. It provides negative feedback that downregulates hepatic ALA synthase, switching off overproduction of the neurotoxic precursors ALA and PBG.</li>
+              <li><strong>High-carbohydrate load</strong> (10% glucose, aiming ≥300 g/day, e.g. via a central line if peripheral tolerance is limited) also suppresses ALA synthase, but large volumes of dextrose risk dilutional hyponatraemia — monitor sodium closely and balance against SIADH-driven hyponatraemia from the attack itself.</li>
+              <li><strong>Analgesia</strong>: opioids are safe and often required in large doses for severe visceral pain; avoid diclofenac and other NSAIDs, and cross-check any adjunct against a porphyria drug database before use.</li>
+              <li><strong>Nausea and vomiting</strong>: ondansetron is regarded as safe; avoid metoclopramide (porphyrinogenic).</li>
+              <li><strong>Seizures</strong>: levetiracetam or gabapentin are preferred anticonvulsants (avoid phenytoin, sodium valproate and barbiturates).</li>
+              <li><strong>Monitoring</strong>: serial sodium (SIADH), assessment for evolving motor neuropathy (may progress to quadriparesis) and serial vital capacity/respiratory function — escalate early to critical care if bulbar or respiratory muscle weakness develops, as respiratory failure can progress rapidly.</li>
+              <li>Involve the <strong>National Acute Porphyria Service (NAPS)</strong> early for expert advice on drug safety, diagnosis confirmation (urinary PBG/ALA) and ongoing management.</li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
 
