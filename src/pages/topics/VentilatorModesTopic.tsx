@@ -5,6 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ventilatorModesQuiz } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import VentilatorModesDiagram from "@/components/diagrams/physics/VentilatorModesDiagram";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const ventilatorModesFaqs: Array<[string, string]> = [
   [
@@ -316,10 +317,11 @@ const VentilatorModesTopic = () => {
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
                 Dyssynchrony — patterns and fixes
               </h2>
+              <p className="text-sm text-muted-foreground mb-3">Dyssynchrony is common, increases work of breathing and ventilator exposure, and an Asynchrony Index (asynchronous events ÷ total respiratory cycles ×100) &gt;10% is associated with longer ventilation and mortality. <InlineRef topicId="ventilator-modes" refLabel="Blanch 2015" /></p>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
-                  { name: "Double-trigger / breath stacking", detail: "Two stacked breaths from one prolonged effort. Vt too low for drive — increase Vt or Pinsp, deepen sedation, or switch to PSV." },
-                  { name: "Ineffective effort", detail: "Pressure/flow deflection without a delivered breath. Over-sedation, auto-PEEP, or trigger threshold too high. Treat auto-PEEP, reduce sedation, sharpen trigger." },
+                  { name: "Double-trigger / breath stacking", detail: "Neural inspiratory time exceeds ventilator inspiratory time, so one effort triggers two breaths. Treat pain/drive, adjust inspiratory time or flow and review mode; sedation or paralysis is rescue therapy." },
+                  { name: "Ineffective effort", detail: "Effort cannot overcome auto-PEEP or an insensitive trigger. Perform an expiratory hold; if auto-PEEP is present reduce RR/increase expiratory time and treat obstruction. Otherwise reduce excess sedation and increase trigger sensitivity without causing auto-triggering." },
                   { name: "Reverse-triggering", detail: "Mandatory breath drags diaphragm into a delayed effort. Common in deep sedation post-paralysis. Re-paralyse or change mode." },
                   { name: "Auto-cycling", detail: "Ventilator triggers off cardiac oscillations or circuit leak. Reduce trigger sensitivity, check for cuff leak." },
                 ].map((s) => (
@@ -330,6 +332,12 @@ const VentilatorModesTopic = () => {
                 ))}
               </div>
             </div>
+
+            <div><h2 className="text-2xl font-serif font-bold text-foreground mb-3">Non-Invasive Ventilation</h2><p className="text-muted-foreground">NIV delivers positive pressure without a tracheal tube, principally CPAP or bilevel pressure support. Strong indications include acute hypercapnic COPD exacerbation and acute cardiogenic pulmonary oedema. Interface fit determines comfort and leak; dedicated NIV ventilators generally compensate for large variable leaks and maintain triggering better than conventional ICU circuits, although modern ICU NIV modes can do both. Continually reassess gas exchange, work of breathing, synchrony and need for intubation. <InlineRef topicId="ventilator-modes" refLabel="Intensive Care Med 2012 NIV" /></p></div>
+
+            <div><h2 className="text-2xl font-serif font-bold text-foreground mb-3">Advanced / Non-conventional Modes</h2><div className="grid md:grid-cols-3 gap-3 text-sm text-muted-foreground"><div className="rounded-lg border border-border p-3"><strong className="text-foreground">APRV</strong><p>Prolonged high airway pressure maintains recruitment, with brief pressure releases for CO₂ clearance and possible spontaneous breathing.</p></div><div className="rounded-lg border border-border p-3"><strong className="text-foreground">NAVA</strong><p>Electrical diaphragm activity (Edi) triggers and proportions assistance, potentially improving synchrony.</p></div><div className="rounded-lg border border-border p-3"><strong className="text-foreground">PAV</strong><p>Pressure assistance varies in proportion to measured patient effort and estimated respiratory mechanics.</p></div></div><p className="mt-2 text-sm text-muted-foreground">These modes may help selected severe ARDS or refractory dyssynchrony, but evidence for improved patient-important outcomes remains limited. <InlineRef topicId="ventilator-modes" refLabel="Hess & Kacmarek Ch.5" /></p></div>
+
+            <div><h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilation in Special Scenarios</h2><div className="grid md:grid-cols-2 gap-3 text-sm text-muted-foreground"><div className="rounded-lg border border-border p-3"><strong className="text-foreground">Bronchopleural fistula</strong><p>Minimise flow through the fistula: reduce peak pressure, PEEP, RR and inspiratory time; use low tidal volumes and permissive hypercapnia. Pressure control limits peak pressure, spontaneous breathing may help, and an effective chest drain is essential. Consider independent lung ventilation or extracorporeal support for refractory major leaks. <InlineRef topicId="ventilator-modes" refLabel="Critical Care Med 2021 BPF" /></p></div><div className="rounded-lg border border-border p-3"><strong className="text-foreground">Acute brain injury</strong><p>Protect brain and lung: target normocapnia, avoid hypoxaemia and hyperoxaemia, maintain MAP/CPP, and use predicted-body-weight tidal volumes with plateau pressure &lt;30 cmH₂O. Physiological targets take priority over a named mode; reserve temporary hyperventilation for impending herniation.</p><InlineRef topicId="ventilator-modes" refLabel="ARDSnet 2000" /></div></div></div>
 
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">

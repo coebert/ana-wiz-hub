@@ -79,6 +79,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Esteban 1995", citation: "Esteban A, Frutos F, Tobin MJ, et al. A comparison of four methods of weaning patients from mechanical ventilation. N Engl J Med. 1995;332(6):345-350.", url: "https://doi.org/10.1056/NEJM199502093320601" },
     { label: "ARDSnet 2000", citation: "The Acute Respiratory Distress Syndrome Network. Ventilation with lower tidal volumes as compared with traditional tidal volumes for acute lung injury and ARDS. N Engl J Med. 2000;342(18):1301-1308.", url: "https://doi.org/10.1056/NEJM200005043421801" },
     { label: "Yang & Tobin 1991", citation: "Yang KL, Tobin MJ. A prospective study of indexes predicting the outcome of trials of weaning from mechanical ventilation. N Engl J Med. 1991;324(21):1445-1450.", url: "https://doi.org/10.1056/NEJM199105233242101" },
+    { label: "Blanch 2015", citation: "Blanch L, Villagra A, Sales B, et al. Asynchronies during mechanical ventilation are associated with mortality. Intensive Care Med. 2015;41:633-641.", url: "https://doi.org/10.1007/s00134-015-3692-6" },
+    { label: "Critical Care Med 2021 BPF", citation: "Sarkar P, Chandak T, Shah R, Talwar A. Bronchopleural fistula in the mechanically ventilated patient: a concise review. Crit Care Med. 2021.", url: "https://doi.org/10.1097/CCM.0000000000004771" },
+    { label: "Intensive Care Med 2012 NIV", citation: "Carteaux G, Lyazidi A, Cordoba-Izquierdo A, et al. Patient-ventilator asynchrony during noninvasive ventilation. Intensive Care Med. 2012.", url: "https://doi.org/10.1007/s00134-011-2416-9" },
   ],
   "capnography": [
     { label: "BJA Educ 2017 Capnography", citation: "Kodali BS. Capnography outside the operating rooms. BJA Education. 2017;17(8):261-265.", url: "https://doi.org/10.1093/bjaed/mkx004", excerpt: "The normal capnogram consists of four phases: phase I (inspiratory baseline, anatomical dead space), phase II (rapid expiratory upstroke as alveolar gas reaches the sensor), phase III (alveolar plateau, with a normal slope of less than 5 degrees), and phase 0 (rapid descent during inspiration). End-tidal carbon dioxide is normally 0.5 kPa (~4 mmHg) lower than arterial carbon dioxide; the gradient widens when alveolar dead space increases, as in pulmonary embolism, low cardiac output, and chronic obstructive pulmonary disease." },
@@ -87,6 +90,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "AAGBI Monitoring 2015", citation: "Checketts MR, Alladi R, Ferguson K, et al. Recommendations for standards of monitoring during anaesthesia and recovery 2015. Association of Anaesthetists. Anaesthesia. 2016;71(1):85-93.", url: "https://doi.org/10.1111/anae.13316" },
     { label: "NAP4", citation: "Cook TM, Woodall N, Frerk C. 4th National Audit Project (NAP4): Major complications of airway management in the United Kingdom. Royal College of Anaesthetists; 2011.", url: "https://www.nationalauditprojects.org.uk/NAP4_home" },
     { label: "DAS 2015", citation: "Frerk C, Mitchell VS, McNarry AF, et al. Difficult Airway Society 2015 guidelines for management of unanticipated difficult intubation in adults. Br J Anaesth. 2015;115(6):827-848.", url: "https://doi.org/10.1093/bja/aev371" },
+    { label: "DAS 2025", citation: "Difficult Airway Society. 2025 guidelines for management of unanticipated difficult tracheal intubation in adults. Br J Anaesth. 2025.", url: "https://doi.org/10.1016/j.bja.2025.10.006" },
+    { label: "Association of Anaesthetists 2021", citation: "Klein AA, Meek T, Allcock E, et al. Recommendations for standards of monitoring during anaesthesia and recovery 2021. Anaesthesia. 2021;76:1212-1223.", url: "https://doi.org/10.1111/anae.15501" },
     { label: "RCUK 2021 ALS", citation: "Resuscitation Council UK. Adult Advanced Life Support Guidelines 2021.", url: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/adult-advanced-life-support-guidelines" },
   ],
   "electrical-safety": [
@@ -219,6 +224,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2016", citation: "McCluskey A, Lalkhen AG. Statistics I–IV. BJA Education. 2007;7(1-4).", url: "https://doi.org/10.1093/bjaceaccp/mkl068" },
     { label: "Petrie & Sabin", citation: "Petrie A, Sabin C. Medical Statistics at a Glance. 4th ed. Wiley-Blackwell; 2019." },
     { label: "BJA Educ 2015", citation: "Greenhalgh T. How to read a paper: Statistics for the non-statistician. BMJ. 1997;315:422-425.", url: "https://doi.org/10.1136/bmj.315.7105.422" },
+    { label: "GRADE Handbook", citation: "Schünemann H, Brożek J, Guyatt G, Oxman A, eds. GRADE Handbook for grading quality of evidence and strength of recommendations. GRADE Working Group; 2013.", url: "https://gdt.gradepro.org/app/handbook/handbook.html" },
   ],
 
   // ──────── CHEMISTRY ────────
@@ -579,6 +585,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NICE DG6", citation: "NICE. Depth of anaesthesia monitors — Bispectral Index (BIS), E-Entropy and Narcotrend-Compact M (DG6). 2012.", url: "https://www.nice.org.uk/guidance/dg6" },
     { label: "BJA Educ 2014", citation: "Checketts MR. Depth of anaesthesia monitoring. BJA Education. 2014;14(4):167-171.", url: "https://doi.org/10.1093/bjaceaccp/mkt049" },
     { label: "Purdon et al. 2015", citation: "Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists. Anesthesiology. 2015;123(4):937-960.", url: "https://doi.org/10.1097/ALN.0000000000000841" },
+    { label: "IJOA 2023 pEEG", citation: "Processed electroencephalography in obstetric anaesthesia: a narrative review. Int J Obstet Anesth. 2023.", url: "https://doi.org/10.1016/j.ijoa.2023.103650" },
+    { label: "Anaesthesia 2017 ICU EEG", citation: "The role and limitations of EEG-based depth of anaesthesia monitoring in theatres and intensive care. Anaesthesia. 2017.", url: "https://doi.org/10.1111/anae.13739" },
+    { label: "BJA 2006 Depth Monitors", citation: "Depth of anaesthesia monitoring: what's available, what's validated and what's next? Br J Anaesth. 2006.", url: "https://doi.org/10.1093/bja/ael120" },
   ],
   "clinical-incidents": [
     { label: "AAGBI 2009", citation: "Association of Anaesthetists. Immediate Post-Anaesthesia Recovery. AAGBI; 2013.", url: "https://anaesthetists.org" },
