@@ -295,8 +295,39 @@ const GasLawsTopic = () => {
               Avogadro's laws (V ∝ n at constant T and P, which supplies the molar term n) into a single expression, where
               P = pressure, V = volume, n = number of moles, R = universal gas constant (8.314 J·mol⁻¹·K⁻¹), and
               T = absolute temperature. Real gases deviate from ideal behaviour at high pressures and low temperatures,
-              described by the van der Waals equation.
+              described by the van der Waals equation.<InlineRef topicId="gas-laws" refLabel="BJA Educ 2007 (Gas laws)" />
             </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
+            <CollapsibleSubsection title="Avogadro's Law">
+            <p className="text-foreground/90 leading-relaxed">
+              <strong>Avogadro's law</strong> states that equal volumes of all gases, at the same temperature and
+              pressure, contain the same number of molecules. Formally <strong>V ∝ n</strong> at constant temperature and
+              pressure, so V₁/n₁ = V₂/n₂, where n is the number of moles. It is the law that introduces the
+              <em> amount of substance</em> into the gas laws, and therefore supplies the n term of PV = nRT — the other
+              three laws relate only P, V and T.<InlineRef topicId="gas-laws" refLabel="BJA Educ 2007 (Gas laws)" />
+            </p>
+            <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+              <p className="text-sm font-medium text-foreground">Key numbers</p>
+              <ul className="text-sm text-muted-foreground mt-2 space-y-1 list-disc pl-5">
+                <li><strong>Avogadro's constant (N<sub>A</sub>):</strong> 6.022 × 10²³ molecules per mole.</li>
+                <li><strong>Molar volume:</strong> one mole of any ideal gas occupies <strong>22.4 L</strong> at standard
+                  temperature and pressure (STP: 273.15 K and 101.325 kPa).</li>
+                <li>A mole of a substance is the amount containing N<sub>A</sub> particles, with a mass in grams equal to
+                  its molecular weight.</li>
+              </ul>
+            </div>
+            <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+              <p className="text-sm font-medium text-foreground">Clinical Application</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Vaporiser output calculations rest on this law: 1 mL of liquid volatile agent yields a predictable vapour
+                volume, derived from its density and molecular weight to give moles, then multiplied by the molar volume
+                (e.g. 1 mL liquid sevoflurane ≈ 183 mL of vapour at room temperature). The same reasoning converts
+                cylinder contents and nitrous oxide liquid mass into deliverable gas volumes.<InlineRef topicId="gas-laws" refLabel="BJA Educ 2017" />
+              </p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -313,7 +344,9 @@ const GasLawsTopic = () => {
               pressure is high enough.
             </p>
             <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
-              <p className="text-sm font-medium text-foreground">Key values for anaesthetic gases</p>
+              <p className="text-sm font-medium text-foreground">
+                Key values for anaesthetic gases<InlineRef topicId="gas-laws" refLabel="BJA Educ 2017 (Medical gases)" />
+              </p>
               <ul className="text-sm text-muted-foreground mt-2 space-y-1 list-disc pl-5">
                 <li><strong>Oxygen:</strong> critical temperature −118 °C, critical pressure 50 bar</li>
                 <li><strong>Nitrous oxide:</strong> critical temperature 36.5 °C, critical pressure 72 bar</li>
@@ -524,8 +557,32 @@ const GasLawsTopic = () => {
                 <strong> nitrogen narcosis</strong> during deep diving reflects increased PN₂ driving more nitrogen
                 into neural tissue; <strong>pulmonary oxygen toxicity</strong> at prolonged high FiO₂ or under
                 hyperbaric conditions reflects the elevated dissolved O₂ load; and decompression illness occurs when
-                dissolved N₂ comes out of solution as bubbles when ambient pressure falls too rapidly.
+                dissolved N₂ comes out of solution as bubbles when ambient pressure falls too rapidly.<InlineRef topicId="gas-laws" refLabel="BJA Educ 2017" />
               </p>
+            </div>
+            <div className="rounded-lg border border-border p-4 mt-3">
+              <p className="text-sm font-medium text-foreground">Worked clinical consequences</p>
+              <ul className="text-sm text-muted-foreground mt-2 space-y-2 list-disc pl-5">
+                <li><strong>Decompression sickness.</strong> At depth the ambient pressure is high, so PN₂ is high and
+                  proportionally more nitrogen dissolves in blood and tissues — fat and other lipid-rich tissues load
+                  slowly but hold most. On rapid ascent the ambient pressure and hence solubility fall faster than
+                  nitrogen can be carried to the lungs; the tissues become supersaturated and N₂ leaves solution as
+                  bubbles, causing joint and tissue damage ('the bends'), vascular occlusion, and pulmonary or neurological
+                  injury. Treatment is recompression with hyperbaric oxygen, which shrinks the bubbles (Boyle's law) and
+                  washes out nitrogen down a steep diffusion gradient.<InlineRef topicId="gas-laws" refLabel="Intensive Care Med 2012 (Hyperbaric ventilator)" /></li>
+                <li><strong>Nitrogen narcosis.</strong> The high inspired PN₂ at depth raises the dissolved nitrogen
+                  concentration in neuronal lipid membranes, producing a dose-dependent anaesthetic-like effect
+                  (impaired judgement and euphoria, typically from around 30 m) — the same partial-pressure logic that
+                  governs the potency of inhalational anaesthetics.</li>
+                <li><strong>Oxygen toxicity.</strong> At high FiO₂ or under hyperbaric conditions the raised PaO₂
+                  increases dissolved oxygen, generating reactive oxygen species faster than antioxidant defences can
+                  handle. This causes pulmonary injury (tracheobronchitis then diffuse alveolar damage, the Lorrain Smith
+                  effect) and, at higher partial pressures, CNS toxicity with convulsions (the Paul Bert effect).</li>
+                <li><strong>Volatile anaesthetic uptake.</strong> The alveolar partial pressure of an agent determines the
+                  amount dissolved in blood (its blood:gas partition coefficient is a Henry's-law solubility constant) and
+                  hence the partial pressure delivered to the brain, which governs speed of onset and offset — agents with
+                  low blood solubility such as desflurane equilibrate fastest.</li>
+              </ul>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
