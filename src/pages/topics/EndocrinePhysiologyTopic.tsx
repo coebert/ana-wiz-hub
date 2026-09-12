@@ -220,6 +220,10 @@ const EndocrinePhysiologyTopic = () => {
                 </div>
               ))}
             </div>
+            <div className="mt-4 rounded-lg border border-border p-4 text-sm text-muted-foreground leading-relaxed">
+              <p className="font-semibold text-foreground">Phaeochromocytoma preparation</p>
+              <p className="mt-1">Block for 10–14 days. Start phenoxybenzamine about 10 mg twice daily and titrate, or use selective α₁ blockade such as doxazosin. Liberal salt and fluid intake correct chronic catecholamine-mediated volume contraction. Add β-blockade only after effective α-blockade if reflex tachycardia persists. Targets include seated BP &lt;130/80 mmHg, standing systolic BP &gt;90 mmHg, HR 60–70 seated and 70–80 standing, with ECG review for ischaemia/arrhythmia <InlineRef topicId="endocrine-physiology" refLabel="BJA Educ Phaeochromocytoma" />.</p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 

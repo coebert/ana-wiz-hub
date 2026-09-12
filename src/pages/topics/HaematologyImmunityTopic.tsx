@@ -212,6 +212,13 @@ const HaematologyImmunityTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="antifibrinolytics" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_02"]}>
+            <CollapsibleSubsection title="Tranexamic Acid and Antifibrinolysis">
+              <p className="text-sm text-muted-foreground leading-relaxed">Tranexamic acid is a synthetic lysine analogue that competitively occupies plasminogen lysine-binding sites, reducing binding to fibrin and conversion to plasmin. It is renally excreted, so reduce repeated dosing in renal impairment. High exposure, especially in cardiac surgery or renal failure, increases seizure risk.</p>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground list-disc list-inside"><li><strong>Trauma:</strong> CRASH-2 showed lower death from bleeding when TXA was given early; give 1 g IV over 10 min then 1 g over 8 h, within 3 h of injury <InlineRef topicId="haematology-immunity" refLabel="CRASH-2 2010" />.</li><li><strong>Postpartum haemorrhage:</strong> WOMAN reduced death due to bleeding; give 1 g IV promptly, repeating 1 g after 30 min if bleeding continues or within 24 h if it restarts <InlineRef topicId="haematology-immunity" refLabel="WOMAN 2017" />.</li><li><strong>Combat trauma:</strong> MATTERs associated TXA with improved survival in severely injured transfused casualties, while recognising its observational design <InlineRef topicId="haematology-immunity" refLabel="MATTERs 2012" />.</li></ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="immunity-overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_03"]}>
             <CollapsibleSubsection title="Immunity & Inflammation">
             <DiagramSection
@@ -230,7 +237,7 @@ const HaematologyImmunityTopic = () => {
               {[
                 { title: "Innate Immunity", desc: "Non-specific, immediate. Physical barriers (skin, mucosa), complement cascade (classical, alternative, lectin pathways), phagocytes (neutrophils, macrophages), NK cells. Pattern recognition receptors (TLRs) detect PAMPs/DAMPs." },
                 { title: "Adaptive Immunity", desc: "Specific, delayed (days). T cells: CD4⁺ helper (Th1 → cell-mediated, Th2 → humoral), CD8⁺ cytotoxic. B cells → plasma cells → antibodies (IgM first, then IgG class switch). Memory cells for secondary response." },
-                { title: "Hypersensitivity", desc: "Type I (IgE, immediate — anaphylaxis): mast cell degranulation → histamine, tryptase. Type II (IgG/IgM — transfusion reactions). Type III (immune complex — SLE). Type IV (delayed, T-cell — contact dermatitis)." },
+                 { title: "Hypersensitivity", desc: "Type I: immediate IgE-mediated mast-cell degranulation. Type II: IgG/IgM targets cell-surface antigen; complement and phagocytes act within minutes–hours (ABO incompatibility, HIT). Type III: circulating immune complexes deposit and activate complement/neutrophils over about 3–8 h (drug vasculitis, post-streptococcal GN). Type IV: sensitised Th1/CTL cells release IFN-γ/TNF-α and recruit macrophages over 48–72 h (chlorhexidine contact dermatitis, non-IgE latex dermatitis, tuberculin test)." },
                 { title: "SIRS & Sepsis", desc: "Systemic inflammation (↑ TNF-α, IL-1, IL-6) → vasodilation, capillary leak, coagulopathy. SIRS criteria now replaced by SOFA/qSOFA in Sepsis-3." },
               ].map(item => (
                 <div key={item.title} className="p-4 rounded-lg border border-border">
