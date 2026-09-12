@@ -647,6 +647,50 @@ const ObstetricAnaesthesiaTopic = () => {
           <p className="text-xs text-muted-foreground mt-2">Evidence: <em>RESPITE</em> (Wilson, Lancet 2018) — remifentanil PCA halved epidural conversion vs pethidine but did not match epidural for pain relief; RemiPCA SAFE Network reports rare but real maternal apnoea events, all preventable with strict monitoring (Stocki 2014; Van de Velde 2016).</p>
         </CollapsibleSubsection>
 
+        <CollapsibleSubsection title="Immediate Management of Accidental Dural Puncture">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Accidental dural puncture (ADP) complicates roughly 1% of labour epidurals and, with a 16–18 G Tuohy, produces post-dural-puncture headache in 50–80% of women. The immediate decision is between resiting the epidural at another interspace and threading the epidural catheter into the subarachnoid space to use as an <strong>intrathecal catheter</strong>. The latter avoids a second insertion (and a second puncture), and rapidly provides labour analgesia and anaesthesia for caesarean section — but every unit using it must have an explicit protocol because a catheter that is misidentified as epidural invites a fatal overdose <InlineRef topicId="obstetric-anaesthesia" refLabel="Anaesthesia 2021 Intrathecal Catheter" />.
+          </p>
+          <div className="grid md:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Recognition</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Unexpected loss of resistance with free flow of warm, clear fluid from the Tuohy hub; fluid continues to drip and is glucose- and protein-positive (unlike saline).</li>
+                <li>Occult ADP may present later as an unexpectedly dense or rapidly ascending block after a routine top-up, or as a postural headache with no recognised puncture.</li>
+                <li>Immediately stop, keep the needle still, and decide on a plan before withdrawing.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Option 1 — resite the epidural</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Resite one interspace higher (or lower) by an experienced operator.</li>
+                <li>Local anaesthetic can pass through the dural hole, so use cautious incremental top-ups with careful assessment of block height, and give <em>all</em> top-ups yourself or under strict protocol.</li>
+                <li>Advantages: a familiar epidural system for midwifery staff and no risk of intrathecal misconnection.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="p-4 rounded-lg border-l-4 border-destructive bg-destructive/5 mb-3">
+            <p className="font-semibold text-foreground text-sm">Option 2 — intrathecal catheter: safety rules</p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+              <li>Thread 2–3 cm only; aspirate to confirm CSF; label the catheter, filter, pump and drug bag conspicuously as <strong>INTRATHECAL</strong>; use a dedicated prescription and, ideally, a pump with a distinct programme.</li>
+              <li>Typical labour regimen: low-concentration mixture (e.g. 0.1% bupivacaine with fentanyl 2 µg/ml) at 1–2 ml/h, or intermittent anaesthetist-only boluses of 1–2 ml — roughly one-tenth of the equivalent epidural dose.</li>
+              <li>Top-ups by an anaesthetist only, never by midwifery staff; continuous pulse oximetry, blood-pressure and block-height monitoring on the labour ward.</li>
+              <li>For caesarean section, dose it as a spinal (e.g. incremental 0.5% heavy bupivacaine 1.5–2 ml with fentanyl) with full theatre monitoring, vasopressor infusion and immediate airway equipment.</li>
+              <li>Remove within 24 h; document clearly and hand over verbally at every shift change. Whether leaving the catheter in situ for 24 h reduces PDPH remains uncertain — do not rely on it as prophylaxis.</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg border border-border">
+            <p className="font-semibold text-foreground text-sm">After delivery</p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+              <li>Inform the woman, the obstetric team and the midwife in charge; document the puncture, gauge of needle, management chosen and the follow-up plan.</li>
+              <li>Daily anaesthetic review while an inpatient and a documented contact number for at least 6 weeks; explicit written warning about fever, neck stiffness, seizures, focal neurology or a headache that loses its postural component (subdural haematoma, cerebral venous sinus thrombosis).</li>
+              <li>Conservative measures (regular paracetamol and NSAIDs, hydration, caffeine, avoiding constipation and pushing) first; offer epidural blood patch (15–20 ml autologous blood) for severe or persisting headache, ideally after 24–48 h, with a success rate of 60–70% at first attempt.</li>
+              <li>Avoid prophylactic bed rest and prophylactic fluids — neither prevents PDPH. Report to the local audit of dural puncture rate (a national key indicator).</li>
+            </ul>
+          </div>
+        </CollapsibleSubsection>
+
+
         <CollapsibleSubsection title="Labour &amp; Delivery After Intra-Uterine Fetal Death">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Intra-uterine fetal death (IUFD) is defined as fetal death in utero from ≥24 weeks' gestation (UK; WHO ≥28 weeks). It complicates ~1 in 200 UK pregnancies (MBRRACE). Vaginal delivery — usually after mifepristone priming and misoprostol induction — is preferred wherever maternally safe; caesarean is reserved for maternal indications (placenta praevia, prior classical CS, severe pre-eclampsia, sepsis with failed induction). The anaesthetist's priorities are <strong>compassionate analgesia</strong>, screening for the maternal complications that an in-utero death may herald (sepsis, DIC, pre-eclampsia, abruption), and safe neuraxial decision-making despite a possibly evolving coagulopathy.
