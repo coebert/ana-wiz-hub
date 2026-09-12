@@ -10,6 +10,7 @@ import PCPManagementFlowchart from "@/components/diagrams/intensive-care/PCPMana
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const infectiousDiseaseIcuFaqs: Array<[string, string]> = [
   ["When should empirical antifungal therapy be considered in ICU?", "Persistent sepsis on broad antibiotics with multifocal Candida colonisation, prolonged ICU stay, TPN, recent abdominal surgery or immunosuppression; echinocandin (caspofungin or anidulafungin) is first-line (IDSA 2016)."],
@@ -203,15 +204,30 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
 
             <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Toxic Shock Syndromes</h3>
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              TSST-1 (staphylococcal) and SpeA/SpeC (streptococcal pyrogenic exotoxins) are <strong>superantigens</strong>. Unlike conventional antigens, they bypass normal antigen processing by binding directly outside the peptide-binding groove, cross-linking MHC class II on antigen-presenting cells with the T-cell receptor Vβ region. This causes massive polyclonal T-cell activation (up to 20% of the T-cell repertoire, versus &lt;0.01% for a conventional antigen) and a cytokine storm of TNF-α, IL-1 and IL-6 that drives capillary leak, hypotension and multi-organ dysfunction.
+            </p>
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Staphylococcal TSS</p>
-                <p className="text-xs text-muted-foreground mt-1">TSST-1 superantigen. Fever, diffuse erythroderma, desquamation, hypotension, ≥3 organ systems. Treatment: source control + flucloxacillin + clindamycin + IVIG.</p>
+                <p className="font-semibold text-foreground text-sm">Staphylococcal TSS — CDC Diagnostic Criteria</p>
+                <p className="text-xs text-muted-foreground mt-1">Temperature ≥ 38.9 °C; systolic BP ≤ 90 mmHg; diffuse macular erythroderma; desquamation (especially palms/soles) at 1–2 weeks; involvement of ≥3 organ systems (GI, muscular, mucous membrane, renal, hepatic, haematological, CNS); negative cultures apart from possible <em>S. aureus</em> at the primary site (tampon, wound, nasal packing).</p>
               </div>
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Streptococcal TSS</p>
-                <p className="text-xs text-muted-foreground mt-1">Group A Strep pyrogenic exotoxins. Mortality 30–70%. Often with necrotising fasciitis. Pain out of proportion. Surgical debridement + benzylpenicillin + clindamycin + IVIG.</p>
+                <p className="text-xs text-muted-foreground mt-1">Requires isolation of group A Streptococcus — from a normally sterile site (blood, CSF, tissue) for a definite case, or a non-sterile site for a probable case — with hypotension and evidence of organ dysfunction. Rash is less common than in staphylococcal TSS. Mortality 30–70%; frequently associated with necrotising fasciitis, with pain out of proportion to examination as an early warning sign.</p>
               </div>
+            </div>
+            <div className="space-y-2 mb-2">
+              {[
+                { label: "Source Control", detail: "Aggressive fluid resuscitation and vasopressors for shock. Remove/drain the focus of infection — tampons, nasal packing, wound packs or other retained foreign material — and debride any necrotising soft-tissue infection without delay." },
+                { label: "Antimicrobial Therapy", detail: "Dual antibiotics: flucloxacillin or benzylpenicillin for bactericidal killing of the organism, PLUS clindamycin, which acts on the bacterial 50S ribosomal subunit to switch off toxin synthesis independent of bacterial density (Eagle effect)." },
+                { label: "IVIG", detail: "Rationale is polyclonal antibody that neutralises circulating superantigen. Typical dosing: 1 g/kg on day 1, then 0.5 g/kg on days 2–3." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+                </div>
+              ))}
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -219,20 +235,38 @@ const InfectiousDiseaseIcuTopic = () => {
           <ExamSection id="urosepsis" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Urosepsis">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              UTIs are the second commonest source of ICU sepsis. Obstruction (calculi, BPH) is a common precipitant requiring urgent source control.
+              Urosepsis is sepsis arising from a urinary tract source (pyelonephritis, obstructed/infected collecting system, prostatitis, or catheter-associated infection) and is the second commonest source of ICU sepsis. Obstruction is a common precipitant requiring urgent source control <InlineRef topicId="infectious-disease-icu" refLabel="EAU Urological Infections 2023" />.
             </p>
-            <div className="grid sm:grid-cols-3 gap-3">
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Risk Factors and Pathogens</h3>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
               <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Common Organisms</p>
-                <p className="text-xs text-muted-foreground mt-1"><em>E. coli</em>, <em>Klebsiella</em>, <em>Proteus</em>, <em>Pseudomonas</em>, <em>Enterococcus</em>.</p>
+                <p className="font-semibold text-foreground text-sm">Risk Factors</p>
+                <p className="text-xs text-muted-foreground mt-1">Urinary catheterisation, obstruction (BPH, calculi, strictures), female sex, diabetes mellitus, immunosuppression, recent urological instrumentation.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Pathogens</p>
+                <p className="text-xs text-muted-foreground mt-1"><em>E. coli</em> (50–80%), <em>Klebsiella</em>, <em>Proteus</em>, <em>Enterococcus</em>, <em>Pseudomonas</em>.</p>
+              </div>
+            </div>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Clinical Features</h3>
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              Signs of sepsis (fever, tachycardia, hypotension) plus dysuria, frequency and urgency; flank or suprapubic pain; delirium is often the presenting feature in elderly patients and may occur without classical urinary symptoms.
+            </p>
+
+            <div className="grid sm:grid-cols-3 gap-3 mb-4">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Investigations</p>
+                <p className="text-xs text-muted-foreground mt-1">Urine dipstick (leucocytes/nitrites), urine microscopy and culture, blood cultures, lactate, CRP/WCC, renal tract ultrasound for obstruction or abscess, CT urogram if ultrasound negative but suspicion remains high.</p>
               </div>
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Source Control</p>
-                <p className="text-xs text-muted-foreground mt-1">Urgent imaging. Nephrostomy/stent for obstructed pyelonephritis. Remove/replace catheters.</p>
+                <p className="text-xs text-muted-foreground mt-1">Urgent nephrostomy or ureteric stent for obstructed, infected pyelonephritis, ideally within 6–12 hours <InlineRef topicId="infectious-disease-icu" refLabel="SSC 2021" />. Remove/replace infected catheters.</p>
               </div>
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Empiric Therapy</p>
-                <p className="text-xs text-muted-foreground mt-1">Pip-tazo or gentamicin + amoxicillin. Meropenem if previous ESBL.</p>
+                <p className="text-xs text-muted-foreground mt-1">Surviving Sepsis bundle plus early broad-spectrum IV antibiotics per local resistance: piperacillin-tazobactam, a third-generation cephalosporin, or a carbapenem if ESBL risk factors present.</p>
               </div>
             </div>
             </CollapsibleSubsection>
@@ -455,7 +489,7 @@ const InfectiousDiseaseIcuTopic = () => {
           <ExamSection id="necfasc" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Necrotising Fasciitis">
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Rapidly progressive fascial-plane infection. Mortality 20–40%. Early surgical debridement is the single most important intervention.
+              Rapidly progressive fascial-plane infection. Mortality 20–40%. Early surgical debridement is the single most important intervention <InlineRef topicId="infectious-disease-icu" refLabel="IDSA SSTI 2014" />.
             </p>
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               <div className="p-3 rounded-lg border border-border">
@@ -467,12 +501,31 @@ const InfectiousDiseaseIcuTopic = () => {
                 <p className="text-xs text-muted-foreground mt-1">Group A Strep, S. aureus, Clostridium. Healthy patients. STSS in ~50%.</p>
               </div>
             </div>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Clinical Recognition</h3>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Early Features</p>
+                <p className="text-xs text-muted-foreground mt-1">Pain markedly out of proportion to examination findings; tense oedema extending beyond the visible margin of erythema; fever; tachycardia. Easily mistaken for cellulitis at this stage — a high index of suspicion is essential <InlineRef topicId="infectious-disease-icu" refLabel="IDSA SSTI 2014" />.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Late Features</p>
+                <p className="text-xs text-muted-foreground mt-1">Bullae, skin ecchymosis/necrosis, crepitus, cutaneous anaesthesia (from destruction of superficial nerves), thin "dishwater" pus, and rapidly progressive shock <InlineRef topicId="infectious-disease-icu" refLabel="IDSA SSTI 2014" />.</p>
+              </div>
+            </div>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">LRINEC Score</h3>
+            <p className="text-muted-foreground leading-relaxed mb-2 text-sm">
+              The Laboratory Risk Indicator for Necrotising Fasciitis combines six weighted variables: CRP, white cell count, haemoglobin, sodium, creatinine, and glucose. A score ≥6 is "suspicious" for necrotising fasciitis and ≥8 is "high-risk". Critically, a low LRINEC score <strong>must not be used to exclude the diagnosis</strong> — necrotising fasciitis remains a clinical diagnosis and surgical exploration should not be withheld on the basis of a reassuring score <InlineRef topicId="infectious-disease-icu" refLabel="IDSA SSTI 2014" />.
+            </p>
+
             <div className="space-y-2">
               {[
-                { label: "Clinical Features", detail: "Pain out of proportion, rapidly spreading erythema, crepitus, bullae, necrosis, systemic toxicity. LRINEC ≥6." },
-                { label: "Surgical Management", detail: "Emergency radical debridement — 'finger test' at fascial plane. Multiple relooks. Possible amputation. VAC for open wounds." },
-                { label: "Medical", detail: "Pip-tazo or meropenem + clindamycin (toxin suppression) + vancomycin (MRSA risk). IVIG for STSS." },
-                { label: "ICU Considerations", detail: "Massive fluid requirements, vasopressors, anticipate DIC/AKI/ARDS. Early intubation if cervicofacial spread." },
+                { label: "Surgical Management", detail: "Immediate and repeated aggressive surgical debridement is the cornerstone of treatment — the 'finger test' at the fascial plane confirms the diagnosis intraoperatively. Surgery must never be delayed for imaging. Planned relooks at 24–48 h, possible amputation, VAC for open wounds." },
+                { label: "Fluids and Vasopressors", detail: "Massive fluid requirements from third-spacing into the affected tissue plane; early vasopressor support is frequently required alongside aggressive resuscitation." },
+                { label: "Antimicrobial Therapy", detail: "Broad-spectrum cover — meropenem or piperacillin-tazobactam — PLUS clindamycin for toxin suppression (Eagle effect: β-lactams alone are less effective at high bacterial inoculum) PLUS MRSA cover with vancomycin or linezolid." },
+                { label: "Adjuncts", detail: "IVIG for streptococcal toxic shock (polyclonal antibody neutralises circulating superantigen). Hyperbaric oxygen is controversial and evidence is weak — it must never delay definitive surgery." },
+                { label: "ICU Considerations", detail: "Anticipate DIC, AKI and ARDS. Early intubation if cervicofacial spread." },
               ].map((item) => (
                 <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                   <p className="font-semibold text-foreground text-sm">{item.label}</p>
@@ -926,18 +979,55 @@ const InfectiousDiseaseIcuTopic = () => {
           <ExamSection id="cdiff" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3"><em>Clostridioides difficile</em> Infection</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Toxin-mediated colitis after antibiotics (fluoroquinolones, cephalosporins, clindamycin).
+              <em>C. difficile</em> is a Gram-positive, spore-forming anaerobe. Toxin A (enterotoxin) and toxin B (cytotoxin) disrupt colonic epithelial actin and tight junctions, causing colitis once antibiotics have disrupted the normal gut flora <InlineRef topicId="infectious-disease-icu" refLabel="NICE NG199" />.
             </p>
-            <div className="grid sm:grid-cols-2 gap-3">
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Risk Factors</h3>
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              Highest-risk antibiotics: clindamycin, cephalosporins, quinolones, co-amoxiclav. Host factors: age &gt; 65 years, prolonged hospital or ICU stay, proton pump inhibitor use, immunosuppression.
+            </p>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Diagnosis</h3>
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              ≥3 unformed stools in 24 hours plus a positive stool test — glutamate dehydrogenase (GDH) and toxin EIA, or toxin-gene NAAT — using the UK two-stage testing algorithm.
+            </p>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Severity Grading</h3>
+            <div className="grid sm:grid-cols-3 gap-3 mb-4">
               <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Mild–Moderate</p>
-                <p className="text-xs text-muted-foreground mt-1">Oral vancomycin 125 mg QDS × 10–14 d. Fidaxomicin for recurrence.</p>
+                <p className="font-semibold text-foreground text-sm">Non-severe</p>
+                <p className="text-xs text-muted-foreground mt-1">Diarrhoea without features of severe or life-threatening disease.</p>
               </div>
               <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Severe / Fulminant</p>
-                <p className="text-xs text-muted-foreground mt-1">Oral vancomycin 500 mg QDS + IV metronidazole. Toxic megacolon → subtotal colectomy. FMT for recurrence.</p>
+                <p className="font-semibold text-foreground text-sm">Severe</p>
+                <p className="text-xs text-muted-foreground mt-1">WCC ≥ 15 × 10⁹/L, creatinine ≥ 1.5 × baseline, or temperature &gt; 38.5 °C.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Life-threatening</p>
+                <p className="text-xs text-muted-foreground mt-1">Hypotension, ileus, toxic megacolon, lactate &gt; 5 mmol/L, or altered mental state.</p>
               </div>
             </div>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Management</h3>
+            <div className="space-y-2 mb-4">
+              {[
+                { label: "General", detail: "Stop the precipitating antibiotic wherever possible." },
+                { label: "First-line", detail: "Oral vancomycin 125 mg QDS for 10 days." },
+                { label: "Alternative", detail: "Oral fidaxomicin 200 mg BD for 10 days — associated with lower recurrence rates than vancomycin." },
+                { label: "Life-threatening disease", detail: "Oral/NG vancomycin 500 mg QDS plus IV metronidazole 500 mg TDS, with early surgical review for consideration of colectomy." },
+                { label: "Recurrence", detail: "Fidaxomicin; faecal microbiota transplantation (FMT) for multiple recurrences." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Infection Control</h3>
+            <p className="text-muted-foreground leading-relaxed text-sm">
+              Side-room isolation, gloves and apron for all contact, hand hygiene with soap and water (alcohol gel does not kill spores), and chlorine-based environmental cleaning <InlineRef topicId="infectious-disease-icu" refLabel="NICE NG199" />.
+            </p>
           </ExamSection>
 
           <ExamSection id="viral" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
