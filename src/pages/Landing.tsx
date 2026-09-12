@@ -348,9 +348,10 @@ const Landing = () => {
         </section>
       </PageSection>
 
-      <CommentWall />
-
-      <SupportSection />
+      <Suspense fallback={null}>
+        <CommentWall />
+        <SupportSection />
+      </Suspense>
 
       <SiteFooter extraLinks={[{ label: "Admin", href: "/admin" }]} />
 
