@@ -271,6 +271,74 @@ const IcuDrugSafety = () => {
                     })()}
 
 
+                    {(() => {
+                      const wd = icuDrugWithdrawal[d.slug];
+                      if (!wd) return null;
+                      const pk = icuDrugPharmacokinetics[d.slug];
+                      return (
+                        <div className="mt-3 rounded-lg border border-border bg-muted/30 p-3 text-sm">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <p className="flex items-center gap-1.5 font-semibold text-foreground">
+                              <TrendingDown className="h-4 w-4 text-icu" aria-hidden /> Stopping and
+                              withdrawal
+                            </p>
+                            <span
+                              className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${riskBadgeClass[wd.risk]}`}
+                            >
+                              {withdrawalRiskLabel[wd.risk]}
+                            </span>
+                          </div>
+
+                          <p className="mt-2 text-muted-foreground">
+                            <span className="font-medium text-foreground">Why: </span>
+                            {wd.why}
+                          </p>
+
+                          <dl className="mt-2 grid gap-2 rounded-md border border-border bg-background/60 p-2.5 sm:grid-cols-2">
+                            <div>
+                              <dt className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                                Half-life
+                              </dt>
+                              <dd className="mt-0.5 text-xs leading-snug text-foreground">
+                                {pk?.halFLifeFallback ?? pk?.halfLife ?? "See mechanisms page"}
+                              </dd>
+                            </div>
+                            <div>
+                              <dt className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                                Offset and what it means for the wean
+                              </dt>
+                              <dd className="mt-0.5 text-xs leading-snug text-foreground">{wd.offset}</dd>
+                            </div>
+                          </dl>
+
+                          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                            Tapering
+                          </p>
+                          <ul className="mt-1 list-disc space-y-1 pl-5 text-muted-foreground">
+                            {wd.taper.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+
+                          <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                            Monitoring during and after the wean
+                          </p>
+                          <ul className="mt-1 list-disc space-y-1 pl-5 text-muted-foreground">
+                            {wd.monitoring.map((item) => (
+                              <li key={item}>{item}</li>
+                            ))}
+                          </ul>
+
+                          {wd.rescue && (
+                            <p className="mt-3 rounded-md border border-icu/25 bg-icu/5 p-2.5 text-sm text-foreground">
+                              <span className="font-semibold">If withdrawal declares itself: </span>
+                              {wd.rescue}
+                            </p>
+                          )}
+                        </div>
+                      );
+                    })()}
+
                     <dl className="mt-4 space-y-4 text-sm leading-relaxed">
                       <div>
                         <dt className="flex items-center gap-1.5 font-semibold">
