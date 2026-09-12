@@ -13,7 +13,7 @@
 export interface PaedWithdrawalDrug {
   /** Display name, matching the ICU dosing table. */
   name: string;
-  /** Slug shared with the safety, mechanism and withdrawal data. */
+  /** Slug shared with the safety, mechanism and withdrawal data; empty when no page exists. */
   slug: string;
   /** Drug class shown as a chip. */
   drugClass: string;
@@ -259,7 +259,7 @@ export const paedWithdrawalFlows: PaedWithdrawalFlow[] = [
       },
       {
         name: "Atracurium",
-        slug: "atracurium",
+        slug: "atracurium-cisatracurium",
         drugClass: "Benzylisoquinolinium blocker",
         halfLife: "~20 min — Hofmann elimination and ester hydrolysis, independent of renal and hepatic function",
         timing: "Recovery within 30–60 min of stopping even after prolonged infusion; preferred where organ failure would prolong rocuronium.",
@@ -387,7 +387,7 @@ export const paedWithdrawalFlows: PaedWithdrawalFlow[] = [
     drugs: [
       {
         name: "Thiopentone",
-        slug: "thiopentone",
+        slug: "",
         drugClass: "Barbiturate",
         halfLife: "Terminal 6–12 h after single doses, but saturable zero-order kinetics after infusion give 24–72 h of persistent effect",
         timing: "Do not judge neurology or brainstem function for at least 24–72 h after stopping a prolonged infusion; EEG guides the wean, not the clock.",
