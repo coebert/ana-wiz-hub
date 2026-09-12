@@ -53,8 +53,7 @@ export const icuCaseBank: CaseBank = {
           ],
         },
         {
-          title
-: "Manage from here",
+          title: "Manage from here",
           prompt: "What do you change?",
           answer: [
             "Switch to a balanced crystalloid, continue fixed-rate insulin with glucose-containing fluid once glucose falls below about 14 mmol/L, and replace potassium aggressively.",
