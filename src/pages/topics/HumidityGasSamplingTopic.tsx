@@ -235,6 +235,42 @@ const HumidityGasSamplingTopic = () => {
                 <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />. At high flow, turbulence breaks the
                 linear ΔP–flow relationship; N₂O, oxygen and air differ in viscosity, so calibration must match gas composition.
               </p>
+              <div className="rounded-lg border border-border p-3">
+                <p className="font-semibold text-foreground">Sources of error and calibration</p>
+                <ul className="mt-2 list-disc list-inside text-sm space-y-2">
+                  <li>
+                    <strong>Condensation.</strong> Expired gas cools below its dew point and water condenses on the
+                    resistive element (Fleisch capillary bundle or Lilly mesh), narrowing the effective radius. Because
+                    ΔP ∝ 1/r⁴, resistance rises so the measured pressure drop for a given flow increases and the device
+                    <strong> over-reads flow/volume</strong>; droplets also cause erratic, noisy traces. Prevented by an
+                    integral heating element maintaining <strong>37–40 °C</strong> and by siting the head proximal to the
+                    patient's expiratory water load or on the inspiratory limb <InlineRef topicId="humidity-gas-sampling" refLabel="BJA 1983 Pneumotachography" />.
+                  </li>
+                  <li>
+                    <strong>Gas composition.</strong> The pneumotachograph relies on laminar flow and Hagen–Poiseuille, so
+                    it is <strong>viscosity-dependent</strong> — adding a more viscous gas such as nitrous oxide (or
+                    changing FiO₂, helium or volatile agent concentration) alters ΔP for the same flow. Contrast with
+                    variable-orifice/turbulent devices (e.g. Wright respirometer, rotameter at high flow, peak-flow
+                    meters) which are <strong>density-dependent</strong> (Bernoulli). Modern workstations compensate
+                    electronically using the measured gas mixture <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
+                  </li>
+                  <li>
+                    <strong>Turbulence.</strong> The linear pressure–flow relationship holds only while flow is laminar
+                    (Reynolds number below ~2000). At high peak inspiratory flows, or with a partially obstructed
+                    element, flow becomes turbulent, ΔP rises with the square of flow and the device
+                    <strong> under-reads</strong> unless corrected. The Fleisch design (many parallel narrow capillaries,
+                    each with a low Reynolds number) exists to keep flow laminar; smooth tapered inlets reduce entry
+                    turbulence <InlineRef topicId="humidity-gas-sampling" refLabel="BJA 1983 Pneumotachography" />.
+                  </li>
+                  <li>
+                    <strong>Calibration and drift.</strong> Two-point calibration with a known volume delivered from a
+                    1- or 3-litre calibration syringe at physiological flows, zeroing of the differential pressure
+                    transducer at no flow (baseline drift otherwise causes cumulative volume error when flow is
+                    integrated over time), calibration for the specific gas mixture and BTPS correction, plus regular
+                    checks for a blocked element or leaking sampling tubing <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
+                  </li>
+                </ul>
+              </div>
             </div>
             <CrossReferenceCallout
               reason="Detailed discussion of the Fleisch and Lilly pneumotachographs, sources of error, and clinical use."
@@ -563,6 +599,49 @@ const HumidityGasSamplingTopic = () => {
               usually paramagnetic for O₂, infrared for CO₂/N₂O/volatiles, fuel cell for circuit FiO₂ and Clark electrode for
               arterial blood. Mass spectrometry and Raman appear in "which analyser identifies <em>all</em> gases?" stems.
             </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="electrochemical-o2" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <CollapsibleSubsection title="Electrochemical Oxygen Analysers">
+            <div className="text-muted-foreground leading-relaxed space-y-3">
+              <p>
+                Two electrochemical devices measure oxygen partial pressure by consuming O₂ at a cathode; they differ
+                chiefly in whether they need an external power supply.
+              </p>
+              <div className="rounded-lg border border-border p-3">
+                <p className="font-semibold text-foreground">Galvanic fuel cell (FiO₂ in the breathing system)</p>
+                <p className="mt-2 text-sm">
+                  A lead (or occasionally cadmium) anode and a gold/silver mesh cathode sit in potassium hydroxide
+                  electrolyte behind an oxygen-permeable membrane. <strong>Cathode:</strong> O₂ + 2H₂O + 4e⁻ → 4OH⁻.
+                  <strong> Anode:</strong> Pb + 2OH⁻ → PbO + H₂O + 2e⁻ (i.e. Pb → Pb²⁺ + 2e⁻). It is a
+                  <strong> self-powered battery</strong> — the current, and hence the voltage across a fixed resistor,
+                  is proportional to the partial pressure of oxygen. Response is slow (~20–30 s), so it reads mean
+                  rather than breath-by-breath FiO₂; the anode is <strong>irreversibly consumed</strong>, giving a
+                  finite lifespan of roughly <strong>6–12 months</strong> that is shortened by continuous exposure to
+                  high FiO₂; output is temperature-dependent (thermistor-compensated) and it reads partial pressure, so
+                  readings change with ambient pressure <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
+                </p>
+              </div>
+              <div className="rounded-lg border border-border p-3">
+                <p className="font-semibold text-foreground">Clark polarographic electrode (PaO₂ in a blood-gas analyser)</p>
+                <p className="mt-2 text-sm">
+                  The key difference is that it requires an <strong>external polarising voltage</strong> of about
+                  0.6 V. A platinum cathode and silver/silver chloride anode sit in potassium chloride electrolyte
+                  behind an oxygen-permeable (polypropylene/Teflon) membrane. <strong>Cathode:</strong> O₂ + 2H₂O + 4e⁻
+                  → 4OH⁻. <strong>Anode:</strong> 4Ag + 4Cl⁻ → 4AgCl + 4e⁻. Current flow is proportional to the number
+                  of oxygen molecules reduced at the cathode, i.e. to PO₂, and is linear over the clinical range. It
+                  has a faster response than a fuel cell; is maintained at 37 °C; requires two-point calibration; the
+                  anode is not consumed, but protein deposition on the membrane and volatile agents (halothane can be
+                  reduced at the cathode) cause error <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
+                </p>
+              </div>
+              <p className="text-sm">
+                <strong>Compare and contrast:</strong> the galvanic fuel cell is a self-generating battery with a
+                consumable anode, used to alarm on breathing-system FiO₂; the Clark electrode is externally polarised,
+                does not consume its anode, and is used to measure PaO₂ in blood <InlineRef topicId="humidity-gas-sampling" refLabel="Al-Shaikh & Stacey Ch.8" />.
+              </p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout

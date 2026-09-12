@@ -14,6 +14,7 @@ import { CTDoseExplorer } from "@/components/diagrams/physics/CTDoseExplorer";
 import { RadiationSafetyChecklist } from "@/components/clinical/RadiationSafetyChecklist";
 import { RadiationDoseComparisonTable } from "@/components/clinical/RadiationDoseComparisonTable";
 import { Cite, ReferencesList, type Reference } from "@/components/references/References";
+import { InlineRef } from "@/components/references/InlineRef";
 import { xrayRadiationSafetyQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
@@ -335,6 +336,38 @@ const XRayRadiationSafetyTopic = () => {
                 320-slice detectors allow whole-organ coverage in a single rotation, enabling cardiac and CTPA studies.<Cite refs={[{ id: "aapm-ct", n: 9 }]} />
               </p>
 
+              <div className="rounded-lg border border-border bg-muted/30 p-3 not-prose">
+                <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1.5">
+                  Reconstruction: FBP vs iterative reconstruction
+                </p>
+                <ul className="text-xs text-foreground space-y-1.5 list-disc list-inside marker:text-muted-foreground">
+                  <li>
+                    <strong>Filtered back-projection (FBP)</strong> — the attenuation data from each projection are 'smeared' back
+                    across the image matrix. Simple back projection alone gives a blurred image with star artefacts, so the raw data
+                    are first passed through a mathematical filter/kernel that sharpens them before back projection — soft-tissue
+                    kernels favour low noise, bone/lung kernels favour spatial resolution at the cost of more noise
+                    <InlineRef topicId="xray-radiation-safety" refLabel="BJA Educ 2019 (CT)" />.
+                  </li>
+                  <li>
+                    <strong>Iterative reconstruction (IR)</strong> — an initial image estimate is forward-projected to create
+                    simulated raw data, compared against the measured data, and the image is repeatedly corrected over successive
+                    iterations (e.g. ASIR, IMR, and model-based IR that also models system optics and photon statistics). Lower
+                    image noise allows diagnostic images at a significantly lower radiation dose; the trade-offs are increased
+                    computation time and an altered, sometimes 'blotchy', image texture
+                    <InlineRef topicId="xray-radiation-safety" refLabel="BJA Educ 2019 (CT)" />.
+                  </li>
+                </ul>
+              </div>
+
+              <p>
+                <strong>Pitch</strong> = table movement per gantry rotation ÷ total (collimated) beam width. Pitch = 1 gives
+                contiguous slices; pitch &gt; 1 stretches the helix — gaps requiring interpolation, a faster scan and (for fixed mAs)
+                lower dose, useful in trauma or an uncooperative patient. Pitch &lt; 1 overlaps the data — higher dose but better image
+                quality and less helical artefact, used for high-resolution or cardiac work. On most modern scanners, however, tube
+                current is modulated in real time to keep image noise constant, so dose does not simply fall as pitch rises
+                <InlineRef topicId="xray-radiation-safety" refLabel="BJA Educ 2019 (CT)" />.
+              </p>
+
               <p>
                 <strong>Dose modulation</strong> is the headline patient-safety feature: the tube current (mA) is varied in real time
                 with patient diameter (angular and z-axis modulation) and the kVp can be lowered for paediatric and contrast-enhanced
@@ -505,6 +538,40 @@ const XRayRadiationSafetyTopic = () => {
                 of the patient.
               </p>
               <RadiationSafetyChecklist />
+            </div>
+            </CollapsibleSubsection>
+            <CollapsibleSubsection title="UK Regulatory Framework: IRR 2017 and IR(ME)R 2017">
+            <div className="text-muted-foreground leading-relaxed space-y-3">
+              <p>
+                Within the UK, ionising radiation is controlled by two statutory instruments with distinct purposes
+                <InlineRef topicId="xray-radiation-safety" refLabel="BJA Educ 2021 (Radiation safety)" />:
+              </p>
+              <p>
+                <strong>IRR 2017</strong> protects <em>workers and the public</em>. Employer duties include a prior risk
+                assessment, restriction of exposure so far as reasonably practicable, written local rules with dose-constraint and
+                contingency arrangements, and appointment of a <strong>Radiation Protection Supervisor (RPS)</strong> to secure
+                day-to-day compliance. Employers must also appoint a suitably qualified{" "}
+                <strong>Radiation Protection Adviser (RPA)</strong> to advise on compliance, and designate{" "}
+                <strong>controlled areas</strong> (where special procedures are needed to restrict exposure — e.g. within the
+                theatre during fluoroscopy, or within ~2 m of the beam) and <strong>supervised areas</strong>. Staff likely to
+                exceed 6 mSv/year effective dose (or 3/10 of any other relevant dose limit) must be{" "}
+                <strong>classified</strong>, with formal dose monitoring and annual medical surveillance. Statutory dose limits:
+                20 mSv/year whole-body effective dose for classified workers, 1 mSv/year for the public, 20 mSv/year to the lens
+                of the eye, and 500 mSv/year to skin and extremities
+                <InlineRef topicId="xray-radiation-safety" refLabel="IRR 2017" />.
+              </p>
+              <p>
+                <strong>IR(ME)R 2017</strong> protects the <em>patient</em>. Four duty-holder roles are defined: the{" "}
+                <strong>employer</strong> (written procedures and protocols, clinical audit), the <strong>referrer</strong>{" "}
+                (supplies adequate clinical information to justify the exposure), the <strong>practitioner</strong> (justifies the
+                individual exposure — weighing benefit against detriment) and the <strong>operator</strong> (carries out any
+                practical aspect — including an anaesthetist who presses the fluoroscopy pedal or moves the table). Core
+                principles are <strong>justification</strong>, <strong>optimisation</strong> (ALARP/ALARA, benchmarked against
+                diagnostic reference levels) and <strong>authorisation</strong> of exposures against agreed guidelines, together
+                with dose recording and mandatory notification of clinically significant accidental or unintended exposures to
+                the Care Quality Commission (CQC)
+                <InlineRef topicId="xray-radiation-safety" refLabel="IR(ME)R 2017" />.
+              </p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -820,12 +887,58 @@ const XRayRadiationSafetyTopic = () => {
                 required (e.g. ventilated unstable patient — wear lead and stand at the back).
               </p>
             </div>
+            </CollapsibleSubsection>
+            <CollapsibleSubsection title="Risks of Iodinated Contrast Media">
+            <div className="text-muted-foreground leading-relaxed space-y-3">
+              <p>
+                Most CT and cath-lab studies the anaesthetist attends use intravascular iodinated contrast. Four risks matter
+                for anaesthetic practice <InlineRef topicId="xray-radiation-safety" refLabel="RCR Contrast 2023" />:
+              </p>
+              <ul className="list-disc list-inside space-y-1.5 ml-2">
+                <li>
+                  <strong>Acute hypersensitivity / anaphylaxis</strong> — mild reactions (urticaria, nausea, flushing) occur in
+                  ~1–3% with modern low-osmolar agents; severe reactions are rare (~1:10,000) and fatal reactions rarer still
+                  (~1:100,000). Most are <em>non-IgE, direct mast-cell activation</em> rather than true allergy. Signs range from
+                  urticaria, flushing and angio-oedema to bronchospasm, hypotension and cardiovascular collapse. Management is
+                  standard anaphylaxis practice: stop the injection, ABC approach, <strong>IM adrenaline 500 micrograms</strong> for
+                  anaphylaxis, oxygen and fluids, then antihistamine and corticosteroid, with tryptase sampling and allergy
+                  referral. A stated shellfish allergy is <em>not</em> a specific risk factor for contrast reaction — a prior
+                  reaction to contrast is <InlineRef topicId="xray-radiation-safety" refLabel="RCR Contrast 2023" />.
+                </li>
+                <li>
+                  <strong>Contrast-associated / contrast-induced nephropathy (CIN)</strong> — a rise in serum creatinine
+                  ≥26 micromol/L or ≥25% within 48–72 hours of intravascular contrast, without another cause. Risk factors:
+                  pre-existing CKD (especially eGFR &lt;30), diabetic nephropathy, dehydration/hypovolaemia, heart failure, large
+                  contrast volume, intra-arterial route, repeated exposure, sepsis and concurrent nephrotoxins. Prevention: check
+                  eGFR beforehand, correct hypovolaemia, give IV isotonic saline ~1 mL/kg/h peri-procedure in high-risk patients,
+                  use the lowest effective volume of a low- or iso-osmolar non-ionic agent, stop NSAIDs and other nephrotoxins, and
+                  avoid repeat contrast within 48–72 hours; N-acetylcysteine is no longer supported
+                  <InlineRef topicId="xray-radiation-safety" refLabel="RCR Contrast 2023" />.
+                </li>
+                <li>
+                  <strong>Metformin</strong> — accumulation and lactic acidosis risk if contrast precipitates acute kidney injury.
+                  With eGFR ≥30 and a low-volume IV contrast study, no interruption is needed. With eGFR &lt;30, an intra-arterial
+                  study, or established acute kidney injury, stop metformin at the time of contrast and restart 48 hours later once
+                  renal function is confirmed stable <InlineRef topicId="xray-radiation-safety" refLabel="RCR Contrast 2023" />.
+                </li>
+                <li>
+                  <strong>Phaeochromocytoma</strong> — the iodine load can precipitate catecholamine release and a hypertensive
+                  crisis. Ensure adequate alpha blockade first, avoid high-osmolar ionic agents, and have phentolamine available
+                  <InlineRef topicId="xray-radiation-safety" refLabel="RCR Radiation 2020" />.
+                </li>
+                <li>
+                  <strong>Thyroid</strong> — the large iodine load can precipitate thyrotoxicosis or thyroid storm in untreated
+                  Graves' disease or an autonomous nodule, and blocks radioiodine uptake for subsequent weeks
+                  <InlineRef topicId="xray-radiation-safety" refLabel="RCR Contrast 2023" />.
+                </li>
+              </ul>
+            </div>
+            </CollapsibleSubsection>
             <CrossReferenceCallout
               reason="Clinical-context companion to this physics topic — the IR-suite anaesthetic plan (remote location, contrast reactions, procedure-specific issues) where these radiation-safety principles are applied."
               links={[{ topicId: "interventional-radiology" }]}
               variant="inline"
             />
-            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="references" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>

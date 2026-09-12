@@ -134,6 +134,37 @@ const UltrasoundPhysicsTopic = () => {
                 wavelength matching layer has impedance intermediate between PZT and tissue, reducing reflection and maximising energy
                 transmission <InlineRef topicId="ultrasound-physics" refLabel="BJA Educ 2017" />.
               </p>
+              <p>
+                The <strong>backing/damping block</strong> reduces 'ringing' by absorbing energy behind the crystal — this shortens
+                the pulse (fewer cycles), which improves axial resolution but lowers the Q factor and broadens the bandwidth (more
+                spread of frequencies, useful for harmonic and broadband imaging) at the cost of some sensitivity
+                <InlineRef topicId="ultrasound-physics" refLabel="Middleton Ch.13" />.
+              </p>
+              <p>
+                Element arrangement and firing sequence determine <strong>probe geometry</strong>:
+              </p>
+              <ul className="list-disc list-inside space-y-1.5 ml-2">
+                <li>
+                  <strong>Linear array</strong> — around 128 small elements arranged in a straight line, fired in small
+                  overlapping sequential groups. Produces a rectangular field of view whose width equals the probe footprint.
+                  High frequency (6–15 MHz) gives excellent near-field resolution — the workhorse for vascular access, peripheral
+                  nerve blocks and lung/pleural imaging.
+                </li>
+                <li>
+                  <strong>Curvilinear (convex) array</strong> — elements arranged along a convex arc so the beams diverge,
+                  producing a wide fan-shaped field that broadens with depth. Lower frequency (2–5 MHz) trades resolution for
+                  penetration — used for abdominal, obstetric and FAST scanning, and for transabdominal/quadratus lumborum blocks.
+                  Lateral resolution deteriorates with depth as the diverging scan lines spread further apart.
+                </li>
+                <li>
+                  <strong>Phased array</strong> — a small footprint with fewer elements (e.g. ~64), fired almost simultaneously
+                  but with tiny, electronically applied time delays (order of nanoseconds) between adjacent elements, so the
+                  resulting wavefronts interfere constructively to steer and focus the beam without moving the probe. This
+                  produces a narrow-apex, wide-far-field sector image — essential for echocardiography through a single
+                  intercostal acoustic window, and used for transcranial Doppler
+                  <InlineRef topicId="ultrasound-physics" refLabel="Cross & Plunkett Ch.17" />.
+                </li>
+              </ul>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -156,6 +187,20 @@ const UltrasoundPhysicsTopic = () => {
                 Clinical probe selection: <strong>linear 6–15 MHz</strong> for superficial structures (nerve blocks, vascular access);
                 <strong> curvilinear 2–5 MHz</strong> for deep abdominal structures (FAST scan); <strong>phased array 1–5 MHz</strong>
                 for cardiac imaging through small acoustic windows.
+              </p>
+              <p>
+                <strong>Tissue harmonic imaging (THI)</strong> transmits at a fundamental frequency (f₀) but forms the image from
+                the returning <em>second harmonic</em> (2f₀) generated within tissue rather than from the fundamental echo. As a
+                high-amplitude wave propagates, non-linear behaviour of tissue — sound travels faster through the compressed,
+                higher-pressure phase of the wave than through the rarefied phase — progressively distorts the sine wave, generating
+                harmonic frequencies that build up with depth in tissue but are weak in the near field, in the transducer's own
+                side lobes and in reverberation artefact. Selectively imaging the harmonic signal therefore improves lateral and
+                contrast resolution and reduces reverberation, near-field, slice-thickness and side-lobe artefact, with better
+                signal-to-noise and clutter rejection than fundamental imaging. The cost is a weaker harmonic signal, so reduced
+                penetration and a lower frame rate. THI is used routinely to sharpen endocardial border definition in
+                echocardiography, to improve imaging in obese or otherwise 'difficult-to-image' patients, and to clarify
+                needle-tip and nerve interfaces in regional anaesthesia
+                <InlineRef topicId="ultrasound-physics" refLabel="BJA Educ Ultrasound 2017" />.
               </p>
             </div>
             </CollapsibleSubsection>
@@ -183,11 +228,22 @@ const UltrasoundPhysicsTopic = () => {
                   increase, because each line must return before the next is sent.
                 </p>
                 <p>
-                  <strong>M-mode (motion)</strong> — a single B-mode line displayed against time, giving very high
-                  temporal resolution for moving structures. Used for valve and chamber-wall motion and diaphragmatic
-                  excursion in echocardiography, and in lung ultrasound to demonstrate the "seashore sign" of normal
-                  sliding versus the "barcode/stratosphere sign" of pneumothorax.
+                  <strong>M-mode (motion)</strong> — a single selected scan line is displayed against time, with echo
+                  depth on the vertical axis and time on the horizontal axis, producing a time–motion trace of every
+                  structure the line crosses. Because only one line is interrogated, the line rate is far higher than the
+                  2D frame rate, giving <strong>excellent temporal resolution</strong> at the cost of all lateral
+                  information — it tells you precisely <em>when</em> something moved, not <em>where</em> beside the line
+                  <InlineRef topicId="ultrasound-physics" refLabel="BJA Educ Ultrasound Physics 2020" />.
                 </p>
+                <p>
+                  <strong>Clinical uses:</strong> rates and patterns of movement — mitral and aortic valve motion and
+                  E-point septal separation, mitral annular excursion and TAPSE, IVC diameter and collapsibility index,
+                  diaphragmatic excursion during weaning assessment, and pericardial or pleural fluid characterisation
+                  (the "sinusoid sign" of an effusion). In lung ultrasound it demonstrates the granular
+                  <strong> "seashore sign"</strong> of normal sliding versus the <strong>"barcode/stratosphere sign"</strong>{" "}
+                  of pneumothorax <InlineRef topicId="ultrasound-physics" refLabel="Cross &amp; Plunkett Ch.17" />.
+                </p>
+
               </div>
             </CollapsibleSubsection>
           </ExamSection>

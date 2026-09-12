@@ -137,6 +137,29 @@ const TemperatureMeasurementTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-xl font-bold text-foreground mb-2">Peltier and Thomson Effects</h2>
+          <div className="text-muted-foreground leading-relaxed space-y-3">
+            <p>
+              <strong>Peltier effect</strong> is the converse of the Seebeck effect: passing a current through a
+              junction of two dissimilar metals causes heat to be absorbed or liberated at that junction, depending on
+              the direction of current flow. It is used for active heating/cooling — thermoelectric coolers, cold-junction
+              compensation, and some blood/fluid warming and targeted temperature management devices
+              <InlineRef topicId="temperature-measurement" refLabel="Cross & Plunkett Ch.11" />.
+            </p>
+            <p>
+              <strong>Thomson effect</strong> is the heating or cooling of a <em>single</em> homogeneous current-carrying
+              conductor along which a temperature gradient exists; the sign depends on the metal and the direction of
+              current relative to the gradient.
+            </p>
+            <p>
+              <strong>Exam point:</strong> Seebeck is the principle of temperature <em>measurement</em>; Peltier is used
+              for active heating/cooling; Thomson is a small contributory thermoelectric effect and a favourite viva
+              completion question <InlineRef topicId="temperature-measurement" refLabel="Cross & Plunkett Ch.11" />.
+            </p>
+          </div>
+        </div>
+
+        <div>
           <h2 className="text-xl font-bold text-foreground mb-2">Liquid Crystal Thermometers</h2>
           <p className="text-muted-foreground leading-relaxed">
             Disposable forehead strips contain microencapsulated <strong>cholesteryl ester liquid crystals</strong>. Temperature alters
@@ -155,9 +178,47 @@ const TemperatureMeasurementTopic = () => {
               but a markedly <strong>non-linear</strong> response requiring calibration or linearisation circuitry.
             </p>
             <p>
-              Resistance is measured using a <strong>Wheatstone bridge</strong> circuit. The thermistor is one arm of the bridge;
-              when its resistance changes with temperature, the bridge becomes unbalanced and the resulting voltage is proportional
-              to the temperature change.
+              Resistance is measured using a <strong>Wheatstone bridge</strong> circuit. Four resistors — R1, R2, R3 and
+              Rx (the thermistor or RTD) — are arranged in a diamond, with an input voltage Vin applied across one pair
+              of opposite corners and Vout measured across the other pair. The bridge is <strong>balanced</strong> when
+              R1/R2 = R3/Rx, so Vout is zero; a change in temperature changes Rx, unbalancing the bridge and producing a
+              Vout proportional to the resistance change <InlineRef topicId="temperature-measurement" refLabel="Cross & Plunkett Ch.11" />.
+            </p>
+            <div className="my-3 rounded-lg border border-border p-3">
+              <svg viewBox="0 0 300 200" className="w-full h-auto max-w-sm mx-auto">
+                <g className="stroke-primary" fill="none" strokeWidth="1.5">
+                  <line x1="150" y1="20" x2="60" y2="100" />
+                  <line x1="150" y1="20" x2="240" y2="100" />
+                  <line x1="60" y1="100" x2="150" y2="180" />
+                  <line x1="240" y1="100" x2="150" y2="180" />
+                  <line x1="150" y1="20" x2="150" y2="4" />
+                  <line x1="150" y1="180" x2="150" y2="196" />
+                  <line x1="60" y1="100" x2="30" y2="100" />
+                  <line x1="240" y1="100" x2="270" y2="100" />
+                </g>
+                <g className="fill-muted-foreground text-[10px]">
+                  <text x="90" y="55">R1</text>
+                  <text x="195" y="55">R2</text>
+                  <text x="85" y="150">R3</text>
+                  <text x="190" y="150">Rx</text>
+                  <text x="140" y="14">Vin+</text>
+                  <text x="130" y="197">Vin−</text>
+                  <text x="0" y="95">Vout−</text>
+                  <text x="272" y="95">Vout+</text>
+                </g>
+              </svg>
+              <p className="text-xs text-muted-foreground text-center mt-1">
+                Wheatstone bridge: balanced (Vout = 0) when R1/R2 = R3/Rx; Rx changing with temperature unbalances the
+                bridge and generates a proportional Vout.
+              </p>
+            </div>
+            <p>
+              <strong>Practical points:</strong> a <em>null-deflection</em> version adjusts a variable resistor until
+              Vout is zero (most accurate, no current drawn), while a <em>deflection</em> version reads Vout directly
+              (used for continuous monitoring). A second, identical thermistor in an adjacent arm can compensate for
+              ambient temperature. Long lead resistance introduces error, mitigated by a three- or four-wire RTD
+              connection. Self-heating of the thermistor by the excitation current is itself a source of error, so the
+              excitation current is kept small <InlineRef topicId="temperature-measurement" refLabel="Cross & Plunkett Ch.11" />.
             </p>
             <p>
               <strong>Clinical use:</strong> The thermistor at the tip of a <strong>pulmonary artery (PA) catheter</strong> measures
@@ -237,6 +298,40 @@ const TemperatureMeasurementTopic = () => {
               (rapid drop in first hour due to vasodilation), (2) <strong>linear decline</strong> (radiation &gt; metabolic heat
               production), (3) <strong>plateau</strong> (thermoregulatory vasoconstriction re-established at ~34.5°C).
             </p>
+            <div className="rounded-lg border border-border p-3">
+              <p className="font-semibold text-foreground">Zero-Heat-Flux Thermometry</p>
+              <div className="mt-2 text-sm space-y-2">
+                <p>
+                  <strong>Principle:</strong> a dual-sensor forehead patch (e.g. 3M Bair Hugger temperature monitoring
+                  system) contains two thermistors separated by an insulating layer, plus a servo-controlled heating
+                  element.
+                </p>
+                <p>
+                  <strong>Mechanism:</strong> the heater warms the skin until the two thermistors read the same
+                  temperature, i.e. there is no temperature gradient and therefore <strong>zero heat flux</strong>
+                  between deep tissue and the skin surface. With heat loss abolished, the skin surface temperature
+                  equilibrates with, and so reports, the underlying deep-tissue (core) temperature. Equilibration takes
+                  a few minutes after application <InlineRef topicId="temperature-measurement" refLabel="BJA Educ Temperature 2020" />.
+                </p>
+                <p>
+                  <strong>Clinical use:</strong> continuous, non-invasive core temperature in theatre, recovery and ICU,
+                  including awake and regional cases; validation studies show bias within about 0.2 °C of oesophageal,
+                  bladder or pulmonary artery temperature with limits of agreement around ±0.5 °C
+                  <InlineRef topicId="temperature-measurement" refLabel="Intensive Care Med 2003" />.
+                </p>
+                <p>
+                  <strong>Advantages:</strong> non-invasive, continuous, no airway or urinary access needed, usable
+                  pre-induction and post-operatively.
+                </p>
+                <p>
+                  <strong>Limitations:</strong> requires clean dry forehead access (competes with the surgical field in
+                  neuro/ENT/ophthalmic work and with EEG/BIS electrodes), single-use consumable cost, potential local
+                  skin irritation or pressure/thermal injury with prolonged use, slow to follow very rapid changes such
+                  as cardiopulmonary bypass rewarming, and less reliable in low-flow or profoundly vasoconstricted
+                  states.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
