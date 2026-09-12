@@ -152,7 +152,7 @@ const MathConceptsTopic = () => {
           <ExamSection id="time-constants" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Time Constants (τ)">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              The time constant τ is central to understanding exponential processes. After one time constant, 63% of the change has occurred. After three time constants, 95%. After five, 99.3% — effectively complete.
+              The time constant τ is central to understanding exponential processes. After one time constant, 63% of the change has occurred. After three time constants, 95%. After five, &gt;99% — effectively complete (the exact figure is 99.3%).
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
