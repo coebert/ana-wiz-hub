@@ -190,6 +190,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["High-risk surgical patient", "Perioperative critical care", "P-POSSUM", "SORT", "CPET", "MINS", "NELA", "CPOC"],
     keywords: ["high risk surgical patient", "P-POSSUM", "CPET", "MINS surveillance", "NELA"],
   },
+  "paediatric-core": {
+    title: "Paediatric Core Essentials: Physiology, Fluids, Dosing | FRCA",
+    description: "Paediatric core essentials for FRCA: age-specific physiology, Holliday-Segar maintenance fluids, weight-based drug dosing, WETFLAG, and pain scoring (FLACC, FACES, NRS).",
+    aliases: ["Paediatric physiology", "Paediatric fluids", "Paediatric drug dosing", "Paediatric pain scoring", "WETFLAG", "Holliday-Segar"],
+    keywords: ["paediatric physiology", "paediatric maintenance fluids", "paediatric drug dosing", "FLACC score", "WETFLAG", "Holliday-Segar"],
+  },
   "paediatric-icu": {
     title: "Paediatric Intensive Care: PICU Essentials | FFICM",
     description: "Paediatric intensive care for FFICM: age-specific physiology, paediatric sepsis, congenital heart disease, paediatric neurocritical care, sedation, resuscitation.",
