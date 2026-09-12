@@ -24,6 +24,7 @@ const tocItems = [
   { id: "tourniquet", label: "Tourniquet physiology", group: "Core topics" },
   { id: "bcis", label: "Bone cement implantation syndrome", group: "Core topics" },
   { id: "fat-embolism", label: "Fat embolism syndrome", group: "Core topics" },
+  { id: "txa", label: "Tranexamic acid", group: "Core topics" },
   { id: "regional", label: "Regional anaesthesia for ERAS", group: "Regional" },
   { id: "wear-off", label: "The block wear-off cliff", group: "Regional" },
   { id: "catheters", label: "Continuous & ambulatory catheters", group: "Regional" },
@@ -179,8 +180,11 @@ const OrthopaedicAnaesthesiaTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Pressure</strong>: upper limb 50-100 mmHg above SBP; lower limb 100-150 mmHg above SBP</li>
               <li><strong>Time</strong>: safe limit ~2h. Deflation after 1.5h recommended. Rest 15min between inflations</li>
-              <li><strong>Inflation effects</strong>: ↑ SVR, ↑ MAP, ↑ CVP. Tourniquet pain (C-fibres, poorly blocked by LA)</li>
-              <li><strong>Deflation effects</strong>: ↓ MAP, ↑ CO₂ (washout), ↓ pH, ↑ K⁺, ↑ lactate, ↓ core temperature. Risk of PE from mobilised clot. Reactive hyperaemia</li>
+              <li><strong>Inflation effects</strong>: exsanguination and cuff inflation shift 500–800 mL of blood centrally (limb 'autotransfusion' of roughly 150–500 mL for a lower limb), raising CVP, MAP and SVR. Bilateral inflation can raise MAP substantially and precipitate failure in a poor ventricle. Catecholamine release contributes: plasma noradrenaline and adrenaline rise progressively and account for the hypertension seen after 30–60 minutes even under adequate anaesthesia<InlineRef topicId="orthopaedic-anaesthesia" refLabel="Kam 2001 Tourniquet" /></li>
+              <li><strong>Tourniquet pain</strong>: biphasic — early sharp pain from Aδ fibres, then a deep, dull, escalating ache from slow-conducting unmyelinated C fibres that resists both regional block and volatile anaesthesia, with associated hypertension and tachycardia. Managed by adequate depth/opioid, clonidine or ketamine adjuncts and ultimately deflation</li>
+              <li><strong>Deflation effects</strong>: washout of the ischaemic limb causes a fall in MAP and SVR, a rise in end-tidal and arterial CO₂ (with a compensatory increase in minute ventilation), metabolic acidosis with raised lactate, hyperkalaemia, myoglobinaemia and a fall in core temperature as cool blood returns. Reperfusion generates reactive oxygen species and inflammatory mediators, causing limb oedema and — after prolonged or bilateral ischaemia — systemic effects including arrhythmias, hypotension, renal injury and, rarely, pulmonary injury. Mobilised thrombus can cause pulmonary embolism<InlineRef topicId="orthopaedic-anaesthesia" refLabel="Kam 2001 Tourniquet" /></li>
+              <li><strong>Local tissue effects</strong>: post-tourniquet syndrome (swollen, weak, pale limb), nerve injury from direct compression (highest with excessive pressure or a narrow cuff), skin injury from antiseptic pooling beneath the cuff, and muscle injury with rhabdomyolysis after prolonged inflation</li>
+
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
