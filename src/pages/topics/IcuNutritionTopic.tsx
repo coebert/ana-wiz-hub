@@ -170,6 +170,61 @@ const IcuNutritionTopic = () => {
                 </tbody>
               </table>
             </div>
+            <div className="p-4 rounded-lg border border-border mt-4">
+              <p className="font-semibold text-foreground text-sm">
+                Complications of parenteral nutrition — and how to prevent them
+              </p>
+              <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground mt-2">
+                <li>
+                  <strong>Catheter-related bloodstream infection</strong> — the dominant complication.
+                  Use a dedicated, never-broached lumen, full asepsis for insertion and access, a
+                  chlorhexidine-impregnated dressing and daily line review; remove the line for
+                  unexplained fever with positive paired cultures. PICC/CVC insertion also carries
+                  pneumothorax, arterial puncture and catheter-related thrombosis (up to 10–30%
+                  radiologically).
+                </li>
+                <li>
+                  <strong>Mechanical / occlusion problems</strong> — line fracture, kinking, lipid or
+                  calcium-phosphate precipitate. Never flush against resistance; do not add drugs to the
+                  PN bag.
+                </li>
+                <li>
+                  <strong>Overfeeding syndrome</strong> — excess calories cause hyperglycaemia, lipogenesis
+                  and hepatic steatosis, a rise in CO₂ production with failure to wean from the ventilator,
+                  and fluid overload. Cap glucose delivery at ≈ 4–5 mg/kg/min and use indirect calorimetry
+                  where available.
+                </li>
+                <li>
+                  <strong>Hyperglycaemia</strong> — target 6–10 mmol/L with a variable-rate insulin
+                  infusion; never stop PN abruptly without glucose cover (rebound hypoglycaemia).
+                </li>
+                <li>
+                  <strong>Hypertriglyceridaemia</strong> — check triglycerides at baseline and twice
+                  weekly; if &gt; 4.5 mmol/L reduce or interrupt the lipid emulsion (risk of fat-overload
+                  syndrome, pancreatitis, impaired immune function, and interference with lab assays).
+                </li>
+                <li>
+                  <strong>PN-associated liver disease (PNALD / IFALD)</strong> — steatosis within 1–2 weeks,
+                  then cholestasis with a rising ALP/GGT and conjugated bilirubin; contributed to by
+                  overfeeding, excess soybean lipid, lack of enteral stimulation and sepsis. Prevent by
+                  giving any tolerated trophic EN, cycling PN, limiting lipid to ≤ 1 g/kg/day and using
+                  mixed-oil / fish-oil-containing emulsions. Acalculous cholecystitis and biliary sludge
+                  result from gallbladder stasis.
+                </li>
+                <li>
+                  <strong>Electrolyte and micronutrient derangement</strong> — refeeding syndrome
+                  (PO₄³⁻/K⁺/Mg²⁺ collapse — give thiamine first), hyponatraemia, metabolic acidosis, and
+                  after weeks of PN, deficiencies of thiamine, selenium, zinc, copper and essential fatty
+                  acids. Gut atrophy and loss of mucosal immunity occur when nothing is given enterally.
+                </li>
+                <li>
+                  <strong>Monitoring bundle:</strong> daily U&amp;E, glucose, PO₄³⁻/Mg²⁺/Ca²⁺ and fluid
+                  balance in the first week; twice-weekly LFTs and triglycerides; weekly CRP, full blood
+                  count and (in long-term PN) trace elements and vitamins; daily weight and line-site
+                  inspection.
+                </li>
+              </ul>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -216,6 +271,95 @@ const IcuNutritionTopic = () => {
                 <p className="font-semibold text-foreground text-sm">Prevention &amp; management</p>
                 <p className="text-sm text-muted-foreground mt-1">
                   Start 10 kcal/kg/day (5 kcal/kg if extreme risk). IV thiamine 200–300 mg before feeding, then daily 3–10 days. Replace K⁺/PO₄/Mg²⁺ during feeding. Daily biochemistry for the first week. Cardiac monitoring for fluid overload day 3–7.
+                </p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Nutrition in the Obese Critically Ill Patient">
+            <p className="text-sm text-muted-foreground mb-3">
+              Obesity is not protective in critical illness: sarcopenic obesity, insulin resistance and a
+              blunted ability to mobilise protein mean these patients are at high risk of muscle wasting
+              while being routinely overfed if actual body weight is used.
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>
+                <strong>Which weight?</strong> Never use actual body weight for calorie targets. Use{" "}
+                <strong>indirect calorimetry</strong> where available; otherwise base targets on{" "}
+                <strong>adjusted body weight</strong> = IBW + 0.33 × (ABW − IBW).
+              </li>
+              <li>
+                <strong>Energy (ESPEN 2019 hypocaloric approach):</strong> if calorimetry is available give{" "}
+                <strong>70% of measured REE</strong>. Without calorimetry, use{" "}
+                <strong>11–14 kcal/kg actual body weight/day for BMI 30–50</strong> and{" "}
+                <strong>22–25 kcal/kg ideal body weight/day for BMI &gt; 50</strong>.
+              </li>
+              <li>
+                <strong>Protein is deliberately high:</strong> <strong>1.3 g/kg adjusted body weight/day</strong>{" "}
+                (ESPEN); the ASPEN alternative is 2.0 g/kg IBW/day for BMI 30–40 and up to 2.5 g/kg
+                IBW/day for BMI ≥ 40. High protein with restricted calories preserves lean mass while
+                promoting mobilisation of fat stores.
+              </li>
+              <li>
+                <strong>Practical cautions:</strong> avoid a permissive-underfeeding approach in patients at
+                refeeding risk or after bariatric surgery; screen for thiamine, vitamin D, B₁₂, iron, folate,
+                zinc and copper deficiency (common post-bariatric) and supplement before feeding; monitor
+                glucose closely; and reassess targets as the acute phase resolves. Deconditioning and
+                pressure-area risk make early mobilisation and physiotherapy part of the nutrition plan.
+              </li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Special Populations — ECMO / ECLS and Severe Pancreatitis">
+            <p className="text-sm text-muted-foreground mb-3">
+              Two groups are repeatedly cited in vivas as &lsquo;too sick to feed&rsquo; when in fact early
+              enteral nutrition is both feasible and beneficial.
+            </p>
+            <div className="space-y-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">
+                  ECMO and other extracorporeal life support
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>Feed early and enterally.</strong> Multiple cohorts show early EN on VV- and
+                  VA-ECMO is safe and tolerated in ~85% of patients; ECMO itself is not a contraindication
+                  and non-occlusive bowel ischaemia is rare. Start within 24–48 h at trophic rates once
+                  flows are stable. Energy needs are frequently{" "}
+                  <em>over</em>-estimated because the oxygenator removes CO₂ — standard indirect
+                  calorimetry is invalid unless membrane gas exchange is accounted for, so use
+                  weight-based targets (20–25 kcal/kg/day) with protein 1.5–2.0 g/kg/day. Expect
+                  circuit-related losses and increased requirements: heat loss, protein loss, and
+                  micronutrient/vitamin (thiamine, selenium, zinc) and phosphate depletion, magnified when
+                  CRRT runs in series — add 0.2 g/kg/day protein for CRRT. Sedation, opioids, catecholamines
+                  and prone positioning cause gastroparesis; use prokinetics and post-pyloric feeding rather
+                  than stopping EN, and remember propofol contributes ~1.1 kcal/mL of lipid to the calorie
+                  budget. Reserve supplemental PN for persistent failure to reach 60% of target by day 4–7.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Severe acute pancreatitis</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  &lsquo;Gut rest&rsquo; is obsolete. Offer <strong>early oral diet as tolerated</strong> in
+                  mild disease, and in predicted severe or intolerant patients start{" "}
+                  <strong>enteral nutrition within 24–72 h</strong> — it reduces infected necrosis,
+                  multi-organ failure and mortality compared with PN by maintaining gut barrier function.
+                  Use a <strong>nasogastric tube first</strong> (non-inferior to nasojejunal in trials, and
+                  quicker to place); switch to nasojejunal for persistent gastric intolerance, gastric
+                  outlet obstruction or duodenal compression by a collection. A standard polymeric feed is
+                  adequate; semi-elemental or MCT-containing feeds only if malabsorption is evident. Target
+                  25–30 kcal/kg/day and 1.2–1.5 g/kg/day protein, ramping up over 3–7 days, with thiamine
+                  and full micronutrient cover (most cases are alcohol-related and refeeding risk is high).
+                  Check triglycerides — hypertriglyceridaemic pancreatitis requires lipid restriction. Use{" "}
+                  <strong>PN only if EN is truly impossible</strong> (complete obstruction, uncontrolled
+                  abdominal compartment syndrome, high-output enterocutaneous fistula, or failure to meet
+                  60% of target enterally by day 4–7). Rising intra-abdominal pressure warrants reducing to
+                  trophic feeding rather than stopping outright. Exocrine insufficiency (steatorrhoea,
+                  weight loss) needs pancreatic enzyme replacement, and new diabetes is common after
+                  extensive necrosis.
                 </p>
               </div>
             </div>
