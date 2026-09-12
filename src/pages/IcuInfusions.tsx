@@ -5,6 +5,7 @@ import { ArrowLeft, Droplets, Search, TriangleAlert } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import InfusionCalculator from "@/components/icu/InfusionCalculator";
 import {
   formatMlPerHour,
   icuInfusionCount,
