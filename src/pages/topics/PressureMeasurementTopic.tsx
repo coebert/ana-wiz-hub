@@ -13,6 +13,7 @@ import DampingCurvesDiagram from "@/components/diagrams/physics/DampingCurvesDia
 import { pressureMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const pressureMeasurementFaqs: Array<[string, string]> = [
   [
@@ -130,8 +131,56 @@ const PressureMeasurementTopic = () => {
                   15 mmHg. Modern practice uses electronic transducers, but understanding the principle remains essential.
                   Bourdon gauges remain ubiquitous on cylinder yokes and pipeline regulators.
                 </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  An <strong>aneroid gauge</strong> uses an evacuated flexible metal capsule or bellows that expands or contracts with
+                  pressure and drives a dial through linkages. A <strong>Bourdon gauge</strong> uses a curved, flattened hollow metal tube
+                  open to the pressure source; rising pressure makes it straighten, and a lever-and-gear mechanism amplifies movement of
+                  the free end to turn a pointer. Its robust high-pressure range suits gas cylinders and regulators
+                  <InlineRef topicId="pressure-measurement" refLabel="Al-Shaikh & Stacey Ch.19" />.
+                </p>
               </div>
             </DiagramSection>
+          </ExamSection>
+
+          <ExamSection id="icp" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Intracranial Pressure Measurement">
+              <div className="text-foreground/90 leading-relaxed space-y-3">
+                <p>
+                  The <strong>Monro–Kellie doctrine</strong> treats brain, CSF and intracranial blood as a fixed-volume compartment;
+                  compensation initially buffers added volume, then ICP rises steeply as compliance is exhausted. An
+                  <strong>external ventricular drain (EVD)</strong> is the clinical reference standard because it measures ventricular
+                  pressure and permits CSF sampling and drainage. Level its fluid transducer to the tragus/external auditory meatus as a
+                  practical surrogate for the foramen of Monro and re-level after position changes.
+                </p>
+                <p>
+                  Intraparenchymal fibreoptic or strain-gauge probes are easier to place and carry less infection risk but cannot drain
+                  CSF and may drift because they cannot be re-zeroed in situ; subdural/epidural devices are less accurate. The ICP pulse
+                  has <strong>P1</strong> percussion, <strong>P2</strong> tidal/compliance and <strong>P3</strong> dicrotic components.
+                  Normally P1 &gt; P2; P2 exceeding P1 suggests reduced intracranial compliance
+                  <InlineRef topicId="pressure-measurement" refLabel="BTF Severe TBI" />.
+                </p>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="iap" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Intra-Abdominal Pressure Measurement">
+              <div className="text-foreground/90 leading-relaxed space-y-3">
+                <p>
+                  Measure IAP in patients at risk after major trauma, pancreatitis, burns, massive fluid resuscitation, ileus or tense
+                  abdominal closure. <strong>Intra-abdominal hypertension (IAH)</strong> is sustained/repeated IAP ≥12 mmHg; grades are
+                  I 12–15, II 16–20, III 21–25 and IV &gt;25 mmHg. <strong>Abdominal compartment syndrome</strong> is sustained IAP
+                  &gt;20 mmHg with new organ dysfunction <InlineRef topicId="pressure-measurement" refLabel="WSACS IAP Consensus" />.
+                </p>
+                <p>
+                  For intermittent intravesical measurement, empty the bladder, instil no more than <strong>25 mL sterile saline</strong>,
+                  connect to a pressure transducer zeroed at the mid-axillary line at the iliac crest, and read at end-expiration with the
+                  patient supine and abdominal muscles relaxed. Raised IAP reduces renal perfusion and urine output, raises diaphragm and
+                  airway pressures, impairs venous return and cardiac output, and compromises splanchnic perfusion; it is independently
+                  associated with acute kidney injury <InlineRef topicId="pressure-measurement" refLabel="Intensive Care Med 2008 IAP" />.
+                </p>
+              </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="transducers" exams={[Exam.PRIMARY, Exam.FINAL]}>

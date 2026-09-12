@@ -6,6 +6,7 @@ import { temperatureMeasurementQuiz } from "@/data/quizzes";
 import TemperatureMeasurementDiagram from "@/components/diagrams/physics/TemperatureMeasurementDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const temperatureMeasurementFaqs: Array<[string, string]> = [
   [
@@ -123,10 +124,26 @@ const TemperatureMeasurementTopic = () => {
               needs reference junction compensation (cold junction compensation).
             </p>
             <p>
+              Thermocouple voltage represents <strong>T1 − T2</strong>, not T1 alone. In modern monitors the reference or “cold”
+              junction is inside the monitor; a thermistor measures that internal temperature (T2), and the electronics add the
+              equivalent reference-junction voltage to calculate patient temperature (T1). This electronic correction replaces the
+              historical ice-bath reference <InlineRef topicId="temperature-measurement" refLabel="Cross & Plunkett Ch.11" />.
+            </p>
+            <p>
               <strong>Clinical use:</strong> Nasopharyngeal and oesophageal temperature probes. The nasopharyngeal probe reflects
               brain temperature as it sits near the internal carotid artery.
             </p>
           </div>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-foreground mb-2">Liquid Crystal Thermometers</h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Disposable forehead strips contain microencapsulated <strong>cholesteryl ester liquid crystals</strong>. Temperature alters
+            their ordered molecular structure and therefore the wavelength—and colour—of reflected light. They measure skin rather than
+            core temperature, are influenced by ambient conditions and perfusion, and are suitable only for rough trends rather than
+            anaesthetic or critical-care decisions <InlineRef topicId="temperature-measurement" refLabel="Cross & Plunkett Ch.11" />.
+          </p>
         </div>
 
         <div>
@@ -198,6 +215,19 @@ const TemperatureMeasurementTopic = () => {
               <strong>Core sites:</strong> PA catheter (gold standard), distal oesophagus (lower third), nasopharynx,
               tympanic membrane, bladder. <strong>Peripheral sites:</strong> Axilla, skin (forehead), rectal (delayed response).
             </p>
+            <div className="overflow-x-auto rounded-lg border border-border">
+              <table className="w-full text-sm">
+                <thead className="bg-secondary/40"><tr><th className="p-2 text-left text-foreground">Site</th><th className="p-2 text-left text-foreground">Bias vs PA</th><th className="p-2 text-left text-foreground">Interpretation</th></tr></thead>
+                <tbody>
+                  <tr className="border-t border-border"><td className="p-2">Pulmonary artery</td><td className="p-2">Reference</td><td className="p-2">Best measure of mixed central blood temperature; invasive.</td></tr>
+                  <tr className="border-t border-border"><td className="p-2">Distal oesophagus</td><td className="p-2">+0.11 °C; LoA −0.19 to +0.41 °C</td><td className="p-2">Close agreement; upper placement is cooled by airway gas.</td></tr>
+                  <tr className="border-t border-border"><td className="p-2">Bladder</td><td className="p-2">−0.21 °C; LoA −0.61 to +0.19 °C</td><td className="p-2">Useful in ICU; lags rapid change and depends on urine flow.</td></tr>
+                  <tr className="border-t border-border"><td className="p-2">Rectal</td><td className="p-2">−0.07 °C; LoA −0.87 to +0.73 °C</td><td className="p-2">Wide agreement and thermal lag; may be affected by stool.</td></tr>
+                  <tr className="border-t border-border"><td className="p-2">Tympanic</td><td className="p-2">Variable</td><td className="p-2">Operator, alignment and cerumen dependent.</td></tr>
+                </tbody>
+              </table>
+              <p className="p-2 text-xs text-muted-foreground"><InlineRef topicId="temperature-measurement" refLabel="Intensive Care Med 2003" /></p>
+            </div>
             <p>
               The <strong>core-peripheral temperature gradient</strong> reflects peripheral vasoconstriction and is used clinically
               to assess perfusion in shock. A gradient &gt;2°C suggests significant vasoconstriction.
@@ -208,6 +238,17 @@ const TemperatureMeasurementTopic = () => {
               production), (3) <strong>plateau</strong> (thermoregulatory vasoconstriction re-established at ~34.5°C).
             </p>
           </div>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-foreground mb-2">Fever Monitoring in ICU</h2>
+          <p className="text-muted-foreground leading-relaxed">
+            For a new fever in a critically ill adult, use a central measurement—PA-catheter, bladder-catheter or oesophageal
+            thermistor—when already present or when precision will change diagnosis or treatment. Do not insert an invasive device solely
+            to measure temperature. Without central access, oral or rectal measurement is preferred over less reliable axillary, temporal
+            or non-contact methods. This differs from routine intraoperative practice, where distal oesophageal or nasopharyngeal probes
+            are convenient continuous choices <InlineRef topicId="temperature-measurement" refLabel="SCCM IDSA Fever 2023" />.
+          </p>
         </div>
           <ExamPitfallsCallout
             accent="physics"

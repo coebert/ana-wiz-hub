@@ -7,6 +7,7 @@ import UltrasoundPhysicsDiagram from "@/components/diagrams/physics/UltrasoundPh
 import { ultrasoundPhysicsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const ultrasoundPhysicsFaqs: Array<[string, string]> = [
   [
@@ -126,6 +127,13 @@ const UltrasoundPhysicsTopic = () => {
                 <strong> matching layer</strong> (λ/4 thickness, reduces impedance mismatch between crystal and skin), and the
                 <strong> acoustic lens</strong> (focuses the beam laterally).
               </p>
+              <p>
+                <strong>Acoustic impedance (Z = ρc)</strong> is density multiplied by propagation speed. The greater the impedance
+                difference across a boundary, the greater the reflected fraction: tissue–air and tissue–bone interfaces produce
+                near-total reflection and acoustic shadowing. Coupling gel removes the air layer between probe and skin. The quarter-
+                wavelength matching layer has impedance intermediate between PZT and tissue, reducing reflection and maximising energy
+                transmission <InlineRef topicId="ultrasound-physics" refLabel="BJA Educ 2017" />.
+              </p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -173,7 +181,34 @@ const UltrasoundPhysicsTopic = () => {
                 (BART convention). It also aliases. <strong>Power Doppler</strong> displays signal amplitude rather than velocity —
                 more sensitive to slow flow but gives no directional information.
               </p>
+              <p>
+                <strong>Tissue Doppler imaging (TDI)</strong> reverses conventional wall filtering to retain low-velocity,
+                high-amplitude myocardial signals while suppressing blood flow. Mitral-annular e′ velocity contributes to assessment
+                of diastolic relaxation and the E/e′ ratio estimates filling pressure, although angle dependence remains. 
+                <strong>Elastography</strong> maps deformation or shear-wave propagation to estimate tissue stiffness, supporting
+                characterisation of liver, thyroid, breast and endobronchial lesions
+                <InlineRef topicId="ultrasound-physics" refLabel="Diagnostics 2024 Elastography" />.
+              </p>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="ultrasound-safety" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Ultrasound Safety & Bioeffects">
+              <div className="text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  Diagnostic ultrasound is non-ionising but can heat tissue and produce mechanical effects. Apply
+                  <strong> ALARA—acoustic output and dwell time as low as reasonably achievable</strong>—while obtaining a diagnostic image.
+                </p>
+                <p>
+                  The <strong>thermal index (TI)</strong> is the ratio of emitted acoustic power to the power estimated to raise tissue
+                  temperature by 1 °C. Use TIS for soft tissue, TIB when bone is near the focus and TIC for cranial scanning. The
+                  <strong> mechanical index (MI) = peak rarefactional pressure / √frequency</strong> estimates non-thermal cavitation risk;
+                  lower frequency and higher negative pressure increase it. For routine non-obstetric scanning, keep displayed TI and MI
+                  below 1 where practicable, minimise spectral-Doppler dwell time and reduce output before reducing image quality controls
+                  <InlineRef topicId="ultrasound-physics" refLabel="BMUS Safety Guidelines" />.
+                </p>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 
