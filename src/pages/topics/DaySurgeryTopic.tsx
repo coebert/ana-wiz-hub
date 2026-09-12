@@ -143,8 +143,96 @@ const DaySurgeryTopic = () => {
                 </div>
               ))}
             </div>
+
+            <div className="mt-4 bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2 text-sm">Post-Anaesthetic Discharge Scoring System (PADSS)</h3>
+              <p className="text-sm text-muted-foreground mb-2">
+                The modified PADSS turns the criteria above into an auditable score. Five domains are each scored 0, 1 or 2 (maximum 10); a score of <strong className="text-foreground">≥9</strong>, ideally on two consecutive assessments, is the usual threshold for discharge home with an escort<InlineRef topicId="day-surgery" refLabel="PADSS Review 2023" />.
+              </p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border border-border rounded-lg">
+                  <caption className="sr-only">Modified PADSS domains and 0–2 scoring</caption>
+                  <thead>
+                    <tr className="bg-muted/50 text-left">
+                      <th scope="col" className="p-2 font-semibold text-foreground border-b border-border">Domain</th>
+                      <th scope="col" className="p-2 font-semibold text-foreground border-b border-border">2</th>
+                      <th scope="col" className="p-2 font-semibold text-foreground border-b border-border">1</th>
+                      <th scope="col" className="p-2 font-semibold text-foreground border-b border-border">0</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground align-top">
+                    {[
+                      { d: "Vital signs", two: "Within 20% of preoperative baseline", one: "20–40% of baseline", zero: "More than 40% from baseline" },
+                      { d: "Ambulation", two: "Steady gait, no dizziness", one: "Needs assistance", zero: "Unable to ambulate / dizzy" },
+                      { d: "Nausea & vomiting", two: "Minimal, oral treatment only", one: "Moderate, needed parenteral treatment", zero: "Severe, persistent despite treatment" },
+                      { d: "Pain", two: "Minimal, controlled by oral analgesia and acceptable to the patient", one: "Moderate", zero: "Severe" },
+                      { d: "Surgical bleeding", two: "Minimal, no dressing change", one: "Moderate, up to two dressing changes", zero: "Severe, more than three dressing changes" },
+                    ].map((r) => (
+                      <tr key={r.d} className="border-b border-border last:border-0">
+                        <th scope="row" className="p-2 font-medium text-foreground">{r.d}</th>
+                        <td className="p-2">{r.two}</td>
+                        <td className="p-2">{r.one}</td>
+                        <td className="p-2">{r.zero}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-muted-foreground mt-2 italic">
+                Drinking and voiding are no longer mandatory PADSS criteria for most ambulatory patients — voiding remains a requirement after neuraxial blockade, inguinal/femoral hernia repair and perianal or urological surgery<InlineRef topicId="day-surgery" refLabel="AAGBI Day Surgery 2019" />.
+              </p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <ExamSection id="section-information" className="scroll-mt-24" exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Patient Information & Consent">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Day surgery devolves much of the recovery to the patient and their carer, so written information and an explicit consent conversation are part of the safety system rather than paperwork<InlineRef topicId="day-surgery" refLabel="AAGBI Day Surgery 2019" />.
+            </p>
+            <div className="space-y-3">
+              {[
+                { t: "Preoperative instructions", d: "Fasting: 6 h food, 4 h breast milk, 2 h clear fluids — with active encouragement to drink clear fluids up to 2 h before arrival rather than prolonged starvation. Which medicines to take on the morning of surgery (antihypertensives, inhalers, analgesics) and which to omit (some diabetes drugs, DOACs, GLP-1 agonists per local policy). Bring regular medicines, inhalers and CPAP device." },
+                { t: "Belongings and practicalities", d: "Leave valuables and jewellery at home, wear loose clothing, arrange childcare and time off work, and expect the whole day in the unit even for a short procedure." },
+                { t: "Consent for the possibility of admission", d: "Discuss and document that 1–3% of day cases require unplanned overnight admission — for pain, PONV, urinary retention, bleeding, extended surgery or unexpected findings — so that admission is a planned contingency rather than a perceived failure." },
+                { t: "Written postoperative instructions", d: "Given to both patient and escort, in plain language: wound and dressing care, analgesic ladder with doses and timings, when to expect the block to wear off and to take analgesia before rebound pain, expected recovery milestones, and activity restrictions (no driving, operating machinery, alcohol, or signing legal documents for 24 h; longer if opioids continue)." },
+                { t: "24-hour contact and red flags", d: "A named 24-hour telephone contact for the unit or on-call team, and explicit red flags prompting contact: uncontrolled pain, persistent vomiting, inability to pass urine, fever, increasing wound redness or discharge, calf pain or breathlessness, and heavy bleeding." },
+                { t: "Escort and home environment", d: "A responsible adult must collect the patient and stay overnight, with a telephone and reasonable access to hospital. Public transport home alone is not acceptable after general anaesthesia or sedation." },
+                { t: "Consent to self-care", d: "Confirm the patient understands and agrees to the self-care they are undertaking — taking their own analgesia, wound observation, mobilising and seeking help — and that they, or their carer, are capable of doing so. Where they are not, plan an extended-stay or inpatient pathway instead." },
+              ].map((x) => (
+                <div key={x.t} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{x.t}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{x.d}</p>
+                </div>
+              ))}
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="section-paediatric" className="scroll-mt-24" exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Paediatric Day Surgery Considerations">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Most paediatric elective surgery is suitable for a day-case pathway provided the child, the procedure and the family are all appropriate<InlineRef topicId="day-surgery" refLabel="APAGBI Paediatric Day Case 2019" />.
+            </p>
+            <div className="space-y-3">
+              {[
+                { t: "Selection and age limits", d: "Term infants are generally accepted from ~1 month and >5 kg in units with paediatric expertise; ex-preterm infants should not be day cases until at least 60 weeks post-conceptual age because of the risk of postoperative apnoea (admit and monitor with apnoea alarms if younger). Exclude poorly controlled asthma, severe OSA (particularly children <3 years having tonsillectomy, or with syndromes/neuromuscular disease), significant congenital cardiac disease, and current respiratory infection." },
+                { t: "Fasting — the 6-4-2 rule", d: "6 h for solids and formula, 4 h for breast milk, 2 h (and actively encouraged) for clear fluids. Children tolerate starvation poorly — first-on-list scheduling for the youngest, and clear-fluid sipping up to 1–2 h reduces distress, hypoglycaemia and hypotension." },
+                { t: "Anaesthetic technique", d: "Inhalational induction with sevoflurane, or IV induction with propofol through a topical-anaesthetic-prepared cannula site depending on the child's preference; supraglottic airway where feasible; sevoflurane or TIVA maintenance with a low-opioid plan. Regional supplementation is the mainstay: caudal for sub-umbilical surgery, ilioinguinal/transversus abdominis plane blocks for hernia repair, penile or pudendal block for circumcision, and simple wound infiltration for everything else." },
+                { t: "Analgesia and dosing", d: "Weight-based multimodal analgesia: paracetamol 15 mg/kg 6-hourly (max 60 mg/kg/day), ibuprofen 5–10 mg/kg 6–8-hourly if no contraindication, plus block or infiltration. Codeine is contraindicated in children (MHRA — unpredictable CYP2D6 ultra-rapid metabolism, fatal respiratory depression, and specifically contraindicated after tonsillectomy/adenoidectomy for OSA and in all children under 12). Use morphine sparingly and only where the child can be observed; oral morphine take-home only with careful written instructions." },
+                { t: "PONV", d: "High baseline risk in children — combine dexamethasone 0.15 mg/kg and ondansetron 0.1 mg/kg, avoid prolonged fasting, and prefer opioid-sparing regional techniques." },
+                { t: "Parental and social factors", d: "One parent present at induction where appropriate, honest age-appropriate preparation, play specialist input, and a carer who understands and can deliver the analgesia plan. Both a competent carer at home and reasonable travel time to hospital are prerequisites; safeguarding concerns or an inability to give medicines reliably should trigger an inpatient plan." },
+                { t: "Child-specific discharge criteria", d: "Awake and behaving normally for that child, pain controlled on oral analgesia, drinking without vomiting, no active bleeding, and observed for an adequate period after the last opioid dose. Voiding is not routinely required except after caudal blockade or genitourinary surgery. Give written instructions, the analgesia timetable, and a 24-hour contact number to the parent." },
+              ].map((x) => (
+                <div key={x.t} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{x.t}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{x.d}</p>
+                </div>
+              ))}
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
