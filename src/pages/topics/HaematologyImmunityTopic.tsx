@@ -246,6 +246,70 @@ const HaematologyImmunityTopic = () => {
                 </div>
               ))}
             </div>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mt-8 mb-2">Hypersensitivity Types II, III and IV in detail</h3>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground">Type II — cytotoxic (antibody against cell-surface antigen)</p>
+                <ul className="mt-1 list-disc list-inside space-y-1">
+                  <li><strong>Mechanism:</strong> IgG or IgM binds a fixed antigen on the target cell membrane.</li>
+                  <li><strong>Effectors:</strong> classical complement activation to the membrane attack complex, opsonisation with phagocytosis, or antibody-dependent cell-mediated cytotoxicity by NK cells.</li>
+                  <li><strong>Onset:</strong> minutes to hours.</li>
+                  <li><strong>Examples:</strong> ABO-mismatch haemolytic transfusion reaction, haemolytic disease of the newborn, drug-induced immune haemolysis, heparin-induced thrombocytopenia, Goodpasture&rsquo;s syndrome.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground">Type III — immune complex</p>
+                <ul className="mt-1 list-disc list-inside space-y-1">
+                  <li><strong>Mechanism:</strong> soluble antigen–antibody complexes deposit in vessel walls, synovium, skin and glomeruli.</li>
+                  <li><strong>Effectors:</strong> complement activation with C5a-driven neutrophil recruitment, protease release and vasculitis.</li>
+                  <li><strong>Onset:</strong> typically 3–8 h after antigen exposure.</li>
+                  <li><strong>Examples:</strong> serum sickness, systemic lupus erythematosus, post-streptococcal glomerulonephritis, drug-induced vasculitis.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground">Type IV — delayed, T-cell mediated</p>
+                <ul className="mt-1 list-disc list-inside space-y-1">
+                  <li><strong>Mechanism:</strong> sensitised CD4⁺ Th1 cells and CD8⁺ cytotoxic T cells recognise antigen presented on MHC; no antibody involvement.</li>
+                  <li><strong>Effectors:</strong> IFN-γ and TNF-α activate macrophages (granuloma formation); CTLs kill directly via perforin/granzyme and Fas.</li>
+                  <li><strong>Onset:</strong> 48–72 h.</li>
+                  <li><strong>Examples:</strong> tuberculin skin test, contact dermatitis (chlorhexidine, non-IgE latex), graft-versus-host disease, chronic transplant rejection.</li>
+                </ul>
+              </div>
+              <p><InlineRef topicId="haematology-immunity" refLabel="Abbas Immunology 10e" /></p>
+            </div>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mt-8 mb-2">Complement pathways</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              All three pathways converge on cleavage of C3 into C3a and C3b, so they share the same effector output.
+            </p>
+            <ul className="mt-2 list-disc list-inside space-y-1 text-sm text-muted-foreground">
+              <li><strong>Classical:</strong> C1q binds antigen–antibody complexes (IgM &gt; IgG) → C1r/C1s → C4 and C2 → C3 convertase (C4b2a).</li>
+              <li><strong>Alternative:</strong> spontaneous &ldquo;tick-over&rdquo; hydrolysis of C3 is amplified on bacterial surfaces (e.g. LPS, yeast cell wall) that lack host regulatory proteins such as factor H, CD55 and CD59.</li>
+              <li><strong>Lectin:</strong> mannose-binding lectin or ficolins bind mannose residues on pathogen surfaces and activate MASP-1/2, mimicking the classical route without antibody.</li>
+              <li><strong>Effector functions:</strong> opsonisation (C3b, iC3b), anaphylatoxins and chemotaxis (C3a, C5a — mast-cell degranulation, neutrophil recruitment), and lysis by the membrane attack complex (C5b-9), most important for Gram-negative organisms and <em>Neisseria</em>.</li>
+              <li><strong>Clinical relevance:</strong> terminal-pathway or MBL deficiency predisposes to meningococcal disease; complement consumption occurs in sepsis, cardiopulmonary bypass and hereditary angioedema (C1-inhibitor deficiency). <InlineRef topicId="haematology-immunity" refLabel="Abbas Immunology 10e" /></li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mt-8 mb-2">SIRS, Sepsis-3 and UK recognition</h3>
+            <ul className="mt-2 list-disc list-inside space-y-1 text-sm text-muted-foreground">
+              <li><strong>SIRS criteria (≥2):</strong> temperature &lt;36 or &gt;38 °C, heart rate &gt;90 min⁻¹, respiratory rate &gt;20 min⁻¹ (or PaCO₂ &lt;4.3 kPa), white cell count &lt;4 or &gt;12 × 10⁹/L (or &gt;10% band forms).</li>
+              <li><strong>Why superseded:</strong> poor specificity — SIRS is met in trauma, pancreatitis, burns and after surgery without infection, and around one in eight patients with infection-related organ failure is SIRS-negative.</li>
+              <li><strong>Sepsis-3 (2016):</strong> sepsis is life-threatening organ dysfunction caused by a dysregulated host response to infection; organ dysfunction is an acute rise in total SOFA score of ≥2 points. Septic shock is sepsis with vasopressor-dependent hypotension (MAP target 65 mmHg) plus lactate &gt;2 mmol/L despite fluid resuscitation. <InlineRef topicId="haematology-immunity" refLabel="Sepsis-3 2016" /></li>
+              <li><strong>qSOFA</strong> (respiratory rate ≥22 min⁻¹, altered mentation, systolic BP ≤100 mmHg) is a bedside prompt outside critical care, not a diagnostic test.</li>
+              <li><strong>UK practice (NICE NG51):</strong> risk-stratify with red-flag features — objective altered mental state, systolic BP ≤90 mmHg (or &gt;40 mmHg below normal), heart rate &gt;130 min⁻¹, respiratory rate ≥25 min⁻¹, needing oxygen for SpO₂ ≥92%, non-blanching rash, lactate &gt;2 mmol/L, anuria for 18 h. Any red flag mandates senior review, blood cultures, lactate, IV antibiotics within one hour and fluid resuscitation; amber flags warrant urgent review in high-risk groups (very young, elderly, pregnant, immunosuppressed, recent surgery or indwelling lines). <InlineRef topicId="haematology-immunity" refLabel="NICE NG51 Sepsis" /></li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mt-8 mb-2">Transfusion-related immunomodulation (TRIM)</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              TRIM describes the altered — largely immunosuppressive — state that can follow allogeneic blood transfusion.
+            </p>
+            <ul className="mt-2 list-disc list-inside space-y-1 text-sm text-muted-foreground">
+              <li><strong>Proposed mechanisms:</strong> transfer of soluble mediators accumulating during storage (cytokines, free haemoglobin, bioactive lipids, microvesicles); direct interaction between residual donor leucocytes and recipient antigen-presenting cells with regulatory T-cell expansion; and apoptosis of recipient immune cells.</li>
+              <li><strong>Clinical consequences:</strong> increased postoperative and nosocomial infection, and a debated association with earlier tumour recurrence after cancer surgery; effect size appears greater with longer-stored and non-leucodepleted units.</li>
+              <li><strong>Evidence:</strong> complex and contested — universal UK leucodepletion (since 1999) attenuated but did not abolish the signal, and randomised storage-duration trials were largely neutral.</li>
+              <li><strong>Relevance:</strong> supports patient blood management — treat anaemia preoperatively, use restrictive thresholds, single-unit transfusion with reassessment, cell salvage and tranexamic acid. <InlineRef topicId="haematology-immunity" refLabel="Remy TRIM 2018" /></li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
 
