@@ -218,7 +218,7 @@ const MuscleRelaxantsTopic = () => {
               <p className="text-sm font-medium text-foreground">Mechanism of phase II (desensitisation) block</p>
               <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
                 <li>Prolonged exposure to suxamethonium keeps the post-junctional receptor occupied; the membrane gradually <strong>repolarises</strong> yet remains unresponsive to acetylcholine because the receptor enters a desensitised, non-conducting conformation.</li>
-                <li>Additional contributions come from ion channel block of the open receptor pore, pre-junctional effects reducing acetylcholine mobilisation, and receptor down-regulation.</li>
+                <li>Additional contributions come from ion channel block of the open receptor pore, pre-junctional effects reducing acetylcholine mobilisation, and receptor down-regulation<InlineRef topicId="muscle-relaxants" refLabel="BJA Educ 2015 NMB Monitoring" />.</li>
                 <li>Clinical signature: <strong>fade</strong> on train-of-four (TOF ratio &lt;0.7), post-tetanic potentiation, tachyphylaxis (escalating dose requirement) and prolonged recovery — indistinguishable at the bedside from non-depolarising block.</li>
                 <li>Occurs after repeated boluses or an infusion, typically once the cumulative dose exceeds 3–5 mg/kg, and earlier in atypical plasma cholinesterase.</li>
                 <li>Management: stop suxamethonium, sedate and ventilate, and monitor with a quantitative nerve stimulator. Anticholinesterase reversal is unreliable and may deepen block if any phase I component remains, so it is not routinely recommended.</li>
@@ -404,7 +404,7 @@ const MuscleRelaxantsTopic = () => {
               <li><strong>Advantages:</strong> organ-independent elimination, no MH trigger, no hyperkalaemia, no myalgia, and reversibility at profound block.</li>
               <li><strong>Limitations:</strong> histamine release and cardiovascular effects at higher multiples of ED₉₅; gantacurium is not licensed for clinical use.</li>
               <li><strong>CW002 (nimacalcin-type intermediate-acting fumarate):</strong> same cysteine-reversal principle with a longer duration and better cardiovascular profile; under investigation.</li>
-              <li><strong>Other developments:</strong> calabadion (an acyclic cucurbituril container molecule) binds and reverses both steroidal and benzylisoquinolinium agents, and adamgammadex is a modified cyclodextrin intended to reduce sugammadex hypersensitivity.</li>
+              <li><strong>Other developments:</strong> calabadion (an acyclic cucurbituril container molecule) binds and reverses both steroidal and benzylisoquinolinium agents, and adamgammadex is a modified cyclodextrin intended to reduce sugammadex hypersensitivity<InlineRef topicId="muscle-relaxants" refLabel="AAS 2023 Novel NMBA" />.</li>
             </ul>
           </section>
 
