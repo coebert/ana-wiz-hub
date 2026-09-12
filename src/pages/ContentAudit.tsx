@@ -1136,7 +1136,10 @@ const ContentAudit = () => {
                         }`}
                       />
                     )}
-                    <span className="font-medium capitalize">{job.status}</span>
+                    <span className="font-medium capitalize">
+                      {stalled ? "stalled" : job.status}
+                    </span>
+
                     <Badge variant="secondary" className="text-xs">
                       {job.trigger}
                     </Badge>
