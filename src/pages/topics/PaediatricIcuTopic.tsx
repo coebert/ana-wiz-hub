@@ -302,7 +302,38 @@ const PaediatricIcuTopic = () => {
 
           <ExamSection id="sedation" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Sedation, Analgesia & Withdrawal">
-            <p className="text-muted-foreground text-sm mb-2">COMFORT-B (target 11–17), FLACC for pre-verbal pain. Morphine 10–40 mcg/kg/h, midazolam 1–4 mcg/kg/min, dexmedetomidine 0.2–1.4 mcg/kg/h. <strong>Avoid prolonged propofol infusions (&gt;48 h) — PRIS</strong>: metabolic acidosis, rhabdomyolysis, cardiac failure. Iatrogenic withdrawal after &gt;5 days opioid/benzo: WAT-1 scoring; wean by 10–20%/day with enteral conversion.</p>
+            <div className="space-y-3">
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">Goals & Assessment</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Sedation aims to relieve distress and facilitate ventilation/procedures while minimising drug accumulation, delirium and withdrawal. Assess with validated tools: <strong>COMFORT-B</strong> (target 11–17) for sedation depth, <strong>FLACC</strong> for pain in pre-verbal children, and <strong>SOS</strong> or <strong>WAT-1</strong> for iatrogenic withdrawal <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">Pharmacology</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>Morphine</strong> (10–40 mcg/kg/h): histamine release can cause flushing/hypotension and bronchospasm. <strong>Fentanyl</strong>: rapid tachyphylaxis and chest-wall rigidity with rapid high-dose boluses. <strong>Midazolam</strong> (1–4 mcg/kg/min): accumulates in renal/hepatic impairment and raises delirium risk. <strong>Dexmedetomidine</strong> (0.2–1.4 mcg/kg/h): no significant respiratory depression but causes dose-dependent bradycardia and hypotension. <strong>Clonidine</strong> is a useful oral/enteral adjunct for sedation weaning and withdrawal.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5">
+                <p className="text-sm font-semibold text-destructive">⚠ Propofol Infusion Syndrome (PRIS)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Metabolic acidosis, rhabdomyolysis, cardiac failure/arrhythmia and acute renal failure. Risk increases with doses &gt;4 mg/kg/h, infusions &gt;48 h, concurrent catecholamines or steroids, and in young children — <strong>avoid prolonged propofol infusion in PICU</strong>.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">Iatrogenic Withdrawal Syndrome (IWS)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  A recognisable cluster of CNS, GI and autonomic symptoms following abrupt cessation of opioids/benzodiazepines, with risk rising after &gt;5 days of therapy <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />. Score with SOS/WAT-1 and wean by 10–20%/day, converting to oral methadone and/or clonidine to allow controlled weaning.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">Delirium</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Acute brain dysfunction with fluctuating awareness and cognition; the <strong>hypoactive form is common and frequently missed</strong>. Screen routinely with the <strong>CAPD</strong> or <strong>(ps)CAM-ICU</strong> tools <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />. Risk factors include young age, developmental delay, severity of illness, benzodiazepine and anticholinergic exposure, and mechanical ventilation. Manage with a non-pharmacological bundle — reorientation, sleep hygiene, day-night lighting cues, family presence and early mobilisation — reserving cautious quetiapine or risperidone (with QTc monitoring) for refractory cases.
+                </p>
+              </div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -356,6 +387,7 @@ const PaediatricIcuTopic = () => {
             variant="summary"
           >
             <ul className="space-y-2 list-disc list-inside text-sm">
+              <li><strong>PEWS</strong>: Paediatric Early Warning Scores combine HR, RR, BP, SpO₂, respiratory effort, capillary refill, consciousness and nurse/family concern against age-specific norms; a rising or triggering score escalates to senior review and, if needed, the critical care outreach/PICU retrieval team <InlineRef topicId="paediatric-icu" refLabel="Bedside PEWS 2009" />.</li>
               <li><strong>Tube sizing</strong>: cuffed ETT ID = (age/4) + 3.5; length = (age/2) + 12 (oral).</li>
               <li><strong>Fluid resuscitation</strong>: 10–20 ml/kg isotonic crystalloid bolus, reassess after each.</li>
               <li><strong>Maintenance fluids</strong>: isotonic only (NICE 2015). Holliday-Segar 4-2-1.</li>
