@@ -401,7 +401,7 @@ const PerioperativeCaseBank = () => {
       </div>
 
       <p className="text-sm text-muted-foreground mb-4" aria-live="polite">
-        Showing {visibleCases.length} of {cases.length} cases
+        Showing {visibleCases.length} of {perioperativeCases.length} cases
         {hasFilters && (
           <Button type="button" variant="link" size="sm" className="ml-2 h-auto p-0 align-baseline" onClick={clearFilters}>
             Clear filters
