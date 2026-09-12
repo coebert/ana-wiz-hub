@@ -17,6 +17,7 @@ import { UrineConcentrationSimulator } from "@/components/diagrams/physiology/Ur
 import HyponatraemiaWorkupDiagram from "@/components/diagrams/physiology/HyponatraemiaWorkupDiagram";
 import { EGFRCalculator } from "@/components/diagrams/physiology/EGFRCalculator";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const renalPhysiologyFaqs: Array<[string, string]> = [
   [

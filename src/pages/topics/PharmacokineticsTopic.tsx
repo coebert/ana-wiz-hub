@@ -7,6 +7,7 @@ import { CSHTComparisonDiagram } from "@/components/diagrams/pharmacology/CSHTCo
 import { ADMECascadeDiagram } from "@/components/diagrams/pharmacology/ADMECascadeDiagram";
 import { pharmacokineticsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 
 const pharmacokineticsFaqs: Array<[string, string]> = [
@@ -100,16 +101,25 @@ const PharmacokineticsTopic = () => {
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="Clearance">
-            <p className="text-foreground/90 leading-relaxed">
-              Clearance (Cl) is the volume of plasma from which drug is completely removed per unit time (mL/min or L/h).
-              Total clearance is the sum of clearances by all eliminating organs:
-              <strong> Cl<sub>total</sub> = Cl<sub>renal</sub> + Cl<sub>hepatic</sub> + Cl<sub>other</sub></strong>.
-            </p>
-            <p className="text-foreground/90 leading-relaxed mt-3">
-              Hepatic clearance depends on hepatic blood flow, protein binding, and intrinsic hepatic enzyme activity. Drugs
-              with high extraction ratios (e.g., propofol, lidocaine) are flow-dependent — their clearance changes with
-              hepatic blood flow. Low extraction ratio drugs (e.g., diazepam) are capacity-dependent.
-            </p>
+            <div className="space-y-3 text-foreground/90 leading-relaxed">
+              <p>Clearance (Cl) is the volume of plasma completely cleared of drug per unit time: <strong>Cl = elimination rate / plasma concentration</strong>. Total clearance is additive: <strong>Cl<sub>total</sub> = Cl<sub>renal</sub> + Cl<sub>hepatic</sub> + Cl<sub>other</sub></strong>.</p>
+              <p>The organ extraction ratio is the fraction removed in one pass: <strong>ER = (C<sub>in</sub> − C<sub>out</sub>) / C<sub>in</sub></strong>, and organ clearance approximates blood flow × ER. High-ER (&gt;0.7) drugs such as propofol, lidocaine and morphine are flow-limited. Low-ER (&lt;0.3) drugs such as warfarin, diazepam and phenytoin are capacity-limited and depend more on unbound fraction and intrinsic enzyme activity <InlineRef topicId="pharmacokinetics" refLabel="Peck & Hill Ch.2" />.</p>
+              <p>Renal clearance combines filtration of unbound drug, active secretion and reabsorption; it falls with renal dysfunction and can exceed GFR when tubular secretion is important.</p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="kinetic-order" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PH_BK_01"]}>
+            <CollapsibleSubsection title="First-Order vs Zero-Order Kinetics">
+              <div className="grid md:grid-cols-2 gap-4 text-sm"><div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">First-order</p><p className="mt-1 text-muted-foreground">A constant <strong>fraction</strong> is eliminated per unit time; rate is proportional to concentration and half-life is constant. Most drugs behave this way at therapeutic concentrations.</p></div><div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Zero-order</p><p className="mt-1 text-muted-foreground">A saturated pathway removes a constant <strong>amount</strong> per unit time; no fixed half-life. Small dose increases can cause disproportionate concentration rises and toxicity. Examples: ethanol, phenytoin, and high-dose salicylate; theophylline and warfarin can become capacity-limited near saturation.</p></div></div>
+              <InlineRef topicId="pharmacokinetics" refLabel="Peck & Hill Ch.2" />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="critical-illness-pk" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PH_BK_01"]}>
+            <CollapsibleSubsection title="Pharmacokinetics in Critical Illness">
+              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed"><li><strong>Distribution:</strong> capillary leak, oedema and fluid resuscitation enlarge hydrophilic-drug Vd; hypoalbuminaemia increases free acidic drug, while raised α₁-acid glycoprotein alters basic-drug binding.</li><li><strong>Clearance:</strong> shock and hepatic/renal failure reduce clearance, but augmented renal clearance in younger hyperdynamic patients can make standard β-lactam doses subtherapeutic.</li><li><strong>Organ support:</strong> CKRT adds extracorporeal clearance according to membrane, modality, flow and protein binding; ECMO circuitry adds an apparent compartment and may sequester lipophilic, protein-bound drugs.</li><li><strong>Practice:</strong> use loading doses based on altered Vd, then individualise maintenance to measured clearance, organ support and therapeutic drug monitoring.</li></ul>
+              <InlineRef topicId="pharmacokinetics" refLabel="Intensive Care Med PK 2014" />
             </CollapsibleSubsection>
           </ExamSection>
 

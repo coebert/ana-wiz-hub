@@ -13,6 +13,7 @@ import VaccineTypesDiagram from "@/components/diagrams/physiology/VaccineTypesDi
 import AsplenicVaccinationFlowchart from "@/components/diagrams/physiology/AsplenicVaccinationFlowchart";
 import ImmuneCellLineageDiagram from "@/components/diagrams/physiology/ImmuneCellLineageDiagram";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const haematologyImmunityFaqs: Array<[string, string]> = [
   [
@@ -191,13 +192,22 @@ const HaematologyImmunityTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="liver-haemostasis" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_01"]}>
+            <CollapsibleSubsection title="Rebalanced Haemostasis in Liver Disease">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">Liver disease reduces procoagulants (II, V, VII, IX, X, XI and sometimes fibrinogen) <em>and</em> endogenous anticoagulants (protein C, protein S and antithrombin). Thrombocytopenia reflects portal-hypertensive splenic sequestration and reduced thrombopoietin; platelet dysfunction coexists with increased von Willebrand factor. Fibrinolysis is also unstable because plasminogen falls while tPA clearance falls <InlineRef topicId="haematology-immunity" refLabel="ISTH Rebalanced Haemostasis 2021" />.</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">The new equilibrium is fragile and may tip towards bleeding or thrombosis. PT/INR measures selected procoagulants but not anticoagulant loss, platelets or fibrinolysis, so it does not predict procedural bleeding reliably. TEG/ROTEM provides a global dynamic assessment and can target fibrinogen, platelets or antifibrinolytic treatment rather than empirical FFP.</p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="blood-groups" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_02"]}>
             <CollapsibleSubsection title="Blood Groups & Transfusion">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>ABO system</strong>: Group O = universal donor (no A/B antigens); Group AB = universal recipient. Naturally occurring IgM antibodies → immediate haemolytic reaction if mismatched</li>
               <li><strong>Rhesus system</strong>: D antigen most important. Rh− patients develop anti-D IgG after sensitisation → delayed reaction. Anti-D prophylaxis in Rh− mothers</li>
-              <li><strong>Transfusion reactions</strong>: acute haemolytic (ABO mismatch, most dangerous), febrile non-haemolytic (WBC antibodies), allergic (IgA deficiency), TRALI (donor anti-HLA antibodies), TACO (fluid overload)</li>
-              <li><strong>Massive transfusion</strong>: &gt;10 units RBC in 24h or &gt;1 blood volume. Complications: hypocalcaemia (citrate), hyperkalaemia, hypothermia, coagulopathy (dilutional). Use 1:1:1 RBC:FFP:platelets ratio</li>
+              <li><strong>TRALI</strong>: a two-hit process — recipient neutrophils are primed by sepsis/surgery, then donor anti-HLA/HNA antibodies or biological response modifiers activate them, causing capillary leak and non-cardiogenic pulmonary oedema. Plasma-rich FFP and platelets carry greater risk.</li>
+              <li><strong>TACO</strong>: rapid transfusion exceeds cardiac reserve, producing hydrostatic oedema; elderly patients and those with cardiac/renal failure are vulnerable. Hypertension, raised JVP and BNP support TACO rather than TRALI.</li>
+              <li><strong>Febrile non-haemolytic reaction</strong>: recipient antibodies recognise donor leucocyte antigens, or storage cytokines trigger fever/rigors; universal UK leucodepletion reduces incidence.</li>
+              <li><strong>Massive transfusion</strong>: citrate chelates ionised calcium (a common rule is 10 mL 10% calcium chloride or 30 mL 10% calcium gluconate per four units, guided by ionised Ca²⁺). Stored-cell K⁺ leakage makes rapid older-blood transfusion hazardous in neonates and renal failure. Also prevent hypothermia and dilutional coagulopathy.</li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
