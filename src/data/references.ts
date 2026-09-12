@@ -1286,6 +1286,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NTSP 2014", citation: "McGrath BA et al. Multidisciplinary guidelines for the management of tracheostomy and laryngectomy airway emergencies (National Tracheostomy Safety Project). Anaesthesia. 2012;67(9):1025-1041.", url: "https://doi.org/10.1111/j.1365-2044.2012.07217.x" },
     { label: "BJA Educ ENT 2017", citation: "Charters P, Ahmad I. Anaesthesia for ENT surgery. BJA Education. 2014;14(5):201-205.", url: "https://doi.org/10.1093/bjaceaccp/mkt059" },
     { label: "BJA Educ Laser 2015", citation: "Kitching AJ, Edge CJ. Lasers and surgery. BJA Education. 2003;3(5):143-146.", url: "https://doi.org/10.1093/bjacepd/mkg143" },
+    { label: "Iliff 2022 Haematoma", citation: "Iliff HA, El-Boghdadly K, Ahmad I, et al. Management of haematoma after thyroid surgery: systematic review and multidisciplinary consensus guidelines from the Difficult Airway Society, the British Association of Endocrine and Thyroid Surgeons and the British Association of Otorhinolaryngology, Head and Neck Surgery. Anaesthesia. 2022;77(1):82-95.", url: "https://doi.org/10.1111/anae.15654" },
+    { label: "Ravi 2007 Paed ENT", citation: "Ravi R, Howell T. Anaesthesia for paediatric ear, nose and throat surgery. Contin Educ Anaesth Crit Care Pain. 2007;7(2):33-37.", url: "https://doi.org/10.1093/bjaceaccp/mkm004" },
+    { label: "Liang 2010 Middle Ear", citation: "Liang S, Irwin MG. Review of anesthesia for middle ear surgery. Anesthesiol Clin. 2010;28(3):519-528.", url: "https://doi.org/10.1016/j.anclin.2010.07.009" },
   ],
   "emergency-surgery": [
     { label: "Anaesthesia 2013 (Emergency organisation)", citation: "Organisation and planning of anaesthesia for emergency surgery. Anaesthesia. 2013;68(Suppl 1).", url: "https://doi.org/10.1111/anae.12054" },
