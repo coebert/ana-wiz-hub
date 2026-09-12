@@ -350,11 +350,7 @@ const PulseOximetryTopic = () => {
               infrared because it is a polyatomic molecule with different atoms — it has a changing dipole moment during
               asymmetric stretching. Monoatomic (Ar) and homonuclear diatomic (O₂, N₂) gases do not absorb IR.
             </p>
-            <p className="text-foreground/90 leading-relaxed mt-3">
-              <strong>Mainstream</strong> analysers: sensor sits on the airway (fast response, no sampling tube, heavier).
-              <strong> Sidestream</strong>: gas aspirated via sampling tube to a remote sensor (lighter adaptor, 2–3 s delay,
-              scavenging needed).
-            </p>
+            <div className="grid md:grid-cols-2 gap-3 mt-3 text-sm"><div className="rounded-lg border border-border p-3"><strong>Mainstream</strong><p className="mt-1">Fast response; no gas removal or sample-line blockage. The airway sensor adds weight and dead space, can heat or become secretion-contaminated, and is difficult without an advanced airway.</p></div><div className="rounded-lg border border-border p-3"><strong>Sidestream</strong><p className="mt-1">Light adaptor, usable through nasal cannulae and compatible with multigas analysis. It has transit delay, requires scavenging and can kink, leak or block with water/secretions.</p></div></div><InlineRef topicId={TOPIC_ID} refLabel="Cross & Plunkett Ch.15" />
           </section>
 
           <section className="mb-10">
@@ -365,10 +361,13 @@ const PulseOximetryTopic = () => {
               descent (inspiration begins). The <strong>α angle</strong> (II–III junction) and <strong>β angle</strong>
               (III–IV junction) reflect V/Q mismatch when abnormal.
             </p>
+            <ul className="mt-3 list-disc pl-5 text-foreground/90 space-y-1"><li>A prolonged phase II and steep phase III widen the α-angle (normal 100–110°), reflecting uneven emptying in bronchospasm/COPD.</li><li>Cardiogenic oscillations are small pulse-synchronous ripples; a curare cleft is a spontaneous effort during partial paralysis.</li><li>The β-angle is normally ~90° and widens when inspired CO₂ causes rebreathing.</li><li>Increased alveolar dead space (PE or low cardiac output) lowers EtCO₂ and widens PaCO₂−EtCO₂; pure shunt need not widen it unless V/Q heterogeneity or dead space also rises.</li></ul><InlineRef topicId={TOPIC_ID} refLabel="BJA Educ 2014" />
             <div className="bg-card rounded-xl border border-border p-4 mt-4">
               <CapnographyDiagram />
             </div>
           </section>
+          <section className="mb-10"><h2 className="text-2xl font-serif font-bold text-foreground">Sources of Error in Capnography</h2><ul className="list-disc pl-5 text-foreground/90 space-y-1"><li><strong>Patient:</strong> low cardiac output, arrest or massive PE reduces pulmonary CO₂ delivery and EtCO₂.</li><li><strong>Breathing system:</strong> cuff/circuit leak or disconnected sample line attenuates the trace; exhausted absorber or incompetent valve raises the inspired baseline.</li><li><strong>Sidestream:</strong> water/secretions block the line; leaks dilute the sample; an excessive sampling rate distorts small tidal volumes.</li><li><strong>Mainstream:</strong> damaged or secretion-contaminated windows cause drift or failure.</li><li><strong>Gas interference:</strong> N₂O collisionally broadens the CO₂ infrared absorption band; high O₂ has a smaller pressure-broadening effect, requiring analyser compensation.</li></ul><InlineRef topicId={TOPIC_ID} refLabel="Cross & Plunkett Ch.15" /></section>
+          <section className="mb-10"><h2 className="text-2xl font-serif font-bold text-foreground">Volumetric Capnography</h2><p className="text-foreground/90">Volumetric capnography plots expired CO₂ against expired tidal volume rather than time. Phase I is airway dead-space gas, phase II is mixing and phase III is alveolar gas. The phase-I/II transition estimates airway dead space; Bohr physiological dead space uses mixed-expired CO₂, while the Enghoff modification substitutes PaCO₂ and therefore reflects global V/Q inequality and shunt as well as true dead space. Alveolar dead space is physiological minus airway dead space. Trends can help titrate PEEP and recruitment in ARDS and assess one-lung ventilation, but depend on reliable flow and gas synchronisation. <InlineRef topicId={TOPIC_ID} refLabel="BJA Educ 2014" /></p></section>
           <ExamPitfallsCallout
             accent="physics"
             pitfalls={[

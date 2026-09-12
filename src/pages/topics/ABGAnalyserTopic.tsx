@@ -7,6 +7,7 @@ import { abgAnalyserQuestions } from "@/data/quizzes";
 import ABGAnalyserDiagram from "@/components/diagrams/physics/ABGAnalyserDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const abgAnalyserFaqs: Array<[string, string]> = [
   [
@@ -302,7 +303,12 @@ const ABGAnalyserTopic = () => {
               <p className="text-xs text-muted-foreground mt-1">Correct to actual patient temperature. Maintains pH 7.4 at the actual temperature. CO₂ is added. May improve cerebral blood flow in deep hypothermia. Used in paediatric cardiac surgery.</p>
             </div>
           </div>
+          <div className="mt-3 text-sm text-muted-foreground space-y-2"><p>Cooling increases the solubility of O₂ and CO₂ (Henry's law), so their measured partial pressures fall. At the same time, the neutral pH of water and the pKa of histidine imidazole groups rise; if total CO₂ is unchanged, blood therefore becomes more alkaline as temperature falls.</p><p><strong>α-stat</strong> leaves results referenced to 37°C and maintains total CO₂ and histidine protonation, preserving intracellular electroneutrality. <strong>pH-stat</strong> adds CO₂ to hold pH 7.40 at the patient's actual temperature, increasing total-body CO₂ and producing relative respiratory acidosis with greater cerebral blood flow. <InlineRef topicId="abg-analyser" refLabel="Cross & Plunkett Ch.15-16" /></p></div>
         </div>
+
+        <div><h2 className="text-2xl font-serif font-bold text-foreground mb-3">Co-oximetry</h2><div className="text-muted-foreground space-y-2"><p>A co-oximeter haemolyses the sample and applies Beer–Lambert spectrophotometry (A = εcl) at multiple wavelengths, typically 4–7 or more. The ~805 nm isobestic point gives equal HbO₂ and HHb absorptivity; additional wavelengths resolve HbO₂, HHb, COHb and MetHb.</p><p>It directly measures total haemoglobin and each species fraction. It then calculates functional saturation, HbO₂/(HbO₂+HHb), and fractional FO₂Hb, HbO₂/tHb. Fractional saturation is clinically decisive in dyshaemoglobinaemia because it reports the true fraction of haemoglobin carrying oxygen. <InlineRef topicId="abg-analyser" refLabel="BJA Educ 2017" /></p></div></div>
+
+        <div><h2 className="text-2xl font-serif font-bold text-foreground mb-3">Calibration and Quality Control</h2><div className="text-muted-foreground space-y-2"><p>Calibration establishes the relationship between electrode voltage/current and analyte concentration. Frequent <strong>one-point calibration</strong> corrects offset using one known standard (for example pH 7.384), often every 30 minutes or around sampling. Less frequent <strong>two-point calibration</strong> corrects both offset and slope using standards bracketing the physiological range: pH 6.840/7.384 and gas mixtures such as 5% CO₂/20% O₂ and 10% CO₂/0% O₂.</p><p>Independent multi-level controls with known low, normal and high values verify the whole analyser remains within acceptable limits after calibration and maintenance. <InlineRef topicId="abg-analyser" refLabel="Middleton Ch.18" /></p></div></div>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sources of Error</h2>

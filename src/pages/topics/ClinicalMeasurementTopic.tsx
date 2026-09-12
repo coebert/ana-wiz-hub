@@ -138,6 +138,7 @@ const ClinicalMeasurementTopic = () => {
               <InlineRef topicId="clinical-measurement" refLabel="Deranged Physiology Arterial Line" />.
             </p>
           </div>
+          <div className="mt-4 rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Complications</h3><p className="mt-2 text-sm text-muted-foreground">Local or proximal thrombosis can cause distal ischaemia and necrosis; thrombus or air may embolise. Other complications include haemorrhage, haematoma, local infection or bacteraemia, accidental intra-arterial drug injection, adjacent nerve injury and pseudoaneurysm. Use asepsis, secure all ports and remove the cannula when no longer required. <InlineRef topicId="clinical-measurement" refLabel="Cross & Plunkett Ch.16" /></p></div>
         </div>
 
         <div>
@@ -200,10 +201,9 @@ const ClinicalMeasurementTopic = () => {
             </p>
             <p>
               <strong>Transpulmonary thermodilution</strong> (PiCCO, VolumeView) uses a central venous injection with an arterial
-              thermistor, providing CO plus volumetric parameters (GEDV, EVLW) and continuous pulse contour analysis. The
-              <strong>Fick principle</strong> — CO = VO₂ / (CaO₂ − CvO₂) — is the theoretical gold standard but impractical for
-              routine clinical use as it requires measurement of oxygen consumption and mixed venous oxygen content.
+              thermistor, providing CO plus volumetric parameters. <strong>GEDV</strong> sums end-diastolic volumes of all four chambers and indexes preload (GEDI normally 680–800 mL/m²). <strong>EVLW</strong> quantifies pulmonary oedema (EVLWI normally 3–7 mL/kg predicted body weight). Both are derived from thermodilution transit times alongside CO and can guide fluid strategy in shock and ARDS. <InlineRef topicId="clinical-measurement" refLabel="Middleton Ch.18" />
             </p>
+            <p><strong>Fick principle:</strong> organ blood flow equals uptake or release of a substance divided by its arteriovenous concentration difference: CO = VO₂/(CaO₂−CvO₂). VO₂ is measured from inspired/expired gas with a metabolic cart; CaO₂ and true mixed-venous CvO₂ (sampled from a PA catheter) use O₂ content = (1.34×Hb×saturation)+(0.003×PO₂). Indirect Fick substitutes estimated VO₂; CO₂ rebreathing applies the same conservation principle to CO₂. <InlineRef topicId="clinical-measurement" refLabel="Cross & Plunkett Ch.16" /></p>
             <p>
               Less invasive options include <strong>oesophageal Doppler</strong> (measures aortic blood flow velocity to derive CO
               from CSA × VTI × HR), <strong>LiDCO</strong> (lithium dilution calibration with pulse power analysis),
@@ -211,6 +211,7 @@ const ClinicalMeasurementTopic = () => {
               method: CO = π(d/2)² × VTI × HR). Each method has specific limitations, and no single technique is ideal for all
               clinical scenarios.
             </p>
+            <p><strong>Pulse contour analysis</strong> derives stroke volume from the systolic arterial-waveform area/pulse pressure and a model of vascular impedance. Calibrated LiDCO uses lithium dilution to generate a patient-specific scaling factor for pulse-power analysis. Uncalibrated FloTrac estimates impedance from pressure variability plus age, sex, height and weight. Both require a clean waveform and become less reliable with arrhythmia, profound instability or rapidly changing vascular tone, including sepsis and vasopressors. <InlineRef topicId="clinical-measurement" refLabel="BJA Educ 2005" /></p>
           </div>
         </div>
           <ExamPitfallsCallout
