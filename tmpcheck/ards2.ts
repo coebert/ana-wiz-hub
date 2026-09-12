@@ -7,7 +7,7 @@ for (const c of cases) {
   console.log("==", c.id, c.title);
   for (const r of doseReferencesForCase(c)) {
     const s = mechanismSlugForDrug(r.drug);
-    const w: any = (icuDrugWithdrawal as any[]).find((x) => x.slug === s);
+    const w: any = (icuDrugWithdrawal as any)[s as string];
     console.log(`  ${r.drug} -> ${s} | withdrawal: ${w ? "taper=" + w.taper.length : "MISSING"} | dose=${r.dose}`);
   }
 }
