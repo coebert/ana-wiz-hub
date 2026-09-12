@@ -8,6 +8,7 @@ import { CorticosteroidPharmacodynamicsDiagram } from "@/components/diagrams/pha
 import { HPAAxisSuppressionDiagram } from "@/components/diagrams/pharmacology/HPAAxisSuppressionDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const corticosteroidsFaqs: Array<[string, string]> = [
   [
