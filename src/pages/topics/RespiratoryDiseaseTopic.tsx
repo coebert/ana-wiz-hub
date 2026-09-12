@@ -129,7 +129,16 @@ const RespiratoryDiseaseTopic = () => {
                 <li>Avoid: atracurium/mivacurium (histamine release) — use rocuronium or vecuronium</li>
                 <li>Avoid morphine (histamine release) — use fentanyl or remifentanil</li>
                 <li>Neostigmine may cause bronchospasm — consider sugammadex for reversal</li>
-                <li>Acute intraoperative bronchospasm: deepen anaesthesia, salbutamol MDI/nebuliser, IV salbutamol (250 µg), IV magnesium (2 g), IV hydrocortisone (200 mg)</li>
+                <li><strong>Acute intraoperative bronchospasm — stepwise algorithm</strong>:
+                  <ol className="list-decimal list-inside space-y-1 mt-1 ml-2">
+                    <li>Call for help, alert the surgeon, stop surgical stimulus, 100% FiO₂, deepen anaesthesia (increase volatile or bolus propofol); exclude mimics — kinked/obstructed tube, endobronchial intubation, pneumothorax, anaphylaxis</li>
+                    <li>Salbutamol MDI 4–10 puffs via the ETT or nebulised salbutamol 5 mg, repeat as needed; add nebulised ipratropium 0.5 mg</li>
+                    <li>IV hydrocortisone 100–200 mg; IV magnesium sulphate 2 g over 20 minutes; IV salbutamol 250 µg slow bolus, then infusion 5–20 µg/min</li>
+                    <li>Refractory bronchospasm: ketamine 0.5–1 mg/kg; adrenaline bolus 10–100 µg IV titrated (or infusion) especially if anaphylaxis or cardiovascular collapse; aminophylline only with senior input given its narrow therapeutic index and toxicity risk</li>
+                    <li>Manage dynamic hyperinflation/breath-stacking: reduce respiratory rate, prolong expiratory time, briefly disconnect the circuit to allow passive exhalation if severe</li>
+                  </ol>
+                  <span className="block mt-1"><InlineRef topicId="respiratory-disease" refLabel="BTS/SIGN 2019" /> <InlineRef topicId="respiratory-disease" refLabel="BJA Educ Asthma 2017" /></span>
+                </li>
               </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
@@ -151,6 +160,24 @@ const RespiratoryDiseaseTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Obstructive defect: reduced FEV₁/FVC ratio (&lt;0.7); air trapping, hyperinflation, gas exchange impairment</li>
                 <li>Cor pulmonale: RV failure secondary to chronic hypoxic pulmonary vasoconstriction</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Cor Pulmonale: Assessment & Anaesthetic Management</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Assessment</strong>: raised JVP, peripheral oedema, hepatomegaly, loud second heart sound (P2); ECG may show right axis deviation, RBBB, and P pulmonale; echocardiography for RV size/function and estimated pulmonary artery pressure</li>
+                <li><strong>Anaesthetic goals</strong>: maintain RV preload without volume overload; avoid rises in pulmonary vascular resistance (PVR) — prevent hypoxia, hypercarbia, acidosis, and high airway pressures</li>
+                <li>Maintain systemic blood pressure to preserve RV coronary perfusion — use vasopressor support (e.g. noradrenaline) early rather than late</li>
+                <li>Apply PEEP cautiously as it raises RV afterload; titrate to lung recruitment benefit versus RV strain</li>
+                <li>Invasive arterial and central venous access for major surgery to guide haemodynamics</li>
+                <li>Consider inhaled pulmonary vasodilators (e.g. nitric oxide, iloprost) in severe pulmonary hypertension; plan for HDU/ICU postoperatively</li>
+              </ul>
+              <p className="text-sm mt-2">
+                <InlineRef topicId="respiratory-disease" refLabel="Lumb Ch.27" /> <InlineRef topicId="respiratory-disease" refLabel="NICE NG115" />
+              </p>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>GOLD staging (I–IV) based on post-bronchodilator FEV₁ % predicted</li>
                 <li>Risk factors for postop complications: FEV₁ &lt;1 L, current smoker, upper abdominal/thoracic surgery, TLCO &lt;40%</li>
                 <li>Smoking cessation: ≥8 weeks ideally (carboxyhaemoglobin normalises in 48 h; mucociliary function improves in 6 weeks)</li>
