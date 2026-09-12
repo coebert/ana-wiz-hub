@@ -138,6 +138,7 @@ const IcuSedationDeliriumTopic = () => {
         <>
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
         <section className="space-y-6">
+          <DrugDosesCallout focus="sedation, analgesia and neuromuscular blocking infusions" />
           {/* RASS */}
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sedation Assessment (RASS)</h2>
