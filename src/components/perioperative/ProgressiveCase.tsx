@@ -1,8 +1,18 @@
-import { useEffect, useState } from "react";
-import { BookOpenCheck, CheckCircle2, ChevronDown, ChevronRight, Circle } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import {
+  BookOpenCheck,
+  Check,
+  CheckCircle2,
+  ChevronDown,
+  ChevronRight,
+  Circle,
+  Share2,
+} from "lucide-react";
+import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
 
 export type CaseCategory = "Steroid cover" | "Phaeochromocytoma" | "Antifibrinolytics";
 
