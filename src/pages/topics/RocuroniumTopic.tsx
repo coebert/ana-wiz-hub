@@ -315,6 +315,7 @@ const RocuroniumTopic = () => {
 
             <section className="mb-10">
               <h2 className="text-2xl font-serif font-bold text-foreground">Factors Potentiating Rocuronium Block</h2>
+              <p className="text-sm text-muted-foreground mb-3">Onset, depth and duration are modified by patient physiology, co-administered drugs and neuromuscular disease<InlineRef topicId="rocuronium" refLabel="BJA 2008 NMB Factors" />.</p>
               <div className="grid md:grid-cols-2 gap-3 text-sm">
                 <div className="rounded-lg border border-border bg-card p-4">
                   <p className="font-semibold text-foreground mb-1">Physiological and metabolic</p>
