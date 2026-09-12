@@ -262,6 +262,29 @@ const HaematologyIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="dic" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Disseminated Intravascular Coagulation (DIC)">
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              DIC is an acquired syndrome of widespread intravascular activation of coagulation, driven by unregulated tissue factor exposure and thrombin generation. Diffuse microvascular fibrin deposition contributes to organ dysfunction, while consumption of platelets and clotting factors — with secondary hyperfibrinolysis — produces a concurrent bleeding tendency. Commonest cause is sepsis; others include major trauma, pancreatitis, malignancy (especially acute promyelocytic leukaemia), and obstetric emergencies (amniotic fluid embolism, placental abruption).
+            </p>
+            <div className="rounded-xl border border-border bg-card p-5 mb-4">
+              <h3 className="font-semibold text-foreground mb-2">ISTH overt-DIC score</h3>
+              <p className="text-sm text-muted-foreground">
+                Applied only in a patient with an underlying condition known to cause DIC. Components: platelet count, fibrin-related marker (D-dimer/FDP) rise, prolongation of prothrombin time, and fibrinogen level, each scored and summed. A score <strong>≥5 points</strong> is compatible with overt DIC <InlineRef topicId="haematology-icu" refLabel="ISTH DIC 2009" />; scores below this warrant serial repeat testing ("non-overt" DIC).
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-card p-5 mb-4">
+              <h3 className="font-semibold text-foreground mb-2">Management</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li>Treat the underlying cause — DIC will not resolve until the trigger (sepsis source control, delivery, chemotherapy for APML) is addressed.</li>
+                <li>Blood product replacement is reserved for patients who are <strong>actively bleeding</strong> or require an invasive procedure — target platelets &gt;50 ×10⁹/L and fibrinogen &gt;1.5 g/L, using platelet concentrate, FFP and cryoprecipitate/fibrinogen concentrate as guided by laboratory results and viscoelastic testing.</li>
+                <li>Prophylactic replacement in the absence of bleeding is not routinely recommended and may worsen microvascular thrombosis.</li>
+                <li>Therapeutic or low-dose (prophylactic-intensity) heparin is controversial but may be considered in a thrombosis-dominant phenotype (e.g. purpura fulminans, acral ischaemia, venous thromboembolism) where bleeding risk is low <InlineRef topicId="haematology-icu" refLabel="BJA Educ DIC 2017" />.</li>
+              </ul>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="hus" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Haemolytic Uraemic Syndrome (HUS)">
             <p className="text-muted-foreground leading-relaxed mb-4">

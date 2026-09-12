@@ -4,6 +4,8 @@ import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { abdominalCompartmentSyndromeQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const abdominalCompartmentSyndromeFaqs: Array<[string, string]> = [
   ["How is intra-abdominal pressure measured and what defines ACS?", "Bladder pressure with 25 mL saline at end-expiration, supine, transduced at the mid-axillary line; intra-abdominal hypertension ≥12 mmHg, ACS = sustained IAP >20 mmHg with new organ dysfunction (WSACS 2013)."],
@@ -199,6 +201,13 @@ const AbdominalCompartmentSyndromeTopic = () => {
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Raised IAP transmits to every adjacent compartment and impairs venous return globally. Even moderate
                 IAH (12–15 mmHg) reduces splanchnic perfusion before any clinical sign is apparent.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                <strong>Polycompartment syndrome</strong> describes raised pressure in two or more anatomical compartments
+                simultaneously. Raised IAP is transmitted through the diaphragm to raise intrathoracic pressure, which
+                reduces venous return and raises central venous pressure; this in turn raises intracranial pressure and
+                worsens cerebral perfusion. The abdominal, thoracic, cranial and limb compartments interact — a rise in
+                one compartment's pressure, and abdominal-wall compliance itself, influences the others<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
               </p>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
