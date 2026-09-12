@@ -540,6 +540,16 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Respiratory: lesion above C3–5 → diaphragm paralysis (phrenic nerve); thoracic lesions → reduced FVC (loss of intercostal/abdominal muscles)</li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Spinal Shock, Sux Timing Window & Respiratory Function by Level</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Acute spinal shock (first hours–days after injury): flaccid areflexic paralysis below the lesion with loss of sympathetic tone — neurogenic shock (hypotension with paradoxical bradycardia, from unopposed vagal tone and loss of sympathetic outflow) is common in the first 24–48 h and is treated with judicious fluids and vasopressors rather than large-volume resuscitation alone</li>
+                <li>Suxamethonium is safe within the first ~48 hours of acute spinal cord injury because extra-junctional acetylcholine receptor upregulation has not yet occurred; it becomes unsafe from around 3–5 days and must be avoided from 24 hours as a practical/conservative cut-off until denervation hyperkalaemia risk resolves — this risk persists for many months to a year and in complete injuries may never fully resolve, so use a non-depolarising NMBA (rocuronium + sugammadex) once outside the earliest safe window</li>
+                <li>Respiratory function correlates with lesion level: C1–C2 lesions cause complete apnoea (loss of phrenic nerve input, C3–C5) and require permanent ventilation; C3–C5 lesions cause partial diaphragmatic weakness with paradoxical breathing; lesions below C5 preserve the diaphragm but lose intercostal and abdominal muscle function, reducing vital capacity, cough effectiveness and the ability to clear secretions — expect a restrictive pattern with FVC reduced roughly in proportion to how high and complete the lesion is</li>
+                <li>Temperature regulation: poikilothermia below the level of injury from loss of vasomotor/sudomotor control — active warming/cooling and continuous core temperature monitoring are essential, particularly for high thoracic and cervical lesions</li>
+                <li>Bladder care: neurogenic bladder is managed with intermittent self-catheterisation or an indwelling/suprapubic catheter; recurrent catheterisation predisposes to UTI (a common autonomic dysreflexia trigger) and latex sensitisation — use latex-free equipment and maintain meticulous catheter care to reduce dysreflexia episodes</li>
+              </ul>
+            </div>
           </div>
         </section>
 
