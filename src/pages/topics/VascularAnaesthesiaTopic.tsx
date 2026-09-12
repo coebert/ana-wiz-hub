@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
@@ -20,6 +21,7 @@ const tocItems = [
   { id: "clamp", label: "Aortic cross-clamping physiology", group: "Aortic" },
   { id: "cea", label: "Carotid endarterectomy", group: "Cerebrovascular" },
   { id: "peripheral", label: "Peripheral vascular surgery", group: "Peripheral" },
+  { id: "amputation", label: "Lower limb amputation", group: "Peripheral" },
   { id: "cardiac-risk", label: "Cardiac risk assessment", group: "Pre-op" },
   { id: "monitoring", label: "Intraoperative monitoring", group: "Intra-op" },
   { id: "faq", label: "FAQ", group: "Reference" },
@@ -371,13 +373,36 @@ const VascularAnaesthesiaTopic = () => {
           </ExamSection>
           </div>
 
+          <div id="amputation" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Anaesthesia for Lower Limb Amputation">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Amputation is high-risk surgery in a low-reserve population: frail, elderly, diabetic, often with chronic kidney disease, established cardiac disease and active infection. Perioperative mortality is substantial and the case frequently arrives out of hours — NAP7 highlighted frailty, sepsis and emergency vascular surgery as major contributors to perioperative cardiac arrest<InlineRef topicId="vascular-anaesthesia" refLabel="NAP7 2023" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Preoperative assessment</strong>: quantify cardiac reserve (RCRI, functional capacity is often unassessable because the patient cannot walk — consider echocardiography), screen for sepsis from the necrotic limb (lactate, CRP, blood cultures, source control urgency), assess renal function and glycaemic control, review nutritional state and anaemia, and document a frailty score and treatment-escalation plan with the patient and family</li>
+              <li><strong>Analgesia before surgery matters</strong>: severe ischaemic and neuropathic pain is common. Established preoperative pain and opioid use predict phantom limb pain, so optimise a multimodal regimen (regular paracetamol, opioid, gabapentinoid, ketamine infusion where appropriate) and consider a perineural catheter placed preoperatively</li>
+              <li><strong>Anaesthetic technique</strong>: spinal anaesthesia (with careful incremental or low-dose technique in the septic/hypovolaemic patient), general anaesthesia, peripheral nerve blockade (sciatic plus femoral/adductor canal for below-knee; lumbar plexus or fascia iliaca plus sciatic for above-knee), or a combined GA plus block. Choose by cardiac reserve, sepsis, anticoagulation status and patient preference rather than dogma — a block-based technique with light sedation suits the frail patient, but a septic patient with rapid deterioration may be safer with a controlled GA and invasive monitoring</li>
+              <li><strong>Intraoperative management</strong>: arterial line for anyone with cardiac disease or sepsis, cautious fluid therapy guided by stroke-volume response rather than large fixed volumes (these patients tolerate neither hypovolaemia nor overload), early vasopressor support, active warming, glucose monitoring, and antibiotics as per the sepsis pathway. Blood loss is usually modest but can be brisk with a high amputation — group and save or crossmatch</li>
+              <li><strong>Phantom limb and stump pain</strong>: incidence of phantom sensation is very high and phantom pain affects 50–80%. Reduce risk with effective perioperative regional analgesia (perineural catheter or epidural continued for 48–72 h), ketamine, gabapentinoids, good stump analgesia, early mirror therapy and physiotherapy, and early referral to the chronic pain team if pain persists</li>
+              <li><strong>Postoperative care</strong>: level 1–2 care, continued regional analgesia, delirium prevention, VTE prophylaxis, nutritional support, and rehabilitation planning with the vascular MDT</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
+
+
           <div id="cardiac-risk" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Preoperative Cardiac Risk Assessment">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Lee's RCRI</strong>: 6 predictors — high-risk surgery, IHD, CCF, CVA/TIA, DM (insulin), creatinine &gt;177 µmol/L. ≥3 points = high risk</li>
               <li><strong>CPET</strong>: AT &lt;11 ml/kg/min = high risk. VE/VCO₂ &gt;34 also associated with poor outcomes</li>
-              <li><strong>Cardiac medications</strong>: continue statins, beta-blockers, aspirin. Withhold ACEi/ARBs on day of surgery (hypotension risk). Dual antiplatelet management — MDT discussion</li>
+              <li><strong>Cardiac medications</strong>: continue statins, beta-blockers, aspirin. Dual antiplatelet management — MDT discussion</li>
+              <li><strong>ACE inhibitors and ARBs</strong>: omit the morning dose before major vascular surgery. Chronic ACEI/ARB therapy blunts the renin–angiotensin response to anaesthesia and hypovolaemia, so induction produces exaggerated vasodilatation with hypotension that is often refractory to fluid and to conventional catecholamines<InlineRef topicId="vascular-anaesthesia" refLabel="ACEI Anaesthesia 1994" /></li>
+              <li><strong>Treating refractory ACEI-related hypotension</strong>: escalate stepwise — fluid loading, then a direct α₁-agonist (metaraminol/phenylephrine), then a noradrenaline infusion; when hypotension persists despite escalating catecholamines the angiotensin pathway is the missing limb, so vasopressin 1–2 unit bolus or an infusion of 0.01–0.04 units/min is usually rapidly effective (methylene blue and calcium have been used in vasoplegia). Reduce anaesthetic depth, exclude other causes (bleeding, ischaemia, anaphylaxis — a major cause of perioperative cardiac arrest in NAP7) and site invasive monitoring early<InlineRef topicId="vascular-anaesthesia" refLabel="NAP7 2023" /></li>
+              <li><strong>Restarting</strong>: recommence ACEI/ARB once the patient is euvolaemic, off vasopressors and renal function is stable — usually 24–48 h postoperatively; document the plan so the drug is not omitted indefinitely</li>
+
               <li><strong>Coronary stents</strong>: BMS — defer elective surgery 6 weeks; DES — defer 6–12 months (or 3 months with newer-generation DES). Continue aspirin perioperatively if possible</li>
             </ul>
             </CollapsibleSubsection>

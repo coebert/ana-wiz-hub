@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
@@ -24,6 +25,7 @@ import {
 const tocItems = [
   { id: "physiology", label: "Ocular physiology & IOP", group: "Foundations" },
   { id: "regional", label: "Regional techniques", group: "Techniques" },
+  { id: "conduct", label: "Anaesthetic conduct & fasting", group: "Techniques" },
   { id: "open-globe", label: "Open-globe injury", group: "Emergency" },
   { id: "strabismus", label: "Strabismus surgery", group: "Paediatric" },
   { id: "brainstem", label: "Brainstem anaesthesia", group: "Complications" },
@@ -189,15 +191,33 @@ const OphthalmicAnaesthesiaTopic = () => {
             <TopicalIntracameralIllustration />
           </DiagramSection>
 
+          <div id="conduct" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Anaesthetic Conduct & Modern Fasting Guidance">
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Routine fasting is no longer recommended</strong> for low-risk ophthalmic surgery performed under topical or regional block (topical/intracameral, sub-Tenon&apos;s, peribulbar) without planned sedation — patients may continue normal food and drink up to the point of surgery<InlineRef topicId="ophthalmic-anaesthesia" refLabel="Ambulatory Ophthalmic 2025" /></li>
+              <li><strong>Why it matters</strong>: the population is elderly and frequently diabetic; prolonged starvation causes dehydration, hypoglycaemia, hypotension, delirium and discomfort, all of which make patients less able to lie still and cooperate. Allowing normal intake improves comfort, list throughput and glycaemic stability, and permits usual medication timing (including oral hypoglycaemics with food)</li>
+              <li><strong>When conventional fasting still applies</strong>: general anaesthesia, deep or moderate procedural sedation, and any case where conversion to GA is likely (open globe, uncooperative patient, complex vitreoretinal or paediatric surgery) — 6 h food, 2 h clear fluids</li>
+              <li><strong>Practical conduct under block</strong>: shared verbal contact and reassurance, arm-touch signalling, supplemental oxygen with capnography if the face is draped, and a clear plan and drugs available for the oculocardiac reflex, local anaesthetic systemic toxicity and brainstem anaesthesia</li>
+              <li><strong>Documentation</strong>: record the fasting decision and the reason on the anaesthetic chart so subsequent teams do not re-starve the patient if the list overruns</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
+
           <div id="open-globe" className="scroll-mt-24">
+
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Open Globe Injury">
-            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li>Avoid ↑ IOP: suxamethonium is <strong>relatively</strong> contraindicated (but may be used if RSI required for life-threatening aspiration risk — benefit vs risk)</li>
-              <li>RSI with rocuronium 1.2 mg/kg preferred. Sugammadex available for reversal</li>
-              <li>Smooth induction; avoid coughing/straining. Aggressive antiemetics (vomiting markedly ↑ IOP)</li>
-              <li>Do <strong>NOT</strong> press on the eye (no eye-pad pressure, careful intubation)</li>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
+              <li><strong>Preoperative goals</strong>: avoid any external pressure on the globe (no eye-pad pressure, no forced lid retraction, careful mask holding); give an antiemetic early, treat pain with IV opioid rather than allowing straining, and consider a small anxiolytic dose in the very distressed patient. Antiemetics and analgesia matter because retching and coughing raise IOP far more than any anaesthetic drug<InlineRef topicId="ophthalmic-anaesthesia" refLabel="Vachon 2003 Open Globe" /></li>
+              <li><strong>Induction</strong>: aims are rapid airway security in a patient with a full stomach, obtunding the cough/press response (fentanyl 1–2 µg/kg or alfentanil 10–20 µg/kg, plus IV lidocaine 1–1.5 mg/kg), and no IOP spike. Rocuronium 1.2 mg/kg RSI is standard with sugammadex immediately available; suxamethonium raises IOP by 5–10 mmHg for around 5 minutes and remains defensible when aspiration risk dominates<InlineRef topicId="ophthalmic-anaesthesia" refLabel="Vachon 2003 Open Globe" /></li>
+              <li><strong>Maintenance</strong>: keep anaesthesia deep enough to abolish movement and coughing with full neuromuscular monitoring. Volatile agents lower IOP and are perfectly acceptable; TIVA is favoured where PONV risk is high (young patients, previous PONV) since vomiting threatens the repair. Maintain normocapnia (hypercapnia raises choroidal volume and IOP) and normotension, head slightly up</li>
+              <li><strong>Emergence</strong>: plan a smooth, deep extubation or deep LMA exchange/removal; IV lidocaine 1.5 mg/kg a few minutes beforehand, full reversal with sugammadex, avoid oropharyngeal suction under light anaesthesia, and do not allow bucking on the tube</li>
+              <li><strong>Postoperative care</strong>: aggressive multimodal antiemesis (dexamethasone plus ondansetron ± droperidol), effective non-sedating analgesia (paracetamol, NSAID if permitted, low-dose opioid), head-up positioning, avoid nose-blowing and straining, and continue IOP-lowering drops as prescribed by the ophthalmologist</li>
+              <li>Do <strong>NOT</strong> press on the eye, and avoid N₂O if intraocular gas (SF₆/C₃F₈) has been used</li>
             </ul>
+
             </CollapsibleSubsection>
           </ExamSection>
           </div>

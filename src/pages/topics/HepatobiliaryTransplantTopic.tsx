@@ -21,6 +21,8 @@ const tocItems = [
   { id: "resection", label: "Major liver resection", group: "Procedures" },
   { id: "transplant", label: "Liver transplantation", group: "Transplant" },
   { id: "cirrhosis", label: "The cirrhotic patient", group: "Physiology" },
+  { id: "meld", label: "MELD & MELD-Na scores", group: "Physiology" },
+  { id: "tipss", label: "Anaesthesia for TIPSS", group: "Procedures" },
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
 
@@ -262,6 +264,61 @@ const HepatobiliaryTransplantTopic = () => {
                   <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
                   <p className="text-xs text-muted-foreground">
                     A common exam trap is assuming cirrhotics are 'auto-anticoagulated' and therefore protected from thrombosis. This is false — they have a rebalanced but often prothrombotic state, particularly portal and hepatic vein thrombosis. VTE prophylaxis is essential.
+                  </p>
+                </div>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
+
+          <div id="meld" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CH_BK_03"]}>
+              <CollapsibleSubsection title="MELD & MELD-Na — Components and Significance">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  The Model for End-stage Liver Disease (MELD) score is a validated prognostic score predicting 3-month mortality in end-stage liver disease; it was derived to predict survival after TIPSS and is now used for organ allocation and preoperative risk stratification<InlineRef topicId="hepatobiliary-transplant" refLabel="MELD Kamath 2001" />.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+                  <li><strong>Components</strong>: serum bilirubin, serum creatinine, and INR (logarithmic formula; values &lt;1.0 are rounded up to 1.0, creatinine capped at 4 mg/dL or if on dialysis)</li>
+                  <li><strong>Interpretation</strong>: score 6–40; rising score tracks 3-month mortality (roughly &lt;2% at MELD &lt;10 vs &gt;50% at MELD &gt;30)</li>
+                  <li><strong>MELD-Na</strong>: serum sodium is now incorporated because hyponatraemia independently predicts waiting-list mortality, improving discrimination in patients with low MELD but refractory ascites<InlineRef topicId="hepatobiliary-transplant" refLabel="MELD-Na 2008" /></li>
+                  <li><strong>Clinical use</strong>: organ allocation in many countries, listing thresholds, and preoperative risk assessment for non-transplant surgery in cirrhotics</li>
+                  <li><strong>Limitations</strong>: takes no account of comorbidity, frailty, ascites, encephalopathy, varices or hepatocellular carcinoma — fitness for surgery must be judged clinically alongside the number</li>
+                </ul>
+                <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
+                  <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
+                  <p className="text-xs text-muted-foreground">
+                    Remember the three original MELD variables as the &apos;liver, kidney, clotting&apos; triad — bilirubin, creatinine, INR. Child–Pugh differs by including ascites and encephalopathy (subjective) plus albumin.
+                  </p>
+                </div>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
+          <div id="tipss" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CH_BK_03"]}>
+              <CollapsibleSubsection title="Anaesthesia for TIPSS">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Transjugular intrahepatic portosystemic shunt (TIPSS) creates a low-resistance channel between a branch of the portal vein and a hepatic vein using a covered stent, decompressing the portal system<InlineRef topicId="hepatobiliary-transplant" refLabel="AASLD TIPS 2010" />.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-3 mb-3">
+                  {[
+                    { label: "Indications", value: "Refractory ascites and secondary prevention of variceal haemorrhage; salvage for uncontrolled acute variceal bleeding" },
+                    { label: "Contraindications", value: "Severe heart failure (shunt increases preload → acute decompensation), severe pulmonary hypertension, active sepsis, established or recurrent hepatic encephalopathy, polycystic liver" },
+                    { label: "Technique", value: "Frequently sedation/monitored anaesthesia care in the interventional radiology suite; GA with a secured airway for agitation, encephalopathy, long procedures, tense ascites or active variceal bleeding with soiling risk" },
+                    { label: "Monitoring", value: "Invasive arterial pressure for haemodynamic shifts and repeated sampling; large-bore access, blood products available, temperature management in a cold radiology suite" },
+                    { label: "Complications", value: "Haemorrhage (capsular perforation, haemobilia, intraperitoneal bleed), stent thrombosis or stenosis, new or worsening hepatic encephalopathy, cardiac decompensation from the acute increase in venous return" },
+                    { label: "Remote-site issues", value: "Unfamiliar environment, limited assistance, radiation protection, table access restricted during imaging — bring full airway and drug kit" },
+                  ].map((item) => (
+                    <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                      <p className="text-xs text-muted-foreground">{item.label}</p>
+                      <p className="font-semibold text-foreground text-sm">{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
+                  <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
+                  <p className="text-xs text-muted-foreground">
+                    The airway is the dominant risk in emergency TIPSS for bleeding varices — assume a full stomach of blood, secure the airway before transfer to the radiology table, and anticipate encephalopathy worsening after shunt creation.
                   </p>
                 </div>
               </CollapsibleSubsection>

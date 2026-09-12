@@ -22,6 +22,8 @@ const tocItems = [
   { id: "robotic", label: "Robotic gynaecological surgery", group: "Techniques" },
   { id: "hysteroscopy", label: "Hysteroscopy & fluid absorption", group: "Techniques" },
   { id: "oncology", label: "Major gynaecological oncology", group: "Major surgery" },
+  { id: "shoulder-tip", label: "Shoulder-tip pain", group: "Complications" },
+  { id: "hipec", label: "HIPEC", group: "Major surgery" },
   { id: "ectopic", label: "Ectopic pregnancy", group: "Emergency" },
   { id: "gas-embolism", label: "CO₂ gas embolism", group: "Complications" },
   { id: "faq", label: "FAQ", group: "Reference" },
@@ -163,7 +165,25 @@ const GynaecologicalAnaesthesiaTopic = () => {
                   <p className="text-xs text-muted-foreground">
                     CO₂ is 20× more blood-soluble than nitrogen, making small emboli dissolve rapidly. The lethal volume for CO₂ embolism (~1,000 mL) is far greater than for air embolism (~50 mL). Nevertheless, CO₂ gas embolism remains a recognised cause of intraoperative cardiovascular collapse during laparoscopy.
                   </p>
-                </div>
+          </div>
+
+          <div id="shoulder-tip" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia (specialty)"]}>
+              <CollapsibleSubsection title="Shoulder-Tip Pain — Prevention & Management">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Shoulder-tip pain affects up to a third of women after laparoscopy and is often the dominant complaint delaying day-case discharge.
+                </p>
+                <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+                  <li><strong>Mechanism</strong>: residual subdiaphragmatic CO₂ and carbonic acid irritate the diaphragmatic peritoneum; pain is referred to the shoulder tip through the phrenic nerve (C3, 4, 5), which shares dermatomal representation with the shoulder</li>
+                  <li><strong>Surgical technique</strong>: use the lowest effective insufflation pressure, humidified/warmed gas where available, and active evacuation of CO₂ under direct vision at the end of the case rather than passive deflation</li>
+                  <li><strong>Anaesthetic technique</strong>: a pulmonary recruitment manoeuvre before extubation — sustained manual inflation to about 30 cmH₂O held for 5 seconds, repeated a few times with the patient in Trendelenburg — expels residual subdiaphragmatic gas and significantly reduces shoulder pain and analgesic requirement<InlineRef topicId="gynaecological-anaesthesia" refLabel="Phelps 2008" /></li>
+                  <li><strong>Pharmacological</strong>: regular paracetamol and an NSAID unless contraindicated; intraperitoneal instillation of local anaesthetic (e.g. levobupivacaine to the subdiaphragmatic surface) and port-site infiltration give modest additional benefit; short-acting opioid rescue only</li>
+                  <li><strong>Counselling</strong>: warn the patient preoperatively that shoulder pain is expected, self-limiting over 24–72 hours, and not cardiac in origin — otherwise it triggers unplanned admission and ECG work-up</li>
+                </ul>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
               </CollapsibleSubsection>
             </ExamSection>
           </div>
@@ -236,6 +256,40 @@ const GynaecologicalAnaesthesiaTopic = () => {
             </ExamSection>
           </div>
 
+          <div id="hipec" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia (specialty)"]}>
+              <CollapsibleSubsection title="HIPEC — Hyperthermic Intraperitoneal Chemotherapy">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Cytoreductive surgery followed by intraperitoneal perfusion of heated chemotherapy (commonly cisplatin, mitomycin C or paclitaxel at 41–43 °C for 30–90 minutes) combines a long, bloody laparotomy with a deliberate hyperthermic insult<InlineRef topicId="gynaecological-anaesthesia" refLabel="HIPEC Anaesth 2013" />.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-3 mb-3">
+                  {[
+                    { label: "Fluid shifts", value: "Massive third-space loss from peritonectomy plus perfusate-driven capillary leak — requirements often 8–12 mL/kg/h; goal-directed therapy with cardiac output monitoring rather than fixed regimens" },
+                    { label: "Haemodynamics", value: "Hyperthermic phase causes vasodilatation, tachycardia and rising cardiac index (up to 50%) with falling SVR; vasopressor support (noradrenaline) is usually needed, followed by cooling and instability once perfusion stops" },
+                    { label: "Temperature", value: "Monitor core AND peripheral/oesophageal-versus-bladder temperature. Active cooling during perfusion (stop warming devices, cool fluids, reduce theatre temperature), then aggressive active rewarming afterwards to avoid post-perfusion hypothermia and coagulopathy" },
+                    { label: "Electrolytes & metabolism", value: "Hyponatraemia, hypokalaemia, hypomagnesaemia and hypophosphataemia; metabolic acidosis and hyperglycaemia. Check ABG, electrolytes, lactate and glucose at least hourly during perfusion" },
+                    { label: "Renal protection", value: "Cisplatin nephrotoxicity — maintain generous urine output (1–2 mL/kg/h), consider sodium thiosulfate per local protocol, avoid NSAIDs and other nephrotoxins" },
+                    { label: "Coagulation & analgesia", value: "Dilutional and hyperthermia-related coagulopathy — viscoelastic testing and targeted product replacement; thoracic epidural (if not coagulopathic) or bilateral TAP/rectus sheath catheters with opioid PCA" },
+                    { label: "Staff safety", value: "Cytotoxic precautions: closed perfusion circuit, double gloves, gown, eye protection, smoke evacuation, minimal theatre traffic, spill kit available, and cytotoxic-waste handling of urine and drains for 48 h" },
+                    { label: "Postoperative care", value: "Level 2/3 care expected — ongoing fluid resuscitation, vasopressors, rewarming, renal monitoring and prolonged ileus management" },
+                  ].map((item) => (
+                    <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                      <p className="text-xs text-muted-foreground">{item.label}</p>
+                      <p className="font-semibold text-foreground text-sm">{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
+                  <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
+                  <p className="text-xs text-muted-foreground">
+                    HIPEC is a two-phase problem: a hyperthermic, hyperdynamic, vasodilated phase requiring cooling and vasopressors, followed by a hypothermic, coagulopathic phase requiring warming and product replacement. Say that structure and the rest of the answer follows.
+                  </p>
+                </div>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
+
           <div id="oncology" className="scroll-mt-24">
             <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia (specialty)"]}>
               <CollapsibleSubsection title="Major Gynaecological Oncology">
@@ -249,7 +303,7 @@ const GynaecologicalAnaesthesiaTopic = () => {
                   <li><strong>Analgesia</strong>: thoracic epidural (T8–T10 level) or TAP/QL blocks; multimodal approach with regular paracetamol, NSAIDs if appropriate, and opioid PCA</li>
                   <li><strong>VTE prophylaxis</strong>: LMWH + intermittent pneumatic compression; high-risk population for PE</li>
                   <li><strong>ERAS protocols</strong>: increasingly adopted — preoperative carbohydrate loading, avoid long-acting opioids, early oral intake, early mobilisation, minimal drain use, avoid NG tubes<InlineRef topicId="gynaecological-anaesthesia" refLabel="ERAS Gynae 2019" /></li>
-                  <li><strong>HIPEC</strong>: hyperthermic intraperitoneal chemotherapy after debulking requires core temperature management, renal protection, and electrolyte monitoring</li>
+                  <li><strong>HIPEC</strong>: hyperthermic intraperitoneal chemotherapy after debulking — see the dedicated HIPEC subsection for its physiological, temperature and staff-safety demands</li>
                 </ul>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {[
@@ -285,6 +339,18 @@ const GynaecologicalAnaesthesiaTopic = () => {
                     </div>
                   ))}
                 </div>
+                <h3 className="font-semibold text-foreground text-sm mb-2">Ruptured ectopic — emergency anaesthetic management</h3>
+                <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+                  <li><strong>Diagnosis and urgency</strong>: haemodynamic instability with a positive pregnancy test mandates immediate surgery — resuscitation and laparoscopy/laparotomy proceed in parallel, not in sequence<InlineRef topicId="gynaecological-anaesthesia" refLabel="RCOG Ectopic 2016" /></li>
+                  <li><strong>Haemodynamic goals</strong>: permissive hypotension with a target systolic of 80–100 mmHg (or a palpable radial pulse and maintained conscious level) until the surgeon has clamped the bleeding pedicle; avoid over-transfusion of clear fluid before surgical control</li>
+                  <li><strong>Resuscitation</strong>: activate the major haemorrhage protocol, use O RhD-negative blood until group-specific units are available, and transfuse in a 1:1:1 ratio of red cells : FFP : platelets; give tranexamic acid 1 g, calcium replacement, and use a rapid infuser with fluid warming</li>
+                  <li><strong>Access and monitoring</strong>: two large-bore cannulae (14–16 G), arterial line for beat-to-beat pressure and near-patient gases/haemoglobin, urinary catheter, temperature, and a central line if vasopressors are required</li>
+                  <li><strong>Induction</strong>: rapid sequence induction assuming a full stomach, using ketamine 1–1.5 mg/kg or etomidate 0.3 mg/kg with rocuronium 1 mg/kg to preserve sympathetic tone; avoid a standard propofol dose because vasodilatation and loss of compensatory tone can precipitate arrest at the moment the abdomen is opened. Have vasopressor drawn up before induction and induce on the operating table with the surgeon scrubbed</li>
+                  <li><strong>Maintenance</strong>: low-dose volatile or ketamine-based technique with generous opioid once bleeding is controlled; anticipate a further fall in pressure as the pneumoperitoneum is created or the tamponading clot is evacuated</li>
+                  <li><strong>Anti-D</strong>: 250–500 IU (approximately 50–100 µg) IM within 72 hours for RhD-negative women having surgical management, in line with national anti-D guidance</li>
+                  <li><strong>Postoperative care</strong>: HDU/ICU for ongoing resuscitation, correction of coagulopathy and acidosis, rewarming, repeat haemoglobin, and consideration of thromboprophylaxis once bleeding has stopped</li>
+                </ul>
+
                 <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
                   <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
                   <p className="text-xs text-muted-foreground">

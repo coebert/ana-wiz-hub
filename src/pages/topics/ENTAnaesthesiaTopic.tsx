@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
@@ -24,6 +25,7 @@ const tocItems = [
   { id: "laser", label: "Microlaryngoscopy & laser surgery", group: "Core" },
   { id: "nasal", label: "Nasal surgery", group: "Specialty" },
   { id: "middle-ear", label: "Middle ear surgery", group: "Specialty" },
+  { id: "paediatric-ent", label: "Other paediatric ENT", group: "Specialty" },
   { id: "stridor", label: "Airway obstruction & stridor", group: "Emergency" },
   { id: "tracheostomy", label: "Tracheostomy & laryngectomy", group: "Airway" },
   { id: "ionm", label: "Intra-operative nerve monitoring", group: "Monitoring" },
@@ -128,9 +130,18 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Population</strong>: predominantly children. Commonly associated with OSA — assess severity (sleep study, history of desaturations)</li>
               <li><strong>Anaesthetic</strong>: south-facing RAE, spontaneous or controlled ventilation. TIVA avoids volatile in OSA children (↑ sensitivity to respiratory depression)</li>
               <li><strong>Analgesia</strong>: paracetamol, NSAIDs (ibuprofen — no longer contraindicated per Cochrane evidence), dexamethasone (↓ PONV, ↓ oedema). Avoid codeine in children (FDA black box — CYP2D6 ultra-rapid metabolisers → fatal respiratory depression)</li>
-              <li><strong>Post-tonsillectomy bleeding</strong>: primary (&lt;24h, 0.5–2%) or secondary (5–10 days, 2–4%). Emergency — assume full stomach + hypovolaemia. Resuscitate first, then RSI with head-down tilt and suction. Two large-bore IV access. Cross-match blood</li>
-              <li><strong>RSI for bleeding tonsil</strong>: experienced surgeon scrubbed. Left lateral head-down for induction if massive bleeding. Have surgical airway equipment available</li>
             </ul>
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Post-tonsillectomy bleeding — detailed management</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Incidence and risk factors</strong>: primary (&lt;24 h, 0.5–2%) usually reflects inadequate surgical haemostasis and hot (diathermy/coblation) dissection; secondary (5–10 days, 2–4%) follows slough separation and local infection. Other risk factors are older child/adult, tonsillitis as the indication, quinsy, undiagnosed coagulopathy or von Willebrand disease, and NSAID use is <em>not</em> a significant contributor<InlineRef topicId="ent-anaesthesia" refLabel="Ravi 2007 Paed ENT" /></li>
+              <li><strong>Assessing severity</strong>: swallowed blood hides losses — look for repeated swallowing, haematemesis, pallor, cool peripheries, capillary refill &gt;2 s, tachycardia, narrow pulse pressure, postural hypotension, reduced urine output and agitation. In children, hypotension is a very late sign; tachycardia and prolonged capillary refill come first. Check FBC, coagulation, group and crossmatch</li>
+              <li><strong>Resuscitation targets before induction</strong>: two large-bore cannulae (or intraosseous if access fails), 10–20 mL/kg warmed balanced crystalloid boluses, then blood (10 mL/kg) if still tachycardic; aim to normalise heart rate and capillary refill, restore age-appropriate blood pressure, and have crossmatched blood in theatre. Empty the stomach with a wide-bore orogastric tube only once the airway is secured</li>
+              <li><strong>Induction agents</strong>: ketamine 1–2 mg/kg preserves sympathetic tone and is the agent of choice in the shocked child; a reduced dose of thiopentone or propofol (25–50% of normal) is acceptable in the resuscitated patient but risks profound hypotension. Rocuronium 1 mg/kg or suxamethonium 1.5 mg/kg gives rapid, reliable relaxation; have vasopressor drawn up</li>
+              <li><strong>Airway management</strong>: two working suckers, a range of tube sizes, videolaryngoscope, and the experienced surgeon scrubbed. Classic options are RSI with cricoid pressure in the supine position, or induction in the head-down left lateral 'tonsil position' when bleeding is torrential so blood drains away from the larynx. Anticipate a soiled view and be ready for a bougie or a smaller tube</li>
+              <li><strong>Paediatric specifics</strong>: relatively large blood volume loss for the body weight (circulating volume 70–80 mL/kg), rapid desaturation, frightened and uncooperative child, and a second anaesthetic within days — involve senior help early, warm the child, use weight-based drug and fluid doses, and extubate awake in the lateral position with full suction. Consider PICU/HDU observation after significant transfusion<InlineRef topicId="ent-anaesthesia" refLabel="Ravi 2007 Paed ENT" /></li>
+              <li><strong>After haemostasis</strong>: repeat FBC and coagulation, exclude an inherited bleeding disorder if bleeding recurs, continue analgesia and antibiotics for secondary bleeds, and document estimated losses and transfusion</li>
+            </ul>
+
             </CollapsibleSubsection>
           </ExamSection>
           </div>
@@ -231,15 +242,38 @@ const ENTAnaesthesiaTopic = () => {
           <div id="middle-ear" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Middle Ear Surgery">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Tympanoplasty, myringoplasty, ossiculoplasty, stapedectomy and mastoid surgery share four anaesthetic goals: a bloodless microscopic field, an immobile patient, preserved facial nerve responses, and a smooth emergence with aggressive PONV prophylaxis<InlineRef topicId="ent-anaesthesia" refLabel="Liang 2010 Middle Ear" />.
+            </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li><strong>N₂O</strong>: avoid — diffuses into non-compliant middle ear cavity 34× faster than N₂ leaves. ↑ middle ear pressure → tympanic membrane graft displacement, disruption of ossicular reconstruction</li>
-              <li><strong>TIVA preferred</strong>: avoids N₂O, provides bloodless field (remifentanil-based controlled hypotension)</li>
-              <li><strong>Facial nerve monitoring</strong>: avoid or limit neuromuscular blockade (no maintenance paralysis). TOF monitoring essential. Short-acting NMBA for intubation only</li>
-              <li><strong>PONV</strong>: very high incidence (vestibular stimulation). Aggressive prophylaxis: dexamethasone + ondansetron + consider TIVA (propofol is antiemetic)</li>
+              <li><strong>N₂O — why it is contraindicated</strong>: nitrous oxide is 34× more soluble than nitrogen, so it diffuses into the closed middle-ear cavity faster than nitrogen leaves. Pressure rises within minutes (up to 20–40 cmH₂O when the Eustachian tube is blocked), displacing a tympanic membrane graft or a newly positioned ossicular prosthesis; on discontinuation the reverse gradient produces negative pressure, serous effusion and PONV. Omit it entirely for grafting procedures, or stop at least 15–30 minutes before graft placement</li>
+              <li><strong>Bloodless field</strong>: 10–15° head-up tilt to improve venous drainage, mild controlled hypotension (MAP 60–70 mmHg in fit patients) with a remifentanil-based TIVA technique, normocapnia (hypercapnia causes vasodilatation and oozing), infiltration with local anaesthetic plus adrenaline, avoidance of coughing and straining, and smooth ventilation without high airway pressures</li>
+              <li><strong>Facial nerve monitoring</strong>: commonly used in mastoid, stapes and cholesteatoma surgery — avoid maintenance neuromuscular blockade, use a short-acting relaxant for intubation only (or intubate under propofol/remifentanil), and confirm recovery with quantitative TOF before the surgeon stimulates</li>
+              <li><strong>Emergence</strong>: coughing, bucking and Valsalva can displace a graft — deep extubation or LMA removal, IV lidocaine 1–1.5 mg/kg, gentle suction under adequate depth, and instructions to avoid nose-blowing postoperatively</li>
+              <li><strong>PONV</strong>: incidence up to 60–80% because of vestibular stimulation — combine dexamethasone, ondansetron and cyclizine (an antihistamine covers the vestibular component), use propofol TIVA, avoid N₂O, keep the patient well hydrated and provide opioid-sparing analgesia</li>
+              <li><strong>Other practicalities</strong>: microscope means limited access with the head turned and taped; secure the tube on the non-operative side, protect the eyes, and use a reinforced or oral RAE tube. Position the head carefully — excessive rotation risks cervical strain and venous obstruction</li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
           </div>
+
+          <div id="paediatric-ent" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
+            <CollapsibleSubsection title="Other Paediatric ENT Procedures">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Children make up most ENT lists. Beyond tonsillectomy, the recurring themes are a shared airway, very short procedures, rapid desaturation and a low threshold for senior help<InlineRef topicId="ent-anaesthesia" refLabel="Ravi 2007 Paed ENT" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Adenoidectomy</strong>: usually an LMA (flexible/reinforced) or south-facing RAE with a throat pack; risks are bleeding into the nasopharynx, pack dislodgement or retention (always document insertion and removal), and laryngospasm on emergence from blood at the cords. Extubate/remove the LMA awake in the lateral head-down position and observe for at least 4 h; children with severe OSA need overnight monitoring</li>
+              <li><strong>Myringotomy and grommets</strong>: very short (5–10 minutes) day-case procedure — inhalational or IV induction, LMA with spontaneous ventilation on a volatile agent, and paracetamol plus ibuprofen given early. No neuromuscular blockade needed. Avoid N₂O when a graft or tympanoplasty is performed; brief exposure for simple grommet insertion is generally accepted but many avoid it routinely</li>
+              <li><strong>Laryngoscopy and bronchoscopy (diagnostic)</strong>: discuss the airway plan with the surgeon first. Options are spontaneous ventilation on sevoflurane or propofol/remifentanil TIVA with topical lidocaine (max 3 mg/kg) to the larynx, intermittent apnoea with reoxygenation between passes, apnoeic oxygenation/high-flow nasal oxygen, or jet ventilation via the rigid scope. Keep the child deep to avoid laryngospasm and monitor CO₂ and saturation continuously</li>
+              <li><strong>Inhaled foreign body</strong>: a genuinely high-risk case — complete obstruction can occur on instrumentation or if a ball-valve object moves. Keep the child calm and upright, avoid instrumentation outside theatre, use inhalational induction with maintained spontaneous ventilation, have an experienced ENT surgeon with a rigid bronchoscope and a range of optical forceps immediately available, and be prepared to push a distal obstruction back into a main bronchus to restore ventilation. Steroids and nebulised adrenaline for post-procedure oedema; observe for pneumothorax and post-obstructive pulmonary oedema</li>
+              <li><strong>General paediatric points</strong>: weight-based dosing, temperature management, avoid codeine, prescribe regular paracetamol and NSAID, involve parents in induction and recovery, and use age-appropriate fasting (6 h food, 1 h clear fluids)</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
+
 
           <div id="stridor" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
@@ -346,8 +380,9 @@ const ENTAnaesthesiaTopic = () => {
 
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Immediate bedside management — the SCOOP sequence</h3>
             <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-3">
-              <li><strong>S — Steri-strips off, Sit up:</strong> sit the patient upright (improves venous drainage, reduces work of breathing) and call for senior anaesthetic, ENT/general surgical and theatre help simultaneously. 100% O₂ via non-rebreathe; large-bore IV access; bloods including crossmatch, coagulation.</li>
-              <li><strong>C — Cut sutures / Clips out:</strong> at the bedside, open <em>both</em> skin and the deeper strap-muscle layer using a stitch cutter or the suture-removal scissors kept on every post-thyroidectomy patient ('thyroid emergency box': scissors, clip-remover, gloves). Evacuate clot manually. This is a nursing/medical bedside skill — do not wait for the surgeon.</li>
+              <li><strong>S — Steri-strips off, Sit up:</strong> sit the patient upright (improves venous drainage, reduces work of breathing) and <strong>call for help simultaneously, not sequentially</strong> — senior anaesthetist, ENT/general surgeon, theatre coordinator and a second pair of hands; state clearly "post-thyroidectomy neck haematoma, airway at risk". 100% O₂ via non-rebreathe; large-bore IV access; bloods including crossmatch and coagulation<InlineRef topicId="ent-anaesthesia" refLabel="Iliff 2022 Haematoma" /></li>
+              <li><strong>C — Cut sutures / Clips out:</strong> at the bedside open <em>every</em> layer — skin sutures or clips <em>and</em> the deeper strap-muscle/platysma layer — then evacuate clot bluntly with a gloved finger or forceps; blood may be deep to the strap muscles, so removing skin clips alone does not decompress the airway. Every post-thyroidectomy patient should have a <strong>thyroid emergency box</strong> at the bedside: clip remover, stitch cutter, suture scissors, forceps, gloves and a face shield. Perform this immediately as a nurse or doctor at the bedside — <strong>do not wait for the surgeon or for transfer to theatre</strong><InlineRef topicId="ent-anaesthesia" refLabel="Iliff 2022 Haematoma" /></li>
+
               <li><strong>O — Oxygenate:</strong> continue 100% O₂; consider nebulised adrenaline 1 mg in 5 mL and IV dexamethasone 8 mg for laryngeal oedema as a temporising bridge.</li>
               <li><strong>O — Operating theatre:</strong> transfer immediately for definitive haemostasis and airway control. Take the suture-removal kit and a senior with the patient.</li>
               <li><strong>P — Plan the airway:</strong> see below.</li>
@@ -365,6 +400,8 @@ const ENTAnaesthesiaTopic = () => {
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">After haemostasis</h3>
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-3">
               <li>Continue intubated and ventilated until laryngeal oedema settles — typically 24–48 h. Cuff-leak test, fibreoptic look at the cords, and dexamethasone before any extubation attempt.</li>
+              <li><strong>Decompression does not always relieve the obstruction</strong>: venous and lymphatic congestion causes laryngeal and supraglottic oedema that persists after the clot has been evacuated, so a patient may still obstruct with an open wound. Keep the definitive airway plan (theatre, tracheostomy-ready surgeon) active until the airway is demonstrably safe<InlineRef topicId="ent-anaesthesia" refLabel="Iliff 2022 Haematoma" /></li>
+
               <li><strong>Check calcium</strong> (parathyroid disturbance) and <strong>vocal cord function</strong> (RLN injury) postoperatively — both can compound airway risk after extubation.</li>
               <li>Critical incident review and bedside emergency-box restock; ensure all post-thyroidectomy patients are nursed in an area trained and equipped to perform bedside wound decompression.</li>
             </ul>

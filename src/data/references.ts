@@ -606,6 +606,11 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2018", citation: "Gao Smith F. One-lung anaesthesia. BJA Education. 2017;17(1):24-28.", url: "https://doi.org/10.1093/bjaed/mkw039" },
     { label: "Kaplan's Cardiac", citation: "Kaplan JA, Augoustides JGT, et al. Kaplan's Cardiac Anesthesia. 7th ed. Elsevier; 2017." },
     { label: "BJA Educ 2015", citation: "Maguire S, Slinger P. Cardiopulmonary bypass. BJA Education. 2005;5(3):100-104.", url: "https://doi.org/10.1093/bjaceaccp/mki027" },
+    { label: "POAF JCVA 2024", citation: "Postoperative atrial fibrillation after cardiac surgery: mechanisms, prophylaxis and management. J Cardiothorac Vasc Anesth. 2024.", url: "https://doi.org/10.1053/j.jvca.2024.07.043" },
+    { label: "Warren 2009 CPB Inflammation", citation: "Warren OJ, Smith AJ, Alexiou C, et al. The inflammatory response to cardiopulmonary bypass: part 1 — mechanisms of pathogenesis. J Cardiothorac Vasc Anesth. 2009;23(2):223-231.", url: "https://doi.org/10.1053/j.jvca.2008.08.007" },
+    { label: "ACTACC TOE Audit 2019", citation: "Purza R, et al. Transoesophageal echocardiography complications in adult cardiac surgery: a national audit. Anaesthesia. 2019.", url: "https://doi.org/10.1111/anae.14734" },
+    { label: "ACTACC TIVA 2019", citation: "Anaesthetic technique and outcome after lung resection: ACTACC national thoracic anaesthesia audit. Anaesthesia. 2019.", url: "https://doi.org/10.1111/anae.14649" },
+
   ],
   "pain-medicine": [
     { label: "BJA Educ 2018", citation: "Gan TJ. Mechanisms of acute pain. BJA Education. 2013;13(3):87-90.", url: "https://doi.org/10.1093/bjaceaccp/mks063" },
@@ -1050,11 +1055,16 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "PROSPECT TKA 2022", citation: "Lavand'homme PM, Kehlet H, Rawal N, Joshi GP; PROSPECT Working Group. Pain management after total knee arthroplasty: PROcedure SPEcific postoperative pain managemenT recommendations. Eur J Anaesthesiol. 2022;39(9):743-757.", url: "https://doi.org/10.1097/EJA.0000000000001691" },
     { label: "ASRA Compartment 2021", citation: "Tran AA, Lee D, Fassolas A, Sadhasivam S, Ye J. A joint statement by ASRA, ESRA and AAGBI on regional anaesthesia in patients at risk of acute compartment syndrome. Reg Anesth Pain Med. 2021;46(12):1083-1099.", url: "https://doi.org/10.1136/rapm-2021-102897" },
     { label: "Memtsoudis 2019", citation: "Memtsoudis SG, Cozowicz C, Bekeris J, et al. Anaesthetic care of patients undergoing primary hip and knee arthroplasty: consensus recommendations from the International Consensus on Anaesthesia-Related Outcomes after Surgery group (ICAROS). Br J Anaesth. 2019;123(3):269-287.", url: "https://doi.org/10.1016/j.bja.2019.05.042" },
+    { label: "CRASH-2 2010", citation: "CRASH-2 trial collaborators. Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients with significant haemorrhage: a randomised, placebo-controlled trial. Lancet. 2010;376(9734):23-32.", url: "https://doi.org/10.1016/S0140-6736(10)60835-5" },
+    { label: "Kwiatt 2013 FES", citation: "Kwiatt ME, Seamon MJ. Fat embolism syndrome. Int J Crit Illn Inj Sci. 2013;3(1):64-68.", url: "https://doi.org/10.4103/2229-5151.109426" },
+    { label: "Kam 2001 Tourniquet", citation: "Kam PCA, Kavanaugh R, Yoong FFY. The arterial tourniquet: pathophysiological consequences and anaesthetic implications. Anaesthesia. 2001;56(6):534-545.", url: "https://doi.org/10.1046/j.1365-2044.2001.01982.x" },
   ],
   "ophthalmic-anaesthesia": [
     { label: "Allman & Wilson Ch.29", citation: "Allman K, Wilson I, O'Donnell A. Oxford Handbook of Anaesthesia. 4th ed. OUP; 2016. Chapter 29: Ophthalmic Surgery." },
     { label: "BJA Educ 2018", citation: "Kumar CM, Eid H, Dodds C. Sub-Tenon's anaesthesia: complications and their prevention. Eye. 2011;25(6):694-703.", url: "https://doi.org/10.1038/eye.2011.69" },
     { label: "RCOphth/RCoA 2012", citation: "Royal College of Ophthalmologists/RCoA. Local Anaesthesia for Ophthalmic Surgery. Joint Guidelines. 2012." },
+    { label: "Ambulatory Ophthalmic 2025", citation: "Current advances in ambulatory ophthalmic anaesthesia, including relaxation of routine preoperative fasting for local anaesthetic cataract surgery. Curr Opin Anaesthesiol. 2025.", url: "https://doi.org/10.1097/aco.0000000000001583" },
+    { label: "Vachon 2003 Open Globe", citation: "Vachon CA, Warner DO, Bacon DR. Succinylcholine and the open globe: tracing the teaching. Anesthesiology. 2003;99(1):220-223.", url: "https://doi.org/10.1097/00000542-200307000-00033" },
   ],
   "operating-theatre-environment": [
     { label: "HTM 03-01", citation: "Department of Health. Health Technical Memorandum 03-01: Specialised ventilation for healthcare premises. Parts A & B. NHS Estates; 2021.", url: "https://www.england.nhs.uk/publication/specialised-ventilation-for-healthcare-buildings-htm-03-01/" },
@@ -1213,12 +1223,19 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "AAGBI Lithotomy 2015", citation: "Association of Anaesthetists. Safe practice in lithotomy and lateral positions. AAGBI guidance.", url: "https://anaesthetists.org" },
     { label: "BJA Educ Cystectomy 2017", citation: "Pillai P et al. Anaesthesia for radical cystectomy and urinary diversion. BJA Education. 2018;18(2):54-60.", url: "https://doi.org/10.1016/j.bjae.2017.11.005" },
     { label: "ERAS Cystectomy 2013", citation: "Cerantola Y et al. Guidelines for perioperative care after radical cystectomy for bladder cancer: ERAS Society recommendations. Clin Nutr. 2013;32(6):879-887.", url: "https://doi.org/10.1016/j.clnu.2013.09.014" },
+    { label: "CEACCP TURP 2009", citation: "O'Donnell AM, Foo ITH. Anaesthesia for transurethral resection of the prostate. Contin Educ Anaesth Crit Care Pain. 2009;9(3):92-96.", url: "https://doi.org/10.1093/bjaceaccp/mkp012" },
+    { label: "Hyponatraemia Guideline 2014", citation: "Spasovski G, Vanholder R, Allolio B, et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. Eur J Endocrinol. 2014;170(3):G1-G47.", url: "https://doi.org/10.1530/EJE-13-1020" },
+    { label: "EAU Urolithiasis 2016", citation: "Türk C, Petřík A, Sarica K, et al. EAU guidelines on interventional treatment for urolithiasis. Eur Urol. 2016;69(3):475-482.", url: "https://doi.org/10.1016/j.eururo.2015.07.041" },
+    { label: "Ganpule 2016 PCNL", citation: "Ganpule AP, Vijayakumar M, Malpani A, Desai MR. Percutaneous nephrolithotomy (PCNL) a critical review. Int J Surg. 2016;36:660-664.", url: "https://doi.org/10.1016/j.ijsu.2016.11.028" },
   ],
   "hepatobiliary-transplant": [
     { label: "BJA Educ LT 2010", citation: "Mandell MS, Lindenfeld J, Tsou MY, Zimmerman M. Cardiac evaluation of liver transplant candidates. World J Gastroenterol. 2008;14(22):3445-3451.", url: "https://doi.org/10.3748/wjg.14.3445" },
     { label: "BJA Educ LiverResection 2017", citation: "Hartog A, Mills G. Anaesthesia for hepatic resection surgery. BJA Education. 2009;9(1):1-5.", url: "https://doi.org/10.1093/bjaceaccp/mkn049" },
     { label: "AAGBI Cirrhosis 2017", citation: "Vaja R et al. Anaesthesia for patients with liver disease. BJA Education. 2010;10(1):15-19.", url: "https://doi.org/10.1093/bjaceaccp/mkp040" },
     { label: "ITLS Reperfusion", citation: "Aggarwal S et al. Postreperfusion syndrome: hypotension after reperfusion of the transplanted liver. J Crit Care. 1993;8(3):154-160." },
+    { label: "AASLD TIPS 2010", citation: "Boyer TD, Haskal ZJ. The role of transjugular intrahepatic portosystemic shunt (TIPS) in the management of portal hypertension: update 2009. Hepatology. 2010;51(1):306.", url: "https://doi.org/10.1002/hep.23383" },
+    { label: "MELD Kamath 2001", citation: "Kamath PS, Wiesner RH, Malinchoc M, et al. A model to predict survival in patients with end-stage liver disease. Hepatology. 2001;33(2):464-470.", url: "https://doi.org/10.1053/jhep.2001.22172" },
+    { label: "MELD-Na 2008", citation: "Kim WR, Biggins SW, Kremers WK, et al. Hyponatremia and mortality among patients on the liver-transplant waiting list. N Engl J Med. 2008;359(10):1018-1026.", url: "https://doi.org/10.1056/NEJMoa0801209" },
   ],
   "renal-disease": [
     { label: "KDIGO CKD 2024", citation: "Kidney Disease: Improving Global Outcomes (KDIGO) CKD Work Group. KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. Kidney Int. 2024;105(4S):S117-S314.", url: "https://kdigo.org/guidelines/ckd-evaluation-and-management/" },
@@ -1283,6 +1300,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NTSP 2014", citation: "McGrath BA et al. Multidisciplinary guidelines for the management of tracheostomy and laryngectomy airway emergencies (National Tracheostomy Safety Project). Anaesthesia. 2012;67(9):1025-1041.", url: "https://doi.org/10.1111/j.1365-2044.2012.07217.x" },
     { label: "BJA Educ ENT 2017", citation: "Charters P, Ahmad I. Anaesthesia for ENT surgery. BJA Education. 2014;14(5):201-205.", url: "https://doi.org/10.1093/bjaceaccp/mkt059" },
     { label: "BJA Educ Laser 2015", citation: "Kitching AJ, Edge CJ. Lasers and surgery. BJA Education. 2003;3(5):143-146.", url: "https://doi.org/10.1093/bjacepd/mkg143" },
+    { label: "Iliff 2022 Haematoma", citation: "Iliff HA, El-Boghdadly K, Ahmad I, et al. Management of haematoma after thyroid surgery: systematic review and multidisciplinary consensus guidelines from the Difficult Airway Society, the British Association of Endocrine and Thyroid Surgeons and the British Association of Otorhinolaryngology, Head and Neck Surgery. Anaesthesia. 2022;77(1):82-95.", url: "https://doi.org/10.1111/anae.15654" },
+    { label: "Ravi 2007 Paed ENT", citation: "Ravi R, Howell T. Anaesthesia for paediatric ear, nose and throat surgery. Contin Educ Anaesth Crit Care Pain. 2007;7(2):33-37.", url: "https://doi.org/10.1093/bjaceaccp/mkm004" },
+    { label: "Liang 2010 Middle Ear", citation: "Liang S, Irwin MG. Review of anesthesia for middle ear surgery. Anesthesiol Clin. 2010;28(3):519-528.", url: "https://doi.org/10.1016/j.anclin.2010.07.009" },
   ],
   "emergency-surgery": [
     { label: "Anaesthesia 2013 (Emergency organisation)", citation: "Organisation and planning of anaesthesia for emergency surgery. Anaesthesia. 2013;68(Suppl 1).", url: "https://doi.org/10.1111/anae.12054" },
@@ -1309,6 +1329,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ Hysteroscopy 2017", citation: "Munro MG. Complications of hysteroscopic and uterine resectoscopic surgery. BJA Education. 2017;17(11):359-365 — uterine venous sinus absorption of distension media; fluid balance and TURP-syndrome equivalent.", url: "https://doi.org/10.1016/j.ogc.2010.05.012", excerpt: "Operative hysteroscopy creates open uterine venous sinuses through which distension media are absorbed when intrauterine pressure exceeds mean arterial pressure. With hypotonic, electrolyte-free media (e.g. 1.5% glycine) absorption produces dilutional hyponatraemia, hypo-osmolality and cerebral oedema — a 'TURP-syndrome equivalent'. Recommended deficit thresholds: 1000 mL for hypotonic electrolyte-free fluids and 2500 mL for isotonic electrolyte-containing fluids (e.g. 0.9% saline) in healthy adults; lower thresholds in elderly or comorbid patients." },
     { label: "BJA Educ TURP 2014", citation: "Hahn RG. Fluid absorption in endoscopic surgery. Br J Anaesth. 2006;96(1):8-20 — TURP/glycine syndrome (also referenced under urological anaesthesia).", url: "https://doi.org/10.1093/bja/aei279" },
     { label: "ERAS Gynae 2019", citation: "Nelson G et al. Guidelines for perioperative care in gynecologic/oncology surgery: ERAS Society recommendations — 2019 update. Int J Gynecol Cancer. 2019;29(4):651-668.", url: "https://doi.org/10.1136/ijgc-2019-000356" },
+    { label: "Phelps 2008", citation: "Phelps P, Cakmakkaya OS, Apfel CC, Radke OC. A simple clinical maneuver to reduce laparoscopy-induced shoulder pain: a randomized controlled trial. Obstet Gynecol. 2008;111(5):1155-1160.", url: "https://doi.org/10.1097/AOG.0b013e31816e34b4" },
+    { label: "RCOG Ectopic 2016", citation: "Elson CJ, Salim R, Potdar N, et al. Diagnosis and management of ectopic pregnancy: Green-top Guideline No. 21. BJOG. 2016;123(13):e15-e55.", url: "https://doi.org/10.1111/1471-0528.14189" },
+    { label: "HIPEC Anaesth 2013", citation: "Webb CA, Weyker PD, Moitra VK, Raker RK. An overview of cytoreductive surgery and hyperthermic intraperitoneal chemoperfusion for the anesthesiologist. Anesth Analg. 2013;116(4):924-931.", url: "https://doi.org/10.1213/ANE.0b013e3182860fff" },
   ],
   "bariatric-anaesthesia": [
     { label: "BJA Educ Bariatric 2015", citation: "Lotia S, Bellamy MC. Anaesthesia and morbid obesity. BJA Education. 2008;8(5):151-156.", url: "https://doi.org/10.1093/bjaceaccp/mkn030" },
@@ -1352,6 +1375,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "ESVS AAA 2019", citation: "Wanhainen A et al. Editor's choice — European Society for Vascular Surgery (ESVS) 2019 clinical practice guidelines on the management of abdominal aorto-iliac artery aneurysms. Eur J Vasc Endovasc Surg. 2019;57(1):8-93.", url: "https://doi.org/10.1016/j.ejvs.2018.09.020" },
     { label: "GALA 2008", citation: "GALA Trial Collaborative Group. General anaesthesia versus local anaesthesia for carotid surgery (GALA): a multicentre, randomised controlled trial. Lancet. 2008;372(9656):2132-2142.", url: "https://doi.org/10.1016/S0140-6736(08)61699-2" },
     { label: "RCRI", citation: "Lee TH et al. Derivation and prospective validation of a simple index for prediction of cardiac risk of major noncardiac surgery. Circulation. 1999;100(10):1043-1049.", url: "https://doi.org/10.1161/01.CIR.100.10.1043" },
+    { label: "ACEI Anaesthesia 1994", citation: "Coriat P, Richer C, Douraki T, et al. Influence of chronic angiotensin-converting enzyme inhibition on anesthetic induction. Anesthesiology. 1994;81(2):299-307 — discussion of ACE inhibitor continuation and induction hypotension.", url: "https://doi.org/10.1111/j.1365-2044.1994.tb14234.x" },
+    { label: "NAP7 2023", citation: "Kane AD, Soar J, Armstrong RA, et al. Patient and process factors associated with perioperative cardiac arrest: 7th National Audit Project (NAP7) of the Royal College of Anaesthetists. Anaesthesia. 2023;78(11):1355-1362.", url: "https://doi.org/10.1111/anae.16208" },
   ],
   "burns-icu": [
     { label: "ABA Burn 2023", citation: "American Burn Association. Advanced Burn Life Support Course Provider Manual. 2023.", url: "https://ameriburn.org" },

@@ -25,6 +25,7 @@ const tocItems = [
   { id: "cystectomy", label: "Radical cystectomy", group: "Major surgery" },
   { id: "nephrectomy", label: "Nephrectomy & renal surgery", group: "Major surgery" },
   { id: "propofol-erection", label: "Propofol-induced penile erection", group: "Complications" },
+  { id: "pcnl", label: "Percutaneous nephrolithotomy", group: "Procedures" },
   { id: "eswl", label: "ESWL", group: "Procedures" },
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
@@ -140,7 +141,24 @@ const UrologicalAnaesthesiaTopic = () => {
                 Spinal anaesthesia for TURP allows early detection of TURP syndrome — the awake patient develops confusion, restlessness, and nausea. Under GA these signs are masked. Spinal block to T10 is sufficient.
               </p>
             </div>
+            <h3 className="font-semibold text-foreground text-sm mt-4 mb-2">Correcting the hyponatraemia — practical regimen</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li><strong>Symptomatic (seizures, obtundation, pulmonary oedema)</strong>: give 3% sodium chloride 100 mL (or 2 mL/kg) IV over 10 minutes, repeated up to three times until symptoms stop, aiming to raise serum Na⁺ by 3–5 mmol/L acutely — this is enough to reverse cerebral oedema<InlineRef topicId="urological-anaesthesia" refLabel="Hyponatraemia Guideline 2014" /></li>
+              <li><strong>Preparing 3% saline if unavailable ready-made</strong>: add 30 mL of 30% sodium chloride (or 60 mL of 15%) to 470 mL of 0.9% saline; label clearly, give through a reliable large vein and ideally by infusion pump with a doctor present</li>
+              <li><strong>Correction limit</strong>: total rise must not exceed 8–10 mmol/L in the first 24 hours (and 8 mmol/L per 24 h thereafter) to avoid osmotic demyelination; stop hypertonic saline once symptoms resolve and Na⁺ is around 125–130 mmol/L</li>
+              <li><strong>Fluid handling</strong>: stop all hypotonic fluid, restrict free water, and give furosemide only where there is fluid overload or pulmonary oedema — furosemide alone in the euvolaemic patient worsens sodium loss</li>
+              <li><strong>Monitoring</strong>: hourly serum sodium and U&amp;E until stable, hourly GCS and neurological observations, continuous ECG, and invasive arterial monitoring with HDU/ICU care if there is cardiovascular instability, seizures or a Na⁺ &lt;120 mmol/L</li>
+            </ul>
+            <h3 className="font-semibold text-foreground text-sm mt-4 mb-2">Glycine toxicity and hyperammonaemia</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li><strong>Metabolism</strong>: glycine is deaminated in the liver by glycine oxidase to glyoxylic acid and ammonia; oxalate is a further metabolite (a cause of postoperative renal injury)<InlineRef topicId="urological-anaesthesia" refLabel="CEACCP TURP 2009" /></li>
+              <li><strong>Clinical effects</strong>: glycine is an inhibitory retinal and spinal neurotransmitter — transient blindness and dilated unreactive pupils lasting hours to 48 h; ammonia accumulation causes encephalopathy with nausea, vomiting, agitation then coma, and is markedly worse in patients with pre-existing liver disease or reduced arginine availability</li>
+              <li><strong>Investigation</strong>: measure plasma ammonia (levels &gt;150 µmol/L correlate with encephalopathy), serum osmolality and osmolar gap, glucose, and liver function<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURP 2014" /></li>
+              <li><strong>Treatment</strong>: supportive — stop absorption (abandon resection), secure the airway if GCS falls, correct sodium as above; for significant hyperammonaemia consider L-arginine, sodium benzoate or sodium phenylacetate, and haemodialysis/haemofiltration if ammonia is very high or the patient has liver failure</li>
+              <li><strong>Prevention</strong>: limit resection to 60 minutes and 60 g of tissue, keep irrigation bag height &lt;60 cm, use bipolar resection with normal saline irrigation in high-risk patients, and prefer spinal anaesthesia so early neurological signs are visible</li>
+            </ul>
             <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
+
               <TURPSyndromeDiagram />
             </div>
             </CollapsibleSubsection>
@@ -245,15 +263,64 @@ const UrologicalAnaesthesiaTopic = () => {
           </ExamSection>
           </div>
 
-          <div id="eswl" className="scroll-mt-24">
+          <div id="pcnl" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
-            <CollapsibleSubsection title="Extracorporeal Shock Wave Lithotripsy (ESWL)">
-            <p className="text-muted-foreground leading-relaxed">
-              Focused shock waves fragment renal/ureteric calculi. Requires immobility and may be painful. Options: sedation + analgesia, spinal anaesthesia, or GA. Cardiac gating (trigger on R-wave) prevents arrhythmias. Contraindicated in pregnancy, aortic aneurysm, and uncorrected coagulopathy.
+            <CollapsibleSubsection title="Percutaneous Nephrolithotomy (PCNL)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              PCNL is the treatment of choice for large (&gt;2 cm) or staghorn renal calculi, gaining percutaneous access to the renal pelvis through a nephrostomy tract with continuous saline irrigation<InlineRef topicId="urological-anaesthesia" refLabel="Ganpule 2016 PCNL" />.
             </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              {[
+                { label: "Positioning", value: "Classically prone (or prone-flexed) after initial cystoscopy in lithotomy; supine and modified 'Valdivia' positions are increasingly used. Prone positioning demands careful eye, chest and abdominal support and reduces functional residual capacity" },
+                { label: "Technique", value: <>GA with a cuffed tracheal tube and controlled ventilation is standard because of the prone position, long duration and need for brief apnoea during access; regional techniques (thoracic paravertebral, spinal, epidural) have been described for supine PCNL in selected patients<InlineRef topicId="urological-anaesthesia" refLabel="EAU Urolithiasis 2016" /></> },
+                { label: "Haemorrhage", value: "Tract dilatation and multiple punctures can cause major bleeding (transfusion in roughly 5–10%); large-bore access, group-and-save or crossmatch, and readiness for embolisation or open conversion" },
+                { label: "Fluid absorption", value: "Saline irrigant absorbed through the tract and pelvicalyceal system causes volume overload and dilutional (not hypo-osmolar) changes — monitor irrigation deficit, urine output and airway pressures; keep irrigation pressure low" },
+                { label: "Hypothermia", value: "Cold irrigant plus long prone procedure — warm all irrigation and IV fluids, forced-air warming, and continuous core temperature monitoring" },
+                { label: "Organ injury", value: "Pleural breach with pneumothorax or hydrothorax (particularly the supracostal approach above the 12th rib), and injury to colon, duodenum, liver or spleen. Sudden rises in airway pressure or desaturation should prompt immediate consideration of pneumothorax" },
+                { label: "Positioning injury", value: "Brachial plexus stretch, pressure areas over iliac crests and knees, corneal abrasion, and postoperative facial/airway oedema after long prone cases" },
+                { label: "Monitoring", value: "Invasive arterial pressure for staghorn stones, solitary kidney, significant comorbidity or anticipated blood loss; temperature, urinary catheter, and postoperative HDU where sepsis or bleeding is likely" },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs text-muted-foreground">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
+                </div>
+              ))}
+            </div>
+            <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
+              <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
+              <p className="text-xs text-muted-foreground">
+                Infected stones make PCNL a sepsis risk: treat urinary infection beforehand, give timed antibiotic prophylaxis, and expect post-obstructive bacteraemia with hypotension shortly after access — a common ICU referral.
+              </p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
           </div>
+
+          <div id="eswl" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Extracorporeal Shock Wave Lithotripsy (ESWL)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Focused shock waves generated outside the body fragment renal and ureteric calculi. The procedure requires immobility and is uncomfortable rather than continuously painful; shock waves are gated to the R wave to reduce arrhythmias<InlineRef topicId="urological-anaesthesia" refLabel="EAU Urolithiasis 2016" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              {[
+                { label: "Sedation/analgesia", value: "Suitable for the cooperative adult with a modern low-energy lithotripter — target-controlled propofol or midazolam with remifentanil, or a short-acting opioid such as alfentanil, titrated to spontaneous ventilation with capnography" },
+                { label: "GA or spinal", value: "Choose GA for children, anxious or uncooperative patients, learning disability, prolonged high-energy treatment, older-generation lithotripters, or where breath-holding/apnoea is needed for stone targeting. Spinal to T6 is an alternative in adults but slower to discharge and does not abolish movement of the diaphragm" },
+                { label: "Analgesia detail", value: "Shock-wave pain is intense but very brief — remifentanil (0.05–0.1 µg/kg/min) or repeated alfentanil boluses match the pain profile better than long-acting opioids. Add paracetamol and an NSAID (e.g. diclofenac) for post-procedure colic and 'Steinstrasse' (a column of fragments obstructing the ureter)" },
+                { label: "Complications", value: "Renal subcapsular/perirenal haematoma, haematuria, ureteric obstruction from Steinstrasse, urosepsis, pancreatitis and hepatic injury from adjacent shock-wave transmission, and lung contusion — a particular risk in children, where the lung bases must be shielded" },
+                { label: "Relative contraindications", value: "Pregnancy, aortic or renal artery aneurysm, uncorrected coagulopathy or anticoagulation, untreated urinary sepsis, distal ureteric obstruction preventing fragment passage, morbid obesity (stone beyond the focal distance and difficult to target), and severe skeletal deformity" },
+                { label: "Devices", value: "Keep cardiac pacemakers and implantable defibrillators out of the shock-wave path; discuss with cardiology, have the device interrogated, and consider deactivating anti-tachycardia therapy for the procedure" },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs text-muted-foreground">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
+                </div>
+              ))}
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
+
 
           <ExamPitfallsCallout
             accent="clinical"
