@@ -263,8 +263,20 @@ const NeuromuscularTopic = () => {
                 <li>• <strong>Lambert–Eaton Syndrome</strong> — antibodies against pre-synaptic Ca²⁺ channels; post-tetanic potentiation occurs</li>
                 <li>• <strong>Burns/Denervation</strong> — upregulation of extrajunctional receptors; risk of hyperkalaemia with suxamethonium</li>
                 <li>• <strong>Aminoglycosides</strong> — reduce pre-synaptic Ca²⁺ entry and potentiate neuromuscular block</li>
+                <li>• <strong>Organophosphate poisoning</strong> — irreversible AChE inhibition; see below</li>
               </ul>
             </div>
+            <div className="mt-4 rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Organophosphate poisoning</h3>
+              <p className="mt-2 text-sm text-foreground/80">Organophosphates phosphorylate and effectively irreversibly inhibit acetylcholinesterase, so ACh accumulates at nicotinic (NMJ, autonomic ganglia) and muscarinic synapses.</p>
+              <ul className="mt-3 list-disc pl-5 space-y-1 text-sm text-foreground/80">
+                <li><strong>Acute cholinergic crisis</strong> — muscarinic excess (DUMBBELLS/SLUDGE: diarrhoea, urination, miosis, bronchorrhoea, bradycardia, emesis, lacrimation, salivation) plus nicotinic fasciculation and weakness.</li>
+                <li><strong>Intermediate syndrome</strong> — 24–96 h after exposure, with weakness of neck flexors, proximal limb muscles and respiratory muscles; often needs ventilation <InlineRef topicId="neuromuscular" refLabel="Crit Care Med 1993 Intermediate Syndrome" />.</li>
+                <li><strong>OPIDP</strong> — delayed organophosphate-induced polyneuropathy, a distal sensorimotor axonopathy appearing 1–3 weeks later.</li>
+                <li><strong>Management</strong> — decontamination, oxygen, escalating atropine titrated to secretions, pralidoxime to reactivate AChE before ageing, benzodiazepines for seizures, and supportive ventilation. Suxamethonium block is markedly prolonged; titrate non-depolarisers to quantitative monitoring.</li>
+              </ul>
+            </div>
+
             </CollapsibleSubsection>
           </ExamSection>
 
