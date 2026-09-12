@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const abdominalAnatomyFaqs: Array<[string, string]> = [
   ["Where do the major neurovascular bundles for a TAP block lie?", "The transversus abdominis plane lies between the internal oblique and transversus abdominis muscles. It contains the T7–L1 anterior rami (intercostal, subcostal, iliohypogastric, ilioinguinal) that supply the anterior abdominal wall. A subcostal TAP covers T7–T9; a lateral TAP covers T10–T12 (umbilical territory); an ilioinguinal block targets L1."],
@@ -38,7 +39,7 @@ const AbdominalAnatomyTopic = () => {
       sectionSources={{
         objectives: ["Ellis & Feldman Ch.4", "Miller Ch.47"],
         workedExamples: ["BJA Educ 2015", "Miller Ch.47"],
-        keyPoints: ["BJA Educ 2018 (Abdominal wall blocks)", "Ellis & Feldman Ch.4", "BJA Educ 2015", "Miller Ch.47"],
+        keyPoints: ["BJA Educ 2018 (Abdominal wall blocks)", "Ellis & Feldman Ch.4", "BJA Educ 2015", "Miller Ch.47", "Chin RAPM 2017", "HerniaSurge 2018", "Gray's Anatomy 42e"],
       }}
       coreConcepts={
         <>
@@ -128,7 +129,7 @@ const AbdominalAnatomyTopic = () => {
                   <li><strong>Indirect</strong> (commonest, often congenital): enters the deep ring <em>lateral</em> to the inferior epigastric vessels and follows the cord — may reach the scrotum.</li>
                   <li><strong>Direct</strong> (acquired, wall weakness): pushes through Hesselbach's triangle <em>medial</em> to the inferior epigastric vessels — bounded by inguinal ligament, rectus sheath edge and the vessels.</li>
                   <li><strong>Femoral</strong> hernia lies below and lateral to the pubic tubercle and has a high strangulation risk — the key differential before listing as an elective inguinal repair.</li>
-                  <li Laparoscopic repair addresses the whole myopectineal orifice, which is why it needs general anaesthesia with pneumoperitoneum, whereas open mesh repair can be done under regional or local infiltration <InlineRef topicId="abdominal-anatomy" refLabel="HerniaSurge 2018" />.</li>
+                  <li>Laparoscopic repair addresses the whole myopectineal orifice, which is why it needs general anaesthesia with pneumoperitoneum, whereas open mesh repair can be done under regional or local infiltration <InlineRef topicId="abdominal-anatomy" refLabel="HerniaSurge 2018" />.</li>
                 </ul>
               </div>
               <div className="p-4 rounded-lg border border-border">
@@ -161,7 +162,7 @@ const AbdominalAnatomyTopic = () => {
                 </div>
               ))}
             </div>
-            <p className="mt-3 text-sm text-muted-foreground">Organ relations, vertebral levels and autonomic supply as described in standard anatomical and anaesthetic texts <InlineRef topicId="abdominal-anatomy" refLabel="Gray's Anatomy 42e" /> <InlineRef topicId="abdominal-anatomy" refLabel="Ellis &amp; Feldman Ch.4" />.</p>
+            <p className="mt-3 text-sm text-muted-foreground">Organ relations, vertebral levels and autonomic supply as described in standard anatomical and anaesthetic texts <InlineRef topicId="abdominal-anatomy" refLabel="Gray's Anatomy 42e" /> <InlineRef topicId="abdominal-anatomy" refLabel="Ellis & Feldman Ch.4" />.</p>
             </CollapsibleSubsection>
           </ExamSection>
 
