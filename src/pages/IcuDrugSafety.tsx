@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { icuDrugSafetyGroups, icuDrugSafetyCount } from "@/data/icuDrugSafety";
 import { icuDrugMechanismGroups } from "@/data/icuDrugMechanisms";
 import { icuDrugPharmacokinetics } from "@/data/pk";
+import { PkTimelineChart } from "@/components/icu/PkTimelineChart";
 import {
   icuDrugWithdrawal,
   withdrawalRiskLabel,
@@ -303,6 +304,7 @@ const IcuDrugSafety = () => {
                                 <span className="font-medium text-foreground">Handling: </span>
                                 {pk.organImpairment}
                               </p>
+                              <PkTimelineChart drug={d.drug} pk={pk} />
                             </>
                           )}
                           <Link
