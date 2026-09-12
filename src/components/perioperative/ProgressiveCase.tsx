@@ -1,8 +1,18 @@
-import { useEffect, useState } from "react";
-import { BookOpenCheck, CheckCircle2, ChevronDown, ChevronRight, Circle } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import {
+  BookOpenCheck,
+  Check,
+  CheckCircle2,
+  ChevronDown,
+  ChevronRight,
+  Circle,
+  Share2,
+} from "lucide-react";
+import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
 
 export type CaseCategory = "Steroid cover" | "Phaeochromocytoma" | "Antifibrinolytics";
 
@@ -38,6 +48,9 @@ export const ProgressiveCase = ({ caseData }: ProgressiveCaseProps) => {
   const [open, setOpen] = useState(false);
   const [revealed, setRevealed] = useState(0);
   const [detailedOpen, setDetailedOpen] = useState(false);
+  // Revealed answers stay collapsible so a long case is still scannable on a
+  // phone: reading stage 4 should not mean scrolling past three model answers.
+  const [collapsedAnswers, setCollapsedAnswers] = useState<number[]>([]);
 
   useEffect(() => {
     if (window.location.hash !== `#${caseData.id}`) return;
@@ -51,39 +64,112 @@ export const ProgressiveCase = ({ caseData }: ProgressiveCaseProps) => {
     setOpen((current) => !current);
   };
 
+  const toggleAnswer = (index: number) => {
+    setCollapsedAnswers((current) =>
+      current.includes(index) ? current.filter((i) => i !== index) : [...current, index],
+    );
+  };
+
+  const allCollapsed = revealed > 0 && collapsedAnswers.length >= revealed;
+
+  const summary = useMemo(() => {
+    const lines = [
+      caseData.title,
+      `${caseData.category} · ${caseData.difficulty}`,
+      "",
+      caseData.patient,
+      caseData.presentation,
+      "",
+      ...caseData.stages.flatMap((stage, index) => [
+        `${index + 1}. ${stage.title}`,
+        ...stage.answer.map((point) => `   • ${point}`),
+        "",
+      ]),
+      `Take-home: ${caseData.takeHome}`,
+      "",
+      `Sources: ${caseData.sourceLinks.map((s) => `${s.label} (${s.href})`).join("; ")}`,
+    ];
+    return lines.join("\n");
+  }, [caseData]);
+
+  const shareCase = async () => {
+    const url = `${window.location.origin}${window.location.pathname}#${caseData.id}`;
+    const text = `${summary}\n\n${url}`;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: caseData.title, text: summary, url });
+        return;
+      }
+      await navigator.clipboard.writeText(text);
+      toast.success("Case summary copied");
+    } catch (error) {
+      if ((error as Error)?.name === "AbortError") return;
+      try {
+        await navigator.clipboard.writeText(text);
+        toast.success("Case summary copied");
+      } catch {
+        toast.error("Could not share this case summary");
+      }
+    }
+  };
+
+
   return (
     <article id={caseData.id} className="scroll-mt-24 border border-border bg-card rounded-lg overflow-hidden shadow-sm">
-      <div className="p-4 sm:p-5">
+      <div className="p-3 sm:p-5">
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <Badge variant="secondary">{caseData.category}</Badge>
           <Badge variant="outline">{caseData.difficulty}</Badge>
         </div>
-        <h2 className="text-xl font-serif font-bold text-foreground">{caseData.title}</h2>
+        <h2 className="text-lg sm:text-xl font-serif font-bold text-foreground break-words">{caseData.title}</h2>
         <p className="mt-2 text-sm font-medium text-foreground">{caseData.patient}</p>
         <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{caseData.presentation}</p>
-        <Button
-          type="button"
-          variant="outline"
-          className="mt-4 w-full sm:w-auto"
-          onClick={toggleOpen}
-          aria-expanded={open}
-          aria-controls={`${caseData.id}-stages`}
-        >
-          {open ? <ChevronDown aria-hidden /> : <ChevronRight aria-hidden />}
-          {open ? "Close case" : "Start case"}
-        </Button>
+        <div className="mt-4 flex flex-col sm:flex-row gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full sm:w-auto"
+            onClick={toggleOpen}
+            aria-expanded={open}
+            aria-controls={`${caseData.id}-stages`}
+          >
+            {open ? <ChevronDown aria-hidden /> : <ChevronRight aria-hidden />}
+            {open ? "Close case" : "Start case"}
+          </Button>
+          <Button type="button" variant="ghost" className="w-full sm:w-auto" onClick={shareCase}>
+            <Share2 aria-hidden />
+            Share summary
+          </Button>
+        </div>
       </div>
 
       {open && (
-        <div id={`${caseData.id}-stages`} className="border-t border-border bg-surface p-4 sm:p-5 space-y-4">
+        <div id={`${caseData.id}-stages`} className="border-t border-border bg-surface p-3 sm:p-5 space-y-4">
+          {revealed > 0 && (
+            <div className="flex justify-end">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={() =>
+                  setCollapsedAnswers(allCollapsed ? [] : caseData.stages.map((_, index) => index))
+                }
+              >
+                {allCollapsed ? "Show all answers" : "Hide all answers"}
+              </Button>
+            </div>
+          )}
+
           {caseData.stages.map((stage, index) => {
             const isRevealed = index < revealed;
             const isAvailable = index <= revealed;
+            const answerHidden = collapsedAnswers.includes(index);
+            const answerId = `${caseData.id}-answer-${index}`;
             return (
               <section
                 key={stage.title}
                 className={cn(
-                  "border-l-2 pl-4",
+                  "border-l-2 pl-3 sm:pl-4",
                   isRevealed ? "border-accent" : "border-border",
                   !isAvailable && "opacity-55",
                 )}
@@ -96,18 +182,35 @@ export const ProgressiveCase = ({ caseData }: ProgressiveCaseProps) => {
                   )}
                   <div className="min-w-0 flex-1">
                     <p className="text-xs font-semibold uppercase text-muted-foreground">Stage {index + 1}</p>
-                    <h3 className="font-semibold text-foreground">{stage.title}</h3>
+                    <h3 className="font-semibold text-foreground break-words">{stage.title}</h3>
                     {isAvailable && <p className="mt-2 text-sm leading-relaxed text-foreground">{stage.prompt}</p>}
                     {isAvailable && !isRevealed && (
-                      <Button type="button" variant="secondary" size="sm" className="mt-3" onClick={() => setRevealed(index + 1)}>
+                      <Button type="button" variant="secondary" size="sm" className="mt-3 w-full sm:w-auto" onClick={() => setRevealed(index + 1)}>
                         Reveal model answer
                       </Button>
                     )}
                     {isRevealed && (
-                      <div className="mt-3 rounded-md border border-accent/30 bg-accent/10 p-3">
-                        <ul className="list-disc pl-5 space-y-1.5 text-sm leading-relaxed text-foreground">
-                          {stage.answer.map((point) => <li key={point}>{point}</li>)}
-                        </ul>
+                      <div className="mt-3 rounded-md border border-accent/30 bg-accent/10 overflow-hidden">
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          className="h-auto w-full justify-between rounded-none px-3 py-2 text-left"
+                          onClick={() => toggleAnswer(index)}
+                          aria-expanded={!answerHidden}
+                          aria-controls={answerId}
+                        >
+                          <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide">
+                            <Check className="h-3.5 w-3.5 text-accent" aria-hidden />
+                            Model answer
+                          </span>
+                          {answerHidden ? <ChevronRight aria-hidden /> : <ChevronDown aria-hidden />}
+                        </Button>
+                        {!answerHidden && (
+                          <ul id={answerId} className="list-disc pl-8 pr-3 pb-3 space-y-1.5 text-sm leading-relaxed text-foreground">
+                            {stage.answer.map((point) => <li key={point}>{point}</li>)}
+                          </ul>
+                        )}
                       </div>
                     )}
                   </div>
@@ -115,6 +218,7 @@ export const ProgressiveCase = ({ caseData }: ProgressiveCaseProps) => {
               </section>
             );
           })}
+
 
           {revealed === caseData.stages.length && (
             <div className="space-y-4">
