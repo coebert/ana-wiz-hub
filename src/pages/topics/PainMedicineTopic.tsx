@@ -513,6 +513,34 @@ const PainMedicineTopic = () => {
             Pain affects ~55% of patients during cancer treatment and ~66% of those with advanced disease (van den Beuken-van Everdingen, 2016). Despite decades of guidance it remains <strong>under-treated in around one-third</strong> of patients (the "pain treatment gap"). Modern cancer pain care is mechanism-based, multimodal, integrated with oncology and palliative care, and increasingly involves interventional techniques alongside opioids.
           </p>
 
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Phenotyping pain after cancer — the nociplastic dimension</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Increasing numbers of people live for years after cancer treatment, and their pain is often not explained by residual disease. Classifying post-cancer pain into the three major phenotypes — <strong>nociceptive</strong>, <strong>neuropathic</strong> and <strong>nociplastic</strong> — and tailoring treatment accordingly is an emerging priority, because nociplastic pain is present in an important subgroup of patients with pain after cancer <InlineRef topicId="pain-medicine" refLabel="BJA 2023 Nociplastic Cancer Pain" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Recognising nociplastic pain after cancer</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Regional, widespread or multifocal pain in a distribution not explicable by tissue damage or a nerve territory</li>
+                <li>Duration &gt;3 months with evolution over time and disproportion to imaging findings</li>
+                <li>Hypersensitivity phenomena — allodynia, hyperalgesia, sensitivity to light, sound, touch or smell</li>
+                <li>Comorbid fatigue, non-restorative sleep, cognitive difficulty ("brain fog"), and mood/distress</li>
+                <li>Poor or paradoxical response to opioids and NSAIDs despite dose escalation</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Treatment implications</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Always first exclude recurrence, progression or a new structural cause before applying a nociplastic label</li>
+                <li>Shift emphasis to pain neuroscience education, graded activity and exercise, sleep and stress management, and psychological therapy</li>
+                <li>Where drugs are used, favour centrally acting agents (duloxetine, amitriptyline) over escalating opioids</li>
+                <li>Deprescribe long-term opioids where they are not delivering functional benefit, using a planned taper</li>
+                <li>Mixed phenotypes are common — treat the nociceptive or neuropathic component conventionally while addressing central sensitisation in parallel</li>
+              </ul>
+            </div>
+          </div>
+
+
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">WHO Analgesic Ladder — Revisited (2018 update)</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The original 1986 three-step ladder remains a useful teaching framework but has been substantially refined. The <strong>WHO 2018 cancer-pain guideline</strong> moved away from the rigid stepwise progression in favour of <em>tailoring opioid choice and route to pain severity and mechanism from the outset</em>. Key updates:
