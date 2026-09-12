@@ -253,6 +253,22 @@ const NeuroanaesthesiaTopic = () => {
                     <li><strong className="text-foreground">Emergence:</strong> remove throat pack, smooth extubation (avoid coughing → epistaxis/CSF leak), head-up nursing, avoid PPV with mask. Postop endocrine review; DDAVP for confirmed cranial DI.</li>
                   </ul>
                 </div>
+
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground">Chronic Subdural Haematoma (burr-hole craniostomy)</p>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    An encapsulated collection of fluid and blood degradation products in the subdural space, now one of the commonest cranial operations in the UK. The first multidisciplinary UK guidelines cover the whole pathway from presentation to recovery and frame cSDH as a marker of frailty rather than an isolated surgical lesion <InlineRef topicId="neuroanaesthesia" refLabel="Br J Neurosurg 2024 cSDH" />.
+                  </p>
+                  <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                    <li><strong className="text-foreground">Population:</strong> elderly (typically &gt;75 yr), frail, often on anticoagulants or antiplatelets, frequently after minor or unremembered head injury; alcohol excess and cerebral atrophy are risk factors.</li>
+                    <li><strong className="text-foreground">Presentation:</strong> insidious and fluctuating — headache, confusion or cognitive decline, gait disturbance and falls, focal weakness, fluctuating GCS. Rapid deterioration mandates emergency imaging and drainage.</li>
+                    <li><strong className="text-foreground">Preoperative:</strong> comprehensive geriatric assessment where available — frailty score, delirium screen, nutrition, medication review, ceilings of care and clarification of the resuscitation plan with family. Treat hyponatraemia, dehydration and infection.</li>
+                    <li><strong className="text-foreground">Anticoagulation/antiplatelets:</strong> stop the agent; reverse warfarin with PCC + vitamin K, dabigatran with idarucizumab, factor Xa inhibitors with andexanet alfa or PCC; consider platelet transfusion/desmopressin only for active bleeding on antiplatelets. Surgery is usually not delayed for a normal platelet function test. Restart thromboprophylaxis and definitive anticoagulation according to indication and recurrence risk (commonly 4 weeks for atrial fibrillation, earlier for mechanical valves, in consultation with cardiology).</li>
+                    <li><strong className="text-foreground">Anaesthetic technique:</strong> burr-hole craniostomy is short and superficial, so local anaesthetic infiltration ± low-dose sedation (target-controlled remifentanil, or small propofol boluses) is well tolerated and avoids intubation, hypotension and postoperative delirium in the frail. GA with a secured airway is chosen for confusion or agitation preventing cooperation, a low GCS, aspiration risk, or when craniotomy for a septated/organised collection is planned. Whichever technique: avoid hypotension (MAP within 20% of baseline), normocapnia, warming, and opioid-sparing multimodal analgesia (paracetamol ± local infiltration; avoid NSAIDs).</li>
+                    <li><strong className="text-foreground">Surgical:</strong> burr-hole craniostomy with irrigation and a subdural drain is the standard for symptomatic collections; craniotomy is reserved for solid, recurrent or heavily membranous haematomas. Middle meningeal artery embolisation is an emerging adjunct. Dexamethasone is <em>not</em> recommended — the Dex-CSDH trial showed more unfavourable outcomes.</li>
+                    <li><strong className="text-foreground">Postoperative:</strong> subdural drain typically for 24–48 h with flat or slightly head-down nursing, then early mobilisation; delirium prevention, falls and bone-health review, and rehabilitation planning. Recurrence occurs in roughly 10% and warrants clear discharge advice about returning symptoms.</li>
+                  </ul>
+                </div>
               </div>
             </CollapsibleSubsection>
           </ExamSection>
