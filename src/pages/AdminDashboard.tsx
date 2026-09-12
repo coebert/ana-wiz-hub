@@ -329,6 +329,14 @@ const AdminDashboard = () => {
       }
       if (typeof data?.total === "number") setRegisteredUsers(data.total);
       if (typeof data?.confirmed === "number") setConfirmedUsers(data.confirmed);
+      if (typeof data?.learnersCompletingTopics === "number") {
+        setLearnerStats({
+          learnersCompletingTopics: data.learnersCompletingTopics ?? 0,
+          topicCompletions: data.topicCompletions ?? 0,
+          learnersTickingSubsections: data.learnersTickingSubsections ?? 0,
+          subsectionTicks: data.subsectionTicks ?? 0,
+        });
+      }
     } catch (e) {
       console.warn("[admin] registered users request failed", e);
     }
