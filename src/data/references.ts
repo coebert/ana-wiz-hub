@@ -1116,7 +1116,7 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "elderly-anaesthesia": [
     { label: "NICE NG111", citation: "National Institute for Health and Care Excellence. Hip fracture: management (NG111). 2023 (updated).", url: "https://www.nice.org.uk/guidance/ng111" },
-    { label: "AAGBI Elderly 2014", citation: "Griffiths R et al. AAGBI Guidelines: Peri-operative care of the elderly. Anaesthesia. 2014;69(s1):81-98." },
+    { label: "AAGBI Elderly 2014", citation: "Griffiths R et al. AAGBI Guidelines: Peri-operative care of the elderly. Anaesthesia. 2014;69(s1):81-98.", url: "https://doi.org/10.1111/anae.12524" },
     { label: "Lancet Frailty 2013", citation: "Clegg A et al. Frailty in elderly people. Lancet. 2013;381:752-762.", url: "https://doi.org/10.1016/S0140-6736(12)62167-9" },
     { label: "BJA 2010 Ageing CVS", citation: "Priebe HJ. The aged cardiovascular risk patient. Br J Anaesth. 2000;85(5):763-778. (Reviewed in: Rooke GA. Cardiovascular aging and anesthetic implications. Br J Anaesth. 2010.)", url: "https://doi.org/10.1093/bja/85.5.763", excerpt: "Ageing is associated with reduced baroreflex sensitivity, so that hypotension provoked by anaesthetic induction, neuraxial blockade or postural change is exaggerated and poorly compensated. Beta-adrenoceptor responsiveness declines, blunting the chronotropic and inotropic reserve. Ventricular stiffening produces diastolic dysfunction with dependence on atrial contraction and adequate preload, so atrial fibrillation and hypovolaemia are poorly tolerated." },
 
