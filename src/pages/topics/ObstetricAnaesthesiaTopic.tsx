@@ -749,6 +749,44 @@ const ObstetricAnaesthesiaTopic = () => {
           <PlacentalDrugTransferDiagram />
         </CollapsibleSubsection>
 
+        <CollapsibleSubsection title="Quality Improvement &amp; Key Indicators in Obstetric Anaesthesia">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Obstetric anaesthesia is heavily audited but historically lacked an agreed, small set of measures that could be collected reliably and compared between units. An OAA/NPEU collaborative Delphi process therefore reduced a long list of candidate measures to five key indicators spanning outcome, structure and process <InlineRef topicId="obstetric-anaesthesia" refLabel="OAA/NPEU Delphi 2019" />.
+          </p>
+          <div className="p-4 rounded-lg border border-border mb-3">
+            <p className="font-semibold text-foreground text-sm">The five key indicators</p>
+            <ol className="list-decimal list-inside text-sm text-muted-foreground mt-2 space-y-1">
+              <li><strong className="text-foreground">Accidental dural puncture rate</strong> for epidural/CSE sited for labour analgesia (a classic outcome measure; commonly quoted benchmark ~1%, with individual practitioner review if persistently higher).</li>
+              <li><strong className="text-foreground">Guidelines for antenatal anaesthetic referral</strong> — does the unit have an agreed pathway for referring high-risk women (morbid obesity, cardiac disease, spinal abnormality, previous anaesthetic problem, haematological disease, needle phobia) for antenatal anaesthetic review?</li>
+              <li><strong className="text-foreground">Dedicated elective caesarean section lists</strong> — a structural marker of a properly resourced service, reducing cancellations and out-of-hours workload.</li>
+              <li><strong className="text-foreground">Availability of point-of-care haemoglobin testing</strong> on delivery suite, enabling timely transfusion decisions in haemorrhage.</li>
+              <li><strong className="text-foreground">Percentage of labour epidurals providing adequate pain relief within 45 min</strong> of the start of insertion — a patient-centred process measure combining response time, technical success and top-up management.</li>
+            </ol>
+          </div>
+          <div className="grid md:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Why these, and how to use them</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Deliberately few, so data collection is sustainable and denominators are accurate.</li>
+                <li>Mix of outcome, structure and process, so improvement work can target systems rather than individuals.</li>
+                <li>Feed into the annual OAA/RCoA audit cycle, unit dashboards and RCoA Anaesthesia Clinical Services Accreditation.</li>
+                <li>Use run charts over time rather than single-point comparisons; investigate special-cause variation with a structured local review.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Complementary local measures</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Regional-to-general conversion rate for caesarean section and intra-operative pain requiring supplementation.</li>
+                <li>Time from decision to delivery for category 1 caesarean section.</li>
+                <li>Post-dural-puncture headache follow-up and epidural blood patch rate.</li>
+                <li>Maternal critical care admissions, major obstetric haemorrhage &gt;1500 ml, and cell-salvage use.</li>
+                <li>Maternal satisfaction with analgesia and anaesthesia, and 24 h postoperative pain scores after caesarean section.</li>
+              </ul>
+            </div>
+          </div>
+        </CollapsibleSubsection>
+
+
         <CollapsibleSubsection title="Postpartum Bladder, Bowel & Lower-Limb Neurological Symptoms After Neuraxial Block">
           <p className="text-muted-foreground leading-relaxed mb-3">
             New neurological symptoms after labour are common (transient deficits ~1 in 100–200 deliveries) but persistent neuraxial injury is rare (~1 in 24,000–50,000 per NAP3). Most postpartum nerve injuries are <strong>obstetric</strong> (compression/stretch from the fetal head, instrumental delivery, or lithotomy positioning) rather than caused by the epidural or spinal itself. The anaesthetist's role is structured assessment, exclusion of time-critical neuraxial pathology, and onward neurology/obstetric referral.
