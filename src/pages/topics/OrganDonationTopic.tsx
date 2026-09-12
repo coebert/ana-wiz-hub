@@ -9,7 +9,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import { BrainstemDeathCascadeDiagram } from "@/components/diagrams/intensive-care/BrainstemDeathCascadeDiagram";
-import { InlineRef } from "@/components/topic/InlineRef";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const organDonationFaqs: Array<[string, string]> = [
   ["What are the UK criteria for brainstem death testing?", "Coma of known irreversible cause, exclusion of confounders (drugs, hypothermia <34 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, oculocephalic, oculovestibular, gag, cough) and apnoea test with PaCO₂ rise >0.5 kPa above 6.0 kPa with pH <7.40 (AoMRC 2008)."],

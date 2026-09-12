@@ -231,7 +231,7 @@ const PaediatricIcuTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Non-Invasive Support</p>
-                <p className="text-sm text-muted-foreground mt-1">HFNC at 2 ml/kg/min — first-line for bronchiolitis. CPAP/BiPAP increasingly first-line for moderate respiratory failure.</p>
+                <p className="text-sm text-muted-foreground mt-1">HFNC at 1–2 L/kg/min — commonly used in bronchiolitis, but recent reviews question its evidence base and routine place in standard care <InlineRef topicId="paediatric-icu" refLabel="RSV Lancet 2024" />. CPAP/BiPAP increasingly first-line for moderate respiratory failure.</p>
               </div>
             </div>
             </CollapsibleSubsection>

@@ -661,6 +661,17 @@ const ImmunologyIntensivistsTopic = () => {
                 <li>B lymphocytes → plasma cells → antibody (humoral)</li>
                 <li>T lymphocytes: CD4⁺ helper (Th1/Th2/Th17/Treg) and CD8⁺ cytotoxic</li>
                 <li>Antigen presentation: MHC-I (all nucleated cells → CD8⁺); MHC-II (professional APCs → CD4⁺)</li>
+                <li>
+                  <strong>MHC-I</strong> presents endogenous peptides (viral, tumour) processed by the
+                  proteasome and loaded in the ER, on <em>all nucleated cells</em>, signalling CD8⁺
+                  cytotoxic T cells ("kill me"); <strong>MHC-II</strong> presents exogenous antigen
+                  endocytosed and processed in lysosomes by professional APCs (dendritic cells,
+                  macrophages, B cells), signalling CD4⁺ helper T cells to orchestrate antibody
+                  production and macrophage activation ("help me"). Dendritic cells can also
+                  cross-present exogenous antigen on MHC-I to prime CD8⁺ responses to tumours and
+                  intracellular pathogens they have not themselves been infected by.
+                </li>
+                <li>Reduced monocyte <strong>HLA-DR</strong> (an MHC-II molecule) is a marker of sepsis-induced immunoparalysis.</li>
                 <li>V(D)J recombination generates ~10¹¹ receptor specificities</li>
                 <li><strong>Immunological memory · vaccine responsiveness</strong></li>
               </ul>
