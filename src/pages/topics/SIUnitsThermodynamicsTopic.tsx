@@ -182,8 +182,9 @@ const SIUnitsThermodynamicsTopic = () => {
               <p>
                 <strong>Core temperature</strong> is best reflected by the <strong>pulmonary artery catheter</strong> (gold
                 standard), <strong>distal oesophageal probe</strong> (lower third, near the heart), and <strong>nasopharyngeal probe</strong>
-                (reflects brain temperature). <strong>Tympanic membrane</strong> thermometry uses infrared detection (shared blood supply
-                with hypothalamus via the internal carotid artery) for a rapid, non-invasive estimate of core temperature.
+                (reflects brain temperature). <strong>Tympanic membrane</strong> thermometry uses infrared detection (its proximity to the
+                internal carotid artery allows a rapid, non-invasive estimate of core brain temperature)<InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2018 (Temperature)" />.
+
               </p>
               <p>
                 <strong>Peripheral sites</strong> (axillary, skin) are 0.5–1 °C lower than core. The <strong>core-peripheral gradient</strong>
@@ -266,15 +267,18 @@ const SIUnitsThermodynamicsTopic = () => {
                 in equilibrium with each other. This is the fundamental basis of temperature measurement.
               </p>
               <p>
-                The <strong>first law</strong> (conservation of energy: ΔU = Q − W) states energy cannot be created or destroyed. In an <strong>adiabatic process</strong>
-                (Q = 0), work done by expanding gas comes at the expense of internal energy, causing cooling (Joule-Thomson effect in pressure regulators, cryotherapy).
-                The <strong>Joule-Thomson coefficient</strong> is positive for most gases at room temperature but negative for hydrogen and helium.
+                The <strong>first law</strong> (conservation of energy: ΔU = Q − W) states energy cannot be created or destroyed. In an <strong>adiabatic expansion against a piston</strong>
+                (Q = 0), the work done by the gas comes at the expense of its internal energy, so the gas cools. A related but distinct phenomenon, the <strong>Joule–Thomson effect</strong>,
+                is the cooling seen when a <em>real</em> gas undergoes <strong>isenthalpic</strong> expansion (throttling) through a valve or orifice with no work done and no heat exchange —
+                the mechanism operating in cylinder pressure regulators and cryotherapy probes<InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2017 (Gas Supply)" />.
+                The <strong>Joule-Thomson coefficient</strong> is positive for most gases at room temperature (so they cool on throttling) but negative for hydrogen and helium, which warm.
               </p>
               <p>
                 The <strong>second law</strong> states heat flows spontaneously hot → cold and entropy of an isolated system always increases. This explains
-                perioperative heat loss to the cold theatre. UK-focused reviews (BJA Education 2016) cite typical proportions of <strong>radiation ≈ 40–60%</strong>, <strong>convection ≈ 30%</strong>, and <strong>evaporation up to 20%</strong>, with conduction contributing only a small share; an older, widely-quoted breakdown from Sessler (Anesthesiology 2008) gives radiation ≈ 40%, convection ≈ 30%, evaporation ≈ 25% and conduction ≈ 5%. Both data sets vary considerably with exposed surface area, ambient airflow, surgical irrigation and whether the patient is awake or anaesthetised. The <strong>third law</strong>
+                perioperative heat loss to the cold theatre. UK-focused reviews (BJA Education 2016) cite typical proportions of <strong>radiation ≈ 40–60%</strong>, <strong>convection ≈ 30%</strong>, and <strong>evaporation up to 20%</strong><InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2016 (Thermo)" />, with conduction contributing only a small share; an older, widely-quoted breakdown from Sessler (Anesthesiology 2008) gives radiation ≈ 40%, convection ≈ 30%, evaporation ≈ 25% and conduction ≈ 5%. Under <strong>general anaesthesia</strong> these proportions change significantly as behavioural and autonomic responses are lost: radiation becomes the dominant mechanism, accounting for up to <strong>60%</strong> of heat loss, while convective and evaporative losses are comparatively smaller<InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2018 (Temperature)" />. Both data sets vary considerably with exposed surface area, ambient airflow, surgical irrigation and whether the patient is awake or anaesthetised. The <strong>third law</strong>
                 establishes absolute zero (0 K = −273.15 °C) as the point where entropy approaches zero — defining the Kelvin scale used in gas law calculations.
               </p>
+
             </div>
             </CollapsibleSubsection>
           </ExamSection>

@@ -728,6 +728,8 @@ const CardiothoracicTopic = () => {
             <li><strong>Regional technique</strong> chosen by the procedure (see table); single-shot for short procedures, catheter for major resections / sternotomy.</li>
             <li><strong>Adjuncts</strong>: dexmedetomidine, IV lidocaine, ketamine infusion — useful in opioid-tolerant patients and to reduce CPSP.</li>
             <li><strong>Anticoagulation timing</strong> (AAGBI/ESRA): hold LMWH ≥12 h before catheter removal; full anticoagulation for CPB requires careful timing of any neuraxial block (most centres avoid epidural with planned CPB).</li>
+            <li><strong>Maintenance technique — TIVA</strong>: in the ACTACC national thoracic anaesthesia audit, total intravenous anaesthesia for lung resection was associated with roughly half the odds of unplanned postoperative critical care admission compared with volatile maintenance (OR 0.50), alongside paravertebral analgesia and lung-protective ventilation as markers of good practice. Propofol–remifentanil TIVA also preserves hypoxic pulmonary vasoconstriction better than &gt;1 MAC volatile and reduces PONV, so it is a reasonable default for one-lung ventilation cases<InlineRef topicId="cardiothoracic" refLabel="ACTACC TIVA 2019" />.</li>
+
           </ul>
 
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Procedure-specific approach</h3>
