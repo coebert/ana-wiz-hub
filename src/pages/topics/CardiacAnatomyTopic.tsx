@@ -7,6 +7,7 @@ const cardiacAnatomyFaqs: Array<[string, string]> = [
   ["Which structures lie immediately posterior to the heart and what is the clinical relevance?", "The oesophagus, descending aorta and left main bronchus lie directly behind the left atrium. A TOE probe therefore gives unparalleled LA and mitral views; a massively enlarged LA can cause dysphagia (and Ortner's sign — hoarseness from recurrent laryngeal nerve compression); and aortic aneurysms can erode into the oesophagus."],
 ];
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { InlineRef } from "@/components/references/InlineRef";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { cardiacAnatomyQuestions } from "@/data/quizzes";
 import CardiacAnatomyDiagram from "@/components/diagrams/anatomy/CardiacAnatomyDiagram";
