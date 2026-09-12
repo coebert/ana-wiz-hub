@@ -40,19 +40,26 @@ interface CorpusEntry {
     excerpt?: string;
   }>;
   text_chars: number;
-  case_bank?: Array<{
-    case_id: string;
-    title: string;
-    bank: string;
-    path: string;
-    text: string;
-  }>;
+  /** Ids into the shared CASE_TEXTS dictionary (cases can belong to several topics). */
+  case_ids?: string[];
   case_bank_chars?: number;
+}
+
+interface CorpusCase {
+  case_id: string;
+  title: string;
+  bank: string;
+  path: string;
+  text: string;
 }
 
 const CORPUS: Map<string, CorpusEntry> = new Map(
   ((corpusData as { entries: CorpusEntry[] }).entries ?? []).map((e) => [e.topic_id, e]),
 );
+/** Case-bank cases, stored once in the corpus and referenced by id per topic. */
+const CASE_TEXTS: Record<string, CorpusCase> =
+  (corpusData as { cases?: Record<string, CorpusCase> }).cases ?? {};
+
 const CORPUS_GENERATED_AT = (corpusData as { generated_at?: string }).generated_at ?? null;
 
 function getCorpusEntry(topicId: string): CorpusEntry | undefined {
@@ -1152,7 +1159,9 @@ async function auditTopic(
   //   - viva model answers generated for this topic
   // Both make clinical assertions (doses, thresholds, algorithms), so they are
   // audited against the same evidence as the topic itself.
-  const caseBank = corpusEntry.case_bank ?? [];
+  const caseBank = (corpusEntry.case_ids ?? [])
+    .map((id) => CASE_TEXTS[id])
+    .filter((c): c is CorpusCase => Boolean(c));
   stages.case_bank_cases = caseBank.length;
   stages.case_bank_chars = caseBank.reduce((n, c) => n + c.text.length, 0);
   const caseBankBlock = caseBank.length === 0
