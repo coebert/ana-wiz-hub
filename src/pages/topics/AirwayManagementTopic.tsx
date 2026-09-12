@@ -38,6 +38,9 @@ const tocItems = [
   { id: "section-awake-fibreoptic-intubation", label: "Awake Fibreoptic", group: "Techniques" },
   { id: "section-front-of-neck-access-fona", label: "Front-of-neck Access (FONA)", group: "Techniques" },
   { id: "section-partial-airway-obstruction-level-specific-management", label: "Partial Obstruction", group: "Clinical" },
+  { id: "section-obstetric-airway", label: "Obstetric Difficult Airway", group: "Clinical" },
+  { id: "section-paediatric-airway", label: "Paediatric & Neonatal Airway", group: "Clinical" },
+  { id: "section-critically-ill-airway", label: "Critically Ill Adult", group: "Clinical" },
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
 
