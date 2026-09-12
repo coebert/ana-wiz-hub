@@ -187,6 +187,13 @@ const GastrointestinalPhysiologyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="gi-hormones" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
+            <CollapsibleSubsection title="Major Gastrointestinal Hormones">
+              <div className="overflow-x-auto"><table className="w-full text-sm"><thead><tr className="border-b border-border"><th className="p-2 text-left">Hormone/source</th><th className="p-2 text-left">Stimulus</th><th className="p-2 text-left">Principal actions</th></tr></thead><tbody className="divide-y divide-border text-muted-foreground"><tr><td className="p-2">CCK — duodenal/jejunal I cells</td><td className="p-2">Fat and protein</td><td className="p-2">Gallbladder contraction, pancreatic enzymes, sphincter of Oddi relaxation; slows gastric emptying.</td></tr><tr><td className="p-2">Secretin — duodenal S cells</td><td className="p-2">Duodenal acid</td><td className="p-2">Pancreatic/biliary bicarbonate; inhibits gastric acid.</td></tr><tr><td className="p-2">GIP — K cells</td><td className="p-2">Oral glucose, fat</td><td className="p-2">Incretin insulin release; inhibits gastric acid.</td></tr><tr><td className="p-2">Motilin — M cells</td><td className="p-2">Fasting</td><td className="p-2">Initiates the migrating motor complex; erythromycin is an agonist.</td></tr><tr><td className="p-2">Ghrelin — stomach</td><td className="p-2">Fasting</td><td className="p-2">Stimulates appetite and growth-hormone release.</td></tr></tbody></table></div>
+              <InlineRef topicId="gi-physiology" refLabel="Ganong GI Hormones" />
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="nausea-vomiting" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OA_BK_03"]}>
             <CollapsibleSubsection title="Nausea & Vomiting">
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -257,6 +264,20 @@ const GastrointestinalPhysiologyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="liver-physiology" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
+            <CollapsibleSubsection title="Liver Physiology and Anaesthetic Implications">
+              <div className="space-y-3 text-sm text-muted-foreground leading-relaxed"><p><strong>Metabolism:</strong> Phase I CYP450 oxidation, reduction or hydrolysis may activate or inactivate drugs; Phase II conjugation usually increases water solubility. High-extraction drugs depend on hepatic blood flow, while low-extraction drugs depend on protein binding and intrinsic enzyme capacity.</p><p><strong>Synthesis:</strong> albumin maintains oncotic pressure and binds acidic drugs; the liver synthesises most coagulation factors, so a changing PT/INR reflects synthetic failure more rapidly than albumin.</p><p><strong>Bilirubin:</strong> haem breakdown produces unconjugated bilirubin, albumin-bound transport to liver, glucuronide conjugation and biliary excretion. Cholestasis raises conjugated bilirubin; hepatocellular failure may produce a mixed pattern.</p><p><strong>Anaesthesia:</strong> hypotension, high airway pressure and excessive PEEP can reduce hepatic blood flow. Liver disease increases free drug, reduces metabolism/excretion and prolongs opioids and some neuromuscular blockers; assess renal function, encephalopathy, nutrition and haemostasis rather than correcting INR reflexively.</p></div>
+              <InlineRef topicId="gi-physiology" refLabel="Hepatic Physiology Review" />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="abdo-compartment" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
+            <CollapsibleSubsection title="Intra-abdominal Hypertension and Abdominal Compartment Syndrome">
+              <p className="text-sm text-muted-foreground leading-relaxed"><strong>IAH</strong> is sustained/repeated IAP ≥12 mmHg: grade I 12–15, II 16–20, III 21–25, IV &gt;25. <strong>ACS</strong> is sustained IAP &gt;20 mmHg with new organ dysfunction <InlineRef topicId="gi-physiology" refLabel="WSACS 2013" />.</p>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground list-disc list-inside"><li><strong>Effects:</strong> reduced venous return and cardiac output; diaphragmatic splinting, raised peak/plateau pressures and barotrauma; renal vein/parenchymal compression with oliguria; impaired splanchnic perfusion and raised ICP.</li><li><strong>Measurement:</strong> end-expiratory intravesical pressure, supine, zeroed at the mid-axillary line at iliac crest, with no abdominal muscle contraction and ≤25 mL bladder saline.</li><li><strong>Stepwise treatment:</strong> analgesia/sedation, brief neuromuscular blockade, avoid positive fluid balance, NG/rectal decompression, evacuate collections percutaneously, optimise perfusion; decompressive laparotomy for refractory ACS.</li></ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="anaesthetic-implications" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OA_BK_03"]}>
             <CollapsibleSubsection title="Anaesthetic Implications">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
@@ -268,10 +289,6 @@ const GastrointestinalPhysiologyTopic = () => {
               <li>
                 <strong>Hepatic first-pass</strong>: oral drugs pass through portal circulation → extensive metabolism of
                 high extraction-ratio drugs (propranolol, lidocaine, GTN).
-              </li>
-              <li>
-                <strong>Abdominal compartment syndrome</strong>: IAP &gt;20 mmHg with new organ dysfunction → ↓ venous
-                return, ↓ renal perfusion, ↑ airway pressures. Decompressive laparotomy if refractory.
               </li>
               <li>
                 <strong>GLP-1 receptor agonists</strong> (semaglutide): markedly delayed gastric emptying — 2024 CPOC/Association of Anaesthetists
