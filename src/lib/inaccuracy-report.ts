@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
 
 const optionalText = (max: number) =>
   z
@@ -50,3 +51,24 @@ export const buildInaccuracyReportPayload = (input: InaccuracyReportInput) => ({
 
 export const getFirstValidationError = (error: z.ZodError) =>
   error.issues[0]?.message ?? "Check the form and try again.";
+
+export const submitInaccuracyReport = async (values: unknown) => {
+  const parsed = inaccuracyReportSchema.safeParse(values);
+  if (!parsed.success) {
+    return { ok: false as const, message: getFirstValidationError(parsed.error) };
+  }
+
+  const { error } = await supabase
+    .from("inaccuracy_reports")
+    .insert(buildInaccuracyReportPayload(parsed.data));
+
+  if (error) {
+    console.error("inaccuracy_report submit failed", error);
+    return {
+      ok: false as const,
+      message: "We couldn’t submit your report. Please try again shortly.",
+    };
+  }
+
+  return { ok: true as const };
+};
