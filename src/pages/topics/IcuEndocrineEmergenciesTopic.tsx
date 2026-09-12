@@ -417,6 +417,44 @@ const IcuEndocrineEmergenciesTopic = () => {
                 <EndocrineEmergencyDrugs />
               </div>
             </div>
+            <div className="p-4 rounded-lg border border-border mt-4">
+              <p className="font-semibold text-foreground text-sm">
+                Euglycaemic DKA — the diagnosis that is missed
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Definition:</strong> significant ketoacidosis (capillary ketones ≥ 3.0 mmol/L or
+                urine ketones ≥ 2+, with pH &lt; 7.30 and/or HCO₃⁻ &lt; 15) in a patient whose glucose is{" "}
+                <strong>&lt; 14 mmol/L</strong> — and often entirely normal. Because the usual trigger for
+                a DKA pathway (hyperglycaemia) is absent, the diagnosis is repeatedly delayed.
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Mechanism:</strong> SGLT2 inhibition (dapagliflozin, empagliflozin, canagliflozin)
+                causes glycosuria, lowering plasma glucose and insulin secretion while raising glucagon;
+                the fall in the insulin:glucagon ratio drives lipolysis and hepatic ketogenesis, and
+                ketone reabsorption is increased. Superimposed on fasting, surgery, sepsis, vomiting,
+                dehydration, low-carbohydrate diet, alcohol excess or reduced insulin dose, ketoacidosis
+                develops with a normal glucose. The same picture occurs in pregnancy, prolonged starvation
+                and after bariatric surgery.
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Who to test:</strong> measure blood ketones and a venous gas in{" "}
+                <em>any</em> unwell, vomiting, tachypnoeic, acidotic or perioperative patient taking an
+                SGLT2 inhibitor, regardless of glucose — and in any unexplained high-anion-gap metabolic
+                acidosis. Stop the SGLT2 inhibitor at least 3 days before elective surgery (MHRA) and
+                immediately on acute illness.
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Management:</strong> treat as DKA but give the carbohydrate first — stop the SGLT2
+                inhibitor, start <strong>fixed-rate intravenous insulin 0.1 units/kg/h</strong> (insulin is
+                needed to switch off ketogenesis) <strong>with concurrent 10% glucose</strong> at
+                125 ml/h from the outset to prevent hypoglycaemia, plus 0.9% sodium chloride with
+                potassium for volume and electrolyte replacement. Continue long-acting basal insulin.
+                Track resolution by <strong>ketones and bicarbonate/pH, not glucose</strong> — aim ketone
+                fall ≥ 0.5 mmol/L/h, HCO₃⁻ rise ≥ 3 mmol/L/h; only convert to variable-rate insulin once
+                ketones &lt; 0.6 mmol/L and the acidosis has resolved. Ketosis may persist 24–48 h because
+                the drug&rsquo;s effect outlasts the last dose.
+              </p>
+            </div>
             <GuidelineSources sources={PITFALLS_SOURCES} />
             </CollapsibleSubsection>
           </ExamSection>
