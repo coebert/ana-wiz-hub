@@ -25,6 +25,7 @@ import {
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const arrhythmiasEcgIcuFaqs: Array<[string, string]> = [
   ["How is new-onset AF in critical illness managed?", "Treat underlying sepsis/electrolytes; rate control with β-blocker (esmolol/metoprolol) or amiodarone if heart failure; DC cardioversion if haemodynamically unstable; anticoagulate per CHA₂DS₂-VASc balanced against bleeding risk."],
@@ -258,6 +259,38 @@ const ArrhythmiasEcgIcuTopic = () => {
               {() => <BundleBranchBlockDiagram />}
             </ExpandableEcgCard>
             </CollapsibleSubsection>
+            <CollapsibleSubsection title="Diagnosing MI in LBBB: Sgarbossa criteria">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              LBBB produces its own secondary ST/T abnormalities (discordant ST elevation/depression
+              opposite to QRS direction), which masks the typical ST-elevation pattern of acute MI.
+              The original Sgarbossa criteria <InlineRef topicId="arrhythmias-ecg-icu" refLabel="Sgarbossa 1996" /> use a weighted score:
+            </p>
+            <div className="grid sm:grid-cols-3 gap-3 mb-3">
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Concordant ST elevation ≥ 1 mm</p>
+                <p className="text-xs text-muted-foreground mt-1">In any lead, same direction as QRS — 5 points.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Concordant ST depression ≥ 1 mm</p>
+                <p className="text-xs text-muted-foreground mt-1">In V1–V3 — 3 points.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Excessive discordant ST elevation</p>
+                <p className="text-xs text-muted-foreground mt-1">≥ 5 mm, in leads with a negative QRS — 2 points.</p>
+              </div>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              A score ≥ 3 is highly specific for acute MI but poorly sensitive — a low score does not
+              exclude infarction. The <span className="font-medium text-foreground">Smith-modified (Sgarbossa) criteria</span>
+              {" "}<InlineRef topicId="arrhythmias-ecg-icu" refLabel="Smith 2012 (Modified Sgarbossa)" /> replace the fixed 5 mm discordant
+              ST-elevation threshold with a <span className="font-medium text-foreground">proportional ratio of ST-elevation to S-wave depth ≥ 0.25 (25 %)</span>
+              in the most discordant lead, substantially improving sensitivity while retaining specificity.
+              The same logic applies to <span className="font-medium text-foreground">ventricular-paced rhythms</span>, which produce an
+              analogous discordant pattern. In practice: new LBBB (or a new pacing pattern) with ongoing
+              ischaemic symptoms, haemodynamic instability, or in the post-ROSC patient should still prompt
+              urgent PPCI discussion regardless of the calculated score.
+            </p>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="tachys" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
@@ -272,6 +305,38 @@ const ArrhythmiasEcgIcuTopic = () => {
               {() => <TachyarrhythmiaDiagram />}
             </ExpandableEcgCard>
             </CollapsibleSubsection>
+            <CollapsibleSubsection title="Atrial fibrillation in the ICU">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              New-onset AF is common in critical illness and is usually a marker of an underlying
+              trigger rather than a primary cardiac problem: sepsis, hypovolaemia or fluid overload,
+              electrolyte derangement (K⁺, Mg²⁺), catecholamine infusions, hypoxia, pain, PE, and
+              post-cardiac-surgery inflammation <InlineRef topicId="arrhythmias-ecg-icu" refLabel="ESC AF 2020" />. Treat the precipitant first — rhythm often
+              settles once the trigger is corrected.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Rate vs rhythm control</p>
+                <p className="text-xs text-muted-foreground mt-1">Rate control is first-line unless the patient is haemodynamically unstable or new-onset AF is itself driving the shock state, in which case synchronised DCCV is indicated <InlineRef topicId="arrhythmias-ecg-icu" refLabel="BJA Educ 2018" />.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Electrolyte replacement</p>
+                <p className="text-xs text-muted-foreground mt-1">Replace K⁺ to &gt; 4.0 mmol/L and Mg²⁺ to &gt; 1.0 mmol/L before/alongside rate-control drugs — correction alone can restore sinus rhythm.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card md:col-span-2">
+                <p className="font-semibold text-foreground text-sm">Rate-control drug choice</p>
+                <ul className="text-xs text-muted-foreground mt-1 space-y-1">
+                  <li>• <span className="font-medium text-foreground">Esmolol / metoprolol</span> — first choice in most; caution in shock or reduced LVEF (negative inotropy).</li>
+                  <li>• <span className="font-medium text-foreground">Diltiazem</span> — effective but avoid in LV dysfunction/heart failure.</li>
+                  <li>• <span className="font-medium text-foreground">Amiodarone</span> — 300 mg IV over 20–60 min then 900 mg/24 h infusion; preferred agent in heart failure or when β-blockers/calcium-channel blockers are contraindicated.</li>
+                  <li>• <span className="font-medium text-foreground">Digoxin</span> — 500 µg IV loading (repeat to max ~1 mg/24 h); useful in heart failure or hypotension where other agents are relatively contraindicated, but slow onset and unreliable rate control in high sympathetic tone (sepsis, catecholamines).</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card md:col-span-2">
+                <p className="font-semibold text-foreground text-sm">Rhythm control and anticoagulation</p>
+                <p className="text-xs text-muted-foreground mt-1">Rhythm control with amiodarone or synchronised DCCV if rate control fails or instability persists. Thromboprophylaxis is guided by CHA₂DS₂-VASc, balanced against ICU-specific bleeding risk (indwelling lines, recent procedures, coagulopathy, thrombocytopenia); timing of anticoagulation should be individualised. New-onset AF in critical illness frequently recurs after ICU discharge and warrants outpatient cardiology follow-up.</p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="peri-arrest" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["RCUK 2021"]}>
@@ -281,7 +346,7 @@ const ArrhythmiasEcgIcuTopic = () => {
                 <p className="font-semibold text-foreground text-sm mb-2">Tachycardia algorithm</p>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>1. <span className="font-medium text-foreground">Adverse features?</span> Shock · Syncope · Myocardial ischaemia · Heart failure → <span className="font-medium text-foreground">synchronised DCCV ×3</span> (sedate / GA), then amiodarone 300 mg over 10–20 min and re-shock.</li>
-                  <li>2. Stable + <span className="font-medium text-foreground">narrow regular</span>: vagal manoeuvres → adenosine 6 → 12 → 18 mg.</li>
+                  <li>2. Stable + <span className="font-medium text-foreground">narrow regular</span>: vagal manoeuvres → adenosine 6 mg, then 12 mg, then a further 12 mg if required <InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK 2021 Tachycardia" />.</li>
                   <li>3. Stable + <span className="font-medium text-foreground">narrow irregular</span>: probable AF → rate control (β-blocker / diltiazem; amiodarone if HF) ± anticoagulate.</li>
                   <li>4. Stable + <span className="font-medium text-foreground">wide regular</span>: assume VT → amiodarone 300 mg IV over 20–60 min.</li>
                   <li>5. Stable + <span className="font-medium text-foreground">wide irregular</span>: AF + BBB, polymorphic VT (Mg²⁺), pre-excited AF (DCCV — avoid AV nodal blockers).</li>
@@ -343,6 +408,41 @@ const ArrhythmiasEcgIcuTopic = () => {
             </p>
             <PacingDevicesDiagram />
             </CollapsibleSubsection>
+            <CollapsibleSubsection title="Managing arrhythmias in patients with CIEDs">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Initial assessment: identify the device and manufacturer (device card, chest X-ray
+              silhouette, ID app), interrogate to determine mode and battery/lead status, and establish
+              whether the patient is <span className="font-medium text-foreground">pacing-dependent</span> and what their underlying
+              rhythm is <InlineRef topicId="arrhythmias-ecg-icu" refLabel="ASA CIED Advisory 2020" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Magnet response</p>
+                <p className="text-xs text-muted-foreground mt-1">Pacemaker: switches to fixed-rate asynchronous pacing (typically 70–100 bpm, manufacturer-specific) — useful to unmask the underlying rhythm or terminate pacemaker-mediated tachycardia, but removes sensing, risking R-on-T/VF if a paced beat lands on a native T wave in a pacing-dependent patient. ICD: a magnet suspends tachytherapies (antitachycardia pacing and shocks) but does not change the pacing mode/rate.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">AF with a CIED</p>
+                <p className="text-xs text-muted-foreground mt-1">Watch for rapid ventricular pacing or inappropriate atrial tracking (dual-chamber devices tracking fibrillatory activity); mode-switch algorithms should engage automatically. In CRT devices, loss of biventricular capture from AF/frequent ectopy reduces resynchronisation benefit and can precipitate decompensation.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">VT in a patient with an ICD</p>
+                <p className="text-xs text-muted-foreground mt-1">Distinguish appropriate shocks (true VT/VF) from inappropriate shocks (SVT with rapid conduction, lead fracture, oversensing). VT storm: β-blockade, IV amiodarone, sedation, and treat ischaemia/electrolytes; consider transiently deactivating tachytherapies (with external pacing/defibrillation pads applied and continuous monitoring) if shocks are frequent and non-terminating.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">External defibrillation with a CIED</p>
+                <p className="text-xs text-muted-foreground mt-1">If ICD therapies fail or the device is deactivated, defibrillate externally with pads placed ≥ 8 cm from the generator (anterior–posterior preferred) to reduce the risk of device damage <InlineRef topicId="arrhythmias-ecg-icu" refLabel="ACC/AHA/HRS 2017" />.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card md:col-span-2">
+                <p className="font-semibold text-foreground text-sm">Peri-procedural management</p>
+                <ul className="text-xs text-muted-foreground mt-1 space-y-1">
+                  <li>• Pre-op device interrogation; disable tachytherapies (ICD) or apply a magnet for the duration of surgery involving diathermy.</li>
+                  <li>• Use bipolar diathermy where possible; if monopolar is required, keep the current path away from the device and use short bursts.</li>
+                  <li>• Continuous ECG monitoring with external pacing/defibrillation pads applied and a plan for asynchronous pacing if inhibition occurs in a pacing-dependent patient.</li>
+                  <li>• Post-op re-interrogation and reprogramming to restore tachytherapies and normal pacing mode before the patient leaves a monitored area.</li>
+                </ul>
+              </div>
+            </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="post-arrest" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.5"]}>
@@ -371,7 +471,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             accent="icu"
             pitfalls={[
               "Systematic ECG: rate, rhythm, axis, P-QRS-T morphology, intervals (PR <200, QRS <120, QTc <440 M / 460 F).",
-              "Narrow-complex tachy: vagal manoeuvres, adenosine 6→12→12 mg; AF/flutter — rate vs rhythm control + anticoagulation.",
+              "Narrow-complex tachy: vagal manoeuvres, adenosine 6 mg, then 12 mg, then a further 12 mg if required; AF/flutter — rate vs rhythm control + anticoagulation.",
               "Broad-complex tachy: assume VT until proven otherwise; if unstable → synchronised DC shock.",
               "Bradyarrhythmia + adverse signs: atropine 500 µg, escalating to transcutaneous pacing, isoprenaline or adrenaline infusion.",
               "Long QT predisposes to torsades — withdraw culprits, correct K⁺/Mg²⁺/Ca²⁺, IV magnesium 2 g, overdrive pacing if persistent.",

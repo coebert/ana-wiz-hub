@@ -16,6 +16,7 @@ import AcumenIQDiagram from "@/components/diagrams/intensive-care/AcumenIQDiagra
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import COPitfallsChecklist from "@/components/diagrams/intensive-care/COPitfallsChecklist";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const cardiacOutputMonitoringFaqs: Array<[string, string]> = [
   ["What is the principle behind transpulmonary thermodilution (PiCCO)?", "Cold saline is injected centrally and the temperature change detected at a femoral arterial thermistor; the Stewart–Hamilton equation gives CO, and the curve also yields global end-diastolic volume and extravascular lung water."],
@@ -161,6 +162,15 @@ const CoreConcepts = () => (
       <p className="text-muted-foreground leading-relaxed mb-3">
         Devices are validated by Bland-Altman analysis (bias, precision, limits of agreement) and percentage error vs a reference. A percentage error ≤30% (Critchley & Critchley, 1999) is regarded as clinically interchangeable.
       </p>
+      <div className="rounded-lg border border-border bg-muted/30 p-4 mb-3 text-sm text-muted-foreground">
+        <p className="font-semibold text-foreground text-sm mb-1">Understanding percentage error</p>
+        <p className="mb-2">
+          Percentage error (PE) = (2 × SD of the bias) / mean cardiac output (reference technique), expressed as a percentage. The 30% interchangeability threshold is not arbitrary: bolus thermodilution itself has an inherent precision of only about ±20%. Combining two independent measurement precisions of ±20% (reference and test method) by the root-sum-of-squares gives a total error of ±28.3%, conventionally rounded up to ±30% <InlineRef topicId="cardiac-output-monitoring" refLabel="Critchley 2009 (Percentage error)" />.
+        </p>
+        <p>
+          Many non-invasive and uncalibrated devices exceed this 30% threshold against thermodilution and should therefore not be relied upon for absolute CO values — they are better used to track <span className="font-medium text-foreground">trends</span> in response to an intervention (fluid, inotrope), assessed formally with concordance analysis (four-quadrant plots) or polar plots rather than single absolute readings.
+        </p>
+      </div>
       <div className="rounded-lg border border-border overflow-x-auto">
         <table className="w-full text-xs sm:text-sm">
           <thead className="bg-muted/50">
@@ -213,7 +223,7 @@ const CoreConcepts = () => (
         {[
           { device: "PiCCO (calibrated pulse contour)", desc: "Pulse contour CO recalibrated against TPTD every 8 h or after major haemodynamic change. Provides GEDI, EVLWI, PVPI, GEF, SVV, PPV. Inaccurate with severe aortic regurgitation, IABP, and during the immediate vasopressor titration window." },
           { device: "LiDCO / LiDCOplus (calibrated pulse power)", desc: "0.15–0.30 mmol lithium chloride bolus via any central or peripheral vein; lithium-sensitive electrode on a standard arterial line. PulseCO algorithm derives continuous CO from the pulse power. Avoid: first-trimester pregnancy, lithium therapy (baseline lithium present), and within 30 min of non-depolarising NMBA (cross-reacts with the electrode)." },
-          { device: "FloTrac/Vigileo (uncalibrated pulse contour)", desc: "Standard arterial line + dedicated transducer. Compliance estimated from age, sex, height, weight, and the waveform itself; updated every 20 s. Convenient (no calibration) but accuracy degrades in vasoplegia, rapid SVR change, severe arrhythmia, and aortic regurgitation. Latest software (4th-generation) has improved performance in low-SVR states." },
+          { device: "FloTrac/Vigileo (uncalibrated pulse contour)", desc: <>Standard arterial line + dedicated transducer. Compliance estimated from age, sex, height, weight, and the waveform itself; updated every 20 s. Convenient (no calibration) but accuracy degrades in vasoplegia, rapid SVR change, severe arrhythmia, and aortic regurgitation. It is characteristically inaccurate in hyperdynamic, low-resistance states — the classic example being cirrhosis/end-stage liver disease undergoing liver surgery, where percentage error against thermodilution has been reported at ~54%, well beyond the 30% limit of acceptance, with bias increasing as peripheral resistance falls (<InlineRef topicId="cardiac-output-monitoring" refLabel="BJA 2009 (Uncalibrated pulse contour in cirrhosis)" />). In such states absolute CO values are unreliable and only trends should be used. Latest software (4th-generation) has improved but not eliminated this limitation.</> },
           { device: "ClearSight / Nexfin (volume-clamp)", desc: "Inflatable finger cuff maintains constant arterial volume; reconstructs a brachial-equivalent waveform for pulse contour analysis. Truly non-invasive continuous CO; useful perioperatively. Limited by peripheral vasoconstriction and finger oedema." },
           { device: "Oesophageal Doppler (ODM, CardioQ)", desc: "Doppler probe placed in the mid-oesophagus measures descending aortic velocity. CO = VTI × aortic CSA × HR × correction factor (assumes 70% of CO via descending aorta). FTc < 330 ms suggests hypovolaemia; peak velocity reflects contractility. Operator-dependent (probe focusing) and uncomfortable in awake patients — best in the anaesthetised, intubated patient. Strongest evidence base for intra-operative GDT." },
           { device: "NICOM (bioreactance)", desc: "Four electrode pads on the thorax; analyses phase shift of a low-amplitude high-frequency signal. Completely non-invasive. Reasonable trending ability but limited absolute accuracy in low-flow states, lung oedema, large pleural effusions, and with diathermy." },
@@ -329,9 +339,28 @@ const CoreConcepts = () => (
             <tr><td className="px-3 py-2 font-medium text-foreground">IVC distensibility (TTE)</td><td className="px-3 py-2">ΔIVC &gt;18% (vent) / &gt;50% collapse (SB)</td><td className="px-3 py-2">Subcostal view; affected by raised intra-abdominal pressure and RV failure</td></tr>
             <tr><td className="px-3 py-2 font-medium text-foreground">Mini-fluid challenge</td><td className="px-3 py-2">↑ SV ≥6% after 100 mL over 1 min</td><td className="px-3 py-2">Avoids overload if non-responsive</td></tr>
             <tr><td className="px-3 py-2 font-medium text-foreground">FTc (oesophageal Doppler)</td><td className="px-3 py-2">&lt;330 ms</td><td className="px-3 py-2">Static surrogate of preload — historically used to drive intra-op GDT</td></tr>
+            <tr><td className="px-3 py-2 font-medium text-foreground">Tidal volume challenge</td><td className="px-3 py-2">&#916;PPV &gt;3.5% (or &#916;SVV &gt;2.5%)</td><td className="px-3 py-2">Transiently increase V<sub>T</sub> from 6 to 8 mL/kg PBW for 1 min; requires sinus rhythm, fully passive (controlled) ventilation and no severe RV failure</td></tr>
           </tbody>
         </table>
       </div>
+      <div className="mt-3 rounded-lg border border-border bg-muted/30 p-3 text-xs text-muted-foreground">
+        <span className="font-semibold text-foreground">Tidal volume challenge:</span> in ARDS patients ventilated at low V<sub>T</sub> (6 mL/kg), baseline PPV and SVV are unreliable predictors of fluid responsiveness because the tidal swing in intrathoracic pressure is too small to load-unload the ventricles adequately. Transiently increasing V<sub>T</sub> to 8 mL/kg predicted body weight for one minute amplifies this swing; an absolute increase in PPV &gt;3.5 percentage points (or SVV &gt;2.5 points) reliably predicts fluid responsiveness. Return V<sub>T</sub> to 6 mL/kg once the manoeuvre is complete <InlineRef topicId="cardiac-output-monitoring" refLabel="Myatra 2017 (Tidal volume challenge)" />.
+      </div>
+    </div>
+
+    {/* 9a. Haemodynamic monitoring on ECMO */}
+    <div>
+      <h2 className="text-2xl font-serif font-bold text-foreground mb-3">8a. Haemodynamic Monitoring on ECMO</h2>
+      <p className="text-muted-foreground leading-relaxed mb-3">
+        Standard CO monitoring technologies are largely invalidated by veno-arterial (VA) ECMO and must be interpreted with caution <InlineRef topicId="cardiac-output-monitoring" refLabel="ICM 2016 (Haemodynamics in ARDS)" />:
+      </p>
+      <ul className="text-sm text-muted-foreground space-y-1.5 list-disc pl-5 mb-3">
+        <li><span className="font-medium text-foreground">Pulse contour analysis (uncalibrated or calibrated — FloTrac, PiCCO, LiDCO)</span> is unreliable because VA-ECMO flow is largely non-pulsatile; the arterial waveform morphology reflects the combination of native and extracorporeal flow, not native stroke volume alone.</li>
+        <li><span className="font-medium text-foreground">Thermodilution (PAC or transpulmonary)</span> is inaccurate on ECMO because injected indicator is lost into the extracorporeal circuit and the membrane oxygenator's heat exchanger confounds the thermal signal.</li>
+        <li><span className="font-medium text-foreground">Native cardiac function must instead be assessed with echocardiography (TTE/TOE)</span> — LVOT VTI, aortic valve opening (a marker of adequate LV ejection and a warning sign for LV distension if fixed closed), global and regional ventricular function, cannula position, and exclusion of tamponade — together with the pulse pressure on the arterial trace as a bedside surrogate of native ejection.</li>
+        <li><span className="font-medium text-foreground">Monitor the circuit itself</span>: pump (blood) flow, pre- and post-membrane pressures, sweep gas flow/FiO₂, pre- and post-oxygenator blood gases, and circuit/mixed venous oxygen saturation.</li>
+        <li><span className="font-medium text-foreground">Perfusion surrogates</span>: lactate trend and regional/differential oxygenation (right radial vs lower limb saturation — the "Harlequin" or North-South syndrome seen with peripheral VA-ECMO and a recovering native heart ejecting poorly oxygenated blood into the aortic root).</li>
+      </ul>
     </div>
 
     {/* 10. Oxygen delivery */}

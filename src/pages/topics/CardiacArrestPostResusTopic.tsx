@@ -19,6 +19,7 @@ import { eegTraceContent, postArrestProgContent } from "@/components/diagrams/ec
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const arrestFaqs: Array<[string, string]> = [
   [
@@ -261,8 +262,21 @@ const coreConcepts = (
       <p className="text-muted-foreground leading-relaxed mb-3">
         Within the first 6 h after ROSC, deliver a structured bundle in
         parallel: airway and ventilation, haemodynamics, coronary reperfusion,
-        temperature control, glycaemic control, and family communication.
+        temperature control, glycaemic control, and family communication
+        (<InlineRef topicId="cardiac-arrest-post-resus" refLabel="ERC/ESICM 2021 Post-Resus" />,
+        <InlineRef topicId="cardiac-arrest-post-resus" refLabel="Singapore Med J 2017 (Post-resus)" />).
       </p>
+
+      <div className="p-4 rounded-lg border border-border bg-card mb-3">
+        <p className="text-sm font-semibold text-foreground mb-2">Consolidated ERC/ESICM 2021 structured bundle</p>
+        <ol className="text-xs text-muted-foreground space-y-1.5 list-decimal list-inside">
+          <li><span className="font-medium text-foreground">Identify and treat the cause</span> — 12-lead ECG in all patients; immediate coronary angiography ± PCI for STEMI or ongoing myocardial ischaemia; CT pulmonary angiogram if PE is suspected as the precipitant.</li>
+          <li><span className="font-medium text-foreground">Airway and breathing</span> — secure a definitive airway; lung-protective ventilation (6–8 mL/kg PBW); target SpO₂ 94–98 %; target PaCO₂ 4.5–6.0 kPa (normocapnia).</li>
+          <li><span className="font-medium text-foreground">Circulation</span> — target MAP ≥ 65 mmHg, aiming for urine output &gt; 0.5 mL/kg/h and a normal or falling lactate; obtain early echocardiography to assess myocardial function; use fluids, vasopressors and inotropes as required, with mechanical circulatory support (IABP, Impella, VA-ECMO) considered for refractory cardiogenic shock.</li>
+          <li><span className="font-medium text-foreground">Disability / neuroprotection</span> — temperature control with active prevention of fever (&lt; 37.7 °C) for at least 72 h; continuous EEG for seizure detection and prompt anticonvulsant treatment; a clear sedation strategy that permits later neuroprognostication.</li>
+          <li><span className="font-medium text-foreground">Metabolic control</span> — glucose target 6–10 mmol/L; correct potassium, magnesium and calcium.</li>
+        </ol>
+      </div>
 
       <div className="grid md:grid-cols-2 gap-3">
         {[
@@ -295,8 +309,10 @@ const coreConcepts = (
           {
             title: "Metabolic & glycaemic",
             items: [
-              "Glucose 7.8–10.0 mmol/L (no benefit from tight control, harm from hypoglycaemia)",
-              "Replace K⁺ to ≥ 4.0 mmol/L, Mg²⁺ ≥ 1.0 mmol/L",
+              "Both hyperglycaemia (worsens cerebral oedema and ischaemic neuronal injury) and hypoglycaemia (directly neurotoxic) worsen neurological outcome — target a pragmatic 6–10 mmol/L rather than tight control",
+              "Hourly capillary/arterial glucose monitoring with a dynamic (variable-rate) insulin infusion protocol titrated against the trend",
+              "Avoid tight control (< 6 mmol/L) because of the high risk of unrecognised hypoglycaemia in the sedated, cooled patient",
+              "Replace K⁺ to ≥ 4.0 mmol/L, Mg²⁺ ≥ 1.0 mmol/L, correct calcium",
               "Lactate clearance is a useful surrogate for tissue perfusion",
               "Avoid steroids routinely (no outcome benefit unless adrenal failure)",
             ],
@@ -328,6 +344,9 @@ const coreConcepts = (
           </div>
         ))}
       </div>
+      <p className="text-xs text-muted-foreground mt-2">
+        Glycaemic targets and rationale per <InlineRef topicId="cardiac-arrest-post-resus" refLabel="Singapore Med J 2017 (Post-resus)" />.
+      </p>
       </CollapsibleSubsection>
     </ExamSection>
 
@@ -361,9 +380,20 @@ const coreConcepts = (
             <li><span className="font-medium text-foreground">Cold diuresis</span> → hypovolaemia, hypoK⁺ during induction; <span className="font-medium text-foreground">hyperK⁺ rebound</span> on rewarm — rewarm slowly and don't aggressively replace K⁺ in last hour of cooling</li>
             <li><span className="font-medium text-foreground">Drug clearance ↓ ~30 %</span> — sedatives accumulate; lengthens neuroprognostication window</li>
             <li>Bradycardia (~40–50 bpm) at 33 °C is expected and well tolerated unless hypoperfusing</li>
-            <li>Shivering increases CMR — manage stepwise: warm hands/face, magnesium, sedation, then NMBA</li>
+            <li>Shivering increases metabolic rate and O₂ consumption — manage with a stepwise algorithm (below)</li>
           </ul>
         </div>
+      </div>
+
+      <div className="p-4 rounded-lg border border-border bg-card mt-3">
+        <p className="text-sm font-semibold text-foreground mb-2">Stepwise shivering management during TTM</p>
+        <ol className="text-xs text-muted-foreground space-y-1.5 list-decimal list-inside">
+          <li><span className="font-medium text-foreground">Counter-warming</span> — raise ambient room temperature and apply surface warming to the hands, feet and face (tricks the hypothalamic thermostat without impairing core cooling).</li>
+          <li><span className="font-medium text-foreground">First-line pharmacological</span> — regular paracetamol; IV magnesium sulfate 2–4 g loading dose followed by an infusion, targeting a serum Mg²⁺ of ~1.0–1.5 mmol/L (raises the shivering threshold).</li>
+          <li><span className="font-medium text-foreground">Deepen sedation</span> — increase propofol and add an α2-agonist (dexmedetomidine or clonidine) for its anti-shivering and sympatholytic effect.</li>
+          <li><span className="font-medium text-foreground">Opioids</span> — fentanyl or alfentanil infusion (pethidine is effective via its kappa-agonist/anticholinergic action but is rarely used now because of seizure risk from the norpethidine metabolite).</li>
+          <li><span className="font-medium text-foreground">Neuromuscular blockade — last resort</span> — cisatracurium or rocuronium as a bolus or infusion, only once sedation is adequate, with continuous EEG running throughout because paralysis masks clinical seizure activity.</li>
+        </ol>
       </div>
       </CollapsibleSubsection>
     </ExamSection>
