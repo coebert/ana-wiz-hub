@@ -482,6 +482,61 @@ const NeurologicalDiseaseTopic = () => {
             </div>
           </div>
         </section>
+
+        {/* Guillain-Barre Syndrome */}
+        <section id="section-guillain-barre" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Guillain–Barré Syndrome</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09", "NA_BK_01"]} />
+          <FRCARelevanceCallout
+            bottomLine="An acute, often post-infectious, immune-mediated polyradiculoneuropathy with ascending weakness, autonomic instability and a real risk of ventilatory failure — suxamethonium is contraindicated and respiratory trends (the 20/30/40 rule) drive intubation timing."
+            implications={[
+              "Suxamethonium contraindicated — denervation hyperkalaemia can cause cardiac arrest.",
+              "Marked sensitivity to non-depolarising NMBAs — reduce dose and use quantitative monitoring.",
+              "Labile autonomic function — use invasive arterial monitoring and titrate vasoactive drugs cautiously; exaggerated pressor/depressor responses.",
+              "20/30/40 rule for elective intubation: VC <20 ml/kg, MIP <30 cmH₂O, MEP <40 cmH₂O.",
+              "IVIG 0.4 g/kg/day for 5 days or plasma exchange — equivalent efficacy, do not combine.",
+            ]}
+            buzzwords={[
+              "Ascending symmetrical weakness",
+              "Areflexia",
+              "AMAN / Miller Fisher variant",
+              "Post-Campylobacter jejuni",
+              "20/30/40 rule",
+              "IVIG vs plasma exchange",
+              "Autonomic lability",
+            ]}
+            vivaStem="A previously fit 30-year-old develops ascending weakness two weeks after a diarrhoeal illness and is now on the ward with a rising respiratory rate — how do you assess and manage them?"
+          />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Pathophysiology and Presentation</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Acute inflammatory demyelinating polyradiculoneuropathy (AIDP), the commonest variant of Guillain–Barré syndrome (GBS); typically occurs 1–3 weeks after an infective trigger — <em>Campylobacter jejuni</em>, cytomegalovirus, or Epstein–Barr virus — via molecular mimicry against peripheral nerve gangliosides</li>
+                <li>Progressive, ascending, broadly symmetrical limb weakness with hyporeflexia/areflexia; sensory symptoms often precede motor signs; bulbar involvement (dysphagia, facial weakness) and respiratory muscle weakness occur in a significant proportion</li>
+                <li>Recognised variants: acute motor axonal neuropathy (AMAN, pure motor, axonal, associated with anti-GM1 antibodies), and Miller Fisher syndrome (ophthalmoplegia, ataxia, areflexia, anti-GQ1b antibodies)</li>
+                <li>Autonomic dysfunction is common and can be severe: labile blood pressure, tachyarrhythmias or bradyarrhythmias, and exaggerated/unpredictable responses to vasoactive drugs and positional change <InlineRef topicId="neurological-disease" refLabel="Lancet GBS 2016" /></li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Anaesthetic Considerations</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Suxamethonium is contraindicated — denervation-related upregulation of extra-junctional acetylcholine receptors risks massive potassium efflux and cardiac arrest</li>
+                <li>Marked sensitivity to non-depolarising NMBAs — use reduced doses with mandatory quantitative (TOF) neuromuscular monitoring</li>
+                <li>Autonomic instability warrants invasive arterial blood pressure monitoring for any anaesthetic or major intervention, with cautious, incremental use of vasopressors/vasodilators given exaggerated responses</li>
+                <li>Neuraxial techniques should be used cautiously (and generally avoided in the acute phase) because of autonomic lability and the theoretical risk of triggering/confounding evolving neurology</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Critical Care Management</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Serial bedside spirometry to track deterioration — the "20/30/40 rule" flags the need for elective intubation: vital capacity &lt;20 ml/kg, maximum inspiratory pressure (MIP) &lt;30 cmH₂O, or maximum expiratory pressure (MEP) &lt;40 cmH₂O</li>
+                <li>Bulbar signs (weak cough, pooling secretions, dysphagia) and rapid rate of progression (e.g. the EGRIS — Erasmus GBS Respiratory Insufficiency Score) should also prompt early, controlled/elective intubation rather than waiting for crisis</li>
+                <li>Disease-modifying treatment: intravenous immunoglobulin 0.4 g/kg/day for 5 days, or plasma exchange — these have equivalent efficacy and should not be combined</li>
+                <li>Supportive critical care: VTE prophylaxis (immobility and dysautonomia increase risk), neuropathic pain management (gabapentinoids, e.g. gabapentin or pregabalin), meticulous pressure area care, early physiotherapy and rehabilitation planning given the prolonged recovery trajectory <InlineRef topicId="neurological-disease" refLabel="Lancet GBS 2016" /></li>
+              </ul>
+            </div>
+          </div>
+        </section>
         <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
