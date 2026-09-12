@@ -1,4 +1,6 @@
 import { SectionLayout } from "@/components/layout/SectionLayout";
+import { CaseBankCallout } from "@/components/cases/CaseBankCallout";
+import { physiologyCaseBank } from "@/data/cases/physiologyCases";
 import { SectionHeader } from "@/components/layout/SectionHeader";
 import { SectionSubNav } from "@/components/layout/SectionSubNav";
 import { TopicCard } from "@/components/topic/TopicCard";
@@ -39,6 +41,8 @@ const PhysiologySection = () => {
           </p>
         }
       />
+
+      <CaseBankCallout bank={physiologyCaseBank} />
 
       <section id="topics" className="scroll-mt-28">
         <h2 className="text-lg font-serif font-semibold text-foreground mb-3">

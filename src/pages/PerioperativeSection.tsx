@@ -48,7 +48,7 @@ const PerioperativeSection = () => {
           <BookOpenCheck className="h-6 w-6 shrink-0 text-perioperative mt-0.5" aria-hidden />
           <div>
             <h2 className="font-semibold text-foreground">Perioperative Case Bank</h2>
-            <p className="mt-1 text-sm text-muted-foreground">Work through 12 progressive patient scenarios covering steroid cover, phaeochromocytoma and antifibrinolytics.</p>
+            <p className="mt-1 text-sm text-muted-foreground">Work through 18 progressive patient scenarios covering steroid cover, phaeochromocytoma and antifibrinolytics.</p>
           </div>
         </div>
         <Button asChild className="shrink-0"><Link to="/perioperative/case-bank">Open case bank</Link></Button>
