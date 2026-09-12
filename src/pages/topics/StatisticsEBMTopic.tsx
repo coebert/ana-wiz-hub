@@ -10,6 +10,7 @@ import SkewDistributionDiagram from "@/components/diagrams/physics/SkewDistribut
 import CentralTendencyShiftDiagram from "@/components/diagrams/physics/CentralTendencyShiftDiagram";
 import BoxPlotDiagram from "@/components/diagrams/physics/BoxPlotDiagram";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const statisticsEbmFaqs: Array<[string, string]> = [
   [
@@ -126,6 +127,10 @@ const StatisticsEBMTopic = () => {
                 prone to the ecological fallacy. <strong>Systematic reviews</strong> and <strong>meta-analyses</strong> sit at the top of the hierarchy of evidence but are
                 only as good as the included studies.
               </p>
+              <div className="grid md:grid-cols-2 gap-3 pt-2">
+                <div className="rounded-lg border border-border p-3"><strong className="text-foreground">RCT variants</strong><ul className="mt-2 list-disc pl-5 text-sm"><li><strong>Parallel:</strong> concurrent groups receive different treatments.</li><li><strong>Crossover:</strong> each patient receives each treatment, separated by washout; best for stable chronic disease without carry-over.</li><li><strong>Factorial:</strong> a 2×2 or larger design tests interventions and interaction efficiently.</li><li><strong>Non-inferiority:</strong> tests whether a new treatment is no worse than control by a pre-specified clinically acceptable margin.</li></ul><InlineRef topicId="statistics-ebm" refLabel="Petrie & Sabin" /></div>
+                <div className="rounded-lg border border-border p-3"><strong className="text-foreground">Clinical trial phases</strong><ul className="mt-2 list-disc pl-5 text-sm"><li><strong>I:</strong> first-in-human safety, pharmacokinetics and dose-ranging, usually in few healthy volunteers.</li><li><strong>II:</strong> preliminary efficacy, safety and dose selection in affected patients.</li><li><strong>III:</strong> large comparative RCTs providing the main efficacy and safety evidence for approval.</li><li><strong>IV:</strong> post-marketing effectiveness, long-term safety and rare adverse effects.</li></ul><InlineRef topicId="statistics-ebm" refLabel="BJA Educ 2016" /></div>
+              </div>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -539,6 +544,7 @@ const StatisticsEBMTopic = () => {
                 <strong>Hazard Ratio (HR)</strong> is used in survival analysis (Kaplan-Meier curves, Cox regression) and accounts for time-to-event data. An HR of 0.7
                 means a 30% reduction in event rate at any given time point.
               </p>
+              <p><strong>Kaplan–Meier analysis</strong> plots time on the x-axis and estimated survival on the y-axis as a stepped curve, falling whenever an event occurs. A censored participant—lost to follow-up or event-free when follow-up ends—contributes information until censoring and is marked with a tick. Median survival is where the curve crosses 50%; the log-rank test compares whole survival curves. <InlineRef topicId="statistics-ebm" refLabel="Petrie & Sabin" /></p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -642,6 +648,7 @@ const StatisticsEBMTopic = () => {
               <p>
                 <strong>Publication bias</strong> is assessed using <strong>funnel plots</strong> — asymmetry suggests bias. Egger's test provides a formal statistical assessment.
               </p>
+              <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">GRADE methodology</h3><p className="mt-2">GRADE separates certainty of evidence from strength of recommendation. Certainty is rated <strong>high, moderate, low or very low</strong>. Risk of bias, inconsistency, indirectness, imprecision and publication bias downgrade certainty; a large effect, dose–response gradient or plausible residual confounding that would reduce an observed effect can upgrade observational evidence. Recommendations then balance certainty with benefits, harms, values and resource use. <InlineRef topicId="statistics-ebm" refLabel="GRADE Handbook" /></p></div>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
