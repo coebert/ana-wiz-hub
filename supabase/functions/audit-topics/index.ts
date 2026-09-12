@@ -1888,6 +1888,8 @@ async function runBatch(jobId: string) {
         options: { ...opts, cursor },
         updated_at: new Date().toISOString(),
       }).eq("id", jobId);
+      await renewLease();
+
 
       // Abort the entire job if the upstream scraper is clearly down — there
       // is no point burning through 141 topics that all return zero content.
