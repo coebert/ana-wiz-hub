@@ -24,6 +24,15 @@ const s = {
   serotonin: { label: "BJA Educ: serotonin syndrome in the perioperative period", href: "https://doi.org/10.1016/j.bjae.2019.10.003" },
   allergy: { label: "BJA Educ: allergy and anaesthesia, managing the risk", href: "https://doi.org/10.1016/j.bjae.2020.04.005" },
   liverDisease: { label: "BJA Educ: perioperative management of patients with liver disease", href: "https://doi.org/10.1016/j.bjae.2021.11.006" },
+  sugammadex: { label: "BJA Educ: sugammadex and neuromuscular reversal", href: "https://doi.org/10.1016/j.bjae.2020.03.008" },
+  doacReversal: { label: "BJA Educ: management of direct oral anticoagulants in the perioperative period", href: "https://doi.org/10.1016/j.bjae.2019.11.002" },
+  andexanetTrial: { label: "NEJM: andexanet alfa for acute major bleeding associated with factor Xa inhibitors", href: "https://doi.org/10.1056/NEJMoa1607887" },
+  vasoplegia: { label: "BJA Educ: vasoplegic syndrome after cardiac surgery", href: "https://doi.org/10.1016/j.bjae.2021.07.002" },
+  vasopressin: { label: "Surviving Sepsis Campaign: international guidelines for management of sepsis and septic shock 2021", href: "https://doi.org/10.1097/CCM.0000000000005337" },
+  clozapine: { label: "BJA Educ: anaesthesia for patients with psychiatric illness", href: "https://doi.org/10.1016/j.bjae.2021.12.003" },
+  qtc: { label: "BJA Educ: drug-induced QT prolongation and torsade de pointes", href: "https://doi.org/10.1093/bjaceaccp/mkr061" },
+  crrtDrugs: { label: "BJA Educ: drug dosing in acute kidney injury and renal replacement therapy", href: "https://doi.org/10.1016/j.bjae.2018.07.002" },
+  vancomycinAUC: { label: "ASHP/IDSA consensus guideline for therapeutic monitoring of vancomycin", href: "https://doi.org/10.1093/ajhp/zxaa036" },
 };
 
 export const pharmacologyCaseBank: CaseBank = {
@@ -31,7 +40,7 @@ export const pharmacologyCaseBank: CaseBank = {
   path: "/pharmacology/case-bank",
   title: "Pharmacology Case Bank",
   subtitle: "Progressive scenarios that apply kinetics, dynamics and drug-specific safety to real decisions.",
-  metaDescription: "Eighteen progressive pharmacology cases on TIVA kinetics, volatile agents, opioid tolerance, malignant hyperthermia, serotonin syndrome, TDM and NMB anaphylaxis.",
+  metaDescription: "Twenty-four progressive pharmacology cases on TIVA kinetics, volatile agents, opioid tolerance, malignant hyperthermia, serotonin syndrome, TDM, NMB anaphylaxis, reversal agents, anticoagulant reversal, vasoplegic shock, psychiatric drug interactions, renal replacement drug dosing and local anaesthetic toxicity.",
   backPath: "/pharmacology",
   backLabel: "Pharmacology",
   accentColor: "text-pharmacology",
@@ -864,6 +873,282 @@ export const pharmacologyCaseBank: CaseBank = {
       ],
       takeHome: "Enzyme inducers slowly lower INR while inhibitors rapidly raise it: anticipate the timescale, monitor INR closely around any drug change, and treat over-anticoagulation according to bleeding severity.",
       sourceLinks: [s.andexanet, s.pk],
+    },
+    {
+      id: "pharmacology-sugammadex-vs-neostigmine",
+      title: "Reversing a deep block before a patient on the combined pill",
+      category: "Kinetics & delivery",
+      difficulty: "Intermediate",
+      summary: "Dose-dependent sugammadex versus neostigmine, quantitative train-of-four targets and hormonal contraceptive interaction.",
+      topicIds: ["muscle-relaxants", "neuromuscular", "rocuronium", "pharmacokinetics", "womens-health-anaesthesia"],
+      patient: "A woman taking a combined oral contraceptive pill has a laparoscopic cholecystectomy under rocuronium. At the end of surgery the post-tetanic count is 2 and train-of-four count is 0.",
+      presentation: "Surgery is finishing and the team wants rapid, complete reversal with a clear plan for contraceptive counselling.",
+      stages: [
+        {
+          title: "Choose the reversal dose",
+          prompt: "What dose of sugammadex is needed at this depth of block, and could neostigmine be used instead?",
+          answer: [
+            "Post-tetanic count of 2 with no train-of-four response is a deep block, so sugammadex 4 mg/kg is required; 2 mg/kg is only appropriate once at least two twitches have returned on train-of-four, and 16 mg/kg is reserved for immediate reversal within a few minutes of rocuronium at induction (a 'can't intubate, can't ventilate' rescue).",
+            "Neostigmine cannot reliably reverse a deep block because acetylcholinesterase inhibition has a ceiling effect; it should only be given once at least two twitches are present, ideally with a train-of-four ratio guiding adequacy.",
+            "Whichever agent is used, confirm recovery with quantitative neuromuscular monitoring to a train-of-four ratio of 0.9 or more before extubation, since qualitative (visual/tactile) assessment misses residual block above a ratio of about 0.4.",
+          ],
+        },
+        {
+          title: "Address the contraceptive interaction",
+          prompt: "What should you tell this patient about sugammadex and her pill?",
+          answer: [
+            "Sugammadex binds progestogens as well as rocuronium and reduces systemic exposure to hormonal contraceptives, equivalent to missing one or more doses of a combined or progestogen-only pill.",
+            "Advise the patient to use an additional barrier method of contraception for the next seven days, in line with manufacturer and national guidance, regardless of where she is in her pill cycle.",
+            "The interaction is not dose-dependent in a clinically relevant way at standard reversal doses, so it applies whether 2 mg/kg or 4 mg/kg is given, and should be documented and explained before discharge.",
+          ],
+        },
+        {
+          title: "Anticipate complications",
+          prompt: "What else should you monitor for after sugammadex reversal?",
+          answer: [
+            "Recurarisation is rare with an adequate sugammadex dose but more likely if the dose is underestimated for actual measured depth of block, especially in obesity where total body weight should be used for dosing.",
+            "Anaphylaxis to sugammadex is recognised, typically within minutes of administration, and should be managed as any perioperative anaphylaxis with early adrenaline.",
+            "If further neuromuscular blockade is needed within 24 hours, an aminosteroid (rocuronium or vecuronium) may be ineffective because of residual encapsulation; use a benzylisoquinolinium (atracurium or cisatracurium) or a substantially higher rocuronium dose with monitoring.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Sugammadex is a modified gamma-cyclodextrin that encapsulates rocuronium (and, less avidly, vecuronium) in a 1:1 complex, terminating neuromuscular block independently of acetylcholinesterase. Because encapsulation is stoichiometric, the dose must match the measured depth of block: 2 mg/kg for reappearance of two twitches on train-of-four, 4 mg/kg for a post-tetanic count of 1–2 (deep block), and 16 mg/kg for immediate reversal shortly after a rapid sequence induction dose of rocuronium. Neostigmine instead increases acetylcholine availability at the neuromuscular junction and cannot overcome deep block regardless of dose." },
+        { title: "Management and monitoring", content: "Always use quantitative neuromuscular monitoring (acceleromyography or equivalent) rather than clinical signs alone, and confirm a train-of-four ratio of 0.9 or higher before tracheal extubation to avoid residual paralysis, which is associated with postoperative pulmonary complications. For hormonal contraception, warn the patient before discharge that sugammadex reduces progestogen exposure and advise barrier contraception for seven days; this counselling should be routine, not incidental, for any woman of reproductive age receiving sugammadex." },
+        { title: "Exam pitfall", content: "Do not quote a single sugammadex dose for all situations — examiners expect the dose linked explicitly to the measured depth of block (2, 4 or 16 mg/kg). Do not forget the contraceptive interaction, which is a frequently tested safety point distinct from the anaesthetic pharmacology itself." },
+      ],
+      takeHome: "Match sugammadex dose to measured depth of block (2/4/16 mg/kg), confirm train-of-four ratio ≥0.9 before extubation, and always warn women on hormonal contraception to use barrier contraception for seven days.",
+      sourceLinks: [s.sugammadex, s.nmbGuideline],
+    },
+    {
+      id: "pharmacology-apixaban-emergency-reversal",
+      title: "Emergency laparotomy on apixaban",
+      category: "Critical care drugs",
+      difficulty: "Advanced",
+      summary: "DOAC reversal strategies, andexanet alfa versus prothrombin complex concentrate, and anti-Xa level interpretation.",
+      topicIds: ["anticoagulants", "transfusion-coagulation", "trauma-emergency", "pharmacokinetics", "preoperative-assessment"],
+      patient: "A patient on apixaban 5 mg twice daily for atrial fibrillation, last dose six hours ago, needs an emergency laparotomy for a perforated viscus with active haemorrhage.",
+      presentation: "The surgical team wants theatre within the hour; coagulation screen is unhelpful because standard prothrombin time and activated partial thromboplastin time do not reliably reflect apixaban activity.",
+      stages: [
+        {
+          title: "Assess anticoagulant effect",
+          prompt: "How do you establish how anticoagulated this patient is?",
+          answer: [
+            "Standard prothrombin time and activated partial thromboplastin time are insensitive to factor Xa inhibitors and cannot exclude clinically relevant residual effect.",
+            "A calibrated anti-Xa assay specific to apixaban is the most reliable test where available; a level below about 30 ng/mL is generally considered to carry low bleeding risk, though there is no universally validated safe threshold for surgery.",
+            "In practice, time since last dose, renal function (apixaban has a partial renal clearance) and the urgency of bleeding usually dictate management before an anti-Xa result is available.",
+          ],
+        },
+        {
+          title: "Choose the reversal strategy",
+          prompt: "What do you give for life-threatening bleeding on apixaban?",
+          answer: [
+            "Andexanet alfa, a modified recombinant factor Xa decoy protein, directly reverses apixaban and rivaroxaban; it is given as a bolus followed by a two-hour infusion, with the bolus/infusion rate tiered to the dose and timing of the last DOAC dose (low-dose regimen for apixaban ≤5 mg or >8 hours since last dose, high-dose regimen otherwise).",
+            "Where andexanet alfa is unavailable, unaffordable or contraindicated, four-factor prothrombin complex concentrate 25–50 units/kg is used off-label; it does not directly reverse the drug but replaces clotting factors to overwhelm the anticoagulant effect.",
+            "Tranexamic acid, correction of hypothermia, acidosis and hypocalcaemia, and standard massive transfusion practice should run in parallel; do not delay life-saving surgery solely to await a specific reversal agent if bleeding is catastrophic.",
+          ],
+        },
+        {
+          title: "Plan perioperative safety",
+          prompt: "What are the specific risks of andexanet alfa and prothrombin complex concentrate here?",
+          answer: [
+            "Andexanet alfa carries a recognised thrombotic risk, including stroke and myocardial infarction, thought to relate to inhibition of the tissue factor pathway inhibitor and transient procoagulant state; thromboprophylaxis should be resumed as soon as safely possible after bleeding is controlled.",
+            "Andexanet alfa also binds and inactivates heparin-based anticoagulation, which can complicate subsequent use of heparin, for example if cardiopulmonary bypass or extracorporeal support is later needed.",
+            "Prothrombin complex concentrate similarly carries thrombotic risk, particularly in patients with pre-existing prothrombotic states, and repeat dosing should be guided by ongoing bleeding and, where available, viscoelastic testing rather than fixed schedules.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Direct oral factor Xa inhibitors such as apixaban are not reliably assessed by routine coagulation tests, so clinical urgency often outweighs waiting for confirmatory anti-Xa assay in true emergencies. Andexanet alfa offers targeted reversal by acting as a decoy substrate for the drug, while prothrombin complex concentrate provides non-specific factor replacement; both are reasonable depending on availability, cost and local protocol, and neither should delay definitive haemorrhage control (surgery, embolisation) when bleeding is life-threatening." },
+        { title: "Management and monitoring", content: "Give tranexamic acid early, correct the lethal triad (hypothermia, acidosis, hypocalcaemia), and involve haematology for a coordinated reversal strategy alongside massive transfusion. Choose andexanet alfa dosing tier based on which DOAC, its dose, and time since last intake; monitor for post-reversal thrombosis and restart thromboprophylaxis as soon as haemostasis allows. Document clearly which reversal agent was given and why, since this affects subsequent anticoagulation choices." },
+        { title: "Exam pitfall", content: "Do not say vitamin K or fresh frozen plasma reverses a DOAC — they do not meaningfully affect factor Xa inhibitors. Be specific that andexanet alfa also inactivates unfractionated and low molecular weight heparin, which matters if bypass is anticipated." },
+      ],
+      takeHome: "Routine clotting tests do not exclude significant apixaban effect: for life-threatening bleeding give andexanet alfa (dose tiered to DOAC dose/timing) or 4-factor PCC 25–50 units/kg, alongside tranexamic acid and correction of the lethal triad, without delaying surgical control of bleeding.",
+      sourceLinks: [s.doacReversal, s.andexanet, s.andexanetTrial],
+    },
+    {
+      id: "pharmacology-vasoplegic-shock",
+      title: "Refractory hypotension after cardiopulmonary bypass",
+      category: "Critical care drugs",
+      difficulty: "Advanced",
+      summary: "Vasoplegic shock pathophysiology and staged escalation through noradrenaline, vasopressin, hydrocortisone and methylene blue.",
+      topicIds: ["inotropes-vasopressors", "shock-states", "cardiac-output-monitoring", "pharmacodynamics", "cardiac-anaesthesia"],
+      patient: "An adult comes off cardiopulmonary bypass with a warm periphery, low systemic vascular resistance and mean arterial pressure of 45 mmHg despite a noradrenaline infusion at 0.5 micrograms/kg/min and preserved cardiac output.",
+      presentation: "Hypotension persists despite escalating noradrenaline, with no evidence of bleeding, tamponade or poor ventricular function on transoesophageal echocardiography.",
+      stages: [
+        {
+          title: "Recognise the syndrome",
+          prompt: "What is happening and how do you confirm it?",
+          answer: [
+            "This is vasoplegic syndrome: profound vasodilation from a combination of nitric oxide overproduction, inflammatory cytokine release from cardiopulmonary bypass, vasopressin deficiency and, in some patients, relative adrenal insufficiency.",
+            "The diagnosis is supported by a high or normal cardiac index with low systemic vascular resistance and persistent hypotension despite an escalating catecholamine dose — distinguish it from cardiogenic shock (low output) and from bleeding/tamponade (assess with echocardiography and chest drain output).",
+            "Risk factors include prolonged bypass time, pre-existing angiotensin-converting enzyme inhibitor or angiotensin receptor blocker use, and low pre-bypass ejection fraction.",
+          ],
+        },
+        {
+          title: "Escalate vasopressor therapy",
+          prompt: "What do you add once noradrenaline alone is failing?",
+          answer: [
+            "Add vasopressin as a second-line, non-catecholamine vasopressor at a fixed infusion rate, typically starting around 0.03 units/min (up to about 0.04 units/min), which acts on V1 receptors and is synergistic with catecholamines while sparing further tachycardia.",
+            "Give hydrocortisone (for example 50 mg intravenously six-hourly or an equivalent infusion) to address relative adrenal insufficiency and to upregulate vascular adrenergic and vasopressin receptor responsiveness.",
+            "If hypotension remains refractory despite noradrenaline, vasopressin and hydrocortisone, consider methylene blue (typically 1–2 mg/kg intravenously over 20–60 minutes), which inhibits guanylate cyclase and nitric oxide-mediated vasodilation.",
+          ],
+        },
+        {
+          title: "Anticipate complications of treatment",
+          prompt: "What are the risks of this escalation, and what must you avoid?",
+          answer: [
+            "Vasopressin at higher doses risks splanchnic, digital and coronary ischaemia, and hyponatraemia; use the lowest effective fixed dose rather than titrating upward freely.",
+            "Methylene blue can cause serotonin toxicity if the patient is on serotonergic drugs (including many antidepressants and some opioids), interferes with pulse oximetry readings, causes blue-green discolouration of urine and skin, and is contraindicated in glucose-6-phosphate dehydrogenase deficiency because of haemolysis risk.",
+            "Monitor lactate, urine output, peripheral perfusion and echocardiographic function throughout, since worsening perfusion despite normal pressure suggests the vasopressor strategy alone is inadequate and mechanical support may be needed.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Vasoplegic syndrome after cardiopulmonary bypass reflects a mismatch between high cardiac output and pathologically low vascular tone, driven by nitric oxide synthase upregulation, complement activation, relative vasopressin deficiency and adrenal suppression. Its haemodynamic signature (low systemic vascular resistance, preserved or high cardiac index, hypotension) distinguishes it from cardiogenic causes and should prompt a staged, mechanistically targeted escalation rather than simply increasing a single catecholamine indefinitely." },
+        { title: "Management and monitoring", content: "Escalate in a stepwise fashion: optimise volume status, add vasopressin early as a catecholamine-sparing agent, give hydrocortisone for relative adrenal insufficiency, and reserve methylene blue for truly refractory cases given its interaction and monitoring pitfalls. Track invasive arterial pressure, cardiac output/index, lactate clearance and urine output as markers of adequate perfusion rather than pressure alone, and involve the cardiac surgical and intensive care teams early given the risk of needing mechanical circulatory support." },
+        { title: "Exam pitfall", content: "Do not simply keep increasing noradrenaline dose without adding a second mechanism — examiners want vasopressin and hydrocortisone named specifically with doses, and awareness that methylene blue interacts with serotonergic drugs and pulse oximetry." },
+      ],
+      takeHome: "Vasoplegic shock needs staged, mechanism-based escalation: noradrenaline, then vasopressin ~0.03 units/min, then hydrocortisone, reserving methylene blue for refractory cases while watching for serotonin toxicity and ischaemic complications.",
+      sourceLinks: [s.vasoplegia, s.vasopressin, s.vasopressor],
+    },
+    {
+      id: "pharmacology-clozapine-perioperative",
+      title: "Prolonged QTc in a patient on clozapine",
+      category: "Analgesia & anaesthetics",
+      difficulty: "Advanced",
+      summary: "Antipsychotic and serotonergic drug interactions in the perioperative period, including clozapine, agranulocytosis and MAOI–pethidine interaction.",
+      topicIds: ["cardiac-arrhythmias", "pharmacodynamics", "sepsis", "preoperative-assessment", "chronic-pain"],
+      patient: "A patient with treatment-resistant schizophrenia on clozapine presents for emergency appendicectomy. The preoperative electrocardiogram shows a corrected QT interval of 480 ms, and the patient also takes phenelzine for comorbid depression.",
+      presentation: "The surgical team wants to proceed urgently; the anaesthetic team must plan safe drug choices around psychotropic medication that cannot simply be stopped.",
+      stages: [
+        {
+          title: "Assess the QTc risk",
+          prompt: "What does the prolonged QTc mean for anaesthetic drug choice?",
+          answer: [
+            "Clozapine, along with many antipsychotics, prolongs the QT interval and increases torsade de pointes risk, which is compounded by other QT-prolonging drugs (ondansetron, droperidol, some macrolides and antiemetics) and by hypokalaemia, hypomagnesaemia or hypocalcaemia.",
+            "Correct electrolytes preoperatively, avoid unnecessary additional QT-prolonging agents, and use continuous electrocardiographic monitoring intraoperatively and postoperatively.",
+            "Do not stop clozapine abruptly for a short procedure without psychiatric input, since abrupt discontinuation risks severe rebound psychosis and cholinergic rebound (sweating, salivation, gastrointestinal symptoms); if prolonged nil-by-mouth status is expected, involve psychiatry early to plan continuation or bridging.",
+          ],
+        },
+        {
+          title: "Address clozapine-specific risks",
+          prompt: "What other clozapine-specific issues must be checked before and after surgery?",
+          answer: [
+            "Clozapine causes agranulocytosis in a small but important proportion of patients; check a recent full blood count and continue routine haematological monitoring, and have a low threshold to investigate postoperative fever or sepsis as neutropenic sepsis until excluded.",
+            "Clozapine also causes myocarditis and cardiomyopathy, ileus (through anticholinergic and antiserotonergic gut effects, worsened by surgical handling and opioids), and significant sedation that potentiates anaesthetic and opioid sedative effects.",
+            "Postoperative ileus risk means opioid-sparing analgesia and early monitoring of bowel function are particularly important in patients on clozapine.",
+          ],
+        },
+        {
+          title: "Manage the MAOI interaction",
+          prompt: "Why is phenelzine relevant to intraoperative analgesic choice?",
+          answer: [
+            "Monoamine oxidase inhibitors interacting with pethidine (and other serotonergic opioids such as tramadol and dextromethorphan) can precipitate life-threatening serotonin toxicity, with hyperthermia, rigidity, autonomic instability and altered mental state; pethidine must be avoided.",
+            "Morphine and fentanyl are generally considered safer opioid choices in patients on monoamine oxidase inhibitors, used cautiously and at reduced initial doses given the risk of exaggerated sedative and hypotensive response.",
+            "Avoid other serotonergic agents perioperatively where possible (for example some antiemetics with serotonergic activity), and have a clear plan and staff awareness for recognising and treating serotonin syndrome should it occur.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Patients on long-term antipsychotic and antidepressant therapy carry multiple, overlapping perioperative risks: QT prolongation and arrhythmia risk from the drugs themselves and from additive perioperative agents, clozapine-specific haematological and cardiac toxicity, and dangerous pharmacodynamic interactions between monoamine oxidase inhibitors and serotonergic opioids. None of these risks justify abrupt cessation of psychiatric medication, which itself carries serious relapse and withdrawal risk; the safer approach is informed, monitored continuation with careful choice of interacting perioperative drugs." },
+        { title: "Management and monitoring", content: "Correct electrolytes, use continuous cardiac monitoring, avoid additional QT-prolonging drugs, check a recent full blood count, and select opioids (morphine or fentanyl in reduced initial doses) rather than pethidine or tramadol in a patient on a monoamine oxidase inhibitor. Maintain a low threshold for investigating fever as neutropenic sepsis in clozapine-treated patients, anticipate postoperative ileus, and involve psychiatry and, where relevant, cardiology in the perioperative plan." },
+        { title: "Exam pitfall", content: "Do not answer 'stop the psychiatric drugs before surgery' — this is usually wrong and dangerous. Name pethidine specifically as the opioid to avoid with monoamine oxidase inhibitors, and clozapine specifically for agranulocytosis and myocarditis." },
+      ],
+      takeHome: "Continue clozapine and monoamine oxidase inhibitors perioperatively wherever possible; correct electrolytes and monitor QTc, watch for neutropenic sepsis and ileus, and avoid pethidine (and other serotonergic opioids) in patients on MAOIs.",
+      sourceLinks: [s.clozapine, s.qtc, s.serotonin],
+    },
+    {
+      id: "pharmacology-crrt-drug-dosing",
+      title: "Sub-therapeutic vancomycin on continuous renal replacement therapy",
+      category: "Kinetics & delivery",
+      difficulty: "Advanced",
+      summary: "Augmented renal clearance, drug removal on renal replacement therapy, beta-lactam loading and vancomycin AUC:MIC targeting.",
+      topicIds: ["antimicrobials-icu", "aki-rrt", "pharmacokinetics", "sepsis", "infectious-disease-icu"],
+      patient: "A young trauma patient with septic shock is established on continuous veno-venous haemofiltration. Piperacillin-tazobactam and vancomycin are prescribed at standard normal-renal-function doses; a trough vancomycin level returns unexpectedly low.",
+      presentation: "The patient remains septic with a rising C-reactive protein despite antibiotics that should, on paper, be adequately dosed.", 
+      stages: [
+        {
+          title: "Explain the low level",
+          prompt: "Why might standard dosing under-treat this patient?",
+          answer: [
+            "Critically ill patients, especially younger trauma patients with high cardiac output early in sepsis, commonly develop augmented renal clearance, increasing clearance of renally eliminated and partially renally eliminated drugs well beyond normal.",
+            "Continuous renal replacement therapy itself substantially increases clearance of water-soluble, low protein-bound drugs with a small volume of distribution (including vancomycin and beta-lactams); higher filtration/dialysate flow rates increase drug removal further.",
+            "Large volume resuscitation increases the volume of distribution for hydrophilic antibiotics, diluting peak concentrations independent of clearance changes.",
+          ],
+        },
+        {
+          title: "Fix the dosing strategy",
+          prompt: "How should beta-lactam and vancomycin dosing be adjusted?",
+          answer: [
+            "Give a full, unadjusted loading dose of beta-lactams (and other hydrophilic antibiotics) based on the increased volume of distribution, regardless of renal replacement therapy, since the loading dose targets initial concentration rather than clearance.",
+            "For maintenance dosing, use extended or continuous infusions of beta-lactams to maximise the time above minimum inhibitory concentration, guided by therapeutic drug monitoring where available, rather than relying on renal function-based dose reduction tables designed for stable chronic kidney disease.",
+            "For vancomycin, load fully then dose to a target area-under-the-curve to minimum inhibitory concentration (AUC:MIC) ratio of 400–600, using paired levels or Bayesian dosing software rather than trough-only monitoring, which correlates poorly with efficacy and toxicity in continuous renal replacement therapy.",
+          ],
+        },
+        {
+          title: "Monitor and reassess",
+          prompt: "What ongoing monitoring is needed as the clinical picture evolves?",
+          answer: [
+            "Recheck levels and adjust dosing whenever renal replacement therapy settings change (filtration rate, dialysate flow, filter type) or when the patient transitions between augmented clearance and evolving acute kidney injury, since drug clearance can change rapidly in either direction.",
+            "Monitor for toxicity as well as under-dosing: vancomycin nephrotoxicity risk rises with prolonged high troughs/AUC, and beta-lactam neurotoxicity (seizures, encephalopathy) can occur with accumulation if renal replacement therapy is interrupted or clotted.",
+            "Involve microbiology and pharmacy for source control review, therapeutic drug monitoring interpretation and antibiotic rationalisation once cultures are available.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Standard renal dosing tables assume stable chronic kidney disease and do not reflect the dynamic, often supranormal clearance seen in early sepsis (augmented renal clearance) or the substantial and adjustable clearance imposed by continuous renal replacement therapy, particularly for small, hydrophilic, minimally protein-bound drugs. Under-dosing in this setting is common and clinically important because it drives both treatment failure and antimicrobial resistance." },
+        { title: "Management and monitoring", content: "Always give full loading doses based on volume of distribution, then individualise maintenance dosing to measured renal replacement therapy settings and, ideally, therapeutic drug monitoring: extended/continuous infusion for beta-lactams, and AUC:MIC-guided vancomycin dosing rather than trough-only targets. Reassess dosing at every renal replacement therapy circuit or settings change, and monitor for both efficacy failure and drug accumulation toxicity." },
+        { title: "Exam pitfall", content: "Do not reduce the loading dose in renal impairment or on renal replacement therapy — loading dose is unchanged, only maintenance dosing is adjusted. Quote the AUC:MIC target (400–600) rather than a trough range alone for vancomycin." },
+      ],
+      takeHome: "Give full loading doses regardless of renal replacement therapy, use extended/continuous beta-lactam infusions and AUC:MIC-guided vancomycin dosing (target 400–600), and reassess whenever augmented clearance or filter settings change.",
+      sourceLinks: [s.crrtDrugs, s.vancomycinAUC, s.antimicrobial],
+    },
+    {
+      id: "pharmacology-last-lipid-rescue",
+      title: "Seizure and arrhythmia after a large regional block",
+      category: "Analgesia & anaesthetics",
+      difficulty: "Advanced",
+      summary: "Local anaesthetic systemic toxicity recognition, maximum safe doses and lipid emulsion rescue protocol.",
+      topicIds: ["local-anaesthetics", "regional-anaesthesia", "cardiac-arrhythmias", "clinical-incidents", "airway-management"],
+      patient: "An adult weighing 70 kg receives a large-volume brachial plexus block using levobupivacaine. Shortly after injection they develop perioral tingling, agitation and then a generalised tonic-clonic seizure, followed by bradycardia and broad-complex tachycardia.",
+      presentation: "The seizure is not settling with usual first-line management and cardiovascular instability is worsening.",
+      stages: [
+        {
+          title: "Recognise and stabilise",
+          prompt: "What is happening and what are the immediate steps?",
+          answer: [
+            "This is local anaesthetic systemic toxicity: unbound local anaesthetic reaching the central nervous system causes excitatory then depressive neurological signs, and direct sodium (and other ion) channel blockade in the myocardium causes conduction delay, arrhythmia and cardiovascular collapse.",
+            "Stop injecting local anaesthetic immediately, call for help, secure the airway with 100% oxygen and ensure adequate ventilation (hypoxia and acidosis worsen toxicity), and treat seizures with a benzodiazepine, avoiding propofol boluses in a cardiovascularly unstable patient.",
+            "Start basic/advanced life support if there is cardiac arrest, but modify with prolonged resuscitation attempts and lower-dose, less frequent adrenaline boluses (small doses, e.g. ≤1 microgram/kg) since standard doses may worsen outcomes in local anaesthetic toxicity; avoid vasopressin, calcium channel blockers, beta-blockers and lidocaine as antiarrhythmics.",
+          ],
+        },
+        {
+          title: "Give lipid emulsion",
+          prompt: "What dose and regimen of lipid emulsion do you give?",
+          answer: [
+            "Give intravenous 20% lipid emulsion as an initial bolus of 1.5 mL/kg of ideal body weight over about a minute, which can be repeated up to twice more at five-minute intervals if cardiovascular stability has not been restored.",
+            "Start a continuous infusion at 15 mL/kg/hour, and if cardiovascular stability is still not restored, increase the infusion rate up to a maximum of 12 mL/kg (total dose, bolus plus infusion) within the first 30 minutes.",
+            "Continue monitoring for at least 12 hours after a cardiovascular event or 4 hours after an isolated seizure, since local anaesthetic toxicity can recur (redistribution) after apparent recovery.",
+          ],
+        },
+        {
+          title: "Prevent recurrence",
+          prompt: "How should this event change future practice?",
+          answer: [
+            "Always calculate and respect maximum safe doses before the block (approximately: lidocaine 3 mg/kg plain or 7 mg/kg with adrenaline; bupivacaine/levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg), and use the lowest effective volume and concentration, particularly in high-risk sites (intercostal, epidural, or large-volume plexus blocks) and low body weight patients.",
+            "Use incremental injection with repeated aspiration, ultrasound guidance to reduce inadvertent intravascular injection, and ensure lipid emulsion is immediately available wherever local anaesthetic is administered in significant doses.",
+            "Report the event as a critical incident, document the total dose given, and complete or refer to a national local anaesthetic toxicity registry where one exists.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Local anaesthetic systemic toxicity results from excessive plasma unbound drug reaching excitable tissue, either through inadvertent intravascular injection or absorption from a large total dose. Central nervous system signs (perioral tingling, tinnitus, agitation, seizure) typically precede cardiovascular signs (arrhythmia, conduction block, cardiovascular collapse), though cardiovascular collapse can occur first or in isolation, especially with more cardiotoxic agents like bupivacaine. Lipid emulsion is thought to act partly as a 'lipid sink' scavenging lipophilic local anaesthetic from tissue and partly through direct cardiac metabolic and ion channel effects." },
+        { title: "Management and monitoring", content: "Follow the published sequence: stop injecting, call for help, secure the airway and give 100% oxygen, control seizures with benzodiazepines, and give lipid emulsion early rather than as a last resort once significant cardiovascular or persistent central nervous system toxicity is present. Use modified resuscitation drug doses if cardiac arrest occurs, and prolong monitoring afterwards given the risk of recurrence. Prevent toxicity in the first place through dose calculation, incremental injection, aspiration and ultrasound guidance." },
+        { title: "Exam pitfall", content: "Do not confuse the initial bolus (1.5 mL/kg) with the infusion rate (15 mL/kg/h) or the maximum total dose (12 mL/kg) — examiners frequently test precise recall of all three numbers. State clearly that propofol is not a substitute for lipid emulsion and that standard-dose adrenaline may worsen outcomes in this specific arrest scenario." },
+      ],
+      takeHome: "Treat local anaesthetic systemic toxicity with airway control, benzodiazepine for seizures, and early lipid emulsion (1.5 mL/kg bolus, 15 mL/kg/h infusion, max 12 mL/kg) — and prevent it by respecting per-kilogram maximum doses and using incremental, ultrasound-guided injection.",
+      sourceLinks: [s.last, s.la],
     },
   ],
 };
