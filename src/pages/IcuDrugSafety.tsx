@@ -10,6 +10,7 @@ import {
   Activity,
   Link2,
   FlaskConical,
+  TrendingDown,
 } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
