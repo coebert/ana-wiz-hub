@@ -67,17 +67,30 @@ const IcuDrugSafety = () => {
       .filter((g) => activeGroup === "all" || g.id === activeGroup)
       .map((g) => ({
         ...g,
-        drugs: q
-          ? g.drugs.filter((d) =>
-              [d.drug, ...d.interactions, ...d.contraindications, ...d.monitoring, d.alert ?? ""]
-                .join(" ")
-                .toLowerCase()
-                .includes(q),
-            )
-          : g.drugs,
+        drugs: g.drugs
+          .filter((d) => {
+            if (!riskOnly) return true;
+            const risk = icuDrugWithdrawal[d.slug]?.risk;
+            return risk === "high" || risk === "moderate";
+          })
+          .filter((d) => {
+            if (!q) return true;
+            const wd = icuDrugWithdrawal[d.slug];
+            return [
+              d.drug,
+              ...d.interactions,
+              ...d.contraindications,
+              ...d.monitoring,
+              d.alert ?? "",
+              wd ? [wd.why, wd.offset, ...wd.taper, ...wd.monitoring, wd.rescue ?? ""].join(" ") : "",
+            ]
+              .join(" ")
+              .toLowerCase()
+              .includes(q);
+          }),
       }))
       .filter((g) => g.drugs.length > 0);
-  }, [search, activeGroup]);
+  }, [search, activeGroup, riskOnly]);
 
   const shown = groups.reduce((n, g) => n + g.drugs.length, 0);
 
