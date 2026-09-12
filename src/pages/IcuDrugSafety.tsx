@@ -243,11 +243,18 @@ const IcuDrugSafety = () => {
                           Compare
                         </Link>
                         <Link
+                          to={`/intensive-care/interaction-matrix?slug=${d.slug}#drug`}
+                          className="font-medium text-icu underline-offset-4 hover:underline"
+                        >
+                          Interaction matrix
+                        </Link>
+                        <Link
                           to={`/intensive-care/drug-cards?slug=${d.slug}&drug=${encodeURIComponent(d.drug)}`}
                           className="font-medium text-icu underline-offset-4 hover:underline"
                         >
                           Full drug card
                         </Link>
+
                       </div>
                     </div>
 
@@ -450,8 +457,13 @@ const IcuDrugSafety = () => {
           , the{" "}
           <Link to="/intensive-care/interaction-checker" className="font-medium text-icu underline-offset-4 hover:underline">
             interaction checker
+          </Link>
+          , the{" "}
+          <Link to="/intensive-care/interaction-matrix" className="font-medium text-icu underline-offset-4 hover:underline">
+            interaction matrix
           </Link>{" "}
           and the{" "}
+
           <Link to="/intensive-care/drug-cards" className="font-medium text-icu underline-offset-4 hover:underline">
             full ICU drug cards
           </Link>

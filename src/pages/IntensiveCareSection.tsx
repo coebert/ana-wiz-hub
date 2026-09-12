@@ -82,7 +82,11 @@ const IntensiveCareSection = () => {
         <a href="/intensive-care/interaction-checker" className="font-medium text-icu underline-offset-4 hover:underline">
           interaction checker
         </a>{" "}
-        and the{" "}
+        , the{" "}
+        <a href="/intensive-care/interaction-matrix" className="font-medium text-icu underline-offset-4 hover:underline">
+          interaction matrix
+        </a>{" "}
+        (which ICU drugs interact with each other) and the{" "}
         <a href="/intensive-care/drug-comparison" className="font-medium text-icu underline-offset-4 hover:underline">
           drug comparison tool
         </a>{" "}
