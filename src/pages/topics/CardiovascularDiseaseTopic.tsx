@@ -57,13 +57,15 @@ const CardiovascularDiseaseTopicWorkedExamples: WorkedExample[] = [
 ];
 
 const tocItems = [
+  { id: "section-risk-stratification", label: "Perioperative Cardiac Risk Stratification", group: "Core" },
   { id: "section-ischaemic-heart-disease", label: "Ischaemic Heart Disease", group: "Core" },
   { id: "section-valvular-heart-disease", label: "Valvular Heart Disease", group: "Core" },
   { id: "section-hypertension", label: "Hypertension", group: "Core" },
-  { id: "section-heart-failure", label: "Heart Failure", group: "Management" },
+  { id: "section-heart-failure", label: "Heart Failure & Cardiomyopathy", group: "Management" },
   { id: "section-arrhythmias-pacemakers-and-icds", label: "Arrhythmias, Pacemakers & ICDs", group: "Devices" },
   { id: "section-pulmonary-hypertension", label: "Pulmonary Hypertension", group: "Specialist" },
   { id: "section-adult-congenital-heart-disease", label: "Adult Congenital Heart Disease", group: "Specialist" },
+  { id: "section-postoperative-care", label: "Postoperative Cardiac Care", group: "Management" },
 ];
 
 const cardiovascularDiseaseFaqs: Array<[string, string]> = [
@@ -104,6 +106,42 @@ const CardiovascularDiseaseTopic = () => {
          </p>
          <TopicTableOfContents items={tocItems} />
 
+         {/* Perioperative Risk Stratification */}
+         <section id="section-risk-stratification" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Perioperative Cardiac Risk Stratification</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Risk Prediction Tools</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Revised Cardiac Risk Index (RCRI, Lee 1999)</strong> — one point each for: high-risk surgery (intraperitoneal/intrathoracic/suprainguinal vascular), history of IHD, history of heart failure, history of cerebrovascular disease, insulin-dependent diabetes, creatinine &gt;177 µmol/L (2.0 mg/dL). Risk of major cardiac complication: 0 points ≈0.4%, 1 point ≈1%, 2 points ≈2.4%, ≥3 points ≈5.4%</li>
+                <li><strong>ACS-NSQIP Surgical Risk Calculator / MICA model</strong> — incorporates ASA grade, functional status, procedure type and comorbidities to give a continuous predicted risk of MI or cardiac arrest; performs better than RCRI at the extremes of risk and is endorsed by ACC/AHA 2014 and 2024 as the preferred first step</li>
+                <li>ESC/ESA 2022 stepwise pathway: (1) urgency of surgery, (2) active cardiac conditions (unstable angina, decompensated HF, severe arrhythmia, severe valve disease), (3) surgery-specific risk (low &lt;1%, intermediate 1–5%, high &gt;5% 30-day cardiovascular death/MI), (4) functional capacity, (5) further testing only if it will change management</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Functional Capacity & CPET</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Functional capacity expressed in metabolic equivalents (METs): 1 MET = resting O₂ consumption (3.5 mL/kg/min). Climbing a flight of stairs or walking briskly on the flat ≈4 METs; the inability to achieve 4 METs on self-report (Duke Activity Status Index) is associated with increased perioperative and long-term cardiac risk (METS trial 2018 confirmed self-reported METs poorly predict complications, favouring objective testing)</li>
+                <li>Cardiopulmonary exercise testing (CPET) gives objective, reproducible values: anaerobic threshold (AT) &lt;11 mL/kg/min identifies increased perioperative risk, and AT &lt;11 mL/kg/min combined with myocardial ischaemia on ECG during CPET carries the highest risk</li>
+                <li>Peak VO₂ &lt;15 mL/kg/min (or &lt;15–20 mL/kg/min depending on surgery/procedure) is also used as a threshold for high risk before major surgery (e.g. lung resection, major intra-abdominal or intrathoracic surgery)</li>
+                <li>Ventilatory equivalent for CO₂ (VE/VCO₂ slope) &gt;34–36 is an additional adverse prognostic marker, particularly relevant in heart failure and pulmonary hypertension</li>
+                <li>CPET use is limited by peripheral vascular disease, musculoskeletal limitation and poor patient effort — use pharmacological or imaging stress tests as an alternative when CPET is not feasible</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Biomarkers: BNP/NT-proBNP and Troponin</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Preoperative BNP &gt;92 pg/mL or NT-proBNP &gt;300 pg/mL (age &lt;70) / &gt;450 pg/mL (age ≥70, or per local assay) independently predicts postoperative myocardial injury and death, and is recommended by ESC/ESA 2022 and Canadian Cardiovascular Society guidance in patients ≥65 y or 45–64 y with cardiovascular disease undergoing intermediate/high-risk non-cardiac surgery</li>
+                <li>An elevated biomarker should trigger postoperative troponin surveillance rather than automatic cancellation or further non-invasive testing (which rarely changes management)</li>
+                <li><strong>Myocardial Injury after Non-Cardiac Surgery (MINS)</strong> — defined by the VISION study as a troponin rise attributable to ischaemia (with or without symptoms) within 30 days of surgery; independently predicts 30-day mortality. Diagnostic troponin T threshold for MINS ≥65 ng/L (or any rise/fall pattern with peak ≥20 ng/L plus ischaemic features) depending on assay generation</li>
+                <li>Recommended surveillance: measure troponin pre-operatively and at 6–12 h and on day 1–2 post-op in patients with RCRI ≥1, age &gt;65, or significant cardiovascular disease undergoing intermediate/high-risk non-cardiac surgery (ESC/ESA 2022; ACC/AHA 2024)</li>
+                <li>Management of MINS/perioperative MI: cardiology review, dual antiplatelet/anticoagulation balanced against bleeding risk, echocardiography, and secondary prevention (statin, ACE-I, β-blocker) as tolerated — most perioperative MIs are Type 2 (supply–demand mismatch) rather than plaque rupture</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
          {/* Ischaemic Heart Disease */}
          <section id="section-ischaemic-heart-disease" className="scroll-mt-24">
            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ischaemic Heart Disease</h2>
@@ -112,11 +150,31 @@ const CardiovascularDiseaseTopic = () => {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Preoperative Assessment</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Functional capacity assessment (METs): patients unable to achieve 4 METs (climb one flight of stairs) are at increased risk</li>
+                <li>Functional capacity assessment (METs): patients unable to achieve 4 METs (climb one flight of stairs) are at increased risk (see Risk Stratification section for CPET thresholds)</li>
                 <li>Revised Cardiac Risk Index (Lee index): IHD, heart failure, CVA/TIA, insulin-dependent DM, creatinine &gt;177 µmol/L, high-risk surgery</li>
-                <li>Recent MI: ideally delay elective surgery ≥6 weeks (bare metal stent) or ≥12 months (drug-eluting stent)</li>
+                <li>Recent MI without revascularisation: ideally delay elective surgery ≥60 days (ACC/AHA 2024); if urgent, involve cardiology and plan invasive monitoring</li>
                 <li>Continue aspirin for most surgery; discuss DAPT with cardiologist and surgeon</li>
                 <li>Continue β-blockers and statins — do NOT start high-dose β-blockers de novo (POISE trial)</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Timing of Surgery After Coronary Stenting</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Bare-metal stent (BMS):</strong> delay elective non-cardiac surgery for at least <strong>1 month</strong> (minimum) to allow endothelialisation and completion of at least a short course of dual antiplatelet therapy (DAPT)</li>
+                <li><strong>Drug-eluting stent (DES) — newer-generation:</strong> delay elective surgery for at least <strong>6 months</strong> after implantation where possible; surgery between 1–6 months may proceed if delay carries greater risk than continuing at least aspirin monotherapy, after multidisciplinary discussion (cardiology, surgeon, anaesthetist)</li>
+                <li>Balloon angioplasty without stent: delay elective surgery ≥2 weeks (14 days) if possible</li>
+                <li>Time-critical/cancer surgery within the DAPT window: continue aspirin, stop the P2Y12 inhibitor (clopidogrel 5 days, ticagrelor 3–5 days, prasugrel 7 days pre-op) after cardiology input, and restart as soon as safely possible post-op — never stop both agents simultaneously in the early post-stent period (acute stent thrombosis risk)</li>
+                <li>DAPT management framework: continue aspirin perioperatively in almost all cases (bleeding risk from stopping is usually outweighed by thrombotic risk); interrupt the P2Y12 inhibitor only, for the shortest safe period, with a defined restart plan</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Perioperative β-blockade, Statins and Antiplatelets — The Evidence</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>POISE trial (2008):</strong> extended-release metoprolol started 2–4 h pre-op reduced non-fatal MI (RR 0.73) but significantly increased stroke (RR 2.17) and all-cause mortality (RR 1.33), largely due to hypotension and bradycardia from a high, rapidly-titrated dose — this established that β-blockers should never be initiated on the day of surgery</li>
+                <li>Current guidance (ESC/ESA 2022, ACC/AHA 2024): continue chronic β-blocker therapy perioperatively without interruption; if starting for a new indication, begin ≥7 days (ideally 2–4 weeks) before surgery with careful dose titration, not on the day</li>
+                <li>Statins: continue perioperatively in all patients already on therapy (rebound endothelial dysfunction and myocardial injury with abrupt withdrawal); consider starting a statin pre-operatively in high-risk vascular surgery patients even if statin-naïve (pleiotropic plaque-stabilising effect, evidence strongest in vascular surgery cohorts)</li>
+                <li>Aspirin: POISE-2 (2014) showed no benefit and increased major bleeding when aspirin was continued/started purely for perioperative cardiac protection in patients without recent coronary stents — so aspirin is not routinely continued "for the heart" in stent-naïve patients, but should be continued in those with a coronary stent per the DAPT principles above</li>
+                <li>ACE-I/ARB: see Hypertension section — omit on the morning of surgery in patients taking them purely for hypertension; continue in decompensating heart failure per specialist advice</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
@@ -126,7 +184,7 @@ const CardiovascularDiseaseTopic = () => {
                 <li>Avoid tachycardia (HR &lt;80 bpm ideal) — increases myocardial oxygen demand and reduces diastolic filling time</li>
                 <li>Maintain normothermia — hypothermia causes catecholamine release, tachycardia, and increased SVR</li>
                 <li>Invasive BP monitoring for major surgery; consider cardiac output monitoring</li>
-                <li>Postoperative troponin surveillance for high-risk patients (VISION study — myocardial injury after non-cardiac surgery, MINS)</li>
+                <li>Postoperative troponin surveillance for high-risk patients (VISION study — myocardial injury after non-cardiac surgery, MINS) — see Risk Stratification section for thresholds and surveillance schedule</li>
               </ul>
             </div>
           </div>
@@ -138,6 +196,29 @@ const CardiovascularDiseaseTopic = () => {
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
           <ValvularHaemodynamicsDiagram />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4 overflow-x-auto">
+              <h3 className="font-semibold text-foreground mb-2">Haemodynamic Goals — Summary Table (Preload / Afterload / Rate / Rhythm / Contractility)</h3>
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border text-foreground">
+                    <th className="text-left py-1 pr-2">Lesion</th>
+                    <th className="text-left py-1 pr-2">Preload</th>
+                    <th className="text-left py-1 pr-2">Afterload (SVR)</th>
+                    <th className="text-left py-1 pr-2">Heart rate</th>
+                    <th className="text-left py-1 pr-2">Rhythm</th>
+                    <th className="text-left py-1 pr-2">Contractility</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border/50"><td className="py-1 pr-2">Aortic stenosis</td><td className="py-1 pr-2">Full/high</td><td className="py-1 pr-2">Maintain/high</td><td className="py-1 pr-2">60–80 (avoid tachy/brady)</td><td className="py-1 pr-2">Sinus essential</td><td className="py-1 pr-2">Maintain</td></tr>
+                  <tr className="border-b border-border/50"><td className="py-1 pr-2">Aortic regurgitation</td><td className="py-1 pr-2">Full</td><td className="py-1 pr-2">Reduce (vasodilate)</td><td className="py-1 pr-2">80–100 (avoid brady)</td><td className="py-1 pr-2">Sinus preferred</td><td className="py-1 pr-2">Maintain</td></tr>
+                  <tr className="border-b border-border/50"><td className="py-1 pr-2">Mitral stenosis</td><td className="py-1 pr-2">Full but avoid overload</td><td className="py-1 pr-2">Maintain</td><td className="py-1 pr-2">60–80 (avoid tachy)</td><td className="py-1 pr-2">Sinus essential; treat AF promptly</td><td className="py-1 pr-2">Maintain</td></tr>
+                  <tr className="border-b border-border/50"><td className="py-1 pr-2">Mitral regurgitation</td><td className="py-1 pr-2">Full</td><td className="py-1 pr-2">Reduce (vasodilate)</td><td className="py-1 pr-2">80–100</td><td className="py-1 pr-2">Sinus preferred</td><td className="py-1 pr-2">Maintain</td></tr>
+                  <tr><td className="py-1 pr-2">HOCM</td><td className="py-1 pr-2">Full (avoid hypovolaemia)</td><td className="py-1 pr-2">Maintain/high (avoid drops)</td><td className="py-1 pr-2">Slow-normal (avoid tachy)</td><td className="py-1 pr-2">Sinus essential</td><td className="py-1 pr-2">Reduce/avoid inotropes</td></tr>
+                </tbody>
+              </table>
+              <p className="text-xs mt-2">Fixed-obstruction lesions (AS, MS, HOCM) and dynamic-obstruction HOCM all share a requirement for adequate preload and avoidance of vasodilatation/tachycardia; regurgitant lesions (AR, MR) benefit from afterload reduction and a slightly faster heart rate to shorten diastole/reduce regurgitant time.</p>
+            </div>
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Aortic Stenosis</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -262,6 +343,36 @@ const CardiovascularDiseaseTopic = () => {
                 <li>Postoperative HDU/ICU admission for NYHA III/IV or EF &lt;30%</li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">NYHA Functional Classification</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Class I:</strong> no limitation of physical activity; ordinary activity does not cause symptoms</li>
+                <li><strong>Class II:</strong> slight limitation; comfortable at rest, ordinary activity causes dyspnoea/fatigue/palpitations</li>
+                <li><strong>Class III:</strong> marked limitation; comfortable at rest, less-than-ordinary activity causes symptoms</li>
+                <li><strong>Class IV:</strong> symptomatic at rest; any physical activity increases discomfort — highest perioperative risk, approximates RCRI "heart failure" criterion regardless of EF</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Hypertrophic Obstructive Cardiomyopathy (HOCM)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Dynamic left ventricular outflow tract (LVOT) obstruction worsened by anything that reduces LV cavity size or increases contractility/outflow velocity</li>
+                <li>Haemodynamic goals: maintain preload (avoid hypovolaemia and vasodilatation), maintain or increase afterload (SVR) — avoid spinal/epidural-induced sympathectomy and vasodilating drugs, keep heart rate slow-normal (avoid tachycardia, which shortens diastolic filling and worsens obstruction), and avoid inotropes/exogenous catecholamines which worsen the gradient</li>
+                <li>If hypotension occurs: treat with fluid and a pure α-agonist (phenylephrine) rather than an inotrope such as adrenaline/dobutamine, which will worsen LVOT obstruction</li>
+                <li>Avoid the "SAM" (systolic anterior motion) triad of triggers: hypovolaemia, tachycardia, and increased contractility/reduced afterload</li>
+                <li>Regional techniques should be used cautiously with slow, incremental titration (epidural preferred over single-shot spinal) to avoid abrupt sympathectomy</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Left Ventricular Assist Devices (LVAD)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Continuous-flow (non-pulsatile) devices are now standard — patients may have a weak or absent palpable pulse and unreliable pulse oximetry/NIBP; use Doppler-derived MAP or an arterial line for accurate pressure monitoring</li>
+                <li>LVAD output is preload-dependent and afterload-sensitive: avoid hypovolaemia and avoid excessive systemic vasodilation or vasoconstriction — maintain euvolaemia and treat hypertension (which impairs LVAD flow) promptly</li>
+                <li>Right ventricular failure is the major perioperative threat — avoid factors that raise PVR (hypoxia, hypercarbia, acidosis) and maintain RV preload/contractility</li>
+                <li>Patients are anticoagulated (warfarin ± antiplatelet); balance thrombotic (pump thrombosis, stroke) versus bleeding risk with specialist LVAD/cardiology team involvement for any surgery</li>
+                <li>Avoid strong magnets/electromagnetic interference near controller; involve the LVAD coordinator/physiologist for perioperative management and have device-specific emergency algorithms available</li>
+                <li>Non-cardiac surgery in LVAD patients should occur at, or in direct liaison with, a specialist LVAD centre wherever possible</li>
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -273,20 +384,31 @@ const CardiovascularDiseaseTopic = () => {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Atrial Fibrillation</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Most common perioperative arrhythmia; present in 5–10% of surgical patients &gt;65</li>
-                <li>Rate control (β-blocker/diltiazem) preferred over rhythm control perioperatively</li>
-                <li>Anticoagulation management: bridge with LMWH if CHA₂DS₂-VASc ≥2 and high thrombotic risk</li>
+                <li>Most common perioperative arrhythmia; present in 5–10% of surgical patients &gt;65, and new-onset in up to 10% after major non-cardiac surgery</li>
+                <li>Perioperative rate control target: resting HR &lt;110 bpm (lenient control acceptable if asymptomatic and haemodynamically stable); β-blocker (IV metoprolol/esmolol) or diltiazem/verapamil first-line — avoid calcium-channel blockers in significant LV impairment</li>
+                <li>Rhythm control (amiodarone, DC cardioversion) reserved for haemodynamic instability or where rate control fails, rather than routine perioperative use</li>
+                <li>New-onset perioperative AF: correct precipitants first (pain, hypovolaemia, hypoxia, electrolyte disturbance — especially K⁺/Mg²⁺, sepsis, anaemia) before/alongside rate control</li>
+                <li>Anticoagulation management: bridge with LMWH only if CHA₂DS₂-VASc ≥2 and high thrombotic risk (e.g. mechanical valve, recent stroke); balance against HAS-BLED bleeding risk and surgical bleeding risk category — most patients on a DOAC for AF alone do not need heparin bridging</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
-              <h3 className="font-semibold text-foreground mb-2">Pacemakers & ICDs</h3>
+              <h3 className="font-semibold text-foreground mb-2">Cardiac Implantable Electronic Devices (CIEDs) — Preoperative Checks</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Preoperative device check: type, indication, dependency, battery life, last check date</li>
-                <li>Pacemaker-dependent patients: consider reprogramming to asynchronous mode (DOO/VOO) if diathermy needed</li>
-                <li>ICDs: disable anti-tachycardia therapy; apply external defibrillation pads</li>
-                <li>Bipolar diathermy preferred; if monopolar used, place return electrode away from device</li>
-                <li>Magnet application: converts pacemaker to asynchronous mode; disables ICD shock therapy (device-specific)</li>
-                <li>Postoperative device re-interrogation mandatory</li>
+                <li>Identify device type (pacemaker vs ICD vs CRT), manufacturer, indication, underlying rhythm, and whether the patient is pacemaker-dependent</li>
+                <li>Obtain the most recent interrogation report (should be within the last 12 months for a pacemaker, 6 months for an ICD, per HRS/BHRS guidance) — check battery status/elective replacement indicator and lead integrity</li>
+                <li>Classify surgical electromagnetic interference (EMI) risk: high risk includes surgery above the umbilicus, monopolar diathermy near the device/leads, and procedures using electrocautery, RF ablation, lithotripsy or MRI</li>
+                <li>Liaise with cardiac physiology/pacing team before high-risk procedures for a documented perioperative plan</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Intraoperative Management: Reprogramming, Magnets and Diathermy</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Pacemaker-dependent patient + high-EMI-risk surgery:</strong> formally reprogramme to an asynchronous fixed-rate mode (DOO/VOO) or activate rate-responsive-off before surgery — EMI can be misinterpreted as intrinsic activity and cause inappropriate inhibition (asystole in a dependent patient)</li>
+                <li><strong>Magnet response — pacemakers:</strong> placing a clinical magnet over most pacemakers converts them to an asynchronous mode (typically DOO/VOO) for as long as the magnet remains in place, protecting against oversensing-induced inhibition — but the response is device-specific and not guaranteed, so formal reprogramming is preferred whenever the device is dependent and the surgery is high-risk</li>
+                <li><strong>Magnet response — ICDs:</strong> a magnet over an ICD suspends anti-tachycardia therapy (detection and shock delivery) but does <em>not</em> change any underlying pacing mode — removing the magnet restores tachytherapy; always have external defibrillator pads placed and a manual defibrillator immediately available before disabling an ICD</li>
+                <li><strong>Diathermy precautions:</strong> use bipolar diathermy wherever possible; if monopolar diathermy is required, use short bursts at the lowest effective power, and position the return (indifferent) electrode so the current path does not cross the device or leads (i.e. does not pass through the thorax) — never diathermy within 15 cm of the generator</li>
+                <li><strong>Reprogramming indications:</strong> pacemaker-dependency with anticipated high-EMI surgery, biventricular/CRT devices (loss of resynchronisation with asynchronous pacing can precipitate heart failure), rate-responsive sensors that may misfire with vibration/electrocautery, and any planned use of MRI, external defibrillation, or radiofrequency ablation near the device</li>
+                <li>Postoperative: re-interrogate and, if reprogrammed, restore original settings before discharge; document that device function was checked</li>
               </ul>
             </div>
           </div>
@@ -317,13 +439,52 @@ const CardiovascularDiseaseTopic = () => {
           <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_05"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">General Principles</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Increasingly common as paediatric surgical survival improves; complex anatomy and physiology</li>
-                <li>Eisenmenger syndrome: irreversible pulmonary hypertension with reversed (R→L) shunt; extremely high perioperative mortality</li>
-                <li>Right-to-left shunts: avoid air embolism (meticulous de-airing of IV lines), reduced effect of inhalational induction, faster IV induction</li>
-                <li>Left-to-right shunts: increased pulmonary blood flow, may develop pulmonary hypertension</li>
-                <li>Antibiotic prophylaxis for endocarditis: no longer routinely recommended (NICE 2008) but consider in high-risk lesions</li>
-                <li>Specialist centre involvement recommended for moderate/complex ACHD</li>
+                <li>Increasingly common as paediatric surgical survival improves; complex anatomy and physiology — over 90% of children with congenital heart disease now survive to adulthood</li>
+                <li>Left-to-right shunts (ASD, VSD, PDA): increased pulmonary blood flow; over years may cause pulmonary vascular remodelling and progression to pulmonary hypertension</li>
+                <li>Antibiotic prophylaxis for endocarditis: not routinely recommended (NICE CG64/2008, reaffirmed) but individualised discussion in the highest-risk lesions (prosthetic valve/material, previous endocarditis, unrepaired cyanotic disease) is reasonable per specialist advice</li>
+                <li>Specialist centre involvement mandatory for moderate/complex ACHD (per Bethesda/ESC classification) — anaesthesia at a non-specialist centre should be limited to minor, low-risk procedures</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Eisenmenger Syndrome and Right-to-Left Shunts</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Eisenmenger syndrome: a long-standing large left-to-right shunt causes progressive, irreversible pulmonary vascular disease until pulmonary vascular resistance exceeds systemic — the shunt reverses (right-to-left) causing cyanosis; associated with the highest perioperative mortality of any ACHD lesion (historically quoted as high as 20–40% for non-cardiac surgery, hence "do not operate unless essential")</li>
+                <li>Any fall in SVR or rise in PVR increases right-to-left shunting and worsens cyanosis — avoid vasodilating anaesthetic agents/regional sympathectomy without vasopressor support, and treat any factor that raises PVR (hypoxia, hypercarbia, acidosis, hypothermia, pain, high airway pressure)</li>
+                <li>Maintain SVR with vasopressors (phenylephrine/noradrenaline) to limit right-to-left shunt; maintain adequate preload and avoid excessive positive pressure ventilation</li>
+                <li>Meticulous air-bubble precautions on <em>all</em> IV lines are mandatory in any right-to-left or bidirectional shunt — even small volumes of air can cross to the systemic circulation (paradoxical embolism) causing stroke or coronary embolism; use in-line air filters where available</li>
+                <li>Reduced pulmonary blood flow slows uptake of inhalational agents (right-to-left shunt bypasses the lungs) but speeds the effect of IV induction agents (bypass of first-pass pulmonary uptake) — expect a faster-than-usual IV induction and a slower inhalational induction</li>
+                <li>These patients should be managed at, or after direct discussion with, a specialist pulmonary hypertension/ACHD centre; avoid elective surgery wherever possible and plan level 2/3 postoperative care</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Postoperative Cardiac Care */}
+        <section id="section-postoperative-care" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postoperative Cardiac Care</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Planning Level of Postoperative Care</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Level 1 (enhanced ward care): stable cardiac disease, low-risk surgery, RCRI 0–1, no active symptoms</li>
+                <li>Level 2 (HDU — single organ support, e.g. invasive monitoring/vasopressors): RCRI ≥2, NYHA III, moderate-to-severe valve disease undergoing intermediate/high-risk surgery, need for arterial line/cardiac output monitoring or closely titrated vasoactive therapy</li>
+                <li>Level 3 (ICU): NYHA IV, decompensated heart failure, severe symptomatic AS/pulmonary hypertension, Eisenmenger physiology, LVAD patients undergoing major surgery, or anticipated need for multi-organ/ventilatory support</li>
+                <li>Level of care should be agreed at multidisciplinary preoperative review (anaesthetist, surgeon, cardiologist) and documented in the anaesthetic plan, with a named escalation pathway</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Perioperative Myocardial Infarction — Recognition and Management</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Most perioperative MIs are silent (masked by analgesia/sedation) — active troponin surveillance (see Risk Stratification) is essential as clinical symptoms alone will miss the majority</li>
+                <li>Distinguish <strong>Type 1 MI</strong> (plaque rupture/thrombosis — ACS pathway applies) from the more common <strong>Type 2 MI</strong> (supply–demand mismatch from tachycardia, hypotension, anaemia, hypoxia without plaque rupture) — management differs</li>
+                <li>Immediate steps: 12-lead ECG, repeat troponin, correct precipitants (treat hypotension, tachyarrhythmia, anaemia — transfuse to maintain haemoglobin ≥70–80 g/L or higher with active ischaemia, hypoxia, sepsis)</li>
+                <li>Urgent cardiology review for all confirmed perioperative MI/MINS; echocardiography to assess new wall motion abnormality and LV function</li>
+                <li>Antithrombotic therapy (aspirin, P2Y12 inhibitor, anticoagulation) and consideration of urgent revascularisation (PCI) must be balanced against surgical bleeding risk in the immediate postoperative period — individualised, multidisciplinary decision</li>
+                <li>Secondary prevention once bleeding risk allows: aspirin, statin, β-blocker, ACE-I as tolerated; address modifiable risk factors before discharge</li>
+                <li>Escalate to level 2/3 care for haemodynamic instability, arrhythmia, or evolving ECG changes; involve critical care outreach early</li>
               </ul>
             </div>
           </div>

@@ -56,6 +56,11 @@ const tocItems = [
   { id: "section-anaemia", label: "Anaemia & Iron Deficiency", group: "Core" },
   { id: "section-thrombocytopenia", label: "Thrombocytopenia", group: "Core" },
   { id: "section-neutropenia", label: "Neutropenia", group: "Core" },
+  { id: "section-haemoglobinopathies", label: "Haemoglobinopathies", group: "Advanced" },
+  { id: "section-bleeding-disorders", label: "Inherited Bleeding Disorders", group: "Advanced" },
+  { id: "section-acquired-coagulopathy", label: "Acquired Coagulopathy & Platelet Disorders", group: "Advanced" },
+  { id: "section-thrombophilia-anticoag", label: "Thrombophilia & Perioperative Anticoagulation", group: "Advanced" },
+  { id: "section-malignancy", label: "Haematological Malignancy & Its Treatment", group: "Advanced" },
 ];
 
 const haematologicalDiseaseFaqs: Array<[string, string]> = [
@@ -63,6 +68,10 @@ const haematologicalDiseaseFaqs: Array<[string, string]> = [
   ["What is the safe platelet count for spinal or epidural anaesthesia?", "AAGBI (2013) and BSH (2017) support neuraxial blockade with a platelet count ≥80 ×10⁹/L provided the count is stable and the cause of thrombocytopenia is benign. Counts of 50–80 ×10⁹/L require an explicit risk–benefit assessment; below 50 ×10⁹/L neuraxial techniques are generally avoided. Never transfuse platelets in HIT, TTP or ITP without specialist advice."],
   ["How do you manage a patient presenting for emergency surgery with severe thrombocytopenia of unknown cause?", "Discuss with haematology before transfusing. Avoid platelets in TTP/HIT (may worsen thrombosis). For life-threatening bleeding, give platelets to a target of >50 ×10⁹/L (>100 for CNS/eye), correct fibrinogen (>1.5 g/L), and consider TXA 1 g. Use general rather than neuraxial anaesthesia and minimise invasive lines where possible."],
   ["What antibiotic should be given for suspected neutropenic sepsis?", "Per NICE neutropenic-sepsis guidance, empirical piperacillin–tazobactam 4.5 g IV (or meropenem if previous resistance / β-lactam allergy with cross-reactivity assessment) within 1 hour of recognition, after blood cultures. Add vancomycin or teicoplanin only for suspected line infection, MRSA risk or severe mucositis."],
+  ["What HbS target is needed before major surgery in sickle cell disease?", "A simple top-up transfusion to Hb ~100 g/L is usually sufficient for most surgery and is as effective as exchange transfusion at preventing perioperative complications. Exchange transfusion to reduce HbS% to below ~30% is reserved for high-risk surgery (bypass, neurosurgery) or patients with a history of severe crises, and avoids the hyperviscosity risk of simple top-up in patients with an already-high baseline Hb."],
+  ["When is desmopressin useful in a bleeding disorder and when is it not?", "Desmopressin 0.3 microgram/kg IV releases stored factor VIII and von Willebrand factor, making it useful in mild haemophilia A and type 1 von Willebrand disease, as well as uraemic or aspirin-induced platelet dysfunction. It is ineffective in haemophilia B (no effect on factor IX) and type 3 VWD (no VWF stores to release), and should be used cautiously in type 2B VWD (may worsen thrombocytopenia)."],
+  ["How long should a DOAC be omitted before neuraxial anaesthesia?", "Intervals depend on the drug and renal function: apixaban/rivaroxaban/edoxaban are typically omitted for 48 hours before a high bleeding-risk procedure or neuraxial block (longer if CrCl 30–50 mL/min), while dabigatran requires 48–96 hours depending on creatinine clearance and is avoided below CrCl 30 mL/min. Catheters are removed only once the same interval has elapsed since the last dose, and the next dose is delayed for several hours after removal."],
+  ["What blood products must be irradiated, and why?", "Irradiated cellular blood products prevent transfusion-associated graft-versus-host disease from viable donor lymphocytes. They are mandatory for stem cell transplant recipients, granulocyte transfusions, intrauterine/neonatal exchange transfusion, directed donations from blood relatives, patients treated with purine analogues (fludarabine, cladribine, bendamustine), and Hodgkin lymphoma patients."],
 ];
 
 const HaematologicalDiseaseTopic = () => {
@@ -328,7 +337,230 @@ const HaematologicalDiseaseTopic = () => {
             </div>
           </section>
 
-          <ExamPitfallsCallout
+          {/* Haemoglobinopathies */}
+          <section id="section-haemoglobinopathies" className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemoglobinopathies</h2>
+            <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="bg-card border-2 border-clinical/40 rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Sickle Cell Disease</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li><strong>Pathophysiology:</strong> HbS polymerises on deoxygenation, deforming erythrocytes into a rigid sickle shape that occludes the microvasculature — the "five H" triggers to actively avoid are <strong>H</strong>ypoxia, <strong>H</strong>ypothermia, <strong>H</strong>acidosis (acidosis), de<strong>H</strong>ydration and venous st<strong>a</strong>sis (plus pain/stress and infection)</li>
+                  <li><strong>Perioperative avoidance strategy:</strong> supplemental O₂ throughout (aim SpO₂ ≥95–98%), active warming and warmed fluids, avoid tourniquets where possible (see debate below), maintain euvolaemia with generous IV fluids, avoid prolonged fasting, avoid vasoconstrictors/positioning that impair venous return, treat pain and anxiety early, avoid acidosis (adequate ventilation, avoid hypercapnia)</li>
+                  <li><strong>Preoperative transfusion:</strong> for major/intermediate-risk surgery, a simple top-up transfusion targeting Hb ~100 g/L is as effective as aggressive exchange transfusion at preventing perioperative sickle complications (TAPS trial) and is preferred for most surgery; exchange transfusion (manual or automated) to reduce HbS% to &lt;30% (some centres &lt;20–30%) is reserved for high-risk surgery (cardiopulmonary bypass, neurosurgery, prior severe crises) or when Hb is already high (avoid hyperviscosity from simple transfusion)</li>
+                  <li><strong>Acute chest syndrome:</strong> new pulmonary infiltrate plus one of fever, chest pain, tachypnoea, or hypoxia — treat with high-flow O₂, incentive spirometry, empirical antibiotics (cover atypicals), analgesia titrated to avoid respiratory depression, exchange transfusion for hypoxia or rapid deterioration, escalate to critical care early; a leading cause of death in SCD</li>
+                  <li><strong>Vaso-occlusive crisis:</strong> aggressive IV fluids, high-flow O₂ if hypoxic, early strong opioid analgesia (avoid pethidine — accumulation risk of norpethidine seizures), warmth, treat any precipitant (infection, dehydration, cold exposure)</li>
+                  <li><strong>Tourniquet debate:</strong> tourniquets induce local hypoxia, acidosis and stasis distal to the cuff and are traditionally avoided in SCD; however case series and some genotypes (particularly HbSC) tolerate tourniquets with adequate limb exsanguination, optimisation of HbS% and minimising inflation time — decision should be individualised with haematology input, and tourniquets are generally avoided unless essential for the surgical field</li>
+                  <li>Regional anaesthesia is not contraindicated and may reduce stress-related sickling; avoid excessive vasoconstrictor-containing local anaesthetic solutions and maintain warmth of the limb</li>
+                  <li>HbSC and HbS-β-thalassaemia genotypes are milder than HbSS but still require the same precautions</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Thalassaemia</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li><strong>β-thalassaemia major:</strong> transfusion-dependent from infancy, resulting in chronic iron overload despite iron chelation (desferrioxamine, deferiprone, deferasirox)</li>
+                  <li><strong>Cardiac disease:</strong> iron deposition causes dilated cardiomyopathy, arrhythmias and pulmonary hypertension — the leading cause of death; obtain ECG, echocardiography (and cardiac MRI T2* if available) preoperatively in any transfusion-dependent patient</li>
+                  <li><strong>Endocrinopathy:</strong> iron deposition in pituitary, pancreas and thyroid causes diabetes, hypothyroidism, hypoparathyroidism and growth/pubertal delay — check glucose and endocrine function preoperatively</li>
+                  <li><strong>Difficult airway:</strong> extramedullary haematopoiesis causes maxillary and frontal bone overgrowth ("chipmunk facies"), maxillary protrusion and dental malocclusion — anticipate a difficult laryngoscopy/mask fit and have airway adjuncts and videolaryngoscopy available</li>
+                  <li><strong>Hepatosplenomegaly</strong> from extramedullary haematopoiesis and iron deposition — risk of splenic rupture, altered drug metabolism, and coagulopathy from hepatic iron overload/cirrhosis</li>
+                  <li>Continue iron chelation; check ferritin and organ function; transfuse to pre-op Hb targets set by the patient's haematologist (typically maintaining pre-transfusion Hb &gt;90–100 g/L in transfusion-dependent disease)</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Inherited bleeding disorders */}
+          <section id="section-bleeding-disorders" className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Inherited Bleeding Disorders</h2>
+            <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Haemophilia A &amp; B</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>X-linked recessive deficiency of factor VIII (haemophilia A) or factor IX (haemophilia B/Christmas disease); severity by baseline factor level — severe &lt;1 IU/dL, moderate 1–5 IU/dL, mild &gt;5–40 IU/dL</li>
+                  <li><strong>Factor replacement targets by procedure</strong> (peak level immediately pre-procedure, then maintained for the stated duration): minor procedures/dental extraction 50 IU/dL; major surgery 80–100 IU/dL pre-op, maintained &gt;50 IU/dL for 7–14 days post-op depending on bleeding risk; trough levels checked daily post-op to guide ongoing dosing</li>
+                  <li><strong>Desmopressin (DDAVP) 0.3 microgram/kg</strong> IV (over 20–30 minutes, diluted in 50–100 mL saline) or intranasally — releases stored endogenous factor VIII and von Willebrand factor, useful in <em>mild haemophilia A</em> (2–3× rise in FVIII) but ineffective in haemophilia B (no effect on factor IX); tachyphylaxis after repeated doses (usually within 24–48 h); watch for hyponatraemia/fluid retention — restrict free fluids for 24 h after dosing, especially in children and the elderly</li>
+                  <li><strong>Avoid intramuscular injections</strong> and other invasive procedures without prior factor correction; avoid NSAIDs and aspirin</li>
+                  <li><strong>Neuraxial anaesthesia:</strong> only after haematology input and factor correction to normal levels (typically &gt;80–100 IU/dL) immediately before block and catheter removal, with ongoing cover for the duration of the catheter — generally avoided unless factor levels can be reliably normalised</li>
+                  <li><strong>Inhibitors:</strong> alloantibodies against factor VIII/IX develop in up to 25–30% of severe haemophilia A patients, causing resistance to standard factor replacement — manage with bypassing agents (recombinant activated factor VII, or activated prothrombin complex concentrate/FEIBA) and always involve a haemophilia centre; emicizumab (a bispecific antibody mimicking FVIII) is used for prophylaxis in haemophilia A with or without inhibitors but does not treat acute bleeding — do not use FEIBA concurrently with emicizumab except under specialist guidance (thrombotic microangiopathy risk)</li>
+                  <li>All haemophilia patients undergoing surgery should be managed jointly with a Haemophilia Comprehensive Care Centre; tranexamic acid is a useful adjunct for mucosal bleeding (dental, ENT) alongside factor replacement</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Von Willebrand Disease (VWD)</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Commonest inherited bleeding disorder — quantitative or qualitative deficiency of von Willebrand factor (VWF), which mediates platelet adhesion and stabilises factor VIII</li>
+                  <li><strong>Type 1</strong> (~70–80%): partial quantitative deficiency, usually mild — often responds well to desmopressin 0.3 microgram/kg</li>
+                  <li><strong>Type 2</strong> (2A, 2B, 2M, 2N): qualitative functional defects — desmopressin response variable and type 2B is a relative contraindication (releases dysfunctional VWF that binds platelets, worsening thrombocytopenia); type 2N mimics mild haemophilia A (low FVIII, normal VWF antigen)</li>
+                  <li><strong>Type 3</strong>: severe, near-total VWF deficiency with markedly low FVIII — desmopressin ineffective; requires VWF-containing factor concentrate for all significant procedures</li>
+                  <li><strong>Treatment options:</strong> desmopressin (type 1 mainly), plasma-derived or recombinant VWF concentrate (dosed by VWF:RCo activity, target &gt;100 IU/dL pre-op major surgery, maintained &gt;50 IU/dL for 7–10 days), tranexamic acid for mucosal bleeding, combined oral contraceptives for menorrhagia</li>
+                  <li>Check FVIII, VWF antigen and VWF activity (ristocetin cofactor) pre- and post-desmopressin/concentrate to confirm adequate haemostatic correction before surgery</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Acquired coagulopathy and platelet disorders */}
+          <section id="section-acquired-coagulopathy" className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Acquired Coagulopathy &amp; Platelet Disorders</h2>
+            <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Immune Thrombocytopenia (ITP)</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Autoantibody-mediated platelet destruction and impaired production; diagnosis of exclusion (normal film aside from low platelets, no other cytopenias)</li>
+                  <li>First-line for symptomatic/pre-procedure bleeding risk: corticosteroids (prednisolone 1 mg/kg) ± IV immunoglobulin 1 g/kg (rapid rise over 24–48 h, useful before urgent surgery); tranexamic acid for mucosal bleeding</li>
+                  <li>Platelet transfusion reserved for active major bleeding or immediately pre-procedure in refractory cases — platelets are consumed rapidly and give only a transient rise, but are still indicated as a bridge alongside IVIG/steroids when the count is critically low and bleeding risk is high</li>
+                  <li>Splenectomy or thrombopoietin-receptor agonists (eltrombopag, romiplostim) for chronic refractory ITP — specialist-led</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Drug-Induced &amp; Uraemic Platelet Dysfunction</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li><strong>Drug-induced thrombocytopenia:</strong> heparin (HIT — see Thrombocytopenia section), vancomycin, quinine, some antiepileptics; stop the causative drug and monitor recovery</li>
+                  <li><strong>Uraemic platelet dysfunction:</strong> chronic kidney disease impairs platelet adhesion/aggregation (normal count, prolonged bleeding time) via uraemic toxins and altered VWF function — optimise with dialysis, correct anaemia to Hb &gt;100 g/L (improves rheology and platelet margination), desmopressin 0.3 microgram/kg before invasive procedures (effect lasts ~4–8 h, tachyphylaxis with repeat dosing), cryoprecipitate or conjugated oestrogens for refractory bleeding</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border-2 border-clinical/40 rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Disseminated Intravascular Coagulation (DIC)</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Systemic activation of coagulation (sepsis, trauma, obstetric catastrophe, malignancy, transfusion reaction) consumes platelets and clotting factors while simultaneously depositing microvascular fibrin — causes concurrent bleeding <em>and</em> thrombosis/organ ischaemia</li>
+                  <li>Diagnosis: prolonged PT/APTT, low fibrinogen, thrombocytopenia, markedly raised D-dimer, schistocytes on film; ISTH DIC score aids formal diagnosis</li>
+                  <li><strong>Treat the underlying cause</strong> — this is the only definitive treatment; supportive component therapy for active bleeding: FFP for prolonged PT/APTT, cryoprecipitate to keep fibrinogen &gt;1.5–2 g/L, platelets to keep count &gt;50 ×10⁹/L (&gt;20–30 ×10⁹/L if not actively bleeding but high risk), guided by viscoelastic testing where available</li>
+                  <li>Avoid tranexamic acid in DIC with a dominant thrombotic phenotype unless bleeding is life-threatening and hyperfibrinolysis is confirmed (risk of worsening organ thrombosis)</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Thrombophilia and anticoagulation */}
+          <section id="section-thrombophilia-anticoag" className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thrombophilia &amp; Perioperative Anticoagulation</h2>
+            <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Thrombophilia &amp; Antiphospholipid Syndrome</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Inherited thrombophilias (Factor V Leiden, prothrombin G20210A, protein C/S or antithrombin deficiency) increase VTE risk — assess as part of routine perioperative VTE risk stratification rather than mandating a change in anaesthetic technique per se</li>
+                  <li><strong>Antiphospholipid syndrome (APS):</strong> lupus anticoagulant, anticardiolipin or anti-β2-glycoprotein-I antibodies causing recurrent arterial/venous thrombosis and/or pregnancy morbidity; lupus anticoagulant paradoxically prolongs the APTT in vitro despite being prothrombotic in vivo — do not mistake for a bleeding tendency</li>
+                  <li>High-risk APS patients on long-term warfarin generally require bridging with therapeutic LMWH perioperatively (see below) given very high thrombosis recurrence risk; involve hematology/rheumatology early</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">VTE Risk Assessment &amp; Bridging</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>All surgical patients require VTE risk assessment on admission (Department of Health / NICE tool) balancing thrombosis risk against bleeding risk, guiding mechanical (compression stockings, intermittent pneumatic compression) and pharmacological (LMWH) prophylaxis</li>
+                  <li><strong>Bridging anticoagulation</strong> (therapeutic LMWH while warfarin is stopped) is reserved for high thrombotic risk: mechanical mitral valve, AF with high CHA₂DS₂-VASc plus recent stroke/TIA, or VTE within the last 3 months — most patients (e.g. AF alone, bioprosthetic valve) do <strong>not</strong> need bridging (BRIDGE trial: bridging increases bleeding without reducing thromboembolism in most AF patients)</li>
+                  <li>Stop bridging LMWH ≥24 h (therapeutic dose) before surgery; restart post-op once haemostasis secure, usually 24–72 h depending on bleeding risk</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border-2 border-clinical/40 rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-3">DOAC Omission Intervals &amp; Reversal</h3>
+                <div className="space-y-3 text-sm">
+                  <div>
+                    <p className="font-semibold text-foreground">Omission before elective surgery/neuraxial block (last dose to procedure):</p>
+                    <ul className="list-disc list-inside space-y-1 mt-1">
+                      <li><strong>Dabigatran</strong> (renally cleared — most affected by renal function): CrCl &gt;80 mL/min — omit 48 h (low bleeding risk 24 h); CrCl 50–80 — omit 72 h; CrCl 30–50 — omit 96 h; avoid if CrCl &lt;30</li>
+                      <li><strong>Apixaban / rivaroxaban / edoxaban</strong> (normal renal function): omit 48 h before high bleeding-risk surgery/neuraxial block, 24 h before low bleeding-risk procedures; extend by 24–48 h if CrCl 30–50 mL/min; specialist advice if CrCl &lt;30 mL/min</li>
+                      <li>Longer intervals throughout for neuraxial block/catheter removal than for general surgical bleeding risk, per AAGBI/ESRA regional anaesthesia guidance</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Reversal agents (life-threatening bleeding or emergency surgery):</p>
+                    <ul className="list-disc list-inside space-y-1 mt-1">
+                      <li><strong>Idarucizumab</strong> (dabigatran-specific monoclonal antibody fragment): 5 g IV (two 2.5 g/50 mL vials given consecutively or together) — immediate, complete reversal</li>
+                      <li><strong>Andexanet alfa</strong> (factor Xa decoy, reverses apixaban/rivaroxaban): weight/dose/timing-based low-dose (400 mg bolus + 480 mg infusion) or high-dose (800 mg bolus + 960 mg infusion) regimen depending on agent, dose and time since last dose — limited availability, thrombotic events reported</li>
+                      <li><strong>Prothrombin complex concentrate (PCC, e.g. Beriplex/Octaplex)</strong> — used where a Xa-inhibitor-specific reversal agent is unavailable: 25–50 IU/kg IV (up to 50 IU/kg for life-threatening bleeding) as a non-specific pro-haemostatic agent for DOAC-associated major bleeding</li>
+                      <li>Activated charcoal if within 2 h of ingestion (overdose) and airway protected; haemodialysis can remove dabigatral (low protein binding) but not the factor Xa inhibitors (highly protein-bound)</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Warfarin reversal:</p>
+                    <ul className="list-disc list-inside space-y-1 mt-1">
+                      <li><strong>Major/life-threatening bleeding or emergency surgery:</strong> stop warfarin, give PCC 25–50 IU/kg (dosed by baseline INR/product) for immediate reversal, plus vitamin K 5 mg IV (slow) for sustained effect (onset ~6 h, full effect 24 h) — FFP only if PCC unavailable (slower, larger volume, less effective)</li>
+                      <li><strong>Elective surgery:</strong> stop warfarin 5 days pre-op, check INR the day before (target &lt;1.5); vitamin K 1–5 mg oral if INR remains elevated the day before surgery</li>
+                      <li><strong>Urgent surgery within 5 days:</strong> vitamin K 1–5 mg IV/oral ± low-dose PCC depending on urgency and INR</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Timing of neuraxial blockade against antithrombotics (AAGBI Regional 2013):</p>
+                    <ul className="list-disc list-inside space-y-1 mt-1">
+                      <li><strong>Unfractionated heparin (prophylactic SC):</strong> 4–6 h before/after block; therapeutic IV: 4 h before, APTT normal</li>
+                      <li><strong>LMWH prophylactic:</strong> 12 h before block/catheter removal, 4 h after; <strong>LMWH therapeutic:</strong> 24 h before, 4 h after</li>
+                      <li><strong>Warfarin:</strong> stop, confirm INR ≤1.4 before block</li>
+                      <li><strong>Aspirin:</strong> no additional precaution needed as monotherapy</li>
+                      <li><strong>Clopidogrel:</strong> 7 days; <strong>prasugrel:</strong> 7 days; <strong>ticagrelor:</strong> 5 days</li>
+                      <li><strong>Dabigatran/rivaroxaban/apixaban:</strong> per the renal-function-adjusted omission intervals above before block, and catheters removed only once the same interval has elapsed since the last dose, restarting only after catheter removal (typically 6 h prophylactic dose, longer for therapeutic)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Haematological malignancy */}
+          <section id="section-malignancy" className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haematological Malignancy &amp; Its Treatment</h2>
+            <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Chemotherapy Organ Toxicities</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li><strong>Anthracyclines</strong> (doxorubicin): dose-dependent, potentially irreversible cardiomyopathy — check recent echocardiogram/LVEF and cumulative dose history</li>
+                  <li><strong>Bleomycin:</strong> pulmonary fibrosis — avoid high FiO₂ intraoperatively (may precipitate/worsen bleomycin lung injury); titrate to lowest SpO₂-adequate FiO₂</li>
+                  <li><strong>Platinum agents (cisplatin):</strong> nephrotoxicity and peripheral neuropathy — check renal function, avoid further nephrotoxins</li>
+                  <li><strong>Vincristine/vinca alkaloids:</strong> peripheral and autonomic neuropathy — document baseline neurology before regional blocks</li>
+                  <li><strong>Cyclophosphamide:</strong> haemorrhagic cystitis, myelosuppression, cardiotoxicity at high dose</li>
+                  <li>Myelosuppression from most cytotoxics causes neutropenia, thrombocytopenia and anaemia — see relevant sections above</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Hyperviscosity Syndrome</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Seen with Waldenström macroglobulinaemia (IgM paraprotein), multiple myeloma, or extreme leucocytosis/polycythaemia — presents with visual disturbance, headache, mucosal bleeding, confusion and heart failure</li>
+                  <li>Avoid rapid red cell transfusion (worsens viscosity) until treated; urgent plasmapheresis for symptomatic paraproteinaemia, or leukapheresis for hyperleukocytosis (blast count &gt;100 ×10⁹/L) prior to chemotherapy</li>
+                  <li>Maintain hydration; avoid diuretics that concentrate blood further</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border-2 border-clinical/40 rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Tumour Lysis Syndrome</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Massive release of intracellular contents after rapid tumour cell death (spontaneous or post-chemotherapy) in high-turnover malignancies (Burkitt lymphoma, ALL, bulky/high-grade disease)</li>
+                  <li><strong>Cairo–Bishop metabolic criteria (any two within 3 days before to 7 days after treatment):</strong> uric acid ≥476 µmol/L or 25% rise; potassium ≥6.0 mmol/L or 25% rise; phosphate ≥1.45 mmol/L (adult) or 25% rise; corrected calcium ≤1.75 mmol/L or 25% fall</li>
+                  <li><strong>Clinical TLS:</strong> metabolic criteria plus AKI, arrhythmia or seizure</li>
+                  <li><strong>Prevention/treatment:</strong> aggressive IV hydration, rasburicase (recombinant urate oxidase, contraindicated in G6PD deficiency — risk of methaemoglobinaemia/haemolysis) or allopurinol for lower-risk disease, correct electrolytes, avoid potassium-containing fluids, renal replacement therapy for refractory hyperkalaemia/AKI</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Stem Cell Transplant Patients &amp; Blood Product Modification</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Peri-transplant patients are profoundly immunosuppressed with prolonged pancytopenia — apply strict neutropenic precautions (see Neutropenia section) and low threshold for empirical broad-spectrum antibiotics with any fever</li>
+                  <li><strong>Graft-versus-host disease (GVHD)</strong> after allogeneic transplant affects skin, gut and liver — may cause coagulopathy (hepatic GVHD) and altered drug handling</li>
+                  <li><strong>Irradiated blood products</strong> (gamma/X-irradiated, prevents transfusion-associated GVHD from donor lymphocytes) are mandatory for: allogeneic/autologous stem-cell transplant recipients (irradiated from conditioning until 6 months–2 years post-transplant depending on type), intrauterine/neonatal exchange transfusion, granulocyte transfusions, directed donations from blood relatives, patients on purine-analogue chemotherapy (fludarabine, cladribine, bendamustine) — indefinitely, and Hodgkin lymphoma at any stage</li>
+                  <li><strong>CMV-negative products</strong> are indicated for CMV-seronegative pregnant women, intrauterine transfusions, CMV-seronegative transplant candidates/recipients (stem cell or solid organ) where the recipient is CMV-negative, and neonates — leucodepletion (universal in the UK) also substantially reduces CMV transmission risk, so CMV-negative <em>and</em> leucodepleted products are used together for highest-risk recipients</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Cross-References</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>For massive haemorrhage protocol activation, 1:1:1 component ratios and viscoelastic-guided resuscitation, see the Anaemia section above and the dedicated Massive Haemorrhage / Major Trauma topics</li>
+                  <li>For acute transfusion reactions (febrile non-haemolytic, acute haemolytic, TRALI, TACO, anaphylactic) — recognition and immediate management (stop transfusion, maintain IV access, supportive resuscitation, return unit and samples to blood bank, report via Serious Hazards of Transfusion (SHOT)) is covered in the Transfusion Medicine / Massive Haemorrhage topics</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+                    <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
               'Iron-deficient anaemia <6 weeks before surgery: give IV iron (ferric carboxymaltose / derisomaltose) — oral iron is too slow.',
@@ -337,6 +569,11 @@ const HaematologicalDiseaseTopic = () => {
               'Suspected HIT: stop ALL heparin (including flushes), switch to argatroban/fondaparinux — do NOT transfuse platelets.',
               'Neutropenic sepsis: piperacillin–tazobactam within 1 hour of recognition, after cultures.',
               'POISE-3 (2022): TXA 1 g at induction + 1 g at end reduces major bleeding in non-cardiac surgery without significant excess of vascular events.',
+              'Sickle cell disease: avoid the "five H" triggers — hypoxia, hypothermia, acidosis, dehydration and stasis — and transfuse to Hb ~100 g/L (simple) or HbS <30% (exchange) before major surgery.',
+              'Desmopressin 0.3 microgram/kg works in mild haemophilia A and type 1 VWD but NOT haemophilia B or type 3 VWD — check the diagnosis before relying on it.',
+              'DOAC reversal: idarucizumab 5 g IV for dabigatran; andexanet alfa or PCC 25–50 IU/kg for factor Xa inhibitors when andexanet unavailable.',
+              'Tumour lysis syndrome: aggressive hydration + rasburicase (avoid in G6PD deficiency) — monitor potassium, phosphate, calcium and uric acid.',
+              'Stem cell transplant / immunosuppressed haematology patients require irradiated and, where indicated, CMV-negative blood products.',
             ]}
           />
           <TopicFaqs faqs={haematologicalDiseaseFaqs} />

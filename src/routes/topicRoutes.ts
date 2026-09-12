@@ -137,6 +137,11 @@ export const TOPIC_ROUTES: ReadonlyArray<readonly [string, string]> = [
   ["/perioperative/enhanced-recovery", "EnhancedRecoveryTopic"],
   ["/perioperative/perioperative-fluids", "PerioperativeFluidsTopic"],
   ["/perioperative/vascular-access-devices", "VascularAccessDevicesTopic"],
+  ["/perioperative/renal-disease", "RenalDiseaseTopic"],
+  ["/perioperative/musculoskeletal-disease", "MusculoskeletalDiseaseTopic"],
+  ["/perioperative/gastrointestinal-disease", "GastrointestinalDiseaseTopic"],
+  ["/perioperative/psychiatric-substance-disease", "PsychiatricSubstanceDiseaseTopic"],
+  ["/perioperative/immunosuppression-hiv", "ImmunosuppressionHivTopic"],
   ["/perioperative/genetic-syndromes", "GeneticSyndromesTopic"],
 
   // Intensive Care

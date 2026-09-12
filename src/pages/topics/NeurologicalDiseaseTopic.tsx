@@ -48,6 +48,7 @@ const tocItems = [
   { id: "section-muscular-dystrophies", label: "Muscular Dystrophies", group: "Muscular" },
   { id: "section-spinal-cord-injury", label: "Spinal Cord Injury", group: "Spinal" },
   { id: "section-guillain-barre", label: "Guillain–Barré Syndrome", group: "Neuropathy" },
+  { id: "section-stroke-cognitive", label: "Stroke, Perioperative Cognition & ICP Cross-Links", group: "Cerebrovascular" },
 ];
 
 const keyPoints = [
@@ -186,6 +187,17 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Edrophonium (Tensilon) test can differentiate — improvement = myasthenic; worsening = cholinergic</li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Quantitative Monitoring, Immunotherapy & Drug Conversion</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Quantitative (objective) neuromuscular monitoring — acceleromyography or mechanomyography with TOF ratio — is mandatory throughout, since qualitative/visual TOF assessment cannot reliably detect fade at the safety margins seen in MG; aim for TOF ratio &gt;0.9 before extubation</li>
+                <li>Sugammadex 2–4 mg/kg reverses rocuronium-induced block reliably even in MG and avoids anticholinesterase-related complications (secretions, bradycardia, unmasking cholinergic crisis); higher doses (up to 16 mg/kg) may be needed for immediate reversal of deep block</li>
+                <li>Leventhal criteria predict need for postoperative ventilation: disease duration &gt;6 years, coexisting COPD, pyridostigmine dose &gt;750 mg/day, vital capacity &lt;2.9 L — 2 or more positive criteria predicts a high likelihood of requiring postoperative ventilatory support</li>
+                <li>Pyridostigmine–neostigmine conversion: oral pyridostigmine 60 mg ≈ IV neostigmine 0.5–1 mg (roughly 1/30th the oral pyridostigmine dose) if the enteral route is temporarily unavailable perioperatively; give with glycopyrronium to limit muscarinic side effects</li>
+                <li>Preoperative optimisation for severe/bulbar/respiratory disease: plasma exchange (typically 5 exchanges over 7–14 days) or IVIG 0.4 g/kg/day for 5 days (total 2 g/kg) — both produce rapid but temporary improvement (weeks); equivalent efficacy, do not combine</li>
+                <li>Lambert-Eaton myasthenic syndrome (LEMS) — a key exam contrast: presynaptic voltage-gated calcium channel antibodies (often paraneoplastic, small cell lung cancer) cause proximal weakness that <em>improves</em> with repeated activity (post-tetanic potentiation), autonomic dysfunction (dry mouth) is prominent, and patients are sensitive to <strong>both</strong> depolarising and non-depolarising NMBAs — reduce doses of all NMBAs and anticipate a poor/absent response to anticholinesterases</li>
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -230,6 +242,24 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Intraoperative seizure management: ensure oxygenation, midazolam 2–5 mg IV, propofol bolus, thiopentone for refractory seizures</li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Parenteral Equivalents & Perioperative AED Continuity</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>If the enteral route is unavailable, convert to IV equivalents rather than omitting doses: levetiracetam has 1:1 oral:IV bioavailability (typical 500–1500 mg BD, infused over 15 min); sodium valproate IV is also 1:1 with oral dose; phenytoin can be given IV (loading 15–20 mg/kg, maintenance 100 mg every 6–8 h) with cardiac monitoring (risk of hypotension/arrhythmia with rapid administration, max rate 50 mg/min); carbamazepine has no parenteral formulation — bridge with an alternative (e.g. IV levetiracetam or phenytoin) if NBM for a prolonged period</li>
+                <li>Missing even a single dose of a long-term AED can precipitate seizures or status epilepticus — liaise with pharmacy/neurology early for complex regimens and prioritise same-day surgery to minimise fasting time</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Status Epilepticus: Stepwise Escalation</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Definition: a single seizure lasting &gt;5 minutes, or ≥2 seizures within 5 minutes without full recovery of consciousness between them</li>
+                <li><strong>0–5 min (stabilisation):</strong> ABC, high-flow oxygen, check glucose (give 100 mg IV thiamine + 50 mL 50% glucose if hypoglycaemic or alcohol-dependent), IV access, note time of onset</li>
+                <li><strong>5–20 min (first-line benzodiazepine):</strong> lorazepam 4 mg IV (repeat once after 10 min if seizure continues) — preferred IV agent; if no IV access, buccal midazolam 10 mg or rectal diazepam 10–20 mg</li>
+                <li><strong>20–40 min (second-line):</strong> levetiracetam 60 mg/kg IV (max 4.5 g) over 15 min, OR phenytoin 20 mg/kg IV loading (max 2 g, rate ≤50 mg/min with ECG/BP monitoring), OR sodium valproate 40 mg/kg IV (max 3 g) — choice guided by local protocol and comorbidity (avoid valproate in known/possible hepatic disease or childbearing potential)</li>
+                <li><strong>40–60 min (refractory status — general anaesthesia):</strong> rapid sequence induction with thiopentone 3–5 mg/kg or propofol 2 mg/kg ± infusion, intubate and ventilate, continuous EEG monitoring where available, involve ICU/neurology</li>
+                <li>Enzyme induction relevance during escalation: patients on enzyme-inducing AEDs (carbamazepine, phenytoin) will have accelerated clearance of induction agents, benzodiazepines and NMBAs — anticipate higher maintenance requirements and more rapid emergence from single bolus doses</li>
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -271,6 +301,16 @@ const NeurologicalDiseaseTopic = () => {
                 <li>General anaesthesia: all agents considered safe; avoid suxamethonium if significant motor deficit (hyperkalaemia risk from denervation)</li>
                 <li>Document all pre-existing neurological deficits preoperatively (medicolegal importance)</li>
                 <li>Disease-modifying therapies (natalizumab, fingolimod): immunosuppressive — infection risk; discuss with neurologist</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Relapse Risk, Disease-Modifying Therapy & Spasticity</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Perioperative pyrexia (even &lt;1°C rise) can transiently worsen conduction block in demyelinated axons (Uhthoff phenomenon) and is associated with relapse — maintain strict normothermia with active warming and antipyretics for fever</li>
+                <li>Physiological and psychological stress of surgery/illness is an independent relapse trigger, independent of anaesthetic technique — counsel patients that relapse risk relates more to the surgical stress response and infection than to the anaesthetic agents chosen</li>
+                <li>Disease-modifying therapies: interferon-beta and glatiramer acetate carry low infection/interaction risk; natalizumab, fingolimod, alemtuzumab and ocrelizumab are more potently immunosuppressive — increased risk of infection (including opportunistic, e.g. PML with natalizumab) and may need surgery timed relative to dosing/lymphocyte recovery in discussion with neurology</li>
+                <li>Baclofen (oral or intrathecal pump) is first-line for MS spasticity; abrupt withdrawal (pump failure, catheter disconnection, running out of oral drug) causes a life-threatening baclofen withdrawal syndrome — high fever, rebound spasticity/rigidity, pruritus, altered mental status progressing to rhabdomyolysis, multi-organ failure and seizures; treatment is prompt restoration of baclofen (oral or intrathecal), IV benzodiazepines for symptom control, and supportive critical care</li>
+                <li>Continue baclofen perioperatively wherever possible; if an intrathecal pump is in situ, involve the pain/neurosurgical pump team before surgery near the pump/catheter or before any interruption in delivery</li>
               </ul>
             </div>
           </div>
@@ -325,6 +365,16 @@ const NeurologicalDiseaseTopic = () => {
                 <li><strong>Apomorphine infusion:</strong> a potent subcutaneous dopamine agonist used for severe motor fluctuations; causes severe nausea and vomiting — pretreat/cover with domperidone; avoid ondansetron and other 5-HT3 antagonists in combination, as this can precipitate profound, severe hypotension and collapse</li>
                 <li><strong>Rotigotine transdermal patch:</strong> useful bridging therapy when the patient is nil by mouth or the enteral route is unavailable perioperatively; convert the usual oral dopaminergic regimen using published levodopa-equivalent dose tables</li>
                 <li>Across all regimens, avoid metoclopramide, prochlorperazine, haloperidol and droperidol — central D2-antagonism can precipitate severe rigidity and an NMS-like crisis <InlineRef topicId="neurological-disease" refLabel="BJA Educ PD 2014" /> <InlineRef topicId="neurological-disease" refLabel="NICE NG71 (Parkinsons)" /></li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Timing, Route Conversion & Drugs to Avoid</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Schedule surgery first on the list and give the usual levodopa dose with a sip of water no more than 30–60 minutes before induction — even a single missed dose can precipitate acute akinesia (severe rigidity mimicking NMS) within hours</li>
+                <li>If the oral/enteral route is unavailable postoperatively, give levodopa via NG tube (crushed immediate-release preparations, or use a liquid formulation), or convert temporarily to a rotigotine transdermal patch using published levodopa-equivalent dose (LED) tables — apomorphine subcutaneous infusion or intermittent rescue injections (2–10 mg SC) can also bridge severe motor fluctuations under specialist guidance</li>
+                <li>Drugs to avoid absolutely: metoclopramide, haloperidol, prochlorperazine and other central dopamine (D2) antagonists — precipitate acute severe rigidity/NMS-like crisis; pethidine is specifically dangerous in patients on MAO-B inhibitors (selegiline, rasagiline) — the combination can cause a serotonergic reaction with hyperthermia, rigidity and autonomic instability analogous to serotonin syndrome; avoid pethidine and use alternative opioids</li>
+                <li>Safe antiemetics: ondansetron, domperidone (does not cross the blood-brain barrier); cyclizine is generally acceptable</li>
+                <li>Acute akinesia (levodopa withdrawal crisis) presents with severe rigidity, inability to move, dysphagia (aspiration risk), hyperthermia, autonomic instability and rhabdomyolysis — treat as an emergency with urgent restoration of dopaminergic therapy (NG levodopa or apomorphine rescue), IV fluids, and supportive critical care; it is clinically indistinguishable from neuroleptic malignant syndrome</li>
               </ul>
             </div>
           </div>
@@ -433,6 +483,16 @@ const NeurologicalDiseaseTopic = () => {
                 <li>TIVA with propofol/remifentanil is preferred; use sugammadex for reversal if rocuronium used</li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Myotonic Response, Rhabdomyolysis & MH Relationship</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Myotonia is a failure of muscle relaxation after voluntary contraction or stimulation due to abnormal sarcolemmal chloride/sodium channel function — it is <strong>not</strong> abolished by non-depolarising NMBAs or regional anaesthesia because the defect is in the muscle membrane itself, distal to the neuromuscular junction</li>
+                <li>Recognised precipitants of myotonic contracture: cold (theatre hypothermia), shivering, mechanical/electrical stimulation (diathermy, surgical handling), and neostigmine (anticholinesterase reversal can provoke severe generalised myotonia) — maintain strict normothermia with forced-air warming and avoid neostigmine where possible, preferring sugammadex for rocuronium reversal</li>
+                <li>Suxamethonium is contraindicated in all dystrophies/myotonic disorders — triggers sustained myotonic contracture that can make bag-mask ventilation and intubation impossible, in addition to the risk of rhabdomyolysis and hyperkalaemic cardiac arrest</li>
+                <li>Volatile-agent exposure in Duchenne/Becker dystrophinopathies can trigger an MH-like reaction (acute rhabdomyolysis with hyperkalaemia, hyperthermia and cardiac arrest) that is clinically similar to but pathophysiologically distinct from true malignant hyperthermia (dystrophin deficiency rather than ryanodine receptor mutation); dantrolene is still used in treatment of this reaction, and TIVA is preferred to avoid it entirely</li>
+                <li>Rhabdomyolysis/hyperkalaemia from sux or volatiles: treat as an anaesthetic emergency — stop the trigger, hyperventilate with 100% oxygen, calcium chloride/gluconate for cardiac membrane stabilisation, insulin-dextrose and salbutamol nebuliser/IV to shift potassium intracellularly, aggressive IV fluids and consider dantrolene 2.5 mg/kg IV if an MH-like picture is suspected</li>
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -478,6 +538,16 @@ const NeurologicalDiseaseTopic = () => {
                 <li>For surgery in patients at risk (e.g. cystoscopy, urodynamics, obstetric delivery), deep general anaesthesia or dense spinal/epidural block prevents recurrence by blocking the afferent limb of the reflex — light GA is inadequate <InlineRef topicId="neurological-disease" refLabel="Autonomic Dysreflexia" /></li>
                 <li>Chronic SCI: osteoporosis (fracture risk with positioning), pressure areas, thermoregulation impairment (poikilothermia), latex allergy (repeated catheterisations)</li>
                 <li>Respiratory: lesion above C3–5 → diaphragm paralysis (phrenic nerve); thoracic lesions → reduced FVC (loss of intercostal/abdominal muscles)</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Spinal Shock, Sux Timing Window & Respiratory Function by Level</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Acute spinal shock (first hours–days after injury): flaccid areflexic paralysis below the lesion with loss of sympathetic tone — neurogenic shock (hypotension with paradoxical bradycardia, from unopposed vagal tone and loss of sympathetic outflow) is common in the first 24–48 h and is treated with judicious fluids and vasopressors rather than large-volume resuscitation alone</li>
+                <li>Suxamethonium is safe within the first ~48 hours of acute spinal cord injury because extra-junctional acetylcholine receptor upregulation has not yet occurred; it becomes unsafe from around 3–5 days and must be avoided from 24 hours as a practical/conservative cut-off until denervation hyperkalaemia risk resolves — this risk persists for many months to a year and in complete injuries may never fully resolve, so use a non-depolarising NMBA (rocuronium + sugammadex) once outside the earliest safe window</li>
+                <li>Respiratory function correlates with lesion level: C1–C2 lesions cause complete apnoea (loss of phrenic nerve input, C3–C5) and require permanent ventilation; C3–C5 lesions cause partial diaphragmatic weakness with paradoxical breathing; lesions below C5 preserve the diaphragm but lose intercostal and abdominal muscle function, reducing vital capacity, cough effectiveness and the ability to clear secretions — expect a restrictive pattern with FVC reduced roughly in proportion to how high and complete the lesion is</li>
+                <li>Temperature regulation: poikilothermia below the level of injury from loss of vasomotor/sudomotor control — active warming/cooling and continuous core temperature monitoring are essential, particularly for high thoracic and cervical lesions</li>
+                <li>Bladder care: neurogenic bladder is managed with intermittent self-catheterisation or an indwelling/suprapubic catheter; recurrent catheterisation predisposes to UTI (a common autonomic dysreflexia trigger) and latex sensitisation — use latex-free equipment and maintain meticulous catheter care to reduce dysreflexia episodes</li>
               </ul>
             </div>
           </div>
@@ -533,6 +603,58 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Bulbar signs (weak cough, pooling secretions, dysphagia) and rapid rate of progression (e.g. the EGRIS — Erasmus GBS Respiratory Insufficiency Score) should also prompt early, controlled/elective intubation rather than waiting for crisis</li>
                 <li>Disease-modifying treatment: intravenous immunoglobulin 0.4 g/kg/day for 5 days, or plasma exchange — these have equivalent efficacy and should not be combined</li>
                 <li>Supportive critical care: VTE prophylaxis (immobility and dysautonomia increase risk), neuropathic pain management (gabapentinoids, e.g. gabapentin or pregabalin), meticulous pressure area care, early physiotherapy and rehabilitation planning given the prolonged recovery trajectory <InlineRef topicId="neurological-disease" refLabel="Lancet GBS 2016" /></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Stroke, Perioperative Cognition & ICP cross-links */}
+        <section id="section-stroke-cognitive" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Stroke, Perioperative Cognitive Dysfunction & ICP Cross-Links</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_09", "NA_BK_01"]} />
+          <FRCARelevanceCallout
+            bottomLine="Recent stroke and carotid disease markedly raise perioperative cerebrovascular risk; elective surgery should be deferred where possible, and blood pressure managed to avoid both hypoperfusion and haemorrhagic extension."
+            implications={[
+              "Defer elective surgery for at least 9 months after stroke/TIA where possible — risk of recurrent perioperative stroke and mortality is highest in the first 3 months and falls progressively thereafter.",
+              "Maintain intraoperative blood pressure within 20% of the patient's normal range; avoid hypotension in patients with significant carotid stenosis.",
+              "Symptomatic carotid stenosis ≥70% warrants carotid endarterectomy before elective non-cardiac, non-vascular surgery where feasible.",
+              "Postoperative delirium and cognitive dysfunction are more frequent and more severe in patients with pre-existing neurodegenerative or cerebrovascular disease — screen with CAM/4AT and use multicomponent prevention bundles.",
+            ]}
+            buzzwords={[
+              "9-month elective surgery rule",
+              "Perioperative stroke risk highest at 0–3 months",
+              "Carotid stenosis ≥70%",
+              "Watershed hypoperfusion",
+              "POCD vs POD",
+              "CAM-ICU / 4AT",
+            ]}
+            vivaStem="A patient had an ischaemic stroke 3 months ago and now needs elective hip replacement — how do you counsel and plan for this?"
+          />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Timing of Elective Surgery After Stroke</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Large retrospective cohort data show the risk of recurrent perioperative stroke, cardiovascular events and 30-day mortality is substantially elevated when elective surgery is performed within 3 months of a stroke, remains elevated at 3–6 months, and only approaches baseline risk by around 9 months post-stroke — the "9-month rule" is a widely used pragmatic threshold for deferring elective (non-urgent) surgery</li>
+                <li>Risk factors amplifying perioperative stroke risk: atrial fibrillation, carotid disease, recent MI, and haemodynamic instability during anaesthesia (both hypotension and hypertension)</li>
+                <li>For urgent/semi-urgent surgery that cannot wait, involve stroke medicine/neurology, optimise antiplatelet/anticoagulant management, and plan meticulous perioperative blood pressure and glycaemic control</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Blood Pressure Targets & Carotid Disease</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Cerebral autoregulation is impaired for weeks to months after acute stroke and in chronic significant carotid stenosis — perfusion of at-risk (watershed) territory becomes pressure-dependent, so avoid intraoperative hypotension; a practical target is to keep mean arterial/systolic pressure within about 20% of the patient's usual (chronic) values, erring towards the upper end in known cerebrovascular disease rather than accepting standard "permissive hypotension" targets</li>
+                <li>Symptomatic carotid stenosis ≥70% (by NASCET criteria) is an indication for carotid endarterectomy or stenting, which should generally be performed before elective non-cardiac, non-vascular surgery to reduce perioperative stroke risk; asymptomatic stenosis is managed more conservatively with risk-factor modification</li>
+                <li>Continue antiplatelet therapy (aspirin ± clopidogrel) through the perioperative period wherever surgical bleeding risk allows, given the high risk of thrombotic stroke if stopped; discuss bridging/timing with the multidisciplinary team when high bleeding-risk surgery is planned</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Postoperative Delirium and Cognitive Dysfunction</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Postoperative delirium (POD) is an acute, fluctuating disturbance of attention and awareness typically arising within the first few postoperative days; postoperative cognitive dysfunction (POCD) is a more subtle, often persistent decline in memory, concentration and executive function detected on formal testing weeks to months after surgery — both are more common and more severe in patients with pre-existing neurodegenerative disease (Parkinson's, dementia) or cerebrovascular disease</li>
+                <li>Risk factors: advanced age, pre-existing cognitive impairment, stroke/cerebrovascular disease, polypharmacy (especially anticholinergics and benzodiazepines), uncontrolled pain, sleep deprivation, dehydration, hypoxaemia and metabolic derangement</li>
+                <li>Screening tools: Confusion Assessment Method (CAM/CAM-ICU) and the 4AT (Alertness, AMT4, Attention, Acute change) are validated rapid bedside screens for delirium</li>
+                <li>Prevention bundle: avoid deliriogenic drugs where possible, ensure adequate analgesia, maintain hydration/nutrition, promote normal sleep-wake cycles, early mobilisation, sensory aids (glasses/hearing aids), and reorientation strategies; depth-of-anaesthesia monitoring (e.g. BIS) to avoid excessively deep anaesthesia has some evidence for reducing POD incidence</li>
+                <li>Cross-reference: severe traumatic brain injury and raised intracranial pressure management (osmotherapy, CPP-targeted care, decompressive craniectomy) and neuromuscular respiratory failure (ventilatory support thresholds, weaning) are covered in detail in the dedicated Neurocritical Care and Neuromuscular Respiratory Failure topics — the principles of avoiding secondary neuronal injury (hypoxaemia, hypotension, hyperthermia, hypo/hyperglycaemia) apply equally to the stroke and cognitively vulnerable patient perioperatively</li>
               </ul>
             </div>
           </div>

@@ -66,6 +66,8 @@ const tocItems = [
   { id: "section-adrenal-disorders", label: "Adrenal Disorders", group: "Adrenal" },
   { id: "section-phaeochromocytoma", label: "Phaeochromocytoma", group: "Neuroendocrine" },
   { id: "section-carcinoid-syndrome", label: "Carcinoid Syndrome", group: "Neuroendocrine" },
+  { id: "section-pituitary-disease", label: "Pituitary Disease", group: "Neuroendocrine" },
+  { id: "section-obesity-endocrine", label: "Obesity-Related Endocrine/Metabolic Issues", group: "Neuroendocrine" },
 ];
 
 const endocrineDiseaseFaqs: Array<[string, string]> = [
@@ -118,6 +120,20 @@ const EndocrineDiseaseTopic = () => {
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Day-of-Surgery Drug Modification by Class</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Metformin: continue if eGFR normal and only one meal missed; omit on the day if a prolonged (&gt;1 meal) fast is planned or renal function is impaired (lactic acidosis risk)</li>
+                <li>Sulfonylureas (gliclazide, glimepiride): omit on the morning of surgery — hypoglycaemia risk from ongoing insulin secretion without oral intake</li>
+                <li>SGLT2 inhibitors (dapagliflozin, empagliflozin, canagliflozin, ertugliflozin): omit for 3 days before major surgery (and on the day of minor surgery) — risk of euglycaemic diabetic ketoacidosis (normal or mildly raised glucose with raised ketones and metabolic acidosis) driven by glycosuria-induced volume depletion and enhanced ketogenesis; restart only once eating/drinking normally and ketones normal</li>
+                <li>DPP-4 inhibitors (sitagliptin, linagliptin) and pioglitazone: continue as usual on the day of surgery</li>
+                <li>GLP-1 receptor agonists (semaglutide, liraglutide, dulaglutide, tirzepatide): delay gastric emptying via vagally-mediated pyloric slowing — solid gastric residue and aspiration risk persist despite standard fasting even when the drug is correctly omitted</li>
+                <li>Association of Anaesthetists advice: omit daily preparations on the day of surgery; omit weekly preparations for at least one week before surgery (guidance continues to evolve)</li>
+                <li>If not omitted as advised, manage as high aspiration risk: consider prolonged clear-fluid-only fasting, point-of-care gastric ultrasound where available, and rapid sequence induction <InlineRef topicId="endocrine-disease" refLabel="BJA Educ Diabetes 2024" /></li>
+                <li>All basal (long-acting/background) insulin: continue but reduce by ~20% (i.e. give 80% of usual dose) the night before/morning of surgery in both type 1 and type 2 DM</li>
+                <li>Short-acting/prandial and mixed insulins: omit the dose that coincides with a missed meal</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Perioperative Glucose Management</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Target glucose: 6–10 mmol/L (NICE-SUGAR trial: tight control [4.5–6] increased mortality vs moderate control)</li>
@@ -128,16 +144,28 @@ const EndocrineDiseaseTopic = () => {
                 <li>Association of Anaesthetists advice: omit daily preparations on the day of surgery; omit weekly preparations for at least one week before surgery (guidance continues to evolve as evidence accumulates)</li>
                 <li>If not omitted as advised, manage as high aspiration risk — consider prolonged clear-fluid-only fasting, point-of-care gastric ultrasound where available, and rapid sequence induction</li>
                 <li>Omission has glycaemic consequences (rebound hyperglycaemia) — monitor glucose and use variable-rate insulin infusion if required <InlineRef topicId="endocrine-disease" refLabel="BJA Educ Diabetes 2024" /></li>
-                <li>VRIII (sliding scale): dextrose 5%/10% with KCl + separate insulin syringe; hourly glucose monitoring</li>
-                <li>Schedule diabetic patients first on morning list to minimise fasting duration</li>
+                <li>Schedule diabetic patients first on the morning (or afternoon) list to minimise fasting duration — the "first on list" principle</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Variable Rate Intravenous Insulin Infusion (VRIII)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Indications: type 1 DM expected to miss &gt;1 meal; poorly controlled diabetes (HbA1c &gt;69 mmol/mol) undergoing major surgery; type 2 DM on insulin who will miss &gt;1 meal; emergency surgery; need for two-bag or complex fluid management</li>
+                <li>Prescription: soluble insulin 50 units in 50 mL 0.9% saline (1 unit/mL) via syringe driver, rate adjusted according to a sliding-scale algorithm based on hourly capillary glucose</li>
+                <li>Co-administer substrate: 5% or 10% glucose with 0.15–0.3% KCl (e.g. 0.45% saline + 5% glucose + 0.15% KCl) running concurrently at ~83–125 mL/h, or the "two-bag" system (separate glucose and saline bags run at variable relative rates) to prevent starvation ketosis and hypoglycaemia</li>
+                <li>Never stop background/basal insulin in type 1 DM even while VRIII is running — omission risks rapid ketogenesis and DKA within hours; continue basal analogue insulin alongside the infusion</li>
+                <li>Target capillary/arterial glucose: 6–10 mmol/L (acceptable range 4–12 mmol/L); check hourly (or more often if unstable)</li>
+                <li>Check capillary/blood ketones and venous bicarbonate/pH if glucose &gt;12 mmol/L or the patient is unwell — rising ketones with normal or near-normal glucose indicates euglycaemic DKA</li>
+                <li>Discontinue only once eating and drinking normally, with subcutaneous insulin restarted and a 30–60 minute overlap before stopping the infusion (to avoid a gap in insulin delivery)</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Diabetic Emergencies</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>DKA: insulin infusion (0.1 U/kg/h), IV fluids, potassium replacement, monitor for cerebral oedema</li>
-                <li>Hypoglycaemia (&lt;4 mmol/L): 75–100 mL of 20% glucose IV; glucagon 1 mg IM if no IV access</li>
-                <li>Euglycaemic DKA: suspect in patients on SGLT2 inhibitors — normal glucose but raised ketones and metabolic acidosis</li>
+                <li>DKA diagnostic criteria: glucose &gt;11 mmol/L (or known diabetes), capillary ketones ≥3 mmol/L (or urine ketones ≥2+), venous pH &lt;7.3 and/or bicarbonate &lt;15 mmol/L</li>
+                <li>DKA management: fixed-rate IV insulin infusion 0.1 units/kg/h; 0.9% saline resuscitation (typically 1 L over the first hour, then according to clinical state); potassium replacement guided by serum K+ (withhold if &gt;5.5 mmol/L, standard replacement 20–40 mmol/L if 3.5–5.5 mmol/L, senior input if &lt;3.5 mmol/L); add 10% glucose once glucose falls below ~14 mmol/L to allow the fixed-rate insulin to continue; monitor for cerebral oedema (more common in young patients) and hypokalaemia</li>
+                <li>Hypoglycaemia (&lt;4 mmol/L): 75–100 mL of 20% glucose IV (or 15–20 g oral glucose if conscious); glucagon 1 mg IM/IV if no IV access; recheck glucose in 10–15 minutes</li>
+                <li>Euglycaemic DKA: classically associated with SGLT2 inhibitors, prolonged fasting, pregnancy, low-carbohydrate diets, or acute illness — normal or only mildly raised glucose (often &lt;11 mmol/L) with significant ketosis and metabolic acidosis; a normal glucose must not be used to exclude DKA if ketones are checked and raised — treat as standard DKA including insulin and dextrose co-administration</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
@@ -167,8 +195,9 @@ const EndocrineDiseaseTopic = () => {
                 <li>Cardiovascular effects: tachycardia, AF, increased cardiac output, widened pulse pressure</li>
                 <li>Must be euthyroid before elective surgery — carbimazole/propylthiouracil + β-blocker</li>
                 <li>Anaesthetic implications: exaggerated response to catecholamines, increased MAC, risk of thyroid storm</li>
-                <li>Thyroid storm: hyperthermia (&gt;40°C), tachycardia, altered consciousness — mortality &gt;20%</li>
-                <li>Treatment: propranolol, Lugol's iodine, PTU, dexamethasone, active cooling, ICU admission</li>
+                <li>Thyroid storm: hyperthermia (&gt;40°C), severe tachycardia/AF, agitation or coma, vomiting/diarrhoea, high-output cardiac failure — mortality &gt;20% untreated</li>
+                <li>Thyroid storm treatment (stepwise, with exact doses): propranolol 60–80 mg orally 4-hourly or 1–2 mg IV boluses (titrated) to control the adrenergic surge; propylthiouracil (PTU) 500–1000 mg loading dose then 250 mg orally 4-hourly (blocks new hormone synthesis and peripheral T4→T3 conversion — preferred over carbimazole in storm); hydrocortisone 100 mg IV 6–8-hourly (reduces T4→T3 conversion and covers relative adrenal insufficiency); Lugol's iodine (aqueous iodine oral solution) 0.3–0.5 mL 8-hourly, started at least 1 hour after the first dose of PTU/carbimazole to avoid the iodine being incorporated into new hormone synthesis (Wolff–Chaikoff-mediated block of hormone release)</li>
+                <li>Supportive care: active cooling (paracetamol, cooling blankets — avoid aspirin which displaces T4 from binding proteins), IV fluids, treat the precipitant (infection, surgery, iodine load), ICU admission for cardiovascular support and monitoring</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
@@ -178,14 +207,19 @@ const EndocrineDiseaseTopic = () => {
                 <li>Increased sensitivity to anaesthetic agents and opioids; reduced MAC</li>
                 <li>Delayed gastric emptying, hypothermia, and impaired drug metabolism</li>
                 <li>Mild/moderate hypothyroidism: safe to proceed with surgery; severe (myxoedema coma) is a contraindication</li>
-                <li>Myxoedema coma: IV T3, hydrocortisone, rewarming, ventilatory support — ICU management</li>
+                <li>Myxoedema coma: medical emergency with mortality up to 30–50%; features include hypothermia, bradycardia, hyponatraemia, hypoglycaemia, hypoventilation, and depressed consciousness</li>
+                <li>Myxoedema coma treatment: IV levothyroxine (T4) 200–500 µg loading dose then 50–100 µg daily, often with IV liothyronine (T3) 5–20 µg (faster onset) given cautiously due to arrhythmia risk; IV hydrocortisone 100 mg 6–8-hourly (until co-existing adrenal insufficiency excluded); gradual passive rewarming (rapid rewarming risks vasodilatation and cardiovascular collapse); ventilatory support for hypoventilation/CO2 retention; cautious fluid and glucose correction; ICU management</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Thyroidectomy Considerations</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Airway assessment: retrosternal extension, tracheal deviation/compression, CT thorax if stridor</li>
-                <li>Postoperative complications: recurrent laryngeal nerve palsy (hoarseness), bilateral RLN palsy (stridor → reintubation), hypocalcaemia (parathyroid damage), haematoma (surgical emergency — open wound at bedside)</li>
+                <li>Airway assessment for goitre: assess for tracheal deviation/compression, stridor, positional dyspnoea, and voice change; flow–volume loops may show a fixed extrathoracic or intrathoracic obstruction pattern</li>
+                <li>Retrosternal extension: examine for a goitre that disappears below the sternal notch, "sail sign" on CXR, or symptoms exacerbated by arms raised above the head (Pemberton's sign, suggesting thoracic inlet obstruction); obtain CT thorax/neck if retrosternal extension, significant tracheal compression, or stridor is present — informs decision on awake fibreoptic intubation, armoured tube use, and availability of rigid bronchoscopy/ECMO standby for severe compression</li>
+                <li>Postoperative haematoma: surgical emergency causing airway compromise from tracheal compression and venous/lymphatic obstruction (laryngeal oedema) rather than the haematoma volume alone; immediate management is to remove the skin clips/sutures and evacuate the haematoma at the bedside before returning to theatre, as this can rapidly relieve the airway obstruction</li>
+                <li>Recurrent laryngeal nerve (RLN) palsy: unilateral injury causes hoarseness with a normal airway (ipsilateral vocal cord in a paramedian position); bilateral RLN palsy causes both cords to lie paramedian, producing stridor and airway obstruction that may require immediate reintubation or emergency tracheostomy</li>
+                <li>Hypocalcaemia: from inadvertent parathyroid gland damage/devascularisation; typically develops 24–48 h post-op with perioral tingling, paraesthesiae, Chvostek's and Trousseau's signs, and can progress to laryngospasm or seizures — check serum calcium routinely post-thyroidectomy and treat with IV calcium gluconate if symptomatic</li>
+                <li>Tracheomalacia: long-standing goitre compression may weaken the tracheal cartilage, so that after gland removal the trachea can collapse dynamically on extubation, causing stridor and respiratory distress; consider a leak test before extubation and have a plan for re-intubation or staged extubation over an airway exchange catheter</li>
               </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
@@ -200,20 +234,41 @@ const EndocrineDiseaseTopic = () => {
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
-              <h3 className="font-semibold text-foreground mb-2">Adrenal Insufficiency & Steroid Supplementation</h3>
+              <h3 className="font-semibold text-foreground mb-2">Primary vs Secondary Adrenal Insufficiency</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Chronic steroid use (≥5 mg prednisolone/day for ≥3 months) → HPA axis suppression for up to 12 months after cessation</li>
-                <li>Perioperative supplementation (2023 guidelines): minor surgery — usual dose; moderate — hydrocortisone 50 mg at induction + 25 mg q8h for 24 h; major — 100 mg at induction + 50 mg q8h for 48–72 h</li>
-                <li>Addisonian crisis: refractory hypotension, hyperkalaemia, hyponatraemia, hypoglycaemia</li>
-                <li>Treatment: IV hydrocortisone 100 mg stat, 0.9% saline bolus, 10% dextrose for hypoglycaemia</li>
+                <li>Primary (Addison's disease): destruction of the adrenal cortex itself (autoimmune commonest in the UK, also TB, malignancy, haemorrhage) — deficiency of both cortisol and aldosterone, so features include hyponatraemia, hyperkalaemia, postural hypotension, and hyperpigmentation (from raised ACTH/POMC)</li>
+                <li>Secondary/tertiary insufficiency: hypothalamic–pituitary disease or, most commonly in anaesthetic practice, exogenous corticosteroid suppression of ACTH — aldosterone secretion is largely preserved (renin–angiotensin driven), so hyperkalaemia is typically absent and hyperpigmentation does not occur</li>
+                <li>Short synacthen test (SST): baseline cortisol measured, then tetracosactide (synthetic ACTH) 250 µg IM/IV given, with cortisol repeated at 30 minutes; a normal response is a post-stimulation cortisol &gt;450–550 nmol/L (assay-dependent) — a failure to rise adequately confirms adrenal insufficiency and, in known steroid users, indicates HPA-axis suppression requiring perioperative cover</li>
+                <li>Chronic steroid use (≥5 mg prednisolone/day, or equivalent, for ≥3 months in the preceding year) is assumed to cause clinically significant HPA-axis suppression lasting up to 12 months after cessation — no need for an SST in this group as supplementation is given empirically</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Perioperative Steroid Supplementation & Addisonian Crisis</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Continue the patient's usual daily glucocorticoid dose throughout the perioperative period in all cases, plus additional cover according to surgical severity (2020 Association of Anaesthetists guidance)</li>
+                <li>Minor surgery (e.g. under local anaesthesia, minor procedure with rapid recovery): usual dose only, no additional hydrocortisone needed; resume oral medication as soon as possible</li>
+                <li>Moderate surgery: hydrocortisone 50 mg IV at induction, then 25 mg IV every 8 hours for 24 hours, then resume usual oral dose</li>
+                <li>Major surgery: hydrocortisone 100 mg IV at induction, then 50 mg IV every 8 hours (or an infusion of 200 mg/24 h) for 48–72 hours depending on recovery, then wean back to the usual oral dose over several days</li>
+                <li>Alternative simplified approach for known/suspected adrenal insufficiency or long-term steroid use: hydrocortisone 100 mg IM/IV at induction then 50 mg IV/IM 6-hourly until eating/drinking, then double the usual oral dose for 24–48 h</li>
+                <li>Addisonian (adrenal) crisis: refractory/vasopressor-resistant hypotension, hyperkalaemia, hyponatraemia, hypoglycaemia, abdominal pain, and vomiting — must be treated on clinical suspicion without waiting for confirmatory cortisol results</li>
+                <li>Treatment: IV hydrocortisone 100 mg stat bolus then 100 mg every 6 hours (or a continuous infusion), rapid 0.9% saline resuscitation (typically 1 L over 1 hour then reassess), 10% dextrose for hypoglycaemia, and correction of hyperkalaemia if severe; fludrocortisone is not required acutely as high-dose hydrocortisone has intrinsic mineralocorticoid activity</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Cushing's Syndrome</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Features: central obesity, hypertension, diabetes, osteoporosis, proximal myopathy, thin skin</li>
-                <li>Difficult IV access, fragile tissues; anticipate difficult positioning and pressure area care</li>
-                <li>Continue perioperative steroid cover — risk of adrenal crisis with adrenalectomy</li>
+                <li>Features: central obesity, hypertension, diabetes/impaired glucose tolerance, osteoporosis (careful positioning, risk of vertebral/rib fracture), proximal myopathy, thin fragile skin and easy bruising, striae, and psychiatric disturbance</li>
+                <li>Difficult IV access and fragile veins/skin; anticipate difficult airway/positioning from truncal obesity and a "buffalo hump"; meticulous pressure area care</li>
+                <li>Hypokalaemic metabolic alkalosis may occur with severe hypercortisolism (mineralocorticoid effect of very high cortisol) — check electrolytes preoperatively</li>
+                <li>Continue perioperative steroid cover; after successful adrenalectomy for a cortisol-secreting tumour the contralateral (or remaining) adrenal is suppressed, so patients require full glucocorticoid replacement to avoid postoperative adrenal crisis</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Conn's Syndrome (Primary Hyperaldosteronism)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Excess aldosterone from an adrenal adenoma or bilateral hyperplasia causes sodium/water retention with hypertension, and renal potassium/hydrogen ion wasting causing hypokalaemia and metabolic alkalosis</li>
+                <li>Preoperative optimisation: correct hypokalaemia (may require high-dose potassium replacement) and control blood pressure with a mineralocorticoid receptor antagonist (spironolactone or eplerenone) before elective adrenalectomy</li>
+                <li>Anaesthetic implications: hypokalaemia increases sensitivity to neuromuscular blocking agents and risk of arrhythmia; monitor potassium and ECG perioperatively; blood pressure typically improves after successful unilateral adrenalectomy but may take weeks to normalise</li>
               </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
@@ -228,16 +283,30 @@ const EndocrineDiseaseTopic = () => {
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Diagnosis and Preoperative Preparation</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Catecholamine-secreting tumour of adrenal medulla (90%) or extra-adrenal paraganglia</li>
-                <li>Classic triad: headache, sweating, palpitations with paroxysmal hypertension</li>
-                <li>Preoperative preparation (10–14 days): α-blockade first (phenoxybenzamine 10 mg BD, titrate up), then β-blockade (propranolol) once α-blocked</li>
-                <li>Never give β-blockers without prior α-blockade → unopposed α-stimulation → hypertensive crisis</li>
-                <li>Volume expansion: patients are chronically vasoconstricted and intravascularly depleted; encourage salt and fluid intake</li>
-                <li>Readiness criteria: BP &lt;130/80 sitting, postural drop present, no ST changes, nasal congestion developing</li>
-                <li>Intraoperative: arterial line + CVP essential; have phentolamine (α-blocker), SNP, GTN, esmolol, and magnesium drawn up</li>
-                <li>Tumour handling → catecholamine surge → hypertension/tachycardia; after venous ligation → risk of profound hypotension</li>
-                <li>Postoperative: risk of hypotension (depleted catecholamines) and hypoglycaemia (rebound insulin secretion)</li>
+                <li>Catecholamine-secreting tumour of the adrenal medulla (90%) or extra-adrenal paraganglia; "rule of 10s" (10% bilateral, 10% extra-adrenal, 10% malignant, ~10% familial — higher in modern series with genetic screening)</li>
+                <li>Classic triad: headache, sweating, and palpitations with paroxysmal hypertension; may also present with anxiety, pallor, tremor, or catecholamine-induced cardiomyopathy</li>
+                <li>Biochemical diagnosis: plasma free metanephrines (or 24-h urinary fractionated metanephrines/catecholamines) — plasma metanephrines have the highest sensitivity and are the preferred first-line test; imaging (CT/MRI, MIBG scintigraphy) localises the tumour after biochemical confirmation</li>
+                <li>Preoperative preparation (10–14 days minimum): α-blockade first — phenoxybenzamine (non-competitive, long-acting) starting 10 mg BD and titrated up (often to 1 mg/kg/day in divided doses) until postural hypotension develops, or doxazosin (competitive, selective α1-blocker, shorter-acting, less reflex tachycardia) starting 1–2 mg OD/BD and titrated up to effect</li>
+                <li>β-blockade (e.g. propranolol 10–40 mg TDS, or atenolol) is added only once α-blockade is established, usually after 2–3 days, to control reflex tachycardia and any catecholamine-induced arrhythmia</li>
+                <li>Never give β-blockers before adequate α-blockade → unopposed α-adrenergic vasoconstriction → severe hypertensive crisis and potential acute heart failure/pulmonary oedema</li>
+                <li>Volume repletion: patients are chronically vasoconstricted and intravascularly volume-depleted despite hypertension; encourage a high-salt diet and oral fluid intake during preparation, and give generous IV crystalloid preoperatively to blunt the post-ligation hypotension</li>
+                <li>Readiness criteria (Roizen's criteria): BP consistently &lt;160/90 mmHg (some sources &lt;130/80 sitting), orthostatic drop present but systolic &gt;80 mmHg standing, no ST-T changes for 1 week, and no more than one ventricular ectopic every 5 minutes</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Intraoperative Management and Crisis Drugs</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Invasive monitoring: arterial line pre-induction, central venous access; consider cardiac output monitoring for large/complex tumours</li>
+                <li>Avoid histamine-releasing agents and drugs that provoke catecholamine release (e.g. ketamine, ephedrine, atracurium in large doses, metoclopramide)</li>
+                <li>Tumour handling causes catecholamine surges with severe hypertension and tachy-arrhythmia; have the following drawn up and immediately available:</li>
+                <li>Magnesium sulfate 2–4 g IV bolus (then infusion) — reduces catecholamine release, causes vasodilatation, and has anti-arrhythmic effect</li>
+                <li>Phentolamine 1–5 mg IV boluses (short-acting competitive α-blocker) titrated for acute hypertensive spikes</li>
+                <li>Sodium nitroprusside 0.5–1.5 µg/kg/min IV infusion titrated to effect — rapid-onset arterial and venous vasodilator for refractory hypertension (watch for cyanide toxicity with prolonged high-dose use)</li>
+                <li>Esmolol 0.5 mg/kg IV loading bolus then 50–200 µg/kg/min infusion — short-acting cardioselective β-blocker for tachyarrhythmia, only once adequate α-blockade/vasodilatation is present</li>
+                <li>After venous ligation of the tumour, circulating catecholamines fall abruptly → risk of profound hypotension; treat with rapid volume loading, and vasopressors (noradrenaline) if fluid alone is insufficient — communicate with the surgeon before ligation to prepare</li>
+                <li>Postoperative: continue close monitoring for hypotension (from residual α-blockade and depleted catecholamines) and hypoglycaemia (rebound hyperinsulinaemia after removal of the catecholamine-driven suppression of insulin secretion) — check glucose regularly for 24–48 h</li>
               </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
@@ -260,9 +329,10 @@ const EndocrineDiseaseTopic = () => {
                 <li>Consequences of right heart failure: raised JVP, hepatic congestion, ascites, peripheral oedema, and a low fixed cardiac output that tolerates vasodilatation poorly</li>
                 <li>Management: mandatory preoperative echocardiography, NT-proBNP and 5-HIAA <InlineRef topicId="endocrine-disease" refLabel="BJA Educ Carcinoid 2011" />; maintain preload, avoid rises in pulmonary vascular resistance (hypoxia, hypercapnia, acidosis), use invasive monitoring, cover with an octreotide infusion for crisis prevention, avoid histamine-releasing drugs, and be prepared to treat right ventricular failure with inotropes and pulmonary vasodilators</li>
                 <li>Diagnosis: urinary 5-HIAA, serum chromogranin A</li>
-                <li>Perioperative octreotide infusion (50–100 µg/h) — blocks mediator release; have bolus available</li>
-                <li>Avoid histamine-releasing drugs, sympathomimetics, and suxamethonium (may trigger carcinoid crisis)</li>
-                <li>Carcinoid crisis: IV octreotide 100–500 µg bolus; avoid catecholamines (may worsen); use vasopressin for hypotension</li>
+                <li>Preoperative octreotide loading: 100–500 µg subcutaneously 8-hourly (or a continuous infusion) for 1–2 days before major surgery in symptomatic patients, in addition to intraoperative cover</li>
+                <li>Perioperative octreotide infusion: 50–100 µg/h IV started at induction (some protocols use 25–50 µg/h) to suppress hormone release during handling of the tumour; have IV bolus doses drawn up and immediately available throughout the case</li>
+                <li>Avoid histamine-releasing drugs (morphine, atracurium, mivacurium), sympathomimetics/catecholamines (adrenaline, ephedrine, dopamine — may paradoxically stimulate further mediator release), and suxamethonium (fasciculation-related mediator release may trigger carcinoid crisis)</li>
+                <li>Carcinoid crisis (profound flushing, bronchospasm, labile blood pressure, arrhythmia): treat with IV octreotide 100–500 µg bolus (repeated as needed); avoid catecholamines/adrenergic vasopressors which may worsen mediator release — use vasopressin or phenylephrine cautiously for hypotension, and treat bronchospasm avoiding histamine-releasing agents</li>
               </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
@@ -270,6 +340,64 @@ const EndocrineDiseaseTopic = () => {
             </div>
           </div>
         </section>
+        {/* Pituitary Disease */}
+         <section id="section-pituitary-disease" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pituitary Disease</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_08"]} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Acromegaly</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Excess growth hormone (usually from a GH-secreting pituitary adenoma) causes soft tissue and skeletal overgrowth affecting airway management at every level</li>
+                <li>Airway difficulty predictors: macroglossia, mandibular prognathism and overgrowth, thickened pharyngeal/laryngeal soft tissue, glottic and subglottic narrowing, and a high incidence of obstructive sleep apnoea — anticipate difficult mask ventilation, difficult laryngoscopy, and potential difficult front-of-neck access</li>
+                <li>Consider awake fibreoptic intubation and a range of smaller endotracheal tubes; check for recurrent laryngeal nerve involvement/voice change and prior transsphenoidal surgery scarring</li>
+                <li>Systemic associations: hypertension, cardiomyopathy, glucose intolerance/diabetes, and peripheral neuropathy (nerve entrapment) — screen and optimise before elective surgery</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Diabetes Insipidus (DI)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Deficiency of (cranial DI) or renal resistance to (nephrogenic DI) antidiuretic hormone (ADH/vasopressin) causes production of large volumes of dilute urine with hypernatraemia and hyperosmolar plasma if free water intake cannot keep pace</li>
+                <li>Commonly seen after pituitary surgery/trauma, or as a feature of brain death — often transient/triphasic (DI → transient antidiuresis from stored ADH release → permanent DI) after pituitary stalk injury</li>
+                <li>Diagnosis: urine output &gt;3 mL/kg/h with dilute urine (low urine osmolality) despite rising plasma osmolality/sodium</li>
+                <li>Management: replace free water losses (enteral water or IV 5% dextrose/hypotonic fluid) matched to urine output, and give desmopressin (DDAVP) — typically 1–2 µg IV/SC or 10–20 µg intranasal, titrated to urine output and serum sodium</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">SIADH</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Syndrome of inappropriate antidiuretic hormone secretion causes euvolaemic hyponatraemia with inappropriately concentrated urine (urine osmolality &gt;100 mosmol/kg) despite low plasma osmolality</li>
+                <li>Causes relevant to perioperative practice: intracranial pathology/surgery (including pituitary surgery), pulmonary disease, malignancy, and drugs (e.g. carbamazepine, SSRIs, opioids)</li>
+                <li>Management: fluid restriction (typically 750–1000 mL/day) as first-line for chronic/asymptomatic hyponatraemia; correct severe/symptomatic hyponatraemia cautiously with hypertonic saline under specialist guidance, limiting the rate of sodium correction (generally no more than 8–10 mmol/L in 24 hours) to avoid osmotic demyelination syndrome</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Panhypopituitarism</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Global anterior pituitary failure (tumour, surgery, radiotherapy, Sheehan's syndrome, pituitary apoplexy) causes combined deficiency of ACTH (secondary adrenal insufficiency), TSH (secondary hypothyroidism), gonadotrophins, and GH, plus possible posterior pituitary (ADH) involvement</li>
+                <li>Perioperative priority: secondary adrenal insufficiency takes precedence — give perioperative glucocorticoid replacement/cover as for chronic steroid users (see Adrenal Disorders) before correcting hypothyroidism, since thyroxine replacement alone can precipitate an adrenal crisis by increasing metabolic clearance of cortisol</li>
+                <li>Ensure thyroid hormone replacement is optimised where possible, and monitor for diabetes insipidus if the posterior pituitary/stalk is involved (e.g. after pituitary apoplexy or transsphenoidal surgery)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Obesity-Related Endocrine and Metabolic Considerations */}
+         <section id="section-obesity-endocrine" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Obesity-Related Endocrine and Metabolic Considerations</h2>
+          <ExamMappingBadges exams={[Exam.FINAL]} curriculumCodes={["PO_BK_08"]} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Obesity is strongly associated with type 2 diabetes, metabolic syndrome, obstructive sleep apnoea, and non-alcoholic fatty liver disease, each of which independently affects perioperative risk and drug handling</li>
+                <li>Increasing use of GLP-1 receptor agonists and dual GIP/GLP-1 agonists for weight management (as well as diabetes) means gastric-emptying and aspiration considerations discussed above apply to an expanding non-diabetic surgical population — always ask specifically about these drugs during preoperative assessment</li>
+                <li>Bariatric/metabolic surgery patients may have post-surgical hypoglycaemia (post-gastric-bypass hyperinsulinaemic hypoglycaemia) and nutritional deficiencies (B12, iron, thiamine) requiring perioperative attention</li>
+                <li>See the dedicated Obesity and Bariatric Surgery topic for full airway, drug dosing, and positioning considerations in this population</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
