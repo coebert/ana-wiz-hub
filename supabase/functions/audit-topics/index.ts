@@ -2098,8 +2098,78 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Watchdog: re-chain any sweep that stopped progressing. Called by cron
+    // every few minutes and by the dashboard's Resume button.
+    if (action === "watchdog" || action === "resume") {
+      if (body.job_id) {
+        const nowIso = new Date().toISOString();
+        await supa
+          .from("audit_job_state")
+          .update({ lease_owner: null, lease_expires_at: null, updated_at: nowIso })
+          .eq("id", "content-audit")
+          .lt("lease_expires_at", nowIso);
+        await supa
+          .from("topic_audit_jobs")
+          .update({ last_error: null, updated_at: nowIso })
+          .eq("id", body.job_id);
+        // @ts-ignore EdgeRuntime global
+        EdgeRuntime.waitUntil(runBatch(body.job_id));
+        return new Response(
+          JSON.stringify({ ok: true, resumed: [body.job_id] }),
+          { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+      const resumed = await resumeStalledJobs();
+      return new Response(JSON.stringify({ ok: true, resumed }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     // start a new sweep
     let topics: TopicRef[] | undefined = body.topics;
+
+    // Never leave an in-flight sweep behind: if one is already open, resume it
+    // rather than starting a competing job that the global lease would block.
+    {
+      const { data: openJob } = await supa
+        .from("topic_audit_jobs")
+        .select("id, status, processed, total, updated_at")
+        .in("status", ["pending", "running"])
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      if (openJob) {
+        const idleMs = Date.now() - new Date(openJob.updated_at).getTime();
+        if (idleMs > STALL_AFTER_MS) {
+          const nowIso = new Date().toISOString();
+          await supa
+            .from("audit_job_state")
+            .update({ lease_owner: null, lease_expires_at: null, updated_at: nowIso })
+            .eq("id", "content-audit")
+            .lt("lease_expires_at", nowIso);
+          await supa
+            .from("topic_audit_jobs")
+            .update({ last_error: null, updated_at: nowIso })
+            .eq("id", openJob.id);
+          // @ts-ignore EdgeRuntime global
+          EdgeRuntime.waitUntil(runBatch(openJob.id));
+          return new Response(
+            JSON.stringify({ ok: true, job_id: openJob.id, resumed: true }),
+            { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+          );
+        }
+        return new Response(
+          JSON.stringify({
+            ok: true,
+            job_id: openJob.id,
+            already_running: true,
+            message: `An audit is already running (${openJob.processed}/${openJob.total}).`,
+          }),
+          { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+    }
+
 
     // Scheduled / no-payload path: discover topics from the live sitemaps
     if (!topics || topics.length === 0) {
