@@ -17,6 +17,7 @@ import { BenzodiazepineComparisonDiagram } from "@/components/diagrams/pharmacol
 import { FlumazenilDiagram } from "@/components/diagrams/pharmacology/FlumazenilDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
 
 const ivAnaestheticsFaqs: Array<[string, string]> = [
   [
@@ -463,6 +464,7 @@ const IVAnaestheticsTopic = () => {
       </div>
       </ExamSection>
           <TopicFaqs faqs={ivAnaestheticsFaqs} />
+          <AnaesthesiaDosingCallout focus="induction and maintenance agents" />
         </>
       }
     />

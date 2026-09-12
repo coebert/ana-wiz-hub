@@ -20,6 +20,7 @@ import { opioidsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
 
 
 const opioidsFaqs: Array<[string, string]> = [
@@ -481,6 +482,7 @@ const OpioidsTopic = () => {
               "Tramadol acts via μ-receptor and serotonin/noradrenaline reuptake inhibition; lowers seizure threshold and interacts with SSRIs.",
             ]}
           />
+          <AnaesthesiaDosingCallout focus="opioids used in anaesthesia" />
         </>
       }
       keyPoints={[
