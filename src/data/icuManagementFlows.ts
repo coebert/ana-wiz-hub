@@ -75,7 +75,7 @@ export const icuManagementFlows: ManagementFlow[] = [
           "Insert arterial line and central venous catheter; assess cardiac output or echo if shock persists.",
         ],
         drugs: ["Noradrenaline", "Vasopressin", "Hydrocortisone", "Adrenaline"],
-        infusions: ["Noradrenaline", "Vasopressin", "Adrenaline"],
+        infusions: ["Noradrenaline (norepinephrine)", "Vasopressin", "Adrenaline (epinephrine)"],
         pitfall:
           "Persisting hypotension on rising noradrenaline without an echo — miss septic cardiomyopathy, undrained source or adrenal suppression.",
       },
@@ -101,7 +101,7 @@ export const icuManagementFlows: ManagementFlow[] = [
           "Daily sedation hold, delirium screening, and de-escalation of vasopressors as lactate clears and urine output recovers.",
         ],
         drugs: ["Insulin (soluble)", "Enoxaparin", "Pantoprazole / omeprazole", "Propofol 1–2%"],
-        infusions: ["Propofol 1–2%", "Fentanyl"],
+        infusions: ["Propofol 1%", "Fentanyl"],
       },
     ],
     rescue: [
@@ -112,7 +112,7 @@ export const icuManagementFlows: ManagementFlow[] = [
     caseLabel: "Sepsis cases in the ICU bank",
     topicPaths: [
       { label: "Sepsis and septic shock", path: "/intensive-care/sepsis" },
-      { label: "Vasoactive agents", path: "/intensive-care/vasoactive-agents" },
+      { label: "Vasoactive agents", path: "/pharmacology/vasoactive-agents" },
     ],
   },
   {
@@ -136,7 +136,7 @@ export const icuManagementFlows: ManagementFlow[] = [
           "Conservative fluid strategy once shock has resolved (FACTT): aim for a neutral to negative balance.",
         ],
         drugs: ["Propofol 1–2%", "Fentanyl", "Midazolam"],
-        infusions: ["Propofol 1–2%", "Fentanyl", "Midazolam"],
+        infusions: ["Propofol 1%", "Fentanyl", "Midazolam"],
         pitfall:
           "Dosing tidal volume on actual weight instead of predicted body weight — a common exam trap and a real source of volutrauma.",
       },
@@ -150,7 +150,6 @@ export const icuManagementFlows: ManagementFlow[] = [
           "Inhaled nitric oxide or prostacyclin as a temporising oxygenation adjunct only.",
         ],
         drugs: ["Atracurium / cisatracurium", "Rocuronium"],
-        infusions: ["Atracurium / cisatracurium"],
         pitfall:
           "Proning without pre-briefing airway, lines and pressure areas; unplanned extubation and facial pressure injury are the main harms.",
       },
@@ -205,7 +204,7 @@ export const icuManagementFlows: ManagementFlow[] = [
           "Correct ionised calcium < 1.0 mmol/L and severe acidaemia impairing catecholamine response.",
         ],
         drugs: ["Calcium gluconate 10%", "Metaraminol", "Noradrenaline"],
-        infusions: ["Noradrenaline"],
+        infusions: ["Noradrenaline (norepinephrine)"],
         pitfall:
           "Treating every hypotension as septic — obstructive causes (tension pneumothorax, tamponade, massive PE) worsen with fluid alone.",
       },
@@ -219,7 +218,7 @@ export const icuManagementFlows: ManagementFlow[] = [
           "Obstructive: decompress tension pneumothorax, pericardiocentesis for tamponade, thrombolysis or embolectomy for high-risk pulmonary embolism.",
         ],
         drugs: ["Adrenaline", "Dobutamine", "Milrinone", "Tranexamic acid", "Vasopressin"],
-        infusions: ["Adrenaline", "Dobutamine", "Milrinone", "Noradrenaline"],
+        infusions: ["Adrenaline (epinephrine)", "Dobutamine", "Milrinone", "Noradrenaline (norepinephrine)"],
         pitfall:
           "Milrinone and dobutamine both vasodilate — pair with a vasopressor or MAP will fall further.",
       },
@@ -274,7 +273,7 @@ export const icuManagementFlows: ManagementFlow[] = [
           "Pantoprazole / omeprazole",
           "Thiamine (Pabrinex)",
         ],
-        infusions: ["Propofol 1–2%", "Fentanyl", "Noradrenaline"],
+        infusions: ["Propofol 1%", "Fentanyl", "Noradrenaline (norepinephrine)"],
         pitfall:
           "Sedation creep and unreviewed antibiotics are the two commonest drivers of prolonged multi-organ support.",
       },
@@ -297,7 +296,7 @@ export const icuManagementFlows: ManagementFlow[] = [
           "If dying is expected, move to symptom-focused care, withdraw non-beneficial support, and consider organ donation referral where appropriate.",
         ],
         drugs: ["Morphine", "Midazolam"],
-        infusions: ["Morphine", "Midazolam"],
+        infusions: ["Midazolam", "Alfentanil"],
         pitfall:
           "Deferring the ceiling-of-treatment conversation until a crisis forces it — the exam and the bedside both reward early, documented planning.",
       },
@@ -310,7 +309,7 @@ export const icuManagementFlows: ManagementFlow[] = [
     caseLabel: "Organ-support cases in the ICU bank",
     topicPaths: [
       { label: "AKI and renal replacement", path: "/intensive-care/aki-rrt" },
-      { label: "Prognostication and ethics", path: "/intensive-care/prognostication-ethics" },
+      { label: "Prognostication and ethics", path: "/intensive-care/prognostication-ethics-icu" },
     ],
   },
 ];
