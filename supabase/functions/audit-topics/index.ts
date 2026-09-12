@@ -40,6 +40,14 @@ interface CorpusEntry {
     excerpt?: string;
   }>;
   text_chars: number;
+  case_bank?: Array<{
+    case_id: string;
+    title: string;
+    bank: string;
+    path: string;
+    text: string;
+  }>;
+  case_bank_chars?: number;
 }
 
 const CORPUS: Map<string, CorpusEntry> = new Map(
