@@ -51,7 +51,7 @@ const obstetricFaqs: Array<[string, string]> = [
   ],
   [
     "When is general anaesthesia used for caesarean section?",
-    "GA is reserved for: category-1 emergencies where speed is critical and no working neuraxial is in situ; contraindications to neuraxial (coagulopathy, severe sepsis at puncture site, patient refusal, fixed cardiac output lesions); failed neuraxial; major haemorrhage with cardiovascular instability. Technique: ramped position, pre-oxygenation to FetO₂ ≥ 0.9, RSI with thiopentone 5 mg/kg or propofol 2 mg/kg + suxamethonium 1.5 mg/kg or rocuronium 1 mg/kg, cricoid pressure, prepare for difficult airway (incidence ~1:300, 8× non-obstetric).",
+    "GA is reserved for: category-1 emergencies where speed is critical and no working neuraxial is in situ; contraindications to neuraxial (coagulopathy, severe sepsis at puncture site, patient refusal, fixed cardiac output lesions); failed neuraxial; major haemorrhage with cardiovascular instability. Technique: ramped position, pre-oxygenation to FetO₂ ≥ 0.9, RSI with thiopentone 4–5 mg/kg or propofol 2 mg/kg + suxamethonium 1.5 mg/kg or rocuronium 1 mg/kg, cricoid pressure, prepare for difficult airway (failed intubation ~1:224 for caesarean GA).",
   ],
   [
     "What is post-dural puncture headache after childbirth?",
@@ -63,7 +63,7 @@ const obstetricFaqs: Array<[string, string]> = [
   ],
   [
     "How does pregnancy change anaesthetic physiology?",
-    "Key changes: cardiac output ↑ 40% by term, blood volume ↑ 45%, FRC ↓ 20% (supine 30%), oxygen consumption ↑ 20%, MAC ↓ 30–40%, gastric emptying delayed, lower oesophageal sphincter tone reduced, plasma cholinesterase ↓ 25% (suxamethonium duration unaffected clinically), aortocaval compression after 20 weeks, difficult airway 8× more common (~1:300), epidural venous engorgement reduces CSF volume so spinal dose is ~⅔ of non-pregnant dose.",
+    "Key changes: cardiac output ↑ 40% by term, blood volume ↑ 45%, FRC ↓ 20% (supine 30%), oxygen consumption ↑ 20%, MAC ↓ 30–40%, gastric emptying delayed, lower oesophageal sphincter tone reduced, plasma cholinesterase ↓ 25% (suxamethonium duration unaffected clinically), aortocaval compression after 20 weeks, difficult airway markedly more common (failed intubation ~1:224 for caesarean GA), epidural venous engorgement reduces CSF volume so spinal dose is ~⅔ of non-pregnant dose.",
   ],
 ];
 
@@ -97,7 +97,7 @@ const ObstetricAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
           <li>Pre-induction in &lt;10 min: 30° left tilt or manual displacement, pre-oxygenate to FeO₂ &gt;0.9 (3 min or 8 vital capacity breaths), aspiration prophylaxis (Na citrate 0.3 M 30 mL ± ranitidine/metoclopramide if time)</li>
-          <li>RSI with thiopentone 5–7 mg/kg or propofol 2 mg/kg + suxamethonium 1.5 mg/kg (TBW); cricoid pressure (per local policy)</li>
+          <li>RSI with thiopentone 4–5 mg/kg or propofol 2 mg/kg + suxamethonium 1.5 mg/kg (TBW); cricoid pressure (per local policy)</li>
           <li>Use videolaryngoscopy first if available (OAA/DAS); have plan B (2nd-generation SAD) and plan C (FONA) ready</li>
           <li>Maintain with sevoflurane 1 MAC + 50% N₂O until delivery, then deepen and add opioid; uterotonics: oxytocin 5 IU slow bolus then 30 IU/500 mL infusion (RCOG/MBRRACE)</li>
           <li>Awareness mitigation: avoid muscle relaxant overdose without depth monitoring; document ABCDE and post-op visit; NAP5 highlights obstetric GA awareness risk</li>
@@ -172,7 +172,7 @@ const ObstetricAnaesthesiaTopic = () => {
               <tbody className="text-muted-foreground">
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">CVS</td><td>CO ↑40% (↑SV &amp; HR), SVR ↓, aortocaval compression from ~20 wk</td><td>Left lateral tilt 15°; rapid hypotension with neuraxial; supine hypotensive syndrome</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Resp</td><td>FRC ↓20% (diaphragmatic splinting), O₂ consumption ↑20%, MV ↑50% (driven by ↑V<sub>T</sub>, RR ~unchanged)</td><td>Rapid desaturation on apnoea; <strong>compensated respiratory alkalosis</strong> — PaCO₂ ~4.0 kPa, HCO₃⁻ ~20 mmol/L, pH ~7.44 (target normocapnia for pregnant baseline, not 5.3 kPa)</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Airway</td><td>Mucosal oedema, capillary engorgement, full dentition, breast enlargement</td><td>Higher Mallampati grade, smaller ETT (6.0–7.0), short-handle laryngoscope; failed intubation ~1:300</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Airway</td><td>Mucosal oedema, capillary engorgement, full dentition, breast enlargement</td><td>Higher Mallampati grade, smaller ETT (6.0–7.0), short-handle laryngoscope; failed intubation ~1:224 for caesarean GA (~1:390 all obstetric GA)</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">GI</td><td>Reduced LOS tone (progesterone), gastric emptying preserved in pregnancy but <strong>delayed in labour/with opioids</strong>, ↑gastric acid</td><td>Treat any pregnant woman ≥16–18 wk as <strong>at risk of aspiration</strong>: aspiration prophylaxis (sodium citrate 0.3 M 30 mL ± H₂-blocker / metoclopramide) and RSI for GA caesarean</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Haem</td><td>Plasma vol ↑45% &gt; RBC ↑20% → dilutional anaemia. Hypercoagulable: ↑fibrinogen, ↑factors VII/VIII/X, ↓protein S, ↓fibrinolysis. Physiological leucocytosis.</td><td>VTE prophylaxis throughout pregnancy and 6 wk post-partum; raised WCC alone does not imply infection</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Renal / Hepatic</td><td>GFR ↑50% (↓urea, ↓creatinine — "normal" Cr in pregnancy &lt;75 µmol/L). ↓Albumin → ↑free fraction of bound drugs. ALP ↑ (placental).</td><td>Renally cleared drugs (e.g. magnesium, low-MW heparins) cleared faster; "normal" adult Cr may signal AKI in pregnancy</td></tr>
@@ -198,7 +198,7 @@ const ObstetricAnaesthesiaTopic = () => {
             </div>
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">General Anaesthesia</p>
-              <p className="text-sm text-muted-foreground mt-1">Reserved for failed/contraindicated neuraxial, time-critical Cat 1, or maternal refusal. RSI with cricoid pressure. Significant airway and aspiration risk — failed intubation ~1:300, awareness 1:670 (NAP5).</p>
+              <p className="text-sm text-muted-foreground mt-1">Reserved for failed/contraindicated neuraxial, time-critical Cat 1, or maternal refusal. RSI with cricoid pressure. Significant airway and aspiration risk — failed intubation ~1:224 for caesarean GA (~1:390 all obstetric GA)<InlineRef topicId="obstetric-anaesthesia" refLabel="Kinsella 2015 Failed Intubation" />, awareness 1:670 (NAP5).</p>
             </div>
           </div>
         </CollapsibleSubsection>
@@ -237,7 +237,7 @@ const ObstetricAnaesthesiaTopic = () => {
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">3 · Induction (RSI)</p>
               <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
-                <li>Induction agent: <strong>thiopentone 5–7 mg/kg</strong> or <strong>propofol 2–2.5 mg/kg</strong> (see evidence section below).</li>
+                <li>Induction agent: <strong>thiopentone 4–5 mg/kg</strong> or <strong>propofol 2–2.5 mg/kg</strong> (see evidence section below)<InlineRef topicId="obstetric-anaesthesia" refLabel="BJA Educ 2019" />.</li>
                 <li>Neuromuscular blocker: <strong>suxamethonium 1.5 mg/kg</strong> (use actual body weight); <strong>rocuronium 1.0–1.2 mg/kg</strong> with sugammadex 16 mg/kg available is an accepted alternative (faster intubating conditions, longer duration; useful if sux contraindicated).</li>
                 <li>Cricoid pressure: 10 N awake → 30 N at loss of consciousness; release if view is poor or if vomiting occurs.</li>
                 <li>Cuffed ETT 6.5–7.0 (mucosal oedema), confirm with ETCO₂ and bilateral auscultation.</li>
@@ -271,7 +271,7 @@ const ObstetricAnaesthesiaTopic = () => {
 
         <CollapsibleSubsection title="Target MAC at Different Phases">
           <p className="text-muted-foreground leading-relaxed mb-3">
-            MAC requirement falls by ~25–40% in pregnancy (progesterone, β-endorphins). However, awareness risk is greatest in the brief pre-delivery period when opioids are usually withheld. The compromise is to run <strong>≥1.0 age-adjusted MAC of volatile from induction until delivery</strong>, accepting some uterine relaxation, then deepen further once the baby is out.
+            MAC requirement falls by ~25–40% in pregnancy (progesterone, β-endorphins). However, awareness risk is greatest in the brief pre-delivery period when opioids are usually withheld. The accepted compromise is to maintain <strong>at least 0.8 age-adjusted MAC of volatile from induction until delivery</strong> (higher than this is often used but increases uterine relaxation), then deepen once the baby is out<InlineRef topicId="obstetric-anaesthesia" refLabel="BJA Educ 2019 Caesarean" />. The balance is between <strong>awareness</strong> (NAP5 found obstetric GA carries the highest incidence of accidental awareness, ~1:670) and <strong>uterine atony</strong> — volatile agents cause dose-dependent relaxation of uterine smooth muscle and above ~1.0 MAC materially increase blood loss, so the aim is the lowest depth that reliably prevents awareness, guided by end-tidal agent monitoring and processed EEG.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -283,7 +283,7 @@ const ObstetricAnaesthesiaTopic = () => {
                 </tr>
               </thead>
               <tbody className="text-muted-foreground">
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Induction → uterine incision</td><td>≥1.0 MAC sevoflurane (~2%) or iso ~1.2%</td><td>Prevent awareness; brief volatile exposure has minimal neonatal effect.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Induction → uterine incision</td><td>≥0.8 MAC sevoflurane (~1.6–2%) or iso ~1.0–1.2%</td><td>Prevent awareness; brief volatile exposure has minimal neonatal effect.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Uterine incision → delivery</td><td>0.75–1.0 MAC</td><td>Limit uterine relaxation/PPH risk; keep BIS 40–60.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">After delivery</td><td>0.5–0.75 MAC + opioid + N₂O 50% (if used)</td><td>Reduce volatile to support uterine tone; opioids now safe.</td></tr>
                 <tr><td className="py-2 font-medium text-foreground">Major PPH</td><td>↓ volatile to ≤0.5 MAC, switch to TIVA / midazolam top-ups</td><td>Volatile worsens atony; maintain anaesthesia with IV agents + scalp/processed EEG.</td></tr>
@@ -965,7 +965,7 @@ const ObstetricAnaesthesiaTopic = () => {
             accent="clinical"
             pitfalls={[
               "Aortocaval compression after 20 weeks — always 15° left lateral tilt or manual uterine displacement.",
-              "Pregnancy reduces FRC, doubles oxygen consumption and produces a difficult airway in ~1:300 — pre-oxygenate well and prepare for failed intubation.",
+              "Pregnancy reduces FRC, doubles oxygen consumption and produces a difficult airway with failed intubation in ~1:224 caesarean GAs — pre-oxygenate well and prepare for failed intubation.",
               "Spinal-induced hypotension at LSCS: prophylactic phenylephrine infusion + co-load crystalloid; ephedrine causes more fetal acidosis.",
               "Epidural test dose (lidocaine + adrenaline) detects intravascular and intrathecal placement; aspirate before every bolus.",
               "Massive obstetric haemorrhage: activate MOH protocol, give tranexamic acid within 3 h, target fibrinogen >2 g/L.",

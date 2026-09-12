@@ -215,6 +215,32 @@ const AirwayManagementTopic = () => {
               composite scores (Wilson, El-Ganzouri) outperform single bedside tests. Document Mallampati, thyromental
               distance, mouth opening, neck movement, dentition, and previous airway records. Ultrasound of the cricothyroid
             </p>
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">LEMON</th>
+                    <th className="text-left py-2 text-foreground font-semibold">What to assess</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Red flags</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">L — Look externally</td><td>Facial trauma, beard, obesity, large tongue, receding mandible, buck teeth, neck masses, radiotherapy change</td><td>Gross facial/neck distortion, fixed flexion deformity</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">E — Evaluate 3-3-2</td><td>3 fingers mouth opening (inter-incisor distance ≥ 3 cm), 3 fingers hyoid–mentum, 2 fingers thyroid notch–hyoid</td><td>Mouth opening &lt; 3 cm; thyromental distance &lt; 6.5 cm</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">M — Mallampati</td><td>Sitting, mouth fully open, tongue protruded, no phonation; class I–IV</td><td>Class III–IV (poor specificity alone — never use in isolation)</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">O — Obstruction/obesity</td><td>Stridor, muffled voice, dysphagia, tumour, abscess, haematoma, OSA, BMI &gt; 30</td><td>Any stridor or dynamic obstruction — plan awake technique</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">N — Neck mobility</td><td>Flexion/extension range; atlanto-occipital extension</td><td>Extension &lt; 35°, cervical collar, ankylosing spondylitis, fused spine</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              Record the composite assessment, previous airway records and the planned rescue strategy. Prominent upper
+              incisors, a short thick neck, a history of obstructive sleep apnoea or of previous difficult intubation, and
+              anticipated difficult mask ventilation each add independent risk. Ultrasound identification and marking of the
+              cricothyroid membrane is recommended when the neck anatomy is impalpable or distorted. Crucially, no bedside
+              test or composite score reliably predicts can't-intubate-can't-oxygenate, so every plan must include a
+              declared failure sequence.
+            </p>
             <div className="mt-4 space-y-4">
               <div className="bg-card rounded-xl border border-border p-6"><AirwayAssessmentDiagram /></div>
               <div className="bg-card rounded-xl border border-border p-6"><MallampatiDiagram /></div>

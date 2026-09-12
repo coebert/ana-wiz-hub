@@ -15,6 +15,7 @@ import FirstRibDiagram from "@/components/diagrams/anatomy/FirstRibDiagram";
 import DiaphragmDiagram from "@/components/diagrams/anatomy/DiaphragmDiagram";
 import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { thoracicFolio } from "@/components/diagrams/anatomyFolios";
+import { InlineRef } from "@/components/references/InlineRef";
 import { Exam } from "@/data/curriculum";
 
 const ThoracicAnatomyTopicWorkedExamples: WorkedExample[] = [
@@ -169,10 +170,62 @@ const ThoracicAnatomyTopic = () => {
         <div id="diaphragm" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Diaphragm</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Principal muscle of respiration. Dome-shaped. Motor supply: phrenic nerve (C3,4,5 — "C3,4,5 keeps the diaphragm alive"). Right crus: larger, encircles oesophagus. Three major openings: aortic hiatus (T12 — aorta, thoracic duct, azygos vein), oesophageal hiatus (T10 — oesophagus, vagal trunks), vena caval foramen (T8 — IVC, right phrenic nerve).
+            Principal muscle of respiration, responsible for ~70% of tidal volume in quiet breathing. It is a dome-shaped musculotendinous sheet whose peripheral muscle fibres converge on a central tendon; descent of the dome by 1–2 cm in quiet breathing (up to 10 cm in deep inspiration) lowers intrathoracic pressure and raises intra-abdominal pressure<InlineRef topicId="thoracic-anatomy" refLabel="BJA Educ 2017 Diaphragm" />.
           </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Attachments (origin → insertion)</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>Sternal part:</strong> two slips from the posterior xiphoid process. <strong>Costal part:</strong> inner surfaces of the lower six costal cartilages and ribs, interdigitating with transversus abdominis. <strong>Lumbar part:</strong> right crus (L1–L3 bodies, larger, encircles the oesophageal hiatus and contributes to the lower oesophageal sphincter mechanism), left crus (L1–L2), plus the medial arcuate ligament (over psoas) and lateral arcuate ligament (over quadratus lumborum). All fibres insert into the <strong>central tendon</strong>.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Innervation & levels</p>
+              <p className="text-sm text-muted-foreground mt-1">Motor supply is <strong>entirely phrenic (C3,4,5)</strong> — "C3,4,5 keeps the diaphragm alive". Sensory: phrenic centrally (referred shoulder-tip pain), lower intercostal and subcostal nerves peripherally. High cervical cord injury above C3 abolishes spontaneous ventilation; interscalene block causes hemidiaphragmatic paresis. At end-expiration the right dome reaches the 5th rib and the left the 5th intercostal space (liver pushes the right higher).</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Openings</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>T8 vena caval foramen</strong> (in the central tendon): IVC + right phrenic nerve. <strong>T10 oesophageal hiatus</strong> (in the right crus): oesophagus, vagal trunks, oesophageal branches of the left gastric vessels. <strong>T12 aortic hiatus</strong> (behind the median arcuate ligament, so strictly not a diaphragmatic perforation): aorta, thoracic duct, azygos/hemiazygos veins. Mnemonic: "I ate ten eggs at twelve" (IVC 8, oesophagus 10, aorta 12).</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Anaesthetic relevance</p>
+              <p className="text-sm text-muted-foreground mt-1">General anaesthesia and neuromuscular blockade cause cephalad displacement of the dependent diaphragm → atelectasis and reduced FRC. Diaphragmatic function is a major determinant of weaning from ventilation (ventilator-induced diaphragmatic dysfunction). Ultrasound of diaphragm excursion (&lt; 10 mm) and thickening fraction (&lt; 20%) predicts extubation failure. Hiatus hernia at the T10 hiatus increases aspiration risk.</p>
+            </div>
+          </div>
           <div className="rounded-xl border border-border bg-card p-4">
             <DiaphragmDiagram />
+          </div>
+        </div>
+
+        <div id="bronchopulmonary-segments" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bronchopulmonary Segments</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            A <strong>bronchopulmonary segment</strong> is the anatomical and functional unit of the lung supplied by a single segmental (tertiary) bronchus with its own segmental branch of the pulmonary artery. Each segment is pyramidal, with its apex at the hilum and base at the pleural surface, and is separated from its neighbours by connective-tissue septa. Crucially, the <em>pulmonary veins and lymphatics run intersegmentally</em> in these septa, whereas the bronchus and artery run centrally — this is what makes a segment surgically resectable.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">The segments</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>Right (10):</strong> upper — apical, posterior, anterior; middle — lateral, medial; lower — superior (apical), medial basal, anterior basal, lateral basal, posterior basal. <strong>Left (8–10):</strong> upper — apicoposterior, anterior; lingula — superior, inferior; lower — superior, anteromedial basal, lateral basal, posterior basal.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Why it matters clinically</p>
+              <p className="text-sm text-muted-foreground mt-1">Allows anatomical segmentectomy with preservation of surrounding lung. Explains predictable distribution of aspiration (supine → right lower lobe superior segment; upright → posterior basal segments) and of lobar pneumonia and abscess. Provides the map for fibreoptic bronchoscopy, targeted physiotherapy and postural drainage, bronchial blocker placement, and for interpreting the segmental pattern of collapse on CXR/CT.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="thoracic-duct" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thoracic Duct</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The thoracic duct is the main lymphatic channel of the body, returning 2–4 L/day of chyle — lymph plus intestinal long-chain triglycerides absorbed as chylomicrons, protein, and large numbers of T lymphocytes — to the systemic venous circulation<InlineRef topicId="thoracic-anatomy" refLabel="BJA Educ 2015 Thoracic Duct" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Course</p>
+              <p className="text-sm text-muted-foreground mt-1">Begins as the <strong>cisterna chyli</strong> at L1–L2, anterior to the vertebral bodies and right of the aorta. Enters the thorax through the <strong>aortic hiatus (T12)</strong>, ascends in the posterior mediastinum between the aorta (left) and azygos vein (right), behind the oesophagus. <strong>Crosses to the left at T5</strong>, continues up behind the left subclavian artery and the carotid sheath, arches at the root of the neck and drains into the <strong>junction of the left subclavian and internal jugular veins</strong>. The right upper quadrant of the body drains separately via the right lymphatic duct.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Function & clinical relevance</p>
+              <p className="text-sm text-muted-foreground mt-1">Returns interstitial fluid, absorbed fat and lymphocytes to the blood; valves and respiratory/aortic pulsation drive flow. Injury (oesophagectomy, left-sided CVC insertion, thoracic surgery, trauma, malignant obstruction) causes <strong>chylothorax</strong> — milky, triglyceride-rich (&gt; 1.1 mmol/L) effusion with chylomicrons, causing hypovolaemia, hypoalbuminaemia, lymphopenia and immunosuppression. Management: drainage, low-fat/medium-chain-triglyceride or parenteral feeding, octreotide, then duct ligation or embolisation if losses persist. Right IJV is preferred for central access partly because it avoids the duct.</p>
+            </div>
           </div>
         </div>
 

@@ -221,6 +221,109 @@ const UpperLimbAnatomyTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">Peripheral IV: dorsal hand → forearm → cubital fossa. Central access: IJV → subclavian → femoral. PICC: basilic → cephalic → brachial. In CKD patients, preserve the non-dominant arm cephalic vein for future AV fistula.</p>
             </div>
           </div>
+          <div className="mt-4 p-4 rounded-lg border border-border">
+            <p className="font-semibold text-foreground text-sm">PICC Complications &amp; Management</p>
+            <ul className="text-sm text-muted-foreground mt-2 space-y-1.5 list-disc list-inside leading-relaxed">
+              <li><strong>Malposition (up to 10%):</strong> tip in azygos vein, internal jugular, or crossing to the contralateral subclavian; too-short tips cause thrombosis and too-deep tips cause arrhythmia or perforation. Management: confirm tip at the lower third of the SVC/cavoatrial junction on CXR or with ECG-guided tip location, reposition or exchange over a wire.</li>
+              <li><strong>Thrombosis (2–10%, higher with malignancy and multi-lumen catheters):</strong> arm swelling, shoulder or neck pain, dilated collateral veins. Management: ultrasound Doppler; anticoagulate for at least 3 months and retain the line if functioning and still needed; remove if infected, non-functional or no longer required.</li>
+              <li><strong>Catheter-related bloodstream infection:</strong> exit-site inflammation, unexplained fever, positive paired blood cultures with differential time to positivity. Management: peripheral and line cultures, empirical antimicrobials, and line removal for tunnel infection, <em>Staphylococcus aureus</em>, Candida, persistent bacteraemia or septic shock.</li>
+              <li><strong>Mechanical failure:</strong> occlusion (flush with 0.9% saline using a 10 mL syringe, never force; thrombolytic lock with alteplase for thrombotic occlusion, ethanol for lipid and sodium bicarbonate/hydrochloric acid for drug precipitate), kinking, fibrin sheath causing withdrawal occlusion, and catheter fracture or embolisation requiring interventional retrieval.</li>
+              <li><strong>Phlebitis and insertion-site problems:</strong> mechanical phlebitis in the first week (warm compress, limb elevation, analgesia; remove if persisting), haematoma, arterial or median/ulnar nerve puncture — all reduced by real-time ultrasound and a micro-introducer technique.</li>
+              <li><strong>Air embolism</strong> at insertion or removal — insert and remove supine or head-down with a Valsalva manoeuvre and occlusive dressing.</li>
+              <li><strong>Prevention bundle:</strong> ultrasound-guided insertion, maximal sterile barriers, 2% chlorhexidine in 70% alcohol, single-lumen where possible, sutureless securement device, daily review of need, and scrub-the-hub with needle-free connectors.</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* ── SHOULDER SPACES ── */}
+        <div id="shoulder-spaces" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Posterior Shoulder Spaces</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The scapula and the teres muscles subdivide the space behind the shoulder joint into three named intervals. Recognising them explains injury patterns after proximal humeral fracture, shoulder dislocation and posterior surgical approaches, and identifies the sonographic landmarks for suprascapular block.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Quadrangular (quadrilateral) space</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>Boundaries:</strong> superior — subscapularis and capsule (teres minor posteriorly); inferior — teres major; medial — long head of triceps; lateral — surgical neck of the humerus. <strong>Contents:</strong> axillary nerve and posterior circumflex humeral artery. Injured by anterior shoulder dislocation, surgical neck fracture and deltoid injection — deltoid weakness with loss of the regimental badge sensory patch.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Triangular interval (lower triangular space)</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>Boundaries:</strong> superior — teres major; medial — long head of triceps; lateral — humeral shaft. <strong>Contents:</strong> radial nerve and profunda brachii artery entering the spiral groove. Explains radial nerve palsy (wrist drop with preserved triceps if injured distally) after mid-shaft humeral fracture.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Triangular space (upper)</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>Boundaries:</strong> superior — teres minor; inferior — teres major; lateral — long head of triceps. <strong>Contents:</strong> circumflex scapular artery, contributing to the scapular anastomosis that maintains upper-limb perfusion if the axillary artery is occluded.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Suprascapular notch and spinoglenoid notch</p>
+              <p className="text-sm text-muted-foreground mt-1">The suprascapular nerve passes <em>under</em> the superior transverse scapular ligament while the artery passes over it, then round the spinoglenoid notch. It supplies supraspinatus, infraspinatus and about 70% of the glenohumeral joint capsule — the target of suprascapular block, a diaphragm-sparing alternative to interscalene block for shoulder analgesia.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* ── NERVE INJURY SYNDROMES ── */}
+        <div id="nerve-injuries" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Upper Limb Nerve Injury Syndromes</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Nerve / site</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Mechanism</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Motor deficit</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Sensory / sign</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Ulnar at the elbow</td><td>Commonest perioperative upper-limb neuropathy — pronated forearm, direct pressure in the cubital tunnel, elbow flexion &gt; 90°</td><td>Weak interossei and adductor pollicis; claw hand; positive Froment's sign</td><td>Numb medial 1½ digits; Wartenberg's sign (little-finger abduction)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Radial in the spiral groove</td><td>Humeral shaft fracture, arm hanging over a support ("Saturday night palsy"), tight BP cuff or tourniquet</td><td>Wrist and finger extension lost (wrist drop); triceps spared</td><td>Numb dorsal first web space</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Posterior interosseous</td><td>Compression at the arcade of Frohse in supinator; proximal radius fracture</td><td>Finger extension lost with radial wrist deviation; wrist extension partly preserved</td><td>No sensory loss (purely motor)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Median at the wrist (carpal tunnel)</td><td>Flexor retinaculum compression; pregnancy, hypothyroidism, acromegaly, rheumatoid, dialysis amyloid</td><td>Thenar wasting, weak abductor pollicis brevis and opponens</td><td>Nocturnal paraesthesia of lateral 3½ digits, palm spared (palmar cutaneous branch is proximal); Tinel/Phalen positive</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Anterior interosseous</td><td>Compression between the heads of pronator teres; forearm trauma</td><td>Weak flexor pollicis longus and flexor digitorum profundus to index — abnormal pinch (Kiloh–Nevin sign)</td><td>Deep forearm pain, no cutaneous loss</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Axillary</td><td>Anterior shoulder dislocation, surgical neck fracture, quadrangular space compression</td><td>Weak shoulder abduction (deltoid), weak external rotation (teres minor)</td><td>Numb regimental badge area over the deltoid</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Long thoracic (C5,6,7)</td><td>Axillary surgery, mastectomy, thoracotomy retraction, carrying heavy loads</td><td>Serratus anterior palsy — winged scapula on wall press</td><td>No sensory loss</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Accessory (CN XI)</td><td>Superficial in the posterior triangle — lymph node biopsy, IJV cannulation, deep cervical block</td><td>Trapezius wasting, weak shoulder shrug, drooping shoulder</td><td>Dull shoulder ache; scapular winging on abduction</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Brachial plexus / sympathetic outflow</td><td>Proximal T1 root avulsion, apical (Pancoast) tumour, stellate ganglion block, high interscalene spread</td><td>Lower plexus pattern (claw hand) in avulsion; none in isolated sympathetic block</td><td><strong>Horner's syndrome</strong> — partial ptosis (Müller's muscle), miosis, anhidrosis, apparent enophthalmos ± nasal stuffiness and conjunctival injection; expected and benign after stellate or interscalene block, but a red flag for proximal avulsion or apical malignancy</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* ── NEUROLOGICAL ASSESSMENT ── */}
+        <div id="neuro-assessment" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Structured Upper Limb Neurological Assessment</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Document this before and after any brachial plexus block, before and after positioning for prolonged surgery, and whenever a new deficit is reported. Test power against the MRC 0–5 scale, compare sides, and record findings by myotome and dermatome so that a root lesion can be distinguished from a peripheral nerve lesion.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Level</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Myotome — test movement</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Dermatome — test area</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Reflex</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">C5</td><td>Shoulder abduction (deltoid)</td><td>Lateral upper arm / regimental badge</td><td>Biceps (C5,6)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">C6</td><td>Elbow flexion and wrist extension</td><td>Thumb and lateral forearm</td><td>Supinator / brachioradialis (C6)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">C7</td><td>Elbow extension and finger extension</td><td>Middle finger</td><td>Triceps (C7)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">C8</td><td>Finger flexion (grip)</td><td>Little finger and medial forearm</td><td>—</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">T1</td><td>Finger abduction (interossei)</td><td>Medial upper arm and axilla</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Sequence</p>
+              <p className="text-sm text-muted-foreground mt-1">Inspect (wasting, posture, winging, trophic and vasomotor change) → tone → power by myotome → coordination → sensation (light touch, pinprick, temperature, then vibration and joint position for large-fibre involvement) → reflexes → special tests (Froment's, Tinel's, Phalen's, Wartenberg's, wall press for winging, Allen's test for perfusion) → assess the vascular status and check for compartment tenderness.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Interpreting a new post-block deficit</p>
+              <p className="text-sm text-muted-foreground mt-1">Most postoperative neuropathies are positioning-, tourniquet- or surgery-related rather than caused by the block. Exclude a compressive cause (haematoma, tight cast, compartment syndrome) urgently. Persisting deficit beyond expected block duration warrants same-day senior review, documentation, ultrasound to exclude haematoma, and referral for nerve conduction studies and EMG at 3–4 weeks; most neurapraxias recover within 3 months.</p>
+            </div>
+          </div>
         </div>
         </section>
       </ExamSection>
