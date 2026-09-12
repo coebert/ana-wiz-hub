@@ -367,6 +367,16 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Across all regimens, avoid metoclopramide, prochlorperazine, haloperidol and droperidol — central D2-antagonism can precipitate severe rigidity and an NMS-like crisis <InlineRef topicId="neurological-disease" refLabel="BJA Educ PD 2014" /> <InlineRef topicId="neurological-disease" refLabel="NICE NG71 (Parkinsons)" /></li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Timing, Route Conversion & Drugs to Avoid</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Schedule surgery first on the list and give the usual levodopa dose with a sip of water no more than 30–60 minutes before induction — even a single missed dose can precipitate acute akinesia (severe rigidity mimicking NMS) within hours</li>
+                <li>If the oral/enteral route is unavailable postoperatively, give levodopa via NG tube (crushed immediate-release preparations, or use a liquid formulation), or convert temporarily to a rotigotine transdermal patch using published levodopa-equivalent dose (LED) tables — apomorphine subcutaneous infusion or intermittent rescue injections (2–10 mg SC) can also bridge severe motor fluctuations under specialist guidance</li>
+                <li>Drugs to avoid absolutely: metoclopramide, haloperidol, prochlorperazine and other central dopamine (D2) antagonists — precipitate acute severe rigidity/NMS-like crisis; pethidine is specifically dangerous in patients on MAO-B inhibitors (selegiline, rasagiline) — the combination can cause a serotonergic reaction with hyperthermia, rigidity and autonomic instability analogous to serotonin syndrome; avoid pethidine and use alternative opioids</li>
+                <li>Safe antiemetics: ondansetron, domperidone (does not cross the blood-brain barrier); cyclizine is generally acceptable</li>
+                <li>Acute akinesia (levodopa withdrawal crisis) presents with severe rigidity, inability to move, dysphagia (aspiration risk), hyperthermia, autonomic instability and rhabdomyolysis — treat as an emergency with urgent restoration of dopaminergic therapy (NG levodopa or apomorphine rescue), IV fluids, and supportive critical care; it is clinically indistinguishable from neuroleptic malignant syndrome</li>
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -471,6 +481,16 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Myotonic dystrophy (DM1): myotonia (sustained contraction not reversed by NMBAs), cardiomyopathy, conduction abnormalities (require preop ECG), central and obstructive sleep apnoea</li>
                 <li>Myotonia triggers: suxamethonium, neostigmine, hypothermia, shivering, diathermy</li>
                 <li>TIVA with propofol/remifentanil is preferred; use sugammadex for reversal if rocuronium used</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Myotonic Response, Rhabdomyolysis & MH Relationship</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Myotonia is a failure of muscle relaxation after voluntary contraction or stimulation due to abnormal sarcolemmal chloride/sodium channel function — it is <strong>not</strong> abolished by non-depolarising NMBAs or regional anaesthesia because the defect is in the muscle membrane itself, distal to the neuromuscular junction</li>
+                <li>Recognised precipitants of myotonic contracture: cold (theatre hypothermia), shivering, mechanical/electrical stimulation (diathermy, surgical handling), and neostigmine (anticholinesterase reversal can provoke severe generalised myotonia) — maintain strict normothermia with forced-air warming and avoid neostigmine where possible, preferring sugammadex for rocuronium reversal</li>
+                <li>Suxamethonium is contraindicated in all dystrophies/myotonic disorders — triggers sustained myotonic contracture that can make bag-mask ventilation and intubation impossible, in addition to the risk of rhabdomyolysis and hyperkalaemic cardiac arrest</li>
+                <li>Volatile-agent exposure in Duchenne/Becker dystrophinopathies can trigger an MH-like reaction (acute rhabdomyolysis with hyperkalaemia, hyperthermia and cardiac arrest) that is clinically similar to but pathophysiologically distinct from true malignant hyperthermia (dystrophin deficiency rather than ryanodine receptor mutation); dantrolene is still used in treatment of this reaction, and TIVA is preferred to avoid it entirely</li>
+                <li>Rhabdomyolysis/hyperkalaemia from sux or volatiles: treat as an anaesthetic emergency — stop the trigger, hyperventilate with 100% oxygen, calcium chloride/gluconate for cardiac membrane stabilisation, insulin-dextrose and salbutamol nebuliser/IV to shift potassium intracellularly, aggressive IV fluids and consider dantrolene 2.5 mg/kg IV if an MH-like picture is suspected</li>
               </ul>
             </div>
           </div>

@@ -343,6 +343,36 @@ const CardiovascularDiseaseTopic = () => {
                 <li>Postoperative HDU/ICU admission for NYHA III/IV or EF &lt;30%</li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">NYHA Functional Classification</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Class I:</strong> no limitation of physical activity; ordinary activity does not cause symptoms</li>
+                <li><strong>Class II:</strong> slight limitation; comfortable at rest, ordinary activity causes dyspnoea/fatigue/palpitations</li>
+                <li><strong>Class III:</strong> marked limitation; comfortable at rest, less-than-ordinary activity causes symptoms</li>
+                <li><strong>Class IV:</strong> symptomatic at rest; any physical activity increases discomfort — highest perioperative risk, approximates RCRI "heart failure" criterion regardless of EF</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Hypertrophic Obstructive Cardiomyopathy (HOCM)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Dynamic left ventricular outflow tract (LVOT) obstruction worsened by anything that reduces LV cavity size or increases contractility/outflow velocity</li>
+                <li>Haemodynamic goals: maintain preload (avoid hypovolaemia and vasodilatation), maintain or increase afterload (SVR) — avoid spinal/epidural-induced sympathectomy and vasodilating drugs, keep heart rate slow-normal (avoid tachycardia, which shortens diastolic filling and worsens obstruction), and avoid inotropes/exogenous catecholamines which worsen the gradient</li>
+                <li>If hypotension occurs: treat with fluid and a pure α-agonist (phenylephrine) rather than an inotrope such as adrenaline/dobutamine, which will worsen LVOT obstruction</li>
+                <li>Avoid the "SAM" (systolic anterior motion) triad of triggers: hypovolaemia, tachycardia, and increased contractility/reduced afterload</li>
+                <li>Regional techniques should be used cautiously with slow, incremental titration (epidural preferred over single-shot spinal) to avoid abrupt sympathectomy</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Left Ventricular Assist Devices (LVAD)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Continuous-flow (non-pulsatile) devices are now standard — patients may have a weak or absent palpable pulse and unreliable pulse oximetry/NIBP; use Doppler-derived MAP or an arterial line for accurate pressure monitoring</li>
+                <li>LVAD output is preload-dependent and afterload-sensitive: avoid hypovolaemia and avoid excessive systemic vasodilation or vasoconstriction — maintain euvolaemia and treat hypertension (which impairs LVAD flow) promptly</li>
+                <li>Right ventricular failure is the major perioperative threat — avoid factors that raise PVR (hypoxia, hypercarbia, acidosis) and maintain RV preload/contractility</li>
+                <li>Patients are anticoagulated (warfarin ± antiplatelet); balance thrombotic (pump thrombosis, stroke) versus bleeding risk with specialist LVAD/cardiology team involvement for any surgery</li>
+                <li>Avoid strong magnets/electromagnetic interference near controller; involve the LVAD coordinator/physiologist for perioperative management and have device-specific emergency algorithms available</li>
+                <li>Non-cardiac surgery in LVAD patients should occur at, or in direct liaison with, a specialist LVAD centre wherever possible</li>
+              </ul>
+            </div>
           </div>
         </section>
 

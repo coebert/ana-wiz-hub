@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
+import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamMappingBadges } from "@/components/exam/ExamMappingBadges";
@@ -352,6 +353,8 @@ const ImmunosuppressionHivTopic = () => {
                 </div>
               </div>
             </section>
+
+            <TopicFaqs faqs={immunosuppressionHivFaqs} />
           </div>
         </ExamSection>
       }

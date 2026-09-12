@@ -234,20 +234,41 @@ const EndocrineDiseaseTopic = () => {
           <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_08"]} />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
-              <h3 className="font-semibold text-foreground mb-2">Adrenal Insufficiency & Steroid Supplementation</h3>
+              <h3 className="font-semibold text-foreground mb-2">Primary vs Secondary Adrenal Insufficiency</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Chronic steroid use (≥5 mg prednisolone/day for ≥3 months) → HPA axis suppression for up to 12 months after cessation</li>
-                <li>Perioperative supplementation (2023 guidelines): minor surgery — usual dose; moderate — hydrocortisone 50 mg at induction + 25 mg q8h for 24 h; major — 100 mg at induction + 50 mg q8h for 48–72 h</li>
-                <li>Addisonian crisis: refractory hypotension, hyperkalaemia, hyponatraemia, hypoglycaemia</li>
-                <li>Treatment: IV hydrocortisone 100 mg stat, 0.9% saline bolus, 10% dextrose for hypoglycaemia</li>
+                <li>Primary (Addison's disease): destruction of the adrenal cortex itself (autoimmune commonest in the UK, also TB, malignancy, haemorrhage) — deficiency of both cortisol and aldosterone, so features include hyponatraemia, hyperkalaemia, postural hypotension, and hyperpigmentation (from raised ACTH/POMC)</li>
+                <li>Secondary/tertiary insufficiency: hypothalamic–pituitary disease or, most commonly in anaesthetic practice, exogenous corticosteroid suppression of ACTH — aldosterone secretion is largely preserved (renin–angiotensin driven), so hyperkalaemia is typically absent and hyperpigmentation does not occur</li>
+                <li>Short synacthen test (SST): baseline cortisol measured, then tetracosactide (synthetic ACTH) 250 µg IM/IV given, with cortisol repeated at 30 minutes; a normal response is a post-stimulation cortisol &gt;450–550 nmol/L (assay-dependent) — a failure to rise adequately confirms adrenal insufficiency and, in known steroid users, indicates HPA-axis suppression requiring perioperative cover</li>
+                <li>Chronic steroid use (≥5 mg prednisolone/day, or equivalent, for ≥3 months in the preceding year) is assumed to cause clinically significant HPA-axis suppression lasting up to 12 months after cessation — no need for an SST in this group as supplementation is given empirically</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Perioperative Steroid Supplementation & Addisonian Crisis</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Continue the patient's usual daily glucocorticoid dose throughout the perioperative period in all cases, plus additional cover according to surgical severity (2020 Association of Anaesthetists guidance)</li>
+                <li>Minor surgery (e.g. under local anaesthesia, minor procedure with rapid recovery): usual dose only, no additional hydrocortisone needed; resume oral medication as soon as possible</li>
+                <li>Moderate surgery: hydrocortisone 50 mg IV at induction, then 25 mg IV every 8 hours for 24 hours, then resume usual oral dose</li>
+                <li>Major surgery: hydrocortisone 100 mg IV at induction, then 50 mg IV every 8 hours (or an infusion of 200 mg/24 h) for 48–72 hours depending on recovery, then wean back to the usual oral dose over several days</li>
+                <li>Alternative simplified approach for known/suspected adrenal insufficiency or long-term steroid use: hydrocortisone 100 mg IM/IV at induction then 50 mg IV/IM 6-hourly until eating/drinking, then double the usual oral dose for 24–48 h</li>
+                <li>Addisonian (adrenal) crisis: refractory/vasopressor-resistant hypotension, hyperkalaemia, hyponatraemia, hypoglycaemia, abdominal pain, and vomiting — must be treated on clinical suspicion without waiting for confirmatory cortisol results</li>
+                <li>Treatment: IV hydrocortisone 100 mg stat bolus then 100 mg every 6 hours (or a continuous infusion), rapid 0.9% saline resuscitation (typically 1 L over 1 hour then reassess), 10% dextrose for hypoglycaemia, and correction of hyperkalaemia if severe; fludrocortisone is not required acutely as high-dose hydrocortisone has intrinsic mineralocorticoid activity</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Cushing's Syndrome</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Features: central obesity, hypertension, diabetes, osteoporosis, proximal myopathy, thin skin</li>
-                <li>Difficult IV access, fragile tissues; anticipate difficult positioning and pressure area care</li>
-                <li>Continue perioperative steroid cover — risk of adrenal crisis with adrenalectomy</li>
+                <li>Features: central obesity, hypertension, diabetes/impaired glucose tolerance, osteoporosis (careful positioning, risk of vertebral/rib fracture), proximal myopathy, thin fragile skin and easy bruising, striae, and psychiatric disturbance</li>
+                <li>Difficult IV access and fragile veins/skin; anticipate difficult airway/positioning from truncal obesity and a "buffalo hump"; meticulous pressure area care</li>
+                <li>Hypokalaemic metabolic alkalosis may occur with severe hypercortisolism (mineralocorticoid effect of very high cortisol) — check electrolytes preoperatively</li>
+                <li>Continue perioperative steroid cover; after successful adrenalectomy for a cortisol-secreting tumour the contralateral (or remaining) adrenal is suppressed, so patients require full glucocorticoid replacement to avoid postoperative adrenal crisis</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Conn's Syndrome (Primary Hyperaldosteronism)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Excess aldosterone from an adrenal adenoma or bilateral hyperplasia causes sodium/water retention with hypertension, and renal potassium/hydrogen ion wasting causing hypokalaemia and metabolic alkalosis</li>
+                <li>Preoperative optimisation: correct hypokalaemia (may require high-dose potassium replacement) and control blood pressure with a mineralocorticoid receptor antagonist (spironolactone or eplerenone) before elective adrenalectomy</li>
+                <li>Anaesthetic implications: hypokalaemia increases sensitivity to neuromuscular blocking agents and risk of arrhythmia; monitor potassium and ECG perioperatively; blood pressure typically improves after successful unilateral adrenalectomy but may take weeks to normalise</li>
               </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
