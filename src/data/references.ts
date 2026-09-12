@@ -1055,6 +1055,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Allman & Wilson Ch.29", citation: "Allman K, Wilson I, O'Donnell A. Oxford Handbook of Anaesthesia. 4th ed. OUP; 2016. Chapter 29: Ophthalmic Surgery." },
     { label: "BJA Educ 2018", citation: "Kumar CM, Eid H, Dodds C. Sub-Tenon's anaesthesia: complications and their prevention. Eye. 2011;25(6):694-703.", url: "https://doi.org/10.1038/eye.2011.69" },
     { label: "RCOphth/RCoA 2012", citation: "Royal College of Ophthalmologists/RCoA. Local Anaesthesia for Ophthalmic Surgery. Joint Guidelines. 2012." },
+    { label: "Ambulatory Ophthalmic 2025", citation: "Current advances in ambulatory ophthalmic anaesthesia, including relaxation of routine preoperative fasting for local anaesthetic cataract surgery. Curr Opin Anaesthesiol. 2025.", url: "https://doi.org/10.1097/aco.0000000000001583" },
+    { label: "Vachon 2003 Open Globe", citation: "Vachon CA, Warner DO, Bacon DR. Succinylcholine and the open globe: tracing the teaching. Anesthesiology. 2003;99(1):220-223.", url: "https://doi.org/10.1097/00000542-200307000-00033" },
   ],
   "operating-theatre-environment": [
     { label: "HTM 03-01", citation: "Department of Health. Health Technical Memorandum 03-01: Specialised ventilation for healthcare premises. Parts A & B. NHS Estates; 2021.", url: "https://www.england.nhs.uk/publication/specialised-ventilation-for-healthcare-buildings-htm-03-01/" },
