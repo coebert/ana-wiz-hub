@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CheckCircle2, ChevronDown, ChevronRight, Circle } from "lucide-react";
+import { BookOpenCheck, CheckCircle2, ChevronDown, ChevronRight, Circle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -12,6 +12,11 @@ export interface CaseStage {
   answer: string[];
 }
 
+export interface DetailedAnswerSection {
+  title: string;
+  content: string;
+}
+
 export interface PerioperativeCase {
   id: string;
   title: string;
@@ -20,6 +25,7 @@ export interface PerioperativeCase {
   patient: string;
   presentation: string;
   stages: CaseStage[];
+  detailedAnswer: DetailedAnswerSection[];
   takeHome: string;
   sourceLinks: Array<{ label: string; href: string }>;
 }
@@ -31,6 +37,7 @@ interface ProgressiveCaseProps {
 export const ProgressiveCase = ({ caseData }: ProgressiveCaseProps) => {
   const [open, setOpen] = useState(false);
   const [revealed, setRevealed] = useState(0);
+  const [detailedOpen, setDetailedOpen] = useState(false);
 
   const toggleOpen = () => {
     setOpen((current) => !current);
@@ -102,21 +109,50 @@ export const ProgressiveCase = ({ caseData }: ProgressiveCaseProps) => {
           })}
 
           {revealed === caseData.stages.length && (
-            <aside className="rounded-md border border-primary/25 bg-primary/5 p-4">
-              <p className="text-xs font-semibold uppercase text-primary">Take-home</p>
-              <p className="mt-1 text-sm leading-relaxed text-foreground">{caseData.takeHome}</p>
-              <p className="mt-3 text-xs text-muted-foreground">
-                Sources:{" "}
-                {caseData.sourceLinks.map((source, index) => (
-                  <span key={source.href}>
-                    {index > 0 && " · "}
-                    <a className="underline underline-offset-4 hover:text-foreground" href={source.href} target="_blank" rel="noreferrer">
-                      {source.label}
-                    </a>
+            <div className="space-y-4">
+              <aside className="rounded-md border border-primary/25 bg-primary/5 p-4">
+                <p className="text-xs font-semibold uppercase text-primary">Take-home</p>
+                <p className="mt-1 text-sm leading-relaxed text-foreground">{caseData.takeHome}</p>
+              </aside>
+
+              <section className="rounded-md border border-border bg-card overflow-hidden">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  className="h-auto w-full justify-between rounded-none px-4 py-3 text-left"
+                  onClick={() => setDetailedOpen((current) => !current)}
+                  aria-expanded={detailedOpen}
+                  aria-controls={`${caseData.id}-detailed-answer`}
+                >
+                  <span className="flex items-center gap-2">
+                    <BookOpenCheck className="h-4 w-4 text-perioperative" aria-hidden />
+                    Second pass: detailed answer
                   </span>
-                ))}
-              </p>
-            </aside>
+                  {detailedOpen ? <ChevronDown aria-hidden /> : <ChevronRight aria-hidden />}
+                </Button>
+                {detailedOpen && (
+                  <div id={`${caseData.id}-detailed-answer`} className="border-t border-border px-4 py-4 space-y-4">
+                    {caseData.detailedAnswer.map((section) => (
+                      <div key={section.title}>
+                        <h4 className="text-sm font-semibold text-foreground">{section.title}</h4>
+                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{section.content}</p>
+                      </div>
+                    ))}
+                    <p className="pt-2 border-t border-border text-xs text-muted-foreground">
+                      Sources:{" "}
+                      {caseData.sourceLinks.map((source, index) => (
+                        <span key={source.href}>
+                          {index > 0 && " · "}
+                          <a className="underline underline-offset-4 hover:text-foreground" href={source.href} target="_blank" rel="noreferrer">
+                            {source.label}
+                          </a>
+                        </span>
+                      ))}
+                    </p>
+                  </div>
+                )}
+              </section>
+            </div>
           )}
         </div>
       )}

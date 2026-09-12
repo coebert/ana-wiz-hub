@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BookOpenCheck, ShieldCheck } from "lucide-react";
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { Button } from "@/components/ui/button";
-import { ProgressiveCase, type CaseCategory, type PerioperativeCase } from "@/components/perioperative/ProgressiveCase";
+import { ProgressiveCase, type CaseCategory, type DetailedAnswerSection, type PerioperativeCase } from "@/components/perioperative/ProgressiveCase";
 
 const sources = {
   steroid: { label: "Association of Anaesthetists 2020", href: "https://doi.org/10.1111/anae.14963" },
@@ -13,7 +13,72 @@ const sources = {
   poise3: { label: "POISE-3", href: "https://doi.org/10.1056/NEJMoa2201171" },
 };
 
-const cases: PerioperativeCase[] = [
+const detailedAnswers: Record<string, DetailedAnswerSection[]> = {
+  "steroid-colectomy": [
+    { title: "Clinical reasoning", content: "Prednisolone 10 mg daily is above the dose at which clinically important HPA-axis suppression should be assumed after sustained use. Open colectomy produces major stress, while omission of her normal dose adds withdrawal risk. Antiemetic dexamethasone has glucocorticoid activity but does not by itself constitute a documented perioperative replacement plan." },
+    { title: "Management and monitoring", content: "Continue the usual steroid, give hydrocortisone 100 mg IV at induction, then 200 mg over 24 hours or 50 mg six-hourly while major stress persists. Monitor pressure, glucose, sodium and potassium, and restore oral treatment when absorption is reliable. Refractory hypotension, hypoglycaemia or electrolyte disturbance should trigger immediate adrenal-crisis treatment alongside a search for bleeding, sepsis and cardiac causes." },
+    { title: "Exam pitfall", content: "Do not delay rescue hydrocortisone for cortisol testing, and do not stop supplementation abruptly after major surgery. State the steroid route, timing, postoperative continuation and plan to return to baseline treatment." },
+  ],
+  "steroid-inhaled": [
+    { title: "Clinical reasoning", content: "HPA suppression depends on cumulative systemic exposure, not whether a patient currently takes tablets. High-dose fluticasone, repeated oral rescue courses, topical preparations and injections all matter. Features such as Cushingoid appearance, a steroid emergency card or recent withdrawal increase concern." },
+    { title: "Management and monitoring", content: "Continue inhaled therapy and optimise asthma. If moderate-stress surgery proceeds with credible suppression risk, give hydrocortisone 50 mg IV at induction followed by 25 mg eight-hourly for 24 hours, then resume the established regimen. Observe haemodynamics, glucose and electrolytes and treat unexplained shock promptly." },
+    { title: "Exam pitfall", content: "A normal-looking medication list can conceal recent systemic exposure. Ask specifically about every route, dose, duration and cessation date rather than accepting ‘no steroid tablets’." },
+  ],
+  "steroid-addisons": [
+    { title: "Clinical reasoning", content: "Known primary adrenal insufficiency, missed replacement, vomiting, infection, hypotension, hypoglycaemia and hyponatraemia make adrenal crisis the working diagnosis. The immediate mortality risk comes from glucocorticoid deficiency and severe volume depletion; treatment precedes biochemical confirmation." },
+    { title: "Management and monitoring", content: "Give hydrocortisone 100 mg IV immediately, rapid 0.9% saline and IV glucose, then hydrocortisone 200 mg per 24 hours or 50 mg six-hourly. Correct electrolytes, give antibiotics and obtain source control. Taper only as illness resolves and oral absorption returns; hydrocortisone above 50 mg daily supplies adequate mineralocorticoid effect, so fludrocortisone is usually temporarily unnecessary." },
+    { title: "Exam pitfall", content: "Blood sampling is optional if it delays treatment. Persistent shock still requires evaluation for sepsis, haemorrhage and cardiogenic causes rather than attributing every abnormality to Addison’s disease." },
+  ],
+  "steroid-joint": [
+    { title: "Clinical reasoning", content: "HPA recovery after long-term glucocorticoids is variable and may take months. Repeated intra-articular injections can add meaningful systemic exposure, while fatigue and postural symptoms strengthen concern but are not diagnostic. Testing is useful only when time and clinical stability permit." },
+    { title: "Management and monitoring", content: "For major revision arthroplasty with credible suppression, continue or replace the baseline requirement, give hydrocortisone 100 mg IV at induction and 200 mg over the first 24 hours. Monitor haemodynamics and glucose, then agree a taper and formal endocrine assessment rather than making an unplanned stop." },
+    { title: "Exam pitfall", content: "‘Stopped two months ago’ does not prove recovery. Discharge reconciliation should cover oral, inhaled, topical and injected steroids and provide sick-day and emergency advice." },
+  ],
+  "phaeo-prep": [
+    { title: "Clinical reasoning", content: "Catecholamine-driven vasoconstriction causes hypertension and contracted circulating volume. Alpha blockade reduces vascular tone; beta blockade is added only after alpha control because isolated beta blockade leaves unopposed alpha vasoconstriction. Preparation is judged by pressure control, tolerable postural change, rhythm and end-organ effects rather than one clinic value." },
+    { title: "Management and monitoring", content: "Titrate phenoxybenzamine or a selective alpha-1 blocker such as doxazosin for roughly 10–14 days, then add beta blockade only for persistent tachycardia after adequate alpha blockade. Encourage salt and fluid intake where safe. Plan arterial monitoring, large-bore access, short-acting vasodilators, vasopressors, glucose monitoring and postoperative critical-care observation with an experienced multidisciplinary team." },
+    { title: "Exam pitfall", content: "Do not chase a perfectly normal seated pressure at the cost of disabling orthostasis, and never describe beta blockade before alpha blockade." },
+  ],
+  "phaeo-beta": [
+    { title: "Clinical reasoning", content: "Propranolol removes beta-2 vasodilation and limits cardiac compensation while catecholamine-stimulated alpha receptors continue intense vasoconstriction. The result may be malignant hypertension, myocardial injury and pulmonary oedema. This is a pharmacological crisis, not simple undertreated tachycardia." },
+    { title: "Management and monitoring", content: "Escalate to critical care, establish invasive arterial monitoring and control vascular tone with titratable vasodilation or alpha blockade. Treat pulmonary oedema and myocardial complications and avoid further isolated beta blockade. A short-acting beta blocker is considered only after alpha-mediated hypertension is controlled. Definitive resection is normally deferred until blockade and volume restoration are complete." },
+    { title: "Exam pitfall", content: "Giving more beta blocker for the persistent tachycardia can worsen the crisis. Explain receptor physiology and treatment sequence explicitly." },
+  ],
+  "phaeo-handling": [
+    { title: "Clinical reasoning", content: "Tumour handling can release a sudden catecholamine load, producing severe hypertension and tachyarrhythmia. The anaesthetist must communicate with the surgeon, pause manipulation and exclude amplifiers such as hypercarbia, hypoxia and inadequate anaesthesia while treating immediately." },
+    { title: "Management and monitoring", content: "Use short-acting, titratable agents such as nitroprusside, glyceryl trinitrate or phentolamine according to local practice; magnesium offers vasodilation and may reduce catecholamine release. Use esmolol only after vasoconstriction is controlled. Before adrenal-vein ligation, stop vasodilators, prepare vasopressors and assess preload because abrupt catecholamine withdrawal can cause profound hypotension. Check glucose for rebound hypoglycaemia." },
+    { title: "Exam pitfall", content: "Long-acting antihypertensives may turn the predictable post-ligation pressure fall into prolonged shock. Link each drug choice to the rapidly changing surgical phase." },
+  ],
+  "phaeo-recovery": [
+    { title: "Clinical reasoning", content: "Post-resection hypotension is often multifactorial: catecholamine withdrawal, residual alpha blockade, vasoplegia and depleted volume coexist, but bleeding must be excluded. Hypoglycaemia occurs because removal of catecholamine-mediated insulin suppression permits rebound insulin release." },
+    { title: "Management and monitoring", content: "Give IV glucose, repeat measurements frequently and assess haemorrhage, preload and cardiac function. Use judicious fluid and titrated vasopressor support for persistent vasodilation. Continue high-acuity pressure, rhythm, urine-output, lactate and glucose monitoring. Bilateral adrenalectomy or uncertain residual function requires a clear steroid replacement plan." },
+    { title: "Exam pitfall", content: "Do not treat drowsiness as residual anaesthesia without checking glucose. Handover must state the specific risks of recurrent hypotension and hypoglycaemia." },
+  ],
+  "txa-trauma": [
+    { title: "Clinical reasoning", content: "TXA inhibits plasminogen activation and limits fibrin breakdown. In significant traumatic haemorrhage, survival benefit is time dependent and greatest with early administration; viscoelastic results are not required before the first dose. Beyond three hours after injury, routine CRASH-2 treatment should not be initiated because benefit is lost and harm is possible." },
+    { title: "Management and monitoring", content: "Give 1 g IV over 10 minutes followed by 1 g over eight hours while continuing definitive haemorrhage control, balanced blood-component resuscitation, warming and calcium replacement. Use ROTEM or TEG to guide subsequent fibrinogen, plasma and platelet therapy and track temperature, pH, ionised calcium and lactate." },
+    { title: "Exam pitfall", content: "TXA is an adjunct, not a reason to delay theatre, interventional radiology or damage-control resuscitation. Always state the injury-to-dose interval." },
+  ],
+  "txa-pph": [
+    { title: "Clinical reasoning", content: "Postpartum haemorrhage activates fibrinolysis early, so TXA should be given promptly once PPH is diagnosed and within three hours of bleeding onset. It reduces death from bleeding but does not correct uterine atony, retained tissue, trauma or coagulopathy by itself." },
+    { title: "Management and monitoring", content: "Give TXA 1 g IV as soon as possible; repeat 1 g if bleeding continues after 30 minutes or restarts within 24 hours, following local protocol. Continue uterotonics, surgical or radiological control and major-haemorrhage resuscitation. Measure fibrinogen early, warm the patient and products, and monitor platelets, coagulation, pH and ionised calcium." },
+    { title: "Exam pitfall", content: "Do not postpone TXA until laboratory results return, but also do not let it distract from the four causes of PPH and definitive control. Record bleeding onset and dose times." },
+  ],
+  "txa-elective": [
+    { title: "Clinical reasoning", content: "In major non-cardiac surgery, TXA lowers bleeding, but POISE-3 did not prove non-inferiority for its composite cardiovascular safety outcome. Decision-making therefore combines procedural blood-loss risk with active or previous thrombosis, vascular disease, anticoagulation and renal function. A remote provoked DVT is not the same as active thrombosis." },
+    { title: "Management and monitoring", content: "Use the procedure-specific local regimen rather than a trauma dose. Reduce exposure in renal impairment because TXA is predominantly renally cleared, and avoid repeated high doses where accumulation raises seizure risk. Keep ampoules and syringes physically separated from neuraxial drugs and perform explicit route checks. Restart standard VTE prophylaxis when haemostasis permits." },
+    { title: "Exam pitfall", content: "The catastrophic route error is intrathecal TXA. Mention storage, labelling and checking systems as well as pharmacology and thrombosis assessment." },
+  ],
+  "txa-dic": [
+    { title: "Clinical reasoning", content: "Septic DIC simultaneously activates coagulation, consumes platelets and factors and alters fibrinolysis. Raised D-dimer shows fibrin turnover but does not establish dominant hyperfibrinolysis. Empirical antifibrinolysis can worsen microvascular thrombosis when coagulation activation predominates." },
+    { title: "Management and monitoring", content: "Treat infection and restore perfusion first. For clinically important bleeding, replace platelets, fibrinogen and plasma according to serial laboratory and viscoelastic assessment; common pragmatic targets include platelets above 50 ×10⁹/L and fibrinogen above 1.5 g/L, individualised to the bleeding site. Consider TXA only for exceptional life-threatening bleeding with demonstrated predominant hyperfibrinolysis and specialist input." },
+    { title: "Exam pitfall", content: "Bleeding plus a high D-dimer is not an automatic TXA indication. State the DIC phenotype, evidence of fibrinolysis and the risk of worsening thrombosis." },
+  ],
+};
+
+type CaseSeed = Omit<PerioperativeCase, "detailedAnswer">;
+
+const caseSeeds: CaseSeed[] = [
   {
     id: "steroid-colectomy", title: "Chronic prednisolone before colectomy", category: "Steroid cover", difficulty: "Foundation",
     patient: "A 64-year-old woman takes prednisolone 10 mg daily for polymyalgia rheumatica and is listed for open right hemicolectomy.",
@@ -148,6 +213,11 @@ const cases: PerioperativeCase[] = [
   },
 ];
 
+const cases: PerioperativeCase[] = caseSeeds.map((caseData) => ({
+  ...caseData,
+  detailedAnswer: detailedAnswers[caseData.id] ?? [],
+}));
+
 const categories: Array<"All" | CaseCategory> = ["All", "Steroid cover", "Phaeochromocytoma", "Antifibrinolytics"];
 
 const PerioperativeCaseBank = () => {
@@ -169,7 +239,7 @@ const PerioperativeCaseBank = () => {
           <BookOpenCheck className="h-8 w-8 text-perioperative" aria-hidden />
           <div>
             <h2 className="text-lg font-semibold text-foreground">How the cases work</h2>
-            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">Pause at each stage, commit to an assessment or management plan, then reveal the model answer. The patients are fictionalised composites designed from common perioperative presentations; no identifiable patient information is used.</p>
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">Pause at each stage, commit to an assessment or management plan, then reveal the model answer. Complete every stage to unlock a detailed second pass with the clinical reasoning, practical management and common pitfalls. The patients are fictionalised composites; no identifiable patient information is used.</p>
           </div>
         </div>
       </section>
