@@ -86,7 +86,7 @@ const workedExamples: WorkedExample[] = [
         haemodynamically and consider TOE / CT once stabilised.
       </>
     ),
-    cites: ["BJA Educ 2017 Capnography", "AAGBI Monitoring 2015"],
+    cites: ["BJA Educ 2017 Capnography", "Association of Anaesthetists 2021"],
   },
   {
     title: "Confirming tracheal intubation in an obese patient",
@@ -220,7 +220,7 @@ const CapnographyTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
-        objectives: ["BJA Educ 2017 Capnography", "AAGBI Monitoring 2015"],
+        objectives: ["BJA Educ 2017 Capnography", "Association of Anaesthetists 2021"],
         keyPoints: ["BJA Educ 2017 Capnography", "Bhavani-Shankar & Philip 2000", "Al-Shaikh & Stacey Ch.10-11"],
         workedExamples: ["BJA Educ 2017 Capnography", "NAP4", "RCUK 2021 ALS"],
       }}
