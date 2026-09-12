@@ -1,4 +1,4 @@
-import { references } from "@/data/references";
+import { topicReferences } from "@/data/references";
 const want: Record<string,string[]> = {
   "plastic-surgery": ["BAPRAS 2020","BJA Educ 2021","Curr Opin Anaesthesiol 2019"],
   "burns-plastics": ["BBA EMSB","BJA Educ 2019","Bittner 2015"],
@@ -7,7 +7,7 @@ const want: Record<string,string[]> = {
   "elderly-anaesthesia": ["AAGBI Elderly 2014","BJA 2010 Ageing CVS"],
 };
 for (const [topic, labels] of Object.entries(want)) {
-  const list = (references as any)[topic] || [];
+  const list = (topicReferences as any)[topic] || [];
   for (const l of labels) {
     const r = list.find((x: any) => x.label === l);
     console.log(JSON.stringify({ topic, label: l, citation: r?.citation, url: r?.url }));
