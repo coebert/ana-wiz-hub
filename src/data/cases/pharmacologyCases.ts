@@ -1154,5 +1154,281 @@ export const pharmacologyCaseBank: CaseBank = {
       takeHome: "Treat local anaesthetic systemic toxicity with airway control, benzodiazepine for seizures, and early lipid emulsion (1.5 mL/kg bolus, 15 mL/kg/h infusion, max 12 mL/kg) — and prevent it by respecting per-kilogram maximum doses and using incremental, ultrasound-guided injection.",
       sourceLinks: [s.last, s.la],
     },
+    {
+      id: "pharmacology-tox-paracetamol-child",
+      title: "Staggered paracetamol overdose in a child",
+      category: "Toxicology & poisoning",
+      difficulty: "Intermediate",
+      summary: "Weight-based acetylcysteine, the 12-hour SNAP regimen and when the nomogram does not apply.",
+      topicIds: ["toxicology", "paediatric-anaesthesia", "paediatric-icu", "acute-liver-failure", "pharmacokinetics"],
+      patient: "A 22 kg 6-year-old girl has taken an uncertain number of paracetamol tablets over 18 hours, given partly by a parent for fever.",
+      presentation: "She is vomiting with right upper quadrant tenderness. ALT is 640 U/L, INR 1.6, paracetamol concentration 42 mg/L and creatinine normal.",
+      stages: [
+        {
+          title: "Decide who needs treatment",
+          prompt: "Does the treatment nomogram help here?",
+          answer: [
+            "No - the nomogram applies only to a single acute ingestion with a reliable time, sampled 4-15 hours after ingestion.",
+            "This is a staggered or uncertain-timing ingestion, so treat with acetylcysteine regardless of concentration and check ALT, INR, creatinine, bicarbonate, lactate and glucose.",
+            "Risk rises above about 75 mg/kg in 24 hours; glutathione depletion allows NAPQI to cause centrilobular hepatocyte necrosis.",
+          ],
+        },
+        {
+          title: "Prescribe acetylcysteine correctly",
+          prompt: "Write the regimen for a 22 kg child.",
+          answer: [
+            "Use the modified two-bag SNAP regimen: 100 mg/kg over 2 hours then 200 mg/kg over 10 hours, weight-based and capped at a 110 kg weight.",
+            "Dilute in glucose 5% using reduced paediatric fluid volumes to avoid hyponatraemia and fluid overload.",
+            "Continue beyond 12 hours if ALT is rising, INR is above 1.3 or paracetamol remains detectable; recheck bloods at the end of the infusion.",
+          ],
+        },
+        {
+          title: "Recognise who needs a liver unit",
+          prompt: "What triggers escalation, and how do you handle infusion reactions?",
+          answer: [
+            "Discuss with a liver centre using King's College criteria: pH below 7.30 after resuscitation, or the triad of INR above 6.5, creatinine above 300 micromol/L and grade III-IV encephalopathy; lactate above 3.5 mmol/L early or 3.0 mmol/L after fluids also predicts poor outcome.",
+            "Non-immune anaphylactoid reactions (flushing, wheeze, urticaria) are rate-related histamine release: pause the infusion, give an antihistamine and restart more slowly rather than abandoning the antidote.",
+            "Involve TOXBASE or the National Poisons Information Service, safeguard the child and review the medication error.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Paracetamol is cleared mainly by glucuronidation and sulfation, with a small CYP2E1 route generating NAPQI that glutathione detoxifies. In overdose glutathione is depleted and NAPQI causes centrilobular necrosis; acetylcysteine acts as a glutathione precursor, most effective within 8 hours but still beneficial later including in established hepatotoxicity. The nomogram is invalid for staggered, unknown-time or modified-release ingestion, which are treated on history and biochemistry." },
+        { title: "Management and monitoring", content: "Give the two-bag regimen (100 mg/kg over 2 hours then 200 mg/kg over 10 hours) in weight-appropriate volumes of glucose 5%, then recheck ALT, INR, creatinine, venous gas and paracetamol concentration, extending treatment while ALT rises or coagulopathy persists. Monitor glucose closely in children, correct acidosis and hypovolaemia, and use pH and lactate as early prognostic markers. Refer early to a specialist liver unit when King's College criteria or a rising lactate suggest progression." },
+        { title: "Exam pitfall", content: "Do not plot a staggered ingestion on the nomogram, do not stop acetylcysteine at 12 hours while ALT is climbing, and do not mislabel an anaphylactoid reaction as allergy and withhold the antidote." },
+      ],
+      takeHome: "Treat staggered or unknown-time paracetamol ingestion on history and bloods, give weight-based acetylcysteine (100 mg/kg over 2 hours then 200 mg/kg over 10 hours), extend while ALT or INR rise, and use King's College criteria plus lactate to trigger liver-unit referral.",
+      sourceLinks: [s.snap, s.toxbase, s.bnfc],
+    },
+    {
+      id: "pharmacology-tox-tca-adolescent",
+      title: "Tricyclic overdose with a broad QRS",
+      category: "Toxicology & poisoning",
+      difficulty: "Advanced",
+      summary: "Sodium-channel blockade, alkalinisation with hypertonic bicarbonate and why vasopressors beat repeated fluid.",
+      topicIds: ["toxicology", "cardiac-electrophysiology", "circulatory-failure", "pharmacodynamics"],
+      patient: "A 16-year-old boy weighing 60 kg presents 90 minutes after taking about 3 g of amitriptyline.",
+      presentation: "GCS is 8, pupils dilated, blood pressure 78/40 mmHg, heart rate 130/min, QRS 160 ms with a terminal R wave in aVR, pH 7.22 and lactate 5 mmol/L.",
+      stages: [
+        {
+          title: "Interpret the ECG",
+          prompt: "What do these findings mean?",
+          answer: [
+            "Fast sodium-channel blockade widens the QRS: above 100 ms predicts seizures and above 160 ms predicts ventricular arrhythmia.",
+            "Antimuscarinic effects explain tachycardia, dilated pupils, dry skin and delirium; alpha-1 blockade with myocardial depression explains hypotension.",
+            "Terminal right-axis deviation with an R wave in aVR supports tricyclic toxicity rather than primary conduction disease.",
+          ],
+        },
+        {
+          title: "Give the specific treatment",
+          prompt: "What is the priority intervention?",
+          answer: [
+            "Intubate and hyperventilate to a pH of about 7.50-7.55, and give sodium bicarbonate 8.4% 1-2 mmol/kg in boluses repeated to narrow the QRS and correct acidosis.",
+            "Alkalinisation plus a sodium load displaces drug from the sodium channel - it treats toxicity, not merely acidosis.",
+            "Give activated charcoal 1 g/kg only if presentation is early and the airway is protected; avoid gastric lavage.",
+          ],
+        },
+        {
+          title: "Manage refractory shock and seizures",
+          prompt: "Pressure stays at 70/35 mmHg after bicarbonate and 20 mL/kg of fluid. What next?",
+          answer: [
+            "Start noradrenaline or adrenaline early: alpha-agonism counters vasodilation, and further large-volume fluid worsens pulmonary oedema.",
+            "Treat seizures with benzodiazepines and avoid phenytoin, which shares sodium-channel blockade; magnesium or lidocaine may be used for refractory ventricular arrhythmia while class Ia and Ic agents are contraindicated.",
+            "Consider intravenous lipid emulsion and ECMO for refractory cardiotoxicity, with prolonged CPR because recovery is possible.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Tricyclic antidepressants block fast sodium channels plus muscarinic, alpha-1, histamine and monoamine-reuptake targets. The lethal effects are cardiac: slowed phase 0 depolarisation widens the QRS and creates re-entrant ventricular arrhythmia, while vasodilation, myocardial depression and acidosis reinforce each other. Acidosis increases the unbound fraction and channel binding, so correcting pH is directly antidotal, and QRS duration with pH predicts outcome better than reported dose." },
+        { title: "Management and monitoring", content: "Secure the airway, hyperventilate to a mild alkalosis and titrate 1-2 mmol/kg boluses of 8.4% sodium bicarbonate to QRS narrowing while watching sodium, potassium, ionised calcium and pH (keep pH below about 7.55 and sodium below 155 mmol/L). Use vasopressors rather than escalating fluid, benzodiazepines for seizures, and avoid phenytoin and class Ia or Ic antiarrhythmics. Escalate to lipid emulsion and extracorporeal support in refractory cases and continue ECG monitoring for 12-24 hours after normalisation." },
+        { title: "Exam pitfall", content: "Do not give bicarbonate only for the acidosis, do not treat hypotension with repeated fluid boluses alone, and never reach for phenytoin. Quote the 100 ms and 160 ms QRS thresholds and the bicarbonate dose in mmol/kg." },
+      ],
+      takeHome: "In tricyclic overdose the QRS drives management: hyperventilate and give 1-2 mmol/kg of 8.4% sodium bicarbonate to narrow it, use noradrenaline for shock, benzodiazepines for seizures, and escalate to lipid emulsion or ECMO if refractory.",
+      sourceLinks: [s.toxbase, s.als],
+    },
+    {
+      id: "pharmacology-tox-ccb-hiet",
+      title: "Calcium-channel blocker overdose and high-dose insulin",
+      category: "Toxicology & poisoning",
+      difficulty: "Advanced",
+      summary: "Verapamil poisoning, calcium salts, vasopressors and hyperinsulinaemic euglycaemic therapy.",
+      topicIds: ["toxicology", "vasoactive-agents", "circulatory-failure", "pharmacodynamics"],
+      patient: "A 48-year-old woman weighing 70 kg has taken 40 modified-release verapamil 240 mg tablets four hours ago.",
+      presentation: "Heart rate is 42/min, blood pressure 65/35 mmHg, glucose 11 mmol/L, lactate 6 mmol/L and the ECG shows a junctional rhythm.",
+      stages: [
+        {
+          title: "Explain the physiology and start first-line treatment",
+          prompt: "Why is she shocked, and what do you give first?",
+          answer: [
+            "L-type calcium-channel blockade reduces inotropy, chronotropy and vascular tone; verapamil and diltiazem cause cardiogenic as well as vasodilatory shock, and hyperglycaemia reflects blocked insulin release and marks severity.",
+            "Give 10-20 mL of 10% calcium chloride (or 30-60 mL of 10% calcium gluconate) via a large vein, repeated with ionised calcium monitoring, plus atropine 0.5-1 mg for bradycardia (often ineffective).",
+            "Consider activated charcoal or whole-bowel irrigation for a modified-release preparation with a protected airway, and expect delayed, prolonged deterioration.",
+          ],
+        },
+        {
+          title: "Escalate vasoactive support",
+          prompt: "Calcium and fluid have not worked. What now?",
+          answer: [
+            "Start noradrenaline for vasodilation and adrenaline or dobutamine for pump failure, guided by echocardiography or cardiac-output monitoring.",
+            "Begin hyperinsulinaemic euglycaemic therapy: insulin 1 unit/kg bolus then 0.5-1 unit/kg/h, escalating in refractory cases, with 10-25% glucose to keep glucose 6-10 mmol/L.",
+            "Check glucose every 15-30 minutes initially and potassium hourly; the inotropic benefit takes 15-60 minutes to appear.",
+          ],
+        },
+        {
+          title: "Plan the refractory pathway",
+          prompt: "What if she remains shocked or arrests?",
+          answer: [
+            "Consider intravenous lipid emulsion for lipophilic agents, methylene blue for refractory vasoplegia, and pacing for symptomatic bradycardia (pacing often fails to restore output).",
+            "Refer early for VA-ECMO or other mechanical circulatory support: these poisonings are survivable if perfusion is bridged until the drug clears.",
+            "Monitor in critical care for 24-48 hours because modified-release absorption prolongs toxicity.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Calcium-channel blocker poisoning produces mixed cardiogenic and vasodilatory shock; non-dihydropyridines depress conduction and contractility, while dihydropyridines mainly vasodilate but lose selectivity in overdose. Hyperglycaemia and lactataemia arise because pancreatic beta-cell calcium channels are blocked and the myocardium shifts from fatty-acid to carbohydrate metabolism, which is why supraphysiological insulin with glucose improves contractility. Modified-release preparations cause late, prolonged and unpredictable deterioration." },
+        { title: "Management and monitoring", content: "Sequence calcium salts, atropine and fluid, then vasopressors and inotropes with objective cardiac assessment, then hyperinsulinaemic euglycaemic therapy at 1 unit/kg followed by 0.5-1 unit/kg/h with concentrated glucose and dense glucose and potassium monitoring. Add lipid emulsion, methylene blue and pacing as adjuncts and escalate to VA-ECMO for refractory shock or arrest. Decontaminate for modified-release tablets when the airway is protected, and observe in critical care for 24-48 hours with continuous ECG." },
+        { title: "Exam pitfall", content: "Do not treat this as simple atropine-responsive bradycardia and do not omit potassium and glucose monitoring during insulin therapy. Give the actual HIET doses and explain hyperglycaemia as a severity marker." },
+      ],
+      takeHome: "Verapamil overdose causes mixed cardiogenic and vasodilatory shock: give calcium and vasopressors, start hyperinsulinaemic euglycaemic therapy (1 unit/kg then 0.5-1 unit/kg/h with glucose), and refer early for ECMO in refractory cases.",
+      sourceLinks: [s.toxbase, s.vasopressor, s.als],
+    },
+    {
+      id: "pharmacology-tox-iron-toddler",
+      title: "Iron tablet ingestion in a toddler",
+      category: "Toxicology & poisoning",
+      difficulty: "Intermediate",
+      summary: "Elemental iron thresholds, the staged clinical course and desferrioxamine chelation.",
+      topicIds: ["toxicology", "paediatric-anaesthesia", "paediatric-icu", "acute-liver-failure"],
+      patient: "A 14 kg 3-year-old girl has swallowed an unknown number of ferrous sulfate 200 mg tablets (65 mg elemental iron each).",
+      presentation: "She has vomited four times with one episode of melaena, heart rate 165/min, capillary refill 4 seconds, pH 7.28 and lactate 4.2 mmol/L.",
+      stages: [
+        {
+          title: "Estimate the dose and risk",
+          prompt: "How do you decide how worried to be?",
+          answer: [
+            "Risk depends on elemental iron: under 20 mg/kg is usually asymptomatic, 20-60 mg/kg causes gastrointestinal toxicity, and above 60 mg/kg risks shock, hepatotoxicity and death.",
+            "Count missing tablets and multiply by elemental content, and take a serum iron 4-6 hours after ingestion when absorption peaks.",
+            "Vomiting, melaena, acidosis and shock indicate systemic toxicity whatever the estimated dose.",
+          ],
+        },
+        {
+          title: "Recognise the staged course",
+          prompt: "What happens over the next 48 hours?",
+          answer: [
+            "Stage 1 (0-6 h): vomiting, diarrhoea, haematemesis and melaena from direct corrosive injury.",
+            "Stage 2 (6-24 h): deceptive apparent improvement while free iron distributes into mitochondria.",
+            "Stages 3-5: shock with metabolic acidosis, then hepatic necrosis and coagulopathy at 12-48 hours, and late gastric outlet or bowel stricture at 2-6 weeks.",
+          ],
+        },
+        {
+          title: "Treat her",
+          prompt: "What treatment does she need?",
+          answer: [
+            "Resuscitate with 10-20 mL/kg boluses of balanced crystalloid, correct coagulopathy and check glucose, lactate, gases, liver function and iron concentration.",
+            "Charcoal does not bind iron: consider whole-bowel irrigation or endoscopic removal for a large radio-opaque tablet burden.",
+            "Give desferrioxamine 15 mg/kg/h intravenously (usually up to 80 mg/kg in 24 hours) for shock, acidosis, significant symptoms or a serum iron above about 90 micromol/L, watching for hypotension with fast infusion, vin rose urine and ARDS with prolonged use.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Iron is directly corrosive to gut mucosa and, once transferrin binding saturates, free iron uncouples oxidative phosphorylation to produce lactic acidosis with hepatocellular necrosis. Toxicity is biphasic, and the quiet phase between gastrointestinal symptoms and systemic collapse traps the unwary. Elemental dose, symptoms, acid-base status and a correctly timed serum iron all inform management; a level drawn too early is falsely reassuring." },
+        { title: "Management and monitoring", content: "Resuscitate volume, correct acidosis and coagulopathy, and obtain an abdominal radiograph to gauge tablet burden. Activated charcoal is ineffective; use whole-bowel irrigation or endoscopic removal for large ingestions. Chelate with desferrioxamine 15 mg/kg/h and monitor for infusion-related hypotension, vin rose urine as ferrioxamine is excreted, and pulmonary toxicity beyond 24 hours. Follow liver function, glucose and coagulation for 48 hours, refer to a liver unit if failure develops, and arrange follow-up for delayed strictures with safeguarding review." },
+        { title: "Exam pitfall", content: "Do not give activated charcoal, do not be reassured by an improving child at 12 hours, and do not quote tablet numbers without converting to elemental mg/kg." },
+      ],
+      takeHome: "Assess iron overdose by elemental mg/kg and clinical stage rather than tablet count: resuscitate, skip charcoal, and chelate with desferrioxamine 15 mg/kg/h when there is shock, acidosis or a high serum iron.",
+      sourceLinks: [s.toxbase, s.bnfc],
+    },
+    {
+      id: "pharmacology-tox-lithium-dialysis",
+      title: "Lithium toxicity and the decision to dialyse",
+      category: "Toxicology & poisoning",
+      difficulty: "Advanced",
+      summary: "Chronic versus acute lithium toxicity, precipitating drug interactions and EXTRIP dialysis thresholds.",
+      topicIds: ["toxicology", "aki-rrt", "renal-physiology", "pharmacokinetics", "psychiatric-substance-disease"],
+      patient: "A 68-year-old woman on lithium for bipolar affective disorder has become confused over five days after starting ramipril and ibuprofen during a diarrhoeal illness.",
+      presentation: "She has coarse tremor, ataxia, myoclonus and hyperreflexia. Lithium is 3.1 mmol/L, creatinine 240 micromol/L (baseline 95) and sodium 148 mmol/L.",
+      stages: [
+        {
+          title: "Explain why this happened",
+          prompt: "Why is she toxic now?",
+          answer: [
+            "Lithium is renally excreted with a narrow therapeutic index (0.4-1.0 mmol/L): volume depletion, ACE inhibitors, NSAIDs, thiazides and AKI all reduce clearance.",
+            "Chronic toxicity presents with predominantly neurological features at lower concentrations than acute overdose because tissue distribution is complete.",
+            "Nephrogenic diabetes insipidus contributes to hypernatraemia and worsens the dehydration-toxicity spiral.",
+          ],
+        },
+        {
+          title: "Treat conservatively first",
+          prompt: "What is your initial management?",
+          answer: [
+            "Stop lithium and the interacting drugs, and rehydrate with 0.9% saline to restore renal perfusion and lithium clearance.",
+            "Do not give charcoal (it does not bind lithium); whole-bowel irrigation may help a large modified-release acute ingestion.",
+            "Monitor lithium every 4-6 hours with renal function, sodium, calcium, thyroid function and ECG for T-wave and QT change.",
+          ],
+        },
+        {
+          title: "Decide about extracorporeal treatment",
+          prompt: "Should she be dialysed?",
+          answer: [
+            "Yes - EXTRIP recommends haemodialysis for impaired kidney function with lithium above 4.0 mmol/L, or for a concentration above 5.0 mmol/L, confusion, seizures or life-threatening dysrhythmia, and suggests it above 4.0 mmol/L with significant symptoms.",
+            "Intermittent haemodialysis clears lithium fastest; expect rebound as lithium leaves the intracellular compartment, so recheck 6-8 hours after stopping and repeat sessions as needed.",
+            "Continuous renal replacement therapy is an acceptable alternative when haemodialysis is unavailable or the patient is haemodynamically unstable.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Lithium is a small, non-protein-bound cation with a volume of distribution of about 0.6-0.9 L/kg and exclusively renal elimination, so it is highly dialysable but redistributes slowly out of cells - explaining both dialysis efficacy and post-dialysis rebound. Chronic toxicity is neurological and correlates poorly with concentration, whereas acute ingestion causes early gastrointestinal symptoms with high tolerated levels. The classic precipitant triad is dehydration, an ACE inhibitor or NSAID or thiazide, and AKI." },
+        { title: "Management and monitoring", content: "Stop the drug and interacting agents, restore volume with 0.9% saline, and monitor serial lithium, renal function, sodium and ECG. Avoid charcoal and reserve whole-bowel irrigation for large modified-release ingestions. Apply EXTRIP thresholds for haemodialysis and anticipate rebound with repeat measurement 6-8 hours after each session. Watch for persistent cerebellar signs after clearance, screen for nephrogenic diabetes insipidus and hypothyroidism, and involve psychiatry before restarting therapy." },
+        { title: "Exam pitfall", content: "Do not treat a chronic toxicity concentration as if it were acute overdose, do not give activated charcoal, and do not stop monitoring after a single normal post-dialysis level." },
+      ],
+      takeHome: "Chronic lithium toxicity follows dehydration, ACE inhibitors, NSAIDs and AKI: stop the drug, rehydrate with saline, skip charcoal, and dialyse per EXTRIP thresholds while expecting rebound levels afterwards.",
+      sourceLinks: [s.extrip, s.toxbase, s.crrtDrugs],
+    },
+    {
+      id: "pharmacology-tox-paediatric-last",
+      title: "Local anaesthetic toxicity after a caudal block in an infant",
+      category: "Toxicology & poisoning",
+      difficulty: "Advanced",
+      summary: "Weight-based maximum doses, paediatric lipid emulsion dosing and modified infant resuscitation.",
+      topicIds: ["toxicology", "paediatric-anaesthesia", "local-anaesthetics", "regional-anaesthesia", "pharmacokinetics"],
+      patient: "A 6 kg 4-month-old boy receives a caudal block with 0.25% levobupivacaine for hypospadias repair; the trainee draws up 8 mL.",
+      presentation: "Five minutes after injection the ECG shows broad complexes with bradycardia at 70/min and the blood pressure is unrecordable.",
+      stages: [
+        {
+          title: "Check the dose and recognise the event",
+          prompt: "What has happened?",
+          answer: [
+            "8 mL of 0.25% levobupivacaine is 20 mg, or 3.3 mg/kg - above the 2 mg/kg maximum, and intravascular spread compounds it.",
+            "Under general anaesthesia the central nervous system prodrome is masked, so cardiovascular collapse is often the first sign of local anaesthetic systemic toxicity.",
+            "Stop injecting, call for help, give 100% oxygen, confirm the airway and start CPR if there is no effective output.",
+          ],
+        },
+        {
+          title: "Give lipid emulsion",
+          prompt: "Prescribe the antidote for this baby.",
+          answer: [
+            "Give 20% lipid emulsion 1.5 mL/kg (9 mL) as a bolus over about 1 minute, then an infusion of 15 mL/kg/h (90 mL/h).",
+            "Repeat the bolus up to twice at 5-minute intervals and double the infusion rate if instability persists, to a maximum cumulative dose of 12 mL/kg.",
+            "Propofol is not a substitute for lipid emulsion, which must be immediately available wherever local anaesthetic is given.",
+          ],
+        },
+        {
+          title: "Modify resuscitation and prevent recurrence",
+          prompt: "How does resuscitation differ, and what changes afterwards?",
+          answer: [
+            "Use small incremental adrenaline doses (under 1 microgram/kg), avoid lidocaine, vasopressin and calcium-channel blockers, and prepare for prolonged CPR with early consideration of cardiopulmonary bypass or ECMO.",
+            "Treat seizures with a benzodiazepine and continue critical-care monitoring for at least 6-12 hours because toxicity can recur.",
+            "Calculate and document maximum weight-based doses before every block (levobupivacaine and bupivacaine 2 mg/kg, lidocaine 3 mg/kg plain or 7 mg/kg with adrenaline), inject incrementally with aspiration, and report the incident.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Infants are especially vulnerable to local anaesthetic systemic toxicity: alpha-1-acid glycoprotein and albumin are low so the unbound fraction is higher, hepatic clearance pathways are immature, and injected volumes are large relative to body size. Because blocks are placed under general anaesthesia the usual central nervous system warning signs are absent and toxicity presents as conduction delay, bradycardia and collapse. Lipid emulsion works partly as a lipid sink and partly through direct cardiac metabolic and channel effects." },
+        { title: "Management and monitoring", content: "Stop injection, secure the airway with 100% oxygen, start CPR where output is inadequate, and give 20% lipid emulsion 1.5 mL/kg then 15 mL/kg/h, repeating boluses and doubling the rate as needed to a 12 mL/kg maximum. Use reduced-dose incremental adrenaline and benzodiazepines for seizures, and avoid lidocaine, vasopressin and calcium-channel blockers. Continue critical-care monitoring for 6-12 hours for recurrence, check triglycerides and pancreatic function after large lipid doses, and complete a critical-incident report with dose documentation." },
+        { title: "Exam pitfall", content: "Do not give a standard 10 microgram/kg adrenaline dose, do not confuse the 1.5 mL/kg bolus with the 15 mL/kg/h infusion or the 12 mL/kg maximum, and remember that dilute solutions still exceed limits when volumes are calculated carelessly in infants." },
+      ],
+      takeHome: "Calculate infant local anaesthetic doses in mg/kg before injecting; if toxicity occurs give 20% lipid emulsion 1.5 mL/kg then 15 mL/kg/h (max 12 mL/kg), use reduced-dose adrenaline, and monitor for recurrence.",
+      sourceLinks: [s.last, s.la, s.pals],
+    },
   ],
 };
