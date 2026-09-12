@@ -192,12 +192,15 @@ const OphthalmicAnaesthesiaTopic = () => {
           <div id="open-globe" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Open Globe Injury">
-            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li>Avoid ↑ IOP: suxamethonium is <strong>relatively</strong> contraindicated (but may be used if RSI required for life-threatening aspiration risk — benefit vs risk)</li>
-              <li>RSI with rocuronium 1.2 mg/kg preferred. Sugammadex available for reversal</li>
-              <li>Smooth induction; avoid coughing/straining. Aggressive antiemetics (vomiting markedly ↑ IOP)</li>
-              <li>Do <strong>NOT</strong> press on the eye (no eye-pad pressure, careful intubation)</li>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
+              <li><strong>Preoperative goals</strong>: avoid any external pressure on the globe (no eye-pad pressure, no forced lid retraction, careful mask holding); give an antiemetic early, treat pain with IV opioid rather than allowing straining, and consider a small anxiolytic dose in the very distressed patient. Antiemetics and analgesia matter because retching and coughing raise IOP far more than any anaesthetic drug<InlineRef topicId="ophthalmic-anaesthesia" refLabel="Vachon 2003 Open Globe" /></li>
+              <li><strong>Induction</strong>: aims are rapid airway security in a patient with a full stomach, obtunding the cough/press response (fentanyl 1–2 µg/kg or alfentanil 10–20 µg/kg, plus IV lidocaine 1–1.5 mg/kg), and no IOP spike. Rocuronium 1.2 mg/kg RSI is standard with sugammadex immediately available; suxamethonium raises IOP by 5–10 mmHg for around 5 minutes and remains defensible when aspiration risk dominates<InlineRef topicId="ophthalmic-anaesthesia" refLabel="Vachon 2003 Open Globe" /></li>
+              <li><strong>Maintenance</strong>: keep anaesthesia deep enough to abolish movement and coughing with full neuromuscular monitoring. Volatile agents lower IOP and are perfectly acceptable; TIVA is favoured where PONV risk is high (young patients, previous PONV) since vomiting threatens the repair. Maintain normocapnia (hypercapnia raises choroidal volume and IOP) and normotension, head slightly up</li>
+              <li><strong>Emergence</strong>: plan a smooth, deep extubation or deep LMA exchange/removal; IV lidocaine 1.5 mg/kg a few minutes beforehand, full reversal with sugammadex, avoid oropharyngeal suction under light anaesthesia, and do not allow bucking on the tube</li>
+              <li><strong>Postoperative care</strong>: aggressive multimodal antiemesis (dexamethasone plus ondansetron ± droperidol), effective non-sedating analgesia (paracetamol, NSAID if permitted, low-dose opioid), head-up positioning, avoid nose-blowing and straining, and continue IOP-lowering drops as prescribed by the ophthalmologist</li>
+              <li>Do <strong>NOT</strong> press on the eye, and avoid N₂O if intraocular gas (SF₆/C₃F₈) has been used</li>
             </ul>
+
             </CollapsibleSubsection>
           </ExamSection>
           </div>
