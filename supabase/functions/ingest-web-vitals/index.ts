@@ -37,6 +37,7 @@ const SampleSchema = z.object({
 const BodySchema = z.union([SampleSchema, z.array(SampleSchema).max(20)]);
 
 Deno.serve(async (req) => {
+  const corsHeaders = corsHeadersFor(req);
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
   if (req.method !== "POST") {
     return new Response(JSON.stringify({ error: "Method not allowed" }), {
