@@ -175,7 +175,7 @@ export const TopicDiscussion = ({ topicId, topicTitle }: TopicDiscussionProps) =
             Create a free account or sign in to ask a question and reply to others.
           </p>
           <Button asChild size="sm" className="mt-3">
-            <Link to={`/login?redirect=${encodeURIComponent(location.pathname + "#discussion")}`}>
+            <Link to="/login" state={{ from: `${location.pathname}#discussion` }}>
               Sign in or create an account
             </Link>
           </Button>
