@@ -9,6 +9,7 @@ import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { Cite } from "@/components/references/Cite";
 import { DrugDosesCallout } from "@/components/icu/DrugDosesCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const icuSedationDeliriumFaqs: Array<[string, string]> = [
   ["What does the ABCDEF bundle entail?", "Assess/treat pain, Both spontaneous awakening and breathing trials, Choice of sedation, Delirium monitoring, Early mobility, Family engagement; bundle adherence reduces ICU mortality and delirium (Pun et al., Crit Care Med 2019)."],
