@@ -158,6 +158,31 @@ const PaediatricIcuFlows = () => {
                   </div>
                 )}
 
+                {(() => {
+                  const calcDrugs = calculableInfusions([step.infusions, step.drugs]);
+                  if (calcDrugs.length === 0) return null;
+                  return (
+                    <div className="mt-4">
+                      <h4 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                        <Calculator className="h-3.5 w-3.5" aria-hidden /> Calculate infusion rate at{" "}
+                        {weightValue} kg
+                      </h4>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {calcDrugs.map((d) => (
+                          <Link
+                            key={d}
+                            to={calculatorHref(d, weightValue)}
+                            className="inline-flex items-center gap-1.5 rounded-full border border-icu/40 bg-icu/5 px-3 py-1 text-xs font-medium text-icu transition-colors hover:bg-icu/10"
+                          >
+                            <Calculator className="h-3 w-3" aria-hidden /> Calculate {d} rate
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
+
+
                 {step.pitfall && (
                   <p className="mt-4 rounded-lg border border-border bg-muted/40 p-3 text-sm text-muted-foreground">
                     <span className="font-semibold text-foreground">Pitfall: </span>
