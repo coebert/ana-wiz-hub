@@ -18,12 +18,16 @@ import {
   History,
   ListChecks,
   LayoutDashboard,
+  Search,
+  ChevronDown,
 } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useSubsectionProgress } from "@/contexts/SubsectionProgressContext";
 import { useRecentTopics } from "@/hooks/useRecentTopics";
 import { useAuth } from "@/hooks/useAuth";
 import { ProgressRing } from "@/components/shared/ProgressRing";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Section,
   ExamTag,
@@ -34,6 +38,7 @@ import {
 } from "@/data/curriculum";
 
 type ExamFilter = "all" | ExamTag;
+type StatusFilter = "all" | "in-progress" | "completed" | "not-started";
 
 const examFilters: { label: string; value: ExamFilter; description: string }[] = [
   { label: "All", value: "all", description: "Every available topic across all curricula" },
@@ -63,6 +68,15 @@ const sectionMeta: {
 
 const pct = (c: number, t: number) => (t > 0 ? Math.round((c / t) * 100) : 0);
 
+const readableSubsectionId = (id: string) =>
+  id
+    .replace(/^toc-/, "")
+    .replace(/-\d+$/, "")
+    .split("-")
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
 /** Relative "x ago" label for recent-topic timestamps. */
 const timeAgo = (ts: number): string => {
   const mins = Math.round((Date.now() - ts) / 60000);
@@ -78,10 +92,12 @@ const timeAgo = (ts: number): string => {
 const ProgressTracker = () => {
   const { isCompleted, getOverallProgress, getExamProgress, getSectionProgress, getExamSectionProgress } =
     useProgress();
-  const { ticks } = useSubsectionProgress();
+  const { ticks, subsectionCatalog } = useSubsectionProgress();
   const recentTopics = useRecentTopics();
   const { user } = useAuth();
   const [activeFilter, setActiveFilter] = useState<ExamFilter>("all");
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
+  const [topicSearch, setTopicSearch] = useState("");
 
   // Fast lookup: topicId -> topic + its section path, for overview links.
   const topicLookup = useMemo(() => {
@@ -160,6 +176,28 @@ const ProgressTracker = () => {
     activeFilter === "all" ? summary.all : summary[activeFilter];
   const activeLabel = examFilters.find((f) => f.value === activeFilter)?.label ?? "Overall";
   const activeDescription = examFilters.find((f) => f.value === activeFilter)?.description ?? "";
+
+  const dashboardSections = useMemo(() => {
+    const query = topicSearch.trim().toLowerCase();
+    return visibleSections
+      .map((section) => ({
+        ...section,
+        topics: section.topics.filter((topic) => {
+          const completed = isCompleted(topic.id);
+          const tickCount = ticks[topic.id]?.size ?? 0;
+          const status: StatusFilter = completed
+            ? "completed"
+            : tickCount > 0
+              ? "in-progress"
+              : "not-started";
+          return (
+            (statusFilter === "all" || status === statusFilter) &&
+            (!query || topic.title.toLowerCase().includes(query))
+          );
+        }),
+      }))
+      .filter((section) => section.topics.length > 0);
+  }, [visibleSections, topicSearch, statusFilter, isCompleted, ticks]);
 
   return (
     <PageSection spacing="default" width="xwide">
@@ -371,14 +409,46 @@ const ProgressTracker = () => {
         </div>
       </div>
 
+      <div className="mb-5 flex flex-col gap-3 border-y border-border py-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="relative w-full lg:max-w-sm">
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            value={topicSearch}
+            onChange={(event) => setTopicSearch(event.target.value)}
+            placeholder="Search topics"
+            aria-label="Search topics"
+            className="pl-9"
+          />
+        </div>
+        <div className="flex flex-wrap gap-2" aria-label="Filter topics by progress">
+          {([
+            ["all", "All"],
+            ["in-progress", "In progress"],
+            ["completed", "Completed"],
+            ["not-started", "Not started"],
+          ] as const).map(([value, label]) => (
+            <Button
+              key={value}
+              type="button"
+              size="sm"
+              variant={statusFilter === value ? "primary" : "outline"}
+              onClick={() => setStatusFilter(value)}
+              aria-pressed={statusFilter === value}
+            >
+              {label}
+            </Button>
+          ))}
+        </div>
+      </div>
+
       {/* Per-section breakdown */}
       <div className="space-y-4">
-        {visibleSections.length === 0 && (
+        {dashboardSections.length === 0 && (
           <div className="rounded-xl border border-border bg-card p-8 text-center text-muted-foreground">
-            No topics tagged for this exam yet.
+            No topics match these filters.
           </div>
         )}
-        {visibleSections.map((s) => {
+        {dashboardSections.map((s) => {
           const percent = pct(s.progress.completed, s.progress.total);
           return (
             <details
@@ -415,35 +485,83 @@ const ProgressTracker = () => {
               <ul className="divide-y divide-border border-t border-border">
                 {s.topics.map((t) => {
                   const done = isCompleted(t.id);
+                  const catalog = subsectionCatalog[t.id] ?? [];
+                  const checkedIds = ticks[t.id] ?? new Set<string>();
+                  const knownIds = new Set(catalog.map((item) => item.id));
+                  const completedSubsections = [
+                    ...catalog.filter((item) => checkedIds.has(item.id)),
+                    ...[...checkedIds]
+                      .filter((id) => !knownIds.has(id))
+                      .map((id) => ({ id, label: readableSubsectionId(id) })),
+                  ];
+                  const subsectionTotal = catalog.length;
+                  const topicPercent = done
+                    ? 100
+                    : subsectionTotal > 0
+                      ? pct(checkedIds.size, subsectionTotal)
+                      : 0;
                   return (
-                    <li key={t.id}>
-                      <Link
-                        to={`${s.path}/${t.id}`}
-                        className="flex items-center gap-3 px-4 py-2.5 hover:bg-muted/40 transition-colors"
-                      >
+                    <li key={t.id} className="px-4 py-3">
+                      <div className="flex min-w-0 items-center gap-3">
                         {done ? (
-                          <CheckCircle2 className="h-4 w-4 text-accent shrink-0" />
+                          <CheckCircle2 className="h-4 w-4 shrink-0 text-accent" />
                         ) : (
-                          <Circle className="h-4 w-4 text-muted-foreground/70 shrink-0" />
+                          <Circle className="h-4 w-4 shrink-0 text-muted-foreground/70" />
                         )}
-                        <span
-                          className={`text-sm flex-1 min-w-0 truncate ${
-                            done ? "text-muted-foreground" : "text-foreground"
-                          }`}
-                        >
-                          {t.title}
-                        </span>
-                        <div className="flex gap-1 shrink-0">
-                          {t.examTags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="text-[10px] uppercase font-medium text-muted-foreground/70 px-1"
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                            <Link
+                              to={`${s.path}/${t.id}`}
+                              className="text-sm font-medium text-foreground hover:text-primary"
                             >
-                              {tag === "fficm" ? "FFICM" : tag === "edic" ? "EDIC" : tag}
+                              {t.title}
+                            </Link>
+                            <span className="text-xs text-muted-foreground">
+                              {done
+                                ? "Topic complete"
+                                : subsectionTotal > 0
+                                  ? `${checkedIds.size}/${subsectionTotal} subsections · ${topicPercent}%`
+                                  : checkedIds.size > 0
+                                    ? `${checkedIds.size} subsection${checkedIds.size === 1 ? "" : "s"} complete`
+                                    : "Not started"}
                             </span>
-                          ))}
+                          </div>
+                          <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted">
+                            <div
+                              className={`h-full rounded-full transition-all duration-500 ${done ? "bg-accent" : "bg-primary"}`}
+                              style={{ width: `${topicPercent}%` }}
+                            />
+                          </div>
                         </div>
-                      </Link>
+                        {completedSubsections.length > 0 && (
+                          <details className="group/details relative shrink-0">
+                            <summary
+                              className="flex h-8 w-8 cursor-pointer list-none items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground [&::-webkit-details-marker]:hidden"
+                              aria-label={`Show completed subsections for ${t.title}`}
+                            >
+                              <ChevronDown className="h-4 w-4 transition-transform group-open/details:rotate-180" />
+                            </summary>
+                            <div className="absolute right-0 top-10 z-20 w-[min(20rem,calc(100vw-3rem))] rounded-lg border border-border bg-popover p-3 text-popover-foreground shadow-elev-2">
+                              <p className="mb-2 text-xs font-semibold uppercase text-muted-foreground">
+                                Completed subsections
+                              </p>
+                              <ul className="space-y-1.5">
+                                {completedSubsections.map((subsection) => (
+                                  <li key={subsection.id}>
+                                    <Link
+                                      to={`${s.path}/${t.id}#${subsection.id}`}
+                                      className="flex items-start gap-2 text-sm hover:text-primary"
+                                    >
+                                      <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
+                                      <span>{subsection.label}</span>
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </details>
+                        )}
+                      </div>
                     </li>
                   );
                 })}
