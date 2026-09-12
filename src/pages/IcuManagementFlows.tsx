@@ -214,6 +214,10 @@ const IcuManagementFlows = () => {
           ·{" "}
           <Link to="/intensive-care/case-bank" className="font-medium text-icu underline-offset-4 hover:underline">
             ICU case bank
+          </Link>{" "}
+          ·{" "}
+          <Link to="/intensive-care/nursing-protocols" className="font-medium text-icu underline-offset-4 hover:underline">
+            ICU nursing protocols
           </Link>
         </p>
       </PageSection>

@@ -47,6 +47,22 @@ const IntensiveCareSection = () => {
 
       <DrugDosesCallout />
 
+      <p className="mt-3 text-sm text-muted-foreground">
+        Also available:{" "}
+        <a href="/intensive-care/nursing-protocols" className="font-medium text-icu underline-offset-4 hover:underline">
+          ICU nursing protocols
+        </a>{" "}
+        (central line care, ventilator bundles, tracheostomy and more, with references),{" "}
+        <a href="/intensive-care/management-flows" className="font-medium text-icu underline-offset-4 hover:underline">
+          management flows
+        </a>{" "}
+        and the{" "}
+        <a href="/intensive-care/calculator" className="font-medium text-icu underline-offset-4 hover:underline">
+          drug calculator
+        </a>
+        .
+      </p>
+
       <section id="topics" className="scroll-mt-28">
         <SectionTopicsList section="intensive-care" topics={visibleTopics} />
       </section>
