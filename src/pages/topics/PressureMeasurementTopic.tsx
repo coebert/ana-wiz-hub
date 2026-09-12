@@ -159,6 +159,25 @@ const PressureMeasurementTopic = () => {
                   Normally P1 &gt; P2; P2 exceeding P1 suggests reduced intracranial compliance
                   <InlineRef topicId="pressure-measurement" refLabel="BTF Severe TBI" />.
                 </p>
+                <p>
+                  <strong>Indications</strong>: severe traumatic brain injury with GCS ≤8 and an abnormal CT (or a normal CT with two of
+                  age &gt;40 years, motor posturing, or systolic pressure &lt;90 mmHg), poor-grade subarachnoid haemorrhage with
+                  hydrocephalus or a depressed conscious level, large middle cerebral artery infarction with impending malignant oedema,
+                  fulminant hepatic failure with grade IV encephalopathy, and selected patients after cardiac arrest or intracranial
+                  surgery where neurological examination is unavailable <InlineRef topicId="pressure-measurement" refLabel="BTF Severe TBI" />.
+                </p>
+                <p>
+                  <strong>Derived targets</strong>: cerebral perfusion pressure <strong>CPP = MAP − ICP</strong> (use ICP or central venous
+                  pressure, whichever is higher). Treat ICP above <strong>22 mmHg</strong> and aim for a CPP of
+                  <strong> 60–70 mmHg</strong>, individualised to autoregulatory reserve; aggressive pressor-driven CPP &gt;70 mmHg risks
+                  ARDS <InlineRef topicId="pressure-measurement" refLabel="BTF Severe TBI" />.
+                </p>
+                <p>
+                  <strong>Complications and pitfalls</strong>: infection/ventriculitis (rising with duration of an EVD), tract or
+                  intraparenchymal haemorrhage, malposition and failure to cannulate a shifted or collapsed ventricle, catheter blockage by
+                  blood or debris, CSF leak, over-drainage causing ventricular collapse, and measurement error from zero drift, an
+                  incorrectly levelled transducer, or air/blood in the fluid-filled line.
+                </p>
               </div>
             </CollapsibleSubsection>
           </ExamSection>
