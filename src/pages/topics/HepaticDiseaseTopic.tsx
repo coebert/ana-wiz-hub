@@ -378,11 +378,15 @@ const HepaticDiseaseTopic = () => {
                   </ul>
                 </div>
                 <div className="bg-card border border-border rounded-lg p-4">
-                  <h3 className="font-semibold text-foreground mb-2">Variceal Haemorrhage</h3>
+                  <h3 className="font-semibold text-foreground mb-2">Variceal Haemorrhage — Exact Management</h3>
                   <ul className="list-disc list-inside space-y-1 text-sm">
-                    <li>Resuscitate with restrictive transfusion (target Hb 70–80 g/L); terlipressin 2 mg IV bolus then 1–2 mg 4-hourly + IV ceftriaxone; urgent OGD with band ligation within 12 h.</li>
-                    <li>Anaesthesia for emergency endoscopy: RSI with cuffed ETT (aspiration risk), large-bore access, blood and platelets in theatre, vasopressor support.</li>
-                    <li>Sengstaken–Blakemore tube as temporising measure if endoscopy fails; consider TIPSS as definitive therapy.</li>
+                    <li><strong>Resuscitation</strong>: restrictive transfusion strategy, target Hb 70–80 g/L (over-transfusion raises portal pressure and rebleeding risk); correct thrombocytopenia/coagulopathy only if actively bleeding.</li>
+                    <li><strong>Splanchnic vasoconstriction</strong>: <strong>terlipressin 2 mg IV bolus, then 2 mg IV 4-hourly</strong> (or 1 mg 4-hourly once bleeding controlled) for up to 5 days; monitor for splanchnic/coronary ischaemia and hyponatraemia; octreotide infusion is an alternative where terlipressin unavailable<InlineRef topicId="hepatic-disease" refLabel="AASLD 2012" />.</li>
+                    <li><strong>Prophylactic antibiotics</strong>: IV ceftriaxone 1 g once daily (or ciprofloxacin if low resistance risk) for up to 7 days in every cirrhotic with GI bleeding — reduces rebleeding, SBP and mortality independent of endoscopic therapy<InlineRef topicId="hepatic-disease" refLabel="AASLD 2012" />.</li>
+                    <li><strong>Endoscopy</strong>: urgent upper GI endoscopy with <strong>band ligation within 12 h</strong> of presentation (once resuscitated) is first-line; injection sclerotherapy if ligation not feasible.</li>
+                    <li><strong>Airway protection</strong>: rapid sequence induction with a cuffed endotracheal tube before endoscopy in active haematemesis, reduced consciousness or massive bleeding — full-stomach and aspiration precautions; large-bore IV access, blood and platelets available in theatre, vasopressor support ready.</li>
+                    <li><strong>Balloon tamponade</strong>: Sengstaken–Blakemore (or Minnesota) tube as a temporising bridge only, for uncontrolled bleeding refractory to endoscopy — maximum 24 h dwell time, gastric balloon inflated first, definitive therapy (repeat endoscopy or TIPSS) must follow promptly because of mucosal ischaemia and aspiration risk with prolonged use.</li>
+                    <li><strong>Salvage/definitive therapy</strong>: rescue TIPSS for endoscopic failure or Child-Pugh B/C with active bleeding at index endoscopy ("early TIPSS") reduces treatment failure and mortality.</li>
                   </ul>
                 </div>
                 <div className="bg-card border border-border rounded-lg p-4">
