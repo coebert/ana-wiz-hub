@@ -340,7 +340,9 @@ const Landing = () => {
               <p className="small mb-6 max-w-2xl mt-4">
                 A worked example: three viva questions, model candidate answers, and the kind of constructive feedback the AI examiner gives.
               </p>
-              <DemoVivaStepper questions={DEMO_QUESTIONS} />
+              <Suspense fallback={null}>
+                <DemoVivaStepper questions={DEMO_QUESTIONS} />
+              </Suspense>
             </div>
           </details>
         </section>
