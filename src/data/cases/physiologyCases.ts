@@ -588,5 +588,281 @@ export const physiologyCaseBank: CaseBank = {
       takeHome: "Cirrhotic haemostasis is rebalanced, not simply impaired: treat measured deficits and clinical drivers, not the INR, and remember these patients also clot.",
       sourceLinks: [s.liverCoag, s.renal],
     },
+    {
+      id: "physiology-altitude-hypoxia",
+      title: "Breathlessness and headache during rapid ascent to altitude",
+      category: "Respiratory",
+      difficulty: "Intermediate",
+      summary: "The oxygen cascade, hypoxic ventilatory response and acclimatisation to hypobaric hypoxia.",
+      topicIds: ["oxygen-haemoglobin", "ventilation-perfusion", "acid-base", "gas-laws", "lung-mechanics"],
+      patient: "A fit 34-year-old ascends to 4200 m over two days as part of a trekking expedition, gaining altitude faster than recommended.",
+      presentation: "They develop headache, breathlessness on exertion and poor sleep. Oxygen saturation is 82% at rest, respiratory rate 24, and they are otherwise alert with no ataxia or crackles.",
+      stages: [
+        {
+          title: "Explain the oxygen cascade",
+          prompt: "Why does saturation fall so much at this altitude?",
+          answer: [
+            "Barometric pressure falls with altitude, so inspired partial pressure of oxygen falls even though the fractional concentration of 21% is unchanged.",
+            "Each downstream step of the oxygen cascade — alveolar, arterial, and tissue partial pressure — starts from this lower inspired value, and the steep part of the oxyhaemoglobin dissociation curve means saturation falls sharply once arterial PO₂ drops below about 8 kPa.",
+            "Alveolar gas equation predicts alveolar PO₂ falls further with any hypoventilation, so the ventilatory response is what protects oxygenation at altitude.",
+          ],
+        },
+        {
+          title: "Describe the ventilatory response",
+          prompt: "What physiological response should be occurring, and why might it feel unpleasant?",
+          answer: [
+            "Peripheral chemoreceptors sense hypoxaemia and drive the hypoxic ventilatory response, increasing minute ventilation within minutes.",
+            "The resulting hypocapnia and respiratory alkalosis blunt central chemoreceptor drive, so the full ventilatory response takes 24–72 hours to develop as renal bicarbonate excretion corrects pH and disinhibits ventilation.",
+            "Rapid ascent outpaces this acclimatisation, producing the symptom complex of acute mountain sickness: headache, sleep disturbance and breathlessness from a mismatch between hypoxic drive and buffering capacity.",
+          ],
+        },
+        {
+          title: "Manage and plan further ascent",
+          prompt: "What do you do now, and how should ascent be modified?",
+          answer: [
+            "Stop further ascent, rest, and treat headache and mild acute mountain sickness with simple analgesia and acetazolamide, which accelerates acclimatisation by inducing a bicarbonate diuresis.",
+            "Watch for red flags of progression — ataxia suggesting high-altitude cerebral oedema, or breathlessness at rest with crackles suggesting high-altitude pulmonary oedema — which mandate descent and, if available, oxygen or a portable hyperbaric bag.",
+            "For future ascent, recommend graded rates of climb (no more than 300–500 m net gain in sleeping altitude per day above 3000 m) with rest days, and consider prophylactic acetazolamide for rapid forced ascents.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "The oxygen cascade describes the stepwise fall in oxygen partial pressure from inspired air to mitochondria; at altitude the whole cascade is shifted down because barometric pressure, not fractional concentration, has fallen. The hypoxic ventilatory response is the acute compensation, but its magnitude is initially limited by the resulting hypocapnic alkalosis; renal compensation over 1–3 days restores pH closer to normal at a lower PaCO₂ and allows ventilation to rise further, which is the physiological basis of acclimatisation." },
+        { title: "Management and monitoring", content: "Treat acute mountain sickness with rest, simple analgesia, acetazolamide and avoidance of further ascent until symptoms resolve; dexamethasone treats but does not prevent it. Assess repeatedly for ataxia, altered consciousness or resting hypoxaemia with crackles, either of which requires immediate descent, supplemental oxygen and, if unavailable, a portable hyperbaric chamber. Advise staged ascent profiles and pre-acclimatisation for future high-altitude travel or expedition anaesthesia planning." },
+        { title: "Exam pitfall", content: "Do not describe hypoxia at altitude as being due to a lower percentage of oxygen in air — the fraction is unchanged; the partial pressure falls because total barometric pressure falls. Also distinguish the time course of the ventilatory response from the peripheral chemoreceptor reflex itself." },
+      ],
+      takeHome: "Altitude hypoxaemia reflects a lower inspired oxygen partial pressure, not a lower oxygen fraction; the hypoxic ventilatory response needs 1–3 days of renal buffering to reach its full effect, which is why rapid ascent causes acute mountain sickness.",
+      sourceLinks: [s.altitude, s.odc],
+    },
+    {
+      id: "physiology-autonomic-neuropathy",
+      title: "Profound hypotension on induction in longstanding diabetes",
+      category: "Renal, neuromuscular & autonomic",
+      difficulty: "Intermediate",
+      summary: "Baroreflex failure, the Valsalva response and perioperative risk in diabetic autonomic neuropathy.",
+      topicIds: ["autonomic-nervous", "endocrine-disease", "cardiac-cycle", "preoperative-assessment", "neurological-disease"],
+      patient: "A 61-year-old with 20 years of poorly controlled diabetes and known peripheral neuropathy is listed for elective cholecystectomy.",
+      presentation: "Preoperative observations show a resting heart rate of 92 with little beat-to-beat variation. On induction with a standard dose of propofol, the blood pressure falls from 138/80 to 62/38 mmHg with only a modest rise in heart rate.",
+      stages: [
+        {
+          title: "Explain the underlying deficit",
+          prompt: "Why is this response exaggerated?",
+          answer: [
+            "Diabetic autonomic neuropathy damages both sympathetic and parasympathetic efferents, reducing baroreflex-mediated tachycardia and vasoconstriction in response to a falling pressure.",
+            "Fixed heart rate and reduced heart rate variability reflect vagal denervation and are an early, sensitive marker of autonomic dysfunction, often present before overt hypotensive episodes occur.",
+            "Loss of compensatory vasoconstriction means induction agents that cause vasodilation produce a larger and more sustained fall in pressure than in an intact autonomic system.",
+          ],
+        },
+        {
+          title: "Relate this to the Valsalva response",
+          prompt: "How would you have tested for this preoperatively, and what does a normal response look like?",
+          answer: [
+            "The Valsalva manoeuvre has four phases: an early pressure rise with forced expiration, a fall in pressure and venous return during straining, a further fall at release, and an overshoot with reflex bradycardia as venous return is restored.",
+            "Autonomic failure blunts or abolishes phase II reflex tachycardia and the phase IV overshoot and bradycardia, giving a flat 'square-wave' pressure response instead.",
+            "Bedside tests — heart rate variation with deep breathing, response to standing, and the Valsalva ratio — are simple screens for autonomic neuropathy in high-risk diabetic patients before major anaesthesia.",
+          ],
+        },
+        {
+          title: "Manage and plan the anaesthetic",
+          prompt: "What do you do now and for future cases?",
+          answer: [
+            "Treat the hypotension with fluid and a direct-acting vasopressor such as phenylephrine or metaraminol, since reflex compensation cannot be relied upon.",
+            "Slow the induction, use smaller incremental doses, and have vasopressor drawn up and invasive monitoring available if autonomic neuropathy is suspected or confirmed.",
+            "Anticipate silent myocardial ischaemia, gastroparesis with aspiration risk, and blunted responses to hypoglycaemia and hypoxaemia, all of which accompany autonomic neuropathy in diabetes.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "The arterial baroreflex normally buffers changes in blood pressure through rapid vagally-mediated heart rate changes and slower sympathetically-mediated vasomotor changes. Diabetic autonomic neuropathy affects small unmyelinated and myelinated autonomic fibres early and diffusely, so both limbs of the reflex arc are impaired, producing exaggerated and prolonged hypotension with induction agents, neuraxial blockade or positional change, and a fixed heart rate that cannot compensate." },
+        { title: "Management and monitoring", content: "Anticipate rather than react: use invasive monitoring for major surgery in confirmed autonomic neuropathy, titrate induction slowly, and have vasopressors immediately available. Beyond the induction period, screen for silent ischaemia, gastroparesis affecting aspiration risk, and impaired counter-regulatory responses to hypoglycaemia, which make routine perioperative glucose monitoring especially important." },
+        { title: "Exam pitfall", content: "Do not attribute this purely to hypovolaemia or drug overdose; the fixed heart rate despite hypotension is the diagnostic clue to baroreflex failure. Be able to describe all four phases of the Valsalva response and which are lost in autonomic failure." },
+      ],
+      takeHome: "Diabetic autonomic neuropathy impairs both limbs of the baroreflex, so hypotension on induction is exaggerated and unaccompanied by compensatory tachycardia — anticipate it, monitor invasively, and keep a vasopressor ready.",
+      sourceLinks: [s.autonomic, s.bradycardia],
+    },
+    {
+      id: "physiology-nmj-myasthenia-lambert-eaton",
+      title: "Unexpected weakness patterns with neuromuscular blockade",
+      category: "Renal, neuromuscular & autonomic",
+      difficulty: "Advanced",
+      summary: "Postsynaptic versus presynaptic neuromuscular junction disease and sensitivity to muscle relaxants.",
+      topicIds: ["neuromuscular", "muscle-relaxants", "suxamethonium-vs-rocuronium", "neurological-disease", "rocuronium"],
+      patient: "Two patients are listed for thymectomy-related and paraneoplastic surgery respectively: one with known myasthenia gravis, the other newly found to have a small-cell lung cancer and proximal weakness that improves with repeated effort.",
+      presentation: "The first patient is markedly weak after a small dose of a non-depolarising relaxant. The second, not yet given any relaxant, is profoundly weak with reduced reflexes that potentiate briefly after sustained contraction.",
+      stages: [
+        {
+          title: "Localise the lesion",
+          prompt: "How do these two conditions differ physiologically?",
+          answer: [
+            "Myasthenia gravis is a postsynaptic disease with antibodies against nicotinic acetylcholine receptors, reducing the safety margin for neuromuscular transmission and causing fatigable weakness worsened by repeated effort.",
+            "Lambert-Eaton myasthenic syndrome is presynaptic, with antibodies against voltage-gated calcium channels reducing acetylcholine release; weakness improves transiently with repeated contraction as calcium accumulates presynaptically, giving post-tetanic facilitation.",
+            "This explains the reflex pattern described: reduced reflexes that potentiate after exercise are characteristic of Lambert-Eaton syndrome, often paraneoplastic to small-cell lung cancer.",
+          ],
+        },
+        {
+          title: "Predict relaxant sensitivity",
+          prompt: "How does each condition alter response to muscle relaxants?",
+          answer: [
+            "Both conditions markedly increase sensitivity to non-depolarising relaxants because the safety margin of neuromuscular transmission is already reduced, so smaller doses produce larger and more prolonged block.",
+            "Myasthenic patients are typically relatively resistant to suxamethonium, requiring a higher dose for effect, because fewer functional receptors are available for depolarisation, though the effect is variable and unpredictable.",
+            "Lambert-Eaton patients are sensitive to both depolarising and non-depolarising agents, and can develop profound, prolonged weakness even to small test doses.",
+          ],
+        },
+        {
+          title: "Plan the anaesthetic",
+          prompt: "How would you manage neuromuscular blockade and reversal in each case?",
+          answer: [
+            "Use quantitative neuromuscular monitoring from before induction, titrate relaxants carefully in small increments, and consider avoiding non-depolarising agents altogether where regional or volatile-only technique is feasible.",
+            "Where rocuronium is used, sugammadex allows reliable reversal independent of acetylcholinesterase activity and is preferred over neostigmine, particularly in myasthenia gravis where cholinesterase inhibitors are already part of treatment.",
+            "Plan for possible postoperative ventilatory support, especially in myasthenia with bulbar involvement, high preoperative pyridostigmine dose or reduced vital capacity, and manage anticholinesterase therapy carefully through the perioperative period.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Both conditions reduce the safety margin of neuromuscular transmission but at different sites: myasthenia gravis reduces available postsynaptic receptors, while Lambert-Eaton syndrome reduces presynaptic acetylcholine release. The clinical distinction — fatigable weakness that worsens with effort in myasthenia versus weakness that improves transiently with effort in Lambert-Eaton — mirrors their opposite responses to repetitive nerve stimulation on electromyography and predicts their differing but both heightened sensitivity to muscle relaxants." },
+        { title: "Management and monitoring", content: "Quantitative train-of-four monitoring is essential from before induction in both conditions because clinical assessment underestimates residual block. Favour agents and techniques that minimise relaxant exposure, use sugammadex for reliable reversal of aminosteroid block, and anticipate a higher risk of postoperative respiratory failure requiring planned high-dependency care, especially in Lambert-Eaton syndrome where the underlying malignancy adds further risk." },
+        { title: "Exam pitfall", content: "Do not describe both conditions as having identical relaxant sensitivity or reflex patterns; the presynaptic versus postsynaptic distinction and the direction of the reflex change with exercise are the key discriminators examiners look for." },
+      ],
+      takeHome: "Myasthenia gravis (postsynaptic, fatigable) and Lambert-Eaton syndrome (presynaptic, facilitating) both increase sensitivity to non-depolarising relaxants; monitor quantitatively, minimise dosing and use sugammadex for reversal where rocuronium is used.",
+      sourceLinks: [s.nmj, s.myasthenia, s.nmbGuideline],
+    },
+    {
+      id: "physiology-siadh-diabetes-insipidus",
+      title: "Falling sodium and rising urine output after pituitary surgery",
+      category: "Renal, neuromuscular & autonomic",
+      difficulty: "Advanced",
+      summary: "Renal handling of sodium and water in SIADH and diabetes insipidus after skull base surgery.",
+      topicIds: ["renal-physiology", "endocrine-physiology", "neurointensive-care", "icu-endocrine-emergencies"],
+      patient: "A patient recovers from transsphenoidal resection of a pituitary adenoma. On day one, sodium falls to 126 mmol/L with concentrated urine; on day five, sodium rises to 149 mmol/L with dilute polyuria exceeding 300 mL/hour.",
+      presentation: "Both derangements occur in the same admission, prompting a request to explain the differing renal physiology and management.",
+      stages: [
+        {
+          title: "Explain the day-one picture",
+          prompt: "Why is the sodium low with concentrated urine?",
+          answer: [
+            "Surgical manipulation near the hypothalamic-pituitary axis can cause transient, inappropriate release of antidiuretic hormone from the posterior pituitary or hypothalamus.",
+            "Antidiuretic hormone acts on renal collecting duct aquaporin-2 channels to increase water reabsorption independent of plasma osmolality, producing dilutional hyponatraemia with inappropriately concentrated urine and high urine sodium.",
+            "This is the syndrome of inappropriate antidiuresis: euvolaemic hyponatraemia with plasma osmolality low, urine osmolality inappropriately high, and normal thyroid, adrenal and renal function.",
+          ],
+        },
+        {
+          title: "Explain the day-five picture",
+          prompt: "Why has this reversed to hypernatraemia with dilute polyuria?",
+          answer: [
+            "This is diabetes insipidus, either from direct injury to vasopressin-secreting neurons or from a recognised triphasic pattern after pituitary surgery: transient DI, then an SIADH phase from uncontrolled hormone release by dying neurons, then permanent or transient DI as stores are exhausted.",
+            "Without antidiuretic hormone, the collecting duct remains impermeable to water, producing large volumes of dilute urine and rising plasma sodium and osmolality despite an intact thirst mechanism if the patient can drink freely.",
+            "Distinguishing central DI from other causes of polyuria requires paired plasma and urine osmolality, and a response to desmopressin confirms a central rather than nephrogenic origin.",
+          ],
+        },
+        {
+          title: "Manage both phases safely",
+          prompt: "How do you treat each, and what is the key shared hazard?",
+          answer: [
+            "For SIADH, restrict fluid, treat any severe or symptomatic hyponatraemia with hypertonic saline in a monitored setting, and correct sodium no faster than about 8–10 mmol/L in 24 hours to avoid osmotic demyelination.",
+            "For diabetes insipidus, replace free water losses, monitor hourly urine output and sodium closely, and give desmopressin titrated to urine output and osmolality once confirmed.",
+            "Because the triphasic pattern can switch direction within days after pituitary surgery, check sodium and fluid balance frequently through the whole admission rather than assuming a single diagnosis will persist.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Both syndromes reflect disordered vasopressin activity on the renal collecting duct: SIADH is inappropriate excess (or effect) of antidiuretic hormone causing water retention and dilutional hyponatraemia, while diabetes insipidus is a deficiency of antidiuretic hormone (or receptor unresponsiveness) causing water diuresis and hypernatraemia. Following pituitary surgery, a triphasic pattern of transient DI, then SIADH, then DI or recovery reflects the sequential effects of surgical trauma, unregulated hormone release from injured neurons, and eventual depletion of posterior pituitary stores." },
+        { title: "Management and monitoring", content: "Diagnosis rests on paired plasma and urine osmolality and sodium, with clinical assessment of volume status. Correct hyponatraemia cautiously to avoid osmotic demyelination and correct hypernatraemic diabetes insipidus with matched free water replacement and titrated desmopressin, checking sodium at least every 4–6 hours during active management. Anticipate that the direction of derangement can change within the same admission." },
+        { title: "Exam pitfall", content: "Do not confuse SIADH with cerebral salt wasting, which is hypovolaemic rather than euvolaemic hyponatraemia; volume status is the discriminator. Do not correct chronic hyponatraemia faster than 8–10 mmol/L per 24 hours." },
+      ],
+      takeHome: "SIADH and diabetes insipidus are opposite disorders of vasopressin action on the collecting duct, and pituitary surgery can produce both in sequence — diagnose with paired osmolality, correct sodium cautiously, and monitor closely for the pattern to switch.",
+      sourceLinks: [s.renal, s.aki],
+    },
+    {
+      id: "physiology-cerebral-autoregulation",
+      title: "Blood pressure targets during craniotomy for a large tumour",
+      category: "Neurological",
+      difficulty: "Advanced",
+      summary: "Cerebral autoregulation, the effect of PaCO₂ on cerebral blood flow, and pressure targets under anaesthesia.",
+      topicIds: ["neurointensive-care", "cardiac-output-monitoring", "acid-base", "lung-mechanics"],
+      patient: "A patient with chronic hypertension and a large frontal tumour with surrounding oedema undergoes craniotomy. Baseline mean arterial pressure is 105 mmHg.",
+      presentation: "During dural opening the surgeon requests a lower blood pressure to reduce bleeding, while the anaesthetist is also adjusting ventilation to manage brain relaxation.",
+      stages: [
+        {
+          title: "Explain autoregulation",
+          prompt: "What determines cerebral blood flow across a range of pressures?",
+          answer: [
+            "Cerebral blood flow is normally kept relatively constant across a mean arterial pressure range of roughly 60–150 mmHg by myogenic, metabolic and neurogenic autoregulatory mechanisms altering cerebrovascular resistance.",
+            "Chronic hypertension shifts the autoregulatory curve to the right, so a 'normal' pressure for this patient may be below their own lower limit of autoregulation, risking underperfusion at pressures tolerated in normotensive patients.",
+            "Autoregulation can be impaired or abolished locally around tumour, oedema or injured brain, making perfusion in these regions passively dependent on systemic pressure.",
+          ],
+        },
+        {
+          title: "Explain the effect of PaCO₂",
+          prompt: "How does ventilation change cerebral blood flow, and why is this useful here?",
+          answer: [
+            "Cerebral blood flow changes by roughly 1–2 mL/100g/min for every 0.13 kPa (1 mmHg) change in PaCO₂ within the normal range, through direct effects of extracellular pH on cerebral vascular smooth muscle.",
+            "Modest hyperventilation to a PaCO₂ around 4.0–4.5 kPa reduces cerebral blood volume and can improve surgical access, but excessive hypocapnia risks cerebral ischaemia, particularly in already compromised tissue.",
+            "This CO₂ reactivity is generally preserved even when pressure autoregulation is impaired, so controlled ventilation remains a useful tool for brain relaxation even in injured brain.",
+          ],
+        },
+        {
+          title: "Set pressure and ventilation targets",
+          prompt: "What targets do you agree with the surgical team?",
+          answer: [
+            "Avoid dropping mean arterial pressure below the patient's likely shifted lower autoregulatory limit; a common compromise is to avoid falls of more than 20–30% from the patient's baseline rather than targeting an absolute low number.",
+            "Use brief, modest hyperventilation for brain relaxation rather than sustained hypocapnia, and reassess with direct surgical feedback and, where available, cerebral oxygenation or flow monitoring.",
+            "Maintain adequate cerebral perfusion pressure throughout, avoid hypoxaemia and marked hypercapnia, and return to normocapnia promptly once relaxation is no longer needed.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "Cerebral autoregulation maintains flow-metabolism coupling over a defined pressure range through myogenic and metabolic mechanisms; the range is not fixed but adapts to chronic pressure exposure, so hypertensive patients need higher pressures to maintain perfusion. Superimposed CO₂ reactivity acts through pH-mediated changes in vascular tone and is often preserved even when autoregulation is disrupted by tumour, trauma or ischaemia, which is why controlled ventilation remains a reliable acute tool for adjusting cerebral blood volume." },
+        { title: "Management and monitoring", content: "Individualise pressure targets to the patient's baseline rather than a fixed population number, and use brief, monitored hyperventilation rather than sustained hypocapnia for brain relaxation. Where available, use cerebral oximetry, transcranial Doppler or invasive neuromonitoring to guide targets in high-risk cases, and communicate pressure and ventilation goals explicitly with the surgical team before critical steps." },
+        { title: "Exam pitfall", content: "Do not quote a single universal autoregulatory range without qualifying that chronic hypertension shifts it rightward, and do not recommend sustained aggressive hyperventilation, which risks ischaemia for a modest and short-lived reduction in brain bulk." },
+      ],
+      takeHome: "Cerebral autoregulation keeps flow constant across a pressure range that shifts with chronic hypertension, while CO₂ reactivity remains a reliable and largely independent tool — individualise pressure targets and use hyperventilation briefly and purposefully.",
+      sourceLinks: [s.cerebralCO2],
+    },
+    {
+      id: "physiology-diastolic-dysfunction",
+      title: "Flash pulmonary oedema after fluid administration",
+      category: "Cardiovascular",
+      difficulty: "Intermediate",
+      summary: "The cardiac cycle, diastolic filling and why a stiff, non-compliant ventricle fails with modest fluid loading.",
+      topicIds: ["cardiac-cycle", "cardiovascular-disease", "elderly-anaesthesia", "cardiac-output-monitoring"],
+      patient: "An 78-year-old with longstanding hypertension and known left ventricular hypertrophy but preserved ejection fraction receives 1 litre of crystalloid intraoperatively for modest hypotension.",
+      presentation: "Within minutes the patient becomes acutely breathless with frothy secretions in the airway, rising airway pressures and new bibasal crackles; ejection fraction on later echocardiography is normal.",
+      stages: [
+        {
+          title: "Relate this to the cardiac cycle",
+          prompt: "How can pulmonary oedema occur with a normal ejection fraction?",
+          answer: [
+            "Diastole comprises isovolumetric relaxation followed by rapid filling, diastasis and atrial contraction; a hypertrophied, stiff ventricle has impaired relaxation and reduced compliance, shifting the diastolic pressure–volume relationship upward and to the left.",
+            "For any given filling volume, left ventricular end-diastolic and left atrial pressures are higher than in a normal ventricle, so pulmonary capillary pressure rises disproportionately with a modest fluid load.",
+            "Ejection fraction describes systolic emptying, not diastolic filling pressure, so it can remain normal even as filling pressures and pulmonary congestion rise sharply — this is heart failure with preserved ejection fraction.",
+          ],
+        },
+        {
+          title: "Identify contributing factors",
+          prompt: "What features of this patient and this event predispose to diastolic failure?",
+          answer: [
+            "Left ventricular hypertrophy from chronic hypertension, age-related myocardial stiffening, and loss of the atrial contraction contribution (for example with atrial fibrillation) all reduce diastolic reserve.",
+            "Tachycardia shortens diastolic filling time and worsens filling pressures in a stiff ventricle, compounding any fluid load.",
+            "A relatively small, rapidly administered volume can produce a much larger rise in filling pressure than the same volume would in a compliant ventricle, explaining the 'flash' presentation.",
+          ],
+        },
+        {
+          title: "Manage the acute episode",
+          prompt: "What is your immediate treatment, and how would you give fluid differently next time?",
+          answer: [
+            "Sit the patient up, give oxygen, and use small doses of a nitrate or diuretic to reduce preload while treating any precipitating tachyarrhythmia or hypertension.",
+            "Support ventilation and consider non-invasive support if breathing is inadequate, and avoid aggressive further fluid administration.",
+            "For future fluid management, give smaller boluses with reassessment between doses, favour vasopressor support over large volumes for anaesthesia-related vasodilation, and maintain sinus rhythm and rate control given the dependence on atrial contribution to filling.",
+          ],
+        },
+      ],
+      detailedAnswer: [
+        { title: "Clinical reasoning", content: "The diastolic pressure–volume relationship, not the systolic one, explains this presentation: a hypertrophied, fibrotic ventricle has reduced compliance, so small increases in volume cause disproportionate rises in end-diastolic and left atrial pressure, which transmit back to the pulmonary capillaries and cause oedema. Because contractility and ejection fraction are preserved, conventional teaching that equates heart failure with reduced ejection fraction misses this common perioperative pattern, particularly in older, hypertensive patients." },
+        { title: "Management and monitoring", content: "Treat acute pulmonary oedema with preload reduction, oxygen and ventilatory support as needed, and identify and treat precipitants such as tachycardia, atrial fibrillation or hypertension. Subsequently, give fluid in smaller, reassessed increments, maintain sinus rhythm and controlled heart rate to preserve diastolic filling time and atrial contribution, and consider dynamic measures of fluid responsiveness rather than fixed volume targets in patients with known diastolic dysfunction." },
+        { title: "Exam pitfall", content: "Do not assume a normal ejection fraction excludes heart failure or fluid intolerance. Describe the diastolic pressure–volume relationship explicitly rather than simply saying the heart is 'stiff'." },
+      ],
+      takeHome: "A stiff, hypertrophied ventricle can develop flash pulmonary oedema from modest fluid loading despite a normal ejection fraction — think diastolic compliance, not just systolic function, and titrate fluid and rate control accordingly.",
+      sourceLinks: [s.cardiacCycle],
+    },
   ],
 };
