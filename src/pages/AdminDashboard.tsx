@@ -1098,6 +1098,17 @@ const AdminDashboard = () => {
               <CheckCircle2 className="w-4 h-4 mr-1" aria-hidden="true" />
               Content Audit
             </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => navigate("/admin/content-editor")}
+              aria-label="Open the content editor to update topics, subsections and references"
+            >
+              <FileEdit className="w-4 h-4 mr-1" aria-hidden="true" />
+              Content Editor
+            </Button>
+
+
 
             <Button
               variant="outline"
