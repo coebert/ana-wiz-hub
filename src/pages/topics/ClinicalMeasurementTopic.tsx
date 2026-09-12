@@ -242,6 +242,28 @@ const ClinicalMeasurementTopic = () => {
               clinical scenarios.
             </p>
             <p><strong>Pulse contour analysis</strong> derives stroke volume from the systolic arterial-waveform area/pulse pressure and a model of vascular impedance. Calibrated LiDCO uses lithium dilution to generate a patient-specific scaling factor for pulse-power analysis. Uncalibrated FloTrac estimates impedance from pressure variability plus age, sex, height and weight. Both require a clean waveform and become less reliable with arrhythmia, profound instability or rapidly changing vascular tone, including sepsis and vasopressors. <InlineRef topicId="clinical-measurement" refLabel="BJA Educ 2005" /></p>
+            <div className="mt-2 grid gap-3 sm:grid-cols-2 text-sm">
+              <div className="rounded-lg border border-border p-3">
+                <p className="font-semibold text-foreground">PAC — measured variables</p>
+                <p className="mt-1">CVP (right atrial pressure), pulmonary artery systolic/diastolic/mean pressure, pulmonary artery occlusion ("wedge") pressure, cardiac output by thermodilution, mixed venous saturation (SvO₂) and core blood temperature.</p>
+              </div>
+              <div className="rounded-lg border border-border p-3">
+                <p className="font-semibold text-foreground">PAC — derived variables</p>
+                <p className="mt-1">Cardiac index, stroke volume and stroke volume index, systemic vascular resistance ((MAP−CVP)×80/CO), pulmonary vascular resistance ((mPAP−PAOP)×80/CO), oxygen delivery (DO₂) and consumption (VO₂), and right/left ventricular stroke work index.</p>
+              </div>
+              <div className="rounded-lg border border-border p-3">
+                <p className="font-semibold text-foreground">Waveforms on insertion</p>
+                <p className="mt-1">Right atrium: low amplitude 0–8 mmHg with a/c/v waves. Right ventricle: systolic step-up to ~25 mmHg with a low diastolic pressure and upsloping diastole. Pulmonary artery: same systolic pressure but diastolic rises to ~10 mmHg with a dicrotic notch. Wedge: damped trace ~6–12 mmHg on balloon inflation, returning to a PA trace on deflation <InlineRef topicId="clinical-measurement" refLabel="NEJM 2013 (PAC)" />.</p>
+              </div>
+              <div className="rounded-lg border border-border p-3">
+                <p className="font-semibold text-foreground">Indications and contraindications</p>
+                <p className="mt-1">Considered in complex cardiac surgery, severe pulmonary hypertension or right ventricular failure, refractory cardiogenic or mixed shock, transplant assessment and to titrate therapy when less invasive monitors are unreliable. Avoid with tricuspid or pulmonary stenosis, prosthetic tricuspid/pulmonary valves, right-sided mass or thrombus, and in severe untreated coagulopathy or complete heart block without pacing back-up.</p>
+              </div>
+              <div className="rounded-lg border border-border p-3 sm:col-span-2">
+                <p className="font-semibold text-foreground">Complications</p>
+                <p className="mt-1">Arrhythmia (especially transient RV ectopy or ventricular tachycardia) and right bundle branch block during passage; central venous access complications (pneumothorax, arterial puncture); catheter knotting or entrapment; balloon rupture and air embolism; valvular or endocardial damage; pulmonary infarction from persistent wedging; catheter-related bloodstream infection; and rare but frequently fatal pulmonary artery rupture — never over-inflate the balloon and never wedge for longer than a few respiratory cycles.</p>
+              </div>
+            </div>
           </div>
         </div>
           <ExamPitfallsCallout
