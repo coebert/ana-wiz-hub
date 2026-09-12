@@ -8,6 +8,7 @@ import TimeConstantDiagram from "@/components/diagrams/physics/TimeConstantDiagr
 import { mathConceptsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import InlineRef from "@/components/references/InlineRef";
 
 const mathConceptsFaqs: Array<[string, string]> = [
   [
@@ -16,7 +17,7 @@ const mathConceptsFaqs: Array<[string, string]> = [
   ],
   [
     "Distinguish zero-order and first-order kinetics with an example.",
-    "Zero-order — constant amount eliminated per unit time, independent of concentration (e.g. ethanol, phenytoin at high dose, aspirin in overdose). First-order — constant fraction eliminated per unit time; rate ∝ concentration (e.g. most drugs at therapeutic doses — propofol, fentanyl). Half-life is constant only in first-order kinetics."
+    "First-order kinetics eliminate a constant fraction per unit time, producing an exponential concentration–time curve and a straight line on a semi-log plot; half-life is constant. Zero-order kinetics occur when elimination is saturated: a constant amount is removed per unit time regardless of concentration, producing a straight concentration–time line and a curved semi-log plot; half-life is not constant and decreases as concentration falls. Examples include ethanol, phenytoin at high concentration and salicylate overdose."
   ],
   [
     "What is the difference between mean, median and mode, and when is each preferred?",
@@ -97,6 +98,48 @@ const MathConceptsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="kinetic-order" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <CollapsibleSubsection title="First-Order and Zero-Order Kinetics">
+              <div className="grid gap-3 sm:grid-cols-2 text-sm text-muted-foreground">
+                <div className="rounded-lg border border-border p-4">
+                  <h3 className="font-semibold text-foreground">First order</h3>
+                  <p className="mt-2">Elimination rate is proportional to concentration, so a constant <strong>fraction</strong> is removed per unit time. Half-life is constant. Concentration falls exponentially on an arithmetic plot and forms a straight line on a semi-log plot.</p>
+                </div>
+                <div className="rounded-lg border border-border p-4">
+                  <h3 className="font-semibold text-foreground">Zero order</h3>
+                  <p className="mt-2">The elimination pathway is saturated, so a constant <strong>amount</strong> is removed per unit time independently of concentration. Half-life is not constant and becomes shorter as concentration falls. The arithmetic concentration–time plot is linear; the semi-log plot is curved.</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Most drugs follow first-order kinetics at therapeutic concentrations; capacity-limited examples include ethanol,
+                phenytoin at high concentrations and salicylate in overdose
+                <InlineRef topicId="math-concepts" refLabel="BJA Educ 2004 (PK)" />.
+              </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="statistics" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <CollapsibleSubsection title="Statistical Concepts for Data Interpretation">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  <strong>Categorical data</strong> are nominal (unordered groups, such as blood group) or ordinal (ordered categories,
+                  such as pain score). <strong>Numerical data</strong> are discrete counts or continuous measurements.
+                </p>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-lg border border-border p-4 text-sm"><strong className="text-foreground">Centre</strong><p className="mt-2">The mean uses every value and suits approximately normal continuous data but is sensitive to outliers. The median is the middle ranked value and is preferred for skewed or ordinal data. The mode is the most frequent value and can describe categorical data.</p></div>
+                  <div className="rounded-lg border border-border p-4 text-sm"><strong className="text-foreground">Spread and precision</strong><p className="mt-2">Variance is the mean squared deviation from the mean; standard deviation (SD) is its square root and describes spread of individual observations. Interquartile range (IQR) spans the 25th–75th centiles and suits skewed data. Standard error of the mean (SEM = SD/√n) describes precision of the sample mean, not population variability.</p></div>
+                </div>
+                <p>
+                  A <strong>normal distribution</strong> is symmetric and bell-shaped, with mean = median = mode; approximately 95%
+                  of observations lie within 1.96 SD of the mean. Positive skew has a long right tail and usually mean &gt; median;
+                  negative skew has a long left tail and usually mean &lt; median. A <strong>95% confidence interval</strong> gives a
+                  range generated by a method that would contain the true population parameter in 95% of repeated samples; its width
+                  communicates estimate precision <InlineRef topicId="math-concepts" refLabel="BJA Educ 2007 (Stats)" />.
+                </p>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="graph-types" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Graph Types & Clinical Examples">
             <p className="text-muted-foreground leading-relaxed mb-4">
@@ -170,7 +213,7 @@ const MathConceptsTopic = () => {
           <ExamSection id="sigmoid" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="The Sigmoid Curve & Cooperativity">
             <p className="text-muted-foreground leading-relaxed">
-              The sigmoid (S-shaped) curve arises when binding or response is <strong>cooperative</strong> — each event makes the next more likely. The Hill coefficient (n) describes the steepness: n = 1 gives a hyperbola (no cooperativity, e.g., myoglobin), n = 2.7 gives the sigmoid ODC (haemoglobin), and n → ∞ gives a step function (all-or-nothing response). In pharmacology, plotting <strong>dose on a logarithmic axis</strong> converts the hyperbolic dose-response into its familiar sigmoid shape, with EC₅₀ at the midpoint. The central portion of this sigmoid can be linearised using a <strong>probit or logit transformation</strong>, which makes comparison of potency and efficacy between drugs much easier.
+              The sigmoid (S-shaped) curve arises when binding or response is <strong>cooperative</strong>. The empirical Hill equation is fractional occupancy = [A]ⁿ/(K<sub>0.5</sub>ⁿ + [A]ⁿ), where the <strong>Hill coefficient n</strong> is an index of cooperativity and curve steepness. When n &gt; 1, binding is positively cooperative: one ligand increases affinity for the next (oxygen binding to haemoglobin; n ≈ 2.7). When n = 1, sites behave independently with no cooperativity (for example myoglobin or a simple drug–receptor interaction). When n &lt; 1, binding is negatively cooperative: one ligand reduces affinity for subsequent ligand. The coefficient is <strong>not necessarily the number of binding sites</strong>; it is an empirical summary of interaction. In pharmacology, plotting <strong>dose on a logarithmic axis</strong> converts the hyperbolic dose-response into its familiar sigmoid shape, with EC₅₀ at the midpoint. The central portion can be linearised using a probit or logit transformation <InlineRef topicId="math-concepts" refLabel="Cross & Plunkett Ch.1" />.
             </p>
             </CollapsibleSubsection>
           </ExamSection>
