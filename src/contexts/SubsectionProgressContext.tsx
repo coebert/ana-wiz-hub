@@ -21,14 +21,23 @@ import { useAuth } from "@/hooks/useAuth";
 interface SubsectionProgressContextType {
   /** Map of topicId -> Set of checked subsection ids. */
   ticks: Record<string, Set<string>>;
+  /** Headings discovered on visited topic pages, used by the learner dashboard. */
+  subsectionCatalog: Record<string, SubsectionMeta[]>;
   isChecked: (topicId: string, subsectionId: string) => boolean;
   toggle: (topicId: string, subsectionId: string) => void;
+  registerSubsections: (topicId: string, subsections: SubsectionMeta[]) => void;
   getTopicProgress: (topicId: string) => { completed: number };
+}
+
+export interface SubsectionMeta {
+  id: string;
+  label: string;
 }
 
 const SubsectionProgressContext = createContext<SubsectionProgressContextType | null>(null);
 
 const STORAGE_KEY = "anaesthesia-core-subsection-progress";
+const CATALOG_STORAGE_KEY = "anaesthesia-core-subsection-catalog";
 const MIGRATED_FLAG = "anaesthesia-core-subsection-progress-cloud-migrated";
 
 type Serialized = Record<string, string[]>;
@@ -62,15 +71,47 @@ const writeLocal = (state: Record<string, Set<string>>) => {
   }
 };
 
+const readCatalog = (): Record<string, SubsectionMeta[]> => {
+  if (typeof window === "undefined") return {};
+  try {
+    const parsed = JSON.parse(localStorage.getItem(CATALOG_STORAGE_KEY) ?? "{}") as Record<string, unknown>;
+    return Object.fromEntries(
+      Object.entries(parsed).map(([topicId, value]) => [
+        topicId,
+        Array.isArray(value)
+          ? value.filter(
+              (item): item is SubsectionMeta =>
+                typeof item === "object" &&
+                item !== null &&
+                typeof (item as SubsectionMeta).id === "string" &&
+                typeof (item as SubsectionMeta).label === "string",
+            )
+          : [],
+      ]),
+    );
+  } catch {
+    return {};
+  }
+};
+
 export const SubsectionProgressProvider = ({ children }: { children: ReactNode }) => {
   const { user } = useAuth();
   const [ticks, setTicks] = useState<Record<string, Set<string>>>(readLocal);
+  const [subsectionCatalog, setSubsectionCatalog] = useState<Record<string, SubsectionMeta[]>>(readCatalog);
   const syncedUserRef = useRef<string | null>(null);
 
   // Persist on every change.
   useEffect(() => {
     writeLocal(ticks);
   }, [ticks]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(CATALOG_STORAGE_KEY, JSON.stringify(subsectionCatalog));
+    } catch {
+      /* ignore quota */
+    }
+  }, [subsectionCatalog]);
 
   // Hydrate + one-time migrate on sign-in.
   useEffect(() => {
@@ -168,6 +209,18 @@ export const SubsectionProgressProvider = ({ children }: { children: ReactNode }
     [ticks]
   );
 
+  const registerSubsections = useCallback((topicId: string, subsections: SubsectionMeta[]) => {
+    setSubsectionCatalog((previous) => {
+      const current = previous[topicId] ?? [];
+      const unchanged =
+        current.length === subsections.length &&
+        current.every((item, index) =>
+          item.id === subsections[index]?.id && item.label === subsections[index]?.label,
+        );
+      return unchanged ? previous : { ...previous, [topicId]: subsections };
+    });
+  }, []);
+
   const getTopicProgress = useCallback(
     (topicId: string) => ({ completed: ticks[topicId]?.size ?? 0 }),
     [ticks]
@@ -175,7 +228,7 @@ export const SubsectionProgressProvider = ({ children }: { children: ReactNode }
 
   return (
     <SubsectionProgressContext.Provider
-      value={{ ticks, isChecked, toggle, getTopicProgress }}
+      value={{ ticks, subsectionCatalog, isChecked, toggle, registerSubsections, getTopicProgress }}
     >
       {children}
     </SubsectionProgressContext.Provider>

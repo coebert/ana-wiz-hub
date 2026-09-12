@@ -18,12 +18,16 @@ import {
   History,
   ListChecks,
   LayoutDashboard,
+  Search,
+  ChevronDown,
 } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useSubsectionProgress } from "@/contexts/SubsectionProgressContext";
 import { useRecentTopics } from "@/hooks/useRecentTopics";
 import { useAuth } from "@/hooks/useAuth";
 import { ProgressRing } from "@/components/shared/ProgressRing";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Section,
   ExamTag,
@@ -34,6 +38,7 @@ import {
 } from "@/data/curriculum";
 
 type ExamFilter = "all" | ExamTag;
+type StatusFilter = "all" | "in-progress" | "completed" | "not-started";
 
 const examFilters: { label: string; value: ExamFilter; description: string }[] = [
   { label: "All", value: "all", description: "Every available topic across all curricula" },
@@ -63,6 +68,15 @@ const sectionMeta: {
 
 const pct = (c: number, t: number) => (t > 0 ? Math.round((c / t) * 100) : 0);
 
+const readableSubsectionId = (id: string) =>
+  id
+    .replace(/^toc-/, "")
+    .replace(/-\d+$/, "")
+    .split("-")
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
 /** Relative "x ago" label for recent-topic timestamps. */
 const timeAgo = (ts: number): string => {
   const mins = Math.round((Date.now() - ts) / 60000);
@@ -78,10 +92,12 @@ const timeAgo = (ts: number): string => {
 const ProgressTracker = () => {
   const { isCompleted, getOverallProgress, getExamProgress, getSectionProgress, getExamSectionProgress } =
     useProgress();
-  const { ticks } = useSubsectionProgress();
+  const { ticks, subsectionCatalog } = useSubsectionProgress();
   const recentTopics = useRecentTopics();
   const { user } = useAuth();
   const [activeFilter, setActiveFilter] = useState<ExamFilter>("all");
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
+  const [topicSearch, setTopicSearch] = useState("");
 
   // Fast lookup: topicId -> topic + its section path, for overview links.
   const topicLookup = useMemo(() => {
@@ -160,6 +176,28 @@ const ProgressTracker = () => {
     activeFilter === "all" ? summary.all : summary[activeFilter];
   const activeLabel = examFilters.find((f) => f.value === activeFilter)?.label ?? "Overall";
   const activeDescription = examFilters.find((f) => f.value === activeFilter)?.description ?? "";
+
+  const dashboardSections = useMemo(() => {
+    const query = topicSearch.trim().toLowerCase();
+    return visibleSections
+      .map((section) => ({
+        ...section,
+        topics: section.topics.filter((topic) => {
+          const completed = isCompleted(topic.id);
+          const tickCount = ticks[topic.id]?.size ?? 0;
+          const status: StatusFilter = completed
+            ? "completed"
+            : tickCount > 0
+              ? "in-progress"
+              : "not-started";
+          return (
+            (statusFilter === "all" || status === statusFilter) &&
+            (!query || topic.title.toLowerCase().includes(query))
+          );
+        }),
+      }))
+      .filter((section) => section.topics.length > 0);
+  }, [visibleSections, topicSearch, statusFilter, isCompleted, ticks]);
 
   return (
     <PageSection spacing="default" width="xwide">

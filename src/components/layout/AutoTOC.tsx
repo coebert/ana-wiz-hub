@@ -14,6 +14,7 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { StickyTOC, TOCItem } from "@/components/layout/StickyTOC";
 import { SubsectionCheck } from "@/components/topic/SubsectionCheck";
+import { useSubsectionProgress } from "@/contexts/SubsectionProgressContext";
 
 const slugify = (text: string) =>
   text
@@ -43,6 +44,7 @@ interface CheckMount {
 }
 
 export const AutoTOC = ({ children, disabled, minHeadings = 4, topicId }: AutoTOCProps) => {
+  const { registerSubsections } = useSubsectionProgress();
   const contentRef = useRef<HTMLDivElement>(null);
   const [items, setItems] = useState<TOCItem[]>([]);
   const [checkMounts, setCheckMounts] = useState<CheckMount[]>([]);
@@ -97,8 +99,14 @@ export const AutoTOC = ({ children, disabled, minHeadings = 4, topicId }: AutoTO
     } else {
       setItems([]);
     }
+    if (topicId) {
+      registerSubsections(
+        topicId,
+        nextMounts.map(({ subsectionId, label }) => ({ id: subsectionId, label })),
+      );
+    }
     setCheckMounts(nextMounts);
-  }, [children, disabled, minHeadings, topicId]);
+  }, [children, disabled, minHeadings, topicId, registerSubsections]);
 
   return (
     <>
