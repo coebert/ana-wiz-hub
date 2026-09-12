@@ -5,6 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { QuizQuestion } from "@/components/quiz/QuizSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const nonTechnicalSkillsFaqs: Array<[string, string]> = [
   ["What are the four domains of ANTS (Anaesthetists' Non-Technical Skills)?", "Task management, team working, situation awareness and decision making — each with behavioural markers used for structured debrief and assessment (Fletcher et al., BJA 2003)."],
@@ -121,7 +122,7 @@ const NonTechnicalSkillsTopic = () => {
             className="scroll-mt-24"
           >
             <p className="text-muted-foreground leading-relaxed">
-              Up to 70% of adverse events in critical care relate to non-technical rather than technical failures. The Royal College of Anaesthetists' <strong>ANTS</strong> framework, the <strong>SHEEP</strong> model of human factors, and Crisis Resource Management (CRM) principles are core to FFICM, EDIC and CCT-level practice. This topic frames the four ANTS categories, the cognitive traps that lead to error, and the team and organisational tools used to mitigate them.
+              Up to 70% of adverse events in critical care relate to non-technical rather than technical failures. The Royal College of Anaesthetists' <strong>ANTS</strong> framework, the <strong>SHEEP</strong> model of human factors, and Crisis Resource Management (CRM) principles are core to FFICM, EDIC and CCT-level practice. This topic frames the four ANTS categories, the cognitive traps that lead to error, and the team and organisational tools used to mitigate them.<InlineRef topicId="non-technical-skills" refLabel="BJA Educ 2003" /><InlineRef topicId="non-technical-skills" refLabel="BMJ 2000" />
             </p>
           </ExamSection>
 
@@ -133,7 +134,7 @@ const NonTechnicalSkillsTopic = () => {
           >
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ANTS — Anaesthetists' Non-Technical Skills</h2>
             <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-              Developed at the University of Aberdeen for the Royal College of Anaesthetists; the four categories below are the canonical taxonomy used in FFICM/EDIC SOEs and workplace-based assessment.
+              Developed at the University of Aberdeen for the Royal College of Anaesthetists; the four categories below are the canonical taxonomy used in FFICM/EDIC SOEs and workplace-based assessment.<InlineRef topicId="non-technical-skills" refLabel="RCoA ANTS" /><InlineRef topicId="non-technical-skills" refLabel="BJA Educ 2018" />
             </p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">

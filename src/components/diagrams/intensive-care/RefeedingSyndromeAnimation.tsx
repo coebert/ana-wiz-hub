@@ -19,7 +19,7 @@ const STEPS: AnimatedMechanismStep[] = [
       <>
         After ~5 days of negligible intake the body switches from glycolysis to{" "}
         <strong>lipolysis &amp; ketogenesis</strong>. Insulin falls, glucagon
-        rises. Total-body K⁺, PO₄³⁻ and Mg²⁺ are <em>depleted</em> (lost in
+        rises. Total-body K⁺, phosphate (Pi) and Mg²⁺ are <em>depleted</em> (lost in
         urine, shifted out of cells) but serum levels often look{" "}
         <em>normal</em> because the intracellular pool is collapsing in
         parallel. Thiamine (B₁) stores last only 2–3 weeks.
@@ -53,7 +53,7 @@ const STEPS: AnimatedMechanismStep[] = [
     label: "Insulin surge",
     detail: (
       <>
-        Insulin drives <strong>K⁺, PO₄³⁻ and Mg²⁺ into cells</strong> alongside
+        Insulin drives <strong>K⁺, phosphate (Pi) and Mg²⁺ into cells</strong> alongside
         glucose to fuel renewed glycolysis and ATP synthesis. Phosphate is
         consumed making 2,3-DPG and ATP; magnesium is a co-factor for Na⁺/K⁺
         ATPase. Sodium and water are retained → <strong>fluid overload</strong>.
@@ -61,7 +61,7 @@ const STEPS: AnimatedMechanismStep[] = [
     ),
     callout: (
       <>
-        Hallmark biochemistry: <strong>↓PO₄³⁻ (&lt; 0.5 mmol/L)</strong>, ↓K⁺,
+        Hallmark biochemistry: <strong>↓ phosphate (Pi) &lt; 0.5 mmol/L</strong>, ↓K⁺,
         ↓Mg²⁺, often with hyperglycaemia.
       </>
     ),
