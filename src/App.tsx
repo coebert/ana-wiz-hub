@@ -164,12 +164,17 @@ const App = () => (
           <Route path="/notes/paediatric-maintenance-fluids-4-2-1-rule" element={<PaediatricMaintenanceFluidsNote />} />
 
           <Route path="/physics" element={<PhysicsSection />} />
+          <Route path="/physics/case-bank" element={<PhysicsCaseBank />} />
           <Route path="/physiology" element={<PhysiologySection />} />
+          <Route path="/physiology/case-bank" element={<PhysiologyCaseBank />} />
           <Route path="/pharmacology" element={<PharmacologySection />} />
+          <Route path="/pharmacology/case-bank" element={<PharmacologyCaseBank />} />
           <Route path="/clinical" element={<ClinicalSection />} />
           <Route path="/intensive-care" element={<IntensiveCareSection />} />
+          <Route path="/intensive-care/case-bank" element={<IntensiveCareCaseBank />} />
           <Route path="/perioperative" element={<PerioperativeSection />} />
           <Route path="/perioperative/case-bank" element={<PerioperativeCaseBank />} />
+
           <Route path="/anatomy" element={<AnatomySection />} />
           <Route path="/chemistry" element={<ChemistrySection />} />
           {/* Topic pages — data-driven, see src/routes/topicRoutes.ts */}
