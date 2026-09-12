@@ -145,9 +145,36 @@ const HumidityGasSamplingTopic = () => {
                 Modern <strong>heat and moisture exchange filters (HMEFs)</strong> passively trap heat and moisture from
                 exhaled gas, typically returning <strong>30–38 mg/L</strong> on inspiration depending on the device and
                 ventilation parameters <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ Humidification 2018" />.
-                They add mechanical dead space (30–90 mL). <strong>Heated water bath humidifiers</strong>
-                actively achieve 44 mg/L but carry risks of circuit condensation, infection, and airway burns
+                They add mechanical dead space (30–90 mL).
+              </p>
+              <p>
+                <strong>Heated water bath humidifiers.</strong> Inspired gas is passed over (<em>pass-over</em> design) or bubbled
+                through (<em>bubble-through</em> design) a reservoir of heated water, leaving the chamber fully saturated so that at
+                the airway it delivers <strong>100 % relative humidity at 37 °C ≈ 44 mg/L</strong> — the same conditioning the upper
+                airway normally provides. Pass-over designs (often with a hydrophobic membrane or wick to increase surface area)
+                add little resistance and generate no aerosol; bubble-through designs humidify more efficiently at high flows but
+                raise resistance and can aerosolise contaminated water
+                <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ Humidification 2018" />.
+              </p>
+              <p>
+                <strong>Components:</strong> a thermostatically controlled heater base, a disposable water chamber with an
+                auto-feed reservoir, an airway temperature probe, and usually a <strong>heated wire in the inspiratory limb</strong>
+                that keeps the circuit above chamber temperature to prevent condensation ("rain-out").
+                <strong> Risks:</strong> thermal airway injury if the servo/thermostat fails or the probe is misplaced, scalding from
+                the reservoir, condensate pooling that increases resistance and can be tipped into the airway, added circuit weight
+                causing disconnection or accidental extubation, loss of PEEP if the circuit is broken to drain water, and bacterial
+                colonisation of the warm reservoir (a nosocomial pneumonia risk with bubble-through systems in particular).
+                They are also bulkier and more expensive than an HMEF and need a power supply
                 <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ 2007" />.
+              </p>
+              <p>
+                <strong>Choosing between them:</strong> an HMEF is adequate for routine theatre ventilation and short-term ICU use
+                (cheap, passive, also filters). Active heated humidification is preferred for <strong>prolonged ventilation</strong>,
+                <strong> thick or tenacious secretions</strong> and mucus plugging, <strong>hypothermia</strong> or rewarming,
+                tracheostomy and long-term airways, neonates and small children (where HMEF dead space is significant), high-flow
+                nasal oxygen, and whenever an HMEF's added dead space or resistance is not tolerated (severe airflow obstruction,
+                permissive hypercapnia, low tidal volumes)
+                <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ Humidification 2018" />.
               </p>
             </div>
             </CollapsibleSubsection>
@@ -166,6 +193,7 @@ const HumidityGasSamplingTopic = () => {
               <li><strong>Wet-and-dry bulb psychrometer:</strong> one thermometer is dry and one is wrapped in a water-soaked wick. Evaporation removes latent heat and cools the wet bulb; a larger temperature difference means drier gas, and a psychrometric chart converts the pair of readings to relative humidity.</li>
               <li><strong>Regnault dew-point hygrometer:</strong> cool a polished silvered surface until condensation first appears. At that dew point the adjacent gas is saturated, allowing absolute humidity to be read from saturated water-vapour data.</li>
               <li><strong>Hair hygrometer:</strong> degreased organic fibres lengthen as humidity rises and mechanically move a pointer; it is simple but slow and requires calibration.</li>
+              <li><strong>Electrical / capacitance hygrometer:</strong> a parallel-plate capacitor whose hygroscopic dielectric (usually a thin polymer film) absorbs water vapour. Absorbed water raises the dielectric constant, so capacitance rises with humidity; the change is measured electronically (often as a shift in the resonant frequency of an oscillator circuit) and displayed directly as relative humidity. It is small, fast-responding and needs no moving parts, which is why it is the sensor used in anaesthetic machines and ICU ventilators. Resistance-based (electrolytic) variants work on the same absorption principle but measure a fall in resistance instead.</li>
             </ul>
             <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ 2007" />
             </div>
@@ -187,6 +215,18 @@ const HumidityGasSamplingTopic = () => {
                 tube length and 1/radius⁴. The parallel capillaries of a Fleisch head and mesh of a Lilly head create a known,
                 approximately linear resistance, so a differential transducer converts ΔP into flow. Variable-orifice devices instead
                 use the Bernoulli relationship and are more density dependent <InlineRef topicId="humidity-gas-sampling" refLabel="BJA 1983 Pneumotachography" />.
+              </p>
+              <p>
+                <strong>Lilly type in detail.</strong> A single fine stainless-steel or nylon <strong>mesh screen</strong> (sometimes
+                two in series) placed across the gas path provides the fixed resistance, and ΔP measured either side obeys the same
+                relationship <strong>ΔP = Flow × R</strong>. Compared with the Fleisch head, the Lilly screen is
+                <strong> more robust, lighter and much shorter</strong> (less dead space), easier to clean or replace, and less easily
+                blocked by droplets of water because there are no long narrow capillaries to occlude. Its weakness is that the mesh
+                resistance <strong>changes if it is contaminated</strong> with secretions, blood or nebulised drug, or if the screen
+                is damaged or partly torn — either way the calibration is lost and readings drift. Like the Fleisch head it must be
+                <strong> heated to around body temperature</strong> (or placed proximal to an HME) to prevent condensation on the
+                screen, and it is sensitive to gas composition, so calibration should match the gas mixture in use
+                <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
               <p>
                 The flow signal is <strong>integrated electronically</strong> to derive volume (tidal volume, minute ventilation).
