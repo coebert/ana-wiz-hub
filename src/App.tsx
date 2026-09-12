@@ -91,6 +91,8 @@ const IcuNursingProtocols = lazy(() => import("./pages/IcuNursingProtocols"));
 const IcuDrugMechanisms = lazy(() => import("./pages/IcuDrugMechanisms"));
 const IcuDrugSafety = lazy(() => import("./pages/IcuDrugSafety"));
 const IcuInteractionChecker = lazy(() => import("./pages/IcuInteractionChecker"));
+const IcuDrugComparison = lazy(() => import("./pages/IcuDrugComparison"));
+
 const AnaesthesiaDrugDoses = lazy(() => import("./pages/AnaesthesiaDrugDoses"));
 const AnaesthesiaDrugCalculator = lazy(() => import("./pages/AnaesthesiaDrugCalculator"));
 
