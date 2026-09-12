@@ -144,16 +144,28 @@ const EndocrineDiseaseTopic = () => {
                 <li>Association of Anaesthetists advice: omit daily preparations on the day of surgery; omit weekly preparations for at least one week before surgery (guidance continues to evolve as evidence accumulates)</li>
                 <li>If not omitted as advised, manage as high aspiration risk — consider prolonged clear-fluid-only fasting, point-of-care gastric ultrasound where available, and rapid sequence induction</li>
                 <li>Omission has glycaemic consequences (rebound hyperglycaemia) — monitor glucose and use variable-rate insulin infusion if required <InlineRef topicId="endocrine-disease" refLabel="BJA Educ Diabetes 2024" /></li>
-                <li>VRIII (sliding scale): dextrose 5%/10% with KCl + separate insulin syringe; hourly glucose monitoring</li>
-                <li>Schedule diabetic patients first on morning list to minimise fasting duration</li>
+                <li>Schedule diabetic patients first on the morning (or afternoon) list to minimise fasting duration — the "first on list" principle</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Variable Rate Intravenous Insulin Infusion (VRIII)</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Indications: type 1 DM expected to miss &gt;1 meal; poorly controlled diabetes (HbA1c &gt;69 mmol/mol) undergoing major surgery; type 2 DM on insulin who will miss &gt;1 meal; emergency surgery; need for two-bag or complex fluid management</li>
+                <li>Prescription: soluble insulin 50 units in 50 mL 0.9% saline (1 unit/mL) via syringe driver, rate adjusted according to a sliding-scale algorithm based on hourly capillary glucose</li>
+                <li>Co-administer substrate: 5% or 10% glucose with 0.15–0.3% KCl (e.g. 0.45% saline + 5% glucose + 0.15% KCl) running concurrently at ~83–125 mL/h, or the "two-bag" system (separate glucose and saline bags run at variable relative rates) to prevent starvation ketosis and hypoglycaemia</li>
+                <li>Never stop background/basal insulin in type 1 DM even while VRIII is running — omission risks rapid ketogenesis and DKA within hours; continue basal analogue insulin alongside the infusion</li>
+                <li>Target capillary/arterial glucose: 6–10 mmol/L (acceptable range 4–12 mmol/L); check hourly (or more often if unstable)</li>
+                <li>Check capillary/blood ketones and venous bicarbonate/pH if glucose &gt;12 mmol/L or the patient is unwell — rising ketones with normal or near-normal glucose indicates euglycaemic DKA</li>
+                <li>Discontinue only once eating and drinking normally, with subcutaneous insulin restarted and a 30–60 minute overlap before stopping the infusion (to avoid a gap in insulin delivery)</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Diabetic Emergencies</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>DKA: insulin infusion (0.1 U/kg/h), IV fluids, potassium replacement, monitor for cerebral oedema</li>
-                <li>Hypoglycaemia (&lt;4 mmol/L): 75–100 mL of 20% glucose IV; glucagon 1 mg IM if no IV access</li>
-                <li>Euglycaemic DKA: suspect in patients on SGLT2 inhibitors — normal glucose but raised ketones and metabolic acidosis</li>
+                <li>DKA diagnostic criteria: glucose &gt;11 mmol/L (or known diabetes), capillary ketones ≥3 mmol/L (or urine ketones ≥2+), venous pH &lt;7.3 and/or bicarbonate &lt;15 mmol/L</li>
+                <li>DKA management: fixed-rate IV insulin infusion 0.1 units/kg/h; 0.9% saline resuscitation (typically 1 L over the first hour, then according to clinical state); potassium replacement guided by serum K+ (withhold if &gt;5.5 mmol/L, standard replacement 20–40 mmol/L if 3.5–5.5 mmol/L, senior input if &lt;3.5 mmol/L); add 10% glucose once glucose falls below ~14 mmol/L to allow the fixed-rate insulin to continue; monitor for cerebral oedema (more common in young patients) and hypokalaemia</li>
+                <li>Hypoglycaemia (&lt;4 mmol/L): 75–100 mL of 20% glucose IV (or 15–20 g oral glucose if conscious); glucagon 1 mg IM/IV if no IV access; recheck glucose in 10–15 minutes</li>
+                <li>Euglycaemic DKA: classically associated with SGLT2 inhibitors, prolonged fasting, pregnancy, low-carbohydrate diets, or acute illness — normal or only mildly raised glucose (often &lt;11 mmol/L) with significant ketosis and metabolic acidosis; a normal glucose must not be used to exclude DKA if ketones are checked and raised — treat as standard DKA including insulin and dextrose co-administration</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
