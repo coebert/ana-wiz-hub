@@ -114,7 +114,7 @@ const PVLoopDiagram = () => {
     <DiagramFigure
       id="pv-loop-diagram"
       title="PV loop"
-      description="Auto-generated wrapper for the PV loop anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Interactive left-ventricular pressure-volume loop showing valve events, stroke volume, stroke work, ESPVR and the effects of preload, afterload and contractility."
     >
               <div className="space-y-4">
         <svg viewBox={`0 0 ${svgW} ${svgH}`} className="w-full">

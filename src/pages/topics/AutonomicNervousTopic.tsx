@@ -9,6 +9,7 @@ import { ANSDiagram } from "@/components/diagrams/physiology/ANSDiagram";
 import { ANSPathwayDiagram } from "@/components/diagrams/physiology/ANSPathwayDiagram";
 import { CrossReferenceCallout } from "@/components/topic/CrossReferenceCallout";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const autonomicNervousFaqs: Array<[string, string]> = [
   [
@@ -175,6 +176,32 @@ const AutonomicNervousTopic = () => {
               {" "}and <strong>glycopyrrolate</strong> are non-selective muscarinic antagonists used in anaesthesia;
               glycopyrrolate is quaternary so does not cross the BBB (no central anticholinergic syndrome).
             </p>
+            <div className="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
+              <div className="rounded-lg border border-border p-3"><strong>CN III:</strong> Edinger–Westphal nucleus → ciliary ganglion → sphincter pupillae and ciliary muscle (miosis and accommodation).</div>
+              <div className="rounded-lg border border-border p-3"><strong>CN VII:</strong> superior salivatory nucleus → pterygopalatine ganglion (lacrimal gland) and submandibular ganglion (submandibular/sublingual glands).</div>
+              <div className="rounded-lg border border-border p-3"><strong>CN IX:</strong> inferior salivatory nucleus → otic ganglion → parotid gland.</div>
+              <div className="rounded-lg border border-border p-3"><strong>CN X:</strong> dorsal motor nucleus and nucleus ambiguus → terminal ganglia in or near heart, lungs and gut to the splenic flexure <InlineRef topicId="autonomic-nervous" refLabel="Ganong Ch.13" />.</div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="enteric" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
+            <CollapsibleSubsection title="Enteric Nervous System">
+              <p className="text-foreground/90 leading-relaxed">The enteric nervous system is the “third division” of the ANS or intestinal “second brain”. Intrinsic primary afferent neurones (IPANs), interneurones and motor neurones form local reflex circuits that can coordinate gut function independently of the CNS <InlineRef topicId="autonomic-nervous" refLabel="Ganong Ch.13" />.</p>
+              <div className="grid md:grid-cols-2 gap-4 mt-3 text-sm"><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Myenteric (Auerbach) plexus</h3><p className="mt-1 text-foreground/80">Between longitudinal and circular muscle; principally controls tone, peristalsis and sphincter activity.</p></div><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Submucosal (Meissner) plexus</h3><p className="mt-1 text-foreground/80">Within submucosa; coordinates secretion, absorption and local blood flow.</p></div></div>
+              <p className="mt-3 text-sm text-foreground/80">Parasympathetic input is generally excitatory and sympathetic input generally inhibitory, but both modulate rather than create intrinsic activity. Important transmitters include ACh and substance P (usually excitatory), and nitric oxide and VIP (smooth-muscle relaxation); serotonin (5-HT) is central to sensory signalling and motility.</p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="autonomic-syndromes" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_06"]}>
+            <CollapsibleSubsection title="Clinical Syndromes of Autonomic Dysfunction">
+              <div className="space-y-3 text-sm text-foreground/85">
+                <p><strong>Diabetic autonomic neuropathy:</strong> resting tachycardia, reduced heart-rate variability, orthostatic hypotension, silent myocardial ischaemia, gastroparesis, bladder dysfunction and abnormal sweating. Expect aspiration risk and marked haemodynamic lability at induction.</p>
+                <p><strong>Autonomic dysreflexia:</strong> in spinal cord injury at/above T6, bladder distension, bowel impaction, pressure injury or surgery below the lesion drives unopposed sympathetic vasoconstriction. Severe hypertension activates intact baroreceptors, causing vagal bradycardia, headache and flushing/sweating above the lesion. Sit upright, remove the trigger, deepen/block afferent stimulation and use a rapid short-acting vasodilator if hypertension persists.</p>
+                <p><strong>Multiple system atrophy (Shy–Drager):</strong> central autonomic failure causes profound orthostatic hypotension, impaired baroreflexes, urinary dysfunction, anhidrosis and airway problems; anaesthesia can produce extreme BP swings.</p>
+                <p><strong>Critical illness:</strong> sepsis may impair autonomic cardiovascular control; Guillain–Barré syndrome causes alternating hypertension/hypotension and brady-/tachyarrhythmias; tetanus causes catecholamine-driven autonomic storms. Continuous monitoring and short-acting titratable drugs are preferred.</p>
+                <p><strong>Drug-induced:</strong> tricyclic antidepressants impair noradrenaline reuptake and antimuscarinic function; antipsychotics may cause α-blockade and orthostatic hypotension. Dysautonomia is also recognised in post-viral syndromes <InlineRef topicId="autonomic-nervous" refLabel="Ann Med 2022 Dysautonomia" />.</p>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 

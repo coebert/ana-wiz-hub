@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
-type Pattern = "normal" | "obstructive" | "restrictive" | "fixed-upper" | "variable-extra";
+type Pattern = "normal" | "obstructive" | "restrictive" | "fixed-upper" | "variable-extra" | "variable-intra";
 
 interface PatternInfo {
   label: string;
@@ -54,6 +54,14 @@ const patterns: Record<Pattern, PatternInfo> = {
     pefr: 9,
     fev1Ratio: 0.75,
   },
+  "variable-intra": {
+    label: "Variable Intrathoracic",
+    description: "Flattening of the expiratory limb only. Positive pleural pressure during expiration compresses a compliant intrathoracic lesion (for example tracheomalacia); inspiration splints it open.",
+    color: "hsl(200, 70%, 45%)",
+    fvc: 4.5,
+    pefr: 4,
+    fev1Ratio: 0.70,
+  },
 };
 
 const W = 560;
@@ -87,7 +95,7 @@ function generateLoop(p: PatternInfo, pattern: Pattern): string {
       flow = p.pefr * (1 - t) * Math.exp(-2.5 * t);
       // Sharp initial rise
       if (t < 0.08) flow = p.pefr * (t / 0.08);
-    } else if (pattern === "fixed-upper") {
+    } else if (pattern === "fixed-upper" || pattern === "variable-intra") {
       // Plateau limited flow
       const maxF = p.pefr;
       if (t < 0.05) flow = maxF * (t / 0.05);
@@ -169,7 +177,7 @@ export const FlowVolumeLoopDiagram = () => {
     <DiagramFigure
       id="flow-volume-loop-diagram"
       title="Flow volume loop"
-      description="Auto-generated wrapper for the Flow volume loop anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+       description="Compare normal, obstructive, restrictive, fixed upper-airway, variable extrathoracic and variable intrathoracic flow-volume loops."
     >
               <div className="space-y-4">
         <h3 className="font-semibold text-foreground text-sm">Flow-Volume Loops</h3>
