@@ -433,6 +433,8 @@ export const TopicTemplate = ({
           )}
         />
         <ReferencesList topicId={topicId} />
+        <TopicOverrideReferences refs={liveEdits.references} />
+
         <SeeAlso topicId={topicId} />
         <TopicCompletionToggle topicId={topicId} topicTitle={topicTitle ?? title} />
         <div className="flex justify-end pt-2 -mt-2">
