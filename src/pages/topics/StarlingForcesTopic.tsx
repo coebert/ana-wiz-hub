@@ -1,5 +1,6 @@
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { InlineRef } from "@/components/references/InlineRef";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
@@ -243,19 +244,104 @@ const StarlingForcesTopic = () => {
           </ExamSection>
 
           <ExamSection id="oedema" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
-            <CollapsibleSubsection title="Oedema Formation">
+            <CollapsibleSubsection title="Oedema Formation & Safety Factors">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Oedema occurs when the rate of capillary filtration exceeds lymphatic drainage capacity. Under the revised
-              Starling–Levick model, the principal safety factors against oedema are:
+              Oedema occurs when the rate of capillary filtration exceeds lymphatic drainage capacity. Three
+              quantifiable safety factors must be exhausted before interstitial fluid becomes clinically
+              apparent <InlineRef topicId="starling-forces" refLabel="Levick & Michel 2010" />:
             </p>
-            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-              <li><strong>Rising interstitial hydrostatic pressure</strong>: as fluid accumulates, Pi rises and reduces the outward filtration gradient (Pc − Pi)</li>
-              <li><strong>Substantial lymphatic reserve</strong>: lymph flow can increase ~10–50× before being overwhelmed</li>
-              <li><strong>Preserved sub-glycocalyx oncotic gradient</strong>: an intact glycocalyx keeps πsg low, sustaining the effective oncotic pull σ(πc − πsg)</li>
-              <li>Estimated total safety factor ≈ 17 mmHg — Pc must rise by approximately this amount before clinical oedema develops</li>
-            </ul>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Safety factor</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Mechanism</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Contribution</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Rising interstitial pressure</td>
+                    <td>As fluid filters, Pi rises from its negative baseline (−2 mmHg) towards and above zero, reducing the outward gradient (Pc − Pi). The rise is steep because normal interstitial compliance is low until the gel matrix is fully hydrated.</td>
+                    <td>≈ 7 mmHg</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Increased lymphatic flow</td>
+                    <td>Lymphatic drainage is recruited and can increase 10–50 fold, removing filtered fluid and protein before it accumulates.</td>
+                    <td>≈ 7 mmHg</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 font-medium text-foreground">Washdown of interstitial protein</td>
+                    <td>Increased filtration and lymph flow dilute and remove interstitial (and sub-glycocalyx) protein, lowering πi/πsg and so widening the effective oncotic gradient σ(πc − πsg) that opposes filtration.</td>
+                    <td>≈ 3 mmHg</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed mt-3">
+              Total safety factor ≈ <strong>17 mmHg</strong>: capillary pressure must rise by roughly this amount
+              above normal before clinical oedema appears. This explains why isolated hypoalbuminaemia rarely
+              produces oedema, and why oedema then appears abruptly once the reserve is spent — the pressure–volume
+              relationship of the interstitium becomes very compliant beyond that point
+              <InlineRef topicId="starling-forces" refLabel="Guyton & Hall 14e Ch.16" />.
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <ExamSection id="organ-variations" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_05"]}>
+            <CollapsibleSubsection title="Organ-Specific Variations in Fluid Exchange">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              The same equation applies everywhere, but Pc, Kf, σ and lymphatic capacity vary widely between
+              vascular beds — which is why oedema behaves so differently by organ
+              <InlineRef topicId="starling-forces" refLabel="Guyton & Hall 14e Ch.16" />.
+            </p>
+            <div className="space-y-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Pulmonary circulation</p>
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                  Pc is low (~7 mmHg), interstitial pressure is more negative (≈ −8 mmHg) and interstitial oncotic
+                  pressure is relatively high because the barrier is more protein-permeable, so the oncotic gradient is
+                  small. Protection comes from a <strong>double safety factor</strong>: low Pc plus a very high-capacity
+                  pulmonary lymphatic system. Left atrial pressure must therefore rise substantially (typically &gt;20–25
+                  mmHg) before alveolar flooding, but once lymphatic reserve is exceeded oedema accumulates rapidly and
+                  gas exchange deteriorates within minutes.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Glomerular capillaries</p>
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                  Filtration is driven by an unusually high Pc (~55 mmHg) generated between afferent and efferent
+                  arterioles, opposed by Bowman's capsule hydrostatic pressure (~15 mmHg) and plasma oncotic pressure
+                  (~25–30 mmHg, rising along the capillary as protein-free filtrate leaves). Net filtration pressure is
+                  ~10 mmHg but Kf is an order of magnitude higher than in systemic capillaries, giving a GFR of
+                  ~125 mL/min. <strong>Filtration fraction</strong> = GFR / renal plasma flow ≈ 0.2, i.e. one fifth of
+                  plasma entering the glomerulus is filtered.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Hepatic sinusoids</p>
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                  Discontinuous, fenestrated endothelium with essentially no basement membrane gives a very high Kf and
+                  a low σ, so protein passes freely into the space of Disse and the transsinusoidal oncotic gradient is
+                  minimal. Fluid balance is therefore dominated by sinusoidal hydrostatic pressure and by hepatic
+                  lymph flow — hence the ascites of portal hypertension despite modest pressure rises.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Cerebral capillaries</p>
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                  Tight junctions of the blood–brain barrier give a very low Kf and σ ≈ 1 even for small ions, so water
+                  movement is governed by the total <strong>osmotic</strong> (not oncotic) gradient — the basis of
+                  mannitol and hypertonic saline therapy. Interstitial protein is negligible, there are no conventional
+                  lymphatics (drainage is via glymphatic and perineural routes to CSF), and CSF/intracranial pressure
+                  itself opposes filtration. Loss of barrier integrity in trauma or infection converts the brain to a
+                  high-Kf bed and produces vasogenic oedema.
+                </p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
 
           <ExamPitfallsCallout
             pitfalls={[

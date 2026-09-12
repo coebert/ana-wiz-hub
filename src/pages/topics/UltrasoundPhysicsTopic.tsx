@@ -161,6 +161,37 @@ const UltrasoundPhysicsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="display-modes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Display Modes: A-, B- and M-mode">
+              <div className="text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  Every image is built from the amplitude and return time of received echoes; the modes differ only in
+                  how that information is displayed
+                  <InlineRef topicId="ultrasound-physics" refLabel="BJA Educ Ultrasound Physics 2020" />.
+                </p>
+                <p>
+                  <strong>A-mode (amplitude)</strong> — a one-dimensional plot of echo amplitude against depth along a
+                  single beam line. Historically the first clinical display; it survives in ophthalmology for accurate
+                  axial-length (biometry) and lesion-height measurement, and conceptually underlies every scan line of a
+                  modern image.
+                </p>
+                <p>
+                  <strong>B-mode (brightness)</strong> — the standard 2D grey-scale image. Many scan lines, swept
+                  electronically across the array, are assembled into a sector or rectangle, with echo amplitude coded
+                  as pixel brightness and depth from the round-trip time (assuming 1,540 m/s). This is the foundation of
+                  nerve-block, vascular-access, FAST and lung imaging; frame rate falls as depth and sector width
+                  increase, because each line must return before the next is sent.
+                </p>
+                <p>
+                  <strong>M-mode (motion)</strong> — a single B-mode line displayed against time, giving very high
+                  temporal resolution for moving structures. Used for valve and chamber-wall motion and diaphragmatic
+                  excursion in echocardiography, and in lung ultrasound to demonstrate the "seashore sign" of normal
+                  sliding versus the "barcode/stratosphere sign" of pneumothorax.
+                </p>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="doppler" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Doppler Ultrasound">
             <div className="text-muted-foreground leading-relaxed space-y-3">
@@ -202,10 +233,27 @@ const UltrasoundPhysicsTopic = () => {
                 </p>
                 <p>
                   The <strong>thermal index (TI)</strong> is the ratio of emitted acoustic power to the power estimated to raise tissue
-                  temperature by 1 °C. Use TIS for soft tissue, TIB when bone is near the focus and TIC for cranial scanning. The
-                  <strong> mechanical index (MI) = peak rarefactional pressure / √frequency</strong> estimates non-thermal cavitation risk;
-                  lower frequency and higher negative pressure increase it. For routine non-obstetric scanning, keep displayed TI and MI
-                  below 1 where practicable, minimise spectral-Doppler dwell time and reduce output before reducing image quality controls
+                  temperature by 1 °C, i.e. it reflects heating from absorbed energy. Subtypes: <strong>TIS</strong> (soft tissue),
+                  <strong> TIB</strong> (bone near the focus — bone absorbs strongly and heats adjacent tissue) and <strong>TIC</strong>
+                  (cranial bone, for transcranial scanning). Heating is greatest with spectral Doppler and colour Doppler, which use a
+                  stationary beam and high time-averaged intensity, and matters most in <strong>fetal scanning</strong> (embryonic
+                  tissue, ossifying bone, no protective perfusion) and neonatal transcranial imaging.
+                </p>
+                <p>
+                  The <strong>mechanical index (MI) = peak rarefactional pressure / √frequency</strong> estimates non-thermal
+                  <strong> cavitation</strong> risk. In <em>stable</em> (non-inertial) cavitation, existing gas nuclei oscillate in size
+                  with the pressure cycle, producing microstreaming and shear at cell membranes. In <em>inertial</em> (transient)
+                  cavitation, bubbles grow then collapse violently, with local high temperatures, free radicals and mechanical
+                  disruption. Higher negative pressure and lower frequency raise MI; an <strong>MI &gt; 0.7</strong> is the accepted
+                  theoretical threshold at which lung capillary haemorrhage becomes possible, particularly where gas bodies exist
+                  (lung, bowel) or contrast microbubbles have been given
+                  <InlineRef topicId="ultrasound-physics" refLabel="BJA Educ Ultrasound Physics 2020" />.
+                </p>
+                <p>
+                  For routine anaesthetic and ICU applications — vascular access, regional blocks, gastric or lung scanning — measured
+                  bioeffects are negligible and no diagnostic ultrasound injury has been demonstrated at these outputs. Operators should
+                  nonetheless keep displayed TI and MI below 1 where practicable, minimise scanning and spectral-Doppler dwell time,
+                  avoid holding a Doppler gate over one spot, and reduce acoustic output before degrading gain or image-quality controls
                   <InlineRef topicId="ultrasound-physics" refLabel="BMUS Safety Guidelines" />.
                 </p>
               </div>
