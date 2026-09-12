@@ -400,7 +400,14 @@ const VolatileAgentsTopic = () => {
                 </tbody>
               </table>
             </div>
-            <InlineRef topicId="volatile-agents" refLabel="BJA Organ Effects 2006" />
+            <p className="text-sm text-muted-foreground mt-3">
+              Renal and hepatic effects are largely secondary to perfusion pressure: all agents reduce renal blood flow and GFR in proportion to
+              the fall in mean arterial pressure (with preserved autoregulation above about 80 mmHg), and volatile agents reduce portal venous
+              flow while isoflurane, sevoflurane and desflurane better preserve hepatic arterial flow and total hepatic oxygen delivery than
+              halothane did. Reduced hepatic blood flow also slows clearance of flow-dependent drugs such as propofol, fentanyl and lidocaine.
+              <InlineRef topicId="volatile-agents" refLabel="BJA Educ 2014" />
+              <InlineRef topicId="volatile-agents" refLabel="BJA Organ Effects 2006" />
+            </p>
           </section>
 
           <section className="mb-10">
@@ -441,7 +448,9 @@ const VolatileAgentsTopic = () => {
               <div className="rounded-lg border border-border p-4"><strong>Sevoflurane</strong><p className="mt-1 text-muted-foreground">Compound A forms with CO₂ absorbents, especially low flow and dry absorbent; nephrotoxicity is established in rats but clinically important human injury is unproven. Desiccated strong-base absorbents can generate heat and carbon monoxide, creating a fire hazard.</p></div>
               <div className="rounded-lg border border-border p-4"><strong>Desflurane</strong><p className="mt-1 text-muted-foreground">Pungent and unsuitable for inhalational induction. Rapid concentration increases stimulate the sympathetic system. Its boiling point near room temperature requires a heated, pressurised vaporiser.</p></div>
               <div className="rounded-lg border border-border p-4"><strong>Isoflurane</strong><p className="mt-1 text-muted-foreground">Pungent, slow to wash out and a potent coronary vasodilator. “Coronary steal” is a largely historical concern, but avoid hypotension and tachycardia in severe coronary disease.</p></div>
-              <div className="rounded-lg border border-border p-4"><strong>Nitrous oxide</strong><p className="mt-1 text-muted-foreground">Expands closed gas spaces (pneumothorax, bowel, middle ear and intracranial air), increases PONV, and oxidises vitamin B₁₂-dependent methionine synthase; prolonged or repeated exposure may cause megaloblastic anaemia and subacute combined degeneration.</p></div>
+              <div className="rounded-lg border border-border p-4"><strong>Nitrous oxide</strong><p className="mt-1 text-muted-foreground">Expands closed gas spaces (pneumothorax, bowel obstruction, middle ear, intraocular gas and intracranial air) because it is 34 times more soluble than nitrogen, so it enters faster than nitrogen leaves. It increases PONV, diffuses into tracheal tube cuffs, and irreversibly oxidises the cobalt in vitamin B₁₂, inhibiting methionine synthase; exposure beyond a few hours or repeated exposure risks megaloblastic anaemia, hyperhomocysteinaemia and subacute combined degeneration of the cord. Avoid in B₁₂ or folate deficiency, in early pregnancy and in prolonged critical-care use.</p></div>
+              <div className="rounded-lg border border-border p-4"><strong>Halothane (historical)</strong><p className="mt-1 text-muted-foreground">Two patterns of liver injury: a common, mild, self-limiting transaminitis from reductive metabolism under hypoxic conditions; and true <strong>halothane hepatitis</strong> (about 1 in 10,000–35,000), an immune-mediated fulminant hepatic necrosis in which oxidative metabolism by CYP2E1 produces trifluoroacetyl chloride that haptenises hepatic proteins, generating anti-TFA antibodies. Risk rises with repeat exposure, female sex, obesity and middle age. Halothane also sensitises the myocardium to catecholamines (avoid adrenaline infiltration; risk of ventricular arrhythmias) and is a negative inotrope.</p></div>
+              <div className="rounded-lg border border-border p-4"><strong>Carbon monoxide and absorbent hazards</strong><p className="mt-1 text-muted-foreground">Desiccated strong-base absorbents (particularly Baralyme, now withdrawn) degrade desflurane, isoflurane and enflurane — agents containing a CHF₂ moiety — to clinically significant carbon monoxide, classically after a weekend of high fresh-gas flow through an unused circuit. Sevoflurane with desiccated absorbent instead generates intense exothermic reaction, with reports of absorber fires. Prevention: change absorbent regularly, turn off gas flows overnight, and be suspicious of an unexpectedly high SpO₂/COHb discrepancy on the first case of the week.</p></div>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">All potent halogenated agents are contraindicated in malignant-hyperthermia susceptibility <InlineRef topicId="volatile-agents" refLabel="AAGBI MH 2020" />.</p>
           </section>
