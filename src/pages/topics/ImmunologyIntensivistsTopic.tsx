@@ -362,17 +362,22 @@ const complementSteps: AnimatedMechanismStep[] = [
     label: "Effectors",
     detail: (
       <>
-        Two effector arms fire in parallel: <strong>C3a &amp; C5a</strong> drive mast-cell
-        degranulation, vasodilatation and neutrophil chemotaxis; <strong>C5b–C9</strong>{" "}
-        assembles the <strong>membrane attack complex (MAC)</strong> that lyses
-        Gram-negative bacteria.
+        Two effector arms fire in parallel. <strong>C3a &amp; C5a</strong> (anaphylatoxins) act via
+        G-protein-coupled receptors (C3aR, C5aR1) — <strong>C5a is far more potent than C3a</strong>.
+        Effects include mast-cell and basophil degranulation with histamine release
+        (vasodilatation, increased vascular permeability), potent chemotaxis of neutrophils,
+        monocytes and macrophages, upregulation of endothelial adhesion molecules to promote
+        leucocyte extravasation, and phagocyte activation with enhanced respiratory burst.
+        <strong>C5b–C9</strong> assembles the <strong>membrane attack complex (MAC)</strong> that
+        lyses Gram-negative bacteria.
       </>
     ),
     callout: (
       <>
         Terminal complement (C5–C9) deficiency → recurrent Neisseria infections.
         Eculizumab (anti-C5) blocks MAC formation — patients need meningococcal
-        vaccination before starting.
+        vaccination before starting. Neutrophil C5a receptor (C5aR1) is downregulated
+        in sepsis, contributing to impaired neutrophil chemotaxis and immunoparalysis.
       </>
     ),
   },

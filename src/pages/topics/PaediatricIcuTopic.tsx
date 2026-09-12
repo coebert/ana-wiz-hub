@@ -233,6 +233,15 @@ const PaediatricIcuTopic = () => {
                 <p className="font-semibold text-foreground text-sm">Non-Invasive Support</p>
                 <p className="text-sm text-muted-foreground mt-1">HFNC at 1–2 L/kg/min — commonly used in bronchiolitis, but recent reviews question its evidence base and routine place in standard care <InlineRef topicId="paediatric-icu" refLabel="RSV Lancet 2024" />. CPAP/BiPAP increasingly first-line for moderate respiratory failure.</p>
               </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">Paediatric ARDS (PARDS)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  The Global Definition of PARDS <InlineRef topicId="paediatric-icu" refLabel="PARDS Global 2023" /> requires onset within 7 days of a known insult, new infiltrate(s) on imaging not fully explained by cardiac failure or fluid overload, and hypoxaemia quantified by <strong>OI</strong> or <strong>OSI</strong> in intubated patients, or by <strong>SpO₂/FiO₂ ≤250</strong> on CPAP/NIV ≥5 cmH₂O for non-invasive disease. <strong>OI = (FiO₂ × mean airway pressure × 100) / PaO₂</strong>.
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Ventilation targets: Vt 5–8 mL/kg PBW, plateau ≤28 cmH₂O, permissive hypercapnia (pH ≥7.20), PEEP titrated 8–15 cmH₂O. Adjuncts: prone positioning for moderate/severe disease (OI ≥12), neuromuscular blockade, recruitment manoeuvres, conservative fluid strategy, and ECMO for refractory hypoxaemia.
+                </p>
+              </div>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
