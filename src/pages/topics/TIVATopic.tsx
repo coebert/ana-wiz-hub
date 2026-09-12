@@ -54,6 +54,8 @@ const tocItems = [
   { id: "practical", label: "Practical TIVA Setup", group: "Clinical" },
   { id: "pris", label: "Propofol Infusion Syndrome", group: "Clinical" },
   { id: "special-pops", label: "Special Populations", group: "Clinical" },
+  { id: "organ-protection", label: "Cardioprotection, Neurocognition & Oncology", group: "Clinical" },
+  { id: "pharmacogenomics", label: "Propofol Pharmacogenomics", group: "Clinical" },
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
 
