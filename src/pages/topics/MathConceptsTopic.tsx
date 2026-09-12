@@ -41,7 +41,7 @@ const workedExamples: WorkedExample[] = [
     working:
       "τ = Volume / Flow = 2.5 L / 8 L·min⁻¹ = 0.31 min ≈ 19 s.\nWash-in is a negative exponential rise: 1 τ → 63%, 3 τ → 95%, 5 τ → 99%.\nTime to ~95% ≈ 3 τ = 3 × 19 s ≈ 57 s.",
     answer:
-      "End-tidal O₂ reaches ~95% after roughly one minute (3 time constants). This underpins the Association of Anaesthetists' recommendation (Recommendations for standards of monitoring during anaesthesia and recovery 2021) for ≥3 minutes of tidal-volume pre-oxygenation, which provides a comfortable safety margin to ≥99% (5τ).",
+      "End-tidal O₂ reaches ~95% after roughly one minute (3 time constants). The Association of Anaesthetists recommends pre-oxygenation for at least 3 minutes of tidal breathing, or until end-tidal O₂ exceeds 90% (Recommendations for standards of monitoring during anaesthesia and recovery 2021). The guideline itself is not framed in terms of time constants, but this calculation illustrates the safety margin it provides: 3 minutes extends well beyond the ~1 minute (3τ) needed for 95% wash-in, so the process is effectively complete (>5τ).",
     cites: ["Assoc Anaesth 2021", "Peck & Hill Appendix"],
   },
   {
