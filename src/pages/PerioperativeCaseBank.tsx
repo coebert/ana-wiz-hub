@@ -328,13 +328,14 @@ const PerioperativeCaseBank = () => {
         </div>
       </section>
 
-      <div className="flex flex-wrap gap-2 mb-6" role="group" aria-label="Filter cases by subject">
+      <div className="-mx-1 px-1 mb-6 flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible" role="group" aria-label="Filter cases by subject">
         {categories.map((item) => (
-          <Button key={item} type="button" size="sm" variant={category === item ? "primary" : "outline"} onClick={() => setCategory(item)} aria-pressed={category === item}>
+          <Button key={item} type="button" size="sm" className="shrink-0" variant={category === item ? "primary" : "outline"} onClick={() => setCategory(item)} aria-pressed={category === item}>
             {item}
           </Button>
         ))}
       </div>
+
 
       <p className="text-sm text-muted-foreground mb-4">Showing {visibleCases.length} of {cases.length} cases</p>
       <div className="space-y-5">
