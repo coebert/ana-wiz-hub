@@ -4,3 +4,4 @@
 - [x] Expand the perioperative case bank with additional anonymised, evidence-based clinical scenarios in the established two-pass format
 - [x] Investigate and fix the content audit getting stuck
 - [x] Add a discussion section (questions + replies) to each topic page, live on the site
+- [ ] Batch 1 of 10 content-audit fixes (7 topics, 24 findings) + mark fixed in DB
