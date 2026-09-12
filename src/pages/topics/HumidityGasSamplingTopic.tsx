@@ -145,9 +145,36 @@ const HumidityGasSamplingTopic = () => {
                 Modern <strong>heat and moisture exchange filters (HMEFs)</strong> passively trap heat and moisture from
                 exhaled gas, typically returning <strong>30–38 mg/L</strong> on inspiration depending on the device and
                 ventilation parameters <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ Humidification 2018" />.
-                They add mechanical dead space (30–90 mL). <strong>Heated water bath humidifiers</strong>
-                actively achieve 44 mg/L but carry risks of circuit condensation, infection, and airway burns
+                They add mechanical dead space (30–90 mL).
+              </p>
+              <p>
+                <strong>Heated water bath humidifiers.</strong> Inspired gas is passed over (<em>pass-over</em> design) or bubbled
+                through (<em>bubble-through</em> design) a reservoir of heated water, leaving the chamber fully saturated so that at
+                the airway it delivers <strong>100 % relative humidity at 37 °C ≈ 44 mg/L</strong> — the same conditioning the upper
+                airway normally provides. Pass-over designs (often with a hydrophobic membrane or wick to increase surface area)
+                add little resistance and generate no aerosol; bubble-through designs humidify more efficiently at high flows but
+                raise resistance and can aerosolise contaminated water
+                <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ Humidification 2018" />.
+              </p>
+              <p>
+                <strong>Components:</strong> a thermostatically controlled heater base, a disposable water chamber with an
+                auto-feed reservoir, an airway temperature probe, and usually a <strong>heated wire in the inspiratory limb</strong>
+                that keeps the circuit above chamber temperature to prevent condensation ("rain-out").
+                <strong> Risks:</strong> thermal airway injury if the servo/thermostat fails or the probe is misplaced, scalding from
+                the reservoir, condensate pooling that increases resistance and can be tipped into the airway, added circuit weight
+                causing disconnection or accidental extubation, loss of PEEP if the circuit is broken to drain water, and bacterial
+                colonisation of the warm reservoir (a nosocomial pneumonia risk with bubble-through systems in particular).
+                They are also bulkier and more expensive than an HMEF and need a power supply
                 <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ 2007" />.
+              </p>
+              <p>
+                <strong>Choosing between them:</strong> an HMEF is adequate for routine theatre ventilation and short-term ICU use
+                (cheap, passive, also filters). Active heated humidification is preferred for <strong>prolonged ventilation</strong>,
+                <strong> thick or tenacious secretions</strong> and mucus plugging, <strong>hypothermia</strong> or rewarming,
+                tracheostomy and long-term airways, neonates and small children (where HMEF dead space is significant), high-flow
+                nasal oxygen, and whenever an HMEF's added dead space or resistance is not tolerated (severe airflow obstruction,
+                permissive hypercapnia, low tidal volumes)
+                <InlineRef topicId="humidity-gas-sampling" refLabel="BJA Educ Humidification 2018" />.
               </p>
             </div>
             </CollapsibleSubsection>
