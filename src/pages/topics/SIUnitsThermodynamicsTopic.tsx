@@ -224,15 +224,42 @@ const SIUnitsThermodynamicsTopic = () => {
                 (constant T, n → P₁V₁ = P₂V₂), <strong>Charles' law</strong> (constant P, n → V₁/T₁ = V₂/T₂), and <strong>Gay-Lussac's law</strong> (constant V, n → P₁/T₁ = P₂/T₂).
               </p>
               <p>
+                <strong>Avogadro's hypothesis</strong> states that equal volumes of all ideal gases, at the same temperature and
+                pressure, contain the same number of molecules (V ∝ n). <strong>Avogadro's constant</strong> (6.022 × 10²³ mol⁻¹)
+                is the number of elementary entities in one mole, and it follows that <strong>one mole of any ideal gas at STP
+                occupies 22.4 L</strong>. Clinical example: a size E oxygen cylinder contains about 680 L of gas ≈ 30 mol
+                (680 ÷ 22.4), so the available volume and duration at a given flow can be calculated from moles; the same logic
+                underlies vaporiser output calculations <InlineRef topicId="si-units-thermodynamics" refLabel="Middleton Ch.1" />.
+              </p>
+              <p>
                 <strong>Dalton's law</strong> (total pressure = sum of partial pressures) underpins the alveolar gas equation:
                 PAO₂ = FiO₂(P<sub>atm</sub> − PH₂O) − PaCO₂/RQ. <strong>Henry's law</strong> (amount dissolved ∝ partial pressure × solubility) explains
                 nitrogen narcosis, decompression sickness, and blood gas analysis.
               </p>
-              <p>
-                Real gases deviate from ideal behaviour at <strong>high pressures</strong> and <strong>low temperatures</strong> (near the critical point).
-                N₂O in cylinders is a real gas (stored as liquid), while O₂ behaves close to an ideal gas at clinical temperatures. The <strong>van der Waals equation</strong>
-                accounts for intermolecular forces and molecular volume in real gases.
-              </p>
+              <div className="rounded-lg border border-border p-4 space-y-2">
+                <h3 className="font-semibold text-foreground">Real gases and the van der Waals equation</h3>
+                <p>
+                  Ideal-gas theory makes two assumptions that real gases violate: (1) <strong>molecules have negligible
+                  volume</strong> compared with the container, and (2) <strong>there are no intermolecular forces</strong>. At
+                  high pressures the molecules' own volume becomes significant, and at low temperatures (near liquefaction)
+                  attractive intermolecular (van der Waals) forces become significant. The <strong>van der Waals equation</strong>{" "}
+                  corrects for both: <strong>(P + a(n/V)²)(V − nb) = nRT</strong>, where the constant <em>a</em> corrects the
+                  measured pressure for intermolecular attraction (which reduces the force of collisions with the walls) and{" "}
+                  <em>b</em> corrects the available volume for the finite size of the molecules.
+                </p>
+                <p>
+                  The <strong>critical temperature</strong> of a gas is the temperature above which it cannot be liquefied by
+                  pressure alone, and the <strong>critical pressure</strong> is the pressure needed to liquefy it at that
+                  temperature. <strong>Nitrous oxide has a critical temperature of 36.5 °C</strong> — above room temperature — so
+                  it can be stored as a <strong>liquid under pressure</strong> in cylinders. Because the cylinder contains liquid
+                  in equilibrium with its vapour, the pressure gauge reads a constant <strong>saturated vapour pressure</strong>
+                  (~44 bar in the UK) for as long as any liquid remains, and only falls once the liquid is exhausted. The gauge is
+                  therefore an unreliable measure of contents: N₂O cylinders must be <strong>weighed</strong> (filling ratio 0.75
+                  in temperate climates). Oxygen, with a critical temperature of −118 °C, behaves almost ideally at clinical
+                  temperatures and its cylinder gauge does track contents
+                  <InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2017 (Gas Supply)" />.
+                </p>
+              </div>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
