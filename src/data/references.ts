@@ -167,6 +167,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Middleton Ch.13", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 13: Ultrasound." },
     { label: "BMUS Safety Guidelines", citation: "British Medical Ultrasound Society. Guidelines for the safe use of diagnostic ultrasound equipment. BMUS; 2021.", url: "https://www.bmus.org/policies-statements-guidelines/safety-guidelines/" },
     { label: "Diagnostics 2024 Elastography", citation: "Advancements in Interventional Pulmonology: Harnessing Ultrasound Techniques for Precision Diagnosis and Treatment. Diagnostics. 2024;14(15):1604.", url: "https://doi.org/10.3390/diagnostics14151604" },
+    { label: "BJA Educ Ultrasound Physics 2020", citation: "Physics of ultrasound. BJA Education. 2020 — review of ultrasound generation, display modes (A-, B- and M-mode), Doppler and the thermal and mechanical indices used to limit bioeffects.", url: "https://www.bjaed.org/article/S2058-5349(20)30113-6/fulltext" },
   ],
   "lasers-fibreoptics": [
     { label: "BJA Educ 2017", citation: "English J, Rana S. Management of the shared airway. BJA Education. 2017;17(8):265-270.", url: "https://doi.org/10.1093/bjaed/mkx009" },
