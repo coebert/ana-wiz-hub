@@ -27,6 +27,8 @@ const tocItems = [
   { id: "procedures", label: "Key surgical procedures", group: "Clinical" },
   { id: "tiva", label: "Paediatric TIVA & remi-mix", group: "Technique" },
   { id: "analgesia", label: "PCA, NCA & caudal block", group: "Technique" },
+  { id: "emergence-agitation", label: "Emergence agitation & delirium", group: "Clinical" },
+  { id: "urti", label: "The child with a URTI", group: "Clinical" },
   { id: "fluids", label: "Fluid management", group: "Clinical" },
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
