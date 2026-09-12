@@ -133,10 +133,15 @@ const PressureMeasurementTopic = () => {
                 </p>
                 <p className="text-sm text-muted-foreground mt-2">
                   An <strong>aneroid gauge</strong> uses an evacuated flexible metal capsule or bellows that expands or contracts with
-                  pressure and drives a dial through linkages. A <strong>Bourdon gauge</strong> uses a curved, flattened hollow metal tube
-                  open to the pressure source; rising pressure makes it straighten, and a lever-and-gear mechanism amplifies movement of
-                  the free end to turn a pointer. Its robust high-pressure range suits gas cylinders and regulators
-                  <InlineRef topicId="pressure-measurement" refLabel="Al-Shaikh & Stacey Ch.19" />.
+                  pressure and drives a dial through linkages. A <strong>Bourdon gauge</strong> uses a coiled, flattened hollow metal tube
+                  of elliptical cross-section open to the pressure source; rising pressure makes the tube uncoil, and a lever-and-gear
+                  mechanism amplifies movement of the free end to turn a pointer over a calibrated dial. It reads gauge pressure (zero at
+                  atmospheric), spans cylinder pressures up to ~250 bar, and is used on cylinder yokes, pipeline gauges and regulators.
+                  Limitations: mechanical hysteresis and wear of the linkage, susceptibility to mechanical shock, a slow response that makes
+                  it unsuitable for dynamic waveforms, temperature-dependent tube elasticity, and the need for periodic recalibration; a
+                  ruptured tube is directed away from the operator by a blow-out disc
+                  <InlineRef topicId="pressure-measurement" refLabel="Al-Shaikh & Stacey Ch.19" />
+                  <InlineRef topicId="pressure-measurement" refLabel="BJA Educ 2018 (Physics)" />.
                 </p>
               </div>
             </DiagramSection>
@@ -159,6 +164,25 @@ const PressureMeasurementTopic = () => {
                   Normally P1 &gt; P2; P2 exceeding P1 suggests reduced intracranial compliance
                   <InlineRef topicId="pressure-measurement" refLabel="BTF Severe TBI" />.
                 </p>
+                <p>
+                  <strong>Indications</strong>: severe traumatic brain injury with GCS ≤8 and an abnormal CT (or a normal CT with two of
+                  age &gt;40 years, motor posturing, or systolic pressure &lt;90 mmHg), poor-grade subarachnoid haemorrhage with
+                  hydrocephalus or a depressed conscious level, large middle cerebral artery infarction with impending malignant oedema,
+                  fulminant hepatic failure with grade IV encephalopathy, and selected patients after cardiac arrest or intracranial
+                  surgery where neurological examination is unavailable <InlineRef topicId="pressure-measurement" refLabel="BTF Severe TBI" />.
+                </p>
+                <p>
+                  <strong>Derived targets</strong>: cerebral perfusion pressure <strong>CPP = MAP − ICP</strong> (use ICP or central venous
+                  pressure, whichever is higher). Treat ICP above <strong>22 mmHg</strong> and aim for a CPP of
+                  <strong> 60–70 mmHg</strong>, individualised to autoregulatory reserve; aggressive pressor-driven CPP &gt;70 mmHg risks
+                  ARDS <InlineRef topicId="pressure-measurement" refLabel="BTF Severe TBI" />.
+                </p>
+                <p>
+                  <strong>Complications and pitfalls</strong>: infection/ventriculitis (rising with duration of an EVD), tract or
+                  intraparenchymal haemorrhage, malposition and failure to cannulate a shifted or collapsed ventricle, catheter blockage by
+                  blood or debris, CSF leak, over-drainage causing ventricular collapse, and measurement error from zero drift, an
+                  incorrectly levelled transducer, or air/blood in the fluid-filled line.
+                </p>
               </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -178,6 +202,21 @@ const PressureMeasurementTopic = () => {
                   patient supine and abdominal muscles relaxed. Raised IAP reduces renal perfusion and urine output, raises diaphragm and
                   airway pressures, impairs venous return and cardiac output, and compromises splanchnic perfusion; it is independently
                   associated with acute kidney injury <InlineRef topicId="pressure-measurement" refLabel="Intensive Care Med 2008 IAP" />.
+                </p>
+                <p>
+                  <strong>Kron technique, step by step</strong>: drain and clamp the urinary catheter, connect a three-way tap and
+                  transducer set to the sampling port, instil 20–25 mL of sterile saline into the empty bladder, clamp the drainage tubing
+                  distal to the port, zero the transducer at the level of the <strong>symphysis pubis</strong> (the original description) or
+                  the mid-axillary line at the iliac crest (the WSACS reference), wait 30–60 seconds for detrusor relaxation, and read at
+                  end-expiration in the complete supine position. Normal IAP in a ventilated adult is 5–7 mmHg and IAP &lt;12 mmHg is
+                  normal overall <InlineRef topicId="pressure-measurement" refLabel="WSACS IAP Consensus" />.
+                </p>
+                <p>
+                  <strong>Sources of error</strong>: an incorrectly levelled or unzeroed transducer, head-up or lateral positioning (each
+                  degree of head-up tilt raises the reading), detrusor contraction or a small contracted bladder, instilling excess volume
+                  (&gt;25 mL falsely elevates IAP), a blocked or kinked catheter, abdominal muscle activity, coughing or straining, reading
+                  during inspiration on positive-pressure ventilation, obesity and pregnancy (chronically raised baseline), and air bubbles
+                  in the fluid column.
                 </p>
               </div>
             </CollapsibleSubsection>

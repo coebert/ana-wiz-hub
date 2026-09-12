@@ -13,6 +13,7 @@ import CoandaEffectDiagram from "@/components/diagrams/physics/CoandaEffectDiagr
 import { flowMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const flowMeasurementFaqs: Array<[string, string]> = [
   [
@@ -166,11 +167,81 @@ const FlowMeasurementTopic = () => {
               Lilly — fine mesh screen). Integrating flow over time gives volume — the basis of many ventilator spirometers.
             </p>
             <PneumotachographDiagram />
+            <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border space-y-2">
+              <p className="text-sm font-medium text-foreground">Pneumotachograph — principle and sources of error</p>
+              <p className="text-sm text-muted-foreground">
+                The resistive element is designed so that flow through it stays <strong>laminar</strong>; only then is the pressure drop
+                <em> directly proportional</em> to flow (Hagen–Poiseuille). The <strong>Fleisch</strong> type uses many parallel fine-bore
+                capillaries; the <strong>Lilly</strong> type uses one or more fine mesh screens, which are lighter and better suited to
+                rapid respiratory waveforms <InlineRef topicId="flow-measurement" refLabel="A&ICM 2023 (Gas flow)" />.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Errors arise from: <strong>gas composition</strong> — pressure drop depends on viscosity, so a N₂O/O₂ mixture reads
+                differently from air/O₂ unless recalibrated; <strong>temperature</strong> — the head is heated to about body temperature to
+                prevent condensation and to keep viscosity stable; <strong>water vapour and secretions</strong> — deposition on the screen
+                or capillaries raises resistance and over-reads flow; and <strong>turbulence</strong> — if flow becomes turbulent the
+                pressure drop varies with flow <em>squared</em>, so the linear calibration under-reads high flows
+                <InlineRef topicId="flow-measurement" refLabel="BJA Educ 2004" />.
+              </p>
+            </div>
             <p className="text-foreground/90 leading-relaxed mt-3 mb-4">
               <strong>Wright respirometer</strong>: a turbine vane flowmeter. Under-reads at low flows and over-reads at high
               flows. Measures expired tidal and minute volumes.
             </p>
             <WrightRespirometerDiagram />
+            <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border space-y-2">
+              <p className="text-sm font-medium text-foreground">Wright respirometer — mechanism and errors</p>
+              <p className="text-sm text-muted-foreground">
+                Gas entering tangential slots spins a lightweight flat vane; each rotation displaces a known volume, and a gear train drives
+                a pointer over a dial calibrated in litres. It therefore measures <strong>volume</strong> by counting vane rotations, and
+                minute volume is read over 60 seconds <InlineRef topicId="flow-measurement" refLabel="Cross &amp; Plunkett Ch.8" />.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Because the vane has <strong>inertia and friction</strong>, low flows (&lt;2 L/min) may fail to overcome them so the device
+                <em> under-reads</em>; at high flows (&gt;300 L/min) the vane keeps spinning after flow ceases, so it <em>over-reads</em>.
+                Readings are also affected by <strong>gas density and viscosity</strong> (calibration is for air/O₂), and by
+                <strong> condensation</strong> of water vapour, which loads the vane and gums the gearing. It is unidirectional and must be
+                placed on the expiratory limb the correct way round <InlineRef topicId="flow-measurement" refLabel="A&ICM 2023 (Gas flow)" />.
+              </p>
+            </div>
+            <p className="text-foreground/90 leading-relaxed mt-4">
+              <strong>Hot-wire anemometer</strong>: a fine platinum wire is electrically heated and cooled by passing gas. The current
+              needed to hold the wire at constant temperature is proportional to mass flow, giving a very fast response with no moving
+              parts — but the wire is fragile and the reading depends on gas composition (thermal conductivity) and on water vapour
+              deposition <InlineRef topicId="flow-measurement" refLabel="A&ICM 2023 (Gas flow)" />.
+            </p>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              <strong>Ultrasonic flowmeter</strong>: paired transducers send pulses diagonally upstream and downstream. The
+              <strong> transit-time difference</strong> is proportional to gas velocity, and multiplying by cross-sectional area gives flow.
+              There are no moving parts, resistance is negligible, and the measurement is largely independent of gas composition, so it is
+              used in modern ventilators and in vaporiser-free flow sensors
+              <InlineRef topicId="flow-measurement" refLabel="BJA Educ 2018 (Physics)" />.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="orifice-flow" exams={[Exam.PRIMARY]}>
+            <CollapsibleSubsection title="Orifice Flow & Critical Flow">
+            <p className="text-foreground/90 leading-relaxed">
+              An <strong>orifice</strong> is a constriction whose length is much less than its radius (l ≪ r). Flow through it is
+              turbulent, so flow is proportional to the <strong>square root</strong> of the pressure drop rather than being linearly
+              related to it, and it depends on <strong>density</strong> rather than viscosity. Graham's law follows: for a given pressure
+              drop, flow ∝ 1/√density — which is why light heliox flows better through a fixed narrowing and why N₂O (dense) flows less
+              readily than O₂ through the same orifice <InlineRef topicId="flow-measurement" refLabel="Middleton Ch.6" />.
+            </p>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              Contrast this with the <strong>Hagen–Poiseuille</strong> equation, which applies to laminar flow through a tube (l ≫ r),
+              where flow is directly proportional to pressure drop and to r⁴, and inversely proportional to viscosity. The rotameter
+              behaves as a tube at low flows (viscosity-dependent) and as an orifice at high flows (density-dependent) because the annulus
+              around the bobbin becomes short and wide. The same orifice physics governs flow from cylinder valves and through a
+              partially obstructed tracheal tube <InlineRef topicId="flow-measurement" refLabel="Cross &amp; Plunkett Ch.8" />.
+            </p>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              <strong>Critical flow</strong> occurs when gas velocity through the constriction reaches the local speed of sound; further
+              lowering downstream pressure cannot increase flow, so flow is "choked". This is the basis of the constant, predictable jet
+              output of Venturi devices and of sonic-orifice flow limitation in high-pressure regulators
+              <InlineRef topicId="flow-measurement" refLabel="BJA Educ 2018 (Physics)" />.
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 
