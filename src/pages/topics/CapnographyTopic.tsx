@@ -191,7 +191,7 @@ const keyPoints = [
     cites: ["Bhavani-Shankar & Philip 2000"],
   },
   {
-    text: "Capnography is mandatory monitoring for all general anaesthesia, sedation requiring airway support, advanced airways including LMA, and intubated transfers (Association of Anaesthetists 2021; NAP4).",
+    text: "Capnography is mandatory monitoring for all general anaesthesia, sedation requiring airway support, advanced airways including LMA, and intubated transfers. The Association of Anaesthetists 2021 standards reinforce that waveform capnography is required during sedation and during regional anaesthesia with sedation, not general anaesthesia alone (Association of Anaesthetists 2021; NAP4).",
     cites: ["Association of Anaesthetists 2021", "NAP4"],
   },
   {
