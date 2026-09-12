@@ -171,8 +171,26 @@ const OpioidsTopic = () => {
               Three classical receptors, all G-protein coupled (Gi/Go): <strong>µ (mu/MOP)</strong> — analgesia (supraspinal and
               spinal), respiratory depression, euphoria, physical dependence, miosis, ↓GI motility, bradycardia.
               <strong> κ (kappa/KOP)</strong> — spinal analgesia, sedation, dysphoria, diuresis. <strong>δ (delta/DOP)</strong>
-              — spinal analgesia, modulation of µ receptor function.
+              — spinal analgesia, modulation of µ receptor function. <strong>NOP (nociceptin/orphanin FQ peptide) receptor</strong>
+              — the fourth member of the opioid receptor family, activated by the endogenous peptide nociceptin/orphanin FQ. It is
+              structurally related but <strong>not sensitive to naloxone</strong>; NOP agonists produce analgesia without significant
+              respiratory depression and act synergistically with MOP agonists (cebranopadol, buprenorphine's NOP activity), making
+              the receptor an attractive target for safer analgesics.<InlineRef topicId="opioids" refLabel="BJA Open 2023 Opioid Receptors" />
             </p>
+            <div className="mt-3 rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Modern concepts: biased agonism &amp; allosteric modulation</h3>
+              <ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-foreground/90">
+                <li><strong>Biased agonism (functional selectivity):</strong> MOP activation recruits two principal pathways — the
+                  <strong> G-protein (Gi/Go)</strong> pathway, which mediates analgesia, and the <strong>β-arrestin-2</strong> pathway,
+                  implicated in respiratory depression, gastrointestinal effects and tolerance. A biased agonist preferentially
+                  activates one pathway; <strong>oliceridine</strong> is the clinical example of a G-protein-biased MOP agonist,
+                  though the size of its clinical safety advantage remains debated.<InlineRef topicId="opioids" refLabel="BJA 2019 Mixed & Biased Opioids" /></li>
+                <li><strong>Allosteric modulation:</strong> allosteric ligands bind a site distinct from the orthosteric (opioid-binding)
+                  site. <strong>Positive allosteric modulators (PAMs)</strong> amplify the effect of endogenous enkephalins or
+                  administered opioids, potentially allowing lower doses with fewer receptor-saturation side effects; negative
+                  modulators do the reverse.<InlineRef topicId="opioids" refLabel="BJA Open 2023 Opioid Receptors" /></li>
+              </ul>
+            </div>
             <p className="text-foreground/90 leading-relaxed mt-3">
               <strong>Signal transduction</strong>: receptor activation → Gi protein → ↓cAMP, opens K⁺ channels (hyperpolarisation),
               closes voltage-gated Ca²⁺ channels → inhibits neurotransmitter release and neuronal firing.
@@ -228,6 +246,31 @@ const OpioidsTopic = () => {
               highest µ-receptor affinity. <strong>Codeine</strong>: prodrug, CYP2D6 → morphine (~10 % dose). Pharmacogenomic
               variation. <strong>Tramadol</strong>: weak µ + serotonin/noradrenaline reuptake inhibition. Serotonin syndrome
             </p>
+            <div className="mt-4 grid md:grid-cols-2 gap-3">
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Alfentanil in detail</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-foreground/90">
+                  <li>Potency ≈ 10–20× morphine; ≈ one-quarter to one-fifth as potent as fentanyl.</li>
+                  <li>Rapid onset/offset suits short, intensely stimulating events — laryngoscopy, intubation, awake fibreoptic
+                    topicalisation, ECT and brief procedural analgesia; typical adult bolus 10–20 µg/kg.</li>
+                  <li>Hepatic metabolism largely by <strong>CYP3A4</strong>, so clearance is prolonged by erythromycin, azole
+                    antifungals and protease inhibitors, and shortened by enzyme inducers.</li>
+                  <li>Low hepatic extraction and small V<sub>d</sub> mean the terminal half-life is short (≈ 90 min) and it is
+                    often preferred to morphine in renal failure.<InlineRef topicId="opioids" refLabel="Miller Ch.28" /></li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Sufentanil in detail</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-foreground/90">
+                  <li>Potency ≈ 500–1000× morphine (5–10× fentanyl) with the highest µ affinity of the fentanils — profound
+                    respiratory depression at small doses, so dosing errors are unforgiving.</li>
+                  <li>Marked cardiovascular stability makes it a traditional choice for cardiac surgery and for long-term ICU
+                    sedation/analgesia (including a sublingual tablet system for acute pain).</li>
+                  <li>Very high protein binding (≈ 92 %), high lipid solubility and high clearance; context-sensitive half-time
+                    rises less steeply than fentanyl over prolonged infusions.<InlineRef topicId="opioids" refLabel="BJA 2019 Mixed & Biased Opioids" /></li>
+                </ul>
+              </div>
+            </div>
             <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><MethadonePharmacologyDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -252,6 +295,43 @@ const OpioidsTopic = () => {
               respiratory depression while preserving κ-analgesia. <strong>Pentazocine</strong> — κ agonist with dysphoric and
               cardiovascular-stimulating effects; rarely used. All can precipitate withdrawal in opioid-dependent patients.
             </p>
+            <div className="mt-4 grid gap-3">
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Buprenorphine</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-foreground/90">
+                  <li><strong>Receptor profile:</strong> partial agonist at µ, antagonist at κ and δ (with additional NOP activity).</li>
+                  <li><strong>Ceiling effect:</strong> a plateau for respiratory depression, but analgesia continues to increase over
+                    the clinically used dose range — the basis of its favourable safety profile.</li>
+                  <li><strong>High µ affinity, slow dissociation:</strong> long duration (6–8 h sublingual), resistance to naloxone
+                    reversal (large repeated doses or an infusion may be required), and precipitation of withdrawal if given to a
+                    patient maintained on a full agonist.</li>
+                  <li><strong>Uses:</strong> chronic and cancer pain, opioid substitution therapy (often with naloxone as
+                    Suboxone), and postoperative analgesia.</li>
+                  <li><strong>Formulations:</strong> sublingual tablets/film, 7-day transdermal patch, and intravenous injection.<InlineRef topicId="opioids" refLabel="BJA 2019 Mixed & Biased Opioids" /></li>
+                </ul>
+              </div>
+              <div className="grid md:grid-cols-2 gap-3">
+                <div className="rounded-lg border border-border p-4">
+                  <h3 className="font-semibold text-foreground">Nalbuphine</h3>
+                  <ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-foreground/90">
+                    <li>κ agonist with µ antagonism.</li>
+                    <li>Provides κ-mediated analgesia while reversing µ-mediated respiratory depression and pruritus — useful after
+                      neuraxial morphine.</li>
+                    <li>Less respiratory depression than pure µ agonists (also with a ceiling), but dysphoria, sedation and
+                      diaphoresis are common.</li>
+                  </ul>
+                </div>
+                <div className="rounded-lg border border-border p-4">
+                  <h3 className="font-semibold text-foreground">Pentazocine</h3>
+                  <ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-foreground/90">
+                    <li>κ agonist with weak µ antagonism.</li>
+                    <li>Dysphoria and psychotomimetic effects (κ-mediated) limit use.</li>
+                    <li>Causes cardiovascular stimulation — a rise in catecholamines, heart rate, blood pressure and pulmonary
+                      artery pressure — making it unsuitable in ischaemic heart disease.<InlineRef topicId="opioids" refLabel="BJA 2019 Mixed & Biased Opioids" /></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
             <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><BuprenorphinePharmacologyDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -428,12 +508,134 @@ const OpioidsTopic = () => {
 
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PR_BK_05"]}>
+            <CollapsibleSubsection title="Opioid side effects by system">
+            <div className="grid md:grid-cols-2 gap-3 text-sm text-foreground/90">
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Central nervous system</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Sedation and drowsiness; euphoria or, with κ activity, dysphoria.</li>
+                  <li><strong>Miosis</strong> (Edinger–Westphal nucleus) — retained even in tolerant patients.</li>
+                  <li>Nausea and vomiting through stimulation of the chemoreceptor trigger zone and delayed gastric emptying.<InlineRef topicId="opioids" refLabel="BJA 2012 PONV Risk Factors" /></li>
+                  <li>Muscle rigidity, especially chest wall and vocal cords, after rapid high-dose fentanyl or remifentanil.</li>
+                  <li>Convulsions — rare; classically pethidine via the metabolite <strong>norpethidine</strong>, and tramadol
+                    at high dose or with other pro-convulsant drugs.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Respiratory system</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Dose-dependent respiratory depression: the ventilatory response to CO₂ is blunted and the CO₂ response
+                    curve shifted right and flattened, with a rising apnoeic threshold; respiratory rate falls before tidal volume.<InlineRef topicId="opioids" refLabel="BJA 2008 Opioids & Respiration" /></li>
+                  <li>Loss of hypoxic ventilatory drive and of the arousal response — the reason for continuous monitoring in
+                    at-risk patients.</li>
+                  <li>Antitussive (cough suppression) — useful for tube tolerance, unhelpful for sputum clearance.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Cardiovascular system</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Bradycardia from central vagotonic effect (marked with remifentanil and high-dose fentanyl).</li>
+                  <li>Hypotension from reduced sympathetic tone, venodilatation and, with morphine and pethidine, histamine release.</li>
+                  <li>Pethidine is the exception — antimuscarinic effect causes tachycardia; it is also negatively inotropic.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Gastrointestinal &amp; other</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Constipation from delayed gastric emptying and reduced propulsive peristalsis — tolerance does not develop;
+                    prescribe laxatives with any regular opioid.</li>
+                  <li>Biliary colic from spasm of the sphincter of Oddi and raised biliary pressure.</li>
+                  <li>Urinary retention from increased detrusor and sphincter tone, particularly after neuraxial opioid.</li>
+                  <li>Pruritus (central, µ-mediated as well as histamine-related) — responds to low-dose naloxone or nalbuphine
+                    rather than antihistamines.</li>
+                  <li>Endocrine/immune: chronic use causes hypogonadotrophic hypogonadism, hyperprolactinaemia, adrenal
+                    suppression and mild immunosuppression.<InlineRef topicId="opioids" refLabel="CDC Opioid Guideline 2022" /></li>
+                </ul>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PR_BK_05"]}>
+            <CollapsibleSubsection title="Considerations in specific populations">
+            <div className="grid md:grid-cols-2 gap-3 text-sm text-foreground/90">
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Elderly</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Increased sensitivity to both analgesic and respiratory-depressant effects (pharmacodynamic, not only
+                    pharmacokinetic).</li>
+                  <li>Reduced hepatic and renal clearance of morphine and accumulation of <strong>M6G</strong>; smaller lean mass
+                    and lower protein binding.</li>
+                  <li>Start low, go slow — reduce the bolus by roughly half and lengthen the interval; anticipate delirium risk
+                    and combine with multimodal, opioid-sparing analgesia.<InlineRef topicId="opioids" refLabel="CDC Opioid Guideline 2022" /></li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Paediatrics &amp; neonates</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Weight-based dosing throughout (µg/kg or mg/kg); higher V<sub>d</sub> for water-soluble drugs and immature
+                    hepatic conjugation in the first months of life.</li>
+                  <li>Neonates have reduced clearance, an immature blood–brain barrier and blunted ventilatory response to CO₂ —
+                    they are especially prone to apnoea, so use quarter-to-half adult weight-based doses with apnoea monitoring.</li>
+                  <li>Avoid codeine in children (CYP2D6 ultra-rapid metabolisers; contraindicated under 12 years and after
+                    tonsillectomy for obstructive sleep apnoea).</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Obstetrics</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>All opioids cross the placenta; neonatal respiratory depression and reduced Apgar scores follow maternal
+                    administration close to delivery (pethidine and norpethidine have long neonatal half-lives).</li>
+                  <li>They delay gastric emptying, increasing aspiration risk, and may reduce fetal heart-rate variability.</li>
+                  <li><strong>Remifentanil PCA</strong> (typically 20–40 µg bolus with a lock-out) is the common alternative when
+                    neuraxial analgesia is contraindicated, but demands one-to-one midwifery care, oxygen saturation monitoring
+                    and immediate availability of naloxone because of maternal apnoea risk.</li>
+                  <li>Opioids are secreted in breast milk in small amounts; morphine is preferred to codeine while breastfeeding.</li>
+                </ul>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <h3 className="font-semibold text-foreground">Obesity &amp; obstructive sleep apnoea</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1">
+                  <li>Greatly increased risk of airway obstruction, oxygen desaturation and postoperative respiratory depression;
+                    a major contributor to critical incidents on the ward.</li>
+                  <li>Dose lipophilic opioids on <strong>ideal or lean body weight</strong>, not total body weight; fentanyl
+                    sequesters in fat, prolonging effect after repeated dosing or infusion.</li>
+                  <li>Prefer short-acting agents, regional and multimodal techniques, head-up position, CPAP continuation and
+                    extended monitored recovery; avoid background infusions on PCA.<InlineRef topicId="opioids" refLabel="BJA 2008 Opioids & Respiration" /></li>
+                </ul>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PR_BK_05"]}>
             <CollapsibleSubsection title="Naloxone">
             <p className="text-foreground/90 leading-relaxed">
               Competitive µ, κ, δ antagonist. IV dose 1–4 µg/kg titrated. Onset 1–2 min. Duration 30–60 min — shorter than most
               opioids → risk of re-narcotisation; consider infusion (4–10 µg/kg/h). Pulmonary oedema and cardiovascular collapse
               can follow excessive or rapid administration in opioid-tolerant patients.
             </p>
+            <div className="mt-4 rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Managing opioid overdose in critical care</h3>
+              <ul className="mt-2 list-disc pl-5 space-y-1 text-sm text-foreground/90">
+                <li><strong>Titrate in small aliquots:</strong> in opioid-dependent or opioid-tolerant patients start with
+                  <strong> 20–40 µg</strong> IV every 1–2 min, aiming only to restore adequate ventilation, not full wakefulness.
+                  Abrupt complete reversal provokes a sympathetically driven withdrawal state with hypertension, arrhythmia,
+                  severe pain and flash pulmonary oedema.<InlineRef topicId="opioids" refLabel="BJA 2008 Opioids & Respiration" /></li>
+                <li><strong>Infusion:</strong> when the offending opioid outlasts naloxone, start an hourly infusion of roughly
+                  <strong> two-thirds of the total effective bolus dose</strong> (commonly 4–10 µg/kg/h), then titrate to
+                  respiratory rate and conscious level.</li>
+                <li><strong>Long-acting opioids:</strong> methadone (half-life 15–60 h) and slow-release preparations mandate
+                  prolonged infusion and monitoring. Buprenorphine's high µ affinity may need unusually large or repeated
+                  naloxone doses, and reversal may still be incomplete — support ventilation rather than escalate indefinitely.</li>
+                <li><strong>After reversal:</strong> observe in a monitored area for at least 2 h after the last naloxone dose for
+                  short-acting opioids, and considerably longer (12–24 h) for long-acting or sustained-release agents; discharge
+                  only with stable respiratory rate, oxygenation and conscious level on room air, plus a naloxone-safety and
+                  substance-misuse referral plan where relevant.<InlineRef topicId="opioids" refLabel="CDC Opioid Guideline 2022" /></li>
+                <li><strong>Alternatives:</strong> nalmefene is a longer-acting antagonist used in some systems; it is not in
+                  routine UK anaesthetic or ICU practice, and its long duration prolongs withdrawal if precipitated.</li>
+              </ul>
+            </div>
             <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6"><NaloxoneDiagram /></div>
             </CollapsibleSubsection>
           </ExamSection>
