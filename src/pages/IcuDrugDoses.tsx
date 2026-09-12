@@ -194,6 +194,14 @@ const IcuDrugDoses = () => {
             </section>
           ))}
         </div>
+
+        <p className="mt-10 text-sm text-muted-foreground">
+          Drawing up an infusion? See{" "}
+          <Link to="/intensive-care/infusions" className="font-medium text-icu underline-offset-4 hover:underline">
+            key ICU drug infusions
+          </Link>{" "}
+          for diluents, concentrations and mL/hour rates.
+        </p>
       </PageSection>
     </main>
   );
