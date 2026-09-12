@@ -367,6 +367,8 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
       excerpt: r.excerpt,
     })),
     text_chars: text.length,
+    case_bank: caseEntries,
+    case_bank_chars: caseEntries.reduce((n, c) => n + c.text.length, 0),
   };
 }
 
