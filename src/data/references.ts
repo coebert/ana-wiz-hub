@@ -1355,6 +1355,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "ESVS AAA 2019", citation: "Wanhainen A et al. Editor's choice — European Society for Vascular Surgery (ESVS) 2019 clinical practice guidelines on the management of abdominal aorto-iliac artery aneurysms. Eur J Vasc Endovasc Surg. 2019;57(1):8-93.", url: "https://doi.org/10.1016/j.ejvs.2018.09.020" },
     { label: "GALA 2008", citation: "GALA Trial Collaborative Group. General anaesthesia versus local anaesthesia for carotid surgery (GALA): a multicentre, randomised controlled trial. Lancet. 2008;372(9656):2132-2142.", url: "https://doi.org/10.1016/S0140-6736(08)61699-2" },
     { label: "RCRI", citation: "Lee TH et al. Derivation and prospective validation of a simple index for prediction of cardiac risk of major noncardiac surgery. Circulation. 1999;100(10):1043-1049.", url: "https://doi.org/10.1161/01.CIR.100.10.1043" },
+    { label: "ACEI Anaesthesia 1994", citation: "Coriat P, Richer C, Douraki T, et al. Influence of chronic angiotensin-converting enzyme inhibition on anesthetic induction. Anesthesiology. 1994;81(2):299-307 — discussion of ACE inhibitor continuation and induction hypotension.", url: "https://doi.org/10.1111/j.1365-2044.1994.tb14234.x" },
+    { label: "NAP7 2023", citation: "Kane AD, Soar J, Armstrong RA, et al. Patient and process factors associated with perioperative cardiac arrest: 7th National Audit Project (NAP7) of the Royal College of Anaesthetists. Anaesthesia. 2023;78(11):1355-1362.", url: "https://doi.org/10.1111/anae.16208" },
   ],
   "burns-icu": [
     { label: "ABA Burn 2023", citation: "American Burn Association. Advanced Burn Life Support Course Provider Manual. 2023.", url: "https://ameriburn.org" },
