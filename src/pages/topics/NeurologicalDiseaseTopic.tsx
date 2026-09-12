@@ -369,6 +369,27 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Discuss advance care planning: DNR status, NIV preferences, feeding decisions</li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Respiratory Assessment and Ventilatory Support</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Symptoms of respiratory muscle weakness: orthopnoea, morning headache (nocturnal hypercapnia), daytime somnolence and fatigue, weak/ineffective cough with poor secretion clearance</li>
+                <li>Bedside measures: sniff nasal inspiratory pressure (SNIP), supine vs erect FVC (a fall of &gt;20–25% supine indicates diaphragmatic weakness), FVC &lt;50% predicted marks significant respiratory muscle involvement and prompts NIV assessment</li>
+                <li>NIV (typically bilevel) for nocturnal hypoventilation improves quality of life and survival; initiate for symptomatic nocturnal hypoventilation, orthopnoea, or FVC/SNIP decline even before daytime hypercapnia develops — early initiation is key <InlineRef topicId="neurological-disease" refLabel="NICE NG42 (MND)" /></li>
+                <li>Sialorrhoea management: glycopyrronium (reduces secretions with less CNS penetration than hyoscine), hyoscine hydrobromide transdermal patch, atropine eye drops given sublingually, or botulinum toxin injection into salivary glands for refractory cases</li>
+                <li>Aspiration risk from bulbar weakness drives early consideration of gastrostomy (PEG/RIG) for nutrition — ideally performed before FVC falls below ~50% predicted, as respiratory reserve dictates procedural risk and anaesthetic technique</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Anaesthetic Care and Advance Care Planning</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Suxamethonium absolutely avoided — denervation-related upregulation of extra-junctional receptors risks life-threatening hyperkalaemia</li>
+                <li>Marked sensitivity to non-depolarising NMBAs — use reduced doses with mandatory quantitative (TOF) monitoring; sugammadex reversal for rocuronium</li>
+                <li>Increased sensitivity to opioids and sedatives — titrate cautiously, favour short-acting agents, and anticipate exaggerated respiratory depression</li>
+                <li>Use regional or local anaesthetic techniques wherever feasible to avoid airway instrumentation and systemic sedation</li>
+                <li>High risk of postoperative ventilator dependence in patients with pre-existing respiratory muscle weakness — plan critical care disposition and discuss realistic weaning/extubation goals before surgery</li>
+                <li>Early and ongoing advance care planning is essential: agree a ceiling of treatment and complete a ReSPECT (or equivalent) form; discuss tracheostomy ventilation as a treatment option and the patient's wishes regarding it; where ventilatory support is to be withdrawn, plan this with anticipatory symptom control (opioids, benzodiazepines) and specialist palliative care input <InlineRef topicId="neurological-disease" refLabel="NICE NG42 (MND)" /></li>
+              </ul>
+            </div>
           </div>
         </section>
 
