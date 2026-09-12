@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { CaseDosingReference } from "@/components/cases/CaseDosingReference";
 
 
 export type CaseCategory = "Steroid cover" | "Phaeochromocytoma" | "Antifibrinolytics" | "Co-existing disease" | "Paediatric anaesthesia";
