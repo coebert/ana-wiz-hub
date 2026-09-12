@@ -339,6 +339,18 @@ const GynaecologicalAnaesthesiaTopic = () => {
                     </div>
                   ))}
                 </div>
+                <h3 className="font-semibold text-foreground text-sm mb-2">Ruptured ectopic — emergency anaesthetic management</h3>
+                <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+                  <li><strong>Diagnosis and urgency</strong>: haemodynamic instability with a positive pregnancy test mandates immediate surgery — resuscitation and laparoscopy/laparotomy proceed in parallel, not in sequence<InlineRef topicId="gynaecological-anaesthesia" refLabel="RCOG Ectopic 2016" /></li>
+                  <li><strong>Haemodynamic goals</strong>: permissive hypotension with a target systolic of 80–100 mmHg (or a palpable radial pulse and maintained conscious level) until the surgeon has clamped the bleeding pedicle; avoid over-transfusion of clear fluid before surgical control</li>
+                  <li><strong>Resuscitation</strong>: activate the major haemorrhage protocol, use O RhD-negative blood until group-specific units are available, and transfuse in a 1:1:1 ratio of red cells : FFP : platelets; give tranexamic acid 1 g, calcium replacement, and use a rapid infuser with fluid warming</li>
+                  <li><strong>Access and monitoring</strong>: two large-bore cannulae (14–16 G), arterial line for beat-to-beat pressure and near-patient gases/haemoglobin, urinary catheter, temperature, and a central line if vasopressors are required</li>
+                  <li><strong>Induction</strong>: rapid sequence induction assuming a full stomach, using ketamine 1–1.5 mg/kg or etomidate 0.3 mg/kg with rocuronium 1 mg/kg to preserve sympathetic tone; avoid a standard propofol dose because vasodilatation and loss of compensatory tone can precipitate arrest at the moment the abdomen is opened. Have vasopressor drawn up before induction and induce on the operating table with the surgeon scrubbed</li>
+                  <li><strong>Maintenance</strong>: low-dose volatile or ketamine-based technique with generous opioid once bleeding is controlled; anticipate a further fall in pressure as the pneumoperitoneum is created or the tamponading clot is evacuated</li>
+                  <li><strong>Anti-D</strong>: 250–500 IU (approximately 50–100 µg) IM within 72 hours for RhD-negative women having surgical management, in line with national anti-D guidance</li>
+                  <li><strong>Postoperative care</strong>: HDU/ICU for ongoing resuscitation, correction of coagulopathy and acidosis, rewarming, repeat haemoglobin, and consideration of thromboprophylaxis once bleeding has stopped</li>
+                </ul>
+
                 <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
                   <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
                   <p className="text-xs text-muted-foreground">
