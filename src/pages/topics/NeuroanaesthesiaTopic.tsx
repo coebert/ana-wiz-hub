@@ -9,7 +9,7 @@ import ICPVolumeCurveDiagram from "@/components/diagrams/clinical/ICPVolumeCurve
 import { RaisedICPCascadeDiagram } from "@/components/diagrams/clinical/RaisedICPCascadeDiagram";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
-import { InlineRef } from "@/components/topic/InlineRef";
+import { InlineRef } from "@/components/references/InlineRef";
 import {
   Accordion,
   AccordionContent,
