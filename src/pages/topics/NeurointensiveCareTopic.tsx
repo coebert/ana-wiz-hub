@@ -98,8 +98,13 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        UK criteria: PaCO₂ must rise to <strong>&gt;6.65 kPa</strong> AND pH &lt;7.40, with no
-        respiratory effort observed. Both met. Test confirms absent respiratory drive.
+        UK (AoMRC 2008) criteria: starting from a <strong>normal baseline PaCO₂ (4.5–6.0 kPa)</strong>,
+        the PaCO₂ must be allowed to rise to <strong>&gt;6.65 kPa</strong> AND the arterial pH must fall
+        to <strong>&lt;7.40</strong>, with no respiratory effort observed throughout — this confirms a
+        maximal respiratory stimulus has been delivered. Here baseline PaCO₂ 5.0 kPa rose to 7.2 kPa with
+        pH 7.20: both criteria met, so the test confirms absent respiratory drive. PaCO₂ rises at roughly
+        0.5 kPa/min, which is used only to estimate the required duration of disconnection (usually ≥5
+        min) — it is not itself a diagnostic criterion.
       </>
     ),
     answer: (
