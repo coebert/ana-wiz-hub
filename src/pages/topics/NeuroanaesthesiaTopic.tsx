@@ -18,7 +18,9 @@ import {
 
 const tocItems = [
   { id: "physiology", label: "Cerebral physiology (CBF, ICP, CPP)", group: "Foundations" },
+  { id: "brain-relaxation", label: "Achieving a relaxed brain", group: "Foundations" },
   { id: "agents", label: "Anaesthetic agents & CBF/CMRO₂", group: "Foundations" },
+  { id: "neuromonitoring", label: "Intraoperative neuromonitoring", group: "Clinical" },
   { id: "icp", label: "Raised ICP management", group: "Clinical" },
   { id: "neurosurgical", label: "Posterior fossa & awake craniotomy", group: "Clinical" },
   { id: "procedures", label: "Procedure-specific anaesthesia", group: "Clinical" },
