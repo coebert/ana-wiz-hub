@@ -11,6 +11,7 @@ import InhalationInjuryFlowchart from "@/components/diagrams/intensive-care/Inha
 import ParklandCalculator from "@/components/diagrams/intensive-care/ParklandCalculator";
 import BurnsIcuCaseStepper from "@/components/diagrams/intensive-care/BurnsIcuCaseStepper";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const burnsIcuFaqs: Array<[string, string]> = [
   ["How is fluid resuscitation calculated for major burns?", "Modified Parkland: 3–4 mL/kg/%TBSA Hartmann's in the first 24 h, half in the first 8 h from time of burn; titrate to urine output 0.5 mL/kg/h (adults), 1 mL/kg/h (children) — avoid fluid creep."],
@@ -211,6 +212,17 @@ const BurnsIcuTopic = () => {
               syndromes and ocular compartment syndrome. The formula is a starting point; the patient is the monitor.
             </p>
             </CollapsibleSubsection>
+            <CollapsibleSubsection title="Monitoring Adequacy of Resuscitation">
+              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+                <li><strong>Urine output</strong> (0.5 mL/kg/h adult, 1 mL/kg/h child): the mainstay end-point, but osmotic diuresis (glucose, myoglobin), diuretics or pre-existing renal disease can mislead it in either direction.</li>
+                <li><strong>Heart rate</strong>: tachycardia is sensitive but non-specific — pain, anxiety, catecholamine surge and sepsis all confound it as a resuscitation marker.</li>
+                <li><strong>Blood pressure</strong>: often preserved until late due to high SVR in the shock phase — a normal BP does not exclude under-resuscitation.</li>
+                <li><strong>Lactate clearance and base deficit</strong>: better reflect global tissue perfusion than vital signs; failure to clear lactate or a worsening base deficit suggests ongoing under-resuscitation or occult injury.</li>
+                <li><strong>Cardiac-output monitoring</strong> (PiCCO, LiDCO): increasingly used in large burns to guide fluid and vasopressor therapy objectively, particularly once capillary leak and oedema make clinical assessment unreliable.</li>
+                <li><strong>Fluid creep</strong> is defined as crystalloid volumes exceeding 6 mL/kg/%TBSA or &gt; 250 mL/kg in the first 24 h above formula predictions; it is strongly associated with abdominal, orbital and limb compartment syndromes and should prompt review of resuscitation strategy (colloid, cardiac-output-guided titration).</li>
+                <li><strong>Microdialysis</strong> is an experimental tissue-level monitoring tool that can demonstrate ongoing dermal/muscle hypoxia and metabolic derangement despite apparently adequate systemic resuscitation end-points <InlineRef topicId="burns-icu" refLabel="Burns Microdialysis 2007" />.</li>
+              </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="surgical-icu" exams={[Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.7"]}>
@@ -218,7 +230,16 @@ const BurnsIcuTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Escharotomy</strong> for circumferential limb / torso burns to relieve compartment pressures (CRT &gt; 4 s, absent doppler, ↑ peak airway pressures). Mid-axial limb incisions, transverse chest extension if respiratory restriction.</li>
               <li><strong>Early excision &amp; grafting</strong> within 5 days reduces sepsis, length of stay and mortality. Plan and book theatres early; expect ~ 3–5 % blood-volume loss per 1 % TBSA excised.</li>
-              <li><strong>Analgesia &amp; sedation</strong>: multimodal — opioid (background + PCA), ketamine infusion, paracetamol, gabapentinoid; consider clonidine / dexmedetomidine to limit opioid load. Procedural ketamine for dressing changes.</li>
+              <li><strong>Analgesia &amp; sedation</strong>: distinguish <strong>background</strong>, <strong>breakthrough</strong>, <strong>procedural</strong> and <strong>neuropathic</strong> pain — each needs a different strategy.
+                <ul className="list-disc list-inside ml-4 mt-1 space-y-1">
+                  <li><strong>Background pain</strong>: continuous opioid infusion (morphine or fentanyl) ± background ketamine infusion for its opioid-sparing and anti-hyperalgesic effect; regional techniques and donor-site nerve blocks reduce total opioid load where feasible.</li>
+                  <li><strong>Breakthrough pain</strong>: PCA (morphine/fentanyl) titrated on top of the background infusion.</li>
+                  <li><strong>Procedural pain</strong> (dressing changes, physiotherapy): pre-emptive analgesia before the procedure, short-acting agents (alfentanil, remifentanil) or dissociative/deep procedural sedation with propofol and/or ketamine.</li>
+                  <li><strong>Neuropathic pain</strong>: common as burns heal and nerves regenerate — start gabapentinoids (gabapentin/pregabalin) or amitriptyline early rather than waiting for established neuropathic symptoms.</li>
+                  <li><strong>Non-pharmacological adjuncts</strong>: virtual reality distraction, guided distraction techniques and hypnosis reduce procedural pain and anxiolytic/opioid requirements.</li>
+                  <li>Expect rapid <strong>tolerance</strong> and escalating opioid requirements over days–weeks — anticipate and titrate proactively rather than chasing pain.</li>
+                </ul>
+              </li>
               <li><strong>Nutrition</strong>: enteral within 24 h via NG/NJ; 25–30 kcal/kg/day, protein 1.5–2 g/kg/day; supplement glutamine, vitamin C, zinc, selenium. Indirect calorimetry where available.</li>
               <li><strong>Glycaemic control</strong>: target 4–10 mmol/L with insulin infusion; hyperglycaemia worsens infection and graft loss.</li>
               <li><strong>Anti-catabolic therapy</strong>: propranolol 1–4 mg/kg/day attenuates the catecholamine-driven hypermetabolic response; oxandrolone in selected adults reduces lean-body-mass loss.</li>
@@ -226,6 +247,62 @@ const BurnsIcuTopic = () => {
               <li><strong>Thromboprophylaxis</strong>: high VTE risk — chemical and mechanical from day 1 if not actively bleeding. Heparin requirements often higher than predicted.</li>
               <li><strong>Temperature</strong>: ambient theatre 28–30 °C, warming blankets, fluid warmers; hypothermia worsens coagulopathy and graft survival.</li>
               <li><strong>Stress ulcer prophylaxis</strong>: Curling’s ulcer is the burn-specific equivalent — PPI from day 1.</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="special-burns" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Special Burn Types">
+            <div className="space-y-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Electrical burns</p>
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                  Divided into <strong>high-voltage</strong> (&gt;1000 V) and <strong>low-voltage</strong> injury; alternating current (AC) is more dangerous
+                  than direct current (DC) at the same voltage because it induces tetanic muscle contraction and repetitive cardiac
+                  depolarisation, precipitating <strong>VF or asystole</strong>. Lightning strike is a massive DC-like discharge that can produce
+                  characteristic branching skin markings (<strong>Lichtenberg figures</strong>) which are not true burns and resolve spontaneously.
+                  Surface burns are often deceptively modest while current tracks along vessels and nerves causing extensive
+                  <strong> deep tissue injury</strong> — always suspect more damage than the skin suggests. <strong>Rhabdomyolysis and myoglobinuria</strong> are
+                  common; resuscitate to a higher urine output target (1–2 mL/kg/h) rather than the standard 0.5 mL/kg/h, and consider
+                  urinary alkalinisation. High risk of occult <strong>compartment syndrome</strong> — have a low threshold for fasciotomy/escharotomy and
+                  serial compartment pressure checks. All patients need a <strong>12-lead ECG and 24 h continuous cardiac monitoring</strong> after
+                  significant electrical exposure <InlineRef topicId="burns-icu" refLabel="BJA Educ Special Burns 2012" />.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Chemical burns</p>
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                  <strong>Acids</strong> cause coagulative necrosis — the resulting eschar tends to self-limit the depth of injury. <strong>Alkalis</strong> cause
+                  liquefactive necrosis, allowing continued penetration and typically producing deeper, more extensive injury than
+                  acids of a comparable exposure. Management is <strong>copious irrigation</strong> — running water, or a chelating/amphoteric
+                  solution such as Diphoterine where available — continued for at least 20–30 minutes and re-assessed rather than
+                  timed rigidly; remove contaminated clothing early. <strong>Hydrofluoric acid</strong> is a special case: the fluoride ion penetrates
+                  deeply and chelates calcium and magnesium, causing severe local tissue destruction plus systemic
+                  <strong> hypocalcaemia</strong> that can precipitate life-threatening cardiac arrhythmias even after small burns. Treat with topical
+                  calcium gluconate gel, and intradermal, intra-arterial or IV calcium gluconate for deeper/larger exposures, with close
+                  monitoring of serum calcium and cardiac rhythm. Any chemical burn with systemic absorption warrants monitoring for
+                  wider systemic toxicity <InlineRef topicId="burns-icu" refLabel="BJA Educ Special Burns 2012" />.
+                </p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="haematological-management" exams={[Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Haematological Management">
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Anaemia</strong> is near-universal in major burns — driven by burn-related haemolysis, repeated operative blood loss
+                during excision and grafting, and inflammatory suppression of erythropoiesis. A <strong>restrictive transfusion trigger of
+                ~70 g/L</strong> is appropriate outside of active bleeding or haemodynamic instability <InlineRef topicId="burns-icu" refLabel="ISBI 2016" />.</li>
+              <li><strong>Biphasic coagulopathy</strong>: an early <strong>hypercoagulable</strong> phase (driven by the acute-phase response) increases VTE risk,
+                followed later by a <strong>consumptive coagulopathy</strong> that emerges with sepsis and large-volume operative loss. <strong>Viscoelastic
+                testing (ROTEM/TEG)</strong> helps target factor and platelet replacement during major excision surgery rather than
+                transfusing empirically <InlineRef topicId="burns-icu" refLabel="BJA Educ Burns 2017" />.</li>
+              <li><strong>VTE risk is very high</strong> in major burns — immobility, hypercoagulability, central lines and repeated surgery combine.
+                Use both mechanical (compression devices, where limbs allow) and chemical prophylaxis from admission if not actively
+                bleeding. LMWH dosing requirements are frequently increased above standard weight-based doses because of altered
+                pharmacokinetics; <strong>anti-Xa level monitoring</strong> should be used to confirm adequate prophylactic effect
+                <InlineRef topicId="burns-icu" refLabel="ISBI 2016" />.</li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>

@@ -363,6 +363,47 @@ const PrognosticationEthicsIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+            <h3 className="text-lg font-semibold text-foreground mb-2 mt-4">Ethical Principles Underpinning Triage</h3>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              {[
+                { p: "Distributive justice", d: "Scarce ICU beds must be allocated fairly across the population, not merely to whoever asks first or shouts loudest." },
+                { p: "Utility", d: "Aim to maximise overall benefit (lives saved, life-years, or quality-adjusted outcomes) from a finite resource." },
+                { p: "Equity", d: "Access should not be influenced by factors irrelevant to clinical benefit — age alone, disability, or social status." },
+                { p: "Respect for autonomy", d: "Patients (or their best-interests representatives) should be involved in decisions wherever possible, even when the overriding constraint is capacity." },
+              ].map((x) => (
+                <div key={x.p} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{x.p}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{x.d}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-sm text-muted-foreground mb-2">
+              These principles sit alongside beneficence and non-maleficence <InlineRef topicId="prognostication-ethics-icu" refLabel="GMC 2022" /> and are the ethical justification for structured triage systems rather than ad hoc bed allocation.
+            </p>
+            <h3 className="text-lg font-semibold text-foreground mb-2 mt-4">Adjunctive Prioritisation Tools</h3>
+            <p className="text-sm text-muted-foreground mb-2">
+              <strong>SOFA</strong> and the <strong>Clinical Frailty Scale (CFS)</strong> are useful adjuncts that add objectivity to triage discussions — SOFA quantifies current organ dysfunction and trajectory, while CFS ≥5 identifies patients less likely to benefit from invasive organ support and more likely to suffer harm from it. Neither should be used in isolation: both are population-derived, can be inaccurate in individual patients (e.g. CFS is invalid in younger patients with a single disabling condition), and must be interpreted alongside the presenting illness, reversibility, comorbidity, and the patient's own wishes.
+            </p>
+            <h3 className="text-lg font-semibold text-foreground mb-2 mt-4">The Triage Process</h3>
+            <ul className="list-disc list-inside space-y-1.5 text-sm text-muted-foreground mb-2">
+              <li><strong>Senior decision-maker</strong>: triage decisions are made or countersigned by a consultant intensivist wherever possible — never delegated solely to trainees out of hours.</li>
+              <li><strong>Transparency</strong>: criteria and reasoning should be explicit and, where possible, shared with the patient/family and referring team, not implicit or hidden.</li>
+              <li><strong>Consistency</strong>: the same criteria should be applied to all patients regardless of who is asking or which speciality is referring, to avoid unwarranted variation.</li>
+              <li><strong>Documentation</strong>: the decision, its rationale, and the information considered (including scores used only as adjuncts) must be recorded contemporaneously in the notes.</li>
+              <li><strong>Second opinion</strong>: a mechanism for review by a second senior clinician should be available, particularly when a referring team disagrees with a decision to decline admission.</li>
+            </ul>
+            <h3 className="text-lg font-semibold text-foreground mb-2 mt-4">Dynamic Re-Evaluation & Time-Limited Trials</h3>
+            <p className="text-sm text-muted-foreground mb-2">
+              Triage is not a one-off gate at the ICU door: patients admitted under uncertainty should be managed with a <strong>time-limited trial</strong> of organ support (typically 24–72 h) with explicit, pre-agreed <strong>review points</strong> and success/failure criteria, so that the plan is revisited as new information (response to treatment, family discussion, further test results) emerges, rather than defaulting to indefinite escalation.
+            </p>
+            <h3 className="text-lg font-semibold text-foreground mb-2 mt-4">Pandemic / Surge Ethics</h3>
+            <p className="text-sm text-muted-foreground mb-2">
+              During pandemic surge, when demand for critical care may exceed supply, the ethical emphasis shifts from maximising benefit to the <em>individual</em> patient towards <strong>public-health utility</strong> — allocating resource to achieve the greatest overall benefit across the population, potentially including formal severity/frailty-based scoring to support triage committees rather than individual bedside clinicians. This is the approach set out in UK COVID-19 pandemic ethical guidance developed jointly by the BMA, FICM and Royal College of Physicians/RCUK bodies, which stresses that any such framework must remain transparent, consistent, subject to independent review, and must never discriminate on protected characteristics alone (e.g. age, disability) — CFS and SOFA can support but not replace individualised clinical judgement even under surge conditions.
+            </p>
+            <h3 className="text-lg font-semibold text-foreground mb-2 mt-4">Establishing a Ceiling of Care</h3>
+            <p className="text-sm text-muted-foreground">
+              Wherever possible, a <strong>ceiling of care</strong> should be established and documented before, or at the point of, ICU admission — clarifying which interventions (e.g. invasive ventilation, renal replacement therapy, CPR) are and are not appropriate given the patient's condition, comorbidities, and wishes. This should be discussed with the patient if they have capacity, or via best-interests discussion under the <InlineRef topicId="prognostication-ethics-icu" refLabel="Mental Capacity Act 2005" /> if not, and recorded on a treatment escalation plan/ReSPECT form so that decisions are not made reactively during deterioration.
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 

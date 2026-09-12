@@ -13,6 +13,7 @@ import HITPathophysiologyDiagram from "@/components/diagrams/intensive-care/HITP
 import HITAssessmentBlock from "@/components/clinical/HITAssessmentBlock";
 import RebalancedHaemostasisDiagram from "@/components/diagrams/intensive-care/RebalancedHaemostasisDiagram";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const haematologyIcuFaqs: Array<[string, string]> = [
   ["What restrictive transfusion threshold is recommended in ICU?", "Transfuse RBC when Hb <70 g/L in stable ICU patients (TRICC, TRISS); use a 80 g/L threshold in acute coronary syndromes or active bleeding."],
@@ -224,7 +225,7 @@ const HaematologyIcuTopic = () => {
               <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground">
                 <li><strong>Therapeutic Plasma Exchange (TPE):</strong> 1–1.5× plasma volume daily. Continue until platelets &gt;150 × 10⁹/L for ≥2 days + normalising LDH.</li>
                 <li><strong>Corticosteroids:</strong> Methylprednisolone 1 g IV daily × 3 days, then prednisolone 1 mg/kg.</li>
-                <li><strong>Caplacizumab:</strong> Anti-vWF nanobody — reduces time to platelet recovery and relapse rate (HERCULES).</li>
+                <li><strong>Caplacizumab:</strong> Nanobody targeting the A1 domain of von Willebrand factor, blocking the vWF–platelet GPIb interaction and preventing further microthrombi formation while ADAMTS13 activity recovers; used alongside plasma exchange and immunosuppression (steroids ± rituximab) in acute immune TTP <InlineRef topicId="haematology-icu" refLabel="HERCULES 2019" />. Dosing: 10 mg IV before the first plasma exchange session, then 10 mg subcutaneously daily during plasma exchange and for at least 30 days afterwards, guided by ADAMTS13 activity recovery <InlineRef topicId="haematology-icu" refLabel="ISTH TTP 2020" />. Main adverse effect is mucocutaneous bleeding; it does not treat the underlying ADAMTS13 deficiency, so relapse can follow premature cessation.</li>
                 <li><strong>Rituximab:</strong> Anti-CD20 mAb for refractory/relapsing TTP — 375 mg/m² weekly × 4.</li>
               </ol>
             </div>

@@ -8,10 +8,11 @@ import PaediatricVitalsTable from "@/components/diagrams/intensive-care/Paediatr
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const paediatricIcuFaqs: Array<[string, string]> = [
-  ["What fluid resuscitation strategy is recommended for paediatric septic shock?", "10–20 mL/kg balanced crystalloid boluses with reassessment after each, up to 40–60 mL/kg in the first hour; start adrenaline or noradrenaline early if fluid-refractory rather than continuing boluses (FEAST, SSC paediatric 2020)."],
-  ["What is paediatric ARDS (PARDS) and how does ventilation differ?", "Berlin-equivalent criteria (PALICC 2015) using OI rather than P/F ratio; use Vt 5–8 mL/kg PBW, plateau ≤28 cmH₂O, permissive hypercapnia (pH ≥7.20), PEEP titrated 8–15, prone if OI ≥12."],
+  ["What fluid resuscitation strategy is recommended for paediatric septic shock?", "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock), with smaller 5 mL/kg boluses in DKA or trauma. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings)."],
+  ["What is paediatric ARDS (PARDS) and how does ventilation differ?", "The Global Definition of PARDS (2023) requires onset within 7 days, new infiltrates not fully explained by cardiac failure or fluid overload, and hypoxaemia by OI/OSI (or non-invasively, SpO₂/FiO₂ ≤250 on CPAP ≥5 cmH₂O). Ventilate with Vt 5–8 mL/kg PBW, plateau ≤28 cmH₂O, permissive hypercapnia (pH ≥7.20), PEEP titrated 8–15 cmH₂O; prone position for moderate/severe disease (OI ≥12)."],
   ["How is intraosseous access used in paediatric resuscitation?", "Insert in the proximal tibia (or distal femur/humerus) if IV access fails within 60–90 s in shock or arrest; flow rates approach IV after a 10 mL saline flush, and all resus drugs can be given at standard doses."],
 ];
 
@@ -230,7 +231,16 @@ const PaediatricIcuTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Non-Invasive Support</p>
-                <p className="text-sm text-muted-foreground mt-1">HFNC at 2 ml/kg/min — first-line for bronchiolitis. CPAP/BiPAP increasingly first-line for moderate respiratory failure.</p>
+                <p className="text-sm text-muted-foreground mt-1">HFNC at 1–2 L/kg/min — commonly used in bronchiolitis, but recent reviews question its evidence base and routine place in standard care <InlineRef topicId="paediatric-icu" refLabel="RSV Lancet 2024" />. CPAP/BiPAP increasingly first-line for moderate respiratory failure.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">Paediatric ARDS (PARDS)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  The Global Definition of PARDS <InlineRef topicId="paediatric-icu" refLabel="PARDS Global 2023" /> requires onset within 7 days of a known insult, new infiltrate(s) on imaging not fully explained by cardiac failure or fluid overload, and hypoxaemia quantified by <strong>OI</strong> or <strong>OSI</strong> in intubated patients, or by <strong>SpO₂/FiO₂ ≤250</strong> on CPAP/NIV ≥5 cmH₂O for non-invasive disease. <strong>OI = (FiO₂ × mean airway pressure × 100) / PaO₂</strong>.
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Ventilation targets: Vt 5–8 mL/kg PBW, plateau ≤28 cmH₂O, permissive hypercapnia (pH ≥7.20), PEEP titrated 8–15 cmH₂O. Adjuncts: prone positioning for moderate/severe disease (OI ≥12), neuromuscular blockade, recruitment manoeuvres, conservative fluid strategy, and ECMO for refractory hypoxaemia.
+                </p>
               </div>
             </div>
             </CollapsibleSubsection>
@@ -239,7 +249,7 @@ const PaediatricIcuTopic = () => {
           <ExamSection id="sepsis" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Paediatric Sepsis & Shock">
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Children more commonly present with <strong>cold shock</strong> (vasoconstricted, poor perfusion) than warm vasodilated shock. Antibiotics within 1 h. Fluid in 10–20 ml/kg boluses (NOT 30 ml/kg) with reassessment after each — up to 40–60 ml/kg in first hour. Hepatomegaly = fluid overload. Vasoactive support if fluid-refractory after 40 ml/kg: peripheral adrenaline (cold) or noradrenaline (warm). Stress-dose hydrocortisone for catecholamine-resistant shock.
+              Children more commonly present with <strong>cold shock</strong> (vasoconstricted, poor perfusion) than warm vasodilated shock. Antibiotics within 1 h. Fluid in <strong>10 mL/kg isotonic crystalloid boluses</strong>, reassessing after each — <strong>20 mL/kg is reserved for specific situations</strong> (e.g. severe hypovolaemia), while <strong>5 mL/kg</strong> boluses are used in DKA or trauma to reduce the risk of cerebral oedema and dilutional coagulopathy respectively <InlineRef topicId="paediatric-icu" refLabel="SSC Paediatric 2020" /> <InlineRef topicId="paediatric-icu" refLabel="APLS 2021" />. Hepatomegaly = fluid overload. Have <strong>earlier recourse to vasoactive infusions</strong> rather than repeatedly escalating fluid if shock persists after 1–2 boluses: peripheral adrenaline (cold) or noradrenaline (warm). Stress-dose hydrocortisone for catecholamine-resistant shock.
             </p>
             <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5">
               <p className="text-sm font-semibold text-destructive">⚠ FEAST Trial (2011)</p>
@@ -292,7 +302,38 @@ const PaediatricIcuTopic = () => {
 
           <ExamSection id="sedation" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Sedation, Analgesia & Withdrawal">
-            <p className="text-muted-foreground text-sm mb-2">COMFORT-B (target 11–17), FLACC for pre-verbal pain. Morphine 10–40 mcg/kg/h, midazolam 1–4 mcg/kg/min, dexmedetomidine 0.2–1.4 mcg/kg/h. <strong>Avoid prolonged propofol infusions (&gt;48 h) — PRIS</strong>: metabolic acidosis, rhabdomyolysis, cardiac failure. Iatrogenic withdrawal after &gt;5 days opioid/benzo: WAT-1 scoring; wean by 10–20%/day with enteral conversion.</p>
+            <div className="space-y-3">
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">Goals & Assessment</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Sedation aims to relieve distress and facilitate ventilation/procedures while minimising drug accumulation, delirium and withdrawal. Assess with validated tools: <strong>COMFORT-B</strong> (target 11–17) for sedation depth, <strong>FLACC</strong> for pain in pre-verbal children, and <strong>SOS</strong> or <strong>WAT-1</strong> for iatrogenic withdrawal <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">Pharmacology</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>Morphine</strong> (10–40 mcg/kg/h): histamine release can cause flushing/hypotension and bronchospasm. <strong>Fentanyl</strong>: rapid tachyphylaxis and chest-wall rigidity with rapid high-dose boluses. <strong>Midazolam</strong> (1–4 mcg/kg/min): accumulates in renal/hepatic impairment and raises delirium risk. <strong>Dexmedetomidine</strong> (0.2–1.4 mcg/kg/h): no significant respiratory depression but causes dose-dependent bradycardia and hypotension. <strong>Clonidine</strong> is a useful oral/enteral adjunct for sedation weaning and withdrawal.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5">
+                <p className="text-sm font-semibold text-destructive">⚠ Propofol Infusion Syndrome (PRIS)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Metabolic acidosis, rhabdomyolysis, cardiac failure/arrhythmia and acute renal failure. Risk increases with doses &gt;4 mg/kg/h, infusions &gt;48 h, concurrent catecholamines or steroids, and in young children — <strong>avoid prolonged propofol infusion in PICU</strong>.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">Iatrogenic Withdrawal Syndrome (IWS)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  A recognisable cluster of CNS, GI and autonomic symptoms following abrupt cessation of opioids/benzodiazepines, with risk rising after &gt;5 days of therapy <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />. Score with SOS/WAT-1 and wean by 10–20%/day, converting to oral methadone and/or clonidine to allow controlled weaning.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">Delirium</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Acute brain dysfunction with fluctuating awareness and cognition; the <strong>hypoactive form is common and frequently missed</strong>. Screen routinely with the <strong>CAPD</strong> or <strong>(ps)CAM-ICU</strong> tools <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />. Risk factors include young age, developmental delay, severity of illness, benzodiazepine and anticholinergic exposure, and mechanical ventilation. Manage with a non-pharmacological bundle — reorientation, sleep hygiene, day-night lighting cues, family presence and early mobilisation — reserving cautious quetiapine or risperidone (with QTc monitoring) for refractory cases.
+                </p>
+              </div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -346,6 +387,7 @@ const PaediatricIcuTopic = () => {
             variant="summary"
           >
             <ul className="space-y-2 list-disc list-inside text-sm">
+              <li><strong>PEWS</strong>: Paediatric Early Warning Scores combine HR, RR, BP, SpO₂, respiratory effort, capillary refill, consciousness and nurse/family concern against age-specific norms; a rising or triggering score escalates to senior review and, if needed, the critical care outreach/PICU retrieval team <InlineRef topicId="paediatric-icu" refLabel="Bedside PEWS 2009" />.</li>
               <li><strong>Tube sizing</strong>: cuffed ETT ID = (age/4) + 3.5; length = (age/2) + 12 (oral).</li>
               <li><strong>Fluid resuscitation</strong>: 10–20 ml/kg isotonic crystalloid bolus, reassess after each.</li>
               <li><strong>Maintenance fluids</strong>: isotonic only (NICE 2015). Holliday-Segar 4-2-1.</li>
