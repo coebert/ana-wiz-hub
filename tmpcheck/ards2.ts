@@ -1,6 +1,6 @@
 import { icuCaseBank } from "@/data/cases/icuCases";
 import { doseReferencesForCase } from "@/lib/caseDoseReferences";
-import { mechanismSlugForDrug } from "@/lib/drugMechanismLinks";
+import { mechanismSlugForDrug } from "@/lib/icuDrugMechanismLinks";
 import { icuDrugWithdrawal } from "@/data/icuDrugWithdrawal";
 const cases = icuCaseBank.filter(c => /ards/i.test(c.title + c.category + c.presentation));
 for (const c of cases) {
