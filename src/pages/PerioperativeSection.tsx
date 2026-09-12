@@ -7,7 +7,7 @@ import { perioperativeTopics } from "@/data/curriculum";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { Link } from "react-router-dom";
-import { BookOpenCheck } from "lucide-react";
+import { BookOpenCheck, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const PerioperativeSection = () => {
