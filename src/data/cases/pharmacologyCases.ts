@@ -44,11 +44,11 @@ export const pharmacologyCaseBank: CaseBank = {
   path: "/pharmacology/case-bank",
   title: "Pharmacology Case Bank",
   subtitle: "Progressive scenarios that apply kinetics, dynamics and drug-specific safety to real decisions.",
-  metaDescription: "Twenty-four progressive pharmacology cases on TIVA kinetics, volatile agents, opioid tolerance, malignant hyperthermia, serotonin syndrome, TDM, NMB anaphylaxis, reversal agents, anticoagulant reversal, vasoplegic shock, psychiatric drug interactions, renal replacement drug dosing and local anaesthetic toxicity.",
+  metaDescription: "Thirty progressive pharmacology cases, including paediatric and adult poisoning, on TIVA kinetics, volatile agents, opioid tolerance, malignant hyperthermia, serotonin syndrome, TDM, NMB anaphylaxis, reversal agents, anticoagulant reversal, vasoplegic shock, psychiatric drug interactions, renal replacement drug dosing and local anaesthetic toxicity, paracetamol and tricyclic overdose, calcium-channel blocker poisoning, iron and lithium toxicity and paediatric LAST.",
   backPath: "/pharmacology",
   backLabel: "Pharmacology",
   accentColor: "text-pharmacology",
-  categories: ["Kinetics & delivery", "Analgesia & anaesthetics", "Critical care drugs"],
+  categories: ["Kinetics & delivery", "Analgesia & anaesthetics", "Critical care drugs", "Toxicology & poisoning"],
   cases: [
     {
       id: "pharmacology-tiva-obesity",
