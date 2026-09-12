@@ -237,6 +237,30 @@ const PressureMeasurementTopic = () => {
               amplitude corresponds to MAP. Systolic and diastolic are calculated algorithmically. Cuff width should be ~40% of
               arm circumference — too narrow overestimates, too wide underestimates.
             </p>
+            <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+              <p className="text-sm font-medium text-foreground">Limitations of oscillometry</p>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+                <li><strong>Arrhythmias</strong> — atrial fibrillation or marked rhythm irregularity disrupts the oscillometric envelope, producing unreliable or absent readings.</li>
+                <li><strong>Severe hypotension / shock</strong> — low pulse pressure and peripheral vasoconstriction reduce cuff oscillations, causing overestimation or failure to measure.</li>
+                <li><strong>Patient movement / shivering</strong> — motion artefact is interpreted as pressure oscillations and distorts the algorithmically derived systolic and diastolic values.</li>
+                <li><strong>Vasoconstriction / vasopressor infusion</strong> — reduced arterial pulsatility alters the oscillation amplitude versus pressure relationship.</li>
+                <li><strong>Morbid obesity</strong> — incorrect cuff size or shape can make a standard adult cuff too small (overestimates BP) or the arm too conical for even pressure distribution.</li>
+              </ul>
+            </div>
+            <div className="mt-4">
+              <p className="text-sm font-medium text-foreground mb-2">Cuffless blood pressure measurement</p>
+              <p className="text-foreground/90 leading-relaxed text-sm">
+                Wearable and smartphone-based technologies are being developed to measure BP without an inflatable cuff. They broadly separate into calibrated and uncalibrated approaches: calibrated methods must first be referenced against a conventional cuff, while uncalibrated methods aim for cuff-free absolute measurement
+                <InlineRef topicId="pressure-measurement" refLabel="Annual Rev Biomed Eng 2022 (Cuffless)" />.
+              </p>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+                <li><strong>Pulse transit time (PTT)</strong> — estimates BP from the interval between an ECG R-wave and the corresponding pulse wave arrival at a peripheral site (e.g. pulse oximeter fingertip or wrist PPG). PTT is influenced by arterial stiffness and preload, so it generally requires periodic cuff calibration.</li>
+                <li><strong>Pulse wave analysis (PWA)</strong> — extracts features from the photoplethysmography waveform shape (amplitude, area, reflection indices). Like PTT, it usually needs calibration to an oscillometric device for absolute BP values.</li>
+              </ul>
+              <p className="text-foreground/90 leading-relaxed text-sm mt-2">
+                These technologies are promising for longitudinal trends and hypertension screening, but at present automated cuff-based NIBP remains the standard for perioperative and critical-care measurement.
+              </p>
+            </div>
             <p className="text-foreground/90 leading-relaxed mt-3">
               <strong>Von Recklinghausen oscillotonometer</strong> uses two cuffs (occluding and sensing) and was the precursor to
               modern automated oscillometry.
