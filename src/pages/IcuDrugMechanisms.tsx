@@ -22,7 +22,14 @@ const IcuDrugMechanisms = () => {
         ...g,
         drugs: q
           ? g.drugs.filter((d) =>
-              [d.drug, d.drugClass, d.pharmacodynamics, d.metabolism, d.adverseEffects]
+              [
+                d.drug,
+                d.drugClass,
+                d.pharmacodynamics,
+                d.metabolism,
+                d.adverseEffects,
+                ...Object.values(pharmacokineticsFor(d.slug) ?? {}),
+              ]
                 .join(" ")
                 .toLowerCase()
                 .includes(q),

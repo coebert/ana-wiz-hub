@@ -230,6 +230,14 @@ const IcuDrugDoses = () => {
                       >
                         <th scope="row" className="p-3 text-left font-medium text-foreground">
                           {d.drug}
+                          {mechanismLinkForDrug(d.drug) && (
+                            <Link
+                              to={mechanismLinkForDrug(d.drug)!}
+                              className="mt-1 block text-xs font-normal text-icu underline-offset-4 hover:underline"
+                            >
+                              Kinetics &amp; metabolism
+                            </Link>
+                          )}
                         </th>
                         <td className="p-3 text-muted-foreground">{doseFor(d, age)}</td>
                         <td className="p-3 text-muted-foreground">{d.route}</td>
