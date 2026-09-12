@@ -300,7 +300,12 @@ const AbdominalCompartmentSyndromeTopic = () => {
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Management — WSACS Medical Bundle</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Apply <strong>all five domains</strong> in parallel as IAH worsens; reassess IAP every 1–2 h. Escalate
-                to surgical decompression if IAP remains ≥ 20 mmHg with organ failure.
+                to surgical decompression if IAP remains ≥ 20 mmHg with organ failure<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Enteral nutrition should be delayed or stopped in established ACS or severe intra-abdominal
+                hypertension with gut dysfunction; trophic, post-pyloric or parenteral feeding routes are considered
+                once intra-abdominal pressures fall<InlineRef topicId="abdominal-compartment-syndrome" refLabel="ESICM EN 2017" />.
               </p>
               <div className="space-y-3">
                 {[
