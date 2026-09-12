@@ -90,7 +90,7 @@ const TemperatureMeasurementTopic = () => {
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.11", "NICE CG65"],
-        keyPoints: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11"],
+        keyPoints: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11", "NICE NG125", "BJA Educ Temperature 2020", "SCCM IDSA Fever 2023"],
       }}
       coreConcepts={
         <>
