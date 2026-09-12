@@ -191,6 +191,36 @@ const ClinicalMeasurementTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-xl font-bold text-foreground mb-2">Dynamic Indices of Fluid Responsiveness</h2>
+          <div className="text-muted-foreground leading-relaxed space-y-3">
+            <p>
+              <strong>Physiological basis:</strong> pulse pressure variation (PPV) and stroke volume variation (SVV) arise from
+              heart–lung interaction during positive-pressure ventilation. Each mechanical breath raises intrathoracic pressure,
+              reducing venous return and right ventricular preload while transiently squeezing pulmonary blood into the left
+              ventricle; a few beats later left ventricular stroke volume falls. The size of this cyclical swing depends on where
+              both ventricles sit on the Frank–Starling curve <InlineRef topicId="clinical-measurement" refLabel="Michard & Teboul 2002" />.
+            </p>
+            <p>
+              <strong>Interpretation:</strong> PPV = (PP<sub>max</sub> − PP<sub>min</sub>)/PP<sub>mean</sub> × 100. A value above
+              roughly <strong>12–15%</strong> indicates that both ventricles are on the steep part of the curve and the patient is
+              likely to increase stroke volume with a fluid bolus; values below ~9% predict non-response, with a "grey zone" in
+              between <InlineRef topicId="clinical-measurement" refLabel="Marik CCM 2009 (PPV)" />.
+            </p>
+            <div className="rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Prerequisites and limitations</h3>
+              <ul className="mt-2 list-disc pl-5 text-sm space-y-1">
+                <li>Fully controlled mechanical ventilation with no spontaneous effort (triggered breaths invalidate the swing).</li>
+                <li>Tidal volume ≥8 mL/kg predicted body weight; low tidal volumes under-read PPV.</li>
+                <li>Regular sinus rhythm — atrial fibrillation or frequent ectopics produce beat-to-beat variation unrelated to preload.</li>
+                <li>Closed chest and normal intra-abdominal pressure; open thorax and raised IAP distort transmission.</li>
+                <li>Unreliable in right ventricular failure, very high PEEP, low lung compliance and with vasoactive changes in tone.</li>
+                <li>Alternatives when prerequisites fail: passive leg raise, end-expiratory occlusion test or a 100–250 mL mini-fluid challenge with cardiac output monitoring.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
           <h2 className="text-xl font-bold text-foreground mb-2">Cardiac Output Measurement</h2>
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
