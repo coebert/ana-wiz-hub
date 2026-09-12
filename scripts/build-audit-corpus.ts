@@ -47,7 +47,92 @@ export interface AuditCorpusEntry {
   /** Citations declared for this topic in src/data/references.ts. */
   references: Array<{ label: string; citation: string; url?: string; pmid?: string; excerpt?: string }>;
   text_chars: number;
+  /**
+   * Case-bank cases mapped to this topic, with their staged model answers and
+   * detailed discussion in full — audited alongside the topic prose so the
+   * clinical reasoning in cases is held to the same accuracy standard.
+   */
+  case_bank: Array<{
+    case_id: string;
+    title: string;
+    bank: string;
+    path: string;
+    text: string;
+  }>;
+  case_bank_chars: number;
 }
+
+// ------------------------------------------------------------------ case banks
+
+/** Flatten one case into plain text: stem, staged model answers, discussion. */
+function caseToText(c: PerioperativeCase): string {
+  return [
+    `Case: ${c.title} (${c.category}, ${c.difficulty})`,
+    `Patient: ${c.patient}`,
+    `Presentation: ${c.presentation}`,
+    ...c.stages.flatMap((s, i) => [
+      `Stage ${i + 1} — ${s.title}`,
+      `  Question: ${s.prompt}`,
+      ...s.answer.map((a) => `  Model answer: ${a}`),
+    ]),
+    ...c.detailedAnswer.map((d) => `Discussion — ${d.title}: ${d.content}`),
+    `Take-home: ${c.takeHome}`,
+    c.sourceLinks.length > 0
+      ? `Cited sources: ${c.sourceLinks.map((s) => `${s.label} (${s.href})`).join("; ")}`
+      : "Cited sources: (none)",
+  ].join("\n");
+}
+
+interface CaseBankTextEntry {
+  case_id: string;
+  title: string;
+  bank: string;
+  path: string;
+  text: string;
+}
+
+/** topicId → every case (any bank) whose topicIds include it. */
+function buildCaseIndex(): Map<string, CaseBankTextEntry[]> {
+  const index = new Map<string, CaseBankTextEntry[]>();
+  const add = (topicIds: string[], entry: CaseBankTextEntry) => {
+    for (const topicId of topicIds) {
+      const list = index.get(topicId) ?? [];
+      list.push(entry);
+      index.set(topicId, list);
+    }
+  };
+
+  for (const bank of caseBanks) {
+    for (const c of bank.cases) {
+      add(c.topicIds, {
+        case_id: c.id,
+        title: c.title,
+        bank: bank.title,
+        path: `${bank.path}#${c.id}`,
+        text: caseToText(c),
+      });
+    }
+  }
+
+  // The perioperative bank keeps its case text in the page and its topic
+  // mapping in src/data/perioperativeCaseIndex.ts.
+  const perioperativeById = new Map(perioperativeCases.map((c) => [c.id, c]));
+  for (const item of perioperativeCaseIndex) {
+    const c = perioperativeById.get(item.id);
+    if (!c) continue;
+    add(item.topicIds, {
+      case_id: c.id,
+      title: c.title,
+      bank: "Perioperative Case Bank",
+      path: `/perioperative/case-bank#${c.id}`,
+      text: caseToText(c),
+    });
+  }
+
+  return index;
+}
+
+const CASE_INDEX = buildCaseIndex();
 
 // ---------------------------------------------------------------- source reading
 
