@@ -6,7 +6,7 @@ import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { resourcePoorAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
-import { InlineRef } from "@/components/topic/InlineRef";
+import InlineRef from "@/components/references/InlineRef";
 
 const resourcePoorAnaesthesiaFaqs: Array<[string, string]> = [
   [
