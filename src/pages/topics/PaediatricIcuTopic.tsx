@@ -783,7 +783,7 @@ const PaediatricIcuTopic = () => {
             <ul className="space-y-2 list-disc list-inside text-sm">
               <li><strong>PEWS</strong>: Paediatric Early Warning Scores combine HR, RR, BP, SpO₂, respiratory effort, capillary refill, consciousness and nurse/family concern against age-specific norms; a rising or triggering score escalates to senior review and, if needed, the critical care outreach/PICU retrieval team <InlineRef topicId="paediatric-icu" refLabel="Bedside PEWS 2009" />.</li>
               <li><strong>Tube sizing</strong>: cuffed ETT ID = (age/4) + 3.5; length = (age/2) + 12 (oral).</li>
-              <li><strong>Fluid resuscitation</strong>: 10–20 ml/kg isotonic crystalloid bolus, reassess after each.</li>
+              <li><strong>Fluid resuscitation</strong>: 10 ml/kg isotonic crystalloid boluses, reassess after each (20 ml/kg reserved for profound shock; 5 ml/kg in DKA, trauma and neonates).</li>
               <li><strong>Maintenance fluids</strong>: isotonic only (NICE 2015). Holliday-Segar 4-2-1.</li>
               <li><strong>Sepsis</strong>: antibiotics within 1 h; noradrenaline (warm) or adrenaline (cold).</li>
               <li><strong>Drug dosing</strong>: weight-based (mg/kg). Sugammadex 2–4 mg/kg, suxamethonium 1.5–2 mg/kg.</li>
