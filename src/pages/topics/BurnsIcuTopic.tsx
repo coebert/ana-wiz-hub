@@ -247,9 +247,30 @@ const BurnsIcuTopic = () => {
               <li><strong>Anti-catabolic therapy</strong>: propranolol 1–4 mg/kg/day attenuates the catecholamine-driven hypermetabolic response; oxandrolone in selected adults reduces lean-body-mass loss.</li>
               <li><strong>Infection prevention</strong>: meticulous wound care, topical antimicrobials (silver sulfadiazine, mafenide), reverse barrier nursing; surveillance cultures; treat invasive infection (&gt;10⁵ org/g on quantitative biopsy) with targeted IV antibiotics.</li>
               <li><strong>Thromboprophylaxis</strong>: high VTE risk — chemical and mechanical from day 1 if not actively bleeding. Heparin requirements often higher than predicted.</li>
-              <li><strong>Temperature</strong>: ambient theatre 28–30 °C, warming blankets, fluid warmers; hypothermia worsens coagulopathy and graft survival.</li>
+              <li><strong>Temperature</strong>: loss of the skin barrier removes the body's principal defence against heat loss, so the major burn loses heat continuously by <strong>evaporation</strong> from the exposed wound surface (the dominant route, worsened by wet dressings and each dressing change) and by <strong>radiation and convection</strong> from a widely exposed, vasodilated surface, with conduction to cold trolleys and unwarmed fluids adding further. The hypermetabolic response resets the hypothalamic set-point upward, so these patients need an ambient temperature far above normal: theatre 28–30 °C, warming blankets and forced-air warmers, humidified circuits, fluid and blood warmers, and minimal exposure time.
+                <ul className="list-disc list-inside ml-4 mt-1 space-y-1">
+                  <li><strong>Coagulopathy and bleeding</strong> — enzymatic clotting factor activity and platelet function are temperature-dependent; below 35 °C bleeding during excision and grafting increases markedly (part of the trauma "lethal triad" with acidosis and hypocalcaemia).</li>
+                  <li><strong>Immune dysfunction and infection</strong> — impaired neutrophil function and cutaneous vasoconstriction with reduced wound oxygen tension raise wound infection and sepsis rates.</li>
+                  <li><strong>Myocardial depression and arrhythmias</strong> — reduced contractility, bradycardia and, below about 32 °C, a rising risk of AF and ventricular arrhythmias in an already catecholamine-stressed heart.</li>
+                  <li><strong>Delayed wound healing and graft loss</strong> — vasoconstriction reduces graft-bed perfusion and impairs collagen deposition, worsening graft take.</li>
+                  <li><strong>Shivering</strong> in the non-paralysed patient can raise metabolic rate and oxygen consumption several-fold, on top of an already doubled resting metabolic rate — a demand these patients cannot meet.</li>
+                  <li>Also drug handling: reduced hepatic metabolism prolongs the effect of opioids and neuromuscular blockers, and hypothermia impairs citrate metabolism and worsens hypocalcaemia during massive transfusion.</li>
+                </ul>
+              </li>
               <li><strong>Stress ulcer prophylaxis</strong>: Curling’s ulcer is the burn-specific equivalent — PPI from day 1.</li>
             </ul>
+            </CollapsibleSubsection>
+            <CollapsibleSubsection title="Acute Kidney Injury in Major Burns">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+                AKI complicates around a quarter of major burns and carries a markedly worse prognosis. Two patterns occur: <strong>early AKI</strong> (first 3–5 days) driven by hypovolaemia, reduced cardiac output and myoglobinuria, and <strong>late AKI</strong> (after the first week) driven by sepsis, multi-organ dysfunction and nephrotoxic therapy.
+              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+                <li><strong>Causes</strong>: hypovolaemia and burn shock with under-resuscitation; myoglobinuria and rhabdomyolysis (deep, electrical and crush-associated burns, compartment syndrome, prolonged immobility); sepsis and septic AKI; abdominal compartment syndrome reducing renal perfusion pressure; haemoglobinuria from haemolysis; and nephrotoxins — aminoglycosides, vancomycin, colistin, amphotericin, contrast, and topical agents absorbed from large wounds.</li>
+                <li><strong>Monitoring</strong>: hourly urine output and its colour, daily (or more frequent) creatinine and urea with KDIGO staging, urinalysis and creatine kinase where rhabdomyolysis is possible, potassium/phosphate/calcium, acid-base and lactate, and intra-abdominal pressure. Interpret creatinine with care — a raised muscle turnover and dilutional effect of resuscitation both blunt it early.</li>
+                <li><strong>Rhabdomyolysis</strong>: aim for a higher urine output of <strong>1–2 mL/kg/h</strong> with generous isotonic crystalloid until pigment clears, treat any compartment syndrome surgically, and stop nephrotoxins. Urinary alkalinisation with sodium bicarbonate may be considered where pH can be raised without provoking hypocalcaemia or metabolic alkalosis, but evidence over volume repletion alone is weak; mannitol is not routinely recommended.</li>
+                <li><strong>RRT indications</strong> are the standard ones — refractory hyperkalaemia, severe metabolic acidosis, fluid overload unresponsive to diuretics (especially where it compromises oxygenation or graft-bed perfusion), symptomatic uraemia, and severe sepsis with multi-organ failure. Continuous modes are preferred for haemodynamic tolerance; anticipate high fluid and nutritional turnover, large volume shifts around theatre days, and increased clearance of antimicrobials requiring dose adjustment.</li>
+                <li>Prevention is the priority: adequate but not excessive resuscitation, early treatment of sepsis, decompression of raised intra-abdominal pressure, and rigorous avoidance and monitoring of nephrotoxins <InlineRef topicId="burns-icu" refLabel="BJA Burns Albuminuria 2006" />.</li>
+              </ul>
             </CollapsibleSubsection>
           </ExamSection>
 
