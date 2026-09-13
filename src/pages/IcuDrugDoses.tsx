@@ -6,6 +6,8 @@ import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { icuDrugDoseGroups, icuDrugCount, type DrugDose } from "@/data/icuDrugDoses";
+import { icuDrugSafetyGroups } from "@/data/icuDrugSafety";
+import { icuDrugMechanismGroups } from "@/data/icuDrugMechanisms";
 import { drugSlug } from "@/lib/caseDoseReferences";
 import { mechanismLinkForDrug } from "@/lib/icuDrugMechanismLinks";
 
@@ -26,6 +28,25 @@ const doseFor = (drug: DrugDose, age: AgeMode): string => {
 
 const cautionFor = (drug: DrugDose, age: AgeMode): string | undefined =>
   age === "adult" ? drug.notes : drug.paediatricNotes ?? drug.notes;
+
+// --- Per-drug interactions / side effects / monitoring -------------------
+// Safety and mechanism datasets are keyed by a base slug (e.g. "propofol"),
+// while dosing-table names may carry strengths ("Propofol 1%"). Try the full
+// slug first, then the slug with a trailing strength token removed.
+const slugBase = (name: string) => drugSlug(name).replace(/-\d.*$/, "");
+
+const safetyBySlug = new Map(
+  icuDrugSafetyGroups.flatMap((g) => g.drugs).map((d) => [d.slug, d]),
+);
+const mechanismBySlug = new Map(
+  icuDrugMechanismGroups.flatMap((g) => g.drugs).map((d) => [d.slug, d]),
+);
+
+const safetyFor = (drugName: string) =>
+  safetyBySlug.get(drugSlug(drugName)) ?? safetyBySlug.get(slugBase(drugName));
+const adverseEffectsFor = (drugName: string): string | undefined =>
+  (mechanismBySlug.get(drugSlug(drugName)) ?? mechanismBySlug.get(slugBase(drugName)))
+    ?.adverseEffects;
 
 const IcuDrugDoses = () => {
   const [searchParams] = useSearchParams();
