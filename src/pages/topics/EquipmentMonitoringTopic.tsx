@@ -22,7 +22,7 @@ import InlineRef from "@/components/references/InlineRef";
 
 const equipmentMonitoringFaqs: Array<[string, string]> = [
   [
-    "What are the AAGBI minimum monitoring standards for anaesthesia?",
+    "What are the Association of Anaesthetists minimum monitoring standards for anaesthesia?",
     "Continuous pulse oximetry, ECG, NIBP (every 5 min or more frequent), capnography (mandatory whenever the airway is instrumented — ETT, SAD, tracheostomy), inspired and expired volatile concentration, FiO₂, airway pressure, temperature for cases >30 min, neuromuscular monitoring whenever NMBA used. Continuous presence of an anaesthetist."
   ],
   [
@@ -160,7 +160,7 @@ const monitoringStandards = [
   { label: "ECG", value: "Continuous; rate, rhythm, ischaemia detection." },
   { label: "NIBP / arterial line", value: "≥5-minutely NIBP; arterial line for beat-to-beat BP/ABG." },
   { label: "Capnography (EtCO₂)", value: "Gold standard for tube confirmation, ventilation, and disconnect detection — mandatory for transfers." },
-  { label: "FiO₂ analyser", value: "Inspiratory limb — paramagnetic or galvanic fuel cell." },
+  { label: "FiO₂ analyser", value: "Inspiratory limb; calibrate at 21% and 100% O₂. Paramagnetic is rapid and non-consuming; galvanic is slower with a finite-life anode." },
   { label: "Agent analyser", value: "Whenever volatile in use — confirms delivered concentration." },
   { label: "Airway pressure & spirometry", value: "Detects disconnection, obstruction, leaks." },
   { label: "Temperature", value: "Continuous if procedure >30 min; active warming if <36 °C (NICE CG65)." },
@@ -426,6 +426,15 @@ const EquipmentMonitoringTopic = () => {
               reduces pollution.
             </p>
             <p>
+              Definitions vary, but <strong>low flow</strong> generally means FGF ≤1 L/min, <strong>minimal flow</strong> about
+              0.5 L/min, and <strong>closed circuit</strong> FGF matched to metabolic uptake (roughly 0.2–0.3 L/min). After a high-flow
+              wash-in, reducing FGF increases the circuit time constant: inspired oxygen and agent respond slowly to dial changes and
+              leaks become proportionally important. Use continuous inspired oxygen and inspired/expired agent analysis, capnography,
+              volume and airway-pressure monitoring; increase FGF promptly if concentration control, absorber function or circuit
+              integrity is uncertain.
+              <InlineRef topicId="equipment-monitoring" refLabel="RCoA/AoA 2024 Machine Check" />
+            </p>
+            <p>
               <strong>Soda lime</strong>: Ca(OH)₂ ~80% + NaOH ~4% + KOH ~1% + water ~14% + silica + indicator. CO₂ + H₂O →
               H₂CO₃ → reacts with NaOH → Na₂CO₃ → regenerates NaOH while producing CaCO₃. Reaction is <strong>exothermic</strong>
               (40–60 °C) and produces water. Indicator (ethyl violet) turns purple when exhausted but may regenerate overnight.
@@ -617,7 +626,7 @@ const EquipmentMonitoringTopic = () => {
         <CollapsibleSubsection title="5 · Monitoring & Safety Features">
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
-              Modern workstations integrate multiple layers of safety — built-in mechanical safeguards plus the AAGBI minimum
+              Modern workstations integrate multiple layers of safety — built-in mechanical safeguards plus the Association of Anaesthetists minimum
               monitoring standards. The <strong>O₂ failure alarm (Ritchie whistle)</strong> sounds when O₂ supply pressure
               falls below ~200 kPa. It is powered by the residual gas pressure itself — <strong>no battery required</strong> —
               and produces an audible alarm lasting at least 7 seconds (BS EN ISO 80601-2-13). It uses the
@@ -627,7 +636,13 @@ const EquipmentMonitoringTopic = () => {
               The <strong>O₂ flush</strong> delivers 35–75 L/min directly to the common gas outlet, bypassing flowmeters and
               vaporizer. Risks: <strong>barotrauma</strong> (closed APL) and <strong>awareness</strong> (volatile dilution).
               The <strong>O₂ analyser</strong> (paramagnetic or galvanic fuel cell) on the inspiratory limb provides continuous
-              FiO₂ with low-O₂ alarms.
+              FiO₂ with low-O₂ alarms. A <strong>paramagnetic</strong> analyser attracts oxygen into a magnetic field, responds rapidly,
+              consumes no reagent and is preferred for breath-by-breath measurement. A <strong>galvanic fuel cell</strong> generates current
+              by reducing oxygen while consuming a lead anode; it needs no external power but responds more slowly and lasts about 6–12 months.
+              Both measure oxygen partial pressure and must be checked in room air (21%) and 100% oxygen during the pre-use check. Clinically,
+              FiO₂ detects pipeline crossover or hypoxic mixtures, confirms preoxygenation and one-lung ventilation delivery, while end-tidal
+              oxygen helps judge denitrogenation and oxygen uptake.
+              <InlineRef topicId="equipment-monitoring" refLabel="AoA Standards of Monitoring 2021" />
             </p>
           </div>
 
@@ -676,7 +691,7 @@ const EquipmentMonitoringTopic = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-serif font-bold text-foreground mb-2">AAGBI minimum monitoring standards</h3>
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Association of Anaesthetists minimum monitoring standards</h3>
             <div className="grid sm:grid-cols-2 gap-2">
               {monitoringStandards.map((m) => (
                 <div key={m.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
@@ -685,6 +700,17 @@ const EquipmentMonitoringTopic = () => {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Electrical safety</h3>
+            <div className="grid gap-3 md:grid-cols-2 text-sm text-muted-foreground">
+              <div className="rounded-lg border border-border p-3"><strong className="text-foreground">Shock pathways</strong><p className="mt-1"><strong>Macroshock</strong> passes through intact skin; harmful currents are in the milliampere range. <strong>Microshock</strong> reaches myocardium through an intracardiac conductor, so currents of only tens of microamperes may trigger VF. Keep invasive cardiac conductors isolated and use CF-rated applied parts.</p></div>
+              <div className="rounded-lg border border-border p-3"><strong className="text-foreground">Equipment classes</strong><p className="mt-1">Class I uses protective earth; Class II uses double/reinforced insulation; Class III is supplied at safety extra-low voltage. Type B applied parts provide basic protection, BF are electrically floating, and CF have the greatest leakage-current protection for direct cardiac application.</p></div>
+              <div className="rounded-lg border border-border p-3"><strong className="text-foreground">Supply protection</strong><p className="mt-1">Fuses and circuit breakers interrupt overcurrent. Theatre isolated-power systems use an isolation transformer so the first earth fault does not stop supply; a line-isolation monitor alarms falling impedance so the fault can be found before a second fault completes a dangerous circuit.</p></div>
+              <div className="rounded-lg border border-border p-3"><strong className="text-foreground">Diathermy</strong><p className="mt-1">For monopolar surgery, place the return electrode on clean, dry, well-perfused muscle with full contact and a short current path that avoids metal implants, ECG electrodes and implanted devices. Bipolar current remains between forceps tips and avoids a remote return plate. Inspect insulation and never rely on the return plate as an electrical earth.</p></div>
+            </div>
+            <p className="mt-2 text-xs text-muted-foreground"><InlineRef topicId="equipment-monitoring" refLabel="IEC 60601 Electrical Safety" /></p>
           </div>
         </CollapsibleSubsection>
 
@@ -993,7 +1019,7 @@ const EquipmentMonitoringTopic = () => {
               "Pin-Index Safety System prevents wrong cylinder mounting; NIST prevents wrong pipeline connection.",
               "Vaporiser safety: temperature-, flow- and pressure-compensated; agent-specific filler prevents cross-filling.",
               "Circle system economy depends on FGF, CO₂ absorber and unidirectional valves — sevoflurane + dry baralyme can produce Compound A.",
-              "Minimum monitoring (AAGBI): pulse oximetry, NIBP, ECG, capnography, FiO₂, agent and airway pressure — present from before induction until recovery.",
+              "Minimum monitoring (Association of Anaesthetists): pulse oximetry, NIBP, ECG, capnography, FiO₂, agent and airway pressure — present from before induction until recovery.",
             ]}
           />
       </div>

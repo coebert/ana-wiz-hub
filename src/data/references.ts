@@ -679,6 +679,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "HSE EH40/2005", citation: "Health and Safety Executive. EH40/2005 Workplace exposure limits: containing the list of workplace exposure limits for use with COSHH. 4th ed. HSE Books. Occupational exposure standards include nitrous oxide 100 ppm and isoflurane 50 ppm as 8-hour time-weighted averages.", url: "https://www.hse.gov.uk/pubns/priced/eh40.pdf" },
     { label: "AoA Standards of Monitoring 2021", citation: "Klein AA, Meek T, Allcock E, et al. Recommendations for standards of monitoring during anaesthesia and recovery 2021. Association of Anaesthetists. Anaesthesia. 2021;76(9):1212-1223.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Standards-of-Monitoring-2021" },
     { label: "AoA Equipment Checklist", citation: "Association of Anaesthetists. Checking anaesthetic equipment (anaesthetic equipment safety checklist). Association of Anaesthetists guideline.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Anaesthetic-equipment-safety-checklist" },
+    { label: "IEC 60601 Electrical Safety", citation: "International Electrotechnical Commission. IEC 60601-1: Medical electrical equipment — general requirements for basic safety and essential performance. Covers equipment classes, applied-part leakage limits, protective earth and isolation." },
   ],
 
   // ──────── CLINICAL ────────
