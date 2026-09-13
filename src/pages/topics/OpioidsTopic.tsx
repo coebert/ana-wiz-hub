@@ -554,6 +554,28 @@ const OpioidsTopic = () => {
               </div>
             </div>
             </CollapsibleSubsection>
+
+            <CollapsibleSubsection title="Cardiovascular Effects">
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Bradycardia</strong> — central stimulation of the vagal nucleus (nucleus ambiguus/dorsal motor nucleus) increases vagal tone; most marked with the potent phenylpiperidines (fentanyl, remifentanil) given rapidly, but seen with all µ-agonists.<InlineRef topicId="opioids" refLabel="BJA 2008 Opioids & Respiration" /></li>
+              <li><strong>Hypotension</strong> — two mechanisms: (1) non-immune histamine release from mast cells with morphine and pethidine causing peripheral vasodilatation and venodilatation (reduced preload), and (2) reduced central sympathetic outflow with a relative increase in vagal tone. Exaggerated by hypovolaemia, rapid bolus administration and co-induction agents.</li>
+              <li><strong>Minimal direct myocardial depression</strong> at clinical doses — opioids are not significant negative inotropes in their own right, which underlies their long-standing use as the primary agent in high-dose cardiac anaesthesia (classically fentanyl or sufentanil) to provide cardiostable analgesia with preserved contractility.</li>
+              <li><strong>Cardiostability contrast</strong>: fentanyl, alfentanil and remifentanil produce little or no histamine release and are markedly more cardiostable than morphine (and pethidine), making them preferred agents where haemodynamic stability is paramount (cardiac surgery, shocked/critically ill patients, rapid sequence induction).</li>
+              <li><strong>Chest-wall ("wooden chest") rigidity</strong> — rapid high-dose fentanyl or remifentanil can cause generalised skeletal and chest-wall muscle rigidity, raising intrathoracic pressure, impairing venous return and cardiac filling, and making bag-mask ventilation difficult or impossible; managed with neuromuscular blockade (or naloxone if reversal is required) and controlled ventilation.</li>
+            </ul>
+            </CollapsibleSubsection>
+
+            <CollapsibleSubsection title="Respiratory Effects">
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Direct depression of the respiratory centres</strong> in the pons and medulla (dorsal and ventral respiratory groups) via µ-receptor activation, reducing responsiveness to chemical drive.<InlineRef topicId="opioids" refLabel="BJA 2008 Opioids & Respiration" /></li>
+              <li><strong>Reduced CO₂ sensitivity</strong> — the ventilatory response to PaCO₂ is blunted: the CO₂ response curve is shifted to the right (a higher PaCO₂ is required to drive the same minute ventilation) and its slope is depressed, with a raised apnoeic threshold.</li>
+              <li><strong>Loss of hypoxic drive</strong> at higher doses — the peripheral chemoreceptor-mediated ventilatory response to hypoxaemia is attenuated, removing a key back-up drive to breathe once CO₂ responsiveness is impaired.</li>
+              <li><strong>Respiratory rate falls before tidal volume</strong> — a slow, deep breathing pattern is typical early on; rate is the more sensitive clinical sign of opioid effect, though with progressive overdose both rate and volume fall and apnoea can supervene.</li>
+              <li><strong>Central antitussive effect</strong> — suppression of the medullary cough centre, useful for tracheal tube tolerance but unhelpful for sputum clearance.</li>
+              <li><strong>Chest-wall rigidity</strong> after rapid high-dose fentanyl/remifentanil can make manual or mechanical ventilation difficult even before overt apnoea occurs (see Cardiovascular Effects above).</li>
+              <li><strong>Monitoring and reversal</strong> — continuous respiratory rate/SpO₂ (and where available capnography) monitoring is required in at-risk patients; see the <strong>Naloxone</strong> subsection below for reversal of opioid-induced respiratory depression.</li>
+            </ul>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PR_BK_05"]}>
