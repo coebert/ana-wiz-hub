@@ -8,6 +8,7 @@ import { Exam } from "@/data/curriculum";
 import TheatreZoningDiagram from "@/components/diagrams/clinical/TheatreZoningDiagram";
 import CssdWasteFlowSubMap from "@/components/diagrams/clinical/CssdWasteFlowSubMap";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const operatingTheatreEnvironmentFaqs: Array<[string, string]> = [
   [
@@ -228,7 +229,10 @@ const OperatingTheatreEnvironmentTopic = () => {
               Operating theatres are wired with an <strong>isolated (IT) power system</strong>: the mains supply is separated from earth via an
               isolating transformer. A single fault to earth therefore does NOT complete a shock circuit — instead it triggers a
               <strong> line isolation monitor</strong> (audible/visual alarm) so the fault can be investigated electively. Without isolation,
-              a patient with intracardiac wires or pacing leads is at risk of <strong>microshock</strong> (currents as low as 100 µA causing VF).
+              a patient with intracardiac wires or pacing leads is at risk of <strong>microshock</strong> (currents as low as 50–100 µA delivered directly to the myocardium can induce VF) <InlineRef topicId="operating-theatre-environment" refLabel="BJA Educ 2018 Electrical Safety" />.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Note the deliberate difference from ordinary buildings: <strong>residual current devices (RCDs) are not used on the isolated supply of anaesthetising locations</strong>. An RCD disconnects the supply when it detects earth leakage, and unexpected loss of power to a ventilator, monitor, pump or bypass machine during anaesthesia is more dangerous to the patient than the leakage current itself. The isolated power supply with a line isolation monitor instead annunciates a first fault without cutting power, allowing the faulty device to be swapped at a safe moment; RCDs remain appropriate on non-critical circuits outside the anaesthetising location <InlineRef topicId="operating-theatre-environment" refLabel="BJA Educ 2020 Electrical Safety" />.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Equipment is classified by IEC 60601 according to leakage-current protection at the patient interface:

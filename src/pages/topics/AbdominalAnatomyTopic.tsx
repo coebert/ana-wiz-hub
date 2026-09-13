@@ -166,6 +166,40 @@ const AbdominalAnatomyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>
+            <CollapsibleSubsection title="Coeliac Plexus & Coeliac Plexus Block">
+            <span id="coeliac-plexus" aria-hidden="true" />
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              The coeliac plexus is the largest autonomic plexus in the body: a dense retroperitoneal network of fibres and ganglia lying antero-lateral to the aorta at the <strong>T12–L1</strong> level, anterior to the diaphragmatic crura, surrounding the coeliac trunk and the root of the superior mesenteric artery. It provides the principal sensory and autonomic innervation of the upper abdominal viscera and is the target for neurolysis in intractable upper abdominal cancer pain <InlineRef topicId="abdominal-anatomy" refLabel="Gray's Anatomy 42e" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Components</p>
+                <ul className="mt-1 list-disc pl-5 text-sm text-muted-foreground space-y-1">
+                  <li><strong>Pre-ganglionic sympathetic</strong> fibres from the greater (T5–T9), lesser (T10–T11) and least (T12) splanchnic nerves, synapsing in the paired coeliac ganglia.</li>
+                  <li><strong>Pre-ganglionic parasympathetic</strong> fibres passing through from the posterior vagal trunk without synapsing.</li>
+                  <li><strong>Visceral afferents</strong> carrying nociception from the upper abdominal organs back to T5–T12 spinal segments — the basis of referred epigastric-to-back pain.</li>
+                  <li>Some somatic contribution from the phrenic nerves; secondary plexuses (hepatic, splenic, renal, superior mesenteric) arise from it.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Territory</p>
+                <p className="text-sm text-muted-foreground mt-1">Stomach and distal oesophagus, liver and biliary tract, pancreas, spleen, kidneys and adrenals, and the small bowel as far as the splenic flexure (mid-transverse colon). Pain from any of these is referred to the epigastrium and interscapular region, which is why a single plexus block can cover a wide upper abdominal field <InlineRef topicId="abdominal-anatomy" refLabel="Ellis & Feldman Ch.4" />.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Block technique</p>
+                <ul className="mt-1 list-disc pl-5 text-sm text-muted-foreground space-y-1">
+                  <li><strong>Indications:</strong> intractable pain from upper abdominal malignancy (classically pancreatic cancer), chronic pancreatitis; diagnostic block with local anaesthetic before neurolysis.</li>
+                  <li><strong>Classic posterior approach:</strong> prone patient, bilateral needles inserted 5–7 cm from the midline at the level of the L1 spinous process, angled medially and cephalad to the <em>antero-lateral</em> aspect of the L1 vertebral body, in front of the crura.</li>
+                  <li><strong>Imaging:</strong> fluoroscopy or CT guidance is standard, with contrast to confirm retro-crural/pre-aortic spread and exclude intravascular or intrathecal placement. Endoscopic ultrasound-guided anterior approaches are also used.</li>
+                  <li><strong>Agents:</strong> diagnostic local anaesthetic; neurolysis with 50–100% alcohol or 6–10% phenol.</li>
+                  <li><strong>Complications:</strong> hypotension and diarrhoea from unopposed parasympathetic activity (common and expected), back pain, retroperitoneal haematoma, aortic or renal puncture, pneumothorax, intravascular injection with LAST, and rarely paraplegia from spinal cord ischaemia or injection near the artery of Adamkiewicz. Pre-load with fluid and monitor closely.</li>
+                </ul>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>
             <CollapsibleSubsection title="Pelvic Anatomy">
