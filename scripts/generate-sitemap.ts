@@ -99,6 +99,16 @@ function buildPathToFileMap(): Record<string, string> {
     const file = componentToFile[m[2]];
     if (file) map[m[1]] = file;
   }
+  // Data-driven topic routes: [urlPath, moduleName] under src/pages/topics/.
+  const topicRoutesFile = resolve("src/routes/topicRoutes.ts");
+  if (existsSync(topicRoutesFile)) {
+    const topicSrc = readFileSync(topicRoutesFile, "utf8");
+    for (const m of topicSrc.matchAll(/\[\s*"(\/[^"]+)"\s*,\s*"([A-Za-z0-9_]+)"\s*\]/g)) {
+      const candidate = resolve(`src/pages/topics/${m[2]}.tsx`);
+      if (existsSync(candidate)) map[m[1]] = candidate;
+    }
+  }
+
   return map;
 }
 
