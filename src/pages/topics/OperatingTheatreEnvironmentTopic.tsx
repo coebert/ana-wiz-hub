@@ -232,6 +232,9 @@ const OperatingTheatreEnvironmentTopic = () => {
               a patient with intracardiac wires or pacing leads is at risk of <strong>microshock</strong> (currents as low as 50–100 µA delivered directly to the myocardium can induce VF) <InlineRef topicId="operating-theatre-environment" refLabel="BJA Educ 2018 Electrical Safety" />.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-3">
+              Note the deliberate difference from ordinary buildings: <strong>residual current devices (RCDs) are not used on the isolated supply of anaesthetising locations</strong>. An RCD disconnects the supply when it detects earth leakage, and unexpected loss of power to a ventilator, monitor, pump or bypass machine during anaesthesia is more dangerous to the patient than the leakage current itself. The isolated power supply with a line isolation monitor instead annunciates a first fault without cutting power, allowing the faulty device to be swapped at a safe moment; RCDs remain appropriate on non-critical circuits outside the anaesthetising location <InlineRef topicId="operating-theatre-environment" refLabel="BJA Educ 2020 Electrical Safety" />.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
               Equipment is classified by IEC 60601 according to leakage-current protection at the patient interface:
             </p>
             <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
