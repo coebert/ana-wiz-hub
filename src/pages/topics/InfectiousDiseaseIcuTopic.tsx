@@ -468,6 +468,49 @@ const InfectiousDiseaseIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="stewardship" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Antimicrobial Stewardship in ICU">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              The ICU has the highest antimicrobial exposure of any hospital area and is the engine of resistance. Stewardship is not rationing — it is prescribing the right agent, at the right dose, for the shortest effective duration, with an explicit review point <InlineRef topicId="infectious-disease-icu" refLabel="Stewardship ICU 2020" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Start smart</p>
+                <p className="text-xs text-muted-foreground mt-1">Cultures before antimicrobials whenever this does not delay therapy; document indication, agent, dose, route, planned duration and review date on the prescription; follow the local empiric policy weighted to unit ecology and the patient's previous isolates.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Then focus (48–72 h review)</p>
+                <p className="text-xs text-muted-foreground mt-1">Five outcomes: stop, switch IV to oral, de-escalate to a narrower agent, continue with a documented duration, or refer to microbiology/infection. De-escalation on culture results does not worsen outcome and reduces resistance pressure.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Duration</p>
+                <p className="text-xs text-muted-foreground mt-1">7 days is adequate for most serious ICU infections including VAP and Gram-negative bacteraemia with source control; extend for <em>S. aureus</em> bacteraemia, endocarditis, undrained collections, osteoarticular/CNS infection or profound immunosuppression <InlineRef topicId="infectious-disease-icu" refLabel="SSC 2021" />.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Biomarker-guided stopping</p>
+                <p className="text-xs text-muted-foreground mt-1">Procalcitonin-guided discontinuation protocols safely shorten courses (typically stop when PCT &lt; 0.5 µg/L or falls &gt; 80% from peak) but must never override clinical judgement or delay treatment of an undrained source.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Dose optimisation (PK/PD)</p>
+                <p className="text-xs text-muted-foreground mt-1">Critical illness expands V<sub>d</sub> and alters clearance (augmented renal clearance, hypoalbuminaemia, RRT, ECMO). Use loading doses; extended or continuous infusions for β-lactams (time &gt; MIC); once-daily, AUC-targeted aminoglycosides and vancomycin with TDM; voriconazole and linezolid TDM where available.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Antibiotic cycling and mixing</p>
+                <p className="text-xs text-muted-foreground mt-1">Scheduled rotation of empiric classes at unit level was proposed to reduce selection pressure, but trial evidence is weak and inconsistent; "mixing" (varying the class between consecutive patients) may retain more diversity. Neither substitutes for individualised de-escalation, and cycling is not recommended as a routine strategy <InlineRef topicId="infectious-disease-icu" refLabel="Stewardship ICU 2020" />.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Governance and audit</p>
+                <p className="text-xs text-muted-foreground mt-1">Multidisciplinary ward rounds with an ICU pharmacist and microbiologist, prospective audit with feedback, restricted/pre-authorised agents (carbapenems, novel β-lactam/β-lactamase inhibitors, antifungals), unit resistance surveillance, defined daily doses per 1000 patient-days, and allergy de-labelling.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Collateral damage to avoid</p>
+                <p className="text-xs text-muted-foreground mt-1"><em>C. difficile</em>, MDR colonisation, candidaemia after prolonged broad-spectrum therapy, AKI (piperacillin–tazobactam with vancomycin), and drug interactions with azoles and rifampicin.</p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+
           <ExamSection id="abdo" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Intra-abdominal Sepsis">
             <p className="text-muted-foreground leading-relaxed mb-3">
