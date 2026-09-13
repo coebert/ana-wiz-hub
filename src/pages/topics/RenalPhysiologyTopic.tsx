@@ -309,6 +309,74 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
+          <ExamSection id="rta" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_02"]}>
+            <section className="mb-8">
+              <h2 className="text-2xl font-serif font-bold text-foreground">Renal Tubular Acidosis</h2>
+              <p className="text-foreground/90 leading-relaxed mb-3">
+                Renal tubular acidosis (RTA) is a <strong>normal anion gap, hyperchloraemic metabolic acidosis</strong> arising
+                from a primary defect in renal tubular acid–base handling rather than from diarrhoeal bicarbonate loss or
+                excess acid production. Three clinically important patterns are recognised <InlineRef topicId="renal-physiology" refLabel="Ganong Ch.37-38" />.
+              </p>
+              <div className="grid md:grid-cols-3 gap-4 text-sm">
+                <div className="rounded-lg border border-border p-4">
+                  <h3 className="font-semibold text-foreground">Type 1 (distal)</h3>
+                  <p className="mt-1 text-foreground/80">α-intercalated cells in the collecting duct fail to secrete H⁺ via the H⁺-ATPase/H⁺-K⁺-ATPase, so urine cannot be acidified — urine pH remains &gt;5.5 even during a systemic acid load. Hypokalaemia (impaired H⁺ secretion drives compensatory K⁺ loss), nephrocalcinosis and renal stones (alkaline urine with hypercalciuria and low citrate) are typical. Causes include Sjögren's syndrome and other autoimmune disease, and amphotericin B toxicity.</p>
+                </div>
+                <div className="rounded-lg border border-border p-4">
+                  <h3 className="font-semibold text-foreground">Type 2 (proximal)</h3>
+                  <p className="mt-1 text-foreground/80">Impaired proximal tubular bicarbonate reabsorption causes bicarbonate wasting. Urine is initially alkaline while filtered bicarbonate exceeds the reduced reabsorptive threshold, but once plasma bicarbonate falls to the new (lower) threshold, the distal nephron can still acidify urine to pH &lt;5.5. Hypokalaemia occurs (increased distal Na⁺ delivery drives K⁺ secretion). Often part of a generalised proximal tubulopathy (Fanconi syndrome — glycosuria, phosphaturia, aminoaciduria); causes include acetazolamide and myeloma-related light-chain tubular injury.</p>
+                </div>
+                <div className="rounded-lg border border-border p-4">
+                  <h3 className="font-semibold text-foreground">Type 4</h3>
+                  <p className="mt-1 text-foreground/80">Aldosterone deficiency or tubular resistance to aldosterone reduces distal Na⁺ reabsorption and H⁺/K⁺ secretion, and impairs ammoniagenesis (hyperkalaemia itself further suppresses proximal ammonia production). Hyperkalaemia is the hallmark, and urine pH is often &lt;5.5 despite the acidosis because the remaining acid-secretory capacity is intact. Common causes are diabetic nephropathy (hyporeninaemic hypoaldosteronism), ACE inhibitors/ARBs, spironolactone/eplerenone and trimethoprim (blocks ENaC, mimicking aldosterone resistance).</p>
+                </div>
+              </div>
+              <div className="mt-4 overflow-x-auto rounded-lg border border-border">
+                <table className="w-full text-sm">
+                  <thead className="bg-secondary/40">
+                    <tr>
+                      <th className="p-3 text-left">Type</th>
+                      <th className="p-3 text-left">Defect site</th>
+                      <th className="p-3 text-left">Urine pH</th>
+                      <th className="p-3 text-left">Serum K⁺</th>
+                      <th className="p-3 text-left">Typical causes</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border text-muted-foreground">
+                    <tr>
+                      <td className="p-3 font-medium text-foreground">Type 1 (distal)</td>
+                      <td className="p-3">α-intercalated cell H⁺ secretion</td>
+                      <td className="p-3">&gt;5.5 (always)</td>
+                      <td className="p-3">Low</td>
+                      <td className="p-3">Sjögren's, autoimmune disease, amphotericin B</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-medium text-foreground">Type 2 (proximal)</td>
+                      <td className="p-3">Proximal HCO₃⁻ reabsorption</td>
+                      <td className="p-3">Alkaline early, &lt;5.5 once plasma HCO₃⁻ low</td>
+                      <td className="p-3">Low</td>
+                      <td className="p-3">Fanconi syndrome, acetazolamide, myeloma</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-medium text-foreground">Type 4</td>
+                      <td className="p-3">Aldosterone deficiency/resistance</td>
+                      <td className="p-3">Can be &lt;5.5</td>
+                      <td className="p-3">High</td>
+                      <td className="p-3">Diabetic nephropathy, ACEi/ARB, spironolactone, trimethoprim</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-3 text-sm text-foreground/80 leading-relaxed">
+                <strong>Anaesthetic relevance</strong>: check and correct potassium before anaesthesia — hypokalaemia (types 1 and 2) predisposes to
+                arrhythmia and potentiates neuromuscular blockade, while hyperkalaemia (type 4) increases the risk of arrhythmia and contraindicates
+                suxamethonium. RTA patients may already be on chronic bicarbonate or alkali replacement, mineralocorticoid replacement, or dietary
+                potassium restriction — continue perioperatively and monitor electrolytes and acid–base status closely, particularly if renal
+                function is also impaired.
+              </p>
+            </section>
+          </ExamSection>
+
           <ExamSection id="diuretic-resistance" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Diuretic Resistance in Critical Care</h2>

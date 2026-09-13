@@ -145,6 +145,39 @@ const AutonomicNervousTopic = () => {
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
               <ANSDiagram />
             </div>
+            <div className="mt-4 overflow-x-auto rounded-lg border border-border">
+              <table className="w-full text-sm">
+                <thead className="bg-secondary/40">
+                  <tr>
+                    <th className="p-3 text-left">Target</th>
+                    <th className="p-3 text-left">Sympathetic effect (receptor)</th>
+                    <th className="p-3 text-left">Parasympathetic effect (receptor)</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border text-muted-foreground">
+                  <tr><td className="p-3 font-medium text-foreground">Eye — pupil</td><td className="p-3">Mydriasis (α₁, radial muscle)</td><td className="p-3">Miosis (M₃, sphincter pupillae)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Eye — ciliary muscle</td><td className="p-3">Relaxation for far vision (β₂, minor role)</td><td className="p-3">Contraction/accommodation for near vision (M₃)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Heart — rate</td><td className="p-3">↑ HR (β₁)</td><td className="p-3">↓ HR (M₂)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Heart — contractility</td><td className="p-3">↑ contractility (β₁)</td><td className="p-3">Mild ↓ (M₂, mainly atrial)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Heart — AV conduction</td><td className="p-3">↑ conduction velocity (β₁)</td><td className="p-3">↓ conduction velocity, can cause AV block (M₂)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Lungs — bronchial smooth muscle</td><td className="p-3">Bronchodilation (β₂)</td><td className="p-3">Bronchoconstriction (M₃)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Lungs — secretions</td><td className="p-3">↓ secretions (α₁)</td><td className="p-3">↑ secretions (M₃)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Vessels — skin/splanchnic</td><td className="p-3">Vasoconstriction (α₁)</td><td className="p-3">Minimal direct innervation</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Vessels — skeletal muscle</td><td className="p-3">Vasoconstriction (α₁) or vasodilation (β₂) depending on circulating adrenaline</td><td className="p-3">Minimal direct innervation</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Vessels — coronary</td><td className="p-3">Vasoconstriction (α₁) opposed by metabolic/β₂ vasodilation</td><td className="p-3">Minimal direct effect</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">GI tract — motility</td><td className="p-3">↓ motility (α₁/α₂, β₂)</td><td className="p-3">↑ motility (M₃)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">GI tract — sphincters</td><td className="p-3">Contraction (α₁)</td><td className="p-3">Relaxation (M₃)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">GI tract — secretions</td><td className="p-3">↓ secretions</td><td className="p-3">↑ secretions (M₃)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Bladder — detrusor</td><td className="p-3">Relaxation, promotes filling (β₃)</td><td className="p-3">Contraction, promotes voiding (M₃)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Bladder — internal sphincter</td><td className="p-3">Contraction, promotes continence (α₁)</td><td className="p-3">Relaxation (M₃)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Salivary glands</td><td className="p-3">Small volume, viscous secretion (α₁)</td><td className="p-3">Large volume, watery secretion (M₃)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Sweat glands</td><td className="p-3">Generalised sweating — sympathetic but cholinergic innervation (M₃)</td><td className="p-3">No significant innervation</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Liver/metabolism</td><td className="p-3">Glycogenolysis, gluconeogenesis (α₁, β₂)</td><td className="p-3">Minimal direct effect</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Adrenal medulla</td><td className="p-3">Preganglionic ACh (nicotinic) → adrenaline/noradrenaline release</td><td className="p-3">No parasympathetic innervation</td></tr>
+                </tbody>
+              </table>
+              <p className="p-3 text-xs text-muted-foreground">Sweat glands are the classic exception to the rule that postganglionic sympathetic transmission is noradrenergic — they are innervated by sympathetic cholinergic fibres acting on muscarinic receptors.</p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 

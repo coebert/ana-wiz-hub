@@ -267,6 +267,16 @@ const NeuromuscularTopic = () => {
               </ul>
             </div>
             <div className="mt-4 rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Botulinum toxin / botulism</h3>
+              <p className="mt-2 text-sm text-foreground/80">The botulinum toxin light chain is taken up into the presynaptic nerve terminal and acts as a zinc-dependent protease that cleaves SNARE proteins required for vesicle docking and fusion — SNAP-25 for serotypes A and E, and synaptobrevin (VAMP) for serotype B. This prevents calcium-triggered vesicle fusion and blocks acetylcholine exocytosis at the presynaptic membrane, in contrast to the postsynaptic receptor loss of myasthenia gravis and the presynaptic calcium-channel antibodies of Lambert–Eaton syndrome.</p>
+              <ul className="mt-3 list-disc pl-5 space-y-1 text-sm text-foreground/80">
+                <li><strong>Clinical picture</strong> — descending, symmetrical flaccid paralysis, classically starting with bulbar features (diplopia, dysarthria, dysphagia) before affecting limb and respiratory muscles; autonomic (cholinergic) features such as dry mouth, blurred vision and constipation may occur; sensation and consciousness remain normal throughout.</li>
+                <li><strong>Recovery</strong> — because the toxin permanently disables the affected SNARE machinery, restoration of transmission depends on sprouting of new nerve terminals and formation of new synaptic contacts, which takes weeks to months rather than the rapid recovery seen with reversible NMJ blockers.</li>
+                <li><strong>Anaesthetic relevance</strong> — patients with botulism (or previously treated with therapeutic botulinum toxin) show markedly increased sensitivity to non-depolarising neuromuscular blocking agents; avoid where possible or reduce the dose substantially and titrate carefully with quantitative neuromuscular monitoring. Severe cases may progress to respiratory failure requiring mechanical ventilation, and antitoxin should be given as early as possible once botulism is suspected.</li>
+                <li><strong>Therapeutic uses</strong> — deliberate, localised presynaptic blockade is exploited clinically for spasticity, cervical and other focal dystonias, strabismus, chronic migraine, hyperhidrosis and cosmetic facial indications, using doses far smaller than those causing systemic botulism.</li>
+              </ul>
+            </div>
+            <div className="mt-4 rounded-lg border border-border p-4">
               <h3 className="font-semibold text-foreground">Organophosphate poisoning</h3>
               <p className="mt-2 text-sm text-foreground/80">Organophosphates phosphorylate and effectively irreversibly inhibit acetylcholinesterase, so ACh accumulates at nicotinic (NMJ, autonomic ganglia) and muscarinic synapses.</p>
               <ul className="mt-3 list-disc pl-5 space-y-1 text-sm text-foreground/80">
