@@ -19,11 +19,11 @@ const gasLawsFaqs: Array<[string, string]> = [
   ],
   [
     "What is the critical temperature of nitrous oxide and why does it matter?",
-    "36.5 °C. Above this, N₂O cannot exist as a liquid regardless of pressure, so cylinder contents must be measured by weight (not pressure gauge as for O₂). At room temperature N₂O is partly liquid; the gauge reads ~44 bar (vapour pressure) until all liquid has evaporated, then falls rapidly."
+    "36.5 °C. Above this, N₂O cannot exist as a liquid regardless of pressure, so cylinder contents must be measured by weight (not pressure gauge as for O₂). At room temperature N₂O is partly liquid; the gauge reads its saturated vapour pressure of ~5,200 kPa (52 bar) at 20 °C until all liquid has evaporated, then falls rapidly."
   ],
   [
     "How does Dalton's law of partial pressures apply to alveolar gas?",
-    "Total pressure = sum of partial pressures. Alveolar O₂ tension = (Patm − PH₂O) × FiO₂ − PaCO₂/RQ. At sea level with FiO₂ 0.21: PAO₂ ≈ (101 − 6.3) × 0.21 − 5.3/0.8 ≈ 13.3 kPa. The alveolar gas equation is derived directly from Dalton's law."
+    "Total pressure = sum of partial pressures. The alveolar gas equation is written PAO₂ = [FiO₂ × (Patm − PH₂O)] − (PaCO₂/RQ): the FiO₂ multiplies the dry inspired pressure only, and PaCO₂/RQ is then subtracted from that product. At sea level with FiO₂ 0.21: PAO₂ ≈ [0.21 × (101 − 6.3)] − (5.3/0.8) ≈ 19.9 − 6.6 ≈ 13.3 kPa. Note this gives the alveolar tension (PAO₂), not the arterial PaO₂ — the difference between them is the A–a gradient."
   ]
 ];
 
@@ -198,6 +198,37 @@ const GasLawsTopic = () => {
                   described by Fick's law. That coefficient incorporates Henry-law solubility as well as molecular weight. CO₂ is
                   far more soluble than O₂ and therefore diffuses approximately 20 times faster across the alveolar membrane despite
                   being heavier <InlineRef topicId="gas-laws" refLabel="BJA Educ 2007 (Gas laws)" />.
+                </p>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PH_BK_01"]}>
+            <CollapsibleSubsection title="Fick's Law of Diffusion">
+              <div className="space-y-3 text-foreground/90 leading-relaxed">
+                <p>
+                  Fick's law states that the rate at which a gas diffuses across a membrane is proportional to the
+                  membrane <strong>area (A)</strong>, the <strong>partial pressure gradient (P₁ − P₂)</strong> and the
+                  <strong> diffusion constant (D)</strong> of the gas, and inversely proportional to membrane
+                  <strong> thickness (T)</strong>:
+                </p>
+                <p className="text-center font-mono text-physics">
+                  Rate ∝ (A ÷ T) × D × (P₁ − P₂)
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                  <li><strong>Area</strong> — the alveolar-capillary surface is 50–100 m²; emphysema and lung resection reduce it.</li>
+                  <li><strong>Thickness</strong> — normally ~0.3 µm; pulmonary oedema and fibrosis increase it and slow transfer.</li>
+                  <li><strong>Partial pressure gradient</strong> — the driving force; raising FiO₂ increases the O₂ gradient.</li>
+                  <li><strong>Diffusion constant</strong> — D ∝ solubility ÷ √molecular weight, combining Henry's and Graham's laws.</li>
+                </ul>
+                <p>
+                  Comparing the respiratory gases: by Graham's law oxygen (MW 32) has only a small kinetic advantage over
+                  carbon dioxide (MW 44), √44/√32 ≈ 1.17. By Henry's law, however, CO₂ is roughly 20–24 times more soluble in
+                  plasma than O₂. Solubility dominates the product, so CO₂ crosses the alveolar-capillary membrane about
+                  <strong> 20 times faster</strong> than O₂ despite being the heavier molecule — which is why diffusion
+                  limitation produces hypoxaemia long before hypercapnia
+                  <InlineRef topicId="gas-laws" refLabel="BJA Educ 2007 (Gas laws)" />{" "}
+                  <InlineRef topicId="gas-laws" refLabel="Peck &amp; Hill Ch.1" />.
                 </p>
               </div>
             </CollapsibleSubsection>

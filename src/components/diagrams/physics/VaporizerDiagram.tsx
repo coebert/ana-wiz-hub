@@ -13,7 +13,7 @@ interface AgentProps {
 
 const agents: AgentProps[] = [
   { name: "Sevoflurane", svp: 21.3, bp: 58.5, mac: 2.0, bloodGas: 0.65, colour: "hsl(210, 70%, 55%)" },
-  { name: "Isoflurane", svp: 32.5, bp: 48.5, mac: 1.17, bloodGas: 1.46, colour: "hsl(150, 60%, 45%)" },
+  { name: "Isoflurane", svp: 33.2, bp: 48.5, mac: 1.17, bloodGas: 1.46, colour: "hsl(150, 60%, 45%)" },
   { name: "Desflurane", svp: 88.5, bp: 22.8, mac: 6.0, bloodGas: 0.42, colour: "hsl(35, 80%, 50%)" },
 ];
 
