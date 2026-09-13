@@ -285,6 +285,14 @@ const StarlingForcesTopic = () => {
               relationship of the interstitium becomes very compliant beyond that point
               <InlineRef topicId="starling-forces" refLabel="Guyton & Hall 14e Ch.16" />.
             </p>
+            <p className="text-sm text-muted-foreground leading-relaxed mt-3">
+              The reserve is finite and is overwhelmed in disease: sepsis and ischaemia–reperfusion shed the glycocalyx
+              (raising Kf and lowering σ, so protein leaks and the washdown factor is lost), heart failure raises Pc while
+              raised right atrial pressure obstructs thoracic-duct lymph drainage, and lymphatic disruption (axillary
+              clearance, filariasis) removes the largest single factor. Aggressive fluid loading adds ANP-mediated glycocalyx
+              damage to a rising Pc, which is why oedema in critical illness appears at capillary pressures far below the
+              17 mmHg predicted in health <InlineRef topicId="starling-forces" refLabel="Levick & Michel 2010" />.
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 

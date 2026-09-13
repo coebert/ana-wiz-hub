@@ -484,6 +484,33 @@ const LungMechanicsTopic = () => {
               <div className="bg-card rounded-xl border border-border p-4">
                 <WestZonesDiagram />
               </div>
+              <div className="mt-4 space-y-3 text-sm text-foreground/85">
+                <p>
+                  In the upright lung, pulmonary arterial pressure falls by about 1 cmH₂O per centimetre of vertical height
+                  (roughly 20–25 cmH₂O apex to base), while alveolar pressure is essentially uniform. The interaction of the
+                  three pressures therefore differs by region <InlineRef topicId="lung-mechanics" refLabel="West Ch.7" />.
+                </p>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li><strong>Zone 1 (apex) — P<sub>A</sub> &gt; P<sub>a</sub> &gt; P<sub>v</sub>:</strong> alveolar pressure compresses the capillary throughout the cardiac cycle, so there is no flow. This is alveolar dead space (ventilation without perfusion, high V/Q). Zone 1 does not exist in the healthy upright subject because apical arterial pressure just exceeds alveolar pressure.</li>
+                  <li><strong>Zone 2 (mid-zone) — P<sub>a</sub> &gt; P<sub>A</sub> &gt; P<sub>v</sub>:</strong> intermittent flow occurring only when arterial pressure exceeds alveolar pressure. Flow depends on the arterial–alveolar difference, not the arteriovenous difference — the "vascular waterfall" or Starling-resistor behaviour, so flow rises steadily down the zone as P<sub>a</sub> increases.</li>
+                  <li><strong>Zone 3 (base) — P<sub>a</sub> &gt; P<sub>v</sub> &gt; P<sub>A</sub>:</strong> continuous flow determined by the arteriovenous pressure difference. Further increases in flow down this zone reflect capillary distension and recruitment. V/Q is low here because perfusion increases down the lung more steeply than ventilation.</li>
+                  <li><strong>Zone 4 (most dependent) — interstitial compression:</strong> at low lung volumes, increased interstitial pressure around extra-alveolar vessels raises resistance and reduces flow again. Zone 4 enlarges with pulmonary oedema and at volumes near residual volume <InlineRef topicId="lung-mechanics" refLabel="Lumb Ch.2-3" />.</li>
+                </ul>
+                <p>
+                  <strong>V/Q consequences:</strong> both ventilation and perfusion increase towards the base, but perfusion increases
+                  more, so V/Q falls from about 3.0 at the apex to about 0.6 at the base. The apex behaves like dead space and the
+                  base like a shunt; overall this gradient accounts for part of the normal alveolar–arterial oxygen difference.
+                </p>
+                <p>
+                  <strong>Factors that alter the zones:</strong> positive pressure ventilation and PEEP raise alveolar pressure and so
+                  expand zone 1 and 2 conditions, increasing alveolar dead space — pronounced if hypovolaemia or haemorrhage
+                  simultaneously lowers P<sub>a</sub>. Hypotension and pulmonary embolism similarly create zone 1. Exercise raises
+                  pulmonary arterial pressure, recruiting and distending apical vessels so the whole lung behaves as zone 3 with more
+                  uniform V/Q. The supine position abolishes the vertical gradient (replacing it with an antero-posterior one), and
+                  prone positioning produces more uniform perfusion — one reason it improves oxygenation in ARDS. Hypoxic pulmonary
+                  vasoconstriction and interstitial oedema modify the pattern further.
+                </p>
+              </div>
             </section>
           </ExamSection>
 

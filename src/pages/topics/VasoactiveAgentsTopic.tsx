@@ -360,7 +360,7 @@ const VasoactiveAgentsTopic = () => {
             <li><strong>Dose:</strong> bolus 0.5–1 mg IV (dilute to 0.5 mg/mL); infusion 0.5–5 mg/hr titrated to MAP.</li>
             <li><strong>Kinetics:</strong> onset 1–2 min, duration of a single bolus 20–60 min — considerably longer than phenylephrine. It is a poor substrate for COMT and is not metabolised by MAO in the way noradrenaline is; elimination pathways are incompletely characterised, with conjugation and renal excretion of metabolites.</li>
             <li><strong>Tachyphylaxis:</strong> repeated doses deplete noradrenaline stores and replace them with metaraminol acting as a “false transmitter” — a weaker agonist than noradrenaline — so responses diminish. Switch to a directly acting agent (phenylephrine, noradrenaline) rather than escalating.</li>
-            <li><strong>Clinical use:</strong> mainstay for hypotension after spinal or epidural blockade, and a peripherally safe bridge while central access and a noradrenaline infusion are established. Extravasation is less injurious than noradrenaline but still warrants care <InlineRef topicId="vasoactive-agents" refLabel="Peck &amp; Hill Ch.11" /></li>
+            <li><strong>Clinical use:</strong> mainstay for hypotension after spinal or epidural blockade, and a peripherally safe bridge while central access and a noradrenaline infusion are established. Extravasation is less injurious than noradrenaline but still warrants care <InlineRef topicId="vasoactive-agents" refLabel="Peck & Hill Ch.11" /></li>
           </ul>
         </section>
 
@@ -440,7 +440,7 @@ const VasoactiveAgentsTopic = () => {
             <li><strong>Primary indication:</strong> low cardiac output states (cardiogenic shock, post-cardiac surgery)</li>
             <li><strong>Haemodynamics:</strong> ↑ CO, ↓ PCWP, ↓/= SVR. May ↓ MAP due to β₂ vasodilation</li>
             <li><strong>Tachyphylaxis</strong> develops with prolonged use (β-receptor downregulation)</li>
-            <li>Racemic mixture: (+) isomer = β₁ agonist, (−) isomer = α₁ agonist</li>
+            <li><strong>Racemic mixture:</strong> the (+)-isomer is a potent β₁ agonist and α₁ <em>antagonist</em>, while the (−)-isomer is an α₁ agonist. The net clinical effect is potent β₁ stimulation with some β₂-mediated vasodilation, which is why SVR usually falls rather than rises<InlineRef topicId="vasoactive-agents" refLabel="BJA Educ 2019" /></li>
           </ul>
         </section>
 
@@ -514,7 +514,7 @@ const VasoactiveAgentsTopic = () => {
             <li><strong>Cardiac effects:</strong> ↑ contractility (weak inotrope), ↓ AV conduction (vagotonic), ↓ HR</li>
             <li><strong>Loading dose:</strong> 500 µg IV over 2 hours, then 250 µg 6-hourly × 2. Maintenance: 62.5–250 µg/day</li>
             <li><strong>Primary use:</strong> rate control in atrial fibrillation (especially with heart failure). Not for cardioversion</li>
-            <li><strong>Narrow therapeutic index:</strong> therapeutic level 1.0–2.0 ng/mL. Toxicity enhanced by hypokalaemia, hypercalcaemia, hypomagnesaemia, hypothyroidism, renal impairment</li>
+            <li><strong>Narrow therapeutic index:</strong> target serum concentration <strong>0.5–0.9 ng/mL</strong> (0.6–1.2 nmol/L). Concentrations &gt;1.2 ng/mL confer no incremental benefit in heart failure and are associated with increased mortality and toxicity, so the older 1.0–2.0 ng/mL range is no longer the therapeutic target<InlineRef topicId="vasoactive-agents" refLabel="JAMA 2003 Digoxin Levels" />. Toxicity enhanced by hypokalaemia, hypercalcaemia, hypomagnesaemia, hypothyroidism and renal impairment<InlineRef topicId="vasoactive-agents" refLabel="BNF Digoxin" /></li>
             <li><strong>Toxicity features:</strong> any arrhythmia (classically bidirectional VT, accelerated junctional rhythm), nausea, visual disturbance (xanthopsia — yellow vision)</li>
             <li><strong>Treatment of toxicity:</strong> Digoxin-specific antibody fragments (DigiFab). Correct K⁺/Mg²⁺. Avoid cardioversion (risk of refractory VF)</li>
             <li>70% renal excretion. T½ = 36–48 hours. Large Vd (8 L/kg) — not removed by dialysis</li>
@@ -595,8 +595,11 @@ const VasoactiveAgentsTopic = () => {
           <ul className="text-foreground/90 space-y-1">
             <li>Direct NO donor → balanced arterial and venous dilation</li>
             <li>Extremely rapid onset and offset (1–2 min). Dose: 0.5–8 µg/kg/min</li>
-            <li><strong>Cyanide toxicity:</strong> SNP releases 5 CN⁻ ions per molecule. Metabolised by rhodanase to thiocyanate (needs thiosulphate)</li>
-            <li>Signs of toxicity: tachyphylaxis, lactic acidosis, arrhythmias. Treat with hydroxocobalamin or sodium thiosulphate</li>
+            <li><strong>Cyanide release:</strong> SNP reacts with oxyhaemoglobin, producing methaemoglobin and an unstable nitroprusside radical that decomposes to release <strong>5 CN⁻ ions</strong> per molecule<InlineRef topicId="vasoactive-agents" refLabel="Peck & Hill Ch.11" /></li>
+            <li><strong>Detoxification:</strong> hepatic <em>rhodanase</em> (thiosulphate sulphurtransferase) transfers sulphur from a donor (thiosulphate) to cyanide, forming thiocyanate excreted renally. Capacity is limited by sulphur-donor availability, so malnourished, hepatically impaired and high-infusion-rate patients accumulate cyanide; thiocyanate itself accumulates in renal failure (confusion, seizures, hypothyroidism)</li>
+            <li><strong>Mechanism of toxicity:</strong> CN⁻ binds ferric iron in <strong>cytochrome c oxidase (complex IV)</strong>, halting mitochondrial electron transport. Oxygen delivery is preserved but cannot be used — histotoxic (cytotoxic) hypoxia with anaerobic glycolysis, high-anion-gap lactic acidosis and a narrowed arteriovenous oxygen difference (high venous saturations)</li>
+            <li><strong>Clinical features:</strong> <em>tachyphylaxis to the infusion is an early warning</em>, then headache, dizziness, confusion, nausea, rising lactate and base deficit, arrhythmias and finally cardiovascular collapse and coma</li>
+            <li><strong>Management:</strong> stop the infusion; 100% oxygen; support ventilation and circulation; correct acidosis with sodium bicarbonate; give an antidote — <strong>hydroxocobalamin 5 g IV</strong> over ~15 min (first line; chelates CN⁻ to cyanocobalamin, repeatable to 10 g), <strong>sodium thiosulphate</strong> 12.5 g IV (sulphur donor for rhodanase, slower onset, safe adjunct), or <strong>sodium nitrite</strong> 300 mg IV (induces methaemoglobin, which scavenges CN⁻ — avoid in hypotension, hypoxaemia, smoke inhalation or co-existing carboxyhaemoglobinaemia)<InlineRef topicId="vasoactive-agents" refLabel="BNF Sodium Nitroprusside" /></li>
             <li>Protect from light (photodegradation). Maximum duration 72 hours, max dose 1.5 mg/kg</li>
           </ul>
         </section>
