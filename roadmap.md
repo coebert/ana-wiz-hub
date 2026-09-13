@@ -13,4 +13,4 @@
 - [x] Batch 1 of 8 content-audit fixes (6 topics, 25 findings) + mark fixed in DB
 - [x] Batch 1 of 3 content-audit fixes (10 physics topics, 24 findings) + synchronize fixed findings
 - [x] Batch 1 of 2 content-audit fixes (8 physics topics, 26 findings) + correct viva answers + mark fixed in DB
-- [ ] SI Units & Thermodynamics content-audit fixes (2 findings) + mark fixed in DB
+- [x] SI Units & Thermodynamics content-audit fixes (2 findings) + mark fixed in DB
