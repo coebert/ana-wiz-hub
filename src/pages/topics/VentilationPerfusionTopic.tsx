@@ -381,6 +381,45 @@ const VentilationPerfusionTopic = () => {
               <h3 className="font-serif font-semibold text-foreground">Prone Positioning in ARDS</h3>
               <p className="mt-2 text-sm text-foreground/85 leading-relaxed">In supine ARDS, oedematous dorsal lung is compressed by gravity, the mediastinum and abdominal contents. These collapsed regions remain preferentially perfused, creating shunt. Proning makes dorsal units non-dependent and recruits them, while the heart rests on the sternum and no longer compresses the left lower lobe. Perfusion remains relatively dorsal, so it is redirected through newly ventilated units. Ventilation, stress and strain become more homogeneous, reducing shunt and improving oxygenation <InlineRef topicId="ventilation-perfusion" refLabel="Intensive Care Med 2020 Prone" />.</p>
             </div>
+            <div className="mt-5 rounded-lg border border-border p-4">
+              <h3 className="font-serif font-semibold text-foreground">Electrical Impedance Tomography (EIT) at the Bedside</h3>
+              <p className="mt-2 text-sm text-foreground/85 leading-relaxed">
+                A belt of electrodes placed around the thorax applies small, imperceptible alternating currents in
+                rotation and measures the resulting surface potentials. Because aerated lung is a poor conductor and
+                blood/tissue a better one, breath-by-breath changes in regional electrical impedance can be
+                reconstructed into a cross-sectional map of <strong>regional ventilation</strong> — radiation-free,
+                repeatable and deliverable continuously at the cot- or bed-side. Injecting a bolus of hypertonic saline
+                (a strong conductor) transiently changes impedance as it passes through the pulmonary circulation,
+                allowing <strong>contrast-enhanced EIT</strong> to generate a regional perfusion map from the same
+                electrode belt.
+              </p>
+              <div className="mt-3 grid md:grid-cols-2 gap-4 text-sm">
+                <div className="rounded-lg border border-border p-4">
+                  <h4 className="font-semibold text-foreground">ICU applications</h4>
+                  <ul className="mt-1 text-foreground/80 space-y-1 list-disc list-inside">
+                    <li>Titrating PEEP by balancing regional recruitment against overdistension</li>
+                    <li>Monitoring the ventilation response to proning and recruitment manoeuvres</li>
+                    <li>Detecting pneumothorax or endobronchial tube migration at the bedside</li>
+                    <li>Assessing regional V/Q matching and estimating shunt/dead space with contrast-enhanced EIT</li>
+                  </ul>
+                </div>
+                <div className="rounded-lg border border-border p-4">
+                  <h4 className="font-semibold text-foreground">Derived parameters and limitations</h4>
+                  <p className="mt-1 text-foreground/80">
+                    Common derived indices include the <strong>global inhomogeneity index</strong>, the{" "}
+                    <strong>centre of ventilation</strong>, regional compliance curves used to identify overdistension
+                    and collapse, and <strong>silent spaces</strong> (units with neither ventilation nor perfusion).
+                    Limitations include imaging only a single transverse slice of lung, sensitivity to electrode
+                    contact and thoracic boundary conditions, values that are relative rather than absolute, and
+                    degraded signal quality in obesity, surgical dressings or chest drains.
+                  </p>
+                </div>
+              </div>
+              <p className="mt-2 text-xs text-muted-foreground">
+                <InlineRef topicId="ventilation-perfusion" refLabel="Curr Opin Crit Care 2024 EIT" />{" "}
+                <InlineRef topicId="ventilation-perfusion" refLabel="Nunn Ch.8" />
+              </p>
+            </div>
           </ExamSection>
 
           <ExamPitfallsCallout
