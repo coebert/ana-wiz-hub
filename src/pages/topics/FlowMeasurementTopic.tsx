@@ -272,6 +272,24 @@ const FlowMeasurementTopic = () => {
               used in modern ventilators and in vaporiser-free flow sensors
               <InlineRef topicId="flow-measurement" refLabel="BJA Educ 2018 (Physics)" />.
             </p>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              <strong>Mass flowmeter</strong>: measures the mass rather than the volume of gas passing per unit time, so the
+              reading is independent of temperature, pressure and (for Coriolis devices) composition. In a Coriolis meter gas
+              passes through a vibrating tube; the mass flow generates a Coriolis force that twists the tube, and the resulting
+              phase shift between inlet and outlet is proportional to mass flow. Thermal mass flow sensors use the heat carried
+              away from a heated element. Their accuracy is why electronic anaesthetic workstations use mass-flow sensors for
+              gas mixing and for the electronic anti-hypoxia link between O₂ and N₂O
+              <InlineRef topicId="flow-measurement" refLabel="BJA Educ 2018 (Physics)" />.
+            </p>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              <strong>Wright peak flow meter</strong>: a purely mechanical variable-orifice device. Forced expiration through the
+              mouthpiece drives a lightweight pivoted vane (or piston) against a spring; as it moves it progressively uncovers a
+              slot, so the vane comes to rest where flow through the enlarging orifice matches the applied force, and a ratchet
+              holds the pointer at <strong>peak expiratory flow rate</strong> in L/min. It is effort-dependent, needs a
+              reproducible technique (best of three), and is used to grade and monitor asthma severity and to assess
+              bronchodilator response — including in the preoperative assessment of obstructive airways disease
+              <InlineRef topicId="flow-measurement" refLabel="Cross &amp; Plunkett Ch.8" />.
+            </p>
             <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border space-y-2">
               <p className="text-sm font-medium text-foreground">Doppler ultrasound flow measurement</p>
               <p className="text-sm text-muted-foreground">

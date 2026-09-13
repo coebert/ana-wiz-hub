@@ -417,6 +417,47 @@ const ElectricalSafetyTopic = () => {
             </p>
           </div>
           <DiathermyDiagram />
+          <h3 className="text-lg font-serif font-bold text-foreground mt-6 mb-2">
+            Electrosurgery in laparoscopy — coupling and insulation failure
+          </h3>
+          <p className="text-foreground/90 leading-relaxed">
+            Laparoscopy is uniquely hazardous because only a small part of a long active electrode is visible on the monitor,
+            so current can leave the instrument out of sight and burn bowel that is not recognised until perforation presents
+            days later.
+          </p>
+          <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border space-y-2 text-sm text-muted-foreground">
+            <p>
+              <strong className="text-foreground">Direct coupling</strong> — the activated electrode touches, or arcs to, another
+              conductor in the abdomen (a metal grasper, the laparoscope, a clip). Current passes through that instrument and
+              burns whatever it is holding. Avoid activating while the tip touches other instruments or is outside the field of view.
+            </p>
+            <p>
+              <strong className="text-foreground">Capacitative coupling</strong> — an insulated active electrode passing through a
+              metal cannula forms a capacitor (two conductors separated by a dielectric). High-frequency current is induced in the
+              cannula even with intact insulation. If the metal cannula is anchored by a <em>plastic</em> tissue retainer the
+              induced current has no low-resistance path to the abdominal wall, so it discharges at high current density into
+              adjacent bowel. Use all-metal or all-plastic cannula systems, not hybrid combinations.
+            </p>
+            <p>
+              <strong className="text-foreground">Insulation failure</strong> — reusable instruments develop microscopic breaks in
+              the shaft coating from repeated use, cleaning and sterilisation. Current escapes at the defect at high density,
+              typically outside the visual field. Inspect shafts, use single-use or regularly integrity-tested instruments, and
+              remember that higher voltage (coagulation/spray modes) is more likely to breach marginal insulation.
+            </p>
+            <p>
+              <strong className="text-foreground">Active electrode monitoring (AEM)</strong> — instruments with a second,
+              earthed conductive shield surrounding the shaft continuously return any stray capacitative or insulation-failure
+              current to the generator, which shuts down if leakage exceeds a threshold; this prevents both mechanisms.
+            </p>
+            <p>
+              <strong className="text-foreground">Mitigation</strong> — lowest effective power setting; short, intermittent
+              activations; cut (low-voltage) rather than coag (high-voltage) mode where possible; never activate in open circuit
+              or before the tip contacts the target; keep the whole active tip in view; prefer <strong>bipolar</strong> or
+              advanced-energy (ultrasonic, vessel-sealing) devices, which confine current between the jaws and avoid a return
+              plate altogether <InlineRef topicId="electrical-safety" refLabel="MHRA Electrosurgery" />{" "}
+              <InlineRef topicId="electrical-safety" refLabel="BJA Educ 2017 (Electrical safety)" />.
+            </p>
+          </div>
         </section>
 
         <section className="mb-10">

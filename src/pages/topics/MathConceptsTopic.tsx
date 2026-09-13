@@ -135,6 +135,57 @@ const MathConceptsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="multi-exponential" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Analysing Multi-Exponential Curves">
+              <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  A single-compartment model gives one exponential, which is a straight line on a semi-log plot.
+                  Real intravenous drugs behave as two- or three-compartment models, so plasma concentration falls as the{" "}
+                  <strong>sum of exponentials</strong>:
+                </p>
+                <p className="text-center font-mono text-primary">
+                  C(t) = A·e<sup>−αt</sup> + B·e<sup>−βt</sup>
+                </p>
+                <p>
+                  On a semi-log plot this is not a straight line but a curve that becomes progressively straighter — the early
+                  steep part is dominated by distribution (α) and the terminal straight part by elimination (β). The rate
+                  constants are separated graphically by the <strong>method of residuals</strong> (curve stripping):
+                </p>
+                <ol className="list-decimal list-inside space-y-1.5">
+                  <li>Plot log concentration against time and fit a straight line to the <strong>terminal linear portion</strong> (the β/elimination phase).</li>
+                  <li><strong>Extrapolate</strong> that line back to the y-axis; its intercept is B and its slope is −β/2.303.</li>
+                  <li>At each early time point, <strong>subtract the extrapolated value from the measured value</strong> to give the residual.</li>
+                  <li>Plot the residuals on the same semi-log axes: they form a new straight line whose intercept is A and slope −α/2.303 — the distribution phase.</li>
+                  <li>Repeat once more if a rapid initial phase remains, as for a three-compartment model (π, α, β).</li>
+                </ol>
+                <div className="rounded-lg border border-border p-4">
+                  <svg viewBox="0 0 320 200" className="w-full h-auto" role="img" aria-label="Semi-log plot of a bi-exponential decay curve with the extrapolated terminal beta line and the stripped residual alpha line">
+                    <line x1="40" y1="170" x2="310" y2="170" stroke="currentColor" className="text-border" strokeWidth="1.5" />
+                    <line x1="40" y1="170" x2="40" y2="15" stroke="currentColor" className="text-border" strokeWidth="1.5" />
+                    <text x="175" y="192" textAnchor="middle" className="fill-muted-foreground text-[10px]">Time</text>
+                    <text x="14" y="95" textAnchor="middle" className="fill-muted-foreground text-[10px]" transform="rotate(-90 14 95)">log concentration</text>
+                    {/* measured bi-exponential curve */}
+                    <path d="M50 25 C 90 80, 120 110, 160 125 C 210 143, 260 155, 305 165" fill="none" stroke="currentColor" className="text-primary" strokeWidth="2" />
+                    {/* extrapolated terminal (beta) line */}
+                    <line x1="50" y1="95" x2="305" y2="165" stroke="currentColor" className="text-muted-foreground" strokeWidth="1.5" strokeDasharray="5 4" />
+                    {/* residual (alpha) line */}
+                    <line x1="50" y1="30" x2="150" y2="150" stroke="currentColor" className="text-destructive" strokeWidth="1.5" strokeDasharray="2 3" />
+                    <text x="200" y="120" className="fill-muted-foreground text-[9px]">extrapolated β line</text>
+                    <text x="120" y="70" className="fill-muted-foreground text-[9px]">residual α line</text>
+                    <text x="150" y="40" className="fill-muted-foreground text-[9px]">measured curve</text>
+                  </svg>
+                </div>
+                <p>
+                  The slopes give the <strong>rate constants α and β</strong> (and hence the distribution and terminal
+                  half-lives), while the intercepts A and B allow the compartmental micro-rate constants, V₁ and clearance to be
+                  derived. This is how the classic propofol and thiopentone kinetic data — a rapid distribution phase followed by
+                  slower elimination — were originally characterised, and it explains why a single "half-life" is meaningless for
+                  such drugs <InlineRef topicId="math-concepts" refLabel="BJA Educ 2004 (PK)" />.
+                </p>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="michaelis-menten" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Michaelis-Menten Kinetics">
               <div className="text-sm text-muted-foreground leading-relaxed space-y-3">

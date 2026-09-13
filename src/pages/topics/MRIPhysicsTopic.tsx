@@ -153,6 +153,46 @@ const MRIPhysicsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="spatial-encoding" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <CollapsibleSubsection title="Spatial Encoding — Gradients and k-Space">
+            <div className="text-muted-foreground leading-relaxed space-y-3">
+              <p>
+                Relaxation explains image <em>contrast</em>; <strong>gradient coils</strong> explain how signal is
+                localised in three dimensions. Three orthogonal coils (x, y, z) superimpose small, rapidly switched
+                linear variations (a few mT/m) on B₀, so the Larmor frequency becomes a known function of position.
+                Their switching against B₀ generates the Lorentz forces responsible for the characteristic
+                <strong> acoustic noise (up to ~110 dB)</strong> that mandates hearing protection.
+              </p>
+              <ul className="list-disc list-inside space-y-1.5">
+                <li>
+                  <strong>Slice selection</strong> — a gradient (conventionally z for axial slices) is applied
+                  <em> during</em> the RF pulse, so only the slab whose precessional frequency matches the pulse's narrow
+                  bandwidth resonates. Slice thickness is set by the RF bandwidth and gradient steepness.
+                </li>
+                <li>
+                  <strong>Frequency encoding</strong> — a gradient applied along one in-plane axis <em>during signal
+                  readout</em> makes precessional frequency a map of position along that axis.
+                </li>
+                <li>
+                  <strong>Phase encoding</strong> — a brief gradient applied along the remaining axis before readout
+                  leaves spins with a position-dependent <strong>phase shift</strong>. It is stepped through many values
+                  (one per line of data), which is why phase encoding dominates acquisition time.
+                </li>
+              </ul>
+              <p>
+                The digitised echoes fill <strong>k-space</strong>, the raw matrix of spatial frequencies: central lines
+                carry contrast and signal-to-noise, peripheral lines carry edge detail and resolution. A two-dimensional
+                <strong> Fourier transform</strong> converts k-space into the final image. Understanding this explains
+                practical anaesthetic points — scan time is driven by phase-encoding steps and repetitions, motion during
+                acquisition corrupts whole k-space lines (ghosting), and even brief patient movement or a laryngospasm
+                episode can force a complete sequence to be repeated
+                <InlineRef topicId="mri-physics" refLabel="Middleton Ch.17" />{" "}
+                <InlineRef topicId="mri-physics" refLabel="BJA Educ 2019" />.
+              </p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="pulse-sequences" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Common Pulse Sequences">
               <div className="grid gap-3 sm:grid-cols-2 text-sm">
