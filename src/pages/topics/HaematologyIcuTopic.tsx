@@ -80,13 +80,23 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        Reduce citrate dose by 25–50%, increase calcium replacement, and consider stopping citrate.
-        Switch to <strong>no anticoagulation with saline flushes</strong> (the patient is already
-        coagulopathic) or low-dose UFH if filter life inadequate. Monitor ratio every 4 h until
-        normalised.
+        Act in a fixed order. <strong>1) Reduce the citrate dose immediately</strong> by 25–50% (or reduce
+        blood-flow rate, since citrate is prescribed per litre of blood flow) — the accumulating substrate must
+        fall. <strong>2) Increase the systemic calcium infusion</strong> to keep systemic ionised Ca²⁺ 1.0–1.2
+        mmol/L, accepting a higher calcium-chloride/gluconate rate than usual; treat symptomatic hypocalcaemia
+        with a bolus. <strong>3) Adjust the circuit fluids</strong> — use a calcium-free, lower-bicarbonate (or
+        bicarbonate-free) dialysate/replacement solution and increase effluent dose to clear citrate, remembering
+        that many pre-mixed solutions already contain buffer. <strong>4) Monitor the total:ionised calcium ratio
+        every 2–4 h</strong>, alongside systemic ionised Ca²⁺, base excess/bicarbonate, lactate and the
+        anion gap. <strong>5) Abandon citrate</strong> if the ratio stays &gt;2.5, acidosis worsens, or the
+        calcium requirement keeps climbing: switch to <strong>no anticoagulation with saline flushes</strong> (the
+        patient is usually already coagulopathic), low-dose UFH, epoprostenol, or argatroban in hepatic failure.
+        Treat the cause of impaired citrate metabolism in parallel — restore hepatic and muscle perfusion, since
+        shock and liver failure are the reason citrate is not becoming bicarbonate
+        <InlineRef topicId="haematology-icu" refLabel="CJASN 2014 Citrate" />.
       </>
     ),
-    cites: ["BJA Educ HIT 2008"],
+    cites: ["BJA Educ HIT 2008", "CJASN 2014 Citrate"],
   },
 ];
 
