@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import BernoulliVenturiDiagram from "@/components/diagrams/physics/BernoulliVenturiDiagram";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 /**
  * SEO-focused page for "venturi mask" search intent.
@@ -95,6 +96,7 @@ const VenturiMaskTopic = () => {
         accentColor="text-physics"
         metaDescription="Venturi mask explained: colour codes (blue 24%, white 28%, yellow 35%, red 40%, green 60%), required oxygen flow rates, entrainment ratio, Bernoulli physics and FRCA-ready use in COPD/type 2 respiratory failure."
       >
+        <PageJsonLd name="Venturi Mask" description="Colour-coded fixed-performance oxygen masks: FiO2 24-60%, entrainment physics and when to choose one in respiratory failure." learningResourceType="Topic" />
         <div className="space-y-8">
           <section className="space-y-3">
             <h2 className="text-2xl font-serif font-bold text-foreground">

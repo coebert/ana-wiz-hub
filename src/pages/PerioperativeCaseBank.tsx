@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ProgressiveCase, type CaseCategory, type DetailedAnswerSection, type PerioperativeCase } from "@/components/perioperative/ProgressiveCase";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 const sources = {
   steroid: { label: "Association of Anaesthetists 2020", href: "https://doi.org/10.1111/anae.14963" },
@@ -534,6 +535,7 @@ const PerioperativeCaseBank = () => {
       accentColor="text-perioperative"
       disableAutoTOC
     >
+      <PageJsonLd name="Perioperative Case Bank" description="Progressive perioperative cases covering steroid cover, phaeochromocytoma, tranexamic acid, co-existing disease and paediatric anaesthesia." learningResourceType="Case bank" />
       <section className="border-y border-border py-5 mb-6">
         <div className="grid sm:grid-cols-[auto_1fr] gap-4 items-start">
           <BookOpenCheck className="h-8 w-8 text-perioperative" aria-hidden />

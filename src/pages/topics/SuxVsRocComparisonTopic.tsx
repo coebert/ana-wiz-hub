@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 /**
  * Comparison guide: Suxamethonium vs Rocuronium for RSI.
@@ -89,6 +90,7 @@ const SuxVsRocComparisonTopic = () => {
       accentColor="text-pharmacology"
       metaDescription="Suxamethonium vs rocuronium for rapid sequence induction: onset, duration, contraindications (hyperkalaemia, MH, plasma cholinesterase deficiency) and reversal with sugammadex — exam-focused comparison for FRCA and FFICM."
     >
+      <PageJsonLd name="Suxamethonium vs Rocuronium for RSI" description="Onset, duration, contraindications and reversal compared for the two rapid sequence induction neuromuscular blockers." learningResourceType="Topic" />
       <Helmet>
         <link rel="canonical" href={url} />
         <meta property="og:url" content={url} />
