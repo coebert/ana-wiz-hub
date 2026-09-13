@@ -1348,7 +1348,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2017", citation: "Hawryluck L. Withdrawal of life-sustaining therapy in the ICU. BJA Education. 2017;17(11):359-364." },
   ],
   "non-technical-skills": [
-    { label: "BJA Educ 2003", citation: "Fletcher G, Flin R, McGeorge P, et al. Anaesthetists' Non-Technical Skills (ANTS): evaluation of a behavioural marker system. Br J Anaesth. 2003;90(5):580-588." },
+    { label: "BJA Educ 2003", citation: "Fletcher G, Flin R, McGeorge P, et al. Anaesthetists' Non-Technical Skills (ANTS): evaluation of a behavioural marker system. Br J Anaesth. 2003;90(5):580-588.", url: "https://doi.org/10.1093/bja/aeg112" },
     { label: "RCoA ANTS", citation: "Royal College of Anaesthetists. ANTS — Anaesthetists' Non-Technical Skills handbook.", url: "https://www.rcoa.ac.uk" },
     { label: "BMJ 2000", citation: "Reason J. Human error: models and management. BMJ. 2000;320(7237):768-770." },
     { label: "PSIRF 2022", citation: "NHS England. Patient Safety Incident Response Framework. 2022.", url: "https://www.england.nhs.uk/patient-safety/patient-safety-insight/incident-response-framework/" },
