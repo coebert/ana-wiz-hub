@@ -63,7 +63,7 @@ const detailedAnswers: Record<string, DetailedAnswerSection[]> = {
   ],
   "txa-trauma": [
     { title: "Clinical reasoning", content: "TXA inhibits plasminogen activation and limits fibrin breakdown. In significant traumatic haemorrhage, survival benefit is time dependent and greatest with early administration; viscoelastic results are not required before the first dose. Beyond three hours after injury, routine CRASH-2 treatment should not be initiated because benefit is lost and harm is possible." },
-    { title: "Management and monitoring", content: "Give 1 g IV over 10 minutes followed by 1 g over eight hours while continuing definitive haemorrhage control, balanced blood-component resuscitation, warming and calcium replacement. Use ROTEM or TEG to guide subsequent fibrinogen, plasma and platelet therapy and track temperature, pH, ionised calcium and lactate." },
+    { title: "Management and monitoring", content: "Give 1 g IV over 10 minutes as the priority dose, then a second 1 g while bleeding continues — either the CRASH-2 eight-hour infusion or a further short bolus per local major haemorrhage protocol — while continuing definitive haemorrhage control, balanced blood-component resuscitation, warming and calcium replacement. Use ROTEM or TEG to guide subsequent fibrinogen, plasma and platelet therapy and track temperature, pH, ionised calcium and lactate." },
     { title: "Exam pitfall", content: "TXA is an adjunct, not a reason to delay theatre, interventional radiology or damage-control resuscitation. Always state the injury-to-dose interval." },
   ],
   "txa-pph": [
@@ -273,7 +273,7 @@ const caseSeeds: CaseSeed[] = [
       { title: "Use viscoelastic testing", prompt: "What role does ROTEM play after initial treatment?", answer: ["ROTEM/TEG guides fibrinogen, plasma and platelet therapy and can identify ongoing hyperfibrinolysis.", "It complements rather than replaces immediate evidence-based TXA in early major trauma.", "Trend physiology: temperature, pH, ionised calcium, lactate and surgical control."] },
       { title: "Avoid the timing trap", prompt: "What if the patient arrived four hours after injury?", answer: ["Routine CRASH-2 trauma TXA should not be started beyond three hours because benefit is absent and harm is possible.", "Management remains urgent haemorrhage control and goal-directed resuscitation."] },
     ],
-    takeHome: "For bleeding trauma, TXA is a time-dependent adjunct: 1 g then 1 g over eight hours, started as early as possible and within three hours.", sourceLinks: [sources.crash2],
+    takeHome: "For bleeding trauma, TXA is a time-dependent adjunct: the 1 g loading dose within three hours carries the benefit; the second 1 g follows per local protocol while bleeding continues.", sourceLinks: [sources.crash2],
   },
   {
     id: "txa-pph", title: "Postpartum haemorrhage after caesarean birth", category: "Antifibrinolytics", difficulty: "Intermediate",
