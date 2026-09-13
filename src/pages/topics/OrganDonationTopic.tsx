@@ -317,6 +317,90 @@ const OrganDonationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="donation-algorithm" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Step-by-Step Donation Algorithm — Pre- and Post-Mortem" defaultOpen>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Every deceased donation follows the same skeleton: recognition that further treatment is futile →
+              SN-OD referral → family approach → a branch point at <strong>how death is confirmed</strong> (neurological
+              criteria = DBD, circulatory criteria after WLST = DCD) → organ-directed optimisation with timed drug
+              changes → retrieval → standing down the donation drugs afterwards. The drug swaps are not random — each
+              one happens at a defined point in the sequence, and the viva rewards stating the timing, not just the drug
+              <InlineRef topicId="organ-donation" refLabel="NICE CG135" />.
+            </p>
+
+            <h3 className="text-base font-semibold text-foreground mb-2">Phase 1 — Pre-mortem: common to both pathways</h3>
+            <div className="space-y-2 mb-4">
+              {[
+                { step: "1. Recognise futility & refer", detail: "Catastrophic brain injury with treatment no longer in the patient's best interests. Mandatory referral of every potential donor to the SN-OD — referral is not consent, it is a trigger for a co-ordinated pathway." },
+                { step: "2. Continue physiological care unchanged", detail: "No drug is started or stopped yet for the recipient's benefit. Maintain neuroprotective care for DBD candidates (CPP, normocapnia, temperature) and comfort care where relevant." },
+                { step: "3. Family approach & authorisation", detail: "SN-OD-led approach, checking the NHS Organ Donor Register. Under deemed consent in England/Wales/Scotland the family conversation still happens; no retrieval proceeds against sustained family objection." },
+                { step: "4. SN-OD co-ordinates the offer sequence", detail: "Blood tests (virology, tissue typing, crossmatch), donor characterisation and organ offers begin now, in parallel with the testing or withdrawal plan below." },
+              ].map((s) => (
+                <div key={s.step} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
+                  <span className="font-bold text-primary text-sm sm:whitespace-nowrap sm:w-64 sm:shrink-0">{s.step}</span>
+                  <span className="text-sm text-muted-foreground leading-relaxed">{s.detail}</span>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-base font-semibold text-foreground mb-2">Phase 2a — DBD branch (brainstem death confirmed)</h3>
+            <div className="space-y-2 mb-4">
+              {[
+                { step: "1. Brainstem death testing", detail: "Two sets of tests by two doctors; legal time of death = completion of the first set. From this moment the therapeutic goal switches from brain protection to organ protection." },
+                { step: "2. First drug swap — catecholamine storm control", detail: "If the hypertensive surge is ongoing: short-acting agents only (GTN, esmolol, sodium nitroprusside) so the vasoplegia that follows is not compounded by a lingering drug." },
+                { step: "3. Start the hormonal bundle — immediately after BSD", detail: "Methylprednisolone 15 mg/kg IV single dose; insulin infusion to glucose 4–10 mmol/L; T4 20 µg bolus then 10 µg/h is added for persisting cardiovascular instability rather than routinely." },
+                { step: "4. The noradrenaline → vasopressin swap", detail: "As the storm resolves into vasoplegic, endocrine shock: start vasopressin 0.5–2.4 (up to 4) U/h and titrate noradrenaline down. Rationale — V1 agonism bypasses downregulated adrenoceptors, the V2 effect treats the diabetes insipidus (~65% of donors), and catecholamine-sparing protects the heart, liver and kidneys. Done within hours of confirmation, aiming for the lowest catecholamine dose before the heart is assessed." },
+                { step: "5. Add DDAVP if polyuria persists", detail: "Desmopressin 1–2 µg IV when urine output remains high despite vasopressin, or when antidiuresis is wanted without further vasoconstriction. Corrects Na⁺ toward <155 mmol/L to protect liver grafts." },
+                { step: "6. Multi-organ optimisation until theatre", detail: "Targets: MAP 60–80, CVP 4–12, VT 6–8 mL/kg with PEEP 5–10, PaO₂/FiO₂ >300, Hb >80–100 g/L, temperature 35–37 °C, urine output ~100 mL/h. Broad-spectrum antibiotics for donor infection; bronchoscopy and lung recruitment as requested." },
+                { step: "7. In theatre, after death (post-mortem)", detail: "Retrieval team gives heparin (typically 25,000–30,000 units) immediately before aortic cross-clamp, then cold perfusion. Continued neuromuscular blockade prevents spinal reflexes. Organ-directed ICU drugs are stopped once cross-clamp occurs — the graft is now managed ex situ." },
+              ].map((s) => (
+                <div key={s.step} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
+                  <span className="font-bold text-primary text-sm sm:whitespace-nowrap sm:w-64 sm:shrink-0">{s.step}</span>
+                  <span className="text-sm text-muted-foreground leading-relaxed">{s.detail}</span>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-base font-semibold text-foreground mb-2">Phase 2b — DCD branch (withdrawal of life-sustaining treatment)</h3>
+            <div className="space-y-2 mb-4">
+              {[
+                { step: "1. Decision that BSD criteria are not met", detail: "Catastrophic injury with treatment futile, but the brainstem is not dead — so death must be confirmed by circulatory criteria. The patient is alive until then; comfort, not organ protection, governs the prescription." },
+                { step: "2. Pre-mortem drug rule", detail: "Only drugs that benefit the patient (analgesia, sedation, secretions control) are given, titrated to distress and never to shorten life. Pre-mortem heparin is an authorised 'pre-mortem intervention' only where specifically agreed case-by-case with the SN-OD and treating team — it is not routine UK practice and is never prescribed unilaterally." },
+                { step: "3. Withdrawal (extubation) — clock starts", detail: "WLST, usually in theatre or ICU. Functional warm ischaemic time begins when SBP falls below 50 mmHg. No organ-directed drug is given during this window." },
+                { step: "4. Cardiac arrest → 5-minute hands-off observation", detail: "Legal time of death = the START of the 5-minute observation period (the moment observation of absent circulation begins). Nothing is touched, no drug is given, during the standoff; after 5 minutes of absent circulation, death is confirmed." },
+                { step: "5. Post-mortem — retrieval sequence", detail: "Only now may organ-directed drugs be given: heparin and vasodilators in the perfusate, cannulation for cold perfusion within ~10 minutes, or abdominal/thoraco-abdominal NRP with arch-vessel exclusion to prevent cerebral reperfusion. Stand-down if death has not occurred within the agreed window (typically 2–3 h from withdrawal) — warm ischaemia too long for viable retrieval." },
+              ].map((s) => (
+                <div key={s.step} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
+                  <span className="font-bold text-primary text-sm sm:whitespace-nowrap sm:w-64 sm:shrink-0">{s.step}</span>
+                  <span className="text-sm text-muted-foreground leading-relaxed">{s.detail}</span>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-base font-semibold text-foreground mb-2">Phase 3 — Post-mortem: after retrieval (both pathways)</h3>
+            <div className="space-y-2 mb-3">
+              {[
+                { step: "1. Stop all organ-directed therapy", detail: "Vasopressin, noradrenaline, insulin, thyroid hormone, DDAVP and ventilation are discontinued once cross-clamp/retrieval is complete — their purpose ended with organ removal." },
+                { step: "2. Dignified end-of-life care", detail: "The body is cared for with the same dignity as any death; the coroner/procurator fiscal is informed where required, and the family is supported by the SN-OD with follow-up." },
+                { step: "3. Document the timing chain", detail: "Record the legal time of death (first BSD test set, or start of the 5-minute DCD observation), time of each drug swap, cross-clamp time and warm/cold ischaemic times — these feed the national audit and graft outcome reporting." },
+              ].map((s) => (
+                <div key={s.step} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
+                  <span className="font-bold text-primary text-sm sm:whitespace-nowrap sm:w-64 sm:shrink-0">{s.step}</span>
+                  <span className="text-sm text-muted-foreground leading-relaxed">{s.detail}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground italic mt-3">
+              Exam framing: recite the skeleton first (referral → approach → branch at mode of death → optimisation →
+              retrieval → stand-down), then place each drug on the timeline — storm control during BSD testing,
+              hormonal bundle immediately after confirmation, noradrenaline→vasopressin as vasoplegia emerges, DDAVP for
+              persisting DI, heparin only in the perfusate/cross-clamp window in DBD and only post-mortem in DCD
+              <InlineRef topicId="organ-donation" refLabel="BJA Donor Management 2012" />{" "}
+              <InlineRef topicId="organ-donation" refLabel="NICE CG135" />.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="dcd" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="DCD — Pathway & Maastricht Classification">
             <p className="text-muted-foreground leading-relaxed mb-3">
