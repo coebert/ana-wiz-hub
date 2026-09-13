@@ -406,6 +406,69 @@ const NeuroprognosticationTopic = () => {
               </ul>
             </div>
 
+            {/* Posterior fossa pathology */}
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Neuroprognostication with posterior fossa injury — why it demands caution</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                The standard post-arrest multimodal framework assumes the lesion is <strong>diffuse hypoxic–ischaemic
+                cortical injury</strong>. Posterior fossa pathology — cerebellar infarction or haemorrhage,
+                brainstem stroke (e.g. basilar artery occlusion), or a mass lesion causing direct brainstem
+                compression — breaks several of those assumptions at once, and applying the standard algorithm
+                uncritically can produce both falsely pessimistic and falsely confident predictions
+                <InlineRef topicId="neuroprognostication" refLabel="Cerebellar Swelling 2014" />
+                <InlineRef topicId="neuroprognostication" refLabel="ERC/ESICM 2021 Post-Resus" />.
+              </p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
+                <li>
+                  <strong>Clinical examination can be misleadingly terrible.</strong> A brainstem lesion can
+                  abolish pupillary, corneal, cough and gag reflexes <em>by direct structural injury</em>, while
+                  the cerebral hemispheres remain relatively preserved. Absent brainstem reflexes in this setting
+                  reflect focal anatomy, not necessarily diffuse bihemispheric death of cortex — the pattern the
+                  post-arrest criteria were validated against. A patient with a small midbrain/pontine lesion can
+                  meet "poor outcome" clinical criteria yet retain intact cortical function, or vice versa.
+                </li>
+                <li>
+                  <strong>SSEPs and biomarkers can be falsely reassuring or falsely alarming.</strong> The N20
+                  requires an intact lemniscal pathway through the brainstem; brainstem injury can attenuate or
+                  abolish the cortical response via the focal lesion rather than cortical necrosis, mimicking the
+                  "bilaterally absent N20" poor-outcome criterion. Conversely, NSE and neuron-specific markers
+                  reflect the volume of neuronal injury, and a small but strategically placed brainstem lesion
+                  produces little biomarker release despite devastating functional impact.
+                </li>
+                <li>
+                  <strong>Coma may be a problem of arousal, not awareness.</strong> Pontine lesions can produce
+                  locked-in syndrome or severe motor impairment with retained consciousness; EEG background may be
+                  preserved and even reactive. Behaviourally unresponsive patients here overlap with the
+                  cognitive-motor dissociation population, and prognosis hinges on tests of covert cognition, not
+                  reflexes.
+                </li>
+                <li>
+                  <strong>The lesion is dynamic, not static.</strong> Cerebellar swelling peaks at 3–5 days and can
+                  cause progressive brainstem compression, hydrocephalus and secondary deterioration; equally,
+                  timely surgical decompression (suboccipital craniectomy, EVD) or thrombectomy for basilar
+                  occlusion can transform the outlook. Early prognostication — before swelling resolves or before
+                  a potentially reversible lesion is treated — embeds a self-fulfilling prophecy.
+                </li>
+                <li>
+                  <strong>The evidence base does not apply.</strong> The ERC/ESICM 2021 poor-outcome criteria were
+                  derived in post-anoxic coma cohorts and were <em>not validated in focal brainstem or cerebellar
+                  pathology</em>. Prognostic scores and reflex-based rules carry unquantified false-positive rates
+                  here, and outcome after decompressive surgery for cerebellar infarction is frequently better than
+                  the early clinical picture suggests, especially in younger patients.
+                </li>
+              </ul>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                <strong>Practical approach:</strong> treat posterior fossa injury as a hard exclusion from the
+                standard post-arrest algorithm. Establish the exact lesion and its reversibility with CT/MRI
+                (including vascular imaging for basilar occlusion), exclude hydrocephalus and evolving swelling,
+                defer any prognostic statement until the lesion has been treated and allowed to declare itself —
+                often well beyond 72 h — and make decisions only after MDT review with neurology and neurosurgery.
+                Where reflexes are absent but cortex is potentially spared, prioritise EEG background/reactivity
+                and MRI over brainstem reflexes and SSEPs, and actively consider testing for covert consciousness
+                before any discussion of treatment withdrawal.
+              </p>
+            </div>
+
             {/* Cognitive-motor dissociation */}
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cognitive-motor dissociation (covert consciousness)</h2>
