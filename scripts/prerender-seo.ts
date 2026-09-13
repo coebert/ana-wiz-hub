@@ -185,6 +185,10 @@ const CORE_SEO: Record<string, { title: string; description: string }> = {
     title: "Anaesthetic & Critical Care Drug Reference – Dosing, Dilutions, Levels",
     description: "Searchable drug library for anaesthesia and ICU: presentation, dosing, standard dilutions with mL/h pump rates, pharmacokinetics, safety and therapeutic drug level monitoring, fully referenced.",
   },
+  "/reference/topics": {
+    title: "Drug Topics – Vasoactive, Sedation, Analgesia, Anticoagulation",
+    description: "Browse the anaesthetics and critical care drug reference by topic: vasoactive support, sedation, analgesia, neuromuscular blockade, local anaesthetics, anticoagulation, fluids, antimicrobials and antidotes.",
+  },
   "/reference/monitoring": {
     title: "Therapeutic Drug Level Monitoring – Targets, Timing, Toxicity",
     description: "Therapeutic drug monitoring reference: target ranges, sampling timing, toxicity thresholds and actions and dose adjustment for anaesthetic and critical care drugs.",
