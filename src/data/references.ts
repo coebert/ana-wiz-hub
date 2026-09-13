@@ -509,6 +509,7 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
 
   "muscle-relaxants": [
+    { label: "Front Toxicol 2022 QAC", citation: "Peyneau M, de Chaisemartin L, Nicaise-Roland P, et al. Quaternary ammonium compounds in hypersensitivity reactions. Front Toxicol. 2022;4:973680.", url: "https://doi.org/10.3389/ftox.2022.973680" },
     { label: "BJA Educ 2015 NMB Monitoring", citation: "Naguib M, Brull SJ. Update on neuromuscular pharmacology and monitoring. BJA Education. 2015;15(5):239-243.", url: "https://academic.oup.com/bjaed/article/15/5/239/313437" },
     { label: "CCM 2006 ICU NMBA", citation: "Murray MJ, Cowen J, DeBlock H, et al. Clinical practice guidelines for sustained neuromuscular blockade in the adult critically ill patient. Crit Care Med. 2006;34(3):901.", url: "https://doi.org/10.1097/01.ccm.0000239435.87433.0d" },
     { label: "AAS 2023 Novel NMBA", citation: "Review of novel neuromuscular blocking and reversal agents. Acta Anaesthesiol Scand. 2023.", url: "https://doi.org/10.1111/aas.14279" },
@@ -528,6 +529,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2015", citation: "Appiah-Ankam J, Hunter JM. Pharmacology of neuromuscular blocking drugs. BJA Education. 2004;4(1):2-7.", url: "https://doi.org/10.1093/bjaceaccp/mkh002" },
     { label: "Peck & Hill Ch.10", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 10: Drugs Acting on the Neuromuscular Junction." },
     { label: "Fourth National Audit Project", citation: "NAP6: Anaesthesia, Surgery and Life-Threatening Allergic Reactions. Royal College of Anaesthetists; 2018. Rocuronium and suxamethonium are the leading NMBA triggers of perioperative anaphylaxis in the UK.", url: "https://www.nationalauditprojects.org.uk/NAP6home" },
+    { label: "JOACP 2022 Sugammadex Anaphylaxis", citation: "Zecic F, Rana MV, Rana N, et al. Sugammadex-induced anaphylactic reaction: A systematic review. J Anaesthesiol Clin Pharmacol. 2022;38(3):360-367.", url: "https://doi.org/10.4103/joacp.joacp_573_20" },
+    { label: "ESAIC 2023 NMB Guideline", citation: "Fuchs-Buder T, Romero CS, Lewald H, et al. Peri-operative management of neuromuscular blockade: a guideline from the European Society of Anaesthesiology and Intensive Care. Eur J Anaesthesiol. 2023;40(2):82-94.", url: "https://doi.org/10.1097/eja.0000000000001769" },
   ],
   "local-anaesthetics": [
     { label: "BJA Educ 2015", citation: "Taylor A, McLeod G. Basic pharmacology of local anaesthetics. BJA Education. 2020;20(2):34-41.", url: "https://doi.org/10.1016/j.bjae.2019.10.002" },
@@ -540,6 +543,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2016", citation: "Garg R. Mechanical ventilators. BJA Education. 2016;16(6):186-192.", url: "https://doi.org/10.1093/bjaed/mkv066" },
   ],
   "vasoactive-agents": [
+    { label: "Curr Pediatr Rep 2023 Paediatric Sepsis", citation: "Miranda M, Nadel S. Pediatric Sepsis: a Summary of Current Definitions and Management Recommendations. Curr Pediatr Rep. 2023;11:29-39.", url: "https://doi.org/10.1007/s40124-023-00286-3" },
     { label: "ATHOS-3 2017", citation: "Khanna A, English SW, Wang XS, et al. Angiotensin II for the Treatment of Vasodilatory Shock (ATHOS-3). N Engl J Med. 2017;377:419-430.", url: "https://doi.org/10.1056/NEJMoa1704154", excerpt: "Angiotensin II effectively increased blood pressure in patients with vasodilatory shock that did not respond to high doses of conventional vasopressors." },
     { label: "SCCM Paediatric Sepsis 2020", citation: "Weiss SL, Peters MJ, Alhazzani W, et al. Surviving Sepsis Campaign International Guidelines for the Management of Septic Shock and Sepsis-Associated Organ Dysfunction in Children. Pediatr Crit Care Med. 2020;21(2):e52-e106.", url: "https://doi.org/10.1097/PCC.0000000000002198", excerpt: "We suggest using epinephrine, rather than dopamine, in children with septic shock. We suggest using norepinephrine, rather than dopamine, in children with septic shock." },
     { label: "BNF Hydralazine", citation: "Joint Formulary Committee. Hydralazine hydrochloride. British National Formulary. London: BMJ and Pharmaceutical Press; accessed 2026.", url: "https://bnf.nice.org.uk/drugs/hydralazine-hydrochloride/" },
