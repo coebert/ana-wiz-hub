@@ -298,11 +298,17 @@ const NeuroprognosticationTopic = () => {
                 recorded and interpreted by an experienced neurophysiologist. Among the most robust
                 single criteria — but still must be paired with a second concordant modality.
               </p>
-              <p className="text-sm text-muted-foreground">
-                Pitfalls: technical noise (peripheral nerve injury, electrical interference), prior
-                cervical spine pathology, profound hypothermia, and severe sedation can all abolish
-                N20 without irreversible brain injury.
-              </p>
+              <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-3">
+                <p className="text-sm font-semibold text-foreground mb-1">Technical pitfalls that invalidate an "absent N20"</p>
+                <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                  <li><strong>Noisy recording:</strong> ICU electrical interference (pumps, CRRT, warming devices, mains 50 Hz artefact) and muscle activity raise the noise floor. Absence can only be declared when background noise is low (peak-to-peak amplitude &lt; 0.25 µV) — otherwise the result is "uninterpretable", not "absent".</li>
+                  <li><strong>No proof the stimulus arrived:</strong> the peripheral (Erb's point, N9) and cervical (N13) responses must be present bilaterally to confirm intact conduction; peripheral nerve injury, critical-illness neuropathy, oedematous wrists, cervical cord or brachial plexus pathology otherwise produce a false "absent N20".</li>
+                  <li><strong>Physiological confounders:</strong> temperature below about 33 °C, high-dose sedation or neuromuscular blockade, hypotension, and severe metabolic derangement — record after rewarming and with confounders minimised.</li>
+                  <li><strong>Timing and repetition:</strong> record at ≥ 24 h after ROSC, ideally repeat, and require reproducible bilateral absence in two independent averaged trials read by an experienced neurophysiologist.</li>
+                  <li><strong>Interpretation asymmetry:</strong> a <em>present</em> N20 has poor specificity for good outcome — it does not predict recovery, and unilateral absence is not a poor-outcome criterion <InlineRef topicId="neuroprognostication" refLabel="ERC/ESICM 2021 Post-Resus" />.</li>
+                </ul>
+              </div>
+
             </div>
 
             {/* Modality 4: Biomarkers */}
@@ -416,6 +422,42 @@ const NeuroprognosticationTopic = () => {
                 <li><strong>Implications:</strong> CMD is a key argument for <strong>multimodal</strong> assessment and against decisions based on clinical examination or a single test alone. Extreme caution is warranted before WLST in patients with an indeterminate multimodal result, particularly where the EEG background is benign/reactive with sleep–wake cycles, as this combination raises the possibility of covert awareness or later recovery.</li>
               </ul>
             </div>
+
+            {/* Predicting good outcome */}
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Predicting a <em>good</em> outcome</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                The ERC/ESICM algorithm is designed only to identify patients in whom a poor outcome is
+                very likely; the absence of poor-outcome criteria is not the same as a prediction of
+                recovery. Predictors of good outcome are less well validated but increasingly
+                described, and matter because they justify continued treatment and more time before any
+                decision on withdrawal
+                <InlineRef topicId="neuroprognostication" refLabel="EHJ-ACC 2023 (Neuroprognostication)" />.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3 mb-3">
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Features favouring recovery</p>
+                  <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1 mt-1">
+                    <li>Continuous, reactive EEG background with normal voltage, and re-emergence of sleep–wake patterns.</li>
+                    <li>Low or falling NSE (broadly &lt; 17 µg/L at 24–48 h) and low GFAP/NfL where available.</li>
+                    <li>Present and symmetrical N20 with a normal cortical amplitude (higher N20 amplitudes are associated with better outcome).</li>
+                    <li>Normal brain CT grey/white matter ratio and absence of diffusion restriction on MRI.</li>
+                    <li>Early return of brainstem reflexes, preserved pupillary quantitative light-reflex (NPi ≥ 3), and improving motor score by 72 h.</li>
+                    <li>Favourable arrest characteristics: witnessed collapse, bystander CPR, shockable rhythm, short low-flow time, and a reversible cardiac cause.</li>
+                  </ul>
+                </div>
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">How to use them</p>
+                  <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1 mt-1">
+                    <li>Treat these as reasons to <strong>wait and continue full support</strong>, not as a promise of recovery.</li>
+                    <li>Late awakening is common — a substantial proportion of survivors regain consciousness after 72 h, and occasionally after a week or more, particularly with sedation, renal failure or hypothermia.</li>
+                    <li>Where the multimodal result is indeterminate, extend observation, repeat EEG and imaging, and consider testing for cognitive-motor dissociation before any decision on withdrawal.</li>
+                    <li>Document the balance of poor- and good-outcome indicators explicitly in the family discussion, and involve neurology/neurophysiology.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
 
             {/* Communication */}
             <div>

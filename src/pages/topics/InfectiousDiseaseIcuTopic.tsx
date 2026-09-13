@@ -363,7 +363,7 @@ const InfectiousDiseaseIcuTopic = () => {
               </div>
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Raised ICP / seizures</p>
-                <p className="text-xs text-muted-foreground mt-1">Sedation, analgesia, normocapnia, normothermia, normonatraemia (avoid hyponatraemia — Na⁺ 140–145). Osmotherapy: mannitol 0.5–1 g/kg or hypertonic saline 2.7–3% bolus. EVD for hydrocephalus. Levetiracetam first-line for seizures; cEEG if persistent altered consciousness.</p>
+                <p className="text-xs text-muted-foreground mt-1">Sedation, analgesia, normocapnia, normothermia, normonatraemia (avoid hyponatraemia — Na⁺ 140–145). Osmotherapy: mannitol 0.5–1 g/kg or hypertonic saline 2.7–3% bolus. EVD for hydrocephalus, decompressive craniectomy for refractory intracranial hypertension. Levetiracetam first-line for seizures; cEEG if persistent altered consciousness <InlineRef topicId="infectious-disease-icu" refLabel="ESCMID Meningitis 2016" />.</p>
               </div>
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Source control & adjuncts</p>
@@ -467,6 +467,49 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <ExamSection id="stewardship" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Antimicrobial Stewardship in ICU">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              The ICU has the highest antimicrobial exposure of any hospital area and is the engine of resistance. Stewardship is not rationing — it is prescribing the right agent, at the right dose, for the shortest effective duration, with an explicit review point <InlineRef topicId="infectious-disease-icu" refLabel="Stewardship ICU 2020" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Start smart</p>
+                <p className="text-xs text-muted-foreground mt-1">Cultures before antimicrobials whenever this does not delay therapy; document indication, agent, dose, route, planned duration and review date on the prescription; follow the local empiric policy weighted to unit ecology and the patient's previous isolates.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Then focus (48–72 h review)</p>
+                <p className="text-xs text-muted-foreground mt-1">Five outcomes: stop, switch IV to oral, de-escalate to a narrower agent, continue with a documented duration, or refer to microbiology/infection. De-escalation on culture results does not worsen outcome and reduces resistance pressure.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Duration</p>
+                <p className="text-xs text-muted-foreground mt-1">7 days is adequate for most serious ICU infections including VAP and Gram-negative bacteraemia with source control; extend for <em>S. aureus</em> bacteraemia, endocarditis, undrained collections, osteoarticular/CNS infection or profound immunosuppression <InlineRef topicId="infectious-disease-icu" refLabel="SSC 2021" />.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Biomarker-guided stopping</p>
+                <p className="text-xs text-muted-foreground mt-1">Procalcitonin-guided discontinuation protocols safely shorten courses (typically stop when PCT &lt; 0.5 µg/L or falls &gt; 80% from peak) but must never override clinical judgement or delay treatment of an undrained source.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Dose optimisation (PK/PD)</p>
+                <p className="text-xs text-muted-foreground mt-1">Critical illness expands V<sub>d</sub> and alters clearance (augmented renal clearance, hypoalbuminaemia, RRT, ECMO). Use loading doses; extended or continuous infusions for β-lactams (time &gt; MIC); once-daily, AUC-targeted aminoglycosides and vancomycin with TDM; voriconazole and linezolid TDM where available.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Antibiotic cycling and mixing</p>
+                <p className="text-xs text-muted-foreground mt-1">Scheduled rotation of empiric classes at unit level was proposed to reduce selection pressure, but trial evidence is weak and inconsistent; "mixing" (varying the class between consecutive patients) may retain more diversity. Neither substitutes for individualised de-escalation, and cycling is not recommended as a routine strategy <InlineRef topicId="infectious-disease-icu" refLabel="Stewardship ICU 2020" />.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Governance and audit</p>
+                <p className="text-xs text-muted-foreground mt-1">Multidisciplinary ward rounds with an ICU pharmacist and microbiologist, prospective audit with feedback, restricted/pre-authorised agents (carbapenems, novel β-lactam/β-lactamase inhibitors, antifungals), unit resistance surveillance, defined daily doses per 1000 patient-days, and allergy de-labelling.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Collateral damage to avoid</p>
+                <p className="text-xs text-muted-foreground mt-1"><em>C. difficile</em>, MDR colonisation, candidaemia after prolonged broad-spectrum therapy, AKI (piperacillin–tazobactam with vancomycin), and drug interactions with azoles and rifampicin.</p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
 
           <ExamSection id="abdo" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Intra-abdominal Sepsis">
@@ -581,6 +624,42 @@ const InfectiousDiseaseIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Invasive candidiasis — species, source control and step-down</h3>
+            <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-3">
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li><strong>Empiric therapy:</strong> an <strong>echinocandin</strong> (caspofungin 70 mg then 50 mg OD, anidulafungin 200 mg then 100 mg OD, micafungin 100 mg OD) is first-line for every haemodynamically unstable or recently azole-exposed patient <InlineRef topicId="infectious-disease-icu" refLabel="IDSA Candidiasis 2016" />.</li>
+                <li><strong>Species matter.</strong> <em>C. albicans</em> and <em>C. tropicalis</em> are usually fluconazole-susceptible; <em>C. glabrata</em> is frequently fluconazole-resistant and may be echinocandin-resistant (keep on an echinocandin pending sensitivities); <em>C. parapsilosis</em> has intrinsically higher echinocandin MICs, so fluconazole is preferred once the patient is stable and the isolate susceptible; <em>C. krusei</em> is inherently fluconazole-resistant.</li>
+                <li><strong>Step-down to fluconazole</strong> (400 mg / 6 mg/kg OD) after ~5 days only if: haemodynamically stable, isolate susceptible, repeat blood cultures negative, no CNS/ocular/endovascular focus, and absorbing enterally.</li>
+                <li><strong>Source control is mandatory:</strong> remove or exchange central venous catheters in candidaemia whenever feasible, drain intra-abdominal collections, and arrange <strong>dilated ophthalmology review within the first week</strong> to exclude chorioretinitis/endophthalmitis (which mandates a penetrating agent — high-dose fluconazole, voriconazole or L-AmB — because echinocandins penetrate the eye poorly). Repeat blood cultures daily until clearance, and treat for <strong>14 days from the first negative culture</strong> in uncomplicated candidaemia.</li>
+                <li><strong>Deep-seated / persistent infection</strong> (endocarditis, osteoarticular, hepatosplenic, CNS) needs prolonged therapy, an agent with adequate site penetration, and surgical debridement or valve surgery.</li>
+                <li><strong><em>C. auris</em>:</strong> notify infection prevention immediately — single-room contact precautions, cohorting of staff, chlorine- or hydrogen-peroxide-based environmental decontamination, screening of contacts, and treatment with an echinocandin pending susceptibilities (frequently multi-azole and variably amphotericin resistant; combination therapy on mycology advice for echinocandin-resistant isolates).</li>
+              </ul>
+            </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Invasive aspergillosis: IPA vs CAPA/IAPA</h3>
+            <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-3">
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li><strong>Classical IPA</strong> occurs in the neutropenic or transplant host with typical CT signs (halo, air-crescent, cavitation) and positive serum galactomannan.</li>
+                <li><strong>CAPA / IAPA</strong> (COVID- and influenza-associated pulmonary aspergillosis) occurs in non-neutropenic ICU patients: serum galactomannan is often <em>negative</em>, so diagnosis rests on <strong>BAL galactomannan (ODI ≥ 1.0), BAL culture or Aspergillus PCR</strong> plus compatible imaging, using ECMM/ISHAM case definitions. Incidence up to ~10–20% of ventilated severe influenza or COVID-19 and mortality above 50%.</li>
+                <li><strong>Treatment:</strong> voriconazole (6 mg/kg BD × 2 doses then 4 mg/kg BD) or isavuconazole; liposomal amphotericin B if azole-resistant or intolerant. <strong>Voriconazole TDM</strong> is mandatory — trough 1–5.5 mg/L, checked at day 3–5 and after any dose or interacting-drug change (hepatotoxicity, encephalopathy and visual disturbance at high troughs; failure at low troughs; wide CYP2C19-driven variability).</li>
+              </ul>
+            </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Antifungal prophylaxis in ICU</h3>
+            <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+              <p className="text-sm text-muted-foreground mb-2">
+                Routine prophylaxis is <strong>not</strong> indicated for general ICU patients — it drives azole resistance without a mortality benefit. It is reserved for defined high-risk groups <InlineRef topicId="infectious-disease-icu" refLabel="IDSA Candidiasis 2016" />:
+              </p>
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li>Recurrent gastrointestinal perforation or anastomotic leak requiring repeated laparotomy (fluconazole or an echinocandin).</li>
+                <li>Liver, small-bowel and pancreas transplant recipients, and high-risk lung transplant recipients (mould-active cover).</li>
+                <li>Prolonged neutropenia or allogeneic HSCT (posaconazole for mould cover; on haematology protocol).</li>
+                <li>Necrotising pancreatitis with repeated interventions, or high local candidaemia rates in a selected high-risk ICU cohort.</li>
+                <li>Always paired with a stop date, TDM where relevant, and de-escalation once the risk period ends.</li>
+              </ul>
+            </div>
+
 
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2"><em>Pneumocystis jirovecii</em> pneumonia (PJP/PCP)</h3>
             <p className="text-muted-foreground leading-relaxed mb-3 text-sm">

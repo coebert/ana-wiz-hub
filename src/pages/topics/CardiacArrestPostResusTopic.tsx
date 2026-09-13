@@ -171,6 +171,25 @@ const coreConcepts = (
           </div>
         ))}
       </div>
+
+      <div className="p-4 rounded-lg border border-border bg-card mt-3">
+        <p className="text-sm font-semibold text-foreground mb-2">Post-arrest myocardial dysfunction</p>
+        <p className="text-xs text-muted-foreground mb-2">
+          Global myocardial stunning affects most patients after prolonged arrest: cardiac index falls
+          within hours, is typically lowest at 8–24 h and usually recovers by 48–72 h. It is reversible
+          ischaemia–reperfusion injury (calcium overload, oxidative stress, cytokine release), distinct
+          from infarct-related pump failure — although the two coexist
+          <InlineRef topicId="cardiac-arrest-post-resus" refLabel="ERC/ESICM 2021 Post-Resus" />.
+        </p>
+        <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+          <li><span className="font-medium text-foreground">Recognise:</span> early echocardiography (global hypokinesia with low LVOT VTI/ejection fraction), rising lactate, low ScvO₂, oliguria, escalating vasopressor requirement, and a raised troponin/NT-proBNP that does not fit the coronary picture.</li>
+          <li><span className="font-medium text-foreground">Exclude a treatable cause:</span> urgent coronary angiography for ST-elevation or ongoing ischaemia, and treat tamponade, PE, tension pneumothorax, arrhythmia, severe acidosis and electrolyte derangement.</li>
+          <li><span className="font-medium text-foreground">Support:</span> optimise preload cautiously (fluid guided by dynamic assessment and echo), noradrenaline to a MAP of 65–80 mmHg, then add an inotrope — dobutamine 2.5–10 µg/kg/min or milrinone — titrated to cardiac index, lactate clearance and urine output rather than to a fixed number. Avoid excessive tachycardia, which worsens the oxygen-supply balance.</li>
+          <li><span className="font-medium text-foreground">Temperature and rhythm:</span> expect bradycardia at 33 °C (well tolerated if perfusing); maintain potassium ≥ 4.0 and magnesium ≥ 1.0 mmol/L; consider pacing only if bradycardia is compromising output.</li>
+          <li><span className="font-medium text-foreground">Escalate:</span> if shock persists despite inotropes (cardiac index &lt; 2.0 L/min/m², rising lactate, oliguria), discuss mechanical support early — IABP, Impella or VA-ECMO — with the cardiology/cardiothoracic team, remembering that stunning is usually reversible and so justifies a bridge.</li>
+          <li><span className="font-medium text-foreground">Monitor:</span> serial echocardiography, continuous cardiac-output monitoring, lactate and ScvO₂ trends; wean inotropes as function recovers over 48–72 h.</li>
+        </ul>
+      </div>
       </CollapsibleSubsection>
     </ExamSection>
 
@@ -388,6 +407,7 @@ const coreConcepts = (
       <div className="p-4 rounded-lg border border-border bg-card mt-3">
         <p className="text-sm font-semibold text-foreground mb-2">Stepwise shivering management during TTM</p>
         <ol className="text-xs text-muted-foreground space-y-1.5 list-decimal list-inside">
+          <li><span className="font-medium text-foreground">Measure it</span> — score shivering objectively (Bedside Shivering Assessment Scale 0 = none, 1 = mild neck/thorax, 2 = moderate involving the arms, 3 = generalised) at least hourly, and treat any score ≥ 1, since shivering raises metabolic rate, oxygen consumption, intracranial pressure and cooling failure <InlineRef topicId="cardiac-arrest-post-resus" refLabel="ERC/ESICM 2021 Post-Resus" />.</li>
           <li><span className="font-medium text-foreground">Counter-warming</span> — raise ambient room temperature and apply surface warming to the hands, feet and face (tricks the hypothalamic thermostat without impairing core cooling).</li>
           <li><span className="font-medium text-foreground">First-line pharmacological</span> — regular paracetamol; IV magnesium sulfate 2–4 g loading dose followed by an infusion, targeting a serum Mg²⁺ of ~1.0–1.5 mmol/L (raises the shivering threshold).</li>
           <li><span className="font-medium text-foreground">Deepen sedation</span> — increase propofol and add an α2-agonist (dexmedetomidine or clonidine) for its anti-shivering and sympatholytic effect.</li>

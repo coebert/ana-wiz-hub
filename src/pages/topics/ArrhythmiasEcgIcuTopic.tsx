@@ -355,11 +355,12 @@ const ArrhythmiasEcgIcuTopic = () => {
               <div className="p-4 rounded-lg border border-border bg-card">
                 <p className="font-semibold text-foreground text-sm mb-2">Bradycardia algorithm</p>
                 <ul className="text-xs text-muted-foreground space-y-1">
-                  <li>1. <span className="font-medium text-foreground">Adverse features?</span> (as above) → <span className="font-medium text-foreground">atropine 500 mcg IV</span>, repeat to 3 mg.</li>
+                  <li>1. <span className="font-medium text-foreground">Adverse features?</span> (shock, syncope, myocardial ischaemia, heart failure) → <span className="font-medium text-foreground">atropine 1 mg IV</span>, repeated every 3–5 min to a maximum total of 3 mg (RCUK 2021 uses a 1 mg first dose in the adult bradycardia algorithm, not 500 mcg) <InlineRef topicId="arrhythmias-ecg-icu" refLabel="Resuscitation Council UK 2021" />.</li>
                   <li>2. Risk factors for asystole: recent asystole, Mobitz II, complete block with broad QRS, ventricular pause &gt; 3 s.</li>
-                  <li>3. Interim: <span className="font-medium text-foreground">isoprenaline 5 µg/min</span>, <span className="font-medium text-foreground">adrenaline 2–10 µg/min</span>, <span className="font-medium text-foreground">glucagon</span> for β-blocker / CCB toxicity.</li>
-                  <li>4. <span className="font-medium text-foreground">Transcutaneous pacing</span> as a bridge — sedate; capture is mechanical (palpate pulse), not just electrical.</li>
-                  <li>5. Definitive: <span className="font-medium text-foreground">transvenous pacing wire</span> ± permanent device.</li>
+                  <li>3. Interim: <span className="font-medium text-foreground">isoprenaline 5 µg/min</span>, <span className="font-medium text-foreground">adrenaline 2–10 µg/min</span>, or <span className="font-medium text-foreground">dopamine</span>; consider aminophylline in bradycardia after acute inferior MI, spinal-cord injury or cardiac transplant, and glycopyrronium as an alternative antimuscarinic <InlineRef topicId="arrhythmias-ecg-icu" refLabel="Resuscitation Council UK 2021" />.</li>
+                  <li>4. <span className="font-medium text-foreground">Glucagon</span> for β-blocker or calcium-channel-blocker toxicity: it stimulates cardiac glucagon receptors, which raises intracellular cyclic AMP through a Gs-adenylyl-cyclase pathway that bypasses the blocked β-adrenoceptor or L-type calcium channel, producing inotropy and chronotropy. Dose <strong>2–10 mg IV bolus</strong> (commonly 5 mg, repeated after 10 min if needed) followed by an infusion of <strong>2–5 mg/h</strong> titrated to heart rate and perfusion; reconstitute in 5% glucose or saline rather than the supplied phenol-containing diluent for these larger doses. Expect nausea and vomiting (protect the airway), hyperglycaemia and hypokalaemia; supplies are often limited, so escalate early to high-dose insulin–euglycaemia therapy, calcium, and pacing or mechanical support as required.</li>
+                  <li>5. <span className="font-medium text-foreground">Transcutaneous pacing</span> as a bridge — sedate; capture is mechanical (palpate pulse), not just electrical.</li>
+                  <li>6. Definitive: <span className="font-medium text-foreground">transvenous pacing wire</span> ± permanent device.</li>
                 </ul>
               </div>
               <div className="md:col-span-2 p-4 rounded-lg border border-border bg-card">
@@ -443,6 +444,40 @@ const ArrhythmiasEcgIcuTopic = () => {
               </div>
             </div>
             </CollapsibleSubsection>
+            <CollapsibleSubsection title="Arrhythmias on mechanical circulatory support (VA-ECMO, LVAD, IABP, Impella)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Mechanical circulatory support decouples the arterial waveform from the native rhythm, so
+              the usual bedside signs of haemodynamic collapse are absent or misleading. A patient in
+              ventricular fibrillation on full VA-ECMO or LVAD support can remain conscious with a
+              near-normal mean arterial pressure — the arrhythmia is still dangerous and must be
+              treated, but the priority differs from the standard peri-arrest algorithm
+              <InlineRef topicId="arrhythmias-ecg-icu" refLabel="Resuscitation Council UK 2021" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Interpreting the monitor</p>
+                <p className="text-xs text-muted-foreground mt-1">Continuous-flow LVAD and full-flow VA-ECMO produce a narrow or non-pulsatile arterial trace, so pulse oximetry and non-invasive BP are unreliable — use the invasive arterial line, ECMO/LVAD flow and power readings, ScvO₂, lactate and echocardiography. IABP counterpulsation triggers off the ECG or arterial waveform and will fail to time correctly in AF, frequent ectopy or tachycardia &gt; ~130 bpm; switch trigger mode or accept reduced augmentation. Pacing spikes, device electrical noise and chest compressions all corrupt automated rhythm analysis.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Why arrhythmia still matters</p>
+                <p className="text-xs text-muted-foreground mt-1">Loss of the atrial or right-ventricular contribution reduces LVAD and ECMO preload, causing suction events and low-flow alarms; on VA-ECMO, a fibrillating and non-ejecting left ventricle plus a closed aortic valve risks LV distension, pulmonary oedema and intracardiac thrombus. Sustained VT/VF also causes ongoing myocardial injury and delays recovery.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Management priorities</p>
+                <ul className="text-xs text-muted-foreground mt-1 space-y-1">
+                  <li>• Correct the reversible drivers first: potassium 4.0–4.5 mmol/L, magnesium &gt; 1.0 mmol/L, hypovolaemia, cannula or LVAD inflow malposition, ischaemia, and irritation from a pulmonary artery catheter or guidewire.</li>
+                  <li>• Antiarrhythmics as usual (amiodarone, β-blockade, lidocaine), accepting negative inotropy is well tolerated on full support.</li>
+                  <li>• Cardiovert or defibrillate when indicated — this is safe on ECMO and with an LVAD in place, keeping pads away from the generator and driveline; consider overdrive or atrial pacing for recurrent VT.</li>
+                  <li>• On VA-ECMO, add or maintain LV decompression (raise flow, add an Impella or IABP, or perform septostomy) and keep some pulsatility to avoid aortic-root stasis.</li>
+                  <li>• Chest compressions are usually avoided on established ECMO or LVAD support (risk of cannula/anastomotic disruption) unless flow is lost — follow the local device pathway and call the ECMO or ventricular-assist-device team early.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Anticoagulation and rhythm control</p>
+                <p className="text-xs text-muted-foreground mt-1">New AF on an LVAD raises thromboembolic and pump-thrombosis risk — maintain target INR/anti-Xa and treat rate aggressively. Discuss ICD programming with the device team, since supported patients often tolerate VT and repeated inappropriate shocks are harmful.</p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="post-arrest" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.5"]}>
@@ -473,7 +508,7 @@ const ArrhythmiasEcgIcuTopic = () => {
               "Systematic ECG: rate, rhythm, axis, P-QRS-T morphology, intervals (PR <200, QRS <120, QTc <440 M / 460 F).",
               "Narrow-complex tachy: vagal manoeuvres, adenosine 6 mg, then 12 mg, then a further 12 mg if required; AF/flutter — rate vs rhythm control + anticoagulation.",
               "Broad-complex tachy: assume VT until proven otherwise; if unstable → synchronised DC shock.",
-              "Bradyarrhythmia + adverse signs: atropine 500 µg, escalating to transcutaneous pacing, isoprenaline or adrenaline infusion.",
+              "Bradyarrhythmia + adverse signs: atropine 1 mg IV repeated to a 3 mg maximum, escalating to transcutaneous pacing, isoprenaline or adrenaline infusion (RCUK 2021).",
               "Long QT predisposes to torsades — withdraw culprits, correct K⁺/Mg²⁺/Ca²⁺, IV magnesium 2 g, overdrive pacing if persistent.",
             ]}
           />
