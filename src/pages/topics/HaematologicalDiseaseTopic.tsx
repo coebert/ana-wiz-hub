@@ -7,6 +7,7 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { haematologicalDiseaseQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import InlineRef from "@/components/references/InlineRef";
 
 const objectives = [
   "Detect and treat preoperative anaemia (including iron-deficiency anaemia) using patient blood management principles.",
@@ -55,6 +56,7 @@ const haematologicalDiseaseWorkedExamples: WorkedExample[] = [
 const tocItems = [
   { id: "section-anaemia", label: "Anaemia & Iron Deficiency", group: "Core" },
   { id: "section-thrombocytopenia", label: "Thrombocytopenia", group: "Core" },
+  { id: "section-vwd", label: "Von Willebrand Disease", group: "Core" },
   { id: "section-neutropenia", label: "Neutropenia", group: "Core" },
   { id: "section-haemoglobinopathies", label: "Haemoglobinopathies", group: "Advanced" },
   { id: "section-bleeding-disorders", label: "Inherited Bleeding Disorders", group: "Advanced" },
@@ -226,6 +228,54 @@ const HaematologicalDiseaseTopic = () => {
                   <li>For active bleeding, target platelet count &gt;50 ×10⁹/L (or &gt;100 ×10⁹/L for CNS/eye surgery)</li>
                   <li>Correct associated coagulopathy: fibrinogen &gt;1.5 g/L, INR &lt;1.5, normothermia, ionised Ca²⁺ &gt;1.1 mmol/L</li>
                   <li>Consider DDAVP 0.3 µg/kg in uraemia or aspirin-induced platelet dysfunction</li>
+                  <li><strong>For the bleeding patient tonight:</strong> platelet-sparing second-line ITP agents (below) are <em>not</em> fast-acting enough — mainstays remain IVIg 1 g/kg (onset 24–48 h), high-dose corticosteroids, and platelet transfusion given <em>during</em> rather than before surgery to avoid consumption by circulating antiplatelet antibodies <InlineRef topicId="haematological-disease" refLabel="ASH ITP 2019" /> <InlineRef topicId="haematological-disease" refLabel="BSH Platelets 2017" /></li>
+                  <li><strong>Second-line agents for chronic ITP (planned/semi-elective surgery only):</strong> thrombopoietin (TPO) receptor agonists — eltrombopag (oral, 25–75 mg daily, taken away from food and calcium-containing products, requires hepatotoxicity monitoring) and romiplostim (weekly subcutaneous injection, 1–10 mcg/kg) — stimulate megakaryopoiesis to raise the platelet count and avoid the alloimmunisation and refractoriness risks of repeated platelet transfusion; other second-line options include rituximab, splenectomy, and fostamatinib where available <InlineRef topicId="haematological-disease" refLabel="ASH ITP 2019" /></li>
+                  <li><strong>Timing:</strong> TPO agonists have a typical onset of 1–2 weeks with peak effect at 2–4 weeks, so they are only suitable when surgery can be planned or is semi-elective/urgent rather than immediate; specialist haematology input is required, TPO agonists carry a thrombotic risk if the platelet count overshoots, and dosing should be timed so the count peaks on the day of surgery</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Von Willebrand Disease */}
+          <section id="section-vwd" className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Von Willebrand Disease</h2>
+            <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Definition &amp; Epidemiology</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Deficiency or dysfunction of von Willebrand factor (VWF), a large multimeric glycoprotein that mediates platelet adhesion to subendothelial collagen at sites of vascular injury and carries and stabilises factor VIII, protecting it from proteolysis in plasma <InlineRef topicId="haematological-disease" refLabel="UKHCDO vWD 2014" /></li>
+                  <li>The most common inherited bleeding disorder, affecting up to 1% of the population, though only around 0.01% are clinically symptomatic; usually inherited in an autosomal dominant pattern <InlineRef topicId="haematological-disease" refLabel="BJA Educ vWD 2018" /></li>
+                </ul>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Classification &amp; Treatment Implications</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li><strong>Type 1</strong> (70–80% of cases): partial quantitative deficiency of VWF; usually mild and DDAVP-responsive</li>
+                  <li><strong>Type 2</strong> (subtypes 2A, 2B, 2M, 2N): qualitative defects in VWF function; DDAVP is generally ineffective and is relatively contraindicated in type 2B, where it can worsen thrombocytopenia by releasing dysfunctional high-molecular-weight multimers that bind platelets and are cleared</li>
+                  <li><strong>Type 3</strong>: near-complete absence of VWF; severe bleeding phenotype requiring factor concentrate rather than DDAVP <InlineRef topicId="haematological-disease" refLabel="UKHCDO vWD 2014" /></li>
+                </ul>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Presentation</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Mucocutaneous bleeding, menorrhagia, epistaxis, easy bruising, and post-operative or post-partum haemorrhage</li>
+                  <li>A normal APTT does <strong>not</strong> exclude von Willebrand disease <InlineRef topicId="haematological-disease" refLabel="BJA Educ vWD 2018" /></li>
+                </ul>
+              </div>
+
+              <div className="bg-card border-2 border-clinical/40 rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Anaesthetic Management</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Early pre-operative haematology consultation with subtype confirmation and, where relevant, a documented prior DDAVP trial response</li>
+                  <li><strong>DDAVP (desmopressin):</strong> 0.3 mcg/kg IV over 30 minutes, given about 30–60 minutes before surgery, for DDAVP-responsive type 1 disease; tachyphylaxis occurs after repeated doses, and hyponatraemia is a risk — restrict free water, avoid in the elderly and in cardiac disease, and use with caution in children under 2 years <InlineRef topicId="haematological-disease" refLabel="UKHCDO vWD 2014" /></li>
+                  <li><strong>Factor replacement:</strong> VWF-containing factor VIII concentrate (e.g. Haemate P/Voncento) or recombinant VWF for type 2, type 3, or major surgery, dosed in VWF:RCo units to target levels of about 100 IU/dL for major surgery and 50 IU/dL for minor surgery, maintained for several days post-operatively <InlineRef topicId="haematological-disease" refLabel="UKHCDO vWD 2014" /></li>
+                  <li><strong>Tranexamic acid</strong> 1 g IV 8-hourly (or oral/topical) as an adjunct, particularly valuable for mucosal surgery</li>
+                  <li>Avoid NSAIDs, aspirin, and intramuscular injections</li>
+                  <li>Neuraxial and deep blocks only after correction of the defect and discussion with haematology</li>
+                  <li>Monitor VWF and factor VIII levels post-operatively — the physiological peripartum rise in VWF falls rapidly after delivery, risking delayed post-partum haemorrhage <InlineRef topicId="haematological-disease" refLabel="BJA Educ vWD 2018" /></li>
                 </ul>
               </div>
             </div>
