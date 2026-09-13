@@ -423,7 +423,16 @@ const PaediatricIcuTopic = () => {
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Goals & Assessment</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Sedation aims to relieve distress and facilitate ventilation/procedures while minimising drug accumulation, delirium and withdrawal. Assess with validated tools: <strong>COMFORT-B</strong> (target 11–17) for sedation depth, <strong>FLACC</strong> for pain in pre-verbal children, and <strong>SOS</strong> or <strong>WAT-1</strong> for iatrogenic withdrawal <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />.
+                  Sedation aims to relieve distress and facilitate ventilation/procedures while minimising drug accumulation, delirium and withdrawal. Clinical impression alone is unreliable in a paralysed, pre-verbal or developmentally delayed child, so <strong>validated tools must be scored regularly</strong> — at least once per nursing shift and after every change of infusion rate — with the score charted against an explicitly documented target <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />:
+                </p>
+                <ul className="list-disc pl-5 mt-2 space-y-1 text-sm text-muted-foreground">
+                  <li><strong>Pain</strong> — <strong>FLACC</strong> (Face, Legs, Activity, Cry, Consolability; 0–10) in pre-verbal children, with FLACC-revised for cognitive impairment; self-report (faces or numerical scale) whenever the child is able.</li>
+                  <li><strong>Sedation depth</strong> — <strong>COMFORT-B</strong> (behavioural, 6–30; target 11–17 for adequate sedation), or SBS/State Behavioural Scale; processed EEG has no established routine paediatric role.</li>
+                  <li><strong>Withdrawal</strong> — <strong>WAT-1</strong> (Withdrawal Assessment Tool-1; score ≥ 3 suggests iatrogenic withdrawal) or <strong>SOS</strong>, scored at least 12-hourly once opioid/benzodiazepine exposure exceeds about 5 days or during any wean.</li>
+                  <li><strong>Delirium</strong> — <strong>CAPD</strong> (Cornell Assessment of Pediatric Delirium; ≥ 9 positive, valid from birth including developmental delay) or <strong>pCAM-ICU</strong> / psCAM-ICU in older and pre-school children. Delirium is common, under-recognised, and independently associated with longer ventilation and stay.</li>
+                </ul>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Scoring exists to avoid both extremes. <strong>Over-sedation</strong> causes drug accumulation, prolonged ventilation and ICU stay, delirium, iatrogenic withdrawal, immobility and pressure injury, ileus and haemodynamic depression, plus concern over anaesthetic neurotoxicity in the developing brain. <strong>Under-sedation</strong> causes pain and distress, agitation, dyssynchrony and raised ICP or pulmonary vascular resistance, and accidental removal of the tracheal tube, lines and drains. Use analgesia-first sedation, set a daily target, and wean deliberately with a written plan rather than by drift <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />.
                 </p>
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
