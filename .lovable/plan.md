@@ -1,28 +1,30 @@
-# Topic discussions
+# Content audit batch 1 of 4
 
-## Goal
-Add a live discussion area to every topic where readers can ask questions and reply to one another.
+## Scope
 
-## User experience
-- Show the latest discussion for the current topic beneath its learning content.
-- Let signed-in learners post a question and reply to individual messages.
-- Show a clear sign-in/create-account action to signed-out readers.
-- Display a privacy-safe learner name rather than an email address.
-- Allow authors to remove their own messages; removing a question also removes its replies.
-- Include loading, empty, submission and error states, with a compact mobile layout.
+- Expand Lung Mechanics with airway-flow physics, complete intrinsic PEEP guidance, and the four mechanisms of ventilator-induced lung injury.
+- Expand Statistics & Evidence-Based Medicine with case reports/series, cross-sectional study strengths and limitations, clear data-type definitions, and a worked Bayesian diagnostic example.
+- Correct the four database-backed depth-monitoring viva issues, then expand the topic's elderly, obstetric, and cerebral-perfusion guidance.
+- Add Clark and Severinghaus electrode error sources to ABG Analyser.
+- Expand Pulse Oximetry with reflective probes, signal processing, perfusion-index interpretation, and complete PVI limitations.
+- Expand Clinical Measurement with pathological CVP waveforms, bioimpedance/bioreactance, and complete PPV/SVV definitions and interpretation.
+- Add an explicit capnography warning that clinical signs cannot confirm tracheal placement, including the supplied false-positive rates.
 
-## Data and safety
-- Add a dedicated discussion table in Lovable Cloud with topic, author, parent-message, body and timestamps.
-- Discussions are publicly readable so they appear on the live site.
-- Posting and deleting require an account; database rules enforce ownership for deletion and prevent posting as another user.
-- Limit message length and replies to one level, and validate content in both the page and database.
+## Citations and consistency
+
+- Reuse existing textbook and journal references where they directly support a change.
+- Add the supplied VILI, elderly pEEG, obstetric pEEG, and intubation-confirmation sources to the matching reference groups and cite them in-page.
+- Keep terminology, units, thresholds, and duplicated teaching content consistent across page text and database-backed viva answers.
+
+## Validation and audit synchronization
+
+- Run the TypeScript typecheck and source-excerpt validation.
+- Mark only successfully actioned finding IDs fixed in one managed database operation, including all corrected viva answers in that same operation.
+- Run the targeted audit-fixes check and confirm the current build remains healthy.
+- Report the fixed count and explicitly list any finding IDs left open with reasons.
 
 ## Technical details
-- Build one shared discussion component and place it in the shared topic template, covering every standard topic page without repetitive edits.
-- Load only messages for the current topic, ordered chronologically, then render replies beneath their parent question.
-- Use live database updates so new questions and replies appear without refreshing.
-- Apply the schema through a migration with explicit grants and row-level access policies.
 
-## Verification
-- Verify public reading, signed-in question/reply creation, ownership controls and live updates.
-- Check desktop and mobile rendering, type safety and the preview build.
+- Preserve the existing `TopicTemplate`, `ExamSection`, `InlineRef`, semantic styling, and responsive card/list patterns.
+- Treat already-complete sections as verified findings rather than duplicating content; augment only the missing detail.
+- Use a documented `unverifiable_reason` only if a finding has no usable source, as required by the audit citation guard.
