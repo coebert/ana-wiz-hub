@@ -161,6 +161,41 @@ const BurnsIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="sjs-ten" exams={[Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="SJS / Toxic Epidermal Necrolysis — the ‘non-thermal burn’">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Stevens–Johnson syndrome (SJS) and toxic epidermal necrolysis (TEN) are a spectrum of severe
+              mucocutaneous reactions that strip the epidermis and behave physiologically like a major burn.
+              They are routinely managed in burns intensive care because the supportive package — wound care,
+              fluid resuscitation, temperature control, nutrition and analgesia — is identical, even though the
+              pathophysiology is immunological rather than thermal <InlineRef topicId="burns-icu" refLabel="UK SJS/TEN 2016" />.
+              Classification is by epidermal detachment: SJS &lt;10 % BSA, SJS/TEN overlap 10–30 %, TEN &gt;30 %.
+            </p>
+            <div className="space-y-3">
+              {[
+                { tool: "Aetiology", detail: "Predominantly drug-induced delayed hypersensitivity, typically 4–28 days after exposure. Classic culprits: allopurinol, sulfonamides (incl. co-trimoxazole), anticonvulsants (carbamazepine, lamotrigine, phenytoin), nevirapine, NSAIDs (oxicams). Mycoplasma and other infections cause a minority, especially in children." },
+                { tool: "Pathophysiology", detail: "Drug-specific CD8⁺ cytotoxic T cells and NK cells release granulysin, perforin/granzyme B and soluble FasL, driving widespread keratinocyte apoptosis. Full-thickness epidermal necrosis separates the epidermis at the dermo-epidermal junction — hence the burn-like loss of barrier, evaporative fluid and heat loss, and infection risk." },
+                { tool: "Clinical features", detail: "Prodromal fever and malaise, then painful dusky macules and atypical targetoid lesions coalescing into flaccid blisters and sheet-like detachment. Positive Nikolsky sign. Mucosal involvement in >90 %: stomatitis, oesophagitis, purulent conjunctivitis and symblepharon, urethritis, and tracheobronchial epithelial sloughing that may precipitate respiratory failure." },
+                { tool: "SCORTEN prognostication", detail: "Seven day-1 variables, one point each: age >40, malignancy, heart rate >120, initial detachment >10 % BSA, urea >10 mmol/L, glucose >14 mmol/L, bicarbonate <20 mmol/L. Mortality rises steeply from ~3 % at 0–1 points to >90 % at ≥5 points; used for triage and family discussion, not to limit supportive care." },
+                { tool: "ICU management principles", detail: "Immediate withdrawal of every suspected culprit drug is the single most important intervention. Then: burns-style fluid resuscitation titrated to urine output (requirements are roughly two-thirds of an equivalent thermal burn), ambient warming and normothermia, early enteral or NG nutrition, meticulous non-adherent dressings with hands-off/no-debridement of detached epidermis where possible, strict asepsis with surveillance cultures rather than prophylactic antibiotics, opioid-based analgesia (± ketamine for dressings), daily ophthalmology review with lubricants and amniotic membrane for severe eye involvement, plus oral, urogenital and airway care." },
+                { tool: "Immunomodulation — contested", detail: "No therapy has proven mortality benefit in randomised trials. IVIG, high-dose corticosteroids, ciclosporin, plasma exchange and anti-TNF agents (etanercept) are all used in specialist centres on a case-by-case basis; UK guidance stresses that supportive care in an appropriate unit outweighs any specific agent." },
+              ].map(t => (
+                <div key={t.tool} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{t.tool}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{t.detail}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground italic mt-3">
+              Exam framing: asked to compare TEN with a thermal burn, contrast the mechanism (immune-mediated
+              apoptosis vs coagulative necrosis), the depth (epidermal only, so healing is usually without
+              grafting), the mucosal and ocular involvement, and the lower fluid requirement — but emphasise
+              that the burns-unit supportive bundle and SCORTEN-based prognostication are the same discipline
+              <InlineRef topicId="burns-icu" refLabel="SCORTEN 2000" />.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="airway-inhalation" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Airway & Inhalation Injury">
             <p className="text-muted-foreground leading-relaxed mb-3">
