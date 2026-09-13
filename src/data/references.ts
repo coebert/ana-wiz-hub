@@ -922,6 +922,8 @@ export const topicReferences: Record<string, Reference[]> = {
 
   ],
   "acute-liver-failure": [
+    { label: "AASLD ALF 2023", citation: "Shingina A, Mukhtar N, Wakim-Fleming J, et al. Acute liver failure guidelines. Am J Gastroenterol / Hepatology. 2023.", url: "https://doi.org/10.1097/hep.0000000000000458" },
+
     { label: "DILI Review 2023", citation: "Ortega-Alonso A, Andrade RJ, et al. Drug-induced liver injury: a comprehensive review. Ther Adv Gastroenterol. 2023;16:17562848231163410.", url: "https://doi.org/10.1177/17562848231163410", excerpt: "Drug-induced liver injury (DILI) remains a challenge in clinical practice and is still a diagnosis of exclusion. Although it has a low incidence amongst the general population, DILI accounts for most cases of acute liver failure with a fatality rate of up to 50%." },
     { label: "BJA Educ 2017", citation: "Bernal W, Wendon J. Acute liver failure. N Engl J Med. 2013;369:2525-2534.", url: "https://doi.org/10.1056/NEJMra1208937" },
     { label: "King's Criteria", citation: "O'Grady JG et al. Early indicators of prognosis in fulminant hepatic failure. Gastroenterology. 1989;97(2):439-445.", url: "https://doi.org/10.1016/0016-5085(89)90081-4" },
