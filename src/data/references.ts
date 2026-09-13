@@ -434,6 +434,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2005", citation: "Moran P, Lim J. Pulmonary artery catheter. BJA Education. 2005;5(6):207-210.", url: "https://doi.org/10.1093/bjaceaccp/mki054" },
   ],
   "transfusion-coagulation": [
+    { label: "POISE-3 2022", citation: "Devereaux PJ, Marcucci M, Painter TW, et al. Tranexamic acid in patients undergoing noncardiac surgery (POISE-3). N Engl J Med. 2022;386(21):1986-1997 — single 1 g bolus reduced bleeding; non-inferiority for the cardiovascular composite was not established.", url: "https://doi.org/10.1056/NEJMoa2201171" },
+    { label: "NICE IPG144", citation: "National Institute for Health and Care Excellence. Intraoperative red blood cell salvage during radical prostatectomy or radical cystectomy (IPG144) — salvage acceptable in malignancy with a leucodepletion filter.", url: "https://www.nice.org.uk/guidance/ipg258" },
     { label: "BJA Educ 2015", citation: "Klein AA, Arnold P. Blood transfusion and clinical medicine. BJA Education. 2016;16(11):381-386.", url: "https://doi.org/10.1093/bjaed/mkw020" },
     { label: "NICE NG24", citation: "NICE. Blood transfusion (NG24). 2015.", url: "https://www.nice.org.uk/guidance/ng24" },
     { label: "BSH 2017", citation: "British Society for Haematology. Guidelines on the use of platelet transfusions. Br J Haematol. 2017;176(3):365-394.", url: "https://doi.org/10.1111/bjh.14423" },
