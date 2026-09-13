@@ -310,7 +310,7 @@ const TraumaEmergencyTopic = () => {
             <CollapsibleSubsection title="Management of Specific Thoracic Injuries">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Chest injury accounts for a quarter of trauma deaths. The primary survey identifies the immediately life-threatening injuries; each has a specific
-              intervention that the anaesthetist may need to deliver before definitive imaging <InlineRef topicId="trauma-emergency" refLabel="ATLS 10th ed" />.
+              intervention that the anaesthetist may need to deliver before definitive imaging <InlineRef topicId="trauma-emergency" refLabel="ATLS 10th ed" /><InlineRef topicId="trauma-emergency" refLabel="BJA 2023 Thoracic Trauma" />.
             </p>
             <div className="space-y-3">
               {[
