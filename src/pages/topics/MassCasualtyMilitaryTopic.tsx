@@ -179,7 +179,8 @@ const MassCasualtyMilitaryTopic = () => {
             <MajorIncidentTriageDiagram />
             <div className="space-y-3">
               {[
-                { tool: "Triage Sieve", detail: "Pre-hospital, &lt;30 s. Walking → P3 (delayed). Not breathing despite airway opening → Dead. Then RR &lt;10 or &gt;29 → P1; CRT &gt;2 s or absent radial pulse → P1; otherwise P2 (NARU 2021 — no heart-rate threshold)." },
+                { tool: "Triage Sieve", detail: "Pre-hospital, &lt;30 s. Walking → P3 (delayed). Not breathing despite airway opening → Dead. Then RR &lt;10 or &gt;22 → P1; CRT &gt;2 s or absent radial pulse → P1; otherwise P2. The narrower upper respiratory threshold of 22 replaces the legacy MIMMS figure of &gt;29, matching MPTT-24 and the current NARU Ten Second Triage tool; the older cut-off missed a substantial proportion of casualties who needed life-saving intervention. No heart-rate threshold is used in the civilian sieve." },
+                { tool: "Ten Second Triage (TST)", detail: "The UK's current national primary triage tool for major incidents (NARU): a rapid catastrophic-haemorrhage-first sweep giving Priority 1/2/3/Dead in about ten seconds per casualty, designed for use by any responder including police and fire, and followed by the Triage Sort in hospital." },
                 { tool: "Triage Sort (TRTS)", detail: "In hospital. Scores RR, SBP, GCS to give Triage Revised Trauma Score 0–12. ≤10 = P1, 11 = P2, 12 = P3." },
                 { tool: "MPTT-24 (military)", detail: "Modified Physiological Triage Tool — RR &lt;10 or &gt;22, HR &gt;100, GCS motor &lt;6 = P1. Better discrimination for needs-immediate-intervention than civilian sieve." },
                 { tool: "Reverse / expectant triage", detail: "When demand vastly exceeds capacity (austere or wartime), the most resource-intensive may be designated expectant (P4) to maximise survivors. Ethically reviewed by senior team and documented." },
