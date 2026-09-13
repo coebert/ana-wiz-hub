@@ -322,6 +322,29 @@ const AbdominalCompartmentSyndromeTopic = () => {
                 ))}
               </div>
 
+              <h3 className="text-base font-semibold text-foreground mt-5 mb-2">Stepwise escalation by IAH grade</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+                The WSACS algorithm is deliberately stepwise: measure IAP, treat, re-measure, and escalate only if the
+                pressure or organ function fails to improve. A practical ladder<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />:
+              </p>
+              <div className="space-y-3">
+                {[
+                  { grade: "Grade I — IAP 12–15 mmHg", detail: "Maintain a high index of suspicion. Measure IAP 4–6-hourly, avoid a positive fluid balance, decompress the stomach and rectum, review sedation and analgesia, nurse head-up < 20–30°, and remove constricting dressings/binders. No intervention beyond these; treat the underlying pathology." },
+                  { grade: "Grade II — IAP 16–20 mmHg", detail: "Escalate the medical bundle and measure IAP hourly. Prokinetics for ileus, image-guided drainage of any ascites/collection, active de-resuscitation (20% albumin plus furosemide, or RRT with ultrafiltration), and start targeting abdominal perfusion pressure (MAP − IAP) ≥ 60 mmHg with noradrenaline rather than fluid loading." },
+                  { grade: "Grade III — IAP 21–25 mmHg", detail: "Full medical bundle plus deeper sedation and a trial of neuromuscular blockade, which can drop IAP quickly and buys time. Escharotomy for circumferential torso burns. Stop enteral feed. Inform the surgeon now: if IAP remains ≥ 20 mmHg with new organ dysfunction after a few hours of maximal medical therapy, this is ACS and decompression is indicated." },
+                  { grade: "Grade IV — IAP > 25 mmHg", detail: "Assume ACS. Urgent decompressive laparotomy with temporary abdominal closure — medical measures alone rarely rescue this grade, and delay is the strongest predictor of death. Prepare for reperfusion hypotension and continue IAP monitoring afterwards for recurrent ACS." },
+                ].map((g) => (
+                  <div key={g.grade} className="p-3 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground text-sm">{g.grade}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{g.detail}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground italic mt-2">
+                Grade alone never mandates surgery — it is IAP <em>plus new organ dysfunction unresponsive to medical
+                management</em> that defines ACS and triggers decompression.
+              </p>
+
               <h3 className="text-base font-semibold text-foreground mt-5 mb-2">Surgical decompression</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                 Indicated for <strong>ACS refractory to medical management</strong>, or as a primary strategy in
