@@ -241,7 +241,7 @@ const FoetalCirculationTopic = () => {
               </div>
               <div className="rounded-lg border border-border p-4">
                 <p className="font-semibold text-foreground">Oxygenation Index (OI)</p>
-                <p className="mt-1"><strong>OI = (FiO₂ × mean airway pressure × 100) / PaO₂</strong>, using mean airway pressure in cmH₂O and PaO₂ in mmHg. It quantifies how much ventilatory support is required to maintain arterial oxygenation. Broadly, OI &lt;25 indicates mild-to-moderate disease, 25–40 severe disease requiring rescue-therapy and ECMO-centre discussion, and sustained OI &gt;40 very severe disease with high mortality and a conventional ECMO indication. If PaO₂ is entered in kPa, omit the ×100 term only when using a locally validated kPa form of the equation; otherwise convert kPa to mmHg before calculation <InlineRef topicId="foetal-circulation" refLabel="BJA Educ 2015" />.</p>
+                <p className="mt-1"><strong>OI = (FiO₂ × mean airway pressure × 100) / PaO₂</strong>, using mean airway pressure in cmH₂O and PaO₂ in mmHg. It quantifies how much ventilatory support is required to maintain arterial oxygenation. Broadly, OI &lt;25 indicates mild-to-moderate disease, 25–40 severe disease requiring rescue-therapy and ECMO-centre discussion, and sustained OI &gt;40 very severe disease with high mortality and a conventional ECMO indication. If PaO₂ is reported in kPa, convert it to mmHg (multiply by 7.5) before using this standard formula <InlineRef topicId="foetal-circulation" refLabel="BJA Educ 2015" />.</p>
               </div>
               <div className="rounded-lg border border-border p-4">
                 <p className="font-semibold text-foreground">Maternal hyperoxia and the foetal duct</p>
