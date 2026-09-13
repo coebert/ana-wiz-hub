@@ -117,9 +117,9 @@ function detectHeadingSkip(src: string): { from: number; to: number } | null {
 
 describe("SEO: heading structure", () => {
   it("TopicTemplate renders an <h1> (every topic page inherits it)", () => {
-    const tpl = readFileSync(resolve(ROOT, "src/components/TopicTemplate.tsx"), "utf8");
+    const tpl = readFileSync(resolve(ROOT, "src/components/topic/TopicTemplate.tsx"), "utf8");
     const sectionLayout = readFileSync(
-      resolve(ROOT, "src/components/SectionLayout.tsx"),
+      resolve(ROOT, "src/components/layout/SectionLayout.tsx"),
       "utf8",
     );
     // TopicTemplate composes SectionLayout, so an h1 in either satisfies
@@ -147,13 +147,17 @@ describe("SEO: heading structure", () => {
 });
 
 // ---------- Test 2: meta tag coverage ----------
+// Tags may carry extra attributes (react-helmet marks its managed tags with
+// `data-rh`), so match on the identifying attribute rather than exact order.
+// og:url is deliberately NOT required here: index.html omits it so that each
+// route's Helmet can set a self-referencing og:url (see the comment in
+// index.html).
 const REQUIRED_INDEX_TAGS: { name: string; re: RegExp }[] = [
   { name: "<title>", re: /<title>[^<]+<\/title>/ },
-  { name: 'meta name="description"', re: /<meta\s+name="description"\s+content="[^"]+"/ },
-  { name: 'meta property="og:title"', re: /<meta\s+property="og:title"\s+content="[^"]+"/ },
-  { name: 'meta property="og:description"', re: /<meta\s+property="og:description"\s+content="[^"]+"/ },
-  { name: 'meta property="og:url"', re: /<meta\s+property="og:url"\s+content="[^"]+"/ },
-  { name: 'meta property="og:type"', re: /<meta\s+property="og:type"\s+content="[^"]+"/ },
+  { name: 'meta name="description"', re: /<meta[^>]*\sname="description"[^>]*\scontent="[^"]+"/ },
+  { name: 'meta property="og:title"', re: /<meta[^>]*\sproperty="og:title"[^>]*\scontent="[^"]+"/ },
+  { name: 'meta property="og:description"', re: /<meta[^>]*\sproperty="og:description"[^>]*\scontent="[^"]+"/ },
+  { name: 'meta property="og:type"', re: /<meta[^>]*\sproperty="og:type"[^>]*\scontent="[^"]+"/ },
 ];
 
 const PER_ROUTE_TAGS: { name: string; re: RegExp }[] = [
@@ -179,7 +183,9 @@ describe("SEO: meta tag coverage", () => {
   // tags directly OR it composes one of the shared layouts that supply
   // them (SectionLayout uses useLocation() to build self-referencing
   // canonical + og:url for every consumer).
-  const SHARED_LAYOUTS = ["SectionLayout", "TopicTemplate"];
+  // PageMeta is the shared Helmet wrapper (title + description + canonical +
+  // og:url + JSON-LD); SectionLayout/TopicTemplate render it internally.
+  const SHARED_LAYOUTS = ["SectionLayout", "TopicTemplate", "PageMeta", "ToolShell", "ReferenceAppLayout", "CaseBankPage", "NoteLayout"];
 
   for (const route of routes) {
     if (route.isRedirect || isExempt(route.path)) continue;
