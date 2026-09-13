@@ -67,7 +67,9 @@ const workedExamples: WorkedExample[] = [
       <>
         <strong>Functional warm ischaemia time (fWIT)</strong> begins when SBP &lt; 50 mmHg. After
         cardiac arrest there is a mandatory <strong>5-minute hands-off observation</strong>;
-        legal time of death = end of the 5 min. Cold perfusion should start within ~10 min of
+        legal time of death = <strong>start of the 5-minute observation period</strong> (the moment
+        the clinician begins observing the absent circulation, not the end of the standoff). Cold
+        perfusion should start within ~10 min of
         death; the standdown threshold (after which donation does not proceed) is typically 2–3 h
         from withdrawal — beyond this WIT is too prolonged for viable retrieval.
       </>
@@ -104,7 +106,7 @@ const OrganDonationTopic = () => {
         { text: "NRP reduces DCD liver discard and ischaemic cholangiopathy; reduces kidney DGF from ~50% to ~20%", cites: ["AoMRC 2008"] },
         { text: "Ethical framework: permanence vs irreversibility, dead donor rule, cerebral exclusion as safeguard", cites: ["BJA Educ 2016"] },
         { text: "AoMRC (2021) endorses NRP as ethically acceptable provided arch vessels are excluded before perfusion", cites: ["NICE CG135"] },
-        { text: "Legal time of death: BSD = completion of first set of tests; DCD = end of 5-minute standoff — NRP does not reverse death", cites: ["AoMRC 2008"] },
+        { text: "Legal time of death: BSD = completion of first set of tests; DCD = the time the 5-minute observation period starts (not its end) — NRP does not reverse death", cites: ["AoMRC 2008", "AoMRC DNC Code of Practice (PDF)"] },
       ]}
       topicId="organ-donation"
       topicTitle="Organ Donation"
