@@ -280,7 +280,7 @@ export default function InfusionPumpTool() {
               </span>
             </p>
             <p className="text-[11px] text-muted-foreground">
-              = {fmt(toBase(amount, amountUnit) / (amountUnit === "mg" ? 1000 : 1) / volume * (amountUnit === "mg" ? 1000 : 1) / (amountUnit === "mg" ? 1 : 1), 0)} {MASS_LABEL[amountUnit] === "units" ? "" : ""}
+              {fmt(amount, amount < 1 ? 2 : 1)} {MASS_LABEL[amountUnit]} in {volume} mL
             </p>
           </div>
           <div className="rounded-xl border border-primary/40 bg-primary/5 p-3">
