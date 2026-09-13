@@ -536,7 +536,7 @@ const CardiothoracicTopic = () => {
                 </div>
                 <div className="p-4 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">Coagulopathy & bleeding</p>
-                  <p className="text-sm text-muted-foreground mt-1">Hypothermia-induced platelet dysfunction, dilutional and consumptive coagulopathy, hyperfibrinolysis. Re-exploration for bleeding is a major risk: the UK national average resternotomy rate after cardiac surgery is <strong>3.6%</strong> (centre range 0.7–7.6%), and is higher in complex cases such as DHCA; resternotomy itself carries a mortality of about <strong>15%</strong><InlineRef topicId="cardiothoracic" refLabel="ACTACC Resternotomy 2021" />. High transfusion requirement.</p>
+                  <p className="text-sm text-muted-foreground mt-1">Hypothermia-induced platelet dysfunction, dilutional and consumptive coagulopathy, hyperfibrinolysis. Re-exploration for bleeding is a major risk: the UK national average resternotomy rate after cardiac surgery is <strong>3.6%</strong> (centre range 0.7–7.6%), and is higher in complex cases such as DHCA; resternotomy itself carries a mortality of about <strong>15%</strong><InlineRef topicId="cardiothoracic" refLabel="Resternotomy Audit 2021" />. High transfusion requirement.</p>
                 </div>
                 <div className="p-4 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">Cardiac</p>
