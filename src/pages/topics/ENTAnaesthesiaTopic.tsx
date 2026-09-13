@@ -291,6 +291,18 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Management principles</strong>: keep patient calm and upright. Heliox (70:30 He:O₂) reduces turbulent flow resistance. Nebulised adrenaline (5 ml 1:1000) for oedema. Dexamethasone IV</li>
               <li><strong>Inhalational induction</strong>: for paediatric epiglottitis/croup — sevoflurane in 100% O₂, spontaneous ventilation, maintain until airway secured. ENT surgeon scrubbed for emergency tracheostomy. Never paralyse until airway secured</li>
             </ul>
+            <h4 className="text-base font-semibold text-foreground mt-5 mb-2">Ludwig&apos;s angina</h4>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              A rapidly spreading polymicrobial cellulitis of the submandibular, sublingual and submental spaces, usually from a lower molar dental infection. Anaerobes and streptococci predominate. Induration of the floor of the mouth elevates and retrodisplaces the tongue, so obstruction develops above the larynx and can progress over a few hours<InlineRef topicId="ent-anaesthesia" refLabel="NAP4 2011" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Clinical features</strong>: brawny, tender, non-fluctuant bilateral neck swelling; raised oedematous floor of mouth; trismus; dysphonia (&quot;hot potato&quot; voice); drooling and inability to swallow saliva; the patient sits forward and will not lie flat. Fever and sepsis are common, with mediastinitis and necrotising fasciitis the feared complications</li>
+              <li><strong>Why standard induction is dangerous</strong>: trismus and tongue displacement make laryngoscopy and face-mask ventilation unreliable, the sniffing position is often impossible and unsafe, and supraglottic devices seat poorly. Loss of tone after IV induction and paralysis can convert partial to complete obstruction with no rescue route — a recurring &quot;can&apos;t intubate, can&apos;t oxygenate&quot; pattern in NAP4</li>
+              <li><strong>Airway plan of choice</strong>: <strong>awake fibreoptic intubation</strong>, usually nasal. Prepare with an antisialagogue (glycopyrronium 200–400 µg), nasal vasoconstrictor, careful topicalisation (co-phenylcaine spray, nebulised 4% lidocaine, spray-as-you-go; keep total lidocaine ≤9 mg/kg) and remifentanil-only sedation (TCI 1–3 ng/mL, or 0.05–0.1 µg/kg/min) titrated to keep the patient co-operative and self-ventilating. Avoid propofol or midazolam boluses, sit the patient up, give high-flow nasal oxygen throughout, and use a 6.0–7.0 mm tube</li>
+              <li><strong>Rescue plan</strong>: <strong>awake tracheostomy under local anaesthesia</strong> with the ENT surgeon scrubbed and the neck prepped from the start — this becomes the primary plan when swelling distorts the airway beyond fibreoptic access or topicalisation fails. Neck induration often makes front-of-neck access difficult, so commit to the surgical airway early rather than as a last resort</li>
+              <li><strong>Wider management</strong>: broad-spectrum IV antibiotics (e.g. co-amoxiclav plus metronidazole, or clindamycin), dexamethasone to reduce oedema, fluids and a sepsis bundle, urgent surgical drainage and dental clearance. Keep the tube in and ventilate in critical care until swelling settles; extubate only after a cuff-leak assessment with the difficult-airway team present</li>
+            </ul>
+
             </CollapsibleSubsection>
           </ExamSection>
           </div>
