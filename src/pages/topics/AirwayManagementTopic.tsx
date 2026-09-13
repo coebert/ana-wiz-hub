@@ -533,27 +533,46 @@ const AirwayManagementTopic = () => {
           <ExamSection id="section-paediatric-airway" exams={[Exam.FINAL]} className="scroll-mt-24">
             <CollapsibleSubsection title="The Paediatric &amp; Neonatal Airway">
             <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
-              Neonates and infants are the highest-risk airway group in anaesthesia: a large occiput and tongue, obligate nasal breathing, a short trachea, cephalad and anterior larynx, floppy omega-shaped epiglottis, narrow subglottis, high oxygen consumption (6–8 ml/kg/min) and low FRC with early airway closure. Desaturation follows apnoea within seconds, and hypoxia rapidly produces bradycardia. The joint ESAIC/BJA neonatal and infant airway guidelines recommend using a <strong>videolaryngoscope with an age-adapted standard blade as the first choice for tracheal intubation</strong> and <strong>applying apnoeic oxygenation during intubation</strong> <InlineRef topicId="airway-management" refLabel="ESAIC/BJA 2024 Neonatal Airway" />.
+              Neonates and infants are the highest-risk airway group in anaesthesia. The joint ESAIC/BJA guideline provides an evidence-based framework for preparation, first-pass success, oxygenation and rescue in this population <InlineRef topicId="airway-management" refLabel="ESAIC/BJA 2024 Neonatal Airway" />.
             </p>
             <div className="grid md:grid-cols-2 gap-3 mb-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Anatomical &amp; physiological differences</p>
                 <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
-                  <li>Neutral or slightly extended head with shoulder roll for neonates (a pillow under the head worsens the view); the "sniffing" position is for older children.</li>
-                  <li>Narrowest point is the subglottis/cricoid in infants, becoming the glottis with growth — use correctly sized <em>cuffed</em> tubes with cuff pressure &lt;20 cmH₂O and check for a leak.</li>
-                  <li>Sizing: cuffed ETT = age/4 + 3.5 (neonate 3.0–3.5 mm), oral length = age/2 + 12 cm (neonate ≈ 7–9 cm at the lip, or weight + 6 cm).</li>
-                  <li>Compliant chest wall and high closing volume — apply CPAP/PEEP early and avoid prolonged apnoea.</li>
+                  <li>A large occiput flexes the neck when supine; use a shoulder roll and neutral or slight extension in neonates, reserving the sniffing position for older children.</li>
+                  <li>The tongue is relatively large, the epiglottis long and omega-shaped, and the larynx more cephalad and anterior. The infant airway is classically funnel-shaped, with the subglottis/cricoid its narrowest fixed region.</li>
+                  <li>The trachea is short, so small movements can cause endobronchial intubation or extubation. Recheck tube depth after positioning.</li>
+                  <li>Oxygen consumption is high (about 6–8 ml/kg/min), while FRC is low and the compliant chest wall promotes airway closure. Apnoea therefore causes rapid desaturation, followed by hypoxic bradycardia.</li>
                 </ul>
               </div>
               <div className="p-4 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">2024 recommendations in practice</p>
+                <p className="font-semibold text-foreground text-sm">Equipment, tube size &amp; depth</p>
                 <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
-                  <li>Videolaryngoscopy first-line (improves first-pass success and allows supervision/teaching); limit attempts and call for senior help early.</li>
-                  <li>Apnoeic oxygenation via nasal cannulae or high-flow throughout laryngoscopy.</li>
-                  <li>Adequate depth of anaesthesia and neuromuscular blockade before instrumentation reduce laryngospasm and desaturation.</li>
-                  <li>The most experienced available clinician manages a known difficult paediatric airway; second-generation SADs are the rescue of choice and are effective as a conduit.</li>
-                  <li>Maintain normothermia, normoglycaemia and normocapnia — hypoxia in neonates causes pulmonary vasoconstriction and can reopen a right-to-left shunt.</li>
-                  <li>Emergency drugs by weight (WETFLAG): suxamethonium 1–2 mg/kg IV or 4 mg/kg IM and atropine 20 µg/kg immediately available for laryngospasm and bradycardia.</li>
+                  <li>A straight Miller blade directly lifts the floppy epiglottis in neonates and infants; an age-sized Macintosh blade is often suitable in older children. The 2024 guideline recommends an age-adapted videolaryngoscope as first choice in neonates and infants.</li>
+                  <li>Modern microcuff tubes are appropriate when correctly sized: cuffed internal diameter = age/4 + 3.5 mm; uncuffed = age/4 + 4 mm. Keep cuff pressure ≤20 cmH₂O and ensure an acceptable leak.</li>
+                  <li>Approximate oral depth = age/2 + 12 cm in children; in neonates use weight + 6 cm as an initial estimate. Confirm depth clinically and with sustained waveform capnography.</li>
+                  <li>Have adjacent tube sizes, age-sized masks, oral airways, second-generation SADs, suction, videolaryngoscope and rescue equipment immediately available.</li>
+                </ul>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-3 mb-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Induction and rapid-sequence doses</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li>Calculate every dose from a measured or reliably estimated weight, reduce induction doses in neonates or cardiovascular instability, and follow the local paediatric formulary.</li>
+                  <li>Typical IV induction ranges: propofol 2–3 mg/kg, ketamine 1–2 mg/kg, or thiopental 3–5 mg/kg, titrated to physiology.</li>
+                  <li>For rapid paralysis: rocuronium 1–1.2 mg/kg IV or suxamethonium 2 mg/kg IV in neonates/infants (1–2 mg/kg in older children). Use gentle mask ventilation when needed to prevent hypoxaemia rather than accepting prolonged apnoea.</li>
+                  <li>Prepare atropine 20 micrograms/kg and emergency rescue drugs before induction; adequate anaesthetic depth and neuromuscular blockade improve intubating conditions.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Difficult-airway strategy</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                  <li>Predictors include craniofacial syndromes, micrognathia, mid-face hypoplasia, limited mouth opening or neck movement, airway mass, previous difficulty and severe obstructive sleep apnoea.</li>
+                  <li>Prioritise oxygenation, call expert help early, use the most experienced available operator and stop repeated attempts before trauma, oedema and bleeding worsen the airway.</li>
+                  <li>Use nasal low-flow or high-flow oxygen for apnoeic oxygenation during laryngoscopy. Videolaryngoscopy supports first-pass success and a shared view.</li>
+                  <li>If intubation fails, restore ventilation with a face mask or age-appropriate second-generation SAD; an SAD may act as a conduit for flexible-scope intubation.</li>
+                  <li>Paediatric rescue is not simply the adult DAS pathway scaled down: hypoxaemia develops faster, front-of-neck access is technically difficult in small children, and oxygenation plus early specialist escalation take precedence.</li>
                 </ul>
               </div>
             </div>
