@@ -417,6 +417,7 @@ export type Database = {
           adult_bolus_dose: string
           contraindications: string
           created_at: string
+          dilutions: Json
           dosing: string
           drug_class: string
           id: string
@@ -432,15 +433,19 @@ export type Database = {
           preparation: string
           presentation: string
           related_topic_ids: string[]
+          requires_tdm: boolean
           side_effects: string
           slug: string
+          sources: Json
           synonyms: string[]
+          tdm: Json
           updated_at: string
         }
         Insert: {
           adult_bolus_dose?: string
           contraindications?: string
           created_at?: string
+          dilutions?: Json
           dosing?: string
           drug_class: string
           id?: string
@@ -456,15 +461,19 @@ export type Database = {
           preparation?: string
           presentation?: string
           related_topic_ids?: string[]
+          requires_tdm?: boolean
           side_effects?: string
           slug: string
+          sources?: Json
           synonyms?: string[]
+          tdm?: Json
           updated_at?: string
         }
         Update: {
           adult_bolus_dose?: string
           contraindications?: string
           created_at?: string
+          dilutions?: Json
           dosing?: string
           drug_class?: string
           id?: string
@@ -480,9 +489,12 @@ export type Database = {
           preparation?: string
           presentation?: string
           related_topic_ids?: string[]
+          requires_tdm?: boolean
           side_effects?: string
           slug?: string
+          sources?: Json
           synonyms?: string[]
+          tdm?: Json
           updated_at?: string
         }
         Relationships: []
