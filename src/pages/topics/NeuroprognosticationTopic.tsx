@@ -423,6 +423,42 @@ const NeuroprognosticationTopic = () => {
               </ul>
             </div>
 
+            {/* Predicting good outcome */}
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Predicting a <em>good</em> outcome</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                The ERC/ESICM algorithm is designed only to identify patients in whom a poor outcome is
+                very likely; the absence of poor-outcome criteria is not the same as a prediction of
+                recovery. Predictors of good outcome are less well validated but increasingly
+                described, and matter because they justify continued treatment and more time before any
+                decision on withdrawal
+                <InlineRef topicId="neuroprognostication" refLabel="EHJ-ACC 2023 (Neuroprognostication)" />.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3 mb-3">
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Features favouring recovery</p>
+                  <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1 mt-1">
+                    <li>Continuous, reactive EEG background with normal voltage, and re-emergence of sleep–wake patterns.</li>
+                    <li>Low or falling NSE (broadly &lt; 17 µg/L at 24–48 h) and low GFAP/NfL where available.</li>
+                    <li>Present and symmetrical N20 with a normal cortical amplitude (higher N20 amplitudes are associated with better outcome).</li>
+                    <li>Normal brain CT grey/white matter ratio and absence of diffusion restriction on MRI.</li>
+                    <li>Early return of brainstem reflexes, preserved pupillary quantitative light-reflex (NPi ≥ 3), and improving motor score by 72 h.</li>
+                    <li>Favourable arrest characteristics: witnessed collapse, bystander CPR, shockable rhythm, short low-flow time, and a reversible cardiac cause.</li>
+                  </ul>
+                </div>
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">How to use them</p>
+                  <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1 mt-1">
+                    <li>Treat these as reasons to <strong>wait and continue full support</strong>, not as a promise of recovery.</li>
+                    <li>Late awakening is common — a substantial proportion of survivors regain consciousness after 72 h, and occasionally after a week or more, particularly with sedation, renal failure or hypothermia.</li>
+                    <li>Where the multimodal result is indeterminate, extend observation, repeat EEG and imaging, and consider testing for cognitive-motor dissociation before any decision on withdrawal.</li>
+                    <li>Document the balance of poor- and good-outcome indicators explicitly in the family discussion, and involve neurology/neurophysiology.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
             {/* Communication */}
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Communication, ethics & WLST</h2>
