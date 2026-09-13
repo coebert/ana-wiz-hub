@@ -152,42 +152,49 @@ export default function DrugReferenceEntry() {
 
   if (loading) {
     return (
-      <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-        <p className="text-sm text-muted-foreground">Loading the drug entry…</p>
-      </main>
+      <ReferenceAppLayout
+        title="Loading drug… | Drug Reference"
+        description="Anaesthetic and critical care drug monograph."
+        canonicalPath={`/reference/drugs/${slug ?? ""}`}
+      >
+        <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+          <p className="text-sm text-muted-foreground">Loading the drug entry…</p>
+        </main>
+      </ReferenceAppLayout>
     );
   }
 
   if (error || !drug) {
     return (
-      <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-        <h1 className="font-serif text-2xl text-foreground">Drug not found</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          We could not find that entry. Return to the{" "}
-          <Link className="underline" to="/reference/drugs">
-            drug reference library
-          </Link>
-          .
-        </p>
-      </main>
+      <ReferenceAppLayout
+        title="Drug not found | Drug Reference"
+        description="Anaesthetic and critical care drug monograph."
+        canonicalPath={`/reference/drugs/${slug ?? ""}`}
+      >
+        <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+          <h1 className="font-serif text-2xl text-foreground">Drug not found</h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            We could not find that entry. Return to the{" "}
+            <Link className="underline" to="/reference/drugs">
+              drug reference library
+            </Link>
+            .
+          </p>
+        </main>
+      </ReferenceAppLayout>
     );
   }
 
   const tdm = drug.tdm;
 
   return (
-    <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>{`${drug.name} — dosing, dilutions & monitoring | AnaesthesiaCore`}</title>
-        <meta
-          name="description"
-          content={`${drug.name}: ${drug.indication_oneliner} Presentation, preparation, dosing, standard dilutions and pump rates, pharmacokinetics, adverse effects, interactions${
-            drug.requires_tdm ? " and therapeutic drug level monitoring" : ""
-          }, with referenced sources.`}
-        />
-        <link rel="canonical" href={`https://anaesthesiacore.app/reference/drugs/${drug.slug}`} />
-      </Helmet>
-
+    <ReferenceAppLayout
+      title={`${drug.name} — dosing, dilutions & monitoring | AnaesthesiaCore`}
+      description={`${drug.name}: ${drug.indication_oneliner} Presentation, preparation, dosing, standard dilutions and pump rates, pharmacokinetics, adverse effects, interactions${
+        drug.requires_tdm ? " and therapeutic drug level monitoring" : ""
+      }, with referenced sources.`}
+      canonicalPath={`/reference/drugs/${drug.slug}`}
+    >
       <header className="border-b border-border bg-card">
         <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
           <Link
