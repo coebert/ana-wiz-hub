@@ -293,7 +293,43 @@ const AntimicrobialsIcuTopic = () => {
             <p className="text-muted-foreground leading-relaxed mt-3">
               These mechanisms are not mutually exclusive: a single carbapenem-resistant <em>Klebsiella</em> isolate may carry a carbapenemase, porin loss and an efflux pump simultaneously, producing very high MICs. Resistance genes spread horizontally between organisms via plasmids and transposons (not just vertically by clonal expansion), which explains rapid outbreak spread of CPE/ESBL organisms on ICUs and the rationale for contact precautions and screening in addition to antibiotic stewardship <InlineRef topicId="antimicrobials-icu" refLabel="Nat Rev Microbiol 2015 (Resistance mechanisms)" />.
             </p>
+            <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Treating carbapenemase-producing Enterobacterales (CPE/CRE)</h3>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              CPE are Enterobacterales (usually <em>Klebsiella pneumoniae</em> or <em>E. coli</em>) that resist
+              carbapenems through production of a carbapenemase enzyme — most commonly <strong>KPC</strong> (a serine
+              class A enzyme), <strong>OXA-48</strong> (class D) or a <strong>metallo-β-lactamase</strong> such as
+              NDM or VIM (class B, zinc-dependent). Which enzyme is present dictates which agent will work, so
+              treatment is always molecular-diagnosis-led and always discussed with microbiology or infectious
+              diseases <InlineRef topicId="antimicrobials-icu" refLabel="Nat Rev Microbiol 2015 (Resistance mechanisms)" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Ceftazidime–avibactam</p>
+                <p className="text-xs text-muted-foreground mt-1">Avibactam is a non-β-lactam inhibitor active against class A (KPC) and class D (OXA-48) carbapenemases, so it is the workhorse for KPC- and OXA-48-producing isolates. <strong>No activity against metallo-β-lactamases</strong> (NDM/VIM) — pairing it with aztreonam is a salvage strategy for those. Resistance can emerge on treatment.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Meropenem–vaborbactam</p>
+                <p className="text-xs text-muted-foreground mt-1">Vaborbactam is a boronic-acid inhibitor with strong activity against <strong>KPC</strong>. It does not restore meropenem activity against OXA-48 or metallo-β-lactamases, and is ineffective where resistance is driven mainly by porin loss.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Cefiderocol</p>
+                <p className="text-xs text-muted-foreground mt-1">A siderophore cephalosporin: it is chelated to iron and hijacks bacterial active iron-transport channels to enter the periplasm ("Trojan horse"), bypassing porin loss and efflux. Stable to all four carbapenemase classes including <strong>metallo-β-lactamases (NDM)</strong>, and also covers <em>Pseudomonas</em>, <em>Acinetobacter</em> and <em>Stenotrophomonas</em>. Susceptibility testing is technically demanding (iron-depleted media).</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Colistin / polymyxin B — older last resort</p>
+                <p className="text-xs text-muted-foreground mt-1">Bind lipopolysaccharide and disrupt the outer membrane. Retain activity against most CPE but carry dose-limiting <strong>nephrotoxicity</strong> and <strong>neurotoxicity</strong>, unpredictable pharmacokinetics (colistin is a prodrug requiring a loading dose), and poor lung penetration. Now reserved for when newer agents are unavailable or inactive, and increasingly used in combination rather than alone.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Tigecycline — know its limits</p>
+                <p className="text-xs text-muted-foreground mt-1"><strong>Bacteriostatic</strong>, with a huge volume of distribution that produces very low plasma concentrations. It is therefore <strong>unsuitable for bacteraemia or urinary sepsis</strong>, and higher-dose regimens are needed even for intra-abdominal or skin infection. No <em>Pseudomonas</em> or <em>Proteus</em> cover. Meta-analyses have shown excess mortality versus comparators.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Practical principles</p>
+                <p className="text-xs text-muted-foreground mt-1">Send isolates for carbapenemase genotyping early; obtain source control; use extended-infusion, high-dose regimens with therapeutic drug monitoring where available; treat colonisation of a rectal screen as colonisation, not infection; and isolate with contact precautions. <strong>Every CPE treatment decision should be made jointly with microbiology/ID</strong> <InlineRef topicId="antimicrobials-icu" refLabel="Curr Opin Crit Care 2022 AMS" />.</p>
+              </div>
+            </div>
           </ExamSection>
+
 
           <ExamSection
             id="stewardship"
