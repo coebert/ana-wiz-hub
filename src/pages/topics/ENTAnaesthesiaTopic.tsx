@@ -288,8 +288,44 @@ const ENTAnaesthesiaTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Causes</strong>: epiglottitis, croup, foreign body, tumour (laryngeal/pharyngeal), Ludwig's angina, post-operative haematoma (thyroid/neck surgery), anaphylaxis, burns</li>
               <li><strong>Assessment</strong>: severity — stridor at rest is severe (&gt;50% obstruction). Inspiratory stridor = supraglottic; biphasic = glottic/subglottic; expiratory = intrathoracic</li>
-              <li><strong>Management principles</strong>: keep patient calm and upright. Heliox (70:30 He:O₂) reduces turbulent flow resistance. Nebulised adrenaline (5 ml 1:1000) for oedema. Dexamethasone IV</li>
-              <li><strong>Inhalational induction</strong>: for paediatric epiglottitis/croup — sevoflurane in 100% O₂, spontaneous ventilation, maintain until airway secured. ENT surgeon scrubbed for emergency tracheostomy. Never paralyse until airway secured</li>
+              <li><strong>Never</strong> send an obstructing airway to a remote location, sedate the patient, or lie them flat for imaging without an airway plan in place</li>
+            </ul>
+            <h4 className="text-base font-semibold text-foreground mt-5 mb-2">A structured approach to acute upper airway obstruction</h4>
+            <div className="space-y-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">1. Immediate assessment and stabilisation</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Call for help early and by name: senior anaesthetist, <strong>ENT surgeon in the room</strong>, and skilled assistance with the difficult-airway trolley. Sit the patient up, keep them calm (agitation and crying worsen turbulent flow, particularly in children), and give high-flow humidified oxygen. Assess ABCDE while a second person takes a rapid history: onset and rate of progression, voice change, drooling, dysphagia, fever, trauma, previous surgery or radiotherapy, and any prior difficult intubation. Look for the danger signs — stridor at rest (&gt; 50% narrowing), accessory muscle use and tracheal tug, inability to swallow saliva, inability to lie flat, exhaustion and a falling respiratory rate, and rising CO₂ with a falling conscious level. Move to a theatre with an ENT surgeon rather than to a scanner. Nasendoscopy in the sitting position, and a CT only if the patient is stable enough.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">2. Medical management to buy time</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc pl-4">
+                  <li><strong>Nebulised adrenaline</strong> 5 mL of 1:1000 (5 mg), repeatable — mucosal vasoconstriction reduces oedema within minutes but wears off in 1–2 hours, so it is a bridge, not a treatment. Watch for rebound.</li>
+                  <li><strong>Dexamethasone</strong> 8 mg IV (0.15 mg/kg in children) for oedema of any cause; onset takes hours, so give it early and do not rely on it acutely.</li>
+                  <li><strong>Heliox 70:30 helium:oxygen</strong> — helium&apos;s low density lowers the Reynolds number, converting turbulent flow back towards laminar flow and reducing the work of breathing across a fixed narrowing. The trade-off is a maximum FiO₂ of 0.3, so it is useless in the hypoxaemic patient and is a temporising measure while definitive plans are made.</li>
+                  <li><strong>Cause-specific therapy</strong>: intramuscular adrenaline and the anaphylaxis algorithm; antibiotics for epiglottitis, Ludwig&apos;s angina and abscess; immediate release of a post-thyroidectomy haematoma at the bedside; steroids and radiotherapy referral for tumour; magnet/foreign-body removal in theatre.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">3. Airway intervention strategy</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc pl-4">
+                  <li><strong>Prepare fully first</strong>: difficult-airway trolley, videolaryngoscope, range of small (5.0–6.0 mm) and microlaryngeal tubes, rigid and flexible scopes, bougies, FONA set opened, ENT surgeon scrubbed with a tracheostomy set, and a verbalised plan A–D that every team member has heard.</li>
+                  <li><strong>Inhalational induction</strong> with sevoflurane in 100% oxygen, maintaining spontaneous ventilation, in the sitting or semi-recumbent position — the classical choice for paediatric epiglottitis or croup and for supraglottic obstruction. Strengths: preserved airway tone and the option to lighten if things deteriorate. Weaknesses: slow and unpredictable induction with a narrowed airway, risk of laryngospasm and of complete obstruction at a light plane, and the practical difficulty of a struggling child or adult.</li>
+                  <li><strong>Intravenous induction / RSI</strong>: appropriate where obstruction is below the larynx or the anatomy is known and the airway is likely to be intubatable, or in bleeding trauma. Strengths: fast and controlled. Weakness: loss of muscle tone and spontaneous ventilation can turn partial obstruction into complete obstruction with no rescue — so only choose it with a surgeon ready for immediate front-of-neck access.</li>
+                  <li><strong>Awake fibreoptic or awake videolaryngoscopic intubation</strong>: the technique of choice where obstruction is at or above the glottis and the patient can co-operate — topicalisation with lidocaine (total ≤ 9 mg/kg), remifentanil-only sedation, high-flow nasal oxygen, patient sitting up. Beware the &quot;cork in a bottle&quot; effect in a critically narrow airway, and complete failure of topicalisation with blood or pus.</li>
+                  <li><strong>Awake tracheostomy under local anaesthesia</strong>: the safest primary plan when obstruction is severe, the anatomy is grossly distorted, or a tumour makes intubation implausible. Choosing it early is a mark of good judgement, not failure.</li>
+                  <li><strong>CICO plan</strong>: if intubation and oxygenation both fail, declare CICO, deliver a final attempt at oxygenation while the FONA set is opened, and proceed immediately to <strong>scalpel–bougie–tube cricothyroidotomy</strong> (size 6.0 cuffed tube) or surgical tracheostomy by the ENT surgeon. In subglottic or tracheal tumour, cricothyroidotomy may be below or through the lesion — rigid bronchoscopy or ECMO-supported airway intervention should be considered in advance for such patients.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">4. After the airway is secured</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Confirm with waveform capnography, secure the tube meticulously and document its size, depth and the technique used. Treat the cause, continue steroids and antibiotics, admit to critical care, and plan extubation as a separate deliberate event — cuff-leak assessment, airway re-examination, difficult-airway team and surgeon present, and a re-intubation plan. Issue an airway alert.
+                </p>
+              </div>
+            </div>
+
             </ul>
             <h4 className="text-base font-semibold text-foreground mt-5 mb-2">Ludwig&apos;s angina</h4>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">
