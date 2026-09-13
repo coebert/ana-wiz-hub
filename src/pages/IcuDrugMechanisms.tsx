@@ -60,7 +60,7 @@ const IcuDrugMechanisms = () => {
         <title>ICU Drug Mechanisms, Pharmacokinetics &amp; Metabolism</title>
         <meta
           name="description"
-          content="Pharmacodynamics, pharmacokinetics, metabolism and adverse effects of 50 adult intensive care drugs — half-life, volume of distribution, protein binding, active metabolites and dosing in liver failure, renal failure and RRT."
+          content="Pharmacodynamics, pharmacokinetics, metabolism and adverse effects of 50 adult intensive care drugs — half-life, volume of distribution, protein binding."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-mechanisms" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-mechanisms" />

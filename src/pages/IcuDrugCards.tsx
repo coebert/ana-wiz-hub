@@ -170,10 +170,10 @@ const IcuDrugCards = () => {
   return (
     <PageSection>
       <Helmet>
-        <title>ICU Drug Cards | Class, Dosing, PK & Safety | AnaesthesiaCore</title>
+        <title>ICU Drug Cards | Class, Dosing, PK & Safet | AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Complete drug cards for the adult ICU formulary: class, mechanism, dose-response, adult and paediatric dosing, pharmacokinetics, safety, monitoring and withdrawal guidance."
+          content="Complete drug cards for the adult ICU formulary: class, mechanism, dose-response, adult and paediatric dosing, pharmacokinetics, safety."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-cards" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-cards" />

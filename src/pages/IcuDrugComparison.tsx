@@ -185,7 +185,7 @@ const IcuDrugComparison = () => {
         <title>ICU Drug Comparison: Doses, Kinetics and Safety Side by Side</title>
         <meta
           name="description"
-          content="Compare any two adult intensive care drugs side by side — dose and route, pharmacodynamics, metabolism and elimination, adverse effects, contraindications and monitoring."
+          content="Compare any two adult intensive care drugs side by side — dose and route, pharmacodynamics, metabolism and elimination, adverse effects."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-comparison" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-comparison" />

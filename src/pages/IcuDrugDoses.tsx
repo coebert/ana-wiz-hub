@@ -186,10 +186,10 @@ const IcuDrugDoses = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>ICU Drug Dosing Table: Adult, Paediatric and Neonatal — AnaesthesiaCore</title>
+        <title>ICU Drug Dosing Table: Adult, Paediatric a | AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Searchable intensive care drug dosing table with adult, paediatric and neonatal doses: sedation, analgesia, neuromuscular blockade, vasopressors, inotropes, antiarrhythmics, neurocritical care, anticoagulation, metabolic and antimicrobial drugs with dose, route, frequency and key indications."
+          content="Searchable intensive care drug dosing table with adult, paediatric and neonatal doses: sedation, analgesia, neuromuscular blockade, vasopressors, inotropes."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-doses" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-doses" />

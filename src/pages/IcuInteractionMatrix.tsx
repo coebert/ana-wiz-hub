@@ -168,7 +168,7 @@ const IcuInteractionMatrix = () => {
         <title>ICU Drug Interaction Matrix | AnaesthesiaCore</title>
         <meta
           name="description"
-          content="A grid of the adult intensive care formulary showing which ICU drugs interact with each other, graded avoid, major or moderate, with mechanism, action and monitoring for every pair."
+          content="A grid of the adult intensive care formulary showing which ICU drugs interact with each other, graded avoid, major or moderate, with mechanism."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/interaction-matrix" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/interaction-matrix" />

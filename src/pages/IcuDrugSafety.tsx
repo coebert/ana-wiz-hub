@@ -101,7 +101,7 @@ const IcuDrugSafety = () => {
         <title>ICU Drug Safety: Interactions, Contraindications, Monitoring</title>
         <meta
           name="description"
-          content="Pharmacokinetics, half-life, clearance, interactions, contraindications and monitoring for 50 adult intensive care drugs — sedatives, neuromuscular blockers, vasopressors, antiarrhythmics, anticonvulsants, anticoagulants and antimicrobials."
+          content="Pharmacokinetics, half-life, clearance, interactions, contraindications and monitoring for 50 adult intensive care drugs — sedatives, neuromuscular blockers."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-safety" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-safety" />

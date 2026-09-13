@@ -123,7 +123,7 @@ const IcuDrugCalculator = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>ICU Drug Calculator — Dose, Rate and Volume | AnaesthesiaCore</title>
+        <title>ICU Drug Calculator | AnaesthesiaCore</title>
         <meta
           name="description"
           content="ICU medication calculator: enter drug, dose, patient weight and route to get the infusion rate in mcg/kg/hr and mL/hr, plus the total volume per day."

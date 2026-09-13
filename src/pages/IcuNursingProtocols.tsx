@@ -48,10 +48,10 @@ const IcuNursingProtocols = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>ICU Nursing Protocols — Central Line & Ventilator Care | AnaesthesiaCore</title>
+        <title>ICU Nursing Protocols | AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Intensive care nursing protocols and care bundles: central line care, ventilated patient bundle, tracheostomy, prone positioning, RRT circuits, feeding, pressure areas and sepsis — with national guideline references."
+          content="Intensive care nursing protocols and care bundles: central line care, ventilated patient bundle, tracheostomy, prone positioning, RRT circuits, feeding."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/nursing-protocols" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/nursing-protocols" />

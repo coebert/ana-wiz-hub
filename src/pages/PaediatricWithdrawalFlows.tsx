@@ -22,10 +22,10 @@ const PaediatricWithdrawalFlows = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>Paediatric ICU Withdrawal Flow — Tapering, Timing, Rescue — AnaesthesiaCore</title>
+        <title>Paediatric ICU Withdrawal Flow | AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Step-by-step paediatric ICU withdrawal and weaning flows for sepsis, PARDS and neurocritical care: drug tapering rates, half-life timing, WAT-1 and COMFORT-B monitoring, and rescue plans with links to dosing and safety pages."
+          content="Step-by-step paediatric ICU withdrawal and weaning flows for sepsis, PARDS and neurocritical care: drug tapering rates, half-life timing."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/paediatric-withdrawal" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/paediatric-withdrawal" />

@@ -75,7 +75,7 @@ const IcuInfusions = () => {
         <title>Key ICU Drug Infusions — AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Adult ICU infusion recipes: vasopressors, inotropes, sedatives and analgesics with safe diluents, draw-up volumes and concentrations, starting doses and dose ranges in micrograms/kg/min (or equivalent) with a live mL/hour converter."
+          content="Adult ICU infusion recipes: vasopressors, inotropes, sedatives and analgesics with safe diluents, draw-up volumes and concentrations."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/infusions" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/infusions" />

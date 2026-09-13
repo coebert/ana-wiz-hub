@@ -37,10 +37,10 @@ const PaediatricIcuFlows = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>Paediatric ICU Management Flows — Sepsis, PARDS, Neonatal — AnaesthesiaCore</title>
+        <title>Paediatric ICU Management Flows | AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Step-by-step paediatric critical care pathways for sepsis, paediatric ARDS, neonatal resuscitation and neuroprotection, with age-specific links to drug doses, infusions and matching case bank scenarios."
+          content="Step-by-step paediatric critical care pathways for sepsis, paediatric ARDS, neonatal resuscitation and neuroprotection, with age-specific links to drug doses."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/paediatric-flows" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/paediatric-flows" />
