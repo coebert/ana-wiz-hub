@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Calculator, Download, FlaskConical, Pill, Search, Syringe } from "lucide-react";
+import { BookOpen, Calculator, Download, FlaskConical, Pill, Search, Syringe } from "lucide-react";
 
 import ReferenceAppLayout from "@/features/drugReference/ReferenceAppLayout";
 import { useDrugList } from "@/features/drugReference/useDrugReference";
@@ -109,6 +109,12 @@ export default function DrugReferenceHome() {
               icon: Pill,
               title: "Browse all drugs",
               body: "Search by name, brand, class or indication, or jump straight to a letter.",
+            },
+            {
+              to: "/reference/topics",
+              icon: BookOpen,
+              title: "Browse by topic",
+              body: "Vasoactive support, sedation, analgesia, anticoagulation and more, each with bedside points.",
             },
             {
               to: "/reference/monitoring",

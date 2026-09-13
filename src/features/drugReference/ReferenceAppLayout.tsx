@@ -14,6 +14,7 @@ interface Props {
 const NAV = [
   { to: "/reference", label: "Home", end: true },
   { to: "/reference/drugs", label: "Drugs" },
+  { to: "/reference/topics", label: "Topics" },
   { to: "/reference/monitoring", label: "Levels" },
   { to: "/reference/infusions", label: "Infusions" },
   { to: "/reference/about", label: "Sources" },

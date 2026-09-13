@@ -4,6 +4,7 @@ import { AlertTriangle, ArrowLeft, ExternalLink } from "lucide-react";
 
 import ReferenceAppLayout from "@/features/drugReference/ReferenceAppLayout";
 import { useDrugEntry } from "@/features/drugReference/useDrugReference";
+import { topicForClass } from "@/features/drugReference/topics";
 import {
   calculateRate,
   dilutionsForSlug,
@@ -206,6 +207,15 @@ export default function DrugReferenceEntry() {
           <h1 className="mt-3 font-serif text-3xl text-foreground">{drug.name}</h1>
           <p className="mt-1 text-sm uppercase tracking-wide text-muted-foreground">
             {drug.drug_class}
+          </p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Topic:{" "}
+            <Link
+              className="text-primary underline"
+              to={`/reference/topics/${topicForClass(drug.drug_class).slug}`}
+            >
+              {topicForClass(drug.drug_class).title}
+            </Link>
           </p>
           {drug.synonyms?.length > 0 && (
             <p className="mt-1 text-sm text-muted-foreground">

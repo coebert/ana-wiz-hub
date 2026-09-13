@@ -35,6 +35,8 @@ const DrugReferenceMonitoring = lazy(() => import("./pages/reference/DrugReferen
 const DrugReferenceInfusions = lazy(() => import("./pages/reference/DrugReferenceInfusions"));
 const DrugReferenceCalculator = lazy(() => import("./pages/reference/DrugReferenceCalculator"));
 const DrugReferenceAbout = lazy(() => import("./pages/reference/DrugReferenceAbout"));
+const DrugReferenceTopics = lazy(() => import("./pages/reference/DrugReferenceTopics"));
+const DrugReferenceTopic = lazy(() => import("./pages/reference/DrugReferenceTopic"));
 const SeoIndexing = lazy(() => import("./pages/SeoIndexing"));
 const A11yAudit = lazy(() => import("./pages/A11yAudit"));
 const Curriculum = lazy(() => import("./pages/Curriculum"));
@@ -167,6 +169,8 @@ const App = () => (
           <Route path="/drugs" element={<DrugsLibrary />} />
           <Route path="/reference" element={<DrugReferenceHome />} />
           <Route path="/reference/drugs" element={<DrugReferenceLibrary />} />
+          <Route path="/reference/topics" element={<DrugReferenceTopics />} />
+          <Route path="/reference/topics/:slug" element={<DrugReferenceTopic />} />
           <Route path="/reference/drugs/:slug" element={<DrugReferenceEntry />} />
           <Route path="/reference/monitoring" element={<DrugReferenceMonitoring />} />
           <Route path="/reference/infusions" element={<DrugReferenceInfusions />} />
