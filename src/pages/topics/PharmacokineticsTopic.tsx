@@ -17,7 +17,7 @@ const pharmacokineticsFaqs: Array<[string, string]> = [
   ],
   [
     "What is context-sensitive half-time and why does it matter for TIVA?",
-    "CSHT = the time for plasma concentration to halve after stopping an infusion that has run for a particular duration (the 'context'). Unlike elimination half-life, CSHT lengthens with infusion duration as peripheral compartments fill. Remifentanil CSHT remains ~3 min regardless of duration. After an 8-hour infusion, propofol's CSHT is approximately 35 minutes, while fentanyl's CSHT is around 280 minutes because fentanyl accumulates in fat and other peripheral compartments and returns slowly to plasma."
+    "CSHT = the time for plasma concentration to halve after stopping an infusion that has run for a particular duration (the 'context'). Unlike elimination half-life, CSHT lengthens with infusion duration as peripheral compartments fill. Remifentanil CSHT remains ~3 min regardless of duration (esterase metabolism); fentanyl CSHT rises from 12 min after 1 h to >200 min after 8 h — explains why fentanyl is unsuitable for prolonged TIVA."
   ],
   [
     "Explain first-pass metabolism and its anaesthetic relevance.",
@@ -61,25 +61,12 @@ const PharmacokineticsTopic = () => {
               elimination (ADME). Understanding these principles allows the anaesthetist to predict drug onset, duration,
               and accumulation with repeated dosing.
             </p>
-            <div className="mt-4 rounded-lg border border-border p-4 text-sm text-muted-foreground leading-relaxed">
-              <p className="font-semibold text-foreground">Three-compartment model</p>
-              <p className="mt-1"><strong>V1</strong> is the central plasma/vessel-rich compartment, <strong>V2</strong> rapidly equilibrating muscle, and <strong>V3</strong> slowly equilibrating fat. After an IV bolus, concentration falls tri-exponentially: rapid α distribution, slower β distribution and terminal γ elimination. Redistribution of lipophilic propofol or thiopentone from V1 into V2/V3 terminates the first bolus effect before elimination. TCI pumps solve these inter-compartment rate constants repeatedly to target plasma or effect-site concentration; model volumes vary with covariates, and propofol V1 is commonly around 2–4 L in adult population models <InlineRef topicId="pharmacokinetics" refLabel="BJA Educ PK 2018" />.</p>
-            </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
               <ADMECascadeDiagram />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
 
-          <ExamSection id="metabolism" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
-            <CollapsibleSubsection title="Factors Affecting Drug Metabolism">
-              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-                <li><strong>Induction:</strong> increased CYP enzyme synthesis develops over days to weeks; carbamazepine, phenytoin, rifampicin and chronic alcohol use can increase substrate clearance.</li>
-                <li><strong>Inhibition:</strong> competitive or non-competitive enzyme inhibition usually begins rapidly; grapefruit juice, erythromycin, cimetidine and sodium valproate can reduce metabolism and increase exposure.</li>
-                <li><strong>Genetic polymorphism:</strong> CYP2D6 poor metabolisers generate little morphine from codeine and may lack analgesia, while ultra-rapid metabolisers generate morphine rapidly and risk opioid toxicity. This is a clinically important example of genotype changing a prodrug's response <InlineRef topicId="pharmacokinetics" refLabel="Peck & Hill Ch.2" />.</li>
-              </ul>
-            </CollapsibleSubsection>
-          </ExamSection>
 
           <ExamSection id="patient-factors-pk" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="Influence of Patient Factors on Pharmacokinetics">
