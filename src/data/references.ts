@@ -923,6 +923,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NPIS Toxbase", citation: "National Poisons Information Service. TOXBASE — paracetamol overdose: UK 21-hour intravenous acetylcysteine regimen (150 mg/kg over 1 h, 50 mg/kg over 4 h, 100 mg/kg over 16 h) with continuation if INR, creatinine or encephalopathy worsen.", url: "https://www.toxbase.org" },
   ],
   "acute-pancreatitis": [
+    { label: "HTG Pancreatitis 2018", citation: "Garg R, Rustagi T. Management of hypertriglyceridemia-induced acute pancreatitis. Biomed Res Int. 2018;2018:4721357 — insulin infusion, plasmapheresis and triglyceride targets.", url: "https://doi.org/10.1155/2018/4721357" },
     { label: "IAP/APA 2013", citation: "Working Group IAP/APA Acute Pancreatitis Guidelines. IAP/APA evidence-based guidelines for the management of acute pancreatitis. Pancreatology. 2013;13(4 Suppl 2):e1-15.", url: "https://doi.org/10.1016/j.pan.2013.07.063" },
     { label: "Atlanta 2012", citation: "Banks PA et al. Classification of acute pancreatitis—2012: revision of the Atlanta classification and definitions by international consensus. Gut. 2013;62(1):102-111.", url: "https://doi.org/10.1136/gutjnl-2012-302779" },
     { label: "WATERFALL 2022", citation: "de-Madaria E et al. Aggressive or moderate fluid resuscitation in acute pancreatitis. N Engl J Med. 2022;387(11):989-1000.", url: "https://doi.org/10.1056/NEJMoa2202884" },
