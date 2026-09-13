@@ -284,7 +284,7 @@ const RespiratoryDiseaseTopic = () => {
                 <li>Vasopressor choice: noradrenaline or vasopressin to maintain systemic pressure and RV coronary perfusion without worsening PVR</li>
               </ul>
               <p className="text-sm mt-2">
-                <InlineRef topicId="respiratory-disease" refLabel="Lumb Ch.27" />
+                <InlineRef topicId="respiratory-disease" refLabel="Lumb Ch.27" /> <InlineRef topicId="respiratory-disease" refLabel="Anaesthesia PHTN 2015" />
               </p>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
