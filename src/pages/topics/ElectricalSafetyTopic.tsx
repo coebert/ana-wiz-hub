@@ -563,6 +563,93 @@ const ElectricalSafetyTopic = () => {
           <DefibrillatorCapacitorDiagram />
         </section>
 
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Diathermy Injury in Practice</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Most real electrical harm in theatre is thermal rather than shock. Heating depends on current density
+            (I/A) and time, so injury occurs wherever current is forced through a small area: a partly lifted return
+            plate, a limb touching earthed metal, or a narrow tissue pedicle such as a digit, penis or testicular
+            cord where the <strong>channelling effect</strong> concentrates current
+            <InlineRef topicId="electrical-safety" refLabel="MHRA Electrosurgery" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="text-sm font-semibold text-foreground mb-1">Return-plate and alternate-site burns</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Apply a full-size plate to shaved, dry, well-perfused muscle bulk close to the operative site, long axis facing the field; never trim it.</li>
+                <li>Avoid bony prominences, scars, metal implants, ECG electrodes and areas where prep or irrigation can pool.</li>
+                <li>Re-inspect after every position change — lithotomy, tilt and lateral rolls lift plate edges.</li>
+                <li>Contact-quality-monitoring plates measure impedance and alarm before the skin is injured.</li>
+                <li>Alternate-site burns occur where the patient touches earthed metal (stirrups, drip stand) or where skin touches skin — pad and insulate.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="text-sm font-semibold text-foreground mb-1">Laparoscopic coupling and insulation failure</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li><strong className="text-foreground">Direct coupling</strong> — the active tip touches another instrument, clip or the laparoscope, which then burns bowel outside the field of view.</li>
+                <li><strong className="text-foreground">Capacitive coupling</strong> — current is induced across intact insulation into a surrounding conductor; classically an active hook inside a metal cannula, or a metal instrument through a plastic port.</li>
+                <li><strong className="text-foreground">Insulation failure</strong> — a pinhole in the shaft delivers full current to whatever it touches; inspect instruments before use.</li>
+                <li>Mitigate: lowest effective power, short bursts, whole active tip in view, activate only when clear of other metal, all-metal or all-plastic port systems, and cutting rather than high-voltage coagulation modes.</li>
+                <li>Delayed presentation (48–72 h peritonitis) is typical of an unrecognised thermal bowel injury.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Surgical and Airway Fires</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Fire requires an oxidiser, a fuel and an ignition source, and all three are routinely present: oxygen and
+            nitrous oxide, alcohol-based prep, drapes, swabs, tubes and hair, plus diathermy or a laser
+            <InlineRef topicId="electrical-safety" refLabel="Anesthesiology 2019 (OR fires)" />. Risk is greatest for
+            head, neck and airway surgery where oxygen accumulates under drapes.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="text-sm font-semibold text-foreground mb-1">Prevention</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Use the lowest tolerated inspired oxygen; avoid open delivery above the clavicles — contain oxygen in a cuffed tube or supraglottic device.</li>
+                <li>Stop or reduce oxygen enrichment and allow about a minute of washout before diathermy near the airway.</li>
+                <li>Avoid nitrous oxide, which supports combustion.</li>
+                <li>Allow alcohol prep to dry fully; avoid pooling under drapes and beneath the patient.</li>
+                <li>Damp swabs and gauze near the airway; laser-resistant tube with saline-filled cuff for airway laser work; active electrode in a holster when idle.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="text-sm font-semibold text-foreground mb-1">Immediate management</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Declare the fire; stop diathermy or laser.</li>
+                <li><strong className="text-foreground">Stop the fresh gas flow and disconnect the oxygen supply.</strong></li>
+                <li>Remove burning drapes, swabs and the tube if it is alight; extinguish with saline.</li>
+                <li>Re-establish ventilation on air or minimal FiO₂; bronchoscopy to assess airway injury and plan for oedema.</li>
+                <li>Then treat burns, document, debrief and report; retain the equipment for examination.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Responding to an Electrical Incident</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            If a patient or staff member receives a shock, isolate the supply or break contact with an insulating
+            object before touching them — never grab a casualty still in circuit. Shock-induced arrest is usually VF
+            and is treated by standard ALS with prompt defibrillation
+            <InlineRef topicId="electrical-safety" refLabel="RCUK 2021 ALS" />. Look for entry and exit burns,
+            arrhythmia, rhabdomyolysis and, in high-voltage injury, deep tissue necrosis; monitor the ECG if there was
+            loss of consciousness, arrhythmia or a current path across the chest. Quarantine and label the device, do
+            not attempt repair, and report through local incident and medical-device channels
+            <InlineRef topicId="electrical-safety" refLabel="MHRA Electrosurgery" />.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Everyday risk reduction is mundane: a user visual check of plug, flex and casing before use; withdrawal of
+            any device that has been dropped, wetted, sparked or tripped the supply; risk-based electrical safety
+            testing (usually annual for patient-connected theatre equipment); equipotential earthing so leakage from
+            several devices cannot sum through one patient; CF-rated connections for anything intracardiac; and no
+            extension leads or daisy-chained adaptors, which add earth-fault paths and defeat the isolated supply
+            <InlineRef topicId="electrical-safety" refLabel="IEC 60601-1" />.
+          </p>
+        </section>
+
           <ElectricalSafetyDiagram />
           <ExamPitfallsCallout
             accent="physics"
