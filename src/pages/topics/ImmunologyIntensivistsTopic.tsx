@@ -946,8 +946,14 @@ const ImmunologyIntensivistsTopic = () => {
                 (eculizumab) all increase susceptibility to <strong>encapsulated bacteria and Neisseria</strong>.
               </li>
               <li>
-                T-cell dysfunction (HIV, transplant, high-dose steroids, calcineurin inhibitors) predisposes
-                to <strong>PJP, CMV, TB, toxoplasmosis and Cryptococcus</strong>.
+                T-cell dysfunction predisposes to <strong>PJP, CMV, TB, toxoplasmosis and Cryptococcus</strong>.
+                Know the drug classes by name: <strong>calcineurin inhibitors</strong> (tacrolimus, ciclosporin —
+                block IL-2 transcription), <strong>mTOR inhibitors</strong> (sirolimus, everolimus — impair T-cell
+                proliferation and wound healing), <strong>antiproliferative agents</strong> (mycophenolate,
+                azathioprine — deplete lymphocyte purine synthesis), <strong>high-dose corticosteroids</strong>,
+                and <strong>lymphocyte-depleting biologics</strong> (alemtuzumab anti-CD52, rituximab anti-CD20 →
+                prolonged B-cell depletion and hypogammaglobulinaemia)
+                <InlineRef topicId={TOPIC_ID} refLabel="BJA Educ Immunosuppression 2019" />.
               </li>
               <li>
                 Prions are invisible to the immune system (no PAMPs, no nucleic acid) and require special
