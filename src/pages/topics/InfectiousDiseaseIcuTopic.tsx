@@ -582,6 +582,42 @@ const InfectiousDiseaseIcuTopic = () => {
               </table>
             </div>
 
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Invasive candidiasis — species, source control and step-down</h3>
+            <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-3">
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li><strong>Empiric therapy:</strong> an <strong>echinocandin</strong> (caspofungin 70 mg then 50 mg OD, anidulafungin 200 mg then 100 mg OD, micafungin 100 mg OD) is first-line for every haemodynamically unstable or recently azole-exposed patient <InlineRef topicId="infectious-disease-icu" refLabel="IDSA Candidiasis 2016" />.</li>
+                <li><strong>Species matter.</strong> <em>C. albicans</em> and <em>C. tropicalis</em> are usually fluconazole-susceptible; <em>C. glabrata</em> is frequently fluconazole-resistant and may be echinocandin-resistant (keep on an echinocandin pending sensitivities); <em>C. parapsilosis</em> has intrinsically higher echinocandin MICs, so fluconazole is preferred once the patient is stable and the isolate susceptible; <em>C. krusei</em> is inherently fluconazole-resistant.</li>
+                <li><strong>Step-down to fluconazole</strong> (400 mg / 6 mg/kg OD) after ~5 days only if: haemodynamically stable, isolate susceptible, repeat blood cultures negative, no CNS/ocular/endovascular focus, and absorbing enterally.</li>
+                <li><strong>Source control is mandatory:</strong> remove or exchange central venous catheters in candidaemia whenever feasible, drain intra-abdominal collections, and arrange <strong>dilated ophthalmology review within the first week</strong> to exclude chorioretinitis/endophthalmitis (which mandates a penetrating agent — high-dose fluconazole, voriconazole or L-AmB — because echinocandins penetrate the eye poorly). Repeat blood cultures daily until clearance, and treat for <strong>14 days from the first negative culture</strong> in uncomplicated candidaemia.</li>
+                <li><strong>Deep-seated / persistent infection</strong> (endocarditis, osteoarticular, hepatosplenic, CNS) needs prolonged therapy, an agent with adequate site penetration, and surgical debridement or valve surgery.</li>
+                <li><strong><em>C. auris</em>:</strong> notify infection prevention immediately — single-room contact precautions, cohorting of staff, chlorine- or hydrogen-peroxide-based environmental decontamination, screening of contacts, and treatment with an echinocandin pending susceptibilities (frequently multi-azole and variably amphotericin resistant; combination therapy on mycology advice for echinocandin-resistant isolates).</li>
+              </ul>
+            </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Invasive aspergillosis: IPA vs CAPA/IAPA</h3>
+            <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-3">
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li><strong>Classical IPA</strong> occurs in the neutropenic or transplant host with typical CT signs (halo, air-crescent, cavitation) and positive serum galactomannan.</li>
+                <li><strong>CAPA / IAPA</strong> (COVID- and influenza-associated pulmonary aspergillosis) occurs in non-neutropenic ICU patients: serum galactomannan is often <em>negative</em>, so diagnosis rests on <strong>BAL galactomannan (ODI ≥ 1.0), BAL culture or Aspergillus PCR</strong> plus compatible imaging, using ECMM/ISHAM case definitions. Incidence up to ~10–20% of ventilated severe influenza or COVID-19 and mortality above 50%.</li>
+                <li><strong>Treatment:</strong> voriconazole (6 mg/kg BD × 2 doses then 4 mg/kg BD) or isavuconazole; liposomal amphotericin B if azole-resistant or intolerant. <strong>Voriconazole TDM</strong> is mandatory — trough 1–5.5 mg/L, checked at day 3–5 and after any dose or interacting-drug change (hepatotoxicity, encephalopathy and visual disturbance at high troughs; failure at low troughs; wide CYP2C19-driven variability).</li>
+              </ul>
+            </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Antifungal prophylaxis in ICU</h3>
+            <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+              <p className="text-sm text-muted-foreground mb-2">
+                Routine prophylaxis is <strong>not</strong> indicated for general ICU patients — it drives azole resistance without a mortality benefit. It is reserved for defined high-risk groups <InlineRef topicId="infectious-disease-icu" refLabel="IDSA Candidiasis 2016" />:
+              </p>
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                <li>Recurrent gastrointestinal perforation or anastomotic leak requiring repeated laparotomy (fluconazole or an echinocandin).</li>
+                <li>Liver, small-bowel and pancreas transplant recipients, and high-risk lung transplant recipients (mould-active cover).</li>
+                <li>Prolonged neutropenia or allogeneic HSCT (posaconazole for mould cover; on haematology protocol).</li>
+                <li>Necrotising pancreatitis with repeated interventions, or high local candidaemia rates in a selected high-risk ICU cohort.</li>
+                <li>Always paired with a stop date, TDM where relevant, and de-escalation once the risk period ends.</li>
+              </ul>
+            </div>
+
+
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2"><em>Pneumocystis jirovecii</em> pneumonia (PJP/PCP)</h3>
             <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
               Opportunistic fungal pneumonia (formerly <em>P. carinii</em>). Two distinct populations: <strong>HIV with CD4 &lt;200</strong> (subacute, lower mortality but higher organism burden) and <strong>non-HIV immunosuppressed</strong> — solid-organ/HSCT recipients, high-dose steroids (≥20 mg prednisolone &gt;4 wk), biologics (rituximab, anti-TNF), haematological malignancy, congenital immunodeficiency. Non-HIV PCP is more fulminant, with higher ICU mortality (30–60%).
