@@ -354,9 +354,11 @@ const CapnographyTopic = () => {
                 bronchospasm, the trace becomes obstructive — a sloping phase II with no true plateau
                 (shark-fin) and an obtuse α-angle. Where the dominant problem is circulatory, EtCO₂
                 falls abruptly or disappears as pulmonary blood flow collapses, culminating in PEA
-                arrest with a flat trace despite a correctly placed tube. NAP6 found hypotension,
-                bronchospasm and reduced or absent EtCO₂ to be among the commonest presenting features
-                of perioperative anaphylaxis <InlineRef topicId="capnography" refLabel="NAP6 2018" />.
+                arrest with a flat trace despite a correctly placed tube. In NAP6, the presenting features included
+                <strong> hypotension in 46%</strong>, <strong>bronchospasm in 18%</strong>, and a reduced or absent capnography
+                trace in <strong>2.3%</strong>; all patients became hypotensive during the episode. Therefore, during suspected
+                anaphylaxis, a falling or absent EtCO₂ may be a marker of profound circulatory failure rather than simply airway
+                obstruction <InlineRef topicId="capnography" refLabel="NAP6 2018" />.
               </p>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
                 <li>Shark-fin trace after induction or on giving antibiotic/neuromuscular blocker — think anaphylaxis before "light" bronchospasm.</li>

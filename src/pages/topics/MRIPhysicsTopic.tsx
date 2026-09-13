@@ -9,7 +9,6 @@ import { mriPhysicsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
-
 const mriPhysicsFaqs: Array<[string, string]> = [
   [
     "What are the four MRI safety zones?",
