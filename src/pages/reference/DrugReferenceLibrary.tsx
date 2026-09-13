@@ -45,16 +45,11 @@ export default function DrugReferenceLibrary() {
   const hasFilters = Boolean(query || letter || drugClass || onlyMonitored || onlyInfusions);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Drug Reference — Anaesthesia &amp; Critical Care | AnaesthesiaCore</title>
-        <meta
-          name="description"
-          content="Searchable anaesthetic and critical care drug reference: presentation, dosing, standard dilutions and pump rates, pharmacokinetics, safety, and therapeutic drug monitoring with BNF and SPC sources."
-        />
-        <link rel="canonical" href="https://anaesthesiacore.app/reference/drugs" />
-      </Helmet>
-
+    <ReferenceAppLayout
+      title="Drug Reference — Anaesthesia &amp; Critical Care | AnaesthesiaCore"
+      description="Searchable anaesthetic and critical care drug reference: presentation, dosing, standard dilutions and pump rates, pharmacokinetics, safety, and therapeutic drug monitoring with BNF and SPC sources."
+      canonicalPath="/reference/drugs"
+    >
       <header className="border-b border-border bg-card">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
