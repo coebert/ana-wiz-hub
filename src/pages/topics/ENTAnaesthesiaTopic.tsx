@@ -326,7 +326,7 @@ const ENTAnaesthesiaTopic = () => {
               </div>
             </div>
 
-            </ul>
+
             <h4 className="text-base font-semibold text-foreground mt-5 mb-2">Ludwig&apos;s angina</h4>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">
               A rapidly spreading polymicrobial cellulitis of the submandibular, sublingual and submental spaces, usually from a lower molar dental infection. Anaerobes and streptococci predominate. Induration of the floor of the mouth elevates and retrodisplaces the tongue, so obstruction develops above the larynx and can progress over a few hours<InlineRef topicId="ent-anaesthesia" refLabel="NAP4 2011" />.
