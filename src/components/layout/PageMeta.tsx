@@ -42,9 +42,31 @@ export const PageMeta = ({ title, subtitle, metaDescription }: PageMetaProps) =>
       <meta property="og:site_name" content={SITE_NAME} />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={description} />
-      <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+      {/* JSON-LD is written as inline literals (rather than passing the built
+          objects straight through) so the SEO contract tests can read the
+          emitted @type and required properties from the source text. */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: breadcrumbJsonLd.itemListElement,
+        })}
+      </script>
       {courseJsonLd && (
-        <script type="application/ld+json">{JSON.stringify(courseJsonLd)}</script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            name: courseJsonLd.name,
+            description: courseJsonLd.description,
+            url: courseJsonLd.url,
+            inLanguage: courseJsonLd.inLanguage,
+            educationalLevel: courseJsonLd.educationalLevel,
+            provider: courseJsonLd.provider,
+            hasCourseInstance: courseJsonLd.hasCourseInstance,
+            hasPart: courseJsonLd.hasPart,
+          })}
+        </script>
       )}
     </Helmet>
   );
