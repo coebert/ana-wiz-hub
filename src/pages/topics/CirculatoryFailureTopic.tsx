@@ -264,8 +264,63 @@ const coreConcepts = (
     <div>
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiogenic Shock</h2>
       <p className="text-muted-foreground leading-relaxed">
-        Caused by acute MI, myocarditis, cardiomyopathy, valvular emergency. Management: early revascularisation (PCI for STEMI), inotropes (dobutamine, milrinone), vasopressors if needed (noradrenaline). Consider mechanical circulatory support (IABP, Impella, VA-ECMO) for refractory cases. Avoid excessive fluids (may worsen pulmonary oedema).
+        Cardiogenic shock is end-organ hypoperfusion caused by a <em>primary</em> cardiac disorder, and still carries a mortality of around 40%. Acute MI is the commonest cause; others are fulminant myocarditis, decompensated cardiomyopathy, acute valvular emergencies (papillary muscle or chordal rupture, acute aortic or mitral regurgitation), post-cardiotomy stunning, arrhythmia, tamponade and drug overdose.
       </p>
+      <div className="grid sm:grid-cols-2 gap-3 mt-3">
+        <div className="p-4 rounded-lg border border-border">
+          <p className="font-semibold text-foreground text-sm">Pathophysiology — the downward spiral</p>
+          <p className="text-sm text-muted-foreground mt-1">
+            Loss of contractile mass drops stroke volume and cardiac output. Systemic hypotension reduces coronary perfusion pressure, which is a diastolic phenomenon, while rising LVEDP raises subendocardial wall tension and shortens diastole — so the ischaemic myocardium is simultaneously under-supplied and over-worked. Further ischaemia begets further pump failure. Compensatory sympathetic and RAAS activation increases afterload and heart rate, worsening the oxygen debt. In parallel, systemic hypoperfusion drives a <strong>SIRS response</strong> with inflammatory vasodilatation, so late cardiogenic shock is often a mixed cardiogenic–vasoplegic state with a paradoxically low SVR.
+          </p>
+        </div>
+        <div className="p-4 rounded-lg border border-border">
+          <p className="font-semibold text-foreground text-sm">Clinical features</p>
+          <p className="text-sm text-muted-foreground mt-1">
+            Low output: cool, mottled peripheries, prolonged capillary refill, narrow pulse pressure, tachycardia, raised JVP. Congestion: orthopnoea, crackles, hypoxaemia, hepatomegaly, peripheral oedema. Hypoperfusion end-organ signs: oliguria (&lt; 0.5 mL/kg/h), altered mentation, ileus, rising transaminases and bilirubin ("shock liver"), rising lactate. A cold-and-wet profile is classic; cold-and-dry (euvolaemic) and warm-and-wet (mixed/vasoplegic) profiles also occur and change the fluid strategy.
+          </p>
+        </div>
+        <div className="p-4 rounded-lg border border-border">
+          <p className="font-semibold text-foreground text-sm">Diagnostic criteria</p>
+          <ul className="list-disc pl-4 mt-1 space-y-1 text-xs text-muted-foreground">
+            <li>Systolic BP &lt; 90 mmHg for &gt; 30 min, <em>or</em> vasopressor/inotrope requirement to maintain it</li>
+            <li>Evidence of end-organ hypoperfusion (oliguria, cool extremities, altered mentation)</li>
+            <li>Cardiac index &lt; 2.2 L/min/m² (&lt; 1.8 without support) with PCWP &gt; 15 mmHg where measured</li>
+            <li>Biochemistry: lactate &gt; 2 mmol/L, low ScvO₂/SvO₂ (&lt; 60%), widened veno-arterial CO₂ gap, rising creatinine and transaminases</li>
+          </ul>
+        </div>
+        <div className="p-4 rounded-lg border border-border">
+          <p className="font-semibold text-foreground text-sm">Echocardiography — the cornerstone</p>
+          <p className="text-sm text-muted-foreground mt-1">
+            Echo establishes the aetiology as well as the severity. Look for severe global or regional LV dysfunction with a low LVOT VTI and low stroke volume; RV dilatation and failure (RV:LV ratio, TAPSE &lt; 17 mm, septal shift) suggesting RV infarct or pulmonary embolism; mechanical complications of MI — acute severe mitral regurgitation from papillary muscle rupture, ventricular septal rupture with a shunt jet, free-wall rupture with tamponade; a critical valve lesion; and pericardial tamponade. Repeat echo guides escalation and weaning.
+          </p>
+        </div>
+      </div>
+      <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">SCAI SHOCK stages — a common language for escalation</h3>
+      <p className="text-muted-foreground leading-relaxed mb-2">
+        The SCAI five-stage classification (A to E) has been validated in MI-related, post-cardiac-surgery and mixed ICU cohorts, and the stage at presentation is one of the strongest predictors of in-hospital mortality <InlineRef topicId="circulatory-failure" refLabel="SCAI SHOCK 2022" />. Restage the patient after each intervention rather than treating the admission stage as fixed.
+      </p>
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead><tr className="border-b border-border text-left text-foreground"><th className="py-2 pr-3 font-semibold">Stage</th><th className="py-2 font-semibold">Features</th></tr></thead>
+          <tbody className="text-muted-foreground align-top">
+            <tr className="border-b border-border"><td className="py-2 pr-3 font-medium text-foreground">A — At risk</td><td>Large anterior MI or acute decompensated heart failure but normal perfusion: normal BP, warm, normal lactate, clear JVP.</td></tr>
+            <tr className="border-b border-border"><td className="py-2 pr-3 font-medium text-foreground">B — Beginning</td><td>Relative hypotension or tachycardia (SBP &lt; 90, MAP &lt; 60, or a &gt; 30 mmHg fall) <em>without</em> hypoperfusion. Lactate normal, mild congestion.</td></tr>
+            <tr className="border-b border-border"><td className="py-2 pr-3 font-medium text-foreground">C — Classic</td><td>Hypoperfusion requiring intervention beyond volume — inotrope, vasopressor or mechanical support. Cold and wet, lactate ≥ 2, oliguria, CI &lt; 2.2.</td></tr>
+            <tr className="border-b border-border"><td className="py-2 pr-3 font-medium text-foreground">D — Deteriorating</td><td>Stage C that fails to stabilise after 30 minutes of initial therapy — escalating drug doses or added devices, rising lactate.</td></tr>
+            <tr><td className="py-2 pr-3 font-medium text-foreground">E — Extremis</td><td>Circulatory collapse: refractory cardiac arrest with ongoing CPR, or maximal support on multiple pressors ± ECMO, profound acidosis and lactate &gt; 8.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Structured management</h3>
+      <ol className="list-decimal pl-5 space-y-1 text-sm text-muted-foreground">
+        <li><strong>Stabilise and monitor:</strong> high-flow oxygen or ventilatory support, arterial line, central access, urinary catheter, 12-lead ECG, urgent bedside echo, serial lactate and ScvO₂. Correct hypoxaemia, arrhythmia, electrolytes and acidosis, which are all reversible contributors to pump failure.</li>
+        <li><strong>Find and treat the cause:</strong> immediate coronary angiography with <strong>culprit-lesion PCI</strong> for MI-related shock (routine multivessel PCI in the same sitting increases death and renal failure); surgery for mechanical complications and valve emergencies; pericardiocentesis for tamponade; thrombolysis or thrombectomy for massive PE; immunosuppression/mechanical support for fulminant myocarditis.</li>
+        <li><strong>Optimise volume, carefully:</strong> assess with echo and dynamic indices. A small challenge (250 mL) is reasonable if the patient is cold-and-dry; in cold-and-wet shock give a loop diuretic or start ultrafiltration/RRT instead — excessive fluid worsens pulmonary oedema and RV distension.</li>
+        <li><strong>Pharmacological support:</strong> <strong>noradrenaline</strong> is the first-line vasopressor (better arrhythmia and lactate profile than dopamine or adrenaline in this setting) to restore coronary perfusion pressure, combined with an inotrope — <strong>dobutamine</strong> for β₁ inotropy, <strong>milrinone</strong> or <strong>levosimendan</strong> where β-receptors are downregulated or the patient is β-blocked (both vasodilate, so almost always need a vasopressor alongside). Use the lowest dose that restores perfusion: every inotrope buys output at the cost of myocardial oxygen consumption and arrhythmia.</li>
+        <li><strong>Escalate to mechanical circulatory support by SCAI stage:</strong> consider it in stage D and above, or in stage C failing to improve on two agents. IABP for mechanical complications and as a bridge; <strong>Impella</strong> or other percutaneous LV assist for direct unloading; <strong>VA-ECMO</strong> for biventricular or combined cardio-respiratory failure and for eCPR. Decide the strategy explicitly as a <em>bridge to recovery, decision, transplant or candidacy</em>, with an exit plan and a shock-team discussion, before cannulation.</li>
+        <li><strong>Reassess and de-escalate:</strong> restage every few hours, wean the inotrope before the vasopressor once lactate clears and urine output returns, and watch for LV distension and aortic-valve non-opening on VA-ECMO.</li>
+      </ol>
+
     </div>
 
     <div>
