@@ -452,6 +452,42 @@ const VolatileAgentsTopic = () => {
                 </ul>
               </div>
             </div>
+          
+
+            <h3 className="text-lg font-semibold text-foreground mt-6">Organ-Protective Effects: Mechanisms and the Clinical Evidence Base</h3>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Anaesthetic <strong>preconditioning</strong> (agent given before the ischaemic insult) and <strong>postconditioning</strong>
+              (given at reperfusion) both reduce ischaemia–reperfusion injury through a shared final pathway: opening of
+              mitochondrial and sarcolemmal K<sub>ATP</sub> channels, activation of protein kinase C and downstream survival
+              kinases, a small, tightly controlled burst of reactive oxygen species acting as a trigger rather than causing
+              damage, and — as the decisive convergence point — inhibition of mitochondrial permeability transition pore
+              opening, which prevents the collapse of the mitochondrial membrane potential, preserves ATP generation and
+              limits both necrotic and apoptotic cell death. Reduced neutrophil adhesion and activation at the
+              endothelial surface further limits the inflammatory component of reperfusion injury
+              <InlineRef topicId="volatile-agents" refLabel="Anaesthesia 2021 Preconditioning" />.
+            </p>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              In <strong>cardiac surgery</strong> the clinical evidence is strongest: volatile-based anaesthesia is
+              consistently associated with lower peak troponin release, better preserved cardiac index and reduced
+              inotrope requirement compared with propofol-based TIVA in meta-analyses of coronary artery bypass
+              surgery<InlineRef topicId="volatile-agents" refLabel="BJA Volatile Cardioprotection 2006" />. Evidence in
+              <strong> non-cardiac surgery</strong> is considerably weaker and less consistent — partly because
+              ischaemia-reperfusion insults are less standardised outside cardiopulmonary bypass, and partly because
+              comparator TIVA arms use propofol, which itself has antioxidant and free-radical-scavenging properties and
+              may attenuate reperfusion injury independently. This confounds head-to-head trials of "volatile vs TIVA"
+              organ protection, since the comparator is not inert.
+            </p>
+            <p className="text-foreground/90 leading-relaxed">
+              Renal and cerebral protection follow the same broad principle (K<sub>ATP</sub>-channel-mediated
+              preconditioning has been demonstrated in kidney and brain models) but human outcome data are limited and
+              inconsistent. In the brain, any protective preconditioning effect must also be weighed against volatile
+              agents' <strong>cerebral vasodilation</strong> and dose-dependent uncoupling of flow from metabolism, which
+              can raise intracranial pressure and worsen cerebral oedema in at-risk patients — a counterbalancing
+              hazard rather than a benefit in neuroanaesthesia. Similarly, any theoretical organ-protective advantage of
+              volatile agents must be weighed against their environmental impact (greenhouse gas potency and
+              atmospheric lifetime), which favours TIVA or low-flow technique where organ protection is not a clear
+              overriding clinical priority.
+            </p>
           </section>
 
           <section className="mb-10">
