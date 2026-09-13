@@ -40,7 +40,7 @@ interface Drug {
 
 const Section = ({ title, body }: { title: string; body: string }) => (
   <section className="bg-card border border-border rounded-lg p-4">
-    <h3 className="text-sm font-semibold text-foreground mb-2">{title}</h3>
+    <h2 className="text-sm font-semibold text-foreground mb-2">{title}</h2>
     <p className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed">{body}</p>
   </section>
 );
@@ -110,14 +110,14 @@ function DosingBreakdown({ raw }: { raw: string }) {
   if (buckets.length === 0) {
     return (
       <section className="bg-card border border-border rounded-lg p-4">
-        <h3 className="text-sm font-semibold text-foreground mb-2">Dosing — regimen defaults & patient context</h3>
+        <h2 className="text-sm font-semibold text-foreground mb-2">Dosing — regimen defaults & patient context</h2>
         <p className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed">{raw || "—"}</p>
       </section>
     );
   }
   return (
     <section className="bg-card border border-border rounded-lg p-4">
-      <h3 className="text-sm font-semibold text-foreground mb-1">Dosing — regimen defaults & patient context</h3>
+      <h2 className="text-sm font-semibold text-foreground mb-1">Dosing — regimen defaults & patient context</h2>
       <p className="text-[11px] text-muted-foreground mb-3">
         Bolus and infusion ranges below; paediatric, renal, hepatic and elderly adjustments are split out where relevant.
       </p>
@@ -372,7 +372,7 @@ function QuickTargetPanel({ raw }: { raw: string }) {
 
   return (
     <section className="bg-drugs/5 border border-drugs/30 rounded-lg p-4">
-      <h3 className="text-sm font-semibold text-foreground mb-1">Quick targets</h3>
+      <h2 className="text-sm font-semibold text-foreground mb-1">Quick targets</h2>
       <p className="text-[11px] text-muted-foreground mb-3">
         Auto-extracted thresholds from the monitoring text — verify in the full notes below.
       </p>
@@ -417,7 +417,7 @@ function ClinicalSignalPanel({
   if (items.length === 0) {
     return (
       <section className="bg-card border border-border rounded-lg p-4">
-        <h3 className="text-sm font-semibold text-foreground mb-2">{title}</h3>
+        <h2 className="text-sm font-semibold text-foreground mb-2">{title}</h2>
         <p className="text-sm text-muted-foreground">—</p>
       </section>
     );
@@ -429,7 +429,7 @@ function ClinicalSignalPanel({
   return (
     <section className="bg-card border border-border rounded-lg p-4">
       <div className="flex items-baseline justify-between gap-2 mb-1">
-        <h3 className="text-sm font-semibold text-foreground">{title}</h3>
+        <h2 className="text-sm font-semibold text-foreground">{title}</h2>
         {drugClass && (
           <span className="text-[10px] uppercase tracking-wide text-muted-foreground">
             class rules: {drugClass}
@@ -582,7 +582,7 @@ function PreparationGuide({ raw, drug }: { raw: string; drug: Drug }) {
   if (!raw) {
     return (
       <section className="bg-card border border-border rounded-lg p-4">
-        <h3 className="text-sm font-semibold text-foreground mb-2">Preparation & dilution guide</h3>
+        <h2 className="text-sm font-semibold text-foreground mb-2">Preparation & dilution guide</h2>
         <p className="text-sm text-muted-foreground">—</p>
       </section>
     );
@@ -590,7 +590,7 @@ function PreparationGuide({ raw, drug }: { raw: string; drug: Drug }) {
 
   return (
     <section className="bg-card border border-border rounded-lg p-4">
-      <h3 className="text-sm font-semibold text-foreground mb-1">Preparation & dilution guide</h3>
+      <h2 className="text-sm font-semibold text-foreground mb-1">Preparation & dilution guide</h2>
       <p className="text-[11px] text-muted-foreground mb-3">
         Step-by-step draw-up, common concentrations and a worked dilution example.
       </p>
@@ -668,7 +668,7 @@ function InfusionCalculator({ drug }: { drug: Drug }) {
 
   return (
     <section className="bg-drugs/5 border border-drugs/30 rounded-lg p-4">
-      <h3 className="text-sm font-semibold text-foreground mb-1">Infusion calculator</h3>
+      <h2 className="text-sm font-semibold text-foreground mb-1">Infusion calculator</h2>
       <p className="text-xs text-muted-foreground mb-3">
         Standard mix: <span className="font-medium text-foreground">{std.amount_mg} mg in {std.diluent_ml} mL</span>
         {" "}({concMgPerMl.toFixed(2)} mg/mL{std.note ? ` — ${std.note}` : ""})
@@ -989,7 +989,7 @@ export default function DrugDetail() {
 
         {relatedTopics.length > 0 && (
           <section className="mt-6 bg-muted/30 border border-border rounded-lg p-4">
-            <h3 className="text-sm font-semibold text-foreground mb-2">Related curriculum topics</h3>
+            <h2 className="text-sm font-semibold text-foreground mb-2">Related curriculum topics</h2>
             <ul className="flex flex-wrap gap-2">
               {relatedTopics.map((t) => (
                 <li key={t.id}>
