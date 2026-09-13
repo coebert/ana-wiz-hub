@@ -165,8 +165,13 @@ const App = () => (
           <Route path="/dev/diagram-snapshot" element={<DiagramSnapshot />} />
           <Route path="/dev/diagram-snapshot/:name" element={<DiagramSnapshot />} />
           <Route path="/drugs" element={<DrugsLibrary />} />
+          <Route path="/reference" element={<DrugReferenceHome />} />
           <Route path="/reference/drugs" element={<DrugReferenceLibrary />} />
           <Route path="/reference/drugs/:slug" element={<DrugReferenceEntry />} />
+          <Route path="/reference/monitoring" element={<DrugReferenceMonitoring />} />
+          <Route path="/reference/infusions" element={<DrugReferenceInfusions />} />
+          <Route path="/reference/calculator" element={<DrugReferenceCalculator />} />
+          <Route path="/reference/about" element={<DrugReferenceAbout />} />
           <Route path="/drugs/:slug" element={<DrugDetail />} />
           <Route path="/tools" element={<ToolsHub />} />
           <Route path="/tools/mac-for-age" element={<MACForAgeTool />} />
