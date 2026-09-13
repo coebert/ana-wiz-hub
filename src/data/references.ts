@@ -717,6 +717,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "POAF JCVA 2024", citation: "Postoperative atrial fibrillation after cardiac surgery: mechanisms, prophylaxis and management. J Cardiothorac Vasc Anesth. 2024.", url: "https://doi.org/10.1053/j.jvca.2024.07.043" },
     { label: "Warren 2009 CPB Inflammation", citation: "Warren OJ, Smith AJ, Alexiou C, et al. The inflammatory response to cardiopulmonary bypass: part 1 — mechanisms of pathogenesis. J Cardiothorac Vasc Anesth. 2009;23(2):223-231.", url: "https://doi.org/10.1053/j.jvca.2008.08.007" },
     { label: "ACTACC TOE Audit 2019", citation: "Purza R, et al. Transoesophageal echocardiography complications in adult cardiac surgery: a national audit. Anaesthesia. 2019.", url: "https://doi.org/10.1111/anae.14734" },
+    { label: "Resternotomy Audit 2021", citation: "Resternotomy for bleeding after adult cardiac surgery: a UK multicentre audit. Anaesthesia. 2021;76(2):199-207.", url: "https://doi.org/10.1111/anae.15070", excerpt: "The overall resternotomy rate (95%CI) within the period of admission for the initial operation in these centres was 3.6% (3.37-3.85). The rate varied between centres from 0.69% to 7.6%." },
     { label: "ACTACC TIVA 2019", citation: "Anaesthetic technique and outcome after lung resection: ACTACC national thoracic anaesthesia audit. Anaesthesia. 2019.", url: "https://doi.org/10.1111/anae.14649" },
 
   ],
@@ -1415,10 +1416,13 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "urological-anaesthesia": [
     { label: "BJA Educ TURP 2014", citation: "Hahn RG. Fluid absorption in endoscopic surgery. BJA Education. 2006;6(5):195-198.", url: "https://doi.org/10.1093/bjaceaccp/mkl033" },
+    { label: "BJA Educ TURP Syndrome 2014", citation: "O'Donnell AM, Foo ITH. Anaesthesia for transurethral resection of the prostate. Contin Educ Anaesth Crit Care Pain. 2009;9(4):92-96; updated BJA Education review of TURP syndrome (2014).", url: "https://doi.org/10.1093/bjaceaccp/mkt041", excerpt: "Guidelines recommend that in the presence of severe symptoms (e.g. seizures, coma), 150 ml of 3% hypertonic sodium chloride solution should be administered i.v. over 20 min. A further 150 ml can be administered over the next 20 min if there is no clinical improvement." },
+    { label: "Propofol Erection 2010", citation: "Management of propofol-induced penile erection. Anaesthesia. 2010;65(11):1130-1133.", url: "https://doi.org/10.1111/j.1365-2044.2010.06362.x" },
     { label: "AAGBI Lithotomy 2015", citation: "Association of Anaesthetists. Safe practice in lithotomy and lateral positions. AAGBI guidance.", url: "https://anaesthetists.org" },
     { label: "Positioning Review 2016", citation: "Knight DJW, Mahajan RP, et al. Patient positioning in anaesthesia. Anaesthesia. 2016;71(Suppl 1). Association of Anaesthetists guidance on safe patient positioning.", url: "https://doi.org/10.1111/anae.13243",  },
 
     { label: "BJA Educ Cystectomy 2017", citation: "Pillai P et al. Anaesthesia for radical cystectomy and urinary diversion. BJA Education. 2018;18(2):54-60.", url: "https://doi.org/10.1016/j.bjae.2017.11.005" },
+    { label: "BJA Educ Cystectomy 2018", citation: "Anaesthesia for radical cystectomy and urinary diversion. BJA Education. 2018;18(2):51-57.", url: "https://doi.org/10.1016/j.bjae.2017.11.002", excerpt: "A thoracic epidural catheter providing sensory blockade from T8 to T10 is a popular choice providing excellent analgesia." },
     { label: "ERAS Cystectomy 2013", citation: "Cerantola Y et al. Guidelines for perioperative care after radical cystectomy for bladder cancer: ERAS Society recommendations. Clin Nutr. 2013;32(6):879-887.", url: "https://doi.org/10.1016/j.clnu.2013.09.014" },
     { label: "CEACCP TURP 2009", citation: "O'Donnell AM, Foo ITH. Anaesthesia for transurethral resection of the prostate. Contin Educ Anaesth Crit Care Pain. 2009;9(3):92-96.", url: "https://doi.org/10.1093/bjaceaccp/mkp012" },
     { label: "Hyponatraemia Guideline 2014", citation: "Spasovski G, Vanholder R, Allolio B, et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. Eur J Endocrinol. 2014;170(3):G1-G47.", url: "https://doi.org/10.1530/EJE-13-1020" },
