@@ -54,9 +54,9 @@ const mechanismBySlug = new Map(
 );
 
 const safetyFor = (drugName: string) =>
-  safetyBySlug.get(drugSlug(drugName)) ?? safetyBySlug.get(slugBase(drugName));
+  safetyBySlug.get(slugFor(drugName)) ?? safetyBySlug.get(slugBase(drugName));
 const adverseEffectsFor = (drugName: string): string | undefined =>
-  (mechanismBySlug.get(drugSlug(drugName)) ?? mechanismBySlug.get(slugBase(drugName)))
+  (mechanismBySlug.get(slugFor(drugName)) ?? mechanismBySlug.get(slugBase(drugName)))
     ?.adverseEffects;
 
 /** Expandable interactions / side effects / monitoring panel for one drug. */
