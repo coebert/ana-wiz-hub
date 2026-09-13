@@ -427,7 +427,7 @@ const ToxicologyTopic = () => {
             accent="icu"
             pitfalls={[
               "ABC first, then specific antidote; consult TOXBASE.",
-              "Paracetamol — NAC by nomogram (140 mg/kg load); opioid — naloxone titrated (start 100–400 µg IV); β-blocker/CCB — glucagon, high-dose insulin euglycaemia.",
+              "Paracetamol — NAC by UK nomogram (SNAP 2-bag: 100 mg/kg over 2 h, then 200 mg/kg over 10 h); opioid — naloxone titrated (start 100–400 µg IV); β-blocker/CCB — glucagon, high-dose insulin euglycaemia.",
               "TCA overdose: wide QRS + hypotension → sodium bicarbonate 1–2 mmol/kg; treat seizures and arrhythmias.",
               "LAST: 20% lipid emulsion — bolus 1.5 mL/kg (fixed 100 mL if >70 kg), then infusion 15 mL/kg/h for all patients (≈1000 mL/h in an adult >70 kg), doubled to 30 mL/kg/h if circulation remains unstable; up to 2 repeat boluses, max 12 mL/kg.",
               "Toxidromes: cholinergic (DUMBELS — atropine + pralidoxime), anticholinergic (hot/dry/mad), sympathomimetic, opioid, sedative.",
