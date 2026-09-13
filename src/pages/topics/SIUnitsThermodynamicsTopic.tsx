@@ -248,17 +248,23 @@ const SIUnitsThermodynamicsTopic = () => {
                   <em>b</em> corrects the available volume for the finite size of the molecules.
                   For one mole (n = 1), this reduces to <strong>(P + a/V²)(V − b) = RT</strong>.
                 </p>
+              </div>
+              <div className="rounded-lg border border-border p-4 space-y-3">
+                <h3 className="font-semibold text-foreground">Critical Temperature and Pressure</h3>
                 <p>
-                  The <strong>critical temperature</strong> of a gas is the temperature above which it cannot be liquefied by
-                  pressure alone, and the <strong>critical pressure</strong> is the pressure needed to liquefy it at that
-                  temperature. <strong>Nitrous oxide has a critical temperature of 36.5 °C</strong> — above room temperature — so
-                  it can be stored as a <strong>liquid under pressure</strong> in cylinders. Because the cylinder contains liquid
-                  in equilibrium with its vapour, the pressure gauge reads a constant <strong>saturated vapour pressure</strong>
-                  (~44 bar in the UK) for as long as any liquid remains, and only falls once the liquid is exhausted. The gauge is
-                  therefore an unreliable measure of contents: N₂O cylinders must be <strong>weighed</strong> (filling ratio 0.75
-                  in temperate climates). Oxygen, with a critical temperature of −118 °C, behaves almost ideally at clinical
-                  temperatures and its cylinder gauge does track contents
-                  <InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2017 (Gas Supply)" />.
+                  <strong>Critical temperature</strong> is the temperature above which a substance cannot be liquefied, no
+                  matter how much pressure is applied. <strong>Critical pressure</strong> is the pressure required to liquefy a
+                  substance at its critical temperature. Important critical temperatures are <strong>water 374 °C</strong>,{
+                  " "}<strong>nitrous oxide 36.5 °C</strong>, and <strong>oxygen −118 °C</strong>.
+                </p>
+                <p>
+                  N₂O has a critical temperature above room temperature, so it can be stored as a <strong>liquid under pressure</strong>
+                  without cryogenic cooling. Liquid and vapour coexist in the cylinder, keeping its pressure at the saturated
+                  vapour pressure (about 44 bar in the UK) until all liquid has vaporised. The pressure gauge is therefore an
+                  unreliable measure of remaining contents while liquid remains: the cylinder must be <strong>weighed</strong>.
+                  Oxygen's critical temperature is far below room temperature, so oxygen is stored as a compressed gas. Its
+                  pressure falls progressively as gas is used, making the pressure gauge a useful estimate of contents in
+                  accordance with Boyle's law <InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2017 (Gas Supply)" />.
                 </p>
               </div>
             </div>
@@ -304,8 +310,14 @@ const SIUnitsThermodynamicsTopic = () => {
                 helium have a negative μ<sub>JT</sub> and warm unless pre-cooled below their inversion temperature.
               </p>
               <p>
-                <strong>Clinical applications and risks.</strong> <strong>Cryotherapy probes</strong> exploit the effect: rapid expansion of N₂O or CO₂ at the probe tip produces intense
-                cooling (around <strong>−75 °C</strong>) used for tissue ablation. Opening a cylinder valve rapidly expands gas into the regulator, so <strong>ice can form on cylinder valves
+                <strong>Clinical applications and risks.</strong> A <strong>cryoprobe</strong> carries high-pressure N₂O or CO₂
+                down a narrow tube to its tip, where the gas passes through a very small orifice (a throttle). The resulting
+                rapid Joule–Thomson expansion produces intense local cooling, typically to about <strong>−70 °C</strong>, which
+                freezes and destroys the target tissue. In a simplified first-law energy balance (ΔU = Q − W), negligible heat
+                enters during rapid expansion and energy used in expansion is associated with a sharp temperature fall; more
+                precisely, flow through the throttle is an <strong>isenthalpic</strong> process rather than piston work. This is
+                the direct thermodynamic basis of cryotherapy
+                <InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2017 (Gas Supply)" />. Opening a cylinder valve rapidly expands gas into the regulator, so <strong>ice can form on cylinder valves
                 and regulators</strong>, potentially causing sticking or malfunction. The converse also matters: <strong>rapid compression</strong> of gas (for example when a cylinder valve is
                 snapped open) generates intense heat, which can ignite oil or grease contaminants — the reason cylinder valves must be opened slowly and kept grease-free
                 <InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2017 (Gas Supply)" />.
