@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { MessagesSquare, Reply, Trash2, Loader2 } from "lucide-react";
+import { MessagesSquare, Reply, Trash2, Loader2, Flag } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
@@ -122,6 +122,28 @@ export const TopicDiscussion = ({ topicId, topicTitle }: TopicDiscussionProps) =
     } else {
       setQuestion("");
     }
+    void load();
+  };
+
+  /**
+   * Reader-driven moderation: signed-in learners can report a post once. The
+   * database counts reports and automatically hides a post pending review once
+   * three learners have flagged it, so nothing stays broadcast unmoderated.
+   */
+  const report = async (id: string) => {
+    if (!user) return;
+    const { error } = await supabase
+      .from("discussion_flags")
+      .insert({ discussion_id: id, reporter_id: user.id });
+    if (error) {
+      const already = error.code === "23505";
+      toast({
+        title: already ? "You have already reported this message." : "That report could not be sent.",
+        variant: already ? "default" : "destructive",
+      });
+      return;
+    }
+    toast({ title: "Thank you — this message has been sent for review." });
     void load();
   };
 
