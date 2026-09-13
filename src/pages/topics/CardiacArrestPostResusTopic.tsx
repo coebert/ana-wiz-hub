@@ -48,7 +48,7 @@ const arrestFaqs: Array<[string, string]> = [
   ],
   [
     "What is multimodal neuroprognostication and when do I perform it?",
-    "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 2. ERC/ESICM 2021 require at least two concordant poor-outcome markers from independent modalities before predicting poor outcome: (1) bilaterally absent pupillary AND corneal reflexes (or NPi < 2 on automated pupillometry); (2) bilaterally absent N20 cortical SSEPs; (3) NSE > 60 µg/L at 48 h or > 75 µg/L at 72 h, or a rising trend; (4) highly malignant EEG (suppression < 10 µV, or unreactive burst-suppression); (5) diffuse anoxic injury on CT (loss of grey-white differentiation, GWR < 1.10) or MRI (widespread restricted diffusion). Status myoclonus alone is not sufficient. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
+    "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response). ERC/ESICM 2021 require at least two concordant poor-outcome markers from independent modalities before predicting poor outcome: (1) bilaterally absent pupillary AND corneal reflexes (or NPi < 2 on automated pupillometry); (2) bilaterally absent N20 cortical SSEPs; (3) NSE > 60 µg/L at 48 h and/or 72 h, or a rising trend; (4) highly malignant EEG (suppression < 10 µV, or unreactive burst-suppression); (5) diffuse anoxic injury on CT (loss of grey-white differentiation, GWR < 1.10) or MRI (widespread restricted diffusion). Status myoclonus alone is not sufficient. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
   ],
   [
     "How should I manage the airway and ventilator in the first 6 hours post-ROSC?",
@@ -460,7 +460,7 @@ const coreConcepts = (
         ERC/ESICM mandate <span className="font-medium text-foreground">multimodal assessment</span> at
         <span className="font-medium text-foreground"> ≥ 72 h after ROSC</span> (later if sedated, hypothermic
         or metabolically deranged). Entry criterion: comatose patient with
-        GCS motor ≤ 2 after exclusion of confounders. Two or more
+        GCS motor ≤ 3 after exclusion of confounders. Two or more
         concordant poor-prognosis markers from independent modalities are
         required before consideration of withdrawal of life-sustaining
         therapy.
@@ -504,7 +504,7 @@ const coreConcepts = (
           {
             title: "Neuron-specific enolase (NSE)",
             detail:
-              "Serum NSE at 48–72 h. NSE > 60 µg/L at 48 h or > 75 µg/L at 72 h, OR a rising trend, predicts poor outcome (FPR < 5 %). Confounders: haemolysis (RBC contain NSE — recheck if rising in isolation), neuroendocrine tumours. Trend matters more than a single value. Take samples in non-haemolysed serum; many labs report NSE alongside S100B.",
+              "Serum NSE at 48–72 h. NSE > 60 µg/L at 48 h and/or 72 h, OR a rising trend, predicts poor outcome (FPR < 5 %). Confounders: haemolysis (RBC contain NSE — recheck if rising in isolation), neuroendocrine tumours. Trend matters more than a single value. Take samples in non-haemolysed serum; many labs report NSE alongside S100B.",
             color: "hsl(170, 60%, 40%)",
           },
           {

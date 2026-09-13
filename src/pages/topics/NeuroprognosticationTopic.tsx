@@ -17,7 +17,7 @@ import NeuroprognosticationFlowchart from "@/components/diagrams/shared/Neuropro
  */
 
 const neuroprognosticationFaqs: Array<[string, string]> = [
-  ["When should neuroprognostication be performed after cardiac arrest?", "≥72 h after ROSC (later if sedation/hypothermia confound), using multimodal assessment: clinical exam (absent pupillary/corneal reflexes, GCS-M ≤2), NSE, EEG, SSEP and CT/MRI (ERC/ESICM 2021)."],
+  ["When should neuroprognostication be performed after cardiac arrest?", "≥72 h after ROSC (later if sedation/hypothermia confound), using multimodal assessment: clinical exam (absent pupillary/corneal reflexes, GCS-M ≤3), NSE, EEG, SSEP and CT/MRI (ERC/ESICM 2021)."],
   ["What clinical signs reliably predict poor outcome after cardiac arrest?", "Bilaterally absent pupillary and corneal reflexes at ≥72 h, bilaterally absent N20 on SSEP, status myoclonus within 72 h with malignant EEG, or NSE >60 µg/L at 48–72 h — used in combination, not alone."],
   ["What confounders must be excluded before neuroprognostication?", "Residual sedation/paralysis, hypothermia, metabolic derangement, hypotension, seizures and organ failure — all can produce false-positive findings of poor outcome."],
 ];
