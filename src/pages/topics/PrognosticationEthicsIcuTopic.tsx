@@ -128,6 +128,13 @@ const PrognosticationEthicsIcuTopic = () => {
       coreConcepts={
         <>
         <>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Prognostication in critical care combines scoring systems, multimodal
+            neurological assessment and time-based reassessment, always acknowledging the
+            uncertainty inherent in individual prediction. Those judgements then feed
+            ethical and legal decision-making about treatment limitation, best interests
+            and communication with families.
+          </p>
           <ExamSection id="diagrams" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Interactive Tools" defaultOpen>
             <PostCardiacArrestProgDiagram />

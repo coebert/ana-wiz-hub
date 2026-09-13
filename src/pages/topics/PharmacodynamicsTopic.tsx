@@ -157,6 +157,13 @@ const PharmacodynamicsTopic = () => {
       ]}
       coreConcepts={
         <>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Pharmacodynamics describes what a drug does to the body: how receptor binding
+            translates into a graded clinical effect, how potency and efficacy differ,
+            and how the therapeutic window sets the margin between benefit and harm.
+            These principles underpin dose selection, titration and the interpretation of
+            drug interactions in anaesthesia and critical care.
+          </p>
           <ExamSection id="dose-response" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="Dose-Response Relationships" defaultOpen>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
