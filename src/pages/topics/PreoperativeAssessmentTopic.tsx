@@ -353,6 +353,64 @@ const PreoperativeAssessmentTopic = () => {
           <p className="text-xs text-muted-foreground mt-2">
             Caution or avoid sedative premedication in: raised intracranial pressure (respiratory depression → hypercapnia → ↑ICP), compromised airway, severe respiratory disease, myasthenia gravis, acute porphyria (benzodiazepines relative caution), and frail/elderly patients at delirium risk.
           </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">Children</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Untreated preoperative anxiety in children predicts stormy induction, emergence agitation and postoperative behavioural disturbance. Non-pharmacological measures (play therapy, parental presence at induction, distraction) come first; when pharmacological anxiolysis is needed, the main oral/transmucosal options are summarised below <InlineRef topicId="preoperative-assessment" refLabel="BJA Educ 2020 (Paed premedication)" />.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Drug &amp; route</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Dose</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Onset / duration</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Advantages &amp; cautions</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Oral midazolam</td>
+                  <td>0.25–0.5 mg/kg (max 20 mg)</td>
+                  <td>Onset 30–45 min; lasts 45–60 min</td>
+                  <td>Familiar, effective anxiolytic, reduces PONV; bitter taste (mask in a flavoured drink); paradoxical agitation and post-anaesthetic excitation in a minority <InlineRef topicId="preoperative-assessment" refLabel="BJA Educ 2020 (Paed premedication)" /></td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Buccal midazolam</td>
+                  <td>0.3 mg/kg (max 10 mg)</td>
+                  <td>Onset ~20 min; lasts 30–45 min</td>
+                  <td>Quick onset, better compliance in children who refuse or spit oral doses; dose limit 10 mg <InlineRef topicId="preoperative-assessment" refLabel="BJA Educ 2020 (Paed premedication)" /></td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Oral clonidine</td>
+                  <td>4 µg/kg (max 200 µg)</td>
+                  <td>Onset 45–60 min; lasts 45–90 min</td>
+                  <td>α₂-agonist; tasteless (give the IV preparation orally), long window of action, some analgesia, reduces emergence agitation. Slow onset and prolonged postoperative sedation; may cause hypotension and bradycardia — caution in cardiovascular disease/instability <InlineRef topicId="preoperative-assessment" refLabel="BJA Educ 2020 (Clonidine premed)" /> <InlineRef topicId="preoperative-assessment" refLabel="Curr Opin Anaesthesiol 2005 (Clonidine)" /></td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Buccal / intranasal dexmedetomidine</td>
+                  <td>2 µg/kg (range 1–4 µg/kg; max 200 µg)</td>
+                  <td>Onset ~25 min; lasts 40–135 min (dose-dependent)</td>
+                  <td>Highly selective α₂-agonist; sedation resembles natural sleep, no respiratory depression, additional analgesia; meta-analyses show it at least as effective as midazolam for preoperative anxiety <InlineRef topicId="preoperative-assessment" refLabel="BJA Educ 2020 (Dexmedetomidine premed)" /> <InlineRef topicId="preoperative-assessment" refLabel="PLOS One 2023 (α2 agonists intranasal)" />. No amnestic effect; bradycardia predictable — caution in grade 2/3 heart block (unless paced), uncontrolled hypertension, and with digoxin. Intranasal via mucosal atomisation device (allow for dead space).</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Oral ketamine</td>
+                  <td>5–8 mg/kg (or 3 mg/kg combined with midazolam)</td>
+                  <td>Onset 10–15 min; lasts ~3 h</td>
+                  <td>Sedative, anxiolytic <em>and</em> analgesic; useful in combination with midazolam and in uncooperative children. Increased salivation (consider glycopyrronium), hallucinations, random limb movements, emergence delirium and PONV at higher doses <InlineRef topicId="preoperative-assessment" refLabel="BJA Educ 2020 (Ketamine premed)" /></td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">Temazepam (adolescents)</td>
+                  <td>10–20 mg</td>
+                  <td>Onset ~60 min</td>
+                  <td>Useful in anxious teenagers, and when the maximum midazolam dose has been reached <InlineRef topicId="preoperative-assessment" refLabel="BJA Educ 2020 (Paed premedication)" /></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-muted-foreground mt-2">
+            Practical points: give oral premedication with a small sip of water (does not breach fasting guidance); document time given; allow enough lead time for the chosen agent before transfer to theatre; and keep the child observed — any sedative premed can occasionally cause airway compromise or paradoxical agitation.
+          </p>
         </div>
       </section>
 
