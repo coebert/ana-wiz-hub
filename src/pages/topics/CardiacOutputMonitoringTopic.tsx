@@ -20,7 +20,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 
 const cardiacOutputMonitoringFaqs: Array<[string, string]> = [
   ["What is the principle behind transpulmonary thermodilution (PiCCO)?", "Cold saline is injected centrally and the temperature change detected at a femoral arterial thermistor; the Stewart–Hamilton equation gives CO, and the curve also yields global end-diastolic volume and extravascular lung water."],
-  ["Why does the LVOT diameter dominate echo-derived CO error?", "Stroke volume = π(D/2)² × VTI, so a 10% error in LVOT diameter produces a 20% error in SV; meticulous measurement in mid-systole at the annulus is essential."],
+  ["Why does the LVOT diameter dominate echo-derived CO error?", "Stroke volume = π(D/2)² × VTI, so a 10% error in LVOT diameter produces roughly a 21% error in SV, because the diameter is squared ((1.1)² = 1.21); meticulous measurement in mid-systole at the annulus is essential."],
   ["What does a widened veno-arterial CO₂ gap (>6 mmHg) indicate?", "Inadequate cardiac output relative to metabolic demand — even with a normal ScvO₂; it suggests fluid responsiveness or need for inotropy in shock."],
 ];
 
