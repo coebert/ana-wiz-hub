@@ -383,7 +383,7 @@ const UrologicalAnaesthesiaTopic = () => {
                 <li>Diagnose <strong>TURP syndrome</strong>: hyponatraemia + neuro symptoms + fluid overload after &gt;1 L glycine absorption.</li>
                 <li>Tell surgeon to <strong>stop resection</strong> and achieve haemostasis; lower the irrigant bag height.</li>
                 <li>Send urgent U&E, glucose, ABG; check serum osmolality and ammonia (glycine → ammonia in hepatic impairment).</li>
-                <li>Severe symptomatic hyponatraemia (&lt;120 with seizures/coma): give <strong>3% NaCl 1–2 mL/kg over 10 min</strong>, repeat until symptoms resolve. Aim Na⁺ rise ≤10 mmol/L in first 24 h to avoid central pontine myelinolysis.</li>
+                <li>Severe symptomatic hyponatraemia (&lt;120 mmol/L with seizures or coma): give <strong>150 mL of 3% hypertonic saline i.v. over 20 min</strong>, which can be repeated over a further 20 min if symptoms do not improve<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURP Syndrome 2014" />. Aim for a Na⁺ rise of ≤5 mmol/L until symptoms settle and ≤10 mmol/L in the first 24 h to avoid osmotic demyelination.</li>
                 <li>IV <strong>furosemide 20–40 mg</strong> for pulmonary oedema. Support oxygenation; consider non-invasive ventilation.</li>
                 <li>Convert to GA + ETT only if airway compromise or seizures uncontrolled.</li>
               </ol>
@@ -397,8 +397,8 @@ const UrologicalAnaesthesiaTopic = () => {
               </div>
             </div>
           ),
-          answer: "Stop surgery, 3% NaCl 1–2 mL/kg, furosemide, controlled Na⁺ rise ≤10 mmol/L/24h.",
-          cites: ["BJA Educ TURP 2014"],
+          answer: "Stop surgery, 150 mL of 3% hypertonic saline over 20 min (repeat once if still symptomatic), furosemide, controlled Na⁺ rise ≤10 mmol/L/24h.",
+          cites: ["BJA Educ TURP 2014", "BJA Educ TURP Syndrome 2014"],
         },
       ]}
       keyPoints={[

@@ -198,7 +198,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
               <li><strong>Mechanism</strong>: fat/marrow embolism → right heart strain + inflammatory mediator release → hypoxia, hypotension, ↓ consciousness</li>
               <li><strong>Risk factors</strong>: pathological fracture, pre-existing cardiopulmonary disease, poor femoral preparation</li>
               <li><strong>Prevention</strong>: high FiO₂, adequate hydration, communication with surgeon (warn before cementing), invasive monitoring if high-risk</li>
-              <li><strong>Grading</strong>: Grade 1 (SpO₂ ↓, ↓ BP mild), Grade 2 (SpO₂ &lt;94%, ↓ BP requiring vasopressors), Grade 3 (cardiovascular collapse)</li>
+              <li><strong>Grading</strong> (Association of Anaesthetists / Griffiths 2015): <strong>Grade 1</strong> — moderate hypoxia (SpO₂ &lt;94%) and/or hypotension (systolic fall &gt;20%); <strong>Grade 2</strong> — severe hypoxia (SpO₂ &lt;88%) and/or severe hypotension (systolic fall &gt;40% or SBP &lt;80 mmHg) and/or loss of consciousness; <strong>Grade 3</strong> — cardiovascular collapse requiring CPR<InlineRef topicId="orthopaedic-anaesthesia" refLabel="AAGBI BCIS 2015" /></li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
@@ -443,7 +443,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
               </p>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              <strong>Does regional analgesia mask compartment syndrome?</strong> This has been debated for decades. Current expert consensus (<strong>ASRA / ESRA / AAGBI 2021 joint statement</strong><Cite topicId="orthopaedic-anaesthesia" labels={["ASRA Compartment 2021"]} />; <strong>Mar 2009</strong> review; <strong>Tran 2020</strong>) is that <em>well-conducted, low-concentration regional analgesia does <strong>not</strong> meaningfully delay diagnosis</em> — but specific cautions apply:
+              <strong>Does regional analgesia mask compartment syndrome?</strong> This has been debated for decades. Current expert consensus (<strong>ASRA / ESRA / Association of Anaesthetists 2021 joint statement</strong><Cite topicId="orthopaedic-anaesthesia" labels={["ASRA Compartment 2021"]} />; <strong>Mar 2009</strong> review; <strong>Tran 2020</strong>) is that <em>well-conducted, low-concentration regional analgesia does <strong>not</strong> meaningfully delay diagnosis</em> — but specific cautions apply:
             </p>
             <div className="grid sm:grid-cols-2 gap-3 mb-3">
               <div className="p-4 rounded-lg border border-border">
