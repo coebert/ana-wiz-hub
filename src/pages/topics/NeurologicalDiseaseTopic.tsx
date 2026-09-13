@@ -52,7 +52,7 @@ const tocItems = [
 ];
 
 const keyPoints = [
-  { text: "Myasthenia gravis: increased sensitivity to non-depolarising NMBAs (use 10–50% of normal dose); resistance to suxamethonium (ED₉₅ 2.6× normal); always use neuromuscular monitoring", cites: ["BJA Educ MG 2018", "AAGBI Neuromuscular"] },
+  { text: "Myasthenia gravis: increased sensitivity to non-depolarising NMBAs (use 10–20% of normal dose); resistance to suxamethonium (ED₉₅ 2.6× normal); always use neuromuscular monitoring", cites: ["BJA Educ MG 2018", "AAGBI Neuromuscular"] },
   { text: "Epilepsy: avoid drugs that lower seizure threshold (enflurane, tramadol, high-dose remifentanil); propofol and sevoflurane are generally safe; ensure therapeutic anticonvulsant levels preoperatively", cites: ["BJA Educ Epilepsy 2015"] },
   { text: "Multiple sclerosis: neuraxial anaesthesia may be associated with postoperative relapse (controversial); spinal anaesthesia carries higher risk than epidural; document existing deficits preoperatively", cites: ["AAGBI Neuromuscular"] },
   { text: "Parkinson's disease: continue levodopa until immediately before surgery and restart ASAP postoperatively — abrupt withdrawal can cause neuroleptic malignant-like syndrome; avoid all dopamine antagonists (metoclopramide, droperidol, prochlorperazine)", cites: ["BJA Educ PD 2014"] },
@@ -138,7 +138,7 @@ const NeurologicalDiseaseTopic = () => {
           <FRCARelevanceCallout
             bottomLine="Reduced safety margin at the NMJ — exquisite sensitivity to non-depolarising NMBAs and resistance to suxamethonium; quantitative neuromuscular monitoring is mandatory."
             implications={[
-              "Use 10–50% of normal non-depolarising NMBA dose; sugammadex is the preferred reversal agent.",
+              "Use 10–20% of normal non-depolarising NMBA dose; sugammadex is the preferred reversal agent.",
               "Continue pyridostigmine (some omit on day of surgery to reduce secretions and unpredictable response).",
               "Predictors of postoperative ventilation: disease >6 yr, pyridostigmine >750 mg/day, VC <2.9 L, bulbar symptoms.",
               "Regional anaesthesia preferred — avoids NMBAs and respiratory depression.",
@@ -168,7 +168,7 @@ const NeurologicalDiseaseTopic = () => {
               <h3 className="font-semibold text-foreground mb-2">Anaesthetic Management</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Continue anticholinesterases preoperatively (some omit on morning of surgery to reduce secretions and unpredictable NMBA response)</li>
-                <li>Non-depolarising NMBAs: exquisitely sensitive — use 10–50% of normal dose; titrate with neuromuscular monitoring</li>
+                <li>Non-depolarising NMBAs: exquisitely sensitive — use 10–20% of normal dose (equivalently expressed as 1/10th–1/20th of the ED₉₅); titrate with quantitative neuromuscular monitoring <InlineRef topicId="neurological-disease" refLabel="BJA Educ MG 2018" /></li>
                 <li>Suxamethonium: relative resistance (reduced receptors); ED₉₅ is 2.6× normal; phase II block may occur</li>
                 <li>Sugammadex: preferred for reversal of rocuronium — avoids anticholinesterase interactions</li>
                 <li>Regional anaesthesia preferred where possible — avoids NMBAs and respiratory depression</li>
@@ -373,7 +373,7 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Schedule surgery first on the list and give the usual levodopa dose with a sip of water no more than 30–60 minutes before induction — even a single missed dose can precipitate acute akinesia (severe rigidity mimicking NMS) within hours</li>
                 <li>If the oral/enteral route is unavailable postoperatively, give levodopa via NG tube (crushed immediate-release preparations, or use a liquid formulation), or convert temporarily to a rotigotine transdermal patch using published levodopa-equivalent dose (LED) tables — apomorphine subcutaneous infusion or intermittent rescue injections (2–10 mg SC) can also bridge severe motor fluctuations under specialist guidance</li>
                 <li>Drugs to avoid absolutely: metoclopramide, haloperidol, prochlorperazine and other central dopamine (D2) antagonists — precipitate acute severe rigidity/NMS-like crisis; pethidine is specifically dangerous in patients on MAO-B inhibitors (selegiline, rasagiline) — the combination can cause a serotonergic reaction with hyperthermia, rigidity and autonomic instability analogous to serotonin syndrome; avoid pethidine and use alternative opioids</li>
-                <li>Safe antiemetics: ondansetron, domperidone (does not cross the blood-brain barrier); cyclizine is generally acceptable</li>
+                <li>Ondansetron or domperidone are the preferred anti-emetics (domperidone does not cross the blood-brain barrier); avoid cyclizine where possible as its anticholinergic/antidopaminergic profile can worsen confusion and rigidity <InlineRef topicId="neurological-disease" refLabel="BJA Educ PD 2014" /></li>
                 <li>Acute akinesia (levodopa withdrawal crisis) presents with severe rigidity, inability to move, dysphagia (aspiration risk), hyperthermia, autonomic instability and rhabdomyolysis — treat as an emergency with urgent restoration of dopaminergic therapy (NG levodopa or apomorphine rescue), IV fluids, and supportive critical care; it is clinically indistinguishable from neuroleptic malignant syndrome</li>
               </ul>
             </div>
@@ -662,7 +662,7 @@ const NeurologicalDiseaseTopic = () => {
         <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
-              'Myasthenia gravis: sensitive to non-depolarising NMBs — reduce dose by 50–75%, titrate with TOF; resistant to suxamethonium. Sugammadex preferred for reversal.',
+              'Myasthenia gravis: sensitive to non-depolarising NMBs — use only 10–20% of normal dose, titrate with quantitative TOF; resistant to suxamethonium. Sugammadex preferred for reversal.',
               'Dystrophinopathies (DMD/BMD): avoid suxamethonium and volatile agents (rhabdomyolysis, hyperkalaemic arrest) — TIVA only.',
               'Myotonic dystrophy: extreme sensitivity to anaesthetics, opioids and NMBs; avoid suxamethonium (myotonic contraction); plan for postoperative respiratory support.',
               "Parkinson's: never stop l-dopa (risk of neuroleptic malignant–like syndrome); avoid metoclopramide, prochlorperazine, droperidol (D2-antagonists).",

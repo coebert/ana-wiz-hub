@@ -124,7 +124,7 @@ const EndocrineDiseaseTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Metformin: continue if eGFR normal and only one meal missed; omit on the day if a prolonged (&gt;1 meal) fast is planned or renal function is impaired (lactic acidosis risk)</li>
                 <li>Sulfonylureas (gliclazide, glimepiride): omit on the morning of surgery — hypoglycaemia risk from ongoing insulin secretion without oral intake</li>
-                <li>SGLT2 inhibitors (dapagliflozin, empagliflozin, canagliflozin, ertugliflozin): omit for 3 days before major surgery (and on the day of minor surgery) — risk of euglycaemic diabetic ketoacidosis (normal or mildly raised glucose with raised ketones and metabolic acidosis) driven by glycosuria-induced volume depletion and enhanced ketogenesis; restart only once eating/drinking normally and ketones normal</li>
+                <li>SGLT2 inhibitors: dapagliflozin, empagliflozin and canagliflozin should be stopped 3 days before surgery; ertugliflozin should be stopped 4 days before surgery — risk of euglycaemic diabetic ketoacidosis (normal or mildly raised glucose with raised ketones and metabolic acidosis) driven by glycosuria-induced volume depletion and enhanced ketogenesis; restart only once eating/drinking normally and ketones normal <InlineRef topicId="endocrine-disease" refLabel="CPOC-JBDS Diabetes 2023" /></li>
                 <li>DPP-4 inhibitors (sitagliptin, linagliptin) and pioglitazone: continue as usual on the day of surgery</li>
                 <li>GLP-1 receptor agonists (semaglutide, liraglutide, dulaglutide, tirzepatide): delay gastric emptying via vagally-mediated pyloric slowing — solid gastric residue and aspiration risk persist despite standard fasting even when the drug is correctly omitted</li>
                 <li>Association of Anaesthetists advice: omit daily preparations on the day of surgery; omit weekly preparations for at least one week before surgery (guidance continues to evolve)</li>
@@ -138,7 +138,7 @@ const EndocrineDiseaseTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Target glucose: 6–10 mmol/L (NICE-SUGAR trial: tight control [4.5–6] increased mortality vs moderate control)</li>
                 <li>Type 1 DM: never omit insulin — always requires background insulin or VRIII</li>
-                <li>Type 2 DM on oral agents: omit metformin day of surgery (lactic acidosis risk); omit SGLT2 inhibitors 3 days before (euglycaemic DKA risk)</li>
+                <li>Type 2 DM on oral agents: omit metformin day of surgery (lactic acidosis risk); omit SGLT2 inhibitors 3–4 days depending on the agent (dapagliflozin/empagliflozin/canagliflozin 3 days, ertugliflozin 4 days) before surgery (euglycaemic DKA risk)</li>
                 <li>Sulfonylureas: omit on morning of surgery (hypoglycaemia risk)</li>
                 <li>GLP-1 receptor agonists (semaglutide, liraglutide, tirzepatide): delay gastric emptying via vagally-mediated pyloric slowing, so solid gastric residue and aspiration risk persist despite standard fasting</li>
                 <li>Association of Anaesthetists advice: omit daily preparations on the day of surgery; omit weekly preparations for at least one week before surgery (guidance continues to evolve as evidence accumulates)</li>
@@ -176,6 +176,14 @@ const EndocrineDiseaseTopic = () => {
                 <li>Features: profound dehydration (often 100–220 mL/kg fluid deficit), obtundation, focal neurology or seizures, high thrombosis risk and hyperviscosity</li>
                 <li>Management: 0.9% sodium chloride 1 L/h initially; aim for osmolality to fall by 3–8 mosmol/kg/h and glucose to fall no faster than ~5 mmol/L/h to avoid cerebral oedema; switch to 0.45% saline only if osmolality is not falling despite adequate fluid replacement</li>
                 <li>Low-dose fixed-rate insulin infusion (0.05 units/kg/h) started once glucose stops falling with fluids alone; potassium replacement, prophylactic LMWH, and meticulous foot/pressure care; treat the precipitant <InlineRef topicId="endocrine-disease" refLabel="JBDS HHS 2022" /></li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Type 1 vs Type 2 DM: Perioperative Contrasts</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>T1DM: absolute insulin deficiency — there is always an obligate requirement for background insulin; never stop basal insulin completely, but reduce it to ~80% of the usual dose; have a low threshold for starting VRIII if more than one meal will be missed; omitting insulin carries a high risk of rapid DKA</li>
+                <li>T2DM: perioperative plan depends on baseline therapy — diet-controlled: monitor glucose only, no specific drug adjustment needed; oral agents: omit metformin and sulfonylureas on the day of surgery, stop SGLT2 inhibitors 3 days before surgery (4 days for ertugliflozin); insulin-treated: reduce basal insulin (as for T1DM) and start VRIII if fasting is prolonged or glycaemic control is poor</li>
+                <li>T2DM has residual endogenous insulin secretion, so the risk of ketoacidosis from insulin omission alone is much lower than in T1DM, though SGLT2 inhibitor use can still precipitate euglycaemic DKA in either type <InlineRef topicId="endocrine-disease" refLabel="CPOC-JBDS Diabetes 2023" /></li>
               </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
@@ -246,7 +254,7 @@ const EndocrineDiseaseTopic = () => {
               <h3 className="font-semibold text-foreground mb-2">Perioperative Steroid Supplementation & Addisonian Crisis</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Continue the patient's usual daily glucocorticoid dose throughout the perioperative period in all cases, plus additional cover according to surgical severity (2020 Association of Anaesthetists guidance)</li>
-                <li>Minor surgery (e.g. under local anaesthesia, minor procedure with rapid recovery): usual dose only, no additional hydrocortisone needed; resume oral medication as soon as possible</li>
+                <li>Minor surgery (e.g. under local anaesthesia, minor procedure with rapid recovery): usual glucocorticoid dose PLUS hydrocortisone 25 mg i.v. at induction (Association of Anaesthetists 2020); resume oral medication as soon as possible <InlineRef topicId="endocrine-disease" refLabel="Addison's Guidelines" /></li>
                 <li>Moderate surgery: hydrocortisone 50 mg IV at induction, then 25 mg IV every 8 hours for 24 hours, then resume usual oral dose</li>
                 <li>Major surgery: hydrocortisone 100 mg IV at induction, then 50 mg IV every 8 hours (or an infusion of 200 mg/24 h) for 48–72 hours depending on recovery, then wean back to the usual oral dose over several days</li>
                 <li>Alternative simplified approach for known/suspected adrenal insufficiency or long-term steroid use: hydrocortisone 100 mg IM/IV at induction then 50 mg IV/IM 6-hourly until eating/drinking, then double the usual oral dose for 24–48 h</li>
@@ -258,9 +266,12 @@ const EndocrineDiseaseTopic = () => {
               <h3 className="font-semibold text-foreground mb-2">Cushing's Syndrome</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Features: central obesity, hypertension, diabetes/impaired glucose tolerance, osteoporosis (careful positioning, risk of vertebral/rib fracture), proximal myopathy, thin fragile skin and easy bruising, striae, and psychiatric disturbance</li>
-                <li>Difficult IV access and fragile veins/skin; anticipate difficult airway/positioning from truncal obesity and a "buffalo hump"; meticulous pressure area care</li>
-                <li>Hypokalaemic metabolic alkalosis may occur with severe hypercortisolism (mineralocorticoid effect of very high cortisol) — check electrolytes preoperatively</li>
-                <li>Continue perioperative steroid cover; after successful adrenalectomy for a cortisol-secreting tumour the contralateral (or remaining) adrenal is suppressed, so patients require full glucocorticoid replacement to avoid postoperative adrenal crisis</li>
+                <li>Cardiovascular: hypertension is near-universal and should be optimised preoperatively; increased risk of ischaemic heart disease and cardiac failure from chronic glucocorticoid excess and associated dyslipidaemia; markedly increased risk of venous thromboembolism (cortisol excess promotes a hypercoagulable state) — ensure mechanical and pharmacological thromboprophylaxis unless contraindicated</li>
+                <li>Metabolic: hyperglycaemia/steroid-induced diabetes requires perioperative glucose monitoring and insulin as needed; hypokalaemic metabolic alkalosis may occur with severe hypercortisolism (mineralocorticoid effect of very high cortisol) — correct potassium preoperatively and monitor closely</li>
+                <li>Musculoskeletal: proximal myopathy can affect the respiratory muscles, impairing ventilatory reserve and slowing recovery from neuromuscular blockade — use neuromuscular monitoring and consider reduced NMBA doses; osteoporosis increases fracture risk during positioning and transfers, so handle and pad the patient carefully</li>
+                <li>Airway: truncal obesity, a "buffalo hump", and soft tissue oedema can make airway management and mask ventilation more difficult — assess and prepare accordingly</li>
+                <li>Difficult IV access and fragile veins/skin; meticulous pressure area care</li>
+                <li>Continue perioperative steroid cover; after successful adrenalectomy for a cortisol-secreting tumour the contralateral (or remaining) adrenal is suppressed, so patients require full postoperative glucocorticoid replacement to avoid an adrenal crisis</li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
@@ -268,7 +279,10 @@ const EndocrineDiseaseTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Excess aldosterone from an adrenal adenoma or bilateral hyperplasia causes sodium/water retention with hypertension, and renal potassium/hydrogen ion wasting causing hypokalaemia and metabolic alkalosis</li>
                 <li>Preoperative optimisation: correct hypokalaemia (may require high-dose potassium replacement) and control blood pressure with a mineralocorticoid receptor antagonist (spironolactone or eplerenone) before elective adrenalectomy</li>
-                <li>Anaesthetic implications: hypokalaemia increases sensitivity to neuromuscular blocking agents and risk of arrhythmia; monitor potassium and ECG perioperatively; blood pressure typically improves after successful unilateral adrenalectomy but may take weeks to normalise</li>
+                <li>Anaesthetic implications: hypokalaemia increases sensitivity to neuromuscular blocking agents and risk of arrhythmia; monitor potassium and ECG perioperatively; use invasive arterial blood pressure monitoring intraoperatively given the labile hypertension</li>
+                <li>Avoid hyperventilation intraoperatively — respiratory alkalosis drives potassium intracellularly and can worsen pre-existing hypokalaemia, precipitating arrhythmia</li>
+                <li>Large fluid and haemodynamic shifts may occur after adrenalectomy as aldosterone excess resolves — anticipate and manage volume status closely in the immediate postoperative period</li>
+                <li>Postoperative monitoring: watch for hypotension (as vasoconstrictor aldosterone effect is lost) and hyperkalaemia (from unmasking of the suppressed contralateral adrenal/renin-angiotensin axis) once the aldosterone-secreting tissue is removed; blood pressure typically improves after successful unilateral adrenalectomy but may take weeks to normalise</li>
               </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
@@ -292,7 +306,7 @@ const EndocrineDiseaseTopic = () => {
                 <li>β-blockade (e.g. propranolol 10–40 mg TDS, or atenolol) is added only once α-blockade is established, usually after 2–3 days, to control reflex tachycardia and any catecholamine-induced arrhythmia</li>
                 <li>Never give β-blockers before adequate α-blockade → unopposed α-adrenergic vasoconstriction → severe hypertensive crisis and potential acute heart failure/pulmonary oedema</li>
                 <li>Volume repletion: patients are chronically vasoconstricted and intravascularly volume-depleted despite hypertension; encourage a high-salt diet and oral fluid intake during preparation, and give generous IV crystalloid preoperatively to blunt the post-ligation hypotension</li>
-                <li>Readiness criteria (Roizen's criteria): BP consistently &lt;160/90 mmHg (some sources &lt;130/80 sitting), orthostatic drop present but systolic &gt;80 mmHg standing, no ST-T changes for 1 week, and no more than one ventricular ectopic every 5 minutes</li>
+                <li>Readiness criteria (Roizen's criteria): arterial pressure &lt;160/90 mmHg for the preceding 24–48 h; postural hypotension present but standing blood pressure &gt;80/45 mmHg; no ST/T-wave changes on ECG for at least one week; no more than one ventricular premature beat every 5 minutes <InlineRef topicId="endocrine-disease" refLabel="BJA Educ Phaeo 2017" /></li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
@@ -332,7 +346,7 @@ const EndocrineDiseaseTopic = () => {
                 <li>Preoperative octreotide loading: 100–500 µg subcutaneously 8-hourly (or a continuous infusion) for 1–2 days before major surgery in symptomatic patients, in addition to intraoperative cover</li>
                 <li>Perioperative octreotide infusion: 50–100 µg/h IV started at induction (some protocols use 25–50 µg/h) to suppress hormone release during handling of the tumour; have IV bolus doses drawn up and immediately available throughout the case</li>
                 <li>Avoid histamine-releasing drugs (morphine, atracurium, mivacurium), sympathomimetics/catecholamines (adrenaline, ephedrine, dopamine — may paradoxically stimulate further mediator release), and suxamethonium (fasciculation-related mediator release may trigger carcinoid crisis)</li>
-                <li>Carcinoid crisis (profound flushing, bronchospasm, labile blood pressure, arrhythmia): treat with IV octreotide 100–500 µg bolus (repeated as needed); avoid catecholamines/adrenergic vasopressors which may worsen mediator release — use vasopressin or phenylephrine cautiously for hypotension, and treat bronchospasm avoiding histamine-releasing agents</li>
+                <li>Carcinoid crisis (profound flushing, bronchospasm, labile blood pressure, arrhythmia): treat with IV octreotide 500–1000 µg bolus, repeated if no response <InlineRef topicId="endocrine-disease" refLabel="AoA Carcinoid 2018" />; avoid catecholamines/adrenergic vasopressors which may worsen mediator release — use vasopressin or phenylephrine cautiously for hypotension, and treat bronchospasm avoiding histamine-releasing agents</li>
               </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
@@ -402,11 +416,11 @@ const EndocrineDiseaseTopic = () => {
             accent="clinical"
             pitfalls={[
               'Diabetes: aim CBG 6–10 mmol/L (acceptable 4–12). Variable rate insulin infusion (VRIII) for prolonged starvation or poor control; continue long-acting basal at 80%.',
-              'Omit SGLT-2 inhibitors ≥3 days preoperatively — risk of euglycaemic DKA (MHRA 2020).',
+              'Omit SGLT-2 inhibitors 3–4 days depending on the agent (dapagliflozin/empagliflozin/canagliflozin 3 days, ertugliflozin 4 days) preoperatively — risk of euglycaemic DKA.',
               'Steroid cover: continue usual dose + perioperative hydrocortisone (25 mg minor, 50 mg + 25 mg q8h moderate, 100 mg + 50 mg q8h major) for chronic steroid users.',
               'Thyrotoxic patient: defer elective surgery until euthyroid; in emergency use β-blocker, propylthiouracil, iodine, steroids — avoid ketamine, ephedrine.',
               'Phaeochromocytoma: α-block (phenoxybenzamine/doxazosin) first, then β-block 3–14 days preoperatively — never β-block first (unopposed α → hypertensive crisis).',
-              'Carcinoid crisis: treat with IV octreotide 50–100 µg bolus; avoid histamine-releasing drugs (morphine, atracurium), and catecholamines (worsen mediator release).',
+              'Carcinoid crisis: treat with IV octreotide 500–1000 µg bolus, repeated if no response; avoid histamine-releasing drugs (morphine, atracurium), and catecholamines (worsen mediator release).',
             ]}
           />
           <TopicFaqs faqs={endocrineDiseaseFaqs} />
