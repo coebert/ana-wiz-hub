@@ -284,6 +284,23 @@ const PrognosticationEthicsIcuTopic = () => {
               <p className="text-sm text-muted-foreground mb-2">
                 <strong>Maastricht categories</strong>: <strong>Controlled DCD (category III/IV)</strong> — death is anticipated after planned withdrawal of treatment (category III) or occurs after brainstem death testing has begun (IV); this is the predominant form of DCD in the UK. <strong>Uncontrolled DCD (category I/II)</strong> — unexpected cardiac arrest, either out of hospital and found dead (I) or with unsuccessful resuscitation (II); rare in UK practice.
               </p>
+              <div className="p-3 rounded-lg border border-border mb-3">
+                <p className="font-semibold text-foreground text-sm mb-1">Sequence for controlled DCD (cDCD)</p>
+                <ol className="list-decimal list-inside space-y-1 text-xs text-muted-foreground">
+                  <li>Decision that further treatment is not in the patient's best interests, made by the clinical team <strong>independently of and before</strong> any consideration of donation.</li>
+                  <li>SN-OD referral, Organ Donor Register check, and a joint family approach for consent/authorisation under deemed consent.</li>
+                  <li>Donor characterisation and virology, retrieval team mobilised, theatre and timing planned around the family's wishes.</li>
+                  <li>Planned withdrawal of life-sustaining treatment, usually in theatre or an adjacent area, with palliation of symptoms as the sole clinical priority.</li>
+                  <li>Death confirmed after <strong>5 minutes</strong> of continuous absent circulation (no pulse, no cardiac output on arterial trace, no heart sounds) with absent pupillary, corneal and motor responses; no intervention during this stand-off.</li>
+                  <li>Death certified by a doctor not part of the retrieval team, then rapid transfer and retrieval — the functional warm ischaemic time from withdrawal to perfusion determines which organs remain usable (commonly a 1–3 h limit, shorter for liver/pancreas).</li>
+                </ol>
+              </div>
+              <p className="text-sm text-muted-foreground mb-3">
+                <strong>Ethical considerations</strong>: the <em>dead donor rule</em> requires that retrieval never causes or hastens death. The decision to withdraw treatment must be documented as separate from, and prior to, the donation discussion, and clinicians involved in retrieval must not influence it. Other tensions include the permanence versus irreversibility of circulatory arrest during the 5-minute stand-off, the acceptability of pre-mortem interventions (heparin, bronchoscopy, line insertion) which require explicit consent and cannot be given for the donor's own benefit, the risk of futile withdrawal in theatre if death does not occur within the retrieval window (the patient returns to ICU for ongoing palliative care), and the burden on the family of a theatre-based death.
+              </p>
+              <p className="text-sm text-muted-foreground mb-3">
+                <strong>The intensivist's/anaesthetist's role</strong> is to deliver good end-of-life care first: ensure adequate analgesia and sedation for comfort during withdrawal, extubate or discontinue support as agreed, and support the family. Organ-directed measures (continued ventilation until the moment of withdrawal, pre-mortem heparin, maintaining lines) are permissible only where consented and where they do not hasten death or compromise comfort. There must be no titration of drugs to accelerate arrest; after death is certified, the same practitioner may assist the retrieval team with re-intubation, ventilation for lung retrieval and line access.
+              </p>
               <p className="text-sm text-muted-foreground">
                 The <strong>specialist nurse for organ donation (SN-OD)</strong> should be referred to early whenever WLST or brainstem death is being considered. The SN-OD checks the Organ Donor Register, approaches the family jointly with the clinical team, coordinates retrieval logistics, and manages consent/authorisation under the UK "opt-out" (deemed consent) system — family involvement remains central even though consent is presumed
                 <InlineRef topicId="prognostication-ethics-icu" refLabel="NHSBT Deceased Donation" />. Referral itself does not commit the family or clinical team to donation proceeding.
