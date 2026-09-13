@@ -238,6 +238,23 @@ const LocalAnaestheticsTopic = () => {
           </section>
 
           <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Differential Blockade</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              Nerve fibres are not blocked simultaneously. The classic clinical sequence is autonomic (B fibres) →
+              pain and temperature (Aδ and C) → touch and pressure (Aβ) → motor and proprioception (Aα), with
+              recovery in reverse order. This is why a patient may have a warm, vasodilated, pain-free limb while
+              still able to move it, and why an epidural can give analgesia without dense motor block.
+            </p>
+            <ul className="text-foreground/90 space-y-1 mt-3">
+              <li><strong>Fibre diameter and myelination:</strong> small unmyelinated C fibres and thinly myelinated Aδ and B fibres have a shorter critical blocking length and need fewer sodium channels blocked, so they succumb at lower concentrations than large myelinated Aα fibres, which require block of at least three consecutive nodes of Ranvier.</li>
+              <li><strong>Frequency dependence (use-dependent block):</strong> local anaesthetics bind preferentially to open and inactivated channels, so rapidly firing nociceptive fibres accumulate block more readily than tonically quiet motor fibres.</li>
+              <li><strong>Drug and concentration effects:</strong> low concentrations favour sensory-selective block (0.0625–0.1% bupivacaine or 0.1–0.2% ropivacaine for labour epidurals) while higher concentrations recruit motor fibres. Ropivacaine and levobupivacaine show relatively greater sensory-than-motor block than racemic bupivacaine at equivalent analgesic doses, and highly lipid-soluble, potent, long-acting agents produce denser and longer block than the low-potency, short-duration agents<InlineRef topicId="local-anaesthetics" refLabel="BJA 1986 LA Pharmacology" />.</li>
+              <li><strong>Anatomical factors:</strong> in a mixed nerve, mantle fibres (supplying proximal structures) are exposed first, giving a proximal-to-distal onset for peripheral blocks; in neuraxial block the sympathetic level typically extends two or more segments above the sensory level, and the motor level lies below it.</li>
+              <li><strong>Clinical relevance:</strong> test cold or pinprick rather than touch when assessing a block for surgery; expect hypotension from early sympathetic block; and warn patients that the ability to move does not mean the block has failed, while a dense motor block signals a high concentration or intrathecal spread.</li>
+            </ul>
+          </section>
+
+          <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Why LAs Fail in Infected Tissue</h2>
             <p className="text-foreground/90 leading-relaxed">
               Infected tissue has a lower pH (~6.5) due to lactic acid production. Since LAs are weak bases with pKa
