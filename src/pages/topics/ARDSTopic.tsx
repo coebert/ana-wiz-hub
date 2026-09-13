@@ -327,6 +327,13 @@ const ARDSTopic = () => {
               </div>
             ))}
           </div>
+
+          <h3 className="text-base font-semibold text-foreground mt-6 mb-1">Refractory Hypoxaemia — Escalation Flowchart</h3>
+          <p className="text-sm text-muted-foreground">
+            The viva favourite is the patient who deteriorates despite protective ventilation. Work through the flow below: exclude mimics, fix the baseline, then decide whether this is an oxygenation problem or a right ventricle in trouble — because acute cor pulmonale reverses several of the usual escalation steps.
+          </p>
+          <RefractoryHypoxaemiaFlowchart />
+
           </CollapsibleSubsection>
         </ExamSection>
 
