@@ -26,10 +26,10 @@ const AdultWithdrawalFlows = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>Adult ICU Withdrawal Flow — Tapering, Timing, Rescue — AnaesthesiaCore</title>
+        <title>Adult ICU Withdrawal Flow | AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Step-by-step adult ICU withdrawal and weaning flows for septic shock, ARDS and neurocritical care: vasoactive and sedation tapering rates, half-life timing, RASS and CAM-ICU monitoring, rescue plans, and links to the ICU drug cards and infusion calculator."
+          content="Adult ICU withdrawal and weaning flows for septic shock, ARDS and neurocritical care: taper rates, half-life timing, monitoring and rescue plans."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/adult-withdrawal" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/adult-withdrawal" />
