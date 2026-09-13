@@ -985,6 +985,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NICE NG51", citation: "NICE. Sepsis: recognition, diagnosis and early management (NG51). 2016 (updated 2017).", url: "https://www.nice.org.uk/guidance/ng51" },
   ],
   "haematology-icu": [
+    { label: "CJASN 2014 Citrate", citation: "Morabito S, Pistolesi V, Tritapepe L, Fiaccadori E. Regional citrate anticoagulation for RRT in patients with AKI. Clin J Am Soc Nephrol. 2014;9(12):2173-2188 — citrate accumulation, total:ionised calcium ratio and dose adjustment.", url: "https://doi.org/10.2215/CJN.01280214" },
     { label: "TRICC 1999", citation: "Hébert PC et al. A multicenter, randomized, controlled clinical trial of transfusion requirements in critical care (TRICC). N Engl J Med. 1999;340:409-417.", url: "https://doi.org/10.1056/NEJM199902113400601" },
     { label: "BJA Educ 2018", citation: "Retter A et al. Guidelines on the management of anaemia and red cell transfusion in adult critically ill patients. Br J Haematol. 2013;160(4):445-464.", url: "https://doi.org/10.1111/bjh.12143" },
     { label: "BJA Educ 2016", citation: "Hunt BJ. Bleeding and coagulopathies in critical care. N Engl J Med. 2014;370:847-859.", url: "https://doi.org/10.1056/NEJMra1208626" },
