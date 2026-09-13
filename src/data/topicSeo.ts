@@ -28,11 +28,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     keywords: ["capnography", "capnography waveforms", "ETCO2 normal range", "end tidal CO2", "shark fin capnograph", "curare cleft", "waveform capnography FRCA"],
   },
   "electrical-safety": {
-    title: "Electrical Safety: Shock Thresholds & Classes | FRCA",
-    description: "Anaesthesia electrical safety for FRCA Primary physics: shock thresholds, equipment classification (Class I–III, type B/BF/CF), diathermy, defibrillation.",
-    aliases: ["Electrical safety", "Microshock", "Macroshock", "Diathermy safety", "Equipment classification", "Type CF equipment"],
-    keywords: ["FRCA Primary physics", "anaesthesia electrical safety", "equipment classification", "shock thresholds", "microshock", "macroshock", "type CF", "diathermy", "isolated power supply"],
+    title: "Electrical Safety in Theatre: Shock, Diathermy | FRCA",
+    description: "Theatre electrical safety: microshock thresholds, Class I–III and type B/BF/CF equipment, isolated supplies and LIM alarms, diathermy burns, surgical fires, pacemakers.",
+    aliases: ["Electrical safety", "Microshock", "Macroshock", "Diathermy safety", "Electrosurgery safety", "Equipment classification", "Type CF equipment", "Line isolation monitor", "Surgical fire", "Diathermy burn"],
+    keywords: ["anaesthesia electrical safety", "FRCA Primary physics", "equipment classification Class I II III", "type B BF CF applied parts", "microshock 50 microamps", "macroshock thresholds", "line isolation monitor alarm theatre", "isolated power supply vs RCD", "diathermy return plate burn", "capacitive coupling laparoscopic diathermy", "surgical fire prevention", "airway fire management", "pacemaker ICD diathermy magnet", "earth leakage current limits"],
   },
+
   // ===== Intensive Care (30 topics) =====
   "mechanical-ventilation": {
     title: "Mechanical Ventilation: Modes, ARDSnet & Weaning | FRCA",
