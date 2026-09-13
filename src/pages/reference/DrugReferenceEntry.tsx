@@ -207,6 +207,15 @@ export default function DrugReferenceEntry() {
           <p className="mt-1 text-sm uppercase tracking-wide text-muted-foreground">
             {drug.drug_class}
           </p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Topic:{" "}
+            <Link
+              className="text-primary underline"
+              to={`/reference/topics/${topicForClass(drug.drug_class).slug}`}
+            >
+              {topicForClass(drug.drug_class).title}
+            </Link>
+          </p>
           {drug.synonyms?.length > 0 && (
             <p className="mt-1 text-sm text-muted-foreground">
               Also known as: {drug.synonyms.join(", ")}
