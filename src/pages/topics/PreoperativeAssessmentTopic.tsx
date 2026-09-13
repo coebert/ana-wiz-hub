@@ -47,6 +47,7 @@ const tocItems = [
   { id: "section-cognitive-delirium-risk", label: "Cognitive Assessment & Delirium Risk", group: "Core" },
   { id: "section-airway-assessment", label: "Airway Assessment", group: "Core" },
   { id: "section-medication-management", label: "Medication Management", group: "Core" },
+  { id: "section-premedication", label: "Premedication", group: "Core" },
   { id: "section-preoperative-investigations-nice-ng45-evidence-based-approach", label: "Preoperative Investigations", group: "Investigations" },
   { id: "section-preoperative-blood-pressure-management", label: "Blood Pressure Management", group: "Optimisation" },
   { id: "section-preoperative-anaemia-hb-targets-and-iron-therapy", label: "Anaemia & Iron Therapy", group: "Optimisation" },
@@ -322,6 +323,37 @@ const PreoperativeAssessmentTopic = () => {
             All at-risk patients should receive <strong>sick-day advice</strong> and carry a <strong>steroid emergency card</strong>, per the 2024 Association of Anaesthetists and Society for Endocrinology guideline <InlineRef topicId="{TOPIC_ID}" refLabel="AoA Glucocorticoids 2024" />.
           </p>
         </CollapsibleSubsection>
+
+        <div id="section-premedication" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Premedication</h2>
+          <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PO_BK_01"]} />
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Premedication is a drug given <strong>before</strong> induction to achieve one or more goals: anxiolysis and amnesia, analgesia, reduced secretions (antisialagogue), antiemesis, vagal blockade, aspiration prophylaxis, or continuation of essential chronic therapy. Routine sedative premedication has fallen out of favour in day surgery because it can delay recovery and discharge; it is now <strong>targeted</strong> at anxious patients, children, and those with specific indications such as severe preoperative pain, difficult IV access, needle phobia or a previous traumatic anaesthetic experience.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Adults</h3>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Temazepam (oral)</p>
+              <p className="text-sm text-muted-foreground mt-1">10–20 mg orally ~1 h pre-op — the classic adult anxiolytic premed <InlineRef topicId="preoperative-assessment" refLabel="BNF Temazepam" />. Good anxiolysis and amnesia, minimal respiratory depression in fit adults, and relatively rapid offset for a benzodiazepine. Suitable for anxious day-case adults where a small residual effect is acceptable.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Oral / buccal midazolam</p>
+              <p className="text-sm text-muted-foreground mt-1">7.5–15 mg orally (or buccal liquid in needle-phobic adults or learning disability). Onset ~30 min, short duration, reliable anterograde amnesia. Paradoxical agitation occurs in a small minority; avoid in the frail elderly (delirium, falls) and in significant respiratory disease.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Lorazepam (oral / sublingual)</p>
+              <p className="text-sm text-muted-foreground mt-1">1–2 mg given 1–2 h pre-op. Potent, long-acting anxiolytic-amnesic — useful the night before and on the morning of major surgery (e.g. cardiac), but too long-acting for day surgery.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Non-sedative "premeds"</p>
+              <p className="text-sm text-muted-foreground mt-1">Analgesics (paracetamol, NSAID, gabapentinoid where indicated), antiemetics, aspiration prophylaxis (H₂-blocker or PPI the night before and morning of surgery; sodium citrate immediately pre-op in labour), and vagolytics/antisialagogues (glycopyrronium, hyoscine) are prescribed by indication rather than routinely.</p>
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground mt-2">
+            Caution or avoid sedative premedication in: raised intracranial pressure (respiratory depression → hypercapnia → ↑ICP), compromised airway, severe respiratory disease, myasthenia gravis, acute porphyria (benzodiazepines relative caution), and frail/elderly patients at delirium risk.
+          </p>
+        </div>
       </section>
 
       {/* 4. Broad evidence-based investigation framework */}
