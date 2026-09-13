@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://anaesthesiacore.app/drugs</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -157,6 +157,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/drugs/carbamazepine</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/drugs/carboprost</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -188,6 +193,11 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/drugs/chloroprocaine</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/drugs/ciclosporin</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -407,6 +417,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/drugs/flucytosine</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/drugs/flumazenil</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -587,6 +602,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/drugs/lithium</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/drugs/lorazepam</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -622,6 +642,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/drugs/methotrexate</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/drugs/methylene-blue</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -643,6 +668,11 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/drugs/metronidazole</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/drugs/micafungin</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -792,6 +822,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/drugs/posaconazole</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/drugs/potassium-chloride</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -867,6 +902,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/drugs/sirolimus</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/drugs/sodium-bicarbonate</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -912,12 +952,22 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/drugs/tacrolimus</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/drugs/teicoplanin</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://anaesthesiacore.app/drugs/terlipressin</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/drugs/theophylline</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
