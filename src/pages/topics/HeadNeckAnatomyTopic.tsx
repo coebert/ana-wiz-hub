@@ -22,6 +22,7 @@ import BronchoscopicViewDiagram from "@/components/diagrams/anatomy/Bronchoscopi
 import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { headNeckFolio, airwayFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const HeadNeckAnatomyTopicWorkedExamples: WorkedExample[] = [
   {
@@ -287,7 +288,7 @@ const HeadNeckAnatomyTopic = () => {
           <div id="nasal-pharynx">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">C1. Nasal Cavity & Pharynx</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              The nasal cavity is divided by the septum. Three turbinates (superior, middle, inferior) increase surface area for warming and humidification. Kiesselbach's plexus (Little's area) on the anterior septum is the commonest site of epistaxis.
+              The nasal cavity is divided by the septum. Three turbinates (superior, middle, inferior) increase surface area for warming and humidification. Its main arterial supply comes from the <strong>sphenopalatine artery</strong> (terminal maxillary branch) and the <strong>anterior and posterior ethmoidal arteries</strong> (ophthalmic branches), with contributions from greater palatine and superior labial vessels. Their anterior septal anastomosis forms <strong>Kiesselbach's plexus (Little's area)</strong>, the commonest source of epistaxis; the posterolateral venous plexus near the inferior meatus is <strong>Woodruff's plexus</strong>, associated with posterior epistaxis. Veins broadly accompany the arteries and communicate with facial, pterygoid and ophthalmic veins, providing a potential route for infection to the cavernous sinus <InlineRef topicId="head-neck-anatomy" refLabel="BJA Educ 2005" />.
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">

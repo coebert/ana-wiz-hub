@@ -8,3 +8,4 @@
 - [ ] Batch 1 of 9 content-audit fixes (6 topics, 24 findings) + mark fixed in DB
   - [x] Expand and cite the 2024 ESAIC/BJA paediatric airway section
 - [ ] Ongoing: close remaining open audit findings in batches (expand topics, add real citations, fix pages failing to load)
+- [x] Batch 1 of 9 content-audit fixes (7 anatomy/airway topics, 25 findings) + mark fixed in DB

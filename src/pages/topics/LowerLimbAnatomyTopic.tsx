@@ -18,6 +18,7 @@ import LowerLimbInnervationDiagram from "@/components/diagrams/anatomy/LowerLimb
 import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { lowerLimbFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const objectives = [
   "Describe the formation and main branches of the lumbar and sacral plexuses",
@@ -138,6 +139,22 @@ const LowerLimbAnatomyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Pudendal Nerve Block (S2–S4)">
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                The pudendal nerve arises from S2, S3 and S4. It leaves the pelvis through the greater sciatic foramen,
+                hooks around the sacrospinous ligament close to the ischial spine, then re-enters through the lesser
+                sciatic foramen and travels in Alcock's canal on the obturator internus fascia. Its inferior rectal,
+                perineal and dorsal nerve of penis/clitoris branches supply perineal sensation and motor innervation to
+                the external anal and urethral sphincters <InlineRef topicId="lower-limb-anatomy" refLabel="Ellis Ch.7" />.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="p-4 rounded-lg border border-border"><p className="font-semibold text-foreground text-sm">Technique</p><p className="text-sm text-muted-foreground mt-1">For a transvaginal landmark block, palpate the ischial spine and deposit local anaesthetic just medial and posterior to it near the sacrospinous ligament, after aspiration. A transperineal or ultrasound-guided approach identifies the ischial spine, internal pudendal vessels and the plane between sacrospinous and sacrotuberous ligaments.</p></div>
+                <div className="p-4 rounded-lg border border-border"><p className="font-semibold text-foreground text-sm">Uses and cautions</p><p className="text-sm text-muted-foreground mt-1">Provides perineal analgesia for forceps delivery, episiotomy or perineal repair, selected urological procedures and chronic pudendal neuralgia. It does not relieve uterine contraction pain. Avoid intravascular injection into the internal pudendal vessels and recognise risks of haematoma, infection and incomplete bilateral spread.</p></div>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="lower-limb-blocks" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Key Blocks for Lower Limb">
             <div className="overflow-x-auto">
@@ -155,6 +172,16 @@ const LowerLimbAnatomyTopic = () => {
                   <tr><td className="py-2 font-medium text-foreground">Ankle block</td><td>5 nerves at ankle</td><td>Foot surgery. Tibial, deep peroneal, superficial peroneal, sural, saphenous</td></tr>
                 </tbody>
               </table>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-3 mt-4">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Popliteal Fossa</p>
+                <p className="text-sm text-muted-foreground mt-1"><strong>Diamond boundaries:</strong> biceps femoris superolaterally; semimembranosus and semitendinosus superomedially; lateral and medial heads of gastrocnemius inferolaterally and inferomedially. Skin and popliteal fascia form the roof; the popliteal femoral surface, posterior knee capsule and popliteus form the floor. Superficial to deep lie nerve, vein and artery: sciatic division into tibial and common fibular nerves, popliteal vein, then popliteal artery (“Serve And Volley, Tennis”). At the crease the tibial nerve is the most superficial major structure and lies lateral to the vessels <InlineRef topicId="lower-limb-anatomy" refLabel="Can J Anaesth 2007 Lower Limb Blocks" />.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">The “3-in-1” Block: A Historical Note</p>
+                <p className="text-sm text-muted-foreground mt-1">The original concept used one large-volume injection beside the femoral nerve with proximal pressure, aiming for subfascial cephalad spread to block the femoral, lateral cutaneous nerve of thigh and obturator nerve. Imaging and clinical studies show unreliable proximal spread and especially poor obturator blockade because it occupies a separate compartment. The term is now largely historical: ultrasound-guided fascia iliaca compartment block or targeted individual nerve blocks are more precise, while a posterior lumbar-plexus approach is more reliable when obturator anaesthesia is essential <InlineRef topicId="lower-limb-anatomy" refLabel="Can J Anaesth 2007 Lower Limb Blocks" />.</p>
+              </div>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
