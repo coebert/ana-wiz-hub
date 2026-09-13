@@ -303,6 +303,26 @@ const PostopHighRiskIcuTopic = () => {
                   Postoperative AKI doubles 30-day mortality. KDIGO bundle (PrevAKI). Watch lactate trend &gt; absolute value; persistent lactataemia = ongoing tissue hypoperfusion or hepatic dysfunction.
                 </p>
               </div>
+              <div className="p-4 rounded-lg border border-border sm:col-span-2">
+                <p className="font-semibold text-foreground text-sm">Life after AKI — the sequelae you must hand over</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  AKI in critical illness is not a self-limiting biochemical event. In survivors of critical care,
+                  AKI independently predicts <strong>hospital readmission</strong> (≈19–21% within 30 days vs ≈12%
+                  without AKI) and <strong>post-discharge death</strong> (adjusted odds ≈1.4–1.5 across KDIGO
+                  stages), and the association persists after multivariable adjustment
+                  <InlineRef topicId="postop-high-risk-icu" refLabel="CCM 2015 AKI Outcomes" />. Even apparently
+                  complete recovery of creatinine leaves reduced renal reserve, with an increased long-term risk of
+                  CKD progression and <strong>end-stage renal disease</strong>, especially after repeated insults or
+                  dialysis-requiring AKI.
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Practical implications: document the AKI stage and its cause in the discharge summary; review
+                  nephrotoxic and renally-cleared drugs (NSAIDs, ACE-I/ARB, metformin, gentamicin) before discharge;
+                  request primary-care follow-up of creatinine and urine ACR at about 3 months; and refer to
+                  nephrology if function does not recover, proteinuria persists, or eGFR falls below 30
+                  <InlineRef topicId="postop-high-risk-icu" refLabel="PrevAKI 2017" />.
+                </p>
+              </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Sepsis &amp; surgical site</p>
                 <p className="text-sm text-muted-foreground mt-1">
