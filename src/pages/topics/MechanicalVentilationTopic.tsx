@@ -97,6 +97,8 @@ const keyPoints = [
 
 const tocItems = [
   { id: "toc-introduction", label: "Indications" },
+  { id: "toc-physiological-effects", label: "Physiological Effects" },
+
   { id: "toc-mechanics", label: "Mechanics" },
   { id: "toc-modes", label: "Modes" },
   { id: "toc-lung-protective", label: "LPV & VILI" },
@@ -175,6 +177,56 @@ const MechanicalVentilationTopic = () => {
           </div>
           </CollapsibleSubsection>
         </ExamSection>
+
+        {/* ───── 1b. Physiological effects ───── */}
+        <ExamSection id="toc-physiological-effects" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+          <CollapsibleSubsection title="1b. Physiological Effects of Mechanical Ventilation">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Spontaneous breathing generates <em>negative</em> intrathoracic pressure; positive-pressure ventilation reverses that sign. Almost every systemic effect of ventilation follows from raised mean intrathoracic pressure, and the magnitude depends on tidal volume, inspiratory time, total PEEP (including auto-PEEP) and — critically — on lung and chest-wall compliance, because a stiff lung transmits less of the airway pressure to the pleural space.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Cardiovascular</p>
+              <ul className="list-disc pl-4 mt-1 space-y-1 text-xs text-muted-foreground">
+                <li><strong>Venous return and RV preload fall</strong>: raised right atrial pressure reduces the pressure gradient for systemic venous return. This is the dominant effect and explains the hypotension seen at induction, on connection to the ventilator, and with recruitment manoeuvres — exaggerated in hypovolaemia, vasodilatation and auto-PEEP.</li>
+                <li><strong>RV afterload rises</strong>: PVR is lowest at FRC and rises at both extremes. Over-distension compresses alveolar capillaries (West zone 1 physiology), while collapse and hypoxaemia cause hypoxic pulmonary vasoconstriction — so both excessive and inadequate PEEP increase RV afterload and can precipitate acute cor pulmonale.</li>
+                <li><strong>LV afterload falls</strong>: positive pleural pressure reduces LV transmural wall stress, so PEEP and CPAP unload the failing ventricle — the basis for CPAP in cardiogenic pulmonary oedema. The same patient's cardiac output may therefore <em>rise</em> with PEEP where a hypovolaemic patient's falls.</li>
+                <li><strong>Net cardiac output</strong> reflects the balance of these effects, so the haemodynamic response to a PEEP change is a useful bedside volume-status test. Auto-PEEP in asthma or COPD produces the most severe form of this physiology and can cause pulseless electrical activity relieved simply by disconnecting the circuit.</li>
+                <li>Heart–lung interaction underpins <strong>pulse pressure and stroke volume variation</strong> as dynamic preload indices — valid only in sinus rhythm, passive ventilation and tidal volumes ≥ 8 mL/kg.</li>
+              </ul>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Respiratory</p>
+              <ul className="list-disc pl-4 mt-1 space-y-1 text-xs text-muted-foreground">
+                <li><strong>Redistribution of ventilation and perfusion</strong>: positive pressure preferentially inflates the compliant, non-dependent lung while gravity keeps perfusion dependent, widening V/Q mismatch. Supine anaesthesia lowers FRC and promotes dependent atelectasis and shunt; PEEP recruits and reverses this.</li>
+                <li><strong>Dead space</strong>: raised alveolar pressure can convert perfused units into zone 1, increasing alveolar dead space; the ventilator circuit adds apparatus dead space. Conversely, recruiting collapsed lung and abolishing rapid shallow breathing can <em>reduce</em> the dead-space fraction and improve CO₂ clearance.</li>
+                <li><strong>Loss of the diaphragmatic pump</strong>: sedation and controlled modes abolish diaphragmatic descent, worsening dependent atelectasis and impairing secretion clearance and cough.</li>
+                <li><strong>VIDD</strong> (ventilator-induced diaphragmatic dysfunction): diaphragm disuse atrophy begins within 18–24 hours of controlled ventilation, while excessive effort causes load-induced injury — both prolong weaning. This is the rationale for diaphragm-protective ventilation and early spontaneous modes.</li>
+                <li><strong>VILI</strong>: volutrauma, atelectrauma, barotrauma and biotrauma — see the lung-protective ventilation section.</li>
+              </ul>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Renal, hepatic and splanchnic</p>
+              <ul className="list-disc pl-4 mt-1 space-y-1 text-xs text-muted-foreground">
+                <li><strong>Renal blood flow and GFR fall</strong> through two routes: reduced cardiac output and perfusion pressure, and raised renal venous pressure (renal congestion), which lowers the transrenal perfusion gradient.</li>
+                <li><strong>Hormonal changes</strong>: reduced atrial stretch cuts ANP release, while sympathetic and RAAS activation and increased ADH secretion promote sodium and water retention — the ventilated patient tends to become oedematous and oliguric independent of intrinsic renal injury.</li>
+                <li><strong>Hepatic and splanchnic congestion</strong>: raised intrathoracic and intra-abdominal pressure impedes hepatic venous drainage and portal flow, contributing to cholestasis, gut oedema and impaired enteral absorption.</li>
+                <li>Permissive hypercapnia and respiratory acidosis add sympathetic stimulation and shift the potassium and calcium balance.</li>
+              </ul>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Neurological</p>
+              <ul className="list-disc pl-4 mt-1 space-y-1 text-xs text-muted-foreground">
+                <li><strong>ICP rises</strong> when raised intrathoracic pressure impedes cerebral venous outflow through the jugular veins and increases cerebral blood volume. Coughing, straining, dyssynchrony and high PEEP all do this.</li>
+                <li><strong>CPP is doubly threatened</strong> in neurocritical care: ICP rises while MAP falls from reduced venous return. Titrate PEEP to oxygenation, keep the head up 30°, avoid neck-line obstruction and treat dyssynchrony rather than reflexively avoiding PEEP — hypoxaemia and hypercapnia raise ICP far more.</li>
+                <li><strong>PaCO₂ is the most potent cerebral vasodilator</strong>: ventilation directly sets cerebral blood flow. Hypercapnia raises ICP; brief hyperventilation lowers it at the cost of ischaemia, so it is a bridging measure only.</li>
+                <li>Sedation needed to tolerate ventilation causes delirium and immobility, driving long-term cognitive and physical morbidity.</li>
+              </ul>
+            </div>
+          </div>
+          </CollapsibleSubsection>
+        </ExamSection>
+
 
         {/* ───── 2. Respiratory mechanics ───── */}
         <ExamSection id="toc-mechanics" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
