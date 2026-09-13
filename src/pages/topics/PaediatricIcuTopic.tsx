@@ -94,7 +94,7 @@ const PaediatricIcuTopic = () => {
       workedExamples={workedExamples}
       keyPoints={[
         { text: "Children have HR-dependent cardiac output — bradycardia is a pre-arrest sign; treat with atropine 20 mcg/kg", cites: ["Resuscitation Council UK 2021"] },
-        { text: "Paediatric septic shock: 10–20 ml/kg boluses with reassessment; adrenaline for cold shock, noradrenaline for warm shock", cites: ["BJA Educ 2019"] },
+        { text: "Paediatric septic shock: 10 ml/kg boluses with reassessment after each (20 ml/kg only for profound shock); adrenaline for cold shock, noradrenaline for warm shock", cites: ["BJA Educ 2019"] },
         { text: "Single ventricle physiology: target SpO₂ 75–85%; excessive O₂ causes pulmonary overcirculation and systemic steal", cites: ["RCPCH 2019"] },
         { text: "PRIS (propofol infusion syndrome) — avoid prolonged propofol infusions (>48h) in children", cites: ["NICE NG29"] },
         { text: "Isotonic maintenance fluids only — hypotonic fluids can cause fatal hyponatraemia in children", cites: ["FEAST 2011"] },
