@@ -152,9 +152,9 @@ const IcuNursingProtocols = () => {
                   </p>
 
                   <div className="mt-4">
-                    <h3 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    <h2 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                       <ClipboardCheck className="h-3.5 w-3.5" aria-hidden /> Protocol steps
-                    </h3>
+                    </h2>
                     <ol className="mt-2 space-y-2 text-sm text-foreground/90">
                       {p.steps.map((s, i) => (
                         <li key={s} className="flex gap-2.5">
@@ -169,9 +169,9 @@ const IcuNursingProtocols = () => {
 
                   <div className="mt-4 grid gap-4 sm:grid-cols-2">
                     <div className="rounded-lg border border-border bg-muted/30 p-4">
-                      <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                      <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                         Monitoring and documentation
-                      </h3>
+                      </h2>
                       <ul className="mt-2 space-y-1.5 text-sm text-foreground/90">
                         {p.monitoring.map((m) => (
                           <li key={m} className="flex gap-2">
@@ -185,9 +185,9 @@ const IcuNursingProtocols = () => {
                       </ul>
                     </div>
                     <div className="rounded-lg border border-icu/25 bg-icu/5 p-4">
-                      <h3 className="text-xs font-semibold uppercase tracking-wide text-icu">
+                      <h2 className="text-xs font-semibold uppercase tracking-wide text-icu">
                         Escalate if
-                      </h3>
+                      </h2>
                       <ul className="mt-2 space-y-1.5 text-sm text-foreground/90">
                         {p.escalation.map((e) => (
                           <li key={e} className="flex gap-2">
@@ -203,9 +203,9 @@ const IcuNursingProtocols = () => {
                   </div>
 
                   <div className="mt-4">
-                    <h3 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    <h2 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                       <BookMarked className="h-3.5 w-3.5" aria-hidden /> References
-                    </h3>
+                    </h2>
                     <ul className="mt-2 space-y-2 text-sm">
                       {p.references.map((r) => (
                         <li key={r.url + r.label}>
