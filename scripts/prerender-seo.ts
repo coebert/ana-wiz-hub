@@ -177,6 +177,10 @@ const CORE_SEO: Record<string, { title: string; description: string }> = {
     title: "ICU Sedation Calculator – Propofol, Midazolam, Dexmedetomidine, Remifentanil",
     description: "Start, maintenance and step-by-step weaning rates for the four core ICU sedatives, shown in dose units and mL/h at the patient's weight.",
   },
+  "/reference/drugs": {
+    title: "Anaesthetic & Critical Care Drug Reference – Dosing, Dilutions, Levels",
+    description: "Searchable drug library for anaesthesia and ICU: presentation, dosing, standard dilutions with mL/h pump rates, pharmacokinetics, safety and therapeutic drug level monitoring, fully referenced.",
+  },
   "/review": {
     title: "Spaced-Repetition Review | AnaesthesiaCore",
     description: "Daily spaced-repetition review of FRCA and FFICM flashcards to retain high-yield exam material long term.",

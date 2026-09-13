@@ -13,6 +13,7 @@
     "submit:sitemap": "tsx scripts/submit-sitemap.ts",
     "prerender:seo": "tsx scripts/prerender-seo.ts",
     "verify:prerender": "tsx scripts/verify-prerender.ts",
+    "check:drug-reference": "node scripts/check-drug-reference.mjs",
     "check:seo-meta": "node scripts/check-seo-meta.mjs",
     "check:seo-meta:strict": "node scripts/check-seo-meta.mjs --strict",
     "postbuild": "tsx scripts/prerender-seo.ts && tsx scripts/verify-prerender.ts && node scripts/check-seo-meta.mjs --strict && (tsx scripts/submit-sitemap.ts || true)",
