@@ -237,12 +237,14 @@ const ElectricalSafetyTopic = () => {
           "Cross & Plunkett Ch.14",
           "Middleton Ch.16",
           "IEC 60601-1",
+          "RCUK Paediatric ALS 2021",
         ],
         keyPoints: [
           "BJA Educ 2017",
           "Cross & Plunkett Ch.14",
           "Middleton Ch.16",
           "IEC 60601-1",
+          "RCUK Paediatric ALS 2021",
         ],
       }}
       coreConcepts={
