@@ -54,6 +54,7 @@ const tocItems = [
   { id: "section-vascath-haemodialysis", label: "Vascath & Haemodialysis", group: "Devices" },
   { id: "section-trauma-lines", label: "Trauma Lines", group: "Devices" },
   { id: "section-swan-ganz-long-term", label: "Swan-Ganz & Long-term Devices", group: "Specialist" },
+  { id: "section-prone-access", label: "Prone Central Venous Access", group: "Specialist" },
   { id: "section-cvc-tip-confirmation", label: "CVC Tip Confirmation", group: "Specialist" },
   { id: "section-arterial-lines", label: "Arterial Lines", group: "Specialist" },
   { id: "section-intraosseous-access", label: "Intraosseous Access", group: "Specialist" },
@@ -442,6 +443,73 @@ const VascularAccessDevicesTopic = () => {
               field) is observed and the device has been flushed and
               aspirates blood freely; document use in the notes so the
               oncology / nutrition team can re-lock it post-op.
+            </p>
+
+            <h3 className="text-xl font-serif font-bold text-foreground mt-6 mb-3">Removal and Exchange</h3>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Indications for removal</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Therapy complete — no ongoing need for the device</li>
+                  <li>Refractory catheter-related bloodstream infection despite appropriate antimicrobials</li>
+                  <li>Catheter-related thrombosis threatening the device or limb</li>
+                  <li>Mechanical damage, fracture or persistent occlusion unresponsive to locking agents</li>
+                  <li>Malposition not correctable by repositioning</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Technique</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li><strong className="text-foreground">Non-tunnelled line:</strong> supine or head-down position, ask the patient to perform a Valsalva manoeuvre or hold expiration as the catheter is withdrawn, then apply an occlusive dressing to reduce the risk of air embolism</li>
+                  <li><strong className="text-foreground">Tunnelled line:</strong> local anaesthetic infiltration over the tunnel, blunt dissection to free and release the Dacron cuff, then withdraw along the tunnel tract</li>
+                  <li><strong className="text-foreground">Implanted port:</strong> surgical dissection of the subcutaneous pocket with excision of the fibrous capsule before removing the reservoir and catheter</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              A malfunctioning but non-infected tunnelled line or PICC can be exchanged over a guidewire, preserving the tract and avoiding a fresh puncture; guidewire exchange is inappropriate when infection is suspected or confirmed, since this simply reinserts a contaminated tract (<InlineRef topicId="vascular-access-devices" refLabel="AoA Vascular Access 2025" />, <InlineRef topicId="vascular-access-devices" refLabel="epic4 2023" />).
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              <strong className="text-foreground">Risks of removal:</strong>{" "}
+              bleeding at the exit site or tunnel, air embolism (particularly with removal in the upright position or during inspiration), catheter fracture, and embolisation of a retained intravascular fragment — a retained fragment requires urgent referral for percutaneous retrieval by interventional radiology.
+            </p>
+          </ExamSection>
+
+          <ExamSection id="section-prone-access" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Central Venous Access in the Prone Patient
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Occasionally central access is needed while a patient is already prone — most commonly during prolonged prone ventilation for severe ARDS, or when a patient is too unstable to safely turn supine (<InlineRef topicId="vascular-access-devices" refLabel="JVA Prone Access 2024" />).
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Site selection</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li><strong className="text-foreground">Internal jugular</strong> — preferred where accessible; the head is rotated to the contralateral side within the limits of the prone head support</li>
+                  <li><strong className="text-foreground">Brachial / basilic vein</strong> — a PICC-type approach avoids the trunk entirely and is well suited to the prone position</li>
+                  <li><strong className="text-foreground">Femoral vein</strong> — readily accessible with the legs supported in the prone position</li>
+                  <li><strong className="text-foreground">Popliteal vein</strong> — useful alternative lower-limb site when femoral access is difficult</li>
+                  <li><strong className="text-foreground">Axillary vein</strong> — accessible from the lateral chest wall in the prone position</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Technique and ergonomics</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                  <li>Ultrasound guidance is used at every site, but the operator and ultrasound screen must be repositioned to match the prone geometry, which reverses normal orientation cues</li>
+                  <li>Airway protection takes priority — a second operator/assistant is needed to maintain the airway and support the head while access is attempted</li>
+                  <li>Access to the patient is physically restricted by the prone position, positioning frame and pressure-relieving supports</li>
+                  <li>Have an explicit plan to rapidly supinate the patient if arrhythmia or cardiac arrest occurs during or after line placement</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              <strong className="text-foreground">Complications specific to prone insertion:</strong>{" "}
+              catheter kinking from an acutely angulated tract, difficult guidewire manipulation and advancement, and greater difficulty managing an arrhythmia or airway emergency that arises mid-procedure (<InlineRef topicId="vascular-access-devices" refLabel="JVA Prone Access 2024" />, <InlineRef topicId="vascular-access-devices" refLabel="AoA Vascular Access 2025" />).
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              <strong className="text-foreground">Managing existing lines during proning:</strong>{" "}
+              secure all catheters and connections before turning, note and re-check external length markings after the turn, avoid traction on lines during the proning manoeuvre itself, and reconfirm tip position (where clinically indicated) and the patency/positioning of infusions once the patient is settled prone.
             </p>
           </ExamSection>
 
