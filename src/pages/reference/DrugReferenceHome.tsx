@@ -111,6 +111,12 @@ export default function DrugReferenceHome() {
               body: "Search by name, brand, class or indication, or jump straight to a letter.",
             },
             {
+              to: "/reference/topics",
+              icon: BookOpen,
+              title: "Browse by topic",
+              body: "Vasoactive support, sedation, analgesia, anticoagulation and more, each with bedside points.",
+            },
+            {
               to: "/reference/monitoring",
               icon: FlaskConical,
               title: "Blood level monitoring",
