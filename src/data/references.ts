@@ -997,6 +997,8 @@ export const topicReferences: Record<string, Reference[]> = {
 
   ],
   "antimicrobials-icu": [
+    { label: "IDSA HAP/VAP 2016", citation: "Kalil AC, Metersky ML, Klompas M, et al. Management of adults with hospital-acquired and ventilator-associated pneumonia: 2016 IDSA/ATS clinical practice guidelines. Clin Infect Dis. 2016;63(5):e61-e111.", url: "https://doi.org/10.1093/cid/ciw353" },
+
     { label: "NICE NG15", citation: "National Institute for Health and Care Excellence. Antimicrobial stewardship: systems and processes for effective antimicrobial medicine use. NICE guideline NG15. 2015.", url: "https://www.nice.org.uk/guidance/ng15" },
     { label: "Curr Opin Crit Care 2022 AMS", citation: "Antimicrobial stewardship. Curr Opin Crit Care. 2022;28(5):551-556.", url: "https://doi.org/10.1097/mcc.0000000000000967", excerpt: "AMS-interventions can improve the quality and quantity of antimicrobial prescribing in the ICU without compromising patient outcomes. The de-escalation of empiric therapy according to microbiology results and the limitation of treatment duration are important steps to reduce resistance pressure." },
     { label: "Drugs Today 2003 Cycling", citation: "Cycling chemotherapy: a promising approach to reducing the morbidity and mortality of nosocomial infections. Drugs Today (Barc). 2003;39(9):697-707.", url: "https://doi.org/10.1358/dot.2003.39.9.799480", excerpt: "There have been numerous attempts to curtail antibiotic usage through various forms of antibiotic stewardship: formulary restriction, computerized decision-support and abbreviated course empiric therapy. Cycling chemotherapy for empiric treatment of suspected infection is a method uniquely designed to address these challenges." },
