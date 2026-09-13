@@ -229,8 +229,14 @@ const RefractoryHypoxaemiaFlowchart = () => {
         <path d="M700 676 V800 H820 V824" stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none" markerEnd={`url(#${id}-arr)`} />
         <g>
           <rect x={640} y={828} width="260" height="76" rx="10" fill="hsl(var(--icu) / 0.1)" stroke="hsl(var(--icu))" strokeWidth="1.5" />
-          <text x={770} y={850" .length ? 850 : 850} fontSize="12" fontWeight="700" textAnchor="middle" fill="hsl(var(--icu))">
+          <text x={770} y={850} fontSize="12" fontWeight="700" textAnchor="middle" fill="hsl(var(--icu))">
             Consolidate and de-escalate
+          </text>
+          <text x={770} y={868} fontSize="9.5" textAnchor="middle" fill="hsl(var(--muted-foreground))">
+            Wean FiO₂ then PEEP · daily sedation hold
+          </text>
+          <text x={770} y={884} fontSize="9.5" textAnchor="middle" fill="hsl(var(--muted-foreground))">
+            Negative fluid balance · early rehabilitation
           </text>
         </g>
 
