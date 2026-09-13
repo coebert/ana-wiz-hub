@@ -215,6 +215,27 @@ const PreoperativeAssessmentTopic = () => {
         <div id="section-airway-assessment" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Assessment</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_01", "CL_BK_01"]} />
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            No single bedside test is adequate: sensitivity is low and specificity modest. Combining history, a structured examination and a weighted multivariate index performs considerably better than any test alone <InlineRef topicId="preoperative-assessment" refLabel="BJA Airway Index 1998" />. The purpose of assessment is not to produce a score but to generate a <strong>primary and backup airway plan</strong>.
+          </p>
+          <div className="p-4 rounded-lg border border-border mb-3">
+            <p className="text-sm font-semibold text-foreground">1. History</p>
+            <ul className="list-disc pl-5 mt-1 space-y-1 text-sm text-muted-foreground">
+              <li>Previous anaesthetic records and airway alerts — documented difficult intubation is the strongest single predictor; ask the patient and family about previous problems, dental damage, unplanned ICU admission or awake techniques.</li>
+              <li>Conditions associated with a difficult airway: obstructive sleep apnoea and obesity, acromegaly, rheumatoid arthritis (atlanto-axial instability, limited mouth opening), ankylosing spondylitis, previous head/neck surgery or radiotherapy, burns/scarring, goitre or mediastinal mass, pregnancy, syndromic craniofacial abnormality.</li>
+              <li>Symptoms of pathological airway: dyspnoea or stridor at rest or on lying flat, voice change, dysphagia, positional obstruction.</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg border border-border mb-3">
+            <p className="text-sm font-semibold text-foreground">2. Examination — LEMON</p>
+            <ul className="list-disc pl-5 mt-1 space-y-1 text-sm text-muted-foreground">
+              <li><strong>L</strong>ook externally — facial trauma, prominent incisors, beard, large tongue, short muscular neck, small mandible.</li>
+              <li><strong>E</strong>valuate the 3-3-2 rule — 3 finger breadths inter-incisor gap, 3 between hyoid and mentum, 2 between hyoid and thyroid notch.</li>
+              <li><strong>M</strong>allampati class I–IV — patient sitting, head neutral, mouth fully open, tongue protruded, no phonation; class III/IV predicts a poorer laryngoscopic view.</li>
+              <li><strong>O</strong>bstruction — stridor, muffled voice, difficulty swallowing secretions, tracheal deviation, radiotherapy fibrosis.</li>
+              <li><strong>N</strong>eck mobility — extension &lt;35° is problematic; consider C-spine pathology, ankylosing spondylitis, rheumatoid disease, collars and halo fixation.</li>
+            </ul>
+          </div>
           <div className="grid sm:grid-cols-3 gap-2">
             {[
               { test: "Mallampati", detail: "Class I–IV. Predicts view at laryngoscopy. Class III/IV associated with difficult intubation." },
@@ -229,6 +250,18 @@ const PreoperativeAssessmentTopic = () => {
                 <p className="text-xs text-muted-foreground mt-1">{t.detail}</p>
               </div>
             ))}
+          </div>
+          <div className="p-4 rounded-lg border border-border mt-3">
+            <p className="text-sm font-semibold text-foreground">3. Multivariate risk indices</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              The <strong>El-Ganzouri (simplified airway risk) index</strong> weights seven independent predictors — previous difficult intubation, pathology associated with a difficult airway, symptoms of pathological airway, inter-incisor gap and mandibular protrusion, thyromental distance, head and neck movement, and modified Mallampati class — and discriminates better than any component test used alone <InlineRef topicId="preoperative-assessment" refLabel="BJA Airway Index 1998" />. The <strong>Wilson score</strong> (weight, head/neck movement, jaw movement, receding mandible, buck teeth) makes the same point: it is combinations of factors, not isolated measurements, that predict difficulty.
+            </p>
+          </div>
+          <div className="p-4 rounded-lg border border-border mt-3">
+            <p className="text-sm font-semibold text-foreground">4. Planning</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Convert the assessment into an explicit, documented plan and share it with the theatre team: Plan A (e.g. videolaryngoscopy first if difficulty is anticipated), Plan B (supraglottic airway), Plan C (face-mask ventilation and wake up), Plan D (front-of-neck access), plus a decision on <strong>awake tracheal intubation</strong> where obstruction, radiotherapy fibrosis or an unstable C-spine make asleep techniques unsafe. Specify pre-oxygenation strategy, ramped positioning, who will be present, and which equipment must be in the room before induction.
+            </p>
           </div>
         </div>
 
