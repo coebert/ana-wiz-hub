@@ -116,7 +116,7 @@ const CardiovascularDiseaseTopic = () => {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Risk Prediction Tools</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li><strong>Revised Cardiac Risk Index (RCRI, Lee 1999)</strong> — one point each for: high-risk surgery (intraperitoneal/intrathoracic/suprainguinal vascular), history of IHD, history of heart failure, history of cerebrovascular disease, insulin-dependent diabetes, creatinine &gt;177 µmol/L (2.0 mg/dL). Risk of major cardiac complication: 0 points ≈0.4%, 1 point ≈1%, 2 points ≈2.4%, ≥3 points ≈5.4%</li>
+                <li><strong>Revised Cardiac Risk Index (RCRI, Lee 1999)</strong> — one point each for: high-risk surgery (intraperitoneal/intrathoracic/suprainguinal vascular), history of IHD, history of heart failure, history of cerebrovascular disease, insulin-dependent diabetes, creatinine &gt;170 µmol/L (2.0 mg/dL). Risk of major cardiac complication: 0 points ≈0.4%, 1 point ≈1%, 2 points ≈2.4%, ≥3 points ≈5.4%</li>
                 <li><strong>ACS-NSQIP Surgical Risk Calculator / MICA model</strong> — incorporates ASA grade, functional status, procedure type and comorbidities to give a continuous predicted risk of MI or cardiac arrest; performs better than RCRI at the extremes of risk and is endorsed by ACC/AHA 2014 and 2024 as the preferred first step</li>
                 <li>ESC/ESA 2022 stepwise pathway: (1) urgency of surgery, (2) active cardiac conditions (unstable angina, decompensated HF, severe arrhythmia, severe valve disease), (3) surgery-specific risk (low &lt;1%, intermediate 1–5%, high &gt;5% 30-day cardiovascular death/MI), (4) functional capacity, (5) further testing only if it will change management</li>
               </ul>
@@ -153,7 +153,7 @@ const CardiovascularDiseaseTopic = () => {
               <h3 className="font-semibold text-foreground mb-2">Preoperative Assessment</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Functional capacity assessment (METs): patients unable to achieve 4 METs (climb one flight of stairs) are at increased risk (see Risk Stratification section for CPET thresholds)</li>
-                <li>Revised Cardiac Risk Index (Lee index): IHD, heart failure, CVA/TIA, insulin-dependent DM, creatinine &gt;177 µmol/L, high-risk surgery</li>
+                <li>Revised Cardiac Risk Index (Lee index): IHD, heart failure, CVA/TIA, insulin-dependent DM, creatinine &gt;170 µmol/L, high-risk surgery</li>
                 <li>Recent MI without revascularisation: ideally delay elective surgery ≥60 days (ACC/AHA 2024); if urgent, involve cardiology and plan invasive monitoring</li>
                 <li>Continue aspirin for most surgery; discuss DAPT with cardiologist and surgeon</li>
                 <li>Continue β-blockers and statins — do NOT start high-dose β-blockers de novo (POISE trial)</li>
@@ -273,7 +273,7 @@ const CardiovascularDiseaseTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Stage 1: clinic BP 140/90–159/99 mmHg with ABPM/HBPM ≥135/85</li>
                 <li>Stage 2: clinic BP 160/100–179/119 mmHg with ABPM/HBPM ≥150/95</li>
-                <li>Stage 3 / severe: clinic systolic ≥180 mmHg <em>or</em> diastolic ≥120 mmHg</li>
+                <li>Stage 3 / severe: clinic systolic ≥180 mmHg <em>or</em> diastolic ≥110 mmHg (NICE NG136)<InlineRef topicId="cardiovascular-disease" refLabel="NICE NG136" /></li>
                 <li>Treatment thresholds and targets (clinic): &lt;140/90 mmHg under 80 y; &lt;150/90 mmHg ≥80 y</li>
               </ul>
             </div>
@@ -316,7 +316,7 @@ const CardiovascularDiseaseTopic = () => {
               <h3 className="font-semibold text-foreground mb-2">Urgent / Emergency Surgery</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Time-critical surgery should <strong>not</strong> be delayed to treat chronic hypertension — the risk of acute lowering (cerebral, coronary and renal hypoperfusion in chronically auto-regulated patients) outweighs benefit</li>
-                <li>True hypertensive emergency (BP ≥180/120 mmHg <em>with</em> evolving end-organ damage — encephalopathy, ACS, pulmonary oedema, aortic dissection, eclampsia) requires controlled IV reduction <em>before</em> non-life-saving surgery: lower MAP by no more than 20–25% in the first hour, then to ~160/100 mmHg over the next 2–6 h (NICE NG136; ACC/AHA 2024)</li>
+                <li>True hypertensive emergency (BP ≥180/110 mmHg <em>with</em> evolving end-organ damage — encephalopathy, ACS, pulmonary oedema, aortic dissection, eclampsia) requires controlled IV reduction <em>before</em> non-life-saving surgery: lower MAP by no more than 20–25% in the first hour, then to ~160/100 mmHg over the next 2–6 h (NICE NG136; ACC/AHA 2024)</li>
                 <li>Drug choice tailored to the syndrome: labetalol or esmolol for dissection and phaeochromocytoma surge; GTN for pulmonary oedema and ACS; magnesium and labetalol for eclampsia; avoid sublingual nifedipine (uncontrolled drops)</li>
                 <li>Use an arterial line and titrate infusions; correct precipitants (pain, hypoxia, hypercarbia, full bladder, raised ICP) before escalating drugs</li>
                 <li>Restart oral therapy as early as enteral access allows; document a plan for outpatient BP optimisation post-discharge</li>
@@ -342,7 +342,7 @@ const CardiovascularDiseaseTopic = () => {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Anaesthetic Management</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Continue ACE inhibitors/ARBs on day of surgery controversial — risk of refractory hypotension; often omitted morning of surgery</li>
+                <li>Continue ACE inhibitors/ARBs (or ARNIs) perioperatively in patients with heart failure with reduced ejection fraction, as recommended by the 2022 ESC/ESA guidelines (Class I) — anticipate and treat vasodilatory hypotension with vasopressors rather than routinely omitting the drug; omission risks decompensation<InlineRef topicId="cardiovascular-disease" refLabel="ESC/ESA 2022" /></li>
                 <li>Continue β-blockers, diuretics, and digoxin</li>
                 <li>Avoid myocardial depressants: use etomidate/ketamine for induction; sevoflurane better than desflurane for maintenance</li>
                 <li>Careful IV fluid titration — goal-directed fluid therapy preferred</li>
