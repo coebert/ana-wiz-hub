@@ -24,6 +24,9 @@ const tocItems = [
   { id: "lithotomy", label: "Lithotomy position", group: "Positioning" },
   { id: "cystectomy", label: "Radical cystectomy", group: "Major surgery" },
   { id: "nephrectomy", label: "Nephrectomy & renal surgery", group: "Major surgery" },
+  { id: "turbt", label: "TURBT & the obturator reflex", group: "Major surgery" },
+  { id: "renal-transplant", label: "Renal transplantation", group: "Major surgery" },
+
   { id: "propofol-erection", label: "Propofol-induced penile erection", group: "Complications" },
   { id: "pcnl", label: "Percutaneous nephrolithotomy", group: "Procedures" },
   { id: "eswl", label: "ESWL", group: "Procedures" },

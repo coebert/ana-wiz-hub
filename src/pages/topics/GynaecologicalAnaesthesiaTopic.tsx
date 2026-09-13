@@ -26,6 +26,8 @@ const tocItems = [
   { id: "hipec", label: "HIPEC", group: "Major surgery" },
   { id: "ectopic", label: "Ectopic pregnancy", group: "Emergency" },
   { id: "top", label: "Termination of pregnancy", group: "Emergency" },
+  { id: "cerclage", label: "Cervical cerclage", group: "Emergency" },
+
   { id: "myomectomy", label: "Myomectomy & fibroids", group: "Major surgery" },
   { id: "gas-embolism", label: "CO₂ gas embolism", group: "Complications" },
   { id: "faq", label: "FAQ", group: "Reference" },
