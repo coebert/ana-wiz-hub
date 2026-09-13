@@ -455,7 +455,9 @@ describe("JSON-LD structured data", () => {
   const KEY_TEMPLATES: Array<{ file: string; expect: "sitewide" | string }> = [
     { file: "src/pages/Landing.tsx", expect: "sitewide" },
     { file: "src/components/topic/TopicTemplate.tsx", expect: "LearningResource" },
-    { file: "src/components/layout/SectionLayout.tsx", expect: "BreadcrumbList" },
+    // SectionLayout delegates its head tags to <PageMeta>, which is where the
+    // breadcrumb JSON-LD is emitted.
+    { file: "src/components/layout/PageMeta.tsx", expect: "BreadcrumbList" },
     { file: "src/pages/VivaQuestionLibrary.tsx", expect: "FAQPage" },
     { file: "src/pages/DrugDetail.tsx", expect: "sitewide" },
   ];
