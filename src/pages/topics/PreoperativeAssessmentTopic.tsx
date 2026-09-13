@@ -44,6 +44,7 @@ const PreoperativeAssessmentTopicWorkedExamples: WorkedExample[] = [
 
 const tocItems = [
   { id: "section-risk-assessment", label: "Risk Assessment", group: "Core" },
+  { id: "section-cognitive-delirium-risk", label: "Cognitive Assessment & Delirium Risk", group: "Core" },
   { id: "section-airway-assessment", label: "Airway Assessment", group: "Core" },
   { id: "section-medication-management", label: "Medication Management", group: "Core" },
   { id: "section-preoperative-investigations-nice-ng45-evidence-based-approach", label: "Preoperative Investigations", group: "Investigations" },
@@ -142,7 +143,46 @@ const PreoperativeAssessmentTopic = () => {
           </p>
         </CollapsibleSubsection>
 
-        <CollapsibleSubsection title="Pulmonary risk assessment">
+        <div id="section-cognitive-delirium-risk" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cognitive Assessment & Delirium Risk</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_01"]} />
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Postoperative delirium and postoperative cognitive dysfunction (POCD) are distinct but related entities that should be assessed for and discussed with patients before major surgery.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Postoperative delirium</p>
+              <p className="text-sm text-muted-foreground mt-1">An acute, fluctuating disturbance of attention and awareness meeting DSM-5 criteria, developing over hours to days and typically resolving within days.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">POCD / delayed neurocognitive recovery</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                A subtler decline in memory, attention and executive function detected on formal neuropsychometric testing, evolving over weeks to months. Around <strong>12%</strong> of previously cognitively well patients undergoing non-cardiac surgery are affected <InlineRef topicId="preoperative-assessment" refLabel="BJA POCD 2017" />.
+              </p>
+            </div>
+          </div>
+          <div className="p-4 rounded-lg border border-border mt-3">
+            <p className="text-sm font-semibold text-foreground">Risk factors</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Age &gt;65, pre-existing cognitive impairment or dementia, sensory impairment, frailty and low functional capacity, polypharmacy and anticholinergic burden, alcohol excess, depression, surgical complexity and urgency, and intraoperative or postoperative complications.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3 mt-3">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Screening tools</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>Mini-Cog</strong>, <strong>4AT</strong>, <strong>MoCA</strong> and <strong>AMT-10</strong> are used preoperatively to identify at-risk patients and to document a cognitive baseline for postoperative comparison.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Preventative strategies</p>
+              <p className="text-sm text-muted-foreground mt-1">Medication review and deprescribing (especially anticholinergics/sedatives), correcting anaemia and dehydration, sensory aids (glasses, hearing aids), sleep hygiene, orientation, multicomponent delirium-prevention bundles, early mobilisation, and avoiding excessively deep anaesthesia and long-acting sedatives.</p>
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground mt-3">
+            Given the frequency and impact of delirium and POCD, this risk should be discussed with the patient and family during the consent process, alongside plans for postoperative monitoring and support <InlineRef topicId="preoperative-assessment" refLabel="BJA POCD 2017" />.
+          </p>
+        </div>
+
+                <CollapsibleSubsection title="Pulmonary risk assessment">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Postoperative pulmonary complications (PPCs) occur in roughly <strong>5–10%</strong> of patients undergoing major surgery and are associated with substantial increases in morbidity, mortality and length of stay <InlineRef topicId="preoperative-assessment" refLabel="BJA Lung-Protective 2019" />.
           </p>
