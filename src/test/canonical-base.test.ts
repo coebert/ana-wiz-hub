@@ -70,14 +70,17 @@ describe("canonical base URL consistency", () => {
     ).toEqual([]);
   });
 
-  it("index.html og:url uses canonical base", () => {
+  // index.html deliberately omits og:url so every route's Helmet can set a
+  // self-referencing og:url (a static one would make every shared link look
+  // like the homepage). If one is ever added it must use the canonical base.
+  it("index.html og:url, when present, uses canonical base", () => {
     const indexPath = resolve(process.cwd(), "index.html");
     const contents = readFileSync(indexPath, "utf8");
 
-    const ogUrl = contents.match(/<meta property="og:url" content="([^"]+)"/)?.[1];
-    expect(ogUrl, "index.html missing og:url").toBeTruthy();
+    const ogUrl = contents.match(/<meta[^>]*\sproperty="og:url"[^>]*\scontent="([^"]+)"/)?.[1];
+    if (!ogUrl) return;
     expect(
-      ogUrl!.startsWith(CANONICAL_BASE),
+      ogUrl.startsWith(CANONICAL_BASE),
       `og:url ${ogUrl} does not start with ${CANONICAL_BASE}`,
     ).toBe(true);
   });
