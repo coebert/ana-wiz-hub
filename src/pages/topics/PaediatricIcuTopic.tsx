@@ -793,7 +793,7 @@ const PaediatricIcuTopic = () => {
           <ExamPitfallsCallout
             accent="icu"
             pitfalls={[
-              "Paediatric sepsis: PALS algorithm — 10–20 mL/kg fluid boluses (reassess after each), early antibiotics, early inotropes (peripheral if needed).",
+              "Paediatric sepsis: 10 mL/kg fluid boluses with reassessment after each (20 mL/kg only for profound shock, 5 mL/kg in DKA/trauma), early antibiotics, early inotropes (peripheral if needed).",
               "ETT/drug doses: WET FLAG (weight, energy 4 J/kg, tube size, fluid 10 mL/kg, lorazepam, adrenaline 10 µg/kg, glucose 2 mL/kg 10%).",
               "Congenital cyanotic heart disease: maintain SpO₂ at usual baseline (often 75–85%), avoid hypoxia/hypocapnia changes that affect PVR/SVR balance.",
               "Paediatric TBI: target CPP age-appropriate (40–60 mmHg), avoid hyponatraemia, head-up, normothermia.",
