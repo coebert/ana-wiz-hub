@@ -459,7 +459,37 @@ const EcmoTopic = () => {
                   </div>
                 ))}
               </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                <strong>Haemolysis surveillance in practice:</strong> measure plasma free haemoglobin and LDH at least daily, correlate with pre-pump pressure and trans-membrane gradient trends, and treat a rising PfHb as a circuit problem until proven otherwise — inadequate anticoagulation and evolving oxygenator thrombosis are the commonest reversible causes <InlineRef topicId="ecmo" refLabel="ECMO Anticoagulation 2022" />.
+              </p>
             </div>
+
+            {/* Configuration change & special indications */}
+            <div>
+              <h2 id="conversion" className="text-2xl font-serif font-bold text-foreground mb-3">Changing configuration: VV → VA and hybrid (VAV)</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Roughly 3–5% of VV runs are converted to VA or hybrid support, most often for new or unrecognised cardiac failure; conversion identifies a higher-risk group and outcomes are worse than for primary VA-ECMO, so the decision belongs with the ECMO consultant and cardiothoracic team <InlineRef topicId="ecmo" refLabel="ELSO Conversion 2025" />.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3 mb-3">
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Triggers to convert</p>
+                  <p className="text-sm text-muted-foreground mt-1">Progressive biventricular or RV failure with low native cardiac output despite full VV support; refractory arrhythmia or cardiac arrest on VV-ECMO; sepsis-related cardiomyopathy; massive PE; escalating inotropes with rising lactate and falling mixed venous saturation despite adequate ECMO flow. Confirm with echocardiography before committing.</p>
+                </div>
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">How it is done</p>
+                  <p className="text-sm text-muted-foreground mt-1">Ultrasound-guided arterial access (femoral, with an obligatory distal perfusion cannula, or axillary/central in selected cases), heparin bolus, then either (a) reuse the existing venous drainage and move the return limb to the artery (VA), or (b) split the return with a Y-connector between the internal jugular vein and the artery to create a <strong>VAV</strong> circuit when gas exchange still needs support — flow to each limb is balanced with a clamp or flow probe.</p>
+                </div>
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Immediate risks after conversion</p>
+                  <p className="text-sm text-muted-foreground mt-1">LV distension and pulmonary oedema from retrograde afterload (consider IABP, Impella or septostomy), Harlequin syndrome, limb ischaemia, bleeding at the new site, and differential flow with recirculation in VAV. Re-echo, re-check right radial SpO₂ and arterial blood gases from the right arm, and reassess anticoagulation.</p>
+                </div>
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Accidental hypothermia and ECLS</p>
+                  <p className="text-sm text-muted-foreground mt-1">Extracorporeal rewarming is <strong>first-line</strong> for hypothermic cardiac arrest and for a hypothermic patient with cardiac instability that does not respond to medical management: core temperature &lt; 28 °C with instability, &lt; 32 °C with a refractory arrhythmia or shock, or hypothermic cardiac arrest. Confirm potential reversibility (serum potassium generally &lt; 12 mmol/L, no lethal injury, use the HOPE score where available), continue CPR during transfer to an ECLS centre, rewarm at about 3–4 °C per hour, and remember "not dead until warm and dead" <InlineRef topicId="ecmo" refLabel="Accidental Hypothermia 2021" />.</p>
+                </div>
+              </div>
+            </div>
+
 
             {/* Interactive troubleshooting decision diagram */}
             <div className="not-prose">
