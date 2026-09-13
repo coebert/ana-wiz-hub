@@ -343,7 +343,9 @@ export function mlPerHour(infusion: Infusion, dose: number, weightKg: number): n
     infusion.unit === "micrograms/kg/min" ||
     infusion.unit === "micrograms/min" ||
     infusion.unit === "units/min";
-  const amount = infusion.perKg ? dose * weightKg : dose;
+  // concentrationPerMl is in micrograms (or units) per mL — convert mg doses
+  let amount = infusion.perKg ? dose * weightKg : dose;
+  if (infusion.unit === "mg/kg/h") amount *= 1000;
   const perHour = perMinute ? amount * 60 : amount;
   return perHour / infusion.concentrationPerMl;
 }
