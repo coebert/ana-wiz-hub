@@ -178,6 +178,9 @@ const NonTechnicalSkillsTopic = () => {
             className="scroll-mt-24"
           >
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cognitive Errors & Bias</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              <strong>Dual process theory</strong> underpins all of this. <strong>System 1</strong> thinking is fast, automatic, intuitive, pattern-based and emotionally coloured — efficient for the routine work that fills most of a clinical day, but the seat of heuristics and bias. <strong>System 2</strong> thinking is slow, deliberate, logical and effortful — needed for novel, complex or ambiguous problems. Most critical incidents arise when System 1 is relied on inappropriately in a non-routine situation that demanded System 2, particularly under fatigue, time pressure or task saturation <InlineRef topicId="non-technical-skills" refLabel="BJA Educ 2018" />.
+            </p>
             <ul className="list-disc pl-5 space-y-1.5 text-sm text-muted-foreground">
               <li><strong>Fixation error / plan continuation bias</strong> — sticking with an action plan when the situation has changed (the laryngoscopy example).</li>
               <li><strong>Confirmation bias</strong> — interpreting new data as confirming the working diagnosis.</li>
@@ -187,8 +190,17 @@ const NonTechnicalSkillsTopic = () => {
               <li><strong>Authority gradient</strong> — junior team members fail to challenge the senior.</li>
               <li><strong>Cognitive overload</strong> — task saturation in a crisis impairs decision-making (Yerkes-Dodson curve).</li>
             </ul>
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Debiasing strategies (cognitive forcing strategies)</h3>
+            <ul className="list-disc pl-5 space-y-1.5 text-sm text-muted-foreground">
+              <li><strong>Metacognition</strong> — thinking about your own thinking: "am I falling into a trap here? What am I assuming?"</li>
+              <li><strong>Consider alternatives</strong> — deliberately generate at least two other differentials: "what else could this be?"</li>
+              <li><strong>Consider the opposite</strong> — "why might this <em>not</em> be the case?" — and actively seek disconfirming evidence rather than confirmation.</li>
+              <li><strong>Slow down</strong> — when the situation allows, force the switch from System 1 to System 2; a deliberate 10-second pause ("10-for-10") buys analytic capacity.</li>
+              <li><strong>Pre-mortem</strong> — imagine the patient has come to harm and work backwards to identify how, before committing to the plan.</li>
+              <li><strong>Group strategies</strong> — invite challenge explicitly, verbalise the working diagnosis aloud, use structured handover and checklists so others can cross-check your reasoning.</li>
+            </ul>
             <p className="text-sm text-muted-foreground leading-relaxed mt-3">
-              Mitigation: structured re-evaluation ("STEP back" — Stop, Think, Elaborate, Plan), cognitive aids (e.g. Vortex, ALS algorithm, OAA difficult airway), explicit verbalisation of the working diagnosis, deliberately seeking disconfirming evidence.
+              Further mitigation: structured re-evaluation ("STEP back" — Stop, Think, Elaborate, Plan) and cognitive aids (e.g. Vortex, ALS algorithm, OAA difficult airway) that offload memory under stress <InlineRef topicId="non-technical-skills" refLabel="BJA Educ 2018" />.
             </p>
           </ExamSection>
 
@@ -208,7 +220,13 @@ const NonTechnicalSkillsTopic = () => {
                   <li>Nominate role allocation aloud (airway / circulation / drugs / scribe / runner)</li>
                   <li>Closed-loop communication ("adrenaline 1 mg IV given — confirmed")</li>
                   <li>Use names not pronouns; use SBAR for handover</li>
-                  <li>Graded assertiveness: PACE (Probe → Alert → Challenge → Emergency)</li>
+                  <li>Graded assertiveness — scripted language that escalates a concern firmly but respectfully:
+                    <ul className="list-[circle] pl-4 mt-1 space-y-0.5">
+                      <li><strong>PACE</strong>: Probe → Alert → Challenge → Emergency</li>
+                      <li><strong>CUSS</strong>: "I am <strong>C</strong>oncerned" → "I am <strong>U</strong>ncomfortable" → "this is a <strong>S</strong>afety issue" → "<strong>S</strong>top, let's resolve this"</li>
+                    </ul>
+                    Both give the junior or non-medical team member a rehearsed opening sentence, so speaking up does not depend on improvising under stress.
+                  </li>
                 </ul>
               </div>
               <div className="rounded-lg border border-border bg-muted/30 p-3">
@@ -223,6 +241,17 @@ const NonTechnicalSkillsTopic = () => {
                 </ul>
               </div>
             </div>
+            <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">Psychological safety</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              <strong>Psychological safety</strong> (Edmondson) is the shared belief that the team is safe for interpersonal risk-taking — that a member can ask a question, admit uncertainty or error, or challenge a senior decision without fear of humiliation, blame or punishment. It is the foundational requirement for every tool above: PACE and CUSS scripts, incident reporting and honest debriefing all fail in a team that is not psychologically safe <InlineRef topicId="non-technical-skills" refLabel="BJA Educ 2018" />.
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>It flattens the authority gradient, so concerns surface early rather than after harm.</li>
+              <li>It increases error and near-miss reporting, and so the raw material for learning and a just culture.</li>
+              <li>It is actively created by leaders — introducing the team by name, framing the case as a shared learning problem, inviting challenge explicitly ("tell me if you see something I've missed"), modelling curiosity, and acknowledging their own fallibility.</li>
+              <li>It is destroyed quickly by public criticism, dismissing a concern, or punishing the messenger — one such episode silences a team for months.</li>
+            </ul>
+
           </ExamSection>
 
           <ExamSection

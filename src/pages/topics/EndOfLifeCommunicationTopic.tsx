@@ -218,6 +218,22 @@ const EndOfLifeCommunicationTopic = () => {
                 </ul>
               </div>
             </div>
+
+            <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">
+              Organ and Tissue Donation
+              <InlineRef topicId="end-of-life-communication" refLabel="NHSBT Deceased Donation" />
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Considering donation is part of good end-of-life care, not an add-on. Referral to the <strong>specialist nurse for organ donation (SNOD)</strong> should be made <em>before</em> any conversation with the family about donation, and before withdrawal of life-sustaining treatment <InlineRef topicId="end-of-life-communication" refLabel="NHSBT Deceased Donation" />.
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li><strong>Referral triggers</strong> — a ventilated patient with catastrophic brain injury in whom brainstem death testing is planned or in whom neurological criteria may be met, <em>or</em> any ventilated patient in whom a decision has been made to withdraw life-sustaining treatment and death is expected.</li>
+              <li><strong>DBD (donation after brainstem death)</strong> — death confirmed by neurological criteria, circulation maintained to theatre, allowing controlled multi-organ retrieval with the shortest ischaemic times.</li>
+              <li><strong>DCD (donation after circulatory death)</strong> — Maastricht category III controlled DCD is the UK norm: family agreement and consent confirmed, planned withdrawal in theatre or nearby, then observation of continuous asystole and absent circulation for <strong>5 minutes</strong> before death is confirmed and retrieval begins. Functional warm ischaemic time drives organ viability, so kidneys and liver are the usual grafts.</li>
+              <li><strong>Tissue donation</strong> (corneas, skin, bone, heart valves, tendon) remains possible in many patients who cannot donate organs, including after death on the ward, and has a longer window after death.</li>
+              <li><strong>Legal framework</strong> — Human Tissue Act 2004 (England, Wales, Northern Ireland) and the Organ Donation (Deemed Consent) Act 2019, under which adults are considered to agree to donation unless they opted out or are in an excluded group; the family is still consulted and any known objection respected. Scotland is covered by the Human Tissue (Scotland) Act 2006 as amended.</li>
+              <li><strong>Separation of teams</strong> — the decision that further treatment is futile is made by the treating team on clinical grounds alone and documented before donation is raised; the SNOD and retrieval team have no part in it. This separation should be stated explicitly to families, who often ask.</li>
+            </ul>
           </ExamSection>
 
           <ExamSection
@@ -237,6 +253,21 @@ const EndOfLifeCommunicationTopic = () => {
               <li><strong>Clinical ethics committee</strong> referral for unresolved disagreement.</li>
               <li><strong>Court of Protection</strong> as last resort (e.g. Charlie Gard, Alfie Evans, Re Y).</li>
               <li><strong>Cultural/religious chaplaincy</strong> — invite early, not as a last resort.</li>
+            </ul>
+
+            <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">
+              Cultural and Spiritual Care
+              <InlineRef topicId="end-of-life-communication" refLabel="BMC Palliat Care 2024" />
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Psychosocial and spiritual considerations are a core component of end-of-life care in their own right, alongside communication, symptom control, ethics and after-death care <InlineRef topicId="end-of-life-communication" refLabel="BMC Palliat Care 2024" />. The governing principle is to <strong>ask, never assume</strong> — faith, culture and family practice vary widely within any named tradition.
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li><strong>How to explore</strong> — open, permission-giving questions: "Are there any religious or spiritual traditions that are important to you at this time?"; "Is there anything we should know about how your family would want us to care for him?"; "Who else would you like to be here?"</li>
+              <li><strong>Common considerations</strong> — last rites, confession or anointing (Catholic Christian); recitation, facing Mecca, family washing of the body and burial usually within 24 h (Muslim); prompt burial and avoidance of post-mortem where possible, with a family or community liaison (Jewish); sacred thread, water or prayers at the bedside and cremation (Hindu/Sikh); chanting and a quiet, undisturbed period after death (Buddhist); and non-religious patients who nonetheless have clear values about presence, place and legacy.</li>
+              <li><strong>Practical facilitation</strong> — space and privacy for prayer, relaxed visiting numbers, avoiding unnecessary delay to release of the body, and early warning where coroner referral or post-mortem may be unavoidable so families can prepare.</li>
+              <li><strong>Services</strong> — hospital chaplaincy and multi-faith teams, community and hospital liaison officers, interpreters (professional, not family members), and specialist palliative care.</li>
+              <li><strong>Document</strong> preferences in the notes and hand them over at every shift change, so the plan survives changes of staff.</li>
             </ul>
           </ExamSection>
 

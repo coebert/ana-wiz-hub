@@ -94,7 +94,7 @@ const PaediatricIcuTopic = () => {
       workedExamples={workedExamples}
       keyPoints={[
         { text: "Children have HR-dependent cardiac output — bradycardia is a pre-arrest sign; treat with atropine 20 mcg/kg", cites: ["Resuscitation Council UK 2021"] },
-        { text: "Paediatric septic shock: 10–20 ml/kg boluses with reassessment; adrenaline for cold shock, noradrenaline for warm shock", cites: ["BJA Educ 2019"] },
+        { text: "Paediatric septic shock: 10 ml/kg boluses with reassessment after each (20 ml/kg only for profound shock); adrenaline for cold shock, noradrenaline for warm shock", cites: ["BJA Educ 2019"] },
         { text: "Single ventricle physiology: target SpO₂ 75–85%; excessive O₂ causes pulmonary overcirculation and systemic steal", cites: ["RCPCH 2019"] },
         { text: "PRIS (propofol infusion syndrome) — avoid prolonged propofol infusions (>48h) in children", cites: ["NICE NG29"] },
         { text: "Isotonic maintenance fluids only — hypotonic fluids can cause fatal hyponatraemia in children", cites: ["FEAST 2011"] },
@@ -423,7 +423,16 @@ const PaediatricIcuTopic = () => {
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Goals & Assessment</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Sedation aims to relieve distress and facilitate ventilation/procedures while minimising drug accumulation, delirium and withdrawal. Assess with validated tools: <strong>COMFORT-B</strong> (target 11–17) for sedation depth, <strong>FLACC</strong> for pain in pre-verbal children, and <strong>SOS</strong> or <strong>WAT-1</strong> for iatrogenic withdrawal <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />.
+                  Sedation aims to relieve distress and facilitate ventilation/procedures while minimising drug accumulation, delirium and withdrawal. Clinical impression alone is unreliable in a paralysed, pre-verbal or developmentally delayed child, so <strong>validated tools must be scored regularly</strong> — at least once per nursing shift and after every change of infusion rate — with the score charted against an explicitly documented target <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />:
+                </p>
+                <ul className="list-disc pl-5 mt-2 space-y-1 text-sm text-muted-foreground">
+                  <li><strong>Pain</strong> — <strong>FLACC</strong> (Face, Legs, Activity, Cry, Consolability; 0–10) in pre-verbal children, with FLACC-revised for cognitive impairment; self-report (faces or numerical scale) whenever the child is able.</li>
+                  <li><strong>Sedation depth</strong> — <strong>COMFORT-B</strong> (behavioural, 6–30; target 11–17 for adequate sedation), or SBS/State Behavioural Scale; processed EEG has no established routine paediatric role.</li>
+                  <li><strong>Withdrawal</strong> — <strong>WAT-1</strong> (Withdrawal Assessment Tool-1; score ≥ 3 suggests iatrogenic withdrawal) or <strong>SOS</strong>, scored at least 12-hourly once opioid/benzodiazepine exposure exceeds about 5 days or during any wean.</li>
+                  <li><strong>Delirium</strong> — <strong>CAPD</strong> (Cornell Assessment of Pediatric Delirium; ≥ 9 positive, valid from birth including developmental delay) or <strong>pCAM-ICU</strong> / psCAM-ICU in older and pre-school children. Delirium is common, under-recognised, and independently associated with longer ventilation and stay.</li>
+                </ul>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Scoring exists to avoid both extremes. <strong>Over-sedation</strong> causes drug accumulation, prolonged ventilation and ICU stay, delirium, iatrogenic withdrawal, immobility and pressure injury, ileus and haemodynamic depression, plus concern over anaesthetic neurotoxicity in the developing brain. <strong>Under-sedation</strong> causes pain and distress, agitation, dyssynchrony and raised ICP or pulmonary vascular resistance, and accidental removal of the tracheal tube, lines and drains. Use analgesia-first sedation, set a daily target, and wean deliberately with a written plan rather than by drift <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />.
                 </p>
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
@@ -731,6 +740,41 @@ const PaediatricIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="risk-scoring" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Risk Stratification & Scoring Systems">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              Paediatric scores serve two distinct purposes: <strong>benchmarking and audit</strong> (comparing observed with predicted mortality across units, standardising case-mix in research) and <strong>bedside recognition of deterioration</strong>. They are not designed to guide treatment decisions in an individual child, and must never be used to withhold or limit therapy.
+            </p>
+            <div className="space-y-3">
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">PIM / PIM2 / PIM3 — admission mortality risk</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  The Paediatric Index of Mortality uses variables available at the <strong>time of PICU admission</strong> (first face-to-face contact), which makes it quick to collect and suitable for continuous quality monitoring. PIM2 includes systolic BP, pupillary reaction to light, PaO₂/FiO₂, base excess, mechanical ventilation in the first hour, elective admission, recovery from a procedure, cardiac bypass, and high- or low-risk diagnostic groups; it was recalibrated against improving outcomes, and PIM3 updates the diagnostic weightings again <InlineRef topicId="paediatric-icu" refLabel="PIM2 2003" />.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">PRISM III / PRISM IV — first 12–24 hours</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  The Pediatric Risk of Mortality score uses the <strong>worst values over the first 12–24 h</strong> of PICU stay across 17 physiological and laboratory variables (cardiovascular/neurological, acid-base, chemistry, haematology). The wider dataset can improve discrimination, but because it captures the effect of the first day's treatment it is susceptible to treatment bias and is more labour-intensive to collect than PIM <InlineRef topicId="paediatric-icu" refLabel="PIM2 2003" />.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">PELOD-2 — organ dysfunction</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Paediatric Logistic Organ Dysfunction quantifies the <strong>severity of multiple organ dysfunction</strong> rather than predicting admission mortality, scoring neurological (GCS, pupils), cardiovascular (lactate, MAP), renal (creatinine), respiratory (PaO₂/FiO₂, PaCO₂, ventilation) and haematological (WCC, platelets) domains. It can be scored serially, so it is used to track trajectory and as an outcome measure in trials — the paediatric counterpart of SOFA.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">PEWS — pre-PICU deterioration</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Paediatric Early Warning Scores work upstream of all of the above, on the ward: age-specific thresholds for heart rate, respiratory rate and effort, blood pressure, SpO₂/oxygen requirement, capillary refill and conscious level, plus explicit weight given to nurse and <strong>parental concern</strong>. A triggering or rising score mandates escalation to senior review and, where needed, the outreach or PICU retrieval team <InlineRef topicId="paediatric-icu" refLabel="Bedside PEWS 2009" />.
+                </p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+
           <SynthesisBlock
             title="Paediatric ICU — Critical Differences vs Adults"
             subtitle="The size, physiology, and pharmacology adjustments that matter at the bedside."
@@ -739,7 +783,7 @@ const PaediatricIcuTopic = () => {
             <ul className="space-y-2 list-disc list-inside text-sm">
               <li><strong>PEWS</strong>: Paediatric Early Warning Scores combine HR, RR, BP, SpO₂, respiratory effort, capillary refill, consciousness and nurse/family concern against age-specific norms; a rising or triggering score escalates to senior review and, if needed, the critical care outreach/PICU retrieval team <InlineRef topicId="paediatric-icu" refLabel="Bedside PEWS 2009" />.</li>
               <li><strong>Tube sizing</strong>: cuffed ETT ID = (age/4) + 3.5; length = (age/2) + 12 (oral).</li>
-              <li><strong>Fluid resuscitation</strong>: 10–20 ml/kg isotonic crystalloid bolus, reassess after each.</li>
+              <li><strong>Fluid resuscitation</strong>: 10 ml/kg isotonic crystalloid boluses, reassess after each (20 ml/kg reserved for profound shock; 5 ml/kg in DKA, trauma and neonates).</li>
               <li><strong>Maintenance fluids</strong>: isotonic only (NICE 2015). Holliday-Segar 4-2-1.</li>
               <li><strong>Sepsis</strong>: antibiotics within 1 h; noradrenaline (warm) or adrenaline (cold).</li>
               <li><strong>Drug dosing</strong>: weight-based (mg/kg). Sugammadex 2–4 mg/kg, suxamethonium 1.5–2 mg/kg.</li>
@@ -749,7 +793,7 @@ const PaediatricIcuTopic = () => {
           <ExamPitfallsCallout
             accent="icu"
             pitfalls={[
-              "Paediatric sepsis: PALS algorithm — 10–20 mL/kg fluid boluses (reassess after each), early antibiotics, early inotropes (peripheral if needed).",
+              "Paediatric sepsis: 10 mL/kg fluid boluses with reassessment after each (20 mL/kg only for profound shock, 5 mL/kg in DKA/trauma), early antibiotics, early inotropes (peripheral if needed).",
               "ETT/drug doses: WET FLAG (weight, energy 4 J/kg, tube size, fluid 10 mL/kg, lorazepam, adrenaline 10 µg/kg, glucose 2 mL/kg 10%).",
               "Congenital cyanotic heart disease: maintain SpO₂ at usual baseline (often 75–85%), avoid hypoxia/hypocapnia changes that affect PVR/SVR balance.",
               "Paediatric TBI: target CPP age-appropriate (40–60 mmHg), avoid hyponatraemia, head-up, normothermia.",

@@ -205,9 +205,18 @@ const PreoperativeAssessmentTopic = () => {
           </p>
         </CollapsibleSubsection>
 
-        <CollapsibleSubsection title="Sleep and preoperative risk">
+        <CollapsibleSubsection title="Sleep, obstructive sleep apnoea and preoperative risk">
           <p className="text-muted-foreground leading-relaxed">
-            Preoperative sleep disturbance is common — a pooled prevalence of around <strong>60%</strong> across surgical populations — and is associated with postoperative delirium and poorer recovery <InlineRef topicId="preoperative-assessment" refLabel="Sleep Med Rev 2023" />. Simple screening with Pittsburgh Sleep Quality Index (PSQI) questions, or brief sleep-quality questions at preoperative assessment, can flag patients who may benefit from targeted counselling and perioperative sleep-hygiene measures. A related, distinct risk group is patients with known or suspected <strong>obstructive sleep apnoea (OSA)</strong>, screened for using <strong>STOP-BANG</strong>.
+            Preoperative sleep disturbance is common — a pooled prevalence of around <strong>60%</strong> across surgical populations — and patients who develop postoperative delirium have a higher prevalence of both pre- and postoperative sleep disturbance <InlineRef topicId="preoperative-assessment" refLabel="Sleep Med Rev 2023" />. Simple screening with Pittsburgh Sleep Quality Index (PSQI) questions, or brief sleep-quality questions at preoperative assessment, can flag patients who may benefit from targeted counselling and perioperative sleep-hygiene measures.
+          </p>
+          <div className="p-3 rounded-lg border border-border mt-3">
+            <p className="font-semibold text-foreground text-sm">STOP-BANG screening for obstructive sleep apnoea</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              <strong>S</strong>noring, <strong>T</strong>iredness, <strong>O</strong>bserved apnoea, high blood <strong>P</strong>ressure, <strong>B</strong>MI &gt; 35 kg/m², <strong>A</strong>ge &gt; 50, <strong>N</strong>eck circumference &gt; 40 cm, male <strong>G</strong>ender. A score of <strong>0–2</strong> is low risk; <strong>≥ 3</strong> indicates moderate-to-high risk of OSA and <strong>≥ 5</strong> (or 2 of STOP plus BMI/neck/male) high probability of moderate-to-severe disease.
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-3">
+            <strong>Perioperative implications of suspected or confirmed OSA:</strong> exaggerated sensitivity to sedatives, opioids and volatile agents; increased risk of difficult mask ventilation and intubation; upper-airway obstruction and desaturation in recovery and during postoperative sleep rebound; higher rates of postoperative delirium, arrhythmia and pulmonary complications. Plan opioid-sparing multimodal analgesia and regional techniques, avoid unmonitored sedation, sit the patient up, continue home CPAP from recovery onwards, and choose a level of postoperative monitoring (extended recovery, continuous oximetry, HDU) that matches severity and surgery <InlineRef topicId="preoperative-assessment" refLabel="Sleep Med Rev 2023" />.
           </p>
         </CollapsibleSubsection>
 
@@ -215,6 +224,27 @@ const PreoperativeAssessmentTopic = () => {
         <div id="section-airway-assessment" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Assessment</h2>
           <ExamMappingBadges exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_01", "CL_BK_01"]} />
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            No single bedside test is adequate: sensitivity is low and specificity modest. Combining history, a structured examination and a weighted multivariate index performs considerably better than any test alone <InlineRef topicId="preoperative-assessment" refLabel="BJA Airway Index 1998" />. The purpose of assessment is not to produce a score but to generate a <strong>primary and backup airway plan</strong>.
+          </p>
+          <div className="p-4 rounded-lg border border-border mb-3">
+            <p className="text-sm font-semibold text-foreground">1. History</p>
+            <ul className="list-disc pl-5 mt-1 space-y-1 text-sm text-muted-foreground">
+              <li>Previous anaesthetic records and airway alerts — documented difficult intubation is the strongest single predictor; ask the patient and family about previous problems, dental damage, unplanned ICU admission or awake techniques.</li>
+              <li>Conditions associated with a difficult airway: obstructive sleep apnoea and obesity, acromegaly, rheumatoid arthritis (atlanto-axial instability, limited mouth opening), ankylosing spondylitis, previous head/neck surgery or radiotherapy, burns/scarring, goitre or mediastinal mass, pregnancy, syndromic craniofacial abnormality.</li>
+              <li>Symptoms of pathological airway: dyspnoea or stridor at rest or on lying flat, voice change, dysphagia, positional obstruction.</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg border border-border mb-3">
+            <p className="text-sm font-semibold text-foreground">2. Examination — LEMON</p>
+            <ul className="list-disc pl-5 mt-1 space-y-1 text-sm text-muted-foreground">
+              <li><strong>L</strong>ook externally — facial trauma, prominent incisors, beard, large tongue, short muscular neck, small mandible.</li>
+              <li><strong>E</strong>valuate the 3-3-2 rule — 3 finger breadths inter-incisor gap, 3 between hyoid and mentum, 2 between hyoid and thyroid notch.</li>
+              <li><strong>M</strong>allampati class I–IV — patient sitting, head neutral, mouth fully open, tongue protruded, no phonation; class III/IV predicts a poorer laryngoscopic view.</li>
+              <li><strong>O</strong>bstruction — stridor, muffled voice, difficulty swallowing secretions, tracheal deviation, radiotherapy fibrosis.</li>
+              <li><strong>N</strong>eck mobility — extension &lt;35° is problematic; consider C-spine pathology, ankylosing spondylitis, rheumatoid disease, collars and halo fixation.</li>
+            </ul>
+          </div>
           <div className="grid sm:grid-cols-3 gap-2">
             {[
               { test: "Mallampati", detail: "Class I–IV. Predicts view at laryngoscopy. Class III/IV associated with difficult intubation." },
@@ -229,6 +259,18 @@ const PreoperativeAssessmentTopic = () => {
                 <p className="text-xs text-muted-foreground mt-1">{t.detail}</p>
               </div>
             ))}
+          </div>
+          <div className="p-4 rounded-lg border border-border mt-3">
+            <p className="text-sm font-semibold text-foreground">3. Multivariate risk indices</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              The <strong>El-Ganzouri (simplified airway risk) index</strong> weights seven independent predictors — previous difficult intubation, pathology associated with a difficult airway, symptoms of pathological airway, inter-incisor gap and mandibular protrusion, thyromental distance, head and neck movement, and modified Mallampati class — and discriminates better than any component test used alone <InlineRef topicId="preoperative-assessment" refLabel="BJA Airway Index 1998" />. The <strong>Wilson score</strong> (weight, head/neck movement, jaw movement, receding mandible, buck teeth) makes the same point: it is combinations of factors, not isolated measurements, that predict difficulty.
+            </p>
+          </div>
+          <div className="p-4 rounded-lg border border-border mt-3">
+            <p className="text-sm font-semibold text-foreground">4. Planning</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Convert the assessment into an explicit, documented plan and share it with the theatre team: Plan A (e.g. videolaryngoscopy first if difficulty is anticipated), Plan B (supraglottic airway), Plan C (face-mask ventilation and wake up), Plan D (front-of-neck access), plus a decision on <strong>awake tracheal intubation</strong> where obstruction, radiotherapy fibrosis or an unstable C-spine make asleep techniques unsafe. Specify pre-oxygenation strategy, ramped positioning, who will be present, and which equipment must be in the room before induction.
+            </p>
           </div>
         </div>
 
