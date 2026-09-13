@@ -138,7 +138,7 @@ function discoverRoutes(): { path: string; isRedirect: boolean; isParam: boolean
   if (existsSync(topicRoutesFile)) {
     const topicSrc = readFileSync(topicRoutesFile, "utf8");
     // TOPIC_ROUTES: ["/some/path", "ComponentName"]
-    for (const m of topicSrc.matchAll(/\[\s*"(\/[^"]+)"\s*,\s*"[^"]+"\s*\]/g)) {
+    for (const m of topicSrc.matchAll(/\[\s*"(\/[^"]+)"\s*,\s*"([A-Za-z0-9_]+)"\s*\]/g)) {
       routes.push({ path: m[1], isRedirect: false, isParam: m[1].includes(":") });
     }
     // TOPIC_REDIRECTS: ["/from", "/to"] — flag as redirect so they're skipped.
@@ -207,10 +207,12 @@ async function fetchDrugSlugs(): Promise<string[]> {
 async function expandParamRoute(path: string): Promise<SitemapEntry[]> {
   if (path === "/drugs/:slug") {
     const slugs = await fetchDrugSlugs();
+    const detailLastmod = lastModFor("/drugs/:slug") ?? lastModFor("/drugs");
     return slugs.map((slug) => ({
       path: `/drugs/${slug}`,
       changefreq: "monthly",
       priority: "0.6",
+      lastmod: detailLastmod,
     }));
   }
   console.warn(`[sitemap] No expander registered for param route "${path}" — skipped.`);
