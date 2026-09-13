@@ -459,6 +459,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2005", citation: "Moran P, Lim J. Pulmonary artery catheter. BJA Education. 2005;5(6):207-210.", url: "https://doi.org/10.1093/bjaceaccp/mki054" },
   ],
   "transfusion-coagulation": [
+    { label: "BSH DOAC Bleeding 2023", citation: "British Society for Haematology. Guideline on the management of bleeding and the perioperative management of patients receiving direct oral anticoagulants. Br J Haematol. 2023 — idarucizumab for dabigatran, andexanet alfa or 4-factor PCC for anti-Xa inhibitors.", url: "https://b-s-h.org.uk/guidelines/" },
+    { label: "RE-VERSE AD 2017", citation: "Pollack CV, Reilly PA, van Ryn J, et al. Idarucizumab for dabigatran reversal — full cohort analysis. N Engl J Med. 2017;377(5):431-441 — 5 g IV idarucizumab (two 2.5 g vials) reversed dabigatran anticoagulation completely in 100% of patients.", url: "https://doi.org/10.1056/NEJMoa1707278" },
+    { label: "ANNEXA-4 2019", citation: "Connolly SJ, Crowther M, Eikelboom JW, et al. Full study report of andexanet alfa for bleeding associated with factor Xa inhibitors. N Engl J Med. 2019;380(14):1326-1335.", url: "https://doi.org/10.1056/NEJMoa1814051" },
     { label: "CRASH-2 2010", citation: "CRASH-2 trial collaborators. Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients. Lancet. 2010;376:23-32.", url: "https://doi.org/10.1016/S0140-6736(10)60835-5", excerpt: "Tranexamic acid was given as a loading dose of 1 g infused over 10 min, followed by an intravenous infusion of 1 g over 8 h." },
     { label: "Curr Opin Anaesthesiol 2013 VHA", citation: "Görlinger K, Dirkmann D, Hanke AA. Rotational thromboelastometry (ROTEM) and its role in goal-directed coagulation management. Curr Opin Anaesthesiol. 2013;26(2):203-13.", url: "https://doi.org/10.1097/ACO.0b013e32835afd28" },
 
@@ -1079,6 +1082,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NICE NG51", citation: "NICE. Sepsis: recognition, diagnosis and early management (NG51). 2016 (updated 2017).", url: "https://www.nice.org.uk/guidance/ng51" },
   ],
   "haematology-icu": [
+    { label: "CAPS Asherson 2003", citation: "Asherson RA, Cervera R, de Groot PG, et al. Catastrophic antiphospholipid syndrome: international consensus statement on classification criteria and treatment guidelines. Lupus. 2003;12(7):530-534.", url: "https://doi.org/10.1191/0961203303lu394oa" },
+    { label: "CAPS Blood 2021", citation: "Cervera R, Rodríguez-Pintó I, Espinosa G. The diagnosis and clinical management of the catastrophic antiphospholipid syndrome: a comprehensive review. J Autoimmun. 2018;92:1-11 — triple therapy with anticoagulation, corticosteroids and plasma exchange/IVIG.", url: "https://doi.org/10.1016/j.jaut.2018.05.007" },
     { label: "BJA Educ CRRT 2017", citation: "Anticoagulation for continuous renal replacement therapy. BJA Education. 2017 — regional citrate anticoagulation, citrate accumulation and its management.", url: "https://www.bjaed.org/article/S2058-5349(17)30067-X/fulltext" },
     { label: "CJASN 2014 Citrate", citation: "Morabito S, Pistolesi V, Tritapepe L, Fiaccadori E. Regional citrate anticoagulation for RRT in patients with AKI. Clin J Am Soc Nephrol. 2014;9(12):2173-2188 — citrate accumulation, total:ionised calcium ratio and dose adjustment.", url: "https://doi.org/10.2215/CJN.01280214" },
     { label: "TRICC 1999", citation: "Hébert PC et al. A multicenter, randomized, controlled clinical trial of transfusion requirements in critical care (TRICC). N Engl J Med. 1999;340:409-417.", url: "https://doi.org/10.1056/NEJM199902113400601" },
