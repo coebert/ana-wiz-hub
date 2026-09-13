@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Calculator, Download, FlaskConical, Pill, Search, Syringe } from "lucide-react";
+import { BookOpen, Calculator, Download, FlaskConical, Pill, Search, Syringe } from "lucide-react";
 
 import ReferenceAppLayout from "@/features/drugReference/ReferenceAppLayout";
 import { useDrugList } from "@/features/drugReference/useDrugReference";
