@@ -434,6 +434,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2005", citation: "Moran P, Lim J. Pulmonary artery catheter. BJA Education. 2005;5(6):207-210.", url: "https://doi.org/10.1093/bjaceaccp/mki054" },
   ],
   "transfusion-coagulation": [
+    { label: "Curr Opin Anaesthesiol 2013 VHA", citation: "Görlinger K, Dirkmann D, Hanke AA. Rotational thromboelastometry (ROTEM) and its role in goal-directed coagulation management. Curr Opin Anaesthesiol. 2013;26(2):203-13.", url: "https://doi.org/10.1097/ACO.0b013e32835afd28" },
+
     { label: "CRASH-3 2019", citation: "CRASH-3 trial collaborators. Effects of tranexamic acid on death, disability, vascular occlusive events and other morbidities in patients with acute traumatic brain injury. Lancet. 2019;394:1713-23.", url: "https://doi.org/10.1016/S0140-6736(19)32233-0" },
     { label: "SHOT 2023", citation: "Serious Hazards of Transfusion (SHOT) Annual Report — TACO remains the most frequently reported cause of transfusion-related death in the UK.", url: "https://www.shotuk.org/shot-reports/" },
     { label: "POISE-3 2022", citation: "Devereaux PJ, Marcucci M, Painter TW, et al. Tranexamic acid in patients undergoing noncardiac surgery (POISE-3). N Engl J Med. 2022;386(21):1986-1997 — single 1 g bolus reduced bleeding; non-inferiority for the cardiovascular composite was not established.", url: "https://doi.org/10.1056/NEJMoa2201171" },
