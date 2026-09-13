@@ -291,6 +291,53 @@ const AntimicrobialsTopic = () => {
           </div>
 
           <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Class-Specific Toxicities for the ICU Viva</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Beyond the adverse effects listed with each class, four toxicities dominate critical-care practice and vivas because they are dose-related, mechanistically explicable and often iatrogenic.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                { label: "β-Lactam neurotoxicity", value: "Encephalopathy, myoclonus, non-convulsive status and seizures caused by concentration-dependent antagonism of inhibitory GABA-A receptors, producing cortical hyperexcitability. Risk factors: renal impairment with unadjusted dosing, high doses, advanced age, pre-existing CNS disease and blood-brain barrier disruption (meningitis, neurosurgery). Most implicated: carbapenems (especially imipenem) and fourth-generation cephalosporins (cefepime); also high-dose benzylpenicillin. Management: recognise it (EEG if obtunded), stop or dose-reduce the agent, renal-adjust or switch class — recovery usually follows within days." },
+                { label: "Vancomycin-associated AKI (VA-AKI)", value: "A distinct entity from historical 'nephrotoxicity' of impure preparations: proximal tubular oxidative injury with obstructive casts of vancomycin–uromodulin aggregates, and interstitial nephritis. Exposure-related — AUC24 >600 mg·h/L and troughs >15–20 mg/L, prolonged courses and concurrent nephrotoxins. Markedly potentiated by co-prescribed piperacillin-tazobactam (avoid the combination; use meropenem or cefepime where Gram-negative cover is needed). Prevention: AUC-guided dosing, daily creatinine, shortest effective course." },
+                { label: "Aminoglycoside ototoxicity", value: "Destruction of outer hair cells and vestibular type I cells is usually irreversible, because the sensory epithelium does not regenerate. Two components: cochlear (high-frequency sensorineural hearing loss, tinnitus — amikacin/kanamycin) and vestibular (oscillopsia, ataxia, unsteadiness — gentamicin/streptomycin). Cumulative-dose and duration dependent, worsened by loop diuretics, renal impairment and mitochondrial 12S rRNA (m.1555A>G) variants. Nephrotoxicity by contrast is usually reversible. Limit courses to 3–5 days, use extended-interval dosing and trough-based monitoring." },
+                { label: "Daptomycin", value: "Skeletal-muscle membrane injury causes myopathy and rhabdomyolysis — check creatine kinase at baseline and at least weekly, stop if CK rises above ~5 × upper limit with symptoms (or 10 × without), and avoid or pause statins. Rare but serious eosinophilic pneumonia presents after 2–4 weeks with fever, dyspnoea, hypoxaemia and pulmonary infiltrates ± peripheral eosinophilia; treatment is drug withdrawal and corticosteroids. Remember daptomycin is inactivated by pulmonary surfactant and must never be used for pneumonia." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs font-semibold text-foreground">{item.label}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{item.value}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground mt-3">
+              The common thread is exposure: nearly all are avoidable by renal-adjusted, level- or AUC-guided dosing and by stopping at the shortest effective duration<InlineRef topicId="antimicrobials-pharm" refLabel="BJA Educ Beta-lactam Neurotoxicity" />.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Antifungal Stewardship (AFS)</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Invasive fungal infection is rising in incidence, antifungals are expensive and toxic, and azole and echinocandin resistance is emerging — so the stewardship principles applied to antibacterials must be applied to antifungals in their own right<InlineRef topicId="antimicrobials-pharm" refLabel="BJA Educ Antifungal Stewardship" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                { label: "Rationale", value: "Rising incidence of candidaemia and invasive aspergillosis in critical care, drug acquisition costs far exceeding antibacterials, significant toxicity and interactions (azole CYP inhibition, amphotericin nephrotoxicity), and emerging resistance including C. auris and azole-resistant Aspergillus fumigatus." },
+                { label: "Surveillance", value: "Local surveillance of fungal isolates, species distribution, susceptibility patterns and antifungal consumption (DDDs) provides the baseline for empirical policy and for measuring the effect of interventions." },
+                { label: "Guidelines and care pathways", value: "Local evidence-based prescribing pathways defining who warrants empirical, pre-emptive or targeted therapy — for example echinocandin first-line for candidaemia, voriconazole or isavuconazole for invasive aspergillosis, plus line removal and ophthalmology review in candidaemia." },
+                { label: "Formulary restriction", value: "Restricted access and pre-authorisation for high-cost or broad-spectrum agents (liposomal amphotericin, posaconazole, isavuconazole), with release only after microbiology or infection-specialist approval." },
+                { label: "Prospective audit and feedback", value: "Multidisciplinary review — intensivist, medical microbiologist or infection specialist and antimicrobial pharmacist — of every antifungal prescription at 48–72 h, with documented indication, review date and feedback to prescribers." },
+                { label: "De-escalation and stopping", value: "Stop or narrow therapy on culture and biomarker results: serum β-D-glucan and Aspergillus galactomannan (serum or BAL) have high negative predictive value, so persistently negative tests in a non-improving patient support stopping empirical antifungals. Step down from echinocandin to fluconazole for susceptible Candida once stable and enterally absorbing." },
+                { label: "Dose optimisation and TDM", value: "Weight-based dosing, and therapeutic drug monitoring for voriconazole (trough 1–5.5 mg/L, non-linear kinetics, CYP2C19 polymorphism), posaconazole and flucytosine — under-dosing drives failure and resistance, over-dosing drives neurotoxicity and hepatotoxicity." },
+                { label: "Education", value: "Regular teaching for medical and nursing staff on risk stratification, specimen sampling before therapy, interaction checking, and the difference between colonisation and invasive infection — the commonest driver of inappropriate antifungal use." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs font-semibold text-foreground">{item.label}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{item.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Antibacterial Use in Pregnancy and Lactation</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The guiding principle is to balance maternal benefit against fetal or neonatal risk: untreated maternal sepsis is far more dangerous than almost any antibacterial, so effective therapy is never withheld, but agent choice should favour drugs with the longest safety record<InlineRef topicId="antimicrobials-pharm" refLabel="BJA Educ 2018 Pregnancy" />.

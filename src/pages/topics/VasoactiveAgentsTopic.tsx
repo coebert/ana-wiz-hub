@@ -360,7 +360,7 @@ const VasoactiveAgentsTopic = () => {
             <li><strong>Dose:</strong> bolus 0.5–1 mg IV (dilute to 0.5 mg/mL); infusion 0.5–5 mg/hr titrated to MAP.</li>
             <li><strong>Kinetics:</strong> onset 1–2 min, duration of a single bolus 20–60 min — considerably longer than phenylephrine. It is a poor substrate for COMT and is not metabolised by MAO in the way noradrenaline is; elimination pathways are incompletely characterised, with conjugation and renal excretion of metabolites.</li>
             <li><strong>Tachyphylaxis:</strong> repeated doses deplete noradrenaline stores and replace them with metaraminol acting as a “false transmitter” — a weaker agonist than noradrenaline — so responses diminish. Switch to a directly acting agent (phenylephrine, noradrenaline) rather than escalating.</li>
-            <li><strong>Clinical use:</strong> mainstay for hypotension after spinal or epidural blockade, and a peripherally safe bridge while central access and a noradrenaline infusion are established. Extravasation is less injurious than noradrenaline but still warrants care <InlineRef topicId="vasoactive-agents" refLabel="Peck &amp; Hill Ch.11" /></li>
+            <li><strong>Clinical use:</strong> mainstay for hypotension after spinal or epidural blockade, and a peripherally safe bridge while central access and a noradrenaline infusion are established. Extravasation is less injurious than noradrenaline but still warrants care <InlineRef topicId="vasoactive-agents" refLabel="Peck & Hill Ch.11" /></li>
           </ul>
         </section>
 
@@ -595,7 +595,7 @@ const VasoactiveAgentsTopic = () => {
           <ul className="text-foreground/90 space-y-1">
             <li>Direct NO donor → balanced arterial and venous dilation</li>
             <li>Extremely rapid onset and offset (1–2 min). Dose: 0.5–8 µg/kg/min</li>
-            <li><strong>Cyanide release:</strong> SNP reacts with oxyhaemoglobin, producing methaemoglobin and an unstable nitroprusside radical that decomposes to release <strong>5 CN⁻ ions</strong> per molecule<InlineRef topicId="vasoactive-agents" refLabel="Peck &amp; Hill Ch.11" /></li>
+            <li><strong>Cyanide release:</strong> SNP reacts with oxyhaemoglobin, producing methaemoglobin and an unstable nitroprusside radical that decomposes to release <strong>5 CN⁻ ions</strong> per molecule<InlineRef topicId="vasoactive-agents" refLabel="Peck & Hill Ch.11" /></li>
             <li><strong>Detoxification:</strong> hepatic <em>rhodanase</em> (thiosulphate sulphurtransferase) transfers sulphur from a donor (thiosulphate) to cyanide, forming thiocyanate excreted renally. Capacity is limited by sulphur-donor availability, so malnourished, hepatically impaired and high-infusion-rate patients accumulate cyanide; thiocyanate itself accumulates in renal failure (confusion, seizures, hypothyroidism)</li>
             <li><strong>Mechanism of toxicity:</strong> CN⁻ binds ferric iron in <strong>cytochrome c oxidase (complex IV)</strong>, halting mitochondrial electron transport. Oxygen delivery is preserved but cannot be used — histotoxic (cytotoxic) hypoxia with anaerobic glycolysis, high-anion-gap lactic acidosis and a narrowed arteriovenous oxygen difference (high venous saturations)</li>
             <li><strong>Clinical features:</strong> <em>tachyphylaxis to the infusion is an early warning</em>, then headache, dizziness, confusion, nausea, rising lactate and base deficit, arrhythmias and finally cardiovascular collapse and coma</li>
