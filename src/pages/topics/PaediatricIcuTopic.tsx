@@ -348,7 +348,7 @@ const PaediatricIcuTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Non-Invasive Support</p>
-                <p className="text-sm text-muted-foreground mt-1">HFNC at 1–2 L/kg/min — commonly used in bronchiolitis, but recent reviews question its evidence base and routine place in standard care <InlineRef topicId="paediatric-icu" refLabel="RSV Lancet 2024" />. CPAP/BiPAP increasingly first-line for moderate respiratory failure, and CPAP is recommended for impending respiratory failure in bronchiolitis <InlineRef topicId="paediatric-icu" refLabel="NICE NG9" />.</p>
+                <p className="text-sm text-muted-foreground mt-1">CPAP/BiPAP is increasingly used first-line for moderate respiratory failure, and CPAP is recommended for impending respiratory failure in bronchiolitis <InlineRef topicId="paediatric-icu" refLabel="NICE NG9" />. <strong>HFNC (1–2 L/kg/min) is widely used but its role is now genuinely contested</strong>: a major 2024 Lancet review of severe RSV infection concluded that the evidence for HFNC is insufficient and that rising PICU admission and intubation rates argue for removing it from standard care <InlineRef topicId="paediatric-icu" refLabel="RSV Lancet 2024" />. Treat HFNC as a comfort/escalation bridge rather than an established therapy, escalate early to CPAP if work of breathing does not improve, and be ready to discuss the HFNC-versus-CPAP debate as an evolving area in the viva.</p>
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Paediatric ARDS (PARDS)</p>
@@ -450,8 +450,15 @@ const PaediatricIcuTopic = () => {
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Iatrogenic Withdrawal Syndrome (IWS)</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  A recognisable cluster of CNS, GI and autonomic symptoms following abrupt cessation of opioids/benzodiazepines, with risk rising after &gt;5 days of therapy <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />. Score with SOS/WAT-1 and wean by 10–20%/day, converting to oral methadone and/or clonidine to allow controlled weaning.
+                  A recognisable cluster of CNS, GI and autonomic symptoms following abrupt cessation of opioids/benzodiazepines, with risk rising after &gt;5 days of therapy <InlineRef topicId="paediatric-icu" refLabel="ESPNIC Sedation 2016" />.
                 </p>
+                <ul className="list-disc pl-5 mt-2 space-y-1 text-sm text-muted-foreground">
+                  <li><strong>Score before you wean</strong> — WAT-1 at least 12-hourly; a score ≥ 3 (and certainly &gt; 4) indicates withdrawal needing treatment rather than further weaning, so hold the wean and give a rescue dose.</li>
+                  <li><strong>Rate</strong> — reduce the total daily opioid and benzodiazepine dose by <strong>10–20 % every 12–24 h</strong>, guided by the score; exposure &gt; 2–3 weeks usually needs a slower 5–10 % per day taper.</li>
+                  <li><strong>Route conversion</strong> — once the gut works, convert to enteral equivalents (oral morphine or methadone, oral lorazepam or diazepam) and continue the taper at home or on the ward.</li>
+                  <li><strong>Adjuncts</strong> — clonidine or dexmedetomidine reduce withdrawal scores and opioid/benzodiazepine requirement; watch for bradycardia and rebound hypertension on stopping clonidine abruptly.</li>
+                  <li><strong>Wean one class at a time</strong> where possible, keep the plan written and dated, and screen for delirium in parallel — agitation is often delirium rather than withdrawal.</li>
+                </ul>
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Delirium</p>

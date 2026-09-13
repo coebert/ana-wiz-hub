@@ -70,7 +70,7 @@ const workedExamples: WorkedExample[] = [
         <p className="font-semibold text-foreground">Step-by-step</p>
         <ol className="list-decimal list-inside space-y-1">
           <li><strong>Differential</strong>: burn-wound sepsis, pneumonia (VAP — inhalation injury predisposes), line sepsis, toxic shock syndrome (Strep/Staph), abdominal compartment syndrome, AKI, ARDS.</li>
-          <li><strong>Source control &amp; cultures</strong>: full septic screen including burn-wound biopsy/quantitative culture (&gt;10⁵ org/g = invasive infection), tracheal aspirate, blood and line cultures; remove and re-site lines through clean tissue if possible.</li>
+          <li><strong>Source control &amp; cultures</strong>: full septic screen including burn-wound biopsy/quantitative culture (&gt;10⁷ cfu/g of tissue with invasion of underlying viable tissue = invasive infection), tracheal aspirate, blood and line cultures; remove and re-site lines through clean tissue if possible.</li>
           <li><strong>Empirical antibiotics</strong>: broad-spectrum following local burn-unit policy (e.g. piperacillin–tazobactam ± vancomycin) — cover Pseudomonas and MRSA. De-escalate on cultures. Consider toxic shock if early erythroderma → IVIG + clindamycin.</li>
           <li><strong>Abdominal compartment syndrome</strong>: IAP 22 mmHg with organ dysfunction = ACS. Decompress: NG drainage, sedation, neuromuscular blockade, drain ascites if present, consider decompressive laparotomy if &gt;25 mmHg with refractory dysfunction. Reassess fluids — escalate to colloid/albumin and reduce crystalloid volume.</li>
           <li><strong>Hypermetabolic response</strong>: burns produce a profound catabolic state for weeks–months. Manage with early enteral nutrition (within 24 h, 1.5–2 g/kg/day protein, 25–30 kcal/kg/day), tight glycaemic control (4–10 mmol/L), beta-blockade (propranolol) and oxandrolone in selected patients to attenuate catabolism.</li>
@@ -137,7 +137,7 @@ const BurnsIcuTopic = () => {
         { text: "CO competes with O₂ for haemoglobin (240× affinity); SpO₂ over-reads. Treat with 100 % O₂; consider HBO if COHb >25 %, neurology, pregnancy or persistent symptoms.", cites: ["ABA Burn 2023"] },
         { text: "Cyanide — suspect with persistent metabolic acidosis + lactate >10 mmol/L after enclosed-space fire. Treat empirically with hydroxocobalamin 5 g IV.", cites: ["BJA Educ Burns 2017"] },
         { text: "Suxamethonium is safe within 24 h of injury but contra-indicated from day 5 to ~12–24 months due to extra-junctional ACh receptors and lethal hyperkalaemia.", cites: ["Parkland Formula"] },
-        { text: "Burn-wound sepsis is the leading cause of late mortality. Pseudomonas, MRSA and fungi predominate; quantitative wound biopsy >10⁵ org/g defines invasive infection.", cites: ["ISBI 2016"] },
+        { text: "Burn-wound sepsis is the leading cause of late mortality. Pseudomonas, MRSA and fungi predominate; quantitative wound biopsy >10⁷ cfu/g defines invasive infection.", cites: ["ISBI 2016", "BJA Educ Major Burns 2012"] },
         { text: "Hypermetabolism: rest energy expenditure 150–200 % predicted. Treat with early enteral nutrition, tight glycaemic control, propranolol and (in selected) oxandrolone.", cites: ["ABA Burn 2023"] },
         { text: "UK Burns Centre referral: ≥20 % TBSA adult / ≥10 % child, any face/hand/perineum/major joint, full-thickness, electrical, chemical, inhalation, or burn with comorbidity.", cites: ["BJA Educ Burns 2017"] },
       ]}
@@ -158,6 +158,41 @@ const BurnsIcuTopic = () => {
               <li><strong>End-organ effects</strong>: ARDS, AKI (myoglobin, hypoperfusion), gut translocation, ileus, stress ulcers (Curling’s), cholestasis, encephalopathy.</li>
             </ul>
             <BurnShockPathophysiologyDiagram />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="sjs-ten" exams={[Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="SJS / Toxic Epidermal Necrolysis — the ‘non-thermal burn’">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Stevens–Johnson syndrome (SJS) and toxic epidermal necrolysis (TEN) are a spectrum of severe
+              mucocutaneous reactions that strip the epidermis and behave physiologically like a major burn.
+              They are routinely managed in burns intensive care because the supportive package — wound care,
+              fluid resuscitation, temperature control, nutrition and analgesia — is identical, even though the
+              pathophysiology is immunological rather than thermal <InlineRef topicId="burns-icu" refLabel="UK SJS/TEN 2016" />.
+              Classification is by epidermal detachment: SJS &lt;10 % BSA, SJS/TEN overlap 10–30 %, TEN &gt;30 %.
+            </p>
+            <div className="space-y-3">
+              {[
+                { tool: "Aetiology", detail: "Predominantly drug-induced delayed hypersensitivity, typically 4–28 days after exposure. Classic culprits: allopurinol, sulfonamides (incl. co-trimoxazole), anticonvulsants (carbamazepine, lamotrigine, phenytoin), nevirapine, NSAIDs (oxicams). Mycoplasma and other infections cause a minority, especially in children." },
+                { tool: "Pathophysiology", detail: "Drug-specific CD8⁺ cytotoxic T cells and NK cells release granulysin, perforin/granzyme B and soluble FasL, driving widespread keratinocyte apoptosis. Full-thickness epidermal necrosis separates the epidermis at the dermo-epidermal junction — hence the burn-like loss of barrier, evaporative fluid and heat loss, and infection risk." },
+                { tool: "Clinical features", detail: "Prodromal fever and malaise, then painful dusky macules and atypical targetoid lesions coalescing into flaccid blisters and sheet-like detachment. Positive Nikolsky sign. Mucosal involvement in >90 %: stomatitis, oesophagitis, purulent conjunctivitis and symblepharon, urethritis, and tracheobronchial epithelial sloughing that may precipitate respiratory failure." },
+                { tool: "SCORTEN prognostication", detail: "Seven day-1 variables, one point each: age >40, malignancy, heart rate >120, initial detachment >10 % BSA, urea >10 mmol/L, glucose >14 mmol/L, bicarbonate <20 mmol/L. Mortality rises steeply from ~3 % at 0–1 points to >90 % at ≥5 points; used for triage and family discussion, not to limit supportive care." },
+                { tool: "ICU management principles", detail: "Immediate withdrawal of every suspected culprit drug is the single most important intervention. Then: burns-style fluid resuscitation titrated to urine output (requirements are roughly two-thirds of an equivalent thermal burn), ambient warming and normothermia, early enteral or NG nutrition, meticulous non-adherent dressings with hands-off/no-debridement of detached epidermis where possible, strict asepsis with surveillance cultures rather than prophylactic antibiotics, opioid-based analgesia (± ketamine for dressings), daily ophthalmology review with lubricants and amniotic membrane for severe eye involvement, plus oral, urogenital and airway care." },
+                { tool: "Immunomodulation — contested", detail: "No therapy has proven mortality benefit in randomised trials. IVIG, high-dose corticosteroids, ciclosporin, plasma exchange and anti-TNF agents (etanercept) are all used in specialist centres on a case-by-case basis; UK guidance stresses that supportive care in an appropriate unit outweighs any specific agent." },
+              ].map(t => (
+                <div key={t.tool} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{t.tool}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{t.detail}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground italic mt-3">
+              Exam framing: asked to compare TEN with a thermal burn, contrast the mechanism (immune-mediated
+              apoptosis vs coagulative necrosis), the depth (epidermal only, so healing is usually without
+              grafting), the mucosal and ocular involvement, and the lower fluid requirement — but emphasise
+              that the burns-unit supportive bundle and SCORTEN-based prognostication are the same discipline
+              <InlineRef topicId="burns-icu" refLabel="SCORTEN 2000" />.
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -245,7 +280,7 @@ const BurnsIcuTopic = () => {
               <li><strong>Nutrition</strong>: enteral within 24 h via NG/NJ; 25–30 kcal/kg/day, protein 1.5–2 g/kg/day; supplement glutamine, vitamin C, zinc, selenium. Indirect calorimetry where available.</li>
               <li><strong>Glycaemic control</strong>: target 4–10 mmol/L with insulin infusion; hyperglycaemia worsens infection and graft loss.</li>
               <li><strong>Anti-catabolic therapy</strong>: propranolol 1–4 mg/kg/day attenuates the catecholamine-driven hypermetabolic response; oxandrolone in selected adults reduces lean-body-mass loss.</li>
-              <li><strong>Infection prevention</strong>: meticulous wound care, topical antimicrobials (silver sulfadiazine, mafenide), reverse barrier nursing; surveillance cultures; treat invasive infection (&gt;10⁵ org/g on quantitative biopsy) with targeted IV antibiotics.</li>
+              <li><strong>Infection prevention</strong>: meticulous wound care, topical antimicrobials (silver sulfadiazine, mafenide), reverse barrier nursing; surveillance cultures; treat invasive infection (&gt;10⁷ cfu/g on quantitative biopsy, with microbial invasion of underlying viable tissue) with targeted IV antibiotics <InlineRef topicId="burns-icu" refLabel="BJA Educ Major Burns 2012" />.</li>
               <li><strong>Thromboprophylaxis</strong>: high VTE risk — chemical and mechanical from day 1 if not actively bleeding. Heparin requirements often higher than predicted.</li>
               <li><strong>Temperature</strong>: loss of the skin barrier removes the body's principal defence against heat loss, so the major burn loses heat continuously by <strong>evaporation</strong> from the exposed wound surface (the dominant route, worsened by wet dressings and each dressing change) and by <strong>radiation and convection</strong> from a widely exposed, vasodilated surface, with conduction to cold trolleys and unwarmed fluids adding further. The hypermetabolic response resets the hypothalamic set-point upward, so these patients need an ambient temperature far above normal: theatre 28–30 °C, warming blankets and forced-air warmers, humidified circuits, fluid and blood warmers, and minimal exposure time.
                 <ul className="list-disc list-inside ml-4 mt-1 space-y-1">

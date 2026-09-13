@@ -199,6 +199,34 @@ const TransfusionCoagulationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="doac-bleeding" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="DOAC-Associated Bleeding & Reversal">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Direct oral anticoagulants have largely displaced warfarin, so the bleeding patient on a DOAC is now a
+              standard exam and ICU problem. Establish <strong>which drug, what dose, when the last dose was taken,
+              and renal function</strong> — DOACs have half-lives of 8–15 h, so time since ingestion and creatinine
+              clearance predict residual effect better than any coagulation screen <InlineRef topicId="transfusion-coagulation" refLabel="BSH DOAC Bleeding 2023" />.
+            </p>
+            <div className="space-y-3">
+              {[
+                { topic: "Laboratory assessment", detail: "A normal thrombin time excludes clinically relevant dabigatran; a normal drug-calibrated anti-Xa level excludes apixaban, rivaroxaban and edoxaban. PT and APTT are insensitive and a normal result does not exclude anticoagulant effect. Viscoelastic tests do not reliably quantify DOACs." },
+                { topic: "General measures for all DOAC bleeding", detail: "Stop the drug and any antiplatelet; local haemostasis and surgical/endoscopic/radiological source control; fluid and red cell resuscitation; tranexamic acid 1 g IV (unless contraindicated); correct calcium, temperature, pH and platelet count (target > 50 × 10⁹/L, > 100 × 10⁹/L in intracranial bleeding); activated charcoal if ingestion was within 2–4 h. DOACs are highly protein-bound apart from dabigatran, which is dialysable (~60 % removal in 2–4 h)." },
+                { topic: "Dabigatran — idarucizumab", detail: "Specific humanised Fab fragment: 5 g IV (two 2.5 g/50 mL vials given consecutively) for life-threatening bleeding or urgent surgery. Onset is within minutes and reversal is essentially complete; a second 5 g dose may be needed if bleeding recurs with a re-prolonged thrombin time. Re-anticoagulate as soon as safe — the underlying thrombotic risk persists" },
+                { topic: "Apixaban / rivaroxaban / edoxaban — andexanet alfa or PCC", detail: "Andexanet alfa is a modified decoy factor Xa given as a bolus plus 2-hour infusion (low or high dose by drug, dose and timing) and is licensed for life-threatening or uncontrolled bleeding, chiefly intracranial. Where it is unavailable or not funded, give 4-factor prothrombin complex concentrate 25–50 units/kg. Both carry a thrombotic risk, and neither has proven mortality benefit — restrict to critical-site bleeding" },
+                { topic: "Restarting anticoagulation", detail: "Weigh recurrent bleeding against thrombosis: typically restart 4–7 days after major GI bleeding once haemostasis is secure, and 2–4 weeks after intracranial haemorrhage in consultation with neurology/neurosurgery. Reassess the indication, dose and renal function, and involve haematology in every reversal decision." },
+              ].map((d) => (
+                <div key={d.topic} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{d.topic}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{d.detail}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground mt-3">
+              <InlineRef topicId="transfusion-coagulation" refLabel="RE-VERSE AD 2017" /> <InlineRef topicId="transfusion-coagulation" refLabel="ANNEXA-4 2019" /> <InlineRef topicId="transfusion-coagulation" refLabel="BSH DOAC Bleeding 2023" />
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="cryo-vs-fib" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Cryoprecipitate vs Fibrinogen Concentrate">
             <p className="text-muted-foreground leading-relaxed mb-3">

@@ -67,7 +67,9 @@ const workedExamples: WorkedExample[] = [
       <>
         <strong>Functional warm ischaemia time (fWIT)</strong> begins when SBP &lt; 50 mmHg. After
         cardiac arrest there is a mandatory <strong>5-minute hands-off observation</strong>;
-        legal time of death = end of the 5 min. Cold perfusion should start within ~10 min of
+        legal time of death = <strong>start of the 5-minute observation period</strong> (the moment
+        the clinician begins observing the absent circulation, not the end of the standoff). Cold
+        perfusion should start within ~10 min of
         death; the standdown threshold (after which donation does not proceed) is typically 2–3 h
         from withdrawal — beyond this WIT is too prolonged for viable retrieval.
       </>
@@ -104,7 +106,7 @@ const OrganDonationTopic = () => {
         { text: "NRP reduces DCD liver discard and ischaemic cholangiopathy; reduces kidney DGF from ~50% to ~20%", cites: ["AoMRC 2008"] },
         { text: "Ethical framework: permanence vs irreversibility, dead donor rule, cerebral exclusion as safeguard", cites: ["BJA Educ 2016"] },
         { text: "AoMRC (2021) endorses NRP as ethically acceptable provided arch vessels are excluded before perfusion", cites: ["NICE CG135"] },
-        { text: "Legal time of death: BSD = completion of first set of tests; DCD = end of 5-minute standoff — NRP does not reverse death", cites: ["AoMRC 2008"] },
+        { text: "Legal time of death: BSD = completion of first set of tests; DCD = the time the 5-minute observation period starts (not its end) — NRP does not reverse death", cites: ["AoMRC 2008", "AoMRC DNC Code of Practice (PDF)"] },
       ]}
       topicId="organ-donation"
       topicTitle="Organ Donation"
@@ -253,7 +255,7 @@ const OrganDonationTopic = () => {
           <ExamSection id="dcd" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="DCD — Pathway & Maastricht Classification">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              DCD ~60% of UK deceased donations. Functional WIT begins when SBP &lt;50 mmHg. Mandatory 5-min hands-off period after asystole; legal time of death = end of 5 min.
+              DCD ~60% of UK deceased donations. Functional WIT begins when SBP &lt;50 mmHg. Mandatory 5-min hands-off period after asystole; the <strong>legal time of death is the start of the 5-minute observation period</strong> — i.e. the time the clinician begins observing the absent circulation, not the end of the standoff. Retrieval may only begin once the full 5 minutes have elapsed and death has been confirmed <InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" />.
             </p>
             <div className="space-y-2 mb-4">
               {[
@@ -312,7 +314,17 @@ const OrganDonationTopic = () => {
               <li><strong>DBD</strong>: BSD confirmed by 2 doctors / 2 sets of tests; physiological support continued until retrieval.</li>
               <li><strong>DCD</strong>: WLST planned and BSD will not occur — Maastricht III; controlled withdrawal with rapid retrieval after 5-min standoff.</li>
               <li><strong>Refer SN-OD early</strong>: any catastrophic brain injury where BSD or WLST is being considered. Referral does not commit to donation.</li>
-              <li><strong>Donor optimisation (DBD)</strong>: lung-protective ventilation, MAP ≥65, hormonal therapy, normothermia, glycaemic control.</li>
+              <li>
+                <strong>Donor optimisation (DBD)</strong> — concrete UK targets{" "}
+                <InlineRef topicId="organ-donation" refLabel="BJA Donor Management 2012" />:
+                <ul className="mt-1 ml-5 space-y-1 list-disc list-inside">
+                  <li><strong>Cardiovascular</strong>: MAP 60–80 mmHg, CVP 4–12 mmHg (aim normovolaemia); vasopressin 0.5–2.4 units/h first-line, noradrenaline added if needed; avoid high-dose catecholamines (myocardial injury and graft dysfunction).</li>
+                  <li><strong>Respiratory</strong>: VT 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, recruitment manoeuvres and bronchial toilet; target PaO₂/FiO₂ &gt;300 (PaO₂ &gt;13.3 kPa on FiO₂ &lt;0.5) for lung retrieval.</li>
+                  <li><strong>Endocrine (hormonal replacement bundle)</strong>: methylprednisolone 15 mg/kg IV single dose, vasopressin infusion (vasoplegia + diabetes insipidus, with DDAVP 1–2 µg IV if polyuric), insulin infusion targeting glucose 4–10 mmol/L; T3/T4 (e.g. T4 20 µg bolus then 10 µg/h) remains controversial but is commonly added for refractory cardiovascular instability.</li>
+                  <li><strong>Fluid &amp; electrolytes</strong>: urine output &gt;1 mL/kg/h, serum Na⁺ &lt;155 mmol/L to protect liver grafts, correct K⁺/Mg²⁺/PO₄³⁻.</li>
+                  <li><strong>Temperature</strong>: active warming to normothermia 36.5–37.5 °C.</li>
+                </ul>
+              </li>
               <li><strong>Family approach</strong>: collaborative between intensivist and SN-OD, separate from prognosis discussion.</li>
             </ul>
           </SynthesisBlock>

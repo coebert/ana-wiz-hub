@@ -295,6 +295,36 @@ const HaematologyIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="caps" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Catastrophic Antiphospholipid Syndrome (CAPS)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              CAPS is the rare, fulminant end of the antiphospholipid spectrum (&lt;1 % of APS) and a genuine
+              ICU differential for any patient with multi-organ failure, thrombocytopenia and thrombosis. It is
+              defined by <strong>thrombosis in three or more organs/systems developing in under a week</strong>,
+              histopathological confirmation of small-vessel occlusion, and persistent antiphospholipid antibodies
+              (lupus anticoagulant, anticardiolipin or anti-β₂-glycoprotein-I) <InlineRef topicId="haematology-icu" refLabel="CAPS Asherson 2003" />.
+              Roughly 60 % have a trigger: infection, surgery, anticoagulation withdrawal or a low INR, pregnancy
+              or the puerperium, malignancy, or a lupus flare.
+            </p>
+            <div className="space-y-3">
+              {[
+                { topic: "Presentation", detail: "Renal involvement is commonest (~70 %) with hypertension and AKI, then pulmonary (ARDS, pulmonary haemorrhage, PE), cerebral (encephalopathy, stroke, seizures), cardiac (valve lesions, microvascular ischaemia), skin (livedo, digital necrosis) and adrenal infarction. Look for thrombocytopenia, haemolysis, a paradoxically prolonged APTT (lupus anticoagulant) and a raised D-dimer." },
+                { topic: "Distinguishing it from other TMAs", detail: "TTP — severe thrombocytopenia with ADAMTS13 activity < 10 % and marked schistocytosis. HUS — diarrhoeal prodrome or complement dysregulation with dominant renal failure. DIC — consumption of factors with a low fibrinogen and high ISTH score; in CAPS fibrinogen is usually preserved and the picture is thrombotic rather than consumptive (though DIC coexists in ~15 %). HIT — heparin exposure with a high 4Ts score and positive anti-PF4. Sepsis and malignant hypertension must also be excluded. The clincher is positive antiphospholipid antibodies plus rapid multi-organ thrombosis." },
+                { topic: "Triple therapy", detail: "Treat immediately without waiting for confirmatory serology: (1) therapeutic anticoagulation — unfractionated heparin infusion first-line so it can be stopped for procedures and titrated in AKI (anti-Xa monitoring, as the APTT is unreliable with a lupus anticoagulant), converting later to warfarin with a target INR 2.0–3.0; (2) high-dose corticosteroids — methylprednisolone 1 g IV daily for 3 days, then prednisolone 1 mg/kg; (3) plasma exchange and/or IVIG 0.4 g/kg/day for 5 days, particularly with microangiopathic haemolysis or refractory disease" },
+                { topic: "Refractory disease and supportive care", detail: "Add rituximab or eculizumab in refractory or recurrent CAPS; cyclophosphamide is reserved for active lupus. Treat the trigger — antibiotics for infection, delivery in obstetric CAPS. Support organs conventionally, avoid unnecessary lines, and never simply stop anticoagulation for thrombocytopenia alone. Mortality remains around 30 %, falling with prompt triple therapy" },
+              ].map((c) => (
+                <div key={c.topic} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{c.topic}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{c.detail}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground mt-3">
+              <InlineRef topicId="haematology-icu" refLabel="CAPS Blood 2021" /> <InlineRef topicId="haematology-icu" refLabel="CAPS Asherson 2003" />
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="hus" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Haemolytic Uraemic Syndrome (HUS)">
             <p className="text-muted-foreground leading-relaxed mb-4">
