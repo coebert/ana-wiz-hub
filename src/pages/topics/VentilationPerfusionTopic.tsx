@@ -10,6 +10,7 @@ import { ChevronDown } from "lucide-react";
 import { Exam } from "@/data/curriculum";
 import { WestZonesDiagram } from "@/components/diagrams/physiology/WestZonesDiagram";
 import { InlineRef } from "@/components/references/InlineRef";
+import FowlerNitrogenWashoutDiagram from "@/components/diagrams/physiology/FowlerNitrogenWashoutDiagram";
 
 const ventilationPerfusionFaqs: Array<[string, string]> = [
   [
@@ -177,6 +178,17 @@ const VentilationPerfusionTopic = () => {
             </div>
           </ExamSection>
 
+          <ExamSection id="lateral-position" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_02"]}>
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">V/Q Matching in the Lateral Position</h2>
+              <div className="grid md:grid-cols-3 gap-3 text-sm">
+                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Awake and spontaneous</h3><p className="mt-1 text-foreground/80">Gravity favours dependent-lung perfusion. Although abdominal contents displace the dependent hemidiaphragm upwards, its lung lies on a more favourable compliance curve and receives more ventilation, so matching is relatively preserved.</p></div>
+                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Anaesthetised and spontaneous</h3><p className="mt-1 text-foreground/80">Perfusion remains dependent, but reduced FRC and mediastinal/abdominal compression make the dependent lung less compliant. Ventilation shifts towards the non-dependent lung, increasing mismatch.</p></div>
+                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Paralysed and ventilated</h3><p className="mt-1 text-foreground/80">Positive pressure preferentially ventilates the more compliant non-dependent lung while gravity continues to perfuse the dependent lung. This produces the greatest mismatch: upper-lung overventilation and lower-lung under-ventilation <InlineRef topicId="ventilation-perfusion" refLabel="Nunn Ch.8" />.</p></div>
+              </div>
+            </div>
+          </ExamSection>
+
           <ExamSection id="west-zones" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_02"]}>
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">West's Zones</h2>
@@ -210,7 +222,12 @@ const VentilationPerfusionTopic = () => {
               </ul>
               <div className="mt-4 rounded-lg border border-border p-4 text-sm text-foreground/85">
                 <h3 className="font-semibold text-foreground">Fowler’s single-breath nitrogen washout</h3>
-                <ol className="mt-2 list-decimal pl-5 space-y-1"><li>The subject takes one vital-capacity breath of 100% O₂, replacing N₂ in the conducting airways.</li><li>Slow expiration is measured simultaneously for volume and nitrogen concentration.</li><li><strong>Phase I:</strong> N₂-free anatomical dead-space gas; <strong>Phase II:</strong> rapid rise as dead-space and alveolar gas mix; <strong>Phase III:</strong> alveolar plateau.</li><li>An equal-area line through phase II is positioned so the areas above and below the curve are equal; exhaled volume to that line is anatomical dead space.</li></ol>
+                <div className="mt-3"><FowlerNitrogenWashoutDiagram /></div>
+                <ol className="mt-3 list-decimal pl-5 space-y-1"><li>The subject takes one vital-capacity breath of 100% O₂, replacing N₂ in the conducting airways, then expires slowly while volume and N₂ concentration are recorded.</li><li><strong>Phase I:</strong> pure anatomical dead-space gas contains almost no N₂. <strong>Phase II:</strong> dead-space and alveolar gas mix, producing a steep rise. <strong>Phase III:</strong> the alveolar plateau has a gentle upward slope from sequential emptying and V/Q inequality. <strong>Phase IV:</strong> an abrupt late rise occurs when dependent small airways close and less dependent, relatively N₂-rich units empty.</li><li>An equal-area vertical line bisects the area above and below the phase-II upstroke; expired volume to that line is anatomical dead space.</li></ol>
+              </div>
+              <div className="mt-4 rounded-lg border border-border p-4 text-sm text-foreground/85">
+                <h3 className="font-semibold text-foreground">Closing Capacity</h3>
+                <p className="mt-2"><strong>Closing volume (CV)</strong> is the volume expired from onset of dependent airway closure at phase IV to residual volume; <strong>closing capacity (CC) = RV + CV</strong>. CC rises with age, smoking, asthma/COPD and the supine position. Anaesthesia, supine positioning, obesity and pregnancy reduce FRC. When CC exceeds FRC, dependent airways close during ordinary tidal breathing, causing atelectasis, low V/Q or shunt and hypoxaemia <InlineRef topicId="ventilation-perfusion" refLabel="Nunn Ch.8" />.</p>
               </div>
             </div>
           </ExamSection>
@@ -271,6 +288,7 @@ const VentilationPerfusionTopic = () => {
                 <li><strong>True shunt</strong> (V/Q = 0): blood passes through non-ventilated lung (atelectasis, consolidation, ARDS). Does NOT respond to supplemental O₂</li>
                 <li><strong>Physiological shunt</strong>: bronchial circulation (~1-2% CO) + Thebesian veins → normal ~2-5% shunt</li>
                 <li><strong>HPV</strong>: low alveolar PO₂ → local pulmonary artery constriction → diverts blood to better-ventilated regions. Inhibited by volatile agents, vasodilators, sepsis</li>
+                <li><strong>Inhaled nitric oxide</strong> reaches ventilated alveoli and selectively dilates their adjacent pulmonary vessels, redirecting flow towards well-ventilated units, reducing shunt and transiently improving oxygenation in ARDS. Unlike inhaled therapy, IV vasodilators dilate vessels globally and may worsen V/Q mismatch <InlineRef topicId="ventilation-perfusion" refLabel="Biomedicines 2022 iNO" />.</li>
               </ul>
             </div>
           </ExamSection>
