@@ -6,6 +6,8 @@ import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { icuDrugDoseGroups, icuDrugCount, type DrugDose } from "@/data/icuDrugDoses";
+import { icuDrugSafetyGroups } from "@/data/icuDrugSafety";
+import { icuDrugMechanismGroups } from "@/data/icuDrugMechanisms";
 import { drugSlug } from "@/lib/caseDoseReferences";
 import { mechanismLinkForDrug } from "@/lib/icuDrugMechanismLinks";
 
@@ -26,6 +28,99 @@ const doseFor = (drug: DrugDose, age: AgeMode): string => {
 
 const cautionFor = (drug: DrugDose, age: AgeMode): string | undefined =>
   age === "adult" ? drug.notes : drug.paediatricNotes ?? drug.notes;
+
+// --- Per-drug interactions / side effects / monitoring -------------------
+// Safety and mechanism datasets are keyed by a base slug (e.g. "propofol"),
+// while dosing-table names may carry strengths ("Propofol 1%"). Try the full
+// slug first, then the slug with a trailing strength token removed.
+const slugBase = (name: string) => drugSlug(name).replace(/-\d.*$/, "");
+
+// Dosing-table slug → safety/mechanism slug where the datasets name the drug
+// differently (strengths, combined agents, class names).
+const SLUG_ALIASES: Record<string, string> = {
+  "andexanet-alfa-idarucizumab": "andexanet-idarucizumab",
+  "regional-citrate": "regional-citrate-anticoagulation",
+  "pantoprazole-omeprazole": "proton-pump-inhibitors",
+};
+
+const slugFor = (name: string): string =>
+  SLUG_ALIASES[drugSlug(name)] ?? SLUG_ALIASES[slugBase(name)] ?? drugSlug(name);
+
+const safetyBySlug = new Map(
+  icuDrugSafetyGroups.flatMap((g) => g.drugs).map((d) => [d.slug, d]),
+);
+const mechanismBySlug = new Map(
+  icuDrugMechanismGroups.flatMap((g) => g.drugs).map((d) => [d.slug, d]),
+);
+
+const safetyFor = (drugName: string) =>
+  safetyBySlug.get(slugFor(drugName)) ?? safetyBySlug.get(slugBase(drugName));
+const adverseEffectsFor = (drugName: string): string | undefined =>
+  (mechanismBySlug.get(slugFor(drugName)) ?? mechanismBySlug.get(slugBase(drugName)))
+    ?.adverseEffects;
+
+/** Expandable interactions / side effects / monitoring panel for one drug. */
+const DrugSafetyDetail = ({ drugName }: { drugName: string }) => {
+  const safety = safetyFor(drugName);
+  const adverse = adverseEffectsFor(drugName);
+  if (!safety && !adverse) return null;
+  return (
+    <details className="group mt-2 rounded-lg border border-border bg-muted/30 text-sm">
+      <summary className="cursor-pointer select-none px-3 py-2 text-xs font-medium text-icu marker:text-icu">
+        Interactions · side effects · monitoring
+      </summary>
+      <div className="space-y-3 border-t border-border px-3 py-3">
+        {safety?.interactions?.length ? (
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Interactions
+            </p>
+            <ul className="mt-1 list-disc space-y-1 pl-4 text-muted-foreground">
+              {safety.interactions.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+        {adverse && (
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Side effects
+            </p>
+            <p className="mt-1 leading-relaxed text-muted-foreground">{adverse}</p>
+          </div>
+        )}
+        {safety?.monitoring?.length ? (
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Monitoring
+            </p>
+            <ul className="mt-1 list-disc space-y-1 pl-4 text-muted-foreground">
+              {safety.monitoring.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+        <p className="text-xs">
+          <Link
+            to={`/intensive-care/drug-safety#${safety?.slug ?? slugBase(drugName)}`}
+            className="font-medium text-icu underline-offset-4 hover:underline"
+          >
+            Full safety profile
+          </Link>{" "}
+          ·{" "}
+          <Link
+            to="/intensive-care/interaction-checker"
+            className="font-medium text-icu underline-offset-4 hover:underline"
+          >
+            Check a drug pair
+          </Link>
+        </p>
+      </div>
+    </details>
+  );
+};
 
 const IcuDrugDoses = () => {
   const [searchParams] = useSearchParams();
@@ -239,6 +334,7 @@ const IcuDrugDoses = () => {
                               Kinetics &amp; metabolism
                             </Link>
                           )}
+                          <DrugSafetyDetail drugName={d.drug} />
                         </th>
                         <td className="p-3 text-muted-foreground">{doseFor(d, age)}</td>
                         <td className="p-3 text-muted-foreground">{d.route}</td>
@@ -298,6 +394,7 @@ const IcuDrugDoses = () => {
                         </div>
                       )}
                     </dl>
+                    <DrugSafetyDetail drugName={d.drug} />
                   </li>
                 ))}
               </ul>
