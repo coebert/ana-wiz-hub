@@ -4,6 +4,7 @@ import { AlertTriangle, ArrowLeft, ExternalLink } from "lucide-react";
 
 import ReferenceAppLayout from "@/features/drugReference/ReferenceAppLayout";
 import { useDrugEntry } from "@/features/drugReference/useDrugReference";
+import { topicForClass } from "@/features/drugReference/topics";
 import {
   calculateRate,
   dilutionsForSlug,
