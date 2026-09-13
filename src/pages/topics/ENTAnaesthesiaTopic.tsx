@@ -288,9 +288,45 @@ const ENTAnaesthesiaTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Causes</strong>: epiglottitis, croup, foreign body, tumour (laryngeal/pharyngeal), Ludwig's angina, post-operative haematoma (thyroid/neck surgery), anaphylaxis, burns</li>
               <li><strong>Assessment</strong>: severity — stridor at rest is severe (&gt;50% obstruction). Inspiratory stridor = supraglottic; biphasic = glottic/subglottic; expiratory = intrathoracic</li>
-              <li><strong>Management principles</strong>: keep patient calm and upright. Heliox (70:30 He:O₂) reduces turbulent flow resistance. Nebulised adrenaline (5 ml 1:1000) for oedema. Dexamethasone IV</li>
-              <li><strong>Inhalational induction</strong>: for paediatric epiglottitis/croup — sevoflurane in 100% O₂, spontaneous ventilation, maintain until airway secured. ENT surgeon scrubbed for emergency tracheostomy. Never paralyse until airway secured</li>
+              <li><strong>Never</strong> send an obstructing airway to a remote location, sedate the patient, or lie them flat for imaging without an airway plan in place</li>
             </ul>
+            <h4 className="text-base font-semibold text-foreground mt-5 mb-2">A structured approach to acute upper airway obstruction</h4>
+            <div className="space-y-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">1. Immediate assessment and stabilisation</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Call for help early and by name: senior anaesthetist, <strong>ENT surgeon in the room</strong>, and skilled assistance with the difficult-airway trolley. Sit the patient up, keep them calm (agitation and crying worsen turbulent flow, particularly in children), and give high-flow humidified oxygen. Assess ABCDE while a second person takes a rapid history: onset and rate of progression, voice change, drooling, dysphagia, fever, trauma, previous surgery or radiotherapy, and any prior difficult intubation. Look for the danger signs — stridor at rest (&gt; 50% narrowing), accessory muscle use and tracheal tug, inability to swallow saliva, inability to lie flat, exhaustion and a falling respiratory rate, and rising CO₂ with a falling conscious level. Move to a theatre with an ENT surgeon rather than to a scanner. Nasendoscopy in the sitting position, and a CT only if the patient is stable enough.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">2. Medical management to buy time</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc pl-4">
+                  <li><strong>Nebulised adrenaline</strong> 5 mL of 1:1000 (5 mg), repeatable — mucosal vasoconstriction reduces oedema within minutes but wears off in 1–2 hours, so it is a bridge, not a treatment. Watch for rebound.</li>
+                  <li><strong>Dexamethasone</strong> 8 mg IV (0.15 mg/kg in children) for oedema of any cause; onset takes hours, so give it early and do not rely on it acutely.</li>
+                  <li><strong>Heliox 70:30 helium:oxygen</strong> — helium&apos;s low density lowers the Reynolds number, converting turbulent flow back towards laminar flow and reducing the work of breathing across a fixed narrowing. The trade-off is a maximum FiO₂ of 0.3, so it is useless in the hypoxaemic patient and is a temporising measure while definitive plans are made.</li>
+                  <li><strong>Cause-specific therapy</strong>: intramuscular adrenaline and the anaphylaxis algorithm; antibiotics for epiglottitis, Ludwig&apos;s angina and abscess; immediate release of a post-thyroidectomy haematoma at the bedside; steroids and radiotherapy referral for tumour; magnet/foreign-body removal in theatre.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">3. Airway intervention strategy</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc pl-4">
+                  <li><strong>Prepare fully first</strong>: difficult-airway trolley, videolaryngoscope, range of small (5.0–6.0 mm) and microlaryngeal tubes, rigid and flexible scopes, bougies, FONA set opened, ENT surgeon scrubbed with a tracheostomy set, and a verbalised plan A–D that every team member has heard.</li>
+                  <li><strong>Inhalational induction</strong> with sevoflurane in 100% oxygen, maintaining spontaneous ventilation, in the sitting or semi-recumbent position — the classical choice for paediatric epiglottitis or croup and for supraglottic obstruction. Strengths: preserved airway tone and the option to lighten if things deteriorate. Weaknesses: slow and unpredictable induction with a narrowed airway, risk of laryngospasm and of complete obstruction at a light plane, and the practical difficulty of a struggling child or adult.</li>
+                  <li><strong>Intravenous induction / RSI</strong>: appropriate where obstruction is below the larynx or the anatomy is known and the airway is likely to be intubatable, or in bleeding trauma. Strengths: fast and controlled. Weakness: loss of muscle tone and spontaneous ventilation can turn partial obstruction into complete obstruction with no rescue — so only choose it with a surgeon ready for immediate front-of-neck access.</li>
+                  <li><strong>Awake fibreoptic or awake videolaryngoscopic intubation</strong>: the technique of choice where obstruction is at or above the glottis and the patient can co-operate — topicalisation with lidocaine (total ≤ 9 mg/kg), remifentanil-only sedation, high-flow nasal oxygen, patient sitting up. Beware the &quot;cork in a bottle&quot; effect in a critically narrow airway, and complete failure of topicalisation with blood or pus.</li>
+                  <li><strong>Awake tracheostomy under local anaesthesia</strong>: the safest primary plan when obstruction is severe, the anatomy is grossly distorted, or a tumour makes intubation implausible. Choosing it early is a mark of good judgement, not failure.</li>
+                  <li><strong>CICO plan</strong>: if intubation and oxygenation both fail, declare CICO, deliver a final attempt at oxygenation while the FONA set is opened, and proceed immediately to <strong>scalpel–bougie–tube cricothyroidotomy</strong> (size 6.0 cuffed tube) or surgical tracheostomy by the ENT surgeon. In subglottic or tracheal tumour, cricothyroidotomy may be below or through the lesion — rigid bronchoscopy or ECMO-supported airway intervention should be considered in advance for such patients.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">4. After the airway is secured</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Confirm with waveform capnography, secure the tube meticulously and document its size, depth and the technique used. Treat the cause, continue steroids and antibiotics, admit to critical care, and plan extubation as a separate deliberate event — cuff-leak assessment, airway re-examination, difficult-airway team and surgeon present, and a re-intubation plan. Issue an airway alert.
+                </p>
+              </div>
+            </div>
+
+
             <h4 className="text-base font-semibold text-foreground mt-5 mb-2">Ludwig&apos;s angina</h4>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">
               A rapidly spreading polymicrobial cellulitis of the submandibular, sublingual and submental spaces, usually from a lower molar dental infection. Anaerobes and streptococci predominate. Induration of the floor of the mouth elevates and retrodisplaces the tongue, so obstruction develops above the larynx and can progress over a few hours<InlineRef topicId="ent-anaesthesia" refLabel="NAP4 2011" />.
@@ -322,7 +358,7 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Immediately after</strong>: confirm ventilation with waveform capnography and bilateral air entry, secure the tube with sutures plus tapes, document tube type/size and insertion depth, complete an NTSP bedside emergency algorithm sign, check pressures and cuff pressure (20–30 cmH₂O), and request a chest radiograph if there was difficulty or suspicion of pneumothorax. Keep the first tube change to experienced staff after 5–7 days</li>
               <li><strong>Stomal transition at laryngectomy</strong>: surgeon inserts an armoured cuffed tube into the divided distal trachea; you connect a sterile circuit off the field. Confirm bilateral ventilation and ETCO₂ before removing the oral tube</li>
               <li><strong>Neck-breather safety</strong>: post-laryngectomy there is <strong>no connection</strong> between mouth/nose and trachea. Bag-mask via face will not work — ventilate via the stoma. NTSP red emergency board mandatory</li>
-              <li><strong>Le Fort fractures</strong>: I (maxilla), II (pyramidal — maxilla + nasal bridge), III (craniofacial disjunction). Risks CSF leak and airway compromise — nasal intubation contraindicated in II/III</li>
+              <li><strong>Le Fort fractures</strong>: I (maxilla), II (pyramidal — maxilla + nasal bridge), III (craniofacial disjunction). Risks CSF leak and airway compromise — nasal intubation contraindicated in II/III. See the expanded management notes below</li>
               <li><strong>Free flap surgery</strong>: long procedures (8–12h). Avoid α-agonist boluses (flap vasospasm); use noradrenaline by infusion, MAP ≥70 mmHg, normothermia, Hb 80–100 g/L</li>
             </ul>
             <div className="grid md:grid-cols-2 gap-4 mt-4">
@@ -333,6 +369,48 @@ const ENTAnaesthesiaTopic = () => {
                 <LeFortFractureDiagram />
               </div>
             </div>
+            <h4 className="text-base font-semibold text-foreground mt-5 mb-2">Anaesthetic management of Le Fort and mid-face fractures</h4>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              These are usually high-energy injuries in young patients, and the airway, the associated injuries and the bleeding are all more dangerous than the fracture itself<InlineRef topicId="ent-anaesthesia" refLabel="BJA Educ Maxillofacial 2018" />.
+            </p>
+            <div className="space-y-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">1. Airway assessment</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Look for trismus (which may be mechanical from a displaced fracture and will not resolve with paralysis, or pain-related and will), gross facial and pharyngeal oedema that progresses over hours, expanding sublingual or retropharyngeal haematoma, mobile mid-face fragments and disordered dental occlusion, blood, teeth, secretions and vomit in the pharynx, and a posteriorly displaced maxilla obstructing the nasopharynx. A cribriform plate breach is suggested by CSF rhinorrhoea, panda eyes, subconjunctival haemorrhage and anosmia — this makes <strong>nasal instrumentation of any kind (tube, NG tube, airway) contraindicated in Le Fort II and III</strong>. Assess the neck at the same time: a hard collar and immobilisation greatly restrict mouth opening and laryngoscopy.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">2. Choosing an intubation technique</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc pl-4">
+                  <li><strong>Rapid sequence induction with manual in-line stabilisation</strong>: appropriate for the bleeding, uncooperative or obtunded patient, or for airway compromise now. Advantages: fast, protects against aspiration. Disadvantages: apnoea in a potentially unintubatable airway, loss of tone allowing the mid-face to fall back, and worse laryngoscopic view with a collar — so have a videolaryngoscope, a bougie, a second operator and a FONA plan ready, and a surgeon prepared for a surgical airway.</li>
+                  <li><strong>Videolaryngoscopy</strong>: usually the first-line device — a better view around blood-stained, oedematous anatomy with less neck movement, though a hyperangulated blade needs a stylet or bougie and blood on the lens can blind it. Have a Macintosh blade available as backup.</li>
+                  <li><strong>Awake flexible fibreoptic intubation (oral route in Le Fort II/III)</strong>: ideal for the stable, cooperative patient with predicted difficulty and no urgent bleeding. Challenges are blood and secretions obscuring the view, trismus limiting oral passage, poor topicalisation of a traumatised airway, and the risk of coughing and further bleeding. It is a poor choice in the actively bleeding or agitated patient.</li>
+                  <li><strong>Submental intubation</strong>: an orotracheal tube is redirected through a submental incision into the floor of the mouth, giving the surgeon a free oral cavity and intact dental occlusion for fixation without a tracheostomy. Used for panfacial fractures needing intermaxillary fixation where nasal intubation is contraindicated; complications include infection, scarring and salivary fistula.</li>
+                  <li><strong>Retromolar intubation</strong>: the tube is passed behind the last molar in the retromolar space, an alternative where that space exists (more often in children) and the surgeon needs the occlusion checked.</li>
+                  <li><strong>Elective tracheostomy</strong>: indicated for panfacial injury with severe swelling, an anticipated need for prolonged ventilation, associated head or cervical injury, planned long-term intermaxillary fixation, or where the surgical field and airway cannot be separated. Best done at the start of surgery, under controlled conditions, rather than as a rescue at 3 a.m.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">3. Associated injuries</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Treat these as multiply-injured trauma patients until proved otherwise: cervical spine injury (up to 10% in high-energy mid-face fracture), traumatic brain injury and base-of-skull fracture, ocular injury including retrobulbar haematoma and globe rupture (needs urgent decompression), thoracic and abdominal trauma, and long-bone fracture. Complete a full trauma assessment with a CT trauma series and formal cervical spine clearance before positioning for facial surgery, and remember alcohol, drugs and safeguarding issues in the history.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">4. Haemorrhage control</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Mid-face fractures can bleed torrentially from the maxillary artery, sphenopalatine and greater palatine vessels and pterygoid venous plexus, and much of the loss is swallowed and hidden. Manage as major haemorrhage: large-bore access, group-specific or emergency blood, activate the major-haemorrhage protocol with early plasma and platelets, tranexamic acid 1 g IV, viscoelastic-guided correction, calcium replacement and active warming. Temporising measures include anterior and posterior nasal packing, bite blocks and manual reduction of the mid-face, a Foley catheter tamponade in the nasopharynx, and definitive control by surgical packing, ligation or interventional radiological embolisation of the maxillary artery. Protect the airway before packing a bleeding nasopharynx.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">5. Intermaxillary fixation (IMF) and extubation</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Wired jaws mean the patient cannot open the mouth, vomit safely or be reintubated orally. <strong>Wire cutters must accompany the patient at all times</strong> — on the bed, in recovery and on the ward — and staff must know how to use them. Give aggressive multimodal antiemesis (dexamethasone plus ondansetron, avoid nitrous oxide, consider a nasogastric tube placed orally to empty the stomach where nasal routes are barred), suction the pharynx thoroughly under direct vision, and remove throat packs with a documented check. Extubate only a fully awake patient with airway reflexes restored, swelling stable or improving, and adequate gas exchange; consider a staged approach with an airway exchange catheter or elective postoperative ventilation if there is significant oedema or bleeding. Nurse head-up, keep dexamethasone going, and have the difficult-airway trolley and the surgeon available at extubation.
+                </p>
+              </div>
+            </div>
+
             </CollapsibleSubsection>
           </ExamSection>
           </div>

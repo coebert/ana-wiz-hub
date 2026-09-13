@@ -26,6 +26,8 @@ const tocItems = [
   { id: "hipec", label: "HIPEC", group: "Major surgery" },
   { id: "ectopic", label: "Ectopic pregnancy", group: "Emergency" },
   { id: "top", label: "Termination of pregnancy", group: "Emergency" },
+  { id: "cerclage", label: "Cervical cerclage", group: "Emergency" },
+
   { id: "myomectomy", label: "Myomectomy & fibroids", group: "Major surgery" },
   { id: "gas-embolism", label: "CO₂ gas embolism", group: "Complications" },
   { id: "faq", label: "FAQ", group: "Reference" },
@@ -397,6 +399,32 @@ const GynaecologicalAnaesthesiaTopic = () => {
               </CollapsibleSubsection>
             </ExamSection>
           </div>
+
+          <div id="cerclage" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia (specialty)"]}>
+              <CollapsibleSubsection title="Anaesthesia for Cervical Cerclage">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Cervical cerclage places a purse-string suture around the cervix for cervical insufficiency, usually in the second trimester (typically 12–24 weeks) as a history-, ultrasound- or examination-indicated procedure; rescue cerclage is performed for a dilated cervix with exposed membranes. It is short surgery in a pregnant patient, so the anaesthetic issues are those of non-obstetric surgery in pregnancy compressed into 20 minutes<InlineRef topicId="gynaecological-anaesthesia" refLabel="RCOG Cerclage 2022" />.
+                </p>
+                <div className="space-y-3">
+                  {[
+                    { t: "Anaesthetic goals", d: "A comfortable, still patient with a relaxed uterus, no rise in intra-abdominal or intrauterine pressure, avoidance of coughing and straining (which can rupture exposed membranes), preserved uteroplacental perfusion, fetal safety with minimal drug exposure, and rapid recovery for a usually day-case procedure." },
+                    { t: "Spinal anaesthesia — usually preferred", d: "A low-dose spinal to a sensory level of T10 is sufficient for cervical manipulation; a typical dose is 5–7.5 mg of hyperbaric 0.5% bupivacaine with 10–25 µg fentanyl. Advantages: avoids general anaesthesia and airway instrumentation in a patient at increased aspiration risk, avoids volatile fetal exposure, the mother stays awake, recovery and discharge are rapid, and there is no coughing on emergence. Note that a very high (McDonald high or Shirodkar) or abdominal cerclage needs a higher block." },
+                    { t: "Risks of the spinal", d: "Excessive cephalad spread and a high block (pregnancy reduces local anaesthetic requirement by around a third through epidural venous engorgement and progesterone effects), hypotension from sympathetic block compounded by aortocaval compression — treat with phenylephrine or ephedrine and fluid co-load rather than tolerating a fall in placental perfusion — post-dural puncture headache from the young female obstetric population (use a 25–27 G pencil-point needle), urinary retention, and failure or patchy block requiring conversion to general anaesthesia." },
+                    { t: "General anaesthesia", d: "Used if regional is refused, contraindicated (coagulopathy, sepsis, spinal abnormality) or fails, and sometimes chosen for rescue cerclage where profound uterine relaxation is wanted. Beyond about 16–18 weeks treat as a full stomach: rapid sequence induction with cricoid pressure, a smaller tracheal tube for the oedematous airway, careful pre-oxygenation for reduced FRC and higher oxygen consumption, and awareness of increased aspiration risk. Volatile agents provide useful uterine relaxation. Extubate awake, in the left lateral head-down position, avoiding coughing." },
+                    { t: "Fetal and uterine management", d: "Left uterine displacement or a left lateral tilt after about 20 weeks; intravenous hydration and vasopressor to keep maternal blood pressure near baseline; avoid hypoxaemia, hypercapnia and hypocapnia, all of which reduce uterine blood flow. Tocolysis is given if the uterus is irritable or contracting — glyceryl trinitrate (sublingual spray or small IV boluses of 50–100 µg), nifedipine, terbutaline or atosiban — remembering that GTN and beta-agonists cause hypotension and tachycardia. Document a fetal heart check before and after the procedure; continuous intraoperative fetal monitoring is not routine at these gestations. Give antibiotic and thromboprophylaxis per unit protocol." },
+                    { t: "Practical points and complications", d: "Steep lithotomy plus Trendelenburg raises regurgitation risk and can push a spinal block higher. Complications include membrane rupture (particularly at rescue cerclage), bleeding, infection and chorioamnionitis, cervical laceration, uterine contractions and miscarriage. Analgesia is simple — paracetamol with a short course of a non-steroidal agent avoided in the third trimester; avoid NSAIDs after 30 weeks because of ductus arteriosus constriction. Removal of the suture at 36–37 weeks (or earlier if labour starts) is often done under a short spinal or even without anaesthesia." },
+                  ].map((x) => (
+                    <div key={x.t} className="p-3 rounded-lg border border-border">
+                      <p className="font-semibold text-foreground text-sm">{x.t}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{x.d}</p>
+                    </div>
+                  ))}
+                </div>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
 
           <div id="myomectomy" className="scroll-mt-24">
             <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia (specialty)"]}>

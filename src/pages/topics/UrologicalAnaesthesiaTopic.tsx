@@ -24,6 +24,9 @@ const tocItems = [
   { id: "lithotomy", label: "Lithotomy position", group: "Positioning" },
   { id: "cystectomy", label: "Radical cystectomy", group: "Major surgery" },
   { id: "nephrectomy", label: "Nephrectomy & renal surgery", group: "Major surgery" },
+  { id: "turbt", label: "TURBT & the obturator reflex", group: "Major surgery" },
+  { id: "renal-transplant", label: "Renal transplantation", group: "Major surgery" },
+
   { id: "propofol-erection", label: "Propofol-induced penile erection", group: "Complications" },
   { id: "pcnl", label: "Percutaneous nephrolithotomy", group: "Procedures" },
   { id: "eswl", label: "ESWL", group: "Procedures" },
@@ -220,6 +223,47 @@ const UrologicalAnaesthesiaTopic = () => {
           </ExamSection>
           </div>
 
+          <div id="turbt" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Transurethral Resection of Bladder Tumour (TURBT)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              TURBT shares the irrigation, positioning and elderly-comorbid-patient issues of TURP, but adds two problems of its own: a thin-walled organ that perforates easily, and the obturator reflex<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURBT 2019" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Comparison with TURP</strong>: fluid absorption still occurs through resected bladder wall and open venous sinuses, and can be substantial with large, multifocal or lateral-wall tumours or prolonged resection. Modern bipolar resection uses normal saline, which removes the hypo-osmolar and glycine components of classic TURP syndrome — but <em>volume overload, dilutional hyponatraemia, pulmonary oedema and hyperchloraemic acidosis are still possible</em>, so saline irrigation is not a licence to ignore absorption. Keep the irrigation bag height low, limit resection time and monitor conscious level in the awake patient.</li>
+              <li><strong>Bladder perforation — recognition</strong>: in the <strong>awake patient under spinal</strong>, suprapubic or shoulder-tip pain (diaphragmatic irritation from intraperitoneal fluid), abdominal distension, nausea, restlessness and unexplained hypotension or bradycardia. Under <strong>general anaesthesia</strong> these warning symptoms are absent, so suspect it from poor return of irrigation fluid, abdominal distension or rigidity, unexplained hypotension or tachycardia, rising airway pressures and falling urine output. A spinal block to T10 preserves the shoulder-tip warning sign, which is one argument for regional anaesthesia.</li>
+              <li><strong>Extraperitoneal perforation</strong> (the majority) is usually managed conservatively: stop resection, achieve haemostasis, continuous bladder drainage with a large-bore catheter for 7–10 days, antibiotics, and a cystogram before catheter removal.</li>
+              <li><strong>Intraperitoneal perforation</strong> requires <strong>laparotomy or laparoscopic repair</strong>, peritoneal lavage and drainage. Anticipate significant third-space fluid shifts, and convert a spinal to general anaesthesia with a secured airway for the open procedure.</li>
+              <li><strong>The obturator reflex</strong>: the obturator nerve runs immediately lateral to the bladder on the pelvic side wall. Diathermy current applied to a lateral or inferolateral wall tumour <em>directly stimulates the nerve distal to the neuraxial block</em>, producing violent adduction of the thigh. The leg jerks against the resectoscope and can drive the loop through the bladder wall, tear a vessel or injure the surgeon — so a spinal block does <strong>not</strong> prevent it.</li>
+              <li><strong>Preventing the obturator reflex</strong>: general anaesthesia with <strong>full neuromuscular blockade</strong> is the most reliable option for lateral-wall tumours. Alternatives are a targeted <strong>obturator nerve block</strong> (ultrasound- or nerve-stimulator-guided, at the inguinal crease blocking the anterior and posterior divisions, or a proximal approach), bipolar rather than monopolar resection with lower current, short bursts of diathermy with reduced power, keeping the bladder only partially filled, and en-bloc laser resection.</li>
+              <li><strong>Other considerations</strong>: single-shot intravesical chemotherapy (commonly mitomycin C) is often instilled at the end of resection to reduce recurrence — it is contraindicated if perforation is suspected, and staff should handle it with cytotoxic precautions. These patients are usually elderly smokers with cardiorespiratory disease presenting for repeated procedures, so a day-case-friendly, opioid-sparing technique with careful anticoagulation planning matters as much as the resection itself.</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
+
+          <div id="renal-transplant" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Anaesthesia for Renal Transplantation">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Renal transplantation is a heterotopic graft placed extraperitoneally in the iliac fossa, anastomosed to the external iliac vessels and bladder. The anaesthetic priority is simple to state and hard to deliver: a well-filled, well-perfused, normotensive patient at the moment of reperfusion, in someone whose cardiovascular reserve is poor<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ Renal Transplant 2012" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Preoperative assessment of end-stage renal failure</strong>: accelerated ischaemic heart disease and left ventricular hypertrophy (cardiovascular disease causes most deaths in this population), hypertension, pericardial effusion, autonomic neuropathy, normochromic anaemia, uraemic platelet dysfunction with a paradoxical thrombotic tendency, hyperkalaemia and metabolic acidosis, diabetes, delayed gastric emptying, and difficult vascular access. Establish the dialysis modality and schedule — most patients are dialysed within 24 hours of a deceased-donor transplant — the dry weight, residual urine output, and which arm carries the fistula (protect it: no cuff, cannula or line on that side, document the bruit before and after).</li>
+              <li><strong>Investigations and timing</strong>: recent potassium (proceed only if K⁺ is acceptable, generally &lt; 5.5 mmol/L), haemoglobin, coagulation, ECG and echocardiography where indicated. Deceased-donor cases are urgent and out of hours with cold-ischaemia time pressure, so accept a stabilised rather than perfect patient; living-donor cases are elective and fully optimised.</li>
+              <li><strong>Drug handling</strong>: use <strong>atracurium or cisatracurium</strong> (Hofmann elimination, no renal handling) and <strong>remifentanil</strong> (plasma esterase metabolism). Suxamethonium is acceptable if potassium is normal. Avoid morphine (morphine-6-glucuronide accumulates and causes delayed respiratory depression), pethidine (norpethidine and seizures) and gabapentinoid overdosing; fentanyl and oxycodone are safer opioid choices. Avoid rocuronium in large doses unless sugammadex is available, and avoid NSAIDs entirely. Isoflurane, sevoflurane, desflurane and propofol are all acceptable; enflurane and prolonged high-flow sevoflurane concerns are historical exam points.</li>
+              <li><strong>Monitoring</strong>: standard monitoring plus large-bore intravenous access, temperature and neuromuscular monitoring; invasive arterial pressure and central venous access are usual, dictated by cardiac reserve and the need for vasoactive drugs. Cardiac-output monitoring is increasingly used in place of pressure-based targets.</li>
+              <li><strong>Haemodynamic goals</strong>: the denervated graft has no autoregulation, so perfusion is <strong>pressure-dependent</strong>. Keep the mean arterial pressure at or above the patient's normal — commonly a target MAP &gt; 90 mmHg or systolic &gt; 130 mmHg around reperfusion — and treat hypotension promptly with volume and, if needed, noradrenaline rather than accepting a low pressure. Avoid deep hypotension during induction, and remember that many patients are on ACE inhibitors and antihypertensives.</li>
+              <li><strong>Fluid management</strong>: generous, pre-emptive volume loading <em>before</em> the vascular clamps come off — traditionally guided by CVP with a target of about 10–15 cmH₂O (or dynamic indices/cardiac output where available). Use a balanced crystalloid or 0.9% saline; balanced solutions cause less hyperchloraemic acidosis and less hyperkalaemia than large-volume saline. Avoid over-filling in the patient with poor ventricular function or existing pulmonary oedema, and consider albumin where large volumes are needed.</li>
+              <li><strong>At reperfusion</strong>: anticipate a fall in blood pressure as the graft fills, and a potassium and acid load from the preservation solution — check gases, and be ready with calcium, insulin-dextrose and bicarbonate. Immunosuppression (methylprednisolone, basiliximab, or an anti-thymocyte globulin) is given at the surgeon's request, with awareness of anaphylactoid reactions to induction agents. <strong>Mannitol 0.25–0.5 g/kg</strong> and/or <strong>furosemide</strong> are commonly given before or at reperfusion to promote diuresis and scavenge free radicals, though evidence for improving graft function is limited; dopamine is no longer recommended.</li>
+              <li><strong>Analgesia</strong>: paracetamol, a fentanyl or oxycodone PCA, and local anaesthetic infiltration or a transversus abdominis plane or quadratus lumborum block; a rectus sheath catheter suits the midline-heavy incision. <strong>Avoid NSAIDs</strong> — they threaten the single functioning graft. Neuraxial techniques are possible but often avoided because of residual antiplatelet effect, uraemic platelet dysfunction and heparin exposure at dialysis.</li>
+              <li><strong>Postoperative care</strong>: hourly urine output with fluid replacement matched to output plus insensible losses, potassium and glucose monitoring, early recognition of delayed graft function (ultrasound to exclude vascular thrombosis or ureteric obstruction), thromboprophylaxis, and dialysis planning if the graft is slow. High-dependency care is appropriate for patients with significant cardiac disease.</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
+
+
           <div id="propofol-erection" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
             <CollapsibleSubsection title="Propofol-Induced Penile Erection">
@@ -383,7 +427,7 @@ const UrologicalAnaesthesiaTopic = () => {
                 <li>Diagnose <strong>TURP syndrome</strong>: hyponatraemia + neuro symptoms + fluid overload after &gt;1 L glycine absorption.</li>
                 <li>Tell surgeon to <strong>stop resection</strong> and achieve haemostasis; lower the irrigant bag height.</li>
                 <li>Send urgent U&E, glucose, ABG; check serum osmolality and ammonia (glycine → ammonia in hepatic impairment).</li>
-                <li>Severe symptomatic hyponatraemia (&lt;120 mmol/L with seizures or coma): give <strong>150 mL of 3% hypertonic saline i.v. over 20 min</strong>, which can be repeated over a further 20 min if symptoms do not improve<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURP Syndrome 2014" />. Aim for a Na⁺ rise of ≤5 mmol/L until symptoms settle and ≤10 mmol/L in the first 24 h to avoid osmotic demyelination.</li>
+                <li>Severe symptomatic hyponatraemia (&lt;120 mmol/L with seizures or coma): give <strong>3% hypertonic saline 1–2 mL/kg over 10 min</strong>, repeated until symptoms resolve<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURP Syndrome 2014" />. Aim for a Na⁺ rise of ≤5 mmol/L until symptoms settle and ≤10 mmol/L in the first 24 h to avoid osmotic demyelination.</li>
                 <li>IV <strong>furosemide 20–40 mg</strong> for pulmonary oedema. Support oxygenation; consider non-invasive ventilation.</li>
                 <li>Convert to GA + ETT only if airway compromise or seizures uncontrolled.</li>
               </ol>

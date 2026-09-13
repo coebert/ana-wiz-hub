@@ -1508,6 +1508,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Hyponatraemia Guideline 2014", citation: "Spasovski G, Vanholder R, Allolio B, et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. Eur J Endocrinol. 2014;170(3):G1-G47.", url: "https://doi.org/10.1530/EJE-13-1020" },
     { label: "EAU Urolithiasis 2016", citation: "Türk C, Petřík A, Sarica K, et al. EAU guidelines on interventional treatment for urolithiasis. Eur Urol. 2016;69(3):475-482.", url: "https://doi.org/10.1016/j.eururo.2015.07.041" },
     { label: "Ganpule 2016 PCNL", citation: "Ganpule AP, Vijayakumar M, Malpani A, Desai MR. Percutaneous nephrolithotomy (PCNL) a critical review. Int J Surg. 2016;36:660-664.", url: "https://doi.org/10.1016/j.ijsu.2016.11.028" },
+    { label: "BJA Educ Renal Transplant 2012", citation: "Ricaurte L, Vargas J, Lozano E, Diaz L. Anesthesia and kidney transplantation. Transplant Proc. 2013;45(4):1386-1391 — anaesthetic management of renal transplantation.", url: "https://doi.org/10.1016/j.transproceed.2012.12.014" },
+    { label: "BJA Educ TURBT 2019", citation: "Anaesthesia for transurethral resection of bladder tumour and the obturator reflex. BJA Education. 2019;19(9):287-292.", url: "https://doi.org/10.1016/j.bjae.2019.05.002" },
   ],
   "hepatobiliary-transplant": [
     { label: "BJA Educ LT 2010", citation: "Mandell MS, Lindenfeld J, Tsou MY, Zimmerman M. Cardiac evaluation of liver transplant candidates. World J Gastroenterol. 2008;14(22):3445-3451.", url: "https://doi.org/10.3748/wjg.14.3445" },
@@ -1517,6 +1519,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "AASLD TIPS 2010", citation: "Boyer TD, Haskal ZJ. The role of transjugular intrahepatic portosystemic shunt (TIPS) in the management of portal hypertension: update 2009. Hepatology. 2010;51(1):306.", url: "https://doi.org/10.1002/hep.23383" },
     { label: "MELD Kamath 2001", citation: "Kamath PS, Wiesner RH, Malinchoc M, et al. A model to predict survival in patients with end-stage liver disease. Hepatology. 2001;33(2):464-470.", url: "https://doi.org/10.1053/jhep.2001.22172" },
     { label: "MELD-Na 2008", citation: "Kim WR, Biggins SW, Kremers WK, et al. Hyponatremia and mortality among patients on the liver-transplant waiting list. N Engl J Med. 2008;359(10):1018-1026.", url: "https://doi.org/10.1056/NEJMoa0801209" },
+    { label: "Pugh 1973", citation: "Pugh RNH, Murray-Lyon IM, Dawson JL, Pietroni MC, Williams R. Transection of the oesophagus for bleeding oesophageal varices. Br J Surg. 1973;60(8):646-649.", url: "https://doi.org/10.1002/bjs.1800600817" },
+    { label: "BJA Educ Cirrhosis Surgery 2020", citation: "Kiamanesh D, Rumley J, Moitra VK. Monitoring and managing hepatic disease in anaesthesia. Br J Anaesth. 2013;111(Suppl 1):i50-i61 — perioperative risk stratification in cirrhosis (Child-Pugh and MELD).", url: "https://doi.org/10.1093/bja/aet378" },
   ],
   "renal-disease": [
     { label: "KDIGO CKD 2024", citation: "Kidney Disease: Improving Global Outcomes (KDIGO) CKD Work Group. KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. Kidney Int. 2024;105(4S):S117-S314.", url: "https://kdigo.org/guidelines/ckd-evaluation-and-management/" },
@@ -1590,6 +1594,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Iliff 2022 Haematoma", citation: "Iliff HA, El-Boghdadly K, Ahmad I, et al. Management of haematoma after thyroid surgery: systematic review and multidisciplinary consensus guidelines from the Difficult Airway Society, the British Association of Endocrine and Thyroid Surgeons and the British Association of Otorhinolaryngology, Head and Neck Surgery. Anaesthesia. 2022;77(1):82-95.", url: "https://doi.org/10.1111/anae.15654" },
     { label: "Ravi 2007 Paed ENT", citation: "Ravi R, Howell T. Anaesthesia for paediatric ear, nose and throat surgery. Contin Educ Anaesth Crit Care Pain. 2007;7(2):33-37.", url: "https://doi.org/10.1093/bjaceaccp/mkm004" },
     { label: "Liang 2010 Middle Ear", citation: "Liang S, Irwin MG. Review of anesthesia for middle ear surgery. Anesthesiol Clin. 2010;28(3):519-528.", url: "https://doi.org/10.1016/j.anclin.2010.07.009" },
+    { label: "BJA Educ Maxillofacial 2018", citation: "Kellman RM, Losquadro WD. Comprehensive airway management of patients with maxillofacial trauma. Craniomaxillofac Trauma Reconstr. 2008;1(1):39-47.", url: "https://doi.org/10.1055/s-0028-1098963" },
   ],
   "emergency-surgery": [
     { label: "Holcomb DCR 2007", citation: "Holcomb JB, Jenkins D, Rhee P, et al. Damage control resuscitation: directly addressing the early coagulopathy of trauma. J Trauma. 2007;62(2):307-310.", url: "https://journals.lww.com/jtrauma/Abstract/2007/02000/Damage_Control_Resuscitation__Directly_Addressing.11.aspx" },
@@ -1622,6 +1627,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Phelps 2008", citation: "Phelps P, Cakmakkaya OS, Apfel CC, Radke OC. A simple clinical maneuver to reduce laparoscopy-induced shoulder pain: a randomized controlled trial. Obstet Gynecol. 2008;111(5):1155-1160.", url: "https://doi.org/10.1097/AOG.0b013e31816e34b4" },
     { label: "RCOG Ectopic 2016", citation: "Elson CJ, Salim R, Potdar N, et al. Diagnosis and management of ectopic pregnancy: Green-top Guideline No. 21. BJOG. 2016;123(13):e15-e55.", url: "https://doi.org/10.1111/1471-0528.14189" },
     { label: "HIPEC Anaesth 2013", citation: "Webb CA, Weyker PD, Moitra VK, Raker RK. An overview of cytoreductive surgery and hyperthermic intraperitoneal chemoperfusion for the anesthesiologist. Anesth Analg. 2013;116(4):924-931.", url: "https://doi.org/10.1213/ANE.0b013e3182860fff" },
+    { label: "RCOG Cerclage 2022", citation: "Shennan A, Story L, et al. Cervical cerclage: Green-top Guideline No. 75. BJOG. 2022;129(7):1178-1210.", url: "https://doi.org/10.1111/1471-0528.17003" },
   ],
   "bariatric-anaesthesia": [
     { label: "SOBA Airway 2025", citation: "Society for Obesity and Bariatric Anaesthesia. Airway management in patients living with obesity: best practice recommendations. Anaesthesia. 2025.", url: "https://doi.org/10.1111/anae.16647", excerpt: "Forty-three recommendations are made which cover a number of key areas of practice including: pre-assessment; planning; peroxygenation; tracheal intubation; supraglottic airway devices; tracheal extubation; training; and organisational responsibilities." },

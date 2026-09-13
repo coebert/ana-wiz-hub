@@ -235,7 +235,7 @@ const CardiothoracicTopic = () => {
             <li><strong>Assessments</strong>: valve morphology and regurgitant/stenotic severity, ventricular systolic and diastolic function, chamber sizes, pericardium, aorta, intracardiac shunts, and quantification with planimetry, pressure gradients, PISA and continuity-equation methods.</li>
             <li><strong>De-airing</strong>: after any open-chamber procedure, TOE identifies residual air in the left atrium, left ventricular apex and pulmonary veins in the head-down position, guiding venting before the cross-clamp comes off — a key step in preventing coronary and cerebral air embolism.</li>
             <li><strong>Insertion technique</strong>: anaesthetised, intubated patient, head neutral, jaw lifted with a lubricated probe passed in the midline without force; never force against resistance and consider laryngoscope-assisted or bougie-guided insertion after a failed pass. Bite protection, gentle manipulation, minimal freeze-frame time and probe removal before extubation.</li>
-            <li><strong>Complications</strong>: national ACTACC audit data show a major complication rate of about <strong>1 in 1300</strong> examinations (oesophageal or gastric injury, perforation, significant bleeding) and TOE-related death around <strong>1 in 3000</strong>; minor odynophagia, lip and dental trauma are considerably more common<InlineRef topicId="cardiothoracic" refLabel="ACTACC TOE Audit 2019" />.</li>
+            <li><strong>Complications</strong>: the UK national audit by ACTACC found a major complication incidence of <strong>0.08% (approximately 1 in 1300 examinations)</strong> — oesophageal or gastric injury, perforation and significant bleeding — and a TOE-attributable mortality incidence of <strong>0.03% (approximately 1 in 3000)</strong>; minor odynophagia, lip and dental trauma are considerably more common<InlineRef topicId="cardiothoracic" refLabel="ACTACC TOE Audit 2019" />.</li>
           </ul>
         </CollapsibleSubsection>
 
@@ -313,6 +313,39 @@ const CardiothoracicTopic = () => {
                   <span className="text-sm text-muted-foreground">{step}</span>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="mb-4">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Myocardial Protection & Cardioplegia</h3>
+            <p className="text-sm text-muted-foreground mb-3">
+              Cross-clamping the aorta renders the myocardium globally ischaemic. Cardioplegia exists to make that ischaemia survivable: the aims are <strong>rapid, reversible diastolic arrest</strong> (an arrested heart consumes about 10% of its normal oxygen requirement, a fall in MVO₂ of up to 90%), abolition of electromechanical work, buffering of the ischaemic insult, and limitation of reperfusion injury when the clamp comes off<InlineRef topicId="cardiothoracic" refLabel="Kaplan's Cardiac" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Composition</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>High potassium (typically 15–30 mmol/L)</strong> raises the resting membrane potential, inactivates fast sodium channels and produces depolarised diastolic arrest. Added components buffer and stabilise: bicarbonate or histidine buffering, magnesium (a natural calcium antagonist, limits calcium overload), calcium at low concentration, mannitol for oedema and free-radical scavenging, procaine or lidocaine as a membrane stabiliser, and glucose or aspartate/glutamate as substrate. <strong>Crystalloid</strong> cardioplegia (St Thomas&apos; / Plegisol) is simple and gives a clear field; <strong>blood cardioplegia</strong> (usually 4:1 blood to crystalloid) adds oxygen-carrying capacity, natural buffering and oncotic pressure, and is preferred for the poorly protected or hypertrophied ventricle. Single-dose long-acting formulations such as <strong>del Nido</strong> and <strong>Custodiol/HTK</strong> allow one dose for 90–180 minutes and are widely used in paediatric and long-cross-clamp cases.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Temperature</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>Cold (4–10 °C)</strong> cardioplegia reduces metabolic rate roughly 50% for every 10 °C fall, giving a wide safety margin and tolerance of long ischaemic intervals; the costs are impaired enzyme function, reduced membrane pump activity, cold-induced oedema, and a stunned, slow-to-recover ventricle. <strong>Warm (37 °C)</strong> cardioplegia preserves aerobic metabolism and enzyme function and speeds recovery, but arrest is less well tolerated if delivery is interrupted, so it must be given continuously or very frequently. Many units use a tepid compromise, with a <strong>warm induction</strong> dose in the energy-depleted heart and a <strong>terminal warm &quot;hot shot&quot;</strong> before removing the clamp to replenish ATP and reduce reperfusion injury. Topical cold saline and an insulating pad add surface cooling.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Routes of delivery</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>Antegrade</strong> via a cannula in the aortic root (with the cross-clamp distal to it) is standard, but requires a competent aortic valve — in aortic regurgitation the solution runs into the ventricle instead, so it is given directly into the coronary ostia after aortotomy. Distribution is also unreliable beyond severe proximal coronary stenoses. <strong>Retrograde</strong> delivery through a balloon catheter in the coronary sinus perfuses the myocardium via the cardiac veins, reaching territories beyond occluded arteries, keeps the field clear during valve work, and washes out air and debris; it protects the right ventricle and posterior septum poorly because of venous drainage directly into the right atrium via the Thebesian veins. Combined antegrade and retrograde delivery is common in redo coronary surgery and complex valve procedures, and cardioplegia can also be given down individual bypass grafts as they are completed.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Dosing, monitoring and pitfalls</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  A typical induction dose is 10–15 mL/kg (about 1 L in an adult) at 100–200 mmHg antegrade root pressure (30–40 mmHg retrograde), aiming for arrest within 30–60 seconds; <strong>repeat every 20–30 minutes</strong> or when electrical activity returns, ischaemic ST change appears, or myocardial temperature rises. Confirm arrest on the ECG and by observing a flaccid, still heart. Common problems: incomplete arrest from aortic regurgitation, non-coronary collateral or bronchial flow rewarming the septum, cardioplegia washout from an unrecognised patent internal mammary graft, systemic <strong>hyperkalaemia and haemodilution</strong> from repeated doses, hypothermic coagulopathy, right ventricular and phrenic injury from cold, and coronary sinus rupture from an over-inflated retrograde balloon. Poor protection shows up at the end of the case as difficult separation from bypass, ventricular arrhythmia and a need for inotropes or mechanical support.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -536,7 +569,7 @@ const CardiothoracicTopic = () => {
                 </div>
                 <div className="p-4 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">Coagulopathy & bleeding</p>
-                  <p className="text-sm text-muted-foreground mt-1">Hypothermia-induced platelet dysfunction, dilutional and consumptive coagulopathy, hyperfibrinolysis. Re-exploration for bleeding 5–15%. High transfusion requirement.</p>
+                  <p className="text-sm text-muted-foreground mt-1">Hypothermia-induced platelet dysfunction, dilutional and consumptive coagulopathy, hyperfibrinolysis. Re-exploration for bleeding is a major risk: the UK national average resternotomy rate after cardiac surgery is <strong>3.6%</strong> (centre range 0.7–7.6%), and is higher in complex cases such as DHCA; resternotomy itself carries a mortality of about <strong>15%</strong><InlineRef topicId="cardiothoracic" refLabel="Resternotomy Audit 2021" />. High transfusion requirement.</p>
                 </div>
                 <div className="p-4 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">Cardiac</p>

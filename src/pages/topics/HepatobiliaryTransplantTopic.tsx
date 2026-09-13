@@ -268,6 +268,36 @@ const HepatobiliaryTransplantTopic = () => {
                   </p>
                 </div>
 
+                <h3 className="font-semibold text-foreground text-sm mb-2 mt-4">Risk Stratification — Child-Pugh and MELD</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  Every cirrhotic patient presenting for surgery should be scored, because the score — not the diagnosis of cirrhosis alone — drives the consent conversation and the decision to operate<InlineRef topicId="hepatobiliary-transplant" refLabel="BJA Educ Cirrhosis Surgery 2020" />.
+                </p>
+                <div className="overflow-x-auto mb-3">
+                  <table className="w-full text-sm border-collapse">
+                    <thead>
+                      <tr className="border-b border-border text-left text-foreground">
+                        <th className="py-2 pr-3 font-semibold">Child-Pugh component</th>
+                        <th className="py-2 pr-3 font-semibold">1 point</th>
+                        <th className="py-2 pr-3 font-semibold">2 points</th>
+                        <th className="py-2 font-semibold">3 points</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-muted-foreground">
+                      <tr className="border-b border-border"><td className="py-2 pr-3 font-medium text-foreground">Bilirubin (µmol/L)</td><td>&lt; 34</td><td>34–50</td><td>&gt; 50</td></tr>
+                      <tr className="border-b border-border"><td className="py-2 pr-3 font-medium text-foreground">Albumin (g/L)</td><td>&gt; 35</td><td>28–35</td><td>&lt; 28</td></tr>
+                      <tr className="border-b border-border"><td className="py-2 pr-3 font-medium text-foreground">INR (or prothrombin time)</td><td>&lt; 1.7</td><td>1.7–2.3</td><td>&gt; 2.3</td></tr>
+                      <tr className="border-b border-border"><td className="py-2 pr-3 font-medium text-foreground">Ascites</td><td>None</td><td>Mild / diuretic-responsive</td><td>Moderate–severe / refractory</td></tr>
+                      <tr><td className="py-2 pr-3 font-medium text-foreground">Encephalopathy</td><td>None</td><td>Grade I–II</td><td>Grade III–IV</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
+                  <li><strong>Child-Pugh grade</strong>: A = 5–6 points, B = 7–9, C = 10–15. Two of the five variables are subjective (ascites, encephalopathy), which is its main weakness, but it remains the quickest bedside tool<InlineRef topicId="hepatobiliary-transplant" refLabel="Pugh 1973" />. Classically quoted perioperative mortality for major abdominal surgery is roughly 10% for grade A, 30% for grade B and 70–80% for grade C.</li>
+                  <li><strong>MELD</strong> is entirely objective and predicts <strong>3-month mortality</strong> from bilirubin, creatinine and INR (with a term for dialysis); MELD-Na adds sodium. It was derived to predict survival after TIPSS and is now used for transplant allocation and preoperative risk<InlineRef topicId="hepatobiliary-transplant" refLabel="MELD Kamath 2001" />.</li>
+                  <li><strong>Clinical implications</strong>: a <strong>MELD &gt; 15 or Child-Pugh C</strong> carries a very high perioperative mortality and usually precludes elective non-transplant surgery — the discussion should shift to non-operative management, less invasive alternatives, or transplant assessment. MELD &lt; 10 / Child-Pugh A patients generally tolerate surgery with careful optimisation; the intermediate group needs individualised multidisciplinary discussion, and every point of MELD above 8 adds roughly 1% to 30-day mortality.</li>
+                  <li><strong>Beyond the scores</strong>: sarcopenia and frailty, portal hypertension (hepatic venous pressure gradient &gt; 10 mmHg), hyponatraemia, active infection and the urgency and site of surgery (emergency, cardiac and hepatic resection carry the highest risk) all modify these estimates.</li>
+                </ul>
+
                 <h3 className="font-semibold text-foreground text-sm mb-2 mt-4">Detailed Cardiovascular Assessment of the Cirrhotic Patient</h3>
                 <div className="space-y-3">
                   {[
