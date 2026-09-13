@@ -167,10 +167,11 @@ const IcuEndocrineEmergenciesTopic = () => {
         { text: "DKA potassium paradox: serum K⁺ often normal/high at presentation despite massive total-body deficit — falls fast on insulin; replace K⁺ when 3.5–5.5, halt insulin if K⁺ < 3.5", cites: ["JBDS-IP HHS 2022"] },
         { text: "HHS: glucose > 30 + osmolality > 320 + minimal ketones — give fluids FIRST (insulin only after fluids running, lower rate 0.05 U/kg/h) to avoid cerebral oedema and pontine myelinolysis", cites: ["BJA Educ Endo 2014"] },
         { text: "Thyroid storm (BWPS ≥ 45): treat in order — β-blocker → PTU → Lugol's iodine (≥ 1 h after PTU) → hydrocortisone → cooling. Avoid aspirin (displaces T₄ from TBG)", cites: ["ATA Thyroid Storm"] },
-        { text: "Adrenal crisis: refractory shock + low Na⁺ / high K⁺ / low glucose → hydrocortisone 100 mg IV stat BEFORE tests; high-dose hydrocortisone has full mineralocorticoid effect", cites: ["ES Adrenal Crisis 2016"] },
+        { text: "Adrenal crisis: refractory shock + low Na⁺ / high K⁺ / low glucose → hydrocortisone 100 mg IV stat BEFORE tests; high-dose hydrocortisone has full mineralocorticoid effect", cites: ["ES Adrenal Crisis 2016", "SfE Adrenal Crisis 2020"] },
         { text: "Myxoedema coma: hypothermia + hyponatraemia + hypoventilation + obtundation — IV T3/T4 + IV hydrocortisone (cover concurrent adrenal insufficiency) + passive rewarming + ICU ventilation", cites: ["JBDS-IP DKA 2023"] },
         { text: "Phaeochromocytoma crisis: phenoxybenzamine / phentolamine / IV magnesium FIRST (α-blockade) then β-blockade — never β-blocker alone (unopposed α → hypertensive crisis, pulmonary oedema)", cites: ["JBDS-IP HHS 2022"] },
-        { text: "Pituitary apoplexy: sudden headache + visual loss + ophthalmoplegia + hypopituitarism → hydrocortisone 100 mg IV + urgent neurosurgical referral; replace cortisol BEFORE thyroxine", cites: ["BJA Educ Endo 2014"] },
+        { text: "DKA: do not give routine phosphate or bicarbonate — replace phosphate only below 0.3 mmol/L or with muscle/cardiac dysfunction; reserve bicarbonate for pH < 6.9 with collapse", cites: ["JBDS-IP DKA 2023 PDF"] },
+        { text: "Pituitary apoplexy: sudden headache + visual loss + ophthalmoplegia + hypopituitarism → hydrocortisone 100 mg IV + urgent neurosurgical referral; replace cortisol BEFORE thyroxine", cites: ["BJA Educ Endo 2014", "UK Pituitary Apoplexy 2011"] },
       ]}
       sectionSources={{
         objectives: ["JBDS-IP DKA 2023", "JBDS-IP HHS 2022", "Endocrine Society 2016"],
@@ -258,7 +259,37 @@ const IcuEndocrineEmergenciesTopic = () => {
                 </li>
               </ul>
             </div>
+            <div className="p-4 rounded-lg border border-border mt-4">
+              <p className="font-semibold text-foreground text-sm">
+                DKA — phosphate and bicarbonate (JBDS-IP 2023)
+              </p>
+              <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground mt-2">
+                <li>
+                  <strong>Phosphate:</strong> total-body phosphate is depleted by osmotic diuresis, and serum
+                  phosphate falls further once insulin drives it intracellularly. JBDS-IP advises{" "}
+                  <strong>against routine replacement</strong> — trials show no benefit for acidosis
+                  resolution, morbidity or mortality, and over-replacement causes hypocalcaemia and
+                  hypomagnesaemia. Replace only if phosphate is &lt; 0.3 mmol/L or there is respiratory or
+                  skeletal muscle weakness, cardiac dysfunction, haemolysis or unexplained failure to wean,
+                  giving 9–18 mmol IV over 6–12 h with paired calcium and magnesium monitoring. Check
+                  phosphate at least daily in prolonged or severe DKA, particularly when feeding is started
+                  (refeeding risk).
+                </li>
+                <li>
+                  <strong>Bicarbonate:</strong> <strong>not recommended</strong>. Insulin plus fluid
+                  resuscitation halts ketogenesis and corrects the acidosis; giving bicarbonate risks
+                  paradoxical CSF acidosis and cerebral oedema (especially in children and young adults),
+                  a left shift of the oxyhaemoglobin curve, worsened hypokalaemia, sodium and volume
+                  loading, rebound alkalosis and delayed ketone clearance. Reserve discussion of
+                  bicarbonate for extreme acidaemia (pH &lt; 6.9) with cardiovascular collapse, as a
+                  consultant-level decision alongside critical care — and remember that a persisting
+                  acidosis with clearing ketones is usually a hyperchloraemic acidosis from saline
+                  resuscitation, which needs no treatment.
+                </li>
+              </ul>
+            </div>
             <div className="grid md:grid-cols-2 gap-4 mt-4">
+
               <div className="bg-card rounded-xl border border-border p-4 md:p-6">
                 <DKAAnimation />
               </div>
@@ -374,6 +405,22 @@ const IcuEndocrineEmergenciesTopic = () => {
                   <strong>before thyroxine</strong> — thyroid hormone accelerates cortisol metabolism and
                   will precipitate adrenal crisis.
                 </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>Water balance — DI and SIADH:</strong> posterior pituitary involvement or
+                  post-decompression oedema can give either picture, and a triphasic response (transient DI
+                  → SIADH at days 5–10 as stored ADH is released → permanent DI) is classic. Monitor hourly
+                  urine output, 4–6 hourly serum sodium, and paired plasma/urine osmolality and urine
+                  sodium. <em>Cranial DI</em> — urine output &gt; 3 mL/kg/h with dilute urine (osmolality
+                  &lt; 300 mosmol/kg, specific gravity &lt; 1.005) and rising plasma sodium/osmolality:
+                  match losses with enteral water or hypotonic IV fluid, and give desmopressin 0.5–1 µg
+                  IV/SC titrated to urine output, correcting sodium by no more than 10 mmol/L/24 h.{" "}
+                  <em>SIADH</em> — hyponatraemia with concentrated urine (osmolality &gt; 100 mosmol/kg,
+                  urine sodium &gt; 30 mmol/L) in a euvolaemic patient: fluid restrict 800–1000 mL/day, and
+                  use hypertonic saline only for seizures or severe symptomatic hyponatraemia. Never
+                  diagnose SIADH before confirming adequate cortisol and thyroid replacement, since
+                  hypocortisolaemia itself causes hyponatraemia.
+                </p>
+
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Surgical / sick-day steroid cover</p>
@@ -384,6 +431,22 @@ const IcuEndocrineEmergenciesTopic = () => {
                   for 24–72 h. Sepsis / vomiting / unable to take oral: IV hydrocortisone
                   100 mg + 200 mg/24 h until eating.
                 </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>Weaning and tapering:</strong> stress-dose hydrocortisone is reduced as the
+                  physiological stress resolves, not stopped abruptly. After major surgery or critical
+                  illness, halve the dose each day (e.g. 200 mg → 100 mg → 50 mg/24 h) until the patient
+                  is back on their usual replacement or maintenance dose — typically over 48–72 h, longer
+                  if there is ongoing sepsis, ileus or a further procedure. Patients on long-term
+                  glucocorticoids resume their pre-admission oral dose (doubled for 24–48 h if still
+                  unwell). Where steroids were started <em>de novo</em> for septic shock, stop or taper
+                  hydrocortisone as vasopressors are weaned (abrupt cessation can cause rebound
+                  hypotension). For prolonged supraphysiological courses, reduce to the equivalent of
+                  7.5 mg prednisolone/day, then taper slowly (e.g. 1 mg every 2–4 weeks) with an early
+                  09:00 cortisol or Synacthen test to confirm HPA recovery before final withdrawal.
+                  Warn every patient about sick-day rules, issue a steroid emergency card and IM
+                  hydrocortisone for home use, and never omit doses during vomiting or diarrhoea.
+                </p>
+
               </div>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
