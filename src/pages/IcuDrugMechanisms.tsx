@@ -63,6 +63,7 @@ const IcuDrugMechanisms = () => {
           content="Pharmacodynamics, pharmacokinetics, metabolism and adverse effects of 50 adult intensive care drugs — half-life, volume of distribution, protein binding, active metabolites and dosing in liver failure, renal failure and RRT."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-mechanisms" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-mechanisms" />
       </Helmet>
 
       <PageSection className="pt-8 pb-16">

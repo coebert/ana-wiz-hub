@@ -31,6 +31,7 @@ const IcuManagementFlows = () => {
           content="Step-by-step intensive care management pathways for sepsis, ARDS, undifferentiated shock and multi-organ dysfunction, with direct links to ICU drug doses, infusion recipes and matching case bank scenarios."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/management-flows" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/management-flows" />
       </Helmet>
 
       <PageSection className="pt-8 pb-16">

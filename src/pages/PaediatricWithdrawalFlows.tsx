@@ -28,6 +28,7 @@ const PaediatricWithdrawalFlows = () => {
           content="Step-by-step paediatric ICU withdrawal and weaning flows for sepsis, PARDS and neurocritical care: drug tapering rates, half-life timing, WAT-1 and COMFORT-B monitoring, and rescue plans with links to dosing and safety pages."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/paediatric-withdrawal" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/paediatric-withdrawal" />
       </Helmet>
 
       <PageSection className="pt-8 pb-16">

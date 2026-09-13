@@ -74,6 +74,7 @@ export default function Login() {
         <title>Sign in — AnaesthesiaCore</title>
         <meta name="description" content="Sign in or create a free AnaesthesiaCore account to unlock spaced-repetition revision across the FRCA and FFICM curriculum." />
         <link rel="canonical" href="https://anaesthesiacore.app/login" />
+        <meta property="og:url" content="https://anaesthesiacore.app/login" />
         <meta name="robots" content="noindex,follow" />
       </Helmet>
       <PageSection as="main" spacing="loose" width="full" innerClassName="max-w-md mx-auto">

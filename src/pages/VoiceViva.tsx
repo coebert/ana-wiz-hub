@@ -353,6 +353,7 @@ export default function VoiceViva() {
           content="Speak to an AI FRCA examiner in real time. Live two-way voice viva with transcript and rubric feedback."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/viva/voice" />
+        <meta property="og:url" content="https://anaesthesiacore.app/viva/voice" />
         <meta name="robots" content="noindex" />
       </Helmet>
       <PageSection spacing="tight" width="narrow">

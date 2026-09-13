@@ -192,6 +192,7 @@ const IcuDrugDoses = () => {
           content="Searchable intensive care drug dosing table with adult, paediatric and neonatal doses: sedation, analgesia, neuromuscular blockade, vasopressors, inotropes, antiarrhythmics, neurocritical care, anticoagulation, metabolic and antimicrobial drugs with dose, route, frequency and key indications."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-doses" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-doses" />
       </Helmet>
 
       <PageSection className="pt-8 pb-16">

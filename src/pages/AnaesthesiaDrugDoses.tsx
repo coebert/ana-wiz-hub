@@ -61,6 +61,7 @@ const AnaesthesiaDrugDoses = () => {
           content="Searchable adult anaesthesia drug dosing table: induction, maintenance, analgesia, neuromuscular blockade, reversal agents, anti-emetics and local anaesthetic maximum doses with route, frequency, key indications and cautions."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/perioperative/drug-doses" />
+        <meta property="og:url" content="https://anaesthesiacore.app/perioperative/drug-doses" />
       </Helmet>
 
       <PageSection className="pt-8 pb-16">

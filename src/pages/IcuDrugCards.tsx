@@ -176,6 +176,7 @@ const IcuDrugCards = () => {
           content="Complete drug cards for the adult ICU formulary: class, mechanism, dose-response, adult and paediatric dosing, pharmacokinetics, safety, monitoring and withdrawal guidance."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-cards" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-cards" />
       </Helmet>
 
       <Button asChild variant="ghost" size="sm" className="mb-4 -ml-2">

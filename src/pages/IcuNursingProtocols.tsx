@@ -54,6 +54,7 @@ const IcuNursingProtocols = () => {
           content="Intensive care nursing protocols and care bundles: central line care, ventilated patient bundle, tracheostomy, prone positioning, RRT circuits, feeding, pressure areas and sepsis — with national guideline references."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/nursing-protocols" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/nursing-protocols" />
       </Helmet>
 
       <PageSection className="pt-8 pb-16">

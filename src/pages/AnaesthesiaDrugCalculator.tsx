@@ -122,6 +122,7 @@ const AnaesthesiaDrugCalculator = () => {
           content="Anaesthesia drug calculator: work out induction, maintenance and reversal doses by weight, with the volume to draw up and the infusion rate in mL/hour."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/perioperative/calculator" />
+        <meta property="og:url" content="https://anaesthesiacore.app/perioperative/calculator" />
       </Helmet>
 
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">

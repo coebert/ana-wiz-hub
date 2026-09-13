@@ -60,6 +60,7 @@ const Curriculum = () => {
           content="Every AnaesthesiaCore topic mapped to the FRCA Primary and Final curricula, organised by section."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/curriculum" />
+        <meta property="og:url" content="https://anaesthesiacore.app/curriculum" />
       </Helmet>
 
       <PageSection spacing="default" width="full" innerClassName="max-w-7xl mx-auto">

@@ -43,6 +43,7 @@ const PaediatricIcuFlows = () => {
           content="Step-by-step paediatric critical care pathways for sepsis, paediatric ARDS, neonatal resuscitation and neuroprotection, with age-specific links to drug doses, infusions and matching case bank scenarios."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/paediatric-flows" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/paediatric-flows" />
       </Helmet>
 
       <PageSection className="pt-8 pb-16">

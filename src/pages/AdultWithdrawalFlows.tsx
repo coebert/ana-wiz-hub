@@ -32,6 +32,7 @@ const AdultWithdrawalFlows = () => {
           content="Step-by-step adult ICU withdrawal and weaning flows for septic shock, ARDS and neurocritical care: vasoactive and sedation tapering rates, half-life timing, RASS and CAM-ICU monitoring, rescue plans, and links to the ICU drug cards and infusion calculator."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/adult-withdrawal" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/adult-withdrawal" />
       </Helmet>
 
       <PageSection className="pt-8 pb-16">

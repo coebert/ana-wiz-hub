@@ -124,6 +124,7 @@ const IcuInteractionChecker = () => {
           content="Choose any two adult intensive care drugs and see their known interactions, severity, contraindications and the monitoring each one needs."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/interaction-checker" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/interaction-checker" />
       </Helmet>
 
       <PageSection className="pt-8 pb-16">

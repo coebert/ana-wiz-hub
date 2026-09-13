@@ -104,6 +104,7 @@ const IcuDrugSafety = () => {
           content="Pharmacokinetics, half-life, clearance, interactions, contraindications and monitoring for 50 adult intensive care drugs — sedatives, neuromuscular blockers, vasopressors, antiarrhythmics, anticonvulsants, anticoagulants and antimicrobials."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-safety" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-safety" />
       </Helmet>
 
       <PageSection className="pt-8 pb-16">
