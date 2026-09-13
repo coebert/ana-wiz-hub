@@ -88,6 +88,8 @@ const PreoperativeAssessmentTopic = () => {
         { text: "GLP-1 RA: hold weekly semaglutide 7 days pre-op; if not held, treat as full stomach (ASA 2023)", cites: ["NICE NG45"] },
         { text: "Gastric ultrasound: antral CSA >340 mm² suggests significant residual volume — consider RSI", cites: ["BJA Educ 2019"] },
         { text: "Pre-op anaemia (Hb <130 g/L) is an independent risk factor — screen ≥4–6 wk pre-op (NICE NG24/CPOC)", cites: ["NICE NG45"] },
+        { text: "Paediatric premedication: oral midazolam 0.25–0.5 mg/kg, buccal 0.3 mg/kg, oral clonidine 4 µg/kg, buccal/intranasal dexmedetomidine 2 µg/kg, oral ketamine 5–8 mg/kg", cites: ["BJA Educ 2020 (Paed premedication)"] },
+      
       
       ]}
       sectionExamMapping={{
