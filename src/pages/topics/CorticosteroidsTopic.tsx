@@ -17,7 +17,7 @@ const corticosteroidsFaqs: Array<[string, string]> = [
   ],
   [
     "When is perioperative steroid cover required and what regimen is used?",
-    "Required for patients on >5 mg prednisolone/day for >3 weeks (HPA suppression). Minor surgery (e.g. hernia): usual oral dose + hydrocortisone 25 mg IV at induction. Moderate surgery (e.g. hemicolectomy): usual dose + 25 mg at induction then 100 mg over 24 h. Major surgery (e.g. laparotomy, cardiac surgery): usual dose + 50 mg at induction then 200 mg over 24 h, continued while the stress response persists then tapered. Continue maintenance dose throughout. Failure to cover risks Addisonian crisis: profound hypotension unresponsive to fluids/pressors, hyponatraemia, hyperkalaemia."
+    "Required when HPA suppression is likely, including prednisolone ≥5 mg/day for more than four weeks. Minor surgery needs the usual dose only; if fasting causes a dose to be missed, give its equivalent parenterally. Moderate surgery: usual dose + hydrocortisone 50 mg IV at induction, then 25 mg IV 8-hourly for 24 h. Major surgery: usual dose + hydrocortisone 100 mg IV at induction, then 200 mg/24 h by infusion or 50 mg IV 6-hourly for 24–48 h and until stable enough to resume oral treatment."
   ],
   [
     "What are the major side effects of long-term corticosteroids?",
@@ -42,17 +42,17 @@ const workedExamples: WorkedExample[] = [
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li><strong>Decide if HPA suppression is likely.</strong> Prednisolone ≥ 5 mg/day for &gt; 3 weeks → assume axis is suppressed.</li>
+          <li><strong>Decide if HPA suppression is likely.</strong> Prednisolone ≥ 5 mg/day for &gt; 4 weeks → assume axis is suppressed.</li>
           <li><strong>Convert to hydrocortisone equivalent.</strong> 10 mg prednisolone × 4 (potency) = 40 mg hydrocortisone equivalent (her endogenous output is essentially abolished).</li>
           <li><strong>Stratify the surgical stress.</strong> Hemicolectomy = MAJOR surgery (per AAGBI/AOMRC 2020).</li>
-          <li><strong>Prescribe.</strong> Continue usual prednisolone 10 mg PO morning of surgery + <strong>hydrocortisone 50 mg IV at induction</strong>, then <strong>200 mg/24 h</strong> (continuous infusion, or 50 mg IV 6-hourly) for 24 h. Wean to oral usual dose over 48–72 h.</li>
+          <li><strong>Prescribe.</strong> Continue usual prednisolone 10 mg PO morning of surgery + <strong>hydrocortisone 100 mg IV at induction</strong>, then <strong>200 mg/24 h</strong> (continuous infusion, or 50 mg IV 6-hourly) for 24–48 h. Return to the oral dose once stable.</li>
           <li><strong>Monitor.</strong> BP, glucose 4-hourly, U&amp;E daily. Watch for refractory hypotension → suspect adrenal crisis.</li>
         </ol>
         <p className="font-semibold text-foreground mt-2">Quick reference (AOMRC 2020)</p>
         <ul className="list-disc list-inside space-y-1">
-          <li>Minor (e.g. cataract, hernia): usual dose + hydrocortisone 25 mg IV at induction.</li>
-          <li>Moderate (e.g. lap chole, hemicolectomy): usual dose + hydrocortisone 25 mg IV at induction → 100 mg over 24 h.</li>
-          <li>Major (e.g. laparotomy, cardiac surgery): usual dose + hydrocortisone 50 mg IV at induction → 200 mg over 24 h, then wean as stress resolves.</li>
+          <li>Minor: usual oral dose only; replace a missed dose parenterally if fasting is prolonged.</li>
+          <li>Moderate: usual dose + hydrocortisone 50 mg IV at induction → 25 mg IV 8-hourly for 24 h.</li>
+          <li>Major: usual dose + hydrocortisone 100 mg IV at induction → 200 mg/24 h infusion or 50 mg IV 6-hourly for 24–48 h.</li>
         </ul>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
@@ -65,7 +65,7 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer:
-      "Continue her usual prednisolone, give hydrocortisone 50 mg IV at induction and 200 mg over 24 h, then wean back to her baseline dose over 48–72 h. Monitor BP and glucose closely; treat any refractory hypotension as an Addisonian crisis with a 100 mg bolus.",
+      "Continue her usual prednisolone, give hydrocortisone 100 mg IV at induction and 200 mg over 24 h (or 50 mg IV 6-hourly) for 24–48 h, then return to her baseline dose once stable and taking orally. Monitor BP and glucose closely.",
     cites: ["BJA Educ 2012"],
   },
   {
@@ -143,7 +143,7 @@ const CorticosteroidsTopic = () => {
       }}
       keyPoints={[
         { text: "Dexamethasone: 25× glucocorticoid potency of hydrocortisone, ZERO mineralocorticoid effect, long duration (36–72 h)", cites: ["AAGBI Steroid Cover"] },
-        { text: "HPA suppression likely if ≥ 5 mg prednisolone/day for &gt; 3 weeks — perioperative steroid cover needed (AAGBI/AOMRC 2020)", cites: ["BJA Educ 2012"] },
+        { text: "HPA suppression is a concern after ≥5 mg prednisolone/day for more than four weeks — perioperative cover depends on surgical stress", cites: ["Anaesthesia 2020 Glucocorticoids"] },
         { text: "Addisonian crisis: refractory hypotension + hypoglycaemia + hyperkalaemia + hyponatraemia. IV hydrocortisone 100 mg", cites: ["Peck & Hill Ch.17"] },
         { text: "Type 1 diabetes: NEVER stop basal insulin (DKA risk). Continue Lantus at 80% the night before surgery", cites: ["AAGBI Steroid Cover"] },
         { text: "Carbimazole inhibits thyroid peroxidase; takes 4–6 weeks. PTU also blocks peripheral T₄→T₃. Risk: agranulocytosis", cites: ["BJA Educ 2012"] },
@@ -206,10 +206,10 @@ const CorticosteroidsTopic = () => {
           <ExamSection id="cover" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
             <CollapsibleSubsection title="Perioperative Steroid Cover (AAGBI/AOMRC 2020)">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li><strong>HPA suppression</strong>: likely if prednisolone ≥ 5 mg/day for &gt; 3 weeks (or equivalent), Cushing's appearance, or recent cessation of long-term steroids</li>
-              <li><strong>Minor surgery</strong> (e.g. cataract, hernia): usual dose + hydrocortisone 25 mg IV at induction</li>
-              <li><strong>Moderate surgery</strong> (e.g. hemicolectomy, joint replacement): usual dose + hydrocortisone 25 mg IV at induction then 100 mg over 24 h (infusion or 25 mg 6-hourly)</li>
-              <li><strong>Major surgery</strong> (e.g. laparotomy, cardiac surgery): usual dose + hydrocortisone 50 mg IV at induction then 200 mg over 24 h (infusion or 50 mg 6-hourly), continued while the stress response persists then tapered <InlineRef topicId="corticosteroids" refLabel="Anaesthesia 2020 Glucocorticoids" /></li>
+              <li><strong>HPA suppression</strong>: a concern with prednisolone ≥5 mg/day for &gt;4 weeks (or equivalent), Cushingoid features, or recent cessation of long-term treatment.</li>
+              <li><strong>Minor surgery</strong>: continue the usual oral dose; if fasting causes a dose to be missed, replace that dose parenterally rather than giving a routine extra 25 mg.</li>
+              <li><strong>Moderate surgery</strong>: usual dose + hydrocortisone 50 mg IV at induction, then 25 mg IV 8-hourly for 24 h.</li>
+              <li><strong>Major surgery</strong>: usual dose + hydrocortisone 100 mg IV at induction, then 200 mg over 24 h by infusion or 50 mg IV 6-hourly for 24–48 h and until stable enough to resume oral treatment <InlineRef topicId="corticosteroids" refLabel="Anaesthesia 2020 Glucocorticoids" />.</li>
               <li><strong>Critical illness / septic shock</strong>: 200 mg/24 h is the same target dose — it is not an escalation above major surgery</li>
               <li><strong>Addisonian crisis</strong>: hypotension refractory to fluids/vasopressors + hypoglycaemia + hyperkalaemia + hyponatraemia → IV hydrocortisone 100 mg stat then 200 mg/24 h</li>
             </ul>
@@ -269,7 +269,7 @@ const CorticosteroidsTopic = () => {
             accent="pharmacology"
             pitfalls={[
               "Glucocorticoid potency: hydrocortisone 1, prednisolone 4, methylprednisolone 5, dexamethasone 25–30 — no mineralocorticoid effect with dex.",
-              "HPA suppression likely after >5 mg prednisolone/day for >3 weeks; taper slowly to avoid adrenal crisis.",
+              "HPA suppression is a concern after ≥5 mg prednisolone/day for more than four weeks; taper slowly to avoid adrenal crisis.",
               "Perioperative steroid cover (AAGBI): supplement if on ≥5 mg prednisolone equivalent; dose tailored to surgical stress.",
               "Side effects of chronic use: hyperglycaemia, osteoporosis, immunosuppression, peptic ulceration, proximal myopathy, mood changes.",
               "Dexamethasone is both a potent antiemetic and reduces airway oedema after prolonged intubation or croup.",
