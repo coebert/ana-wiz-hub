@@ -252,6 +252,71 @@ const OrganDonationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="donor-drug-rationale" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Why the Donation Team Requests Specific Drugs">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              When the specialist nurse for organ donation (SN-OD) and the retrieval team ask you to change the
+              prescription, every request has a physiological or organ-specific reason. Understanding these makes the
+              conversation collaborative rather than confusing, and it is a favourite viva probe. Two governing
+              principles apply. First, once death has been confirmed by neurological criteria the goal of therapy
+              changes from <em>brain protection</em> to <em>organ protection</em>, so drugs are chosen for their effect on
+              grafts rather than on the patient's neurology. Second, in the DCD pathway the patient is still alive, so
+              nothing may be given for the benefit of the recipient unless it is lawful, authorised and does not harm
+              or hasten the death of the donor <InlineRef topicId="organ-donation" refLabel="NICE CG135" />.
+            </p>
+
+            <h3 className="text-base font-semibold text-foreground mt-4 mb-2">Switching noradrenaline to vasopressin — the classic request</h3>
+            <div className="space-y-2">
+              {[
+                { point: "The physiology has changed", detail: "After coning, the catecholamine storm is followed by loss of medullary vasomotor tone and pituitary failure. The resulting shock is vasoplegic and endocrine, not a failure of adrenergic drive — the donor is already maximally catecholamine-exposed and adrenoceptors are downregulated and desensitised." },
+                { point: "Vasopressin exploits a different receptor", detail: "V1 receptor agonism restores vascular tone independently of α₁ adrenoceptors, so it works where escalating noradrenaline does not, and it restores the low endogenous vasopressin level caused by posterior pituitary infarction. Typical infusion 0.5–2.4 (up to 4) units/h." },
+                { point: "It is catecholamine-sparing", detail: "High-dose noradrenaline causes myocardial injury (calcium overload, contraction-band necrosis, β-receptor downregulation), splanchnic and renal vasoconstriction, and pulmonary venoconstriction with extravascular lung water. Retrieval teams grade hearts partly by the vasopressor dose the donor needed; getting noradrenaline down improves the chance a heart, liver and kidneys are accepted." },
+                { point: "One drug treats two problems", detail: "Around two-thirds of DBD donors develop cranial diabetes insipidus. Vasopressin also provides V2 antidiuretic activity, so it simultaneously controls polyuria, protects intravascular volume and limits the rise in serum sodium that damages liver grafts (target Na⁺ < 155 mmol/L)." },
+                { point: "What it is not", detail: "It is not a rescue for hypovolaemia — restore preload first (CVP 4–12 mmHg, MAP 60–80 mmHg). Watch for excessive vasoconstriction with reduced cardiac output and splanchnic ischaemia, so titrate to the lowest effective rate and use echocardiography or cardiac-output monitoring if the heart is being considered." },
+              ].map((p) => (
+                <div key={p.point} className="p-3 rounded border border-border">
+                  <p className="font-semibold text-foreground text-sm">{p.point}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{p.detail}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              <InlineRef topicId="organ-donation" refLabel="BJA Donor Management 2012" />
+            </p>
+
+            <h3 className="text-base font-semibold text-foreground mt-5 mb-2">The rest of the request list — and the reason behind each</h3>
+            <div className="space-y-2">
+              {[
+                { agent: "DDAVP (desmopressin) 1–2 µg IV", detail: "Selective V2 agonist for diabetes insipidus when polyuria persists despite vasopressin, or when vasopressin is not needed haemodynamically. Chosen over more vasopressin when you want antidiuresis without additional vasoconstriction — protects circulating volume, sodium and kidney grafts." },
+                { agent: "Methylprednisolone 15 mg/kg IV (single dose)", detail: "Brainstem death releases a systemic inflammatory cascade that injures grafts before retrieval, and cortisol production falls. Steroid attenuates this inflammation, reduces extravascular lung water and improves oxygenation, so it measurably increases the number of lungs suitable for transplant. Given early, once donation is a possibility and authorisation is in place." },
+                { agent: "Thyroid hormone (T4 20 µg bolus then 10 µg/h, or T3)", detail: "Pituitary failure lowers circulating thyroid hormone, and low T3 states are associated with impaired myocardial energetics. Used mainly for cardiovascular instability that persists despite volume, vasopressin and modest noradrenaline. The evidence is genuinely contested, so present it as a rescue component of the hormonal bundle rather than routine." },
+                { agent: "Insulin infusion (glucose 4–10 mmol/L)", detail: "Steroids, catecholamines, dextrose-containing fluids and loss of insulin sensitivity all drive hyperglycaemia, which causes osmotic diuresis, worsens the sodium load and is associated with poorer pancreas and kidney graft function. Insulin also has direct anti-inflammatory and anabolic effects on grafts." },
+                { agent: "Short-acting vasodilators (GTN, esmolol, sodium nitroprusside) during the storm", detail: "Requested before or during the hypertensive catecholamine surge to protect the heart and lungs from afterload injury and neurogenic pulmonary oedema. Short-acting agents are chosen deliberately so that the profound vasodilatation that follows can be managed without a lingering drug effect." },
+                { agent: "Lung-directed therapy — recruitment, bronchoscopy, diuresis, nebulised salbutamol", detail: "Aimed at achieving PaO₂/FiO₂ > 300 with lung-protective settings. Salbutamol enhances alveolar fluid clearance, bronchoscopy clears secretions and confirms graft suitability, and careful diuresis reduces extravascular lung water; over-diuresis is avoided because it compromises kidneys." },
+                { agent: "Broad-spectrum antibiotics", detail: "Requested to treat known or suspected donor infection and to reduce the risk of transmitting infection to an immunosuppressed recipient. Cultures taken before starting them guide recipient prophylaxis, so the microbiology results matter as much as the treatment itself." },
+                { agent: "Heparin (typically 25,000–30,000 units) and vasodilator at retrieval", detail: "Prevents microvascular thrombosis so that cold preservation fluid perfuses the whole graft. In DBD it is given by the retrieval team just before aortic cross-clamp. In DCD its timing is a legal and ethical matter: any pre-mortem administration is a 'pre-mortem intervention' that requires specific authorisation and must not harm the patient, so in UK practice it is not routine and is agreed case-by-case with the SN-OD and the treating team, not prescribed unilaterally." },
+                { agent: "Antihypertensives, prostacyclin or thrombolytics in specific protocols", detail: "Some pathways use prostacyclin or alteplase in the perfusate to improve microcirculatory flush, particularly for livers and lungs. These are retrieval-team drugs given after death is confirmed and are outside the ICU prescription." },
+                { agent: "Analgesia and sedation in the DCD pathway", detail: "Prescribed solely for symptom control at withdrawal of life-sustaining treatment, titrated to distress in the usual way. They are never escalated to shorten life or to shorten the functional warm ischaemic time — that boundary is what keeps the DCD pathway lawful and must be stated explicitly in the viva." },
+                { agent: "Drugs that are stopped", detail: "Neuroprotective measures (osmotherapy targeted at ICP, tight temperature control for the brain), enteral feed and drugs with no organ benefit are discontinued after confirmation of death. Continued neuromuscular blockade may still be requested to prevent spinal reflexes during retrieval, which reassures staff and prevents movement that could be misinterpreted." },
+              ].map((a) => (
+                <div key={a.agent} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
+                  <span className="font-bold text-primary text-sm sm:whitespace-nowrap sm:w-56 sm:shrink-0">{a.agent}</span>
+                  <span className="text-sm text-muted-foreground leading-relaxed">{a.detail}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground italic mt-3">
+              Exam framing: if asked "why change to vasopressin?", answer in three layers — the shock is vasoplegic and
+              endocrine rather than adrenergic; vasopressin treats vasoplegia and diabetes insipidus through V1 and V2
+              receptors at once; and reducing catecholamine load protects the heart, liver and kidneys and improves the
+              chance each organ is accepted <InlineRef topicId="organ-donation" refLabel="BJA Donor Management 2012" />.
+              Then add the governance point: after DBD confirmation these drugs are organ-directed and lawful with
+              authorisation, whereas before death in DCD only measures that benefit the patient — or an authorised,
+              non-harmful pre-mortem intervention — are permissible <InlineRef topicId="organ-donation" refLabel="NICE CG135" />.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="dcd" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="DCD — Pathway & Maastricht Classification">
             <p className="text-muted-foreground leading-relaxed mb-3">
