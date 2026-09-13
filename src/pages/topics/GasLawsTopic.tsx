@@ -614,6 +614,15 @@ const GasLawsTopic = () => {
                 hyperbaric conditions reflects the elevated dissolved O₂ load; and decompression illness occurs when
                 dissolved N₂ comes out of solution as bubbles when ambient pressure falls too rapidly.<InlineRef topicId="gas-laws" refLabel="BJA Educ 2017" />
               </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                Quantitatively, dissolved oxygen at 37 °C is <strong>0.0225 mL O₂ per 100 mL of blood per kPa</strong>
+                (0.003 mL per 100 mL per mmHg), so a normal PaO₂ of 13.3 kPa contributes only ~0.3 mL/100 mL against
+                ~20 mL/100 mL carried on haemoglobin. Under hyperbaric oxygen at 3 ATA the dissolved fraction rises to
+                about 6 mL/100 mL — enough to meet resting metabolic demand without haemoglobin
+                <InlineRef topicId="gas-laws" refLabel="BJA Educ 2017 (Oxygen delivery)" />. The saturated vapour
+                pressure of nitrous oxide in a cylinder at 20 °C is ~5,200 kPa (52 bar)
+                <InlineRef topicId="gas-laws" refLabel="BJA Educ 2017 (Medical gases)" />.
+              </p>
             </div>
             <div className="rounded-lg border border-border p-4 mt-3">
               <p className="text-sm font-medium text-foreground">Worked clinical consequences</p>
