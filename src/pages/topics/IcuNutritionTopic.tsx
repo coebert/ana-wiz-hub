@@ -416,9 +416,66 @@ const IcuNutritionTopic = () => {
                   extensive necrosis.
                 </p>
               </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Cardiac ICU and post-cardiac-surgery patients</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Chronic heart failure produces <strong>cardiac cachexia</strong> — anorexia, bowel oedema
+                  with malabsorption, hepatic congestion and inflammation-driven muscle loss — so many
+                  patients arrive already malnourished, which independently predicts mortality. Screen every
+                  admission (NRS-2002 / GLIM) and expect refeeding risk. Feed enterally and early: EN is
+                  tolerated on inotropes and low-dose vasopressors, but withhold or keep trophic during
+                  escalating vasopressor requirement, uncontrolled shock, or high-dose noradrenaline plus
+                  rising lactate, because of the small risk of non-occlusive bowel ischaemia. Use dry or
+                  ideal weight (not oedematous weight) for targets, energy-dense (1.5–2 kcal/mL) low-volume
+                  feeds where fluid is restricted, and remember open-chest, delayed sternal closure and
+                  mechanical support are not contraindications. Watch sodium and fluid balance, thiamine
+                  (loop diuretics), and hypophosphataemia; correct these before assuming pump failure is
+                  the reason for failure to wean.<InlineRef topicId="icu-nutrition" refLabel="EHJ ACC 2024 Cardiac Nutrition" />
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Paediatric critical care</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Children have proportionally higher energy and protein needs, minimal energy reserves
+                  (a neonate has 1–2 days of glycogen and fat stores) and can become malnourished within
+                  days. Use measured or age-specific predicted resting energy expenditure rather than adult
+                  weight-based formulas, target protein ≥ 1.5 g/kg/day (higher in burns, sepsis and CRRT),
+                  and start EN within 24–48 h by the gastric route, escalating to at least two-thirds of the
+                  energy target by the end of the first week. Avoid both underfeeding and overfeeding; PN is
+                  reserved for EN failure and, in the well-nourished child, is best deferred for the first
+                  week.<InlineRef topicId="icu-nutrition" refLabel="Clin Nutr 2025 Paediatric Feeding" />
+                </p>
+              </div>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Nutritional Assessment and Monitoring">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              There is no single reliable marker of nutritional adequacy in critical illness. Combine a
+              structured risk score on admission with objective tracking of delivery and of muscle mass.
+              <InlineRef topicId="icu-nutrition" refLabel="Anaesthesia 2023 Malnutrition" />
+            </p>
+            <div className="space-y-2">
+              {[
+                { item: "Screening on admission", detail: "NRS-2002, NUTRIC or GLIM criteria (weight loss, low BMI, reduced muscle mass plus an inflammatory or reduced-intake criterion). Record usual weight, unintentional weight loss, oral intake in the preceding week, alcohol use and pre-existing GI disease. High-risk patients need a dietitian review within 24–48 h and a refeeding plan." },
+                { item: "Anthropometry — with caveats", detail: "Daily weights are confounded by oedema and fluid shifts; BMI misses sarcopenic obesity. Mid-upper-arm circumference and triceps skinfold are alternatives but are insensitive to short-term change." },
+                { item: "Ultrasound muscle assessment", detail: "Bedside ultrasound of rectus femoris cross-sectional area or quadriceps layer thickness is reproducible, radiation-free and detects loss of ~10–20% within the first week of critical illness — a validated marker of ICU-acquired weakness. Serial measurements (baseline, day 7, weekly) with a standardised site and minimal probe pressure are more informative than any single value; CT-derived L3 muscle area is an alternative when imaging is done for other reasons." },
+                { item: "Nitrogen balance", detail: "Nitrogen balance = protein intake (g/day) ÷ 6.25 − (24 h urinary urea nitrogen + 2–4 g obligatory losses). Useful to demonstrate whether protein delivery matches catabolism, but invalid in renal failure or on CRRT, inaccurate with high stool, drain, burn or fistula losses, and dependent on complete urine collection — interpret as a trend, not a target." },
+                { item: "Delivery audit", detail: "Compare prescribed with actually delivered calories and protein each day and record why feed was interrupted (procedures, airway events, high gastric residual volumes, imaging). Non-nutritional calories — propofol (1.1 kcal/mL), citrate in CRRT, dextrose-containing infusions — must be counted in the energy budget." },
+                { item: "Biochemical monitoring", detail: "Daily U&E, glucose, phosphate, magnesium and calcium for the first week (refeeding), twice-weekly triglycerides and LFTs while on lipid-containing PN — triglycerides > 4–4.5 mmol/L prompt lipid reduction, and a rising ALP/GGT/conjugated bilirubin suggests PN-associated cholestasis. Weekly CRP to interpret albumin and prealbumin, which reflect inflammation rather than nutrition, plus trace elements, zinc, selenium and vitamins in long-stay or long-term PN patients." },
+                { item: "Functional and follow-up measures", detail: "Handgrip dynamometry, Medical Research Council sum score, physical function tests (PFIT-s, CPAx) and, after discharge, ongoing weight, oral intake and rehabilitation progress — recovery of nutritional state is a post-ICU as much as an ICU objective." },
+              ].map((m) => (
+                <div key={m.item} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="font-semibold text-foreground text-sm">{m.item}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{m.detail}</p>
+                </div>
+              ))}
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
 
           <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Key Nutrition Trials">
