@@ -195,7 +195,7 @@ const BrachialPlexusTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Supraclavicular (Trunks/Divisions)</p>
-                <p className="text-sm text-muted-foreground mt-1">Trunks and divisions most compact here ("3 grapes on a stalk" appearance on US above subclavian artery). Complete arm block. Pneumothorax risk (minimal with US).<Cite topicId="brachial-plexus" labels={["BJA Educ 2014"]} /></p>
+                <p className="text-sm text-muted-foreground mt-1">Trunks and divisions most compact here ("3 grapes on a stalk" appearance on US above subclavian artery). Complete arm block. Real-time ultrasound and keeping the needle tip visible above the first rib have reduced pneumothorax risk to well below 1%, but have not abolished it.<Cite topicId="brachial-plexus" labels={["BJA Educ 2014", "Crit Care Med 2011 Ultrasound"]} /></p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Infraclavicular (Cords)</p>
@@ -206,6 +206,20 @@ const BrachialPlexusTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Terminal branches around 3rd part of axillary artery. Musculocutaneous already left (separate block in coracobrachialis). Safest approach — no pneumothorax risk.<Cite topicId="brachial-plexus" labels={["Ellis & Feldman Ch.8", "Miller Ch.46"]} /></p>
               </div>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="complications" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Key Complications and Pneumothorax">
+              <p className="text-muted-foreground leading-relaxed">
+                After supraclavicular or infraclavicular block, sudden pleuritic chest pain, cough, dyspnoea, falling
+                oxygen saturation or reduced ipsilateral breath sounds should prompt concern for pneumothorax. Stop the
+                procedure, give high-concentration oxygen, assess ventilation and haemodynamics, and confirm with lung
+                ultrasound (absent pleural sliding/lung point) or chest radiography. Observe a small asymptomatic
+                pneumothorax with serial imaging when appropriate; insert a chest drain for a large, enlarging,
+                symptomatic or tension pneumothorax. Treat suspected tension physiology immediately without waiting for
+                imaging <Cite topicId="brachial-plexus" labels={["Crit Care Med 2011 Ultrasound"]} />.
+              </p>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -269,6 +283,14 @@ const BrachialPlexusTopic = () => {
             <CollapsibleSubsection title="Chronic Pain, CRPS and the Brachial Plexus">
             <p className="text-muted-foreground leading-relaxed mb-3">
               The upper limb is the commonest site of <strong>complex regional pain syndrome (CRPS)</strong>, typically after distal radius fracture, carpal tunnel surgery or a minor crush injury. Diagnosis is clinical, using the <strong>Budapest criteria</strong>: continuing pain disproportionate to the inciting event, plus symptoms and confirmed signs in at least two of four categories — sensory (hyperalgesia, allodynia), vasomotor (temperature asymmetry, skin colour change), sudomotor/oedema (sweating change, swelling), and motor/trophic (weakness, tremor, dystonia, nail and hair change) — with no better explanation. CRPS type I has no identifiable nerve lesion; type II follows a definable nerve injury (causalgia).
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Major brachial plexus injury may also leave persistent weakness, contracture, sensory loss, neuropathic or
+              deafferentation pain, loss of employment and independence, anxiety, depression and social isolation.
+              Rehabilitation should begin during spontaneous recovery and continue after nerve reconstruction and into
+              the sequelae phase, combining physiotherapy, occupational therapy, splinting, graded strengthening,
+              sensory re-education and coordinated psychological and social support
+              <Cite topicId="brachial-plexus" labels={["Front Neurol 2023 BPI Rehabilitation"]} />.
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">

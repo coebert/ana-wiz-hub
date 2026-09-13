@@ -19,6 +19,7 @@ import EpiduralSpaceDiagram from "@/components/diagrams/anatomy/EpiduralSpaceDia
 import CorPictumFolio from "@/components/diagrams/anatomy/CorPictumFolio";
 import { spinalFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const SpinalAnatomyTopicWorkedExamples: WorkedExample[] = [
   {
@@ -120,6 +121,16 @@ const SpinalAnatomyTopic = () => {
               </tbody>
             </table>
           </div>
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Vertebral Ligaments</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>ALL:</strong> a strong broad band on the anterior vertebral bodies that limits extension. <strong>PLL:</strong> runs along the posterior bodies as the anterior wall of the canal; it narrows in the lumbar region, favouring posterolateral disc herniation. <strong>Ligamentum flavum:</strong> paired elastin-rich laminae forming the posterior epidural boundary and the characteristic loss of resistance. <strong>Interspinous</strong> ligaments fill spaces between processes and the <strong>supraspinous</strong> ligament joins their tips; both are traversed in a midline neuraxial approach <InlineRef topicId="spinal-anatomy" refLabel="BJA Educ 2006" />.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Spinal Curvatures</p>
+              <p className="text-sm text-muted-foreground mt-1">Thoracic and sacral kyphoses are primary curves, concave anteriorly; cervical and lumbar lordoses are secondary curves, convex anteriorly. In a supine adult the lumbar region around L3 and upper thoracic region around T4–6 form relative high points, with dependent troughs between them and towards the sacrum. Hyperbaric intrathecal solution follows gravity along these curves, so position and the thoracic kyphosis strongly influence cephalad spread and final block height <InlineRef topicId="spinal-anatomy" refLabel="Ellis & Feldman Ch.6" />.</p>
+            </div>
+          </div>
         </div>
 
         <div id="neuraxial-layers" className="scroll-mt-24">
@@ -165,6 +176,23 @@ const SpinalAnatomyTopic = () => {
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Blood Supply</p>
               <p className="text-sm text-muted-foreground mt-1">1 anterior spinal artery (supplies anterior 2/3) + 2 posterior spinal arteries (posterior 1/3). Artery of Adamkiewicz: major radicular artery (T9–T12, usually left) — damage → anterior spinal artery syndrome.</p>
+            </div>
+          </div>
+          <div className="mt-4">
+            <h3 className="text-xl font-serif font-bold text-foreground mb-3">Meninges</h3>
+            <div className="grid sm:grid-cols-3 gap-3">
+              <div className="p-4 rounded-lg border border-border"><p className="font-semibold text-foreground text-sm">Dura mater</p><p className="text-sm text-muted-foreground mt-1">Tough fibroelastic outer layer continuous with cranial dura at the foramen magnum; forms the dural sac to S2. Dural puncture permits CSF leakage and PDPH; smaller-gauge pencil-point spinal needles separate rather than cut fibres and reduce risk.</p></div>
+              <div className="p-4 rounded-lg border border-border"><p className="font-semibold text-foreground text-sm">Arachnoid mater</p><p className="text-sm text-muted-foreground mt-1">Thin avascular membrane closely apposed to dura, with only a potential subdural space between them. It is the principal pharmacological barrier to diffusion of epidural drugs; beneath it, the CSF-filled subarachnoid space extends to S2.</p></div>
+              <div className="p-4 rounded-lg border border-border"><p className="font-semibold text-foreground text-sm">Pia mater</p><p className="text-sm text-muted-foreground mt-1">Delicate vascular layer adherent to cord and roots. Lateral denticulate ligaments anchor cord to dura; the filum terminale continues from the conus, passing within the dural sac to S2 and then to the coccyx <InlineRef topicId="spinal-anatomy" refLabel="Ellis & Feldman Ch.6" />.</p></div>
+            </div>
+          </div>
+          <div className="mt-5">
+            <h3 className="text-xl font-serif font-bold text-foreground mb-3">Spinal Cord Syndromes</h3>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border"><p className="font-semibold text-foreground text-sm">Anterior spinal artery syndrome</p><p className="text-sm text-muted-foreground mt-1">Aortic surgery, profound hypotension or radicular-artery injury infarcts the anterior two-thirds: bilateral motor paralysis and loss of pain/temperature below the lesion, with dorsal-column vibration and proprioception preserved.</p></div>
+              <div className="p-4 rounded-lg border border-border"><p className="font-semibold text-foreground text-sm">Brown–Séquard syndrome</p><p className="text-sm text-muted-foreground mt-1">Hemicord trauma or compression causes ipsilateral corticospinal weakness and dorsal-column loss below the lesion, with contralateral pain/temperature loss beginning one or two segments lower.</p></div>
+              <div className="p-4 rounded-lg border border-border"><p className="font-semibold text-foreground text-sm">Central cord syndrome</p><p className="text-sm text-muted-foreground mt-1">Usually follows cervical hyperextension in an older patient with spondylosis. Central grey matter and medial tract fibres are affected, producing disproportionately greater upper- than lower-limb motor weakness, often with sacral sparing.</p></div>
+              <div className="p-4 rounded-lg border border-border"><p className="font-semibold text-foreground text-sm">Cauda equina syndrome</p><p className="text-sm text-muted-foreground mt-1">Compression of lumbosacral roots below L1/2 is a lower-motor-neurone lesion causing variable asymmetric weakness, radicular pain, saddle anaesthesia and bladder/bowel or sexual dysfunction. Urgent MRI and surgical decompression are required <InlineRef topicId="spinal-anatomy" refLabel="BJA Educ 2018" />.</p></div>
             </div>
           </div>
         </div>

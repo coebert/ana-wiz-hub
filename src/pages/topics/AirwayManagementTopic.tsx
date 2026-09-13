@@ -72,7 +72,7 @@ const airwayFaqs: Array<[string, string]> = [
   ],
   [
     "What is the DAS unanticipated difficult intubation algorithm?",
-    "The Difficult Airway Society (DAS) 2015 algorithm has four sequential plans: Plan A — tracheal intubation (maximum 3 + 1 attempts, change something each time: blade, operator, position, bougie, videolaryngoscope). Plan B — supraglottic airway (preferably 2nd-generation i-gel or LMA Supreme, maximum 3 attempts). Plan C — face-mask ventilation, two-person two-handed technique, full relaxation; wake the patient if oxygenation restored. Plan D — emergency front-of-neck access (scalpel-bougie-tube cricothyroidotomy) — declared CICO and performed before SpO₂ < 80 %.",
+    "The Difficult Airway Society (DAS) 2015 non-obstetric adult algorithm has four sequential plans: Plan A — tracheal intubation (maximum 3 + 1 attempts, changing operator or technique). Plan B — second-generation supraglottic airway (maximum 3 attempts). Plan C — face-mask ventilation; wake the patient if oxygenation is restored. Plan D — emergency front-of-neck access for CICO. The joint OAA/DAS obstetric guideline is deliberately more restrictive and limits tracheal intubation to two attempts in total.",
   ],
   [
     "How do you predict a difficult airway?",
@@ -266,6 +266,12 @@ const AirwayManagementTopic = () => {
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
             <CollapsibleSubsection title="DAS 2015 algorithm — four sequential plans">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              The non-obstetric DAS 2015 pathway permits a maximum of three attempts plus one by a more experienced
+              operator. Obstetric practice is different: the joint OAA/DAS guideline limits total tracheal-intubation
+              attempts to two because airway trauma and hypoxaemia develop rapidly in pregnancy
+              <InlineRef topicId="airway-management" refLabel="OAA/DAS 2015" />.
+            </p>
             <div className="space-y-3">
               {[
                 { plan: "Plan A", title: "Facemask ventilation & tracheal intubation", detail: "Optimise position (ramped), pre-oxygenation, videolaryngoscopy as default/early. Maximum 3+1 intubation attempts. Maintain oxygenation throughout." },
@@ -285,6 +291,28 @@ const AirwayManagementTopic = () => {
             <div className="mt-4 bg-card rounded-xl border border-border p-6">
               <DASAlgorithmDiagram />
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
+            <CollapsibleSubsection title="Confirming Tracheal Tube Placement">
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                <strong className="text-foreground">Sustained exhaled carbon dioxide on waveform capnography is the
+                primary standard</strong>: require at least 3–5 consecutive waveforms of appropriate morphology rather
+                than a single transient trace. Clinical signs such as bilateral chest movement, auscultation, tube
+                misting, improving oxygen saturation and reservoir-bag movement are secondary checks and cannot exclude
+                oesophageal intubation in isolation <InlineRef topicId="airway-management" refLabel="PUMA 2022" />.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">If carbon dioxide is absent</p>
+                  <p className="text-sm text-muted-foreground mt-1">Assume oesophageal intubation first. Also check disconnection, blocked sampling tubing or capnograph failure, profound low pulmonary blood flow from cardiac arrest or massive pulmonary embolism, and severe bronchospasm. Replace the circuit or detector while continuing oxygenation, but do not let troubleshooting delay correction of tube position.</p>
+                </div>
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">PUMA action rule</p>
+                  <p className="text-sm text-muted-foreground mt-1"><strong>When in doubt, take it out.</strong> Remove the tube when sustained exhaled CO₂ is absent unless oesophageal placement can be immediately excluded by a reliable independent method, such as continuous visualisation of the tube through the cords with videolaryngoscopy or flexible bronchoscopy. Reoxygenate and re-enter the airway plan.</p>
+                </div>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -611,6 +639,36 @@ const AirwayManagementTopic = () => {
             <p className="text-sm text-muted-foreground">
               The same principles govern tracheostomy emergencies (see the National Tracheostomy Safety Project algorithms) and extubation of the critically ill, where reintubation risk is high and a planned, staged extubation strategy with airway-exchange catheter or NIV/HFNO support should be documented in advance.
             </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
+            <CollapsibleSubsection title="Tracheal Extubation">
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Extubation is an elective procedure with its own airway plan. Confirm that the patient is alert and
+                cooperative, haemodynamically stable and normothermic, with adequate oxygenation and ventilation,
+                manageable secretions, effective cough and full quantitative neuromuscular recovery (TOF ratio &gt;0.9)
+                <InlineRef topicId="airway-management" refLabel="ICS/FICM/DAS 2018 ICU Intubation" />.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">High-risk extubation</p>
+                  <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                    <li>Previous difficult intubation or mask ventilation, airway trauma/swelling, head-and-neck surgery, obesity or OSA.</li>
+                    <li>Optimise position and physiology; consider cuff-leak testing when laryngeal oedema is plausible, recognising its limited sensitivity.</li>
+                    <li>Brief the team, preoxygenate, keep videolaryngoscope, flexible scope and FONA equipment immediately available.</li>
+                    <li>For a difficult reintubation, use a staged technique over an airway-exchange catheter with oxygen insufflation used cautiously; plan post-extubation HFNO, CPAP or NIV where indicated.</li>
+                  </ul>
+                </div>
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Failure and complications</p>
+                  <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                    <li><strong>Laryngospasm:</strong> call for help, remove stimulus, jaw thrust, 100% oxygen with CPAP, deepen with a small propofol dose; give suxamethonium 0.1–0.5 mg/kg if persistent and ventilate/intubate.</li>
+                    <li><strong>Post-extubation stridor:</strong> sit up, oxygen, nebulised adrenaline and corticosteroid; heliox can reduce work of breathing while definitive help arrives.</li>
+                    <li>Progressive obstruction, fatigue, hypoxaemia or hypercapnia requires prompt reintubation; do not persist with temporising measures until collapse.</li>
+                  </ul>
+                </div>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 

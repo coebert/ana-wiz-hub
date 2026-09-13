@@ -122,6 +122,20 @@ const ThoracicAnatomyTopic = () => {
             <p className="text-xs text-muted-foreground mt-2">
               <strong className="text-foreground">VAN:</strong> Vein, Artery, Nerve — run in the costal groove at the inferior border of the rib above. Insert chest drains above the rib below to avoid the neurovascular bundle.
             </p>
+            <p className="text-sm text-muted-foreground mt-3">
+              Posterior intercostal arteries arise from the supreme intercostal artery in spaces 1–2 and directly from
+              the thoracic aorta in spaces 3–11. Anterior intercostal arteries arise from the internal thoracic artery
+              in spaces 1–6 and musculophrenic artery in spaces 7–9; they are absent in spaces 10–11. Anterior and
+              posterior vessels anastomose laterally, forming an important collateral route around aortic coarctation;
+              enlargement of this network produces inferior rib notching on chest radiography
+              <InlineRef topicId="thoracic-anatomy" refLabel="Ellis & Feldman Ch.2" />.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3 mt-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Azygos venous system</p>
+              <p className="text-sm text-muted-foreground mt-1">The azygos vein drains the posterior thoracic and abdominal walls, ascends on the right of the vertebral bodies and arches over the right lung root at T4/5 to enter the SVC. The inferior-left hemiazygos and superior-left accessory hemiazygos cross behind the aorta, oesophagus and thoracic duct to join it. This valveless network is a crucial collateral channel between IVC and SVC when either caval system is obstructed <InlineRef topicId="thoracic-anatomy" refLabel="Ellis & Feldman Ch.2" />.</p>
+            </div>
           </div>
         </div>
 
@@ -188,6 +202,10 @@ const ThoracicAnatomyTopic = () => {
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Anaesthetic relevance</p>
               <p className="text-sm text-muted-foreground mt-1">General anaesthesia and neuromuscular blockade cause cephalad displacement of the dependent diaphragm → atelectasis and reduced FRC. Diaphragmatic function is a major determinant of weaning from ventilation (ventilator-induced diaphragmatic dysfunction). Ultrasound of diaphragm excursion (&lt; 10 mm) and thickening fraction (&lt; 20%) predicts extubation failure. Hiatus hernia at the T10 hiatus increases aspiration risk.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Blood supply and drainage</p>
+              <p className="text-sm text-muted-foreground mt-1">Superior surfaces receive pericardiophrenic and musculophrenic branches of the internal thoracic arteries; the inferior surface is supplied mainly by paired inferior phrenic arteries from the abdominal aorta. Venous return follows superior and inferior phrenic veins into the internal thoracic/brachiocephalic system and IVC respectively <InlineRef topicId="thoracic-anatomy" refLabel="BJA Educ 2017 Diaphragm" />.</p>
             </div>
           </div>
           <div className="rounded-xl border border-border bg-card p-4">
