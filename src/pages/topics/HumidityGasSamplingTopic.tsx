@@ -372,7 +372,9 @@ const HumidityGasSamplingTopic = () => {
                 at characteristic wavelengths. A broad-spectrum IR source illuminates the sample chamber; the gas absorbs
                 specific wavelengths and the residual transmitted intensity is measured by a detector. The fractional
                 absorption follows the <strong>Beer-Lambert law</strong> (A = εcl), so the signal is proportional to the
-                partial pressure of the target gas <InlineRef topicId="humidity-gas-sampling" refLabel="Al-Shaikh & Stacey Ch.8" />.
+                partial pressure of the target gas. Here <strong>A</strong> is absorbance (log₁₀ of incident/transmitted intensity),
+                <strong> ε</strong> is the wavelength-specific molar absorption coefficient, <strong>c</strong> is gas concentration and
+                <strong> l</strong> is optical path length <InlineRef topicId="humidity-gas-sampling" refLabel="Al-Shaikh & Stacey Ch.8" />.
               </p>
               <p>
                 <strong>Characteristic absorption bands:</strong>

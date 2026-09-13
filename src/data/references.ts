@@ -204,7 +204,7 @@ export const topicReferences: Record<string, Reference[]> = {
 
   "mri-physics": [
     { label: "BJA Educ 2019", citation: "Reddy U, Chowdhury T, Bhatt H. MRI for the anaesthetist. BJA Education. 2019;19(8):235-241.", url: "https://doi.org/10.1016/j.bjae.2019.04.004" },
-    { label: "Assoc Anaesth 2021 (MRI)", citation: "Association of Anaesthetists. Safety in magnetic resonance imaging. Anaesthesia. 2021;76(11):1533-1545. (Supersedes the 2010 AAGBI guideline on Provision of Anaesthetic Services in MR Units.)", url: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.15517" },
+    { label: "Assoc Anaesth 2024 (MRI)", citation: "Wilson SR, Shinde S, Appleby I, et al. Guidelines for the safe provision of anaesthesia in magnetic resonance units 2024. Association of Anaesthetists. Anaesthesia. 2024.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Safe-provision-of-anaesthesia-in-magnetic-resonance-units-2024" },
     { label: "RCR GBCA", citation: "The Royal College of Radiologists. Gadolinium-based contrast agent (GBCA) guidance. London: RCR. (Risk-stratifies GBCAs; macrocyclic 'Group II' agents carry a very low NSF risk and may be used with caution in renal impairment.)", url: "https://www.rcr.ac.uk/publication/gadolinium-based-contrast-agent-gbca-guidance" },
     { label: "MHRA GBCA", citation: "Medicines and Healthcare products Regulatory Agency. Gadolinium-containing contrast agents: new restrictions. Drug Safety Update.", url: "https://www.gov.uk/drug-safety-update/gadolinium-containing-contrast-agents-new-restrictions" },
     { label: "Middleton Ch.17", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 17: Magnetic Resonance Imaging." },

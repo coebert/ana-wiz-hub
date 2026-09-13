@@ -231,7 +231,8 @@ const TemperatureMeasurementTopic = () => {
           <h2 className="text-xl font-bold text-foreground mb-2">Resistance Thermometer (RTD/Pt100)</h2>
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
-              A resistance temperature detector uses a metallic conductor (usually platinum) whose resistance increases linearly
+              A resistance temperature detector uses a fine platinum wire coil wound around an insulating ceramic or glass core and
+              protected within a probe sheath. Its resistance increases linearly
               with temperature — a <strong>positive temperature coefficient (PTC)</strong>. The standard Pt100 has a resistance of
               100Ω at 0°C, rising by 0.385Ω per °C.
             </p>
@@ -241,8 +242,10 @@ const TemperatureMeasurementTopic = () => {
               and the <strong>slowest response time</strong> of all electronic thermometers.
             </p>
             <p>
-              <strong>Clinical use:</strong> Laboratory reference standard. Rarely used for bedside monitoring due to slow
-              response and large probe size.
+              <strong>Clinical use:</strong> its stability, repeatability and near-linear calibration make platinum resistance thermometers
+              laboratory and calibration reference standards. They are rarely used for bedside monitoring because the bridge/readout is
+              relatively complex, lead-wire resistance must be compensated, and the protected coil has low sensitivity, larger thermal mass
+              and a slow response compared with thermistors and thermocouples.
             </p>
           </div>
         </div>
@@ -262,9 +265,11 @@ const TemperatureMeasurementTopic = () => {
               making it a reliable reflection of core temperature.
             </p>
             <p>
-              <strong>Sources of error:</strong> Cerumen (ear wax) absorbs IR radiation → falsely low readings. Otitis media
-              and poor probe positioning (not aimed at TM) also cause inaccuracy. The probe must be placed to form a
-              seal with the ear canal.
+              <strong>Sources of error:</strong> straighten the canal (pinna up and back in adults; down and back in infants), insert far enough
+              to seal it and aim at the tympanic membrane. Cerumen, a narrow or curved canal, otitis externa/media, recent ear surgery,
+              hearing aids, lying on one ear and ambient cold/heat all alter readings. Poor alignment samples the cooler canal wall. Device
+              calibration algorithms differ and population limits of agreement against pulmonary-artery temperature are wide, so a single
+              normal tympanic result must not overrule clinical concern or a reliable central trend.
             </p>
           </div>
         </div>
@@ -290,8 +295,11 @@ const TemperatureMeasurementTopic = () => {
               <p className="p-2 text-xs text-muted-foreground"><InlineRef topicId="temperature-measurement" refLabel="Intensive Care Med 2003" /></p>
             </div>
             <p>
-              The <strong>core-peripheral temperature gradient</strong> reflects peripheral vasoconstriction and is used clinically
-              to assess perfusion in shock. A gradient &gt;2°C suggests significant vasoconstriction.
+              The <strong>core-peripheral temperature gradient</strong> is measured simultaneously between a central site (distal oesophagus,
+              bladder or pulmonary artery) and a peripheral site (finger/toe skin). Sympathetic vasoconstriction lowers peripheral temperature
+              while preserving core temperature; a gradient &gt;2°C suggests reduced skin blood flow and can support assessment of shock,
+              response to fluids/vasoactive treatment and rewarming. Interpret trends rather than one value: ambient temperature, active
+              warming, oedema, peripheral vascular disease and vasoactive drugs confound it.
             </p>
             <p>
               During general anaesthesia, core temperature typically drops in three phases: (1) <strong>redistribution</strong>

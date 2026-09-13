@@ -309,14 +309,11 @@ const BreathingCircuitsTopic = () => {
               </p>
               <div className="mt-4 border-t border-border pt-4">
                 <h3 className="font-semibold text-foreground">Closed-circuit anaesthesia</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  A true closed circuit reduces total FGF to match patient uptake—approximately <strong>200–300 mL/min</strong> in a
-                  resting adult—after an initial high-flow wash-in. Oxygen and agent delivery must then track consumption continuously.
-                  It maximises gas and agent economy, limits theatre pollution, and preserves heat and humidity, but inspired oxygen and
-                  agent concentrations change slowly and can drift dangerously. Nitrogen, methane and carbon monoxide may accumulate,
-                  and leaks defeat the technique; continuous FiO₂, inspired/expired agent, capnography and volume monitoring are mandatory
-                  <InlineRef topicId="breathing-circuits" refLabel="BJA 1986 Closed Loop" />.
-                </p>
+                <div className="mt-2 text-sm text-muted-foreground leading-relaxed space-y-2">
+                  <p><strong>Wash-in:</strong> begin with high FGF and a high inspired agent setting to denitrogenate the circuit and patient and rapidly approach the target end-tidal concentration. <strong>Equilibration:</strong> reduce FGF in steps while tissue uptake remains high, replacing oxygen consumed and agent taken up. <strong>Maintenance:</strong> in a true closed circuit, total FGF approximates metabolic uptake—about <strong>200–300 mL/min</strong> in a resting adult—so oxygen and agent delivery must track consumption continuously.</p>
+                  <p>Agent may be supplied by measured liquid injection, a vaporiser-in-circuit, or a conventional out-of-circle vaporiser with brief setting/flow adjustments. The first two permit fine low-flow control; the last responds slowly because circuit volume buffers every change. Continuous inspired oxygen, inspired/expired agent, capnography, airway pressure and inspired/expired volume monitoring are mandatory.</p>
+                  <p>Benefits are maximal gas and agent economy, less theatre pollution, and excellent heat and humidity conservation. Hazards are slow concentration changes, hypoxic-mixture or overdose drift, dependence on circuit integrity and absorbent function, and accumulation of nitrogen, methane, acetone and carbon monoxide. Periodic high-flow flushing removes unwanted gases but temporarily ends closed-circuit operation <InlineRef topicId="breathing-circuits" refLabel="BJA 1986 Closed Loop" />.</p>
+                </div>
               </div>
             </div>
 
@@ -460,7 +457,12 @@ const BreathingCircuitsTopic = () => {
                   {
                     name: "Carbon monoxide",
                     detail:
-                      "Desflurane (and isoflurane > sevoflurane) + desiccated KOH-containing absorbent → CO. Greatest first case of the week. Amsorb® (Ca(OH)₂-only) eliminates the risk.",
+                      "Strong alkali in desiccated absorbent removes a difluoromethoxy proton from desflurane (and less readily isoflurane), producing carbon monoxide. Risk rises with dryness, heat and KOH/NaOH concentration and is greatest after prolonged dry fresh-gas flow, classically the first case after a weekend. Replace suspect absorbent and use fresh hydrated low-alkali material.",
+                  },
+                  {
+                    name: "Absorbent comparison",
+                    detail:
+                      "Traditional soda lime contains Ca(OH)₂ plus NaOH/KOH catalysts and can generate heat, Compound A and CO when dry. Modern low-alkali soda lime removes KOH and reduces NaOH. Amsorb® uses Ca(OH)₂ with CaCl₂/CaSO₄, does not degrade volatile agents to Compound A or CO, but costs more and may exhaust more abruptly.",
                   },
                 ].map((s) => (
                   <div key={s.name} className="p-3 rounded-lg border border-border">
