@@ -179,7 +179,9 @@ const CoExistingDiseaseOverview = () => {
           name="description"
           content="One-page revision overview of every perioperative co-existing disease topic — cardiovascular, respiratory, endocrine, neurological, haematological, hepatic, renal, rheumatological, gastrointestinal, psychiatric and immunosuppression — with key exam points."
         />
-      </Helmet>
+              <link rel="canonical" href="https://anaesthesiacore.app/perioperative/co-existing-disease" />
+        <meta property="og:url" content="https://anaesthesiacore.app/perioperative/co-existing-disease" />
+</Helmet>
 
       <PageSection className="pt-8 pb-16">
         <Link

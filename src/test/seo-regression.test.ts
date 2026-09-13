@@ -189,7 +189,7 @@ describe("SEO: meta tag coverage", () => {
   // canonical + og:url for every consumer).
   // PageMeta is the shared Helmet wrapper (title + description + canonical +
   // og:url + JSON-LD); SectionLayout/TopicTemplate render it internally.
-  const SHARED_LAYOUTS = ["SectionLayout", "TopicTemplate", "PageMeta", "ToolShell", "ReferenceAppLayout", "CaseBankPage", "NoteLayout"];
+  const SHARED_LAYOUTS = ["SectionLayout", "TopicTemplate", "PageMeta", "ToolShell", "ReferenceAppLayout", "CaseBankPage", "NoteLayout", "ExamHub"];
 
   for (const route of routes) {
     if (route.isRedirect || isExempt(route.path)) continue;
