@@ -116,7 +116,7 @@ const AnaesthesiaDrugCalculator = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>Anaesthesia Drug Calculator — Dose and Volume | AnaesthesiaCore</title>
+        <title>Anaesthesia Drug Calculator | AnaesthesiaCore</title>
         <meta
           name="description"
           content="Anaesthesia drug calculator: work out induction, maintenance and reversal doses by weight, with the volume to draw up and the infusion rate in mL/hour."

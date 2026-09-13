@@ -177,7 +177,7 @@ const CoExistingDiseaseOverview = () => {
         <title>Co-Existing Disease Overview — AnaesthesiaCore</title>
         <meta
           name="description"
-          content="One-page revision overview of every perioperative co-existing disease topic — cardiovascular, respiratory, endocrine, neurological, haematological, hepatic, renal, rheumatological, gastrointestinal, psychiatric and immunosuppression — with key exam points."
+          content="One-page revision overview of every perioperative co-existing disease topic, with key exam points and links to the full guidance for each condition."
         />
               <link rel="canonical" href="https://anaesthesiacore.app/perioperative/co-existing-disease" />
         <meta property="og:url" content="https://anaesthesiacore.app/perioperative/co-existing-disease" />
