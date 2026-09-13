@@ -74,7 +74,7 @@ if (!url || !key) {
   warnings.push("Supabase env vars not set — skipped monograph, source and monitoring checks.");
 } else {
   const res = await fetch(
-    `${url}/rest/v1/drugs?select=slug,name,sources,requires_tdm,tdm&limit=1000`,
+    `${url}/rest/v1/drugs?select=slug,name,drug_class,indication_oneliner,presentation,preparation,dosing,adult_bolus_dose,infusion_range,mechanism_of_action,pharmacokinetics,monitoring,side_effects,contraindications,interactions,sources,requires_tdm,tdm&limit=1000`,
     { headers: { apikey: key, Authorization: `Bearer ${key}` } },
   );
   if (!res.ok) {
@@ -85,11 +85,34 @@ if (!url || !key) {
     for (const slug of mappedSlugs) {
       if (!slugs.has(slug)) failures.push(`Infusion recipe maps to unknown drug slug "${slug}"`);
     }
+    const REQUIRED_TEXT = [
+      "drug_class",
+      "indication_oneliner",
+      "presentation",
+      "preparation",
+      "dosing",
+      "mechanism_of_action",
+      "pharmacokinetics",
+      "monitoring",
+      "side_effects",
+      "contraindications",
+      "interactions",
+    ];
     for (const row of rows) {
+      for (const field of REQUIRED_TEXT) {
+        const value = row[field];
+        const empty = value == null || (typeof value === "string" && value.trim() === "") || (Array.isArray(value) && value.length === 0);
+        if (empty) failures.push(`${row.name}: missing ${field}`);
+      }
+      // Every monograph needs at least one quotable dose summary for the entry page.
+      if (!row.adult_bolus_dose && !row.infusion_range) {
+        failures.push(`${row.name}: no dose summary (adult_bolus_dose or infusion_range)`);
+      }
       if (!Array.isArray(row.sources) || row.sources.length === 0) {
         failures.push(`${row.name}: no sources listed`);
         continue;
       }
+
       for (const s of row.sources) {
         if (!s.title || !s.publisher || !s.url) failures.push(`${row.name}: incomplete source entry`);
       }
