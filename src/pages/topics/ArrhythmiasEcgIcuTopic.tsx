@@ -444,6 +444,40 @@ const ArrhythmiasEcgIcuTopic = () => {
               </div>
             </div>
             </CollapsibleSubsection>
+            <CollapsibleSubsection title="Arrhythmias on mechanical circulatory support (VA-ECMO, LVAD, IABP, Impella)">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Mechanical circulatory support decouples the arterial waveform from the native rhythm, so
+              the usual bedside signs of haemodynamic collapse are absent or misleading. A patient in
+              ventricular fibrillation on full VA-ECMO or LVAD support can remain conscious with a
+              near-normal mean arterial pressure — the arrhythmia is still dangerous and must be
+              treated, but the priority differs from the standard peri-arrest algorithm
+              <InlineRef topicId="arrhythmias-ecg-icu" refLabel="Resuscitation Council UK 2021" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Interpreting the monitor</p>
+                <p className="text-xs text-muted-foreground mt-1">Continuous-flow LVAD and full-flow VA-ECMO produce a narrow or non-pulsatile arterial trace, so pulse oximetry and non-invasive BP are unreliable — use the invasive arterial line, ECMO/LVAD flow and power readings, ScvO₂, lactate and echocardiography. IABP counterpulsation triggers off the ECG or arterial waveform and will fail to time correctly in AF, frequent ectopy or tachycardia &gt; ~130 bpm; switch trigger mode or accept reduced augmentation. Pacing spikes, device electrical noise and chest compressions all corrupt automated rhythm analysis.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Why arrhythmia still matters</p>
+                <p className="text-xs text-muted-foreground mt-1">Loss of the atrial or right-ventricular contribution reduces LVAD and ECMO preload, causing suction events and low-flow alarms; on VA-ECMO, a fibrillating and non-ejecting left ventricle plus a closed aortic valve risks LV distension, pulmonary oedema and intracardiac thrombus. Sustained VT/VF also causes ongoing myocardial injury and delays recovery.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Management priorities</p>
+                <ul className="text-xs text-muted-foreground mt-1 space-y-1">
+                  <li>• Correct the reversible drivers first: potassium 4.0–4.5 mmol/L, magnesium &gt; 1.0 mmol/L, hypovolaemia, cannula or LVAD inflow malposition, ischaemia, and irritation from a pulmonary artery catheter or guidewire.</li>
+                  <li>• Antiarrhythmics as usual (amiodarone, β-blockade, lidocaine), accepting negative inotropy is well tolerated on full support.</li>
+                  <li>• Cardiovert or defibrillate when indicated — this is safe on ECMO and with an LVAD in place, keeping pads away from the generator and driveline; consider overdrive or atrial pacing for recurrent VT.</li>
+                  <li>• On VA-ECMO, add or maintain LV decompression (raise flow, add an Impella or IABP, or perform septostomy) and keep some pulsatility to avoid aortic-root stasis.</li>
+                  <li>• Chest compressions are usually avoided on established ECMO or LVAD support (risk of cannula/anastomotic disruption) unless flow is lost — follow the local device pathway and call the ECMO or ventricular-assist-device team early.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border bg-card">
+                <p className="font-semibold text-foreground text-sm">Anticoagulation and rhythm control</p>
+                <p className="text-xs text-muted-foreground mt-1">New AF on an LVAD raises thromboembolic and pump-thrombosis risk — maintain target INR/anti-Xa and treat rate aggressively. Discuss ICD programming with the device team, since supported patients often tolerate VT and repeated inappropriate shocks are harmful.</p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="post-arrest" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.5"]}>
