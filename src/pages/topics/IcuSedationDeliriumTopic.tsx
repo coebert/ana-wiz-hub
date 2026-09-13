@@ -354,10 +354,21 @@ const IcuSedationDeliriumTopic = () => {
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Spontaneous Awakening Trial (SAT)</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Stop sedation each morning unless contraindicated (paralysis, ICP, status, severe ARDS
-                  with intolerance, escalating vasopressors). Failure: agitation, RR &gt; 35 for &gt; 5 min,
-                  SpO₂ &lt; 88 %, acute arrhythmia. Restart at half the prior rate.
+                  Stop all sedative (and usually opioid) infusions each morning, then assess wakefulness.
+                  Failure: sustained agitation, RR &gt; 35 for &gt; 5 min, SpO₂ &lt; 88 %, acute arrhythmia or
+                  distress — restart at half the prior rate and re-attempt the next day.
                 </p>
+                <p className="text-sm font-semibold text-foreground mt-2">Do not start a SAT if any of these apply:</p>
+                <ul className="list-disc pl-5 mt-1 space-y-1 text-sm text-muted-foreground">
+                  <li>Neuromuscular blockade in use (the patient cannot demonstrate wakefulness and would be aware).</li>
+                  <li>Raised or unstable intracranial pressure, or active osmotherapy/neuroprotection.</li>
+                  <li>Status epilepticus or sedation being used as therapy (e.g. barbiturate/midazolam burst suppression).</li>
+                  <li>Active alcohol or drug withdrawal being controlled by the infusion.</li>
+                  <li>Severe agitation risking self-harm, or myocardial ischaemia in the previous 24 h.</li>
+                  <li>Escalating vasopressor requirement or ongoing haemodynamic instability.</li>
+                  <li>Severe respiratory failure requiring deep sedation — high FiO₂/PEEP, prone positioning, refractory hypoxaemia or permissive hypercapnia with intolerance.</li>
+                  <li>Therapeutic hypothermia/targeted temperature management with shivering, or an unsecured airway problem/difficult airway where re-sedation would be hazardous.</li>
+                </ul>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Spontaneous Breathing Trial (SBT)</p>
