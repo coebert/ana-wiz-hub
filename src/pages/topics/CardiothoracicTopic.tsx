@@ -235,7 +235,7 @@ const CardiothoracicTopic = () => {
             <li><strong>Assessments</strong>: valve morphology and regurgitant/stenotic severity, ventricular systolic and diastolic function, chamber sizes, pericardium, aorta, intracardiac shunts, and quantification with planimetry, pressure gradients, PISA and continuity-equation methods.</li>
             <li><strong>De-airing</strong>: after any open-chamber procedure, TOE identifies residual air in the left atrium, left ventricular apex and pulmonary veins in the head-down position, guiding venting before the cross-clamp comes off — a key step in preventing coronary and cerebral air embolism.</li>
             <li><strong>Insertion technique</strong>: anaesthetised, intubated patient, head neutral, jaw lifted with a lubricated probe passed in the midline without force; never force against resistance and consider laryngoscope-assisted or bougie-guided insertion after a failed pass. Bite protection, gentle manipulation, minimal freeze-frame time and probe removal before extubation.</li>
-            <li><strong>Complications</strong>: national ACTACC audit data show a major complication rate of about <strong>1 in 1300</strong> examinations (oesophageal or gastric injury, perforation, significant bleeding) and TOE-related death around <strong>1 in 3000</strong>; minor odynophagia, lip and dental trauma are considerably more common<InlineRef topicId="cardiothoracic" refLabel="ACTACC TOE Audit 2019" />.</li>
+            <li><strong>Complications</strong>: the UK national audit by ACTACC found a major complication incidence of <strong>0.08% (approximately 1 in 1300 examinations)</strong> — oesophageal or gastric injury, perforation and significant bleeding — and a TOE-attributable mortality incidence of <strong>0.03% (approximately 1 in 3000)</strong>; minor odynophagia, lip and dental trauma are considerably more common<InlineRef topicId="cardiothoracic" refLabel="ACTACC TOE Audit 2019" />.</li>
           </ul>
         </CollapsibleSubsection>
 
@@ -536,7 +536,7 @@ const CardiothoracicTopic = () => {
                 </div>
                 <div className="p-4 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">Coagulopathy & bleeding</p>
-                  <p className="text-sm text-muted-foreground mt-1">Hypothermia-induced platelet dysfunction, dilutional and consumptive coagulopathy, hyperfibrinolysis. Re-exploration for bleeding 5–15%. High transfusion requirement.</p>
+                  <p className="text-sm text-muted-foreground mt-1">Hypothermia-induced platelet dysfunction, dilutional and consumptive coagulopathy, hyperfibrinolysis. Re-exploration for bleeding is a major risk: the UK national average resternotomy rate after cardiac surgery is <strong>3.6%</strong> (centre range 0.7–7.6%), and is higher in complex cases such as DHCA; resternotomy itself carries a mortality of about <strong>15%</strong><InlineRef topicId="cardiothoracic" refLabel="ACTACC Resternotomy 2021" />. High transfusion requirement.</p>
                 </div>
                 <div className="p-4 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">Cardiac</p>

@@ -216,7 +216,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
               <li><strong>Mechanism</strong>: fat/marrow embolism → right heart strain + inflammatory mediator release → hypoxia, hypotension, ↓ consciousness</li>
               <li><strong>Risk factors</strong>: pathological fracture, pre-existing cardiopulmonary disease, poor femoral preparation</li>
               <li><strong>Prevention</strong>: high FiO₂, adequate hydration, communication with surgeon (warn before cementing), invasive monitoring if high-risk</li>
-              <li><strong>Grading</strong> (Association of Anaesthetists / Griffiths 2015): <strong>Grade 1</strong> — moderate hypoxia (SpO₂ &lt;94%) and/or hypotension (systolic fall &gt;20%); <strong>Grade 2</strong> — severe hypoxia (SpO₂ &lt;88%) and/or severe hypotension (systolic fall &gt;40% or SBP &lt;80 mmHg) and/or loss of consciousness; <strong>Grade 3</strong> — cardiovascular collapse requiring CPR<InlineRef topicId="orthopaedic-anaesthesia" refLabel="AAGBI BCIS 2015" /></li>
+              <li><strong>Grading</strong> (Association of Anaesthetists / Griffiths 2015): <strong>Grade 1</strong> — moderate hypoxia (SpO₂ &gt;94% falling) and/or a fall in systolic pressure &gt;20%; <strong>Grade 2</strong> — SpO₂ &lt;94% or PaO₂ &lt;8 kPa, and/or a fall in systolic pressure &gt;40% or SBP &lt;80 mmHg in a normo- or hypertensive patient, and/or unexpected loss of consciousness; <strong>Grade 3</strong> — cardiovascular collapse requiring CPR. Note that it is the <em>cardiovascular</em> change, not the degree of desaturation, that principally separates the grades<InlineRef topicId="orthopaedic-anaesthesia" refLabel="AAGBI BCIS 2015" /></li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>

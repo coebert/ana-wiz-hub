@@ -382,6 +382,18 @@ const ClinicalIncidentsTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               CICO is defined as failed tracheal intubation <strong>plus</strong> failure to oxygenate — e.g. SpO₂ &lt; 90% on FiO₂ 1.0 despite optimised face-mask ventilation and at least one attempt with a supraglottic airway device. It is a "can't breathe" surgical airway emergency and demands immediate front-of-neck access (FONA) rather than repeated intubation attempts <InlineRef topicId="clinical-incidents" refLabel="DAS 2015 (CICO)" />.
             </p>
+            <div className="rounded-xl border border-border bg-card p-5 space-y-2 mb-3">
+              <p className="font-semibold text-foreground text-sm">The DAS 2015 four-plan algorithm — how you arrive at CICO</p>
+              <p className="text-xs text-muted-foreground">CICO is the end-point of a structured, time-limited escalation. The value of the algorithm is that each plan has a declared failure point, so the team stops repeating a failing manoeuvre and moves on <InlineRef topicId="clinical-incidents" refLabel="DAS 2015 (CICO)" />.</p>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                <li><strong>Plan A — facemask ventilation and tracheal intubation.</strong> Optimise first-pass conditions: pre-oxygenation to end-tidal O₂ ≥ 0.85 (nasal high-flow or apnoeic oxygenation), ramped/sniffing position, adequate neuromuscular blockade, best laryngoscope (videolaryngoscopy early), external laryngeal manipulation and a bougie. A <strong>maximum of three attempts, plus one further attempt only by a more experienced colleague (3 + 1)</strong>. Each attempt must change something. Then <strong>declare "failed intubation" out loud</strong> and call for help.</li>
+                <li><strong>Plan B — maintain oxygenation via a supraglottic airway.</strong> Insert a second-generation SGA, <strong>maximum three attempts</strong>, changing size or device between attempts. The goal is oxygenation, not intubation. If successful, <strong>stop and think</strong>: wake the patient, proceed with the SGA, intubate through the SGA with a flexible scope, or perform a tracheostomy — a considered decision, not reflex continuation.</li>
+                <li><strong>Plan C — final attempt at facemask ventilation.</strong> Two-person technique, oral and nasal airways, full muscle relaxation (give suxamethonium or rocuronium if any doubt — laryngospasm and inadequate relaxation are reversible causes). If this restores oxygenation, wake the patient. If it fails, <strong>declare "CICO"</strong>.</li>
+                <li><strong>Plan D — emergency front-of-neck access (eFONA).</strong> The scalpel–bougie–tube cricothyroidotomy below is the UK standard technique; needle techniques have a high failure rate and are not recommended as the primary adult approach.</li>
+              </ul>
+              <p className="text-xs text-muted-foreground">Throughout: give 100% oxygen, keep attempt counts out loud, use a cognitive aid, and appoint someone to prepare the FONA set once Plan B is entered — preparation in parallel is what shortens the time to a surgical airway.</p>
+            </div>
+
             <div className="rounded-xl border border-border bg-card p-5 space-y-2">
               <p className="font-semibold text-foreground text-sm">Sequence of actions</p>
               <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
