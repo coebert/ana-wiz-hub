@@ -4,12 +4,6 @@
   "descMin": 50,
   "descMax": 160,
   "titles": {
-    "src/pages/notes/NotesIndex.tsx": [
-      {
-        "value": "Notes — focused answers to common FRCA questions | AnaesthesiaCore",
-        "length": 66
-      }
-    ],
     "src/pages/topics/BurnsPlasticsTopic.tsx": [
       {
         "value": "Burns & Plastic Surgery Anaesthesia — Parkland, airway & CO | FRCA",

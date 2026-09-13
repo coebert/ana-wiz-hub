@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { icuDrugSafetyGroups, type DrugSafety } from "@/data/icuDrugSafety";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 import {
   findInteractions,
   severityLabel,
@@ -168,10 +169,12 @@ const IcuInteractionMatrix = () => {
         <title>ICU Drug Interaction Matrix | AnaesthesiaCore</title>
         <meta
           name="description"
-          content="A grid of the adult intensive care formulary showing which ICU drugs interact with each other, graded avoid, major or moderate, with mechanism, action and monitoring for every pair."
+          content="A grid of the adult intensive care formulary showing which ICU drugs interact with each other, graded avoid, major or moderate, with mechanism."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/interaction-matrix" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/interaction-matrix" />
       </Helmet>
+      <PageJsonLd name="ICU Drug Interaction Matrix" description="A grid of the adult intensive care formulary showing which ICU drugs interact with each other, graded avoid, major or moderate, with mechanism." />
 
       <PageSection className="pt-8 pb-16">
         <Link

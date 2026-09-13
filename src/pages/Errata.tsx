@@ -140,6 +140,7 @@ const Errata = () => {
           content="Public ledger of confirmed inaccuracies reported on Anaesthesia Core and the corrections we’ve published."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/errata" />
+        <meta property="og:url" content="https://anaesthesiacore.app/errata" />
       </Helmet>
 
       <div className="max-w-3xl mx-auto space-y-6">

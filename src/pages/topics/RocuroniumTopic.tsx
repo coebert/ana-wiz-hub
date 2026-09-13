@@ -79,6 +79,7 @@ const RocuroniumTopic = () => {
               content="Rocuronium for FRCA: mechanism, intubating and RSI dose, onset, duration, TOF/PTC monitoring, sugammadex reversal dosing and adverse effects."
             />
             <link rel="canonical" href="https://anaesthesiacore.app/pharmacology/rocuronium" />
+        <meta property="og:url" content="https://anaesthesiacore.app/pharmacology/rocuronium" />
             <script type="application/ld+json">{JSON.stringify({
               "@context": "https://schema.org",
               "@type": "MedicalWebPage",

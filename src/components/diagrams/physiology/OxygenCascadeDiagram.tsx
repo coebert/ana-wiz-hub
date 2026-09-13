@@ -249,7 +249,7 @@ const OxygenCascadeDiagram = () => {
             aria-label={playing ? "Pause cascade animation" : "Play cascade animation"}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-secondary/60 text-foreground hover:bg-secondary transition-colors"
           >
-            {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
+            {playing ? <Pause className="h-3.5 w-3.5"  aria-hidden="true" focusable={false}/> : <Play className="h-3.5 w-3.5"  aria-hidden="true" focusable={false}/>}
             {playing ? "Pause" : "Play"}
           </button>
           <button
@@ -258,7 +258,7 @@ const OxygenCascadeDiagram = () => {
             aria-label="Restart cascade animation"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-secondary/40 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
           >
-            <RotateCcw className="h-3.5 w-3.5" />
+            <RotateCcw className="h-3.5 w-3.5"  aria-hidden="true" focusable={false}/>
             Restart
           </button>
           <div className="flex gap-1 ml-1">

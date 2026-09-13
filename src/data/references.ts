@@ -73,6 +73,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2014", citation: "Srivastava U. Anaesthetic vaporisers. BJA Education. 2014;14(1):14-19.", url: "https://doi.org/10.1093/bjaceaccp/mkt032", excerpt: "The output of a variable-bypass vaporiser depends on the saturated vapour pressure of the agent, the splitting ratio, and the fresh-gas flow. Temperature compensation is required because vaporisation cools the chamber and reduces SVP. Desflurane (boiling point 22.8 °C, SVP 88.5 kPa at 20 °C) cannot be delivered by a conventional plenum vaporiser; the Tec 6 heats the agent to 39 °C, pressurises it to ~2 atm, and meters pure vapour into the fresh-gas stream." },
     { label: "Al-Shaikh & Stacey Ch.5", citation: "Al-Shaikh B, Stacey S. Essentials of Anaesthetic Equipment. 5th ed. Chapter 5: Vaporisers." },
     { label: "Davey & Diba Ch.3", citation: "Davey AJ, Diba A. Ward's Anaesthetic Equipment. 6th ed. Elsevier; 2012. Chapter 3: Vaporisers." },
+    { label: "RCoA/AoA 2024 Machine Check", citation: "Association of Anaesthetists / Royal College of Anaesthetists. Anaesthesia, anaesthetic machines and patient safety. 2024.", url: "https://www.rcoa.ac.uk/safety-standards-quality/guidelines-standards-and-publications/anaesthesia-anaesthetic-machines-and" },
   ],
   "anaesthetic-machine": [
     { label: "Al-Shaikh & Stacey Ch.1-4", citation: "Al-Shaikh B, Stacey S. Essentials of Anaesthetic Equipment. 5th ed. Elsevier; 2019. Chapters 1-4: Anaesthetic Machine." },

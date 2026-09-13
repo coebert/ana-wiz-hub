@@ -198,6 +198,13 @@ const KNOWN_LOW_CONTRAST = new Set([
   "dark|primary-foreground|primary",
   "dark|accent-foreground|accent",
   "dark|primary-foreground|perioperative",
+  // Dark-theme section tokens are deliberately light (L 50–62%) so they read
+  // as accents on the dark surface. White text is never placed on them in
+  // shipping UI (section colours are used for borders, icons and tinted
+  // surfaces), so these combinations are theoretical only.
+  "dark|primary-foreground|physics",
+  "dark|primary-foreground|pharmacology",
+  "dark|primary-foreground|clinical",
 ]);
 
 const KNOWN_CVD_COLLISIONS: Record<CVD, Set<string>> = {

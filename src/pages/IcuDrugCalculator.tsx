@@ -5,6 +5,7 @@ import { ArrowLeft, Calculator, Syringe, AlertTriangle } from "lucide-react";
 import { icuInfusionGroups, type Infusion } from "@/data/icuInfusions";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 import {
   Select,
   SelectContent,
@@ -123,13 +124,15 @@ const IcuDrugCalculator = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>ICU Drug Calculator — Dose, Rate and Volume | AnaesthesiaCore</title>
+        <title>ICU Drug Calculator | AnaesthesiaCore</title>
         <meta
           name="description"
           content="ICU medication calculator: enter drug, dose, patient weight and route to get the infusion rate in mcg/kg/hr and mL/hr, plus the total volume per day."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/calculator" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/calculator" />
       </Helmet>
+      <PageJsonLd name="ICU Drug Calculator" description="ICU medication calculator: enter drug, dose, patient weight and route to get the infusion rate in mcg/kg/hr and mL/hr, plus the total volume per day." />
 
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
         <Link

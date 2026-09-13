@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ProgressiveCase } from "@/components/perioperative/ProgressiveCase";
 import type { CaseBank, CaseBankCase } from "@/data/cases/types";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 interface CaseBankPageProps {
   bank: CaseBank;
@@ -64,6 +65,7 @@ export const CaseBankPage = ({ bank }: CaseBankPageProps) => {
       accentColor={bank.accentColor}
       disableAutoTOC
     >
+      <PageJsonLd name={bank.title} description={bank.metaDescription ?? bank.subtitle} learningResourceType="Case bank" />
       <section className="border-y border-border py-5 mb-6">
         <div className="grid sm:grid-cols-[auto_1fr] gap-4 items-start">
           <BookOpenCheck className={`h-8 w-8 ${bank.accentColor}`} aria-hidden />

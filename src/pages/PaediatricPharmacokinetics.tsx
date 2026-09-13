@@ -6,6 +6,7 @@ import { PageSection } from "@/components/layout/PageSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { paedPkGroups, paediatricPkDrugs, type PaedPkGroup } from "@/data/paediatricPk";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 const PaediatricPharmacokinetics = () => {
   const [params] = useSearchParams();
@@ -36,13 +37,15 @@ const PaediatricPharmacokinetics = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>Paediatric Pharmacokinetics — Clearance, Vd &amp; Half-life Tables — AnaesthesiaCore</title>
+        <title>Paediatric Pharmacokinetics | AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Weight-based paediatric pharmacokinetics for PICU drugs: clearance, volume of distribution and half-life by age band, with allometric scaling, maturation notes and links to drug cards and withdrawal flows."
+          content="Weight-based paediatric pharmacokinetics for PICU drugs: clearance, volume of distribution and half-life by age band, with allometric scaling."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/paediatric-pharmacokinetics" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/paediatric-pharmacokinetics" />
       </Helmet>
+      <PageJsonLd name="Paediatric Pharmacokinetics" description="Weight-based paediatric pharmacokinetics for PICU drugs: clearance, volume of distribution and half-life by age band, with allometric scaling." />
 
       <PageSection className="pt-8 pb-16">
         <Link

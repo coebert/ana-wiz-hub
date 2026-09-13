@@ -220,7 +220,7 @@ export const KetamineToleranceReversalDiagram = () => {
               aria-label={playing ? "Pause mechanism animation" : "Play mechanism animation"}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border border-border text-foreground hover:border-foreground/50 transition-colors"
             >
-              {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
+              {playing ? <Pause className="h-3.5 w-3.5"  aria-hidden="true" focusable={false}/> : <Play className="h-3.5 w-3.5"  aria-hidden="true" focusable={false}/>}
               {playing ? "Pause" : "Play all"}
             </button>
           )}
@@ -235,7 +235,7 @@ export const KetamineToleranceReversalDiagram = () => {
                 : "border-border text-foreground hover:border-foreground/50"
             }`}
           >
-            <BookOpen className="h-3.5 w-3.5" />
+            <BookOpen className="h-3.5 w-3.5"  aria-hidden="true" focusable={false}/>
             Sources
           </button>
           {MECHANISMS.map((m) => (
@@ -412,7 +412,7 @@ export const KetamineToleranceReversalDiagram = () => {
           {showSources && (
             <div className="mt-3 pt-3 border-t border-border">
               <p className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mb-1.5">
-                <BookOpen className="h-3 w-3" /> Sources for mechanism {mech.id}
+                <BookOpen className="h-3 w-3"  aria-hidden="true" focusable={false}/> Sources for mechanism {mech.id}
               </p>
               <ul className="flex flex-wrap gap-1.5">
                 {mech.sources.map((s) => (

@@ -47,6 +47,7 @@ const EXCLUDE_EXACT = new Set<string>([
   "/login",
   "/review",
   "/viva/voice",
+  "/ask",
 ]);
 
 
@@ -98,6 +99,16 @@ function buildPathToFileMap(): Record<string, string> {
     const file = componentToFile[m[2]];
     if (file) map[m[1]] = file;
   }
+  // Data-driven topic routes: [urlPath, moduleName] under src/pages/topics/.
+  const topicRoutesFile = resolve("src/routes/topicRoutes.ts");
+  if (existsSync(topicRoutesFile)) {
+    const topicSrc = readFileSync(topicRoutesFile, "utf8");
+    for (const m of topicSrc.matchAll(/\[\s*"(\/[^"]+)"\s*,\s*"([A-Za-z0-9_]+)"\s*\]/g)) {
+      const candidate = resolve(`src/pages/topics/${m[2]}.tsx`);
+      if (existsSync(candidate)) map[m[1]] = candidate;
+    }
+  }
+
   return map;
 }
 
@@ -127,7 +138,7 @@ function discoverRoutes(): { path: string; isRedirect: boolean; isParam: boolean
   if (existsSync(topicRoutesFile)) {
     const topicSrc = readFileSync(topicRoutesFile, "utf8");
     // TOPIC_ROUTES: ["/some/path", "ComponentName"]
-    for (const m of topicSrc.matchAll(/\[\s*"(\/[^"]+)"\s*,\s*"[^"]+"\s*\]/g)) {
+    for (const m of topicSrc.matchAll(/\[\s*"(\/[^"]+)"\s*,\s*"([A-Za-z0-9_]+)"\s*\]/g)) {
       routes.push({ path: m[1], isRedirect: false, isParam: m[1].includes(":") });
     }
     // TOPIC_REDIRECTS: ["/from", "/to"] — flag as redirect so they're skipped.
@@ -196,10 +207,12 @@ async function fetchDrugSlugs(): Promise<string[]> {
 async function expandParamRoute(path: string): Promise<SitemapEntry[]> {
   if (path === "/drugs/:slug") {
     const slugs = await fetchDrugSlugs();
+    const detailLastmod = lastModFor("/drugs/:slug") ?? lastModFor("/drugs");
     return slugs.map((slug) => ({
       path: `/drugs/${slug}`,
       changefreq: "monthly",
       priority: "0.6",
+      lastmod: detailLastmod,
     }));
   }
   console.warn(`[sitemap] No expander registered for param route "${path}" — skipped.`);

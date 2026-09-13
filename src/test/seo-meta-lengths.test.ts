@@ -50,7 +50,7 @@ describe("index.html head — title and description lengths", () => {
   it(`<meta name="description"> is ${DESC_MIN}–${DESC_MAX} chars`, () => {
     const d = pickContent(
       indexHtml,
-      /<meta\s+name="description"\s+content="([^"]+)"/,
+      /<meta[^>]*\sname="description"[^>]*\scontent="([^"]+)"/,
     );
     expect(d, "index.html missing meta description").toBeTruthy();
     expect(
@@ -68,7 +68,7 @@ describe("index.html head — title and description lengths", () => {
     ["twitter:title", TITLE_MAX],
   ] as const)(`%s is within %i chars`, (name, max) => {
     const attr = name.startsWith("og:") ? "property" : "name";
-    const re = new RegExp(`<meta\\s+${attr}="${name}"\\s+content="([^"]+)"`);
+    const re = new RegExp(`<meta[^>]*\\s${attr}="${name}"[^>]*\\scontent="([^"]+)"`);
     const v = pickContent(indexHtml, re);
     expect(v, `index.html missing ${name}`).toBeTruthy();
     expect(
@@ -82,7 +82,7 @@ describe("index.html head — title and description lengths", () => {
     ["twitter:description"],
   ] as const)(`%s is ${DESC_MIN}–${DESC_MAX} chars`, (name) => {
     const attr = name.startsWith("og:") ? "property" : "name";
-    const re = new RegExp(`<meta\\s+${attr}="${name}"\\s+content="([^"]+)"`);
+    const re = new RegExp(`<meta[^>]*\\s${attr}="${name}"[^>]*\\scontent="([^"]+)"`);
     const v = pickContent(indexHtml, re);
     expect(v, `index.html missing ${name}`).toBeTruthy();
     expect(

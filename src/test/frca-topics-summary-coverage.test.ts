@@ -64,6 +64,26 @@ function buildRouteIndex(): Map<string, RouteEntry> {
       });
     }
   }
+
+  // Data-driven topic routes live in src/routes/topicRoutes.ts as
+  // ["/section/topic-id", "ModuleName"] pairs under src/pages/topics/.
+  const topicRoutesFile = resolve("src/routes/topicRoutes.ts");
+  if (existsSync(topicRoutesFile)) {
+    const topicSrc = readFileSync(topicRoutesFile, "utf8");
+    for (const m of topicSrc.matchAll(
+      /\[\s*"(\/[^"]+)"\s*,\s*"([A-Za-z0-9_]+)"\s*\]/g,
+    )) {
+      const lastSegment = m[1].split("/").filter(Boolean).pop();
+      if (!lastSegment || out.has(lastSegment)) continue;
+      const file = resolve(`src/pages/topics/${m[2]}.tsx`);
+      out.set(lastSegment, {
+        topicId: lastSegment,
+        componentName: m[2],
+        file: existsSync(file) ? file : null,
+      });
+    }
+  }
+
   return out;
 }
 

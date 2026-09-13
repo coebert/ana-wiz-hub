@@ -15,6 +15,7 @@ import { PageSection } from "@/components/layout/PageSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 import {
   caseBankHref,
   calculableInfusions,
@@ -37,13 +38,15 @@ const PaediatricIcuFlows = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>Paediatric ICU Management Flows — Sepsis, PARDS, Neonatal — AnaesthesiaCore</title>
+        <title>Paediatric ICU Management Flows | AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Step-by-step paediatric critical care pathways for sepsis, paediatric ARDS, neonatal resuscitation and neuroprotection, with age-specific links to drug doses, infusions and matching case bank scenarios."
+          content="Step-by-step paediatric critical care pathways for sepsis, paediatric ARDS, neonatal resuscitation and neuroprotection, with age-specific links to drug doses."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/paediatric-flows" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/paediatric-flows" />
       </Helmet>
+      <PageJsonLd name="Paediatric ICU Management Flows" description="Step-by-step paediatric critical care pathways for sepsis, paediatric ARDS, neonatal resuscitation and neuroprotection, with age-specific links to drug doses." />
 
       <PageSection className="pt-8 pb-16">
         <Link

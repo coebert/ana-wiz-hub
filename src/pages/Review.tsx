@@ -162,6 +162,7 @@ export default function Review() {
         <title>Spaced repetition review queue | AnaesthesiaCore</title>
         <meta name="description" content="Personalised SM-2 spaced-repetition queue covering FRCA Primary, Final and FFICM quiz questions." />
         <link rel="canonical" href="https://anaesthesiacore.app/review" />
+        <meta property="og:url" content="https://anaesthesiacore.app/review" />
         <meta name="robots" content="noindex,follow" />
       </Helmet>
       <PageSection as="main" spacing="tight" width="narrow">

@@ -31,6 +31,22 @@ import { resolve } from "path";
 const DIAGRAMS_DIR = resolve("src/components/diagrams");
 const REFS_FILE = resolve("src/data/references.ts");
 
+/** Recursively list every `.tsx` file under the diagrams tree (diagrams are
+ * organised into per-section subfolders such as `physiology/`, `clinical/`). */
+function listDiagramFiles(dir = DIAGRAMS_DIR): string[] {
+  const out: string[] = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    if (entry.isDirectory()) {
+      if (entry.name === "__tests__" || entry.name === "_dev") continue;
+      out.push(...listDiagramFiles(resolve(dir, entry.name)));
+    } else if (entry.name.endsWith(".tsx")) {
+      out.push(resolve(dir, entry.name));
+    }
+  }
+  return out;
+}
+
+
 const ANIMATION_FILE_RE = /(?:^Animated[A-Z]\w*|Animation)\.tsx$/;
 
 /* ───────────────────────────── reference index ─────────────────────────── */
@@ -98,9 +114,8 @@ function listAnimationUnits(): AnimationUnit[] {
   const seen = new Set<string>();
   const declRe =
     /export\s+(?:default\s+)?(?:const|function|class)\s+(Animated[A-Z]\w*|\w*Animation)\b/g;
-  for (const f of readdirSync(DIAGRAMS_DIR)) {
-    if (!f.endsWith(".tsx")) continue;
-    const file = resolve(DIAGRAMS_DIR, f);
+  for (const file of listDiagramFiles()) {
+    const f = file.split("/").pop()!;
     const src = readFileSync(file, "utf8");
 
     // Index declaration ranges first so multi-component modules attribute

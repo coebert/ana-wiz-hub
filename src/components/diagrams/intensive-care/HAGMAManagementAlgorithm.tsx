@@ -282,7 +282,7 @@ const HAGMAManagementAlgorithm = () => {
             return (
               <div key={col.title} className={`p-3 rounded-md border border-border bg-secondary/30 border-l-4 ${col.tint}`}>
                 <div className="flex items-center gap-1.5 mb-2">
-                  <Icon className="h-4 w-4 text-foreground" />
+                  <Icon className="h-4 w-4 text-foreground" aria-hidden="true" focusable={false} />
                   <p className="text-xs font-bold text-foreground">{col.title}</p>
                 </div>
                 <ol className="space-y-2">
@@ -308,7 +308,7 @@ const HAGMAManagementAlgorithm = () => {
         {/* Pearls */}
         <div className="p-3 rounded-md border border-primary/30 bg-primary/5 animate-fade-in" key={`pearls-${cause.key}`}>
           <div className="flex items-center gap-1.5 mb-1.5">
-            <Activity className="h-4 w-4 text-primary" />
+            <Activity className="h-4 w-4 text-primary"  aria-hidden="true" focusable={false}/>
             <p className="text-sm font-semibold text-foreground">Exam / clinical pearls</p>
           </div>
           <ul className="list-disc list-inside space-y-1 text-xs text-foreground">

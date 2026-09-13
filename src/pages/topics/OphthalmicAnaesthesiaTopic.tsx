@@ -139,6 +139,15 @@ const OphthalmicAnaesthesiaTopic = () => {
         <>
           <TopicTableOfContents items={tocItems} />
 
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Ophthalmic anaesthesia is dominated by three themes: controlling intraocular
+            pressure, providing a still eye and a comfortable patient for delicate
+            microsurgery, and anticipating the oculocardiac reflex. Most cases are done
+            under local or regional block in elderly patients with significant
+            comorbidity, so careful assessment and shared airway planning matter more
+            than complex anaesthetic technique.
+          </p>
+
           <div id="physiology" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Ocular Physiology" defaultOpen>

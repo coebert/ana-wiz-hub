@@ -154,7 +154,7 @@ export const AcumenIQDiagram = () => {
             }}
             aria-label="Previous step"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4"  aria-hidden="true" focusable={false}/>
           </Button>
           <Button
             size="icon"
@@ -163,7 +163,7 @@ export const AcumenIQDiagram = () => {
             onClick={() => setPlaying((p) => !p)}
             aria-label={playing ? "Pause" : "Play"}
           >
-            {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+            {playing ? <Pause className="h-4 w-4"  aria-hidden="true" focusable={false}/> : <Play className="h-4 w-4"  aria-hidden="true" focusable={false}/>}
           </Button>
           <Button
             size="icon"
@@ -175,7 +175,7 @@ export const AcumenIQDiagram = () => {
             }}
             aria-label="Next step"
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4"  aria-hidden="true" focusable={false}/>
           </Button>
           <Button
             size="icon"
@@ -187,7 +187,7 @@ export const AcumenIQDiagram = () => {
             }}
             aria-label="Restart"
           >
-            <RotateCcw className="h-4 w-4" />
+            <RotateCcw className="h-4 w-4"  aria-hidden="true" focusable={false}/>
           </Button>
           <div className="h-1.5 flex-1 min-w-[120px] rounded-full bg-muted overflow-hidden">
             <div

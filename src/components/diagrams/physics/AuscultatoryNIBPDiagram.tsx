@@ -158,7 +158,7 @@ const AuscultatoryNIBPDiagram = () => {
               aria-label={muted ? "Unmute beats" : "Mute beats"}
               title={muted ? "Enable beat sounds" : "Mute beat sounds"}
             >
-              {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+              {muted ? <VolumeX className="h-4 w-4"  aria-hidden="true" focusable={false}/> : <Volume2 className="h-4 w-4"  aria-hidden="true" focusable={false}/>}
             </Button>
             <Button
               size="sm"
@@ -166,10 +166,10 @@ const AuscultatoryNIBPDiagram = () => {
               onClick={() => setRunning((r) => !r)}
               aria-label={running ? "Pause" : "Play"}
             >
-              {running ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+              {running ? <Pause className="h-4 w-4"  aria-hidden="true" focusable={false}/> : <Play className="h-4 w-4"  aria-hidden="true" focusable={false}/>}
             </Button>
             <Button size="sm" variant="outline" onClick={reset} aria-label="Reset">
-              <RotateCcw className="h-4 w-4" />
+              <RotateCcw className="h-4 w-4"  aria-hidden="true" focusable={false}/>
             </Button>
           </div>
         </div>

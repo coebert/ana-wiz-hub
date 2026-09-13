@@ -125,6 +125,13 @@ const OrganDonationTopic = () => {
       coreConcepts={
         <>
         <>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Deceased organ donation follows two distinct pathways — donation after
+            brainstem death (DBD) and donation after circulatory death (DCD) — each with
+            its own legal determination of death, timing constraints and drug strategy.
+            Understanding where the switch from patient-centred physiological support to
+            organ-directed optimisation occurs is central to safe, lawful practice.
+          </p>
           <ExamSection id="types" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Types of Organ Donation" defaultOpen>
             <div className="grid sm:grid-cols-2 gap-3">

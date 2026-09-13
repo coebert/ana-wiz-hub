@@ -19,6 +19,7 @@ const Trust = () => {
           content="How AnaesthesiaCore handles accounts, data, and content accuracy — including authentication, storage, subprocessors, and how to report problems."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/trust" />
+        <meta property="og:url" content="https://anaesthesiacore.app/trust" />
       </Helmet>
 
       <article className="prose dark:prose-invert max-w-3xl mx-auto px-4 py-10">

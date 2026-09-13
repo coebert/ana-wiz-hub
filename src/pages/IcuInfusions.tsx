@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import InfusionCalculator from "@/components/icu/InfusionCalculator";
 import { drugSlug } from "@/lib/caseDoseReferences";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 import {
   formatMlPerHour,
   icuInfusionCount,
@@ -75,10 +76,12 @@ const IcuInfusions = () => {
         <title>Key ICU Drug Infusions — AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Adult ICU infusion recipes: vasopressors, inotropes, sedatives and analgesics with safe diluents, draw-up volumes and concentrations, starting doses and dose ranges in micrograms/kg/min (or equivalent) with a live mL/hour converter."
+          content="Adult ICU infusion recipes: vasopressors, inotropes, sedatives and analgesics with safe diluents, draw-up volumes and concentrations."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/infusions" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/infusions" />
       </Helmet>
+      <PageJsonLd name="Key ICU Drug Infusions" description="Adult ICU infusion recipes: vasopressors, inotropes, sedatives and analgesics with safe diluents, draw-up volumes and concentrations." />
 
       <PageSection className="pt-8 pb-16">
         <Link

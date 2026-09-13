@@ -94,6 +94,9 @@ const SKIP_FILES: Record<string, string> = {
   // recognised as SVGPathElement instances by jsdom even with a polyfill
   // on the prototype — render-time crash unrelated to a11y.
   "BPControlLoopDiagram.tsx": "jsdom path.getTotalLength incompatibility",
+  // Helper wrapper that requires children — it is the a11y primitive the
+  // other diagrams use, not a diagram itself.
+  "DecorativeIcon.tsx": "helper wrapper, not a diagram",
 };
 
 /**
@@ -101,7 +104,7 @@ const SKIP_FILES: Record<string, string> = {
  * synchronously. Vite handles the glob at compile time.
  */
 const modules = import.meta.glob<Record<string, unknown>>(
-  "../*.tsx",
+  ["../*.tsx", "../*/*.tsx"],
   { eager: true },
 );
 

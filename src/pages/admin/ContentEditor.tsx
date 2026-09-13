@@ -448,7 +448,7 @@ export default function ContentEditor() {
                     <span className="text-xs text-muted-foreground">{row.anchor}</span>
                   )}
                 </div>
-                {row.heading && <h3 className="font-semibold">{row.heading}</h3>}
+                {row.heading && <h2 className="font-semibold">{row.heading}</h2>}
                 <p className="whitespace-pre-wrap text-sm text-foreground">{row.body}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <Button size="sm" variant="outline" onClick={() => edit(row)}>

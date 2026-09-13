@@ -21,6 +21,7 @@ import { icuDrugDoseGroups } from "@/data/icuDrugDoses";
 import { icuDrugSafetyGroups } from "@/data/icuDrugSafety";
 import { icuDrugPharmacokinetics } from "@/data/pk";
 import { icuDrugPharmacodynamics } from "@/data/pd";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 import {
   icuDrugWithdrawal,
   withdrawalRiskLabel,
@@ -170,13 +171,15 @@ const IcuDrugCards = () => {
   return (
     <PageSection>
       <Helmet>
-        <title>ICU Drug Cards | Class, Dosing, PK & Safety | AnaesthesiaCore</title>
+        <title>ICU Drug Cards: Dosing, PK & Safety | AnaesthesiaCore</title>
         <meta
           name="description"
-          content="Complete drug cards for the adult ICU formulary: class, mechanism, dose-response, adult and paediatric dosing, pharmacokinetics, safety, monitoring and withdrawal guidance."
+          content="Complete drug cards for the adult ICU formulary: class, mechanism, dose-response, adult and paediatric dosing, pharmacokinetics, safety."
         />
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-cards" />
+        <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-cards" />
       </Helmet>
+      <PageJsonLd name="ICU Drug Cards: Dosing, PK & Safety" description="Complete drug cards for the adult ICU formulary: class, mechanism, dose-response, adult and paediatric dosing, pharmacokinetics, safety." />
 
       <Button asChild variant="ghost" size="sm" className="mb-4 -ml-2">
         <Link to="/intensive-care">

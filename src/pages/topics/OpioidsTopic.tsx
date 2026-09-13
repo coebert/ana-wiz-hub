@@ -430,9 +430,9 @@ const OpioidsTopic = () => {
               </ol>
 
               <div className="mt-6 bg-card rounded-xl border border-border p-4 md:p-6">
-                <h2 className="text-base font-serif font-semibold text-foreground">
+                <h4 className="text-base font-serif font-semibold text-foreground">
                   Animated: the seven mechanisms of ketamine-mediated tolerance reversal
-                </h2>
+                </h4>
                 <KetamineToleranceReversalDiagram />
               </div>
 

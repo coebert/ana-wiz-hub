@@ -316,7 +316,7 @@ const RecCard = ({ rec }: { rec: Recommendation }) => {
   return (
     <div className={`p-3 rounded-md border ${cls} animate-fade-in`} key={rec.headline}>
       <div className="flex items-start gap-2">
-        <Icon className="h-4 w-4 mt-0.5 shrink-0 text-foreground" />
+        <Icon className="h-4 w-4 mt-0.5 shrink-0 text-foreground" aria-hidden="true" focusable={false} />
         <p className="text-sm font-semibold text-foreground">{rec.headline}</p>
       </div>
       {rec.actions.length > 0 && (
@@ -375,7 +375,7 @@ const ToxicAlcoholSalicylateCalculator = () => {
             ))}
           </div>
           <button onClick={activeReset} className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded border border-border hover:bg-secondary transition-colors">
-            <RotateCcw className="h-3 w-3" /> Reset
+            <RotateCcw className="h-3 w-3"  aria-hidden="true" focusable={false}/> Reset
           </button>
         </div>
 
