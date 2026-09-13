@@ -780,6 +780,33 @@ const SepsisTopic = () => {
               </tbody>
             </table>
           </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Assessing fluid responsiveness at the bedside</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            &ldquo;Fluid responsive&rdquo; means a ≥ 10–15% rise in stroke volume or cardiac output after a preload challenge — it is a statement about the position on the Frank–Starling curve, not a reason to give fluid. Only give fluid if the patient is <em>both</em> fluid responsive <em>and</em> hypoperfused, because static measures such as CVP and pulmonary artery occlusion pressure do not predict responsiveness <InlineRef topicId="sepsis" refLabel="SSC 2012 (Paediatric considerations)" />.
+          </p>
+          <div className="overflow-x-auto mb-3">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border bg-secondary/40">
+                <th className="text-left p-2 font-semibold text-foreground">Test</th>
+                <th className="text-left p-2 font-semibold text-foreground">How to do it &amp; threshold</th>
+                <th className="text-left p-2 font-semibold text-foreground">Limitations / invalid when</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground align-top">
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Passive leg raise (PLR)</td><td className="p-2">Semi-recumbent 45° → supine with legs raised 45° for 60–90 s; autotransfuses ~300 mL. Positive if stroke volume or cardiac output rises ≥ 10% (measure with echo VTI, pulse-contour device or bioreactance).</td><td className="p-2">Needs a real-time flow measure (blood-pressure change alone is unreliable), intra-abdominal hypertension, painful/agitated patient, lower-limb amputation, head injury where head-down is unsafe, DVT.</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Pulse-pressure / stroke-volume variation</td><td className="p-2">Respiratory variation &gt; 12–13% (PPV) or &gt; 10% (SVV) on a damping-free arterial line predicts responsiveness.</td><td className="p-2">Invalid with spontaneous breathing effort, arrhythmia (especially AF), tidal volume &lt; 8 mL/kg PBW, low lung compliance, open chest, right ventricular failure, very high respiratory rate (heart rate:respiratory rate &lt; 3.6).</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">End-expiratory occlusion test</td><td className="p-2">Hold ventilation at end-expiration for 12–15 s; a ≥ 5% rise in cardiac output or pulse pressure is positive. Valid at low tidal volume and with mild arrhythmia.</td><td className="p-2">Requires an intubated patient able to tolerate the hold without triggering; needs a precise continuous cardiac-output signal.</td></tr>
+                <tr className="border-b border-border"><td className="p-2 font-medium text-foreground">Mini fluid challenge</td><td className="p-2">100–250 mL crystalloid over 1–2 min; ≥ 5–10% rise in stroke volume is positive.</td><td className="p-2">Small signal needs a precise monitor; cumulative fluid if repeated.</td></tr>
+                <tr><td className="p-2 font-medium text-foreground">Echocardiography &amp; IVC assessment</td><td className="p-2">Serial LVOT VTI before/after a challenge; IVC distensibility &gt; 18% (ventilated) or collapsibility &gt; 40% (spontaneous) is supportive.</td><td className="p-2">Operator-dependent; IVC indices perform poorly with spontaneous effort, raised intra-abdominal pressure, RV failure or high PEEP — never use in isolation.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-3">
+            <p className="text-sm text-muted-foreground">
+              <strong>Practical rule:</strong> pair a dynamic test with a marker of hypoperfusion (lactate trend, capillary refill time, central venous–arterial CO₂ gap, ScvO₂, urine output). If the test is negative, or the patient is fluid responsive but not hypoperfused, escalate vasopressors or inotropes instead and move towards de-resuscitation once shock has resolved.
+            </p>
+          </div>
+
         </div>
 
         <div id="vasopressors" className="scroll-mt-24">
