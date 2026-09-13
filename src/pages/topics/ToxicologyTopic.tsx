@@ -248,6 +248,23 @@ const ToxicologyTopic = () => {
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Sympathomimetic Overdose (cocaine, amphetamines, MDMA)">
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Toxidrome</strong>: agitation and psychosis, mydriasis, sweating (contrast the dry skin of anticholinergic toxicity), tachycardia, hypertension, hyperthermia and seizures. Cocaine additionally blocks fast Na⁺ channels, so it behaves partly like a class Ic antiarrhythmic (wide QRS, arrhythmia).</li>
+              <li><strong>Excited delirium / agitation</strong>: treat first with generous IV <strong>benzodiazepines</strong> (e.g. diazepam 5–10 mg or midazolam 2–5 mg IV, repeated and titrated) — they lower sympathetic outflow, temperature, heart rate and blood pressure simultaneously. Escalate to intubation with sedation and ventilation for refractory agitation, hyperthermia or a compromised airway.</li>
+              <li><strong>Hyperthermia is the killer</strong>: temperature &gt;39 °C mandates aggressive active cooling (cold IV fluids, evaporative and surface cooling, ice packs, intravascular cooling if needed) plus sedation and paralysis if shivering or muscle rigidity persists. Antipyretics are ineffective; dantrolene is not standard therapy.</li>
+              <li><strong>Hypertension and coronary ischaemia</strong>: benzodiazepines first-line; then glyceryl trinitrate or phentolamine. <strong>Avoid unopposed β-blockade</strong> in cocaine toxicity (risk of α-mediated coronary vasoconstriction and worsening hypertension) — use labetalol only with caution and never as the sole agent. Treat cocaine-associated chest pain with aspirin, benzodiazepines and nitrates, with PCI for confirmed STEMI.</li>
+              <li><strong>Arrhythmia</strong>: sodium bicarbonate 8.4% for QRS widening from cocaine Na⁺-channel blockade; magnesium for torsade; avoid class Ia/Ic agents.</li>
+              <li><strong>Complications to look for</strong>: rhabdomyolysis with AKI (fluids ± urinary alkalinisation, monitor CK and K⁺), MDMA-associated <strong>hyponatraemia</strong> from SIADH plus excess water intake (treat symptomatic cases with hypertonic saline and restrict fluid), serotonin syndrome, intracranial haemorrhage and aortic dissection, seizures, DIC and acute liver failure.</li>
+              <li><strong>Supportive priorities</strong>: correct acidosis, hypoglycaemia and electrolytes; discuss with NPIS/TOXBASE; screen for co-ingestion and body-packing (imaging, whole-bowel irrigation, surgery if a package ruptures).</li>
+            </ul>
+            <p className="text-xs text-muted-foreground mt-2">
+              <InlineRef topicId="toxicology" refLabel="BJA Educ 2016" /> <InlineRef topicId="toxicology" refLabel="NPIS Toxbase" />
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Salicylate Poisoning">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>Early: respiratory alkalosis (central stimulation) → mixed metabolic acidosis + respiratory alkalosis → late: metabolic acidosis predominates</li>
