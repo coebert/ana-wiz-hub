@@ -231,6 +231,9 @@ const HeadNeckAnatomyTopic = () => {
               Understanding the fascial planes and spatial relationships at C6 (cricoid level) is essential for central venous access, stellate ganglion block, and understanding the spread of deep neck infections.
             </p>
             <NeckCrossSectionDiagram />
+            <p className="text-sm text-muted-foreground mt-3">
+              The diagram emphasises the investing, pretracheal and prevertebral layers, the alar fascia and the carotid sheath; together these define the clinically important routes by which infection, blood and air can spread through the neck <InlineRef topicId="head-neck-anatomy" refLabel="BJA Educ 2005" />.
+            </p>
           </div>
 
           <div id="cervical-plexus">
@@ -300,6 +303,15 @@ const HeadNeckAnatomyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Oropharynx: soft palate to epiglottis. Glossopharyngeal nerve (IX) provides sensory innervation. Hypopharynx (laryngopharynx): epiglottis to cricoid. Vagus (X) via internal laryngeal nerve.</p>
               </div>
             </div>
+            <div className="mt-4 rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Pharyngeal muscles and innervation</h3>
+              <p className="text-sm text-muted-foreground mt-2">
+                The outer circular layer comprises the <strong>superior, middle and inferior constrictors</strong>; the inner longitudinal layer comprises <strong>stylopharyngeus, salpingopharyngeus and palatopharyngeus</strong>, which elevate and shorten the pharynx during swallowing. Motor supply is principally through the pharyngeal plexus from vagus, except stylopharyngeus, which is supplied by glossopharyngeal nerve. Sensory supply follows the three regions: V2 to nasopharynx, IX to oropharynx and X (internal laryngeal branch) to laryngopharynx <InlineRef topicId="head-neck-anatomy" refLabel="BJA Educ 2005" />.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                The inferior constrictor has thyropharyngeus and cricopharyngeus parts. Their posterior junction forms <strong>Killian&apos;s dehiscence</strong>, a weak area through which a Zenker diverticulum may protrude. Loss of pharyngeal dilator tone during anaesthesia or unconsciousness allows the tongue and soft tissues to narrow the compliant pharynx; jaw thrust, airway adjuncts and positive pressure restore patency.
+              </p>
+            </div>
           </div>
 
           {/* ==================================================================== */}
@@ -344,6 +356,20 @@ const HeadNeckAnatomyTopic = () => {
                   <tr><td className="py-2 font-medium text-foreground">Corniculate/Cuneiform</td><td>Elastic</td><td>Small cartilages within aryepiglottic folds. Visible during laryngoscopy.</td></tr>
                 </tbody>
               </table>
+            </div>
+            <div className="overflow-x-auto mt-5">
+              <h3 className="text-lg font-semibold text-foreground mb-2">Intrinsic Laryngeal Muscles</h3>
+              <table className="w-full text-sm border-collapse">
+                <thead><tr className="border-b border-border"><th className="text-left py-2">Function</th><th className="text-left py-2">Muscle</th><th className="text-left py-2">Action</th><th className="text-left py-2">Innervation</th></tr></thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Abduction</td><td>Posterior cricoarytenoid</td><td>Only abductor; opens the rima glottidis</td><td>RLN</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Adduction</td><td>Lateral cricoarytenoid; transverse arytenoid</td><td>Closes the membranous and posterior glottis</td><td>RLN</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Tension</td><td>Cricothyroid</td><td>Tilts thyroid cartilage forward, lengthening the cords</td><td>External SLN</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Relaxation</td><td>Thyroarytenoid and vocalis</td><td>Shorten and fine-tune vocal-fold tension</td><td>RLN</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Inlet sphincter</td><td>Oblique arytenoid; aryepiglottic</td><td>Narrows the laryngeal inlet during swallowing</td><td>RLN</td></tr>
+                </tbody>
+              </table>
+              <p className="text-sm text-muted-foreground mt-2">All intrinsic muscles receive recurrent laryngeal motor supply except cricothyroid. Bilateral posterior cricoarytenoid dysfunction therefore leaves the cords near the midline and can cause critical stridor <InlineRef topicId="head-neck-anatomy" refLabel="Ellis & Feldman Ch.1" />.</p>
             </div>
           </div>
 
@@ -404,7 +430,7 @@ const HeadNeckAnatomyTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Pretracheal (visceral) fascia</p>
-                <p className="text-sm text-muted-foreground mt-1">Encloses thyroid, trachea and oesophagus and the strap muscles, continuing with the pericardium and the fibrous pericardium in the superior mediastinum. Infection and air track directly into the anterior mediastinum. Contains the recurrent laryngeal nerves in the tracheo-oesophageal grooves.</p>
+                <p className="text-sm text-muted-foreground mt-1">Encloses thyroid, trachea and oesophagus and the strap muscles, continuing with the fibrous pericardium in the superior mediastinum. The <strong>pretracheal space</strong> lies anterior to this visceral compartment, deep to the infrahyoid muscles, and contains loose connective tissue, the thyroid venous plexus and variable thyroid ima vessels. Infection, blood and air can track into the anterior mediastinum.</p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Prevertebral fascia</p>
@@ -416,7 +442,7 @@ const HeadNeckAnatomyTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Retropharyngeal space and the danger space</p>
-                <p className="text-sm text-muted-foreground mt-1">The retropharyngeal space lies between the buccopharyngeal (visceral) fascia and the alar fascia, extending to about T4; the <strong>"danger space"</strong> lies between the alar and prevertebral fascia and runs uninterrupted to the diaphragm — hence descending necrotising mediastinitis from Ludwig's angina, dental or retropharyngeal abscess. Airway assessment must anticipate trismus, limited neck extension, distorted anatomy and a friable, bleeding pharynx; awake fibreoptic or inhalational induction with a surgical airway plan is preferred.</p>
+                <p className="text-sm text-muted-foreground mt-1">The retropharyngeal space lies between buccopharyngeal fascia and the alar layer immediately anterior to the prevertebral fascia, extending to about T4; the <strong>"danger space"</strong> lies between alar and prevertebral fascia and runs uninterrupted to the diaphragm — hence descending necrotising mediastinitis from dental or retropharyngeal infection. Airway assessment must anticipate trismus, limited extension and distorted, friable anatomy <InlineRef topicId="head-neck-anatomy" refLabel="BJA Educ 2005" />.</p>
               </div>
             </div>
           </div>
