@@ -196,6 +196,11 @@ const coreConcepts = (
           <p className="text-xs text-muted-foreground italic mb-2">35-year-old, IV teicoplanin at induction.</p>
           <p className="text-sm text-foreground/90">Sudden ↓ETCO₂, peak airway pressure 38, urticaria, BP 50/30, tryptase rising. <strong>Pattern:</strong> profound vasodilation + capillary leak + bronchospasm. <strong>Treat:</strong> stop trigger, IM adrenaline 500 µg (or IV 50 µg boluses titrated), 100% O₂, IV fluid bolus, second-line: salbutamol, hydrocortisone, chlorphenamine.</p>
         </div>
+        <div className="rounded-lg border border-border bg-card p-4">
+          <h3 className="font-serif font-semibold text-foreground mb-1">Mixed / endocrine — phaeochromocytoma crisis</h3>
+          <p className="text-xs text-muted-foreground italic mb-2">44-year-old, hypertensive crisis during laparoscopic adrenal surgery.</p>
+          <p className="text-sm text-foreground/90">BP swings from 240/130 to 60/35, HR 150 with ectopy, headache, sweating, hyperglycaemia, lactate 5.0; echo shows a stress (catecholamine) cardiomyopathy with LVEF 30%. <strong>Pattern:</strong> a mixed picture — massive catecholamine surge gives extreme ↑SVR and hypertension, then abrupt <em>cardiogenic and distributive</em> collapse once the tumour is devascularised (loss of catecholamine drive onto a down-regulated, volume-depleted circulation) <InlineRef topicId="circulatory-failure" refLabel="Endocr Rev 2022 (Phaeochromocytoma)" />. <strong>Treat:</strong> phenoxybenzamine/doxazosin α-blockade for 1–2 weeks pre-operatively with liberal salt and fluid, <em>β-blockade only after</em> α-blockade (unopposed α causes catastrophic vasoconstriction); intra-operatively use short-acting agents (phentolamine, magnesium, GTN/SNP, esmolol) and anticipate post-clamp hypotension needing fluid, noradrenaline and occasionally vasopressin. Monitor for post-operative hypoglycaemia from rebound hyperinsulinaemia.</p>
+        </div>
         <div className="rounded-lg border border-border bg-card p-4 md:col-span-2">
           <h3 className="font-serif font-semibold text-foreground mb-1">Distributive — neurogenic</h3>
           <p className="text-xs text-muted-foreground italic mb-2">28-year-old, fall from height, complete C5 cord injury.</p>
