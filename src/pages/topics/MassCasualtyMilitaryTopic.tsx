@@ -348,6 +348,53 @@ const MassCasualtyMilitaryTopic = () => {
               <li><strong>Crush syndrome</strong>: aggressive crystalloid before extrication (1 L/h adult), monitor for hyperkalaemia, rhabdomyolysis, AKI; alkalinisation of urine if myoglobinuric</li>
               <li><strong>Paediatric</strong>: weight-based drug calculations (Broselow tape), psychological support, parents not always present, smaller margin for error in fluid &amp; airway management</li>
             </ul>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mt-6 mb-2">
+              CBRN Casualties — Agent-Specific Management <InlineRef topicId="mass-casualty-military" refLabel="UKHSA CBRN" />
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              The governing principle is <strong className="text-foreground">staff safety and decontamination before treatment</strong>: contaminated casualties are managed in the
+              cold-zone Initial Operational Response (disrobe — removing outer clothing removes up to 80% of contaminant — then dry or wet decontamination) before entry to the
+              clean clinical area. Anaesthetists work in powered respirator PPE with impaired dexterity, vision and communication, so airway plans must be simplified,
+              videolaryngoscopy favoured, and drugs pre-drawn and labelled. Do not bring an undecontaminated patient into theatre or ICU.
+            </p>
+            <div className="space-y-3">
+              {[
+                {
+                  agent: "Nerve agents (sarin, VX, Novichok) and organophosphates",
+                  detail: "Acetylcholinesterase inhibition → muscarinic (SLUDGE: salivation, lacrimation, urination, defaecation, GI cramps, emesis, bronchorrhoea, bronchospasm, bradycardia, miosis) plus nicotinic (fasciculation, weakness, paralysis) and central (seizures, apnoea) effects. Death is from bronchorrhoea, bronchospasm and respiratory muscle paralysis. Treat with high-dose atropine titrated to drying of secretions and adequate oxygenation (doubling doses, often tens of milligrams — pupils are not the endpoint), an oxime (pralidoxime or obidoxime by infusion) to reactivate enzyme, and benzodiazepines (diazepam/midazolam) for seizures and as prophylaxis in severe exposure. Expect prolonged apnoea and a very prolonged suxamethonium block (plasma cholinesterase is also inhibited) — use a non-depolarising agent and anticipate ventilation for days; intermediate syndrome may cause relapse of weakness."
+                },
+                {
+                  agent: "Vesicants / blister agents (sulphur mustard, lewisite)",
+                  detail: "Alkylating agents causing delayed (2–24 h) erythema, blistering, painful keratoconjunctivitis and airway mucosal sloughing; systemic mustard is myelosuppressive with a nadir at 7–14 days. Management is essentially burns care: meticulous decontamination (mustard persists on skin and clothing and can contaminate staff), analgesia, fluid resuscitation using burns formulae but recognising fluid losses are usually less than thermal burns of equivalent area, eye irrigation with topical mydriatics and lubricants, and early airway assessment because pseudomembrane formation can obstruct the trachea and require bronchoscopy. There is no antidote for mustard; lewisite is amenable to chelation with dimercaprol (BAL) or DMPS. Monitor full blood count for delayed neutropenia and treat as an immunocompromised patient."
+                },
+                {
+                  agent: "Pulmonary / choking agents (chlorine, phosgene, ammonia)",
+                  detail: "Water-soluble agents (chlorine, ammonia) cause immediate upper airway and conjunctival irritation with laryngeal oedema; poorly soluble phosgene penetrates distally and produces non-cardiogenic pulmonary oedema after a latent period of up to 24 h. Management is supportive: remove from exposure, humidified oxygen, nebulised bronchodilators, low threshold for intubation before airway oedema progresses, and lung-protective ventilation with PEEP for the resulting ARDS. Nebulised sodium bicarbonate may relieve chlorine-induced bronchospasm. Enforce a minimum 24 h observation period after significant phosgene exposure, avoid exertion (which worsens oedema), and do not rely on an initially normal chest radiograph. Steroids and prophylactic antibiotics are not routinely indicated."
+                },
+                {
+                  agent: "Cyanide (hydrogen cyanide, cyanogen chloride, enclosed-space fires)",
+                  detail: "Cytochrome oxidase inhibition → cellular asphyxia with normal SpO₂, severe lactic acidosis, a narrowed veno-arterial oxygen difference and rapid loss of consciousness. Give high-flow oxygen and hydroxocobalamin as first-line (safe in the smoke-inhalation patient and does not impair oxygen carriage; expect red discolouration of skin and urine and interference with colorimetric assays); alternatives are sodium thiosulphate and, where hypoxaemia is not co-existent, dicobalt edetate or sodium nitrite. Correct acidosis and support ventilation."
+                },
+                {
+                  agent: "Riot-control agents (CS, CN, PAVA/OC spray)",
+                  detail: "Transient sensory irritants producing intense blepharospasm, lacrimation, rhinorrhoea, cough, chest tightness and skin burning. Effects usually settle within 20–30 minutes in fresh air. Management is reassurance, removal from exposure, dry decontamination and copious eye irrigation with saline (air-drying works better than water for CS-contaminated skin, and wetting CS can transiently worsen symptoms). Watch for bronchospasm in asthmatics, for high-concentration enclosed-space exposure causing genuine chemical pneumonitis, and for the airway of a struggling restrained patient — always consider the differential of head injury, hypoxia or excited delirium rather than attributing collapse to the spray."
+                },
+                {
+                  agent: "Radiological / nuclear",
+                  detail: "Distinguish irradiation (patient is not a hazard) from contamination (external or internal — patient and wound debris are a hazard, though dose to staff from a contaminated casualty is low and must never delay life-saving treatment). Priorities are ABC and surgery first, then decontamination: remove clothing, wash with soap and water, cover wounds, use radiation monitors and a controlled 'dirty' area, collect wound tissue and swabs for dosimetry. Estimate dose from the time to onset of vomiting and serial lymphocyte counts (rapid lymphopenia predicts a high dose). Treat acute radiation syndrome haematologically (isolation, G-CSF, transfusion support). Blocking or chelating agents are agent-specific: potassium iodide for radioiodine (most effective if given before or within hours of exposure), Prussian blue for caesium, DTPA for plutonium and other actinides. Ideally operate within the first 48 h before immunosuppression and impaired wound healing develop."
+                },
+                {
+                  agent: "Biological agents (anthrax, plague, tularaemia, viral haemorrhagic fever)",
+                  detail: "Presentation is delayed and epidemiological rather than a scene-based surge, so the first sign is often an unusual cluster of severe pneumonia or sepsis. Apply syndromic surveillance, notify public health early, use transmission-based precautions (airborne/contact plus eye protection for suspected VHF and pneumonic plague), restrict aerosol-generating procedures to negative-pressure areas, and start empirical therapy (e.g. ciprofloxacin or doxycycline for anthrax and plague) on clinical suspicion without waiting for confirmation. Post-exposure prophylaxis and vaccination for staff are directed by public health."
+                },
+              ].map(item => (
+                <div key={item.agent} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{item.agent}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{item.detail}</p>
+                </div>
+              ))}
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
