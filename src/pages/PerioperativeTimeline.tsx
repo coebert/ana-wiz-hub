@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 type TimelineLink = { label: string; to: string };
 type Phase = {
@@ -239,6 +240,10 @@ const PerioperativeTimeline = () => (
     accentColor="text-perioperative"
     disableAutoTOC
   >
+    <PageJsonLd
+      name="The Perioperative Timeline"
+      description="Perioperative timeline for FRCA and FFICM: pre-operative assessment, induction, surgery, anaesthetic maintenance, post-operative care and recovery."
+    />
     <p className="text-sm text-muted-foreground mb-6">
       Tap a phase to see the key actions and jump to the topics that cover it.
     </p>
