@@ -369,6 +369,48 @@ const ENTAnaesthesiaTopic = () => {
                 <LeFortFractureDiagram />
               </div>
             </div>
+            <h4 className="text-base font-semibold text-foreground mt-5 mb-2">Anaesthetic management of Le Fort and mid-face fractures</h4>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              These are usually high-energy injuries in young patients, and the airway, the associated injuries and the bleeding are all more dangerous than the fracture itself<InlineRef topicId="ent-anaesthesia" refLabel="BJA Educ Maxillofacial 2018" />.
+            </p>
+            <div className="space-y-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">1. Airway assessment</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Look for trismus (which may be mechanical from a displaced fracture and will not resolve with paralysis, or pain-related and will), gross facial and pharyngeal oedema that progresses over hours, expanding sublingual or retropharyngeal haematoma, mobile mid-face fragments and disordered dental occlusion, blood, teeth, secretions and vomit in the pharynx, and a posteriorly displaced maxilla obstructing the nasopharynx. A cribriform plate breach is suggested by CSF rhinorrhoea, panda eyes, subconjunctival haemorrhage and anosmia — this makes <strong>nasal instrumentation of any kind (tube, NG tube, airway) contraindicated in Le Fort II and III</strong>. Assess the neck at the same time: a hard collar and immobilisation greatly restrict mouth opening and laryngoscopy.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">2. Choosing an intubation technique</p>
+                <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc pl-4">
+                  <li><strong>Rapid sequence induction with manual in-line stabilisation</strong>: appropriate for the bleeding, uncooperative or obtunded patient, or for airway compromise now. Advantages: fast, protects against aspiration. Disadvantages: apnoea in a potentially unintubatable airway, loss of tone allowing the mid-face to fall back, and worse laryngoscopic view with a collar — so have a videolaryngoscope, a bougie, a second operator and a FONA plan ready, and a surgeon prepared for a surgical airway.</li>
+                  <li><strong>Videolaryngoscopy</strong>: usually the first-line device — a better view around blood-stained, oedematous anatomy with less neck movement, though a hyperangulated blade needs a stylet or bougie and blood on the lens can blind it. Have a Macintosh blade available as backup.</li>
+                  <li><strong>Awake flexible fibreoptic intubation (oral route in Le Fort II/III)</strong>: ideal for the stable, cooperative patient with predicted difficulty and no urgent bleeding. Challenges are blood and secretions obscuring the view, trismus limiting oral passage, poor topicalisation of a traumatised airway, and the risk of coughing and further bleeding. It is a poor choice in the actively bleeding or agitated patient.</li>
+                  <li><strong>Submental intubation</strong>: an orotracheal tube is redirected through a submental incision into the floor of the mouth, giving the surgeon a free oral cavity and intact dental occlusion for fixation without a tracheostomy. Used for panfacial fractures needing intermaxillary fixation where nasal intubation is contraindicated; complications include infection, scarring and salivary fistula.</li>
+                  <li><strong>Retromolar intubation</strong>: the tube is passed behind the last molar in the retromolar space, an alternative where that space exists (more often in children) and the surgeon needs the occlusion checked.</li>
+                  <li><strong>Elective tracheostomy</strong>: indicated for panfacial injury with severe swelling, an anticipated need for prolonged ventilation, associated head or cervical injury, planned long-term intermaxillary fixation, or where the surgical field and airway cannot be separated. Best done at the start of surgery, under controlled conditions, rather than as a rescue at 3 a.m.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">3. Associated injuries</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Treat these as multiply-injured trauma patients until proved otherwise: cervical spine injury (up to 10% in high-energy mid-face fracture), traumatic brain injury and base-of-skull fracture, ocular injury including retrobulbar haematoma and globe rupture (needs urgent decompression), thoracic and abdominal trauma, and long-bone fracture. Complete a full trauma assessment with a CT trauma series and formal cervical spine clearance before positioning for facial surgery, and remember alcohol, drugs and safeguarding issues in the history.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">4. Haemorrhage control</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Mid-face fractures can bleed torrentially from the maxillary artery, sphenopalatine and greater palatine vessels and pterygoid venous plexus, and much of the loss is swallowed and hidden. Manage as major haemorrhage: large-bore access, group-specific or emergency blood, activate the major-haemorrhage protocol with early plasma and platelets, tranexamic acid 1 g IV, viscoelastic-guided correction, calcium replacement and active warming. Temporising measures include anterior and posterior nasal packing, bite blocks and manual reduction of the mid-face, a Foley catheter tamponade in the nasopharynx, and definitive control by surgical packing, ligation or interventional radiological embolisation of the maxillary artery. Protect the airway before packing a bleeding nasopharynx.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">5. Intermaxillary fixation (IMF) and extubation</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Wired jaws mean the patient cannot open the mouth, vomit safely or be reintubated orally. <strong>Wire cutters must accompany the patient at all times</strong> — on the bed, in recovery and on the ward — and staff must know how to use them. Give aggressive multimodal antiemesis (dexamethasone plus ondansetron, avoid nitrous oxide, consider a nasogastric tube placed orally to empty the stomach where nasal routes are barred), suction the pharynx thoroughly under direct vision, and remove throat packs with a documented check. Extubate only a fully awake patient with airway reflexes restored, swelling stable or improving, and adequate gas exchange; consider a staged approach with an airway exchange catheter or elective postoperative ventilation if there is significant oedema or bleeding. Nurse head-up, keep dexamethasone going, and have the difficult-airway trolley and the surgeon available at extubation.
+                </p>
+              </div>
+            </div>
+
             </CollapsibleSubsection>
           </ExamSection>
           </div>

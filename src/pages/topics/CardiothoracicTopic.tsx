@@ -317,6 +317,39 @@ const CardiothoracicTopic = () => {
           </div>
 
           <div className="mb-4">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Myocardial Protection & Cardioplegia</h3>
+            <p className="text-sm text-muted-foreground mb-3">
+              Cross-clamping the aorta renders the myocardium globally ischaemic. Cardioplegia exists to make that ischaemia survivable: the aims are <strong>rapid, reversible diastolic arrest</strong> (an arrested heart consumes about 10% of its normal oxygen requirement, a fall in MVO₂ of up to 90%), abolition of electromechanical work, buffering of the ischaemic insult, and limitation of reperfusion injury when the clamp comes off<InlineRef topicId="cardiothoracic" refLabel="Kaplan's Cardiac" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Composition</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>High potassium (typically 15–30 mmol/L)</strong> raises the resting membrane potential, inactivates fast sodium channels and produces depolarised diastolic arrest. Added components buffer and stabilise: bicarbonate or histidine buffering, magnesium (a natural calcium antagonist, limits calcium overload), calcium at low concentration, mannitol for oedema and free-radical scavenging, procaine or lidocaine as a membrane stabiliser, and glucose or aspartate/glutamate as substrate. <strong>Crystalloid</strong> cardioplegia (St Thomas&apos; / Plegisol) is simple and gives a clear field; <strong>blood cardioplegia</strong> (usually 4:1 blood to crystalloid) adds oxygen-carrying capacity, natural buffering and oncotic pressure, and is preferred for the poorly protected or hypertrophied ventricle. Single-dose long-acting formulations such as <strong>del Nido</strong> and <strong>Custodiol/HTK</strong> allow one dose for 90–180 minutes and are widely used in paediatric and long-cross-clamp cases.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Temperature</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>Cold (4–10 °C)</strong> cardioplegia reduces metabolic rate roughly 50% for every 10 °C fall, giving a wide safety margin and tolerance of long ischaemic intervals; the costs are impaired enzyme function, reduced membrane pump activity, cold-induced oedema, and a stunned, slow-to-recover ventricle. <strong>Warm (37 °C)</strong> cardioplegia preserves aerobic metabolism and enzyme function and speeds recovery, but arrest is less well tolerated if delivery is interrupted, so it must be given continuously or very frequently. Many units use a tepid compromise, with a <strong>warm induction</strong> dose in the energy-depleted heart and a <strong>terminal warm &quot;hot shot&quot;</strong> before removing the clamp to replenish ATP and reduce reperfusion injury. Topical cold saline and an insulating pad add surface cooling.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Routes of delivery</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>Antegrade</strong> via a cannula in the aortic root (with the cross-clamp distal to it) is standard, but requires a competent aortic valve — in aortic regurgitation the solution runs into the ventricle instead, so it is given directly into the coronary ostia after aortotomy. Distribution is also unreliable beyond severe proximal coronary stenoses. <strong>Retrograde</strong> delivery through a balloon catheter in the coronary sinus perfuses the myocardium via the cardiac veins, reaching territories beyond occluded arteries, keeps the field clear during valve work, and washes out air and debris; it protects the right ventricle and posterior septum poorly because of venous drainage directly into the right atrium via the Thebesian veins. Combined antegrade and retrograde delivery is common in redo coronary surgery and complex valve procedures, and cardioplegia can also be given down individual bypass grafts as they are completed.
+                </p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Dosing, monitoring and pitfalls</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  A typical induction dose is 10–15 mL/kg (about 1 L in an adult) at 100–200 mmHg antegrade root pressure (30–40 mmHg retrograde), aiming for arrest within 30–60 seconds; <strong>repeat every 20–30 minutes</strong> or when electrical activity returns, ischaemic ST change appears, or myocardial temperature rises. Confirm arrest on the ECG and by observing a flaccid, still heart. Common problems: incomplete arrest from aortic regurgitation, non-coronary collateral or bronchial flow rewarming the septum, cardioplegia washout from an unrecognised patent internal mammary graft, systemic <strong>hyperkalaemia and haemodilution</strong> from repeated doses, hypothermic coagulopathy, right ventricular and phrenic injury from cold, and coronary sinus rupture from an over-inflated retrograde balloon. Poor protection shows up at the end of the case as difficult separation from bypass, ventricular arrhythmia and a need for inotropes or mechanical support.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-4">
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">Structured checklist for weaning from CPB</h3>
             <p className="text-sm text-muted-foreground mb-3">
               Work through a fixed sequence so nothing is missed — the widely used mnemonic is <strong>&quot;PAT-CVR&quot;</strong> or simply <strong>rate/rhythm → preload → contractility → afterload</strong>, wrapped in checks of temperature, ventilation, laboratory values and the surgical field.
