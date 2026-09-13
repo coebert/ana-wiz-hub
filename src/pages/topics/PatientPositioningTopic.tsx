@@ -213,7 +213,7 @@ const PatientPositioningTopic = () => {
               Whole-table head-down (Trendelenburg) is used for pelvic access (laparoscopic / robotic prostatectomy,
               colorectal, gynaecology). Robotic prostatectomy may use 25–40° tilt for several hours — the major
               concerns are raised IOP/ICP, post-operative visual loss, facial / laryngeal oedema and patient slipping.
-              Reverse Trendelenburg (head-up) is used for upper-abdominal and laparoscopic gastric / bariatric work.
+              Reverse Trendelenburg (head-up) is used for upper-abdominal and laparoscopic gastric / bariatric work. Its physiology is essentially the mirror image of Trendelenburg: venous return and RV preload <strong>fall</strong>, so cardiac output and blood pressure drop — sometimes precipitously in the hypovolaemic, vasoplegic, beta-blocked or neuraxially blocked patient, and further if capnoperitoneum is added. Cerebral venous drainage improves, lowering ICP and IOP (useful in neurosurgery, although it also lowers cerebral perfusion pressure if MAP is not corrected for the height of the head above the heart — roughly 0.75 mmHg per cm). Respiratory mechanics improve relative to supine: the diaphragm and abdominal contents fall away, so FRC, compliance and oxygenation rise. Surgical access to the upper abdomen improves as viscera drop caudally. Watch for a raised risk of venous air entrainment in head-up neurosurgery, and for slipping caudally on the table.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
               <strong>Anti-slip strategy.</strong> The 2020 Association of Anaesthetists guideline
