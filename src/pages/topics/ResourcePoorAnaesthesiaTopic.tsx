@@ -202,6 +202,26 @@ const ResourcePoorAnaesthesiaTopic = () => {
               <li><strong>LA toxicity without lipid emulsion</strong>: airway, ventilation, anticonvulsant (benzodiazepine), prolonged CPR — most centres now stock 20% Intralipid as part of the LAST kit; advocate for this provision.</li>
               <li><strong>Difficult airway, no fibreoptic</strong>: prioritise awake intubation under ketamine sedation + topical lidocaine; surgical airway via cricothyroidotomy must be a trained, drilled skill.</li>
             </ul>
+            <h3 className="text-base font-bold text-foreground mt-4 mb-2">Eclampsia without an ICU</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Hypertensive disease of pregnancy is a leading cause of maternal death in low-resource settings, and almost all of it is treatable with cheap drugs.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Magnesium sulfate is the priority</strong>, not a benzodiazepine or phenytoin. Give a loading dose of 4 g IV over 5–15 minutes, then either 1 g/h by infusion for 24 hours, or — where no pump exists — the intramuscular <em>Pritchard</em> regimen: 4 g IV plus 10 g IM (5 g into each buttock with lidocaine), then 5 g IM alternate buttocks every 4 hours for 24 hours after delivery or the last fit. Recurrent seizures: a further 2 g IV.</li>
+              <li><strong>Monitor clinically when levels are unavailable</strong>: check patellar reflexes, respiratory rate (&gt; 12/min) and urine output (&gt; 100 mL/4 h) before each dose. Loss of reflexes is the first sign of toxicity — stop magnesium; for respiratory depression give calcium gluconate 1 g (10 mL of 10%) IV slowly and support ventilation by hand.</li>
+              <li><strong>Control blood pressure</strong> to &lt; 150/100 mmHg with oral nifedipine, oral or IV labetalol, or IV/oral hydralazine — whichever is stocked. Avoid rapid falls that compromise placental perfusion.</li>
+              <li><strong>Deliver the baby</strong>: definitive treatment is delivery, but stabilise the mother first (airway, oxygen, left lateral, seizure and BP control). Spinal anaesthesia is safe and preferred if the woman is conscious, coagulation is acceptable and there is no fixed neurological deficit; general anaesthesia with ketamine risks hypertensive surges, so obtund the response and expect a difficult, oedematous airway.</li>
+              <li><strong>Restrict fluids</strong> to about 80 mL/h total — pulmonary oedema, not hypovolaemia, kills these women. Catheterise and chart the balance by hand.</li>
+            </ul>
+            <h3 className="text-base font-bold text-foreground mt-4 mb-2">Postpartum haemorrhage with no blood bank</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Uterotonics first, immediately</strong>: oxytocin 5–10 units IV slowly then an infusion (heat-stable carbetocin is a useful alternative where the cold chain is unreliable); ergometrine 500 mcg IM (avoid in hypertension/pre-eclampsia); misoprostol 800 mcg sublingually — cheap, heat-stable and needs no needle; tranexamic acid 1 g IV within 3 hours of onset, repeated once if bleeding continues.</li>
+              <li><strong>Mechanical measures</strong> bridge to surgery: bimanual uterine compression, aortic compression, an intrauterine balloon improvised from a condom tied over a catheter and filled with 250–500 mL saline, a non-pneumatic anti-shock garment for transfer, uterine massage and emptying the bladder.</li>
+              <li><strong>Surgical escalation</strong>: examine under anaesthesia and evacuate retained products, repair tears, then B-Lynch or other compression sutures, uterine or internal iliac artery ligation, and hysterectomy — do not delay the decision while waiting for blood that will not arrive.</li>
+              <li><strong>Transfusion improvisation</strong>: walking-donor panels with bedside typing and rapid screening, autotransfusion of intraperitoneal blood in ruptured ectopic pregnancy where local protocols permit, warmed crystalloid in the smallest volume that maintains a palpable radial pulse and consciousness (permissive hypotension), and prevention of hypothermia and acidosis.</li>
+              <li><strong>Prevention is the highest-yield intervention</strong>: active management of the third stage with a uterotonic for every birth, plus routine quantitative blood-loss estimation rather than visual guessing.</li>
+            </ul>
+
             </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout

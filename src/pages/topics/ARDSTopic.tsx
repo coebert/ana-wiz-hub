@@ -907,7 +907,7 @@ const ARDSTopic = () => {
                 {[
                   {
                     topic: "Definition / severity",
-                    berlin: "Acute (≤7d), bilateral opacities, not fully explained by cardiac failure, P/F on PEEP ≥5: mild 200–300, moderate 100–200, severe ≤100. Requires invasive ventilation.",
+                    berlin: "Acute (≤7d), bilateral opacities, not fully explained by cardiac failure, P/F on PEEP/CPAP ≥5: mild 200–300, moderate 100–200, severe ≤100. PEEP/CPAP may be delivered non-invasively at any severity, though moderate/severe disease is usually invasively ventilated.",
                     esicm: "Adopts Berlin. Adds 'ARDS on HFNO' category for ≥30 L/min when intubation deferred.",
                     global: "Expands Berlin: includes non-intubated patients on HFNO ≥30 L/min or NIV/CPAP ≥5 cmH₂O. SpO₂/FiO₂ ratio ≤315 acceptable when ABG unavailable. Removes mandatory PEEP threshold for non-intubated.",
                   },

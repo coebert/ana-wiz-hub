@@ -159,6 +159,22 @@ const BurnsPlasticsTopic = () => {
                     </div>
                   ))}
                 </div>
+                <div className="mt-3 p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm mb-1">Prognostic scoring — the Baux score</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed mb-2">
+                    The Baux score is the classic burns prognostic tool and is quick enough to use at the bedside on admission.
+                  </p>
+                  <div className="rounded-md bg-muted/40 p-3 font-mono text-xs text-foreground mb-2 space-y-1">
+                    <p>Classic Baux = age (years) + %TBSA</p>
+                    <p>Revised Baux = age (years) + %TBSA + 17 (if inhalation injury)</p>
+                  </div>
+                  <ul className="text-xs text-muted-foreground leading-relaxed space-y-1 list-disc pl-4">
+                    <li><strong>Interpretation</strong>: the score approximates percentage mortality. Historically a score of 100 implied near-certain death, but modern burns care has shifted the lethal threshold upward — the contemporary LD<sub>50</sub> sits closer to a revised score of about 110, and survival at scores of 90–100 is now common in specialist centres.</li>
+                    <li><strong>Worked example</strong>: a 45-year-old with a 30% TBSA flame burn and confirmed inhalation injury scores 45 + 30 + 17 = <strong>92</strong>, so roughly a 90% predicted mortality by the original scale, though considerably better than that in a modern burns ICU.</li>
+                    <li><strong>Uses and limits</strong>: valuable for triage, resource planning, benchmarking and framing discussions with family — but it is a population estimate, not an individual prediction, and it ignores comorbidity, frailty, burn depth, delay to resuscitation and non-burn trauma. Never use it alone to withhold treatment; other tools (ABSI, rBaux with comorbidity adjustment) add refinement.</li>
+                  </ul>
+                </div>
+
               </CollapsibleSubsection>
             </ExamSection>
           </div>
