@@ -238,6 +238,21 @@ const EndOfLifeCommunicationTopic = () => {
               <li><strong>Court of Protection</strong> as last resort (e.g. Charlie Gard, Alfie Evans, Re Y).</li>
               <li><strong>Cultural/religious chaplaincy</strong> — invite early, not as a last resort.</li>
             </ul>
+
+            <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">
+              Cultural and Spiritual Care
+              <InlineRef topicId="end-of-life-communication" refLabel="BMC Palliat Care 2024" />
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Psychosocial and spiritual considerations are a core component of end-of-life care in their own right, alongside communication, symptom control, ethics and after-death care <InlineRef topicId="end-of-life-communication" refLabel="BMC Palliat Care 2024" />. The governing principle is to <strong>ask, never assume</strong> — faith, culture and family practice vary widely within any named tradition.
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li><strong>How to explore</strong> — open, permission-giving questions: "Are there any religious or spiritual traditions that are important to you at this time?"; "Is there anything we should know about how your family would want us to care for him?"; "Who else would you like to be here?"</li>
+              <li><strong>Common considerations</strong> — last rites, confession or anointing (Catholic Christian); recitation, facing Mecca, family washing of the body and burial usually within 24 h (Muslim); prompt burial and avoidance of post-mortem where possible, with a family or community liaison (Jewish); sacred thread, water or prayers at the bedside and cremation (Hindu/Sikh); chanting and a quiet, undisturbed period after death (Buddhist); and non-religious patients who nonetheless have clear values about presence, place and legacy.</li>
+              <li><strong>Practical facilitation</strong> — space and privacy for prayer, relaxed visiting numbers, avoiding unnecessary delay to release of the body, and early warning where coroner referral or post-mortem may be unavoidable so families can prepare.</li>
+              <li><strong>Services</strong> — hospital chaplaincy and multi-faith teams, community and hospital liaison officers, interpreters (professional, not family members), and specialist palliative care.</li>
+              <li><strong>Document</strong> preferences in the notes and hand them over at every shift change, so the plan survives changes of staff.</li>
+            </ul>
           </ExamSection>
 
           <ExamSection
