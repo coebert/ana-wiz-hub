@@ -186,6 +186,24 @@ const OxidationReductionTopic = () => {
                 prone to calibration drift and membrane fouling, requiring more frequent recalibration than the galvanic cell.
                 <InlineRef topicId="oxidation-reduction" refLabel="Cross & Plunkett Ch.3" />
               </p>
+
+              <p>
+                <strong>Ion-selective electrodes (ISE)</strong>: an ion-specific membrane — glass for H⁺/Na⁺, valinomycin for
+                K⁺, or an ion-exchange resin for Ca²⁺ and Cl⁻ — develops a potential difference across it that is described by
+                the <strong>Nernst equation</strong>, measured against a reference electrode under zero-current
+                (<strong>potentiometric</strong>) conditions. ISEs measure ion <strong>activity</strong>, not concentration, so
+                results are affected by protein and lipid content in the sample; measuring <strong>directly</strong> with an
+                ISE on a blood gas analyser avoids the <strong>pseudohyponatraemia</strong> seen with indirect, diluted
+                flame-photometric methods in samples with high protein or lipid content.
+                <InlineRef topicId="oxidation-reduction" refLabel="BJA Educ 2010" />
+              </p>
+              <p>
+                <strong>Glucose sensor</strong>: amperometric. Glucose oxidase oxidises glucose to gluconolactone, generating
+                <strong> hydrogen peroxide</strong>; the H₂O₂ is then oxidised at a polarised platinum anode
+                (~<strong>+0.6 V</strong>), producing a current proportional to glucose concentration — a
+                <strong> Clark-type cell</strong> arrangement. Readings can be affected by interfering substances such as
+                <strong> paracetamol, ascorbate and icodextrin</strong>. <InlineRef topicId="oxidation-reduction" refLabel="BJA Educ 2010" />
+              </p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -197,6 +215,59 @@ const OxidationReductionTopic = () => {
                 Free radicals contain an unpaired electron and are highly reactive. Reactive oxygen species (ROS) include
                 <strong> superoxide (O₂⁻·), hydroxyl radical (OH·) and peroxynitrite (ONOO⁻)</strong>. Endogenous antioxidants —
                 superoxide dismutase, catalase, glutathione, and dietary vitamins C and E — keep ROS in check.
+              </p>
+
+              <p>
+                <strong>Oxygen toxicity</strong>: hyperoxia drives excess mitochondrial and enzymatic production of
+                <strong> superoxide (O₂⁻·)</strong>, which is dismutated to <strong>hydrogen peroxide</strong> and then, via
+                iron-catalysed Fenton and Haber-Weiss chemistry, to the highly reactive <strong>hydroxyl radical (OH·)</strong>.
+                When generation overwhelms endogenous defences — superoxide dismutase, catalase and glutathione peroxidase —
+                the result is <strong>lipid peroxidation</strong> of cell membranes and <strong>DNA damage</strong>.
+                <InlineRef topicId="oxidation-reduction" refLabel="Halliwell & Gutteridge" />
+              </p>
+              <p>
+                <strong>Clinical manifestations</strong> are pulmonary and CNS. Pulmonary: tracheobronchitis with substernal
+                chest pain and cough after roughly <strong>12–24 hours</strong> at FiO₂ 1.0, reduced vital capacity, and
+                <strong> absorption atelectasis</strong>; prolonged exposure progresses to diffuse alveolar damage with an
+                ARDS-like picture. CNS: the <strong>Paul Bert effect</strong> — seizures, tunnel vision, nausea and twitching —
+                occurs when PiO₂ exceeds roughly <strong>2 atmospheres</strong>, relevant to hyperbaric oxygen therapy. In
+                neonates, hyperoxia is implicated in <strong>retinopathy of prematurity</strong> and
+                <strong> bronchopulmonary dysplasia</strong>.
+              </p>
+              <p>
+                Toxicity is <strong>dose- and time-dependent</strong>: it relates to the product of PiO₂ and duration of
+                exposure, not FiO₂ alone — so FiO₂ 1.0 at altitude, at sea level, or under hyperbaric conditions carries very
+                different risk. Prevention: use the <strong>lowest FiO₂</strong> that achieves a target SpO₂ of
+                <strong> 92–96%</strong> (or <strong>88–92%</strong> in chronic hypercapnic respiratory failure), use
+                <strong> PEEP, recruitment and prone positioning</strong> to reduce the FiO₂ required, avoid hyperoxia after
+                cardiac arrest and in traumatic brain injury, and be alert to drugs that increase susceptibility to oxygen
+                free-radical injury such as <strong>paraquat</strong> and <strong>bleomycin</strong>.
+                <InlineRef topicId="oxidation-reduction" refLabel="BJA Educ Oxygen Toxicity 2016" />
+              </p>
+              <p>
+                <strong>Paracetamol toxicity</strong>: normally, paracetamol is metabolised mainly by conjugation — approximately
+                <strong> 60% glucuronidation</strong> and <strong>35% sulphation</strong> — with only around <strong>5%</strong>
+                oxidised by cytochrome P450 (CYP2E1, 1A2, 3A4) to the reactive metabolite <strong>NAPQI</strong>. In overdose,
+                the conjugation pathways saturate, so a much larger fraction is shunted through CYP2E1 to NAPQI.
+                <InlineRef topicId="oxidation-reduction" refLabel="BJA Educ Paracetamol 2021" />
+              </p>
+              <p>
+                NAPQI is a reactive electrophile normally detoxified by conjugation with <strong>glutathione</strong>. Once
+                hepatic glutathione stores fall below roughly <strong>30% of normal</strong>, NAPQI instead binds cysteine
+                residues on cellular proteins, forming <strong>NAPQI-protein adducts</strong>. This drives oxidative stress,
+                <strong> mitochondrial permeability transition</strong> and ATP failure, culminating in
+                <strong> centrilobular (zone 3) hepatocellular necrosis</strong>. Risk is increased by chronic alcohol use,
+                enzyme induction, malnutrition/low baseline glutathione, and staggered overdose.
+              </p>
+              <p>
+                <strong>N-acetylcysteine (NAC)</strong> acts as a cysteine/glutathione precursor, replenishing hepatic
+                glutathione and allowing direct conjugation of NAPQI; it also improves microcirculatory oxygen delivery. It is
+                most effective when given within <strong>8 hours</strong> of ingestion. UK practice uses a single
+                <strong> 100 mg/L treatment line at 4 hours</strong> on the <strong>Rumack–Matthew nomogram</strong> to decide
+                on treatment, with the <strong>SNAP 12-hour NAC regimen</strong>. Patients meeting <strong>King's College
+                criteria</strong> (e.g. pH &lt;7.3, or the combination of INR &gt;6.5, creatinine &gt;300 µmol/L and grade
+                III/IV encephalopathy) should be referred for liver transplant assessment.
+                <InlineRef topicId="oxidation-reduction" refLabel="Rumack-Matthew Nomogram" />
               </p>
               <p>
                 <strong>Ischaemia–reperfusion injury</strong> generates a burst of ROS via the conversion of xanthine dehydrogenase to

@@ -82,6 +82,28 @@ const OrganicChemistryTopic = () => {
                 forms. Thiopentone exists as keto and enol tautomers — the enol form (thiol) gives it its name
                 and explains its yellow colour in solution.
               </p>
+              <p>
+                <strong>Diastereoisomers</strong> are stereoisomers that are <em>not</em> mirror images of one another. They
+                arise whenever a molecule has more than one chiral centre: n chiral centres generate up to 2ⁿ stereoisomers,
+                and only some of these pairs are related as mirror images (enantiomers) — the rest are diastereoisomers.
+                Unlike enantiomers, which share identical physical properties, diastereoisomers have <strong>genuinely
+                different physical properties</strong> (melting point, boiling point, solubility, chromatographic retention),
+                so — unlike enantiomers — they <strong>can be separated by conventional physical or chemical means</strong>
+                rather than requiring chiral resolution. Geometric (cis/trans, E/Z) isomers are, formally, a special case of
+                diastereoisomerism. <InlineRef topicId="organic-chemistry" refLabel="Cross & Plunkett Ch.4" />
+              </p>
+              <p>
+                <strong>Atracurium</strong> has <strong>four chiral centres</strong> and is manufactured as a mixture of
+                <strong> 10 stereoisomers</strong> (a mix of diastereoisomers and enantiomeric pairs). <strong>Cisatracurium</strong>
+                is a single diastereoisomer isolated from this mixture — the <strong>1R-cis, 1'R-cis</strong> isomer — and is
+                roughly <strong>3–4 times more potent</strong> than atracurium, with far <strong>less histamine release</strong>
+                and <strong>less laudanosine production</strong> per equipotent dose, because the other stereoisomers present in
+                atracurium contribute disproportionately to histamine release without adding neuromuscular potency.
+                <InlineRef topicId="organic-chemistry" refLabel="BJA Educ Atracurium Isomers" /> Other clinically relevant
+                diastereoisomer pairs include <strong>labetalol</strong> (two chiral centres, four stereoisomers, with
+                α- and β-blocking activity distributed unevenly between them) and <strong>ephedrine/pseudoephedrine</strong>
+                (diastereoisomers with different sympathomimetic potency and clinical uses despite sharing a formula).
+              </p>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
               <IsomerismDiagram />
@@ -209,6 +231,42 @@ const OrganicChemistryTopic = () => {
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_02"]}>
+            <CollapsibleSubsection title="Structure–Activity Relationships of Inhalational Agents">
+            <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
+              <p>
+                Halogenating the simple hydrocarbon or ether backbone of an inhalational agent systematically changes its
+                physicochemical behaviour. <strong>Fluorination</strong> reduces flammability, increases the molecular
+                stability and resistance to metabolic breakdown of the C-F bond, <strong>lowers the blood:gas partition
+                coefficient</strong> (giving faster onset and offset) and <strong>raises saturated vapour pressure (SVP)</strong>.
+                <strong> Desflurane</strong>, which is completely fluorinated, exemplifies the extreme of this trend: SVP
+                88–89 kPa at 20 °C, boiling point only 23.5 °C (close to room temperature) and blood:gas coefficient 0.42 —
+                properties that necessitate a heated, pressurised vaporiser rather than a conventional variable-bypass design.
+                <InlineRef topicId="organic-chemistry" refLabel="Peck & Hill Volatiles" />
+              </p>
+              <p>
+                The <strong>heavier halogens</strong> — chlorine and bromine — have the opposite effect on several properties:
+                they <strong>increase potency (lower MAC)</strong> and <strong>oil:gas solubility</strong>, and <strong>raise
+                boiling point</strong>, but at the cost of <strong>increased metabolism and toxicity</strong>. <strong>Halothane</strong>
+                (which contains both Br and Cl) illustrates this trade-off: MAC 0.75% (the most potent of the modern volatile
+                agents), around 20% hepatic metabolism, and the associated risks of <strong>halothane hepatitis</strong>
+                (via a trifluoroacetylated liver protein immune reaction) and <strong>catecholamine-sensitised arrhythmias</strong>.
+                <InlineRef topicId="organic-chemistry" refLabel="Eger Structure-Activity" />
+              </p>
+              <p>
+                The <strong>ether linkage</strong> itself confers chemical stability and non-flammability, explaining the
+                historical shift away from flammable agents such as diethyl ether and cyclopropane towards halogenated ethers.
+                <strong> Sevoflurane</strong> is a fluorinated methyl isopropyl ether (MAC 2%, blood:gas 0.69) that is stable in
+                the body but is degraded by strong bases (soda lime, especially when desiccated) to the nephrotoxic
+                <strong> Compound A</strong>. Comparing a fully fluorinated modern agent such as desflurane or sevoflurane with
+                halothane illustrates the central structure–activity trade-off in this drug class: greater fluorination buys
+                speed, stability and safety at the expense of potency, while heavier halogen substitution buys potency at the
+                expense of metabolic stability and toxicity. <InlineRef topicId="organic-chemistry" refLabel="Peck & Hill Volatiles" />
+              </p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_02"]}>
             <CollapsibleSubsection title="Lipophilicity & Drug Delivery">
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
@@ -276,8 +334,8 @@ const OrganicChemistryTopic = () => {
               </div>
             </div>
           ),
-          answer: "Chiral receptors need three simultaneous points of contact (Easson-Stedman) for full activity, so only one enantiomer (the eutomer) binds optimally; the eudismic ratio quantifies its potency advantage over the distomer. Levobupivacaine/S-bupivacaine is the safer eutomer versus the more cardiotoxic R(+)-distomer in racemic bupivacaine; S-ketamine is the more potent eutomer of ketamine; dexmedetomidine is used as a single active enantiomer for receptor selectivity.",
-          cites: ["Nau & Strichartz 2002", "Cross & Plunkett Ch.4"],
+          answer: "Chiral receptors need three simultaneous points of contact (Easson-Stedman) for full activity, so only one enantiomer (the eutomer) binds optimally; the eudismic ratio quantifies its potency advantage over the distomer. Levobupivacaine/S-bupivacaine is the safer eutomer versus the more cardiotoxic R(+)-distomer in racemic bupivacaine; S-ketamine is the more potent eutomer of ketamine, with less emergence delirium; dexmedetomidine is the d-isomer of medetomidine used as a single active enantiomer for receptor selectivity.",
+          cites: ["Nau & Strichartz 2002", "BJA Educ 2008", "Cross & Plunkett Ch.4"],
         },
       ]}
       keyPoints={[

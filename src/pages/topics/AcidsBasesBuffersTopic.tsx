@@ -227,6 +227,81 @@ const AcidsBasesBuffersTopic = () => {
               </p>
             </div>
             </CollapsibleSubsection>
+
+            <CollapsibleSubsection title="Clinical shortcut: the Henderson equation">
+            <div className="text-muted-foreground space-y-3 leading-relaxed">
+              <p>
+                The logarithmic Henderson-Hasselbalch equation can be rearranged into a linear, non-logarithmic form — the
+                <strong> Henderson equation</strong> — which is quicker to use at the bedside:
+              </p>
+              <p className="font-mono text-sm bg-muted/40 rounded px-3 py-2">
+                [H⁺] (nmol/L) ≈ 24 × PaCO₂ (mmHg) / [HCO₃⁻] (mmol/L)
+              </p>
+              <p>
+                <strong>Worked example:</strong> PaCO₂ 40 mmHg with HCO₃⁻ 24 mmol/L gives [H⁺] = 24 × 40 / 24 = <strong>40 nmol/L</strong>,
+                corresponding to a pH of 7.40.
+              </p>
+              <p>
+                <strong>Rule of thumb for converting pH to [H⁺]:</strong> pH 7.4 corresponds to [H⁺] 40 nmol/L, and between
+                pH 7.2 and 7.5 each 0.01 change in pH corresponds to roughly a 1 nmol/L change in [H⁺] (in the opposite
+                direction) — allowing rapid mental conversion without a calculator.
+              </p>
+              <p>
+                <strong>SI (kPa) variant:</strong> since 1 kPa ≈ 7.5 mmHg, the equation can be used directly with PaCO₂ in kPa by
+                multiplying the kPa value by 7.5 to get the mmHg-equivalent term, or by using the constant 180 in place of 24 when
+                PaCO₂ is expressed in kPa: [H⁺] ≈ 180 × PaCO₂ (kPa) / [HCO₃⁻] (mmol/L).
+              </p>
+              <p>
+                This shortcut is particularly useful for <strong>checking the internal consistency</strong> of a reported blood
+                gas (does the stated pH match the stated PaCO₂ and HCO₃⁻?) or for rapidly estimating a missing variable when only
+                two of the three values are available. <InlineRef topicId="acids-bases-buffers" refLabel="Peck & Hill Ch.2" />
+              </p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="hypothermia-acid-base" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Acid-base management during hypothermia">
+            <div className="text-muted-foreground space-y-3 leading-relaxed">
+              <p>
+                Cooling blood has three predictable physicochemical effects: it increases the <strong>solubility of CO₂</strong>
+                (so PaCO₂ measured at the patient's actual temperature falls even with unchanged CO₂ content), it decreases the
+                <strong> ionisation of water</strong> so the neutral pH (where [H⁺] = [OH⁻]) rises above 7.0 as temperature falls,
+                and it increases the <strong>pKa of the histidine imidazole group</strong>, the dominant intracellular protein
+                buffer. A key consequence is that the pH of neutrality at 37 °C is <strong>6.8, not 7.0</strong> — so a blood pH
+                of 7.4 at 37 °C is already slightly alkaline relative to neutrality, and this relationship shifts further with
+                temperature.
+              </p>
+              <p>
+                <strong>Alpha-stat management</strong> aims to maintain a constant fractional dissociation (<strong>alpha</strong>)
+                of the imidazole groups of histidine, preserving normal protein charge state and enzyme function regardless of
+                temperature. In practice this means accepting the blood gas result as reported once the sample has been warmed
+                to 37 °C by the analyser, targeting a pH of 7.4 and PaCO₂ of 5.3 kPa at 37 °C — no correction is made for the
+                patient's actual (cold) temperature. At the patient's true temperature this represents a relative
+                <strong> respiratory alkalosis with a lower actual PaCO₂</strong> than the 37 °C value suggests. Alpha-stat
+                preserves cerebral autoregulation, maintains normal enzyme kinetics, and reduces cerebral microembolic load
+                (by avoiding the higher pump flows needed to wash out added CO₂). It is the usual approach in adult cardiac
+                surgery. <InlineRef topicId="acids-bases-buffers" refLabel="Bailey & Whitfield alpha-stat" />
+              </p>
+              <p>
+                <strong>pH-stat management</strong> instead targets pH 7.4 and PaCO₂ 5.3 kPa measured at the patient's
+                <strong> actual</strong> (cold) temperature, which requires adding CO₂ to the oxygenator sweep gas to compensate
+                for the temperature-related fall in PaCO₂. Relative to alpha-stat, this produces a state of relative
+                <strong> hypercapnia and cerebral vasodilatation</strong>, with loss of cerebral autoregulation and
+                pressure-passive ("luxury") perfusion. This improves the homogeneity of brain cooling and may improve outcome in
+                paediatric deep hypothermic circulatory arrest, and has been associated with improved myocardial protection in
+                some settings. <InlineRef topicId="acids-bases-buffers" refLabel="Kaplan Cardiac Anesthesia Ch. CPB" />
+              </p>
+              <p>
+                <strong>In summary:</strong> alpha-stat is generally favoured in adults undergoing cardiopulmonary bypass,
+                while pH-stat is more often used in neonates and children, particularly where deep hypothermic circulatory
+                arrest is planned. The trade-off with pH-stat is an <strong>increased cerebral embolic load</strong> (from
+                higher, non-autoregulated cerebral blood flow carrying more particulate and gaseous emboli to the brain) and a
+                risk of <strong>cerebral oedema</strong> from vasodilatation, which must be weighed against its cooling and
+                myocardial protection benefits.
+              </p>
+            </div>
+            </CollapsibleSubsection>
           </ExamSection>
 
           <ExamSection id="buffer-systems" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
@@ -258,6 +333,38 @@ const AcidsBasesBuffersTopic = () => {
                 releasing its O₂ to the tissues). Because of this near-instantaneous buffering, mixed venous blood picks up a
                 large CO₂ load yet its pH falls by only around <strong>0.03 units</strong> compared with arterial blood.
                 <InlineRef topicId="acids-bases-buffers" refLabel="Cross & Plunkett Ch.3" />
+              </p>
+              <p>
+                <strong>The isohydric principle:</strong> all buffer pairs coexisting in the same solution are in equilibrium
+                with the same hydrogen ion concentration, so their ratios are linked — any change in pH shifts every buffer
+                system simultaneously and predictably. The practical implication is powerful: measuring one accessible buffer
+                pair (bicarbonate/CO₂ on an arterial blood gas) reports the acid-base status of all the others — haemoglobin,
+                plasma protein, phosphate and bone carbonate — even though they are not measured directly. This is why the
+                bicarbonate system is used clinically despite its unfavourable pKa of 6.1, well away from physiological pH.
+                <InlineRef topicId="acids-bases-buffers" refLabel="BJA Educ 2009" />{" "}
+                <InlineRef topicId="acids-bases-buffers" refLabel="Cross & Plunkett Ch.3" />
+              </p>
+            </div>
+
+            <CollapsibleSubsection title="The Bicarbonate Buffer System">
+            <div className="text-muted-foreground space-y-3 leading-relaxed">
+              <p>
+                CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻. The first step is normally slow but is accelerated roughly <strong>13,000-fold</strong>
+                by the enzyme <strong>carbonic anhydrase</strong>, abundant in red cell cytoplasm and renal tubular cells, allowing
+                the reaction to reach equilibrium within the transit time of a red cell through the capillary.
+              </p>
+              <p>
+                <strong>The chloride shift (Hamburger phenomenon):</strong> at the tissues, CO₂ diffuses into the red cell and
+                carbonic anhydrase rapidly hydrates it to carbonic acid, which dissociates into H⁺ and HCO₃⁻. The H⁺ produced is
+                buffered by the imidazole groups of histidine on deoxygenated haemoglobin (the Haldane effect), which removes free
+                H⁺ from solution and keeps the reaction driven forward. The accumulating HCO₃⁻ then leaves the red cell down its
+                concentration gradient in exchange for plasma Cl⁻, via the band 3 anion exchanger (AE1) on the red cell membrane,
+                preserving electrical neutrality — so the majority of CO₂ generated at the tissues ends up carried as plasma
+                bicarbonate rather than inside the red cell. The whole process reverses in the pulmonary capillaries (the
+                <strong> reverse chloride shift</strong>): HCO₃⁻ re-enters the red cell in exchange for Cl⁻, recombines with H⁺
+                released as O₂ binds haemoglobin, and is dehydrated back to CO₂ for exhalation. The osmotic water movement that
+                accompanies chloride shift explains the slightly higher haematocrit of venous blood compared with arterial blood.
+                <InlineRef topicId="acids-bases-buffers" refLabel="Nunn Respiratory Physiology Ch.9" />
               </p>
             </div>
             </CollapsibleSubsection>

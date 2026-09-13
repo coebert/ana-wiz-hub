@@ -115,6 +115,14 @@ const GeneticSyndromesTopic = () => {
               <li>Exquisite sensitivity to opioids, benzodiazepines and propofol — use minimal doses with monitoring.</li>
               <li>Avoid sux and neostigmine; use sugammadex.<InlineRef topicId="genetic-syndromes" refLabel="BJA Educ Myotonic 2017" /></li>
             </ul>
+            <p className="text-muted-foreground leading-relaxed mt-3 mb-2 text-sm font-semibold">Managing an intra-operative myotonic crisis/contracture</p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li>Myotonia is a <strong>sarcolemmal membrane phenomenon</strong>, not a problem at the neuromuscular junction or in central control of tone — it is therefore <strong>NOT abolished</strong> by non-depolarising neuromuscular blockade, by spinal or epidural anaesthesia, or by deepening volatile anaesthesia. This distinguishes it clearly from malignant hyperthermia (which responds to dantrolene and removal of the trigger) and from ordinary post-operative shivering (which usually responds to warming and opioids).<InlineRef topicId="genetic-syndromes" refLabel="BJA Educ Myotonic 2017" /></li>
+              <li>Masseter or generalised muscle contracture can make bag-mask ventilation, laryngoscopy and surgical access impossible, even though the block appears otherwise adequate.</li>
+              <li><strong>Direct infiltration</strong> of the affected muscle with local anaesthetic (e.g. lidocaine) can relax a focal contracture rapidly and is often the first practical step.</li>
+              <li><strong>Systemic membrane-stabilising drugs</strong>: IV procainamide (where available), IV phenytoin, or quinine (historic, rarely used now) may be given for more generalised contracture. Both procainamide and phenytoin are negative inotropes and pro-arrhythmic, which is particularly hazardous in a patient who may already have underlying cardiac conduction disease.</li>
+              <li>Supportive measures: active warming and avoidance of shivering and hypothermia, minimising mechanical or electrical stimulation of muscle, and avoiding the recognised triggers — suxamethonium, neostigmine and hyperkalaemia.</li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -145,7 +153,7 @@ const GeneticSyndromesTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Airway</strong>: macroglossia, midface hypoplasia, narrow nasopharynx, subglottic stenosis (use ETT 0.5–1 size smaller).</li>
               <li><strong>C-spine</strong>: atlanto-axial instability in 10–20% (symptomatic 1–2%). Routine X-rays not recommended; focused neuro exam — image only if symptomatic or before high-risk procedure.</li>
-              <li><strong>Cardiac</strong>: 40–50% have CHD (AVSD, VSD, PDA, ToF). Pulmonary hypertension common.</li>
+              <li><strong>Cardiac</strong>: congenital heart disease affects 40–50% of individuals with Down syndrome.<InlineRef topicId="genetic-syndromes" refLabel="BJA Educ Down 2016" /> Among those with CHD, the relative frequencies are approximately: atrioventricular septal defect (AVSD) ~45%, ventricular septal defect (VSD) ~35%, secundum atrial septal defect ~8%, patent ductus arteriosus (PDA) ~7%, and tetralogy of Fallot (ToF) ~4%. Unrepaired AVSD progresses early to pulmonary hypertension and Eisenmenger physiology because of the combination of a large shunt, upper-airway obstruction and relative pulmonary hypoplasia — an up-to-date echocardiogram is needed and residual lesions/pulmonary artery pressure must be documented before non-cardiac surgery.</li>
               <li><strong>Other</strong>: OSA, hypothyroidism, leukaemia risk, recurrent chest infections, behavioural issues — premedication and parental presence often valuable.</li>
             </ul>
             </CollapsibleSubsection>
@@ -161,7 +169,7 @@ const GeneticSyndromesTopic = () => {
                 { label: "Aorta / cardiovascular", value: "Progressive aortic root dilatation and type-A dissection are the leading causes of death. Continue β-blockers (reduce dP/dt); target systolic BP <120 mmHg and gentle heart rate. Pre-op CT/MRI aorta if not recent. Mitral valve prolapse and regurgitation common. Place defibrillation pads if root >45 mm." },
                 { label: "Respiratory", value: "Pectus excavatum, kyphoscoliosis and apical bullae increase pneumothorax risk — especially with positive pressure ventilation. Use lowest airway pressures possible; high index of suspicion for spontaneous pneumothorax if desaturation or ↑airway pressures." },
                 { label: "Ophthalmology", value: "Lens dislocation (ectopia lentis) — upward/subluxation is characteristic. Protect eyes during positioning; avoid pressure on globes. Consider avoiding anticholinergics (less relevant in modern practice)." },
-                { label: "Neuraxial", value: "Dural ectasia (widening of the spinal canal) makes spinal block unpredictable and increases risk of post-dural-puncture headache. Epidural is preferred if neuraxial chosen; expect patchy spread and higher volumes needed." },
+                { label: "Neuraxial", value: "Dural ectasia (widening of the spinal canal) makes spinal block unpredictable and increases risk of post-dural-puncture headache. Dural ectasia also enlarges the dural sac itself, so if a dural puncture headache occurs and an epidural blood patch is required, a larger volume of autologous blood may be needed for it to be effective, the patch is technically more difficult to perform, and repeat patching is more often required. Epidural is preferred over subarachnoid block if neuraxial technique is chosen; expect patchy spread and higher volumes needed." },
                 { label: "Musculoskeletal", value: "Joint laxity, scoliosis, pectus deformity and long limbs can make positioning difficult. Hyperextensible joints risk nerve stretch — pad well, avoid extreme positions. Cervical spine instability is uncommon but reported." },
                 { label: "Practical", value: "Continue β-blockers on day of surgery; use arterial line for beat-to-beat BP monitoring. Treat intubation response (laryngoscopy → hypertension) with opioid ± esmolol/labetalol. Avoid Valsalva, straining and hypertensive surges perioperatively." },
               ].map((item) => (
@@ -269,6 +277,14 @@ const GeneticSyndromesTopic = () => {
               <li><strong>Sickle cell (HbSS)</strong>: avoid the 5 H's — Hypoxia, Hypothermia, Hypotension/dehydration, Hypoperfusion (stasis), High acidity. Top-up to Hb ~100 g/L for medium-risk surgery (TAPS); exchange to HbS &lt;30% for high-risk (cardiac, neuro). Active warming, generous fluids, supplemental O₂, multimodal analgesia.</li>
               <li><strong>β-thalassaemia major</strong>: chronic transfusion → iron overload (cardiomyopathy, cirrhosis, endocrinopathies). Pre-op echo, ferritin, glucose. Consider chelation continuity.</li>
               <li><strong>G6PD deficiency</strong>: avoid oxidative stressors — sulphonamides, nitrofurantoin, methylene blue (also causes false low SpO₂), prilocaine in large doses, fava beans. Methaemoglobinaemia is treated with ascorbic acid in G6PD-deficient patients (NOT methylene blue).</li>
+            </ul>
+            <p className="text-muted-foreground leading-relaxed mt-3 mb-2 text-sm font-semibold">β-thalassaemia major: perioperative transfusion</p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li>The minimum acceptable pre-operative haemoglobin is <strong>100 g/L</strong>, checked within 72 hours of surgery.<InlineRef topicId="genetic-syndromes" refLabel="AAGBI Haemoglobinopathy 2021" /><InlineRef topicId="genetic-syndromes" refLabel="TIF Thalassaemia Guidelines 2021" /></li>
+              <li>If below this threshold, give a top-up transfusion before the procedure to bring the haemoglobin up to target.</li>
+              <li>For major surgery, check haemoglobin daily and maintain it above 100 g/L throughout the perioperative period.</li>
+              <li>Use <strong>extended red cell phenotype-matched units</strong> given the repeated transfusion history and high risk of alloimmunisation, and involve the patient's haematology team in transfusion planning.</li>
+              <li>Maintain awareness of the consequences of chronic transfusion and iron overload — cardiac siderosis and endocrinopathy — and of the potentially difficult airway from maxillofacial marrow expansion.</li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>

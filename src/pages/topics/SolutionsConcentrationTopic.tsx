@@ -7,6 +7,7 @@ const solutionsConcentrationFaqs: Array<[string, string]> = [
   ["How do you convert percentage concentration to mg/mL?", "A 1% solution = 1 g/100 mL = 10 mg/mL. So 2% lidocaine is 20 mg/mL, 0.5% bupivacaine is 5 mg/mL, and 1:200 000 adrenaline (1 g per 200 000 mL) is 5 µg/mL. This conversion is essential when calculating maximum safe local anaesthetic doses from the syringe label."],
 ];
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { InlineRef } from "@/components/references/InlineRef";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { SolutionsConcentrationDiagram } from "@/components/diagrams/chemistry/SolutionsConcentrationDiagram";
@@ -144,6 +145,25 @@ const SolutionsConcentrationTopic = () => {
                 across all body compartments. Hartmann's is mildly hypotonic (osmolarity 278 mOsm/L) and 0.9% saline is iso-osmotic
                 (308 mOsm/L) but causes hyperchloraemic acidosis with large volumes.
               </p>
+              <p>
+                Whether a solute actually contributes to tonicity depends on its <strong>reflection coefficient (σ)</strong> — a
+                dimensionless measure, ranging from 0 to 1, of how effectively a membrane restricts that solute's passage. A σ of
+                <strong> 0</strong> means the membrane offers no restriction (the solute crosses freely and cannot sustain an
+                osmotic gradient); a σ of <strong>1</strong> means the membrane is completely impermeable to it (it exerts its
+                full osmotic effect). <strong>Albumin across intact capillary endothelium</strong> and <strong>Na⁺ across cell
+                membranes</strong> both have σ ≈ 1, so they contribute fully to oncotic pressure and tonicity respectively. By
+                contrast, <strong>urea, ethanol, methanol and glycerol</strong> have σ ≈ 0: they equilibrate freely across cell
+                membranes, so although they raise <em>measured osmolality</em> (and hence widen the osmolar gap when unmeasured),
+                they exert no sustained <em>tonicity</em> and cause no lasting fluid shift — this is precisely why urea is excluded
+                from the effective osmolarity (tonicity) calculation despite being included in total osmolality. Formally,
+                <strong> effective osmolarity (tonicity) = Σ σ × concentration</strong>, summed over each solute present. The
+                reflection coefficient also appears explicitly in the <strong>Starling and Michel–Weinbaum (revised Starling)
+                equations</strong> governing transcapillary fluid flux, and clinically, <strong>glycocalyx damage in sepsis and
+                critical illness lowers σ for albumin</strong> across the capillary wall, allowing protein to leak into the
+                interstitium and promoting oedema despite an unchanged plasma albumin concentration.
+                <InlineRef topicId="solutions-concentration" refLabel="Cross & Plunkett Ch.3" />
+                <InlineRef topicId="solutions-concentration" refLabel="Severs 2015" />
+              </p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -186,6 +206,22 @@ const SolutionsConcentrationTopic = () => {
                 pressure.
               </p>
               <p>
+                <strong>Raoult's law</strong> underlies vapour-pressure lowering: the partial vapour pressure of a solvent
+                above a solution equals the mole fraction of solvent multiplied by the vapour pressure of the pure solvent.
+                Adding a non-volatile solute therefore lowers the solvent's mole fraction and its vapour pressure, which in
+                turn raises the boiling point (more heat is needed to bring vapour pressure up to atmospheric pressure) —
+                the mechanistic link between vapour-pressure lowering and boiling-point elevation.
+              </p>
+              <p>
+                Quantitatively, one <strong>osmole</strong> dissolved in 1 kg of water <strong>depresses the freezing point by
+                1.86 °C</strong> and <strong>elevates the boiling point by 0.52 °C</strong>, and generates an osmotic pressure of
+                approximately <strong>19,300 mmHg (2.58 MPa)</strong> — illustrating just how large osmotic pressure is compared
+                with the other colligative effects, and why even small solute concentration differences generate powerful fluid
+                shifts across semipermeable membranes. <strong>Oncotic (colloid osmotic) pressure</strong> — the osmotic pressure
+                specifically contributed by plasma proteins — is normally around <strong>25–28 mmHg</strong>, of which roughly
+                <strong> 65–80% is due to albumin</strong>. <InlineRef topicId="solutions-concentration" refLabel="Cross & Plunkett Ch.3" />
+              </p>
+              <p>
                 The classical <strong>Starling principle</strong> describes net capillary filtration as the balance of hydrostatic
                 and oncotic pressure gradients across the capillary wall. The <strong>revised Starling principle</strong>
                 incorporates the endothelial glycocalyx layer, showing that the subglycocalyx oncotic pressure (not interstitial
@@ -204,14 +240,33 @@ const SolutionsConcentrationTopic = () => {
             <CollapsibleSubsection title="Hyponatraemia & Safe Correction">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
-                Acute hyponatraemia (&lt;48 h) causes cerebral oedema → headache, seizures, coma. Symptomatic acute hyponatraemia
-                is treated with hypertonic 1.8–3% saline boluses. <strong>Chronic</strong> hyponatraemia (&gt;48 h) requires cautious
-                correction: rise &lt;10 mmol/L in the first 24 h and &lt;18 mmol/L over 48 h to avoid <strong>osmotic demyelination
-                syndrome</strong> (formerly central pontine myelinolysis).
+                <strong>Acute</strong> hyponatraemia (developing over &lt;48 h, or of clearly documented rapid onset) has not
+                allowed brain cells time to adapt: water moves into neurons faster than they can extrude intracellular
+                osmolytes, so <strong>cerebral oedema and raised intracranial pressure dominate the risk</strong> — headache,
+                seizures, coma, respiratory arrest. <strong>Chronic</strong> hyponatraemia (&gt;48 h, or of unknown duration —
+                the default assumption if the timeline is unclear) has allowed neurons to adapt by actively extruding
+                organic osmolytes (taurine, glutamate, myo-inositol) to limit cell swelling; because this adaptive buffering
+                is lost only slowly on re-expansion, <strong>the risk shifts to osmotic demyelination syndrome (ODS)</strong>
+                if serum sodium is corrected too quickly. <InlineRef topicId="solutions-concentration" refLabel="Spasovski 2014 Hyponatraemia" />
               </p>
               <p>
-                Always classify by volume status (hypovolaemic, euvolaemic, hypervolaemic) and urine osmolality/Na⁺ before treatment.
-                SIADH is the commonest perioperative cause of euvolaemic hyponatraemia.
+                <strong>Severe, symptomatic</strong> hyponatraemia (seizures, coma, marked obtundation) is a medical
+                emergency regardless of chronicity: give <strong>150 mL of 3% NaCl over 20 minutes</strong>, and repeat up
+                to <strong>three times</strong>, aiming for either a <strong>5 mmol/L rise</strong> in serum sodium or
+                resolution of symptoms — whichever comes first — then stop the hypertonic saline. Thereafter, the
+                <strong> total rise must not exceed 10 mmol/L in the first 24 h and 8 mmol/L in any subsequent 24-h period
+                </strong>. In patients at <strong>high risk of ODS</strong> — serum Na⁺ &lt;105 mmol/L, chronic alcohol
+                excess, malnutrition, hypokalaemia, or advanced liver disease — the correction rate should be limited
+                further, to <strong>4–6 mmol/L per 24 h</strong>. <InlineRef topicId="solutions-concentration" refLabel="Spasovski 2014 Hyponatraemia" />
+                <InlineRef topicId="solutions-concentration" refLabel="Sterns ODS 2018" />
+              </p>
+              <p>
+                <strong>3% NaCl</strong> contains <strong>513 mmol/L each of Na⁺ and Cl⁻</strong> (osmolarity ≈1026 mosmol/L)
+                — roughly 3.3 times the tonicity of plasma — and is markedly irritant to peripheral veins; it should be
+                given via central access, or via a well-monitored large peripheral cannula with frequent site checks, with
+                sodium re-checked every 2–4 hours during active correction. Always classify by volume status (hypovolaemic,
+                euvolaemic, hypervolaemic) and urine osmolality/Na⁺ before treatment; SIADH is the commonest perioperative
+                cause of euvolaemic hyponatraemia. <InlineRef topicId="solutions-concentration" refLabel="NICE CG174" />
               </p>
               <p>
                 <strong>Sodium deficit (mmol) = TBW × (target [Na⁺] − measured [Na⁺])</strong>, where total body water (TBW) is
@@ -222,12 +277,22 @@ const SolutionsConcentrationTopic = () => {
               </p>
               <p>
                 The <strong>Adrogué–Madias formula</strong> predicts the change in serum sodium produced by one litre of a given
-                infusate: <strong>ΔNa⁺ = (infusate [Na⁺] − serum [Na⁺]) / (TBW + 1)</strong>. It allows the infusion rate to be
-                titrated to stay within the safe correction limits above, but it assumes a closed, single-compartment system and
-                <strong> ignores ongoing renal or gastrointestinal losses</strong>, which can make correction faster or slower than
-                predicted (particularly as a suppressed ADH switches off and a brisk water diuresis begins). Serum sodium should
-                therefore be re-measured frequently — every 2–4 hours during active correction — with the infusion adjusted or
-                desmopressin/5% dextrose given to slow an overly rapid rise.
+                infusate: <strong>ΔNa⁺ (per litre infused) = (infusate [Na⁺] − serum [Na⁺]) / (TBW + 1)</strong>, using the same
+                weight-based TBW estimate above. It allows the infusion rate to be titrated to stay within the safe correction
+                limits, but it assumes a closed, single-compartment system and <strong>ignores ongoing renal or
+                gastrointestinal losses</strong> — it therefore <strong>consistently underestimates the actual rise in serum
+                sodium</strong> once a spontaneous water diuresis develops (for example, as a suppressed ADH switches off in
+                resolving hypovolaemia or once a thiazide is stopped). <InlineRef topicId="solutions-concentration" refLabel="Adrogue & Madias 2000" />
+              </p>
+              <p>
+                This is the basis of the <strong>"desmopressin clamp"</strong>: once the underlying cause of hyponatraemia
+                resolves — SIADH remitting, hypovolaemia being corrected, a thiazide being stopped, or hypocortisolism being
+                treated — endogenous ADH falls abruptly and a brisk, unpredictable <strong>water diuresis (aquaresis)</strong>
+                can drive serum sodium up far faster than intended, risking ODS. Giving <strong>desmopressin 1–2 mcg IV every
+                6–8 hours</strong> pharmacologically fixes urine concentration, converting the correction into a controlled
+                process that can be titrated safely with hypertonic saline; if overcorrection has already occurred,
+                desmopressin can be used as a "rescue" together with <strong>5% dextrose</strong> to re-lower the sodium back
+                towards the safe trajectory. <InlineRef topicId="solutions-concentration" refLabel="Sterns ODS 2018" />
               </p>
             </div>
             </CollapsibleSubsection>
