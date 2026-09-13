@@ -387,9 +387,35 @@ const MuscleRelaxantsTopic = () => {
               <li><strong>Presentation:</strong> hypotension is the dominant feature (present in the great majority), with bronchospasm in about half; cutaneous signs are frequently absent or noticed late under drapes.</li>
               <li><strong>Immediate management:</strong> stop the trigger, call for help, 100% oxygen, intramuscular or intravenous adrenaline (IV 50 µg boluses titrated by an anaesthetist), aggressive fluid resuscitation, and an adrenaline infusion for refractory cases.</li>
               <li><strong>Investigation:</strong> mast cell tryptase at presentation, 1–2 h and &gt;24 h; referral to a specialist allergy clinic for skin prick/intradermal testing and IgE assays; document and issue written patient information and an alert.</li>
-              <li><strong>Cross-reactivity:</strong> common between aminosteroid agents; where NMBA allergy is confirmed, use a structurally unrelated agent with prior testing, or avoid NMBAs altogether. Sugammadex does not treat rocuronium anaphylaxis reliably and is not a substitute for adrenaline.</li>
+              <li><strong>Cross-reactivity:</strong> common between aminosteroid agents; where NMBA allergy is confirmed, use a structurally unrelated agent with prior testing, or avoid NMBAs altogether.</li>
               <li><strong>Pre-existing sensitisation (quaternary ammonium hypothesis):</strong> the immunogenic epitope of NMBAs is the quaternary (or tertiary) ammonium group, which is shared by many everyday products — cosmetics, shampoos, disinfectants, detergents and some drugs, notably the cough suppressant pholcodine. Exposure to these quaternary ammonium compounds can generate IgE that cross-reacts with NMBAs, which is why up to half of patients react on apparent first exposure and why women are over-represented. Population-level pholcodine use correlates with NMBA anaphylaxis rates (high in Norway, low in Sweden), and pholcodine was withdrawn in Europe in 2022 on this basis<InlineRef topicId="muscle-relaxants" refLabel="Front Toxicol 2022 QAC" />.</li>
             </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Relative rates and clinical pattern by agent</h3>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              NMBAs are the second commonest overall trigger of perioperative anaphylaxis after antibiotics, with an
+              incidence across all UK anaesthetics of roughly <strong>1 in 10,000</strong>. Within the NMBA group,
+              <strong> suxamethonium</strong> carries the highest reaction rate of any agent in current use, with
+              <strong> rocuronium and atracurium</strong> implicated less often and at broadly similar rates to one
+              another, and vecuronium and cisatracurium rarer still<InlineRef topicId="muscle-relaxants" refLabel="NAP6 2018" />. The clinical picture also differs by agent: reactions to <strong>suxamethonium</strong> more
+              frequently feature prominent <strong>bronchospasm</strong>, whereas reactions to <strong>atracurium</strong>
+              (a benzylisoquinolinium prone to direct, non-immune histamine release as well as true IgE-mediated
+              anaphylaxis) more often present with pronounced <strong>hypotension</strong>, sometimes with an urticarial
+              flush at the injection site reflecting local histamine release rather than a systemic allergic reaction.
+            </p>
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Investigation and the role of sugammadex</h3>
+            <p className="text-foreground/90 leading-relaxed">
+              All suspected NMBA anaphylaxis should be investigated with <strong>timed mast cell tryptase</strong>
+              (immediate/at presentation, 1-2 h, and a baseline sample at ≥24 h or in clinic) and formal referral to a
+              regional allergy/anaesthesia clinic for skin prick and intradermal testing to identify the culprit and any
+              cross-reacting agents before future anaesthesia. Where rocuronium is implicated, <strong>sugammadex</strong>
+              has been reported to abort ongoing reactions by rapidly encapsulating and clearing free rocuronium,
+              potentially removing the antigen driving mast cell activation, and some clinicians give it as an adjunct in
+              refractory rocuronium anaphylaxis; however, evidence is limited to case reports and small series, and it
+              must <strong>not delay or substitute for standard anaphylaxis treatment</strong> (adrenaline, fluids,
+              oxygen) — it is not a treatment for anaphylaxis in its own right, and sugammadex itself can rarely trigger
+              anaphylaxis<InlineRef topicId="muscle-relaxants" refLabel="JOACP 2022 Sugammadex Anaphylaxis" />.
+            </p>
           </section>
 
           <section className="mb-10">
@@ -418,11 +444,36 @@ const MuscleRelaxantsTopic = () => {
             </p>
             <ul className="list-disc list-inside text-foreground/90 leading-relaxed mt-3 space-y-1">
               <li><strong>Agent choice:</strong> cisatracurium 1–3 µg/kg/min is preferred for infusions — Hofmann elimination is independent of hepatic and renal function, and laudanosine accumulation is clinically insignificant at these doses. Rocuronium and vecuronium accumulate in organ failure (vecuronium's active 3-desacetyl metabolite is renally cleared).</li>
-              <li><strong>ARDS evidence:</strong> ACURASYS suggested a survival benefit from 48 h of early cisatracurium, but the larger ROSE trial found no difference in 90-day mortality with a high-PEEP strategy and lighter sedation in the control arm<InlineRef topicId="muscle-relaxants" refLabel="ROSE 2019" />. Current practice is therefore targeted, short-course blockade for refractory hypoxaemia or dyssynchrony rather than routine use.</li>
-              <li><strong>Safety essentials:</strong> confirmed deep sedation and analgesia before and during paralysis (risk of awareness), airway disconnection alarms, eye care and lubrication, pressure area care, VTE prophylaxis, and physiotherapy planning.</li>
-              <li><strong>Monitoring:</strong> quantitative TOF (aim 1–2 twitches) or post-tetanic count with daily interruption to reassess need; avoid deeper block than the indication requires.</li>
-              <li><strong>Complications:</strong> ICU-acquired weakness and critical illness polyneuromyopathy (risk increased by prolonged blockade, corticosteroids, hyperglycaemia and sepsis), prolonged ventilation, corneal abrasion, diaphragm atrophy, and masked seizures or neurological deterioration.</li>
+              <li><strong>Safety essentials:</strong> confirmed deep sedation and analgesia before and during paralysis (risk of awareness if sedation is inadequate — a paralysed patient cannot signal distress), airway disconnection alarms, eye care and lubrication to prevent corneal abrasion, pressure area care, VTE prophylaxis (mechanical, since a paralysed, immobile patient is at increased thromboembolic risk), and physiotherapy planning.</li>
+              <li><strong>Monitoring:</strong> quantitative TOF (aim 1–2 twitches) or post-tetanic count with daily interruption ("sedation and paralysis holidays") to reassess ongoing need, confirm depth is no greater than required, and detect prolonged/accumulating blockade early; avoid deeper block than the indication requires.</li>
+              <li><strong>Complications:</strong> ICU-acquired weakness and critical illness polyneuropathy/myopathy (risk increased by prolonged blockade, corticosteroids, hyperglycaemia and sepsis), prolonged neuromuscular blockade after stopping the infusion, corneal abrasion, venous thromboembolism, diaphragm atrophy, and masked seizures or neurological deterioration.</li>
             </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Rationale in severe ARDS</h3>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              In moderate-to-severe ARDS, early neuromuscular blockade abolishes patient-ventilator dyssynchrony and
+              spontaneous respiratory effort, which limits the vigorous negative intrathoracic pressure swings and high
+              transpulmonary stress that drive <strong>patient self-inflicted lung injury (P-SILI)</strong> and
+              ventilator-induced barotrauma/volutrauma. Removing spontaneous effort allows a genuinely
+              <strong> lung-protective ventilation strategy</strong> (low tidal volume, controlled plateau pressure) to be
+              delivered as intended, facilitates <strong>prone positioning</strong>, and can improve chest wall/lung
+              compliance and gas exchange (oxygenation and CO₂ clearance) in the most hypoxaemic patients.
+            </p>
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Trial evidence and current guidance</h3>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              The ACURASYS trial found that 48 hours of early cisatracurium infusion in severe ARDS (PaO₂/FiO₂ &lt;150)
+              improved adjusted 90-day survival compared with placebo, alongside a proposed anti-inflammatory mechanism —
+              reduced pulmonary and systemic pro-inflammatory cytokine concentrations independent of any change in
+              ventilator-induced lung injury markers. The subsequent, larger <strong>ROSE</strong> trial, however, found
+              no mortality benefit from an early, continuous cisatracurium strategy when the comparator arm used a
+              high-PEEP, lighter-sedation approach rather than deep sedation, and the trial was stopped early for
+              futility<InlineRef topicId="muscle-relaxants" refLabel="ROSE 2019" />. Reconciling these findings, current
+              society guidance gives only a conditional recommendation for early, short-course neuromuscular blockade in
+              the most severe ARDS (persistent PaO₂/FiO₂ &lt;150 despite optimised ventilation), rather than routine use
+              across the ARDS spectrum, consistent with the general critical-care principle of using the lowest
+              effective dose for the shortest necessary duration and reserving sustained blockade for defined
+              indications<InlineRef topicId="muscle-relaxants" refLabel="CCM 2006 ICU NMBA" />.
+            </p>
           </section>
 
           <section className="mb-10">

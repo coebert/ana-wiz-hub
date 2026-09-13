@@ -123,7 +123,9 @@ const IVAnaestheticsTopic = () => {
             almost entirely un-ionised at physiological pH.
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
-            <strong>Mechanism</strong>: enhances GABA_A receptor activity<InlineRef topicId="iv-anaesthetics" refLabel="BJA Educ 2014" />. <strong>CVS</strong>: dose-dependent hypotension
+            <strong>Mechanism</strong>: positive allosteric modulator of the GABA_A receptor, increasing the
+            <em> frequency</em> of chloride-channel opening (the same general mechanism as benzodiazepines; barbiturates
+            instead increase the <em>duration</em> of channel opening)<InlineRef topicId="iv-anaesthetics" refLabel="BJA Educ 2014" />. <strong>CVS</strong>: dose-dependent hypotension
             (vasodilation + myocardial depression), reduced baroreflex sensitivity. <strong>RS</strong>: apnoea, respiratory
             depression. <strong>CNS</strong>: anticonvulsant, antiemetic, reduces CMRO₂ and ICP. <strong>Other</strong>: pain
             on injection (attenuated by lidocaine), supports bacterial growth — discard after 6 hours.
@@ -425,6 +427,89 @@ const IVAnaestheticsTopic = () => {
 
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Organ-Specific Effects in Critical Illness</h2>
+          <p className="text-foreground/90 leading-relaxed mb-3">
+            Beyond their headline cardiovascular and respiratory profiles, IV induction and sedative agents have
+            important differential effects on regional perfusion, immune function, and renal and hepatic handling —
+            all particularly relevant when these drugs are used in the critically ill or shocked patient.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4">Splanchnic and Mesenteric Microcirculation</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            After haemorrhage, IV anaesthetic agents alter mesenteric microcirculatory flow in different directions.
+            Propofol's arteriolar vasodilation and reduction in perfusion pressure can further compromise an
+            already-hypoperfused splanchnic bed, worsening mucosal ischaemia in shock. Ketamine, by contrast,
+            supports mesenteric flow through its indirect sympathomimetic action, better preserving perfusion
+            pressure and microcirculatory flow after haemorrhage than propofol
+            <InlineRef topicId="iv-anaesthetics" refLabel="BJA 2002 Mesenteric Microcirculation" />. This is a
+            practical argument for favouring ketamine (or at least reduced-dose propofol with vasopressor support)
+            for induction in haemorrhagic shock, where gut mucosal perfusion is already at risk of failing before
+            systemic haemodynamics deteriorate.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4">Immunomodulation</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            Propofol has antioxidant and anti-inflammatory properties (structurally related to phenolic free-radical
+            scavengers) but also delivers a significant lipid load with prolonged infusion, which can itself
+            influence immune function. Thiopentone produces dose-dependent immunosuppression, including reduced
+            neutrophil and lymphocyte function at high or sustained exposure. Etomidate's inhibition of
+            11β-hydroxylase causes adrenocortical suppression that is of particular concern in septic patients, where
+            an intact stress-cortisol response may be needed. Ketamine attenuates the release of pro-inflammatory
+            cytokines (IL-6, TNF-α) in several models, a property proposed — though not proven in large clinical
+            trials — to be relevant to outcomes in sepsis and major surgery.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4">Renal Effects</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            None of the standard IV induction agents is directly nephrotoxic. Renal blood flow and glomerular
+            filtration are largely pressure-dependent, so hypotension from any of these drugs (particularly
+            propofol and thiopentone) can transiently reduce renal perfusion, but this is not a specific drug
+            effect. The exception is propofol infusion syndrome, in which impaired mitochondrial fatty-acid
+            oxidation produces rhabdomyolysis; the resulting myoglobinuria can precipitate acute kidney injury as a
+            secondary complication rather than through direct nephrotoxicity.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4">Hepatic Effects</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            Propofol has a high hepatic extraction ratio, so its clearance is flow-limited — a fall in hepatic blood
+            flow (from hypotension, high intra-abdominal pressure, or low cardiac output states in critical illness)
+            reduces clearance more than any change in enzyme activity would. A substantial fraction of propofol
+            clearance is extrahepatic (lung and kidney contribute), which partly explains why hepatic impairment
+            alone has a relatively modest effect on single-dose recovery. In critical illness, hypoalbuminaemia
+            increases the free (unbound) fraction of protein-bound agents, altering both effect and apparent
+            clearance despite an unchanged total plasma concentration. None of the standard IV agents produces
+            clinically significant hepatic enzyme induction.
+          </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Neurosteroid Anaesthetics</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Certain steroid molecules act as <strong>positive allosteric modulators of the GABA-A receptor</strong>,
+            at a site distinct from benzodiazepines and barbiturates, producing dose-dependent sedation and general
+            anaesthesia. The historical clinical example was <strong>alphaxalone/alphadolone (Althesin)</strong>, a
+            steroid anaesthetic combination used in the 1970s. It was formulated in a Cremophor EL (polyoxyethylated
+            castor oil) vehicle to achieve water solubility, and this vehicle provoked an unacceptable rate of
+            histamine-mediated hypersensitivity reactions, leading to its withdrawal from UK clinical practice in
+            1984.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            <strong>Pregnanolone emulsion</strong> was subsequently investigated as a lipid-emulsion-based
+            neurosteroid anaesthetic, avoiding the Cremophor EL vehicle problem, with animal data suggesting a
+            shorter-acting and less cumulative profile than Althesin, propofol, thiopentone or midazolam
+            <InlineRef topicId="iv-anaesthetics" refLabel="Anaesthesia 1987 Pregnanolone" />, but it did not progress
+            to routine human clinical use.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Neurosteroid anaesthesia has re-emerged more recently in the form of <strong>cyclodextrin-solubilised
+            alphaxalone</strong>, which avoids the Cremophor EL vehicle and is now used in veterinary anaesthesia.
+            Neuroactive steroids more broadly remain of interest in other indications (e.g. status epilepticus and
+            postpartum depression), reflecting continued interest in this receptor site as a target distinct from
+            the benzodiazepine and barbiturate binding sites on GABA-A.
+          </p>
+        </section>
+
+                <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Comparative Table</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">

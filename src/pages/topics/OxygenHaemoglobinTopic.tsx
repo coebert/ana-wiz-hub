@@ -5,6 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { OxygenDissociationCurve } from "@/components/diagrams/physiology/OxygenDissociationCurve";
+import { InlineRef } from "@/components/references/InlineRef";
 import { oxygenHaemoglobinQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
@@ -209,6 +210,22 @@ const OxygenHaemoglobinTopic = () => {
               extraction ratio of ~25%. The bound fraction dominates carriage; dissolved O₂ becomes meaningful only at
               very high PaO₂ (e.g. hyperbaric therapy).
             </p>
+            <div className="mt-3 rounded-lg border border-border bg-secondary/30 p-4">
+              <h3 className="font-semibold text-foreground">Why 1.34 and not 1.39? Hüfner's constant</h3>
+              <p className="mt-1 text-sm text-foreground/85 leading-relaxed">
+                The constant in the CaO₂ equation is <strong>Hüfner's constant</strong> — the maximum volume of O₂ that
+                can be bound by 1 g of fully saturated haemoglobin. Calculated theoretically from the molecular weight
+                of haemoglobin and the fact that each of its four haem groups binds one O₂ molecule, this works out at
+                <strong> 1.39 mL O₂/g</strong>. In clinical practice, however, a value of <strong>1.34 mL O₂/g</strong>{" "}
+                is used (some texts quote 1.31). The discrepancy arises because even healthy blood contains small
+                amounts of physiologically inactive haemoglobin — methaemoglobin and carboxyhaemoglobin — that cannot
+                carry oxygen but are still measured as part of the total Hb. The empirical, lower constant corrects for
+                this and gives a more accurate real-world CaO₂. Using the theoretical 1.39 instead of 1.34 therefore
+                slightly overestimates CaO₂ and DO₂ in calculations{" "}
+                <InlineRef topicId="oxygen-haemoglobin" refLabel="West Ch.6" />{" "}
+                <InlineRef topicId="oxygen-haemoglobin" refLabel="Power & Kam Ch.7" />.
+              </p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 

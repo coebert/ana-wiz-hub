@@ -576,6 +576,53 @@ const LungMechanicsTopic = () => {
               <div className="bg-card rounded-xl border border-border p-4">
                 <PVRecruitmentDiagram />
               </div>
+              <div className="mt-4 rounded-lg border border-border bg-secondary/30 p-4">
+                <h3 className="font-semibold text-foreground">What is hysteresis?</h3>
+                <p className="mt-2 text-sm text-foreground/85 leading-relaxed">
+                  <strong>Hysteresis</strong> is the difference between the inflation and deflation limbs of the
+                  static pressure-volume curve — at any given pressure, lung volume is lower on the way up
+                  (inflation) than on the way down (deflation). More pressure is needed to <em>open</em> a collapsed
+                  alveolus than to <em>keep it open</em>, for three related reasons: by Laplace's law, the pressure
+                  needed to expand a sphere is inversely related to its radius, so a small, collapsed alveolus needs
+                  a disproportionately high opening pressure; individual units have different critical opening
+                  (recruitment) thresholds, so they recruit progressively rather than all at once; and surfactant
+                  needs time and a change in interfacial surface area to reorganise at the air-liquid interface and
+                  lower surface tension, so its stabilising effect is greater on deflation than on inflation. The
+                  curve therefore shows a <strong>lower inflection point (LIP)</strong>, below which most recruitment
+                  occurs, and an <strong>upper inflection point (UIP)</strong>, above which the curve flattens as
+                  units become fully distended.
+                </p>
+                <svg viewBox="0 0 340 220" className="w-full h-auto mt-3" role="img" aria-label="Static pressure-volume loop showing separate inflation and deflation limbs with arrows indicating direction of travel, and the lower and upper inflection points marked">
+                  <line x1="45" y1="190" x2="45" y2="20" stroke="currentColor" strokeWidth="1.5" />
+                  <line x1="45" y1="190" x2="310" y2="190" stroke="currentColor" strokeWidth="1.5" />
+                  <text x="8" y="105" className="fill-muted-foreground" fontSize="10" transform="rotate(-90,8,105)">Volume</text>
+                  <text x="177" y="210" textAnchor="middle" className="fill-muted-foreground" fontSize="10">Pressure</text>
+                  <path d="M 50 185 C 90 183, 130 175, 160 140 C 185 112, 210 95, 260 85"
+                    fill="none" stroke="hsl(210 70% 45%)" strokeWidth="2.5" />
+                  <polygon points="258,80 268,86 256,92" fill="hsl(210 70% 45%)" />
+                  <text x="220" y="70" className="fill-foreground" fontSize="9" fontWeight="600">Inflation</text>
+                  <path d="M 260 85 C 220 78, 170 68, 130 62 C 95 57, 65 55, 50 55"
+                    fill="none" stroke="hsl(35 80% 45%)" strokeWidth="2.5" strokeDasharray="0" />
+                  <polygon points="55,52 44,55 55,60" fill="hsl(35 80% 45%)" />
+                  <text x="130" y="45" className="fill-foreground" fontSize="9" fontWeight="600">Deflation</text>
+                  <circle cx="160" cy="140" r="4" fill="hsl(0 70% 50%)" />
+                  <text x="166" y="150" className="fill-foreground" fontSize="9" fontWeight="600">LIP</text>
+                  <circle cx="230" cy="90" r="4" fill="hsl(0 70% 50%)" />
+                  <text x="236" y="85" className="fill-foreground" fontSize="9" fontWeight="600">UIP</text>
+                  <text x="120" y="130" className="fill-muted-foreground" fontSize="8">deflation limb lies above inflation limb —</text>
+                  <text x="120" y="140" className="fill-muted-foreground" fontSize="8">recruited alveoli stay open at lower pressure</text>
+                </svg>
+                <p className="mt-2 text-sm text-foreground/85 leading-relaxed">
+                  <strong>Clinical relevance:</strong> under anaesthesia, opening pressures around{" "}
+                  <strong>40 cmH₂O</strong> are typically needed to reopen collapsed alveoli during a recruitment
+                  manoeuvre, but far lower pressures — set on the <strong>deflation limb</strong> — will keep them
+                  open, which is why PEEP is titrated downward from a recruited state (a{" "}
+                  <strong>decremental PEEP trial</strong>) rather than read directly off the inflation limb. If PEEP
+                  is set too low, units cyclically reopen on inspiration and collapse on expiration, generating shear
+                  stress at the interface between aerated and collapsed lung — <strong>atelectrauma</strong>{" "}
+                  <InlineRef topicId="lung-mechanics" refLabel="BJA 1999 Recruitment" />.
+                </p>
+              </div>
               <div className="mt-4 space-y-3 text-sm text-foreground/85"><p><strong>Goal:</strong> reopen atelectatic units, improve compliance and gas exchange, and “unshrink” the functional baby lung. Methods include sustained inflation (classically 40 cmH₂O for 40 s), stepwise PEEP/driving-pressure increments, or pressure-controlled ventilation at high PEEP <InlineRef topicId="lung-mechanics" refLabel="BJA 1999 Recruitment" />.</p><p><strong>After recruitment:</strong> titrate down to an “open-lung PEEP” that prevents re-collapse without overdistension, following oxygenation, dynamic compliance, driving pressure and—where available—electrical impedance tomography.</p><p><strong>Risks:</strong> reduced venous return and cardiac output, hypotension, barotrauma/pneumothorax and volutrauma. Avoid routine aggressive recruitment in haemodynamic instability, untreated pneumothorax or predominantly focal lung disease; use selectively in ARDS or to reverse anaesthesia-related atelectasis.</p></div>
             </section>
           </ExamSection>

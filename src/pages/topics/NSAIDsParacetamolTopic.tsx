@@ -10,6 +10,7 @@ import { NSAIDMechanismDiagram } from "@/components/diagrams/pharmacology/NSAIDM
 import { AAShuntAnimation } from "@/components/diagrams/pharmacology/AAShuntAnimation";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const nsaidsParacetamolFaqs: Array<[string, string]> = [
   [
@@ -22,7 +23,7 @@ const nsaidsParacetamolFaqs: Array<[string, string]> = [
   ],
   [
     "Outline paracetamol overdose management.",
-    "N-acetylcysteine (NAC) is the antidote — replenishes glutathione and detoxifies NAPQI. Indications: paracetamol level above the 100 mg/L line at 4 h on the UK nomogram (single line since 2012 — treat all above), staggered overdose, unknown timing, late presentation with deranged LFTs. Regime: 150 mg/kg over 1 h, 50 mg/kg over 4 h, 100 mg/kg over 16 h. King's College criteria identify need for transplant referral."
+    "N-acetylcysteine (NAC) is the antidote — replenishes glutathione and detoxifies NAPQI. Use the UK paracetamol treatment nomogram: since 2012 a single treatment line is used, joining 100 mg/L at 4 h to 15 mg/L at 15 h post-ingestion — treat all patients whose plasma level is on or above this line. NAC is also indicated regardless of level for staggered overdose, uncertain/unknown timing, and late presentation with deranged LFTs. Regime: 150 mg/kg over 1 h, 50 mg/kg over 4 h, 100 mg/kg over 16 h. King's College criteria identify need for transplant referral."
   ]
 ];
 
@@ -30,7 +31,7 @@ const objectives = [
   "Compare COX-1 vs COX-2 selectivity and predict the GI / CV / renal trade-offs of common NSAIDs",
   "Recognise contraindications to perioperative NSAIDs (renal impairment, hypovolaemia, AKI risk, asthma, anticoagulation)",
   "Describe paracetamol metabolism, NAPQI formation, and the role of glutathione",
-  "Apply the Rumack-Matthew nomogram and N-acetylcysteine treatment to paracetamol overdose",
+  "Apply the UK paracetamol treatment nomogram (single treatment line since 2012) and N-acetylcysteine treatment to paracetamol overdose",
   "Identify patients at increased risk of paracetamol hepatotoxicity (enzyme induction, malnutrition, low body weight)",
 ];
 
@@ -70,13 +71,13 @@ const workedExamples: WorkedExample[] = [
   {
     title: "Staggered paracetamol overdose",
     scenario:
-      "A 25-year-old woman (50 kg, on phenytoin, malnourished) presents 14 h after a 'staggered' paracetamol overdose totalling 12 g over 6 h. Plasma paracetamol level is 'below the treatment line' on the Rumack-Matthew nomogram. Do you treat?",
+      "A 25-year-old woman (50 kg, on phenytoin, malnourished) presents 14 h after a 'staggered' paracetamol overdose totalling 12 g over 6 h. Plasma paracetamol level is 'below the treatment line' on the UK paracetamol treatment nomogram. Do you treat?",
     working: (
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
           <li><strong>Calculate the dose per kg.</strong> 12 g ÷ 50 kg = 240 mg/kg — well above the 150 mg/kg toxic threshold and far above the 75 mg/kg high-risk threshold.</li>
-          <li><strong>Test the nomogram's validity.</strong> Rumack-Matthew is only valid for a single ingestion at a known time (4–15 h post-ingestion). A 6-hour staggered ingestion fails this rule.</li>
+          <li><strong>Test the nomogram's validity.</strong> The UK single-treatment-line nomogram (100 mg/L at 4 h to 15 mg/L at 15 h) is only valid for a single ingestion at a known time (4–15 h post-ingestion). A 6-hour staggered ingestion fails this rule.</li>
           <li><strong>Identify high-risk modifiers.</strong> Phenytoin → CYP2E1 induction → ↑ NAPQI. Malnutrition → glutathione depletion. Low body weight → lower absolute reserve.</li>
           <li><strong>Apply MHRA 2012 guidance.</strong> Treat any staggered overdose ≥ 75 mg/kg/24 h with NAC regardless of paracetamol level.</li>
           <li><strong>Choose the regimen.</strong> Standard 21-h IV NAC: 150 mg/kg over 1 h → 50 mg/kg over 4 h → 100 mg/kg over 16 h. Or SNAP (12 h, lower anaphylactoid rate).</li>
@@ -89,7 +90,7 @@ const workedExamples: WorkedExample[] = [
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
           <ul className="list-disc list-inside space-y-1 text-foreground">
-            <li>Reading a single level off the nomogram for a staggered or unknown-time ingestion.</li>
+            <li>Reading a single level off the nomogram for a staggered or unknown-time ingestion — NAC is indicated regardless of level in these situations.</li>
             <li>Stopping NAC at 21 h despite ongoing transaminitis or coagulopathy.</li>
             <li>Confusing the anaphylactoid reaction (flush, bronchospasm in first hour) with true allergy — slow the rate, give antihistamine, do not stop permanently.</li>
           </ul>
@@ -144,7 +145,7 @@ const NSAIDsParacetamolTopic = () => {
         { text: "Paracetamol toxicity: NAPQI → glutathione depletion → Zone 3 (centrilobular) hepatic necrosis", cites: ["Peck & Hill Ch.15"] },
         { text: "NAC (N-acetylcysteine) replenishes glutathione — most effective within 8h of paracetamol overdose", cites: ["NICE Paracetamol OD"] },
         { text: "COX-2 selective drugs have ↓ GI risk but ↑ CV risk (prothrombotic: ↓PGI₂ without ↓TXA₂)", cites: ["BJA Educ 2018"] },
-        { text: "Rumack-Matthew nomogram is invalid for staggered overdoses — treat empirically based on dose/risk factors", cites: ["Peck & Hill Ch.15"] },
+        { text: "UK paracetamol treatment nomogram (single line since 2012: 100 mg/L at 4 h to 15 mg/L at 15 h) is invalid for staggered overdoses — treat empirically based on dose/risk factors, with NAC regardless of level", cites: ["Peck & Hill Ch.15"] },
       ]}
       coreConcepts={
         <>
@@ -200,7 +201,7 @@ const NSAIDsParacetamolTopic = () => {
               <li><strong>PK</strong>: oral bioavailability ~80%, hepatic metabolism (glucuronidation 60%, sulphation 30%, CYP2E1 5% → NAPQI). IV onset ~5 min, peak effect ~1h. Adult dose 1g QDS (max 4g/day)</li>
               <li><strong>Phase II conjugation in detail</strong>: <em>glucuronidation</em> by UGT1A1/1A6/1A9 is the high-capacity, low-affinity route producing paracetamol glucuronide, and <em>sulphation</em> by SULT1A1/1A3 is the high-affinity, low-capacity route producing paracetamol sulphate. Both yield inactive, water-soluble, renally excreted conjugates. Sulphation saturates first because the PAPS (sulphate donor) pool is small, so as the dose rises a greater proportion is glucuronidated and, once that route also saturates, a greater fraction is shunted through CYP2E1 (and CYP1A2/3A4) to NAPQI. Neonates and infants rely more on sulphation (immature UGT), which partly explains their relative resistance to hepatotoxicity; malnutrition, fasting, prolonged illness and chronic alcohol excess deplete glutathione and sulphate reserves and shift the balance toward NAPQI. About 5% is excreted unchanged in urine</li>
               <li><strong>Toxicity</strong>: NAPQI (toxic metabolite) normally conjugated by glutathione. Overdose → glutathione depletion → NAPQI binds hepatocytes → centrilobular necrosis (Zone 3)</li>
-              <li><strong>Treatment</strong>: N-acetylcysteine (NAC) — replenishes glutathione. Most effective within 8h. Staggered overdoses are higher risk than single timepoint. Use Rumack-Matthew nomogram (150 mg/kg treatment line)</li>
+              <li><strong>Treatment</strong>: N-acetylcysteine (NAC) — replenishes glutathione. Most effective within 8h. Staggered overdoses are higher risk than single timepoint and are treated with NAC regardless of level. Use the UK paracetamol treatment nomogram: since 2012 a single treatment line joins 100 mg/L at 4 h to 15 mg/L at 15 h post-ingestion — treat all patients on or above this line<InlineRef topicId="nsaids-paracetamol" refLabel="NICE Paracetamol OD" /></li>
               <li><strong>Risk factors for toxicity</strong>: enzyme inducers (phenytoin, rifampicin, alcohol), glutathione depletion (malnutrition, HIV, anorexia), low body weight (&lt;50kg — dose reduce)</li>
             </ul>
             </CollapsibleSubsection>
@@ -212,7 +213,7 @@ const NSAIDsParacetamolTopic = () => {
               "Selective COX-2 inhibitors spare platelets but increase cardiovascular/thrombotic risk; rofecoxib was withdrawn.",
               "Aspirin irreversibly acetylates COX — antiplatelet effect lasts the platelet lifespan (~10 days).",
               "Paracetamol mechanism is incompletely understood — central COX inhibition, TRPV1 and cannabinoid pathways; minimal anti-inflammatory effect.",
-              "Paracetamol toxicity: NAPQI overwhelms glutathione → hepatic necrosis; treat with N-acetylcysteine guided by nomogram (140 mg/kg load).",
+              "Paracetamol toxicity: NAPQI overwhelms glutathione → hepatic necrosis; treat with N-acetylcysteine guided by the UK single-treatment-line nomogram (100 mg/L at 4 h to 15 mg/L at 15 h), using the 150 mg/kg loading dose over 1 h.",
             ]}
           />
           <TopicFaqs faqs={nsaidsParacetamolFaqs} />
