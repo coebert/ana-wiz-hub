@@ -25,6 +25,8 @@ const tocItems = [
   { id: "shoulder-tip", label: "Shoulder-tip pain", group: "Complications" },
   { id: "hipec", label: "HIPEC", group: "Major surgery" },
   { id: "ectopic", label: "Ectopic pregnancy", group: "Emergency" },
+  { id: "top", label: "Termination of pregnancy", group: "Emergency" },
+  { id: "myomectomy", label: "Myomectomy & fibroids", group: "Major surgery" },
   { id: "gas-embolism", label: "CO₂ gas embolism", group: "Complications" },
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
@@ -339,7 +341,17 @@ const GynaecologicalAnaesthesiaTopic = () => {
                     </div>
                   ))}
                 </div>
-                <h3 className="font-semibold text-foreground text-sm mb-2">Ruptured ectopic — emergency anaesthetic management</h3>
+                
+                <h3 className="font-semibold text-foreground text-sm mb-2">Management pathways and anaesthetic implications</h3>
+                <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+                  <li><strong>Expectant management</strong>: appropriate for a clinically stable, pain-free woman with a low and falling serum hCG (typically &lt; 1000 IU/L), no visible ectopic mass or fetal heart, and reliable access to follow-up. It requires serial hCG measurement until undetectable, and written safety-netting because rupture can still occur — the anaesthetic relevance is that these women may present acutely days later<InlineRef topicId="gynaecological-anaesthesia" refLabel="RCOG Ectopic 2016" />.</li>
+                  <li><strong>Medical management with methotrexate</strong>: single-dose intramuscular methotrexate 50 mg/m² for a stable woman with minimal pain, hCG generally &lt; 1500 IU/L (some protocols to 5000 IU/L), an unruptured ectopic &lt; 35 mm without a fetal heartbeat, no haemoperitoneum, normal renal, hepatic and haematological indices, no breastfeeding and a willingness to attend for day 4 and day 7 hCG measurement and to avoid conception for 3 months. About 15% need a second dose and up to 10% still require surgery.</li>
+                  <li><strong>Nitrous oxide is contraindicated after methotrexate</strong>: methotrexate inhibits dihydrofolate reductase and nitrous oxide irreversibly oxidises the cobalt ion of vitamin B₁₂, inactivating methionine synthase. Together they produce additive interruption of folate-dependent one-carbon metabolism and thymidine synthesis, with a real risk of megaloblastic marrow suppression, mucositis and neurotoxicity. Avoid nitrous oxide in any woman who has recently received methotrexate — use air/oxygen with volatile or total intravenous anaesthesia instead. The same caution applies in vitamin B₁₂ or folate deficiency and in prolonged exposure.</li>
+                  <li><strong>Surgical management — stable patient</strong>: laparoscopic salpingectomy (or salpingotomy if the contralateral tube is diseased) on an urgent rather than emergency basis. Standard laparoscopic anaesthesia with a secured airway and controlled ventilation, prophylactic antiemetics, multimodal opioid-sparing analgesia with port-site infiltration, group-and-save with crossmatch availability, and normal fasting rules. Pneumoperitoneum and head-down positioning are usually well tolerated in this young population, but be alert for vagal bradycardia at insufflation and for a haemoperitoneum larger than expected once the abdomen is entered.</li>
+                  <li><strong>Surgical management — the deteriorating patient</strong>: any woman selected for medical or expectant management who develops increasing pain, syncope, tachycardia or hypotension has presumed rupture and needs immediate transfer to theatre, as detailed below.</li>
+                  <li><strong>Rhesus prophylaxis and follow-up</strong>: anti-D is given after surgical management in RhD-negative women; it is not required for methotrexate or expectant management. All women need contraception advice, discussion of future fertility and ectopic recurrence risk (about 10%), and psychological support for pregnancy loss.</li>
+                </ul>
+<h3 className="font-semibold text-foreground text-sm mb-2">Ruptured ectopic — emergency anaesthetic management</h3>
                 <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
                   <li><strong>Diagnosis and urgency</strong>: haemodynamic instability with a positive pregnancy test mandates immediate surgery — resuscitation and laparoscopy/laparotomy proceed in parallel, not in sequence<InlineRef topicId="gynaecological-anaesthesia" refLabel="RCOG Ectopic 2016" /></li>
                   <li><strong>Haemodynamic goals</strong>: permissive hypotension with a target systolic of 80–100 mmHg (or a palpable radial pulse and maintained conscious level) until the surgeon has clamped the bleeding pedicle; avoid over-transfusion of clear fluid before surgical control</li>
@@ -356,6 +368,56 @@ const GynaecologicalAnaesthesiaTopic = () => {
                   <p className="text-xs text-muted-foreground">
                     A young woman with amenorrhoea, abdominal pain, and hypotension has a ruptured ectopic until proven otherwise. Do not delay surgery for extensive investigation — resuscitate and operate simultaneously.
                   </p>
+                </div>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
+          <div id="top" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia (specialty)"]}>
+              <CollapsibleSubsection title="Termination of Pregnancy">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Surgical termination is common, usually a short day-case procedure, and is examinable for its combination of legal, ethical and practical anaesthetic issues<InlineRef topicId="gynaecological-anaesthesia" refLabel="BJA Educ Gynae 2012" />.
+                </p>
+                <div className="space-y-3">
+                  {[
+                    { t: "Legal and ethical framework", d: "In the UK, termination is lawful under the Abortion Act 1967 (as amended) with two doctors certifying that statutory grounds are met, except in an emergency to save the woman's life or prevent grave permanent injury. Anaesthetists have a right to conscientious objection to participating in termination itself but no right to refuse resuscitation or emergency care of a woman who is bleeding or unwell. Confidentiality is paramount, and young people need assessment of capacity (Gillick competence) and consideration of safeguarding, coercion and exploitation." },
+                    { t: "Preoperative considerations", d: "Confirm gestation by ultrasound, since technique and risk change with gestation; check haemoglobin, blood group and RhD status; screen for anaemia, sepsis, bleeding disorders and anticoagulants. Many units give prophylactic antibiotics and cervical priming with misoprostol or mifepristone. Ask specifically about recent methotrexate (avoid nitrous oxide) and about coexisting hyperemesis, dehydration or thyroid disease in molar pregnancy." },
+                    { t: "Anaesthetic technique", d: "Short general anaesthesia with propofol induction and a supraglottic airway with spontaneous or controlled ventilation is standard for first-trimester vacuum aspiration; total intravenous anaesthesia or a paracervical block with sedation are alternatives. Aspiration precautions and tracheal intubation are indicated with advancing gestation (progesterone-mediated lower oesophageal sphincter relaxation and an enlarging uterus from about 14–16 weeks), obesity, reflux or a full stomach. Give multimodal analgesia (paracetamol, non-steroidal anti-inflammatory drug, short-acting opioid) and PONV prophylaxis in this high-risk group." },
+                    { t: "Uterotonics and volatile agents", d: "Volatile agents cause dose-dependent uterine relaxation and can worsen bleeding at higher gestations, so keep the concentration modest or use total intravenous anaesthesia and give oxytocin 5 units slowly, ergometrine 500 µg IM, misoprostol or carboprost as requested. Remember ergometrine causes vomiting and hypertension, and carboprost causes bronchospasm — avoid it in asthma." },
+                    { t: "Complications", d: "Haemorrhage (retained products, atony, cervical trauma), uterine perforation with possible bowel or vessel injury, cervical laceration, incomplete evacuation requiring repeat procedure, infection and endometritis, air or amniotic-fluid embolism (rare), vagal bradycardia during cervical dilatation, and disseminated intravascular coagulation in the rare mid-trimester or septic case. Molar pregnancy carries additional risks of massive haemorrhage, thyrotoxicosis and trophoblastic pulmonary embolisation." },
+                    { t: "Recovery and discharge", d: "Confirm anti-D 250–500 IU for RhD-negative women within 72 hours, check bleeding and pain before discharge, give written information, contraception (which can be started immediately, including intrauterine device insertion at the time of surgery), a 24-hour contact number and non-judgemental psychological support with onward referral where wanted." },
+                  ].map((x) => (
+                    <div key={x.t} className="p-3 rounded-lg border border-border">
+                      <p className="font-semibold text-foreground text-sm">{x.t}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{x.d}</p>
+                    </div>
+                  ))}
+                </div>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
+          <div id="myomectomy" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia (specialty)"]}>
+              <CollapsibleSubsection title="Myomectomy and Fibroid Surgery">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Myomectomy is fertility-sparing surgery for symptomatic fibroids and is one of the few benign gynaecological operations with a genuine risk of major haemorrhage<InlineRef topicId="gynaecological-anaesthesia" refLabel="BJA Educ Gynae 2012" />.
+                </p>
+                <div className="space-y-3">
+                  {[
+                    { t: "Preoperative optimisation", d: "Iron-deficiency anaemia from menorrhagia is almost universal — treat with oral or intravenous iron (and erythropoietin in selected patients) in a planned pathway weeks before surgery rather than transfusing on the day. Fibroids may have been shrunk with gonadotropin-releasing hormone analogues or ulipristal, reducing size and bleeding. Group and save with crossmatched blood available, and discuss cell salvage for large or multiple fibroids. Explore the woman's views on transfusion and on the possibility of hysterectomy if bleeding is uncontrollable, and document consent for both." },
+                    { t: "Haemorrhage risk and reduction", d: "Bleeding comes from the highly vascular myometrial bed. Surgical and pharmacological measures include a uterine tourniquet or vascular clamps, intramyometrial vasopressin (dilute; systemic absorption causes hypertension, bradycardia, coronary vasospasm and even cardiac arrest — confirm the dilution and warn the surgeon), tranexamic acid 1 g, misoprostol, uterine artery embolisation or occlusion, and a planned midline or Pfannenstiel approach for large fibroids. Anaesthetic contribution: large-bore access, arterial line and cell salvage for expected losses, active warming, point-of-care haemoglobin and viscoelastic testing, and an agreed major-haemorrhage trigger." },
+                    { t: "Technique", d: "General anaesthesia with controlled ventilation for open or laparoscopic myomectomy; a very large fibroid uterus behaves like a term pregnancy with aortocaval compression, reduced functional residual capacity and reflux, so consider lateral tilt, ramped position and rapid sequence induction. Neuraxial blockade (spinal or epidural) can be used alone for some open procedures or, more usefully, as an epidural for postoperative analgesia; hypotension from sympathetic block is poorly tolerated if bleeding starts, so many prefer general anaesthesia with a transversus abdominis plane or rectus sheath block, or quadratus lumborum block, plus intravenous or epidural analgesia." },
+                    { t: "Laparoscopic and hysteroscopic considerations", d: "Laparoscopic myomectomy adds pneumoperitoneum and steep Trendelenburg physiology and can be prolonged; power morcellation raises the concern of disseminating an unsuspected leiomyosarcoma, so contained morcellation is used. Hysteroscopic resection of submucosal fibroids carries a distension-fluid absorption risk — monitor the deficit closely and expect dilutional hyponatraemia with hypotonic media (see the hysteroscopy section)." },
+                    { t: "Specific hazards", d: "Torrential bleeding requiring conversion to hysterectomy, uterine rupture risk in future pregnancy (with implications for later obstetric anaesthesia and elective caesarean), air or venous embolism during hysteroscopic and laparoscopic work, adhesion formation, and rarely leiomyosarcoma diagnosed on histology. Vasopressin-related cardiovascular collapse is a classic exam scenario, presenting as sudden severe hypertension and bradycardia minutes after infiltration." },
+                    { t: "Postoperative care", d: "Multimodal opioid-sparing analgesia with regional blocks, enhanced-recovery principles (early oral intake and mobilisation, avoidance of drains and prolonged catheterisation), robust thromboprophylaxis in a group at risk from pelvic surgery and prior anaemia, and repeat haemoglobin with iron replacement rather than transfusion where the woman is stable." },
+                  ].map((x) => (
+                    <div key={x.t} className="p-3 rounded-lg border border-border">
+                      <p className="font-semibold text-foreground text-sm">{x.t}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{x.d}</p>
+                    </div>
+                  ))}
                 </div>
               </CollapsibleSubsection>
             </ExamSection>

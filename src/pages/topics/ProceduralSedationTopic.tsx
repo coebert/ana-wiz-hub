@@ -152,6 +152,32 @@ const ProceduralSedationTopic = () => {
               <li><strong>Consent</strong>: explicit discussion of awareness, recall, respiratory depression, and the possibility of conversion to GA</li>
             </ul>
 
+            <div className="mt-5 space-y-3">
+              <h3 className="font-serif font-bold text-foreground text-base">Sedation in High-Risk Populations</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Certain groups convert a routine sedation list into a high-risk anaesthetic problem. Identify them at preassessment and either modify the plan or move the case to theatre with an anaesthetist.
+              </p>
+              {[
+                { t: "Elderly and frail patients", d: "Reduce every drug by about 50% and lengthen the interval between increments to allow for prolonged arm–brain time — propofol 10–20 mg increments, midazolam 0.5 mg increments, fentanyl 12.5–25 µg. Expect exaggerated hypotension from blunted baroreflexes and diastolic dysfunction, and a high risk of delirium and prolonged recovery. Avoid benzodiazepines where possible; prefer a low-dose single agent plus generous local anaesthesia." },
+                { t: "Obesity and obstructive sleep apnoea", d: "STOP-BANG ≥5 or known OSA: sit the patient up (30–45° ramped), pre-oxygenate, use nasal high-flow or CPAP-supported sedation, and capnography throughout. Avoid opioid–benzodiazepine combinations, which produce supra-additive apnoea. Titrate to lean/ideal body weight for boluses. Have the difficult-airway trolley and a plan for rescue ventilation immediately available, and extend recovery monitoring with continuous SpO₂." },
+                { t: "Significant cardiac disease", d: "In severe aortic stenosis, hypertrophic cardiomyopathy, pulmonary hypertension or poor ventricular function, small doses of propofol can cause an irreversible fall in coronary perfusion. Prefer midazolam/remifentanil or remimazolam over propofol, run a vasopressor drawn up (phenylephrine 50–100 µg, metaraminol 0.25–0.5 mg), consider invasive arterial monitoring, maintain sinus rhythm and preload, and treat hypotension immediately rather than waiting." },
+                { t: "Chronic respiratory disease", d: "Severe COPD, restrictive disease or home oxygen: hypercapnic drive means opioids and benzodiazepines cause CO₂ narcosis before desaturation. Use minimal opioid, capnography (accepting a raised baseline EtCO₂), controlled oxygen rather than high FiO₂, and sit the patient up. Have naloxone and flumazenil, and non-invasive ventilation, available." },
+                { t: "Hepatic and renal impairment", d: "Cirrhosis reduces clearance and increases free drug fraction (hypoalbuminaemia) — midazolam accumulates markedly and may precipitate encephalopathy; remifentanil and remimazolam are the safest choices because metabolism is organ-independent. In renal failure, avoid morphine and pethidine (active metabolites) and reduce midazolam (active glucuronide accumulates)." },
+                { t: "Opioid tolerance and substance misuse", d: "Chronic opioid, benzodiazepine, gabapentinoid or alcohol use produces both tolerance (higher dose requirement) and cross-synergy (sudden apnoea). Continue baseline opioid, use a titrated multimodal approach with ketamine or regional/local supplementation, avoid competing partial agonists, and never assume a “standard” dose is safe. Active stimulant intoxication is a reason to defer." },
+                { t: "Children", d: "Sedation should follow national paediatric standards with age-appropriate dosing, two-person practice and a practitioner competent in paediatric airway rescue. Children desaturate quickly and readily pass from moderate to deep sedation; intranasal dexmedetomidine or midazolam and ketamine are commonly used, with propofol reserved for anaesthetists. Neonates and infants under 1 year, and children with OSA or syndromic airways, should be managed by anaesthetists." },
+                { t: "Pregnancy", d: "Aspiration risk from about the second trimester, difficult airway, and fetal drug exposure. Non-urgent sedation should be deferred; where necessary, use aspiration prophylaxis, left lateral tilt after 20 weeks, minimal short-acting drug doses, avoid prolonged benzodiazepine exposure, and involve obstetric anaesthesia with fetal monitoring as indicated." },
+                { t: "Emergency and unfasted patients", d: "Urgent procedural sedation (reduction, cardioversion, drainage) is often unfasted. Weigh the aspiration risk against delay, use the lowest effective depth, keep suction and tipping capability immediately to hand, and consider ketamine (relative airway-reflex preservation) or conversion to a rapid sequence induction in theatre if deep sedation is required." },
+              ].map((x) => (
+                <div key={x.t} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{x.t}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{x.d}</p>
+                </div>
+              ))}
+              <p className="text-xs text-muted-foreground italic">
+                Where two or more of these factors coexist, sedation outside theatre by a non-anaesthetist is rarely appropriate — escalate to anaesthetist-delivered sedation or general anaesthesia<InlineRef topicId="procedural-sedation" refLabel="AAGBI/RCoA 2021" />.
+              </p>
+            </div>
+
             <div className="mt-5 rounded-lg border border-border bg-secondary/30 p-4">
               <h3 className="font-serif font-bold text-foreground text-base mb-3">
                 Pre-procedure & monitoring checklist
@@ -395,7 +421,7 @@ const ProceduralSedationTopic = () => {
                       <strong>Dosing</strong>: procedural sedation 5 mg IV bolus then 2.5 mg increments no more often than every 2 min (lower in the elderly and ASA III–IV); infusion 0.1–0.3 mg/kg/h.{" "}
                       <strong>Advantages</strong>: greater haemodynamic stability and less respiratory depression than propofol, no injection pain, rapid predictable recovery, and full reversibility with flumazenil.{" "}
                       <strong>Disadvantages</strong>: no analgesic effect (needs an opioid co-adjunct, which restores synergistic respiratory depression), re-sedation risk after flumazenil, cost, less UK familiarity, and hypersensitivity to dextran 40 in the formulation.{" "}
-                      <strong>Uses</strong>: GI endoscopy, bronchoscopy, cardioversion, dental and interventional radiology sedation, and induction/maintenance of general anaesthesia in the cardiovascularly frail<InlineRef topicId="procedural-sedation" refLabel="Remimazolam Review 2022" />.
+                      <strong>Uses</strong>: GI endoscopy, bronchoscopy, cardioversion, dental and interventional radiology sedation, and induction/maintenance of general anaesthesia in the cardiovascularly frail<InlineRef topicId="procedural-sedation" refLabel="Remimazolam Review 2022" /><InlineRef topicId="procedural-sedation" refLabel="Remimazolam DDDT 2022" />.
                     </>
                   ),
                 },
