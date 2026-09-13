@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { AlertTriangle, ArrowLeft, ExternalLink } from "lucide-react";
 
+import ReferenceAppLayout from "@/features/drugReference/ReferenceAppLayout";
 import { useDrugEntry } from "@/features/drugReference/useDrugReference";
 import {
   calculateRate,
@@ -402,6 +402,6 @@ export default function DrugReferenceEntry() {
           </p>
         </Section>
       </main>
-    </div>
+    </ReferenceAppLayout>
   );
 }
