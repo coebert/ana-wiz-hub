@@ -142,6 +142,12 @@ const EndocrinePhysiologyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="carcinoid" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
+            <CollapsibleSubsection title="Carcinoid Syndrome and Crisis">
+              <p className="text-sm text-muted-foreground leading-relaxed">Neuroendocrine tumours can release serotonin, histamine, bradykinin and other vasoactive mediators, causing flushing, secretory diarrhoea and bronchospasm; metastatic disease may produce right-sided carcinoid valvular disease. A perioperative crisis can cause profound hypotension or hypertension, bronchospasm and arrhythmia. Optimise with a specialist team, somatostatin analogue therapy (octreotide or lanreotide) and echocardiography where heart disease is suspected. Avoid catecholamine surges and histamine-releasing drugs such as morphine and atracurium; use invasive arterial pressure monitoring for major tumour surgery, with octreotide bolus/infusion, vasopressors and bronchodilators immediately available <InlineRef topicId="endocrine-physiology" refLabel="Power & Kam Ch.12" />.</p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="hp-axis" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
             <CollapsibleSubsection title="Hypothalamic-Pituitary & HPA Axes">
               <p className="text-muted-foreground leading-relaxed mb-4">
@@ -223,6 +229,10 @@ const EndocrinePhysiologyTopic = () => {
             <div className="mt-4 rounded-lg border border-border p-4 text-sm text-muted-foreground leading-relaxed">
               <p className="font-semibold text-foreground">Phaeochromocytoma preparation</p>
               <p className="mt-1">Block for 10–14 days. Start phenoxybenzamine about 10 mg twice daily and titrate, or use selective α₁ blockade such as doxazosin. Liberal salt and fluid intake correct chronic catecholamine-mediated volume contraction. Add β-blockade only after effective α-blockade if reflex tachycardia persists. Targets include seated BP &lt;130/80 mmHg, standing systolic BP &gt;90 mmHg, HR 60–70 seated and 70–80 standing, with ECG review for ischaemia/arrhythmia <InlineRef topicId="endocrine-physiology" refLabel="BJA Educ Phaeochromocytoma" />.</p>
+            </div>
+            <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm text-muted-foreground leading-relaxed">
+              <div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Cushing's syndrome</p><p className="mt-1">Excess glucocorticoid may be iatrogenic, pituitary ACTH-driven (Cushing's disease), adrenal, or ectopic ACTH. Central obesity, thin fragile skin, difficult access, hypertension, hyperglycaemia, hypokalaemia and proximal myopathy create positioning, airway, ventilation, infection and thrombotic risk. Correct electrolytes, control glucose and blood pressure, pad carefully and plan postoperative steroid replacement after definitive surgery.</p></div>
+              <div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Conn's syndrome</p><p className="mt-1">Primary hyperaldosteronism, commonly from an adrenal adenoma, causes resistant hypertension, hypokalaemia and metabolic alkalosis. Correct potassium and control pressure before surgery, usually with spironolactone or eplerenone; after adrenalectomy monitor for hypotension, hyperkalaemia and transient hypoaldosteronism <InlineRef topicId="endocrine-physiology" refLabel="Ganong Ch.20 Adrenal" />.</p></div>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -354,7 +364,7 @@ const EndocrinePhysiologyTopic = () => {
                   <li><strong>Nephrogenic</strong>: renal resistance to ADH — lithium, demeclocycline, hypercalcaemia, hypokalaemia, chronic kidney disease, congenital V₂/aquaporin defects.</li>
                   <li><strong>Features</strong>: polyuria &gt;3 L/day (often &gt;4 mL/kg/h), polydipsia if conscious, hypernatraemia and rising plasma osmolality with inappropriately dilute urine.</li>
                   <li><strong>Diagnosis</strong>: plasma osmolality &gt;295 mOsm/kg with urine osmolality &lt;300 mOsm/kg and urine specific gravity &lt;1.005; water-deprivation test with desmopressin distinguishes cranial (urine concentrates after dDAVP) from nephrogenic (no response). Copeptin assay is now used in place of formal water deprivation in many centres.</li>
-                  <li><strong>Management</strong>: replace the measured urinary losses (hourly input/output charting), correct hypernatraemia no faster than ~10 mmol/L per 24 h, and give <strong>desmopressin</strong> — 0.25–1 microgram IV/SC or 10–20 micrograms intranasally, titrated to urine output. Recheck sodium 4–6 hourly perioperatively; in nephrogenic DI use thiazides, low-solute diet and remove the offending drug.</li>
+                  <li><strong>Management</strong>: replace the measured urinary losses and free-water deficit (hourly input/output charting), correct hypernatraemia no faster than ~10 mmol/L per 24 h, and give <strong>desmopressin</strong> — 0.25–1 microgram IV/SC or 10–20 micrograms intranasally, titrated to urine output. Recheck sodium 4–6 hourly perioperatively; in nephrogenic DI use thiazides, a low-solute diet, remove the offending drug and consider an NSAID only with specialist renal-risk assessment.</li>
                 </ul>
               </div>
               <div className="rounded-lg border border-border p-4">
@@ -366,6 +376,10 @@ const EndocrinePhysiologyTopic = () => {
                   <li><strong>Differentiate from cerebral salt wasting</strong>: both hyponatraemic with natriuresis, but CSW patients are hypovolaemic and need salt and volume replacement, not restriction.</li>
                 </ul>
               </div>
+            </div>
+            <div className="mt-4 overflow-x-auto rounded-lg border border-border">
+              <table className="w-full text-sm"><thead className="bg-secondary/40"><tr><th className="p-3 text-left">Feature</th><th className="p-3 text-left">SIADH</th><th className="p-3 text-left">Cerebral salt wasting</th></tr></thead><tbody className="divide-y divide-border text-muted-foreground"><tr><td className="p-3 font-medium text-foreground">Mechanism / volume</td><td className="p-3">ADH-mediated water retention; clinically euvolaemic.</td><td className="p-3">Renal sodium loss, often after SAH; hypovolaemic.</td></tr><tr><td className="p-3 font-medium text-foreground">Urine</td><td className="p-3">Osmolality &gt;100 mOsm/kg and sodium &gt;30 mmol/L.</td><td className="p-3">High output and high sodium, with dehydration or rising haematocrit.</td></tr><tr><td className="p-3 font-medium text-foreground">Treatment</td><td className="p-3">Treat cause; fluid restriction, with urea/demeclocycline or selected vaptan use under specialist supervision.</td><td className="p-3">Replace volume and sodium with isotonic or hypertonic saline; consider fludrocortisone.</td></tr></tbody></table>
+              <p className="p-3 text-xs text-muted-foreground">The urine results overlap: serial volume assessment and response to treatment determine the diagnosis. Fluid restriction can worsen CSW <InlineRef topicId="endocrine-physiology" refLabel="Verbalis Hyponatraemia 2013" />.</p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>

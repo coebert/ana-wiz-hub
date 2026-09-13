@@ -399,6 +399,7 @@ export const topicReferences: Record<string, Reference[]> = {
 
   ],
   "maternal-physiology": [
+    { label: "RCOG Pregnancy Physiology", citation: "Royal College of Obstetricians and Gynaecologists. Physiological changes of pregnancy. RCOG patient and professional information.", url: "https://www.rcog.org.uk/for-the-public/browse-our-health-information/physiological-changes-of-pregnancy/" },
     { label: "BJA Educ 2015", citation: "Soma-Pillay P, Nelson-Piercy C, Tolppanen H, Mebazaa A. Physiological changes in pregnancy. Cardiovasc J Afr. 2016;27(2):89-94.", url: "https://doi.org/10.5830/CVJA-2016-021" },
     { label: "Power & Kam Ch.17", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 17: Maternal Physiology." },
     { label: "OAA/AAGBI 2013", citation: "OAA/AAGBI. Guidelines for Obstetric Anaesthetic Services 2013. OAA/AAGBI; 2013.", url: "https://www.oaa-anaes.ac.uk/guidelines" },
@@ -455,6 +456,8 @@ export const topicReferences: Record<string, Reference[]> = {
 
   // ──────── PHARMACOLOGY ────────
   "pharmacokinetics": [
+    { label: "BJA Dexmedetomidine PK 2012", citation: "Iirola T, Ihmsen H, Laitio R, et al. Population pharmacokinetics of dexmedetomidine during long-term sedation in intensive care patients. Br J Anaesth. 2012;108(3):460-468.", url: "https://doi.org/10.1093/bja/aer441", excerpt: "Dexmedetomidine clearance decreased with decreasing cardiac output and with increasing age, whereas its volume of distribution at steady state was increased in patients with low plasma albumin concentration." },
+    { label: "ICM CYP3A4 Interactions 2009", citation: "Spriet I, Meersseman W, de Hoon J, von Winckelmann S, Wilmer A, Willems L. Mini-series: I. Basic science. Uncertainty and inaccuracy of predicting CYP-mediated in vivo drug interactions in the ICU from in vitro models: focus on CYP3A4. Intensive Care Med. 2009;35:417-429.", url: "https://doi.org/10.1007/s00134-008-1384-1", excerpt: "The activity of cytochrome P450 3A4 and P-glycoprotein are critical determinants of drug clearance, interindividual variability in drug disposition and clinical efficacy." },
     { label: "BJA Educ 2017", citation: "Calvey TN, Williams NE. Pharmacokinetics. In: Principles and Practice of Pharmacology for Anaesthetists. 5th ed. Blackwell; 2008.", url: "https://doi.org/10.1002/9781405194853" },
     { label: "Peck & Hill Ch.2", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 2: Pharmacokinetics." },
     { label: "Stanski & Shafer", citation: "Shafer SL, Stanski DR. Defining depth of anesthesia. Handb Exp Pharmacol. 2008;182:409-423.", url: "https://doi.org/10.1007/978-3-540-74806-9_19" },
@@ -465,6 +468,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "ICM 2013 (Antibiotic PK in critical illness)", citation: "Roberts JA, Lipman J. Clinical implications of antibiotic pharmacokinetic principles in the critically ill. Intensive Care Med. 2013;39(12):2070-2082.", url: "https://doi.org/10.1007/s00134-013-3088-4", excerpt: "Endothelial dysfunction, capillary leak, altered major organ blood flow, deranged plasma protein concentrations, extremes of body habitus, the application of extracorporeal support modalities, and a higher prevalence of intermediate susceptibility, independently, and in combination, significantly confound successful antibiotic treatment in this setting." },
   ],
   "iv-anaesthetics": [
+    { label: "BJA IV Anaesthetic PK", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapters 2 and 5: pharmacokinetics and intravenous anaesthetic agents." },
     { label: "BJA Educ 2014", citation: "Sahinovic MM, Struys MMRF, Absalom AR. Clinical pharmacokinetics and pharmacodynamics of propofol. Clin Pharmacokinet. 2018;57(12):1539-1558.", url: "https://doi.org/10.1007/s40262-018-0672-3" },
     { label: "Peck & Hill Ch.5", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 5: Intravenous Anaesthetic Agents." },
     { label: "Miller Ch.26", citation: "Miller RD, ed. Miller's Anesthesia. 9th ed. Elsevier; 2020. Chapter 26: Intravenous Anaesthetics." },

@@ -257,7 +257,7 @@ export const pharmacologyCaseBank: CaseBank = {
           title: "Choose the next agent",
           prompt: "How do you escalate?",
           answer: [
-            "Add vasopressin (typically 0.03 units/min) to spare catecholamine dose, acting through V1 receptors independent of adrenergic pathways.",
+            "Add vasopressin (typically 0.03 units/min) to spare catecholamine dose. Its vascular target is the Gq-coupled V1a receptor, which raises intracellular calcium and causes vasoconstriction independently of adrenergic pathways. V1a receptors are not down-regulated in sepsis, and vasopressin may restore catecholamine sensitivity. V2 and oxytocin-receptor effects also occur; monitor for myocardial or mesenteric ischaemia, skin necrosis and hyponatraemia, including during withdrawal.",
             "Consider hydrocortisone for shock requiring ongoing vasopressor support, and reassess for source control, occult bleeding and acidosis limiting catecholamine responsiveness.",
             "Reserve adrenaline or an inotrope for genuine low-output states, guided by echocardiography or cardiac output monitoring.",
           ],

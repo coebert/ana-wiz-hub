@@ -317,6 +317,18 @@ const VolatileAgentsTopic = () => {
               <li>• <strong>Low cardiac output</strong> (less blood to carry agent away)</li>
               <li>• <strong>Second gas effect</strong> (N₂O uptake concentrates companion agent)</li>
             </ul>
+            <div className="mt-5 rounded-lg border border-border p-4">
+              <h3 className="text-lg font-semibold text-foreground">Distribution to Tissues</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                After uptake into blood, tissue partial pressure is determined by regional blood flow and the tissue:blood
+                partition coefficient. The <strong>vessel-rich group</strong> (brain, heart, liver and kidneys) receives high flow
+                and equilibrates rapidly; muscle has intermediate perfusion and capacity; fat is poorly perfused but has a high
+                fat:blood solubility and therefore forms a large, slow reservoir; vessel-poor tissues such as bone and ligaments
+                equilibrate least. During a long anaesthetic, fat loading is greatest with more soluble agents such as isoflurane.
+                Its later release slows the fall in alveolar partial pressure and prolongs recovery compared with less soluble
+                sevoflurane or desflurane <InlineRef topicId="volatile-agents" refLabel="Eger" />.
+              </p>
+            </div>
           </section>
 
           <section className="mb-10">
@@ -393,7 +405,7 @@ const VolatileAgentsTopic = () => {
             <div className="overflow-x-auto rounded-lg border border-border">
               <table className="w-full text-sm"><thead className="bg-secondary/40"><tr><th className="p-3 text-left">System</th><th className="p-3 text-left">Shared effects</th><th className="p-3 text-left">Important differences</th></tr></thead>
                 <tbody className="divide-y divide-border text-muted-foreground">
-                  <tr><td className="p-3 font-medium text-foreground">Cardiovascular</td><td className="p-3">Dose-dependent fall in MAP, principally from reduced SVR, with myocardial depression.</td><td className="p-3">Isoflurane causes marked coronary vasodilatation; a rapid desflurane increase can produce transient sympathetic tachycardia and hypertension.</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">Cardiovascular</td><td className="p-3">All cause a dose-dependent fall in MAP, but by different balances of vasodilatation and myocardial depression.</td><td className="p-3">Isoflurane predominantly lowers SVR and can depress myocardium, so cardiac output is less well preserved. At equivalent MAC, sevoflurane and desflurane cause a smaller SVR reduction but a greater fall in cardiac output than isoflurane; overall cardiac output is generally better maintained with sevoflurane than isoflurane. Rapid desflurane increases can cause transient sympathetic tachycardia and hypertension.</td></tr>
                   <tr><td className="p-3 font-medium text-foreground">Respiratory</td><td className="p-3">Bronchodilatation, reduced tidal volume, raised respiratory rate, depressed ventilatory response to CO₂ and dose-dependent inhibition of HPV.</td><td className="p-3">Sevoflurane is least irritant; desflurane and isoflurane are pungent and may provoke coughing or laryngospasm.</td></tr>
                   <tr><td className="p-3 font-medium text-foreground">Neurological</td><td className="p-3">Reduce CMRO₂ but vasodilate cerebral vessels, so CBF and ICP may rise when autoregulation or ventilation is impaired; high concentrations cause EEG burst suppression.</td><td className="p-3">These effects are dose- and PaCO₂-dependent; controlled ventilation limits ICP rise.</td></tr>
                   <tr><td className="p-3 font-medium text-foreground">Renal/hepatic</td><td className="p-3">MAP-dependent reductions in renal and hepatic blood flow; preserve oxygen balance when hypotension is avoided.</td><td className="p-3">Sevoflurane is metabolised about 3–5% to fluoride/HFIP; isoflurane about 0.2% and desflurane about 0.02%.</td></tr>
