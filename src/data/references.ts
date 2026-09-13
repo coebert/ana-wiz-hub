@@ -1610,6 +1610,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "JBDS-IP", citation: "JBDS-IP." },
   ],
   "mass-casualty-military": [
+    { label: "CRASH-3 2019", citation: "CRASH-3 trial collaborators. Effects of tranexamic acid on death, disability, vascular occlusive events and other morbidities in patients with acute traumatic brain injury (CRASH-3): a randomised, placebo-controlled trial. Lancet. 2019;394(10210):1713-1723.", url: "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(19)32233-0/fulltext" },
+    { label: "NARU MPTT-24", citation: "National Ambulance Resilience Unit / UK Defence Medical Services. Modified Physiological Triage Tool (MPTT-24) and the Ten Second Triage tool for major incident triage.", url: "https://naru.org.uk/" },
+    { label: "UKHSA CBRN", citation: "UK Health Security Agency. Chemical, biological, radiological and nuclear (CBRN) incidents: clinical management and health protection.", url: "https://www.gov.uk/government/publications/chemical-biological-radiological-and-nuclear-incidents-clinical-management-and-health-protection" },
     { label: "FICM Major Incident Ethics", citation: "Faculty of Intensive Care Medicine. Ethical guidance for intensivists in a major incident. FICM.", url: "https://www.ficm.ac.uk" },
     { label: "GMC Good Medical Practice 2024", citation: "General Medical Council. Good Medical Practice. GMC; 2024 (in force from 30 January 2024).", url: "https://www.gmc-uk.org/professional-standards/professional-standards-for-doctors/good-medical-practice" },
     { label: "Gaba CRM 2015", citation: "Gaba DM, Fish KJ, Howard SK, Burden AR. Crisis Management in Anesthesiology. 2nd ed. Elsevier; 2015. Practical crisis resource management behaviours: role allocation, closed-loop communication and periodic re-evaluation." },
