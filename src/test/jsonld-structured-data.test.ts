@@ -42,6 +42,11 @@ const RICH_RESULT_REQUIRED: Record<string, string[]> = {
   MedicalWebPage: ["name"],
   WebPage: ["name"],
   LearningResource: ["name"],
+  // Library / index pages: valid schema.org types used for collection and
+  // list markup, plus the Drug type on the drug monograph pages.
+  CollectionPage: ["name"],
+  ItemList: ["itemListElement"],
+  Drug: ["name"],
 };
 
 // ─── annotation collector ──────────────────────────────────────────────────
@@ -449,8 +454,8 @@ describe("JSON-LD structured data", () => {
    */
   const KEY_TEMPLATES: Array<{ file: string; expect: "sitewide" | string }> = [
     { file: "src/pages/Landing.tsx", expect: "sitewide" },
-    { file: "src/components/TopicTemplate.tsx", expect: "LearningResource" },
-    { file: "src/components/SectionLayout.tsx", expect: "BreadcrumbList" },
+    { file: "src/components/topic/TopicTemplate.tsx", expect: "LearningResource" },
+    { file: "src/components/layout/SectionLayout.tsx", expect: "BreadcrumbList" },
     { file: "src/pages/VivaQuestionLibrary.tsx", expect: "FAQPage" },
     { file: "src/pages/DrugDetail.tsx", expect: "sitewide" },
   ];
