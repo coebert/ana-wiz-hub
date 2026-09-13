@@ -173,6 +173,10 @@ const CORE_SEO: Record<string, { title: string; description: string }> = {
     title: "Infusion Pump Rate Calculator – mg, µg, Units to mL/h",
     description: "Standalone infusion calculator: enter syringe contents (mg, µg or units), volume and dose to get mL/h, or convert a pump rate back to the delivered dose.",
   },
+  "/tools/sedation": {
+    title: "ICU Sedation Calculator – Propofol, Midazolam, Dexmedetomidine, Remifentanil",
+    description: "Start, maintenance and step-by-step weaning rates for the four core ICU sedatives, shown in dose units and mL/h at the patient's weight.",
+  },
   "/review": {
     title: "Spaced-Repetition Review | AnaesthesiaCore",
     description: "Daily spaced-repetition review of FRCA and FFICM flashcards to retain high-yield exam material long term.",

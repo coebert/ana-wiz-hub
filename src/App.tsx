@@ -44,6 +44,7 @@ const MaintenanceFluidTool = lazy(() => import("./pages/tools/MaintenanceFluidTo
 const MaxLADoseTool = lazy(() => import("./pages/tools/MaxLADoseTool"));
 const ABGInterpreterTool = lazy(() => import("./pages/tools/ABGInterpreterTool"));
 const InfusionPumpTool = lazy(() => import("./pages/tools/InfusionPumpTool"));
+const SedationCalculatorTool = lazy(() => import("./pages/tools/SedationCalculatorTool"));
 const AskAi = lazy(() => import("./pages/AskAi"));
 
 // Long-form SEO notes
@@ -165,6 +166,7 @@ const App = () => (
           <Route path="/tools/max-local-anaesthetic-dose" element={<MaxLADoseTool />} />
           <Route path="/tools/abg-interpreter" element={<ABGInterpreterTool />} />
           <Route path="/tools/infusion-pump" element={<InfusionPumpTool />} />
+          <Route path="/tools/sedation" element={<SedationCalculatorTool />} />
           {/* Exam hub pages — high-intent landing pages for FRCA / FFICM searches */}
           <Route path="/frca-primary" element={<FRCAPrimaryHub />} />
           <Route path="/frca-final" element={<FRCAFinalHub />} />

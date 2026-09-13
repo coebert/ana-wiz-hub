@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { PageSection } from "@/components/layout/PageSection";
 import { Link } from "react-router-dom";
-import { Calculator, Activity, Baby, Droplet, Syringe, Wind } from "lucide-react";
+import { Calculator, Activity, Baby, Droplet, Moon, Syringe, Wind } from "lucide-react";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 const TOOLS = [
@@ -39,6 +39,13 @@ const TOOLS = [
     blurb:
       "Dose ↔ mL/h for any infusion: mg, µg or units in any volume, with weight-based dosing.",
     icon: Syringe,
+  },
+  {
+    slug: "sedation",
+    title: "ICU sedation calculator",
+    blurb:
+      "Start, maintenance and weaning rates for propofol, midazolam, dexmedetomidine and remifentanil in mL/h.",
+    icon: Moon,
   },
   {
     slug: "abg-interpreter",
