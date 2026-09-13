@@ -220,7 +220,13 @@ const NonTechnicalSkillsTopic = () => {
                   <li>Nominate role allocation aloud (airway / circulation / drugs / scribe / runner)</li>
                   <li>Closed-loop communication ("adrenaline 1 mg IV given — confirmed")</li>
                   <li>Use names not pronouns; use SBAR for handover</li>
-                  <li>Graded assertiveness: PACE (Probe → Alert → Challenge → Emergency)</li>
+                  <li>Graded assertiveness — scripted language that escalates a concern firmly but respectfully:
+                    <ul className="list-[circle] pl-4 mt-1 space-y-0.5">
+                      <li><strong>PACE</strong>: Probe → Alert → Challenge → Emergency</li>
+                      <li><strong>CUSS</strong>: "I am <strong>C</strong>oncerned" → "I am <strong>U</strong>ncomfortable" → "this is a <strong>S</strong>afety issue" → "<strong>S</strong>top, let's resolve this"</li>
+                    </ul>
+                    Both give the junior or non-medical team member a rehearsed opening sentence, so speaking up does not depend on improvising under stress.
+                  </li>
                 </ul>
               </div>
               <div className="rounded-lg border border-border bg-muted/30 p-3">
