@@ -167,6 +167,43 @@ const ThoracicAnatomyTopic = () => {
           </div>
         </div>
 
+        <div id="thoracic-sympathetic-chain" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thoracic Sympathetic Chain</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The paired sympathetic trunks run the whole length of the vertebral column. In the thorax each trunk lies in the posterior mediastinum <strong>anterior to the necks and heads of the ribs</strong>, just deep to the parietal pleura and lateral to the vertebral bodies — a few millimetres from the paravertebral space, which is why paravertebral and erector spinae blocks produce ipsilateral sympathetic block, and why an unintended pleural puncture is the corresponding hazard <InlineRef topicId="thoracic-anatomy" refLabel="Ellis & Feldman Ch.2" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Structure and connections</p>
+              <ul className="mt-1 list-disc pl-5 text-sm text-muted-foreground space-y-1">
+                <li>Typically one ganglion per thoracic segment (11–12, often fewer through fusion), joined by interganglionic fibres into a continuous chain that is continuous with the cervical chain above and the lumbar chain below.</li>
+                <li><strong>White rami communicantes</strong> (myelinated, pre-ganglionic, T1–L2 only) carry fibres from the spinal nerve into the chain — the anatomical reason sympathetic outflow is limited to thoracolumbar segments.</li>
+                <li><strong>Grey rami communicantes</strong> (unmyelinated, post-ganglionic) return at every level to the spinal nerves to supply vessels, sweat glands and piloerector muscle of the trunk and limbs.</li>
+                <li>Fibres may synapse at their level of entry, ascend or descend within the chain, or pass through without synapsing to form the splanchnic nerves.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Stellate (cervicothoracic) ganglion</p>
+              <p className="text-sm text-muted-foreground mt-1">Formed by fusion of the inferior cervical and first thoracic ganglia, present in roughly 80% of people. It lies <strong>anterior to the neck of the first rib</strong>, behind the vertebral artery and the dome of the pleura, medial to the scalene muscles and lateral to the C7/T1 vertebral bodies. It supplies sympathetic fibres to the head, neck and upper limb. Block is performed at the C6 (Chassaignac) tubercle or C7 under ultrasound for sympathetically maintained upper-limb pain, CRPS, refractory ventricular arrhythmia and vascular insufficiency. Complications follow its relations: recurrent laryngeal nerve palsy (hoarseness), phrenic palsy, pneumothorax, vertebral artery injection with immediate seizure, and epidural or intrathecal spread.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Splanchnic nerves</p>
+              <p className="text-sm text-muted-foreground mt-1">Pre-ganglionic fibres that pass through the chain without synapsing and pierce the diaphragmatic crura to reach the abdominal prevertebral plexuses: <strong>greater (T5–T9)</strong> to the coeliac ganglia, <strong>lesser (T10–T11)</strong> to the aorticorenal ganglion, and <strong>least (T12)</strong> to the renal plexus. They carry the visceral afferents that make upper abdominal pain refer to the epigastrium and back, and are the target of coeliac plexus and splanchnic nerve neurolysis in pancreatic cancer pain.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Clinical relevance</p>
+              <ul className="mt-1 list-disc pl-5 text-sm text-muted-foreground space-y-1">
+                <li><strong>Horner's syndrome</strong> — ptosis, miosis and anhidrosis (with enophthalmos and facial flushing) from interruption of the cervical/upper thoracic chain: an expected finding after stellate or high paravertebral block, and a warning sign after interscalene block, neck trauma, apical (Pancoast) tumour or carotid dissection.</li>
+                <li>Thoracic epidural and paravertebral blockade cause segmental sympathetic block — vasodilatation, reduced venous return and hypotension, but also reduced myocardial oxygen demand and improved coronary flow in coronary disease.</li>
+                <li><strong>Sympathectomy</strong>: endoscopic thoracic sympathectomy at T2–T4 for palmar hyperhidrosis and T2 for facial flushing; chemical or surgical sympathectomy for ischaemic pain. Compensatory sweating and Horner's syndrome are recognised complications.</li>
+                <li>Cardiac sympathetic supply arises from T1–T4 — the basis of left cardiac sympathetic denervation and stellate block for refractory ventricular arrhythmias, and of referred cardiac pain to the left arm and jaw.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+
         <div id="lung-anatomy" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lung Anatomy</h2>
           <div className="grid sm:grid-cols-2 gap-3">
