@@ -272,6 +272,21 @@ const FlowMeasurementTopic = () => {
               used in modern ventilators and in vaporiser-free flow sensors
               <InlineRef topicId="flow-measurement" refLabel="BJA Educ 2018 (Physics)" />.
             </p>
+            <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border space-y-2">
+              <p className="text-sm font-medium text-foreground">Doppler ultrasound flow measurement</p>
+              <p className="text-sm text-muted-foreground">
+                The Doppler effect is the change in detected frequency caused by relative movement between a wave source,
+                reflector and receiver. For blood, <strong>Δf = (2f₀v cosθ) / c</strong>, where Δf is Doppler shift, f₀ transmitted
+                frequency, v blood velocity, θ insonation angle and c sound speed in tissue. The factor 2 represents the outward
+                and returning journeys. Velocity is underestimated as θ increases and cannot be measured at 90°.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Spectral Doppler measures velocity within a vessel; velocity-time integral multiplied by cross-sectional area gives
+                stroke distance or flow. An oesophageal Doppler such as CardioQ samples descending aortic flow to estimate stroke
+                volume and guide fluid therapy. Echocardiography applies the same principle to cardiac output, pressure gradients
+                and valve assessment <InlineRef topicId="flow-measurement" refLabel="Doppler Ultrasound Physics" />.
+              </p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -303,9 +318,13 @@ const FlowMeasurementTopic = () => {
           <ExamSection id="venturi" exams={[Exam.PRIMARY]}>
             <CollapsibleSubsection title="The Venturi Effect & Bernoulli's Principle">
             <p className="text-foreground/90 leading-relaxed">
-              Bernoulli's principle: as fluid velocity increases through a constriction, pressure decreases. The <strong>Venturi
+              For steady incompressible flow, the <strong>continuity equation A₁V₁ = A₂V₂</strong> states that volume flow is
+              conserved: cross-sectional area (A) multiplied by velocity (V) is constant. A narrowing therefore forces velocity
+              to rise. Bernoulli's principle then explains how this kinetic-energy increase is accompanied by a fall in static
+              pressure. The <strong>Venturi
               effect</strong> exploits this — a jet of gas through a constriction entrains surrounding gas through side ports.
-              Used in Venturi masks (fixed FiO₂), jet ventilation, and suction devices.
+              It is used in Venturi masks, jet ventilation and suction devices
+              <InlineRef topicId="flow-measurement" refLabel="BJA Educ 2004" />.
             </p>
             <div className="mt-4">
               <BernoulliVenturiDiagram />
@@ -315,6 +334,13 @@ const FlowMeasurementTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">
                 A 28% Venturi mask uses an entrainment ratio of ~10:1 (air:oxygen). The total flow (~40 L/min) exceeds peak
                 inspiratory flow, ensuring accurate FiO₂ delivery regardless of breathing pattern.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                Accuracy is conditional. Distal back pressure from bedding, the chin, tubing or a blocked outlet reduces air
+                entrainment and raises delivered FiO₂. The driving oxygen flow must generate a total flow greater than the patient's
+                peak inspiratory flow; otherwise room air is drawn around the mask and FiO₂ falls. Use the manufacturer-specified
+                flow, keep outlets unobstructed and reassess oxygenation in patients with high inspiratory demand
+                <InlineRef topicId="flow-measurement" refLabel="BJA Educ 2016 (Oxygen therapy)" />.
               </p>
             </div>
             </CollapsibleSubsection>
