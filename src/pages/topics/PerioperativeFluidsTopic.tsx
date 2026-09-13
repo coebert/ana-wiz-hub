@@ -202,6 +202,20 @@ const PerioperativeFluidsTopic = () => {
           </ExamSection>
 
           <ExamSection id="section-paediatric-fluids" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]}>
+            <CollapsibleSubsection title="Fluid Management in ERAS Protocols">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Fluid therapy is a core ERAS element: the aim is a patient who arrives in theatre euvolaemic and leaves it in <strong>zero fluid balance</strong>, without the salt and water excess that drives ileus, tissue oedema and impaired anastomotic healing. <InlineRef topicId="perioperative-fluids" refLabel="JCM Crystalloids 2023" />
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground mb-3">
+              <li><strong>Preoperative</strong>: avoid prolonged fasting (clear fluids until 2 h, solids 6 h), give carbohydrate-loading maltodextrin drinks up to 2 h before induction to reduce insulin resistance and thirst, and avoid mechanical bowel preparation (or replace losses with a balanced crystalloid if it is unavoidable). Patients then need little or no "catch-up" fluid at induction.</li>
+              <li><strong>Intraoperative</strong>: a balanced crystalloid at roughly 1–3 mL/kg/h as maintenance, plus replacement of measured blood and third-space-free losses, titrated by goal-directed therapy in major or high-risk surgery. Do not give prophylactic volume for a notional "third space" — this concept is not supported by modern evidence. Treat vasodilatory hypotension from neuraxial block or anaesthetic agents with a vasopressor, not with repeated fluid boluses.</li>
+              <li><strong>Postoperative</strong>: stop routine maintenance infusions early; encourage oral fluids and diet on the day of surgery, remove cannulae and catheters promptly, and prescribe fluid only for a documented deficit or ongoing loss. Weigh patients daily on prolonged pathways — a rising weight signals cumulative positive balance.</li>
+              <li><strong>Glycocalyx link</strong>: large crystalloid volumes cause hypervolaemia-induced ANP release, which sheds the endothelial glycocalyx and increases capillary leak — so the ERAS "zero balance" approach is glycocalyx-protective as well as physiologically restrained. <InlineRef topicId="perioperative-fluids" refLabel="Chappell 2019 (Glycocalyx)" /></li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="section-paediatric-fluids-eras" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Paediatric Fluid Management">
             <p className="text-muted-foreground leading-relaxed mb-3">
               Maintenance fluid requirements in children are calculated using the Holliday–Segar 4-2-1 rule: 4 mL/kg/h for the first 10 kg, 2 mL/kg/h for the next 10 kg, and 1 mL/kg/h for each kg thereafter.

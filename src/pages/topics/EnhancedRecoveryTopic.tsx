@@ -210,6 +210,18 @@ const EnhancedRecoveryTopic = () => {
                   <p className="font-semibold text-foreground text-sm">Anaemia Optimisation</p>
                   <p className="text-sm text-muted-foreground mt-1">Iron deficiency: IV iron (ferric carboxymaltose — 1g single dose). Target Hb {'>'} 130 g/L (men) or {'>'} 120 g/L (women). NICE NG24. Reduces transfusion rates by 30–50%.</p>
                 </div>
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Nutritional Screening & Intervention</p>
+                  <p className="text-sm text-muted-foreground mt-1">Screen every patient with MUST (Malnutrition Universal Screening Tool: BMI, unplanned weight loss, acute disease effect) — score ≥2 = high risk, refer to dietetics. Intervention: oral nutritional supplements aiming for 1.5 g/kg/day protein and 25–30 kcal/kg/day, immunonutrition considered in major upper-GI surgery, and correction of vitamin D and B12 deficiency. Nutritional intervention for 7–14 days preoperatively reduces infective complications and length of stay.</p>
+                </div>
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Psychological Support</p>
+                  <p className="text-sm text-muted-foreground mt-1">Screen for anxiety and depression (both independently predict poorer recovery and higher opioid use). Interventions: structured preoperative education, realistic expectation setting for pain and discharge, relaxation and breathing techniques, coping strategies and CBT-based support, plus signposting for those with established mental-health needs.</p>
+                </div>
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Lifestyle Modification</p>
+                  <p className="text-sm text-muted-foreground mt-1">Smoking cessation: benefit rises with duration — carboxyhaemoglobin falls within 12–24 h, but at least 4 weeks (ideally 6–8) is needed to reduce respiratory and wound complications, with roughly a halving of pulmonary complications after 8 weeks. Alcohol: reducing intake for 4 weeks before surgery in heavy drinkers cuts postoperative complications substantially (immune, cardiac and bleeding effects). Offer nicotine replacement and referral to cessation services at the preoperative visit.<InlineRef topicId="enhanced-recovery" refLabel="BJA ERAS Arthroplasty 2016" /></p>
+                </div>
               </div>
             </div>
 
