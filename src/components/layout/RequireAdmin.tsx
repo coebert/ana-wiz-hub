@@ -29,7 +29,14 @@ export const RequireAdmin = ({ children }: { children: ReactNode }) => {
     );
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+      {children}
+    </>
+  );
 };
 
 export default RequireAdmin;
