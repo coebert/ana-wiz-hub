@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/hooks/useAuth";
 
 export const RequireAdmin = ({ children }: { children: ReactNode }) => {
@@ -28,7 +29,14 @@ export const RequireAdmin = ({ children }: { children: ReactNode }) => {
     );
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+      {children}
+    </>
+  );
 };
 
 export default RequireAdmin;

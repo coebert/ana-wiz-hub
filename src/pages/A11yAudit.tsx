@@ -1,5 +1,6 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { CheckCircle2, AlertTriangle, ExternalLink } from "lucide-react";
 import {
   FLOWCHART_AUDIT_REGISTRY,
@@ -112,6 +113,9 @@ const A11yAudit = () => {
 
   return (
     <main className="container max-w-5xl py-8">
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <header className="mb-6">
         <h1 className="font-serif text-3xl font-bold text-foreground">
           Flowchart accessibility audit

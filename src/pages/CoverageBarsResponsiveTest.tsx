@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { ChevronDown, ChevronRight, RotateCcw } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -212,6 +213,9 @@ const CoverageBarsResponsiveTest = () => {
 
   return (
     <main className="min-h-screen bg-background py-8 px-4">
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div className="max-w-7xl mx-auto space-y-6">
         <header className="space-y-2">
           <h1 className="text-2xl font-serif font-bold text-foreground">
