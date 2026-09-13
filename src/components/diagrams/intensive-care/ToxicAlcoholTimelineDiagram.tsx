@@ -136,10 +136,10 @@ const ToxicAlcoholTimelineDiagram = () => {
             ))}
           </div>
           <Button size="sm" variant="outline" onClick={() => setPlaying((p) => !p)}>
-            {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
+            {playing ? <Pause className="h-3.5 w-3.5"  aria-hidden="true" focusable={false}/> : <Play className="h-3.5 w-3.5"  aria-hidden="true" focusable={false}/>}
           </Button>
           <Button size="sm" variant="outline" onClick={reset}>
-            <RotateCcw className="h-3.5 w-3.5" />
+            <RotateCcw className="h-3.5 w-3.5"  aria-hidden="true" focusable={false}/>
           </Button>
         </div>
       </div>

@@ -60,7 +60,10 @@ function loadReferenceLabels() {
 function extractTopicId(src) {
   const m =
     src.match(/topicId\s*=\s*"([^"]+)"/) ||
-    src.match(/topicId\s*:\s*"([^"]+)"/);
+    src.match(/topicId\s*:\s*"([^"]+)"/) ||
+    // Topics that hoist the id into a module constant:
+    //   const TOPIC_ID = "immunosuppression-hiv";
+    src.match(/TOPIC_ID\s*=\s*"([^"]+)"/);
   return m ? m[1] : null;
 }
 

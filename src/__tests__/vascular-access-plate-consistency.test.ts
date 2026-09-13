@@ -16,7 +16,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const SOURCE = fs.readFileSync(
-  path.resolve(__dirname, "../components/diagrams/VascularAccessTypesDiagram.tsx"),
+  path.resolve(__dirname, "../components/diagrams/perioperative/VascularAccessTypesDiagram.tsx"),
   "utf8",
 );
 

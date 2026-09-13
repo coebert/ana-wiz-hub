@@ -167,14 +167,14 @@ const HAGMAPathophysiologyDiagram = () => {
               onClick={() => setPlaying((p) => !p)}
               className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded border border-border hover:bg-secondary transition-colors"
             >
-              {playing ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+              {playing ? <Pause className="h-3 w-3"  aria-hidden="true" focusable={false}/> : <Play className="h-3 w-3"  aria-hidden="true" focusable={false}/>}
               {playing ? "Pause" : step >= 3 ? "Replay" : "Play"}
             </button>
             <button
               onClick={reset}
               className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded border border-border hover:bg-secondary transition-colors"
             >
-              <RotateCcw className="h-3 w-3" /> Reset
+              <RotateCcw className="h-3 w-3"  aria-hidden="true" focusable={false}/> Reset
             </button>
           </div>
           <div className="inline-flex rounded border border-border overflow-hidden text-xs">

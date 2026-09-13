@@ -138,7 +138,7 @@ const OsmolarGapCalculator = () => {
             onClick={reset}
             className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded border border-border hover:bg-secondary transition-colors"
           >
-            <RotateCcw className="h-3 w-3" /> Reset
+            <RotateCcw className="h-3 w-3"  aria-hidden="true" focusable={false}/> Reset
           </button>
         </div>
 

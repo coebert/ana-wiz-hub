@@ -93,7 +93,9 @@ function collectUrls() {
 
 function staticIssues(url) {
   const problems = [];
-  if (/\$\{|\}\}|\{\{/.test(url)) problems.push("contains unresolved template syntax");
+  // A `${...}` inside a template literal is a URL *builder* (e.g. a PubMed
+  // helper), not a broken link — only flag mustache-style leftovers.
+  if (/\}\}|\{\{/.test(url)) problems.push("contains unresolved template syntax");
   if (/%[^0-9a-fA-F]|%.?$/.test(url) && !/%[0-9a-fA-F]{2}/.test(url.slice(-3)))
     problems.push("looks like a truncated percent-encoding");
   let parsed;

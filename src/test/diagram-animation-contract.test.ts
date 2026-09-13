@@ -32,6 +32,22 @@ const TOPICS_DIR = resolve("src/pages/topics");
 
 const ANIMATION_RE = /(?:^Animated[A-Z]\w*|Animation)\.tsx$/;
 
+/** Recursively list every `.tsx` file under the diagrams tree (diagrams are
+ * organised into per-section subfolders such as `physiology/`, `clinical/`). */
+function listDiagramFiles(dir = DIAGRAMS_DIR): string[] {
+  const out: string[] = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    if (entry.isDirectory()) {
+      if (entry.name === "__tests__" || entry.name === "_dev") continue;
+      out.push(...listDiagramFiles(resolve(dir, entry.name)));
+    } else if (entry.name.endsWith(".tsx")) {
+      out.push(resolve(dir, entry.name));
+    }
+  }
+  return out;
+}
+
+
 /**
  * An "animated diagram" is any React component whose name matches
  * `*Animation` or `Animated*`, whether declared in a same-named file
@@ -44,9 +60,8 @@ function listAnimationComponents(): Array<{ name: string; file: string; src: str
   const seen = new Set<string>();
   const declRe =
     /export\s+(?:default\s+)?(?:const|function|class)\s+(Animated[A-Z]\w*|\w*Animation)\b/g;
-  for (const f of readdirSync(DIAGRAMS_DIR)) {
-    if (!f.endsWith(".tsx")) continue;
-    const file = resolve(DIAGRAMS_DIR, f);
+  for (const file of listDiagramFiles()) {
+    const f = file.split("/").pop()!;
     const src = readFileSync(file, "utf8");
     // Same-named file (e.g. `AAShuntAnimation.tsx`) is the canonical case.
     const base = f.replace(/\.tsx$/, "");

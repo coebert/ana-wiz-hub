@@ -31,7 +31,7 @@ export const DiagramSourcesPanel = ({ references, imageCredit, note }: DiagramSo
         <CollapsibleTrigger className="w-full flex items-center gap-2 text-left">
           <ChevronRight
             className={`h-3.5 w-3.5 text-muted-foreground transition-transform ${open ? "rotate-90" : ""}`}
-          />
+           aria-hidden="true" focusable={false}/>
           <BookOpen className="w-4 h-4 text-muted-foreground" aria-hidden="true" />
           <p className="text-sm font-semibold text-foreground">Sources & references</p>
           <span className="text-xs text-muted-foreground ml-1">({references.length})</span>

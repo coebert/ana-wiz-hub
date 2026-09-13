@@ -65,7 +65,9 @@ function loadReferenceLabels(): Map<string, Set<string>> {
 function extractTopicId(src: string): string | null {
   const m =
     src.match(/topicId\s*=\s*"([^"]+)"/) ||
-    src.match(/topicId\s*:\s*"([^"]+)"/);
+    src.match(/topicId\s*:\s*"([^"]+)"/) ||
+    // Topics that hoist the id: `const TOPIC_ID = "…"` + topicId={TOPIC_ID}
+    src.match(/TOPIC_ID\s*=\s*"([^"]+)"/);
   return m ? m[1] : null;
 }
 
