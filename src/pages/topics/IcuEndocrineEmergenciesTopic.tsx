@@ -221,7 +221,6 @@ const IcuEndocrineEmergenciesTopic = () => {
             <div className="p-4 rounded-lg border border-border mt-4">
               <p className="font-semibold text-foreground text-sm">
                 HHS — managing the hypernatraemia and hyperosmolality (JBDS-IP 2022)
-                <InlineRef topicId="icu-endocrine-emergencies" refLabel="JBDS-IP HHS 2022" />
 
               </p>
               <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground mt-2">
