@@ -434,6 +434,25 @@ const BronchospasticFailureTopic = () => {
               </div>
             ))}
           </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Weaning &amp; Extubation in Asthma</h3>
+          <p className="text-sm text-muted-foreground mb-2">
+            Unlike COPD, ventilated asthma usually weans <strong>quickly</strong> once bronchospasm resolves — most patients are extubated within 24–72 h. The limiting factors are residual airflow obstruction, sedation load (often deep, with ketamine and neuromuscular blockade) and steroid/NMB-associated myopathy after prolonged paralysis.
+          </p>
+          <div className="space-y-2 mb-4">
+            {[
+              { label: "Readiness criteria", detail: "Auto-PEEP <5 cmH₂O and expiratory flow returning to zero; plateau pressure <25 cmH₂O; compliance and airway resistance improving; PaCO₂ normalising on unchanged or reduced minute ventilation; wheeze markedly reduced with lengthening inter-dose intervals of salbutamol; FiO₂ ≤0.4 with PEEP ≤5 cmH₂O; awake, cooperative, effective cough." },
+              { label: "Sequence", detail: "Stop neuromuscular blockade first and confirm full reversal with a train-of-four ratio >0.9 (accumulated aminosteroid NMB plus high-dose steroid is the classic cause of critical illness myopathy). Then lighten sedation with daily interruption, switching to pressure support with low PEEP; ketamine and inhaled volatile can usually be stopped once the patient tolerates 8–12 mL/kg spontaneous breaths without dyssynchrony." },
+              { label: "Spontaneous breathing trial", detail: "30–120 min of pressure support 5–8 cmH₂O / PEEP 5 or T-piece; failure is signalled by rising respiratory rate >35, recurrent wheeze, accessory muscle use, rising PaCO₂, or reappearance of gas trapping on the flow-time waveform." },
+              { label: "Peri-extubation therapy", detail: "Continue regular nebulised salbutamol and ipratropium, systemic corticosteroids (prednisolone 40–50 mg daily to complete at least 5 days) and inhaled corticosteroid; ensure adequate hydration and secretion clearance with physiotherapy, as mucus plugging causes late deterioration." },
+              { label: "After extubation", detail: "Monitor closely for 4–6 h for recurrent bronchospasm and post-extubation stridor (prolonged large ETT, high cuff pressures); consider high-flow nasal oxygen for comfort. Before discharge from critical care, review inhaler technique and adherence, arrange a written personalised asthma action plan and specialist respiratory follow-up within 48 h of ward transfer and 4 weeks of discharge, and identify avoidable triggers — near-fatal asthma carries a high risk of recurrence." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
         </CollapsibleSubsection>
 
         {/* ---- IECOPD ---- */}
