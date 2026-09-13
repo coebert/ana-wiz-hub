@@ -368,7 +368,9 @@ const AcidsBasesBuffersTopic = () => {
               </p>
             </div>
             </CollapsibleSubsection>
+            </CollapsibleSubsection>
           </ExamSection>
+
 
           <ExamSection id="stewart-model" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Stewart's Quantitative Acid-Base Model">

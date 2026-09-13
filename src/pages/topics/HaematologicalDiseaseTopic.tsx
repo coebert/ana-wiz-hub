@@ -7,6 +7,7 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { haematologicalDiseaseQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import InlineRef from "@/components/references/InlineRef";
 
 const objectives = [
   "Detect and treat preoperative anaemia (including iron-deficiency anaemia) using patient blood management principles.",
@@ -55,6 +56,7 @@ const haematologicalDiseaseWorkedExamples: WorkedExample[] = [
 const tocItems = [
   { id: "section-anaemia", label: "Anaemia & Iron Deficiency", group: "Core" },
   { id: "section-thrombocytopenia", label: "Thrombocytopenia", group: "Core" },
+  { id: "section-vwd", label: "Von Willebrand Disease", group: "Core" },
   { id: "section-neutropenia", label: "Neutropenia", group: "Core" },
   { id: "section-haemoglobinopathies", label: "Haemoglobinopathies", group: "Advanced" },
   { id: "section-bleeding-disorders", label: "Inherited Bleeding Disorders", group: "Advanced" },
