@@ -1595,6 +1595,8 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
 
   "immunology-intensivists": [
+    { label: "ESPEN ICU 2019", citation: "Singer P, Blaser AR, Berger MM, et al. ESPEN guideline on clinical nutrition in the intensive care unit. Clin Nutr. 2019;38(1):48-79. Does not recommend routine glutamine or arginine-enriched immunonutrition for general ICU patients.", url: "https://doi.org/10.1016/j.clnu.2018.08.037" },
+    { label: "BJA Educ Immunosuppression 2019", citation: "Immunosuppressive therapy and the critically ill patient — calcineurin inhibitors, mTOR inhibitors, antiproliferative agents and biologics. BJA Education.", url: "https://doi.org/10.1016/j.bjae.2019.07.003" },
     {
       label: "Janeway's Immunobiology 9e",
       citation: "Murphy K, Weaver C. Janeway's Immunobiology. 9th ed. Garland Science; 2016. Chapters 1–3 (innate immunity, complement, adaptive immunity); Chapter 11 (dynamics of adaptive immunity).",
