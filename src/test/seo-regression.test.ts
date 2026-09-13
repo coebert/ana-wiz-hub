@@ -93,6 +93,10 @@ const HEADING_SKIP_ALLOWLIST = new Set<string>([
   // DrugDetail renders compact <h1> + utility <h3> labels (no thematic
   // section <h2> needed — the page is one cohesive monograph view).
   "src/pages/DrugDetail.tsx",
+  // Source-order false positive: the monograph <h1> is followed in the file by
+  // <h3> labels that render *inside* <Section> blocks, and Section supplies the
+  // intervening <h2>. The rendered outline is h1 → h2 → h3.
+  "src/pages/reference/DrugReferenceEntry.tsx",
 ]);
 
 // ---------- Walk page sources ----------
