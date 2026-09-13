@@ -246,6 +246,7 @@ const SIUnitsThermodynamicsTopic = () => {
                   corrects for both: <strong>(P + a(n/V)²)(V − nb) = nRT</strong>, where the constant <em>a</em> corrects the
                   measured pressure for intermolecular attraction (which reduces the force of collisions with the walls) and{" "}
                   <em>b</em> corrects the available volume for the finite size of the molecules.
+                  For one mole (n = 1), this reduces to <strong>(P + a/V²)(V − b) = RT</strong>.
                 </p>
                 <p>
                   The <strong>critical temperature</strong> of a gas is the temperature above which it cannot be liquefied by

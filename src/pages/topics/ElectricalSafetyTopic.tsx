@@ -515,12 +515,14 @@ const ElectricalSafetyTopic = () => {
           <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">The capacitor: charge and discharge</h3>
           <p className="text-foreground/90 leading-relaxed">
             A defibrillator cannot take enough current directly from the mains, so energy is accumulated slowly in a
-            <strong> capacitor</strong> (typically ~30–60 µF charged to several thousand volts) and released rapidly. Stored energy
-            is <strong>E = ½CV²</strong>, so energy rises with the <em>square</em> of the charging voltage; charge Q = CV. Charging
+            <strong> capacitor</strong> (commonly approximately 100–200 µF, device dependent, charged to several thousand volts) and released rapidly. Stored energy
+            is <strong>E = ½CV²</strong>, where E is energy in joules, C capacitance in farads and V voltage in volts; energy therefore rises with the <em>square</em> of voltage. Charge Q = CV. Charging
             follows an exponential rise (V = V<sub>max</sub>(1 − e<sup>−t/RC</sup>)) taking a few seconds, while discharge through
-            the ~70–80 Ω thorax is an exponential decay with a time constant of only a few milliseconds. An
+            the internal circuit plus ~70–80 Ω transthoracic resistance is an exponential decay with time constant <strong>τ = RC</strong>
+            of only a few milliseconds. An
             <strong> inductor</strong> in series lengthens and smooths the pulse to ~5–20 ms, because a very short high-current
-            spike causes myocardial injury without improving defibrillation.
+            spike causes myocardial injury without improving defibrillation
+            <InlineRef topicId="electrical-safety" refLabel="Cross & Plunkett Ch.14" />.
           </p>
           <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">Waveforms</h3>
           <ul className="text-foreground/90 mt-1 space-y-1 list-disc list-inside">
@@ -549,6 +551,14 @@ const ElectricalSafetyTopic = () => {
             <li>Patient safety: correct pad placement (sternal–apical, or anterior–posterior for cardioversion of AF and for patients with a CIED, keeping pads &gt;8 cm from the generator), dry skin, removal of GTN patches, and avoidance of repeated shocks over the same skin to limit burns.</li>
             <li>Chest compressions continue while the device charges; the pre-shock pause should be under 5 s.</li>
           </ul>
+          <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">Paediatric defibrillation</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            Use <strong>4 J/kg</strong> for paediatric defibrillation. Paediatric attenuator pads or cables reduce the energy delivered
+            by an adult device. If unavailable, use standard adult pads and select the nearest available dose (a 50 J starting setting
+            may be needed on some devices). For infants and children under 10 kg, anterior–posterior placement usually provides enough
+            separation; otherwise use anterolateral placement. Pads must never touch or overlap because this can arc or shunt current
+            away from the myocardium <InlineRef topicId="electrical-safety" refLabel="RCUK Paediatric ALS 2021" />.
+          </p>
           <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">Synchronised DC cardioversion</h3>
           <p className="text-foreground/90 leading-relaxed">
             For a tachyarrhythmia <em>with</em> a pulse, the shock is <strong>synchronised to the R wave</strong>. Delivering
