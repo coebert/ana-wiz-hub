@@ -759,7 +759,44 @@ const SepsisTopic = () => {
           </div>
         </div>
 
+        <div id="pathophysiology" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pathophysiology of sepsis-induced organ dysfunction</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Organ failure in sepsis is caused by the host response, not by the organism itself. Pathogen-associated molecular patterns (lipopolysaccharide, lipoteichoic acid, flagellin) and endogenous damage-associated molecular patterns (mitochondrial DNA, HMGB1, histones) bind pattern-recognition receptors — Toll-like receptors and the NLRP3 inflammasome — activating NF-κB and driving transcription of TNF-α, IL-1β and IL-6, with caspase-1-dependent release of mature IL-1β and IL-18 <InlineRef topicId="sepsis" refLabel="Sepsis Inflammation 2009" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Endothelial injury and the glycocalyx</p>
+              <p className="text-sm text-muted-foreground mt-1">Shedding of the endothelial glycocalyx (syndecan-1, heparan sulphate) plus loss of tight-junction integrity causes capillary leak, interstitial oedema, widened diffusion distance and hypovolaemia despite total-body fluid overload. Angiopoietin-2 rises and the protective Tie2 signal falls.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Vasoplegia</p>
+              <p className="text-sm text-muted-foreground mt-1">Inducible nitric oxide synthase generates excess NO; ATP-sensitive potassium channels open and hyperpolarise vascular smooth muscle; vasopressin stores are depleted and adrenoceptors are downregulated and uncoupled. The result is catecholamine-resistant hypotension — the rationale for vasopressin and for corticosteroids.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Microcirculatory failure</p>
+              <p className="text-sm text-muted-foreground mt-1">Heterogeneous capillary flow with stopped-flow and shunted units, leucocyte and platelet plugging, and reduced red-cell deformability. Macrocirculatory targets (MAP, cardiac output) can be met while regional oxygen delivery remains inadequate — the basis of persistently raised lactate and a widened venous-to-arterial CO₂ gap.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Immunothrombosis and DIC</p>
+              <p className="text-sm text-muted-foreground mt-1">Tissue-factor expression on monocytes and endothelium, neutrophil extracellular traps, platelet activation, and downregulation of protein C, antithrombin and thrombomodulin produce microvascular thrombosis with consumptive coagulopathy — clinically thrombocytopenia, rising D-dimer, falling fibrinogen and purpura fulminans.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Cytopathic (mitochondrial) hypoxia</p>
+              <p className="text-sm text-muted-foreground mt-1">NO and peroxynitrite inhibit cytochrome c oxidase, mitochondrial biogenesis falls and autophagy is impaired, so cells cannot use the oxygen delivered. Cellular "hibernation" may be adaptive — which is why simply driving oxygen delivery higher does not improve outcome.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Organ-specific consequences</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>Kidney:</strong> inflammation, venous congestion and tubular stress rather than pure ischaemia. <strong>Lung:</strong> neutrophil-driven alveolar-capillary injury → ARDS. <strong>Heart:</strong> cytokine-mediated septic cardiomyopathy. <strong>Brain:</strong> blood–brain-barrier breakdown, neuroinflammation and altered neurotransmission → sepsis-associated encephalopathy. <strong>Gut/liver:</strong> barrier failure, cholestasis, ileus.</p>
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground mb-3">
+            The response is not purely hyper-inflammatory: a concurrent, and later dominant, phase of immunosuppression (lymphocyte apoptosis, monocyte HLA-DR downregulation, T-cell exhaustion, expansion of regulatory cells) underlies secondary infection, reactivation of latent viruses and the persistent inflammation–immunosuppression–catabolism syndrome in survivors.
+          </p>
+        </div>
+
         <div id="fluids" className="scroll-mt-24">
+
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fluid resuscitation strategy</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The current consensus is &ldquo;resuscitate then restrict&rdquo;: a 30 mL/kg balanced crystalloid bolus in the first 3 h of sepsis-induced hypoperfusion, then dynamic, individualised top-ups guided by passive leg raise, stroke-volume variation, or end-expiratory occlusion — not CVP. Excessive fluid worsens outcomes by driving interstitial oedema, organ injury, and weaning failure.
