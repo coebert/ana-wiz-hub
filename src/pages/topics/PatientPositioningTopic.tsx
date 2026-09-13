@@ -213,7 +213,7 @@ const PatientPositioningTopic = () => {
               Whole-table head-down (Trendelenburg) is used for pelvic access (laparoscopic / robotic prostatectomy,
               colorectal, gynaecology). Robotic prostatectomy may use 25–40° tilt for several hours — the major
               concerns are raised IOP/ICP, post-operative visual loss, facial / laryngeal oedema and patient slipping.
-              Reverse Trendelenburg (head-up) is used for upper-abdominal and laparoscopic gastric / bariatric work.
+              Reverse Trendelenburg (head-up) is used for upper-abdominal and laparoscopic gastric / bariatric work. Its physiology is essentially the mirror image of Trendelenburg: venous return and RV preload <strong>fall</strong>, so cardiac output and blood pressure drop — sometimes precipitously in the hypovolaemic, vasoplegic, beta-blocked or neuraxially blocked patient, and further if capnoperitoneum is added. Cerebral venous drainage improves, lowering ICP and IOP (useful in neurosurgery, although it also lowers cerebral perfusion pressure if MAP is not corrected for the height of the head above the heart — roughly 0.75 mmHg per cm). Respiratory mechanics improve relative to supine: the diaphragm and abdominal contents fall away, so FRC, compliance and oxygenation rise. Surgical access to the upper abdomen improves as viscera drop caudally. Watch for a raised risk of venous air entrainment in head-up neurosurgery, and for slipping caudally on the table.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
               <strong>Anti-slip strategy.</strong> The 2020 Association of Anaesthetists guideline
@@ -303,6 +303,21 @@ const PatientPositioningTopic = () => {
               chest <em>caudal</em> to the axilla (not <em>in</em> the axilla). The “kidney rest” + table break
               opens the costo-iliac space for renal surgery. Anaesthetised + paralysed + open chest creates
               significant V/Q mismatch (ventilation to non-dependent compliant lung; perfusion to dependent lung).
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              <strong>V/Q in the lateral position — awake versus anaesthetised.</strong> Awake and breathing
+              spontaneously, the <em>dependent</em> lung is both better perfused (gravity) and better ventilated
+              (it sits on the steep part of its compliance curve and the dependent hemidiaphragm contracts more
+              efficiently), so V/Q matching is preserved. Under general anaesthesia with paralysis and positive-pressure
+              ventilation this coupling breaks down: the weight of the mediastinum and the abdominal contents splints
+              the dependent hemidiaphragm and compresses the dependent lung, while the <em>non-dependent</em> lung
+              becomes the more compliant one and therefore preferentially receives tidal volume. Perfusion remains
+              gravity-dependent in the lower lung, so ventilation goes to the upper lung and blood to the lower lung —
+              a substantial shunt and V/Q mismatch, worsened further by opening the chest (loss of the non-dependent
+              chest-wall constraint) and by an inflated capnothorax or kidney rest. This is the physiological starting
+              point for one-lung ventilation, where the whole of the non-dependent lung becomes shunt until hypoxic
+              pulmonary vasoconstriction diverts flow to the ventilated dependent lung
+              <InlineRef topicId="patient-positioning" refLabel="BJA Educ One-Lung 2018" />.
             </p>
             <LateralIllustration />
             </CollapsibleSubsection>
@@ -431,7 +446,7 @@ const PatientPositioningTopic = () => {
               stress and strain across the lung — reducing ventilator-induced lung injury. Prone positioning also
               improves chest-wall and lung mechanics (the dorsal lung is less compressed by the heart and abdominal
               contents) and unloads the right ventricle by reducing hypoxic pulmonary vasoconstriction and pulmonary
-              vascular resistance (<InlineRef topicId="patient-positioning" refLabel="PROSEVA 2013" />, <InlineRef topicId="patient-positioning" refLabel="ESICM ARDS 2023 (Prone)" />).
+              vascular resistance. Two further effects are commonly forgotten: <strong>secretion clearance</strong> improves through postural drainage of dorsal segments, and the <strong>haemodynamic response is variable but frequently favourable</strong> — raised intra-abdominal pressure augments venous return so cardiac output rises in fluid-responsive patients, while RV afterload falls with better recruitment and less hypoxic vasoconstriction; in the hypovolaemic patient the same rise in intra-abdominal and intrathoracic pressure can instead reduce preload and cause hypotension, so optimise volume state and vasopressors before turning (<InlineRef topicId="patient-positioning" refLabel="PROSEVA 2013" />, <InlineRef topicId="patient-positioning" refLabel="ESICM ARDS 2023 (Prone)" />).
             </p>
             <h3 className="text-base font-bold text-foreground mt-3 mb-2">Indication</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">

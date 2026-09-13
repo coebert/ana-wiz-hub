@@ -77,6 +77,7 @@ const workedExamples: WorkedExample[] = [
         <ol className="list-decimal list-inside space-y-1">
           <li><strong>Catastrophic haemorrhage first</strong>: apply / tighten CAT tourniquet to stump, direct pressure or haemostatic gauze to torso wounds. Then ABC.</li>
           <li><strong>Airway &amp; breathing</strong>: RSI with ketamine 1–2 mg/kg + rocuronium 1.2 mg/kg (preserves BP), in-line stabilisation, eFAST and bilateral chest decompression (finger/needle) if any chest signs.</li>
+          <li><strong>Tranexamic acid</strong>: 1 g IV as soon as possible after injury and within 3 hours; a further 8-hour maintenance infusion is no longer routinely recommended in bleeding major trauma (isolated TBI follows the CRASH-3 regimen)<InlineRef topicId="mass-casualty-military" refLabel="UK TXA Consensus 2023" /><InlineRef topicId="mass-casualty-military" refLabel="CRASH-3 2019" /></li>
           <li><strong>Damage-control resuscitation</strong>: activate massive transfusion. Whole blood (low-titre group O if available) is the military standard; otherwise 1:1:1. TXA 1 g IV bolus immediately (the time-critical dose, within 3 h of wounding), with a second 1 g given while bleeding continues rather than as a routine 8-hour infusion. Calcium chloride 1 g per 4 units. Warm everything (Belmont / fluid warmer / blankets). Permissive hypotension SBP 80–90 mmHg until haemorrhage controlled.</li>
           <li><strong>Damage-control surgery</strong>: laparotomy / thoracotomy as needed for haemorrhage and contamination control; pack, staple bowel, temporary abdominal closure (Bogota bag / negative-pressure dressing); revise amputation. &lt;90 min in theatre.</li>
           <li><strong>Critical care &amp; tactical evacuation</strong>: continue sedation (ketamine + fentanyl), paralysis, lung-protective ventilation, ongoing blood products via en-route CCAST team. Forward to Role 3 for definitive surgery and ICU.</li>
@@ -149,7 +150,7 @@ const MassCasualtyMilitaryTopic = () => {
         { text: "METHANE message structures the alert: Major incident, Exact location, Type, Hazards, Access, Number, Emergency services.", cites: ["BJA Educ MCI 2017"] },
         { text: "Triage Sieve (walking? breathing? RR? CRT or radial pulse?) → categorises P1/P2/P3/P4 within 30 s per casualty. Respiratory threshold is now RR <10 or >22 = P1, aligned with the physiologically validated MPTT-24 and the NARU Ten Second Triage tool (legacy MIMMS taught >29/>30, which under-triaged patients needing immediate intervention). Circulation step uses CRT >2 s OR absent radial pulse (not a heart-rate cut-off). Triage Sort uses TRTS for in-hospital re-triage.", cites: ["NARU MPTT-24", "MIMMS 4e", "BJA Educ Major Incident 2017"] },
         { text: "Crisis Resource Management: leadership, role clarity, closed-loop communication, situational awareness, workload distribution, calling for help early.", cites: ["Damage Control Resuscitation"] },
-        { text: "Damage-control resuscitation: permissive hypotension, 1:1:1 ratio (or whole blood), TXA &lt;3 h, calcium, warmth, early surgical haemostasis.", cites: ["NHS EPRR 2022"] },
+        { text: "Damage-control resuscitation: permissive hypotension, 1:1:1 ratio (or whole blood), TXA 1 g IV as soon as possible and within 3 h of injury (the routine 8-hour maintenance infusion is no longer recommended in bleeding trauma other than isolated TBI, where the CRASH-3 regimen still applies), calcium, warmth, early surgical haemostasis, calcium, warmth, early surgical haemostasis.", cites: ["NHS EPRR 2022"] },
         { text: "Damage-control surgery: abbreviated procedure to control haemorrhage and contamination, with planned return for definitive surgery once physiology corrected.", cites: ["JRCALC 2022"] },
         { text: "Military Role 1 (point of wounding) → Role 2 (forward surgical) → Role 3 (deployed hospital) → Role 4 (home) — same paradigm informs civilian disaster pathways.", cites: ["BJA Educ MCI 2017"] },
         { text: "CBRN casualties: decontaminate before treatment; PPE for staff; antidotes rehearsed (atropine/pralidoxime, hydroxocobalamin, dicobalt edetate).", cites: ["MARCH Algorithm"] },
@@ -177,6 +178,10 @@ const MassCasualtyMilitaryTopic = () => {
               Triage is dynamic — every casualty is re-triaged at each stage of the chain.
             </p>
             <MajorIncidentTriageDiagram />
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              UK primary triage now uses the NARU Major Incident Triage Tool (Ten Second Triage, followed by the revised Triage Sieve and in-hospital Triage Sort)
+              <InlineRef topicId="mass-casualty-military" refLabel="NARU Triage Tool 2023" /><InlineRef topicId="mass-casualty-military" refLabel="NARU Triage Sieve 2021" />.
+            </p>
             <div className="space-y-3">
               {[
                 { tool: "Triage Sieve", detail: "Pre-hospital, &lt;30 s. Walking → P3 (delayed). Not breathing despite airway opening → Dead. Then RR &lt;10 or &gt;22 → P1; CRT &gt;2 s or absent radial pulse → P1; otherwise P2. The narrower upper respiratory threshold of 22 replaces the legacy MIMMS figure of &gt;29, matching MPTT-24 and the current NARU Ten Second Triage tool; the older cut-off missed a substantial proportion of casualties who needed life-saving intervention. No heart-rate threshold is used in the civilian sieve." },

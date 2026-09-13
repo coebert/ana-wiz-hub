@@ -269,6 +269,21 @@ const InterventionalRadiologyTopic = () => {
                 <li>GA often required; arterial line, large-bore IV access, crossmatched blood</li>
                 <li>Post-embolisation syndrome: pain, fever, nausea — common and self-limiting</li>
               </ul>
+              <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
+                <strong>Scenario-specific challenges.</strong> <em>Postpartum haemorrhage</em> — uterine artery embolisation is often the step between failed medical/mechanical management and hysterectomy; continue uterotonics, expect a young patient who compensates until she suddenly does not, and plan for transfer to theatre at any moment
+                <InlineRef topicId="interventional-radiology" refLabel="RCOG PPH 2016" />. <em>Trauma</em> — pelvic and solid-organ embolisation runs alongside trauma-induced coagulopathy, hypothermia and acidosis; damage-control principles apply, and the IR suite must be treated as an operating theatre with the same blood, warming and monitoring standards. <em>GI bleeding</em> — often cirrhotic or anticoagulated patients with a high aspiration risk: intubate early rather than sedate a vomiting patient in a dark room.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                <strong>Resuscitation goals.</strong> Damage-control resuscitation until the bleeding point is occluded — permissive hypotension while the patient is neurologically intact and not head-injured, blood products rather than crystalloid, early major haemorrhage protocol activation, tranexamic acid, fibrinogen replacement guided by viscoelastic testing, ionised calcium &gt; 1.0 mmol/L, and aggressive normothermia. Remote-site logistics matter: confirm where the blood fridge, rapid infuser, fluid warmer and second pair of hands actually are before starting.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                <strong>Monitoring.</strong> Invasive arterial pressure (also usable for the radiologist's access), temperature (patients cool fast in a cold suite, exposed and receiving cold contrast and fluids), processed-EEG depth monitoring when the patient is too unstable for a normal anaesthetic dose, hourly urine output, and repeated gas/lactate/coagulation sampling.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                <strong>Complications beyond post-embolisation syndrome.</strong> <em>Non-target embolisation</em> causing tissue ischaemia — gluteal necrosis and sciatic/femoral nerve ischaemia after pelvic embolisation, bladder or bowel wall necrosis, hepatic or renal infarction, and uterine necrosis or later fertility consequences; skin/soft-tissue necrosis at the groin. <em>Access complications</em> — retroperitoneal haematoma, pseudoaneurysm, dissection, distal limb ischaemia. <em>Contrast-related</em> — contrast-associated AKI in an already shocked, myoglobinuric or septic patient, contrast-induced encephalopathy, and hypersensitivity reactions occurring in a remote site with limited help
+                <InlineRef topicId="interventional-radiology" refLabel="ESUR 2011" />. <em>Failure to control bleeding</em> — have an agreed trigger and route to theatre, and keep the surgical team informed throughout
+                <InlineRef topicId="interventional-radiology" refLabel="AAGBI Remote Sites 2023" />.
+              </p>
             </div>
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">EVAR (Endovascular Aortic Repair)</h3>
