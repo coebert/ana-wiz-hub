@@ -169,6 +169,10 @@ const MaternalPhysiologyTopic = () => {
               <strong>Left uterine displacement</strong> (15° tilt or manual displacement) is essential from 20 weeks
               onwards during supine positioning to prevent aortocaval compression syndrome.
             </p>
+            <div className="mt-4 rounded-lg border border-border p-4 text-sm text-muted-foreground leading-relaxed">
+              <p className="font-semibold text-foreground">Labour and delivery</p>
+              <p className="mt-1">Cardiac output rises about 15–20% above the term baseline in the first stage and up to 50% in the second stage. Each contraction autotransfuses approximately 300–500 mL from the uterus, transiently increasing preload and output. Immediately postpartum, uterine autotransfusion and relief of aortocaval compression can raise output to about 80% above pre-labour values.</p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -234,11 +238,14 @@ const MaternalPhysiologyTopic = () => {
           <ExamSection id="endocrine" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
             <CollapsibleSubsection title="Endocrine Changes">
               <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+                <li><strong>Placental–ovarian axis:</strong> hCG maintains the corpus luteum early; the placenta later becomes the major source of rising progesterone and oestrogen, contributing to vasodilatation, smooth-muscle relaxation and CNS effects.</li>
+                <li><strong>Pituitary and placental hormones:</strong> anterior-pituitary prolactin rises, while human placental lactogen promotes maternal insulin resistance and substrate availability for the fetus.</li>
                 <li><strong>First trimester:</strong> hCG has weak TSH-like activity, transiently increasing free T4 and suppressing TSH.</li>
                 <li><strong>Binding proteins:</strong> oestrogen increases thyroxine-binding globulin, so total T3 and T4 rise; free T3/T4 remain broadly stable or may fall slightly later in pregnancy.</li>
                 <li><strong>Iodide:</strong> increased GFR raises renal iodide clearance and can expose marginal iodine deficiency.</li>
                 <li><strong>Interpretation:</strong> use trimester-specific thyroid reference ranges rather than non-pregnant limits.</li>
                 <li><strong>Known hypothyroidism:</strong> check TSH early and frequently; levothyroxine requirements commonly rise by roughly 30–50% during pregnancy <InlineRef topicId="maternal-physiology" refLabel="RCOG Pregnancy Physiology" />.</li>
+                <li><strong>Adrenal:</strong> total and free cortisol rise, as do renin, angiotensin and aldosterone, supporting sodium retention and plasma-volume expansion.</li>
               </ul>
             </CollapsibleSubsection>
           </ExamSection>
@@ -246,11 +253,24 @@ const MaternalPhysiologyTopic = () => {
           <ExamSection id="renal-hepatic" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
             <CollapsibleSubsection title="Renal & Hepatic Changes">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-              <li><strong>Renal blood flow</strong> ↑ 50–80% → GFR ↑ 50% → ↓ creatinine (normal upper limit ~75 µmol/L in pregnancy).</li>
+              <li><strong>Structure:</strong> progesterone-mediated smooth-muscle relaxation and mechanical compression dilate calyces, renal pelves and ureters (physiological hydronephrosis), promoting urinary stasis and infection.</li>
+              <li><strong>Renal blood flow</strong> rises by up to 80% (approximately 1,200 mL/min) and GFR by about 50% from early pregnancy, lowering creatinine to roughly 40–75 µmol/L and urea; a “normal” non-pregnant creatinine can therefore represent renal impairment.</li>
+              <li><strong>Drug handling:</strong> higher GFR increases clearance of renally eliminated antibiotics and metabolites of drugs such as rocuronium, so dosing interval and response may differ.</li>
               <li><strong>Glycosuria</strong> common (↓ tubular reabsorption threshold).</li>
               <li><strong>Hepatic</strong>: ↓ albumin (dilutional), ↓ plasma cholinesterase activity (prolonged suxamethonium action rarely clinically significant).</li>
               <li><strong>ALP</strong> elevated (placental isoenzyme) — not a reliable marker of liver disease in pregnancy.</li>
             </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="postpartum" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
+            <CollapsibleSubsection title="Postpartum Physiological Changes">
+              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+                <li><strong>Cardiovascular:</strong> uterine autotransfusion and relief of aortocaval compression abruptly increase output; subsequent diuresis restores volume and cardiovascular physiology toward baseline over 2–6 weeks.</li>
+                <li><strong>Haematological:</strong> hypercoagulability persists; VTE risk peaks in the first postpartum week and remains elevated for at least six weeks, while pregnancy-related anaemia resolves gradually.</li>
+                <li><strong>Respiratory:</strong> the diaphragm descends and FRC and other lung volumes recover over days to weeks.</li>
+                <li><strong>Endocrine:</strong> placental oestrogen, progesterone and hPL fall rapidly, permitting lactation and restoration of insulin sensitivity <InlineRef topicId="maternal-physiology" refLabel="BJA Educ 2015" />.</li>
+              </ul>
             </CollapsibleSubsection>
           </ExamSection>
 

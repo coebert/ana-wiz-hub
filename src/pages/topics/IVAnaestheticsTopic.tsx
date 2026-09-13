@@ -138,7 +138,14 @@ const IVAnaestheticsTopic = () => {
           </div>
 
           <div className="mt-6 rounded-lg border border-border p-4">
-            <h3 className="text-lg font-serif font-bold text-foreground">Alternative Formulations and Prodrugs</h3>
+            <h3 className="text-lg font-serif font-bold text-foreground">Formulations</h3>
+            <ul className="mt-2 space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Standard emulsion:</strong> 1% or 2% propofol in long-chain triglyceride (soybean oil), glycerol and egg lecithin. It supports bacterial growth, so aseptic handling and timely disposal are essential.</li>
+              <li><strong>Propofol-EDTA:</strong> disodium edetate 0.005% retards microbial growth but does not prevent Propofol Infusion Syndrome.</li>
+              <li><strong>Sulphite-containing products:</strong> sodium metabisulphite is an alternative antimicrobial and matters in patients with sulphite sensitivity.</li>
+              <li><strong>MCT/LCT emulsions:</strong> mixed medium- and long-chain triglycerides may reduce injection pain and permit faster lipid clearance.</li>
+            </ul>
+            <h3 className="mt-5 text-lg font-serif font-bold text-foreground">Alternative Formulations and Prodrugs</h3>
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
               <strong>Fospropofol</strong> is a water-soluble phosphate prodrug of propofol. Alkaline phosphatase releases
               propofol, phosphate and formaldehyde; the latter is rapidly metabolised and is not clinically important at usual
@@ -269,6 +276,13 @@ const IVAnaestheticsTopic = () => {
             contraindication. Histamine release. No analgesic properties.
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
+            <strong>Pharmacokinetics:</strong> thiopentone follows a two- or three-compartment model and is about 80%
+            protein-bound. Loss of consciousness after a bolus ends through rapid α-phase redistribution from the brain to
+            muscle and fat (distribution half-life about 2–4 minutes), not metabolism. Hepatic CYP metabolism and clearance
+            are slow, with a terminal elimination half-life around 10–12 hours; repeated boluses or infusion therefore produce
+            marked accumulation and prolonged sedation <InlineRef topicId="iv-anaesthetics" refLabel="Peck & Hill Ch.5" />.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
             <strong>Cardiovascular effects</strong>: the dominant vascular action is <strong>venodilation</strong> — dilatation of
             capacitance vessels causes blood to pool in the splanchnic and peripheral venous beds, so venous return and
             <strong> preload fall</strong>, reducing stroke volume, cardiac output and arterial pressure. A baroreceptor-mediated
@@ -305,6 +319,12 @@ const IVAnaestheticsTopic = () => {
           <p className="text-foreground/90 leading-relaxed mt-3">
             <strong>RS</strong>: bronchodilator, preserves respiratory drive (relatively), increased secretions. <strong>CNS</strong>:
             raises ICP and IOP. Emergence phenomena (hallucinations, vivid dreams) — reduced with benzodiazepines.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            <strong>Metabolism:</strong> hepatic CYP-mediated N-demethylation produces <strong>norketamine</strong>, an active
+            metabolite with approximately one-third of ketamine's potency. It is then hydroxylated and conjugated before renal
+            excretion. Norketamine contributes to analgesia and to prolonged effects after large or repeated doses
+            <InlineRef topicId="iv-anaesthetics" refLabel="Peck & Hill Ch.5" />.
           </p>
           <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
             <p className="text-sm font-medium text-foreground">Unique Properties</p>
