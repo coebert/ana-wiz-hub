@@ -60,6 +60,8 @@ const tocItems = [
   { id: "section-selection", label: "Patient Selection", group: "Core" },
   { id: "section-anaesthetic-technique", label: "Anaesthetic Principles", group: "Core" },
   { id: "section-discharge", label: "Discharge Criteria", group: "Core" },
+  { id: "section-eras", label: "Enhanced Recovery", group: "Core" },
+  { id: "section-experience", label: "Patient Experience After Discharge", group: "Core" },
   { id: "section-information", label: "Patient Information & Consent", group: "Core" },
   { id: "section-paediatric", label: "Paediatric Day Surgery", group: "Special groups" },
 ];
@@ -85,7 +87,7 @@ const DaySurgeryTopic = () => {
       }}
       sectionSources={{
         workedExamples: ["BADS Guidelines", "AAGBI Day Surgery 2019", "BJA Educ 2016"],
-        keyPoints: ["AAGBI Day Surgery 2019", "BJA Educ 2016", "BADS Guidelines", "PADSS Review 2023", "APAGBI Paediatric Day Case 2019"],
+        keyPoints: ["AAGBI Day Surgery 2019", "BJA Educ 2016", "BADS Guidelines", "PADSS Review 2023", "APAGBI Paediatric Day Case 2019", "ERAS Ambulatory 2023", "Day Surgery Experience 2024"],
       }}
 
       keyPoints={[
@@ -112,6 +114,19 @@ const DaySurgeryTopic = () => {
               <li><strong>Social</strong>: responsible adult escort, suitable home environment, telephone access, within 1 h of hospital</li>
               <li><strong>Anticoagulants</strong>: follow local bridging protocols. DOACs often omitted on the morning of surgery</li>
             </ul>
+            <div className="space-y-3 mt-3">
+              {[
+                { t: "Medical criteria", d: "ASA I–III with stable, optimised comorbidity — stability matters far more than the ASA number, and many ASA III patients are better served by a day-case pathway than by an inpatient stay. Exclusions are unstable angina, decompensated heart failure, poorly controlled arrhythmia, uncontrolled asthma or COPD with a recent exacerbation, unstable diabetes, untreated severe OSA without CPAP, and end-stage renal or liver disease. BMI alone is not a barrier: assess functional capacity, airway and OSA risk with a suitable airway plan and equipment — morbid obesity is often better managed as a day case because of earlier mobilisation and lower VTE and infection risk. Age alone is not a barrier either; frailty, cognition and home support decide. Screen for OSA with STOP-BANG, review anticoagulants and antiplatelets against the bleeding risk of the procedure, and manage diabetes drugs and GLP-1 receptor agonists to local policy." },
+                { t: "Social criteria", d: "A responsible, capable adult to escort the patient home and stay for the first 24 hours; a telephone; reasonable travel time to hospital (commonly about an hour) with access to transport; and home conditions allowing rest, toilet access and stairs where relevant. The patient or carer must understand and be able to deliver the analgesia and wound-care plan. Language needs, learning disability, dementia, safeguarding concerns, homelessness or sole responsibility for dependants do not automatically exclude a patient, but each requires a specific plan — interpreter, carer briefing, extended-stay bed or an inpatient pathway. Lack of any escort is the commonest social reason for an overnight stay." },
+                { t: "Procedural criteria", d: "Surgery not requiring prolonged specialist care: expected duration usually under about 2 hours (longer is acceptable in experienced units), minimal expected blood loss, no drains or invasive monitoring, no body-cavity or airway compromise needing overnight observation, and postoperative pain controllable with oral analgesia plus local or regional anaesthesia. The surgical team must be able to deliver it reliably to that standard. BADS publishes procedure-specific day-case rate targets — laparoscopic cholecystectomy, hernia repair, arthroscopy, selected tonsillectomy, breast and thyroid surgery, and increasingly shoulder and laparoscopic colorectal work — so the question is not whether an operation can be a day case but why this particular patient needs a bed." },
+              ].map((x) => (
+                <div key={x.t} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{x.t}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{x.d}</p>
+                </div>
+              ))}
+            </div>
+
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -181,6 +196,51 @@ const DaySurgeryTopic = () => {
               <p className="text-xs text-muted-foreground mt-2 italic">
                 Drinking and voiding are no longer mandatory PADSS criteria for most ambulatory patients — voiding remains a requirement after neuraxial blockade, inguinal/femoral hernia repair and perianal or urological surgery<InlineRef topicId="day-surgery" refLabel="AAGBI Day Surgery 2019" />.
               </p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="section-eras" className="scroll-mt-24" exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Enhanced Recovery in Ambulatory Surgery">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Enhanced recovery for ambulatory surgery rests on five fundamentals: preoperative counselling, education and optimisation; multimodal opioid-sparing analgesia; prophylaxis against nausea and vomiting, wound infection and venous thromboembolism; maintenance of euvolaemia; and encouragement of early mobility<InlineRef topicId="day-surgery" refLabel="ERAS Ambulatory 2023" />.
+            </p>
+            <div className="space-y-3">
+              {[
+                { t: "Preoperative counselling, education and optimisation", d: "Set expectations at pre-assessment: what the day will feel like, the analgesia plan, recovery milestones and the discharge criteria the patient must meet. Optimise anaemia, glycaemic control, blood pressure, smoking and alcohol, and prehabilitate where the wait allows. Avoid prolonged fasting — clear fluids up to 2 hours before arrival, with carbohydrate loading where used locally." },
+                { t: "Multimodal, opioid-sparing analgesia", d: "Pre-emptive paracetamol and a non-steroidal anti-inflammatory drug, local infiltration or a peripheral nerve block for every feasible case, and adjuncts (dexamethasone, lidocaine infusion, ketamine, dexmedetomidine, gabapentinoid in selected patients) instead of routine long-acting opioids. Warn the patient about block regression and to take oral analgesia before rebound pain begins." },
+                { t: "Prophylaxis bundle", d: "Score PONV risk (Apfel) and give at least two agents to high-risk patients — dexamethasone at induction plus ondansetron at the end, with total intravenous anaesthesia and avoidance of nitrous oxide for the highest risk. Surgical antibiotic prophylaxis within 60 minutes of incision where indicated, and VTE risk assessment for every patient with mechanical prophylaxis, early mobilisation, and pharmacological prophylaxis where risk is high." },
+                { t: "Euvolaemia", d: "Neither dry nor flooded: about 1–2 L of balanced crystalloid for most day cases reduces PONV, dizziness and fatigue, whereas excess fluid delays discharge through bladder distension and oedema. Encourage oral intake as soon as the patient is awake — drinking is part of the pathway, not merely a discharge criterion." },
+                { t: "Early mobility and short-acting anaesthesia", d: "Propofol, remifentanil or fentanyl, sevoflurane or desflurane, and quantitatively confirmed reversal of neuromuscular blockade so the patient is awake, clear-headed and able to sit and walk within the hour. Fast-track suitable patients from theatre directly to phase 2 recovery, then to a chair, oral fluids and mobilisation." },
+                { t: "Governance and outcome measures", d: "Track day-case rates against BADS procedure-specific targets, unplanned admission rate (aim below 2%), readmission and return-to-theatre rates, pain and PONV scores in recovery and at 24 hours, and patient-reported experience and quality of recovery. Audit the reason for every overnight admission — pain, PONV, retention, bleeding, a late finish and lack of an escort are all modifiable." },
+              ].map((x) => (
+                <div key={x.t} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{x.t}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{x.d}</p>
+                </div>
+              ))}
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="section-experience" className="scroll-mt-24" exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Patient Experience After Discharge">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Qualitative synthesis of day-surgery recovery identifies four consistent themes: patients ask for information tailored to them, they find it hard to recognise and understand postoperative symptoms, they depend on continuous professional and personal support, and they want individual adaptation rather than a standard leaflet<InlineRef topicId="day-surgery" refLabel="Day Surgery Experience 2024" />.
+            </p>
+            <div className="space-y-3">
+              {[
+                { t: "Tailored information", d: "Generic instructions are frequently described as too little, too general, or given at the wrong moment. Deliver key information at pre-assessment when the patient can absorb it, repeat it at discharge with the escort present, and adapt it to the individual — their procedure, analgesia, job, caring responsibilities and language. Written or digital material supplements a conversation; it does not replace one." },
+                { t: "Recognising and interpreting symptoms", d: "Patients struggle to distinguish normal recovery from complications: they under-report pain, mistake block regression for something going wrong, worry about bruising and swelling, and delay seeking help so as not to be a nuisance. Give concrete descriptions of what is expected and for how long, alongside unambiguous red flags — pain uncontrolled by the prescribed analgesia, persistent vomiting, inability to pass urine, fever, spreading wound redness or discharge, calf pain or breathlessness, and heavy bleeding." },
+                { t: "Continuous professional and personal support", d: "A named 24-hour contact number, a next-day follow-up call and a clear route back into the service reduce anxiety and avoidable emergency attendances. Involve the escort or carer directly in the discharge conversation, because they give the analgesia and decide when to seek help. Identify patients without support before the day of surgery rather than in recovery." },
+                { t: "Individual adaptation", d: "Recovery does not follow a fixed timetable. Fatigue, disturbed sleep, low mood, dizziness and poor appetite are common for several days and often take patients by surprise. Give realistic procedure-specific advice on returning to work, driving, exercise, lifting and sexual activity, and on the 24-hour restrictions after anaesthesia, and encourage patients to arrange help at home rather than assuming they will be back to normal the next day." },
+                { t: "Measuring and improving experience", d: "Use patient-reported outcome and experience measures — quality-of-recovery scores, pain and PONV at 24 hours, satisfaction with information — and feed the results back into the pathway. Recurring themes such as unrelieved pain on the first night, unexpected retention or confusion about analgesia timing usually indicate a fixable process rather than a difficult patient." },
+              ].map((x) => (
+                <div key={x.t} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{x.t}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{x.d}</p>
+                </div>
+              ))}
             </div>
             </CollapsibleSubsection>
           </ExamSection>

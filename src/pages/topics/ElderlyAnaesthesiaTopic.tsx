@@ -195,15 +195,30 @@ const ElderlyAnaesthesiaTopic = () => {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Dose Adjustments</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li><strong className="text-foreground">Propofol</strong> — reduce induction dose by 30–50%; slower arm-brain circulation time increases onset time; titrate carefully</li>
+                <li><strong className="text-foreground">Propofol</strong> — reduce induction dose by 30–50%. In dose-finding work using slow infusion, the mean effective induction dose was <strong>≈0.8 mg/kg in the elderly versus ≈1.6 mg/kg in young adults at 25 mg/min</strong>, rising to ≈1.65 mg/kg (elderly) and ≈2.5 mg/kg (young) when infused rapidly at 100 mg/min<InlineRef topicId="elderly-anaesthesia" refLabel="Propofol Elderly 1992" />. The dose needed therefore depends on the <em>rate</em> of administration: a slower infusion (e.g. 20–30 mg/min, or 10–20 mg increments every 20–30 s) allows equilibration between plasma and effect site, so anaesthesia is reached at a much lower total dose and with far less hypotension. Prolonged arm–brain circulation time in low-output states delays the visible effect, so the common error is to bolus again before the first dose has acted.</li>
                 <li><strong className="text-foreground">Opioids</strong> — reduce dose by 30–50%; increased sensitivity and reduced clearance; consider remifentanil (organ-independent metabolism)</li>
                 <li><strong className="text-foreground">Muscle relaxants</strong> — atracurium/cisatracurium preferred (Hofmann degradation, organ-independent); rocuronium clearance reduced in elderly</li>
                 <li><strong className="text-foreground">Volatile agents</strong> — reduced MAC; titrate to effect; consider BIS/processed EEG monitoring to avoid excessive depth</li>
                 <li><strong className="text-foreground">Neuraxial</strong> — reduced dose required (reduced CSF volume, increased neural sensitivity); expect higher, longer-lasting block</li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4 mt-3">
+              <h3 className="font-semibold text-foreground mb-2">Spinal-Induced Hypotension in the Elderly</h3>
+              <p className="text-sm mb-2">
+                Sympathetic blockade removes arteriolar and venous tone at a time when the stiff, non-compliant elderly ventricle is preload-dependent and the baroreceptor reflex is blunted — so a modest fall in venous return produces a disproportionate fall in cardiac output and blood pressure.
+              </p>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong className="text-foreground">Crystalloid preload does not reliably prevent it</strong> — a randomised comparison in elderly patients found the same overall 27% incidence of hypotension with or without crystalloid preloading, because the load redistributes and provokes atrial natriuretic peptide release before the block is established<InlineRef topicId="elderly-anaesthesia" refLabel="Crystalloid Preload 1990" />. Large-volume preloading also risks pulmonary oedema in diastolic dysfunction.</li>
+                <li><strong className="text-foreground">Co-loading is preferred to preloading</strong> — give the fluid (e.g. 500 mL crystalloid, or a smaller colloid volume) <em>as the block sets</em>, matched to the actual fall in tone, rather than in advance.</li>
+                <li><strong className="text-foreground">Vasopressor first, not fluid first</strong> — treat the primary problem (loss of vascular tone). <strong>Phenylephrine 25–100 µg IV</strong> boluses (or an infusion at 25–50 µg/min) in patients with adequate heart rate; <strong>metaraminol 0.25–0.5 mg IV</strong> boluses where a mild rise in rate is acceptable. Ephedrine 3–6 mg is reserved for coexisting bradycardia.</li>
+                <li><strong className="text-foreground">Targets</strong> — keep systolic pressure within 20% of the patient's pre-operative baseline and mean arterial pressure ≥ 65–70 mmHg (higher in chronic hypertension or carotid/renovascular disease). Baseline should be the ward or clinic reading, not the anxious pre-theatre value.</li>
+                <li><strong className="text-foreground">Technique modifications</strong> — small-dose (2–2.5 mL 0.5% hyperbaric bupivacaine) or intrathecal-opioid-supplemented spinals, incremental low-dose sequential/epidural top-up, or a continuous spinal catheter for hip fracture; avoid steep or rapid table tilt after injection.</li>
+                <li><strong className="text-foreground">Severe aortic stenosis</strong> — a fixed-output lesion coupled with a fall in SVR causes coronary hypoperfusion and a downward spiral of ischaemia. Avoid single-shot high spinals; use invasive arterial monitoring before block, prepare a vasopressor infusion running before injection, maintain sinus rhythm and heart rate 60–80/min, treat hypotension immediately with phenylephrine/noradrenaline, and consider a slowly titrated epidural or careful general anaesthesia instead. The same principle applies to hypertrophic cardiomyopathy and severe mitral stenosis.</li>
+              </ul>
+            </div>
           </div>
         </section>
+
 
         {/* Postoperative Delirium */}
         <section>

@@ -97,8 +97,8 @@ const UrologicalAnaesthesiaTopic = () => {
       }}
       sectionSources={{
         objectives: ["BJA Educ TURP 2014", "BJA Educ Cystectomy 2017"],
-        workedExamples: ["BJA Educ TURP 2014", "AAGBI Lithotomy 2015"],
-        keyPoints: ["BJA Educ TURP 2014", "ERAS Cystectomy 2013", "AAGBI Lithotomy 2015", "BJA Educ Cystectomy 2017"],
+        workedExamples: ["BJA Educ TURP 2014", "AAGBI Lithotomy 2015", "Positioning Review 2016"],
+        keyPoints: ["BJA Educ TURP 2014", "ERAS Cystectomy 2013", "AAGBI Lithotomy 2015", "Positioning Review 2016", "BJA Educ Cystectomy 2017"],
       }}
       coreConcepts={
         <>

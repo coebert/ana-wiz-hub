@@ -341,6 +341,64 @@ const PlasticSurgeryTopic = () => {
             </ExamSection>
           </div>
 
+          <div id="vasopressors" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
+              <CollapsibleSubsection title="Vasopressor Choice and Titration in Free Flap Surgery">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  The old teaching that vasopressors must be avoided absolutely has been overtaken: sustained hypotension is more harmful to a flap than a low-dose vasopressor, because a free flap is denervated and its perfusion depends almost entirely on perfusion pressure and cardiac output. Contemporary guidance is to correct hypovolaemia first, then use noradrenaline as the vasopressor of choice to restore mean arterial pressure and oxygen delivery<InlineRef topicId="plastic-surgery" refLabel="BJA Educ Free Flap 2021" />.
+                </p>
+                <div className="space-y-3">
+                  {[
+                    { t: "Why the flap is different", d: "Sympathetic denervation abolishes autoregulation and the response to circulating catecholamines within the flap itself, so flap blood flow is pressure-passive. Systemic vasoconstrictors act mainly on the innervated recipient bed and splanchnic circulation, raising perfusion pressure across the anastomosis; the concern is only whether the pedicle itself constricts." },
+                    { t: "Sequence: filling before pressor", d: "Assess fluid responsiveness (stroke volume variation, pulse pressure variation, passive leg raise or a 250 mL fluid challenge) and correct a genuine deficit, then treat residual vasodilatation with a pressor. Do not chase blood pressure with repeated crystalloid boluses — excess crystalloid causes interstitial and flap oedema, raises interstitial pressure and precipitates venous congestion." },
+                    { t: "Noradrenaline — first choice", d: "Start 0.02–0.05 µg/kg/min and titrate to the lowest effective rate. Predominant α1 effect with modest β1 support maintains mean arterial pressure and cardiac output; clinical series and reviews show no increase in flap failure at these doses, and free-flap blood flow is generally preserved or improved because of the rise in perfusion pressure. Give through a dedicated central or well-sited large peripheral line with extravasation precautions." },
+                    { t: "Agents to avoid or limit", d: "Phenylephrine and metaraminol cause pure α1 vasoconstriction with reflex bradycardia and a fall in cardiac output, so perfusion pressure may rise while flow falls. Avoid boluses of adrenaline and any high-dose vasopressin/terlipressin, which cause intense cutaneous and splanchnic vasoconstriction. Topical or infiltrated adrenaline near the pedicle is contraindicated." },
+                    { t: "Dobutamine and inotropes", d: "Where hypotension reflects low cardiac output rather than vasodilatation (poor ventricular function, sepsis, prolonged surgery), dobutamine 2–5 µg/kg/min or low-dose adrenaline increases flow-directed perfusion. Use cardiac-output monitoring rather than pressure alone to make this distinction." },
+                    { t: "Haemodynamic targets", d: "Mean arterial pressure ≥ 65–70 mmHg (or within 20% of the patient's baseline; higher in chronic hypertension), cardiac index normal or slightly high, haemoglobin 80–100 g/L (moderate haemodilution optimises viscosity and oxygen delivery), core temperature > 36 °C, normocapnia, and pain-free vasodilatation of the flap bed. Urine output 0.5–1 mL/kg/h; do not use urine output alone to justify more fluid." },
+                    { t: "Postoperative continuation", d: "A low-dose noradrenaline infusion can be continued into recovery or critical care to avoid the hypotension of rewarming, epidural or opioid analgesia, provided monitoring and flap observation continue. Wean the pressor before allowing the patient to become dry, and re-examine the flap after each change." },
+                  ].map((x) => (
+                    <div key={x.t} className="p-3 rounded-lg border border-border">
+                      <p className="font-semibold text-foreground text-sm">{x.t}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{x.d}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-3 p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
+                  <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
+                  <p className="text-xs text-muted-foreground">
+                    The examinable answer is not &quot;never use vasopressors&quot; — it is &quot;optimise preload, keep the patient warm, vasodilated and normocapnic, then use low-dose noradrenaline rather than tolerating hypotension or flooding the patient with crystalloid&quot;.
+                  </p>
+                </div>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
+          <div id="congestion-medical" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
+              <CollapsibleSubsection title="Medical Management of Venous Congestion">
+                <p className="text-muted-foreground leading-relaxed mb-3">
+                  Venous congestion is a surgical emergency and re-exploration of the venous anastomosis is the definitive treatment. The measures below are adjuncts used while theatre is being arranged, or when the anastomosis is patent and congestion is due to outflow mismatch or a failing venous bed — they never replace surgical review<InlineRef topicId="plastic-surgery" refLabel="BJA Educ Free Flap 2021" />.
+                </p>
+                <div className="space-y-3">
+                  {[
+                    { t: "Immediate non-pharmacological measures", d: "Release constricting dressings, tight sutures and any external pressure; position the flap so venous drainage is dependent-free and avoid head-down tilt or neck rotation in head and neck cases; maintain normothermia, normocapnia, adequate mean arterial pressure and pain control. Loosening a tight closure alone can reverse early congestion." },
+                    { t: "Systemic heparinisation — with important caveats", d: "A heparin infusion (or therapeutic low-molecular-weight heparin) is often used for salvage and after thrombectomy, but the evidence base is weak and bleeding is a real harm: haematoma in a closed flap pocket compresses the pedicle and can itself cause failure, and bleeding into a head and neck wound threatens the airway. Only start after surgical discussion, monitor APTT ratio or anti-Xa, and avoid combining full heparinisation with continuing surgical bleeding, recent neuraxial catheter placement or thrombocytopenia. Low-dose aspirin, dextran and prostacyclin analogues have all been used with little supporting evidence and, for dextran, a clear excess of systemic complications." },
+                    { t: "Topical glyceryl trinitrate", d: "Topical GTN paste or patch applied to the flap surface produces local nitric-oxide-mediated venodilatation and arteriolar dilatation and has been used for early congestion and marginal ischaemia. It is cheap and simple but can cause systemic hypotension and headache; remove it if mean arterial pressure falls, since systemic hypotension harms the flap more than the local benefit helps." },
+                    { t: "Hyperbaric oxygen therapy", d: "Where available, hyperbaric oxygen (typically 2.0–2.5 atmospheres absolute for 90 minutes, one to two sessions daily) raises dissolved plasma oxygen and can support a congested or partially ischaemic flap while collateral drainage develops. It is an adjunct for salvage of compromised flaps, is logistically demanding, and is contraindicated in untreated pneumothorax; ear barotrauma and oxygen toxicity limit repeated use." },
+                    { t: "Medicinal leech therapy", d: "Hirudo medicinalis is used for congested flaps and replanted digits where no venous outflow can be re-established. The leech decompresses the flap by ingesting 5–15 mL of blood and, more importantly, its saliva contains hirudin (a direct thrombin inhibitor), plus hyaluronidase and vasodilators, so the bite continues to ooze for several hours after detachment — providing continuous decongestion." },
+                    { t: "Practical and safety aspects of leech therapy", d: "Anticipate significant cumulative blood loss: check haemoglobin daily, group and save, and transfuse as needed. Each leech is used once and then destroyed as clinical waste. The specific hazard is infection with Aeromonas hydrophila, a Gram-negative commensal of the leech gut that causes wound infection, abscess or septicaemia — prophylactic ciprofloxacin (or another agent active against Aeromonas, such as a third-generation cephalosporin or co-trimoxazole) is given for the duration of therapy, since Aeromonas is typically resistant to penicillins and first-generation cephalosporins. Count and secure the leeches, obtain informed consent, and warn about scarring and the psychological aspect." },
+                    { t: "When to stop adjuncts and re-explore", d: "If colour, capillary refill or Doppler signal do not improve within minutes to an hour, or deteriorate at any point, the flap needs theatre. Salvage rates fall sharply beyond 4–6 hours of congestion, so adjuncts must never be the reason for delay." },
+                  ].map((x) => (
+                    <div key={x.t} className="p-3 rounded-lg border border-border">
+                      <p className="font-semibold text-foreground text-sm">{x.t}</p>
+                      <p className="text-sm text-muted-foreground mt-1">{x.d}</p>
+                    </div>
+                  ))}
+                </div>
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
           <div id="complications" className="scroll-mt-24">
             <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
               <CollapsibleSubsection title="Postoperative Complications & Management">

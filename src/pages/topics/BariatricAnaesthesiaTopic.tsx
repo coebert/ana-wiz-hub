@@ -274,6 +274,30 @@ const BariatricAnaesthesiaTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Equipment and Organisational Considerations</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+            Safe bariatric practice is an organisational responsibility as much as a clinical one: the equipment, the estate and the team must all be rated for the patient before the patient arrives<InlineRef topicId="bariatric-anaesthesia" refLabel="AAGBI Obesity 2015" />.
+          </p>
+          <div className="space-y-3">
+            {[
+              { t: "Operating table and trolleys", d: "Check the safe working load of the table, trolley, bed and chairs (standard tables are often limited to 130–180 kg; bariatric tables extend to 250–450 kg). Wide tables or side extensions/arm supports prevent limb overhang and pressure injury, and the table must still tilt and break at the declared load. Confirm the load rating in the pre-list check, not in the anaesthetic room." },
+              { t: "Patient positioning aids", d: "Ramping devices or a stacked blanket/commercial head-elevation pillow to align the external auditory meatus with the sternal notch, gel pads and heel/sacral protection for the increased contact pressures, and a firm footplate for head-up positions. Pressure area care starts before induction because obese patients are at high risk of pressure sores, rhabdomyolysis and brachial plexus injury." },
+              { t: "Transfer and hoisting", d: "Hover mattresses, lateral transfer boards, slide sheets and ceiling or mobile hoists rated for the weight, with enough trained staff for a planned transfer. Never improvise a lift: staff back injury and patient falls are the commonest incidents. Encourage patients who can to walk to theatre and self-position on the table." },
+              { t: "Airway and ventilation equipment", d: "Videolaryngoscope as a first-line or immediately available device, second-generation supraglottic airways in large sizes, difficult-airway trolley, high-flow nasal oxygen and a CPAP/NIV circuit for pre-oxygenation and recovery, and a ventilator capable of high inspiratory pressures with PEEP and recruitment manoeuvres. Patients should bring their own CPAP machine and mask." },
+              { t: "Monitoring and access", d: "Correctly sized (or forearm/conical) NIBP cuffs — an undersized cuff over-reads; low threshold for invasive arterial monitoring where the cuff is unreliable or the case is long. Ultrasound for vascular access and regional blocks, long block and spinal needles, quantitative neuromuscular monitoring, and processed EEG depth monitoring in TIVA." },
+              { t: "Imaging and diagnostics", d: "Confirm the weight and bore limits of the CT/MRI scanner and the fluoroscopy table before booking; radiography may be non-diagnostic in very high BMI. Plan alternative diagnostic strategies if imaging will not be possible postoperatively." },
+              { t: "Estate, recovery and thromboprophylaxis kit", d: "Bariatric-rated recovery bays, wide doorways and lifts, floor-mounted or reinforced toilets, weight-rated commodes and shower chairs, large gowns and extra-large compression stockings/intermittent compression sleeves, and a bariatric weighing scale so drug doses can be calculated from an actual weight." },
+              { t: "Team, staffing and pathway", d: "Consultant-delivered or consultant-supervised anaesthesia for high BMI and complex airways, a skilled assistant, additional staff for positioning and transfers, and scheduling early on the list so that recovery and higher-level care are fully staffed. Agree the postoperative destination (ward with CPAP, extended recovery, or critical care) in advance, and use a documented bariatric pathway with a pre-list equipment checklist and clear escalation criteria." },
+            ].map((x) => (
+              <div key={x.t} className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{x.t}</p>
+                <p className="text-sm text-muted-foreground mt-1">{x.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Preoperative Assessment</h2>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
             <li><strong>Airway</strong>: STOP-BANG screening for OSA (≥5 = high risk). CPAP compliance? Difficult airway plan essential</li>
@@ -340,7 +364,7 @@ const BariatricAnaesthesiaTopic = () => {
             <h3 className="font-semibold text-foreground mb-2">Extubation Strategy in the Obese Patient</h3>
             <p className="text-sm text-muted-foreground mb-2">
               Extubation, not intubation, is when most obese patients come to harm — reduced FRC, upper-airway collapsibility, residual opioid and neuromuscular blockade all converge in recovery<InlineRef topicId="bariatric-anaesthesia" refLabel="AAGBI Obesity 2015" />.
-            </p>
+            <InlineRef topicId="bariatric-anaesthesia" refLabel="SOBA Airway 2025" /></p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Criteria before extubation</strong>: fully awake and obeying commands, TOF ratio ≥0.9 confirmed by quantitative monitoring (reverse with sugammadex on TBW if any doubt), adequate tidal volumes with a regular respiratory pattern, normothermia, effective analgesia with minimal residual opioid, and haemodynamic stability</li>
               <li><strong>Position</strong>: extubate in the sitting or 30–45° head-up (ramped) position — never supine; this preserves FRC and reduces the work of breathing</li>
