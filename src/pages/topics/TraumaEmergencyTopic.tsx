@@ -233,6 +233,40 @@ const TraumaEmergencyTopic = () => {
                 </div>
               ))}
             </div>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">Etomidate in trauma induction</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              <strong className="text-foreground">Mechanism:</strong> etomidate is a carboxylated imidazole that acts as a positive allosteric modulator at the GABA<sub>A</sub>
+              receptor, increasing chloride conductance and hyperpolarising neurones. It is presented as a lipid emulsion or in propylene glycol, is highly protein bound and is
+              rapidly hydrolysed by hepatic and plasma esterases, giving a rapid onset (one arm–brain circulation) and a short duration of 4–8 minutes after a single dose.
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              <strong className="text-foreground">Dose:</strong> 0.2–0.3 mg/kg IV for induction, reduced towards 0.15 mg/kg in the shocked or elderly patient.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Advantages</p>
+                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mt-1">
+                  <li>The most cardiostable induction agent — minimal fall in SVR, contractility or cardiac output, so it preserves coronary and cerebral perfusion pressure in shock, hypovolaemia, aortic stenosis and ischaemic heart disease.</li>
+                  <li>Reduces cerebral metabolic rate, cerebral blood flow and ICP while maintaining MAP, so CPP is better protected than with propofol or thiopentone.</li>
+                  <li>Rapid, predictable onset and offset with a wide therapeutic index; no histamine release and bronchospasm is uncommon.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Disadvantages</p>
+                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mt-1">
+                  <li><strong>Adrenocortical suppression</strong> — dose-dependent inhibition of 11β-hydroxylase for up to 24–72 hours after a single dose; associated with impaired cortisol response and, in sepsis, with worse outcomes. This is the reason it has largely been abandoned for ICU sedation and is avoided in septic shock <InlineRef topicId="trauma-emergency" refLabel="Cuthbertson 2009 (Etomidate)" />.</li>
+                  <li>Myoclonus and involuntary movements (may be mistaken for seizures), pain on injection and thrombophlebitis, and a high incidence of postoperative nausea and vomiting.</li>
+                  <li>No analgesic properties; propylene glycol formulations risk osmolar load and haemolysis with repeated dosing.</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed mt-2">
+              <strong className="text-foreground">Practical position in trauma:</strong> ketamine 0.5–2 mg/kg remains the usual first choice because it maintains sympathetic
+              tone without adrenal suppression. Etomidate is a reasonable alternative where sympathomimetic effects are undesirable (e.g. severe aortic stenosis, critical
+              coronary disease) or where ketamine is unavailable, given as a single reduced dose with a vasopressor drawn up — but it should be avoided in established sepsis
+              and never used as an infusion.
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -259,8 +293,46 @@ const TraumaEmergencyTopic = () => {
               haemodynamic instability despite fluids, or anticipated major blood loss. Emergency O-negative blood should be available
               within minutes. Monitor for complications: hyperkalaemia, hypocalcaemia (citrate toxicity), hypothermia, TRALI, TACO.<InlineRef topicId="trauma-emergency" refLabel="BJA Educ 2016" />
             </p>
+
+            <div className="p-3 rounded-lg border border-border mt-3">
+              <p className="font-semibold text-foreground text-sm">Fibrinogen — targets, triggers and dosing</p>
+              <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mt-1">
+                <li><strong>Why it matters:</strong> fibrinogen is the first coagulation factor to fall to critical levels in major haemorrhage, because it is consumed, diluted and degraded by hyperfibrinolysis, and it is the substrate for clot strength.</li>
+                <li><strong>Target:</strong> keep fibrinogen above <strong>1.5–2 g/L</strong> in bleeding trauma (above 2 g/L in obstetric haemorrhage). The viscoelastic surrogate is <strong>FIBTEM A5 below 10 mm</strong> (ROTEM) or a low maximum amplitude on functional fibrinogen TEG, which is available within 10 minutes and should trigger replacement without waiting for the Clauss assay.</li>
+                <li><strong>Dose:</strong> fibrinogen concentrate 3–4 g (roughly 50–70 mg/kg) raises plasma fibrinogen by about 1 g/L in an adult; two pools of cryoprecipitate (10 units, ~400 mL) is the usual UK equivalent and raises fibrinogen by around 0.5–1 g/L. Repeat and recheck after each dose.</li>
+                <li><strong>Caveats:</strong> FFP alone contains only about 2 g/L of fibrinogen and cannot correct hypofibrinogenaemia in a bleeding patient. Empirical early high-dose cryoprecipitate given to all trauma patients on top of a standard major haemorrhage protocol did not improve mortality in CRYOSTAT-2, so replacement should be targeted to measured or viscoelastic deficiency rather than given routinely <InlineRef topicId="trauma-emergency" refLabel="CRYOSTAT-2 2023" />.</li>
+              </ul>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <ExamSection id="thoracic-trauma" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Management of Specific Thoracic Injuries">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Chest injury accounts for a quarter of trauma deaths. The primary survey identifies the immediately life-threatening injuries; each has a specific
+              intervention that the anaesthetist may need to deliver before definitive imaging <InlineRef topicId="trauma-emergency" refLabel="ATLS 10th ed" />.
+            </p>
+            <div className="space-y-3">
+              {[
+                { injury: "Tension pneumothorax", detail: "Clinical diagnosis — hypotension, hypoxia, distended neck veins, tracheal deviation away, absent breath sounds, and a sudden rise in airway pressure with loss of cardiac output after starting positive-pressure ventilation. Treat immediately with finger thoracostomy in the ventilated patient (needle decompression in the 4th–5th intercostal space, anterior axillary line, often fails because the cannula is too short or kinks) followed by an intercostal drain. Never wait for a chest radiograph." },
+                { injury: "Open pneumothorax ('sucking chest wound')", detail: "Cover with a three-sided occlusive dressing or a proprietary vented chest seal to allow air out but not in, then place a chest drain at a separate site. A fully occlusive dressing converts it to a tension pneumothorax." },
+                { injury: "Massive haemothorax", detail: "Defined as more than 1500 mL initial drainage or ongoing loss of 200 mL/h for 2–4 hours, or the need for persistent transfusion. Insert a large-bore drain with blood available and cell salvage prepared, resuscitate with blood products, and refer for thoracotomy — draining a tamponading haemothorax in a hypovolaemic patient can precipitate cardiovascular collapse, so have volume running before the drain releases." },
+                { injury: "Cardiac tamponade", detail: "Beck's triad is unreliable in hypovolaemia; use FAST/echocardiography. Maintain preload, heart rate and spontaneous ventilation for as long as possible — induction of anaesthesia and positive-pressure ventilation can cause arrest, so induce in theatre with the surgeon scrubbed and the chest prepped. Definitive treatment is surgical decompression (resuscitative thoracotomy in penetrating trauma with recent loss of output); pericardiocentesis is a temporising measure only." },
+                { injury: "Flail chest and pulmonary contusion", detail: "The injury that matters is the underlying contusion, not the paradoxical movement. Manage with aggressive multimodal analgesia — thoracic epidural, erector spinae or serratus anterior catheter, or paravertebral block — plus physiotherapy, humidified oxygen and CPAP/HFNO to avoid intubation. Judicious fluid therapy (contused lung is prone to oedema), early consideration of surgical rib fixation for severe flail, and a low threshold for lung-protective ventilation if intubated. Anticipate ARDS at 24–72 hours." },
+                { injury: "Tracheobronchial injury", detail: "Suspect with persistent large air leak after drainage, massive surgical emphysema, haemoptysis or a 'fallen lung' sign. Secure the airway with awake or gas-induction techniques where possible, avoid high airway pressures, and use fibreoptic guidance to place the tube beyond the tear or to isolate the injured lung with a double-lumen tube or bronchial blocker. Involve thoracic surgery early; ECMO may be needed for gas exchange during repair." },
+                { injury: "Blunt aortic injury", detail: "Usually a deceleration injury at the ligamentum arteriosum. Aim for strict impulse control — heart rate below 80/min and systolic pressure around 100–120 mmHg with a beta-blocker such as esmolol or labetalol plus analgesia — while balancing this against other bleeding sites and head injury. Definitive repair is usually thoracic endovascular stenting (TEVAR)." },
+                { injury: "Blunt cardiac injury", detail: "Presents with unexplained arrhythmia, ST changes or hypotension. Investigate with ECG, troponin and echocardiography; a normal ECG and troponin effectively exclude significant injury. Manage with monitored observation, arrhythmia treatment and inotropic support for contusion-related dysfunction; look for valvular or septal rupture." },
+                { injury: "Diaphragmatic rupture and oesophageal injury", detail: "Often occult; suspect with an abnormal diaphragmatic contour, a nasogastric tube in the chest, or mediastinal air. Avoid nitrous oxide, decompress the stomach, and involve upper GI or thoracic surgery — delayed diagnosis of oesophageal perforation carries a very high mortality from mediastinitis." },
+              ].map(item => (
+                <div key={item.injury} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{item.injury}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{item.detail}</p>
+                </div>
+              ))}
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
 
           <ExamSection id="lethal-triad" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="The Lethal Triad">
