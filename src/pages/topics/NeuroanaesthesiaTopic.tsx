@@ -317,6 +317,19 @@ const NeuroanaesthesiaTopic = () => {
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Awake Craniotomy</p>
                 <p className="text-sm text-muted-foreground mt-1">Eloquent cortex surgery (speech, motor). Asleep-awake-asleep technique. Scalp block + dexmedetomidine/remifentanil. Cortical mapping with direct electrical stimulation.</p>
+                <p className="text-xs font-semibold text-foreground mt-3">Patient selection — the success of the case is decided in clinic</p>
+                <ul className="list-disc list-inside text-xs text-muted-foreground mt-1 space-y-1">
+                  <li>Lesion in or adjacent to eloquent cortex where intra-operative mapping will change the extent of resection <InlineRef topicId="neuroanaesthesia" refLabel="BJA 2007 Elective Neurosurgery" /></li>
+                  <li>Motivated, well-informed, psychologically robust adult able to co-operate for 1–3 h and rehearse the mapping tasks pre-operatively</li>
+                  <li>Able to lie still and comfortably in the required position with an unobstructed view of the assessor; joint or back pain, chronic cough and severe obesity all predict failure</li>
+                  <li>Adequate baseline language and cognitive function — a patient who cannot perform the task awake cannot be mapped</li>
+                  <li>Team factors: experienced neuroanaesthetist and neurosurgeon, neuropsychologist, and a theatre culture of quiet and minimal traffic</li>
+                </ul>
+                <p className="text-xs font-semibold text-foreground mt-3">Contraindications</p>
+                <ul className="list-disc list-inside text-xs text-muted-foreground mt-1 space-y-1">
+                  <li><strong className="text-foreground">Absolute:</strong> patient refusal or inability to consent, confusion/dysphasia or cognitive impairment preventing co-operation, severe anxiety or claustrophobia, inability to lie still (movement disorder, chronic pain), and airway obstruction that could not be managed in a pinned head.</li>
+                  <li><strong className="text-foreground">Relative:</strong> markedly raised ICP or large midline shift (tight brain, seizure risk), highly vascular lesion with anticipated major bleeding, uncontrolled epilepsy, morbid obesity or obstructive sleep apnoea, difficult airway, poorly controlled cough/reflux, children and young adolescents, and language barrier without a reliable interpreter.</li>
+                </ul>
               </div>
             </div>
             </CollapsibleSubsection>

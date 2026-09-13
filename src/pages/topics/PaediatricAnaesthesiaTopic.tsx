@@ -27,6 +27,8 @@ const tocItems = [
   { id: "procedures", label: "Key surgical procedures", group: "Clinical" },
   { id: "tiva", label: "Paediatric TIVA & remi-mix", group: "Technique" },
   { id: "analgesia", label: "PCA, NCA & caudal block", group: "Technique" },
+  { id: "cuffed-tubes", label: "Cuffed vs uncuffed tracheal tubes", group: "Technique" },
+  { id: "other-regional", label: "Other regional techniques", group: "Technique" },
   { id: "emergence-agitation", label: "Emergence agitation & delirium", group: "Clinical" },
   { id: "urti", label: "The child with a URTI", group: "Clinical" },
   { id: "fluids", label: "Fluid management", group: "Clinical" },
@@ -468,6 +470,72 @@ const PaediatricAnaesthesiaTopic = () => {
                 </p>
               </div>
             </DiagramSection>
+          </ExamSection>
+
+          <ExamSection id="cuffed-tubes" exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cuffed vs Uncuffed Tracheal Tubes — the Modern Evidence</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                The traditional teaching that uncuffed tubes should be used below the age of 8 years rested on the cylindrical subglottis, the fear of mucosal ischaemia at the cricoid ring and post-extubation stridor. Modern high-volume low-pressure microcuff tubes with a short distal cuff and no Murphy eye have overturned that position.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">The pivotal trial</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    In a prospective randomised controlled multicentre trial in small children, the tube-exchange rate was <strong className="text-foreground">2.1% with cuffed tubes versus 30.8% with uncuffed tubes</strong>, while post-extubation stridor was equivalent (4.4% vs 4.7%) <InlineRef topicId="paediatric-anaesthesia" refLabel="Weiss 2009 Cuffed Tubes" />. Fewer exchanges means fewer laryngoscopies, less airway trauma and less time apnoeic.
+                  </p>
+                </div>
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Practical advantages</p>
+                  <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                    <li>Reliable seal — accurate capnography and tidal volumes, low-flow anaesthesia, less theatre pollution</li>
+                    <li>Permits pressure-controlled or volume-controlled ventilation in poorly compliant lungs</li>
+                    <li>Reduces aspiration risk in the non-fasted or intra-abdominal case</li>
+                    <li>Accepted from about 3 kg body weight in most UK paediatric centres</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="p-4 rounded-lg border-l-4 border-destructive bg-destructive/5 mt-3">
+                <p className="font-semibold text-foreground text-sm">Safety conditions</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Choose a cuffed tube one half-size smaller (age/4 + 3.5), inflate only to the minimum sealing volume, and <strong className="text-foreground">measure cuff pressure continuously, keeping it below 20–25 cmH₂O</strong>. Nitrous oxide diffuses into the cuff and raises pressure over time. Never use a cuffed tube as a substitute for correct sizing.
+                </p>
+              </div>
+            </div>
+          </ExamSection>
+
+          <ExamSection id="other-regional" exams={[Exam.FINAL]} className="scroll-mt-24">
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Beyond the Caudal — Other Paediatric Regional Techniques</h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Ultrasound guidance has moved paediatric practice away from the single-shot caudal towards targeted, lower-volume peripheral and fascial-plane blocks with longer duration and fewer side effects <InlineRef topicId="paediatric-anaesthesia" refLabel="Anaesthesia 2021 Paed Regional" />. Blocks are almost always placed after induction of general anaesthesia; the total local anaesthetic dose must be calculated for the whole plan before the first injection.
+              </p>
+              <div className="space-y-3">
+                <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                  <p className="font-semibold text-foreground text-sm">Ilioinguinal / iliohypogastric block</p>
+                  <p className="text-sm text-muted-foreground mt-1">Inguinal hernia repair, orchidopexy, hydrocoele. Ultrasound between internal oblique and transversus abdominis just medial to the anterior superior iliac spine. <strong>0.1–0.2 ml/kg</strong> of 0.25% levobupivacaine per side. Lower volume and better duration than a caudal for unilateral groin surgery; risks are femoral nerve block (transient inability to weight-bear) and bowel puncture.</p>
+                </div>
+                <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                  <p className="font-semibold text-foreground text-sm">Rectus sheath block</p>
+                  <p className="text-sm text-muted-foreground mt-1">Umbilical and epigastric hernia, laparoscopic port sites, pyloromyotomy, laparotomy. Local anaesthetic deposited between the posterior aspect of the rectus muscle and the posterior rectus sheath, bilaterally. <strong>0.1–0.2 ml/kg per side</strong> of 0.25% levobupivacaine, with ultrasound guidance markedly improving accuracy and reducing the volume required compared with the blind loss-of-resistance technique <InlineRef topicId="paediatric-anaesthesia" refLabel="Willschke 2006 Rectus Sheath" />. Catheters can be sited for midline laparotomy.</p>
+                </div>
+                <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                  <p className="font-semibold text-foreground text-sm">Transversus abdominis plane (TAP) block</p>
+                  <p className="text-sm text-muted-foreground mt-1">Lower abdominal surgery, appendicectomy, stoma formation, renal surgery. <strong>0.2–0.5 ml/kg per side</strong> of 0.25% levobupivacaine in the plane between internal oblique and transversus abdominis. Somatic analgesia only — combine with paracetamol, NSAID and opioid for visceral pain.</p>
+                </div>
+                <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                  <p className="font-semibold text-foreground text-sm">Penile / dorsal nerve of penis block</p>
+                  <p className="text-sm text-muted-foreground mt-1">Circumcision and hypospadias repair. Subpubic approach, <strong>0.1 ml/kg per side</strong> of 0.25% levobupivacaine, or a ring block. <strong className="text-foreground">Never use adrenaline-containing solutions</strong> — risk of glans ischaemia. Comparable analgesia to caudal without motor block or urinary retention.</p>
+                </div>
+                <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                  <p className="font-semibold text-foreground text-sm">Peripheral limb and truncal blocks</p>
+                  <p className="text-sm text-muted-foreground mt-1">Ultrasound-guided axillary and infraclavicular brachial plexus, femoral/fascia iliaca and popliteal sciatic blocks are all used with <strong>0.2–0.5 ml/kg</strong> of dilute local anaesthetic. Erector spinae plane and paravertebral blocks (0.2–0.5 ml/kg) provide thoracic analgesia for thoracotomy, Nuss procedure and cardiac surgery when epidural is undesirable.</p>
+                </div>
+              </div>
+              <p className="text-xs text-muted-foreground mt-3">
+                Dose ceilings apply to the whole plan: levobupivacaine/bupivacaine <strong className="text-foreground">2 mg/kg</strong>, ropivacaine <strong className="text-foreground">3 mg/kg</strong> (halve in neonates, who have reduced protein binding and immature clearance). Aspirate before and during injection, use adrenaline 1:200,000 as an intravascular marker where appropriate, and have lipid emulsion immediately available.
+              </p>
+            </div>
           </ExamSection>
 
           <ExamSection id="emergence-agitation" exams={[Exam.FINAL]} className="scroll-mt-24">

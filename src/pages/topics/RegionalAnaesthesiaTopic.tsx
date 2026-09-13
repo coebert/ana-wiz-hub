@@ -280,6 +280,34 @@ const RegionalAnaesthesiaTopic = () => {
             </div>
           </div>
 
+          <h3 id="pnb-anticoagulation" className="text-lg font-serif font-semibold text-foreground mt-8 mb-2 scroll-mt-24">Anticoagulation and Peripheral Nerve Blocks</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+            The strict neuraxial intervals exist because a vertebral canal haematoma compresses the cord in a closed bony space. Most peripheral blocks are not in that situation, so the guidance is <strong>risk-stratified by site rather than by drug alone</strong>: assess how compressible the site is, whether bleeding would be visible, and what the consequence of a haematoma would be <InlineRef topicId="regional-anaesthesia" refLabel="AAGBI 2020" /><InlineRef topicId="regional-anaesthesia" refLabel="SFAR 2019 Antithrombotics & RA" />.
+          </p>
+          <div className="space-y-3">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Low-risk blocks — superficial and compressible</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Interscalene, supraclavicular (with ultrasound), axillary, femoral, adductor canal, popliteal sciatic, saphenous, ankle, wrist, superficial cervical plexus, scalp block, fascia iliaca, TAP, rectus sheath, PECS and serratus plane. Bleeding is visible and compressible, and the consequence is a bruise rather than a neurological catastrophe. These may reasonably proceed on therapeutic anticoagulation or dual antiplatelet therapy after an individual risk–benefit discussion, using ultrasound, the smallest number of needle passes, avoiding a through-the-muscle trajectory, and documenting the rationale.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">High-risk blocks — deep, non-compressible or near a major vessel</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Lumbar plexus and psoas compartment, lumbar sympathetic, coeliac plexus, deep paravertebral, infraclavicular, obturator, proximal sciatic (Labat), retrobulbar and deep cervical plexus. Retroperitoneal or thoracic haemorrhage here can be occult and massive, and a lumbar plexus haematoma can cause a permanent femoral neuropathy — so these should be treated with the <strong className="text-foreground">same intervals as a neuraxial block</strong>.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Practical rules</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                <li>Catheter <em>removal</em> deserves the same thought as insertion — time it to the trough of anticoagulation, as for neuraxial catheters.</li>
+                <li>Continuous catheters in a high-risk site carry ongoing risk and should generally follow neuraxial intervals throughout.</li>
+                <li>Always consider whether a fascial plane block or simple multimodal analgesia would achieve the same goal at lower risk.</li>
+                <li>Document the discussion, the alternative offered, and a post-block neurological and haemodynamic monitoring plan; a dense unexpected motor block or progressive pain demands urgent review and imaging.</li>
+              </ul>
+            </div>
+          </div>
+
           <h3 id="pnb-adjuncts" className="text-lg font-serif font-semibold text-foreground mt-8 mb-2 scroll-mt-24">Adjuncts for Peripheral Nerve Blocks</h3>
           <div className="space-y-3">
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
