@@ -347,7 +347,14 @@ const PostopHighRiskIcuTopic = () => {
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Evidence Base — Trials & Audits to Quote">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              The link between critical-care admission and outcome is associative, not causal: sicker patients are
+              selected for admission, and the worst outcomes cluster around delayed or unplanned critical care rather
+              than around critical care itself
+              <InlineRef topicId="postop-high-risk-icu" refLabel="Anaesthesia 2008 Critical Care Use" />.
+            </p>
             <div className="space-y-2">
+
               {[
                 { trial: "Pearse 2006 (UK cohort)", result: "12.5% of surgery is high-risk yet accounts for ~80% of perioperative deaths; only 15% admitted to critical care. Foundational for UK perioperative policy — but read it as a description of case-mix and process, not proof that admitting everyone saves lives." },
                 { trial: "Jhanji 2008 (single-trust cohort)", result: "Refines the 'admit them all' message. Mortality was highest not in patients admitted directly after surgery but in those whose critical care was delayed or interrupted: 29.9% for patients admitted to critical care after initial ward care, and 37.7% for those discharged and then readmitted, versus much lower mortality with planned immediate admission. Delayed and unplanned critical care — not critical care itself — marks the highest-risk trajectory, so quote it to argue for planned Level 2/3 beds, outreach and readmission avoidance rather than blanket admission." },
