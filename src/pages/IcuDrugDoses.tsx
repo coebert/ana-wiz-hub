@@ -93,7 +93,7 @@ const DrugSafetyDetail = ({ drugName }: { drugName: string }) => {
         ) : null}
         <p className="text-xs">
           <Link
-            to={`/intensive-care/drug-safety#${drugSlug(drugName)}`}
+            to={`/intensive-care/drug-safety#${safety?.slug ?? slugBase(drugName)}`}
             className="font-medium text-icu underline-offset-4 hover:underline"
           >
             Full safety profile
@@ -323,6 +323,7 @@ const IcuDrugDoses = () => {
                               Kinetics &amp; metabolism
                             </Link>
                           )}
+                          <DrugSafetyDetail drugName={d.drug} />
                         </th>
                         <td className="p-3 text-muted-foreground">{doseFor(d, age)}</td>
                         <td className="p-3 text-muted-foreground">{d.route}</td>
@@ -382,6 +383,7 @@ const IcuDrugDoses = () => {
                         </div>
                       )}
                     </dl>
+                    <DrugSafetyDetail drugName={d.drug} />
                   </li>
                 ))}
               </ul>
