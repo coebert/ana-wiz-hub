@@ -8,6 +8,7 @@ import { Exam } from "@/data/curriculum";
 import TheatreZoningDiagram from "@/components/diagrams/clinical/TheatreZoningDiagram";
 import CssdWasteFlowSubMap from "@/components/diagrams/clinical/CssdWasteFlowSubMap";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const operatingTheatreEnvironmentFaqs: Array<[string, string]> = [
   [
