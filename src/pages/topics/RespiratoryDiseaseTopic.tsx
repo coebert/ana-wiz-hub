@@ -43,7 +43,19 @@ const RespiratoryDiseaseTopicWorkedExamples: WorkedExample[] = [
           <li>Pre-op: PFTs (FEV1, DLCO), V/Q split function, exercise testing (6MWT or CPET; VO₂ peak &lt;15 mL/kg/min = high risk), optimise bronchodilators, treat infection, smoking cessation</li>
           <li>Calculate predicted post-op FEV1 (ppoFEV1) and ppoDLCO; &lt;40% predicts increased respiratory failure risk</li>
           <li>Intra-op: thoracic epidural or paravertebral for analgesia, double-lumen tube with bronchoscopic position check, lung-protective OLV (Vt 4–6 mL/kg ideal body weight, PEEP 5, plateau &lt;25 cmH₂O, permissive hypercapnia)</li>
-          <li>Manage hypoxia on OLV stepwise: FiO₂, recruit dependent lung, CPAP to non-dependent, intermittent re-inflation, surgical pause if persistent</li>
+          <li><strong>Manage hypoxia on OLV — stepwise algorithm</strong>: the underlying cause is loss or attenuation of hypoxic pulmonary vasoconstriction in the non-dependent (collapsed) lung, worsened by volatile agents, vasodilators and low cardiac output
+              <ol className="list-decimal list-inside space-y-1 mt-1 ml-2">
+                <li>Confirm correct double-lumen tube/bronchial blocker position with the fibreoptic scope</li>
+                <li>Increase FiO₂ to 1.0</li>
+                <li>Recruitment manoeuvre to the dependent (ventilated) lung</li>
+                <li>Apply PEEP ~5 cmH₂O to the dependent lung</li>
+                <li>Apply CPAP 5–10 cmH₂O to the non-dependent (collapsed) lung</li>
+                <li>Intermittent re-inflation of the non-dependent lung</li>
+                <li>If hypoxia persists, ask the surgeon to clamp the non-dependent pulmonary artery</li>
+                <li>As a last resort, abandon OLV and re-inflate both lungs</li>
+              </ol>
+              <span className="block mt-1"><InlineRef topicId="respiratory-disease" refLabel="Lumb Ch.27" /> <InlineRef topicId="respiratory-disease" refLabel="BJA Educ OLV 2018" /></span>
+            </li>
           <li>Post-op: HDU, regional analgesia, early mobilisation, chest physiotherapy, NIV if hypercapnic respiratory failure develops</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
@@ -263,6 +275,19 @@ const RespiratoryDiseaseTopic = () => {
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Pulmonary Fibrosis: Associated Pulmonary Hypertension</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Preoperative echocardiography: estimated RVSP, RV size/function, and signs of right heart failure (RV dilatation, septal flattening, tricuspid regurgitation)</li>
+                <li>Intraoperative goals: maintain systemic vascular resistance and avoid rises in pulmonary vascular resistance — prevent hypoxia, hypercarbia, acidosis, hypothermia and high airway pressures</li>
+                <li>These patients are often preload-dependent — avoid excessive vasodilatation and maintain adequate filling while avoiding volume overload of a failing RV</li>
+                <li>Pulmonary vasodilators (inhaled nitric oxide, nebulised iloprost) where severe pulmonary hypertension is present or decompensation occurs</li>
+                <li>Vasopressor choice: noradrenaline or vasopressin to maintain systemic pressure and RV coronary perfusion without worsening PVR</li>
+              </ul>
+              <p className="text-sm mt-2">
+                <InlineRef topicId="respiratory-disease" refLabel="Lumb Ch.27" /> <InlineRef topicId="respiratory-disease" refLabel="Anaesthesia PHTN 2015" />
+              </p>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Neuromuscular & Chest Wall Disease</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Myasthenia gravis, muscular dystrophies, severe kyphoscoliosis → restrictive physiology</li>
@@ -285,9 +310,21 @@ const RespiratoryDiseaseTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Active LRTI: postpone elective surgery; increased risk of bronchospasm, hypoxaemia, and atelectasis</li>
                 <li>Recent URTI: airway hyperreactivity persists 6–8 weeks; in children, 2–4× increased risk of laryngospasm and bronchospasm</li>
+                <li>The <strong>COLDS score</strong> offers a structured heuristic for paediatric risk stratification: <strong>C</strong>old symptoms, <strong>O</strong>nset/timing of symptoms, <strong>L</strong>ung disease (e.g. asthma), airway <strong>D</strong>evice planned, and <strong>S</strong>urgery type/duration — higher scores flag patients at greater risk of perioperative respiratory adverse events</li>
+                <li>Granular postponement guidance:
+                  <ul className="list-disc list-inside space-y-1 mt-1 ml-4">
+                    <li>Clear runny nose, afebrile, otherwise well child — proceed with caution</li>
+                    <li>Productive cough, fever, purulent secretions, or an unwell child — defer at least 4 weeks</li>
+                    <li>Lower respiratory tract infection (e.g. bronchiolitis) — defer at least 6 weeks</li>
+                  </ul>
+                </li>
                 <li>Decision to proceed depends on: severity, procedure urgency, patient age (children &lt;1 year at highest risk), and type of airway management planned</li>
                 <li>If proceeding with URTI: avoid intubation where possible (LMA preferred), use humidified gases, IV induction (avoid desflurane)</li>
+                <li>Perioperative risks: laryngospasm, bronchospasm, desaturation, atelectasis, and postoperative respiratory adverse events</li>
               </ul>
+              <p className="text-sm mt-2">
+                <InlineRef topicId="respiratory-disease" refLabel="COLDS Score 2014" />
+              </p>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6">
               <UrtiAirwayDiagram />

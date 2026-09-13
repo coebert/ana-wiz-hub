@@ -159,6 +159,17 @@ const HaematologicalDiseaseTopic = () => {
               </div>
 
               <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Tranexamic Acid: Risks and Safe Use</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li><strong>Seizure risk:</strong> TXA is a competitive antagonist at glycine and GABA-A receptors; risk rises with high dose, cardiac surgery (especially open-chamber/on-pump procedures) and renal impairment where clearance is reduced — dose-reduce in renal failure. New myoclonus or seizure requires drug review and supportive management (<InlineRef topicId="haematological-disease" refLabel="Lecker TXA Seizures 2016" />).</li>
+                  <li><strong>Thrombotic risk:</strong> POISE-3 showed less bleeding with TXA but did not establish non-inferiority for the composite cardiovascular outcome, so a documented risk/benefit judgement is still needed in patients with a recent thrombotic event (<InlineRef topicId="haematological-disease" refLabel="POISE-3 TXA 2022" />).</li>
+                  <li><strong>Anaphylaxis:</strong> rare but reported — treat as any drug hypersensitivity reaction.</li>
+                  <li><strong>Hypotension:</strong> can occur with rapid intravenous bolus — give over at least 10 minutes.</li>
+                  <li><strong>Wrong-route error:</strong> inadvertent intrathecal administration (ampoule confusion with bupivacaine) causes refractory seizures, ventricular arrhythmia and high mortality — store TXA separately from local anaesthetics, label ampoules/syringes distinctly, and perform a read-back check of the drug name before any neuraxial injection.</li>
+                </ul>
+              </div>
+
+              <div className="bg-card border border-border rounded-lg p-4">
                 <h3 className="font-semibold text-foreground mb-2">Intra-operative Patient Blood Management</h3>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Maintain normothermia, normocalcaemia and pH &gt;7.2 — all support haemostasis</li>

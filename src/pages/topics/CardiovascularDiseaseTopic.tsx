@@ -8,6 +8,7 @@ import { cardiovascularDiseaseQuestions } from "@/data/quizzes";
 import ValvularHaemodynamicsDiagram from "@/components/diagrams/perioperative/ValvularHaemodynamicsDiagram";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const objectives = [
   "Stratify perioperative cardiac risk (METs, RCRI, ESC/ESA pathway) and decide on further investigation.",
@@ -62,6 +63,7 @@ const tocItems = [
   { id: "section-valvular-heart-disease", label: "Valvular Heart Disease", group: "Core" },
   { id: "section-hypertension", label: "Hypertension", group: "Core" },
   { id: "section-heart-failure", label: "Heart Failure & Cardiomyopathy", group: "Management" },
+  { id: "section-cardiomyopathies", label: "Cardiomyopathies", group: "Management" },
   { id: "section-arrhythmias-pacemakers-and-icds", label: "Arrhythmias, Pacemakers & ICDs", group: "Devices" },
   { id: "section-pulmonary-hypertension", label: "Pulmonary Hypertension", group: "Specialist" },
   { id: "section-adult-congenital-heart-disease", label: "Adult Congenital Heart Disease", group: "Specialist" },
@@ -251,6 +253,11 @@ const CardiovascularDiseaseTopic = () => {
                 <li>Fixed low cardiac output; dependent on preload and diastolic filling time</li>
                 <li>Goals: slow rate (60–80), maintain sinus rhythm, adequate preload, maintain SVR</li>
                 <li>Avoid: tachycardia, fluid overload (risk of pulmonary oedema), AF, increased PVR</li>
+                <li>Chronic elevation of left atrial pressure is transmitted backwards, producing post-capillary (Group 2) pulmonary hypertension over time <InlineRef topicId="cardiovascular-disease" refLabel="BJA Educ Valvular 2015" /></li>
+                <li>Long-standing pulmonary hypertension causes RV pressure overload, hypertrophy and eventual RV failure — RV function, not the mitral valve itself, often determines perioperative outcome in advanced disease</li>
+                <li>Anaesthetic goals therefore extend to preserving RV contractility and avoiding any rise in pulmonary vascular resistance (hypoxia, hypercarbia, acidosis, hypothermia, excessive PEEP)</li>
+                <li>A fall in systemic pressure risks dynamic RV ischaemia (reduced RV coronary perfusion pressure in the presence of a pressure-loaded RV) — maintain SVR and avoid abrupt hypotension</li>
+                <li>Consider a pulmonary artery catheter in severe MS with significant pulmonary hypertension undergoing major surgery, to guide RV-directed fluid and inotrope/vasopressor therapy</li>
               </ul>
             </div>
           </div>
@@ -353,16 +360,6 @@ const CardiovascularDiseaseTopic = () => {
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
-              <h3 className="font-semibold text-foreground mb-2">Hypertrophic Obstructive Cardiomyopathy (HOCM)</h3>
-              <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Dynamic left ventricular outflow tract (LVOT) obstruction worsened by anything that reduces LV cavity size or increases contractility/outflow velocity</li>
-                <li>Haemodynamic goals: maintain preload (avoid hypovolaemia and vasodilatation), maintain or increase afterload (SVR) — avoid spinal/epidural-induced sympathectomy and vasodilating drugs, keep heart rate slow-normal (avoid tachycardia, which shortens diastolic filling and worsens obstruction), and avoid inotropes/exogenous catecholamines which worsen the gradient</li>
-                <li>If hypotension occurs: treat with fluid and a pure α-agonist (phenylephrine) rather than an inotrope such as adrenaline/dobutamine, which will worsen LVOT obstruction</li>
-                <li>Avoid the "SAM" (systolic anterior motion) triad of triggers: hypovolaemia, tachycardia, and increased contractility/reduced afterload</li>
-                <li>Regional techniques should be used cautiously with slow, incremental titration (epidural preferred over single-shot spinal) to avoid abrupt sympathectomy</li>
-              </ul>
-            </div>
-            <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Left Ventricular Assist Devices (LVAD)</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Continuous-flow (non-pulsatile) devices are now standard — patients may have a weak or absent palpable pulse and unreliable pulse oximetry/NIBP; use Doppler-derived MAP or an arterial line for accurate pressure monitoring</li>
@@ -371,6 +368,41 @@ const CardiovascularDiseaseTopic = () => {
                 <li>Patients are anticoagulated (warfarin ± antiplatelet); balance thrombotic (pump thrombosis, stroke) versus bleeding risk with specialist LVAD/cardiology team involvement for any surgery</li>
                 <li>Avoid strong magnets/electromagnetic interference near controller; involve the LVAD coordinator/physiologist for perioperative management and have device-specific emergency algorithms available</li>
                 <li>Non-cardiac surgery in LVAD patients should occur at, or in direct liaison with, a specialist LVAD centre wherever possible</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+         {/* Cardiomyopathies */}
+         <section id="section-cardiomyopathies" className="scroll-mt-24">
+           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiomyopathies</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_05"]} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Dilated Cardiomyopathy — "Forward, Fast and Relaxed"</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Goals: maintain forward flow, keep heart rate at the higher end of normal (80–100 bpm) to preserve cardiac output in a poorly contractile, dilated ventricle, reduce afterload to improve ejection fraction, and maintain preload carefully (both hypovolaemia and fluid overload are poorly tolerated) <InlineRef topicId="cardiovascular-disease" refLabel="ESC/ESA 2022" /></li>
+                <li>Avoid: myocardial depressant agents (high-dose volatile, large boluses of propofol) and large increases in afterload (pain, light anaesthesia, vasopressor overuse), both of which precipitate acute decompensation</li>
+                <li>Consider inotropic support and regional/neuraxial techniques that reduce SVR (with careful, incremental titration) to unload the failing ventricle</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Hypertrophic Obstructive Cardiomyopathy (HOCM) — "Slow, Full and Tight"</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Dynamic left ventricular outflow tract (LVOT) obstruction worsened by anything that reduces LV cavity size or increases contractility/outflow velocity</li>
+                <li>Goals: slow the heart rate to maximise diastolic filling time, keep intravascular volume full, and maintain (or increase) afterload/SVR to reduce the LVOT gradient</li>
+                <li>Avoid: tachycardia (shortens diastolic filling and worsens obstruction), hypovolaemia, and vasodilatation — the "SAM" (systolic anterior motion) triad of hypovolaemia, tachycardia, and increased contractility/reduced afterload should be actively avoided</li>
+                <li>Avoid single-shot spinal anaesthesia (abrupt sympathectomy and vasodilatation are poorly tolerated); an epidural, titrated slowly and incrementally, is preferred if neuraxial technique is required</li>
+                <li>Phenylephrine is the first-line vasopressor for hypotension — a pure α-agonist raises SVR without increasing contractility or heart rate; avoid inotropes/exogenous catecholamines (adrenaline, dobutamine), which worsen the gradient</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Restrictive Cardiomyopathy</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Physiology closely resembles constrictive pericarditis — stiff, non-compliant ventricles with impaired diastolic filling but preserved systolic function</li>
+                <li>Goals: maintain preload, maintain sinus rhythm (the atrial contribution to ventricular filling is vital in a non-compliant ventricle — loss of atrial kick or AF is poorly tolerated), maintain SVR, and keep heart rate low-normal to allow adequate diastolic filling time</li>
+                <li>Avoid tachycardia and hypovolaemia — both critically reduce filling and cardiac output in a preload-dependent, non-compliant ventricle</li>
+                <li>Prone to both systemic and pulmonary venous congestion — fluid overload is poorly tolerated and readily precipitates pulmonary oedema and hepatic/systemic congestion, so fluid administration should be cautious and closely monitored <InlineRef topicId="cardiovascular-disease" refLabel="ACC/AHA 2024 Periop" /></li>
               </ul>
             </div>
           </div>
@@ -386,8 +418,10 @@ const CardiovascularDiseaseTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Most common perioperative arrhythmia; present in 5–10% of surgical patients &gt;65, and new-onset in up to 10% after major non-cardiac surgery</li>
                 <li>Perioperative rate control target: resting HR &lt;110 bpm (lenient control acceptable if asymptomatic and haemodynamically stable); β-blocker (IV metoprolol/esmolol) or diltiazem/verapamil first-line — avoid calcium-channel blockers in significant LV impairment</li>
-                <li>Rhythm control (amiodarone, DC cardioversion) reserved for haemodynamic instability or where rate control fails, rather than routine perioperative use</li>
-                <li>New-onset perioperative AF: correct precipitants first (pain, hypovolaemia, hypoxia, electrolyte disturbance — especially K⁺/Mg²⁺, sepsis, anaemia) before/alongside rate control</li>
+                <li>Rate control is generally preferred perioperatively; a rhythm-control strategy is instead indicated for haemodynamic instability, new-onset AF in a younger patient (lower burden of structural disease, greater chance of successful cardioversion), symptomatic intolerance of AF (e.g. severe palpitations, angina), or clear patient preference <InlineRef topicId="cardiovascular-disease" refLabel="ESC/ESA 2022" /></li>
+                <li>New-onset perioperative AF: actively search for and correct a precipitant/trigger before or alongside rate control — sepsis, pain, hypovolaemia, electrolyte disturbance (especially K⁺/Mg²⁺), myocardial ischaemia, hypoxia, and pulmonary embolism should all be considered and excluded/treated</li>
+                <li>Urgent synchronised DC cardioversion is indicated for AF causing haemodynamic compromise (hypotension, pulmonary oedema, ongoing ischaemia, or reduced consciousness) — deliver a synchronised shock under general anaesthesia/deep sedation, using escalating energies if the initial shock fails, with anticoagulation considerations (thromboembolic risk if AF onset is uncertain or &gt;48 h, though this should not delay cardioversion in a haemodynamically compromised patient)</li>
+                <li>Pharmacological cardioversion (e.g. IV amiodarone) is an option where DC cardioversion is not immediately available or appropriate, but onset of action is slower and effectiveness is reduced with longer-standing AF or structural heart disease — amiodarone is also useful for rate control and rhythm stabilisation in the critically unwell perioperative patient</li>
                 <li>Anticoagulation management: bridge with LMWH only if CHA₂DS₂-VASc ≥2 and high thrombotic risk (e.g. mechanical valve, recent stroke); balance against HAS-BLED bleeding risk and surgical bleeding risk category — most patients on a DOAC for AF alone do not need heparin bridging</li>
               </ul>
             </div>
