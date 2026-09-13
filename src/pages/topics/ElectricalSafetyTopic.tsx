@@ -25,6 +25,62 @@ const electricalSafetyFaqs: Array<[string, string]> = [
   [
     "What is microshock and how is it prevented?",
     "Microshock is ventricular fibrillation caused by a current as small as 50–100 µA delivered directly to the myocardium via a pacing wire or fluid-filled catheter. Prevention: use only CF-rated equipment for cardiac connections, ensure earth-leakage <10 µA, insulate the proximal end of pacing wires, and avoid touching exposed connectors with bare hands."
+  ],
+  [
+    "Why do theatres use an isolated power supply instead of an RCD?",
+    "An RCD disconnects the supply within about 40 ms when live/neutral currents differ by more than 30 mA. Sudden loss of power to a ventilator, bypass pump or surgical light can be more dangerous than the fault, so Group 2 medical locations (theatres, cardiac cath labs, critical care bedspaces) use a 1:1 isolation transformer with a line isolation monitor that alarms but does not disconnect. Two independent faults are then needed to shock anyone."
+  ],
+  [
+    "What should I do when the line isolation monitor alarms mid-case?",
+    "Do not panic or switch everything off. The supply is still safe — the alarm means one fault has occurred and the safety margin is gone. Stop connecting new devices, then unplug the most recently added equipment one at a time until the alarm clears; the last device unplugged is the faulty one. If the alarm persists with everything unplugged, the fault is in the fixed wiring: call estates, finish or pause the case safely, and avoid contact between patient and any earthed metalwork."
+  ],
+  [
+    "What causes a diathermy return-plate burn and how is it avoided?",
+    "Burns occur when the effective contact area of the return electrode falls — partial peeling, hair, scar, bony prominence, fluid or prep soaking the adhesive, or a plate applied over a metal implant — so current density at the plate rises. Apply a full-size plate to clean, dry, shaved, well-perfused muscle bulk close to the operative site, with the long axis facing the surgical field, and re-check it after repositioning. Contact-quality-monitoring plates alarm before injury occurs."
+  ],
+  [
+    "Why does a patient get a burn somewhere other than the diathermy site?",
+    "Alternate-site burns arise when current finds a small-area path to earth — ECG electrodes, temperature probes, a drip stand, stirrups, or skin-to-skin contact between a limb and the trunk. With modern isolated-output generators this is uncommon but occurs where the patient touches earthed metal. Keep the patient insulated from metal, avoid skin-to-skin bridges with padding, and site monitoring away from the current path."
+  ],
+  [
+    "What are direct and capacitive coupling in laparoscopic surgery?",
+    "Direct coupling is the active electrode touching another conductor (a metal instrument, laparoscope or clip) which then burns bowel out of view. Capacitive coupling is current induced in a surrounding conductor across intact insulation — classically an active hook inside a metal cannula, or a metal instrument in a plastic port. Insulation failure at the shaft causes the same injury. Mitigation: inspect insulation, use short bursts at lowest power, keep the whole active tip in view, activate only when the tip is clear, and use all-metal or all-plastic port systems rather than hybrids."
+  ],
+  [
+    "How do I prevent a surgical fire in theatre?",
+    "Fire needs oxidiser, fuel and ignition. Allow alcohol-based prep to dry fully and avoid pooling under drapes; avoid open oxygen delivery above the clavicles — use a cuffed tube or laryngeal mask so the oxygen is contained, or keep the inspired oxygen at the lowest tolerated level and pause enrichment for 1 minute before diathermy near the airway; keep swabs damp; and hold the active electrode in a quiver when not in use. If a fire starts: stop the gas flow, remove burning material and drapes, extinguish with saline, then reassess airway and burns."
+  ],
+  [
+    "Is bipolar or monopolar diathermy safer for a patient with a pacemaker?",
+    "Bipolar — the current path is confined to the two forceps tips, so nothing traverses the thorax or the device leads. Where monopolar is unavoidable, use short irregular bursts under 5 seconds at the lowest effective power, keep the current path (electrode to return plate) away from the generator and leads, monitor perfusion by plethysmograph or arterial trace because diathermy obscures the ECG, and have a magnet, external pacing/defibrillation pads and chronotropes immediately available."
+  ],
+  [
+    "How does a magnet affect a pacemaker or ICD?",
+    "Over most pacemakers a magnet produces asynchronous pacing (VOO/DOO) at a fixed manufacturer-specific rate, protecting against diathermy-induced inhibition. Over an ICD it suspends tachyarrhythmia detection and shock delivery but does not change pacing. Magnet behaviour varies between manufacturers and can be programmed off, so confirm the expected response with the device team, and arrange a postoperative check before the patient leaves monitored care."
+  ],
+  [
+    "How is diathermy used safely in a patient having MRI or with an intra-aortic device?",
+    "Diathermy is not used inside the MRI environment. The MRI hazards are different: radiofrequency energy heats conductive loops, so route ECG cables straight without loops, keep them off the skin, use the minimum monitoring, and only equipment labelled MR Safe or used within its MR Conditional limits. Active implants need exact device identification and a documented programme-and-monitor plan because of lead-tip heating and inappropriate therapy."
+  ],
+  [
+    "What is a leakage current and what limits apply?",
+    "Leakage current is the small current that flows from mains-powered parts to earth or to the patient through insulation and capacitance even when the device works normally. Limits under IEC 60601-1 are set by applied-part type: 100 µA for type B and BF, and 10 µA for type CF, with higher single-fault allowances. Because leakage from several devices can sum through one patient, equipotential earthing, CF connections for anything intracardiac, and routine electrical safety testing are all needed."
+  ],
+  [
+    "What do I do if a member of staff or a patient receives an electric shock in theatre?",
+    "Isolate the supply or use an insulating object to break contact before touching the casualty — never grab them. Start ALS if they are unresponsive: shock-induced arrest is often VF and responds to defibrillation. Look for entry and exit burns, arrhythmia, rhabdomyolysis and, in high-voltage injury, deep tissue damage. Monitor ECG for at least a few hours if there was any loss of consciousness, arrhythmia or a current path across the chest, quarantine the device, and report through the incident and MHRA/medical-device routes."
+  ],
+  [
+    "Why is theatre humidity kept at 50–60%?",
+    "A thin conductive film of water forms on surfaces at that humidity and continuously drains static charge to earth, preventing spark discharge. It began as protection against ignition of ether and cyclopropane and remains relevant to alcohol prep and airway fires, static damage to electronics, and static discharge to monitoring leads. Below about 40% relative humidity, drapes, vinyl flooring and clothing accumulate triboelectric charge."
+  ],
+  [
+    "Can I use a nerve stimulator, TENS machine or forced-air warmer safely with an implanted device?",
+    "Peripheral nerve stimulators deliver a few tens of milliamps over a limb and are safe with normal siting, but keep the electrodes on a limb away from the thorax and any pacing system. TENS is generally avoided over the chest or across a pacemaker or ICD because pulsed current can be sensed as intrinsic activity. Forced-air and resistive warming blankets are class-approved patient-contact devices — use only the manufacturer's blanket, never a bare hose (free-hosing causes burns), and keep them clear of the diathermy return plate."
+  ],
+  [
+    "How often must theatre electrical equipment be tested?",
+    "Frequency is set by risk in the local medical-device management policy rather than a fixed legal interval: mains-powered patient-connected devices in theatre and critical care are usually checked annually, with a visual check of plug, cable and casing by the user before every use. Anything dropped, wetted, sparking, tripping the supply or giving an unexplained monitor artefact is withdrawn and tested. Extension leads and daisy-chaining are avoided because they defeat isolated-supply protection and add earth-fault paths."
   ]
 ];
 
