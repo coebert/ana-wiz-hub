@@ -524,6 +524,9 @@ const TIVATopic = () => {
                     </div>
                   ))}
                 </div>
+                <p className="text-xs text-muted-foreground mt-3">
+                  The equipment standards above (dedicated visible cannula, Luer-lock connections, anti-syphon and anti-reflux valves, carrier fluid and depth-of-anaesthesia monitoring) are those set out in the joint Association of Anaesthetists / Society for Intravenous Anaesthesia guidelines, which state that all anaesthetists should be able to deliver total intravenous anaesthesia competently and safely <InlineRef topicId="tiva" refLabel="AoA TIVA Guidelines 2019" />.
+                </p>
               </CollapsibleSubsection>
             </div>
 

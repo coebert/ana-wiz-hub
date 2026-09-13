@@ -55,7 +55,7 @@ const regionalFaqs: Array<[string, string]> = [
   ],
   [
     "Does spinal anaesthesia hurt and is it safe?",
-    "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 reported epidural haematoma around 1:220,000 for spinal anaesthesia and meningitis < 1:50,000. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
+    "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 reported vertebral canal haematoma around 1:220,000 for spinal anaesthesia and 1:150,000 for epidural anaesthesia, and meningitis < 1:50,000. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
   ],
   [
     "Why does spinal anaesthesia drop blood pressure?",

@@ -228,7 +228,7 @@ const OperatingTheatreEnvironmentTopic = () => {
               Operating theatres are wired with an <strong>isolated (IT) power system</strong>: the mains supply is separated from earth via an
               isolating transformer. A single fault to earth therefore does NOT complete a shock circuit — instead it triggers a
               <strong> line isolation monitor</strong> (audible/visual alarm) so the fault can be investigated electively. Without isolation,
-              a patient with intracardiac wires or pacing leads is at risk of <strong>microshock</strong> (currents as low as 100 µA causing VF).
+              a patient with intracardiac wires or pacing leads is at risk of <strong>microshock</strong> (currents as low as 50–100 µA delivered directly to the myocardium can induce VF) <InlineRef topicId="operating-theatre-environment" refLabel="BJA Educ 2018 Electrical Safety" />.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Equipment is classified by IEC 60601 according to leakage-current protection at the patient interface:

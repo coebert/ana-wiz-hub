@@ -133,7 +133,7 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer:
-      "Declare CICO at the failure of Plan C (or earlier if oxygenation is critical), and perform scalpel-bougie-tube cricothyroidotomy before SpO₂ < 80 %. Do not delay for further attempts at SAD or facemask ventilation.",
+      "Proceed to FONA immediately after declaring CICO. The trigger is the failure of intubation, SAD and face-mask oxygenation — not a particular saturation number: waiting for SpO₂ to fall to an arbitrary threshold such as 80 % introduces dangerous delay, and NAP4 identified exactly this hesitation as a cause of avoidable harm. Perform scalpel-bougie-tube cricothyroidotomy without further attempts at SAD or facemask ventilation.",
    cites: ["DAS 2015"],
   },
   {
@@ -728,7 +728,7 @@ const AirwayManagementTopic = () => {
         { text: "2nd-generation SADs have gastric drain ports and seal pressures 25–35 cmH₂O.", cites: ["NAP4 2011"] },
         { text: "Videolaryngoscopy reduces failed intubation rates (Cochrane 2022) and is now the recommended default in predicted difficulty.", cites: ["DAS 2015"] },
         { text: "AFOI: block V₁/V₂, IX, internal SLN and recurrent laryngeal — sensory map drives the topicalisation plan.", cites: ["BJA Educ 2017"] },
-        { text: "CICO requires early declaration and immediate scalpel-bougie-tube cricothyroidotomy before SpO₂ < 80 %.", cites: ["NAP4 2011"] },
+        { text: "CICO requires early declaration and immediate scalpel-bougie-tube cricothyroidotomy — triggered by failed oxygenation, not by waiting for a specific SpO₂ threshold.", cites: ["NAP4 2011"] },
         { text: "NAP4 lessons: failure to plan, failure to plan for failure, and persistence with failing techniques are the dominant themes.", cites: ["DAS 2015"] },
       ]}
     />
