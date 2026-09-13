@@ -10,6 +10,7 @@ import ARDSVentModeComparisonDiagram from "@/components/diagrams/intensive-care/
 import EOLIAMurrayCalculator from "@/components/diagrams/intensive-care/EOLIAMurrayCalculator";
 import PneumoniaSteroidDecisionTree from "@/components/diagrams/intensive-care/PneumoniaSteroidDecisionTree";
 import ARDSPathophysiologyCascadeDiagram from "@/components/diagrams/intensive-care/ARDSPathophysiologyCascadeDiagram";
+import RefractoryHypoxaemiaFlowchart from "@/components/diagrams/shared/RefractoryHypoxaemiaFlowchart";
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";

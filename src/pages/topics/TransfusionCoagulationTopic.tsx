@@ -8,6 +8,7 @@ import TraliVsTacoDecisionTool from "@/components/diagrams/intensive-care/TraliV
 import CellSalvageAnimatedDiagram from "@/components/diagrams/intensive-care/CellSalvageAnimatedDiagram";
 import AcdCitrateChelationDiagram from "@/components/diagrams/intensive-care/AcdCitrateChelationDiagram";
 import CitrateWashSeparationDiagram from "@/components/diagrams/intensive-care/CitrateWashSeparationDiagram";
+import MajorHaemorrhageFlowchart from "@/components/diagrams/shared/MajorHaemorrhageFlowchart";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
