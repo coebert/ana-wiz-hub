@@ -196,6 +196,11 @@ const coreConcepts = (
           <p className="text-xs text-muted-foreground italic mb-2">35-year-old, IV teicoplanin at induction.</p>
           <p className="text-sm text-foreground/90">Sudden ↓ETCO₂, peak airway pressure 38, urticaria, BP 50/30, tryptase rising. <strong>Pattern:</strong> profound vasodilation + capillary leak + bronchospasm. <strong>Treat:</strong> stop trigger, IM adrenaline 500 µg (or IV 50 µg boluses titrated), 100% O₂, IV fluid bolus, second-line: salbutamol, hydrocortisone, chlorphenamine.</p>
         </div>
+        <div className="rounded-lg border border-border bg-card p-4">
+          <h3 className="font-serif font-semibold text-foreground mb-1">Mixed / endocrine — phaeochromocytoma crisis</h3>
+          <p className="text-xs text-muted-foreground italic mb-2">44-year-old, hypertensive crisis during laparoscopic adrenal surgery.</p>
+          <p className="text-sm text-foreground/90">BP swings from 240/130 to 60/35, HR 150 with ectopy, headache, sweating, hyperglycaemia, lactate 5.0; echo shows a stress (catecholamine) cardiomyopathy with LVEF 30%. <strong>Pattern:</strong> a mixed picture — massive catecholamine surge gives extreme ↑SVR and hypertension, then abrupt <em>cardiogenic and distributive</em> collapse once the tumour is devascularised (loss of catecholamine drive onto a down-regulated, volume-depleted circulation) <InlineRef topicId="circulatory-failure" refLabel="Endocr Rev 2022 (Phaeochromocytoma)" />. <strong>Treat:</strong> phenoxybenzamine/doxazosin α-blockade for 1–2 weeks pre-operatively with liberal salt and fluid, <em>β-blockade only after</em> α-blockade (unopposed α causes catastrophic vasoconstriction); intra-operatively use short-acting agents (phentolamine, magnesium, GTN/SNP, esmolol) and anticipate post-clamp hypotension needing fluid, noradrenaline and occasionally vasopressin. Monitor for post-operative hypoglycaemia from rebound hyperinsulinaemia.</p>
+        </div>
         <div className="rounded-lg border border-border bg-card p-4 md:col-span-2">
           <h3 className="font-serif font-semibold text-foreground mb-1">Distributive — neurogenic</h3>
           <p className="text-xs text-muted-foreground italic mb-2">28-year-old, fall from height, complete C5 cord injury.</p>
@@ -379,8 +384,29 @@ const coreConcepts = (
         <li><strong className="text-foreground">Flow rates:</strong> VV-ECMO 50–80 mL/kg/min for adequate oxygenation; VA-ECMO 3–6 L/min (sufficient to support CO).</li>
         <li><strong className="text-foreground">Sweep gas</strong> controls CO₂ removal (↑ sweep → ↓ PaCO₂); membrane <strong>FiO₂</strong> controls PaO₂. The two are independent.</li>
         <li><strong className="text-foreground">Anticoagulation:</strong> UFH infusion targeting APTT 60–80 s or ACT 180–220 s. Bivalirudin if HIT.</li>
-        <li><strong className="text-foreground">Weaning</strong> — VV: reduce sweep gas (FdO₂ + flow) and observe ABGs on native ventilation. VA: turn-down trial, echo for LV/RV recovery, lactate and SvO₂ trends.</li>
       </ul>
+
+      <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Weaning from mechanical circulatory support</h3>
+      <div className="grid sm:grid-cols-2 gap-3">
+        <div className="p-4 rounded-lg border border-border bg-card">
+          <p className="font-semibold text-foreground text-sm">VA-ECMO — the turn-down trial</p>
+          <ul className="text-xs text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+            <li><strong className="text-foreground">Readiness:</strong> the cause of shock is resolving, arrhythmias controlled, lactate normalised, organ function improving, no significant bleeding, and a return of pulsatility on the arterial trace with recovering pulse pressure.</li>
+            <li><strong className="text-foreground">Process:</strong> stepwise reduction of pump flow (typically 0.5 L/min every 10–20 min) down to about 1.5–2 L/min, with anticoagulation intensified at low flows because of stasis and thrombosis risk <InlineRef topicId="circulatory-failure" refLabel="BJA Educ ECMO Weaning 2019" />.</li>
+            <li><strong className="text-foreground">Monitoring:</strong> continuous echocardiography (target LVEF &gt; 20–25%, aortic VTI &gt; 10 cm, lateral mitral annular S′ &gt; 6 cm/s, no new RV dilatation), arterial line, PA catheter or ScvO₂ where available.</li>
+            <li><strong className="text-foreground">Success:</strong> MAP ≥ 65 mmHg on stable low-dose inotropes/vasopressors, no rise in filling pressures (PAOP/LA pressure) or pulmonary oedema, stable SvO₂ and lactate over the trial period — then decannulate; failure means returning to full flow and reassessing in 24–48 h or escalating to durable support/transplant assessment.</li>
+          </ul>
+        </div>
+        <div className="p-4 rounded-lg border border-border bg-card">
+          <p className="font-semibold text-foreground text-sm">VV-ECMO and IABP</p>
+          <ul className="text-xs text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+            <li><strong className="text-foreground">VV readiness:</strong> improving compliance and chest radiograph, tolerable gas exchange on protective settings (FiO₂ ≤ 0.5–0.6, plateau ≤ 30 cmH₂O, driving pressure ≤ 15 cmH₂O).</li>
+            <li><strong className="text-foreground">VV process:</strong> reduce membrane FiO₂, then wean sweep gas to zero (the "sweep-off" or U-bend trial) while keeping blood flow — and therefore anticoagulation — unchanged; assess native lung function on conventional ventilator settings for 2–4 h.</li>
+            <li><strong className="text-foreground">VV success:</strong> acceptable PaO₂ and PaCO₂ with a stable respiratory rate and work of breathing on non-injurious settings.</li>
+            <li><strong className="text-foreground">IABP:</strong> wean augmentation ratio from 1:1 to 1:2 (and 1:3), then reduce balloon volume, watching MAP, urine output, lactate and inotrope requirement; remove promptly once weaned because of limb ischaemia, haemolysis and infection risk.</li>
+          </ul>
+        </div>
+      </div>
 
       <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Indications & evidence</h3>
       <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">

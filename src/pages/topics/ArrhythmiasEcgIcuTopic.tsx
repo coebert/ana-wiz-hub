@@ -489,7 +489,7 @@ const ArrhythmiasEcgIcuTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Targeted temperature management</p>
-                <p className="text-xs text-muted-foreground mt-1">TTM2 trial: target 33–36 °C vs strict normothermia &lt; 37.7 °C; avoid fever for 72 h.</p>
+                <p className="text-xs text-muted-foreground mt-1">Routine therapeutic hypothermia is <strong>no longer recommended</strong>: TTM2 (2021) found no mortality or functional benefit from targeting 33 °C compared with strict normothermia. Current ERC/ESICM 2021 practice is continuous core-temperature monitoring with <strong>active prevention of fever (&gt; 37.7 °C) for at least 72 h</strong> in patients who remain comatose after ROSC, using surface or intravascular devices with feedback control if simple measures fail <InlineRef topicId="arrhythmias-ecg-icu" refLabel="ERC/ESICM 2021 Post-Resus" />.</p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Recurrent arrhythmia prevention</p>

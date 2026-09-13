@@ -150,7 +150,13 @@ const CoreConcepts = () => (
         <div className="rounded-lg border border-border p-4">
           <p className="font-semibold text-foreground text-sm mb-1">Bioimpedance & bioreactance</p>
           <p className="text-sm text-muted-foreground">
-            Thoracic bioimpedance measures changes in resistance to a small applied current as blood volume in the aorta varies. Bioreactance (NICOM) measures the phase shift of the signal — less susceptible to motion and electrical noise. Completely non-invasive but limited absolute accuracy, particularly in low-flow states, oedema, and with diathermy.
+            <strong>Principle:</strong> a low-amplitude, high-frequency current is applied across the thorax through skin electrodes. Thoracic bioimpedance measures the beat-to-beat fall in electrical impedance as blood volume in the aorta rises during systole, and converts the rate of change into stroke volume through a population-derived equation. Bioreactance (NICOM) instead measures the <em>phase shift</em> (time delay) between the applied and received signal, which tracks aortic flow and is less corrupted by static tissue, fluid and motion artefact.
+          </p>
+          <p className="text-sm text-muted-foreground mt-2">
+            <strong>Application:</strong> four thoracic pads give continuous, entirely non-invasive cardiac output and stroke-volume-variation trending with no vascular access — attractive in theatre recovery, the emergency department, obstetrics, and for passive-leg-raise testing in patients who do not warrant an arterial line.
+          </p>
+          <p className="text-sm text-muted-foreground mt-2">
+            <strong>Limitations:</strong> a systematic review and meta-analysis of completely non-invasive devices (37 studies, 1543 patients) found a pooled bias of −0.13 L/min but limits of agreement of −2.38 to +2.12 L/min and a <strong>percentage error of 47%</strong>, far outside the 30% limit of acceptance — so these devices are <em>not</em> interchangeable with bolus thermodilution for absolute values and should be used for trends only <InlineRef topicId="cardiac-output-monitoring" refLabel="BJA 2017 (Non-invasive CO accuracy)" />. Accuracy degrades further with pulmonary oedema, large pleural effusions, arrhythmia, patient movement, diathermy and poor electrode contact.
           </p>
         </div>
       </div>
@@ -380,7 +386,7 @@ const CoreConcepts = () => (
         </div>
       </div>
       <div className="mt-3 rounded-lg border border-border bg-muted/30 p-3 text-xs text-muted-foreground">
-        <span className="font-semibold text-foreground">Veno-arterial CO₂ gap (Pv-aCO₂):</span> a normal gap is &lt;6 mmHg. A widened gap with normal ScvO₂ suggests inadequate CO despite preserved oxygen extraction — useful when ScvO₂ is misleadingly high (sepsis, cyanide, AV shunting).
+        <span className="font-semibold text-foreground">Veno-arterial CO₂ gap (Pv-aCO₂):</span> the difference between central venous and arterial PCO₂ (normal <strong>2–6 mmHg, 0.3–0.8 kPa</strong>). <em>Physiological basis:</em> tissues continuously produce CO₂, and its removal depends on venous blood flow to wash it out. When flow is low, CO₂ accumulates in the tissues and in the effluent venous blood (an effect amplified by the Haldane effect in desaturated blood), so the gap widens even though total CO₂ production may be unchanged or reduced. <em>Interpretation:</em> a gap &gt;6 mmHg indicates that cardiac output is inadequate to clear the CO₂ being produced — a marker of global hypoperfusion — and it stays informative when ScvO₂ is misleadingly normal or high (sepsis with microcirculatory shunting, cyanide toxicity, AV shunts). <em>Clinical utility:</em> in septic shock, a persistently wide gap after initial fluid resuscitation argues for improving flow (inotrope, or reassessing fluid responsiveness dynamically) rather than reflexively giving more fluid, since further expansion may cost ventilator-free days and worsen pulmonary oedema and RV failure <InlineRef topicId="cardiac-output-monitoring" refLabel="Crit Care 2023 (Personalised fluid therapy)" />. <em>Ratio analysis:</em> the Pv-aCO₂ / Ca-vO₂ ratio (normal &lt;1.4 mmHg per mL/dL) rises when metabolism becomes anaerobic and is a useful adjunct to lactate when interpreting persistent shock.
       </div>
     </div>
 

@@ -218,7 +218,7 @@ const BronchospasticFailureTopic = () => {
           <div className="space-y-2 mb-4">
             {[
               { label: "Clinical Signs", detail: "Tracheal tug, hyperexpanded chest, reduced air entry, paradoxical abdominal movement, pulsus paradoxus (>10 mmHg fall in systolic BP on inspiration — reflects exaggerated intrathoracic pressure swings)." },
-              { label: "Cardiovascular Compromise", detail: "Auto-PEEP acts like a Valsalva manoeuvre → ↓ venous return → ↓ cardiac output → PEA arrest. Immediate management: disconnect from ventilator and allow prolonged expiration. Bilateral thoracostomies to exclude tension pneumothorax." },
+              { label: "Cardiovascular Compromise", detail: "Auto-PEEP acts like a sustained Valsalva manoeuvre → ↓ venous return → ↓ cardiac output → PEA arrest. Immediate management: (1) disconnect from the ventilator and allow prolonged expiration, with manual chest compression of the thorax to empty trapped gas; (2) give a rapid fluid bolus (250–500 mL crystalloid, repeated) because these patients are usually profoundly volume-depleted from days of dyspnoea, poor intake and insensible losses, and preload is the limiting factor once intrathoracic pressure is high; (3) start a vasopressor early — noradrenaline (or peripheral metaraminol/adrenaline while access is secured) to maintain coronary and cerebral perfusion pressure; adrenaline is the logical choice where continued bronchodilatation is also wanted; (4) deepen sedation and ensure full neuromuscular blockade to abolish patient-ventilator dyssynchrony and expiratory muscle activity that worsens trapping — ketamine infusion is useful for its bronchodilator and haemodynamically stable profile; (5) reduce minute ventilation (rate 8–10/min, tidal volume 6 mL/kg, I:E 1:3–1:5) and accept permissive hypercapnia; (6) perform bilateral thoracostomies to exclude tension pneumothorax if collapse persists after disconnection."},
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                 <p className="font-semibold text-foreground text-sm">{item.label}</p>
@@ -434,6 +434,25 @@ const BronchospasticFailureTopic = () => {
               </div>
             ))}
           </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Weaning &amp; Extubation in Asthma</h3>
+          <p className="text-sm text-muted-foreground mb-2">
+            Unlike COPD, ventilated asthma usually weans <strong>quickly</strong> once bronchospasm resolves — most patients are extubated within 24–72 h. The limiting factors are residual airflow obstruction, sedation load (often deep, with ketamine and neuromuscular blockade) and steroid/NMB-associated myopathy after prolonged paralysis.
+          </p>
+          <div className="space-y-2 mb-4">
+            {[
+              { label: "Readiness criteria", detail: "Auto-PEEP <5 cmH₂O and expiratory flow returning to zero; plateau pressure <25 cmH₂O; compliance and airway resistance improving; PaCO₂ normalising on unchanged or reduced minute ventilation; wheeze markedly reduced with lengthening inter-dose intervals of salbutamol; FiO₂ ≤0.4 with PEEP ≤5 cmH₂O; awake, cooperative, effective cough." },
+              { label: "Sequence", detail: "Stop neuromuscular blockade first and confirm full reversal with a train-of-four ratio >0.9 (accumulated aminosteroid NMB plus high-dose steroid is the classic cause of critical illness myopathy). Then lighten sedation with daily interruption, switching to pressure support with low PEEP; ketamine and inhaled volatile can usually be stopped once the patient tolerates 8–12 mL/kg spontaneous breaths without dyssynchrony." },
+              { label: "Spontaneous breathing trial", detail: "30–120 min of pressure support 5–8 cmH₂O / PEEP 5 or T-piece; failure is signalled by rising respiratory rate >35, recurrent wheeze, accessory muscle use, rising PaCO₂, or reappearance of gas trapping on the flow-time waveform." },
+              { label: "Peri-extubation therapy", detail: "Continue regular nebulised salbutamol and ipratropium, systemic corticosteroids (prednisolone 40–50 mg daily to complete at least 5 days) and inhaled corticosteroid; ensure adequate hydration and secretion clearance with physiotherapy, as mucus plugging causes late deterioration." },
+              { label: "After extubation", detail: "Monitor closely for 4–6 h for recurrent bronchospasm and post-extubation stridor (prolonged large ETT, high cuff pressures); consider high-flow nasal oxygen for comfort. Before discharge from critical care, review inhaler technique and adherence, arrange a written personalised asthma action plan and specialist respiratory follow-up within 48 h of ward transfer and 4 weeks of discharge, and identify avoidable triggers — near-fatal asthma carries a high risk of recurrence." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
         </CollapsibleSubsection>
 
         {/* ---- IECOPD ---- */}
@@ -589,7 +608,7 @@ const BronchospasticFailureTopic = () => {
           <div className="space-y-2">
             {[
               { label: "ECMO for Refractory Asthma", detail: "VV-ECMO has been used successfully in near-fatal asthma when conventional ventilation fails. Allows 'lung rest' — can reduce or stop mechanical ventilation entirely while bronchospasm resolves. Young patients with reversible pathology are ideal candidates. Early referral to ECMO centre." },
-              { label: "Heliox (Helium-Oxygen)", detail: "Helium (70–80%) + oxygen mixture. Lower density than air → reduces turbulent flow resistance → improves gas delivery to distal airways. Reduces work of breathing. Limitations: FiO₂ limited to 20–30%, not widely available, requires non-rebreathing system. Evidence weak but physiologically rational as a bridge." },
+              { label: "Heliox (Helium-Oxygen)", detail: "Available as premixed cylinders of 79% helium/21% oxygen or 70/30 (Heliox21/Heliox28); density is roughly one-third that of air, so the Reynolds number falls and flow through narrowed, turbulent airways becomes more laminar — reducing resistive work of breathing and peak airway pressures, and improving distal delivery of nebulised salbutamol (nebulise driven by heliox at 25–30% higher flow than usual). Practical points: use a tight-fitting non-rebreathing circuit or a ventilator validated for heliox, since the low density under-reads on standard flow sensors and can misdeliver tidal volumes (verify with a heliox-compatible ventilator or measure exhaled volumes independently); FiO₂ is capped at 30–40% before the density benefit is lost, so heliox is unsuitable for significant hypoxaemia; it changes voice pitch, cools the patient, and must be scavenged/handled per local cylinder policy; benefit is immediate if it is going to work, so review within 15–20 min and abandon if there is no fall in work of breathing or airway pressures. Evidence remains weak (no mortality benefit) so it is a physiologically rational bridge while steroids and bronchodilators take effect, not a standard therapy. See BJA Education (2023) guidance on the ventilated asthmatic." },
               { label: "Bronchoscopy & Lavage", detail: "Mucus plugging is the major cause of death in fatal asthma. Bronchoscopic lavage can remove inspissated mucus plugs in refractory cases. Risk of worsening bronchospasm during procedure. Consider in ventilated patients with persistent lobar collapse despite aggressive medical therapy." },
               { label: "Prone Positioning", detail: "Limited evidence in asthma/COPD but may improve V/Q matching and facilitate secretion drainage. Case reports of benefit in refractory asthma. More established in ARDS — may overlap if ARDS develops as a complication." },
               { label: "General Anaesthesia", detail: "If volatile agents via Sedaconda are unavailable, transfer to theatre for inhalational anaesthesia with sevoflurane/isoflurane via a standard anaesthetic machine has been used as a last resort in near-fatal asthma." },
