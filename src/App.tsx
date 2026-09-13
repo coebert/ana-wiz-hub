@@ -28,6 +28,8 @@ const VivaQuestionLibrary = lazy(() => import("./pages/VivaQuestionLibrary"));
 const CoverageBarsResponsiveTest = lazy(() => import("./pages/CoverageBarsResponsiveTest"));
 const DrugsLibrary = lazy(() => import("./pages/DrugsLibrary"));
 const DrugDetail = lazy(() => import("./pages/DrugDetail"));
+const DrugReferenceLibrary = lazy(() => import("./pages/reference/DrugReferenceLibrary"));
+const DrugReferenceEntry = lazy(() => import("./pages/reference/DrugReferenceEntry"));
 const SeoIndexing = lazy(() => import("./pages/SeoIndexing"));
 const A11yAudit = lazy(() => import("./pages/A11yAudit"));
 const Curriculum = lazy(() => import("./pages/Curriculum"));
@@ -158,6 +160,8 @@ const App = () => (
           <Route path="/dev/diagram-snapshot" element={<DiagramSnapshot />} />
           <Route path="/dev/diagram-snapshot/:name" element={<DiagramSnapshot />} />
           <Route path="/drugs" element={<DrugsLibrary />} />
+          <Route path="/reference/drugs" element={<DrugReferenceLibrary />} />
+          <Route path="/reference/drugs/:slug" element={<DrugReferenceEntry />} />
           <Route path="/drugs/:slug" element={<DrugDetail />} />
           <Route path="/tools" element={<ToolsHub />} />
           <Route path="/tools/mac-for-age" element={<MACForAgeTool />} />
