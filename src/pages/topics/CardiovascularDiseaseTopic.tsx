@@ -253,6 +253,11 @@ const CardiovascularDiseaseTopic = () => {
                 <li>Fixed low cardiac output; dependent on preload and diastolic filling time</li>
                 <li>Goals: slow rate (60–80), maintain sinus rhythm, adequate preload, maintain SVR</li>
                 <li>Avoid: tachycardia, fluid overload (risk of pulmonary oedema), AF, increased PVR</li>
+                <li>Chronic elevation of left atrial pressure is transmitted backwards, producing post-capillary (Group 2) pulmonary hypertension over time <InlineRef topicId="cardiovascular-disease" refLabel="BJA Educ Valvular 2015" /></li>
+                <li>Long-standing pulmonary hypertension causes RV pressure overload, hypertrophy and eventual RV failure — RV function, not the mitral valve itself, often determines perioperative outcome in advanced disease</li>
+                <li>Anaesthetic goals therefore extend to preserving RV contractility and avoiding any rise in pulmonary vascular resistance (hypoxia, hypercarbia, acidosis, hypothermia, excessive PEEP)</li>
+                <li>A fall in systemic pressure risks dynamic RV ischaemia (reduced RV coronary perfusion pressure in the presence of a pressure-loaded RV) — maintain SVR and avoid abrupt hypotension</li>
+                <li>Consider a pulmonary artery catheter in severe MS with significant pulmonary hypertension undergoing major surgery, to guide RV-directed fluid and inotrope/vasopressor therapy</li>
               </ul>
             </div>
           </div>
