@@ -363,7 +363,7 @@ const InfectiousDiseaseIcuTopic = () => {
               </div>
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Raised ICP / seizures</p>
-                <p className="text-xs text-muted-foreground mt-1">Sedation, analgesia, normocapnia, normothermia, normonatraemia (avoid hyponatraemia — Na⁺ 140–145). Osmotherapy: mannitol 0.5–1 g/kg or hypertonic saline 2.7–3% bolus. EVD for hydrocephalus. Levetiracetam first-line for seizures; cEEG if persistent altered consciousness.</p>
+                <p className="text-xs text-muted-foreground mt-1">Sedation, analgesia, normocapnia, normothermia, normonatraemia (avoid hyponatraemia — Na⁺ 140–145). Osmotherapy: mannitol 0.5–1 g/kg or hypertonic saline 2.7–3% bolus. EVD for hydrocephalus, decompressive craniectomy for refractory intracranial hypertension. Levetiracetam first-line for seizures; cEEG if persistent altered consciousness <InlineRef topicId="infectious-disease-icu" refLabel="ESCMID Meningitis 2016" />.</p>
               </div>
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Source control & adjuncts</p>
