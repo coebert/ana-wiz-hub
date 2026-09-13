@@ -262,6 +262,55 @@ const ClinicalIncidentsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="section-massive-haemorrhage" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Massive Haemorrhage">
+            <div className="text-muted-foreground leading-relaxed space-y-3 text-sm">
+              <p>
+                Massive haemorrhage is conventionally defined as loss of one circulating blood volume within 24 hours, 50% of blood volume within 3 hours, or bleeding at
+                more than 150 mL/min. In practice these definitions are retrospective, so activation should be triggered clinically — ongoing uncontrolled bleeding with
+                shock, or an anticipated need for large-volume transfusion <InlineRef topicId="clinical-incidents" refLabel="AAGBI Massive Haemorrhage 2010" />.
+              </p>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground">Recognition and immediate actions</p>
+                <ul className="list-disc list-inside space-y-1 mt-1">
+                  <li>Call for help, declare "major haemorrhage" and activate the hospital protocol via switchboard — this mobilises the laboratory, porters and a consultant haematologist as a single call.</li>
+                  <li>Apply direct pressure, tourniquet or packing; make the definitive plan for haemostasis (surgery, endoscopy, interventional radiology) immediately — resuscitation buys time, it does not stop bleeding.</li>
+                  <li>Establish large-bore access (two 14–16 G peripheral cannulae or a rapid-infusion catheter), send a full set of bloods including group and save/crossmatch, FBC, coagulation screen, fibrinogen, U&amp;E, calcium and a blood gas with lactate.</li>
+                  <li>Use group O emergency blood (O RhD-negative for women of childbearing potential) until group-specific units are available; switch as soon as possible to conserve O-negative stock.</li>
+                  <li>Warm everything: fluid warmer, forced-air blanket, raise theatre temperature. Hypothermia below 35 °C independently worsens coagulopathy and platelet function.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground">Transfusion strategy</p>
+                <ul className="list-disc list-inside space-y-1 mt-1">
+                  <li>Empirical fixed-ratio packs (approximately 1:1 red cells to FFP) while bleeding is uncontrolled and no laboratory results are available, then switch to goal-directed therapy guided by viscoelastic testing or laboratory values as soon as they are obtainable <InlineRef topicId="clinical-incidents" refLabel="NICE NG24 2015" />.</li>
+                  <li>Targets: haemoglobin 70–90 g/L during active bleeding, platelets above 50 × 10⁹/L (above 100 × 10⁹/L with brain or eye injury or diffuse bleeding), fibrinogen above 1.5–2 g/L (FIBTEM/FIBTEM A5 below 10 mm), PT/APTT ratio below 1.5 and ionised calcium above 1.0 mmol/L.</li>
+                  <li>Fibrinogen falls first in dilutional and consumptive coagulopathy — replace early with fibrinogen concentrate or cryoprecipitate rather than relying on FFP alone.</li>
+                  <li>Give tranexamic acid early in traumatic and obstetric haemorrhage; the time-critical benefit lies with the first 1 g given within 3 hours.</li>
+                  <li>Avoid large-volume crystalloid — it dilutes clotting factors, worsens acidosis and increases bleeding. Restrict clear fluid to a bridging role only.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground">Complications to anticipate</p>
+                <ul className="list-disc list-inside space-y-1 mt-1">
+                  <li>Hypocalcaemia from citrate chelation — check ionised calcium every 30 minutes and replace with calcium chloride or gluconate.</li>
+                  <li>Hyperkalaemia and acidosis from stored blood, compounded by hypoperfusion; correct acidosis by restoring perfusion rather than with bicarbonate.</li>
+                  <li>Hypothermia, dilutional and consumptive coagulopathy — the self-reinforcing lethal triad.</li>
+                  <li>TACO and TRALI, transfusion-associated hyperkalaemic cardiac arrest (particularly in children and with rapid central infusion of older units), and air embolism from pressurised infusion devices.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground">Afterwards</p>
+                <ul className="list-disc list-inside space-y-1 mt-1">
+                  <li>Stand down the protocol explicitly, return unused units, and document indication, products given, timings and laboratory trends.</li>
+                  <li>Thromboprophylaxis review once haemostasis is secure — these patients rapidly become prothrombotic.</li>
+                  <li>Report transfusion reactions and near misses (SHOT/Datix), debrief the team, and audit activation against protocol criteria.</li>
+                </ul>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="section-death-on-table" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Death on the Table">
             <div className="text-muted-foreground leading-relaxed space-y-3">
