@@ -186,7 +186,7 @@ const IcuDrugDoses = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>ICU Drug Dosing Table: Adult, Paediatric a | AnaesthesiaCore</title>
+        <title>ICU Drug Dosing Table | AnaesthesiaCore</title>
         <meta
           name="description"
           content="Searchable intensive care drug dosing table with adult, paediatric and neonatal doses: sedation, analgesia, neuromuscular blockade, vasopressors, inotropes."

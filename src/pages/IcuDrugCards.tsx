@@ -170,7 +170,7 @@ const IcuDrugCards = () => {
   return (
     <PageSection>
       <Helmet>
-        <title>ICU Drug Cards | Class, Dosing, PK & Safet | AnaesthesiaCore</title>
+        <title>ICU Drug Cards: Dosing, PK & Safety | AnaesthesiaCore</title>
         <meta
           name="description"
           content="Complete drug cards for the adult ICU formulary: class, mechanism, dose-response, adult and paediatric dosing, pharmacokinetics, safety."
