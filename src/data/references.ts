@@ -1497,6 +1497,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Liang 2010 Middle Ear", citation: "Liang S, Irwin MG. Review of anesthesia for middle ear surgery. Anesthesiol Clin. 2010;28(3):519-528.", url: "https://doi.org/10.1016/j.anclin.2010.07.009" },
   ],
   "emergency-surgery": [
+    { label: "Holcomb DCR 2007", citation: "Holcomb JB, Jenkins D, Rhee P, et al. Damage control resuscitation: directly addressing the early coagulopathy of trauma. J Trauma. 2007;62(2):307-310.", url: "https://journals.lww.com/jtrauma/Abstract/2007/02000/Damage_Control_Resuscitation__Directly_Addressing.11.aspx" },
+    { label: "BOA Fasciotomy 2020", citation: "British Orthopaedic Association. BOAST — Diagnosis and management of acute compartment syndrome (fasciotomy standards). BOA; 2020.", url: "https://www.boa.ac.uk/resource/boast-diagnosis-and-management-of-compartment-syndrome-of-the-limbs.html" },
     { label: "Anaesthesia 2013 (Emergency organisation)", citation: "Organisation and planning of anaesthesia for emergency surgery. Anaesthesia. 2013;68(Suppl 1).", url: "https://doi.org/10.1111/anae.12054" },
     { label: "Anaesthesia 2013 (Emergency conduct)", citation: "The principles and conduct of anaesthesia for emergency surgery. Anaesthesia. 2013;68(Suppl 1).", url: "https://doi.org/10.1111/anae.12057" },
     { label: "Anaesthesia 2026 (TIVA emergency)", citation: "Total intravenous anaesthesia in emergency surgery: a narrative review. Anaesthesia. 2026.", url: "https://doi.org/10.1111/anae.70085", excerpt: "Although the use of total intravenous anaesthesia is well established in elective surgery, its use remains limited in emergency settings, particularly for rapid sequence induction and intubation." },
