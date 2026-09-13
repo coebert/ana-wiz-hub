@@ -49,6 +49,14 @@ export const ROUTE_PARAM_FIXTURES: Record<string, ParamFixture> = {
   section: {
     samples: ["physics", "physiology"],
   },
+  // /dev/diagram-snapshot/:name — internal, noindex dev harness route; any
+  // registered diagram name works and no JSON-LD @type is required.
+  name: {
+    samples: ["OxygenCascadeDiagram"],
+    expectedTypesByRoute: {
+      "/dev/diagram-snapshot/:name": [],
+    },
+  },
   // /viva/:questionId etc — accept anything; sitewide-only by default.
   questionId: { samples: ["q-001"] },
   vivaId: { samples: ["v-001"] },

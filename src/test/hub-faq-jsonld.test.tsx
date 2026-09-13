@@ -4,6 +4,8 @@ import { MemoryRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import type { ComponentType } from "react";
 import { ExamFilterProvider } from "@/contexts/ExamFilterContext";
+// The hub header renders the account menu, which requires the auth context.
+import { AuthProvider } from "@/hooks/useAuth";
 import FRCAPrimaryHub from "@/pages/FRCAPrimaryHub";
 import FRCAFinalHub from "@/pages/FRCAFinalHub";
 import FFICMHub from "@/pages/FFICMHub";
@@ -73,11 +75,13 @@ describe("Hub FAQPage JSON-LD ↔ visible FAQ parity", () => {
       const Hub = hub.Component;
       const { container } = render(
         <HelmetProvider>
+          <AuthProvider>
           <ExamFilterProvider>
             <MemoryRouter initialEntries={[hub.path]}>
               <Hub />
             </MemoryRouter>
           </ExamFilterProvider>
+          </AuthProvider>
         </HelmetProvider>,
       );
 

@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import CapnographyWaveformDiagram from "@/components/diagrams/physics/CapnographyWaveformDiagram";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 /**
  * SEO-focused companion page to /physics/capnography.
@@ -198,6 +199,7 @@ const CapnographyWaveformsTopic = () => {
         accentColor="text-physics"
         metaDescription="Capnography waveforms explained for FRCA Primary/Final and FFICM: four normal phases, shark-fin, curare cleft, rebreathing, sudden loss, cardiac oscillations, ETCO₂ in CPR — with a labelled interactive trace."
       >
+        <PageJsonLd name="Capnography Waveforms" description="Capnography waveforms explained for FRCA and FFICM: normal phases, shark-fin, curare cleft, rebreathing, sudden loss and cardiac oscillations." learningResourceType="Topic" />
         <div className="space-y-8">
           <section className="space-y-3">
             <h2 className="text-2xl font-serif font-bold text-foreground">

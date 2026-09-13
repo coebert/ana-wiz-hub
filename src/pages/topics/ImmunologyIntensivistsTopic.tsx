@@ -7,6 +7,7 @@ import AnimatedMechanism, {
 import { InlineRef } from "@/components/references/InlineRef";
 import { ReferencesList } from "@/components/references/ReferencesList";
 import { TopicPodcastPlayer } from "@/components/topic/TopicPodcastPlayer";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 const TOPIC_ID = "immunology-intensivists";
 
@@ -566,6 +567,7 @@ const ImmunologyIntensivistsTopic = () => {
         accentColor="text-icu"
         metaDescription="FFICM & EDIC immunology: innate vs adaptive immunity, humoral vs cell-mediated responses, key immune cell lines, complement cascade animation, and immune responses to bacterial, viral, fungal, protozoal and prion infections."
       >
+        <PageJsonLd name="Immunology for Intensivists" description="Innate and adaptive immunity, humoral and cell-mediated responses, immune cell lines, complement cascade and responses to different pathogens." learningResourceType="Topic" />
         <div className="space-y-10">
           <TopicPodcastPlayer topicId={TOPIC_ID} topicTitle="Immunology for Intensivists" />
 
