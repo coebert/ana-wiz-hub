@@ -20,6 +20,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 const sepsisTocItems = [
   { id: "sepsis-3", label: "Sepsis-3 definitions & scores", group: "Core" },
   { id: "hour-1", label: "SSC Hour-1 bundle", group: "Core" },
+  { id: "pathophysiology", label: "Pathophysiology of organ dysfunction", group: "Core" },
   { id: "antibiotics", label: "Antibiotics & source control", group: "Management" },
   { id: "fluids", label: "Fluid resuscitation", group: "Management" },
   { id: "vasopressors", label: "Vasopressors & inotropes", group: "Management" },
