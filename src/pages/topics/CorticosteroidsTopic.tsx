@@ -255,6 +255,54 @@ const CorticosteroidsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="sglt2-euglycaemic-dka" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="SGLT2 Inhibitors & Euglycaemic Diabetic Ketoacidosis">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              Sodium–glucose co-transporter 2 inhibitors (empagliflozin, dapagliflozin, canagliflozin, ertugliflozin) are now common in type 2 diabetes and in heart failure and chronic kidney disease. They are the leading perioperative cause of <strong className="text-foreground">euglycaemic ketoacidosis</strong> — a ketoacidosis with a normal or only mildly raised glucose that is easily missed. Current UK guidance is to omit the drug on the day of surgery and, where the procedure is major, the patient is likely to fast for more than one meal or there is a history of ketosis, to stop it up to 3 days beforehand <InlineRef topicId="corticosteroids" refLabel="CPOC 2021 Diabetes" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Mechanism</p>
+                <ul className="mt-1 list-disc pl-5 text-sm text-muted-foreground space-y-1">
+                  <li>SGLT2 blockade in the proximal tubule produces glycosuria, so plasma glucose stays low or normal even when insulin deficiency is functionally present.</li>
+                  <li>Glucose loss plus fasting lowers insulin and raises glucagon; the low insulin:glucagon ratio drives lipolysis and hepatic ketogenesis.</li>
+                  <li>Volume depletion from osmotic diuresis and the surgical stress response (cortisol, catecholamines) amplify ketone production.</li>
+                  <li>Because hyperglycaemia is absent, the usual clinical trigger to test for ketones never fires — hence "euglycaemic" DKA.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Perioperative precipitants</p>
+                <ul className="mt-1 list-disc pl-5 text-sm text-muted-foreground space-y-1">
+                  <li>Prolonged or repeated fasting and missed carbohydrate intake.</li>
+                  <li>Major or emergency surgery, especially bowel surgery with delayed feeding.</li>
+                  <li>Acute illness — sepsis, pancreatitis, myocardial infarction.</li>
+                  <li>Dehydration, bowel preparation, vomiting, and very-low-carbohydrate diets.</li>
+                  <li>Reduced insulin dose in insulin-treated patients continuing an SGLT2 inhibitor.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Diagnosis</p>
+                <ul className="mt-1 list-disc pl-5 text-sm text-muted-foreground space-y-1">
+                  <li>Glucose normal or only mildly raised (often &lt; 14 mmol/L) — do not use glucose to exclude ketoacidosis.</li>
+                  <li>Capillary ketones ≥ 3.0 mmol/L (or significant ketonuria) with a high-anion-gap metabolic acidosis (pH &lt; 7.3, bicarbonate &lt; 15 mmol/L).</li>
+                  <li>Non-specific presentation: nausea, vomiting, abdominal pain, tachypnoea, malaise, unexplained acidosis on a perioperative gas.</li>
+                  <li>Test ketones in <em>any</em> patient on an SGLT2 inhibitor with unexplained acidosis, vomiting or malaise — regardless of glucose.</li>
+                </ul>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Management</p>
+                <ul className="mt-1 list-disc pl-5 text-sm text-muted-foreground space-y-1">
+                  <li>Stop the SGLT2 inhibitor and do not restart until the patient is eating, drinking and metabolically stable.</li>
+                  <li>Resuscitate with IV crystalloid (0.9% sodium chloride), replacing potassium as guided by levels.</li>
+                  <li>Start a fixed-rate or variable-rate insulin infusion even when glucose is normal — insulin is what switches off ketogenesis.</li>
+                  <li>Give a glucose substrate alongside insulin (10% dextrose) to allow adequate insulin delivery without hypoglycaemia.</li>
+                  <li>Monitor ketones, bicarbonate/pH and the anion gap hourly initially; resolution of ketosis and acidosis — not glucose — defines recovery. Involve the diabetes team, and defer non-urgent surgery until resolved.</li>
+                </ul>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="thyroid" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Thyroid Pharmacology">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
