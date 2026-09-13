@@ -9,6 +9,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import { BrainstemDeathCascadeDiagram } from "@/components/diagrams/intensive-care/BrainstemDeathCascadeDiagram";
+import { OrganDonationPathwayDiagram } from "@/components/diagrams/intensive-care/OrganDonationPathwayDiagram";
 import { InlineRef } from "@/components/references/InlineRef";
 
 const organDonationFaqs: Array<[string, string]> = [
