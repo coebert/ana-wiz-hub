@@ -267,8 +267,9 @@ const TemperatureMeasurementTopic = () => {
             <p>
               <strong>Sources of error:</strong> straighten the canal (pinna up and back in adults; down and back in infants), insert far enough
               to seal it and aim at the tympanic membrane. Cerumen, a narrow or curved canal, otitis externa/media, recent ear surgery,
-              hearing aids, lying on one ear and ambient cold/heat all alter readings. Poor alignment samples the cooler canal wall. Device
-              calibration algorithms differ and population limits of agreement against pulmonary-artery temperature are wide, so a single
+              hearing aids, lying on one ear and ambient cold/heat all alter readings. Poor peripheral perfusion in shock can cool the pinna
+              and external canal. Poor alignment samples the cooler canal wall. Devices require regular calibration checks; calibration
+              algorithms differ and population limits of agreement against pulmonary-artery temperature are wide, so a single
               normal tympanic result must not overrule clinical concern or a reliable central trend.
             </p>
           </div>
@@ -298,8 +299,9 @@ const TemperatureMeasurementTopic = () => {
               The <strong>core-peripheral temperature gradient</strong> is measured simultaneously between a central site (distal oesophagus,
               bladder or pulmonary artery) and a peripheral site (finger/toe skin). Sympathetic vasoconstriction lowers peripheral temperature
               while preserving core temperature; a gradient &gt;2°C suggests reduced skin blood flow and can support assessment of shock,
-              response to fluids/vasoactive treatment and rewarming. Interpret trends rather than one value: ambient temperature, active
-              warming, oedema, peripheral vascular disease and vasoactive drugs confound it.
+              response to fluids/vasoactive treatment and rewarming—even when arterial pressure appears normal. A widening gradient of
+              roughly 2–4°C supports worsening vasoconstriction; narrowing supports restored peripheral flow. Interpret trends rather than
+              one value: ambient temperature, active warming, oedema, peripheral vascular disease, regional anaesthesia and vasoactive drugs confound it.
             </p>
             <p>
               During general anaesthesia, core temperature typically drops in three phases: (1) <strong>redistribution</strong>

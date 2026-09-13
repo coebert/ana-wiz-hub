@@ -333,7 +333,7 @@ const EquipmentMonitoringTopic = () => {
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
               Vaporizers convert liquid volatile agent into a controlled vapour concentration. <strong>Saturated vapour pressure (SVP)</strong> depends only on the agent and temperature — not atmospheric pressure. At 20 °C: sevoflurane SVP ≈ 21.3 kPa,
-              isoflurane ≈ 33.2 kPa, desflurane ≈ 88.5 kPa.
+              isoflurane ≈ 33.3 kPa, desflurane ≈ 88.5 kPa.
             </p>
             <p>
               <strong>Plenum vaporizers (TEC 5/7)</strong> sit downstream of the flowmeters and use a <strong>splitting ratio</strong>
@@ -426,10 +426,11 @@ const EquipmentMonitoringTopic = () => {
               reduces pollution.
             </p>
             <p>
-              Definitions vary, but <strong>low flow</strong> generally means FGF ≤1 L/min, <strong>minimal flow</strong> about
-              0.5 L/min, and <strong>closed circuit</strong> FGF matched to metabolic uptake (roughly 0.2–0.3 L/min). After a high-flow
+              Definitions vary, but <strong>high flow</strong> is &gt;4 L/min, <strong>low flow</strong> 0.5–1 L/min,
+              <strong> minimal flow</strong> 0.25–0.5 L/min, and <strong>closed circuit</strong> FGF matched to metabolic uptake
+              (roughly 0.2–0.3 L/min). Benefits include lower cost and pollution and better heat/humidity conservation. After a high-flow
               wash-in, reducing FGF increases the circuit time constant: inspired oxygen and agent respond slowly to dial changes and
-              leaks become proportionally important. Use continuous inspired oxygen and inspired/expired agent analysis, capnography,
+              leaks become proportionally important; unwanted nitrogen, acetone and carbon monoxide can accumulate. Use continuous inspired oxygen and inspired/expired agent analysis, capnography,
               volume and airway-pressure monitoring; increase FGF promptly if concentration control, absorber function or circuit
               integrity is uncertain.
               <InlineRef topicId="equipment-monitoring" refLabel="RCoA/AoA 2024 Machine Check" />
