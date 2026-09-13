@@ -435,6 +435,111 @@ const OrganDonationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="withdrawal-practice" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Withdrawal of Life-Sustaining Treatment — the Practical Process" defaultOpen>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Withdrawing organ support is the same act of end-of-life care in both pathways — what differs is <em>where
+              it happens, who is present, and what the clock means afterwards</em>. In DBD the patient is already
+              legally dead, so there is no "withdrawal" in the DCD sense: ventilatory and haemodynamic support are
+              continued (not withdrawn) until aortic cross-clamp in theatre. In DCD the patient is alive, and
+              withdrawal is the event that starts the donation timeline <InlineRef topicId="organ-donation" refLabel="NICE CG135" />.
+            </p>
+
+            <h3 className="text-base font-semibold text-foreground mb-2">DBD — no withdrawal; support is maintained to retrieval</h3>
+            <div className="space-y-2 mb-4">
+              {[
+                { step: "Confirm death", detail: "Two sets of brainstem death tests; legal death is completion of the first set. From that moment the ventilator, vasopressors and monitoring are not 'treatment' — they are organ preservation." },
+                { step: "Optimise for hours to days", detail: "Hormonal bundle, noradrenaline→vasopressin swap, DDAVP, lung recruitment and cardiac output monitoring run until the retrieval teams are assembled. There is no warm ischaemic time pressure — grafts remain perfused until cross-clamp, which is why DBD yields the most organs per donor (typically 3–4, including heart and lungs)." },
+                { step: "Theatre", detail: "Transfer ventilated and monitored as for any ICU transfer. Heparin 25,000–30,000 units immediately before aortic cross-clamp, then cold flush. Support is disconnected only after cross-clamp." },
+              ].map((s) => (
+                <div key={s.step} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
+                  <span className="font-bold text-primary text-sm sm:whitespace-nowrap sm:w-64 sm:shrink-0">{s.step}</span>
+                  <span className="text-sm text-muted-foreground leading-relaxed">{s.detail}</span>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-base font-semibold text-foreground mb-2">DCD — withdrawal as the start of the donation clock</h3>
+            <div className="space-y-2 mb-4">
+              {[
+                { step: "Plan & position", detail: "Agree the location (theatre anaesthetic room adjacent to the operating theatre is standard; ICU only where geography forces it), who withdraws (the treating ICU team — never the retrieval team), the symptom-control prescription, and the stand-down time with the SN-OD before starting." },
+                { step: "Comfort measures first", detail: "Analgesia and sedation are titrated to distress exactly as for any dying patient; they are never escalated to hasten death. Family remain present for as long as they wish — the practical choreography (family step out just before transfer, or remain in the anaesthetic room) is agreed in advance." },
+                { step: "Withdrawal (extubation)", detail: "Tracheal extubation and discontinuation of vasoactive support; the withdrawal-to-arrest interval is documented minute-by-minute by the SN-OD. Most deaths occur within 1–2 hours of withdrawal." },
+                { step: "5-minute hands-off observation", detail: "After asystole (loss of arterial pulsatility), nothing is touched for 5 minutes. Legal time of death = the START of this observation period. Autoresuscitation after 5 minutes of observed absent circulation has not been reported in controlled DCD." },
+                { step: "Death confirmed → rapid transfer", detail: "The retrieval team (who have stayed out of the room until now) take over. Cold perfusion or NRP cannulation should begin within ~10 minutes of confirmed death. If death has not occurred within the agreed stand-down window (commonly 2–3 hours, organ-specific), the donor is returned to the ward/ICU for continuing end-of-life care and donation does not proceed." },
+              ].map((s) => (
+                <div key={s.step} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
+                  <span className="font-bold text-primary text-sm sm:whitespace-nowrap sm:w-64 sm:shrink-0">{s.step}</span>
+                  <span className="text-sm text-muted-foreground leading-relaxed">{s.detail}</span>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-base font-semibold text-foreground mb-2">Timings after withdrawal that decide which organs can be used</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              Warm ischaemia is the enemy in DCD. Two intervals matter: the <strong>functional warm ischaemic time
+              (fWIT)</strong> — from sustained SBP &lt;50 mmHg (or SpO₂ &lt;70%) to the start of cold perfusion — and the
+              <strong>withdrawal-to-death interval</strong>, which predicts how much hypoxic-hypotensive injury the graft
+              has already suffered. Typical UK acceptance limits <InlineRef topicId="organ-donation" refLabel="BJA Donor Management 2012" />:
+            </p>
+            <div className="space-y-2 mb-4">
+              {[
+                { organ: "Liver", timing: "Most ischaemia-sensitive abdominal organ: fWIT <20–30 min (aNRP extends this); withdrawal-to-arrest ideally <30 min. Longer agonal phases predict ischaemic cholangiopathy and primary non-function." },
+                { organ: "Pancreas", timing: "Similar tolerance to liver: fWIT <30 min; prolonged hypotension or hypoxia before arrest is a common reason to decline." },
+                { organ: "Kidney", timing: "Most tolerant: fWIT up to ~60–120 min (commonly cited practical limit <30–60 min to first cold flush). This is why kidneys are retrieved even when the liver has been stood down — delayed graft function is frequent but usually recovers." },
+                { organ: "Lung", timing: "Tolerant of ~60 min warm ischaemia because alveolar oxygen persists after circulatory arrest; retrieval teams reinflate the lungs before cold perfusion. Usable after standoff intervals that preclude liver." },
+                { organ: "Heart", timing: "Only possible with TA-NRP or direct procurement/ex-situ perfusion; total warm ischaemia must be minutes, not hours — heart teams attend the withdrawal and assess the agonal phase in real time." },
+                { organ: "Stand-down rule", timing: "If arrest has not occurred within the agreed window (typically 2–3 h from withdrawal; some programmes 1–2 h for liver/pancreas), donation is abandoned and end-of-life care continues — prolonging the wait to chase organs is never acceptable." },
+              ].map((o) => (
+                <div key={o.organ} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
+                  <span className="font-bold text-primary text-sm sm:whitespace-nowrap sm:w-40 sm:shrink-0">{o.organ}</span>
+                  <span className="text-sm text-muted-foreground leading-relaxed">{o.timing}</span>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-base font-semibold text-foreground mb-2">Reintubation after death in DCD — when and why</h3>
+            <div className="space-y-2 mb-4">
+              {[
+                { point: "It happens only after death is confirmed", detail: "Reintubation in DCD is a post-mortem, organ-directed procedure performed by the retrieval team after the 5-minute standoff — never before, and never by the treating team while the patient is alive." },
+                { point: "Lung recruitment for retrieval assessment", detail: "The lungs are reinflated and ventilated after death so that oxygenation can be re-assessed (a post-mortem PaO₂/FiO₂ ratio), atelectasis reversed, and bronchoscopy performed if needed. This determines whether the lungs are transplantable and measurably increases lung yield from DCD donors." },
+                { point: "During TA-NRP", detail: "When thoraco-abdominal NRP is running, the lungs are re-recruited and gently ventilated as part of in-situ heart and lung assessment — the same physiology as ex-vivo lung perfusion, but in the donor. Arch vessels remain occluded throughout; ventilation does not alter the legal status of the donor." },
+                { point: "Governance", detail: "Post-mortem reintubation is covered by the donation authorisation and documented in the retrieval record; it is one of the clearest illustrations that 'post-mortem interventions' have a different ethical footing from anything done before death." },
+              ].map((p) => (
+                <div key={p.point} className="p-3 rounded border border-border">
+                  <p className="font-semibold text-foreground text-sm">{p.point}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{p.detail}</p>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-base font-semibold text-foreground mb-2">Regional reperfusion (NRP) — how it has changed DCD practice</h3>
+            <div className="space-y-2 mb-3">
+              {[
+                { change: "Restores warm perfusion in situ", detail: "After death is confirmed, femoral cannulae (or open aortic/venous cannulation) connect to an ECMO-type circuit; arch vessels are clamped or balloon-occluded first so no cerebral reperfusion is possible. Abdominal NRP perfuses liver/kidneys/pancreas; TA-NRP adds the thorax and makes DCD heart retrieval possible." },
+                { change: "Rescued organs that used to be declined", detail: "Livers with fWIT at the upper end of acceptability — previously discarded — are now retrieved and function, because warm oxygenated reperfusion allows real-time viability assessment (lactate clearance, bile production, perfusion flows) rather than a guess from the clock. DCD liver utilisation and 1-year graft survival have risen accordingly, and ischaemic cholangiopathy rates have fallen toward DBD levels." },
+                { change: "Kidney outcomes improved", detail: "Delayed graft function after DCD kidney transplant falls from roughly half to roughly a fifth of recipients with aNRP, shortening hospital stay and dialysis dependence." },
+                { change: "Enabled DCD hearts", detail: "TA-NRP with direct procurement perfusion has created an entirely new DCD heart programme in the UK, with early outcomes comparable to DBD hearts — the single biggest expansion of the heart donor pool in decades." },
+                { change: "Changed the choreography of withdrawal", detail: "Retrieval teams now cannulate and prepare the circuit before or immediately after withdrawal (per local protocol and authorisation), heart teams attend the agonal phase, and withdrawal is almost always sited in or beside theatre. The 5-minute standoff and cerebral exclusion before circuit start are the non-negotiable safeguards that keep the practice lawful and publicly trusted." },
+              ].map((c) => (
+                <div key={c.change} className="p-3 rounded border border-border">
+                  <p className="font-semibold text-foreground text-sm">{c.change}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{c.detail}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground italic mt-2">
+              Exam framing: structure the answer as pre-withdrawal (location, roles, comfort prescription, stand-down
+              time) → withdrawal (minute-by-minute SN-OD record, comfort only) → the 5-minute standoff (legal death at
+              its start) → organ-specific warm-ischaemia limits → post-mortem procedures (reintubation for lung
+              recruitment, cannulation, NRP) → stand-down if the window is missed. State explicitly that nothing
+              organ-directed happens before death in DCD, whereas in DBD all support continues to cross-clamp
+              <InlineRef topicId="organ-donation" refLabel="NICE CG135" />{" "}
+              <InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" />.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="nrp" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Normothermic Regional Perfusion (NRP)">
             <p className="text-muted-foreground leading-relaxed mb-4">
