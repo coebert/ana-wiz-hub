@@ -478,6 +478,44 @@ const BreathingCircuitsTopic = () => {
               </div>
             </div>
 
+            {/* Scavenging */}
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+                Anaesthetic gas scavenging systems (AGSS)
+              </h2>
+              <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  Scavenging removes gas vented from the APL valve or ventilator spill valve so that theatre
+                  concentrations of N₂O and volatile agent stay within occupational limits. Every system has
+                  <strong> four components</strong>.
+                </p>
+                <ul className="list-disc list-inside space-y-1.5">
+                  <li><strong>Collecting assembly (shroud)</strong> — surrounds the APL/spill valve and takes the waste gas away from the patient's breathing zone.</li>
+                  <li><strong>Transfer tubing</strong> — a wide, kink-resistant hose with deliberately non-standard <strong>30 mm connectors</strong>, so it cannot be misconnected to 15 mm or 22 mm breathing-system fittings.</li>
+                  <li><strong>Receiving assembly</strong> — a reservoir (rigid or bag) with <strong>positive and negative pressure relief valves opening at about ±0.5 cmH₂O</strong>: the positive valve prevents back-pressure and barotrauma if the disposal route occludes, and the negative valve admits room air so an over-aspirating vacuum cannot apply suction to the patient circuit.</li>
+                  <li><strong>Disposal system</strong> — carries gas out of the building.</li>
+                </ul>
+                <p>
+                  <strong>Active disposal</strong> uses a fan or dedicated low-pressure/high-volume vacuum, typically drawing
+                  about <strong>75 L/min</strong>, and is the standard in modern theatres. <strong>Passive disposal</strong>
+                  relies on the patient's expiration or the ventilator to push gas down wide-bore tubing to an outside wall
+                  terminal or to the theatre ventilation extract; it is cheap and silent but is defeated by wind, long tubing
+                  and back-pressure. Cardiff and charcoal absorbers are a further option, adsorbing volatile agents but
+                  <em> not</em> N₂O.
+                </p>
+                <p>
+                  <strong>Occupational exposure.</strong> Under COSHH, HSE workplace exposure limits (8-hour time-weighted
+                  average) are <strong>N₂O 100 ppm</strong> and <strong>50 ppm for isoflurane and enflurane</strong>
+                  (halothane 10 ppm); there is no formal UK limit for sevoflurane or desflurane, so exposure is kept as low as
+                  reasonably practicable. Effective scavenging is only part of control — also minimise leaks, avoid gas
+                  induction without scavenging, use low fresh-gas flows, and maintain theatre air exchanges
+                  <InlineRef topicId="breathing-circuits" refLabel="Davey &amp; Diba Ch.5" />{" "}
+                  <InlineRef topicId="breathing-circuits" refLabel="Al-Shaikh &amp; Stacey Ch.6-7" />.
+                </p>
+              </div>
+            </div>
+
+
             {/* Pitfalls */}
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">

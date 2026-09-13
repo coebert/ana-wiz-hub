@@ -386,6 +386,44 @@ const CapnographyTopic = () => {
             </div>
 
 
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+                Volumetric capnography
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-3">
+                Standard time capnography plots CO₂ against <em>time</em>. Volumetric
+                capnography (VCap, the single-breath test for CO₂) plots CO₂ against
+                <strong> expired volume</strong>, so the area under the curve is the volume of
+                CO₂ eliminated per breath (VCO₂) and dead space can be quantified rather than
+                inferred <InlineRef topicId="capnography" refLabel="BJA Educ 2017 Capnography" />.
+              </p>
+              <div className="grid sm:grid-cols-3 gap-3 mb-3">
+                {[
+                  { name: "Phase I", detail: "CO₂-free gas from apparatus and conducting airways — its volume is the airway (anatomical + apparatus) dead space." },
+                  { name: "Phase II", detail: "Steep S-shaped rise as alveolar gas mixes with dead-space gas; its slope reflects the airway/alveolar interface and ventilation heterogeneity." },
+                  { name: "Phase III", detail: "Alveolar plateau. Its slope, taken by linear regression over the final 25 % of phase III, is normally 0.4–2.5 kPa/L and steepens with V/Q heterogeneity." },
+                ].map((p) => (
+                  <div key={p.name} className="p-3 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground text-sm">{p.name}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{p.detail}</p>
+                  </div>
+                ))}
+              </div>
+              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                <li><strong>PetCO₂</strong> — read at the end of phase III, as for time capnography.</li>
+                <li><strong>Phase III slope</strong> — an index of intrapulmonary gas-exchange heterogeneity; rises in bronchospasm, COPD and emphysema, and falls with successful bronchodilation.</li>
+                <li><strong>PaCO₂ − PetCO₂ gradient</strong> — widened alveolar dead space (pulmonary embolism, low cardiac output, high airway pressures).</li>
+                <li><strong>Physiological dead space</strong> — the <strong>Bohr equation</strong> (VD/VT = (PACO₂ − PĒCO₂)/PACO₂) uses mean alveolar CO₂ taken from the volumetric capnogram; the <strong>Enghoff modification</strong> substitutes PaCO₂, so it also captures shunt and therefore reports a larger "dead space" in ARDS.</li>
+              </ul>
+              <p className="text-sm text-muted-foreground mt-3">
+                Clinically, VCap tracks V/Q matching breath by breath: rising alveolar tidal volume and falling
+                dead-space fraction after a recruitment manoeuvre or PEEP titration suggest effective recruitment,
+                whereas a rising VD/VT signals overdistension. A high dead-space fraction on day 1 of ARDS is an
+                independent predictor of mortality, and an abrupt rise in VD/VT with a widened PaCO₂ − PetCO₂ gradient
+                and a normal phase III slope is characteristic of pulmonary embolism.
+              </p>
+            </div>
+
 
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
