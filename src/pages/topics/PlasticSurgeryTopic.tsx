@@ -313,6 +313,20 @@ const PlasticSurgeryTopic = () => {
                     </div>
                   ))}
                 </div>
+                <div className="p-4 rounded-lg border border-border mb-3">
+                  <p className="font-semibold text-foreground text-sm mb-1">Suspected flap vasospasm — recognition and management</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed mb-2">
+                    Vasospasm is sympathetically mediated constriction of the pedicle and its microcirculation. The denervated free flap has no sympathetic tone of its own, so it depends entirely on perfusion pressure and vessel calibre — cold, pain, hypovolaemia, catecholamines and mechanical handling all provoke it. Clinically the flap looks pale and cool with sluggish capillary refill and a weak or absent Doppler signal; distinguishing spasm from true thrombosis is not reliable at the bedside, so persistent compromise is a surgical emergency.
+                  </p>
+                  <ul className="text-xs text-muted-foreground leading-relaxed space-y-1 list-disc pl-4">
+                    <li><strong>Correct the physiology first</strong>: actively rewarm the patient to normothermia (core &gt; 36.5 °C) and keep the flap and limb warm; restore intravascular volume with warmed fluid aiming for a well-filled, vasodilated patient; treat pain, anxiety, nausea and shivering, which are all sympathetic stimuli; maintain MAP within 20% of baseline and haematocrit around 0.30 for optimal viscosity and oxygen delivery.</li>
+                    <li><strong>Remove mechanical causes</strong>: release tight dressings, sutures and tracheostomy tapes; check for a haematoma or seroma compressing the pedicle; reposition the head and neck to avoid kinking or torsion of the anastomosis; ensure no external pressure on the flap.</li>
+                    <li><strong>Vasodilators, in liaison with the surgeon</strong>: topical papaverine or lidocaine applied directly to the pedicle intraoperatively is the mainstay; systemic options where perfusion pressure is adequate include a low-dose glyceryl trinitrate infusion or topical GTN patch, and some units use dextran 40 or nifedipine. There is little high-quality evidence for any systemic agent.</li>
+                    <li><strong>Avoid vasoconstrictors where possible</strong>, but do not accept hypotension: if a vasopressor is needed, current evidence shows short-term noradrenaline (rather than phenylephrine or high-dose adrenaline) does not increase flap failure and may improve flap blood flow by restoring perfusion pressure. Hypotension and hypovolaemia are more dangerous to the flap than a modest noradrenaline requirement.</li>
+                    <li><strong>Escalate early</strong>: if the flap does not respond within minutes to warming, volume and pressure correction, alert the surgical team for immediate re-exploration — thrombosis salvage rates fall sharply after 4–6 hours.</li>
+                  </ul>
+                </div>
+
                 <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
                   <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
                   <p className="text-xs text-muted-foreground">

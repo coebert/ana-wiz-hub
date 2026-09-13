@@ -352,6 +352,24 @@ const PatientPositioningTopic = () => {
                 <li><strong>Legs</strong> — pillow under shins so toes hang free, knees slightly flexed and padded, heels offloaded.</li>
               </ul>
             </div>
+
+            <div className="mt-4 rounded-lg border border-border p-4">
+              <h3 className="text-base font-bold text-foreground mb-2">Prone positioning for ARDS in the ICU</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+                Prone positioning in the ICU is a <em>therapeutic</em> intervention rather than surgical access, and it is one of the few interventions in ARDS with a mortality benefit. PROSEVA randomised patients with PaO₂/FiO₂ &lt; 150 on FiO₂ ≥ 0.6 and PEEP ≥ 5, after 12–24 hours of stabilisation, to at least 16 consecutive hours prone: 28-day mortality fell from 32.8% to 16.0%.
+              </p>
+              <ul className="text-sm text-muted-foreground leading-relaxed space-y-1.5 list-disc pl-5">
+                <li><strong>Mechanism</strong> — more homogeneous transpulmonary pressure and strain, recruitment of dorsal lung with de-recruitment of over-distended ventral lung, better V/Q matching, improved secretion drainage, and a less constraining chest-wall/heart–lung geometry. The result is improved oxygenation and reduced VILI, plus reduced RV strain.</li>
+                <li><strong>Indication and timing</strong> — moderate-to-severe ARDS with P/F &lt; 150 despite optimised lung-protective ventilation and PEEP; start early, aim for ≥ 16 h per session, and repeat daily while it still helps. It is not primarily a rescue manoeuvre for the dying patient.</li>
+                <li><strong>Prerequisites</strong> — deep sedation with neuromuscular blockade for the turn, haemodynamic stability, secured airway and vascular access, feed stopped and stomach emptied, and a trained team of at least five with a designated airway leader.</li>
+                <li><strong>Contraindications</strong> — unstable spine or pelvic fracture, raised ICP not monitored/controlled, open abdomen or recent sternotomy, severe haemodynamic instability, massive haemoptysis, tracheal surgery within 15 days, and pregnancy in the third trimester (relative).</li>
+                <li><strong>Complications</strong> — pressure injury to face, chin, chest and iliac crests; facial and conjunctival oedema; corneal abrasion; brachial plexus and ulnar injury; tube, line and drain dislodgement (the feared event); endobronchial migration and tube obstruction by secretions; vomiting and feed intolerance; transient desaturation and hypotension during turning.</li>
+                <li><strong>Practical care</strong> — reposition the head and arms (swimmer's position) 2-hourly, protective dressings over bony prominences, eye taping and lubrication, 2-hourly pressure-area checks, reverse Trendelenburg to reduce facial oedema and reflux, and a rehearsed plan to return supine immediately for cardiac arrest, extubation or a dislodged tube.</li>
+                <li><strong>Response and weaning</strong> — reassess gas exchange after about an hour; consider the patient a non-responder if oxygenation and compliance do not improve. Stop proning when the improvement persists supine (P/F ≥ 150 with PEEP ≤ 10 and FiO₂ ≤ 0.6 four hours after returning supine).</li>
+                <li><strong>Awake proning</strong> in non-intubated hypoxaemic respiratory failure improves oxygenation and reduced intubation rates in COVID-19 cohorts, but requires cooperation, close monitoring and clear escalation criteria — it must not delay necessary intubation.</li>
+              </ul>
+            </div>
+
             </CollapsibleSubsection>
           </ExamSection>
 
