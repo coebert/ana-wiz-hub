@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Link, useSearchParams } from "react-router-dom";
 import { AlertTriangle, FlaskConical, Search, Syringe } from "lucide-react";
 
+import ReferenceAppLayout from "@/features/drugReference/ReferenceAppLayout";
 import { useDrugList } from "@/features/drugReference/useDrugReference";
 import { drugDilutions } from "@/features/drugReference/dilutions";
 
@@ -12,7 +12,8 @@ const slugsWithRecipes = new Set(drugDilutions.map((d) => d.slug).filter(Boolean
 
 export default function DrugReferenceLibrary() {
   const { drugs, loading, error } = useDrugList();
-  const [query, setQuery] = useState("");
+  const [params] = useSearchParams();
+  const [query, setQuery] = useState(params.get("q") ?? "");
   const [letter, setLetter] = useState<string | null>(null);
   const [drugClass, setDrugClass] = useState<string | null>(null);
   const [onlyMonitored, setOnlyMonitored] = useState(false);
