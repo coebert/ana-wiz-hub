@@ -298,11 +298,17 @@ const NeuroprognosticationTopic = () => {
                 recorded and interpreted by an experienced neurophysiologist. Among the most robust
                 single criteria — but still must be paired with a second concordant modality.
               </p>
-              <p className="text-sm text-muted-foreground">
-                Pitfalls: technical noise (peripheral nerve injury, electrical interference), prior
-                cervical spine pathology, profound hypothermia, and severe sedation can all abolish
-                N20 without irreversible brain injury.
-              </p>
+              <div className="p-3 rounded-lg bg-secondary/30 border border-border mb-3">
+                <p className="text-sm font-semibold text-foreground mb-1">Technical pitfalls that invalidate an "absent N20"</p>
+                <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1">
+                  <li><strong>Noisy recording:</strong> ICU electrical interference (pumps, CRRT, warming devices, mains 50 Hz artefact) and muscle activity raise the noise floor. Absence can only be declared when background noise is low (peak-to-peak amplitude &lt; 0.25 µV) — otherwise the result is "uninterpretable", not "absent".</li>
+                  <li><strong>No proof the stimulus arrived:</strong> the peripheral (Erb's point, N9) and cervical (N13) responses must be present bilaterally to confirm intact conduction; peripheral nerve injury, critical-illness neuropathy, oedematous wrists, cervical cord or brachial plexus pathology otherwise produce a false "absent N20".</li>
+                  <li><strong>Physiological confounders:</strong> temperature below about 33 °C, high-dose sedation or neuromuscular blockade, hypotension, and severe metabolic derangement — record after rewarming and with confounders minimised.</li>
+                  <li><strong>Timing and repetition:</strong> record at ≥ 24 h after ROSC, ideally repeat, and require reproducible bilateral absence in two independent averaged trials read by an experienced neurophysiologist.</li>
+                  <li><strong>Interpretation asymmetry:</strong> a <em>present</em> N20 has poor specificity for good outcome — it does not predict recovery, and unilateral absence is not a poor-outcome criterion <InlineRef topicId="neuroprognostication" refLabel="ERC/ESICM 2021 Post-Resus" />.</li>
+                </ul>
+              </div>
+
             </div>
 
             {/* Modality 4: Biomarkers */}
