@@ -35,6 +35,8 @@ const DrugReferenceMonitoring = lazy(() => import("./pages/reference/DrugReferen
 const DrugReferenceInfusions = lazy(() => import("./pages/reference/DrugReferenceInfusions"));
 const DrugReferenceCalculator = lazy(() => import("./pages/reference/DrugReferenceCalculator"));
 const DrugReferenceAbout = lazy(() => import("./pages/reference/DrugReferenceAbout"));
+const DrugReferenceTopics = lazy(() => import("./pages/reference/DrugReferenceTopics"));
+const DrugReferenceTopic = lazy(() => import("./pages/reference/DrugReferenceTopic"));
 const SeoIndexing = lazy(() => import("./pages/SeoIndexing"));
 const A11yAudit = lazy(() => import("./pages/A11yAudit"));
 const Curriculum = lazy(() => import("./pages/Curriculum"));
