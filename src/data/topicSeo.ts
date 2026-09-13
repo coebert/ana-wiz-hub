@@ -29,7 +29,7 @@ export const topicSeo: Record<string, TopicSeo> = {
   },
   "electrical-safety": {
     title: "Electrical Safety in Theatre: Shock, Diathermy | FRCA",
-    description: "Theatre electrical safety: microshock thresholds, Class I–III and type B/BF/CF equipment, isolated supplies and LIM alarms, diathermy burns, surgical fires, pacemakers.",
+    description: "Theatre electrical safety: microshock thresholds, Class I–III and type B/BF/CF gear, isolated supply LIM alarms, diathermy burns and surgical fires.",
     aliases: ["Electrical safety", "Microshock", "Macroshock", "Diathermy safety", "Electrosurgery safety", "Equipment classification", "Type CF equipment", "Line isolation monitor", "Surgical fire", "Diathermy burn"],
     keywords: ["anaesthesia electrical safety", "FRCA Primary physics", "equipment classification Class I II III", "type B BF CF applied parts", "microshock 50 microamps", "macroshock thresholds", "line isolation monitor alarm theatre", "isolated power supply vs RCD", "diathermy return plate burn", "capacitive coupling laparoscopic diathermy", "surgical fire prevention", "airway fire management", "pacemaker ICD diathermy magnet", "earth leakage current limits"],
   },
