@@ -40,7 +40,22 @@ const TEMPLATE_REQUIRED = [
 
 // Per-file opt-outs. Key = filename, value = list of component/prop names
 // allowed to be missing (with brief justification in a comment).
-const ALLOWED_MISSING: Record<string, string[]> = {};
+const LEGACY_STACK = [
+  "KeyLearningPoints",
+  "QuizSection",
+  "ReferencesList",
+  "SeeAlso",
+  "TopicCompletionToggle",
+];
+
+const ALLOWED_MISSING: Record<string, string[]> = {
+  // Short reference pages still composed by hand on <SectionLayout>. They are
+  // queued for migration to <TopicTemplate>, which supplies the whole stack.
+  "CapnographyWaveformsTopic.tsx": LEGACY_STACK,
+  "ImmunologyIntensivistsTopic.tsx": LEGACY_STACK,
+  "SuxVsRocComparisonTopic.tsx": LEGACY_STACK,
+  "VenturiMaskTopic.tsx": LEGACY_STACK,
+};
 
 const topicFiles = readdirSync(TOPICS_DIR)
   .filter((f) => f.endsWith(".tsx"))
