@@ -192,12 +192,20 @@ const HepaticPhysiologyTopic = () => {
           <ExamSection id="metabolic" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
             <CollapsibleSubsection title="Metabolic Functions">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li><strong>Carbohydrate</strong>: glycogenesis, glycogenolysis, gluconeogenesis — maintains blood glucose 4–6 mmol/L.</li>
+              <li><strong>Glucose homeostasis</strong>: after a meal, insulin promotes hepatic glucose uptake and <em>glycogenesis</em>, storing glucose as glycogen and limiting post-prandial hyperglycaemia. During fasting, glucagon promotes <em>glycogenolysis</em> and <em>gluconeogenesis</em> from lactate, glycerol and glucogenic amino acids, especially alanine, to maintain circulating glucose. Failure of glycogenolysis and gluconeogenesis makes hypoglycaemia a hallmark of acute liver failure <InlineRef topicId="hepatic-physiology" refLabel="BJA Educ Liver Physiology 2016" />.</li>
               <li><strong>Protein</strong>: synthesises albumin (3.5–5 g/dL, t½ ~20 days), clotting factors (I, II, V, VII, IX, X, XI), complement, acute-phase proteins, plasma cholinesterase.</li>
               <li><strong>Lipid</strong>: cholesterol synthesis, lipoprotein production, fatty acid oxidation, bile salt synthesis.</li>
-              <li><strong>Bilirubin</strong>: conjugation (glucuronidation) of unconjugated bilirubin → water-soluble conjugated bilirubin → excretion in bile.</li>
+              <li><strong>Bilirubin metabolism and excretion</strong>: haemoglobin breakdown produces lipid-soluble unconjugated bilirubin, which travels bound to albumin and is taken up by hepatocytes. UDP-glucuronosyltransferase (UGT) conjugates it with glucuronic acid; water-soluble conjugated bilirubin is actively excreted into bile. Predominantly unconjugated hyperbilirubinaemia suggests excess production before the liver (for example haemolysis), hepatic disease often produces a mixed pattern, and predominantly conjugated hyperbilirubinaemia suggests impaired biliary excretion or post-hepatic obstruction <InlineRef topicId="hepatic-physiology" refLabel="BJA Educ Liver Physiology 2016" />.</li>
               <li><strong>Ammonia</strong>: converts to urea via the urea cycle (failing in liver failure → hepatic encephalopathy).</li>
             </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="immune-function" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
+            <CollapsibleSubsection title="Immunological Function">
+              <p className="text-muted-foreground leading-relaxed">
+                Portal blood makes the liver a filter between the gastrointestinal tract and the systemic circulation. It must recognise pathogens and gut-derived products while maintaining tolerance to self and harmless food antigens. Sinusoidal <strong>Kupffer cells</strong> form the body's largest population of fixed macrophages and phagocytose bacteria, endotoxin and cellular debris. Hepatocytes also support the acute-phase response by synthesising proteins such as C-reactive protein, complement and fibrinogen; loss of immune surveillance and tolerance contributes to infection risk and autoimmune liver disease <InlineRef topicId="hepatic-physiology" refLabel="BJA Educ Liver Physiology 2016" />.
+              </p>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -267,7 +275,7 @@ const HepaticPhysiologyTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Pharmacokinetics</strong>: ↓ protein binding (↑ free drug), ↓ phase I metabolism, ↑ Vd (ascites/oedema).</li>
               <li><strong>Coagulopathy</strong>: ↓ clotting factors, ↓ platelets (hypersplenism), ↑ fibrinolysis — balanced against ↓ anticoagulants.</li>
-              <li><strong>Cardiovascular</strong>: hyperdynamic circulation (↑ CO, ↓ SVR), portopulmonary hypertension, hepatopulmonary syndrome.</li>
+              <li><strong>Cardiovascular</strong>: hyperdynamic circulation (↑ CO, ↓ SVR). <strong>Hepatopulmonary syndrome</strong> is the triad of liver disease, arterial hypoxaemia and intrapulmonary vascular dilatation; diffusion limitation and right-to-left intrapulmonary shunting cause platypnoea and orthodeoxia. <strong>Portopulmonary hypertension</strong> combines portal hypertension with precapillary pulmonary hypertension (historically mPAP &gt;25 mmHg at rest, normal PCWP and raised PVR), carries a poor prognosis and risks RV failure; avoid abrupt falls in SVR, hypoxia, hypercapnia and acidosis <InlineRef topicId="hepatic-physiology" refLabel="BJA Educ Liver Physiology 2016" />.</li>
               <li><strong>Renal</strong>: hepatorenal syndrome — functional renal failure from splanchnic vasodilation.</li>
               <li><strong>Encephalopathy</strong>: ↑ sensitivity to sedatives and opioids — titrate or avoid.</li>
               <li><strong>Child-Pugh</strong> and <strong>MELD</strong> scores stratify perioperative risk.</li>

@@ -74,7 +74,7 @@ const workedExamples: WorkedExample[] = [
         <li>CKD-EPI 2021 (female, age 65, creatinine 90 μmol/L) gives an indexed eGFR of approximately <strong>61 mL/min/1.73 m²</strong> <InlineRef topicId="renal-physiology" refLabel="NICE NG203" />.</li>
         <li>For Calvert dosing, de-index to absolute GFR. Mosteller BSA = √(160 × 60 / 3600) ≈ 1.63 m²; absolute GFR ≈ 61 × 1.63 / 1.73 = <strong>58 mL/min</strong>.</li>
         <li>Calvert: dose (mg) = AUC × (GFR + 25) = 5 × (58 + 25) ≈ <strong>415 mg</strong>.</li>
-        <li>Historically Cockcroft–Gault creatinine clearance was often substituted, but current CKD assessment uses race-free CKD-EPI 2021. Use measured GFR when carboplatin accuracy is critical.</li>
+        <li>Historically Cockcroft–Gault creatinine clearance was often substituted, but current CKD assessment uses the CKD-EPI 2021 equation. Its key update removed the previous race coefficient, avoiding a social classification that contributed to inequitable estimates across populations <InlineRef topicId="renal-physiology" refLabel="NKF Race-Free eGFR" />. Use measured GFR when carboplatin accuracy is critical.</li>
       </ul>
     ),
     answer: <p>Approximately 415 mg using de-indexed CKD-EPI 2021. Re-check renal function before each cycle and use measured GFR when precision is critical.</p>,
@@ -133,7 +133,7 @@ const RenalPhysiologyTopic = () => {
         workedExamples: ["Ganong Ch.37-38", "Power & Kam Ch.9", "BJA Educ 2018"],
       }}
       keyPoints={[
-        { text: "GFR ≈ 125 ml/min. Autoregulation maintains RBF and GFR over MAP ~75–160 mmHg (myogenic + TGF).", cites: ["BJA Educ 2015 (Renal)"] },
+        { text: "GFR ≈ 125 ml/min. Autoregulation maintains RBF and GFR over MAP ~80–180 mmHg (myogenic + TGF).", cites: ["Ganong Ch.37-38"] },
         { text: "PCT reabsorbs 65-70% of filtered Na⁺, all glucose (SGLT2, Tm 375 mg/min), and 85% of HCO₃⁻.", cites: ["Power & Kam Ch.9"] },
         { text: "Loop of Henle: NKCC2 in thick ascending limb — target of furosemide. Countercurrent multiplier creates medullary gradient.", cites: ["BJA Educ 2018"] },
         { text: "ADH acts on V2 receptors → aquaporin-2 insertion in collecting duct → water reabsorption.", cites: ["Ganong Ch.37-38"] },
@@ -203,9 +203,19 @@ const RenalPhysiologyTopic = () => {
               </p>
               <p className="text-foreground/90 leading-relaxed mt-3">
                 GFR is maintained by <strong>autoregulation</strong> (myogenic response + tubuloglomerular feedback via
-                macula densa) over MAP ~75–160 mmHg. Below this range, GFR falls linearly. Autoregulation is impaired by NSAIDs
+                 macula densa) over MAP ~80–180 mmHg. Below this range, GFR falls linearly. Autoregulation is impaired by NSAIDs
                 (block afferent arteriolar prostaglandin-mediated vasodilation) and ACE inhibitors (block efferent constriction).
               </p>
+            </section>
+          </ExamSection>
+
+          <ExamSection id="phosphate-calcium" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_02"]}>
+            <section className="mb-8">
+              <h2 className="text-2xl font-serif font-bold text-foreground">Phosphate and Calcium Handling</h2>
+              <div className="mt-3 grid md:grid-cols-2 gap-4 text-sm">
+                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Phosphate</h3><p className="mt-1 text-foreground/80">About 80% of filtered phosphate is reabsorbed in the PCT through apical NaPi-IIa and NaPi-IIc cotransporters. PTH promotes transporter endocytosis and phosphaturia; FGF23 is also phosphaturic and suppresses calcitriol synthesis. Reduced phosphate excretion causes hyperphosphataemia in CKD <InlineRef topicId="renal-physiology" refLabel="Ganong Ch.37-38" />.</p></div>
+                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Calcium</h3><p className="mt-1 text-foreground/80">About 60% of plasma calcium is freely filtered. Approximately 65% is passively reabsorbed with sodium and water in the PCT and 25% paracellularly in the thick ascending limb. Fine control occurs by active entry through TRPV5 channels in the DCT; PTH and active vitamin D increase distal calcium reabsorption <InlineRef topicId="renal-physiology" refLabel="Ganong Ch.37-38" />.</p></div>
+              </div>
             </section>
           </ExamSection>
 
@@ -307,8 +317,9 @@ const RenalPhysiologyTopic = () => {
               </p>
               <div className="grid md:grid-cols-2 gap-4 text-sm">
                 <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Recognise and optimise</h3><ul className="mt-2 list-disc pl-5 space-y-1 text-foreground/80"><li>Confirm congestion, adherence, adequate perfusion and exclude urinary obstruction.</li><li>Use an adequate IV loop dose; assess early urine output and urinary sodium response.</li><li>Repeated boluses or continuous infusion can maintain tubular exposure; infusion is not universally superior, so titrate to response.</li></ul></div>
-                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Sequential nephron blockade</h3><ul className="mt-2 list-disc pl-5 space-y-1 text-foreground/80"><li>Add a thiazide or thiazide-like drug such as metolazone to block compensatory distal NaCl uptake.</li><li>Consider acetazolamide to inhibit proximal bicarbonate-linked sodium reabsorption.</li><li>Monitor volume status, Na⁺, K⁺, Mg²⁺, acid–base balance and renal function closely.</li></ul></div>
+                 <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Sequential nephron blockade</h3><ul className="mt-2 list-disc pl-5 space-y-1 text-foreground/80"><li>Add a thiazide or thiazide-like drug such as metolazone to block compensatory distal NaCl uptake.</li><li>Consider acetazolamide to inhibit proximal bicarbonate-linked sodium reabsorption.</li><li>Monitor volume status, Na⁺, K⁺, Mg²⁺, acid–base balance and renal function closely.</li></ul></div>
               </div>
+               <p className="mt-3 text-sm text-foreground/80">This stepwise, response-guided approach is supported by the ESICM expert consensus on acute diuretic use and diuretic resistance in critically ill patients with AKI <InlineRef topicId="renal-physiology" refLabel="ESICM Diuretic Consensus 2019" />.</p>
             </section>
           </ExamSection>
 
@@ -439,6 +450,10 @@ const RenalPhysiologyTopic = () => {
                 reabsorption in PCT (85%) via carbonic anhydrase. (2) Titratable acid excretion (H₂PO₄⁻). (3) Ammonium (NH₄⁺)
                 production and excretion — the most important adaptive mechanism in chronic acidosis.
               </p>
+              <div className="mt-4 rounded-lg border border-border p-4 text-sm text-foreground/85">
+                <h3 className="font-semibold text-foreground">Bicarbonate reabsorption</h3>
+                <p className="mt-2">About 85% of filtered HCO₃⁻ is reclaimed indirectly in the PCT. NHE3 secretes H⁺ into the lumen, where it combines with filtered HCO₃⁻ to form H₂CO₃. Brush-border carbonic anhydrase IV converts this to CO₂ and H₂O, which enter the cell. Intracellular carbonic anhydrase II reforms H₂CO₃ and then H⁺ plus HCO₃⁻: H⁺ is recycled through NHE3, while HCO₃⁻ leaves across the basolateral membrane through the Na⁺/HCO₃⁻ cotransporter. This reclaims filtered bicarbonate but does not itself excrete net acid <InlineRef topicId="renal-physiology" refLabel="Power & Kam Ch.9" />.</p>
+              </div>
               <ol className="mt-4 space-y-2 text-sm text-foreground/85 list-decimal pl-5">
                 <li><strong>Ammoniagenesis:</strong> proximal-tubule glutamine is metabolised through glutamate to α-ketoglutarate, generating two NH₄⁺ and two new HCO₃⁻ ions per glutamine.</li>
                 <li><strong>Proximal secretion:</strong> NH₄⁺ substitutes for H⁺ on NHE3 and enters the tubular lumen while newly generated bicarbonate returns to blood.</li>
@@ -451,12 +466,12 @@ const RenalPhysiologyTopic = () => {
           <ExamSection id="endocrine" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RU_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Renal Endocrine Function</h2>
-              <p className="text-foreground/90 leading-relaxed">
-                <strong>Renin</strong>: released from juxtaglomerular cells in response to decreased renal perfusion, sympathetic
-                stimulation, or decreased Na⁺ at macula densa → activates RAAS. <strong>Erythropoietin</strong>: produced by
-                peritubular interstitial cells in response to hypoxia → stimulates erythropoiesis. <strong>1,25(OH)₂ vitamin D₃
-                </strong>: 1α-hydroxylation occurs in PCT cells → increases Ca²⁺ absorption from gut.
-              </p>
+              <ul className="space-y-3 text-sm text-foreground/85 list-disc pl-5 leading-relaxed">
+                <li><strong>Renin:</strong> granular juxtaglomerular cells release renin when afferent-arteriolar stretch falls, macula-densa NaCl delivery falls, or renal sympathetic β₁ stimulation rises. Renin cleaves hepatic angiotensinogen → angiotensin I; ACE forms angiotensin II, which causes vasoconstriction and stimulates adrenal aldosterone release.</li>
+                <li><strong>Erythropoietin:</strong> peritubular interstitial fibroblasts sense tissue hypoxia. Stabilised hypoxia-inducible factor (HIF) activates the EPO gene, increasing marrow erythropoiesis.</li>
+                <li><strong>Vitamin D:</strong> proximal-tubule 1α-hydroxylase converts 25-OH vitamin D to active 1,25-(OH)₂D₃. PTH stimulates the enzyme; FGF23 and high phosphate inhibit it. Calcitriol increases intestinal calcium and phosphate absorption.</li>
+                <li><strong>Local prostaglandins:</strong> PGE₂ and PGI₂ preserve afferent-arteriolar vasodilation and renal blood flow, especially during low effective circulating volume. NSAID inhibition removes this protection and can precipitate AKI <InlineRef topicId="renal-physiology" refLabel="Ganong Ch.37-38" />.</li>
+              </ul>
             </section>
           </ExamSection>
 
@@ -467,7 +482,7 @@ const RenalPhysiologyTopic = () => {
                 <strong>Definition:</strong> a rise in renal arterial pressure produces a steep increase in sodium (natriuresis) and water (diuresis) excretion; a fall in pressure produces avid sodium retention.
               </p>
               <div className="grid md:grid-cols-2 gap-4 text-sm">
-                <div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Mechanism</p><p className="mt-1 text-muted-foreground">Because autoregulation holds RBF and GFR nearly constant between about 75 and 160 mmHg, the response is chiefly <em>tubular</em> rather than filtration-driven. Higher perfusion pressure raises renal interstitial hydrostatic pressure (helped by a rigid capsule and medullary blood flow that is less well autoregulated), which reduces proximal tubule and loop of Henle sodium reabsorption — partly through internalisation of NHE3 and Na⁺/K⁺-ATPase — and increases back-leak of reabsorbed sodium. Reduced renin, angiotensin II and aldosterone, and local nitric oxide and prostaglandins, reinforce the effect.</p></div>
+                <div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Mechanism</p><p className="mt-1 text-muted-foreground">Because autoregulation holds RBF and GFR nearly constant between about 80 and 180 mmHg, the response is chiefly <em>tubular</em> rather than filtration-driven. Higher perfusion pressure raises renal interstitial hydrostatic pressure (helped by a rigid capsule and medullary blood flow that is less well autoregulated), which reduces proximal tubule and loop of Henle sodium reabsorption — partly through internalisation of NHE3 and Na⁺/K⁺-ATPase — and increases back-leak of reabsorbed sodium. Reduced renin, angiotensin II and aldosterone, and local nitric oxide and prostaglandins, reinforce the effect.</p></div>
                 <div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Significance</p><p className="mt-1 text-muted-foreground">Pressure natriuresis provides the infinite-gain feedback loop for long-term blood pressure control: sodium balance can only be restored at a pressure that matches intake. A steep curve lets the kidney clear a salt load with a minimal pressure rise, whereas RAAS activation, sympathetic drive, renal disease or nephron loss shifts the curve rightwards and flattens it, so a higher pressure is required for the same excretion — the basis of salt-sensitive hypertension. ACE inhibitors, ARBs, mineralocorticoid antagonists and diuretics reset the curve leftwards <InlineRef topicId="renal-physiology" refLabel="Ganong Ch.37-38" /></p></div>
               </div>
               <p className="mt-3 text-sm text-muted-foreground">Perioperative relevance: hypotension, raised intra-abdominal pressure and venous congestion all reduce the transrenal pressure gradient and interstitial pressure changes that drive natriuresis, contributing to oliguria and fluid accumulation in critical illness.</p>
