@@ -34,6 +34,13 @@ const TOOLS = [
     icon: Syringe,
   },
   {
+    slug: "infusion-pump",
+    title: "Infusion pump rate calculator",
+    blurb:
+      "Dose ↔ mL/h for any infusion: mg, µg or units in any volume, with weight-based dosing.",
+    icon: Syringe,
+  },
+  {
     slug: "abg-interpreter",
     title: "ABG interpreter",
     blurb:
