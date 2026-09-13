@@ -13,7 +13,9 @@ import { InlineRef } from "@/components/references/InlineRef";
 
 const tocItems = [
   { id: "section-fluid-compartments", label: "Fluid Compartments", group: "Core" },
+  { id: "section-fluid-composition", label: "Crystalloid & Colloid Composition", group: "Core" },
   { id: "section-gdft", label: "Goal-Directed Fluid Therapy", group: "Core" },
+  { id: "section-special-populations", label: "Fluid Management in Special Populations", group: "Core" },
   { id: "section-rose", label: "Phases of Fluid Therapy (ROSE)", group: "Core" },
   { id: "section-paediatric-fluids", label: "Paediatric Fluid Management", group: "Core" },
   { id: "section-fluid-tolerance", label: "Fluid Tolerance & Venous Congestion", group: "Core" },
