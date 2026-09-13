@@ -210,9 +210,11 @@ const PressureMeasurementTopic = () => {
                   Bourdon gauges remain ubiquitous on cylinder yokes and pipeline regulators.
                 </p>
                 <p className="text-sm text-muted-foreground mt-2">
-                  An <strong>aneroid gauge</strong> uses an evacuated flexible metal capsule or bellows that expands or contracts with
-                  pressure and drives a dial through linkages. A <strong>Bourdon gauge</strong> uses a coiled, flattened hollow metal tube
-                  of elliptical cross-section open to the pressure source; rising pressure makes the tube uncoil, and a lever-and-gear
+                  An <strong>aneroid gauge</strong> uses a sealed, evacuated flexible metal capsule or bellows. A rise in external pressure
+                  compresses it and a fall allows it to expand; springs, levers and gears amplify this displacement to move a pointer.
+                  Aneroid mechanisms are used in mechanical sphygmomanometers and barometers. A <strong>Bourdon gauge</strong> uses a
+                  C-shaped or coiled, flattened hollow metal tube of elliptical cross-section open to the pressure source. Rising internal
+                  pressure makes the cross-section more circular, forcing the tube to straighten; a lever-and-gear
                   mechanism amplifies movement of the free end to turn a pointer over a calibrated dial. It reads gauge pressure (zero at
                   atmospheric), spans cylinder pressures up to ~250 bar, and is used on cylinder yokes, pipeline gauges and regulators.
                   Limitations: mechanical hysteresis and wear of the linkage, susceptibility to mechanical shock, a slow response that makes
@@ -238,9 +240,25 @@ const PressureMeasurementTopic = () => {
                 <p>
                   Intraparenchymal fibreoptic or strain-gauge probes are easier to place and carry less infection risk but cannot drain
                   CSF and may drift because they cannot be re-zeroed in situ; subdural/epidural devices are less accurate. The ICP pulse
-                  has <strong>P1</strong> percussion, <strong>P2</strong> tidal/compliance and <strong>P3</strong> dicrotic components.
-                  Normally P1 &gt; P2; P2 exceeding P1 suggests reduced intracranial compliance
+                  has <strong>P1</strong> (percussion wave transmitted from arterial pulsation), <strong>P2</strong> (tidal wave reflecting
+                  intracranial compliance) and <strong>P3</strong> (dicrotic wave associated with aortic-valve closure). Normally P1 &gt; P2
+                  &gt; P3; as compliance falls P2 rises to equal and then exceed P1
                   <InlineRef topicId="pressure-measurement" refLabel="BTF Severe TBI" />.
+                </p>
+                <div className="rounded-lg border border-border p-4">
+                  <svg viewBox="0 0 560 150" className="w-full h-auto" role="img" aria-label="Intracranial pressure pulse waveform showing P1 percussion, P2 tidal and P3 dicrotic peaks">
+                    <line x1="20" y1="125" x2="540" y2="125" className="stroke-border" strokeWidth="2" />
+                    <path d="M20 125 C55 125 62 35 88 35 C111 35 116 78 145 78 C173 78 177 94 207 94 C235 94 244 125 278 125 C313 125 320 35 346 35 C370 35 374 78 404 78 C432 78 438 94 468 94 C497 94 505 125 540 125" fill="none" className="stroke-primary" strokeWidth="3" />
+                    <text x="88" y="24" textAnchor="middle" className="fill-foreground text-[12px] font-semibold">P1 percussion</text>
+                    <text x="145" y="67" textAnchor="middle" className="fill-foreground text-[12px] font-semibold">P2 tidal</text>
+                    <text x="207" y="84" textAnchor="middle" className="fill-foreground text-[12px] font-semibold">P3 dicrotic</text>
+                  </svg>
+                </div>
+                <p>
+                  <strong>Lundberg waves</strong>: A (plateau) waves are abrupt sustained ICP rises to approximately 50–100 mmHg for
+                  5–20 minutes and indicate critically poor compliance; B waves are rhythmic 0.5–2-minute oscillations associated with
+                  disordered autoregulation or breathing; C waves are smaller, faster oscillations linked to vasomotor activity and are
+                  less specific.
                 </p>
                 <p>
                   <strong>Indications</strong>: severe traumatic brain injury with GCS ≤8 and an abnormal CT (or a normal CT with two of
@@ -255,6 +273,15 @@ const PressureMeasurementTopic = () => {
                   <strong> 60–70 mmHg</strong>, individualised to autoregulatory reserve; aggressive pressor-driven CPP &gt;70 mmHg risks
                   ARDS <InlineRef topicId="pressure-measurement" refLabel="BTF Severe TBI" />.
                 </p>
+                <div className="rounded-lg border border-border p-4">
+                  <p className="font-semibold text-foreground">Tiered management of raised ICP</p>
+                  <ol className="mt-2 list-decimal pl-5 space-y-1 text-sm">
+                    <li><strong>Tier 1:</strong> elevate the head about 30°, maintain neutral neck alignment, analgesia/sedation, normoxia, normocapnia, normothermia and adequate MAP; treat seizures and metabolic disturbance.</li>
+                    <li><strong>Tier 2:</strong> osmotherapy with hypertonic saline or mannitol, and CSF drainage when an EVD is present; reassess imaging and surgically remediable causes.</li>
+                    <li><strong>Tier 3:</strong> selected rescue measures such as barbiturate coma or decompressive craniectomy with specialist neurocritical-care/neurosurgical input.</li>
+                  </ol>
+                  <p className="mt-2 text-xs"><InlineRef topicId="pressure-measurement" refLabel="Crit Care Med 2011 Osmotherapy" /></p>
+                </div>
                 <p>
                   <strong>Complications and pitfalls</strong>: infection/ventriculitis (rising with duration of an EVD), tract or
                   intraparenchymal haemorrhage, malposition and failure to cannulate a shifted or collapsed ventricle, catheter blockage by
@@ -296,6 +323,17 @@ const PressureMeasurementTopic = () => {
                   during inspiration on positive-pressure ventilation, obesity and pregnancy (chronically raised baseline), and air bubbles
                   in the fluid column.
                 </p>
+                <div className="rounded-lg border border-border p-4">
+                  <p className="font-semibold text-foreground">Interpretation and management</p>
+                  <ul className="mt-2 list-disc pl-5 space-y-1 text-sm">
+                    <li><strong>Monitoring:</strong> measure baseline IAP in every at-risk ICU patient and trend it alongside organ function.</li>
+                    <li><strong>Grade I (12–15 mmHg):</strong> maintain normovolaemia, reassess further fluid loading, optimise analgesia/sedation and abdominal-wall relaxation, and decompress stomach/colon with an NG tube, rectal tube or enemas where indicated.</li>
+                    <li><strong>Grade II (16–20 mmHg):</strong> institute the same measures promptly, repeat examination/imaging where appropriate and monitor closely for renal, respiratory or cardiovascular dysfunction.</li>
+                    <li><strong>Grade III (21–25 mmHg):</strong> organ dysfunction usually establishes ACS; seek urgent surgical input and drain intraperitoneal fluid percutaneously when feasible.</li>
+                    <li><strong>Grade IV (&gt;25 mmHg):</strong> treat as an emergency. ACS that persists despite medical/percutaneous measures requires urgent decompressive laparotomy; pressure grade alone is not the sole indication.</li>
+                  </ul>
+                  <p className="mt-2 text-xs"><InlineRef topicId="pressure-measurement" refLabel="WSACS IAP Consensus" /> <InlineRef topicId="pressure-measurement" refLabel="Intensive Care Med 2008 IAP" /></p>
+                </div>
               </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -510,11 +548,14 @@ const PressureMeasurementTopic = () => {
                 <InlineRef topicId="pressure-measurement" refLabel="Annual Rev Biomed Eng 2022 (Cuffless)" />.
               </p>
               <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-                <li><strong>Pulse transit time (PTT)</strong> — estimates BP from the interval between an ECG R-wave and the corresponding pulse wave arrival at a peripheral site (e.g. pulse oximeter fingertip or wrist PPG). PTT is influenced by arterial stiffness and preload, so it generally requires periodic cuff calibration.</li>
-                <li><strong>Pulse wave analysis (PWA)</strong> — extracts features from the photoplethysmography waveform shape (amplitude, area, reflection indices). Like PTT, it usually needs calibration to an oscillometric device for absolute BP values.</li>
+                <li><strong>Pulse transit time (PTT)</strong> — uses two sensors, commonly ECG for ventricular electrical activation and peripheral PPG for pulse arrival. Pulse-wave velocity rises and PTT shortens as BP and arterial stiffness rise, an inverse relationship related to the Moens–Korteweg model. Pre-ejection period, vascular tone and arterial stiffness vary independently of BP, so individual and frequent cuff calibration is required.</li>
+                <li><strong>Pulse wave analysis (PWA)</strong> — extracts PPG or tonometry features such as amplitude, upstroke time, width, area under the curve and reflected-wave indices. Machine-learning models correlate these features with reference BP, but usually remain person- and calibration-dependent.</li>
               </ul>
               <p className="text-foreground/90 leading-relaxed text-sm mt-2">
-                These technologies are promising for longitudinal trends and hypertension screening, but at present automated cuff-based NIBP remains the standard for perioperative and critical-care measurement.
+                These technologies are promising for longitudinal trends and hypertension screening, but the Aurora Project highlighted
+                difficulty achieving accurate absolute values and tracking BP change without individual calibration across postures and
+                physiological states. Automated cuff-based NIBP therefore remains the perioperative and critical-care standard
+                <InlineRef topicId="pressure-measurement" refLabel="Hypertension 2023 Aurora" />.
               </p>
             </div>
             <p className="text-foreground/90 leading-relaxed mt-3">

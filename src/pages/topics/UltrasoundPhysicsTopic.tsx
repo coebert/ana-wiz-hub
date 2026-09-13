@@ -327,6 +327,7 @@ const UltrasoundPhysicsTopic = () => {
                    when diagnostic quality permits; for other adult diagnostic imaging, the regulated upper display limit is <strong>MI 1.9</strong>,
                    not a target. Reduce output and dwell time whenever TI rises, especially in fetal, neonatal or poorly perfused tissue
                    <InlineRef topicId="ultrasound-physics" refLabel="BMUS Safety Guidelines" />.
+                 </p>
               </div>
             </CollapsibleSubsection>
           </ExamSection>

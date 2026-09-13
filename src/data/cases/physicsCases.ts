@@ -153,7 +153,7 @@ export const physicsCaseBank: CaseBank = {
           prompt: "Which components produce this pattern?",
           answer: [
             "Air bubbles, clot, kinks, compliant tubing, excessive tubing length, a partially open tap or arterial spasm all add damping.",
-            "Zeroing at the wrong height changes mean pressure by roughly 7.5 mmHg for every 10 cm of height error.",
+            "Zeroing at the wrong height changes mean pressure by approximately 7.4 mmHg for every 10 cm of height error.",
             "Transducer natural frequency must be well above the pressure waveform harmonics for faithful reproduction.",
           ],
         },

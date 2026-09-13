@@ -122,7 +122,33 @@ const OpticsLightTopic = () => {
                 photodetector are on the same side of the tissue. This allows measurement at sites where transmission is impractical
                 (forehead, oesophagus). The principles are identical to transmission oximetry, but the optical path is different.
               </p>
+              <p>
+                A polished laryngoscope blade can produce <strong>specular reflection</strong> along the line of sight, whereas the
+                illuminated airway mucosa is visible through <strong>diffuse reflection</strong>. Theatre luminaires use shaped,
+                overlapping reflectors to focus light on the operative field while limiting shadows. Surgical lasers can reflect
+                specularly from shiny instruments and redirect hazardous energy towards tissue or personnel; matt-finished,
+                non-reflective instruments reduce this risk <InlineRef topicId="optics-light" refLabel="BJA Educ 2004" />.
+              </p>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="polarisation" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <CollapsibleSubsection title="Polarisation of Light">
+              <div className="text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  Light is a transverse electromagnetic wave. In unpolarised light, the electric field vibrates in many planes
+                  perpendicular to propagation; in <strong>plane-polarised light</strong>, vibration is restricted to one plane.
+                  A Polaroid filter selectively transmits one orientation, while reflection, scattering and birefringent crystals
+                  can also polarise light.
+                </p>
+                <p>
+                  Applications include crossed-polariser stress analysis of transparent materials, separate images for each eye in
+                  some 3D glasses, and <strong>polarimetry</strong>. Optically active chiral substances rotate plane-polarised light;
+                  the rotation is proportional to concentration and path length, allowing sugar concentration to be measured by
+                  saccharimetry <InlineRef topicId="optics-light" refLabel="Middleton Ch.12" />.
+                </p>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 
