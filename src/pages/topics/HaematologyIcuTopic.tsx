@@ -80,13 +80,23 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        Reduce citrate dose by 25–50%, increase calcium replacement, and consider stopping citrate.
-        Switch to <strong>no anticoagulation with saline flushes</strong> (the patient is already
-        coagulopathic) or low-dose UFH if filter life inadequate. Monitor ratio every 4 h until
-        normalised.
+        Act in a fixed order. <strong>1) Reduce the citrate dose immediately</strong> by 25–50% (or reduce
+        blood-flow rate, since citrate is prescribed per litre of blood flow) — the accumulating substrate must
+        fall. <strong>2) Increase the systemic calcium infusion</strong> to keep systemic ionised Ca²⁺ 1.0–1.2
+        mmol/L, accepting a higher calcium-chloride/gluconate rate than usual; treat symptomatic hypocalcaemia
+        with a bolus. <strong>3) Adjust the circuit fluids</strong> — use a calcium-free, lower-bicarbonate (or
+        bicarbonate-free) dialysate/replacement solution and increase effluent dose to clear citrate, remembering
+        that many pre-mixed solutions already contain buffer. <strong>4) Monitor the total:ionised calcium ratio
+        every 2–4 h</strong>, alongside systemic ionised Ca²⁺, base excess/bicarbonate, lactate and the
+        anion gap. <strong>5) Abandon citrate</strong> if the ratio stays &gt;2.5, acidosis worsens, or the
+        calcium requirement keeps climbing: switch to <strong>no anticoagulation with saline flushes</strong> (the
+        patient is usually already coagulopathic), low-dose UFH, epoprostenol, or argatroban in hepatic failure.
+        Treat the cause of impaired citrate metabolism in parallel — restore hepatic and muscle perfusion, since
+        shock and liver failure are the reason citrate is not becoming bicarbonate
+        <InlineRef topicId="haematology-icu" refLabel="CJASN 2014 Citrate" />.
       </>
     ),
-    cites: ["BJA Educ HIT 2008"],
+    cites: ["BJA Educ HIT 2008", "CJASN 2014 Citrate"],
   },
 ];
 
@@ -406,8 +416,18 @@ const HaematologyIcuTopic = () => {
             <CollapsibleSubsection title="Anticoagulation in CRRT, ECMO & Liver Failure">
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">Regional citrate (CRRT first-line, KDIGO)</h3>
             <p className="text-muted-foreground text-sm mb-3">
-              Citrate chelates ionised Ca²⁺ in the circuit; calcium re-infused post-filter. Advantages: no systemic anticoagulation, longer filter life. Risks: <strong>citrate accumulation</strong> in liver failure/shock — total:ionised Ca²⁺ ratio &gt;2.5, metabolic acidosis. Reduce citrate, replace calcium, switch to no anticoagulation if needed.
+              Citrate chelates ionised Ca²⁺ in the circuit; calcium re-infused post-filter. Advantages: no systemic anticoagulation, longer filter life. Risks: <strong>citrate accumulation</strong> in liver failure/shock — total:ionised Ca²⁺ ratio &gt;2.5, metabolic acidosis, rising calcium requirement and a widening anion gap.
             </p>
+            <div className="p-3 rounded-lg border border-border mb-3">
+              <p className="font-semibold text-foreground text-sm">Managing suspected citrate accumulation</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li><strong>Cut citrate delivery:</strong> reduce the citrate dose by 25–50% or lower blood-flow rate (citrate is dosed per litre of blood flow).</li>
+                <li><strong>Increase systemic calcium:</strong> titrate the calcium infusion to systemic ionised Ca²⁺ 1.0–1.2 mmol/L; bolus for symptomatic hypocalcaemia or ECG change.</li>
+                <li><strong>Adjust circuit fluids:</strong> calcium-free replacement/dialysate, reduced or bicarbonate-free buffer to avoid compounding alkali load, and a higher effluent dose to clear citrate.</li>
+                <li><strong>Monitor every 2–4 h:</strong> total:ionised Ca²⁺ ratio, systemic ionised Ca²⁺, base excess/bicarbonate, lactate, anion gap and magnesium.</li>
+                <li><strong>Stop citrate</strong> if the ratio remains &gt;2.5, acidosis worsens or calcium demand keeps rising — switch to saline flushes alone, low-dose UFH, epoprostenol or argatroban, and treat the hepatic hypoperfusion driving impaired citrate metabolism<InlineRef topicId="haematology-icu" refLabel="CJASN 2014 Citrate" /><InlineRef topicId="haematology-icu" refLabel="BJA Educ CRRT 2017" />.</li>
+              </ul>
+            </div>
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">ECMO anticoagulation</h3>
             <p className="text-muted-foreground text-sm mb-3">
               UFH first-line. Targets: APTT 1.5–2× baseline, anti-Xa 0.3–0.7 IU/mL (most reliable), ACT 180–220 s. Bivalirudin for HIT or heparin resistance. Acquired vWS (high shear cleaves vWF multimers) contributes to mucosal bleeding — DDAVP or vWF concentrates if severe.

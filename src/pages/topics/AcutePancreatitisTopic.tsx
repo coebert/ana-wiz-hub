@@ -274,6 +274,29 @@ const AcutePancreatitisTopic = () => {
               </div>
             ))}
           </div>
+
+          <h3 className="text-base font-semibold text-foreground mb-2 mt-5">Hypertriglyceridaemia-induced pancreatitis — specific management</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+            Suspect it when triglycerides exceed <strong>11.3 mmol/L (1000 mg/dL)</strong>, especially with
+            lipaemic serum, pseudohyponatraemia, spuriously normal amylase and a family history or poorly
+            controlled diabetes. Excess chylomicrons are hydrolysed by pancreatic lipase to free fatty acids,
+            which are directly cytotoxic to acinar cells and capillary endothelium and cause ischaemia and
+            inflammation; the priority is therefore rapid triglyceride reduction alongside standard care
+            <InlineRef topicId="acute-pancreatitis" refLabel="HTG Pancreatitis 2018" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {[
+              { step: "Insulin infusion (first-line)", detail: "Insulin activates lipoprotein lipase, accelerating chylomicron and VLDL triglyceride clearance, and inhibits hormone-sensitive lipase, reducing further free fatty acid release. Give a variable-rate insulin infusion at about 0.1–0.3 units/kg/h. In non-diabetic or normoglycaemic patients run concurrent 5–10% dextrose and check capillary glucose hourly, aiming for 8–12 mmol/L; monitor potassium." },
+              { step: "Plasmapheresis / plasma exchange", detail: "Removes chylomicrons directly and can halve triglycerides in a single session. Reserve it for severe or deteriorating disease — organ failure, persistent hypocalcaemia, lactic acidosis, or triglycerides that remain very high despite insulin — and for pregnancy-associated disease. It is invasive, needs a large-bore line and citrate anticoagulation, and has not been shown to improve mortality, so it is an escalation rather than a routine step." },
+              { step: "Targets and monitoring", detail: "Aim to bring triglycerides below 5.6 mmol/L (500 mg/dL) — this is the threshold at which further pancreatic injury becomes unlikely; recheck every 12 h during active treatment. Stop the insulin infusion once the target is reached and the patient is eating, then convert to long-term control. Keep the patient nil by mouth of fat initially; heparin is not recommended as a triglyceride-lowering therapy because it depletes endothelial lipoprotein lipase stores after an initial rise." },
+              { step: "Longer-term prevention", detail: "Once oral intake resumes: fibrate (fenofibrate) as first-line lipid-lowering therapy, omega-3 fatty acids, tight glycaemic control, complete alcohol abstinence, weight loss and a low-fat diet. Review contributing drugs — oestrogens, tamoxifen, retinoids, propofol (a lipid emulsion), thiazides, antiretrovirals, olanzapine and clozapine. Screen for familial chylomicronaemia and refer to lipid clinic after recurrent episodes." },
+            ].map((h) => (
+              <div key={h.step} className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{h.step}</p>
+                <p className="text-sm text-muted-foreground mt-1">{h.detail}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Diagnosis */}

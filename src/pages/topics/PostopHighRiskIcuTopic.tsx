@@ -303,6 +303,26 @@ const PostopHighRiskIcuTopic = () => {
                   Postoperative AKI doubles 30-day mortality. KDIGO bundle (PrevAKI). Watch lactate trend &gt; absolute value; persistent lactataemia = ongoing tissue hypoperfusion or hepatic dysfunction.
                 </p>
               </div>
+              <div className="p-4 rounded-lg border border-border sm:col-span-2">
+                <p className="font-semibold text-foreground text-sm">Life after AKI — the sequelae you must hand over</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  AKI in critical illness is not a self-limiting biochemical event. In survivors of critical care,
+                  AKI independently predicts <strong>hospital readmission</strong> (≈19–21% within 30 days vs ≈12%
+                  without AKI) and <strong>post-discharge death</strong> (adjusted odds ≈1.4–1.5 across KDIGO
+                  stages), and the association persists after multivariable adjustment
+                  <InlineRef topicId="postop-high-risk-icu" refLabel="CCM 2015 AKI Outcomes" />. Even apparently
+                  complete recovery of creatinine leaves reduced renal reserve, with an increased long-term risk of
+                  CKD progression and <strong>end-stage renal disease</strong>, especially after repeated insults or
+                  dialysis-requiring AKI.
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Practical implications: document the AKI stage and its cause in the discharge summary; review
+                  nephrotoxic and renally-cleared drugs (NSAIDs, ACE-I/ARB, metformin, gentamicin) before discharge;
+                  request primary-care follow-up of creatinine and urine ACR at about 3 months; and refer to
+                  nephrology if function does not recover, proteinuria persists, or eGFR falls below 30
+                  <InlineRef topicId="postop-high-risk-icu" refLabel="PrevAKI 2017" />.
+                </p>
+              </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Sepsis &amp; surgical site</p>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -327,9 +347,17 @@ const PostopHighRiskIcuTopic = () => {
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Evidence Base — Trials & Audits to Quote">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              The link between critical-care admission and outcome is associative, not causal: sicker patients are
+              selected for admission, and the worst outcomes cluster around delayed or unplanned critical care rather
+              than around critical care itself
+              <InlineRef topicId="postop-high-risk-icu" refLabel="Anaesthesia 2008 Critical Care Use" />.
+            </p>
             <div className="space-y-2">
+
               {[
-                { trial: "Pearse 2006 (UK cohort)", result: "12.5% of surgery is high-risk yet accounts for ~80% of perioperative deaths; only 15% admitted to critical care. Foundational for UK perioperative policy." },
+                { trial: "Pearse 2006 (UK cohort)", result: "12.5% of surgery is high-risk yet accounts for ~80% of perioperative deaths; only 15% admitted to critical care. Foundational for UK perioperative policy — but read it as a description of case-mix and process, not proof that admitting everyone saves lives." },
+                { trial: "Jhanji 2008 (single-trust cohort)", result: "Refines the 'admit them all' message. Mortality was highest not in patients admitted directly after surgery but in those whose critical care was delayed or interrupted: 29.9% for patients admitted to critical care after initial ward care, and 37.7% for those discharged and then readmitted, versus much lower mortality with planned immediate admission. Delayed and unplanned critical care — not critical care itself — marks the highest-risk trajectory, so quote it to argue for planned Level 2/3 beds, outreach and readmission avoidance rather than blanket admission." },
                 { trial: "EuSOS (2012)", result: "European Surgical Outcomes Study — 28-day in-hospital mortality after non-cardiac surgery 4%, with marked variation between countries; only 5% of those who died were admitted to ICU at any point." },
                 { trial: "OPTIMISE (2014) + meta-analysis", result: "Cardiac-output-guided haemodynamic therapy reduced complications (RR 0.77) but no individual trial mortality benefit. Now embedded in ERAS pathways." },
                 { trial: "INPRESS (2017)", result: "Individualised MAP target (within 10% of baseline) reduced organ dysfunction at 7 days vs MAP ≥65 mmHg." },
@@ -354,6 +382,32 @@ const PostopHighRiskIcuTopic = () => {
             <p className="text-muted-foreground leading-relaxed">
               30-day mortality is only the start of the story. Patients surviving major surgery + critical care frequently develop <strong>post-intensive care syndrome (PICS)</strong> — physical deconditioning, cognitive impairment and psychological morbidity. Early mobilisation (TEAM trial showed no harm but no clear functional benefit), structured ICU follow-up clinics, and rehabilitation prescriptions (NICE CG83) are now embedded in CPOC pathways. Engage the patient and family in shared decisions about treatment escalation BEFORE surgery — particularly in the frail and elderly — to align critical-care interventions with what matters to the patient.
             </p>
+            <h3 className="text-base font-semibold text-foreground mt-4 mb-2">Multidisciplinary rehabilitation — what it looks like</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              "Rehabilitation" in the viva means a named team with a shared goal, not physiotherapy alone. The
+              evidence base is strongest in hip fracture, where <strong>multidisciplinary rehabilitation</strong>
+              (geriatrician-led medical review plus physiotherapy, occupational therapy, nursing, dietetics and
+              social work, working to one care plan) probably reduces the composite of death or deterioration in
+              residential status at 6–12 months (RR ≈0.88), with a similar signal for inpatient and community
+              delivery<InlineRef topicId="postop-high-risk-icu" refLabel="Cochrane Hip Rehab 2021" />. Certainty is
+              moderate at best and the effect on mortality alone is uncertain, so present it as a plausible
+              functional benefit rather than a mortality intervention.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mt-3">
+              {[
+                { role: "Intensivist / anaesthetist", detail: "Sedation and analgesia minimisation, tracheostomy and weaning plan, ICU diary, follow-up clinic referral, and documentation of the AKI/MINS/delirium episodes that need primary-care follow-up." },
+                { role: "Geriatrician or perioperative physician", detail: "Comprehensive geriatric assessment, polypharmacy and bone-health review, delirium and dementia screening, and escalation-of-treatment conversations." },
+                { role: "Physiotherapy & occupational therapy", detail: "Daily mobility goals from ICU (ABCDEF 'E'), respiratory rehabilitation, functional assessment, equipment and home-access planning." },
+                { role: "Dietetics & SLT", detail: "Refeeding risk, protein targets during catabolism, swallow assessment after prolonged intubation or tracheostomy." },
+                { role: "Nursing & outreach", detail: "Pressure-area and wound care, structured step-down handover, EWS-triggered review, and prevention of unplanned critical-care readmission." },
+                { role: "Psychology & social work", detail: "Screening for PTSD, anxiety and depression; family support; discharge destination, care package and benefits planning." },
+              ].map((r) => (
+                <div key={r.role} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{r.role}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{r.detail}</p>
+                </div>
+              ))}
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout

@@ -878,6 +878,42 @@ const ImmunologyIntensivistsTopic = () => {
             </p>
           </section>
 
+          {/* ---------------- Immunonutrition ---------------- */}
+          <section className="space-y-3">
+            <h2 className="text-2xl font-serif font-bold text-foreground">
+              Immunonutrition in critical illness
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Immunonutrition means supplying specific substrates at pharmacological — not simply
+              nutritional — doses in the hope of modulating the immune response. The physiology is
+              attractive and the trial evidence is disappointing, so the examinable position is: feed
+              enterally and early, meet protein and energy targets, and do not add routine
+              immune-modulating supplements<InlineRef topicId={TOPIC_ID} refLabel="ESPEN ICU 2019" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                { agent: "Glutamine", rationale: "Conditionally essential in catabolism; fuel for enterocytes and lymphocytes, substrate for glutathione, supports gut barrier integrity.", evidence: "Do not give routinely. High-dose parenteral glutamine increased mortality in patients with multi-organ failure (REDOXS); ESPEN advises against supplementation in complicated ICU patients. Enteral glutamine may still be used in major burns and trauma in some units." },
+                { agent: "Arginine", rationale: "Substrate for nitric oxide synthase and for T-cell proliferation; depleted in sepsis (arginase release).", evidence: "Arginine-enriched formulas have a role in elective major surgery/ERAS, but are not recommended in sepsis, where increased NO production may worsen vasodilatation and haemodynamic instability." },
+                { agent: "Omega-3 fatty acids (EPA/DHA)", rationale: "Displace arachidonic acid, generating less inflammatory 3-series eicosanoids and pro-resolving mediators (resolvins, protectins).", evidence: "Enteral EPA/DHA within nutritional doses is acceptable; high-dose bolus omega-3 for ARDS is not recommended after OMEGA showed harm. Fish-oil-containing parenteral lipid emulsions are a reasonable choice but not proven to change mortality." },
+                { agent: "Selenium, zinc, vitamin C, vitamin D", rationale: "Cofactors for antioxidant enzymes (glutathione peroxidase, superoxide dismutase); replete measured deficiency.", evidence: "Correct documented deficiency, but avoid high-dose monotherapy: single high-dose selenium, and high-dose IV vitamin C in sepsis (LOVIT showed worse composite outcome), are not supported. Vitamin D loading has not improved outcomes in unselected ICU patients (VIOLET)." },
+              ].map((n) => (
+                <div key={n.agent} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{n.agent}</p>
+                  <p className="text-sm text-muted-foreground mt-1"><strong>Rationale:</strong> {n.rationale}</p>
+                  <p className="text-sm text-muted-foreground mt-1"><strong>Evidence:</strong> {n.evidence}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              <strong>Viva line:</strong> "Immunonutrition targets the immune response with glutamine,
+              arginine, omega-3 fatty acids and antioxidants. Physiologically plausible, but the trial
+              evidence is neutral to harmful in the general ICU population — so I would prioritise early
+              enteral feeding with adequate protein, correct measured micronutrient deficiency, and reserve
+              immune-modulating formulas for specific groups such as elective major surgery or burns, in
+              line with local and ESPEN guidance."
+            </p>
+          </section>
+
           {/* ---------------- Clinical pearls ---------------- */}
           <section className="rounded-xl border border-icu/40 bg-icu/5 p-5 space-y-2">
             <h2 className="text-xl font-serif font-semibold text-foreground">
@@ -887,7 +923,8 @@ const ImmunologyIntensivistsTopic = () => {
               <li>Sepsis is a dysregulated host response — hyperinflammation (SIRS, cytokine storm) followed by <strong>compensatory anti-inflammatory response syndrome (CARS)</strong> and immunoparalysis, which drives secondary infection.<InlineRef topicId={TOPIC_ID} refLabel="Singer JAMA 2016 (Sepsis-3)" /><InlineRef topicId={TOPIC_ID} refLabel="Hotchkiss Nat Rev Immunol 2013" /><InlineRef topicId={TOPIC_ID} refLabel="Evans SSC 2021" /><InlineRef topicId={TOPIC_ID} refLabel="NICE NG51 Sepsis" /></li>
              <li>Splenectomised or functionally hyposplenic patients (sickle cell) lose antibody-mediated opsonisation of encapsulated organisms: <strong>Strep pneumoniae, Neisseria meningitidis, Haemophilus influenzae</strong>. Vaccinate and give prophylactic antibiotics.<InlineRef topicId={TOPIC_ID} refLabel="Rubin IDSA 2014" /></li>
              <li>Neutropenic sepsis (ANC &lt;0.5 × 10⁹/L): empirical broad-spectrum antibiotics within 1 h; think fungal (Candida, Aspergillus) if fever persists &gt;96 h.<InlineRef topicId={TOPIC_ID} refLabel="Evans SSC 2021" /></li>
-             <li>T-cell dysfunction (HIV, transplant, high-dose steroids, calcineurin inhibitors) predisposes to <strong>PJP, CMV, TB, toxoplasma, Cryptococcus</strong>.<InlineRef topicId={TOPIC_ID} refLabel="Hotchkiss Nat Rev Immunol 2013" /></li>
+             <li>T-cell dysfunction predisposes to <strong>PJP, CMV, TB, toxoplasma, Cryptococcus</strong>. Named culprits: HIV; calcineurin inhibitors (<strong>tacrolimus, ciclosporin</strong>); mTOR inhibitors (<strong>sirolimus, everolimus</strong>); antiproliferatives (<strong>mycophenolate, azathioprine</strong>); high-dose corticosteroids; and depleting biologics (<strong>alemtuzumab, rituximab</strong>) — ask about the last dose, since rituximab's effect outlasts it by 6–12 months.<InlineRef topicId={TOPIC_ID} refLabel="Hotchkiss Nat Rev Immunol 2013" /><InlineRef topicId={TOPIC_ID} refLabel="BJA Educ Immunosuppression 2019" /></li>
+             <li><strong>Immunonutrition</strong> is not a routine ICU therapy. Glutamine, arginine and high-dose antioxidants should not be given routinely to general critically ill patients, and parenteral glutamine is harmful in multi-organ failure; enteral omega-3 (EPA/DHA) is at most an option in selected patients, and standard practice remains early enteral nutrition with adequate protein.<InlineRef topicId={TOPIC_ID} refLabel="ESPEN ICU 2019" /></li>
              <li>Eculizumab and ravulizumab block C5 → mandatory meningococcal vaccination and consideration of penicillin prophylaxis.<InlineRef topicId={TOPIC_ID} refLabel="McNamara MMWR 2017 (eculizumab)" /></li>
              <li>C1 esterase inhibitor deficiency → hereditary angioedema — treat with C1-INH concentrate or icatibant, <em>not</em> adrenaline/steroids.<InlineRef topicId={TOPIC_ID} refLabel="Cicardi HAE 2014" /><InlineRef topicId={TOPIC_ID} refLabel="Cook NAP6 2018" /></li>
              <li>Prion contamination: standard autoclaving is inadequate — use 1 M NaOH soak or 134 °C autoclave for a prolonged cycle; single-use instruments for high-risk tissue.<InlineRef topicId={TOPIC_ID} refLabel="ACDP TSE 2015" /></li>
@@ -946,8 +983,14 @@ const ImmunologyIntensivistsTopic = () => {
                 (eculizumab) all increase susceptibility to <strong>encapsulated bacteria and Neisseria</strong>.
               </li>
               <li>
-                T-cell dysfunction (HIV, transplant, high-dose steroids, calcineurin inhibitors) predisposes
-                to <strong>PJP, CMV, TB, toxoplasmosis and Cryptococcus</strong>.
+                T-cell dysfunction predisposes to <strong>PJP, CMV, TB, toxoplasmosis and Cryptococcus</strong>.
+                Know the drug classes by name: <strong>calcineurin inhibitors</strong> (tacrolimus, ciclosporin —
+                block IL-2 transcription), <strong>mTOR inhibitors</strong> (sirolimus, everolimus — impair T-cell
+                proliferation and wound healing), <strong>antiproliferative agents</strong> (mycophenolate,
+                azathioprine — deplete lymphocyte purine synthesis), <strong>high-dose corticosteroids</strong>,
+                and <strong>lymphocyte-depleting biologics</strong> (alemtuzumab anti-CD52, rituximab anti-CD20 →
+                prolonged B-cell depletion and hypogammaglobulinaemia)
+                <InlineRef topicId={TOPIC_ID} refLabel="BJA Educ Immunosuppression 2019" />.
               </li>
               <li>
                 Prions are invisible to the immune system (no PAMPs, no nucleic acid) and require special
