@@ -159,21 +159,45 @@ const GasLawsTopic = () => {
                 <p>
                   Hyperbaric oxygen therapy exposes the patient to oxygen at supra-atmospheric pressure. By
                   <strong> Boyle's law</strong>, increasing ambient pressure compresses gas-filled spaces, so an untreated
-                  pneumothorax is dangerous and failure to equalise the middle ear or sinuses causes barotrauma. Gas density also
-                  rises, increasing airway and ventilator resistance
+                  pneumothorax is an absolute contraindication and failure to equalise the middle ear or sinuses causes barotrauma.
+                  Gas placed in a tracheal-tube cuff before compression changes volume and pressure; monitor cuff pressure and use
+                  saline rather than air when local chamber practice requires it. Gas density also rises in proportion to absolute
+                  pressure, increasing turbulent airway resistance and work of breathing while changing ventilator flow and delivered
+                  tidal volume
                   <InlineRef topicId="gas-laws" refLabel="Intensive Care Med 2012 (Hyperbaric ventilator)" />.
                 </p>
                 <p>
                   <strong>Dalton's law</strong> predicts the marked rise in inspired and arterial oxygen partial pressure.
-                  <strong> Henry's law</strong> predicts that more oxygen dissolves directly in plasma as its partial pressure rises,
-                  increasing oxygen carriage independently of haemoglobin. Hyperoxia causes vasoconstriction while preserving tissue
-                  oxygen delivery and supports angiogenesis/neovascularisation and oxygen-dependent antimicrobial function.
+                  Breathing 100% oxygen at 2–3 atmospheres absolute can raise arterial oxygen tension above 1,500–2,000 mmHg and
+                  markedly increase dissolved plasma oxygen. Exposure is therefore time limited: pulmonary toxicity causes cough,
+                  chest discomfort and declining vital capacity, while CNS toxicity can cause a convulsion. Hyperoxia also causes
+                  vasoconstriction while usually preserving tissue oxygen delivery.
                 </p>
                 <p>
                   In decompression illness, recompression reduces bubble volume by Boyle's law and raises ambient nitrogen pressure;
                   breathing 100% oxygen then creates a gradient for nitrogen to leave bubbles and dissolve back into blood according
-                  to Henry's law before pulmonary elimination. Important harms are middle-ear, sinus and pulmonary barotrauma,
-                  reversible pulmonary oxygen toxicity, and CNS oxygen toxicity with seizures.
+                  to Henry's law before pulmonary elimination. In carbon-monoxide poisoning, high inspired and dissolved oxygen
+                  accelerates displacement and elimination of CO from haemoglobin and supports tissue oxygenation; hyperbaric oxygen at
+                  3 ATA reduces the carboxyhaemoglobin half-life to roughly 20–30 minutes
+                  <InlineRef topicId="gas-laws" refLabel="NEJM 2009 (CO poisoning)" />.
+                </p>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
+            <CollapsibleSubsection title="Graham's Law of Diffusion">
+              <div className="space-y-3 text-foreground/90 leading-relaxed">
+                <p>
+                  Graham's law states that, at the same temperature and pressure, a gas's diffusion rate is inversely
+                  proportional to the square root of its molecular mass or density: <strong>rate ∝ 1/√MW</strong>. Oxygen
+                  (MW 32) therefore has only a modest molecular-weight advantage over carbon dioxide (MW 44): √44/√32 ≈ 1.17.
+                </p>
+                <p>
+                  Biological membrane transfer also depends on area, thickness, pressure gradient and the diffusion coefficient
+                  described by Fick's law. That coefficient incorporates Henry-law solubility as well as molecular weight. CO₂ is
+                  far more soluble than O₂ and therefore diffuses approximately 20 times faster across the alveolar membrane despite
+                  being heavier <InlineRef topicId="gas-laws" refLabel="BJA Educ 2007 (Gas laws)" />.
                 </p>
               </div>
             </CollapsibleSubsection>

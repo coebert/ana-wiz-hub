@@ -74,8 +74,8 @@ const DefibrillationPacingTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
-        workedExamples: ["Resuscitation Council UK 2021", "BJA Educ 2005", "Cross & Plunkett Ch.14"],
-        keyPoints: ["Resuscitation Council UK 2021", "BJA Educ 2005", "Cross & Plunkett Ch.14"],
+        workedExamples: ["Resuscitation Council UK 2021", "RCUK Paediatric ALS 2021", "BJA Educ 2005", "Cross & Plunkett Ch.14"],
+        keyPoints: ["Resuscitation Council UK 2021", "RCUK Paediatric ALS 2021", "BJA Educ 2005", "Cross & Plunkett Ch.14", "Assoc Anaesth CIED 2022"],
       }}
       keyPoints={[
         { text: "Biphasic defibrillators use lower energy (120–200 J vs 360 J monophasic) with equal or superior efficacy and less myocardial damage", cites: ["Resuscitation Council UK 2021"] },
@@ -176,8 +176,8 @@ const DefibrillationPacingTopic = () => {
                     </tr>
                     <tr>
                       <td className="py-2 pr-3"><strong>Paediatric (synch or defib)</strong></td>
-                      <td className="py-2 pr-3">1 J/kg synch; 4 J/kg defib</td>
-                      <td className="py-2">Synchronised cardioversion may be escalated to 2 J/kg</td>
+                      <td className="py-2 pr-3">1 J/kg synch; initial defibrillation 4 J/kg</td>
+                      <td className="py-2">Escalate refractory VF/pVT towards 8 J/kg or the adult dose when appropriate; never exceed 10 J/kg. Synchronised cardioversion may be escalated to 2 J/kg <InlineRef topicId="defibrillation-pacing" refLabel="RCUK Paediatric ALS 2021" /></td>
                     </tr>
                   </tbody>
                 </table>
@@ -208,10 +208,13 @@ const DefibrillationPacingTopic = () => {
                 remainder follows alternative pathways through chest wall muscle, lung, and other structures.
               </p>
               <p>
-                Factors that <strong>increase impedance</strong> include obesity, hyperinflated lungs (COPD, inspiration), poor
-                pad-skin contact, small pad size, and excessive chest hair. Factors that <strong>reduce impedance</strong> include
+                <strong>Patient and position factors increasing impedance</strong> include obesity, hyperinflated lungs, inspiration
+                and anteroposterior placement (which can produce higher impedance than anterolateral placement). <strong>Technique and
+                equipment factors increasing impedance</strong> include poor pad-skin contact, small pads and excessive chest hair.
+                Factors that <strong>reduce impedance</strong> include
                 self-adhesive gel pads, firm application pressure (~25 lb), defibrillation during expiration, larger pad surface area,
-                and successive shocks (transthoracic impedance falls with repeated defibrillation).
+                and successive shocks (transthoracic impedance falls with repeated defibrillation)
+                <InlineRef topicId="defibrillation-pacing" refLabel="BJA Educ 2005" />.
               </p>
               <p>
                 Pad placement follows the <strong>anterolateral</strong> position: one pad below the right clavicle (right sternal edge)
@@ -242,7 +245,13 @@ const DefibrillationPacingTopic = () => {
               <p>
                 Magnet application converts most pacemakers to an <strong>asynchronous mode</strong> (VOO or DOO) — fixed-rate pacing
                 without sensing. This eliminates the risk of EMI-induced inhibition during surgery. The magnet rate also provides
-                information about battery status (rate decreases as battery depletes).
+                manufacturer-specific information about battery status. <strong>Beginning of life (BOL)</strong> describes a fresh
+                battery and its expected magnet rate; at the <strong>elective replacement indicator (ERI)</strong>, the magnet rate is
+                slower and generator replacement should be planned; <strong>end of life (EOL)</strong> denotes advanced depletion and
+                potentially unreliable output or altered device behaviour. A slow magnet rate must be interpreted against the
+                manufacturer chart. ERI/EOL devices need urgent pacing-team review and possible reprogramming or replacement before
+                high-risk surgery, particularly when EMI is expected
+                <InlineRef topicId="defibrillation-pacing" refLabel="Assoc Anaesth CIED 2022" />.
               </p>
             </div>
             </CollapsibleSubsection>
@@ -266,6 +275,20 @@ const DefibrillationPacingTopic = () => {
                   </div>
                 </div>
                 <p className="text-sm">Transcutaneous pacing is a rapid bridge, not a substitute for prompt definitive planning when ongoing pacing is required <InlineRef topicId="defibrillation-pacing" refLabel="RCUK 2021 Bradycardia" />.</p>
+                <div className="rounded-lg border border-border p-4 space-y-3">
+                  <h3 className="font-semibold text-foreground">Pacemaker troubleshooting</h3>
+                  <div className="grid gap-3 md:grid-cols-3 text-sm">
+                    <div><strong className="text-foreground">Failure to capture</strong><p className="mt-1">A pacing spike is not followed by a P wave or QRS complex. Check cables and lead position; correct ischaemia/electrolytes, increase output (mA), reposition if appropriate and arrange lead review.</p></div>
+                    <div><strong className="text-foreground">Undersensing</strong><p className="mt-1">Spikes occur despite intrinsic activity. Lead displacement, low-amplitude signals or an insensitive setting may be responsible. Check connections and increase sensitivity by reducing the mV value.</p></div>
+                    <div><strong className="text-foreground">Failure to output</strong><p className="mt-1">No spike appears despite a rate below the lower limit. Check power, connections and lead integrity; remove EMI causing oversensing and obtain generator support or replacement.</p></div>
+                  </div>
+                  <svg viewBox="0 0 660 120" className="w-full h-auto" role="img" aria-label="Simplified pacing traces showing capture, failure to capture and undersensing">
+                    <path d="M10 35h45l4-28 5 28h18l8-12 8 12h105" fill="none" className="stroke-primary" strokeWidth="2"/><text x="8" y="58" className="fill-muted-foreground text-[11px]">capture: spike → QRS</text>
+                    <path d="M230 35h45l4-28 5 28h130" fill="none" className="stroke-destructive" strokeWidth="2"/><text x="228" y="58" className="fill-muted-foreground text-[11px]">failure to capture: spike only</text>
+                    <path d="M448 35h25l12-20 12 20h25l4-28 5 28h35l12-20 12 20h55" fill="none" className="stroke-primary" strokeWidth="2"/><text x="446" y="58" className="fill-muted-foreground text-[11px]">undersensing: spike despite QRS</text>
+                  </svg>
+                  <p className="text-xs"><InlineRef topicId="defibrillation-pacing" refLabel="Assoc Anaesth CIED 2022" /></p>
+                </div>
               </div>
             </CollapsibleSubsection>
           </ExamSection>
