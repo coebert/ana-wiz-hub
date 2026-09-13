@@ -425,7 +425,7 @@ const HaematologyIcuTopic = () => {
                 <li><strong>Increase systemic calcium:</strong> titrate the calcium infusion to systemic ionised Ca²⁺ 1.0–1.2 mmol/L; bolus for symptomatic hypocalcaemia or ECG change.</li>
                 <li><strong>Adjust circuit fluids:</strong> calcium-free replacement/dialysate, reduced or bicarbonate-free buffer to avoid compounding alkali load, and a higher effluent dose to clear citrate.</li>
                 <li><strong>Monitor every 2–4 h:</strong> total:ionised Ca²⁺ ratio, systemic ionised Ca²⁺, base excess/bicarbonate, lactate, anion gap and magnesium.</li>
-                <li><strong>Stop citrate</strong> if the ratio remains &gt;2.5, acidosis worsens or calcium demand keeps rising — switch to saline flushes alone, low-dose UFH, epoprostenol or argatroban, and treat the hepatic hypoperfusion driving impaired citrate metabolism<InlineRef topicId="haematology-icu" refLabel="CJASN 2014 Citrate" />.</li>
+                <li><strong>Stop citrate</strong> if the ratio remains &gt;2.5, acidosis worsens or calcium demand keeps rising — switch to saline flushes alone, low-dose UFH, epoprostenol or argatroban, and treat the hepatic hypoperfusion driving impaired citrate metabolism<InlineRef topicId="haematology-icu" refLabel="CJASN 2014 Citrate" /><InlineRef topicId="haematology-icu" refLabel="BJA Educ CRRT 2017" />.</li>
               </ul>
             </div>
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">ECMO anticoagulation</h3>
