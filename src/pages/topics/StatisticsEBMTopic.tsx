@@ -122,11 +122,9 @@ const StatisticsEBMTopic = () => {
                 <strong> relative risk (RR)</strong> and incidence. <strong>Case-control studies</strong> start with outcome (cases) and compare exposure history with
                 controls — they measure the <strong>odds ratio (OR)</strong> but cannot directly calculate RR.
               </p>
-              <p>
-                <strong>Cross-sectional studies</strong> measure prevalence at a single time point. <strong>Ecological studies</strong> use population-level data and are
-                prone to the ecological fallacy. <strong>Systematic reviews</strong> and <strong>meta-analyses</strong> sit at the top of the hierarchy of evidence but are
-                only as good as the included studies.
-              </p>
+              <p><strong>Cross-sectional studies</strong> are snapshots that measure exposure and outcome simultaneously, so their key measure is <strong>prevalence</strong>. They are quick and inexpensive, describe disease burden for service planning, and generate hypotheses. Because temporality is unknown they show association, not causation; selection and recall bias are common, and they perform poorly for rare or rapidly fatal disease.</p>
+              <p><strong>Case reports</strong> describe one patient with a rare condition, novel intervention or unexpected adverse event. <strong>Case series</strong> describe several patients sharing a condition or treatment and can identify common features of an emerging disease. Both are valuable for signal detection and hypothesis generation, but lack a control group, cannot estimate comparative risk or establish causality, and carry high selection and reporting bias. <InlineRef topicId="statistics-ebm" refLabel="Petrie & Sabin" /></p>
+              <p><strong>Ecological studies</strong> use population-level data and are prone to the ecological fallacy. <strong>Systematic reviews</strong> and <strong>meta-analyses</strong> sit at the top of the hierarchy of evidence but are only as good as the included studies.</p>
               <div className="grid md:grid-cols-2 gap-3 pt-2">
                 <div className="rounded-lg border border-border p-3"><strong className="text-foreground">RCT variants</strong><ul className="mt-2 list-disc pl-5 text-sm"><li><strong>Parallel:</strong> concurrent groups receive different treatments.</li><li><strong>Crossover:</strong> each patient receives each treatment, separated by washout; best for stable chronic disease without carry-over.</li><li><strong>Factorial:</strong> a 2×2 or larger design tests interventions and interaction efficiently.</li><li><strong>Cluster randomised:</strong> whole units (theatres, wards, hospitals) are randomised rather than individuals — practical for care-pathway interventions but requires analysis adjusted for the intracluster correlation.</li><li><strong>Superiority:</strong> designed to show the new treatment is better than comparator.</li><li><strong>Equivalence:</strong> designed to show the two treatments differ by no more than a pre-specified margin in either direction.</li><li><strong>Non-inferiority:</strong> tests whether a new treatment is not unacceptably worse than control by a pre-specified clinically acceptable margin — common in anaesthesia and critical care where a new agent offers practical advantages rather than greater efficacy.</li></ul><InlineRef topicId="statistics-ebm" refLabel="Petrie & Sabin" /></div>
                 <div className="rounded-lg border border-border p-3"><strong className="text-foreground">Clinical trial phases</strong><ul className="mt-2 list-disc pl-5 text-sm"><li><strong>I:</strong> first-in-human safety, pharmacokinetics and dose-ranging, usually in few healthy volunteers.</li><li><strong>II:</strong> preliminary efficacy, safety and dose selection in affected patients.</li><li><strong>III:</strong> large comparative RCTs providing the main efficacy and safety evidence for approval.</li><li><strong>IV:</strong> post-marketing effectiveness, long-term safety and rare adverse effects.</li></ul><InlineRef topicId="statistics-ebm" refLabel="BJA Educ 2016" /></div>
@@ -162,6 +160,10 @@ const StatisticsEBMTopic = () => {
                 A measure of central tendency summarises a dataset with a single "typical" value. The choice depends on the <strong>data type</strong> (nominal, ordinal, interval/ratio)
                 and the <strong>shape of the distribution</strong>. Each measure has a paired measure of spread that should be reported alongside it.
               </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 mb-4 text-sm">
+              <div className="rounded-md border border-border p-3"><p className="font-semibold text-foreground">Categorical data</p><ul className="mt-2 list-disc pl-5 space-y-1 text-muted-foreground"><li><strong>Nominal:</strong> unordered labels such as blood group or sex; summarise with counts, proportions and mode.</li><li><strong>Ordinal:</strong> ordered categories whose gaps are not necessarily equal, such as ASA grade or pain score; rank and summarise with median and IQR.</li></ul></div>
+              <div className="rounded-md border border-border p-3"><p className="font-semibold text-foreground">Numerical data</p><ul className="mt-2 list-disc pl-5 space-y-1 text-muted-foreground"><li><strong>Interval:</strong> equal intervals but no true zero, such as °C; differences are meaningful, ratios are not.</li><li><strong>Ratio:</strong> equal intervals and a true zero, such as height, weight or heart rate; all arithmetic operations are meaningful.</li><li><strong>Discrete</strong> values are counts; <strong>continuous</strong> values can take any value within a range.</li></ul><InlineRef topicId="statistics-ebm" refLabel="Petrie & Sabin" /></div>
             </div>
 
             <div className="grid sm:grid-cols-3 gap-3 mb-4">
@@ -657,13 +659,13 @@ const StatisticsEBMTopic = () => {
             <CollapsibleSubsection title="Bayesian Concepts">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
-                <strong>Bayes' theorem</strong>: posterior odds = prior odds × likelihood ratio. The post-test probability depends not only on test performance
-                (sensitivity/specificity) but also on the <strong>pre-test probability (prevalence)</strong>.
+                <strong>Bayes' theorem:</strong> post-test odds = pre-test odds × likelihood ratio. <strong>Pre-test probability</strong> is the estimated probability before testing, informed by prevalence and the clinical context. Convert probability to odds with <strong>odds = p/(1−p)</strong>. The <strong>likelihood ratio</strong> states how much a result changes those odds: LR+ for a positive result and LR− for a negative result. Convert the resulting odds back with <strong>probability = odds/(1+odds)</strong>.
               </p>
               <p>
                 A positive troponin in a patient with crushing chest pain (high pre-test probability) has a much higher PPV than in an asymptomatic screened patient.
                 This is the mathematical basis for: "don't order a test if the result won't change your management."
               </p>
+              <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Worked example</h3><p className="mt-2 text-sm">A patient has a 20% pre-test probability of disease: pre-test odds = 0.20/0.80 = 0.25. A positive test with LR+ 8 gives post-test odds = 0.25 × 8 = 2. Post-test probability = 2/(1+2) = <strong>66.7%</strong>. The test has raised, but not guaranteed, the probability of disease. <InlineRef topicId="statistics-ebm" refLabel="BJA Educ Diagnostic Tests 2017" /></p></div>
             </div>
             </CollapsibleSubsection>
           </ExamSection>

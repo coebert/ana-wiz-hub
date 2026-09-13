@@ -164,6 +164,10 @@ const PulseOximetryTopic = () => {
                 dedicated subsection below.
               </p>
             </div>
+            <div className="grid gap-3 md:grid-cols-2 mt-4 text-sm">
+              <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Reflective pulse oximetry</h3><p className="mt-1 text-muted-foreground">The LEDs and photodetector sit side-by-side on one surface, commonly the forehead or sternum. Light enters tissue and back-scattered light from underlying tissue and bone returns to the detector. Central sites are less affected by peripheral vasoconstriction and may respond faster in shock. Venous pulsation, especially head-down positioning, can distort readings; excessive probe pressure can compress the vascular bed and abolish the signal. <InlineRef topicId={TOPIC_ID} refLabel="Sensors 2020 (Oximetric techniques)" /></p></div>
+              <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Signal processing</h3><p className="mt-1 text-muted-foreground">Motion and low perfusion reduce the arterial signal-to-noise ratio. LED <strong>chopping</strong> rapidly alternates red, infrared and off periods so ambient light can be measured and subtracted. Modern motion-tolerant systems such as SET use adaptive filters and parallel analyses, including discrete saturation transforms, to separate arterial pulsation from venous and movement noise. This improves reliability during transport, shivering and shock but does not replace waveform and clinical assessment. <InlineRef topicId={TOPIC_ID} refLabel="BJA Educ 2003" /></p></div>
+            </div>
           </section>
 
           <section className="mb-10">
@@ -202,6 +206,7 @@ const PulseOximetryTopic = () => {
               with vasoconstriction (hypovolaemia, hypothermia, high sympathetic tone) and rises with vasodilatation.
               Clinical uses include a perfusion/ sympathetic-tone marker in <strong>sepsis</strong> and an objective
               early sign of successful <strong>regional blockade</strong> (sympathectomy raises PI in the blocked limb).
+              PI is relative and device/site dependent, so trends matter more than a single threshold. A rapid rise in the blocked limb may precede sensory or motor change; a falling PI may warn of central hypovolaemia, while a low pre-induction value can identify patients at risk of hypotension. Serial PI can complement PVI when assessing response to fluid, but vasopressors, temperature and probe site remain confounders.
             </p>
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Pleth Variability Index (PVI)</h3>
             <p className="text-foreground/90 leading-relaxed">
@@ -213,8 +218,7 @@ const PulseOximetryTopic = () => {
             </p>
             <p className="text-foreground/90 leading-relaxed mt-3">
               <strong>Limitations:</strong> PVI is validated only in <strong>fully mechanically ventilated</strong>
-              patients with a regular rhythm — spontaneous breathing, arrhythmias, low tidal volumes, vasopressors and
-              poor peripheral perfusion all degrade its accuracy.
+              patients with no spontaneous effort, a regular rhythm and adequate tidal volume. Spontaneous breaths, atrial fibrillation or frequent ectopy, tidal volumes below 8 mL/kg, respiratory rates above 30/min, open-chest surgery and right-ventricular failure invalidate heart–lung interaction assumptions. Vasopressors and poor peripheral perfusion also degrade signal quality.
             </p>
           </section>
 

@@ -148,6 +148,10 @@ const ABGAnalyserTopic = () => {
               The reference half-cell provides a <strong>stable, known potential</strong> against which the measuring electrode is compared. It consists of a silver wire coated with AgCl, immersed in saturated KCl (3.5 mol/L). The Ag/AgCl equilibrium (Ag ⇌ Ag⁺ + e⁻; Ag⁺ + Cl⁻ ⇌ AgCl) produces a fixed potential because [Cl⁻] is constant (saturated). KCl diffuses slowly through the <strong>liquid junction</strong> into the blood sample — KCl is chosen because K⁺ and Cl⁻ have nearly equal mobilities, minimising liquid junction potential.
             </p>
           </div>
+          <div className="bg-card border border-border rounded-lg p-4 mt-3">
+            <h3 className="font-semibold text-foreground mb-2">Sources of Error and Interference</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">The Clark electrode consumes O₂ at the cathode, so stagnant blood develops an oxygen-depleted boundary layer (the <strong>stirring effect</strong>) and may read low. Halothane and nitrous oxide can also be reduced at the cathode and cause a falsely high PO₂. Protein deposition slows membrane diffusion, while membrane damage disrupts selectivity. Temperature control is essential because it changes O₂ solubility, electrode kinetics and membrane diffusion. <InlineRef topicId="abg-analyser" refLabel="Middleton Ch.18" /></p>
+          </div>
         </div>
 
         <div>
@@ -178,6 +182,10 @@ const ABGAnalyserTopic = () => {
             <p className="text-sm text-muted-foreground leading-relaxed">
               The −0.6V sits on the <strong>"plateau"</strong> of the current-voltage (polarographic) curve. Below ~−0.4V, not all O₂ molecules reaching the cathode are reduced — current depends on both voltage and PO₂. Above ~−0.8V, water itself begins to be reduced (electrolysis), adding spurious current. At −0.6V, all O₂ is immediately reduced on arrival, so current depends <em>only</em> on the rate of O₂ diffusion through the membrane — which is proportional to PO₂.
             </p>
+          </div>
+          <div className="bg-card border border-border rounded-lg p-4 mt-3">
+            <h3 className="font-semibold text-foreground mb-2">Sources of Error and Interference</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">Perforation of the PTFE membrane destroys selective gas diffusion; protein coating slows it. Depletion, evaporation or drying of the thin bicarbonate film changes its response, and the required diffusion/equilibration makes this the slowest conventional blood-gas electrode. Highly diffusible gases such as nitrous oxide may interfere, although this is generally less clinically important than interference at the Clark electrode. <InlineRef topicId="abg-analyser" refLabel="Cross & Plunkett Ch.15-16" /></p>
           </div>
         </div>
 

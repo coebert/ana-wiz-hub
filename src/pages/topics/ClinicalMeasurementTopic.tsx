@@ -182,6 +182,7 @@ const ClinicalMeasurementTopic = () => {
               indicate tricuspid regurgitation). The <strong>y descent</strong> represents rapid atrial emptying after the tricuspid
               valve opens — it is steep and prominent in constrictive pericarditis (Friedreich's sign) and absent in tamponade.
             </p>
+            <p><strong>Pathological patterns:</strong> cannon a waves arise when the atrium contracts against a closed tricuspid valve in AV dissociation—junctional rhythm, complete heart block or ventricular pacing. Large a waves also occur with tricuspid or pulmonary stenosis, pulmonary hypertension and RV hypertrophy. Tricuspid regurgitation produces a large systolic c–v wave with “ventricularisation” and loss of the x descent. Constrictive pericarditis produces prominent x and y descents (the M/W or “steeple” pattern); tamponade preserves x but blunts or abolishes y, while RV ischaemia can also blunt y. <InlineRef topicId="clinical-measurement" refLabel="Cross & Plunkett Ch.16" /></p>
             <p>
               Normal CVP is <strong>0–8 mmHg</strong>, measured at end-expiration and zeroed to the right atrial level. While useful
               for trending, CVP is a <strong>poor predictor of fluid responsiveness</strong> — dynamic measures such as pulse pressure
@@ -201,8 +202,8 @@ const ClinicalMeasurementTopic = () => {
               both ventricles sit on the Frank–Starling curve <InlineRef topicId="clinical-measurement" refLabel="Michard & Teboul 2002" />.
             </p>
             <p>
-              <strong>Interpretation:</strong> PPV = (PP<sub>max</sub> − PP<sub>min</sub>)/PP<sub>mean</sub> × 100. A value above
-              roughly <strong>12–15%</strong> indicates that both ventricles are on the steep part of the curve and the patient is
+              <strong>Interpretation:</strong> PPV = (PP<sub>max</sub> − PP<sub>min</sub>)/[(PP<sub>max</sub> + PP<sub>min</sub>)/2] × 100; SVV uses the same equation with SV<sub>max</sub> and SV<sub>min</sub>. A value above
+              roughly <strong>12–13%</strong> indicates that both ventricles are on the steep part of the curve and the patient is
               likely to increase stroke volume with a fluid bolus; values below ~9% predict non-response, with a "grey zone" in
               between <InlineRef topicId="clinical-measurement" refLabel="Marik CCM 2009 (PPV)" />.
             </p>
@@ -242,6 +243,7 @@ const ClinicalMeasurementTopic = () => {
               clinical scenarios.
             </p>
             <p><strong>Pulse contour analysis</strong> derives stroke volume from the systolic arterial-waveform area/pulse pressure and a model of vascular impedance. Calibrated LiDCO uses lithium dilution to generate a patient-specific scaling factor for pulse-power analysis. Uncalibrated FloTrac estimates impedance from pressure variability plus age, sex, height and weight. Both require a clean waveform and become less reliable with arrhythmia, profound instability or rapidly changing vascular tone, including sepsis and vasopressors. <InlineRef topicId="clinical-measurement" refLabel="BJA Educ 2005" /></p>
+            <p><strong>Thoracic bioimpedance</strong> applies a high-frequency, low-amplitude current between electrodes on the neck and lower thorax. Because blood has relatively low impedance, beat-to-beat thoracic impedance changes; stroke volume is derived principally from the maximum rate of change, dZ/dt. <strong>Bioreactance</strong> instead measures the phase shift of the transmitted current and is less sensitive to amplitude noise from movement and electrical interference. Both are non-invasive and continuous, but pleural effusions, pulmonary oedema, aortic regurgitation, major movement and diathermy reduce accuracy. <InlineRef topicId="clinical-measurement" refLabel="Middleton Ch.18" /></p>
             <div className="mt-2 grid gap-3 sm:grid-cols-2 text-sm">
               <div className="rounded-lg border border-border p-3">
                 <p className="font-semibold text-foreground">PAC — measured variables</p>
