@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { caseBankHref, drugDoseHref } from "@/data/icuManagementFlows";
 import { adultCalculatorHref, adultWithdrawalFlows } from "@/data/adultWithdrawalFlows";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 const AdultWithdrawalFlows = () => {
   const [activeFlow, setActiveFlow] = useState(adultWithdrawalFlows[0].id);
@@ -34,6 +35,7 @@ const AdultWithdrawalFlows = () => {
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/adult-withdrawal" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/adult-withdrawal" />
       </Helmet>
+      <PageJsonLd name="Adult ICU Withdrawal Flow" description="Adult ICU withdrawal and weaning flows for septic shock, ARDS and neurocritical care: taper rates, half-life timing, monitoring and rescue plans." />
 
       <PageSection className="pt-8 pb-16">
         <Link

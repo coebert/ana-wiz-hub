@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Button } from "@/components/ui/button";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 import {
   caseBankHref,
   drugDoseHref,
@@ -33,6 +34,7 @@ const IcuManagementFlows = () => {
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/management-flows" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/management-flows" />
       </Helmet>
+      <PageJsonLd name="ICU Management Flows" description="Step-by-step intensive care management pathways for sepsis, ARDS, undifferentiated shock and multi-organ dysfunction, with direct links to ICU drug doses." />
 
       <PageSection className="pt-8 pb-16">
         <Link

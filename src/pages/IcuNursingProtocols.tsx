@@ -20,6 +20,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { icuNursingProtocols, nursingProtocolCategories } from "@/data/icuNursingProtocols";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 const IcuNursingProtocols = () => {
   const [query, setQuery] = useState("");
@@ -56,6 +57,7 @@ const IcuNursingProtocols = () => {
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/nursing-protocols" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/nursing-protocols" />
       </Helmet>
+      <PageJsonLd name="ICU Nursing Protocols" description="Intensive care nursing protocols and care bundles: central line care, ventilated patient bundle, tracheostomy, prone positioning, RRT circuits, feeding." />
 
       <PageSection className="pt-8 pb-16">
         <Link

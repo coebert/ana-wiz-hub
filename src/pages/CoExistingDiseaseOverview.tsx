@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Search, Stethoscope } from "lucide-react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Input } from "@/components/ui/input";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 interface OverviewEntry {
   id: string;
@@ -182,6 +183,7 @@ const CoExistingDiseaseOverview = () => {
               <link rel="canonical" href="https://anaesthesiacore.app/perioperative/co-existing-disease" />
         <meta property="og:url" content="https://anaesthesiacore.app/perioperative/co-existing-disease" />
 </Helmet>
+      <PageJsonLd name="Co-Existing Disease Overview" description="One-page revision overview of every perioperative co-existing disease topic, with key exam points and links to the full guidance for each condition." />
 
       <PageSection className="pt-8 pb-16">
         <Link

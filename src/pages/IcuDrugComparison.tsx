@@ -17,6 +17,7 @@ import { icuDrugDoseGroups } from "@/data/icuDrugDoses";
 import { icuDrugSafetyGroups } from "@/data/icuDrugSafety";
 import { icuDrugPharmacokinetics } from "@/data/pk";
 import { findInteractions, severityLabel, type InteractionSeverity } from "@/data/icuDrugInteractions";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 interface ComparableDrug {
   slug: string;
@@ -190,6 +191,7 @@ const IcuDrugComparison = () => {
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-comparison" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-comparison" />
       </Helmet>
+      <PageJsonLd name="ICU Drug Comparison: Doses, Kinetics and Safety Side by Side" description="Compare any two adult intensive care drugs side by side — dose and route, pharmacodynamics, metabolism and elimination, adverse effects." />
 
       <PageSection className="pt-8 pb-16">
         <Link

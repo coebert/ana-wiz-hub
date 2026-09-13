@@ -19,6 +19,7 @@ import { icuDrugSafetyGroups, icuDrugSafetyCount } from "@/data/icuDrugSafety";
 import { icuDrugMechanismGroups } from "@/data/icuDrugMechanisms";
 import { icuDrugPharmacokinetics } from "@/data/pk";
 import { PkTimelineChart } from "@/components/icu/PkTimelineChart";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 import {
   icuDrugWithdrawal,
   withdrawalRiskLabel,
@@ -106,6 +107,7 @@ const IcuDrugSafety = () => {
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-safety" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-safety" />
       </Helmet>
+      <PageJsonLd name="ICU Drug Safety: Interactions, Contraindications, Monitoring" description="Pharmacokinetics, half-life, clearance, interactions, contraindications and monitoring for 50 adult intensive care drugs — sedatives, neuromuscular blockers." />
 
       <PageSection className="pt-8 pb-16">
         <Link

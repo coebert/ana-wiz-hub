@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/select";
 import { icuDrugSafetyGroups, type DrugSafety } from "@/data/icuDrugSafety";
 import { findInteractions, severityLabel, type InteractionSeverity } from "@/data/icuDrugInteractions";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 interface Option extends DrugSafety {
   groupTitle: string;
@@ -126,6 +127,7 @@ const IcuInteractionChecker = () => {
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/interaction-checker" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/interaction-checker" />
       </Helmet>
+      <PageJsonLd name="ICU Drug Interaction Checker" description="Choose any two adult intensive care drugs and see their known interactions, severity, contraindications and the monitoring each one needs." />
 
       <PageSection className="pt-8 pb-16">
         <Link

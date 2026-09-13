@@ -10,6 +10,7 @@ import { icuDrugSafetyGroups } from "@/data/icuDrugSafety";
 import { icuDrugMechanismGroups } from "@/data/icuDrugMechanisms";
 import { drugSlug } from "@/lib/caseDoseReferences";
 import { mechanismLinkForDrug } from "@/lib/icuDrugMechanismLinks";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 type AgeMode = "adult" | "paediatric" | "neonatal";
 
@@ -194,6 +195,7 @@ const IcuDrugDoses = () => {
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-doses" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-doses" />
       </Helmet>
+      <PageJsonLd name="ICU Drug Dosing Table" description="Searchable intensive care drug dosing table with adult, paediatric and neonatal doses: sedation, analgesia, neuromuscular blockade, vasopressors, inotropes." />
 
       <PageSection className="pt-8 pb-16">
         <Link

@@ -14,6 +14,7 @@ import { PageSection } from "@/components/layout/PageSection";
 import { Button } from "@/components/ui/button";
 import { caseBankHref, paedDrugDoseHref } from "@/data/paediatricIcuFlows";
 import { paedWithdrawalFlows } from "@/data/paediatricWithdrawalFlows";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 const PaediatricWithdrawalFlows = () => {
   const [activeFlow, setActiveFlow] = useState(paedWithdrawalFlows[0].id);
@@ -30,6 +31,7 @@ const PaediatricWithdrawalFlows = () => {
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/paediatric-withdrawal" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/paediatric-withdrawal" />
       </Helmet>
+      <PageJsonLd name="Paediatric ICU Withdrawal Flow" description="Step-by-step paediatric ICU withdrawal and weaning flows for sepsis, PARDS and neurocritical care: drug tapering rates, half-life timing." />
 
       <PageSection className="pt-8 pb-16">
         <Link

@@ -9,6 +9,7 @@ import {
 } from "@/data/anaesthesiaCalculatorDrugs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PageJsonLd } from "@/components/layout/PageJsonLd";
 import {
   Select,
   SelectContent,
@@ -124,6 +125,7 @@ const AnaesthesiaDrugCalculator = () => {
         <link rel="canonical" href="https://anaesthesiacore.app/perioperative/calculator" />
         <meta property="og:url" content="https://anaesthesiacore.app/perioperative/calculator" />
       </Helmet>
+      <PageJsonLd name="Anaesthesia Drug Calculator" description="Anaesthesia drug calculator: work out induction, maintenance and reversal doses by weight, with the volume to draw up and the infusion rate in mL/hour." />
 
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
         <Link
