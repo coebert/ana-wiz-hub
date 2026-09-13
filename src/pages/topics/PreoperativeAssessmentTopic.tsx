@@ -205,9 +205,18 @@ const PreoperativeAssessmentTopic = () => {
           </p>
         </CollapsibleSubsection>
 
-        <CollapsibleSubsection title="Sleep and preoperative risk">
+        <CollapsibleSubsection title="Sleep, obstructive sleep apnoea and preoperative risk">
           <p className="text-muted-foreground leading-relaxed">
-            Preoperative sleep disturbance is common — a pooled prevalence of around <strong>60%</strong> across surgical populations — and is associated with postoperative delirium and poorer recovery <InlineRef topicId="preoperative-assessment" refLabel="Sleep Med Rev 2023" />. Simple screening with Pittsburgh Sleep Quality Index (PSQI) questions, or brief sleep-quality questions at preoperative assessment, can flag patients who may benefit from targeted counselling and perioperative sleep-hygiene measures. A related, distinct risk group is patients with known or suspected <strong>obstructive sleep apnoea (OSA)</strong>, screened for using <strong>STOP-BANG</strong>.
+            Preoperative sleep disturbance is common — a pooled prevalence of around <strong>60%</strong> across surgical populations — and patients who develop postoperative delirium have a higher prevalence of both pre- and postoperative sleep disturbance <InlineRef topicId="preoperative-assessment" refLabel="Sleep Med Rev 2023" />. Simple screening with Pittsburgh Sleep Quality Index (PSQI) questions, or brief sleep-quality questions at preoperative assessment, can flag patients who may benefit from targeted counselling and perioperative sleep-hygiene measures.
+          </p>
+          <div className="p-3 rounded-lg border border-border mt-3">
+            <p className="font-semibold text-foreground text-sm">STOP-BANG screening for obstructive sleep apnoea</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              <strong>S</strong>noring, <strong>T</strong>iredness, <strong>O</strong>bserved apnoea, high blood <strong>P</strong>ressure, <strong>B</strong>MI &gt; 35 kg/m², <strong>A</strong>ge &gt; 50, <strong>N</strong>eck circumference &gt; 40 cm, male <strong>G</strong>ender. A score of <strong>0–2</strong> is low risk; <strong>≥ 3</strong> indicates moderate-to-high risk of OSA and <strong>≥ 5</strong> (or 2 of STOP plus BMI/neck/male) high probability of moderate-to-severe disease.
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground mt-3">
+            <strong>Perioperative implications of suspected or confirmed OSA:</strong> exaggerated sensitivity to sedatives, opioids and volatile agents; increased risk of difficult mask ventilation and intubation; upper-airway obstruction and desaturation in recovery and during postoperative sleep rebound; higher rates of postoperative delirium, arrhythmia and pulmonary complications. Plan opioid-sparing multimodal analgesia and regional techniques, avoid unmonitored sedation, sit the patient up, continue home CPAP from recovery onwards, and choose a level of postoperative monitoring (extended recovery, continuous oximetry, HDU) that matches severity and surgery <InlineRef topicId="preoperative-assessment" refLabel="Sleep Med Rev 2023" />.
           </p>
         </CollapsibleSubsection>
 
