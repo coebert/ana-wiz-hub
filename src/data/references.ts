@@ -1293,6 +1293,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Curr Opin Anaesthesiol 2019", citation: "Rosenberg JJ. Microvascular free flaps — perioperative management. Curr Opin Anaesthesiol. 2019;32:47-53." },
   ],
   "interventional-radiology": [
+    { label: "RCOG PPH 2016", citation: "Mavrides E, Allard S, Chandraharan E, et al. Prevention and management of postpartum haemorrhage (Green-top Guideline No. 52). BJOG. 2017;124:e106-e149.", url: "https://obgyn.onlinelibrary.wiley.com/doi/10.1111/1471-0528.14178" },
     { label: "Assoc Anaesth MRI 2021", citation: "Association of Anaesthetists. Safety in magnetic resonance imaging. Anaesthesia. 2021;76(11):1533-1545.", url: "https://doi.org/10.1111/anae.15517" },
     { label: "IR(ME)R 2017", citation: "The Ionising Radiation (Medical Exposure) Regulations 2017 (SI 2017/1322). UK Statutory Instruments.", url: "https://www.legislation.gov.uk/uksi/2017/1322" },
     { label: "Anesthesiol Clin 2012 (INR)", citation: "Lee CZ, Young WL. Anesthesia for endovascular neurosurgery and interventional neuroradiology. Anesthesiol Clin. 2012;30(2):127-147.", url: "https://doi.org/10.1016/j.anclin.2012.05.009" },
