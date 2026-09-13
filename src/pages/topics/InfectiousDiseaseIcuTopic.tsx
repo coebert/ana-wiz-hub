@@ -238,6 +238,40 @@ const InfectiousDiseaseIcuTopic = () => {
               Urosepsis is sepsis arising from a urinary tract source (pyelonephritis, obstructed/infected collecting system, prostatitis, or catheter-associated infection) and is the second commonest source of ICU sepsis. Obstruction is a common precipitant requiring urgent source control <InlineRef topicId="infectious-disease-icu" refLabel="EAU Urological Infections 2023" />.
             </p>
 
+            <div className="p-4 rounded-lg border border-border mb-4">
+              <p className="font-semibold text-foreground text-sm mb-1">Uncomplicated versus complicated UTI — and why it matters</p>
+              <p className="text-sm text-muted-foreground">
+                An <strong>uncomplicated UTI</strong> is acute cystitis or pyelonephritis in a non-pregnant woman with
+                no structural or functional urinary tract abnormality and no relevant comorbidity. A{" "}
+                <strong>complicated UTI (cUTI)</strong> is any UTI occurring in the presence of a factor that raises
+                the risk of treatment failure: obstruction or stasis (calculi, tumour, BPH, stricture, neurogenic
+                bladder), an indwelling catheter or stent, recent instrumentation, incomplete bladder emptying,
+                renal impairment or transplantation, diabetes, immunosuppression, pregnancy, or male sex
+                <InlineRef topicId="infectious-disease-icu" refLabel="EAU Urological Infections 2023" />. Essentially
+                every urosepsis presentation on the ICU is a cUTI.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                <strong>Pathophysiology:</strong> most infection is ascending — perineal and faecal flora colonise the
+                periurethral area, ascend the urethra, and adhere to urothelium via fimbriae/adhesins. In the
+                uncomplicated tract, urine flow, low pH and osmolality, urothelial shedding and Tamm–Horsfall
+                glycoprotein clear this efficiently. Obstruction or stasis abolishes that washout, raises intraluminal
+                pressure, and allows bacteria to reach the renal pelvis and multiply in a poorly perfused, high-pressure
+                system. Rising pressure drives <strong>pyelovenous and pyelolymphatic backflow</strong>, so organisms
+                and endotoxin enter the circulation directly — which is why an obstructed infected system produces
+                fulminant septic shock and why antibiotics alone do not work.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                <strong>Consequences for management:</strong> a cUTI mandates imaging (CT-KUB or ultrasound) to exclude
+                obstruction, broader empiric cover for resistant Gram-negatives (previous cultures guide choice),
+                longer treatment courses, and <strong>emergency decompression</strong> — retrograde stent or
+                percutaneous nephrostomy — for any obstructed infected system. Catheters and stents are biofilm
+                reservoirs: exchange or remove them as part of source control. Distinguish asymptomatic bacteriuria
+                (do not treat, except in pregnancy or before urological instrumentation) from infection.
+              </p>
+            </div>
+
+
+
             <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Risk Factors and Pathogens</h3>
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               <div className="p-3 rounded-lg border border-border">

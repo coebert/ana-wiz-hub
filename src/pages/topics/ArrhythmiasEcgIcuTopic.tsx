@@ -305,6 +305,55 @@ const ArrhythmiasEcgIcuTopic = () => {
               {() => <TachyarrhythmiaDiagram />}
             </ExpandableEcgCard>
             </CollapsibleSubsection>
+            <CollapsibleSubsection title="Wolff–Parkinson–White syndrome & pre-excitation">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              WPW is the combination of an <strong>accessory atrioventricular pathway (bundle of Kent)</strong> with
+              symptomatic tachyarrhythmia. The pathway is a strand of working myocardium bridging the
+              atrioventricular annulus, so it conducts fast but — unlike the AV node — has <em>no decremental
+              conduction</em> and often a very short refractory period. Antegrade conduction down the pathway
+              pre-excites the ventricle, and the pathway also provides the return limb for a re-entrant circuit
+              <InlineRef topicId="arrhythmias-ecg-icu" refLabel="BJA Educ 2018" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Resting ECG in sinus rhythm</p>
+                <ul className="list-disc pl-4 mt-1 space-y-1 text-xs text-muted-foreground">
+                  <li><strong>Short PR interval &lt; 120 ms</strong> — the AV node is bypassed.</li>
+                  <li><strong>Delta wave</strong> — slurred, slow upstroke of the QRS as the pre-excited myocardium depolarises cell-to-cell.</li>
+                  <li>Broad QRS (&gt; 110 ms) with secondary ST/T discordance that can mimic ischaemia or bundle branch block.</li>
+                  <li>Pre-excitation may be intermittent or concealed (retrograde-only pathway) — a normal ECG does not exclude it.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Associated tachyarrhythmias</p>
+                <ul className="list-disc pl-4 mt-1 space-y-1 text-xs text-muted-foreground">
+                  <li><strong>Orthodromic AVRT</strong> (commonest): antegrade down the AV node, retrograde up the pathway → regular <em>narrow</em>-complex tachycardia with no delta wave during the run.</li>
+                  <li><strong>Antidromic AVRT</strong>: antegrade down the pathway, retrograde up the node → regular <em>wide</em>-complex tachycardia, indistinguishable from VT at the bedside — treat as VT unless the diagnosis is certain.</li>
+                  <li><strong>Pre-excited atrial fibrillation</strong>: irregularly irregular, broad, bizarre and varying QRS complexes at very high rates. This is the lethal presentation — the pathway can conduct at &gt; 300/min and degenerate into VF.</li>
+                </ul>
+              </div>
+            </div>
+            <div className="p-3 rounded-lg border border-destructive/40 bg-destructive/5">
+              <p className="font-semibold text-foreground text-sm mb-1">Why AV nodal blockers are contraindicated in pre-excited AF</p>
+              <p className="text-sm text-muted-foreground">
+                <strong>Adenosine, verapamil, diltiazem, β-blockers and digoxin must be avoided.</strong> Blocking the
+                AV node removes the only decremental route out of the atrium, so the entire atrial rate is diverted
+                down the accessory pathway. Ventricular rate accelerates and the rhythm can degenerate into
+                ventricular fibrillation <InlineRef topicId="arrhythmias-ecg-icu" refLabel="BJA Educ 2018" />.
+                Digoxin and verapamil may also shorten accessory-pathway refractoriness directly.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                <strong>Treatment:</strong> if unstable (or if there is any doubt) — <strong>synchronised DC
+                cardioversion</strong> under sedation/anaesthesia. If stable and expert help is available, a
+                pathway-blocking antiarrhythmic such as <strong>procainamide</strong>, ibutilide or amiodarone with
+                caution may be used, followed by early electrophysiology referral for pathway ablation, which is
+                definitive <InlineRef topicId="arrhythmias-ecg-icu" refLabel="RCUK 2021 Tachycardia" />. Orthodromic
+                (narrow-complex) AVRT may be terminated with vagal manoeuvres or adenosine, but have the
+                defibrillator attached in case AF is unmasked.
+              </p>
+            </div>
+            </CollapsibleSubsection>
+
             <CollapsibleSubsection title="Atrial fibrillation in the ICU">
             <p className="text-muted-foreground leading-relaxed mb-3">
               New-onset AF is common in critical illness and is usually a marker of an underlying
