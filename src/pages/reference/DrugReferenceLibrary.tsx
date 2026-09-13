@@ -239,6 +239,6 @@ export default function DrugReferenceLibrary() {
           </p>
         </aside>
       </main>
-    </div>
+    </ReferenceAppLayout>
   );
 }
