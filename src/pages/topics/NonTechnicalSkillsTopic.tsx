@@ -241,6 +241,17 @@ const NonTechnicalSkillsTopic = () => {
                 </ul>
               </div>
             </div>
+            <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">Psychological safety</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              <strong>Psychological safety</strong> (Edmondson) is the shared belief that the team is safe for interpersonal risk-taking — that a member can ask a question, admit uncertainty or error, or challenge a senior decision without fear of humiliation, blame or punishment. It is the foundational requirement for every tool above: PACE and CUSS scripts, incident reporting and honest debriefing all fail in a team that is not psychologically safe <InlineRef topicId="non-technical-skills" refLabel="BJA Educ 2018" />.
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>It flattens the authority gradient, so concerns surface early rather than after harm.</li>
+              <li>It increases error and near-miss reporting, and so the raw material for learning and a just culture.</li>
+              <li>It is actively created by leaders — introducing the team by name, framing the case as a shared learning problem, inviting challenge explicitly ("tell me if you see something I've missed"), modelling curiosity, and acknowledging their own fallibility.</li>
+              <li>It is destroyed quickly by public criticism, dismissing a concern, or punishing the messenger — one such episode silences a team for months.</li>
+            </ul>
+
           </ExamSection>
 
           <ExamSection
