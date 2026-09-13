@@ -326,6 +326,38 @@ export type Database = {
         }
         Relationships: []
       }
+      discussion_flags: {
+        Row: {
+          created_at: string
+          discussion_id: string
+          id: string
+          reason: string | null
+          reporter_id: string
+        }
+        Insert: {
+          created_at?: string
+          discussion_id: string
+          id?: string
+          reason?: string | null
+          reporter_id: string
+        }
+        Update: {
+          created_at?: string
+          discussion_id?: string
+          id?: string
+          reason?: string | null
+          reporter_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "discussion_flags_discussion_id_fkey"
+            columns: ["discussion_id"]
+            isOneToOne: false
+            referencedRelation: "topic_discussions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       drug_verification_jobs: {
         Row: {
           completed_at: string | null
@@ -1121,7 +1153,10 @@ export type Database = {
           author_label: string
           body: string
           created_at: string
+          flag_count: number
+          hidden_reason: string | null
           id: string
+          is_hidden: boolean
           parent_id: string | null
           topic_id: string
           topic_title: string
@@ -1132,7 +1167,10 @@ export type Database = {
           author_label: string
           body: string
           created_at?: string
+          flag_count?: number
+          hidden_reason?: string | null
           id?: string
+          is_hidden?: boolean
           parent_id?: string | null
           topic_id: string
           topic_title: string
@@ -1143,7 +1181,10 @@ export type Database = {
           author_label?: string
           body?: string
           created_at?: string
+          flag_count?: number
+          hidden_reason?: string | null
           id?: string
+          is_hidden?: boolean
           parent_id?: string | null
           topic_id?: string
           topic_title?: string
