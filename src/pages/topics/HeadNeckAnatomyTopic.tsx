@@ -394,6 +394,46 @@ const HeadNeckAnatomyTopic = () => {
             </div>
           </div>
 
+          <div id="airway-topicalisation">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D3b. Sensory Innervation for Topical Anaesthesia</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Awake fibreoptic intubation, awake videolaryngoscopy and awake tracheal tube exchange all depend on blocking four contiguous sensory territories. Working from nose to trachea makes the sequence of sprays and blocks logical, and explains why an otherwise well-topicalised patient still coughs or gags <InlineRef topicId="head-neck-anatomy" refLabel="BJA Educ 2019" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Nasal cavity — V1 and V2</p>
+                <p className="text-sm text-muted-foreground mt-1">Anterior septum and lateral wall: anterior ethmoidal nerve (V1, via the ophthalmic division). Posterior two-thirds of the septum, turbinates and lateral wall: nasopalatine and posterior nasal branches from the <strong>sphenopalatine (pterygopalatine) ganglion</strong> (V2). Technique: co-phenylcaine or lidocaine 5% with phenylephrine spray, or lidocaine gel on a nasal airway; a cotton-wool applicator soaked in local anaesthetic passed along the middle turbinate to the posterior wall blocks the sphenopalatine ganglion and vasoconstriction reduces epistaxis.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Nasopharynx — V2</p>
+                <p className="text-sm text-muted-foreground mt-1">Supplied by the maxillary division via the pharyngeal branch of the pterygopalatine ganglion. Blocked by the same posteriorly directed nasal spray or soaked applicator; inadequate coverage here produces discomfort as the scope turns the corner behind the soft palate.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Oropharynx, tonsils, posterior tongue — glossopharyngeal (IX)</p>
+                <p className="text-sm text-muted-foreground mt-1">The lingual branch of IX supplies the posterior third of the tongue, tonsillar fossae, soft palate and oropharynx and forms the afferent limb of the <strong>gag reflex</strong>. Techniques: lidocaine 10% metered spray or 4% nebulised/atomised solution, lidocaine lozenges, or a targeted glossopharyngeal nerve block at the base of the palatoglossal arch (2 mL lidocaine 2% just posterior to the lower pole of the tonsil) — effective but risks intra-arterial injection into the carotid and loss of airway reflexes.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Larynx above the cords — internal branch of the SLN (X)</p>
+                <p className="text-sm text-muted-foreground mt-1">The internal laryngeal nerve (from the superior laryngeal branch of the vagus) supplies the epiglottis, vallecula, aryepiglottic folds and larynx down to the vocal cords, and is the afferent limb of the <strong>laryngeal closure reflex</strong>. Techniques: spray-as-you-go through the working channel of the fibrescope, or bilateral internal laryngeal nerve block — 1–2 mL lidocaine 2% injected just inferior to the greater horn of the hyoid where the nerve pierces the thyrohyoid membrane, or a soaked pledget placed in the piriform fossa with Krause forceps.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Cords and trachea — recurrent laryngeal nerve (X)</p>
+                <p className="text-sm text-muted-foreground mt-1">Sensory supply below the cords and to the trachea. Techniques: spray-as-you-go boluses of lidocaine 1–2% delivered under direct vision at the cords and into the trachea, or a <strong>translaryngeal (cricothyroid) injection</strong> of 2–3 mL lidocaine 2–4% at end-expiration, which provokes a cough that distributes the drug. Translaryngeal injection abolishes the cough reflex and so is avoided where aspiration risk is high <InlineRef topicId="head-neck-anatomy" refLabel="Ellis & Feldman Ch.5" />.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Practical points</p>
+                <ul className="mt-1 list-disc pl-5 text-sm text-muted-foreground space-y-1">
+                  <li>Keep a running total of lidocaine: mucosal absorption is rapid and the recommended airway maximum is about 9 mg/kg lean body weight — have lipid emulsion available.</li>
+                  <li>Give an antisialagogue (glycopyrrolate 200 µg IV) early: local anaesthetic works poorly through secretions.</li>
+                  <li>Sedation (remifentanil target-controlled infusion or low-dose dexmedetomidine) supplements but never replaces adequate topicalisation.</li>
+                  <li>Allow time — most techniques need 5–10 minutes to reach full effect before instrumentation.</li>
+                  <li>Warn about the resulting swallowing impairment: keep the patient nil-by-mouth until reflexes return, usually 1–2 hours.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
           <div id="front-of-neck">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D4. Cricothyroidotomy & Tracheostomy Anatomy</h2>
             <p className="text-muted-foreground leading-relaxed">
