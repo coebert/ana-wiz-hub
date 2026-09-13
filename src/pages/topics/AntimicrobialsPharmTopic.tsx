@@ -283,6 +283,9 @@ const AntimicrobialsTopic = () => {
                     </div>
                   </div>
                 ))}
+                <p className="text-sm text-muted-foreground">
+                  In critically ill patients, altered volume of distribution, renal clearance and extracorporeal support make antiviral exposure less predictable; individualise treatment to organ function, indication and specialist guidance <InlineRef topicId="antimicrobials-pharm" refLabel="ESICM TDM 2020" />.
+                </p>
               </div>
             )}
           </div>
@@ -323,6 +326,9 @@ const AntimicrobialsTopic = () => {
                 </div>
               ))}
             </div>
+            <p className="text-sm text-muted-foreground mt-3">
+              Prophylaxis is not routine for every ICU admission: selection and dosing should follow the local microbiology service, patient-specific pharmacokinetics and therapeutic drug monitoring where indicated <InlineRef topicId="antimicrobials-pharm" refLabel="ESICM TDM 2020" />.
+            </p>
           </div>
 
           <div>

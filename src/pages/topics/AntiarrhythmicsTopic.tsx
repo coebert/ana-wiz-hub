@@ -161,6 +161,7 @@ const AntiarrhythmicsTopic = () => {
                 </tbody>
               </table>
             </div>
+            <p className="text-sm text-muted-foreground mt-3">Sotalol combines class II and III actions; renal elimination, QT prolongation and structural substrate must therefore be considered before prescribing <InlineRef topicId="antiarrhythmics" refLabel="CCM 2000 Proarrhythmia" />.</p>
           </section>
 
           <section className="mb-10">
