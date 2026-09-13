@@ -259,7 +259,7 @@ const ToxicologyTopic = () => {
               <li><strong>Haemodialysis indications</strong>: level &gt;700 mg/L (or &gt;500 mg/L with renal impairment), altered consciousness, seizures, refractory metabolic acidosis, or pulmonary oedema</li>
             </ul>
             <p className="text-xs text-muted-foreground mt-2">
-              <InlineRef topicId="toxicology" refLabel="NPIS Toxbase" /> <InlineRef topicId="toxicology" refLabel="BJA Educ 2016" />
+              <InlineRef topicId="toxicology" refLabel="NPIS Toxbase" /> <InlineRef topicId="toxicology" refLabel="BJA Educ 2016" /> <InlineRef topicId="toxicology" refLabel="MHRA NAC 2012" /> <InlineRef topicId="toxicology" refLabel="BJA Educ Poisoning 2016" /> <InlineRef topicId="toxicology" refLabel="AoA LAST 2023" /> <InlineRef topicId="toxicology" refLabel="Anaesthesia 2023 LAST Review" />
             </p>
             </CollapsibleSubsection>
           </ExamSection>

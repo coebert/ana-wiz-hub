@@ -992,6 +992,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NICE NG51", citation: "NICE. Sepsis: recognition, diagnosis and early management (NG51). 2016 (updated 2017).", url: "https://www.nice.org.uk/guidance/ng51" },
   ],
   "haematology-icu": [
+    { label: "BJA Educ CRRT 2017", citation: "Anticoagulation for continuous renal replacement therapy. BJA Education. 2017 — regional citrate anticoagulation, citrate accumulation and its management.", url: "https://www.bjaed.org/article/S2058-5349(17)30067-X/fulltext" },
     { label: "CJASN 2014 Citrate", citation: "Morabito S, Pistolesi V, Tritapepe L, Fiaccadori E. Regional citrate anticoagulation for RRT in patients with AKI. Clin J Am Soc Nephrol. 2014;9(12):2173-2188 — citrate accumulation, total:ionised calcium ratio and dose adjustment.", url: "https://doi.org/10.2215/CJN.01280214" },
     { label: "TRICC 1999", citation: "Hébert PC et al. A multicenter, randomized, controlled clinical trial of transfusion requirements in critical care (TRICC). N Engl J Med. 1999;340:409-417.", url: "https://doi.org/10.1056/NEJM199902113400601" },
     { label: "BJA Educ 2018", citation: "Retter A et al. Guidelines on the management of anaemia and red cell transfusion in adult critically ill patients. Br J Haematol. 2013;160(4):445-464.", url: "https://doi.org/10.1111/bjh.12143" },
@@ -1236,6 +1237,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Lancet Commission Global Surgery (portal)", citation: "Lancet Commission on Global Surgery — programme portal. Targets: 80% population access to safe surgical/anaesthesia care within 2 h, ≥20 surgical/anaesthesia/obstetric providers per 100 000 population, 100% perioperative mortality reporting, financial-protection coverage.", url: "https://www.lancetglobalsurgery.org/" },
   ],
   "toxicology": [
+    { label: "Anaesthesia 2023 LAST Review", citation: "Management of severe local anaesthetic toxicity: a narrative review and clinical update. Anaesthesia. 2023 — lipid emulsion infusion 15 ml/kg/h for all patients, doubled if the circulation remains unstable.", url: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.16091" },
+    { label: "BJA Educ Poisoning 2016", citation: "Management of the acutely poisoned patient. BJA Education. 2016;16(7):218-224.", url: "https://academic.oup.com/bjaed/article/16/7/218/2364883" },
     { label: "MHRA NAC 2012", citation: "Medicines and Healthcare products Regulatory Agency. Intravenous N-acetylcysteine: new weight-based dosing regimens to reduce the risk of errors. Drug Safety Update.", url: "https://www.gov.uk/drug-safety-update/intravenous-n-acetylcysteine-new-weight-based-dosing-regimens-to-reduce-the-risk-of-errors" },
     { label: "AoA LAST 2023", citation: "Association of Anaesthetists. Management of severe local anaesthetic systemic toxicity. 2023 — lipid emulsion 20% 1.5 ml/kg bolus then infusion 15 ml/kg/h, doubled to 30 ml/kg/h if circulation remains unstable.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Management-of-severe-local-anaesthetic-systemic-toxicity-2023" },
     { label: "NPIS Toxbase", citation: "National Poisons Information Service. TOXBASE Clinical Toxicology Database.", url: "https://www.toxbase.org" },
