@@ -169,6 +169,10 @@ const CORE_SEO: Record<string, { title: string; description: string }> = {
     title: "ABG Interpreter – Acid-Base & Compensation",
     description: "Stepwise arterial blood gas interpretation: acid–base disorder, compensation, anion gap and A–a gradient with worked physiology.",
   },
+  "/tools/infusion-pump": {
+    title: "Infusion Pump Rate Calculator – mg, µg, Units to mL/h",
+    description: "Standalone infusion calculator: enter syringe contents (mg, µg or units), volume and dose to get mL/h, or convert a pump rate back to the delivered dose.",
+  },
   "/review": {
     title: "Spaced-Repetition Review | AnaesthesiaCore",
     description: "Daily spaced-repetition review of FRCA and FFICM flashcards to retain high-yield exam material long term.",
