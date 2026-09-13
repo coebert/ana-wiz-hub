@@ -391,6 +391,7 @@ const CapnographyTopic = () => {
               </h2>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
                 <li>Confirming tracheal intubation on a single breath — confirm across ≥ 6 sustained, normal-shaped waveforms.</li>
+                <li><strong>Never use clinical signs to confirm tracheal placement when sustained capnography is absent.</strong> Tube misting has a false-positive rate up to 69%; ordinary auscultation about 14%, and even five-point auscultation about 18%. Chest rise is also unreliable. False reassurance from these signs recurs in fatal unrecognised oesophageal intubation: if sustained exhaled CO₂ is absent, exclude oesophageal placement systematically rather than accepting clinical signs. <InlineRef topicId="capnography" refLabel="Anaesthesia 2023 Intubation Tests" /></li>
                 <li>Quoting EtCO₂ alone for adequacy of ventilation in COPD or PE — the PaCO₂–EtCO₂ gradient is what matters.</li>
                 <li>Calling a raised baseline "ventilator artefact" — it is rebreathing; check absorber and valves.</li>
                 <li>Missing curare cleft on a long display — examine the plateau, not the peak.</li>

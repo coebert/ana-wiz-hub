@@ -270,6 +270,10 @@ const LungMechanicsTopic = () => {
                 The <strong>time constant (τ = R × C)</strong> determines the speed of inflation/deflation. 3τ = 95% equilibration.
                 Lung units with different time constants cause V/Q mismatch.
               </p>
+              <div className="mt-4 grid gap-3 md:grid-cols-2 text-sm">
+                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Laminar flow: Poiseuille's law</h3><p className="mt-1 text-foreground/80">For steady laminar flow through a rigid tube, resistance is proportional to <strong>ηL/r⁴</strong>. Radius therefore dominates: halving radius increases resistance sixteen-fold. Gas viscosity matters more than density.</p></div>
+                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Turbulent flow: Reynolds number</h3><p className="mt-1 text-foreground/80">Laminar flow has parallel streamlines; turbulent flow is disordered and requires a pressure gradient approximately proportional to flow². Reynolds number (<strong>Re = ρvd/η</strong>) predicts transition: high velocity, diameter or density favours turbulence, especially in the trachea and large bronchi. Here gas density matters more than viscosity. <InlineRef topicId="lung-mechanics" refLabel="Lumb Ch.2-3" /></p></div>
+              </div>
             </section>
           </ExamSection>
 
@@ -517,6 +521,10 @@ const LungMechanicsTopic = () => {
                 Auto-PEEP (intrinsic PEEP) occurs when expiratory time is insufficient for complete lung emptying.
                 Air trapping increases end-expiratory lung volume, raises intrathoracic pressure, and increases the work of triggering.
               </p>
+              <div className="grid gap-3 md:grid-cols-2 mb-4 text-sm">
+                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Causes and consequences</h3><p className="mt-1 text-foreground/80">High minute ventilation, a long inspiratory time, short expiratory time, and increased expiratory resistance in asthma or COPD prevent complete emptying. Dynamic hyperinflation raises alveolar pressure, impedes venous return and may cause hypotension; a spontaneously breathing patient must first overcome intrinsic PEEP, increasing trigger work and dyspnoea.</p></div>
+                <div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Measure and manage</h3><p className="mt-1 text-foreground/80">Suspect persistent expiratory flow at the next inspiration. In a passive patient, an <strong>end-expiratory hold</strong> equilibrates alveolar and airway pressure; total PEEP minus set external PEEP estimates auto-PEEP. Reduce respiratory rate and tidal volume, shorten inspiratory time by increasing inspiratory flow, allow a longer expiratory phase, treat bronchospasm and clear obstruction. In severe hypotension, briefly disconnecting the circuit permits decompression. <InlineRef topicId="lung-mechanics" refLabel="Lumb Ch.2-3" /></p></div>
+              </div>
               <div className="bg-card rounded-xl border border-border p-4">
                 <AutoPEEPDiagram />
               </div>
@@ -545,6 +553,12 @@ const LungMechanicsTopic = () => {
                 Mechanical power unifies VT, driving pressure, RR, flow, and PEEP into a single energy-based metric for VILI risk assessment.
               </p>
               <div className="grid md:grid-cols-2 gap-4 mb-4 text-sm"><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Stress</h3><p className="mt-1 text-foreground/80">Force per unit lung area, clinically approximated by transpulmonary pressure: P<sub>L</sub> = P<sub>aw</sub> − P<sub>pl</sub>. Plateau and driving pressure are practical surrogates when pleural pressure is unavailable.</p></div><div className="rounded-lg border border-border p-4"><h3 className="font-semibold text-foreground">Strain</h3><p className="mt-1 text-foreground/80">Deformation relative to resting lung volume: dynamic strain ≈ Vt/FRC; static strain reflects the PEEP-related increase in end-expiratory volume. Global strain above roughly 1.5–2 is injurious, and large dynamic strain is generally more damaging than equivalent static strain <InlineRef topicId="lung-mechanics" refLabel="Crit Care Med 2013 Stress Strain" />.</p></div></div>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-4 text-sm">
+                <div className="rounded-lg border border-border p-3"><h3 className="font-semibold text-foreground">Barotrauma</h3><p className="mt-1 text-foreground/80">High distending pressure causes macroscopic air leak, including pneumothorax, pneumomediastinum and surgical emphysema.</p></div>
+                <div className="rounded-lg border border-border p-3"><h3 className="font-semibold text-foreground">Volutrauma</h3><p className="mt-1 text-foreground/80">Excessive regional volume and strain overdistend the small functional “baby lung”, disrupting alveolar and endothelial barriers.</p></div>
+                <div className="rounded-lg border border-border p-3"><h3 className="font-semibold text-foreground">Atelectrauma</h3><p className="mt-1 text-foreground/80">Repeated recruitment and collapse of unstable units generates damaging shear stress at interfaces between aerated and collapsed lung.</p></div>
+                <div className="rounded-lg border border-border p-3"><h3 className="font-semibold text-foreground">Biotrauma</h3><p className="mt-1 text-foreground/80">Injurious forces activate inflammatory signalling and cytokine release; systemic spill-over can contribute to remote multi-organ dysfunction. <InlineRef topicId="lung-mechanics" refLabel="Crit Care 2022 VILI Vortex" /></p></div>
+              </div>
               <p className="text-sm text-foreground/80 mb-4">Low Vt limits dynamic strain; limiting plateau pressure and driving pressure limits stress. PEEP may prevent cyclic collapse but becomes harmful if it overdistends already open lung.</p>
               <div className="bg-card rounded-xl border border-border p-4">
                 <VILIDiagram />
