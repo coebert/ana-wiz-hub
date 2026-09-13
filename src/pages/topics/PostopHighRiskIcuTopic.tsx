@@ -382,6 +382,31 @@ const PostopHighRiskIcuTopic = () => {
             <p className="text-muted-foreground leading-relaxed">
               30-day mortality is only the start of the story. Patients surviving major surgery + critical care frequently develop <strong>post-intensive care syndrome (PICS)</strong> — physical deconditioning, cognitive impairment and psychological morbidity. Early mobilisation (TEAM trial showed no harm but no clear functional benefit), structured ICU follow-up clinics, and rehabilitation prescriptions (NICE CG83) are now embedded in CPOC pathways. Engage the patient and family in shared decisions about treatment escalation BEFORE surgery — particularly in the frail and elderly — to align critical-care interventions with what matters to the patient.
             </p>
+            <h3 className="text-base font-semibold text-foreground mt-4 mb-2">Post-intensive care syndrome — the three domains</h3>
+            <div className="grid sm:grid-cols-3 gap-3">
+              {[
+                { d: "Physical", detail: "ICU-acquired weakness (critical illness myopathy and polyneuropathy), muscle wasting of up to 2% of mass per ICU day, reduced 6-minute walk distance and grip strength, dyspnoea, joint contractures, tracheostomy and swallowing problems, chronic pain and persistent fatigue. Recovery of function commonly takes 6–12 months and may be incomplete." },
+                { d: "Cognitive", detail: "New or worsened impairment of memory, attention, processing speed and executive function, present in a substantial minority at 12 months and often resembling mild dementia or traumatic brain injury. Duration of delirium is the strongest modifiable predictor, which is the whole rationale for the ABCDEF bundle." },
+                { d: "Psychological", detail: "Anxiety, depression and post-traumatic stress symptoms, driven by delusional memories, sedation practice, physical restraint and factual memory gaps. Family members develop their own PICS-F — anxiety, depression, complicated grief and PTSD symptoms." },
+              ].map((x) => (
+                <div key={x.d} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{x.d}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{x.detail}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-muted-foreground leading-relaxed mt-3">
+              Organ-specific sequelae compound this. Postoperative AKI leaves reduced renal reserve with
+              measurably higher rates of hospital <strong>readmission</strong> and post-discharge death, and a
+              long-term risk of CKD progression and <strong>end-stage renal disease</strong> that is greatest after
+              dialysis-requiring or repeated AKI <InlineRef topicId="postop-high-risk-icu" refLabel="CCM 2015 AKI Outcomes" />.
+              The practical answer in the viva is a named follow-up structure: an ICU discharge summary that lists the
+              delirium, AKI and MINS episodes; a rehabilitation prescription with functional goals (NICE CG83); an
+              <strong> ICU follow-up clinic</strong> review at 2–3 months screening all three PICS domains plus renal
+              function; and onward referral to physiotherapy, clinical psychology, nephrology or a chronic pain
+              service as the screen dictates <InlineRef topicId="postop-high-risk-icu" refLabel="ABCDEF 2019" />.
+            </p>
+
             <h3 className="text-base font-semibold text-foreground mt-4 mb-2">Multidisciplinary rehabilitation — what it looks like</h3>
             <p className="text-muted-foreground leading-relaxed">
               "Rehabilitation" in the viva means a named team with a shared goal, not physiotherapy alone. The
