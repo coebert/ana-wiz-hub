@@ -144,6 +144,14 @@ export default function DrugsLibrary() {
             <p className="text-xs text-muted-foreground mt-2">
               Class colours follow the international user-applied syringe-label standard (ISO 26825 / ASTM D4774) where possible.
             </p>
+            <p className="text-sm mt-2">
+              <Link to="/reference/drugs" className="text-drugs underline underline-offset-2">
+                Open the full drug reference library
+              </Link>{" "}
+              <span className="text-muted-foreground">
+                — standard dilutions with mL/h pump rates, blood level monitoring and per-drug sources.
+              </span>
+            </p>
           </div>
           <button
             onClick={() => setShowLegend((v) => !v)}
