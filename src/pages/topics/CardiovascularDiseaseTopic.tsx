@@ -292,7 +292,7 @@ const CardiovascularDiseaseTopic = () => {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Chronic Antihypertensive Management on the Day</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Continue β-blockers, calcium-channel blockers and centrally acting agents (clonidine, methyldopa) — abrupt withdrawal causes rebound hypertension/ischaemia</li>
+                <li>Continue β-blockers and centrally acting agents (clonidine, methyldopa) — abrupt withdrawal causes rebound hypertension/ischaemia. Continue non-dihydropyridine calcium-channel blockers (diltiazem, verapamil), but <strong>withhold dihydropyridine calcium-channel blockers (e.g. amlodipine, nifedipine) on the morning of surgery</strong> to reduce the risk of intraoperative hypotension (ACC/AHA 2024) <InlineRef topicId="cardiovascular-disease" refLabel="ACC/AHA 2024 Periop" /></li>
                 <li>ACE inhibitors / ARBs: ESC/ESA 2022 and ACC/AHA 2024 both recommend <strong>withholding on the morning of surgery</strong> in patients taking them for hypertension to reduce intra-operative hypotension; POISE-3 (2023) supports a hypotension-avoidance strategy (omit ACE-I/ARB, target MAP ≥80 mmHg) over continued therapy</li>
                 <li>Restart ACE-I/ARB within 48 h post-op once euvolaemic and renal function stable</li>
                 <li>Diuretics: typically omit on the morning of major surgery to avoid hypovolaemia and electrolyte disturbance</li>

@@ -459,6 +459,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2005", citation: "Moran P, Lim J. Pulmonary artery catheter. BJA Education. 2005;5(6):207-210.", url: "https://doi.org/10.1093/bjaceaccp/mki054" },
   ],
   "transfusion-coagulation": [
+    { label: "CRASH-2 2010", citation: "CRASH-2 trial collaborators. Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients. Lancet. 2010;376:23-32.", url: "https://doi.org/10.1016/S0140-6736(10)60835-5", excerpt: "Tranexamic acid was given as a loading dose of 1 g infused over 10 min, followed by an intravenous infusion of 1 g over 8 h." },
     { label: "Curr Opin Anaesthesiol 2013 VHA", citation: "Görlinger K, Dirkmann D, Hanke AA. Rotational thromboelastometry (ROTEM) and its role in goal-directed coagulation management. Curr Opin Anaesthesiol. 2013;26(2):203-13.", url: "https://doi.org/10.1097/ACO.0b013e32835afd28" },
 
     { label: "CRASH-3 2019", citation: "CRASH-3 trial collaborators. Effects of tranexamic acid on death, disability, vascular occlusive events and other morbidities in patients with acute traumatic brain injury. Lancet. 2019;394:1713-23.", url: "https://doi.org/10.1016/S0140-6736(19)32233-0" },
