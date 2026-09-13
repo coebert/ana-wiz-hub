@@ -526,10 +526,13 @@ const XRayRadiationSafetyTopic = () => {
                   upgrade.
                 </li>
                 <li>
-                  <strong>Shielding</strong> — 0.5 mm Pb-equivalent wrap-around apron (~95% scatter attenuation at 70 kVp), 0.5 mm Pb
-                  thyroid shield, leaded glasses (cataract prevention — see deterministic effects), and ceiling-suspended lead screen
-                  + table-mounted lead drape. The screen is the single most effective additional measure for the anaesthetist who
-                  cannot move the table or beam.
+                  <strong>Shielding</strong> — aprons are commonly <strong>0.25, 0.35 or 0.5 mm Pb-equivalent</strong>; protection increases
+                  with thickness and falls as beam energy rises, with 0.5 mm Pb attenuating roughly 90–99% of scattered diagnostic X-rays.
+                  A single-front apron protects only when facing the patient; a wrap-around apron protects during turning and is preferred
+                  for mobile staff, though heavier. Correct sizing matters: gaps at the armholes, side seam or overlap defeat protection.
+                  Store aprons hanging rather than folded, inspect visually before use and test at least annually by fluoroscopy/radiography
+                  for cracks. Add a 0.5 mm Pb thyroid shield and leaded glasses. Position a ceiling-suspended screen between patient and head,
+                  and under-table drapes between the X-ray tube/patient and the operator; these intercept scatter before it reaches the body.
                 </li>
               </ul>
               <p>

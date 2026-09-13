@@ -11,11 +11,11 @@ import VaporiserSplittingRatioDiagram from "@/components/diagrams/physics/Vapori
 const vaporisersFaqs: Array<[string, string]> = [
   [
     "How does a variable-bypass vaporiser maintain a constant output concentration?",
-    "Fresh gas is split between a bypass channel and a vaporising chamber where it becomes fully saturated with volatile vapour. The splitting ratio is set by the dial. Temperature compensation is achieved by a bimetallic strip (or expansion bellows) that increases bypass flow as temperature falls (preventing output drop as latent heat of vaporisation cools the agent). Flow compensation accommodates flows 0.2–15 L/min."
+    "Fresh gas is split between a bypass channel and a vaporising chamber where it becomes fully saturated with volatile vapour. The splitting ratio is set by the dial. Temperature compensation is achieved by a bimetallic strip (or expansion bellows) that increases flow through the vaporising chamber as temperature falls, compensating for reduced saturated vapour pressure after evaporative cooling. Flow compensation accommodates flows 0.2–15 L/min."
   ],
   [
     "Why does desflurane require a heated, pressurised vaporiser (Tec 6)?",
-    "Desflurane has a boiling point of 23.5 °C (close to room temperature) and a saturated vapour pressure of 88 kPa — a conventional variable-bypass vaporiser would deliver unpredictable, dangerously high concentrations. The Tec 6 heats desflurane to 39 °C (vapour pressure 200 kPa) and injects measured vapour into the fresh gas flow; it requires electrical power and a level sensor."
+    "Desflurane has a boiling point of 22.8 °C (close to room temperature) and a saturated vapour pressure of 88.5 kPa — a conventional variable-bypass vaporiser would deliver unpredictable, dangerously high concentrations. The Tec 6 heats desflurane to 39 °C (vapour pressure 200 kPa) and injects measured vapour into the fresh gas flow; it requires electrical power and a level sensor."
   ],
   [
     "What happens if a vaporiser is tilted or overfilled?",
@@ -142,7 +142,7 @@ const workedExamples: WorkedExample[] = [
 
 const keyPoints = [
   {
-    text: "SVP depends on agent and temperature, not atmospheric pressure: sevoflurane 21.3 kPa, isoflurane 33.2 kPa, halothane 32.0 kPa, desflurane 88.5 kPa at 20 °C.",
+    text: "SVP depends on agent and temperature, not atmospheric pressure: sevoflurane 21.3 kPa, isoflurane 33.3 kPa, halothane 32.2 kPa, desflurane 88.5 kPa at 20 °C.",
     cites: ["BJA Educ 2014", "Al-Shaikh & Stacey Ch.5"],
   },
   {

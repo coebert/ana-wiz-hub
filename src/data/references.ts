@@ -204,7 +204,7 @@ export const topicReferences: Record<string, Reference[]> = {
 
   "mri-physics": [
     { label: "BJA Educ 2019", citation: "Reddy U, Chowdhury T, Bhatt H. MRI for the anaesthetist. BJA Education. 2019;19(8):235-241.", url: "https://doi.org/10.1016/j.bjae.2019.04.004" },
-    { label: "Assoc Anaesth 2021 (MRI)", citation: "Association of Anaesthetists. Safety in magnetic resonance imaging. Anaesthesia. 2021;76(11):1533-1545. (Supersedes the 2010 AAGBI guideline on Provision of Anaesthetic Services in MR Units.)", url: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.15517" },
+    { label: "Assoc Anaesth 2024 (MRI)", citation: "Wilson SR, Shinde S, Appleby I, et al. Guidelines for the safe provision of anaesthesia in magnetic resonance units 2024. Association of Anaesthetists. Anaesthesia. 2024.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Safe-provision-of-anaesthesia-in-magnetic-resonance-units-2024" },
     { label: "RCR GBCA", citation: "The Royal College of Radiologists. Gadolinium-based contrast agent (GBCA) guidance. London: RCR. (Risk-stratifies GBCAs; macrocyclic 'Group II' agents carry a very low NSF risk and may be used with caution in renal impairment.)", url: "https://www.rcr.ac.uk/publication/gadolinium-based-contrast-agent-gbca-guidance" },
     { label: "MHRA GBCA", citation: "Medicines and Healthcare products Regulatory Agency. Gadolinium-containing contrast agents: new restrictions. Drug Safety Update.", url: "https://www.gov.uk/drug-safety-update/gadolinium-containing-contrast-agents-new-restrictions" },
     { label: "Middleton Ch.17", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 17: Magnetic Resonance Imaging." },
@@ -679,6 +679,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "HSE EH40/2005", citation: "Health and Safety Executive. EH40/2005 Workplace exposure limits: containing the list of workplace exposure limits for use with COSHH. 4th ed. HSE Books. Occupational exposure standards include nitrous oxide 100 ppm and isoflurane 50 ppm as 8-hour time-weighted averages.", url: "https://www.hse.gov.uk/pubns/priced/eh40.pdf" },
     { label: "AoA Standards of Monitoring 2021", citation: "Klein AA, Meek T, Allcock E, et al. Recommendations for standards of monitoring during anaesthesia and recovery 2021. Association of Anaesthetists. Anaesthesia. 2021;76(9):1212-1223.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Standards-of-Monitoring-2021" },
     { label: "AoA Equipment Checklist", citation: "Association of Anaesthetists. Checking anaesthetic equipment (anaesthetic equipment safety checklist). Association of Anaesthetists guideline.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Anaesthetic-equipment-safety-checklist" },
+    { label: "IEC 60601 Electrical Safety", citation: "International Electrotechnical Commission. IEC 60601-1: Medical electrical equipment — general requirements for basic safety and essential performance. Covers equipment classes, applied-part leakage limits, protective earth and isolation." },
   ],
 
   // ──────── CLINICAL ────────

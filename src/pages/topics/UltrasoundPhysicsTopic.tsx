@@ -181,7 +181,15 @@ const UltrasoundPhysicsTopic = () => {
                 <strong>Axial resolution</strong> (along the beam) = spatial pulse length / 2 = (number of cycles × wavelength) / 2.
                 It is improved by higher frequency and better damping. <strong>Lateral resolution</strong> (perpendicular to beam)
                 equals beam width and is best at the focal zone. <strong>Elevational (slice thickness) resolution</strong> depends
-                on the transducer element height.
+                 on the transducer element height and out-of-plane focusing. A thick slice averages echoes from structures outside the
+                 displayed plane, creating slice-thickness artefact such as false debris in an otherwise anechoic cyst. Fixed mechanical
+                 focusing is weakest away from its focal depth; 1.5-D arrays electronically focus in elevation, while matrix arrays steer
+                 and focus in both dimensions.
+               </p>
+               <p>
+                 <strong>Temporal resolution</strong> is the ability to display rapid motion and is determined by frame rate. Frame rate
+                 improves with a narrower sector, fewer scan lines/focal zones and shallower depth, but each sacrifices field of view or
+                 spatial detail. High temporal resolution is essential for valve motion, ventricular function and needle movement.
               </p>
               <p>
                 Clinical probe selection: <strong>linear 6–15 MHz</strong> for superficial structures (nerve blocks, vascular access);
@@ -308,10 +316,17 @@ const UltrasoundPhysicsTopic = () => {
                 <p>
                   For routine anaesthetic and ICU applications — vascular access, regional blocks, gastric or lung scanning — measured
                   bioeffects are negligible and no diagnostic ultrasound injury has been demonstrated at these outputs. Operators should
-                  nonetheless keep displayed TI and MI below 1 where practicable, minimise scanning and spectral-Doppler dwell time,
+                   nonetheless keep displayed TI and MI below 1 where practicable, minimise scanning and spectral-Doppler dwell time,
                   avoid holding a Doppler gate over one spot, and reduce acoustic output before degrading gain or image-quality controls
                   <InlineRef topicId="ultrasound-physics" refLabel="BMUS Safety Guidelines" />.
                 </p>
+                 <p>
+                   Use the index appropriate to the tissue: TIS where soft tissue lies in the beam, TIB when bone is at or near the focus,
+                   and TIC when cranial bone is at the surface. BMUS recommends index- and time-dependent caution rather than treating one
+                   number as universally safe. In gas-containing lung or with ultrasound contrast microbubbles, keep <strong>MI below 0.3</strong>
+                   when diagnostic quality permits; for other adult diagnostic imaging, the regulated upper display limit is <strong>MI 1.9</strong>,
+                   not a target. Reduce output and dwell time whenever TI rises, especially in fetal, neonatal or poorly perfused tissue
+                   <InlineRef topicId="ultrasound-physics" refLabel="BMUS Safety Guidelines" />.
               </div>
             </CollapsibleSubsection>
           </ExamSection>
