@@ -385,7 +385,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Is cricoid pressure still recommended in RSI?",
     },
     {
-      "a": "The Difficult Airway Society (DAS) 2015 algorithm has four sequential plans: Plan A — tracheal intubation (maximum 3 + 1 attempts, change something each time: blade, operator, position, bougie, videolaryngoscope). Plan B — supraglottic airway (preferably 2nd-generation i-gel or LMA Supreme, maximum 3 attempts). Plan C — face-mask ventilation, two-person two-handed technique, full relaxation; wake the patient if oxygenation restored. Plan D — emergency front-of-neck access (scalpel-bougie-tube cricothyroidotomy) — declared CICO and performed before SpO₂ < 80 %.",
+      "a": "The Difficult Airway Society (DAS) 2015 non-obstetric adult algorithm has four sequential plans: Plan A — tracheal intubation (maximum 3 + 1 attempts, changing operator or technique). Plan B — second-generation supraglottic airway (maximum 3 attempts). Plan C — face-mask ventilation; wake the patient if oxygenation is restored. Plan D — emergency front-of-neck access for CICO. The joint OAA/DAS obstetric guideline is deliberately more restrictive and limits tracheal intubation to two attempts in total.",
       "q": "What is the DAS unanticipated difficult intubation algorithm?",
     },
     {
@@ -849,7 +849,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the best anaesthetic technique for paediatric strabismus surgery?",
     },
     {
-      "a": "Systemic absorption of topical ophthalmic drops can produce significant physiological effects. Timolol (a non-selective beta-blocker) can cause bradycardia, bronchospasm, and heart block — caution in asthmatics and patients on beta-blockers. Acetazolamide (carbonic anhydrase inhibitor) causes metabolic acidosis, hypokalaemia, and diuresis — check electrolytes if the patient has been on it long-term. Brimonidine (alpha-2 agonist) can cause hypotension and sedation. Apraclonidine has similar alpha-agonist effects. Topical phenylephrine (10%) can produce significant hypertension, tachycardia, and arrhythmias, particularly in elderly patients and those with cardiovascular disease. Cocaine 5–10% (used in nasal surgery) inhibits noradrenaline reuptake and produces sympathomimetic effects — avoid in combination with other vasopressors and halothane. Always ask what eye drops the patient has received preoperatively.",
+      "a": "Systemic absorption of topical ophthalmic drops can produce significant physiological effects — the conjunctival and nasal mucosa absorb drug directly into the systemic circulation with no first-pass metabolism. Timolol (a non-selective beta-blocker) can cause bradycardia, bronchospasm, and heart block — caution in asthmatics and patients on beta-blockers; it also potentiates the bradycardia produced by propofol, opioids, suxamethonium and the oculocardiac reflex, and can mask the adrenergic warning signs of hypoglycaemia in diabetic patients. Acetazolamide (carbonic anhydrase inhibitor) causes a hyperchloraemic metabolic acidosis, hypokalaemia, hyponatraemia and diuresis — check electrolytes if the patient has been on it long-term; hypokalaemia potentiates non-depolarising neuromuscular blockade and prolongs recovery, and the acidosis may be misread as a respiratory problem. Cyclopentolate and tropicamide are anticholinergic mydriatics that can cause tachycardia, dry mouth, flushing and, particularly in the very young and the elderly, a central anticholinergic syndrome with confusion, agitation and hallucinations. Pilocarpine is a direct parasympathomimetic miotic and can produce bradycardia, salivation, sweating, bronchospasm and abdominal cramps. Ecothiopate iodide, an irreversible cholinesterase inhibitor still occasionally used for glaucoma, reduces plasma cholinesterase activity and markedly prolongs the action of suxamethonium, mivacurium and ester local anaesthetics — avoid suxamethonium or anticipate prolonged block. Brimonidine (alpha-2 agonist) can cause hypotension and sedation. Apraclonidine has similar alpha-agonist effects. Topical phenylephrine 10% can produce severe hypertension with reflex bradycardia, arrhythmias, myocardial ischaemia and even pulmonary oedema, particularly in elderly patients and those with cardiovascular disease — the 2.5% preparation gives adequate mydriasis and is safer and preferred, and drops should be counted rather than instilled freely. Cocaine 5–10% (used in nasal surgery) inhibits noradrenaline reuptake and produces sympathomimetic effects — avoid in combination with other vasopressors and halothane. Always ask what eye drops the patient has received preoperatively.",
       "q": "How do IOP-lowering drugs used in ophthalmic surgery interact with anaesthesia?",
     },
     {
@@ -1071,7 +1071,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the difference between a spinal and an epidural?",
     },
     {
-      "a": "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 reported epidural haematoma around 1:220,000 for spinal anaesthesia and meningitis < 1:50,000. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
+      "a": "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 reported vertebral canal haematoma around 1:220,000 for spinal anaesthesia and 1:150,000 for epidural anaesthesia, and meningitis < 1:50,000. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
       "q": "Does spinal anaesthesia hurt and is it safe?",
     },
     {
@@ -1191,7 +1191,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is permissive hypotension and when is it contraindicated?",
     },
     {
-      "a": "Give TXA 1 g IV over 10 minutes as early as possible, followed by 1 g IV infusion over 8 hours. The CRASH-2 trial showed a mortality benefit when given within 3 hours of injury. There is no benefit — and possible harm — if given >3 hours after injury, so timing is critical. TXA inhibits fibrinolysis by blocking plasminogen activation and should be administered in all trauma patients with significant bleeding or at risk of significant haemorrhage unless there is a clear contraindication such as subarachnoid haemorrhage where antifibrinolytics may increase thrombotic complications.",
+      "a": "Give TXA 1 g IV over 10 minutes as early as possible, and always within 3 hours of injury — the CRASH-2 mortality benefit is strongly time-dependent, and treatment started beyond 3 hours confers no benefit and may cause harm. The classic CRASH-2/CRASH-3 regimen adds a second 1 g by infusion over 8 hours, but this maintenance dose is no longer treated as an automatic requirement: the survival benefit in both trials was driven by the early loading dose, and many UK major-haemorrhage protocols now give the second gram as a further short bolus, or omit it once bleeding is controlled, continuing antifibrinolytic therapy only where haemorrhage is ongoing or viscoelastic testing shows persistent hyperfibrinolysis. Follow your local major haemorrhage protocol. TXA inhibits fibrinolysis by blocking plasminogen activation and should be given to all trauma patients with significant bleeding or at risk of it, unless clearly contraindicated.",
       "q": "When should tranexamic acid (TXA) be given in trauma?",
     },
     {
@@ -1395,7 +1395,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "When should antibiotic infusions be used over bolus dosing?",
     },
     {
-      "a": "Review at 48–72 h with cultures and biomarkers (procalcitonin trend); narrow spectrum, stop empirical cover not supported by cultures, and limit duration to 5–7 days for most infections (8 days for HAP/VAP — PneumA trial).",
+      "a": "Review at 48–72 h with cultures and biomarkers (procalcitonin trend); narrow spectrum, stop empirical cover not supported by cultures, and limit duration to 5–7 days for most infections (7 days for HAP/VAP per IDSA/PneumA, and as short as 5 days if clinically improving).",
       "q": "How is antibiotic de-escalation safely performed?",
     },
   ],
@@ -1501,7 +1501,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Who is an appropriate candidate for eCPR and what does ARREST, Prague OHCA and INCEPTION tell us?",
     },
     {
-      "a": "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 2. ERC/ESICM 2021 require at least two concordant poor-outcome markers from independent modalities before predicting poor outcome: (1) bilaterally absent pupillary AND corneal reflexes (or NPi < 2 on automated pupillometry); (2) bilaterally absent N20 cortical SSEPs; (3) NSE > 60 µg/L at 48 h or > 75 µg/L at 72 h, or a rising trend; (4) highly malignant EEG (suppression < 10 µV, or unreactive burst-suppression); (5) diffuse anoxic injury on CT (loss of grey-white differentiation, GWR < 1.10) or MRI (widespread restricted diffusion). Status myoclonus alone is not sufficient. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
+      "a": "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response). ERC/ESICM 2021 require at least two concordant poor-outcome markers from independent modalities before predicting poor outcome: (1) bilaterally absent pupillary AND corneal reflexes (or NPi < 2 on automated pupillometry); (2) bilaterally absent N20 cortical SSEPs; (3) NSE > 60 µg/L at 48 h and/or 72 h, or a rising trend; (4) highly malignant EEG (suppression < 10 µV, or unreactive burst-suppression); (5) diffuse anoxic injury on CT (loss of grey-white differentiation, GWR < 1.10) or MRI (widespread restricted diffusion). Status myoclonus alone is not sufficient. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
       "q": "What is multimodal neuroprognostication and when do I perform it?",
     },
     {
@@ -1515,7 +1515,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the principle behind transpulmonary thermodilution (PiCCO)?",
     },
     {
-      "a": "Stroke volume = π(D/2)² × VTI, so a 10% error in LVOT diameter produces a 20% error in SV; meticulous measurement in mid-systole at the annulus is essential.",
+      "a": "Stroke volume = π(D/2)² × VTI, so a 10% error in LVOT diameter produces roughly a 21% error in SV, because the diameter is squared ((1.1)² = 1.21); meticulous measurement in mid-systole at the annulus is essential.",
       "q": "Why does the LVOT diameter dominate echo-derived CO error?",
     },
     {
@@ -1681,7 +1681,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/neuroprognostication": [
     {
-      "a": "≥72 h after ROSC (later if sedation/hypothermia confound), using multimodal assessment: clinical exam (absent pupillary/corneal reflexes, GCS-M ≤2), NSE, EEG, SSEP and CT/MRI (ERC/ESICM 2021).",
+      "a": "≥72 h after ROSC (later if sedation/hypothermia confound), using multimodal assessment: clinical exam (absent pupillary/corneal reflexes, GCS-M ≤3), NSE, EEG, SSEP and CT/MRI (ERC/ESICM 2021).",
       "q": "When should neuroprognostication be performed after cardiac arrest?",
     },
     {
@@ -1817,7 +1817,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "When is haemodialysis indicated in poisoning?",
     },
     {
-      "a": "Association of Anaesthetists 2023: give 20% lipid emulsion 1.5 mL/kg as an initial bolus (simplified to a fixed 100 mL bolus if >70 kg), then start an infusion of 15 mL/kg/h — the same weight-based rate for every patient, which equates to about 1000 mL/h in an adult over 70 kg. Up to two further boluses at 5-minute intervals (three in total), and double the infusion to 30 mL/kg/h if the circulation remains unstable; total maximum 12 mL/kg.",
+      "a": "Association of Anaesthetists 2023: give 20% lipid emulsion 1.5 mL/kg as an initial bolus (simplified to a fixed 100 mL bolus if >70 kg), then start an infusion of 0.25 mL/kg/min (equivalent to 15 mL/kg/h) — the same weight-based rate for every patient, which equates to about 1000 mL/h in an adult over 70 kg. Up to two further boluses at 5-minute intervals (three in total), and double the infusion to 0.5 mL/kg/min (30 mL/kg/h) if the circulation remains unstable; total maximum 12 mL/kg.",
       "q": "How is lipid emulsion used in local anaesthetic toxicity?",
     },
     {
@@ -2403,7 +2403,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "When should elective non-cardiac surgery be deferred after PCI?",
     },
     {
-      "a": "Six predictors (high-risk surgery, IHD, heart failure, cerebrovascular disease, insulin-treated diabetes, creatinine >177 µmol/L): 0 ≈ 0.4%, 1 ≈ 1%, 2 ≈ 2.4%, ≥3 ≈ 5.4% risk of a major cardiac event at 30 days.",
+      "a": "Six predictors (high-risk surgery, IHD, heart failure, cerebrovascular disease, insulin-treated diabetes, creatinine >170 µmol/L): 0 ≈ 0.4%, 1 ≈ 1%, 2 ≈ 2.4%, ≥3 ≈ 5.4% risk of a major cardiac event at 30 days.",
       "q": "How is the Revised Cardiac Risk Index (Lee) interpreted?",
     },
   ],
@@ -2533,7 +2533,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the equivalent dose conversion between common steroids?",
     },
     {
-      "a": "Required for patients on >5 mg prednisolone/day for >3 weeks (HPA suppression). Minor surgery (e.g. hernia): usual oral dose + hydrocortisone 25 mg IV at induction. Moderate surgery (e.g. hemicolectomy): usual dose + 25 mg at induction then 100 mg over 24 h. Major surgery (e.g. laparotomy, cardiac surgery): usual dose + 50 mg at induction then 200 mg over 24 h, continued while the stress response persists then tapered. Continue maintenance dose throughout. Failure to cover risks Addisonian crisis: profound hypotension unresponsive to fluids/pressors, hyponatraemia, hyperkalaemia.",
+      "a": "Required when HPA suppression is likely, including prednisolone ≥5 mg/day for more than four weeks. Minor surgery needs the usual dose only; if fasting causes a dose to be missed, give its equivalent parenterally. Moderate surgery: usual dose + hydrocortisone 50 mg IV at induction, then 25 mg IV 8-hourly for 24 h. Major surgery: usual dose + hydrocortisone 100 mg IV at induction, then 200 mg/24 h by infusion or 50 mg IV 6-hourly for 24–48 h and until stable enough to resume oral treatment.",
       "q": "When is perioperative steroid cover required and what regimen is used?",
     },
     {
@@ -2617,7 +2617,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the contraindications and cautions for NSAID use perioperatively?",
     },
     {
-      "a": "N-acetylcysteine (NAC) is the antidote — replenishes glutathione and detoxifies NAPQI. Indications: paracetamol level above the 100 mg/L line at 4 h on the UK nomogram (single line since 2012 — treat all above), staggered overdose, unknown timing, late presentation with deranged LFTs. Regime: 150 mg/kg over 1 h, 50 mg/kg over 4 h, 100 mg/kg over 16 h. King's College criteria identify need for transplant referral.",
+      "a": "N-acetylcysteine (NAC) is the antidote — replenishes glutathione and detoxifies NAPQI. Use the UK paracetamol treatment nomogram: since 2012 a single treatment line is used, joining 100 mg/L at 4 h to 15 mg/L at 15 h post-ingestion — treat all patients whose plasma level is on or above this line. NAC is also indicated regardless of level for staggered overdose, uncertain/unknown timing, and late presentation with deranged LFTs. Regime: 150 mg/kg over 1 h, 50 mg/kg over 4 h, 100 mg/kg over 16 h. King's College criteria identify need for transplant referral.",
       "q": "Outline paracetamol overdose management.",
     },
   ],
@@ -2665,7 +2665,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/pharmacology/rocuronium": [
     {
-      "a": "Standard intubating dose is 0.6 mg/kg IV (2× ED₉₅), giving onset 60–90 s and clinical duration 30–45 min. For rapid sequence induction the dose is increased to 1.0–1.2 mg/kg IV, giving onset 45–60 s — comparable to suxamethonium 1.5 mg/kg — and duration 60–70 min. Maintenance infusion is 5–10 µg/kg/min titrated to TOF.",
+      "a": "Standard intubating dose is 0.6 mg/kg IV (2× ED₉₅), giving onset 60–90 s and clinical duration 30–45 min. For rapid sequence induction the dose is increased to 0.9–1.2 mg/kg IV, giving onset 45–60 s — comparable to suxamethonium 1.5 mg/kg — and duration 60–70 min. Maintenance infusion is 5–10 µg/kg/min titrated to TOF.",
       "q": "What is the dose of rocuronium for intubation?",
     },
     {
@@ -2964,7 +2964,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   "/physics/equipment-monitoring": [
     {
       "a": "Continuous pulse oximetry, ECG, NIBP (every 5 min or more frequent), capnography (mandatory whenever the airway is instrumented — ETT, SAD, tracheostomy), inspired and expired volatile concentration, FiO₂, airway pressure, temperature for cases >30 min, neuromuscular monitoring whenever NMBA used. Continuous presence of an anaesthetist.",
-      "q": "What are the AAGBI minimum monitoring standards for anaesthesia?",
+      "q": "What are the Association of Anaesthetists minimum monitoring standards for anaesthesia?",
     },
     {
       "a": "Hypoxic guard (mechanical/electronic linkage between O₂ and N₂O flowmeters ensures FiO₂ ≥25 %), pin-index system on cylinders, non-interchangeable Schrader pipeline connectors (colour- and size-coded), oxygen failure alarm (Ritchie whistle), oxygen analyser in the common gas outlet with low-FiO₂ alarm, and an oxygen flush button that bypasses the vaporiser.",
@@ -2995,11 +2995,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "State Boyle's, Charles's and Gay-Lussac's laws with one anaesthetic application each.",
     },
     {
-      "a": "36.5 °C. Above this, N₂O cannot exist as a liquid regardless of pressure, so cylinder contents must be measured by weight (not pressure gauge as for O₂). At room temperature N₂O is partly liquid; the gauge reads ~44 bar (vapour pressure) until all liquid has evaporated, then falls rapidly.",
+      "a": "36.5 °C. Above this, N₂O cannot exist as a liquid regardless of pressure, so cylinder contents must be measured by weight (not pressure gauge as for O₂). At room temperature N₂O is partly liquid; the gauge reads its saturated vapour pressure of ~5,200 kPa (52 bar) at 20 °C until all liquid has evaporated, then falls rapidly.",
       "q": "What is the critical temperature of nitrous oxide and why does it matter?",
     },
     {
-      "a": "Total pressure = sum of partial pressures. Alveolar O₂ tension = (Patm − PH₂O) × FiO₂ − PaCO₂/RQ. At sea level with FiO₂ 0.21: PAO₂ ≈ (101 − 6.3) × 0.21 − 5.3/0.8 ≈ 13.3 kPa. The alveolar gas equation is derived directly from Dalton's law.",
+      "a": "Total pressure = sum of partial pressures. The alveolar gas equation is written PAO₂ = [FiO₂ × (Patm − PH₂O)] − (PaCO₂/RQ): the FiO₂ multiplies the dry inspired pressure only, and PaCO₂/RQ is then subtracted from that product. At sea level with FiO₂ 0.21: PAO₂ ≈ [0.21 × (101 − 6.3)] − (5.3/0.8) ≈ 19.9 − 6.6 ≈ 13.3 kPa. Note this gives the alveolar tension (PAO₂), not the arterial PaO₂ — the difference between them is the A–a gradient.",
       "q": "How does Dalton's law of partial pressures apply to alveolar gas?",
     },
   ],
@@ -3159,11 +3159,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physics/vaporisers": [
     {
-      "a": "Fresh gas is split between a bypass channel and a vaporising chamber where it becomes fully saturated with volatile vapour. The splitting ratio is set by the dial. Temperature compensation is achieved by a bimetallic strip (or expansion bellows) that increases bypass flow as temperature falls (preventing output drop as latent heat of vaporisation cools the agent). Flow compensation accommodates flows 0.2–15 L/min.",
+      "a": "Fresh gas is split between a bypass channel and a vaporising chamber where it becomes fully saturated with volatile vapour. The splitting ratio is set by the dial. Temperature compensation is achieved by a bimetallic strip (or expansion bellows) that increases flow through the vaporising chamber as temperature falls, compensating for reduced saturated vapour pressure after evaporative cooling. Flow compensation accommodates flows 0.2–15 L/min.",
       "q": "How does a variable-bypass vaporiser maintain a constant output concentration?",
     },
     {
-      "a": "Desflurane has a boiling point of 23.5 °C (close to room temperature) and a saturated vapour pressure of 88 kPa — a conventional variable-bypass vaporiser would deliver unpredictable, dangerously high concentrations. The Tec 6 heats desflurane to 39 °C (vapour pressure 200 kPa) and injects measured vapour into the fresh gas flow; it requires electrical power and a level sensor.",
+      "a": "Desflurane has a boiling point of 22.8 °C (close to room temperature) and a saturated vapour pressure of 88.5 kPa — a conventional variable-bypass vaporiser would deliver unpredictable, dangerously high concentrations. The Tec 6 heats desflurane to 39 °C (vapour pressure 200 kPa) and injects measured vapour into the fresh gas flow; it requires electrical power and a level sensor.",
       "q": "Why does desflurane require a heated, pressurised vaporiser (Tec 6)?",
     },
     {
@@ -3357,7 +3357,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Summarise the cardiovascular changes of pregnancy.",
     },
     {
-      "a": "Airway: weight gain, mucosal oedema, breast enlargement, full dentition; failed intubation 1:300 (8× the non-pregnant rate). Reduced FRC (15–20 %) and increased oxygen consumption (20 %) cause desaturation within 1 min of apnoea vs ~3 min in non-pregnant. Strategies: ramped position, pre-oxygenation 3 min with end-tidal O₂ >85 %, smaller ETT (6.5–7.0), video laryngoscopy first-line, OAA/DAS failed-intubation algorithm rehearsed.",
+      "a": "Airway: weight gain, mucosal oedema, breast enlargement, full dentition; failed intubation is historically about 1:300. Reduced FRC (15–20 %) and increased oxygen consumption (20–40 %) cause rapid desaturation. Strategies: ramped position, pre-oxygenation 3 min with end-tidal O₂ >85 %, smaller ETT (6.5–7.0), video laryngoscopy first-line, OAA/DAS failed-intubation algorithm rehearsed.",
       "q": "Why is the pregnant woman at increased risk of failed intubation and rapid desaturation?",
     },
     {
@@ -4065,7 +4065,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Difficult Airway Society (DAS) 2015 algorithm has four sequential plans: Plan A — tracheal intubation (maximum 3 + 1 attempts, change something each time: blade, operator, position, bougie, videolaryngoscope). Plan B — supraglottic airway (preferably 2nd-generation i-gel or LMA Supreme, maximum 3 attempts). Plan C — face-mask ventilation, two-person two-handed technique, full relaxation; wake the patient if oxygenation restored. Plan D — emergency front-of-neck access (scalpel-bougie-tube cricothyroidotomy) — declared CICO and performed before SpO₂ < 80 %.",
+          "text": "The Difficult Airway Society (DAS) 2015 non-obstetric adult algorithm has four sequential plans: Plan A — tracheal intubation (maximum 3 + 1 attempts, changing operator or technique). Plan B — second-generation supraglottic airway (maximum 3 attempts). Plan C — face-mask ventilation; wake the patient if oxygenation is restored. Plan D — emergency front-of-neck access for CICO. The joint OAA/DAS obstetric guideline is deliberately more restrictive and limits tracheal intubation to two attempts in total.",
         },
         "name": "What is the DAS unanticipated difficult intubation algorithm?",
       },
@@ -5025,7 +5025,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Systemic absorption of topical ophthalmic drops can produce significant physiological effects. Timolol (a non-selective beta-blocker) can cause bradycardia, bronchospasm, and heart block — caution in asthmatics and patients on beta-blockers. Acetazolamide (carbonic anhydrase inhibitor) causes metabolic acidosis, hypokalaemia, and diuresis — check electrolytes if the patient has been on it long-term. Brimonidine (alpha-2 agonist) can cause hypotension and sedation. Apraclonidine has similar alpha-agonist effects. Topical phenylephrine (10%) can produce significant hypertension, tachycardia, and arrhythmias, particularly in elderly patients and those with cardiovascular disease. Cocaine 5–10% (used in nasal surgery) inhibits noradrenaline reuptake and produces sympathomimetic effects — avoid in combination with other vasopressors and halothane. Always ask what eye drops the patient has received preoperatively.",
+          "text": "Systemic absorption of topical ophthalmic drops can produce significant physiological effects — the conjunctival and nasal mucosa absorb drug directly into the systemic circulation with no first-pass metabolism. Timolol (a non-selective beta-blocker) can cause bradycardia, bronchospasm, and heart block — caution in asthmatics and patients on beta-blockers; it also potentiates the bradycardia produced by propofol, opioids, suxamethonium and the oculocardiac reflex, and can mask the adrenergic warning signs of hypoglycaemia in diabetic patients. Acetazolamide (carbonic anhydrase inhibitor) causes a hyperchloraemic metabolic acidosis, hypokalaemia, hyponatraemia and diuresis — check electrolytes if the patient has been on it long-term; hypokalaemia potentiates non-depolarising neuromuscular blockade and prolongs recovery, and the acidosis may be misread as a respiratory problem. Cyclopentolate and tropicamide are anticholinergic mydriatics that can cause tachycardia, dry mouth, flushing and, particularly in the very young and the elderly, a central anticholinergic syndrome with confusion, agitation and hallucinations. Pilocarpine is a direct parasympathomimetic miotic and can produce bradycardia, salivation, sweating, bronchospasm and abdominal cramps. Ecothiopate iodide, an irreversible cholinesterase inhibitor still occasionally used for glaucoma, reduces plasma cholinesterase activity and markedly prolongs the action of suxamethonium, mivacurium and ester local anaesthetics — avoid suxamethonium or anticipate prolonged block. Brimonidine (alpha-2 agonist) can cause hypotension and sedation. Apraclonidine has similar alpha-agonist effects. Topical phenylephrine 10% can produce severe hypertension with reflex bradycardia, arrhythmias, myocardial ischaemia and even pulmonary oedema, particularly in elderly patients and those with cardiovascular disease — the 2.5% preparation gives adequate mydriasis and is safer and preferred, and drops should be counted rather than instilled freely. Cocaine 5–10% (used in nasal surgery) inhibits noradrenaline reuptake and produces sympathomimetic effects — avoid in combination with other vasopressors and halothane. Always ask what eye drops the patient has received preoperatively.",
         },
         "name": "How do IOP-lowering drugs used in ophthalmic surgery interact with anaesthesia?",
       },
@@ -5483,7 +5483,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 reported epidural haematoma around 1:220,000 for spinal anaesthesia and meningitis < 1:50,000. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
+          "text": "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 reported vertebral canal haematoma around 1:220,000 for spinal anaesthesia and 1:150,000 for epidural anaesthesia, and meningitis < 1:50,000. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
         },
         "name": "Does spinal anaesthesia hurt and is it safe?",
       },
@@ -5731,7 +5731,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Give TXA 1 g IV over 10 minutes as early as possible, followed by 1 g IV infusion over 8 hours. The CRASH-2 trial showed a mortality benefit when given within 3 hours of injury. There is no benefit — and possible harm — if given >3 hours after injury, so timing is critical. TXA inhibits fibrinolysis by blocking plasminogen activation and should be administered in all trauma patients with significant bleeding or at risk of significant haemorrhage unless there is a clear contraindication such as subarachnoid haemorrhage where antifibrinolytics may increase thrombotic complications.",
+          "text": "Give TXA 1 g IV over 10 minutes as early as possible, and always within 3 hours of injury — the CRASH-2 mortality benefit is strongly time-dependent, and treatment started beyond 3 hours confers no benefit and may cause harm. The classic CRASH-2/CRASH-3 regimen adds a second 1 g by infusion over 8 hours, but this maintenance dose is no longer treated as an automatic requirement: the survival benefit in both trials was driven by the early loading dose, and many UK major-haemorrhage protocols now give the second gram as a further short bolus, or omit it once bleeding is controlled, continuing antifibrinolytic therapy only where haemorrhage is ongoing or viscoelastic testing shows persistent hyperfibrinolysis. Follow your local major haemorrhage protocol. TXA inhibits fibrinolysis by blocking plasminogen activation and should be given to all trauma patients with significant bleeding or at risk of it, unless clearly contraindicated.",
         },
         "name": "When should tranexamic acid (TXA) be given in trauma?",
       },
@@ -6155,7 +6155,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Review at 48–72 h with cultures and biomarkers (procalcitonin trend); narrow spectrum, stop empirical cover not supported by cultures, and limit duration to 5–7 days for most infections (8 days for HAP/VAP — PneumA trial).",
+          "text": "Review at 48–72 h with cultures and biomarkers (procalcitonin trend); narrow spectrum, stop empirical cover not supported by cultures, and limit duration to 5–7 days for most infections (7 days for HAP/VAP per IDSA/PneumA, and as short as 5 days if clinically improving).",
         },
         "name": "How is antibiotic de-escalation safely performed?",
       },
@@ -6377,7 +6377,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 2. ERC/ESICM 2021 require at least two concordant poor-outcome markers from independent modalities before predicting poor outcome: (1) bilaterally absent pupillary AND corneal reflexes (or NPi < 2 on automated pupillometry); (2) bilaterally absent N20 cortical SSEPs; (3) NSE > 60 µg/L at 48 h or > 75 µg/L at 72 h, or a rising trend; (4) highly malignant EEG (suppression < 10 µV, or unreactive burst-suppression); (5) diffuse anoxic injury on CT (loss of grey-white differentiation, GWR < 1.10) or MRI (widespread restricted diffusion). Status myoclonus alone is not sufficient. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
+          "text": "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response). ERC/ESICM 2021 require at least two concordant poor-outcome markers from independent modalities before predicting poor outcome: (1) bilaterally absent pupillary AND corneal reflexes (or NPi < 2 on automated pupillometry); (2) bilaterally absent N20 cortical SSEPs; (3) NSE > 60 µg/L at 48 h and/or 72 h, or a rising trend; (4) highly malignant EEG (suppression < 10 µV, or unreactive burst-suppression); (5) diffuse anoxic injury on CT (loss of grey-white differentiation, GWR < 1.10) or MRI (widespread restricted diffusion). Status myoclonus alone is not sufficient. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
         },
         "name": "What is multimodal neuroprognostication and when do I perform it?",
       },
@@ -6407,7 +6407,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Stroke volume = π(D/2)² × VTI, so a 10% error in LVOT diameter produces a 20% error in SV; meticulous measurement in mid-systole at the annulus is essential.",
+          "text": "Stroke volume = π(D/2)² × VTI, so a 10% error in LVOT diameter produces roughly a 21% error in SV, because the diameter is squared ((1.1)² = 1.21); meticulous measurement in mid-systole at the annulus is essential.",
         },
         "name": "Why does the LVOT diameter dominate echo-derived CO error?",
       },
@@ -6761,7 +6761,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "≥72 h after ROSC (later if sedation/hypothermia confound), using multimodal assessment: clinical exam (absent pupillary/corneal reflexes, GCS-M ≤2), NSE, EEG, SSEP and CT/MRI (ERC/ESICM 2021).",
+          "text": "≥72 h after ROSC (later if sedation/hypothermia confound), using multimodal assessment: clinical exam (absent pupillary/corneal reflexes, GCS-M ≤3), NSE, EEG, SSEP and CT/MRI (ERC/ESICM 2021).",
         },
         "name": "When should neuroprognostication be performed after cardiac arrest?",
       },
@@ -7049,7 +7049,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Association of Anaesthetists 2023: give 20% lipid emulsion 1.5 mL/kg as an initial bolus (simplified to a fixed 100 mL bolus if >70 kg), then start an infusion of 15 mL/kg/h — the same weight-based rate for every patient, which equates to about 1000 mL/h in an adult over 70 kg. Up to two further boluses at 5-minute intervals (three in total), and double the infusion to 30 mL/kg/h if the circulation remains unstable; total maximum 12 mL/kg.",
+          "text": "Association of Anaesthetists 2023: give 20% lipid emulsion 1.5 mL/kg as an initial bolus (simplified to a fixed 100 mL bolus if >70 kg), then start an infusion of 0.25 mL/kg/min (equivalent to 15 mL/kg/h) — the same weight-based rate for every patient, which equates to about 1000 mL/h in an adult over 70 kg. Up to two further boluses at 5-minute intervals (three in total), and double the infusion to 0.5 mL/kg/min (30 mL/kg/h) if the circulation remains unstable; total maximum 12 mL/kg.",
         },
         "name": "How is lipid emulsion used in local anaesthetic toxicity?",
       },
@@ -8283,7 +8283,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Six predictors (high-risk surgery, IHD, heart failure, cerebrovascular disease, insulin-treated diabetes, creatinine >177 µmol/L): 0 ≈ 0.4%, 1 ≈ 1%, 2 ≈ 2.4%, ≥3 ≈ 5.4% risk of a major cardiac event at 30 days.",
+          "text": "Six predictors (high-risk surgery, IHD, heart failure, cerebrovascular disease, insulin-treated diabetes, creatinine >170 µmol/L): 0 ≈ 0.4%, 1 ≈ 1%, 2 ≈ 2.4%, ≥3 ≈ 5.4% risk of a major cardiac event at 30 days.",
         },
         "name": "How is the Revised Cardiac Risk Index (Lee) interpreted?",
       },
@@ -8561,7 +8561,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Required for patients on >5 mg prednisolone/day for >3 weeks (HPA suppression). Minor surgery (e.g. hernia): usual oral dose + hydrocortisone 25 mg IV at induction. Moderate surgery (e.g. hemicolectomy): usual dose + 25 mg at induction then 100 mg over 24 h. Major surgery (e.g. laparotomy, cardiac surgery): usual dose + 50 mg at induction then 200 mg over 24 h, continued while the stress response persists then tapered. Continue maintenance dose throughout. Failure to cover risks Addisonian crisis: profound hypotension unresponsive to fluids/pressors, hyponatraemia, hyperkalaemia.",
+          "text": "Required when HPA suppression is likely, including prednisolone ≥5 mg/day for more than four weeks. Minor surgery needs the usual dose only; if fasting causes a dose to be missed, give its equivalent parenterally. Moderate surgery: usual dose + hydrocortisone 50 mg IV at induction, then 25 mg IV 8-hourly for 24 h. Major surgery: usual dose + hydrocortisone 100 mg IV at induction, then 200 mg/24 h by infusion or 50 mg IV 6-hourly for 24–48 h and until stable enough to resume oral treatment.",
         },
         "name": "When is perioperative steroid cover required and what regimen is used?",
       },
@@ -8737,7 +8737,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "N-acetylcysteine (NAC) is the antidote — replenishes glutathione and detoxifies NAPQI. Indications: paracetamol level above the 100 mg/L line at 4 h on the UK nomogram (single line since 2012 — treat all above), staggered overdose, unknown timing, late presentation with deranged LFTs. Regime: 150 mg/kg over 1 h, 50 mg/kg over 4 h, 100 mg/kg over 16 h. King's College criteria identify need for transplant referral.",
+          "text": "N-acetylcysteine (NAC) is the antidote — replenishes glutathione and detoxifies NAPQI. Use the UK paracetamol treatment nomogram: since 2012 a single treatment line is used, joining 100 mg/L at 4 h to 15 mg/L at 15 h post-ingestion — treat all patients whose plasma level is on or above this line. NAC is also indicated regardless of level for staggered overdose, uncertain/unknown timing, and late presentation with deranged LFTs. Regime: 150 mg/kg over 1 h, 50 mg/kg over 4 h, 100 mg/kg over 16 h. King's College criteria identify need for transplant referral.",
         },
         "name": "Outline paracetamol overdose management.",
       },
@@ -8841,7 +8841,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Standard intubating dose is 0.6 mg/kg IV (2× ED₉₅), giving onset 60–90 s and clinical duration 30–45 min. For rapid sequence induction the dose is increased to 1.0–1.2 mg/kg IV, giving onset 45–60 s — comparable to suxamethonium 1.5 mg/kg — and duration 60–70 min. Maintenance infusion is 5–10 µg/kg/min titrated to TOF.",
+          "text": "Standard intubating dose is 0.6 mg/kg IV (2× ED₉₅), giving onset 60–90 s and clinical duration 30–45 min. For rapid sequence induction the dose is increased to 0.9–1.2 mg/kg IV, giving onset 45–60 s — comparable to suxamethonium 1.5 mg/kg — and duration 60–70 min. Maintenance infusion is 5–10 µg/kg/min titrated to TOF.",
         },
         "name": "What is the dose of rocuronium for intubation?",
       },
@@ -9465,7 +9465,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
           "@type": "Answer",
           "text": "Continuous pulse oximetry, ECG, NIBP (every 5 min or more frequent), capnography (mandatory whenever the airway is instrumented — ETT, SAD, tracheostomy), inspired and expired volatile concentration, FiO₂, airway pressure, temperature for cases >30 min, neuromuscular monitoring whenever NMBA used. Continuous presence of an anaesthetist.",
         },
-        "name": "What are the AAGBI minimum monitoring standards for anaesthesia?",
+        "name": "What are the Association of Anaesthetists minimum monitoring standards for anaesthesia?",
       },
       {
         "@type": "Question",
@@ -9531,7 +9531,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "36.5 °C. Above this, N₂O cannot exist as a liquid regardless of pressure, so cylinder contents must be measured by weight (not pressure gauge as for O₂). At room temperature N₂O is partly liquid; the gauge reads ~44 bar (vapour pressure) until all liquid has evaporated, then falls rapidly.",
+          "text": "36.5 °C. Above this, N₂O cannot exist as a liquid regardless of pressure, so cylinder contents must be measured by weight (not pressure gauge as for O₂). At room temperature N₂O is partly liquid; the gauge reads its saturated vapour pressure of ~5,200 kPa (52 bar) at 20 °C until all liquid has evaporated, then falls rapidly.",
         },
         "name": "What is the critical temperature of nitrous oxide and why does it matter?",
       },
@@ -9539,7 +9539,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Total pressure = sum of partial pressures. Alveolar O₂ tension = (Patm − PH₂O) × FiO₂ − PaCO₂/RQ. At sea level with FiO₂ 0.21: PAO₂ ≈ (101 − 6.3) × 0.21 − 5.3/0.8 ≈ 13.3 kPa. The alveolar gas equation is derived directly from Dalton's law.",
+          "text": "Total pressure = sum of partial pressures. The alveolar gas equation is written PAO₂ = [FiO₂ × (Patm − PH₂O)] − (PaCO₂/RQ): the FiO₂ multiplies the dry inspired pressure only, and PaCO₂/RQ is then subtracted from that product. At sea level with FiO₂ 0.21: PAO₂ ≈ [0.21 × (101 − 6.3)] − (5.3/0.8) ≈ 19.9 − 6.6 ≈ 13.3 kPa. Note this gives the alveolar tension (PAO₂), not the arterial PaO₂ — the difference between them is the A–a gradient.",
         },
         "name": "How does Dalton's law of partial pressures apply to alveolar gas?",
       },
@@ -9883,7 +9883,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Fresh gas is split between a bypass channel and a vaporising chamber where it becomes fully saturated with volatile vapour. The splitting ratio is set by the dial. Temperature compensation is achieved by a bimetallic strip (or expansion bellows) that increases bypass flow as temperature falls (preventing output drop as latent heat of vaporisation cools the agent). Flow compensation accommodates flows 0.2–15 L/min.",
+          "text": "Fresh gas is split between a bypass channel and a vaporising chamber where it becomes fully saturated with volatile vapour. The splitting ratio is set by the dial. Temperature compensation is achieved by a bimetallic strip (or expansion bellows) that increases flow through the vaporising chamber as temperature falls, compensating for reduced saturated vapour pressure after evaporative cooling. Flow compensation accommodates flows 0.2–15 L/min.",
         },
         "name": "How does a variable-bypass vaporiser maintain a constant output concentration?",
       },
@@ -9891,7 +9891,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Desflurane has a boiling point of 23.5 °C (close to room temperature) and a saturated vapour pressure of 88 kPa — a conventional variable-bypass vaporiser would deliver unpredictable, dangerously high concentrations. The Tec 6 heats desflurane to 39 °C (vapour pressure 200 kPa) and injects measured vapour into the fresh gas flow; it requires electrical power and a level sensor.",
+          "text": "Desflurane has a boiling point of 22.8 °C (close to room temperature) and a saturated vapour pressure of 88.5 kPa — a conventional variable-bypass vaporiser would deliver unpredictable, dangerously high concentrations. The Tec 6 heats desflurane to 39 °C (vapour pressure 200 kPa) and injects measured vapour into the fresh gas flow; it requires electrical power and a level sensor.",
         },
         "name": "Why does desflurane require a heated, pressurised vaporiser (Tec 6)?",
       },
@@ -10305,7 +10305,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Airway: weight gain, mucosal oedema, breast enlargement, full dentition; failed intubation 1:300 (8× the non-pregnant rate). Reduced FRC (15–20 %) and increased oxygen consumption (20 %) cause desaturation within 1 min of apnoea vs ~3 min in non-pregnant. Strategies: ramped position, pre-oxygenation 3 min with end-tidal O₂ >85 %, smaller ETT (6.5–7.0), video laryngoscopy first-line, OAA/DAS failed-intubation algorithm rehearsed.",
+          "text": "Airway: weight gain, mucosal oedema, breast enlargement, full dentition; failed intubation is historically about 1:300. Reduced FRC (15–20 %) and increased oxygen consumption (20–40 %) cause rapid desaturation. Strategies: ramped position, pre-oxygenation 3 min with end-tidal O₂ >85 %, smaller ETT (6.5–7.0), video laryngoscopy first-line, OAA/DAS failed-intubation algorithm rehearsed.",
         },
         "name": "Why is the pregnant woman at increased risk of failed intubation and rapid desaturation?",
       },
