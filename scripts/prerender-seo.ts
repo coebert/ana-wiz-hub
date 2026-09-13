@@ -177,10 +177,31 @@ const CORE_SEO: Record<string, { title: string; description: string }> = {
     title: "ICU Sedation Calculator – Propofol, Midazolam, Dexmedetomidine, Remifentanil",
     description: "Start, maintenance and step-by-step weaning rates for the four core ICU sedatives, shown in dose units and mL/h at the patient's weight.",
   },
+  "/reference": {
+    title: "Anaesthetics & Critical Care Drug Reference App",
+    description: "Standalone drug reference for anaesthesia and intensive care: 200+ monographs with dosing, standard dilutions, pump rates, safety and blood level monitoring, usable offline.",
+  },
   "/reference/drugs": {
     title: "Anaesthetic & Critical Care Drug Reference – Dosing, Dilutions, Levels",
     description: "Searchable drug library for anaesthesia and ICU: presentation, dosing, standard dilutions with mL/h pump rates, pharmacokinetics, safety and therapeutic drug level monitoring, fully referenced.",
   },
+  "/reference/monitoring": {
+    title: "Therapeutic Drug Level Monitoring – Targets, Timing, Toxicity",
+    description: "Therapeutic drug monitoring reference: target ranges, sampling timing, toxicity thresholds and actions and dose adjustment for anaesthetic and critical care drugs.",
+  },
+  "/reference/infusions": {
+    title: "Standard ICU Infusions & Dilutions – Diluents, Draw-up, mL/h",
+    description: "Standard critical care infusion recipes: safe diluents, how to draw each syringe up, resulting concentration, starting dose, dose range and pump rate in mL/h.",
+  },
+  "/reference/calculator": {
+    title: "Infusion Rate Calculator – Dose to mL/h",
+    description: "Convert a critical care infusion dose into a pump rate: mL/h, millilitres per day and how long a 50 mL syringe lasts at the patient's weight.",
+  },
+  "/reference/about": {
+    title: "Drug Reference Sources – BNF, SPC and National Guidance",
+    description: "How the anaesthetics and critical care drug reference is sourced from the BNF, BNF for Children, product SPCs and national guidelines, and how to use it offline.",
+  },
+
   "/review": {
     title: "Spaced-Repetition Review | AnaesthesiaCore",
     description: "Daily spaced-repetition review of FRCA and FFICM flashcards to retain high-yield exam material long term.",
