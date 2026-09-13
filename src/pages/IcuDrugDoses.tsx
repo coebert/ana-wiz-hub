@@ -35,6 +35,17 @@ const cautionFor = (drug: DrugDose, age: AgeMode): string | undefined =>
 // slug first, then the slug with a trailing strength token removed.
 const slugBase = (name: string) => drugSlug(name).replace(/-\d.*$/, "");
 
+// Dosing-table slug → safety/mechanism slug where the datasets name the drug
+// differently (strengths, combined agents, class names).
+const SLUG_ALIASES: Record<string, string> = {
+  "andexanet-alfa-idarucizumab": "andexanet-idarucizumab",
+  "regional-citrate": "regional-citrate-anticoagulation",
+  "pantoprazole-omeprazole": "proton-pump-inhibitors",
+};
+
+const slugFor = (name: string): string =>
+  SLUG_ALIASES[drugSlug(name)] ?? SLUG_ALIASES[slugBase(name)] ?? drugSlug(name);
+
 const safetyBySlug = new Map(
   icuDrugSafetyGroups.flatMap((g) => g.drugs).map((d) => [d.slug, d]),
 );
