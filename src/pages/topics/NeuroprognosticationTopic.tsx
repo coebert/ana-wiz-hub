@@ -5,6 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { cardiacArrestPostResusQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { InlineRef } from "@/components/references/InlineRef";
+import NeuroprognosticationFlowchart from "@/components/diagrams/shared/NeuroprognosticationFlowchart";
 
 /**
  * Dedicated FFICM / EDIC topic page for multimodal neuroprognostication after
@@ -391,6 +392,12 @@ const NeuroprognosticationTopic = () => {
                 The ERC/ESICM algorithm explicitly avoids predicting <em>good</em> outcome — clinicians
                 must remain open to late recovery and avoid premature WLST in indeterminate cases.
               </p>
+            </div>
+
+            {/* Flowchart */}
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Neuroprognostication flowchart</h2>
+              <NeuroprognosticationFlowchart />
             </div>
 
             {/* Confounders */}
