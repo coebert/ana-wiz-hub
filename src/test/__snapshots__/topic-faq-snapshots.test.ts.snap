@@ -78,15 +78,38 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the FAQ count p
   "/intensive-care/sepsis": 8,
   "/intensive-care/toxicology": 3,
   "/intensive-care/transfusion-coagulation": 3,
+  "/notes/anaesthesia-for-robotic-surgery-guide": 5,
+  "/notes/apfel-score-ponv-risk": 4,
+  "/notes/bain-circuit-fresh-gas-flow": 4,
+  "/notes/cardiac-output-formula": 5,
+  "/notes/context-sensitive-half-time-propofol-vs-remifentanil": 4,
+  "/notes/das-difficult-airway-algorithm": 4,
+  "/notes/heart-sounds-ecg-cardiac-cycle": 7,
+  "/notes/how-sugammadex-reverses-rocuronium": 4,
+  "/notes/local-anaesthetic-systemic-toxicity-management": 4,
+  "/notes/mac-for-age-formula": 4,
+  "/notes/mapleson-breathing-systems-explained": 4,
+  "/notes/p50-fetal-haemoglobin": 4,
+  "/notes/paediatric-maintenance-fluids-4-2-1-rule": 5,
+  "/notes/rapid-sequence-induction-drug-doses": 4,
+  "/notes/rotem-teg-interpretation": 4,
+  "/notes/sevoflurane-vs-desflurane-recovery": 4,
+  "/notes/tof-ratio-before-extubation": 4,
+  "/notes/wiggers-diagram-explained": 6,
   "/perioperative/cardiovascular-disease": 6,
   "/perioperative/endocrine-disease": 3,
   "/perioperative/enhanced-recovery": 3,
+  "/perioperative/gastrointestinal-disease": 4,
   "/perioperative/genetic-syndromes": 3,
-  "/perioperative/haematological-disease": 4,
+  "/perioperative/haematological-disease": 8,
   "/perioperative/hepatic-disease": 3,
+  "/perioperative/immunosuppression-hiv": 4,
+  "/perioperative/musculoskeletal-disease": 4,
   "/perioperative/neurological-disease": 3,
   "/perioperative/perioperative-fluids": 3,
   "/perioperative/preoperative-assessment": 3,
+  "/perioperative/psychiatric-substance-disease": 4,
+  "/perioperative/renal-disease": 4,
   "/perioperative/respiratory-disease": 3,
   "/perioperative/vascular-access-devices": 3,
   "/pharmacology/antiarrhythmics": 3,
@@ -112,7 +135,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the FAQ count p
   "/physics/clinical-measurement": 3,
   "/physics/defibrillation-pacing": 3,
   "/physics/depth-of-anaesthesia": 3,
-  "/physics/electrical-safety": 3,
+  "/physics/electrical-safety": 17,
   "/physics/electricity-magnetism": 3,
   "/physics/equipment-monitoring": 3,
   "/physics/flow-measurement": 3,
@@ -392,7 +415,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/clinical/bariatric-anaesthesia": [
     {
-      "a": "Use ideal body weight (IBW) for propofol induction and remifentanil; lean body weight (LBW) for propofol maintenance and rocuronium; total body weight (TBW) for suxamethonium, paracetamol (max 4 g/day), and antibiotics; and adjusted body weight for paracetamol if >120 kg. Sugammadex is dosed on TBW.",
+      "a": "Use ideal body weight (IBW) for propofol induction and remifentanil; lean body weight (LBW) for propofol maintenance and rocuronium; ideal body weight (IBW) for suxamethonium at 1–1.5 mg/kg; total body weight (TBW) for paracetamol (max 4 g/day), antibiotics and sugammadex; and adjusted body weight for aminoglycosides.",
       "q": "How are induction and maintenance drug doses calculated in obesity?",
     },
     {
@@ -766,7 +789,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Why does spinal anaesthesia for caesarean section cause hypotension?",
     },
     {
-      "a": "GA is reserved for: category-1 emergencies where speed is critical and no working neuraxial is in situ; contraindications to neuraxial (coagulopathy, severe sepsis at puncture site, patient refusal, fixed cardiac output lesions); failed neuraxial; major haemorrhage with cardiovascular instability. Technique: ramped position, pre-oxygenation to FetO₂ ≥ 0.9, RSI with thiopentone 5 mg/kg or propofol 2 mg/kg + suxamethonium 1.5 mg/kg or rocuronium 1 mg/kg, cricoid pressure, prepare for difficult airway (incidence ~1:300, 8× non-obstetric).",
+      "a": "GA is reserved for: category-1 emergencies where speed is critical and no working neuraxial is in situ; contraindications to neuraxial (coagulopathy, severe sepsis at puncture site, patient refusal, fixed cardiac output lesions); failed neuraxial; major haemorrhage with cardiovascular instability. Technique: ramped position, pre-oxygenation to FetO₂ ≥ 0.9, RSI with thiopentone 4–5 mg/kg or propofol 2 mg/kg + suxamethonium 1.5 mg/kg or rocuronium 1 mg/kg, cricoid pressure, prepare for difficult airway (failed intubation ~1:224 for caesarean GA).",
       "q": "When is general anaesthesia used for caesarean section?",
     },
     {
@@ -778,7 +801,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How is anaesthesia given for emergency (Category 1) caesarean section?",
     },
     {
-      "a": "Key changes: cardiac output ↑ 40% by term, blood volume ↑ 45%, FRC ↓ 20% (supine 30%), oxygen consumption ↑ 20%, MAC ↓ 30–40%, gastric emptying delayed, lower oesophageal sphincter tone reduced, plasma cholinesterase ↓ 25% (suxamethonium duration unaffected clinically), aortocaval compression after 20 weeks, difficult airway 8× more common (~1:300), epidural venous engorgement reduces CSF volume so spinal dose is ~⅔ of non-pregnant dose.",
+      "a": "Key changes: cardiac output ↑ 40% by term, blood volume ↑ 45%, FRC ↓ 20% (supine 30%), oxygen consumption ↑ 20%, MAC ↓ 30–40%, gastric emptying delayed, lower oesophageal sphincter tone reduced, plasma cholinesterase ↓ 25% (suxamethonium duration unaffected clinically), aortocaval compression after 20 weeks, difficult airway markedly more common (failed intubation ~1:224 for caesarean GA), epidural venous engorgement reduces CSF volume so spinal dose is ~⅔ of non-pregnant dose.",
       "q": "How does pregnancy change anaesthetic physiology?",
     },
   ],
@@ -1048,7 +1071,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the difference between a spinal and an epidural?",
     },
     {
-      "a": "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: permanent neurological injury 1:20,000–1:50,000, epidural haematoma 1:220,000 (spinal) and meningitis < 1:50,000 in NAP3 data. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
+      "a": "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 reported epidural haematoma around 1:220,000 for spinal anaesthesia and meningitis < 1:50,000. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
       "q": "Does spinal anaesthesia hurt and is it safe?",
     },
     {
@@ -1068,7 +1091,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How are local anaesthetics dosed safely to avoid toxicity (LAST)?",
     },
     {
-      "a": "Use ethyl chloride cold spray to test loss of cold sensation (Aδ-fibre block — the most reliable correlate of surgical anaesthesia). Calibrate by spraying an unblocked forearm, then start from a blocked dermatome and move cranially until cold returns; document the highest bilateral level. T4 (nipple) is required for caesarean section, T6 (xiphisternum) for upper abdominal, T10 (umbilicus) for hernia and lower abdominal surgery. Pinprick (Aβ) tests touch; Bromage 0–3 grades motor.",
+      "a": "Use ethyl chloride cold spray to test loss of cold sensation (Aδ- and C-fibre block — the most reliable correlate of surgical anaesthesia). Calibrate by spraying an unblocked forearm, then start from a blocked dermatome and move cranially until cold returns; document the highest bilateral level. T4 (nipple) is required for caesarean section, T6 (xiphisternum) for upper abdominal, T10 (umbilicus) for hernia and lower abdominal surgery. Pinprick tests sharp sensation carried by Aδ fibres, which together with loss of cold indicates surgical anaesthesia; light touch (Aβ) is lost later and at a lower level. Bromage 0–3 grades motor block.",
       "q": "How is block height tested at the bedside?",
     },
     {
@@ -1700,11 +1723,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/paediatric-icu": [
     {
-      "a": "10–20 mL/kg balanced crystalloid boluses with reassessment after each, up to 40–60 mL/kg in the first hour; start adrenaline or noradrenaline early if fluid-refractory rather than continuing boluses (FEAST, SSC paediatric 2020).",
+      "a": "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock), with smaller 5 mL/kg boluses in DKA or trauma. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings).",
       "q": "What fluid resuscitation strategy is recommended for paediatric septic shock?",
     },
     {
-      "a": "Berlin-equivalent criteria (PALICC 2015) using OI rather than P/F ratio; use Vt 5–8 mL/kg PBW, plateau ≤28 cmH₂O, permissive hypercapnia (pH ≥7.20), PEEP titrated 8–15, prone if OI ≥12.",
+      "a": "The Global Definition of PARDS (2023) requires onset within 7 days, new infiltrates not fully explained by cardiac failure or fluid overload, and hypoxaemia by OI/OSI (or non-invasively, SpO₂/FiO₂ ≤250 on CPAP ≥5 cmH₂O). Ventilate with Vt 5–8 mL/kg PBW, plateau ≤28 cmH₂O, permissive hypercapnia (pH ≥7.20), PEEP titrated 8–15 cmH₂O; prone position for moderate/severe disease (OI ≥12).",
       "q": "What is paediatric ARDS (PARDS) and how does ventilation differ?",
     },
     {
@@ -1794,7 +1817,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "When is haemodialysis indicated in poisoning?",
     },
     {
-      "a": "20% Intralipid 1.5 mL/kg bolus followed by 0.25 mL/kg/min infusion, repeat boluses up to 3 doses and double the infusion if circulation not restored (AAGBI 2010); maximum 12 mL/kg in 30 min.",
+      "a": "Association of Anaesthetists 2023: give 20% lipid emulsion 1.5 mL/kg as an initial bolus (simplified to a fixed 100 mL bolus if >70 kg), then start an infusion of 15 mL/kg/h — the same weight-based rate for every patient, which equates to about 1000 mL/h in an adult over 70 kg. Up to two further boluses at 5-minute intervals (three in total), and double the infusion to 30 mL/kg/h if the circulation remains unstable; total maximum 12 mL/kg.",
       "q": "How is lipid emulsion used in local anaesthetic toxicity?",
     },
     {
@@ -1814,6 +1837,362 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
     {
       "a": "FIBTEM A5 <12 mm → fibrinogen concentrate or cryoprecipitate; EXTEM CT >80 s → FFP or PCC; EXTEM A5 <40 mm with normal FIBTEM → platelets; ML >15% → tranexamic acid (ITACTIC trial).",
       "q": "How is ROTEM/TEG used to guide blood product use?",
+    },
+  ],
+  "/notes/anaesthesia-for-robotic-surgery-guide": [
+    {
+      "a": "Raised intrathoracic pressure with reduced FRC and compliance, raised peak airway pressures, cephalad shift of the diaphragm and carina (endobronchial migration risk), raised CVP and PCWP with preserved cardiac output in fit patients, raised intracranial and intraocular pressure, facial and upper-airway oedema, and hypercapnia from CO₂ absorption.",
+      "q": "What are the main physiological changes of steep Trendelenburg with pneumoperitoneum?",
+    },
+    {
+      "a": "Pressure-controlled or volume-controlled with pressure limit, tidal volumes 6–8 ml/kg predicted body weight, PEEP 5–10 cmH₂O (higher in obese patients), plateau pressure ≤ 30 cmH₂O, and permissive hypercapnia (PaCO₂ up to ~6.5–7 kPa) to avoid harmful driving pressures. Recruitment manoeuvres after desufflation improve postoperative oxygenation.",
+      "q": "How should I ventilate a patient in steep Trendelenburg with pneumoperitoneum?",
+    },
+    {
+      "a": "Corneal abrasion and postoperative visual loss (ischaemic optic neuropathy), brachial plexus and common peroneal nerve injury from shoulder braces and lithotomy, facial and laryngeal oedema, endobronchial intubation as the carina moves cephalad, gas embolism, subcutaneous emphysema, and inability to convert rapidly — every theatre must rehearse emergency undocking.",
+      "q": "What are the specific complications of robotic surgery I must plan for?",
+    },
+    {
+      "a": "Restrictive: 1–2 ml/kg/h maintenance crystalloid until the vesicourethral anastomosis is complete, then liberalise. Excess fluid worsens facial and airway oedema in steep Trendelenburg and obscures the surgical field around the bladder neck. Use vasopressors (phenylephrine or metaraminol) rather than fluid boluses to maintain MAP.",
+      "q": "How do I manage fluids for robotic prostatectomy?",
+    },
+    {
+      "a": "RCoA 2021 Final: General, Urological, and Gynaecological anaesthesia; Perioperative Medicine; Airway Management; Pain. FFICM/FICM 2021: perioperative critical care, respiratory support, and management of the deteriorating perioperative patient. Cross-cuts Primary physiology (respiratory mechanics, CV, cerebral) and pharmacology (TIVA, neuromuscular blockade, vasopressors).",
+      "q": "Which FRCA curriculum domains does robotic surgery cover?",
+    },
+  ],
+  "/notes/apfel-score-ponv-risk": [
+    {
+      "a": "Female sex, non-smoker, history of PONV or motion sickness, and planned postoperative opioids. Each scores one point.",
+      "q": "What are the four Apfel risk factors?",
+    },
+    {
+      "a": "0 factors ~10%, 1 factor ~20%, 2 factors ~40%, 3 factors ~60%, 4 factors ~80% over the first 24 hours after anaesthesia.",
+      "q": "How does the Apfel score map to PONV risk?",
+    },
+    {
+      "a": "Society for Ambulatory Anesthesia (SAMBA) 2020 guidelines: 0–1 factors — one prophylactic agent (or none if very low risk); 2 factors — two agents from different drug classes; 3–4 factors — three or four agents plus a TIVA technique and minimising opioids.",
+      "q": "How many antiemetics should I give for each risk band?",
+    },
+    {
+      "a": "No — use the Eberhart score in children: age ≥ 3 years, surgery ≥ 30 minutes, strabismus surgery, and family/personal history of POV. Postoperative vomiting (POV) rather than nausea is the primary endpoint because young children cannot reliably report nausea.",
+      "q": "Does the Apfel score apply to children?",
+    },
+  ],
+  "/notes/bain-circuit-fresh-gas-flow": [
+    {
+      "a": "Approximately 150–200 mL/kg/min, or 1.5–2× minute ventilation. The fresh gas inlet is at the patient end, so during expiration the corrugated tubing fills with a mixture of fresh and expired gas. A high FGF is needed to wash dead-space gas back before the next inspiration.",
+      "q": "What fresh gas flow does the Bain need for spontaneous ventilation?",
+    },
+    {
+      "a": "Approximately 70 mL/kg/min, or roughly equal to alveolar minute ventilation. With IPPV the long expiratory pause allows fresh gas to wash CO₂ down the corrugated tubing toward the bag and APL valve, so less flow is needed. This is the efficient mode for the Bain.",
+      "q": "And for controlled ventilation?",
+    },
+    {
+      "a": "A pre-use safety check for the inner tube of a co-axial Bain. Occlude the patient end with a finger, set 5 L/min fresh gas flow, and press the oxygen flush. Sudden gas flow through the outer tube causes a Venturi effect at the patient end that collapses the reservoir bag. If the inner tube is disconnected or kinked, the bag does not collapse. A failed Pethick = do not use.",
+      "q": "What is the Pethick test?",
+    },
+    {
+      "a": "Light, single-tube, easy to position away from the surgical field, simple to scavenge, no CO₂ absorber needed. Disadvantages: high FGF for spontaneous ventilation (wasteful, environmentally and financially), and the inner tube cannot be visually inspected — hence the mandatory Pethick test.",
+      "q": "What are the advantages of the Bain over a circle system?",
+    },
+  ],
+  "/notes/cardiac-output-formula": [
+    {
+      "a": "CO = stroke volume × heart rate. In an adult at rest, SV ≈ 70 mL and HR ≈ 70 bpm, giving CO ≈ 5 L/min. Indexed to body surface area this becomes cardiac index (CI = CO / BSA) with a normal value of 2.5–4.0 L/min/m².",
+      "q": "What is the formula for cardiac output?",
+    },
+    {
+      "a": "The amount of a substance taken up (or released) by an organ per unit time equals the blood flow through that organ multiplied by the arterio-venous concentration difference of the substance. Applied to the lung: V̇O₂ = CO × (CaO₂ − CvO₂), so CO = V̇O₂ / (CaO₂ − CvO₂).",
+      "q": "What is Fick's principle?",
+    },
+    {
+      "a": "A known volume of cold saline is injected into the right atrium via a pulmonary artery catheter. A thermistor at the PA tip records the temperature change over time. The area under the temperature–time curve is inversely proportional to cardiac output — the Stewart–Hamilton equation solves for CO from the curve, injectate volume, injectate and blood temperatures, and the specific heat and density of blood.",
+      "q": "How does thermodilution measure cardiac output?",
+    },
+    {
+      "a": "Approximately 4–8 L/min in a resting adult, or a cardiac index of 2.5–4.0 L/min/m². It can rise to 20–25 L/min in trained athletes during maximal exercise, driven mostly by heart rate and a smaller increase in stroke volume.",
+      "q": "What is the normal value of cardiac output?",
+    },
+    {
+      "a": "Fick uses oxygen as the tracer and requires steady-state VO₂ plus arterial and mixed-venous blood gases; it is accurate at low output but slow. Thermodilution uses a cold saline bolus and gives near-real-time values but overestimates CO in tricuspid regurgitation, intracardiac shunts, and very low output states where thermal loss to surrounding tissue becomes significant.",
+      "q": "What is the difference between Fick and thermodilution?",
+    },
+  ],
+  "/notes/context-sensitive-half-time-propofol-vs-remifentanil": [
+    {
+      "a": "The time taken for the plasma concentration of a drug to halve after stopping a steady-state infusion. The 'context' is the duration of the infusion: as peripheral compartments saturate, drug redistributes back into plasma when the infusion stops, slowing the fall in plasma concentration. CSHT is therefore longer for longer infusions — except for drugs cleared independently of redistribution.",
+      "q": "What is context-sensitive half-time?",
+    },
+    {
+      "a": "Remifentanil is hydrolysed by non-specific plasma and tissue esterases. Clearance is rapid (~3 L/min) and entirely independent of duration, hepatic function or renal function. Even after a 10-hour infusion the CSHT remains ~3–4 minutes, because the drug is metabolised faster than it can redistribute out of tissues.",
+      "q": "Why is remifentanil's context-sensitive half-time flat?",
+    },
+    {
+      "a": "Propofol is highly lipid-soluble with a large peripheral volume of distribution. Over hours of infusion, fat and muscle accumulate drug. When the infusion stops, this peripheral reservoir flows back into plasma, slowing the fall in concentration. CSHT is ~10 minutes at 1 hour, ~20 minutes at 4 hours and ~30–40 minutes after 8+ hours — still much shorter than its elimination half-life of several hours.",
+      "q": "Why does propofol's context-sensitive half-time rise with infusion duration?",
+    },
+    {
+      "a": "Pair a long-CSHT hypnotic (propofol) with a flat-CSHT opioid (remifentanil) so analgesia offsets predictably and emergence is hypnotic-limited. For long cases use target-controlled infusion (TCI) modelling so the pump accounts for peripheral compartment dynamics, and load alternative analgesia (long-acting opioid, regional, paracetamol/NSAID) before the remifentanil is stopped to avoid acute hyperalgesia.",
+      "q": "How does CSHT change TIVA practice?",
+    },
+  ],
+  "/notes/das-difficult-airway-algorithm": [
+    {
+      "a": "A — tracheal intubation (max 3+1 attempts, optimise position, paralysis, blade, bougie). B — supraglottic airway rescue (max 3 attempts, 2nd-generation SAD preferred). C — final attempt at face-mask ventilation; if successful, wake the patient. D — emergency front-of-neck access (eFONA) by scalpel-bougie-tube cricothyroidotomy.",
+      "q": "What are DAS Plans A, B, C and D?",
+    },
+    {
+      "a": "Can't Intubate, Can't Oxygenate is declared when face-mask ventilation, supraglottic airway, and tracheal intubation have all failed AND SpO₂ is falling despite 100% O₂. Immediately call for help, give 100% O₂, give a neuromuscular blocker if not already paralysed, position with neck extended, and proceed to scalpel cricothyroidotomy.",
+      "q": "When should I declare CICO?",
+    },
+    {
+      "a": "Scalpel–bougie–tube: transverse stab incision through the cricothyroid membrane with a size 10 scalpel, rotate the blade 90°, railroad a bougie into the trachea, then slide a cuffed 6.0 mm tracheal tube over the bougie. Inflate the cuff, ventilate, confirm with capnography.",
+      "q": "What is the recommended cricothyroidotomy technique?",
+    },
+    {
+      "a": "It emphasises a single 2nd-generation SAD (e.g. i-gel) as the rescue device, removes needle cricothyroidotomy as a primary technique in adults, mandates declaration of CICO at the start of Plan D, and integrates human-factors language (declaring failure, 'stop and think').",
+      "q": "How does the 2015 DAS algorithm differ from previous versions?",
+    },
+  ],
+  "/notes/heart-sounds-ecg-cardiac-cycle": [
+    {
+      "a": "S1 is closure of the mitral then tricuspid valves at the onset of isovolumetric contraction, when ventricular pressure rises above atrial pressure. S2 is closure of the aortic then pulmonary valves at the onset of isovolumetric relaxation, when ventricular pressure falls below arterial pressure. The sound is produced by abrupt deceleration of blood and vibration of the valve leaflets and surrounding structures, not by the leaflets striking one another.",
+      "q": "What causes the first and second heart sounds?",
+    },
+    {
+      "a": "S1 follows the QRS complex by roughly 20–40 ms, because electrical depolarisation must precede mechanical contraction. S2 falls at the end of the T wave, as repolarisation completes and ejection ends. An S4, when present, is coincident with the P wave, since it is generated by atrial contraction.",
+      "q": "Where do S1 and S2 fall on the ECG?",
+    },
+    {
+      "a": "S3 occurs in early diastole, 0.12–0.18 s after S2, during rapid passive filling — it reflects a dilated, volume-loaded ventricle and can be physiological under 40 years or in pregnancy. S4 occurs in late diastole immediately before S1 and reflects forceful atrial contraction into a stiff, non-compliant ventricle; it is always pathological in adults and cannot occur in atrial fibrillation.",
+      "q": "What is the difference between S3 and S4?",
+    },
+    {
+      "a": "An ejection systolic (crescendo–decrescendo) murmur such as aortic stenosis starts after S1 — flow only becomes turbulent once the aortic valve opens — and finishes before S2. A pansystolic murmur such as mitral regurgitation occupies the whole of systole and obscures both S1 and S2, because the ventriculo-atrial pressure gradient exists from mitral closure until it reopens.",
+      "q": "How do you distinguish an ejection systolic from a pansystolic murmur?",
+    },
+    {
+      "a": "Inspiration lowers intrathoracic pressure, increasing systemic venous return and right ventricular ejection time, which delays pulmonary valve closure (P2). Simultaneously pulmonary vascular capacitance rises and left ventricular filling falls, shortening left ventricular ejection and advancing aortic closure (A2). The split therefore widens on inspiration and narrows on expiration.",
+      "q": "Why does S2 split on inspiration?",
+    },
+    {
+      "a": "Aortic stenosis: left ventricular hypertrophy by voltage criteria, left axis deviation, and conduction block from calcific extension into the septum. Mitral stenosis: P mitrale then atrial fibrillation, with right ventricular hypertrophy if pulmonary hypertension develops. Mitral regurgitation: left atrial enlargement and atrial fibrillation with left ventricular volume overload.",
+      "q": "Which ECG findings accompany the classic valve lesions?",
+    },
+    {
+      "a": "Loss of organised atrial contraction removes the atrial kick, which contributes up to 25% of stroke volume and matters most when ventricular filling is already impaired. The associated tachycardia shortens diastole disproportionately, reducing both filling time and — for the hypertrophied left ventricle — coronary perfusion time.",
+      "q": "Why is atrial fibrillation badly tolerated in aortic and mitral stenosis?",
+    },
+  ],
+  "/notes/how-sugammadex-reverses-rocuronium": [
+    {
+      "a": "Yes. Sugammadex 16 mg/kg will reverse a 1.2 mg/kg rocuronium intubating dose within 2–3 minutes, even before twitches return (post-tetanic count of 0). This is the basis for using sugammadex as a rescue strategy after a failed RSI when rocuronium has been chosen instead of suxamethonium.",
+      "q": "Can sugammadex reverse rocuronium that has only just been given?",
+    },
+    {
+      "a": "Sugammadex's hydrophobic cavity is shaped to fit the aminosteroid skeleton (rocuronium, vecuronium, pancuronium). Benzylisoquinolinium agents — atracurium, cisatracurium, mivacurium — have a different molecular geometry and are not encapsulated, so sugammadex is ineffective. Reverse these with neostigmine, or wait for spontaneous offset (Hofmann elimination for atracurium/cisatracurium).",
+      "q": "Why doesn't sugammadex reverse atracurium or cisatracurium?",
+    },
+    {
+      "a": "Sugammadex also binds progestogens. Manufacturers recommend treating a single dose as the equivalent of one missed combined or progestogen-only pill: continue the pill normally and use additional non-hormonal contraception for the next 7 days. Patients with an implant, depot injection or IUS only need additional precautions if the dose was within the relevant high-risk window.",
+      "q": "How long does sugammadex affect hormonal contraception?",
+    },
+    {
+      "a": "Neostigmine remains appropriate for routine reversal of shallow non-depolarising block (TOF count ≥ 2, ideally ≥ 4) — particularly with benzylisoquinoliniums, in cost-sensitive settings, or where sugammadex is unavailable. Always co-administer an antimuscarinic (glycopyrrolate or atropine) and confirm reversal with quantitative TOF ≥ 0.9.",
+      "q": "When should I still use neostigmine?",
+    },
+  ],
+  "/notes/local-anaesthetic-systemic-toxicity-management": [
+    {
+      "a": "Lidocaine: 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine and levobupivacaine: 2 mg/kg (no adrenaline-enhanced dose). Ropivacaine: 3 mg/kg. Always calculate against lean body weight and use the lowest effective dose; reduce in the elderly, pregnant, and hepatically impaired.",
+      "q": "What is the maximum safe dose of lidocaine and bupivacaine?",
+    },
+    {
+      "a": "Bolus 1.5 mL/kg lean body weight over 1 minute (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. If circulation is not restored after 5 minutes: repeat bolus up to twice (5-minute intervals) and double the infusion rate to 30 mL/kg/h. Maximum cumulative dose 12 mL/kg.",
+      "q": "What is the Intralipid 20% dose in LAST?",
+    },
+    {
+      "a": "Circumoral or tongue numbness, metallic taste, tinnitus, visual disturbance, agitation, drowsiness — followed by seizures, then loss of consciousness. Cardiovascular signs (hypertension/tachycardia → bradycardia → arrhythmia → cardiac arrest) may occur without a CNS prodrome, particularly with bupivacaine and after intravascular bolus.",
+      "q": "What are the early warning signs of LAST?",
+    },
+    {
+      "a": "Bupivacaine-induced asystole is notoriously resistant to standard ALS. Adrenaline doses should be reduced to ≤ 1 µg/kg, vasopressin is not recommended, and lidocaine and other class I antiarrhythmics are contraindicated. Amiodarone is preferred for ventricular arrhythmias. Prolonged resuscitation (≥ 60 minutes) and consideration of VA-ECMO are justified.",
+      "q": "How does LAST cardiac arrest differ from a standard arrest?",
+    },
+  ],
+  "/notes/mac-for-age-formula": [
+    {
+      "a": "MAC at age = MAC₄₀ × 10^(−0.00269 × (age − 40)). In practice this is ~6% reduction per decade above 40. So sevoflurane MAC₄₀ of 2.0% becomes ~1.5% at 80 years.",
+      "q": "What is the Mapleson formula for MAC age adjustment?",
+    },
+    {
+      "a": "Sevoflurane 2.0%, isoflurane 1.15%, desflurane 6.0%, nitrous oxide 105% (extrapolated under hyperbaric conditions). Halothane is 0.75% but is no longer in clinical use in the UK.",
+      "q": "What is the MAC of common volatiles at age 40?",
+    },
+    {
+      "a": "Decrease MAC: age, hypothermia, hyponatraemia, opioids, sedatives, α2-agonists, lithium, pregnancy, acute alcohol. Increase MAC: hyperthermia, chronic alcohol use, hypernatraemia, central stimulants (amphetamine, ephedrine), red hair. Sex, duration of anaesthesia, PaCO₂ within physiological range, and acid–base status have minimal effect.",
+      "q": "What factors increase or decrease MAC?",
+    },
+    {
+      "a": "A fixed 2.0% sevoflurane is roughly 1.3 MAC in an 80-year-old, predisposing to hypotension, deeper-than-needed anaesthesia and prolonged emergence. Targeting an age-adjusted MAC keeps depth equivalent across patients and is the basis for the ASA/ESAIC Brain Health Initiative recommendation to maintain 0.7–1.3 MAC in the elderly.",
+      "q": "Why aim for 1.0 MAC age-adjusted rather than a fixed dial value?",
+    },
+  ],
+  "/notes/mapleson-breathing-systems-explained": [
+    {
+      "a": "Mapleson A (Magill, or its co-axial cousin the Lack). Fresh gas flow equal to alveolar minute ventilation (~70 mL/kg/min) is enough to prevent rebreathing because dead-space gas is vented through the expiratory valve before the next inspiration.",
+      "q": "Which Mapleson system is most efficient for spontaneous ventilation?",
+    },
+    {
+      "a": "Mapleson D (and its co-axial form, the Bain). With positive-pressure ventilation, fresh gas flow of 70 mL/kg/min — about one to two times minute ventilation — prevents rebreathing because the fresh gas inlet is at the patient end and washes dead-space gas down the tubing during expiration.",
+      "q": "Which is most efficient for controlled ventilation?",
+    },
+    {
+      "a": "Mapleson C (Waters' circuit) is compact and used for resuscitation / transfer; high fresh gas flows (~2× MV) are needed. Mapleson E (Ayre's T-piece) has no reservoir or valve — used historically for paediatric anaesthesia. Mapleson F (Jackson Rees modification) adds an open-ended reservoir bag to allow controlled ventilation and is still used for children < 20 kg.",
+      "q": "Why are Mapleson C, E and F used in specific niches?",
+    },
+    {
+      "a": "Yes — the Bain is a co-axial Mapleson D. Fresh gas runs in the inner tube to the patient end; expired gas returns down the outer tube to the bag and valve. It is light, easy to scavenge and useful for head-and-neck surgery, but the inner tube must be tested for disconnection (Pethick test) at every use.",
+      "q": "Is the Bain a Mapleson D?",
+    },
+  ],
+  "/notes/p50-fetal-haemoglobin": [
+    {
+      "a": "Approximately 19 mmHg, compared with ~26.6 mmHg for adult haemoglobin. A lower P50 means HbF binds oxygen more tightly at any given PO₂, shifting the oxygen-haemoglobin dissociation curve to the left.",
+      "q": "What is the P50 of fetal haemoglobin?",
+    },
+    {
+      "a": "HbF is composed of two α and two γ chains (α₂γ₂) rather than the adult α₂β₂. The γ chain replaces a positively charged histidine residue with serine, reducing the binding pocket for 2,3-DPG. With less 2,3-DPG bound, HbF stabilises in its high-affinity (R) state at lower PO₂.",
+      "q": "Why does HbF have a lower P50?",
+    },
+    {
+      "a": "At the placental villous interface, maternal blood PO₂ is only ~30–40 mmHg. HbF's higher oxygen affinity means it can take up substantial oxygen at that low PO₂ — the 'double Bohr effect' (maternal blood acidifying as it gives up CO₂; fetal blood alkalinising as it loses CO₂) further widens the affinity gap. The fetal arterial saturation reaches ~70–80% despite the low driving pressure.",
+      "q": "How does the left-shifted curve help the fetus?",
+    },
+    {
+      "a": "HbF production switches off in the perinatal period and HbA progressively replaces it. By 6 months of age HbF makes up <5% of total haemoglobin; by 1 year it is at the adult level of <1%. This is also when the infant's P50 normalises and 2,3-DPG levels approach adult values.",
+      "q": "When is HbF replaced by HbA?",
+    },
+  ],
+  "/notes/paediatric-maintenance-fluids-4-2-1-rule": [
+    {
+      "a": "4 mL/kg/h for the first 10 kg of body weight, plus 2 mL/kg/h for the second 10 kg, plus 1 mL/kg/h for each kilogram above 20 kg. A 26 kg child therefore needs (10 × 4) + (10 × 2) + (6 × 1) = 66 mL/h.",
+      "q": "What is the 4-2-1 rule for paediatric fluids?",
+    },
+    {
+      "a": "It is the hourly form of Holliday and Segar's 1957 daily rule (100/50/20 mL/kg/day), which was derived from estimated energy expenditure — roughly 1 mL of water per kcal metabolised. Dividing 100, 50 and 20 mL/kg/day by 24 gives approximately 4, 2 and 1 mL/kg/h.",
+      "q": "Where does the 4-2-1 rule come from?",
+    },
+    {
+      "a": "Surgery, pain, nausea, opioids and positive-pressure ventilation all drive non-osmotic ADH release, so free water is retained. Giving 0.18% saline/4% glucose in that setting produces acute hyponatraemia, cerebral oedema and, in reported cases, death. NICE CG174/NG29 and the APA recommend isotonic solutions instead.",
+      "q": "Why are hypotonic maintenance fluids no longer used?",
+    },
+    {
+      "a": "An isotonic balanced crystalloid (Plasma-Lyte 148 or Hartmann's) or 0.9% saline, with 1–2% glucose added for neonates, infants and any child at risk of hypoglycaemia. Sodium concentration should be 131–154 mmol/L, and plasma sodium and glucose should be measured if fluids continue beyond a few hours.",
+      "q": "Which fluid should be used for paediatric maintenance?",
+    },
+    {
+      "a": "No. It is maintenance only. Deficit (fasting hours × maintenance rate), ongoing losses and blood loss are prescribed separately, though modern short fasting times and clear-fluid-until-1-hour regimens have made large calculated deficits largely obsolete.",
+      "q": "Does the 4-2-1 rule cover fasting and third-space losses?",
+    },
+  ],
+  "/notes/rapid-sequence-induction-drug-doses": [
+    {
+      "a": "Induction: thiopentone 3–7 mg/kg or propofol 1.5–2.5 mg/kg (ketamine 1–2 mg/kg in shock; etomidate 0.3 mg/kg historically). Neuromuscular blocker: suxamethonium 1.0–1.5 mg/kg, or rocuronium 1.0–1.2 mg/kg if sugammadex is immediately available for rescue.",
+      "q": "What are the standard adult RSI drugs?",
+    },
+    {
+      "a": "Sux contraindications: hyperkalaemia, major burns > 24 h old, prolonged immobility, denervation injury, neuromuscular disease (MG, myotonia), suspected MH, malignant pseudocholinesterase deficiency. Rocuronium 1.2 mg/kg gives comparable intubating conditions at 60 s with sugammadex 16 mg/kg as the rescue option for can't-intubate-can't-oxygenate.",
+      "q": "When is rocuronium preferred over suxamethonium?",
+    },
+    {
+      "a": "Practice has shifted. AAGBI 2015 and DAS 2015 retain cricoid pressure as part of the standard adult RSI but mandate releasing it immediately if intubation is difficult or if it impairs view at laryngoscopy. The 2019 IRIS trial found no difference in pulmonary aspiration with or without cricoid pressure. Most UK departments still teach it for completeness, with low threshold to release.",
+      "q": "Is cricoid pressure still indicated?",
+    },
+    {
+      "a": "Obstetric RSI: full pre-oxygenation, left lateral tilt, smaller dose of induction agent (thiopentone 4 mg/kg), suxamethonium 1.5 mg/kg, ramped position. Shock/haemorrhage: ketamine 1–2 mg/kg preserves sympathetic tone; reduce induction-agent dose by ~50%; consider rocuronium for prolonged paralysis; have vasopressors drawn up.",
+      "q": "How do you modify RSI in obstetrics and major haemorrhage?",
+    },
+  ],
+  "/notes/rotem-teg-interpretation": [
+    {
+      "a": "EXTEM — extrinsic pathway (tissue-factor activator). INTEM — intrinsic pathway (ellagic acid activator). FIBTEM — extrinsic pathway with platelets blocked by cytochalasin D; isolates fibrinogen contribution. APTEM — extrinsic plus aprotinin; compared to EXTEM detects fibrinolysis.",
+      "q": "What do the four ROTEM channels test?",
+    },
+    {
+      "a": "CT (clotting time, seconds) — time to clot initiation. A5/A10 (amplitude at 5/10 min) — clot strength. MCF (maximum clot firmness, mm) — final strength. ML (maximum lysis, %) — fibrinolysis at 30 or 60 min.",
+      "q": "Which numbers should I look at?",
+    },
+    {
+      "a": "EXTEM CT > 80 s → FFP. EXTEM A5 < 35 mm with FIBTEM A5 ≥ 9 mm → platelets. FIBTEM A5 < 9 mm → fibrinogen concentrate (or cryoprecipitate). EXTEM ML > 15% at 60 min → tranexamic acid 1 g IV. INTEM CT prolonged with normal EXTEM → consider heparin effect, check with HEPTEM.",
+      "q": "What are the action thresholds in major haemorrhage?",
+    },
+    {
+      "a": "Insensitive to von Willebrand disease, antiplatelet agents, and DOACs. The trace can look normal in a patient who is clinically coagulopathic from these causes. Always interpret alongside fibrinogen (Clauss), platelet count, the clinical picture, and the local major haemorrhage protocol.",
+      "q": "What are ROTEM's limitations?",
+    },
+  ],
+  "/notes/sevoflurane-vs-desflurane-recovery": [
+    {
+      "a": "Desflurane, marginally. In adults with anaesthesia of < 2 hours the difference in time to eye-opening is 1–3 minutes; in obese patients and longer cases the advantage widens (the lower fat solubility means less accumulation). For day surgery in lean adults the difference is usually clinically negligible.",
+      "q": "Which agent has the faster emergence?",
+    },
+    {
+      "a": "Desflurane has a global warming potential ~2540× that of CO₂ over 100 years — about 20× higher than sevoflurane and 5× isoflurane. NHS England's Net Zero strategy committed to decommissioning desflurane from all hospitals by early 2024 except where clinically essential, and most trusts have now removed it from anaesthetic machines.",
+      "q": "Why is desflurane being phased out in the UK?",
+    },
+    {
+      "a": "Compound A is produced when sevoflurane reacts with desiccated CO₂ absorbents (especially baralyme). Nephrotoxicity has been demonstrated in rats but never convincingly in humans, even at low fresh gas flows. UK practice considers low-flow sevoflurane safe; nevertheless, current circle-system absorbents (lithium hydroxide, Amsorb Plus) produce negligible Compound A.",
+      "q": "Does sevoflurane really cause renal injury via Compound A?",
+    },
+    {
+      "a": "Sevoflurane. It is non-pungent, well-tolerated, and is the only volatile licensed for paediatric inhalational induction in the UK. Desflurane is highly pungent, causes coughing, breath-holding and laryngospasm in light planes, and must never be used for inhalational induction.",
+      "q": "Which agent is better for inhalational induction?",
+    },
+  ],
+  "/notes/tof-ratio-before-extubation": [
+    {
+      "a": "The ratio of the fourth twitch amplitude (T4) to the first (T1) after four supramaximal stimuli at 2 Hz to the ulnar nerve. With no block T4/T1 = 1.0; non-depolarising block produces fade so the ratio falls. Below 0.9, pharyngeal coordination, hypoxic ventilatory response and airway protection are all impaired even though the patient may appear awake.",
+      "q": "What is the TOF ratio?",
+    },
+    {
+      "a": "Head lift > 5 s, sustained handgrip and tidal volumes only exclude TOF ratios below ~0.6. Patients with TOF ratios of 0.7–0.9 routinely look adequate at the bedside but have a 3–5× increase in postoperative pulmonary complications (POPCs).",
+      "q": "Why isn't clinical assessment enough?",
+    },
+    {
+      "a": "Neostigmine is effective from TOF count ≥ 2 (ideally ≥ 4) — i.e. only for shallow block. Give 50 µg/kg with glycopyrrolate 10 µg/kg. Allow 10 minutes for full effect and confirm TOF ratio ≥ 0.9 quantitatively before extubation. Deep block (TOF count 0–1) needs sugammadex 4 mg/kg (rocuronium/vecuronium) or further waiting.",
+      "q": "When can I rely on neostigmine?",
+    },
+    {
+      "a": "No. Sugammadex dose depends on the depth of block — 2 mg/kg at TOF count of 2, 4 mg/kg at PTC 1–2, 16 mg/kg immediately after a 1.2 mg/kg rocuronium intubating dose. Monitoring is also needed to confirm successful reversal (TOF ratio ≥ 0.9) and to detect rare re-paralysis.",
+      "q": "Does sugammadex remove the need for monitoring?",
+    },
+  ],
+  "/notes/wiggers-diagram-explained": [
+    {
+      "a": "It plots left ventricular, left atrial and aortic pressure, left ventricular volume, the ECG and the phonocardiogram against time for one cardiac cycle, so that valve opening and closure, filling, ejection and the heart sounds can all be related to the underlying pressure gradients.",
+      "q": "What does the Wiggers diagram show?",
+    },
+    {
+      "a": "Seven: atrial systole, isovolumetric contraction, rapid ejection, reduced ejection, isovolumetric relaxation, rapid (passive) filling, and reduced filling or diastasis. Systole comprises isovolumetric contraction plus the two ejection phases; the remainder is diastole.",
+      "q": "What are the phases of the cardiac cycle on a Wiggers diagram?",
+    },
+    {
+      "a": "The a wave is atrial contraction; the c wave is bulging of the closed AV valve into the atrium during isovolumetric contraction; the v wave is atrial filling against a still-closed AV valve during late ventricular systole. The x descent follows atrial relaxation and downward pull of the AV ring, and the y descent follows AV valve opening.",
+      "q": "Why do the a, c and v waves appear on the atrial pressure trace?",
+    },
+    {
+      "a": "S1 is mitral then tricuspid closure at the start of isovolumetric contraction, when ventricular pressure exceeds atrial pressure. S2 is aortic then pulmonary closure at the start of isovolumetric relaxation, when ventricular pressure falls below arterial pressure; it produces the dicrotic notch on the aortic trace.",
+      "q": "What causes the first and second heart sounds?",
+    },
+    {
+      "a": "A brief upward deflection on the aortic pressure trace at aortic valve closure, caused by a small retrograde flow of blood and elastic recoil of the closing valve and aortic root. It marks the end of ejection and coincides with S2.",
+      "q": "What is the dicrotic notch?",
+    },
+    {
+      "a": "Systolic duration is relatively fixed by the excitation-contraction machinery, so an increased heart rate is accommodated mainly by shortening diastasis. Filling time and coronary perfusion time — which for the left ventricle occurs almost entirely in diastole — fall disproportionately, which is why tachycardia is poorly tolerated in aortic stenosis and ischaemic heart disease.",
+      "q": "Why does tachycardia shorten diastole more than systole?",
     },
   ],
   "/perioperative/cardiovascular-disease": [
@@ -1870,6 +2249,24 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How does opioid-sparing analgesia fit into ERAS?",
     },
   ],
+  "/perioperative/gastrointestinal-disease": [
+    {
+      "a": "Not reliably. GLP-1 receptor agonists (semaglutide, liraglutide, tirzepatide) delay gastric emptying even in fasted patients. Guidance recommends holding the drug for one dosing interval before elective surgery (≥1 week for weekly formulations, ≥1 day for daily ones) and treating the patient as high aspiration risk — considering RSI or gastric ultrasound — if GI symptoms (nausea, bloating, vomiting) persist or the drug could not be withheld.",
+      "q": "Do standard fasting times protect patients on GLP-1 receptor agonists from aspiration?",
+    },
+    {
+      "a": "For elective surgery, anti-TNF agents are often timed to trough levels (avoiding surgery in the days immediately after an infusion) because of an association with wound and infective complications, though evidence is mixed and disease control should not be sacrificed. Thiopurines (azathioprine/6-mercaptopurine) are usually continued. For emergency surgery (e.g. acute severe colitis), immunosuppression is not a reason to delay a life-saving operation.",
+      "q": "Should biologics and thiopurines be stopped before surgery in IBD?",
+    },
+    {
+      "a": "High risk = one major criterion (BMI <16, unintentional weight loss >15% in 3-6 months, little/no nutritional intake for >10 days, or low potassium/phosphate/magnesium before feeding) or two minor criteria (BMI <18.5, weight loss >10% in 3-6 months, little/no intake >5 days, alcohol misuse or drugs including insulin, chemotherapy, antacids or diuretics). High-risk patients start at 10 kcal/kg/day (5 kcal/kg/day if extreme risk, e.g. BMI <14 or negligible intake >15 days), rising slowly over 4-7 days, with thiamine 200-300 mg/day and proactive potassium, phosphate and magnesium replacement started before or with feeding.",
+      "q": "What are the NICE criteria for 'high risk' of refeeding syndrome and how does this change feeding?",
+    },
+    {
+      "a": "Outputs above 1500-2000 mL/day cause depletion of sodium, magnesium and water (the small bowel cannot compensate as the colon would), producing a contracted extracellular volume with secondary hyperaldosteronism and a thirsty, hyponatraemic patient who drinks hypotonic fluid and worsens losses further. Correct with a glucose-saline oral rehydration solution, loperamide/codeine to slow transit, and IV magnesium/sodium replacement guided by daily electrolytes before elective induction; treat as hypovolaemic even with a normal-looking blood pressure.",
+      "q": "Why is a high-output stoma dangerous before anaesthesia?",
+    },
+  ],
   "/perioperative/genetic-syndromes": [
     {
       "a": "Stop all volatile agents and suxamethonium, switch to TIVA, hyperventilate with 100% oxygen via a clean circuit, give IV dantrolene 2.5 mg/kg repeated up to 10 mg/kg (more if required), cool actively, and treat hyperkalaemia, acidosis and arrhythmias (AAGBI 2020).",
@@ -1901,6 +2298,22 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "a": "Per NICE neutropenic-sepsis guidance, empirical piperacillin–tazobactam 4.5 g IV (or meropenem if previous resistance / β-lactam allergy with cross-reactivity assessment) within 1 hour of recognition, after blood cultures. Add vancomycin or teicoplanin only for suspected line infection, MRSA risk or severe mucositis.",
       "q": "What antibiotic should be given for suspected neutropenic sepsis?",
     },
+    {
+      "a": "A simple top-up transfusion to Hb ~100 g/L is usually sufficient for most surgery and is as effective as exchange transfusion at preventing perioperative complications. Exchange transfusion to reduce HbS% to below ~30% is reserved for high-risk surgery (bypass, neurosurgery) or patients with a history of severe crises, and avoids the hyperviscosity risk of simple top-up in patients with an already-high baseline Hb.",
+      "q": "What HbS target is needed before major surgery in sickle cell disease?",
+    },
+    {
+      "a": "Desmopressin 0.3 microgram/kg IV releases stored factor VIII and von Willebrand factor, making it useful in mild haemophilia A and type 1 von Willebrand disease, as well as uraemic or aspirin-induced platelet dysfunction. It is ineffective in haemophilia B (no effect on factor IX) and type 3 VWD (no VWF stores to release), and should be used cautiously in type 2B VWD (may worsen thrombocytopenia).",
+      "q": "When is desmopressin useful in a bleeding disorder and when is it not?",
+    },
+    {
+      "a": "Intervals depend on the drug and renal function: apixaban/rivaroxaban/edoxaban are typically omitted for 48 hours before a high bleeding-risk procedure or neuraxial block (longer if CrCl 30–50 mL/min), while dabigatran requires 48–96 hours depending on creatinine clearance and is avoided below CrCl 30 mL/min. Catheters are removed only once the same interval has elapsed since the last dose, and the next dose is delayed for several hours after removal.",
+      "q": "How long should a DOAC be omitted before neuraxial anaesthesia?",
+    },
+    {
+      "a": "Irradiated cellular blood products prevent transfusion-associated graft-versus-host disease from viable donor lymphocytes. They are mandatory for stem cell transplant recipients, granulocyte transfusions, intrauterine/neonatal exchange transfusion, directed donations from blood relatives, patients treated with purine analogues (fludarabine, cladribine, bendamustine), and Hodgkin lymphoma patients.",
+      "q": "What blood products must be irradiated, and why?",
+    },
   ],
   "/perioperative/hepatic-disease": [
     {
@@ -1914,6 +2327,42 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
     {
       "a": "Splanchnic vasoconstrictor (terlipressin or noradrenaline) plus 20% human albumin (1 g/kg on day 1, then 20–40 g/day). Diuretics, large-volume crystalloid and low-dose dopamine all worsen outcome; definitive treatment is liver transplantation.",
       "q": "How is hepatorenal syndrome managed perioperatively?",
+    },
+  ],
+  "/perioperative/immunosuppression-hiv": [
+    {
+      "a": "No — calcineurin inhibitors, antiproliferatives and corticosteroids must be continued throughout the perioperative period. Use IV or NG routes if the patient cannot take oral medication, monitor trough levels, and involve the transplant centre for any dose changes.",
+      "q": "Should transplant immunosuppressants ever be stopped before surgery?",
+    },
+    {
+      "a": "Typically for one full dosing interval of the specific agent (e.g. one interval for anti-TNF drugs, one infusion cycle for rituximab or tocilizumab, one dosing interval for JAK inhibitors), balancing reduced surgical site infection risk against disease flare; restart once wound healing is established.",
+      "q": "How long before elective surgery should biologic therapies be withheld?",
+    },
+    {
+      "a": "Prednisolone ≥5 mg daily (or equivalent) for more than 4 weeks in the preceding year is considered clinically significant for HPA axis suppression and warrants perioperative hydrocortisone supplementation scaled to surgical severity.",
+      "q": "What dose of steroid therapy is significant for adrenal suppression?",
+    },
+    {
+      "a": "Ritonavir (and cobicistat) are potent CYP3A4 inhibitors used as pharmacokinetic 'boosters' in antiretroviral regimens. They markedly prolong the action of CYP3A4-dependent drugs such as midazolam and fentanyl, so doses should be reduced and titrated carefully to avoid prolonged sedation and respiratory depression.",
+      "q": "Why is ritonavir clinically important to the anaesthetist even though it is not itself an anaesthetic drug?",
+    },
+  ],
+  "/perioperative/musculoskeletal-disease": [
+    {
+      "a": "An anterior atlanto-dental interval > 3 mm on a lateral cervical spine X-ray in flexion indicates anterior atlantoaxial subluxation; vertical (basilar) subluxation, where the odontoid migrates upward into the foramen magnum, is the most dangerous and life-threatening variant. Flexion/extension imaging should be obtained before elective surgery in patients with long-standing disease and neck symptoms.",
+      "q": "What cervical spine finding indicates atlantoaxial instability in rheumatoid arthritis?",
+    },
+    {
+      "a": "Biologics (e.g. TNF-α inhibitors such as adalimumab/infliximab, IL-6 inhibitors) are withheld for one full dosing interval, with surgery timed for the end of that interval to minimise both infection/wound-healing risk and disease flare. JAK inhibitors (tofacitinib, baricitinib, upadacitinib) are stopped 3 days before surgery because of thrombosis and infection risk. Methotrexate, hydroxychloroquine and sulfasalazine are continued throughout.",
+      "q": "How should biologic and JAK-inhibitor therapy be managed before elective surgery?",
+    },
+    {
+      "a": "It affects nearly every system relevant to anaesthesia: microstomia limits mouth opening and airway access; Raynaud phenomenon and skin/vascular fibrosis make peripheral and arterial access difficult (avoid unnecessary cannulation, keep the patient warm); oesophageal dysmotility increases aspiration risk; interstitial lung disease and pulmonary hypertension increase perioperative respiratory and cardiac risk; and scleroderma renal crisis can be precipitated by high-dose corticosteroids and hypotension.",
+      "q": "Why is systemic sclerosis a particular anaesthetic challenge?",
+    },
+    {
+      "a": "A restrictive ventilatory defect develops as the Cobb angle increases; forced vital capacity (FVC) < 40% predicted is associated with a significant risk of prolonged postoperative ventilation, and FVC < 70% predicted warrants careful preoperative respiratory assessment. Neuromuscular scoliosis (e.g. Duchenne muscular dystrophy) carries additional risks of cardiomyopathy, malignant hyperthermia susceptibility (avoid suxamethonium and volatile agents in dystrophinopathies) and a blunted cough with bulbar weakness.",
+      "q": "What respiratory parameters guide risk assessment before scoliosis surgery?",
     },
   ],
   "/perioperative/neurological-disease": [
@@ -1950,12 +2399,48 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the prognostic value of CPET anaerobic threshold (AT) before major surgery?",
     },
     {
-      "a": "At least 4 weeks after balloon angioplasty, 6 weeks (ideally 3 months) after a bare-metal stent, and 6 months (ideally 12 months) after a drug-eluting stent — to allow dual antiplatelet therapy without premature interruption (ACC/AHA 2024).",
+      "a": "Elective non-cardiac surgery should be delayed at least 1 month after PCI regardless of stent type. Beyond this, whether to continue or interrupt dual antiplatelet therapy is a multidisciplinary (heart team) decision balancing individual thrombotic risk against surgical bleeding risk (ESC Non-Cardiac Surgery 2022).",
       "q": "When should elective non-cardiac surgery be deferred after PCI?",
     },
     {
       "a": "Six predictors (high-risk surgery, IHD, heart failure, cerebrovascular disease, insulin-treated diabetes, creatinine >177 µmol/L): 0 ≈ 0.4%, 1 ≈ 1%, 2 ≈ 2.4%, ≥3 ≈ 5.4% risk of a major cardiac event at 30 days.",
       "q": "How is the Revised Cardiac Risk Index (Lee) interpreted?",
+    },
+  ],
+  "/perioperative/psychiatric-substance-disease": [
+    {
+      "a": "Current multisociety guidance recommends continuing buprenorphine perioperatively in most cases rather than routine discontinuation, using multimodal analgesia and titrated full-agonist opioids alongside it; stopping risks relapse and does not reliably improve analgesia.",
+      "q": "Should buprenorphine be stopped before surgery?",
+    },
+    {
+      "a": "Serotonin syndrome has a rapid onset (usually <24 h), hyperreflexia, myoclonus and clonus, and diarrhoea; NMS develops over days, features 'lead-pipe' rigidity, hyporeflexia and very high CK, and follows dopamine antagonist exposure or dopaminergic withdrawal rather than serotonergic drugs.",
+      "q": "How do you distinguish serotonin syndrome from neuroleptic malignant syndrome?",
+    },
+    {
+      "a": "The electrical stimulus produces an initial brief parasympathetic discharge (vagal outflow) causing bradycardia or even brief asystole, followed within seconds by a sympathetic surge causing tachycardia and hypertension during the tonic-clonic seizure; anticholinergic pre-treatment (glycopyrrolate) may be used in patients at risk of significant bradyarrhythmia.",
+      "q": "Why does bradycardia occur immediately after the ECT stimulus?",
+    },
+    {
+      "a": "Yes — detention under the Mental Health Act only authorises treatment for the mental disorder itself. Capacity for other treatment decisions must be separately assessed under the Mental Capacity Act 2005; if the patient has capacity for that specific decision, their refusal must be respected.",
+      "q": "Can a patient detained under the Mental Health Act refuse anaesthesia for an unrelated surgical problem?",
+    },
+  ],
+  "/perioperative/renal-disease": [
+    {
+      "a": "Same-day dialysis leaves residual heparin effect and acute intravascular volume shifts that predispose to intraoperative hypotension. Dialysis the day before allows correction of potassium and fluid overload while restoring haemodynamic stability by the time of surgery.",
+      "q": "Why should a dialysis patient not be dialysed on the same day as surgery?",
+    },
+    {
+      "a": "No — stable CKD patients with a normal baseline potassium can safely receive suxamethonium (typical rise ~0.5 mmol/L). It should be avoided if the patient is already hyperkalaemic, has uraemic neuropathy, or has missed dialysis, given the risk of a dangerous further rise.",
+      "q": "Is suxamethonium contraindicated in chronic kidney disease?",
+    },
+    {
+      "a": "Morphine is metabolised to morphine-6-glucuronide (M6G), a more potent active metabolite than morphine itself, which accumulates in renal failure and can cause prolonged sedation and respiratory depression. Fentanyl (largely hepatically metabolised, inactive metabolites) or carefully titrated oxycodone are preferred.",
+      "q": "Why is morphine avoided in advanced renal impairment?",
+    },
+    {
+      "a": "In critically ill patients with severe AKI, an accelerated strategy of RRT initiation conferred no mortality benefit over a standard, watchful-waiting strategy that initiated RRT only for conventional indications (refractory hyperkalaemia, acidosis, fluid overload, or lack of recovery), and was associated with more RRT-related adverse events.",
+      "q": "What did STARRT-AKI show about the timing of renal replacement therapy?",
     },
   ],
   "/perioperative/respiratory-disease": [
@@ -2048,7 +2533,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the equivalent dose conversion between common steroids?",
     },
     {
-      "a": "Required for patients on >5 mg prednisolone/day for >3 weeks (HPA suppression). Minor surgery (e.g. hernia): usual oral dose + 25 mg hydrocortisone IV at induction. Moderate surgery (e.g. colectomy): 25 mg at induction + 100 mg/day for 24 h. Major surgery/critically ill: 100 mg at induction + 200 mg/day for 48–72 h then taper. Continue maintenance dose throughout. Failure to cover risks Addisonian crisis: profound hypotension unresponsive to fluids/pressors, hyponatraemia, hyperkalaemia.",
+      "a": "Required for patients on >5 mg prednisolone/day for >3 weeks (HPA suppression). Minor surgery (e.g. hernia): usual oral dose + hydrocortisone 25 mg IV at induction. Moderate surgery (e.g. hemicolectomy): usual dose + 25 mg at induction then 100 mg over 24 h. Major surgery (e.g. laparotomy, cardiac surgery): usual dose + 50 mg at induction then 200 mg over 24 h, continued while the stress response persists then tapered. Continue maintenance dose throughout. Failure to cover risks Addisonian crisis: profound hypotension unresponsive to fluids/pressors, hyponatraemia, hyperkalaemia.",
       "q": "When is perioperative steroid cover required and what regimen is used?",
     },
     {
@@ -2080,7 +2565,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How does pKa of a local anaesthetic relate to onset of action?",
     },
     {
-      "a": "AAGBI 2010 algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures (small dose benzodiazepine or propofol). Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline 1 µg/kg). Give 20 % Intralipid: 1.5 mL/kg bolus, then 15 mL/kg/h infusion, repeat bolus up to 3×, max 12 mL/kg total. Continue CPR — long resuscitation often successful. Refer to ITU and report to NPSA / Lipid Rescue registry.",
+      "a": "RCoA/Association of Anaesthetists 2024 algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures (small dose benzodiazepine or propofol). Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline 1 µg/kg). Give 20 % Intralipid: 1.5 mL/kg bolus, then 15 mL/kg/h infusion, repeat bolus up to 3×, max 12 mL/kg total. Continue CPR — long resuscitation often successful. Refer to ITU and report to NPSA / Lipid Rescue registry.",
       "q": "Outline the management of local-anaesthetic systemic toxicity (LAST).",
     },
   ],
@@ -2296,11 +2781,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the normal ETCO₂ range?",
     },
     {
-      "a": "Phase I (inspiratory baseline, CO₂-free gas from the airway dead space, value 0). Phase II (expiratory upstroke, rapid rise as alveolar gas reaches the sensor). Phase III (alveolar plateau, gently rising; the value at its end is ETCO₂). Phase 0 (inspiratory downstroke back to baseline). The alpha angle (II–III) widens with airflow obstruction (shark-fin); the beta angle (III–0) widens with rebreathing.",
+      "a": "Phase I (expiratory baseline, CO₂-free gas from the apparatus and anatomical dead space, value 0). Phase II (expiratory upstroke, rapid rise as alveolar gas reaches the sensor). Phase III (alveolar plateau, gently rising; the value at its end is ETCO₂). Phase 0 (inspiratory downstroke back to baseline). The alpha angle (II–III) is normally ~100–110° and widens with airflow obstruction (shark-fin); the beta angle (III–0) is ~90° and widens with rebreathing.",
       "q": "What are the four phases of a normal capnography waveform?",
     },
     {
-      "a": "A shark-fin (sloped) trace reflects prolonged, uneven alveolar emptying — the alpha angle becomes obtuse and the plateau slopes upward. It indicates expiratory airflow obstruction: acute severe asthma, COPD exacerbation, anaphylaxis, kinked tracheal tube or partial circuit obstruction. Treat the cause; do not increase ventilator rate before addressing obstruction or you will generate auto-PEEP.",
+      "a": "A shark-fin (sloped) trace reflects prolonged, uneven alveolar emptying — the alpha angle becomes obtuse and the plateau slopes upward. It indicates expiratory airflow obstruction: acute severe asthma, COPD exacerbation, anaphylaxis, kinked tracheal tube or partial circuit obstruction. Anaphylaxis is a key perioperative cause: NAP6 found bronchospasm and reduced or absent end-tidal CO₂ among the commonest features, so anaphylaxis can present either as a shark-fin obstructive trace or as sudden loss of the trace with cardiovascular collapse and PEA arrest. Treat the cause; do not increase ventilator rate before addressing obstruction or you will generate auto-PEEP.",
       "q": "What does a shark-fin capnography waveform mean?",
     },
     {
@@ -2405,6 +2890,62 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "a": "Microshock is ventricular fibrillation caused by a current as small as 50–100 µA delivered directly to the myocardium via a pacing wire or fluid-filled catheter. Prevention: use only CF-rated equipment for cardiac connections, ensure earth-leakage <10 µA, insulate the proximal end of pacing wires, and avoid touching exposed connectors with bare hands.",
       "q": "What is microshock and how is it prevented?",
     },
+    {
+      "a": "An RCD disconnects the supply within about 40 ms when live/neutral currents differ by more than 30 mA. Sudden loss of power to a ventilator, bypass pump or surgical light can be more dangerous than the fault, so Group 2 medical locations (theatres, cardiac cath labs, critical care bedspaces) use a 1:1 isolation transformer with a line isolation monitor that alarms but does not disconnect. Two independent faults are then needed to shock anyone.",
+      "q": "Why do theatres use an isolated power supply instead of an RCD?",
+    },
+    {
+      "a": "Do not panic or switch everything off. The supply is still safe — the alarm means one fault has occurred and the safety margin is gone. Stop connecting new devices, then unplug the most recently added equipment one at a time until the alarm clears; the last device unplugged is the faulty one. If the alarm persists with everything unplugged, the fault is in the fixed wiring: call estates, finish or pause the case safely, and avoid contact between patient and any earthed metalwork.",
+      "q": "What should I do when the line isolation monitor alarms mid-case?",
+    },
+    {
+      "a": "Burns occur when the effective contact area of the return electrode falls — partial peeling, hair, scar, bony prominence, fluid or prep soaking the adhesive, or a plate applied over a metal implant — so current density at the plate rises. Apply a full-size plate to clean, dry, shaved, well-perfused muscle bulk close to the operative site, with the long axis facing the surgical field, and re-check it after repositioning. Contact-quality-monitoring plates alarm before injury occurs.",
+      "q": "What causes a diathermy return-plate burn and how is it avoided?",
+    },
+    {
+      "a": "Alternate-site burns arise when current finds a small-area path to earth — ECG electrodes, temperature probes, a drip stand, stirrups, or skin-to-skin contact between a limb and the trunk. With modern isolated-output generators this is uncommon but occurs where the patient touches earthed metal. Keep the patient insulated from metal, avoid skin-to-skin bridges with padding, and site monitoring away from the current path.",
+      "q": "Why does a patient get a burn somewhere other than the diathermy site?",
+    },
+    {
+      "a": "Direct coupling is the active electrode touching another conductor (a metal instrument, laparoscope or clip) which then burns bowel out of view. Capacitive coupling is current induced in a surrounding conductor across intact insulation — classically an active hook inside a metal cannula, or a metal instrument in a plastic port. Insulation failure at the shaft causes the same injury. Mitigation: inspect insulation, use short bursts at lowest power, keep the whole active tip in view, activate only when the tip is clear, and use all-metal or all-plastic port systems rather than hybrids.",
+      "q": "What are direct and capacitive coupling in laparoscopic surgery?",
+    },
+    {
+      "a": "Fire needs oxidiser, fuel and ignition. Allow alcohol-based prep to dry fully and avoid pooling under drapes; avoid open oxygen delivery above the clavicles — use a cuffed tube or laryngeal mask so the oxygen is contained, or keep the inspired oxygen at the lowest tolerated level and pause enrichment for 1 minute before diathermy near the airway; keep swabs damp; and hold the active electrode in a quiver when not in use. If a fire starts: stop the gas flow, remove burning material and drapes, extinguish with saline, then reassess airway and burns.",
+      "q": "How do I prevent a surgical fire in theatre?",
+    },
+    {
+      "a": "Bipolar — the current path is confined to the two forceps tips, so nothing traverses the thorax or the device leads. Where monopolar is unavoidable, use short irregular bursts under 5 seconds at the lowest effective power, keep the current path (electrode to return plate) away from the generator and leads, monitor perfusion by plethysmograph or arterial trace because diathermy obscures the ECG, and have a magnet, external pacing/defibrillation pads and chronotropes immediately available.",
+      "q": "Is bipolar or monopolar diathermy safer for a patient with a pacemaker?",
+    },
+    {
+      "a": "Over most pacemakers a magnet produces asynchronous pacing (VOO/DOO) at a fixed manufacturer-specific rate, protecting against diathermy-induced inhibition. Over an ICD it suspends tachyarrhythmia detection and shock delivery but does not change pacing. Magnet behaviour varies between manufacturers and can be programmed off, so confirm the expected response with the device team, and arrange a postoperative check before the patient leaves monitored care.",
+      "q": "How does a magnet affect a pacemaker or ICD?",
+    },
+    {
+      "a": "Diathermy is not used inside the MRI environment. The MRI hazards are different: radiofrequency energy heats conductive loops, so route ECG cables straight without loops, keep them off the skin, use the minimum monitoring, and only equipment labelled MR Safe or used within its MR Conditional limits. Active implants need exact device identification and a documented programme-and-monitor plan because of lead-tip heating and inappropriate therapy.",
+      "q": "How is diathermy used safely in a patient having MRI or with an intra-aortic device?",
+    },
+    {
+      "a": "Leakage current is the small current that flows from mains-powered parts to earth or to the patient through insulation and capacitance even when the device works normally. Limits under IEC 60601-1 are set by applied-part type: 100 µA for type B and BF, and 10 µA for type CF, with higher single-fault allowances. Because leakage from several devices can sum through one patient, equipotential earthing, CF connections for anything intracardiac, and routine electrical safety testing are all needed.",
+      "q": "What is a leakage current and what limits apply?",
+    },
+    {
+      "a": "Isolate the supply or use an insulating object to break contact before touching the casualty — never grab them. Start ALS if they are unresponsive: shock-induced arrest is often VF and responds to defibrillation. Look for entry and exit burns, arrhythmia, rhabdomyolysis and, in high-voltage injury, deep tissue damage. Monitor ECG for at least a few hours if there was any loss of consciousness, arrhythmia or a current path across the chest, quarantine the device, and report through the incident and MHRA/medical-device routes.",
+      "q": "What do I do if a member of staff or a patient receives an electric shock in theatre?",
+    },
+    {
+      "a": "A thin conductive film of water forms on surfaces at that humidity and continuously drains static charge to earth, preventing spark discharge. It began as protection against ignition of ether and cyclopropane and remains relevant to alcohol prep and airway fires, static damage to electronics, and static discharge to monitoring leads. Below about 40% relative humidity, drapes, vinyl flooring and clothing accumulate triboelectric charge.",
+      "q": "Why is theatre humidity kept at 50–60%?",
+    },
+    {
+      "a": "Peripheral nerve stimulators deliver a few tens of milliamps over a limb and are safe with normal siting, but keep the electrodes on a limb away from the thorax and any pacing system. TENS is generally avoided over the chest or across a pacemaker or ICD because pulsed current can be sensed as intrinsic activity. Forced-air and resistive warming blankets are class-approved patient-contact devices — use only the manufacturer's blanket, never a bare hose (free-hosing causes burns), and keep them clear of the diathermy return plate.",
+      "q": "Can I use a nerve stimulator, TENS machine or forced-air warmer safely with an implanted device?",
+    },
+    {
+      "a": "Frequency is set by risk in the local medical-device management policy rather than a fixed legal interval: mains-powered patient-connected devices in theatre and critical care are usually checked annually, with a visual check of plug, cable and casing by the user before every use. Anything dropped, wetted, sparking, tripping the supply or giving an unexplained monitor artefact is withdrawn and tested. Extension leads and daisy-chaining are avoided because they defeat isolated-supply protection and add earth-fault paths.",
+      "q": "How often must theatre electrical equipment be tested?",
+    },
   ],
   "/physics/electricity-magnetism": [
     {
@@ -2482,7 +3023,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the key safety measures for airway laser surgery?",
     },
     {
-      "a": "Stop ventilation and disconnect O₂. Remove the burning tube. Pour saline into the airway to extinguish. Re-mask ventilate on air. Re-intubate (often with a smaller tube), perform bronchoscopy to assess thermal injury, administer steroids and humidified O₂. Admit to critical care for observation of progressive airway oedema (peaks 12–24 h).",
+      "a": "Stop ventilation and disconnect O₂. Remove the burning tube. Pour saline into the airway to extinguish. Re-mask ventilate on air. Re-intubate (often with a smaller tube), then perform flexible or rigid bronchoscopy to assess thermal and inhalational injury and remove debris. Administer humidified O₂ and admit to critical care for observation of progressive airway oedema.",
       "q": "What is the management of an airway fire?",
     },
     {
@@ -2496,7 +3037,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is a time constant and how many are needed for completion?",
     },
     {
-      "a": "Zero-order — constant amount eliminated per unit time, independent of concentration (e.g. ethanol, phenytoin at high dose, aspirin in overdose). First-order — constant fraction eliminated per unit time; rate ∝ concentration (e.g. most drugs at therapeutic doses — propofol, fentanyl). Half-life is constant only in first-order kinetics.",
+      "a": "First-order kinetics eliminate a constant fraction per unit time, producing an exponential concentration–time curve and a straight line on a semi-log plot; half-life is constant. Zero-order kinetics occur when elimination is saturated: a constant amount is removed per unit time regardless of concentration, producing a straight concentration–time line and a curved semi-log plot; half-life is not constant and decreases as concentration falls. Examples include ethanol, phenytoin at high concentration and salicylate overdose.",
       "q": "Distinguish zero-order and first-order kinetics with an example.",
     },
     {
@@ -2975,15 +3516,38 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the pinned set 
   "/intensive-care/sepsis",
   "/intensive-care/toxicology",
   "/intensive-care/transfusion-coagulation",
+  "/notes/anaesthesia-for-robotic-surgery-guide",
+  "/notes/apfel-score-ponv-risk",
+  "/notes/bain-circuit-fresh-gas-flow",
+  "/notes/cardiac-output-formula",
+  "/notes/context-sensitive-half-time-propofol-vs-remifentanil",
+  "/notes/das-difficult-airway-algorithm",
+  "/notes/heart-sounds-ecg-cardiac-cycle",
+  "/notes/how-sugammadex-reverses-rocuronium",
+  "/notes/local-anaesthetic-systemic-toxicity-management",
+  "/notes/mac-for-age-formula",
+  "/notes/mapleson-breathing-systems-explained",
+  "/notes/p50-fetal-haemoglobin",
+  "/notes/paediatric-maintenance-fluids-4-2-1-rule",
+  "/notes/rapid-sequence-induction-drug-doses",
+  "/notes/rotem-teg-interpretation",
+  "/notes/sevoflurane-vs-desflurane-recovery",
+  "/notes/tof-ratio-before-extubation",
+  "/notes/wiggers-diagram-explained",
   "/perioperative/cardiovascular-disease",
   "/perioperative/endocrine-disease",
   "/perioperative/enhanced-recovery",
+  "/perioperative/gastrointestinal-disease",
   "/perioperative/genetic-syndromes",
   "/perioperative/haematological-disease",
   "/perioperative/hepatic-disease",
+  "/perioperative/immunosuppression-hiv",
+  "/perioperative/musculoskeletal-disease",
   "/perioperative/neurological-disease",
   "/perioperative/perioperative-fluids",
   "/perioperative/preoperative-assessment",
+  "/perioperative/psychiatric-substance-disease",
+  "/perioperative/renal-disease",
   "/perioperative/respiratory-disease",
   "/perioperative/vascular-access-devices",
   "/pharmacology/antiarrhythmics",
@@ -3563,7 +4127,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Use ideal body weight (IBW) for propofol induction and remifentanil; lean body weight (LBW) for propofol maintenance and rocuronium; total body weight (TBW) for suxamethonium, paracetamol (max 4 g/day), and antibiotics; and adjusted body weight for paracetamol if >120 kg. Sugammadex is dosed on TBW.",
+          "text": "Use ideal body weight (IBW) for propofol induction and remifentanil; lean body weight (LBW) for propofol maintenance and rocuronium; ideal body weight (IBW) for suxamethonium at 1–1.5 mg/kg; total body weight (TBW) for paracetamol (max 4 g/day), antibiotics and sugammadex; and adjusted body weight for aminoglycosides.",
         },
         "name": "How are induction and maintenance drug doses calculated in obesity?",
       },
@@ -4337,7 +4901,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "GA is reserved for: category-1 emergencies where speed is critical and no working neuraxial is in situ; contraindications to neuraxial (coagulopathy, severe sepsis at puncture site, patient refusal, fixed cardiac output lesions); failed neuraxial; major haemorrhage with cardiovascular instability. Technique: ramped position, pre-oxygenation to FetO₂ ≥ 0.9, RSI with thiopentone 5 mg/kg or propofol 2 mg/kg + suxamethonium 1.5 mg/kg or rocuronium 1 mg/kg, cricoid pressure, prepare for difficult airway (incidence ~1:300, 8× non-obstetric).",
+          "text": "GA is reserved for: category-1 emergencies where speed is critical and no working neuraxial is in situ; contraindications to neuraxial (coagulopathy, severe sepsis at puncture site, patient refusal, fixed cardiac output lesions); failed neuraxial; major haemorrhage with cardiovascular instability. Technique: ramped position, pre-oxygenation to FetO₂ ≥ 0.9, RSI with thiopentone 4–5 mg/kg or propofol 2 mg/kg + suxamethonium 1.5 mg/kg or rocuronium 1 mg/kg, cricoid pressure, prepare for difficult airway (failed intubation ~1:224 for caesarean GA).",
         },
         "name": "When is general anaesthesia used for caesarean section?",
       },
@@ -4361,7 +4925,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Key changes: cardiac output ↑ 40% by term, blood volume ↑ 45%, FRC ↓ 20% (supine 30%), oxygen consumption ↑ 20%, MAC ↓ 30–40%, gastric emptying delayed, lower oesophageal sphincter tone reduced, plasma cholinesterase ↓ 25% (suxamethonium duration unaffected clinically), aortocaval compression after 20 weeks, difficult airway 8× more common (~1:300), epidural venous engorgement reduces CSF volume so spinal dose is ~⅔ of non-pregnant dose.",
+          "text": "Key changes: cardiac output ↑ 40% by term, blood volume ↑ 45%, FRC ↓ 20% (supine 30%), oxygen consumption ↑ 20%, MAC ↓ 30–40%, gastric emptying delayed, lower oesophageal sphincter tone reduced, plasma cholinesterase ↓ 25% (suxamethonium duration unaffected clinically), aortocaval compression after 20 weeks, difficult airway markedly more common (failed intubation ~1:224 for caesarean GA), epidural venous engorgement reduces CSF volume so spinal dose is ~⅔ of non-pregnant dose.",
         },
         "name": "How does pregnancy change anaesthetic physiology?",
       },
@@ -4919,7 +5483,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: permanent neurological injury 1:20,000–1:50,000, epidural haematoma 1:220,000 (spinal) and meningitis < 1:50,000 in NAP3 data. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
+          "text": "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 reported epidural haematoma around 1:220,000 for spinal anaesthesia and meningitis < 1:50,000. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
         },
         "name": "Does spinal anaesthesia hurt and is it safe?",
       },
@@ -4959,7 +5523,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Use ethyl chloride cold spray to test loss of cold sensation (Aδ-fibre block — the most reliable correlate of surgical anaesthesia). Calibrate by spraying an unblocked forearm, then start from a blocked dermatome and move cranially until cold returns; document the highest bilateral level. T4 (nipple) is required for caesarean section, T6 (xiphisternum) for upper abdominal, T10 (umbilicus) for hernia and lower abdominal surgery. Pinprick (Aβ) tests touch; Bromage 0–3 grades motor.",
+          "text": "Use ethyl chloride cold spray to test loss of cold sensation (Aδ- and C-fibre block — the most reliable correlate of surgical anaesthesia). Calibrate by spraying an unblocked forearm, then start from a blocked dermatome and move cranially until cold returns; document the highest bilateral level. T4 (nipple) is required for caesarean section, T6 (xiphisternum) for upper abdominal, T10 (umbilicus) for hernia and lower abdominal surgery. Pinprick tests sharp sensation carried by Aδ fibres, which together with loss of cold indicates surgical anaesthesia; light touch (Aβ) is lost later and at a lower level. Bromage 0–3 grades motor block.",
         },
         "name": "How is block height tested at the bedside?",
       },
@@ -6287,7 +6851,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "10–20 mL/kg balanced crystalloid boluses with reassessment after each, up to 40–60 mL/kg in the first hour; start adrenaline or noradrenaline early if fluid-refractory rather than continuing boluses (FEAST, SSC paediatric 2020).",
+          "text": "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock), with smaller 5 mL/kg boluses in DKA or trauma. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings).",
         },
         "name": "What fluid resuscitation strategy is recommended for paediatric septic shock?",
       },
@@ -6295,7 +6859,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Berlin-equivalent criteria (PALICC 2015) using OI rather than P/F ratio; use Vt 5–8 mL/kg PBW, plateau ≤28 cmH₂O, permissive hypercapnia (pH ≥7.20), PEEP titrated 8–15, prone if OI ≥12.",
+          "text": "The Global Definition of PARDS (2023) requires onset within 7 days, new infiltrates not fully explained by cardiac failure or fluid overload, and hypoxaemia by OI/OSI (or non-invasively, SpO₂/FiO₂ ≤250 on CPAP ≥5 cmH₂O). Ventilate with Vt 5–8 mL/kg PBW, plateau ≤28 cmH₂O, permissive hypercapnia (pH ≥7.20), PEEP titrated 8–15 cmH₂O; prone position for moderate/severe disease (OI ≥12).",
         },
         "name": "What is paediatric ARDS (PARDS) and how does ventilation differ?",
       },
@@ -6485,7 +7049,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "20% Intralipid 1.5 mL/kg bolus followed by 0.25 mL/kg/min infusion, repeat boluses up to 3 doses and double the infusion if circulation not restored (AAGBI 2010); maximum 12 mL/kg in 30 min.",
+          "text": "Association of Anaesthetists 2023: give 20% lipid emulsion 1.5 mL/kg as an initial bolus (simplified to a fixed 100 mL bolus if >70 kg), then start an infusion of 15 mL/kg/h — the same weight-based rate for every patient, which equates to about 1000 mL/h in an adult over 70 kg. Up to two further boluses at 5-minute intervals (three in total), and double the infusion to 30 mL/kg/h if the circulation remains unstable; total maximum 12 mL/kg.",
         },
         "name": "How is lipid emulsion used in local anaesthetic toxicity?",
       },
@@ -6526,6 +7090,754 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
           "text": "FIBTEM A5 <12 mm → fibrinogen concentrate or cryoprecipitate; EXTEM CT >80 s → FFP or PCC; EXTEM A5 <40 mm with normal FIBTEM → platelets; ML >15% → tranexamic acid (ITACTIC trial).",
         },
         "name": "How is ROTEM/TEG used to guide blood product use?",
+      },
+    ],
+  },
+  "/notes/anaesthesia-for-robotic-surgery-guide": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Raised intrathoracic pressure with reduced FRC and compliance, raised peak airway pressures, cephalad shift of the diaphragm and carina (endobronchial migration risk), raised CVP and PCWP with preserved cardiac output in fit patients, raised intracranial and intraocular pressure, facial and upper-airway oedema, and hypercapnia from CO₂ absorption.",
+        },
+        "name": "What are the main physiological changes of steep Trendelenburg with pneumoperitoneum?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pressure-controlled or volume-controlled with pressure limit, tidal volumes 6–8 ml/kg predicted body weight, PEEP 5–10 cmH₂O (higher in obese patients), plateau pressure ≤ 30 cmH₂O, and permissive hypercapnia (PaCO₂ up to ~6.5–7 kPa) to avoid harmful driving pressures. Recruitment manoeuvres after desufflation improve postoperative oxygenation.",
+        },
+        "name": "How should I ventilate a patient in steep Trendelenburg with pneumoperitoneum?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Corneal abrasion and postoperative visual loss (ischaemic optic neuropathy), brachial plexus and common peroneal nerve injury from shoulder braces and lithotomy, facial and laryngeal oedema, endobronchial intubation as the carina moves cephalad, gas embolism, subcutaneous emphysema, and inability to convert rapidly — every theatre must rehearse emergency undocking.",
+        },
+        "name": "What are the specific complications of robotic surgery I must plan for?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Restrictive: 1–2 ml/kg/h maintenance crystalloid until the vesicourethral anastomosis is complete, then liberalise. Excess fluid worsens facial and airway oedema in steep Trendelenburg and obscures the surgical field around the bladder neck. Use vasopressors (phenylephrine or metaraminol) rather than fluid boluses to maintain MAP.",
+        },
+        "name": "How do I manage fluids for robotic prostatectomy?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RCoA 2021 Final: General, Urological, and Gynaecological anaesthesia; Perioperative Medicine; Airway Management; Pain. FFICM/FICM 2021: perioperative critical care, respiratory support, and management of the deteriorating perioperative patient. Cross-cuts Primary physiology (respiratory mechanics, CV, cerebral) and pharmacology (TIVA, neuromuscular blockade, vasopressors).",
+        },
+        "name": "Which FRCA curriculum domains does robotic surgery cover?",
+      },
+    ],
+  },
+  "/notes/apfel-score-ponv-risk": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Female sex, non-smoker, history of PONV or motion sickness, and planned postoperative opioids. Each scores one point.",
+        },
+        "name": "What are the four Apfel risk factors?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "0 factors ~10%, 1 factor ~20%, 2 factors ~40%, 3 factors ~60%, 4 factors ~80% over the first 24 hours after anaesthesia.",
+        },
+        "name": "How does the Apfel score map to PONV risk?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Society for Ambulatory Anesthesia (SAMBA) 2020 guidelines: 0–1 factors — one prophylactic agent (or none if very low risk); 2 factors — two agents from different drug classes; 3–4 factors — three or four agents plus a TIVA technique and minimising opioids.",
+        },
+        "name": "How many antiemetics should I give for each risk band?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No — use the Eberhart score in children: age ≥ 3 years, surgery ≥ 30 minutes, strabismus surgery, and family/personal history of POV. Postoperative vomiting (POV) rather than nausea is the primary endpoint because young children cannot reliably report nausea.",
+        },
+        "name": "Does the Apfel score apply to children?",
+      },
+    ],
+  },
+  "/notes/bain-circuit-fresh-gas-flow": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Approximately 150–200 mL/kg/min, or 1.5–2× minute ventilation. The fresh gas inlet is at the patient end, so during expiration the corrugated tubing fills with a mixture of fresh and expired gas. A high FGF is needed to wash dead-space gas back before the next inspiration.",
+        },
+        "name": "What fresh gas flow does the Bain need for spontaneous ventilation?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Approximately 70 mL/kg/min, or roughly equal to alveolar minute ventilation. With IPPV the long expiratory pause allows fresh gas to wash CO₂ down the corrugated tubing toward the bag and APL valve, so less flow is needed. This is the efficient mode for the Bain.",
+        },
+        "name": "And for controlled ventilation?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A pre-use safety check for the inner tube of a co-axial Bain. Occlude the patient end with a finger, set 5 L/min fresh gas flow, and press the oxygen flush. Sudden gas flow through the outer tube causes a Venturi effect at the patient end that collapses the reservoir bag. If the inner tube is disconnected or kinked, the bag does not collapse. A failed Pethick = do not use.",
+        },
+        "name": "What is the Pethick test?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Light, single-tube, easy to position away from the surgical field, simple to scavenge, no CO₂ absorber needed. Disadvantages: high FGF for spontaneous ventilation (wasteful, environmentally and financially), and the inner tube cannot be visually inspected — hence the mandatory Pethick test.",
+        },
+        "name": "What are the advantages of the Bain over a circle system?",
+      },
+    ],
+  },
+  "/notes/cardiac-output-formula": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CO = stroke volume × heart rate. In an adult at rest, SV ≈ 70 mL and HR ≈ 70 bpm, giving CO ≈ 5 L/min. Indexed to body surface area this becomes cardiac index (CI = CO / BSA) with a normal value of 2.5–4.0 L/min/m².",
+        },
+        "name": "What is the formula for cardiac output?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The amount of a substance taken up (or released) by an organ per unit time equals the blood flow through that organ multiplied by the arterio-venous concentration difference of the substance. Applied to the lung: V̇O₂ = CO × (CaO₂ − CvO₂), so CO = V̇O₂ / (CaO₂ − CvO₂).",
+        },
+        "name": "What is Fick's principle?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A known volume of cold saline is injected into the right atrium via a pulmonary artery catheter. A thermistor at the PA tip records the temperature change over time. The area under the temperature–time curve is inversely proportional to cardiac output — the Stewart–Hamilton equation solves for CO from the curve, injectate volume, injectate and blood temperatures, and the specific heat and density of blood.",
+        },
+        "name": "How does thermodilution measure cardiac output?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Approximately 4–8 L/min in a resting adult, or a cardiac index of 2.5–4.0 L/min/m². It can rise to 20–25 L/min in trained athletes during maximal exercise, driven mostly by heart rate and a smaller increase in stroke volume.",
+        },
+        "name": "What is the normal value of cardiac output?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Fick uses oxygen as the tracer and requires steady-state VO₂ plus arterial and mixed-venous blood gases; it is accurate at low output but slow. Thermodilution uses a cold saline bolus and gives near-real-time values but overestimates CO in tricuspid regurgitation, intracardiac shunts, and very low output states where thermal loss to surrounding tissue becomes significant.",
+        },
+        "name": "What is the difference between Fick and thermodilution?",
+      },
+    ],
+  },
+  "/notes/context-sensitive-half-time-propofol-vs-remifentanil": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The time taken for the plasma concentration of a drug to halve after stopping a steady-state infusion. The 'context' is the duration of the infusion: as peripheral compartments saturate, drug redistributes back into plasma when the infusion stops, slowing the fall in plasma concentration. CSHT is therefore longer for longer infusions — except for drugs cleared independently of redistribution.",
+        },
+        "name": "What is context-sensitive half-time?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Remifentanil is hydrolysed by non-specific plasma and tissue esterases. Clearance is rapid (~3 L/min) and entirely independent of duration, hepatic function or renal function. Even after a 10-hour infusion the CSHT remains ~3–4 minutes, because the drug is metabolised faster than it can redistribute out of tissues.",
+        },
+        "name": "Why is remifentanil's context-sensitive half-time flat?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Propofol is highly lipid-soluble with a large peripheral volume of distribution. Over hours of infusion, fat and muscle accumulate drug. When the infusion stops, this peripheral reservoir flows back into plasma, slowing the fall in concentration. CSHT is ~10 minutes at 1 hour, ~20 minutes at 4 hours and ~30–40 minutes after 8+ hours — still much shorter than its elimination half-life of several hours.",
+        },
+        "name": "Why does propofol's context-sensitive half-time rise with infusion duration?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pair a long-CSHT hypnotic (propofol) with a flat-CSHT opioid (remifentanil) so analgesia offsets predictably and emergence is hypnotic-limited. For long cases use target-controlled infusion (TCI) modelling so the pump accounts for peripheral compartment dynamics, and load alternative analgesia (long-acting opioid, regional, paracetamol/NSAID) before the remifentanil is stopped to avoid acute hyperalgesia.",
+        },
+        "name": "How does CSHT change TIVA practice?",
+      },
+    ],
+  },
+  "/notes/das-difficult-airway-algorithm": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A — tracheal intubation (max 3+1 attempts, optimise position, paralysis, blade, bougie). B — supraglottic airway rescue (max 3 attempts, 2nd-generation SAD preferred). C — final attempt at face-mask ventilation; if successful, wake the patient. D — emergency front-of-neck access (eFONA) by scalpel-bougie-tube cricothyroidotomy.",
+        },
+        "name": "What are DAS Plans A, B, C and D?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Can't Intubate, Can't Oxygenate is declared when face-mask ventilation, supraglottic airway, and tracheal intubation have all failed AND SpO₂ is falling despite 100% O₂. Immediately call for help, give 100% O₂, give a neuromuscular blocker if not already paralysed, position with neck extended, and proceed to scalpel cricothyroidotomy.",
+        },
+        "name": "When should I declare CICO?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Scalpel–bougie–tube: transverse stab incision through the cricothyroid membrane with a size 10 scalpel, rotate the blade 90°, railroad a bougie into the trachea, then slide a cuffed 6.0 mm tracheal tube over the bougie. Inflate the cuff, ventilate, confirm with capnography.",
+        },
+        "name": "What is the recommended cricothyroidotomy technique?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It emphasises a single 2nd-generation SAD (e.g. i-gel) as the rescue device, removes needle cricothyroidotomy as a primary technique in adults, mandates declaration of CICO at the start of Plan D, and integrates human-factors language (declaring failure, 'stop and think').",
+        },
+        "name": "How does the 2015 DAS algorithm differ from previous versions?",
+      },
+    ],
+  },
+  "/notes/heart-sounds-ecg-cardiac-cycle": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "S1 is closure of the mitral then tricuspid valves at the onset of isovolumetric contraction, when ventricular pressure rises above atrial pressure. S2 is closure of the aortic then pulmonary valves at the onset of isovolumetric relaxation, when ventricular pressure falls below arterial pressure. The sound is produced by abrupt deceleration of blood and vibration of the valve leaflets and surrounding structures, not by the leaflets striking one another.",
+        },
+        "name": "What causes the first and second heart sounds?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "S1 follows the QRS complex by roughly 20–40 ms, because electrical depolarisation must precede mechanical contraction. S2 falls at the end of the T wave, as repolarisation completes and ejection ends. An S4, when present, is coincident with the P wave, since it is generated by atrial contraction.",
+        },
+        "name": "Where do S1 and S2 fall on the ECG?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "S3 occurs in early diastole, 0.12–0.18 s after S2, during rapid passive filling — it reflects a dilated, volume-loaded ventricle and can be physiological under 40 years or in pregnancy. S4 occurs in late diastole immediately before S1 and reflects forceful atrial contraction into a stiff, non-compliant ventricle; it is always pathological in adults and cannot occur in atrial fibrillation.",
+        },
+        "name": "What is the difference between S3 and S4?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An ejection systolic (crescendo–decrescendo) murmur such as aortic stenosis starts after S1 — flow only becomes turbulent once the aortic valve opens — and finishes before S2. A pansystolic murmur such as mitral regurgitation occupies the whole of systole and obscures both S1 and S2, because the ventriculo-atrial pressure gradient exists from mitral closure until it reopens.",
+        },
+        "name": "How do you distinguish an ejection systolic from a pansystolic murmur?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Inspiration lowers intrathoracic pressure, increasing systemic venous return and right ventricular ejection time, which delays pulmonary valve closure (P2). Simultaneously pulmonary vascular capacitance rises and left ventricular filling falls, shortening left ventricular ejection and advancing aortic closure (A2). The split therefore widens on inspiration and narrows on expiration.",
+        },
+        "name": "Why does S2 split on inspiration?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aortic stenosis: left ventricular hypertrophy by voltage criteria, left axis deviation, and conduction block from calcific extension into the septum. Mitral stenosis: P mitrale then atrial fibrillation, with right ventricular hypertrophy if pulmonary hypertension develops. Mitral regurgitation: left atrial enlargement and atrial fibrillation with left ventricular volume overload.",
+        },
+        "name": "Which ECG findings accompany the classic valve lesions?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Loss of organised atrial contraction removes the atrial kick, which contributes up to 25% of stroke volume and matters most when ventricular filling is already impaired. The associated tachycardia shortens diastole disproportionately, reducing both filling time and — for the hypertrophied left ventricle — coronary perfusion time.",
+        },
+        "name": "Why is atrial fibrillation badly tolerated in aortic and mitral stenosis?",
+      },
+    ],
+  },
+  "/notes/how-sugammadex-reverses-rocuronium": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Sugammadex 16 mg/kg will reverse a 1.2 mg/kg rocuronium intubating dose within 2–3 minutes, even before twitches return (post-tetanic count of 0). This is the basis for using sugammadex as a rescue strategy after a failed RSI when rocuronium has been chosen instead of suxamethonium.",
+        },
+        "name": "Can sugammadex reverse rocuronium that has only just been given?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sugammadex's hydrophobic cavity is shaped to fit the aminosteroid skeleton (rocuronium, vecuronium, pancuronium). Benzylisoquinolinium agents — atracurium, cisatracurium, mivacurium — have a different molecular geometry and are not encapsulated, so sugammadex is ineffective. Reverse these with neostigmine, or wait for spontaneous offset (Hofmann elimination for atracurium/cisatracurium).",
+        },
+        "name": "Why doesn't sugammadex reverse atracurium or cisatracurium?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sugammadex also binds progestogens. Manufacturers recommend treating a single dose as the equivalent of one missed combined or progestogen-only pill: continue the pill normally and use additional non-hormonal contraception for the next 7 days. Patients with an implant, depot injection or IUS only need additional precautions if the dose was within the relevant high-risk window.",
+        },
+        "name": "How long does sugammadex affect hormonal contraception?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Neostigmine remains appropriate for routine reversal of shallow non-depolarising block (TOF count ≥ 2, ideally ≥ 4) — particularly with benzylisoquinoliniums, in cost-sensitive settings, or where sugammadex is unavailable. Always co-administer an antimuscarinic (glycopyrrolate or atropine) and confirm reversal with quantitative TOF ≥ 0.9.",
+        },
+        "name": "When should I still use neostigmine?",
+      },
+    ],
+  },
+  "/notes/local-anaesthetic-systemic-toxicity-management": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lidocaine: 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine and levobupivacaine: 2 mg/kg (no adrenaline-enhanced dose). Ropivacaine: 3 mg/kg. Always calculate against lean body weight and use the lowest effective dose; reduce in the elderly, pregnant, and hepatically impaired.",
+        },
+        "name": "What is the maximum safe dose of lidocaine and bupivacaine?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bolus 1.5 mL/kg lean body weight over 1 minute (≈ 100 mL in a 70 kg adult), followed by an infusion of 15 mL/kg/h. If circulation is not restored after 5 minutes: repeat bolus up to twice (5-minute intervals) and double the infusion rate to 30 mL/kg/h. Maximum cumulative dose 12 mL/kg.",
+        },
+        "name": "What is the Intralipid 20% dose in LAST?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Circumoral or tongue numbness, metallic taste, tinnitus, visual disturbance, agitation, drowsiness — followed by seizures, then loss of consciousness. Cardiovascular signs (hypertension/tachycardia → bradycardia → arrhythmia → cardiac arrest) may occur without a CNS prodrome, particularly with bupivacaine and after intravascular bolus.",
+        },
+        "name": "What are the early warning signs of LAST?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bupivacaine-induced asystole is notoriously resistant to standard ALS. Adrenaline doses should be reduced to ≤ 1 µg/kg, vasopressin is not recommended, and lidocaine and other class I antiarrhythmics are contraindicated. Amiodarone is preferred for ventricular arrhythmias. Prolonged resuscitation (≥ 60 minutes) and consideration of VA-ECMO are justified.",
+        },
+        "name": "How does LAST cardiac arrest differ from a standard arrest?",
+      },
+    ],
+  },
+  "/notes/mac-for-age-formula": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "MAC at age = MAC₄₀ × 10^(−0.00269 × (age − 40)). In practice this is ~6% reduction per decade above 40. So sevoflurane MAC₄₀ of 2.0% becomes ~1.5% at 80 years.",
+        },
+        "name": "What is the Mapleson formula for MAC age adjustment?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sevoflurane 2.0%, isoflurane 1.15%, desflurane 6.0%, nitrous oxide 105% (extrapolated under hyperbaric conditions). Halothane is 0.75% but is no longer in clinical use in the UK.",
+        },
+        "name": "What is the MAC of common volatiles at age 40?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Decrease MAC: age, hypothermia, hyponatraemia, opioids, sedatives, α2-agonists, lithium, pregnancy, acute alcohol. Increase MAC: hyperthermia, chronic alcohol use, hypernatraemia, central stimulants (amphetamine, ephedrine), red hair. Sex, duration of anaesthesia, PaCO₂ within physiological range, and acid–base status have minimal effect.",
+        },
+        "name": "What factors increase or decrease MAC?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A fixed 2.0% sevoflurane is roughly 1.3 MAC in an 80-year-old, predisposing to hypotension, deeper-than-needed anaesthesia and prolonged emergence. Targeting an age-adjusted MAC keeps depth equivalent across patients and is the basis for the ASA/ESAIC Brain Health Initiative recommendation to maintain 0.7–1.3 MAC in the elderly.",
+        },
+        "name": "Why aim for 1.0 MAC age-adjusted rather than a fixed dial value?",
+      },
+    ],
+  },
+  "/notes/mapleson-breathing-systems-explained": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mapleson A (Magill, or its co-axial cousin the Lack). Fresh gas flow equal to alveolar minute ventilation (~70 mL/kg/min) is enough to prevent rebreathing because dead-space gas is vented through the expiratory valve before the next inspiration.",
+        },
+        "name": "Which Mapleson system is most efficient for spontaneous ventilation?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mapleson D (and its co-axial form, the Bain). With positive-pressure ventilation, fresh gas flow of 70 mL/kg/min — about one to two times minute ventilation — prevents rebreathing because the fresh gas inlet is at the patient end and washes dead-space gas down the tubing during expiration.",
+        },
+        "name": "Which is most efficient for controlled ventilation?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Mapleson C (Waters' circuit) is compact and used for resuscitation / transfer; high fresh gas flows (~2× MV) are needed. Mapleson E (Ayre's T-piece) has no reservoir or valve — used historically for paediatric anaesthesia. Mapleson F (Jackson Rees modification) adds an open-ended reservoir bag to allow controlled ventilation and is still used for children < 20 kg.",
+        },
+        "name": "Why are Mapleson C, E and F used in specific niches?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — the Bain is a co-axial Mapleson D. Fresh gas runs in the inner tube to the patient end; expired gas returns down the outer tube to the bag and valve. It is light, easy to scavenge and useful for head-and-neck surgery, but the inner tube must be tested for disconnection (Pethick test) at every use.",
+        },
+        "name": "Is the Bain a Mapleson D?",
+      },
+    ],
+  },
+  "/notes/p50-fetal-haemoglobin": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Approximately 19 mmHg, compared with ~26.6 mmHg for adult haemoglobin. A lower P50 means HbF binds oxygen more tightly at any given PO₂, shifting the oxygen-haemoglobin dissociation curve to the left.",
+        },
+        "name": "What is the P50 of fetal haemoglobin?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HbF is composed of two α and two γ chains (α₂γ₂) rather than the adult α₂β₂. The γ chain replaces a positively charged histidine residue with serine, reducing the binding pocket for 2,3-DPG. With less 2,3-DPG bound, HbF stabilises in its high-affinity (R) state at lower PO₂.",
+        },
+        "name": "Why does HbF have a lower P50?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "At the placental villous interface, maternal blood PO₂ is only ~30–40 mmHg. HbF's higher oxygen affinity means it can take up substantial oxygen at that low PO₂ — the 'double Bohr effect' (maternal blood acidifying as it gives up CO₂; fetal blood alkalinising as it loses CO₂) further widens the affinity gap. The fetal arterial saturation reaches ~70–80% despite the low driving pressure.",
+        },
+        "name": "How does the left-shifted curve help the fetus?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HbF production switches off in the perinatal period and HbA progressively replaces it. By 6 months of age HbF makes up <5% of total haemoglobin; by 1 year it is at the adult level of <1%. This is also when the infant's P50 normalises and 2,3-DPG levels approach adult values.",
+        },
+        "name": "When is HbF replaced by HbA?",
+      },
+    ],
+  },
+  "/notes/paediatric-maintenance-fluids-4-2-1-rule": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "4 mL/kg/h for the first 10 kg of body weight, plus 2 mL/kg/h for the second 10 kg, plus 1 mL/kg/h for each kilogram above 20 kg. A 26 kg child therefore needs (10 × 4) + (10 × 2) + (6 × 1) = 66 mL/h.",
+        },
+        "name": "What is the 4-2-1 rule for paediatric fluids?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It is the hourly form of Holliday and Segar's 1957 daily rule (100/50/20 mL/kg/day), which was derived from estimated energy expenditure — roughly 1 mL of water per kcal metabolised. Dividing 100, 50 and 20 mL/kg/day by 24 gives approximately 4, 2 and 1 mL/kg/h.",
+        },
+        "name": "Where does the 4-2-1 rule come from?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Surgery, pain, nausea, opioids and positive-pressure ventilation all drive non-osmotic ADH release, so free water is retained. Giving 0.18% saline/4% glucose in that setting produces acute hyponatraemia, cerebral oedema and, in reported cases, death. NICE CG174/NG29 and the APA recommend isotonic solutions instead.",
+        },
+        "name": "Why are hypotonic maintenance fluids no longer used?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An isotonic balanced crystalloid (Plasma-Lyte 148 or Hartmann's) or 0.9% saline, with 1–2% glucose added for neonates, infants and any child at risk of hypoglycaemia. Sodium concentration should be 131–154 mmol/L, and plasma sodium and glucose should be measured if fluids continue beyond a few hours.",
+        },
+        "name": "Which fluid should be used for paediatric maintenance?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. It is maintenance only. Deficit (fasting hours × maintenance rate), ongoing losses and blood loss are prescribed separately, though modern short fasting times and clear-fluid-until-1-hour regimens have made large calculated deficits largely obsolete.",
+        },
+        "name": "Does the 4-2-1 rule cover fasting and third-space losses?",
+      },
+    ],
+  },
+  "/notes/rapid-sequence-induction-drug-doses": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Induction: thiopentone 3–7 mg/kg or propofol 1.5–2.5 mg/kg (ketamine 1–2 mg/kg in shock; etomidate 0.3 mg/kg historically). Neuromuscular blocker: suxamethonium 1.0–1.5 mg/kg, or rocuronium 1.0–1.2 mg/kg if sugammadex is immediately available for rescue.",
+        },
+        "name": "What are the standard adult RSI drugs?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sux contraindications: hyperkalaemia, major burns > 24 h old, prolonged immobility, denervation injury, neuromuscular disease (MG, myotonia), suspected MH, malignant pseudocholinesterase deficiency. Rocuronium 1.2 mg/kg gives comparable intubating conditions at 60 s with sugammadex 16 mg/kg as the rescue option for can't-intubate-can't-oxygenate.",
+        },
+        "name": "When is rocuronium preferred over suxamethonium?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Practice has shifted. AAGBI 2015 and DAS 2015 retain cricoid pressure as part of the standard adult RSI but mandate releasing it immediately if intubation is difficult or if it impairs view at laryngoscopy. The 2019 IRIS trial found no difference in pulmonary aspiration with or without cricoid pressure. Most UK departments still teach it for completeness, with low threshold to release.",
+        },
+        "name": "Is cricoid pressure still indicated?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Obstetric RSI: full pre-oxygenation, left lateral tilt, smaller dose of induction agent (thiopentone 4 mg/kg), suxamethonium 1.5 mg/kg, ramped position. Shock/haemorrhage: ketamine 1–2 mg/kg preserves sympathetic tone; reduce induction-agent dose by ~50%; consider rocuronium for prolonged paralysis; have vasopressors drawn up.",
+        },
+        "name": "How do you modify RSI in obstetrics and major haemorrhage?",
+      },
+    ],
+  },
+  "/notes/rotem-teg-interpretation": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EXTEM — extrinsic pathway (tissue-factor activator). INTEM — intrinsic pathway (ellagic acid activator). FIBTEM — extrinsic pathway with platelets blocked by cytochalasin D; isolates fibrinogen contribution. APTEM — extrinsic plus aprotinin; compared to EXTEM detects fibrinolysis.",
+        },
+        "name": "What do the four ROTEM channels test?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CT (clotting time, seconds) — time to clot initiation. A5/A10 (amplitude at 5/10 min) — clot strength. MCF (maximum clot firmness, mm) — final strength. ML (maximum lysis, %) — fibrinolysis at 30 or 60 min.",
+        },
+        "name": "Which numbers should I look at?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EXTEM CT > 80 s → FFP. EXTEM A5 < 35 mm with FIBTEM A5 ≥ 9 mm → platelets. FIBTEM A5 < 9 mm → fibrinogen concentrate (or cryoprecipitate). EXTEM ML > 15% at 60 min → tranexamic acid 1 g IV. INTEM CT prolonged with normal EXTEM → consider heparin effect, check with HEPTEM.",
+        },
+        "name": "What are the action thresholds in major haemorrhage?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Insensitive to von Willebrand disease, antiplatelet agents, and DOACs. The trace can look normal in a patient who is clinically coagulopathic from these causes. Always interpret alongside fibrinogen (Clauss), platelet count, the clinical picture, and the local major haemorrhage protocol.",
+        },
+        "name": "What are ROTEM's limitations?",
+      },
+    ],
+  },
+  "/notes/sevoflurane-vs-desflurane-recovery": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Desflurane, marginally. In adults with anaesthesia of < 2 hours the difference in time to eye-opening is 1–3 minutes; in obese patients and longer cases the advantage widens (the lower fat solubility means less accumulation). For day surgery in lean adults the difference is usually clinically negligible.",
+        },
+        "name": "Which agent has the faster emergence?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Desflurane has a global warming potential ~2540× that of CO₂ over 100 years — about 20× higher than sevoflurane and 5× isoflurane. NHS England's Net Zero strategy committed to decommissioning desflurane from all hospitals by early 2024 except where clinically essential, and most trusts have now removed it from anaesthetic machines.",
+        },
+        "name": "Why is desflurane being phased out in the UK?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Compound A is produced when sevoflurane reacts with desiccated CO₂ absorbents (especially baralyme). Nephrotoxicity has been demonstrated in rats but never convincingly in humans, even at low fresh gas flows. UK practice considers low-flow sevoflurane safe; nevertheless, current circle-system absorbents (lithium hydroxide, Amsorb Plus) produce negligible Compound A.",
+        },
+        "name": "Does sevoflurane really cause renal injury via Compound A?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sevoflurane. It is non-pungent, well-tolerated, and is the only volatile licensed for paediatric inhalational induction in the UK. Desflurane is highly pungent, causes coughing, breath-holding and laryngospasm in light planes, and must never be used for inhalational induction.",
+        },
+        "name": "Which agent is better for inhalational induction?",
+      },
+    ],
+  },
+  "/notes/tof-ratio-before-extubation": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ratio of the fourth twitch amplitude (T4) to the first (T1) after four supramaximal stimuli at 2 Hz to the ulnar nerve. With no block T4/T1 = 1.0; non-depolarising block produces fade so the ratio falls. Below 0.9, pharyngeal coordination, hypoxic ventilatory response and airway protection are all impaired even though the patient may appear awake.",
+        },
+        "name": "What is the TOF ratio?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Head lift > 5 s, sustained handgrip and tidal volumes only exclude TOF ratios below ~0.6. Patients with TOF ratios of 0.7–0.9 routinely look adequate at the bedside but have a 3–5× increase in postoperative pulmonary complications (POPCs).",
+        },
+        "name": "Why isn't clinical assessment enough?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Neostigmine is effective from TOF count ≥ 2 (ideally ≥ 4) — i.e. only for shallow block. Give 50 µg/kg with glycopyrrolate 10 µg/kg. Allow 10 minutes for full effect and confirm TOF ratio ≥ 0.9 quantitatively before extubation. Deep block (TOF count 0–1) needs sugammadex 4 mg/kg (rocuronium/vecuronium) or further waiting.",
+        },
+        "name": "When can I rely on neostigmine?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Sugammadex dose depends on the depth of block — 2 mg/kg at TOF count of 2, 4 mg/kg at PTC 1–2, 16 mg/kg immediately after a 1.2 mg/kg rocuronium intubating dose. Monitoring is also needed to confirm successful reversal (TOF ratio ≥ 0.9) and to detect rare re-paralysis.",
+        },
+        "name": "Does sugammadex remove the need for monitoring?",
+      },
+    ],
+  },
+  "/notes/wiggers-diagram-explained": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It plots left ventricular, left atrial and aortic pressure, left ventricular volume, the ECG and the phonocardiogram against time for one cardiac cycle, so that valve opening and closure, filling, ejection and the heart sounds can all be related to the underlying pressure gradients.",
+        },
+        "name": "What does the Wiggers diagram show?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Seven: atrial systole, isovolumetric contraction, rapid ejection, reduced ejection, isovolumetric relaxation, rapid (passive) filling, and reduced filling or diastasis. Systole comprises isovolumetric contraction plus the two ejection phases; the remainder is diastole.",
+        },
+        "name": "What are the phases of the cardiac cycle on a Wiggers diagram?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The a wave is atrial contraction; the c wave is bulging of the closed AV valve into the atrium during isovolumetric contraction; the v wave is atrial filling against a still-closed AV valve during late ventricular systole. The x descent follows atrial relaxation and downward pull of the AV ring, and the y descent follows AV valve opening.",
+        },
+        "name": "Why do the a, c and v waves appear on the atrial pressure trace?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "S1 is mitral then tricuspid closure at the start of isovolumetric contraction, when ventricular pressure exceeds atrial pressure. S2 is aortic then pulmonary closure at the start of isovolumetric relaxation, when ventricular pressure falls below arterial pressure; it produces the dicrotic notch on the aortic trace.",
+        },
+        "name": "What causes the first and second heart sounds?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A brief upward deflection on the aortic pressure trace at aortic valve closure, caused by a small retrograde flow of blood and elastic recoil of the closing valve and aortic root. It marks the end of ejection and coincides with S2.",
+        },
+        "name": "What is the dicrotic notch?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Systolic duration is relatively fixed by the excitation-contraction machinery, so an increased heart rate is accommodated mainly by shortening diastasis. Filling time and coronary perfusion time — which for the left ventricle occurs almost entirely in diastole — fall disproportionately, which is why tachycardia is poorly tolerated in aortic stenosis and ischaemic heart disease.",
+        },
+        "name": "Why does tachycardia shorten diastole more than systole?",
       },
     ],
   },
@@ -6643,6 +7955,44 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
       },
     ],
   },
+  "/perioperative/gastrointestinal-disease": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not reliably. GLP-1 receptor agonists (semaglutide, liraglutide, tirzepatide) delay gastric emptying even in fasted patients. Guidance recommends holding the drug for one dosing interval before elective surgery (≥1 week for weekly formulations, ≥1 day for daily ones) and treating the patient as high aspiration risk — considering RSI or gastric ultrasound — if GI symptoms (nausea, bloating, vomiting) persist or the drug could not be withheld.",
+        },
+        "name": "Do standard fasting times protect patients on GLP-1 receptor agonists from aspiration?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For elective surgery, anti-TNF agents are often timed to trough levels (avoiding surgery in the days immediately after an infusion) because of an association with wound and infective complications, though evidence is mixed and disease control should not be sacrificed. Thiopurines (azathioprine/6-mercaptopurine) are usually continued. For emergency surgery (e.g. acute severe colitis), immunosuppression is not a reason to delay a life-saving operation.",
+        },
+        "name": "Should biologics and thiopurines be stopped before surgery in IBD?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "High risk = one major criterion (BMI <16, unintentional weight loss >15% in 3-6 months, little/no nutritional intake for >10 days, or low potassium/phosphate/magnesium before feeding) or two minor criteria (BMI <18.5, weight loss >10% in 3-6 months, little/no intake >5 days, alcohol misuse or drugs including insulin, chemotherapy, antacids or diuretics). High-risk patients start at 10 kcal/kg/day (5 kcal/kg/day if extreme risk, e.g. BMI <14 or negligible intake >15 days), rising slowly over 4-7 days, with thiamine 200-300 mg/day and proactive potassium, phosphate and magnesium replacement started before or with feeding.",
+        },
+        "name": "What are the NICE criteria for 'high risk' of refeeding syndrome and how does this change feeding?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Outputs above 1500-2000 mL/day cause depletion of sodium, magnesium and water (the small bowel cannot compensate as the colon would), producing a contracted extracellular volume with secondary hyperaldosteronism and a thirsty, hyponatraemic patient who drinks hypotonic fluid and worsens losses further. Correct with a glucose-saline oral rehydration solution, loperamide/codeine to slow transit, and IV magnesium/sodium replacement guided by daily electrolytes before elective induction; treat as hypovolaemic even with a normal-looking blood pressure.",
+        },
+        "name": "Why is a high-output stoma dangerous before anaesthesia?",
+      },
+    ],
+  },
   "/perioperative/genetic-syndromes": {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -6709,6 +8059,38 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         },
         "name": "What antibiotic should be given for suspected neutropenic sepsis?",
       },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A simple top-up transfusion to Hb ~100 g/L is usually sufficient for most surgery and is as effective as exchange transfusion at preventing perioperative complications. Exchange transfusion to reduce HbS% to below ~30% is reserved for high-risk surgery (bypass, neurosurgery) or patients with a history of severe crises, and avoids the hyperviscosity risk of simple top-up in patients with an already-high baseline Hb.",
+        },
+        "name": "What HbS target is needed before major surgery in sickle cell disease?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Desmopressin 0.3 microgram/kg IV releases stored factor VIII and von Willebrand factor, making it useful in mild haemophilia A and type 1 von Willebrand disease, as well as uraemic or aspirin-induced platelet dysfunction. It is ineffective in haemophilia B (no effect on factor IX) and type 3 VWD (no VWF stores to release), and should be used cautiously in type 2B VWD (may worsen thrombocytopenia).",
+        },
+        "name": "When is desmopressin useful in a bleeding disorder and when is it not?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Intervals depend on the drug and renal function: apixaban/rivaroxaban/edoxaban are typically omitted for 48 hours before a high bleeding-risk procedure or neuraxial block (longer if CrCl 30–50 mL/min), while dabigatran requires 48–96 hours depending on creatinine clearance and is avoided below CrCl 30 mL/min. Catheters are removed only once the same interval has elapsed since the last dose, and the next dose is delayed for several hours after removal.",
+        },
+        "name": "How long should a DOAC be omitted before neuraxial anaesthesia?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Irradiated cellular blood products prevent transfusion-associated graft-versus-host disease from viable donor lymphocytes. They are mandatory for stem cell transplant recipients, granulocyte transfusions, intrauterine/neonatal exchange transfusion, directed donations from blood relatives, patients treated with purine analogues (fludarabine, cladribine, bendamustine), and Hodgkin lymphoma patients.",
+        },
+        "name": "What blood products must be irradiated, and why?",
+      },
     ],
   },
   "/perioperative/hepatic-disease": {
@@ -6738,6 +8120,82 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
           "text": "Splanchnic vasoconstrictor (terlipressin or noradrenaline) plus 20% human albumin (1 g/kg on day 1, then 20–40 g/day). Diuretics, large-volume crystalloid and low-dose dopamine all worsen outcome; definitive treatment is liver transplantation.",
         },
         "name": "How is hepatorenal syndrome managed perioperatively?",
+      },
+    ],
+  },
+  "/perioperative/immunosuppression-hiv": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No — calcineurin inhibitors, antiproliferatives and corticosteroids must be continued throughout the perioperative period. Use IV or NG routes if the patient cannot take oral medication, monitor trough levels, and involve the transplant centre for any dose changes.",
+        },
+        "name": "Should transplant immunosuppressants ever be stopped before surgery?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Typically for one full dosing interval of the specific agent (e.g. one interval for anti-TNF drugs, one infusion cycle for rituximab or tocilizumab, one dosing interval for JAK inhibitors), balancing reduced surgical site infection risk against disease flare; restart once wound healing is established.",
+        },
+        "name": "How long before elective surgery should biologic therapies be withheld?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Prednisolone ≥5 mg daily (or equivalent) for more than 4 weeks in the preceding year is considered clinically significant for HPA axis suppression and warrants perioperative hydrocortisone supplementation scaled to surgical severity.",
+        },
+        "name": "What dose of steroid therapy is significant for adrenal suppression?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ritonavir (and cobicistat) are potent CYP3A4 inhibitors used as pharmacokinetic 'boosters' in antiretroviral regimens. They markedly prolong the action of CYP3A4-dependent drugs such as midazolam and fentanyl, so doses should be reduced and titrated carefully to avoid prolonged sedation and respiratory depression.",
+        },
+        "name": "Why is ritonavir clinically important to the anaesthetist even though it is not itself an anaesthetic drug?",
+      },
+    ],
+  },
+  "/perioperative/musculoskeletal-disease": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An anterior atlanto-dental interval > 3 mm on a lateral cervical spine X-ray in flexion indicates anterior atlantoaxial subluxation; vertical (basilar) subluxation, where the odontoid migrates upward into the foramen magnum, is the most dangerous and life-threatening variant. Flexion/extension imaging should be obtained before elective surgery in patients with long-standing disease and neck symptoms.",
+        },
+        "name": "What cervical spine finding indicates atlantoaxial instability in rheumatoid arthritis?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Biologics (e.g. TNF-α inhibitors such as adalimumab/infliximab, IL-6 inhibitors) are withheld for one full dosing interval, with surgery timed for the end of that interval to minimise both infection/wound-healing risk and disease flare. JAK inhibitors (tofacitinib, baricitinib, upadacitinib) are stopped 3 days before surgery because of thrombosis and infection risk. Methotrexate, hydroxychloroquine and sulfasalazine are continued throughout.",
+        },
+        "name": "How should biologic and JAK-inhibitor therapy be managed before elective surgery?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It affects nearly every system relevant to anaesthesia: microstomia limits mouth opening and airway access; Raynaud phenomenon and skin/vascular fibrosis make peripheral and arterial access difficult (avoid unnecessary cannulation, keep the patient warm); oesophageal dysmotility increases aspiration risk; interstitial lung disease and pulmonary hypertension increase perioperative respiratory and cardiac risk; and scleroderma renal crisis can be precipitated by high-dose corticosteroids and hypotension.",
+        },
+        "name": "Why is systemic sclerosis a particular anaesthetic challenge?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A restrictive ventilatory defect develops as the Cobb angle increases; forced vital capacity (FVC) < 40% predicted is associated with a significant risk of prolonged postoperative ventilation, and FVC < 70% predicted warrants careful preoperative respiratory assessment. Neuromuscular scoliosis (e.g. Duchenne muscular dystrophy) carries additional risks of cardiomyopathy, malignant hyperthermia susceptibility (avoid suxamethonium and volatile agents in dystrophinopathies) and a blunted cough with bulbar weakness.",
+        },
+        "name": "What respiratory parameters guide risk assessment before scoliosis surgery?",
       },
     ],
   },
@@ -6817,7 +8275,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "At least 4 weeks after balloon angioplasty, 6 weeks (ideally 3 months) after a bare-metal stent, and 6 months (ideally 12 months) after a drug-eluting stent — to allow dual antiplatelet therapy without premature interruption (ACC/AHA 2024).",
+          "text": "Elective non-cardiac surgery should be delayed at least 1 month after PCI regardless of stent type. Beyond this, whether to continue or interrupt dual antiplatelet therapy is a multidisciplinary (heart team) decision balancing individual thrombotic risk against surgical bleeding risk (ESC Non-Cardiac Surgery 2022).",
         },
         "name": "When should elective non-cardiac surgery be deferred after PCI?",
       },
@@ -6828,6 +8286,82 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
           "text": "Six predictors (high-risk surgery, IHD, heart failure, cerebrovascular disease, insulin-treated diabetes, creatinine >177 µmol/L): 0 ≈ 0.4%, 1 ≈ 1%, 2 ≈ 2.4%, ≥3 ≈ 5.4% risk of a major cardiac event at 30 days.",
         },
         "name": "How is the Revised Cardiac Risk Index (Lee) interpreted?",
+      },
+    ],
+  },
+  "/perioperative/psychiatric-substance-disease": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Current multisociety guidance recommends continuing buprenorphine perioperatively in most cases rather than routine discontinuation, using multimodal analgesia and titrated full-agonist opioids alongside it; stopping risks relapse and does not reliably improve analgesia.",
+        },
+        "name": "Should buprenorphine be stopped before surgery?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Serotonin syndrome has a rapid onset (usually <24 h), hyperreflexia, myoclonus and clonus, and diarrhoea; NMS develops over days, features 'lead-pipe' rigidity, hyporeflexia and very high CK, and follows dopamine antagonist exposure or dopaminergic withdrawal rather than serotonergic drugs.",
+        },
+        "name": "How do you distinguish serotonin syndrome from neuroleptic malignant syndrome?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The electrical stimulus produces an initial brief parasympathetic discharge (vagal outflow) causing bradycardia or even brief asystole, followed within seconds by a sympathetic surge causing tachycardia and hypertension during the tonic-clonic seizure; anticholinergic pre-treatment (glycopyrrolate) may be used in patients at risk of significant bradyarrhythmia.",
+        },
+        "name": "Why does bradycardia occur immediately after the ECT stimulus?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — detention under the Mental Health Act only authorises treatment for the mental disorder itself. Capacity for other treatment decisions must be separately assessed under the Mental Capacity Act 2005; if the patient has capacity for that specific decision, their refusal must be respected.",
+        },
+        "name": "Can a patient detained under the Mental Health Act refuse anaesthesia for an unrelated surgical problem?",
+      },
+    ],
+  },
+  "/perioperative/renal-disease": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Same-day dialysis leaves residual heparin effect and acute intravascular volume shifts that predispose to intraoperative hypotension. Dialysis the day before allows correction of potassium and fluid overload while restoring haemodynamic stability by the time of surgery.",
+        },
+        "name": "Why should a dialysis patient not be dialysed on the same day as surgery?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No — stable CKD patients with a normal baseline potassium can safely receive suxamethonium (typical rise ~0.5 mmol/L). It should be avoided if the patient is already hyperkalaemic, has uraemic neuropathy, or has missed dialysis, given the risk of a dangerous further rise.",
+        },
+        "name": "Is suxamethonium contraindicated in chronic kidney disease?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Morphine is metabolised to morphine-6-glucuronide (M6G), a more potent active metabolite than morphine itself, which accumulates in renal failure and can cause prolonged sedation and respiratory depression. Fentanyl (largely hepatically metabolised, inactive metabolites) or carefully titrated oxycodone are preferred.",
+        },
+        "name": "Why is morphine avoided in advanced renal impairment?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In critically ill patients with severe AKI, an accelerated strategy of RRT initiation conferred no mortality benefit over a standard, watchful-waiting strategy that initiated RRT only for conventional indications (refractory hyperkalaemia, acidosis, fluid overload, or lack of recovery), and was associated with more RRT-related adverse events.",
+        },
+        "name": "What did STARRT-AKI show about the timing of renal replacement therapy?",
       },
     ],
   },
@@ -7027,7 +8561,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Required for patients on >5 mg prednisolone/day for >3 weeks (HPA suppression). Minor surgery (e.g. hernia): usual oral dose + 25 mg hydrocortisone IV at induction. Moderate surgery (e.g. colectomy): 25 mg at induction + 100 mg/day for 24 h. Major surgery/critically ill: 100 mg at induction + 200 mg/day for 48–72 h then taper. Continue maintenance dose throughout. Failure to cover risks Addisonian crisis: profound hypotension unresponsive to fluids/pressors, hyponatraemia, hyperkalaemia.",
+          "text": "Required for patients on >5 mg prednisolone/day for >3 weeks (HPA suppression). Minor surgery (e.g. hernia): usual oral dose + hydrocortisone 25 mg IV at induction. Moderate surgery (e.g. hemicolectomy): usual dose + 25 mg at induction then 100 mg over 24 h. Major surgery (e.g. laparotomy, cardiac surgery): usual dose + 50 mg at induction then 200 mg over 24 h, continued while the stress response persists then tapered. Continue maintenance dose throughout. Failure to cover risks Addisonian crisis: profound hypotension unresponsive to fluids/pressors, hyponatraemia, hyperkalaemia.",
         },
         "name": "When is perioperative steroid cover required and what regimen is used?",
       },
@@ -7095,7 +8629,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "AAGBI 2010 algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures (small dose benzodiazepine or propofol). Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline 1 µg/kg). Give 20 % Intralipid: 1.5 mL/kg bolus, then 15 mL/kg/h infusion, repeat bolus up to 3×, max 12 mL/kg total. Continue CPR — long resuscitation often successful. Refer to ITU and report to NPSA / Lipid Rescue registry.",
+          "text": "RCoA/Association of Anaesthetists 2024 algorithm: STOP injection, call for help, ABC (100 % O₂, secure airway, IV access). Manage seizures (small dose benzodiazepine or propofol). Treat arrhythmias (avoid lidocaine, calcium, vasopressin; use small adrenaline 1 µg/kg). Give 20 % Intralipid: 1.5 mL/kg bolus, then 15 mL/kg/h infusion, repeat bolus up to 3×, max 12 mL/kg total. Continue CPR — long resuscitation often successful. Refer to ITU and report to NPSA / Lipid Rescue registry.",
         },
         "name": "Outline the management of local-anaesthetic systemic toxicity (LAST).",
       },
@@ -7551,7 +9085,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Phase I (inspiratory baseline, CO₂-free gas from the airway dead space, value 0). Phase II (expiratory upstroke, rapid rise as alveolar gas reaches the sensor). Phase III (alveolar plateau, gently rising; the value at its end is ETCO₂). Phase 0 (inspiratory downstroke back to baseline). The alpha angle (II–III) widens with airflow obstruction (shark-fin); the beta angle (III–0) widens with rebreathing.",
+          "text": "Phase I (expiratory baseline, CO₂-free gas from the apparatus and anatomical dead space, value 0). Phase II (expiratory upstroke, rapid rise as alveolar gas reaches the sensor). Phase III (alveolar plateau, gently rising; the value at its end is ETCO₂). Phase 0 (inspiratory downstroke back to baseline). The alpha angle (II–III) is normally ~100–110° and widens with airflow obstruction (shark-fin); the beta angle (III–0) is ~90° and widens with rebreathing.",
         },
         "name": "What are the four phases of a normal capnography waveform?",
       },
@@ -7559,7 +9093,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A shark-fin (sloped) trace reflects prolonged, uneven alveolar emptying — the alpha angle becomes obtuse and the plateau slopes upward. It indicates expiratory airflow obstruction: acute severe asthma, COPD exacerbation, anaphylaxis, kinked tracheal tube or partial circuit obstruction. Treat the cause; do not increase ventilator rate before addressing obstruction or you will generate auto-PEEP.",
+          "text": "A shark-fin (sloped) trace reflects prolonged, uneven alveolar emptying — the alpha angle becomes obtuse and the plateau slopes upward. It indicates expiratory airflow obstruction: acute severe asthma, COPD exacerbation, anaphylaxis, kinked tracheal tube or partial circuit obstruction. Anaphylaxis is a key perioperative cause: NAP6 found bronchospasm and reduced or absent end-tidal CO₂ among the commonest features, so anaphylaxis can present either as a shark-fin obstructive trace or as sudden loss of the trace with cardiovascular collapse and PEA arrest. Treat the cause; do not increase ventilator rate before addressing obstruction or you will generate auto-PEEP.",
         },
         "name": "What does a shark-fin capnography waveform mean?",
       },
@@ -7777,6 +9311,118 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         },
         "name": "What is microshock and how is it prevented?",
       },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An RCD disconnects the supply within about 40 ms when live/neutral currents differ by more than 30 mA. Sudden loss of power to a ventilator, bypass pump or surgical light can be more dangerous than the fault, so Group 2 medical locations (theatres, cardiac cath labs, critical care bedspaces) use a 1:1 isolation transformer with a line isolation monitor that alarms but does not disconnect. Two independent faults are then needed to shock anyone.",
+        },
+        "name": "Why do theatres use an isolated power supply instead of an RCD?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Do not panic or switch everything off. The supply is still safe — the alarm means one fault has occurred and the safety margin is gone. Stop connecting new devices, then unplug the most recently added equipment one at a time until the alarm clears; the last device unplugged is the faulty one. If the alarm persists with everything unplugged, the fault is in the fixed wiring: call estates, finish or pause the case safely, and avoid contact between patient and any earthed metalwork.",
+        },
+        "name": "What should I do when the line isolation monitor alarms mid-case?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Burns occur when the effective contact area of the return electrode falls — partial peeling, hair, scar, bony prominence, fluid or prep soaking the adhesive, or a plate applied over a metal implant — so current density at the plate rises. Apply a full-size plate to clean, dry, shaved, well-perfused muscle bulk close to the operative site, with the long axis facing the surgical field, and re-check it after repositioning. Contact-quality-monitoring plates alarm before injury occurs.",
+        },
+        "name": "What causes a diathermy return-plate burn and how is it avoided?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Alternate-site burns arise when current finds a small-area path to earth — ECG electrodes, temperature probes, a drip stand, stirrups, or skin-to-skin contact between a limb and the trunk. With modern isolated-output generators this is uncommon but occurs where the patient touches earthed metal. Keep the patient insulated from metal, avoid skin-to-skin bridges with padding, and site monitoring away from the current path.",
+        },
+        "name": "Why does a patient get a burn somewhere other than the diathermy site?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Direct coupling is the active electrode touching another conductor (a metal instrument, laparoscope or clip) which then burns bowel out of view. Capacitive coupling is current induced in a surrounding conductor across intact insulation — classically an active hook inside a metal cannula, or a metal instrument in a plastic port. Insulation failure at the shaft causes the same injury. Mitigation: inspect insulation, use short bursts at lowest power, keep the whole active tip in view, activate only when the tip is clear, and use all-metal or all-plastic port systems rather than hybrids.",
+        },
+        "name": "What are direct and capacitive coupling in laparoscopic surgery?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Fire needs oxidiser, fuel and ignition. Allow alcohol-based prep to dry fully and avoid pooling under drapes; avoid open oxygen delivery above the clavicles — use a cuffed tube or laryngeal mask so the oxygen is contained, or keep the inspired oxygen at the lowest tolerated level and pause enrichment for 1 minute before diathermy near the airway; keep swabs damp; and hold the active electrode in a quiver when not in use. If a fire starts: stop the gas flow, remove burning material and drapes, extinguish with saline, then reassess airway and burns.",
+        },
+        "name": "How do I prevent a surgical fire in theatre?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bipolar — the current path is confined to the two forceps tips, so nothing traverses the thorax or the device leads. Where monopolar is unavoidable, use short irregular bursts under 5 seconds at the lowest effective power, keep the current path (electrode to return plate) away from the generator and leads, monitor perfusion by plethysmograph or arterial trace because diathermy obscures the ECG, and have a magnet, external pacing/defibrillation pads and chronotropes immediately available.",
+        },
+        "name": "Is bipolar or monopolar diathermy safer for a patient with a pacemaker?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Over most pacemakers a magnet produces asynchronous pacing (VOO/DOO) at a fixed manufacturer-specific rate, protecting against diathermy-induced inhibition. Over an ICD it suspends tachyarrhythmia detection and shock delivery but does not change pacing. Magnet behaviour varies between manufacturers and can be programmed off, so confirm the expected response with the device team, and arrange a postoperative check before the patient leaves monitored care.",
+        },
+        "name": "How does a magnet affect a pacemaker or ICD?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Diathermy is not used inside the MRI environment. The MRI hazards are different: radiofrequency energy heats conductive loops, so route ECG cables straight without loops, keep them off the skin, use the minimum monitoring, and only equipment labelled MR Safe or used within its MR Conditional limits. Active implants need exact device identification and a documented programme-and-monitor plan because of lead-tip heating and inappropriate therapy.",
+        },
+        "name": "How is diathermy used safely in a patient having MRI or with an intra-aortic device?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Leakage current is the small current that flows from mains-powered parts to earth or to the patient through insulation and capacitance even when the device works normally. Limits under IEC 60601-1 are set by applied-part type: 100 µA for type B and BF, and 10 µA for type CF, with higher single-fault allowances. Because leakage from several devices can sum through one patient, equipotential earthing, CF connections for anything intracardiac, and routine electrical safety testing are all needed.",
+        },
+        "name": "What is a leakage current and what limits apply?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Isolate the supply or use an insulating object to break contact before touching the casualty — never grab them. Start ALS if they are unresponsive: shock-induced arrest is often VF and responds to defibrillation. Look for entry and exit burns, arrhythmia, rhabdomyolysis and, in high-voltage injury, deep tissue damage. Monitor ECG for at least a few hours if there was any loss of consciousness, arrhythmia or a current path across the chest, quarantine the device, and report through the incident and MHRA/medical-device routes.",
+        },
+        "name": "What do I do if a member of staff or a patient receives an electric shock in theatre?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A thin conductive film of water forms on surfaces at that humidity and continuously drains static charge to earth, preventing spark discharge. It began as protection against ignition of ether and cyclopropane and remains relevant to alcohol prep and airway fires, static damage to electronics, and static discharge to monitoring leads. Below about 40% relative humidity, drapes, vinyl flooring and clothing accumulate triboelectric charge.",
+        },
+        "name": "Why is theatre humidity kept at 50–60%?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Peripheral nerve stimulators deliver a few tens of milliamps over a limb and are safe with normal siting, but keep the electrodes on a limb away from the thorax and any pacing system. TENS is generally avoided over the chest or across a pacemaker or ICD because pulsed current can be sensed as intrinsic activity. Forced-air and resistive warming blankets are class-approved patient-contact devices — use only the manufacturer's blanket, never a bare hose (free-hosing causes burns), and keep them clear of the diathermy return plate.",
+        },
+        "name": "Can I use a nerve stimulator, TENS machine or forced-air warmer safely with an implanted device?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Frequency is set by risk in the local medical-device management policy rather than a fixed legal interval: mains-powered patient-connected devices in theatre and critical care are usually checked annually, with a visual check of plug, cable and casing by the user before every use. Anything dropped, wetted, sparking, tripping the supply or giving an unexplained monitor artefact is withdrawn and tested. Extension leads and daisy-chaining are avoided because they defeat isolated-supply protection and add earth-fault paths.",
+        },
+        "name": "How often must theatre electrical equipment be tested?",
+      },
     ],
   },
   "/physics/electricity-magnetism": {
@@ -7945,7 +9591,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Stop ventilation and disconnect O₂. Remove the burning tube. Pour saline into the airway to extinguish. Re-mask ventilate on air. Re-intubate (often with a smaller tube), perform bronchoscopy to assess thermal injury, administer steroids and humidified O₂. Admit to critical care for observation of progressive airway oedema (peaks 12–24 h).",
+          "text": "Stop ventilation and disconnect O₂. Remove the burning tube. Pour saline into the airway to extinguish. Re-mask ventilate on air. Re-intubate (often with a smaller tube), then perform flexible or rigid bronchoscopy to assess thermal and inhalational injury and remove debris. Administer humidified O₂ and admit to critical care for observation of progressive airway oedema.",
         },
         "name": "What is the management of an airway fire?",
       },
@@ -7975,7 +9621,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Zero-order — constant amount eliminated per unit time, independent of concentration (e.g. ethanol, phenytoin at high dose, aspirin in overdose). First-order — constant fraction eliminated per unit time; rate ∝ concentration (e.g. most drugs at therapeutic doses — propofol, fentanyl). Half-life is constant only in first-order kinetics.",
+          "text": "First-order kinetics eliminate a constant fraction per unit time, producing an exponential concentration–time curve and a straight line on a semi-log plot; half-life is constant. Zero-order kinetics occur when elimination is saturated: a constant amount is removed per unit time regardless of concentration, producing a straight concentration–time line and a curved semi-log plot; half-life is not constant and decreases as concentration falls. Examples include ethanol, phenytoin at high concentration and salicylate overdose.",
         },
         "name": "Distinguish zero-order and first-order kinetics with an example.",
       },
