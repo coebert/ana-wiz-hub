@@ -415,7 +415,7 @@ const PainMedicineTopic = () => {
         <div id="pharmacogenetics" className="scroll-mt-24">
         <CollapsibleSubsection title="Pharmacogenetics of Analgesia">
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Analgesic response varies several-fold between patients given identical doses. A clinically useful proportion of that variability is inherited, and codeine and tramadol are the classic examples because both are prodrugs requiring <strong className="text-foreground">CYP2D6</strong> activation <InlineRef topicId="pain-medicine" refLabel="CPIC 2021 Opioid PGx" />.
+            Analgesic response varies several-fold between patients given identical doses. A clinically useful proportion of that variability is inherited, and codeine and tramadol are the classic examples because both are prodrugs requiring <strong className="text-foreground">CYP2D6</strong> activation <InlineRef topicId="pain-medicine" refLabel="CPIC 2021 Opioid PGx" /><InlineRef topicId="pain-medicine" refLabel="Anaesthesia 2012 Pharmacogenetics" />.
           </p>
           <div className="grid sm:grid-cols-2 gap-3 mb-3">
             <div className="p-4 rounded-lg border border-border">
@@ -695,7 +695,7 @@ const PainMedicineTopic = () => {
                 <li>Shift emphasis to pain neuroscience education, graded activity and exercise, sleep and stress management, and psychological therapy</li>
                 <li>Where drugs are used, favour centrally acting agents (duloxetine, amitriptyline) over escalating opioids</li>
                 <li>Deprescribe long-term opioids where they are not delivering functional benefit, using a planned taper</li>
-                <li>Mixed phenotypes are common — treat the nociceptive or neuropathic component conventionally while addressing central sensitisation in parallel</li>
+                <li>Mixed phenotypes are common — treat the nociceptive or neuropathic component conventionally while addressing central sensitisation in parallel <InlineRef topicId="pain-medicine" refLabel="BJA 2023 Cancer Pain Phenotypes" /></li>
               </ul>
             </div>
           </div>

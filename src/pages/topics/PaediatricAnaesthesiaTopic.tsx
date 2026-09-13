@@ -517,7 +517,7 @@ const PaediatricAnaesthesiaTopic = () => {
                 </div>
                 <div className="p-4 rounded-lg border border-border bg-secondary/30">
                   <p className="font-semibold text-foreground text-sm">Rectus sheath block</p>
-                  <p className="text-sm text-muted-foreground mt-1">Umbilical and epigastric hernia, laparoscopic port sites, pyloromyotomy, laparotomy. Local anaesthetic deposited between the posterior aspect of the rectus muscle and the posterior rectus sheath, bilaterally. <strong>0.1–0.2 ml/kg per side</strong> of 0.25% levobupivacaine. Catheters can be sited for midline laparotomy.</p>
+                  <p className="text-sm text-muted-foreground mt-1">Umbilical and epigastric hernia, laparoscopic port sites, pyloromyotomy, laparotomy. Local anaesthetic deposited between the posterior aspect of the rectus muscle and the posterior rectus sheath, bilaterally. <strong>0.1–0.2 ml/kg per side</strong> of 0.25% levobupivacaine, with ultrasound guidance markedly improving accuracy and reducing the volume required compared with the blind loss-of-resistance technique <InlineRef topicId="paediatric-anaesthesia" refLabel="Willschke 2006 Rectus Sheath" />. Catheters can be sited for midline laparotomy.</p>
                 </div>
                 <div className="p-4 rounded-lg border border-border bg-secondary/30">
                   <p className="font-semibold text-foreground text-sm">Transversus abdominis plane (TAP) block</p>

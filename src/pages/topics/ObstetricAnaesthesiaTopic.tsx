@@ -797,7 +797,7 @@ const ObstetricAnaesthesiaTopic = () => {
 
         <CollapsibleSubsection title="Racial, Ethnic and Socioeconomic Disparities in Maternity Care">
           <p className="text-muted-foreground leading-relaxed mb-3">
-            UK maternal outcomes are not equally distributed. Successive MBRRACE-UK reports show that <strong className="text-foreground">Black women are around three to four times more likely to die in pregnancy or the puerperium than White women, and Asian women around twice as likely</strong>, with a clear additional gradient by socioeconomic deprivation. These differences persist after adjustment for pre-existing medical conditions, so they cannot be explained by comorbidity alone <InlineRef topicId="obstetric-anaesthesia" refLabel="MBRRACE-UK" />. Anaesthetists are directly implicated because so much high-risk maternity care passes through us.
+            UK maternal outcomes are not equally distributed. Successive MBRRACE-UK reports show that <strong className="text-foreground">Black women are around three to four times more likely to die in pregnancy or the puerperium than White women, and Asian women around twice as likely</strong>, with a clear additional gradient by socioeconomic deprivation. These differences persist after adjustment for pre-existing medical conditions, so they cannot be explained by comorbidity alone <InlineRef topicId="obstetric-anaesthesia" refLabel="MBRRACE-UK" /><InlineRef topicId="obstetric-anaesthesia" refLabel="Anaesthesia 2025 Maternity Disparities" />. Anaesthetists are directly implicated because so much high-risk maternity care passes through us.
           </p>
           <div className="grid sm:grid-cols-2 gap-3 mb-3">
             <div className="p-4 rounded-lg border border-border">

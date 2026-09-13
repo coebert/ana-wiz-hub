@@ -282,7 +282,7 @@ const RegionalAnaesthesiaTopic = () => {
 
           <h3 id="pnb-anticoagulation" className="text-lg font-serif font-semibold text-foreground mt-8 mb-2 scroll-mt-24">Anticoagulation and Peripheral Nerve Blocks</h3>
           <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
-            The strict neuraxial intervals exist because a vertebral canal haematoma compresses the cord in a closed bony space. Most peripheral blocks are not in that situation, so the guidance is <strong>risk-stratified by site rather than by drug alone</strong>: assess how compressible the site is, whether bleeding would be visible, and what the consequence of a haematoma would be <InlineRef topicId="regional-anaesthesia" refLabel="AAGBI 2020" />.
+            The strict neuraxial intervals exist because a vertebral canal haematoma compresses the cord in a closed bony space. Most peripheral blocks are not in that situation, so the guidance is <strong>risk-stratified by site rather than by drug alone</strong>: assess how compressible the site is, whether bleeding would be visible, and what the consequence of a haematoma would be <InlineRef topicId="regional-anaesthesia" refLabel="AAGBI 2020" /><InlineRef topicId="regional-anaesthesia" refLabel="SFAR 2019 Antithrombotics & RA" />.
           </p>
           <div className="space-y-3">
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
