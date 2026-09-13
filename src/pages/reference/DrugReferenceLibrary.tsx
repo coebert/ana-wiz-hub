@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Link, useSearchParams } from "react-router-dom";
 import { AlertTriangle, FlaskConical, Search, Syringe } from "lucide-react";
 
+import ReferenceAppLayout from "@/features/drugReference/ReferenceAppLayout";
 import { useDrugList } from "@/features/drugReference/useDrugReference";
 import { drugDilutions } from "@/features/drugReference/dilutions";
 
@@ -12,7 +12,8 @@ const slugsWithRecipes = new Set(drugDilutions.map((d) => d.slug).filter(Boolean
 
 export default function DrugReferenceLibrary() {
   const { drugs, loading, error } = useDrugList();
-  const [query, setQuery] = useState("");
+  const [params] = useSearchParams();
+  const [query, setQuery] = useState(params.get("q") ?? "");
   const [letter, setLetter] = useState<string | null>(null);
   const [drugClass, setDrugClass] = useState<string | null>(null);
   const [onlyMonitored, setOnlyMonitored] = useState(false);
@@ -44,16 +45,11 @@ export default function DrugReferenceLibrary() {
   const hasFilters = Boolean(query || letter || drugClass || onlyMonitored || onlyInfusions);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Drug Reference — Anaesthesia &amp; Critical Care | AnaesthesiaCore</title>
-        <meta
-          name="description"
-          content="Searchable anaesthetic and critical care drug reference: presentation, dosing, standard dilutions and pump rates, pharmacokinetics, safety, and therapeutic drug monitoring with BNF and SPC sources."
-        />
-        <link rel="canonical" href="https://anaesthesiacore.app/reference/drugs" />
-      </Helmet>
-
+    <ReferenceAppLayout
+      title="Drug Reference — Anaesthesia &amp; Critical Care | AnaesthesiaCore"
+      description="Searchable anaesthetic and critical care drug reference: presentation, dosing, standard dilutions and pump rates, pharmacokinetics, safety, and therapeutic drug monitoring with BNF and SPC sources."
+      canonicalPath="/reference/drugs"
+    >
       <header className="border-b border-border bg-card">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -243,6 +239,6 @@ export default function DrugReferenceLibrary() {
           </p>
         </aside>
       </main>
-    </div>
+    </ReferenceAppLayout>
   );
 }

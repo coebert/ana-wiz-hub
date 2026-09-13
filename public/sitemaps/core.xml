@@ -79,11 +79,42 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/reference</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/reference/drugs</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://anaesthesiacore.app/reference/monitoring</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/reference/infusions</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/reference/calculator</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/reference/about</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
   <url>
     <loc>https://anaesthesiacore.app/tools</loc>
     <lastmod>2026-09-13</lastmod>

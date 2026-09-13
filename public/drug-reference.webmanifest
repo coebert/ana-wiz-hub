@@ -1,0 +1,18 @@
+{
+  "name": "Anaesthetics & Critical Care Drug Reference",
+  "short_name": "Drug Reference",
+  "description": "Searchable anaesthetic and critical care drug reference with dosing, standard dilutions, pump rates and therapeutic drug level monitoring.",
+  "start_url": "/reference",
+  "scope": "/reference",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/drug-reference-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

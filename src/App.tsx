@@ -30,6 +30,11 @@ const DrugsLibrary = lazy(() => import("./pages/DrugsLibrary"));
 const DrugDetail = lazy(() => import("./pages/DrugDetail"));
 const DrugReferenceLibrary = lazy(() => import("./pages/reference/DrugReferenceLibrary"));
 const DrugReferenceEntry = lazy(() => import("./pages/reference/DrugReferenceEntry"));
+const DrugReferenceHome = lazy(() => import("./pages/reference/DrugReferenceHome"));
+const DrugReferenceMonitoring = lazy(() => import("./pages/reference/DrugReferenceMonitoring"));
+const DrugReferenceInfusions = lazy(() => import("./pages/reference/DrugReferenceInfusions"));
+const DrugReferenceCalculator = lazy(() => import("./pages/reference/DrugReferenceCalculator"));
+const DrugReferenceAbout = lazy(() => import("./pages/reference/DrugReferenceAbout"));
 const SeoIndexing = lazy(() => import("./pages/SeoIndexing"));
 const A11yAudit = lazy(() => import("./pages/A11yAudit"));
 const Curriculum = lazy(() => import("./pages/Curriculum"));
@@ -160,8 +165,13 @@ const App = () => (
           <Route path="/dev/diagram-snapshot" element={<DiagramSnapshot />} />
           <Route path="/dev/diagram-snapshot/:name" element={<DiagramSnapshot />} />
           <Route path="/drugs" element={<DrugsLibrary />} />
+          <Route path="/reference" element={<DrugReferenceHome />} />
           <Route path="/reference/drugs" element={<DrugReferenceLibrary />} />
           <Route path="/reference/drugs/:slug" element={<DrugReferenceEntry />} />
+          <Route path="/reference/monitoring" element={<DrugReferenceMonitoring />} />
+          <Route path="/reference/infusions" element={<DrugReferenceInfusions />} />
+          <Route path="/reference/calculator" element={<DrugReferenceCalculator />} />
+          <Route path="/reference/about" element={<DrugReferenceAbout />} />
           <Route path="/drugs/:slug" element={<DrugDetail />} />
           <Route path="/tools" element={<ToolsHub />} />
           <Route path="/tools/mac-for-age" element={<MACForAgeTool />} />
