@@ -500,11 +500,11 @@ function patchHead(
   // 3. Strip any existing canonical / og:url / og:title / og:description /
   //    twitter:title / twitter:description so we never ship duplicates.
   html = html.replace(
-    /\s*<link\s+rel="canonical"[^>]*>\s*/gi,
+    /\s*<link\s+[^>]*rel="canonical"[^>]*>\s*/gi,
     "\n    ",
   );
   html = html.replace(
-    /\s*<meta\s+(?:property|name)="(?:og:url|og:title|og:description|twitter:title|twitter:description)"[^>]*>\s*/gi,
+    /\s*<meta\s+[^>]*(?:property|name)="(?:og:url|og:title|og:description|twitter:title|twitter:description)"[^>]*>\s*/gi,
     "\n    ",
   );
 
