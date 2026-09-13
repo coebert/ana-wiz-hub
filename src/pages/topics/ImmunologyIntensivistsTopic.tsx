@@ -878,6 +878,42 @@ const ImmunologyIntensivistsTopic = () => {
             </p>
           </section>
 
+          {/* ---------------- Immunonutrition ---------------- */}
+          <section className="space-y-3">
+            <h2 className="text-2xl font-serif font-bold text-foreground">
+              Immunonutrition in critical illness
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Immunonutrition means supplying specific substrates at pharmacological — not simply
+              nutritional — doses in the hope of modulating the immune response. The physiology is
+              attractive and the trial evidence is disappointing, so the examinable position is: feed
+              enterally and early, meet protein and energy targets, and do not add routine
+              immune-modulating supplements<InlineRef topicId={TOPIC_ID} refLabel="ESPEN ICU 2019" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                { agent: "Glutamine", rationale: "Conditionally essential in catabolism; fuel for enterocytes and lymphocytes, substrate for glutathione, supports gut barrier integrity.", evidence: "Do not give routinely. High-dose parenteral glutamine increased mortality in patients with multi-organ failure (REDOXS); ESPEN advises against supplementation in complicated ICU patients. Enteral glutamine may still be used in major burns and trauma in some units." },
+                { agent: "Arginine", rationale: "Substrate for nitric oxide synthase and for T-cell proliferation; depleted in sepsis (arginase release).", evidence: "Arginine-enriched formulas have a role in elective major surgery/ERAS, but are not recommended in sepsis, where increased NO production may worsen vasodilatation and haemodynamic instability." },
+                { agent: "Omega-3 fatty acids (EPA/DHA)", rationale: "Displace arachidonic acid, generating less inflammatory 3-series eicosanoids and pro-resolving mediators (resolvins, protectins).", evidence: "Enteral EPA/DHA within nutritional doses is acceptable; high-dose bolus omega-3 for ARDS is not recommended after OMEGA showed harm. Fish-oil-containing parenteral lipid emulsions are a reasonable choice but not proven to change mortality." },
+                { agent: "Selenium, zinc, vitamin C, vitamin D", rationale: "Cofactors for antioxidant enzymes (glutathione peroxidase, superoxide dismutase); replete measured deficiency.", evidence: "Correct documented deficiency, but avoid high-dose monotherapy: single high-dose selenium, and high-dose IV vitamin C in sepsis (LOVIT showed worse composite outcome), are not supported. Vitamin D loading has not improved outcomes in unselected ICU patients (VIOLET)." },
+              ].map((n) => (
+                <div key={n.agent} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{n.agent}</p>
+                  <p className="text-sm text-muted-foreground mt-1"><strong>Rationale:</strong> {n.rationale}</p>
+                  <p className="text-sm text-muted-foreground mt-1"><strong>Evidence:</strong> {n.evidence}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              <strong>Viva line:</strong> "Immunonutrition targets the immune response with glutamine,
+              arginine, omega-3 fatty acids and antioxidants. Physiologically plausible, but the trial
+              evidence is neutral to harmful in the general ICU population — so I would prioritise early
+              enteral feeding with adequate protein, correct measured micronutrient deficiency, and reserve
+              immune-modulating formulas for specific groups such as elective major surgery or burns, in
+              line with local and ESPEN guidance."
+            </p>
+          </section>
+
           {/* ---------------- Clinical pearls ---------------- */}
           <section className="rounded-xl border border-icu/40 bg-icu/5 p-5 space-y-2">
             <h2 className="text-xl font-serif font-semibold text-foreground">
