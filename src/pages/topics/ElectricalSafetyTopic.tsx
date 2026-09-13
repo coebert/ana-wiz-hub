@@ -132,6 +132,85 @@ const ElectricalSafetyTopicWorkedExamples: WorkedExample[] = [
     answer: "Microshock via the pacing wire. Use only CF-rated equipment for cardiac connections, maintain isolated theatre supply with line-isolation monitoring, and ensure regular electrical safety testing.",
     cites: ["BJA Educ 2017", "Cross & Plunkett Ch.14", "Middleton Ch.16"],
   },
+  {
+    title: "Line isolation monitor alarms during cardiac surgery",
+    scenario: "Forty minutes into a coronary artery bypass graft, the theatre line isolation monitor alarms. The perfusionist, ventilator, cell saver and a newly connected warming device are all running. What is happening and what do you do?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>The alarm signals a <strong>first</strong> insulation fault — enough leakage that a second fault would allow a hazardous current (set point typically 2–5 mA prospective fault current)</li>
+          <li>The supply is deliberately <em>not</em> interrupted: power loss to bypass or ventilation would be more dangerous than the fault</li>
+          <li>Stop adding equipment; announce the alarm to the team so nobody plugs anything else in</li>
+          <li>Unplug devices in reverse order of connection — the last device that clears the alarm is the faulty one (here, most likely the newly connected warmer)</li>
+          <li>If the alarm persists with all mobile equipment unplugged, the fault is in fixed wiring: call estates, keep the patient insulated from earthed metalwork, and complete the case on the remaining safe sockets</li>
+          <li>Quarantine and label the faulty device, and report through incident and medical-device channels</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Silencing the alarm and continuing — the single-fault safety margin has gone</li>
+            <li>Switching off the theatre supply reflexively during bypass</li>
+            <li>Using extension leads or multiway adaptors, which defeat isolated-supply protection</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "A single insulation fault has been detected; the supply remains safe. Identify the faulty device by sequential unplugging, avoid adding equipment, keep the patient clear of earthed metal, and involve estates if fixed wiring is implicated.",
+    cites: ["HTM 06-01", "BJA Educ 2017 (Electrical safety)"],
+  },
+  {
+    title: "Airway fire during tracheostomy",
+    scenario: "During an open tracheostomy on 100% oxygen, the surgeon uses monopolar diathermy to divide pretracheal tissue and a flame appears in the wound. What are the immediate actions and how should this have been prevented?",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Recognise the fire triad: oxidiser (high FiO₂ leaking around the airway), fuel (drapes, prep, swabs, tube), ignition (diathermy)</li>
+          <li>Immediate actions: stop diathermy, <strong>disconnect the oxygen / stop fresh gas flow</strong>, remove burning drapes and swabs, extinguish with saline</li>
+          <li>Remove the tracheal tube if it is burning; then re-establish ventilation on air or the lowest tolerated FiO₂</li>
+          <li>Assess airway injury by bronchoscopy, look for facial and airway burns, plan for airway oedema and possible ICU admission</li>
+          <li>Prevention: reduce FiO₂ to the minimum tolerated and pause enrichment for about 1 minute before cutting near the airway, use a cuffed tube so oxygen is contained rather than open delivery, allow alcohol prep to dry, keep swabs damp, use cutting mode at lowest power, and cut the trachea with a scalpel rather than diathermy</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Pouring saline before the oxygen source is stopped — the fire continues while oxygen flows</li>
+            <li>Assuming a nasal cannula or supraglottic device is safe for head and neck diathermy: both create an oxygen-enriched pocket under the drapes</li>
+            <li>Forgetting that 100% oxygen plus nitrous oxide markedly accelerates combustion</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "Stop diathermy and oxygen flow, remove and extinguish burning material, then re-secure the airway on the lowest tolerated FiO₂ and assess for thermal injury. Prevention is oxygen containment and minimisation plus avoidance of diathermy at the tracheal incision.",
+    cites: ["Anesthesiology 2019 (OR fires)"],
+  },
+  {
+    title: "Burn under the diathermy return plate after a long laparotomy",
+    scenario: "After a 6-hour laparotomy in the lithotomy position, recovery staff find a full-thickness burn at the edge of the diathermy return plate on the patient's thigh. Explain the physics and the preventable factors.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li>Monopolar current returns through the plate; heating depends on <strong>current density</strong> (I/A), so the same current through a smaller effective contact area produces the temperature rise</li>
+          <li>Effective area falls when the plate partly peels (prep, blood, irrigation, sweat), is applied over hair, scar, bone or an implant, or when repositioning lifts an edge — classically after moving into lithotomy</li>
+          <li>Poor perfusion of the underlying tissue reduces heat clearance, so pressure areas and vasoconstricted or hypotensive patients burn sooner</li>
+          <li>Preventable factors: full-size plate on shaved, dry, well-perfused muscle bulk close to the operative field; long axis facing the field; re-inspection after every position change; contact-quality-monitoring plates that alarm on impedance rise; avoid pooling of prep or irrigation</li>
+          <li>Also exclude an alternate-site burn: check ECG electrodes, temperature probes and any contact with earthed metal such as stirrups</li>
+        </ol>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Trimming a plate to fit — this reduces the area and raises current density</li>
+            <li>Siting the plate over a hip prosthesis, bony prominence or ECG electrode</li>
+            <li>Blaming the generator when the fault is nearly always plate contact or patient–metal contact</li>
+          </ul>
+        </div>
+      </div>
+    ),
+    answer: "High current density at a reduced effective plate contact area. Full-size plate on prepared, well-perfused muscle, re-checked after repositioning, with contact-quality monitoring, prevents it.",
+    cites: ["MHRA Electrosurgery", "BJA Educ 2017"],
+  },
 ];
 
 const ElectricalSafetyTopic = () => {
