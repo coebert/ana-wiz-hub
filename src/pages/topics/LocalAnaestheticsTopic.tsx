@@ -173,6 +173,58 @@ const LocalAnaestheticsTopic = () => {
           </section>
 
           <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Stereoisomerism and Clinical Significance</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Bupivacaine, ropivacaine and mepivacaine each possess a chiral carbon in the piperidine ring, so they can
+              exist as two mirror-image enantiomers. Standard ("racemic") bupivacaine is manufactured as a 50:50 mixture
+              of the <strong>R(+)</strong> and <strong>S(-)</strong> forms. The two enantiomers have essentially identical
+              physicochemical properties (pKa, lipid solubility) and therefore similar local anaesthetic potency, but they
+              interact differently with cardiac ion channels, which has driven the development of single-enantiomer drugs<InlineRef topicId="local-anaesthetics" refLabel="BJA 1997 LA Stereochemistry" />.
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-sm text-foreground/90">
+              <li><strong>R(+)-bupivacaine</strong> binds cardiac Na⁺ channels with greater affinity and dissociates from them more slowly than the S(-) form ("fast-in, slow-out" is exaggerated further), and also has more marked effects on cardiac Ca²⁺ and K⁺ channels. This stereoselective cardiotoxicity is the principal reason racemic bupivacaine carries the narrowest safety margin of the amide LAs and why inadvertent intravascular injection can cause refractory VT/VF and cardiac arrest.</li>
+              <li><strong>Levobupivacaine</strong> is the pure S(-) enantiomer of bupivacaine. It has essentially the same potency, onset and duration as the racemate, but animal and human volunteer studies show a significantly larger dose needed to produce cardiac arrhythmia and CNS toxicity, giving a wider margin of safety while retaining bupivacaine's clinical profile (spinal, epidural and peripheral nerve block, chronic pain infusions).</li>
+              <li><strong>Ropivacaine</strong> is not simply a resolved enantiomer of bupivacaine but the pure S(-) enantiomer of a related molecule with a propyl (rather than butyl) side-chain on the piperidine nitrogen. This shorter side-chain reduces lipid solubility relative to bupivacaine, which independently lowers potency and cardiotoxicity, in addition to the favourable S(-) configuration. Ropivacaine also produces a more pronounced sensory-motor differential block than bupivacaine at equipotent concentrations, making it attractive for labour epidurals and peripheral nerve catheters where motor sparing matters.</li>
+            </ul>
+            <div className="overflow-x-auto mt-4">
+              <table className="w-full text-sm border border-border rounded-lg">
+                <thead>
+                  <tr className="bg-muted/50">
+                    <th className="text-left p-3 font-semibold text-foreground">Agent</th>
+                    <th className="text-left p-3 font-semibold text-foreground">Structure / enantiomer</th>
+                    <th className="text-left p-3 font-semibold text-foreground">Relative potency</th>
+                    <th className="text-left p-3 font-semibold text-foreground">Cardiotoxicity</th>
+                    <th className="text-left p-3 font-semibold text-foreground">Typical clinical use</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-t border-border">
+                    <td className="p-3 font-medium text-foreground">Racemic bupivacaine</td>
+                    <td className="p-3">50:50 R(+) / S(-) mixture</td>
+                    <td className="p-3">Reference (1×)</td>
+                    <td className="p-3">Highest — R(+) enantiomer binds cardiac Na⁺ channels avidly and dissociates slowly</td>
+                    <td className="p-3">Spinal anaesthesia, epidural analgesia, peripheral nerve block where cost or availability favours the racemate</td>
+                  </tr>
+                  <tr className="border-t border-border">
+                    <td className="p-3 font-medium text-foreground">Levobupivacaine</td>
+                    <td className="p-3">Pure S(-) enantiomer of bupivacaine</td>
+                    <td className="p-3">Similar to racemic bupivacaine</td>
+                    <td className="p-3">Lower — wider margin before arrhythmia/CNS toxicity than the racemate</td>
+                    <td className="p-3">Epidural and spinal anaesthesia, peripheral nerve blocks, chronic pain infusions — a lower-risk substitute for bupivacaine</td>
+                  </tr>
+                  <tr className="border-t border-border">
+                    <td className="p-3 font-medium text-foreground">Ropivacaine</td>
+                    <td className="p-3">Pure S(-) propyl homologue (not a bupivacaine enantiomer)</td>
+                    <td className="p-3">Slightly lower than bupivacaine (~0.5-0.6×)</td>
+                    <td className="p-3">Lowest of the long-acting amides — reduced lipid solubility compounds the safer S(-) configuration</td>
+                    <td className="p-3">Labour epidural infusions and peripheral nerve catheters where motor-sparing, sensory-predominant block is desirable</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Additives to Local Anaesthetics</h2>
             <div className="space-y-3 text-sm">
               <div className="rounded-lg border border-border p-4">
@@ -266,6 +318,11 @@ const LocalAnaestheticsTopic = () => {
 
           <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Physicochemical Properties</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Three linked physicochemical properties — pKa, lipid solubility and protein binding — explain almost all of
+              the clinical pharmacology of local anaesthetics, and each maps onto a distinct property of the drug in
+              use<InlineRef topicId="local-anaesthetics" refLabel="BJA 1986 LA Pharmacology" />.
+            </p>
             <div className="overflow-x-auto mt-4">
               <table className="w-full text-sm border border-border rounded-lg">
                 <thead>
@@ -294,6 +351,56 @@ const LocalAnaestheticsTopic = () => {
                 </tbody>
               </table>
             </div>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">pKa, onset and the minimum blocking concentration (Cm)</h3>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Onset speed is governed not only by pKa but also by the concentration of drug delivered relative to the
+              <strong> minimum blocking concentration (Cm)</strong> — the lowest concentration needed to block conduction in
+              a given nerve fibre (analogous to MAC for volatile agents). Increasing the concentration or dose delivers more
+              molecules above Cm faster, which speeds clinical onset independent of pKa. This explains the apparent paradox
+              of <strong>chloroprocaine</strong>: despite a high pKa (~8.7, meaning only a small unionised fraction at pH
+              7.4), it is used clinically in high concentration (2-3%), providing a large absolute quantity of unionised
+              base and a rapid onset (~5 minutes) that outperforms agents with a more favourable pKa. Alkalinisation of the
+              solution with sodium bicarbonate raises pH towards the drug's pKa, increases the unionised fraction and
+              speeds onset (used clinically for lidocaine, less reliably for bupivacaine, which precipitates at higher pH).
+              Conversely, tissue acidosis from infection or abscess lowers local pH, shifts more drug into the ionised
+              form, and can produce clinically inadequate block even with an otherwise correctly placed injection.
+            </p>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Lipid solubility, potency and toxicity</h3>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Greater lipid solubility allows easier penetration of the lipid-rich nerve membrane (and other lipid-rich
+              membranes generally), which increases potency — highly lipid-soluble agents such as bupivacaine and
+              tetracaine block nerves at lower molar concentrations than lidocaine or prilocaine. The same property that
+              confers potency also drives systemic toxicity: highly lipid-soluble agents penetrate cardiac and CNS tissue
+              readily and bind avidly to myocardial and neuronal sodium channels, so potency and toxicity rise broadly in
+              parallel — bupivacaine is both markedly more potent and markedly more cardiotoxic than lidocaine at
+              equivalent plasma concentrations.
+            </p>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Protein binding, duration and the tissue reservoir</h3>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              In plasma, local anaesthetics bind principally to <strong>alpha-1-acid glycoprotein (AAG)</strong>, a
+              high-affinity, low-capacity acute-phase protein, and to a lesser extent to albumin (high-capacity, lower
+              affinity). Only the unbound (free) fraction is pharmacologically active and available to cause systemic
+              toxicity, so protein binding is a key determinant of both duration of action at the injection site (highly
+              bound drug dissociates more slowly from the Na⁺ channel, prolonging block) and of the safety margin in
+              plasma. AAG is an acute-phase reactant and is <strong>reduced in neonates and in pregnancy</strong>, so a
+              greater free fraction circulates for a given total plasma concentration in these groups, increasing the
+              risk of systemic and fetal/neonatal toxicity at doses that would be safe in a healthy non-pregnant adult.
+              Highly perfused, lipid-rich tissues (fat, muscle) also act as a <strong>reservoir</strong>, taking up drug
+              and buffering the plasma concentration, but slowly releasing it back — relevant to the pattern and duration
+              of systemic absorption after large-volume regional blocks.
+            </p>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Putting it together: classification by potency and duration</h3>
+            <p className="text-foreground/90 leading-relaxed">
+              Combining lipid solubility (potency) and protein binding (duration) produces the practical three-tier
+              classification used clinically: <strong>low potency, short duration</strong> (procaine, chloroprocaine — low
+              lipid solubility and low protein binding); <strong>moderate potency and duration</strong> (lidocaine,
+              prilocaine, mepivacaine — intermediate on both properties); and <strong>high potency, long duration</strong>
+              (bupivacaine, levobupivacaine, ropivacaine, tetracaine — high lipid solubility and high protein binding)<InlineRef topicId="local-anaesthetics" refLabel="BJA 1986 LA Pharmacology" />.
+            </p>
           </section>
 
           <section className="mb-10">

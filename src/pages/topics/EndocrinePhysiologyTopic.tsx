@@ -410,6 +410,35 @@ const EndocrinePhysiologyTopic = () => {
               catecholamines, ADH, aldosterone, glucagon, GH, IL-6/TNF-α. Results in: hyperglycaemia, sodium/water
               retention, protein catabolism, immunosuppression.
             </p>
+            <div className="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground">Afferent neural (nociceptive) triggers</p>
+                <p className="mt-1 text-muted-foreground">Tissue injury activates peripheral nociceptors; signals travel via A-delta and C fibres through the dorsal horn and spinothalamic tracts to the hypothalamus and brainstem, driving both sympathetic outflow and CRH/ACTH release. Depth and site of surgery, and the completeness of neural blockade, determine the size of this afferent drive <InlineRef topicId="endocrine-physiology" refLabel="Nicholson & Hall 2011" />.</p>
+              </div>
+              <div className="rounded-lg border border-border p-4">
+                <p className="font-semibold text-foreground">Humoral / inflammatory triggers</p>
+                <p className="mt-1 text-muted-foreground">Damaged tissue releases IL-1, IL-6 and TNF-α from macrophages and injured cells, activates the complement cascade and generates local prostaglandins and bradykinin. These mediators act independently of the neural afferent pathway — the response persists even under dense neuraxial block, though it is attenuated — and IL-6 is the best-correlated marker of surgical severity <InlineRef topicId="endocrine-physiology" refLabel="Nicholson & Hall 2011" />.</p>
+              </div>
+            </div>
+            <div className="mt-4 rounded-lg border border-border p-4 text-sm text-muted-foreground leading-relaxed">
+              <p className="font-semibold text-foreground">Hormonal response</p>
+              <ul className="mt-1 space-y-1 list-disc list-inside">
+                <li><strong>ACTH–cortisol</strong>: loses its normal diurnal pattern and rises in proportion to surgical severity, promoting gluconeogenesis, lipolysis, protein catabolism and sodium retention, and suppressing the inflammatory/immune response.</li>
+                <li><strong>Catecholamines</strong>: adrenaline and noradrenaline rise acutely, driving tachycardia, hypertension, glycogenolysis and lipolysis.</li>
+                <li><strong>Glucagon</strong> and <strong>growth hormone</strong> rise and add to gluconeogenesis and lipolysis, while GH also promotes insulin resistance via IGF pathways.</li>
+                <li><strong>Insulin</strong>: secretion is initially reduced (α-adrenergic inhibition of β-cells) and peripheral insulin resistance develops in skeletal muscle and liver, producing surgical/stress hyperglycaemia even with normal or raised insulin levels later in the response.</li>
+                <li><strong>Thyroid axis</strong>: peripheral conversion of T4 to T3 falls (reduced 5'-deiodinase activity) producing a transient "low T3 (sick euthyroid)" state with low-normal TSH and T4 — a physiological adaptation, not primary hypothyroidism, and does not require thyroxine replacement.</li>
+              </ul>
+            </div>
+            <div className="mt-4 rounded-lg border border-border p-4 text-sm text-muted-foreground leading-relaxed">
+              <p className="font-semibold text-foreground">Metabolic, fluid/electrolyte and haemostatic consequences</p>
+              <ul className="mt-1 space-y-1 list-disc list-inside">
+                <li><strong>Catabolism</strong>: net whole-body catabolic state — gluconeogenesis, glycogenolysis and lipolysis provide substrate, while accelerated skeletal-muscle protein breakdown produces hyperglycaemia and a negative nitrogen balance that can impair wound healing and increase susceptibility to infection, particularly after major or prolonged surgery.</li>
+                <li><strong>Fluid and electrolytes</strong>: ADH and aldosterone rise, driving renal sodium and water retention with oliguria, and increased potassium excretion; the retained free water relative to sodium can produce a dilutional hyponatraemia, especially if hypotonic fluids are given.</li>
+                <li><strong>Haemostasis and immunity</strong>: a prothrombotic state develops from platelet activation, increased fibrinogen and factor VIII, and inhibition of fibrinolysis, contributing to perioperative venous thromboembolism risk; transient cell-mediated immunosuppression increases susceptibility to postoperative infection.</li>
+              </ul>
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">The magnitude of the response is broadly proportional to the severity and duration of surgical trauma — minor day-case surgery produces a modest response, whereas major open or emergency surgery produces the largest hormonal and metabolic swings <InlineRef topicId="endocrine-physiology" refLabel="Nicholson & Hall 2011" />.</p>
             <p className="text-sm text-muted-foreground leading-relaxed mt-3">
               Cuthbertson described two phases <InlineRef topicId="endocrine-physiology" refLabel="Finnerty Stress Response 2013" />:
             </p>
@@ -419,7 +448,7 @@ const EndocrinePhysiologyTopic = () => {
               <li><strong>Mediators beyond cortisol</strong>: catecholamines (adrenaline, noradrenaline) drive glycogenolysis and lipolysis; glucagon and growth hormone add to gluconeogenesis; cytokines IL-1, IL-6 and TNF-α trigger the acute-phase response; ADH and aldosterone retain sodium and water.</li>
               <li><strong>Metabolic consequences</strong>: insulin resistance and stress hyperglycaemia, protein catabolism with negative nitrogen balance (urinary nitrogen loss up to 15–20 g/day after major surgery), lipolysis, sodium and water retention with a fall in urine output, and hypokalaemia.</li>
               <li><strong>Systemic effects</strong>: fever, leucocytosis, thrombocytosis, hepatic acute-phase protein synthesis (CRP, fibrinogen, ferritin) with reduced albumin and transferrin, and transient immunosuppression.</li>
-              <li><strong>Attenuation</strong>: neuraxial blockade (most effective — an epidural to T4 for lower-body surgery blocks the afferent limb), effective opioid analgesia and regional techniques, minimally invasive/laparoscopic surgery, avoidance of hypothermia, early enteral feeding and carbohydrate loading, and the wider ERAS bundle.</li>
+              <li><strong>Attenuation</strong>: neuraxial blockade (most effective — an epidural or spinal to T4 is particularly effective for lower-body/lower-abdominal surgery as it interrupts the afferent neural limb), regional analgesia techniques more generally, effective opioid analgesia (high-dose fentanyl substantially blunts the ACTH-cortisol response to cardiac surgery), minimally invasive/laparoscopic surgery (reduces tissue trauma and cytokine release), maintaining normothermia, preoperative carbohydrate loading and the wider ERAS bundle, and good perioperative glucose control — none abolishes the response completely, and neural blockade attenuates it most effectively when applied before incision <InlineRef topicId="endocrine-physiology" refLabel="Nicholson & Hall 2011" />.</li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
