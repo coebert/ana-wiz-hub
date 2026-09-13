@@ -189,7 +189,12 @@ const AcuteLiverFailureTopic = () => {
                 </>
               ) },
               { system: "Cardiovascular", management: "Hyperdynamic circulation (high CO, low SVR) — similar to sepsis. Noradrenaline first-line. Relative adrenal insufficiency — consider hydrocortisone." },
-              { system: "Coagulation", management: "Balanced coagulopathy (↓ pro- and anti-coagulant factors). Do NOT correct INR unless actively bleeding or pre-procedure — INR used for prognostication (King's criteria)." },
+              { system: "Coagulation", management: (
+                <>
+                  <strong>Rebalanced, not simply bleeding-prone:</strong> pro-coagulant factors (II, V, VII, X, fibrinogen) fall in parallel with anti-coagulants (protein C, antithrombin), so the prolonged INR reflects synthetic failure rather than a true bleeding tendency, and spontaneous major bleeding is uncommon. Do <strong>not</strong> correct INR routinely — it is a prognostic variable in the King's criteria and correction masks trajectory. Use <strong>viscoelastic testing (ROTEM/TEG)</strong> rather than INR to identify genuine hypocoagulability before invasive procedures or in active bleeding: FIBTEM A5 low → fibrinogen concentrate or cryoprecipitate targeting fibrinogen {'>'}1.5 g/L (higher if bleeding), EXTEM CT prolonged → FFP or PCC, low EXTEM MCF with normal FIBTEM → platelets, aiming platelets {'>'}50 × 10⁹/L for most procedures and {'>'}20 × 10⁹/L otherwise. Give <strong>vitamin K 10 mg IV</strong> once (coexisting deficiency is common) and correct hypofibrinogenaemia, hypocalcaemia, hypothermia and acidosis, which all impair clot formation. Recombinant factor VIIa transiently normalises INR but carries thrombotic risk and no outcome benefit — rescue use only, on transplant-centre advice. Thromboprophylaxis is still indicated in the absence of bleeding, since ALF also carries a prothrombotic risk.
+                </>
+              ) },
+
               { system: "Metabolic", management: "Hypoglycaemia (impaired gluconeogenesis — 10% dextrose infusion). Metabolic acidosis (lactate). Hypokalaemia, hyponatraemia, hypophosphataemia." },
               { system: "Renal", management: "Hepatorenal syndrome or ATN. Avoid nephrotoxins. CRRT preferred (haemodynamic stability, avoids ICP spikes from IHD)." },
               { system: "Infection", management: "High infection risk (impaired innate immunity). Low threshold for cultures and empiric antibiotics. Fungal infection common — consider antifungals." },

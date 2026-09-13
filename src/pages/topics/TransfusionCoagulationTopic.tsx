@@ -471,8 +471,9 @@ const TransfusionCoagulationTopic = () => {
                   </tr>
                 </thead>
                 <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Topical agents not licensed for IV use</td><td>Betadine, chlorhexidine, hydrogen peroxide, topical thrombin, gelatin/collagen haemostats, bone cement, distilled water</td><td>Switch to standard sucker until field is irrigated and dry; avoid salvaging blood in contact with these agents</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Bowel contents / pus</td><td>Faecal contamination, frank infection</td><td>Standard sucker only; resume ICS after washout if surgical field clean</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Topical agents not licensed for IV use</td><td>Betadine, chlorhexidine, hydrogen peroxide, topical thrombin, gelatin/collagen haemostats, bone cement, distilled water, <strong>adrenaline-soaked swabs/packs</strong></td><td>Switch to standard sucker until field is irrigated and dry; avoid salvaging blood in contact with these agents. Salvaging blood exposed to adrenaline-soaked swabs can re-infuse a substantial adrenaline load and cause severe hypertension, tachycardia and arrhythmia</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Bowel contents / pus</td><td>Faecal contamination, frank infection</td><td>Traditionally listed as a contraindication, but this is <strong>relative and contested</strong>: with copious washout and a wash/leucodepletion cycle, reported bacteraemia is usually transient and clinically insignificant, and in life-threatening haemorrhage the risk of massive allogeneic transfusion may outweigh it. Practical approach — standard sucker while the field is contaminated, copious lavage, then resume salvage with antibiotic cover if bleeding is severe; discuss with the surgeon and haematology</td></tr>
+
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Malignancy</td><td>Tumour-bearing surgical field</td><td>Acceptable with a leucodepletion filter (NICE IPG 144)<InlineRef topicId="transfusion-coagulation" refLabel="NICE IPG144" />; also consider irradiation of salvaged blood. The historic absolute ban reflected theory, not outcome data — no increase in recurrence has been shown in urological or hepatic resection series</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Obstetrics</td><td>Caesarean delivery, PPH</td><td>Acceptable with separate suction of amniotic fluid before salvage and a leucodepletion filter (OAA-AAGBI 2018)</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Sickle cell disease</td><td>HbSS</td><td>Avoid — washing/centrifugation may precipitate sickling. HbAS / trait is acceptable</td></tr>
@@ -502,8 +503,21 @@ const TransfusionCoagulationTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">FIBTEM low → cryo. EXTEM CT prolonged → FFP. EXTEM MCF low (FIBTEM normal) → platelets. HEPTEM shorter than INTEM → protamine.</p>
               </div>
             </div>
+            <p className="text-sm text-muted-foreground leading-relaxed mt-3">
+              <strong>Interpreting clot firmness correctly:</strong> EXTEM MCF is not a "platelet number" and no fixed
+              percentage split between platelets and fibrinogen should be quoted. Clot firmness reflects a{" "}
+              <strong>complex, non-linear interaction</strong> between platelet count and function, fibrinogen
+              concentration, fibrin polymerisation, factor XIII-mediated cross-linking, haematocrit, temperature,
+              pH and ionised calcium. FIBTEM (platelet contribution abolished by cytochalasin D) isolates the
+              fibrin component, so the <strong>difference</strong> between EXTEM and FIBTEM amplitudes is used to
+              infer the platelet contribution — but the relative contributions vary with the clinical state, and
+              fibrinogen deficiency, dilutional coagulopathy, hypocalcaemia or hypothermia can all reduce MCF with
+              a normal platelet count. Always interpret amplitudes alongside the clinical picture, laboratory
+              fibrinogen/platelet counts and correction of temperature and ionised calcium.
+            </p>
             </CollapsibleSubsection>
           </ExamSection>
+
 
           <ExamSection id="trials" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Key Transfusion Trials">

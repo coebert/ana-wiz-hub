@@ -51,7 +51,7 @@ const objectives = [
   "Escalate status epilepticus through benzodiazepine → second-line AED → general anaesthesia with EEG.",
   "Manage SAH complications: rebleeding, vasospasm (nimodipine), hydrocephalus, and associated sodium disturbance.",
   "Differentiate SIADH, cerebral salt wasting and diabetes insipidus using volume status, urine Na/osmolality and the diagnostic flowchart, and treat each appropriately.",
-  "Perform UK brainstem death testing — confounder exclusion, two doctors, two sets, apnoea test PaCO₂ >6.65 kPa.",
+  "Perform UK brainstem death testing — confounder exclusion, two doctors, two sets, apnoea test PaCO₂ ≥6.0 kPa with pH ≤7.30 (AoMRC 2023).",
   "Manage acute SCI: MAP ≥85 mmHg, neurogenic vs spinal shock, autonomic dysreflexia, suxamethonium safety window, plus respiratory, bowel and bladder care.",
   "Interpret ICP, EVD, PbtO₂ and microdialysis (LPR, glucose, glycerol) to guide tier-based therapy and multimodal neuromonitoring.",
   "Recognise and manage autoimmune encephalitis (antibody classes, first- and second-line immunotherapy) and GBS respiratory failure (20/30/40 rule).",
@@ -99,13 +99,15 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        UK (AoMRC 2008) criteria: starting from a <strong>normal baseline PaCO₂ (4.5–6.0 kPa)</strong>,
-        the PaCO₂ must be allowed to rise to <strong>&gt;6.65 kPa</strong> AND the arterial pH must fall
-        to <strong>&lt;7.40</strong>, with no respiratory effort observed throughout — this confirms a
-        maximal respiratory stimulus has been delivered. Here baseline PaCO₂ 5.0 kPa rose to 7.2 kPa with
-        pH 7.20: both criteria met, so the test confirms absent respiratory drive. PaCO₂ rises at roughly
+        UK criteria (AoMRC 2023): starting from a <strong>normal baseline PaCO₂ (4.5–6.0 kPa)</strong>,
+        the PaCO₂ must be allowed to reach <strong>≥6.0 kPa</strong> with a concomitant fall in arterial
+        pH to <strong>≤7.30</strong>, with no respiratory effort observed throughout — this confirms a
+        maximal respiratory stimulus has been delivered. The older targets (PaCO₂ &gt;6.65 kPa, pH &lt;7.40,
+        a rise of &gt;0.5 kPa from baseline) are superseded. Here baseline PaCO₂ 5.0 kPa rose to 7.2 kPa with
+        pH 7.20: both current criteria met, so the test confirms absent respiratory drive. PaCO₂ rises at roughly
         0.5 kPa/min, which is used only to estimate the required duration of disconnection (usually ≥5
         min) — it is not itself a diagnostic criterion.
+
       </>
     ),
     answer: (
@@ -187,7 +189,7 @@ const NeurointensiveCareTopic = () => {
         { text: "Eurotherm trial: therapeutic hypothermia is harmful in TBI — do not use", cites: ["BJA Educ 2014"] },
         { text: "SAH vasospasm peaks day 7 — nimodipine is the only proven pharmacological intervention", cites: ["BTF 2017"] },
         { text: "Status epilepticus: benzodiazepine → levetiracetam/phenytoin/valproate → RSI + thiopentone/propofol", cites: ["BJA Educ 2018"] },
-        { text: "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test PaCO₂ >6.65 kPa", cites: ["BJA Educ 2014"] },
+        { text: "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test PaCO₂ ≥6.0 kPa with pH ≤7.30 (AoMRC 2023)", cites: ["AoMRC 2023"] },
         { text: "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)", cites: ["BTF 2017"] },
         { text: "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically", cites: ["BJA Educ 2018"] },
         { text: "Cerebral microdialysis: LPR >25 = metabolic crisis. ↓ pyruvate = ischaemia; normal/↑ pyruvate = mitochondrial dysfunction (won't respond to ↑ CPP)", cites: ["BJA Educ 2014"] },
@@ -462,13 +464,16 @@ const NeurointensiveCareTopic = () => {
             UK criteria: known irreversible cause of brain damage. Exclude confounders (hypothermia &lt;34°C, drugs, metabolic/endocrine derangement). Two sets of tests by two senior doctors (one ≥5 years registered); the certified <strong>time of death is the completion of the second set</strong> of tests.<InlineRef topicId="neurointensive-care" refLabel="AoMRC 2008" />
           </p>
           <p className="text-muted-foreground leading-relaxed mb-2">
-            <strong>Apnoea test criteria (AoMRC 2008):</strong> pre-oxygenate, confirm a{" "}
+            <strong>Apnoea test criteria (AoMRC 2023):</strong> pre-oxygenate, confirm a{" "}
             <strong>normal baseline PaCO₂ (4.5–6.0 kPa)</strong> and pH, then disconnect with apnoeic
-            oxygen insufflation and allow the PaCO₂ to rise to <strong>&gt;6.65 kPa</strong> with an
-            arterial <strong>pH &lt;7.40</strong>, observing for any respiratory effort. PaCO₂ climbs at
-            approximately 0.5 kPa/min, so ≥5 min of disconnection is usually needed — the rate of rise
-            estimates test duration only and is not a diagnostic threshold. In chronic CO₂ retention the
-            baseline is higher and the target PaCO₂ must be raised accordingly.<InlineRef topicId="neurointensive-care" refLabel="AoMRC 2008" />
+            oxygen insufflation and allow the PaCO₂ to reach <strong>≥6.0 kPa</strong> with a concomitant
+            fall in arterial <strong>pH to ≤7.30</strong>, observing for any respiratory effort. The test
+            may be concluded before PaCO₂ reaches 6.0 kPa if the pH is already ≤7.30, and should not be
+            abandoned before the pH is ≤7.30 unless the patient becomes haemodynamically unstable. PaCO₂
+            climbs at approximately 0.5 kPa/min, so ≥5 min of disconnection is usually needed — the rate of
+            rise estimates test duration only and is not a diagnostic threshold, and the previous
+            &gt;6.65 kPa / pH &lt;7.40 / rise &gt;0.5 kPa targets are superseded. In chronic CO₂ retention
+            the baseline is higher and the target PaCO₂ must be raised accordingly.<InlineRef topicId="neurointensive-care" refLabel="AoMRC 2023" />
           </p>
           <div className="grid sm:grid-cols-3 gap-2">
             {[
@@ -478,7 +483,8 @@ const NeurointensiveCareTopic = () => {
               "No motor response in cranial nerve distribution",
               "Absent gag reflex (CN IX, X)",
               "Absent cough reflex (CN X)",
-              "Apnoea test: no respiratory effort with PaCO₂ >6.65 kPa",
+              "Apnoea test: no respiratory effort with PaCO₂ ≥6.0 kPa and pH ≤7.30",
+
             ].map((test) => (
               <div key={test} className="p-2 rounded border border-border text-xs text-muted-foreground">{test}</div>
             ))}

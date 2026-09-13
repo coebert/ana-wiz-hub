@@ -149,7 +149,23 @@ const IcuNutritionTopic = () => {
                 </p>
               </div>
             </div>
+            <p className="text-muted-foreground leading-relaxed mt-3">
+              <strong>Why the ebb/flow distinction changes feeding:</strong> in the ebb phase, endogenous
+              glucose production of 500–1400 kcal/day cannot be suppressed by exogenous feed, so early
+              full-calorie delivery simply adds to total energy load and produces hyperglycaemia,
+              hypertriglyceridaemia, CO₂ retention and suppression of <strong>autophagy</strong> — the
+              cellular clearance mechanism thought to protect mitochondrial function during acute illness.
+              This is the mechanistic explanation for the harm of early aggressive feeding in EPaNIC, and
+              for hypocaloric (≤ 70% of measured requirement) early nutrition with protein escalated
+              gradually. In the flow phase the problem reverses: <strong>anabolic resistance</strong> means
+              muscle protein synthesis responds poorly to amino acid delivery while inflammation,
+              immobility and insulin resistance persist, so protein alone cannot prevent wasting — it must
+              be paired with early mobilisation, and much of the recovery of muscle mass and function
+              happens only in the post-ICU rehabilitation phase, when appetite is often poor and intake
+              must be actively supported.<InlineRef topicId="icu-nutrition" refLabel="Anaesthesia 2023 Malnutrition" />
+            </p>
             </CollapsibleSubsection>
+
           </ExamSection>
 
           <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>

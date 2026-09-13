@@ -318,7 +318,7 @@ const IcuSedationDeliriumTopic = () => {
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Delirium Prevention &amp; Treatment</h2>
             <div className="space-y-2">
               {[
-                { approach: "Non-pharmacological (first-line)", detail: "Sleep hygiene (cluster nocturnal interventions, earplugs, eye masks, light/dark cycling), early mobilisation, reorientation, cognitive stimulation, family presence, minimise benzodiazepines, optimise hearing aids/glasses." },
+                { approach: "Non-pharmacological (first-line)", detail: "Sleep hygiene (cluster nocturnal interventions, earplugs, eye masks, light/dark cycling, avoid overnight bloods/washes/radiology where safe), early mobilisation, reorientation, cognitive stimulation, family presence, minimise benzodiazepines, optimise hearing aids/glasses. Bundled multicomponent care (ABCDEF / eCASH) is the only intervention with consistent evidence of reduced delirium duration." },
                 { approach: "Dexmedetomidine", detail: "Preferred sedative in the delirious or agitated patient. SPICE III: no mortality difference vs usual care but shorter time to extubation; useful for agitation impeding weaning." },
                 { approach: "Haloperidol / atypical antipsychotics", detail: "MIND-USA and AID-ICU: no benefit for treatment or prevention of ICU delirium. Reserve for distressing hyperactive symptoms not controlled by non-pharmacological measures; balance against QT prolongation and EPSE." },
                 { approach: "Propofol infusion syndrome (PRIS)", detail: "Triad: metabolic acidosis + rhabdomyolysis/hyperkalaemia + cardiac dysfunction (Brugada-like ECG, RBBB). Risk: >4 mg/kg/h for >48 h, young / lean / catecholamine-loaded patients. Treat: stop propofol, switch agent, supportive care, CRRT for refractory acidosis/hyperkalaemia." },
@@ -329,7 +329,23 @@ const IcuSedationDeliriumTopic = () => {
                 </div>
               ))}
             </div>
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Non-Pharmacological Management in Detail</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Non-pharmacological, bundled care is the cornerstone of both prevention and treatment; no drug
+              reliably shortens delirium.<InlineRef topicId="icu-sedation-delirium" refLabel="SCCM PADIS 2018" /> Deliver
+              it as an explicit daily checklist rather than ad-hoc measures:
+            </p>
+            <ul className="text-sm text-muted-foreground space-y-1 list-disc pl-5">
+              <li><strong>Orientation:</strong> visible clock and calendar, name board, staff introducing themselves by name and stating day, place and reason for admission at every contact.</li>
+              <li><strong>Sensory optimisation:</strong> glasses, hearing aids and dentures in place before any assessment or conversation; interpreter for language barriers.</li>
+              <li><strong>Sleep protocol:</strong> lights and blinds cycled to day/night, noise reduction (alarm limits, quiet hour), earplugs and eye masks, clustering of nursing interventions, avoiding non-urgent overnight procedures, drugs and feeds.</li>
+              <li><strong>Mobilisation and physiotherapy:</strong> early, protocolised progression from passive range of movement to sitting out, standing and walking, coordinated with the daily sedation hold.</li>
+              <li><strong>Cognitive stimulation:</strong> conversation, reading, music, television or radio chosen by the patient, and simple cognitive tasks once awake.</li>
+              <li><strong>Family involvement:</strong> liberal, flexible visiting, family diaries, familiar objects and photographs, and family help with reorientation.</li>
+              <li><strong>Physiological and iatrogenic triggers:</strong> treat pain first (analgesia-first sedation), correct hypoxia, hypercapnia, hypoglycaemia, sodium disturbance, sepsis, constipation and urinary retention; remove catheters, lines and restraints as early as possible; review the drug chart for anticholinergics and benzodiazepines.</li>
+            </ul>
           </div>
+
 
           {/* Daily SAT/SBT */}
           <div>

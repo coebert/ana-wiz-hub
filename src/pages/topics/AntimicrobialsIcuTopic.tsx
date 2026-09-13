@@ -12,7 +12,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 const antimicrobialsIcuFaqs: Array<[string, string]> = [
   ["Why does volume of distribution change for hydrophilic antibiotics in sepsis?", "Capillary leak and aggressive fluid resuscitation expand Vd for β-lactams, aminoglycosides and glycopeptides, often requiring loading doses (e.g. meropenem 2 g, vancomycin 25–30 mg/kg) to reach therapeutic levels."],
   ["When should antibiotic infusions be used over bolus dosing?", "Time-dependent agents (β-lactams) benefit from extended (3–4 h) or continuous infusion when MICs are high or patient is critically ill (BLING-III, MERCY trials suggest mortality benefit in severe sepsis)."],
-  ["How is antibiotic de-escalation safely performed?", "Review at 48–72 h with cultures and biomarkers (procalcitonin trend); narrow spectrum, stop empirical cover not supported by cultures, and limit duration to 5–7 days for most infections (8 days for HAP/VAP — PneumA trial)."],
+  ["How is antibiotic de-escalation safely performed?", "Review at 48–72 h with cultures and biomarkers (procalcitonin trend); narrow spectrum, stop empirical cover not supported by cultures, and limit duration to 5–7 days for most infections (7 days for HAP/VAP per IDSA/PneumA, and as short as 5 days if clinically improving)."],
 ];
 
 const objectives = [
@@ -193,8 +193,9 @@ const AntimicrobialsIcuTopic = () => {
             <div className="space-y-2">
               {[
                 { syndrome: "Sepsis, source unknown", regimen: "Piperacillin-tazobactam 4.5 g (4-h infusion) ± gentamicin 5 mg/kg single dose. Add vancomycin if MRSA risk (line, recent admission, IVDU). Antifungal cover for high-risk Candida (parenteral nutrition, abdominal surgery, prolonged broad-spectrum)." },
-                { syndrome: "Hospital-acquired pneumonia / VAP", regimen: "Piperacillin-tazobactam OR meropenem (if ESBL risk). Add vancomycin/linezolid for MRSA. Cover Pseudomonas if late-onset (>5 d) or recent antibiotics. De-escalate on BAL/ETA cultures at 48 h. Duration 7 days if responding (PneumA, IDSA)." },
-                { syndrome: "Intra-abdominal sepsis", regimen: "Piperacillin-tazobactam OR meropenem (if severe/ESBL). Add fluconazole or echinocandin for Candida if recurrent/post-op leak. Source control within 6–12 h critical (drain, surgery). Duration 4–7 days post-source control (STOP-IT)." },
+                { syndrome: "Hospital-acquired pneumonia / VAP", regimen: "Piperacillin-tazobactam OR meropenem (if ESBL risk). Add vancomycin/linezolid for MRSA. Cover Pseudomonas if late-onset (>5 d) or recent antibiotics. De-escalate on BAL/ETA cultures at 48 h. Duration 7 days (IDSA/PneumA), and as short as 5 days if clinically improving with a falling procalcitonin — extend only for non-fermenting Gram-negatives with slow response, empyema or lung abscess." },
+                { syndrome: "Intra-abdominal sepsis (cIAI)", regimen: "Piperacillin-tazobactam OR meropenem (if severe/ESBL). Add fluconazole or echinocandin for Candida if recurrent/post-op leak. Source control within 6–12 h critical (drain, surgery). Duration ~4 days total once source control is adequate and the patient is clinically stable (STOP-IT) — not 4 days after source control." },
+
                 { syndrome: "Meningitis (community)", regimen: "Ceftriaxone 2 g BD + amoxicillin 2 g 4-hourly (Listeria cover if &gt;50 y or immunocompromised). Add vancomycin if pneumococcal resistance suspected. Dexamethasone 10 mg QDS pre/with first dose for pneumococcal." },
                 { syndrome: "Necrotising fasciitis", regimen: "Surgical debridement is the antibiotic. Empiric: meropenem + clindamycin (toxin suppression) + vancomycin/linezolid. Add IVIG in streptococcal TSS (controversial). Repeat surgery every 24 h until clean." },
                 { syndrome: "Catheter-related bloodstream infection", regimen: "Remove line if clinically septic, fungaemia, S. aureus, Pseudomonas, or persistent positive cultures &gt;72 h. Empiric vancomycin + anti-pseudomonal cover. Echocardiography in S. aureus bacteraemia (rule out endocarditis)." },
@@ -205,7 +206,52 @@ const AntimicrobialsIcuTopic = () => {
                 </div>
               ))}
             </div>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mt-6 mb-2">
+              Complicated intra-abdominal infection in detail
+            </h3>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              cIAI is the second commonest source of ICU sepsis and the syndrome where antibiotic choice
+              most depends on risk stratification and where duration is most often overrun{" "}
+              <InlineRef topicId="antimicrobials-icu" refLabel="BMC Infect Dis 2019 cIAI" />.
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>
+                <strong>Risk-stratify first.</strong> Community-acquired, no recent healthcare contact and
+                no prior antibiotics → low risk of ESBL/MDR organisms. Hospital- or ICU-acquired,
+                post-operative leak, recurrent perforation, prior broad-spectrum exposure within 90 days,
+                known colonisation, immunosuppression or severe physiological derangement → high risk.
+              </li>
+              <li>
+                <strong>Source control is the definitive treatment</strong> — percutaneous drainage or
+                laparotomy within 6–12 h. No regimen compensates for undrained pus, and persistent sepsis
+                after 48–72 h means failed source control, not the wrong antibiotic.
+              </li>
+              <li>
+                <strong>Low-risk empiric therapy:</strong> piperacillin-tazobactam 4.5 g (extended
+                infusion), or a cephalosporin plus metronidazole. <strong>High-risk empiric therapy:</strong>{" "}
+                meropenem (or ceftazidime-avibactam / cefiderocol where CPE is prevalent), plus vancomycin
+                if MRSA or ampicillin-resistant enterococcal risk.
+              </li>
+              <li>
+                <strong>Fungal cover</strong> (echinocandin first-line, fluconazole if low-risk and
+                azole-naive) for upper GI perforation, recurrent or post-operative leaks, anastomotic
+                breakdown, immunosuppression, and Candida on a peritoneal sample.
+              </li>
+              <li>
+                <strong>Duration ≈ 4 days in total</strong> once source control is adequate and the patient
+                is stable and afebrile — the STOP-IT trial showed a fixed short course is non-inferior to
+                treating until physiological resolution. Prolong only when source control is incomplete or
+                a fresh drainage procedure is needed{" "}
+                <InlineRef topicId="antimicrobials-icu" refLabel="BMC Infect Dis 2019 cIAI" />.
+              </li>
+              <li>
+                <strong>De-escalate</strong> on the peritoneal and blood culture results at 48–72 h, and
+                switch to oral therapy only if a continuing course is genuinely indicated.
+              </li>
+            </ul>
           </ExamSection>
+
 
 
           <ExamSection
@@ -249,13 +295,13 @@ const AntimicrobialsIcuTopic = () => {
           >
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Antimicrobial Stewardship</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Effective stewardship combines the "Start Smart Then Focus" principles below with structural programme elements <InlineRef topicId="antimicrobials-icu" refLabel="NICE NG15" />: formulary restriction, prospective audit and feedback, antibiogram-driven guidelines, systematic de-escalation, consumption/resistance surveillance and prescriber education.
+              Effective stewardship combines the "Start Smart Then Focus" principles below with structural programme elements <InlineRef topicId="antimicrobials-icu" refLabel="NICE NG15" />: formulary restriction and pre-authorisation, prospective audit and feedback, antibiogram-driven guidelines, systematic de-escalation, IV-to-oral switch criteria, decision support, consumption/resistance surveillance and prescriber education. De-escalation on microbiology results and limiting treatment duration are the two interventions with the clearest effect on resistance pressure without harming outcomes <InlineRef topicId="antimicrobials-icu" refLabel="Curr Opin Crit Care 2022 AMS" />; scheduled antibiotic cycling remains a debated adjunct <InlineRef topicId="antimicrobials-icu" refLabel="Drugs Today 2003 Cycling" />.
             </p>
             <div className="space-y-2">
               {[
                 { principle: "Start Smart", detail: "Take cultures before antibiotics (do NOT delay first dose >45 min in septic shock). Empiric broad-spectrum within 1 h of sepsis recognition (SSC 2021). Follow local guidelines and antibiogram." },
                 { principle: "Then Focus (48–72 h review)", detail: "Mandatory review at 48–72 h: stop, switch (IV→PO), de-escalate (narrower spectrum), continue, or refer. Document the decision and review date." },
-                { principle: "Duration", detail: "Shorter is safer: CAP 5 days (NICE), HAP/VAP 7 days (PneumA), uncomplicated Gram-neg bacteraemia 7 days (Yahav 2019), intra-abdominal 4 days post-source control (STOP-IT). Procalcitonin-guided de-escalation reduces exposure further." },
+                { principle: "Duration", detail: "Shorter is safer: CAP 5 days (NICE), HAP/VAP 7 days (IDSA/PneumA) — and as short as 5 days if clinically improving, uncomplicated Gram-negative bacteraemia 7 days (Yahav 2019), complicated intra-abdominal infection ~4 days in total if source control is adequate (STOP-IT). Procalcitonin-guided de-escalation reduces exposure further." },
                 { principle: "MDR organisms", detail: "ESBL: meropenem (MERINO). MRSA: vancomycin/linezolid/daptomycin. VRE: linezolid/daptomycin. CPE: ceftazidime-avibactam, meropenem-vaborbactam, cefiderocol. C. difficile: oral vancomycin/fidaxomicin (NOT metronidazole first-line). Always consult microbiology." },
                 { principle: "Route & TDM", detail: "Switch to oral when tolerating diet, afebrile 24 h, falling inflammatory markers, no high-risk infection (endocarditis, CNS, prosthetic). TDM mandatory: vancomycin, gentamicin, voriconazole; consider for β-lactams in ARC or CRRT." },
                 { principle: "Formulary restriction & pre-authorisation", detail: "Protected/restricted agents (carbapenems, linezolid, ceftazidime-avibactam, daptomycin) require prior microbiology or infectious diseases approval before or shortly after the first dose, preventing unnecessary broad-spectrum use and preserving agents for MDR infection." },
@@ -263,6 +309,8 @@ const AntimicrobialsIcuTopic = () => {
                 { principle: "Guidelines, bundles and local antibiograms", detail: "Empiric choice is driven by locally agreed guidelines, sepsis care bundles and the unit's own antibiogram (which reflects local resistance patterns) rather than generic national guidance alone." },
                 { principle: "Surveillance and feedback", detail: "Unit-level antimicrobial consumption (expressed as defined daily doses, DDDs) and resistance rates are tracked and fed back to clinicians to detect drift towards broader-spectrum prescribing and emerging resistance." },
                 { principle: "Prescriber education", detail: "Ongoing education of medical and nursing staff on stewardship principles, local guidelines and the harms of unnecessary or prolonged antimicrobial exposure (C. difficile, resistance selection, toxicity)." },
+                { principle: "Antibiotic cycling (rotation)", detail: "Scheduled, unit-wide rotation of the empiric antibiotic class at fixed intervals (e.g. a carbapenem, then an anti-pseudomonal penicillin, then a cephalosporin) with the aim of reducing sustained selective pressure from any one class. Theoretically limits emergence of class-specific resistance, but trial evidence is conflicting: mixing (varying class between successive patients) may outperform cycling, and rotation can simply shift the resistance pattern or increase overall broad-spectrum use. Not standard UK ICU practice — know it as a concept alongside restriction, audit-and-feedback and de-escalation." },
+
               ].map((p) => (
                 <div key={p.principle} className="p-3 rounded-lg bg-secondary/30 border border-border">
                   <p className="font-semibold text-foreground text-sm">{p.principle}</p>
