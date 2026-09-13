@@ -457,12 +457,17 @@ const BreathingCircuitsTopic = () => {
                   {
                     name: "Carbon monoxide",
                     detail:
-                      "Strong alkali in desiccated absorbent removes a difluoromethoxy proton from desflurane (and less readily isoflurane), producing carbon monoxide. Risk rises with dryness, heat and KOH/NaOH concentration and is greatest after prolonged dry fresh-gas flow, classically the first case after a weekend. Replace suspect absorbent and use fresh hydrated low-alkali material.",
+                      "Strong KOH/NaOH extracts hydrogen from the CHF₂ moiety of desflurane, enflurane or isoflurane, forming an unstable vinyl-halide intermediate that breaks down to carbon monoxide. The exothermic process accelerates with dryness, heat and strong-base concentration and is greatest after prolonged dry FGF, classically the first case after a weekend. Sevoflurane lacks CHF₂ and produces much less CO.",
                   },
                   {
                     name: "Absorbent comparison",
                     detail:
                       "Traditional soda lime contains Ca(OH)₂ plus NaOH/KOH catalysts and can generate heat, Compound A and CO when dry. Modern low-alkali soda lime removes KOH and reduces NaOH. Amsorb® uses Ca(OH)₂ with CaCl₂/CaSO₄, does not degrade volatile agents to Compound A or CO, but costs more and may exhaust more abruptly.",
+                  },
+                  {
+                    name: "Lithium hydroxide",
+                    detail:
+                      "LiOH-based absorbents (e.g. Litholyme®) do not require water for CO₂ binding, have high absorption capacity per gram and do not generate Compound A or CO. They are lighter and remain safe when desiccated, but are generally more expensive and local compatibility/disposal guidance must be followed.",
                   },
                 ].map((s) => (
                   <div key={s.name} className="p-3 rounded-lg border border-border">

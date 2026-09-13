@@ -316,9 +316,13 @@ const HumidityGasSamplingTopic = () => {
                 <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
               <p>
-                <strong>Clinical Raman analysers</strong> (e.g., Rascal™) are fast, measure all gases, and don't require a vacuum.
-                However, the signal is extremely weak, requiring sensitive photodetectors and powerful lasers, making the equipment
-                expensive. They are not widely used in current clinical practice <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
+                <strong>Clinical Raman analysers</strong> include the Rascal™/Rascal II and Datex-Ohmeda Raman gas analyser. They can
+                quantify O₂, N₂, CO₂, N₂O and volatile agents simultaneously, distinguish CO₂ from N₂O despite their identical molecular
+                mass, and separate isomers such as isoflurane and enflurane by their unique spectra. They need no vacuum, but the Raman
+                signal is extremely weak: powerful lasers, sensitive photodetectors and a relatively large, expensive optical system are
+                required. Water vapour can interfere, and response is slower than dedicated paramagnetic O₂ or infrared CO₂ channels.
+                These disadvantages leave Raman as a capable but niche clinical technology
+                <InlineRef topicId="humidity-gas-sampling" refLabel="Cross & Plunkett Ch.9" />.
               </p>
             </div>
             </CollapsibleSubsection>

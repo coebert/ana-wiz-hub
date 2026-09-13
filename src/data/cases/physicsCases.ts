@@ -5,7 +5,7 @@ const s = {
   oximetryPrinciples: { label: "BJA Educ: pulse oximetry", href: "https://doi.org/10.1093/bjaceaccp/mkg038" },
   capnography: { label: "BJA Educ: capnography", href: "https://doi.org/10.1093/bjaed/mkx004" },
   capnoShape: { label: "Bhavani-Shankar & Philip 2000", href: "https://doi.org/10.1097/00000539-200010000-00038" },
-  monitoring: { label: "Assoc Anaesth monitoring standards", href: "https://doi.org/10.1111/anae.13316" },
+  monitoring: { label: "Association of Anaesthetists Standards of Monitoring 2021", href: "https://doi.org/10.1111/anae.15501" },
   electrical: { label: "BJA Educ: electrical safety", href: "https://doi.org/10.1093/bjaed/mkx035" },
   lasers: { label: "BJA Educ: lasers in surgery", href: "https://doi.org/10.1093/bjaed/mkx009" },
   airwayFire: { label: "Assoc Anaesth: airway fire", href: "https://onlinelibrary.wiley.com/doi/10.1111/anae.15941" },
@@ -537,7 +537,7 @@ export const physicsCaseBank: CaseBank = {
       ],
       detailedAnswer: [
         { title: "Clinical reasoning", content: "Central pipeline oxygen is supplied from a manifold or bulk vacuum-insulated evaporator with an automatic reserve bank; failure at hospital level is rare but catastrophic because it is not confined to one machine. The anaesthetic machine's own safety features — the oxygen failure alarm, fail-safe valve and non-interchangeable connectors — are the last line of defence and must never be disabled or ignored." },
-        { title: "Management and monitoring", content: "The AAGBI/Association of Anaesthetists checklist for anaesthetic equipment requires confirmation of a reserve oxygen cylinder, correct volume and functioning before every list. During a genuine failure, prioritise oxygenation over volatile anaesthesia, use cylinder oxygen and manual ventilation, and communicate promptly across the hospital because other theatres and wards likely share the same failed supply." },
+        { title: "Management and monitoring", content: "The Association of Anaesthetists 2023 equipment-check guideline requires confirmation of a reserve oxygen cylinder, correct volume and functioning before every list. During a genuine failure, prioritise oxygenation over volatile anaesthesia, use cylinder oxygen and manual ventilation, and communicate promptly across the hospital because other theatres and wards likely share the same failed supply." },
         { title: "Exam pitfall", content: "Do not describe only 'switch to cylinder' without naming the fail-safe valve, the alarm threshold, and the non-interchangeable connector systems that prevent wrong-gas administration during the switch." },
       ],
       takeHome: "Pipeline oxygen failure demands immediate cylinder back-up, manual ventilation if needed, and hospital-wide alerting, because the fault is rarely confined to a single machine.",
