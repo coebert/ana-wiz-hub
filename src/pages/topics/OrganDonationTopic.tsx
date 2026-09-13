@@ -9,6 +9,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import { BrainstemDeathCascadeDiagram } from "@/components/diagrams/intensive-care/BrainstemDeathCascadeDiagram";
+import { OrganDonationPathwayDiagram } from "@/components/diagrams/intensive-care/OrganDonationPathwayDiagram";
 import { InlineRef } from "@/components/references/InlineRef";
 
 const organDonationFaqs: Array<[string, string]> = [
@@ -214,6 +215,14 @@ const OrganDonationTopic = () => {
             intro="After coning the donor passes through three predictable physiological phases. Recognising the current phase guides the right intervention — short-acting vasodilators during the storm, vasopressin-led support during vasoplegia, and DDAVP plus methylprednisolone once endocrine collapse develops."
           >
             <BrainstemDeathCascadeDiagram />
+          </DiagramSection>
+
+          <DiagramSection
+            id="donation-pathways"
+            title="DBD & DCD Pathways — Where Each Drug Swap Happens"
+            intro="Both pathways share the same trunk — SN-OD referral and family approach — then branch at how death is confirmed. In DBD the drug swaps (storm control → hormonal bundle → noradrenaline-to-vasopressin → heparin at cross-clamp) happen while support continues; in DCD nothing organ-directed is given until after the five-minute standoff. Click any step for the drugs given, or forbidden, at that point."
+          >
+            <OrganDonationPathwayDiagram />
           </DiagramSection>
 
           <ExamSection id="donor-mgmt" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
