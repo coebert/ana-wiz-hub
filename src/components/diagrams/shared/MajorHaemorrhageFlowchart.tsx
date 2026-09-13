@@ -137,7 +137,7 @@ const MajorHaemorrhageFlowchart = () => {
             "  transfusion death — the default diagnosis to exclude",
             "TRALI — normal filling pressures, fever, transient",
             "  leucopenia, worse with fluid; supportive ventilation only",
-            "Acute haemolytic — loin//infusion-site pain, dark urine,",
+            "Acute haemolytic — loin / infusion-site pain, dark urine,",
             "  DIC, hypotension out of proportion; usually ABO error",
             "Bacterial contamination — rapid rigors, high fever,",
             "  profound shock; cultures + broad-spectrum antibiotics",
