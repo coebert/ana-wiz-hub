@@ -328,6 +328,107 @@ const DefibrillationPacingTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <ExamSection id="perioperative-cied" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Perioperative Medicine", "FFICM 2.5"]}>
+            <CollapsibleSubsection title="Perioperative Management of Pacemakers & ICDs">
+            <div className="text-muted-foreground leading-relaxed space-y-4">
+              <p>
+                Every patient with a cardiac implantable electronic device (CIED) needs an individualised, documented plan agreed
+                between the anaesthetist, surgeon/proceduralist and cardiac physiology team. The plan turns on four questions:
+                what device is it, is the patient pacing-dependent, what electromagnetic interference (EMI) will the procedure
+                generate, and what will be done if the device fails <InlineRef topicId="defibrillation-pacing" refLabel="Assoc Anaesth CIED 2022" />.
+              </p>
+
+              <div className="rounded-lg border border-border p-4 text-sm">
+                <h3 className="font-semibold text-foreground">1. Preoperative assessment</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1 text-foreground/80">
+                  <li><strong>Identify the device:</strong> pacemaker, ICD, CRT-P/CRT-D, subcutaneous ICD, leadless pacemaker or implantable loop recorder. Use the patient's device card, chest radiograph and the last interrogation report; note manufacturer, model and implant indication.</li>
+                  <li><strong>Interrogation:</strong> within 12 months for a pacemaker and 6 months for an ICD/CRT-D (sooner if symptoms, recent implant &lt;6 weeks, or generator near its elective replacement indicator) <InlineRef topicId="defibrillation-pacing" refLabel="ASA CIED Advisory 2020" />.</li>
+                  <li><strong>Pacing dependence:</strong> is there an underlying rhythm? Complete AV block, post-AV-node ablation and a persistently paced ECG mean any inhibition may cause asystole.</li>
+                  <li><strong>Programmed settings:</strong> mode, lower rate limit, rate response, magnet response (device-specific — confirm from the manufacturer's chart), and ICD therapy zones.</li>
+                  <li><strong>Functional reserve:</strong> underlying cardiomyopathy, ejection fraction, heart-failure symptoms, valve disease and anticoagulation all shape the anaesthetic technique far more than the device itself.</li>
+                </ul>
+              </div>
+
+              <div className="rounded-lg border border-border p-4 text-sm">
+                <h3 className="font-semibold text-foreground">2. Deciding between magnet and reprogramming</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1 text-foreground/80">
+                  <li><strong>No intervention needed</strong> when EMI risk is low: surgery below the umbilicus with bipolar diathermy or no diathermy, and the patient is not pacing-dependent.</li>
+                  <li><strong>Magnet available and tested</strong> is often enough for short procedures above the umbilicus: over a pacemaker it usually gives asynchronous pacing (DOO/VOO) at a fixed magnet rate; over an ICD it suspends anti-tachycardia therapy but does not change bradycardia pacing.</li>
+                  <li><strong>Formal reprogramming</strong> is preferred when the patient is pacing-dependent and monopolar diathermy will be used above the umbilicus, when the magnet response is unknown/disabled, when the generator is inaccessible under drapes, or for procedures with prolonged EMI (TURP, transthoracic surgery, RF ablation, lithotripsy, MRI, radiotherapy fields).</li>
+                  <li><strong>Rate-response should be switched off</strong> for procedures where ventilation, vibration, shivering or diathermy can be misread as activity (minute-ventilation and vibration sensors are the usual culprits).</li>
+                </ul>
+              </div>
+
+              <div className="rounded-lg border border-border p-4 text-sm">
+                <h3 className="font-semibold text-foreground">3. Intraoperative conduct</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1 text-foreground/80">
+                  <li>External defibrillation/pacing pads applied and connected <em>before</em> any ICD therapy is suspended, positioned anteroposteriorly and at least 8 cm from the generator.</li>
+                  <li>Continuous ECG <em>plus</em> a mechanical monitor of perfusion — pulse oximeter plethysmograph or arterial line — because diathermy artefact makes the ECG uninterpretable at the moment risk is highest.</li>
+                  <li>Bipolar diathermy first; if monopolar is unavoidable, use short bursts (&lt;5 s) at the lowest effective power, with the return pad sited so the current vector does not cross the generator or leads.</li>
+                  <li>Immediate access to atropine, adrenaline/isoprenaline, a magnet and an external pacing source; know how to convert to transcutaneous pacing quickly.</li>
+                  <li>Avoid causes of spurious oversensing or arrhythmia: shivering, fasciculations from suxamethonium in a highly sensitive device, central line guidewires displacing recently implanted leads (avoid ipsilateral central access for 6 weeks after implant), and unnecessary hypokalaemia/hypomagnesaemia.</li>
+                  <li>If the device is a CRT-D, remember that loss of biventricular pacing itself can precipitate decompensation, not merely bradycardia.</li>
+                </ul>
+              </div>
+
+              <div className="rounded-lg border border-border p-4 text-sm">
+                <h3 className="font-semibold text-foreground">4. Recovery and postoperative care</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1 text-foreground/80">
+                  <li>Any suspended ICD therapy must be reactivated before the patient leaves a monitored area — this is a recognised never-event style hazard when handover is rushed. The patient stays on continuous ECG monitoring until therapies are restored.</li>
+                  <li>Re-interrogate after reprogramming, after significant EMI exposure, after external defibrillation/cardioversion, and after any suspected device malfunction; document the restored settings.</li>
+                  <li>Consider extended monitoring or overnight admission where interrogation cannot be completed on the day, particularly in pacing-dependent patients or those with an ICD.</li>
+                </ul>
+              </div>
+
+              <div className="rounded-lg border border-border p-4 text-sm">
+                <h3 className="font-semibold text-foreground">5. Procedures under local anaesthesia — when anaesthetic presence is still required</h3>
+                <p className="mt-2 text-foreground/80">
+                  Many CIED patients present for procedures planned under local anaesthesia or sedation — cataract surgery,
+                  dermatological excision, endoscopy, dental work, pacemaker generator change, lead extraction, cardioversion,
+                  interventional radiology and cardiac electrophysiology. Local anaesthesia does not remove the device risk; it
+                  simply changes who is watching the patient. The threshold for anaesthetic attendance rests on device
+                  vulnerability and rescue difficulty rather than the size of the operation
+                  <InlineRef topicId="defibrillation-pacing" refLabel="BHRS/MHRA CIED" />.
+                </p>
+                <p className="mt-3 font-semibold text-foreground">Anaesthetic presence should be arranged when:</p>
+                <ul className="mt-1 list-disc pl-5 space-y-1 text-foreground/80">
+                  <li>The patient is <strong>pacing-dependent</strong> and monopolar diathermy or another significant EMI source will be used.</li>
+                  <li><strong>ICD therapy is to be suspended</strong> for the procedure, so someone must own the external defibrillation plan.</li>
+                  <li>The procedure is a <strong>generator change, lead revision or lead extraction</strong> — risks include asystole during device disconnection, tamponade, vascular tear and major haemorrhage; extraction should proceed with immediate anaesthetic, cardiothoracic and transfusion support available.</li>
+                  <li><strong>Cardioversion or defibrillation threshold testing</strong> is planned and requires deep sedation or general anaesthesia.</li>
+                  <li>The patient has <strong>poor cardiopulmonary reserve</strong> (severe LV dysfunction, severe aortic stenosis, pulmonary hypertension, decompensated heart failure) so that even brief loss of pacing or a vasovagal response is poorly tolerated.</li>
+                  <li>Positioning, procedure duration, orthopnoea, obesity, delirium or learning disability mean the airway or cooperation may fail — the same triggers as for any non-theatre list.</li>
+                  <li>The site is <strong>remote from theatres</strong> (radiology, endoscopy, cardiac catheter lab, MRI) where resuscitation help and equipment are less immediate.</li>
+                </ul>
+                <p className="mt-3 font-semibold text-foreground">Where anaesthetic presence may not be needed:</p>
+                <ul className="mt-1 list-disc pl-5 space-y-1 text-foreground/80">
+                  <li>A non-pacing-dependent patient having superficial surgery under infiltration with bipolar or no diathermy, with a magnet and resuscitation equipment available and staff trained to use them.</li>
+                  <li>Cataract surgery under topical/sub-Tenon's block with no diathermy near the thorax.</li>
+                </ul>
+                <p className="mt-3 text-foreground/80">
+                  Whatever the plan, the minimum standard for a CIED patient having any procedure under local anaesthesia is:
+                  a documented device plan, continuous ECG and plethysmographic monitoring, IV access, a magnet in the room with
+                  its expected response known, external defibrillation/pacing immediately available, and a named person
+                  responsible for restoring device therapy afterwards
+                  <InlineRef topicId="defibrillation-pacing" refLabel="Assoc Anaesth CIED 2022" />.
+                </p>
+              </div>
+
+              <div className="rounded-lg border border-border p-4 text-sm">
+                <h3 className="font-semibold text-foreground">6. High-risk situations worth naming</h3>
+                <ul className="mt-2 list-disc pl-5 space-y-1 text-foreground/80">
+                  <li><strong>MRI:</strong> only with an MR-conditional system, cardiology-approved MR mode, and monitored scanning; non-conditional devices need formal multidisciplinary risk assessment.</li>
+                  <li><strong>Radiotherapy:</strong> cumulative dose to the generator and neutron-producing beam energies can corrupt device memory — device team involvement and interrogation schedule required.</li>
+                  <li><strong>Electroconvulsive therapy, nerve stimulators, evoked-potential monitoring and RF ablation:</strong> all sources of oversensing; discuss in advance.</li>
+                  <li><strong>Lithotripsy:</strong> synchronise to the R wave, avoid focusing shock waves near the generator, disable atrial pacing in dual-chamber devices.</li>
+                  <li><strong>Emergency surgery with no interrogation:</strong> assume pacing dependence, apply a magnet only if the response is known, attach external pads, and involve the on-call cardiac physiologist as early as possible <InlineRef topicId="defibrillation-pacing" refLabel="ASA CIED Advisory 2020" />.</li>
+                </ul>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamPitfallsCallout
             accent="physics"
             pitfalls={[
