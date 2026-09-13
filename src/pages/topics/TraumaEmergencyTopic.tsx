@@ -53,7 +53,7 @@ const traumaFaqs: Array<[string, string]> = [
   ],
   [
     "When should tranexamic acid (TXA) be given in trauma?",
-    "Give TXA 1 g IV over 10 minutes as early as possible, followed by 1 g IV infusion over 8 hours. The CRASH-2 trial showed a mortality benefit when given within 3 hours of injury. There is no benefit — and possible harm — if given >3 hours after injury, so timing is critical. TXA inhibits fibrinolysis by blocking plasminogen activation and should be administered in all trauma patients with significant bleeding or at risk of significant haemorrhage unless there is a clear contraindication such as subarachnoid haemorrhage where antifibrinolytics may increase thrombotic complications.",
+    "Give TXA 1 g IV over 10 minutes as early as possible, and always within 3 hours of injury — the CRASH-2 mortality benefit is strongly time-dependent, and treatment started beyond 3 hours confers no benefit and may cause harm. The classic CRASH-2/CRASH-3 regimen adds a second 1 g by infusion over 8 hours, but this maintenance dose is no longer treated as an automatic requirement: the survival benefit in both trials was driven by the early loading dose, and many UK major-haemorrhage protocols now give the second gram as a further short bolus, or omit it once bleeding is controlled, continuing antifibrinolytic therapy only where haemorrhage is ongoing or viscoelastic testing shows persistent hyperfibrinolysis. Follow your local major haemorrhage protocol. TXA inhibits fibrinolysis by blocking plasminogen activation and should be given to all trauma patients with significant bleeding or at risk of it, unless clearly contraindicated.",
   ],
   [
     "How do you manage a traumatic brain injury (TBI) patient?",
