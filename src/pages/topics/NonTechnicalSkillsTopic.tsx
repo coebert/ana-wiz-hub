@@ -178,6 +178,9 @@ const NonTechnicalSkillsTopic = () => {
             className="scroll-mt-24"
           >
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cognitive Errors & Bias</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              <strong>Dual process theory</strong> underpins all of this. <strong>System 1</strong> thinking is fast, automatic, intuitive, pattern-based and emotionally coloured — efficient for the routine work that fills most of a clinical day, but the seat of heuristics and bias. <strong>System 2</strong> thinking is slow, deliberate, logical and effortful — needed for novel, complex or ambiguous problems. Most critical incidents arise when System 1 is relied on inappropriately in a non-routine situation that demanded System 2, particularly under fatigue, time pressure or task saturation <InlineRef topicId="non-technical-skills" refLabel="BJA Educ 2018" />.
+            </p>
             <ul className="list-disc pl-5 space-y-1.5 text-sm text-muted-foreground">
               <li><strong>Fixation error / plan continuation bias</strong> — sticking with an action plan when the situation has changed (the laryngoscopy example).</li>
               <li><strong>Confirmation bias</strong> — interpreting new data as confirming the working diagnosis.</li>
@@ -187,8 +190,17 @@ const NonTechnicalSkillsTopic = () => {
               <li><strong>Authority gradient</strong> — junior team members fail to challenge the senior.</li>
               <li><strong>Cognitive overload</strong> — task saturation in a crisis impairs decision-making (Yerkes-Dodson curve).</li>
             </ul>
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Debiasing strategies (cognitive forcing strategies)</h3>
+            <ul className="list-disc pl-5 space-y-1.5 text-sm text-muted-foreground">
+              <li><strong>Metacognition</strong> — thinking about your own thinking: "am I falling into a trap here? What am I assuming?"</li>
+              <li><strong>Consider alternatives</strong> — deliberately generate at least two other differentials: "what else could this be?"</li>
+              <li><strong>Consider the opposite</strong> — "why might this <em>not</em> be the case?" — and actively seek disconfirming evidence rather than confirmation.</li>
+              <li><strong>Slow down</strong> — when the situation allows, force the switch from System 1 to System 2; a deliberate 10-second pause ("10-for-10") buys analytic capacity.</li>
+              <li><strong>Pre-mortem</strong> — imagine the patient has come to harm and work backwards to identify how, before committing to the plan.</li>
+              <li><strong>Group strategies</strong> — invite challenge explicitly, verbalise the working diagnosis aloud, use structured handover and checklists so others can cross-check your reasoning.</li>
+            </ul>
             <p className="text-sm text-muted-foreground leading-relaxed mt-3">
-              Mitigation: structured re-evaluation ("STEP back" — Stop, Think, Elaborate, Plan), cognitive aids (e.g. Vortex, ALS algorithm, OAA difficult airway), explicit verbalisation of the working diagnosis, deliberately seeking disconfirming evidence.
+              Further mitigation: structured re-evaluation ("STEP back" — Stop, Think, Elaborate, Plan) and cognitive aids (e.g. Vortex, ALS algorithm, OAA difficult airway) that offload memory under stress <InlineRef topicId="non-technical-skills" refLabel="BJA Educ 2018" />.
             </p>
           </ExamSection>
 
