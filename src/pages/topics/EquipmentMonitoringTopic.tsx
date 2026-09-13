@@ -333,7 +333,7 @@ const EquipmentMonitoringTopic = () => {
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
               Vaporizers convert liquid volatile agent into a controlled vapour concentration. <strong>Saturated vapour pressure (SVP)</strong> depends only on the agent and temperature — not atmospheric pressure. At 20 °C: sevoflurane SVP ≈ 21.3 kPa,
-              isoflurane ≈ 33.2 kPa, desflurane ≈ 88.5 kPa.
+              isoflurane ≈ 33.3 kPa, desflurane ≈ 88.5 kPa.
             </p>
             <p>
               <strong>Plenum vaporizers (TEC 5/7)</strong> sit downstream of the flowmeters and use a <strong>splitting ratio</strong>
