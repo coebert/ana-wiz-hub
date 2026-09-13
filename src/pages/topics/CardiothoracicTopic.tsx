@@ -316,6 +316,23 @@ const CardiothoracicTopic = () => {
             </div>
           </div>
 
+          <div className="mb-4">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Structured checklist for weaning from CPB</h3>
+            <p className="text-sm text-muted-foreground mb-3">
+              Work through a fixed sequence so nothing is missed — the widely used mnemonic is <strong>&quot;PAT-CVR&quot;</strong> or simply <strong>rate/rhythm → preload → contractility → afterload</strong>, wrapped in checks of temperature, ventilation, laboratory values and the surgical field.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Patient</strong>: core temperature ≥36 °C with no gradient, potassium 4.0–5.0 mmol/L, ionised calcium and magnesium corrected, glucose 6–10 mmol/L, haematocrit ≥21–24%, pH and base excess normalised, ACT trend and protamine ready.</li>
+              <li><strong>Airway and ventilation</strong>: lungs re-expanded with recruitment breaths, ventilation restarted with 100% oxygen and confirmed bilateral air entry and capnography trace, suction the tube, and check compliance before the pump comes off.</li>
+              <li><strong>Rhythm and rate</strong>: sinus or atrially paced <strong>80–100 beats/min</strong> — defibrillate ventricular fibrillation, treat conduction block with epicardial pacing (AV sequential preserves atrial contribution), and correct electrolytes before chasing arrhythmias.</li>
+              <li><strong>Preload</strong>: fill from the pump in small increments guided by direct visual inspection of the heart, filling pressures and <strong>TOE</strong>; both under- and over-filling reduce output, and a distended right ventricle is a warning sign.</li>
+              <li><strong>Contractility</strong>: assess with TOE and pulse contour; start adrenaline 0.03–0.1 µg/kg/min or dobutamine/milrinone for the failing ventricle, and consider levosimendan or mechanical support (IABP, VA-ECMO) early if two attempts to separate fail.</li>
+              <li><strong>Afterload and RV</strong>: noradrenaline or vasopressin for post-bypass vasoplegia; for RV failure optimise pulmonary vasodilatation (inhaled nitric oxide, nebulised prostacyclin, milrinone), maintain coronary perfusion pressure and avoid hypercapnia and acidosis.</li>
+              <li><strong>Monitoring and de-airing</strong>: TOE to exclude retained air, new valvular regurgitation, regional wall-motion abnormality and unrecognised tamponade before the chest is closed; recalibrate transducers and pressure monitors.</li>
+              <li><strong>Surgery and haemostasis</strong>: grafts and anastomoses inspected, protamine given slowly with an anaphylaxis plan, tranexamic acid continued, and coagulopathy corrected by ROTEM/TEG. Bleeding requiring return to theatre is not rare — UK multicentre audit data give an overall resternotomy-for-bleeding rate of about <strong>3.6% (range 0.7–7.6% between centres)</strong>, so a low threshold for surgical re-exploration and a clear handover plan matter<InlineRef topicId="cardiothoracic" refLabel="Resternotomy Audit 2021" /></li>
+            </ul>
+          </div>
+
           {/* OPCAB challenges */}
           <div className="mb-4">
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">OPCAB — Anaesthetic Challenges</h3>
@@ -727,7 +744,7 @@ const CardiothoracicTopic = () => {
             <li><strong>Opioid sparing</strong>: PCA morphine/fentanyl on top of regional block; avoid opioid-only regimens (respiratory depression, ileus, delirium, CPSP).</li>
             <li><strong>Regional technique</strong> chosen by the procedure (see table); single-shot for short procedures, catheter for major resections / sternotomy.</li>
             <li><strong>Adjuncts</strong>: dexmedetomidine, IV lidocaine, ketamine infusion — useful in opioid-tolerant patients and to reduce CPSP.</li>
-            <li><strong>Anticoagulation timing</strong> (AAGBI/ESRA): hold LMWH ≥12 h before catheter removal; full anticoagulation for CPB requires careful timing of any neuraxial block (most centres avoid epidural with planned CPB).</li>
+            <li><strong>Neuraxial block and cardiopulmonary bypass</strong>: the concern is epidural or spinal haematoma in a patient who will receive heparin 300–400 units/kg to an ACT &gt;480 s, plus antiplatelet therapy and a post-bypass coagulopathy. Most UK centres therefore <strong>avoid thoracic epidurals for on-pump cardiac surgery</strong>. Where a neuraxial technique is used, the accepted precautions are: full coagulation screen and platelet count beforehand; withhold clopidogrel/ticagrelor/prasugrel and treatment-dose anticoagulants for the standard intervals (LMWH prophylactic dose ≥12 h, treatment dose ≥24 h); a single atraumatic attempt by an experienced operator, abandoning the block after a bloody tap and postponing surgery for 24 h; <strong>site the block ≥60 minutes before heparinisation</strong>; document a baseline neurological examination; remove catheters only when the ACT/APTT and platelet count have normalised and ≥12 h after LMWH, with the next dose ≥4 h later; and perform regular motor/sensory checks with a low threshold for urgent MRI and neurosurgical referral if back pain or block regression fails to progress as expected. Parasternal, pecto-intercostal and erector spinae plane blocks or wound catheters achieve much of the analgesic benefit without this risk and are the pragmatic default<InlineRef topicId="cardiothoracic" refLabel="ACTACC TOE Audit 2019" />.</li>
             <li><strong>Maintenance technique — TIVA</strong>: in the ACTACC national thoracic anaesthesia audit, total intravenous anaesthesia for lung resection was associated with roughly half the odds of unplanned postoperative critical care admission compared with volatile maintenance (OR 0.50), alongside paravertebral analgesia and lung-protective ventilation as markers of good practice. Propofol–remifentanil TIVA also preserves hypoxic pulmonary vasoconstriction better than &gt;1 MAC volatile and reduces PONV, so it is a reasonable default for one-lung ventilation cases<InlineRef topicId="cardiothoracic" refLabel="ACTACC TIVA 2019" />.</li>
 
           </ul>

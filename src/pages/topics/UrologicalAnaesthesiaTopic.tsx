@@ -199,7 +199,7 @@ const UrologicalAnaesthesiaTopic = () => {
               <li><strong>Preoperative</strong>: cardiopulmonary assessment, prehabilitation, nutritional optimisation</li>
               <li><strong>Monitoring</strong>: arterial line, CVC, cardiac output monitoring, urinary catheter (pre-diversion)</li>
               <li><strong>Blood loss</strong>: 1–3 L typical; crossmatch 4–6 units, cell salvage if no malignancy at field</li>
-              <li><strong>Analgesia</strong>: thoracic epidural (T8–T10) or bilateral TAP/rectus sheath blocks + PCA</li>
+              <li><strong>Analgesia</strong>: a thoracic epidural sited to give sensory blockade from <strong>T8 to T10</strong> is the popular choice and provides excellent analgesia; alternatives are bilateral TAP/rectus sheath blocks or a rectus sheath catheter plus PCA, which suit the anticoagulated patient or an ERAS pathway avoiding epidural-related hypotension<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ Cystectomy 2018" /></li>
               <li><strong>ERAS</strong>: enhanced recovery protocols reduce LOS — early feeding, mobilisation, alvimopan for ileus</li>
             </ul>
             </CollapsibleSubsection>
@@ -246,7 +246,7 @@ const UrologicalAnaesthesiaTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
               <li><strong>Deepen anaesthesia</strong>: additional propofol bolus paradoxically resolves it in many cases; add opioid (fentanyl/alfentanil)</li>
               <li><strong>Switch technique</strong>: convert TIVA to volatile maintenance, or add ketamine</li>
-              <li><strong>Pharmacological detumescence</strong>: intracavernosal phenylephrine 100–200 µg (α-agonist — needs BP/ECG monitoring), or ephedrine IV; terbutaline 0.25–0.5 mg SC has been reported<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURP 2014" /></li>
+              <li><strong>Pharmacological detumescence</strong>: intracavernosal phenylephrine 100–200 µg (α-agonist — needs BP/ECG monitoring), or ephedrine IV; terbutaline 0.25–0.5 mg SC has been reported<InlineRef topicId="urological-anaesthesia" refLabel="Propofol Erection 2010" /></li>
               <li><strong>Mechanical</strong>: ice packs, manual compression — generally ineffective alone</li>
               <li><strong>Last resort</strong>: abandon procedure if detumescence fails and instrumentation unsafe</li>
             </ul>
@@ -383,7 +383,7 @@ const UrologicalAnaesthesiaTopic = () => {
                 <li>Diagnose <strong>TURP syndrome</strong>: hyponatraemia + neuro symptoms + fluid overload after &gt;1 L glycine absorption.</li>
                 <li>Tell surgeon to <strong>stop resection</strong> and achieve haemostasis; lower the irrigant bag height.</li>
                 <li>Send urgent U&E, glucose, ABG; check serum osmolality and ammonia (glycine → ammonia in hepatic impairment).</li>
-                <li>Severe symptomatic hyponatraemia (&lt;120 with seizures/coma): give <strong>3% NaCl 1–2 mL/kg over 10 min</strong>, repeat until symptoms resolve. Aim Na⁺ rise ≤10 mmol/L in first 24 h to avoid central pontine myelinolysis.</li>
+                <li>Severe symptomatic hyponatraemia (&lt;120 mmol/L with seizures or coma): give <strong>150 mL of 3% hypertonic saline i.v. over 20 min</strong>, which can be repeated over a further 20 min if symptoms do not improve<InlineRef topicId="urological-anaesthesia" refLabel="BJA Educ TURP Syndrome 2014" />. Aim for a Na⁺ rise of ≤5 mmol/L until symptoms settle and ≤10 mmol/L in the first 24 h to avoid osmotic demyelination.</li>
                 <li>IV <strong>furosemide 20–40 mg</strong> for pulmonary oedema. Support oxygenation; consider non-invasive ventilation.</li>
                 <li>Convert to GA + ETT only if airway compromise or seizures uncontrolled.</li>
               </ol>
@@ -397,8 +397,8 @@ const UrologicalAnaesthesiaTopic = () => {
               </div>
             </div>
           ),
-          answer: "Stop surgery, 3% NaCl 1–2 mL/kg, furosemide, controlled Na⁺ rise ≤10 mmol/L/24h.",
-          cites: ["BJA Educ TURP 2014"],
+          answer: "Stop surgery, 150 mL of 3% hypertonic saline over 20 min (repeat once if still symptomatic), furosemide, controlled Na⁺ rise ≤10 mmol/L/24h.",
+          cites: ["BJA Educ TURP 2014", "BJA Educ TURP Syndrome 2014"],
         },
       ]}
       keyPoints={[

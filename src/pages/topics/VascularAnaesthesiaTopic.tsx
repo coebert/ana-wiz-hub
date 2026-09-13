@@ -22,6 +22,7 @@ const tocItems = [
   { id: "cea", label: "Carotid endarterectomy", group: "Cerebrovascular" },
   { id: "peripheral", label: "Peripheral vascular surgery", group: "Peripheral" },
   { id: "amputation", label: "Lower limb amputation", group: "Peripheral" },
+  { id: "periop-arrest", label: "Peri-operative cardiac arrest (NAP7)", group: "Pre-op" },
   { id: "cardiac-risk", label: "Cardiac risk assessment", group: "Pre-op" },
   { id: "monitoring", label: "Intraoperative monitoring", group: "Intra-op" },
   { id: "faq", label: "FAQ", group: "Reference" },
@@ -80,7 +81,7 @@ const VascularAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
         <ol className="list-decimal list-inside space-y-1">
           <li>GENESIS / GALA trial: no significant difference in stroke/death/MI between GA and regional — choose based on patient preference, surgeon experience, anatomical factors</li>
           <li>Regional (superficial ± deep cervical plexus block): awake neurological monitoring is gold standard for shunt need — direct conversation, contralateral grip</li>
-          <li>If GA, monitor cerebral perfusion: stump pressure (&lt;50 mmHg = shunt), transcranial Doppler (MCA velocity &lt;50% baseline), cerebral oximetry (rSO₂ fall &gt;20%), processed EEG</li>
+          <li>If GA, monitor cerebral perfusion: stump pressure (&lt;40–50 mmHg suggests inadequate collateral flow — no universally agreed threshold, poor positive predictive value for stroke, so best combined with another monitor), transcranial Doppler (MCA velocity &lt;50% baseline), cerebral oximetry (rSO₂ fall &gt;20%), processed EEG</li>
           <li>Maintain MAP within 20% of baseline (or higher per surgical request during clamp), normocapnia, normothermia; treat hypotension with phenylephrine/noradrenaline rather than fluid</li>
           <li>Post-op: HDU, monitor for hyperperfusion syndrome (headache, seizure, ICH), tight BP control</li>
         </ol>
@@ -391,6 +392,23 @@ const VascularAnaesthesiaTopic = () => {
           </ExamSection>
           </div>
 
+
+          <div id="periop-arrest" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Peri-operative Cardiac Arrest in Vascular Surgery">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Vascular anaesthesia made up about 2% of the UK anaesthetic caseload but 8% of all reported peri-operative cardiac arrests in NAP7, giving an estimated incidence of roughly <strong>1 in 670 vascular anaesthetics</strong> (95% CI 1 in 520–830) — among the highest of any surgical specialty<InlineRef topicId="vascular-anaesthesia" refLabel="NAP7 2023" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Patient factors</strong>: the cohort is extreme — 43% were ASA 4 and 28% ASA 5. Age over 65, frailty, established cardiac disease and non-elective (emergency or urgent) surgery dominate</li>
+              <li><strong>Highest-risk procedures</strong>: aortic surgery accounted for about 55% of the arrests, lower-limb revascularisation 19% and amputation 12%</li>
+              <li><strong>Commonest cause</strong>: <strong>major haemorrhage</strong> in around 57% of cases, with ruptured abdominal aortic aneurysm the single commonest presentation (about 41% of arrests). Other causes include myocardial ischaemia, reperfusion/clamp-release events, bradyarrhythmia and anaphylaxis</li>
+              <li><strong>Practical implications</strong>: treat every ruptured aneurysm as an arrest waiting to happen — senior anaesthetist and consultant surgeon present, blood products and cell salvage in the room before induction, large-bore access and an arterial line before induction where possible, permissive hypotension until clamp control, vasopressors drawn up, and warming from the start</li>
+              <li><strong>Outcome and planning</strong>: survival after arrest in this group is poor, so realistic pre-operative discussion of risk, treatment escalation and ceilings of care with the patient and family is part of the anaesthetic plan, alongside a documented post-arrest debrief and follow-up</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
 
           <div id="cardiac-risk" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>

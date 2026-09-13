@@ -22,6 +22,7 @@ import {
 const tocItems = [
   { id: "nof", label: "Hip fracture (#NOF)", group: "Core topics" },
   { id: "tourniquet", label: "Tourniquet physiology", group: "Core topics" },
+  { id: "sickle-cell", label: "Sickle cell disease", group: "Core topics" },
   { id: "bcis", label: "Bone cement implantation syndrome", group: "Core topics" },
   { id: "fat-embolism", label: "Fat embolism syndrome", group: "Core topics" },
   { id: "txa", label: "Tranexamic acid", group: "Core topics" },
@@ -178,13 +179,30 @@ const OrthopaedicAnaesthesiaTopic = () => {
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Tourniquet Physiology">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li><strong>Pressure</strong>: upper limb 50-100 mmHg above SBP; lower limb 100-150 mmHg above SBP</li>
+              <li><strong>Pressure</strong>: set from <strong>limb occlusion pressure (LOP)</strong> where the cuff can measure it — add a safety margin of 50–75 mmHg for the lower limb and 40–60 mmHg for the upper limb. If LOP is not measured, typical pressures are <strong>150–200 mmHg for the adult thigh</strong> and <strong>100–125 mmHg for the adult upper arm</strong>; wider cuffs and contoured cuffs occlude at lower pressures. The older &quot;systolic + 100/150 mmHg&quot; rules over-pressurise most limbs<InlineRef topicId="orthopaedic-anaesthesia" refLabel="AAGBI Tourniquet" /></li>
               <li><strong>Time</strong>: safe limit ~2h. Deflation after 1.5h recommended. Rest 15min between inflations</li>
               <li><strong>Inflation effects</strong>: exsanguination and cuff inflation shift 500–800 mL of blood centrally (limb 'autotransfusion' of roughly 150–500 mL for a lower limb), raising CVP, MAP and SVR. Bilateral inflation can raise MAP substantially and precipitate failure in a poor ventricle. Catecholamine release contributes: plasma noradrenaline and adrenaline rise progressively and account for the hypertension seen after 30–60 minutes even under adequate anaesthesia<InlineRef topicId="orthopaedic-anaesthesia" refLabel="Kam 2001 Tourniquet" /></li>
               <li><strong>Tourniquet pain</strong>: biphasic — early sharp pain from Aδ fibres, then a deep, dull, escalating ache from slow-conducting unmyelinated C fibres that resists both regional block and volatile anaesthesia, with associated hypertension and tachycardia. Managed by adequate depth/opioid, clonidine or ketamine adjuncts and ultimately deflation</li>
               <li><strong>Deflation effects</strong>: washout of the ischaemic limb causes a fall in MAP and SVR, a rise in end-tidal and arterial CO₂ (with a compensatory increase in minute ventilation), metabolic acidosis with raised lactate, hyperkalaemia, myoglobinaemia and a fall in core temperature as cool blood returns. Reperfusion generates reactive oxygen species and inflammatory mediators, causing limb oedema and — after prolonged or bilateral ischaemia — systemic effects including arrhythmias, hypotension, renal injury and, rarely, pulmonary injury. Mobilised thrombus can cause pulmonary embolism<InlineRef topicId="orthopaedic-anaesthesia" refLabel="Kam 2001 Tourniquet" /></li>
               <li><strong>Local tissue effects</strong>: post-tourniquet syndrome (swollen, weak, pale limb), nerve injury from direct compression (highest with excessive pressure or a narrow cuff), skin injury from antiseptic pooling beneath the cuff, and muscle injury with rhabdomyolysis after prolonged inflation</li>
 
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
+
+          <div id="sickle-cell" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Sickle Cell Disease in Orthopaedic Surgery">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Orthopaedic surgery is common in sickle cell disease (avascular necrosis of the hip, osteomyelitis, joint replacement) and combines several triggers for sickling: tourniquet-induced ischaemia and acidosis, hypothermia, dehydration from fasting, venous stasis from positioning, and the stress response<InlineRef topicId="orthopaedic-anaesthesia" refLabel="BJA Educ Hip Fracture 2014" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Pathophysiology</strong>: deoxygenated HbS polymerises, deforming erythrocytes into rigid sickled cells that occlude microvasculature. <strong>Hypoxia, acidosis, dehydration, hypothermia, stasis and infection</strong> all promote sickling; the result is vaso-occlusive pain, acute chest syndrome, stroke and progressive organ damage. Sickle cell trait (HbAS) is usually asymptomatic but can sickle under extreme hypoxia or profound regional stasis</li>
+              <li><strong>Pre-operative assessment</strong>: perform a <strong>sickle screen in all at-risk patients</strong> before tourniquet surgery, with electrophoresis to confirm genotype. Involve haematology early: review crisis frequency, hydroxycarbamide use, transfusion history and alloantibodies, previous acute chest syndrome, stroke and pulmonary hypertension. Check Hb, reticulocytes, HbS percentage, renal and hepatic function; echocardiography if there is any suggestion of pulmonary hypertension. For major surgery aim to <strong>reduce HbS to below 30–50%</strong> and Hb to around 100 g/L using simple top-up or exchange transfusion, with extended phenotype-matched blood. Avoid over-transfusion (hyperviscosity). Do not prolong fasting — admit early for IV hydration if needed, and continue analgesia</li>
+              <li><strong>Tourniquet use</strong>: <strong>avoid a tourniquet in sickle cell disease or a sickle-positive patient</strong>. In sickle cell trait a tourniquet may be used if unavoidable, kept to a maximum of about 1 hour with meticulous exsanguination, full oxygenation, normothermia and normal volume status</li>
+              <li><strong>Intra-operative management</strong>: maintain oxygenation (generous FiO₂, avoid hypoventilation), normocapnia and normal pH, active warming of patient and fluids, liberal but not excessive IV fluid, careful positioning to avoid venous stasis, and prompt treatment of hypotension. Regional and neuraxial techniques are safe and useful provided hypotension and stasis are avoided; a tourniquet-free technique with local infiltration analgesia is often preferable. Antibiotic prophylaxis matters because of functional asplenia</li>
+              <li><strong>Post-operative care</strong>: supplemental oxygen and continuous saturation monitoring, incentive spirometry and early mobilisation, adequate hydration, and <strong>generous multimodal analgesia</strong> (patients are often opioid tolerant — use PCA with a plan agreed with haematology and the pain team). Watch for <strong>acute chest syndrome</strong> (fever, chest pain, hypoxia, new infiltrate — needs oxygen, antibiotics, analgesia, and urgent exchange transfusion), vaso-occlusive crisis, stroke, VTE (extended thromboprophylaxis) and infection</li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
@@ -198,7 +216,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
               <li><strong>Mechanism</strong>: fat/marrow embolism → right heart strain + inflammatory mediator release → hypoxia, hypotension, ↓ consciousness</li>
               <li><strong>Risk factors</strong>: pathological fracture, pre-existing cardiopulmonary disease, poor femoral preparation</li>
               <li><strong>Prevention</strong>: high FiO₂, adequate hydration, communication with surgeon (warn before cementing), invasive monitoring if high-risk</li>
-              <li><strong>Grading</strong>: Grade 1 (SpO₂ ↓, ↓ BP mild), Grade 2 (SpO₂ &lt;94%, ↓ BP requiring vasopressors), Grade 3 (cardiovascular collapse)</li>
+              <li><strong>Grading</strong> (Association of Anaesthetists / Griffiths 2015): <strong>Grade 1</strong> — moderate hypoxia (SpO₂ &lt;94%) and/or hypotension (systolic fall &gt;20%); <strong>Grade 2</strong> — severe hypoxia (SpO₂ &lt;88%) and/or severe hypotension (systolic fall &gt;40% or SBP &lt;80 mmHg) and/or loss of consciousness; <strong>Grade 3</strong> — cardiovascular collapse requiring CPR<InlineRef topicId="orthopaedic-anaesthesia" refLabel="AAGBI BCIS 2015" /></li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
@@ -443,7 +461,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
               </p>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              <strong>Does regional analgesia mask compartment syndrome?</strong> This has been debated for decades. Current expert consensus (<strong>ASRA / ESRA / AAGBI 2021 joint statement</strong><Cite topicId="orthopaedic-anaesthesia" labels={["ASRA Compartment 2021"]} />; <strong>Mar 2009</strong> review; <strong>Tran 2020</strong>) is that <em>well-conducted, low-concentration regional analgesia does <strong>not</strong> meaningfully delay diagnosis</em> — but specific cautions apply:
+              <strong>Does regional analgesia mask compartment syndrome?</strong> This has been debated for decades. Current expert consensus (<strong>ASRA / ESRA / Association of Anaesthetists 2021 joint statement</strong><Cite topicId="orthopaedic-anaesthesia" labels={["ASRA Compartment 2021"]} />; <strong>Mar 2009</strong> review; <strong>Tran 2020</strong>) is that <em>well-conducted, low-concentration regional analgesia does <strong>not</strong> meaningfully delay diagnosis</em> — but specific cautions apply:
             </p>
             <div className="grid sm:grid-cols-2 gap-3 mb-3">
               <div className="p-4 rounded-lg border border-border">
