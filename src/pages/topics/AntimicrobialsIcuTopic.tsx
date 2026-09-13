@@ -202,7 +202,15 @@ const AntimicrobialsIcuTopic = () => {
               ].map((s) => (
                 <div key={s.syndrome} className="p-3 rounded-lg bg-secondary/30 border border-border">
                   <p className="font-semibold text-foreground text-sm">{s.syndrome}</p>
-                  <p className="text-sm text-muted-foreground mt-1">{s.regimen}</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {s.regimen}
+                    {"ref" in s && s.ref ? (
+                      <>
+                        {" "}
+                        <InlineRef topicId="antimicrobials-icu" refLabel={s.ref} />
+                      </>
+                    ) : null}
+                  </p>
                 </div>
               ))}
             </div>
