@@ -66,7 +66,7 @@ const IcuDrugMechanisms = () => {
         <link rel="canonical" href="https://anaesthesiacore.app/intensive-care/drug-mechanisms" />
         <meta property="og:url" content="https://anaesthesiacore.app/intensive-care/drug-mechanisms" />
       </Helmet>
-      <PageJsonLd name="ICU Drug Mechanisms, Pharmacokinetics &amp; Metabolism" description="Pharmacodynamics, pharmacokinetics, metabolism and adverse effects of 50 adult intensive care drugs — half-life, volume of distribution, protein binding." />
+      <PageJsonLd name="ICU Drug Mechanisms, Pharmacokinetics and Metabolism" description="Pharmacodynamics, pharmacokinetics, metabolism and adverse effects of 50 adult intensive care drugs — half-life, volume of distribution, protein binding." />
 
       <PageSection className="pt-8 pb-16">
         <Link
