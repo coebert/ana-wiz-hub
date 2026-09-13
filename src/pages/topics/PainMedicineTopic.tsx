@@ -65,6 +65,7 @@ const tocItems = [
   { id: "cancer", label: "Cancer Pain", group: "Cancer" },
   { id: "scs", label: "Spinal Cord Stimulation", group: "Interventional" },
   { id: "nerve-root", label: "Nerve Root Injections", group: "Interventional" },
+  { id: "pharmacogenetics", label: "Pharmacogenetics of Analgesia", group: "Reference" },
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
 
@@ -408,6 +409,38 @@ const PainMedicineTopic = () => {
               </div>
             ))}
           </div>
+        </CollapsibleSubsection>
+        </div>
+
+        <div id="pharmacogenetics" className="scroll-mt-24">
+        <CollapsibleSubsection title="Pharmacogenetics of Analgesia">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Analgesic response varies several-fold between patients given identical doses. A clinically useful proportion of that variability is inherited, and codeine and tramadol are the classic examples because both are prodrugs requiring <strong className="text-foreground">CYP2D6</strong> activation <InlineRef topicId="pain-medicine" refLabel="CPIC 2021 Opioid PGx" />.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">CYP2D6 and the prodrug opioids</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong className="text-foreground">Poor metabolisers</strong> (~7–10% of White Europeans) convert little codeine to morphine — analgesic failure. Avoid codeine and tramadol; use a non-prodrug opioid such as morphine or oxycodone.</li>
+                <li><strong className="text-foreground">Ultrarapid metabolisers</strong> (up to 30% in some North African and Middle Eastern populations) produce excessive morphine — respiratory depression and death, including in breastfed infants of ultrarapid mothers. Codeine is contraindicated.</li>
+                <li>Codeine is already contraindicated in the UK in children under 12, in any child after tonsillectomy for obstructive sleep apnoea, and in breastfeeding.</li>
+                <li>Interactions mimic genotype: fluoxetine, paroxetine and bupropion are potent CYP2D6 inhibitors and convert a normal metaboliser into a functional poor metaboliser.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Other clinically relevant variants</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong className="text-foreground">OPRM1 118A&gt;G</strong> — modest increase in morphine dose requirement; effect size too small to guide prescribing alone.</li>
+                <li><strong className="text-foreground">COMT Val158Met</strong> — alters catecholamine turnover and pain sensitivity; associated with dose requirement and with chronic pain phenotypes.</li>
+                <li><strong className="text-foreground">CYP2C9</strong> poor metabolisers accumulate NSAIDs (and celecoxib) — start at half dose.</li>
+                <li><strong className="text-foreground">CYP2C19</strong> influences diazepam and, in part, amitriptyline exposure; <strong className="text-foreground">CYP2D6</strong> also drives nortriptyline and amitriptyline clearance, so poor metabolisers get more anticholinergic and cardiac toxicity.</li>
+                <li><strong className="text-foreground">UGT2B7</strong> variation alters the morphine-6-glucuronide to morphine-3-glucuronide ratio, changing the analgesia-to-neurotoxicity balance in renal impairment.</li>
+              </ul>
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Practice point: pre-emptive genotyping is not routine in the UK, so the pragmatic approach is to <strong className="text-foreground">recognise the phenotype clinically</strong> — no analgesia from codeine, or excessive sedation from a standard dose — and switch to a non-prodrug opioid titrated to effect rather than escalating the dose.
+          </p>
         </CollapsibleSubsection>
         </div>
 

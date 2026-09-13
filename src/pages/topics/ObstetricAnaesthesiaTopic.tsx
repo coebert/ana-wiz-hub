@@ -477,7 +477,7 @@ const ObstetricAnaesthesiaTopic = () => {
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Pre-eclampsia / HELLP</td><td>Labetalol/nifedipine/hydralazine; MgSO₄ 4 g load + 1 g/h for severe PET or eclampsia; aim BP &lt;140/90; deliver by 37 wk (earlier if severe).</td><td>Early epidural (improves placental flow, avoids GA airway); platelets ≥75 ×10⁹/L &amp; normal coag for neuraxial; obtund pressor response at GA induction (remi/alfentanil); MgSO₄ potentiates NMBs; avoid ergometrine (severe HTN).</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Gestational / pre-existing diabetes</td><td>Insulin infusion in labour to maintain CBG 4–7 mmol/L; planned delivery 37–38⁺⁶ wk if on therapy.</td><td>Avoid glucose-containing co-load; continue VRIII intra-op; macrosomia → shoulder dystocia / instrumental risk; neonatal hypoglycaemia.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cardiac disease (mWHO II–IV)</td><td>MDT planning, joint cardiac-obstetric clinic, controlled vaginal delivery usually preferred over CS; assisted second stage to avoid Valsalva.</td><td>Slow-titrated epidural (avoid spinal hypotension); invasive monitoring for severe lesions; avoid ergometrine (pulmonary HTN, HOCM); careful fluid balance — cardiac output peaks immediately post-partum from auto-transfusion.</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">VTE / thromboprophylaxis</td><td>RCOG GTG-37a risk-score; LMWH antenatal &amp; for 6 wk post-partum if intermediate/high risk.</td><td>Neuraxial timing: 12 h after prophylactic, 24 h after therapeutic LMWH; remove catheter ≥12 h after last dose, next dose ≥4 h post-removal.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">VTE / thromboprophylaxis</td><td>RCOG GTG-37a risk-score; LMWH antenatal &amp; for 6 wk post-partum if intermediate/high risk.</td><td>Neuraxial timing (AAGBI/OAA): <strong>LMWH prophylactic dose 12 h</strong>, <strong>LMWH therapeutic dose 24 h</strong>; unfractionated heparin s/c prophylaxis 4 h (or normal APTT), UFH infusion stop 4 h + normal APTT; fondaparinux 36–42 h; warfarin — INR ≤1.4; aspirin and NSAIDs no delay; clopidogrel 7 days, prasugrel 7 days, ticagrelor 5 days; DOACs (apixaban/rivaroxaban) 24–48 h and dabigatran 48–96 h depending on renal function. Remove catheter ≥12 h after the last prophylactic dose (24 h therapeutic), give the next dose ≥4 h after removal, and document a neurological check plan <InlineRef topicId="obstetric-anaesthesia" refLabel="AAGBI Coagulation 2013" />.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Obstetric sepsis</td><td>Sepsis-6 within 1 h; broad-spectrum antibiotics (e.g. piperacillin-tazobactam ± gentamicin); deliver if intrauterine source.</td><td>Coagulopathy &amp; bacteraemia may preclude neuraxial; consider GA or remifentanil PCA; vasopressor + invasive monitoring; leading direct cause of maternal death (MBRRACE).</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Obstetric cholestasis / AFLP</td><td>UDCA; deliver 37–38 wk for ICP; immediate delivery for AFLP.</td><td>Coagulopathy in AFLP — check INR/fibrinogen before neuraxial; hypoglycaemia.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Placenta praevia / accreta spectrum</td><td>Elective CS 36–37 wk; MDT with interventional radiology; cell salvage available.</td><td>Large-bore access × 2, group-and-save / cross-match 4 units, activate MHP pathway; regional feasible but convert to GA early if massive haemorrhage.</td></tr>
@@ -793,6 +793,39 @@ const ObstetricAnaesthesiaTopic = () => {
             The placenta is a lipid bilayer; drugs cross by passive diffusion governed by Fick's law. Four physicochemical properties determine transfer — molecular weight, lipid solubility, protein binding and degree of ionisation. The interactive plot below shows where common anaesthetic drugs sit.
           </p>
           <PlacentalDrugTransferDiagram />
+        </CollapsibleSubsection>
+
+        <CollapsibleSubsection title="Racial, Ethnic and Socioeconomic Disparities in Maternity Care">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            UK maternal outcomes are not equally distributed. Successive MBRRACE-UK reports show that <strong className="text-foreground">Black women are around three to four times more likely to die in pregnancy or the puerperium than White women, and Asian women around twice as likely</strong>, with a clear additional gradient by socioeconomic deprivation. These differences persist after adjustment for pre-existing medical conditions, so they cannot be explained by comorbidity alone <InlineRef topicId="obstetric-anaesthesia" refLabel="MBRRACE-UK" />. Anaesthetists are directly implicated because so much high-risk maternity care passes through us.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Where inequity shows up in anaesthetic care</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Delayed or absent antenatal anaesthetic referral for women with obesity, cardiac disease or sickle cell disease</li>
+                <li>Lower rates and later provision of epidural labour analgesia, and longer waits for a top-up or resite</li>
+                <li>Under-recognition and under-treatment of pain, and of the deteriorating patient, when there is a language barrier</li>
+                <li>Higher rates of general anaesthesia for caesarean section, with its airway and awareness risks</li>
+                <li>Delayed recognition of sepsis and of major obstetric haemorrhage, including missed pallor in darker skin</li>
+                <li>Reduced access to interpreters, written information and consent discussions in the woman's own language</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">What the anaesthetist can do</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Use professional interpreters — never family members — and translated information leaflets for neuraxial consent</li>
+                <li>Have a low threshold for antenatal anaesthetic clinic referral and document an individualised plan</li>
+                <li>Audit analgesia and anaesthesia outcomes <em>disaggregated by ethnicity and deprivation</em>, not in aggregate</li>
+                <li>Escalate on objective physiology (MEOWS, lactate, blood loss by weighing) rather than on appearance or affect</li>
+                <li>Listen to and document the woman's own account of her symptoms; repeated presentation is a red flag, not anxiety</li>
+                <li>Cultural-competence and implicit-bias training, and inclusion of service users in guideline development</li>
+              </ul>
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Exam framing: this is a legitimate professionalism and quality-improvement viva topic. Structure your answer as recognition of the data, mechanisms (access, communication, bias, structural determinants), and concrete departmental actions.
+          </p>
         </CollapsibleSubsection>
 
         <CollapsibleSubsection title="Quality Improvement &amp; Key Indicators in Obstetric Anaesthesia">
