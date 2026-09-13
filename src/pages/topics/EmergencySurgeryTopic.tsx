@@ -409,6 +409,67 @@ const EmergencySurgeryTopic = () => {
               ))}
             </div>
           </div>
+
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Damage Control Resuscitation</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Damage control resuscitation (DCR) is the strategy of accepting an abbreviated operation and physiologically minimalist resuscitation in order to interrupt the
+              self-reinforcing cycle of <strong className="text-foreground">hypothermia, acidosis and coagulopathy</strong> — the lethal triad — before it becomes irretrievable.
+              It originated in military trauma but is now applied to any exsanguinating emergency laparotomy, ruptured aneurysm or obstetric catastrophe
+              <InlineRef topicId="emergency-surgery" refLabel="Holcomb DCR 2007" />.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                { label: "Permissive hypotension", value: "Accept a systolic pressure of about 80–90 mmHg (or a palpable radial pulse) until surgical control is achieved — this limits clot disruption and dilution. Does not apply to traumatic brain injury, where cerebral perfusion pressure takes priority." },
+                { label: "Haemostatic resuscitation", value: "Blood and blood components as the primary resuscitation fluid in roughly 1:1 red cells to plasma with early platelets, or whole blood where available; crystalloid is restricted to a bridging role." },
+                { label: "Early antifibrinolysis", value: "Tranexamic acid 1 g given as soon as possible and within 3 hours of injury; the benefit is concentrated in the loading dose." },
+                { label: "Targeted correction", value: "Viscoelastic testing (ROTEM/TEG) to direct fibrinogen, plasma and platelets; ionised calcium above 1.0 mmol/L; active warming to keep core temperature above 36 °C; correct acidosis by restoring perfusion rather than with bicarbonate." },
+                { label: "Damage control surgery", value: "Stop bleeding and contamination only — pack, shunt, staple, leave the abdomen open with a temporary closure — then transfer to ICU for rewarming and correction, with planned relook at 24–48 hours." },
+                { label: "Physiological triggers to abbreviate", value: "pH below 7.2, base deficit worse than −8, temperature below 34 °C, INR above 1.5, or transfusion beyond about 10 units — recognise these before the patient arrests on the table." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs text-muted-foreground">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-muted-foreground leading-relaxed mt-3 text-sm">
+              The anaesthetic contribution is to run the resuscitation in parallel with surgery: two people at the head end, a rapid infuser and fluid warmer, arterial and
+              central access sited without delaying haemostasis, a ketamine-based cardiostable induction, minimal anaesthetic depth with a vasopressor infusion running, and
+              repeated blood gases with calcium and viscoelastic testing every 30 minutes. Anticipate abdominal compartment syndrome, ongoing coagulopathy and the need for
+              prolonged ICU support after transfer.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fractured Neck of Femur</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              A high-volume, high-mortality emergency of frail patients: 30-day mortality is around 6–7% and one-year mortality approaches 25–30%. Outcome is driven by
+              prompt surgery, analgesia and medical optimisation rather than by anaesthetic technique <InlineRef topicId="emergency-surgery" refLabel="NICE NG111" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Timing:</strong> operate on the day of, or the day after, admission. Only correct reversible conditions that would independently require treatment — anaemia, hypovolaemia, uncontrolled diabetes, arrhythmia with haemodynamic compromise, sepsis, electrolyte derangement. Do not delay for an echocardiogram unless it will change management.</li>
+              <li><strong>Analgesia:</strong> paracetamol regularly plus a fascia iliaca or femoral nerve block; minimise opioids and avoid NSAIDs in this population. Blocks reduce delirium and opioid requirement.</li>
+              <li><strong>Anaesthetic technique:</strong> spinal or general anaesthesia produce equivalent mortality and delirium rates. If spinal is chosen, use a low intrathecal dose without intrathecal opioid and avoid sedation. Whichever technique is used, maintain blood pressure within 20% of baseline.</li>
+              <li><strong>Specific hazards:</strong> bone cement implantation syndrome during cemented arthroplasty (hypoxia, hypotension, arrhythmia, arrest — warn the surgeon, increase FiO₂, ensure normovolaemia at cementing), hypothermia, and occult blood loss of a litre or more into the thigh.</li>
+              <li><strong>Perioperative care:</strong> orthogeriatric review, delirium prevention bundle, early mobilisation, nutrition, bone protection and falls assessment. Document a treatment escalation plan preoperatively given the frailty of this cohort.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fasciotomy for Acute Compartment Syndrome</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Acute compartment syndrome is a surgical emergency in which pressure within a closed fascial compartment exceeds perfusion pressure, causing ischaemia and
+              irreversible muscle and nerve necrosis within hours. Decompression is time-critical <InlineRef topicId="emergency-surgery" refLabel="BOA Fasciotomy 2020" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Diagnosis:</strong> clinical — pain out of proportion to injury, pain on passive stretch, a tense swollen compartment, and escalating analgesic requirement. Paraesthesia is late; pulselessness and pallor are very late and their presence does not exclude the diagnosis. Compartment pressure measurement helps in the obtunded or blocked patient (a differential pressure — diastolic minus compartment pressure — below 30 mmHg is the usual threshold).</li>
+              <li><strong>Anaesthetic caution:</strong> regional blockade and patient-controlled analgesia can mask the cardinal warning sign of escalating pain. Where compartment syndrome is a real risk (tibial fracture, crush, revascularised limb, prolonged lithotomy), discuss the analgesic plan with the surgical team, document it, and hand over the need for hourly limb observations rather than simply withholding effective analgesia.</li>
+              <li><strong>Preoperative:</strong> remove casts and dressings, keep the limb at heart level (not elevated), correct hypotension because perfusion pressure is what matters, and treat hypoxaemia. Do not delay for imaging.</li>
+              <li><strong>Intraoperative:</strong> general anaesthesia is usual; expect significant blood loss from open compartments and a reperfusion insult on decompression — hyperkalaemia, metabolic acidosis, myoglobinaemia and a fall in blood pressure. Have calcium, insulin/dextrose and a vasopressor immediately available, ventilate to normocapnia and monitor the ECG closely.</li>
+              <li><strong>Postoperative:</strong> aggressive crystalloid to maintain urine output and limit myoglobinuric AKI, monitor creatine kinase, potassium and renal function, provide multimodal analgesia for what are extremely painful wounds, and plan repeat theatre visits for debridement and delayed closure or grafting. Involve critical care early in crush injury or multi-compartment involvement.</li>
+            </ul>
+          </div>
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[

@@ -793,6 +793,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA 2006 Depth Monitors", citation: "Depth of anaesthesia monitoring: what's available, what's validated and what's next? Br J Anaesth. 2006.", url: "https://doi.org/10.1093/bja/ael120" },
   ],
   "clinical-incidents": [
+    { label: "NICE NG24 2015", citation: "National Institute for Health and Care Excellence. Blood transfusion (NG24). NICE; 2015 (updated).", url: "https://www.nice.org.uk/guidance/ng24" },
+    { label: "AAGBI Massive Haemorrhage 2010", citation: "Association of Anaesthetists. AAGBI Safety Guideline: Blood transfusion and the anaesthetist — management of massive haemorrhage. Anaesthesia. 2010;65(11):1153-1161.", url: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/j.1365-2044.2010.06538.x" },
     { label: "BJA 2006 (Non-technical skills)", citation: "Reader T, Flin R, Lauche K, Cuthbertson BH. Non-technical skills in the intensive care unit. Br J Anaesth. 2006;96(5):551-559.", url: "https://doi.org/10.1093/bja/ael067", excerpt: "We found that a large proportion of the contributory factors underlying critical incidents could be attributed to a non-technical skill category outlined in the ANTS taxonomy." },
     { label: "NAP6 2018 (Triggers)", citation: "Harper NJN, Cook TM, Garcez T, et al. Anaesthesia, surgery, and life-threatening allergic reactions: epidemiology and clinical features of perioperative anaphylaxis in the UK (NAP6). Br J Anaesth. 2018;121(1):159-171.", url: "https://doi.org/10.1016/j.bja.2018.04.014", excerpt: "NAP6: neuromuscular blockers (38 %, suxamethonium and rocuronium dominate), antibiotics (esp. teicoplanin, co-amoxiclav, 26 %) and chlorhexidine (9 %) account for most perioperative anaphylaxis." },
     { label: "RCUK Anaphylaxis 2021", citation: "Resuscitation Council UK. Emergency treatment of anaphylaxis: guidelines for healthcare providers. RCUK; 2021.", url: "https://www.resus.org.uk/library/additional-guidance/guidance-anaphylaxis", excerpt: "Tryptase samples: as soon as possible after resuscitation has started, at 1\u20132 h, and a baseline sample at \u2265 24 h. Yellow-top serum, labelled with exact times." },
@@ -805,6 +807,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "AAGBI 2011", citation: "Association of Anaesthetists. Management of a patient with malignant hyperthermia. AAGBI; 2011.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Malignant-hyperthermia-crisis" },
   ],
   "trauma-emergency": [
+    { label: "CRYOSTAT-2 2023", citation: "Davenport R, Curry N, Fox EE, et al. Early and empirical high-dose cryoprecipitate for hemorrhage after traumatic injury: the CRYOSTAT-2 randomized clinical trial. JAMA. 2023;330(19):1882-1891.", url: "https://jamanetwork.com/journals/jama/fullarticle/2811147" },
+    { label: "Cuthbertson 2009 (Etomidate)", citation: "Cuthbertson BH, Sprung CL, Annane D, et al. The effects of etomidate on adrenal responsiveness and mortality in patients with septic shock. Intensive Care Med. 2009;35(11):1868-1876.", url: "https://link.springer.com/article/10.1007/s00134-009-1603-4" },
     { label: "ATLS 10th ed", citation: "American College of Surgeons. Advanced Trauma Life Support (ATLS). 10th ed. 2018.", url: "https://www.facs.org/quality-programs/trauma/education/advanced-trauma-life-support/" },
     { label: "CRASH-2 2010", citation: "CRASH-2 trial collaborators. Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients. Lancet. 2010;376:23-32.", url: "https://doi.org/10.1016/S0140-6736(10)60835-5" },
     { label: "BJA Educ 2016", citation: "Woolley T, Thompson P. Trauma resuscitation — damage control. BJA Education. 2013;13(3):110-114.", url: "https://doi.org/10.1093/bjaceaccp/mks072" },
@@ -1251,6 +1255,7 @@ export const topicReferences: Record<string, Reference[]> = {
 
   ],
   "transfer-medicine": [
+    { label: "Martin Aeromedical 2006", citation: "Martin T. Aeromedical Transportation: A Clinical Guide. 2nd ed. Aldershot: Ashgate; 2006 — physiological stresses of flight and patient preparation.", url: "https://www.routledge.com/Aeromedical-Transportation-A-Clinical-Guide/Martin/p/book/9780754642480" },
     { label: "AAGBI Transfer 2009", citation: "Association of Anaesthetists. AAGBI Safety Guideline: Interhospital Transfer. 2009.", url: "https://www.aagbi.org/sites/default/files/interhospital09.pdf" },
     { label: "ICS Transfer 2019", citation: "Intensive Care Society. Guidance on the Transfer of the Critically Ill Adult. 4th ed. 2019.", url: "https://www.ics.ac.uk/ICS/guidelines.aspx" },
     { label: "BJA Educ 2018", citation: "Droogh JM, et al. Inter-hospital transport of critically ill patients. Crit Care. 2015;19(1):143.", url: "https://doi.org/10.1186/s13054-015-0879-1" },
@@ -1288,6 +1293,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Curr Opin Anaesthesiol 2019", citation: "Rosenberg JJ. Microvascular free flaps — perioperative management. Curr Opin Anaesthesiol. 2019;32:47-53." },
   ],
   "interventional-radiology": [
+    { label: "RCOG PPH 2016", citation: "Mavrides E, Allard S, Chandraharan E, et al. Prevention and management of postpartum haemorrhage (Green-top Guideline No. 52). BJOG. 2017;124:e106-e149.", url: "https://obgyn.onlinelibrary.wiley.com/doi/10.1111/1471-0528.14178" },
     { label: "Assoc Anaesth MRI 2021", citation: "Association of Anaesthetists. Safety in magnetic resonance imaging. Anaesthesia. 2021;76(11):1533-1545.", url: "https://doi.org/10.1111/anae.15517" },
     { label: "IR(ME)R 2017", citation: "The Ionising Radiation (Medical Exposure) Regulations 2017 (SI 2017/1322). UK Statutory Instruments.", url: "https://www.legislation.gov.uk/uksi/2017/1322" },
     { label: "Anesthesiol Clin 2012 (INR)", citation: "Lee CZ, Young WL. Anesthesia for endovascular neurosurgery and interventional neuroradiology. Anesthesiol Clin. 2012;30(2):127-147.", url: "https://doi.org/10.1016/j.anclin.2012.05.009" },
@@ -1491,6 +1497,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Liang 2010 Middle Ear", citation: "Liang S, Irwin MG. Review of anesthesia for middle ear surgery. Anesthesiol Clin. 2010;28(3):519-528.", url: "https://doi.org/10.1016/j.anclin.2010.07.009" },
   ],
   "emergency-surgery": [
+    { label: "Holcomb DCR 2007", citation: "Holcomb JB, Jenkins D, Rhee P, et al. Damage control resuscitation: directly addressing the early coagulopathy of trauma. J Trauma. 2007;62(2):307-310.", url: "https://journals.lww.com/jtrauma/Abstract/2007/02000/Damage_Control_Resuscitation__Directly_Addressing.11.aspx" },
+    { label: "BOA Fasciotomy 2020", citation: "British Orthopaedic Association. BOAST — Diagnosis and management of acute compartment syndrome (fasciotomy standards). BOA; 2020.", url: "https://www.boa.ac.uk/resource/boast-diagnosis-and-management-of-compartment-syndrome-of-the-limbs.html" },
     { label: "Anaesthesia 2013 (Emergency organisation)", citation: "Organisation and planning of anaesthesia for emergency surgery. Anaesthesia. 2013;68(Suppl 1).", url: "https://doi.org/10.1111/anae.12054" },
     { label: "Anaesthesia 2013 (Emergency conduct)", citation: "The principles and conduct of anaesthesia for emergency surgery. Anaesthesia. 2013;68(Suppl 1).", url: "https://doi.org/10.1111/anae.12057" },
     { label: "Anaesthesia 2026 (TIVA emergency)", citation: "Total intravenous anaesthesia in emergency surgery: a narrative review. Anaesthesia. 2026.", url: "https://doi.org/10.1111/anae.70085", excerpt: "Although the use of total intravenous anaesthesia is well established in elective surgery, its use remains limited in emergency settings, particularly for rapid sequence induction and intubation." },
@@ -1604,6 +1612,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "JBDS-IP", citation: "JBDS-IP." },
   ],
   "mass-casualty-military": [
+    { label: "CRASH-3 2019", citation: "CRASH-3 trial collaborators. Effects of tranexamic acid on death, disability, vascular occlusive events and other morbidities in patients with acute traumatic brain injury (CRASH-3): a randomised, placebo-controlled trial. Lancet. 2019;394(10210):1713-1723.", url: "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(19)32233-0/fulltext" },
+    { label: "NARU MPTT-24", citation: "National Ambulance Resilience Unit / UK Defence Medical Services. Modified Physiological Triage Tool (MPTT-24) and the Ten Second Triage tool for major incident triage.", url: "https://naru.org.uk/" },
+    { label: "UKHSA CBRN", citation: "UK Health Security Agency. Chemical, biological, radiological and nuclear (CBRN) incidents: clinical management and health protection.", url: "https://www.gov.uk/government/publications/chemical-biological-radiological-and-nuclear-incidents-clinical-management-and-health-protection" },
     { label: "FICM Major Incident Ethics", citation: "Faculty of Intensive Care Medicine. Ethical guidance for intensivists in a major incident. FICM.", url: "https://www.ficm.ac.uk" },
     { label: "GMC Good Medical Practice 2024", citation: "General Medical Council. Good Medical Practice. GMC; 2024 (in force from 30 January 2024).", url: "https://www.gmc-uk.org/professional-standards/professional-standards-for-doctors/good-medical-practice" },
     { label: "Gaba CRM 2015", citation: "Gaba DM, Fish KJ, Howard SK, Burden AR. Crisis Management in Anesthesiology. 2nd ed. Elsevier; 2015. Practical crisis resource management behaviours: role allocation, closed-loop communication and periodic re-evaluation." },
@@ -1625,6 +1636,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NARU Triage Sieve 2021", citation: "National Ambulance Resilience Unit (NARU). Clinical Practice Guidance: Triage Sieve (Primary Triage Tool) and Triage Sort (Secondary Triage Tool), v1.2, 2021. Current UK standard: RR < 10 or > 30 → P1 (Immediate).", url: "https://www.nasi.org.uk/wp-content/uploads/2021/04/NARU-Triage-Sieve-and-Sort-A3-Poster-V1.2.pdf" },
   ],
   "patient-positioning": [
+    { label: "BJA Educ One-Lung 2018", citation: "Ashok V, Francis J. A practical approach to adult one-lung ventilation — lateral decubitus physiology and ventilation/perfusion changes. BJA Education. 2018;18(3):69-74.", url: "https://www.bjaed.org/article/S2058-5349(17)30153-2/fulltext" },
     { label: "PROSEVA 2013", citation: "Gu\u00e9rin C, Reignier J, Richard JC, et al. Prone positioning in severe acute respiratory distress syndrome. N Engl J Med. 2013;368(23):2159-2168.", url: "https://doi.org/10.1056/NEJMoa1214103" },
     { label: "ESICM ARDS 2023 (Prone)", citation: "Grasselli G, Calfee CS, Camporota L, et al. ESICM guidelines on acute respiratory distress syndrome: definition, phenotyping and respiratory support strategies. Intensive Care Med. 2023;49(7):727-759.", url: "https://doi.org/10.1007/s00134-023-07050-7", excerpt: "We recommend using prone positioning in patients with moderate–severe ARDS (as defined by a PaO2/FiO2 < 150 mm Hg and PEEP ≥ 5 cmH2O, despite optimisation of ventilation settings) and sessions of at least 16 consecutive hours in patients with moderate–severe ARDS." },
     { label: "BJA Educ Positioning 2018", citation: "Knight DJW, Mahajan RP. Patient positioning in anaesthesia. BJA Education. 2004;4(5):160-163.", url: "https://doi.org/10.1093/bjaceaccp/mkh045" },

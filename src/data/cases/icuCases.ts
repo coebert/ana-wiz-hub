@@ -458,7 +458,7 @@ export const icuCaseBank: CaseBank = {
           prompt: "Why is this patient coagulopathic, and what do you give?",
           answer: [
             "Trauma-induced coagulopathy is driven by tissue injury and shock with protein C activation, endothelial glycocalyx shedding, hyperfibrinolysis and fibrinogen consumption — then worsened by dilution, acidosis and hypothermia.",
-            "Give tranexamic acid 1 g intravenously as soon as possible and within three hours of injury, followed by 1 g over eight hours; benefit falls with delay and treatment after three hours may be harmful.",
+            "Give tranexamic acid 1 g intravenously as soon as possible and within three hours of injury — the mortality benefit lies in this early dose, falls with delay, and treatment started after three hours may be harmful. A second 1 g (the CRASH-2 eight-hour infusion, or a further short bolus in many UK protocols) is given while bleeding continues rather than as an automatic requirement; follow your local major haemorrhage protocol.",
             "Use viscoelastic testing to target fibrinogen (replace below about 1.5 g/L with concentrate or cryoprecipitate), platelets above 50 × 10⁹/L (100 × 10⁹/L with brain injury) and ionised calcium above 1.0 mmol/L.",
           ],
         },
