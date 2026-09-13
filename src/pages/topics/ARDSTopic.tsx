@@ -10,6 +10,7 @@ import ARDSVentModeComparisonDiagram from "@/components/diagrams/intensive-care/
 import EOLIAMurrayCalculator from "@/components/diagrams/intensive-care/EOLIAMurrayCalculator";
 import PneumoniaSteroidDecisionTree from "@/components/diagrams/intensive-care/PneumoniaSteroidDecisionTree";
 import ARDSPathophysiologyCascadeDiagram from "@/components/diagrams/intensive-care/ARDSPathophysiologyCascadeDiagram";
+import RefractoryHypoxaemiaFlowchart from "@/components/diagrams/shared/RefractoryHypoxaemiaFlowchart";
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
@@ -327,6 +328,13 @@ const ARDSTopic = () => {
               </div>
             ))}
           </div>
+
+          <h3 className="text-base font-semibold text-foreground mt-6 mb-1">Refractory Hypoxaemia — Escalation Flowchart</h3>
+          <p className="text-sm text-muted-foreground">
+            The viva favourite is the patient who deteriorates despite protective ventilation. Work through the flow below: exclude mimics, fix the baseline, then decide whether this is an oxygenation problem or a right ventricle in trouble — because acute cor pulmonale reverses several of the usual escalation steps.
+          </p>
+          <RefractoryHypoxaemiaFlowchart />
+
           </CollapsibleSubsection>
         </ExamSection>
 

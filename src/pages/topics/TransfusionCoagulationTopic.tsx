@@ -8,6 +8,7 @@ import TraliVsTacoDecisionTool from "@/components/diagrams/intensive-care/TraliV
 import CellSalvageAnimatedDiagram from "@/components/diagrams/intensive-care/CellSalvageAnimatedDiagram";
 import AcdCitrateChelationDiagram from "@/components/diagrams/intensive-care/AcdCitrateChelationDiagram";
 import CitrateWashSeparationDiagram from "@/components/diagrams/intensive-care/CitrateWashSeparationDiagram";
+import MajorHaemorrhageFlowchart from "@/components/diagrams/shared/MajorHaemorrhageFlowchart";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
@@ -278,6 +279,13 @@ const TransfusionCoagulationTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               Defined as one entire blood volume in 24 h (~10 units PRBC in 70 kg adult), or &gt;4 units in 1 h with ongoing bleeding. Activation enables coordinated product delivery.
             </p>
+
+            <h3 className="text-base font-semibold text-foreground mt-4 mb-1">Major Haemorrhage — Flowchart with Reaction Branch</h3>
+            <p className="text-sm text-muted-foreground">
+              The hard exam scenario is the bleeding patient who also develops hypoxia or fever mid-transfusion. The flow below separates the empirical phase from goal-directed therapy, and branches into the acute reaction pathway (TACO, TRALI, haemolytic, bacterial) without abandoning resuscitation.
+            </p>
+            <MajorHaemorrhageFlowchart />
+
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Empiric 1:1:1</p>
