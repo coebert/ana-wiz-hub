@@ -8,6 +8,7 @@ import { cardiovascularDiseaseQuestions } from "@/data/quizzes";
 import ValvularHaemodynamicsDiagram from "@/components/diagrams/perioperative/ValvularHaemodynamicsDiagram";
 import { Exam } from "@/data/curriculum";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const objectives = [
   "Stratify perioperative cardiac risk (METs, RCRI, ESC/ESA pathway) and decide on further investigation.",
@@ -375,7 +376,7 @@ const CardiovascularDiseaseTopic = () => {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Dilated Cardiomyopathy — "Forward, Fast and Relaxed"</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Goals: maintain forward flow, keep heart rate at the higher end of normal (80–100 bpm) to preserve cardiac output in a poorly contractile, dilated ventricle, reduce afterload to improve ejection fraction, and maintain preload carefully (both hypovolaemia and fluid overload are poorly tolerated)</li>
+                <li>Goals: maintain forward flow, keep heart rate at the higher end of normal (80–100 bpm) to preserve cardiac output in a poorly contractile, dilated ventricle, reduce afterload to improve ejection fraction, and maintain preload carefully (both hypovolaemia and fluid overload are poorly tolerated) <InlineRef topicId="cardiovascular-disease" refLabel="ESC/ESA 2022" /></li>
                 <li>Avoid: myocardial depressant agents (high-dose volatile, large boluses of propofol) and large increases in afterload (pain, light anaesthesia, vasopressor overuse), both of which precipitate acute decompensation</li>
                 <li>Consider inotropic support and regional/neuraxial techniques that reduce SVR (with careful, incremental titration) to unload the failing ventricle</li>
               </ul>
@@ -396,7 +397,7 @@ const CardiovascularDiseaseTopic = () => {
                 <li>Physiology closely resembles constrictive pericarditis — stiff, non-compliant ventricles with impaired diastolic filling but preserved systolic function</li>
                 <li>Goals: maintain preload, maintain sinus rhythm (the atrial contribution to ventricular filling is vital in a non-compliant ventricle — loss of atrial kick or AF is poorly tolerated), maintain SVR, and keep heart rate low-normal to allow adequate diastolic filling time</li>
                 <li>Avoid tachycardia and hypovolaemia — both critically reduce filling and cardiac output in a preload-dependent, non-compliant ventricle</li>
-                <li>Prone to both systemic and pulmonary venous congestion — fluid overload is poorly tolerated and readily precipitates pulmonary oedema and hepatic/systemic congestion, so fluid administration should be cautious and closely monitored</li>
+                <li>Prone to both systemic and pulmonary venous congestion — fluid overload is poorly tolerated and readily precipitates pulmonary oedema and hepatic/systemic congestion, so fluid administration should be cautious and closely monitored <InlineRef topicId="cardiovascular-disease" refLabel="ACC/AHA 2024 Periop" /></li>
               </ul>
             </div>
           </div>
