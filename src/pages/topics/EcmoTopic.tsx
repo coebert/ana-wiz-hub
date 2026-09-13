@@ -659,8 +659,30 @@ const EcmoTopic = () => {
                     survival from 75% to 18%.
                   </p>
                 </div>
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">PRESERVE — long-term outcome after VV-ECMO for ARDS</p>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    An eight-variable score (age, BMI, immunocompromised status,
+                    prone positioning before ECMO, days of ventilation before
+                    ECMO, SOFA score, plateau pressure and PEEP) predicting
+                    6-month mortality after VV-ECMO for severe ARDS. Risk
+                    classes 0–7 correspond to 6-month mortality of roughly 3%
+                    up to about 80%, and it complements RESP by describing
+                    longer-term rather than in-hospital outcome
+                    <InlineRef topicId="ecmo" refLabel="PRESERVE 2013" />.
+                  </p>
+                </div>
               </div>
+              <p className="text-sm text-muted-foreground mt-3">
+                <strong>Limitations of all three scores:</strong> they were derived in
+                selected cohorts before modern practice (and before COVID-19),
+                they discriminate only moderately (c-statistic ≈ 0.7), they do
+                not include frailty, functional baseline or patient wishes, and
+                they must never be used alone to refuse or withdraw ECMO in an
+                individual patient.
+              </p>
             </div>
+
 
             {/* Ethics & withdrawal on ECMO */}
             <div>
