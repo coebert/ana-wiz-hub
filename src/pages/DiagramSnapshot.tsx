@@ -7,6 +7,7 @@ import {
   type ReactNode,
 } from "react";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { diagramSnapshotRegistry } from "@/components/diagrams/__snapshot-registry.generated";
 
 /**
@@ -92,6 +93,9 @@ export default function DiagramSnapshot() {
     const names = Object.keys(diagramSnapshotRegistry);
     return (
       <div style={{ padding: 24, fontFamily: "monospace" }}>
+        <Helmet>
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
         <h1>Diagram snapshot sandbox</h1>
         <p>{names.length} registered diagrams</p>
         <ul>
@@ -124,6 +128,9 @@ export default function DiagramSnapshot() {
 
   return (
     <>
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <style dangerouslySetInnerHTML={{ __html: FREEZE_CSS }} />
       <div
         data-snapshot-target

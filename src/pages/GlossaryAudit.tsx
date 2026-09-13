@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { PageSection } from "@/components/layout/PageSection";
 import { ArrowLeft, CheckCircle2, AlertCircle, MinusCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -125,6 +126,9 @@ const counts = ENTRIES.reduce(
 const GlossaryAudit = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <PageSection spacing="tight" width="wide">
         <Link
           to="/"
