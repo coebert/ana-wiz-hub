@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { Exam } from "@/data/curriculum";
 import { ExamSection } from "@/components/exam/ExamSection";
+import { InlineRef } from "@/components/references/InlineRef";
 import { ecmoQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import ECMOCircuitDiagram from "@/components/diagrams/intensive-care/ECMOCircuitDiagram";
