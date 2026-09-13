@@ -383,8 +383,11 @@ const BreathingCircuitsTopic = () => {
                 <p>
                   The joint Association of Anaesthetists / Royal College of Anaesthetists guideline
                   <em> Anaesthesia, anaesthetic machines and patient safety</em> (2024)
-                  <InlineRef topicId="breathing-circuits" refLabel="RCoA/AoA 2024 Machine Check" /> supersedes the AAGBI 2012
-                  <em> Checking Anaesthetic Equipment</em> guidance and deliberately widens the scope: the pre-use check is only one
+                  <InlineRef topicId="breathing-circuits" refLabel="RCoA/AoA 2024 Machine Check" /> builds on the Association of
+                  Anaesthetists <em>Checking anaesthetic equipment</em> guidance updated in <strong>2023</strong>
+                  <InlineRef topicId="breathing-circuits" refLabel="AoA 2023 Machine Check" />, which itself replaced the
+                  AAGBI 2012 version with a more pragmatic session-based check. Quote the current 2023/2024 documents, not the
+                  2012 guidance. Together they deliberately widen the scope: the pre-use check is only one
                   element of keeping patients safe around anaesthetic machines. Its recommendations cover the whole life-cycle of the
                   workstation.
                 </p>
