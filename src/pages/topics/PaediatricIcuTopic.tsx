@@ -740,6 +740,41 @@ const PaediatricIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="risk-scoring" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Risk Stratification & Scoring Systems">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+              Paediatric scores serve two distinct purposes: <strong>benchmarking and audit</strong> (comparing observed with predicted mortality across units, standardising case-mix in research) and <strong>bedside recognition of deterioration</strong>. They are not designed to guide treatment decisions in an individual child, and must never be used to withhold or limit therapy.
+            </p>
+            <div className="space-y-3">
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">PIM / PIM2 / PIM3 — admission mortality risk</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  The Paediatric Index of Mortality uses variables available at the <strong>time of PICU admission</strong> (first face-to-face contact), which makes it quick to collect and suitable for continuous quality monitoring. PIM2 includes systolic BP, pupillary reaction to light, PaO₂/FiO₂, base excess, mechanical ventilation in the first hour, elective admission, recovery from a procedure, cardiac bypass, and high- or low-risk diagnostic groups; it was recalibrated against improving outcomes, and PIM3 updates the diagnostic weightings again <InlineRef topicId="paediatric-icu" refLabel="PIM2 2003" />.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">PRISM III / PRISM IV — first 12–24 hours</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  The Pediatric Risk of Mortality score uses the <strong>worst values over the first 12–24 h</strong> of PICU stay across 17 physiological and laboratory variables (cardiovascular/neurological, acid-base, chemistry, haematology). The wider dataset can improve discrimination, but because it captures the effect of the first day's treatment it is susceptible to treatment bias and is more labour-intensive to collect than PIM <InlineRef topicId="paediatric-icu" refLabel="PIM2 2003" />.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">PELOD-2 — organ dysfunction</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Paediatric Logistic Organ Dysfunction quantifies the <strong>severity of multiple organ dysfunction</strong> rather than predicting admission mortality, scoring neurological (GCS, pupils), cardiovascular (lactate, MAP), renal (creatinine), respiratory (PaO₂/FiO₂, PaCO₂, ventilation) and haematological (WCC, platelets) domains. It can be scored serially, so it is used to track trajectory and as an outcome measure in trials — the paediatric counterpart of SOFA.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">PEWS — pre-PICU deterioration</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Paediatric Early Warning Scores work upstream of all of the above, on the ward: age-specific thresholds for heart rate, respiratory rate and effort, blood pressure, SpO₂/oxygen requirement, capillary refill and conscious level, plus explicit weight given to nurse and <strong>parental concern</strong>. A triggering or rising score mandates escalation to senior review and, where needed, the outreach or PICU retrieval team <InlineRef topicId="paediatric-icu" refLabel="Bedside PEWS 2009" />.
+                </p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+
           <SynthesisBlock
             title="Paediatric ICU — Critical Differences vs Adults"
             subtitle="The size, physiology, and pharmacology adjustments that matter at the bedside."
