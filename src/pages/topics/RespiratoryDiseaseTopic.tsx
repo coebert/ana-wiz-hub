@@ -54,7 +54,7 @@ const RespiratoryDiseaseTopicWorkedExamples: WorkedExample[] = [
                 <li>If hypoxia persists, ask the surgeon to clamp the non-dependent pulmonary artery</li>
                 <li>As a last resort, abandon OLV and re-inflate both lungs</li>
               </ol>
-              <span className="block mt-1"><InlineRef topicId="respiratory-disease" refLabel="Lumb Ch.27" /></span>
+              <span className="block mt-1"><InlineRef topicId="respiratory-disease" refLabel="Lumb Ch.27" /> <InlineRef topicId="respiratory-disease" refLabel="BJA Educ OLV 2018" /></span>
             </li>
           <li>Post-op: HDU, regional analgesia, early mobilisation, chest physiotherapy, NIV if hypercapnic respiratory failure develops</li>
         </ol>
