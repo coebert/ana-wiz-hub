@@ -8,6 +8,7 @@ import { TransportVentilationDiagram } from "@/components/diagrams/clinical/Tran
 import { transferMedicineQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { InlineRef } from "@/components/topic/InlineRef";
 
 const transferMedicineFaqs: Array<[string, string]> = [
   [
