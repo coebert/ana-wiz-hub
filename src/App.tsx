@@ -169,6 +169,8 @@ const App = () => (
           <Route path="/drugs" element={<DrugsLibrary />} />
           <Route path="/reference" element={<DrugReferenceHome />} />
           <Route path="/reference/drugs" element={<DrugReferenceLibrary />} />
+          <Route path="/reference/topics" element={<DrugReferenceTopics />} />
+          <Route path="/reference/topics/:slug" element={<DrugReferenceTopic />} />
           <Route path="/reference/drugs/:slug" element={<DrugReferenceEntry />} />
           <Route path="/reference/monitoring" element={<DrugReferenceMonitoring />} />
           <Route path="/reference/infusions" element={<DrugReferenceInfusions />} />
