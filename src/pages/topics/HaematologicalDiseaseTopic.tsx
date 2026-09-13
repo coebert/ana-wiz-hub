@@ -195,6 +195,20 @@ const HaematologicalDiseaseTopic = () => {
                 </ul>
               </div>
 
+              <div className="bg-card border-2 border-clinical/40 rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Differentiating Thrombotic Microangiopathies (TTP vs HUS)</h3>
+                <p className="text-sm mb-2">Both present with microangiopathic haemolytic anaemia (schistocytes, raised LDH, low haptoglobin, negative DAT) and thrombocytopenia with a normal coagulation screen — but management diverges sharply, so the distinction is urgent.</p>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li><strong>TTP</strong>: fluctuating neurological signs (confusion, focal deficits, seizures), fever, profound thrombocytopenia (often &lt;30 ×10⁹/L) with only modest renal impairment; caused by deficiency of ADAMTS13 (usually acquired autoantibody) leaving ultra-large von Willebrand factor multimers to drive platelet microthrombi</li>
+                  <li><strong>Typical (STEC) HUS</strong>: preceding bloody diarrhoea, predominant acute kidney injury, milder thrombocytopenia, neurology uncommon; confirm with stool culture and Shiga toxin/<em>E. coli</em> O157 PCR</li>
+                  <li><strong>Atypical HUS</strong>: complement dysregulation, no diarrhoeal prodrome, often relapsing with severe renal failure and a family history</li>
+                  <li><strong>Key investigations</strong>: ADAMTS13 activity (&lt;10% confirms TTP — take the sample <em>before</em> plasma exchange), ADAMTS13 inhibitor/antibody, stool Shiga toxin PCR, complement C3/C4 and functional complement studies, pregnancy test, HIV, and a coagulation screen to exclude DIC</li>
+                  <li><strong>PLASMIC score</strong> (Platelets &lt;30 ×10⁹/L; haemolysis; no active cancer; no transplant; MCV &lt;90 fL; INR &lt;1.5; creatinine &lt;177 µmol/L) — a score of 6–7 indicates high probability of severe ADAMTS13 deficiency and justifies starting plasma exchange before the assay returns</li>
+                  <li><strong>Immediate management</strong>: suspected TTP — urgent plasma exchange (ideally within 4–8 h, 1.5 plasma volumes daily), high-dose steroids, caplacizumab and rituximab under haematology guidance; give FFP if exchange is delayed. Typical HUS — supportive care with fluids and renal replacement therapy as needed (avoid antibiotics and antimotility agents). Atypical HUS — complement inhibition with eculizumab.<InlineRef topicId="haematological-disease" refLabel="BSH TTP 2012" /><InlineRef topicId="haematological-disease" refLabel="BSH HUS 2015" /></li>
+                  <li><strong>Never</strong> transfuse platelets prophylactically in TTP — it fuels microvascular thrombosis; reserve for life-threatening bleeding after haematology discussion</li>
+                </ul>
+              </div>
+
               <div className="bg-card border border-border rounded-lg p-4">
                 <h3 className="font-semibold text-foreground mb-2">Procedural Platelet Thresholds (BSH 2017 / AAGBI 2013)</h3>
                 <ul className="list-disc list-inside space-y-1 text-sm">

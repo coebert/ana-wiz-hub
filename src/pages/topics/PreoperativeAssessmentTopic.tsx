@@ -57,7 +57,7 @@ const tocItems = [
 const preoperativeAssessmentFaqs: Array<[string, string]> = [
   ["What is the prognostic value of CPET anaerobic threshold (AT) before major surgery?", "An AT <11 mL/kg/min predicts increased postoperative cardiopulmonary morbidity and 30/90-day mortality after major non-cardiac surgery; 11–14 mL/kg/min is intermediate risk and >14 mL/kg/min low risk (Older 1993; POM-HR)."],
   ["When should elective non-cardiac surgery be deferred after PCI?", "Elective non-cardiac surgery should be delayed at least 1 month after PCI regardless of stent type. Beyond this, whether to continue or interrupt dual antiplatelet therapy is a multidisciplinary (heart team) decision balancing individual thrombotic risk against surgical bleeding risk (ESC Non-Cardiac Surgery 2022)."],
-  ["How is the Revised Cardiac Risk Index (Lee) interpreted?", "Six predictors (high-risk surgery, IHD, heart failure, cerebrovascular disease, insulin-treated diabetes, creatinine >177 µmol/L): 0 ≈ 0.4%, 1 ≈ 1%, 2 ≈ 2.4%, ≥3 ≈ 5.4% risk of a major cardiac event at 30 days."],
+  ["How is the Revised Cardiac Risk Index (Lee) interpreted?", "Six predictors (high-risk surgery, IHD, heart failure, cerebrovascular disease, insulin-treated diabetes, creatinine >170 µmol/L): 0 ≈ 0.4%, 1 ≈ 1%, 2 ≈ 2.4%, ≥3 ≈ 5.4% risk of a major cardiac event at 30 days."],
 ];
 
 const PreoperativeAssessmentTopic = () => {
@@ -111,7 +111,7 @@ const PreoperativeAssessmentTopic = () => {
           <div className="grid sm:grid-cols-2 gap-3">
             {[
               { tool: "ASA Physical Status", detail: "ASA I (healthy) to VI (brain-dead donor). Subjective but universally used. ASA III+ associated with increased complications." },
-              { tool: "Revised Cardiac Risk Index (RCRI)", detail: "6 independent predictors: high-risk surgery, IHD, CCF, CVA/TIA, insulin-dependent DM, creatinine >177 µmol/L. ≥3 factors = >11% cardiac risk." },
+              { tool: "Revised Cardiac Risk Index (RCRI)", detail: "6 independent predictors: high-risk surgery, IHD, CCF, CVA/TIA, insulin-dependent DM, creatinine >170 µmol/L. ≥3 factors = >11% cardiac risk." },
               { tool: "NSQIP / SORT", detail: "SORT (Surgical Outcome Risk Tool) — validated UK model. Uses ASA, urgency, severity, speciality, cancer, age. Predicts 30-day mortality." },
               { tool: "Functional Capacity", detail: "METs assessment. >4 METs (climb 2 flights of stairs) = adequate. <4 METs = further cardiac investigation (CPET, echo, stress testing)." },
             ].map((t) => (
@@ -506,7 +506,7 @@ const PreoperativeAssessmentTopic = () => {
           <div className="p-4 rounded-lg border-2 border-perioperative/40 bg-perioperative/5">
             <CheckCircle2 className="h-5 w-5 text-perioperative mb-2" />
             <p className="font-semibold text-foreground text-sm">TARGET MET</p>
-            <p className="text-xs font-mono text-muted-foreground mt-1">Hb ≥ 130 g/L (men)<br/>Hb ≥ 130 g/L (women, WHO 2017 PBM)</p>
+            <p className="text-xs font-mono text-muted-foreground mt-1">Hb ≥ 130 g/L (men)<br/>Hb ≥ 120 g/L (women, standard WHO definition)<br/><span className="font-sans">Some PBM guidelines now use a universal 130 g/L target to minimise transfusion, but the formal definition of anaemia in women remains &lt;120 g/L.</span></p>
             <p className="text-sm text-muted-foreground mt-2 leading-snug">
               No iron / ESA required. Note: WHO 2017 raised the female pre-op target to 130 g/L (from 120) to equalise transfusion risk — surgery causes equal blood loss regardless of sex.
             </p>

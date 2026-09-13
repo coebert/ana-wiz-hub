@@ -185,7 +185,7 @@ const OrganDonationTopic = () => {
             </p>
             <div className="p-3 rounded-lg bg-secondary/50 border border-primary/20">
               <p className="text-sm font-semibold text-foreground mb-1">Time of death</p>
-              <p className="text-sm text-muted-foreground">Legal time of death = completion of the <strong>first</strong> set of tests. There is no mandatory interval before the second set.</p>
+              <p className="text-sm text-muted-foreground">Legal time of death = completion of the <strong>first</strong> set of tests. There is no mandatory interval before the second set.<InlineRef topicId="organ-donation" refLabel="AoMRC 2008" /><InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" /></p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
