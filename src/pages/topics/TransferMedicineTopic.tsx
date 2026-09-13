@@ -213,6 +213,27 @@ const TransferMedicineTopic = () => {
               <li><strong>Vibration</strong>: artefact on monitoring, patient discomfort, equipment damage</li>
               <li><strong>Noise</strong>: makes auscultation impossible — rely on capnography and SpO₂. Communication difficult</li>
             </ul>
+            <h3 className="text-base font-bold text-foreground mt-4 mb-2">Aeromedical physiology &amp; the stressors of flight</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Fixed-wing cabins are usually pressurised to an equivalent altitude of 6 000–8 000 ft; helicopters fly
+              unpressurised at whatever altitude the terrain demands. Every gas law bites at once
+              <InlineRef topicId="transfer-medicine" refLabel="Martin Aeromedical 2006" />:
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
+              <li><strong>Boyle</strong> (P ∝ 1/V): trapped gas expands ~30% at 8 000 ft — pneumothorax (drain it and never clamp the drain), bowel gas, pneumocephalus, air splints, ETT and tracheostomy cuffs (inflate with saline or measure cuff pressure in flight), and air in giving sets or the ECMO circuit</li>
+              <li><strong>Dalton</strong>: falling barometric pressure lowers the inspired oxygen partial pressure — a patient marginal at sea level desaturates in flight; pre-oxygenate, raise FiO₂, and calculate cylinder needs for the whole flight plus reserve</li>
+              <li><strong>Henry</strong>: dissolved gas comes out of solution — decompression illness (fly low, or at sea-level cabin pressure, after diving injuries)</li>
+              <li><strong>Charles / Gay-Lussac</strong>: gas volume and cylinder pressure vary with temperature — cold cabins alter cylinder gauge readings and drug/fluid warming performance</li>
+            </ul>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
+              <li><strong>Types of hypoxia to keep separate:</strong> hypoxic (low PiO₂ at altitude), hypaemic (anaemia, carboxyhaemoglobin — the flying patient after a fire), stagnant (low cardiac output, cold-induced vasoconstriction, G-forces) and histotoxic (cyanide, sepsis-related mitochondrial dysfunction)</li>
+              <li><strong>Acceleration / G-forces:</strong> on take-off, a head-forward patient has blood displaced footward (fall in venous return and BP); a head-aft orientation raises ICP. Position the head-injured patient with the head towards the tail on take-off, and secure everything — an unsecured pump becomes a projectile</li>
+              <li><strong>Vibration:</strong> 4–12 Hz airframe vibration causes monitoring artefact (unreliable NIBP and SpO₂ — favour invasive pressure and capnography), fatigue, and mechanical failure of equipment and connections</li>
+              <li><strong>Noise:</strong> 85–110 dB — auscultation and alarms are lost; use headsets, agreed hand signals, and visual waveform monitoring; hearing protection for patient and crew</li>
+              <li><strong>Temperature and humidity:</strong> cabins are cold and very dry — active warming, humidification where possible, eye care, and attention to insensible losses</li>
+              <li><strong>Team factors:</strong> crew fatigue and duty-hour limits, cramped access with no room to intubate or perform CPR effectively, spatial disorientation and motion sickness, restricted communication with the pilot ("sterile cockpit" during take-off and landing), and the absolute rule that all interventions are anticipated and completed before departure or on the ground</li>
+              <li><strong>Contraindications:</strong> <em>relative</em> — untreated pneumothorax, recent intraocular gas or intracranial air, severe anaemia, unstable haemodynamics or an unsecured airway, decompression illness (needs low-altitude flight), late pregnancy; <em>practical absolutes</em> — a patient who cannot be stabilised for the flight duration, a bleeding source not yet controlled where the receiving centre is no closer, and weather or airframe limits. Documented risk–benefit discussion with the receiving unit and the aeromedical crew decides the mode of transport</li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
 

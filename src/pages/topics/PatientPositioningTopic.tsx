@@ -304,6 +304,21 @@ const PatientPositioningTopic = () => {
               opens the costo-iliac space for renal surgery. Anaesthetised + paralysed + open chest creates
               significant V/Q mismatch (ventilation to non-dependent compliant lung; perfusion to dependent lung).
             </p>
+            <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+              <strong>V/Q in the lateral position — awake versus anaesthetised.</strong> Awake and breathing
+              spontaneously, the <em>dependent</em> lung is both better perfused (gravity) and better ventilated
+              (it sits on the steep part of its compliance curve and the dependent hemidiaphragm contracts more
+              efficiently), so V/Q matching is preserved. Under general anaesthesia with paralysis and positive-pressure
+              ventilation this coupling breaks down: the weight of the mediastinum and the abdominal contents splints
+              the dependent hemidiaphragm and compresses the dependent lung, while the <em>non-dependent</em> lung
+              becomes the more compliant one and therefore preferentially receives tidal volume. Perfusion remains
+              gravity-dependent in the lower lung, so ventilation goes to the upper lung and blood to the lower lung —
+              a substantial shunt and V/Q mismatch, worsened further by opening the chest (loss of the non-dependent
+              chest-wall constraint) and by an inflated capnothorax or kidney rest. This is the physiological starting
+              point for one-lung ventilation, where the whole of the non-dependent lung becomes shunt until hypoxic
+              pulmonary vasoconstriction diverts flow to the ventilated dependent lung
+              <InlineRef topicId="patient-positioning" refLabel="BJA Educ One-Lung 2018" />.
+            </p>
             <LateralIllustration />
             </CollapsibleSubsection>
           </ExamSection>
@@ -431,7 +446,7 @@ const PatientPositioningTopic = () => {
               stress and strain across the lung — reducing ventilator-induced lung injury. Prone positioning also
               improves chest-wall and lung mechanics (the dorsal lung is less compressed by the heart and abdominal
               contents) and unloads the right ventricle by reducing hypoxic pulmonary vasoconstriction and pulmonary
-              vascular resistance (<InlineRef topicId="patient-positioning" refLabel="PROSEVA 2013" />, <InlineRef topicId="patient-positioning" refLabel="ESICM ARDS 2023 (Prone)" />).
+              vascular resistance. Two further effects are commonly forgotten: <strong>secretion clearance</strong> improves through postural drainage of dorsal segments, and the <strong>haemodynamic response is variable but frequently favourable</strong> — raised intra-abdominal pressure augments venous return so cardiac output rises in fluid-responsive patients, while RV afterload falls with better recruitment and less hypoxic vasoconstriction; in the hypovolaemic patient the same rise in intra-abdominal and intrathoracic pressure can instead reduce preload and cause hypotension, so optimise volume state and vasopressors before turning (<InlineRef topicId="patient-positioning" refLabel="PROSEVA 2013" />, <InlineRef topicId="patient-positioning" refLabel="ESICM ARDS 2023 (Prone)" />).
             </p>
             <h3 className="text-base font-bold text-foreground mt-3 mb-2">Indication</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">
