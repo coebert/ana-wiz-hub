@@ -7,6 +7,7 @@ import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { maternalPhysiologyQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import PregnancyTimelineDiagram from "@/components/diagrams/physiology/PregnancyTimelineDiagram";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const maternalPhysiologyFaqs: Array<[string, string]> = [
   [
@@ -15,7 +16,7 @@ const maternalPhysiologyFaqs: Array<[string, string]> = [
   ],
   [
     "Why is the pregnant woman at increased risk of failed intubation and rapid desaturation?",
-    "Airway: weight gain, mucosal oedema, breast enlargement, full dentition; failed intubation 1:300 (8× the non-pregnant rate). Reduced FRC (15–20 %) and increased oxygen consumption (20 %) cause desaturation within 1 min of apnoea vs ~3 min in non-pregnant. Strategies: ramped position, pre-oxygenation 3 min with end-tidal O₂ >85 %, smaller ETT (6.5–7.0), video laryngoscopy first-line, OAA/DAS failed-intubation algorithm rehearsed."
+    "Airway: weight gain, mucosal oedema, breast enlargement, full dentition; failed intubation is historically about 1:300. Reduced FRC (15–20 %) and increased oxygen consumption (20–40 %) cause rapid desaturation. Strategies: ramped position, pre-oxygenation 3 min with end-tidal O₂ >85 %, smaller ETT (6.5–7.0), video laryngoscopy first-line, OAA/DAS failed-intubation algorithm rehearsed."
   ],
   [
     "Why does the pregnant patient need a reduced MAC and lower local anaesthetic dose?",
@@ -45,7 +46,7 @@ const workedExamples: WorkedExample[] = [
         Time to SpO₂ &lt; 90% during apnoea ≈ <strong>O₂ store ÷ O₂ consumption</strong>:
         <ul className="list-disc list-inside mt-2 space-y-1">
           <li>Non-pregnant: FRC ~2.5 L × FiO₂ 0.9 (after pre-O₂) ≈ 2.25 L O₂; VO₂ ~250 mL/min → ~9 min.</li>
-          <li>Term pregnancy: FRC ~2.0 L (↓ 20%) × 0.9 ≈ 1.8 L; VO₂ ~325 mL/min (↑ 30%) → <strong>~3–4 min</strong> at most.</li>
+          <li>Term pregnancy: FRC ~2.0 L (↓ 20%) × 0.9 ≈ 1.8 L; VO₂ rises by about 20–40% → <strong>~3–4 min</strong> at most.</li>
           <li>Aortocaval compression and supine position drop FRC further (closing capacity may exceed FRC awake).</li>
         </ul>
       </>
@@ -178,7 +179,7 @@ const MaternalPhysiologyTopic = () => {
                 { label: "Minute Ventilation", value: "↑ 50% (↑ tidal volume, rate largely unchanged)." },
                 { label: "Tidal Volume", value: "↑ 40% (progesterone-driven)." },
                 { label: "FRC", value: "↓ 20% (diaphragm elevated by gravid uterus)." },
-                { label: "Oxygen Consumption", value: "↑ 20–30%." },
+                { label: "Oxygen Consumption", value: "↑ 20–40%." },
                 { label: "PaCO₂", value: "↓ to ~4.0 kPa (30 mmHg) — chronic respiratory alkalosis with renal HCO₃⁻ compensation." },
                 { label: "PaO₂", value: "↑ slightly due to hyperventilation (13–14 kPa)." },
               ].map((item) => (
@@ -225,8 +226,20 @@ const MaternalPhysiologyTopic = () => {
               <li><strong>Delayed gastric emptying</strong> in labour (opioids compound this further).</li>
               <li><strong>Airway oedema</strong>: capillary engorgement of nasopharyngeal/laryngeal mucosa — use smaller ETT (6.0–6.5), avoid nasal intubation if possible.</li>
               <li><strong>Mallampati score worsens</strong> during pregnancy and especially during labour.</li>
-              <li>Failed intubation rate in obstetrics historically ~1:250 (vs ~1:2000 in general population) — follow OAA/DAS 2015 algorithm.</li>
+              <li>Failed intubation rate in obstetrics is historically about <strong>1:300</strong> — follow the OAA/DAS obstetric failed-intubation algorithm <InlineRef topicId="maternal-physiology" refLabel="OAA/AAGBI 2013" />.</li>
             </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="endocrine" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
+            <CollapsibleSubsection title="Endocrine Changes">
+              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+                <li><strong>First trimester:</strong> hCG has weak TSH-like activity, transiently increasing free T4 and suppressing TSH.</li>
+                <li><strong>Binding proteins:</strong> oestrogen increases thyroxine-binding globulin, so total T3 and T4 rise; free T3/T4 remain broadly stable or may fall slightly later in pregnancy.</li>
+                <li><strong>Iodide:</strong> increased GFR raises renal iodide clearance and can expose marginal iodine deficiency.</li>
+                <li><strong>Interpretation:</strong> use trimester-specific thyroid reference ranges rather than non-pregnant limits.</li>
+                <li><strong>Known hypothyroidism:</strong> check TSH early and frequently; levothyroxine requirements commonly rise by roughly 30–50% during pregnancy <InlineRef topicId="maternal-physiology" refLabel="RCOG Pregnancy Physiology" />.</li>
+              </ul>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -240,6 +253,7 @@ const MaternalPhysiologyTopic = () => {
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
+
 
           <ExamSection id="pharmacology" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_02"]}>
             <CollapsibleSubsection title="Pharmacological Implications">

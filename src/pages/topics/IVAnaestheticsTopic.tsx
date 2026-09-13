@@ -18,6 +18,7 @@ import { FlumazenilDiagram } from "@/components/diagrams/pharmacology/Flumazenil
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
+import { CSHTComparisonDiagram } from "@/components/diagrams/pharmacology/CSHTComparisonDiagram";
 
 const ivAnaestheticsFaqs: Array<[string, string]> = [
   [
@@ -136,6 +137,18 @@ const IVAnaestheticsTopic = () => {
             </p>
           </div>
 
+          <div className="mt-6 rounded-lg border border-border p-4">
+            <h3 className="text-lg font-serif font-bold text-foreground">Alternative Formulations and Prodrugs</h3>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              <strong>Fospropofol</strong> is a water-soluble phosphate prodrug of propofol. Alkaline phosphatase releases
+              propofol, phosphate and formaldehyde; the latter is rapidly metabolised and is not clinically important at usual
+              doses. Water solubility avoids a lipid emulsion and its pain on injection, lipid load and bacterial-growth risk,
+              but metabolic conversion gives a slower, less predictable onset and a longer, less readily titratable offset.
+              It is not available in the UK, but remains examinable because it tests prodrug pharmacokinetics and formulation
+              science <InlineRef topicId="iv-anaesthetics" refLabel="BJA IV Anaesthetic PK" />.
+            </p>
+          </div>
+
           <div className="mt-6">
             <h3 className="text-lg font-serif font-bold text-foreground mb-3">Interactive 3-Compartment TCI Simulator</h3>
             <p className="text-foreground/90 leading-relaxed mb-4">
@@ -227,6 +240,20 @@ const IVAnaestheticsTopic = () => {
               in advance.
             </p>
           </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Context-Sensitive Half-Time</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Context-sensitive half-time is the time for the central-compartment plasma concentration to fall by 50% after
+            stopping an infusion of a specified duration. Propofol combines rapid metabolic clearance with redistribution, so
+            its CSHT remains relatively short after infusions up to about eight hours, supporting predictable TIVA recovery.
+            Thiopentone progressively fills fat and other peripheral compartments and has capacity-limited metabolism at high
+            exposure, so its CSHT becomes very long; it is unsuitable for maintenance by infusion. Midazolam also accumulates
+            with duration, whereas remifentanil remains near 3–4 minutes because ester hydrolysis is rapid and context-independent
+            <InlineRef topicId="iv-anaesthetics" refLabel="BJA IV Anaesthetic PK" />.
+          </p>
+          <CSHTComparisonDiagram />
         </section>
 
         <section className="mb-10">

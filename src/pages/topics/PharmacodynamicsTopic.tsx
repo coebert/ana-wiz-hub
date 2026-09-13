@@ -163,7 +163,7 @@ const PharmacodynamicsTopic = () => {
               <li><strong>Dose-response curve</strong>: hyperbolic. Log(dose)-response: sigmoid. Emax is the maximal response; EC₅₀ is the concentration producing 50% Emax</li>
               <li><strong>Potency</strong>: position of curve on x-axis (EC₅₀). More potent = lower EC₅₀. Example: fentanyl is more potent than morphine</li>
               <li><strong>Efficacy</strong>: maximal effect achievable (Emax). Full agonist has high efficacy; partial agonist has lower Emax regardless of dose</li>
-              <li><strong>Therapeutic index</strong>: TD₅₀/ED₅₀ (or LD₅₀/ED₅₀). Narrow TI drugs: digoxin, warfarin, lithium, phenytoin, theophylline</li>
+              <li><strong>Therapeutic index</strong>: TD₅₀/ED₅₀ (or LD₅₀/ED₅₀). It is a population ratio, does not predict one patient's risk, and can conceal overlap where efficacy and toxicity curves have different slopes. The <strong>therapeutic window</strong> is the individual plasma-concentration range associated with efficacy and acceptable toxicity. The more stringent <strong>certain safety factor</strong> (margin of safety) is LD₁/ED₉₉, testing whether almost all effective doses remain below doses lethal to the most susceptible 1%. Narrow-window drugs include digoxin, warfarin, lithium, phenytoin and theophylline <InlineRef topicId="pharmacodynamics" refLabel="Peck & Hill Ch.2" />.</li>
             </ul>
             <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
               <DoseResponseCurveDiagram />
@@ -249,6 +249,10 @@ const PharmacodynamicsTopic = () => {
             </div>
             <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
               <ReceptorTimescaleDiagram />
+            </div>
+            <div className="mt-4 rounded-lg border border-border p-4 text-sm text-muted-foreground leading-relaxed">
+              <p className="font-semibold text-foreground">GPCR desensitisation</p>
+              <p className="mt-1">Repeated or prolonged agonist exposure can reduce response. In <strong>homologous desensitisation</strong>, only the activated receptor is modified: a G-protein-coupled receptor kinase (GRK) phosphorylates its intracellular domain, recruiting an arrestin. Arrestin first sterically uncouples the receptor from its G protein, producing rapid desensitisation, then acts as a scaffold for clathrin-coated pits, promoting internalisation and slower receptor down-regulation <InlineRef topicId="pharmacodynamics" refLabel="Rang & Dale Ch.2" />.</p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>

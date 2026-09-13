@@ -67,6 +67,29 @@ const PharmacokineticsTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+
+          <ExamSection id="patient-factors-pk" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PH_BK_01"]}>
+            <CollapsibleSubsection title="Influence of Patient Factors on Pharmacokinetics">
+              <div className="grid md:grid-cols-2 gap-4 text-sm text-muted-foreground leading-relaxed">
+                <div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Age</p><p className="mt-1">Neonates have more body water, less fat and protein binding, immature CYP/glucuronidation pathways and low GFR. Older adults have less water and lean mass, more fat, lower hepatic blood flow and falling renal clearance: hydrophilic loading volumes fall, while lipophilic terminal half-lives lengthen.</p></div>
+                <div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Obesity</p><p className="mt-1">Fat expands the apparent Vd of lipophilic drugs far more than hydrophilic drugs. Total-body-weight dosing can overdose many induction drugs; use ideal, lean or adjusted body weight according to the drug and whether calculating a loading or maintenance dose.</p></div>
+                <div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Pregnancy</p><p className="mt-1">Plasma volume, total body water, cardiac output and GFR increase; albumin falls and hepatic enzyme activity changes in pathway-specific directions. Vd and free fraction may rise while renal clearance accelerates.</p></div>
+                <div className="rounded-lg border border-border p-4"><p className="font-semibold text-foreground">Organ dysfunction and binding</p><p className="mt-1">Cardiac failure reduces delivery and clearance of high-extraction drugs. Liver failure reduces flow, enzyme capacity and albumin; renal failure reduces renal clearance and permits active metabolites to accumulate. Hypoalbuminaemia increases free acidic drugs, while inflammation raises α₁-acid glycoprotein and may reduce the free fraction of basic drugs. Dexmedetomidine clearance falls with lower cardiac output and age, while low albumin increases Vd <InlineRef topicId="pharmacokinetics" refLabel="BJA Dexmedetomidine PK 2012" />.</p></div>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="pk-interactions" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PH_BK_01"]}>
+            <CollapsibleSubsection title="Pharmacokinetic Drug-Drug Interactions">
+              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+                <li><strong>Enzyme inhibition</strong> may be competitive or non-competitive and usually begins rapidly; macrolides inhibit CYP3A4, increasing exposure to susceptible sedatives and other substrates.</li>
+                <li><strong>Enzyme induction</strong> requires increased enzyme synthesis, so develops and resolves over days to weeks; rifampicin and carbamazepine can reduce concentrations of CYP substrates.</li>
+                <li><strong>Protein-binding displacement</strong> transiently raises free drug. It matters most for highly bound, narrow-therapeutic-window drugs such as warfarin, although redistribution and increased clearance often limit the duration.</li>
+                <li><strong>Organ blood flow</strong> changes alter clearance of high-extraction drugs: reduced cardiac output lowers propofol or lidocaine clearance, whereas higher flow may increase it. CYP3A4 and P-glycoprotein interactions are especially difficult to predict in critical illness <InlineRef topicId="pharmacokinetics" refLabel="ICM CYP3A4 Interactions 2009" />.</li>
+              </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PH_BK_01"]}>
             <CollapsibleSubsection title="Compartment Models">
             <p className="text-foreground/90 leading-relaxed">
