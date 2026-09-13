@@ -39,10 +39,10 @@ const heparinComparison = [
 ];
 
 const doacData = [
-  { drug: "Dabigatran", target: "Direct thrombin (IIa) inhibitor", bioavail: "6–7%", halfLife: "12–17 h", renal: "80%", reversal: "Idarucizumab (Praxbind)", notes: "Only DOAC with specific reversal agent. Requires acid pH for absorption (avoid PPIs). Dialysable." },
-  { drug: "Rivaroxaban", target: "Direct Factor Xa inhibitor", bioavail: "80–100% (with food)", halfLife: "5–13 h", renal: "33%", reversal: "Andexanet alfa / PCC", notes: "Once daily dosing. Take with food for optimal absorption. CYP3A4 & P-gp substrate." },
-  { drug: "Apixaban", target: "Direct Factor Xa inhibitor", bioavail: "50%", halfLife: "8–15 h", renal: "27%", reversal: "Andexanet alfa / PCC", notes: "Twice daily. Safest DOAC in renal impairment. Lowest bleeding risk in ARISTOTLE trial." },
-  { drug: "Edoxaban", target: "Direct Factor Xa inhibitor", bioavail: "62%", halfLife: "10–14 h", renal: "50%", reversal: "Andexanet alfa / PCC", notes: "Once daily. Dose reduce if CrCl 15–50 mL/min or body weight ≤60 kg." },
+  { drug: "Dabigatran", target: "Direct thrombin (IIa) inhibitor", bioavail: "6–7%", halfLife: "12–17 h", renal: "80%", reversal: "Idarucizumab (Praxbind)", notes: "AF: 150 mg BD; consider 110 mg BD at CrCl 30–50 mL/min according to age and bleeding risk. Avoid below 30 mL/min. Dialysable." },
+  { drug: "Rivaroxaban", target: "Direct Factor Xa inhibitor", bioavail: "80–100% (with food)", halfLife: "5–13 h", renal: "33%", reversal: "Andexanet alfa / PCC", notes: "AF: 20 mg OD with food; reduce to 15 mg OD at CrCl 15–49 mL/min. Avoid below 15 mL/min." },
+  { drug: "Apixaban", target: "Direct Factor Xa inhibitor", bioavail: "50%", halfLife: "8–15 h", renal: "27%", reversal: "Andexanet alfa / PCC", notes: "AF: 5 mg BD; use 2.5 mg BD if two of age ≥80, weight ≤60 kg, creatinine ≥133 µmol/L. Use cautiously down to CrCl 15 mL/min." },
+  { drug: "Edoxaban", target: "Direct Factor Xa inhibitor", bioavail: "62%", halfLife: "10–14 h", renal: "50%", reversal: "Andexanet alfa / PCC", notes: "AF: 60 mg OD; reduce to 30 mg OD at CrCl 15–50 mL/min. Avoid below 15 mL/min." },
 ];
 
 const workedExamples: WorkedExample[] = [
@@ -278,6 +278,10 @@ const AnticoagulantsTopic = () => {
                 </div>
               </div>
               <div className="rounded-lg p-4 border border-border bg-card">
+                <h3 className="font-semibold text-foreground">Initial Prothrombotic State</h3>
+                <p className="text-sm text-foreground/80 mt-1">Protein C (half-life about 8 h) and protein S fall before procoagulant factor II (half-life about 60–72 h), transiently reducing endogenous anticoagulant activity more rapidly than thrombin generation. This explains warfarin-induced skin necrosis, especially with protein C/S deficiency, and why therapeutic heparin overlap is required when warfarin is initiated for acute VTE <InlineRef topicId="anticoagulants" refLabel="BNF Oral Anticoagulants" />.</p>
+              </div>
+              <div className="rounded-lg p-4 border border-border bg-card">
                 <h3 className="font-semibold text-foreground">Warfarin in Pregnancy</h3>
                 <p className="text-sm text-foreground/80 mt-1">
                   Crosses placenta. Teratogenic in first trimester (warfarin embryopathy: nasal hypoplasia, stippled epiphyses).
@@ -290,7 +294,7 @@ const AnticoagulantsTopic = () => {
           <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Direct Oral Anticoagulants (DOACs)</h2>
             <p className="text-foreground/90 leading-relaxed mb-4">
-              DOACs directly inhibit a single coagulation factor without requiring antithrombin. Predictable PK, fixed dosing, no routine monitoring.
+              DOACs directly inhibit a single coagulation factor without requiring antithrombin. Renal recommendations below are common atrial-fibrillation regimens; indication-specific dosing, Cockcroft–Gault creatinine clearance, age, weight and interacting drugs must be checked against the current formulary <InlineRef topicId="anticoagulants" refLabel="BNF Oral Anticoagulants" />.
             </p>
             <div className="overflow-x-auto mb-6">
               <table className="min-w-full text-sm border border-border rounded-lg">

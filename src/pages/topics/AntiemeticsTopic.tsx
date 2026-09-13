@@ -118,9 +118,9 @@ const AntiemeticsTopic = () => {
                 </thead>
                 <tbody className="text-muted-foreground">
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">5-HT₃ antagonist</td><td>5-HT₃</td><td>CTZ + vagal afferents</td><td>Ondansetron 4 mg</td><td>Headache, constipation, ↑ QTc</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">D₂ antagonist</td><td>Dopamine D₂</td><td>CTZ</td><td>Droperidol 0.625–1.25 mg</td><td>Sedation, extrapyramidal, ↑ QTc</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Antihistamine</td><td>H₁</td><td>Vestibular + vomiting centre</td><td>Cyclizine 50 mg</td><td>Sedation, dry mouth, tachycardia</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Anticholinergic</td><td>M₁</td><td>Vestibular + vomiting centre</td><td>Hyoscine 0.3 mg</td><td>Sedation, dry mouth, confusion (elderly)</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Butyrophenones</td><td>Dopamine D₂</td><td>CTZ</td><td>Droperidol 0.625–1.25 mg IV; haloperidol 0.5–2 mg IV/IM</td><td>Highly effective prophylaxis or rescue; sedation, dystonia/akathisia and dose-related QTc prolongation. Obtain ECG monitoring in patients with long-QT risk <InlineRef topicId="antiemetics" refLabel="A&A 2022 PONV Rescue" />.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Antihistamines</td><td>H₁</td><td>Vestibular nucleus + NTS</td><td>Cyclizine 50 mg IV/IM/PO; promethazine 12.5–25 mg IV/IM/PO</td><td>Useful for motion- and opioid-related nausea and rescue PONV; sedation, dry mouth, blurred vision and anticholinergic burden. Cyclizine may cause tachycardia <InlineRef topicId="antiemetics" refLabel="Nat Prod Bioprospect 2022 Tropanes" />.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Anticholinergics</td><td>M₁</td><td>Vestibular system + NTS</td><td>Hyoscine hydrobromide: 1.5 mg transdermal patch or 0.3–0.6 mg injection</td><td>Patch applied before surgery is useful for motion sickness and PONV prophylaxis; dry mouth, blurred vision, sedation and confusion, especially in older people <InlineRef topicId="antiemetics" refLabel="Nat Prod Bioprospect 2022 Tropanes" />.</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">NK₁ antagonist</td><td>NK₁ (substance P)</td><td>Vomiting centre</td><td>Aprepitant 80 mg PO</td><td>CYP3A4 inhibitor, headache. Prolonged action (t½ ~40 h)<InlineRef topicId="antiemetics" refLabel="Gan et al. 2020" /></td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Corticosteroid</td><td>Multiple (?central prostaglandin synthesis inhibition)</td><td>Central + peripheral</td><td>Dexamethasone 4–8 mg</td><td>↑ glucose, perineal pruritus (IV push). Give at induction<InlineRef topicId="antiemetics" refLabel="BJA Educ 2013" /></td></tr>
                   <tr><td className="py-2 font-medium text-foreground">Prokinetic</td><td>D₂ + 5-HT₄</td><td>CTZ + GI tract</td><td>Metoclopramide 10 mg</td><td>Extrapyramidal (young women), ↑ LOS tone. Weak antiemetic</td></tr>
@@ -143,10 +143,9 @@ const AntiemeticsTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Low risk</strong> (Apfel 0–1): no routine prophylaxis</li>
               <li><strong>Moderate risk</strong> (Apfel 2): 1–2 antiemetics from different classes</li>
-              <li>
-                <strong>High risk</strong> (Apfel 3–4): multimodal ≥2 agents + consider TIVA (propofol's intrinsic antiemetic effect),
-                avoid N₂O, minimise opioids (regional/multimodal analgesia)
-              </li>
+              <li><strong>High risk goal:</strong> combine independent measures to reduce baseline risk by more than 75% rather than escalating one drug.</li>
+              <li><strong>Risk reduction:</strong> use propofol TIVA instead of volatile anaesthesia (relative risk reduction about 25–30%), avoid N₂O and maximise regional/local and non-opioid analgesia.</li>
+              <li><strong>Multimodal prophylaxis:</strong> combine at least two classes; a standard regimen is dexamethasone 4–8 mg at induction plus ondansetron 4 mg near the end. For Apfel 4 or previous severe PONV, add droperidol 0.625 mg or aprepitant <InlineRef topicId="antiemetics" refLabel="BJA 2011 Multimodal PONV" />.</li>
               <li><strong>Rescue</strong>: use an agent from a different class to prophylaxis. Do not repeat the same drug within 6 h</li>
               <li><strong>Non-pharmacological</strong>: see below</li>
             </ul>

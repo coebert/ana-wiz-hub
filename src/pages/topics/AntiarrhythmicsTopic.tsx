@@ -28,7 +28,7 @@ const drugData = [
   { cls: "Ib", action: "Na⁺ block (fast dissociation), ↓ APD", drugs: "Lidocaine, Mexiletine, Phenytoin", ecg: "Minimal change", notes: "Selective for ischaemic/depolarised tissue. Lidocaine IV for VT." },
   { cls: "Ic", action: "Na⁺ block (slow dissociation), no change APD", drugs: "Flecainide, Propafenone", ecg: "Widened QRS, ↑ PR", notes: "Potent conduction slowing. Avoid post-MI (↑ mortality — CAST trial). Flecainide for SVT/AF with normal heart." },
   { cls: "II", action: "β-adrenoceptor blockade", drugs: "Atenolol, Metoprolol, Esmolol, Bisoprolol", ecg: "↓ HR, ↑ PR", notes: "↓ SA & AV node automaticity, ↓ cAMP. Esmolol ultra-short acting (t½ 9 min). Reduce mortality post-MI." },
-  { cls: "III", action: "K⁺ channel blockade → ↑ APD & ERP", drugs: "Amiodarone, Sotalol, Dronedarone", ecg: "↑ QT", notes: "Amiodarone has actions across all 4 classes. Long t½ (~40 days). Pulmonary, thyroid, hepatic, corneal toxicity. Sotalol also has class II activity." },
+  { cls: "III", action: "K⁺ channel blockade → ↑ APD & ERP", drugs: "Amiodarone, Sotalol, Dronedarone", ecg: "↑ QT", notes: "Sotalol is racemic: l-sotalol has non-selective β-blockade (class II), while both enantiomers block K⁺ channels (class III). Renally excreted; t½ ~12 h. Used for AF/flutter maintenance and ventricular arrhythmias. Dose-related torsades risk rises with hypokalaemia or renal failure; avoid in asthma, marked bradycardia, long-QT syndrome and severe renal failure." },
   { cls: "IV", action: "L-type Ca²⁺ channel blockade", drugs: "Verapamil, Diltiazem", ecg: "↓ HR, ↑ PR", notes: "Slow AV conduction. Verapamil for SVT. Avoid with β-blockers (risk of asystole). Negative inotropy." },
 ];
 
@@ -264,6 +264,24 @@ const AntiarrhythmicsTopic = () => {
               <li><strong>Digoxin:</strong> Toxicity causes virtually any arrhythmia — classically bigeminy, slow AF, bidirectional VT</li>
               <li><strong>Risk factors:</strong> ↓K⁺, ↓Mg²⁺, ↑QTc, structural heart disease, renal impairment, drug interactions</li>
             </ul>
+          </section>
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Antiarrhythmic Choice in Structural Heart Disease</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+              <div className="rounded-lg p-4 border border-border bg-card"><p className="font-bold text-foreground">HFrEF and ischaemic cardiomyopathy</p><p className="text-muted-foreground mt-1">Avoid flecainide and other class Ic drugs after MI or with structural disease, and avoid negatively inotropic verapamil in reduced EF. Evidence-based β-blockade and amiodarone are the usual pharmacological choices; also correct ischaemia, congestion and electrolytes.</p></div>
+              <div className="rounded-lg p-4 border border-border bg-card"><p className="font-bold text-foreground">Hypertrophic cardiomyopathy</p><p className="text-muted-foreground mt-1">β-blockers are first line for symptoms and arrhythmia control. Specialist options include amiodarone and disopyramide, whose negative inotropy can reduce dynamic outflow obstruction.</p></div>
+              <div className="rounded-lg p-4 border border-border bg-card"><p className="font-bold text-foreground">Arrhythmogenic cardiomyopathy</p><p className="text-muted-foreground mt-1">Sotalol is often used first line, with amiodarone an alternative, alongside ICD assessment and ablation where appropriate. Avoid competitive endurance exercise because it accelerates disease and arrhythmic risk.</p></div>
+            </div>
+            <p className="text-sm text-muted-foreground mt-3">Abnormal substrate magnifies proarrhythmia, so drug choice must accompany specialist rhythm and sudden-death risk assessment <InlineRef topicId="antiarrhythmics" refLabel="CCM 2000 Proarrhythmia" />.</p>
+          </section>
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Digoxin Toxicity Management</h2>
+            <ul className="list-disc list-inside space-y-1 text-foreground/90 text-sm">
+              <li><strong>Features:</strong> nausea, vomiting, anorexia, confusion and xanthopsia; virtually any arrhythmia may occur, including slow or regularised AF, bradycardia, ventricular bigeminy and bidirectional VT.</li>
+              <li><strong>Immediate care:</strong> stop digoxin, monitor continuously, check renal function, digoxin concentration and electrolytes, and correct hypokalaemia or hypomagnesaemia carefully. Use atropine for symptomatic bradycardia and magnesium for ventricular arrhythmia.</li>
+              <li><strong>Specific antidote:</strong> give digoxin-specific antibody fragments (DigiFab/Digibind) for life-threatening arrhythmia, severe end-organ dysfunction or acute toxicity with K⁺ &gt;5.5 mmol/L; calculate dose from the amount ingested or post-distribution serum level.</li>
+            </ul>
+            <p className="text-sm text-muted-foreground mt-3">Do not use electrical cardioversion unless immediately life-saving because it may precipitate ventricular fibrillation; avoid routine calcium in acute digoxin poisoning <InlineRef topicId="antiarrhythmics" refLabel="CCM 2000 Proarrhythmia" />.</p>
           </section>
           <section className="mb-10">
             <h2 className="text-2xl font-serif font-bold text-foreground">Electrical Storm</h2>
