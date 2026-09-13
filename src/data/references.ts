@@ -1231,6 +1231,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Memtsoudis 2019", citation: "Memtsoudis SG, Cozowicz C, Bekeris J, et al. Anaesthetic care of patients undergoing primary hip and knee arthroplasty: consensus recommendations from the International Consensus on Anaesthesia-Related Outcomes after Surgery group (ICAROS). Br J Anaesth. 2019;123(3):269-287.", url: "https://doi.org/10.1016/j.bja.2019.05.042" },
     { label: "CRASH-2 2010", citation: "CRASH-2 trial collaborators. Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients with significant haemorrhage: a randomised, placebo-controlled trial. Lancet. 2010;376(9734):23-32.", url: "https://doi.org/10.1016/S0140-6736(10)60835-5" },
     { label: "Kwiatt 2013 FES", citation: "Kwiatt ME, Seamon MJ. Fat embolism syndrome. Int J Crit Illn Inj Sci. 2013;3(1):64-68.", url: "https://doi.org/10.4103/2229-5151.109426" },
+    { label: "BJA Educ Hip Fracture 2014", citation: "Griffiths R, Parker M. Anaesthesia for hip fracture surgery. Contin Educ Anaesth Crit Care Pain / BJA Education. 2014;14(2):76-80.", url: "https://doi.org/10.1093/bjaceaccp/mkt057" },
     { label: "Kam 2001 Tourniquet", citation: "Kam PCA, Kavanaugh R, Yoong FFY. The arterial tourniquet: pathophysiological consequences and anaesthetic implications. Anaesthesia. 2001;56(6):534-545.", url: "https://doi.org/10.1046/j.1365-2044.2001.01982.x" },
   ],
   "ophthalmic-anaesthesia": [
