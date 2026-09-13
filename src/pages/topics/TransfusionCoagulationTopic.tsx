@@ -513,7 +513,8 @@ const TransfusionCoagulationTopic = () => {
               infer the platelet contribution — but the relative contributions vary with the clinical state, and
               fibrinogen deficiency, dilutional coagulopathy, hypocalcaemia or hypothermia can all reduce MCF with
               a normal platelet count. Always interpret amplitudes alongside the clinical picture, laboratory
-              fibrinogen/platelet counts and correction of temperature and ionised calcium.
+              fibrinogen/platelet counts and correction of temperature and ionised calcium{" "}
+              <InlineRef topicId="transfusion-coagulation" refLabel="Curr Opin Anaesthesiol 2013 VHA" />.
             </p>
             </CollapsibleSubsection>
           </ExamSection>
