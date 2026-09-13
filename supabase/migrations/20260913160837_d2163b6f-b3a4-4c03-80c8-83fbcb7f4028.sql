@@ -1,0 +1,1 @@
+REVOKE EXECUTE ON FUNCTION public.apply_discussion_flag() FROM PUBLIC, anon, authenticated;
