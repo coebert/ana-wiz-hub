@@ -234,6 +234,16 @@ export const TopicDiscussion = ({ topicId, topicTitle }: TopicDiscussionProps) =
                     <Reply className="h-4 w-4" aria-hidden /> Reply
                   </Button>
                 )}
+                {user && user.id !== thread.user_id && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-8 px-2 text-muted-foreground"
+                    onClick={() => void report(thread.id)}
+                  >
+                    <Flag className="h-4 w-4" aria-hidden /> Report
+                  </Button>
+                )}
                 {user?.id === thread.user_id && (
                   <Button variant="ghost" size="sm" className="h-8 px-2 text-destructive" onClick={() => void remove(thread.id)}>
                     <Trash2 className="h-4 w-4" aria-hidden /> Delete
@@ -252,6 +262,16 @@ export const TopicDiscussion = ({ topicId, topicTitle }: TopicDiscussionProps) =
                       <p className="mt-1 whitespace-pre-wrap break-words text-sm leading-relaxed text-muted-foreground">
                         {reply.body}
                       </p>
+                      {user && user.id !== reply.user_id && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="mt-1 h-7 px-2 text-muted-foreground"
+                          onClick={() => void report(reply.id)}
+                        >
+                          <Flag className="h-4 w-4" aria-hidden /> Report
+                        </Button>
+                      )}
                       {user?.id === reply.user_id && (
                         <Button
                           variant="ghost"
