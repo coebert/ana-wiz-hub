@@ -637,7 +637,7 @@ function patchHead(
 
   // Strip the duplicate <meta property="og:type"> the shell ships, since we
   // re-emit our own (website vs article per route).
-  html = html.replace(/\s*<meta\s+property="og:type"[^>]*>\s*/gi, "\n    ");
+  html = html.replace(/\s*<meta\s+[^>]*property="og:type"[^>]*>\s*/gi, "\n    ");
 
   html = html.replace(/<\/head>/i, `    ${injected}\n  </head>`);
 
