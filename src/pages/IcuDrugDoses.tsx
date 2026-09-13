@@ -48,6 +48,69 @@ const adverseEffectsFor = (drugName: string): string | undefined =>
   (mechanismBySlug.get(drugSlug(drugName)) ?? mechanismBySlug.get(slugBase(drugName)))
     ?.adverseEffects;
 
+/** Expandable interactions / side effects / monitoring panel for one drug. */
+const DrugSafetyDetail = ({ drugName }: { drugName: string }) => {
+  const safety = safetyFor(drugName);
+  const adverse = adverseEffectsFor(drugName);
+  if (!safety && !adverse) return null;
+  return (
+    <details className="group mt-2 rounded-lg border border-border bg-muted/30 text-sm">
+      <summary className="cursor-pointer select-none px-3 py-2 text-xs font-medium text-icu marker:text-icu">
+        Interactions · side effects · monitoring
+      </summary>
+      <div className="space-y-3 border-t border-border px-3 py-3">
+        {safety?.interactions?.length ? (
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Interactions
+            </p>
+            <ul className="mt-1 list-disc space-y-1 pl-4 text-muted-foreground">
+              {safety.interactions.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+        {adverse && (
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Side effects
+            </p>
+            <p className="mt-1 leading-relaxed text-muted-foreground">{adverse}</p>
+          </div>
+        )}
+        {safety?.monitoring?.length ? (
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Monitoring
+            </p>
+            <ul className="mt-1 list-disc space-y-1 pl-4 text-muted-foreground">
+              {safety.monitoring.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+        <p className="text-xs">
+          <Link
+            to={`/intensive-care/drug-safety#${drugSlug(drugName)}`}
+            className="font-medium text-icu underline-offset-4 hover:underline"
+          >
+            Full safety profile
+          </Link>{" "}
+          ·{" "}
+          <Link
+            to="/intensive-care/interaction-checker"
+            className="font-medium text-icu underline-offset-4 hover:underline"
+          >
+            Check a drug pair
+          </Link>
+        </p>
+      </div>
+    </details>
+  );
+};
+
 const IcuDrugDoses = () => {
   const [searchParams] = useSearchParams();
   const requestedDrug = searchParams.get("drug") ?? "";
