@@ -80,8 +80,8 @@ const GeneticSyndromesTopic = () => {
                 { label: "Genetics", value: "RYR1 (~70%), CACNA1S; autosomal dominant. Penetrance variable." },
                 { label: "Triggers", value: "All volatiles (sevo, iso, des), suxamethonium. NOT N₂O, propofol, opioids, NMBAs (non-dep), regional." },
                 { label: "First sign", value: "Unexplained ↑EtCO₂ despite ↑MV; masseter spasm after sux; tachycardia; mixed acidosis." },
-                { label: "Dantrolene", value: "2.5 mg/kg IV bolus, repeat to 10 mg/kg. Each vial = 20 mg + 60 mL water; new formulation Ryanodex 250 mg / 5 mL." },
-                { label: "Adjuncts", value: "Stop trigger, 100% O₂ high-flow, charcoal filters, active cooling, treat hyperK⁺ and acidosis, forced diuresis." },
+                { label: "Dantrolene", value: "2.5 mg/kg IV bolus, repeated every 5–10 min until control; >10 mg/kg may be required, so stock at least 36 vials. Each vial = 20 mg + 60 mL water; Ryanodex 250 mg / 5 mL." },
+                { label: "Adjuncts", value: "Stop trigger, 100% O₂ high-flow, charcoal filters, active cooling, treat hyperK⁺ and acidosis, forced diuresis to urine output >1 mL/kg/h." },
                 { label: "Confirmation", value: "EMHG IVCT (caffeine-halothane contracture test) on muscle biopsy = gold standard. Genetic testing complementary." },
               ].map((item) => (
                 <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
@@ -89,6 +89,16 @@ const GeneticSyndromesTopic = () => {
                   <p className="font-semibold text-foreground text-sm">{item.value}</p>
                 </div>
               ))}
+            </div>
+            <div className="mt-4 p-4 rounded-lg border border-border space-y-2 text-sm text-muted-foreground">
+              <p className="font-semibold text-foreground">Continuing management after the acute crisis (AAGBI 2020)</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li><strong>Coagulopathy</strong>: DIC is common with severe rhabdomyolysis — send repeated clotting screens and fibrinogen, and treat with FFP, cryoprecipitate (or fibrinogen concentrate) and platelets guided by results and bleeding.</li>
+                <li><strong>Renal protection</strong>: aggressive IV fluid resuscitation with forced diuresis to a urine output &gt;1 mL/kg/h; monitor CK, potassium, myoglobinuria and acid-base status, and involve critical care early for renal replacement therapy if required.</li>
+                <li><strong>Recrudescence</strong>: occurs in up to 25% of patients, typically within the first 24–36 h. Continue dantrolene 1 mg/kg IV every 4–6 h (or by infusion) for 24–36 h after control, guided by EtCO₂, temperature, CK and acidosis.</li>
+                <li><strong>Post-acute care</strong>: admit to critical care for a minimum of 24 h for monitoring of temperature, EtCO₂, potassium, CK, urine output and coagulation.</li>
+                <li><strong>Reporting and follow-up</strong>: report every episode to the UK Malignant Hyperthermia Registry (Leeds) and refer the patient and first-degree relatives for family screening and IVCT; document the reaction clearly and issue written information and a warning card.<InlineRef topicId="genetic-syndromes" refLabel="AAGBI MH 2020" /></li>
+              </ul>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
