@@ -34,7 +34,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     label: "British — neutral (RP)",
     description: "Calm, clear Received Pronunciation",
     group: "General UK",
-    voice: "alloy",
+    voice: "ballad",
     accent: "British English, modern Received Pronunciation",
     traits: "Non-rhotic, crisp consonants, even measured intonation, no regional colouring.",
   },
@@ -166,7 +166,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     label: "English — Hampshire / Solent",
     description: "Central south coast",
     group: "Southern England",
-    voice: "alloy",
+    voice: "verse",
     accent: "Hampshire and Solent English",
     traits:
       "Near-RP frame with faint West-Country colouring on long vowels, light rhotic trace in older speech, gentle unhurried delivery.",
@@ -228,7 +228,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     label: "English — East Midlands",
     description: "Derby / general East Midlands",
     group: "Midlands",
-    voice: "alloy",
+    voice: "fable",
     accent: "East Midlands (Nottingham and Derby)",
     traits:
       "Northern-style short 'a' in bath, flat unrounded vowels, dropped final g's, level even rhythm.",
@@ -270,7 +270,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     label: "English — Nottingham",
     description: "East Midlands / Notts",
     group: "Midlands",
-    voice: "alloy",
+    voice: "ash",
     accent: "Nottingham (Nottinghamshire)",
     traits:
       "Flat 'u' in bus, monophthongal 'o', glottal replacement of final 't', quick clipped rhythm.",
@@ -424,7 +424,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     label: "English — Durham",
     description: "North-east England",
     group: "Northern England",
-    voice: "alloy",
+    voice: "coral",
     accent: "County Durham English",
     traits:
       "Softer Geordie-adjacent vowels, gentle rise-fall, rhotic-free with warm rounded 'o'.",
@@ -520,7 +520,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     label: "Welsh — Valleys",
     description: "South Wales Valleys",
     group: "Wales",
-    voice: "alloy",
+    voice: "sage",
     accent: "South Wales Valleys English",
     traits:
       "Pronounced rise-fall sing-song, rolled light 'r', emphatic sentence-final lifts.",
@@ -668,7 +668,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     label: "Irish — Galway",
     description: "West of Ireland",
     group: "Ireland",
-    voice: "alloy",
+    voice: "ballad",
     accent: "Galway and west of Ireland English",
     traits:
       "Rhotic, soft 'th' as 't', lilting rise-fall, melodic unhurried delivery.",
@@ -713,7 +713,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     label: "New Zealand",
     description: "Kiwi accent",
     group: "Rest of the world",
-    voice: "nova",
+    voice: "verse",
     accent: "New Zealand English",
     traits:
       "Centralised short 'i' in fish, raised 'e', clipped diphthongs, level friendly delivery.",
@@ -759,7 +759,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     label: "Australian",
     description: "Relaxed Australian accent",
     group: "Rest of the world",
-    voice: "nova",
+    voice: "fable",
     accent: "general Australian",
     traits: "Broad flattened diphthongs, rising statement intonation, relaxed open delivery.",
     nonBritish: true,
@@ -816,7 +816,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     label: "English — Thames Valley (Reading)",
     description: "Reading and Berkshire",
     group: "Southern England",
-    voice: "alloy",
+    voice: "ash",
     accent: "Thames Valley (Reading and Berkshire) dialect",
     traits:
       "Estuary-influenced non-rhotic vowels with faint West Country residue, t-glottalling, brisk even pacing.",
@@ -930,7 +930,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     label: "English — Oldham",
     description: "Pennine mill-town dialect",
     group: "Northern England",
-    voice: "alloy",
+    voice: "coral",
     accent: "Oldham (Pennine Lancashire) dialect",
     traits:
       "Manchester-adjacent flat vowels, harder consonants, nasal edge, quick businesslike cadence.",
@@ -1016,7 +1016,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     label: "Irish — Dublin",
     description: "Dublin city dialect",
     group: "Ireland",
-    voice: "alloy",
+    voice: "sage",
     accent: "Dublin city Irish English",
     traits:
       "Fast urban rhythm, fronted 'oi' vowels, t-slitting ('wa'er'), flat rapid phrase endings.",

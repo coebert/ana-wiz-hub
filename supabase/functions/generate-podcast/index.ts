@@ -124,7 +124,7 @@ const ACCENT_BANK: AccentRow[] = [
   // ---------------- General UK ----------------
   {
     id: "british-rp",
-    voice: "alloy",
+    voice: "ballad",
     accent: "British English, modern Received Pronunciation",
     traits: "Non-rhotic, crisp consonants, even measured intonation, no regional colouring.",
   },
@@ -215,7 +215,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "british-hampshire",
-    voice: "alloy",
+    voice: "verse",
     accent: "Hampshire and Solent English",
     traits:
       "Near-RP frame with faint West-Country colouring on long vowels, light rhotic trace in older speech, gentle unhurried delivery.",
@@ -259,7 +259,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "british-east-midlands",
-    voice: "alloy",
+    voice: "fable",
     accent: "East Midlands (Nottingham and Derby)",
     traits:
       "Northern-style short 'a' in bath, flat unrounded vowels, dropped final g's, level even rhythm.",
@@ -288,7 +288,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "british-nottingham",
-    voice: "alloy",
+    voice: "ash",
     accent: "Nottingham (Nottinghamshire)",
     traits:
       "Flat 'u' in bus, monophthongal 'o', glottal replacement of final 't', quick clipped rhythm.",
@@ -396,7 +396,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "british-durham",
-    voice: "alloy",
+    voice: "coral",
     accent: "County Durham English",
     traits:
       "Softer Geordie-adjacent vowels, gentle rise-fall, rhotic-free with warm rounded 'o'.",
@@ -464,7 +464,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "welsh-valleys",
-    voice: "alloy",
+    voice: "sage",
     accent: "South Wales Valleys English",
     traits:
       "Pronounced rise-fall sing-song, rolled light 'r', emphatic sentence-final lifts.",
@@ -568,7 +568,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "irish-galway",
-    voice: "alloy",
+    voice: "ballad",
     accent: "Galway and west of Ireland English",
     traits:
       "Rhotic, soft 'th' as 't', lilting rise-fall, melodic unhurried delivery.",
@@ -601,7 +601,7 @@ const ACCENT_BANK: AccentRow[] = [
   // ---------------- Rest of the world ----------------
   {
     id: "new-zealand",
-    voice: "nova",
+    voice: "verse",
     accent: "New Zealand English",
     traits:
       "Centralised short 'i' in fish, raised 'e', clipped diphthongs, level friendly delivery.",
@@ -635,7 +635,7 @@ const ACCENT_BANK: AccentRow[] = [
   // Rest of the world
   {
     id: "australian",
-    voice: "nova",
+    voice: "fable",
     accent: "general Australian",
     traits: "Broad flattened diphthongs, rising statement intonation, relaxed open delivery.",
     nonBritish: true,
@@ -672,7 +672,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "british-thames-valley",
-    voice: "alloy",
+    voice: "ash",
     accent: "Thames Valley (Reading and Berkshire) dialect",
     traits:
       "Estuary-influenced non-rhotic vowels with faint West Country residue, t-glottalling, brisk even pacing.",
@@ -748,7 +748,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "british-oldham",
-    voice: "alloy",
+    voice: "coral",
     accent: "Oldham (Pennine Lancashire) dialect",
     traits:
       "Manchester-adjacent flat vowels, harder consonants, nasal edge, quick businesslike cadence.",
@@ -804,7 +804,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "irish-dublin",
-    voice: "alloy",
+    voice: "sage",
     accent: "Dublin city Irish English",
     traits:
       "Fast urban rhythm, fronted 'oi' vowels, t-slitting ('wa'er'), flat rapid phrase endings.",
