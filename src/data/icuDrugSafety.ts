@@ -203,6 +203,173 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
           "Review the indication daily and stop as soon as the delirium settles.",
         ],
       },
+      {
+        drug: "Remifentanil",
+        slug: "remifentanil",
+        interactions: [
+          "Profound additive bradycardia and hypotension with propofol, dexmedetomidine, β-blockers and neostigmine — reduce the rate before reaching for a vasopressor.",
+          "Additive respiratory depression with every other sedative; apnoea follows small rate increases in the spontaneously breathing patient.",
+          "Prolonged high-dose infusions cause acute tolerance and opioid-induced hyperalgesia, increasing the requirement of the follow-on opioid.",
+        ],
+        contraindications: [
+          "Never give as an ICU bolus (chest-wall rigidity, apnoea, severe bradycardia) — infusion only, through a dedicated lumen.",
+          "Do not run it as the sole agent in a patient who must not be aware: it has no amnesic effect.",
+          "Avoid where an infusion interruption cannot be tolerated — offset is complete within minutes.",
+        ],
+        monitoring: [
+          "Sedation and pain score hourly with continuous ECG and blood pressure; treat bradycardia by reducing the rate first.",
+          "Respiratory rate and end-tidal CO₂ in any patient breathing spontaneously.",
+          "A written follow-on analgesia plan started before the infusion stops; watch for tachycardia, hypertension and distress within 5–10 min of stopping.",
+          "Line and pump integrity — a disconnection produces immediate pain and awakening.",
+        ],
+        alert:
+          "Stopping remifentanil is not a sedation hold — pain returns within minutes, so give longer-acting analgesia first.",
+      },
+      {
+        drug: "Oxycodone",
+        slug: "oxycodone",
+        interactions: [
+          "CYP3A4 inhibitors (clarithromycin, fluconazole, voriconazole, ritonavir, diltiazem) raise levels; rifampicin and phenytoin lower them.",
+          "Additive sedation and respiratory depression with benzodiazepines, gabapentinoids and antipsychotics.",
+          "Serotonergic interaction with linezolid, SSRIs and tramadol; additive constipation with anticholinergics and ondansetron.",
+        ],
+        contraindications: [
+          "Respiratory depression, untreated obstructive sleep apnoea without monitoring, paralytic ileus.",
+          "Severe hepatic impairment (halve the dose or avoid); eGFR <30 mL/min requires dose reduction and longer intervals.",
+          "Not for opioid-naive patients as a modified-release preparation on the ICU — use immediate release and titrate.",
+        ],
+        monitoring: [
+          "Pain and sedation scores plus respiratory rate before each PRN dose and after every dose increase.",
+          "Bowel function daily with prophylactic laxatives; bladder function after each increase.",
+          "24-hour opioid total including background infusions, converted to oral morphine equivalents, with a documented weaning plan.",
+        ],
+        alert:
+          "Oxycodone is about twice as potent as oral morphine — a milligram-for-milligram switch doubles the dose.",
+      },
+      {
+        drug: "Methadone",
+        slug: "methadone",
+        interactions: [
+          "Additive QT prolongation with amiodarone, haloperidol, quetiapine, ondansetron, macrolides, quinolones and azoles — a genuine torsade risk in ICU.",
+          "CYP inducers (rifampicin, phenytoin, carbamazepine) can precipitate withdrawal; inhibitors (fluconazole, voriconazole, ciprofloxacin, ritonavir) cause accumulation and late respiratory depression.",
+          "Additive respiratory depression and sedation with benzodiazepines and gabapentinoids; opioid substitution doses must not be duplicated with community supplies.",
+        ],
+        contraindications: [
+          "QTc >500 ms, uncorrected hypokalaemia or hypomagnesaemia, previous torsade.",
+          "Rapid dose escalation — the effect of a change appears only after 3–5 days, so no more often than 3-daily increases.",
+          "Unconfirmed community dose: always verify with the dispensing pharmacy or drug service before continuing substitution therapy.",
+        ],
+        monitoring: [
+          "Baseline ECG and repeat after each dose increase and whenever another QT-prolonging drug starts.",
+          "Sedation score and respiratory rate for at least 72 h after every dose change — late respiratory depression is the classic harm.",
+          "Withdrawal score (CIWA-style or WAT-1/SOS in children), potassium and magnesium, and a documented taper plan with the discharging team.",
+        ],
+        alert:
+          "Methadone accumulates for days after a dose change: escalate slowly and never treat breakthrough pain by increasing the methadone dose.",
+      },
+      {
+        drug: "Paracetamol",
+        slug: "paracetamol",
+        interactions: [
+          "Enzyme inducers (phenytoin, carbamazepine, rifampicin) and chronic alcohol excess increase toxic NAPQI formation at therapeutic doses.",
+          "Prolonged regular use modestly raises the INR on warfarin — recheck the INR.",
+          "Hidden duplication with combination analgesics (co-codamol, co-dydramol) and enteral preparations is the commonest overdose route.",
+        ],
+        contraindications: [
+          "Severe hepatic impairment or acute liver failure — reduce the dose or omit; never exceed 3 g/24 h.",
+          "Body weight below 50 kg, malnutrition, cachexia, glutathione depletion in sepsis: use 15 mg/kg with a 60 mg/kg/24 h ceiling.",
+          "IV administration in profound hypotension without observation — transient further hypotension is well described.",
+        ],
+        monitoring: [
+          "Running 24-hour total on the drug chart, cross-checked against combination products.",
+          "Liver function and INR every 48–72 h in prolonged use, low body weight, sepsis or liver disease.",
+          "Blood pressure during and after IV doses in shocked patients; pain score to confirm it is actually helping before escalating opioids.",
+        ],
+        alert:
+          "Weight-based dose reduction below 50 kg is mandatory — 1 g four times a day in a small, septic or malnourished patient is a hepatotoxic dose.",
+      },
+      {
+        drug: "Thiopental",
+        slug: "thiopental",
+        interactions: [
+          "Profound additive vasodilatation and myocardial depression with propofol, opioids and vasodilators — expect a rising vasopressor requirement.",
+          "Enzyme induction increases the metabolism of many co-prescribed drugs; precipitates acute porphyria.",
+          "Alkaline solution: incompatible with most drugs in the same line (precipitates with suxamethonium, catecholamines and antibiotics) — use a dedicated lumen.",
+        ],
+        contraindications: [
+          "Acute intermittent porphyria and variegate porphyria (absolute).",
+          "Fixed cardiac output states, severe hypovolaemia and uncorrected shock without full haemodynamic support.",
+          "Barbiturate hypersensitivity; upper airway obstruction without a secured airway; intra-arterial injection (severe vasospasm and limb loss).",
+        ],
+        monitoring: [
+          "Continuous EEG titrated to burst suppression — dose without EEG is unmonitored deep coma.",
+          "Invasive arterial pressure and cardiac output; potassium (hypokalaemia during, rebound hyperkalaemia after stopping), and daily infection screen (immunosuppression).",
+          "Cumulative dose and days of infusion — document that neurological examination and brainstem death testing are invalid until levels clear, which may take 48–96 h.",
+          "Gastric residuals and bowel function (ileus), pressure areas and corneal care.",
+        ],
+        alert:
+          "After prolonged thiopental, absent brainstem reflexes may simply be drug effect — brain-stem death testing is invalid until sedation is excluded.",
+      },
+      {
+        drug: "Inhaled isoflurane (Sedaconda ACD-S)",
+        slug: "inhaled-isoflurane",
+        interactions: [
+          "Potentiates neuromuscular blockers and additively vasodilates with propofol, opioids and antihypertensives.",
+          "Reduces the requirement for IV sedatives — cut propofol and opioid rates as it is started to avoid over-sedation.",
+          "Trigger agent for malignant hyperthermia; interacts with soda lime and desiccated absorbers to produce degradation products.",
+        ],
+        contraindications: [
+          "Personal or family history of malignant hyperthermia, or susceptibility to it.",
+          "Raised intracranial pressure where cerebral vasodilatation is unacceptable (relative — keep the concentration low).",
+          "No end-tidal agent monitoring, no scavenging or charcoal filter, or staff untrained in the device.",
+          "Very small tidal volumes where device dead space is a significant fraction of the breath.",
+        ],
+        monitoring: [
+          "End-tidal isoflurane concentration continuously, with a sedation score; titrate to the lowest effective concentration.",
+          "Blood pressure and vasopressor requirement; temperature, end-tidal CO₂ and CK if malignant hyperthermia is suspected.",
+          "Circuit integrity, filter change intervals, agent reservoir level and theatre-air occupational exposure.",
+          "Renal function on prolonged use (inorganic fluoride) and a documented plan for switching back to IV sedation.",
+        ],
+        alert:
+          "Volatile ICU sedation needs dantrolene availability and a malignant-hyperthermia check before the first breath.",
+      },
+      {
+        drug: "Quetiapine",
+        slug: "quetiapine",
+        interactions: [
+          "Additive QT prolongation with haloperidol, amiodarone, methadone, ondansetron, macrolides, quinolones and azoles.",
+          "CYP3A4 inhibitors (fluconazole, voriconazole, clarithromycin, ritonavir) raise levels substantially; carbamazepine and rifampicin lower them.",
+          "Additive sedation and hypotension with opioids, benzodiazepines and antihypertensives; worsens hyperglycaemia alongside corticosteroids.",
+        ],
+        contraindications: [
+          "QTc >500 ms, previous torsade, uncorrected hypokalaemia or hypomagnesaemia.",
+          "Neuroleptic malignant syndrome history; caution in Lewy body dementia (severe sensitivity reactions).",
+          "Not for hypoactive delirium, and not a treatment for pain, hypoxia, retention, constipation or drug withdrawal — find and treat those first.",
+        ],
+        monitoring: [
+          "ECG for QTc at baseline and after dose increases; potassium >4.0 and magnesium >1.0 mmol/L.",
+          "Blood pressure (postural hypotension), capillary glucose, and daily delirium score (CAM-ICU) to justify continuing.",
+          "Rigidity, temperature and creatine kinase for neuroleptic malignant syndrome; an explicit stop date so it is not continued after discharge.",
+        ],
+        alert:
+          "Antipsychotics do not prevent or shorten delirium — prescribe only for distress or danger, with a stop date on the chart.",
+      },
+      {
+        drug: "Melatonin",
+        slug: "melatonin",
+        interactions: [
+          "Levels raised by fluvoxamine and other CYP1A2 inhibitors, and by oestrogens; reduced by smoking and rifampicin.",
+          "Additive sedation with benzodiazepines and opioids is mild but real in the frail patient.",
+        ],
+        contraindications: [
+          "Hypersensitivity; caution in autoimmune disease and severe hepatic impairment (limited data).",
+          "Not a treatment for agitated delirium or for pain-related sleeplessness.",
+        ],
+        monitoring: [
+          "Sleep quality and day–night pattern, with the non-pharmacological bundle (light, noise, clustered care) documented alongside.",
+          "Daytime drowsiness with prolonged-release preparations; review the need before discharge and stop it.",
+        ],
+      },
     ],
   },
   {
