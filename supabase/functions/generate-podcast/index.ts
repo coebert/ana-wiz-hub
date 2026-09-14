@@ -104,7 +104,9 @@ const REGENERATE_PASSWORD = (
 ).trim();
 
 // Hard cap on incoming content length to bound AI/TTS cost per request.
-const MAX_CONTENT_CHARS = 50_000;
+// Large enough for the longest expanded topics (e.g. complex needs) so the
+// episode can cover the full page rather than being truncated mid-section.
+const MAX_CONTENT_CHARS = 150_000;
 
 interface FailurePayload {
   status: "failed";

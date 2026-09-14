@@ -245,9 +245,9 @@ export const pollPodcastUntilDone = async (
 /**
  * Server-side hard cap in supabase/functions/generate-podcast/index.ts.
  * We trim slightly below it so long topic pages never get rejected with
- * "content must be a string under 50000 characters".
+ * "content must be a string under 150000 characters".
  */
-export const MAX_PODCAST_CONTENT_CHARS = 49_000;
+export const MAX_PODCAST_CONTENT_CHARS = 145_000;
 
 /** Trim content to the server cap, preferring a sentence/paragraph boundary. */
 export const clampPodcastContent = (content: string): string => {
