@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Headphones, Download, ExternalLink, Loader2, Search, X, ChevronDown, PlayCircle, SkipBack, SkipForward, ListOrdered, ArrowUp, ArrowDown, RotateCcw, Mic, ArrowRight } from "lucide-react";
+import { Headphones, ListMusic, Plus, Check, Download, ExternalLink, Loader2, Search, X, ChevronDown, PlayCircle, SkipBack, SkipForward, ListOrdered, ArrowUp, ArrowDown, RotateCcw, Mic, ArrowRight } from "lucide-react";
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
@@ -9,6 +9,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { toggleQueued, usePodcastQueue } from "@/lib/podcastPlaylist";
 
 interface PodcastRow {
   topic_id: string;
@@ -51,6 +52,7 @@ const SECTION_ORDER: (Section | "_other")[] = [
 ];
 
 const PodcastsLibrary = () => {
+  const queue = usePodcastQueue();
   const [podcasts, setPodcasts] = useState<ResolvedPodcast[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
@@ -355,6 +357,26 @@ const PodcastsLibrary = () => {
         <ArrowRight className="h-4 w-4 text-clinical shrink-0 transition-transform group-hover:translate-x-1" />
       </Link>
 
+      <Link
+        to="/podcasts/playlist"
+        className="group mb-6 flex items-center justify-between gap-3 rounded-lg border border-primary/30 bg-primary/5 p-3 sm:p-4 transition-colors hover:border-primary/60 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      >
+        <div className="flex items-center gap-3 min-w-0">
+          <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary">
+            <ListMusic className="h-4 w-4" />
+          </span>
+          <div className="min-w-0">
+            <p className="text-sm font-semibold text-foreground">
+              Build a listening playlist{queue.length > 0 ? ` (${queue.length} queued)` : ""}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Queue several podcasts with their topics and narrator accents, reorder them, and play them back-to-back.
+            </p>
+          </div>
+        </div>
+        <ArrowRight className="h-4 w-4 text-primary shrink-0 transition-transform group-hover:translate-x-1" />
+      </Link>
+
       {podcasts && podcasts.length > 0 && (
         <div className="mb-6 space-y-3">
           <div className="relative">
@@ -535,6 +557,27 @@ const PodcastsLibrary = () => {
                                 Open topic
                               </Link>
                             )}
+                            <button
+                              type="button"
+                              onClick={() => toggleQueued(p.topic_id)}
+                              aria-pressed={queue.includes(p.topic_id)}
+                              className={cn(
+                                "inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium transition-colors border",
+                                queue.includes(p.topic_id)
+                                  ? "border-primary/60 bg-primary/10 text-primary"
+                                  : "border-border bg-card text-foreground hover:bg-muted"
+                              )}
+                            >
+                              {queue.includes(p.topic_id) ? (
+                                <>
+                                  <Check className="h-3 w-3" /> Queued
+                                </>
+                              ) : (
+                                <>
+                                  <Plus className="h-3 w-3" /> Queue
+                                </>
+                              )}
+                            </button>
                             <a
                               href={p.audio_url}
                               download={`${p.topic_id}.mp3`}
