@@ -25,7 +25,65 @@ const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY")!;
 const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY")!;
 
 const TTS_MODEL = "gpt-4o-mini-tts";
-const TTS_VOICE = "alloy"; // calm, neutral narration
+
+// Selectable narrator presets. Keep ids in sync with src/lib/podcastVoices.ts.
+// gpt-4o-mini-tts supports steerable delivery, so the accent comes from the
+// `instructions` string paired with a base voice.
+interface VoicePreset {
+  voice: string;
+  instructions: string;
+}
+const BASE_STYLE =
+  "Warm, confident and clear, like a senior anaesthetic trainee tutoring a peer. " +
+  "Steady pace, natural phrasing, no exaggeration.";
+const VOICE_PRESETS: Record<string, VoicePreset> = {
+  "british-rp": {
+    voice: "alloy",
+    instructions:
+      "Speak with a natural British English (modern Received Pronunciation) accent. " + BASE_STYLE,
+  },
+  "british-female-warm": {
+    voice: "coral",
+    instructions:
+      "Speak as a female British English speaker with a warm, friendly modern RP accent. " + BASE_STYLE,
+  },
+  "british-male-deep": {
+    voice: "onyx",
+    instructions:
+      "Speak as a male British English speaker with a deep, measured, authoritative RP accent. " + BASE_STYLE,
+  },
+  "british-storyteller": {
+    voice: "fable",
+    instructions:
+      "Speak with an expressive, engaging British English accent, like a well-known UK documentary narrator. " +
+      BASE_STYLE,
+  },
+  scottish: {
+    voice: "ash",
+    instructions:
+      "Speak with an educated Scottish accent (Edinburgh), clearly intelligible to all English speakers. " +
+      BASE_STYLE,
+  },
+  irish: {
+    voice: "ballad",
+    instructions:
+      "Speak with a soft Irish accent (Dublin), clearly intelligible to all English speakers. " + BASE_STYLE,
+  },
+  australian: {
+    voice: "nova",
+    instructions: "Speak with a relaxed, clear Australian accent. " + BASE_STYLE,
+  },
+  american: {
+    voice: "sage",
+    instructions: "Speak with a general American accent. " + BASE_STYLE,
+  },
+};
+const DEFAULT_VOICE_ID = "british-rp";
+const resolveVoice = (voiceId: unknown): { id: string; preset: VoicePreset } => {
+  const id = typeof voiceId === "string" && VOICE_PRESETS[voiceId] ? voiceId : DEFAULT_VOICE_ID;
+  return { id, preset: VOICE_PRESETS[id] };
+};
+
 // Target a comfortable chunk size well under OpenAI's 4096-char hard limit.
 // Smaller chunks = faster individual TTS calls + safer retries.
 const MAX_TTS_CHARS = 2800;
@@ -92,6 +150,7 @@ interface RequestBody {
   content: string; // plain text extracted from the topic page
   force?: boolean; // bypass cache and regenerate (requires regeneratePassword)
   regeneratePassword?: string;
+  voiceId?: string; // narrator/accent preset id (see VOICE_PRESETS)
 }
 
 // Shared secret that authorises bypassing the cached podcast and regenerating
@@ -340,7 +399,11 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const TTS_REQUEST_TIMEOUT_MS = 60_000;
 
-async function synthesiseChunk(text: string, attempt = 1): Promise<Uint8Array> {
+async function synthesiseChunk(
+  text: string,
+  preset: VoicePreset,
+  attempt = 1,
+): Promise<Uint8Array> {
   const controller = new AbortController();
   const timeoutId = setTimeout(
     () => controller.abort(new Error(`TTS request timed out after ${TTS_REQUEST_TIMEOUT_MS}ms`)),
@@ -356,17 +419,16 @@ async function synthesiseChunk(text: string, attempt = 1): Promise<Uint8Array> {
       },
       body: JSON.stringify({
         model: TTS_MODEL,
-        voice: TTS_VOICE,
+        voice: preset.voice,
         input: text,
         response_format: "mp3",
         speed: 1.0,
-        // gpt-4o-mini-tts supports steerable delivery — request a British
-        // English accent so podcasts sound right for a UK exam audience.
-        instructions:
-          "Speak with a natural British English (modern Received Pronunciation) accent. " +
-          "Warm, confident, like a senior UK anaesthetic trainee tutoring a peer.",
+        // gpt-4o-mini-tts supports steerable delivery — the selected preset
+        // carries the accent and delivery instructions.
+        instructions: preset.instructions,
       }),
     });
+
 
     if (!response.ok) {
       const errText = await response.text();
@@ -379,7 +441,7 @@ async function synthesiseChunk(text: string, attempt = 1): Promise<Uint8Array> {
         const backoff = 500 * Math.pow(2, attempt - 1) + Math.random() * 250;
         console.warn(`[tts] chunk failed (${response.status}), retry ${attempt}/${TTS_MAX_RETRIES} in ${Math.round(backoff)}ms`);
         await sleep(backoff);
-        return synthesiseChunk(text, attempt + 1);
+        return synthesiseChunk(text, preset, attempt + 1);
       }
       throw new Error(`OpenAI TTS failed (${response.status}): ${errText}`);
     }
@@ -399,7 +461,7 @@ async function synthesiseChunk(text: string, attempt = 1): Promise<Uint8Array> {
         `[tts] ${isAbort ? "timeout" : "network error"}, retry ${attempt}/${TTS_MAX_RETRIES} in ${Math.round(backoff)}ms: ${message}`,
       );
       await sleep(backoff);
-      return synthesiseChunk(text, attempt + 1);
+      return synthesiseChunk(text, preset, attempt + 1);
     }
     throw err;
   } finally {
@@ -412,6 +474,7 @@ async function synthesiseChunk(text: string, attempt = 1): Promise<Uint8Array> {
 async function synthesiseChunksParallel(
   chunks: string[],
   topicId: string,
+  preset: VoicePreset,
 ): Promise<Uint8Array[]> {
   const results: Uint8Array[] = new Array(chunks.length);
   let nextIndex = 0;
@@ -421,7 +484,7 @@ async function synthesiseChunksParallel(
       const i = nextIndex++;
       if (i >= chunks.length) return;
       console.log(`[${topicId}] worker ${workerId} → chunk ${i + 1}/${chunks.length} (${chunks[i].length} chars)`);
-      results[i] = await synthesiseChunk(chunks[i]);
+      results[i] = await synthesiseChunk(chunks[i], preset);
     }
   };
 
@@ -449,7 +512,9 @@ Deno.serve(async (req) => {
   const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
 
   try {
-    const { topicId, topicTitle, content, force, regeneratePassword } = (await req.json()) as RequestBody;
+    const { topicId, topicTitle, content, force, regeneratePassword, voiceId } =
+      (await req.json()) as RequestBody;
+    const { id: voiceIdResolved, preset: voicePreset } = resolveVoice(voiceId);
 
     if (!topicId || !topicTitle || !content) {
       return jsonResponse({ error: "topicId, topicTitle and content are required" }, 400);
@@ -490,15 +555,24 @@ Deno.serve(async (req) => {
       .eq("topic_id", topicId)
       .maybeSingle();
 
-    if (!forceRegenerate && existing?.status === "ready" && existing.audio_path) {
+    // A cached episode only satisfies the request when it was narrated with
+    // the requested voice — otherwise re-narrate it in the chosen accent.
+    const cachedVoiceId = typeof existing?.voice === "string" && existing.voice ? existing.voice : DEFAULT_VOICE_ID;
+    const voiceChanged = cachedVoiceId !== voiceIdResolved;
+
+    if (!forceRegenerate && !voiceChanged && existing?.status === "ready" && existing.audio_path) {
       const { data: pub } = supabase.storage.from("podcasts").getPublicUrl(existing.audio_path);
       return jsonResponse({
         status: "ready",
         audio_url: pub.publicUrl,
         script: existing.script,
         duration_seconds: existing.duration_seconds,
+        voice: cachedVoiceId,
         cached: true,
       });
+    }
+    if (!forceRegenerate && voiceChanged && existing?.status === "ready") {
+      console.log(`[${topicId}] Voice change ${cachedVoiceId} → ${voiceIdResolved} — re-narrating.`);
     }
 
     // Treat any row stuck in "generating" for >3 minutes as abandoned
@@ -591,11 +665,11 @@ Deno.serve(async (req) => {
           `[${topicId}] Synthesising ${chunks.length} chunk(s) at concurrency ${Math.min(TTS_CONCURRENCY, chunks.length)}...`,
         );
         const tStart = Date.now();
-        const audioParts = await synthesiseChunksParallel(chunks, topicId);
+        const audioParts = await synthesiseChunksParallel(chunks, topicId, voicePreset);
         console.log(`[${topicId}] TTS complete in ${((Date.now() - tStart) / 1000).toFixed(1)}s`);
 
         const fullAudio = concatMp3(audioParts);
-        const audioPath = `${topicId}.mp3`;
+        const audioPath = `${topicId}--${voiceIdResolved}.mp3`;
         console.log(`[${topicId}] Uploading ${fullAudio.length} bytes to ${audioPath}`);
 
         const { error: uploadErr } = await supabase.storage
@@ -615,7 +689,7 @@ Deno.serve(async (req) => {
             script,
             audio_path: audioPath,
             duration_seconds: durationSeconds,
-            voice: TTS_VOICE,
+            voice: voiceIdResolved,
             status: "ready",
             error_message: null,
           })

@@ -5,6 +5,8 @@ export interface PodcastResult {
   audio_url?: string;
   script?: string;
   duration_seconds?: number;
+  /** Narrator preset id the cached audio was generated with. */
+  voice?: string;
   cached?: boolean;
   error?: string;
   // ISO timestamp of the row's last update. Used to detect stale
@@ -164,7 +166,7 @@ export const fetchPodcast = async (
 ): Promise<PodcastResult | null> => {
   const { data, error } = await supabase
     .from("podcasts")
-    .select("status, audio_path, script, duration_seconds, updated_at")
+    .select("status, audio_path, script, duration_seconds, updated_at, voice")
     .eq("topic_id", topicId)
     .maybeSingle();
 
@@ -172,6 +174,7 @@ export const fetchPodcast = async (
   if (data.status !== "ready" || !data.audio_path) {
     return {
       status: data.status as PodcastResult["status"],
+      voice: data.voice ?? undefined,
       updated_at: data.updated_at ?? undefined,
     };
   }
@@ -182,6 +185,7 @@ export const fetchPodcast = async (
     audio_url: pub.publicUrl,
     script: data.script ?? undefined,
     duration_seconds: data.duration_seconds ?? undefined,
+    voice: data.voice ?? undefined,
     cached: true,
     updated_at: data.updated_at ?? undefined,
   };
@@ -264,7 +268,7 @@ export const generatePodcast = async (
   topicId: string,
   topicTitle: string,
   content: string,
-  options?: { force?: boolean; regeneratePassword?: string },
+  options?: { force?: boolean; regeneratePassword?: string; voiceId?: string },
 ): Promise<PodcastResult> => {
   const normaliseFailedInvoke = async (err: unknown): Promise<PodcastResult> => {
     let failedPayload: Partial<PodcastResult> | undefined;
@@ -334,6 +338,7 @@ export const generatePodcast = async (
         content: clampPodcastContent(content),
         force: options?.force ?? false,
         regeneratePassword: options?.regeneratePassword,
+        voiceId: options?.voiceId,
       },
     });
 
