@@ -41,7 +41,9 @@ import {
   ACCENT_GROUPS,
   accentsInGroup,
   DEFAULT_PODCAST_VOICE,
+  getPreferredPodcastVoice,
   podcastVoiceLabel,
+  setPreferredPodcastVoice,
 } from "@/lib/podcastVoices";
 import { cn } from "@/lib/utils";
 
@@ -710,7 +712,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
             ) : (
               <>
                 <Mic className="mr-1.5 h-3.5 w-3.5" />
-                Re-record in this voice
+                Listen in this voice
               </>
             )}
           </Button>
