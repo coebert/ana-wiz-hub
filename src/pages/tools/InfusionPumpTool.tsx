@@ -31,6 +31,10 @@ const PRESETS: DrugPreset[] = [
   { name: "Heparin 25 000 units in 500 mL", amount: 25000, amountUnit: "units", volumeMl: 500, dose: 18, doseUnit: "units", doseMode: "per-kg", doseRate: "per-hour" },
   { name: "Labetalol 100 mg in 20 mL (neat)", amount: 100, amountUnit: "mg", volumeMl: 20, dose: 10, doseUnit: "mg", doseMode: "fixed", doseRate: "per-hour" },
   { name: "Atracurium 250 mg in 50 mL", amount: 250, amountUnit: "mg", volumeMl: 50, dose: 0.3, doseUnit: "mg", doseMode: "per-kg", doseRate: "per-hour" },
+  { name: "Dobutamine 250 mg in 50 mL", amount: 250, amountUnit: "mg", volumeMl: 50, dose: 5, doseUnit: "micrograms", doseMode: "per-kg", doseRate: "per-min" },
+  { name: "Dopamine 200 mg in 50 mL", amount: 200, amountUnit: "mg", volumeMl: 50, dose: 5, doseUnit: "micrograms", doseMode: "per-kg", doseRate: "per-min" },
+  { name: "Levosimendan 12.5 mg in 50 mL", amount: 12.5, amountUnit: "mg", volumeMl: 50, dose: 0.1, doseUnit: "micrograms", doseMode: "per-kg", doseRate: "per-min" },
+  { name: "Levophed (noradrenaline) 4 mg in 50 mL", amount: 4, amountUnit: "mg", volumeMl: 50, dose: 0.05, doseUnit: "micrograms", doseMode: "per-kg", doseRate: "per-min" },
 ];
 
 const MASS_LABEL: Record<MassUnit, string> = {
