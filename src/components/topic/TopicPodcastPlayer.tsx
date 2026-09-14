@@ -17,12 +17,19 @@ import {
   extractTopicContent,
   fetchPodcast,
   formatExtractionDiagnostics,
-  generatePodcast,
   isStaleGenerating,
-  pollPodcastUntilDone,
   type PodcastResult,
 } from "@/lib/podcast";
+import {
+  attachPodcastJob,
+  clearPodcastJob,
+  getPodcastJob,
+  podcastJobElapsedSec,
+  startPodcastJob,
+  usePodcastJob,
+} from "@/lib/podcastJobs";
 import { cn } from "@/lib/utils";
+
 
 interface TopicPodcastPlayerProps {
   topicId: string;
