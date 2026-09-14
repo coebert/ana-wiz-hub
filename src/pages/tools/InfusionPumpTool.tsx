@@ -61,10 +61,13 @@ export default function InfusionPumpTool() {
   const [reverse, setReverse] = useState(false);
   const [pumpRate, setPumpRate] = useState(1.3);
 
-  const mixed = amountUnit === doseUnit;
+  // mg and micrograms are inter-convertible; units only match units.
+  const compatible =
+    (amountUnit === "units" && doseUnit === "units") ||
+    (amountUnit !== "units" && doseUnit !== "units");
 
   const result = useMemo(() => {
-    if (volume <= 0 || !mixed) return null;
+    if (volume <= 0 || !compatible) return null;
     // concentration in µg/mL (or units/mL)
     const concPerMl = toBase(amount, amountUnit) / volume;
     if (concPerMl <= 0) return null;
@@ -96,7 +99,7 @@ export default function InfusionPumpTool() {
       syringeHours: volume / pumpRate,
       displayDose,
     };
-  }, [amount, amountUnit, volume, dose, doseUnit, doseMode, doseRate, weight, reverse, pumpRate, mixed]);
+  }, [amount, amountUnit, volume, dose, doseUnit, doseMode, doseRate, weight, reverse, pumpRate, compatible]);
 
   const applyPreset = (p: DrugPreset) => {
     setAmount(p.amount);
