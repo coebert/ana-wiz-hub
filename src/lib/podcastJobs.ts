@@ -113,6 +113,8 @@ interface StartOptions {
   content: string;
   force?: boolean;
   regeneratePassword?: string;
+  /** Narrator preset id (see src/lib/podcastVoices.ts). */
+  voiceId?: string;
 }
 
 const createJob = (
@@ -141,7 +143,7 @@ const createJob = (
  * job stays in the registry even if the calling component unmounts.
  */
 export const startPodcastJob = async (opts: StartOptions): Promise<PodcastResult> => {
-  const { topicId, topicTitle, topicPath, content, force, regeneratePassword } = opts;
+  const { topicId, topicTitle, topicPath, content, force, regeneratePassword, voiceId } = opts;
 
   const existing = jobs.get(topicId);
   if (existing && existing.status === "generating" && !force) {
@@ -154,7 +156,11 @@ export const startPodcastJob = async (opts: StartOptions): Promise<PodcastResult
   try {
     if (!force) {
       const current = await fetchPodcast(topicId);
-      if (current?.status === "ready") {
+      // A cached episode in a different voice must be re-narrated, so skip the
+      // cache shortcut when the caller asked for another narrator.
+      const voiceMatches =
+        !voiceId || !current?.voice || current.voice === voiceId;
+      if (current?.status === "ready" && voiceMatches) {
         finish(topicId, { ...current, cached: true });
         return current;
       }
@@ -168,6 +174,7 @@ export const startPodcastJob = async (opts: StartOptions): Promise<PodcastResult
     let result = await generatePodcast(topicId, topicTitle, content, {
       force,
       regeneratePassword,
+      voiceId,
     });
 
     // The edge function keeps working after the HTTP request times out, so a
