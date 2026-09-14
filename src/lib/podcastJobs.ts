@@ -208,12 +208,13 @@ export const attachPodcastJob = async (
   topicId: string,
   topicTitle: string,
   topicPath: string,
+  voiceId?: string,
 ): Promise<PodcastResult> => {
   const existing = jobs.get(topicId);
   if (existing && existing.status === "generating") return { status: "generating" };
 
   createJob(topicId, topicTitle, topicPath, false);
-  const polled = await pollPodcastUntilDone(topicId, { onTick: onTick(topicId) });
+  const polled = await pollPodcastUntilDone(topicId, { voiceId, onTick: onTick(topicId) });
   finish(topicId, polled);
   return polled;
 };

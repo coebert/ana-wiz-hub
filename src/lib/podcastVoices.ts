@@ -803,3 +803,30 @@ export const podcastVoiceLabel = (id: string | undefined): string =>
 
 export const isPodcastVoiceId = (id: string | undefined): boolean =>
   !!id && PODCAST_VOICES.some((v) => v.id === id);
+
+/**
+ * Per-listener narrator preference. Each listener's accent choice is stored on
+ * their own device (the server caches one episode per topic AND accent, so
+ * individual choices never overwrite each other) and follows them across
+ * topics.
+ */
+export const PODCAST_VOICE_STORAGE_KEY = "podcast-preferred-voice";
+
+export const getPreferredPodcastVoice = (): string => {
+  try {
+    const stored = window.localStorage.getItem(PODCAST_VOICE_STORAGE_KEY);
+    if (stored && isPodcastVoiceId(stored)) return stored;
+  } catch {
+    // localStorage unavailable (private mode, SSR) — fall through to default.
+  }
+  return DEFAULT_PODCAST_VOICE;
+};
+
+export const setPreferredPodcastVoice = (id: string): void => {
+  if (!isPodcastVoiceId(id)) return;
+  try {
+    window.localStorage.setItem(PODCAST_VOICE_STORAGE_KEY, id);
+  } catch {
+    // Non-fatal — the picker still works for this session.
+  }
+};
