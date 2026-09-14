@@ -21,3 +21,4 @@ For EVERY "add to topic" request: auto-run placement flow (read → 3-layer dedu
 - [Cross-reference recommender](mem://reference/cross-reference-recommender) — src/lib/cross-reference-recommender.ts + CrossReferenceCallout.tsx
 - [Source library](mem://reference/source-library) — src/data/sources.ts canonical bibliographic sources + resolveReference helper
 - [Anatomy orientation](mem://design/anatomy-orientation) — Standard anatomical convention (patient R = viewer L) for all anatomy SVGs + leader audit rule
+- [Podcast voices](mem://features/podcast-voices) — narrator/accent presets, per-voice caching, background job registry
