@@ -262,7 +262,7 @@ export default function InfusionPumpTool() {
         </div>
       </div>
 
-      {!mixed && (
+      {!compatible && (
         <p className="mt-4 flex items-start gap-2 rounded-lg border border-amber-500/40 bg-amber-500/10 p-3 text-xs text-amber-700 dark:text-amber-400">
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
           Units don't match — the drug amount is in {MASS_LABEL[amountUnit]} but the
@@ -272,7 +272,7 @@ export default function InfusionPumpTool() {
       )}
 
       {/* Results */}
-      {result && mixed && (
+      {result && compatible && (
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-xl border border-border bg-card p-3">
             <p className="text-xs text-muted-foreground">Concentration</p>
