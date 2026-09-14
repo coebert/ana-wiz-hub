@@ -42,7 +42,83 @@ interface VoicePreset {
 }
 const BASE_STYLE =
   "Warm, confident and clear, like a senior anaesthetic trainee tutoring a peer. " +
-  "Steady pace, natural phrasing, no exaggeration.";
+  "Steady pace, natural phrasing, no exaggeration or comedy — this is your ordinary speaking voice.";
+
+// Family-level pronunciation anchors. Keep identical to src/lib/podcastVoices.ts.
+const NORTHERN_ENGLAND_IDS = new Set([
+  "british-yorkshire", "british-lancashire", "british-manchester", "british-scouse",
+  "british-geordie", "british-mackem", "british-cumbrian", "british-sheffield",
+  "british-hull", "british-leeds", "british-teesside", "british-durham",
+  "british-northumberland", "british-bolton", "british-preston", "british-barnsley",
+  "british-bradford", "british-york", "british-wigan", "british-blackburn",
+  "british-oldham",
+]);
+const MIDLANDS_IDS = new Set([
+  "british-brummie", "british-black-country", "british-east-midlands", "british-potteries",
+  "british-coventry", "british-leicester", "british-nottingham", "british-lincolnshire",
+  "british-shropshire", "british-northampton", "british-derby", "british-worcester",
+  "british-warwickshire", "british-herefordshire",
+]);
+const WEST_COUNTRY_IDS = new Set([
+  "british-west-country", "british-bristol", "british-cornish", "british-devon",
+  "british-dorset", "british-wiltshire", "british-gloucestershire",
+]);
+
+const familyAnchors = (id: string): string => {
+  if (id.startsWith("welsh")) {
+    return (
+      "Anchors: strong musical rise-and-fall on every phrase; pure clear vowels — 'face' as FEH-ss, " +
+      "'goat' as GOH-t with no glide; tapped/rolled r's; clear 'l' in 'milk'; " +
+      "stress often late in the phrase, ending on a lift like a question."
+    );
+  }
+  if (id.startsWith("scottish")) {
+    return (
+      "Anchors: fully rhotic with a tapped r — 'heart' as HAIRT, 'water' as WAH-ter; " +
+      "short pure vowels — 'house' as HOOS, 'now' as NOO, 'right' as RICHT; " +
+      "'ch' in 'loch' as a throaty velar fricative, never a k; " +
+      "clipped clear consonants, brisk energetic rhythm, dark 'l'."
+    );
+  }
+  if (id.startsWith("irish")) {
+    return (
+      "Anchors: soft dental t and d — 'think' as TINK, 'that' as DAT; light rhotic r; " +
+      "'time' as TOIME, 'day' as DEH; rising melodic phrase endings; " +
+      "voiced breathy 'wh' in 'what'; lively fluid rhythm with unstressed syllables kept full."
+    );
+  }
+  if (WEST_COUNTRY_IDS.has(id)) {
+    return (
+      "Anchors: heavily rhotic burr — 'farm' as FAARM, 'harder' as HARR-derr, 'water' as WAH-terr; " +
+      "long broad a — 'bath' as BAARTH; 'I' as OI; voiced s in 'Somerset' as ZOMerset; " +
+      "slow rolling unhurried rural lilt."
+    );
+  }
+  if (NORTHERN_ENGLAND_IDS.has(id)) {
+    return (
+      "Anchors: flat short a — 'bath' and 'grass' with the same vowel as 'cat'; " +
+      "no foot–strut split — 'but', 'blood' and 'up' use the vowel of 'put' (BOOT, BLOOD, OOP); " +
+      "'the' reduced to t' before consonants; hard clipped g's; " +
+      "down-stepped ends of phrases, no RP drawl."
+    );
+  }
+  if (MIDLANDS_IDS.has(id)) {
+    return (
+      "Anchors: flat short a in 'bath'; northern 'but' vowel (as in 'put'); " +
+      "'price' as PROICE, 'mouth' as MEOWTH; a distinctly falling, slightly nasal phrase-end " +
+      "that drops away rather than lifting."
+    );
+  }
+  if (id === "british-cockney" || id === "british-estuary" || id === "british-essex" || id === "british-kent") {
+    return (
+      "Anchors: glottal t — 'butter' as BU'-uh, 'water' as WOR-uh; l-vocalisation — 'milk' as MIWK; " +
+      "th-fronting — 'think' as FINK, 'brother' as BRUVVer; 'face' as FICE, 'price' as PROICE; " +
+      "dropped h in 'house'; quick clipped urban rhythm."
+    );
+  }
+  return "";
+};
+
 
 const ACCENT_BANK: AccentRow[] = [
   // ---------------- General UK ----------------
