@@ -375,6 +375,76 @@ const ComplexNeedsAnaesthesiaTopic = () => {
               </div>
             </section>
 
+            {/* Communication */}
+            <section id="section-communication" className="scroll-mt-24">
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Communication Strategies</h2>
+              <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} />
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Find out how this person communicates — before they arrive</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Read the <strong>hospital passport / communication passport</strong> and ask carers or family how the patient expresses yes/no, pain, fear and refusal. Behaviour is communication: withdrawal, rocking, echolalia, grabbing or aggression may all mean "no" or "it hurts".</li>
+                    <li>Document the patient's preferred name, pronouns, first words/signs and their tolerance for touch, eye contact and personal questions; hand this to every member of the team at the briefing.</li>
+                    <li>Book professional communication support in advance: British Sign Language or deafblind interpreters, Makaton signers, speech-and-language therapy input, and learning-disability liaison nurses <InlineRef topicId={TOPIC_ID} refLabel="NICE NG11 Challenging Behaviour" />.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Adapt the message</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>Easy-read and pictorial information</strong>: simple sentences, one idea per line, photographs of the actual environment, equipment and (where possible) the staff who will be present. Anaesthesia-specific easy-read leaflets exist and should be offered as standard.</li>
+                    <li><strong>Social stories and visual timetables</strong> for autistic patients: a step-by-step "what will happen" sequence with real timings, which can be rehearsed at home and updated if the list order changes.</li>
+                    <li><strong>Verbal style</strong>: short concrete sentences, no idioms or euphemism ("you will feel a scratch" is dishonest — say "a sharp sting for a few seconds"), one question at a time, and allow processing time before repeating.</li>
+                    <li><strong>Augmentative and alternative communication (AAC)</strong>: communication boards, symbol sets, picture-exchange systems, electronic voice-output devices and the patient's own tablet — ensure the device goes with the patient to theatre and recovery.</li>
+                    <li>Demonstrate equipment (mask, cannula, saturation probe) on a teddy, a carer or the patient's own hand first; allow the patient to handle it.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Communication as consent support, and communication under anaesthesia</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Every practicable step to help the patient understand, retain, use/weigh and communicate their decision must be taken before concluding they lack capacity — adapted communication is a legal requirement of the capacity assessment, not an optional extra <InlineRef topicId={TOPIC_ID} refLabel="MCA 2005" />.</li>
+                    <li>One designated communicator (often the supporter the patient trusts) reduces confusion; brief them that they support the patient's own decision, not make it for them.</li>
+                    <li>For patients having awake procedures, agree signals in advance (raise a hand for a break, a buzzer for stop) and check understanding before starting.</li>
+                    <li>Record what communication worked and what did not, so the next episode of care starts from a known position.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            {/* Sedation alternatives */}
+            <section id="section-sedation-alternatives" className="scroll-mt-24">
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sedation Alternatives</h2>
+              <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} />
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Non-pharmacological alternatives — always the first rung</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>Preparation techniques</strong>: graded exposure and desensitisation programmes, rehearsal visits, play-specialist and clinical-psychology input, and CBT or hypnotherapy for needle and mask phobia where time allows.</li>
+                    <li><strong>Distraction and control-giving</strong>: tablets/video, music through headphones, guided breathing, counting down with the patient, the patient applying their own mask or choosing the arm for cannulation.</li>
+                    <li><strong>Virtual and augmented reality</strong> headsets for cannulation and regional blocks, with growing evidence for procedural anxiety in children and adults with additional needs.</li>
+                    <li><strong>Sensory modulation</strong>: weighted blankets, dimmed lights, noise reduction, familiar objects and own clothing frequently make sedation unnecessary.</li>
+                    <li><strong>Scheduling as treatment</strong>: first on the list, minimal fasting drift, direct-to-theatre admission and a single trusted team reduce anticipatory arousal more effectively than any drug.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Procedural alternatives to sedation or general anaesthesia</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>Regional anaesthesia alone</strong> — a spinal, epidural or peripheral block with generous explanation, a screened-off field, music and a familiar supporter is often better tolerated than expected; pair with the communication strategies above and agree "stop" signals in advance.</li>
+                    <li><strong>Local anaesthesia with infiltration or topical agents</strong> for suitable procedures, with slow injection, buffering and small-gauge needles; offer nitrous oxide/oxygen 50:50 (Entonox) self-administered as an adjunct for the needle-phobic patient with capacity.</li>
+                    <li><strong>Sedation under regional block</strong> where full wakefulness is intolerable: low-dose propofol target-controlled infusion, or a single-agent strategy with depth monitoring — but remember sedation in a patient who cannot reliably report distress requires the same monitoring standards as anaesthesia and an agreed abort plan.</li>
+                    <li><strong>Choice of general anaesthetic technique</strong> when GA is unavoidable: patient-controlled inhalational induction with sevoflurane, TIVA to reduce postoperative nausea and emergence phenomena, and deep extubation where appropriate to smooth emergence.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Escalating safely</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Move up the ladder only when the rung below has genuinely been offered: adjustments → preparation/distraction → topical/local/regional → inhaled nitrous → oral/buccal/intranasal premedication → inhalational induction → (rarely, within a documented plan) intramuscular rescue <InlineRef topicId={TOPIC_ID} refLabel="NICE NG11 Challenging Behaviour" />.</li>
+                    <li>Each step up increases monitoring requirements and the need for trained staff, reversal agents and airway equipment immediately available — never administer sedating medication in an unmonitored corridor.</li>
+                    <li>Record which rung succeeded; "sedation ladder that works for this patient" is among the most valuable entries in the hospital passport.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
             {/* Capacity */}
             <section id="section-capacity" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Capacity, Consent &amp; Restraint</h2>
