@@ -241,6 +241,7 @@ const App = () => (
           <Route path="/perioperative" element={<PerioperativeSection />} />
           <Route path="/perioperative/case-bank" element={<PerioperativeCaseBank />} />
           <Route path="/perioperative/co-existing-disease" element={<CoExistingDiseaseOverview />} />
+          <Route path="/perioperative/complex-needs-case-study" element={<ComplexNeedsCaseStudy />} />
           <Route path="/perioperative/timeline" element={<PerioperativeTimeline />} />
           <Route path="/perioperative/drug-doses" element={<AnaesthesiaDrugDoses />} />
           <Route path="/perioperative/calculator" element={<AnaesthesiaDrugCalculator />} />
