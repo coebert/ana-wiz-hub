@@ -62,6 +62,18 @@ const keyPoints = [
     text: "Prisoners retain the same rights to consent, confidentiality and dignity as any other patient; custody officers may remain for security but clinical information must not be shared with them beyond what is needed for safety, and restraints should be removed for anaesthesia unless a documented risk assessment states otherwise.",
     cites: ["NICE NG57 Prison Health", "FFLM Restraint 2022"],
   },
+  {
+    text: "Sedation is the last rung of a ladder, not the first: adjustments, preparation, distraction, topical/local and regional techniques and nitrous oxide come before oral, buccal, intranasal or intramuscular drugs.",
+    cites: ["NICE NG11 Challenging Behaviour"],
+  },
+  {
+    text: "Consent in this group is a staged process, not a signature: information in the right format, capacity assessed with every support in place, legal instruments checked, and a documented best-interests meeting when the patient cannot decide.",
+    cites: ["MCA 2005"],
+  },
+  {
+    text: "Postoperative distress in a patient who cannot self-report is pain, delirium or a hidden physical cause until proved otherwise: regular multimodal analgesia, an observational pain tool plus carer knowledge, and a familiar supporter at the bedside are the safety net.",
+    cites: ["LeDeR 2023", "NICE CG142 Autism"],
+  },
 ];
 
 const workedExamples: WorkedExample[] = [
@@ -172,6 +184,14 @@ const complexNeedsFaqs: Array<[string, string]> = [
   [
     "What is a hospital passport and why does it matter to the anaesthetist?",
     "It is a patient-held document summarising how someone with a learning disability or autism communicates, what distresses or calms them, how they show pain, their usual medication and their support needs. It converts a chaotic day-of-surgery encounter into a planned one and should be read before the patient arrives, not after.",
+  ],
+  [
+    "What should I do before reaching for sedation in a patient who cannot cooperate?",
+    "Work up the ladder: environmental and scheduling adjustments first, then preparation and desensitisation, distraction and control-giving, topical or local anaesthesia, regional techniques where suitable, and self-administered nitrous oxide/oxygen — with pharmacological premedication and inhalational induction reserved for when these are insufficient. Document which rung succeeded so it becomes the starting point next time.",
+  ],
+  [
+    "How do I consent a patient who communicates non-verbally?",
+    "Start the consent process early and in stages; provide easy-read, pictorial or video information; involve the people who know how the patient communicates; and use every support available (communication passport, AAC devices, interpreters, a trusted supporter) before concluding the patient cannot decide. If capacity for the decision is still lacking, hold a documented best-interests meeting with an IMCA if appropriate — a carer cannot simply sign instead.",
   ],
   [
     "Should a prisoner's handcuffs be removed for surgery?",
