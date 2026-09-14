@@ -1234,7 +1234,8 @@ Deno.serve(async (req) => {
         await supabase
           .from("podcasts")
           .update({ status: "failed", error_message: failure.error })
-          .eq("topic_id", topicId);
+          .eq("topic_id", topicId)
+          .eq("voice", voiceIdResolved);
       } finally {
         activeGenerations = Math.max(0, activeGenerations - 1);
       }
