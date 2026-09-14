@@ -26,9 +26,16 @@ const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY")!;
 
 const TTS_MODEL = "gpt-4o-mini-tts";
 
-// Selectable narrator presets. Keep ids in sync with src/lib/podcastVoices.ts.
-// gpt-4o-mini-tts supports steerable delivery, so the accent comes from the
-// `instructions` string paired with a base voice.
+// Regional narrator bank. Mirrors ACCENT_BANK in src/lib/podcastVoices.ts —
+// keep ids, base voices and traits in sync. gpt-4o-mini-tts supports steerable
+// delivery, so the accent comes from the built `instructions` string.
+interface AccentRow {
+  id: string;
+  voice: string;
+  accent: string;
+  traits: string;
+  nonBritish?: boolean;
+}
 interface VoicePreset {
   voice: string;
   instructions: string;
@@ -36,58 +43,249 @@ interface VoicePreset {
 const BASE_STYLE =
   "Warm, confident and clear, like a senior anaesthetic trainee tutoring a peer. " +
   "Steady pace, natural phrasing, no exaggeration.";
-const VOICE_PRESETS: Record<string, VoicePreset> = {
-  "british-rp": {
+
+const ACCENT_BANK: AccentRow[] = [
+  // General UK
+  {
+    id: "british-rp",
     voice: "alloy",
-    instructions:
-      "Speak with a natural British English (modern Received Pronunciation) accent. " + BASE_STYLE,
+    accent: "British English, modern Received Pronunciation",
+    traits: "Non-rhotic, crisp consonants, even measured intonation, no regional colouring.",
   },
-  "british-female-warm": {
+  {
+    id: "british-female-warm",
     voice: "coral",
-    instructions:
-      "Speak as a female British English speaker with a warm, friendly modern RP accent. " + BASE_STYLE,
+    accent: "female British English, warm modern RP",
+    traits: "Non-rhotic, gentle rising phrasing, encouraging tutorial warmth.",
   },
-  "british-male-deep": {
+  {
+    id: "british-male-deep",
     voice: "onyx",
-    instructions:
-      "Speak as a male British English speaker with a deep, measured, authoritative RP accent. " + BASE_STYLE,
+    accent: "male British English, deep authoritative RP",
+    traits: "Low chest resonance, unhurried, deliberate stress on key terms.",
   },
-  "british-storyteller": {
+  {
+    id: "british-storyteller",
     voice: "fable",
-    instructions:
-      "Speak with an expressive, engaging British English accent, like a well-known UK documentary narrator. " +
-      BASE_STYLE,
+    accent: "British English documentary narration",
+    traits: "Expressive dynamic range, curious lifts at clause ends, theatrical but controlled.",
   },
-  "british-west-country": {
-    voice: "fable",
-    instructions:
-      "Accent: English West Country (South West England — Somerset, Devon, Bristol). This is essential: you are NOT American. " +
-      "Use a rhotic British burr — sound the 'r' in words like 'farm', 'harder', 'water'. " +
-      "Broad, long 'a' as in 'baath' for bath, soft rounded vowels, gently sing-song rural West Country lilt, " +
-      "warm and unhurried, like a friendly Somerset or Devon local. Avoid any American vowel colouring or American intonation. " +
-      "Keep every clinical term clearly intelligible. " +
-      BASE_STYLE,
+  {
+    id: "british-estuary",
+    voice: "verse",
+    accent: "Estuary English (London and the Thames estuary)",
+    traits:
+      "Softened t-glottalling ('bu'er' for butter), l-vocalisation, RP-adjacent vowels with a modern urban lilt.",
   },
-  scottish: {
-    voice: "ash",
-    instructions:
-      "Speak with an educated Scottish accent (Edinburgh), clearly intelligible to all English speakers. " +
-      BASE_STYLE,
-  },
-  irish: {
+  // Southern England
+  {
+    id: "british-cockney",
     voice: "ballad",
-    instructions:
-      "Speak with a soft Irish accent (Dublin), clearly intelligible to all English speakers. " + BASE_STYLE,
+    accent: "Cockney (traditional East London)",
+    traits:
+      "Dropped h's, th-fronting ('fink' for think), glottal stops, diphthong shift ('fice' for face), quick lively rhythm.",
   },
-  australian: {
+  {
+    id: "british-west-country",
+    voice: "fable",
+    accent: "English West Country (Somerset and Devon)",
+    traits:
+      "Strongly rhotic burr — sound the 'r' in farm, harder, water. Long broad 'a' ('baath'), soft rounded vowels, gently sing-song unhurried rural lilt.",
+  },
+  {
+    id: "british-bristol",
+    voice: "fable",
+    accent: "Bristolian (city West Country)",
+    traits:
+      "Rhotic but brisker than rural Somerset, the Bristol 'l' added to final vowels, flat friendly urban delivery.",
+  },
+  {
+    id: "british-cornish",
+    voice: "fable",
+    accent: "Cornish (far South West England)",
+    traits:
+      "Rhotic with a lilting Celtic musicality, elongated vowels, softened endings, gentle seaside cadence.",
+  },
+  {
+    id: "british-east-anglian",
+    voice: "ash",
+    accent: "Norfolk and East Anglian",
+    traits:
+      "Distinctive falling-then-rising intonation, yod-dropping ('noo' for new), long 'oo' vowels, relaxed pace.",
+  },
+  // Midlands
+  {
+    id: "british-brummie",
+    voice: "verse",
+    accent: "Birmingham (Brummie)",
+    traits:
+      "Characteristic downward sentence-final intonation, nasal resonance, 'oi' coloured 'i' in price, unhurried flat delivery.",
+  },
+  {
+    id: "british-black-country",
+    voice: "ash",
+    accent: "Black Country (Dudley and Wolverhampton)",
+    traits:
+      "Older Midlands vowels, 'yow' for you, flat FOOT/STRUT vowels, sturdy rhythmic stress and rising ends.",
+  },
+  {
+    id: "british-east-midlands",
+    voice: "alloy",
+    accent: "East Midlands (Nottingham and Derby)",
+    traits:
+      "Northern-style short 'a' in bath, flat unrounded vowels, dropped final g's, level even rhythm.",
+  },
+  // Northern England
+  {
+    id: "british-yorkshire",
+    voice: "ash",
+    accent: "Yorkshire",
+    traits:
+      "Short flat 'a' in bath and grass, FOOT/STRUT merger ('boos' for bus), definite article reduction, blunt warm cadence.",
+  },
+  {
+    id: "british-lancashire",
+    voice: "fable",
+    accent: "Lancashire (North West England)",
+    traits:
+      "Short northern 'a', slightly rhotic in older forms, elongated 'oo', friendly gently rolling intonation.",
+  },
+  {
+    id: "british-manchester",
+    voice: "verse",
+    accent: "Mancunian (Manchester)",
+    traits:
+      "Flat northern vowels, prominent final 'er' as 'a', clipped confident delivery, level intonation.",
+  },
+  {
+    id: "british-scouse",
+    voice: "ballad",
+    accent: "Scouse (Liverpool, Merseyside)",
+    traits:
+      "Fast rise-fall melody, velar fricative in back and book, hard 'k' softening, adenoidal nasal resonance.",
+  },
+  {
+    id: "british-geordie",
+    voice: "ash",
+    accent: "Geordie (Newcastle upon Tyne, Tyneside)",
+    traits:
+      "Musical rising intonation, 'gan' and 'toon' vowels, long 'ee' endings, warm energetic pace.",
+  },
+  {
+    id: "british-mackem",
+    voice: "ballad",
+    accent: "Mackem (Sunderland, Wearside)",
+    traits:
+      "Tyneside-adjacent but flatter, 'make' as 'mak', shortened vowels, brisk plain-spoken rhythm.",
+  },
+  {
+    id: "british-cumbrian",
+    voice: "fable",
+    accent: "Cumbrian (Lake District and Scottish border)",
+    traits:
+      "Northern short vowels with a faint Scots edge, slight rhoticity, lilting rural border cadence.",
+  },
+  // Wales
+  {
+    id: "welsh-south",
+    voice: "coral",
+    accent: "South Wales (Cardiff and the Valleys)",
+    traits:
+      "Sing-song rise and fall, pure elongated vowels, rolled light 'r', clear consonants, melodic warmth.",
+  },
+  {
+    id: "welsh-north",
+    voice: "fable",
+    accent: "North Wales (Gwynedd and Anglesey)",
+    traits:
+      "Stronger Welsh-language influence, crisp dark 'l', clipped precise consonants, steady lilt with falling ends.",
+  },
+  // Scotland
+  {
+    id: "scottish",
+    voice: "ash",
+    accent: "educated Scottish (Edinburgh)",
+    traits:
+      "Rhotic tapped 'r', pure monophthong vowels, clear articulation, restrained even intonation.",
+  },
+  {
+    id: "scottish-glaswegian",
+    voice: "verse",
+    accent: "Glaswegian (Glasgow)",
+    traits:
+      "Strong rhotic 'r', glottal stops mid-word, punchy varied melody, brisk energetic delivery.",
+  },
+  {
+    id: "scottish-highland",
+    voice: "ballad",
+    accent: "Highland Scottish (Inverness and the West Highlands)",
+    traits:
+      "Slow, softly lilting Gaelic-influenced cadence, gently rolled 'r', precise clear vowels.",
+  },
+  {
+    id: "scottish-doric",
+    voice: "ash",
+    accent: "Doric (Aberdeen and North East Scotland)",
+    traits:
+      "Distinctive 'fit' for what, 'hoose' for house, strongly rhotic, clipped rhythmic delivery.",
+  },
+  // Ireland
+  {
+    id: "irish",
+    voice: "ballad",
+    accent: "Dublin Irish",
+    traits:
+      "Softened 'th' towards 't' and 'd', light rhotic 'r', musical rise on statements, easy relaxed pace.",
+    nonBritish: true,
+  },
+  {
+    id: "irish-cork",
+    voice: "coral",
+    accent: "Cork Irish (Munster)",
+    traits: "Pronounced sing-song pitch swoops, elongated vowels, rapid lively phrasing.",
+    nonBritish: true,
+  },
+  {
+    id: "irish-northern",
+    voice: "ash",
+    accent: "Northern Irish (Belfast)",
+    traits:
+      "Falling sentence-final intonation, tight front vowels, rhotic, brisk clipped consonants.",
+  },
+  // Rest of the world
+  {
+    id: "australian",
     voice: "nova",
-    instructions: "Speak with a relaxed, clear Australian accent. " + BASE_STYLE,
+    accent: "general Australian",
+    traits: "Broad flattened diphthongs, rising statement intonation, relaxed open delivery.",
+    nonBritish: true,
   },
-  american: {
+  {
+    id: "american",
     voice: "sage",
-    instructions: "Speak with a general American accent. " + BASE_STYLE,
+    accent: "general American",
+    traits: "Rhotic, flat 'a' in bath, even mid-Atlantic newsreader delivery.",
+    nonBritish: true,
   },
+];
+
+const buildInstructions = (row: AccentRow): string => {
+  const guard =
+    row.id === "american"
+      ? ""
+      : row.nonBritish
+        ? "This is essential: do not drift into a general American accent. "
+        : "This is essential: you are NOT American — do not use American vowel colouring or American intonation. ";
+  return (
+    `Accent: ${row.accent}. ${guard}${row.traits} ` +
+    "Keep every clinical term, drug name and number clearly intelligible. " +
+    BASE_STYLE
+  );
 };
+
+const VOICE_PRESETS: Record<string, VoicePreset> = Object.fromEntries(
+  ACCENT_BANK.map((row) => [row.id, { voice: row.voice, instructions: buildInstructions(row) }]),
+);
 const DEFAULT_VOICE_ID = "british-rp";
 const resolveVoice = (voiceId: unknown): { id: string; preset: VoicePreset } => {
   const id = typeof voiceId === "string" && VOICE_PRESETS[voiceId] ? voiceId : DEFAULT_VOICE_ID;
