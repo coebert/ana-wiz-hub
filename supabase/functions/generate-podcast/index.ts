@@ -1223,7 +1223,8 @@ Deno.serve(async (req) => {
             status: "ready",
             error_message: null,
           })
-          .eq("topic_id", topicId);
+          .eq("topic_id", topicId)
+          .eq("voice", voiceIdResolved);
 
         console.log(`[${topicId}] Generation complete — row marked ready.`);
       } catch (genErr) {
