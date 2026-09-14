@@ -842,17 +842,28 @@ const ACCENT_BANK: AccentRow[] = [
 ];
 
 const buildInstructions = (row: AccentRow): string => {
+  const anchors = familyAnchors(row.id);
   const guard =
     row.id === "american"
       ? ""
       : row.nonBritish
-        ? "This is essential: do not drift into a general American accent. "
-        : "This is essential: you are NOT American — do not use American vowel colouring or American intonation. ";
-  return (
-    `Accent: ${row.accent}. ${guard}${row.traits} ` +
-    "Keep every clinical term, drug name and number clearly intelligible. " +
-    BASE_STYLE
-  );
+        ? "Never drift into General American or neutral British English at any point. "
+        : "You are NOT American and NOT a neutral RP speaker: never use American vowel colouring, " +
+          "American intonation, or generic BBC RP. ";
+  return [
+    `You are a lifelong native speaker of ${row.accent}. You have never lived anywhere else, ` +
+      "and this is simply your own voice — you are not performing or imitating an accent.",
+    guard +
+      "Hold the accent consistently from the very first word to the last, including proper nouns and " +
+      "technical terms. Do not neutralise or soften it for clarity, and do not fade towards a standard " +
+      "accent as the passage goes on.",
+    `Accent detail: ${row.traits}`,
+    anchors,
+    "Keep every clinical term, drug name and number clearly intelligible within that accent.",
+    BASE_STYLE,
+  ]
+    .filter(Boolean)
+    .join(" ");
 };
 
 const VOICE_PRESETS: Record<string, VoicePreset> = Object.fromEntries(
