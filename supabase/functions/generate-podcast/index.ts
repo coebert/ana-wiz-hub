@@ -25,7 +25,65 @@ const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY")!;
 const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY")!;
 
 const TTS_MODEL = "gpt-4o-mini-tts";
-const TTS_VOICE = "alloy"; // calm, neutral narration
+
+// Selectable narrator presets. Keep ids in sync with src/lib/podcastVoices.ts.
+// gpt-4o-mini-tts supports steerable delivery, so the accent comes from the
+// `instructions` string paired with a base voice.
+interface VoicePreset {
+  voice: string;
+  instructions: string;
+}
+const BASE_STYLE =
+  "Warm, confident and clear, like a senior anaesthetic trainee tutoring a peer. " +
+  "Steady pace, natural phrasing, no exaggeration.";
+const VOICE_PRESETS: Record<string, VoicePreset> = {
+  "british-rp": {
+    voice: "alloy",
+    instructions:
+      "Speak with a natural British English (modern Received Pronunciation) accent. " + BASE_STYLE,
+  },
+  "british-female-warm": {
+    voice: "coral",
+    instructions:
+      "Speak as a female British English speaker with a warm, friendly modern RP accent. " + BASE_STYLE,
+  },
+  "british-male-deep": {
+    voice: "onyx",
+    instructions:
+      "Speak as a male British English speaker with a deep, measured, authoritative RP accent. " + BASE_STYLE,
+  },
+  "british-storyteller": {
+    voice: "fable",
+    instructions:
+      "Speak with an expressive, engaging British English accent, like a well-known UK documentary narrator. " +
+      BASE_STYLE,
+  },
+  scottish: {
+    voice: "ash",
+    instructions:
+      "Speak with an educated Scottish accent (Edinburgh), clearly intelligible to all English speakers. " +
+      BASE_STYLE,
+  },
+  irish: {
+    voice: "ballad",
+    instructions:
+      "Speak with a soft Irish accent (Dublin), clearly intelligible to all English speakers. " + BASE_STYLE,
+  },
+  australian: {
+    voice: "nova",
+    instructions: "Speak with a relaxed, clear Australian accent. " + BASE_STYLE,
+  },
+  american: {
+    voice: "sage",
+    instructions: "Speak with a general American accent. " + BASE_STYLE,
+  },
+};
+const DEFAULT_VOICE_ID = "british-rp";
+const resolveVoice = (voiceId: unknown): { id: string; preset: VoicePreset } => {
+  const id = typeof voiceId === "string" && VOICE_PRESETS[voiceId] ? voiceId : DEFAULT_VOICE_ID;
+  return { id, preset: VOICE_PRESETS[id] };
+};
+
 // Target a comfortable chunk size well under OpenAI's 4096-char hard limit.
 // Smaller chunks = faster individual TTS calls + safer retries.
 const MAX_TTS_CHARS = 2800;
