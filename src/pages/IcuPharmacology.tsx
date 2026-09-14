@@ -49,6 +49,8 @@ const pdFor = (name: string) =>
  * triggers and the point at which continuation becomes a decision in itself.
  */
 const DURATION_RULES: Record<string, string> = {
+  anticholinergic:
+    "These are single-dose or short-course drugs. Bradycardia and reversal doses are given once and repeated only on reassessment; antisecretory infusions and nebulised ipratropium are reviewed at least daily and stopped when the secretion burden or the exacerbation settles. Any continuing antimuscarinic belongs on the delirium and constipation screen — check for a forgotten patch or an unreviewed regular prescription before adding a sedative.",
   "sedation-analgesia":
     "No sedative or opioid infusion should run without a daily sedation hold or lightening and an explicit target score (e.g. RASS 0 to \u22122). Review the indication every day; beyond 5\u20137 days plan a taper of 10\u201320% of the dose per day because iatrogenic withdrawal becomes likely. Review propofol at 48 h and keep it below 4 mg/kg/h.",
   "neuromuscular-blockade":

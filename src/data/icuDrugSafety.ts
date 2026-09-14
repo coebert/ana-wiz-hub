@@ -203,6 +203,173 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
           "Review the indication daily and stop as soon as the delirium settles.",
         ],
       },
+      {
+        drug: "Remifentanil",
+        slug: "remifentanil",
+        interactions: [
+          "Profound additive bradycardia and hypotension with propofol, dexmedetomidine, β-blockers and neostigmine — reduce the rate before reaching for a vasopressor.",
+          "Additive respiratory depression with every other sedative; apnoea follows small rate increases in the spontaneously breathing patient.",
+          "Prolonged high-dose infusions cause acute tolerance and opioid-induced hyperalgesia, increasing the requirement of the follow-on opioid.",
+        ],
+        contraindications: [
+          "Never give as an ICU bolus (chest-wall rigidity, apnoea, severe bradycardia) — infusion only, through a dedicated lumen.",
+          "Do not run it as the sole agent in a patient who must not be aware: it has no amnesic effect.",
+          "Avoid where an infusion interruption cannot be tolerated — offset is complete within minutes.",
+        ],
+        monitoring: [
+          "Sedation and pain score hourly with continuous ECG and blood pressure; treat bradycardia by reducing the rate first.",
+          "Respiratory rate and end-tidal CO₂ in any patient breathing spontaneously.",
+          "A written follow-on analgesia plan started before the infusion stops; watch for tachycardia, hypertension and distress within 5–10 min of stopping.",
+          "Line and pump integrity — a disconnection produces immediate pain and awakening.",
+        ],
+        alert:
+          "Stopping remifentanil is not a sedation hold — pain returns within minutes, so give longer-acting analgesia first.",
+      },
+      {
+        drug: "Oxycodone",
+        slug: "oxycodone",
+        interactions: [
+          "CYP3A4 inhibitors (clarithromycin, fluconazole, voriconazole, ritonavir, diltiazem) raise levels; rifampicin and phenytoin lower them.",
+          "Additive sedation and respiratory depression with benzodiazepines, gabapentinoids and antipsychotics.",
+          "Serotonergic interaction with linezolid, SSRIs and tramadol; additive constipation with anticholinergics and ondansetron.",
+        ],
+        contraindications: [
+          "Respiratory depression, untreated obstructive sleep apnoea without monitoring, paralytic ileus.",
+          "Severe hepatic impairment (halve the dose or avoid); eGFR <30 mL/min requires dose reduction and longer intervals.",
+          "Not for opioid-naive patients as a modified-release preparation on the ICU — use immediate release and titrate.",
+        ],
+        monitoring: [
+          "Pain and sedation scores plus respiratory rate before each PRN dose and after every dose increase.",
+          "Bowel function daily with prophylactic laxatives; bladder function after each increase.",
+          "24-hour opioid total including background infusions, converted to oral morphine equivalents, with a documented weaning plan.",
+        ],
+        alert:
+          "Oxycodone is about twice as potent as oral morphine — a milligram-for-milligram switch doubles the dose.",
+      },
+      {
+        drug: "Methadone",
+        slug: "methadone",
+        interactions: [
+          "Additive QT prolongation with amiodarone, haloperidol, quetiapine, ondansetron, macrolides, quinolones and azoles — a genuine torsade risk in ICU.",
+          "CYP inducers (rifampicin, phenytoin, carbamazepine) can precipitate withdrawal; inhibitors (fluconazole, voriconazole, ciprofloxacin, ritonavir) cause accumulation and late respiratory depression.",
+          "Additive respiratory depression and sedation with benzodiazepines and gabapentinoids; opioid substitution doses must not be duplicated with community supplies.",
+        ],
+        contraindications: [
+          "QTc >500 ms, uncorrected hypokalaemia or hypomagnesaemia, previous torsade.",
+          "Rapid dose escalation — the effect of a change appears only after 3–5 days, so no more often than 3-daily increases.",
+          "Unconfirmed community dose: always verify with the dispensing pharmacy or drug service before continuing substitution therapy.",
+        ],
+        monitoring: [
+          "Baseline ECG and repeat after each dose increase and whenever another QT-prolonging drug starts.",
+          "Sedation score and respiratory rate for at least 72 h after every dose change — late respiratory depression is the classic harm.",
+          "Withdrawal score (CIWA-style or WAT-1/SOS in children), potassium and magnesium, and a documented taper plan with the discharging team.",
+        ],
+        alert:
+          "Methadone accumulates for days after a dose change: escalate slowly and never treat breakthrough pain by increasing the methadone dose.",
+      },
+      {
+        drug: "Paracetamol",
+        slug: "paracetamol",
+        interactions: [
+          "Enzyme inducers (phenytoin, carbamazepine, rifampicin) and chronic alcohol excess increase toxic NAPQI formation at therapeutic doses.",
+          "Prolonged regular use modestly raises the INR on warfarin — recheck the INR.",
+          "Hidden duplication with combination analgesics (co-codamol, co-dydramol) and enteral preparations is the commonest overdose route.",
+        ],
+        contraindications: [
+          "Severe hepatic impairment or acute liver failure — reduce the dose or omit; never exceed 3 g/24 h.",
+          "Body weight below 50 kg, malnutrition, cachexia, glutathione depletion in sepsis: use 15 mg/kg with a 60 mg/kg/24 h ceiling.",
+          "IV administration in profound hypotension without observation — transient further hypotension is well described.",
+        ],
+        monitoring: [
+          "Running 24-hour total on the drug chart, cross-checked against combination products.",
+          "Liver function and INR every 48–72 h in prolonged use, low body weight, sepsis or liver disease.",
+          "Blood pressure during and after IV doses in shocked patients; pain score to confirm it is actually helping before escalating opioids.",
+        ],
+        alert:
+          "Weight-based dose reduction below 50 kg is mandatory — 1 g four times a day in a small, septic or malnourished patient is a hepatotoxic dose.",
+      },
+      {
+        drug: "Thiopental",
+        slug: "thiopental",
+        interactions: [
+          "Profound additive vasodilatation and myocardial depression with propofol, opioids and vasodilators — expect a rising vasopressor requirement.",
+          "Enzyme induction increases the metabolism of many co-prescribed drugs; precipitates acute porphyria.",
+          "Alkaline solution: incompatible with most drugs in the same line (precipitates with suxamethonium, catecholamines and antibiotics) — use a dedicated lumen.",
+        ],
+        contraindications: [
+          "Acute intermittent porphyria and variegate porphyria (absolute).",
+          "Fixed cardiac output states, severe hypovolaemia and uncorrected shock without full haemodynamic support.",
+          "Barbiturate hypersensitivity; upper airway obstruction without a secured airway; intra-arterial injection (severe vasospasm and limb loss).",
+        ],
+        monitoring: [
+          "Continuous EEG titrated to burst suppression — dose without EEG is unmonitored deep coma.",
+          "Invasive arterial pressure and cardiac output; potassium (hypokalaemia during, rebound hyperkalaemia after stopping), and daily infection screen (immunosuppression).",
+          "Cumulative dose and days of infusion — document that neurological examination and brainstem death testing are invalid until levels clear, which may take 48–96 h.",
+          "Gastric residuals and bowel function (ileus), pressure areas and corneal care.",
+        ],
+        alert:
+          "After prolonged thiopental, absent brainstem reflexes may simply be drug effect — brain-stem death testing is invalid until sedation is excluded.",
+      },
+      {
+        drug: "Inhaled isoflurane (Sedaconda ACD-S)",
+        slug: "inhaled-isoflurane",
+        interactions: [
+          "Potentiates neuromuscular blockers and additively vasodilates with propofol, opioids and antihypertensives.",
+          "Reduces the requirement for IV sedatives — cut propofol and opioid rates as it is started to avoid over-sedation.",
+          "Trigger agent for malignant hyperthermia; interacts with soda lime and desiccated absorbers to produce degradation products.",
+        ],
+        contraindications: [
+          "Personal or family history of malignant hyperthermia, or susceptibility to it.",
+          "Raised intracranial pressure where cerebral vasodilatation is unacceptable (relative — keep the concentration low).",
+          "No end-tidal agent monitoring, no scavenging or charcoal filter, or staff untrained in the device.",
+          "Very small tidal volumes where device dead space is a significant fraction of the breath.",
+        ],
+        monitoring: [
+          "End-tidal isoflurane concentration continuously, with a sedation score; titrate to the lowest effective concentration.",
+          "Blood pressure and vasopressor requirement; temperature, end-tidal CO₂ and CK if malignant hyperthermia is suspected.",
+          "Circuit integrity, filter change intervals, agent reservoir level and theatre-air occupational exposure.",
+          "Renal function on prolonged use (inorganic fluoride) and a documented plan for switching back to IV sedation.",
+        ],
+        alert:
+          "Volatile ICU sedation needs dantrolene availability and a malignant-hyperthermia check before the first breath.",
+      },
+      {
+        drug: "Quetiapine",
+        slug: "quetiapine",
+        interactions: [
+          "Additive QT prolongation with haloperidol, amiodarone, methadone, ondansetron, macrolides, quinolones and azoles.",
+          "CYP3A4 inhibitors (fluconazole, voriconazole, clarithromycin, ritonavir) raise levels substantially; carbamazepine and rifampicin lower them.",
+          "Additive sedation and hypotension with opioids, benzodiazepines and antihypertensives; worsens hyperglycaemia alongside corticosteroids.",
+        ],
+        contraindications: [
+          "QTc >500 ms, previous torsade, uncorrected hypokalaemia or hypomagnesaemia.",
+          "Neuroleptic malignant syndrome history; caution in Lewy body dementia (severe sensitivity reactions).",
+          "Not for hypoactive delirium, and not a treatment for pain, hypoxia, retention, constipation or drug withdrawal — find and treat those first.",
+        ],
+        monitoring: [
+          "ECG for QTc at baseline and after dose increases; potassium >4.0 and magnesium >1.0 mmol/L.",
+          "Blood pressure (postural hypotension), capillary glucose, and daily delirium score (CAM-ICU) to justify continuing.",
+          "Rigidity, temperature and creatine kinase for neuroleptic malignant syndrome; an explicit stop date so it is not continued after discharge.",
+        ],
+        alert:
+          "Antipsychotics do not prevent or shorten delirium — prescribe only for distress or danger, with a stop date on the chart.",
+      },
+      {
+        drug: "Melatonin",
+        slug: "melatonin",
+        interactions: [
+          "Levels raised by fluvoxamine and other CYP1A2 inhibitors, and by oestrogens; reduced by smoking and rifampicin.",
+          "Additive sedation with benzodiazepines and opioids is mild but real in the frail patient.",
+        ],
+        contraindications: [
+          "Hypersensitivity; caution in autoimmune disease and severe hepatic impairment (limited data).",
+          "Not a treatment for agitated delirium or for pain-related sleeplessness.",
+        ],
+        monitoring: [
+          "Sleep quality and day–night pattern, with the non-pharmacological bundle (light, noise, clustered care) documented alongside.",
+          "Daytime drowsiness with prolonged-release preparations; review the need before discharge and stop it.",
+        ],
+      },
     ],
   },
   {
@@ -269,6 +436,110 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
         ],
         alert:
           "Cardiac arrest from suxamethonium-induced hyperkalaemia is a recurring ICU never-event in critical illness myopathy and >24 h burns — use rocuronium instead.",
+      },
+      {
+        drug: "Vecuronium",
+        slug: "vecuronium",
+        interactions: [
+          "Potentiated by aminoglycosides, magnesium, hypothermia, acidosis, hypokalaemia and volatile agents.",
+          "Corticosteroid co-administration during prolonged blockade markedly increases the risk of ICU-acquired weakness.",
+          "Reversible with sugammadex (2–4 mg/kg) but not with the doses used for rocuronium rescue.",
+        ],
+        contraindications: [
+          "No airway rescue plan or inadequate sedation.",
+          "Previous anaphylaxis to a neuromuscular blocker; myasthenia gravis (profound sensitivity).",
+          "Renal failure — the active 3-desacetyl metabolite accumulates and causes prolonged paralysis; use cisatracurium instead.",
+        ],
+        monitoring: [
+          "Train-of-four count at least 4-hourly on an infusion; aim for 1–2 twitches rather than an unmeasured deep block.",
+          "Confirmed deep sedation and analgesia throughout, with eye, pressure-area and VTE care.",
+          "Daily creatinine and a daily paralysis hold where safe — failure to recover twitches after stopping suggests metabolite accumulation.",
+          "Document a train-of-four ratio >0.9 or full reversal before extubation.",
+        ],
+        alert:
+          "Days of vecuronium plus corticosteroids in renal failure is the classic recipe for prolonged ICU-acquired weakness — switch to cisatracurium.",
+      },
+      {
+        drug: "Pancuronium",
+        slug: "pancuronium",
+        interactions: [
+          "Vagolytic and blocks noradrenaline reuptake — tachycardia and hypertension, exaggerated with ketamine and sympathomimetics.",
+          "Potentiated by aminoglycosides, magnesium, hypothermia and acidosis.",
+          "Additive with corticosteroids for critical illness myopathy in prolonged use.",
+        ],
+        contraindications: [
+          "Tachyarrhythmia, ischaemic heart disease and haemodynamic instability where tachycardia is harmful.",
+          "Renal impairment (renal excretion, 2-hour half-life) — accumulation is rapid.",
+          "Myasthenia gravis; previous neuromuscular blocker anaphylaxis; no airway plan or inadequate sedation.",
+        ],
+        monitoring: [
+          "Heart rate and blood pressure after each dose — a rising rate can be mistaken for light sedation or sepsis.",
+          "Train-of-four before every repeat dose rather than fixed-interval dosing.",
+          "Renal function daily; recovery time and residual weakness after stopping.",
+        ],
+        alert:
+          "Pancuronium tachycardia and hypertension can mask, or be mistaken for, inadequate sedation in a paralysed patient — check depth of sedation directly.",
+      },
+      {
+        drug: "Mivacurium",
+        slug: "mivacurium",
+        interactions: [
+          "Block markedly prolonged by plasma cholinesterase deficiency, neostigmine, organophosphates, magnesium and hypothermia.",
+          "Histamine release is worse with rapid injection and additive with atracurium, morphine and vancomycin infusions.",
+        ],
+        contraindications: [
+          "Known or suspected plasma cholinesterase deficiency (as for suxamethonium).",
+          "Severe liver failure (reduced cholinesterase); severe asthma and haemodynamic instability because of histamine release.",
+          "Previous neuromuscular blocker anaphylaxis; not reversible with sugammadex.",
+        ],
+        monitoring: [
+          "Train-of-four recovery — a block outlasting 20–30 min suggests cholinesterase deficiency; keep the patient sedated and ventilated and send a cholinesterase assay.",
+          "Blood pressure, flush and airway pressures after a bolus (histamine); give over 30–60 s.",
+          "Sedation depth throughout.",
+        ],
+      },
+      {
+        drug: "Sugammadex",
+        slug: "sugammadex",
+        interactions: [
+          "Binds progestogens — a dose is equivalent to a missed combined-pill or progestogen-only pill dose; document the advice given.",
+          "Encapsulates rocuronium and vecuronium only: it will not reverse atracurium, cisatracurium, mivacurium or suxamethonium.",
+          "Re-paralysis needs a benzylisoquinolinium agent (or 1.2 mg/kg rocuronium after 24 h; 0.6 mg/kg after 4 h).",
+          "Prolongs the aPTT and INR transiently — interpret coagulation results taken soon after a dose with care.",
+        ],
+        contraindications: [
+          "Known hypersensitivity — anaphylaxis is recognised, often within minutes of the dose.",
+          "Severe renal impairment (eGFR <30 mL/min) is outside the licence: the complex is renally cleared and recurrence of block is possible.",
+          "Not a substitute for a definitive airway plan in can't-intubate-can't-oxygenate: it does not restore respiratory drive or relieve obstruction.",
+        ],
+        monitoring: [
+          "Train-of-four ratio >0.9 confirmed after the dose, then repeated observation for recurrence of weakness in renal impairment.",
+          "Heart rate and rhythm — marked bradycardia and cardiac arrest have been reported immediately after administration; keep atropine to hand.",
+          "Respiratory rate, tidal volume and airway patency after extubation; anaphylaxis observation for at least 30 min.",
+        ],
+        alert:
+          "Sugammadex reverses paralysis, not sedation or airway obstruction — a reversed patient who is still apnoeic needs the airway managed, not more sugammadex.",
+      },
+      {
+        drug: "Neostigmine",
+        slug: "neostigmine",
+        interactions: [
+          "Must be paired with glycopyrronium (or atropine) — unopposed muscarinic effects cause bradycardia, salivation, bronchospasm and vomiting.",
+          "Prolongs suxamethonium and mivacurium block (cholinesterase inhibition); antagonises non-depolarising block.",
+          "Additive bradycardia with β-blockers, digoxin, dexmedetomidine and remifentanil, especially in the pseudo-obstruction infusion.",
+        ],
+        contraindications: [
+          "Mechanical bowel obstruction or suspected perforation (for the pseudo-obstruction indication); peritonitis.",
+          "Bradycardia, second- or third-degree heart block, recent myocardial infarction; severe asthma or active bronchospasm.",
+          "A deep block with no train-of-four twitches — it cannot reverse it; wait for twitches or use sugammadex.",
+        ],
+        monitoring: [
+          "Continuous ECG throughout, with atropine drawn up; stop the infusion for a heart rate below 50/min.",
+          "Train-of-four ratio to confirm reversal, and observation for recurarisation over the following 30–60 min.",
+          "For colonic pseudo-obstruction: abdominal girth, flatus and stool, and a repeat radiograph; watch for excess secretions, bronchospasm and abdominal pain.",
+        ],
+        alert:
+          "Never give neostigmine without an antimuscarinic, and never to reverse a block with no twitches present.",
       },
     ],
   },
@@ -978,6 +1249,111 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
           "Creatinine and urine output daily on high-dose IV therapy; pre-hydrate and infuse over at least 1 h.",
           "Neurological state — confusion, myoclonus and hallucinations from the CMMG metabolite can mimic the encephalitis being treated.",
           "Cannula site (severe extravasation injury), full blood count and liver function.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "anticholinergic",
+    title: "Anticholinergics and antimuscarinics",
+    blurb:
+      "The safety question is always the same: tachycardia, urinary retention, ileus and — for drugs that cross the blood–brain barrier — delirium in exactly the patients least able to tolerate it.",
+    drugs: [
+      {
+        drug: "Atropine",
+        slug: "atropine",
+        interactions: [
+          "Additive antimuscarinic load with hyoscine hydrobromide, tricyclics, antihistamines, cyclizine, antipsychotics and oxybutynin — a common driver of ICU delirium.",
+          "Antagonises the bradycardia of neostigmine, β-blockers, digoxin and dexmedetomidine; masks the bradycardia that warns of an escalating problem.",
+          "Slows gastric emptying and so delays absorption of enteral drugs and feed.",
+        ],
+        contraindications: [
+          "Relative: glaucoma (angle-closure), prostatic obstruction and urinary retention, paralytic ileus, pyloric stenosis and myasthenia gravis.",
+          "Avoid as a first response to bradycardia in a hypoxic patient — oxygenate and ventilate first.",
+          "Doses below 300 microgram (adults) can cause paradoxical bradycardia; never use as a 'test' dose.",
+        ],
+        monitoring: [
+          "Continuous ECG and blood pressure after every dose; a heart rate above 100–110/min in ischaemic heart disease risks demand ischaemia.",
+          "Mental state — new confusion, agitation, dry flushed skin and dilated pupils suggest central anticholinergic syndrome; stop the drug rather than adding a sedative.",
+          "Bladder scan and bowel sounds after repeated doses; temperature (impaired sweating) in warm environments.",
+          "In organophosphate poisoning titrate to dry chest secretions, clear breath sounds and a heart rate above 80/min, doubling doses; record cumulative totals.",
+        ],
+        alert:
+          "In cardiac arrest and in hypoxic bradycardia atropine treats the number, not the patient — correct oxygenation, ventilation and pacing needs first.",
+      },
+      {
+        drug: "Glycopyrronium (glycopyrrolate)",
+        slug: "glycopyrronium",
+        interactions: [
+          "Paired with neostigmine to block muscarinic effects — give together or the patient becomes profoundly bradycardic.",
+          "Additive peripheral antimuscarinic effects with hyoscine butylbromide, tricyclics and antihistamines.",
+          "Reduces absorption of sublingual and enteral drugs by causing a dry mouth and slowing gut transit.",
+        ],
+        contraindications: [
+          "Relative: angle-closure glaucoma, prostatic obstruction, paralytic ileus and severe ulcerative colitis / toxic megacolon.",
+          "Accumulates in renal impairment (renally cleared) — extend the dose interval.",
+        ],
+        monitoring: [
+          "Heart rate and rhythm after each dose; less tachycardia than atropine but still significant in ischaemic heart disease.",
+          "Urinary output and bladder distension, particularly in older men and once the catheter is removed.",
+          "Secretion burden and oral care when used as an antisialagogue or in an end-of-life infusion; reassess the need daily.",
+        ],
+        alert:
+          "Being quaternary, it does not cause central anticholinergic delirium — prefer it to atropine or hyoscine hydrobromide in the elderly or delirious patient.",
+      },
+      {
+        drug: "Hyoscine butylbromide (Buscopan)",
+        slug: "hyoscine-butylbromide",
+        interactions: [
+          "Additive antimuscarinic effects with glycopyrronium, tricyclics, antihistamines and antipsychotics.",
+          "Worsens ileus when combined with opioids in a postoperative or obstructed abdomen.",
+        ],
+        contraindications: [
+          "Paralytic ileus, mechanical bowel obstruction being managed conservatively without decompression, toxic megacolon.",
+          "Angle-closure glaucoma, prostatic obstruction, myasthenia gravis, tachyarrhythmia.",
+        ],
+        monitoring: [
+          "Heart rate; tachycardia is the commonest dose-limiting effect.",
+          "Bowel sounds and abdominal distension when used for colic; bladder distension after repeat doses.",
+          "Secretion score at the end of life — reassess the subcutaneous infusion daily rather than continuing by default.",
+        ],
+        alert:
+          "Hyoscine butylbromide and hyoscine hydrobromide are different drugs with different doses and central effects — the substitution error is a recognised palliative-care incident.",
+      },
+      {
+        drug: "Hyoscine hydrobromide (scopolamine)",
+        slug: "hyoscine-hydrobromide",
+        interactions: [
+          "Strongly additive central anticholinergic load with cyclizine, tricyclics, antihistamines, atropine and antipsychotics.",
+          "Sedation is additive with opioids, benzodiazepines and antipsychotics.",
+        ],
+        contraindications: [
+          "Established or high-risk delirium, dementia and the frail elderly (relative — choose glycopyrronium or hyoscine butylbromide).",
+          "Angle-closure glaucoma, prostatic obstruction, paralytic ileus, myasthenia gravis.",
+        ],
+        monitoring: [
+          "Mental state daily — remove the patch and reconsider the drug in any new confusion, agitation or hallucination.",
+          "Heart rate, bowel and bladder function; check for a forgotten patch during any delirium screen.",
+          "Secretion burden; document the indication and review date.",
+        ],
+        alert:
+          "A forgotten hyoscine hydrobromide patch is a classic reversible cause of postoperative and ICU delirium — look behind the ear.",
+      },
+      {
+        drug: "Ipratropium bromide",
+        slug: "ipratropium-bromide",
+        interactions: [
+          "Synergistic bronchodilation with nebulised salbutamol — the combination is standard in acute severe asthma and COPD.",
+          "Additive antimuscarinic effects if a long-acting muscarinic antagonist (tiotropium) is continued; do not use both.",
+        ],
+        contraindications: [
+          "Hypersensitivity to ipratropium or atropine derivatives.",
+          "Caution in angle-closure glaucoma (mask spill onto the eyes), prostatic obstruction and bladder outflow obstruction.",
+        ],
+        monitoring: [
+          "Respiratory rate, work of breathing, peak flow or ventilator pressures before and after the dose to demonstrate benefit.",
+          "Eye symptoms (painful red eye, blurred vision) with mask nebulisation — use a mouthpiece or protect the eyes in glaucoma.",
+          "Stop the regular prescription once the exacerbation settles; there is no maintenance role once a long-acting inhaler is restarted.",
         ],
       },
     ],
