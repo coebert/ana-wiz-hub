@@ -471,6 +471,42 @@ const ComplexNeedsAnaesthesiaTopic = () => {
               </div>
             </section>
 
+            {/* Consent in practice */}
+            <section id="section-consent-practice" className="scroll-mt-24">
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Consent in Practice</h2>
+              <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} />
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">A staged consent pathway</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>Start early</strong> — consent for this group is a process over weeks, not a signature on the day. Begin at the surgical referral, continue at a dedicated preassessment, and confirm on the day.</li>
+                    <li><strong>Provide information in the right format first</strong> — easy-read leaflets, photographs, videos or a familiarisation visit; document what was given and how the patient engaged with it. Information the patient cannot process is not information.</li>
+                    <li><strong>Assess capacity for this specific decision</strong>, with all communication support in place and at the patient's best time of day. Support includes quiet surroundings, the trusted supporter, and repetition across more than one visit <InlineRef topicId={TOPIC_ID} refLabel="MCA 2005" />.</li>
+                    <li><strong>Check for existing legal instruments</strong>: health-and-welfare LPA, court-appointed deputy, advance decision to refuse treatment, or a previous best-interests decision for the same procedure.</li>
+                    <li><strong>Document the discussion and the plan</strong>: what the patient understood, what they value (e.g. "must have mum present"), agreed adjustments, premedication plan, and any holding plan if capacity is lacking.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">When the patient cannot consent</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Convene a <strong>best-interests meeting</strong>: anaesthetist, surgeon/proceduralist, carers/family, learning-disability liaison nurse and an IMCA where no one appropriate can be consulted. Record options considered, the least-restrictive choice and the reasons.</li>
+                    <li>Best interests are not best medical interests alone — weigh the patient's past and present wishes, beliefs and values, and the views of those who know them <InlineRef topicId={TOPIC_ID} refLabel="MCA 2005" />.</li>
+                    <li>Serious, finely-balanced or contested decisions, and procedures such as sterilisation, require the <strong>Court of Protection</strong>; allow time for this at the start of the pathway, not the night before surgery.</li>
+                    <li>Deprivation-of-liberty safeguards: prolonged admission, continuous supervision or sedation/restraint regimes may need separate authorisation — escalate to the hospital safeguarding team.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Emergencies, refusal and fluctuating capacity</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>In a genuine emergency, treatment immediately necessary to save life or prevent serious deterioration may proceed in best interests without a meeting — document why delay was impossible and consult retrospectively.</li>
+                    <li>Respect a capacitous refusal even when it seems unwise, and even when the family disagree; a patient with a learning disability who retains and weighs the decision can decline surgery.</li>
+                    <li>Fluctuating capacity (delirium, seizure activity, metabolic encephalopathy, time-of-day variation) means reassessing at the decision point — capacity gained overnight can restore the patient's right to decide for themselves.</li>
+                    <li>Plan for refusal scenarios in advance where refusal is predictable: agree with the team and family what will happen if the patient says no on the day, and under what circumstances the case is stood down rather than escalated.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
             {/* Prisoners */}
             <section id="section-prisoners" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthesia for Patients Who Are Prisoners</h2>
@@ -528,6 +564,42 @@ const ComplexNeedsAnaesthesiaTopic = () => {
                     <li>Communicate directly with prison healthcare rather than relying on the escorting officers to pass on clinical instructions.</li>
                     <li>Flag red-flag symptoms explicitly and in writing, since a prisoner's ability to seek urgent review is limited by regime and staffing.</li>
                     <li>Consider imminent release or transfer, which can interrupt follow-up entirely.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            {/* Postoperative care */}
+            <section id="section-postop" className="scroll-mt-24">
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postoperative Care &amp; Recovery</h2>
+              <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} />
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">A planned, adjusted recovery</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li><strong>Smooth emergence by design</strong>: deep extubation where appropriate, avoidance of unnecessary stimulation, reversal of residual neuromuscular block confirmed, and pre-emptive treatment of emergence agitation risk (e.g. residual sevoflurane effect, pain, full bladder, hunger).</li>
+                    <li><strong>Familiar supporter at the bedside before waking</strong> — recovery staff should know the patient's name, communication method and calming strategies from the handover, and only essential staff should be present.</li>
+                    <li>Quiet side bay, dimmed lights, alarms silenced where safe, minimal cuff cycles, and early removal of unnecessary monitoring once stable.</li>
+                    <li>Keep the same nurse/ODP where possible; every unfamiliar face is a fresh stressor.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Pain assessment and analgesia</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Never rely on as-required opioids that depend on the patient asking: prescribe <strong>regular multimodal analgesia</strong> (paracetamol, NSAID where appropriate) plus local/regional techniques, with a written plan for breakthrough pain.</li>
+                    <li>Use an <strong>observational pain tool</strong> (e.g. Abbey Pain Scale, Disability Distress Assessment Tool, FLACC) combined with carer-reported individual pain behaviours recorded at preassessment <InlineRef topicId={TOPIC_ID} refLabel="LeDeR 2023" />.</li>
+                    <li>Treat behaviour change as pain until proved otherwise; improvement after analgesia is diagnostic. Remember constipation, urinary retention and nausea as hidden causes of postoperative distress.</li>
+                    <li>For patients on opioid substitution or with opioid dependence, continue the baseline prescription and add analgesia on top — under-treatment drives agitation, self-discharge and relapse.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Ward care, discharge and learning</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>Hand over the <strong>whole adjusted plan</strong>, not just the operation note: fasting restart, medication timing (antiepileptics, psychotropics), mobilisation support, communication needs and what to do if the patient pulls at lines or dressings.</li>
+                    <li>Anticipate <strong>postoperative delirium</strong>: keep day–night cues, hearing aids and glasses available, avoid sedative accumulation, and screen for pain, hypoxia, infection and retention before labelling agitation as behavioural.</li>
+                    <li>Discharge early where safe with clear, carer-friendly written instructions, red-flag symptoms, and direct contact details; many patients with learning disability cannot navigate standard "call the ward" systems.</li>
+                    <li>Involve the learning-disability liaison team in follow-up, ensure the GP and community team receive the outcome, and — for prisoners — deliver the plan to prison healthcare in writing.</li>
+                    <li><strong>Close the loop</strong>: document what worked (premedication, induction route, holding plan if any, recovery strategies) in the hospital passport and discharge summary so each future anaesthetic starts from a personalised evidence base <InlineRef topicId={TOPIC_ID} refLabel="RCoA GPAS 2023" />.</li>
                   </ul>
                 </div>
               </div>
