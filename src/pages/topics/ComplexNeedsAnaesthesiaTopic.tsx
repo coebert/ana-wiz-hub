@@ -17,8 +17,12 @@ const tocItems = [
   { id: "section-autism", label: "Autism Spectrum Disorder", group: "Patient Groups" },
   { id: "section-phobia", label: "Severe Needle & Anaesthetic Phobia", group: "Patient Groups" },
   { id: "section-behaviour", label: "Behaviour That Challenges & Sedation Strategies", group: "Practical" },
+  { id: "section-communication", label: "Communication Strategies", group: "Practical" },
+  { id: "section-sedation-alternatives", label: "Sedation Alternatives", group: "Practical" },
   { id: "section-capacity", label: "Capacity, Consent & Restraint", group: "Legal & Ethical" },
+  { id: "section-consent-practice", label: "Consent in Practice", group: "Legal & Ethical" },
   { id: "section-prisoners", label: "Anaesthesia for Patients Who Are Prisoners", group: "Special Circumstances" },
+  { id: "section-postop", label: "Postoperative Care & Recovery", group: "Practical" },
 ];
 
 const objectives = [
@@ -28,6 +32,9 @@ const objectives = [
   "Apply the Mental Capacity Act 2005 best-interests framework, including the lawful use of proportionate restraint and clinical holding.",
   "Recognise the physical comorbidities and diagnostic overshadowing that contribute to premature mortality in people with learning disability.",
   "Outline the security, custody, confidentiality and consent issues raised by anaesthetising a patient in prison custody.",
+  "Select communication strategies matched to the individual — including easy-read information, communication aids and supporter involvement — and use them to support consent.",
+  "Choose non-pharmacological and procedural alternatives to sedation, escalating to pharmacological options only when these are insufficient.",
+  "Plan postoperative recovery, pain assessment and discharge so that gains made in the anaesthetic room are not lost in recovery and on the ward.",
 ];
 
 const keyPoints = [
