@@ -1,5 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Download, RefreshCw, Database, Sparkles, Lock } from "lucide-react";
+import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Download, RefreshCw, Database, Sparkles, Lock, Mic } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
@@ -28,6 +35,11 @@ import {
   startPodcastJob,
   usePodcastJob,
 } from "@/lib/podcastJobs";
+import {
+  DEFAULT_PODCAST_VOICE,
+  PODCAST_VOICES,
+  podcastVoiceLabel,
+} from "@/lib/podcastVoices";
 import { cn } from "@/lib/utils";
 
 
@@ -112,6 +124,10 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const [regenPassword, setRegenPassword] = useState("");
   const [regenError, setRegenError] = useState<string | null>(null);
   const [regenSubmitting, setRegenSubmitting] = useState(false);
+  // Narrator/accent choice. Defaults to British RP; once a cached episode
+  // loads we follow the voice it was generated with.
+  const [voiceId, setVoiceId] = useState<string>(DEFAULT_PODCAST_VOICE);
+  const voicePinned = useRef(false);
 
   // Generation runs in a module-level registry (src/lib/podcastJobs.ts) so it
   // keeps going after the user navigates away from this topic page.
@@ -185,6 +201,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       }
 
       setPodcast(existing);
+      if (existing?.voice && !voicePinned.current) setVoiceId(existing.voice);
       if (existing && existing.status === "ready") setSource("cache");
       setLoading(false);
 
@@ -219,6 +236,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       content,
       force: opts?.force,
       regeneratePassword: opts?.regeneratePassword,
+      voiceId,
     });
   };
 
@@ -269,6 +287,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         content,
         force: true,
         regeneratePassword: pw,
+        voiceId,
       });
 
       // Give the server a moment to reject a bad password before we swap the
@@ -403,6 +422,37 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     return 0;
   }, [transcriptSegments, currentTime]);
 
+  const onVoiceChange = (next: string) => {
+    voicePinned.current = true;
+    setVoiceId(next);
+  };
+
+  const voicePicker = (
+    <div className="flex flex-wrap items-center gap-2">
+      <Mic className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
+      <label className="text-xs text-muted-foreground" htmlFor={`podcast-voice-${topicId}`}>
+        Narrator
+      </label>
+      <Select value={voiceId} onValueChange={onVoiceChange} disabled={generating}>
+        <SelectTrigger
+          id={`podcast-voice-${topicId}`}
+          className="h-8 w-[15rem] max-w-full text-xs"
+          aria-label="Podcast narrator voice and accent"
+        >
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          {PODCAST_VOICES.map((v) => (
+            <SelectItem key={v.id} value={v.id} className="text-xs">
+              <span className="font-medium">{v.label}</span>
+              <span className="text-muted-foreground"> — {v.description}</span>
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+
   if (loading) {
     return (
       <div className="flex items-center gap-2 rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground">
@@ -441,6 +491,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
                 </pre>
               </div>
             )}
+            <div className="mt-3">{voicePicker}</div>
             <Button
               onClick={() => handleGenerate()}
               disabled={generating}
