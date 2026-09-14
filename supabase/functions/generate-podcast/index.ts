@@ -1061,11 +1061,29 @@ Deno.serve(async (req) => {
       }
     }
 
+    // Episodes are cached per (topic, voice): each accent a listener picks gets
+    // its own row, so one user's re-narration never overwrites another's.
     const { data: existing } = await supabase
       .from("podcasts")
       .select("*")
       .eq("topic_id", topicId)
+      .eq("voice", voiceIdResolved)
       .maybeSingle();
+
+    // The spoken script is accent-independent — reuse it from any other voice's
+    // ready episode for this topic instead of paying for a fresh LLM script.
+    let reusedScript: string | null = null;
+    if (existing?.status !== "ready" || !existing.script) {
+      const { data: anyVoice } = await supabase
+        .from("podcasts")
+        .select("script")
+        .eq("topic_id", topicId)
+        .eq("status", "ready")
+        .not("script", "is", null)
+        .limit(1)
+        .maybeSingle();
+      if (anyVoice?.script) reusedScript = anyVoice.script as string;
+    }
 
     // A cached episode only satisfies the request when it was narrated with
     // the requested voice — otherwise re-narrate it in the chosen accent.
