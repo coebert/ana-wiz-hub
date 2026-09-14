@@ -242,6 +242,24 @@ export const pollPodcastUntilDone = async (
   };
 };
 
+/**
+ * Server-side hard cap in supabase/functions/generate-podcast/index.ts.
+ * We trim slightly below it so long topic pages never get rejected with
+ * "content must be a string under 50000 characters".
+ */
+export const MAX_PODCAST_CONTENT_CHARS = 49_000;
+
+/** Trim content to the server cap, preferring a sentence/paragraph boundary. */
+export const clampPodcastContent = (content: string): string => {
+  if (content.length <= MAX_PODCAST_CONTENT_CHARS) return content;
+  const slice = content.slice(0, MAX_PODCAST_CONTENT_CHARS);
+  const cut = Math.max(
+    slice.lastIndexOf("\n\n"),
+    slice.lastIndexOf(". "),
+  );
+  return (cut > MAX_PODCAST_CONTENT_CHARS * 0.6 ? slice.slice(0, cut + 1) : slice).trim();
+};
+
 export const generatePodcast = async (
   topicId: string,
   topicTitle: string,
@@ -313,7 +331,7 @@ export const generatePodcast = async (
       body: {
         topicId,
         topicTitle,
-        content,
+        content: clampPodcastContent(content),
         force: options?.force ?? false,
         regeneratePassword: options?.regeneratePassword,
       },
