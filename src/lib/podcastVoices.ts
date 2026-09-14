@@ -18,6 +18,7 @@ export const PODCAST_VOICES: PodcastVoiceOption[] = [
   { id: "british-rp", label: "British — neutral (RP)", description: "Calm, clear Received Pronunciation" },
   { id: "british-female-warm", label: "British — warm female", description: "Friendly UK tutor" },
   { id: "british-male-deep", label: "British — deep male", description: "Measured, authoritative UK male" },
+  { id: "british-west-country", label: "British — West Country", description: "Warm South West English accent" },
   { id: "british-storyteller", label: "British — storyteller", description: "Expressive, engaging UK narrator" },
   { id: "scottish", label: "Scottish", description: "Educated Scottish accent" },
   { id: "irish", label: "Irish", description: "Soft Irish accent" },
