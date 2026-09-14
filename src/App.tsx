@@ -143,6 +143,8 @@ const App = () => (
         <Header />
         <UpdateBanner />
         <CascadePerfBadge />
+        <PodcastJobsIndicator />
+
         <VisitTrackerWrapper>
         <Suspense fallback={<Loading />}>
         <Routes>
