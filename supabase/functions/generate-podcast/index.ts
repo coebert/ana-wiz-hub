@@ -42,13 +42,89 @@ interface VoicePreset {
 }
 const BASE_STYLE =
   "Warm, confident and clear, like a senior anaesthetic trainee tutoring a peer. " +
-  "Steady pace, natural phrasing, no exaggeration.";
+  "Steady pace, natural phrasing, no exaggeration or comedy — this is your ordinary speaking voice.";
+
+// Family-level pronunciation anchors. Keep identical to src/lib/podcastVoices.ts.
+const NORTHERN_ENGLAND_IDS = new Set([
+  "british-yorkshire", "british-lancashire", "british-manchester", "british-scouse",
+  "british-geordie", "british-mackem", "british-cumbrian", "british-sheffield",
+  "british-hull", "british-leeds", "british-teesside", "british-durham",
+  "british-northumberland", "british-bolton", "british-preston", "british-barnsley",
+  "british-bradford", "british-york", "british-wigan", "british-blackburn",
+  "british-oldham",
+]);
+const MIDLANDS_IDS = new Set([
+  "british-brummie", "british-black-country", "british-east-midlands", "british-potteries",
+  "british-coventry", "british-leicester", "british-nottingham", "british-lincolnshire",
+  "british-shropshire", "british-northampton", "british-derby", "british-worcester",
+  "british-warwickshire", "british-herefordshire",
+]);
+const WEST_COUNTRY_IDS = new Set([
+  "british-west-country", "british-bristol", "british-cornish", "british-devon",
+  "british-dorset", "british-wiltshire", "british-gloucestershire",
+]);
+
+const familyAnchors = (id: string): string => {
+  if (id.startsWith("welsh")) {
+    return (
+      "Anchors: strong musical rise-and-fall on every phrase; pure clear vowels — 'face' as FEH-ss, " +
+      "'goat' as GOH-t with no glide; tapped/rolled r's; clear 'l' in 'milk'; " +
+      "stress often late in the phrase, ending on a lift like a question."
+    );
+  }
+  if (id.startsWith("scottish")) {
+    return (
+      "Anchors: fully rhotic with a tapped r — 'heart' as HAIRT, 'water' as WAH-ter; " +
+      "short pure vowels — 'house' as HOOS, 'now' as NOO, 'right' as RICHT; " +
+      "'ch' in 'loch' as a throaty velar fricative, never a k; " +
+      "clipped clear consonants, brisk energetic rhythm, dark 'l'."
+    );
+  }
+  if (id.startsWith("irish")) {
+    return (
+      "Anchors: soft dental t and d — 'think' as TINK, 'that' as DAT; light rhotic r; " +
+      "'time' as TOIME, 'day' as DEH; rising melodic phrase endings; " +
+      "voiced breathy 'wh' in 'what'; lively fluid rhythm with unstressed syllables kept full."
+    );
+  }
+  if (WEST_COUNTRY_IDS.has(id)) {
+    return (
+      "Anchors: heavily rhotic burr — 'farm' as FAARM, 'harder' as HARR-derr, 'water' as WAH-terr; " +
+      "long broad a — 'bath' as BAARTH; 'I' as OI; voiced s in 'Somerset' as ZOMerset; " +
+      "slow rolling unhurried rural lilt."
+    );
+  }
+  if (NORTHERN_ENGLAND_IDS.has(id)) {
+    return (
+      "Anchors: flat short a — 'bath' and 'grass' with the same vowel as 'cat'; " +
+      "no foot–strut split — 'but', 'blood' and 'up' use the vowel of 'put' (BOOT, BLOOD, OOP); " +
+      "'the' reduced to t' before consonants; hard clipped g's; " +
+      "down-stepped ends of phrases, no RP drawl."
+    );
+  }
+  if (MIDLANDS_IDS.has(id)) {
+    return (
+      "Anchors: flat short a in 'bath'; northern 'but' vowel (as in 'put'); " +
+      "'price' as PROICE, 'mouth' as MEOWTH; a distinctly falling, slightly nasal phrase-end " +
+      "that drops away rather than lifting."
+    );
+  }
+  if (id === "british-cockney" || id === "british-estuary" || id === "british-essex" || id === "british-kent") {
+    return (
+      "Anchors: glottal t — 'butter' as BU'-uh, 'water' as WOR-uh; l-vocalisation — 'milk' as MIWK; " +
+      "th-fronting — 'think' as FINK, 'brother' as BRUVVer; 'face' as FICE, 'price' as PROICE; " +
+      "dropped h in 'house'; quick clipped urban rhythm."
+    );
+  }
+  return "";
+};
+
 
 const ACCENT_BANK: AccentRow[] = [
   // ---------------- General UK ----------------
   {
     id: "british-rp",
-    voice: "alloy",
+    voice: "ballad",
     accent: "British English, modern Received Pronunciation",
     traits: "Non-rhotic, crisp consonants, even measured intonation, no regional colouring.",
   },
@@ -139,7 +215,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "british-hampshire",
-    voice: "alloy",
+    voice: "verse",
     accent: "Hampshire and Solent English",
     traits:
       "Near-RP frame with faint West-Country colouring on long vowels, light rhotic trace in older speech, gentle unhurried delivery.",
@@ -183,7 +259,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "british-east-midlands",
-    voice: "alloy",
+    voice: "fable",
     accent: "East Midlands (Nottingham and Derby)",
     traits:
       "Northern-style short 'a' in bath, flat unrounded vowels, dropped final g's, level even rhythm.",
@@ -212,7 +288,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "british-nottingham",
-    voice: "alloy",
+    voice: "ash",
     accent: "Nottingham (Nottinghamshire)",
     traits:
       "Flat 'u' in bus, monophthongal 'o', glottal replacement of final 't', quick clipped rhythm.",
@@ -320,7 +396,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "british-durham",
-    voice: "alloy",
+    voice: "coral",
     accent: "County Durham English",
     traits:
       "Softer Geordie-adjacent vowels, gentle rise-fall, rhotic-free with warm rounded 'o'.",
@@ -388,7 +464,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "welsh-valleys",
-    voice: "alloy",
+    voice: "sage",
     accent: "South Wales Valleys English",
     traits:
       "Pronounced rise-fall sing-song, rolled light 'r', emphatic sentence-final lifts.",
@@ -492,7 +568,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "irish-galway",
-    voice: "alloy",
+    voice: "ballad",
     accent: "Galway and west of Ireland English",
     traits:
       "Rhotic, soft 'th' as 't', lilting rise-fall, melodic unhurried delivery.",
@@ -525,7 +601,7 @@ const ACCENT_BANK: AccentRow[] = [
   // ---------------- Rest of the world ----------------
   {
     id: "new-zealand",
-    voice: "nova",
+    voice: "verse",
     accent: "New Zealand English",
     traits:
       "Centralised short 'i' in fish, raised 'e', clipped diphthongs, level friendly delivery.",
@@ -559,7 +635,7 @@ const ACCENT_BANK: AccentRow[] = [
   // Rest of the world
   {
     id: "australian",
-    voice: "nova",
+    voice: "fable",
     accent: "general Australian",
     traits: "Broad flattened diphthongs, rising statement intonation, relaxed open delivery.",
     nonBritish: true,
@@ -596,7 +672,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "british-thames-valley",
-    voice: "alloy",
+    voice: "ash",
     accent: "Thames Valley (Reading and Berkshire) dialect",
     traits:
       "Estuary-influenced non-rhotic vowels with faint West Country residue, t-glottalling, brisk even pacing.",
@@ -672,7 +748,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "british-oldham",
-    voice: "alloy",
+    voice: "coral",
     accent: "Oldham (Pennine Lancashire) dialect",
     traits:
       "Manchester-adjacent flat vowels, harder consonants, nasal edge, quick businesslike cadence.",
@@ -728,7 +804,7 @@ const ACCENT_BANK: AccentRow[] = [
   },
   {
     id: "irish-dublin",
-    voice: "alloy",
+    voice: "sage",
     accent: "Dublin city Irish English",
     traits:
       "Fast urban rhythm, fronted 'oi' vowels, t-slitting ('wa'er'), flat rapid phrase endings.",
@@ -766,17 +842,28 @@ const ACCENT_BANK: AccentRow[] = [
 ];
 
 const buildInstructions = (row: AccentRow): string => {
+  const anchors = familyAnchors(row.id);
   const guard =
     row.id === "american"
       ? ""
       : row.nonBritish
-        ? "This is essential: do not drift into a general American accent. "
-        : "This is essential: you are NOT American — do not use American vowel colouring or American intonation. ";
-  return (
-    `Accent: ${row.accent}. ${guard}${row.traits} ` +
-    "Keep every clinical term, drug name and number clearly intelligible. " +
-    BASE_STYLE
-  );
+        ? "Never drift into General American or neutral British English at any point. "
+        : "You are NOT American and NOT a neutral RP speaker: never use American vowel colouring, " +
+          "American intonation, or generic BBC RP. ";
+  return [
+    `You are a lifelong native speaker of ${row.accent}. You have never lived anywhere else, ` +
+      "and this is simply your own voice — you are not performing or imitating an accent.",
+    guard +
+      "Hold the accent consistently from the very first word to the last, including proper nouns and " +
+      "technical terms. Do not neutralise or soften it for clarity, and do not fade towards a standard " +
+      "accent as the passage goes on.",
+    `Accent detail: ${row.traits}`,
+    anchors,
+    "Keep every clinical term, drug name and number clearly intelligible within that accent.",
+    BASE_STYLE,
+  ]
+    .filter(Boolean)
+    .join(" ");
 };
 
 const VOICE_PRESETS: Record<string, VoicePreset> = Object.fromEntries(
