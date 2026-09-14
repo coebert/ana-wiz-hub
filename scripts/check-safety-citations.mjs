@@ -130,7 +130,9 @@ const SAFETY_PATTERNS = [
   {
     name: "anticoag-target",
     re: new RegExp(
-      String.raw`\b(?:INR|APTT(?:\s*ratio)?|aPTT(?:\s*ratio)?|anti[-\s]?Xa|ACT)\s*(?:of|target|level)?\s*(?:[<>≤≥]=?\s*)?${RANGE}\b`,
+      // The trailing lookahead stops "Act 2010" / "Act 2005" (Equality Act,
+      // Mental Capacity Act) matching the ACT (activated clotting time) alias.
+      String.raw`\b(?:INR|APTT(?:\s*ratio)?|aPTT(?:\s*ratio)?|anti[-\s]?Xa|ACT)\b(?!\s*(?:19|20)\d{2}\b)\s*(?:of|target|level)?\s*(?:[<>≤≥]=?\s*)?${RANGE}\b`,
       "gi",
     ),
   },
