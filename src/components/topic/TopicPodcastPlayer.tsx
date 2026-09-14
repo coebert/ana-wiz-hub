@@ -17,12 +17,19 @@ import {
   extractTopicContent,
   fetchPodcast,
   formatExtractionDiagnostics,
-  generatePodcast,
   isStaleGenerating,
-  pollPodcastUntilDone,
   type PodcastResult,
 } from "@/lib/podcast";
+import {
+  attachPodcastJob,
+  clearPodcastJob,
+  getPodcastJob,
+  podcastJobElapsedSec,
+  startPodcastJob,
+  usePodcastJob,
+} from "@/lib/podcastJobs";
 import { cn } from "@/lib/utils";
+
 
 interface TopicPodcastPlayerProps {
   topicId: string;
@@ -93,7 +100,6 @@ const buildTranscriptSegments = (
 export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerProps) => {
   const [podcast, setPodcast] = useState<PodcastResult | null>(null);
   const [loading, setLoading] = useState(true);
-  const [generating, setGenerating] = useState(false);
   const [source, setSource] = useState<"cache" | "fresh" | null>(null);
   const [showScript, setShowScript] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -106,35 +112,36 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const [regenPassword, setRegenPassword] = useState("");
   const [regenError, setRegenError] = useState<string | null>(null);
   const [regenSubmitting, setRegenSubmitting] = useState(false);
-  // Live progress while polling the background job. `elapsedSec` ticks every
-  // second; `lastStatus` updates each poll tick (every ~5s) so the UI can
-  // show the current row state without waiting for a terminal result.
-  const [progress, setProgress] = useState<{
-    elapsedSec: number;
-    lastStatus: "generating" | "pending" | "unknown";
-  } | null>(null);
-  const generationStartedAt = useRef<number | null>(null);
 
-  // Tick the elapsed-seconds counter every second while generating.
+  // Generation runs in a module-level registry (src/lib/podcastJobs.ts) so it
+  // keeps going after the user navigates away from this topic page.
+  const job = usePodcastJob(topicId);
+  const generating = job?.status === "generating";
+  const [, setTick] = useState(0);
   useEffect(() => {
-    if (!generating) {
-      generationStartedAt.current = null;
-      setProgress(null);
-      return;
-    }
-    if (generationStartedAt.current == null) {
-      generationStartedAt.current = Date.now();
-    }
-    setProgress((p) => p ?? { elapsedSec: 0, lastStatus: "generating" });
-    const id = window.setInterval(() => {
-      setProgress((p) => {
-        const startedAt = generationStartedAt.current ?? Date.now();
-        const elapsedSec = Math.floor((Date.now() - startedAt) / 1000);
-        return { elapsedSec, lastStatus: p?.lastStatus ?? "generating" };
-      });
-    }, 1000);
+    if (!generating) return;
+    const id = window.setInterval(() => setTick((t) => t + 1), 1000);
     return () => window.clearInterval(id);
   }, [generating]);
+
+  const progress = generating && job
+    ? { elapsedSec: podcastJobElapsedSec(job), lastStatus: job.lastStatus }
+    : null;
+
+  // Adopt a finished job's result (it may have completed while the user was
+  // on another page, or in this session before the component remounted).
+  useEffect(() => {
+    if (!job || job.status === "generating" || !job.result) return;
+    setPodcast(job.result);
+    setSource(
+      job.result.status === "ready"
+        ? job.ownedBySession && !job.result.cached
+          ? "fresh"
+          : "cache"
+        : null,
+    );
+    setLoading(false);
+  }, [job]);
 
   // Estimate target length from page content once we know there's no cached podcast.
   useEffect(() => {
@@ -149,12 +156,16 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
   // Initial fetch — see if a cached podcast already exists. If a generation
   // is already in flight (e.g. kicked off in another tab, or still running in
-  // the background after a previous tab closed), attach to it by polling the
-  // shared `podcasts` row instead of offering the user a fresh "Generate"
-  // button (which would re-trigger work and potentially race).
+  // the background after a previous tab closed), attach to it so the shared
+  // registry keeps polling instead of offering a fresh "Generate" button.
   useEffect(() => {
     let cancelled = false;
     (async () => {
+      // A live job for this topic already owns the state — nothing to fetch.
+      if (getPodcastJob(topicId)?.status === "generating") {
+        setLoading(false);
+        return;
+      }
       setLoading(true);
       const existing = await fetchPodcast(topicId);
       if (cancelled) return;
@@ -179,116 +190,38 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
       // Attach to an in-flight (still-fresh) generation started elsewhere.
       if (existing && existing.status === "generating") {
-        setGenerating(true);
-        setProgress({ elapsedSec: 0, lastStatus: "generating" });
-        const polled = await pollPodcastUntilDone(topicId, {
-          onTick: (r) =>
-            setProgress((p) => ({
-              elapsedSec: p?.elapsedSec ?? 0,
-              lastStatus: (r?.status as "generating" | "pending" | undefined) ?? "unknown",
-            })),
-          signal: { get cancelled() { return cancelled; } } as { cancelled: boolean },
-        });
-        if (cancelled) return;
-        setPodcast(polled);
-        // Don't claim "fresh" — we didn't kick this generation off in this
-        // tab. If it landed as ready, surface it as cached so the UI doesn't
-        // mislead the user about provenance.
-        if (polled.status === "ready") setSource("cache");
-        setGenerating(false);
+        void attachPodcastJob(topicId, topicTitle, window.location.pathname);
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, [topicId]);
+  }, [topicId, topicTitle]);
 
   const handleGenerate = async (opts?: { force?: boolean; regeneratePassword?: string }) => {
-    setGenerating(true);
-    try {
-      const { content, diagnostics } = extractTopicContent();
-      if (!content || content.length < diagnostics.minChars) {
-        setPodcast({
-          status: "failed",
-          error:
-            `Could not extract topic content from the page.\n\n` +
-            formatExtractionDiagnostics(diagnostics),
-        });
-        return;
-      }
-
-      // Pre-flight: if another tab (or a still-running background job from a
-      // closed tab) has already kicked off generation, attach to that row
-      // instead of starting a competing invocation. We only short-circuit
-      // when the caller hasn't explicitly forced regeneration.
-      if (!opts?.force) {
-        const current = await fetchPodcast(topicId);
-        if (current?.status === "ready") {
-          setPodcast(current);
-          setSource("cache");
-          return;
-        }
-        // Only attach to a healthy in-flight generation. A stale one falls
-        // through to the normal invoke path, which the edge function's
-        // reclaim logic will turn into a fresh run.
-        if (current?.status === "generating" && !isStaleGenerating(current)) {
-          setProgress({ elapsedSec: 0, lastStatus: "generating" });
-          const polled = await pollPodcastUntilDone(topicId, {
-            onTick: (r) =>
-              setProgress((p) => ({
-                elapsedSec: p?.elapsedSec ?? 0,
-                lastStatus: (r?.status as "generating" | "pending" | undefined) ?? "unknown",
-              })),
-          });
-          setPodcast(polled);
-          // Attached to someone else's generation — surface as cached, not fresh.
-          if (polled.status === "ready") setSource("cache");
-          return;
-        }
-      }
-
-      let result = await generatePodcast(topicId, topicTitle, content, opts);
-
-      // The edge function runs the heavy work in the background via
-      // EdgeRuntime.waitUntil, so the HTTP request may time out / fail at
-      // the proxy layer even though generation is still running. If the
-      // initial call returned `failed` or `generating`, fall back to polling
-      // the podcasts row until it reaches a terminal state.
-      if (result.status === "failed" || result.status === "generating") {
-        // Check the row right now: if it exists and is generating/ready,
-        // the background job is alive — keep polling regardless of the
-        // failed HTTP response.
-        const current = await fetchPodcast(topicId);
-        if (current && (current.status === "generating" || current.status === "ready")) {
-          if (current.status === "ready") {
-            setPodcast(current);
-            setSource("fresh");
-            return;
-          }
-          const polled = await pollPodcastUntilDone(topicId, {
-            onTick: (r) =>
-              setProgress((p) => ({
-                elapsedSec: p?.elapsedSec ?? 0,
-                lastStatus: (r?.status as "generating" | "pending" | undefined) ?? "unknown",
-              })),
-          });
-          setPodcast(polled);
-          if (polled.status === "ready") setSource("fresh");
-          return;
-        }
-      }
-
-      setPodcast(result);
-      if (result.status === "ready") setSource("fresh");
-    } catch (err) {
+    const { content, diagnostics } = extractTopicContent();
+    if (!content || content.length < diagnostics.minChars) {
       setPodcast({
         status: "failed",
-        error: err instanceof Error ? err.message : "Unknown error",
+        error:
+          `Could not extract topic content from the page.\n\n` +
+          formatExtractionDiagnostics(diagnostics),
       });
-    } finally {
-      setGenerating(false);
+      return;
     }
+    clearPodcastJob(topicId);
+    // Fire and forget: the registry owns the run, so leaving this page (or
+    // unmounting this component) no longer cancels it.
+    void startPodcastJob({
+      topicId,
+      topicTitle,
+      topicPath: window.location.pathname,
+      content,
+      force: opts?.force,
+      regeneratePassword: opts?.regeneratePassword,
+    });
   };
+
 
   const openRegenDialog = () => {
     setRegenPassword("");
@@ -316,12 +249,6 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       return;
     }
 
-    // Snapshot prior player state so we can restore it if anything fails
-    // after we've optimistically swapped into "generating" mode.
-    const prevPodcast = podcast;
-    const prevSource = source;
-    let swappedToGenerating = false;
-
     setRegenSubmitting(true);
     try {
       const { content, diagnostics } = extractTopicContent();
@@ -333,95 +260,51 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         return;
       }
 
-      // Probe with the password first so we can surface an invalid-password
-      // error inline in the dialog without nuking the existing player state.
-      let result: PodcastResult;
-      try {
-        result = await generatePodcast(topicId, topicTitle, content, {
-          force: true,
-          regeneratePassword: pw,
-        });
-      } catch (err) {
-        setRegenError(err instanceof Error ? err.message : "Regeneration request failed.");
-        return;
-      }
+      clearPodcastJob(topicId);
+      // Kick the run off in the global registry so it survives navigation.
+      const started = startPodcastJob({
+        topicId,
+        topicTitle,
+        topicPath: window.location.pathname,
+        content,
+        force: true,
+        regeneratePassword: pw,
+      });
 
-      if (result.status === "failed" && isInvalidPasswordError(result.error)) {
+      // Give the server a moment to reject a bad password before we swap the
+      // player into generating mode. If the row flips to `generating`, auth
+      // was accepted and we can close the dialog and let the job run on.
+      const settled = await Promise.race([
+        started,
+        new Promise<null>((resolve) => setTimeout(() => resolve(null), 8000)),
+      ]);
+
+      if (settled && settled.status === "failed" && isInvalidPasswordError(settled.error)) {
+        clearPodcastJob(topicId);
         setRegenError("Invalid password. Please try again.");
         return;
       }
-
-      // The invoke may have timed out at the HTTP layer (the edge function
-      // keeps running in the background). If so, check whether the row has
-      // already flipped to `generating` — that indicates the password was
-      // accepted and the background job is alive.
-      if (result.status === "failed") {
-        const current = await fetchPodcast(topicId);
-        if (!current || current.status === "failed") {
-          setRegenError(result.error || "Regeneration failed. Please try again.");
-          return;
-        }
-        // Treat as in-flight; fall through to the swap + poll path.
-        result = current;
+      if (settled && settled.status === "failed") {
+        clearPodcastJob(topicId);
+        setRegenError(settled.error || "Regeneration failed. Please try again.");
+        return;
       }
 
-      // Auth accepted — close dialog and swap the player into generating mode.
+      // Accepted (or still running) — close the dialog and let the registry
+      // drive the player. Reset playback of the old audio.
       setRegenOpen(false);
       setPodcast(null);
       setSource(null);
       setIsPlaying(false);
       setCurrentTime(0);
       setDuration(0);
-      setGenerating(true);
-      swappedToGenerating = true;
-
-      try {
-        if (result.status === "generating") {
-          const polled = await pollPodcastUntilDone(topicId, {
-            onTick: (r) =>
-              setProgress((p) => ({
-                elapsedSec: p?.elapsedSec ?? 0,
-                lastStatus: (r?.status as "generating" | "pending" | undefined) ?? "unknown",
-              })),
-          });
-          setPodcast(polled);
-          if (polled.status === "ready") setSource("fresh");
-          return;
-        }
-        setPodcast(result);
-        if (result.status === "ready") setSource("fresh");
-      } catch (err) {
-        // Polling/render failed after we cleared state — surface a failed
-        // podcast tile so the UI is never stuck in an indeterminate state.
-        setPodcast({
-          status: "failed",
-          error: err instanceof Error ? err.message : "Regeneration failed.",
-        });
-      } finally {
-        setGenerating(false);
-      }
     } catch (err) {
-      // Catch-all: if we never swapped into generating, restore prior state
-      // and show the error inline; otherwise mark the player as failed.
-      if (!swappedToGenerating) {
-        setRegenError(err instanceof Error ? err.message : "Unknown error");
-      } else {
-        setGenerating(false);
-        setPodcast({
-          status: "failed",
-          error: err instanceof Error ? err.message : "Regeneration failed.",
-        });
-      }
+      setRegenError(err instanceof Error ? err.message : "Unknown error");
     } finally {
       setRegenSubmitting(false);
-      // Safety net: if something unexpected left us mid-flight without
-      // either a podcast or generating flag, restore the prior snapshot.
-      if (swappedToGenerating === false && regenOpen === false) {
-        if (prevPodcast !== null) setPodcast(prevPodcast);
-        if (prevSource !== null) setSource(prevSource);
-      }
     }
   };
+
 
   // Audio element wiring
   useEffect(() => {
