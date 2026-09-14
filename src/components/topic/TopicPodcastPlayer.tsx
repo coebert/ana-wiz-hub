@@ -127,10 +127,10 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const [regenPassword, setRegenPassword] = useState("");
   const [regenError, setRegenError] = useState<string | null>(null);
   const [regenSubmitting, setRegenSubmitting] = useState(false);
-  // Narrator/accent choice. Defaults to British RP; once a cached episode
-  // loads we follow the voice it was generated with.
-  const [voiceId, setVoiceId] = useState<string>(DEFAULT_PODCAST_VOICE);
-  const voicePinned = useRef(false);
+  // Narrator/accent choice. Starts from the listener's saved preference
+  // (shared across topics); each accent has its own cached episode server-side.
+  const [voiceId, setVoiceId] = useState<string>(() => getPreferredPodcastVoice());
+  const voicePinned = useRef(true);
 
   // Generation runs in a module-level registry (src/lib/podcastJobs.ts) so it
   // keeps going after the user navigates away from this topic page.
@@ -186,7 +186,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         return;
       }
       setLoading(true);
-      const existing = await fetchPodcast(topicId);
+      const existing = await fetchPodcast(topicId, voiceId);
       if (cancelled) return;
       // Stale recovery: if the row is stuck in `generating` but hasn't been
       // updated in several minutes, the background job is dead. Surface it
@@ -210,7 +210,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
       // Attach to an in-flight (still-fresh) generation started elsewhere.
       if (existing && existing.status === "generating") {
-        void attachPodcastJob(topicId, topicTitle, window.location.pathname);
+        void attachPodcastJob(topicId, topicTitle, window.location.pathname, voiceId);
       }
     })();
     return () => {
@@ -428,6 +428,22 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const onVoiceChange = (next: string) => {
     voicePinned.current = true;
     setVoiceId(next);
+    setPreferredPodcastVoice(next);
+    // If this accent is already recorded for the topic, switch to it straight
+    // away — no re-generation, no cost. Otherwise the player keeps the current
+    // audio and offers a "Listen in this voice" button.
+    void (async () => {
+      const cached = await fetchPodcast(topicId, next);
+      if (cached?.status === "ready") {
+        setIsPlaying(false);
+        setCurrentTime(0);
+        setDuration(0);
+        setPodcast(cached);
+        setSource("cache");
+      } else if (cached?.status === "generating" && !isStaleGenerating(cached)) {
+        void attachPodcastJob(topicId, topicTitle, window.location.pathname, next);
+      }
+    })();
   };
 
   const voicePicker = (
