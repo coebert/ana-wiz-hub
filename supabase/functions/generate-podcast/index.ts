@@ -59,10 +59,13 @@ const VOICE_PRESETS: Record<string, VoicePreset> = {
       BASE_STYLE,
   },
   "british-west-country": {
-    voice: "echo",
+    voice: "fable",
     instructions:
-      "Speak with a natural English West Country accent (warm, friendly South West England, like Somerset or Devon), " +
-      "clearly intelligible to all English speakers. " +
+      "Accent: English West Country (South West England — Somerset, Devon, Bristol). This is essential: you are NOT American. " +
+      "Use a rhotic British burr — sound the 'r' in words like 'farm', 'harder', 'water'. " +
+      "Broad, long 'a' as in 'baath' for bath, soft rounded vowels, gently sing-song rural West Country lilt, " +
+      "warm and unhurried, like a friendly Somerset or Devon local. Avoid any American vowel colouring or American intonation. " +
+      "Keep every clinical term clearly intelligible. " +
       BASE_STYLE,
   },
   scottish: {
