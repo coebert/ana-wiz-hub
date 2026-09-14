@@ -774,7 +774,7 @@ export type Database = {
           topic_id: string
           topic_title: string
           updated_at: string
-          voice: string | null
+          voice: string
         }
         Insert: {
           audio_path?: string | null
@@ -787,7 +787,7 @@ export type Database = {
           topic_id: string
           topic_title: string
           updated_at?: string
-          voice?: string | null
+          voice?: string
         }
         Update: {
           audio_path?: string | null
@@ -800,7 +800,7 @@ export type Database = {
           topic_id?: string
           topic_title?: string
           updated_at?: string
-          voice?: string | null
+          voice?: string
         }
         Relationships: []
       }
