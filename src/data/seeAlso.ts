@@ -144,6 +144,7 @@ export const seeAlsoMap: Record<string, string[]> = {
   "renal-disease": ["renal-physiology", "aki-rrt", "perioperative-fluids", "acid-base", "immunosuppression-hiv"],
   "musculoskeletal-disease": ["airway-management", "patient-positioning", "regional-anaesthesia", "immunosuppression-hiv"],
   "gastrointestinal-disease": ["gi-physiology", "emergency-surgery", "perioperative-fluids", "enhanced-recovery"],
+  "complex-needs-anaesthesia": ["psychiatric-substance-disease", "preoperative-assessment", "paediatric-anaesthesia", "day-surgery", "genetic-syndromes"],
   "psychiatric-substance-disease": ["opioids", "pain-medicine", "autonomic-nervous", "preoperative-assessment"],
   "immunosuppression-hiv": ["corticosteroids", "haematology-immunity", "renal-disease", "infectious-disease-icu"],
 

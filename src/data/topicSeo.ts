@@ -365,6 +365,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Psychiatric disease anaesthesia", "Substance misuse anaesthesia", "Serotonin syndrome", "Lithium perioperative", "ECT anaesthesia", "Opioid dependence surgery"],
     keywords: ["psychiatric drugs anaesthesia", "serotonin syndrome", "lithium surgery", "ECT anaesthesia", "alcohol withdrawal perioperative", "buprenorphine perioperative"],
   },
+  "complex-needs-anaesthesia": {
+    title: "Anaesthesia for Patients with Complex Needs | FRCA",
+    description: "Anaesthesia for complex needs: learning disability, autism, severe needle phobia, behaviour that challenges, capacity and restraint, and practical issues for prisoners.",
+    aliases: ["Learning disability anaesthesia", "Autism anaesthesia", "Needle phobia anaesthesia", "Anaesthesia for prisoners", "Reasonable adjustments surgery", "Clinical holding"],
+    keywords: ["learning disability anaesthesia", "autism perioperative care", "needle phobia induction", "premedication uncooperative patient", "anaesthesia prisoner handcuffs", "mental capacity act anaesthesia"],
+  },
   "immunosuppression-hiv": {
     title: "Immunosuppression, Transplant & HIV | FRCA",
     description: "Immunosuppression and HIV for FRCA Final and FFICM: transplant immunosuppressants, biologics, steroid cover, antiretroviral interactions, asplenia and infection precautions.",
