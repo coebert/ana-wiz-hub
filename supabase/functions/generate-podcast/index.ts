@@ -1085,24 +1085,21 @@ Deno.serve(async (req) => {
       if (anyVoice?.script) reusedScript = anyVoice.script as string;
     }
 
-    // A cached episode only satisfies the request when it was narrated with
-    // the requested voice — otherwise re-narrate it in the chosen accent.
-    const cachedVoiceId = typeof existing?.voice === "string" && existing.voice ? existing.voice : DEFAULT_VOICE_ID;
-    const voiceChanged = cachedVoiceId !== voiceIdResolved;
-
-    if (!forceRegenerate && !voiceChanged && existing?.status === "ready" && existing.audio_path) {
+    // The row is scoped to this voice already, so a ready row is always a
+    // cache hit for the requested accent.
+    if (!forceRegenerate && existing?.status === "ready" && existing.audio_path) {
       const { data: pub } = supabase.storage.from("podcasts").getPublicUrl(existing.audio_path);
       return jsonResponse({
         status: "ready",
         audio_url: pub.publicUrl,
         script: existing.script,
         duration_seconds: existing.duration_seconds,
-        voice: cachedVoiceId,
+        voice: voiceIdResolved,
         cached: true,
       });
     }
-    if (!forceRegenerate && voiceChanged && existing?.status === "ready") {
-      console.log(`[${topicId}] Voice change ${cachedVoiceId} → ${voiceIdResolved} — re-narrating.`);
+    if (reusedScript) {
+      console.log(`[${topicId}] Reusing script from another voice — TTS only for ${voiceIdResolved}.`);
     }
 
     // Treat any row stuck in "generating" for >3 minutes as abandoned
