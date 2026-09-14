@@ -150,6 +150,7 @@ interface RequestBody {
   content: string; // plain text extracted from the topic page
   force?: boolean; // bypass cache and regenerate (requires regeneratePassword)
   regeneratePassword?: string;
+  voiceId?: string; // narrator/accent preset id (see VOICE_PRESETS)
 }
 
 // Shared secret that authorises bypassing the cached podcast and regenerating
@@ -511,7 +512,9 @@ Deno.serve(async (req) => {
   const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
 
   try {
-    const { topicId, topicTitle, content, force, regeneratePassword } = (await req.json()) as RequestBody;
+    const { topicId, topicTitle, content, force, regeneratePassword, voiceId } =
+      (await req.json()) as RequestBody;
+    const { id: voiceIdResolved, preset: voicePreset } = resolveVoice(voiceId);
 
     if (!topicId || !topicTitle || !content) {
       return jsonResponse({ error: "topicId, topicTitle and content are required" }, 400);
@@ -552,15 +555,24 @@ Deno.serve(async (req) => {
       .eq("topic_id", topicId)
       .maybeSingle();
 
-    if (!forceRegenerate && existing?.status === "ready" && existing.audio_path) {
+    // A cached episode only satisfies the request when it was narrated with
+    // the requested voice — otherwise re-narrate it in the chosen accent.
+    const cachedVoiceId = typeof existing?.voice === "string" && existing.voice ? existing.voice : DEFAULT_VOICE_ID;
+    const voiceChanged = cachedVoiceId !== voiceIdResolved;
+
+    if (!forceRegenerate && !voiceChanged && existing?.status === "ready" && existing.audio_path) {
       const { data: pub } = supabase.storage.from("podcasts").getPublicUrl(existing.audio_path);
       return jsonResponse({
         status: "ready",
         audio_url: pub.publicUrl,
         script: existing.script,
         duration_seconds: existing.duration_seconds,
+        voice: cachedVoiceId,
         cached: true,
       });
+    }
+    if (!forceRegenerate && voiceChanged && existing?.status === "ready") {
+      console.log(`[${topicId}] Voice change ${cachedVoiceId} → ${voiceIdResolved} — re-narrating.`);
     }
 
     // Treat any row stuck in "generating" for >3 minutes as abandoned
@@ -657,7 +669,7 @@ Deno.serve(async (req) => {
         console.log(`[${topicId}] TTS complete in ${((Date.now() - tStart) / 1000).toFixed(1)}s`);
 
         const fullAudio = concatMp3(audioParts);
-        const audioPath = `${topicId}.mp3`;
+        const audioPath = `${topicId}--${voiceIdResolved}.mp3`;
         console.log(`[${topicId}] Uploading ${fullAudio.length} bytes to ${audioPath}`);
 
         const { error: uploadErr } = await supabase.storage
