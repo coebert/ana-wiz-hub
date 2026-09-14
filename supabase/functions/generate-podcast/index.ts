@@ -398,7 +398,11 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const TTS_REQUEST_TIMEOUT_MS = 60_000;
 
-async function synthesiseChunk(text: string, attempt = 1): Promise<Uint8Array> {
+async function synthesiseChunk(
+  text: string,
+  preset: VoicePreset,
+  attempt = 1,
+): Promise<Uint8Array> {
   const controller = new AbortController();
   const timeoutId = setTimeout(
     () => controller.abort(new Error(`TTS request timed out after ${TTS_REQUEST_TIMEOUT_MS}ms`)),
@@ -414,17 +418,16 @@ async function synthesiseChunk(text: string, attempt = 1): Promise<Uint8Array> {
       },
       body: JSON.stringify({
         model: TTS_MODEL,
-        voice: TTS_VOICE,
+        voice: preset.voice,
         input: text,
         response_format: "mp3",
         speed: 1.0,
-        // gpt-4o-mini-tts supports steerable delivery — request a British
-        // English accent so podcasts sound right for a UK exam audience.
-        instructions:
-          "Speak with a natural British English (modern Received Pronunciation) accent. " +
-          "Warm, confident, like a senior UK anaesthetic trainee tutoring a peer.",
+        // gpt-4o-mini-tts supports steerable delivery — the selected preset
+        // carries the accent and delivery instructions.
+        instructions: preset.instructions,
       }),
     });
+
 
     if (!response.ok) {
       const errText = await response.text();
