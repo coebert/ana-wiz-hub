@@ -774,6 +774,298 @@ export const ACCENT_BANK: PodcastAccent[] = [
     traits: "Rhotic, flat 'a' in bath, even mid-Atlantic newsreader delivery.",
     nonBritish: true,
   },
+
+  // ======================================================================
+  // Dialect bank — finer-grained local dialects built on the same British
+  // base voices, slotted into the existing regional picker groups.
+  // ======================================================================
+
+  // ---------------- Southern England ----------------
+  {
+    id: "british-devon",
+    label: "English — Devon",
+    description: "Rural Devon dialect",
+    group: "Southern England",
+    voice: "ballad",
+    accent: "Devon (South West England) dialect",
+    traits:
+      "Strongly rhotic burred r, long open 'aa' in bath, voiced s ('zummer' for summer), lilting unhurried farmland cadence.",
+  },
+  {
+    id: "british-wiltshire",
+    label: "English — Wiltshire",
+    description: "Wessex countryside dialect",
+    group: "Southern England",
+    voice: "fable",
+    accent: "Wiltshire (Wessex) dialect",
+    traits:
+      "Rhotic but softer than Devon, drawled vowels, dropped final g's, gentle sing-song downward phrase endings.",
+  },
+  {
+    id: "british-gloucestershire",
+    label: "English — Gloucestershire",
+    description: "Severn valley dialect",
+    group: "Southern England",
+    voice: "verse",
+    accent: "Gloucestershire (Severn valley) dialect",
+    traits:
+      "Mild rhoticity, West Country vowels tempered towards the Midlands, level rhythm, warm rounded tone.",
+  },
+  {
+    id: "british-thames-valley",
+    label: "English — Thames Valley (Reading)",
+    description: "Reading and Berkshire",
+    group: "Southern England",
+    voice: "alloy",
+    accent: "Thames Valley (Reading and Berkshire) dialect",
+    traits:
+      "Estuary-influenced non-rhotic vowels with faint West Country residue, t-glottalling, brisk even pacing.",
+  },
+  {
+    id: "british-portsmouth",
+    label: "English — Portsmouth (Pompey)",
+    description: "South coast naval city",
+    group: "Southern England",
+    voice: "coral",
+    accent: "Portsmouth (Pompey) dialect",
+    traits:
+      "Non-rhotic, fronted 'ow' diphthong, clipped consonants, quick chatty rhythm with rising tag questions.",
+  },
+
+  // ---------------- Midlands ----------------
+  {
+    id: "british-derby",
+    label: "English — Derby",
+    description: "Derbyshire dialect",
+    group: "Midlands",
+    voice: "onyx",
+    accent: "Derby and Derbyshire dialect",
+    traits:
+      "Flat northern 'a' in bath, short 'u' in cup, downward drawl on phrase endings, dropped definite article.",
+  },
+  {
+    id: "british-worcester",
+    label: "English — Worcestershire",
+    description: "West Midlands countryside",
+    group: "Midlands",
+    voice: "fable",
+    accent: "Worcestershire dialect",
+    traits:
+      "Brummie-adjacent falling intonation softened by rural West Country rhoticity, unhurried, lightly nasal.",
+  },
+  {
+    id: "british-herefordshire",
+    label: "English — Herefordshire",
+    description: "Welsh border dialect",
+    group: "Midlands",
+    voice: "ballad",
+    accent: "Herefordshire (Welsh borders) dialect",
+    traits:
+      "Rhotic border burr, musical Welsh-influenced lift on stressed words, slow deliberate delivery.",
+  },
+  {
+    id: "british-warwickshire",
+    label: "English — Warwickshire",
+    description: "Central Midlands dialect",
+    group: "Midlands",
+    voice: "verse",
+    accent: "Warwickshire dialect",
+    traits:
+      "Mild Midlands vowels between Brummie and RP, flat 'a', gentle falling cadence, unhurried clarity.",
+  },
+
+  // ---------------- Northern England ----------------
+  {
+    id: "british-barnsley",
+    label: "English — Barnsley",
+    description: "South Yorkshire dialect",
+    group: "Northern England",
+    voice: "onyx",
+    accent: "Barnsley (South Yorkshire) dialect",
+    traits:
+      "Broad Yorkshire vowels, definite-article reduction ('down t'ward'), 'thee/tha' rhythm, blunt clipped endings.",
+  },
+  {
+    id: "british-bradford",
+    label: "English — Bradford",
+    description: "West Yorkshire dialect",
+    group: "Northern England",
+    voice: "ballad",
+    accent: "Bradford (West Yorkshire) dialect",
+    traits:
+      "Flat 'a', monophthong 'face' and 'goat' vowels, dropped h's, steady level intonation.",
+  },
+  {
+    id: "british-york",
+    label: "English — York",
+    description: "North Yorkshire dialect",
+    group: "Northern England",
+    voice: "coral",
+    accent: "York and North Yorkshire dialect",
+    traits:
+      "Softer Yorkshire vowels, gently lengthened 'oo', tidy consonants, calm even pacing.",
+  },
+  {
+    id: "british-wigan",
+    label: "English — Wigan",
+    description: "Greater Manchester dialect",
+    group: "Northern England",
+    voice: "verse",
+    accent: "Wigan (Greater Manchester) dialect",
+    traits:
+      "Lancashire vowels with 'book' as long 'oo', velar nasal plus ('singger'), lively rising phrase ends.",
+  },
+  {
+    id: "british-blackburn",
+    label: "English — Blackburn",
+    description: "East Lancashire dialect",
+    group: "Northern England",
+    voice: "fable",
+    accent: "Blackburn (East Lancashire) dialect",
+    traits:
+      "Broad Lancashire 'oo' and flat 'a', slight rhoticity on final r, terse rhythmic delivery.",
+  },
+  {
+    id: "british-oldham",
+    label: "English — Oldham",
+    description: "Pennine mill-town dialect",
+    group: "Northern England",
+    voice: "alloy",
+    accent: "Oldham (Pennine Lancashire) dialect",
+    traits:
+      "Manchester-adjacent flat vowels, harder consonants, nasal edge, quick businesslike cadence.",
+  },
+
+  // ---------------- Wales ----------------
+  {
+    id: "welsh-wrexham",
+    label: "Welsh — Wrexham",
+    description: "North-east Wales dialect",
+    group: "Wales",
+    voice: "verse",
+    accent: "Wrexham (north-east Wales) dialect",
+    traits:
+      "Welsh musicality crossed with Cheshire/Scouse influence, clear consonants, rising mid-sentence lifts.",
+  },
+  {
+    id: "welsh-pembrokeshire",
+    label: "Welsh — Pembrokeshire",
+    description: "South-west Wales dialect",
+    group: "Wales",
+    voice: "coral",
+    accent: "Pembrokeshire (south-west Wales) dialect",
+    traits:
+      "Soft 'Little England' vowels, light rhoticity, gentle sing-song rise and fall, warm unhurried tone.",
+  },
+  {
+    id: "welsh-anglesey",
+    label: "Welsh — Anglesey",
+    description: "Ynys Môn dialect",
+    group: "Wales",
+    voice: "ballad",
+    accent: "Anglesey (Ynys Môn) Welsh-English dialect",
+    traits:
+      "Strong Welsh-language cadence, rolled r's, pure vowels, melodic rising tunes at clause ends.",
+  },
+
+  // ---------------- Scottish dialects ----------------
+  {
+    id: "scottish-lanarkshire",
+    label: "Scottish — Lanarkshire",
+    description: "Central belt dialect",
+    group: "Scottish dialects",
+    voice: "onyx",
+    accent: "Lanarkshire (central belt Scotland) dialect",
+    traits:
+      "Glaswegian-adjacent but broader, tapped r's, dark 'l', glottal stops, punchy driving rhythm.",
+  },
+  {
+    id: "scottish-perthshire",
+    label: "Scottish — Perthshire",
+    description: "Highland-edge dialect",
+    group: "Scottish dialects",
+    voice: "fable",
+    accent: "Perthshire (central Scotland) dialect",
+    traits:
+      "Clear educated Scots vowels, lightly rolled r's, measured lilt, softer than the central belt.",
+  },
+  {
+    id: "scottish-orkney",
+    label: "Scottish — Orkney",
+    description: "Orkney islands dialect",
+    group: "Scottish dialects",
+    voice: "coral",
+    accent: "Orkney islands dialect",
+    traits:
+      "Norse-influenced sing-song, rising sentence endings, soft r's, gentle unhurried island cadence.",
+  },
+  {
+    id: "scottish-shetland",
+    label: "Scottish — Shetland",
+    description: "Shetland islands dialect",
+    group: "Scottish dialects",
+    voice: "verse",
+    accent: "Shetland islands dialect",
+    traits:
+      "Strongly Norse-tinged musical intonation, pure vowels, dental 'd' for th, lilting rises.",
+  },
+
+  // ---------------- Ireland ----------------
+  {
+    id: "irish-dublin",
+    label: "Irish — Dublin",
+    description: "Dublin city dialect",
+    group: "Ireland",
+    voice: "alloy",
+    accent: "Dublin city Irish English",
+    traits:
+      "Fast urban rhythm, fronted 'oi' vowels, t-slitting ('wa'er'), flat rapid phrase endings.",
+    nonBritish: true,
+  },
+  {
+    id: "irish-waterford",
+    label: "Irish — Waterford",
+    description: "South-east Ireland dialect",
+    group: "Ireland",
+    voice: "ballad",
+    accent: "Waterford (south-east Ireland) dialect",
+    traits:
+      "Soft rhotic r's, dental t and d, gentle rise-fall melody, relaxed steady pace.",
+    nonBritish: true,
+  },
+  {
+    id: "irish-donegal",
+    label: "Irish — Donegal",
+    description: "Ulster Gaeltacht dialect",
+    group: "Ireland",
+    voice: "fable",
+    accent: "Donegal (Ulster) Irish English",
+    traits:
+      "Strong Irish-language cadence, slender consonants, Scots-influenced vowels, rising musical endings.",
+    nonBritish: true,
+  },
+
+  // ---------------- Islands and Crown dependencies ----------------
+  {
+    id: "jersey-english",
+    label: "Channel Islands — Jersey",
+    description: "Jersey dialect",
+    group: "Islands and Crown dependencies",
+    voice: "coral",
+    accent: "Jersey (Channel Islands) English",
+    traits:
+      "Near-RP base with Norman-French rhythm, slight rhoticity, softened consonants, gentle lift on final syllables.",
+  },
+  {
+    id: "guernsey-english",
+    label: "Channel Islands — Guernsey",
+    description: "Guernsey dialect",
+    group: "Islands and Crown dependencies",
+    voice: "verse",
+    accent: "Guernsey (Channel Islands) English",
+    traits:
+      "Soft southern English vowels with Guernésiais French colouring, drawn-out vowels, mild sing-song cadence.",
+  },
 ];
 
 /** Ordered group names for the picker. */
