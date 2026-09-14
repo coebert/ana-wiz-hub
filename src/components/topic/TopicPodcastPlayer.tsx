@@ -242,12 +242,6 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       return;
     }
 
-    // Snapshot prior player state so we can restore it if anything fails
-    // after we've optimistically swapped into "generating" mode.
-    const prevPodcast = podcast;
-    const prevSource = source;
-    let swappedToGenerating = false;
-
     setRegenSubmitting(true);
     try {
       const { content, diagnostics } = extractTopicContent();
@@ -259,95 +253,51 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         return;
       }
 
-      // Probe with the password first so we can surface an invalid-password
-      // error inline in the dialog without nuking the existing player state.
-      let result: PodcastResult;
-      try {
-        result = await generatePodcast(topicId, topicTitle, content, {
-          force: true,
-          regeneratePassword: pw,
-        });
-      } catch (err) {
-        setRegenError(err instanceof Error ? err.message : "Regeneration request failed.");
-        return;
-      }
+      clearPodcastJob(topicId);
+      // Kick the run off in the global registry so it survives navigation.
+      const started = startPodcastJob({
+        topicId,
+        topicTitle,
+        topicPath: window.location.pathname,
+        content,
+        force: true,
+        regeneratePassword: pw,
+      });
 
-      if (result.status === "failed" && isInvalidPasswordError(result.error)) {
+      // Give the server a moment to reject a bad password before we swap the
+      // player into generating mode. If the row flips to `generating`, auth
+      // was accepted and we can close the dialog and let the job run on.
+      const settled = await Promise.race([
+        started,
+        new Promise<null>((resolve) => setTimeout(() => resolve(null), 8000)),
+      ]);
+
+      if (settled && settled.status === "failed" && isInvalidPasswordError(settled.error)) {
+        clearPodcastJob(topicId);
         setRegenError("Invalid password. Please try again.");
         return;
       }
-
-      // The invoke may have timed out at the HTTP layer (the edge function
-      // keeps running in the background). If so, check whether the row has
-      // already flipped to `generating` — that indicates the password was
-      // accepted and the background job is alive.
-      if (result.status === "failed") {
-        const current = await fetchPodcast(topicId);
-        if (!current || current.status === "failed") {
-          setRegenError(result.error || "Regeneration failed. Please try again.");
-          return;
-        }
-        // Treat as in-flight; fall through to the swap + poll path.
-        result = current;
+      if (settled && settled.status === "failed") {
+        clearPodcastJob(topicId);
+        setRegenError(settled.error || "Regeneration failed. Please try again.");
+        return;
       }
 
-      // Auth accepted — close dialog and swap the player into generating mode.
+      // Accepted (or still running) — close the dialog and let the registry
+      // drive the player. Reset playback of the old audio.
       setRegenOpen(false);
       setPodcast(null);
       setSource(null);
       setIsPlaying(false);
       setCurrentTime(0);
       setDuration(0);
-      setGenerating(true);
-      swappedToGenerating = true;
-
-      try {
-        if (result.status === "generating") {
-          const polled = await pollPodcastUntilDone(topicId, {
-            onTick: (r) =>
-              setProgress((p) => ({
-                elapsedSec: p?.elapsedSec ?? 0,
-                lastStatus: (r?.status as "generating" | "pending" | undefined) ?? "unknown",
-              })),
-          });
-          setPodcast(polled);
-          if (polled.status === "ready") setSource("fresh");
-          return;
-        }
-        setPodcast(result);
-        if (result.status === "ready") setSource("fresh");
-      } catch (err) {
-        // Polling/render failed after we cleared state — surface a failed
-        // podcast tile so the UI is never stuck in an indeterminate state.
-        setPodcast({
-          status: "failed",
-          error: err instanceof Error ? err.message : "Regeneration failed.",
-        });
-      } finally {
-        setGenerating(false);
-      }
     } catch (err) {
-      // Catch-all: if we never swapped into generating, restore prior state
-      // and show the error inline; otherwise mark the player as failed.
-      if (!swappedToGenerating) {
-        setRegenError(err instanceof Error ? err.message : "Unknown error");
-      } else {
-        setGenerating(false);
-        setPodcast({
-          status: "failed",
-          error: err instanceof Error ? err.message : "Regeneration failed.",
-        });
-      }
+      setRegenError(err instanceof Error ? err.message : "Unknown error");
     } finally {
       setRegenSubmitting(false);
-      // Safety net: if something unexpected left us mid-flight without
-      // either a podcast or generating flag, restore the prior snapshot.
-      if (swappedToGenerating === false && regenOpen === false) {
-        if (prevPodcast !== null) setPodcast(prevPodcast);
-        if (prevSource !== null) setSource(prevSource);
-      }
     }
   };
+
 
   // Audio element wiring
   useEffect(() => {
