@@ -95,6 +95,11 @@ const IntensiveCareSection = () => {
           full drug cards
         </a>{" "}
         (class, mechanism, dosing, kinetics, safety and withdrawal on one card),
+        the{" "}
+        <a href="/intensive-care/pharmacology" className="font-medium text-icu underline-offset-4 hover:underline">
+          ICU pharmacology reference
+        </a>{" "}
+        (dose, route, duration of therapy and monitoring thresholds by drug class),
         plus{" "}
         <a
           href="/intensive-care/paediatric-pharmacokinetics"

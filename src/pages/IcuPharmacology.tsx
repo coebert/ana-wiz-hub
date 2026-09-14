@@ -71,7 +71,6 @@ const durationRuleFor = (groupId: string): string | undefined =>
 
 interface Props {
   drug: DrugDose;
-  groupId: string;
 }
 
 const Field = ({ label, children }: { label: string; children: React.ReactNode }) => (
@@ -81,7 +80,7 @@ const Field = ({ label, children }: { label: string; children: React.ReactNode }
   </div>
 );
 
-const DrugPharmacologyCard = ({ drug, groupId }: Props) => {
+const DrugPharmacologyCard = ({ drug }: Props) => {
   const safety = safetyFor(drug.drug);
   const pk = pkFor(drug.drug);
   const pd = pdFor(drug.drug);
@@ -180,8 +179,6 @@ const DrugPharmacologyCard = ({ drug, groupId }: Props) => {
           </span>
         </p>
       )}
-
-      {groupId && durationRuleFor(groupId) === undefined && null}
     </article>
   );
 };
@@ -316,7 +313,7 @@ const IcuPharmacology = () => {
 
               <div className="mt-4 space-y-4">
                 {group.drugs.map((d) => (
-                  <DrugPharmacologyCard key={d.drug} drug={d} groupId={group.id} />
+                  <DrugPharmacologyCard key={d.drug} drug={d} />
                 ))}
               </div>
             </section>
