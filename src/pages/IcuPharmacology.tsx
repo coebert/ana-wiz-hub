@@ -50,19 +50,21 @@ const pdFor = (name: string) =>
  */
 const DURATION_RULES: Record<string, string> = {
   "sedation-analgesia":
-    "No sedative or opioid infusion should run without a daily sedation hold or lightening and an explicit target score. Review the indication every day; beyond 5–7 days plan a taper (10–20% of the dose per day) because iatrogenic withdrawal becomes likely. Propofol should be reviewed at 48 h and kept below 4 mg/kg/h.",
+    "No sedative or opioid infusion should run without a daily sedation hold or lightening and an explicit target score (e.g. RASS 0 to \u22122). Review the indication every day; beyond 5\u20137 days plan a taper of 10\u201320% of the dose per day because iatrogenic withdrawal becomes likely. Review propofol at 48 h and keep it below 4 mg/kg/h.",
   "neuromuscular-blockade":
-    "Continuous neuromuscular blockade is a time-limited intervention: in ARDS restrict it to the first 48 h of severe hypoxaemia, then stop and reassess. Never continue beyond the indication, and never without confirmed adequate sedation.",
-  vasopressors:
-    "Titrate to the lowest dose that meets the MAP target and wean as soon as filling, source control and the underlying insult allow. A rising requirement over hours is a trigger to re-examine the patient (bleeding, missed source, tamponade, adrenal insufficiency), not simply to increase the dose.",
-  inotropes:
-    "Reassess the need with a repeat cardiac-output measurement or echocardiogram every 24 h; inotropes buy time for recovery or a definitive intervention and carry a dose-dependent arrhythmia and myocardial-oxygen cost, so wean early.",
-  antimicrobials:
-    "Apply Start Smart Then Focus: document indication, dose and a review date; reassess at 48–72 h with cultures; de-escalate; switch IV to oral when eating and stable. Most ICU infections are treated for 5–7 days, with defined longer courses (e.g. endocarditis, bone, undrained collections). Antifungals need the same stewardship — treat proven or strongly suspected invasive disease, review at 48–72 h with cultures, β-D-glucan and imaging, step down from an echinocandin to fluconazole where the isolate is susceptible, remove or exchange the infected line, and stop empirical cover if the work-up is negative.",
-  anticoagulation:
-    "Prophylaxis continues while immobility and risk persist; therapeutic anticoagulation needs a documented indication and a planned duration. Reassess daily against bleeding risk, platelet count, renal function and planned procedures.",
-  "metabolic-endocrine":
-    "These agents are usually short courses tied to a physiological target (glucose, sodium, cortisol response). Review at least daily and stop when the target is met — continued infusion after resolution is the commonest source of iatrogenic harm.",
+    "Continuous neuromuscular blockade is a time-limited intervention: in severe ARDS restrict it to about the first 48 h, then stop and reassess. Never continue beyond the indication, and never without confirmed adequate sedation and depth-of-block monitoring.",
+  vasoactive:
+    "Titrate to the lowest dose that meets the MAP or cardiac-output target and wean as soon as filling, source control and the underlying insult allow. A rising requirement over hours is a trigger to re-examine the patient \u2014 bleeding, missed source, tamponade, adrenal insufficiency \u2014 not simply to increase the dose. Reassess inotropes against a repeat echocardiogram or cardiac-output measurement every 24 h.",
+  "cardiac-rhythm":
+    "Antiarrhythmic infusions are bridges, not treatments: correct potassium, magnesium, hypoxia, acidosis, sepsis and drug causes in parallel and stop the infusion once rhythm control is stable. Amiodarone loading is followed by a defined maintenance period only, with thyroid, liver and pulmonary surveillance if it continues beyond weeks.",
+  neuro:
+    "Anticonvulsant loading is immediate; maintenance continues while seizure risk persists, with levels and a neurology plan for step-down. Osmotherapy and hypertonic saline are given as targeted boluses or short infusions against an ICP or sodium target, not open-ended, and are stopped once the target is met.",
+  coagulation:
+    "Thromboprophylaxis continues while immobility and risk persist. Therapeutic anticoagulation needs a documented indication and a planned duration, reassessed daily against bleeding risk, platelet count, renal function and planned procedures. Reversal agents and blood products are single-episode treatments \u2014 re-dose only on repeat assessment.",
+  "metabolic-gi":
+    "These agents are short courses tied to a physiological target (glucose, sodium, cortisol response, gastric protection). Review at least daily and stop when the target is met or the risk factor resolves; continuing after resolution is a common source of iatrogenic harm. Stress-ulcer prophylaxis should stop when enteral feeding is established and the risk factors have gone.",
+  infection:
+    "Apply Start Smart Then Focus: document indication, dose and a review date, then reassess at 48\u201372 h with cultures, de-escalate, and switch IV to oral when eating and stable. Most ICU infections are treated for 5\u20137 days, with defined longer courses (endocarditis, bone and joint, undrained collections). Antifungals need the same stewardship: treat proven or strongly suspected invasive disease, review at 48\u201372 h with cultures, \u03b2-D-glucan and imaging, step down from an echinocandin to fluconazole where the isolate is susceptible, remove or exchange the infected line, and stop empirical cover when the work-up is negative.",
 };
 
 const durationRuleFor = (groupId: string): string | undefined =>
