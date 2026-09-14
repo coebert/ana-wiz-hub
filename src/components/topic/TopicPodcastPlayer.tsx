@@ -674,6 +674,29 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         </div>
       </div>
 
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3">
+        {voicePicker}
+        {(podcast.voice ?? DEFAULT_PODCAST_VOICE) !== voiceId ? (
+          <Button onClick={() => handleGenerate()} size="sm" variant="outline" className="h-8 text-xs" disabled={generating}>
+            {generating ? (
+              <>
+                <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" />
+                Re-recording…
+              </>
+            ) : (
+              <>
+                <Mic className="mr-1.5 h-3.5 w-3.5" />
+                Re-record in this voice
+              </>
+            )}
+          </Button>
+        ) : (
+          <span className="text-xs text-muted-foreground">
+            Narrated in {podcastVoiceLabel(podcast.voice ?? DEFAULT_PODCAST_VOICE)}
+          </span>
+        )}
+      </div>
+
       {showScript && podcast.script && (
         transcriptSegments.length > 0 ? (
           <div
