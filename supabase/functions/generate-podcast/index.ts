@@ -440,7 +440,7 @@ async function synthesiseChunk(
         const backoff = 500 * Math.pow(2, attempt - 1) + Math.random() * 250;
         console.warn(`[tts] chunk failed (${response.status}), retry ${attempt}/${TTS_MAX_RETRIES} in ${Math.round(backoff)}ms`);
         await sleep(backoff);
-        return synthesiseChunk(text, attempt + 1);
+        return synthesiseChunk(text, preset, attempt + 1);
       }
       throw new Error(`OpenAI TTS failed (${response.status}): ${errText}`);
     }
@@ -460,7 +460,7 @@ async function synthesiseChunk(
         `[tts] ${isAbort ? "timeout" : "network error"}, retry ${attempt}/${TTS_MAX_RETRIES} in ${Math.round(backoff)}ms: ${message}`,
       );
       await sleep(backoff);
-      return synthesiseChunk(text, attempt + 1);
+      return synthesiseChunk(text, preset, attempt + 1);
     }
     throw err;
   } finally {
@@ -473,6 +473,7 @@ async function synthesiseChunk(
 async function synthesiseChunksParallel(
   chunks: string[],
   topicId: string,
+  preset: VoicePreset,
 ): Promise<Uint8Array[]> {
   const results: Uint8Array[] = new Array(chunks.length);
   let nextIndex = 0;
@@ -482,7 +483,7 @@ async function synthesiseChunksParallel(
       const i = nextIndex++;
       if (i >= chunks.length) return;
       console.log(`[${topicId}] worker ${workerId} → chunk ${i + 1}/${chunks.length} (${chunks[i].length} chars)`);
-      results[i] = await synthesiseChunk(chunks[i]);
+      results[i] = await synthesiseChunk(chunks[i], preset);
     }
   };
 
@@ -652,7 +653,7 @@ Deno.serve(async (req) => {
           `[${topicId}] Synthesising ${chunks.length} chunk(s) at concurrency ${Math.min(TTS_CONCURRENCY, chunks.length)}...`,
         );
         const tStart = Date.now();
-        const audioParts = await synthesiseChunksParallel(chunks, topicId);
+        const audioParts = await synthesiseChunksParallel(chunks, topicId, voicePreset);
         console.log(`[${topicId}] TTS complete in ${((Date.now() - tStart) / 1000).toFixed(1)}s`);
 
         const fullAudio = concatMp3(audioParts);
@@ -676,7 +677,7 @@ Deno.serve(async (req) => {
             script,
             audio_path: audioPath,
             duration_seconds: durationSeconds,
-            voice: TTS_VOICE,
+            voice: voiceIdResolved,
             status: "ready",
             error_message: null,
           })
