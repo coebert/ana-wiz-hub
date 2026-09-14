@@ -3,7 +3,9 @@ import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Downloa
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
