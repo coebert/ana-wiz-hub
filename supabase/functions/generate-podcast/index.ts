@@ -405,16 +405,16 @@ const ACCENT_BANK: AccentRow[] = [
   {
     id: "scottish",
     voice: "ash",
-    accent: "educated Scottish (Edinburgh)",
+    accent: "educated Scottish (Edinburgh, Morningside-influenced standard Scottish English)",
     traits:
-      "Rhotic tapped 'r', pure monophthong vowels, clear articulation, restrained even intonation.",
+      "Rhotic tapped 'r', pure monophthong vowels, short-long vowel distinction (shire vs shire with long vowel), clear articulation, restrained even intonation typical of educated Edinburgh speech.",
   },
   {
     id: "scottish-glaswegian",
     voice: "verse",
-    accent: "Glaswegian (Glasgow)",
+    accent: "Glaswegian (Glasgow and West of Scotland conurbation)",
     traits:
-      "Strong rhotic 'r', glottal stops mid-word, punchy varied melody, brisk energetic delivery.",
+      "Strong rhotic 'r', glottal stops mid-word ('wa'er' for water), rising terminal intonation, punchy varied melody, brisk energetic West of Scotland delivery.",
   },
   {
     id: "scottish-highland",
@@ -428,7 +428,7 @@ const ACCENT_BANK: AccentRow[] = [
     voice: "ash",
     accent: "Doric (Aberdeen and North East Scotland)",
     traits:
-      "Distinctive 'fit' for what, 'hoose' for house, strongly rhotic, clipped rhythmic delivery.",
+      "Distinctive Doric colour: 'fit' for what, 'far' for where, 'hoose' for house, 'f' for 'wh' at word start, strongly rhotic, clipped rhythmic North East delivery.",
   },
   // Ireland
   {
@@ -455,9 +455,9 @@ const ACCENT_BANK: AccentRow[] = [
   {
     id: "scottish-borders",
     voice: "sage",
-    accent: "Scottish Borders English",
+    accent: "Scottish Borders English (Hawick, Galashiels, Kelso)",
     traits:
-      "Rhotic with light burr, long open vowels, measured lilting cadence, softened consonants.",
+      "Strongly rhotic with a rolled light burr — the most rhotic variety in Scotland, long open vowels, measured lilting cadence, softened consonants, hint of Northumbrian influence.",
   },
   {
     id: "scottish-hebridean",
