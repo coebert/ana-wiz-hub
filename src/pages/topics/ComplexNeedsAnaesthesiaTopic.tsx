@@ -241,6 +241,17 @@ const ComplexNeedsAnaesthesiaTopic = () => {
 
             <TopicTableOfContents items={tocItems} />
 
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-1">Worked case study</h3>
+              <p className="text-sm text-muted-foreground">
+                See these sections applied end to end to one patient — an autistic adult with a mild learning disability and severe needle phobia listed for dental surgery.{" "}
+                <Link to="/perioperative/complex-needs-case-study" className="text-perioperative underline underline-offset-4">
+                  Open the complex needs case study
+                </Link>
+                .
+              </p>
+            </div>
+
             {/* General principles */}
             <section id="section-principles" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">General Principles &amp; Reasonable Adjustments</h2>
