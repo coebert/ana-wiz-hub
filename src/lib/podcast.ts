@@ -180,9 +180,12 @@ export const fetchPodcast = async (
   }
 
   const { data: pub } = supabase.storage.from("podcasts").getPublicUrl(data.audio_path);
+  // Cache-bust so a re-recorded episode is not replayed from the browser/CDN cache.
+  const stamp = data.updated_at ? Date.parse(data.updated_at) : Date.now();
+  const audioUrl = `${pub.publicUrl}${pub.publicUrl.includes("?") ? "&" : "?"}v=${Number.isNaN(stamp) ? Date.now() : stamp}`;
   return {
     status: "ready",
-    audio_url: pub.publicUrl,
+    audio_url: audioUrl,
     script: data.script ?? undefined,
     duration_seconds: data.duration_seconds ?? undefined,
     voice: data.voice ?? undefined,
