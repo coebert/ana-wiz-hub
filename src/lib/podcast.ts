@@ -331,7 +331,7 @@ export const generatePodcast = async (
       body: {
         topicId,
         topicTitle,
-        content,
+        content: clampPodcastContent(content),
         force: options?.force ?? false,
         regeneratePassword: options?.regeneratePassword,
       },
