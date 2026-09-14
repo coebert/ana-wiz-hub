@@ -1068,6 +1068,135 @@ export const ACCENT_BANK: PodcastAccent[] = [
   },
 ];
 
+/* ------------------------------------------------------------------ *
+ * Accent steering
+ *
+ * The base voices are strongly pulled towards neutral RP or General
+ * American, so weak instructions collapse every regional narrator into one
+ * of those two. Three things measurably hold the accent:
+ *   1. a first-person native-speaker persona (not "read in an X accent"),
+ *   2. concrete pronunciation anchors — real words with respellings,
+ *   3. an explicit ban on neutralising the accent "for clarity".
+ * Keep this block identical to the copy in
+ * supabase/functions/generate-podcast/index.ts.
+ * ------------------------------------------------------------------ */
+
+const NORTHERN_ENGLAND_IDS = new Set([
+  "british-yorkshire", "british-lancashire", "british-manchester", "british-scouse",
+  "british-geordie", "british-mackem", "british-cumbrian", "british-sheffield",
+  "british-hull", "british-leeds", "british-teesside", "british-durham",
+  "british-northumberland", "british-bolton", "british-preston", "british-barnsley",
+  "british-bradford", "british-york", "british-wigan", "british-blackburn",
+  "british-oldham",
+]);
+
+const MIDLANDS_IDS = new Set([
+  "british-brummie", "british-black-country", "british-east-midlands", "british-potteries",
+  "british-coventry", "british-leicester", "british-nottingham", "british-lincolnshire",
+  "british-shropshire", "british-northampton", "british-derby", "british-worcester",
+  "british-warwickshire", "british-herefordshire",
+]);
+
+const WEST_COUNTRY_IDS = new Set([
+  "british-west-country", "british-bristol", "british-cornish", "british-devon",
+  "british-dorset", "british-wiltshire", "british-gloucestershire",
+]);
+
+/**
+ * Family-level pronunciation anchors. Written as real words plus phonetic
+ * respellings, which steer the model far harder than adjectives do.
+ */
+const familyAnchors = (id: string): string => {
+  if (id.startsWith("welsh")) {
+    return (
+      "Anchors: strong musical rise-and-fall on every phrase; pure clear vowels — 'face' as FEH-ss, " +
+      "'goat' as GOH-t with no glide; tapped/rolled r's; clear 'l' in 'milk'; " +
+      "stress often late in the phrase, ending on a lift like a question."
+    );
+  }
+  if (id.startsWith("scottish")) {
+    return (
+      "Anchors: fully rhotic with a tapped r — 'heart' as HAIRT, 'water' as WAH-ter; " +
+      "short pure vowels — 'house' as HOOS, 'now' as NOO, 'right' as RICHT; " +
+      "'ch' in 'loch' as a throaty velar fricative, never a k; " +
+      "clipped clear consonants, brisk energetic rhythm, dark 'l'."
+    );
+  }
+  if (id.startsWith("irish")) {
+    return (
+      "Anchors: soft dental t and d — 'think' as TINK, 'that' as DAT; light rhotic r; " +
+      "'time' as TOIME, 'day' as DEH; rising melodic phrase endings; " +
+      "voiced breathy 'wh' in 'what'; lively fluid rhythm with unstressed syllables kept full."
+    );
+  }
+  if (WEST_COUNTRY_IDS.has(id)) {
+    return (
+      "Anchors: heavily rhotic burr — 'farm' as FAARM, 'harder' as HARR-derr, 'water' as WAH-terr; " +
+      "long broad a — 'bath' as BAARTH; 'I' as OI; voiced s in 'Somerset' as ZOMerset; " +
+      "slow rolling unhurried rural lilt."
+    );
+  }
+  if (NORTHERN_ENGLAND_IDS.has(id)) {
+    return (
+      "Anchors: flat short a — 'bath' and 'grass' with the same vowel as 'cat'; " +
+      "no foot–strut split — 'but', 'blood' and 'up' use the vowel of 'put' (BOOT, BLOOD, OOP); " +
+      "'the' reduced to t' before consonants; hard clipped g's; " +
+      "down-stepped ends of phrases, no RP drawl."
+    );
+  }
+  if (MIDLANDS_IDS.has(id)) {
+    return (
+      "Anchors: flat short a in 'bath'; northern 'but' vowel (as in 'put'); " +
+      "'price' as PROICE, 'mouth' as MEOWTH; a distinctly falling, slightly nasal phrase-end " +
+      "that drops away rather than lifting."
+    );
+  }
+  if (id === "british-cockney" || id === "british-estuary" || id === "british-essex" || id === "british-kent") {
+    return (
+      "Anchors: glottal t — 'butter' as BU'-uh, 'water' as WOR-uh; l-vocalisation — 'milk' as MIWK; " +
+      "th-fronting — 'think' as FINK, 'brother' as BRUVVer; 'face' as FICE, 'price' as PROICE; " +
+      "dropped h in 'house'; quick clipped urban rhythm."
+    );
+  }
+  return "";
+};
+
+const BASE_STYLE =
+  "Warm, confident and clear, like a senior anaesthetic trainee tutoring a peer. " +
+  "Steady pace, natural phrasing, no exaggeration or comedy — this is your ordinary speaking voice.";
+
+export const buildAccentInstructions = (row: {
+  id: string;
+  accent: string;
+  traits: string;
+  nonBritish?: boolean;
+}): string => {
+  const anchors = familyAnchors(row.id);
+  const guard =
+    row.id === "american"
+      ? ""
+      : row.nonBritish
+        ? "Never drift into General American or neutral British English at any point. "
+        : "You are NOT American and NOT a neutral RP speaker: never use American vowel colouring, " +
+          "American intonation, or generic BBC RP. ";
+  return [
+    `You are a lifelong native speaker of ${row.accent}. You have never lived anywhere else, ` +
+      "and this is simply your own voice — you are not performing or imitating an accent.",
+    guard +
+      "Hold the accent consistently from the very first word to the last, including proper nouns and " +
+      "technical terms. Do not neutralise or soften it for clarity, and do not fade towards a standard " +
+      "accent as the passage goes on.",
+    `Accent detail: ${row.traits}`,
+    anchors,
+    "Keep every clinical term, drug name and number clearly intelligible within that accent.",
+    BASE_STYLE,
+  ]
+    .filter(Boolean)
+    .join(" ");
+};
+
+
+
 /** Ordered group names for the picker. */
 export const ACCENT_GROUPS: string[] = ACCENT_BANK.reduce<string[]>((groups, a) => {
   if (!groups.includes(a.group)) groups.push(a.group);
