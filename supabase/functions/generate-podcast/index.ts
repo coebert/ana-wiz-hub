@@ -58,6 +58,13 @@ const VOICE_PRESETS: Record<string, VoicePreset> = {
       "Speak with an expressive, engaging British English accent, like a well-known UK documentary narrator. " +
       BASE_STYLE,
   },
+  "british-west-country": {
+    voice: "echo",
+    instructions:
+      "Speak with a natural English West Country accent (warm, friendly South West England, like Somerset or Devon), " +
+      "clearly intelligible to all English speakers. " +
+      BASE_STYLE,
+  },
   scottish: {
     voice: "ash",
     instructions:
