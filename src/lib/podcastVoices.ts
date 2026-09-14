@@ -330,6 +330,415 @@ export const ACCENT_BANK: PodcastAccent[] = [
       "Falling sentence-final intonation, tight front vowels, rhotic, brisk clipped consonants.",
   },
 
+  {
+    id: "british-essex",
+    label: "Essex",
+    description: "Modern Essex / Thames-side",
+    group: "Southern England",
+    voice: "verse",
+    accent: "Essex English (south-east England)",
+    traits:
+      "Strong t-glottalling, l-vocalisation, wide 'ai' diphthongs, upbeat urban lilt.",
+  },
+  {
+    id: "british-kent",
+    label: "Kent",
+    description: "Kentish south-east",
+    group: "Southern England",
+    voice: "ballad",
+    accent: "Kentish (south-east England)",
+    traits:
+      "Non-rhotic, softened final consonants, gently drawled long vowels, relaxed cadence.",
+  },
+  {
+    id: "british-sussex",
+    label: "Sussex / Brighton",
+    description: "South coast England",
+    group: "Southern England",
+    voice: "coral",
+    accent: "Sussex and Brighton south-coast English",
+    traits:
+      "Non-rhotic with faint rhotic traces on older words, mellow open vowels, easy relaxed rhythm.",
+  },
+  {
+    id: "british-hampshire",
+    label: "Hampshire / Solent",
+    description: "Central south coast",
+    group: "Southern England",
+    voice: "alloy",
+    accent: "Hampshire and Solent English",
+    traits:
+      "Light rhoticity, softened 's' onsets, gentle West-Country-tinged vowels within near-RP frame.",
+  },
+  {
+    id: "british-dorset",
+    label: "Dorset",
+    description: "Rural southern West Country",
+    group: "Southern England",
+    voice: "fable",
+    accent: "Dorset (rural southern England)",
+    traits:
+      "Rhotic burred 'r', long drawled 'aa' in bath and grass, voiced 's' at word onset, unhurried lilt.",
+  },
+  {
+    id: "british-home-counties",
+    label: "Home Counties",
+    description: "Polished suburban south-east",
+    group: "Southern England",
+    voice: "onyx",
+    accent: "Home Counties English (Surrey, Berkshire, Buckinghamshire)",
+    traits:
+      "Near-RP, clipped consonants, restrained intonation, faint Estuary softening of 't'.",
+  },
+  {
+    id: "british-oxford",
+    label: "Oxford / Thames Valley",
+    description: "Academic southern English",
+    group: "Southern England",
+    voice: "sage",
+    accent: "Oxford and Thames Valley English",
+    traits:
+      "Precise near-RP articulation, careful vowel length, measured lecturing cadence.",
+  },
+  {
+    id: "british-potteries",
+    label: "Stoke / Potteries",
+    description: "North Staffordshire",
+    group: "Midlands",
+    voice: "ash",
+    accent: "Potteries (Stoke-on-Trent)",
+    traits:
+      "Flat northern 'a' and 'u', distinctive rising terminals, clipped short vowels, sing-song lift.",
+  },
+  {
+    id: "british-coventry",
+    label: "Coventry",
+    description: "West Midlands city",
+    group: "Midlands",
+    voice: "verse",
+    accent: "Coventry English",
+    traits:
+      "Brummie-adjacent falling intonation with flatter vowels, elongated 'ay', lightly nasal resonance.",
+  },
+  {
+    id: "british-leicester",
+    label: "Leicester",
+    description: "East Midlands city",
+    group: "Midlands",
+    voice: "coral",
+    accent: "Leicester (East Midlands)",
+    traits:
+      "Flat 'a', dropped h-onsets, shortened function words, level unshowy intonation.",
+  },
+  {
+    id: "british-nottingham",
+    label: "Nottingham",
+    description: "East Midlands / Notts",
+    group: "Midlands",
+    voice: "alloy",
+    accent: "Nottingham (Nottinghamshire)",
+    traits:
+      "Flat 'u' in bus, monophthongal 'o', dropped final 't' with glottal replacement, quick rhythm.",
+  },
+  {
+    id: "british-lincolnshire",
+    label: "Lincolnshire",
+    description: "Rural east Midlands",
+    group: "Midlands",
+    voice: "ballad",
+    accent: "Lincolnshire (rural east England)",
+    traits:
+      "Long open vowels, rhotic traces, dropped 'h', slow deliberate agricultural cadence.",
+  },
+  {
+    id: "british-shropshire",
+    label: "Shropshire / Welsh Marches",
+    description: "West Midlands borders",
+    group: "Midlands",
+    voice: "fable",
+    accent: "Shropshire and Welsh border English",
+    traits:
+      "Softly rhotic, gentle sing-song borrowed from Welsh phrasing, unhurried warm delivery.",
+  },
+  {
+    id: "british-northampton",
+    label: "Northampton",
+    description: "South Midlands",
+    group: "Midlands",
+    voice: "sage",
+    accent: "Northamptonshire English",
+    traits:
+      "Transitional north-south vowels, mixed 'a' in bath, level intonation, mild t-glottalling.",
+  },
+  {
+    id: "british-sheffield",
+    label: "Sheffield",
+    description: "South Yorkshire",
+    group: "Northern England",
+    voice: "onyx",
+    accent: "Sheffield (South Yorkshire)",
+    traits:
+      "Flat 'a' and 'u', definite-article reduction ('t'hospital'), dark 'l', blunt falling ends.",
+  },
+  {
+    id: "british-hull",
+    label: "Hull / East Yorkshire",
+    description: "Humberside",
+    group: "Northern England",
+    voice: "verse",
+    accent: "Hull and East Yorkshire",
+    traits:
+      "Distinctive fronted 'er' in nurse toward 'ur/or', flat 'a', clipped consonants, dry level tone.",
+  },
+  {
+    id: "british-leeds",
+    label: "Leeds",
+    description: "West Yorkshire city",
+    group: "Northern England",
+    voice: "ash",
+    accent: "Leeds (West Yorkshire)",
+    traits:
+      "Flat vowels, short 'oo' in book, dropped h-onsets, steady practical rhythm.",
+  },
+  {
+    id: "british-teesside",
+    label: "Middlesbrough / Teesside",
+    description: "North-east England",
+    group: "Northern England",
+    voice: "coral",
+    accent: "Teesside (Middlesbrough)",
+    traits:
+      "Fronted 'oo', Geordie-adjacent lifts without full Tyneside vowels, brisk warm delivery.",
+  },
+  {
+    id: "british-durham",
+    label: "Durham",
+    description: "North-east England",
+    group: "Northern England",
+    voice: "alloy",
+    accent: "County Durham English",
+    traits:
+      "Softer Geordie-adjacent vowels, gentle rise-fall, rhotic-free with warm rounded 'o'.",
+  },
+  {
+    id: "british-northumberland",
+    label: "Northumberland",
+    description: "Far north-east England",
+    group: "Northern England",
+    voice: "fable",
+    accent: "Northumberland (rural north-east)",
+    traits:
+      "Trace uvular burr on 'r', long open vowels, lilting rise-fall, unhurried pastoral cadence.",
+  },
+  {
+    id: "british-bolton",
+    label: "Bolton / Greater Manchester towns",
+    description: "Industrial Lancashire",
+    group: "Northern England",
+    voice: "ballad",
+    accent: "Bolton and Greater Manchester town English",
+    traits:
+      "Flat 'a', shortened 'the', nasal Mancunian-adjacent resonance, quick clipped phrasing.",
+  },
+  {
+    id: "british-preston",
+    label: "Preston / Central Lancashire",
+    description: "Lancashire",
+    group: "Northern England",
+    voice: "sage",
+    accent: "Preston and central Lancashire",
+    traits:
+      "Rhotic traces, flat vowels, dropped 'h', level down-to-earth delivery.",
+  },
+  {
+    id: "british-isle-of-man",
+    label: "Isle of Man",
+    description: "Manx English",
+    group: "Northern England",
+    voice: "ash",
+    accent: "Manx English (Isle of Man)",
+    traits:
+      "Lancashire-tinged vowels with Gaelic lilt, slight rhoticity, gentle rising phrase ends.",
+  },
+  {
+    id: "welsh-cardiff",
+    label: "Welsh — Cardiff",
+    description: "Capital city Welsh",
+    group: "Wales",
+    voice: "verse",
+    accent: "Cardiff Welsh English",
+    traits:
+      "Distinctive flat 'a' in Cardiff, non-rhotic, urban clipped consonants, mild musical lift.",
+  },
+  {
+    id: "welsh-swansea",
+    label: "Welsh — Swansea",
+    description: "South-west Wales",
+    group: "Wales",
+    voice: "coral",
+    accent: "Swansea Welsh English",
+    traits:
+      "Strong musical intonation, elongated vowels, clear consonants, warm friendly cadence.",
+  },
+  {
+    id: "welsh-valleys",
+    label: "Welsh — Valleys",
+    description: "South Wales Valleys",
+    group: "Wales",
+    voice: "alloy",
+    accent: "South Wales Valleys English",
+    traits:
+      "Pronounced rise-fall sing-song, rolled light 'r', emphatic sentence-final lifts.",
+  },
+  {
+    id: "welsh-mid",
+    label: "Welsh — Mid Wales",
+    description: "Rural mid Wales",
+    group: "Wales",
+    voice: "fable",
+    accent: "Mid Wales English",
+    traits:
+      "Slow lilting delivery, softly rolled 'r', Welsh-language phrasing rhythm, gentle warmth.",
+  },
+  {
+    id: "scottish-dundee",
+    label: "Scottish — Dundee",
+    description: "Tayside",
+    group: "Scotland",
+    voice: "ash",
+    accent: "Dundonian Scots (Dundee)",
+    traits:
+      "Rhotic tapped 'r', distinctive 'eh' for 'I', clipped quick delivery, flat terminal falls.",
+  },
+  {
+    id: "scottish-fife",
+    label: "Scottish — Fife",
+    description: "East central Scotland",
+    group: "Scotland",
+    voice: "ballad",
+    accent: "Fife Scots",
+    traits:
+      "Rhotic, glottal stops mid-word, monophthongal vowels, level understated intonation.",
+  },
+  {
+    id: "scottish-ayrshire",
+    label: "Scottish — Ayrshire",
+    description: "South-west Scotland",
+    group: "Scotland",
+    voice: "coral",
+    accent: "Ayrshire Scots",
+    traits:
+      "Strong rolled 'r', broad 'oo' in house, sing-song rise on questions, warm open delivery.",
+  },
+  {
+    id: "scottish-borders",
+    label: "Scottish — Borders",
+    description: "Southern Scotland",
+    group: "Scotland",
+    voice: "sage",
+    accent: "Scottish Borders English",
+    traits:
+      "Rhotic with light burr, long open vowels, measured lilting cadence, softened consonants.",
+  },
+  {
+    id: "scottish-hebridean",
+    label: "Scottish — Hebrides",
+    description: "Western Isles",
+    group: "Scotland",
+    voice: "fable",
+    accent: "Hebridean Scottish English",
+    traits:
+      "Gaelic-influenced slow lilt, pure long vowels, softly aspirated consonants, melodic phrasing.",
+  },
+  {
+    id: "irish-galway",
+    label: "Irish — Galway",
+    description: "West of Ireland",
+    group: "Ireland",
+    voice: "alloy",
+    accent: "Galway and west of Ireland English",
+    traits:
+      "Rhotic, soft 'th' as 't', lilting rise-fall, melodic unhurried delivery.",
+    nonBritish: true,
+  },
+  {
+    id: "irish-kerry",
+    label: "Irish — Kerry",
+    description: "South-west Ireland",
+    group: "Ireland",
+    voice: "ballad",
+    accent: "Kerry Irish English",
+    traits:
+      "Strong Gaelic lilt, sing-song rise-fall, rhotic, elongated stressed vowels.",
+    nonBritish: true,
+  },
+  {
+    id: "irish-limerick",
+    label: "Irish — Limerick",
+    description: "Mid-west Ireland",
+    group: "Ireland",
+    voice: "verse",
+    accent: "Limerick Irish English",
+    traits:
+      "Flatter mid-west vowels, rhotic, brisk clipped rhythm, dry falling terminals.",
+    nonBritish: true,
+  },
+  {
+    id: "irish-derry",
+    label: "Irish — Derry",
+    description: "North-west Ireland",
+    group: "Ireland",
+    voice: "coral",
+    accent: "Derry Irish English",
+    traits:
+      "Northern rise on statement ends, tight front vowels, rhotic, quick bright delivery.",
+    nonBritish: true,
+  },
+  {
+    id: "new-zealand",
+    label: "New Zealand",
+    description: "Kiwi accent",
+    group: "Rest of the world",
+    voice: "nova",
+    accent: "New Zealand English",
+    traits:
+      "Centralised short 'i' in fish, raised 'e', clipped diphthongs, level friendly delivery.",
+    nonBritish: true,
+  },
+  {
+    id: "south-african",
+    label: "South African",
+    description: "South African English",
+    group: "Rest of the world",
+    voice: "onyx",
+    accent: "South African English",
+    traits:
+      "Clipped monophthongal vowels, non-rhotic, crisp dental consonants, firm falling ends.",
+    nonBritish: true,
+  },
+  {
+    id: "canadian",
+    label: "Canadian",
+    description: "Canadian English",
+    group: "Rest of the world",
+    voice: "sage",
+    accent: "Canadian English",
+    traits:
+      "Rhotic, Canadian raising on 'out' and 'about', even friendly newsreader cadence.",
+    nonBritish: true,
+  },
+  {
+    id: "indian-english",
+    label: "Indian English",
+    description: "Indian English narration",
+    group: "Rest of the world",
+    voice: "ash",
+    accent: "Indian English",
+    traits:
+      "Retroflex 't' and 'd', syllable-timed rhythm, clear precise articulation, even pitch.",
+    nonBritish: true,
+  },
+
   // ---------------- Rest of the world ----------------
   {
     id: "australian",
