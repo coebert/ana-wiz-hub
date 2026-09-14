@@ -270,6 +270,110 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
         alert:
           "Cardiac arrest from suxamethonium-induced hyperkalaemia is a recurring ICU never-event in critical illness myopathy and >24 h burns — use rocuronium instead.",
       },
+      {
+        drug: "Vecuronium",
+        slug: "vecuronium",
+        interactions: [
+          "Potentiated by aminoglycosides, magnesium, hypothermia, acidosis, hypokalaemia and volatile agents.",
+          "Corticosteroid co-administration during prolonged blockade markedly increases the risk of ICU-acquired weakness.",
+          "Reversible with sugammadex (2–4 mg/kg) but not with the doses used for rocuronium rescue.",
+        ],
+        contraindications: [
+          "No airway rescue plan or inadequate sedation.",
+          "Previous anaphylaxis to a neuromuscular blocker; myasthenia gravis (profound sensitivity).",
+          "Renal failure — the active 3-desacetyl metabolite accumulates and causes prolonged paralysis; use cisatracurium instead.",
+        ],
+        monitoring: [
+          "Train-of-four count at least 4-hourly on an infusion; aim for 1–2 twitches rather than an unmeasured deep block.",
+          "Confirmed deep sedation and analgesia throughout, with eye, pressure-area and VTE care.",
+          "Daily creatinine and a daily paralysis hold where safe — failure to recover twitches after stopping suggests metabolite accumulation.",
+          "Document a train-of-four ratio >0.9 or full reversal before extubation.",
+        ],
+        alert:
+          "Days of vecuronium plus corticosteroids in renal failure is the classic recipe for prolonged ICU-acquired weakness — switch to cisatracurium.",
+      },
+      {
+        drug: "Pancuronium",
+        slug: "pancuronium",
+        interactions: [
+          "Vagolytic and blocks noradrenaline reuptake — tachycardia and hypertension, exaggerated with ketamine and sympathomimetics.",
+          "Potentiated by aminoglycosides, magnesium, hypothermia and acidosis.",
+          "Additive with corticosteroids for critical illness myopathy in prolonged use.",
+        ],
+        contraindications: [
+          "Tachyarrhythmia, ischaemic heart disease and haemodynamic instability where tachycardia is harmful.",
+          "Renal impairment (renal excretion, 2-hour half-life) — accumulation is rapid.",
+          "Myasthenia gravis; previous neuromuscular blocker anaphylaxis; no airway plan or inadequate sedation.",
+        ],
+        monitoring: [
+          "Heart rate and blood pressure after each dose — a rising rate can be mistaken for light sedation or sepsis.",
+          "Train-of-four before every repeat dose rather than fixed-interval dosing.",
+          "Renal function daily; recovery time and residual weakness after stopping.",
+        ],
+        alert:
+          "Pancuronium tachycardia and hypertension can mask, or be mistaken for, inadequate sedation in a paralysed patient — check depth of sedation directly.",
+      },
+      {
+        drug: "Mivacurium",
+        slug: "mivacurium",
+        interactions: [
+          "Block markedly prolonged by plasma cholinesterase deficiency, neostigmine, organophosphates, magnesium and hypothermia.",
+          "Histamine release is worse with rapid injection and additive with atracurium, morphine and vancomycin infusions.",
+        ],
+        contraindications: [
+          "Known or suspected plasma cholinesterase deficiency (as for suxamethonium).",
+          "Severe liver failure (reduced cholinesterase); severe asthma and haemodynamic instability because of histamine release.",
+          "Previous neuromuscular blocker anaphylaxis; not reversible with sugammadex.",
+        ],
+        monitoring: [
+          "Train-of-four recovery — a block outlasting 20–30 min suggests cholinesterase deficiency; keep the patient sedated and ventilated and send a cholinesterase assay.",
+          "Blood pressure, flush and airway pressures after a bolus (histamine); give over 30–60 s.",
+          "Sedation depth throughout.",
+        ],
+      },
+      {
+        drug: "Sugammadex",
+        slug: "sugammadex",
+        interactions: [
+          "Binds progestogens — a dose is equivalent to a missed combined-pill or progestogen-only pill dose; document the advice given.",
+          "Encapsulates rocuronium and vecuronium only: it will not reverse atracurium, cisatracurium, mivacurium or suxamethonium.",
+          "Re-paralysis needs a benzylisoquinolinium agent (or 1.2 mg/kg rocuronium after 24 h; 0.6 mg/kg after 4 h).",
+          "Prolongs the aPTT and INR transiently — interpret coagulation results taken soon after a dose with care.",
+        ],
+        contraindications: [
+          "Known hypersensitivity — anaphylaxis is recognised, often within minutes of the dose.",
+          "Severe renal impairment (eGFR <30 mL/min) is outside the licence: the complex is renally cleared and recurrence of block is possible.",
+          "Not a substitute for a definitive airway plan in can't-intubate-can't-oxygenate: it does not restore respiratory drive or relieve obstruction.",
+        ],
+        monitoring: [
+          "Train-of-four ratio >0.9 confirmed after the dose, then repeated observation for recurrence of weakness in renal impairment.",
+          "Heart rate and rhythm — marked bradycardia and cardiac arrest have been reported immediately after administration; keep atropine to hand.",
+          "Respiratory rate, tidal volume and airway patency after extubation; anaphylaxis observation for at least 30 min.",
+        ],
+        alert:
+          "Sugammadex reverses paralysis, not sedation or airway obstruction — a reversed patient who is still apnoeic needs the airway managed, not more sugammadex.",
+      },
+      {
+        drug: "Neostigmine",
+        slug: "neostigmine",
+        interactions: [
+          "Must be paired with glycopyrronium (or atropine) — unopposed muscarinic effects cause bradycardia, salivation, bronchospasm and vomiting.",
+          "Prolongs suxamethonium and mivacurium block (cholinesterase inhibition); antagonises non-depolarising block.",
+          "Additive bradycardia with β-blockers, digoxin, dexmedetomidine and remifentanil, especially in the pseudo-obstruction infusion.",
+        ],
+        contraindications: [
+          "Mechanical bowel obstruction or suspected perforation (for the pseudo-obstruction indication); peritonitis.",
+          "Bradycardia, second- or third-degree heart block, recent myocardial infarction; severe asthma or active bronchospasm.",
+          "A deep block with no train-of-four twitches — it cannot reverse it; wait for twitches or use sugammadex.",
+        ],
+        monitoring: [
+          "Continuous ECG throughout, with atropine drawn up; stop the infusion for a heart rate below 50/min.",
+          "Train-of-four ratio to confirm reversal, and observation for recurarisation over the following 30–60 min.",
+          "For colonic pseudo-obstruction: abdominal girth, flatus and stool, and a repeat radiograph; watch for excess secretions, bronchospasm and abdominal pain.",
+        ],
+        alert:
+          "Never give neostigmine without an antimuscarinic, and never to reverse a block with no twitches present.",
+      },
     ],
   },
   {
