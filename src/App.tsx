@@ -24,6 +24,7 @@ const ProgressTracker = lazy(() => import("./pages/ProgressTracker"));
 const StudyStats = lazy(() => import("./pages/StudyStats"));
 const StudyPlan = lazy(() => import("./pages/StudyPlan"));
 const PodcastsLibrary = lazy(() => import("./pages/PodcastsLibrary"));
+const PodcastPlaylist = lazy(() => import("./pages/PodcastPlaylist"));
 const GlossaryAudit = lazy(() => import("./pages/GlossaryAudit"));
 const VivaHub = lazy(() => import("./pages/VivaHub"));
 const VivaQuestionLibrary = lazy(() => import("./pages/VivaQuestionLibrary"));
@@ -163,6 +164,7 @@ const App = () => (
           <Route path="/errata" element={<Errata />} />
           <Route path="/trust" element={<Trust />} />
           <Route path="/podcasts" element={<PodcastsLibrary />} />
+          <Route path="/podcasts/playlist" element={<PodcastPlaylist />} />
           <Route path="/glossary-audit" element={<GlossaryAudit />} />
           <Route path="/viva" element={<VivaHub />} />
           <Route path="/viva/library" element={<VivaQuestionLibrary />} />
