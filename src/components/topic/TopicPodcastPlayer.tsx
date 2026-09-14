@@ -38,8 +38,9 @@ import {
   usePodcastJob,
 } from "@/lib/podcastJobs";
 import {
+  ACCENT_GROUPS,
+  accentsInGroup,
   DEFAULT_PODCAST_VOICE,
-  PODCAST_VOICES,
   podcastVoiceLabel,
 } from "@/lib/podcastVoices";
 import { cn } from "@/lib/utils";
