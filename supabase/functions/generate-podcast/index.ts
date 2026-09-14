@@ -1163,10 +1163,11 @@ Deno.serve(async (req) => {
       {
         topic_id: topicId,
         topic_title: topicTitle,
+        voice: voiceIdResolved,
         status: "generating",
         error_message: null,
       },
-      { onConflict: "topic_id" },
+      { onConflict: "topic_id,voice" },
     );
 
     // Generation can take 2–5 minutes (LLM + multi-chunk TTS + upload), which
