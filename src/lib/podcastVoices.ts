@@ -541,7 +541,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     id: "scottish",
     label: "Scottish — Edinburgh",
     description: "Educated Scottish",
-    group: "Scotland",
+    group: "Scottish dialects",
     voice: "ash",
     accent: "educated Scottish (Edinburgh)",
     traits:
@@ -551,7 +551,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     id: "scottish-glaswegian",
     label: "Scottish — Glasgow",
     description: "Glaswegian city",
-    group: "Scotland",
+    group: "Scottish dialects",
     voice: "verse",
     accent: "Glaswegian (Glasgow)",
     traits:
@@ -561,7 +561,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     id: "scottish-highland",
     label: "Scottish — Highland",
     description: "Inverness / West Highland",
-    group: "Scotland",
+    group: "Scottish dialects",
     voice: "ballad",
     accent: "Highland Scottish (Inverness and the West Highlands)",
     traits:
@@ -571,7 +571,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     id: "scottish-doric",
     label: "Scottish — Aberdeen (Doric)",
     description: "North East Scotland",
-    group: "Scotland",
+    group: "Scottish dialects",
     voice: "ash",
     accent: "Doric (Aberdeen and North East Scotland)",
     traits:
@@ -583,7 +583,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     id: "scottish-dundee",
     label: "Scottish — Dundee",
     description: "Tayside",
-    group: "Scotland",
+    group: "Scottish dialects",
     voice: "ash",
     accent: "Dundonian Scots (Dundee)",
     traits:
@@ -593,7 +593,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     id: "scottish-fife",
     label: "Scottish — Fife",
     description: "East central Scotland",
-    group: "Scotland",
+    group: "Scottish dialects",
     voice: "ballad",
     accent: "Fife Scots",
     traits:
@@ -603,7 +603,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     id: "scottish-ayrshire",
     label: "Scottish — Ayrshire",
     description: "South-west Scotland",
-    group: "Scotland",
+    group: "Scottish dialects",
     voice: "coral",
     accent: "Ayrshire Scots",
     traits:
@@ -613,7 +613,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     id: "scottish-borders",
     label: "Scottish — Borders",
     description: "Southern Scotland",
-    group: "Scotland",
+    group: "Scottish dialects",
     voice: "sage",
     accent: "Scottish Borders English",
     traits:
@@ -623,7 +623,7 @@ export const ACCENT_BANK: PodcastAccent[] = [
     id: "scottish-hebridean",
     label: "Scottish — Hebrides",
     description: "Western Isles",
-    group: "Scotland",
+    group: "Scottish dialects",
     voice: "fable",
     accent: "Hebridean Scottish English",
     traits:
