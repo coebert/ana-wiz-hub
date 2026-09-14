@@ -475,11 +475,11 @@ export const ACCENT_BANK: PodcastAccent[] = [
   // ---------------- Wales ----------------
   {
     id: "welsh-south",
-    label: "Welsh — South Wales",
-    description: "Cardiff / Valleys",
+    label: "Welsh — South Wales (general)",
+    description: "General south Wales lilt",
     group: "Wales",
     voice: "coral",
-    accent: "South Wales (Cardiff and the Valleys)",
+    accent: "general South Wales English",
     traits:
       "Sing-song rise and fall, pure elongated vowels, rolled light 'r', clear consonants, melodic warmth.",
   },
@@ -698,8 +698,8 @@ export const ACCENT_BANK: PodcastAccent[] = [
   },
   {
     id: "irish-derry",
-    label: "Irish — Derry",
-    description: "North-west Ireland",
+    label: "Irish — Derry / Londonderry",
+    description: "North-west Northern Ireland",
     group: "Ireland",
     voice: "coral",
     accent: "Derry Irish English",

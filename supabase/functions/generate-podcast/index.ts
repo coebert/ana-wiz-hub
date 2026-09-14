@@ -360,7 +360,7 @@ const ACCENT_BANK: AccentRow[] = [
   {
     id: "welsh-south",
     voice: "coral",
-    accent: "South Wales (Cardiff and the Valleys)",
+    accent: "general South Wales English",
     traits:
       "Sing-song rise and fall, pure elongated vowels, rolled light 'r', clear consonants, melodic warmth.",
   },
