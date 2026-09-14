@@ -1180,8 +1180,10 @@ Deno.serve(async (req) => {
     // every 5s, so the UI will flip to "ready" once the row is updated.
     const work = (async () => {
       try {
-        console.log(`[${topicId}] Generating script...`);
-        const script = await generateScript(topicTitle, content);
+        const script = reusedScript ?? await (async () => {
+          console.log(`[${topicId}] Generating script...`);
+          return generateScript(topicTitle, content);
+        })();
         console.log(`[${topicId}] Script length: ${script.length} chars`);
 
         const chunks = chunkScript(script);
