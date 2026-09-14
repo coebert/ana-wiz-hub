@@ -89,6 +89,7 @@ const ClinicalSection = lazy(() => import("./pages/ClinicalSection"));
 const IntensiveCareSection = lazy(() => import("./pages/IntensiveCareSection"));
 const PerioperativeSection = lazy(() => import("./pages/PerioperativeSection"));
 const CoExistingDiseaseOverview = lazy(() => import("./pages/CoExistingDiseaseOverview"));
+const ComplexNeedsCaseStudy = lazy(() => import("./pages/ComplexNeedsCaseStudy"));
 const PerioperativeTimeline = lazy(() => import("./pages/PerioperativeTimeline"));
 const PerioperativeCaseBank = lazy(() => import("./pages/PerioperativeCaseBank"));
 const PhysicsCaseBank = lazy(() => import("./pages/PhysicsCaseBank"));
@@ -240,6 +241,7 @@ const App = () => (
           <Route path="/perioperative" element={<PerioperativeSection />} />
           <Route path="/perioperative/case-bank" element={<PerioperativeCaseBank />} />
           <Route path="/perioperative/co-existing-disease" element={<CoExistingDiseaseOverview />} />
+          <Route path="/perioperative/complex-needs-case-study" element={<ComplexNeedsCaseStudy />} />
           <Route path="/perioperative/timeline" element={<PerioperativeTimeline />} />
           <Route path="/perioperative/drug-doses" element={<AnaesthesiaDrugDoses />} />
           <Route path="/perioperative/calculator" element={<AnaesthesiaDrugCalculator />} />

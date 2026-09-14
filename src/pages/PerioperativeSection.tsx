@@ -68,6 +68,18 @@ const PerioperativeSection = () => {
 
       <section className="border-b border-border py-5 mb-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div className="flex items-start gap-3">
+          <Stethoscope className="h-6 w-6 shrink-0 text-perioperative mt-0.5" aria-hidden />
+          <div>
+            <h2 className="font-semibold text-foreground">Complex Needs Case Study</h2>
+            <p className="mt-1 text-sm text-muted-foreground">An autistic adult with severe needle phobia followed from referral to discharge, with the decision points at each step.</p>
+          </div>
+        </div>
+        <Button asChild variant="outline" className="shrink-0"><Link to="/perioperative/complex-needs-case-study">Open case study</Link></Button>
+      </section>
+
+
+      <section className="border-b border-border py-5 mb-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex items-start gap-3">
           <Pill className="h-6 w-6 shrink-0 text-perioperative mt-0.5" aria-hidden />
           <div>
             <h2 className="font-semibold text-foreground">Anaesthesia Drug Dosing Table</h2>
