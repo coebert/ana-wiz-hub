@@ -1061,30 +1061,45 @@ Deno.serve(async (req) => {
       }
     }
 
+    // Episodes are cached per (topic, voice): each accent a listener picks gets
+    // its own row, so one user's re-narration never overwrites another's.
     const { data: existing } = await supabase
       .from("podcasts")
       .select("*")
       .eq("topic_id", topicId)
+      .eq("voice", voiceIdResolved)
       .maybeSingle();
 
-    // A cached episode only satisfies the request when it was narrated with
-    // the requested voice — otherwise re-narrate it in the chosen accent.
-    const cachedVoiceId = typeof existing?.voice === "string" && existing.voice ? existing.voice : DEFAULT_VOICE_ID;
-    const voiceChanged = cachedVoiceId !== voiceIdResolved;
+    // The spoken script is accent-independent — reuse it from any other voice's
+    // ready episode for this topic instead of paying for a fresh LLM script.
+    let reusedScript: string | null = null;
+    if (existing?.status !== "ready" || !existing.script) {
+      const { data: anyVoice } = await supabase
+        .from("podcasts")
+        .select("script")
+        .eq("topic_id", topicId)
+        .eq("status", "ready")
+        .not("script", "is", null)
+        .limit(1)
+        .maybeSingle();
+      if (anyVoice?.script) reusedScript = anyVoice.script as string;
+    }
 
-    if (!forceRegenerate && !voiceChanged && existing?.status === "ready" && existing.audio_path) {
+    // The row is scoped to this voice already, so a ready row is always a
+    // cache hit for the requested accent.
+    if (!forceRegenerate && existing?.status === "ready" && existing.audio_path) {
       const { data: pub } = supabase.storage.from("podcasts").getPublicUrl(existing.audio_path);
       return jsonResponse({
         status: "ready",
         audio_url: pub.publicUrl,
         script: existing.script,
         duration_seconds: existing.duration_seconds,
-        voice: cachedVoiceId,
+        voice: voiceIdResolved,
         cached: true,
       });
     }
-    if (!forceRegenerate && voiceChanged && existing?.status === "ready") {
-      console.log(`[${topicId}] Voice change ${cachedVoiceId} → ${voiceIdResolved} — re-narrating.`);
+    if (reusedScript) {
+      console.log(`[${topicId}] Reusing script from another voice — TTS only for ${voiceIdResolved}.`);
     }
 
     // Treat any row stuck in "generating" for >3 minutes as abandoned
@@ -1148,10 +1163,11 @@ Deno.serve(async (req) => {
       {
         topic_id: topicId,
         topic_title: topicTitle,
+        voice: voiceIdResolved,
         status: "generating",
         error_message: null,
       },
-      { onConflict: "topic_id" },
+      { onConflict: "topic_id,voice" },
     );
 
     // Generation can take 2–5 minutes (LLM + multi-chunk TTS + upload), which
@@ -1164,8 +1180,10 @@ Deno.serve(async (req) => {
     // every 5s, so the UI will flip to "ready" once the row is updated.
     const work = (async () => {
       try {
-        console.log(`[${topicId}] Generating script...`);
-        const script = await generateScript(topicTitle, content);
+        const script = reusedScript ?? await (async () => {
+          console.log(`[${topicId}] Generating script...`);
+          return generateScript(topicTitle, content);
+        })();
         console.log(`[${topicId}] Script length: ${script.length} chars`);
 
         const chunks = chunkScript(script);
@@ -1205,7 +1223,8 @@ Deno.serve(async (req) => {
             status: "ready",
             error_message: null,
           })
-          .eq("topic_id", topicId);
+          .eq("topic_id", topicId)
+          .eq("voice", voiceIdResolved);
 
         console.log(`[${topicId}] Generation complete — row marked ready.`);
       } catch (genErr) {
@@ -1215,7 +1234,8 @@ Deno.serve(async (req) => {
         await supabase
           .from("podcasts")
           .update({ status: "failed", error_message: failure.error })
-          .eq("topic_id", topicId);
+          .eq("topic_id", topicId)
+          .eq("voice", voiceIdResolved);
       } finally {
         activeGenerations = Math.max(0, activeGenerations - 1);
       }

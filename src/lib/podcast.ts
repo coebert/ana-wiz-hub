@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
+import { DEFAULT_PODCAST_VOICE } from "@/lib/podcastVoices";
 
 export interface PodcastResult {
   status: "ready" | "generating" | "failed";
@@ -163,11 +164,15 @@ export const extractTopicContent = (): ExtractionResult => {
 
 export const fetchPodcast = async (
   topicId: string,
+  voiceId?: string,
 ): Promise<PodcastResult | null> => {
+  // Episodes are cached per (topic, voice) — each accent has its own row.
+  const voice = voiceId ?? DEFAULT_PODCAST_VOICE;
   const { data, error } = await supabase
     .from("podcasts")
     .select("status, audio_path, script, duration_seconds, updated_at, voice")
     .eq("topic_id", topicId)
+    .eq("voice", voice)
     .maybeSingle();
 
   if (error || !data) return null;
@@ -205,6 +210,7 @@ export const pollPodcastUntilDone = async (
   opts: {
     intervalMs?: number;
     timeoutMs?: number;
+    voiceId?: string;
     onTick?: (result: PodcastResult | null) => void;
     signal?: { cancelled: boolean };
   } = {},
@@ -220,7 +226,7 @@ export const pollPodcastUntilDone = async (
     await new Promise((r) => setTimeout(r, intervalMs));
     let polled: PodcastResult | null = null;
     try {
-      polled = await fetchPodcast(topicId);
+      polled = await fetchPodcast(topicId, opts.voiceId);
     } catch {
       polled = null;
     }

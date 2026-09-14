@@ -155,17 +155,15 @@ export const startPodcastJob = async (opts: StartOptions): Promise<PodcastResult
 
   try {
     if (!force) {
-      const current = await fetchPodcast(topicId);
-      // A cached episode in a different voice must be re-narrated, so skip the
-      // cache shortcut when the caller asked for another narrator.
-      const voiceMatches =
-        !voiceId || !current?.voice || current.voice === voiceId;
-      if (current?.status === "ready" && voiceMatches) {
+      // Episodes are cached per (topic, voice), so check the row for the
+      // requested accent specifically.
+      const current = await fetchPodcast(topicId, voiceId);
+      if (current?.status === "ready") {
         finish(topicId, { ...current, cached: true });
         return current;
       }
       if (current?.status === "generating" && !isStaleGenerating(current)) {
-        const polled = await pollPodcastUntilDone(topicId, { onTick: onTick(topicId) });
+        const polled = await pollPodcastUntilDone(topicId, { voiceId, onTick: onTick(topicId) });
         finish(topicId, polled);
         return polled;
       }
@@ -180,13 +178,13 @@ export const startPodcastJob = async (opts: StartOptions): Promise<PodcastResult
     // The edge function keeps working after the HTTP request times out, so a
     // failed/generating response doesn't mean the run died — check the row.
     if (result.status === "failed" || result.status === "generating") {
-      const current = await fetchPodcast(topicId);
+      const current = await fetchPodcast(topicId, voiceId);
       if (current && (current.status === "generating" || current.status === "ready")) {
         if (current.status === "ready") {
           finish(topicId, current);
           return current;
         }
-        result = await pollPodcastUntilDone(topicId, { onTick: onTick(topicId) });
+        result = await pollPodcastUntilDone(topicId, { voiceId, onTick: onTick(topicId) });
       }
     }
 
@@ -210,12 +208,13 @@ export const attachPodcastJob = async (
   topicId: string,
   topicTitle: string,
   topicPath: string,
+  voiceId?: string,
 ): Promise<PodcastResult> => {
   const existing = jobs.get(topicId);
   if (existing && existing.status === "generating") return { status: "generating" };
 
   createJob(topicId, topicTitle, topicPath, false);
-  const polled = await pollPodcastUntilDone(topicId, { onTick: onTick(topicId) });
+  const polled = await pollPodcastUntilDone(topicId, { voiceId, onTick: onTick(topicId) });
   finish(topicId, polled);
   return polled;
 };
