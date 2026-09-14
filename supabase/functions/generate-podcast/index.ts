@@ -360,6 +360,11 @@ async function synthesiseChunk(text: string, attempt = 1): Promise<Uint8Array> {
         input: text,
         response_format: "mp3",
         speed: 1.0,
+        // gpt-4o-mini-tts supports steerable delivery — request a British
+        // English accent so podcasts sound right for a UK exam audience.
+        instructions:
+          "Speak with a natural British English (modern Received Pronunciation) accent. " +
+          "Warm, confident, like a senior UK anaesthetic trainee tutoring a peer.",
       }),
     });
 
