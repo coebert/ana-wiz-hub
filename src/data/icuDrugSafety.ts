@@ -982,6 +982,111 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
       },
     ],
   },
+  {
+    id: "anticholinergic",
+    title: "Anticholinergics and antimuscarinics",
+    blurb:
+      "The safety question is always the same: tachycardia, urinary retention, ileus and — for drugs that cross the blood–brain barrier — delirium in exactly the patients least able to tolerate it.",
+    drugs: [
+      {
+        drug: "Atropine",
+        slug: "atropine",
+        interactions: [
+          "Additive antimuscarinic load with hyoscine hydrobromide, tricyclics, antihistamines, cyclizine, antipsychotics and oxybutynin — a common driver of ICU delirium.",
+          "Antagonises the bradycardia of neostigmine, β-blockers, digoxin and dexmedetomidine; masks the bradycardia that warns of an escalating problem.",
+          "Slows gastric emptying and so delays absorption of enteral drugs and feed.",
+        ],
+        contraindications: [
+          "Relative: glaucoma (angle-closure), prostatic obstruction and urinary retention, paralytic ileus, pyloric stenosis and myasthenia gravis.",
+          "Avoid as a first response to bradycardia in a hypoxic patient — oxygenate and ventilate first.",
+          "Doses below 300 microgram (adults) can cause paradoxical bradycardia; never use as a 'test' dose.",
+        ],
+        monitoring: [
+          "Continuous ECG and blood pressure after every dose; a heart rate above 100–110/min in ischaemic heart disease risks demand ischaemia.",
+          "Mental state — new confusion, agitation, dry flushed skin and dilated pupils suggest central anticholinergic syndrome; stop the drug rather than adding a sedative.",
+          "Bladder scan and bowel sounds after repeated doses; temperature (impaired sweating) in warm environments.",
+          "In organophosphate poisoning titrate to dry chest secretions, clear breath sounds and a heart rate above 80/min, doubling doses; record cumulative totals.",
+        ],
+        alert:
+          "In cardiac arrest and in hypoxic bradycardia atropine treats the number, not the patient — correct oxygenation, ventilation and pacing needs first.",
+      },
+      {
+        drug: "Glycopyrronium (glycopyrrolate)",
+        slug: "glycopyrronium",
+        interactions: [
+          "Paired with neostigmine to block muscarinic effects — give together or the patient becomes profoundly bradycardic.",
+          "Additive peripheral antimuscarinic effects with hyoscine butylbromide, tricyclics and antihistamines.",
+          "Reduces absorption of sublingual and enteral drugs by causing a dry mouth and slowing gut transit.",
+        ],
+        contraindications: [
+          "Relative: angle-closure glaucoma, prostatic obstruction, paralytic ileus and severe ulcerative colitis / toxic megacolon.",
+          "Accumulates in renal impairment (renally cleared) — extend the dose interval.",
+        ],
+        monitoring: [
+          "Heart rate and rhythm after each dose; less tachycardia than atropine but still significant in ischaemic heart disease.",
+          "Urinary output and bladder distension, particularly in older men and once the catheter is removed.",
+          "Secretion burden and oral care when used as an antisialagogue or in an end-of-life infusion; reassess the need daily.",
+        ],
+        alert:
+          "Being quaternary, it does not cause central anticholinergic delirium — prefer it to atropine or hyoscine hydrobromide in the elderly or delirious patient.",
+      },
+      {
+        drug: "Hyoscine butylbromide (Buscopan)",
+        slug: "hyoscine-butylbromide",
+        interactions: [
+          "Additive antimuscarinic effects with glycopyrronium, tricyclics, antihistamines and antipsychotics.",
+          "Worsens ileus when combined with opioids in a postoperative or obstructed abdomen.",
+        ],
+        contraindications: [
+          "Paralytic ileus, mechanical bowel obstruction being managed conservatively without decompression, toxic megacolon.",
+          "Angle-closure glaucoma, prostatic obstruction, myasthenia gravis, tachyarrhythmia.",
+        ],
+        monitoring: [
+          "Heart rate; tachycardia is the commonest dose-limiting effect.",
+          "Bowel sounds and abdominal distension when used for colic; bladder distension after repeat doses.",
+          "Secretion score at the end of life — reassess the subcutaneous infusion daily rather than continuing by default.",
+        ],
+        alert:
+          "Hyoscine butylbromide and hyoscine hydrobromide are different drugs with different doses and central effects — the substitution error is a recognised palliative-care incident.",
+      },
+      {
+        drug: "Hyoscine hydrobromide (scopolamine)",
+        slug: "hyoscine-hydrobromide",
+        interactions: [
+          "Strongly additive central anticholinergic load with cyclizine, tricyclics, antihistamines, atropine and antipsychotics.",
+          "Sedation is additive with opioids, benzodiazepines and antipsychotics.",
+        ],
+        contraindications: [
+          "Established or high-risk delirium, dementia and the frail elderly (relative — choose glycopyrronium or hyoscine butylbromide).",
+          "Angle-closure glaucoma, prostatic obstruction, paralytic ileus, myasthenia gravis.",
+        ],
+        monitoring: [
+          "Mental state daily — remove the patch and reconsider the drug in any new confusion, agitation or hallucination.",
+          "Heart rate, bowel and bladder function; check for a forgotten patch during any delirium screen.",
+          "Secretion burden; document the indication and review date.",
+        ],
+        alert:
+          "A forgotten hyoscine hydrobromide patch is a classic reversible cause of postoperative and ICU delirium — look behind the ear.",
+      },
+      {
+        drug: "Ipratropium bromide",
+        slug: "ipratropium-bromide",
+        interactions: [
+          "Synergistic bronchodilation with nebulised salbutamol — the combination is standard in acute severe asthma and COPD.",
+          "Additive antimuscarinic effects if a long-acting muscarinic antagonist (tiotropium) is continued; do not use both.",
+        ],
+        contraindications: [
+          "Hypersensitivity to ipratropium or atropine derivatives.",
+          "Caution in angle-closure glaucoma (mask spill onto the eyes), prostatic obstruction and bladder outflow obstruction.",
+        ],
+        monitoring: [
+          "Respiratory rate, work of breathing, peak flow or ventilator pressures before and after the dose to demonstrate benefit.",
+          "Eye symptoms (painful red eye, blurred vision) with mask nebulisation — use a mouthpiece or protect the eyes in glaucoma.",
+          "Stop the regular prescription once the exacerbation settles; there is no maintenance role once a long-acting inhaler is restarted.",
+        ],
+      },
+    ],
+  },
 ];
 
 export const icuDrugSafetyCount = icuDrugSafetyGroups.reduce((n, g) => n + g.drugs.length, 0);
