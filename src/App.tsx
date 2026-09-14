@@ -6,6 +6,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Header } from "@/components/layout/Header";
 import { UpdateBanner } from "@/components/layout/UpdateBanner";
 import { CascadePerfBadge } from "@/components/diagrams/_dev/CascadePerfBadge";
+import { PodcastJobsIndicator } from "@/components/topic/PodcastJobsIndicator";
+
 import { VisitTrackerWrapper } from "@/components/layout/VisitTrackerWrapper";
 import Landing from "./pages/Landing";
 import Index from "./pages/Index";
