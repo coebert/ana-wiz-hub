@@ -210,6 +210,7 @@ export const pollPodcastUntilDone = async (
   opts: {
     intervalMs?: number;
     timeoutMs?: number;
+    voiceId?: string;
     onTick?: (result: PodcastResult | null) => void;
     signal?: { cancelled: boolean };
   } = {},
@@ -225,7 +226,7 @@ export const pollPodcastUntilDone = async (
     await new Promise((r) => setTimeout(r, intervalMs));
     let polled: PodcastResult | null = null;
     try {
-      polled = await fetchPodcast(topicId);
+      polled = await fetchPodcast(topicId, opts.voiceId);
     } catch {
       polled = null;
     }
