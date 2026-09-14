@@ -441,12 +441,17 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         >
           <SelectValue />
         </SelectTrigger>
-        <SelectContent>
-          {PODCAST_VOICES.map((v) => (
-            <SelectItem key={v.id} value={v.id} className="text-xs">
-              <span className="font-medium">{v.label}</span>
-              <span className="text-muted-foreground"> — {v.description}</span>
-            </SelectItem>
+        <SelectContent className="max-h-[60vh]">
+          {ACCENT_GROUPS.map((group) => (
+            <SelectGroup key={group}>
+              <SelectLabel className="text-[0.7rem] uppercase tracking-wide">{group}</SelectLabel>
+              {accentsInGroup(group).map((v) => (
+                <SelectItem key={v.id} value={v.id} className="text-xs">
+                  <span className="font-medium">{v.label}</span>
+                  <span className="text-muted-foreground"> — {v.description}</span>
+                </SelectItem>
+              ))}
+            </SelectGroup>
           ))}
         </SelectContent>
       </Select>
