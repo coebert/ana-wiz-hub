@@ -109,6 +109,7 @@ const IcuInteractionChecker = lazy(() => import("./pages/IcuInteractionChecker")
 const IcuInteractionMatrix = lazy(() => import("./pages/IcuInteractionMatrix"));
 const IcuDrugComparison = lazy(() => import("./pages/IcuDrugComparison"));
 const IcuDrugCards = lazy(() => import("./pages/IcuDrugCards"));
+const IcuPharmacology = lazy(() => import("./pages/IcuPharmacology"));
 const PaediatricPharmacokinetics = lazy(() => import("./pages/PaediatricPharmacokinetics"));
 
 const AnaesthesiaDrugDoses = lazy(() => import("./pages/AnaesthesiaDrugDoses"));
@@ -233,6 +234,7 @@ const App = () => (
           <Route path="/intensive-care/interaction-matrix" element={<IcuInteractionMatrix />} />
           <Route path="/intensive-care/drug-comparison" element={<IcuDrugComparison />} />
           <Route path="/intensive-care/drug-cards" element={<IcuDrugCards />} />
+          <Route path="/intensive-care/pharmacology" element={<IcuPharmacology />} />
           <Route path="/intensive-care/paediatric-pharmacokinetics" element={<PaediatricPharmacokinetics />} />
 
           <Route path="/perioperative" element={<PerioperativeSection />} />
