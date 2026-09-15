@@ -200,6 +200,24 @@ export const fetchPodcast = async (
 };
 
 /**
+ * List the narrator accents that already have a finished recording for a topic.
+ * Listeners only ever choose from these; generating new accents is admin-only.
+ */
+export const fetchRecordedVoices = async (topicId: string): Promise<string[]> => {
+  const { data, error } = await supabase
+    .from("podcasts")
+    .select("voice")
+    .eq("topic_id", topicId)
+    .eq("status", "ready")
+    .not("audio_path", "is", null);
+  if (error || !data) return [];
+  const voices = data
+    .map((r) => r.voice ?? DEFAULT_PODCAST_VOICE)
+    .filter((v): v is string => typeof v === "string" && v.length > 0);
+  return Array.from(new Set(voices));
+};
+
+/**
  * Poll the cached podcasts row until it reaches a terminal state (`ready` or
  * `failed`), or until the timeout elapses. Used as a fallback when the initial
  * `generate-podcast` invocation times out at the HTTP layer but the edge
