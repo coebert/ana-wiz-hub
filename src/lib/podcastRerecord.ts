@@ -407,7 +407,9 @@ export const runRerecordQueue = async (
       // allowed to hold the rest of the batch (and the run) up.
       const attempt = await withTimeout(
         (async (): Promise<{ ok: boolean; error: string | null }> => {
-          const content = await extractViaIframe(item.topic_path);
+          const cached = contentCache.get(item.topic_id);
+          const content = cached ?? (await extractViaIframe(item.topic_path));
+          contentCache.set(item.topic_id, content);
           const result = await generatePodcast(item.topic_id, item.topic_title, content, {
             force: true,
             regeneratePassword,
