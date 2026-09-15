@@ -178,7 +178,9 @@ export default function PodcastRerecord() {
           Records every topic again with a real regional voice and a fresh script, so episodes
           reflect the current page content. Each existing episode keeps playing until its
           replacement is ready. Pick up to {MAX_JOB_VOICES} accents — {topicCount} topics per
-          accent, one at a time. Keep this page open while it runs; you can pause and resume, and
+          accent, in small batches. Keep this page open and the screen on while it runs — phones and
+          tablets put background pages to sleep, which halts the run. If that happens, the run picks
+          itself back up when you return to this page, interrupted episodes are retried, and
           finished episodes are never repeated.
         </p>
       </header>
