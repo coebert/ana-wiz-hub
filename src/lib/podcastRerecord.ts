@@ -59,6 +59,34 @@ export interface RerecordItem {
 /** Hard ceiling on accents per job — a handful, deliberately, not all 98. */
 export const MAX_JOB_VOICES = 5;
 
+/** Episodes attempted per batch before the runner takes a breather. */
+export const DEFAULT_BATCH_SIZE = 8;
+export const BATCH_SIZE_OPTIONS = [4, 8, 12, 20] as const;
+
+/** Pause between batches — keeps both services gentle and lets the UI catch up. */
+const BATCH_COOLDOWN_MS = 15_000;
+
+/**
+ * Wall-clock budget for a single episode. A very long topic that cannot be read
+ * or recorded in this window is failed and skipped, so the queue keeps moving
+ * instead of stalling behind it.
+ */
+const ITEM_TIME_BUDGET_MS = 8 * 60_000;
+
+const withTimeout = async <T>(work: Promise<T>, ms: number, label: string): Promise<T> => {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      work,
+      new Promise<never>((_, reject) => {
+        timer = setTimeout(() => reject(new Error(`${label} took too long — skipped.`)), ms);
+      }),
+    ]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+};
+
 /** Topics that have a podcast page and can be re-recorded. */
 export const rerecordableTopics = (): Array<{ id: string; title: string; path: string }> =>
   allTopics
@@ -244,23 +272,30 @@ const reclaimStaleItems = async (jobId: string, cb: RunnerCallbacks = {}): Promi
 
 
 /**
- * Process pending items one at a time until the queue drains, the job is
- * paused/cancelled, or `signal.stopped` flips. Safe to call again later — it
- * only ever picks up items still marked pending.
+ * Process pending items one small batch at a time until the queue drains, the
+ * job is paused/cancelled, or `signal.stopped` flips. Each batch attempts at
+ * most `batchSize` episodes, alternating accents so one accent (or one very
+ * long topic) cannot hold the whole run up, then rests before the next batch.
+ * Safe to call again later — it only ever picks up items still marked pending.
  */
 export const runRerecordQueue = async (
   jobId: string,
   regeneratePassword: string,
   signal: { stopped: boolean },
   cb: RunnerCallbacks = {},
+  options: { batchSize?: number } = {},
 ): Promise<void> => {
   let rateLimitStrikes = 0;
+  const batchSize = Math.max(1, Math.min(50, options.batchSize ?? DEFAULT_BATCH_SIZE));
+  let batchNumber = 1;
+  let inBatch = 0;
+  let lastVoice: string | null = null;
 
   // Recover items left mid-flight by a closed tab or refresh: if the recording
   // actually landed, count it; otherwise put it back in the queue.
   await reclaimStaleItems(jobId, cb);
 
-
+  cb.onLog?.(`Batch ${batchNumber} starting — up to ${batchSize} episodes.`);
 
   for (;;) {
     if (signal.stopped) return;
@@ -273,14 +308,29 @@ export const runRerecordQueue = async (
       return;
     }
 
-    const { data: next } = await supabase
+    // Batch boundary: rest, then keep going with a fresh batch.
+    if (inBatch >= batchSize) {
+      cb.onLog?.(`Batch ${batchNumber} finished (${inBatch} episodes). Pausing briefly…`);
+      await new Promise((r) => setTimeout(r, BATCH_COOLDOWN_MS));
+      if (signal.stopped) return;
+      inBatch = 0;
+      batchNumber += 1;
+      cb.onLog?.(`Batch ${batchNumber} starting — up to ${batchSize} episodes.`);
+      continue;
+    }
+
+    // Take a small window of pending work and prefer a different accent from
+    // the last episode, so accents progress side by side.
+    const { data: candidates } = await supabase
       .from("podcast_rerecord_items")
       .select("*")
       .eq("job_id", jobId)
       .eq("status", "pending")
       .order("created_at", { ascending: true })
-      .limit(1)
-      .maybeSingle();
+      .limit(40);
+
+    const pending = (candidates ?? []) as RerecordItem[];
+    const next = pending.find((p) => p.voice !== lastVoice) ?? pending[0] ?? null;
 
     if (!next) {
       await supabase
@@ -293,6 +343,8 @@ export const runRerecordQueue = async (
     }
 
     const item = next as RerecordItem;
+    inBatch += 1;
+    lastVoice = item.voice;
     // Claim the item first, so a second tab cannot double-spend on it.
     await supabase
       .from("podcast_rerecord_items")
@@ -310,24 +362,32 @@ export const runRerecordQueue = async (
     let errorMessage: string | null = null;
 
     try {
-      const content = await extractViaIframe(item.topic_path);
-      const result = await generatePodcast(item.topic_id, item.topic_title, content, {
-        force: true,
-        regeneratePassword,
-        voiceId: item.voice,
-        preserveExisting: true,
-      });
+      // Per-episode budget: an unusually long topic is skipped rather than
+      // allowed to hold the rest of the batch (and the run) up.
+      const attempt = await withTimeout(
+        (async (): Promise<{ ok: boolean; error: string | null }> => {
+          const content = await extractViaIframe(item.topic_path);
+          const result = await generatePodcast(item.topic_id, item.topic_title, content, {
+            force: true,
+            regeneratePassword,
+            voiceId: item.voice,
+            preserveExisting: true,
+          });
 
-      if (result.status === "failed") {
-        errorMessage = result.error ?? "Generation failed.";
-      } else if (result.status === "ready") {
-        outcome = "done";
-      } else {
-        // Generation continues server-side; wait for the row to settle.
-        const settled = await waitForEpisode(item.topic_id, item.voice, signal);
-        if (settled === "ready") outcome = "done";
-        else errorMessage = settled;
-      }
+          if (result.status === "failed") {
+            return { ok: false, error: result.error ?? "Generation failed." };
+          }
+          if (result.status === "ready") return { ok: true, error: null };
+
+          // Generation continues server-side; wait for the row to settle.
+          const settled = await waitForEpisode(item.topic_id, item.voice, signal);
+          return settled === "ready" ? { ok: true, error: null } : { ok: false, error: settled };
+        })(),
+        ITEM_TIME_BUDGET_MS,
+        `${item.topic_title} — ${item.voice}`,
+      );
+      outcome = attempt.ok ? "done" : "failed";
+      errorMessage = attempt.error;
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : String(err);
     }
