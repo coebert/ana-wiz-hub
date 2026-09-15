@@ -470,6 +470,11 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
                 <SelectItem key={v.id} value={v.id} className="text-xs">
                   <span className="font-medium">{v.label}</span>
                   <span className="text-muted-foreground"> — {v.description}</span>
+                  {hasNativeVoice(v.id) && (
+                    <span className="ml-1 text-[0.65rem] uppercase tracking-wide text-primary">
+                      native voice
+                    </span>
+                  )}
                 </SelectItem>
               ))}
             </SelectGroup>
