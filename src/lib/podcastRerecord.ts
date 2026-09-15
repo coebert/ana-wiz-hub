@@ -198,6 +198,52 @@ export interface RunnerCallbacks {
 }
 
 /**
+ * Items stuck in "running" (tab closed, refresh, crash) are resolved here:
+ * marked done when the episode is actually ready, otherwise re-queued.
+ */
+const reclaimStaleItems = async (jobId: string, cb: RunnerCallbacks = {}): Promise<void> => {
+  const { data: stale } = await supabase
+    .from("podcast_rerecord_items")
+    .select("*")
+    .eq("job_id", jobId)
+    .eq("status", "running");
+
+  for (const raw of (stale ?? []) as RerecordItem[]) {
+    const { data: episode } = await supabase
+      .from("podcasts")
+      .select("status, audio_path, regenerating")
+      .eq("topic_id", raw.topic_id)
+      .eq("voice", raw.voice)
+      .maybeSingle();
+
+    const landed =
+      !!episode && episode.status === "ready" && !!episode.audio_path && !episode.regenerating;
+
+    if (landed) {
+      await supabase
+        .from("podcast_rerecord_items")
+        .update({ status: "done", completed_at: new Date().toISOString(), error_message: null })
+        .eq("id", raw.id);
+      const job = await fetchJob(jobId);
+      if (job) {
+        await supabase
+          .from("podcast_rerecord_jobs")
+          .update({ processed: job.processed + 1, succeeded: job.succeeded + 1 })
+          .eq("id", jobId);
+      }
+      cb.onLog?.(`Recovered ${raw.topic_title} — ${raw.voice} (already recorded).`);
+    } else {
+      await supabase
+        .from("podcast_rerecord_items")
+        .update({ status: "pending", started_at: null })
+        .eq("id", raw.id);
+      cb.onLog?.(`Re-queued ${raw.topic_title} — ${raw.voice} (interrupted).`);
+    }
+  }
+};
+
+
+/**
  * Process pending items one at a time until the queue drains, the job is
  * paused/cancelled, or `signal.stopped` flips. Safe to call again later — it
  * only ever picks up items still marked pending.
