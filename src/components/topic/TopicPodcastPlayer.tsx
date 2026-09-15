@@ -540,6 +540,27 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     );
   }
 
+  // Nothing recorded yet and the visitor cannot commission recordings.
+  if ((!podcast || podcast.status !== "ready" || !podcast.audio_url) && !isAdmin) {
+    return (
+      <div className="rounded-xl border border-border bg-card p-4">
+        <div className="flex items-start gap-3">
+          <Headphones className="h-5 w-5 text-primary mt-0.5 shrink-0" aria-hidden="true" />
+          <div>
+            <h3 className="font-serif text-base font-semibold text-foreground">
+              Listen to this topic
+            </h3>
+            <p className="mt-0.5 text-sm text-muted-foreground">
+              {podcast?.status === "generating"
+                ? "A recording for this topic is being prepared — check back shortly."
+                : "No audio recording has been made for this topic yet. Recordings are added by the editorial team."}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // Not yet generated, or failed → show CTA
   if (!podcast || podcast.status !== "ready" || !podcast.audio_url) {
     const isFailed = podcast?.status === "failed";
