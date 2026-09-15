@@ -23,6 +23,10 @@ import type { PerioperativeCase } from "../src/components/perioperative/Progress
 
 const ROOT = resolve(import.meta.dirname ?? __dirname, "..");
 const OUT = resolve(ROOT, "supabase/functions/audit-topics/audit-corpus.json");
+const PODCAST_OUT = resolve(
+  ROOT,
+  "supabase/functions/process-podcast-rerecord/topic-corpus.json",
+);
 
 /** Max component files pulled in per topic (diagrams, shared blocks). */
 const MAX_IMPORT_DEPTH = 2;
@@ -399,18 +403,28 @@ function main() {
   );
 
   mkdirSync(dirname(OUT), { recursive: true });
+  const corpus = JSON.stringify(
+    {
+      generated_at: new Date().toISOString(),
+      topic_count: entries.length,
+      entries,
+      cases: buildCaseDictionary(),
+    },
+    null,
+    0,
+  );
+  writeFileSync(OUT, corpus);
+  mkdirSync(dirname(PODCAST_OUT), { recursive: true });
   writeFileSync(
-    OUT,
-    JSON.stringify(
-      {
-        generated_at: new Date().toISOString(),
-        topic_count: entries.length,
-        entries,
-        cases: buildCaseDictionary(),
-      },
-      null,
-      0,
-    ),
+    PODCAST_OUT,
+    JSON.stringify({
+      generated_at: new Date().toISOString(),
+      entries: entries.map(({ topic_id, topic_title, text }) => ({
+        topic_id,
+        topic_title,
+        text,
+      })),
+    }),
   );
 
   console.log(`[build-audit-corpus] ${entries.length} topics → ${OUT.replace(`${ROOT}/`, "")}`);

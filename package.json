@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "predev": "tsx scripts/generate-citation-stats.ts && tsx scripts/generate-sitemap.ts && npm run gen:diagram-snapshots",
+    "predev": "tsx scripts/generate-citation-stats.ts && tsx scripts/generate-sitemap.ts && npm run gen:diagram-snapshots && npm run build:audit-corpus",
     "build": "vite build",
     "build:dev": "vite build --mode development",
-    "prebuild": "tsx scripts/generate-citation-stats.ts && npm run check -- --rule=citation-stats && tsx scripts/generate-sitemap.ts && npm run gen:diagram-snapshots",
+    "prebuild": "tsx scripts/generate-citation-stats.ts && npm run check -- --rule=citation-stats && tsx scripts/generate-sitemap.ts && npm run gen:diagram-snapshots && npm run build:audit-corpus",
     "gen:sitemap": "tsx scripts/generate-sitemap.ts",
     "submit:sitemap": "tsx scripts/submit-sitemap.ts",
     "prerender:seo": "tsx scripts/prerender-seo.ts",
@@ -29,7 +29,7 @@
     "verify:claims:extract": "node scripts/verify-claims.mjs --extract-only",
     "check": "node scripts/content-check.mjs",
     "check:all": "npm run check",
-    "build:audit-corpus": "tsx scripts/build-audit-corpus.ts",
+    "build:audit-corpus": "bun scripts/build-audit-corpus.ts",
     "check:references": "tsx scripts/check-reference-integrity.ts",
     "check:references:refresh": "tsx scripts/check-reference-integrity.ts --refresh",
 

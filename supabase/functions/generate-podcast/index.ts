@@ -17,7 +17,7 @@ import { NATIVE_VOICE_IDS } from "./_native-voices.ts";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+    "authorization, x-client-info, apikey, content-type, x-internal-token, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
@@ -1114,18 +1114,18 @@ const MAX_TTS_CHARS = 2800;
 // Hard fallback: if a single sentence exceeds MAX_TTS_CHARS we still need to
 // split it. OpenAI rejects > 4096 chars per request.
 const HARD_TTS_LIMIT = 3900;
-// How many TTS chunks to synthesise concurrently. Tunable at runtime via the
-// TTS_CONCURRENCY env var (safe default 4). Clamped to [1, 16] so a bad value
-// can never stall generation or hammer the OpenAI API.
+// ElevenLabs currently permits three concurrent requests for this account.
+// Staying within that cap prevents regional chunks silently falling back to a
+// generic voice when a fourth native request is rate-limited.
 const TTS_CONCURRENCY = (() => {
   const raw = Deno.env.get("TTS_CONCURRENCY");
-  if (!raw) return 4;
+  if (!raw) return 3;
   const parsed = Number.parseInt(raw, 10);
   if (!Number.isFinite(parsed) || parsed < 1) {
-    console.warn(`[config] Invalid TTS_CONCURRENCY="${raw}", falling back to 4`);
-    return 4;
+    console.warn(`[config] Invalid TTS_CONCURRENCY="${raw}", falling back to 3`);
+    return 3;
   }
-  return Math.min(parsed, 16);
+  return Math.min(parsed, 3);
 })();
 console.log(`[config] TTS_CONCURRENCY effective value: ${TTS_CONCURRENCY}`);
 // Per-chunk retry budget (network blips, transient 5xx, brief 429s).
@@ -1182,6 +1182,8 @@ interface RequestBody {
    * episode mid-run.
    */
   preserveExisting?: boolean;
+  /** Internal bulk jobs refresh the script once per topic after content changes. */
+  refreshScript?: boolean;
 }
 
 // Shared secret that authorises bypassing the cached podcast and regenerating
@@ -1474,7 +1476,8 @@ async function synthesiseChunkNative(
       const isRetryable =
         response.status === 429 || response.status === 409 || response.status >= 500;
       if (isRetryable && attempt < TTS_MAX_RETRIES) {
-        await sleep(500 * Math.pow(2, attempt - 1) + Math.random() * 250);
+        const baseDelay = response.status === 429 ? 3_000 : 500;
+        await sleep(baseDelay * Math.pow(2, attempt - 1) + Math.random() * 500);
         return synthesiseChunkNative(text, nativeVoiceId, attempt + 1);
       }
       console.error(`[tts] native voice failed (${response.status}): ${errText}`);
@@ -1618,8 +1621,9 @@ Deno.serve(async (req) => {
   const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
 
   try {
-    const { topicId, topicTitle, content, force, regeneratePassword, voiceId, preserveExisting } =
+    const { topicId, topicTitle, content, force, regeneratePassword, voiceId, preserveExisting, refreshScript } =
       (await req.json()) as RequestBody;
+    const internalRequest = req.headers.get("x-internal-token") === SERVICE_ROLE;
     const { id: voiceIdResolved, preset: voicePreset } = resolveVoice(voiceId);
 
     if (!topicId || !topicTitle || !content) {
@@ -1643,7 +1647,7 @@ Deno.serve(async (req) => {
     const forceRegenerate = force === true;
     if (forceRegenerate) {
       const submittedPassword = typeof regeneratePassword === "string" ? regeneratePassword.trim() : "";
-      if (!REGENERATE_PASSWORD || submittedPassword !== REGENERATE_PASSWORD) {
+      if (!internalRequest && (!REGENERATE_PASSWORD || submittedPassword !== REGENERATE_PASSWORD)) {
         return failureResponse(
           {
             status: "failed",
@@ -1667,7 +1671,7 @@ Deno.serve(async (req) => {
     // The spoken script is accent-independent — reuse it from any other voice's
     // ready episode for this topic instead of paying for a fresh LLM script.
     let reusedScript: string | null = null;
-    if (existing?.status !== "ready" || !existing.script) {
+    if (refreshScript !== true && (existing?.status !== "ready" || !existing.script)) {
       const { data: anyVoice } = await supabase
         .from("podcasts")
         .select("script")
@@ -1718,7 +1722,7 @@ Deno.serve(async (req) => {
     // Rate-limit & concurrency gates — only on the generation path (cache
     // hits above return early). Best-effort, in-memory, per edge instance.
     const ip = getClientIp(req);
-    if (isIpRateLimited(ip)) {
+    if (!internalRequest && isIpRateLimited(ip)) {
       console.warn(`[${topicId}] IP ${ip} rate-limited`);
       return new Response(
         JSON.stringify({

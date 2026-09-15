@@ -820,6 +820,7 @@ export type Database = {
       }
       podcast_rerecord_jobs: {
         Row: {
+          batch_size: number
           completed_at: string | null
           created_at: string
           created_by: string | null
@@ -837,8 +838,11 @@ export type Database = {
           total: number
           updated_at: string
           voices: string[]
+          worker_lease_until: string | null
+          worker_token: string | null
         }
         Insert: {
+          batch_size?: number
           completed_at?: string | null
           created_at?: string
           created_by?: string | null
@@ -856,8 +860,11 @@ export type Database = {
           total?: number
           updated_at?: string
           voices?: string[]
+          worker_lease_until?: string | null
+          worker_token?: string | null
         }
         Update: {
+          batch_size?: number
           completed_at?: string | null
           created_at?: string
           created_by?: string | null
@@ -875,6 +882,8 @@ export type Database = {
           total?: number
           updated_at?: string
           voices?: string[]
+          worker_lease_until?: string | null
+          worker_token?: string | null
         }
         Relationships: []
       }
@@ -1614,6 +1623,34 @@ export type Database = {
         Args: { _day?: string; _seconds: number; _topic_id: string }
         Returns: undefined
       }
+      claim_podcast_rerecord_item: {
+        Args: {
+          _job_id: string
+          _lease_seconds?: number
+          _worker_token: string
+        }
+        Returns: {
+          attempts: number
+          completed_at: string | null
+          created_at: string
+          error_message: string | null
+          id: string
+          job_id: string
+          started_at: string | null
+          status: string
+          topic_id: string
+          topic_path: string
+          topic_title: string
+          updated_at: string
+          voice: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "podcast_rerecord_items"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -1634,6 +1671,37 @@ export type Database = {
           topic_id: string
           topic_title: string
         }[]
+      }
+      refresh_podcast_rerecord_job: {
+        Args: { _job_id: string }
+        Returns: {
+          batch_size: number
+          completed_at: string | null
+          created_at: string
+          created_by: string | null
+          current_topic: string | null
+          current_voice: string | null
+          failed: number
+          id: string
+          last_error: string | null
+          paused: boolean
+          paused_reason: string | null
+          processed: number
+          skipped: number
+          status: string
+          succeeded: number
+          total: number
+          updated_at: string
+          voices: string[]
+          worker_lease_until: string | null
+          worker_token: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "podcast_rerecord_jobs"
+          isOneToOne: true
+          isSetofReturn: false
+        }
       }
     }
     Enums: {
