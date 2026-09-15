@@ -1433,9 +1433,8 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 const TTS_REQUEST_TIMEOUT_MS = 60_000;
 
 /**
- * Narrate a chunk with the real regional voice for this accent. Returns null so
- * the caller can fall back to steered OpenAI TTS if the voice service is
- * unavailable or the request fails outright.
+ * Narrate a chunk with the real regional voice for this accent. A failed native
+ * request returns null so the whole episode can retry without mixing voices.
  */
 async function synthesiseChunkNative(
   text: string,
@@ -1511,7 +1510,7 @@ async function synthesiseChunk(
   if (ELEVENLABS_API_KEY && preset.nativeVoiceId && attempt === 1) {
     const native = await synthesiseChunkNative(text, preset.nativeVoiceId);
     if (native) return native;
-    console.warn("[tts] falling back to steered OpenAI TTS for this chunk");
+    throw new Error("Native regional voice was temporarily unavailable; retrying the episode without substituting a generic voice.");
   }
   const controller = new AbortController();
   const timeoutId = setTimeout(
