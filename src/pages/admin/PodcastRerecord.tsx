@@ -218,13 +218,29 @@ export default function PodcastRerecord() {
               onChange={(e) => setPassword(e.target.value)}
               className="sm:max-w-xs"
             />
+            <label className="flex items-center gap-2 text-sm">
+              <span className="text-muted-foreground">Episodes per batch</span>
+              <select
+                value={batchSize}
+                onChange={(e) => setBatchSize(Number(e.target.value))}
+                className="h-9 rounded-md border border-input bg-background px-2 text-sm"
+                aria-label="Episodes per batch"
+              >
+                {BATCH_SIZE_OPTIONS.map((n) => (
+                  <option key={n} value={n}>
+                    {n}
+                  </option>
+                ))}
+              </select>
+            </label>
             <Button onClick={handleStart} disabled={selected.length === 0}>
               Start re-recording {selected.length * topicCount || ""} episodes
             </Button>
           </div>
           <p className="mt-2 text-xs text-muted-foreground">
             {ACCENT_BANK.length} accents are available; each one you add multiplies the number of
-            recordings and the cost.
+            recordings and the cost. Work runs in small batches, alternating accents, and any single
+            episode that takes more than eight minutes is skipped so the run keeps moving.
           </p>
         </section>
       )}
