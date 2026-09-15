@@ -364,8 +364,8 @@ export const runRerecordQueue = async (
     try {
       // Per-episode budget: an unusually long topic is skipped rather than
       // allowed to hold the rest of the batch (and the run) up.
-      await withTimeout(
-        (async () => {
+      const attempt = await withTimeout(
+        (async (): Promise<{ ok: boolean; error: string | null }> => {
           const content = await extractViaIframe(item.topic_path);
           const result = await generatePodcast(item.topic_id, item.topic_title, content, {
             force: true,
@@ -375,19 +375,19 @@ export const runRerecordQueue = async (
           });
 
           if (result.status === "failed") {
-            errorMessage = result.error ?? "Generation failed.";
-          } else if (result.status === "ready") {
-            outcome = "done";
-          } else {
-            // Generation continues server-side; wait for the row to settle.
-            const settled = await waitForEpisode(item.topic_id, item.voice, signal);
-            if (settled === "ready") outcome = "done";
-            else errorMessage = settled;
+            return { ok: false, error: result.error ?? "Generation failed." };
           }
+          if (result.status === "ready") return { ok: true, error: null };
+
+          // Generation continues server-side; wait for the row to settle.
+          const settled = await waitForEpisode(item.topic_id, item.voice, signal);
+          return settled === "ready" ? { ok: true, error: null } : { ok: false, error: settled };
         })(),
         ITEM_TIME_BUDGET_MS,
         `${item.topic_title} — ${item.voice}`,
       );
+      outcome = attempt.ok ? "done" : "failed";
+      errorMessage = attempt.error;
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : String(err);
     }
