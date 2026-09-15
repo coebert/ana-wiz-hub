@@ -1406,7 +1406,7 @@ export const buildAccentInstructions = (row: {
     `Accent detail: ${row.traits}`,
     anchors,
     dialect,
-    "Keep every clinical term, drug name and number clearly intelligible within that accent.",
+    "Say clinical terms, drug names and numbers the way a clinician from that region says them — inside your own dialect's vowels and rhythm, never switched to RP or American for the technical words — while keeping them clearly intelligible.",
     BASE_STYLE,
   ]
     .filter(Boolean)
