@@ -128,6 +128,222 @@ const familyAnchors = (id: string): string => {
 };
 
 
+/**
+ * Dialect-level anchors: town- and city-specific pronunciations layered on top
+ * of the family anchors above, so (for example) Leeds, Hull and Sheffield are
+ * not read as one generic "Yorkshire". Keep identical in both copies.
+ */
+const DIALECT_ANCHORS: Record<string, string> = {
+  // ---- Southern England ----
+  "british-cockney":
+    "Dialect: 'mate' as MOIT, 'day' as DIE, 'nurse' long as NUHHS; heavy glottal stops mid-word ('hospital' as 'ospi'l); fast staccato delivery.",
+  "british-estuary":
+    "Dialect: glottal t only at word ends ('right' as RY'), lighter th-fronting than Cockney, h mostly kept, brisk level intonation.",
+  "british-essex":
+    "Dialect: very open 'no' as NAOW, 'yeah' drawn out, strong l-vocalisation ('well' as WEW), upward drift at phrase ends.",
+  "british-kent":
+    "Dialect: Estuary base with longer 'bath' as BAHTH, 'goat' as GEOW-t, unhurried coastal pacing.",
+  "british-sussex":
+    "Dialect: light residual r in 'farmer', long 'a' in 'grass' as GRAHSS, gently falling rural cadence.",
+  "british-hampshire":
+    "Dialect: faint West Country burr on final r, broad 'about' as ABAOWT, easy relaxed rhythm.",
+  "british-portsmouth":
+    "Dialect: 'Pompey' urban clip, sharp glottal t, high-pitched rising ends, 'no' as NAO.",
+  "british-home-counties":
+    "Dialect: near-RP with occasional glottal t and slight l-vocalisation, otherwise conservative vowels.",
+  "british-thames-valley":
+    "Dialect: RP vowels with mild Estuary softening, level unemphatic tune.",
+  "british-oxford":
+    "Dialect: precise conservative RP, fully articulated final consonants, measured academic pacing.",
+  "british-east-anglian":
+    "Dialect: yod-dropping — 'new' as NOO, 'tune' as TOON; 'boat' as BUT-like short o; strong falling ends.",
+
+  // ---- West Country ----
+  "british-bristol":
+    "Dialect: Bristol L — 'area' as AREAL, 'idea' as IDEAL; rhotic but faster and more urban than rural Somerset.",
+  "british-cornish":
+    "Dialect: 'us' for 'we', very long open vowels, r softly rolled, distinctly sing-song rise then long fall.",
+  "british-devon":
+    "Dialect: strong retroflex r in 'harder', 'proper' as PRAPPer, drawling farmyard warmth.",
+  "british-dorset":
+    "Dialect: voiced initial s and f ('somerset' as ZUMMerzet, 'farm' as VARM), slow deliberate tempo.",
+  "british-wiltshire":
+    "Dialect: broad flat 'a', heavy final r, gentle rise-fall on each clause.",
+  "british-gloucestershire":
+    "Dialect: lighter burr than Somerset, 'bath' as BAHTH, quick clipped rural phrasing.",
+  "british-west-country":
+    "Dialect: Somerset core — 'I be' rhythms, heavy burr, unhurried rolling delivery.",
+
+  // ---- Midlands ----
+  "british-brummie":
+    "Dialect: falling drawl on final syllables, 'price' as PROIZE, 'go' as GAOW, nasal resonance, 'you' as YOW.",
+  "british-black-country":
+    "Dialect: broader than Brummie — 'I am' as AM, 'you' as YAM; 'face' as FAY-uss; heavier, slower, more nasal.",
+  "british-coventry":
+    "Dialect: between Brummie and East Midlands, flatter tune, less drawl, crisper consonants.",
+  "british-nottingham":
+    "Dialect: 'duck' address, 'right' as REET, 'nothing' as NOWT, level tune with a sharp final drop.",
+  "british-derby":
+    "Dialect: 'Derby' as DAR-bee, short clipped vowels, quick even rhythm.",
+  "british-leicester":
+    "Dialect: light Midlands drawl, 'ay up' opener, mid-phrase pitch dips, softened t between vowels.",
+  "british-lincolnshire":
+    "Dialect: rural East Midlands with slight rhoticity, long 'oo' in 'book' as BOOK, slow flat cadence.",
+  "british-potteries":
+    "Dialect: Stoke — 'thee' and 'thy' rhythms, 'nesh' vowel colour, distinctly rising then dropping tune.",
+  "british-northampton":
+    "Dialect: transitional — northern 'but' vowel with southern long 'bath', even level pace.",
+  "british-worcester":
+    "Dialect: soft western Midlands burr on r, gentle drawl, warm relaxed phrasing.",
+  "british-warwickshire":
+    "Dialect: mild Brummie colouring, cleaner vowels, steady unhurried pace.",
+  "british-herefordshire":
+    "Dialect: Midlands vowels with a West Country r, lilting rural tune.",
+  "british-shropshire":
+    "Dialect: border accent — Midlands flat 'a' with slight Welsh musicality.",
+  "british-east-midlands":
+    "Dialect: 'summat' and 'nowt' rhythms, flat unemphatic tune, hard final consonants.",
+
+  // ---- Northern England ----
+  "british-yorkshire":
+    "Dialect: 'the' as t', 'was' as WOR, 'right' as REET, blunt down-stepped statements.",
+  "british-york":
+    "Dialect: softer, tidier Yorkshire — clear consonants, less broad vowels, gentle final fall.",
+  "british-leeds":
+    "Dialect: urban West Yorkshire — 'no' as NAY-o, flattened 'face' as FEHSS, quick clipped tempo.",
+  "british-hull":
+    "Dialect: distinctive 'nurse' and 'square' merging — 'phone' close to FURN; flat monotone-leaning tune.",
+  "british-sheffield":
+    "Dialect: 'dee' and 'dah' for you/your, 'love' as LUV with a put-vowel, drawn final syllable.",
+  "british-barnsley":
+    "Dialect: very broad South Yorkshire — 'house' as HAHSS, 'thee' address, strong falling ends.",
+  "british-bradford":
+    "Dialect: West Yorkshire with slight sing-song lift, clipped 'the' as t', fast paced.",
+  "british-lancashire":
+    "Dialect: 'book' as BOOK with a long oo, 'love' as LOOV, rolling gentle rise-fall.",
+  "british-preston":
+    "Dialect: crisp Lancashire, 'right' as REYT, brisk clipped rhythm.",
+  "british-bolton":
+    "Dialect: broad Lancashire, 'owt' and 'nowt', heavy final consonants, slower tempo.",
+  "british-blackburn":
+    "Dialect: East Lancashire — nasal edge, 'car' as CAAH, sharply dropping phrase ends.",
+  "british-wigan":
+    "Dialect: 'Wiganese' — 'og' vowels, hard g's, distinctly bouncing rhythm between Lancashire and Scouse.",
+  "british-oldham":
+    "Dialect: Greater Manchester fringe, flat 'a', slight nasal twang, quick delivery.",
+  "british-manchester":
+    "Dialect: 'Manc' — 'you' as YEW, 'poor' as PORE, long drawled final vowels, deadpan flat tune.",
+  "british-scouse":
+    "Dialect: 'back' and 'chicken' with a throaty ch/k fricative, 'nurse' as NERSE fronted, strongly rising then falling melody, fast adenoidal delivery.",
+  "british-geordie":
+    "Dialect: 'about' as ABOOT, 'work' as WAAK, 'make' as MEK, 'no' as NAA; bright lifting question-like ends.",
+  "british-northumberland":
+    "Dialect: rural Northumbrian burr on r, slower than Geordie, long open vowels.",
+  "british-mackem":
+    "Dialect: Sunderland — 'make' as MAAK, 'school' as SKUUL, flatter and more clipped than Geordie.",
+  "british-durham":
+    "Dialect: between Geordie and Teesside — 'town' as TOON, gentler rise, softer consonants.",
+  "british-teesside":
+    "Dialect: 'Smoggie' — 'here' as HOR, 'nurse' rounded, sharply rising phrase ends.",
+  "british-cumbrian":
+    "Dialect: 'yan' and 'twa' counting rhythms, rolled r, slow lilting rural tune.",
+
+  // ---- Wales ----
+  "welsh-south":
+    "Dialect: 'lovely' as LUV-ley with a long final vowel, strong rise on each clause, tapped r.",
+  "welsh-cardiff":
+    "Dialect: distinctive flat 'Cardiff a' — 'Cardiff' as CAAHdiff; more urban and less sing-song than the Valleys.",
+  "welsh-swansea":
+    "Dialect: softer than Cardiff, longer vowels, marked musical lift at clause ends.",
+  "welsh-valleys":
+    "Dialect: strongest sing-song rise-fall, 'now' as NOW-uh, emphatic tag-like endings.",
+  "welsh-north":
+    "Dialect: Welsh-language substrate — clear 'll' and 'ch' sounds, crisper consonants, less rise than the south.",
+  "welsh-wrexham":
+    "Dialect: north-east border — Welsh musicality with Cheshire flatness, quicker pace.",
+  "welsh-pembrokeshire":
+    "Dialect: 'Little England' — softer English vowels with a light Welsh lilt.",
+  "welsh-mid":
+    "Dialect: rural mid-Wales — slow, gentle, evenly paced with mild rise.",
+  "welsh-anglesey":
+    "Dialect: island north Welsh — pure vowels, strong 'ch', deliberate measured delivery.",
+
+  // ---- Scotland ----
+  scottish:
+    "Dialect: central-belt standard Scottish — 'house' as HOOS, tapped r, brisk even rhythm.",
+  "scottish-glaswegian":
+    "Dialect: 'no' as NAW, 'you' as YOO-z, glottal t in 'water' as WA'ER, fast punchy rise on questions.",
+  "scottish-lanarkshire":
+    "Dialect: Glasgow base, broader vowels, slower with heavier final stress.",
+  "scottish-highland":
+    "Dialect: Gaelic-influenced — slow, precise, clearly separated syllables, gentle lilt, softer r.",
+  "scottish-doric":
+    "Dialect: Aberdeenshire Doric — 'what' as FIT, 'where' as FAUR, 'good' as GWEED; distinctive f-for-wh.",
+  "scottish-perthshire":
+    "Dialect: refined central Scots, clear tapped r, even measured tune.",
+  "scottish-dundee":
+    "Dialect: 'pie' as PEH, 'eh?' tag, high sharp intonation, clipped vowels.",
+  "scottish-fife":
+    "Dialect: 'ken' tag, drawn-out vowels, distinctly falling clause ends.",
+  "scottish-ayrshire":
+    "Dialect: rolling rural Ayrshire r, long open vowels, warm slow melody.",
+  "scottish-borders":
+    "Dialect: 'Border burr' — uvular r, close to Northumbrian, level unhurried tune.",
+  "scottish-hebridean":
+    "Dialect: Gaelic first-language rhythm — very slow, pure vowels, soft aspirated consonants.",
+  "scottish-orkney":
+    "Dialect: Norse-tinged sing-song, rising phrase ends, softer r than the mainland.",
+  "scottish-shetland":
+    "Dialect: strongest Norse lilt, 'th' as d in 'that', musical rise on every phrase.",
+
+  // ---- Ireland ----
+  irish:
+    "Dialect: standard Hiberno-English — light r, dental t, melodic mid-phrase lifts.",
+  "irish-dublin":
+    "Dialect: 'Dublin 4' vs northside contrast avoided — use working Dublin: 'time' as TOIME, 'right' as ROIGHT, quick urban clip.",
+  "irish-cork":
+    "Dialect: famously sing-song with wide pitch swings, 'like' tag, 'boy' as BAI.",
+  "irish-galway":
+    "Dialect: west of Ireland — Gaelic rhythm, slower, softer, broad 'a'.",
+  "irish-kerry":
+    "Dialect: strong musical rise-fall, elongated vowels, heavily aspirated t.",
+  "irish-limerick":
+    "Dialect: flatter, faster mid-west accent, sharper consonants than Cork.",
+  "irish-waterford":
+    "Dialect: south-east — clipped vowels, mild rhoticity, level tune.",
+  "irish-donegal":
+    "Dialect: Ulster Irish substrate — 'now' as NEEOW, rising ends, rolled r.",
+  "irish-northern":
+    "Dialect: Ulster — 'now' as NYAOW, 'face' as FAY-uss, strongly rising statement endings.",
+  "irish-derry":
+    "Dialect: Derry lilt — very high rising ends, 'so' as SOH-uh, quick light delivery.",
+
+  // ---- Crown dependencies ----
+  "british-isle-of-man":
+    "Dialect: Manx English — light Lancashire base with Manx Gaelic lilt and lengthened vowels.",
+  "jersey-english":
+    "Dialect: Jèrriais colouring — slight French rhythm, softened r, even syllable timing.",
+  "guernsey-english":
+    "Dialect: Guernésiais colouring — drawn-out vowels, mild sing-song, gentle French-tinged consonants.",
+
+  // ---- Wider English ----
+  australian:
+    "Dialect: 'day' as DIE, 'no' as NEOW, high rising terminal on statements, relaxed nasal delivery.",
+  "new-zealand":
+    "Dialect: 'fish' as FUSH, 'pen' close to 'pin', clipped short vowels, level tune.",
+  "south-african":
+    "Dialect: 'kit' vowel flattened, crisp t, strong stress on first syllables, clipped rhythm.",
+  canadian:
+    "Dialect: Canadian raising — 'about' as ABOAT, 'sorry' as SORE-y, rhotic and even.",
+  "indian-english":
+    "Dialect: retroflex t and d, syllable-timed rhythm, full unreduced vowels, clear final consonants.",
+  american:
+    "Dialect: General American — rhotic r, 'bath' with the 'cat' vowel, flapped t in 'water' as WAH-der.",
+};
+
+/** Dialect-specific detail for one narrator, when we have it. */
+const dialectAnchors = (id: string): string => DIALECT_ANCHORS[id] ?? "";
+
 const ACCENT_BANK: AccentRow[] = [
   // ---------------- General UK ----------------
   {
@@ -851,6 +1067,7 @@ const ACCENT_BANK: AccentRow[] = [
 
 const buildInstructions = (row: AccentRow): string => {
   const anchors = familyAnchors(row.id);
+  const dialect = dialectAnchors(row.id);
   const guard =
     row.id === "american"
       ? ""
@@ -867,6 +1084,7 @@ const buildInstructions = (row: AccentRow): string => {
       "accent as the passage goes on.",
     `Accent detail: ${row.traits}`,
     anchors,
+    dialect,
     "Keep every clinical term, drug name and number clearly intelligible within that accent.",
     BASE_STYLE,
   ]
