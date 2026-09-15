@@ -59,6 +59,34 @@ export interface RerecordItem {
 /** Hard ceiling on accents per job — a handful, deliberately, not all 98. */
 export const MAX_JOB_VOICES = 5;
 
+/** Episodes attempted per batch before the runner takes a breather. */
+export const DEFAULT_BATCH_SIZE = 8;
+export const BATCH_SIZE_OPTIONS = [4, 8, 12, 20] as const;
+
+/** Pause between batches — keeps both services gentle and lets the UI catch up. */
+const BATCH_COOLDOWN_MS = 15_000;
+
+/**
+ * Wall-clock budget for a single episode. A very long topic that cannot be read
+ * or recorded in this window is failed and skipped, so the queue keeps moving
+ * instead of stalling behind it.
+ */
+const ITEM_TIME_BUDGET_MS = 8 * 60_000;
+
+const withTimeout = async <T>(work: Promise<T>, ms: number, label: string): Promise<T> => {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      work,
+      new Promise<never>((_, reject) => {
+        timer = setTimeout(() => reject(new Error(`${label} took too long — skipped.`)), ms);
+      }),
+    ]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+};
+
 /** Topics that have a podcast page and can be re-recorded. */
 export const rerecordableTopics = (): Array<{ id: string; title: string; path: string }> =>
   allTopics
