@@ -1220,7 +1220,9 @@ export const PODCAST_VOICES: PodcastVoiceOption[] = ACCENT_BANK.map(
 
 export const podcastVoiceLabel = (id: string | undefined): string =>
   PODCAST_VOICES.find((v) => v.id === id)?.label ??
-  (id ? "Custom voice" : PODCAST_VOICES[0].label);
+  // Episodes recorded before the accent bank existed keep their own row and
+  // audio file; label them so they stay playable and identifiable.
+  (id ? "Original narration" : PODCAST_VOICES[0].label);
 
 export const isPodcastVoiceId = (id: string | undefined): boolean =>
   !!id && PODCAST_VOICES.some((v) => v.id === id);
