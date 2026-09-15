@@ -12,6 +12,7 @@
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 import { TOPIC_ID_ALLOWLIST } from "./_topic-ids.ts";
+import { NATIVE_VOICE_IDS } from "./_native-voices.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -23,8 +24,13 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SERVICE_ROLE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY")!;
 const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY")!;
+// Real regional voices (ElevenLabs). When the connection is available every
+// accent is narrated by a native speaker of that region; otherwise we fall back
+// to steered OpenAI TTS.
+const ELEVENLABS_API_KEY = Deno.env.get("ELEVENLABS_API_KEY");
 
 const TTS_MODEL = "gpt-4o-mini-tts";
+const ELEVEN_TTS_MODEL = "eleven_multilingual_v2";
 
 // Regional narrator bank. Mirrors ACCENT_BANK in src/lib/podcastVoices.ts —
 // keep ids, base voices and traits in sync. gpt-4o-mini-tts supports steerable
@@ -39,6 +45,8 @@ interface AccentRow {
 interface VoicePreset {
   voice: string;
   instructions: string;
+  /** ElevenLabs voice id of a native speaker of this region, when available. */
+  nativeVoiceId?: string;
 }
 const BASE_STYLE =
   "Warm, confident and clear, like a senior anaesthetic trainee tutoring a peer. " +
@@ -867,7 +875,14 @@ const buildInstructions = (row: AccentRow): string => {
 };
 
 const VOICE_PRESETS: Record<string, VoicePreset> = Object.fromEntries(
-  ACCENT_BANK.map((row) => [row.id, { voice: row.voice, instructions: buildInstructions(row) }]),
+  ACCENT_BANK.map((row) => [
+    row.id,
+    {
+      voice: row.voice,
+      instructions: buildInstructions(row),
+      nativeVoiceId: NATIVE_VOICE_IDS[row.id],
+    },
+  ]),
 );
 const DEFAULT_VOICE_ID = "british-rp";
 const resolveVoice = (voiceId: unknown): { id: string; preset: VoicePreset } => {
@@ -1190,11 +1205,84 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const TTS_REQUEST_TIMEOUT_MS = 60_000;
 
+/**
+ * Narrate a chunk with the real regional voice for this accent. Returns null so
+ * the caller can fall back to steered OpenAI TTS if the voice service is
+ * unavailable or the request fails outright.
+ */
+async function synthesiseChunkNative(
+  text: string,
+  nativeVoiceId: string,
+  attempt = 1,
+): Promise<Uint8Array | null> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(
+    () => controller.abort(new Error("native TTS timed out")),
+    TTS_REQUEST_TIMEOUT_MS,
+  );
+  try {
+    const response = await fetch(
+      `https://api.elevenlabs.io/v1/text-to-speech/${nativeVoiceId}?output_format=mp3_44100_128`,
+      {
+        method: "POST",
+        signal: controller.signal,
+        headers: {
+          "xi-api-key": ELEVENLABS_API_KEY!,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text,
+          model_id: ELEVEN_TTS_MODEL,
+          voice_settings: {
+            stability: 0.5,
+            similarity_boost: 0.85,
+            style: 0.15,
+            use_speaker_boost: true,
+          },
+        }),
+      },
+    );
+
+    if (!response.ok) {
+      const errText = await response.text();
+      const isRetryable = response.status === 429 || response.status >= 500;
+      if (isRetryable && attempt < TTS_MAX_RETRIES) {
+        await sleep(500 * Math.pow(2, attempt - 1) + Math.random() * 250);
+        return synthesiseChunkNative(text, nativeVoiceId, attempt + 1);
+      }
+      console.error(`[tts] native voice failed (${response.status}): ${errText}`);
+      return null;
+    }
+
+    const bytes = new Uint8Array(await response.arrayBuffer());
+    if (bytes.length === 0) {
+      console.error("[tts] native voice returned empty audio");
+      return null;
+    }
+    return bytes;
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    if (attempt < TTS_MAX_RETRIES) {
+      await sleep(500 * Math.pow(2, attempt - 1) + Math.random() * 250);
+      return synthesiseChunkNative(text, nativeVoiceId, attempt + 1);
+    }
+    console.error(`[tts] native voice error: ${message}`);
+    return null;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
 async function synthesiseChunk(
   text: string,
   preset: VoicePreset,
   attempt = 1,
 ): Promise<Uint8Array> {
+  if (ELEVENLABS_API_KEY && preset.nativeVoiceId && attempt === 1) {
+    const native = await synthesiseChunkNative(text, preset.nativeVoiceId);
+    if (native) return native;
+    console.warn("[tts] falling back to steered OpenAI TTS for this chunk");
+  }
   const controller = new AbortController();
   const timeoutId = setTimeout(
     () => controller.abort(new Error(`TTS request timed out after ${TTS_REQUEST_TIMEOUT_MS}ms`)),
