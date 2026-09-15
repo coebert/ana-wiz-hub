@@ -1533,12 +1533,19 @@ Deno.serve(async (req) => {
     }
     activeGenerations++;
 
+    // Keep-until-replaced: when a playable episode already exists and the
+    // caller asked to preserve it, leave `status` = ready and the old audio in
+    // place, marking the row `regenerating` so the UI can say "re-recording".
+    const keepExisting =
+      preserveExisting === true && existing?.status === "ready" && !!existing.audio_path;
+
     await supabase.from("podcasts").upsert(
       {
         topic_id: topicId,
         topic_title: topicTitle,
         voice: voiceIdResolved,
-        status: "generating",
+        status: keepExisting ? "ready" : "generating",
+        regenerating: true,
         error_message: null,
       },
       { onConflict: "topic_id,voice" },
