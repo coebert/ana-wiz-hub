@@ -1658,6 +1658,10 @@ Deno.serve(async (req) => {
       }
     }
 
+    // Fingerprint of the topic text this request would narrate. Stored on the
+    // episode so an unchanged topic never pays for the same accent twice.
+    const contentHash = await sha256Hex(content);
+
     // Episodes are cached per (topic, voice): each accent a listener picks gets
     // its own row, so one user's re-narration never overwrites another's.
     const { data: existing } = await supabase
@@ -1683,9 +1687,24 @@ Deno.serve(async (req) => {
     }
 
     // The row is scoped to this voice already, so a ready row is always a
-    // cache hit for the requested accent.
-    if (!forceRegenerate && existing?.status === "ready" && existing.audio_path) {
+    // cache hit for the requested accent. A force-regenerate is also skipped
+    // when the topic text is byte-identical to what this accent already
+    // narrated — re-recording it would only burn credits.
+    const unchangedSinceLastRecording =
+      existing?.status === "ready" &&
+      !!existing.audio_path &&
+      !!existing.content_hash &&
+      existing.content_hash === contentHash;
+
+    if (
+      existing?.status === "ready" &&
+      existing.audio_path &&
+      (!forceRegenerate || unchangedSinceLastRecording)
+    ) {
       const { data: pub } = supabase.storage.from("podcasts").getPublicUrl(existing.audio_path);
+      if (forceRegenerate) {
+        console.log(`[${topicId}] Skipping re-record for ${voiceIdResolved} — topic content unchanged.`);
+      }
       return jsonResponse({
         status: "ready",
         audio_url: pub.publicUrl,
@@ -1693,6 +1712,7 @@ Deno.serve(async (req) => {
         duration_seconds: existing.duration_seconds,
         voice: voiceIdResolved,
         cached: true,
+        unchanged: forceRegenerate ? true : undefined,
       });
     }
     if (reusedScript) {
