@@ -13,10 +13,10 @@ const ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
 const MAX_ATTEMPTS = 3;
 const POLL_MS = 8_000;
 const POLL_BUDGET_MS = 110_000;
-const RequestSchema = z.object({
-  action: z.literal("process"),
-  jobId: z.string().uuid(),
-});
+const RequestSchema = z.discriminatedUnion("action", [
+  z.object({ action: z.literal("process"), jobId: z.string().uuid() }),
+  z.object({ action: z.literal("watchdog") }),
+]);
 
 interface CorpusEntry {
   topic_id: string;
@@ -80,12 +80,19 @@ async function selfChain(jobId: string, delayMs = 3_000): Promise<void> {
 async function settleItem(item: QueueItem): Promise<"done" | "waiting" | "retry" | "failed"> {
   const { data: episode } = await admin
     .from("podcasts")
-    .select("status, regenerating, audio_path, error_message")
+    .select("status, regenerating, audio_path, error_message, updated_at")
     .eq("topic_id", item.topic_id)
     .eq("voice", item.voice)
     .maybeSingle();
 
-  if (episode?.status === "ready" && episode.audio_path && !episode.regenerating) {
+  const episodeUpdatedAt = episode?.updated_at ? Date.parse(episode.updated_at) : 0;
+  const itemStartedAt = item.started_at ? Date.parse(item.started_at) : Date.now();
+  if (
+    episode?.status === "ready" &&
+    episode.audio_path &&
+    !episode.regenerating &&
+    episodeUpdatedAt >= itemStartedAt
+  ) {
     await admin.from("podcast_rerecord_items").update({
       status: "done",
       completed_at: new Date().toISOString(),
@@ -222,6 +229,20 @@ async function run(jobId: string): Promise<void> {
   await selfChain(jobId, 15_000);
 }
 
+async function runWatchdog(): Promise<void> {
+  const now = new Date().toISOString();
+  const { data: jobs, error } = await admin
+    .from("podcast_rerecord_jobs")
+    .select("id")
+    .eq("status", "running")
+    .eq("paused", false)
+    .or(`worker_lease_until.is.null,worker_lease_until.lt.${now}`)
+    .order("updated_at", { ascending: true })
+    .limit(5);
+  if (error) throw error;
+  await Promise.all((jobs ?? []).map(({ id }) => run(id)));
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
@@ -230,15 +251,17 @@ Deno.serve(async (req) => {
   const parsed = RequestSchema.safeParse(await req.json().catch(() => ({})));
   if (!parsed.success) return json({ error: parsed.error.flatten().fieldErrors }, 400);
   const body = parsed.data;
-  const work = run(body.jobId).catch(async (error) => {
+  const work = (body.action === "watchdog" ? runWatchdog() : run(body.jobId)).catch(async (error) => {
     const message = error instanceof Error ? error.message : String(error);
-    console.error(`[podcast-rerecord] ${body.jobId}: ${message}`);
-    await admin.from("podcast_rerecord_jobs").update({ last_error: message }).eq("id", body.jobId);
-    await admin.rpc("refresh_podcast_rerecord_job", { _job_id: body.jobId });
-    await selfChain(body.jobId, 30_000);
+    console.error(`[podcast-rerecord] ${body.action}: ${message}`);
+    if (body.action === "process") {
+      await admin.from("podcast_rerecord_jobs").update({ last_error: message }).eq("id", body.jobId);
+      await admin.rpc("refresh_podcast_rerecord_job", { _job_id: body.jobId });
+      await selfChain(body.jobId, 30_000);
+    }
   });
   // @ts-expect-error EdgeRuntime is supplied by the deployed runtime.
   if (typeof EdgeRuntime !== "undefined" && EdgeRuntime?.waitUntil) EdgeRuntime.waitUntil(work);
   else void work;
-  return json({ status: "started", jobId: body.jobId }, 202);
+  return json({ status: "started", ...(body.action === "process" ? { jobId: body.jobId } : {}) }, 202);
 });
