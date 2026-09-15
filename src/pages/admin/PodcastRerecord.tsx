@@ -23,6 +23,7 @@ import {
   fetchItems,
   fetchJob,
   fetchLatestJob,
+  keepAwake,
   MAX_JOB_VOICES,
   rerecordableTopics,
   runRerecordQueue,
@@ -87,6 +88,7 @@ export default function PodcastRerecord() {
       }
       stopRef.current = { stopped: false };
       setRunning(true);
+      const release = await keepAwake();
       try {
         await runRerecordQueue(
           jobId,
@@ -100,11 +102,29 @@ export default function PodcastRerecord() {
           { batchSize },
         );
       } finally {
+        release();
         setRunning(false);
       }
     },
     [addLog, password, batchSize],
   );
+
+  // Coming back to the page after the browser suspended it: pick the run up
+  // again automatically instead of leaving it looking stalled.
+  useEffect(() => {
+    const onVisible = async () => {
+      if (document.visibilityState !== "visible") return;
+      if (running || !password.trim()) return;
+      const latest = await fetchLatestJob();
+      if (!latest) return;
+      setJob(latest);
+      if (latest.paused || latest.status === "cancelled" || latest.status === "complete") return;
+      addLog("Page was asleep — picking the run back up.");
+      void startRunner(latest.id);
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => document.removeEventListener("visibilitychange", onVisible);
+  }, [running, password, startRunner, addLog]);
 
   const handleStart = async () => {
     if (selected.length === 0) {
@@ -158,7 +178,9 @@ export default function PodcastRerecord() {
           Records every topic again with a real regional voice and a fresh script, so episodes
           reflect the current page content. Each existing episode keeps playing until its
           replacement is ready. Pick up to {MAX_JOB_VOICES} accents — {topicCount} topics per
-          accent, one at a time. Keep this page open while it runs; you can pause and resume, and
+          accent, in small batches. Keep this page open and the screen on while it runs — phones and
+          tablets put background pages to sleep, which halts the run. If that happens, the run picks
+          itself back up when you return to this page, interrupted episodes are retried, and
           finished episodes are never repeated.
         </p>
       </header>

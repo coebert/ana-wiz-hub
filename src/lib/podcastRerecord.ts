@@ -73,6 +73,47 @@ const BATCH_COOLDOWN_MS = 15_000;
  */
 const ITEM_TIME_BUDGET_MS = 8 * 60_000;
 
+/** Attempts allowed per episode before it is written off as failed. */
+const MAX_ITEM_ATTEMPTS = 3;
+
+/**
+ * Topic text read this session, keyed by topic id. Re-recording the same topic
+ * in a second accent then needs no page read at all — fewer iframe loads means
+ * far fewer chances to stall.
+ */
+const contentCache = new Map<string, string>();
+
+/**
+ * Ask the device to keep the screen awake while a run is in flight. Mobile
+ * browsers suspend background/locked tabs outright, which is what makes a run
+ * appear to stall. Returns a release function; a no-op where unsupported.
+ */
+export const keepAwake = async (): Promise<() => void> => {
+  interface WakeLockNav {
+    wakeLock?: { request: (t: "screen") => Promise<{ release: () => Promise<void> }> };
+  }
+  const lockApi = (navigator as unknown as WakeLockNav).wakeLock;
+  if (!lockApi) return () => {};
+  try {
+    let sentinel = await lockApi.request("screen");
+    const reacquire = async () => {
+      if (document.visibilityState !== "visible") return;
+      try {
+        sentinel = await lockApi.request("screen");
+      } catch {
+        /* ignore — best effort */
+      }
+    };
+    document.addEventListener("visibilitychange", reacquire);
+    return () => {
+      document.removeEventListener("visibilitychange", reacquire);
+      void sentinel.release().catch(() => {});
+    };
+  } catch {
+    return () => {};
+  }
+};
+
 const withTimeout = async <T>(work: Promise<T>, ms: number, label: string): Promise<T> => {
   let timer: ReturnType<typeof setTimeout> | undefined;
   try {
@@ -366,7 +407,9 @@ export const runRerecordQueue = async (
       // allowed to hold the rest of the batch (and the run) up.
       const attempt = await withTimeout(
         (async (): Promise<{ ok: boolean; error: string | null }> => {
-          const content = await extractViaIframe(item.topic_path);
+          const cached = contentCache.get(item.topic_id);
+          const content = cached ?? (await extractViaIframe(item.topic_path));
+          contentCache.set(item.topic_id, content);
           const result = await generatePodcast(item.topic_id, item.topic_title, content, {
             force: true,
             regeneratePassword,
@@ -392,17 +435,28 @@ export const runRerecordQueue = async (
       errorMessage = err instanceof Error ? err.message : String(err);
     }
 
+    // A timed-out or unreadable episode is usually the page being interrupted,
+    // not a bad topic — put it back in the queue for another go later.
+    const transient =
+      !!errorMessage && /took too long|timed out|network|fetch|load/i.test(errorMessage);
+    const requeue =
+      outcome !== "done" && transient && item.attempts + 1 < MAX_ITEM_ATTEMPTS;
+
     await supabase
       .from("podcast_rerecord_items")
-      .update({
-        status: outcome === "done" ? "done" : "failed",
-        error_message: errorMessage,
-        completed_at: new Date().toISOString(),
-      })
+      .update(
+        requeue
+          ? { status: "pending", started_at: null, error_message: errorMessage }
+          : {
+              status: outcome === "done" ? "done" : "failed",
+              error_message: errorMessage,
+              completed_at: new Date().toISOString(),
+            },
+      )
       .eq("id", item.id);
 
     const fresh = await fetchJob(jobId);
-    if (fresh) {
+    if (fresh && !requeue) {
       await supabase
         .from("podcast_rerecord_jobs")
         .update({
@@ -411,6 +465,11 @@ export const runRerecordQueue = async (
           failed: fresh.failed + (outcome === "done" ? 0 : 1),
           last_error: errorMessage,
         })
+        .eq("id", jobId);
+    } else if (fresh) {
+      await supabase
+        .from("podcast_rerecord_jobs")
+        .update({ last_error: errorMessage })
         .eq("id", jobId);
     }
 
