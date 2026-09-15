@@ -105,6 +105,15 @@ async function settleItem(item: QueueItem): Promise<"done" | "waiting" | "retry"
   return retry ? "retry" : "failed";
 }
 
+async function requeueOrFail(item: QueueItem, message: string): Promise<void> {
+  const retry = item.attempts < MAX_ATTEMPTS;
+  await admin.from("podcast_rerecord_items").update(retry ? {
+    status: "pending", started_at: null, error_message: message,
+  } : {
+    status: "failed", completed_at: new Date().toISOString(), error_message: message,
+  }).eq("id", item.id).eq("status", "running");
+}
+
 async function run(jobId: string): Promise<void> {
   const { data: job } = await admin
     .from("podcast_rerecord_jobs")
@@ -166,27 +175,35 @@ async function run(jobId: string): Promise<void> {
     .eq("topic_id", item.topic_id)
     .eq("status", "done");
 
-  const generateResponse = await fetch(`${SUPABASE_URL}/functions/v1/generate-podcast`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${SERVICE_ROLE}`,
-      apikey: SERVICE_ROLE,
-      "x-internal-token": SERVICE_ROLE,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      topicId: item.topic_id,
-      topicTitle: item.topic_title,
-      content: corpus.text.slice(0, 145_000),
-      force: true,
-      voiceId: item.voice,
-      preserveExisting: true,
-      refreshScript: (completedSameTopic ?? 0) === 0,
-    }),
-  });
-  if (!generateResponse.ok) {
-    const responseText = await generateResponse.text();
-    throw new Error(`Generation request failed (${generateResponse.status}): ${responseText.slice(0, 300)}`);
+  try {
+    const generateResponse = await fetch(`${SUPABASE_URL}/functions/v1/generate-podcast`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${SERVICE_ROLE}`,
+        apikey: SERVICE_ROLE,
+        "x-internal-token": SERVICE_ROLE,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        topicId: item.topic_id,
+        topicTitle: item.topic_title,
+        content: corpus.text.slice(0, 145_000),
+        force: true,
+        voiceId: item.voice,
+        preserveExisting: true,
+        refreshScript: (completedSameTopic ?? 0) === 0,
+      }),
+    });
+    if (!generateResponse.ok) {
+      const responseText = await generateResponse.text();
+      throw new Error(`Generation request failed (${generateResponse.status}): ${responseText.slice(0, 300)}`);
+    }
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    await requeueOrFail(item, message);
+    const { data: refreshed } = await admin.rpc("refresh_podcast_rerecord_job", { _job_id: jobId });
+    if (refreshed?.status === "running") await selfChain(jobId, 30_000);
+    return;
   }
 
   const deadline = Date.now() + POLL_BUDGET_MS;

@@ -1114,18 +1114,18 @@ const MAX_TTS_CHARS = 2800;
 // Hard fallback: if a single sentence exceeds MAX_TTS_CHARS we still need to
 // split it. OpenAI rejects > 4096 chars per request.
 const HARD_TTS_LIMIT = 3900;
-// How many TTS chunks to synthesise concurrently. Tunable at runtime via the
-// TTS_CONCURRENCY env var (safe default 4). Clamped to [1, 16] so a bad value
-// can never stall generation or hammer the OpenAI API.
+// ElevenLabs currently permits three concurrent requests for this account.
+// Staying within that cap prevents regional chunks silently falling back to a
+// generic voice when a fourth native request is rate-limited.
 const TTS_CONCURRENCY = (() => {
   const raw = Deno.env.get("TTS_CONCURRENCY");
-  if (!raw) return 4;
+  if (!raw) return 3;
   const parsed = Number.parseInt(raw, 10);
   if (!Number.isFinite(parsed) || parsed < 1) {
-    console.warn(`[config] Invalid TTS_CONCURRENCY="${raw}", falling back to 4`);
-    return 4;
+    console.warn(`[config] Invalid TTS_CONCURRENCY="${raw}", falling back to 3`);
+    return 3;
   }
-  return Math.min(parsed, 16);
+  return Math.min(parsed, 3);
 })();
 console.log(`[config] TTS_CONCURRENCY effective value: ${TTS_CONCURRENCY}`);
 // Per-chunk retry budget (network blips, transient 5xx, brief 429s).
@@ -1476,7 +1476,8 @@ async function synthesiseChunkNative(
       const isRetryable =
         response.status === 429 || response.status === 409 || response.status >= 500;
       if (isRetryable && attempt < TTS_MAX_RETRIES) {
-        await sleep(500 * Math.pow(2, attempt - 1) + Math.random() * 250);
+        const baseDelay = response.status === 429 ? 3_000 : 500;
+        await sleep(baseDelay * Math.pow(2, attempt - 1) + Math.random() * 500);
         return synthesiseChunkNative(text, nativeVoiceId, attempt + 1);
       }
       console.error(`[tts] native voice failed (${response.status}): ${errText}`);
