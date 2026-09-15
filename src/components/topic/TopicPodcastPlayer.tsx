@@ -466,7 +466,9 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     })();
   };
 
-  const voicePicker = (
+  // Listeners see only the accents already recorded for this topic. Admins keep
+  // the full bank so they can commission a new accent.
+  const voicePicker = isAdmin ? (
     <div className="flex flex-wrap items-center gap-2">
       <Mic className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
       <label className="text-xs text-muted-foreground" htmlFor={`podcast-voice-${topicId}`}>
@@ -488,8 +490,13 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
                 <SelectItem key={v.id} value={v.id} className="text-xs">
                   <span className="font-medium">{v.label}</span>
                   <span className="text-muted-foreground"> — {v.description}</span>
-                  {hasNativeVoice(v.id) && (
+                  {recordedVoices.includes(v.id) && (
                     <span className="ml-1 text-[0.65rem] uppercase tracking-wide text-primary">
+                      recorded
+                    </span>
+                  )}
+                  {!recordedVoices.includes(v.id) && hasNativeVoice(v.id) && (
+                    <span className="ml-1 text-[0.65rem] uppercase tracking-wide text-muted-foreground">
                       native voice
                     </span>
                   )}
@@ -500,7 +507,30 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         </SelectContent>
       </Select>
     </div>
-  );
+  ) : recordedVoices.length > 1 ? (
+    <div className="flex flex-wrap items-center gap-2">
+      <Mic className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
+      <label className="text-xs text-muted-foreground" htmlFor={`podcast-voice-${topicId}`}>
+        Narrator
+      </label>
+      <Select value={voiceId} onValueChange={onVoiceChange}>
+        <SelectTrigger
+          id={`podcast-voice-${topicId}`}
+          className="h-8 w-[15rem] max-w-full text-xs"
+          aria-label="Podcast narrator voice and accent"
+        >
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent className="max-h-[60vh]">
+          {recordedVoices.map((v) => (
+            <SelectItem key={v} value={v} className="text-xs">
+              {podcastVoiceLabel(v)}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  ) : null;
 
   if (loading) {
     return (
