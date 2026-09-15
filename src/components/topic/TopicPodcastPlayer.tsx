@@ -737,21 +737,23 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
           {speed}×
         </Button>
         <div className="flex items-center gap-1">
-          <Button
-            onClick={openRegenDialog}
-            size="sm"
-            variant="ghost"
-            className="text-xs h-8 text-muted-foreground/70 hover:text-foreground"
-            aria-label="Regenerate podcast (password required)"
-            title="Regenerate (password required)"
-            disabled={generating}
-          >
-            {generating ? (
-              <Loader2 className="h-3.5 w-3.5 animate-spin" />
-            ) : (
-              <RefreshCw className="h-3.5 w-3.5" />
-            )}
-          </Button>
+          {isAdmin && (
+            <Button
+              onClick={openRegenDialog}
+              size="sm"
+              variant="ghost"
+              className="text-xs h-8 text-muted-foreground/70 hover:text-foreground"
+              aria-label="Regenerate podcast (password required)"
+              title="Regenerate (password required)"
+              disabled={generating}
+            >
+              {generating ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <RefreshCw className="h-3.5 w-3.5" />
+              )}
+            </Button>
+          )}
           <Button
             onClick={handleDownload}
             size="sm"
