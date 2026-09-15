@@ -1205,11 +1205,84 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const TTS_REQUEST_TIMEOUT_MS = 60_000;
 
+/**
+ * Narrate a chunk with the real regional voice for this accent. Returns null so
+ * the caller can fall back to steered OpenAI TTS if the voice service is
+ * unavailable or the request fails outright.
+ */
+async function synthesiseChunkNative(
+  text: string,
+  nativeVoiceId: string,
+  attempt = 1,
+): Promise<Uint8Array | null> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(
+    () => controller.abort(new Error("native TTS timed out")),
+    TTS_REQUEST_TIMEOUT_MS,
+  );
+  try {
+    const response = await fetch(
+      `https://api.elevenlabs.io/v1/text-to-speech/${nativeVoiceId}?output_format=mp3_44100_128`,
+      {
+        method: "POST",
+        signal: controller.signal,
+        headers: {
+          "xi-api-key": ELEVENLABS_API_KEY!,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text,
+          model_id: ELEVEN_TTS_MODEL,
+          voice_settings: {
+            stability: 0.5,
+            similarity_boost: 0.85,
+            style: 0.15,
+            use_speaker_boost: true,
+          },
+        }),
+      },
+    );
+
+    if (!response.ok) {
+      const errText = await response.text();
+      const isRetryable = response.status === 429 || response.status >= 500;
+      if (isRetryable && attempt < TTS_MAX_RETRIES) {
+        await sleep(500 * Math.pow(2, attempt - 1) + Math.random() * 250);
+        return synthesiseChunkNative(text, nativeVoiceId, attempt + 1);
+      }
+      console.error(`[tts] native voice failed (${response.status}): ${errText}`);
+      return null;
+    }
+
+    const bytes = new Uint8Array(await response.arrayBuffer());
+    if (bytes.length === 0) {
+      console.error("[tts] native voice returned empty audio");
+      return null;
+    }
+    return bytes;
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    if (attempt < TTS_MAX_RETRIES) {
+      await sleep(500 * Math.pow(2, attempt - 1) + Math.random() * 250);
+      return synthesiseChunkNative(text, nativeVoiceId, attempt + 1);
+    }
+    console.error(`[tts] native voice error: ${message}`);
+    return null;
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
 async function synthesiseChunk(
   text: string,
   preset: VoicePreset,
   attempt = 1,
 ): Promise<Uint8Array> {
+  if (ELEVENLABS_API_KEY && preset.nativeVoiceId && attempt === 1) {
+    const native = await synthesiseChunkNative(text, preset.nativeVoiceId);
+    if (native) return native;
+    console.warn("[tts] falling back to steered OpenAI TTS for this chunk");
+  }
   const controller = new AbortController();
   const timeoutId = setTimeout(
     () => controller.abort(new Error(`TTS request timed out after ${TTS_REQUEST_TIMEOUT_MS}ms`)),
