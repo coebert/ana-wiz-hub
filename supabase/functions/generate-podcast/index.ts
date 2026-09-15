@@ -23,8 +23,13 @@ const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SERVICE_ROLE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY")!;
 const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY")!;
+// Real regional voices (ElevenLabs). When the connection is available every
+// accent is narrated by a native speaker of that region; otherwise we fall back
+// to steered OpenAI TTS.
+const ELEVENLABS_API_KEY = Deno.env.get("ELEVENLABS_API_KEY");
 
 const TTS_MODEL = "gpt-4o-mini-tts";
+const ELEVEN_TTS_MODEL = "eleven_multilingual_v2";
 
 // Regional narrator bank. Mirrors ACCENT_BANK in src/lib/podcastVoices.ts —
 // keep ids, base voices and traits in sync. gpt-4o-mini-tts supports steerable
