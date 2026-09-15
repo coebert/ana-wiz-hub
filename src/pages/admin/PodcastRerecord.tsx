@@ -23,6 +23,7 @@ import {
   fetchItems,
   fetchJob,
   fetchLatestJob,
+  keepAwake,
   MAX_JOB_VOICES,
   rerecordableTopics,
   runRerecordQueue,
