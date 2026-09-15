@@ -1107,6 +1107,15 @@ const AdminDashboard = () => {
               <FileEdit className="w-4 h-4 mr-1" aria-hidden="true" />
               Content Editor
             </Button>
+            <Button
+              variant="default"
+              size="sm"
+              onClick={() => navigate("/admin/podcast-rerecord")}
+              aria-label="Re-record topic podcasts in multiple accents"
+            >
+              <Mic2 className="w-4 h-4 mr-1" aria-hidden="true" />
+              Re-record podcasts
+            </Button>
 
 
 

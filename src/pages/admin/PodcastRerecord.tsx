@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { PageSection } from "@/components/layout/PageSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "@/hooks/use-toast";
+import { ArrowLeft } from "lucide-react";
 import {
   ACCENT_BANK,
   ACCENT_GROUPS,
@@ -35,6 +37,7 @@ export default function PodcastRerecord() {
   const [log, setLog] = useState<string[]>([]);
   const [running, setRunning] = useState(false);
   const stopRef = useRef<{ stopped: boolean }>({ stopped: false });
+  const navigate = useNavigate();
 
   const topicCount = useMemo(() => rerecordableTopics().length, []);
 
@@ -130,6 +133,16 @@ export default function PodcastRerecord() {
 
   return (
     <PageSection as="main" spacing="tight" width="wide">
+      <Button
+        variant="ghost"
+        size="sm"
+        className="mb-2 -ml-2"
+        onClick={() => navigate("/admin")}
+        aria-label="Back to admin dashboard"
+      >
+        <ArrowLeft className="w-4 h-4 mr-1" aria-hidden="true" />
+        Back to admin dashboard
+      </Button>
       <header className="mb-6">
         <h1 className="font-serif text-3xl font-semibold">Re-record podcasts</h1>
         <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
