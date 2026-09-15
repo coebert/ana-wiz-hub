@@ -1854,6 +1854,7 @@ Deno.serve(async (req) => {
             audio_path: audioPath,
             duration_seconds: durationSeconds,
             voice: voiceIdResolved,
+            content_hash: contentHash,
             status: "ready",
             regenerating: false,
             error_message: null,
