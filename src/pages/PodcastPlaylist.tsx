@@ -22,6 +22,7 @@ import { allTopics, sectionMeta, Section } from "@/data/curriculum";
 import { podcastVoiceLabel } from "@/lib/podcastVoices";
 import {
   addToQueue,
+  episodeKey,
   clearQueue,
   moveInQueue,
   removeFromQueue,
@@ -32,6 +33,8 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 
 interface Episode {
+  /** Stable identity for a (topic, accent) recording. */
+  key: string;
   topic_id: string;
   topic_title: string;
   audio_url: string;
@@ -97,6 +100,7 @@ const PodcastPlaylist = () => {
           .from("podcasts")
           .getPublicUrl(row.audio_path as string);
         return {
+          key: episodeKey(row.topic_id, row.voice),
           topic_id: row.topic_id,
           topic_title: row.topic_title,
           audio_url: pub.publicUrl,
@@ -115,7 +119,12 @@ const PodcastPlaylist = () => {
 
   const byId = useMemo(() => {
     const m = new Map<string, Episode>();
-    (episodes ?? []).forEach((e) => m.set(e.topic_id, e));
+    (episodes ?? []).forEach((e) => {
+      m.set(e.key, e);
+      // Legacy queue entries stored a bare topic id — resolve those to the
+      // first (most recently listed) recording for the topic.
+      if (!m.has(e.topic_id)) m.set(e.topic_id, e);
+    });
     return m;
   }, [episodes]);
 
@@ -126,7 +135,9 @@ const PodcastPlaylist = () => {
   );
 
   const available = useMemo(() => {
-    const list = (episodes ?? []).filter((e) => !queue.includes(e.topic_id));
+    const list = (episodes ?? []).filter(
+      (e) => !queue.includes(e.key) && !queue.includes(e.topic_id),
+    );
     const q = query.trim().toLowerCase();
     if (!q) return list;
     return list.filter((e) => {
@@ -156,8 +167,8 @@ const PodcastPlaylist = () => {
   useEffect(() => {
     const el = audioRef.current;
     if (!el || !current) return;
-    if (el.dataset.trackId === current.topic_id) return;
-    el.dataset.trackId = current.topic_id;
+    if (el.dataset.trackId === current.key) return;
+    el.dataset.trackId = current.key;
     el.load();
     if (shouldPlayRef.current) {
       el.play().catch(() => {
@@ -170,7 +181,7 @@ const PodcastPlaylist = () => {
     if (index < 0 || index >= queued.length) return;
     shouldPlayRef.current = true;
     setCurrentIndex(index);
-    if (queued[index]?.topic_id === current?.topic_id) {
+    if (queued[index]?.key === current?.key) {
       audioRef.current?.play().catch(() => {
         /* ignore */
       });
@@ -344,7 +355,7 @@ const PodcastPlaylist = () => {
               <ol className="space-y-2">
                 {queued.map((e, i) => (
                   <li
-                    key={e.topic_id}
+                    key={e.key}
                     className={cn(
                       "rounded-lg border bg-card p-3",
                       i === currentIndex ? "border-primary/60 bg-primary/5" : "border-border",
@@ -385,7 +396,7 @@ const PodcastPlaylist = () => {
                       <div className="flex shrink-0 items-center gap-1">
                         <button
                           type="button"
-                          onClick={() => moveInQueue(e.topic_id, -1)}
+                          onClick={() => moveInQueue(queue.includes(e.key) ? e.key : e.topic_id, -1)}
                           disabled={i === 0}
                           aria-label={`Move ${e.topic_title} earlier`}
                           className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border bg-card text-foreground transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-40"
@@ -394,7 +405,7 @@ const PodcastPlaylist = () => {
                         </button>
                         <button
                           type="button"
-                          onClick={() => moveInQueue(e.topic_id, 1)}
+                          onClick={() => moveInQueue(queue.includes(e.key) ? e.key : e.topic_id, 1)}
                           disabled={i === queued.length - 1}
                           aria-label={`Move ${e.topic_title} later`}
                           className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border bg-card text-foreground transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-40"
@@ -403,7 +414,7 @@ const PodcastPlaylist = () => {
                         </button>
                         <button
                           type="button"
-                          onClick={() => removeFromQueue(e.topic_id)}
+                          onClick={() => removeFromQueue(queue.includes(e.key) ? e.key : e.topic_id)}
                           aria-label={`Remove ${e.topic_title} from queue`}
                           className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-border bg-card text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                         >
@@ -460,7 +471,7 @@ const PodcastPlaylist = () => {
               <ul className="space-y-2">
                 {available.map((e) => (
                   <li
-                    key={e.topic_id}
+                    key={e.key}
                     className="flex items-start justify-between gap-3 rounded-lg border border-border bg-card p-3"
                   >
                     <div className="min-w-0">
@@ -481,7 +492,7 @@ const PodcastPlaylist = () => {
                     </div>
                     <button
                       type="button"
-                      onClick={() => addToQueue(e.topic_id)}
+                      onClick={() => addToQueue(e.key)}
                       className="inline-flex shrink-0 items-center gap-1 rounded-md bg-primary px-2.5 py-1 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                     >
                       <Plus className="h-3 w-3" />

@@ -7,6 +7,21 @@ import { useSyncExternalStore } from "react";
  */
 const STORAGE_KEY = "podcasts:queue";
 
+/**
+ * Each topic can now have one recording per narrator accent, so a queue entry
+ * must identify the (topic, voice) pair — not just the topic. Legacy entries
+ * saved before this change are bare topic ids and still resolve to the first
+ * available recording for that topic.
+ */
+export const episodeKey = (topicId: string, voice?: string | null): string =>
+  voice ? `${topicId}::${voice}` : topicId;
+
+export const parseEpisodeKey = (key: string): { topicId: string; voice?: string } => {
+  const idx = key.indexOf("::");
+  if (idx === -1) return { topicId: key };
+  return { topicId: key.slice(0, idx), voice: key.slice(idx + 2) };
+};
+
 let queue: string[] = load();
 const listeners = new Set<() => void>();
 
