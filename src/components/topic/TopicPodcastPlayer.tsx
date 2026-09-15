@@ -136,6 +136,10 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   // (shared across topics); each accent has its own cached episode server-side.
   const [voiceId, setVoiceId] = useState<string>(() => getPreferredPodcastVoice());
   const voicePinned = useRef(true);
+  // Only admins may commission new recordings; listeners pick from accents
+  // that already exist for this topic.
+  const { isAdmin } = useAuth();
+  const [recordedVoices, setRecordedVoices] = useState<string[]>([]);
 
   // Generation runs in a module-level registry (src/lib/podcastJobs.ts) so it
   // keeps going after the user navigates away from this topic page.
