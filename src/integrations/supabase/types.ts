@@ -762,6 +762,122 @@ export type Database = {
         }
         Relationships: []
       }
+      podcast_rerecord_items: {
+        Row: {
+          attempts: number
+          completed_at: string | null
+          created_at: string
+          error_message: string | null
+          id: string
+          job_id: string
+          started_at: string | null
+          status: string
+          topic_id: string
+          topic_path: string
+          topic_title: string
+          updated_at: string
+          voice: string
+        }
+        Insert: {
+          attempts?: number
+          completed_at?: string | null
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          job_id: string
+          started_at?: string | null
+          status?: string
+          topic_id: string
+          topic_path: string
+          topic_title: string
+          updated_at?: string
+          voice: string
+        }
+        Update: {
+          attempts?: number
+          completed_at?: string | null
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          job_id?: string
+          started_at?: string | null
+          status?: string
+          topic_id?: string
+          topic_path?: string
+          topic_title?: string
+          updated_at?: string
+          voice?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "podcast_rerecord_items_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "podcast_rerecord_jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      podcast_rerecord_jobs: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          created_by: string | null
+          current_topic: string | null
+          current_voice: string | null
+          failed: number
+          id: string
+          last_error: string | null
+          paused: boolean
+          paused_reason: string | null
+          processed: number
+          skipped: number
+          status: string
+          succeeded: number
+          total: number
+          updated_at: string
+          voices: string[]
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          current_topic?: string | null
+          current_voice?: string | null
+          failed?: number
+          id?: string
+          last_error?: string | null
+          paused?: boolean
+          paused_reason?: string | null
+          processed?: number
+          skipped?: number
+          status?: string
+          succeeded?: number
+          total?: number
+          updated_at?: string
+          voices?: string[]
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          current_topic?: string | null
+          current_voice?: string | null
+          failed?: number
+          id?: string
+          last_error?: string | null
+          paused?: boolean
+          paused_reason?: string | null
+          processed?: number
+          skipped?: number
+          status?: string
+          succeeded?: number
+          total?: number
+          updated_at?: string
+          voices?: string[]
+        }
+        Relationships: []
+      }
       podcasts: {
         Row: {
           audio_path: string | null
@@ -769,6 +885,7 @@ export type Database = {
           duration_seconds: number | null
           error_message: string | null
           id: string
+          regenerating: boolean
           script: string | null
           status: string
           topic_id: string
@@ -782,6 +899,7 @@ export type Database = {
           duration_seconds?: number | null
           error_message?: string | null
           id?: string
+          regenerating?: boolean
           script?: string | null
           status?: string
           topic_id: string
@@ -795,6 +913,7 @@ export type Database = {
           duration_seconds?: number | null
           error_message?: string | null
           id?: string
+          regenerating?: boolean
           script?: string | null
           status?: string
           topic_id?: string

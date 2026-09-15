@@ -957,6 +957,13 @@ interface RequestBody {
   force?: boolean; // bypass cache and regenerate (requires regeneratePassword)
   regeneratePassword?: string;
   voiceId?: string; // narrator/accent preset id (see VOICE_PRESETS)
+  /**
+   * Bulk re-record mode: keep the existing episode `ready` and playable while
+   * the replacement renders, flagging it with `regenerating` instead of
+   * blanking it. Used by the admin re-record queue so listeners never lose an
+   * episode mid-run.
+   */
+  preserveExisting?: boolean;
 }
 
 // Shared secret that authorises bypassing the cached podcast and regenerating
@@ -1391,7 +1398,7 @@ Deno.serve(async (req) => {
   const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
 
   try {
-    const { topicId, topicTitle, content, force, regeneratePassword, voiceId } =
+    const { topicId, topicTitle, content, force, regeneratePassword, voiceId, preserveExisting } =
       (await req.json()) as RequestBody;
     const { id: voiceIdResolved, preset: voicePreset } = resolveVoice(voiceId);
 
@@ -1526,12 +1533,19 @@ Deno.serve(async (req) => {
     }
     activeGenerations++;
 
+    // Keep-until-replaced: when a playable episode already exists and the
+    // caller asked to preserve it, leave `status` = ready and the old audio in
+    // place, marking the row `regenerating` so the UI can say "re-recording".
+    const keepExisting =
+      preserveExisting === true && existing?.status === "ready" && !!existing.audio_path;
+
     await supabase.from("podcasts").upsert(
       {
         topic_id: topicId,
         topic_title: topicTitle,
         voice: voiceIdResolved,
-        status: "generating",
+        status: keepExisting ? "ready" : "generating",
+        regenerating: true,
         error_message: null,
       },
       { onConflict: "topic_id,voice" },
@@ -1588,6 +1602,7 @@ Deno.serve(async (req) => {
             duration_seconds: durationSeconds,
             voice: voiceIdResolved,
             status: "ready",
+            regenerating: false,
             error_message: null,
           })
           .eq("topic_id", topicId)
@@ -1598,9 +1613,15 @@ Deno.serve(async (req) => {
         const message = genErr instanceof Error ? genErr.message : String(genErr);
         const failure = normaliseProviderError(message);
         console.error(`[${topicId}] Generation failed:`, message);
+        // On failure keep a preserved episode playable — only rows that had no
+        // usable audio become `failed`.
         await supabase
           .from("podcasts")
-          .update({ status: "failed", error_message: failure.error })
+          .update({
+            status: keepExisting ? "ready" : "failed",
+            regenerating: false,
+            error_message: failure.error,
+          })
           .eq("topic_id", topicId)
           .eq("voice", voiceIdResolved);
       } finally {
