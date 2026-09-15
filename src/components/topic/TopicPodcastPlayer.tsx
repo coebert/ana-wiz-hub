@@ -25,10 +25,12 @@ import {
   estimatePodcastTarget,
   extractTopicContent,
   fetchPodcast,
+  fetchRecordedVoices,
   formatExtractionDiagnostics,
   isStaleGenerating,
   type PodcastResult,
 } from "@/lib/podcast";
+import { useAuth } from "@/hooks/useAuth";
 import {
   attachPodcastJob,
   clearPodcastJob,
@@ -134,6 +136,10 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   // (shared across topics); each accent has its own cached episode server-side.
   const [voiceId, setVoiceId] = useState<string>(() => getPreferredPodcastVoice());
   const voicePinned = useRef(true);
+  // Only admins may commission new recordings; listeners pick from accents
+  // that already exist for this topic.
+  const { isAdmin } = useAuth();
+  const [recordedVoices, setRecordedVoices] = useState<string[]>([]);
 
   // Generation runs in a module-level registry (src/lib/podcastJobs.ts) so it
   // keeps going after the user navigates away from this topic page.
@@ -189,7 +195,18 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         return;
       }
       setLoading(true);
-      const existing = await fetchPodcast(topicId, voiceId);
+      // Which accents actually exist for this topic decides what listeners
+      // can choose from.
+      const recorded = await fetchRecordedVoices(topicId);
+      if (cancelled) return;
+      setRecordedVoices(recorded);
+      // Fall back to an accent that exists if the saved preference has never
+      // been recorded for this topic.
+      const preferred = recorded.includes(voiceId)
+        ? voiceId
+        : (recorded[0] ?? voiceId);
+      if (preferred !== voiceId) setVoiceId(preferred);
+      const existing = await fetchPodcast(topicId, preferred);
       if (cancelled) return;
       // Stale recovery: if the row is stuck in `generating` but hasn't been
       // updated in several minutes, the background job is dead. Surface it
@@ -213,7 +230,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
       // Attach to an in-flight (still-fresh) generation started elsewhere.
       if (existing && existing.status === "generating") {
-        void attachPodcastJob(topicId, topicTitle, window.location.pathname, voiceId);
+        void attachPodcastJob(topicId, topicTitle, window.location.pathname, preferred);
       }
     })();
     return () => {
@@ -449,7 +466,9 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     })();
   };
 
-  const voicePicker = (
+  // Listeners see only the accents already recorded for this topic. Admins keep
+  // the full bank so they can commission a new accent.
+  const voicePicker = isAdmin ? (
     <div className="flex flex-wrap items-center gap-2">
       <Mic className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
       <label className="text-xs text-muted-foreground" htmlFor={`podcast-voice-${topicId}`}>
@@ -471,8 +490,13 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
                 <SelectItem key={v.id} value={v.id} className="text-xs">
                   <span className="font-medium">{v.label}</span>
                   <span className="text-muted-foreground"> — {v.description}</span>
-                  {hasNativeVoice(v.id) && (
+                  {recordedVoices.includes(v.id) && (
                     <span className="ml-1 text-[0.65rem] uppercase tracking-wide text-primary">
+                      recorded
+                    </span>
+                  )}
+                  {!recordedVoices.includes(v.id) && hasNativeVoice(v.id) && (
+                    <span className="ml-1 text-[0.65rem] uppercase tracking-wide text-muted-foreground">
                       native voice
                     </span>
                   )}
@@ -483,12 +507,56 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         </SelectContent>
       </Select>
     </div>
-  );
+  ) : recordedVoices.length > 1 ? (
+    <div className="flex flex-wrap items-center gap-2">
+      <Mic className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
+      <label className="text-xs text-muted-foreground" htmlFor={`podcast-voice-${topicId}`}>
+        Narrator
+      </label>
+      <Select value={voiceId} onValueChange={onVoiceChange}>
+        <SelectTrigger
+          id={`podcast-voice-${topicId}`}
+          className="h-8 w-[15rem] max-w-full text-xs"
+          aria-label="Podcast narrator voice and accent"
+        >
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent className="max-h-[60vh]">
+          {recordedVoices.map((v) => (
+            <SelectItem key={v} value={v} className="text-xs">
+              {podcastVoiceLabel(v)}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  ) : null;
 
   if (loading) {
     return (
       <div className="flex items-center gap-2 rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground">
         <Loader2 className="h-4 w-4 animate-spin" /> Checking for podcast…
+      </div>
+    );
+  }
+
+  // Nothing recorded yet and the visitor cannot commission recordings.
+  if ((!podcast || podcast.status !== "ready" || !podcast.audio_url) && !isAdmin) {
+    return (
+      <div className="rounded-xl border border-border bg-card p-4">
+        <div className="flex items-start gap-3">
+          <Headphones className="h-5 w-5 text-primary mt-0.5 shrink-0" aria-hidden="true" />
+          <div>
+            <h3 className="font-serif text-base font-semibold text-foreground">
+              Listen to this topic
+            </h3>
+            <p className="mt-0.5 text-sm text-muted-foreground">
+              {podcast?.status === "generating"
+                ? "A recording for this topic is being prepared — check back shortly."
+                : "No audio recording has been made for this topic yet. Recordings are added by the editorial team."}
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
@@ -669,21 +737,23 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
           {speed}×
         </Button>
         <div className="flex items-center gap-1">
-          <Button
-            onClick={openRegenDialog}
-            size="sm"
-            variant="ghost"
-            className="text-xs h-8 text-muted-foreground/70 hover:text-foreground"
-            aria-label="Regenerate podcast (password required)"
-            title="Regenerate (password required)"
-            disabled={generating}
-          >
-            {generating ? (
-              <Loader2 className="h-3.5 w-3.5 animate-spin" />
-            ) : (
-              <RefreshCw className="h-3.5 w-3.5" />
-            )}
-          </Button>
+          {isAdmin && (
+            <Button
+              onClick={openRegenDialog}
+              size="sm"
+              variant="ghost"
+              className="text-xs h-8 text-muted-foreground/70 hover:text-foreground"
+              aria-label="Regenerate podcast (password required)"
+              title="Regenerate (password required)"
+              disabled={generating}
+            >
+              {generating ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <RefreshCw className="h-3.5 w-3.5" />
+              )}
+            </Button>
+          )}
           <Button
             onClick={handleDownload}
             size="sm"
@@ -708,7 +778,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3">
         {voicePicker}
-        {(podcast.voice ?? DEFAULT_PODCAST_VOICE) !== voiceId ? (
+        {isAdmin && (podcast.voice ?? DEFAULT_PODCAST_VOICE) !== voiceId ? (
           <Button onClick={() => handleGenerate()} size="sm" variant="outline" className="h-8 text-xs" disabled={generating}>
             {generating ? (
               <>
