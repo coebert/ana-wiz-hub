@@ -36,6 +36,7 @@ export default function PodcastRerecord() {
   const [items, setItems] = useState<RerecordItem[]>([]);
   const [selected, setSelected] = useState<string[]>([]);
   const [password, setPassword] = useState("");
+  const [batchSize, setBatchSize] = useState<number>(DEFAULT_BATCH_SIZE);
   const [log, setLog] = useState<string[]>([]);
   const [running, setRunning] = useState(false);
   const stopRef = useRef<{ stopped: boolean }>({ stopped: false });
@@ -87,16 +88,22 @@ export default function PodcastRerecord() {
       stopRef.current = { stopped: false };
       setRunning(true);
       try {
-        await runRerecordQueue(jobId, password.trim(), stopRef.current, {
-          onProgress: setJob,
-          onLog: addLog,
-          onItem: async () => setItems(await fetchItems(jobId, 60)),
-        });
+        await runRerecordQueue(
+          jobId,
+          password.trim(),
+          stopRef.current,
+          {
+            onProgress: setJob,
+            onLog: addLog,
+            onItem: async () => setItems(await fetchItems(jobId, 60)),
+          },
+          { batchSize },
+        );
       } finally {
         setRunning(false);
       }
     },
-    [addLog, password],
+    [addLog, password, batchSize],
   );
 
   const handleStart = async () => {
