@@ -435,17 +435,28 @@ export const runRerecordQueue = async (
       errorMessage = err instanceof Error ? err.message : String(err);
     }
 
+    // A timed-out or unreadable episode is usually the page being interrupted,
+    // not a bad topic — put it back in the queue for another go later.
+    const transient =
+      !!errorMessage && /took too long|timed out|network|fetch|load/i.test(errorMessage);
+    const requeue =
+      outcome !== "done" && transient && item.attempts + 1 < MAX_ITEM_ATTEMPTS;
+
     await supabase
       .from("podcast_rerecord_items")
-      .update({
-        status: outcome === "done" ? "done" : "failed",
-        error_message: errorMessage,
-        completed_at: new Date().toISOString(),
-      })
+      .update(
+        requeue
+          ? { status: "pending", started_at: null, error_message: errorMessage }
+          : {
+              status: outcome === "done" ? "done" : "failed",
+              error_message: errorMessage,
+              completed_at: new Date().toISOString(),
+            },
+      )
       .eq("id", item.id);
 
     const fresh = await fetchJob(jobId);
-    if (fresh) {
+    if (fresh && !requeue) {
       await supabase
         .from("podcast_rerecord_jobs")
         .update({
@@ -454,6 +465,11 @@ export const runRerecordQueue = async (
           failed: fresh.failed + (outcome === "done" ? 0 : 1),
           last_error: errorMessage,
         })
+        .eq("id", jobId);
+    } else if (fresh) {
+      await supabase
+        .from("podcast_rerecord_jobs")
+        .update({ last_error: errorMessage })
         .eq("id", jobId);
     }
 
