@@ -210,6 +210,12 @@ export const runRerecordQueue = async (
 ): Promise<void> => {
   let rateLimitStrikes = 0;
 
+  // Recover items left mid-flight by a closed tab or refresh: if the recording
+  // actually landed, count it; otherwise put it back in the queue.
+  await reclaimStaleItems(jobId, cb);
+
+
+
   for (;;) {
     if (signal.stopped) return;
 

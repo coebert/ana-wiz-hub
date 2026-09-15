@@ -1252,7 +1252,9 @@ async function synthesiseChunkNative(
 
     if (!response.ok) {
       const errText = await response.text();
-      const isRetryable = response.status === 429 || response.status >= 500;
+      // 409 = the shared voice is being provisioned by a parallel chunk; retry.
+      const isRetryable =
+        response.status === 429 || response.status === 409 || response.status >= 500;
       if (isRetryable && attempt < TTS_MAX_RETRIES) {
         await sleep(500 * Math.pow(2, attempt - 1) + Math.random() * 250);
         return synthesiseChunkNative(text, nativeVoiceId, attempt + 1);
