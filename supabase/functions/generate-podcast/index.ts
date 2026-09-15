@@ -957,6 +957,13 @@ interface RequestBody {
   force?: boolean; // bypass cache and regenerate (requires regeneratePassword)
   regeneratePassword?: string;
   voiceId?: string; // narrator/accent preset id (see VOICE_PRESETS)
+  /**
+   * Bulk re-record mode: keep the existing episode `ready` and playable while
+   * the replacement renders, flagging it with `regenerating` instead of
+   * blanking it. Used by the admin re-record queue so listeners never lose an
+   * episode mid-run.
+   */
+  preserveExisting?: boolean;
 }
 
 // Shared secret that authorises bypassing the cached podcast and regenerating
