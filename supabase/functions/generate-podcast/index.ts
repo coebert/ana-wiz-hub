@@ -44,6 +44,8 @@ interface AccentRow {
 interface VoicePreset {
   voice: string;
   instructions: string;
+  /** ElevenLabs voice id of a native speaker of this region, when available. */
+  nativeVoiceId?: string;
 }
 const BASE_STYLE =
   "Warm, confident and clear, like a senior anaesthetic trainee tutoring a peer. " +
