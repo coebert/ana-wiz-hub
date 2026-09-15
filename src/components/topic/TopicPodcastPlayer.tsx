@@ -195,7 +195,18 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         return;
       }
       setLoading(true);
-      const existing = await fetchPodcast(topicId, voiceId);
+      // Which accents actually exist for this topic decides what listeners
+      // can choose from.
+      const recorded = await fetchRecordedVoices(topicId);
+      if (cancelled) return;
+      setRecordedVoices(recorded);
+      // Fall back to an accent that exists if the saved preference has never
+      // been recorded for this topic.
+      const preferred = recorded.includes(voiceId)
+        ? voiceId
+        : (recorded[0] ?? voiceId);
+      if (preferred !== voiceId) setVoiceId(preferred);
+      const existing = await fetchPodcast(topicId, preferred);
       if (cancelled) return;
       // Stale recovery: if the row is stuck in `generating` but hasn't been
       // updated in several minutes, the background job is dead. Surface it
