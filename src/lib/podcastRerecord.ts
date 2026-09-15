@@ -272,23 +272,30 @@ const reclaimStaleItems = async (jobId: string, cb: RunnerCallbacks = {}): Promi
 
 
 /**
- * Process pending items one at a time until the queue drains, the job is
- * paused/cancelled, or `signal.stopped` flips. Safe to call again later — it
- * only ever picks up items still marked pending.
+ * Process pending items one small batch at a time until the queue drains, the
+ * job is paused/cancelled, or `signal.stopped` flips. Each batch attempts at
+ * most `batchSize` episodes, alternating accents so one accent (or one very
+ * long topic) cannot hold the whole run up, then rests before the next batch.
+ * Safe to call again later — it only ever picks up items still marked pending.
  */
 export const runRerecordQueue = async (
   jobId: string,
   regeneratePassword: string,
   signal: { stopped: boolean },
   cb: RunnerCallbacks = {},
+  options: { batchSize?: number } = {},
 ): Promise<void> => {
   let rateLimitStrikes = 0;
+  const batchSize = Math.max(1, Math.min(50, options.batchSize ?? DEFAULT_BATCH_SIZE));
+  let batchNumber = 1;
+  let inBatch = 0;
+  let lastVoice: string | null = null;
 
   // Recover items left mid-flight by a closed tab or refresh: if the recording
   // actually landed, count it; otherwise put it back in the queue.
   await reclaimStaleItems(jobId, cb);
 
-
+  cb.onLog?.(`Batch ${batchNumber} starting — up to ${batchSize} episodes.`);
 
   for (;;) {
     if (signal.stopped) return;
@@ -301,14 +308,29 @@ export const runRerecordQueue = async (
       return;
     }
 
-    const { data: next } = await supabase
+    // Batch boundary: rest, then keep going with a fresh batch.
+    if (inBatch >= batchSize) {
+      cb.onLog?.(`Batch ${batchNumber} finished (${inBatch} episodes). Pausing briefly…`);
+      await new Promise((r) => setTimeout(r, BATCH_COOLDOWN_MS));
+      if (signal.stopped) return;
+      inBatch = 0;
+      batchNumber += 1;
+      cb.onLog?.(`Batch ${batchNumber} starting — up to ${batchSize} episodes.`);
+      continue;
+    }
+
+    // Take a small window of pending work and prefer a different accent from
+    // the last episode, so accents progress side by side.
+    const { data: candidates } = await supabase
       .from("podcast_rerecord_items")
       .select("*")
       .eq("job_id", jobId)
       .eq("status", "pending")
       .order("created_at", { ascending: true })
-      .limit(1)
-      .maybeSingle();
+      .limit(40);
+
+    const pending = (candidates ?? []) as RerecordItem[];
+    const next = pending.find((p) => p.voice !== lastVoice) ?? pending[0] ?? null;
 
     if (!next) {
       await supabase
