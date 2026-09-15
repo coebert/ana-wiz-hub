@@ -12,6 +12,7 @@
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 import { TOPIC_ID_ALLOWLIST } from "./_topic-ids.ts";
+import { NATIVE_VOICE_IDS } from "./_native-voices.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
