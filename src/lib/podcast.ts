@@ -9,6 +9,11 @@ export interface PodcastResult {
   /** Narrator preset id the cached audio was generated with. */
   voice?: string;
   cached?: boolean;
+  /**
+   * True when a re-record request was skipped because the topic text hasn't
+   * changed since this accent was last recorded (no AI credits spent).
+   */
+  unchanged?: boolean;
   error?: string;
   // ISO timestamp of the row's last update. Used to detect stale
   // `generating` rows where the background job has died without flipping
