@@ -133,6 +133,16 @@ export default function PodcastRerecord() {
 
   return (
     <PageSection as="main" spacing="tight" width="wide">
+      <Button
+        variant="ghost"
+        size="sm"
+        className="mb-2 -ml-2"
+        onClick={() => navigate("/admin")}
+        aria-label="Back to admin dashboard"
+      >
+        <ArrowLeft className="w-4 h-4 mr-1" aria-hidden="true" />
+        Back to admin dashboard
+      </Button>
       <header className="mb-6">
         <h1 className="font-serif text-3xl font-semibold">Re-record podcasts</h1>
         <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
