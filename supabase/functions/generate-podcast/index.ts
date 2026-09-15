@@ -1398,7 +1398,7 @@ Deno.serve(async (req) => {
   const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
 
   try {
-    const { topicId, topicTitle, content, force, regeneratePassword, voiceId } =
+    const { topicId, topicTitle, content, force, regeneratePassword, voiceId, preserveExisting } =
       (await req.json()) as RequestBody;
     const { id: voiceIdResolved, preset: voicePreset } = resolveVoice(voiceId);
 
