@@ -87,6 +87,7 @@ export default function PodcastRerecord() {
       }
       stopRef.current = { stopped: false };
       setRunning(true);
+      const release = await keepAwake();
       try {
         await runRerecordQueue(
           jobId,
@@ -100,11 +101,29 @@ export default function PodcastRerecord() {
           { batchSize },
         );
       } finally {
+        release();
         setRunning(false);
       }
     },
     [addLog, password, batchSize],
   );
+
+  // Coming back to the page after the browser suspended it: pick the run up
+  // again automatically instead of leaving it looking stalled.
+  useEffect(() => {
+    const onVisible = async () => {
+      if (document.visibilityState !== "visible") return;
+      if (running || !password.trim()) return;
+      const latest = await fetchLatestJob();
+      if (!latest) return;
+      setJob(latest);
+      if (latest.paused || latest.status === "cancelled" || latest.status === "complete") return;
+      addLog("Page was asleep — picking the run back up.");
+      void startRunner(latest.id);
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => document.removeEventListener("visibilitychange", onVisible);
+  }, [running, password, startRunner, addLog]);
 
   const handleStart = async () => {
     if (selected.length === 0) {
