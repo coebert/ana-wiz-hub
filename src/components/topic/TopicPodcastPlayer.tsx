@@ -230,7 +230,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
       // Attach to an in-flight (still-fresh) generation started elsewhere.
       if (existing && existing.status === "generating") {
-        void attachPodcastJob(topicId, topicTitle, window.location.pathname, voiceId);
+        void attachPodcastJob(topicId, topicTitle, window.location.pathname, preferred);
       }
     })();
     return () => {
