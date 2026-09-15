@@ -86,10 +86,10 @@ export const formatExtractionDiagnostics = (d: ExtractionDiagnostics): string =>
   return lines.join("\n");
 };
 
-export const extractTopicContent = (): ExtractionResult => {
+export const extractTopicContent = (doc: Document = document): ExtractionResult => {
   const selectorLog: ExtractionDiagnostics["selectors"] = [];
   const collect = (selector: string): string => {
-    const el = document.querySelector(selector);
+    const el = doc.querySelector(selector);
     const text = el ? (el as HTMLElement).innerText || "" : "";
     selectorLog.push({ selector, found: !!el, chars: text.length });
     return text;
@@ -110,9 +110,9 @@ export const extractTopicContent = (): ExtractionResult => {
     !!el.closest("nav, header, footer, aside, [data-podcast-player]");
 
   const rootCandidates: Array<{ selector: string; el: Element | null }> = [
-    { selector: "main", el: document.querySelector("main") },
-    { selector: "article", el: document.querySelector("article") },
-    { selector: "body", el: document.body },
+    { selector: "main", el: doc.querySelector("main") },
+    { selector: "article", el: doc.querySelector("article") },
+    { selector: "body", el: doc.body },
   ];
 
   const rootLog: ExtractionDiagnostics["roots"] = [];
@@ -277,7 +277,13 @@ export const generatePodcast = async (
   topicId: string,
   topicTitle: string,
   content: string,
-  options?: { force?: boolean; regeneratePassword?: string; voiceId?: string },
+  options?: {
+    force?: boolean;
+    regeneratePassword?: string;
+    voiceId?: string;
+    /** Keep the existing episode playable while its replacement renders. */
+    preserveExisting?: boolean;
+  },
 ): Promise<PodcastResult> => {
   const normaliseFailedInvoke = async (err: unknown): Promise<PodcastResult> => {
     let failedPayload: Partial<PodcastResult> | undefined;
@@ -348,6 +354,7 @@ export const generatePodcast = async (
         force: options?.force ?? false,
         regeneratePassword: options?.regeneratePassword,
         voiceId: options?.voiceId,
+        preserveExisting: options?.preserveExisting ?? false,
       },
     });
 
