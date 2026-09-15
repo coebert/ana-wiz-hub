@@ -73,6 +73,47 @@ const BATCH_COOLDOWN_MS = 15_000;
  */
 const ITEM_TIME_BUDGET_MS = 8 * 60_000;
 
+/** Attempts allowed per episode before it is written off as failed. */
+const MAX_ITEM_ATTEMPTS = 3;
+
+/**
+ * Topic text read this session, keyed by topic id. Re-recording the same topic
+ * in a second accent then needs no page read at all — fewer iframe loads means
+ * far fewer chances to stall.
+ */
+const contentCache = new Map<string, string>();
+
+/**
+ * Ask the device to keep the screen awake while a run is in flight. Mobile
+ * browsers suspend background/locked tabs outright, which is what makes a run
+ * appear to stall. Returns a release function; a no-op where unsupported.
+ */
+export const keepAwake = async (): Promise<() => void> => {
+  interface WakeLockNav {
+    wakeLock?: { request: (t: "screen") => Promise<{ release: () => Promise<void> }> };
+  }
+  const lockApi = (navigator as unknown as WakeLockNav).wakeLock;
+  if (!lockApi) return () => {};
+  try {
+    let sentinel = await lockApi.request("screen");
+    const reacquire = async () => {
+      if (document.visibilityState !== "visible") return;
+      try {
+        sentinel = await lockApi.request("screen");
+      } catch {
+        /* ignore — best effort */
+      }
+    };
+    document.addEventListener("visibilitychange", reacquire);
+    return () => {
+      document.removeEventListener("visibilitychange", reacquire);
+      void sentinel.release().catch(() => {});
+    };
+  } catch {
+    return () => {};
+  }
+};
+
 const withTimeout = async <T>(work: Promise<T>, ms: number, label: string): Promise<T> => {
   let timer: ReturnType<typeof setTimeout> | undefined;
   try {
