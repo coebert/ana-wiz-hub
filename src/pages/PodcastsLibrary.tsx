@@ -9,7 +9,8 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { toggleQueued, usePodcastQueue } from "@/lib/podcastPlaylist";
+import { episodeKey, toggleQueued, usePodcastQueue } from "@/lib/podcastPlaylist";
+import { podcastVoiceLabel } from "@/lib/podcastVoices";
 
 interface PodcastRow {
   topic_id: string;
@@ -17,9 +18,12 @@ interface PodcastRow {
   audio_path: string;
   duration_seconds: number | null;
   updated_at: string;
+  voice: string | null;
 }
 
 interface ResolvedPodcast extends PodcastRow {
+  /** Stable identity for a (topic, accent) recording — topics can have several. */
+  key: string;
   audio_url: string;
   section: Section | null;
   topicPath: string | null;
@@ -106,7 +110,7 @@ const PodcastsLibrary = () => {
     (async () => {
       const { data, error } = await supabase
         .from("podcasts")
-        .select("topic_id, topic_title, audio_path, duration_seconds, updated_at")
+        .select("topic_id, topic_title, audio_path, duration_seconds, updated_at, voice")
         .eq("status", "ready")
         .not("audio_path", "is", null)
         .order("updated_at", { ascending: false });
@@ -125,6 +129,7 @@ const PodcastsLibrary = () => {
         const { data: pub } = supabase.storage.from("podcasts").getPublicUrl(row.audio_path!);
         return {
           ...(row as PodcastRow),
+          key: episodeKey(row.topic_id, row.voice),
           audio_url: pub.publicUrl,
           section,
           topicPath,
@@ -146,6 +151,7 @@ const PodcastsLibrary = () => {
       return (
         p.topic_title.toLowerCase().includes(q) ||
         p.topic_id.toLowerCase().includes(q) ||
+        podcastVoiceLabel(p.voice ?? undefined).toLowerCase().includes(q) ||
         sectionLabel.includes(q)
       );
     });
@@ -163,7 +169,13 @@ const PodcastsLibrary = () => {
       .filter((k) => map.has(k))
       .map((k) => ({
         key: k,
-        items: map.get(k)!.sort((a, b) => a.topic_title.localeCompare(b.topic_title)),
+        items: map.get(k)!.sort(
+          (a, b) =>
+            a.topic_title.localeCompare(b.topic_title) ||
+            podcastVoiceLabel(a.voice ?? undefined).localeCompare(
+              podcastVoiceLabel(b.voice ?? undefined),
+            ),
+        ),
       }));
   }, [filtered]);
 
@@ -187,11 +199,16 @@ const PodcastsLibrary = () => {
         const ai = curriculumIndex.get(a.topic_id) ?? Number.MAX_SAFE_INTEGER;
         const bi = curriculumIndex.get(b.topic_id) ?? Number.MAX_SAFE_INTEGER;
         if (ai !== bi) return ai - bi;
-        return a.topic_title.localeCompare(b.topic_title);
+        return (
+          a.topic_title.localeCompare(b.topic_title) ||
+          podcastVoiceLabel(a.voice ?? undefined).localeCompare(
+            podcastVoiceLabel(b.voice ?? undefined),
+          )
+        );
       });
     }
     if (orderMode === "custom") {
-      const byId = new Map(filtered.map((p) => [p.topic_id, p]));
+      const byId = new Map(filtered.map((p) => [p.key, p]));
       const ordered: ResolvedPodcast[] = [];
       const seen = new Set<string>();
       for (const id of customOrder) {
@@ -203,7 +220,7 @@ const PodcastsLibrary = () => {
       }
       // Append any new podcasts not yet in the saved custom order.
       for (const p of filtered) {
-        if (!seen.has(p.topic_id)) ordered.push(p);
+        if (!seen.has(p.key)) ordered.push(p);
       }
       return ordered;
     }
@@ -212,10 +229,10 @@ const PodcastsLibrary = () => {
     return grouped.flatMap((g) => g.items);
   }, [filtered, grouped, orderMode, customOrder, curriculumIndex]);
 
-  const moveCustom = (topicId: string, delta: number) => {
+  const moveCustom = (key: string, delta: number) => {
     // Seed the saved custom order with the current playlist if empty/stale.
-    const currentIds = playlist.map((p) => p.topic_id);
-    const idx = currentIds.indexOf(topicId);
+    const currentIds = playlist.map((p) => p.key);
+    const idx = currentIds.indexOf(key);
     if (idx === -1) return;
     const target = idx + delta;
     if (target < 0 || target >= currentIds.length) return;
@@ -242,46 +259,46 @@ const PodcastsLibrary = () => {
     });
   };
 
-  /** Play a specific podcast by topic id, expanding its section + scrolling into view. */
-  const playPodcast = (topicId: string) => {
-    const target = playlist.find((p) => p.topic_id === topicId);
+  /** Play a specific recording by (topic, accent) key, expanding its section. */
+  const playPodcast = (key: string) => {
+    const target = playlist.find((p) => p.key === key);
     if (!target) return;
 
-    pauseAllExcept(topicId);
+    pauseAllExcept(key);
 
     // Ensure the section is expanded so the player is mounted.
     const sectionKey = (target.section ?? "_other") as string;
     setCollapsed((prev) => (prev[sectionKey] ? { ...prev, [sectionKey]: false } : prev));
 
     requestAnimationFrame(() => {
-      const el = audioRefs.current.get(topicId);
+      const el = audioRefs.current.get(key);
       if (!el) return;
       el.scrollIntoView({ behavior: "smooth", block: "center" });
       el.play().catch(() => {
         /* browser may block autoplay until first user interaction */
       });
-      setNowPlaying(topicId);
+      setNowPlaying(key);
     });
   };
 
-  const goToOffset = (currentTopicId: string, offset: number) => {
-    const idx = playlist.findIndex((p) => p.topic_id === currentTopicId);
+  const goToOffset = (currentKey: string, offset: number) => {
+    const idx = playlist.findIndex((p) => p.key === currentKey);
     if (idx === -1) return;
     const targetIdx = idx + offset;
     if (targetIdx < 0 || targetIdx >= playlist.length) return;
-    playPodcast(playlist[targetIdx].topic_id);
+    playPodcast(playlist[targetIdx].key);
   };
 
-  const handleEnded = (topicId: string) => {
+  const handleEnded = (key: string) => {
     if (!autoplay) return;
-    const idx = playlist.findIndex((p) => p.topic_id === topicId);
+    const idx = playlist.findIndex((p) => p.key === key);
     if (idx === -1 || idx >= playlist.length - 1) return;
-    playPodcast(playlist[idx + 1].topic_id);
+    playPodcast(playlist[idx + 1].key);
   };
 
-  const setAudioRef = (topicId: string) => (el: HTMLAudioElement | null) => {
-    if (el) audioRefs.current.set(topicId, el);
-    else audioRefs.current.delete(topicId);
+  const setAudioRef = (key: string) => (el: HTMLAudioElement | null) => {
+    if (el) audioRefs.current.set(key, el);
+    else audioRefs.current.delete(key);
   };
 
   const toggleSection = (key: string, open: boolean) => {
@@ -530,10 +547,10 @@ const PodcastsLibrary = () => {
                   <ul className="space-y-3 px-3 sm:px-4 pb-4 pt-1">
                     {items.map((p) => (
                       <li
-                        key={p.topic_id}
+                        key={p.key}
                         className={cn(
                           "rounded-lg border bg-background p-3 sm:p-4 space-y-3 transition-colors",
-                          nowPlaying === p.topic_id ? "border-primary/60" : "border-border"
+                          nowPlaying === p.key ? "border-primary/60" : "border-border"
                         )}
                       >
                         <div className="flex items-start justify-between gap-3 flex-wrap">
@@ -542,9 +559,15 @@ const PodcastsLibrary = () => {
                               <Headphones className="h-4 w-4 text-primary shrink-0" />
                               <span className="truncate">{p.topic_title}</span>
                             </div>
-                            <div className="mt-0.5 text-xs text-muted-foreground">
-                              {formatDuration(p.duration_seconds)} •{" "}
-                              {new Date(p.updated_at).toLocaleDateString()}
+                            <div className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+                              <span className="inline-flex items-center gap-1">
+                                <Mic className="h-3 w-3" aria-hidden="true" />
+                                {podcastVoiceLabel(p.voice ?? undefined)}
+                              </span>
+                              <span aria-hidden="true">•</span>
+                              <span>{formatDuration(p.duration_seconds)}</span>
+                              <span aria-hidden="true">•</span>
+                              <span>{new Date(p.updated_at).toLocaleDateString()}</span>
                             </div>
                           </div>
                           <div className="flex items-center gap-2 shrink-0">
@@ -559,16 +582,16 @@ const PodcastsLibrary = () => {
                             )}
                             <button
                               type="button"
-                              onClick={() => toggleQueued(p.topic_id)}
-                              aria-pressed={queue.includes(p.topic_id)}
+                              onClick={() => toggleQueued(p.key)}
+                              aria-pressed={queue.includes(p.key)}
                               className={cn(
                                 "inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium transition-colors border",
-                                queue.includes(p.topic_id)
+                                queue.includes(p.key)
                                   ? "border-primary/60 bg-primary/10 text-primary"
                                   : "border-border bg-card text-foreground hover:bg-muted"
                               )}
                             >
-                              {queue.includes(p.topic_id) ? (
+                              {queue.includes(p.key) ? (
                                 <>
                                   <Check className="h-3 w-3" /> Queued
                                 </>
@@ -580,7 +603,7 @@ const PodcastsLibrary = () => {
                             </button>
                             <a
                               href={p.audio_url}
-                              download={`${p.topic_id}.mp3`}
+                              download={`${p.key.replace("::", "-")}.mp3`}
                               className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
                             >
                               <Download className="h-3 w-3" />
@@ -589,26 +612,26 @@ const PodcastsLibrary = () => {
                           </div>
                         </div>
                         {(() => {
-                          const playlistIdx = playlist.findIndex((x) => x.topic_id === p.topic_id);
+                          const playlistIdx = playlist.findIndex((x) => x.key === p.key);
                           const hasPrev = playlistIdx > 0;
                           const hasNext = playlistIdx >= 0 && playlistIdx < playlist.length - 1;
                           return (
                             <div className="space-y-2">
                               <audio
-                                ref={setAudioRef(p.topic_id)}
+                                ref={setAudioRef(p.key)}
                                 controls
                                 preload="none"
                                 className="w-full"
                                 src={p.audio_url}
-                                onPlay={() => setNowPlaying(p.topic_id)}
-                                onEnded={() => handleEnded(p.topic_id)}
+                                onPlay={() => setNowPlaying(p.key)}
+                                onEnded={() => handleEnded(p.key)}
                               >
                                 Your browser does not support audio playback.
                               </audio>
                               <div className="flex items-center justify-between gap-2">
                                 <button
                                   type="button"
-                                  onClick={() => goToOffset(p.topic_id, -1)}
+                                  onClick={() => goToOffset(p.key, -1)}
                                   disabled={!hasPrev}
                                   aria-label="Previous podcast"
                                   className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium border border-border bg-card text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
@@ -621,7 +644,7 @@ const PodcastsLibrary = () => {
                                     <>
                                       <button
                                         type="button"
-                                        onClick={() => moveCustom(p.topic_id, -1)}
+                                        onClick={() => moveCustom(p.key, -1)}
                                         disabled={!hasPrev}
                                         aria-label="Move earlier in playlist"
                                         className="inline-flex items-center justify-center h-6 w-6 rounded-md border border-border bg-card text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
@@ -630,7 +653,7 @@ const PodcastsLibrary = () => {
                                       </button>
                                       <button
                                         type="button"
-                                        onClick={() => moveCustom(p.topic_id, 1)}
+                                        onClick={() => moveCustom(p.key, 1)}
                                         disabled={!hasNext}
                                         aria-label="Move later in playlist"
                                         className="inline-flex items-center justify-center h-6 w-6 rounded-md border border-border bg-card text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
@@ -645,7 +668,7 @@ const PodcastsLibrary = () => {
                                 </div>
                                 <button
                                   type="button"
-                                  onClick={() => goToOffset(p.topic_id, 1)}
+                                  onClick={() => goToOffset(p.key, 1)}
                                   disabled={!hasNext}
                                   aria-label="Next podcast"
                                   className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium border border-border bg-card text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
