@@ -1602,6 +1602,7 @@ Deno.serve(async (req) => {
             duration_seconds: durationSeconds,
             voice: voiceIdResolved,
             status: "ready",
+            regenerating: false,
             error_message: null,
           })
           .eq("topic_id", topicId)
