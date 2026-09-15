@@ -37,6 +37,7 @@ export default function PodcastRerecord() {
   const [log, setLog] = useState<string[]>([]);
   const [running, setRunning] = useState(false);
   const stopRef = useRef<{ stopped: boolean }>({ stopped: false });
+  const navigate = useNavigate();
 
   const topicCount = useMemo(() => rerecordableTopics().length, []);
 
