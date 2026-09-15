@@ -343,6 +343,8 @@ export const runRerecordQueue = async (
     }
 
     const item = next as RerecordItem;
+    inBatch += 1;
+    lastVoice = item.voice;
     // Claim the item first, so a second tab cannot double-spend on it.
     await supabase
       .from("podcast_rerecord_items")
