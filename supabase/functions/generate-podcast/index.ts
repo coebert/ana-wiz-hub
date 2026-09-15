@@ -17,7 +17,7 @@ import { NATIVE_VOICE_IDS } from "./_native-voices.ts";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+    "authorization, x-client-info, apikey, content-type, x-internal-token, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
@@ -1182,6 +1182,8 @@ interface RequestBody {
    * episode mid-run.
    */
   preserveExisting?: boolean;
+  /** Internal bulk jobs refresh the script once per topic after content changes. */
+  refreshScript?: boolean;
 }
 
 // Shared secret that authorises bypassing the cached podcast and regenerating
@@ -1618,8 +1620,9 @@ Deno.serve(async (req) => {
   const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
 
   try {
-    const { topicId, topicTitle, content, force, regeneratePassword, voiceId, preserveExisting } =
+    const { topicId, topicTitle, content, force, regeneratePassword, voiceId, preserveExisting, refreshScript } =
       (await req.json()) as RequestBody;
+    const internalRequest = req.headers.get("x-internal-token") === SERVICE_ROLE;
     const { id: voiceIdResolved, preset: voicePreset } = resolveVoice(voiceId);
 
     if (!topicId || !topicTitle || !content) {
@@ -1643,7 +1646,7 @@ Deno.serve(async (req) => {
     const forceRegenerate = force === true;
     if (forceRegenerate) {
       const submittedPassword = typeof regeneratePassword === "string" ? regeneratePassword.trim() : "";
-      if (!REGENERATE_PASSWORD || submittedPassword !== REGENERATE_PASSWORD) {
+      if (!internalRequest && (!REGENERATE_PASSWORD || submittedPassword !== REGENERATE_PASSWORD)) {
         return failureResponse(
           {
             status: "failed",
@@ -1667,7 +1670,7 @@ Deno.serve(async (req) => {
     // The spoken script is accent-independent — reuse it from any other voice's
     // ready episode for this topic instead of paying for a fresh LLM script.
     let reusedScript: string | null = null;
-    if (existing?.status !== "ready" || !existing.script) {
+    if (refreshScript !== true && (existing?.status !== "ready" || !existing.script)) {
       const { data: anyVoice } = await supabase
         .from("podcasts")
         .select("script")
@@ -1718,7 +1721,7 @@ Deno.serve(async (req) => {
     // Rate-limit & concurrency gates — only on the generation path (cache
     // hits above return early). Best-effort, in-memory, per edge instance.
     const ip = getClientIp(req);
-    if (isIpRateLimited(ip)) {
+    if (!internalRequest && isIpRateLimited(ip)) {
       console.warn(`[${topicId}] IP ${ip} rate-limited`);
       return new Response(
         JSON.stringify({

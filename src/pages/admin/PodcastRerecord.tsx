@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PageSection } from "@/components/layout/PageSection";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -23,10 +22,8 @@ import {
   fetchItems,
   fetchJob,
   fetchLatestJob,
-  keepAwake,
   MAX_JOB_VOICES,
   rerecordableTopics,
-  runRerecordQueue,
   setJobPaused,
   type RerecordItem,
   type RerecordJob,
@@ -36,11 +33,9 @@ export default function PodcastRerecord() {
   const [job, setJob] = useState<RerecordJob | null>(null);
   const [items, setItems] = useState<RerecordItem[]>([]);
   const [selected, setSelected] = useState<string[]>([]);
-  const [password, setPassword] = useState("");
   const [batchSize, setBatchSize] = useState<number>(DEFAULT_BATCH_SIZE);
   const [log, setLog] = useState<string[]>([]);
   const [running, setRunning] = useState(false);
-  const stopRef = useRef<{ stopped: boolean }>({ stopped: false });
   const navigate = useNavigate();
 
   const topicCount = useMemo(() => rerecordableTopics().length, []);
@@ -65,66 +60,23 @@ export default function PodcastRerecord() {
     return () => clearInterval(t);
   }, [job?.id, job?.status]);
 
-  // Warn before the tab closes mid-run — the queue needs this page open.
-  useEffect(() => {
-    if (!running) return;
-    const handler = (e: BeforeUnloadEvent) => {
-      e.preventDefault();
-      e.returnValue = "";
-    };
-    window.addEventListener("beforeunload", handler);
-    return () => window.removeEventListener("beforeunload", handler);
-  }, [running]);
-
   const addLog = useCallback((line: string) => {
     setLog((prev) => [`${new Date().toLocaleTimeString()} — ${line}`, ...prev].slice(0, 200));
   }, []);
 
   const startRunner = useCallback(
     async (jobId: string) => {
-      if (!password.trim()) {
-        toast({ title: "Enter the recording password first.", variant: "destructive" });
-        return;
-      }
-      stopRef.current = { stopped: false };
       setRunning(true);
-      const release = await keepAwake();
       try {
-        await runRerecordQueue(
-          jobId,
-          password.trim(),
-          stopRef.current,
-          {
-            onProgress: setJob,
-            onLog: addLog,
-            onItem: async () => setItems(await fetchItems(jobId, 60)),
-          },
-          { batchSize },
-        );
+        const { wakeRerecordWorker } = await import("@/lib/podcastRerecord");
+        await wakeRerecordWorker(jobId);
+        addLog("Background worker started. You can now close this page.");
       } finally {
-        release();
         setRunning(false);
       }
     },
-    [addLog, password, batchSize],
+    [addLog],
   );
-
-  // Coming back to the page after the browser suspended it: pick the run up
-  // again automatically instead of leaving it looking stalled.
-  useEffect(() => {
-    const onVisible = async () => {
-      if (document.visibilityState !== "visible") return;
-      if (running || !password.trim()) return;
-      const latest = await fetchLatestJob();
-      if (!latest) return;
-      setJob(latest);
-      if (latest.paused || latest.status === "cancelled" || latest.status === "complete") return;
-      addLog("Page was asleep — picking the run back up.");
-      void startRunner(latest.id);
-    };
-    document.addEventListener("visibilitychange", onVisible);
-    return () => document.removeEventListener("visibilitychange", onVisible);
-  }, [running, password, startRunner, addLog]);
 
   const handleStart = async () => {
     if (selected.length === 0) {
@@ -132,7 +84,7 @@ export default function PodcastRerecord() {
       return;
     }
     try {
-      const created = await createRerecordJob(selected);
+      const created = await createRerecordJob(selected, batchSize);
       setJob(created);
       setItems(await fetchItems(created.id, 60));
       addLog(`Queued ${created.total} recordings across ${created.voices.length} accent(s).`);
@@ -178,10 +130,8 @@ export default function PodcastRerecord() {
           Records every topic again with a real regional voice and a fresh script, so episodes
           reflect the current page content. Each existing episode keeps playing until its
           replacement is ready. Pick up to {MAX_JOB_VOICES} accents — {topicCount} topics per
-          accent, in small batches. Keep this page open and the screen on while it runs — phones and
-          tablets put background pages to sleep, which halts the run. If that happens, the run picks
-          itself back up when you return to this page, interrupted episodes are retried, and
-          finished episodes are never repeated.
+           accent, in small batches. Recording now continues securely in the background after this
+           page is closed. Interrupted episodes are retried, and finished episodes are never repeated.
         </p>
       </header>
 
@@ -233,13 +183,6 @@ export default function PodcastRerecord() {
           </div>
 
           <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Input
-              type="password"
-              placeholder="Recording password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="sm:max-w-xs"
-            />
             <label className="flex items-center gap-2 text-sm">
               <span className="text-muted-foreground">Episodes per batch</span>
               <select
@@ -262,7 +205,7 @@ export default function PodcastRerecord() {
           <p className="mt-2 text-xs text-muted-foreground">
             {ACCENT_BANK.length} accents are available; each one you add multiplies the number of
             recordings and the cost. Work runs in small batches, alternating accents, and any single
-            episode that takes more than eight minutes is skipped so the run keeps moving.
+            episode is monitored independently so the run keeps moving.
           </p>
         </section>
       )}
@@ -289,15 +232,20 @@ export default function PodcastRerecord() {
           )}
 
           <div className="mt-4 flex flex-wrap gap-2">
-            {!running && active && (
-              <>
-                <Input
-                  type="password"
-                  placeholder="Recording password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="sm:max-w-xs"
-                />
+            {active && !job.paused && (
+              <Button
+                variant="secondary"
+                onClick={async () => {
+                  await setJobPaused(job.id, true, "Paused by admin");
+                  const fresh = await fetchJob(job.id);
+                  if (fresh) setJob(fresh);
+                  addLog("Paused after the current episode.");
+                }}
+              >
+                Pause
+              </Button>
+            )}
+            {active && job.paused && (
                 <Button
                   onClick={async () => {
                     await setJobPaused(job.id, false);
@@ -308,27 +256,11 @@ export default function PodcastRerecord() {
                 >
                   {job.processed > 0 ? "Resume" : "Start"}
                 </Button>
-              </>
-            )}
-            {running && (
-              <Button
-                variant="secondary"
-                onClick={async () => {
-                  stopRef.current.stopped = true;
-                  await setJobPaused(job.id, true, "Paused by admin");
-                  const fresh = await fetchJob(job.id);
-                  if (fresh) setJob(fresh);
-                  addLog("Paused after the current episode.");
-                }}
-              >
-                Pause
-              </Button>
             )}
             {active && (
               <Button
                 variant="outline"
                 onClick={async () => {
-                  stopRef.current.stopped = true;
                   await cancelJob(job.id);
                   const fresh = await fetchJob(job.id);
                   if (fresh) setJob(fresh);
