@@ -205,6 +205,23 @@ async function run(jobId: string): Promise<void> {
       const responseText = await generateResponse.text();
       throw new Error(`Generation request failed (${generateResponse.status}): ${responseText.slice(0, 300)}`);
     }
+    // The topic text is identical to what this accent already narrated, so
+    // generate-podcast kept the existing recording rather than spending
+    // credits. Settle the queue item immediately instead of polling for a
+    // fresh row that will never appear.
+    const generatePayload = (await generateResponse.json().catch(() => null)) as
+      | { unchanged?: boolean }
+      | null;
+    if (generatePayload?.unchanged === true) {
+      await admin.from("podcast_rerecord_items").update({
+        status: "done",
+        completed_at: new Date().toISOString(),
+        error_message: null,
+      }).eq("id", item.id).eq("status", "running");
+      const { data: refreshedSkip } = await admin.rpc("refresh_podcast_rerecord_job", { _job_id: jobId });
+      if (refreshedSkip?.status === "running") await selfChain(jobId, 1_000);
+      return;
+    }
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     await requeueOrFail(item, message);

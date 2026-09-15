@@ -331,6 +331,16 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         setRegenError(settled.error || "Regeneration failed. Please try again.");
         return;
       }
+      // Nothing in this topic has changed since the existing recording in this
+      // voice, so we kept it rather than spending credits on an identical one.
+      if (settled?.unchanged) {
+        clearPodcastJob(topicId);
+        setPodcast(settled);
+        setRegenError(
+          "This topic hasn't changed since it was last recorded in this voice, so the existing recording was kept and no credits were used.",
+        );
+        return;
+      }
 
       // Accepted (or still running) — close the dialog and let the registry
       // drive the player. Reset playback of the old audio.

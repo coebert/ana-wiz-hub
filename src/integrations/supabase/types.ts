@@ -890,6 +890,7 @@ export type Database = {
       podcasts: {
         Row: {
           audio_path: string | null
+          content_hash: string | null
           created_at: string
           duration_seconds: number | null
           error_message: string | null
@@ -904,6 +905,7 @@ export type Database = {
         }
         Insert: {
           audio_path?: string | null
+          content_hash?: string | null
           created_at?: string
           duration_seconds?: number | null
           error_message?: string | null
@@ -918,6 +920,7 @@ export type Database = {
         }
         Update: {
           audio_path?: string | null
+          content_hash?: string | null
           created_at?: string
           duration_seconds?: number | null
           error_message?: string | null
