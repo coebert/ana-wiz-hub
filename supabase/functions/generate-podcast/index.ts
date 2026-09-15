@@ -874,7 +874,14 @@ const buildInstructions = (row: AccentRow): string => {
 };
 
 const VOICE_PRESETS: Record<string, VoicePreset> = Object.fromEntries(
-  ACCENT_BANK.map((row) => [row.id, { voice: row.voice, instructions: buildInstructions(row) }]),
+  ACCENT_BANK.map((row) => [
+    row.id,
+    {
+      voice: row.voice,
+      instructions: buildInstructions(row),
+      nativeVoiceId: NATIVE_VOICE_IDS[row.id],
+    },
+  ]),
 );
 const DEFAULT_VOICE_ID = "british-rp";
 const resolveVoice = (voiceId: unknown): { id: string; preset: VoicePreset } => {
