@@ -1613,9 +1613,15 @@ Deno.serve(async (req) => {
         const message = genErr instanceof Error ? genErr.message : String(genErr);
         const failure = normaliseProviderError(message);
         console.error(`[${topicId}] Generation failed:`, message);
+        // On failure keep a preserved episode playable — only rows that had no
+        // usable audio become `failed`.
         await supabase
           .from("podcasts")
-          .update({ status: "failed", error_message: failure.error })
+          .update({
+            status: keepExisting ? "ready" : "failed",
+            regenerating: false,
+            error_message: failure.error,
+          })
           .eq("topic_id", topicId)
           .eq("voice", voiceIdResolved);
       } finally {
