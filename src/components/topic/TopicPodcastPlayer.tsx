@@ -778,7 +778,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-3">
         {voicePicker}
-        {(podcast.voice ?? DEFAULT_PODCAST_VOICE) !== voiceId ? (
+        {isAdmin && (podcast.voice ?? DEFAULT_PODCAST_VOICE) !== voiceId ? (
           <Button onClick={() => handleGenerate()} size="sm" variant="outline" className="h-8 text-xs" disabled={generating}>
             {generating ? (
               <>
