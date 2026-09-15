@@ -362,24 +362,32 @@ export const runRerecordQueue = async (
     let errorMessage: string | null = null;
 
     try {
-      const content = await extractViaIframe(item.topic_path);
-      const result = await generatePodcast(item.topic_id, item.topic_title, content, {
-        force: true,
-        regeneratePassword,
-        voiceId: item.voice,
-        preserveExisting: true,
-      });
+      // Per-episode budget: an unusually long topic is skipped rather than
+      // allowed to hold the rest of the batch (and the run) up.
+      await withTimeout(
+        (async () => {
+          const content = await extractViaIframe(item.topic_path);
+          const result = await generatePodcast(item.topic_id, item.topic_title, content, {
+            force: true,
+            regeneratePassword,
+            voiceId: item.voice,
+            preserveExisting: true,
+          });
 
-      if (result.status === "failed") {
-        errorMessage = result.error ?? "Generation failed.";
-      } else if (result.status === "ready") {
-        outcome = "done";
-      } else {
-        // Generation continues server-side; wait for the row to settle.
-        const settled = await waitForEpisode(item.topic_id, item.voice, signal);
-        if (settled === "ready") outcome = "done";
-        else errorMessage = settled;
-      }
+          if (result.status === "failed") {
+            errorMessage = result.error ?? "Generation failed.";
+          } else if (result.status === "ready") {
+            outcome = "done";
+          } else {
+            // Generation continues server-side; wait for the row to settle.
+            const settled = await waitForEpisode(item.topic_id, item.voice, signal);
+            if (settled === "ready") outcome = "done";
+            else errorMessage = settled;
+          }
+        })(),
+        ITEM_TIME_BUDGET_MS,
+        `${item.topic_title} — ${item.voice}`,
+      );
     } catch (err) {
       errorMessage = err instanceof Error ? err.message : String(err);
     }
