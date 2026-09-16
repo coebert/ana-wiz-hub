@@ -29,16 +29,19 @@ function load(): string[] {
   if (typeof window === "undefined") return [];
   try {
     const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-    return Array.isArray(raw) ? raw.filter((x): x is string => typeof x === "string") : [];
+    // Exact duplicates are always dropped, keeping the earliest position.
+    return Array.isArray(raw)
+      ? [...new Set(raw.filter((x): x is string => typeof x === "string"))]
+      : [];
   } catch {
     return [];
   }
 }
 
 function commit(next: string[]) {
-  queue = next;
+  queue = [...new Set(next)];
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(queue));
   } catch {
     /* storage may be full or blocked — keep the in-memory queue */
   }
