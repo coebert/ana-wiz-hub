@@ -129,6 +129,16 @@ const PodcastPlaylist = () => {
     return m;
   }, [episodes]);
 
+  // Automatically prune duplicate queue entries once the episode list is known:
+  // two entries can point at the same recording (a legacy bare topic id plus a
+  // `topic::voice` key), which exact-string de-duplication cannot catch.
+  useEffect(() => {
+    if (!episodes || episodes.length === 0) return;
+    const removed = dedupeQueue((entry) => byId.get(entry)?.key ?? null);
+    if (removed > 0) setRemovedDuplicates((n) => n + removed);
+  }, [episodes, byId]);
+
+
   /** Queued episodes in queue order; ids without a ready episode are skipped. */
   const queued = useMemo(() => {
     const seen = new Set<string>();
