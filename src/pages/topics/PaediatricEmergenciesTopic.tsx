@@ -19,6 +19,7 @@ const tocItems = [
   { id: "section-cardiac", label: "Cardiac Presentations & Duct-Dependent Collapse", group: "Presentations" },
   { id: "section-cardiac-picu", label: "PICU Perioperative Cardiac Care & Airway Malacia", group: "Management" },
   { id: "section-arrhythmias", label: "Paediatric Arrhythmias", group: "Management" },
+  { id: "section-arrest", label: "Paediatric Cardiac Arrest Algorithms", group: "Management" },
   { id: "section-stroke", label: "Paediatric Stroke", group: "Management" },
   { id: "section-nai", label: "Non-Accidental Injury", group: "Safeguarding" },
   { id: "section-transfer", label: "Stabilisation, Retrieval & Handover", group: "System" },
@@ -597,6 +598,81 @@ const PaediatricEmergenciesTopic = () => {
                   </Link>
                   .
                 </p>
+              </div>
+            </section>
+
+            <section id="section-arrest" className="scroll-mt-24">
+              <h2 className="text-2xl font-semibold text-foreground mb-2">Paediatric Cardiac Arrest Algorithms</h2>
+              <ExamMappingBadges exams={[Exam.FFICM, Exam.EDIC]} />
+              <p className="text-muted-foreground leading-relaxed mt-3 mb-4">
+                Most paediatric arrests are the end point of hypoxia or hypovolaemia rather than a
+                primary arrhythmia, so the algorithm is airway-and-breathing led. The weight-based
+                numbers (WETFLAG), compression rate and depth are tabulated in the{" "}
+                <Link to="/intensive-care/paediatric-icu#resus" className="text-icu underline underline-offset-4">
+                  Paediatric Intensive Care resuscitation numbers
+                </Link>{" "}
+                — this section is the sequence itself <InlineRef topicId={TOPIC_ID} refLabel="RCUK PALS 2021" />.
+              </p>
+              <div className="space-y-3">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Core paediatric advanced life support sequence</h3>
+                  <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
+                    <li>Unresponsive and not breathing normally: call the resuscitation team, give <strong>5 initial rescue breaths</strong> with oxygen, then start CPR at <strong>15:2</strong> (compressions 100–120/min, depth one third of the chest) <InlineRef topicId={TOPIC_ID} refLabel="RCUK PALS 2021" />.</li>
+                    <li>Attach a defibrillator or monitor and obtain vascular access — intraosseous access immediately if intravenous access is not rapid.</li>
+                    <li>Assess the rhythm and follow the shockable or non-shockable arm below, minimising interruptions to compressions (rhythm checks every 2 minutes).</li>
+                    <li>Once the airway is secured, ventilate continuously without pausing compressions, target normal oxygenation rather than 100% oxygen after return of circulation, and use waveform capnography to confirm tube position and monitor CPR quality.</li>
+                    <li>Search for and treat the reversible causes throughout, and consider extracorporeal CPR early in a witnessed in-hospital arrest with a reversible cause, particularly after cardiac surgery.</li>
+                  </ol>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="bg-card border border-border rounded-lg p-4">
+                    <h3 className="font-semibold text-foreground mb-2">Non-shockable (asystole, PEA, bradycardia &lt;60/min with poor perfusion)</h3>
+                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                      <li>Give <strong>adrenaline 10 micrograms/kg IV/IO</strong> as soon as access is available, then every 3–5 minutes (every other cycle) <InlineRef topicId={TOPIC_ID} refLabel="RCUK PALS 2021" />.</li>
+                      <li>Continue CPR 15:2, oxygenate and ventilate well — hypoxia is the commonest cause.</li>
+                      <li>Give a fluid bolus if hypovolaemia or sepsis is likely, and treat hyperkalaemia, hypoglycaemia and hypothermia actively.</li>
+                      <li>A profound bradycardia with poor perfusion is managed as an arrest: ventilate, then adrenaline; pace only for block or a post-surgical cause <InlineRef topicId={TOPIC_ID} refLabel="APLS 2021" />.</li>
+                    </ul>
+                  </div>
+                  <div className="bg-card border border-border rounded-lg p-4">
+                    <h3 className="font-semibold text-foreground mb-2">Shockable (VF, pulseless VT)</h3>
+                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                      <li>Defibrillate at <strong>4 J/kg</strong> and resume compressions immediately, reassessing every 2 minutes <InlineRef topicId={TOPIC_ID} refLabel="RCUK PALS 2021" />.</li>
+                      <li>After the <strong>third</strong> shock give adrenaline 10 micrograms/kg and amiodarone 5 mg/kg; repeat both after the <strong>fifth</strong> shock, with adrenaline then continuing every 3–5 minutes.</li>
+                      <li>Use paediatric pads or an attenuator under 8 years where available; adult pads are acceptable if that is all that is available.</li>
+                      <li>Think of a channelopathy, myocarditis, poisoning, electrolyte abnormality or an underlying repaired congenital lesion in an unexpected shockable arrest.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Reversible causes in children</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>4 Hs:</strong> hypoxia (the leading cause), hypovolaemia (sepsis, trauma, gastroenteritis), hypo/hyperkalaemia and other metabolic causes including hypoglycaemia and inborn errors, hypothermia (drowning, neonates — continue resuscitation while rewarming).</li>
+                    <li><strong>4 Ts:</strong> tension pneumothorax, tamponade (post-cardiac surgery, malignancy), toxins (including local anaesthetic systemic toxicity, tricyclics and beta-blockers), thromboembolism.</li>
+                    <li>Add the paediatric specifics: duct closure in the neonate (start prostaglandin E1), raised intracranial pressure, anaphylaxis, an obstructed tracheostomy or endotracheal tube, and a blocked or unbalanced surgical shunt.</li>
+                  </ul>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="bg-card border border-border rounded-lg p-4">
+                    <h3 className="font-semibold text-foreground mb-2">Newborn at delivery — a different algorithm</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Newborn life support is airway-first with <strong>5 inflation breaths</strong> in air
+                      (term) and a compression-to-ventilation ratio of <strong>3:1</strong>, reflecting an
+                      asphyxial cause; delayed cord clamping, thermal care and oxygen saturation targets
+                      that rise over the first ten minutes are integral. Adrenaline and volume are late
+                      steps once ventilation is confirmed to be effective <InlineRef topicId={TOPIC_ID} refLabel="RCUK NLS 2021" />.
+                    </p>
+                  </div>
+                  <div className="bg-card border border-border rounded-lg p-4">
+                    <h3 className="font-semibold text-foreground mb-2">Post-ROSC care</h3>
+                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                      <li>Titrate oxygen to normal saturations and ventilate to normocapnia, avoiding both hypocapnia and hyperoxia <InlineRef topicId={TOPIC_ID} refLabel="RCUK Post-Resus 2021" />.</li>
+                      <li>Support the circulation with fluid and vasoactive infusions to an age-appropriate blood pressure; myocardial dysfunction is expected.</li>
+                      <li>Avoid fever, treat seizures, maintain normoglycaemia and normal electrolytes, and provide analgesia and sedation.</li>
+                      <li>Investigate the cause (echocardiography, ECG, imaging, metabolic and toxicology screen, safeguarding review), and involve the retrieval service and family early <InlineRef topicId={TOPIC_ID} refLabel="PCCS Standards 2021" />.</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </section>
 
