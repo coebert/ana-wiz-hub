@@ -53,6 +53,17 @@ interface Episode {
   topicPath: string | null;
 }
 
+/** A queued (topic, accent) pair that has never been recorded. */
+interface PendingRequest {
+  /** The raw queue entry, so removal keeps working. */
+  entry: string;
+  topicId: string;
+  topicTitle: string;
+  topicPath: string;
+  section: Section;
+  voice: string;
+}
+
 const AUTOPLAY_KEY = "podcasts:playlistAutoplay";
 
 const formatDuration = (s: number | null) => {
