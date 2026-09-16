@@ -735,6 +735,37 @@ const PodcastPlaylist = () => {
                 ))}
               </ul>
             )}
+
+            {unrecordedTopics.length > 0 && (
+              <div className="space-y-2">
+                <h3 className="text-sm font-semibold text-foreground">
+                  Not recorded yet — add as a request
+                </h3>
+                <ul className="space-y-2">
+                  {unrecordedTopics.map((t) => (
+                    <li
+                      key={t.id}
+                      className="flex items-start justify-between gap-3 rounded-lg border border-dashed border-border bg-card p-3"
+                    >
+                      <div className="min-w-0">
+                        <p className="text-sm font-medium text-foreground break-words">{t.title}</p>
+                        <p className="mt-0.5 text-xs text-muted-foreground">
+                          {sectionMeta[t.section].label} • no recording yet
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => addToQueue(episodeKey(t.id, DEFAULT_PODCAST_VOICE))}
+                        className="inline-flex shrink-0 items-center gap-1 rounded-md border border-primary/50 px-2.5 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
+                      >
+                        <Plus className="h-3 w-3" />
+                        Request
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </section>
         </div>
       )}
