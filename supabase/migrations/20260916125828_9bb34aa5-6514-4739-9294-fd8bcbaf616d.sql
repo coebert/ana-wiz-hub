@@ -1,0 +1,1 @@
+GRANT SELECT (regenerating, content_hash) ON public.podcasts TO anon, authenticated;
