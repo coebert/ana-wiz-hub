@@ -9,7 +9,13 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { episodeKey, toggleQueued, usePodcastQueue } from "@/lib/podcastPlaylist";
+import {
+  addToQueue,
+  episodeKey,
+  findQueueEntry,
+  removeFromQueue,
+  usePodcastQueue,
+} from "@/lib/podcastPlaylist";
 import { podcastVoiceLabel } from "@/lib/podcastVoices";
 
 interface PodcastRow {
