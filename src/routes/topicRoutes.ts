@@ -167,7 +167,6 @@ export const TOPIC_ROUTES: ReadonlyArray<readonly [string, string]> = [
   ["/intensive-care/organ-donation", "OrganDonationTopic"],
   ["/intensive-care/antimicrobials-icu", "AntimicrobialsIcuTopic"],
   ["/intensive-care/paediatric-icu", "PaediatricIcuTopic"],
-  ["/intensive-care/paediatric-emergencies", "PaediatricEmergenciesTopic"],
   ["/intensive-care/burns-icu", "BurnsIcuTopic"],
   ["/intensive-care/haematology-icu", "HaematologyIcuTopic"],
   ["/intensive-care/immunology-intensivists", "ImmunologyIntensivistsTopic"],
@@ -204,6 +203,7 @@ export const TOPIC_ROUTES: ReadonlyArray<readonly [string, string]> = [
 
 /** URL path → redirect target (kept separate so intent is explicit). */
 export const TOPIC_REDIRECTS: ReadonlyArray<readonly [string, string]> = [
+  ["/intensive-care/paediatric-emergencies", "/intensive-care/paediatric-icu"],
   ["/clinical/depth-of-anaesthesia", "/physics/depth-of-anaesthesia"],
   ["/anatomy/airway-anatomy", "/anatomy/head-neck-anatomy"],
 ];
