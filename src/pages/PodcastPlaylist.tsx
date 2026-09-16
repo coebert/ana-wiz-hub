@@ -19,16 +19,24 @@ import {
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
-import { podcastVoiceLabel } from "@/lib/podcastVoices";
+import { DEFAULT_PODCAST_VOICE, podcastVoiceLabel } from "@/lib/podcastVoices";
 import {
   addToQueue,
   dedupeQueue,
   episodeKey,
+  parseEpisodeKey,
   clearQueue,
   moveInQueue,
   removeFromQueue,
   usePodcastQueue,
 } from "@/lib/podcastPlaylist";
+import {
+  createRerecordJobForRequests,
+  fetchJob,
+  wakeRerecordWorker,
+  type RerecordJob,
+} from "@/lib/podcastRerecord";
+import { useAuth } from "@/hooks/useAuth";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
