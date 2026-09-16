@@ -203,6 +203,12 @@ export const topicSeo: Record<string, TopicSeo> = {
     aliases: ["Paediatric physiology", "Paediatric fluids", "Paediatric drug dosing", "Paediatric pain scoring", "WETFLAG", "Holliday-Segar"],
     keywords: ["paediatric physiology", "paediatric maintenance fluids", "paediatric drug dosing", "FLACC score", "WETFLAG", "Holliday-Segar"],
   },
+  "paediatric-emergencies": {
+    title: "Paediatric ICU Emergencies: Sepsis to Stroke | FFICM",
+    description: "Paediatric and neonatal ICU emergencies: recognising the collapsing child, sepsis by age, metabolic crises, duct-dependent cardiac collapse, arrhythmias, stroke, and NAI.",
+    aliases: ["Paediatric emergencies", "Neonatal collapse", "Paediatric arrhythmias", "Paediatric stroke", "Non-accidental injury", "Metabolic crisis"],
+    keywords: ["paediatric emergencies", "neonatal collapse", "paediatric arrhythmia", "paediatric stroke", "inborn errors of metabolism emergency", "non-accidental injury"],
+  },
   "paediatric-icu": {
     title: "Paediatric Intensive Care: PICU Essentials | FFICM",
     description: "Paediatric intensive care for FFICM: age-specific physiology, paediatric sepsis, congenital heart disease, paediatric neurocritical care, sedation, resuscitation.",
