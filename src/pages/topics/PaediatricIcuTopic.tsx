@@ -260,7 +260,7 @@ const PaediatricIcuTopic = () => {
     cites: ["PCCS Standards 2021"],
   },
         { text: "Children have HR-dependent cardiac output — bradycardia is a pre-arrest sign; treat with atropine 20 mcg/kg", cites: ["Resuscitation Council UK 2021"] },
-        { text: "Paediatric septic shock: 10 ml/kg boluses with reassessment after each (20 ml/kg only for profound shock); adrenaline for cold shock, noradrenaline for warm shock", cites: ["BJA Educ 2019"] },
+        { text: "Paediatric septic shock: 10 ml/kg boluses with reassessment after each (20 ml/kg only for profound shock); adrenaline for cold shock, noradrenaline for warm shock", cites: ["BJA Educ 2010"] },
         { text: "Single ventricle physiology: target SpO₂ 75–85%; excessive O₂ causes pulmonary overcirculation and systemic steal", cites: ["RCPCH 2019"] },
         { text: "Propofol is contraindicated by its product licence for ICU sedation at or below 16 years — use it for induction and short procedures only, never as a PICU sedation infusion", cites: ["MHRA Propofol"] },
         { text: "Isotonic maintenance fluids only — hypotonic fluids can cause fatal hyponatraemia in children", cites: ["FEAST 2011"] },
@@ -268,8 +268,8 @@ const PaediatricIcuTopic = () => {
         { text: "Death by neurological criteria can be diagnosed from 37 weeks corrected gestation; between term and 2 months it is possible but requires the separate RCPCH infant criteria and longer observation — it is not an absolute bar", cites: ["RCPCH DNC Infants 2015"] },
         { text: "FEAST trial: fluid boluses increased mortality in resource-limited settings — does NOT change UK practice", cites: ["RCPCH 2019"] },
         { text: "Maintenance 4-2-1 (100/50/20 mL/kg/day) but restrict to 50–70% in ventilated or brain-injured children — cumulative positive balance >10% body weight tracks with mortality", cites: ["NICE NG29"] },
-        { text: "Neonates need larger mg/kg loading doses (TBW 75–80%, ECF 40–45%) yet lower maintenance doses — immature glucuronidation, low protein binding and GFR 20–30% of adult", cites: ["BJA Educ 2019"] },
-        { text: "Toddlers (1–6 y) clear many drugs faster per kg than adults — under-dosing is as common as over-dosing; always state a mg/kg dose with an adult-dose ceiling", cites: ["BJA Educ 2019"] },
+        { text: "Neonates need larger mg/kg loading doses (TBW 75–80%, ECF 40–45%) yet lower maintenance doses — immature glucuronidation, low protein binding and GFR 20–30% of adult", cites: ["BJA Educ 2010"] },
+        { text: "Toddlers (1–6 y) clear many drugs faster per kg than adults — under-dosing is as common as over-dosing; always state a mg/kg dose with an adult-dose ceiling", cites: ["BJA Educ 2010"] },
         { text: "Hypoglycaemia: 2 mL/kg of 10% glucose (never 50%), then infusion delivering 4–8 mg/kg/min; take a hypoglycaemia screen first where possible", cites: ["APLS 2021"] },
       ]}
       topicId="paediatric-icu"
@@ -344,9 +344,9 @@ const PaediatricIcuTopic = () => {
         },
       ]}
       sectionSources={{
-        objectives: ["RCPCH 2019", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2019"],
+        objectives: ["RCPCH 2019", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010"],
         workedExamples: ["Resuscitation Council UK 2021", "APLS 2021", "NICE NG29", "FEAST 2011"],
-        keyPoints: ["RCPCH 2019", "FEAST 2011", "NICE NG29", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2019"],
+        keyPoints: ["RCPCH 2019", "FEAST 2011", "NICE NG29", "Resuscitation Council UK 2021", "APLS 2021", "BJA Educ 2010"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.6", "EDIC 5.6"] },
@@ -423,7 +423,7 @@ const PaediatricIcuTopic = () => {
                 similar per kg (~25–30 mL/kg) and closing volume lies <em>within</em> tidal breathing. Alveolar
                 ventilation is ~130 mL/kg/min against an FRC of 30 mL/kg — a V<sub>A</sub>:FRC ratio of ~5:1
                 (adult 1.5:1), so alveolar gas — and inhalational agent — equilibrates fast and apnoea causes
-                desaturation within 15–20 s <InlineRef topicId="paediatric-icu" refLabel="BJA Educ 2019" />.
+                desaturation within 15–20 s <InlineRef topicId="paediatric-icu" refLabel="BJA Educ 2010" />.
               </li>
               <li>
                 <strong>Mechanically disadvantaged.</strong> Horizontal ribs, a cartilaginous compliant chest
