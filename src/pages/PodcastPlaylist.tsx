@@ -22,6 +22,7 @@ import { allTopics, sectionMeta, Section } from "@/data/curriculum";
 import { podcastVoiceLabel } from "@/lib/podcastVoices";
 import {
   addToQueue,
+  dedupeQueue,
   episodeKey,
   clearQueue,
   moveInQueue,
