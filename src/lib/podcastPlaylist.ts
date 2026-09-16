@@ -29,16 +29,19 @@ function load(): string[] {
   if (typeof window === "undefined") return [];
   try {
     const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-    return Array.isArray(raw) ? raw.filter((x): x is string => typeof x === "string") : [];
+    // Exact duplicates are always dropped, keeping the earliest position.
+    return Array.isArray(raw)
+      ? [...new Set(raw.filter((x): x is string => typeof x === "string"))]
+      : [];
   } catch {
     return [];
   }
 }
 
 function commit(next: string[]) {
-  queue = next;
+  queue = [...new Set(next)];
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(queue));
   } catch {
     /* storage may be full or blocked — keep the in-memory queue */
   }
@@ -112,3 +115,29 @@ export const moveInQueue = (topicId: string, delta: number) => {
 export const setQueue = (ids: string[]) => commit([...new Set(ids)]);
 
 export const clearQueue = () => commit([]);
+
+/**
+ * Collapse entries that point at the same recording. Two different entries can
+ * resolve to one episode (a legacy bare topic id plus a `topic::voice` key), so
+ * exact-string de-duplication is not enough. `resolve` returns the recording
+ * identity for an entry, or null when it cannot be resolved yet — unresolved
+ * entries are always kept so a slow/failed load never discards the queue.
+ * Returns how many entries were removed.
+ */
+export const dedupeQueue = (resolve: (entry: string) => string | null): number => {
+  const seen = new Set<string>();
+  const next: string[] = [];
+  for (const entry of queue) {
+    const identity = resolve(entry);
+    if (identity === null) {
+      next.push(entry);
+      continue;
+    }
+    if (seen.has(identity)) continue;
+    seen.add(identity);
+    next.push(entry);
+  }
+  const removed = queue.length - next.length;
+  if (removed > 0) commit(next);
+  return removed;
+};

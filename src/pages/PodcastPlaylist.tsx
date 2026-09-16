@@ -22,6 +22,7 @@ import { allTopics, sectionMeta, Section } from "@/data/curriculum";
 import { podcastVoiceLabel } from "@/lib/podcastVoices";
 import {
   addToQueue,
+  dedupeQueue,
   episodeKey,
   clearQueue,
   moveInQueue,
@@ -66,6 +67,7 @@ const PodcastPlaylist = () => {
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [removedDuplicates, setRemovedDuplicates] = useState(0);
   const [autoplay, setAutoplay] = useState<boolean>(() => {
     if (typeof window === "undefined") return true;
     return localStorage.getItem(AUTOPLAY_KEY) !== "0";
@@ -127,6 +129,16 @@ const PodcastPlaylist = () => {
     });
     return m;
   }, [episodes]);
+
+  // Automatically prune duplicate queue entries once the episode list is known:
+  // two entries can point at the same recording (a legacy bare topic id plus a
+  // `topic::voice` key), which exact-string de-duplication cannot catch.
+  useEffect(() => {
+    if (!episodes || episodes.length === 0) return;
+    const removed = dedupeQueue((entry) => byId.get(entry)?.key ?? null);
+    if (removed > 0) setRemovedDuplicates((n) => n + removed);
+  }, [episodes, byId]);
+
 
   /** Queued episodes in queue order; ids without a ready episode are skipped. */
   const queued = useMemo(() => {
@@ -336,6 +348,15 @@ const PodcastPlaylist = () => {
               >
                 Your queue
               </h2>
+              {removedDuplicates > 0 && (
+                <p
+                  role="status"
+                  className="w-full order-last text-xs text-muted-foreground"
+                >
+                  Removed {removedDuplicates} duplicate{" "}
+                  {removedDuplicates === 1 ? "episode" : "episodes"} from your queue.
+                </p>
+              )}
               <div className="flex items-center gap-3">
                 <span className="text-xs text-muted-foreground">
                   {queued.length} {queued.length === 1 ? "episode" : "episodes"} •{" "}
