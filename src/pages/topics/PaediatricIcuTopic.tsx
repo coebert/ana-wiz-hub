@@ -1732,6 +1732,51 @@ const PaediatricIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="section-rehab" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Rehabilitation, Weaning & Long-Term Ventilation">
+              <p className="text-muted-foreground text-sm">
+                Survival is no longer the only outcome that matters. Around half of children who
+                survive a critical illness have measurable functional deterioration at discharge, and
+                many have not returned to baseline months later — so rehabilitation starts on day 1,
+                not at step-down{" "}
+                <InlineRef topicId="paediatric-icu" refLabel="Choong PICU Rehab 2018" />.
+              </p>
+              <div className="grid gap-4 md:grid-cols-2 mt-3">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">PICU-acquired morbidity</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Weakness</strong>: critical illness myopathy and neuropathy, worsened by deep sedation, prolonged neuromuscular blockade, corticosteroid and aminoglycoside exposure, hyperglycaemia and immobility.</li>
+                    <li><strong>Delirium</strong> is common and under-recognised in children; screen with CAPD, treat pain and sedation drivers, restore day/night cycling and involve parents.</li>
+                    <li><strong>Post-intensive care syndrome (paediatric)</strong>: physical deconditioning, feeding aversion, sleep disturbance, developmental regression, post-traumatic symptoms in the child and in parents and siblings.</li>
+                    <li><strong>Pressure areas, contractures, tracheal and dental injury, and hospital-acquired infection</strong> — all reduced by bundles and early mobilisation.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Rehabilitation in practice</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li>Target the lightest effective sedation with daily assessment, avoid routine neuromuscular blockade beyond the acute phase, and use analgesia-first regimens.</li>
+                    <li>Progressive mobilisation graded by developmental stage — passive movement and positioning in the sedated infant, sitting out, play therapy, standing and walking with the ventilator where safe.</li>
+                    <li>Early enteral nutrition, speech and language input for swallow and communication, splinting and physiotherapy for contracture prevention.</li>
+                    <li>Family-centred care: parents present, involved in cares, given diaries and follow-up; refer to psychology where distress persists.</li>
+                    <li>Structured follow-up after discharge, with a school-reintegration plan for prolonged admissions.</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-4 mt-4">
+                <h3 className="font-semibold text-foreground mb-2">Prolonged ventilation, tracheostomy and going home</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                  <li><strong>Who needs it</strong>: neuromuscular disease, severe chronic lung disease of prematurity, congenital central hypoventilation, upper-airway obstruction (craniofacial syndromes, subglottic stenosis) and severe neurodisability.</li>
+                  <li><strong>Timing</strong>: consider tracheostomy when repeated extubation fails or ventilation beyond several weeks is expected; the decision is multidisciplinary (intensivist, ENT, respiratory, family) and framed around quality of life and long-term plan.</li>
+                  <li><strong>Weaning</strong>: reduce support gradually with daily periods of spontaneous breathing rather than abrupt trials, use overnight non-invasive or ventilator support to allow respiratory-muscle rest, and follow trends in weight gain, sleep quality and CO₂ rather than single gases.</li>
+                  <li><strong>Decannulation</strong>: requires stable airway assessment (endoscopy), tolerance of capping or a downsized tube, safe swallow and secretion handling, and a planned monitored period after removal.</li>
+                  <li><strong>Discharge home</strong>: two trained carers, equipment and back-up power, emergency tube-change and resuscitation plans, community nursing and funding — planning starts weeks before the child is ready, and delays are usually organisational rather than clinical.</li>
+                  <li>Agree in advance the ceiling of treatment and what happens in an acute deterioration at home, documented in an emergency healthcare plan{" "}
+                  <InlineRef topicId="paediatric-icu" refLabel="RCPCH 2019" />.</li>
+                </ul>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="ethics" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Safeguarding, Ethics & End-of-Life">
             <p className="text-muted-foreground text-sm">
