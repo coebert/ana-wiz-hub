@@ -348,6 +348,15 @@ const PodcastPlaylist = () => {
               >
                 Your queue
               </h2>
+              {removedDuplicates > 0 && (
+                <p
+                  role="status"
+                  className="w-full order-last text-xs text-muted-foreground"
+                >
+                  Removed {removedDuplicates} duplicate{" "}
+                  {removedDuplicates === 1 ? "episode" : "episodes"} from your queue.
+                </p>
+              )}
               <div className="flex items-center gap-3">
                 <span className="text-xs text-muted-foreground">
                   {queued.length} {queued.length === 1 ? "episode" : "episodes"} •{" "}
