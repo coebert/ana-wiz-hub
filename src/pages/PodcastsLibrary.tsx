@@ -582,16 +582,20 @@ const PodcastsLibrary = () => {
                             )}
                             <button
                               type="button"
-                              onClick={() => toggleQueued(p.key)}
-                              aria-pressed={queue.includes(p.key)}
+                              onClick={() => {
+                                const entry = findQueueEntry(queue, p.key, p.topic_id);
+                                if (entry) removeFromQueue(entry);
+                                else addToQueue(p.key);
+                              }}
+                              aria-pressed={!!findQueueEntry(queue, p.key, p.topic_id)}
                               className={cn(
                                 "inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium transition-colors border",
-                                queue.includes(p.key)
+                                findQueueEntry(queue, p.key, p.topic_id)
                                   ? "border-primary/60 bg-primary/10 text-primary"
                                   : "border-border bg-card text-foreground hover:bg-muted"
                               )}
                             >
-                              {queue.includes(p.key) ? (
+                              {findQueueEntry(queue, p.key, p.topic_id) ? (
                                 <>
                                   <Check className="h-3 w-3" /> Queued
                                 </>
