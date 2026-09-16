@@ -63,11 +63,16 @@ const formatTotal = (seconds: number) => {
 
 const PodcastPlaylist = () => {
   const queue = usePodcastQueue();
+  const { isAdmin } = useAuth();
   const [episodes, setEpisodes] = useState<Episode[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [removedDuplicates, setRemovedDuplicates] = useState(0);
+  /** Progress of a recording run started for the unrecorded queue entries. */
+  const [recording, setRecording] = useState<RerecordJob | null>(null);
+  const [recordError, setRecordError] = useState<string | null>(null);
+  const [starting, setStarting] = useState(false);
   const [autoplay, setAutoplay] = useState<boolean>(() => {
     if (typeof window === "undefined") return true;
     return localStorage.getItem(AUTOPLAY_KEY) !== "0";
@@ -79,45 +84,43 @@ const PodcastPlaylist = () => {
     localStorage.setItem(AUTOPLAY_KEY, autoplay ? "1" : "0");
   }, [autoplay]);
 
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      const { data, error: err } = await supabase
-        .from("podcasts")
-        .select("topic_id, topic_title, audio_path, duration_seconds, voice")
-        .eq("status", "ready")
-        .not("audio_path", "is", null)
-        .order("topic_title", { ascending: true });
+  const loadEpisodes = useCallback(async () => {
+    const { data, error: err } = await supabase
+      .from("podcasts")
+      .select("topic_id, topic_title, audio_path, duration_seconds, voice")
+      .eq("status", "ready")
+      .not("audio_path", "is", null)
+      .order("topic_title", { ascending: true });
 
-      if (cancelled) return;
-      if (err) {
-        setError(err.message);
-        setEpisodes([]);
-        return;
-      }
-      const resolved: Episode[] = (data ?? []).map((row) => {
-        const topic = allTopics.find((t) => t.id === row.topic_id);
-        const section = topic?.section ?? null;
-        const { data: pub } = supabase.storage
-          .from("podcasts")
-          .getPublicUrl(row.audio_path as string);
-        return {
-          key: episodeKey(row.topic_id, row.voice),
-          topic_id: row.topic_id,
-          topic_title: row.topic_title,
-          audio_url: pub.publicUrl,
-          duration_seconds: row.duration_seconds ?? null,
-          voice: row.voice ?? undefined,
-          section,
-          topicPath: topic && section ? `${sectionMeta[section].path}/${topic.id}` : null,
-        };
-      });
-      setEpisodes(resolved);
-    })();
-    return () => {
-      cancelled = true;
-    };
+    if (err) {
+      setError(err.message);
+      setEpisodes([]);
+      return;
+    }
+    setError(null);
+    const resolved: Episode[] = (data ?? []).map((row) => {
+      const topic = allTopics.find((t) => t.id === row.topic_id);
+      const section = topic?.section ?? null;
+      const { data: pub } = supabase.storage
+        .from("podcasts")
+        .getPublicUrl(row.audio_path as string);
+      return {
+        key: episodeKey(row.topic_id, row.voice),
+        topic_id: row.topic_id,
+        topic_title: row.topic_title,
+        audio_url: pub.publicUrl,
+        duration_seconds: row.duration_seconds ?? null,
+        voice: row.voice ?? undefined,
+        section,
+        topicPath: topic && section ? `${sectionMeta[section].path}/${topic.id}` : null,
+      };
+    });
+    setEpisodes(resolved);
   }, []);
+
+  useEffect(() => {
+    void loadEpisodes();
+  }, [loadEpisodes]);
 
   const byId = useMemo(() => {
     const m = new Map<string, Episode>();
