@@ -20,17 +20,23 @@ const tocItems = [
   { id: "section-sepsis", label: "Sepsis: Age-Specific Presentations", group: "Emergency presentations" },
   { id: "sepsis", label: "Paediatric Sepsis & Shock — Management", group: "Emergency presentations" },
   { id: "section-metabolic", label: "Metabolic & Endocrine Crises (incl. ammonia scavengers)", group: "Emergency presentations" },
+  { id: "section-anaphylaxis", label: "Anaphylaxis & Acute Severe Asthma", group: "Emergency presentations" },
   { id: "section-cardiac", label: "Cardiac Presentations & Duct-Dependent Collapse", group: "Emergency presentations" },
   { id: "section-cardiac-picu", label: "PICU Perioperative Cardiac Care & Airway Malacia", group: "Emergency presentations" },
   { id: "resus", label: "Resuscitation Key Numbers", group: "Arrest & arrhythmia" },
   { id: "section-arrest", label: "Paediatric Cardiac Arrest Algorithms", group: "Arrest & arrhythmia" },
   { id: "section-arrhythmias", label: "Paediatric Arrhythmias", group: "Arrest & arrhythmia" },
   { id: "neurocrit", label: "Paediatric Neurocritical Care", group: "Neurocritical care" },
+  { id: "section-trauma", label: "Major Trauma & Traumatic Brain Injury", group: "Neurocritical care" },
   { id: "section-stroke", label: "Paediatric Stroke", group: "Neurocritical care" },
   { id: "airway", label: "Airway & Ventilation in PICU", group: "Organ support" },
+  { id: "section-resp-emergencies", label: "Bronchiolitis, Croup & Extubation Failure", group: "Organ support" },
+  { id: "section-ecmo", label: "ECMO & Extracorporeal Support", group: "Organ support" },
+  { id: "section-neonatal-surgical", label: "Neonatal Surgical Emergencies", group: "Organ support" },
   { id: "sedation", label: "Sedation, Analgesia & Withdrawal", group: "Organ support" },
   { id: "fluids", label: "Fluids, Electrolytes & Nutrition", group: "Organ support" },
   { id: "drug-dosing", label: "Drug Dosing in Small Patients", group: "Organ support" },
+  { id: "section-infection", label: "Infection Prevention & PICU Bundles", group: "Safeguarding & systems" },
   { id: "section-nai", label: "Non-Accidental Injury", group: "Safeguarding & systems" },
   { id: "ethics", label: "Safeguarding, Ethics & End-of-Life", group: "Safeguarding & systems" },
   { id: "section-transfer", label: "Stabilisation, Retrieval & Handover", group: "Safeguarding & systems" },
@@ -256,10 +262,10 @@ const PaediatricIcuTopic = () => {
         { text: "Children have HR-dependent cardiac output — bradycardia is a pre-arrest sign; treat with atropine 20 mcg/kg", cites: ["Resuscitation Council UK 2021"] },
         { text: "Paediatric septic shock: 10 ml/kg boluses with reassessment after each (20 ml/kg only for profound shock); adrenaline for cold shock, noradrenaline for warm shock", cites: ["BJA Educ 2019"] },
         { text: "Single ventricle physiology: target SpO₂ 75–85%; excessive O₂ causes pulmonary overcirculation and systemic steal", cites: ["RCPCH 2019"] },
-        { text: "PRIS (propofol infusion syndrome) — avoid prolonged propofol infusions (>48h) in children", cites: ["NICE NG29"] },
+        { text: "Propofol is contraindicated by its product licence for ICU sedation at or below 16 years — use it for induction and short procedures only, never as a PICU sedation infusion", cites: ["MHRA Propofol"] },
         { text: "Isotonic maintenance fluids only — hypotonic fluids can cause fatal hyponatraemia in children", cites: ["FEAST 2011"] },
         { text: "Paediatric cardiac arrest is usually respiratory in origin — 5 rescue breaths first, defibrillation 4 J/kg", cites: ["Resuscitation Council UK 2021"] },
-        { text: "Brainstem death testing in children: >2 months, NOT applicable <37 weeks corrected gestational age", cites: ["BJA Educ 2019"] },
+        { text: "Death by neurological criteria can be diagnosed from 37 weeks corrected gestation; between term and 2 months it is possible but requires the separate RCPCH infant criteria and longer observation — it is not an absolute bar", cites: ["RCPCH DNC Infants 2015"] },
         { text: "FEAST trial: fluid boluses increased mortality in resource-limited settings — does NOT change UK practice", cites: ["RCPCH 2019"] },
         { text: "Maintenance 4-2-1 (100/50/20 mL/kg/day) but restrict to 50–70% in ventilated or brain-injured children — cumulative positive balance >10% body weight tracks with mortality", cites: ["NICE NG29"] },
         { text: "Neonates need larger mg/kg loading doses (TBW 75–80%, ECF 40–45%) yet lower maintenance doses — immature glucuronidation, low protein binding and GFR 20–30% of adult", cites: ["BJA Educ 2019"] },
@@ -617,6 +623,28 @@ const PaediatricIcuTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-4">
               Children more commonly present with <strong>cold shock</strong> (vasoconstricted, poor perfusion) than warm vasodilated shock. Antibiotics within 1 h. Fluid in <strong>10 mL/kg isotonic crystalloid boluses</strong>, reassessing after each — <strong>20 mL/kg is reserved for specific situations</strong> (e.g. severe hypovolaemia), while <strong>5 mL/kg</strong> boluses are used in DKA or trauma to reduce the risk of cerebral oedema and dilutional coagulopathy respectively <InlineRef topicId="paediatric-icu" refLabel="SSC Paediatric 2020" /> <InlineRef topicId="paediatric-icu" refLabel="APLS 2021" />. Hepatomegaly = fluid overload. Have <strong>earlier recourse to vasoactive infusions</strong> rather than repeatedly escalating fluid if shock persists after 1–2 boluses: peripheral adrenaline (cold) or noradrenaline (warm). Stress-dose hydrocortisone for catecholamine-resistant shock.
             </p>
+            <div className="bg-card border border-border rounded-lg p-4 mb-3">
+              <h3 className="font-semibold text-foreground mb-2">Defining paediatric sepsis — the Phoenix criteria (2024)</h3>
+              <p className="text-sm text-muted-foreground">
+                The 2024 international consensus (Phoenix) replaced the 2005 criteria, which relied on
+                SIRS and proved neither specific nor predictive in children. Sepsis is now{" "}
+                <strong>suspected infection plus a Phoenix Sepsis Score ≥ 2</strong>, and{" "}
+                <strong>septic shock is sepsis with ≥ 1 cardiovascular point</strong>; the term
+                &ldquo;severe sepsis&rdquo; is retired <InlineRef topicId="paediatric-icu" refLabel="Phoenix Sepsis 2024" />.
+              </p>
+              <ul className="list-disc pl-5 mt-2 space-y-1 text-sm text-muted-foreground">
+                <li><strong>Respiratory (0–3)</strong> — PaO₂/FiO₂ or SpO₂/FiO₂ ratio with respiratory support and invasive ventilation.</li>
+                <li><strong>Cardiovascular (0–6)</strong> — vasoactive drugs (1 point each up to 2), lactate 5–10.9 and ≥11 mmol/L, and age-adjusted mean arterial pressure.</li>
+                <li><strong>Coagulation (0–2)</strong> — platelets &lt;100 ×10⁹/L, INR &gt;1.3, D-dimer &gt;2 mg/L FEU, fibrinogen &lt;100 mg/dL (1 point each, maximum 2).</li>
+                <li><strong>Neurological (0–2)</strong> — GCS ≤10, or bilaterally non-reactive pupils (2 points).</li>
+              </ul>
+              <p className="text-sm text-muted-foreground mt-2">
+                Practically it identifies the sick child who needs escalation rather than replacing the
+                clinical Sepsis-6 response: <strong>oxygen, cultures, antibiotics within 1 h, lactate,
+                fluid, early senior/PICU involvement</strong>. Score-based definitions are for
+                epidemiology and audit — treat the child in front of you <InlineRef topicId="paediatric-icu" refLabel="NICE NG51" />.
+              </p>
+            </div>
             <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5">
               <p className="text-sm font-semibold text-destructive">⚠ FEAST Trial (2011)</p>
               <p className="text-sm text-muted-foreground mt-1">
@@ -650,7 +678,7 @@ const PaediatricIcuTopic = () => {
                 <div className="bg-card border border-border rounded-lg p-4">
                   <h3 className="font-semibold text-foreground mb-2">Generic emergency treatment</h3>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                    <li><strong>Stop protein and feeds</strong> and start intravenous glucose 10% delivering roughly 8–10 mg/kg/min (a higher rate with insulin if hyperglycaemic), which suppresses catabolism.</li>
+                    <li><strong>Stop protein and feeds</strong> and start intravenous glucose 10% delivering roughly <strong>8–10 mg/kg/min</strong> (adding insulin rather than reducing glucose if hyperglycaemia develops), which suppresses catabolism. Note this <em>anti-catabolic</em> rate is deliberately higher than the <strong>4–8 mg/kg/min</strong> used simply to maintain normoglycaemia after correcting a hypoglycaemic episode — the aim here is to switch off protein breakdown, not just to normalise glucose, and it usually needs central access or 12.5–15% glucose to limit volume.</li>
                     <li><strong>Treat hypoglycaemia</strong> with 2 mL/kg of 10% glucose, never 50%, then maintain the infusion and recheck.</li>
                     <li><strong>Correct dehydration and acidosis</strong> cautiously; bicarbonate only for severe acidosis in discussion with the metabolic team.</li>
                     <li><strong>Hyperammonaemia:</strong> stop protein, escalate glucose, give sodium benzoate and sodium phenylbutyrate with arginine or carglumic acid as directed, and arrange haemofiltration urgently if ammonia remains high or is rising — dialysis clears ammonia far faster than drugs alone <InlineRef topicId="paediatric-icu" refLabel="Häberle Urea Cycle 2019" />.</li>
@@ -770,6 +798,38 @@ const PaediatricIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="section-anaphylaxis" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Anaphylaxis & Acute Severe Asthma">
+              <p className="text-muted-foreground leading-relaxed mt-3 mb-4">
+                Two allergic/airway emergencies account for a large share of paediatric critical care
+                admissions from the emergency department, and both are treated by dose and by
+                escalation ladder rather than by diagnosis alone.
+              </p>
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Anaphylaxis</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Recognise</strong>: sudden onset after an allergen with airway (stridor, tongue/lip swelling), breathing (wheeze, hypoxia, fatigue) or circulation (hypotension, pallor, collapse) compromise. Skin changes are absent in up to 20%, and in children respiratory features dominate while hypotension is a late sign. Persistent gastrointestinal symptoms after a food allergen count as anaphylaxis <InlineRef topicId="paediatric-icu" refLabel="RCUK Anaphylaxis 2021" />.</li>
+                    <li><strong>Adrenaline intramuscular, anterolateral thigh, 1:1000</strong>: 100–150 micrograms (0.1–0.15 mL) under 6 months, 150 micrograms (0.15 mL) 6 months–6 years, 300 micrograms (0.3 mL) 6–12 years, 500 micrograms (0.5 mL) above 12 years; repeat after 5 minutes if no improvement <InlineRef topicId="paediatric-icu" refLabel="RCUK Anaphylaxis 2021" />.</li>
+                    <li><strong>Then</strong>: high-flow oxygen, lie flat with legs raised (never sit up or stand a hypotensive child), remove the trigger, fluid bolus 10 mL/kg crystalloid repeated as needed, and inhaled salbutamol for bronchospasm.</li>
+                    <li><strong>Refractory anaphylaxis</strong> (no improvement after two intramuscular doses) — start an <strong>adrenaline infusion</strong> (0.05–0.3 micrograms/kg/min, titrated) with continuous monitoring and senior/critical-care help, add a second vasopressor if needed, and consider glucagon in a child on beta-blockers. Antihistamine and corticosteroid are <strong>no longer part of initial emergency treatment</strong> and must not delay adrenaline.</li>
+                    <li><strong>After</strong>: mast-cell tryptase as soon as possible and at 1–2 h (plus a baseline sample &gt;24 h later), observe for a <strong>biphasic reaction</strong> — 6–12 h observation depending on severity, treatment needed and the RCUK risk criteria — then two adrenaline auto-injectors with training, an allergy action plan and a paediatric allergy referral.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Acute severe / life-threatening asthma</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Severity</strong>: severe — SpO₂ &lt;92%, too breathless to talk or feed, respiratory rate &gt;40 (1–5 y) or &gt;30 (&gt;5 y), heart rate &gt;140 or &gt;125, PEF 33–50% predicted. <strong>Life-threatening</strong> — silent chest, poor effort, cyanosis, exhaustion, agitation or reduced conscious level, hypotension, PEF &lt;33% <InlineRef topicId="paediatric-icu" refLabel="BTS/SIGN Asthma 2019" />.</li>
+                    <li><strong>Step 1</strong>: oxygen to SpO₂ 94–98%, salbutamol 10 puffs by spacer or 2.5 mg (&lt;5 y) / 5 mg nebulised, repeated back-to-back; add ipratropium 250 micrograms with the first three nebulisers; oral prednisolone 1–2 mg/kg (maximum 40–50 mg) or IV hydrocortisone 4 mg/kg.</li>
+                    <li><strong>Step 2</strong>: magnesium sulfate 40 mg/kg IV (maximum 2 g) over 20 min; consider nebulised magnesium adjunct; correct dehydration and hypokalaemia (beta-agonists drive potassium intracellularly), and check the gas — a normal or rising PaCO₂ in a tiring child is ominous.</li>
+                    <li><strong>Step 3 (PICU)</strong>: intravenous salbutamol bolus 15 micrograms/kg over 10 min then infusion 1–5 micrograms/kg/min (watch lactate, tachycardia and potassium), or aminophylline 5 mg/kg loading over 20 min (omit the load if on oral theophylline) then 1 mg/kg/h with level monitoring.</li>
+                    <li><strong>Ventilation is a last resort</strong>: intubation and positive pressure in severe asthma cause hypotension and barotrauma. If unavoidable, use ketamine 1–2 mg/kg for induction, a large tube, a long expiratory time with low rate and low Vt, permissive hypercapnia, minimal PEEP, and be ready to disconnect and decompress the chest for breath-stacking or pneumothorax. Ketamine infusion, inhalational anaesthetic and ECMO are rescue options.</li>
+                  </ul>
+                </div>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="section-cardiac" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Cardiac Presentations & Duct-Dependent Collapse">
               <p className="text-muted-foreground leading-relaxed mb-4">
@@ -785,7 +845,7 @@ const PaediatricIcuTopic = () => {
                     <li><strong>Duct-dependent systemic circulation</strong> (critical coarctation, interrupted arch, critical aortic stenosis, hypoplastic left heart): collapse, acidosis, absent femoral pulses, differential saturations, oliguria — typically day 2–14 as the duct closes.</li>
                     <li><strong>Duct-dependent pulmonary circulation</strong> (pulmonary atresia, critical pulmonary stenosis, tricuspid atresia): profound cyanosis with clear lungs and little respiratory distress, unresponsive to oxygen (a hyperoxia test that fails to raise PaO₂ substantially).</li>
                     <li><strong>Transposition of the great arteries</strong>: cyanosis with reverse differential saturations; needs prostaglandin and urgent consideration of balloon atrial septostomy.</li>
-                    <li><strong>Prostaglandin E1</strong> reopens or maintains the duct. Anticipate apnoea (be ready to intubate, particularly before transfer), hypotension, fever, flushing and jitteriness <InlineRef topicId="paediatric-icu" refLabel="Kanani PGE1 2019" />.</li>
+                    <li><strong>Prostaglandin E1 (alprostadil/dinoprostone)</strong> reopens or maintains the duct. Typical starting dose is <strong>5–10 nanograms/kg/min</strong> by continuous infusion into a secure central or well-running peripheral line, titrated <strong>up to 50–100 nanograms/kg/min</strong> if the duct fails to open and back down to 5 nanograms/kg/min once saturations and perfusion improve — the lowest effective rate minimises side effects. Anticipate <strong>apnoea</strong> (dose-related; be ready to intubate, and intubate before transfer if the dose is high), hypotension, fever, flushing, jitteriness, seizures and thrombocytopenia; check the local paediatric formulary for the concentration in use because tenfold errors are the classic incident <InlineRef topicId="paediatric-icu" refLabel="Kanani PGE1 2019" /> <InlineRef topicId="paediatric-icu" refLabel="BNF for Children" />.</li>
                   </ul>
                 </div>
                 <div className="bg-card border border-border rounded-lg p-4">
@@ -847,7 +907,7 @@ const PaediatricIcuTopic = () => {
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                     <li>Handover the anatomy, residual lesions, bypass and cross-clamp times, lines (including transthoracic atrial or pulmonary artery lines), pacing wires and the surgeon's specific instructions before touching the patient <InlineRef topicId="paediatric-icu" refLabel="PCCS Standards 2021" />.</li>
                     <li>Single-ventricle/parallel circulation: target SpO₂ 75–85%; excessive oxygen produces pulmonary vasodilatation and systemic steal, managed with subambient FiO₂ or added CO₂. After Fontan completion pulmonary flow is passive and depends on low pulmonary vascular resistance, adequate preload and sinus rhythm <InlineRef topicId="paediatric-icu" refLabel="Fontan AHA 2019" />.</li>
-                    <li>Low cardiac output syndrome peaks 6–18 h after bypass; prophylactic high-dose milrinone reduces its incidence (load 50 micrograms/kg, then 0.25–0.75 micrograms/kg/min), and hypothermia should be avoided <InlineRef topicId="paediatric-icu" refLabel="PRIMACORP 2003" />.</li>
+                    <li>Low cardiac output syndrome peaks 6–18 h after bypass; prophylactic high-dose milrinone reduces its incidence (PRIMACORP: load 50 micrograms/kg over 60 min, then 0.25–0.75 micrograms/kg/min) <InlineRef topicId="paediatric-icu" refLabel="PRIMACORP 2003" />. <strong>Many UK units now omit the loading bolus</strong> and start maintenance infusion alone, because the load causes hypotension in neonates, in preload-dependent circulations (Glenn, Fontan) and immediately off bypass; if a load is given, give it slowly with volume and vasopressor to hand. Milrinone accumulates in renal impairment — halve the rate when creatinine clearance falls. Avoid hypothermia and treat tachyarrhythmia early.</li>
                     <li>Pulmonary hypertensive crisis: sedate and paralyse, FiO₂ 1.0, mild alkalosis (pH 7.45–7.50), inhaled nitric oxide 10–20 ppm and intravenous sildenafil, avoiding circuit disconnection <InlineRef topicId="paediatric-icu" refLabel="AHA/ATS PH 2015" />.</li>
                     <li>Recognise low cardiac output syndrome in the first 6–12 hours: rising lactate, narrowing pulse pressure, cool peripheries, falling urine output and widening arteriovenous oxygen difference. Treat with rate and rhythm control, milrinone, cautious volume, afterload reduction and correction of residual lesions on echocardiography.</li>
                     <li>Keep the chest drains patent and think of tamponade with any sudden deterioration; delayed sternal closure and readiness for chest reopening are part of routine care in the neonate.</li>
@@ -1024,7 +1084,7 @@ const PaediatricIcuTopic = () => {
                     <tr>
                       <td className="py-2 font-medium text-foreground">Channelopathy presentations</td>
                       <td>Sudden collapse, exercise or startle-triggered syncope, seizures labelled epilepsy, family history of sudden death; long QT, catecholaminergic polymorphic VT, Brugada</td>
-                      <td>Avoid QT-prolonging drugs, correct electrolytes, magnesium for torsade, beta-blockade and specialist inherited-cardiac-conditions referral; screen the family</td>
+                      <td>Measure QTc (Bazett) on a clean 12-lead ECG: <strong>prolonged &gt;460 ms in children and adolescents (&gt;450 ms in adolescent males, and up to 470 ms may be normal in the first week of life)</strong>, with &gt;500 ms high risk. Avoid QT-prolonging drugs (ondansetron, macrolides, haloperidol, amiodarone), keep potassium &gt;4.0 and magnesium &gt;0.8 mmol/L, magnesium 25–50 mg/kg for torsade, beta-blockade and specialist inherited-cardiac-conditions referral; screen first-degree relatives</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1059,7 +1119,7 @@ const PaediatricIcuTopic = () => {
                 <tbody className="text-muted-foreground">
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">TBI</td><td>CPP age-dependent (40–50 infant, 50–60 child). Treat ICP &gt;20. Hypertonic saline preferred over mannitol. Earlier decompression <InlineRef topicId="paediatric-icu" refLabel="Paediatric TBI 2019" /></td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Status Epilepticus</td><td>Lorazepam 0.1 mg/kg ×2 → levetiracetam, phenytoin or valproate → RSI/thiopentone. Check glucose <InlineRef topicId="paediatric-icu" refLabel="NICE NG217" /></td></tr>
-                  <tr><td className="py-2 font-medium text-foreground">DKA</td><td>Cerebral oedema risk highest in children — limit fluid, rehydrate over 24–48 h. Insulin 0.05–0.1 U/kg/h. Hourly GCS <InlineRef topicId="paediatric-icu" refLabel="ISPAD DKA 2022" /></td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">DKA</td><td>Cerebral oedema risk highest in children — 10 mL/kg bolus only if shocked, then deficit over 48 h. <strong>Insulin only 1–2 h after fluids start</strong>, 0.05–0.1 units/kg/h. <strong>Potassium 40 mmol/L in every rehydration bag</strong> unless anuric — total body potassium is always depleted and insulin drives it intracellularly. Hourly GCS, neuro-obs and fluid balance <InlineRef topicId="paediatric-icu" refLabel="BSPED DKA 2021" /> <InlineRef topicId="paediatric-icu" refLabel="ISPAD DKA 2022" /></td></tr>
                 </tbody>
               </table>
             </div>
@@ -1068,6 +1128,41 @@ const PaediatricIcuTopic = () => {
               <a href="#section-nai" className="text-icu underline underline-offset-4">Non-Accidental Injury</a>, and childhood stroke in{" "}
               <a href="#section-stroke" className="text-icu underline underline-offset-4">Paediatric Stroke</a>.
             </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="section-trauma" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Major Trauma & Traumatic Brain Injury">
+              <p className="text-muted-foreground leading-relaxed mt-3 mb-4">
+                Children have a compliant skeleton over relatively large organs, so serious internal
+                injury occurs without fractures; a smaller circulating volume (about 80 mL/kg in
+                infants, 70 mL/kg in children) means compensated shock is maintained until roughly a
+                third of the volume is lost and then decompensates abruptly. Head injury dominates
+                mortality <InlineRef topicId="paediatric-icu" refLabel="NICE NG39" />.
+              </p>
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Resuscitation and haemorrhage control</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Fluid</strong>: 5 mL/kg boluses of blood in preference to crystalloid in haemorrhagic shock, targeting a palpable central pulse and normal mentation rather than a normal blood pressure; avoid large crystalloid volumes <InlineRef topicId="paediatric-icu" refLabel="NICE NG39" />.</li>
+                    <li><strong>Weight-based major haemorrhage protocol</strong>: packed red cells 5–10 mL/kg with plasma 5–10 mL/kg in a 1:1 ratio, platelets 5–10 mL/kg and cryoprecipitate 5 mL/kg guided by viscoelastic testing where available; keep fibrinogen &gt;1.5 g/L and ionised calcium &gt;1.0 mmol/L <InlineRef topicId="paediatric-icu" refLabel="NCEPOD Trauma Paeds" />.</li>
+                    <li><strong>Tranexamic acid</strong> 15 mg/kg (maximum 1 g) over 10 min within 3 h of injury, then 2 mg/kg/h for 8 h.</li>
+                    <li><strong>Avoid the lethal triad</strong>: active warming from the outset (children cool fast — large surface area, wet exposure), permissive hypotension is <em>not</em> used when there is a head injury, and hypocalcaemia is common after rapid transfusion.</li>
+                    <li><strong>Whole-body CT is not routine</strong> in children — image selectively to limit radiation, using ultrasound and focused CT guided by mechanism and examination.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Traumatic brain injury and the cervical spine</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Targets</strong>: ICP &lt;20 mmHg, and an age-banded cerebral perfusion pressure of about <strong>40–50 mmHg in infants, 50–60 in children and 60–70 in adolescents</strong>; treat hypotension aggressively because a single episode worsens outcome <InlineRef topicId="paediatric-icu" refLabel="Paediatric TBI 2019" />.</li>
+                    <li><strong>Tier 1</strong>: head up 30°, midline neck with no obstruction to venous drainage (loosen collars), sedation and analgesia, normocapnia (PaCO₂ 4.5–5.0 kPa), normoxia, temperature 36–37.5°C, seizure treatment and prophylaxis in the first 7 days, sodium 145–155 mmol/L. <strong>Hypertonic saline (3% infusion, or 2.7–3% boluses 3–5 mL/kg) is preferred to mannitol</strong> in children.</li>
+                    <li><strong>Tier 2</strong>: neuromuscular blockade, higher hypertonic saline targets, brief moderate hyperventilation for herniation only, barbiturate infusion with EEG, external ventricular drainage and <strong>early decompressive craniectomy</strong>, which is used sooner than in adults, particularly in diffuse swelling.</li>
+                    <li><strong>Avoid</strong>: steroids (no benefit, harm signal), prophylactic hypothermia (no outcome benefit and rebound risk on rewarming), and hypotonic maintenance fluid.</li>
+                    <li><strong>Cervical spine</strong>: paediatric injuries are higher (C1–C3 in the under-8s), SCIWORA occurs, and infants need occipital recess or a thoracic elevation to avoid neck flexion in a collar. Clear the spine with a paediatric-adapted decision rule and imaging rather than adult rules, and remove collars early to reduce agitation and venous obstruction.</li>
+                    <li><strong>Always consider inflicted injury</strong> in an infant with a head injury and an inconsistent or absent history — see <a href="#section-nai" className="text-icu underline underline-offset-4">Non-Accidental Injury</a>.</li>
+                  </ul>
+                </div>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -1130,7 +1225,7 @@ const PaediatricIcuTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Lung-Protective Ventilation</p>
-                <p className="text-sm text-muted-foreground mt-1">VT 5–8 ml/kg IBW, plateau &lt;28 cmH₂O, age-appropriate RR, PEEP 5–8. Permissive hypercapnia (pH &gt;7.25). HFOV considered earlier than adults <InlineRef topicId="paediatric-icu" refLabel="PARDS Global 2023" />.</p>
+                <p className="text-sm text-muted-foreground mt-1">Vt <strong>5–8 mL/kg predicted body weight</strong> (4–6 mL/kg where compliance is poor), plateau <strong>≤28 cmH₂O</strong> (28–32 acceptable with stiff chest wall), driving pressure kept as low as achievable, age-appropriate rate, and <strong>PEEP 5–8 cmH₂O in healthy lungs but titrated 8–15 cmH₂O in moderate/severe PARDS</strong> against oxygenation, compliance and haemodynamics. Permissive hypercapnia to <strong>pH ≥7.20</strong> is accepted in PARDS (a higher pH target is used when intracranial or pulmonary hypertension is present). HFOV is a rescue rather than a first-line mode and is considered earlier than in adults, without evidence of a mortality benefit <InlineRef topicId="paediatric-icu" refLabel="PARDS Global 2023" />.</p>
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
                 <p className="font-semibold text-foreground text-sm">Non-Invasive Support</p>
@@ -1146,6 +1241,117 @@ const PaediatricIcuTopic = () => {
                 </p>
               </div>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="section-resp-emergencies" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Bronchiolitis, Upper Airway Obstruction & Extubation Failure">
+              <div className="space-y-3 mt-3">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Bronchiolitis</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Supportive care is the treatment</strong>: nasal suction and saline drops (infants are obligate nasal breathers), minimal handling, upright positioning, and nasogastric feeding or maintenance isotonic fluid at 2/3 volume because of SIADH and aspiration risk. Bronchodilators, nebulised hypertonic saline, corticosteroids, antibiotics and chest physiotherapy have no routine role <InlineRef topicId="paediatric-icu" refLabel="NICE NG9" />.</li>
+                    <li><strong>Escalate</strong> for recurrent apnoea, exhaustion, rising CO₂ with acidosis, or persistent SpO₂ &lt;90–92% on oxygen: CPAP 6–8 cmH₂O is the supported non-invasive step, with HFNC used as a comfort bridge only <InlineRef topicId="paediatric-icu" refLabel="RSV Lancet 2024" />.</li>
+                    <li><strong>Apnoea risk</strong> is highest in infants under 6 weeks, ex-preterm infants, and those with chronic lung disease, congenital heart disease, neuromuscular disease or immunodeficiency — these babies need monitored beds even when they look well.</li>
+                    <li><strong>Intubated bronchiolitis</strong> behaves like obstructive lung disease: long expiratory time, low rate, permissive hypercapnia, moderate PEEP for air-trapping, and watch for co-infection, pneumothorax and mucus plugging; consider PARDS management if infiltrates and hypoxaemia dominate.</li>
+                    <li><strong>Prevention</strong>: the RSV monoclonal antibodies — palivizumab monthly through the season for high-risk infants and the newer long-acting nirsevimab for broader infant immunisation — plus maternal RSV vaccination, are changing PICU admission patterns.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Croup, epiglottitis, bacterial tracheitis and inhaled foreign body</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Croup</strong>: barking cough with inspiratory stridor. Give <strong>dexamethasone 150 micrograms/kg orally</strong> (or budesonide 2 mg nebulised) and, for severe stridor at rest, <strong>nebulised adrenaline 0.4–0.5 mL/kg of 1:1000 (maximum 5 mL)</strong>, which works within minutes and wears off in 2 h — so observe for rebound. Keep the child calm on a parent&rsquo;s lap; distress worsens obstruction.</li>
+                    <li><strong>Do not examine the throat or lie flat</strong> a child with suspected epiglottitis or bacterial tracheitis (toxic, high fever, rapid progression, drooling): the airway is secured in theatre by the most senior anaesthetist with ENT present, using inhalational induction with spontaneous ventilation, a tube a size or two smaller, and a plan for rigid bronchoscopy or surgical airway.</li>
+                    <li><strong>Inhaled foreign body</strong>: sudden choking with unilateral wheeze or reduced air entry; avoid positive pressure where possible and go to rigid bronchoscopy with a shared airway plan.</li>
+                    <li><strong>Blocked tracheostomy or tube</strong> is a paediatric arrest cause: suction, remove the inner cannula, deflate the cuff, attempt catheter passage, and if in doubt remove and replace the tube (a size smaller or oral intubation), following the National Tracheostomy Safety Project emergency algorithms with bedside signs and equipment.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Paediatric RSI and extubation readiness</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Why children desaturate in seconds</strong>: functional residual capacity is low relative to a two-to-three-times-higher oxygen consumption, so pre-oxygenate deliberately, keep nasal high-flow or nasal oxygen running through the apnoeic period, and consider gentle ventilation during apnoea rather than accepting desaturation. Use a videolaryngoscope, a straight-blade option in infants, and a cuffed tube with cuff pressure kept <strong>below 20–25 cmH₂O</strong> and checked each shift.</li>
+                    <li><strong>Physiologically difficult intubation</strong> is the norm in PICU: optimise volume status and start vasoactive support before induction, use ketamine or a reduced propofol dose, atropine for infants at risk of bradycardia, and plan for post-intubation hypotension.</li>
+                    <li><strong>Extubation readiness</strong>: resolving disease, minimal sedation with an awake and interactive child, adequate cough and secretion clearance, FiO₂ ≤0.4 with PEEP ≤5 cmH₂O, an audible <strong>cuff-leak</strong>, tolerating a short spontaneous breathing trial on pressure support 8–10 cmH₂O, and no imminent trip to theatre. Failure rates are 10–20%, and repeated failure suggests malacia, subglottic stenosis, vocal cord dysfunction, cardiac disease, neuromuscular weakness or under-treated delirium and withdrawal.</li>
+                    <li><strong>Post-extubation stridor</strong>: dexamethasone 0.25–0.5 mg/kg (a dose before extubation in high-risk children), nebulised adrenaline, heliox in selected cases, and non-invasive positive pressure. Consider a pre-extubation air-leak assessment and ENT review for airway examination in recurrent failure; plan a high-risk extubation in daylight hours with senior airway support present.</li>
+                  </ul>
+                </div>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="section-ecmo" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="ECMO & Extracorporeal Support">
+              <p className="text-muted-foreground leading-relaxed mt-3 mb-4">
+                Extracorporeal support buys time for a reversible process or a definitive
+                intervention. Paediatric survival is roughly 60–70% for neonatal and paediatric
+                respiratory support and 40–50% for cardiac support, with lower survival after
+                extracorporeal CPR — so the referral conversation happens early, while the child can
+                still be moved safely <InlineRef topicId="paediatric-icu" refLabel="ELSO Paediatric 2023" />.
+              </p>
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Mode and indications</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>VV ECMO</strong> — respiratory failure with adequate cardiac function: severe PARDS with an oxygenation index persistently above about 40 (or above 20–25 with a rising trajectory), refractory hypercapnic acidosis, severe air leak, status asthmaticus, pertussis, aspiration and pulmonary haemorrhage. Cannulation is dual-lumen jugular in small children or femoral–jugular in larger ones.</li>
+                    <li><strong>VA ECMO</strong> — circulatory failure: post-cardiotomy low cardiac output, fulminant myocarditis, refractory arrhythmia, bridge to transplant or ventricular assist device, severe septic shock unresponsive to maximal therapy (still recommended in children, unlike adults), and pulmonary hypertensive crisis.</li>
+                    <li><strong>ECPR</strong> — witnessed, in-hospital arrest with high-quality CPR and a reversible cause, particularly after cardiac surgery; teams aim for cannulation within about 60 min of arrest.</li>
+                    <li><strong>Neonatal specifics</strong>: usually needs ≥34 weeks gestation and ≥1.8–2 kg, with congenital diaphragmatic hernia, meconium aspiration and persistent pulmonary hypertension the classic indications.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Contraindications and daily management</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Relative contraindications</strong>: irreversible disease with no exit strategy, severe pre-existing neurological injury, uncontrolled bleeding or recent significant intracranial haemorrhage, extreme prematurity or very low weight, and multi-organ failure with a lethal underlying condition.</li>
+                    <li><strong>Lung rest</strong> once on support: low pressures and rate, PEEP maintained to prevent collapse, and a decisive reduction in FiO₂; sedation is reduced and neuromuscular blockade stopped when circuit-safe.</li>
+                    <li><strong>Anticoagulation</strong> — unfractionated heparin titrated to a unit protocol (activated clotting time, anti-Xa or APTT ratio) with bivalirudin as an alternative; balance circuit thrombosis against bleeding, and transfuse platelets and fibrinogen to protocol thresholds.</li>
+                    <li><strong>Complications</strong>: intracranial haemorrhage and infarction (screen with cranial ultrasound and near-infrared spectroscopy), cannula site and surgical bleeding, haemolysis, acute kidney injury and fluid overload (CRRT is often added into the circuit), limb ischaemia in femoral cannulation, oxygenator failure and infection.</li>
+                    <li><strong>North–south syndrome</strong> in VA support: poorly oxygenated native output perfuses the upper body — monitor right radial saturations and cerebral oximetry. In VV support, recirculation and inadequate flow are the usual reasons for persistent hypoxaemia.</li>
+                    <li><strong>Weaning and decision-making</strong>: daily multidisciplinary review with echocardiography, an agreed number of days before a &ldquo;time-limited trial&rdquo; conversation, and honest, early discussion with parents about the exit strategy.</li>
+                  </ul>
+                </div>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="section-neonatal-surgical" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Neonatal Surgical Emergencies">
+              <div className="space-y-3 mt-3">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Congenital diaphragmatic hernia</h3>
+                  <p className="text-sm text-muted-foreground">
+                    A hypoplastic lung with pulmonary hypertension, not simply a hole to close.
+                    Intubate early without prolonged bag-mask ventilation (which distends the
+                    intrathoracic bowel), pass a wide nasogastric tube on free drainage, and use{" "}
+                    <strong>gentle ventilation</strong> — peak pressure kept below about 25 cmH₂O,
+                    permissive hypercapnia, preductal SpO₂ target 80–95%, and high-frequency
+                    oscillation as rescue rather than routine. Treat pulmonary hypertension with
+                    inhaled nitric oxide, avoid hypoxia, acidosis and pain, support the systemic
+                    circulation (milrinone, noradrenaline, hydrocortisone for adrenal insufficiency),
+                    and repair once physiology is stable rather than urgently; ECMO is offered in
+                    selected infants at specialist centres{" "}
+                    <InlineRef topicId="paediatric-icu" refLabel="CDH EURO 2024" />.
+                  </p>
+                </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="bg-card border border-border rounded-lg p-4">
+                    <h3 className="font-semibold text-foreground mb-2">Necrotising enterocolitis</h3>
+                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                      <li>Preterm infant with feed intolerance, bilious aspirates, abdominal distension and discolouration, bloody stool, thrombocytopenia, acidosis and shock; pneumatosis intestinalis or portal venous gas on radiograph, free air with perforation.</li>
+                      <li>Stop feeds, decompress the stomach, broad-spectrum antibiotics with anaerobic cover, generous fluid and blood product support, parenteral nutrition through central access, and an early surgical opinion for laparotomy or primary peritoneal drain.</li>
+                      <li>Ventilate for abdominal splinting and metabolic acidosis, expect marked third-space losses, and watch for abdominal compartment syndrome, stoma losses and later short-bowel syndrome and cholestasis.</li>
+                    </ul>
+                  </div>
+                  <div className="bg-card border border-border rounded-lg p-4">
+                    <h3 className="font-semibold text-foreground mb-2">Gastroschisis, exomphalos, atresias and TOF</h3>
+                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                      <li><strong>Abdominal wall defects</strong>: enormous evaporative and heat losses — wrap the bowel in cling film, nurse in a warm humidified environment, give 2–3 times maintenance fluid initially, decompress the stomach, and support the circulation after silo reduction or closure while watching intra-abdominal pressure, ventilation and renal perfusion. Exomphalos is associated with cardiac, chromosomal and Beckwith–Wiedemann anomalies (check glucose).</li>
+                      <li><strong>Oesophageal atresia with tracheo-oesophageal fistula</strong>: frothing, choking, an arrested nasogastric tube and a gas-filled stomach. Avoid high-pressure ventilation before fistula ligation (gastric distension worsens ventilation), keep the tube tip above the fistula, and look for the VACTERL associations including duct-dependent cardiac lesions.</li>
+                      <li><strong>Malrotation with volvulus</strong> is the surgical emergency behind any bilious vomiting in a neonate — urgent upper gastrointestinal contrast study or laparotomy, because delay costs the midgut.</li>
+                      <li><strong>All of these babies</strong> need glucose infusion, vitamin K, thermal care, cross-matched blood availability, careful analgesia, and a discussion with the surgical and neonatal teams about timing rather than a race to theatre.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -1176,7 +1382,7 @@ const PaediatricIcuTopic = () => {
               <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5">
                 <p className="text-sm font-semibold text-destructive">⚠ Propofol Infusion Syndrome (PRIS)</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Metabolic acidosis, rhabdomyolysis, cardiac failure/arrhythmia and acute renal failure. Risk increases with doses &gt;4 mg/kg/h, infusions &gt;48 h, concurrent catecholamines or steroids, and in young children — <strong>avoid prolonged propofol infusion in PICU</strong>.
+                  <strong>Propofol is contraindicated by its UK product licence for sedation of ventilated patients aged 16 years or younger</strong>, so it is not a PICU sedation agent at all: use it for induction, short procedures and imaging, and choose opioid/benzodiazepine or dexmedetomidine-based regimens for continuing sedation <InlineRef topicId="paediatric-icu" refLabel="MHRA Propofol" />. Where prolonged infusion is unavoidable (rare, senior decision, e.g. status epilepticus bridging), the syndrome to watch for is metabolic (lactic) acidosis, rhabdomyolysis with rising creatine kinase, cardiac failure, bradyarrhythmia and acute kidney injury; risk rises with doses &gt;4 mg/kg/h, duration &gt;48 h, concurrent catecholamines or corticosteroids, critical illness and young age. Monitor lactate, pH, creatine kinase and triglycerides daily and stop the infusion at the first unexplained acidosis.
                 </p>
               </div>
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
@@ -1233,7 +1439,7 @@ const PaediatricIcuTopic = () => {
               <p className="text-sm text-muted-foreground mt-2">
                 Worked examples: a <strong>6 kg</strong> infant = 24 mL/h (576 mL/day); a{" "}
                 <strong>15 kg</strong> child = 40 + 10 = 50 mL/h; a <strong>30 kg</strong> child = 40 + 20 + 10 =
-                70 mL/h. Cap maintenance at ~2 L/day (female) / 2.5 L/day (male), and note that the daily-volume
+                70 mL/h. In <strong>adolescents approaching adult size only</strong>, cap maintenance at roughly 2 L/day (female) or 2.5 L/day (male) — this is an adult convention and must not be applied to smaller children, whose Holliday–Segar volume is the ceiling. Note that the daily-volume
                 form (100/50/20 mL/kg) is the version used for prescribing on a fluid chart.
               </p>
               <p className="text-sm text-muted-foreground mt-2">
@@ -1283,7 +1489,7 @@ const PaediatricIcuTopic = () => {
                 <li>
                   <strong>DKA:</strong> 10 mL/kg bolus only if shocked, then deficit (assume 5% if pH ≥7.1, 10%
                   if pH &lt;7.1) replaced <strong>over 48 h</strong> plus maintenance; insulin 0.05–0.1
-                  units/kg/h started 1–2 h after fluids; no bicarbonate. Cerebral oedema — headache,
+                  units/kg/h started 1–2 h after fluids; no bicarbonate. <strong>Add potassium 40 mmol/L to every rehydration bag from the outset</strong> unless the child is anuric or potassium is above 5.5 mmol/L: the measured potassium at presentation is misleadingly normal or high while total body potassium is markedly depleted, and insulin plus correction of acidosis causes a rapid fall. Recheck potassium at 2 h and then 4-hourly with continuous ECG monitoring, and correct hypophosphataemia and hypomagnesaemia if symptomatic <InlineRef topicId="paediatric-icu" refLabel="BSPED DKA 2021" />. Cerebral oedema — headache,
                   bradycardia with hypertension, falling GCS — is treated with{" "}
                   <strong>hypertonic 2.7% saline 3 mL/kg or mannitol 0.5–1 g/kg</strong> and a reduction in
                   fluid rate <InlineRef topicId="paediatric-icu" refLabel="ISPAD DKA 2022" />.
@@ -1444,6 +1650,31 @@ const PaediatricIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="section-infection" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Infection Prevention, Transfusion & PICU Bundles">
+              <div className="grid gap-4 md:grid-cols-2 mt-3">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Healthcare-associated infection</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Central line bundles</strong> — insertion with full aseptic technique, chlorhexidine skin preparation, maximal barrier precautions and ultrasound guidance; then a daily maintenance bundle: scrub the hub, closed needle-free connectors, dressing integrity, minimal line access, and a documented daily question of whether the line can come out. Bundle programmes reduced paediatric line infection rates by more than half <InlineRef topicId="paediatric-icu" refLabel="epic3 2014" />.</li>
+                    <li><strong>Ventilator-associated pneumonia/events</strong> — head-up positioning where safe, oral care, cuff pressure and subglottic secretion management, avoiding unnecessary circuit changes, sedation interruption and daily extubation assessment.</li>
+                    <li><strong>Urinary catheters and antimicrobial stewardship</strong> — remove early, and review every antimicrobial at 48–72 h against cultures with a stop or step-down date; escalate to the microbiologist for the immunocompromised or long-stay child.</li>
+                    <li><strong>Outbreak awareness</strong> — cohorting and isolation for RSV, influenza, SARS-CoV-2, norovirus and multidrug-resistant organisms; hand hygiene remains the single most effective measure.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Transfusion and thromboprophylaxis</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Red cells</strong> — in a stable, non-bleeding critically ill child, transfuse below a haemoglobin of <strong>7 g/dL</strong> and not above it; higher thresholds apply to uncorrected cyanotic heart disease, single-ventricle physiology, ECMO, active haemorrhage and severe hypoxaemia <InlineRef topicId="paediatric-icu" refLabel="TAXI 2018" />. Give 10–15 mL/kg and reassess rather than prescribing a unit.</li>
+                    <li><strong>Products</strong> — irradiated and CMV-negative components for neonates and the severely immunocompromised, and paedipacks to reduce donor exposure; watch for hyperkalaemia and citrate-related hypocalcaemia during rapid transfusion in small infants.</li>
+                    <li><strong>Thrombosis</strong> — central venous catheters cause most paediatric thrombosis; consider prophylaxis (usually low-molecular-weight heparin) in pubertal adolescents, prolonged immobility, active malignancy, nephrotic syndrome or previous thrombosis, and treat catheter-related thrombosis with anticoagulation and line review.</li>
+                    <li><strong>Stress-ulcer prophylaxis</strong> — for the ventilated child, coagulopathy, burns, head injury or high-dose steroids, stopping it as enteral feeding is established.</li>
+                  </ul>
+                </div>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="section-nai" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Non-Accidental Injury">
               <p className="text-muted-foreground leading-relaxed mt-3 mb-4">
@@ -1486,6 +1717,27 @@ const PaediatricIcuTopic = () => {
             <p className="text-muted-foreground text-sm">
               All PICU staff need Level 3 safeguarding training; the recognition features and the practical safeguarding response are set out in <a href="#section-nai" className="text-icu underline underline-offset-4">Non-Accidental Injury</a> <InlineRef topicId="paediatric-icu" refLabel="NICE NG76" />. Best-interests framework — parents central to decision-making but cannot demand futile or burdensome treatment <InlineRef topicId="paediatric-icu" refLabel="RCPCH Framework 2015" />. Death by neurological criteria can be diagnosed from 37 weeks corrected gestation, with separate RCPCH criteria for infants under 2 months, and requires two doctors performing two sets of tests <InlineRef topicId="paediatric-icu" refLabel="RCPCH DNC Infants 2015" />. Family-centred care: open visiting, parental presence, play specialists, bereavement support — and staffing, retrieval and escalation standards follow the PCCS quality standards <InlineRef topicId="paediatric-icu" refLabel="PCCS Standards 2021" />.
             </p>
+            <div className="grid gap-4 md:grid-cols-2 mt-4">
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Withdrawal and palliative care</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                  <li>The RCPCH framework recognises three situations in which withholding or withdrawing life-sustaining treatment may be ethical: when <strong>life is limited in quantity</strong> (brain-stem death, imminent death, inevitable death), when <strong>life is limited in quality</strong> (unbearable burden of treatment, burdens of the illness, lack of ability to benefit), and when a <strong>competent young person refuses</strong> treatment <InlineRef topicId="paediatric-icu" refLabel="RCPCH Framework 2015" />.</li>
+                  <li>Decisions are made by consensus of the multidisciplinary team with the family, documented clearly, with a second opinion for contested cases, early involvement of the paediatric palliative care team, and clinical ethics or legal advice if disagreement persists — courts are the last resort, not the first.</li>
+                  <li>Plan the practicalities: symptom control (opioid and benzodiazepine infusions titrated to distress, secretions, seizures), extubation or de-escalation choices, siblings, faith and cultural needs, a preferred place of death including transfer home or to a hospice, memory-making, and follow-up bereavement contact.</li>
+                  <li>Consider whether the death is reportable to the coroner or procurator fiscal, complete child death review processes, and offer staff debrief.</li>
+                </ul>
+              </div>
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Organ and tissue donation</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                  <li>Donation should be considered a <strong>routine part of end-of-life care</strong>. Refer every potential donor to the specialist nurse for organ donation <em>before</em> discussing donation with the family and before withdrawal is planned; the trigger is the decision to test for death by neurological criteria or the decision to withdraw life-sustaining treatment.</li>
+                  <li><strong>Deemed consent (opt-out) legislation does not apply to those under 18</strong> in England, Wales and Scotland, so parental (or the young person&rsquo;s recorded) consent is required; check the Organ Donor Register and honour a recorded decision.</li>
+                  <li><strong>Donation after brainstem death</strong> requires two doctors performing two sets of tests with the RCPCH criteria, from 37 weeks corrected gestation, with the infant criteria and greater caution below 2 months. Donor optimisation continues after diagnosis — lung-protective ventilation, vasopressin/noradrenaline, hormone replacement (levothyroxine, methylprednisolone), desmopressin for diabetes insipidus, glycaemic and electrolyte control and temperature management.</li>
+                  <li><strong>Donation after circulatory death</strong> follows a planned withdrawal, with a 5 minute period of continuous absent circulation before the diagnosis of death and defined ischaemic time limits; withdrawal must not be altered for donation purposes, and the family need to understand that donation may not proceed.</li>
+                  <li>Neonatal donation is possible from term infants and tissue donation (heart valves, corneas) is possible in many more children; do not assume a child is unsuitable — that judgement belongs to the specialist nurse and retrieval team <InlineRef topicId="paediatric-icu" refLabel="NICE NG135" />.</li>
+                </ul>
+              </div>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -1555,6 +1807,32 @@ const PaediatricIcuTopic = () => {
                 <p className="font-semibold text-foreground text-sm">PEWS — pre-PICU deterioration</p>
                 <p className="text-sm text-muted-foreground mt-1">
                   Paediatric Early Warning Scores work upstream of all of the above, on the ward: age-specific thresholds for heart rate, respiratory rate and effort, blood pressure, SpO₂/oxygen requirement, capillary refill and conscious level, plus explicit weight given to nurse and <strong>parental concern</strong>. A triggering or rising score mandates escalation to senior review and, where needed, the outreach or PICU retrieval team <InlineRef topicId="paediatric-icu" refLabel="Bedside PEWS 2009" />.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">Vasoactive-Inotropic Score (VIS) — quantifying cardiovascular support</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  VIS = dopamine (micrograms/kg/min) + dobutamine + 100 × adrenaline + 100 ×
+                  noradrenaline + 10 × milrinone + 10,000 × vasopressin (units/kg/min) + 100 ×
+                  phenylephrine. It is widely used after congenital cardiac surgery and in septic
+                  shock, where a <strong>VIS above roughly 20 at 24–48 h</strong> is associated with
+                  longer ventilation, acute kidney injury and worse outcome. Its value at the bedside
+                  is as a single trend: a rising VIS despite treatment prompts an echocardiogram, a
+                  search for a missed diagnosis and an ECMO conversation.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                <p className="font-semibold text-foreground text-sm">PARDS severity and the oxygenation index</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Paediatric ARDS is graded on oxygenation rather than the PaO₂/FiO₂ ratio alone:{" "}
+                  <strong>oxygenation index (OI) = mean airway pressure × FiO₂ × 100 / PaO₂ (mmHg)</strong>,
+                  or the oxygen saturation index (OSI) using SpO₂ when no arterial line is present.
+                  On invasive ventilation, mild is OI 4–8, moderate 8–16 and severe ≥16 (OSI 5–7.5,
+                  7.5–12.3 and ≥12.3); PARDS can also be diagnosed on non-invasive support. Severity
+                  should be reassessed at 4–6 h because early improvement identifies a much
+                  lower-risk group, and a persistently high OI is the trigger for prone positioning,
+                  neuromuscular blockade, inhaled nitric oxide trial and ECMO referral{" "}
+                  <InlineRef topicId="paediatric-icu" refLabel="PARDS Global 2023" />.
                 </p>
               </div>
             </div>
