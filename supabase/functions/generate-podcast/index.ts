@@ -1268,12 +1268,19 @@ CRITICAL ACCURACY RULES:
 - Maintain UK anaesthetic terminology and spelling.
 - For longer topics, use the extra time to cover MORE of the source material in depth — do not pad with filler or repeat the same point.
 
+COVER THE WHOLE TOPIC, NOT JUST THE PROSE:
+- The source includes summary boxes, key-point boxes, warning/pitfall boxes, tables, worked examples, algorithm and flowchart steps, and diagram/animation/figure labels (sometimes listed under a "diagram, animation and figure labels" heading).
+- Every one of these must be narrated in words. Turn tables into spoken comparisons ("in contrast, in the second column…"), turn algorithms and flowcharts into ordered spoken steps, and turn diagram or animation labels into a described sequence ("picture the pressure rising as the valve closes, then…").
+- Never say "as shown in the diagram", "see the table above", or "as illustrated" — the listener has no screen. Say the content instead.
+- If a label list is terse or fragmentary, weave its facts into the surrounding explanation rather than reading the fragments aloud verbatim.
+
 STRUCTURE (single flowing narration, no section headers spoken aloud):
 1. Brief hook: why this topic matters in exam and clinical practice
-2. Core concepts: walk through the key teaching points in a logical order (the bulk of the script)
-3. Exam-focused viva-style framing: "if an examiner asks…", "the classic answer is…", "trainees often forget…"
-4. Three to five take-home pearls to remember
-5. Brief closing
+2. Core concepts: walk through the key teaching points in a logical order (the bulk of the script), including summary-box, table and algorithm content
+3. Described figures: explain the topic's diagrams and animations in words at the point they are relevant
+4. Exam-focused viva-style framing: "if an examiner asks…", "the classic answer is…", "trainees often forget…"
+5. Three to five take-home pearls to remember, drawing on the key-point and summary boxes
+6. Brief closing
 
 Tone: warm, confident, like a senior trainee tutoring a peer. Not lecturing.
 

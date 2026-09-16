@@ -109,10 +109,23 @@ export const extractTopicContent = (doc: Document = document): ExtractionResult 
   // many one-off topic pages (e.g. Immunology for Intensivists) render
   // directly inside PageContainer with no <main>. Search progressively wider
   // roots so podcast extraction works on both. Exclude sections that are
-  // clearly non-narrative (quiz, references, diagrams gallery, page nav).
-  const EXCLUDE_IDS = new Set(["quiz", "references", "diagrams", "podcast", "faqs"]);
+  // clearly non-narrative (quiz, references, page nav). Diagrams are NOT
+  // excluded any more — their labels, captions and animation step text are
+  // teaching content the narration must cover.
+  const EXCLUDE_IDS = new Set(["quiz", "references", "podcast"]);
   const isInsideChrome = (el: Element): boolean =>
     !!el.closest("nav, header, footer, aside, [data-podcast-player]");
+
+  /**
+   * innerText only returns text that is currently laid out, so collapsed
+   * accordions, inactive tab panels and SVG diagrams come back empty. Fall
+   * back to textContent so nothing rendered-but-hidden is silently dropped.
+   */
+  const readText = (el: Element): string => {
+    const visible = (el as HTMLElement).innerText?.trim() ?? "";
+    const full = (el.textContent ?? "").replace(/\s+\n/g, "\n").trim();
+    return full.length > visible.length ? full : visible;
+  };
 
   const rootCandidates: Array<{ selector: string; el: Element | null }> = [
     { selector: "main", el: doc.querySelector("main") },
@@ -135,7 +148,7 @@ export const extractTopicContent = (doc: Document = document): ExtractionResult 
     sections.forEach((s) => {
       if (s.id && EXCLUDE_IDS.has(s.id)) return;
       if (isInsideChrome(s)) return;
-      const text = (s as HTMLElement).innerText?.trim();
+      const text = readText(s);
       if (text) {
         coreConcepts += text + "\n\n";
         scanned += 1;
@@ -146,9 +159,42 @@ export const extractTopicContent = (doc: Document = document): ExtractionResult 
     if (coreConcepts.trim().length > EXTRACTION_MIN_CHARS) break;
   }
 
+  // Figures, diagrams and animations: SVG labels, <title>/<desc>, captions and
+  // aria-labels. These carry flows, axes, pressure/volume values and step-by-step
+  // sequences that the prose often only alludes to ("as shown opposite").
+  const figureRoot =
+    doc.querySelector("main") ?? doc.querySelector("article") ?? doc.body ?? null;
+  const figureBits: string[] = [];
+  const pushBit = (value: string | null | undefined) => {
+    const t = (value ?? "").replace(/\s+/g, " ").trim();
+    if (t.length > 1 && /[a-zA-Z]/.test(t) && !figureBits.includes(t)) figureBits.push(t);
+  };
+  if (figureRoot) {
+    figureRoot.querySelectorAll("svg").forEach((svg) => {
+      if (isInsideChrome(svg)) return;
+      pushBit(svg.getAttribute("aria-label"));
+      svg.querySelectorAll("title, desc, text, tspan").forEach((n) => pushBit(n.textContent));
+    });
+    figureRoot
+      .querySelectorAll("figcaption, [data-diagram-caption], [data-animation-step]")
+      .forEach((n) => {
+        if (!isInsideChrome(n)) pushBit(readText(n));
+      });
+    figureRoot.querySelectorAll("img[alt]").forEach((n) => {
+      if (!isInsideChrome(n)) pushBit(n.getAttribute("alt"));
+    });
+  }
+  const figures = figureBits.join(" · ");
+  selectorLog.push({
+    selector: "svg/figcaption/animation labels",
+    found: figureBits.length > 0,
+    chars: figures.length,
+  });
+
   const parts = [
     objectives && `LEARNING OBJECTIVES:\n${objectives}`,
     coreConcepts.trim() && `CORE CONCEPTS:\n${coreConcepts.trim()}`,
+    figures && `DIAGRAM, ANIMATION AND FIGURE LABELS (explain these in words):\n${figures}`,
     workedExamples && `WORKED EXAMPLES:\n${workedExamples}`,
     keyPoints && `KEY LEARNING POINTS:\n${keyPoints}`,
   ].filter(Boolean);
