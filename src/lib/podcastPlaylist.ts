@@ -115,3 +115,29 @@ export const moveInQueue = (topicId: string, delta: number) => {
 export const setQueue = (ids: string[]) => commit([...new Set(ids)]);
 
 export const clearQueue = () => commit([]);
+
+/**
+ * Collapse entries that point at the same recording. Two different entries can
+ * resolve to one episode (a legacy bare topic id plus a `topic::voice` key), so
+ * exact-string de-duplication is not enough. `resolve` returns the recording
+ * identity for an entry, or null when it cannot be resolved yet — unresolved
+ * entries are always kept so a slow/failed load never discards the queue.
+ * Returns how many entries were removed.
+ */
+export const dedupeQueue = (resolve: (entry: string) => string | null): number => {
+  const seen = new Set<string>();
+  const next: string[] = [];
+  for (const entry of queue) {
+    const identity = resolve(entry);
+    if (identity === null) {
+      next.push(entry);
+      continue;
+    }
+    if (seen.has(identity)) continue;
+    seen.add(identity);
+    next.push(entry);
+  }
+  const removed = queue.length - next.length;
+  if (removed > 0) commit(next);
+  return removed;
+};
