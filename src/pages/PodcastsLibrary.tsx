@@ -381,6 +381,24 @@ const PodcastsLibrary = () => {
       </Link>
 
       <Link
+        to="/podcasts/regions"
+        className="group mb-6 flex items-center justify-between gap-3 rounded-lg border border-icu/30 bg-icu/5 p-3 sm:p-4 transition-colors hover:border-icu/60 hover:bg-icu/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      >
+        <div className="flex items-center gap-3 min-w-0">
+          <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-icu/15 text-icu">
+            <Headphones className="h-4 w-4" />
+          </span>
+          <div className="min-w-0">
+            <p className="text-sm font-semibold text-foreground">Browse episodes by region</p>
+            <p className="text-xs text-muted-foreground">
+              See every recording with its narrator region, topic area and running time.
+            </p>
+          </div>
+        </div>
+        <ArrowRight className="h-4 w-4 text-icu shrink-0 transition-transform group-hover:translate-x-1" />
+      </Link>
+
+      <Link
         to="/podcasts/playlist"
         className="group mb-6 flex items-center justify-between gap-3 rounded-lg border border-primary/30 bg-primary/5 p-3 sm:p-4 transition-colors hover:border-primary/60 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >

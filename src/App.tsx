@@ -25,6 +25,7 @@ const StudyStats = lazy(() => import("./pages/StudyStats"));
 const StudyPlan = lazy(() => import("./pages/StudyPlan"));
 const PodcastsLibrary = lazy(() => import("./pages/PodcastsLibrary"));
 const PodcastPlaylist = lazy(() => import("./pages/PodcastPlaylist"));
+const PodcastsByRegion = lazy(() => import("./pages/PodcastsByRegion"));
 const GlossaryAudit = lazy(() => import("./pages/GlossaryAudit"));
 const VivaHub = lazy(() => import("./pages/VivaHub"));
 const VivaQuestionLibrary = lazy(() => import("./pages/VivaQuestionLibrary"));
@@ -166,6 +167,7 @@ const App = () => (
           <Route path="/trust" element={<Trust />} />
           <Route path="/podcasts" element={<PodcastsLibrary />} />
           <Route path="/podcasts/playlist" element={<PodcastPlaylist />} />
+          <Route path="/podcasts/regions" element={<PodcastsByRegion />} />
           <Route path="/glossary-audit" element={<GlossaryAudit />} />
           <Route path="/viva" element={<VivaHub />} />
           <Route path="/viva/library" element={<VivaQuestionLibrary />} />
