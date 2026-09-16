@@ -263,11 +263,12 @@ function extractFromSource(src: string): Extracted {
   }
 
   // 3. Verbatim SVG <text> labels — the diagram content the scrape never saw.
-  const svgTextEl = /<text\b[^>]*>([\s\S]*?)<\/text>/g;
+  const svgTextEl = /<(text|tspan|title|desc)\b[^>]*>([\s\S]*?)<\/\1>/g;
   while ((m = svgTextEl.exec(body))) {
-    const inner = decode(m[1].replace(/<[^>]+>/g, " ").replace(/\{[^}]*\}/g, " "));
+    const inner = decode(m[2].replace(/<[^>]+>/g, " ").replace(/\{[^}]*\}/g, " "));
     if (inner && /[a-zA-Z]/.test(inner)) svgLabels.push(inner);
   }
+
 
   // 4. Long string literals anywhere (paragraph constants, arrays of bullets).
   const longStrings = /["'`]((?:[^"'`\\]|\\.){40,}?)["'`]/g;
