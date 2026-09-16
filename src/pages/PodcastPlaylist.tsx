@@ -158,6 +158,96 @@ const PodcastPlaylist = () => {
     return list;
   }, [queue, byId]);
 
+  /**
+   * Queue entries with no recording yet. These are real requests, not dead
+   * entries: an admin can commission them straight from here and the finished
+   * episodes then appear in the queue and the podcast library.
+   */
+  const pending = useMemo(() => {
+    const seen = new Set<string>();
+    const list: PendingRequest[] = [];
+    for (const entry of queue) {
+      if (byId.has(entry)) continue;
+      const { topicId, voice } = parseEpisodeKey(entry);
+      const topic = allTopics.find((t) => t.id === topicId && t.available);
+      if (!topic) continue;
+      const resolvedVoice = voice ?? DEFAULT_PODCAST_VOICE;
+      const key = episodeKey(topicId, resolvedVoice);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      list.push({
+        entry,
+        topicId,
+        topicTitle: topic.title,
+        topicPath: `${sectionMeta[topic.section].path}/${topic.id}`,
+        section: topic.section,
+        voice: resolvedVoice,
+      });
+    }
+    return list;
+  }, [queue, byId]);
+
+  /** Topics with no recording at all — offer them as queueable requests. */
+  const unrecordedTopics = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+    const recorded = new Set((episodes ?? []).map((e) => e.topic_id));
+    const requested = new Set(pending.map((p) => p.topicId));
+    return allTopics
+      .filter((t) => t.available && !recorded.has(t.id) && !requested.has(t.id))
+      .filter(
+        (t) =>
+          t.title.toLowerCase().includes(q) ||
+          t.id.toLowerCase().includes(q) ||
+          sectionMeta[t.section].label.toLowerCase().includes(q),
+      )
+      .slice(0, 20);
+  }, [episodes, pending, query]);
+
+  /** Commission the unrecorded queue entries on the durable server worker. */
+  const startRecording = async () => {
+    if (pending.length === 0 || starting) return;
+    setStarting(true);
+    setRecordError(null);
+    try {
+      const job = await createRerecordJobForRequests(
+        pending.map((p) => ({
+          topicId: p.topicId,
+          topicTitle: p.topicTitle,
+          topicPath: p.topicPath,
+          voice: p.voice,
+        })),
+      );
+      setRecording(job);
+      await wakeRerecordWorker(job.id);
+    } catch (err) {
+      setRecordError(err instanceof Error ? err.message : "Could not start recording.");
+    } finally {
+      setStarting(false);
+    }
+  };
+
+  // Follow the run: refresh the episode list as items finish so completed
+  // recordings drop into the queue (and the library) without a reload.
+  useEffect(() => {
+    if (!recording) return;
+    let cancelled = false;
+    const id = window.setInterval(async () => {
+      const latest = await fetchJob(recording.id);
+      if (cancelled || !latest) return;
+      setRecording(latest);
+      await loadEpisodes();
+      if (latest.status !== "running" || latest.processed >= latest.total) {
+        window.clearInterval(id);
+      }
+    }, 10_000);
+    return () => {
+      cancelled = true;
+      window.clearInterval(id);
+    };
+  }, [recording, loadEpisodes]);
+
+
   const available = useMemo(() => {
     const list = (episodes ?? []).filter(
       (e) => !queue.includes(e.key) && !queue.includes(e.topic_id),
