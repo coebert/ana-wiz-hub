@@ -1561,7 +1561,7 @@ const PaediatricIcuTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
-          <SynthesisBlock          <SynthesisBlock
+          <SynthesisBlock
             title="Paediatric ICU — Critical Differences vs Adults"
             subtitle="The size, physiology, and pharmacology adjustments that matter at the bedside."
             variant="summary"
