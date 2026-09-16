@@ -760,23 +760,28 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
           {speed}×
         </Button>
         <div className="flex items-center gap-1">
-          {isAdmin && (
-            <Button
-              onClick={openRegenDialog}
-              size="sm"
-              variant="ghost"
-              className="text-xs h-8 text-muted-foreground/70 hover:text-foreground"
-              aria-label="Regenerate podcast (password required)"
-              title="Regenerate (password required)"
-              disabled={generating}
-            >
-              {generating ? (
-                <Loader2 className="h-3.5 w-3.5 animate-spin" />
-              ) : (
-                <RefreshCw className="h-3.5 w-3.5" />
-              )}
-            </Button>
-          )}
+          {/*
+            Always visible: the real gate is the owner code, checked server-side
+            before any regeneration is accepted. Hiding it behind the client-side
+            admin flag meant the owner lost the control when signed in on a
+            device without an admin session.
+          */}
+          <Button
+            onClick={openRegenDialog}
+            size="sm"
+            variant="ghost"
+            className="text-xs h-8 text-muted-foreground/70 hover:text-foreground"
+            aria-label="Regenerate podcast (owner code required)"
+            title="Regenerate (owner code required)"
+            disabled={generating}
+          >
+            {generating ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            ) : (
+              <RefreshCw className="mr-1.5 h-3.5 w-3.5" />
+            )}
+            {generating ? null : "Regenerate"}
+          </Button>
           <Button
             onClick={handleDownload}
             size="sm"
