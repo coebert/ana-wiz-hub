@@ -25,6 +25,7 @@ const StudyStats = lazy(() => import("./pages/StudyStats"));
 const StudyPlan = lazy(() => import("./pages/StudyPlan"));
 const PodcastsLibrary = lazy(() => import("./pages/PodcastsLibrary"));
 const PodcastPlaylist = lazy(() => import("./pages/PodcastPlaylist"));
+const PodcastsByRegion = lazy(() => import("./pages/PodcastsByRegion"));
 const GlossaryAudit = lazy(() => import("./pages/GlossaryAudit"));
 const VivaHub = lazy(() => import("./pages/VivaHub"));
 const VivaQuestionLibrary = lazy(() => import("./pages/VivaQuestionLibrary"));
