@@ -36,6 +36,7 @@ const tocItems = [
   { id: "sedation", label: "Sedation, Analgesia & Withdrawal", group: "Organ support" },
   { id: "fluids", label: "Fluids, Electrolytes & Nutrition", group: "Organ support" },
   { id: "drug-dosing", label: "Drug Dosing in Small Patients", group: "Organ support" },
+  { id: "section-rehab", label: "Rehabilitation & Long-Term Ventilation", group: "Organ support" },
   { id: "section-infection", label: "Infection Prevention & PICU Bundles", group: "Safeguarding & systems" },
   { id: "section-nai", label: "Non-Accidental Injury", group: "Safeguarding & systems" },
   { id: "ethics", label: "Safeguarding, Ethics & End-of-Life", group: "Safeguarding & systems" },
@@ -1267,7 +1268,7 @@ const PaediatricIcuTopic = () => {
                 <div className="bg-card border border-border rounded-lg p-4">
                   <h3 className="font-semibold text-foreground mb-2">Croup, epiglottitis, bacterial tracheitis and inhaled foreign body</h3>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                    <li><strong>Croup</strong>: barking cough with inspiratory stridor. Give <strong>dexamethasone 150 micrograms/kg orally</strong> (or budesonide 2 mg nebulised) and, for severe stridor at rest, <strong>nebulised adrenaline 0.4–0.5 mL/kg of 1:1000 (maximum 5 mL)</strong>, which works within minutes and wears off in 2 h — so observe for rebound. Keep the child calm on a parent&rsquo;s lap; distress worsens obstruction.</li>
+                    <li><strong>Croup</strong>: barking cough with inspiratory stridor. Give <strong>dexamethasone 150 micrograms/kg orally as a single dose</strong> (repeat once at 12 h only if still symptomatic; contrast with the 4-times-daily meningitis regimen) (or budesonide 2 mg nebulised) and, for severe stridor at rest, <strong>nebulised adrenaline 0.4–0.5 mL/kg of 1:1000 (maximum 5 mL)</strong>, which works within minutes and wears off in 2 h — so observe for rebound. Keep the child calm on a parent&rsquo;s lap; distress worsens obstruction.</li>
                     <li><strong>Do not examine the throat or lie flat</strong> a child with suspected epiglottitis or bacterial tracheitis (toxic, high fever, rapid progression, drooling): the airway is secured in theatre by the most senior anaesthetist with ENT present, using inhalational induction with spontaneous ventilation, a tube a size or two smaller, and a plan for rigid bronchoscopy or surgical airway.</li>
                     <li><strong>Inhaled foreign body</strong>: sudden choking with unilateral wheeze or reduced air entry; avoid positive pressure where possible and go to rigid bronchoscopy with a shared airway plan.</li>
                     <li><strong>Blocked tracheostomy or tube</strong> is a paediatric arrest cause: suction, remove the inner cannula, deflate the cuff, attempt catheter passage, and if in doubt remove and replace the tube (a size smaller or oral intubation), following the National Tracheostomy Safety Project emergency algorithms with bedside signs and equipment.</li>
@@ -1544,7 +1545,13 @@ const PaediatricIcuTopic = () => {
                 hyperosmolar and sclerosant — then an infusion delivering a glucose delivery rate of{" "}
                 <strong>4–8 mg/kg/min</strong> and recheck at 15–30 min. Persistent or recurrent hypoglycaemia
                 needs a hypoglycaemia screen (insulin, cortisol, GH, ketones, lactate, ammonia, acylcarnitines)
-                taken <em>before</em> correction where possible.
+                 taken <em>before</em> correction where possible. Glucose requirements above{" "}
+                 <strong>8–10 mg/kg/min</strong> with detectable insulin and inappropriately low ketones and
+                 free fatty acids indicate <strong>congenital hyperinsulinism</strong>: secure central access
+                 for concentrated glucose, add glucagon (infusion 5–10 micrograms/kg/h) and diazoxide with
+                 chlorothiazide, and involve a paediatric endocrine centre urgently — hypoglycaemia here is
+                 ketone-free and neurologically damaging{" "}
+                 <InlineRef topicId="paediatric-icu" refLabel="ESPE Hyperinsulinism 2018" />.
               </p>
             </div>
 
@@ -1628,7 +1635,7 @@ const PaediatricIcuTopic = () => {
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Induction agents</td><td>Ketamine 1–2 mg/kg; propofol 2–4 mg/kg (higher per kg in infants); thiopentone 4–6 mg/kg (2–3 in neonates)</td><td>Halve doses in shock; ketamine is the usual choice for haemodynamic instability</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Neuromuscular blockers</td><td>Rocuronium 1 mg/kg (RSI); suxamethonium <strong>2 mg/kg &lt;1 y, 1.5 mg/kg child</strong>; atracurium 0.5 mg/kg</td><td>Sugammadex 2–4 mg/kg (16 mg/kg for immediate reversal); atropine before sux in infants</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Analgesia / antipyretics</td><td>Paracetamol IV 15 mg/kg 6-hourly (max 60 mg/kg/day; 7.5 mg/kg and 30 mg/kg/day in neonates &lt;10 kg); ibuprofen 5–10 mg/kg 8-hourly; morphine 100 mcg/kg IV (<strong>25–50 mcg/kg in neonates</strong>)</td><td>Titrate opioids in 20 mcg/kg increments; naloxone 10 mcg/kg (400 mcg max) if needed</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Antibiotics (sepsis)</td><td>Ceftriaxone 80 mg/kg od (max 4 g); cefotaxime 50 mg/kg 6–8-hourly; amoxicillin 30 mg/kg tds; gentamicin 7 mg/kg od (5 mg/kg neonates, extended interval); vancomycin 15 mg/kg 6–8-hourly (level-guided); aciclovir 10–20 mg/kg tds</td><td>Meningitic doses are higher; add dexamethasone 150 mcg/kg qds in bacterial meningitis &gt;3 months</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Antibiotics (sepsis)</td><td>Ceftriaxone 80 mg/kg od (max 4 g); cefotaxime 50 mg/kg 6–8-hourly; amoxicillin 30 mg/kg tds; gentamicin 7 mg/kg od (5 mg/kg neonates, extended interval); vancomycin 15 mg/kg 6–8-hourly (level-guided); aciclovir 10–20 mg/kg tds</td><td>Meningitic doses are higher; add dexamethasone 150 mcg/kg <strong>four times daily for 4 days</strong> in bacterial meningitis &gt;3 months (contrast the <strong>single</strong> 150 mcg/kg dose used in croup)</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Hypertonic saline / mannitol</td><td>2.7% saline 3 mL/kg (max 150 mL); mannitol 0.5–1 g/kg</td><td>For raised ICP or hyponatraemic seizure</td></tr>
                   <tr><td className="py-2 font-medium text-foreground">Salbutamol / magnesium (asthma)</td><td>Salbutamol IV 15 mcg/kg load (max 250 mcg) then 1–2 mcg/kg/min; magnesium sulfate 40–50 mg/kg (max 2 g) over 20 min</td><td>Check K⁺ and lactate on salbutamol infusion</td></tr>
                 </tbody>
