@@ -32,6 +32,8 @@ const PODCAST_OUT = resolve(
 const MAX_IMPORT_DEPTH = 2;
 const MAX_IMPORTED_FILES = 40;
 const MAX_TEXT_CHARS = 24_000;
+/** Reserved share of the text budget for diagram/animation labels. */
+const MAX_LABEL_CHARS = 4_000;
 
 export interface AuditCorpusEntry {
   topic_id: string;
