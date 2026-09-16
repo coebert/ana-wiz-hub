@@ -1463,6 +1463,20 @@ export const getPreferredPodcastVoice = (): string => {
   return DEFAULT_PODCAST_VOICE;
 };
 
+/**
+ * True when the listener has actively chosen an accent on this device. Used to
+ * decide whether a topic may auto-select one of its real regional recordings
+ * instead of the legacy default narration.
+ */
+export const hasStoredPodcastVoicePreference = (): boolean => {
+  try {
+    const stored = window.localStorage.getItem(PODCAST_VOICE_STORAGE_KEY);
+    return !!stored && isPodcastVoiceId(stored);
+  } catch {
+    return false;
+  }
+};
+
 export const setPreferredPodcastVoice = (id: string): void => {
   if (!isPodcastVoiceId(id)) return;
   try {
