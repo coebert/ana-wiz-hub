@@ -201,12 +201,24 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
       const recorded = await fetchRecordedVoices(topicId);
       if (cancelled) return;
       setRecordedVoices(recorded);
-      // Fall back to an accent that exists if the saved preference has never
-      // been recorded for this topic.
-      const preferred = recorded.includes(voiceId)
-        ? voiceId
-        : (recorded[0] ?? voiceId);
-      if (preferred !== voiceId) setVoiceId(preferred);
+      // Which accent to open with:
+      //  1. the listener's own saved choice, when this topic has it recorded;
+      //  2. otherwise a real regional recording (native-voice accent), so the
+      //     genuine regional narration is heard rather than the legacy
+      //     default synthetic narration;
+      //  3. otherwise whatever recording exists.
+      const savedChoice = hasStoredPodcastVoicePreference();
+      const nativeRecorded = recorded.find((v) => hasNativeVoice(v));
+      const preferred =
+        savedChoice && recorded.includes(voiceId)
+          ? voiceId
+          : recorded.includes(voiceId) && !nativeRecorded
+            ? voiceId
+            : (nativeRecorded ?? recorded[0] ?? voiceId);
+      if (preferred !== voiceId) {
+        voicePinned.current = true;
+        setVoiceId(preferred);
+      }
       const existing = await fetchPodcast(topicId, preferred);
       if (cancelled) return;
       // Stale recovery: if the row is stuck in `generating` but hasn't been
