@@ -348,13 +348,19 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
   const uniqueLabels = Array.from(new Set(svgLabels)).slice(0, 400);
 
   const sectionPath = sectionMeta[topic.section].path;
+  // Diagram/animation labels are teaching content, so they get a reserved slice
+  // of the budget: truncating the prose must never silently drop them.
+  const labelBlock =
+    uniqueLabels.length > 0
+      ? `## Diagram, animation and figure labels (narrate these in words)\n${uniqueLabels
+          .join(" · ")
+          .slice(0, MAX_LABEL_CHARS)}`
+      : "";
+  const prose = [`# ${topic.title}`, topic.description, "", ...uniqueLines].join("\n");
   const text = [
-    `# ${topic.title}`,
-    topic.description,
+    prose.slice(0, MAX_TEXT_CHARS - (labelBlock ? labelBlock.length + 2 : 0)),
     "",
-    ...uniqueLines,
-    "",
-    uniqueLabels.length > 0 ? `## Diagram labels\n${uniqueLabels.join(" · ")}` : "",
+    labelBlock,
   ]
     .join("\n")
     .slice(0, MAX_TEXT_CHARS);
