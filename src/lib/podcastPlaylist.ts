@@ -69,6 +69,21 @@ export const getPodcastQueue = (): string[] => queue;
 
 export const isQueued = (topicId: string): boolean => queue.includes(topicId);
 
+/**
+ * Resolve the queue entry that represents an episode. Entries saved before
+ * per-accent recordings existed are bare topic ids, so fall back to those.
+ * Returns null when the episode is not queued.
+ */
+export const findQueueEntry = (
+  entries: string[],
+  key: string,
+  topicId: string,
+): string | null => {
+  if (entries.includes(key)) return key;
+  if (entries.includes(topicId)) return topicId;
+  return null;
+};
+
 export const addToQueue = (topicId: string) => {
   if (queue.includes(topicId)) return;
   commit([...queue, topicId]);

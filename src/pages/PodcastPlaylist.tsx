@@ -129,10 +129,19 @@ const PodcastPlaylist = () => {
   }, [episodes]);
 
   /** Queued episodes in queue order; ids without a ready episode are skipped. */
-  const queued = useMemo(
-    () => queue.map((id) => byId.get(id)).filter((e): e is Episode => !!e),
-    [queue, byId],
-  );
+  const queued = useMemo(() => {
+    const seen = new Set<string>();
+    const list: Episode[] = [];
+    for (const id of queue) {
+      const e = byId.get(id);
+      // A legacy bare-topic entry and a per-accent entry can resolve to the
+      // same recording — list it once so playback and reordering stay sane.
+      if (!e || seen.has(e.key)) continue;
+      seen.add(e.key);
+      list.push(e);
+    }
+    return list;
+  }, [queue, byId]);
 
   const available = useMemo(() => {
     const list = (episodes ?? []).filter(
