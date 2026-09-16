@@ -73,7 +73,7 @@
   "src/pages/topics/OxidationReductionTopic.tsx": 1,
   "src/pages/topics/OxygenHaemoglobinTopic.tsx": 7,
   "src/pages/topics/PaediatricAnaesthesiaTopic.tsx": 38,
-  "src/pages/topics/PaediatricIcuTopic.tsx": 130,
+  "src/pages/topics/PaediatricIcuTopic.tsx": 123,
   "src/pages/topics/PainMedicineTopic.tsx": 27,
   "src/pages/topics/PerioperativeFluidsTopic.tsx": 1,
   "src/pages/topics/PharmacodynamicsTopic.tsx": 3,
