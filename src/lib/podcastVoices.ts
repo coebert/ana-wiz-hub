@@ -1442,6 +1442,10 @@ export const podcastVoiceLabel = (id: string | undefined): string =>
   // audio file; label them so they stay playable and identifiable.
   (id ? "Original narration" : PODCAST_VOICES[0].label);
 
+/** Region grouping for an accent id — used to browse episodes by region. */
+export const podcastVoiceRegion = (id: string | undefined): string =>
+  ACCENT_BANK.find((a) => a.id === id)?.group ?? "Original narration";
+
 export const isPodcastVoiceId = (id: string | undefined): boolean =>
   !!id && PODCAST_VOICES.some((v) => v.id === id);
 

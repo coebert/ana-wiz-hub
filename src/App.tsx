@@ -166,6 +166,7 @@ const App = () => (
           <Route path="/trust" element={<Trust />} />
           <Route path="/podcasts" element={<PodcastsLibrary />} />
           <Route path="/podcasts/playlist" element={<PodcastPlaylist />} />
+          <Route path="/podcasts/regions" element={<PodcastsByRegion />} />
           <Route path="/glossary-audit" element={<GlossaryAudit />} />
           <Route path="/viva" element={<VivaHub />} />
           <Route path="/viva/library" element={<VivaQuestionLibrary />} />
