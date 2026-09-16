@@ -109,6 +109,60 @@ export const createRerecordJob = async (
   return job as RerecordJob;
 };
 
+export interface RerecordRequest {
+  topicId: string;
+  topicTitle: string;
+  topicPath: string;
+  voice: string;
+}
+
+/**
+ * Create a job for an explicit list of (topic, accent) pairs — used by the
+ * listener queue, where only the specific episodes someone queued but that
+ * have never been recorded need generating. Same durable worker, same one-at-
+ * a-time safety rules as a full re-record run.
+ */
+export const createRerecordJobForRequests = async (
+  requests: RerecordRequest[],
+  batchSize = DEFAULT_BATCH_SIZE,
+): Promise<RerecordJob> => {
+  // Collapse duplicates and drop anything with an unknown accent.
+  const seen = new Set<string>();
+  const items = requests.filter((r) => {
+    if (!isPodcastVoiceId(r.voice)) return false;
+    const key = `${r.topicId}::${r.voice}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+  if (items.length === 0) throw new Error("Nothing to record.");
+
+  const voices = [...new Set(items.map((i) => i.voice))];
+  const { data: job, error } = await supabase
+    .from("podcast_rerecord_jobs")
+    .insert({
+      voices,
+      status: "running",
+      total: items.length,
+      batch_size: Math.max(1, Math.min(20, batchSize)),
+    })
+    .select()
+    .single();
+  if (error || !job) throw new Error(error?.message ?? "Could not start recording.");
+
+  const { error: itemErr } = await supabase.from("podcast_rerecord_items").insert(
+    items.map((i) => ({
+      job_id: job.id,
+      topic_id: i.topicId,
+      topic_title: i.topicTitle,
+      topic_path: i.topicPath,
+      voice: i.voice,
+    })),
+  );
+  if (itemErr) throw new Error(itemErr.message);
+  return job as RerecordJob;
+};
+
 export const fetchLatestJob = async (): Promise<RerecordJob | null> => {
   const { data } = await supabase
     .from("podcast_rerecord_jobs")

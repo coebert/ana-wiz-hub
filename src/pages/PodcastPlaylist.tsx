@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowDown,
@@ -19,16 +19,24 @@ import {
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
-import { podcastVoiceLabel } from "@/lib/podcastVoices";
+import { DEFAULT_PODCAST_VOICE, podcastVoiceLabel } from "@/lib/podcastVoices";
 import {
   addToQueue,
   dedupeQueue,
   episodeKey,
+  parseEpisodeKey,
   clearQueue,
   moveInQueue,
   removeFromQueue,
   usePodcastQueue,
 } from "@/lib/podcastPlaylist";
+import {
+  createRerecordJobForRequests,
+  fetchJob,
+  wakeRerecordWorker,
+  type RerecordJob,
+} from "@/lib/podcastRerecord";
+import { useAuth } from "@/hooks/useAuth";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
@@ -43,6 +51,17 @@ interface Episode {
   voice: string | undefined;
   section: Section | null;
   topicPath: string | null;
+}
+
+/** A queued (topic, accent) pair that has never been recorded. */
+interface PendingRequest {
+  /** The raw queue entry, so removal keeps working. */
+  entry: string;
+  topicId: string;
+  topicTitle: string;
+  topicPath: string;
+  section: Section;
+  voice: string;
 }
 
 const AUTOPLAY_KEY = "podcasts:playlistAutoplay";
@@ -63,11 +82,16 @@ const formatTotal = (seconds: number) => {
 
 const PodcastPlaylist = () => {
   const queue = usePodcastQueue();
+  const { isAdmin } = useAuth();
   const [episodes, setEpisodes] = useState<Episode[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [removedDuplicates, setRemovedDuplicates] = useState(0);
+  /** Progress of a recording run started for the unrecorded queue entries. */
+  const [recording, setRecording] = useState<RerecordJob | null>(null);
+  const [recordError, setRecordError] = useState<string | null>(null);
+  const [starting, setStarting] = useState(false);
   const [autoplay, setAutoplay] = useState<boolean>(() => {
     if (typeof window === "undefined") return true;
     return localStorage.getItem(AUTOPLAY_KEY) !== "0";
@@ -79,45 +103,43 @@ const PodcastPlaylist = () => {
     localStorage.setItem(AUTOPLAY_KEY, autoplay ? "1" : "0");
   }, [autoplay]);
 
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      const { data, error: err } = await supabase
-        .from("podcasts")
-        .select("topic_id, topic_title, audio_path, duration_seconds, voice")
-        .eq("status", "ready")
-        .not("audio_path", "is", null)
-        .order("topic_title", { ascending: true });
+  const loadEpisodes = useCallback(async () => {
+    const { data, error: err } = await supabase
+      .from("podcasts")
+      .select("topic_id, topic_title, audio_path, duration_seconds, voice")
+      .eq("status", "ready")
+      .not("audio_path", "is", null)
+      .order("topic_title", { ascending: true });
 
-      if (cancelled) return;
-      if (err) {
-        setError(err.message);
-        setEpisodes([]);
-        return;
-      }
-      const resolved: Episode[] = (data ?? []).map((row) => {
-        const topic = allTopics.find((t) => t.id === row.topic_id);
-        const section = topic?.section ?? null;
-        const { data: pub } = supabase.storage
-          .from("podcasts")
-          .getPublicUrl(row.audio_path as string);
-        return {
-          key: episodeKey(row.topic_id, row.voice),
-          topic_id: row.topic_id,
-          topic_title: row.topic_title,
-          audio_url: pub.publicUrl,
-          duration_seconds: row.duration_seconds ?? null,
-          voice: row.voice ?? undefined,
-          section,
-          topicPath: topic && section ? `${sectionMeta[section].path}/${topic.id}` : null,
-        };
-      });
-      setEpisodes(resolved);
-    })();
-    return () => {
-      cancelled = true;
-    };
+    if (err) {
+      setError(err.message);
+      setEpisodes([]);
+      return;
+    }
+    setError(null);
+    const resolved: Episode[] = (data ?? []).map((row) => {
+      const topic = allTopics.find((t) => t.id === row.topic_id);
+      const section = topic?.section ?? null;
+      const { data: pub } = supabase.storage
+        .from("podcasts")
+        .getPublicUrl(row.audio_path as string);
+      return {
+        key: episodeKey(row.topic_id, row.voice),
+        topic_id: row.topic_id,
+        topic_title: row.topic_title,
+        audio_url: pub.publicUrl,
+        duration_seconds: row.duration_seconds ?? null,
+        voice: row.voice ?? undefined,
+        section,
+        topicPath: topic && section ? `${sectionMeta[section].path}/${topic.id}` : null,
+      };
+    });
+    setEpisodes(resolved);
   }, []);
+
+  useEffect(() => {
+    void loadEpisodes();
+  }, [loadEpisodes]);
 
   const byId = useMemo(() => {
     const m = new Map<string, Episode>();
@@ -154,6 +176,96 @@ const PodcastPlaylist = () => {
     }
     return list;
   }, [queue, byId]);
+
+  /**
+   * Queue entries with no recording yet. These are real requests, not dead
+   * entries: an admin can commission them straight from here and the finished
+   * episodes then appear in the queue and the podcast library.
+   */
+  const pending = useMemo(() => {
+    const seen = new Set<string>();
+    const list: PendingRequest[] = [];
+    for (const entry of queue) {
+      if (byId.has(entry)) continue;
+      const { topicId, voice } = parseEpisodeKey(entry);
+      const topic = allTopics.find((t) => t.id === topicId && t.available);
+      if (!topic) continue;
+      const resolvedVoice = voice ?? DEFAULT_PODCAST_VOICE;
+      const key = episodeKey(topicId, resolvedVoice);
+      if (seen.has(key)) continue;
+      seen.add(key);
+      list.push({
+        entry,
+        topicId,
+        topicTitle: topic.title,
+        topicPath: `${sectionMeta[topic.section].path}/${topic.id}`,
+        section: topic.section,
+        voice: resolvedVoice,
+      });
+    }
+    return list;
+  }, [queue, byId]);
+
+  /** Topics with no recording at all — offer them as queueable requests. */
+  const unrecordedTopics = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+    const recorded = new Set((episodes ?? []).map((e) => e.topic_id));
+    const requested = new Set(pending.map((p) => p.topicId));
+    return allTopics
+      .filter((t) => t.available && !recorded.has(t.id) && !requested.has(t.id))
+      .filter(
+        (t) =>
+          t.title.toLowerCase().includes(q) ||
+          t.id.toLowerCase().includes(q) ||
+          sectionMeta[t.section].label.toLowerCase().includes(q),
+      )
+      .slice(0, 20);
+  }, [episodes, pending, query]);
+
+  /** Commission the unrecorded queue entries on the durable server worker. */
+  const startRecording = async () => {
+    if (pending.length === 0 || starting) return;
+    setStarting(true);
+    setRecordError(null);
+    try {
+      const job = await createRerecordJobForRequests(
+        pending.map((p) => ({
+          topicId: p.topicId,
+          topicTitle: p.topicTitle,
+          topicPath: p.topicPath,
+          voice: p.voice,
+        })),
+      );
+      setRecording(job);
+      await wakeRerecordWorker(job.id);
+    } catch (err) {
+      setRecordError(err instanceof Error ? err.message : "Could not start recording.");
+    } finally {
+      setStarting(false);
+    }
+  };
+
+  // Follow the run: refresh the episode list as items finish so completed
+  // recordings drop into the queue (and the library) without a reload.
+  useEffect(() => {
+    if (!recording) return;
+    let cancelled = false;
+    const id = window.setInterval(async () => {
+      const latest = await fetchJob(recording.id);
+      if (cancelled || !latest) return;
+      setRecording(latest);
+      await loadEpisodes();
+      if (latest.status !== "running" || latest.processed >= latest.total) {
+        window.clearInterval(id);
+      }
+    }, 10_000);
+    return () => {
+      cancelled = true;
+      window.clearInterval(id);
+    };
+  }, [recording, loadEpisodes]);
+
 
   const available = useMemo(() => {
     const list = (episodes ?? []).filter(
@@ -242,6 +354,97 @@ const PodcastPlaylist = () => {
           appear here.
         </div>
       )}
+
+      {pending.length > 0 && (
+        <section
+          aria-labelledby="pending-heading"
+          className="mb-6 space-y-3 rounded-lg border border-primary/40 bg-primary/5 p-4"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2
+              id="pending-heading"
+              className="flex items-center gap-2 text-base sm:text-lg font-serif font-bold text-foreground"
+            >
+              <Mic className="h-4 w-4 text-primary shrink-0" aria-hidden="true" />
+              Waiting to be recorded
+            </h2>
+            <span className="text-xs text-muted-foreground">
+              {pending.length} {pending.length === 1 ? "episode" : "episodes"}
+            </span>
+          </div>
+
+          <ul className="space-y-2">
+            {pending.map((p) => (
+              <li
+                key={`${p.topicId}::${p.voice}`}
+                className="flex items-start justify-between gap-3 rounded-md border border-border bg-card p-3"
+              >
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-foreground break-words">{p.topicTitle}</p>
+                  <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+                    <span>{sectionMeta[p.section].label}</span>
+                    <span aria-hidden="true">•</span>
+                    <span className="inline-flex items-center gap-1">
+                      <Mic className="h-3 w-3" aria-hidden="true" />
+                      {podcastVoiceLabel(p.voice)}
+                    </span>
+                    <span aria-hidden="true">•</span>
+                    <span>Not recorded yet</span>
+                    <Link
+                      to={p.topicPath}
+                      className="inline-flex items-center gap-1 text-primary hover:underline"
+                    >
+                      <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                      Open topic
+                    </Link>
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => removeFromQueue(p.entry)}
+                  aria-label={`Remove ${p.topicTitle} from queue`}
+                  className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-border bg-card text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          {isAdmin ? (
+            <div className="space-y-2">
+              <button
+                type="button"
+                onClick={startRecording}
+                disabled={starting || (recording?.status === "running" && recording.processed < recording.total)}
+                className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {starting ? (
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />
+                ) : (
+                  <Mic className="h-3.5 w-3.5" aria-hidden="true" />
+                )}
+                Record these episodes
+              </button>
+              {recording && (
+                <p role="status" className="text-xs text-muted-foreground">
+                  Recording {recording.processed} of {recording.total} — {recording.succeeded} done,{" "}
+                  {recording.failed} failed
+                  {recording.current_topic ? ` • now: ${recording.current_topic}` : ""}. Finished
+                  episodes appear here and in the podcast library automatically.
+                </p>
+              )}
+              {recordError && <p className="text-xs text-destructive">{recordError}</p>}
+            </div>
+          ) : (
+            <p className="text-xs text-muted-foreground">
+              These are queued as requests. Recordings are produced centrally, and each episode
+              starts playing here as soon as it is available.
+            </p>
+          )}
+        </section>
+      )}
+
 
       {episodes && episodes.length > 0 && (
         <div className="space-y-6">
