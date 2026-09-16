@@ -355,6 +355,97 @@ const PodcastPlaylist = () => {
         </div>
       )}
 
+      {pending.length > 0 && (
+        <section
+          aria-labelledby="pending-heading"
+          className="mb-6 space-y-3 rounded-lg border border-primary/40 bg-primary/5 p-4"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h2
+              id="pending-heading"
+              className="flex items-center gap-2 text-base sm:text-lg font-serif font-bold text-foreground"
+            >
+              <Mic className="h-4 w-4 text-primary shrink-0" aria-hidden="true" />
+              Waiting to be recorded
+            </h2>
+            <span className="text-xs text-muted-foreground">
+              {pending.length} {pending.length === 1 ? "episode" : "episodes"}
+            </span>
+          </div>
+
+          <ul className="space-y-2">
+            {pending.map((p) => (
+              <li
+                key={`${p.topicId}::${p.voice}`}
+                className="flex items-start justify-between gap-3 rounded-md border border-border bg-card p-3"
+              >
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-foreground break-words">{p.topicTitle}</p>
+                  <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+                    <span>{sectionMeta[p.section].label}</span>
+                    <span aria-hidden="true">•</span>
+                    <span className="inline-flex items-center gap-1">
+                      <Mic className="h-3 w-3" aria-hidden="true" />
+                      {podcastVoiceLabel(p.voice)}
+                    </span>
+                    <span aria-hidden="true">•</span>
+                    <span>Not recorded yet</span>
+                    <Link
+                      to={p.topicPath}
+                      className="inline-flex items-center gap-1 text-primary hover:underline"
+                    >
+                      <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                      Open topic
+                    </Link>
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => removeFromQueue(p.entry)}
+                  aria-label={`Remove ${p.topicTitle} from queue`}
+                  className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-border bg-card text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                >
+                  <X className="h-3 w-3" />
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          {isAdmin ? (
+            <div className="space-y-2">
+              <button
+                type="button"
+                onClick={startRecording}
+                disabled={starting || (recording?.status === "running" && recording.processed < recording.total)}
+                className="inline-flex items-center gap-2 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {starting ? (
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />
+                ) : (
+                  <Mic className="h-3.5 w-3.5" aria-hidden="true" />
+                )}
+                Record these episodes
+              </button>
+              {recording && (
+                <p role="status" className="text-xs text-muted-foreground">
+                  Recording {recording.processed} of {recording.total} — {recording.succeeded} done,{" "}
+                  {recording.failed} failed
+                  {recording.current_topic ? ` • now: ${recording.current_topic}` : ""}. Finished
+                  episodes appear here and in the podcast library automatically.
+                </p>
+              )}
+              {recordError && <p className="text-xs text-destructive">{recordError}</p>}
+            </div>
+          ) : (
+            <p className="text-xs text-muted-foreground">
+              These are queued as requests. Recordings are produced centrally, and each episode
+              starts playing here as soon as it is available.
+            </p>
+          )}
+        </section>
+      )}
+
+
       {episodes && episodes.length > 0 && (
         <div className="space-y-6">
           {/* Now playing */}
