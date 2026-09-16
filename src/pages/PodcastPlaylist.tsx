@@ -67,6 +67,7 @@ const PodcastPlaylist = () => {
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [removedDuplicates, setRemovedDuplicates] = useState(0);
   const [autoplay, setAutoplay] = useState<boolean>(() => {
     if (typeof window === "undefined") return true;
     return localStorage.getItem(AUTOPLAY_KEY) !== "0";
