@@ -97,7 +97,8 @@ const workedExamples: WorkedExample[] = [
         metabolic and adrenal causes live.
         <div className="mt-3 bg-secondary/40 border border-border rounded-lg p-3 text-sm">
           <strong>Common traps.</strong> Giving large fluid boluses to a baby in cardiogenic shock
-          worsens it — use 10 mL/kg and reassess, looking for hepatomegaly. Correcting the
+          worsens it — use 10 mL/kg and reassess, looking for hepatomegaly{" "}
+          <InlineRef topicId={TOPIC_ID} refLabel="APLS 2021" />. Correcting the
           saturation to "normal" with high FiO₂ can close the duct and cause deterioration.
         </div>
       </>
@@ -485,22 +486,22 @@ const PaediatricEmergenciesTopic = () => {
                     <tr className="border-b border-border">
                       <td className="py-2 font-medium text-foreground">Bradycardia with poor perfusion</td>
                       <td>Heart rate &lt;60/min in an infant or child with poor perfusion; almost always hypoxic or vagal</td>
-                      <td>Oxygen and effective ventilation first; if unresponsive start CPR, then adrenaline 10 micrograms/kg IV/IO repeated every 3–5 min; atropine 20 micrograms/kg (minimum 100 micrograms) for vagal cause or AV block; consider pacing for congenital or post-surgical block</td>
+                      <td><InlineRef topicId={TOPIC_ID} refLabel="RCUK PALS 2021" /> Oxygen and effective ventilation first; if unresponsive start CPR, then adrenaline 10 micrograms/kg IV/IO repeated every 3–5 min; atropine 20 micrograms/kg (minimum 100 micrograms) for vagal cause or AV block; consider pacing for congenital or post-surgical block</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-2 font-medium text-foreground">Supraventricular tachycardia</td>
                       <td>Narrow complex, regular, no beat-to-beat variability, rate typically &gt;220 in infants and &gt;180 in children, absent or abnormal P waves</td>
-                      <td>Stable: vagal manoeuvres (ice to the face in infants, Valsalva in older children), then adenosine 100 micrograms/kg rapid push with flush, escalating to 200 then 300 micrograms/kg (adult maximum 12 mg per dose). Unstable: synchronised cardioversion 1 J/kg then 2 J/kg with sedation. Amiodarone or procainamide only with cardiology advice</td>
+                      <td><InlineRef topicId={TOPIC_ID} refLabel="RCUK PALS 2021" /> Stable: vagal manoeuvres (ice to the face in infants, Valsalva in older children), then adenosine 100 micrograms/kg rapid push with flush, escalating to 200 then 300 micrograms/kg (adult maximum 12 mg per dose). Unstable: synchronised cardioversion 1 J/kg then 2 J/kg with sedation. Amiodarone or procainamide only with cardiology advice</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-2 font-medium text-foreground">Wide-complex tachycardia with a pulse</td>
                       <td>Rare in children; assume ventricular tachycardia. Look for long QT, myocarditis, electrolyte abnormality, tricyclic or other toxicity, or repaired congenital disease</td>
-                      <td>Unstable: synchronised cardioversion 1 J/kg then 2 J/kg. Stable: amiodarone 5 mg/kg over 20–60 min (or procainamide) with cardiology; magnesium sulfate for torsade de pointes; correct potassium and magnesium</td>
+                      <td><InlineRef topicId={TOPIC_ID} refLabel="RCUK PALS 2021" /> Unstable: synchronised cardioversion 1 J/kg then 2 J/kg. Stable: amiodarone 5 mg/kg over 20–60 min (or procainamide) with cardiology; magnesium sulfate for torsade de pointes; correct potassium and magnesium</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-2 font-medium text-foreground">VF / pulseless VT</td>
                       <td>Shockable arrest rhythm — more likely with cardiac disease, hypothermia, poisoning or channelopathy than in the typical hypoxic paediatric arrest</td>
-                      <td>Unsynchronised defibrillation 4 J/kg, CPR 15:2, adrenaline 10 micrograms/kg and amiodarone 5 mg/kg after the third shock (repeat amiodarone once after the fifth), searching the reversible causes</td>
+                      <td><InlineRef topicId={TOPIC_ID} refLabel="RCUK PALS 2021" /> Unsynchronised defibrillation 4 J/kg, CPR 15:2, adrenaline 10 micrograms/kg and amiodarone 5 mg/kg after the third shock (repeat amiodarone once after the fifth), searching the reversible causes</td>
                     </tr>
                     <tr className="border-b border-border">
                       <td className="py-2 font-medium text-foreground">Junctional ectopic tachycardia</td>
