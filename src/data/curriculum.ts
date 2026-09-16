@@ -207,8 +207,7 @@ export const intensiveCareTopics: Topic[] = [
   // Perioperative critical care
   { id: "postop-high-risk-icu", title: "Critical Care of the High-Risk Surgical Patient", description: "Risk stratification (P-POSSUM/SORT/CPET/CFS), level-2/3 indications, structured handover, goal-directed therapy, MINS surveillance, NELA/CPOC standards", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   // Special Populations
-  { id: "paediatric-icu", title: "Paediatric Intensive Care", description: "Age-specific physiology, paediatric sepsis, congenital heart disease, neurocritical care, sedation, and resuscitation", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
-  { id: "paediatric-emergencies", title: "Paediatric ICU Emergencies", description: "Neonate-to-adolescent emergency presentations: recognition of the collapsing child, sepsis by age, metabolic and endocrine crises, duct-dependent cardiac collapse, arrhythmia algorithms, paediatric stroke, non-accidental injury, and retrieval", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
+  { id: "paediatric-icu", title: "Paediatric Intensive Care & Emergencies", description: "Age-specific physiology, paediatric sepsis, congenital heart disease, neurocritical care, sedation, and resuscitation", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
   { id: "burns-icu", title: "Burns Intensive Care", description: "Major-burn pathophysiology, airway/inhalation injury, fluid resuscitation (Parkland/modified Brooke), escharotomy, sepsis, nutrition, AKI, and ICU referral criteria", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   // Ethics, Communication & Outcomes
   { id: "organ-donation", title: "Organ Donation", description: "Brainstem death testing, DCD, DBD, donor optimisation", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
