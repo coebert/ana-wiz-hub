@@ -17,6 +17,7 @@ const tocItems = [
   { id: "section-sepsis", label: "Sepsis: Age-Specific Presentations", group: "Presentations" },
   { id: "section-metabolic", label: "Metabolic & Endocrine Crises", group: "Presentations" },
   { id: "section-cardiac", label: "Cardiac Presentations & Duct-Dependent Collapse", group: "Presentations" },
+  { id: "section-cardiac-picu", label: "PICU Perioperative Cardiac Care & Airway Malacia", group: "Management" },
   { id: "section-arrhythmias", label: "Paediatric Arrhythmias", group: "Management" },
   { id: "section-stroke", label: "Paediatric Stroke", group: "Management" },
   { id: "section-nai", label: "Non-Accidental Injury", group: "Safeguarding" },
@@ -459,6 +460,73 @@ const PaediatricEmergenciesTopic = () => {
                     <li><strong>Kawasaki disease and paediatric inflammatory multisystem syndrome</strong>: prolonged fever with shock and myocardial dysfunction; immunoglobulin, steroid and cardiology involvement.</li>
                     <li><strong>Tamponade</strong>: after cardiac surgery, in malignancy or with an indwelling line — sudden fall in output with rising filling pressures; urgent echocardiography and drainage.</li>
                     <li><strong>Total anomalous pulmonary venous drainage with obstruction</strong>: severe cyanosis and pulmonary oedema unresponsive to prostaglandin — a surgical emergency.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section id="section-cardiac-picu" className="scroll-mt-24">
+              <h2 className="text-2xl font-semibold text-foreground mb-2">
+                PICU Perioperative Management of Paediatric Cardiac Disease
+              </h2>
+              <ExamMappingBadges exams={[Exam.FFICM, Exam.EDIC]} />
+              <p className="text-muted-foreground leading-relaxed mt-3 mb-4">
+                Children come to PICU either before repair (stabilising a duct-dependent or
+                obstructed lesion) or after it. The single most useful question is whether the
+                circulation is in series (biventricular repair) or in parallel (shunt-dependent or
+                single ventricle), because that dictates the oxygen, carbon dioxide and afterload
+                targets. Postoperative low cardiac output syndrome and pulmonary hypertensive crisis
+                are covered in more depth in the{" "}
+                <Link to="/intensive-care/paediatric-icu#cardiac" className="text-icu underline underline-offset-4">
+                  Paediatric Intensive Care cardiac section
+                </Link>
+                .
+              </p>
+              <div className="space-y-3">
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Preoperative PICU care by anomaly group</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Left-to-right shunts</strong> (large VSD, AVSD, truncus, unrestricted PDA): pulmonary overcirculation with poor feeding, tachypnoea and failure to thrive. Avoid supplemental oxygen and hyperventilation, which lower pulmonary vascular resistance and worsen the steal; diuresis, calorie-dense feeding and permissive mild hypercapnia are more useful. High saturations with poor perfusion are a warning, not reassurance.</li>
+                    <li><strong>Obstructed or duct-dependent lesions</strong>: prostaglandin E1 with an airway plan, avoid high FiO₂, and keep the systemic circulation supported rather than driving cardiac output with fluid <InlineRef topicId={TOPIC_ID} refLabel="Kanani PGE1 2019" />.</li>
+                    <li><strong>Cyanotic lesions with fixed pulmonary obstruction</strong> (tetralogy of Fallot): treat spells with knees-to-chest, oxygen, fluid, morphine or ketamine sedation and a vasoconstrictor to raise systemic resistance; avoid agents that drop afterload or increase contractility of the outflow-tract muscle.</li>
+                    <li><strong>Obstructed venous return</strong> (obstructed TAPVR, mitral stenosis, restrictive atrial septum in transposition): pulmonary oedema that worsens with positive fluid balance — these are catheter or surgical emergencies rather than medical problems.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Staged single-ventricle palliation</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Stage 1 — Norwood (or hybrid) in the neonate</strong>: aortic arch reconstruction with a systemic-to-pulmonary shunt (modified Blalock–Taussig) or a right ventricle–to–pulmonary artery (Sano) conduit. Circulation is in parallel, so saturations of about 75–85% with a good lactate and adequate diastolic pressure indicate balance; higher saturations usually mean pulmonary overcirculation and systemic steal. Shunt patency is life-critical — sudden desaturation is a shunt problem until proven otherwise, and anticoagulation, adequate haematocrit and avoidance of hypovolaemia protect it. Coronary perfusion depends on diastolic pressure, so tachycardia and low diastolic pressure are dangerous <InlineRef topicId={TOPIC_ID} refLabel="Feinstein HLHS 2012" />.</li>
+                    <li><strong>Interstage period</strong>: the highest-mortality window. Any intercurrent illness, dehydration or arrhythmia can unbalance the parallel circulation, so admit early, resuscitate cautiously and involve the cardiac centre <InlineRef topicId={TOPIC_ID} refLabel="Feinstein HLHS 2012" />.</li>
+                    <li><strong>Stage 2 — bidirectional Glenn (3–6 months)</strong>: superior caval flow passes passively to the lungs. Pulmonary blood flow now depends on caval pressure and low pulmonary vascular resistance, so mild hypercapnia raises cerebral flow and therefore pulmonary flow; aggressive hyperventilation is counterproductive. Expect superior caval hypertension, headaches and chylothorax; watch for desaturation from collaterals or Glenn obstruction.</li>
+                    <li><strong>Stage 3 — Fontan/total cavopulmonary connection</strong>: the entire systemic venous return flows passively through the lungs. Output depends on preload, low pulmonary vascular resistance, sinus rhythm and unobstructed pathways. Extubate early — spontaneous negative-pressure breathing augments pulmonary flow, while high mean airway pressure and PEEP reduce it. Treat effusions, arrhythmia (atrial arrhythmia is poorly tolerated), and consider a fenestration or pulmonary vasodilator when transpulmonary gradient is high <InlineRef topicId={TOPIC_ID} refLabel="Rychik Fontan 2019" />.</li>
+                    <li><strong>Failing Fontan</strong>: effusions, protein-losing enteropathy, plastic bronchitis, liver disease and thromboembolism. Anaesthesia and critical care require careful preload, sinus rhythm, low airway pressures and anticoagulation planning <InlineRef topicId={TOPIC_ID} refLabel="Rychik Fontan 2019" />.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">General perioperative PICU priorities after cardiac surgery</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li>Handover the anatomy, residual lesions, bypass and cross-clamp times, lines (including transthoracic atrial or pulmonary artery lines), pacing wires and the surgeon's specific instructions before touching the patient <InlineRef topicId={TOPIC_ID} refLabel="PCCS Standards 2021" />.</li>
+                    <li>Recognise low cardiac output syndrome in the first 6–12 hours: rising lactate, narrowing pulse pressure, cool peripheries, falling urine output and widening arteriovenous oxygen difference. Treat with rate and rhythm control, milrinone, cautious volume, afterload reduction and correction of residual lesions on echocardiography.</li>
+                    <li>Keep the chest drains patent and think of tamponade with any sudden deterioration; delayed sternal closure and readiness for chest reopening are part of routine care in the neonate.</li>
+                    <li>Escalate early to mechanical support (ECMO) — post-cardiotomy arrest in a child with a repairable lesion is an indication, not a failure.</li>
+                    <li>Pulmonary hypertensive crisis: sedate, oxygenate, correct acidosis, give inhaled nitric oxide, avoid alpha-agonist–driven pulmonary vasoconstriction, and preserve right ventricular coronary perfusion pressure.</li>
+                  </ul>
+                </div>
+                <div className="bg-card border border-border rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">Tracheobronchomalacia and malacic crises</h3>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    Airway malacia frequently coexists with congenital cardiac disease — from vascular
+                    compression (double aortic arch, pulmonary artery sling, aberrant subclavian,
+                    dilated pulmonary arteries in absent pulmonary valve syndrome, an enlarged left
+                    atrium) and from long-term ventilation or airway surgery. It is a major reason a
+                    postoperative cardiac child fails extubation <InlineRef topicId={TOPIC_ID} refLabel="ERS Tracheomalacia 2019" />.
+                  </p>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    <li><strong>Recognition</strong>: expiratory stridor or a barking, brassy cough, wheeze unresponsive to bronchodilators, recurrent collapse of the same lobe, prolonged ventilation, and repeated failed extubation. Diagnosis is by flexible bronchoscopy in spontaneous respiration, supported by dynamic CT and echocardiography or angiography to define vascular compression <InlineRef topicId={TOPIC_ID} refLabel="ERS Tracheomalacia 2019" />.</li>
+                    <li><strong>Malacic crisis (a "dying spell")</strong>: an abrupt event, often triggered by crying, feeding, suctioning, coughing or agitation, in which the airway collapses — inspiratory effort against a closed segment produces sudden desaturation, hypercapnia, bradycardia, hyperextension and apnoea. Reflex bradycardia and cyanosis may look primarily cardiac.</li>
+                    <li><strong>Immediate management</strong>: apply continuous positive pressure to splint the airway open (bag with PEEP, CPAP or high-flow), calm and sedate rather than stimulate, minimise suctioning, and treat bradycardia by restoring ventilation first. Prolonged bag-mask ventilation with PEEP is often more effective than escalating oxygen alone. Intubation may be required if the crisis does not resolve, using a tube long enough to stent beyond the malacic segment where possible.</li>
+                    <li><strong>Ongoing care</strong>: higher PEEP to splint the airway during ventilation, avoid aggressive weaning of distending pressure, treat reflux and secretions, plan a slow extubation with non-invasive positive pressure, and consider tracheostomy with long-term positive pressure for severe disease. Definitive options include aortopexy, relief of vascular compression, slide tracheoplasty or airway stenting in selected children <InlineRef topicId={TOPIC_ID} refLabel="ERS Tracheomalacia 2019" />.</li>
+                    <li><strong>Cardiac interaction</strong>: in a Glenn or Fontan circulation the pressure needed to splint the airway also reduces pulmonary blood flow, so titrate to the lowest effective distending pressure and accept slower weaning rather than high mean airway pressures <InlineRef topicId={TOPIC_ID} refLabel="Rychik Fontan 2019" />.</li>
                   </ul>
                 </div>
               </div>
