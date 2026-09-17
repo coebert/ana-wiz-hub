@@ -6,6 +6,8 @@ import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import TCISimulatorDiagram from "@/components/diagrams/clinical/TCISimulatorDiagram";
 import CSHTDiagram from "@/components/diagrams/clinical/CSHTDiagram";
 import DecrementTimeDiagram from "@/components/diagrams/clinical/DecrementTimeDiagram";
+import PKCompartmentMathDiagram from "@/components/diagrams/clinical/PKCompartmentMathDiagram";
+import TCIModelComparisonDiagram from "@/components/diagrams/clinical/TCIModelComparisonDiagram";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
