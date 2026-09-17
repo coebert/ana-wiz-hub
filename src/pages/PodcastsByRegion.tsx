@@ -156,7 +156,7 @@ const PodcastsByRegion = () => {
   const filtersActive = query.trim() !== "" || region !== "all" || section !== "all";
 
   const renderEpisode = (e: Episode) => {
-    const queued = findQueueEntry(queue, e.topic_id, e.voice);
+    const queued = findQueueEntry(queue, e.key, e.topic_id);
     return (
       <li key={e.key} className="rounded-lg border border-border bg-card p-3 sm:p-4">
         <div className="flex flex-wrap items-start justify-between gap-2">
