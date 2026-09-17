@@ -451,7 +451,7 @@ const TIVATopic = () => {
                   {[
                     {
                       name: "Marsh (1991) — propofol",
-                      body: "Derived by Marsh, White, Morton and Kenny from paediatric and adult data using weight-proportional scaling, and implemented as the Diprifusor, the first commercial TCI system. Structure: V1 0.228 L·kg⁻¹, V2 0.463 L·kg⁻¹, V3 2.893 L·kg⁻¹, fixed micro-constants (k10 0.119 min⁻¹). Evidence: decades of clinical use and adequate performance (MDAPE typically 20–30%) in average-sized adults; it was never designed for effect-site targeting — the ke0 of 0.26 min⁻¹ was added retrospectively and gives an implausibly late t-peak of about 4.5 min. Fails in obesity (V1 and hence induction dose scale without limit) and in the elderly (no age term at all).",
+                      body: "Derived by Marsh, White, Morton and Kenny from paediatric and adult data using weight-proportional scaling, and implemented as the Diprifusor, the first commercial TCI system. Structure: V1 0.228 L·kg⁻¹, V2 0.463 L·kg⁻¹, V3 2.893 L·kg⁻¹, fixed micro-constants (k10 0.119 min⁻¹). Evidence: decades of clinical use and adequate performance (MDAPE typically 20–30%) in average-sized adults; it was never designed for effect-site targeting — the ke0 of 0.26 min⁻¹ was added retrospectively and gives an implausibly late t-peak of about 4 min. Fails in obesity (V1 and hence induction dose scale without limit) and in the elderly (no age term at all).",
                       cite: "Marsh 1991",
                     },
                     {
