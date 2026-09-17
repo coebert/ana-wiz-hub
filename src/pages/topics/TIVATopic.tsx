@@ -50,6 +50,8 @@ const workedExamples: WorkedExample[] = [
 const tocItems = [
   { id: "intro", label: "Introduction", group: "Core" },
   { id: "models", label: "PK Compartment Models", group: "Core" },
+  { id: "model-maths", label: "Mathematics of Compartment Models", group: "Models" },
+  { id: "model-evidence", label: "Model Derivation & Evidence", group: "Models" },
   { id: "cp-ce", label: "Cp vs Ce Targeting", group: "Core" },
   { id: "model-explorer", label: "TCI Model Explorer", group: "Models" },
   { id: "marsh-vs-schnider", label: "Marsh vs Schnider", group: "Models" },
