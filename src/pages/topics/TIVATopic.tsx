@@ -387,6 +387,120 @@ const TIVATopic = () => {
               </CollapsibleSubsection>
             </div>
 
+            <div id="model-maths" className="scroll-mt-24">
+              <CollapsibleSubsection title="The Mathematics Behind TCI — Compartment Modelling from First Principles">
+                <div className="space-y-5">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
+                    A TCI pump contains no sensor: it is a <strong>mathematical simulation of the patient</strong> running in real time. Population pharmacokinetic
+                    analysis (usually non-linear mixed-effects modelling, NONMEM) fits measured plasma concentrations from volunteers to a compartmental structure,
+                    producing typical parameter values and explaining part of the between-patient variability with <em>covariates</em> such as weight, age, height and sex.
+                    The pump then integrates that model's differential equations and asks, every 10 seconds, “what infusion rate will bring the predicted concentration
+                    to the target?” <InlineRef topicId="tiva" refLabel="Struys 2016 TCI History" />
+                  </p>
+
+                  <PKCompartmentMathDiagram />
+
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    <div className="p-4 rounded-lg border border-border">
+                      <p className="font-semibold text-foreground text-sm">From data to a pump algorithm — the five steps</p>
+                      <ol className="text-xs text-muted-foreground mt-1 list-decimal list-inside space-y-1">
+                        <li><strong className="text-foreground">Sampling:</strong> arterial or venous concentrations measured over hours after known doses in a defined population.</li>
+                        <li><strong className="text-foreground">Structural model:</strong> how many exponential phases best describe the decay — nearly always three for propofol and remifentanil, giving a three-compartment model.</li>
+                        <li><strong className="text-foreground">Covariate model:</strong> which patient characteristics reduce unexplained variability (weight in Marsh; age, height, weight and lean body mass in Schnider; allometric weight, age and sex in Eleveld).</li>
+                        <li><strong className="text-foreground">PK–PD link:</strong> an effect compartment with rate constant ke0 is added and fitted against a measured effect (processed EEG for propofol, spectral edge frequency for remifentanil), collapsing the hysteresis between concentration and effect <InlineRef topicId="tiva" refLabel="Absalom 2009 Ke0 Devil" />.</li>
+                        <li><strong className="text-foreground">Control algorithm:</strong> for plasma targeting the pump gives bolus = Ct × V1 then an infusion matching distribution plus clearance; for effect-site targeting it deliberately overshoots Cp by the smallest amount that reaches Ce = target at t-peak without exceeding it <InlineRef topicId="tiva" refLabel="Shafer 1992 Ce Algorithm" />.</li>
+                      </ol>
+                    </div>
+                    <div className="p-4 rounded-lg border border-border">
+                      <p className="font-semibold text-foreground text-sm">Scaling: linear, lean-body-mass and allometric</p>
+                      <ul className="text-xs text-muted-foreground mt-1 list-disc list-inside space-y-1">
+                        <li><strong className="text-foreground">Linear (Marsh, Paedfusor):</strong> every volume and clearance is a fixed multiple of total body weight, e.g. V1 = 0.228 L·kg⁻¹. Simple, but it assumes a 140 kg patient has twice the clearance of a 70 kg patient, which is false.</li>
+                        <li><strong className="text-foreground">Lean body mass (Schnider, Minto):</strong> clearance is driven by metabolically active mass, estimated with the James equation. The James formula is non-monotonic — above a BMI of roughly 35–42 it starts to <em>fall</em> with increasing weight and can become negative, so pumps cap the permitted input.</li>
+                        <li><strong className="text-foreground">Allometric (Eleveld):</strong> clearance ∝ weight⁰·⁷⁵, volumes ∝ weight¹, following the theoretical ¾-power relationship between metabolic rate and body size. Combined with a sigmoid maturation function of post-menstrual age, this lets one parameter set span neonates to the elderly <InlineRef topicId="tiva" refLabel="Eleveld 2018" />.</li>
+                        <li><strong className="text-foreground">Fat-free mass:</strong> Eleveld replaces James LBM with the Al-Sallami fat-free-mass equation, which behaves sensibly at extremes of BMI — the main reason Eleveld is preferred in obesity.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="p-4 rounded-lg border border-border bg-secondary/30">
+                    <p className="font-semibold text-foreground text-sm">How model accuracy is actually measured</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Performance is quantified from the prediction error PE = (measured − predicted)/predicted, summarised by four Varvel metrics <InlineRef topicId="tiva" refLabel="Varvel 1992" />:
+                      <strong> MDPE</strong> (median performance error — bias, negative = the model over-predicts), <strong>MDAPE</strong> (median absolute performance error — inaccuracy),
+                      <strong> wobble</strong> (intra-individual variability over time) and <strong>divergence</strong> (systematic drift, %·h⁻¹). A model is generally
+                      accepted as clinically usable if MDPE is within ±10–20% and MDAPE below about 20–30%. Every propofol model in routine use sits in that band, which is
+                      why no model can be trusted to better than roughly a quarter of its displayed concentration — and why processed EEG and clinical titration remain mandatory.
+                    </p>
+                  </div>
+
+                  <TCIModelComparisonDiagram />
+                </div>
+              </CollapsibleSubsection>
+            </div>
+
+            <div id="model-evidence" className="scroll-mt-24">
+              <CollapsibleSubsection title="Derivation & Evidence Base of Each TCI Model">
+                <div className="space-y-3">
+                  <p className="text-muted-foreground leading-relaxed text-sm">
+                    Each model is a historical artefact of the population in which it was derived. Knowing that population tells you exactly where the model will fail.
+                  </p>
+                  {[
+                    {
+                      name: "Marsh (1991) — propofol",
+                      body: "Derived by Marsh, White, Morton and Kenny from paediatric and adult data using weight-proportional scaling, and implemented as the Diprifusor, the first commercial TCI system. Structure: V1 0.228 L·kg⁻¹, V2 0.463 L·kg⁻¹, V3 2.893 L·kg⁻¹, fixed micro-constants (k10 0.119 min⁻¹). Evidence: decades of clinical use and adequate performance (MDAPE typically 20–30%) in average-sized adults; it was never designed for effect-site targeting — the ke0 of 0.26 min⁻¹ was added retrospectively and gives an implausibly late t-peak of about 4.5 min. Fails in obesity (V1 and hence induction dose scale without limit) and in the elderly (no age term at all).",
+                      cite: "Marsh 1991",
+                    },
+                    {
+                      name: "Modified Marsh — propofol",
+                      body: "Not a new pharmacokinetic dataset: identical Marsh volumes and clearances with ke0 raised to 1.2 min⁻¹, chosen so that the model reproduces the empirically observed t-peak of about 1.6 min after a propofol bolus. This is the version used for effect-site targeting on several UK pumps. The lesson for the exam is that ke0 and volumes are not independent — a ke0 is only valid within the parameter set against which it was fitted, and 'Marsh Ce mode' therefore behaves very differently between pumps depending on which ke0 the manufacturer implemented.",
+                      cite: "Absalom 2009 Ke0 Devil",
+                    },
+                    {
+                      name: "Schnider (1998) — propofol",
+                      body: "Twenty-four volunteers aged 25–81 studied with both bolus and infusion administration, with simultaneous EEG-derived effect measurement, so the PK and the PK–PD link were derived together. V1 is fixed at 4.27 L, V3 fixed at 238 L, V2 varies with age, and metabolic clearance varies with weight, height, lean body mass and age. ke0 0.456 min⁻¹ with t-peak ≈ 1.6 min. Strengths: internally consistent PK–PD, age-sensitive clearance, small and therefore safe induction bolus, and validation in the elderly. Weaknesses: the fixed small V1 makes maintenance infusion rates the dominant determinant of concentration, and the James lean-body-mass term breaks down at high BMI.",
+                      cite: "Schnider 1998",
+                    },
+                    {
+                      name: "Minto (1997) — remifentanil",
+                      body: "Sixty-five volunteers aged 20–85 given remifentanil infusions with spectral-edge EEG as the effect measure; age and lean body mass proved to be the significant covariates for volumes, clearances and ke0 itself (ke0 falls with age, so the elderly equilibrate more slowly as well as needing less drug). Because remifentanil is hydrolysed by non-specific tissue and plasma esterases, clearance is high and largely independent of hepatic and renal function, giving a context-sensitive half-time of 3–4 min at any infusion duration. Minto remains the reference remifentanil model and is very well externally validated; an Eleveld remifentanil model now extends the same approach to a broader population.",
+                      cite: "Minto 1997",
+                    },
+                    {
+                      name: "Eleveld (2018) — propofol",
+                      body: "A pooled analysis of 30 previously published datasets — 1,033 individuals, 10,927 concentration and 3,487 BIS observations, from neonates to patients over 80 and including the obese. Volumes scale allometrically with weight, clearance with weight⁰·⁷⁵ and with a maturation function of post-menstrual age, fat-free mass is estimated with the Al-Sallami equation, and separate parameters describe patients versus healthy volunteers and the presence of a co-administered opioid (which shifts the potency, Ce50, rather than the pharmacokinetics). Prospective validation in general anaesthesia showed acceptable and unbiased performance, supporting its use as a single general-purpose model across the age and weight spectrum; availability still depends on pump software.",
+                      cite: "Eleveld 2018",
+                    },
+                    {
+                      name: "Paedfusor — propofol in children",
+                      body: "A paediatric parameter set derived by the Glasgow group and validated in children undergoing cardiac surgery: V1 0.4584 L·kg⁻¹ (roughly double the adult per-kilogram central volume) with a weight-dependent elimination rate constant k10 = 0.1527 × weight⁻⁰·³ min⁻¹, so the weight-normalised clearance is highest in the smallest children. Licensed and widely implemented for ages 1–16 years; performance in the validation cohort was good (MDPE and MDAPE within accepted limits). It is a scaled adult structure, not a maturation model, so it should not be extrapolated to neonates.",
+                      cite: "Paedfusor 2005",
+                    },
+                    {
+                      name: "Kataria (1994) — propofol in children",
+                      body: "One of the first rigorous paediatric propofol analyses, in children aged 3–11 years, comparing naive pooled, two-stage and mixed-effects approaches; the mixed-effects set with weight-proportional volumes (central volume ≈ 0.4 L·kg⁻¹) and clearance around 0.03–0.035 L·kg⁻¹·min⁻¹ became the implemented model. It confirmed the central paediatric principle — children need higher weight-adjusted infusion rates than adults. Limitations: narrow age band, no validated ke0 (so plasma targeting only on most pumps), and it is progressively being replaced by Eleveld, which covers the whole paediatric range within one framework.",
+                      cite: "Kataria 1994",
+                    },
+                  ].map((m) => (
+                    <div key={m.name} className="p-4 rounded-lg border border-border">
+                      <p className="font-semibold text-foreground text-sm">{m.name}</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {m.body} <InlineRef topicId="tiva" refLabel={m.cite} />
+                      </p>
+                    </div>
+                  ))}
+                  <div className="p-4 rounded-lg border border-primary/20 bg-primary/5">
+                    <p className="font-semibold text-foreground text-sm">Choosing between them — the defensible answer</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Use a model whose derivation population resembles your patient, and whose ke0 was fitted within the same parameter set you are running. In UK adult
+                      practice that means Schnider or Eleveld for effect-site propofol, Marsh (with the manufacturer's ke0) for plasma targeting, Minto or Eleveld for
+                      remifentanil, and Paedfusor or Eleveld in children. Then treat the displayed concentration as an estimate with roughly 20–30% inaccuracy and titrate
+                      to processed EEG, haemodynamics and surgical stimulus <InlineRef topicId="tiva" refLabel="Vellinga 2021 Eleveld Validation" />.
+                    </p>
+                  </div>
+                </div>
+              </CollapsibleSubsection>
+            </div>
+
             <div id="cp-ce" className="scroll-mt-24">
               <CollapsibleSubsection title="Plasma (Cp) vs Effect-Site (Ce) Targeting">
                 <div className="space-y-4">
