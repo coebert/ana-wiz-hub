@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Download, RefreshCw, Database, Sparkles, Lock, Mic } from "lucide-react";
 import {
   Select,
@@ -690,6 +691,27 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
   return (
     <div className="rounded-xl border border-border bg-card p-4">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "PodcastEpisode",
+            name: `${topicTitle} — FRCA & FFICM revision podcast`,
+            description: `Audio revision summary of ${topicTitle} for the FRCA Primary, FRCA Final and FFICM exams.`,
+            url: typeof window !== "undefined" ? window.location.origin + window.location.pathname : undefined,
+            inLanguage: "en-GB",
+            ...(totalDuration ? { timeRequired: `PT${Math.round(totalDuration)}S` } : {}),
+            partOfSeries: { "@type": "PodcastSeries", name: "AnaesthesiaCore Revision Podcasts", url: "https://anaesthesiacore.app/podcasts" },
+            associatedMedia: {
+              "@type": "AudioObject",
+              contentUrl: podcast.audio_url,
+              encodingFormat: "audio/mpeg",
+              ...(totalDuration ? { duration: `PT${Math.round(totalDuration)}S` } : {}),
+              ...(podcast.script ? { transcript: podcast.script.slice(0, 8000) } : {}),
+            },
+          })}
+        </script>
+      </Helmet>
       <audio ref={audioRef} src={podcast.audio_url} preload="metadata" />
       <div className="flex items-center gap-3">
         <Headphones className="h-5 w-5 text-primary shrink-0" />
