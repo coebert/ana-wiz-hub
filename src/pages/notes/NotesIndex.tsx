@@ -102,6 +102,38 @@ const notes: NoteEntry[] = [
     examTags: ["primary", "final"],
   },
   {
+    slug: "asa-classification",
+    title: "ASA classification: ASA physical status grades I–VI",
+    description:
+      "The ASA I–VI definitions, the E suffix, adult examples for each grade and why ASA alone is not a risk score.",
+    tag: "Perioperative",
+    examTags: ["primary", "final"],
+  },
+  {
+    slug: "status-epilepticus",
+    title: "Status epilepticus: management algorithm and drug doses",
+    description:
+      "The 5-minute definition, benzodiazepine first line, levetiracetam/valproate/phenytoin second line and anaesthesia for refractory status.",
+    tag: "Intensive care",
+    examTags: ["final", "fficm"],
+  },
+  {
+    slug: "bipap",
+    title: "BiPAP: how bilevel NIV works and starting settings",
+    description:
+      "IPAP, EPAP and pressure support, BTS indications in hypercapnic failure, starting settings, contraindications and failure.",
+    tag: "Intensive care",
+    examTags: ["primary", "final", "fficm"],
+  },
+  {
+    slug: "tidaling-chest-drain",
+    title: "Tidaling in a chest drain: swinging and bubbling",
+    description:
+      "Why the underwater-seal level moves with breathing, why it reverses on a ventilator, and what absent swing or bubbling means.",
+    tag: "Clinical",
+    examTags: ["primary", "final", "fficm"],
+  },
+  {
     slug: "mac-for-age-formula",
     title: "MAC for age: how MAC changes with age",
     description:

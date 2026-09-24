@@ -71,6 +71,10 @@ const SugammadexReversesRocuroniumNote = lazy(() => import("./pages/notes/Sugamm
 const ContextSensitiveHalfTimeNote = lazy(() => import("./pages/notes/ContextSensitiveHalfTimeNote"));
 const P50FetalHaemoglobinNote = lazy(() => import("./pages/notes/P50FetalHaemoglobinNote"));
 const MacForAgeNote = lazy(() => import("./pages/notes/MacForAgeNote"));
+const AsaClassificationNote = lazy(() => import("./pages/notes/AsaClassificationNote"));
+const StatusEpilepticusNote = lazy(() => import("./pages/notes/StatusEpilepticusNote"));
+const BipapNote = lazy(() => import("./pages/notes/BipapNote"));
+const TidalingNote = lazy(() => import("./pages/notes/TidalingNote"));
 const ApfelScoreNote = lazy(() => import("./pages/notes/ApfelScoreNote"));
 const MaplesonBreathingSystemsNote = lazy(() => import("./pages/notes/MaplesonBreathingSystemsNote"));
 const DasDifficultAirwayNote = lazy(() => import("./pages/notes/DasDifficultAirwayNote"));
@@ -211,6 +215,10 @@ const App = () => (
           <Route path="/notes/context-sensitive-half-time-propofol-vs-remifentanil" element={<ContextSensitiveHalfTimeNote />} />
           <Route path="/notes/p50-fetal-haemoglobin" element={<P50FetalHaemoglobinNote />} />
           <Route path="/notes/mac-for-age-formula" element={<MacForAgeNote />} />
+          <Route path="/notes/asa-classification" element={<AsaClassificationNote />} />
+          <Route path="/notes/status-epilepticus" element={<StatusEpilepticusNote />} />
+          <Route path="/notes/bipap" element={<BipapNote />} />
+          <Route path="/notes/tidaling-chest-drain" element={<TidalingNote />} />
           <Route path="/notes/apfel-score-ponv-risk" element={<ApfelScoreNote />} />
           <Route path="/notes/mapleson-breathing-systems-explained" element={<MaplesonBreathingSystemsNote />} />
           <Route path="/notes/das-difficult-airway-algorithm" element={<DasDifficultAirwayNote />} />
