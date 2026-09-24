@@ -194,7 +194,7 @@ const BrainAnatomyDiagram = () => (
     <DiagramFigure
       id="brain-anatomy-diagram"
       title="Brain anatomy"
-      description="Brain anatomy: labelled teaching figure summarising the key structures, relationships and values FRCA and FFICM candidates need to recognise and explain."
+      description="Lateral view of the cerebrum and brainstem showing the frontal, parietal, temporal and occipital lobes, central and lateral sulci, and the primary motor (area 4), sensory (areas 1–3) and visual (area 17) cortices relevant to neuroanaesthesia."
     >
             <div className="rounded-2xl border border-border bg-card overflow-hidden">
       <BrainLateralPlate />
