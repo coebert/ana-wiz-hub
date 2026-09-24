@@ -1,3 +1,4 @@
+import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
 // Viva-style oral exam edge function.
 //
 // Two modes:
@@ -785,6 +786,13 @@ Deno.serve(async (req) => {
   if (req.method !== "POST") {
     return new Response(JSON.stringify({ error: "Method not allowed" }), {
       status: 405,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
+  if (!(await getAuthedUserId(req))) {
+    return new Response(JSON.stringify({ error: "Please sign in to use this feature." }), {
+      status: 401,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }

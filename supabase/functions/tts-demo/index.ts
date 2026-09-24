@@ -1,3 +1,4 @@
+import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
 // Lightweight OpenAI TTS endpoint for short demo segments on the landing page.
 // Mirrors the voice/model used by the podcast generator (alloy / gpt-4o-mini-tts)
 // so the demo viva sounds like the rest of the app.
@@ -34,6 +35,13 @@ const MAX_CHARS = 2000; // hard cap for demo segments
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  if (!(await getAuthedUserId(req))) {
+    return new Response(JSON.stringify({ error: "Please sign in to use this feature." }), {
+      status: 401,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   }
 
   try {
