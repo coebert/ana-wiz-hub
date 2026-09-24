@@ -130,6 +130,7 @@ const SpoofedDomains = lazy(() => import("./pages/admin/SpoofedDomains"));
 const AdminWebVitals = lazy(() => import("./pages/admin/WebVitals"));
 const AdminContentEditor = lazy(() => import("./pages/admin/ContentEditor"));
 const AdminPodcastRerecord = lazy(() => import("./pages/admin/PodcastRerecord"));
+const AdminDonations = lazy(() => import("./pages/admin/Donations"));
 
 
 const Loading = () => (
@@ -274,6 +275,7 @@ const App = () => (
           <Route path="/admin/web-vitals" element={<RequireAdmin><AdminWebVitals /></RequireAdmin>} />
           <Route path="/admin/content-editor" element={<RequireAdmin><AdminContentEditor /></RequireAdmin>} />
           <Route path="/admin/podcast-rerecord" element={<RequireAdmin><AdminPodcastRerecord /></RequireAdmin>} />
+          <Route path="/admin/donations" element={<RequireAdmin><AdminDonations /></RequireAdmin>} />
 
           <Route path="/admin/esicm-validator" element={<Navigate to="/admin/audit" replace />} />
           <Route path="*" element={<NotFound />} />

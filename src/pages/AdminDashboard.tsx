@@ -1116,6 +1116,14 @@ const AdminDashboard = () => {
               <Mic2 className="w-4 h-4 mr-1" aria-hidden="true" />
               Re-record podcasts
             </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => navigate("/admin/donations")}
+              aria-label="View and record donations"
+            >
+              Donations
+            </Button>
 
 
 
