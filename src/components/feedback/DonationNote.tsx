@@ -11,9 +11,9 @@ export const DonationNote = () => (
         <div className="flex items-start gap-3 flex-1">
           <Heart className="h-5 w-5 text-primary shrink-0 mt-0.5" aria-hidden />
           <div>
-            <h2 id="donation-note-heading" className="text-base md:text-lg font-serif font-bold text-foreground">
+            <p id="donation-note-heading" className="text-base md:text-lg font-serif font-bold text-foreground">
               A note from the creator
-            </h2>
+            </p>
             <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
               AnaesthesiaCore was built to help anaesthetics and intensive care trainees learn and
               prepare for exams that are widely considered the most difficult of any medical
