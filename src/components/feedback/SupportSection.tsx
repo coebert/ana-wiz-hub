@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Heart, MessageSquare, ExternalLink, X, Send, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { logDonateClick } from "./DonationNote";
 // PayPal.me works for any personal PayPal account — no charity/business
 // enrollment required (unlike paypal.com/donate which is gated to PayPal
 // Giving Fund-enrolled organisations). Set this to your PayPal.me handle
@@ -87,6 +88,7 @@ export const SupportSection = () => {
             href={PAYPAL_URL}
             target="_blank"
             rel="noreferrer"
+            onClick={() => logDonateClick("support-box")}
             className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
           >
             <Heart className="h-4 w-4" />
