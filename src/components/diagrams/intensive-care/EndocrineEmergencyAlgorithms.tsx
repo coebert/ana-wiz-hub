@@ -514,7 +514,7 @@ const EndocrineEmergencyAlgorithms = () => {
     <DiagramFigure
       id="endocrine-emergency-algorithms"
       title="Endocrine emergency algorithms"
-      description="Auto-generated wrapper for the Endocrine emergency algorithms clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Endocrine: step-by-step clinical decision pathway showing the assessment points, branches and management actions in guideline order."
     >
               <div className="my-6 space-y-3">
         <div className="rounded-xl border border-border bg-muted/20 p-4">

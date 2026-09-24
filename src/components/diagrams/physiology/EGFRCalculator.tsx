@@ -100,7 +100,7 @@ export const EGFRCalculator = () => {
     <DiagramFigure
       id="egfr-calculator"
       title="EGFR"
-      description="Auto-generated wrapper for the EGFR interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="EGFR calculator: enter patient values to compute the score step by step, with the interpretation thresholds and clinical actions FRCA and FFICM candidates should know."
     >
                   <div className="space-y-6">
         <div className="grid gap-4 sm:grid-cols-3">

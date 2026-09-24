@@ -159,7 +159,7 @@ export const BridgingAnticoagulationPathway = () => {
     <DiagramFigure
       id="bridging-anticoagulation-pathway"
       title="Bridging anticoagulation pathway"
-      description="Auto-generated wrapper for the Bridging anticoagulation pathway clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Bridging: step-by-step clinical decision pathway showing the assessment points, branches and management actions in guideline order."
     >
           <div className="rounded-xl border border-border bg-card overflow-hidden">
         {/* Selectors */}

@@ -53,7 +53,7 @@ const PneumotachographDiagram = () => {
     <DiagramFigure
       id="pneumotachograph-diagram"
       title="Pneumotachograph"
-      description="Auto-generated wrapper for the Pneumotachograph graphical relationship. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Pneumotachograph: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain."
     >
               <div className="border border-border rounded-lg p-4 mb-6 bg-card">
         <div className="flex items-start justify-between gap-3 mb-3 flex-wrap">

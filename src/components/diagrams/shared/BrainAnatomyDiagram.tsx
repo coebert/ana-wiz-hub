@@ -194,7 +194,7 @@ const BrainAnatomyDiagram = () => (
     <DiagramFigure
       id="brain-anatomy-diagram"
       title="Brain anatomy"
-      description="Inner plate content (no outer card chrome) — used by BrainPlatesViewer."
+      description="Brain anatomy: labelled teaching figure summarising the key structures, relationships and values FRCA and FFICM candidates need to recognise and explain."
     >
             <div className="rounded-2xl border border-border bg-card overflow-hidden">
       <BrainLateralPlate />

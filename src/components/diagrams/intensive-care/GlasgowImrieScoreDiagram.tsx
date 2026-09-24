@@ -35,7 +35,7 @@ export const GlasgowImrieScoreDiagram = () => {
     <DiagramFigure
       id="glasgow-imrie-score-diagram"
       title="Glasgow imrie score"
-      description="Auto-generated wrapper for the Glasgow imrie score interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Glasgow calculator: enter patient values to compute the score step by step, with the interpretation thresholds and clinical actions FRCA and FFICM candidates should know."
     >
               <div className="rounded-xl border border-border bg-card p-4 space-y-4">
         <div className="flex items-start justify-between gap-3 flex-wrap">

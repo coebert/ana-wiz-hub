@@ -232,7 +232,7 @@ export const BreathingCircuitDiagram = () => {
     <DiagramFigure
       id="breathing-circuit-diagram"
       title="Breathing circuit"
-      description="Auto-generated wrapper for the Breathing circuit equipment schematic. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Breathing: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain."
     >
                   <div className="space-y-4">
         <div className="flex gap-2 flex-wrap">

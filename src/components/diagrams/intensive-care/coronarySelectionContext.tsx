@@ -28,7 +28,7 @@ export const CoronarySelectionProvider = ({
     <DiagramFigure
       id="coronary-selection-context"
       title="Coronary selection context"
-      description="Returns the shared coronary selection state when inside a CoronarySelectionProvider, otherwise falls back to local component state so each diagram still works standalone."
+      description="Coronary selection context: labelled teaching figure summarising the key structures, relationships and values FRCA and FFICM candidates need to recognise and explain."
     >
                   <CoronarySelectionContext.Provider value={{ territory, setTerritory }}>
         {children}

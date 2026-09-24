@@ -17,7 +17,7 @@ const MajorHaemorrhageFlowchart = () => {
     <DiagramFigure
       id={id}
       title="Major haemorrhage flowchart — goal-directed transfusion with acute reaction branch"
-      description="Decision flow for major haemorrhage: activate the protocol, give empirical 1:1 components with tranexamic acid and correct calcium, temperature and acidosis, then branch to the acute transfusion reaction pathway if new hypoxia, fever or hypotension develops, otherwise switch to viscoelastic goal-directed product targets and defined stand-down criteria."
+      description="Major haemorrhage flowchart — goal-directed transfusion with acute reaction branch: labelled teaching figure summarising the key structures, relationships and values FRCA and FFICM candidates need to recognise and explain."
       showCaption
     >
       <svg

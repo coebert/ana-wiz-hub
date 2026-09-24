@@ -105,7 +105,7 @@ export const RefeedingRiskCalculatorDiagram = () => {
     <DiagramFigure
       id="refeeding-risk-calculator-diagram"
       title="Refeeding risk calculator"
-      description="Auto-generated wrapper for the Refeeding risk calculator interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Refeeding calculator: enter patient values to compute the score step by step, with the interpretation thresholds and clinical actions FRCA and FFICM candidates should know."
     >
                   <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
         <div className="flex items-start justify-between gap-3 mb-4">

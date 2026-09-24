@@ -79,7 +79,7 @@ const ExpandableEcgCard = ({ content, children }: ExpandableEcgCardProps) => {
     <DiagramFigure
       id="expandable-ecg-card"
       title="Expandable ECG card"
-      description="Reusable wrapper for ECG diagrams. - Renders the diagram larger by default (big scale). - Adds a top-right 'Expand' button that opens a near-fullscreen modal."
+      description="Expandable ECG card: labelled teaching figure summarising the key structures, relationships and values FRCA and FFICM candidates need to recognise and explain."
     >
                   <div className="relative group">
         {/* Expand button — floats above the diagram card. Sits OUTSIDE the

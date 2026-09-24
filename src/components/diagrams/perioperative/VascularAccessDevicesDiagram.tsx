@@ -877,7 +877,7 @@ export const VascularAccessDevicesDiagram: React.FC = () => {
     <DiagramFigure
       id="vascular-access-devices-diagram"
       title="Vascular access devices"
-      description="Hook: returns true if the user has requested reduced motion at the OS level. Updates live if the preference changes. SSR-safe (returns false on server)."
+      description="Vascular access devices: labelled teaching figure summarising the key structures, relationships and values FRCA and FFICM candidates need to recognise and explain."
     >
           <figure className="my-6 rounded-xl border border-border bg-card overflow-hidden">
         <figcaption className="px-4 py-3 border-b border-border bg-muted/30">

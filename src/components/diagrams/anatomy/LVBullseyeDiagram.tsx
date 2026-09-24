@@ -174,7 +174,7 @@ const LVBullseyeDiagram = () => {
     <DiagramFigure
       id="lv-bullseye-diagram"
       title="LV bullseye"
-      description="AHA 17-segment short-axis LV bullseye, colour-keyed to the SAME six coronary territory hues used by CoronaryTerritoryMapDiagram and CoronaryTreeDiagram."
+      description="LV bullseye: labelled teaching figure summarising the key structures, relationships and values FRCA and FFICM candidates need to recognise and explain."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

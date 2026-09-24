@@ -487,7 +487,7 @@ const PostopRiskCalculators = () => (
     <DiagramFigure
       id="postop-risk-calculators"
       title="Postop risk calculators"
-      description="Auto-generated wrapper for the Postop risk calculators interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Postop calculator: enter patient values to compute the score step by step, with the interpretation thresholds and clinical actions FRCA and FFICM candidates should know."
     >
             <div className="my-6 rounded-xl border border-border bg-card shadow-sm overflow-hidden">
       <header className="px-4 sm:px-5 pt-4 pb-3 border-b border-border bg-muted/30">

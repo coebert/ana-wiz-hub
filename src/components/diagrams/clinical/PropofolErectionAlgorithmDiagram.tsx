@@ -150,7 +150,7 @@ const PropofolErectionAlgorithmDiagram = () => {
     <DiagramFigure
       id="propofol-erection-algorithm-diagram"
       title="Propofol erection algorithm"
-      description="Auto-generated wrapper for the Propofol erection algorithm clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Propofol: step-by-step clinical decision pathway showing the assessment points, branches and management actions in guideline order."
     >
               <div className="rounded-xl border border-border bg-card p-4 sm:p-6 my-6">
         <div className="mb-4">

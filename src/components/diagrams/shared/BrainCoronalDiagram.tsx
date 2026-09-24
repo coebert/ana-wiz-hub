@@ -189,7 +189,7 @@ const BrainCoronalDiagram = () => (
     <DiagramFigure
       id="brain-coronal-diagram"
       title="Brain coronal"
-      description="Inner plate content (no outer card chrome) — used by BrainPlatesViewer so multiple views can share a single panel shell."
+      description="Brain coronal: labelled teaching figure summarising the key structures, relationships and values FRCA and FFICM candidates need to recognise and explain."
     >
             <div className="rounded-2xl border border-border bg-card overflow-hidden">
       <BrainCoronalPlate />

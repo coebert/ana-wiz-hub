@@ -108,7 +108,7 @@ export const DwellTimeInfographic: React.FC = () => {
     <DiagramFigure
       id="dwell-time-infographic"
       title="Dwell time infographic"
-      description="Auto-generated wrapper for the Dwell time infographic graphical relationship. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Dwell: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain."
     >
               <figure
         ref={ref}
