@@ -29,11 +29,15 @@ const COUNTRY_NAMES: Record<string, string> = {
   RU: "Russia", UA: "Ukraine",
 };
 
+const IPV4_RE = /^(25[0-5]|2[0-4]\d|1?\d?\d)(\.(25[0-5]|2[0-4]\d|1?\d?\d)){3}$/;
+const IPV6_RE = /^[0-9a-fA-F:]{2,39}$/;
+
 async function lookupCountryByIp(ip: string): Promise<string | null> {
+  if (!(IPV4_RE.test(ip) || (IPV6_RE.test(ip) && ip.includes(":")))) return null;
   try {
     const ctrl = new AbortController();
     const t = setTimeout(() => ctrl.abort(), 1500);
-    const res = await fetch(`https://ipapi.co/${ip}/country/`, {
+    const res = await fetch(`https://ipapi.co/${encodeURIComponent(ip)}/country/`, {
       signal: ctrl.signal,
       headers: { "User-Agent": "anaesthesiacore-log-visit" },
     });

@@ -1,3 +1,4 @@
+import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
 /**
  * Ask AI chat endpoint. Receives an AI SDK UIMessage[] history, embeds the
  * latest user question, retrieves the top-K relevant `kb_chunks` snippets,
@@ -60,6 +61,12 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   if (req.method !== "POST") {
     return new Response("Method not allowed", { status: 405, headers: corsHeaders });
+  }
+  if (!(await getAuthedUserId(req))) {
+    return new Response(JSON.stringify({ error: "Please sign in to use this feature." }), {
+      status: 401,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   }
 
   let body: { messages?: UIMessage[] };

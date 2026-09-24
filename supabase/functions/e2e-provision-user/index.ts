@@ -11,7 +11,7 @@
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers':
-    'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
+    'authorization, x-client-info, apikey, content-type, x-e2e-secret, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
 }
 
 const EMAIL_RE = /^e2e-[a-z0-9-]{1,60}@e2e\.anaesthesiacore\.test$/
@@ -51,6 +51,11 @@ Deno.serve(async (req) => {
 
   if (isRateLimited(getClientIp(req))) return json({ error: 'Rate limited' }, 429)
 
+  // Only the e2e runner (which holds E2E_PROVISION_SECRET) may call this.
+  const expected = (Deno.env.get('E2E_PROVISION_SECRET') ?? '').trim()
+  const supplied = (req.headers.get('x-e2e-secret') ?? '').trim()
+  if (!expected || supplied !== expected) return json({ error: 'Forbidden' }, 403)
+
   const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!
   const SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
   const adminHeaders = {
@@ -84,7 +89,8 @@ Deno.serve(async (req) => {
     { headers: adminHeaders },
   )
   if (!listRes.ok) {
-    return json({ error: 'Lookup failed', detail: await listRes.text() }, 500)
+    console.error('e2e lookup failed', listRes.status, await listRes.text())
+    return json({ error: 'Lookup failed' }, 500)
   }
   const listed = await listRes.json()
   const existing = (listed.users ?? []).find(

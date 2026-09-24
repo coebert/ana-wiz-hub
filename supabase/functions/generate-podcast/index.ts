@@ -1,3 +1,4 @@
+import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
 // Generates an exam-focused podcast for a topic.
 // Flow:
 //   1. Receives topicId, topicTitle, and extracted text content from the client.
@@ -1753,6 +1754,19 @@ Deno.serve(async (req) => {
 
     if (forceRegenerate) {
       console.log(`[${topicId}] Force-regenerate authorised — bypassing cache.`);
+    }
+
+    // Generation spends paid AI/TTS credits: only the internal worker, the
+    // owner regenerate code (validated above), or a signed-in admin may
+    // proceed past the cache.
+    if (!internalRequest && !forceRegenerate) {
+      const callerId = await getAuthedUserId(req);
+      if (!callerId || !(await isAdminUser(callerId))) {
+        return jsonResponse(
+          { status: "failed", error: "Podcast generation is restricted to administrators.", code: "FORBIDDEN" },
+          403,
+        );
+      }
     }
 
     // Rate-limit & concurrency gates — only on the generation path (cache

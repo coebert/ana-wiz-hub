@@ -299,6 +299,18 @@ Deno.serve(async (req) => {
     );
   }
   const { base_url, commit_sha, max_pages, rendered } = parsed.data;
+  const ALLOWED_SCAN_HOSTS = new Set(["anaesthesiacore.app", "www.anaesthesiacore.app", "ana-wiz-hub.lovable.app"]);
+  let scanHost = "";
+  try {
+    const u = new URL(base_url);
+    scanHost = u.protocol === "https:" ? u.hostname : "";
+  } catch { /* invalid */ }
+  if (!ALLOWED_SCAN_HOSTS.has(scanHost)) {
+    return new Response(JSON.stringify({ error: "base_url must be an AnaesthesiaCore site" }), {
+      status: 400,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
 
   if (rendered && !firecrawlKey) {
     return new Response(

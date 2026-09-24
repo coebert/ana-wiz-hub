@@ -9,10 +9,15 @@ import { z } from "npm:zod@3.23.8";
 // sendBeacon uses credentials mode "include", so a wildcard
 // Access-Control-Allow-Origin is rejected by browsers. Echo the request
 // Origin instead and allow credentials.
+const ALLOWED_ORIGIN_RE =
+  /^https:\/\/((www\.)?anaesthesiacore\.app|[a-z0-9-]+\.lovable\.app|[a-z0-9-]+\.lovableproject\.com)$|^http:\/\/localhost(:\d+)?$/;
+
 function corsHeadersFor(req: Request) {
+  const origin = req.headers.get("origin") ?? "";
+  const allowed = ALLOWED_ORIGIN_RE.test(origin);
   return {
-    "Access-Control-Allow-Origin": req.headers.get("origin") ?? "*",
-    "Access-Control-Allow-Credentials": "true",
+    "Access-Control-Allow-Origin": allowed ? origin : "https://anaesthesiacore.app",
+    "Access-Control-Allow-Credentials": allowed ? "true" : "false",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
     Vary: "Origin",

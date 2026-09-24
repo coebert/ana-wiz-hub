@@ -83,6 +83,13 @@ Deno.serve(async (req) => {
   });
 
   let reportPath: string | null = null;
+  const MAX_REPORT_BYTES = 10 * 1024 * 1024;
+  if (reportFile && (reportFile.size > MAX_REPORT_BYTES || (reportFile.type && !/^text\/html\b/.test(reportFile.type)))) {
+    return new Response(JSON.stringify({ error: "Report must be an HTML file under 10 MB" }), {
+      status: 413,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
   if (reportFile) {
     const ts = new Date().toISOString().replace(/[:.]/g, "-");
     const safeBranch = (s.branch ?? "main").replace(/[^a-zA-Z0-9_-]/g, "_");
