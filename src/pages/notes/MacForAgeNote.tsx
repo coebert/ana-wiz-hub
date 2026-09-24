@@ -4,9 +4,9 @@ import { NoteLayout } from "./NoteLayout";
 const MacForAgeNote = () => (
   <NoteLayout
     slug="mac-for-age-formula"
-    title="MAC for age: how MAC changes with age"
+    title="MAC for age formula: Mapleson calculation & worked examples"
     shortTitle="MAC for age formula"
-    description="MAC falls predictably with age. The Mapleson age-adjustment formula, what MAC actually measures, and why it matters for elderly anaesthesia."
+    description="Calculate age-adjusted MAC with the Mapleson formula: MAC falls ~6% per decade after 40. Worked sevoflurane, isoflurane and desflurane examples for the FRCA."
     datePublished="2026-06-18"
     examTags={["primary", "final"]}
     lede="MAC is the end-tidal concentration of a volatile agent that prevents movement to a standard surgical stimulus in 50% of patients. It falls by about 6% per decade after age 40 — the Mapleson age-adjustment formula lets you correct any agent's MAC for the patient in front of you."
