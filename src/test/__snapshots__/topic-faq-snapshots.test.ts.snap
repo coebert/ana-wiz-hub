@@ -71,7 +71,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the FAQ count p
   "/intensive-care/neuroprognostication": 3,
   "/intensive-care/non-technical-skills": 3,
   "/intensive-care/organ-donation": 3,
-  "/intensive-care/paediatric-icu": 3,
+  "/intensive-care/paediatric-icu": 6,
   "/intensive-care/postop-high-risk-icu": 3,
   "/intensive-care/prognostication-ethics-icu": 3,
   "/intensive-care/pulmonary-hypertension": 3,
@@ -80,7 +80,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the FAQ count p
   "/intensive-care/transfusion-coagulation": 3,
   "/notes/anaesthesia-for-robotic-surgery-guide": 5,
   "/notes/apfel-score-ponv-risk": 4,
+  "/notes/asa-classification": 4,
   "/notes/bain-circuit-fresh-gas-flow": 4,
+  "/notes/bipap": 4,
   "/notes/cardiac-output-formula": 5,
   "/notes/context-sensitive-half-time-propofol-vs-remifentanil": 4,
   "/notes/das-difficult-airway-algorithm": 4,
@@ -94,9 +96,12 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the FAQ count p
   "/notes/rapid-sequence-induction-drug-doses": 4,
   "/notes/rotem-teg-interpretation": 4,
   "/notes/sevoflurane-vs-desflurane-recovery": 4,
+  "/notes/status-epilepticus": 4,
+  "/notes/tidaling-chest-drain": 4,
   "/notes/tof-ratio-before-extubation": 4,
   "/notes/wiggers-diagram-explained": 6,
   "/perioperative/cardiovascular-disease": 6,
+  "/perioperative/complex-needs-anaesthesia": 7,
   "/perioperative/endocrine-disease": 3,
   "/perioperative/enhanced-recovery": 3,
   "/perioperative/gastrointestinal-disease": 4,
@@ -1723,6 +1728,18 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/paediatric-icu": [
     {
+      "a": "Nothing reliably does on clinical grounds alone, which is why the emergency metabolic screen (glucose, gas, lactate, ammonia, ketones, urine organic acids, plasma amino acids, acylcarnitines) is taken during the crisis while sepsis is treated empirically. Clues to a metabolic cause are a large anion-gap acidosis out of proportion to perfusion, hyperammonaemia with a respiratory alkalosis, hypoglycaemia without ketones, an unusual odour, a family history of unexplained infant death or consanguinity, and deterioration coinciding with a feed change or intercurrent illness (BIMDG emergency guidelines).",
+      "q": "What discriminates a metabolic crisis from sepsis in a collapsed neonate?",
+    },
+    {
+      "a": "When a neonate in the first weeks of life has shock, cyanosis unresponsive to oxygen, absent or weak femoral pulses or a pre/post-ductal saturation gradient and echocardiography is not immediately available. The risks — apnoea, hypotension, fever, jitteriness — are manageable and far less than the risk of duct closure in a duct-dependent lesion; secure the airway before transfer.",
+      "q": "When should prostaglandin E1 be started before an echocardiogram?",
+    },
+    {
+      "a": "Decisions are made in a paediatric neuroscience centre. Intravenous thrombolysis is not routinely recommended in children outside specialist protocols and trials, while mechanical thrombectomy is increasingly offered for confirmed large-vessel occlusion with a significant deficit in older children within a treatment window, based on registry and adult trial data extrapolation. Sickle cell stroke is treated with urgent exchange transfusion, and haemorrhagic stroke is managed with neurosurgical involvement, so the first steps are always urgent imaging and a specialist call.",
+      "q": "Which children with acute stroke are considered for thrombolysis or thrombectomy?",
+    },
+    {
       "a": "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock), with smaller 5 mL/kg boluses in DKA or trauma. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings).",
       "q": "What fluid resuscitation strategy is recommended for paediatric septic shock?",
     },
@@ -1879,6 +1896,24 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Does the Apfel score apply to children?",
     },
   ],
+  "/notes/asa-classification": [
+    {
+      "a": "ASA I: a normal healthy patient. ASA II: mild systemic disease. ASA III: severe systemic disease. ASA IV: severe systemic disease that is a constant threat to life. ASA V: a moribund patient not expected to survive without the operation. ASA VI: a declared brain-dead patient whose organs are being removed for donation.",
+      "q": "What are the ASA grades?",
+    },
+    {
+      "a": "The 'E' suffix marks an emergency: a case where delay in treatment would lead to a significant increase in the threat to life or body part (for example ASA IIIE). It can be added to any grade except VI.",
+      "q": "What does the E mean in ASA classification?",
+    },
+    {
+      "a": "In the ASA's 2020 examples, obesity with a BMI of 30–40 is ASA II, and morbid obesity with a BMI of 40 or more is ASA III.",
+      "q": "Is obesity ASA II or III?",
+    },
+    {
+      "a": "Not on its own. ASA grade correlates with perioperative mortality, but it ignores the type and urgency of surgery, age and frailty, and different assessors often grade the same patient differently. Combine it with procedure-specific tools such as NSQIP, P-POSSUM or NELA risk models.",
+      "q": "Is the ASA grade a risk score?",
+    },
+  ],
   "/notes/bain-circuit-fresh-gas-flow": [
     {
       "a": "Approximately 150–200 mL/kg/min, or 1.5–2× minute ventilation. The fresh gas inlet is at the patient end, so during expiration the corrugated tubing fills with a mixture of fresh and expired gas. A high FGF is needed to wash dead-space gas back before the next inspiration.",
@@ -1895,6 +1930,24 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
     {
       "a": "Light, single-tube, easy to position away from the surgical field, simple to scavenge, no CO₂ absorber needed. Disadvantages: high FGF for spontaneous ventilation (wasteful, environmentally and financially), and the inner tube cannot be visually inspected — hence the mandatory Pethick test.",
       "q": "What are the advantages of the Bain over a circle system?",
+    },
+  ],
+  "/notes/bipap": [
+    {
+      "a": "CPAP gives one continuous pressure. It recruits alveoli and improves oxygenation but adds no ventilatory support, so it suits hypoxaemic failure such as cardiogenic pulmonary oedema or obstructive sleep apnoea. BiPAP adds inspiratory pressure support on top, so it also removes CO₂ and treats hypercapnic failure.",
+      "q": "What is the difference between BiPAP and CPAP?",
+    },
+    {
+      "a": "The main indication is acute hypercapnic respiratory failure, typically an exacerbation of COPD with pH below 7.35 and PaCO₂ above 6.5 kPa that persists despite optimal medical treatment (BTS/ICS). Other uses include obesity hypoventilation, neuromuscular disease and chest-wall deformity.",
+      "q": "When is BiPAP indicated?",
+    },
+    {
+      "a": "BTS/ICS guidance suggests starting at EPAP 3–5 cmH₂O and IPAP 15 cmH₂O, then increasing IPAP by 2–5 cmH₂O every few minutes towards 20–30 cmH₂O over about 30 minutes as tolerated. Titrate oxygen to SpO₂ 88–92% and repeat the blood gas at 1 hour.",
+      "q": "What are typical starting BiPAP settings?",
+    },
+    {
+      "a": "Inability to protect the airway or a low conscious level (unless NIV is the agreed ceiling of care), copious secretions or vomiting, facial trauma or burns, fixed upper-airway obstruction, undrained pneumothorax, severe haemodynamic instability, and recent upper GI or airway surgery (relative).",
+      "q": "What are the contraindications to BiPAP?",
     },
   ],
   "/notes/cardiac-output-formula": [
@@ -2151,6 +2204,42 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Which agent is better for inhalational induction?",
     },
   ],
+  "/notes/status-epilepticus": [
+    {
+      "a": "The ILAE 2015 definition for convulsive (tonic–clonic) status uses two time points: treatment should start at 5 minutes (t1), and there is a risk of long-term neuronal injury after 30 minutes (t2). Recurrent seizures without return to baseline between them also count.",
+      "q": "What is the definition of status epilepticus?",
+    },
+    {
+      "a": "A benzodiazepine. In adults: IV lorazepam 0.1 mg/kg (usually 4 mg), repeated once after 5–10 minutes if needed. Without IV access: buccal midazolam 10 mg or rectal diazepam 10–20 mg. Limit benzodiazepines to two doses in total, including any given before hospital.",
+      "q": "What is first-line treatment for status epilepticus?",
+    },
+    {
+      "a": "Levetiracetam, sodium valproate or phenytoin. The ESETT trial found them similarly effective (about half of patients stop seizing). UK guidance (NICE 2022) lists all three; many units favour levetiracetam for its safety. Avoid valproate in women and girls who could become pregnant and in suspected liver or mitochondrial disease.",
+      "q": "What is second-line treatment?",
+    },
+    {
+      "a": "Refractory status continues despite a benzodiazepine and one second-line drug; it usually needs anaesthesia (propofol, thiopental or midazolam infusion) with EEG monitoring. Super-refractory status continues, or recurs, 24 hours or more after starting anaesthesia.",
+      "q": "What are refractory and super-refractory status epilepticus?",
+    },
+  ],
+  "/notes/tidaling-chest-drain": [
+    {
+      "a": "On spontaneous inspiration intrapleural pressure becomes more negative. That pressure is transmitted along the tube, pulling the fluid column up towards the patient. On expiration the pressure becomes less negative and the level falls.",
+      "q": "Why does the water level rise on inspiration?",
+    },
+    {
+      "a": "During positive-pressure ventilation, intrathoracic pressure rises on inspiration, so the fluid level falls on inspiration and rises on expiration.",
+      "q": "Why is tidaling reversed on a ventilator?",
+    },
+    {
+      "a": "Either the lung has fully re-expanded and sealed the drain tip, or there is a problem: the tube is kinked, clamped, blocked by clot or fibrin, or has slipped out of the pleural space. Continuous suction also damps the swing. Examine the patient and the tubing, and get a chest X-ray if unsure.",
+      "q": "What does absent tidaling mean?",
+    },
+    {
+      "a": "Tidaling is movement of the fluid level and means the system is open to the pleura. Bubbling is air passing through the underwater seal and means there is an air leak. Bubbling on expiration or coughing suggests a resolving pneumothorax; continuous bubbling suggests a large or persistent leak (e.g. a bronchopleural fistula) or a leak in the drainage system.",
+      "q": "What is the difference between tidaling and bubbling?",
+    },
+  ],
   "/notes/tof-ratio-before-extubation": [
     {
       "a": "The ratio of the fourth twitch amplitude (T4) to the first (T1) after four supramaximal stimuli at 2 Hz to the ulnar nerve. With no block T4/T1 = 1.0; non-depolarising block produces fade so the ratio falls. Below 0.9, pharyngeal coordination, hypoxic ventilatory response and airway protection are all impaired even though the patient may appear awake.",
@@ -2219,6 +2308,36 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
     {
       "a": "Use an arterial line and titrate IV antihypertensives (labetalol or esmolol for dissection/phaeochromocytoma surge, GTN for ACS/pulmonary oedema, magnesium + labetalol for eclampsia) to lower MAP by no more than 20–25% in the first hour, then to around 160/100 mmHg over 2–6 h. Treat reversible precipitants (pain, hypoxia, hypercarbia, raised ICP) first. Truly time-critical surgery should not be delayed for chronic hypertension alone.",
       "q": "How do you manage true hypertensive emergency before urgent surgery?",
+    },
+  ],
+  "/perioperative/complex-needs-anaesthesia": [
+    {
+      "a": "No. No adult can consent on behalf of another in England and Wales unless they hold a valid Lasting Power of Attorney for health and welfare or are a court-appointed deputy. If the patient lacks capacity for the decision, treatment proceeds as a best-interests decision under the Mental Capacity Act 2005, consulting family and carers, and involving an IMCA where there is no one appropriate to consult.",
+      "q": "Can a family member or paid carer consent to anaesthesia for an adult with a learning disability?",
+    },
+    {
+      "a": "Yes, but only where the patient lacks capacity for that decision, the holding is necessary to prevent harm to them, and the degree and duration are proportionate to the likelihood and seriousness of that harm. It should be planned in advance with named roles, documented in the best-interests record, minimised by premedication and adjustments, and reviewed afterwards.",
+      "q": "Is it ever lawful to hold an adult still for induction of anaesthesia?",
+    },
+    {
+      "a": "It is a patient-held document summarising how someone with a learning disability or autism communicates, what distresses or calms them, how they show pain, their usual medication and their support needs. It converts a chaotic day-of-surgery encounter into a planned one and should be read before the patient arrives, not after.",
+      "q": "What is a hospital passport and why does it matter to the anaesthetist?",
+    },
+    {
+      "a": "Work up the ladder: environmental and scheduling adjustments first, then preparation and desensitisation, distraction and control-giving, topical or local anaesthesia, regional techniques where suitable, and self-administered nitrous oxide/oxygen — with pharmacological premedication and inhalational induction reserved for when these are insufficient. Document which rung succeeded so it becomes the starting point next time.",
+      "q": "What should I do before reaching for sedation in a patient who cannot cooperate?",
+    },
+    {
+      "a": "Start the consent process early and in stages; provide easy-read, pictorial or video information; involve the people who know how the patient communicates; and use every support available (communication passport, AAC devices, interpreters, a trusted supporter) before concluding the patient cannot decide. If capacity for the decision is still lacking, hold a documented best-interests meeting with an IMCA if appropriate — a carer cannot simply sign instead.",
+      "q": "How do I consent a patient who communicates non-verbally?",
+    },
+    {
+      "a": "In almost all cases yes: metal restraints obstruct safe positioning, vascular access, diathermy, imaging and emergency airway management. Ask the escorting officers to remove them for induction, surgery and recovery. If a documented security risk assessment insists they remain, record the discussion and require an officer with the key to be immediately available in theatre.",
+      "q": "Should a prisoner's handcuffs be removed for surgery?",
+    },
+    {
+      "a": "Yes. Custody officers may need operational information (timings, likely admission, whether the patient will be sedated) but not the diagnosis, drug history or infection status. Consultation should take place out of hearing whenever the security risk assessment allows.",
+      "q": "Do prisoners have the same confidentiality rights as other patients?",
     },
   ],
   "/perioperative/endocrine-disease": [
@@ -3518,7 +3637,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the pinned set 
   "/intensive-care/transfusion-coagulation",
   "/notes/anaesthesia-for-robotic-surgery-guide",
   "/notes/apfel-score-ponv-risk",
+  "/notes/asa-classification",
   "/notes/bain-circuit-fresh-gas-flow",
+  "/notes/bipap",
   "/notes/cardiac-output-formula",
   "/notes/context-sensitive-half-time-propofol-vs-remifentanil",
   "/notes/das-difficult-airway-algorithm",
@@ -3532,9 +3653,12 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the pinned set 
   "/notes/rapid-sequence-induction-drug-doses",
   "/notes/rotem-teg-interpretation",
   "/notes/sevoflurane-vs-desflurane-recovery",
+  "/notes/status-epilepticus",
+  "/notes/tidaling-chest-drain",
   "/notes/tof-ratio-before-extubation",
   "/notes/wiggers-diagram-explained",
   "/perioperative/cardiovascular-disease",
+  "/perioperative/complex-needs-anaesthesia",
   "/perioperative/endocrine-disease",
   "/perioperative/enhanced-recovery",
   "/perioperative/gastrointestinal-disease",
@@ -6851,6 +6975,30 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
+          "text": "Nothing reliably does on clinical grounds alone, which is why the emergency metabolic screen (glucose, gas, lactate, ammonia, ketones, urine organic acids, plasma amino acids, acylcarnitines) is taken during the crisis while sepsis is treated empirically. Clues to a metabolic cause are a large anion-gap acidosis out of proportion to perfusion, hyperammonaemia with a respiratory alkalosis, hypoglycaemia without ketones, an unusual odour, a family history of unexplained infant death or consanguinity, and deterioration coinciding with a feed change or intercurrent illness (BIMDG emergency guidelines).",
+        },
+        "name": "What discriminates a metabolic crisis from sepsis in a collapsed neonate?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When a neonate in the first weeks of life has shock, cyanosis unresponsive to oxygen, absent or weak femoral pulses or a pre/post-ductal saturation gradient and echocardiography is not immediately available. The risks — apnoea, hypotension, fever, jitteriness — are manageable and far less than the risk of duct closure in a duct-dependent lesion; secure the airway before transfer.",
+        },
+        "name": "When should prostaglandin E1 be started before an echocardiogram?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Decisions are made in a paediatric neuroscience centre. Intravenous thrombolysis is not routinely recommended in children outside specialist protocols and trials, while mechanical thrombectomy is increasingly offered for confirmed large-vessel occlusion with a significant deficit in older children within a treatment window, based on registry and adult trial data extrapolation. Sickle cell stroke is treated with urgent exchange transfusion, and haemorrhagic stroke is managed with neurosurgical involvement, so the first steps are always urgent imaging and a specialist call.",
+        },
+        "name": "Which children with acute stroke are considered for thrombolysis or thrombectomy?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
           "text": "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock), with smaller 5 mL/kg boluses in DKA or trauma. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings).",
         },
         "name": "What fluid resuscitation strategy is recommended for paediatric septic shock?",
@@ -7177,6 +7325,44 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
       },
     ],
   },
+  "/notes/asa-classification": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ASA I: a normal healthy patient. ASA II: mild systemic disease. ASA III: severe systemic disease. ASA IV: severe systemic disease that is a constant threat to life. ASA V: a moribund patient not expected to survive without the operation. ASA VI: a declared brain-dead patient whose organs are being removed for donation.",
+        },
+        "name": "What are the ASA grades?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 'E' suffix marks an emergency: a case where delay in treatment would lead to a significant increase in the threat to life or body part (for example ASA IIIE). It can be added to any grade except VI.",
+        },
+        "name": "What does the E mean in ASA classification?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In the ASA's 2020 examples, obesity with a BMI of 30–40 is ASA II, and morbid obesity with a BMI of 40 or more is ASA III.",
+        },
+        "name": "Is obesity ASA II or III?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not on its own. ASA grade correlates with perioperative mortality, but it ignores the type and urgency of surgery, age and frailty, and different assessors often grade the same patient differently. Combine it with procedure-specific tools such as NSQIP, P-POSSUM or NELA risk models.",
+        },
+        "name": "Is the ASA grade a risk score?",
+      },
+    ],
+  },
   "/notes/bain-circuit-fresh-gas-flow": {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -7212,6 +7398,44 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
           "text": "Light, single-tube, easy to position away from the surgical field, simple to scavenge, no CO₂ absorber needed. Disadvantages: high FGF for spontaneous ventilation (wasteful, environmentally and financially), and the inner tube cannot be visually inspected — hence the mandatory Pethick test.",
         },
         "name": "What are the advantages of the Bain over a circle system?",
+      },
+    ],
+  },
+  "/notes/bipap": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CPAP gives one continuous pressure. It recruits alveoli and improves oxygenation but adds no ventilatory support, so it suits hypoxaemic failure such as cardiogenic pulmonary oedema or obstructive sleep apnoea. BiPAP adds inspiratory pressure support on top, so it also removes CO₂ and treats hypercapnic failure.",
+        },
+        "name": "What is the difference between BiPAP and CPAP?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The main indication is acute hypercapnic respiratory failure, typically an exacerbation of COPD with pH below 7.35 and PaCO₂ above 6.5 kPa that persists despite optimal medical treatment (BTS/ICS). Other uses include obesity hypoventilation, neuromuscular disease and chest-wall deformity.",
+        },
+        "name": "When is BiPAP indicated?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BTS/ICS guidance suggests starting at EPAP 3–5 cmH₂O and IPAP 15 cmH₂O, then increasing IPAP by 2–5 cmH₂O every few minutes towards 20–30 cmH₂O over about 30 minutes as tolerated. Titrate oxygen to SpO₂ 88–92% and repeat the blood gas at 1 hour.",
+        },
+        "name": "What are typical starting BiPAP settings?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Inability to protect the airway or a low conscious level (unless NIV is the agreed ceiling of care), copious secretions or vomiting, facial trauma or burns, fixed upper-airway obstruction, undrained pneumothorax, severe haemodynamic instability, and recent upper GI or airway surgery (relative).",
+        },
+        "name": "What are the contraindications to BiPAP?",
       },
     ],
   },
@@ -7749,6 +7973,82 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
       },
     ],
   },
+  "/notes/status-epilepticus": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ILAE 2015 definition for convulsive (tonic–clonic) status uses two time points: treatment should start at 5 minutes (t1), and there is a risk of long-term neuronal injury after 30 minutes (t2). Recurrent seizures without return to baseline between them also count.",
+        },
+        "name": "What is the definition of status epilepticus?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A benzodiazepine. In adults: IV lorazepam 0.1 mg/kg (usually 4 mg), repeated once after 5–10 minutes if needed. Without IV access: buccal midazolam 10 mg or rectal diazepam 10–20 mg. Limit benzodiazepines to two doses in total, including any given before hospital.",
+        },
+        "name": "What is first-line treatment for status epilepticus?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Levetiracetam, sodium valproate or phenytoin. The ESETT trial found them similarly effective (about half of patients stop seizing). UK guidance (NICE 2022) lists all three; many units favour levetiracetam for its safety. Avoid valproate in women and girls who could become pregnant and in suspected liver or mitochondrial disease.",
+        },
+        "name": "What is second-line treatment?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Refractory status continues despite a benzodiazepine and one second-line drug; it usually needs anaesthesia (propofol, thiopental or midazolam infusion) with EEG monitoring. Super-refractory status continues, or recurs, 24 hours or more after starting anaesthesia.",
+        },
+        "name": "What are refractory and super-refractory status epilepticus?",
+      },
+    ],
+  },
+  "/notes/tidaling-chest-drain": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On spontaneous inspiration intrapleural pressure becomes more negative. That pressure is transmitted along the tube, pulling the fluid column up towards the patient. On expiration the pressure becomes less negative and the level falls.",
+        },
+        "name": "Why does the water level rise on inspiration?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "During positive-pressure ventilation, intrathoracic pressure rises on inspiration, so the fluid level falls on inspiration and rises on expiration.",
+        },
+        "name": "Why is tidaling reversed on a ventilator?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Either the lung has fully re-expanded and sealed the drain tip, or there is a problem: the tube is kinked, clamped, blocked by clot or fibrin, or has slipped out of the pleural space. Continuous suction also damps the swing. Examine the patient and the tubing, and get a chest X-ray if unsure.",
+        },
+        "name": "What does absent tidaling mean?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tidaling is movement of the fluid level and means the system is open to the pleura. Bubbling is air passing through the underwater seal and means there is an air leak. Bubbling on expiration or coughing suggests a resolving pneumothorax; continuous bubbling suggests a large or persistent leak (e.g. a bronchopleural fistula) or a leak in the drainage system.",
+        },
+        "name": "What is the difference between tidaling and bubbling?",
+      },
+    ],
+  },
   "/notes/tof-ratio-before-extubation": {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -7892,6 +8192,68 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
           "text": "Use an arterial line and titrate IV antihypertensives (labetalol or esmolol for dissection/phaeochromocytoma surge, GTN for ACS/pulmonary oedema, magnesium + labetalol for eclampsia) to lower MAP by no more than 20–25% in the first hour, then to around 160/100 mmHg over 2–6 h. Treat reversible precipitants (pain, hypoxia, hypercarbia, raised ICP) first. Truly time-critical surgery should not be delayed for chronic hypertension alone.",
         },
         "name": "How do you manage true hypertensive emergency before urgent surgery?",
+      },
+    ],
+  },
+  "/perioperative/complex-needs-anaesthesia": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. No adult can consent on behalf of another in England and Wales unless they hold a valid Lasting Power of Attorney for health and welfare or are a court-appointed deputy. If the patient lacks capacity for the decision, treatment proceeds as a best-interests decision under the Mental Capacity Act 2005, consulting family and carers, and involving an IMCA where there is no one appropriate to consult.",
+        },
+        "name": "Can a family member or paid carer consent to anaesthesia for an adult with a learning disability?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but only where the patient lacks capacity for that decision, the holding is necessary to prevent harm to them, and the degree and duration are proportionate to the likelihood and seriousness of that harm. It should be planned in advance with named roles, documented in the best-interests record, minimised by premedication and adjustments, and reviewed afterwards.",
+        },
+        "name": "Is it ever lawful to hold an adult still for induction of anaesthesia?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It is a patient-held document summarising how someone with a learning disability or autism communicates, what distresses or calms them, how they show pain, their usual medication and their support needs. It converts a chaotic day-of-surgery encounter into a planned one and should be read before the patient arrives, not after.",
+        },
+        "name": "What is a hospital passport and why does it matter to the anaesthetist?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Work up the ladder: environmental and scheduling adjustments first, then preparation and desensitisation, distraction and control-giving, topical or local anaesthesia, regional techniques where suitable, and self-administered nitrous oxide/oxygen — with pharmacological premedication and inhalational induction reserved for when these are insufficient. Document which rung succeeded so it becomes the starting point next time.",
+        },
+        "name": "What should I do before reaching for sedation in a patient who cannot cooperate?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start the consent process early and in stages; provide easy-read, pictorial or video information; involve the people who know how the patient communicates; and use every support available (communication passport, AAC devices, interpreters, a trusted supporter) before concluding the patient cannot decide. If capacity for the decision is still lacking, hold a documented best-interests meeting with an IMCA if appropriate — a carer cannot simply sign instead.",
+        },
+        "name": "How do I consent a patient who communicates non-verbally?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In almost all cases yes: metal restraints obstruct safe positioning, vascular access, diathermy, imaging and emergency airway management. Ask the escorting officers to remove them for induction, surgery and recovery. If a documented security risk assessment insists they remain, record the discussion and require an officer with the key to be immediately available in theatre.",
+        },
+        "name": "Should a prisoner's handcuffs be removed for surgery?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Custody officers may need operational information (timings, likely admission, whether the patient will be sedated) but not the diagnosis, drug history or infection status. Consultation should take place out of hearing whenever the security risk assessment allows.",
+        },
+        "name": "Do prisoners have the same confidentiality rights as other patients?",
       },
     ],
   },
