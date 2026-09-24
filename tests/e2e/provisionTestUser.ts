@@ -47,6 +47,7 @@ async function callProvision(payload: Record<string, unknown>) {
       "Content-Type": "application/json",
       apikey: SUPABASE_ANON_KEY,
       Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      "x-e2e-secret": process.env.E2E_PROVISION_SECRET ?? "",
     },
     body: JSON.stringify(payload),
   });
