@@ -10,9 +10,9 @@ const VIVAS: { q: string; answer: string[] }[] = [
   {
     q: "You cannot intubate a patient after induction. What do you do?",
     answer: [
-      "Declare the problem and call for help; maintain oxygenation throughout (DAS 2015 unanticipated difficult intubation guideline).",
-      "Plan A: optimise position, use videolaryngoscopy and a bougie, ensure full neuromuscular block; limit to three attempts (plus one by a more experienced colleague).",
-      "Plan B: insert a second-generation supraglottic airway (maximum three attempts). If oxygenation is adequate, stop and think: wake the patient, proceed via the SGA, or intubate through it with a fibrescope.",
+      "Declare the problem and call for help; maintain continuous oxygen delivery ('peroxygenation', e.g. nasal oxygen) throughout (DAS 2025 guideline for unanticipated difficult tracheal intubation in adults).",
+      "Plan A: a videolaryngoscope should be used first line; optimise position, use a bougie or stylet and ensure full neuromuscular block. Maximum three attempts, plus one final attempt by a more experienced colleague (3+1); facemask ventilate between attempts.",
+      "Plan B: insert a second-generation supraglottic airway device (maximum three attempts). If oxygenation is adequate, stop and think: wake the patient, proceed via the device, or intubate through it with a flexible bronchoscope.",
       "Plan C: final attempt at facemask ventilation with a two-person technique and adjuncts. If successful, wake the patient (consider sugammadex after rocuronium).",
       "Plan D (can't intubate, can't oxygenate): scalpel–bougie–tube cricothyroidotomy. Afterwards: document, tell the patient, complete an airway alert and report the incident.",
     ],
@@ -22,7 +22,7 @@ const VIVAS: { q: string; answer: string[] }[] = [
     answer: [
       "Recognise it: unexplained rising end-tidal CO₂, tachycardia, rigidity (including masseter spasm), then a rising temperature.",
       "Call for help and the MH kit; stop volatile agents, maximise fresh gas flow, fit activated charcoal filters, and switch to TIVA to keep the patient anaesthetised.",
-      "Give dantrolene 2.5 mg/kg IV, then 1 mg/kg every 5 minutes until the episode is controlled (AAGBI 2020 guideline).",
+      "Give dantrolene 2–3 mg/kg IV, then further 1 mg/kg boluses as required until the episode is controlled (Association of Anaesthetists 2020 guideline).",
       "Treat the complications: active cooling, hyperkalaemia, acidosis, arrhythmias (avoid calcium channel blockers), and myoglobinuria with a urine output above 2 ml/kg/h.",
       "Monitor on ICU, check CK and look for DIC and compartment syndrome; refer the patient and family to the UK MH Investigation Unit in Leeds.",
     ],
@@ -31,9 +31,9 @@ const VIVAS: { q: string; answer: string[] }[] = [
     q: "A patient becomes agitated then arrests during a regional block. Discuss local anaesthetic systemic toxicity.",
     answer: [
       "Stop injecting, call for help, maintain the airway with 100% oxygen, and control seizures with a benzodiazepine, thiopental or propofol.",
-      "In cardiac arrest, start ALS and expect a prolonged resuscitation (possibly over an hour); reduce adrenaline doses to 1 microgram/kg or less and avoid lidocaine for arrhythmias.",
-      "Lipid emulsion 20%: 1.5 ml/kg bolus over 1 minute, then an infusion at 15 ml/kg/h; repeat the bolus up to twice at 5-minute intervals and double the infusion rate if needed. Maximum cumulative dose 12 ml/kg (AAGBI).",
-      "Consider cardiopulmonary bypass or ECMO if available. Report the incident, and prevent recurrence with ultrasound guidance, dose calculation and incremental injection.",
+      "In cardiac arrest, start ALS and expect a prolonged resuscitation (recovery may take over an hour); use reduced adrenaline doses (1 microgram/kg or less), avoid vasopressin, and do not use lidocaine as an antiarrhythmic.",
+      "Lipid emulsion 20% (propofol is not a substitute): 1.5 ml/kg bolus over 2–3 minutes, then an infusion at 15 ml/kg/h. Repeat the bolus at 5 and 10 minutes, and double the infusion to 30 ml/kg/h, if the circulation is not restored. Maximum cumulative dose 12 ml/kg (Association of Anaesthetists Quick Reference Handbook 3-10, 2023).",
+      "Consider cardiopulmonary bypass or ECMO if available. Afterwards: monitor for pancreatitis (daily amylase or lipase) and report the incident; prevent recurrence with ultrasound guidance, dose calculation and incremental injection.",
     ],
   },
   {
@@ -68,15 +68,15 @@ const VIVAS: { q: string; answer: string[] }[] = [
     answer: [
       "Recognise it: stridor or silent obstruction, paradoxical chest movement, loss of the capnography trace and falling saturations. Call for help.",
       "Remove the stimulus, suction the airway, apply 100% oxygen with CPAP via a tight-fitting facemask, and use jaw thrust (including firm pressure at Larson's point).",
-      "If it doesn't resolve, deepen anaesthesia with IV propofol (around 1 mg/kg).",
-      "If it persists with desaturation, give suxamethonium (IV about 0.5–1 mg/kg, or IM 4 mg/kg if there is no IV access) with atropine if bradycardic, then intubate if needed.",
+      "If it doesn't resolve, deepen anaesthesia with IV propofol (about 0.5–1 mg/kg).",
+      "If it persists with desaturation, give suxamethonium (IV 1–2 mg/kg, or IM 4 mg/kg if there is no IV access) with atropine 20 micrograms/kg if bradycardic, then intubate if needed.",
       "Afterwards: watch for negative-pressure pulmonary oedema; prevent it next time by extubating either deep or fully awake.",
     ],
   },
   {
     q: "How do you manage a patient with severe traumatic brain injury on arrival in theatre or ICU?",
     answer: [
-      "Prevent secondary injury: avoid hypoxia (keep PaO₂ above 13 kPa) and hypotension (keep systolic at least 110 mmHg in adults), and keep PaCO₂ at 4.5–5.0 kPa.",
+      "Prevent secondary injury: avoid hypoxia (keep PaO₂ above 13 kPa) and hypotension (keep systolic at least 100 mmHg at 50–69 years, and at least 110 mmHg at 15–49 or over 70 years, per the Brain Trauma Foundation), and keep PaCO₂ at 4.5–5.0 kPa.",
       "Rapid sequence induction with manual in-line stabilisation; sedation and analgesia; 30° head-up tilt with the neck neutral and ties loose.",
       "Targets: ICP below 22 mmHg, CPP 60–70 mmHg (Brain Trauma Foundation), normoglycaemia, normothermia, sodium in the upper normal range.",
       "Raised ICP: osmotherapy (hypertonic saline or mannitol), deeper sedation, brief hyperventilation only as a bridge; involve neurosurgery for evacuation or decompressive craniectomy.",
@@ -89,7 +89,7 @@ const VIVAS: { q: string; answer: string[] }[] = [
       "Recognise it early: suspected infection with organ dysfunction; septic shock means needing vasopressors to keep MAP at 65 mmHg or above with lactate above 2 mmol/L despite fluids (Sepsis-3).",
       "Take blood cultures, then give broad-spectrum antibiotics within one hour; measure lactate and repeat it.",
       "Give IV crystalloid (Surviving Sepsis Campaign 2021 suggests 30 ml/kg within 3 hours), reassessing response rather than giving fixed volumes.",
-      "Start noradrenaline to target MAP 65 mmHg (peripheral access is acceptable at first); add vasopressin, then consider hydrocortisone if still needing escalating doses.",
+      "Start noradrenaline to target MAP 65 mmHg (peripheral access is acceptable at first); add vasopressin rather than escalating noradrenaline further, and consider IV hydrocortisone if noradrenaline of 0.25 micrograms/kg/min or more is needed for at least 4 hours (Surviving Sepsis Campaign 2021).",
       "Find and control the source, and escalate to ICU with ongoing organ support.",
     ],
   },
