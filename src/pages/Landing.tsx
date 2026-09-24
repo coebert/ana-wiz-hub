@@ -1,3 +1,4 @@
+import { DonationNote } from "@/components/feedback/DonationNote";
 import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -169,6 +170,8 @@ const Landing = () => {
           content="Interactive diagrams, quizzes and exam-focused summaries for anaesthesia and intensive care, mapped to the FRCA and FFICM curricula."
         />
       </Helmet>
+
+      <DonationNote />
 
       {/* Hero — split editorial layout, matches /revise */}
       <section className="relative border-b border-border bg-surface">

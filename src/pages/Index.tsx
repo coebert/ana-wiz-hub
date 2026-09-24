@@ -1,3 +1,4 @@
+import { DonationNote } from "@/components/feedback/DonationNote";
 import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Atom, Heart, FlaskConical, ArrowRight, ArrowLeft, Stethoscope, Activity, ClipboardList, Bone, Beaker, GraduationCap, Mic } from "lucide-react";
@@ -78,6 +79,8 @@ const Index = () => {
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
       </Helmet>
+
+      <DonationNote />
 
       {/* Hero — split editorial layout */}
       <section className="relative border-b border-border bg-surface">
