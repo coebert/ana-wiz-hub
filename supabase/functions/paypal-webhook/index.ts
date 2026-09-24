@@ -90,9 +90,12 @@ Deno.serve(async (req) => {
     Deno.env.get("SUPABASE_URL")!,
     Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
   );
-  const { error } = await supabase.from("donations").upsert(
+  const externalId = `paypal:${txId}`;
+  const { data: existing } = await supabase.from("donations").select("id").eq("external_id", externalId).maybeSingle();
+  if (existing) return json({ duplicate: true });
+  const { error } = await supabase.from("donations").insert(
     {
-      external_id: `paypal:${txId}`,
+      external_id: externalId,
       donated_on: when,
       amount: value,
       currency,
@@ -100,7 +103,6 @@ Deno.serve(async (req) => {
       method: "PayPal",
       note: "Recorded automatically from PayPal",
     },
-    { onConflict: "external_id", ignoreDuplicates: true },
   );
   if (error) {
     console.error(error);
