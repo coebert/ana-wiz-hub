@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Headphones, ListMusic, Plus, Check, Download, ExternalLink, Loader2, Search, X, ChevronDown, PlayCircle, SkipBack, SkipForward, ListOrdered, ArrowUp, ArrowDown, RotateCcw, Mic, ArrowRight } from "lucide-react";
+import { Play, Pause, Headphones, ListMusic, Plus, Check, Download, ExternalLink, Loader2, Search, X, ChevronDown, PlayCircle, SkipBack, SkipForward, ListOrdered, ArrowUp, ArrowDown, RotateCcw, Mic, ArrowRight } from "lucide-react";
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
@@ -17,6 +17,7 @@ import {
   usePodcastQueue,
 } from "@/lib/podcastPlaylist";
 import { podcastVoiceLabel } from "@/lib/podcastVoices";
+import { playTrack, togglePlay, usePodcastPlayer, type PlayerTrack } from "@/lib/podcastPlayer";
 
 interface PodcastRow {
   topic_id: string;
@@ -315,25 +316,20 @@ const PodcastsLibrary = () => {
   };
 
   /** Play a specific recording by (topic, accent) key, expanding its section. */
+  const toTrack = (p: ResolvedPodcast): PlayerTrack => ({
+    key: p.key,
+    title: p.topic_title,
+    subtitle: `${podcastVoiceLabel(p.voice ?? undefined)} • ${formatDuration(p.duration_seconds)}`,
+    src: p.audio_url,
+    topicPath: p.topicPath,
+  });
+  const player = usePodcastPlayer();
   const playPodcast = (key: string) => {
     const target = playlist.find((p) => p.key === key);
     if (!target) return;
-
-    pauseAllExcept(key);
-
-    // Ensure the section is expanded so the player is mounted.
-    const sectionKey = (target.section ?? "_other") as string;
-    setCollapsed((prev) => (prev[sectionKey] ? { ...prev, [sectionKey]: false } : prev));
-
-    requestAnimationFrame(() => {
-      const el = audioRefs.current.get(key);
-      if (!el) return;
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-      el.play().catch(() => {
-        /* browser may block autoplay until first user interaction */
-      });
-      setNowPlaying(key);
-    });
+    pauseAllExcept(null);
+    playTrack(toTrack(target), playlist.map(toTrack), autoplay);
+    setNowPlaying(key);
   };
 
   const goToOffset = (currentKey: string, offset: number) => {
@@ -672,7 +668,7 @@ const PodcastsLibrary = () => {
                         key={p.key}
                         className={cn(
                           "rounded-lg border bg-background p-3 sm:p-4 space-y-3 transition-colors",
-                          nowPlaying === p.key ? "border-primary/60" : "border-border"
+                          player.track?.key === p.key ? "border-primary/60" : "border-border"
                         )}
                       >
                         <div className="flex items-start justify-between gap-3 flex-wrap">
@@ -752,17 +748,19 @@ const PodcastsLibrary = () => {
                           const hasNext = playlistIdx >= 0 && playlistIdx < playlist.length - 1;
                           return (
                             <div className="space-y-2">
-                              <audio
-                                ref={setAudioRef(p.key)}
-                                controls
-                                preload="none"
-                                className="w-full"
-                                src={p.audio_url}
-                                onPlay={() => setNowPlaying(p.key)}
-                                onEnded={() => handleEnded(p.key)}
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  player.track?.key === p.key ? togglePlay() : playPodcast(p.key)
+                                }
+                                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary/10 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/20 transition-colors"
                               >
-                                Your browser does not support audio playback.
-                              </audio>
+                                {player.track?.key === p.key && player.playing ? (
+                                  <><Pause className="h-4 w-4" /> Pause</>
+                                ) : (
+                                  <><Play className="h-4 w-4" /> {player.track?.key === p.key ? "Resume" : "Play"}</>
+                                )}
+                              </button>
                               <div className="flex items-center justify-between gap-2">
                                 <button
                                   type="button"

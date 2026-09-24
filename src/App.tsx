@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { MiniPodcastPlayer } from "@/components/podcast/MiniPodcastPlayer";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AppProviders } from "@/app/AppProviders";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -150,6 +151,7 @@ const App = () => (
         <UpdateBanner />
         <CascadePerfBadge />
         <PodcastJobsIndicator />
+        <MiniPodcastPlayer />
 
         <VisitTrackerWrapper>
         <Suspense fallback={<Loading />}>

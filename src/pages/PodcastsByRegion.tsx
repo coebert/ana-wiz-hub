@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Headphones, Search, X, Plus, Check, Globe2, ArrowLeft, ExternalLink } from "lucide-react";
+import { Play, Pause, Headphones, Search, X, Plus, Check, Globe2, ArrowLeft, ExternalLink } from "lucide-react";
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
@@ -11,6 +11,7 @@ import {
   removeFromQueue,
   usePodcastQueue,
 } from "@/lib/podcastPlaylist";
+import { playTrack, togglePlay, usePodcastPlayer } from "@/lib/podcastPlayer";
 import { podcastVoiceLabel, podcastVoiceRegion } from "@/lib/podcastVoices";
 import { cn } from "@/lib/utils";
 
@@ -204,13 +205,22 @@ const PodcastsByRegion = () => {
             )}
           </div>
         </div>
-        <audio
-          src={e.audio_url}
-          controls
-          preload="none"
-          className="mt-3 w-full"
-          aria-label={`${e.topic_title} — ${e.voiceLabel}`}
-        />
+        <button
+          type="button"
+          onClick={() => {
+            if (player.track?.key === e.key) return togglePlay();
+            const toT = (x: Episode) => ({ key: x.key, title: x.topic_title, subtitle: `${x.voiceLabel} • ${formatDuration(x.duration_seconds)}`, src: x.audio_url, topicPath: x.topicPath });
+            playTrack(toT(e), (episodes ?? []).map(toT));
+          }}
+          aria-label={`Play ${e.topic_title} — ${e.voiceLabel}`}
+          className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary/10 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/20 transition-colors"
+        >
+          {player.track?.key === e.key && player.playing ? (
+            <><Pause className="h-4 w-4" /> Pause</>
+          ) : (
+            <><Play className="h-4 w-4" /> {player.track?.key === e.key ? "Resume" : "Play"}</>
+          )}
+        </button>
       </li>
     );
   };
