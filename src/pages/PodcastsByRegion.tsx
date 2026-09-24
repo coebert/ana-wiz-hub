@@ -149,6 +149,7 @@ const PodcastsByRegion = () => {
     return [...map.entries()].sort((a, b) => a[0].localeCompare(b[0]));
   }, [filtered, sort]);
 
+  const player = usePodcastPlayer();
   const clearFilters = () => {
     setQuery("");
     setRegion("all");
