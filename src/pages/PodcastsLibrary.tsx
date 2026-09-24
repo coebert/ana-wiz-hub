@@ -66,6 +66,55 @@ const PodcastsLibrary = () => {
   const [podcasts, setPodcasts] = useState<ResolvedPodcast[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [bulk, setBulk] = useState<{ done: number; total: number } | null>(null);
+  const [bulkNote, setBulkNote] = useState<string | null>(null);
+  const cancelBulk = useRef(false);
+  const toggleSelected = (key: string) =>
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  const downloadSelected = async () => {
+    const items = (podcasts ?? []).filter((p) => selected.has(p.key));
+    if (!items.length) return;
+    cancelBulk.current = false;
+    setBulkNote(null);
+    setBulk({ done: 0, total: items.length });
+    let failed = 0;
+    for (let i = 0; i < items.length; i++) {
+      if (cancelBulk.current) break;
+      const p = items[i];
+      try {
+        const res = await fetch(p.audio_url);
+        if (!res.ok) throw new Error(String(res.status));
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        const safe = p.topic_title.replace(/[^\w\- ]+/g, "").trim().replace(/\s+/g, "-");
+        a.href = url;
+        a.download = `${safe || p.topic_id}-${p.voice ?? "default"}.mp3`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 10000);
+      } catch {
+        failed++;
+      }
+      setBulk({ done: i + 1, total: items.length });
+      await new Promise((r) => setTimeout(r, 400));
+    }
+    setBulk(null);
+    setBulkNote(
+      cancelBulk.current
+        ? "Download cancelled."
+        : failed
+          ? `Finished — ${failed} episode(s) couldn't be downloaded.`
+          : `Finished — ${items.length} episode(s) downloaded. If only one appeared, allow multiple downloads for this site in your browser.`
+    );
+  };
   const [autoplay, setAutoplay] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
     return localStorage.getItem(AUTOPLAY_KEY) === "1";
@@ -537,6 +586,55 @@ const PodcastsLibrary = () => {
         </div>
       )}
 
+      {filtered && filtered.length > 0 && (
+        <div className="mb-4 rounded-lg border border-border bg-card p-3 flex flex-wrap items-center gap-2 text-sm">
+          <Download className="h-4 w-4 text-primary" aria-hidden="true" />
+          <span className="font-medium text-foreground">Download</span>
+          <button
+            type="button"
+            onClick={() => setSelected(new Set(filtered.map((p) => p.key)))}
+            className="rounded-md border border-border px-2 py-1 text-xs hover:bg-muted"
+          >
+            Select all{query ? " shown" : ""} ({filtered.length})
+          </button>
+          {selected.size > 0 && (
+            <button
+              type="button"
+              onClick={() => setSelected(new Set())}
+              className="rounded-md border border-border px-2 py-1 text-xs hover:bg-muted"
+            >
+              Clear selection
+            </button>
+          )}
+          <button
+            type="button"
+            disabled={selected.size === 0 || bulk !== null}
+            onClick={downloadSelected}
+            className="ml-auto inline-flex items-center gap-1 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground disabled:opacity-50"
+          >
+            {bulk ? (
+              <>
+                <Loader2 className="h-3 w-3 animate-spin" /> Downloading {bulk.done}/{bulk.total}
+              </>
+            ) : (
+              <>
+                <Download className="h-3 w-3" /> Download selected ({selected.size})
+              </>
+            )}
+          </button>
+          {bulk && (
+            <button
+              type="button"
+              onClick={() => (cancelBulk.current = true)}
+              className="text-xs text-muted-foreground hover:text-foreground"
+            >
+              Cancel
+            </button>
+          )}
+          {bulkNote && <p className="w-full text-xs text-muted-foreground">{bulkNote}</p>}
+        </div>
+      )}
+
       {grouped && grouped.length > 0 && (
         <div className="space-y-4">
           {grouped.map(({ key, items }) => {
@@ -578,7 +676,15 @@ const PodcastsLibrary = () => {
                         )}
                       >
                         <div className="flex items-start justify-between gap-3 flex-wrap">
-                          <div className="min-w-0">
+                          <div className="min-w-0 flex items-start gap-2">
+                            <input
+                              type="checkbox"
+                              className="mt-1 h-4 w-4 accent-primary shrink-0"
+                              aria-label={`Select ${p.topic_title} for download`}
+                              checked={selected.has(p.key)}
+                              onChange={() => toggleSelected(p.key)}
+                            />
+                            <div className="min-w-0">
                             <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
                               <Headphones className="h-4 w-4 text-primary shrink-0" />
                               <span className="truncate">{p.topic_title}</span>
@@ -592,6 +698,7 @@ const PodcastsLibrary = () => {
                               <span>{formatDuration(p.duration_seconds)}</span>
                               <span aria-hidden="true">•</span>
                               <span>{new Date(p.updated_at).toLocaleDateString()}</span>
+                            </div>
                             </div>
                           </div>
                           <div className="flex items-center gap-2 shrink-0">
