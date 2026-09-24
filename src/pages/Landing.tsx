@@ -183,7 +183,7 @@ const Landing = () => {
                 <GraduationCap className="inline h-3.5 w-3.5 mr-1.5 -mt-0.5" aria-hidden />
                 FRCA Primary · FRCA Final · FFICM
               </p>
-              <h1 className="display text-foreground">AnaesthesiaCore — FRCA &amp; FFICM Revision</h1>
+              <h1 className="display text-foreground">AnaesthesiaCore: Free FRCA &amp; FFICM Revision Notes, Podcasts &amp; Viva Practice</h1>
               <p className="lead mt-4 text-foreground/75">
                 A study companion for FRCA Primary, Final and FFICM trainees. Three tools in one place:{" "}
                 <strong className="font-semibold text-foreground">structured curriculum notes</strong>,{" "}
