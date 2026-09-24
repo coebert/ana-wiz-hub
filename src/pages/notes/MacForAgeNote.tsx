@@ -4,12 +4,12 @@ import { NoteLayout } from "./NoteLayout";
 const MacForAgeNote = () => (
   <NoteLayout
     slug="mac-for-age-formula"
-    title="MAC for age formula: Mapleson calculation & worked examples"
+    title="MAC for age formula: how to calculate age-adjusted MAC"
     shortTitle="MAC for age formula"
-    description="Calculate age-adjusted MAC with the Mapleson formula: MAC falls ~6% per decade after 40. Worked sevoflurane, isoflurane and desflurane examples for the FRCA."
+    description="How to calculate age-adjusted MAC: Mapleson formula MAC = MAC40 × 10^(−0.00269 × (age − 40)), with worked sevoflurane, isoflurane and desflurane values."
     datePublished="2026-06-18"
     examTags={["primary", "final"]}
-    lede="MAC is the end-tidal concentration of a volatile agent that prevents movement to a standard surgical stimulus in 50% of patients. It falls by about 6% per decade after age 40 — the Mapleson age-adjustment formula lets you correct any agent's MAC for the patient in front of you."
+    lede="MAC is the end-tidal concentration of a volatile agent that prevents movement to a standard surgical stimulus in 50% of patients. It falls by about 6% per decade after age 40 — the Mapleson age-adjustment formula lets you calculate age-adjusted MAC for sevoflurane, isoflurane or desflurane for the patient in front of you: MAC(age) = MAC₄₀ × 10^(−0.00269 × (age − 40))."
     faqs={[
       {
         q: "What is the Mapleson formula for MAC age adjustment?",
