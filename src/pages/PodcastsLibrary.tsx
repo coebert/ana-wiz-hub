@@ -586,6 +586,9 @@ const PodcastsLibrary = () => {
         <div className="mb-4 rounded-lg border border-border bg-card p-3 flex flex-wrap items-center gap-2 text-sm">
           <Download className="h-4 w-4 text-primary" aria-hidden="true" />
           <span className="font-medium text-foreground">Download</span>
+          <Link to="/podcasts/download" className="rounded-md border border-primary/50 px-2 py-1 text-xs font-medium text-primary hover:bg-primary/10">
+            Download page (ZIP)
+          </Link>
           <button
             type="button"
             onClick={() => setSelected(new Set(filtered.map((p) => p.key)))}
