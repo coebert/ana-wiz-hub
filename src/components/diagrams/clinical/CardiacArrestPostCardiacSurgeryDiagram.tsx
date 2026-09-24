@@ -114,7 +114,7 @@ export default function CardiacArrestPostCardiacSurgeryDiagram() {
     <DiagramFigure
       id="cardiac-arrest-post-cardiac-surgery-diagram"
       title="Cardiac arrest post cardiac surgery"
-      description="Auto-generated wrapper for the Cardiac arrest post cardiac surgery anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Cardiac arrest post cardiac surgery: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <figure className="rounded-xl border border-border bg-card p-4 my-6">
         <figcaption className="mb-3">

@@ -77,7 +77,7 @@ export const HPAAxisSuppressionDiagram = () => (
     <DiagramFigure
       id="hpa-axis-suppression-diagram"
       title="HPA axis suppression"
-      description="Auto-generated wrapper for the HPA axis suppression anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="HPA axis suppression: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
             <MechanismCascadeDiagram
       title="HPA axis — chronic steroid suppression cascade"

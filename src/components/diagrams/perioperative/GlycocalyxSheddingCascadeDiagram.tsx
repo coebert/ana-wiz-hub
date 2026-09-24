@@ -79,7 +79,7 @@ export const GlycocalyxSheddingCascadeDiagram = () => (
     <DiagramFigure
       id="glycocalyx-shedding-cascade-diagram"
       title="Glycocalyx shedding cascade"
-      description="Auto-generated wrapper for the Glycocalyx shedding cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Concise plain-language caption per phase — surfaced above the interactive cascade as an accessible ordered list so screen-reader users (and readers who skip the animation) still get the full step-by-step narrative."
     >
       <ol
         className="mb-3 rounded-lg border border-border bg-muted/30 p-3 space-y-1.5 text-xs"

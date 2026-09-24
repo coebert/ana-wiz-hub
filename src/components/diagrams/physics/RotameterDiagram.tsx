@@ -117,7 +117,7 @@ export const RotameterDiagram = () => {
     <DiagramFigure
       id="rotameter-diagram"
       title="Rotameter"
-      description="Auto-generated wrapper for the Rotameter anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated rotameter (variable-orifice, constant-pressure-drop flowmeter) diagram."
     >
                   <div className="bg-card rounded-xl border border-border p-6 space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">

@@ -17,7 +17,7 @@ const DiffusionCapacityDiagram = () => {
     <DiagramFigure
       id="diffusion-capacity-diagram"
       title="Diffusion capacity"
-      description="Auto-generated wrapper for the Diffusion capacity anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Diffusion capacity: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
           <div className="space-y-4">
         <h3 className="text-lg font-semibold text-foreground">Diffusion & Gas Transfer</h3>

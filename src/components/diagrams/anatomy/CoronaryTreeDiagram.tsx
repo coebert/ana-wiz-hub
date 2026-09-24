@@ -127,7 +127,7 @@ const CoronaryTreeDiagram = () => {
     <DiagramFigure
       id="coronary-tree-diagram"
       title="Coronary tree"
-      description="Auto-generated wrapper for the Coronary tree anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Coronary artery tree — ANTERIOR view (viewer faces patient). Convention: patient RIGHT = viewer LEFT. - Right coronary system (RCA, acute marginal, PDA) on viewer-LEFT half (x ‹ 200)."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

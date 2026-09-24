@@ -200,7 +200,7 @@ export const ThermodilutionDiagram = () => {
     <DiagramFigure
       id="thermodilution-diagram"
       title="Thermodilution"
-      description="Auto-generated wrapper for the Thermodilution anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated Stewart–Hamilton thermodilution diagram. Shows a 10 mL bolus of iced saline injected at the RA port of a pulmonary artery catheter, mixing through the right heart, and producing a temperature dip at the PA thermistor."
     >
               <div className="rounded-xl border border-border bg-card p-4 my-4">
         <div className="flex items-start justify-between flex-wrap gap-2 mb-3">

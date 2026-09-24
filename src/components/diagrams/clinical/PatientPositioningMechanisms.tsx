@@ -1011,7 +1011,7 @@ export const PeronealNerveLithotomyAnimation = () => (
     <DiagramFigure
       id="patient-positioning-mechanisms"
       title="Patient positioning mechanisms"
-      description="Auto-generated wrapper for the Patient positioning mechanisms anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Patient positioning mechanisms: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
             <AnimatedMechanism
       title="Lithotomy — common peroneal nerve at the fibular head"

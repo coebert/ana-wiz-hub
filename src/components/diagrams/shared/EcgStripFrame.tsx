@@ -28,7 +28,7 @@ export const EcgStripFrame = ({ children, label = "rhythm strip", className }: E
     <DiagramFigure
       id="ecg-strip-frame"
       title="ECG strip frame"
-      description="Auto-generated wrapper for the ECG strip frame anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Wraps an ECG rhythm-strip SVG with a zoom toggle so the trace stays legible on small screens. At zoom › 1 the strip overflows horizontally and the container becomes scrollable."
     >
                   <div className={cn("relative group", className)}>
         <div

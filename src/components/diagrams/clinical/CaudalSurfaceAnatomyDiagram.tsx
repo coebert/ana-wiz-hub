@@ -137,7 +137,7 @@ const CaudalSurfaceAnatomyDiagram = () => {
     <DiagramFigure
       id="caudal-surface-anatomy-diagram"
       title="Caudal surface anatomy"
-      description="Auto-generated wrapper for the Caudal surface anatomy anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Paediatric caudal epidural — POSTERIOR surface-anatomy plate. View: posterior (viewer faces patient's back). Patient's RIGHT = viewer's LEFT."
     >
                   <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

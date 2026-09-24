@@ -129,7 +129,7 @@ const EcprDecisionTreeDiagram = () => {
     <DiagramFigure
       id="ecpr-decision-tree-diagram"
       title="Ecpr decision tree"
-      description="Auto-generated wrapper for the Ecpr decision tree anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="ECMO-CPR (eCPR) decision tree. The clinician answers up to 6 sequential questions; the diagram traces a path through the tree and shows whether the patient is a candidate, a borderline case, or excluded — with the reasoning that drove the call."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

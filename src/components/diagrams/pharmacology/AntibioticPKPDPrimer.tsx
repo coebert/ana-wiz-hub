@@ -93,7 +93,7 @@ const AntibioticPKPDPrimer = () => {
     <DiagramFigure
       id="antibiotic-pkpd-primer"
       title="Antibiotic PKPD primer"
-      description="Auto-generated wrapper for the Antibiotic PKPD primer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Antibiotic PK/PD primer — three killing patterns with worked dosing examples. Time-dependent (β-lactams), concentration-dependent (aminoglycosides), AUC-dependent (vancomycin, fluoroquinolones)."
     >
                   <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">Antibiotic PK/PD primer — three killing patterns</h3>

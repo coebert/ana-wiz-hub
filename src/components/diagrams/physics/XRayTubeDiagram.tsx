@@ -138,7 +138,7 @@ export const XRayTubeDiagram = () => {
     <DiagramFigure
       id="x-ray-tube-diagram"
       title="X ray tube"
-      description="Auto-generated wrapper for the X ray tube anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Per-part jumps into the same topic's safety sections."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

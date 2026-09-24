@@ -118,7 +118,7 @@ const SecondGasEffectDiagram = () => {
     <DiagramFigure
       id="second-gas-effect-diagram"
       title="Second gas effect"
-      description="Auto-generated wrapper for the Second gas effect anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated diagrams illustrating two N₂O-related phenomena: 1. Second Gas Effect (induction): rapid uptake of large-volume N₂O concentrates the companion volatile in a shrinking alveolar gas pool → faster FA/FI rise. 2."
     >
                   <div className="my-6 space-y-4">
         <style>{`

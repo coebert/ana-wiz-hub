@@ -9,7 +9,7 @@ const PhaeochromocytomaDiagram = () => {
     <DiagramFigure
       id="phaeochromocytoma-diagram"
       title="Phaeochromocytoma"
-      description="Auto-generated wrapper for the Phaeochromocytoma anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated pathophysiology diagram — Phaeochromocytoma. Shows tumour catecholamine secretion, α₁/β₁ effects, and why α-blockade MUST precede β-blockade."
     >
                   <div className="rounded-2xl border border-border bg-card overflow-hidden">
         <div className="px-4 sm:px-6 py-4 border-b border-border bg-muted/30">

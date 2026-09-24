@@ -12,7 +12,7 @@ const AsthmaBronchospasmDiagram = () => {
     <DiagramFigure
       id="asthma-bronchospasm-diagram"
       title="Asthma bronchospasm"
-      description="Auto-generated wrapper for the Asthma bronchospasm anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated pathophysiology diagram — Acute Asthma / Bronchospasm. Trigger → mast cell degranulation → smooth muscle contraction, mucosal oedema and mucus plugging → expiratory flow limitation with dynamic hyperinflation (auto-PEEP)."
     >
                   <div className="rounded-2xl border border-border bg-card overflow-hidden">
         <div className="px-4 sm:px-6 py-4 border-b border-border bg-muted/30">

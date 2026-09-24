@@ -94,7 +94,7 @@ const WrightRespirometerDiagram = () => {
     <DiagramFigure
       id="wright-respirometer-diagram"
       title="Wright respirometer"
-      description="Auto-generated wrapper for the Wright respirometer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Wright respirometer: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="border border-border rounded-lg p-4 mb-6 bg-card">
         <div className="flex items-start justify-between gap-3 mb-3 flex-wrap">

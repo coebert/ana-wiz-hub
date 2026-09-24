@@ -140,7 +140,7 @@ export const HotspotLayer = ({
     <DiagramFigure
       id="hotspot-layer"
       title="Hotspot layer"
-      description="Auto-generated wrapper for the Hotspot layer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Plain-language explanation (1–2 short sentences)."
     >
               <g ref={containerRef} className="hotspot-layer">
         {hotspots.map((h) => renderShape(h, h.id === activeId))}

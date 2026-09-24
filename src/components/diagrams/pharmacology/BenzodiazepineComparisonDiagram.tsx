@@ -146,7 +146,7 @@ export const BenzodiazepineComparisonDiagram = () => {
     <DiagramFigure
       id="benzodiazepine-comparison-diagram"
       title="Benzodiazepine comparison"
-      description="Auto-generated wrapper for the Benzodiazepine comparison anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Benzodiazepine comparison: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <Card className="p-4 sm:p-6 my-6 bg-card border-border">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">

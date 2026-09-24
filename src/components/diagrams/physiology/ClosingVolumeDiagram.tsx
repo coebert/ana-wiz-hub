@@ -51,7 +51,7 @@ const ClosingVolumeDiagram = () => {
     <DiagramFigure
       id="closing-volume-diagram"
       title="Closing volume"
-      description="Auto-generated wrapper for the Closing volume anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Closing volume: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="space-y-4">
         <h3 className="text-lg font-semibold text-foreground">Single-Breath N₂ Washout & Closing Volume</h3>

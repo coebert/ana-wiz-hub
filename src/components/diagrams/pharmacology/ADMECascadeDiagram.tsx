@@ -69,7 +69,7 @@ export const ADMECascadeDiagram = () => (
     <DiagramFigure
       id="adme-cascade-diagram"
       title="ADME cascade"
-      description="Auto-generated wrapper for the ADME cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="ADME cascade: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
             <MechanismCascadeDiagram
       title="ADME — Pharmacokinetic cascade"

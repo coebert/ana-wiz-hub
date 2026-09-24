@@ -311,7 +311,7 @@ const ElectricityMagnetismDiagram = () => {
     <DiagramFigure
       id="electricity-magnetism-diagram"
       title="Electricity magnetism"
-      description="Auto-generated wrapper for the Electricity magnetism anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Electricity magnetism: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-4">
         <div className="flex flex-wrap gap-2">

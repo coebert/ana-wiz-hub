@@ -323,7 +323,7 @@ const PaediatricEquipmentSizer = () => {
     <DiagramFigure
       id="paediatric-equipment-sizer"
       title="Paediatric equipment sizer"
-      description="Auto-generated wrapper for the Paediatric equipment sizer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Paediatric airway equipment sizer + WETFLAG-style emergency drug doses. APLS 2021 / RCH Melbourne / Broselow-aligned formulae. Drives all calculations from age (years) or measured weight (kg)."
     >
               <div className="my-6 p-4 rounded-xl border border-border bg-card">
         <div className="mb-3">

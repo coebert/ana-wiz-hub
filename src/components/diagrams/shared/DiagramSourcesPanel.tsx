@@ -21,7 +21,7 @@ export const DiagramSourcesPanel = ({ references, imageCredit, note }: DiagramSo
     <DiagramFigure
       id="diagram-sources-panel"
       title="Diagram sources panel"
-      description="Auto-generated wrapper for the Diagram sources panel anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Diagram sources panel: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
       <Collapsible
         open={open}

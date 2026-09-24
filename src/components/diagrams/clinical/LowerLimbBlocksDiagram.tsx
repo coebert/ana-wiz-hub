@@ -309,7 +309,7 @@ export const LowerLimbBlocksDiagram = () => {
     <DiagramFigure
       id="lower-limb-blocks-diagram"
       title="Lower limb blocks"
-      description="Auto-generated wrapper for the Lower limb blocks anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Interactive lower-limb regional block coverage diagram. Click a block (chip or marker on the leg) to see its motor and sensory territory shaded on anterior + posterior leg silhouettes, the needle entry point, and the clinical use-case."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

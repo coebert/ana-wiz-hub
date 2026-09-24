@@ -114,7 +114,7 @@ const BetaLactamaseClassificationTable = () => {
     <DiagramFigure
       id="beta-lactamase-classification-table"
       title="Beta lactamase classification table"
-      description="Auto-generated wrapper for the Beta lactamase classification table anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Ambler classification of β-lactamases (A-D) with substrate spectrum and β-lactamase inhibitor coverage."
     >
               <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">

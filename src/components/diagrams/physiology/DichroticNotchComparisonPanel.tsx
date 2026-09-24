@@ -252,7 +252,7 @@ const DichroticNotchComparisonPanel = () => {
     <DiagramFigure
       id="dichrotic-notch-comparison-panel"
       title="Dichrotic notch comparison panel"
-      description="Auto-generated wrapper for the Dichrotic notch comparison panel anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Side-by-side comparison of aortic pressure waveform morphology — focusing on how the dichrotic notch is altered in common pathologies versus a normal young adult."
     >
               <div className="space-y-4">
         <div className="flex flex-wrap gap-1.5">

@@ -8,7 +8,7 @@ const CarcinoidSyndromeDiagram = () => {
     <DiagramFigure
       id="carcinoid-syndrome-diagram"
       title="Carcinoid syndrome"
-      description="Auto-generated wrapper for the Carcinoid syndrome anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated pathophysiology diagram — Carcinoid syndrome. Tumour mediator release → systemic effects → carcinoid heart disease."
     >
                   <div className="rounded-2xl border border-border bg-card overflow-hidden">
         <div className="px-4 sm:px-6 py-4 border-b border-border bg-muted/30">

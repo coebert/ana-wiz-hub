@@ -180,7 +180,7 @@ const GoalDirectedTherapyAnimation = () => (
     <DiagramFigure
       id="goal-directed-therapy-animation"
       title="Goal directed therapy"
-      description="Auto-generated wrapper for the Goal directed therapy animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Postoperative goal-directed haemodynamic therapy — staged optimisation loop synthesised from OPTIMISE 2014, INPRESS 2017 and the CPOC 2020 high-risk pathway."
     >
             <AnimatedMechanism
       title="Goal-directed haemodynamic therapy — postoperative optimisation loop"

@@ -165,7 +165,7 @@ const StemiLocalisationDiagram = () => {
     <DiagramFigure
       id="stemi-localisation-diagram"
       title="STEMI localisation"
-      description="Auto-generated wrapper for the STEMI localisation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="STEMI localisation interactive — lead-driven counterpart to CoronaryTerritoryMapDiagram. The user clicks an ECG lead and the matching coronary artery, LV territory and reciprocal-change leads all light up."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

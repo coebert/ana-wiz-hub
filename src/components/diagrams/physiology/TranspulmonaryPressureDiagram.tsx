@@ -42,7 +42,7 @@ const TranspulmonaryPressureDiagram = () => {
     <DiagramFigure
       id="transpulmonary-pressure-diagram"
       title="Transpulmonary pressure"
-      description="Auto-generated wrapper for the Transpulmonary pressure anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Transpulmonary pressure: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
           <div className="space-y-4">
         <h3 className="text-lg font-semibold text-foreground">Transpulmonary Pressure & Oesophageal Manometry</h3>

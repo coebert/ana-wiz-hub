@@ -74,7 +74,7 @@ const AntifungalTargetsDiagram = () => {
     <DiagramFigure
       id="antifungal-targets-diagram"
       title="Antifungal targets"
-      description="Auto-generated wrapper for the Antifungal targets anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Fungal cell schematic showing antifungal target sites. Click each labelled site to see the drug classes that act there."
     >
           <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">Antifungal targets — fungal cell schematic</h3>

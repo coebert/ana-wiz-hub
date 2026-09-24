@@ -101,7 +101,7 @@ export const CPPSpiralDiagram = () => (
     <DiagramFigure
       id="cpp-spiral-diagram"
       title="CPP spiral"
-      description="Auto-generated wrapper for the CPP spiral anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="CPP spiral: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
             <MechanismCascadeDiagram
       title="Subendocardial Ischaemic Spiral — Why Vasopressors Save Hearts"

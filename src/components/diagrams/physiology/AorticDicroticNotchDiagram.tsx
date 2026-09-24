@@ -174,7 +174,7 @@ const AorticDicroticNotchDiagram = () => {
     <DiagramFigure
       id="aortic-dicrotic-notch-diagram"
       title="Aortic dicrotic notch"
-      description="Auto-generated wrapper for the Aortic dicrotic notch anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated aortic pressure waveform that highlights the dichrotic notch as the boundary between ventricular systole and diastole. - A sweeping 'now' cursor traces the waveform left-to-right at ~1 cardiac cycle / 2.4 s."
     >
               <div className="space-y-3">
         <div className="rounded-xl border border-border bg-card p-3 md:p-4">

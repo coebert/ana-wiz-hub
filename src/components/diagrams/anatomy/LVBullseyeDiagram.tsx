@@ -174,7 +174,7 @@ const LVBullseyeDiagram = () => {
     <DiagramFigure
       id="lv-bullseye-diagram"
       title="LV bullseye"
-      description="Auto-generated wrapper for the LV bullseye anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="AHA 17-segment short-axis LV bullseye, colour-keyed to the SAME six coronary territory hues used by CoronaryTerritoryMapDiagram and CoronaryTreeDiagram."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

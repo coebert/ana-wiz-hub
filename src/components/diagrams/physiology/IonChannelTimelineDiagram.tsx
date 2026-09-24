@@ -196,7 +196,7 @@ export const IonChannelTimelineDiagram = () => {
     <DiagramFigure
       id="ion-channel-timeline-diagram"
       title="Ion channel timeline"
-      description="Auto-generated wrapper for the Ion channel timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Ion channel timeline: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="space-y-4">
         {/* Cell type toggle */}

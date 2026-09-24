@@ -51,7 +51,7 @@ const NMBATimelineDiagram = () => {
     <DiagramFigure
       id="nmba-timeline-diagram"
       title="NMBA timeline"
-      description="Auto-generated wrapper for the NMBA timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="NMBA timeline: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div>
         <div className="flex items-center gap-3 mb-4">

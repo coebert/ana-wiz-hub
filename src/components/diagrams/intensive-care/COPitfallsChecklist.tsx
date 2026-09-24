@@ -179,7 +179,7 @@ const COPitfallsChecklist = () => {
     <DiagramFigure
       id="co-pitfalls-checklist"
       title="CO pitfalls checklist"
-      description="Auto-generated wrapper for the CO pitfalls checklist anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="CO pitfalls checklist: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="my-6 rounded-xl border border-border bg-card p-4 sm:p-5">
         <div className="mb-3">

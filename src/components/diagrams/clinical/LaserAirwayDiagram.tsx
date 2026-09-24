@@ -216,7 +216,7 @@ const LaserAirwayDiagram = () => {
     <DiagramFigure
       id="laser-airway-diagram"
       title="Laser airway"
-      description="Auto-generated wrapper for the Laser airway anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="LaserAirwayDiagram ------------------ Two-tab teaching diagram for laser airway surgery: 1. Laser-resistant ETT designs (Laser-Flex, Bivona Fome-Cuf, Sheridan Laser-Trach) — annotated cross-section + features and pitfalls. 2."
     >
                   <div className="my-6 p-4 rounded-xl border border-border bg-card">
         <div className="mb-3">

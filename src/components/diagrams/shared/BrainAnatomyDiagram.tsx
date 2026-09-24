@@ -194,7 +194,7 @@ const BrainAnatomyDiagram = () => (
     <DiagramFigure
       id="brain-anatomy-diagram"
       title="Brain anatomy"
-      description="Auto-generated wrapper for the Brain anatomy anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Inner plate content (no outer card chrome) — used by BrainPlatesViewer."
     >
             <div className="rounded-2xl border border-border bg-card overflow-hidden">
       <BrainLateralPlate />

@@ -388,7 +388,7 @@ const LowerLimbBranchesDiagram = () => {
     <DiagramFigure
       id="lower-limb-branches-diagram"
       title="Lower limb branches"
-      description="Auto-generated wrapper for the Lower limb branches anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Lower limb branches: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <PlexusCard>
         <DiagramToggleBar

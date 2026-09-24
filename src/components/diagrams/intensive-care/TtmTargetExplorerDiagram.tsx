@@ -177,7 +177,7 @@ const TtmTargetExplorerDiagram = () => {
     <DiagramFigure
       id="ttm-target-explorer-diagram"
       title="Ttm target explorer"
-      description="Auto-generated wrapper for the Ttm target explorer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Targeted Temperature Management (TTM) explorer. Lets the learner pick one of four post-ROSC temperature strategies and shows the rationale, current evidence, physiological effects and complications."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

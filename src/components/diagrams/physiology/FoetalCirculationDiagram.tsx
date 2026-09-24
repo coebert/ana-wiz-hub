@@ -98,7 +98,7 @@ const FoetalCirculationDiagram = () => {
     <DiagramFigure
       id="foetal-circulation-diagram"
       title="Foetal circulation"
-      description="Auto-generated wrapper for the Foetal circulation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Foetal circulation — animated diagram. Improvements over previous version: • HSL design-token colours throughout (no hard-coded hex). • Three shunt highlights (DV / FO / DA) with focused detail card."
     >
               <div className="space-y-4">
         <div className="flex flex-wrap items-start justify-between gap-3">

@@ -153,7 +153,7 @@ export const SchniderEleveldDiagram = () => {
     <DiagramFigure
       id="schnider-eleveld-diagram"
       title="Schnider eleveld"
-      description="Auto-generated wrapper for the Schnider eleveld anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Schnider eleveld: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="w-full max-w-4xl mx-auto space-y-4">
         {/* Validity badges */}

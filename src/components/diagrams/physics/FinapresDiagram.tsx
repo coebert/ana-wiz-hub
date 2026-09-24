@@ -4,7 +4,7 @@ const FinapresDiagram = () => {
     <DiagramFigure
       id="finapres-diagram"
       title="Finapres"
-      description="Auto-generated wrapper for the Finapres anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Finapres: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="my-8">
         <h3 className="text-xl font-serif font-bold text-foreground mb-4">Finapres Volume-Clamp Servo Loop</h3>

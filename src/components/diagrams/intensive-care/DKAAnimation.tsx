@@ -167,7 +167,7 @@ const DKAAnimation = () => (
     <DiagramFigure
       id="dka-animation"
       title="DKA"
-      description="Auto-generated wrapper for the DKA animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Diabetic ketoacidosis — pathophysiology animation. Six-step cascade: insulin deficiency → counter-regulatory surge → lipolysis & ketogenesis → high-anion-gap acidosis → osmotic diuresis & dehydration → potassium paradox → resolution with treatment."
     >
             <AnimatedMechanism
       title="Diabetic ketoacidosis — pathophysiology"

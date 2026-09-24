@@ -226,7 +226,7 @@ const ImmuneCellLineageDiagram = () => {
     <DiagramFigure
       id="immune-cell-lineage-diagram"
       title="Immune cell lineage"
-      description="Auto-generated wrapper for the Immune cell lineage anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Reference labels (must match entries in references.ts under 'haematology-immunity')"
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

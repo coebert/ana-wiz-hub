@@ -107,7 +107,7 @@ export const AgonismSpectrumDiagram = () => {
     <DiagramFigure
       id="agonism-spectrum-diagram"
       title="Agonism spectrum"
-      description="Auto-generated wrapper for the Agonism spectrum anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Agonism spectrum: full agonist → partial agonist → antagonist → inverse agonist. Animated horizontal bar shows the receptor's signalling output (% Emax) relative to a small constitutive baseline."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

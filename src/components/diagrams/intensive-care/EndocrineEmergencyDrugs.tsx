@@ -383,7 +383,7 @@ const EndocrineEmergencyDrugs = () => {
     <DiagramFigure
       id="endocrine-emergency-drugs"
       title="Endocrine emergency drugs"
-      description="Auto-generated wrapper for the Endocrine emergency drugs anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Clickable medication quick-reference for endocrine emergency drugs. Grouped by emergency, each card shows dose, onset, mechanism, contraindications/cautions and a 'pearl' exam-friendly note."
     >
               <div className="my-6 space-y-3">
         <div className="rounded-xl border border-border bg-muted/20 p-4">

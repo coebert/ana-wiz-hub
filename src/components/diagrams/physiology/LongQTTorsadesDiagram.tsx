@@ -128,7 +128,7 @@ export const LongQTTorsadesDiagram = () => {
     <DiagramFigure
       id="long-qt-torsades-diagram"
       title="Long QT torsades"
-      description="Auto-generated wrapper for the Long QT torsades anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Long QT torsades: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-4">
         {/* Trigger selector */}

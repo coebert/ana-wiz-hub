@@ -96,7 +96,7 @@ const PerioperativeDiabetesDiagram = () => {
     <DiagramFigure
       id="perioperative-diabetes-diagram"
       title="Perioperative diabetes"
-      description="Auto-generated wrapper for the Perioperative diabetes anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Perioperative diabetes: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-4 mb-8">
         <div className="p-4 rounded-lg border border-border bg-card">

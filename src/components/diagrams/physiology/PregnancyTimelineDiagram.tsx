@@ -124,7 +124,7 @@ const PregnancyTimelineDiagram = () => {
     <DiagramFigure
       id="pregnancy-timeline-diagram"
       title="Pregnancy timeline"
-      description="Auto-generated wrapper for the Pregnancy timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated maternal physiology timeline. X-axis: gestational weeks 0 → 40 (+ 'PP' post-partum window). Y-axis: clustered tracks for organ systems (CV, Respiratory, Haematology, Renal/Hepatic, GI/Airway, Endocrine/Pharmacology)."
     >
               <div className="rounded-xl border border-border bg-card/50 p-4 space-y-4">
         <div className="flex flex-wrap items-center gap-3 justify-between">

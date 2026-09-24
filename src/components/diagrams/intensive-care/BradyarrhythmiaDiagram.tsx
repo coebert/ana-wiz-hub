@@ -438,7 +438,7 @@ const BradyarrhythmiaDiagram = () => {
     <DiagramFigure
       id="bradyarrhythmia-diagram"
       title="Bradyarrhythmia"
-      description="Auto-generated wrapper for the Bradyarrhythmia anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Bradyarrhythmia series — sinus brady, sinus arrest, junctional escape, ventricular escape, sick sinus / brady-tachy. Sibling to TachyarrhythmiaDiagram — same mini-tree + rhythm-strip language."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

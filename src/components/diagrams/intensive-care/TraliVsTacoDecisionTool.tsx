@@ -177,7 +177,7 @@ export const TraliVsTacoDecisionTool = () => {
     <DiagramFigure
       id="trali-vs-taco-decision-tool"
       title="Trali vs taco decision tool"
-      description="Auto-generated wrapper for the Trali vs taco decision tool anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="TRALI vs TACO Decision Tool — interactive bedside differential. Synthesises four pillars used in the UK NHSBT / SHOT and ISBT 2019 consensus definitions: timing, filling pressures (CVP / JVP), oxygenation pattern, and response to diuresis."
     >
                   <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
         <div className="mb-4">

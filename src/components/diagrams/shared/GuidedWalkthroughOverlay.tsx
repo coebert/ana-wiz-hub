@@ -103,7 +103,7 @@ export default function GuidedWalkthroughOverlay({
     <DiagramFigure
       id="guided-walkthrough-overlay"
       title="Guided walkthrough overlay"
-      description="Auto-generated wrapper for the Guided walkthrough overlay anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Optional confirmation prompt shown when all actions are checked"
     >
               <div
         className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-background/70 backdrop-blur-sm animate-fade-in"

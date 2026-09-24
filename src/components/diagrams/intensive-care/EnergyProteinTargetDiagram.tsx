@@ -49,7 +49,7 @@ export const EnergyProteinTargetDiagram = () => {
     <DiagramFigure
       id="energy-protein-target-diagram"
       title="Energy protein target"
-      description="Auto-generated wrapper for the Energy protein target anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Energy protein target: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
         <div className="mb-4">

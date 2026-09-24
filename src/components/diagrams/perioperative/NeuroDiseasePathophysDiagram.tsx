@@ -166,7 +166,7 @@ const NeuroDiseasePathophysDiagram = () => {
     <DiagramFigure
       id="neuro-disease-pathophys-diagram"
       title="Neuro disease pathophys"
-      description="Auto-generated wrapper for the Neuro disease pathophys anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Apply a 'seek' to every CSS animation under the container so the user can scrub frames manually. We pause each .anim- element and use a negative animation-delay to position it at the requested time."
     >
           <div ref={containerRef} className="rounded-lg border border-border bg-card p-4 space-y-3">
         <div>

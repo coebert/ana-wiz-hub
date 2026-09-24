@@ -221,7 +221,7 @@ export const PainMechanismsDiagram = () => {
     <DiagramFigure
       id="pain-mechanisms-diagram"
       title="Pain mechanisms"
-      description="Auto-generated wrapper for the Pain mechanisms anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Interactive comparison of the three IASP-recognised pain mechanisms: nociceptive, neuropathic and nociplastic. Click a mechanism band to see lesion site, signalling biology, exemplar conditions and mechanism-targeted management."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

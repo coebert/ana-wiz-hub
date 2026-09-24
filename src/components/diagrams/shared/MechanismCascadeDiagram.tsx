@@ -235,7 +235,7 @@ export const MechanismCascadeDiagram = ({
     <DiagramFigure
       id="mechanism-cascade-diagram"
       title="Mechanism cascade"
-      description="Auto-generated wrapper for the Mechanism cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Re-usable animated mechanism cascade. Each cascade is a vertical chain of nodes connected by arrows. The active step lights up with the accent colour, the connecting arrow fills in, and a description card explains what is happening at that step."
     >
           <div
         ref={rootRef}

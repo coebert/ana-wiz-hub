@@ -412,7 +412,7 @@ const ClinicalMeasurementDiagram = () => {
     <DiagramFigure
       id="clinical-measurement-diagram"
       title="Clinical measurement"
-      description="Auto-generated wrapper for the Clinical measurement anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Clinical measurement: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-4">
         <div className="flex flex-wrap gap-2">

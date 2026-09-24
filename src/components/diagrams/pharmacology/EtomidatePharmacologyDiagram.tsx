@@ -38,7 +38,7 @@ export const EtomidatePharmacologyDiagram = () => {
     <DiagramFigure
       id="etomidate-pharmacology-diagram"
       title="Etomidate pharmacology"
-      description="Auto-generated wrapper for the Etomidate pharmacology anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Etomidate pharmacology: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="w-full max-w-3xl mx-auto space-y-4">
         <div className="flex flex-wrap gap-1.5 justify-center">

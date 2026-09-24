@@ -189,7 +189,7 @@ export const CTDoseExplorer = () => {
     <DiagramFigure
       id="ct-dose-explorer"
       title="CT dose explorer"
-      description="Auto-generated wrapper for the CT dose explorer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Interactive CT dose explorer. The user adjusts acquisition parameters (kVp, mAs, rotation time, pitch, scan length, number of phases, patient diameter, body region)."
     >
               <div className="my-6 rounded-xl border border-border bg-muted/30 p-4 space-y-4">
         <div>

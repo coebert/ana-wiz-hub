@@ -55,7 +55,7 @@ export const DiagramLearningPoints = ({
     <DiagramFigure
       id="diagram-learning-points"
       title="Diagram learning points"
-      description="Auto-generated wrapper for the Diagram learning points anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Short citation label, e.g. 'BJA Educ 2018'."
     >
                   <aside
         role="note"

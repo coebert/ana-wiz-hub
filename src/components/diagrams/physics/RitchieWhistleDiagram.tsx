@@ -4,7 +4,7 @@ const RitchieWhistleDiagram = () => {
     <DiagramFigure
       id="ritchie-whistle-diagram"
       title="Ritchie whistle"
-      description="Auto-generated wrapper for the Ritchie whistle anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Ritchie whistle: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="rounded-xl border border-border bg-card p-2 overflow-x-auto">
         <svg viewBox="0 0 480 320" className="w-full max-w-[480px] mx-auto" style={{ minWidth: 300 }}>

@@ -97,7 +97,7 @@ export const RenalBloodFlowDiagram = () => {
     <DiagramFigure
       id="renal-blood-flow-diagram"
       title="Renal blood flow"
-      description="Auto-generated wrapper for the Renal blood flow anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Renal blood flow: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-4">
         {/* Scenario selector */}

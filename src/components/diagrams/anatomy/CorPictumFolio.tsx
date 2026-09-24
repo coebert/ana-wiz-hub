@@ -396,7 +396,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
     <DiagramFigure
       id="cor-pictum-folio"
       title="Cor pictum folio"
-      description="Auto-generated wrapper for the Cor pictum folio anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Cor Pictum folio — unified, in-app anatomical plate viewer in the 'painted heart' idiom: cream linen stock, hairline plate-mark, italic Latin labels, oxidized-red Roman folio numerals."
     >
               <div className={cn("rounded-2xl border border-border bg-card overflow-hidden", className)}>
         {/* Atlas header strip */}

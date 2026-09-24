@@ -127,7 +127,7 @@ export const TURPSyndromeDiagram = ({ context = "turp" }: TURPSyndromeDiagramPro
     <DiagramFigure
       id="turp-syndrome-diagram"
       title="TURP syndrome"
-      description="Auto-generated wrapper for the TURP syndrome anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="TURP Syndrome — interactive process diagram. Shows hypotonic glycine 1.5% absorption via open prostatic venous sinuses, the cascade of dilutional hyponatraemia → CNS / CV / visual features, and key management levers. Click a stage to reveal the clinical detail."
     >
               <div className="my-6 space-y-4">
         <div className="rounded-xl border border-border bg-card p-4 sm:p-5">

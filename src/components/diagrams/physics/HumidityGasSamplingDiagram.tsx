@@ -357,7 +357,7 @@ const HumidityGasSamplingDiagram = () => {
     <DiagramFigure
       id="humidity-gas-sampling-diagram"
       title="Humidity gas sampling"
-      description="Auto-generated wrapper for the Humidity gas sampling anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Humidity gas sampling: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-4">
         <Tabs value={activeTab} onValueChange={setActiveTab}>

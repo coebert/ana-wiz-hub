@@ -111,7 +111,7 @@ export default function ArrestTimeWindowWidget() {
     <DiagramFigure
       id="arrest-time-window-widget"
       title="Arrest time window widget"
-      description="Auto-generated wrapper for the Arrest time window widget anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Arrest time window widget: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="rounded-xl border border-border bg-card p-4 my-6">
         <div className="flex items-start justify-between gap-3 mb-3 flex-wrap">

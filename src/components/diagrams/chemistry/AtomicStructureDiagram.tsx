@@ -43,7 +43,7 @@ export const AtomicStructureDiagram = () => {
     <DiagramFigure
       id="atomic-structure-diagram"
       title="Atomic structure"
-      description="Auto-generated wrapper for the Atomic structure anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Atomic structure: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="w-full max-w-2xl mx-auto">
         {/* Atom model toggle */}

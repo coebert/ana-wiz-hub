@@ -618,7 +618,7 @@ const RefeedingSyndromeAnimation = () => {
     <DiagramFigure
       id="refeeding-syndrome-animation"
       title="Refeeding syndrome"
-      description="Auto-generated wrapper for the Refeeding syndrome animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Refeeding syndrome — pathophysiology animation. Walks the learner from prolonged starvation through the insulin surge, intracellular electrolyte shift, thiamine depletion, and the resulting cardiac / neurological / respiratory sequelae."
     >
                   <AnimatedMechanism
         title="Refeeding syndrome — pathophysiology"

@@ -115,7 +115,7 @@ export const SepsisHostResponseDiagram = () => (
     <DiagramFigure
       id="sepsis-host-response-diagram"
       title="Sepsis host response"
-      description="Auto-generated wrapper for the Sepsis host response anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Sepsis host response: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
             <MechanismCascadeDiagram
       title="Sepsis — Host Response Cascade"

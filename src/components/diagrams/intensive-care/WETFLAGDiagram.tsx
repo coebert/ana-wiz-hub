@@ -101,7 +101,7 @@ const WETFLAGDiagram = () => {
     <DiagramFigure
       id="wetflag-diagram"
       title="WETFLAG"
-      description="Auto-generated wrapper for the WETFLAG anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="WETFLAG: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="my-6 p-4 rounded-xl border border-border bg-card">
         <div className="flex flex-wrap items-start justify-between gap-3 mb-3">

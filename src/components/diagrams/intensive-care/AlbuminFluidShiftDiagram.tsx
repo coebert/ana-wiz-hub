@@ -126,7 +126,7 @@ const AlbuminFluidShiftDiagram = () => {
     <DiagramFigure
       id="albumin-fluid-shift-diagram"
       title="Albumin fluid shift"
-      description="Auto-generated wrapper for the Albumin fluid shift anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Fraction of infused volume retained intravascularly at steady state"
     >
               <div className="rounded-lg border border-border bg-card p-4 space-y-4">
         <div>

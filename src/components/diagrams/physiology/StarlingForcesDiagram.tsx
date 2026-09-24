@@ -74,7 +74,7 @@ const StarlingForcesDiagram = () => {
     <DiagramFigure
       id="starling-forces-diagram"
       title="Starling forces"
-      description="Auto-generated wrapper for the Starling forces anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Interactive Starling Forces diagram showing the balance of hydrostatic and oncotic pressures across the capillary, with glycocalyx layer."
     >
                   <div className="border border-border rounded-lg p-4 mb-6">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">Starling Forces — Revised Model</h3>

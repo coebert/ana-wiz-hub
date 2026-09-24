@@ -234,7 +234,7 @@ const DefibrillationPacingDiagram = () => {
     <DiagramFigure
       id="defibrillation-pacing-diagram"
       title="Defibrillation pacing"
-      description="Auto-generated wrapper for the Defibrillation pacing anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Defibrillation pacing: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-4">
         <div className="flex flex-wrap gap-2">

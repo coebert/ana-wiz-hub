@@ -22,7 +22,7 @@ export const DiagramToggleBar = ({ title, subtitle, toggles, className = "" }: D
     <DiagramFigure
       id="diagram-toggle-bar"
       title="Diagram toggle bar"
-      description="Auto-generated wrapper for the Diagram toggle bar anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Unified toggle bar used across head & neck anatomy diagrams. Renders an optional title/subtitle on the left and a row of pill toggle buttons on the right (Sutures, Labels, etc.)."
     >
                   <div className={`flex flex-wrap items-start justify-between gap-2 mb-2 ${className}`}>
         {(title || subtitle) && (

@@ -113,7 +113,7 @@ export const PneumoperitoneumTrendelenburgDiagram = () => {
     <DiagramFigure
       id="pneumoperitoneum-trendelenburg-diagram"
       title="Pneumoperitoneum trendelenburg"
-      description="Auto-generated wrapper for the Pneumoperitoneum trendelenburg anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Pneumoperitoneum + steep Trendelenburg — multi-system effects diagram. Tap a system (CV / Resp / Neuro / Renal / Endocrine) to see physiology and anaesthetic mitigation. Used in robotic gynae / urology."
     >
               <div className="my-6 space-y-4">
         <div className="rounded-xl border border-border bg-card p-4 sm:p-5">

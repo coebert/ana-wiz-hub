@@ -248,7 +248,7 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
     <DiagramFigure
       id="interactive-dermatome-map"
       title="Interactive dermatome MAP"
-      description="Auto-generated wrapper for the Interactive dermatome MAP anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Optional controlled canonical level (e.g. 'T10', 'S2-4')."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

@@ -8,7 +8,7 @@ const BonfilsDeviceDiagram = () => {
     <DiagramFigure
       id="bonfils-device-diagram"
       title="Bonfils device"
-      description="Auto-generated wrapper for the Bonfils device anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Annotated schematic of the Bonfils retromolar rigid intubation fibrescope. Pure SVG, themed with semantic tokens."
     >
                   <figure className="m-0">
         <div className="rounded-md border border-border bg-card p-3">

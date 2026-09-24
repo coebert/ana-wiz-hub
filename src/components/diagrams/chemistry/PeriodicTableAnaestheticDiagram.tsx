@@ -144,7 +144,7 @@ export const PeriodicTableAnaestheticDiagram = () => {
     <DiagramFigure
       id="periodic-table-anaesthetic-diagram"
       title="Periodic table anaesthetic"
-      description="Auto-generated wrapper for the Periodic table anaesthetic anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Periodic table anaesthetic: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="space-y-4">
         {/* Legend */}

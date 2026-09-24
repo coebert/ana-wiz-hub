@@ -128,7 +128,7 @@ export const AAShuntAnimation = () => {
     <DiagramFigure
       id="aa-shunt-animation"
       title="AA shunt"
-      description="Auto-generated wrapper for the AA shunt animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Arachidonic-acid shunt animation ───────────────────────────────── Step-by-step animated diagram showing how COX inhibition diverts arachidonic acid (AA) into the 5-LOX pathway, generating cysteinyl leukotrienes responsible for AERD (aspirin-exacerbated…"
     >
           <div className="w-full max-w-2xl mx-auto">
         <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img"

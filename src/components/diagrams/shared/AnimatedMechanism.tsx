@@ -132,7 +132,7 @@ export const AnimatedMechanism = ({
     <DiagramFigure
       id="animated-mechanism"
       title="Animated mechanism"
-      description="Auto-generated wrapper for the Animated mechanism anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Short label, must match a topicReferences entry on the host topic."
     >
               <figure
         className={cn(

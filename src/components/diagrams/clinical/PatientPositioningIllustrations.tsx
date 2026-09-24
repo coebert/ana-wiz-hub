@@ -156,7 +156,7 @@ export const BeachChairIllustration: React.FC = () => (
     <DiagramFigure
       id="patient-positioning-illustrations"
       title="Patient positioning illustrations"
-      description="Auto-generated wrapper for the Patient positioning illustrations anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Illustration-style image plates for the principal surgical positions. Replaces the previous schematic SVG figures with watercolour-and-ink medical-textbook illustrations."
     >
             <PositionPlate
       src={beachChairImg}

@@ -218,7 +218,7 @@ export const NSAIDMechanismDiagram = () => {
     <DiagramFigure
       id="nsaid-mechanism-diagram"
       title="NSAID mechanism"
-      description="Auto-generated wrapper for the NSAID mechanism anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="NSAID Mechanism Diagram ───────────────────────── Single arachidonic-acid pathway figure showing how COX-1 / COX-2 inhibition produces both therapeutic and adverse effects, plus the lipoxygenase 'shunt' responsible for AERD."
     >
           <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

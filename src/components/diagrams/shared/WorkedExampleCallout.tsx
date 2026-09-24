@@ -18,7 +18,7 @@ export const WorkedExampleCallout = ({ title, scenario, numbers, takeaway }: Wor
     <DiagramFigure
       id="worked-example-callout"
       title="Worked example callout"
-      description="Auto-generated wrapper for the Worked example callout anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Compact 'worked example' callout used beneath interactive physics diagrams. Provides a clinical scenario, the numerical reasoning, and a take-home line. Accent-coloured 4px left border keeps it visually grouped with its diagram."
     >
             <aside
       role="note"

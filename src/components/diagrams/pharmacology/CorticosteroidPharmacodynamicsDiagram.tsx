@@ -138,7 +138,7 @@ export const CorticosteroidPharmacodynamicsDiagram = () => {
     <DiagramFigure
       id="corticosteroid-pharmacodynamics-diagram"
       title="Corticosteroid pharmacodynamics"
-      description="Auto-generated wrapper for the Corticosteroid pharmacodynamics anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Corticosteroid pharmacodynamics: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="rounded-lg border border-border bg-card p-4 md:p-6 space-y-6">
         <div className="space-y-1">

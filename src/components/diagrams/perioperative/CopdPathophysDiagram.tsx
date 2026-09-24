@@ -12,7 +12,7 @@ const CopdPathophysDiagram = () => {
     <DiagramFigure
       id="copd-pathophys-diagram"
       title="COPD pathophys"
-      description="Auto-generated wrapper for the COPD pathophys anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated pathophysiology diagram — COPD. Cigarette smoke → protease/antiprotease imbalance + chronic inflammation → emphysema (loss of elastic recoil) + chronic bronchitis (mucus, narrowing) → V/Q mismatch, hypoxic pulmonary vasoconstriction → cor pulmonale."
     >
                   <div className="rounded-2xl border border-border bg-card overflow-hidden">
         <div className="px-4 sm:px-6 py-4 border-b border-border bg-muted/30">

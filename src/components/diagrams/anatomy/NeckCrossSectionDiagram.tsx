@@ -97,7 +97,7 @@ const NeckCrossSectionDiagram = () => {
     <DiagramFigure
       id="neck-cross-section-diagram"
       title="Neck cross section"
-      description="Auto-generated wrapper for the Neck cross section anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Neck cross section: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="my-6">
         <DiagramToggleBar

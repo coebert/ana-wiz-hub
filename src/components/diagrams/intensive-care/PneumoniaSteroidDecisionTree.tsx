@@ -218,7 +218,7 @@ const PneumoniaSteroidDecisionTree = () => {
     <DiagramFigure
       id="pneumonia-steroid-decision-tree"
       title="Pneumonia steroid decision tree"
-      description="Auto-generated wrapper for the Pneumonia steroid decision tree anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="'Should I give steroids?' decision tree for the unwell pneumonia patient. Synthesises CAPE COD 2023, RECOVERY 2021, ATS/IDSA 2024, ESICM/SCCM 2024, SURVIVING SEPSIS 2021, and Bozzette 1990 (PJP)."
     >
                   <div className="my-6 p-4 rounded-xl border border-border bg-card">
         <div className="flex flex-wrap items-start justify-between gap-2 mb-3">

@@ -583,7 +583,7 @@ export const MechanicalCirculatorySupportDiagram = () => {
     <DiagramFigure
       id="mechanical-circulatory-support-diagram"
       title="Mechanical circulatory support"
-      description="Auto-generated wrapper for the Mechanical circulatory support anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Mechanical circulatory support: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="w-full max-w-3xl mx-auto space-y-3 my-6">
         <div className="text-center">

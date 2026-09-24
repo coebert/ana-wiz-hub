@@ -208,7 +208,7 @@ const NeuraxialAnticoagRiskTool = () => {
     <DiagramFigure
       id="neuraxial-anticoag-risk-tool"
       title="Neuraxial anticoag risk tool"
-      description="Auto-generated wrapper for the Neuraxial anticoag risk tool anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Neuraxial complication risk stratification tool."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

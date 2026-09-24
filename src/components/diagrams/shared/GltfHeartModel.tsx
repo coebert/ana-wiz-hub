@@ -326,7 +326,7 @@ export function GltfHeartModel({
     <DiagramFigure
       id="gltf-heart-model"
       title="Gltf heart"
-      description="Auto-generated wrapper for the Gltf heart anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Heart GLB loader with full optimisation pipeline: - Draco geometry decompression (Google CDN decoders) - Meshopt decompression (gltfpack / EXTmeshoptcompression) - KTX2 / BasisU texture transcoding (Google CDN decoders) - Recursive material polish…"
     >
                   <group
         ref={groupRef}

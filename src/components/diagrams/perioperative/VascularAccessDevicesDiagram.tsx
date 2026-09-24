@@ -877,7 +877,7 @@ export const VascularAccessDevicesDiagram: React.FC = () => {
     <DiagramFigure
       id="vascular-access-devices-diagram"
       title="Vascular access devices"
-      description="Auto-generated wrapper for the Vascular access devices anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Hook: returns true if the user has requested reduced motion at the OS level. Updates live if the preference changes. SSR-safe (returns false on server)."
     >
           <figure className="my-6 rounded-xl border border-border bg-card overflow-hidden">
         <figcaption className="px-4 py-3 border-b border-border bg-muted/30">

@@ -26,7 +26,7 @@ export const PRISDiagram = () => {
     <DiagramFigure
       id="pris-diagram"
       title="PRIS"
-      description="Auto-generated wrapper for the PRIS anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="PRIS: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="w-full max-w-3xl mx-auto space-y-4">
         <Tabs value={tab} onValueChange={(v) => setTab(v as Tab)}>

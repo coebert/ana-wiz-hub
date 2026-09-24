@@ -78,7 +78,7 @@ export const PostCardiacArrestSyndromeDiagram = () => (
     <DiagramFigure
       id="post-cardiac-arrest-syndrome-diagram"
       title="Post cardiac arrest syndrome"
-      description="Auto-generated wrapper for the Post cardiac arrest syndrome anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Post cardiac arrest syndrome: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
             <MechanismCascadeDiagram
       title="Post-Cardiac-Arrest Syndrome — The Four Pillars"

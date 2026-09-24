@@ -2204,7 +2204,7 @@ const AnimatedArm = ({
     <DiagramFigure
       id="patient-positioning-diagrams"
       title="Patient positioning diagrams"
-      description="Auto-generated wrapper for the Patient positioning diagrams anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Patient-positioning diagrams — labelled SVG illustrations used by the 'Patient Positioning in Anaesthesia' clinical topic."
     >
                   <Arm sx={coords.sx} sy={coords.sy} ex={coords.ex} ey={coords.ey} wx={coords.wx} wy={coords.wy}
         idPrefix="pf" upperW={13} foreW={11} handLen={12} gownSleeve />

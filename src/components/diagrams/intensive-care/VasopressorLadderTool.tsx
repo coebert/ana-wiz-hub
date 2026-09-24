@@ -29,7 +29,7 @@ const VasopressorLadderTool = () => {
     <DiagramFigure
       id="vasopressor-ladder-tool"
       title="Vasopressor ladder tool"
-      description="Auto-generated wrapper for the Vasopressor ladder tool anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Vasopressor & inotrope ladder — Surviving Sepsis Campaign 2021. Inputs: MAP, cardiac index, SVR, lactate, current noradrenaline dose, steroid status. Output: stepwise escalation recommendation with rationale and dosing."
     >
           <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">Vasopressor &amp; Inotrope Ladder</h3>

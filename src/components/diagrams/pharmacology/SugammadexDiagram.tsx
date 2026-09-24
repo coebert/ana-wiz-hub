@@ -411,7 +411,7 @@ export const SugammadexDiagram = () => {
     <DiagramFigure
       id="sugammadex-diagram"
       title="Sugammadex"
-      description="Auto-generated wrapper for the Sugammadex anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Sugammadex: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <Card className="p-6 bg-gradient-to-br from-background to-muted/20">
         <div className="flex flex-col gap-1 mb-4">

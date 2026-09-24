@@ -17,7 +17,7 @@ const CitrateWashSeparationDiagram = () => {
     <DiagramFigure
       id="citrate-wash-separation-diagram"
       title="Citrate wash separation"
-      description="Auto-generated wrapper for the Citrate wash separation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated schematic of how citrate (free Cit³⁻) and the Ca–citrate complex are removed from salvaged blood during the centrifuge wash cycle. Left: spinning bell-shaped bowl."
     >
                   <figure className="w-full rounded-lg border border-border bg-card p-4 my-4">
         <svg

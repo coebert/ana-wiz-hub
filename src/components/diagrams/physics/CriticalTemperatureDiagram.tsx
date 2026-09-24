@@ -49,7 +49,7 @@ export const CriticalTemperatureDiagram = () => {
     <DiagramFigure
       id="critical-temperature-diagram"
       title="Critical temperature"
-      description="Auto-generated wrapper for the Critical temperature anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Critical temperature: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="w-full max-w-lg mx-auto">
         <div className="flex gap-2 justify-center mb-4">

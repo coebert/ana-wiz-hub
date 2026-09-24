@@ -102,7 +102,7 @@ export const OpioidSignallingCascadeAnimation = () => {
     <DiagramFigure
       id="opioid-signalling-cascade-animation"
       title="Opioid signalling cascade"
-      description="Auto-generated wrapper for the Opioid signalling cascade animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="µ-opioid receptor (MOR) signalling cascade — animated step-by-step from agonist binding to clinical analgesia, plus the parallel pathways that drive the canonical side-effects. Designed for the Opioids topic. All colour via design tokens."
     >
               <AnimatedMechanism
         title="µ-opioid receptor signalling cascade"

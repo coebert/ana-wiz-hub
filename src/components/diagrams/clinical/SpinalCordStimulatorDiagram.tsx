@@ -11,7 +11,7 @@ export function SpinalCordStimulatorDiagram() {
     <DiagramFigure
       id="spinal-cord-stimulator-diagram"
       title="Spinal cord stimulator"
-      description="Auto-generated wrapper for the Spinal cord stimulator anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="SpinalCordStimulatorDiagram Annotated sagittal/posterior schematic of a spinal cord stimulator system: IPG (battery), tunnelled extension wires, percutaneous epidural lead with 8-contact array sitting in the dorsal epidural space at T8–T10, and a…"
     >
               <figure className="m-0 my-4">
         <div className="rounded-md border border-border bg-card p-3">

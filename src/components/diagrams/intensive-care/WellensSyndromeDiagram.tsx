@@ -165,7 +165,7 @@ const WellensSyndromeDiagram = () => {
     <DiagramFigure
       id="wellens-syndrome-diagram"
       title="Wellens syndrome"
-      description="Auto-generated wrapper for the Wellens syndrome anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Wellens syndrome — pattern A (biphasic) vs pattern B (deeply inverted) precordial T waves in the pain-free interval after unstable angina."
     >
                   <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

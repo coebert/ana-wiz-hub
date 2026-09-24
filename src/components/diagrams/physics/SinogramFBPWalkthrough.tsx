@@ -374,7 +374,7 @@ export const SinogramFBPWalkthrough = () => {
     <DiagramFigure
       id="sinogram-fbp-walkthrough"
       title="Sinogram FBP walkthrough"
-      description="Auto-generated wrapper for the Sinogram FBP walkthrough anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Interactive walkthrough of the Radon transform and filtered back-projection. The user controls the number of projection angles (1 → 180) over a half-turn. Three synchronised canvases show: 1. Phantom + a highlighted projection angle. 2."
     >
                   <div className="my-6 rounded-xl border border-border bg-muted/30 p-4 space-y-4">
         <div className="flex items-start justify-between gap-3 flex-wrap">

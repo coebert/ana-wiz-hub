@@ -140,7 +140,7 @@ export default function PartialAirwayObstructionDiagram() {
     <DiagramFigure
       id="partial-airway-obstruction-diagram"
       title="Partial airway obstruction"
-      description="Auto-generated wrapper for the Partial airway obstruction anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="PartialAirwayObstructionDiagram Animated comparison of partial airway obstruction at four anatomical levels. Each tab loops a spontaneous breath (inspiration → expiration) and shows how the lesion behaves at that level, plus a synchronised flow–volume loop."
     >
           <div className="w-full rounded-lg border border-border bg-card p-4">
         <div className="mb-3">

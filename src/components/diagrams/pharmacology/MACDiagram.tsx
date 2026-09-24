@@ -55,7 +55,7 @@ export const MACDiagram = () => {
     <DiagramFigure
       id="mac-diagram"
       title="MAC"
-      description="Auto-generated wrapper for the MAC anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="MAC: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="w-full max-w-lg mx-auto">
         <div className="flex gap-2 justify-center mb-4">

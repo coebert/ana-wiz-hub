@@ -425,7 +425,7 @@ export const SedationDeliveryProfilesDiagram = () => {
     <DiagramFigure
       id="sedation-delivery-profiles-diagram"
       title="Sedation delivery profiles"
-      description="Auto-generated wrapper for the Sedation delivery profiles anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated comparison of three IV sedation delivery profiles: 1. Intermittent boluses — sawtooth peaks/troughs 2. Manual fixed-rate infusion — slow exponential approach to steady state 3."
     >
                   <figure className="my-6 rounded-xl border border-border bg-secondary/20 p-4">
         <figcaption className="mb-3 flex items-start justify-between gap-3">

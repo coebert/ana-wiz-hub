@@ -193,7 +193,7 @@ const TwelveLeadEcgDiagram = () => {
     <DiagramFigure
       id="twelve-lead-ecg-diagram"
       title="Twelve lead ECG"
-      description="Auto-generated wrapper for the Twelve lead ECG anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="12-lead ECG schematic — fourth synced view of the coronary trio. Each lead box draws a stylised P-QRS-T. When the lead belongs to the currently-selected territory it shows ST elevation and is recoloured; reciprocal leads show ST depression."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">
