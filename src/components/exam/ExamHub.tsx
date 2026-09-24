@@ -26,7 +26,7 @@ export interface ExamHubProps {
   /** FAQ entries — rendered as <details> and emitted as FAQPage JSON-LD. */
   faqs: ExamHubFaq[];
   /** Optional extra sections rendered after the intro. */
-  extras?: React.ReactNode;
+  extras?: import("react").ReactNode;
 }
 
 const SECTION_ORDER: Section[] = [
