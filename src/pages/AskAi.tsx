@@ -180,11 +180,13 @@ const AskAi = () => {
     () =>
       new DefaultChatTransport({
         api: ENDPOINT,
-        headers: {
-          // Public Lovable Cloud anon key — safe in client code, required by
-          // the gateway in front of all Edge Functions.
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? ""}`,
-          apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? "",
+        // Ask AI requires sign-in: send the user's session token.
+        headers: async () => {
+          const { data } = await supabase.auth.getSession();
+          return {
+            Authorization: `Bearer ${data.session?.access_token ?? import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? ""}`,
+            apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? "",
+          };
         },
       }),
     [],
