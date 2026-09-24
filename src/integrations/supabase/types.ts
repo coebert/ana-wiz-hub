@@ -358,6 +358,60 @@ export type Database = {
           },
         ]
       }
+      donation_clicks: {
+        Row: {
+          clicked_at: string
+          id: string
+          source: string
+        }
+        Insert: {
+          clicked_at?: string
+          id?: string
+          source?: string
+        }
+        Update: {
+          clicked_at?: string
+          id?: string
+          source?: string
+        }
+        Relationships: []
+      }
+      donations: {
+        Row: {
+          amount: number
+          created_at: string
+          created_by: string | null
+          currency: string
+          donated_on: string
+          donor_name: string | null
+          id: string
+          method: string
+          note: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          created_by?: string | null
+          currency?: string
+          donated_on?: string
+          donor_name?: string | null
+          id?: string
+          method?: string
+          note?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          created_by?: string | null
+          currency?: string
+          donated_on?: string
+          donor_name?: string | null
+          id?: string
+          method?: string
+          note?: string | null
+        }
+        Relationships: []
+      }
       drug_verification_jobs: {
         Row: {
           completed_at: string | null
