@@ -25,6 +25,8 @@ export interface ExamHubProps {
   intro: string;
   /** FAQ entries — rendered as <details> and emitted as FAQPage JSON-LD. */
   faqs: ExamHubFaq[];
+  /** Optional extra sections rendered after the intro. */
+  extras?: import("react").ReactNode;
 }
 
 const SECTION_ORDER: Section[] = [
@@ -47,6 +49,7 @@ export const ExamHub = ({
   h1,
   intro,
   faqs,
+  extras,
 }: ExamHubProps) => {
   const url = `https://anaesthesiacore.app${path}`;
 
@@ -119,6 +122,9 @@ export const ExamHub = ({
             {intro}
           </p>
         </header>
+
+        {extras}
+
 
         <section aria-labelledby="curriculum-heading" className="mb-10">
           <h2
