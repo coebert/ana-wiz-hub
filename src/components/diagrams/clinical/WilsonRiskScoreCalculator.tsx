@@ -66,7 +66,7 @@ const WilsonRiskScoreCalculator = () => {
     <DiagramFigure
       id="wilson-risk-score-calculator"
       title="Wilson risk score"
-      description="Auto-generated wrapper for the Wilson risk score interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Wilson calculator: enter patient values to compute the score step by step, with the interpretation thresholds and clinical actions FRCA and FFICM candidates should know."
     >
               <div className="border border-border rounded-lg p-4 mb-6">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">Wilson Risk Score Calculator</h3>

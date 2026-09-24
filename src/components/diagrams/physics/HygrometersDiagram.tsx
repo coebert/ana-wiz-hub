@@ -638,7 +638,7 @@ const ElectricalScene = ({ step }: { step: number }) => {
     <DiagramFigure
       id="hygrometers-diagram"
       title="Hygrometers"
-      description="Auto-generated wrapper for the Hygrometers anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Hygrometers: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <svg viewBox="0 0 360 240" role="img" aria-label="Electrical capacitance hygrometer" className="w-full">
         {/* Capacitor sensor */}

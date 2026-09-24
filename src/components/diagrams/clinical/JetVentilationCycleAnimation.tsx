@@ -106,7 +106,7 @@ export default function JetVentilationCycleAnimation() {
     <DiagramFigure
       id="jet-ventilation-cycle-animation"
       title="Jet ventilation cycle"
-      description="Auto-generated wrapper for the Jet ventilation cycle animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="JetVentilationCycleAnimation — animated single-breath cycle for low-frequency supraglottic jet ventilation. Visualises the four checkpoints the operator must verify on every breath: 1. Jet pulse delivered through the injector 2. Chest rise during inspiration 3."
     >
                   <div className="w-full rounded-lg border border-border bg-card p-4">
         <div className="flex flex-col gap-1 mb-3">

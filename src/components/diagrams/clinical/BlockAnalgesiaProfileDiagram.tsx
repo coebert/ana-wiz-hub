@@ -155,7 +155,7 @@ export const BlockAnalgesiaProfileDiagram = () => {
     <DiagramFigure
       id="block-analgesia-profile-diagram"
       title="Block analgesia profile"
-      description="Auto-generated wrapper for the Block analgesia profile anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Side-by-side analgesic profile: single-shot peripheral nerve block vs continuous perineural catheter over 72 h. Hover/click the timeline to read the pain score at any timepoint and see the highlighted phase (block, wear-off cliff, rebound, oral-only)."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

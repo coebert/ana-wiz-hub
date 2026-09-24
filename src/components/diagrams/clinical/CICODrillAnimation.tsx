@@ -93,7 +93,7 @@ export const CICODrillAnimation = () => {
     <DiagramFigure
       id="cico-drill-animation"
       title="CICO drill"
-      description="Auto-generated wrapper for the CICO drill animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="CICO ('can't intubate, can't oxygenate') — DAS 2015 emergency front-of-neck access drill, presented as a 6-step animated mechanism."
     >
                   <AnimatedMechanism
         title="CICO emergency drill — scalpel-bougie-tube (DAS 2015)"

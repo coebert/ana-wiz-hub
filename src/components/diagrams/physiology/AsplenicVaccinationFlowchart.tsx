@@ -94,7 +94,7 @@ export const AsplenicVaccinationFlowchart = () => {
     <DiagramFigure
       id="asplenic-vaccination-flowchart"
       title="Asplenic vaccination"
-      description="Auto-generated wrapper for the Asplenic vaccination clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Asplenic: step-by-step clinical decision pathway showing the assessment points, branches and management actions in guideline order."
     >
               <div className="rounded-lg border border-border bg-card p-4 sm:p-5 space-y-5">
         {/* Timing selector */}

@@ -14,7 +14,7 @@ export const GlycocalyxDiagram = () => {
     <DiagramFigure
       id="glycocalyx-diagram"
       title="Glycocalyx"
-      description="Auto-generated wrapper for the Glycocalyx anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Detailed cross-section of the endothelial glycocalyx. Two views: STRUCTURE (intact, healthy ESL) and DAMAGE (shedding by ANP / inflammation / hyperglycaemia / hypervolaemia → oedema)."
     >
               <div className="rounded-xl border border-border bg-card p-3 sm:p-5">
         <Tabs value={view} onValueChange={(v) => setView(v as "structure" | "damage")} className="w-full">

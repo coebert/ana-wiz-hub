@@ -100,7 +100,7 @@ const FiltrationParticle = ({ delay, speed, size, color, blocked, label }: {
     <DiagramFigure
       id="glomerular-barrier-diagram"
       title="Glomerular barrier"
-      description="Auto-generated wrapper for the Glomerular barrier anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Glomerular barrier: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <g opacity={opacity}>
         <circle cx={x} cy={y} r={size} fill={color} />

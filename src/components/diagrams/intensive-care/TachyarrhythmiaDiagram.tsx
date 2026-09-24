@@ -754,7 +754,7 @@ const TachyarrhythmiaDiagram = () => {
     <DiagramFigure
       id="tachyarrhythmia-diagram"
       title="Tachyarrhythmia"
-      description="Auto-generated wrapper for the Tachyarrhythmia anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Tachyarrhythmia series — sinus tach, AF, atrial flutter, AVNRT, AVRT, monomorphic VT, VF, torsades. Each card pairs a mini conduction-tree schematic showing the focus or re-entry circuit with a stylised rhythm strip and a clinical detail panel."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

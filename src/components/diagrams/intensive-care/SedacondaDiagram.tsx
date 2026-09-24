@@ -65,7 +65,7 @@ const SedacondaDiagram = () => {
     <DiagramFigure
       id="sedaconda-diagram"
       title="Sedaconda"
-      description="Auto-generated wrapper for the Sedaconda anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Sedaconda: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="rounded-xl border border-border bg-card p-4 sm:p-6 mb-8">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">Sedaconda / AnaConDa Device</h3>

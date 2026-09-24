@@ -204,7 +204,7 @@ const DSASpectrogramDiagram = () => {
     <DiagramFigure
       id="dsa-spectrogram-diagram"
       title="DSA spectrogram"
-      description="Auto-generated wrapper for the DSA spectrogram anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Generate DSA spectrogram pixel data as a 2D array [time][freq] → power (0–1). Deterministic pseudo-noise for consistency."
     >
               <div className="border border-border rounded-lg p-4 mb-6">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">

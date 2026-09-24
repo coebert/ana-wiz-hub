@@ -11,7 +11,7 @@ const MGNMBASensitivityDiagram = () => {
     <DiagramFigure
       id="mgnmba-sensitivity-diagram"
       title="MGNMBA sensitivity"
-      description="Auto-generated wrapper for the MGNMBA sensitivity anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="MGNMBA sensitivity: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-4 mb-8">
         <div className="p-4 rounded-lg border border-border bg-card">

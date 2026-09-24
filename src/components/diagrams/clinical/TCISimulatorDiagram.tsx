@@ -155,7 +155,7 @@ const TCISimulatorDiagram = () => {
     <DiagramFigure
       id="tci-simulator-diagram"
       title="TCI simulator"
-      description="Auto-generated wrapper for the TCI simulator anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Simulate simplified 3-compartment TCI pharmacokinetics. Returns arrays of (t, cp, ce) over 15 minutes (900s) at 1s resolution. Uses first-order approximation with overshoot behaviour."
     >
               <div className="border border-border rounded-lg p-4 mb-6">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">

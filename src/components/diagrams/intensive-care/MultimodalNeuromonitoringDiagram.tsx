@@ -212,7 +212,7 @@ const MultimodalNeuromonitoringDiagram = () => {
     <DiagramFigure
       id="multimodal-neuromonitoring-diagram"
       title="Multimodal neuromonitoring"
-      description="Auto-generated wrapper for the Multimodal neuromonitoring anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Multimodal neuromonitoring: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
           <div className="my-6 rounded-lg border border-border bg-card p-4">
         <p className="text-sm font-semibold text-foreground mb-1 text-center">

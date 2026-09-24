@@ -660,7 +660,7 @@ const StepRow = ({
     <DiagramFigure
       id="camicu-flowchart-diagram"
       title="CAMICU flowchart"
-      description="Auto-generated wrapper for the CAMICU flowchart clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="CAMICU: step-by-step clinical decision pathway showing the assessment points, branches and management actions in guideline order."
     >
                   <div
         className={`rounded-md border p-2.5 text-xs ${

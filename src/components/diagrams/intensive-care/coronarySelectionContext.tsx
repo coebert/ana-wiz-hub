@@ -28,7 +28,7 @@ export const CoronarySelectionProvider = ({
     <DiagramFigure
       id="coronary-selection-context"
       title="Coronary selection context"
-      description="Auto-generated wrapper for the Coronary selection context anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Coronary selection context: labelled teaching figure summarising the key structures, relationships and values FRCA and FFICM candidates need to recognise and explain."
     >
                   <CoronarySelectionContext.Provider value={{ territory, setTerritory }}>
         {children}

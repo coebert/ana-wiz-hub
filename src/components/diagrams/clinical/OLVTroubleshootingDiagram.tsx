@@ -176,7 +176,7 @@ const OLVTroubleshootingDiagram = () => {
     <DiagramFigure
       id="olv-troubleshooting-diagram"
       title="OLV troubleshooting"
-      description="Auto-generated wrapper for the OLV troubleshooting anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="OLV troubleshooting: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <Card className="mb-8 border-border bg-card">
         <CardHeader className="pb-3">

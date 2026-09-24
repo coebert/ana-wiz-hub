@@ -221,7 +221,7 @@ export const WiggersDiagram = () => {
     <DiagramFigure
       id="wiggers-diagram"
       title="Wiggers"
-      description="Auto-generated wrapper for the Wiggers anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Wiggers: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="w-full max-w-2xl mx-auto space-y-3">
         {/* Phase selector buttons */}

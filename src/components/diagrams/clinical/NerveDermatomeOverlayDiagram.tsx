@@ -234,7 +234,7 @@ const NerveDermatomeOverlayDiagram = () => {
     <DiagramFigure
       id="nerve-dermatome-overlay-diagram"
       title="Nerve dermatome overlay"
-      description="Auto-generated wrapper for the Nerve dermatome overlay anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Nerve dermatome overlay: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="my-6 rounded-lg border border-border bg-card p-4">
         <p className="text-sm font-semibold text-foreground mb-1 text-center">

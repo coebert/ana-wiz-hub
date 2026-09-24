@@ -101,7 +101,7 @@ const AntibioticTargetsDiagram = () => {
     <DiagramFigure
       id="antibiotic-targets-diagram"
       title="Antibiotic targets"
-      description="Auto-generated wrapper for the Antibiotic targets anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Bacterial cell schematic showing antibiotic target sites. Hover/tap each labelled site to highlight the corresponding cellular target and list the antibiotic classes that act there."
     >
           <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">Antibiotic targets — bacterial cell schematic</h3>

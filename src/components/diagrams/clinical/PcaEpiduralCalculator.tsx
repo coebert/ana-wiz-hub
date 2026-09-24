@@ -147,7 +147,7 @@ const PcaEpiduralCalculator = () => {
     <DiagramFigure
       id="pca-epidural-calculator"
       title="PCA epidural"
-      description="Auto-generated wrapper for the PCA epidural interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="PCA calculator: enter patient values to compute the score step by step, with the interpretation thresholds and clinical actions FRCA and FFICM candidates should know."
     >
               <div className="my-6 p-4 rounded-xl border border-border bg-card">
         <div className="mb-3">

@@ -139,7 +139,7 @@ export const ExamHub = ({
                 <div key={s}>
                   <h3 className="text-lg font-serif font-bold text-foreground mb-2">
                     <Link to={meta.path} className="hover:underline">
-                      {meta.label}
+                      {meta.label} for the {examName}
                     </Link>
                   </h3>
                   <ul className="space-y-1.5">

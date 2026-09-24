@@ -356,7 +356,7 @@ const EmpiricalSepsisChooser = () => {
     <DiagramFigure
       id="empirical-sepsis-chooser"
       title="Empirical sepsis chooser"
-      description="Auto-generated wrapper for the Empirical sepsis chooser anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Empirical sepsis antibiotic chooser. Pick suspected source + patient factors → suggested empirical regimen adapted from UK (NICE NG51, BNF, Surviving Sepsis 2021) and IDSA guidance."
     >
                   <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">

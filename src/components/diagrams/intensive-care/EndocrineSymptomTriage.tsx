@@ -240,7 +240,7 @@ const EndocrineSymptomTriage = () => {
     <DiagramFigure
       id="endocrine-symptom-triage"
       title="Endocrine symptom triage"
-      description="Auto-generated wrapper for the Endocrine symptom triage anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Interactive symptom-to-diagnosis flowchart for endocrine emergencies. Users tick presenting features; a weighted scoring engine ranks the six canonical endocrine crises and surfaces the focused investigation panel for the leading diagnosis."
     >
               <Card className="p-5 my-6 border-icu/40">
         <div className="flex items-start justify-between gap-3 mb-4">

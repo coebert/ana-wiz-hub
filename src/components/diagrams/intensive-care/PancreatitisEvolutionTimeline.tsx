@@ -336,7 +336,7 @@ export const PancreatitisEvolutionTimeline = () => (
     <DiagramFigure
       id="pancreatitis-evolution-timeline"
       title="Pancreatitis evolution timeline"
-      description="Auto-generated wrapper for the Pancreatitis evolution timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated timeline showing how the pancreas (and the peripancreatic spaces) evolve over the 6-week course of severe acute pancreatitis — from early interstitial oedema → necrosis → acute necrotic collection (ANC) → walled-off necrosis (WON), with the…"
     >
             <AnimatedMechanism
       title="Evolution of Pancreatic Necrosis & Fluid Collections"

@@ -126,7 +126,7 @@ const DKAvsHHSDiagram = () => {
     <DiagramFigure
       id="dk-avs-hhs-diagram"
       title="DK avs HHS"
-      description="Auto-generated wrapper for the DK avs HHS anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Side-by-side comparison of Diabetic Ketoacidosis (DKA) vs Hyperosmolar Hyperglycaemic State (HHS) — the two ends of the spectrum of hyperglycaemic emergency. Tap a row to see the teaching point that distinguishes them."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

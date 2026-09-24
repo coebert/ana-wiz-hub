@@ -263,7 +263,7 @@ const PostpartumLegWeaknessDecisionTree = () => {
     <DiagramFigure
       id="postpartum-leg-weakness-decision-tree"
       title="Postpartum leg weakness decision tree"
-      description="Auto-generated wrapper for the Postpartum leg weakness decision tree anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Postpartum leg weakness / sensory disturbance decision tree."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

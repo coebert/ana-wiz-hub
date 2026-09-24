@@ -50,7 +50,7 @@ const EOLIAMurrayCalculator = () => {
     <DiagramFigure
       id="eolia-murray-calculator"
       title="EOLIA murray"
-      description="Auto-generated wrapper for the EOLIA murray interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="EOLIA calculator: enter patient values to compute the score step by step, with the interpretation thresholds and clinical actions FRCA and FFICM candidates should know."
     >
           <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">EOLIA / Murray ECMO Eligibility Calculator</h3>

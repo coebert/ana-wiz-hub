@@ -124,7 +124,7 @@ const AntiviralCycleDiagram = () => {
     <DiagramFigure
       id="antiviral-cycle-diagram"
       title="Antiviral cycle"
-      description="Auto-generated wrapper for the Antiviral cycle anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Viral replication cycle schematic with antiviral drug class annotations. Click each step to see which drug classes block that stage."
     >
               <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">Viral replication cycle — antiviral target sites</h3>

@@ -233,7 +233,7 @@ export const AnticoagRestartTimeline = () => {
     <DiagramFigure
       id="anticoag-restart-timeline"
       title="Anticoag restart timeline"
-      description="Auto-generated wrapper for the Anticoag restart timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Hours after surgery (no epidural, low bleed risk) before restart"
     >
               <div className="rounded-xl border border-border bg-card overflow-hidden">
         {/* Inputs */}

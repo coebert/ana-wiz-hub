@@ -139,7 +139,7 @@ const MyasthenicVsCholinergicComparison = () => {
     <DiagramFigure
       id="myasthenic-vs-cholinergic-comparison"
       title="Myasthenic vs cholinergic"
-      description="Auto-generated wrapper for the Myasthenic vs cholinergic anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Interactive comparison: myasthenic vs cholinergic crisis. User toggles individual feature axes — each axis reveals the contrasting findings on both sides and highlights which crisis the picture favours."
     >
               <Card className="p-5 my-6 border-clinical/40">
         <div className="flex items-start justify-between gap-3 mb-4">

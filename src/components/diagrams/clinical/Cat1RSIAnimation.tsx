@@ -133,7 +133,7 @@ export const Cat1RSIAnimation = () => {
     <DiagramFigure
       id="cat1-rsi-animation"
       title="Cat1 RSI"
-      description="Auto-generated wrapper for the Cat1 RSI animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Category 1 caesarean — rapid sequence induction (RSI) under general anaesthesia. Animated step-by-step OAA/AAGBI 2020 conduct, designed for the Obstetric Anaesthesia topic."
     >
               <AnimatedMechanism
         title="GA for Cat 1 LSCS — RSI conduct (OAA/AAGBI 2020)"

@@ -16,7 +16,7 @@ const AcdCitrateChelationDiagram = () => {
     <DiagramFigure
       id="acd-citrate-chelation-diagram"
       title="Acd citrate chelation"
-      description="Auto-generated wrapper for the Acd citrate chelation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated schematic of how ACD-A citrate chelates ionised calcium during intra-operative cell salvage. Left: shed blood entering the suction tubing carries free Ca²⁺."
     >
                   <figure className="w-full rounded-lg border border-border bg-card p-4 my-4">
         <svg

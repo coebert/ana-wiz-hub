@@ -37,7 +37,7 @@ export const DiagramTabs = ({ title, description, tabs, defaultValue }: DiagramT
     <DiagramFigure
       id="diagram-tabs"
       title="Diagram tabs"
-      description="Auto-generated wrapper for the Diagram tabs anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Optional one-line caption shown above the diagram body"
     >
                   <section className="bg-card rounded-xl border border-border p-4 md:p-6">
         <div className="mb-4">

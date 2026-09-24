@@ -239,7 +239,7 @@ const MuscleRelaxantStructures = () => {
     <DiagramFigure
       id="muscle-relaxant-structures"
       title="Muscle relaxant structures"
-      description="Auto-generated wrapper for the Muscle relaxant structures anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Muscle relaxant structures: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-4">
         <h4 className="font-semibold text-foreground">Molecular Structures</h4>

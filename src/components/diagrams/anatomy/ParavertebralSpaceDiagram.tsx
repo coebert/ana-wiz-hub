@@ -175,7 +175,7 @@ const ParavertebralSpaceDiagram = () => {
     <DiagramFigure
       id="paravertebral-space-diagram"
       title="Paravertebral space"
-      description="Auto-generated wrapper for the Paravertebral space anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Paravertebral space: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

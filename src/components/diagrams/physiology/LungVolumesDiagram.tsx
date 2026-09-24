@@ -79,7 +79,7 @@ export const LungVolumesDiagram = () => {
     <DiagramFigure
       id="lung-volumes-diagram"
       title="Lung volumes"
-      description="Auto-generated wrapper for the Lung volumes anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Lung volumes: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="space-y-4">
         <h3 className="font-semibold text-foreground text-sm">Lung Volumes & Capacities</h3>

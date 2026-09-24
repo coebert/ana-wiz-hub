@@ -44,7 +44,7 @@ const PaediatricVitalsTable = () => {
     <DiagramFigure
       id="paediatric-vitals-table"
       title="Paediatric vitals table"
-      description="Auto-generated wrapper for the Paediatric vitals table anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Paediatric vitals table: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="my-6 p-4 rounded-xl border border-border bg-card h-full flex flex-col">
         <div className="mb-3">

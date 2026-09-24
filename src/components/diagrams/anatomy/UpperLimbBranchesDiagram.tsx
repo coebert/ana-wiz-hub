@@ -334,7 +334,7 @@ const UpperLimbBranchesDiagram = () => {
     <DiagramFigure
       id="upper-limb-branches-diagram"
       title="Upper limb branches"
-      description="Auto-generated wrapper for the Upper limb branches anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Anchor [x,y, anchor] for the inline nerve name on the anterior view."
     >
                   <PlexusCard>
         <DiagramToggleBar

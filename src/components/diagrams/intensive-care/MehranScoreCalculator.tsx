@@ -108,7 +108,7 @@ export const MehranScoreCalculator = () => {
     <DiagramFigure
       id="mehran-score-calculator"
       title="Mehran score"
-      description="Auto-generated wrapper for the Mehran score interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Mehran calculator: enter patient values to compute the score step by step, with the interpretation thresholds and clinical actions FRCA and FFICM candidates should know."
     >
               <div className="space-y-5">
         <div className="space-y-2">

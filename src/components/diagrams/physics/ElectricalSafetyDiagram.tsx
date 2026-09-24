@@ -350,7 +350,7 @@ const ElectricalSafetyDiagram = () => {
     <DiagramFigure
       id="electrical-safety-diagram"
       title="Electrical safety"
-      description="Auto-generated wrapper for the Electrical safety anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Electrical safety: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="my-8">
         <div className="flex flex-wrap gap-2 mb-4">

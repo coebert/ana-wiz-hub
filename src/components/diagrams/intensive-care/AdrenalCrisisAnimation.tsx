@@ -161,7 +161,7 @@ const AdrenalCrisisAnimation = () => (
     <DiagramFigure
       id="adrenal-crisis-animation"
       title="Adrenal crisis"
-      description="Auto-generated wrapper for the Adrenal crisis animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Addisonian / adrenal crisis — pathophysiology + emergency management. Five-step cascade: trigger → cortisol/aldosterone deficit → metabolic derangement → shock → emergency steroid + fluid resuscitation."
     >
             <AnimatedMechanism
       title="Adrenal (Addisonian) crisis — pathophysiology + management"

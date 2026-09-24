@@ -176,7 +176,7 @@ export const PlexusCard = ({ children }: { children: ReactNode }) => (
     <DiagramFigure
       id="plexus-shared"
       title="Plexus shared"
-      description="Auto-generated wrapper for the Plexus shared anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Shared visual grammar for nerve plexus diagrams (cervical, brachial, lumbosacral)."
     >
             <div className="my-6 space-y-4">
       <div className="bg-muted/30 rounded-xl border border-border p-4">{children}</div>

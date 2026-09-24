@@ -115,7 +115,7 @@ export const PHPathophysiologyDiagram = () => (
     <DiagramFigure
       id="ph-pathophysiology-diagram"
       title="PH pathophysiology"
-      description="Auto-generated wrapper for the PH pathophysiology anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="PH pathophysiology: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
             <MechanismCascadeDiagram
       title="Pulmonary Hypertension — Pathophysiology Cascade"

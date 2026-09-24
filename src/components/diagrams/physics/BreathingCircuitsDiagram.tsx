@@ -1013,7 +1013,7 @@ const BreathingCircuitsDiagram = () => {
     <DiagramFigure
       id="breathing-circuits-diagram"
       title="Breathing circuits"
-      description="Auto-generated wrapper for the Breathing circuits equipment schematic. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Breathing: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain."
     >
                   <div className="space-y-4">
         <Tabs value={activeTab} onValueChange={setActiveTab}>

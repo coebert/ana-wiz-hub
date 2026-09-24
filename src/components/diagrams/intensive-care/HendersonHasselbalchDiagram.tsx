@@ -162,7 +162,7 @@ export const HendersonHasselbalchDiagram = () => {
     <DiagramFigure
       id="henderson-hasselbalch-diagram"
       title="Henderson hasselbalch"
-      description="Auto-generated wrapper for the Henderson hasselbalch anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Henderson hasselbalch: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="border border-border rounded-lg p-4 bg-card/30">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">Henderson–Hasselbalch — Interactive</h3>

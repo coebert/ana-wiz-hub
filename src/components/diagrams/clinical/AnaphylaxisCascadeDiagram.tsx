@@ -77,7 +77,7 @@ export const AnaphylaxisCascadeDiagram = () => (
     <DiagramFigure
       id="anaphylaxis-cascade-diagram"
       title="Anaphylaxis cascade"
-      description="Auto-generated wrapper for the Anaphylaxis cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Anaphylaxis cascade: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
             <MechanismCascadeDiagram
       title="Perioperative anaphylaxis — mechanism cascade"

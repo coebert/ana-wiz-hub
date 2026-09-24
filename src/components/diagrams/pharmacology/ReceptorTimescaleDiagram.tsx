@@ -141,7 +141,7 @@ export const ReceptorTimescaleDiagram = () => {
     <DiagramFigure
       id="receptor-timescale-diagram"
       title="Receptor timescale"
-      description="Auto-generated wrapper for the Receptor timescale anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Receptor types & signal-transduction timescales. Four parallel 'tracks' — ligand-gated ion channel, GPCR, kinase-linked, nuclear — share a logarithmic time axis spanning 1 ms → 24 h."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

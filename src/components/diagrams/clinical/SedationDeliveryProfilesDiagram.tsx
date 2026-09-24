@@ -425,7 +425,7 @@ export const SedationDeliveryProfilesDiagram = () => {
     <DiagramFigure
       id="sedation-delivery-profiles-diagram"
       title="Sedation delivery profiles"
-      description="Auto-generated wrapper for the Sedation delivery profiles anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Sedation delivery profiles: labelled teaching figure summarising the key structures, relationships and values FRCA and FFICM candidates need to recognise and explain."
     >
                   <figure className="my-6 rounded-xl border border-border bg-secondary/20 p-4">
         <figcaption className="mb-3 flex items-start justify-between gap-3">

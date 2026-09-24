@@ -12,7 +12,7 @@ const OsaCycleDiagram = () => {
     <DiagramFigure
       id="osa-cycle-diagram"
       title="OSA cycle"
-      description="Auto-generated wrapper for the OSA cycle anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated pathophysiology diagram — Obstructive Sleep Apnoea. Cyclical: sleep onset → loss of pharyngeal dilator tone → upper airway collapse → apnoea/hypopnoea → hypoxaemia + hypercapnia → sympathetic surge & arousal → airway reopens → cycle repeats."
     >
                   <div className="rounded-2xl border border-border bg-card overflow-hidden">
         <div className="px-4 sm:px-6 py-4 border-b border-border bg-muted/30">

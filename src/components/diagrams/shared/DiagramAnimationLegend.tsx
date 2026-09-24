@@ -113,7 +113,7 @@ const DiagramAnimationLegend = ({
     <DiagramFigure
       id="diagram-animation-legend"
       title="Diagram animation legend"
-      description="Auto-generated wrapper for the Diagram animation legend animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Compact, reusable legend for animated pathophysiology diagrams."
     >
                   <div className="mt-4 rounded-lg border border-border bg-muted/30 p-3">
         <p className="text-xs font-semibold text-foreground mb-2">{title}</p>

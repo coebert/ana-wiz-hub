@@ -197,7 +197,7 @@ function ParamSlider({ label, value, min, max, unit, onChange, step = 1 }: {
     <DiagramFigure
       id="ventilator-waveforms-diagram"
       title="Ventilator waveforms"
-      description="Auto-generated wrapper for the Ventilator waveforms anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Ventilator waveforms: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div>
         <div className="flex justify-between text-xs mb-0.5">

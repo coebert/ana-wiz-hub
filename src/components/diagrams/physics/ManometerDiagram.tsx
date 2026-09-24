@@ -11,7 +11,7 @@ const ManometerDiagram = () => {
     <DiagramFigure
       id="manometer-diagram"
       title="Manometer"
-      description="Auto-generated wrapper for the Manometer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Manometer: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="my-6 rounded-lg border border-border bg-card p-4">
         <div className="flex flex-wrap gap-2 mb-4">

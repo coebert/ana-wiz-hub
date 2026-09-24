@@ -79,7 +79,7 @@ const HepaticAcinusDiagram = () => {
     <DiagramFigure
       id="hepatic-acinus-diagram"
       title="Hepatic acinus"
-      description="Auto-generated wrapper for the Hepatic acinus anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Hepatic acinus: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="my-8 p-4 sm:p-6 rounded-xl border border-border bg-card">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">Interactive Hepatic Acinus</h3>

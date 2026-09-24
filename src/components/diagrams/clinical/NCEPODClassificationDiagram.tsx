@@ -99,7 +99,7 @@ export const NCEPODClassificationDiagram = () => {
     <DiagramFigure
       id="ncepod-classification-diagram"
       title="NCEPOD classification"
-      description="Auto-generated wrapper for the NCEPOD classification anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="NCEPOD urgency classification visualised as a triage clock. Walks through Categories 1 → 4 (Immediate, Urgent, Expedited, Elective) highlighting the active tier on a stylised clock dial."
     >
               <AnimatedMechanism
         title="NCEPOD classification — urgency triage"

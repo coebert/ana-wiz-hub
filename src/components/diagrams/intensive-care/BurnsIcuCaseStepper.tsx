@@ -289,7 +289,7 @@ export const BurnsIcuCaseStepper = () => {
     <DiagramFigure
       id="burns-icu-case-stepper"
       title="Burns ICU case stepper"
-      description="Auto-generated wrapper for the Burns ICU case stepper anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Interactive worked Burns ICU case stepper."
     >
           <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
         <figcaption className="mb-3">

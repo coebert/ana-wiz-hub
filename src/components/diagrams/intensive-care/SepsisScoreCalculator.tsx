@@ -37,7 +37,7 @@ const SepsisScoreCalculator = () => {
     <DiagramFigure
       id="sepsis-score-calculator"
       title="Sepsis score"
-      description="Auto-generated wrapper for the Sepsis score interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Sepsis calculator: enter patient values to compute the score step by step, with the interpretation thresholds and clinical actions FRCA and FFICM candidates should know."
     >
           <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">Sepsis Scoring — SOFA · qSOFA · NEWS2</h3>

@@ -50,7 +50,7 @@ const ParacetamolNomogramDiagram = () => {
     <DiagramFigure
       id="paracetamol-nomogram-diagram"
       title="Paracetamol nomogram"
-      description="Auto-generated wrapper for the Paracetamol nomogram anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Interactive UK paracetamol treatment-line nomogram (Rumack–Matthew, 100 mg/L line as adopted by MHRA/RCEM since 2012). Plots a user-entered timed paracetamol level against the 100 mg/L treatment line and tells the user whether NAC is indicated."
     >
               <div className="rounded-xl border border-border bg-card p-4">
         <div className="flex items-center gap-2 mb-3">

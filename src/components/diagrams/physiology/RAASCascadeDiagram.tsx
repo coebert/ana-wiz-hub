@@ -99,7 +99,7 @@ export const RAASCascadeDiagram = () => {
     <DiagramFigure
       id="raas-cascade-diagram"
       title="RAAS cascade"
-      description="Auto-generated wrapper for the RAAS cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="RAAS cascade: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="space-y-4">
         <div className="flex flex-wrap gap-2 mb-2">

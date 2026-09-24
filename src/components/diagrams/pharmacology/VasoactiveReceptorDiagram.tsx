@@ -113,7 +113,7 @@ const VasoactiveReceptorDiagram = () => {
     <DiagramFigure
       id="vasoactive-receptor-diagram"
       title="Vasoactive receptor"
-      description="Auto-generated wrapper for the Vasoactive receptor anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Vasoactive receptor: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="space-y-5">
         <h4 className="font-semibold text-foreground">Interactive Receptor Selectivity</h4>

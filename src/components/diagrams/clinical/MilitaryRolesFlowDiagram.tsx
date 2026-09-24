@@ -116,7 +116,7 @@ export const MilitaryRolesFlowDiagram = () => {
     <DiagramFigure
       id="military-roles-flow-diagram"
       title="Military roles flow"
-      description="Auto-generated wrapper for the Military roles flow anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated handover / resource flow across NATO Roles 1–4 with CCAST in transit. Phases (≈14s cycle): 0. Point of wounding — buddy aid, ‹C›ABC, CAT tourniquet 1. Role 1 (regimental aid post) — primary survey, TXA, packaged 2."
     >
               <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
         <figcaption className="mb-3 flex items-start justify-between gap-3">

@@ -100,7 +100,7 @@ export const OIHToleranceDiagram = () => {
     <DiagramFigure
       id="oih-tolerance-diagram"
       title="OIH tolerance"
-      description="Auto-generated wrapper for the OIH tolerance anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="OIH tolerance: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="w-full bg-card border border-border rounded-lg p-4 sm:p-6 my-6">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">

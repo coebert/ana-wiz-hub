@@ -92,7 +92,7 @@ const AnatomyPlate: React.FC<AnatomyPlateProps> = ({
     <DiagramFigure
       id="anatomy-plate"
       title="Anatomy plate"
-      description="Auto-generated wrapper for the Anatomy plate anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="AnatomyPlate — single SVG primitive for hand-coded anatomy diagrams. All labels and leader lines are defined in code (not baked into pixels), so every label position can be audited and corrected. Replaces the JPEG-based CorPictumFolio plates."
     >
               <figure
         className={cn(

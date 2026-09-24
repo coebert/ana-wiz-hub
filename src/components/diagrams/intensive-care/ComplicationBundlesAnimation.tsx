@@ -249,7 +249,7 @@ const ComplicationBundlesAnimation = () => (
     <DiagramFigure
       id="complication-bundles-animation"
       title="Complication bundles"
-      description="Auto-generated wrapper for the Complication bundles animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Postoperative complication-prevention bundles. Cycles through the four outcome-defining bundles applied from day 1 of critical care: AKI (KDIGO), Delirium (ABCDEF), VTE prophylaxis, and Infection / Sepsis source-control + stewardship."
     >
             <AnimatedMechanism
       title="Complication-prevention bundles — AKI · Delirium · VTE · Infection"

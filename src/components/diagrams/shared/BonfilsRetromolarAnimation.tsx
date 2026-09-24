@@ -90,7 +90,7 @@ export default function BonfilsRetromolarAnimation() {
     <DiagramFigure
       id="bonfils-retromolar-animation"
       title="Bonfils retromolar"
-      description="Auto-generated wrapper for the Bonfils retromolar animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="BonfilsRetromolarAnimation Animated walkthrough of the Bonfils retromolar intubation technique. Steps: jaw thrust → retromolar insertion → midline rotation → glottic view → ETT railroad → cuff inflation."
     >
           <div className="w-full rounded-lg border border-border bg-card p-4">
         <div className="mb-3">

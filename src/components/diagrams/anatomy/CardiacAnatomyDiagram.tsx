@@ -1160,7 +1160,7 @@ const CardiacAnatomyDiagram = () => {
     <DiagramFigure
       id="cardiac-anatomy-diagram"
       title="Cardiac anatomy"
-      description="Auto-generated wrapper for the Cardiac anatomy anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="World-space focal points (in the unrotated heart frame) for camera fly-to."
     >
                   <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

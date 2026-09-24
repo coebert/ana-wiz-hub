@@ -331,7 +331,7 @@ const BundleBranchBlockDiagram = () => {
     <DiagramFigure
       id="bundle-branch-block-diagram"
       title="Bundle branch block"
-      description="Auto-generated wrapper for the Bundle branch block anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Bundle / fascicular block series — RBBB, LBBB, LAFB, LPFB, bifascicular, trifascicular. Each card pairs a mini conduction-tree schematic showing which branches/fascicles are blocked with characteristic V1 + V6 QRS morphology and a compact summary."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

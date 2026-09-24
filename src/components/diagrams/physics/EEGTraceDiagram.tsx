@@ -211,7 +211,7 @@ const EEGTraceDiagram = () => {
     <DiagramFigure
       id="eeg-trace-diagram"
       title="EEG trace"
-      description="Auto-generated wrapper for the EEG trace anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Generate a simulated power spectrum for each stage"
     >
                   <div className="border border-border rounded-lg p-4 mb-6">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">

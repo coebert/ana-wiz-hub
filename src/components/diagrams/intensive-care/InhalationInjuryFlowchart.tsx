@@ -244,7 +244,7 @@ export const InhalationInjuryFlowchart = () => {
     <DiagramFigure
       id="inhalation-injury-flowchart"
       title="Inhalation injury"
-      description="Auto-generated wrapper for the Inhalation injury clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Inhalation: step-by-step clinical decision pathway showing the assessment points, branches and management actions in guideline order."
     >
               <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
         <figcaption className="mb-3">

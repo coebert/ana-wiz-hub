@@ -67,7 +67,7 @@ export const RRTCircuitFlowDiagram = () => {
     <DiagramFigure
       id="rrt-circuit-flow-diagram"
       title="RRT circuit flow"
-      description="Auto-generated wrapper for the RRT circuit flow equipment schematic. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="RRT: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain."
     >
           <div className="rounded-xl border border-border bg-card/40 p-4">
         <div className="flex items-center justify-between flex-wrap gap-2 mb-3">

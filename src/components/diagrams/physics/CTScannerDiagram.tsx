@@ -91,7 +91,7 @@ export const CTScannerDiagram = () => {
     <DiagramFigure
       id="ct-scanner-diagram"
       title="CT scanner"
-      description="Auto-generated wrapper for the CT scanner anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated CT scanner diagram. Three synchronised panels: 1. Axial gantry view — X-ray tube + detector arc rotating around the patient, fan beam traced through tissue at each projection angle. 2."
     >
               <div className="my-6 rounded-xl border border-border bg-muted/30 p-4 space-y-3">
         <div className="flex items-start justify-between gap-3 flex-wrap">

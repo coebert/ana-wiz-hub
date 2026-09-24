@@ -551,7 +551,7 @@ const DermatomeMapDiagram = () => {
     <DiagramFigure
       id="dermatome-map-diagram"
       title="Dermatome MAP"
-      description="Auto-generated wrapper for the Dermatome MAP anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Dermatome MAP: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <Card className="mb-8 border-border bg-card">
         <CardHeader className="pb-3">

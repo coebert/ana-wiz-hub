@@ -91,7 +91,7 @@ const GramNegativeEnvelopeDiagram = () => {
     <DiagramFigure
       id="gram-negative-envelope-diagram"
       title="Gram negative envelope"
-      description="Auto-generated wrapper for the Gram negative envelope anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Gram-negative envelope schematic — LPS outer membrane, porins, periplasm with β-lactamases, peptidoglycan and inner membrane. Click each labelled feature to see relevant drug interactions."
     >
           <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">Gram-negative envelope — antibiotic entry, β-lactamases & efflux</h3>

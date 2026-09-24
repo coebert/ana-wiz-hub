@@ -106,7 +106,7 @@ export const PancreatitisAutodigestionDiagram = () => (
     <DiagramFigure
       id="pancreatitis-autodigestion-diagram"
       title="Pancreatitis autodigestion"
-      description="Auto-generated wrapper for the Pancreatitis autodigestion anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Pancreatitis autodigestion: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
             <MechanismCascadeDiagram
       title="Acute Pancreatitis — Autodigestion Cascade"

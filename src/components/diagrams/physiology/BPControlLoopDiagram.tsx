@@ -138,7 +138,7 @@ export const BPControlLoopDiagram = () => {
     <DiagramFigure
       id="bp-control-loop-diagram"
       title="BP control loop"
-      description="Auto-generated wrapper for the BP control loop anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated MAP = CO × SVR control-loop diagram. Visualises blood pressure regulation as a closed feedback loop: sensors → CNS integration → effectors → MAP → back to sensors."
     >
           <div className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">

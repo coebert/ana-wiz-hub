@@ -84,7 +84,7 @@ export const PathophysDrugMapper = ({ title, tagline, mechanisms }: PathophysDru
     <DiagramFigure
       id="pathophys-drug-mapper"
       title="Pathophys drug mapper"
-      description="Auto-generated wrapper for the Pathophys drug mapper anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Canonical meaning of each badge — used everywhere across the neuro pathophys mappers so the rule is consistent topic-to-topic. AVOID — Contraindicated or strongly relatively contraindicated. A safer alternative exists and should be chosen by default."
     >
               <div className="my-6">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

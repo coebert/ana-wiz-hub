@@ -220,7 +220,7 @@ const MDRGramNegativeSelector = () => {
     <DiagramFigure
       id="mdr-gram-negative-selector"
       title="MDR gram negative selector"
-      description="Auto-generated wrapper for the MDR gram negative selector anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="MDR Gram-negative agent selector. User picks an organism / resistance phenotype → returns recommended first-line agent(s), alternatives to avoid, and a brief mechanistic rationale."
     >
                   <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">

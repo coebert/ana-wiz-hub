@@ -130,7 +130,7 @@ export const KDIGOAKIClassifier = () => {
     <DiagramFigure
       id="kdigoaki-classifier"
       title="KDIGOAKI classifier"
-      description="Auto-generated wrapper for the KDIGOAKI classifier anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="KDIGOAKI classifier: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-6">
         <div className="grid gap-4 sm:grid-cols-2">

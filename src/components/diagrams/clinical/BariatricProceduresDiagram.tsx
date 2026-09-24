@@ -59,7 +59,7 @@ const BariatricProceduresDiagram = () => {
     <DiagramFigure
       id="bariatric-procedures-diagram"
       title="Bariatric procedures"
-      description="Auto-generated wrapper for the Bariatric procedures anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Bariatric procedures: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="bg-card border border-border rounded-xl p-4 sm:p-6 space-y-4">
         <h3 className="text-lg font-serif font-bold text-foreground">Bariatric Procedures Comparison</h3>

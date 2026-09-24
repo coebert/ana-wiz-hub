@@ -90,7 +90,7 @@ export const TopicalIntracameralIllustration: React.FC = () => (
     <DiagramFigure
       id="eye-block-illustrations"
       title="Eye block illustrations"
-      description="Auto-generated wrapper for the Eye block illustrations anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Illustration plates for the four principal ophthalmic regional anaesthesia techniques: sub-Tenon's, peribulbar, retrobulbar, and topical/intracameral. Watercolour-and-ink medical-textbook style with key procedural checkpoints."
     >
             <BlockPlate
       src={topicalImg}

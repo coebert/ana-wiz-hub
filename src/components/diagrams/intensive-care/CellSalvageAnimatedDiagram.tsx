@@ -106,7 +106,7 @@ const CellSalvageAnimatedDiagram = () => {
     <DiagramFigure
       id="cell-salvage-animated-diagram"
       title="Cell salvage animated"
-      description="Auto-generated wrapper for the Cell salvage animated anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated schematic of intra-operative cell salvage (ICS). Five steps: Collection → Reservoir → Centrifugation (bell) → Wash → Re-infusion."
     >
           <AnimatedMechanism
         title="Intra-operative cell salvage — circuit walkthrough"

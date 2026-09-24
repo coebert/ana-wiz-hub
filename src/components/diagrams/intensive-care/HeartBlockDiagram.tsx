@@ -428,7 +428,7 @@ const HeartBlockDiagram = () => {
     <DiagramFigure
       id="heart-block-diagram"
       title="Heart block"
-      description="Auto-generated wrapper for the Heart block anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Heart block series — 1°, Mobitz I (Wenckebach), Mobitz II, Complete (3°). Each card pairs a mini conduction-tree schematic (showing where the block sits) with a stylised rhythm strip underneath, plus a compact summary."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

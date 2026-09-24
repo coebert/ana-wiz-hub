@@ -717,7 +717,7 @@ export const VascularAccessTypesDiagram: React.FC = () => (
     <DiagramFigure
       id="vascular-access-types-diagram"
       title="Vascular access types"
-      description="Auto-generated wrapper for the Vascular access types anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Detailed anatomical schematics of the five archetypal vascular access devices."
     >
             <figure className="my-6 rounded-xl border border-border bg-card overflow-hidden">
       <figcaption className="px-4 py-3 border-b border-border bg-muted/30">

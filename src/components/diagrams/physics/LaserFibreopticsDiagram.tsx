@@ -323,7 +323,7 @@ const LaserFibreopticsDiagram = () => {
     <DiagramFigure
       id="laser-fibreoptics-diagram"
       title="Laser fibreoptics"
-      description="Auto-generated wrapper for the Laser fibreoptics anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Laser fibreoptics: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-4">
         <Tabs value={activeTab} onValueChange={setActiveTab}>

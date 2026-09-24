@@ -15,7 +15,7 @@ export const AcidsBasesDiagram = () => {
     <DiagramFigure
       id="acids-bases-diagram"
       title="Acids bases"
-      description="Auto-generated wrapper for the Acids bases anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Acids bases: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="w-full max-w-2xl mx-auto">
         <div className="flex gap-2 justify-center mb-6">

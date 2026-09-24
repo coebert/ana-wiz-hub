@@ -89,7 +89,7 @@ const PortalFirstPassDiagram = () => {
     <DiagramFigure
       id="portal-first-pass-diagram"
       title="Portal first pass"
-      description="Auto-generated wrapper for the Portal first pass anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated diagram: gut (stomach, small bowel, colon, spleen) → SMV/splenic vein → hepatic portal vein → liver sinusoids → hepatic vein → IVC → heart → systemic circulation."
     >
               <div className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-2">

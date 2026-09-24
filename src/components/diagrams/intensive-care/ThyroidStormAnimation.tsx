@@ -170,7 +170,7 @@ const ThyroidStormAnimation = () => (
     <DiagramFigure
       id="thyroid-storm-animation"
       title="Thyroid storm"
-      description="Auto-generated wrapper for the Thyroid storm animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Thyroid storm — pathophysiology + emergency treatment animation. Five steps following the classical 'block synthesis → block release → block conversion → block adrenergics → support' framework, with Burch-Wartofsky scoring threshold flagged."
     >
             <AnimatedMechanism
       title="Thyroid storm — pathophysiology + treatment cascade"

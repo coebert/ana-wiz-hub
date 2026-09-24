@@ -193,7 +193,7 @@ const BrainAxialDiagram = () => (
     <DiagramFigure
       id="brain-axial-diagram"
       title="Brain axial"
-      description="Auto-generated wrapper for the Brain axial anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Brain axial: labelled teaching figure summarising the key structures, relationships and values FRCA and FFICM candidates need to recognise and explain."
     >
             <div className="rounded-2xl border border-border bg-card overflow-hidden">
       <BrainAxialPlate />

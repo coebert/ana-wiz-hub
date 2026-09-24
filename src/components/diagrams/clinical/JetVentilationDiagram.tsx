@@ -87,7 +87,7 @@ const JetVentilationDiagram = () => {
     <DiagramFigure
       id="jet-ventilation-diagram"
       title="Jet ventilation"
-      description="Auto-generated wrapper for the Jet ventilation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="JetVentilationDiagram — three modalities (supraglottic, subglottic, transtracheal) shown over a shared larynx/trachea schematic, with a parameters & safety side panel."
     >
                   <div className="my-6 p-4 rounded-xl border border-border bg-card">
         <div className="mb-3">

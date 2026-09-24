@@ -194,7 +194,7 @@ const OesophagealDopplerDiagram = () => {
     <DiagramFigure
       id="oesophageal-doppler-diagram"
       title="Oesophageal doppler"
-      description="Auto-generated wrapper for the Oesophageal doppler anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Oesophageal doppler: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-4 my-8">
         <h3 className="text-xl font-serif font-bold text-foreground">Oesophageal Doppler — Probe Placement & Principle</h3>

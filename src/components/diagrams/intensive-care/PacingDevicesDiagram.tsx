@@ -230,7 +230,7 @@ const PacingDevicesDiagram = () => {
     <DiagramFigure
       id="pacing-devices-diagram"
       title="Pacing devices"
-      description="Auto-generated wrapper for the Pacing devices anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Pacing devices: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="my-6 p-4 rounded-lg border border-border bg-card">
         <div className="flex items-start justify-between gap-3 mb-3 flex-wrap">

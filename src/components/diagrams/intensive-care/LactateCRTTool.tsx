@@ -26,7 +26,7 @@ const LactateCRTTool = () => {
     <DiagramFigure
       id="lactate-crt-tool"
       title="Lactate CRT tool"
-      description="Auto-generated wrapper for the Lactate CRT tool anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Lactate clearance + CRT-guided resuscitation sub-tool. Inputs: baseline / 2h / 6h lactate, baseline & current CRT. Outputs: % clearance per Nguyen 2004 / Jansen 2010, ANDROMEDA-SHOCK-style trajectory plot, and fluid responsiveness / escalation suggestion."
     >
           <div className="rounded-xl border border-border bg-card p-4 my-6">
         <h3 className="text-lg font-semibold text-foreground">Lactate Clearance &amp; CRT-Guided Resuscitation</h3>

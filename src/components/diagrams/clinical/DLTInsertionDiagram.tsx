@@ -431,7 +431,7 @@ const DLTInsertionDiagram = () => {
     <DiagramFigure
       id="dlt-insertion-diagram"
       title="DLT insertion"
-      description="Auto-generated wrapper for the DLT insertion anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="DLT insertion: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="border border-border rounded-lg p-4 mb-6">
         <div className="flex items-start justify-between gap-3 mb-1 flex-wrap">

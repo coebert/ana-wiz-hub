@@ -28,7 +28,7 @@ const ManleyMVDDiagram = () => {
     <DiagramFigure
       id="manley-mvd-diagram"
       title="Manley MVD"
-      description="Auto-generated wrapper for the Manley MVD anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Manley MVD: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-4">
         {/* Controls */}

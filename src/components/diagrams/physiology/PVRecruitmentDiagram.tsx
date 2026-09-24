@@ -76,7 +76,7 @@ const PVRecruitmentDiagram = () => {
     <DiagramFigure
       id="pv-recruitment-diagram"
       title="PV recruitment"
-      description="Auto-generated wrapper for the PV recruitment anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="PV recruitment: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="space-y-4">
         <h3 className="text-lg font-semibold text-foreground">PV Recruitment Curve & Hysteresis</h3>

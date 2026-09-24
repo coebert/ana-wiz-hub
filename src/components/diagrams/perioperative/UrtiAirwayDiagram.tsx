@@ -12,7 +12,7 @@ const UrtiAirwayDiagram = () => {
     <DiagramFigure
       id="urti-airway-diagram"
       title="Urti airway"
-      description="Auto-generated wrapper for the Urti airway anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated pathophysiology diagram — Recent URTI and airway hyper-reactivity. Viral epithelial injury → exposure of irritant C-fibres + neurogenic inflammation → vagally-mediated reflex bronchoconstriction & laryngospasm for 6–8 weeks."
     >
                   <div className="rounded-2xl border border-border bg-card overflow-hidden">
         <div className="px-4 sm:px-6 py-4 border-b border-border bg-muted/30">

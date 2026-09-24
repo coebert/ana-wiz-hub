@@ -207,7 +207,7 @@ const SeverePancreatitisCTDiagram = () => {
     <DiagramFigure
       id="severe-pancreatitis-ct-diagram"
       title="Severe pancreatitis CT"
-      description="Auto-generated wrapper for the Severe pancreatitis CT anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Schematic axial contrast-enhanced CT slice through the upper abdomen illustrating the cardinal features of severe acute pancreatitis. Drawn entirely in SVG (no image asset) so it stays crisp and themable."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

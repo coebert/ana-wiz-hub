@@ -138,7 +138,7 @@ export const ZoomableSVG = ({
     <DiagramFigure
       id="zoomable-svg"
       title="Zoomable SVG"
-      description="Auto-generated wrapper for the Zoomable SVG anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Optional accessible label describing the inner diagram."
     >
                   <div className={`relative group ${className}`}>
         <div

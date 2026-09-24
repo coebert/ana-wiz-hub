@@ -94,7 +94,7 @@ const ToxidromeComparatorDiagram = () => {
     <DiagramFigure
       id="toxidrome-comparator-diagram"
       title="Toxidrome comparator"
-      description="Auto-generated wrapper for the Toxidrome comparator anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Toxidrome comparator: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="rounded-xl border border-border bg-card p-4">
         <div className="flex items-center gap-2 mb-3">

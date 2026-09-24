@@ -4,7 +4,7 @@ const AnaphylaxisPathophysiologyDiagram = () => {
     <DiagramFigure
       id="anaphylaxis-pathophysiology-diagram"
       title="Anaphylaxis pathophysiology"
-      description="Auto-generated wrapper for the Anaphylaxis pathophysiology anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Anaphylaxis pathophysiology: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="w-full overflow-x-auto">
         <svg viewBox="0 0 700 560" className="w-full min-w-[500px]" aria-label="Anaphylaxis Pathophysiology Diagram">

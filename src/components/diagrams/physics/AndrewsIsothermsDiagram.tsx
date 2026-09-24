@@ -137,7 +137,7 @@ export const AndrewsIsothermsDiagram = () => {
     <DiagramFigure
       id="andrews-isotherms-diagram"
       title="Andrews isotherms"
-      description="Auto-generated wrapper for the Andrews isotherms anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Andrews' isotherms for N₂O on a P–V diagram. Critical point for N₂O: Tc = 36.5 °C (309.65 K), Pc = 72 bar, Vc (reduced) = 1."
     >
                   <div className="space-y-4">
         <div className="rounded-lg border border-border bg-card p-4">

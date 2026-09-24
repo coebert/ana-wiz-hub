@@ -305,7 +305,7 @@ const PropofolLidocaineMechanismDiagram = () => {
     <DiagramFigure
       id="propofol-lidocaine-mechanism-diagram"
       title="Propofol lidocaine mechanism"
-      description="Auto-generated wrapper for the Propofol lidocaine mechanism anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Animated two-panel diagram contrasting plain propofol vs propofol + lidocaine at a venous nociceptor."
     >
                   <figure className="my-6">
         <figcaption className="sr-only">

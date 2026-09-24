@@ -29,7 +29,7 @@ export const BrainRegionsList = ({ regions }: Props) => {
     <DiagramFigure
       id="brain-regions-list"
       title="Brain regions list"
-      description="Auto-generated wrapper for the Brain regions list anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Shared labelled-regions list with a Primary/Final/Both filter toggle. Used by all brain anatomy diagrams (lateral, medial, coronal, axial)."
     >
                   <div className="px-4 sm:px-6 py-4 space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">

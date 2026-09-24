@@ -507,7 +507,7 @@ export const TubularCellDiagram = () => {
     <DiagramFigure
       id="tubular-cell-diagram"
       title="Tubular cell"
-      description="Auto-generated wrapper for the Tubular cell anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Tubular cell: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="space-y-4">
         {/* Cell type selector */}

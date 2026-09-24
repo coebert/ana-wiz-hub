@@ -91,7 +91,7 @@ const CPBCircuitDiagram = () => {
     <DiagramFigure
       id="cpb-circuit-diagram"
       title="CPB circuit"
-      description="Auto-generated wrapper for the CPB circuit equipment schematic. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="CPB: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain."
     >
               <div className="border border-border rounded-lg p-4 mb-6">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">Interactive CPB Circuit</h3>

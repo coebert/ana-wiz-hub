@@ -100,7 +100,7 @@ export const ParklandCalculator = () => {
     <DiagramFigure
       id="parkland-calculator"
       title="Parkland"
-      description="Auto-generated wrapper for the Parkland interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Parkland calculator: enter patient values to compute the score step by step, with the interpretation thresholds and clinical actions FRCA and FFICM candidates should know."
     >
               <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
         <figcaption className="mb-4">

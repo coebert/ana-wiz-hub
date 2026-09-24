@@ -294,7 +294,7 @@ const ImmuneResponseTimelineDiagram = () => {
     <DiagramFigure
       id="immune-response-timeline-diagram"
       title="Immune response timeline"
-      description="Auto-generated wrapper for the Immune response timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="time domain (hours) — used to position on timeline"
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

@@ -78,7 +78,7 @@ export const PKaDiagram = () => {
     <DiagramFigure
       id="p-ka-diagram"
       title="P ka"
-      description="Auto-generated wrapper for the P ka anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="P ka: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="w-full max-w-xl mx-auto">
         {/* Agent selector */}

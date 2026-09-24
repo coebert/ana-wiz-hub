@@ -20,7 +20,7 @@ const NeuroprognosticationFlowchart = () => {
     <DiagramFigure
       id={id}
       title="Neuroprognostication flowchart — multimodal assessment with posterior fossa branch"
-      description="Decision flow for neuroprognostication after cardiac arrest: confirm comatose state and exclude confounders, defer to at least 72 hours, branch off if posterior fossa or brainstem pathology is present (separate cautions apply), otherwise apply the six multimodal criteria and require at least two concordant findings before concluding likely poor outcome."
+      description="Neuroprognostication flowchart — multimodal assessment with posterior fossa branch: labelled teaching figure summarising the key structures, relationships and values FRCA and FFICM candidates need to recognise and explain."
       showCaption
     >
       <svg

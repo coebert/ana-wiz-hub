@@ -27,7 +27,7 @@ const BrainPlatesViewer = () => {
     <DiagramFigure
       id="brain-plates-viewer"
       title="Brain plates viewer"
-      description="Auto-generated wrapper for the Brain plates viewer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Unified panel that hosts all four brain plates (lateral, medial, coronal, axial) inside a single scrollable card. Switching views swaps the plate, its overlay labels and the labelled-regions list below."
     >
                   <div className="rounded-2xl border border-border bg-card overflow-hidden">
         <div className="px-4 sm:px-6 pt-4 pb-3 border-b border-border bg-muted/20">

@@ -59,7 +59,7 @@ const LatentHeatDiagram = () => {
     <DiagramFigure
       id="latent-heat-diagram"
       title="Latent heat"
-      description="Auto-generated wrapper for the Latent heat anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="LatentHeatDiagram Heating curve of 1 kg of water from −20 °C ice to ›100 °C steam, plotted as temperature (y) against cumulative energy added (x)."
     >
                   <figure className="my-4 rounded-lg border border-border bg-card p-4">
         <svg

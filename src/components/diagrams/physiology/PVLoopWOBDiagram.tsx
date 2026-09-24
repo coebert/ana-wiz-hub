@@ -194,7 +194,7 @@ export const PVLoopWOBDiagram = () => {
     <DiagramFigure
       id="pv-loop-wob-diagram"
       title="PV loop WOB"
-      description="Auto-generated wrapper for the PV loop WOB anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="PV loop WOB: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
               <div className="space-y-4">
         <h3 className="font-semibold text-foreground text-sm">Pressure-Volume Loop — Work of Breathing</h3>

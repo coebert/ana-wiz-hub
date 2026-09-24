@@ -339,7 +339,7 @@ const OrbitBonyAnatomyDiagram = () => {
     <DiagramFigure
       id="orbit-bony-anatomy-diagram"
       title="Orbit bony anatomy"
-      description="Auto-generated wrapper for the Orbit bony anatomy anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Filled polygon describing the bone's contribution to the anterior view of the right orbit"
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">

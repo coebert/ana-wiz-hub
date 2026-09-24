@@ -113,7 +113,7 @@ export const EmergencyLaparotomyBundleDiagram = () => {
     <DiagramFigure
       id="emergency-laparotomy-bundle-diagram"
       title="Emergency laparotomy bundle"
-      description="Auto-generated wrapper for the Emergency laparotomy bundle anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="NELA emergency-laparotomy care bundle visualised as a horizontal pathway from decision-to-operate through to postoperative critical care. Each step lights up the corresponding node and surfaces the audited standard."
     >
               <AnimatedMechanism
         title="NELA emergency-laparotomy care bundle"

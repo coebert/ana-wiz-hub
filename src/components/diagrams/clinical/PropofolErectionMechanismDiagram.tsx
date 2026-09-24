@@ -72,7 +72,7 @@ const PropofolErectionMechanismDiagram = () => {
     <DiagramFigure
       id="propofol-erection-mechanism-diagram"
       title="Propofol erection mechanism"
-      description="Auto-generated wrapper for the Propofol erection mechanism anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Propofol & spinal erection reflex — animated mechanism diagram. Visualises how propofol may unmask reflex penile erection during urological anaesthesia by: 1."
     >
                   <div className="rounded-xl border border-border bg-card p-4 sm:p-6 my-6">
         <div className="mb-4">

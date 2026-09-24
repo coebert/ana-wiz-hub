@@ -133,7 +133,7 @@ const PHRiskStratificationCalculator = () => {
     <DiagramFigure
       id="ph-risk-stratification-calculator"
       title="PH risk stratification"
-      description="Auto-generated wrapper for the PH risk stratification interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="PH calculator: enter patient values to compute the score step by step, with the interpretation thresholds and clinical actions FRCA and FFICM candidates should know."
     >
               <div className="space-y-4 mb-8">
         <div className="p-4 rounded-lg border border-border bg-card">

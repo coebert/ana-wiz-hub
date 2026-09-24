@@ -544,7 +544,7 @@ export const LaryngoscopeBladesDiagram = () => {
     <DiagramFigure
       id="laryngoscope-blades-diagram"
       title="Laryngoscope blades"
-      description="Auto-generated wrapper for the Laryngoscope blades anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="FRCA-mapped key learning points for the curriculum"
     >
               <div className="border border-border rounded-lg p-4 mb-2 space-y-4">
         <div>

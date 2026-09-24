@@ -6,7 +6,7 @@ const VomitingControlDiagram = () => {
     <DiagramFigure
       id="vomiting-control-diagram"
       title="Vomiting control"
-      description="Auto-generated wrapper for the Vomiting control anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Vomiting control: labelled teaching figure showing the structures, relationships and key values FRCA and FFICM candidates need to recognise and explain for this topic."
     >
                   <div className="my-6">
         <h3 className="text-lg font-serif font-bold text-foreground mb-3">Control of Vomiting & Antiemetic Sites of Action</h3>

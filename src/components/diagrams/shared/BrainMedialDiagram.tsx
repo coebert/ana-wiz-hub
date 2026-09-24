@@ -355,7 +355,7 @@ const BrainMedialDiagram = () => (
     <DiagramFigure
       id="brain-medial-diagram"
       title="Brain medial"
-      description="Auto-generated wrapper for the Brain medial anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+      description="Brain medial: labelled teaching figure summarising the key structures, relationships and values FRCA and FFICM candidates need to recognise and explain."
     >
             <div className="rounded-2xl border border-border bg-card overflow-hidden">
       <BrainMedialPlate />
