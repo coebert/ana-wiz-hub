@@ -384,6 +384,7 @@ export type Database = {
           currency: string
           donated_on: string
           donor_name: string | null
+          external_id: string | null
           id: string
           method: string
           note: string | null
@@ -395,6 +396,7 @@ export type Database = {
           currency?: string
           donated_on?: string
           donor_name?: string | null
+          external_id?: string | null
           id?: string
           method?: string
           note?: string | null
@@ -406,6 +408,7 @@ export type Database = {
           currency?: string
           donated_on?: string
           donor_name?: string | null
+          external_id?: string | null
           id?: string
           method?: string
           note?: string | null
