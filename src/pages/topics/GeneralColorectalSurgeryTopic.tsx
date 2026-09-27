@@ -24,6 +24,10 @@ const faqs: Array<[string, string]> = [
     "Thorough cardiorespiratory assessment (often CPET), aspiration prevention at induction, one-lung ventilation for the thoracic phase with lung-protective ventilation, thoracic epidural or paravertebral analgesia, judicious fluids and vasopressor use to protect the gastric conduit, and planned critical care admission. Pneumonia and anastomotic leak are the leading causes of morbidity.",
   ],
   [
+    "Why is abdominoperineal resection an anaesthetic challenge?",
+    "It combines a long abdominal phase in steep Trendelenburg/lithotomy with a perineal phase often performed prone (jack-knife), with risks of pressure injury, compartment syndrome, nerve injury, venous air embolism, large blood loss from the presacral plexus and a large perineal wound needing good analgesia.",
+  ],
+  [
     "Should a nasogastric tube be left in after bowel resection?",
     "No. Routine postoperative NG decompression does not reduce anastomotic leak, wound dehiscence or pneumonia, and it delays the return of bowel function. ERAS guidelines recommend removing any intraoperative NG tube before the patient wakes, and starting oral intake within 24 hours — early feeding shortens hospital stay, at the cost of a slightly higher NG reinsertion rate for vomiting, especially in patients over 60.",
   ],
