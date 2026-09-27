@@ -87,7 +87,7 @@ const BurnsPlasticsTopic = () => {
         "Estimate burn extent and depth using Wallace's Rule of Nines and Lund & Browder",
         "Apply the Parkland formula and titrate fluid resuscitation to urine output",
         "Recognise indications for early intubation in airway/inhalational injury",
-        "Explain the contraindication of suxamethonium from 24 h to ~2 years post-burn",
+        "Explain why suxamethonium must be avoided after the first 24 h until major burns have healed",
         "Plan anaesthesia for burns debridement, grafting and free-flap reconstruction",
         "Explain the stages of free-flap transfer, donor-site choice and combined mastectomy–reconstruction pathways",
       ]}
@@ -111,7 +111,7 @@ const BurnsPlasticsTopic = () => {
           "BBA EMSB",
           "BJA Educ Burns 2022",
         ],
-        workedExamples: ["BBA EMSB", "BBA Referral 2012"],
+        workedExamples: ["BBA EMSB", "ABA Fluids 2024", "BJA Educ Burns 2022"],
       }}
       keyPoints={[
         { text: "Major burns need formal fluid resuscitation titrated to response. Parkland (4 mL/kg/%TBSA in 24 h) is a traditional calculation; ABA 2024 recommends starting at 2 mL/kg/%TBSA in adults with ≥20% TBSA burns to reduce fluid creep", cites: ["BBA EMSB", "ABA Fluids 2024"] },
@@ -174,7 +174,7 @@ const BurnsPlasticsTopic = () => {
                     <p>Revised Baux = age (years) + %TBSA + 17 (if inhalation injury)</p>
                   </div>
                   <ul className="text-xs text-muted-foreground leading-relaxed space-y-1 list-disc pl-4">
-                    <li><strong>Interpretation</strong>: the score approximates percentage mortality. Historically a score of 100 implied near-certain death, but modern burns care has shifted the lethal threshold upward — the contemporary LD<sub>50</sub> sits closer to a revised score of about 110, and survival at scores of 90–100 is now common in specialist centres.</li>
+                     <li><strong>Interpretation</strong>: the revised score is an input to a calibrated prediction model; it must not be read as a percentage risk. Case mix and outcomes differ between cohorts and over time<InlineRef topicId="burns-plastics" refLabel="Osler Baux 2010" />.</li>
                     <li><strong>Worked example</strong>: a 45-year-old with a 30% TBSA flame burn and confirmed inhalation injury scores 45 + 30 + 17 = <strong>92</strong>. This is <em>not</em> 92% predicted mortality; use a validated calculator and specialist assessment for prognosis.</li>
                     <li><strong>Uses and limits</strong>: useful for population benchmarking, but it is not an individual prediction, and it ignores comorbidity, frailty, burn depth, delay to resuscitation and non-burn trauma. Never use it alone to withhold treatment; other validated models may add refinement.</li>
                   </ul>
@@ -271,7 +271,7 @@ const BurnsPlasticsTopic = () => {
                     <li>Hoarseness, stridor, drooling, or respiratory distress</li>
                     <li>Enclosed-space fire or explosion with evidence of evolving airway injury or a high-risk transfer</li>
                     <li>Reduced consciousness from smoke inhalation or CO poisoning</li>
-                    <li>Burns &gt;40% TBSA (large fluid resuscitation → facial oedema)</li>
+                     <li>Extensive burns needing substantial resuscitation increase concern for later airway oedema; assess the airway individually</li>
                   </ul>
                   <p className="text-sm mt-2 text-amber-400 font-medium">
                     ⚠ Reassess repeatedly; intubate before progressive oedema obstructs the airway. Secure the tube carefully as tape may not adhere.<InlineRef topicId="burns-plastics" refLabel="Airway Signs 2022" />
@@ -280,7 +280,7 @@ const BurnsPlasticsTopic = () => {
                 <div className="grid sm:grid-cols-2 gap-3">
                   {[
                     { label: "CO poisoning", value: "Falsely normal SpO₂. Co-oximetry mandatory. Treat with 100% O₂ (COHb half-life 250→40 min). Discuss hyperbaric treatment for serious neurological/cardiac findings or pregnancy; COHb alone is not decisive" },
-                    { label: "Cyanide poisoning", value: "From plastic combustion. Cellular hypoxia with high lactate (>10 mmol/L). Treat with hydroxocobalamin: adults 5 g IV; children 70 mg/kg (max 5 g/dose)" },
+                    { label: "Cyanide poisoning", value: "From smoke in enclosed-space fires. Cellular hypoxia with high lactate (>10 mmol/L). Treat with hydroxocobalamin: adults 5 g IV; children 70 mg/kg (max 5 g/dose)" },
                     { label: "Upper airway", value: "Direct thermal injury to supraglottic structures. Oedema peaks 12–24 h. Early intubation before airway compromise" },
                     { label: "Lower airway", value: "Chemical injury to bronchi and alveoli → ARDS risk. Bronchoscopy may show carbonaceous material and airway oedema" },
                   ].map((item) => (
@@ -415,16 +415,16 @@ const BurnsPlasticsTopic = () => {
                     <li>Avoid excessive crystalloid — tissue oedema impairs flap perfusion and venous drainage</li>
                     <li>Individualise transfusion to blood loss, oxygen delivery and patient factors; no universal flap-specific Hb threshold</li>
                     <li>Prolonged cases (8–16 h): meticulous pressure care, DVT prophylaxis, temperature management</li>
-                    <li>Some evidence supports TIVA over volatile for microvascular outcomes</li>
+                    <li>No anaesthetic maintenance technique has conclusively improved flap survival; select TIVA or volatile according to the patient and PONV risk</li>
                   </ul>
                 </div>
                 <div className="bg-card border border-border rounded-lg p-4">
                   <h3 className="font-semibold text-foreground mb-2">Tumescent Anaesthesia</h3>
                   <p className="text-sm text-muted-foreground mb-2">
-                    Large volumes of very dilute local anaesthetic with adrenaline are infiltrated into the subcutaneous fat until the tissue is firm and blanched ("tumescent"). It is used for liposuction, large-area harvesting and some burn debridement, providing analgesia and marked vasoconstriction that reduces blood loss<InlineRef topicId="burns-plastics" refLabel="BJA Educ Burns 2022" />.
+                    Large volumes of very dilute local anaesthetic with adrenaline are infiltrated into the subcutaneous fat until the tissue is firm and blanched ("tumescent"). It is used for liposuction and may be used to reduce bleeding during other procedures; dosing evidence from liposuction must not be generalised to burn debridement<InlineRef topicId="burns-plastics" refLabel="Tumescent PK 2016" />.
                   </p>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                    <li><strong className="text-foreground">Klein solution</strong> (the classic recipe): lidocaine 0.05–0.1% (500–1000 mg) with adrenaline 1:1,000,000 (1 mg) and sodium bicarbonate 8.4% 10 mL (10 mmol, to reduce injection pain) made up in 1 L of warmed 0.9% sodium chloride; triamcinolone is added in some formulations</li>
+                    <li><strong className="text-foreground">Example dilute solution</strong>: up to 1 g lidocaine, 1 mg adrenaline and 10 mL of 8.4% sodium bicarbonate (10 mmol) added to 1 L of 0.9% sodium chloride. Check the final concentration, total dose and local protocol rather than treating this as a universal prescription<InlineRef topicId="burns-plastics" refLabel="Tumescent PK 2016" />.</li>
                     <li><strong className="text-foreground">Dose</strong>: because absorption from vasoconstricted fat is so slow, doses of <strong>28 mg/kg without liposuction and 45 mg/kg with liposuction</strong> were conservative estimates in a small pharmacokinetic study of tumescent local anaesthesia, not general safety limits. The 55 mg/kg figure derives from selected liposuction practice and must not be extrapolated to burn surgery or general anaesthesia. Account for all local anaesthetic and individual risk factors<InlineRef topicId="burns-plastics" refLabel="Tumescent PK 2016" /></li>
                     <li><strong className="text-foreground">Delayed absorption</strong>: plasma lidocaine peaks late — several hours after infiltration (often around 12–14 h, but variable) — so toxicity can emerge after leaving theatre<InlineRef topicId="burns-plastics" refLabel="Tumescent PK 2016" /></li>
                     <li><strong className="text-foreground">Risks</strong>: delayed local anaesthetic systemic toxicity (perioral tingling, tinnitus, agitation, seizures, arrhythmia, cardiac arrest — treat with 20% lipid emulsion per the AAGBI LAST protocol); fluid overload and pulmonary oedema from litres of infiltrate plus reabsorbed fluid and IV crystalloid; hypothermia from cold infiltration fluid (always warm it); methaemoglobinaemia with prilocaine-containing solutions; and adrenaline effects (tachycardia, hypertension, arrhythmia)</li>
@@ -566,10 +566,10 @@ const BurnsPlasticsTopic = () => {
               <p className="font-semibold text-foreground">Step-by-step reasoning</p>
               <ol className="list-decimal list-inside space-y-1">
                 <li><strong>No — suxamethonium is contraindicated.</strong> Burn injury upregulates extra-junctional (immature) nicotinic acetylcholine receptors throughout skeletal muscle<InlineRef topicId="burns-plastics" refLabel="BJA Educ Burns 2022" />.</li>
-                <li>These receptors peak from ~24 h post-burn and persist until full re-epithelialisation — often 6–12 months, sometimes up to 2 years.</li>
+                <li>Receptor changes begin after about 24 h and may persist for many months until wounds have healed; the period varies with burn extent and ongoing injury.</li>
                 <li>Depolarisation by suxamethonium activates these widespread receptors, causing massive K⁺ efflux → acute hyperkalaemia and potentially fatal cardiac arrest.</li>
                 <li><strong>Alternative:</strong> Use rocuronium for RSI. Burns patients often show resistance to non-depolarising NMBAs — use rocuronium 1.0–1.2 mg/kg. Sugammadex should be available for reversal if needed.</li>
-                <li>Suxamethonium remains safe within the first 24 h post-burn (before receptor upregulation occurs) and after full healing (re-epithelialisation complete).</li>
+                <li>The burn-related hyperkalaemia risk is not yet established in the first 24 h; later, avoid suxamethonium until healing and recovery are confirmed. Other contraindications still apply.</li>
               </ol>
               <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
                 <p className="text-xs font-semibold text-destructive uppercase">Common traps</p>
@@ -582,7 +582,7 @@ const BurnsPlasticsTopic = () => {
             </div>
           ),
           answer:
-            "No. Suxamethonium is contraindicated from 24 h to ~2 years post-major burn. Use high-dose rocuronium for RSI and reverse with sugammadex.",
+            "No. Avoid suxamethonium from around 24 h after a major burn until wounds have healed and receptor changes resolve. Use rocuronium for RSI, monitor neuromuscular recovery and reverse when indicated.",
           cites: ["BJA Educ Burns 2022"],
         },
       ]}
