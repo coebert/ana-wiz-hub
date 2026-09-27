@@ -95,23 +95,23 @@ const PlasticSurgeryTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "BJA Educ 2021",
+          "Free Flap Review 2022",
           "BAPRAS 2020",
           "Curr Opin Anaesthesiol 2019",
         ],
         keyPoints: [
-          "BJA Educ 2021",
+          "Free Flap Review 2022",
           "BAPRAS 2020",
           "Curr Opin Anaesthesiol 2019",
         ],
-        workedExamples: ["BJA Educ 2021", "Curr Opin Anaesthesiol 2019"],
+        workedExamples: ["Free Flap Review 2022", "Curr Opin Anaesthesiol 2019"],
       }}
       keyPoints={[
         { text: "Free-flap surgery demands meticulous haemodynamic management — normotension, normovolaemia, normothermia to optimise flap perfusion", cites: ["BAPRAS 2020"] },
-        { text: "Avoid vasopressors where possible; if needed, low-dose noradrenaline preferred over metaraminol/phenylephrine", cites: ["BJA Educ 2021"] },
+        { text: "Avoid vasopressors where possible; if needed, low-dose noradrenaline preferred over metaraminol/phenylephrine", cites: ["Free Flap Review 2022"] },
         { text: "Microsurgery is prolonged (6–12 h+) — anticipate hypothermia, pressure injuries, DVT risk; arterial line and urinary catheter mandatory", cites: ["Curr Opin Anaesthesiol 2019"] },
         { text: "Regional techniques (perforator, pectoralis, TAP) provide analgesia and may improve flap perfusion via sympathetic blockade", cites: ["BAPRAS 2020"] },
-        { text: "Haemodilution to Hct 30–35% reduces blood viscosity and improves microcirculatory flow through anastomosed vessels", cites: ["BJA Educ 2021"] },
+        { text: "Haemodilution to Hct 30–35% reduces blood viscosity and improves microcirculatory flow through anastomosed vessels", cites: ["Free Flap Review 2022"] },
       ]}
       coreConcepts={
         <>
@@ -131,7 +131,7 @@ const PlasticSurgeryTopic = () => {
             <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
               <CollapsibleSubsection title="Free Flap Surgery — Anaesthetic Principles" defaultOpen>
                 <p className="text-muted-foreground leading-relaxed mb-3">
-                  Free tissue transfer involves harvesting a composite tissue flap (skin, muscle, bone) with its vascular pedicle and anastomosing it to recipient vessels at the defect site. Flap survival depends on <strong className="text-foreground">microvascular patency</strong>, influenced by haemodynamics, temperature, coagulation, and vasoactive drugs<InlineRef topicId="plastic-surgery" refLabel="BJA Educ 2021" />.
+                  Free tissue transfer involves harvesting a composite tissue flap (skin, muscle, bone) with its vascular pedicle and anastomosing it to recipient vessels at the defect site. Flap survival depends on <strong className="text-foreground">microvascular patency</strong>, influenced by haemodynamics, temperature, coagulation, and vasoactive drugs<InlineRef topicId="plastic-surgery" refLabel="Free Flap Review 2022" />.
                 </p>
                 <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
                   <FreeFlaPerfusionDiagram />
@@ -359,7 +359,7 @@ const PlasticSurgeryTopic = () => {
             <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
               <CollapsibleSubsection title="Vasopressor Choice and Titration in Free Flap Surgery">
                 <p className="text-muted-foreground leading-relaxed mb-3">
-                  The old teaching that vasopressors must be avoided absolutely has been overtaken: sustained hypotension is more harmful to a flap than a low-dose vasopressor, because a free flap is denervated and its perfusion depends almost entirely on perfusion pressure and cardiac output. Contemporary guidance is to correct hypovolaemia first, then use noradrenaline as the vasopressor of choice to restore mean arterial pressure and oxygen delivery<InlineRef topicId="plastic-surgery" refLabel="BJA Educ Free Flap 2021" />.
+                  The old teaching that vasopressors must be avoided absolutely has been overtaken: sustained hypotension is more harmful to a flap than a low-dose vasopressor, because a free flap is denervated and its perfusion depends almost entirely on perfusion pressure and cardiac output. Contemporary guidance is to correct hypovolaemia first, then use noradrenaline as the vasopressor of choice to restore mean arterial pressure and oxygen delivery<InlineRef topicId="plastic-surgery" refLabel="Free Flap Review 2022" />.
                 </p>
                 <div className="space-y-3">
                   {[
@@ -391,7 +391,7 @@ const PlasticSurgeryTopic = () => {
             <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
               <CollapsibleSubsection title="Medical Management of Venous Congestion">
                 <p className="text-muted-foreground leading-relaxed mb-3">
-                  Venous congestion is a surgical emergency and re-exploration of the venous anastomosis is the definitive treatment. The measures below are adjuncts used while theatre is being arranged, or when the anastomosis is patent and congestion is due to outflow mismatch or a failing venous bed — they never replace surgical review<InlineRef topicId="plastic-surgery" refLabel="BJA Educ Free Flap 2021" />.
+                  Venous congestion is a surgical emergency and re-exploration of the venous anastomosis is the definitive treatment. The measures below are adjuncts used while theatre is being arranged, or when the anastomosis is patent and congestion is due to outflow mismatch or a failing venous bed — they never replace surgical review<InlineRef topicId="plastic-surgery" refLabel="Free Flap Review 2022" />.
                 </p>
                 <div className="space-y-3">
                   {[
@@ -504,7 +504,7 @@ const PlasticSurgeryTopic = () => {
               <ol className="list-decimal list-inside space-y-1">
                 <li><strong>Assess preload.</strong> Check stroke-volume variation (SVV) or perform a passive leg raise. If fluid-responsive, give 250 mL balanced crystalloid bolus.</li>
                 <li><strong>Check depth.</strong> If BIS is high or MAC low, deepen anaesthesia/add opioid to reduce sympathetic stimulation.</li>
-                <li><strong>Vasopressor choice.</strong> If adequately filled but hypotensive, start <strong>low-dose noradrenaline</strong> (0.02–0.05 µg/kg/min). This is preferred over phenylephrine or metaraminol, which cause direct microvascular vasoconstriction and compromise flap perfusion<InlineRef topicId="plastic-surgery" refLabel="BJA Educ 2021" />.</li>
+                <li><strong>Vasopressor choice.</strong> If adequately filled but hypotensive, start <strong>low-dose noradrenaline</strong> (0.02–0.05 µg/kg/min). This is preferred over phenylephrine or metaraminol, which cause direct microvascular vasoconstriction and compromise flap perfusion<InlineRef topicId="plastic-surgery" refLabel="Free Flap Review 2022" />.</li>
                 <li><strong>Optimise haematocrit.</strong> Maintain Hct 30–35%. If Hb &gt;110 g/L, consider that relative polycythaemia may increase viscosity; if Hb &lt;80 g/L, consider transfusion.</li>
                 <li><strong>Temperature.</strong> Check core temp. If &lt;36 °C, increase warming — hypothermia causes vasoconstriction and coagulopathy.</li>
                 <li><strong>Communicate.</strong> Inform the microsurgeon of MAP trends and any interventions. They may pause or adjust the anastomosis timing.</li>
@@ -521,7 +521,7 @@ const PlasticSurgeryTopic = () => {
           ),
           answer:
             "Assess preload with SVV or PLR, fluid-bolus if responsive, then add low-dose noradrenaline (not phenylephrine/metaraminol) to MAP ≥65 mmHg. Maintain Hct 30–35%, normothermia, and adequate depth of anaesthesia.",
-          cites: ["BJA Educ 2021"],
+          cites: ["Free Flap Review 2022"],
         },
         {
           title: "Suspected venous flap congestion at 4 hours post-op",
