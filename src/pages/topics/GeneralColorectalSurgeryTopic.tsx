@@ -17,7 +17,7 @@ const faqs: Array<[string, string]> = [
   ],
   [
     "What fluid strategy is recommended for major bowel surgery?",
-    "Aim for euvolaemia (zero balance). The RELIEF trial (2018) found that a very restrictive regimen increased acute kidney injury and surgical-site infection compared with a moderately liberal one (about 1–2 L positive at 24 h), with no difference in disability-free survival. Use goal-directed therapy in high-risk patients and stop IV fluids as soon as oral intake is established.",
+    "Aim for euvolaemia, avoiding both overload and under-filling. The RELIEF trial (2018, 3,000 patients) compared a restrictive regimen (median about 3.7 L in the first 24 h) with a moderately liberal one (about 6.1 L): there was no difference in disability-free survival, but the restrictive group had more acute kidney injury and more surgical-site infection. Use goal-directed therapy in high-risk patients and stop IV fluids as soon as oral intake is established.",
   ],
   [
     "What are the anaesthetic priorities for oesophagectomy?",
@@ -29,11 +29,11 @@ const faqs: Array<[string, string]> = [
   ],
   [
     "Should a nasogastric tube be left in after bowel resection?",
-    "No. Routine postoperative NG decompression does not reduce anastomotic leak, wound dehiscence or pneumonia, and it delays the return of bowel function. ERAS guidelines recommend removing any intraoperative NG tube before the patient wakes, and starting oral intake within 24 hours — early feeding shortens hospital stay, at the cost of a slightly higher NG reinsertion rate for vomiting, especially in patients over 60.",
+    "No. Routine postoperative NG decompression does not reduce anastomotic leak, wound dehiscence or pneumonia, and it delays the return of bowel function. ERAS guidelines recommend removing any intraoperative NG tube before the patient wakes, and starting oral intake within 24 hours — early feeding shortens hospital stay without increasing anastomotic leak, at the cost of more vomiting and a somewhat higher NG reinsertion rate.",
   ],
   [
     "When should TPN be started after major bowel surgery?",
-    "Only when the gut cannot be used. If enteral feeding is contraindicated or failing, the EPaNIC trial and ESPEN guidance support withholding parenteral nutrition for up to about 7 days in well-nourished patients — early TPN (within 48 hours) caused more infections, more cholestasis and slower recovery without improving survival. Start earlier only in patients with severe pre-existing malnutrition, and watch for re-feeding syndrome when nutrition restarts.",
+    "Only when the gut cannot be used or cannot meet needs. ESPEN surgical guidance advises adding parenteral nutrition when oral/enteral intake is expected to be under about 50% of requirements for more than 7 days, and starting it promptly in severely malnourished patients. In critically ill patients, EPaNIC showed that starting PN within 48 hours caused more infections and slower recovery than waiting until day 8, without improving survival; ASPEN/SCCM advises withholding PN for the first 7 days in patients at low nutritional risk, while ESPEN suggests starting within 3–7 days if enteral feeding is contraindicated. Watch for re-feeding syndrome when nutrition restarts.",
   ],
 ];
 
@@ -45,7 +45,7 @@ const workedExamples: WorkedExample[] = [
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li>Preoperative: optimise anaemia (IV iron if iron-deficient), HbA1c, carbohydrate loading (not in insulin-treated diabetes without monitoring), no routine mechanical bowel preparation fasting beyond 6 h solids / 2 h clear fluids</li>
+          <li>Preoperative: correct anaemia (IV iron if iron-deficient), optimise HbA1c, prehabilitation; fast only 6 h for solids and 2 h for clear fluids; carbohydrate loading is reasonable with glucose monitoring in diabetes (evidence limited); no mechanical bowel preparation alone — oral antibiotics with or without preparation per surgical protocol</li>
           <li>Risk stratify: NSQIP or P-POSSUM; CPET if functional capacity uncertain</li>
           <li>Induction: standard IV induction, antibiotic prophylaxis within 60 minutes of incision, dexamethasone and a second antiemetic (≥2 PONV risk factors)</li>
           <li>Analgesia: spinal diamorphine/morphine or TAP/rectus sheath blocks, plus paracetamol, NSAID if renal function allows, avoid long-acting systemic opioid; epidural not routinely needed for laparoscopy</li>
@@ -145,7 +145,7 @@ const procedures = [
       ["Patients", "Cancer, often after neoadjuvant chemo(radio)therapy; smokers/alcohol, COPD, malnutrition, sarcopenia; high aspiration risk (obstruction, achalasia-like retention)"],
       ["Assessment", "CPET (anaerobic threshold / VO₂peak predicts complications), spirometry/DLCO, echo if indicated, nutrition, prehabilitation"],
       ["Airway & lungs", "RSI in head-up position; double-lumen tube (left DLT) or bronchial blocker for right thoracotomy phase; lung-protective OLV"],
-      ["Lines & monitoring", "Arterial line, CVC (left IJ if right neck incision for McKeown), cardiac output monitoring, temperature"],
+      ["Lines & monitoring", "Arterial line, CVC (right IJ — the McKeown cervical anastomosis is usually through a left neck incision), cardiac output monitoring, temperature"],
       ["Analgesia", "Thoracic epidural (T5–T8) or paravertebral catheters; ESP blocks as alternatives in minimally invasive surgery"],
       ["Conduit protection", "Maintain MAP and cardiac output; avoid both fluid overload and hypovolaemia; vasopressors acceptable when euvolaemic"],
       ["Specific issues", "Arrhythmias (AF ~20%), cardiac compression during transhiatal dissection, recurrent laryngeal nerve injury, chylothorax, pneumonia, ARDS, anastomotic leak/conduit necrosis"],
@@ -180,7 +180,7 @@ const GeneralColorectalSurgeryTopic = () => (
       { text: "Pneumoperitoneum (12–15 mmHg) ↓ FRC and compliance, ↑ SVR and PaCO₂; head-down worsens ventilation, head-up reduces venous return", cites: ["BJA Educ Laparoscopy 2011"] },
       { text: "Oesophagectomy: CPET assessment, one-lung ventilation, thoracic epidural/paravertebral analgesia, conduit perfusion and planned critical care", cites: ["ERAS Oesophagectomy 2019", "Carney Oesophagectomy 2015"] },
       { text: "Extended VTE prophylaxis (28 days) after major abdominal or pelvic cancer surgery", cites: ["NICE NG89"] },
-      { text: "No routine NG decompression; feed orally/enterally within 24 h. If TPN is needed, evidence favours delaying it to around day 7–8 in well-nourished patients (EPaNIC)", cites: ["ERAS Colorectal 2018", "EPaNIC 2011", "ESPEN ICU 2023"] },
+      { text: "No routine NG decompression; feed orally/enterally within 24 h. Add PN if intake will be <50% of needs for >7 days (sooner if severely malnourished); in well-nourished critically ill patients early PN is harmful (EPaNIC)", cites: ["ERAS Colorectal 2018", "ESPEN Surgery 2021", "EPaNIC 2011"] },
     ]}
     sectionExamMapping={{ objectives: { exams: [Exam.FINAL] }, keyPoints: { exams: [Exam.FINAL] } }}
     sectionSources={{
@@ -198,7 +198,7 @@ const GeneralColorectalSurgeryTopic = () => (
                 <li><strong>Anaemia</strong>: common in colorectal cancer (iron deficiency from occult bleeding). Treat iron deficiency preoperatively, IV iron if surgery is within weeks<R l="NICE NG180" /></li>
                 <li><strong>Nutrition</strong>: screen (e.g. MUST); oral supplements or enteral feeding if malnourished; immunonutrition may be considered<R l="ERAS Colorectal 2018" /></li>
                 <li><strong>Prehabilitation</strong>: exercise, nutrition, psychological support, smoking and alcohol cessation</li>
-                <li><strong>Fasting</strong>: 6 h solids, 2 h clear fluids; preoperative carbohydrate drink in non-diabetic patients<R l="ERAS Colorectal 2018" /></li>
+                <li><strong>Fasting</strong>: 6 h solids, 2 h clear fluids; preoperative carbohydrate drink for non-diabetic patients (ERAS 2018 allows it in diabetes alongside usual medication, but evidence there is limited — monitor glucose)<R l="ERAS Colorectal 2018" /></li>
                 <li><strong>Bowel preparation</strong>: mechanical preparation causes dehydration and electrolyte loss — ask about it and give fluids; ERAS 2018 suggests oral antibiotic plus mechanical preparation may be used before colonic resection but mechanical preparation alone is not recommended<R l="ERAS Colorectal 2018" /></li>
                 <li><strong>Neoadjuvant therapy</strong>: chemoradiotherapy may cause cardiotoxicity (5-FU coronary spasm, anthracyclines), neuropathy, marrow suppression, fibrosis and fatigue</li>
               </ul>
@@ -225,10 +225,10 @@ const GeneralColorectalSurgeryTopic = () => (
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postoperative Nutrition: NG Tubes, Early Feeding & TPN</h2>
               <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
                 <li><strong>No routine nasogastric decompression</strong>: routine postoperative NG tubes do not prevent anastomotic leak, wound dehiscence or pneumonia, and delay return of bowel function; they are associated with more pulmonary complications and longer stay. ERAS 2018 and the ASCRS/SAGES 2022 guideline recommend against routine NG decompression after colorectal resection — an NG tube placed intraoperatively should be removed before reversal of anaesthesia<R l="ERAS Colorectal 2018" /><R l="ASCRS SAGES ERAS 2022" /></li>
-                <li><strong>Early oral/enteral feeding</strong>: feeding within 24 h of elective colorectal resection is safe and does not increase anastomotic leak; meta-analyses show shorter hospital stay and fewer total complications. The trade-off is a higher rate of NG reinsertion for vomiting/ileus (particularly in patients over 60), so advance diet as tolerated rather than forcing intake<R l="Zhuang Early Feeding 2013" /><R l="Wang Early Feeding 2022" /></li>
-                <li><strong>If the gut works, use it</strong>: enteral nutrition maintains mucosal integrity and is preferred whenever the GI tract is accessible and functioning; TPN is reserved for a non-functioning or inaccessible gut (prolonged ileus, high-output obstruction, anastomotic leak with downstream feeding impossible)<R l="ESPEN ICU 2023" /></li>
-                <li><strong>Timing of TPN</strong>: the EPaNIC trial (4,640 critically ill adults) found that late initiation of parenteral nutrition (not before day 8) — compared with early initiation within 48 h — led to faster recovery, fewer ICU infections, less cholestasis, shorter ventilation and lower costs, with no difference in mortality<R l="EPaNIC 2011" /></li>
-                <li><strong>Current guidance</strong>: ESPEN recommends starting early enteral nutrition and, if enteral intake is contraindicated or fails to reach targets, withholding parenteral nutrition for up to about 7 days in well-nourished patients; consider earlier PN only in those with severe pre-existing malnutrition. Re-feeding syndrome risk rises the longer nutrition is withheld — check phosphate, potassium and magnesium when feeding restarts<R l="ESPEN ICU 2023" /></li>
+                <li><strong>Early oral/enteral feeding</strong>: feeding within 24 h of elective colorectal resection is safe and does not increase anastomotic leak; meta-analyses show shorter hospital stay and fewer total complications. The trade-off is more vomiting and a somewhat higher rate of NG reinsertion, so advance diet as tolerated rather than forcing intake<R l="Zhuang Early Feeding 2013" /><R l="Wang Early Feeding 2022" /></li>
+                <li><strong>If the gut works, use it</strong>: enteral nutrition maintains mucosal integrity and is preferred whenever the GI tract is accessible and functioning; TPN is reserved for a non-functioning or inaccessible gut (prolonged ileus, obstruction, high-output fistula, anastomotic leak where downstream feeding is impossible)<R l="ESPEN Surgery 2021" /></li>
+                <li><strong>Timing of TPN in critical illness</strong>: the EPaNIC trial (4,640 critically ill adults, most after cardiac surgery) found that starting parenteral nutrition on day 8 — compared with within 48 h — led to faster recovery, fewer ICU infections, less cholestasis, shorter ventilation and lower costs, with no difference in mortality<R l="EPaNIC 2011" /></li>
+                <li><strong>Current guidance</strong>: after surgery, ESPEN advises adding PN when oral/enteral intake is expected to be under about 50% of requirements for more than 7 days, and starting nutrition support without delay in severely malnourished patients<R l="ESPEN Surgery 2021" />. In the ICU, ESPEN suggests PN within 3–7 days if enteral feeding is contraindicated<R l="ESPEN ICU 2023" />, while ASPEN/SCCM advises withholding PN for the first 7 days in patients at low nutritional risk<R l="ASPEN SCCM 2016" />. Re-feeding syndrome risk rises the longer nutrition is withheld — check phosphate, potassium and magnesium when feeding restarts</li>
               </ul>
             </div>
 
