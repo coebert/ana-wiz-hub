@@ -172,6 +172,7 @@ const GeneralColorectalSurgeryTopic = () => (
       { text: "Pneumoperitoneum (12–15 mmHg) ↓ FRC and compliance, ↑ SVR and PaCO₂; head-down worsens ventilation, head-up reduces venous return", cites: ["BJA Educ Laparoscopy 2011"] },
       { text: "Oesophagectomy: CPET assessment, one-lung ventilation, thoracic epidural/paravertebral analgesia, conduit perfusion and planned critical care", cites: ["ERAS Oesophagectomy 2019", "Carney Oesophagectomy 2015"] },
       { text: "Extended VTE prophylaxis (28 days) after major abdominal or pelvic cancer surgery", cites: ["NICE NG89"] },
+      { text: "No routine NG decompression; feed orally/enterally within 24 h. If TPN is needed, evidence favours delaying it to around day 7–8 in well-nourished patients (EPaNIC)", cites: ["ERAS Colorectal 2018", "EPaNIC 2011", "ESPEN ICU 2023"] },
     ]}
     sectionExamMapping={{ objectives: { exams: [Exam.FINAL] }, keyPoints: { exams: [Exam.FINAL] } }}
     sectionSources={{
@@ -210,6 +211,17 @@ const GeneralColorectalSurgeryTopic = () => (
                 </table>
               </div>
               <p className="text-sm text-muted-foreground mt-2 leading-relaxed">Higher protocol compliance is associated with fewer complications and shorter length of stay<R l="ERAS Colorectal 2018" />.</p>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postoperative Nutrition: NG Tubes, Early Feeding & TPN</h2>
+              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+                <li><strong>No routine nasogastric decompression</strong>: routine postoperative NG tubes do not prevent anastomotic leak, wound dehiscence or pneumonia, and delay return of bowel function; they are associated with more pulmonary complications and longer stay. ERAS 2018 and the ASCRS/SAGES 2022 guideline recommend against routine NG decompression after colorectal resection — an NG tube placed intraoperatively should be removed before reversal of anaesthesia<R l="ERAS Colorectal 2018" /><R l="ASCRS SAGES ERAS 2022" /></li>
+                <li><strong>Early oral/enteral feeding</strong>: feeding within 24 h of elective colorectal resection is safe and does not increase anastomotic leak; meta-analyses show shorter hospital stay and fewer total complications. The trade-off is a higher rate of NG reinsertion for vomiting/ileus (particularly in patients over 60), so advance diet as tolerated rather than forcing intake<R l="Zhuang Early Feeding 2013" /><R l="Wang Early Feeding 2022" /></li>
+                <li><strong>If the gut works, use it</strong>: enteral nutrition maintains mucosal integrity and is preferred whenever the GI tract is accessible and functioning; TPN is reserved for a non-functioning or inaccessible gut (prolonged ileus, high-output obstruction, anastomotic leak with downstream feeding impossible)<R l="ESPEN ICU 2023" /></li>
+                <li><strong>Timing of TPN</strong>: the EPaNIC trial (4,640 critically ill adults) found that late initiation of parenteral nutrition (not before day 8) — compared with early initiation within 48 h — led to faster recovery, fewer ICU infections, less cholestasis, shorter ventilation and lower costs, with no difference in mortality<R l="EPaNIC 2011" /></li>
+                <li><strong>Current guidance</strong>: ESPEN recommends starting early enteral nutrition and, if enteral intake is contraindicated or fails to reach targets, withholding parenteral nutrition for up to about 7 days in well-nourished patients; consider earlier PN only in those with severe pre-existing malnutrition. Re-feeding syndrome risk rises the longer nutrition is withheld — check phosphate, potassium and magnesium when feeding restarts<R l="ESPEN ICU 2023" /></li>
+              </ul>
             </div>
 
             <div>
