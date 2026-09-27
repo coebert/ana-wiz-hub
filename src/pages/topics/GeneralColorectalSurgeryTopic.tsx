@@ -13,7 +13,15 @@ const R = ({ l }: { l: string }) => <InlineRef topicId={T} refLabel={l} />;
 const faqs: Array<[string, string]> = [
   [
     "Is a thoracic epidural still recommended for laparoscopic colorectal surgery?",
-    "Not routinely. The ERAS Society 2018 guideline recommends thoracic epidural analgesia for open colorectal surgery, but for laparoscopic surgery it advises alternatives such as spinal (intrathecal) opioid, local anaesthetic wound infusion or abdominal wall blocks, because epidurals slow mobilisation and increase hypotension and fluid administration without improving recovery after laparoscopy.",
+    "No, not routinely. ERAS 2025 advises against thoracic epidurals for minimally invasive colorectal surgery; it also prefers another suitable regional or abdominal wall technique in open surgery where feasible. PROSPECT 2024 still recommends a low continuous thoracic epidural as first-line for open colorectal surgery. Choose according to incision, contraindications and local pain-service support.",
+  ],
+  [
+    "Is a high-dose morphine spinal better than an epidural for major bowel surgery?",
+    "No head-to-head evidence establishes that. A single-shot intrathecal morphine spinal can reduce pain and opioid use, particularly after laparoscopic resection, but higher doses increase itching and may raise delayed respiratory-depression risk. Evidence for replacing an epidural after open bowel surgery is less certain. Use a patient-specific dose, postoperative monitoring and a plan for pain after the spinal wears off; do not treat a high dose as automatically better.",
+  ],
+  [
+    "When are rectus sheath catheters useful after laparotomy?",
+    "Bilateral rectus sheath catheters cover a midline incision without the sympathetic block of an epidural, but they do not treat visceral or perineal pain. A randomized trial found better movement pain at 24 hours with epidural but more hypotension and opioid use by day 3; a 2026 review found less hypotension with catheters, while pain-effect estimates were too imprecise to prove equivalence. Combine them with multimodal analgesia and monitor cumulative local anaesthetic exposure.",
   ],
   [
     "What fluid strategy is recommended for major bowel surgery?",
@@ -48,7 +56,7 @@ const workedExamples: WorkedExample[] = [
           <li>Preoperative: correct anaemia (IV iron if iron-deficient), optimise HbA1c, prehabilitation; fast only 6 h for solids and 2 h for clear fluids; carbohydrate loading is reasonable with glucose monitoring in diabetes (evidence limited); no mechanical bowel preparation alone — oral antibiotics with or without preparation per surgical protocol</li>
           <li>Risk stratify: NSQIP or P-POSSUM; CPET if functional capacity uncertain</li>
           <li>Induction: standard IV induction, antibiotic prophylaxis within 60 minutes of incision, dexamethasone and a second antiemetic (≥2 PONV risk factors)</li>
-          <li>Analgesia: spinal diamorphine/morphine or TAP/rectus sheath blocks, plus paracetamol, NSAID if renal function allows, avoid long-acting systemic opioid; epidural not routinely needed for laparoscopy</li>
+          <li>Analgesia: consider intrathecal morphine or TAP/rectus sheath blocks alongside paracetamol; discuss NSAID choice with the surgeon, particularly for a rectal anastomosis; reserve systemic opioid for rescue. Epidural not routinely needed for laparoscopy</li>
           <li>Ventilation: lung-protective (6–8 ml/kg PBW, PEEP), steep Trendelenburg — watch airway pressures, ETT migration, facial/airway oedema</li>
           <li>Fluids: near-zero balance; goal-directed therapy (oesophageal Doppler or pulse contour) in high-risk cases; vasopressor for anaesthesia-related vasodilation</li>
           <li>Maintain normothermia, deep neuromuscular block if it helps surgical view with full reversal confirmed by quantitative monitoring</li>
@@ -110,7 +118,7 @@ const procedures = [
       ["Patients", "Often elderly, anaemic, malnourished; cancer; emergencies with sepsis/obstruction (NELA pathway)"],
       ["Approach", "Laparoscopic/robotic preferred where possible; open for emergencies or complex disease"],
       ["Airway", "RSI if obstruction/ileus; NG tube decompression before induction"],
-      ["Analgesia", "Open: thoracic epidural (T8–T11). Laparoscopic: spinal opioid, TAP/rectus sheath catheters or wound catheters"],
+      ["Analgesia", "Open: consider thoracic epidural or alternative regional/abdominal wall technique by incision and risk. Laparoscopic: multimodal analgesia with TAP block or selected intrathecal opioid; epidural not routine"],
       ["Fluids", "Euvolaemia; GDT in high-risk; avoid salt/water overload (ileus, anastomotic oedema)"],
       ["Specific issues", "Steep Trendelenburg (anterior resection); ureteric injury; anastomotic leak (days 3–7); ileus; SSI"],
     ],
@@ -175,7 +183,8 @@ const GeneralColorectalSurgeryTopic = () => (
     ]}
     keyPoints={[
       { text: "ERAS pathways reduce complications and length of stay — the anaesthetist owns many elements (carbohydrate loading, PONV, analgesia, fluids, normothermia)", cites: ["ERAS Colorectal 2018"] },
-      { text: "Thoracic epidural is recommended for open colorectal surgery but not routinely for laparoscopic surgery", cites: ["ERAS Colorectal 2018", "Levy 2011"] },
+      { text: "Avoid routine epidural after minimally invasive colorectal surgery; for open surgery, PROSPECT favours it for movement pain while ERAS 2025 prefers other suitable regional techniques when feasible", cites: ["PROSPECT Open Colorectal 2024", "ERAS Colorectal 2025"] },
+      { text: "Intrathecal morphine can reduce pain and opioid use but is not a proven replacement for epidural in open surgery; rectus sheath catheters spare hypotension but need visceral-pain cover", cites: ["ERAS Colorectal 2025", "TERSC 2022", "RSC Review 2026"] },
       { text: "Aim for euvolaemia — overly restrictive fluids increased AKI in the RELIEF trial", cites: ["RELIEF 2018"] },
       { text: "Pneumoperitoneum (12–15 mmHg) ↓ FRC and compliance, ↑ SVR and PaCO₂; head-down worsens ventilation, head-up reduces venous return", cites: ["BJA Educ Laparoscopy 2011"] },
       { text: "Oesophagectomy: CPET assessment, one-lung ventilation, thoracic epidural/paravertebral analgesia, conduit perfusion and planned critical care", cites: ["ERAS Oesophagectomy 2019", "Carney Oesophagectomy 2015"] },
@@ -185,7 +194,7 @@ const GeneralColorectalSurgeryTopic = () => (
     sectionExamMapping={{ objectives: { exams: [Exam.FINAL] }, keyPoints: { exams: [Exam.FINAL] } }}
     sectionSources={{
       objectives: ["ERAS Colorectal 2018", "ERAS Oesophagectomy 2019", "BJA Educ Laparoscopy 2011"],
-      keyPoints: ["ERAS Colorectal 2018", "RELIEF 2018", "Levy 2011", "BJA Educ Laparoscopy 2011", "ERAS Oesophagectomy 2019", "NICE NG89"],
+      keyPoints: ["ERAS Colorectal 2018", "ERAS Colorectal 2025", "PROSPECT Open Colorectal 2024", "TERSC 2022", "RSC Review 2026", "RELIEF 2018", "Levy 2011", "BJA Educ Laparoscopy 2011", "ERAS Oesophagectomy 2019", "NICE NG89"],
     }}
     coreConcepts={
       <>
@@ -268,23 +277,30 @@ const GeneralColorectalSurgeryTopic = () => (
             </div>
 
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Analgesia: Choosing the Technique</h2>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Analgesia & Regional/Neuraxial Techniques: Current Evidence</h2>
+              <p className="text-sm text-muted-foreground mb-3 leading-relaxed">Match the block to the incision, approach and expected visceral pain, then add scheduled non-opioid analgesia and rescue opioid as required. The 2025 ERAS colorectal update emphasises multimodal analgesia and TAP blocks for both open and minimally invasive surgery; it advises against epidural for minimally invasive surgery and prefers a suitable alternative where available for open surgery. In contrast, the 2024 procedure-specific PROSPECT guideline recommends low continuous thoracic epidural as first-line for open colorectal surgery, chiefly for movement pain. These recommendations reflect different weighting of analgesia, hypotension and recovery outcomes rather than a single universally superior technique<R l="ERAS Colorectal 2025" /><R l="PROSPECT Open Colorectal 2024" />.</p>
               <div className="overflow-x-auto rounded-lg border border-border">
                 <table className="w-full text-sm text-muted-foreground">
                   <Th c={["Technique", "Best suited to", "Notes"]} />
                   <tbody>
                     {[
-                      ["Thoracic epidural", "Open colorectal, open upper GI, oesophagectomy", "Superior dynamic analgesia; hypotension, motor block, urinary retention, failure rate ~20–30%; affects fluid decisions"],
-                      ["Spinal (intrathecal) opioid", "Laparoscopic colorectal", "Morphine or diamorphine; monitor for delayed respiratory depression and pruritus"],
-                      ["TAP / rectus sheath blocks or catheters", "Laparoscopic and midline incisions", "Somatic analgesia only (no visceral); watch total local anaesthetic dose"],
+                      ["Thoracic epidural", "Open colorectal or major upper GI with extensive incision", "Continuous segmental somatic and visceral analgesia; better early movement pain than rectus sheath catheters in one trial. Requires functioning catheter and pain team; hypotension and urinary retention may hinder recovery"],
+                      ["Single-shot spinal opioid", "Selected laparoscopic resections; open surgery if epidural unsuitable", "Intrathecal morphine reduces early pain and rescue opioid use; time-limited, no catheter for titration. Pruritus, nausea, urinary retention and dose-related respiratory risk require monitoring"],
+                      ["Bilateral rectus sheath catheters", "Open midline laparotomy or midline port/extraction incision", "Local anaesthetic along rectus sheath covers incisional somatic pain but not visceral, lateral or perineal pain; less sympathetic hypotension than epidural; add systemic rescue analgesia"],
+                      ["TAP block / catheter", "Lateral lower-abdominal incision or laparoscopic ports", "Abdominal-wall analgesia without visceral coverage; 2025 ERAS supports TAP blocks, 2024 PROSPECT supports bilateral TAP when epidural cannot be used for open surgery"],
                       ["Paravertebral / erector spinae", "Thoracotomy phase of oesophagectomy", "Paravertebral comparable to epidural for thoracotomy with less hypotension"],
                       ["Wound / intraperitoneal local anaesthetic", "Cholecystectomy, open wounds", "Simple, low risk"],
-                      ["Systemic multimodal", "All", "Paracetamol, NSAID (caution AKI, anastomosis debate), dexamethasone, ketamine, IV lidocaine (evidence mixed)"],
+                      ["Systemic multimodal", "All", "Paracetamol; consider selective NSAID for colonic surgery if appropriate, avoid routine non-selective NSAIDs or NSAIDs after rectal anastomosis per ERAS 2025; rescue opioid when needed"],
                     ].map(([a, b, c]) => <tr key={a} className="border-b border-border last:border-0"><td className="p-2.5 font-medium text-foreground">{a}</td><td className="p-2.5">{b}</td><td className="p-2.5">{c}</td></tr>)}
                   </tbody>
                 </table>
               </div>
-              <p className="text-sm text-muted-foreground mt-2">Evidence: ERAS Society guideline and a randomised trial showing faster recovery with spinal analgesia than epidural after laparoscopic colorectal surgery<R l="ERAS Colorectal 2018" /><R l="Levy 2011" />.</p>
+              <div className="mt-4 space-y-3 text-sm text-muted-foreground leading-relaxed">
+                <p><strong className="text-foreground">Thoracic epidural in open surgery.</strong> Epidural improves dynamic pain compared with systemic opioid alone and can reduce opioid requirements, but has not reliably shortened recovery. Plan for hypotension, vasopressor needs, urinary retention, catheter failure, anticoagulant timing and daily block assessment; do not give fluid reflexively for a functioning epidural in an otherwise euvolaemic patient. It is not routine for laparoscopy<R l="ASCRS SAGES ERAS 2022" /><R l="PROSPECT Open Colorectal 2024" /><R l="ERAS Colorectal 2025" />.</p>
+                <p><strong className="text-foreground">Intrathecal morphine and “high-dose” spinal.</strong> A small randomised laparoscopic colonic-resection trial found less pain and opioid use, and earlier fitness for discharge (median 3 vs 4 days), with intrathecal morphine plus local anaesthetic compared with systemic opioid; this is not proof of the same benefit in open resections. In a 2025 single-centre retrospective open-colorectal cohort (n=108; median intrathecal dose 200 micrograms), 4% needed rescue epidural, but there was no randomized epidural comparator<R l="Koning Intrathecal 2018" /><R l="Open Colorectal Spinal 2025" />. Higher intrathecal morphine doses are not automatically more effective or safer: a 2025 non-obstetric meta-analysis found a dose-related respiratory-depression signal across all doses, attenuated when doses above 500 micrograms were excluded. That cutoff is not a proven safe threshold. Tailor dosing to patient frailty, sleep apnoea and concurrent sedatives/opioids; use neuraxial-opioid observation protocols and arrange rescue when single-shot analgesia fades<R l="Intrathecal Safety 2025" />.</p>
+                <p><strong className="text-foreground">Rectus sheath catheters versus epidural.</strong> In the UK TERSC randomised trial (131 elective midline laparotomy patients), epidural gave better movement pain at 24 hours (median score 33 vs 50.5); by day 3, rectus sheath catheters had lower resting pain, less opioid use and less hypotension/vasopressor dependence. A 2026 review (31 mixed open-surgery studies, 2,162 patients) found less hypotension with catheters (risk ratio 0.40, 95% CI 0.26–0.60), but wide pain-effect intervals mean comparable analgesia is <em>not</em> proven. Catheters can be useful when hypotension makes epidural unattractive; supplement for visceral/perineal pain and check bilateral cumulative local-anaesthetic dose and toxicity risk, especially with prolonged infusion<R l="TERSC 2022" /><R l="RSC Review 2026" /><R l="ERAS Colorectal 2025" />.</p>
+                <p><strong className="text-foreground">Practical choice.</strong> For a laparoscopic colectomy, favour TAP or an appropriately monitored spinal opioid with multimodal analgesia; for an open midline resection, weigh epidural against TAP or rectus sheath catheters in light of haemodynamics, incision and local expertise. Rectus sheath coverage alone is unlikely to suffice for a large perineal wound after AP resection. For oesophagectomy with a thoracic incision, plan separate thoracic analgesia (epidural or paravertebral) rather than assuming an abdominal wall catheter covers thoracotomy pain<R l="ERAS Colorectal 2025" /><R l="PROSPECT Open Colorectal 2024" /><R l="ERAS Oesophagectomy 2019" />.</p>
+              </div>
             </div>
 
             <div>
