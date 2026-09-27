@@ -25,6 +25,7 @@ const tocItems = [
   { id: "surgery", label: "Burns surgery", group: "Procedures" },
   { id: "special", label: "Special types of burns", group: "Emergency" },
   { id: "plastics", label: "Plastic & reconstructive", group: "Procedures" },
+  { id: "free-flap", label: "Free flap surgery", group: "Procedures" },
 
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
@@ -88,6 +89,7 @@ const BurnsPlasticsTopic = () => {
         "Recognise indications for early intubation in airway/inhalational injury",
         "Explain the contraindication of suxamethonium from 24 h to ~2 years post-burn",
         "Plan anaesthesia for burns debridement, grafting and free-flap reconstruction",
+        "Explain the stages of free-flap transfer, donor-site choice and combined mastectomy–reconstruction pathways",
       ]}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
@@ -100,6 +102,8 @@ const BurnsPlasticsTopic = () => {
           "NICE NG12",
           "BBA EMSB",
           "BJA Educ 2019",
+          "BJA Educ Free Flap 2021",
+          "ERAS Breast 2017",
         ],
         keyPoints: [
           "Bittner 2015",
@@ -115,6 +119,7 @@ const BurnsPlasticsTopic = () => {
         { text: "Carbon monoxide poisoning gives a falsely normal SpO₂ — co-oximetry mandatory; treat with 100% O₂ (COHb half-life 250 → 40 min)", cites: ["BBA EMSB"] },
         { text: "Intubate early in airway burns — oedema peaks at 12–24 h; use an uncut ETT to allow for facial swelling", cites: ["NICE NG12"] },
         { text: "Major burns produce a biphasic response: initial hypovolaemic shock then a hypermetabolic / hyperdynamic phase with ↑CO, ↑VO₂ and catabolism", cites: ["Bittner 2015"] },
+        { text: "Free-flap donor selection is dictated by the defect (bone, skin, volume and reach), the donor's vascular anatomy and morbidity, and whether harvest can proceed alongside resection", cites: ["Head Neck Donor Sites 2023", "Donor Morbidity 2022"] },
       ]}
       coreConcepts={
         <>
@@ -427,6 +432,48 @@ const BurnsPlasticsTopic = () => {
                   </ul>
                 </div>
 
+              </CollapsibleSubsection>
+            </ExamSection>
+          </div>
+
+          <div id="free-flap" className="scroll-mt-24">
+            <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
+              <CollapsibleSubsection title="Free Flap Surgery — Planning, Harvest and Transfer">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  Unlike a pedicled flap, a free flap is detached with its feeding artery and draining vein, transferred to a distant defect and revascularised by microvascular anastomosis. Reconstruction may follow cancer resection, trauma or burn debridement. Match the tissue required to the recipient vessels, anticipated radiation, donor function and patient preferences; the largest flap is not necessarily the best flap<InlineRef topicId="burns-plastics" refLabel="BJA Educ Free Flap 2021" /><InlineRef topicId="burns-plastics" refLabel="Head Neck Donor Sites 2023" />.
+                </p>
+                <h3 className="font-semibold text-foreground mb-2">Operative stages and anaesthetic priorities</h3>
+                <ol className="list-decimal pl-5 space-y-2 text-sm text-muted-foreground mb-5">
+                  <li><strong className="text-foreground">Plan:</strong> agree defect, donor and recipient vessels, airway, positioning, two-team access and expected blood loss. Check vascular disease, smoking, previous surgery/radiotherapy, haemoglobin and VTE risk. Site cannulae, lines, warming and pressure protection away from harvest and anastomosis fields.</li>
+                  <li><strong className="text-foreground">Resection and harvest:</strong> teams may work simultaneously; record donor limb and preserve its inflow/outflow. Maintain normothermia and oxygenation; replace actual losses while avoiding both hypovolaemia and fluid overload. Reassess access and pressure points when arms or legs are moved.</li>
+                  <li><strong className="text-foreground">Pedicle division and transfer:</strong> the flap has a period of ischaemia after division. Communicate the clamp time, prepare the recipient bed and coordinate hand-off; do not delay revascularisation for a non-essential task. Bone and muscle-bearing flaps are less tolerant of prolonged ischaemia than skin-only flaps.</li>
+                  <li><strong className="text-foreground">Anastomosis and inset:</strong> connect artery and vein, confirm flow and inspect for kinking, tension, compression or haematoma. Maintain adequate perfusion pressure; if hypotensive, evaluate bleeding and fluid responsiveness, then use a titrated vasopressor rather than giving repeated unneeded fluid boluses.</li>
+                  <li><strong className="text-foreground">Closure and handover:</strong> protect the pedicle from dressings or position change, document flap baseline colour, refill and Doppler site, and agree a monitoring and urgent re-exploration plan. Arrange analgesia for <em>both</em> donor and recipient sites and a postoperative airway plan for head-and-neck cases<InlineRef topicId="burns-plastics" refLabel="BJA Educ Free Flap 2021" />.</li>
+                </ol>
+                <h3 className="font-semibold text-foreground mb-2">Choosing a donor flap</h3>
+                <div className="overflow-x-auto mb-4">
+                  <table className="w-full min-w-[620px] text-sm border-collapse text-left">
+                    <thead><tr className="border-b border-border text-foreground"><th className="p-2">Donor / tissue</th><th className="p-2">Why choose it?</th><th className="p-2">Donor and anaesthetic considerations</th></tr></thead>
+                    <tbody className="text-muted-foreground align-top">
+                      <tr className="border-b border-border"><td className="p-2">Fibula: long bone ± skin paddle</td><td className="p-2">Segmental mandibular defects; long vascularised bone can be shaped and may support dental rehabilitation.</td><td className="p-2">Assess leg vessels if peripheral vascular disease or injury is suspected; preserve ankle stability, plan leg analgesia and mobilisation.</td></tr>
+                      <tr className="border-b border-border"><td className="p-2">Radial forearm: thin pliable skin/fascia</td><td className="p-2">Tongue, oral lining and small complex defects where a supple flap is more useful than bulk.</td><td className="p-2">Confirm adequate ulnar collateral hand circulation before sacrificing the radial artery; donor skin graft and tendon exposure risk.</td></tr>
+                      <tr className="border-b border-border"><td className="p-2">Anterolateral thigh (ALT): skin/fat ± fascia/muscle</td><td className="p-2">Larger soft-tissue defects; adjustable thickness, useful pedicle and two-team head-and-neck access.</td><td className="p-2">Perforator anatomy and fat thickness vary; assess suitable side and positioning; donor-site closure may need a graft.</td></tr>
+                      <tr className="border-b border-border"><td className="p-2">Scapular / parascapular: bone + versatile skin</td><td className="p-2">Composite head-and-neck defects needing substantial soft tissue and shaped bone; alternative if leg vessels are unsuitable.</td><td className="p-2">Harvest may require lateral positioning and interrupt simultaneous two-team work; protect shoulder and pressure areas.</td></tr>
+                      <tr className="border-b border-border"><td className="p-2">Iliac crest (DCIA): curved vascularised bone</td><td className="p-2">Mandibular contour and bone height when implant-bearing reconstruction is planned.</td><td className="p-2">Abdominal wall weakness, hernia and gait symptoms are important donor-site trade-offs.</td></tr>
+                      <tr><td className="p-2">DIEP: lower abdominal skin/fat, rectus preserved</td><td className="p-2">Autologous breast volume after mastectomy; natural tissue without harvesting the rectus muscle, if abdominal tissue and perforators are suitable.</td><td className="p-2">Previous abdominal surgery, perforator anatomy, abdominal wound/hernia risk, bilateral harvest and two separate pain sites affect planning.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-xs text-muted-foreground mb-5">Donor-site decisions are individual: availability of recipient vessels, defect size and function, prior scars, body habitus, vessel disease and expected donor morbidity all matter<InlineRef topicId="burns-plastics" refLabel="Bone Flaps Review 2025" /><InlineRef topicId="burns-plastics" refLabel="Donor Morbidity 2022" />.</p>
+                <h3 className="font-semibold text-foreground mb-2">Combined procedure: mastectomy with immediate free-flap reconstruction</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+                  In one anaesthetic the breast team performs mastectomy (± axillary surgery) and prepares recipient vessels, often internal mammary vessels, while the reconstructive team raises a DIEP flap. After pedicle division and chest transfer, the microvascular anastomoses are completed, the flap is shaped and inset, and the abdominal donor wound is closed. Later radiotherapy plans, prior abdominal surgery, implant alternatives and patient preference influence whether immediate autologous reconstruction is appropriate<InlineRef topicId="burns-plastics" refLabel="ERAS Breast 2017" />.
+                </p>
+                <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground mb-2">
+                  <li><strong className="text-foreground">Before induction:</strong> confirm laterality, unilateral/bilateral flap plan, vessel and perforator mapping, anticipated axillary dissection, blood availability, postoperative bed and whether both teams need simultaneous access. Avoid IVs and cuffs on operative/at-risk arms when the team requests it.</li>
+                  <li><strong className="text-foreground">During surgery:</strong> keep the chest and abdomen accessible, protect both arms and maintain warmth; communicate when harvest, pedicle division and anastomosis start. Replace blood loss without flooding the flap, and treat persistent hypotension rather than accepting poor perfusion.</li>
+                  <li><strong className="text-foreground">Recovery:</strong> multimodal opioid-sparing analgesia for chest and abdominal wounds (e.g. pectoral/serratus and abdominal wall blocks where suitable), PONV prevention, VTE prophylaxis balanced against bleeding, early feeding and mobilisation, and a documented flap observation/re-exploration pathway<InlineRef topicId="burns-plastics" refLabel="ERAS Breast 2017" /><InlineRef topicId="burns-plastics" refLabel="DIEP ERAS 2024" />.</li>
+                </ul>
               </CollapsibleSubsection>
             </ExamSection>
           </div>

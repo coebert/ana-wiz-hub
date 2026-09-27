@@ -1417,6 +1417,12 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NICE NG12", citation: "National Institute for Health and Care Excellence. Burns and scalds (NG12). 2020.", url: "https://www.nice.org.uk/guidance/ng12" },
     { label: "BBA EMSB", citation: "British Burns Association. Emergency Management of Severe Burns (EMSB) Course Manual. 2018." },
     { label: "BJA Educ 2019", citation: "McMillan K, et al. Anaesthesia for burns surgery. BJA Education. 2019;19(10):328-336.", url: "https://doi.org/10.1016/j.bjae.2019.05.006" },
+    { label: "BJA Educ Free Flap 2021", citation: "Chalmers A, Turner MWH, Anand R, et al. Anaesthesia for free flap surgery. BJA Education. 2021;21(11):422–428.", url: "https://doi.org/10.1016/j.bjae.2021.06.002" },
+    { label: "Head Neck Donor Sites 2023", citation: "Tamaki A, Zender CA. Free flap donor sites in head and neck reconstruction. Otolaryngologic Clinics of North America. 2023.", url: "https://www.em-consulte.com/article/1599240/free-flap-donor-sites-in-head-and-neck-reconstruct" },
+    { label: "Bone Flaps Review 2025", citation: "Alternative bone flaps in head and neck reconstruction. Current Surgery Reports. 2025;13:25.", url: "https://doi.org/10.1007/s40137-025-00452-0" },
+    { label: "Donor Morbidity 2022", citation: "Archibald H, Stanek J, Hamlar D. Free flap donor-site complications and management. Seminars in Plastic Surgery. 2023;37(1):26–30.", url: "https://doi.org/10.1055/s-0042-1759795" },
+    { label: "ERAS Breast 2017", citation: "Temple-Oberle C, Shea-Budgell MA, Tan M, et al. Consensus review of optimal perioperative care in breast reconstruction: ERAS Society recommendations. Plastic and Reconstructive Surgery. 2017;139(5):1056e–1071e.", url: "https://doi.org/10.1097/PRS.0000000000003242" },
+    { label: "DIEP ERAS 2024", citation: "El-Jebaoui J, Awaida CJ, Bou-Merhi J, et al. Enhanced recovery after surgery in immediate DIEP flap breast reconstruction: reducing length of stay and opioid use. Plastic Surgery. 2024.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11562207/" },
   ],
   "plastic-surgery": [
     { label: "BJA Educ Free Flap 2021", citation: "Chalmers A, Turner MWH, Anand R, et al. Anaesthesia for free flap surgery. BJA Education. 2021;21(11):422-428.", url: "https://doi.org/10.1016/j.bjae.2021.06.002", excerpt: "Although the use of vasopressors is generally discouraged, hypotension refractory to fluid resuscitation has a more detrimental effect on flap perfusion... Noradrenaline is the vasopressor of choice to maintain MAP and DO2." },
