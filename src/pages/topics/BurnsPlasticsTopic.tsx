@@ -119,7 +119,7 @@ const BurnsPlasticsTopic = () => {
         { text: "Carbon monoxide poisoning may give falsely reassuring SpO₂ — measure COHb with blood co-oximetry and give 100% O₂", cites: ["BBA EMSB"] },
         { text: "Reassess suspected inhalation injury urgently: progressive swelling, stridor or respiratory failure favour early intubation; facial burns or singed hairs alone do not mandate it", cites: ["ABA Referral 2022", "Airway Signs 2022"] },
         { text: "Major burns produce a biphasic response: initial hypovolaemic shock then a hypermetabolic / hyperdynamic phase with ↑CO, ↑VO₂ and catabolism", cites: ["Bittner 2015"] },
-        { text: "Free-flap donor selection is dictated by the defect (bone, skin, volume and reach), the donor's vascular anatomy and morbidity, and whether harvest can proceed alongside resection", cites: ["Head Neck Donor Sites 2023", "Donor Morbidity 2022"] },
+        { text: "Free-flap donor selection is dictated by the defect (bone, skin, volume and reach), the donor's vascular anatomy and morbidity, and whether harvest can proceed alongside resection", cites: ["Head Neck Donor Sites 2023", "Donor Morbidity 2023"] },
       ]}
       coreConcepts={
         <>
@@ -464,7 +464,7 @@ const BurnsPlasticsTopic = () => {
                     </tbody>
                   </table>
                 </div>
-                <p className="text-xs text-muted-foreground mb-5">Donor-site decisions are individual: availability of recipient vessels, defect size and function, prior scars, body habitus, vessel disease and expected donor morbidity all matter<InlineRef topicId="burns-plastics" refLabel="Bone Flaps Review 2025" /><InlineRef topicId="burns-plastics" refLabel="Donor Morbidity 2022" />.</p>
+                <p className="text-xs text-muted-foreground mb-5">Donor-site decisions are individual: availability of recipient vessels, defect size and function, prior scars, body habitus, vessel disease and expected donor morbidity all matter<InlineRef topicId="burns-plastics" refLabel="Bone Flaps Review 2025" /><InlineRef topicId="burns-plastics" refLabel="Donor Morbidity 2023" />.</p>
                 <h3 className="font-semibold text-foreground mb-2">Combined procedure: mastectomy with immediate free-flap reconstruction</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                   In one anaesthetic the breast team performs mastectomy (± axillary surgery) and prepares recipient vessels, often internal mammary vessels, while the reconstructive team raises a DIEP flap. After pedicle division and chest transfer, the microvascular anastomoses are completed, the flap is shaped and inset, and the abdominal donor wound is closed. Later radiotherapy plans, prior abdominal surgery, implant alternatives and patient preference influence whether immediate autologous reconstruction is appropriate<InlineRef topicId="burns-plastics" refLabel="ERAS Breast 2017" />.
