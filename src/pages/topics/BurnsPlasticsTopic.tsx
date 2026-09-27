@@ -305,8 +305,8 @@ const BurnsPlasticsTopic = () => {
                 </div>
                 <div className="grid sm:grid-cols-2 gap-3 mb-3">
                   {[
-                    { label: "Non-depolarising NMBAs", value: "Resistance develops — increased receptor number and altered pharmacodynamics. May need 1.5–2× normal dose of rocuronium/vecuronium" },
-                    { label: "Opioids", value: "Tolerance develops rapidly due to upregulation and altered pharmacokinetics. Multimodal analgesia essential (ketamine, clonidine, gabapentinoids)" },
+                     { label: "Non-depolarising NMBAs", value: "Resistance may develop as receptor expression and pharmacodynamics change. Titrate with quantitative neuromuscular monitoring" },
+                     { label: "Opioids", value: "Analgesic requirements vary and may rise with repeated procedures and tolerance. Use individualised multimodal analgesia" },
                     { label: "Propofol / thiopentone", value: "↑ Volume of distribution and altered protein binding change dosing requirements. Titrate carefully" },
                     { label: "Albumin", value: "↓ Levels increase free fraction of highly protein-bound drugs (benzodiazepines, bupivacaine, thiopentone)" },
                   ].map((item) => (
@@ -320,7 +320,7 @@ const BurnsPlasticsTopic = () => {
                   <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
                   <ul className="list-disc list-inside text-foreground text-sm">
                     <li>Using suxamethonium for RSI in a burn patient admitted 48 hours ago — risk of fatal hyperkalaemia.</li>
-                    <li>Under-dosing rocuronium because of resistance — use increased doses (1.0–1.2 mg/kg) with sugammadex available.</li>
+                     <li>Assuming a fixed rocuronium requirement — choose an appropriate RSI dose and monitor blockade and recovery.</li>
                     <li>Not adjusting for increased opioid requirements — under-treatment leads to distress, hypertension, and catecholamine-mediated vasoconstriction.</li>
                   </ul>
                 </div>
@@ -334,7 +334,7 @@ const BurnsPlasticsTopic = () => {
                 <div className="bg-card border border-border rounded-lg p-4 mb-3">
                   <h3 className="font-semibold text-foreground mb-2">Debridement & Grafting</h3>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                    <li>Tangential excision can cause massive blood loss (≈1 mL/cm² excised)</li>
+                     <li>Tangential excision can cause substantial blood loss; anticipate transfusion needs with the surgical team</li>
                     <li>Surgeon-selected topical adrenaline, tourniquets or infiltration techniques may reduce bleeding; account for all local anaesthetic doses</li>
                     <li>Hypothermia is a major risk — warm the theatre according to burn extent and local policy, use active warming and warmed fluids</li>
                     <li>Repeated procedures may make vascular access increasingly challenging</li>
@@ -350,7 +350,7 @@ const BurnsPlasticsTopic = () => {
                   <p className="text-sm font-semibold text-foreground mb-1">Indications</p>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-2">
                     <li>Escharotomy: circumferential or near-circumferential full-thickness limb burn with progressive pain, tense woody swelling, reduced capillary refill, loss of Doppler signal or pulse, paraesthesia or cool distal limb; circumferential chest or abdominal burn causing rising airway pressures, poor chest expansion or hypoventilation; and circumferential digital burns threatening perfusion</li>
-                    <li>Fasciotomy: compartment pressure &gt;30 mmHg (or within 30 mmHg of diastolic) persisting after escharotomy, high-voltage electrical injury with deep muscle necrosis, associated crush or fracture, or rising creatine kinase with myoglobinuria</li>
+                     <li>Fasciotomy: suspected or confirmed deep compartment syndrome, including after high-voltage electrical injury or where perfusion fails to recover after escharotomy; clinical findings, serial examination and compartment pressure relative to diastolic pressure inform the decision. Elevated CK alone does not establish the indication</li>
                   </ul>
                   <p className="text-sm font-semibold text-foreground mb-1">Incision and depth</p>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-2">
@@ -362,10 +362,10 @@ const BurnsPlasticsTopic = () => {
                   <p className="text-sm font-semibold text-foreground mb-1">Anaesthetic considerations at the bedside</p>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                     <li>Often performed in the emergency department or ICU as a time-critical procedure. Full monitoring, oxygen, suction, resuscitation drugs and a trained assistant are mandatory — treat it as an anaesthetic in a remote site</li>
-                    <li>Analgesia and sedation: <strong className="text-foreground">ketamine</strong> (0.25–0.5 mg/kg IV increments, or 1–2 mg/kg for dissociative anaesthesia) is the agent of choice because it preserves airway reflexes, respiratory drive and blood pressure in a hypovolaemic patient; combine with an opioid (fentanyl 0.5–1 µg/kg) and small midazolam doses if needed, and add an antisialogogue. Propofol titration is an alternative in the intubated, haemodynamically stable patient. Many patients are already ventilated and simply need bolus opioid, sedation and neuromuscular blockade</li>
+                     <li>Analgesia and sedation: choose a titrated technique with full monitoring and airway rescue available. Ketamine can be useful in haemodynamic compromise but does not guarantee preserved airway reflexes or blood pressure, particularly in catecholamine-depleted shock. An intubated patient still needs adequate analgesia and sedation; neuromuscular blockade alone provides neither</li>
                     <li>Airway: reassess for evolving swelling or inhalational injury — if intubation is likely, secure the airway before deterioration. After about 24 h from a major burn, avoid suxamethonium until healing is complete</li>
                     <li><strong className="text-foreground">Bleeding</strong> can be substantial and diffuse from the burn wound edges: have blood available and cross-matched for large releases, use diathermy and adrenaline-soaked packs, keep the patient warm, and correct coagulopathy — hypothermia and dilutional coagulopathy compound the loss</li>
-                    <li><strong className="text-foreground">Reperfusion and metabolic monitoring</strong>: releasing an ischaemic compartment washes out potassium, hydrogen ions, lactate and myoglobin. Watch for hyperkalaemia and arrhythmia, acidosis, sudden hypotension and pigmented urine; check ABG, potassium, calcium, lactate and creatine kinase before and after release, maintain generous fluid resuscitation with urine output 1–2 mL/kg/h if myoglobinuria is present, and treat hyperkalaemia promptly with calcium, insulin–dextrose and bicarbonate</li>
+                     <li><strong className="text-foreground">Reperfusion and metabolic monitoring</strong>: deep ischaemic tissue reperfusion can worsen hyperkalaemia, acidosis and hypotension. Check ECG, blood gas, potassium and renal function as indicated, monitor urine output, and treat hyperkalaemia using local emergency guidance (IV calcium for ECG changes, insulin–glucose and other measures as appropriate). Avoid automatic high-volume fluids or bicarbonate without an individual indication</li>
                     <li>Afterwards: escharotomy wounds are dressed and later grafted; plan continued analgesia (regional techniques where the burn permits), tetanus cover, and repeat compartment assessment</li>
                   </ul>
                 </div>
@@ -568,14 +568,14 @@ const BurnsPlasticsTopic = () => {
                 <li><strong>No — suxamethonium is contraindicated.</strong> Burn injury upregulates extra-junctional (immature) nicotinic acetylcholine receptors throughout skeletal muscle<InlineRef topicId="burns-plastics" refLabel="BJA Educ Burns 2022" />.</li>
                 <li>Receptor changes begin after about 24 h and may persist for many months until wounds have healed; the period varies with burn extent and ongoing injury.</li>
                 <li>Depolarisation by suxamethonium activates these widespread receptors, causing massive K⁺ efflux → acute hyperkalaemia and potentially fatal cardiac arrest.</li>
-                <li><strong>Alternative:</strong> Use rocuronium for RSI. Burns patients often show resistance to non-depolarising NMBAs — use rocuronium 1.0–1.2 mg/kg. Sugammadex should be available for reversal if needed.</li>
+                 <li><strong>Alternative:</strong> Rocuronium is an RSI option; choose a dose appropriate to the clinical situation and monitor blockade and recovery. Resistance to non-depolarising agents may develop after major burns; plan reversal when indicated.</li>
                 <li>The burn-related hyperkalaemia risk is not yet established in the first 24 h; later, avoid suxamethonium until healing and recovery are confirmed. Other contraindications still apply.</li>
               </ol>
               <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
                 <p className="text-xs font-semibold text-destructive uppercase">Common traps</p>
                 <ul className="list-disc list-inside text-foreground">
                   <li>Assuming suxamethonium is safe because the acute burn phase has passed.</li>
-                  <li>Using standard rocuronium doses (0.6 mg/kg) — burns patients may need higher doses due to resistance.</li>
+                   <li>Assuming that a single rocuronium dose or recovery time applies to every burns patient.</li>
                   <li>Forgetting that denervation injuries (spinal cord injury, stroke) cause similar upregulation and suxamethonium risk.</li>
                 </ul>
               </div>
