@@ -159,7 +159,7 @@ const procedures = [
       ["Specific issues", "Arrhythmias (AF ~20%), cardiac compression during transhiatal dissection, recurrent laryngeal nerve injury, chylothorax, pneumonia, ARDS, anastomotic leak/conduit necrosis"],
       ["Post-op", "Planned critical care and early extubation/mobilisation where appropriate. Follow the local feeding pathway: jejunal feeding remains common, but selected patients can start oral liquids on postoperative day 0–1 without a demonstrated increase in leak. Escalate oxygen or ventilatory support when clinically required; discuss NIV/CPAP with the surgical team because evidence around a fresh anastomosis remains limited"],
     ],
-    refs: ["ERAS Oesophagectomy 2019", "Carney Oesophagectomy 2015", "CPET 2018"],
+    refs: ["ERAS Oesophagectomy 2019", "Oesophagectomy Feeding 2026", "Carney Oesophagectomy 2015", "CPET 2018"],
   },
 ];
 
