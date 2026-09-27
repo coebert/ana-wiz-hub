@@ -16,4 +16,4 @@
 - [x] SI Units & Thermodynamics content-audit fixes (2 findings) + mark fixed in DB
 - [x] Add sourced evidence on epidural, intrathecal opioid and rectus sheath catheter analgesia to general/colorectal surgery topic
 - [x] Re-audit and correct the general/colorectal surgery topic against current primary guidance
-- [ ] Audit and correct the burns and plastics topic against clinical sources
+- [x] Audit and correct the burns and plastics topic against clinical sources
