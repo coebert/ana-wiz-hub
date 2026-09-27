@@ -43,6 +43,10 @@ const faqs: Array<[string, string]> = [
     "When should TPN be started after major bowel surgery?",
     "Only when the gut cannot be used or cannot meet needs. For general surgical patients, ESPEN advises adding parenteral nutrition when oral/enteral intake is expected to remain below about 50% of requirements for more than 7 days, with earlier nutrition support when severe malnutrition is present. Separately, in critically ill ICU patients, EPaNIC found more infections and slower recovery with PN started within 48 hours than with PN deferred until day 8, without a survival benefit. ICU guidance differs by society: ASPEN/SCCM advises withholding exclusive PN for the first 7 days in patients at low nutritional risk, whereas ESPEN suggests PN within 3–7 days when enteral nutrition is contraindicated. Screen for re-feeding risk and monitor phosphate, potassium and magnesium.",
   ],
+  [
+    "When should a patient be kept absolutely nil by mouth rather than trickle (trophic) fed?",
+    "Only when feeding would be unsafe, not merely because the gut is slow. Absolute reasons are uncontrolled shock or severe uncontrolled hypoxaemia/acidosis (resuscitate first), bowel ischaemia or obstruction proximal to the feeding access, abdominal compartment syndrome, uncontrolled upper GI bleeding, a gut in discontinuity or a high-output proximal fistula with no feeding access beyond it, and an oesophageal or gastric leak where the enteral route is unsafe. Elsewhere — early critical illness once shock is controlled, even on low-dose noradrenaline, or postoperative ileus and delayed gastric emptying — ESPEN favours cautious low-rate trophic feeding, about 10–20 ml/h via a post-pyloric tube if needed; the EDEN trial found no benefit in pushing to full feeding early. After elective bowel surgery, nil by mouth should be a specific decision with a review date, not a default.",
+  ],
 ];
 
 const workedExamples: WorkedExample[] = [
@@ -240,6 +244,25 @@ const GeneralColorectalSurgeryTopic = () => (
                 <li><strong>Timing of PN in critical illness</strong>: the EPaNIC trial enrolled 4,640 critically ill adults at nutritional risk in a mixed medical-surgical ICU population (approximately 60% after cardiac surgery). Deferring PN until day 8, compared with starting within 48 h, led to fewer ICU infections and faster recovery without a mortality difference. This ICU evidence should not be extrapolated directly to routine ward patients after elective colorectal surgery<R l="EPaNIC 2011" /></li>
                 <li><strong>Current guidance</strong>: for general surgical patients, ESPEN advises adding PN when oral/enteral intake is expected to remain below about 50% of requirements for more than 7 days, with nutrition support started promptly when severe nutritional risk makes delay unsafe<R l="ESPEN Surgery 2021" />. Separately in ICU patients, ESPEN suggests PN within 3–7 days when enteral nutrition is contraindicated<R l="ESPEN ICU 2023" />, while ASPEN/SCCM advises withholding exclusive PN for the first 7 days in patients at low nutritional risk<R l="ASPEN SCCM 2016" />. Screen for re-feeding risk; give thiamine and introduce energy cautiously when indicated, while monitoring phosphate, potassium, magnesium and fluid balance</li>
               </ul>
+              <h3 className="mt-5 mb-2 font-semibold text-foreground">Absolute nil by mouth vs trophic feeding</h3>
+              <p className="text-sm text-muted-foreground mb-3 leading-relaxed">"Nil by mouth" after surgery should be a specific decision with a stated reason and a review date, not a default. When full feeding is not yet appropriate, a low-rate <strong>trophic</strong> (trickle) enteral feed — typically 10–20 ml/h — is usually still better than nothing, because it helps maintain gut mucosal integrity: in the EDEN trial of mechanically ventilated patients with acute lung injury, initial trophic feeding was equivalent to full enteral feeding for ventilator-free days, infections and mortality, so pushing to full calories early adds nothing<R l="EDEN 2012" />. ESPEN advises starting enteral feeding cautiously in patients on vasopressors while monitoring for intolerance, and withholding it only when shock is genuinely uncontrolled — rising vasopressor requirements, rising lactate, worsening hypoxaemia or acidosis<R l="ESPEN ICU 2023" />.</p>
+              <div className="overflow-x-auto rounded-lg border border-border">
+                <table className="w-full text-sm text-muted-foreground">
+                  <Th c={["Absolute nil by mouth (withhold all feeding)", "Trophic feeding preferred over fasting"]} />
+                  <tbody>
+                    {[
+                      ["Uncontrolled shock — escalating vasopressor requirements, falling MAP, rising lactate; resuscitate first, then feed once shock is controlled", "Shock controlled and improving, even on low-dose noradrenaline — start cautiously and monitor for intolerance"],
+                      ["Uncontrolled severe hypoxaemia or acidosis", "Early critical illness once resuscitation is under way"],
+                      ["Bowel ischaemia, or mechanical obstruction proximal to the feeding access", "Postoperative ileus — low-rate distal (usually post-pyloric) feeding is usually tolerated"],
+                      ["Abdominal compartment syndrome or a severely oedematous, intolerant gut", "Delayed gastric emptying after upper GI surgery — feed distal to the stomach at a low rate while it recovers"],
+                      ["Uncontrolled upper gastrointestinal bleeding", "Feeding intolerance in the ICU — slow to a trophic rate rather than stopping entirely"],
+                      ["Gut in discontinuity, or a high-output proximal fistula with no feeding access distal to it", "Planned return to theatre — oral intake stops for the fasting window, but a secure post-pyloric feed usually continues"],
+                      ["Oesophageal or gastric perforation or leak where the enteral route is unsafe", "Unsafe swallow awaiting assessment — nil by mouth orally, but enteral feeding continues via the existing tube"],
+                    ].map(([a, b]) => <tr key={a} className="border-b border-border last:border-0"><td className="p-2.5 font-medium text-foreground align-top">{a}</td><td className="p-2.5 align-top">{b}</td></tr>)}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm text-muted-foreground mt-3 leading-relaxed">After elective colorectal surgery on the ward, genuinely absolute nil by mouth is rare: keeping patients fasting "to protect the anastomosis" is not supported by the early-feeding evidence, and the main ward indications are a planned return to theatre and an unsafe swallow. Where feeding is being withheld so the gut can rest, decide explicitly whether some trickle feeding is still possible, and review the decision daily — prolonged fasting worsens malnutrition, loss of gut barrier function and insulin resistance without protecting the anastomosis<R l="Zhuang Early Feeding 2013" /><R l="ESPEN Surgery 2021" />.</p>
             </div>
 
             <div>
