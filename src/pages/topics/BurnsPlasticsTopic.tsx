@@ -116,7 +116,7 @@ const BurnsPlasticsTopic = () => {
       keyPoints={[
         { text: "Major burns need formal fluid resuscitation titrated to response. Parkland (4 mL/kg/%TBSA in 24 h) is a traditional calculation; ABA 2024 recommends starting at 2 mL/kg/%TBSA in adults with ≥20% TBSA burns to reduce fluid creep", cites: ["BBA EMSB", "ABA Fluids 2024"] },
         { text: "Avoid suxamethonium after the first 24 h of a major burn until neuromuscular changes have resolved and wounds have healed (extra-junctional ACh receptor upregulation → hyperkalaemic arrest)", cites: ["BJA Educ Burns 2022"] },
-        { text: "Carbon monoxide poisoning gives a falsely normal SpO₂ — co-oximetry mandatory; treat with 100% O₂ (COHb half-life 250 → 40 min)", cites: ["BBA EMSB"] },
+        { text: "Carbon monoxide poisoning may give falsely reassuring SpO₂ — measure COHb with blood co-oximetry and give 100% O₂", cites: ["BBA EMSB"] },
         { text: "Reassess suspected inhalation injury urgently: progressive swelling, stridor or respiratory failure favour early intubation; facial burns or singed hairs alone do not mandate it", cites: ["ABA Referral 2022", "Airway Signs 2022"] },
         { text: "Major burns produce a biphasic response: initial hypovolaemic shock then a hypermetabolic / hyperdynamic phase with ↑CO, ↑VO₂ and catabolism", cites: ["Bittner 2015"] },
         { text: "Free-flap donor selection is dictated by the defect (bone, skin, volume and reach), the donor's vascular anatomy and morbidity, and whether harvest can proceed alongside resection", cites: ["Head Neck Donor Sites 2023", "Donor Morbidity 2022"] },
@@ -224,7 +224,7 @@ const BurnsPlasticsTopic = () => {
                 <div className="bg-card border border-border rounded-lg p-4 mb-4">
                   <h3 className="font-semibold text-foreground mb-2">Parkland Formula</h3>
                   <p className="text-sm text-muted-foreground mb-2">
-                    <strong className="text-foreground">4 mL × body weight (kg) × %TBSA</strong> of Hartmann's in the first 24 hours from time of burn (traditional Parkland starting estimate; not a fixed prescription)<InlineRef topicId="burns-plastics" refLabel="ABA Fluids 2024" />
+                    <strong className="text-foreground">4 mL × body weight (kg) × %TBSA</strong> of Hartmann's in the first 24 hours from time of burn (traditional Parkland starting estimate, not a fixed prescription)<InlineRef topicId="burns-plastics" refLabel="BBA EMSB" />. The ABA 2024 recommendation for adults with ≥20% TBSA burns begins at 2 mL/kg/%TBSA<InlineRef topicId="burns-plastics" refLabel="ABA Fluids 2024" />.
                   </p>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                     <li>First half over 8 h <em>from time of burn</em> (not from hospital arrival)</li>
@@ -279,9 +279,9 @@ const BurnsPlasticsTopic = () => {
                 </div>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {[
-                    { label: "CO poisoning", value: "Falsely normal SpO₂. Co-oximetry mandatory. Treat with 100% O₂ (COHb half-life 250→40 min). Discuss hyperbaric treatment for serious neurological/cardiac findings or pregnancy; COHb alone is not decisive" },
+                    { label: "CO poisoning", value: "SpO₂ can be falsely reassuring. Measure COHb by blood co-oximetry and give 100% O₂. Discuss hyperbaric treatment for serious neurological/cardiac findings or pregnancy; COHb alone is not decisive" },
                     { label: "Cyanide poisoning", value: "From smoke in enclosed-space fires. Cellular hypoxia with high lactate (>10 mmol/L). Treat with hydroxocobalamin: adults 5 g IV; children 70 mg/kg (max 5 g/dose)" },
-                    { label: "Upper airway", value: "Direct thermal injury to supraglottic structures. Oedema peaks 12–24 h. Early intubation before airway compromise" },
+                    { label: "Upper airway", value: "Direct thermal injury usually affects supraglottic structures. Reassess for progressive oedema and intubate before airway compromise when indicated" },
                     { label: "Lower airway", value: "Chemical injury to bronchi and alveoli → ARDS risk. Bronchoscopy may show carbonaceous material and airway oedema" },
                   ].map((item) => (
                     <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
@@ -335,10 +335,10 @@ const BurnsPlasticsTopic = () => {
                   <h3 className="font-semibold text-foreground mb-2">Debridement & Grafting</h3>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                     <li>Tangential excision can cause massive blood loss (≈1 mL/cm² excised)</li>
-                    <li>Topical adrenaline (1:100,000–1:400,000), tourniquets, and tumescent technique reduce bleeding</li>
-                    <li>Hypothermia is a major risk — warm theatre to 28–30 °C, forced-air warming, warm IV fluids</li>
-                    <li>Repeated procedures (often weekly) — vascular access becomes increasingly challenging</li>
-                    <li>Monitoring: ECG pads may not stick — use needle electrodes, surgical staples, or limb leads on unburned skin</li>
+                    <li>Surgeon-selected topical adrenaline, tourniquets or infiltration techniques may reduce bleeding; account for all local anaesthetic doses</li>
+                    <li>Hypothermia is a major risk — warm the theatre according to burn extent and local policy, use active warming and warmed fluids</li>
+                    <li>Repeated procedures may make vascular access increasingly challenging</li>
+                    <li>Monitoring: ECG pads may not adhere — select suitable unburned sites or specialist alternatives</li>
                     <li>Positioning: prone and lateral positions for posterior grafting require meticulous pressure care</li>
                   </ul>
                 </div>
@@ -382,8 +382,8 @@ const BurnsPlasticsTopic = () => {
                     <li><strong className="text-foreground">Low voltage (&lt;1000 V, domestic 240 V)</strong>: small entry/exit wounds, tetanic muscle contraction that may prevent the victim letting go, and a real risk of arrhythmia because alternating current at 50 Hz is highly arrhythmogenic. Tissue damage is usually limited but may be locally deep</li>
                     <li><strong className="text-foreground">High voltage (≥1000 V, overhead cables, railway lines)</strong>: extensive deep tissue destruction, associated flash and flame burns, blast injury and falls (spinal and long-bone fractures) — manage as major trauma</li>
                     <li><strong className="text-foreground">"Tip of the iceberg" phenomenon</strong>: current follows the path of least resistance along nerves, blood vessels and muscle, so cutaneous entry and exit wounds grossly underestimate the deep muscle necrosis beneath intact-looking skin. Never estimate resuscitation needs from surface area alone in high-voltage injury, and expect progressive necrosis requiring repeated debridement<InlineRef topicId="burns-plastics" refLabel="Bittner 2015" /></li>
-                    <li><strong className="text-foreground">Cardiac</strong>: obtain an immediate 12-lead ECG. Arrhythmias include VF or asystole at the scene, atrial fibrillation, and conduction abnormalities; troponin may rise. Continuous cardiac monitoring for at least 24 hours is indicated after high-voltage injury, loss of consciousness, an abnormal initial ECG, transthoracic current path or documented arrhythmia; an asymptomatic low-voltage injury with a normal ECG generally does not need admission for monitoring</li>
-                    <li><strong className="text-foreground">Rhabdomyolysis, myoglobinuria and AKI</strong>: dark tea-coloured urine, creatine kinase often in the tens of thousands, hyperkalaemia, hyperphosphataemia, hypocalcaemia and metabolic acidosis. Give generous crystalloid targeting urine output <strong>1–2 mL/kg/h</strong> (higher than the standard 0.5 mL/kg/h burn target), monitor potassium and CK serially, consider urinary alkalinisation, and involve critical care early — renal replacement therapy may be needed</li>
+                    <li><strong className="text-foreground">Cardiac</strong>: obtain an initial 12-lead ECG. Arrhythmias include VF or asystole at the scene and conduction abnormalities. Monitor higher-risk patients (high-voltage injury, loss of consciousness, abnormal ECG or documented arrhythmia) according to local protocol; an asymptomatic low-voltage injury with a normal ECG often does not need admission solely for monitoring</li>
+                    <li><strong className="text-foreground">Rhabdomyolysis, myoglobinuria and AKI</strong>: look for pigmented urine, elevated CK, hyperkalaemia and acidosis. Titrate fluids to perfusion and urine output (often a higher target than uncomplicated burns, agreed with critical care); avoid unmonitored over-resuscitation. Monitor renal function, electrolytes and CK serially; renal replacement therapy may be needed</li>
                     <li><strong className="text-foreground">Compartment syndrome</strong>: deep muscle oedema within intact fascia. Look for pain out of proportion, tense compartments and pain on passive stretch, measure compartment pressures, and proceed to fasciotomy (not just escharotomy) early</li>
                     <li>Also consider: cataracts and neurological sequelae (delayed peripheral neuropathy, myelopathy), tympanic membrane rupture, oral commissure burns in children biting cables (delayed labial artery haemorrhage), and safeguarding/incident reporting</li>
                   </ul>
@@ -395,7 +395,7 @@ const BurnsPlasticsTopic = () => {
                     <li><strong className="text-foreground">Hydrofluoric acid</strong>: fluoride chelates calcium and magnesium and may cause severe pain, hypocalcaemia, hypomagnesaemia and arrhythmias even with limited visible injury. After prompt irrigation, apply calcium gluconate 2.5% gel and urgently involve a poisons centre/burn specialist. Persistent pain, digital injury or systemic toxicity may require specialist-directed local, regional or intravenous calcium; monitor ECG, ionised calcium, magnesium and potassium. Do not delay initial decontamination while preparing calcium therapy.</li>
                     <li><strong className="text-foreground">Phenol</strong>: readily absorbed and can cause systemic toxicity as well as skin injury. Remove contaminated clothing and decontaminate immediately: low-molecular-weight polyethylene glycol (PEG 300/400) may be used if immediately available, but <strong>do not delay copious water irrigation</strong> to obtain it. Seek poisons advice for significant exposure<InlineRef topicId="burns-plastics" refLabel="Phenol Poison Centre 2026" />.</li>
                     <li><strong className="text-foreground">Cement (wet concrete)</strong>: calcium oxide is a strong alkali that causes insidious, painless, progressive full-thickness injury, classically to the knees and ankles of kneeling workers hours after exposure. Remove all clothing and cement debris and <strong>irrigate copiously with water</strong>, then reassess repeatedly because the depth evolves over 12–24 hours</li>
-                    <li><strong className="text-foreground">Exceptions — do not irrigate with water first</strong>: <em>elemental sodium, potassium and lithium</em> ignite explosively with water — cover with mineral oil and remove particles mechanically; dry lime and other dry powders should be brushed off before any water is used; elemental phosphorus is kept wet and debrided under water or covered in oil to prevent ignition (copper sulphate identification is now discouraged because of systemic toxicity)</li>
+                    <li><strong className="text-foreground">Water-reactive exceptions</strong>: elemental sodium, potassium and lithium react dangerously with water — seek specialist advice for dry removal; brush dry lime or other dry powders off before irrigating. Elemental phosphorus must be kept wet during removal to prevent re-ignition; avoid copper sulphate because of systemic toxicity</li>
                     <li>All chemical injuries: full trauma and eye assessment (irrigate eyes separately with an eyelid speculum and topical anaesthetic), analgesia, tetanus cover, monitor electrolytes and acid–base status, and refer to a burns centre for anything more than a trivial, fully decontaminated superficial injury<InlineRef topicId="burns-plastics" refLabel="BJA Educ Burns 2022" /></li>
                   </ul>
                 </div>
