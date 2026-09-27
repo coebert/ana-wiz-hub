@@ -41,7 +41,7 @@ const faqs: Array<[string, string]> = [
   ],
   [
     "When should TPN be started after major bowel surgery?",
-    "Only when the gut cannot be used or cannot meet needs. ESPEN surgical guidance advises adding parenteral nutrition when oral/enteral intake is expected to be under about 50% of requirements for more than 7 days, and starting it promptly in severely malnourished patients. In critically ill patients, EPaNIC showed that starting PN within 48 hours caused more infections and slower recovery than waiting until day 8, without improving survival; ASPEN/SCCM advises withholding PN for the first 7 days in patients at low nutritional risk, while ESPEN suggests starting within 3–7 days if enteral feeding is contraindicated. Watch for re-feeding syndrome when nutrition restarts.",
+    "Only when the gut cannot be used or cannot meet needs. For general surgical patients, ESPEN advises adding parenteral nutrition when oral/enteral intake is expected to remain below about 50% of requirements for more than 7 days, with earlier nutrition support when severe malnutrition is present. Separately, in critically ill ICU patients, EPaNIC found more infections and slower recovery with PN started within 48 hours than with PN deferred until day 8, without a survival benefit. ICU guidance differs by society: ASPEN/SCCM advises withholding exclusive PN for the first 7 days in patients at low nutritional risk, whereas ESPEN suggests PN within 3–7 days when enteral nutrition is contraindicated. Screen for re-feeding risk and monitor phosphate, potassium and magnesium.",
   ],
 ];
 
@@ -60,7 +60,7 @@ const workedExamples: WorkedExample[] = [
           <li>Ventilation: lung-protective (6–8 ml/kg PBW, PEEP), steep Trendelenburg — watch airway pressures, ETT migration, facial/airway oedema</li>
           <li>Fluids: near-zero balance; goal-directed therapy (oesophageal Doppler or pulse contour) in high-risk cases; vasopressor for anaesthesia-related vasodilation</li>
           <li>Maintain normothermia, deep neuromuscular block if it helps surgical view with full reversal confirmed by quantitative monitoring</li>
-          <li>Post-op: early oral intake and mobilisation, remove catheter early, VTE prophylaxis for 28 days after cancer surgery</li>
+          <li>Post-op: early oral intake and mobilisation, remove the urinary catheter according to operative level and retention risk, and consider extending pharmacological VTE prophylaxis to 28 days after major abdominal cancer surgery</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
@@ -117,7 +117,7 @@ const procedures = [
     rows: [
       ["Patients", "Often elderly, anaemic, malnourished; cancer; emergencies with sepsis/obstruction (NELA pathway)"],
       ["Approach", "Laparoscopic/robotic preferred where possible; open for emergencies or complex disease"],
-      ["Airway", "RSI if obstruction/ileus; NG tube decompression before induction"],
+      ["Airway", "RSI if obstruction/ileus. Consider careful awake NG decompression with suction when clinically useful, but do not assume this empties the stomach or removes aspiration risk"],
       ["Analgesia", "Open: consider thoracic epidural or alternative regional/abdominal wall technique by incision and risk. Laparoscopic: multimodal analgesia with TAP block or selected intrathecal opioid; epidural not routine"],
       ["Fluids", "Euvolaemia; GDT in high-risk; avoid salt/water overload (ileus, anastomotic oedema)"],
       ["Specific issues", "Steep Trendelenburg (anterior resection); ureteric injury; anastomotic leak (days 3–7); ileus; SSI"],
@@ -130,7 +130,7 @@ const procedures = [
       ["Indication", "Low rectal/anal cancer; often after neoadjuvant chemoradiotherapy (fatigue, anaemia, neutropenia, cardiotoxicity)"],
       ["Position", "Lloyd-Davies/lithotomy with steep Trendelenburg for abdominal phase; perineal phase lithotomy or prone jack-knife (ELAPE)"],
       ["Repositioning", "Re-check ETT, lines and pressure points; free abdomen when prone; eyes protected; staff and equipment for safe turn"],
-      ["Blood loss", "Presacral venous plexus bleeding can be massive — large-bore access, cross-match, cell salvage (caution in cancer, leucodepletion filter), TXA"],
+      ["Blood loss", "Presacral venous plexus bleeding can be massive — large-bore access and blood availability; cell salvage may be used in cancer surgery under local policy, with a leucocyte-depletion filter where indicated; consider TXA according to bleeding risk and local major-haemorrhage guidance"],
       ["Analgesia", "Epidural or spinal opioid plus perineal wound infiltration; flap reconstruction extends surgery and pain"],
       ["Specific issues", "Lower-limb compartment syndrome (long lithotomy >4 h), common peroneal nerve injury, VAE in head-down/prone, hypothermia, perineal wound complications"],
     ],
@@ -143,7 +143,7 @@ const procedures = [
       ["Airway", "RSI or modified RSI with head-up position; antacid prophylaxis"],
       ["Bougie", "Surgeon may request a large oesophageal bougie to calibrate the wrap — anaesthetist passes it carefully: risk of oesophageal perforation; remove NG and temperature probe first"],
       ["Intraoperative", "Capnothorax/pneumothorax and pneumomediastinum from hiatal dissection (↑ airway pressure, ↓ SpO₂, surgical emphysema); vagal bradycardia; cardiac compression"],
-      ["Post-op", "Avoid retching/vomiting (can disrupt the wrap) — aggressive multimodal PONV prophylaxis; dysphagia; gas-bloat; cannot vomit"],
+      ["Post-op", "Prevent retching/vomiting, which may stress the repair, with multimodal PONV prophylaxis; expect possible transient dysphagia, gas-bloat and impaired ability to belch or vomit"],
     ],
     refs: ["BJA Educ Laparoscopy 2011", "PONV Consensus 2020"],
   },
@@ -153,13 +153,13 @@ const procedures = [
       ["Patients", "Cancer, often after neoadjuvant chemo(radio)therapy; smokers/alcohol, COPD, malnutrition, sarcopenia; high aspiration risk (obstruction, achalasia-like retention)"],
       ["Assessment", "CPET (anaerobic threshold / VO₂peak predicts complications), spirometry/DLCO, echo if indicated, nutrition, prehabilitation"],
       ["Airway & lungs", "RSI in head-up position; double-lumen tube (left DLT) or bronchial blocker for right thoracotomy phase; lung-protective OLV"],
-      ["Lines & monitoring", "Arterial line, CVC (right IJ — the McKeown cervical anastomosis is usually through a left neck incision), cardiac output monitoring, temperature"],
+      ["Lines & monitoring", "Arterial line and temperature monitoring; consider cardiac-output monitoring and a CVC according to risk and access needs. If a neck CVC is required for a McKeown approach, preserve the planned cervical operative field (often left-sided)"],
       ["Analgesia", "Thoracic epidural (T5–T8) or paravertebral catheters; ESP blocks as alternatives in minimally invasive surgery"],
       ["Conduit protection", "Maintain MAP and cardiac output; avoid both fluid overload and hypovolaemia; vasopressors acceptable when euvolaemic"],
       ["Specific issues", "Arrhythmias (AF ~20%), cardiac compression during transhiatal dissection, recurrent laryngeal nerve injury, chylothorax, pneumonia, ARDS, anastomotic leak/conduit necrosis"],
-      ["Post-op", "Planned critical care; early extubation where possible; early mobilisation; nil by mouth initially with jejunal feeding; avoid NIV/CPAP until surgical agreement (anastomosis)"],
+      ["Post-op", "Planned critical care and early extubation/mobilisation where appropriate. Follow the local feeding pathway: jejunal feeding remains common, but selected patients can start oral liquids on postoperative day 0–1 without a demonstrated increase in leak. Escalate oxygen or ventilatory support when clinically required; discuss NIV/CPAP with the surgical team because evidence around a fresh anastomosis remains limited"],
     ],
-    refs: ["ERAS Oesophagectomy 2019", "Carney Oesophagectomy 2015", "CPET 2018"],
+    refs: ["ERAS Oesophagectomy 2019", "Oesophagectomy Feeding 2026", "Carney Oesophagectomy 2015", "CPET 2018"],
   },
 ];
 
@@ -188,8 +188,8 @@ const GeneralColorectalSurgeryTopic = () => (
       { text: "Aim for euvolaemia — overly restrictive fluids increased AKI in the RELIEF trial", cites: ["RELIEF 2018"] },
       { text: "Pneumoperitoneum (12–15 mmHg) ↓ FRC and compliance, ↑ SVR and PaCO₂; head-down worsens ventilation, head-up reduces venous return", cites: ["BJA Educ Laparoscopy 2011"] },
       { text: "Oesophagectomy: CPET assessment, one-lung ventilation, thoracic epidural/paravertebral analgesia, conduit perfusion and planned critical care", cites: ["ERAS Oesophagectomy 2019", "Carney Oesophagectomy 2015"] },
-      { text: "Extended VTE prophylaxis (28 days) after major abdominal or pelvic cancer surgery", cites: ["NICE NG89"] },
-      { text: "No routine NG decompression; feed orally/enterally within 24 h. Add PN if intake will be <50% of needs for >7 days (sooner if severely malnourished); in well-nourished critically ill patients early PN is harmful (EPaNIC)", cites: ["ERAS Colorectal 2018", "ESPEN Surgery 2021", "EPaNIC 2011"] },
+       { text: "Consider extending pharmacological VTE prophylaxis to 28 days after major abdominal cancer surgery, balancing VTE and bleeding risks", cites: ["NICE NG89"] },
+       { text: "After colorectal surgery, avoid routine NG decompression and start oral/enteral feeding within 24 h. Surgical-ward and ICU indications for PN differ and should not be conflated", cites: ["ERAS Colorectal 2025", "ESPEN Surgery 2021", "ESPEN ICU 2023", "EPaNIC 2011"] },
     ]}
     sectionExamMapping={{ objectives: { exams: [Exam.FINAL] }, keyPoints: { exams: [Exam.FINAL] } }}
     sectionSources={{
@@ -236,8 +236,8 @@ const GeneralColorectalSurgeryTopic = () => (
                 <li><strong>No routine nasogastric decompression</strong>: routine postoperative NG tubes do not prevent anastomotic leak, wound dehiscence or pneumonia, and delay return of bowel function; they are associated with more pulmonary complications and longer stay. ERAS 2018 and the ASCRS/SAGES 2022 guideline recommend against routine NG decompression after colorectal resection — an NG tube placed intraoperatively should be removed before reversal of anaesthesia<R l="ERAS Colorectal 2018" /><R l="ASCRS SAGES ERAS 2022" /></li>
                 <li><strong>Early oral/enteral feeding</strong>: feeding within 24 h of elective colorectal resection is safe and does not increase anastomotic leak; meta-analyses show shorter hospital stay and fewer total complications. The trade-off is more vomiting and a somewhat higher rate of NG reinsertion, so advance diet as tolerated rather than forcing intake<R l="Zhuang Early Feeding 2013" /><R l="Wang Early Feeding 2022" /></li>
                 <li><strong>If the gut works, use it</strong>: enteral nutrition maintains mucosal integrity and is preferred whenever the GI tract is accessible and functioning; TPN is reserved for a non-functioning or inaccessible gut (prolonged ileus, obstruction, high-output fistula, anastomotic leak where downstream feeding is impossible)<R l="ESPEN Surgery 2021" /></li>
-                <li><strong>Timing of TPN in critical illness</strong>: the EPaNIC trial (4,640 critically ill adults, most after cardiac surgery) found that starting parenteral nutrition on day 8 — compared with within 48 h — led to faster recovery, fewer ICU infections, less cholestasis, shorter ventilation and lower costs, with no difference in mortality<R l="EPaNIC 2011" /></li>
-                <li><strong>Current guidance</strong>: after surgery, ESPEN advises adding PN when oral/enteral intake is expected to be under about 50% of requirements for more than 7 days, and starting nutrition support without delay in severely malnourished patients<R l="ESPEN Surgery 2021" />. In the ICU, ESPEN suggests PN within 3–7 days if enteral feeding is contraindicated<R l="ESPEN ICU 2023" />, while ASPEN/SCCM advises withholding PN for the first 7 days in patients at low nutritional risk<R l="ASPEN SCCM 2016" />. Re-feeding syndrome risk rises the longer nutrition is withheld — check phosphate, potassium and magnesium when feeding restarts</li>
+                <li><strong>Timing of PN in critical illness</strong>: the EPaNIC trial enrolled 4,640 critically ill adults at nutritional risk in a mixed medical-surgical ICU population (approximately 60% after cardiac surgery). Deferring PN until day 8, compared with starting within 48 h, led to fewer ICU infections and faster recovery without a mortality difference. This ICU evidence should not be extrapolated directly to routine ward patients after elective colorectal surgery<R l="EPaNIC 2011" /></li>
+                <li><strong>Current guidance</strong>: for general surgical patients, ESPEN advises adding PN when oral/enteral intake is expected to remain below about 50% of requirements for more than 7 days, with nutrition support started promptly when severe nutritional risk makes delay unsafe<R l="ESPEN Surgery 2021" />. Separately in ICU patients, ESPEN suggests PN within 3–7 days when enteral nutrition is contraindicated<R l="ESPEN ICU 2023" />, while ASPEN/SCCM advises withholding exclusive PN for the first 7 days in patients at low nutritional risk<R l="ASPEN SCCM 2016" />. Screen for re-feeding risk; give thiamine and introduce energy cautiously when indicated, while monitoring phosphate, potassium, magnesium and fluid balance</li>
               </ul>
             </div>
 
@@ -285,19 +285,19 @@ const GeneralColorectalSurgeryTopic = () => (
                   <tbody>
                     {[
                       ["Thoracic epidural", "Open colorectal or major upper GI with extensive incision", "Continuous segmental somatic and visceral analgesia; better early movement pain than rectus sheath catheters in one trial. Requires functioning catheter and pain team; hypotension and urinary retention may hinder recovery"],
-                      ["Single-shot spinal opioid", "Selected laparoscopic resections; open surgery if epidural unsuitable", "Intrathecal morphine reduces early pain and rescue opioid use; time-limited, no catheter for titration. Pruritus, nausea, urinary retention and dose-related respiratory risk require monitoring"],
+                      ["Single-shot spinal opioid", "Selected laparoscopic resections; open surgery if epidural unsuitable", "Intrathecal morphine reduces early pain and rescue opioid use; time-limited, no catheter for titration. Pruritus, nausea, urinary retention and dose-related respiratory risk require protocol-based monitoring"],
                       ["Bilateral rectus sheath catheters", "Open midline laparotomy or midline port/extraction incision", "Local anaesthetic along rectus sheath covers incisional somatic pain but not visceral, lateral or perineal pain; less sympathetic hypotension than epidural; add systemic rescue analgesia"],
                       ["TAP block / catheter", "Lateral lower-abdominal incision or laparoscopic ports", "Abdominal-wall analgesia without visceral coverage; 2025 ERAS supports TAP blocks, 2024 PROSPECT supports bilateral TAP when epidural cannot be used for open surgery"],
                       ["Paravertebral / erector spinae", "Thoracotomy phase of oesophagectomy", "Paravertebral comparable to epidural for thoracotomy with less hypotension"],
                       ["Wound / intraperitoneal local anaesthetic", "Cholecystectomy, open wounds", "Simple, low risk"],
-                      ["Systemic multimodal", "All", "Paracetamol; consider selective NSAID for colonic surgery if appropriate, avoid routine non-selective NSAIDs or NSAIDs after rectal anastomosis per ERAS 2025; rescue opioid when needed"],
+                      ["Systemic multimodal", "All", "Paracetamol; individualise NSAIDs with renal, bleeding and anastomotic risks in mind. The leak signal is strongest for diclofenac; COX-2-selective agents appear more reassuring but are not risk-free. Use opioid for rescue when needed"],
                     ].map(([a, b, c]) => <tr key={a} className="border-b border-border last:border-0"><td className="p-2.5 font-medium text-foreground">{a}</td><td className="p-2.5">{b}</td><td className="p-2.5">{c}</td></tr>)}
                   </tbody>
                 </table>
               </div>
               <div className="mt-4 space-y-3 text-sm text-muted-foreground leading-relaxed">
                 <p><strong className="text-foreground">Thoracic epidural in open surgery.</strong> Epidural improves dynamic pain compared with systemic opioid alone and can reduce opioid requirements, but has not reliably shortened recovery. Plan for hypotension, vasopressor needs, urinary retention, catheter failure, anticoagulant timing and daily block assessment; do not give fluid reflexively for a functioning epidural in an otherwise euvolaemic patient. It is not routine for laparoscopy<R l="ASCRS SAGES ERAS 2022" /><R l="PROSPECT Open Colorectal 2024" /><R l="ERAS Colorectal 2025" />.</p>
-                <p><strong className="text-foreground">Intrathecal morphine and “high-dose” spinal.</strong> A small randomised laparoscopic colonic-resection trial found less pain and opioid use, and earlier fitness for discharge (median 3 vs 4 days), with intrathecal morphine plus local anaesthetic compared with systemic opioid; this is not proof of the same benefit in open resections. In a 2025 single-centre retrospective open-colorectal cohort (n=108; median intrathecal dose 200 micrograms), 4% needed rescue epidural, but there was no randomized epidural comparator<R l="Koning Intrathecal 2018" /><R l="Open Colorectal Spinal 2025" />. Higher intrathecal morphine doses are not automatically more effective or safer: a 2025 non-obstetric meta-analysis found a dose-related respiratory-depression signal across all doses, attenuated when doses above 500 micrograms were excluded. That cutoff is not a proven safe threshold. Tailor dosing to patient frailty, sleep apnoea and concurrent sedatives/opioids; use neuraxial-opioid observation protocols and arrange rescue when single-shot analgesia fades<R l="Intrathecal Safety 2025" />.</p>
+                <p><strong className="text-foreground">Intrathecal morphine and “high-dose” spinal.</strong> A small randomised laparoscopic colonic-resection trial found less pain and opioid use, and earlier fitness for discharge (median 3 vs 4 days), with intrathecal morphine plus local anaesthetic compared with systemic opioid; this is not proof of the same benefit in open resections<R l="Koning Intrathecal 2018" /><R l="PROSPECT Laparoscopic Colorectal 2024" />. In a 2025 single-centre retrospective, uncontrolled open-colorectal cohort (n=108; median intrathecal dose 200 micrograms), 4% needed rescue epidural; it was not comparative-effectiveness evidence<R l="Open Colorectal Spinal 2025" />. Higher intrathecal morphine doses are not automatically more effective or safer: a 2025 non-obstetric meta-analysis found a dose-related respiratory-depression signal across all doses (very-low-certainty evidence), which was attenuated and no longer statistically significant after doses above 500 micrograms were excluded. That cutoff is not a proven safe threshold. Tailor dosing to patient frailty, sleep apnoea and concurrent sedatives/opioids; follow a neuraxial-opioid respiratory-monitoring protocol and arrange rescue when single-shot analgesia fades<R l="Intrathecal Safety 2025" />.</p>
                 <p><strong className="text-foreground">Rectus sheath catheters versus epidural.</strong> In the UK TERSC randomised trial (131 elective midline laparotomy patients), epidural gave better movement pain at 24 hours (median score 33 vs 50.5); by day 3, rectus sheath catheters had lower resting pain, less opioid use and less hypotension/vasopressor dependence. A 2026 review (31 mixed open-surgery studies, 2,162 patients) found less hypotension with catheters (risk ratio 0.40, 95% CI 0.26–0.60), but wide pain-effect intervals mean comparable analgesia is <em>not</em> proven. Catheters can be useful when hypotension makes epidural unattractive; supplement for visceral/perineal pain and check bilateral cumulative local-anaesthetic dose and toxicity risk, especially with prolonged infusion<R l="TERSC 2022" /><R l="RSC Review 2026" /><R l="ERAS Colorectal 2025" />.</p>
                 <p><strong className="text-foreground">Practical choice.</strong> For a laparoscopic colectomy, favour TAP or an appropriately monitored spinal opioid with multimodal analgesia; for an open midline resection, weigh epidural against TAP or rectus sheath catheters in light of haemodynamics, incision and local expertise. Rectus sheath coverage alone is unlikely to suffice for a large perineal wound after AP resection. For oesophagectomy with a thoracic incision, plan separate thoracic analgesia (epidural or paravertebral) rather than assuming an abdominal wall catheter covers thoracotomy pain<R l="ERAS Colorectal 2025" /><R l="PROSPECT Open Colorectal 2024" /><R l="ERAS Oesophagectomy 2019" />.</p>
               </div>
@@ -319,11 +319,11 @@ const GeneralColorectalSurgeryTopic = () => (
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postoperative Complications</h2>
               <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-                <li><strong>Anastomotic leak</strong>: typically day 3–7; tachycardia, AF, fever, rising CRP, peritonitis; early CT and source control</li>
+                <li><strong>Anastomotic leak</strong>: often presents during the first postoperative week but may occur later; suspect it with unexplained tachycardia, AF, fever, rising inflammatory markers, ileus or peritonism, and arrange prompt imaging and source control</li>
                 <li><strong>Postoperative ileus</strong>: reduced by opioid sparing, fluid balance, minimally invasive surgery, early feeding, chewing gum<R l="ERAS Colorectal 2018" /></li>
                 <li><strong>Pulmonary</strong>: pneumonia and aspiration (especially after oesophagectomy — recurrent laryngeal nerve palsy and loss of lower oesophageal sphincter); keep head-up ≥30°<R l="ERAS Oesophagectomy 2019" /></li>
                 <li><strong>High-output stoma</strong>: dehydration, hypomagnesaemia, AKI</li>
-                <li><strong>VTE</strong>: mechanical plus LMWH; extended 28 days after major abdominal/pelvic cancer surgery<R l="NICE NG89" /></li>
+                <li><strong>VTE</strong>: assess VTE against bleeding risk and use mechanical/pharmacological prophylaxis accordingly; NICE advises considering extension of pharmacological prophylaxis to 28 days after major abdominal cancer surgery<R l="NICE NG89" /></li>
               </ul>
             </div>
 
