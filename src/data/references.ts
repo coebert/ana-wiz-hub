@@ -1413,7 +1413,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "EXTRIP Theophylline", citation: "Ghannoum M, Wiegand TJ, Liu KD, et al. Extracorporeal treatment for theophylline poisoning: systematic review and recommendations from the EXTRIP workgroup. Clin Toxicol. 2015;53(4):215-229.", url: "https://doi.org/10.3109/15563650.2015.1014907", excerpt: "Charcoal haemoperfusion is more effective than haemodialysis for the removal of theophylline, and should be used if available. The EXTRIP workgroup recommend extracorporeal removal in severe theophylline poisoning with seizures, life-threatening ventricular arrhythmias, or refractory hypotension." },
   ],
   "burns-plastics": [
-    { label: "Bittner 2015", citation: "Bittner EA et al. Acute and perioperative care of the burn-injured patient. Anesthesiology. 2015;122(2):448-464.", url: "https://doi.org/10.1097/ALN.0000000000000559" },
+    { label: "Bittner 2015", citation: "Bittner EA, Shank E, Woodson L, Martyn JA. Acute and perioperative care of the burn-injured patient. Anesthesiology. 2015;122(2):448–464.", url: "https://doi.org/10.1097/ALN.0000000000000559" },
     { label: "BBA Referral 2012", citation: "National Network for Burn Care and British Burn Association. National Burn Care Referral Guidance. 2012.", url: "https://www.britishburnassociation.org/national-burn-care-referral-guidance/" },
     { label: "BBA EMSB", citation: "British Burns Association. Emergency Management of Severe Burns (EMSB) Course Manual. 2018." },
     { label: "BJA Educ Burns 2022", citation: "McGovern C, Puxty K, Paton L. Major burns: part 2. Anaesthesia, intensive care and pain management. BJA Education. 2022;22(4):138–145.", url: "https://doi.org/10.1016/j.bjae.2022.01.001" },
@@ -1422,7 +1422,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Osler Baux 2010", citation: "Osler T, Glance LG, Hosmer DW. Simplified estimates of the probability of death after burn injuries: extending and updating the Baux score. Journal of Trauma. 2010;68(3):690–697.", url: "https://doi.org/10.1097/TA.0b013e3181c453b3" },
     { label: "Airway Signs 2022", citation: "Huang RY, Chen SJ, Hsiao YC, et al. Positive signs on physical examination are not always indications for endotracheal tube intubation in patients with facial burn. BMC Emergency Medicine. 2022;22:36.", url: "https://doi.org/10.1186/s12873-022-00594-9" },
     { label: "Cyanokit SmPC", citation: "European Medicines Agency. Cyanokit (hydroxocobalamin): summary of product characteristics, section 4.2.", url: "https://www.ema.europa.eu/en/documents/product-information/cyanokit-epar-product-information_en.pdf" },
-    { label: "Phenol Poison Centre 2026", citation: "Is low molecular weight polyethylene glycol used for decontamination of dermal phenol exposures? Retrospective regional poison-centre study. 2026.", url: "https://pubmed.ncbi.nlm.nih.gov/41396257/" },
+    { label: "Phenol Poison Centre 2026", citation: "Is low molecular weight polyethylene glycol used for decontamination of dermal phenol exposures? Regional poison-centre case series. 2026.", url: "https://pubmed.ncbi.nlm.nih.gov/41396257/" },
     { label: "Tumescent PK 2016", citation: "Klein JA, Jeske DR. Estimated maximal safe dosages of tumescent lidocaine. Anesthesia & Analgesia. 2016;122(5):1350–1359.", url: "https://pubmed.ncbi.nlm.nih.gov/26895001/" },
     { label: "Free Flap Review 2022", citation: "McCauley P, Moore M, Duggan E. Anaesthesia for reconstructive free flap surgery for head and neck cancer. British Journal of Hospital Medicine. 2022;83(5):1–9.", url: "https://doi.org/10.12968/hmed.2021.0668" },
     { label: "Head Neck Donor Sites 2023", citation: "Tamaki A, Zender CA. Free flap donor sites in head and neck reconstruction. Otolaryngologic Clinics of North America. 2023.", url: "https://doi.org/10.1016/j.otc.2023.04.001" },
@@ -1432,8 +1432,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "DIEP ERAS 2025", citation: "El-Jebaoui J, Awaida CJ, Bou-Merhi J, et al. Enhanced recovery after surgery in immediate DIEP flap breast reconstruction: reducing length of stay and opioid use. Plastic Surgery. 2025.", url: "https://doi.org/10.1177/22925503241234935" },
   ],
   "plastic-surgery": [
-    { label: "BJA Educ Free Flap 2021", citation: "McCauley P, Moore M, Duggan E. Anaesthesia for reconstructive free flap surgery for head and neck cancer. British Journal of Hospital Medicine. 2022;83(5):1–9.", url: "https://doi.org/10.12968/hmed.2021.0668" },
-    { label: "BJA Educ 2021", citation: "McCauley P, Moore M, Duggan E. Anaesthesia for reconstructive free flap surgery for head and neck cancer. British Journal of Hospital Medicine. 2022;83(5):1–9.", url: "https://doi.org/10.12968/hmed.2021.0668" },
+    { label: "Free Flap Review 2022", citation: "McCauley P, Moore M, Duggan E. Anaesthesia for reconstructive free flap surgery for head and neck cancer. British Journal of Hospital Medicine. 2022;83(5):1–9.", url: "https://doi.org/10.12968/hmed.2021.0668" },
     { label: "BAPRAS 2020", citation: "British Association of Plastic, Reconstructive and Aesthetic Surgeons. Guidelines on Free Flap Monitoring. 2020." },
     { label: "Curr Opin Anaesthesiol 2019", citation: "Rosenberg JJ. Microvascular free flaps — perioperative management. Curr Opin Anaesthesiol. 2019;32:47-53." },
   ],
