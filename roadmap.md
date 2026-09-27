@@ -15,3 +15,4 @@
 - [x] Batch 1 of 2 content-audit fixes (8 physics topics, 26 findings) + correct viva answers + mark fixed in DB
 - [x] SI Units & Thermodynamics content-audit fixes (2 findings) + mark fixed in DB
 - [x] Add sourced evidence on epidural, intrathecal opioid and rectus sheath catheter analgesia to general/colorectal surgery topic
+- [ ] Re-audit and correct the general/colorectal surgery topic against current primary guidance
