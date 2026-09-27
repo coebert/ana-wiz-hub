@@ -75,7 +75,7 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "Treat as OLV hypoxaemia: FiO₂ 1.0, confirm lung isolation device position, exclude cardiac compression and low output, recruit and add PEEP to the dependent lung, CPAP to the non-dependent lung, resume two-lung ventilation if needed.",
-    cites: ["BJA Educ Oesophagectomy 2015", "ERAS Oesophagectomy 2019"],
+    cites: ["Carney Oesophagectomy 2015", "ERAS Oesophagectomy 2019"],
   },
 ];
 
@@ -143,7 +143,7 @@ const procedures = [
       ["Specific issues", "Arrhythmias (AF ~20%), cardiac compression during transhiatal dissection, recurrent laryngeal nerve injury, chylothorax, pneumonia, ARDS, anastomotic leak/conduit necrosis"],
       ["Post-op", "Planned critical care; early extubation where possible; early mobilisation; nil by mouth initially with jejunal feeding; avoid NIV/CPAP until surgical agreement (anastomosis)"],
     ],
-    refs: ["ERAS Oesophagectomy 2019", "BJA Educ Oesophagectomy 2015", "CPET 2018"],
+    refs: ["ERAS Oesophagectomy 2019", "Carney Oesophagectomy 2015", "CPET 2018"],
   },
 ];
 
@@ -170,7 +170,7 @@ const GeneralColorectalSurgeryTopic = () => (
       { text: "Thoracic epidural is recommended for open colorectal surgery but not routinely for laparoscopic surgery", cites: ["ERAS Colorectal 2018", "Levy 2011"] },
       { text: "Aim for euvolaemia — overly restrictive fluids increased AKI in the RELIEF trial", cites: ["RELIEF 2018"] },
       { text: "Pneumoperitoneum (12–15 mmHg) ↓ FRC and compliance, ↑ SVR and PaCO₂; head-down worsens ventilation, head-up reduces venous return", cites: ["BJA Educ Laparoscopy 2011"] },
-      { text: "Oesophagectomy: CPET assessment, one-lung ventilation, thoracic epidural/paravertebral analgesia, conduit perfusion and planned critical care", cites: ["ERAS Oesophagectomy 2019", "BJA Educ Oesophagectomy 2015"] },
+      { text: "Oesophagectomy: CPET assessment, one-lung ventilation, thoracic epidural/paravertebral analgesia, conduit perfusion and planned critical care", cites: ["ERAS Oesophagectomy 2019", "Carney Oesophagectomy 2015"] },
       { text: "Extended VTE prophylaxis (28 days) after major abdominal or pelvic cancer surgery", cites: ["NICE NG89"] },
     ]}
     sectionExamMapping={{ objectives: { exams: [Exam.FINAL] }, keyPoints: { exams: [Exam.FINAL] } }}
