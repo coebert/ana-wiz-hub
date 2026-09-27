@@ -90,6 +90,7 @@ export const seeAlsoMap: Record<string, string[]> = {
   "transfer-medicine": ["trauma-emergency", "clinical-incidents", "equipment-monitoring", "resource-poor-anaesthesia", "mass-casualty-military"],
   "resource-poor-anaesthesia": ["obstetric-anaesthesia", "regional-anaesthesia", "iv-anaesthetics", "volatile-agents", "trauma-emergency", "transfer-medicine", "mass-casualty-military"],
   "mass-casualty-military": ["trauma-emergency", "transfer-medicine", "clinical-incidents", "resource-poor-anaesthesia", "non-technical-skills", "burns-plastics"],
+  "general-colorectal-surgery": ["emergency-surgery", "bariatric-anaesthesia", "abdominal-anatomy", "antiemetics"],
   "bariatric-anaesthesia": ["gi-physiology", "airway-management", "respiratory-disease"],
   "vascular-anaesthesia": ["cardiovascular-disease", "regional-anaesthesia", "cardiothoracic"],
   "ent-anaesthesia": ["head-neck-anatomy", "airway-management", "lasers-fibreoptics"],
