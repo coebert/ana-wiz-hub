@@ -37,7 +37,7 @@ const burnsFaqs: Array<[string, string]> = [
   ],
   [
     "What is the Parkland formula and how is it applied?",
-    "The Parkland formula calculates fluid requirement for the first 24 hours post-burn: 4 mL × body weight (kg) × %TBSA of Hartmann's (Ringer's lactate). Half the total is given over the first 8 hours from the time of burn (not from hospital arrival), and the second half over the remaining 16 hours. For example, an 80 kg adult with 30% TBSA burns requires 4 × 80 × 30 = 9,600 mL total; 4,800 mL in the first 8 hours, then 4,800 mL over the next 16 hours. The formula provides a starting point — fluids must be titrated to physiological endpoints: urine output 0.5–1 mL/kg/h in adults (1–2 mL/kg/h in children), adequate peripheral perfusion, and mental status. Over-resuscitation ('fluid creep') causes abdominal compartment syndrome, limb compartment syndrome, and pulmonary oedema.",
+    "Traditional Parkland estimates a starting volume for the first 24 hours post-burn: 4 mL × body weight (kg) × %TBSA of Hartmann's (Ringer's lactate). Half the total is given over the first 8 hours from the time of burn (not from hospital arrival), and the second half over the remaining 16 hours. For example, an 80 kg adult with 30% TBSA burns requires 4 × 80 × 30 = 9,600 mL total; 4,800 mL in the first 8 hours, then 4,800 mL over the next 16 hours. The 2024 ABA guidance for adults with burns ≥20% TBSA recommends starting at 2 mL/kg/%TBSA to reduce fluid creep; follow local protocols. All formulae are starting points — fluids must be titrated to physiological endpoints: urine output 0.5–1 mL/kg/h in adults (1–2 mL/kg/h in children), adequate peripheral perfusion, and mental status. Over-resuscitation ('fluid creep') causes abdominal compartment syndrome, limb compartment syndrome, and pulmonary oedema.",
   ],
   [
     "Why is suxamethonium contraindicated after major burns?",
@@ -45,15 +45,15 @@ const burnsFaqs: Array<[string, string]> = [
   ],
   [
     "What are the indications for early intubation in burn patients?",
-    "Early intubation is indicated in any burn patient with signs of airway or inhalational injury because airway oedema peaks at 12–24 hours and can transform a patent airway into a critical obstruction. Specific indications include: facial or neck burns; singed nasal hairs or eyebrows; soot in the mouth, nose, or sputum; hoarseness, stridor, or drooling; respiratory distress; reduced consciousness from smoke inhalation or CO poisoning; and burns >40% TBSA (large fluid resuscitation causes significant facial and airway oedema even without direct thermal injury). Use an uncut endotracheal tube to allow for facial swelling, and secure it carefully because ECG pads and tape may not adhere to burned skin. Cricoid pressure may be technically difficult due to facial oedema.",
+    "Assess the airway repeatedly and intubate early for progressive swelling, stridor, respiratory failure, reduced consciousness or a high-risk airway before transfer. Large burns with substantial resuscitation raise concern for later oedema. Facial burns, singed hairs or soot warrant urgent assessment but are not, in isolation, automatic indications for intubation. Involve the burns/airway team and consider nasendoscopy when available. Secure the endotracheal tube carefully because tape may not adhere to burned skin.",
   ],
   [
     "How does carbon monoxide poisoning present and how is it treated?",
-    "Carbon monoxide (CO) binds to haemoglobin with 240× the affinity of oxygen, forming carboxyhaemoglobin (COHb) and shifting the oxyhaemoglobin dissociation curve to the left. This causes tissue hypoxia despite normal PaO₂. Crucially, standard pulse oximetry cannot distinguish oxyhaemoglobin from COHb and may read falsely normal — co-oximetry (multi-wavelength pulse oximetry or blood gas analysis) is mandatory. Clinical features include headache, dizziness, nausea, confusion, and cherry-red skin (rare). Severe poisoning causes seizures, coma, and myocardial ischaemia. Treatment is 100% oxygen via a tight-fitting non-rebreather mask, which reduces COHb half-life from ~250 minutes (on room air) to ~40–90 minutes. Hyperbaric oxygen is indicated for COHb >25%, neurological impairment, pregnancy (fetal haemoglobin has higher CO affinity), or evidence of myocardial ischaemia.",
+    "Carbon monoxide (CO) binds strongly to haemoglobin, forming carboxyhaemoglobin (COHb) and shifting the oxyhaemoglobin dissociation curve left. Tissue hypoxia occurs despite normal PaO₂. Standard pulse oximetry may read falsely normal: measure COHb on a blood gas with co-oximetry. Symptoms range from headache and confusion to seizures, coma and myocardial ischaemia. Give 100% oxygen; discuss possible hyperbaric oxygen with a specialist for serious neurological or cardiac findings, pregnancy, severe acidosis or high COHb. A COHb number alone does not determine treatment, and benefit from hyperbaric oxygen remains debated.",
   ],
   [
     "What is cyanide poisoning and how is it recognised in burn patients?",
-    "Cyanide (CN⁻) is released from the combustion of synthetic materials (plastics, wool, silk, polyurethane). It inhibits mitochondrial cytochrome c oxidase, preventing cellular oxygen utilisation and causing cellular hypoxia despite adequate oxygen delivery. This produces a high anion-gap metabolic acidosis with a markedly elevated lactate (>10 mmol/L is highly suggestive) and a normal or elevated mixed venous oxygen saturation (tissues cannot extract oxygen). Treatment is hydroxocobalamin (Cyanokit) 70 mg/kg IV up to 5 g — it binds cyanide to form cyanocobalamin (vitamin B12), which is renally excreted. Sodium thiosulfate is an alternative but slower-acting adjunct. High-flow oxygen and sodium bicarbonate for acidosis are supportive measures. Suspect cyanide poisoning in any patient from an enclosed-space fire with altered consciousness and profound lactic acidosis.",
+    "Cyanide (CN⁻) is released from the combustion of synthetic materials (plastics, wool, silk, polyurethane). It inhibits mitochondrial cytochrome c oxidase, preventing cellular oxygen utilisation and causing cellular hypoxia despite adequate oxygen delivery. This produces a high anion-gap metabolic acidosis with a markedly elevated lactate (>10 mmol/L is highly suggestive) and a normal or elevated mixed venous oxygen saturation (tissues cannot extract oxygen). Treatment is hydroxocobalamin (Cyanokit): adults 5 g IV over 15 minutes (repeat once if indicated, maximum 10 g); children 70 mg/kg IV (maximum 5 g per dose, repeat once if indicated) — it binds cyanide to form cyanocobalamin (vitamin B12), which is renally excreted. Sodium thiosulfate is an alternative but slower-acting adjunct. High-flow oxygen and sodium bicarbonate for acidosis are supportive measures. Suspect cyanide poisoning in any patient from an enclosed-space fire with altered consciousness and profound lactic acidosis.",
   ],
   [
     "What are the phases of burn pathophysiology?",
@@ -69,7 +69,7 @@ const burnsFaqs: Array<[string, string]> = [
   ],
   [
     "What is tumescent anaesthesia and what are its risks?",
-    "Tumescent anaesthesia involves infiltration of large volumes of dilute local anaesthetic (typically lidocaine 0.05–0.1% with adrenaline 1:1,000,000) into subcutaneous fat. It is primarily used for liposuction and some dermatological procedures. The large tissue volume and vasoconstrictor effect of adrenaline slow systemic absorption dramatically, allowing much higher total lidocaine doses than standard guidelines — up to 35–55 mg/kg has been reported safely (compared to the standard maximum of 7 mg/kg with adrenaline). However, risks include: delayed local anaesthetic systemic toxicity (LAST) due to gradual absorption over 12–18 hours; fluid overload from the large volumes injected (up to several litres); hypothermia from cold infiltration fluid; and lidocaine toxicity if adrenaline effect wears off before absorption is complete. Postoperative monitoring for at least 12 hours is essential. Treatment of LAST follows standard lipid emulsion protocols.",
+    "Tumescent anaesthesia uses dilute lidocaine with adrenaline in subcutaneous fat, particularly for liposuction. Absorption is delayed, but high doses are not universally safe: one small pharmacokinetic study estimated conservative maxima of 28 mg/kg without liposuction and 45 mg/kg with liposuction under local anaesthesia. These estimates cannot simply be applied to burn debridement or patients having general anaesthesia. Count all local anaesthetic sources and follow specialist/local dosing and observation protocols. Risks include delayed local anaesthetic systemic toxicity (LAST), fluid overload and hypothermia; have 20% lipid emulsion available.",
   ],
 ];
 
@@ -99,25 +99,25 @@ const BurnsPlasticsTopic = () => {
       sectionSources={{
         objectives: [
           "Bittner 2015",
-          "NICE NG12",
+          "BBA Referral 2012",
           "BBA EMSB",
-          "BJA Educ 2019",
-          "BJA Educ Free Flap 2021",
+          "BJA Educ Burns 2022",
+          "Free Flap Review 2022",
           "ERAS Breast 2017",
         ],
         keyPoints: [
           "Bittner 2015",
-          "NICE NG12",
+          "BBA Referral 2012",
           "BBA EMSB",
-          "BJA Educ 2019",
+          "BJA Educ Burns 2022",
         ],
-        workedExamples: ["BBA EMSB", "NICE NG12"],
+        workedExamples: ["BBA EMSB", "BBA Referral 2012"],
       }}
       keyPoints={[
-        { text: "Burns >15% TBSA in adults (>10% in children) require formal fluid resuscitation — Parkland: 4 mL × kg × %TBSA in 24 h, half in the first 8 h from time of burn", cites: ["Bittner 2015"] },
-        { text: "Suxamethonium is contraindicated from 24 h to ~2 years post-major burn (extra-junctional ACh receptor upregulation → hyperkalaemic arrest)", cites: ["BJA Educ 2019"] },
+        { text: "Major burns need formal fluid resuscitation titrated to response. Parkland (4 mL/kg/%TBSA in 24 h) is a traditional calculation; ABA 2024 recommends starting at 2 mL/kg/%TBSA in adults with ≥20% TBSA burns to reduce fluid creep", cites: ["BBA EMSB", "ABA Fluids 2024"] },
+        { text: "Avoid suxamethonium after the first 24 h of a major burn until neuromuscular changes have resolved and wounds have healed (extra-junctional ACh receptor upregulation → hyperkalaemic arrest)", cites: ["BJA Educ Burns 2022"] },
         { text: "Carbon monoxide poisoning gives a falsely normal SpO₂ — co-oximetry mandatory; treat with 100% O₂ (COHb half-life 250 → 40 min)", cites: ["BBA EMSB"] },
-        { text: "Intubate early in airway burns — oedema peaks at 12–24 h; use an uncut ETT to allow for facial swelling", cites: ["NICE NG12"] },
+        { text: "Reassess suspected inhalation injury urgently: progressive swelling, stridor or respiratory failure favour early intubation; facial burns or singed hairs alone do not mandate it", cites: ["ABA Referral 2022", "Airway Signs 2022"] },
         { text: "Major burns produce a biphasic response: initial hypovolaemic shock then a hypermetabolic / hyperdynamic phase with ↑CO, ↑VO₂ and catabolism", cites: ["Bittner 2015"] },
         { text: "Free-flap donor selection is dictated by the defect (bone, skin, volume and reach), the donor's vascular anatomy and morbidity, and whether harvest can proceed alongside resection", cites: ["Head Neck Donor Sites 2023", "Donor Morbidity 2022"] },
       ]}
@@ -155,8 +155,8 @@ const BurnsPlasticsTopic = () => {
                 </div>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {[
-                    { label: "Referral criteria", value: ">10% TBSA partial-thickness in children, >15% in adults; full-thickness >5%; burns to face, hands, feet, perineum; inhalation injury; chemical/electrical burns; circumferential burns; comorbidities" },
-                    { label: "Mortality predictors", value: "Age >60 years, >40% TBSA, and inhalation injury each increase mortality significantly. The revised Baux score (age + %TBSA + 17 if inhalation injury) estimates mortality" },
+                    { label: "Referral criteria", value: "Seek burn-service advice for significant partial-thickness burns, any deep/full-thickness burn, special-site or circumferential burns, suspected inhalation injury, chemical/electrical injury or important comorbidity. Use regional UK referral guidance for thresholds." },
+                    { label: "Mortality predictors", value: "Increasing age, TBSA and inhalation injury increase risk. The revised Baux score (age + %TBSA + 17 if inhalation injury) is a risk score, not a mortality percentage." },
                   ].map((item) => (
                     <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                       <p className="text-xs text-muted-foreground">{item.label}</p>
@@ -167,7 +167,7 @@ const BurnsPlasticsTopic = () => {
                 <div className="mt-3 p-4 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm mb-1">Prognostic scoring — the Baux score</p>
                   <p className="text-xs text-muted-foreground leading-relaxed mb-2">
-                    The Baux score is the classic burns prognostic tool and is quick enough to use at the bedside on admission.
+                    The Baux score is a quick bedside risk stratification tool; it is not a standalone mortality probability.
                   </p>
                   <div className="rounded-md bg-muted/40 p-3 font-mono text-xs text-foreground mb-2 space-y-1">
                     <p>Classic Baux = age (years) + %TBSA</p>
@@ -175,8 +175,8 @@ const BurnsPlasticsTopic = () => {
                   </div>
                   <ul className="text-xs text-muted-foreground leading-relaxed space-y-1 list-disc pl-4">
                     <li><strong>Interpretation</strong>: the score approximates percentage mortality. Historically a score of 100 implied near-certain death, but modern burns care has shifted the lethal threshold upward — the contemporary LD<sub>50</sub> sits closer to a revised score of about 110, and survival at scores of 90–100 is now common in specialist centres.</li>
-                    <li><strong>Worked example</strong>: a 45-year-old with a 30% TBSA flame burn and confirmed inhalation injury scores 45 + 30 + 17 = <strong>92</strong>, so roughly a 90% predicted mortality by the original scale, though considerably better than that in a modern burns ICU.</li>
-                    <li><strong>Uses and limits</strong>: valuable for triage, resource planning, benchmarking and framing discussions with family — but it is a population estimate, not an individual prediction, and it ignores comorbidity, frailty, burn depth, delay to resuscitation and non-burn trauma. Never use it alone to withhold treatment; other tools (ABSI, rBaux with comorbidity adjustment) add refinement.</li>
+                    <li><strong>Worked example</strong>: a 45-year-old with a 30% TBSA flame burn and confirmed inhalation injury scores 45 + 30 + 17 = <strong>92</strong>. This is <em>not</em> 92% predicted mortality; use a validated calculator and specialist assessment for prognosis.</li>
+                    <li><strong>Uses and limits</strong>: useful for population benchmarking, but it is not an individual prediction, and it ignores comorbidity, frailty, burn depth, delay to resuscitation and non-burn trauma. Never use it alone to withhold treatment; other validated models may add refinement.</li>
                   </ul>
                 </div>
 
@@ -224,13 +224,13 @@ const BurnsPlasticsTopic = () => {
                 <div className="bg-card border border-border rounded-lg p-4 mb-4">
                   <h3 className="font-semibold text-foreground mb-2">Parkland Formula</h3>
                   <p className="text-sm text-muted-foreground mb-2">
-                    <strong className="text-foreground">4 mL × body weight (kg) × %TBSA</strong> of Hartmann's in the first 24 hours from time of burn
+                    <strong className="text-foreground">4 mL × body weight (kg) × %TBSA</strong> of Hartmann's in the first 24 hours from time of burn (traditional Parkland starting estimate; not a fixed prescription)<InlineRef topicId="burns-plastics" refLabel="ABA Fluids 2024" />
                   </p>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                     <li>First half over 8 h <em>from time of burn</em> (not from hospital arrival)</li>
                     <li>Second half over the remaining 16 h</li>
                     <li>Titrate to urine output: 0.5–1 mL/kg/h adults, 1–2 mL/kg/h children</li>
-                    <li>Colloid may be added after 8–24 h when capillary leak subsides</li>
+                    <li>For adults with ≥20% TBSA burns, ABA 2024 recommends starting at 2 mL/kg/%TBSA; albumin can be considered, particularly with larger burns. Follow local burns-centre protocol and titrate to response.</li>
                     <li>Beware <strong className="text-foreground">"fluid creep"</strong> — excessive resuscitation causes abdominal and limb compartment syndrome</li>
                   </ul>
                 </div>
@@ -239,7 +239,7 @@ const BurnsPlasticsTopic = () => {
                     { label: "Adult threshold", value: ">15% TBSA partial- or full-thickness burns require formal IV fluid resuscitation" },
                     { label: "Paediatric threshold", value: ">10% TBSA; use Parkland with added maintenance fluid (Dextrose-Saline or Hartmann's with glucose)" },
                     { label: "Endpoints", value: "Urine output 0.5–1 mL/kg/h, HR <120, MAP >65 mmHg, warm peripheries, clear sensorium" },
-                    { label: "Fluid creep", value: "Excessive resuscitation >150% Parkland → abdominal compartment syndrome, limb compartment syndrome, pulmonary oedema" },
+                    { label: "Fluid creep", value: "Excessive fluid can cause abdominal/limb compartment syndrome and pulmonary oedema; reassess often and adjust to physiological endpoints." },
                   ].map((item) => (
                     <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                       <p className="text-xs text-muted-foreground">{item.label}</p>
@@ -266,21 +266,21 @@ const BurnsPlasticsTopic = () => {
                 <div className="bg-card border border-border rounded-lg p-4 mb-3">
                   <h3 className="font-semibold text-foreground mb-2">Indications for Early Intubation</h3>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                    <li>Facial or neck burns; singed nasal hairs or eyebrows</li>
-                    <li>Soot in mouth, nose, or sputum; carbonaceous sputum</li>
+                    <li>Progressive facial, neck or oropharyngeal swelling; stridor or airway obstruction</li>
+                    <li>Facial burns, singed hairs or soot prompt urgent evaluation but are not sufficient alone to mandate intubation</li>
                     <li>Hoarseness, stridor, drooling, or respiratory distress</li>
-                    <li>Enclosed-space fire or explosion</li>
+                    <li>Enclosed-space fire or explosion with evidence of evolving airway injury or a high-risk transfer</li>
                     <li>Reduced consciousness from smoke inhalation or CO poisoning</li>
                     <li>Burns &gt;40% TBSA (large fluid resuscitation → facial oedema)</li>
                   </ul>
                   <p className="text-sm mt-2 text-amber-400 font-medium">
-                    ⚠ Intubate early — oedema peaks at 12–24 h. Use an uncut ETT to allow for facial swelling. Secure carefully as tape may not adhere.
+                    ⚠ Reassess repeatedly; intubate before progressive oedema obstructs the airway. Secure the tube carefully as tape may not adhere.<InlineRef topicId="burns-plastics" refLabel="Airway Signs 2022" />
                   </p>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {[
-                    { label: "CO poisoning", value: "Falsely normal SpO₂. Co-oximetry mandatory. Treat with 100% O₂ (COHb half-life 250→40 min). Hyperbaric if COHb >25% or neurological symptoms" },
-                    { label: "Cyanide poisoning", value: "From plastic combustion. Cellular hypoxia with high lactate (>10 mmol/L). Treat with hydroxocobalamin 70 mg/kg (Cyanokit)" },
+                    { label: "CO poisoning", value: "Falsely normal SpO₂. Co-oximetry mandatory. Treat with 100% O₂ (COHb half-life 250→40 min). Discuss hyperbaric treatment for serious neurological/cardiac findings or pregnancy; COHb alone is not decisive" },
+                    { label: "Cyanide poisoning", value: "From plastic combustion. Cellular hypoxia with high lactate (>10 mmol/L). Treat with hydroxocobalamin: adults 5 g IV; children 70 mg/kg (max 5 g/dose)" },
                     { label: "Upper airway", value: "Direct thermal injury to supraglottic structures. Oedema peaks 12–24 h. Early intubation before airway compromise" },
                     { label: "Lower airway", value: "Chemical injury to bronchi and alveoli → ARDS risk. Bronchoscopy may show carbonaceous material and airway oedema" },
                   ].map((item) => (
@@ -396,7 +396,7 @@ const BurnsPlasticsTopic = () => {
                     <li><strong className="text-foreground">Phenol</strong>: poorly water-soluble and readily absorbed, causing systemic toxicity (arrhythmia, seizures, hepatic and renal injury) and a white coagulum locally. Decontaminate with <strong>polyethylene glycol (PEG 300/400)</strong> — or 50% isopropyl alcohol if PEG is unavailable — followed by water irrigation, as water alone can increase dermal absorption</li>
                     <li><strong className="text-foreground">Cement (wet concrete)</strong>: calcium oxide is a strong alkali that causes insidious, painless, progressive full-thickness injury, classically to the knees and ankles of kneeling workers hours after exposure. Remove all clothing and cement debris and <strong>irrigate copiously with water</strong>, then reassess repeatedly because the depth evolves over 12–24 hours</li>
                     <li><strong className="text-foreground">Exceptions — do not irrigate with water first</strong>: <em>elemental sodium, potassium and lithium</em> ignite explosively with water — cover with mineral oil and remove particles mechanically; dry lime and other dry powders should be brushed off before any water is used; elemental phosphorus is kept wet and debrided under water or covered in oil to prevent ignition (copper sulphate identification is now discouraged because of systemic toxicity)</li>
-                    <li>All chemical injuries: full trauma and eye assessment (irrigate eyes separately with an eyelid speculum and topical anaesthetic), analgesia, tetanus cover, monitor electrolytes and acid–base status, and refer to a burns centre for anything more than a trivial, fully decontaminated superficial injury<InlineRef topicId="burns-plastics" refLabel="BJA Educ 2019" /></li>
+                    <li>All chemical injuries: full trauma and eye assessment (irrigate eyes separately with an eyelid speculum and topical anaesthetic), analgesia, tetanus cover, monitor electrolytes and acid–base status, and refer to a burns centre for anything more than a trivial, fully decontaminated superficial injury<InlineRef topicId="burns-plastics" refLabel="BJA Educ Burns 2022" /></li>
                   </ul>
                 </div>
               </CollapsibleSubsection>
@@ -411,9 +411,9 @@ const BurnsPlasticsTopic = () => {
                   <h3 className="font-semibold text-foreground mb-2">Free Flap Surgery in Burns Reconstruction</h3>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                     <li>Optimise flap perfusion — normothermia, normovolaemia, adequate MAP (≥65 mmHg)</li>
-                    <li>Avoid vasopressors where possible; low-dose noradrenaline preferred over phenylephrine/metaraminol</li>
+                    <li>Treat hypotension while avoiding excess fluid; judicious titrated noradrenaline is acceptable when indicated</li>
                     <li>Avoid excessive crystalloid — tissue oedema impairs flap perfusion and venous drainage</li>
-                    <li>Target Hb &gt;80 g/L to maintain oxygen delivery</li>
+                    <li>Individualise transfusion to blood loss, oxygen delivery and patient factors; no universal flap-specific Hb threshold</li>
                     <li>Prolonged cases (8–16 h): meticulous pressure care, DVT prophylaxis, temperature management</li>
                     <li>Some evidence supports TIVA over volatile for microvascular outcomes</li>
                   </ul>
@@ -421,14 +421,14 @@ const BurnsPlasticsTopic = () => {
                 <div className="bg-card border border-border rounded-lg p-4">
                   <h3 className="font-semibold text-foreground mb-2">Tumescent Anaesthesia</h3>
                   <p className="text-sm text-muted-foreground mb-2">
-                    Large volumes of very dilute local anaesthetic with adrenaline are infiltrated into the subcutaneous fat until the tissue is firm and blanched ("tumescent"). It is used for liposuction, large-area harvesting and some burn debridement, providing analgesia and marked vasoconstriction that reduces blood loss<InlineRef topicId="burns-plastics" refLabel="BJA Educ 2019" />.
+                    Large volumes of very dilute local anaesthetic with adrenaline are infiltrated into the subcutaneous fat until the tissue is firm and blanched ("tumescent"). It is used for liposuction, large-area harvesting and some burn debridement, providing analgesia and marked vasoconstriction that reduces blood loss<InlineRef topicId="burns-plastics" refLabel="BJA Educ Burns 2022" />.
                   </p>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                    <li><strong className="text-foreground">Klein solution</strong> (the classic recipe): lidocaine 0.05–0.1% (500–1000 mg) with adrenaline 1:1,000,000 (1 mg) and sodium bicarbonate 8.4% 10 mL (12.5 mmol, to reduce injection pain) made up in 1 L of warmed 0.9% sodium chloride; triamcinolone is added in some formulations</li>
-                    <li><strong className="text-foreground">Dose</strong>: because absorption from vasoconstricted fat is so slow, doses of <strong>35–55 mg/kg</strong> lidocaine are described as safe with tumescent infiltration, versus a conventional maximum of 7 mg/kg with adrenaline. Stay at the lower end in the elderly, in hepatic impairment, and with CYP3A4/1A2 inhibitors</li>
-                    <li><strong className="text-foreground">Delayed absorption</strong>: plasma lidocaine peaks late — approximately <strong>12 hours</strong> after infiltration (range 10–14 h) — and remains measurable for 24–36 hours, so toxicity typically appears after the patient has left theatre</li>
+                    <li><strong className="text-foreground">Klein solution</strong> (the classic recipe): lidocaine 0.05–0.1% (500–1000 mg) with adrenaline 1:1,000,000 (1 mg) and sodium bicarbonate 8.4% 10 mL (10 mmol, to reduce injection pain) made up in 1 L of warmed 0.9% sodium chloride; triamcinolone is added in some formulations</li>
+                    <li><strong className="text-foreground">Dose</strong>: because absorption from vasoconstricted fat is so slow, doses of <strong>28 mg/kg without liposuction and 45 mg/kg with liposuction</strong> were conservative estimates in a small pharmacokinetic study of tumescent local anaesthesia, not general safety limits. The 55 mg/kg figure derives from selected liposuction practice and must not be extrapolated to burn surgery or general anaesthesia. Account for all local anaesthetic and individual risk factors<InlineRef topicId="burns-plastics" refLabel="Tumescent PK 2016" /></li>
+                    <li><strong className="text-foreground">Delayed absorption</strong>: plasma lidocaine peaks late — several hours after infiltration (often around 12–14 h, but variable) — so toxicity can emerge after leaving theatre<InlineRef topicId="burns-plastics" refLabel="Tumescent PK 2016" /></li>
                     <li><strong className="text-foreground">Risks</strong>: delayed local anaesthetic systemic toxicity (perioral tingling, tinnitus, agitation, seizures, arrhythmia, cardiac arrest — treat with 20% lipid emulsion per the AAGBI LAST protocol); fluid overload and pulmonary oedema from litres of infiltrate plus reabsorbed fluid and IV crystalloid; hypothermia from cold infiltration fluid (always warm it); methaemoglobinaemia with prilocaine-containing solutions; and adrenaline effects (tachycardia, hypertension, arrhythmia)</li>
-                    <li><strong className="text-foreground">Monitoring</strong>: keep the patient monitored for <strong>at least 12 hours, and beyond 12 hours where large doses were used</strong> — overnight observation with cardiorespiratory monitoring is appropriate after high-dose or large-volume tumescence rather than same-day discharge. Record the total lidocaine dose in mg/kg on the anaesthetic chart, keep a strict fluid balance including the infiltrate volume, and ensure lipid emulsion is immediately available</li>
+                    <li><strong className="text-foreground">Monitoring</strong>: individualise postoperative observation according to dose, procedure, co-anaesthetics and local policy; consider prolonged cardiorespiratory monitoring after high-dose or large-volume infiltration, because peak plasma levels may occur late. Record the total lidocaine dose in mg/kg on the anaesthetic chart, keep a strict fluid balance including the infiltrate volume, and ensure lipid emulsion is immediately available</li>
                   </ul>
                 </div>
 
@@ -440,7 +440,7 @@ const BurnsPlasticsTopic = () => {
             <ExamSection exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
               <CollapsibleSubsection title="Free Flap Surgery — Planning, Harvest and Transfer">
                 <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  Unlike a pedicled flap, a free flap is detached with its feeding artery and draining vein, transferred to a distant defect and revascularised by microvascular anastomosis. Reconstruction may follow cancer resection, trauma or burn debridement. Match the tissue required to the recipient vessels, anticipated radiation, donor function and patient preferences; the largest flap is not necessarily the best flap<InlineRef topicId="burns-plastics" refLabel="BJA Educ Free Flap 2021" /><InlineRef topicId="burns-plastics" refLabel="Head Neck Donor Sites 2023" />.
+                  Unlike a pedicled flap, a free flap is detached with its feeding artery and draining vein, transferred to a distant defect and revascularised by microvascular anastomosis. Reconstruction may follow cancer resection, trauma or burn debridement. Match the tissue required to the recipient vessels, anticipated radiation, donor function and patient preferences; the largest flap is not necessarily the best flap<InlineRef topicId="burns-plastics" refLabel="Free Flap Review 2022" /><InlineRef topicId="burns-plastics" refLabel="Head Neck Donor Sites 2023" />.
                 </p>
                 <h3 className="font-semibold text-foreground mb-2">Operative stages and anaesthetic priorities</h3>
                 <ol className="list-decimal pl-5 space-y-2 text-sm text-muted-foreground mb-5">
@@ -448,7 +448,7 @@ const BurnsPlasticsTopic = () => {
                   <li><strong className="text-foreground">Resection and harvest:</strong> teams may work simultaneously; record donor limb and preserve its inflow/outflow. Maintain normothermia and oxygenation; replace actual losses while avoiding both hypovolaemia and fluid overload. Reassess access and pressure points when arms or legs are moved.</li>
                   <li><strong className="text-foreground">Pedicle division and transfer:</strong> the flap has a period of ischaemia after division. Communicate the clamp time, prepare the recipient bed and coordinate hand-off; do not delay revascularisation for a non-essential task. Bone and muscle-bearing flaps are less tolerant of prolonged ischaemia than skin-only flaps.</li>
                   <li><strong className="text-foreground">Anastomosis and inset:</strong> connect artery and vein, confirm flow and inspect for kinking, tension, compression or haematoma. Maintain adequate perfusion pressure; if hypotensive, evaluate bleeding and fluid responsiveness, then use a titrated vasopressor rather than giving repeated unneeded fluid boluses.</li>
-                  <li><strong className="text-foreground">Closure and handover:</strong> protect the pedicle from dressings or position change, document flap baseline colour, refill and Doppler site, and agree a monitoring and urgent re-exploration plan. Arrange analgesia for <em>both</em> donor and recipient sites and a postoperative airway plan for head-and-neck cases<InlineRef topicId="burns-plastics" refLabel="BJA Educ Free Flap 2021" />.</li>
+                  <li><strong className="text-foreground">Closure and handover:</strong> protect the pedicle from dressings or position change, document flap baseline colour, refill and Doppler site, and agree a monitoring and urgent re-exploration plan. Arrange analgesia for <em>both</em> donor and recipient sites and a postoperative airway plan for head-and-neck cases<InlineRef topicId="burns-plastics" refLabel="Free Flap Review 2022" />.</li>
                 </ol>
                 <h3 className="font-semibold text-foreground mb-2">Choosing a donor flap</h3>
                 <div className="overflow-x-auto mb-4">
@@ -472,7 +472,7 @@ const BurnsPlasticsTopic = () => {
                 <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground mb-2">
                   <li><strong className="text-foreground">Before induction:</strong> confirm laterality, unilateral/bilateral flap plan, vessel and perforator mapping, anticipated axillary dissection, blood availability, postoperative bed and whether both teams need simultaneous access. Avoid IVs and cuffs on operative/at-risk arms when the team requests it.</li>
                   <li><strong className="text-foreground">During surgery:</strong> keep the chest and abdomen accessible, protect both arms and maintain warmth; communicate when harvest, pedicle division and anastomosis start. Replace blood loss without flooding the flap, and treat persistent hypotension rather than accepting poor perfusion.</li>
-                  <li><strong className="text-foreground">Recovery:</strong> multimodal opioid-sparing analgesia for chest and abdominal wounds (e.g. pectoral/serratus and abdominal wall blocks where suitable), PONV prevention, VTE prophylaxis balanced against bleeding, early feeding and mobilisation, and a documented flap observation/re-exploration pathway<InlineRef topicId="burns-plastics" refLabel="ERAS Breast 2017" /><InlineRef topicId="burns-plastics" refLabel="DIEP ERAS 2024" />.</li>
+                  <li><strong className="text-foreground">Recovery:</strong> multimodal opioid-sparing analgesia for chest and abdominal wounds (e.g. pectoral/serratus and abdominal wall blocks where suitable), PONV prevention, VTE prophylaxis balanced against bleeding, early feeding and mobilisation, and a documented flap observation/re-exploration pathway<InlineRef topicId="burns-plastics" refLabel="ERAS Breast 2017" /><InlineRef topicId="burns-plastics" refLabel="DIEP ERAS 2025" />.</li>
                 </ul>
               </CollapsibleSubsection>
             </ExamSection>
@@ -481,9 +481,9 @@ const BurnsPlasticsTopic = () => {
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
-              "Parkland: 4 mL/kg/%TBSA Hartmann's over 24 h, half in first 8 h from time of burn — titrate to urine output 0.5 mL/kg/h.",
-              "Suspect airway burn with facial burns, singed nasal hairs, soot, stridor or hoarseness — intubate early; oedema rises rapidly.",
-              "Suxamethonium safe in first 24 h, dangerous after 24–48 h to ~12 months due to upregulated extrajunctional ACh receptors → hyperkalaemia.",
+              "Parkland is the traditional 4 mL/kg/%TBSA starting estimate; ABA 2024 starts at 2 mL/kg/%TBSA for adults ≥20% TBSA. Titrate to physiology and local protocol.",
+              "Facial burns or singed hairs alone do not mandate intubation; reassess urgently and intubate for progressive oedema, stridor or respiratory failure.",
+              "After the first 24 h of a major burn, avoid suxamethonium until wounds heal and receptor changes resolve; hyperkalaemic arrest can occur months later.",
               "Carbon monoxide poisoning: pulse oximetry reads falsely normal — use co-oximetry; treat with 100% O₂ ± hyperbaric.",
               "Cyanide poisoning in house fires: treat with hydroxocobalamin; lactate >10 mmol/L raises suspicion.",
             ]}
@@ -532,12 +532,12 @@ const BurnsPlasticsTopic = () => {
         {
           title: "Parkland fluid prescription",
           scenario:
-            "An 80 kg adult sustains 30% TBSA partial-thickness burns at 10:00. He arrives in your ED at 12:00. Calculate the first 24 h fluid requirement and the rate for the next 6 hours.",
+            "An 80 kg adult sustains 30% TBSA partial-thickness burns at 10:00 and arrives at 12:00. Calculate the traditional Parkland starting estimate, assuming no fluid has yet been given. How should this be adapted clinically?",
           working: (
             <div className="space-y-2">
               <p className="font-semibold text-foreground">Step-by-step reasoning</p>
               <ol className="list-decimal list-inside space-y-1">
-                <li>Parkland formula: <strong>4 mL × 80 kg × 30% = 9,600 mL</strong> Hartmann's over 24 h from time of burn (10:00).</li>
+                <li>Traditional Parkland: <strong>4 mL × 80 kg × 30% = 9,600 mL</strong> Hartmann's starting estimate over 24 h from time of burn (10:00). ABA 2024 recommends a lower 2 mL/kg/%TBSA starting estimate for adults with ≥20% TBSA burns.</li>
                 <li>First half (4,800 mL) over 8 h from 10:00 — i.e. by 18:00. Two hours have already elapsed (10:00→12:00), so 4,800 mL must run over the remaining 6 h = <strong>800 mL/h</strong>.</li>
                 <li>Second half (4,800 mL) over 16 h (18:00 → 10:00 next day) = <strong>300 mL/h</strong>.</li>
                 <li>Titrate to urine output 0.5–1 mL/kg/h (40–80 mL/h). If urine output is inadequate, increase rate by 20–30%; if excessive, reduce similarly.</li>
@@ -554,8 +554,8 @@ const BurnsPlasticsTopic = () => {
             </div>
           ),
           answer:
-            "9.6 L Hartmann's over the first 24 h from time of burn. From 12:00, run at 800 mL/h until 18:00, then 300 mL/h until 10:00 the next day, titrating to urine output.",
-          cites: ["BBA EMSB"],
+            "Traditional Parkland calculation: 9.6 L Hartmann's in 24 h from injury; at 12:00, the theoretical rates are 800 mL/h to 18:00 then 300 mL/h to 10:00 next day, assuming no fluid has yet been given. In practice subtract fluid already delivered, follow local burns guidance and titrate to physiology; ABA 2024 suggests a lower initial estimate for adults ≥20% TBSA.",
+          cites: ["BBA EMSB", "ABA Fluids 2024"],
         },
         {
           title: "Suxamethonium safety after a major burn",
@@ -565,7 +565,7 @@ const BurnsPlasticsTopic = () => {
             <div className="space-y-2">
               <p className="font-semibold text-foreground">Step-by-step reasoning</p>
               <ol className="list-decimal list-inside space-y-1">
-                <li><strong>No — suxamethonium is contraindicated.</strong> Burn injury upregulates extra-junctional (immature) nicotinic acetylcholine receptors throughout skeletal muscle<InlineRef topicId="burns-plastics" refLabel="BJA Educ 2019" />.</li>
+                <li><strong>No — suxamethonium is contraindicated.</strong> Burn injury upregulates extra-junctional (immature) nicotinic acetylcholine receptors throughout skeletal muscle<InlineRef topicId="burns-plastics" refLabel="BJA Educ Burns 2022" />.</li>
                 <li>These receptors peak from ~24 h post-burn and persist until full re-epithelialisation — often 6–12 months, sometimes up to 2 years.</li>
                 <li>Depolarisation by suxamethonium activates these widespread receptors, causing massive K⁺ efflux → acute hyperkalaemia and potentially fatal cardiac arrest.</li>
                 <li><strong>Alternative:</strong> Use rocuronium for RSI. Burns patients often show resistance to non-depolarising NMBAs — use rocuronium 1.0–1.2 mg/kg. Sugammadex should be available for reversal if needed.</li>
@@ -583,7 +583,7 @@ const BurnsPlasticsTopic = () => {
           ),
           answer:
             "No. Suxamethonium is contraindicated from 24 h to ~2 years post-major burn. Use high-dose rocuronium for RSI and reverse with sugammadex.",
-          cites: ["NICE NG12"],
+          cites: ["BJA Educ Burns 2022"],
         },
       ]}
     />
