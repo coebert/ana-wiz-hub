@@ -230,7 +230,7 @@ const BurnsPlasticsTopic = () => {
                     <li>First half over 8 h <em>from time of burn</em> (not from hospital arrival)</li>
                     <li>Second half over the remaining 16 h</li>
                     <li>Titrate to urine output: 0.5–1 mL/kg/h adults, 1–2 mL/kg/h children</li>
-                    <li>For adults with ≥20% TBSA burns, ABA 2024 recommends starting at 2 mL/kg/%TBSA; albumin can be considered, particularly with larger burns. Follow local burns-centre protocol and titrate to response.</li>
+                     <li>Albumin can be considered, particularly with larger burns, under specialist guidance. Follow local burns-centre protocol and titrate to response.</li>
                     <li>Beware <strong className="text-foreground">"fluid creep"</strong> — excessive resuscitation causes abdominal and limb compartment syndrome</li>
                   </ul>
                 </div>
@@ -238,7 +238,7 @@ const BurnsPlasticsTopic = () => {
                   {[
                     { label: "Adult threshold", value: ">15% TBSA partial- or full-thickness burns require formal IV fluid resuscitation" },
                     { label: "Paediatric threshold", value: ">10% TBSA; use Parkland with added maintenance fluid (Dextrose-Saline or Hartmann's with glucose)" },
-                    { label: "Endpoints", value: "Urine output 0.5–1 mL/kg/h, HR <120, MAP >65 mmHg, warm peripheries, clear sensorium" },
+                     { label: "Endpoints", value: "Monitor urine output (often 0.5–1 mL/kg/h in adults), perfusion, haemodynamics and evolving injury; interpret targets in clinical context" },
                     { label: "Fluid creep", value: "Excessive fluid can cause abdominal/limb compartment syndrome and pulmonary oedema; reassess often and adjust to physiological endpoints." },
                   ].map((item) => (
                     <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
@@ -250,7 +250,7 @@ const BurnsPlasticsTopic = () => {
                 <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
                   <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
                   <p className="text-xs text-muted-foreground">
-                    The Parkland formula gives a starting volume, but the endpoint is physiological. A common exam scenario: a patient arrives 2 hours after burn with inadequate fluids — calculate the remaining volume to be delivered in the shortened time window.
+                     The Parkland formula gives a starting estimate, not a mandate to catch up missed volumes rapidly. Account for fluids already given and titrate to physiology with the burns team.
                   </p>
                 </div>
               </CollapsibleSubsection>
@@ -261,7 +261,7 @@ const BurnsPlasticsTopic = () => {
             <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
               <CollapsibleSubsection title="Airway Burns & Inhalational Injury">
                 <p className="text-muted-foreground leading-relaxed mb-3">
-                  Inhalational injury triples mortality in burn patients. Direct thermal injury is usually supraglottic (the larynx is an effective heat exchanger). Chemical injury from smoke and toxin inhalation affects the lower airways and alveoli.
+                     Inhalational injury increases mortality in burn patients. Direct thermal injury is usually supraglottic; chemical injury from smoke and toxin inhalation affects the lower airways and alveoli.
                 </p>
                 <div className="bg-card border border-border rounded-lg p-4 mb-3">
                   <h3 className="font-semibold text-foreground mb-2">Indications for Early Intubation</h3>
@@ -537,10 +537,10 @@ const BurnsPlasticsTopic = () => {
             <div className="space-y-2">
               <p className="font-semibold text-foreground">Step-by-step reasoning</p>
               <ol className="list-decimal list-inside space-y-1">
-                <li>Traditional Parkland: <strong>4 mL × 80 kg × 30% = 9,600 mL</strong> Hartmann's starting estimate over 24 h from time of burn (10:00). ABA 2024 recommends a lower 2 mL/kg/%TBSA starting estimate for adults with ≥20% TBSA burns.</li>
-                <li>First half (4,800 mL) over 8 h from 10:00 — i.e. by 18:00. Two hours have already elapsed (10:00→12:00), so 4,800 mL must run over the remaining 6 h = <strong>800 mL/h</strong>.</li>
-                <li>Second half (4,800 mL) over 16 h (18:00 → 10:00 next day) = <strong>300 mL/h</strong>.</li>
-                <li>Titrate to urine output 0.5–1 mL/kg/h (40–80 mL/h). If urine output is inadequate, increase rate by 20–30%; if excessive, reduce similarly.</li>
+                 <li>Traditional Parkland: <strong>4 mL × 80 kg × 30 = 9,600 mL</strong> Hartmann's starting estimate over 24 h from the burn (10:00). Enter the percentage as the number 30, not the decimal 0.30. ABA 2024 recommends a lower 2 mL/kg/%TBSA starting estimate for adults with ≥20% TBSA burns.</li>
+                 <li>The traditional formula allocates half (4,800 mL) to the first 8 h from 10:00. At 12:00, dividing that theoretical amount over the remaining 6 h yields 800 mL/h, <strong>not a rate to prescribe automatically</strong>.</li>
+                 <li>The remaining 4,800 mL over the next 16 h corresponds to a theoretical 300 mL/h, also subject to reassessment.</li>
+                 <li>Subtract fluid already administered and titrate to perfusion, haemodynamics and urine output (often 0.5–1 mL/kg/h in adults). Avoid automatic catch-up infusions for late presentation; seek burns-centre advice.</li>
                 <li>Beware "fluid creep" — excessive resuscitation causes abdominal compartment syndrome and limb compartment syndrome.</li>
               </ol>
               <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
@@ -554,7 +554,7 @@ const BurnsPlasticsTopic = () => {
             </div>
           ),
           answer:
-            "Traditional Parkland calculation: 9.6 L Hartmann's in 24 h from injury; at 12:00, the theoretical rates are 800 mL/h to 18:00 then 300 mL/h to 10:00 next day, assuming no fluid has yet been given. In practice subtract fluid already delivered, follow local burns guidance and titrate to physiology; ABA 2024 suggests a lower initial estimate for adults ≥20% TBSA.",
+             "Traditional Parkland calculation: 9.6 L Hartmann's in 24 h from injury (30 means 30% TBSA, not 0.30). Theoretical rates of 800 then 300 mL/h are not automatic prescriptions or a mandate to catch up missed fluids. Account for fluids delivered and clinical response, follow burns-centre guidance and titrate to physiology; ABA 2024 recommends a lower initial estimate for adults ≥20% TBSA.",
           cites: ["BBA EMSB", "ABA Fluids 2024"],
         },
         {
