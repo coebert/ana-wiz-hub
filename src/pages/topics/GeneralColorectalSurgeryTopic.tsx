@@ -157,6 +157,7 @@ const procedures = [
       ["Analgesia", "Thoracic epidural (T5–T8) or paravertebral catheters; ESP blocks as alternatives in minimally invasive surgery"],
       ["Conduit protection", "Maintain MAP and cardiac output; avoid both fluid overload and hypovolaemia; vasopressors acceptable when euvolaemic"],
       ["Specific issues", "Arrhythmias (AF ~20%), cardiac compression during transhiatal dissection, recurrent laryngeal nerve injury, chylothorax, pneumonia, ARDS, anastomotic leak/conduit necrosis"],
+      ["Nasogastric tube", "The NG tube is placed under direct vision by the surgeon, with its tip in the intrathoracic gastric conduit or jejunum. On the postoperative CXR the tube therefore crosses the chest in an unusual position and can mimic intrabronchial placement — do not assume it is in the lung or pull it back on the radiograph alone: this apparent misplacement is a well-recognised artefact of the conduit's position. Confirm with the surgical team and, if feeding via the tube is genuinely in doubt, check with contrast studies, pH testing or endoscopic/fluoroscopic confirmation before manipulation"],
       ["Post-op", "Planned critical care and early extubation/mobilisation where appropriate. Follow the local feeding pathway: jejunal feeding remains common, but selected patients can start oral liquids on postoperative day 0–1 without a demonstrated increase in leak. Escalate oxygen or ventilatory support when clinically required; discuss NIV/CPAP with the surgical team because evidence around a fresh anastomosis remains limited"],
     ],
     refs: ["ERAS Oesophagectomy 2019", "Oesophagectomy Feeding 2026", "Carney Oesophagectomy 2015", "CPET 2018"],
@@ -335,6 +336,7 @@ const GeneralColorectalSurgeryTopic = () => (
                 "Forgetting the calibration bougie in fundoplication — remove the NG and temperature probe and pass it gently.",
                 "Missing the positioning hazards of AP resection: lithotomy compartment syndrome, prone turn, presacral bleeding.",
                 "Omitting CPET, one-lung ventilation and conduit perfusion in an oesophagectomy answer.",
+                "Mistaking the post-oesophagectomy NG tube for a bronchial placement on CXR: the surgeon placed it under direct vision into the intrathoracic conduit, and its apparent 'lung' course is an artefact — check with the surgical team before removing or repositioning.",
               ]}
             />
           </section>
