@@ -24,6 +24,7 @@ const objectives = [
   "Manage hyperactive and hypoactive delirium with non-pharmacological measures first; recognise that haloperidol does not improve outcomes (MIND-USA, AID-ICU).",
   "Recognise, prevent and treat propofol infusion syndrome (PRIS).",
   "Apply daily Spontaneous Awakening (SAT) and Spontaneous Breathing (SBT) trials safely.",
+  "Describe the role and limitations of processed EEG for sedation titration and seizure detection in ICU.",
 ];
 
 const workedExamples: WorkedExample[] = [
@@ -110,6 +111,7 @@ const keyPoints = [
   { text: "Haloperidol does NOT treat or prevent ICU delirium (MIND-USA, AID-ICU)", cites: ["BJA Educ 2017"] },
   { text: "Avoid benzodiazepines for routine sedation — independent risk factor for delirium", cites: ["DAS-Delirium"] },
   { text: "Non-pharmacological measures (sleep hygiene, reorientation, mobilisation, family) are first-line for delirium", cites: ["BJA Educ 2019"] },
+  { text: "Processed EEG is an adjunct (not replacement) for sedation scoring — most useful during deep sedation or paralysis; continuous EEG detects non-convulsive seizures missed clinically in ~18% of monitored ICU patients", cites: ["SCCM PADIS 2018", "Claassen NCS 2004", "ACNS cEEG 2015"] },
 ];
 
 const IcuSedationDeliriumTopic = () => {
@@ -225,6 +227,70 @@ const IcuSedationDeliriumTopic = () => {
             <div className="mt-4">
               <ICUSedationComparisonDiagram />
             </div>
+          </div>
+
+          {/* Processed EEG monitoring */}
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Processed EEG Monitoring in ICU
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Processed EEG (pEEG — e.g. BIS, SedLine/PSI, Narcotrend) condenses raw frontal EEG into a
+              dimensionless index (roughly 0–100) using spectral and burst-suppression features. In ICU it
+              has two distinct roles: <strong className="text-foreground">titrating sedation depth</strong> and{" "}
+              <strong className="text-foreground">detecting cerebral abnormalities such as non-convulsive
+              seizures</strong>.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Sedation titration</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Clinical scales (RASS, SAS) remain first-line. The SCCM PADIS guideline suggests pEEG as an{" "}
+                  <em>adjunct</em> when clinical scoring is impossible — deep sedation targets, neuromuscular
+                  blockade, or unreliable examination
+                  <Cite topicId="icu-sedation-delirium" labels={["SCCM PADIS 2018"]} /> — but recommends
+                  against routine pEEG in non-comatose, non-paralysed patients. Indices correlate imperfectly
+                  with RASS: electromyographic artefact, frontal dominance of the montage and
+                  agent-specific EEG signatures (dexmedetomidine slow-delta spindles vs propofol alpha)
+                  all degrade accuracy
+                  <Cite topicId="icu-sedation-delirium" labels={["SPICE III 2019"]} />.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Seizure &amp; abnormality detection</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Most ICU seizures are non-convulsive and invisible clinically. Continuous EEG detects
+                  electrographic seizures in ~18% of monitored critically ill patients, 92% entirely
+                  non-convulsive
+                  <Cite topicId="icu-sedation-delirium" labels={["Claassen NCS 2004"]} />. The CYCLE trial
+                  showed continuous EEG detects more seizures and changes antiseizure treatment than repeated
+                  routine EEG, without a proven mortality benefit
+                  <Cite topicId="icu-sedation-delirium" labels={["CYCLE Trial 2017"]} />. Raw-EEG review (or
+                  quantitative displays such as density spectral array) is needed — a pEEG index alone cannot
+                  exclude seizures.
+                </p>
+              </div>
+            </div>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>
+                <strong className="text-foreground">Indications for continuous EEG</strong> (ACNS consensus):
+                persistent altered consciousness after convulsive status, acute brain injury (TBI, SAH,
+                cardiac arrest), suspected non-convulsive status, and paralysed patients at seizure risk
+                <Cite topicId="icu-sedation-delirium" labels={["ACNS cEEG 2015"]} />.
+              </li>
+              <li>
+                <strong className="text-foreground">Practical use for sedation:</strong> track the trend, not
+                a single number; a falling index with rising burst-suppression ratio signals excessive depth
+                and prompts dose reduction — useful during deep sedation for ICP crises, status asthmaticus
+                or ECMO.
+              </li>
+              <li>
+                <strong className="text-foreground">Limitations:</strong> no validated outcome benefit for
+                routine pEEG-guided sedation; indices do not distinguish sedative agents, miss focal/posterior
+                seizures on frontal montages, and are confounded by hypothermia, metabolic encephalopathy and
+                EMG artefact.
+              </li>
+            </ul>
           </div>
 
           {/* Delirium */}
