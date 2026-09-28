@@ -17,3 +17,4 @@
 - [x] Add sourced evidence on epidural, intrathecal opioid and rectus sheath catheter analgesia to general/colorectal surgery topic
 - [x] Re-audit and correct the general/colorectal surgery topic against current primary guidance
 - [x] Audit and correct the burns and plastics topic against clinical sources
+- [x] Audit ICU Sedation & Delirium page against ICU guidelines
