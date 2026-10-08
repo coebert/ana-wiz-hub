@@ -1,3 +1,4 @@
+import { PaediatricAnaesthesiaAtlas } from "@/components/topic/PaediatricAnaesthesiaAtlas";
 import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { ExamSection } from "@/components/exam/ExamSection";
@@ -157,6 +158,7 @@ const PaediatricAnaesthesiaTopic = () => {
       coreConcepts={
         <>
           <TopicTableOfContents items={tocItems} />
+          <PaediatricAnaesthesiaAtlas />
 
           <ExamSection id="physiology" exams={[Exam.FINAL]} className="scroll-mt-24">
             <section className="space-y-6">
