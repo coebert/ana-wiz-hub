@@ -18,7 +18,10 @@ import {
 const tocItems = [
   { id: "introduction", label: "Introduction", group: "Overview" },
   { id: "rsi", label: "RSI in trauma", group: "Airway & Induction" },
+  { id: "spinal-immobilisation", label: "Spinal immobilisation", group: "Airway & Induction" },
   { id: "damage-control", label: "Damage control resuscitation", group: "Resuscitation" },
+  { id: "fluid-resuscitation", label: "Fluid resuscitation", group: "Resuscitation" },
+  { id: "haemorrhage-control", label: "Haemorrhage control", group: "Resuscitation" },
   { id: "mtp", label: "Massive transfusion protocol", group: "Resuscitation" },
   { id: "lethal-triad", label: "Lethal triad", group: "Resuscitation" },
   { id: "tbi", label: "Traumatic brain injury", group: "Special scenarios" },
@@ -71,11 +74,26 @@ const traumaFaqs: Array<[string, string]> = [
     "What is the role of TEG/ROTEM in massive transfusion?",
     "Thromboelastography (TEG) and rotational thromboelastometry (ROTEM) are point-of-care viscoelastic coagulation tests that assess clot formation, stability and lysis in real time. In massive transfusion they enable goal-directed therapy: a flat r-time / CT suggests give FFP; low alpha-angle / low fibrinogen amplitude suggests give cryoprecipitate or fibrinogen concentrate; low maximum amplitude suggests give platelets; rapid lysis suggests give TXA. Using TEG/ROTEM reduces unnecessary blood product administration, identifies fibrinolysis, and allows individualised component therapy rather than blind fixed-ratio resuscitation alone.",
   ],
+  [
+    "When is spinal immobilisation needed in trauma?",
+    "NICE NG41 recommends full spinal immobilisation for patients with suspected cervical spine injury and thoracic or lumbar spine immobilisation for those with suspected injury below the neck, based on mechanism, pain, neurology and distracting injury. Modern practice has moved away from routine triple immobilisation (rigid collar, blocks, tape) for everyone: hard collars cause pressure ulcers, raise intracranial pressure, worsen access for airway management and have never been shown to improve neurological outcome. Current UK practice favours selective immobilisation — a properly fitted collar for high-risk patients, manual in-line stabilisation during airway interventions, scoop stretchers rather than log rolls where possible, and early removal of the collar once the spine is cleared or the airway is secured. Penetrating trauma without neurological deficit does not require immobilisation.",
+  ],
+  [
+    "What fluid should be used for resuscitation in major trauma?",
+    "Blood and blood products, not crystalloid. NICE NG41 recommends blood products as the first-line resuscitation fluid in major trauma with active bleeding, and advises against boluses of crystalloid — large crystalloid volumes cause haemodilution, dilutional coagulopathy, hypothermia and acidosis, and worsen outcomes. If blood is not immediately available, small aliquots of crystalloid may be used as a bridge. Resuscitation targets are permissive hypotension (a palpable radial pulse or SBP ~80–90 mmHg) until haemorrhage is controlled, except in traumatic brain injury where cerebral perfusion must be maintained (SBP >110 mmHg). Once bleeding is controlled, restore normal perfusion.",
+  ],
+  [
+    "How is haemorrhage controlled in major trauma?",
+    "Follow a stepwise approach: (1) direct pressure on external bleeding; (2) a windlass tourniquet for catastrophic limb bleeding — applied early, tightened until bleeding stops, time recorded; (3) haemostatic or plain gauze wound packing for junctional wounds (groin, axilla, neck) where a tourniquet cannot go; (4) a pelvic binder applied at the greater trochanters for suspected unstable pelvic fracture — it reduces pelvic volume and tamponades venous bleeding; (5) rapid transfer to definitive care. In hospital, options include interventional radiology embolisation, damage control surgery (packing, shunting, clamping), and REBOA (resuscitative endovascular balloon occlusion of the aorta) for torso haemorrhage below the diaphragm — though the UK-REBOA trial found REBOA did not improve, and may worsen, mortality, so it remains a specialist, protocol-driven intervention rather than routine practice.",
+  ],
 ];
 
 const objectives = [
   "Perform an RSI tailored to the trauma patient (haemodynamic state, c-spine, full stomach)",
+  "Apply spinal immobilisation safely, including manual in-line stabilisation during intubation",
   "Apply the principles of damage-control resuscitation to a haemorrhaging patient",
+  "Choose appropriate fluid resuscitation — blood products first, minimal crystalloid",
+  "Control external and junctional haemorrhage (tourniquets, pelvic binders, REBOA) and escalate to damage control surgery",
   "Activate and run a major haemorrhage / massive transfusion protocol with appropriate ratios",
   "Recognise and treat the lethal triad of hypothermia, acidosis and coagulopathy",
   "Identify complications of massive transfusion (hyperkalaemia, hypocalcaemia, TRALI, TACO)",
@@ -270,6 +288,44 @@ const TraumaEmergencyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="spinal-immobilisation" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Trauma & Stabilisation"]}>
+            <CollapsibleSubsection title="Spinal Immobilisation" defaultOpen>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Around 2–5% of major trauma patients have a cervical spine injury, and missed or worsened cord injury is devastating —
+              but routine triple immobilisation of every trauma patient causes its own harm. NICE NG41 recommends full spinal
+              immobilisation when cervical spine injury is suspected (high-risk mechanism, neck pain or tenderness, neurological
+              deficit, reduced consciousness or significant distracting injury), with thoracic/lumbar immobilisation for suspected
+              injury below the neck.<InlineRef topicId="trauma-emergency" refLabel="NICE NG41" />
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Current practice</p>
+                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mt-1">
+                  <li><strong>Selective, not routine:</strong> immobilise on clinical suspicion, not mechanism alone. Penetrating trauma without neurology does not need immobilisation.</li>
+                  <li><strong>Manual in-line stabilisation (MILS)</strong> during all airway manoeuvres, with the front of the collar removed for laryngoscopy — a fitted collar limits mouth opening and worsens the view.</li>
+                  <li><strong>Scoop stretcher / vacuum mattress</strong> preferred over repeated log rolls; if a log roll is needed, use a coordinated team of four with the head controlled.</li>
+                  <li><strong>Head blocks and tape</strong> with a correctly sized collar if the patient is on a spinal board or scoop; remove the hard board as soon as possible.</li>
+                  <li>Document pre- and post-move neurology; keep the whole spine in neutral alignment, allowing for ankylosing spondylitis and pre-existing deformity.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Harms of over-immobilisation</p>
+                <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mt-1">
+                  <li>Rigid collars cause <strong>pressure ulcers</strong> (within hours), raise <strong>ICP</strong> by impeding venous drainage, and increase the incidence of <strong>difficult laryngoscopy</strong>.</li>
+                  <li>Spinal boards cause pain, pressure injury and respiratory compromise; they are a transport device, not a treatment surface.</li>
+                  <li>Immobilisation has never been shown in a trial to improve neurological outcome — the evidence base supports selective use and early clearance.</li>
+                  <li>Remove the collar as early as safely possible once the airway is secured and the spine is cleared clinically or radiologically.</li>
+                </ul>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              <strong className="text-foreground">Neurogenic shock:</strong> cord injury above T6 can cause hypotension with bradycardia and warm peripheries
+              (loss of sympathetic tone) — distinguish it from haemorrhagic shock, exclude bleeding first, and treat with vasopressors rather than
+              fluid loading. Maintain spinal perfusion pressure; avoid both hypotension and over-resuscitation.
+            </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="damage-control" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.5"]}>
             <CollapsibleSubsection title="Damage Control Resuscitation">
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -283,6 +339,62 @@ const TraumaEmergencyTopic = () => {
               <li><strong>Warm fluids/patient</strong>: active warming to prevent hypothermia</li>
               <li><strong>Point-of-care testing</strong>: TEG/ROTEM to guide targeted blood product therapy</li>
             </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="fluid-resuscitation" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Trauma & Stabilisation", "FFICM 2.5"]}>
+            <CollapsibleSubsection title="Fluid Resuscitation in Major Trauma">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              The resuscitation fluid of choice in bleeding trauma is <strong>blood</strong>. NICE NG41 recommends blood products first-line
+              for major trauma patients with active haemorrhage and advises <strong>against crystalloid boluses</strong>: large crystalloid
+              volumes dilute clotting factors and platelets, worsen hypothermia and acidosis, disrupt glycocalyx and increase tissue oedema
+              without meaningfully restoring oxygen delivery.<InlineRef topicId="trauma-emergency" refLabel="NICE NG41" />
+            </p>
+            <div className="space-y-3">
+              {[
+                { label: "Before blood is available", detail: "Small crystalloid aliquots (250 mL) only as a bridge, titrated to a palpable radial pulse. Do not chase a normal blood pressure with litres of clear fluid — this 'resuscitation injury' worsens the lethal triad." },
+                { label: "Permissive hypotension", detail: "Target SBP 80–90 mmHg (or palpable radial pulse) until surgical or radiological haemorrhage control. Restoring normal pressure in uncontrolled bleeding 'pops the clot' and increases blood loss. Absolute exception: TBI, where SBP >110 mmHg is needed to preserve cerebral perfusion." },
+                { label: "Balanced blood-product resuscitation", detail: "1:1:1 PRBC:FFP:platelets approximates whole blood. PROPPR showed 1:1:1 achieved better haemostasis and fewer deaths from exsanguination at 24 h than 1:1:2, though overall mortality was similar. Give via a warmed rapid infuser through wide-bore access (two 14–16 G peripherals or a trauma line)." },
+                { label: "Endpoints of resuscitation", detail: "After haemorrhage control, resuscitate to normal physiology: lactate or base deficit trending down, urine output >0.5 mL/kg/h, normothermia, iCa²⁺ >1.0 mmol/L, fibrinogen >1.5–2 g/L, platelets >50–100 × 10⁹/L. Lactate clearance and base deficit are better guides than blood pressure alone." },
+                { label: "Special situations", detail: "Elderly patients and those on anticoagulants decompensate earlier and need lower activation thresholds; reverse anticoagulation (PCC for warfarin/DOACs per local protocol). In isolated TBI avoid hypotension entirely — a single episode of SBP <90 mmHg doubles mortality." },
+              ].map(item => (
+                <div key={item.label} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{item.detail}</p>
+                </div>
+              ))}
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="haemorrhage-control" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Trauma & Stabilisation", "FFICM 2.5"]}>
+            <CollapsibleSubsection title="Haemorrhage Control">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Stopping the bleeding is the single most effective resuscitation intervention — every other measure buys time.
+              Control proceeds from simple external measures to endovascular and surgical techniques, often in parallel with
+              resuscitation rather than before it.<InlineRef topicId="trauma-emergency" refLabel="NICE NG41" />
+            </p>
+            <div className="space-y-3">
+              {[
+                { label: "External bleeding", detail: "Direct pressure first. For catastrophic limb haemorrhage apply a windlass tourniquet early, 5–7 cm above the wound (not over a joint), tighten until bleeding stops, and record the time — a correctly applied tourniquet is painful, which indicates effective arterial occlusion. A second tourniquet above the first if bleeding continues." },
+                { label: "Junctional bleeding", detail: "Groin, axilla and neck wounds cannot take a tourniquet: pack the wound tightly with haemostatic gauze (or plain gauze) and maintain hard direct pressure for at least 3 minutes. Junctional tourniquets exist but are rarely available." },
+                { label: "Pelvic haemorrhage", detail: "Apply a pelvic binder at the level of the greater trochanters (not the iliac crests) for suspected unstable pelvic fracture — it reduces pelvic volume and tamponades venous bleeding. Apply before moving the patient, avoid repeated spring testing, and do not remove it until definitive haemorrhage control (embolisation, preperitoneal packing or fixation) is available." },
+                { label: "REBOA", detail: "Resuscitative endovascular balloon occlusion of the aorta (zone 1 — descending thoracic aorta — for abdominal/pelvic bleeding; zone 3 — distal aorta — for isolated pelvic bleeding) can temporise non-compressible torso haemorrhage. The UK-REBOA trial found REBOA did not reduce, and may increase, mortality, so it remains a specialist intervention within a mature major trauma system, not a default." },
+                { label: "Damage control surgery", detail: "In the exsanguinating patient, surgery aims only to stop bleeding and contamination: packing, vascular shunts, bowel stapling, temporary abdominal closure. Definitive repair waits until the lethal triad is corrected in ICU. Interventional radiology (embolisation) is the alternative for pelvic and solid-organ bleeding in the patient stable enough to reach it." },
+              ].map(item => (
+                <div key={item.label} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{item.detail}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 rounded-md border border-destructive/30 bg-destructive/5 p-3">
+              <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Exam pitfall</p>
+              <p className="text-sm text-foreground">
+                Resuscitation without haemorrhage control fails: blood products, TXA and warming only buy time. In the viva, always state
+                <em> how and where the bleeding will be stopped</em> — tourniquet, binder, theatre, IR or REBOA — alongside the transfusion plan.
+              </p>
+            </div>
             </CollapsibleSubsection>
           </ExamSection>
 
