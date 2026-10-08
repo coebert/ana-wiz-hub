@@ -290,6 +290,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Davey & Diba Ch.7", citation: "Davey AJ, Diba A. Ward's Anaesthetic Equipment. 6th ed. Chapter 7: Automatic Ventilators." },
   ],
   "statistics-ebm": [
+    { label: "CEACCP 2007 Statistics II", citation: "McCluskey A, Lalkhen AG. Statistics II: central tendency and spread of data. Contin Educ Anaesth Crit Care Pain. 2007;7(4):127-130.", url: "https://doi.org/10.1093/bjaceaccp/mkm012" },
+    { label: "CEACCP 2007 Statistics IV", citation: "McCluskey A, Lalkhen AG. Statistics IV: interpreting the results of statistical tests. Contin Educ Anaesth Crit Care Pain. 2007;7(6):208-212.", url: "https://doi.org/10.1093/bjaceaccp/mkm024" },
     { label: "BJA Educ Measures of Association 2020", citation: "Sedgwick P. Measures of association: odds ratio, relative risk and risk reduction. BJA Education. 2020;20(1):2-8.", url: "https://bjanaesthesia.org/article/S2058-5349(20)30012-7/fulltext" },
     { label: "BJA Educ Diagnostic Tests 2017", citation: "Understanding diagnostic tests: sensitivity, specificity and predictive values. BJA Education. 2017;17(9):301-306.", url: "https://bjanaesthesia.org/article/S2058-5349(17)30188-7/fulltext" },
     { label: "BJA Educ Confidence Intervals 2019", citation: "How to interpret a confidence interval. BJA Education. 2019;19(12):386-392. A 95% CI is the range that, on repeated sampling, would contain the true population value 95% of the time.", url: "https://bjanaesthesia.org/article/S2058-5349(19)30252-8/fulltext" },
@@ -500,6 +502,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "ICM 2013 (Antibiotic PK in critical illness)", citation: "Roberts JA, Lipman J. Clinical implications of antibiotic pharmacokinetic principles in the critically ill. Intensive Care Med. 2013;39(12):2070-2082.", url: "https://doi.org/10.1007/s00134-013-3088-4", excerpt: "Endothelial dysfunction, capillary leak, altered major organ blood flow, deranged plasma protein concentrations, extremes of body habitus, the application of extracorporeal support modalities, and a higher prevalence of intermediate susceptibility, independently, and in combination, significantly confound successful antibiotic treatment in this setting." },
   ],
   "iv-anaesthetics": [
+    { label: "Anaesthesia 1993 Microbial Growth", citation: "Sosis MB, Braverman B. Growth of micro-organisms in solutions of intravenous anaesthetic agents. Anaesthesia. 1993;48(5):392-394.", url: "https://doi.org/10.1111/j.1365-2044.1993.tb06786.x" },
+    { label: "Eleveld 2018 Universal Propofol", citation: "Eleveld DJ, Colin P, Absalom AR, Struys MMRF. Pharmacokinetic-pharmacodynamic model for propofol for broad application in anaesthesia and sedation. Br J Anaesth. 2018;120(5):942-959.", url: "https://pubs.asahq.org/anesthesiology/article/128/6/1081/18318/A-Universal-Pharmacokinetic-Model-for-Propofol" },
     { label: "BJA IV Anaesthetic PK", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapters 2 and 5: pharmacokinetics and intravenous anaesthetic agents." },
     { label: "BJA Educ 2014", citation: "Sahinovic MM, Struys MMRF, Absalom AR. Clinical pharmacokinetics and pharmacodynamics of propofol. Clin Pharmacokinet. 2018;57(12):1539-1558.", url: "https://doi.org/10.1007/s40262-018-0672-3" },
     { label: "Peck & Hill Ch.5", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 5: Intravenous Anaesthetic Agents." },
