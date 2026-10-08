@@ -217,6 +217,22 @@ const ToxicologyTopic = () => {
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Opioid Overdose">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              <strong>Clinical features:</strong> the classic triad of CNS depression (coma), respiratory depression
+              (bradypnoea or apnoea) and miosis. Atypical features: seizures with tramadol or pethidine (norpethidine),
+              serotonin toxicity with tramadol, QT prolongation with methadone, and normal pupils with mixed overdoses.<InlineRef topicId="toxicology" refLabel="Boyer 2012" />
+            </p>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li><strong>Priorities:</strong> ABCDE — open the airway and support ventilation with bag-mask oxygen before and while giving naloxone.</li>
+              <li><strong>Naloxone:</strong> a competitive opioid-receptor antagonist. IV 400 µg, repeated or increased every 2–3 minutes; titrate to an adequate respiratory rate (about 10–12/min) and airway protection, <em>not</em> full consciousness, to avoid precipitating acute withdrawal. Smaller increments (e.g. 100 µg) in opioid-dependent patients. IM or intranasal routes for pre-hospital use or difficult access.<InlineRef topicId="toxicology" refLabel="NPIS Toxbase" /></li>
+              <li><strong>Infusion:</strong> naloxone&apos;s half-life (~60 min) is shorter than many opioids (methadone, long-acting morphine) so re-narcotisation is common. Start an infusion at about 60% of the initial reversal dose per hour, titrated to response, and observe for at least 6 hours after the last dose.</li>
+              <li><strong>Complications:</strong> non-cardiogenic pulmonary oedema (also after naloxone), aspiration, rhabdomyolysis and compartment syndrome after long immobility, hypoxic brain injury, and acute withdrawal.</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="High-Dose Insulin Euglycaemia Therapy (HIET)">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Mechanism</strong>: direct positive inotropy, shifts myocardial metabolism from free fatty acids to carbohydrate substrate, and improves myocardial and peripheral glucose uptake in the insulin-resistant, hypoinsulinaemic state of severe CCB/beta-blocker toxicity</li>

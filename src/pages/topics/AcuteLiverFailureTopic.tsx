@@ -196,7 +196,7 @@ const AcuteLiverFailureTopic = () => {
               ) },
 
               { system: "Metabolic", management: "Hypoglycaemia (impaired gluconeogenesis — 10% dextrose infusion). Metabolic acidosis (lactate). Hypokalaemia, hyponatraemia, hypophosphataemia." },
-              { system: "Renal", management: "Hepatorenal syndrome or ATN. Avoid nephrotoxins. CRRT preferred (haemodynamic stability, avoids ICP spikes from IHD)." },
+              { system: "Renal", management: "Hepatorenal syndrome or ATN. Avoid nephrotoxins. CRRT preferred (haemodynamic stability, avoids ICP spikes from IHD). Indications: conventional AKI criteria (anuria, refractory hyperkalaemia, acidosis or fluid overload); hyperammonaemia (ammonia >150–200 µmol/L) with cerebral oedema risk, as adjunctive clearance; severe lactic acidosis; and other electrolyte or acid–base disturbance. Regional citrate can be used with care — citrate clearance is reduced, so monitor for accumulation (total:ionised calcium ratio >2.5)." },
               { system: "Infection", management: "High infection risk (impaired innate immunity). Low threshold for cultures and empiric antibiotics. Fungal infection common — consider antifungals." },
             ].map((s) => (
               <div key={s.system} className="flex gap-3 p-3 rounded border border-border">
@@ -205,6 +205,7 @@ const AcuteLiverFailureTopic = () => {
               </div>
             ))}
           </div>
+          <p className="text-xs text-muted-foreground mt-2">Regional citrate anticoagulation for CRRT in liver failure is feasible with close monitoring of the total:ionised calcium ratio (accumulation if ≥2.5).<InlineRef topicId="acute-liver-failure" refLabel="Schultheiss 2012" /></p>
         </div>
 
         <div>
@@ -224,6 +225,13 @@ const AcuteLiverFailureTopic = () => {
           <p className="text-muted-foreground leading-relaxed mt-3">
             <strong>Role of lactate:</strong> post-resuscitation arterial lactate is an independent prognostic marker in ALF, correlating with the burden of SIRS and SOFA-defined organ dysfunction. The Bernal lactate modification adds arterial lactate {'>'} 3.5 mmol/L after early fluid resuscitation, or {'>'} 3.0 mmol/L at 12 hours, as an additional trigger for listing — this improves sensitivity for identifying patients who will need transplantation, though it has not clearly outperformed the original King's criteria in subsequent validation studies<InlineRef topicId="acute-liver-failure" refLabel="Bernal Lactate 2006" />.
           </p>
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Modern Prognostic Adjuncts in ALF</h3>
+          <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+            <li><strong>Arterial lactate:</strong> post-resuscitation lactate &gt;3.0–3.5 mmol/L reflects tissue hypoperfusion and impaired hepatic clearance and predicts death without transplant.<InlineRef topicId="acute-liver-failure" refLabel="Bernal Lactate 2006" /></li>
+            <li><strong>Dynamic prognosis:</strong> the trajectory over 24–72 h (INR, lactate, encephalopathy grade, organ support) is more informative than a single value; reassess repeatedly.</li>
+            <li><strong>Other models:</strong> MELD score; the French Clichy criteria (factor V &lt;20% if under 30 years, or &lt;30% if 30 or over, with encephalopathy) — factor V assays are not universally available.</li>
+            <li><strong>Organ failure scores:</strong> higher SOFA scores and the number of organ failures are associated with higher mortality.</li>
+          </ul>
         </div>
 
         <CollapsibleSubsection title="Paracetamol Overdose Management">

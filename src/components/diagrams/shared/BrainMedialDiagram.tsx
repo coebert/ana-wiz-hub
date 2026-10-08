@@ -275,7 +275,7 @@ export const BrainMedialPlate = () => {
               structure: "Medulla oblongata",
               stem: "A devastating intracerebral haemorrhage patient meets pre-conditions for brainstem death testing. The team plans pupillary, corneal, oculovestibular, gag and cough reflex testing followed by an apnoea test.",
               answer: "Brainstem death — confirms loss of medullary cardiorespiratory drive and cranial nerve reflexes.",
-              pearl: "Apnoea test: pre-oxygenate, target PaCO₂ rise ≥0.5 kPa above 6.0 kPa with no respiratory effort. Two doctors, two sets of tests.",
+              pearl: "Apnoea test: pre-oxygenate, start PaCO₂ ≥5.3 kPa, end PaCO₂ ≥8.0 kPa with a rise ≥2.7 kPa and pH <7.30, no respiratory effort for ≥5 min. Two doctors, two sets of tests.",
             },
             {
               structure: "Cerebellum / cerebellar tonsils",

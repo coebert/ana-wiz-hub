@@ -734,8 +734,8 @@ export const icuCaseBank: CaseBank = {
           prompt: "What is tested, and how is the apnoea test done?",
           answer: [
             "Test pupillary, corneal, vestibulo-ocular (caloric), gag and cough reflexes, and the motor response to painful stimulation in the cranial nerve distribution — all should be absent.",
-            "Pre-oxygenate, then disconnect from the ventilator with a source of oxygen, and demonstrate no respiratory effort while PaCO₂ rises above about 6.65 kPa with a rise of more than 0.5 kPa from a normal baseline, confirmed by arterial blood gas.",
-            "Time of death is recorded after the first set of tests confirms death; the second set is confirmatory, and imaging (e.g. CT angiography) is an adjunct only where clinical testing cannot be completed.",
+            "Pre-oxygenate, then disconnect from the ventilator with a source of oxygen, and demonstrate no respiratory effort for at least 5 minutes, from a starting PaCO₂ of at least 5.3 kPa to an end PaCO₂ ≥8.0 kPa with a rise ≥2.7 kPa and pH <7.30, confirmed by arterial blood gas (AoMRC 2025).",
+            "Time of death is ordinarily recorded at completion of the second set of tests (AoMRC 2025), and imaging (e.g. CT angiography) is an adjunct only where clinical testing cannot be completed.",
           ],
         },
         {

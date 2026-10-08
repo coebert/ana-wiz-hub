@@ -317,6 +317,17 @@ const IcuSedationDeliriumTopic = () => {
                   of sedation · <strong>D</strong>elirium monitoring · <strong>E</strong>arly mobility ·
                   <strong> F</strong>amily engagement. Higher adherence is associated with less delirium and lower mortality<InlineRef topicId="icu-sedation-delirium" refLabel="Pun ABCDEF 2019" />.
                 </p>
+                <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1 mt-2">
+                  <li><strong>A — Assess, prevent and manage pain:</strong> validated scores (CPOT or BPS if unable to self-report; NRS if able).</li>
+                  <li><strong>B — Both SAT and SBT:</strong> daily, paired, after a safety screen (no active seizures, alcohol withdrawal, escalating sedation for agitation, neuromuscular blockade, myocardial ischaemia or raised ICP for the SAT; adequate oxygenation on FiO₂ ≤0.5 and PEEP ≤8, no high-dose vasopressors for the SBT).</li>
+                  <li><strong>C — Choice of analgesia and sedation:</strong> analgesia first, light sedation targeting RASS 0 to −2, avoid benzodiazepines (propofol or dexmedetomidine preferred).</li>
+                  <li><strong>D — Delirium: assess, prevent and manage:</strong> screen with CAM-ICU or ICDSC at least once per shift and link positive screens to the non-drug measures below.</li>
+                  <li><strong>E — Early mobility and exercise:</strong> protocolised progression to reduce ICU-acquired weakness and shorten delirium.</li>
+                  <li><strong>F — Family engagement and empowerment:</strong> families help reorient, comfort and take part in rounds and care.</li>
+                </ul>
+                <p className="text-sm text-muted-foreground mt-2">
+                  <strong>Evidence:</strong> in the ICU Liberation Collaborative (Pun 2019, &gt;15,000 adults in 68 ICUs), complete bundle performance was associated with lower hospital death, less next-day mechanical ventilation, coma, delirium and physical restraint use, and fewer ICU readmissions — with a dose–response effect as more components were delivered. These are observational data.<InlineRef topicId="icu-sedation-delirium" refLabel="Pun ABCDEF 2019" />
+                </p>
               </div>
             </div>
             <CAMICUFlowchartDiagram />
@@ -406,6 +417,18 @@ const IcuSedationDeliriumTopic = () => {
               <li><strong>Mobilisation and physiotherapy:</strong> early, protocolised progression from passive range of movement to sitting out, standing and walking, coordinated with the daily sedation hold.</li>
               <li><strong>Cognitive stimulation:</strong> conversation, reading, music, television or radio chosen by the patient, and simple cognitive tasks once awake.</li>
               <li><strong>Family involvement:</strong> liberal, flexible visiting, family diaries, familiar objects and photographs, and family help with reorientation.</li>
+              <li><strong>Screen for causes daily (&lsquo;I WATCH DEATH&rsquo;-style checklist):</strong><InlineRef topicId="icu-sedation-delirium" refLabel="van den Boogaard 2019" />
+                <ul className="list-[circle] pl-5 mt-1 space-y-1">
+                  <li><em>Drugs:</em> review for deliriogenic drugs — benzodiazepines, opioids, anticholinergics, steroids.</li>
+                  <li><em>Electrolytes:</em> sodium, calcium, magnesium and phosphate; correct gradually.</li>
+                  <li><em>Lack of drugs:</em> withdrawal from alcohol, benzodiazepines, nicotine or opioids.</li>
+                  <li><em>Infection:</em> chest, lines, urine, abdomen and wounds.</li>
+                  <li><em>Reduced sensory input:</em> glasses and hearing aids in place.</li>
+                  <li><em>Intracranial:</em> stroke, haemorrhage, seizures (consider EEG for non-convulsive status).</li>
+                  <li><em>Urinary retention and constipation:</em> bladder scan, bowel chart and treatment.</li>
+                  <li><em>Myocardial and metabolic:</em> hypoxia, hypercapnia, hypo/hyperglycaemia, shock, and liver or renal failure.</li>
+                </ul>
+              </li>
               <li><strong>Physiological and iatrogenic triggers:</strong> treat pain first (analgesia-first sedation), correct hypoxia, hypercapnia, hypoglycaemia, sodium disturbance, sepsis, constipation and urinary retention; remove catheters, lines and restraints as early as possible; review the drug chart for anticholinergics and benzodiazepines.</li>
             </ul>
           </div>
