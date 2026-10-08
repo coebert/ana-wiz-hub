@@ -316,6 +316,17 @@ const StarlingForcesTopic = () => {
                 </p>
               </div>
               <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Cerebral circulation</p>
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                  The blood–brain barrier (tight junctions between endothelial cells, with astrocyte end-feet) is almost
+                  impermeable to protein and small ions, so its reflection coefficient is ≈ 1.0 for most solutes and
+                  fluid flux is negligible. Water movement is governed by <strong>total osmolality</strong> rather than
+                  oncotic pressure — hence hypo-osmolar fluids cause brain swelling and mannitol/hypertonic saline reduce it.
+                  When the barrier breaks down (trauma, tumour, inflammation) protein and fluid leak into the brain,
+                  causing <strong>vasogenic oedema</strong>.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Glomerular capillaries</p>
                 <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
                   Filtration is driven by an unusually high Pc (~55 mmHg) generated between afferent and efferent
@@ -323,7 +334,7 @@ const StarlingForcesTopic = () => {
                   (~25–30 mmHg, rising along the capillary as protein-free filtrate leaves). Net filtration pressure is
                   ~10 mmHg but Kf is an order of magnitude higher than in systemic capillaries, giving a GFR of
                   ~125 mL/min. <strong>Filtration fraction</strong> = GFR / renal plasma flow ≈ 0.2, i.e. one fifth of
-                  plasma entering the glomerulus is filtered.
+                  plasma entering the glomerulus is filtered. The blood leaving in the <strong>peritubular capillaries</strong> therefore has a low hydrostatic pressure and a high oncotic pressure, which favours reabsorption of tubular fluid.
                 </p>
               </div>
               <div className="p-4 rounded-lg border border-border">
