@@ -195,7 +195,7 @@ const EmergencySurgeryTopic = () => {
                   </tr>
                 </thead>
                 <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Pre-oxygenation</td><td>3 min tidal-volume or 8 vital-capacity breaths achieves ETO₂ &gt;90%; head-up 20–25° + HFNO/THRIVE prolongs apnoea time, especially in obese/obstetric patients (Patel &amp; Nouraei, <em>Anaesthesia</em> 2015).</td><td>Mandatory; aim ETO₂ ≥85–90%; routine apnoeic oxygenation in high-risk patients.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Pre-oxygenation</td><td>3 min tidal-volume or 8 vital-capacity breaths achieves ETO₂ &gt;90%; head-up 20–25° + HFNO/THRIVE prolongs apnoea time, especially in obese/obstetric patients (Patel &amp; Nouraei, <em>Anaesthesia</em> 2015). In RSI its key proven benefit is <strong>fewer desaturations</strong>: in a randomised trial, 0% of THRIVE patients vs 12.5% with facemask fell below 93%, with no difference in intubation or apnoea time <InlineRef topicId="emergency-surgery" refLabel="Lodenius 2018 (THRIVE RSI)" />.</td><td>Mandatory; aim ETO₂ ≥85–90%; routine apnoeic oxygenation in high-risk patients.</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Suxamethonium 1.5 mg/kg</td><td>Faster onset and superior intubating conditions vs rocuronium 0.6 mg/kg, but rocuronium 1.0–1.2 mg/kg is non-inferior (Cochrane 2015 — Tran et al.) and reversible by sugammadex 16 mg/kg.</td><td>Either acceptable; rocuronium-sugammadex preferred when sux contraindicated (hyperkalaemia, burns &gt;24 h, denervation, MH risk).</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">"No ventilation" rule</td><td>Gentle facemask ventilation at peak pressure &lt;15–20 cmH₂O does not distend the stomach and reduces desaturation, particularly in critically ill ICU patients (<strong>PreVent</strong>, Casey <em>NEJM</em> 2019).</td><td>Permitted in obese, ICU, paediatric and obstetric RSI (controlled gentle ventilation).</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Opioid co-induction</td><td>Sole-agent induction worsens haemodynamics; alfentanil/fentanyl/remifentanil obtund the pressor response and improve intubating conditions without measurable aspiration risk.</td><td>Routine inclusion of a short-acting opioid (alfentanil 10–20 µg/kg or fentanyl 1–3 µg/kg).</td></tr>
@@ -289,6 +289,15 @@ const EmergencySurgeryTopic = () => {
                 <li>Epidural for postoperative analgesia (if coagulation normal and patient stable); alternatively rectus sheath block or TAP blocks</li>
                 <li>Temperature management — active warming throughout</li>
               </ul>
+              <p className="text-sm text-muted-foreground mt-3"><strong>In more detail</strong> <InlineRef topicId="emergency-surgery" refLabel="Anaesthesia 2013 (Emergency conduct)" />:</p>
+              <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside">
+                <li><strong>Monitoring</strong>: use cardiac output monitoring (e.g. oesophageal Doppler or pulse-contour devices) in high-risk patients, as recommended in NELA standards, to guide goal-directed fluid and vasopressor therapy.</li>
+                <li><strong>Haemodynamic goals</strong>: MAP ≥ 65 mmHg (higher in chronic hypertension), falling lactate, urine output ≥ 0.5 mL/kg/h, and a stroke volume that no longer rises with fluid.</li>
+                <li><strong>Fluids</strong>: balanced crystalloid is first choice; give boluses (e.g. 250 mL) only while the patient is fluid-responsive. Both under-resuscitation (organ hypoperfusion) and overload (gut oedema, anastomotic and lung complications) cause harm.</li>
+                <li><strong>Vasopressors and inotropes</strong>: noradrenaline first-line for septic or vasodilatory shock; add an inotrope such as dobutamine if monitoring shows low cardiac output despite adequate filling.</li>
+                <li><strong>Ventilation</strong>: lung-protective settings — tidal volume 6–8 mL/kg predicted body weight, PEEP, and plateau pressure &lt; 30 cmH₂O.</li>
+                <li><strong>Analgesia</strong>: epidurals give excellent analgesia but are often unsuitable in sepsis, coagulopathy or haemodynamic instability; fascial plane blocks (TAP, rectus sheath, quadratus lumborum) or wound catheters are safer alternatives and can be placed at the end of surgery.</li>
+              </ul>
             </div>
             <div className="mt-4 bg-card rounded-xl border border-border p-4 md:p-6">
               <EmergencyLaparotomyBundleDiagram />
@@ -322,6 +331,18 @@ const EmergencySurgeryTopic = () => {
               <li>Invasive arterial and central venous access; serial arterial blood gas, lactate and ionised calcium.</li>
               <li>Continuous temperature monitoring with active warming; thromboelastography to guide component therapy.</li>
               <li>Cell salvage and rapid infuser devices for high-volume blood loss.</li>
+            </ul>
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Postoperative management and complications</h3>
+            <p className="text-muted-foreground leading-relaxed mb-2">
+              Most deaths after emergency surgery happen after theatre, so planning critical care and spotting complications early are part of the anaesthetic job <InlineRef topicId="emergency-surgery" refLabel="Anaesthesia 2013 (Emergency organisation)" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li><strong>Immediate care</strong>: structured handover to recovery or ICU (e.g. SBAR), continued invasive monitoring, and a clear plan for ventilation, vasopressors, fluids, analgesia and when to escalate. NELA standards advise critical care for patients with a predicted mortality ≥ 5%.</li>
+              <li><strong>Cardiovascular</strong>: persistent shock — distributive (ongoing sepsis), hypovolaemic (bleeding) or cardiogenic; new atrial fibrillation; myocardial injury (consider troponin surveillance in high-risk patients).</li>
+              <li><strong>Respiratory</strong>: atelectasis, pneumonia (including ventilator-associated), ARDS and difficult weaning; minimise with lung-protective ventilation, analgesia, early mobilisation and physiotherapy.</li>
+              <li><strong>Renal</strong>: acute kidney injury from hypoperfusion, sepsis, nephrotoxins and intra-abdominal hypertension — optimise perfusion, stop nephrotoxic drugs, monitor urine output and creatinine.</li>
+              <li><strong>Gastrointestinal</strong>: ileus, anastomotic leak (new sepsis around days 3–7), and intra-abdominal hypertension or abdominal compartment syndrome (measure bladder pressure).</li>
+              <li><strong>Haematological</strong>: ongoing coagulopathy after massive transfusion; start venous thromboembolism prophylaxis once bleeding risk allows, using mechanical methods until then.</li>
             </ul>
             <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Transfer and relook</h3>
             <p className="text-muted-foreground leading-relaxed">
