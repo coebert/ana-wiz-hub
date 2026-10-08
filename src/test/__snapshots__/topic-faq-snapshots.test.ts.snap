@@ -43,7 +43,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the FAQ count p
   "/clinical/resource-poor-anaesthesia": 3,
   "/clinical/tiva": 10,
   "/clinical/transfer-medicine": 3,
-  "/clinical/trauma-emergency": 10,
+  "/clinical/trauma-emergency": 13,
   "/clinical/urological-anaesthesia": 10,
   "/clinical/vascular-anaesthesia": 10,
   "/intensive-care/abdominal-compartment-syndrome": 3,
@@ -438,27 +438,27 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How is burn size estimated and why does it matter?",
     },
     {
-      "a": "The Parkland formula calculates fluid requirement for the first 24 hours post-burn: 4 mL × body weight (kg) × %TBSA of Hartmann's (Ringer's lactate). Half the total is given over the first 8 hours from the time of burn (not from hospital arrival), and the second half over the remaining 16 hours. For example, an 80 kg adult with 30% TBSA burns requires 4 × 80 × 30 = 9,600 mL total; 4,800 mL in the first 8 hours, then 4,800 mL over the next 16 hours. The formula provides a starting point — fluids must be titrated to physiological endpoints: urine output 0.5–1 mL/kg/h in adults (1–2 mL/kg/h in children), adequate peripheral perfusion, and mental status. Over-resuscitation ('fluid creep') causes abdominal compartment syndrome, limb compartment syndrome, and pulmonary oedema.",
+      "a": "Traditional Parkland estimates a starting volume for the first 24 hours post-burn: 4 mL × body weight (kg) × %TBSA of Hartmann's (Ringer's lactate). Half the total is given over the first 8 hours from the time of burn (not from hospital arrival), and the second half over the remaining 16 hours. For example, an 80 kg adult with 30% TBSA burns requires 4 × 80 × 30 = 9,600 mL total; 4,800 mL in the first 8 hours, then 4,800 mL over the next 16 hours. The 2024 ABA guidance for adults with burns ≥20% TBSA recommends starting at 2 mL/kg/%TBSA to reduce fluid creep; follow local protocols. All formulae are starting points — fluids must be titrated to physiological endpoints: urine output 0.5–1 mL/kg/h in adults (1–2 mL/kg/h in children), adequate peripheral perfusion, and mental status. Over-resuscitation ('fluid creep') causes abdominal compartment syndrome, limb compartment syndrome, and pulmonary oedema.",
       "q": "What is the Parkland formula and how is it applied?",
     },
     {
-      "a": "Burn injury upregulates extra-junctional (immature) nicotinic acetylcholine receptors throughout skeletal muscle, peaking at 1–3 weeks post-injury and persisting until full wound healing and re-epithelialisation (often 6–12 months, sometimes up to 2 years). Depolarisation by suxamethonium activates these widespread receptors, causing massive potassium efflux from muscle cells → acute hyperkalaemia and potentially fatal cardiac arrest. Suxamethonium is safe within the first 24 hours post-burn before receptor upregulation occurs. For rapid sequence induction after 24 hours, use rocuronium 1.0–1.2 mg/kg (dose may need to be increased due to NMBA resistance in burns) with sugammadex available for reversal.",
+      "a": "Major burns upregulate extra-junctional nicotinic acetylcholine receptors throughout skeletal muscle. After about 24 hours, suxamethonium can cause massive potassium efflux and fatal hyperkalaemic arrest; avoid it until wounds have healed and receptor changes resolve, which may take many months. The burn-related risk is not yet established in the first 24 hours, but other contraindications still apply. Use an alternative such as rocuronium for rapid sequence induction with neuromuscular monitoring and reversal when indicated.",
       "q": "Why is suxamethonium contraindicated after major burns?",
     },
     {
-      "a": "Early intubation is indicated in any burn patient with signs of airway or inhalational injury because airway oedema peaks at 12–24 hours and can transform a patent airway into a critical obstruction. Specific indications include: facial or neck burns; singed nasal hairs or eyebrows; soot in the mouth, nose, or sputum; hoarseness, stridor, or drooling; respiratory distress; reduced consciousness from smoke inhalation or CO poisoning; and burns >40% TBSA (large fluid resuscitation causes significant facial and airway oedema even without direct thermal injury). Use an uncut endotracheal tube to allow for facial swelling, and secure it carefully because ECG pads and tape may not adhere to burned skin. Cricoid pressure may be technically difficult due to facial oedema.",
+      "a": "Assess the airway repeatedly and intubate early for progressive swelling, stridor, respiratory failure, reduced consciousness or a high-risk airway before transfer. Large burns with substantial resuscitation raise concern for later oedema. Facial burns, singed hairs or soot warrant urgent assessment but are not, in isolation, automatic indications for intubation. Involve the burns/airway team and consider nasendoscopy when available. Secure the endotracheal tube carefully because tape may not adhere to burned skin.",
       "q": "What are the indications for early intubation in burn patients?",
     },
     {
-      "a": "Carbon monoxide (CO) binds to haemoglobin with 240× the affinity of oxygen, forming carboxyhaemoglobin (COHb) and shifting the oxyhaemoglobin dissociation curve to the left. This causes tissue hypoxia despite normal PaO₂. Crucially, standard pulse oximetry cannot distinguish oxyhaemoglobin from COHb and may read falsely normal — co-oximetry (multi-wavelength pulse oximetry or blood gas analysis) is mandatory. Clinical features include headache, dizziness, nausea, confusion, and cherry-red skin (rare). Severe poisoning causes seizures, coma, and myocardial ischaemia. Treatment is 100% oxygen via a tight-fitting non-rebreather mask, which reduces COHb half-life from ~250 minutes (on room air) to ~40–90 minutes. Hyperbaric oxygen is indicated for COHb >25%, neurological impairment, pregnancy (fetal haemoglobin has higher CO affinity), or evidence of myocardial ischaemia.",
+      "a": "Carbon monoxide (CO) binds strongly to haemoglobin, forming carboxyhaemoglobin (COHb) and shifting the oxyhaemoglobin dissociation curve left. Tissue hypoxia occurs despite normal PaO₂. Standard pulse oximetry may read falsely normal: measure COHb on a blood gas with co-oximetry. Symptoms range from headache and confusion to seizures, coma and myocardial ischaemia. Give 100% oxygen; discuss possible hyperbaric oxygen with a specialist for serious neurological or cardiac findings, pregnancy, severe acidosis or high COHb. A COHb number alone does not determine treatment, and benefit from hyperbaric oxygen remains debated.",
       "q": "How does carbon monoxide poisoning present and how is it treated?",
     },
     {
-      "a": "Cyanide (CN⁻) is released from the combustion of synthetic materials (plastics, wool, silk, polyurethane). It inhibits mitochondrial cytochrome c oxidase, preventing cellular oxygen utilisation and causing cellular hypoxia despite adequate oxygen delivery. This produces a high anion-gap metabolic acidosis with a markedly elevated lactate (>10 mmol/L is highly suggestive) and a normal or elevated mixed venous oxygen saturation (tissues cannot extract oxygen). Treatment is hydroxocobalamin (Cyanokit) 70 mg/kg IV up to 5 g — it binds cyanide to form cyanocobalamin (vitamin B12), which is renally excreted. Sodium thiosulfate is an alternative but slower-acting adjunct. High-flow oxygen and sodium bicarbonate for acidosis are supportive measures. Suspect cyanide poisoning in any patient from an enclosed-space fire with altered consciousness and profound lactic acidosis.",
+      "a": "Cyanide (CN⁻) can be released when nitrogen-containing materials burn, especially in enclosed-space fires. It inhibits mitochondrial cytochrome c oxidase, causing cellular hypoxia and marked lactic acidosis; lactate >10 mmol/L increases suspicion but is not diagnostic. Treat suspected severe smoke-inhalation cyanide poisoning promptly with 100% oxygen and hydroxocobalamin (Cyanokit): adults 5 g IV over 15 minutes, repeat once if indicated (maximum 10 g); children 70 mg/kg IV (maximum 5 g per dose), repeat once if indicated (maximum 140 mg/kg or 10 g total). Seek poison-centre advice; do not delay antidote treatment for confirmatory tests.",
       "q": "What is cyanide poisoning and how is it recognised in burn patients?",
     },
     {
-      "a": "Major burns (>20% TBSA) trigger a biphasic physiological response. Phase 1 — Acute/Ebb phase (0–48 hours): thermal injury causes direct capillary damage and release of inflammatory mediators (histamine, prostaglandins, cytokines), producing massive capillary leak and third-space fluid loss. Cardiac output falls due to myocardial depressant factors. Systemic vascular resistance rises initially. The patient is cold, oliguric, and hypotensive — this is hypovolaemic shock requiring aggressive fluid resuscitation. Phase 2 — Hypermetabolic/Flow phase (48 hours to months): cardiac output rises to 1.5–2× normal (hyperdynamic circulation), oxygen consumption increases dramatically, and protein catabolism accelerates. Core temperature is typically 38–39 °C (reset hypothalamus). Nutritional support is critical: caloric requirements may reach 1.5× basal metabolic rate.",
+      "a": "Major burns (>20% TBSA) trigger a biphasic response. In the acute ebb phase (roughly the first 48 hours), capillary leak and fluid loss reduce circulating volume and cardiac output; resuscitate to physiological endpoints rather than an arbitrary high volume. From approximately 2–5 days, a hyperdynamic, hypermetabolic phase develops with increased cardiac output, oxygen consumption and protein catabolism. Ongoing nutritional support is important.",
       "q": "What are the phases of burn pathophysiology?",
     },
     {
@@ -466,11 +466,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How do burns alter drug pharmacokinetics?",
     },
     {
-      "a": "Burns surgery involves repeated procedures (often weekly) over months. Key considerations include: (1) Blood loss — tangential excision causes approximately 1 mL blood loss per cm² excised; use topical adrenaline-soaked dressings (1:100,000–1:400,000), tourniquets for limb surgery, and tumescent techniques to reduce bleeding. (2) Hypothermia — burned skin cannot thermoregulate; maintain theatre temperature at 28–30 °C, use forced-air warming over unburned areas, warm all IV fluids, and consider radiant warmers. (3) Difficult monitoring — ECG electrodes may not adhere to burned skin; use needle electrodes, surgical staples, or limb leads on unburned areas. (4) Vascular access — may be extremely challenging; consider central venous access, intraosseous, or ultrasound-guided peripheral cannulation through unburned skin. (5) Pain management — opioid tolerance develops rapidly; use multimodal analgesia (ketamine, clonidine, gabapentinoids, regional techniques where feasible). (6) Positioning — prone and lateral positions for posterior grafting require meticulous pressure-area care.",
+      "a": "Burns surgery may require repeated procedures. Tangential excision can produce substantial blood loss; prepare blood products and use surgeon-selected haemostatic measures. Burned skin and extensive exposure increase hypothermia risk: warm the theatre and fluids and use appropriate active warming. Monitoring and vascular access can be difficult when unburned skin is limited. Plan multimodal analgesia, assess tolerance to prior analgesics and protect pressure areas during prolonged or prone surgery.",
       "q": "What are the anaesthetic considerations for burns debridement and grafting?",
     },
     {
-      "a": "Tumescent anaesthesia involves infiltration of large volumes of dilute local anaesthetic (typically lidocaine 0.05–0.1% with adrenaline 1:1,000,000) into subcutaneous fat. It is primarily used for liposuction and some dermatological procedures. The large tissue volume and vasoconstrictor effect of adrenaline slow systemic absorption dramatically, allowing much higher total lidocaine doses than standard guidelines — up to 35–55 mg/kg has been reported safely (compared to the standard maximum of 7 mg/kg with adrenaline). However, risks include: delayed local anaesthetic systemic toxicity (LAST) due to gradual absorption over 12–18 hours; fluid overload from the large volumes injected (up to several litres); hypothermia from cold infiltration fluid; and lidocaine toxicity if adrenaline effect wears off before absorption is complete. Postoperative monitoring for at least 12 hours is essential. Treatment of LAST follows standard lipid emulsion protocols.",
+      "a": "Tumescent anaesthesia uses dilute lidocaine with adrenaline in subcutaneous fat, particularly for liposuction. Absorption is delayed, but high doses are not universally safe: one small pharmacokinetic study estimated conservative maxima of 28 mg/kg without liposuction and 45 mg/kg with liposuction under local anaesthesia. These estimates cannot simply be applied to burn debridement or patients having general anaesthesia. Count all local anaesthetic sources and follow specialist/local dosing and observation protocols. Risks include delayed local anaesthetic systemic toxicity (LAST), fluid overload and hypothermia; have 20% lipid emulsion available.",
       "q": "What is tumescent anaesthesia and what are its risks?",
     },
   ],
@@ -574,7 +574,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/clinical/ent-anaesthesia": [
     {
-      "a": "If an airway fire occurs during laser surgery, the anaesthetist must simultaneously call out 'Airway fire', stop ventilation, disconnect the breathing circuit, and remove the endotracheal tube. The surgeon turns off the laser and removes any burning material. The field is flooded with saline. Once the fire is extinguished, the patient is ventilated with 100% oxygen via face mask, then re-intubated with a fresh laser-safe tube. Rigid bronchoscopy is performed to assess airway burns. The patient is admitted to ICU with humidified oxygen, dexamethasone for oedema, and a low threshold for tracheostomy if significant thermal injury is found. Prevention is paramount: keep FiO₂ ≤0.30 with air/oxygen mix, never use N₂O, use saline-soaked pledgets at the glottis, and ensure all staff have rehearsed the drill before starting.",
+      "a": "If an airway fire occurs during laser surgery, follow the Association of Anaesthetists sequence in order: announce 'Airway fire' (the surgeon stops lasing); stop the flow of all airway gases; disconnect the breathing system; remove the tracheal tube and any burning material; pour saline into the airway to extinguish any residual fire; then re-establish ventilation with air, adding oxygen only once the fire is confirmed out and only if needed to maintain saturation. The patient is then then re-intubated with a fresh laser-safe tube. Rigid bronchoscopy is performed to assess airway burns. The patient is admitted to ICU with humidified oxygen, dexamethasone for oedema, and a low threshold for tracheostomy if significant thermal injury is found. Prevention is paramount: keep FiO₂ ≤0.30 with air/oxygen mix, never use N₂O, use saline-soaked pledgets at the glottis, and ensure all staff have rehearsed the drill before starting.",
       "q": "What is the airway fire drill during laser laryngoscopy?",
     },
     {
@@ -862,13 +862,13 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the specific airway considerations for ophthalmic surgery?",
     },
     {
-      "a": "Vitreoretinal surgery involves the posterior segment and often requires controlled hypotension to reduce bleeding, particularly during scleral buckling or membrane peeling. The patient may be prone, requiring careful airway security and pressure-point protection. Intraocular gas (SF₆ or C₃F₈) may be injected — N₂O is absolutely contraindicated for 1–3 months postoperatively because it expands the gas bubble and raises IOP catastrophically. General anaesthesia is usually required because the surgery is long and delicate, though some macular procedures can be performed under sub-Tenon's block. Postoperative positioning (often face-down for several days) is critical for gas tamponade efficacy but does not affect the immediate anaesthetic plan. PONV is common after vitrectomy; use TIVA and multimodal antiemetics.",
+      "a": "Vitreoretinal surgery involves the posterior segment and often requires controlled hypotension to reduce bleeding, particularly during scleral buckling or membrane peeling. The patient may be prone, requiring careful airway security and pressure-point protection. Intraocular gas (SF₆ or C₃F₈) may be injected — N₂O is absolutely contraindicated for 1–3 months postoperatively because it expands the gas bubble and raises IOP catastrophically. General anaesthesia is often chosen because the surgery is long and delicate and needs a completely still patient, though many vitrectomies are now done under sub-Tenon's or peribulbar block. Under GA, aim for a deep, smooth plane with full immobility — remifentanil-based TIVA or volatile with remifentanil works well, and modest controlled hypotension (e.g. MAP 60–70 mmHg, or within 20–30% of baseline in hypertensive patients) reduces bleeding. N₂O is absolutely contraindicated while gas remains in the eye: about 2 weeks for air, 2–4 weeks for SF₆ and up to 8–12 weeks for C₃F₈; the patient should wear a warning wristband. Scleral buckling involves traction on the extraocular muscles and commonly triggers the oculocardiac reflex — warn the surgeon to release traction and give atropine or glycopyrronium if bradycardia persists. Buckling is more painful than vitrectomy, so plan regular analgesia and consider a block. Postoperative positioning (often face-down for several days) is critical for gas tamponade; avoid pressure on the eye during recovery. PONV is common after vitrectomy; use TIVA and multimodal antiemetics.",
       "q": "What are the anaesthetic considerations for vitreoretinal surgery?",
     },
   ],
   "/clinical/orthopaedic-anaesthesia": [
     {
-      "a": "Bone cement implantation syndrome is the cardiovascular collapse that can follow insertion of methyl methacrylate cement during arthroplasty. It is caused by fat/marrow embolism, monomer toxicity, histamine release, and complement activation. The AAGBI grading is: Grade 1 — SpO₂ <94% or a >20% fall in systolic blood pressure; Grade 2 — unexplained loss of consciousness; Grade 3 — cardiovascular collapse requiring CPR. Prevention includes ensuring euvolaemia, giving 100% oxygen before cementation, alerting the surgeon, lavaging the femoral canal, and using retrograde cementation. Treatment is supportive: oxygen, fluid bolus, and vasopressors (noradrenaline preferred for vasoplegia).",
+      "a": "Bone cement implantation syndrome is the cardiovascular collapse that can follow insertion of methyl methacrylate cement during arthroplasty. It is caused by fat/marrow embolism, monomer toxicity, histamine release, and complement activation. The AAGBI grading is: Grade 1 — SpO₂ <94% or a >20% fall in systolic blood pressure; Grade 2 — SpO₂ <88%, a >40% fall in systolic pressure or SBP <80 mmHg, or unexpected loss of consciousness; Grade 3 — cardiovascular collapse requiring CPR. Prevention includes ensuring euvolaemia, giving 100% oxygen before cementation, alerting the surgeon, lavaging the femoral canal, and using retrograde cementation. Treatment is supportive: oxygen, fluid bolus, and vasopressors (noradrenaline preferred for vasoplegia).",
       "q": "What is bone cement implantation syndrome (BCIS) and how is it graded?",
     },
     {
@@ -926,7 +926,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How do you manage laryngospasm in a child?",
     },
     {
-      "a": "Remi-prop (or remifol) is the colloquial name for a single-syringe mixture of propofol and remifentanil used for total intravenous anaesthesia in children. The mixture is named by its remifentanil concentration in micrograms per millilitre of 1% propofol: Remi 5 = 5 µg remifentanil per ml of 10 mg/ml propofol (the default workhorse mix for dental, MRI, day-case surgery). Preparation: reconstitute 1 mg remifentanil in 10 ml water (100 µg/ml), draw up 2.5 ml (250 µg) and add to 50 ml of 1% propofol → 5 µg/ml remifentanil. A maintenance rate of 10 ml/hr per 10 kg delivers ~10 mg/kg/hr propofol + ~0.08 µg/kg/min remifentanil. Advantages: one pump, one line, no differential disconnection risk, simpler in MRI bores. Cautions: loss of independent titration, unlicensed mixing requiring local SOP, boluses from the running syringe risk bradycardia and chest-wall rigidity.",
+      "a": "Remi-prop (or remifol) is the colloquial name for a single-syringe mixture of propofol and remifentanil used for total intravenous anaesthesia in children. The mixture is named by its remifentanil concentration in micrograms per millilitre of 1% propofol: Remi 5 = 5 µg remifentanil per ml of 10 mg/ml propofol (the default workhorse mix for dental, MRI, day-case surgery). Preparation: reconstitute 1 mg remifentanil in 10 ml water (100 µg/ml), draw up 2.5 ml (250 µg) and add to 47.5 ml of 1% propofol → 50 ml containing 5 µg/ml remifentanil (propofol now ~9.5 mg/ml). For Remi 10 add 5 ml to 45 ml propofol; for Remi 2 add 1 ml to 49 ml. The two drugs can separate and layer in a static syringe, so mix well before use and re-mix periodically. A maintenance rate of 10 ml/hr per 10 kg delivers ~10 mg/kg/hr propofol + ~0.08 µg/kg/min remifentanil. Advantages: one pump, one line, no differential disconnection risk, simpler in MRI bores. Cautions: loss of independent titration, unlicensed mixing requiring local SOP, boluses from the running syringe risk bradycardia and chest-wall rigidity.",
       "q": "What is remi-prop (remifol) and how is it used in paediatric TIVA?",
     },
     {
@@ -934,7 +934,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is propofol infusion syndrome (PRIS) and how do you prevent it?",
     },
     {
-      "a": "Pyloric stenosis presents with projectile vomiting leading to a hypochloraemic, hypokalaemic metabolic alkalosis. It is a MEDICAL emergency, not a surgical one — the alkalosis must be corrected before theatre because post-operative apnoea is common if HCO₃ >26 mmol/L. Resuscitate with 0.9% saline 10–20 ml/kg boluses to restore intravascular volume, then 0.45% saline + 5% dextrose with 20 mmol/L KCl at 1.5 × maintenance. Targets before surgery: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ ≤26, and adequate urine output. In theatre, use a modified RSI (full stomach) with ketamine or propofol and rocuronium, maintain normothermia, and monitor glucose closely.",
+      "a": "Pyloric stenosis presents with projectile vomiting leading to a hypochloraemic, hypokalaemic metabolic alkalosis. It is a MEDICAL emergency, not a surgical one — the alkalosis must be corrected before theatre because post-operative apnoea is common if HCO₃ remains ≥28 mmol/L. Resuscitate with 0.9% saline 10–20 ml/kg boluses to restore intravascular volume, then 0.45% saline + 5% dextrose with 20 mmol/L KCl at 1.5 × maintenance. Targets before surgery: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ <28, and adequate urine output. In theatre, use a modified RSI (full stomach) with ketamine or propofol and rocuronium, maintain normothermia, and monitor glucose closely.",
       "q": "How do you anaesthetise a child with pyloric stenosis?",
     },
     {
@@ -1076,7 +1076,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the difference between a spinal and an epidural?",
     },
     {
-      "a": "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 reported vertebral canal haematoma around 1:220,000 for spinal anaesthesia and 1:150,000 for epidural anaesthesia, and meningitis < 1:50,000. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
+      "a": "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 (≈700,000 central neuraxial blocks in the UK; Cook 2009) estimated permanent harm at 2.0–4.2 per 100,000 (≈1:50,000–1:24,000) and paraplegia or death at 0.7–1.8 per 100,000, with risk lower for spinals and obstetric blocks than for perioperative epidurals. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
       "q": "Does spinal anaesthesia hurt and is it safe?",
     },
     {
@@ -1084,15 +1084,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Why does spinal anaesthesia drop blood pressure?",
     },
     {
-      "a": "PDPH is a positional fronto-occipital headache caused by CSF leak through the dural puncture, with traction on meningeal vessels. Incidence: 1–2% after 25–27 G pencil-point spinal needles, 50–80% after accidental 16–18 G epidural Tuohy puncture. Worse on sitting/standing, better lying flat. Conservative management (analgesia, hydration, caffeine) for 24–48 h; epidural blood patch (15–20 ml autologous blood) is the gold standard with 70–90% success and is offered if symptoms persist beyond 24–48 h or are severe.",
+      "a": "PDPH is a positional fronto-occipital headache caused by CSF leak through the dural puncture, with traction on meningeal vessels. Incidence: around 1% or less after 25–27 G pencil-point spinal needles, and over half of patients after accidental 16–18 G epidural Tuohy puncture. Worse on sitting/standing, better lying flat. Supportive care with regular simple analgesia (evidence for caffeine and fluids is weak); the OAA 2023 consensus advises offering an epidural blood patch (up to ~20 ml autologous blood) when symptoms limit daily activity, ideally after 48 h. It relieves symptoms in most patients but complete resolution is less common and a repeat patch is sometimes needed.",
       "q": "What is post-dural puncture headache (PDPH) and how is it treated?",
     },
     {
-      "a": "Absolute: patient refusal, raised intracranial pressure, local infection at insertion site, severe coagulopathy or therapeutic anticoagulation outside the AAGBI/ESAIC interval, true allergy to local anaesthetic, fixed-output cardiac lesions (e.g. severe AS — relative in modern practice). Relative: bacteraemia/sepsis, pre-existing neurological disease (document baseline), spinal deformity, hypovolaemia.",
+      "a": "Absolute: patient refusal, raised intracranial pressure, local infection at insertion site, severe coagulopathy or therapeutic anticoagulation outside the AAGBI/ESAIC interval, true allergy to local anaesthetic. Relative: fixed-output cardiac lesions such as severe aortic stenosis (a carefully titrated technique may be used), bacteraemia/sepsis, pre-existing neurological disease (document baseline), spinal deformity, hypovolaemia.",
       "q": "When is spinal anaesthesia contraindicated?",
     },
     {
-      "a": "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% Intralipid 1.5 ml/kg bolus then 0.25 ml/kg/min infusion (AAGBI 2010 guideline), avoid lidocaine antiarrhythmics and vasopressin.",
+      "a": "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% Intralipid 1.5 ml/kg bolus then 0.25 ml/kg/min infusion (repeat bolus up to twice at 5-minute intervals, maximum cumulative 12 ml/kg — AAGBI LAST guideline). Treat arrhythmias without lidocaine; ASRA also advises avoiding vasopressin, calcium-channel and β-blockers and reducing adrenaline boluses to <1 µg/kg. Prolonged CPR may be needed.",
       "q": "How are local anaesthetics dosed safely to avoid toxicity (LAST)?",
     },
     {
@@ -1100,7 +1100,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How is block height tested at the bedside?",
     },
     {
-      "a": "Per AAGBI 2013 / ESAIC 2022: prophylactic LMWH 12 h, treatment-dose LMWH 24 h; unfractionated heparin (s/c prophylaxis) 4 h with normal APTT; warfarin INR < 1.4; clopidogrel 7 days; ticagrelor 5 days; rivaroxaban prophylactic 18 h, treatment 48 h; apixaban prophylactic 24–48 h; dabigatran 48–96 h (renal-function dependent). Aspirin and NSAIDs alone do not preclude neuraxial. The same intervals apply to catheter removal.",
+      "a": "Per AAGBI 2013 (ESAIC 2022 intervals are similar but sometimes longer, e.g. 7 days for ticagrelor and prasugrel): prophylactic LMWH 12 h, treatment-dose LMWH 24 h; unfractionated heparin (s/c prophylaxis) 4 h with normal APTT; warfarin INR < 1.4; clopidogrel 7 days; ticagrelor 5 days; rivaroxaban prophylactic 18 h, treatment 48 h; apixaban prophylactic 24–48 h; dabigatran 48–96 h (renal-function dependent). Aspirin and NSAIDs alone do not preclude neuraxial. The same intervals apply to catheter removal.",
       "q": "How long should anticoagulants be stopped before a neuraxial block?",
     },
   ],
@@ -1214,6 +1214,18 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
     {
       "a": "Thromboelastography (TEG) and rotational thromboelastometry (ROTEM) are point-of-care viscoelastic coagulation tests that assess clot formation, stability and lysis in real time. In massive transfusion they enable goal-directed therapy: a flat r-time / CT suggests give FFP; low alpha-angle / low fibrinogen amplitude suggests give cryoprecipitate or fibrinogen concentrate; low maximum amplitude suggests give platelets; rapid lysis suggests give TXA. Using TEG/ROTEM reduces unnecessary blood product administration, identifies fibrinolysis, and allows individualised component therapy rather than blind fixed-ratio resuscitation alone.",
       "q": "What is the role of TEG/ROTEM in massive transfusion?",
+    },
+    {
+      "a": "NICE NG41 (Spinal injury: assessment and initial management) uses the Canadian C-spine rule — high-risk factors (age ≥65, dangerous mechanism, limb paraesthesia), absence of low-risk features, or inability to rotate the neck 45° each way — to select patients for full in-line immobilisation, with a separate assessment for thoracic/lumbar injury. Modern practice has moved away from routine triple immobilisation (rigid collar, blocks, tape) for everyone: hard collars are associated with pressure ulcers, raised intracranial pressure and harder airway access, and no randomised trial shows immobilisation improves neurological outcome. Current UK practice favours selective immobilisation — a properly fitted collar for high-risk patients, manual in-line stabilisation during airway interventions, scoop stretchers rather than log rolls where possible, and early removal of the collar once the spine is cleared or the airway is secured. Observational data suggest isolated penetrating trauma without neurological deficit gains little from immobilisation — follow local protocol.",
+      "q": "When is spinal immobilisation needed in trauma?",
+    },
+    {
+      "a": "Blood and blood products, not crystalloid. NICE NG39 recommends blood products in a 1:1 plasma:red cell ratio for active bleeding and advises against crystalloid in hospital — large crystalloid volumes cause haemodilution, dilutional coagulopathy, hypothermia and acidosis, and worsen outcomes. Pre-hospital, if blood is unavailable, 250 mL crystalloid boluses titrated to a radial pulse may be used. Resuscitation targets are permissive hypotension (a palpable radial pulse or SBP ~80–90 mmHg) until haemorrhage is controlled, except in traumatic brain injury where cerebral perfusion must be maintained (Brain Trauma Foundation: SBP ≥100–110 mmHg depending on age). Once bleeding is controlled, restore normal perfusion.",
+      "q": "What fluid should be used for resuscitation in major trauma?",
+    },
+    {
+      "a": "Follow a stepwise approach: (1) direct pressure on external bleeding; (2) a windlass tourniquet for catastrophic limb bleeding — applied early, tightened until bleeding stops, time recorded; (3) haemostatic or plain gauze wound packing for junctional wounds (groin, axilla, neck) where a tourniquet cannot go; (4) a pelvic binder applied at the greater trochanters for suspected unstable pelvic fracture — it reduces pelvic volume and tamponades venous bleeding; (5) rapid transfer to definitive care. In hospital, options include interventional radiology embolisation, damage control surgery (packing, shunting, clamping), and REBOA (resuscitative endovascular balloon occlusion of the aorta) for torso haemorrhage below the diaphragm — though the UK-REBOA trial found higher 90-day mortality with ED REBOA (54% vs 42%; 86% probability of harm), so it is not supported outside research in UK practice.",
+      "q": "How is haemorrhage controlled in major trauma?",
     },
   ],
   "/clinical/urological-anaesthesia": [
@@ -1630,15 +1642,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/icu-sedation-delirium": [
     {
-      "a": "Assess/treat pain, Both spontaneous awakening and breathing trials, Choice of sedation, Delirium monitoring, Early mobility, Family engagement; bundle adherence reduces ICU mortality and delirium (Pun et al., Crit Care Med 2019).",
+      "a": "Assess/treat pain, Both spontaneous awakening and breathing trials, Choice of sedation, Delirium monitoring, Early mobility, Family engagement; higher bundle adherence was associated with lower mortality and less delirium in a large observational collaborative (Pun et al., Crit Care Med 2019).",
       "q": "What does the ABCDEF bundle entail?",
     },
     {
-      "a": "Dexmedetomidine reduces delirium duration vs benzodiazepines (MENDS, SEDCOM trials) and may reduce mortality in septic patients (DESIST); propofol is acceptable but avoid benzodiazepines except for alcohol withdrawal or seizures.",
+      "a": "PADIS suggests propofol or dexmedetomidine over benzodiazepines. Dexmedetomidine reduced delirium vs midazolam/lorazepam (SEDCOM, MENDS), but MENDS2 found no difference vs propofol in sepsis and SPICE III showed no mortality benefit. Reserve benzodiazepines for specific indications such as alcohol withdrawal or seizures.",
       "q": "Which sedation agent is preferred for delirium prevention?",
     },
     {
-      "a": "CAM-ICU or ICDSC at least once per shift; CAM-ICU requires RASS ≥−3 and assesses acute change, inattention (letters A test), altered consciousness and disorganised thinking.",
+      "a": "CAM-ICU or ICDSC at least once per shift; CAM-ICU requires RASS −3 or lighter and assesses acute change/fluctuation, inattention (letters test: >2 errors), altered level of consciousness (RASS other than 0) and disorganised thinking (>1 error).",
       "q": "How is ICU delirium screened?",
     },
   ],
@@ -1714,7 +1726,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/organ-donation": [
     {
-      "a": "Coma of known irreversible cause, exclusion of confounders (drugs, hypothermia <34 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, oculocephalic, oculovestibular, gag, cough) and apnoea test with PaCO₂ rise >0.5 kPa above 6.0 kPa with pH <7.40 (AoMRC 2008).",
+      "a": "Coma of known irreversible cause, exclusion of confounders (drugs, core temperature <36 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, oculocephalic, oculovestibular, gag, cough) and an apnoea test from a starting PaCO₂ ≥5.3 kPa to an end PaCO₂ ≥8.0 kPa, a rise ≥2.7 kPa and pH <7.30 after at least 5 minutes (AoMRC 2025).",
       "q": "What are the UK criteria for brainstem death testing?",
     },
     {
@@ -2652,11 +2664,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the equivalent dose conversion between common steroids?",
     },
     {
-      "a": "Required when HPA suppression is likely, including prednisolone ≥5 mg/day for more than four weeks. Minor surgery needs the usual dose only; if fasting causes a dose to be missed, give its equivalent parenterally. Moderate surgery: usual dose + hydrocortisone 50 mg IV at induction, then 25 mg IV 8-hourly for 24 h. Major surgery: usual dose + hydrocortisone 100 mg IV at induction, then 200 mg/24 h by infusion or 50 mg IV 6-hourly for 24–48 h and until stable enough to resume oral treatment.",
+      "a": "Required when HPA suppression is likely, including prednisolone ≥5 mg/day for more than four weeks. Minor surgery needs the usual oral dose only, with no additional parenteral supplementation; if fasting is brief and only one dose is missed (e.g. a minor procedure under local or regional anaesthesia), parenteral replacement is not required. Moderate surgery: usual dose + hydrocortisone 50 mg IV at induction, then 25 mg IV 8-hourly for 24 h. Major surgery: usual dose + hydrocortisone 100 mg IV at induction, then 200 mg/24 h by infusion or 50 mg IV 6-hourly for 24–48 h and until stable enough to resume oral treatment.",
       "q": "When is perioperative steroid cover required and what regimen is used?",
     },
     {
-      "a": "Cushingoid (truncal obesity, moon face, buffalo hump), osteoporosis (DXA + bisphosphonates if >5 mg pred for >3 months), hyperglycaemia/diabetes, hypertension, peptic ulcer (especially with NSAIDs), proximal myopathy, immunosuppression, skin thinning/bruising, cataracts, glaucoma, mood disturbance/psychosis, growth retardation in children, adrenal suppression. Withdrawal must be gradual after >3 weeks of treatment to allow HPA recovery.",
+      "a": "Cushingoid features (truncal obesity, moon face, buffalo hump — fat redistribution driven by hyperinsulinaemia and lipolysis in the limbs). Osteoporosis (DXA + bisphosphonates if >5 mg pred for >3 months) — reduced gut calcium absorption (antagonism of vitamin D action), increased renal calcium excretion, reduced osteoblast activity. Hyperglycaemia/diabetes — increased hepatic gluconeogenesis and peripheral insulin resistance. Hypertension — mineralocorticoid-mediated sodium and water retention plus enhanced vascular catecholamine sensitivity. Peptic ulcer (especially with NSAIDs) — reduced mucosal prostaglandin protection. Proximal myopathy — increased muscle protein catabolism and wasting. Immunosuppression — reduced cytokine production (NF-κB/AP-1 transrepression) and lymphocyte redistribution/apoptosis. Skin thinning/bruising — inhibition of fibroblast activity and collagen synthesis. Also cataracts, glaucoma, mood disturbance/psychosis, growth retardation in children and adrenal suppression. Withdrawal must be gradual after >4 weeks of treatment to allow HPA recovery.",
       "q": "What are the major side effects of long-term corticosteroids?",
     },
   ],
@@ -3278,7 +3290,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physics/vaporisers": [
     {
-      "a": "Fresh gas is split between a bypass channel and a vaporising chamber where it becomes fully saturated with volatile vapour. The splitting ratio is set by the dial. Temperature compensation is achieved by a bimetallic strip (or expansion bellows) that increases flow through the vaporising chamber as temperature falls, compensating for reduced saturated vapour pressure after evaporative cooling. Flow compensation accommodates flows 0.2–15 L/min.",
+      "a": "Fresh gas is split between a bypass channel and a vaporising chamber where it becomes fully saturated with volatile vapour. The splitting ratio is set by the dial. Temperature compensation is achieved by a bimetallic strip in the bypass (Tec series) or an expanding element at the chamber outlet (Dräger Vapor), which diverts more flow through the vaporising chamber as temperature falls, compensating for reduced saturated vapour pressure after evaporative cooling. Flow compensation accommodates flows 0.2–15 L/min.",
       "q": "How does a variable-bypass vaporiser maintain a constant output concentration?",
     },
     {
@@ -4289,7 +4301,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Parkland formula calculates fluid requirement for the first 24 hours post-burn: 4 mL × body weight (kg) × %TBSA of Hartmann's (Ringer's lactate). Half the total is given over the first 8 hours from the time of burn (not from hospital arrival), and the second half over the remaining 16 hours. For example, an 80 kg adult with 30% TBSA burns requires 4 × 80 × 30 = 9,600 mL total; 4,800 mL in the first 8 hours, then 4,800 mL over the next 16 hours. The formula provides a starting point — fluids must be titrated to physiological endpoints: urine output 0.5–1 mL/kg/h in adults (1–2 mL/kg/h in children), adequate peripheral perfusion, and mental status. Over-resuscitation ('fluid creep') causes abdominal compartment syndrome, limb compartment syndrome, and pulmonary oedema.",
+          "text": "Traditional Parkland estimates a starting volume for the first 24 hours post-burn: 4 mL × body weight (kg) × %TBSA of Hartmann's (Ringer's lactate). Half the total is given over the first 8 hours from the time of burn (not from hospital arrival), and the second half over the remaining 16 hours. For example, an 80 kg adult with 30% TBSA burns requires 4 × 80 × 30 = 9,600 mL total; 4,800 mL in the first 8 hours, then 4,800 mL over the next 16 hours. The 2024 ABA guidance for adults with burns ≥20% TBSA recommends starting at 2 mL/kg/%TBSA to reduce fluid creep; follow local protocols. All formulae are starting points — fluids must be titrated to physiological endpoints: urine output 0.5–1 mL/kg/h in adults (1–2 mL/kg/h in children), adequate peripheral perfusion, and mental status. Over-resuscitation ('fluid creep') causes abdominal compartment syndrome, limb compartment syndrome, and pulmonary oedema.",
         },
         "name": "What is the Parkland formula and how is it applied?",
       },
@@ -4297,7 +4309,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Burn injury upregulates extra-junctional (immature) nicotinic acetylcholine receptors throughout skeletal muscle, peaking at 1–3 weeks post-injury and persisting until full wound healing and re-epithelialisation (often 6–12 months, sometimes up to 2 years). Depolarisation by suxamethonium activates these widespread receptors, causing massive potassium efflux from muscle cells → acute hyperkalaemia and potentially fatal cardiac arrest. Suxamethonium is safe within the first 24 hours post-burn before receptor upregulation occurs. For rapid sequence induction after 24 hours, use rocuronium 1.0–1.2 mg/kg (dose may need to be increased due to NMBA resistance in burns) with sugammadex available for reversal.",
+          "text": "Major burns upregulate extra-junctional nicotinic acetylcholine receptors throughout skeletal muscle. After about 24 hours, suxamethonium can cause massive potassium efflux and fatal hyperkalaemic arrest; avoid it until wounds have healed and receptor changes resolve, which may take many months. The burn-related risk is not yet established in the first 24 hours, but other contraindications still apply. Use an alternative such as rocuronium for rapid sequence induction with neuromuscular monitoring and reversal when indicated.",
         },
         "name": "Why is suxamethonium contraindicated after major burns?",
       },
@@ -4305,7 +4317,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Early intubation is indicated in any burn patient with signs of airway or inhalational injury because airway oedema peaks at 12–24 hours and can transform a patent airway into a critical obstruction. Specific indications include: facial or neck burns; singed nasal hairs or eyebrows; soot in the mouth, nose, or sputum; hoarseness, stridor, or drooling; respiratory distress; reduced consciousness from smoke inhalation or CO poisoning; and burns >40% TBSA (large fluid resuscitation causes significant facial and airway oedema even without direct thermal injury). Use an uncut endotracheal tube to allow for facial swelling, and secure it carefully because ECG pads and tape may not adhere to burned skin. Cricoid pressure may be technically difficult due to facial oedema.",
+          "text": "Assess the airway repeatedly and intubate early for progressive swelling, stridor, respiratory failure, reduced consciousness or a high-risk airway before transfer. Large burns with substantial resuscitation raise concern for later oedema. Facial burns, singed hairs or soot warrant urgent assessment but are not, in isolation, automatic indications for intubation. Involve the burns/airway team and consider nasendoscopy when available. Secure the endotracheal tube carefully because tape may not adhere to burned skin.",
         },
         "name": "What are the indications for early intubation in burn patients?",
       },
@@ -4313,7 +4325,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Carbon monoxide (CO) binds to haemoglobin with 240× the affinity of oxygen, forming carboxyhaemoglobin (COHb) and shifting the oxyhaemoglobin dissociation curve to the left. This causes tissue hypoxia despite normal PaO₂. Crucially, standard pulse oximetry cannot distinguish oxyhaemoglobin from COHb and may read falsely normal — co-oximetry (multi-wavelength pulse oximetry or blood gas analysis) is mandatory. Clinical features include headache, dizziness, nausea, confusion, and cherry-red skin (rare). Severe poisoning causes seizures, coma, and myocardial ischaemia. Treatment is 100% oxygen via a tight-fitting non-rebreather mask, which reduces COHb half-life from ~250 minutes (on room air) to ~40–90 minutes. Hyperbaric oxygen is indicated for COHb >25%, neurological impairment, pregnancy (fetal haemoglobin has higher CO affinity), or evidence of myocardial ischaemia.",
+          "text": "Carbon monoxide (CO) binds strongly to haemoglobin, forming carboxyhaemoglobin (COHb) and shifting the oxyhaemoglobin dissociation curve left. Tissue hypoxia occurs despite normal PaO₂. Standard pulse oximetry may read falsely normal: measure COHb on a blood gas with co-oximetry. Symptoms range from headache and confusion to seizures, coma and myocardial ischaemia. Give 100% oxygen; discuss possible hyperbaric oxygen with a specialist for serious neurological or cardiac findings, pregnancy, severe acidosis or high COHb. A COHb number alone does not determine treatment, and benefit from hyperbaric oxygen remains debated.",
         },
         "name": "How does carbon monoxide poisoning present and how is it treated?",
       },
@@ -4321,7 +4333,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cyanide (CN⁻) is released from the combustion of synthetic materials (plastics, wool, silk, polyurethane). It inhibits mitochondrial cytochrome c oxidase, preventing cellular oxygen utilisation and causing cellular hypoxia despite adequate oxygen delivery. This produces a high anion-gap metabolic acidosis with a markedly elevated lactate (>10 mmol/L is highly suggestive) and a normal or elevated mixed venous oxygen saturation (tissues cannot extract oxygen). Treatment is hydroxocobalamin (Cyanokit) 70 mg/kg IV up to 5 g — it binds cyanide to form cyanocobalamin (vitamin B12), which is renally excreted. Sodium thiosulfate is an alternative but slower-acting adjunct. High-flow oxygen and sodium bicarbonate for acidosis are supportive measures. Suspect cyanide poisoning in any patient from an enclosed-space fire with altered consciousness and profound lactic acidosis.",
+          "text": "Cyanide (CN⁻) can be released when nitrogen-containing materials burn, especially in enclosed-space fires. It inhibits mitochondrial cytochrome c oxidase, causing cellular hypoxia and marked lactic acidosis; lactate >10 mmol/L increases suspicion but is not diagnostic. Treat suspected severe smoke-inhalation cyanide poisoning promptly with 100% oxygen and hydroxocobalamin (Cyanokit): adults 5 g IV over 15 minutes, repeat once if indicated (maximum 10 g); children 70 mg/kg IV (maximum 5 g per dose), repeat once if indicated (maximum 140 mg/kg or 10 g total). Seek poison-centre advice; do not delay antidote treatment for confirmatory tests.",
         },
         "name": "What is cyanide poisoning and how is it recognised in burn patients?",
       },
@@ -4329,7 +4341,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Major burns (>20% TBSA) trigger a biphasic physiological response. Phase 1 — Acute/Ebb phase (0–48 hours): thermal injury causes direct capillary damage and release of inflammatory mediators (histamine, prostaglandins, cytokines), producing massive capillary leak and third-space fluid loss. Cardiac output falls due to myocardial depressant factors. Systemic vascular resistance rises initially. The patient is cold, oliguric, and hypotensive — this is hypovolaemic shock requiring aggressive fluid resuscitation. Phase 2 — Hypermetabolic/Flow phase (48 hours to months): cardiac output rises to 1.5–2× normal (hyperdynamic circulation), oxygen consumption increases dramatically, and protein catabolism accelerates. Core temperature is typically 38–39 °C (reset hypothalamus). Nutritional support is critical: caloric requirements may reach 1.5× basal metabolic rate.",
+          "text": "Major burns (>20% TBSA) trigger a biphasic response. In the acute ebb phase (roughly the first 48 hours), capillary leak and fluid loss reduce circulating volume and cardiac output; resuscitate to physiological endpoints rather than an arbitrary high volume. From approximately 2–5 days, a hyperdynamic, hypermetabolic phase develops with increased cardiac output, oxygen consumption and protein catabolism. Ongoing nutritional support is important.",
         },
         "name": "What are the phases of burn pathophysiology?",
       },
@@ -4345,7 +4357,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Burns surgery involves repeated procedures (often weekly) over months. Key considerations include: (1) Blood loss — tangential excision causes approximately 1 mL blood loss per cm² excised; use topical adrenaline-soaked dressings (1:100,000–1:400,000), tourniquets for limb surgery, and tumescent techniques to reduce bleeding. (2) Hypothermia — burned skin cannot thermoregulate; maintain theatre temperature at 28–30 °C, use forced-air warming over unburned areas, warm all IV fluids, and consider radiant warmers. (3) Difficult monitoring — ECG electrodes may not adhere to burned skin; use needle electrodes, surgical staples, or limb leads on unburned areas. (4) Vascular access — may be extremely challenging; consider central venous access, intraosseous, or ultrasound-guided peripheral cannulation through unburned skin. (5) Pain management — opioid tolerance develops rapidly; use multimodal analgesia (ketamine, clonidine, gabapentinoids, regional techniques where feasible). (6) Positioning — prone and lateral positions for posterior grafting require meticulous pressure-area care.",
+          "text": "Burns surgery may require repeated procedures. Tangential excision can produce substantial blood loss; prepare blood products and use surgeon-selected haemostatic measures. Burned skin and extensive exposure increase hypothermia risk: warm the theatre and fluids and use appropriate active warming. Monitoring and vascular access can be difficult when unburned skin is limited. Plan multimodal analgesia, assess tolerance to prior analgesics and protect pressure areas during prolonged or prone surgery.",
         },
         "name": "What are the anaesthetic considerations for burns debridement and grafting?",
       },
@@ -4353,7 +4365,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tumescent anaesthesia involves infiltration of large volumes of dilute local anaesthetic (typically lidocaine 0.05–0.1% with adrenaline 1:1,000,000) into subcutaneous fat. It is primarily used for liposuction and some dermatological procedures. The large tissue volume and vasoconstrictor effect of adrenaline slow systemic absorption dramatically, allowing much higher total lidocaine doses than standard guidelines — up to 35–55 mg/kg has been reported safely (compared to the standard maximum of 7 mg/kg with adrenaline). However, risks include: delayed local anaesthetic systemic toxicity (LAST) due to gradual absorption over 12–18 hours; fluid overload from the large volumes injected (up to several litres); hypothermia from cold infiltration fluid; and lidocaine toxicity if adrenaline effect wears off before absorption is complete. Postoperative monitoring for at least 12 hours is essential. Treatment of LAST follows standard lipid emulsion protocols.",
+          "text": "Tumescent anaesthesia uses dilute lidocaine with adrenaline in subcutaneous fat, particularly for liposuction. Absorption is delayed, but high doses are not universally safe: one small pharmacokinetic study estimated conservative maxima of 28 mg/kg without liposuction and 45 mg/kg with liposuction under local anaesthesia. These estimates cannot simply be applied to burn debridement or patients having general anaesthesia. Count all local anaesthetic sources and follow specialist/local dosing and observation protocols. Risks include delayed local anaesthetic systemic toxicity (LAST), fluid overload and hypothermia; have 20% lipid emulsion available.",
         },
         "name": "What is tumescent anaesthesia and what are its risks?",
       },
@@ -4573,7 +4585,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "If an airway fire occurs during laser surgery, the anaesthetist must simultaneously call out 'Airway fire', stop ventilation, disconnect the breathing circuit, and remove the endotracheal tube. The surgeon turns off the laser and removes any burning material. The field is flooded with saline. Once the fire is extinguished, the patient is ventilated with 100% oxygen via face mask, then re-intubated with a fresh laser-safe tube. Rigid bronchoscopy is performed to assess airway burns. The patient is admitted to ICU with humidified oxygen, dexamethasone for oedema, and a low threshold for tracheostomy if significant thermal injury is found. Prevention is paramount: keep FiO₂ ≤0.30 with air/oxygen mix, never use N₂O, use saline-soaked pledgets at the glottis, and ensure all staff have rehearsed the drill before starting.",
+          "text": "If an airway fire occurs during laser surgery, follow the Association of Anaesthetists sequence in order: announce 'Airway fire' (the surgeon stops lasing); stop the flow of all airway gases; disconnect the breathing system; remove the tracheal tube and any burning material; pour saline into the airway to extinguish any residual fire; then re-establish ventilation with air, adding oxygen only once the fire is confirmed out and only if needed to maintain saturation. The patient is then then re-intubated with a fresh laser-safe tube. Rigid bronchoscopy is performed to assess airway burns. The patient is admitted to ICU with humidified oxygen, dexamethasone for oedema, and a low threshold for tracheostomy if significant thermal injury is found. Prevention is paramount: keep FiO₂ ≤0.30 with air/oxygen mix, never use N₂O, use saline-soaked pledgets at the glottis, and ensure all staff have rehearsed the drill before starting.",
         },
         "name": "What is the airway fire drill during laser laryngoscopy?",
       },
@@ -5165,7 +5177,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Vitreoretinal surgery involves the posterior segment and often requires controlled hypotension to reduce bleeding, particularly during scleral buckling or membrane peeling. The patient may be prone, requiring careful airway security and pressure-point protection. Intraocular gas (SF₆ or C₃F₈) may be injected — N₂O is absolutely contraindicated for 1–3 months postoperatively because it expands the gas bubble and raises IOP catastrophically. General anaesthesia is usually required because the surgery is long and delicate, though some macular procedures can be performed under sub-Tenon's block. Postoperative positioning (often face-down for several days) is critical for gas tamponade efficacy but does not affect the immediate anaesthetic plan. PONV is common after vitrectomy; use TIVA and multimodal antiemetics.",
+          "text": "Vitreoretinal surgery involves the posterior segment and often requires controlled hypotension to reduce bleeding, particularly during scleral buckling or membrane peeling. The patient may be prone, requiring careful airway security and pressure-point protection. Intraocular gas (SF₆ or C₃F₈) may be injected — N₂O is absolutely contraindicated for 1–3 months postoperatively because it expands the gas bubble and raises IOP catastrophically. General anaesthesia is often chosen because the surgery is long and delicate and needs a completely still patient, though many vitrectomies are now done under sub-Tenon's or peribulbar block. Under GA, aim for a deep, smooth plane with full immobility — remifentanil-based TIVA or volatile with remifentanil works well, and modest controlled hypotension (e.g. MAP 60–70 mmHg, or within 20–30% of baseline in hypertensive patients) reduces bleeding. N₂O is absolutely contraindicated while gas remains in the eye: about 2 weeks for air, 2–4 weeks for SF₆ and up to 8–12 weeks for C₃F₈; the patient should wear a warning wristband. Scleral buckling involves traction on the extraocular muscles and commonly triggers the oculocardiac reflex — warn the surgeon to release traction and give atropine or glycopyrronium if bradycardia persists. Buckling is more painful than vitrectomy, so plan regular analgesia and consider a block. Postoperative positioning (often face-down for several days) is critical for gas tamponade; avoid pressure on the eye during recovery. PONV is common after vitrectomy; use TIVA and multimodal antiemetics.",
         },
         "name": "What are the anaesthetic considerations for vitreoretinal surgery?",
       },
@@ -5179,7 +5191,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Bone cement implantation syndrome is the cardiovascular collapse that can follow insertion of methyl methacrylate cement during arthroplasty. It is caused by fat/marrow embolism, monomer toxicity, histamine release, and complement activation. The AAGBI grading is: Grade 1 — SpO₂ <94% or a >20% fall in systolic blood pressure; Grade 2 — unexplained loss of consciousness; Grade 3 — cardiovascular collapse requiring CPR. Prevention includes ensuring euvolaemia, giving 100% oxygen before cementation, alerting the surgeon, lavaging the femoral canal, and using retrograde cementation. Treatment is supportive: oxygen, fluid bolus, and vasopressors (noradrenaline preferred for vasoplegia).",
+          "text": "Bone cement implantation syndrome is the cardiovascular collapse that can follow insertion of methyl methacrylate cement during arthroplasty. It is caused by fat/marrow embolism, monomer toxicity, histamine release, and complement activation. The AAGBI grading is: Grade 1 — SpO₂ <94% or a >20% fall in systolic blood pressure; Grade 2 — SpO₂ <88%, a >40% fall in systolic pressure or SBP <80 mmHg, or unexpected loss of consciousness; Grade 3 — cardiovascular collapse requiring CPR. Prevention includes ensuring euvolaemia, giving 100% oxygen before cementation, alerting the surgeon, lavaging the femoral canal, and using retrograde cementation. Treatment is supportive: oxygen, fluid bolus, and vasopressors (noradrenaline preferred for vasoplegia).",
         },
         "name": "What is bone cement implantation syndrome (BCIS) and how is it graded?",
       },
@@ -5297,7 +5309,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Remi-prop (or remifol) is the colloquial name for a single-syringe mixture of propofol and remifentanil used for total intravenous anaesthesia in children. The mixture is named by its remifentanil concentration in micrograms per millilitre of 1% propofol: Remi 5 = 5 µg remifentanil per ml of 10 mg/ml propofol (the default workhorse mix for dental, MRI, day-case surgery). Preparation: reconstitute 1 mg remifentanil in 10 ml water (100 µg/ml), draw up 2.5 ml (250 µg) and add to 50 ml of 1% propofol → 5 µg/ml remifentanil. A maintenance rate of 10 ml/hr per 10 kg delivers ~10 mg/kg/hr propofol + ~0.08 µg/kg/min remifentanil. Advantages: one pump, one line, no differential disconnection risk, simpler in MRI bores. Cautions: loss of independent titration, unlicensed mixing requiring local SOP, boluses from the running syringe risk bradycardia and chest-wall rigidity.",
+          "text": "Remi-prop (or remifol) is the colloquial name for a single-syringe mixture of propofol and remifentanil used for total intravenous anaesthesia in children. The mixture is named by its remifentanil concentration in micrograms per millilitre of 1% propofol: Remi 5 = 5 µg remifentanil per ml of 10 mg/ml propofol (the default workhorse mix for dental, MRI, day-case surgery). Preparation: reconstitute 1 mg remifentanil in 10 ml water (100 µg/ml), draw up 2.5 ml (250 µg) and add to 47.5 ml of 1% propofol → 50 ml containing 5 µg/ml remifentanil (propofol now ~9.5 mg/ml). For Remi 10 add 5 ml to 45 ml propofol; for Remi 2 add 1 ml to 49 ml. The two drugs can separate and layer in a static syringe, so mix well before use and re-mix periodically. A maintenance rate of 10 ml/hr per 10 kg delivers ~10 mg/kg/hr propofol + ~0.08 µg/kg/min remifentanil. Advantages: one pump, one line, no differential disconnection risk, simpler in MRI bores. Cautions: loss of independent titration, unlicensed mixing requiring local SOP, boluses from the running syringe risk bradycardia and chest-wall rigidity.",
         },
         "name": "What is remi-prop (remifol) and how is it used in paediatric TIVA?",
       },
@@ -5313,7 +5325,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Pyloric stenosis presents with projectile vomiting leading to a hypochloraemic, hypokalaemic metabolic alkalosis. It is a MEDICAL emergency, not a surgical one — the alkalosis must be corrected before theatre because post-operative apnoea is common if HCO₃ >26 mmol/L. Resuscitate with 0.9% saline 10–20 ml/kg boluses to restore intravascular volume, then 0.45% saline + 5% dextrose with 20 mmol/L KCl at 1.5 × maintenance. Targets before surgery: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ ≤26, and adequate urine output. In theatre, use a modified RSI (full stomach) with ketamine or propofol and rocuronium, maintain normothermia, and monitor glucose closely.",
+          "text": "Pyloric stenosis presents with projectile vomiting leading to a hypochloraemic, hypokalaemic metabolic alkalosis. It is a MEDICAL emergency, not a surgical one — the alkalosis must be corrected before theatre because post-operative apnoea is common if HCO₃ remains ≥28 mmol/L. Resuscitate with 0.9% saline 10–20 ml/kg boluses to restore intravascular volume, then 0.45% saline + 5% dextrose with 20 mmol/L KCl at 1.5 × maintenance. Targets before surgery: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ <28, and adequate urine output. In theatre, use a modified RSI (full stomach) with ketamine or propofol and rocuronium, maintain normothermia, and monitor glucose closely.",
         },
         "name": "How do you anaesthetise a child with pyloric stenosis?",
       },
@@ -5607,7 +5619,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 reported vertebral canal haematoma around 1:220,000 for spinal anaesthesia and 1:150,000 for epidural anaesthesia, and meningitis < 1:50,000. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
+          "text": "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 (≈700,000 central neuraxial blocks in the UK; Cook 2009) estimated permanent harm at 2.0–4.2 per 100,000 (≈1:50,000–1:24,000) and paraplegia or death at 0.7–1.8 per 100,000, with risk lower for spinals and obstetric blocks than for perioperative epidurals. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
         },
         "name": "Does spinal anaesthesia hurt and is it safe?",
       },
@@ -5623,7 +5635,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "PDPH is a positional fronto-occipital headache caused by CSF leak through the dural puncture, with traction on meningeal vessels. Incidence: 1–2% after 25–27 G pencil-point spinal needles, 50–80% after accidental 16–18 G epidural Tuohy puncture. Worse on sitting/standing, better lying flat. Conservative management (analgesia, hydration, caffeine) for 24–48 h; epidural blood patch (15–20 ml autologous blood) is the gold standard with 70–90% success and is offered if symptoms persist beyond 24–48 h or are severe.",
+          "text": "PDPH is a positional fronto-occipital headache caused by CSF leak through the dural puncture, with traction on meningeal vessels. Incidence: around 1% or less after 25–27 G pencil-point spinal needles, and over half of patients after accidental 16–18 G epidural Tuohy puncture. Worse on sitting/standing, better lying flat. Supportive care with regular simple analgesia (evidence for caffeine and fluids is weak); the OAA 2023 consensus advises offering an epidural blood patch (up to ~20 ml autologous blood) when symptoms limit daily activity, ideally after 48 h. It relieves symptoms in most patients but complete resolution is less common and a repeat patch is sometimes needed.",
         },
         "name": "What is post-dural puncture headache (PDPH) and how is it treated?",
       },
@@ -5631,7 +5643,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Absolute: patient refusal, raised intracranial pressure, local infection at insertion site, severe coagulopathy or therapeutic anticoagulation outside the AAGBI/ESAIC interval, true allergy to local anaesthetic, fixed-output cardiac lesions (e.g. severe AS — relative in modern practice). Relative: bacteraemia/sepsis, pre-existing neurological disease (document baseline), spinal deformity, hypovolaemia.",
+          "text": "Absolute: patient refusal, raised intracranial pressure, local infection at insertion site, severe coagulopathy or therapeutic anticoagulation outside the AAGBI/ESAIC interval, true allergy to local anaesthetic. Relative: fixed-output cardiac lesions such as severe aortic stenosis (a carefully titrated technique may be used), bacteraemia/sepsis, pre-existing neurological disease (document baseline), spinal deformity, hypovolaemia.",
         },
         "name": "When is spinal anaesthesia contraindicated?",
       },
@@ -5639,7 +5651,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% Intralipid 1.5 ml/kg bolus then 0.25 ml/kg/min infusion (AAGBI 2010 guideline), avoid lidocaine antiarrhythmics and vasopressin.",
+          "text": "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% Intralipid 1.5 ml/kg bolus then 0.25 ml/kg/min infusion (repeat bolus up to twice at 5-minute intervals, maximum cumulative 12 ml/kg — AAGBI LAST guideline). Treat arrhythmias without lidocaine; ASRA also advises avoiding vasopressin, calcium-channel and β-blockers and reducing adrenaline boluses to <1 µg/kg. Prolonged CPR may be needed.",
         },
         "name": "How are local anaesthetics dosed safely to avoid toxicity (LAST)?",
       },
@@ -5655,7 +5667,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Per AAGBI 2013 / ESAIC 2022: prophylactic LMWH 12 h, treatment-dose LMWH 24 h; unfractionated heparin (s/c prophylaxis) 4 h with normal APTT; warfarin INR < 1.4; clopidogrel 7 days; ticagrelor 5 days; rivaroxaban prophylactic 18 h, treatment 48 h; apixaban prophylactic 24–48 h; dabigatran 48–96 h (renal-function dependent). Aspirin and NSAIDs alone do not preclude neuraxial. The same intervals apply to catheter removal.",
+          "text": "Per AAGBI 2013 (ESAIC 2022 intervals are similar but sometimes longer, e.g. 7 days for ticagrelor and prasugrel): prophylactic LMWH 12 h, treatment-dose LMWH 24 h; unfractionated heparin (s/c prophylaxis) 4 h with normal APTT; warfarin INR < 1.4; clopidogrel 7 days; ticagrelor 5 days; rivaroxaban prophylactic 18 h, treatment 48 h; apixaban prophylactic 24–48 h; dabigatran 48–96 h (renal-function dependent). Aspirin and NSAIDs alone do not preclude neuraxial. The same intervals apply to catheter removal.",
         },
         "name": "How long should anticoagulants be stopped before a neuraxial block?",
       },
@@ -5890,6 +5902,30 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
           "text": "Thromboelastography (TEG) and rotational thromboelastometry (ROTEM) are point-of-care viscoelastic coagulation tests that assess clot formation, stability and lysis in real time. In massive transfusion they enable goal-directed therapy: a flat r-time / CT suggests give FFP; low alpha-angle / low fibrinogen amplitude suggests give cryoprecipitate or fibrinogen concentrate; low maximum amplitude suggests give platelets; rapid lysis suggests give TXA. Using TEG/ROTEM reduces unnecessary blood product administration, identifies fibrinolysis, and allows individualised component therapy rather than blind fixed-ratio resuscitation alone.",
         },
         "name": "What is the role of TEG/ROTEM in massive transfusion?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NICE NG41 (Spinal injury: assessment and initial management) uses the Canadian C-spine rule — high-risk factors (age ≥65, dangerous mechanism, limb paraesthesia), absence of low-risk features, or inability to rotate the neck 45° each way — to select patients for full in-line immobilisation, with a separate assessment for thoracic/lumbar injury. Modern practice has moved away from routine triple immobilisation (rigid collar, blocks, tape) for everyone: hard collars are associated with pressure ulcers, raised intracranial pressure and harder airway access, and no randomised trial shows immobilisation improves neurological outcome. Current UK practice favours selective immobilisation — a properly fitted collar for high-risk patients, manual in-line stabilisation during airway interventions, scoop stretchers rather than log rolls where possible, and early removal of the collar once the spine is cleared or the airway is secured. Observational data suggest isolated penetrating trauma without neurological deficit gains little from immobilisation — follow local protocol.",
+        },
+        "name": "When is spinal immobilisation needed in trauma?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Blood and blood products, not crystalloid. NICE NG39 recommends blood products in a 1:1 plasma:red cell ratio for active bleeding and advises against crystalloid in hospital — large crystalloid volumes cause haemodilution, dilutional coagulopathy, hypothermia and acidosis, and worsen outcomes. Pre-hospital, if blood is unavailable, 250 mL crystalloid boluses titrated to a radial pulse may be used. Resuscitation targets are permissive hypotension (a palpable radial pulse or SBP ~80–90 mmHg) until haemorrhage is controlled, except in traumatic brain injury where cerebral perfusion must be maintained (Brain Trauma Foundation: SBP ≥100–110 mmHg depending on age). Once bleeding is controlled, restore normal perfusion.",
+        },
+        "name": "What fluid should be used for resuscitation in major trauma?",
+      },
+      {
+        "@type": "Question",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Follow a stepwise approach: (1) direct pressure on external bleeding; (2) a windlass tourniquet for catastrophic limb bleeding — applied early, tightened until bleeding stops, time recorded; (3) haemostatic or plain gauze wound packing for junctional wounds (groin, axilla, neck) where a tourniquet cannot go; (4) a pelvic binder applied at the greater trochanters for suspected unstable pelvic fracture — it reduces pelvic volume and tamponades venous bleeding; (5) rapid transfer to definitive care. In hospital, options include interventional radiology embolisation, damage control surgery (packing, shunting, clamping), and REBOA (resuscitative endovascular balloon occlusion of the aorta) for torso haemorrhage below the diaphragm — though the UK-REBOA trial found higher 90-day mortality with ED REBOA (54% vs 42%; 86% probability of harm), so it is not supported outside research in UK practice.",
+        },
+        "name": "How is haemorrhage controlled in major trauma?",
       },
     ],
   },
@@ -6765,7 +6801,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Assess/treat pain, Both spontaneous awakening and breathing trials, Choice of sedation, Delirium monitoring, Early mobility, Family engagement; bundle adherence reduces ICU mortality and delirium (Pun et al., Crit Care Med 2019).",
+          "text": "Assess/treat pain, Both spontaneous awakening and breathing trials, Choice of sedation, Delirium monitoring, Early mobility, Family engagement; higher bundle adherence was associated with lower mortality and less delirium in a large observational collaborative (Pun et al., Crit Care Med 2019).",
         },
         "name": "What does the ABCDEF bundle entail?",
       },
@@ -6773,7 +6809,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Dexmedetomidine reduces delirium duration vs benzodiazepines (MENDS, SEDCOM trials) and may reduce mortality in septic patients (DESIST); propofol is acceptable but avoid benzodiazepines except for alcohol withdrawal or seizures.",
+          "text": "PADIS suggests propofol or dexmedetomidine over benzodiazepines. Dexmedetomidine reduced delirium vs midazolam/lorazepam (SEDCOM, MENDS), but MENDS2 found no difference vs propofol in sepsis and SPICE III showed no mortality benefit. Reserve benzodiazepines for specific indications such as alcohol withdrawal or seizures.",
         },
         "name": "Which sedation agent is preferred for delirium prevention?",
       },
@@ -6781,7 +6817,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "CAM-ICU or ICDSC at least once per shift; CAM-ICU requires RASS ≥−3 and assesses acute change, inattention (letters A test), altered consciousness and disorganised thinking.",
+          "text": "CAM-ICU or ICDSC at least once per shift; CAM-ICU requires RASS −3 or lighter and assesses acute change/fluctuation, inattention (letters test: >2 errors), altered level of consciousness (RASS other than 0) and disorganised thinking (>1 error).",
         },
         "name": "How is ICU delirium screened?",
       },
@@ -6945,7 +6981,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Coma of known irreversible cause, exclusion of confounders (drugs, hypothermia <34 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, oculocephalic, oculovestibular, gag, cough) and apnoea test with PaCO₂ rise >0.5 kPa above 6.0 kPa with pH <7.40 (AoMRC 2008).",
+          "text": "Coma of known irreversible cause, exclusion of confounders (drugs, core temperature <36 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, oculocephalic, oculovestibular, gag, cough) and an apnoea test from a starting PaCO₂ ≥5.3 kPa to an end PaCO₂ ≥8.0 kPa, a rise ≥2.7 kPa and pH <7.30 after at least 5 minutes (AoMRC 2025).",
         },
         "name": "What are the UK criteria for brainstem death testing?",
       },
@@ -8923,7 +8959,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Required when HPA suppression is likely, including prednisolone ≥5 mg/day for more than four weeks. Minor surgery needs the usual dose only; if fasting causes a dose to be missed, give its equivalent parenterally. Moderate surgery: usual dose + hydrocortisone 50 mg IV at induction, then 25 mg IV 8-hourly for 24 h. Major surgery: usual dose + hydrocortisone 100 mg IV at induction, then 200 mg/24 h by infusion or 50 mg IV 6-hourly for 24–48 h and until stable enough to resume oral treatment.",
+          "text": "Required when HPA suppression is likely, including prednisolone ≥5 mg/day for more than four weeks. Minor surgery needs the usual oral dose only, with no additional parenteral supplementation; if fasting is brief and only one dose is missed (e.g. a minor procedure under local or regional anaesthesia), parenteral replacement is not required. Moderate surgery: usual dose + hydrocortisone 50 mg IV at induction, then 25 mg IV 8-hourly for 24 h. Major surgery: usual dose + hydrocortisone 100 mg IV at induction, then 200 mg/24 h by infusion or 50 mg IV 6-hourly for 24–48 h and until stable enough to resume oral treatment.",
         },
         "name": "When is perioperative steroid cover required and what regimen is used?",
       },
@@ -8931,7 +8967,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cushingoid (truncal obesity, moon face, buffalo hump), osteoporosis (DXA + bisphosphonates if >5 mg pred for >3 months), hyperglycaemia/diabetes, hypertension, peptic ulcer (especially with NSAIDs), proximal myopathy, immunosuppression, skin thinning/bruising, cataracts, glaucoma, mood disturbance/psychosis, growth retardation in children, adrenal suppression. Withdrawal must be gradual after >3 weeks of treatment to allow HPA recovery.",
+          "text": "Cushingoid features (truncal obesity, moon face, buffalo hump — fat redistribution driven by hyperinsulinaemia and lipolysis in the limbs). Osteoporosis (DXA + bisphosphonates if >5 mg pred for >3 months) — reduced gut calcium absorption (antagonism of vitamin D action), increased renal calcium excretion, reduced osteoblast activity. Hyperglycaemia/diabetes — increased hepatic gluconeogenesis and peripheral insulin resistance. Hypertension — mineralocorticoid-mediated sodium and water retention plus enhanced vascular catecholamine sensitivity. Peptic ulcer (especially with NSAIDs) — reduced mucosal prostaglandin protection. Proximal myopathy — increased muscle protein catabolism and wasting. Immunosuppression — reduced cytokine production (NF-κB/AP-1 transrepression) and lymphocyte redistribution/apoptosis. Skin thinning/bruising — inhibition of fibroblast activity and collagen synthesis. Also cataracts, glaucoma, mood disturbance/psychosis, growth retardation in children and adrenal suppression. Withdrawal must be gradual after >4 weeks of treatment to allow HPA recovery.",
         },
         "name": "What are the major side effects of long-term corticosteroids?",
       },
@@ -10245,7 +10281,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Fresh gas is split between a bypass channel and a vaporising chamber where it becomes fully saturated with volatile vapour. The splitting ratio is set by the dial. Temperature compensation is achieved by a bimetallic strip (or expansion bellows) that increases flow through the vaporising chamber as temperature falls, compensating for reduced saturated vapour pressure after evaporative cooling. Flow compensation accommodates flows 0.2–15 L/min.",
+          "text": "Fresh gas is split between a bypass channel and a vaporising chamber where it becomes fully saturated with volatile vapour. The splitting ratio is set by the dial. Temperature compensation is achieved by a bimetallic strip in the bypass (Tec series) or an expanding element at the chamber outlet (Dräger Vapor), which diverts more flow through the vaporising chamber as temperature falls, compensating for reduced saturated vapour pressure after evaporative cooling. Flow compensation accommodates flows 0.2–15 L/min.",
         },
         "name": "How does a variable-bypass vaporiser maintain a constant output concentration?",
       },
