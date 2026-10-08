@@ -27,6 +27,14 @@ export const BigLabel = ({ x, y, tx, ty, children, anchor = "start" }: { x: numb
   </g>
 );
 
+/* Wider canvas so the larger labels fit */
+export const WideSvg = ({ title, children }: { title: string; children: ReactNode }) => (
+  <svg viewBox="-260 -12 920 324" role="img" aria-label={title} className="w-full h-auto bg-card">
+    <title>{title}</title>
+    {children}
+  </svg>
+);
+
 export const Svg = ({ title, children }: { title: string; children: ReactNode }) => (
   <svg viewBox="-110 0 620 300" role="img" aria-label={title} className="w-full h-auto bg-card">
     <title>{title}</title>

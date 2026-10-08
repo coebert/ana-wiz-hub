@@ -21,7 +21,7 @@ const Label = ({ x, y, tx, ty, children, anchor = "start" }: { x: number; y: num
 );
 
 const Svg = ({ title, children }: { title: string; children: ReactNode }) => (
-  <svg viewBox="-110 0 620 300" role="img" aria-label={title} className="w-full h-auto bg-card">
+  <svg viewBox="-260 -12 920 324" role="img" aria-label={title} className="w-full h-auto bg-card">
     <title>{title}</title>
     {children}
   </svg>

@@ -1,8 +1,8 @@
-import { AnatomyAtlas, BigLabel, Svg, ink, muted, fillA, accent, danger, vessel, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, BigLabel, WideSvg, ink, muted, fillA, accent, danger, vessel, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Front-of-neck airway, sagittal-ish anterior view */
 const Fona = () => (
-  <Svg title="Laryngeal cartilages and cricothyroid membrane for front-of-neck access, labelled">
+  <WideSvg title="Laryngeal cartilages and cricothyroid membrane for front-of-neck access, labelled">
     <ellipse cx={200} cy={30} rx={60} ry={10} fill={fillA} stroke={ink} />
     <path d="M140 60 L260 60 L235 130 L200 145 L165 130 Z" fill={fillA} stroke={ink} strokeWidth={1.5} />
     <path d="M190 60 L200 72 L210 60" fill="none" stroke={ink} />
@@ -19,12 +19,12 @@ const Fona = () => (
     <BigLabel x={175} y={240} tx={40} ty={270} anchor="end">Thyroid isthmus</BigLabel>
     <BigLabel x={176} y={250} tx={40} ty={225} anchor="end">Tracheal rings</BigLabel>
     <BigLabel x={152} y={159} tx={40} ty={159} anchor="end">Transverse stab incision</BigLabel>
-  </Svg>
+  </WideSvg>
 );
 
 /* 2 — Chest wall decompression sites */
 const Chest = () => (
-  <Svg title="Lateral chest wall showing the safe triangle and decompression sites, labelled">
+  <WideSvg title="Lateral chest wall showing the safe triangle and decompression sites, labelled">
     <path d="M90 30 Q60 150 110 280 L300 280 Q340 150 310 30 Z" fill={fillA} fillOpacity={0.4} stroke={ink} />
     {[70, 100, 130, 160, 190, 220].map((y) => <path key={y} d={`M95 ${y} Q200 ${y + 20} 315 ${y}`} fill="none" stroke={muted} strokeWidth={1.5} />)}
     <path d="M150 60 L250 60 L200 190 Z" fill={accent} fillOpacity={0.15} stroke={accent} strokeWidth={2} strokeDasharray="5 3" />
@@ -38,12 +38,12 @@ const Chest = () => (
     <BigLabel x={200} y={165} tx={340} ty={200}>4th/5th ICS, mid-axillary</BigLabel>
     <BigLabel x={110} y={190} tx={40} ty={200} anchor="end">5th rib / nipple level (base)</BigLabel>
     <BigLabel x={225} y={163} tx={340} ty={250}>Go over the lower rib</BigLabel>
-  </Svg>
+  </WideSvg>
 );
 
 /* 3 — Pelvic ring and binder */
 const Pelvis = () => (
-  <Svg title="Pelvic ring with binder position at the greater trochanters, labelled">
+  <WideSvg title="Pelvic ring with binder position at the greater trochanters, labelled">
     <path d="M90 60 Q200 20 310 60 Q330 140 270 190 L130 190 Q70 140 90 60 Z" fill={fillA} fillOpacity={0.5} stroke={ink} strokeWidth={2} />
     <path d="M175 60 L225 60 L215 150 L185 150 Z" fill={fillA} stroke={ink} />
     <circle cx={140} cy={175} r={18} fill="none" stroke={ink} strokeWidth={2} />
@@ -61,12 +61,12 @@ const Pelvis = () => (
     <BigLabel x={200} y={195} tx={200} ty={260} anchor="middle">Pubic symphysis</BigLabel>
     <BigLabel x={305} y={210} tx={370} ty={235}>Greater trochanter</BigLabel>
     <BigLabel x={80} y={211} tx={40} ty={250} anchor="end">Binder centred here</BigLabel>
-  </Svg>
+  </WideSvg>
 );
 
 /* 4 — Aortic zones for REBOA */
 const Aorta = () => (
-  <Svg title="Aortic zones for endovascular balloon occlusion, labelled">
+  <WideSvg title="Aortic zones for endovascular balloon occlusion, labelled">
     <path d="M200 20 Q250 15 255 45 L240 60 L240 270" fill="none" stroke={vessel} strokeWidth={14} strokeLinecap="round" />
     <path d="M240 270 L200 295 M240 270 L280 295" stroke={vessel} strokeWidth={10} strokeLinecap="round" />
     <path d="M235 30 L225 5" stroke={vessel} strokeWidth={5} />
@@ -84,7 +84,7 @@ const Aorta = () => (
     <BigLabel x={190} y={175} tx={110} ty={175} anchor="end">Renal arteries</BigLabel>
     <BigLabel x={210} y={135} tx={110} ty={135} anchor="end">Diaphragm</BigLabel>
     <BigLabel x={215} y={288} tx={110} ty={260} anchor="end">Common iliac arteries</BigLabel>
-  </Svg>
+  </WideSvg>
 );
 
 const plates: AtlasPlate[] = [

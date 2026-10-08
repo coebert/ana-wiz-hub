@@ -1,8 +1,8 @@
-import { AnatomyAtlas, BigLabel, Svg, ink, muted, fillA, accent, danger, vessel, nerve, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, BigLabel, WideSvg, ink, muted, fillA, accent, danger, vessel, nerve, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Interscalene groove, transverse ultrasound-style section at C6 */
 const Interscalene = () => (
-  <Svg title="Interscalene brachial plexus at C6, transverse section, labelled">
+  <WideSvg title="Interscalene brachial plexus at C6, transverse section, labelled">
     <ellipse cx={200} cy={40} rx={170} ry={14} fill={fillA} stroke={muted} />
     <text x={200} y={44} fontSize={9} fill={muted} textAnchor="middle">Skin / platysma</text>
     <path d="M60 70 Q140 55 210 80 L200 100 Q130 85 60 95 Z" fill={danger} fillOpacity={0.2} stroke={ink} />
@@ -23,12 +23,12 @@ const Interscalene = () => (
     <BigLabel x={90} y={140} tx={40} ty={150} anchor="end">Carotid artery</BigLabel>
     <BigLabel x={95} y={105} tx={40} ty={110} anchor="end">Internal jugular vein</BigLabel>
     <BigLabel x={200} y={238} tx={270} ty={275}>C6 transverse process</BigLabel>
-  </Svg>
+  </WideSvg>
 );
 
 /* 2 — Femoral triangle and fascia iliaca */
 const Femoral = () => (
-  <Svg title="Femoral triangle and fascia iliaca, labelled">
+  <WideSvg title="Femoral triangle and fascia iliaca, labelled">
     <path d="M60 50 L340 50 L200 270 Z" fill={fillA} fillOpacity={0.5} stroke={ink} />
     <path d="M60 50 L340 50" stroke={ink} strokeWidth={3} />
     <circle cx={150} cy={95} r={10} fill="none" stroke={nerve} strokeWidth={2.5} />
@@ -47,12 +47,12 @@ const Femoral = () => (
     <BigLabel x={120} y={125} tx={40} ty={215} anchor="end">Sartorius (lateral border)</BigLabel>
     <BigLabel x={300} y={130} tx={360} ty={170}>Adductor longus (medial border)</BigLabel>
     <text x={200} y={292} fontSize={9} fill={muted} textAnchor="middle">Nerve lies deep to fascia iliaca; artery and vein lie superficial to it, within the femoral sheath</text>
-  </Svg>
+  </WideSvg>
 );
 
 /* 3 — Adductor canal, mid-thigh transverse */
 const Adductor = () => (
-  <Svg title="Adductor canal at mid-thigh, transverse section, labelled">
+  <WideSvg title="Adductor canal at mid-thigh, transverse section, labelled">
     <circle cx={200} cy={150} r={130} fill={fillA} fillOpacity={0.4} stroke={muted} />
     <circle cx={200} cy={160} r={22} fill={fillA} stroke={ink} strokeWidth={2} />
     <ellipse cx={130} cy={95} rx={40} ry={26} fill={danger} fillOpacity={0.25} stroke={ink} />
@@ -70,12 +70,12 @@ const Adductor = () => (
     <BigLabel x={188} y={82} tx={30} ty={40} anchor="end">Saphenous nerve</BigLabel>
     <BigLabel x={200} y={160} tx={300} ty={220}>Femur</BigLabel>
     <text x={200} y={292} fontSize={9} fill={muted} textAnchor="middle">Dashed: adductor canal. Nerve to vastus medialis often lies just outside the canal.</text>
-  </Svg>
+  </WideSvg>
 );
 
 /* 4 — Lumbar neuraxis, sagittal midline */
 const Neuraxial = () => (
-  <Svg title="Lumbar spine sagittal midline section for neuraxial block, labelled">
+  <WideSvg title="Lumbar spine sagittal midline section for neuraxial block, labelled">
     {[50, 120, 190].map((y) => <rect key={y} x={260} y={y} width={80} height={52} rx={6} fill={fillA} stroke={ink} />)}
     {[60, 130, 200].map((y) => <path key={y} d={`M120 ${y} L200 ${y + 10} L200 ${y + 40} L120 ${y + 35} Z`} fill={fillA} stroke={ink} />)}
     <path d="M80 30 L80 280" stroke={ink} strokeWidth={2} />
@@ -98,7 +98,7 @@ const Neuraxial = () => (
     <BigLabel x={238} y={240} tx={370} ty={250}>Cauda equina</BigLabel>
     <BigLabel x={300} y={215} tx={370} ty={290}>Vertebral body</BigLabel>
     <BigLabel x={60} y={175} tx={10} ty={230} anchor="end">Tuffier's line ≈ L4</BigLabel>
-  </Svg>
+  </WideSvg>
 );
 
 const plates: AtlasPlate[] = [

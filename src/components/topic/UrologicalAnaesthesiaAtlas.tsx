@@ -1,8 +1,8 @@
-import { AnatomyAtlas, BigLabel, Svg, ink, muted, fillA, accent, vessel, nerve, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, BigLabel, WideSvg, ink, muted, fillA, accent, vessel, nerve, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Bladder and obturator nerve, coronal pelvis */
 const Obturator = () => (
-  <Svg title="Bladder lateral wall and obturator nerve, coronal section, labelled">
+  <WideSvg title="Bladder lateral wall and obturator nerve, coronal section, labelled">
     <path d="M60 60 Q200 0 340 60 L320 200 Q200 260 80 200 Z" fill="none" stroke={ink} strokeWidth={3} />
     <ellipse cx={200} cy={165} rx={90} ry={65} fill={accent} fillOpacity={0.15} stroke={ink} strokeWidth={2} />
     <path d="M114 168 L150 172" stroke={muted} fill="none" strokeWidth={6} strokeLinecap="round" />
@@ -17,12 +17,12 @@ const Obturator = () => (
     <BigLabel x={85} y={215} tx={40} ty={215} anchor="end">Obturator canal</BigLabel>
     <BigLabel x={62} y={280} tx={40} ty={280} anchor="end">To adductors</BigLabel>
     <BigLabel x={200} y={30} tx={330} ty={30}>Pelvic brim</BigLabel>
-  </Svg>
+  </WideSvg>
 );
 
 /* 2 — Prostate, TURP and the venous sinuses */
 const Prostate = () => (
-  <Svg title="Prostate, capsule and venous sinuses during TURP, sagittal, labelled">
+  <WideSvg title="Prostate, capsule and venous sinuses during TURP, sagittal, labelled">
     <ellipse cx={200} cy={90} rx={90} ry={60} fill={accent} fillOpacity={0.15} stroke={ink} strokeWidth={2} />
     <ellipse cx={200} cy={185} rx={50} ry={40} fill={fillA} stroke={ink} strokeWidth={2} />
     <ellipse cx={200} cy={185} rx={56} ry={46} fill="none" stroke={ink} strokeDasharray="3 2" />
@@ -36,7 +36,7 @@ const Prostate = () => (
     <BigLabel x={154} y={163} tx={40} ty={170} anchor="end">Venous sinuses at capsule</BigLabel>
     <BigLabel x={200} y={260} tx={330} ty={260}>Urethra / resectoscope</BigLabel>
     <BigLabel x={60} y={60} tx={40} ty={40} anchor="end">Bag height = pressure</BigLabel>
-  </Svg>
+  </WideSvg>
 );
 
 const plates: AtlasPlate[] = [

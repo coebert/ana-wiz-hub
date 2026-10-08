@@ -1,8 +1,8 @@
-import { AnatomyAtlas, BigLabel, Svg, ink, muted, fillA, accent, nerve, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, BigLabel, WideSvg, ink, muted, fillA, accent, nerve, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Sacral hiatus for caudal block, posterior view */
 const Caudal = () => (
-  <Svg title="Sacrum and sacral hiatus for caudal block, posterior view, labelled">
+  <WideSvg title="Sacrum and sacral hiatus for caudal block, posterior view, labelled">
     <path d="M130 40 L270 40 L240 210 L215 250 L185 250 L160 210 Z" fill={fillA} stroke={ink} strokeWidth={2} />
     <path d="M130 45 Q90 20 70 40 Q85 80 112 100" fill="none" stroke={muted} strokeWidth={2} />
     <path d="M270 45 Q310 20 330 40 Q315 80 288 100" fill="none" stroke={muted} strokeWidth={2} />
@@ -23,12 +23,12 @@ const Caudal = () => (
     <BigLabel x={215} y={145} tx={330} ty={150}>Neonate dural sac end ≈ S3–S4</BigLabel>
     <BigLabel x={150} y={140} tx={40} ty={140} anchor="end">PSIS–hiatus triangle</BigLabel>
     <BigLabel x={200} y={280} tx={330} ty={285}>Coccyx</BigLabel>
-  </Svg>
+  </WideSvg>
 );
 
 /* 2 — Dorsal nerves of the penis, cross-section */
 const Penile = () => (
-  <Svg title="Penis in cross-section showing dorsal nerves for penile block, labelled">
+  <WideSvg title="Penis in cross-section showing dorsal nerves for penile block, labelled">
     <ellipse cx={200} cy={150} rx={120} ry={100} fill="none" stroke={ink} strokeWidth={2} />
     <ellipse cx={200} cy={150} rx={105} ry={85} fill="none" stroke={muted} strokeDasharray="4 3" />
     <ellipse cx={160} cy={130} rx={35} ry={30} fill={fillA} stroke={ink} />
@@ -44,7 +44,7 @@ const Penile = () => (
     <BigLabel x={160} y={130} tx={40} ty={140} anchor="end">Corpus cavernosum</BigLabel>
     <BigLabel x={200} y={200} tx={340} ty={230}>Corpus spongiosum + urethra</BigLabel>
     <BigLabel x={300} y={180} tx={340} ty={180}>Buck's fascia</BigLabel>
-  </Svg>
+  </WideSvg>
 );
 
 const plates: AtlasPlate[] = [

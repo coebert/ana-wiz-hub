@@ -1,8 +1,8 @@
-import { AnatomyAtlas, BigLabel, Svg, ink, muted, fillA, accent, vessel, nerve, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, BigLabel, WideSvg, ink, muted, fillA, accent, vessel, nerve, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Laryngeal innervation, anterolateral view */
 const Larynx = () => (
-  <Svg title="Laryngeal cartilages and nerve supply, labelled">
+  <WideSvg title="Laryngeal cartilages and nerve supply, labelled">
     <path d="M150 40 Q200 25 250 40 L240 70 Q200 60 160 70 Z" fill={fillA} stroke={ink} />
     <path d="M155 85 L245 85 L255 150 Q200 175 145 150 Z" fill={fillA} fillOpacity={0.6} stroke={ink} strokeWidth={2} />
     <rect x={165} y={170} width={70} height={18} rx={6} fill={fillA} stroke={ink} />
@@ -24,12 +24,12 @@ const Larynx = () => (
     <BigLabel x={130} y={250} tx={40} ty={250} anchor="end">Recurrent laryngeal nerve</BigLabel>
     <BigLabel x={305} y={200} tx={330} ty={210}>Carotid sheath (one each side)</BigLabel>
     <BigLabel x={225} y={161} tx={330} ty={140}>Cricothyroid membrane</BigLabel>
-  </Svg>
+  </WideSvg>
 );
 
 /* 2 — Tonsillar fossa, intraoral view */
 const Tonsil = () => (
-  <Svg title="Palatine tonsil and tonsillar fossa, labelled">
+  <WideSvg title="Palatine tonsil and tonsillar fossa, labelled">
     <path d="M80 40 Q200 10 320 40 L320 60 Q200 35 80 60 Z" fill={fillA} stroke={ink} />
     <path d="M190 60 Q200 95 210 60" fill="hsl(var(--primary) / 0.2)" stroke={ink} />
     <path d="M110 70 Q90 170 120 270" stroke={ink} strokeWidth={2} fill="none" />
@@ -50,7 +50,7 @@ const Tonsil = () => (
     <BigLabel x={252} y={120} tx={340} ty={130}>Palatopharyngeal arch (behind)</BigLabel>
     <BigLabel x={298} y={190} tx={340} ty={190}>Palatoglossal arch (front)</BigLabel>
     <BigLabel x={200} y={265} tx={340} ty={270}>Tongue</BigLabel>
-  </Svg>
+  </WideSvg>
 );
 
 const plates: AtlasPlate[] = [
