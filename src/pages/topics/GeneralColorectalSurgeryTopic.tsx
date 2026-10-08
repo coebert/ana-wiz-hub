@@ -5,6 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
 import { Exam } from "@/data/curriculum";
+import { GeneralSurgeryAtlas } from "@/components/topic/GeneralSurgeryAtlas";
 import { generalColorectalSurgeryQuestions } from "@/data/quizzes";
 
 const T = "general-colorectal-surgery";
@@ -203,6 +204,7 @@ const GeneralColorectalSurgeryTopic = () => (
     }}
     coreConcepts={
       <>
+        <GeneralSurgeryAtlas />
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
           <section className="space-y-8 mb-10">
             <div>
