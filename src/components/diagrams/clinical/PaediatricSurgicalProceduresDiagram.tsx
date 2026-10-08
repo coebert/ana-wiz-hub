@@ -56,7 +56,7 @@ const PROCEDURES: Procedure[] = [
       "Hypertrophy of pyloric muscle → gastric outlet obstruction. Projectile non-bilious vomiting → loss of HCl → hypochloraemic, hypokalaemic metabolic alkalosis with paradoxical aciduria.",
     preopPriorities: [
       "MEDICAL emergency, NOT surgical — operate only after biochemistry corrected",
-      "Targets: Cl⁻ > 100 mmol/L, HCO₃⁻ < 26 mmol/L, K⁺ > 3.5, normal pH",
+      "Targets: Cl⁻ ≥ 100 mmol/L, HCO₃⁻ < 28 mmol/L, K⁺ > 3.5, normal pH",
       "Rehydrate with 0.9% NaCl + 20 mmol/L KCl at 1.5× maintenance until corrected (usually 24–48 h)",
       "NG tube on free drainage; aspirate before induction",
     ],

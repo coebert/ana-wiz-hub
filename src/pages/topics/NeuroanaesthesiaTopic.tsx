@@ -332,6 +332,18 @@ const NeuroanaesthesiaTopic = () => {
                   <li><strong className="text-foreground">Absolute:</strong> patient refusal or inability to consent, confusion/dysphasia or cognitive impairment preventing co-operation, severe anxiety or claustrophobia, inability to lie still (movement disorder, chronic pain), and airway obstruction that could not be managed in a pinned head.</li>
                   <li><strong className="text-foreground">Relative:</strong> markedly raised ICP or large midline shift (tight brain, seizure risk), highly vascular lesion with anticipated major bleeding, uncontrolled epilepsy, morbid obesity or obstructive sleep apnoea, difficult airway, poorly controlled cough/reflux, children and young adolescents, and language barrier without a reliable interpreter.</li>
                 </ul>
+                <p className="text-xs font-semibold text-foreground mt-3">Techniques</p>
+                <ul className="list-disc list-inside text-xs text-muted-foreground mt-1 space-y-1">
+                  <li><strong className="text-foreground">Asleep–awake–asleep:</strong> TIVA (propofol + remifentanil) via an LMA for opening; infusions stopped and LMA removed for mapping and resection; re-anaesthetised (LMA re-inserted) for closure <InlineRef topicId="neuroanaesthesia" refLabel="BJA 2007 Elective Neurosurgery" /></li>
+                  <li><strong className="text-foreground">Awake / monitored anaesthesia care:</strong> light sedation throughout, typically dexmedetomidine about 0.2–0.7 µg/kg/h or low-dose remifentanil about 0.01–0.05 µg/kg/min (or propofol TCI), reduced to minimal levels during testing</li>
+                  <li><strong className="text-foreground">Scalp block (both techniques):</strong> long-acting local anaesthetic to six nerves each side as needed — supraorbital, supratrochlear, zygomaticotemporal, auriculotemporal, greater and lesser occipital — plus infiltration at pin sites and the incision</li>
+                </ul>
+                <p className="text-xs font-semibold text-foreground mt-3">Intra-operative problems</p>
+                <ul className="list-disc list-inside text-xs text-muted-foreground mt-1 space-y-1">
+                  <li><strong className="text-foreground">Seizures</strong> (usually stimulation-induced): surgeon irrigates the cortex with iced saline; if it continues, a small propofol bolus (e.g. 10–20 mg) or a benzodiazepine; protect the airway</li>
+                  <li><strong className="text-foreground">Airway compromise or over-sedation:</strong> reduce sedation, jaw thrust or nasal airway; rescue with an LMA (head is pinned, so the airway plan must allow access) and, if needed, tracheal intubation with a videolaryngoscope or flexible scope</li>
+                  <li><strong className="text-foreground">Agitation, pain, nausea and discomfort:</strong> top up the scalp block or local infiltration, small doses of short-acting drugs, antiemetics, reassurance from a named team member; convert to general anaesthesia if the patient can no longer co-operate</li>
+                </ul>
               </div>
             </div>
             </CollapsibleSubsection>
