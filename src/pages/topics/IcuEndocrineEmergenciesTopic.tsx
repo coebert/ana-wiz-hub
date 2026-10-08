@@ -1,3 +1,4 @@
+import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
