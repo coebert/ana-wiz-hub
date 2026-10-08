@@ -175,7 +175,7 @@ const keyPoints = [
   },
   {
     text: "Carbon monoxide — desflurane (and other haloether agents) + desiccated KOH-containing absorbent (Baralyme, older soda lime). Amsorb® (Ca(OH)₂-only, no strong base) eliminates both CO and Compound A.",
-    cites: ["BJA Educ 2005", "Davey & Diba Ch.5"],
+    cites: ["BJA Educ 2005", "Davey & Diba Ch.5", "Coppens 2006 (CO production)"],
   },
   {
     text: "Pethick's test verifies coaxial inner tube integrity in a Bain circuit. Occlude patient end, fill bag with O₂ flush, release — functional circuits collapse the bag via Venturi entrainment past the inner tube.",

@@ -37,6 +37,7 @@ const keyPoints = [
   { text: "Platinum resistance thermometers (RTD/Pt100) have a linear PTC response — most accurate but slowest; laboratory standard", cites: ["Cross & Plunkett Ch.11"] },
   { text: "Infrared tympanic thermometry uses the Stefan-Boltzmann law (P ∝ T⁴) with a thermopile sensor to detect IR radiation from the tympanic membrane", cites: ["BJA Educ 2014"] },
   { text: "The tympanic membrane lies close to the internal carotid artery; its emitted IR radiation is therefore a surrogate for the temperature of blood supplying the hypothalamus, reflecting core temperature", cites: ["Cross & Plunkett Ch.11"] },
+  { text: "Infrared tympanic readings are error-prone: poor probe alignment, ear canal wax or narrowing, and a cooler canal wall cause under-reading. In critically ill adults they agreed poorly with pulmonary artery temperature, so they should not replace a core site when accuracy matters", cites: ["Moran 2007 (Tympanic ICU)"] },
   { text: "Thermocouples are self-generating (no battery needed); thermistors and RTDs require external power via a Wheatstone bridge", cites: ["Cross & Plunkett Ch.11"] },
   { text: "PA catheter thermistor is the gold standard for core temperature; nasopharyngeal thermocouple best reflects brain temperature", cites: ["BJA Educ 2014"] },
 ];
