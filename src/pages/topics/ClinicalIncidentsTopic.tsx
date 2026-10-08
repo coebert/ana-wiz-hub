@@ -114,6 +114,7 @@ const tocItems = [
   { id: "section-awareness", label: "Accidental Awareness", group: "Incidents" },
   { id: "section-death-on-table", label: "Death on the Table", group: "Incidents" },
   { id: "section-cico", label: "Cannot Intubate, Cannot Oxygenate", group: "Incidents" },
+  { id: "section-tracheostomy", label: "Tracheostomy & Laryngectomy Emergencies", group: "Incidents" },
 ];
 
 const ClinicalIncidentsTopic = () => {
@@ -159,7 +160,7 @@ const ClinicalIncidentsTopic = () => {
         { text: "Anaphylaxis: IM adrenaline 0.5 mg (or IV 50 µg titrated) is FIRST-line — antihistamine and steroid are adjuncts only", cites: ["NAP Reports"] },
         { text: "Tryptase: take at presentation, 1–2 h, and a baseline at ≥ 24 h — labelled with exact times", cites: ["AAGBI 2009"] },
         { text: "MH: rising EtCO₂ + tachycardia is the earliest sign. Dantrolene 2.5 mg/kg IV, repeat to 10 mg/kg", cites: ["AAGBI 2011"] },
-        { text: "LAST: Intralipid 20% bolus 1.5 mL/kg, infusion 15 mL/kg/h. AVOID propofol, lidocaine, and amiodarone in arrest", cites: ["BJA Educ 2011"] },
+        { text: "LAST: Intralipid 20% bolus 1.5 mL/kg, infusion 15 mL/kg/h (= 0.25 mL/kg/min). AVOID propofol, lidocaine, and amiodarone in arrest", cites: ["BJA Educ 2011"] },
         { text: "Awareness: NAP5 incidence ~1:19,000. BIS 40-60 reduces risk in TIVA; document, acknowledge, and refer for psychological follow-up", cites: ["NAP Reports"] },
         { text: <>NMBAs cause ~38% of perioperative anaphylaxis (NAP6), followed by antibiotics (26%) and chlorhexidine (9%) <InlineRef topicId="clinical-incidents" refLabel="NAP6 2018 (Triggers)" /></>, cites: ["AAGBI 2009"] },
       ]}
@@ -169,7 +170,7 @@ const ClinicalIncidentsTopic = () => {
           <ExamSection id="section-anaphylaxis" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
             <CollapsibleSubsection title="Anaphylaxis" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Perioperative anaphylaxis occurs in ~1:10,000 anaesthetics (NAP6). <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">NMBAs</Link> are the commonest cause (~60%), followed by antibiotics (especially teicoplanin), chlorhexidine, and patent blue dye.
+              Perioperative anaphylaxis occurs in ~1:10,000 anaesthetics (NAP6). <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">NMBAs</Link> account for ~38% of cases, with antibiotics (especially teicoplanin and co-amoxiclav, ~26%), chlorhexidine (~9%) and patent blue dye making up most of the rest <InlineRef topicId="clinical-incidents" refLabel="NAP6 2018 (Triggers)" />.
             </p>
             <div className="rounded-xl border border-border bg-card p-5 space-y-2">
               <p className="font-semibold text-foreground text-sm">AAGBI/RCoA Management Algorithm</p>
@@ -225,7 +226,7 @@ const ClinicalIncidentsTopic = () => {
                 <li>ABCDE, secure airway, 100% O₂</li>
                 <li>Seizures → benzodiazepine (avoid propofol in cardiac arrest)</li>
                 <li>If cardiac arrest → CPR, AVOID lidocaine/amiodarone/vasopressin</li>
-                <li><strong>Intralipid 20%</strong>: 1.5 mL/kg bolus, then 15 mL/kg/h infusion (max 12 mL/kg total)</li>
+                <li><strong>Intralipid 20%</strong>: 1.5 mL/kg bolus, then 15 mL/kg/h (0.25 mL/kg/min) infusion (max 12 mL/kg total)</li>
               </ul>
             </div>
             </CollapsibleSubsection>
@@ -322,7 +323,7 @@ const ClinicalIncidentsTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li><strong>Call for help early</strong> — declare "cardiac arrest" out loud; activate theatre arrest call; second anaesthetist + ODP/anaesthetic assistant to the head; runner for drugs/blood.</li>
                 <li><strong>ALS algorithm adapted to theatre</strong>: turn off volatile/TIVA, FiO₂ 1.0, confirm ETT position with ETCO₂ (a sudden ETCO₂ drop is often the first sign), high-quality CPR — surgeons stop and step back from the field; consider open chest cardiac massage in cardiothoracic / abdominal surgery already opened.</li>
-                <li><strong>Reversible causes (4 Hs &amp; 4 Ts) with anaesthesia-specific add-ons</strong>: anaphylaxis (give IM/IV adrenaline early), LAST (Intralipid 20% 1.5 mL/kg bolus then 15 mL/kg/h), MH (stop trigger, dantrolene), high spinal, gas embolism, haemorrhage, vagal reflex (e.g. peritoneal traction), tension pneumothorax (especially after CVC, brachial plexus, intercostal block), tamponade.</li>
+                <li><strong>Reversible causes (4 Hs &amp; 4 Ts) with anaesthesia-specific add-ons</strong>: anaphylaxis (give IM/IV adrenaline early), LAST (Intralipid 20% 1.5 mL/kg bolus then 15 mL/kg/h, i.e. 0.25 mL/kg/min), MH (stop trigger, dantrolene), high spinal, gas embolism, haemorrhage, vagal reflex (e.g. peritoneal traction), tension pneumothorax (especially after CVC, brachial plexus, intercostal block), tamponade.</li>
                 <li><strong>Surgical control of haemorrhage</strong> takes priority alongside resuscitation — activate major haemorrhage protocol, give TXA, use cell salvage, accept permissive hypotension until source controlled.</li>
                 <li><strong>Decision to stop</strong>: by consensus of the senior anaesthetist and senior surgeon, after exclusion of reversible causes and an adequate ALS effort. Document time of death, rhythm, and last interventions.</li>
               </ul>
@@ -361,6 +362,14 @@ const ClinicalIncidentsTopic = () => {
                 <li><strong>Closed-loop communication</strong>: instructions are directed at a named individual, acknowledged back, and confirmed once complete (e.g. "give 1 mg adrenaline" → "giving 1 mg adrenaline now" → "1 mg adrenaline given"). This reduces omitted or duplicated interventions.</li>
                 <li><strong>Structured hot debrief</strong> immediately after the event, using a simple framework such as <strong>STOP5</strong> (Summarise, Things that went well, Opportunities to improve, Points to action, Set a follow-up date) or a <strong>diamond debrief</strong> (facts → feelings → future actions, widening from the individual to the team). Keep it brief, blame-free, and focused on systems.</li>
               </ul>
+              <p className="text-sm mt-2"><strong>Human factors framework (applies to every critical incident).</strong> Non-technical skills are the cognitive, social and personal-resource skills that complement technical knowledge and contribute to safe, efficient performance. The <strong>ANTS</strong> (Anaesthetists' Non-Technical Skills) taxonomy groups them into four categories, and a large share of contributory factors in incident reports map onto them <InlineRef topicId="clinical-incidents" refLabel="BJA 2006 (Non-technical skills)" />:</p>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Task management</strong>: planning and preparing (drugs drawn up, difficult-airway trolley checked), prioritising (oxygenation before diagnosis), and identifying and using resources — e.g. delegating dantrolene mixing to two helpers.</li>
+                <li><strong>Team working</strong>: calling for help early, coordinating activities, exchanging information, and supporting others — e.g. declaring "this is anaphylaxis, I am leading, please start the QRH".</li>
+                <li><strong>Situation awareness</strong>: gathering information, recognising and understanding it, and anticipating — e.g. noticing a steadily rising EtCO₂ before tachycardia appears in MH.</li>
+                <li><strong>Decision making</strong>: identifying options, balancing risks, selecting and re-evaluating — e.g. deciding to wake the patient versus proceeding to front-of-neck access, and reviewing that decision as SpO₂ changes.</li>
+              </ul>
+              <p className="text-sm mt-2">Communication tools reduce error under stress: <strong>closed-loop communication</strong> for every instruction and <strong>SBAR</strong> (Situation, Background, Assessment, Recommendation) when calling a senior or handing over. <strong>Cognitive aids</strong> such as the Association of Anaesthetists Quick Reference Handbook and local crisis checklists should be read aloud by a nominated "reader" rather than recalled from memory. Finally, incidents rarely stem from a single <strong>active error</strong> at the sharp end; latent system conditions (look-alike ampoules, missing equipment, fatigue, staffing, poor rota design) line up with it (Reason's "Swiss cheese" model). Investigations should therefore target systems, not individuals.</p>
 
               <h3 className="text-base font-semibold text-foreground mt-3">6. Staff welfare &amp; second-victim support</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -410,13 +419,36 @@ const ClinicalIncidentsTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <ExamSection id="section-tracheostomy" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia", "FFICM 2.5"]}>
+            <CollapsibleSubsection title="Tracheostomy & Laryngectomy Emergencies">
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Tracheostomy and laryngectomy airway emergencies are uncommon but cause significant morbidity and mortality. The UK <strong>National Tracheostomy Safety Project (NTSP)</strong> algorithms give a universal approach designed for first responders <InlineRef topicId="clinical-incidents" refLabel="NTSP 2012" />.
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-3">
+              <li><strong>Recognise the problem</strong>: a <strong>blocked</strong> tube (secretions, blood clot, kinking — rising airway pressures, no capnography trace, failure to pass a suction catheter), a <strong>displaced</strong> tube (partially or fully out of the trachea, often with surgical emphysema or air leak), or <strong>bleeding</strong> (early from the wound; later, a "herald" bleed may signal tracheo-innominate fistula).</li>
+              <li><strong>Bedhead signs</strong>: a green sign means a tracheostomy with a potentially patent upper airway; a red sign means a laryngectomy — the neck stoma is the only airway and the patient <strong>cannot be oxygenated or intubated from above</strong>.</li>
+              <li><strong>Initial assessment</strong>: call for airway expertise; <strong>Look, Listen and Feel</strong> at the mouth <em>and</em> the tracheostomy; use waveform capnography; apply high-flow oxygen to <strong>both</strong> the face and the stoma (only the stoma in a laryngectomy).</li>
+            </ul>
+            <h3 className="text-base font-semibold text-foreground mt-3 mb-2">Blocked or displaced tracheostomy (NTSP sequence)</h3>
+            <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground mb-3">
+              <li>Remove speaking valve or cap and <strong>remove the inner cannula</strong> (some only fit inner tubes after reinsertion).</li>
+              <li><strong>Pass a suction catheter</strong>. If it passes easily, the tube is patent — perform tracheal suction and consider partial obstruction.</li>
+              <li>If the catheter will not pass, <strong>deflate the cuff</strong>. Look, listen and feel at the mouth and tracheostomy; assess with capnography.</li>
+              <li>If the patient is not stable or improving, <strong>remove the tracheostomy tube</strong>, then reassess.</li>
+              <li>If not breathing: call the resuscitation team and start CPR if no pulse. Provide <strong>primary emergency oxygenation</strong>: standard oral airway manoeuvres with stoma covered, or a paediatric face mask / supraglottic airway applied to the stoma.</li>
+              <li><strong>Secondary emergency oxygenation</strong> by experienced staff: oral intubation with an uncut tube advanced beyond the stoma, or stoma intubation with a smaller tracheostomy or tracheal tube (6.0 ID), ideally over a bougie, airway exchange catheter or flexible scope. A fresh (&lt; 7–10 day) percutaneous tract may close quickly and is easily misplaced; re-insertion through a mature stoma is usually easier. Oral intubation is the safer first choice for a fresh tracheostomy where the upper airway is patent.</li>
+            </ol>
+            <h3 className="text-base font-semibold text-foreground mt-3 mb-2">Equipment at every tracheostomy bedside</h3>
+            <p className="text-sm text-muted-foreground mb-3">Spare tracheostomy tube of the same size and one size smaller, tracheal dilators, suction, waveform capnography, a self-inflating bag with face and stoma masks, a bougie or airway exchange catheter, and immediate access to a flexible scope. Bedhead signs should record tube type and size, date and type of insertion, and whether the upper airway is patent.</p>
+            </CollapsibleSubsection>
+          </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
               "Anaphylaxis (NAP6): NMBAs (38%), antibiotics (26%) and chlorhexidine (9%) top the list — adrenaline IM 0.5 mg first line.",
               <>Tryptase sampling: ASAP after resuscitation, at 1–2 h, and a baseline at ≥ 24 h — an uninterpretable acute value without the 24 h baseline is a common exam trap <InlineRef topicId="clinical-incidents" refLabel="RCUK Anaphylaxis 2021" /></>,
               "Malignant hyperthermia: stop trigger, hyperventilate 100% O₂ high flows, dantrolene 2.5 mg/kg repeated to 10 mg/kg, cool, treat hyperkalaemia.",
-              <>LAST: stop injection, ABC, manage seizures, 20% Intralipid 1.5 mL/kg bolus then 15 mL/kg/h infusion (max cumulative 12 mL/kg) <InlineRef topicId="clinical-incidents" refLabel="AAGBI LAST 2010" /></>,
+              <>LAST: stop injection, ABC, manage seizures, 20% Intralipid 1.5 mL/kg bolus then 15 mL/kg/h (0.25 mL/kg/min) infusion (max cumulative 12 mL/kg) <InlineRef topicId="clinical-incidents" refLabel="AAGBI LAST 2010" /></>,
               "Accidental awareness (NAP5): risk highest with TIVA + NMB; use processed EEG; debrief and refer for psychological support.",
               "Cannot intubate, cannot oxygenate: declare CICO, call for help, scalpel-bougie-tube cricothyroidotomy without delay.",
             ]}

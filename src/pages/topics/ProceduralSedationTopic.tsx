@@ -509,6 +509,14 @@ const ProceduralSedationTopic = () => {
           <ExamSection id="complications" exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Complications & Rescue">
             <SedationRescueLadder />
+            <h3 className="font-serif font-bold text-foreground text-base mt-6 mb-2">Hypotension</h3>
+            <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li><strong>Common, not trivial</strong>: hypotension occurs in roughly a third of propofol-sedated colonoscopies (about 36% in a pooled analysis), and often with a depth and duration that is associated with harm in surgical patients <InlineRef topicId="procedural-sedation" refLabel="BJA 2022 (Sedation hypotension)" />.</li>
+              <li><strong>Why it matters</strong>: perioperative hypotension is linked to organ injury, including myocardial injury and acute kidney injury; sedation is not exempt simply because the procedure is short.</li>
+              <li><strong>Drug choice</strong>: propofol causes more hypotension than benzodiazepine-based sedation; remimazolam appears to cause less than propofol.</li>
+              <li><strong>Risk factors</strong>: higher propofol doses, longer procedures, hypovolaemia (e.g. after bowel preparation), older or frail patients, and higher ASA grade.</li>
+              <li><strong>Management</strong>: lighten sedation (reduce or pause the infusion), give a fluid bolus, and treat with a vasopressor (phenylephrine, metaraminol or ephedrine) while excluding bleeding, vagal reflexes and anaphylaxis.</li>
+            </ul>
             <h3 className="font-serif font-bold text-foreground text-base mt-6 mb-2">
               Other complications to recognise
             </h3>

@@ -219,9 +219,24 @@ const ResourcePoorAnaesthesiaTopic = () => {
               <li><strong>Mechanical measures</strong> bridge to surgery: bimanual uterine compression, aortic compression, an intrauterine balloon improvised from a condom tied over a catheter and filled with 250–500 mL saline, a non-pneumatic anti-shock garment for transfer, uterine massage and emptying the bladder.</li>
               <li><strong>Surgical escalation</strong>: examine under anaesthesia and evacuate retained products, repair tears, then B-Lynch or other compression sutures, uterine or internal iliac artery ligation, and hysterectomy — do not delay the decision while waiting for blood that will not arrive.</li>
               <li><strong>Transfusion improvisation</strong>: walking-donor panels with bedside typing and rapid screening, autotransfusion of intraperitoneal blood in ruptured ectopic pregnancy where local protocols permit, warmed crystalloid in the smallest volume that maintains a palpable radial pulse and consciousness (permissive hypotension), and prevention of hypothermia and acidosis.</li>
+              <li><strong>Tranexamic acid</strong>: 1 g IV as soon as possible, and within 3 hours of birth, with a second 1 g if bleeding continues after 30 minutes or restarts within 24 hours (WOMAN trial); call for help, give oxygen and secure two large-bore cannulas at the outset.</li>
               <li><strong>Prevention is the highest-yield intervention</strong>: active management of the third stage with a uterotonic for every birth, plus routine quantitative blood-loss estimation rather than visual guessing.</li>
             </ul>
 
+            </CollapsibleSubsection>
+          </ExamSection>
+          <ExamSection id="recovery" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Postoperative Care and Recovery">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              The WHO–WFSA standards apply after the operation as well as during it: patients need a dedicated recovery area with oxygen, suction and pulse oximetry until they are awake and stable, even if that is only a corner of the theatre <InlineRef topicId="resource-poor-anaesthesia" refLabel="WHO-WFSA Standards 2018" />.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Pulse oximetry</strong> is the single most valuable recovery monitor — hypoxia from residual drugs, airway obstruction or hypoventilation is the commonest early killer and is often silent.</li>
+              <li><strong>Staffing</strong>: a trained person should watch each recovering patient continuously. When the theatre nurse or anaesthesia provider must also start the next case, keep the patient within sight and hearing, and do not leave an unconscious patient alone.</li>
+              <li><strong>Pain without opioids</strong>: wound infiltration or nerve blocks at the end of surgery, regular paracetamol, NSAIDs where kidney function and bleeding allow, and low-dose ketamine.</li>
+              <li><strong>Common problems</strong>: nausea and vomiting (cheap options include dexamethasone, metoclopramide or promethazine, plus a lateral position if drowsy); shivering (warm blankets, warm fluids; pethidine if stocked); hypotension (look for bleeding first, then give fluid and leg elevation, with ephedrine if needed).</li>
+              <li><strong>Discharge to the ward</strong>: awake and protecting the airway, oxygen saturation maintained on air or on the ward's available oxygen, stable pulse and blood pressure, pain and nausea controlled, no active bleeding, and a written plan for observations and analgesia.</li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout

@@ -136,7 +136,14 @@ const DaySurgeryTopic = () => {
               <li><strong>Short-acting agents</strong>: propofol, remifentanil, desflurane/sevoflurane, mivacurium/sugammadex</li>
               <li><strong>PONV prevention</strong>: multimodal (dexamethasone + ondansetron). Consider TIVA for high-risk; avoid N₂O</li>
               <li><strong>Multimodal analgesia</strong>: paracetamol + NSAID + local/regional anaesthesia; take-home analgesics with clear instructions</li>
-              <li><strong>Regional anaesthesia</strong>: excellent for day case — reduces opioid requirement. Single-shot peripheral nerve blocks preferred. Counsel about <strong>rebound pain</strong> as the block wears off</li>
+              <li><strong>Regional anaesthesia</strong>: excellent for day case — reduces opioid requirement. Single-shot peripheral nerve blocks preferred. Counsel about <strong>rebound pain</strong> as the block wears off. Beyond opioid sparing, good blocks reduce PONV and allow earlier discharge. Examples:
+                <ul className="list-disc list-inside ml-5 mt-1 space-y-1">
+                  <li><strong>Rectus sheath block</strong> for umbilical hernia repair, which gave better perioperative analgesia than surgical-site infiltration in a randomised trial <InlineRef topicId="day-surgery" refLabel="BJA 2011 (Rectus sheath block)" /></li>
+                  <li><strong>Ilioinguinal/iliohypogastric block</strong> for inguinal hernia repair; warn about transient femoral nerve palsy (quadriceps weakness and fall risk) if local anaesthetic spreads medially — check leg strength before walking</li>
+                  <li><strong>Popliteal sciatic block</strong> for foot and ankle surgery; <strong>adductor canal block</strong> for knee arthroscopy and ACL repair, which preserves quadriceps strength better than a femoral block</li>
+                  <li><strong>Short-acting spinal anaesthesia</strong> with hyperbaric prilocaine or chloroprocaine, which wears off quickly enough for same-day discharge</li>
+                </ul>
+              </li>
             </ul>
             </CollapsibleSubsection>
           </ExamSection>
