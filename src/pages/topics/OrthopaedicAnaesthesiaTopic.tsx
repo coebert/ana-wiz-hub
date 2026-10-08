@@ -38,7 +38,7 @@ const tocItems = [
 const orthoFaqs: Array<[string, string]> = [
   [
     "What is bone cement implantation syndrome (BCIS) and how is it graded?",
-    "Bone cement implantation syndrome is the cardiovascular collapse that can follow insertion of methyl methacrylate cement during arthroplasty. It is caused by fat/marrow embolism, monomer toxicity, histamine release, and complement activation. The AAGBI grading is: Grade 1 — SpO₂ <94% or a >20% fall in systolic blood pressure; Grade 2 — unexplained loss of consciousness; Grade 3 — cardiovascular collapse requiring CPR. Prevention includes ensuring euvolaemia, giving 100% oxygen before cementation, alerting the surgeon, lavaging the femoral canal, and using retrograde cementation. Treatment is supportive: oxygen, fluid bolus, and vasopressors (noradrenaline preferred for vasoplegia).",
+    "Bone cement implantation syndrome is the cardiovascular collapse that can follow insertion of methyl methacrylate cement during arthroplasty. It is caused by fat/marrow embolism, monomer toxicity, histamine release, and complement activation. The AAGBI grading is: Grade 1 — SpO₂ <94% or a >20% fall in systolic blood pressure; Grade 2 — SpO₂ <88%, a >40% fall in systolic pressure or SBP <80 mmHg, or unexpected loss of consciousness; Grade 3 — cardiovascular collapse requiring CPR. Prevention includes ensuring euvolaemia, giving 100% oxygen before cementation, alerting the surgeon, lavaging the femoral canal, and using retrograde cementation. Treatment is supportive: oxygen, fluid bolus, and vasopressors (noradrenaline preferred for vasoplegia).",
   ],
   [
     "How does tourniquet inflation and deflation affect physiology?",
