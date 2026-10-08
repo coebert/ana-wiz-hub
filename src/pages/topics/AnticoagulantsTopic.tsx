@@ -266,7 +266,7 @@ const AnticoagulantsTopic = () => {
                   <strong>Diet:</strong> a high vitamin K intake (green leafy vegetables) lowers the INR while a sudden reduction raises
                   it — consistency matters more than restriction. <strong>Liver disease</strong> both impairs synthesis of the
                   vitamin K-dependent factors and reduces warfarin clearance, so the baseline INR is already prolonged and the
-                  response to a given dose is exaggerated and unpredictable; heart failure with hepatic congestion behaves similarly.
+                  response to a given dose is exaggerated and unpredictable; heart failure with hepatic congestion behaves similarly. Hypermetabolic states (fever, thyrotoxicosis) increase clotting-factor catabolism and raise the INR, as does malnourishment.
                 </p>
               </div>
               <div className="rounded-lg p-4 border border-border bg-card">
