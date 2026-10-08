@@ -11,7 +11,7 @@ import VaporiserSplittingRatioDiagram from "@/components/diagrams/physics/Vapori
 const vaporisersFaqs: Array<[string, string]> = [
   [
     "How does a variable-bypass vaporiser maintain a constant output concentration?",
-    "Fresh gas is split between a bypass channel and a vaporising chamber where it becomes fully saturated with volatile vapour. The splitting ratio is set by the dial. Temperature compensation is achieved by a bimetallic strip (or expansion bellows) that increases flow through the vaporising chamber as temperature falls, compensating for reduced saturated vapour pressure after evaporative cooling. Flow compensation accommodates flows 0.2–15 L/min."
+    "Fresh gas is split between a bypass channel and a vaporising chamber where it becomes fully saturated with volatile vapour. The splitting ratio is set by the dial. Temperature compensation is achieved by a bimetallic strip in the bypass (Tec series) or an expanding element at the chamber outlet (Dräger Vapor), which diverts more flow through the vaporising chamber as temperature falls, compensating for reduced saturated vapour pressure after evaporative cooling. Flow compensation accommodates flows 0.2–15 L/min."
   ],
   [
     "Why does desflurane require a heated, pressurised vaporiser (Tec 6)?",
@@ -37,7 +37,7 @@ const objectives = [
   "Define saturated vapour pressure (SVP) and explain why it depends only on agent identity and temperature, not on atmospheric pressure.",
   "Quote SVP values at 20 °C for sevoflurane, isoflurane, halothane and desflurane and link each to the vaporiser design required.",
   "Calculate the splitting ratio for a given dial setting using SVP / Patm and predict the effect of altered atmospheric pressure.",
-  "Describe the temperature-compensation mechanism of the Tec 5 / Tec 7 (bimetallic strip / aneroid bellows) and explain why the latent heat of vaporisation drives chamber cooling.",
+  "Describe the temperature-compensation mechanism of the Tec 5 / Tec 7 (bimetallic strip in the bypass) and Dräger Vapor (expansion element) and explain why the latent heat of vaporisation drives chamber cooling.",
   "Explain the unique engineering of the Tec 6 (Datex-Ohmeda Aladin reservoir) and why desflurane cannot be delivered by a conventional plenum vaporiser.",
   "Compare plenum, draw-over (EMO, Diamedica DPA) and gas / vapour blender designs by indication, accuracy and power requirements.",
   "Identify the safety features that prevent agent mis-filling, tipping, back-pressure and pumping effects.",
@@ -150,7 +150,7 @@ const keyPoints = [
     cites: ["Al-Shaikh & Stacey Ch.5"],
   },
   {
-    text: "Latent heat of vaporisation cools the chamber, reducing SVP and therefore output. A bimetallic strip (Tec 5) or aneroid bellows (Tec 7) widens the chamber port as temperature falls, restoring output — temperature compensation.",
+    text: "Latent heat of vaporisation cools the chamber, reducing SVP and therefore output. In the Tec 5 and Tec 7 a bimetallic strip in the bypass bends to narrow the bypass as temperature falls, diverting more fresh gas through the vaporising chamber and restoring output (Dräger Vapor 19/2000 use an expansion element instead) — temperature compensation.",
     cites: ["Davey & Diba Ch.3"],
   },
   {
