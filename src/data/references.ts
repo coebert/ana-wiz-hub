@@ -932,6 +932,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2016", citation: "Woolley T, Thompson P. Trauma resuscitation — damage control. BJA Education. 2013;13(3):110-114.", url: "https://doi.org/10.1093/bjaceaccp/mks072" },
   ],
   "abdominal-compartment-syndrome": [
+    { label: "Malbrain 2006", citation: "Malbrain ML, Cheatham ML, Kirkpatrick A, et al. Results from the International Conference of Experts on Intra-abdominal Hypertension and Abdominal Compartment Syndrome. I. Definitions. Intensive Care Med. 2006;32(11):1722-1732.", url: "https://doi.org/10.1007/s00134-006-0349-5" },
     { label: "Malbrain 2004", citation: "Malbrain ML. Different techniques to measure intra-abdominal pressure (IAP): time for a critical re-appraisal. Intensive Care Med. 2004;30(3):357-371.", url: "https://doi.org/10.1007/s00134-003-2107-2" },
     { label: "Jacobs 2022", citation: "Jacobs R, Wise RD, Myatchin I, et al. Fluid management, intra-abdominal hypertension and the abdominal compartment syndrome: a narrative review. Life (Basel). 2022;12(9):1390.", url: "https://doi.org/10.3390/life12091390" },
     { label: "WSACS 2013", citation: "Kirkpatrick AW, Roberts DJ, De Waele J, et al. Intra-abdominal hypertension and the abdominal compartment syndrome: updated consensus definitions and clinical practice guidelines from the World Society of the Abdominal Compartment Syndrome. Intensive Care Med. 2013;39(7):1190-1206.", url: "https://doi.org/10.1007/s00134-013-2906-z", excerpt: "Intra-abdominal hypertension (IAH) is defined as a sustained or repeated pathological elevation of IAP ≥ 12 mmHg. Abdominal compartment syndrome (ACS) is defined as a sustained IAP > 20 mmHg (with or without an APP < 60 mmHg) that is associated with new organ dysfunction/failure. Abdominal perfusion pressure (APP) = MAP − IAP and should be maintained ≥ 60 mmHg." },
@@ -1060,6 +1061,7 @@ export const topicReferences: Record<string, Reference[]> = {
 
   ],
   "acute-liver-failure": [
+    { label: "Schultheiss 2012", citation: "Schultheiß C, Saugel B, Phillip V, et al. Continuous venovenous hemodialysis with regional citrate anticoagulation in patients with liver failure: a prospective observational study. Crit Care. 2012;16(4):R162.", url: "https://doi.org/10.1186/cc11485" },
     { label: "AASLD ALF 2023", citation: "Shingina A, Mukhtar N, Wakim-Fleming J, et al. Acute liver failure guidelines. Am J Gastroenterol / Hepatology. 2023.", url: "https://doi.org/10.1097/hep.0000000000000458" },
 
     { label: "DILI Review 2023", citation: "Ortega-Alonso A, Andrade RJ, et al. Drug-induced liver injury: a comprehensive review. Ther Adv Gastroenterol. 2023;16:17562848231163410.", url: "https://doi.org/10.1177/17562848231163410", excerpt: "Drug-induced liver injury (DILI) remains a challenge in clinical practice and is still a diagnosis of exclusion. Although it has a low incidence amongst the general population, DILI accounts for most cases of acute liver failure with a fatality rate of up to 50%." },

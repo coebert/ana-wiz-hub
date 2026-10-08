@@ -340,7 +340,7 @@ const AbdominalCompartmentSyndromeTopic = () => {
               <h3 className="text-base font-semibold text-foreground mt-5 mb-2">Stepwise escalation by IAH grade</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                 The WSACS algorithm is deliberately stepwise: measure IAP, treat, re-measure, and escalate only if the
-                pressure or organ function fails to improve. A practical ladder<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />:
+                pressure or organ function fails to improve. A practical ladder<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" /><InlineRef topicId="abdominal-compartment-syndrome" refLabel="Malbrain 2006" />:
               </p>
               <div className="space-y-3">
                 {[
