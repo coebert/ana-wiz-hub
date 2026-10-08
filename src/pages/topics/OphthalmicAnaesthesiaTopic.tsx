@@ -71,7 +71,7 @@ const eyeFaqs: Array<[string, string]> = [
   ],
   [
     "What are the anaesthetic considerations for vitreoretinal surgery?",
-    "Vitreoretinal surgery involves the posterior segment and often requires controlled hypotension to reduce bleeding, particularly during scleral buckling or membrane peeling. The patient may be prone, requiring careful airway security and pressure-point protection. Intraocular gas (SF₆ or C₃F₈) may be injected — N₂O is absolutely contraindicated for 1–3 months postoperatively because it expands the gas bubble and raises IOP catastrophically. General anaesthesia is usually required because the surgery is long and delicate, though some macular procedures can be performed under sub-Tenon's block. Postoperative positioning (often face-down for several days) is critical for gas tamponade efficacy but does not affect the immediate anaesthetic plan. PONV is common after vitrectomy; use TIVA and multimodal antiemetics.",
+    "Vitreoretinal surgery involves the posterior segment and often requires controlled hypotension to reduce bleeding, particularly during scleral buckling or membrane peeling. The patient may be prone, requiring careful airway security and pressure-point protection. Intraocular gas (SF₆ or C₃F₈) may be injected — N₂O is absolutely contraindicated for 1–3 months postoperatively because it expands the gas bubble and raises IOP catastrophically. General anaesthesia is often chosen because the surgery is long and delicate and needs a completely still patient, though many vitrectomies are now done under sub-Tenon's or peribulbar block. Under GA, aim for a deep, smooth plane with full immobility — remifentanil-based TIVA or volatile with remifentanil works well, and modest controlled hypotension (e.g. MAP 60–70 mmHg, or within 20–30% of baseline in hypertensive patients) reduces bleeding. N₂O is absolutely contraindicated while gas remains in the eye: about 2 weeks for air, 2–4 weeks for SF₆ and up to 8–12 weeks for C₃F₈; the patient should wear a warning wristband. Scleral buckling involves traction on the extraocular muscles and commonly triggers the oculocardiac reflex — warn the surgeon to release traction and give atropine or glycopyrronium if bradycardia persists. Buckling is more painful than vitrectomy, so plan regular analgesia and consider a block. Postoperative positioning (often face-down for several days) is critical for gas tamponade; avoid pressure on the eye during recovery. PONV is common after vitrectomy; use TIVA and multimodal antiemetics.",
   ],
 ];
 
@@ -181,7 +181,14 @@ const OphthalmicAnaesthesiaTopic = () => {
                 </tbody>
               </table>
             </div>
-            </CollapsibleSubsection>
+                        <h3 className="font-serif font-bold text-foreground text-base mt-4 mb-2">Patients on anticoagulants or antiplatelets</h3>
+            <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li><strong>Sharp-needle blocks</strong> (peribulbar, retrobulbar) carry a higher risk of retrobulbar haemorrhage in anticoagulated patients, which can threaten sight.</li>
+              <li><strong>Sub-Tenon's block</strong> with a blunt cannula is the preferred regional technique; minor subconjunctival bleeding is common but rarely matters.</li>
+              <li><strong>Topical anaesthesia</strong> carries no bleeding risk but gives no akinesia, so it suits cooperative patients having cataract surgery.</li>
+              <li><strong>Usually continue</strong> anticoagulants and antiplatelets for cataract surgery under topical or sub-Tenon's anaesthesia — the risk of thrombosis from stopping usually outweighs the bleeding risk. Check the INR is in the patient's target range (often ≤ 3.5 on warfarin) in the days before surgery, and decide with the surgeon and patient for higher-risk surgery or sharp-needle blocks (RCoA/RCOphth joint guidance) <InlineRef topicId="ophthalmic-anaesthesia" refLabel="RCOphth/RCoA 2012" />.</li>
+            </ul>
+</CollapsibleSubsection>
           </ExamSection>
           </div>
 

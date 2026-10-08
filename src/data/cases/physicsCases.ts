@@ -244,8 +244,8 @@ export const physicsCaseBank: CaseBank = {
           title: "Manage the fire",
           prompt: "What is the immediate sequence?",
           answer: [
-            "Stop lasing, stop gas flow and disconnect the circuit, remove the burning tube and any flammable material, and flood the field with saline.",
-            "Re-establish ventilation on air, then reintubate and inspect the airway with bronchoscopy for thermal injury and debris.",
+            "In order: announce 'Airway fire' and stop lasing; stop the flow of all airway gases; disconnect the breathing system; remove the tracheal tube and any burning material; pour saline into the airway.",
+            "Re-establish ventilation with air (oxygen only once the fire is out and if needed), then reintubate and inspect the airway with bronchoscopy for thermal injury and debris.",
             "Continue with humidified oxygen as required, consider critical care admission, and treat inhalational injury and oedema.",
           ],
         },
