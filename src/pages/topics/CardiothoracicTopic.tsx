@@ -1,3 +1,4 @@
+import { CardiothoracicAtlas } from "@/components/topic/CardiothoracicAtlas";
 import { Helmet } from "react-helmet-async";
 import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
@@ -151,6 +152,7 @@ const CardiothoracicTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
           <TopicTableOfContents items={tocItems} />
+          <CardiothoracicAtlas />
           <p className="text-muted-foreground leading-relaxed mb-6">
             Cardiothoracic anaesthesia is built around two distinct domains. <strong>Cardiac surgery</strong> centres on cardiopulmonary bypass — its circuit, its physiological consequences, and the specific demands of valve, coronary, and aortic-arch procedures. <strong>Thoracic surgery</strong> centres on lung isolation and the management of one-lung ventilation. The topic below follows that order: cardiac fundamentals first, then thoracic.
           </p>
