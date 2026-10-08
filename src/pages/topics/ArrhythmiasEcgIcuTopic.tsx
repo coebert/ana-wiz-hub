@@ -435,7 +435,7 @@ const ArrhythmiasEcgIcuTopic = () => {
                 { label: "Hypomagnesaemia (Mg²⁺ < 0.7)", ecg: "Prolonged QT, torsades de pointes, refractory hypoK⁺.", treatment: "2 g IV Mg²⁺ over 10 min for torsades, then infusion." },
                 { label: "Hypocalcaemia (iCa²⁺ < 1.0)", ecg: "Prolonged QT (long ST segment), neuromuscular irritability.", treatment: "10 mL 10 % calcium gluconate IV (peripheral) or 10 mL 10 % calcium chloride centrally." },
                 { label: "Digoxin toxicity", ecg: "Reverse-tick ST depression, frequent VEs, slow AF, atrial tachycardia with block, bidirectional VT.", treatment: "Stop digoxin; continuous ECG; correct hypokalaemia and hypomagnesaemia, avoid hypercalcaemia. Bradycardia/AV block: atropine (often ineffective) or pacing. Ventricular arrhythmias: magnesium or lidocaine; avoid amiodarone and use DC shock only at low energy as last resort. Digoxin-specific Fab (DigiFab) for life-threatening arrhythmia, end-organ hypoperfusion, K⁺ > 5–6 mmol/L in acute poisoning, or very high levels — dose from amount ingested or steady-state level (or empirical vials per TOXBASE). After Fab: rapid hypokalaemia (monitor K⁺), recurrent AF/heart failure, and total digoxin levels become uninterpretable." },
-                { label: "Tricyclic / Na⁺-channel blocker overdose", ecg: "Wide QRS, R wave in aVR > 3 mm, terminal R aVR, sinus tachycardia, VT.", treatment: "Sodium bicarbonate 1–2 mmol/kg IV bolus until QRS narrows and pH 7.45–7.55." },
+                { label: "Tricyclic / Na⁺-channel blocker overdose", ecg: "Wide QRS, R wave in aVR > 3 mm, terminal R aVR, sinus tachycardia, VT.", treatment: "Sodium bicarbonate 8.4% 1–2 mmol/kg IV bolus, repeated until the QRS narrows, targeting arterial pH 7.50–7.55 — alkalinisation raises protein binding and the sodium load overcomes Na⁺-channel blockade. Seizures: benzodiazepines (they worsen acidosis). Hypotension: fluids then noradrenaline. Refractory arrhythmias: hypertonic saline as a second-line sodium load; lidocaine is a controversial option; avoid class Ia, Ic and III antiarrhythmics (and physostigmine/flumazenil). Lipid emulsion for refractory collapse or arrest; consider ECMO." },
                 { label: "Local anaesthetic systemic toxicity (LAST)", ecg: "Widening QRS, bradycardia, asystole, refractory VT/VF.", treatment: "Stop injection, 100 % O₂, 20 % Intralipid 1.5 mL/kg bolus then 0.25 mL/kg/min infusion, prolonged CPR." },
               ].map((e) => (
                 <div key={e.label} className="p-3 rounded-lg border border-border bg-card">
@@ -457,6 +457,15 @@ const ArrhythmiasEcgIcuTopic = () => {
               defibrillation.
             </p>
             <PacingDevicesDiagram />
+            <div className="p-3 rounded-lg border border-border bg-card mt-3 text-sm text-muted-foreground space-y-1">
+              <p className="font-semibold text-foreground">Temporary transvenous pacing — set-up and troubleshooting</p>
+              <p><strong>Indications:</strong> symptomatic bradycardia refractory to atropine/isoprenaline, high-risk AV block (Mobitz II, complete heart block), overdrive pacing for recurrent torsades.</p>
+              <p><strong>Insertion:</strong> right internal jugular (most direct route to the RV) or left subclavian, femoral if needed; via a sheath, ideally under fluoroscopy or echo. With a balloon-tipped wire inflate in the SVC/RA, float through the tricuspid valve, deflate before advancing. Contact with the RV endocardium gives ST elevation on the intracardiac electrogram and a LBBB-pattern paced QRS.</p>
+              <p><strong>Initial settings:</strong> VVI (or DDD with an atrial wire), rate 60–80/min, output initially 5–10 mA, sensitivity about 2 mV.</p>
+              <p><strong>Capture threshold:</strong> reduce output until capture is lost (ideally &lt; 1 mA), then set at 2–3× threshold; confirm mechanical capture with a pulse or arterial trace, not only pacing spikes.</p>
+              <p><strong>Sensing threshold:</strong> with an intrinsic rhythm, raise the mV value (less sensitive) until sensing is lost, then set to about half that value. Check thresholds daily.</p>
+              <p><strong>Troubleshooting:</strong> failure to capture — displacement, perforation, rising threshold (reposition, increase output, check connections); undersensing — lower the mV value; oversensing (inhibition by T waves or interference) — raise the mV value; pacing-wire perforation can cause tamponade.</p>
+            </div>
             </CollapsibleSubsection>
             <CollapsibleSubsection title="Managing arrhythmias in patients with CIEDs">
             <p className="text-muted-foreground leading-relaxed mb-3">

@@ -1521,10 +1521,34 @@ const MechanicalVentilationTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+          <CollapsibleSubsection title="Sedation and Analgesia in Mechanical Ventilation">
+          <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
+            <li><strong>Goal:</strong> comfort, safety and ventilator synchrony with the lightest effective sedation; over-sedation prolongs ventilation and increases delirium.</li>
+            <li><strong>Scoring:</strong> Richmond Agitation-Sedation Scale (RASS) — usual target 0 to −2, deeper only for specific indications (severe ARDS with NMB, raised ICP, status epilepticus).</li>
+            <li><strong>Analgesia first:</strong> treat pain (opioid, e.g. fentanyl or alfentanil) before adding a sedative.</li>
+            <li><strong>Agents:</strong> propofol — short context-sensitive half-time, hypotension, PRIS with high doses; dexmedetomidine — co-operative sedation without respiratory depression, bradycardia; benzodiazepines — accumulate and increase delirium, so avoid where possible.</li>
+            <li><strong>Daily sedation interruption paired with spontaneous breathing trials</strong> (SAT + SBT) reduces ventilator days and ICU stay.</li>
+            <li><strong>Delirium:</strong> screen every shift (CAM-ICU or ICDSC); sedation choice affects delirium incidence.<InlineRef topicId="mechanical-ventilation" refLabel="SSC 2008" /></li>
+          </ul>
+          </CollapsibleSubsection>
+        </ExamSection>
+
+        <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
+          <CollapsibleSubsection title="Early Mobility and Rehabilitation">
+          <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1">
+            <li><strong>Rationale:</strong> counters ICU-acquired weakness, shortens ventilation and delirium, improves functional recovery; stronger respiratory and limb muscles aid weaning.</li>
+            <li><strong>Safety:</strong> safe and feasible in ventilated patients with a dedicated team and protocol — a protocolised mobility team got patients out of bed sooner and shortened ICU and hospital stay.<InlineRef topicId="mechanical-ventilation" refLabel="Morris 2008 Early Mobility" /></li>
+            <li><strong>Progression:</strong> passive range of motion → active exercises and in-bed cycle ergometry → sitting on the edge of the bed → standing / transfer to chair → marching on the spot → walking.</li>
+            <li><strong>Hold or defer if:</strong> unstable haemodynamics or escalating vasopressors, insecure airway or high ventilatory demand (e.g. FiO₂ &gt; 0.6, PEEP &gt; 10), active major bleeding, uncontrolled raised ICP, unstable fractures, or RASS ≤ −3 / severe agitation.</li>
+          </ul>
+          </CollapsibleSubsection>
+        </ExamSection>
+
         <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
           <CollapsibleSubsection title="Post-Intensive Care Syndrome (PICS)">
           <p className="text-muted-foreground leading-relaxed mb-3">
-            PICS describes the new or worsening impairments in <span className="font-semibold text-foreground">physical, cognitive, and psychological</span> health that persist after critical illness. First defined by the Society of Critical Care Medicine (2012)<InlineRef topicId="mechanical-ventilation" refLabel="SCCM PICS 2012" />, it affects <span className="font-semibold text-foreground">50–70%</span> of ICU survivors and significantly reduces quality of life for months to years. <span className="font-semibold text-foreground">PICS-Family (PICS-F)</span> recognises the psychological burden on caregivers.
+            PICS describes the new or worsening impairments in <span className="font-semibold text-foreground">physical, cognitive, and psychological</span> health that persist after critical illness. Longer delirium independently predicts long-term cognitive impairment, making it a key modifiable risk factor.<InlineRef topicId="mechanical-ventilation" refLabel="Crit Care Med 2010 (Delirium & cognition)" /> First defined by the Society of Critical Care Medicine (2012)<InlineRef topicId="mechanical-ventilation" refLabel="SCCM PICS 2012" />, it affects <span className="font-semibold text-foreground">50–70%</span> of ICU survivors and significantly reduces quality of life for months to years. <span className="font-semibold text-foreground">PICS-Family (PICS-F)</span> recognises the psychological burden on caregivers.
           </p>
 
           <h3 className="text-lg font-semibold text-foreground mb-2">The Three Domains of PICS</h3>

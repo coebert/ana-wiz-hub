@@ -348,11 +348,30 @@ const BronchospasticFailureTopic = () => {
           </div>
         </CollapsibleSubsection>
 
+        <CollapsibleSubsection title="Bronchospasm in Anaphylaxis">
+          <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1 mb-3">
+            <li><strong>Distinguish it:</strong> bronchospasm with hypotension, urticaria, flushing or angioedema after a trigger (drug, chlorhexidine, latex, food) points to anaphylaxis rather than asthma.</li>
+            <li><strong>Immediate:</strong> remove the trigger, call for help, and give <strong>IM adrenaline 0.5 mg (500 µg) in adults</strong>, repeated every 5 min if needed (Resuscitation Council UK); experienced anaesthetists may titrate IV adrenaline 50 µg boluses. Adrenaline comes before any bronchodilator.</li>
+            <li><strong>Airway:</strong> high-flow oxygen; secure the airway early if angioedema or stridor — expect a difficult intubation.</li>
+            <li><strong>Circulation:</strong> rapid crystalloid boluses (500–1000 mL, repeated) for hypotension; adrenaline infusion if refractory after two IM doses.</li>
+            <li><strong>Refractory bronchospasm:</strong> once adrenaline has been given, add nebulised or IV salbutamol, ipratropium, magnesium or aminophylline as for severe asthma.</li>
+            <li><strong>Later:</strong> antihistamine (e.g. chlorphenamine) and corticosteroid are not first-line and should never delay adrenaline; send mast-cell tryptase and refer to an allergy clinic.</li>
+          </ul>
+        </CollapsibleSubsection>
+
         {/* ---- Invasive Ventilation Strategies ---- */}
         <CollapsibleSubsection title="Invasive Ventilation Strategies">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Mechanical ventilation in bronchospasm is high-risk. The fundamental principle is to <strong>minimise gas trapping</strong> by allowing adequate expiratory time — this means tolerating hypercapnia ('permissive hypercapnia') to avoid dynamic hyperinflation and cardiovascular collapse.
           </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Neuromuscular Blockade</h3>
+          <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1 mb-4">
+            <li><strong>Indications:</strong> ventilator dyssynchrony, dangerously high airway pressures or dynamic hyperinflation, or high O₂ demand despite deep sedation.</li>
+            <li><strong>Agent:</strong> benzylisoquinoliniums (atracurium, cisatracurium) by infusion are usually preferred; aminosteroids (vecuronium, rocuronium) are often avoided because of a possibly higher myopathy risk with corticosteroids.</li>
+            <li><strong>Monitoring:</strong> train-of-four to the minimum effective dose (TOF count 1–2); use bolus or intermittent dosing where possible, and stop daily to reassess the need; ensure adequate sedation (awareness risk) — processed EEG can help.</li>
+            <li><strong>Risks:</strong> critical illness myopathy / acute quadriplegic myopathy, especially with prolonged NMB plus high-dose steroids; prolonged weakness, loss of cough, corneal and pressure injury, VTE.</li>
+          </ul>
 
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Intubation Considerations</h3>
           <div className="space-y-2 mb-4">
@@ -507,6 +526,26 @@ const BronchospasticFailureTopic = () => {
                   <td>Neutrophils, CD8+ T cells, macrophages</td>
                 </tr>
                 <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Hyper-responsiveness / reversibility</td>
+                  <td>Airway hyper-responsiveness; FEV₁ improves ≥ 12% and ≥ 200 mL after bronchodilator</td>
+                  <td>Usually limited reversibility; post-bronchodilator FEV₁/FVC &lt; 0.7 persists</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Steroid response</td>
+                  <td>Usually marked (eosinophilic inflammation)</td>
+                  <td>More modest and variable (neutrophilic); better if eosinophils raised</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">External PEEP</td>
+                  <td>Use cautiously — may worsen hyperinflation; low or zero PEEP while monitoring Pplat</td>
+                  <td>Often set to about 80% of intrinsic PEEP to reduce trigger work</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Weaning</td>
+                  <td>Usually quick once bronchospasm resolves</td>
+                  <td>Often prolonged (weakness, deconditioning, fixed lung disease)</td>
+                </tr>
+                <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">Baseline PaCO₂</td>
                   <td>Normal (any CO₂ rise is sinister)</td>
                   <td>Often chronically elevated (compensated respiratory acidosis)</td>
@@ -611,7 +650,7 @@ const BronchospasticFailureTopic = () => {
               { label: "Extracorporeal CO₂ Removal (ECCO₂R)", detail: "Rationale: the problem in severe bronchospasm is CO₂ clearance, not oxygenation, so removing CO₂ extracorporeally permits 'ultra-protective' ventilation — cutting respiratory rate and tidal volume further than permissive hypercapnia alone allows, which lengthens expiratory time and unwinds dynamic hyperinflation. Mechanism: a low-flow veno-venous circuit (typically 0.4–1.5 L/min through a 13–19 Fr dual-lumen or two single-lumen cannulae) passes blood over a membrane lung; because CO₂ is far more diffusible and carried in much greater quantity than O₂, 20–50% of total CO₂ production can be cleared at a fraction of full ECMO flow, but oxygenation support is negligible. Indications: severe respiratory acidosis (pH < 7.15–7.20) with rising PaCO₂ despite optimised bronchodilators, deep sedation, neuromuscular blockade and volatile agent, where the patient is adequately oxygenated. Comparison with VV-ECMO: less invasive, smaller cannulae, lower anticoagulation burden and easier to site — but it does NOT support oxygenation, so if hypoxaemia or cardiovascular collapse is the problem, full VV-ECMO is required. Risks are those of any extracorporeal circuit: bleeding on anticoagulation, haemolysis, circuit thrombosis, cannula-site injury and infection. Evidence in asthma is limited to case series and registries, so treat it as a bridge in an expert centre, decided jointly with the regional ECMO service, rather than an established therapy." },
 
               { label: "Heliox (Helium-Oxygen)", detail: "Available as premixed cylinders of 79% helium/21% oxygen or 70/30 (Heliox21/Heliox28); density is roughly one-third that of air, so the Reynolds number falls and flow through narrowed, turbulent airways becomes more laminar — reducing resistive work of breathing and peak airway pressures, and improving distal delivery of nebulised salbutamol (nebulise driven by heliox at 25–30% higher flow than usual). Practical points: use a tight-fitting non-rebreathing circuit or a ventilator validated for heliox, since the low density under-reads on standard flow sensors and can misdeliver tidal volumes (verify with a heliox-compatible ventilator or measure exhaled volumes independently); FiO₂ is capped at 30–40% before the density benefit is lost, so heliox is unsuitable for significant hypoxaemia; it changes voice pitch, cools the patient, and must be scavenged/handled per local cylinder policy; benefit is immediate if it is going to work, so review within 15–20 min and abandon if there is no fall in work of breathing or airway pressures. Evidence remains weak (no mortality benefit) so it is a physiologically rational bridge while steroids and bronchodilators take effect, not a standard therapy. See BJA Education (2023) guidance on the ventilated asthmatic." },
-              { label: "Bronchoscopy & Lavage", detail: "Mucus plugging is the major cause of death in fatal asthma. Bronchoscopic lavage can remove inspissated mucus plugs in refractory cases. Risk of worsening bronchospasm during procedure. Consider in ventilated patients with persistent lobar collapse despite aggressive medical therapy." },
+              { label: "Bronchoscopy & Lavage", detail: "Mucus plugging is the major cause of death in fatal asthma. Bronchoscopic lavage can remove inspissated mucus plugs in refractory cases. Risk of worsening bronchospasm during procedure. Consider in ventilated patients with persistent lobar or segmental collapse or persistently high airway pressures despite maximal therapy. Procedure: via the ETT in a deeply sedated (propofol or volatile), paralysed patient on FiO₂ 1.0, with a large-channel therapeutic bronchoscope and a swivel connector; instil small aliquots (about 20–50 mL) of warm saline and suction; nebulised N-acetylcysteine is controversial. Risks: worsening bronchospasm, hypoxaemia, barotrauma/high pressures, haemodynamic instability — have bronchodilators and adrenaline drawn up." },
               { label: "Prone Positioning", detail: "Limited evidence in asthma/COPD but may improve V/Q matching and facilitate secretion drainage. Case reports of benefit in refractory asthma. More established in ARDS — may overlap if ARDS develops as a complication." },
               { label: "General Anaesthesia", detail: "If volatile agents via Sedaconda are unavailable, transfer to theatre for inhalational anaesthesia with sevoflurane/isoflurane via a standard anaesthetic machine has been used as a last resort in near-fatal asthma." },
             ].map((item) => (
