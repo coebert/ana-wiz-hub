@@ -13,14 +13,14 @@ import { OrganDonationPathwayDiagram } from "@/components/diagrams/intensive-car
 import { InlineRef } from "@/components/references/InlineRef";
 
 const organDonationFaqs: Array<[string, string]> = [
-  ["What are the UK criteria for brainstem death testing?", "Coma of known irreversible cause, exclusion of confounders (drugs, hypothermia <34 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, oculocephalic, oculovestibular, gag, cough) and apnoea test with PaCO₂ rise >0.5 kPa above 6.0 kPa with pH <7.40 (AoMRC 2008)."],
+  ["What are the UK criteria for brainstem death testing?", "Coma of known irreversible cause, exclusion of confounders (drugs, core temperature <36 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, oculocephalic, oculovestibular, gag, cough) and an apnoea test from a starting PaCO₂ ≥5.3 kPa to an end PaCO₂ ≥8.0 kPa, a rise ≥2.7 kPa and pH <7.30 after at least 5 minutes (AoMRC 2025)."],
   ["What physiological derangements occur after brainstem death?", "Catecholamine storm followed by vasodilation, diabetes insipidus (DDAVP/vasopressin), hypothermia, coagulopathy and pituitary failure; manage with the 'rule of 100s' — SBP >100, urine output ~100 mL/h, PaO₂ >100, Hb >100 g/L."],
   ["How does DCD differ from DBD for donation?", "DCD (Maastricht III) occurs after planned withdrawal with death by circulatory criteria and a 5-minute 'no-touch' period; warm ischaemic time limits organ viability (typically <30 min for liver, <2 h for kidney) and outcomes are slightly inferior for some grafts but improve donor numbers."],
 ];
 
 const objectives = [
   "Distinguish DBD and DCD pathways and the legal time of death for each.",
-  "Perform UK brainstem death testing — prerequisites, six reflexes, and the apnoea test (PaCO₂ >6.65 kPa with rise >0.5 kPa).",
+  "Perform UK brainstem death testing — prerequisites, six reflexes, and the apnoea test (end PaCO₂ ≥8.0 kPa, rise ≥2.7 kPa, pH <7.30 — AoMRC 2025).",
   "Identify confounders that may render BSD testing unreliable and select appropriate ancillary investigations.",
   "Optimise the brainstem-dead donor across cardiovascular, respiratory, endocrine, and metabolic domains.",
   "Discuss the ethical framework for normothermic regional perfusion (NRP) — permanence vs irreversibility, dead donor rule, cerebral exclusion.",
@@ -38,22 +38,22 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        Pre-oxygenate with FiO₂ 1.0 for ≥10 min and adjust ventilation to bring baseline PaCO₂ to
-        ~5.0 kPa (40 mmHg). Disconnect from the ventilator and deliver 6 L/min O₂ via a tracheal
-        catheter to prevent hypoxaemia. Observe for chest/abdominal movement for 5 min (longer if
-        target PaCO₂ not yet reached). The test is positive (i.e. confirms apnoea) when PaCO₂
-        rises to <strong>&gt;6.65 kPa (50 mmHg)</strong> AND has risen by <strong>&gt;0.5 kPa</strong>{" "}
-        from baseline with no respiratory effort.
+        Pre-oxygenate with FiO₂ 1.0 and reduce ventilation so the starting PaCO₂ is at least{" "}
+        <strong>5.3 kPa</strong> (4.8 kPa is too low). Disconnect, maintaining oxygenation with tracheal
+        O₂ insufflation or CPAP, and observe for respiratory effort for at least 5 minutes. The test confirms
+        apnoea when the confirmatory gas shows <strong>PaCO₂ ≥8.0 kPa</strong>, a{" "}
+        <strong>rise of ≥2.7 kPa</strong> from the start and <strong>pH &lt;7.30</strong>, with no
+        respiratory effort (AoMRC 2025).
       </>
     ),
     answer: (
       <>
-        Reconnect to the ventilator immediately after the test. The legal time of death is recorded
-        as the completion of the <strong>first</strong> set of tests (not the second). Spinal
+        Reconnect to the ventilator immediately after the test. Under the AoMRC 2025 Code the
+        time of death is ordinarily recorded at the completion of the <strong>second</strong> set of tests. Spinal
         reflexes can persist after BSD and do not invalidate the diagnosis.
       </>
     ),
-    cites: ["BJA Educ 2016", "AoMRC 2008"],
+    cites: ["BJA Educ 2016", "AoMRC 2025"],
   },
   {
     title: "DCD III — withdrawal-to-retrieval timing",
@@ -107,7 +107,7 @@ const OrganDonationTopic = () => {
         { text: "NRP reduces DCD liver discard and ischaemic cholangiopathy; reduces kidney DGF from ~50% to ~20%", cites: ["AoMRC 2008"] },
         { text: "Ethical framework: permanence vs irreversibility, dead donor rule, cerebral exclusion as safeguard", cites: ["BJA Educ 2016"] },
         { text: "AoMRC (2021) endorses NRP as ethically acceptable provided arch vessels are excluded before perfusion", cites: ["NICE CG135"] },
-        { text: "Legal time of death: BSD = completion of first set of tests; DCD = the time the 5-minute observation period starts (not its end) — NRP does not reverse death", cites: ["AoMRC 2008", "AoMRC DNC Code of Practice (PDF)"] },
+        { text: "Time of death: BSD = completion of the second set of tests (AoMRC 2025); DCD = the time the 5-minute observation period starts (not its end) — NRP does not reverse death", cites: ["AoMRC 2025", "AoMRC DNC Code of Practice (PDF)"] },
       ]}
       topicId="organ-donation"
       topicTitle="Organ Donation"
@@ -137,7 +137,7 @@ const OrganDonationTopic = () => {
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">DBD</p>
-                <p className="text-sm text-muted-foreground mt-1">Brainstem death confirmed by 2 sets of tests. Time of death = completion of first set. Better graft outcomes (less warm ischaemia). ~40% of UK deceased donors.</p>
+                <p className="text-sm text-muted-foreground mt-1">Brainstem death confirmed by 2 sets of tests. Time of death = completion of the second set. Better graft outcomes (less warm ischaemia). ~40% of UK deceased donors.</p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">DCD</p>
@@ -191,11 +191,11 @@ const OrganDonationTopic = () => {
             </ol>
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">Apnoea test</h3>
             <p className="text-sm text-muted-foreground mb-3">
-              Pre-oxygenate with 100% O₂ ≥10 min, set baseline PaCO₂ ~5.0 kPa, disconnect with tracheal O₂ insufflation 6 L/min, observe 5 min for any respiratory effort. Confirm <strong>PaCO₂ &gt;6.65 kPa AND rise &gt;0.5 kPa</strong> from baseline. Reconnect immediately.
+              Pre-oxygenate with 100% O₂, confirm a starting PaCO₂ ≥5.3 kPa, disconnect with tracheal O₂ insufflation or CPAP, and observe for at least 5 min for any respiratory effort. Confirm <strong>PaCO₂ ≥8.0 kPa, a rise ≥2.7 kPa and pH &lt;7.30</strong> on the end gas, then reconnect.<InlineRef topicId="organ-donation" refLabel="AoMRC 2025" />
             </p>
             <div className="p-3 rounded-lg bg-secondary/50 border border-primary/20">
               <p className="text-sm font-semibold text-foreground mb-1">Time of death</p>
-              <p className="text-sm text-muted-foreground">Legal time of death = completion of the <strong>first</strong> set of tests. There is no mandatory interval before the second set.<InlineRef topicId="organ-donation" refLabel="AoMRC 2008" /><InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" /></p>
+              <p className="text-sm text-muted-foreground">Time of death = completion of the <strong>second</strong> set of clinical tests (AoMRC 2025; the 2008 Code used the first set).<InlineRef topicId="organ-donation" refLabel="AoMRC 2025" /><InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" /></p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -363,7 +363,7 @@ const OrganDonationTopic = () => {
             <h3 className="text-base font-semibold text-foreground mb-2">Phase 2a — DBD branch (brainstem death confirmed)</h3>
             <div className="space-y-2 mb-4">
               {[
-                { step: "1. Brainstem death testing", detail: "Two sets of tests by two doctors; legal time of death = completion of the first set. From this moment the therapeutic goal switches from brain protection to organ protection." },
+                { step: "1. Brainstem death testing", detail: "Two sets of tests by two doctors; time of death = completion of the second set. From this moment the therapeutic goal switches from brain protection to organ protection." },
                 { step: "2. First drug swap — catecholamine storm control", detail: "If the hypertensive surge is ongoing: short-acting agents only (GTN, esmolol, sodium nitroprusside) so the vasoplegia that follows is not compounded by a lingering drug." },
                 { step: "3. Start the hormonal bundle — immediately after BSD", detail: "Methylprednisolone 15 mg/kg IV (max 1 g) single dose; insulin infusion to glucose 4–10 mmol/L; T4 20 µg bolus then 10 µg/h is added for persisting cardiovascular instability rather than routinely." },
                 { step: "4. The noradrenaline → vasopressin swap", detail: "As the storm resolves into vasoplegic, endocrine shock: start vasopressin 0.5–4 units/h and titrate noradrenaline down. Rationale — V1 agonism bypasses downregulated adrenoceptors, the V2 effect treats the diabetes insipidus (~65% of donors), and catecholamine-sparing protects the heart, liver and kidneys. Done within hours of confirmation, aiming for the lowest catecholamine dose before the heart is assessed." },
@@ -477,7 +477,7 @@ const OrganDonationTopic = () => {
             <h3 className="text-base font-semibold text-foreground mb-2">DBD — no withdrawal; support is maintained to retrieval</h3>
             <div className="space-y-2 mb-4">
               {[
-                { step: "Confirm death", detail: "Two sets of brainstem death tests; legal death is completion of the first set. From that moment the ventilator, vasopressors and monitoring are not 'treatment' — they are organ preservation." },
+                { step: "Confirm death", detail: "Two sets of brainstem death tests; time of death is completion of the second set. From that moment the ventilator, vasopressors and monitoring are not 'treatment' — they are organ preservation." },
                 { step: "Optimise for hours to days", detail: "Hormonal bundle, noradrenaline→vasopressin swap, DDAVP, lung recruitment and cardiac output monitoring run until the retrieval teams are assembled. There is no warm ischaemic time pressure — grafts remain perfused until cross-clamp, which is why DBD yields the most organs per donor (typically 3–4, including heart and lungs)." },
                 { step: "Theatre", detail: "Transfer ventilated and monitored as for any ICU transfer. Heparin 25,000–30,000 units immediately before aortic cross-clamp, then cold flush. Support is disconnected only after cross-clamp." },
               ].map((s) => (

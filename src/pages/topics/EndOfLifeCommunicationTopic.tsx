@@ -370,7 +370,7 @@ const EndOfLifeCommunicationTopic = () => {
 
             <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Apnoea test</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Pre-oxygenate with 100% FiO2, then allow PaCO2 to rise to a stimulus threshold above 6.0 kPa with pH &lt; 7.40 before disconnecting from the ventilator (pre-existing CO2 retainers require a higher baseline). Observe for 5 minutes off the ventilator (with oxygen delivered via catheter into the trachea to prevent hypoxaemia) for any respiratory effort; the test is positive for brainstem death if there is no respiratory movement despite a documented PaCO2 rise of at least 0.5 kPa above the threshold.
+              Pre-oxygenate with 100% FiO2 and confirm a starting PaCO2 of at least 5.3 kPa. Disconnect from the ventilator (with oxygen via a tracheal catheter or CPAP to prevent hypoxaemia) and observe for at least 5 minutes for any respiratory effort. The test confirms apnoea if there is no respiratory movement and the end arterial gas shows PaCO2 ≥8.0 kPa, a rise of ≥2.7 kPa from the start and pH &lt;7.30 (AoMRC 2025).<InlineRef topicId="end-of-life-communication" refLabel="AoMRC 2025" />
             </p>
 
             <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Procedural requirements</h3>
@@ -378,7 +378,7 @@ const EndOfLifeCommunicationTopic = () => {
               <li>Testing performed by two registered medical practitioners, each at least 5 years post full registration and competent in the procedure, at least one of whom must be a consultant.</li>
               <li>Neither examiner should be a member of the transplant team.</li>
               <li>Two complete sets of testing (preconditions, brainstem reflexes and apnoea test) are performed, usually together by both clinicians, though only one apnoea test is mandatory.</li>
-              <li>The legal time of death is the time at which the <strong>first</strong> set of tests is completed, once the second set confirms the diagnosis.</li>
+              <li>The time of death is ordinarily the completion of the <strong>second</strong> set of clinical tests (AoMRC 2025).</li>
             </ul>
 
             <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Communicating with relatives</h3>
