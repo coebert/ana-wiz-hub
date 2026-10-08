@@ -66,7 +66,7 @@ const Adductor = () => (
     <Label x={120} y={95} tx={30} ty={80} anchor="end">Vastus medialis (lateral wall)</Label>
     <Label x={275} y={100} tx={340} ty={130}>Adductors (floor)</Label>
     <Label x={200} y={88} tx={340} ty={50}>Femoral (superficial) artery</Label>
-    <Label x={215} y={95} tx={370} ty={140}>Femoral vein</Label>
+    <Label x={215} y={95} tx={340} ty={165}>Femoral vein</Label>
     <Label x={188} y={82} tx={30} ty={40} anchor="end">Saphenous nerve</Label>
     <Label x={200} y={160} tx={300} ty={220}>Femur</Label>
     <text x={200} y={292} fontSize={9} fill={muted} textAnchor="middle">Dashed: adductor canal. Nerve to vastus medialis often lies just outside the canal.</text>
