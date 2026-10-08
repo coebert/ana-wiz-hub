@@ -773,6 +773,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "AAGBI Coagulation 2013", citation: "Harrop-Griffiths W, Cook T, Gill H, et al. Regional anaesthesia and patients with abnormalities of coagulation. Anaesthesia. 2013;68(9):966-972.", url: "https://doi.org/10.1111/anae.12359" },
   ],
   "paediatric-anaesthesia": [
+    { label: "Gray's Anatomy 42e", citation: "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.", url: "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0" },
+    { label: "van Schoor 2018 Dural Sac", citation: "van Schoor AN, et al. Determining the extent of the dural sac for the performance of caudal epidural blocks in newborns. Paediatr Anaesth. 2018;28(9):852-856.", url: "https://doi.org/10.1111/pan.13483" },
+    { label: "Zadrazil 2023 Penile Block", citation: "Zadrazil M, et al. Ultrasound-guided dorsal penile nerve block in children: an anatomical-based observational study of a new anesthesia technique. Children (Basel). 2023;11(1):50.", url: "https://doi.org/10.3390/children11010050" },
     { label: "BJA Educ 2019", citation: "Engelhardt T. Paediatric anaesthesia. BJA Education. 2019;19(2):47-53.", url: "https://doi.org/10.1016/j.bjae.2018.11.004" },
     { label: "Sury et al.", citation: "Sury M, Bullock I, Rabar S, DeMott K. Sedation for diagnostic and therapeutic procedures in children and young people (NICE CG112). Br J Anaesth. 2010;104(6):1-2.", url: "https://www.nice.org.uk/guidance/cg112" },
     { label: "APAGBI 2020", citation: "Association of Paediatric Anaesthetists. Good Practice in Paediatric Anaesthesia. APA; 2020.", url: "https://www.apagbi.org.uk/publications" },
@@ -1611,6 +1614,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2018", citation: "Flin R, Patey R. Non-technical skills for anaesthetists: developing and applying ANTS. BJA Education. 2018;18(8):254-260." },
   ],
   "urological-anaesthesia": [
+    { label: "Gray's Anatomy 42e", citation: "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.", url: "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0" },
+    { label: "Hahn 2006 Fluid Absorption", citation: "Hahn RG. Fluid absorption in endoscopic surgery. Br J Anaesth. 2006;96(1):8-20.", url: "https://doi.org/10.1093/bja/aei279" },
     { label: "BJA Educ TURP 2014", citation: "Hahn RG. Fluid absorption in endoscopic surgery. BJA Education. 2006;6(5):195-198.", url: "https://doi.org/10.1093/bjaceaccp/mkl033" },
     { label: "BJA Educ TURP Syndrome 2014", citation: "O'Donnell AM, Foo ITH. Anaesthesia for transurethral resection of the prostate. Contin Educ Anaesth Crit Care Pain. 2009;9(4):92-96; updated BJA Education review of TURP syndrome (2014).", url: "https://doi.org/10.1093/bjaceaccp/mkt041", excerpt: "Guidelines recommend that in the presence of severe symptoms (e.g. seizures, coma), 150 ml of 3% hypertonic sodium chloride solution should be administered i.v. over 20 min. A further 150 ml can be administered over the next 20 min if there is no clinical improvement." },
     { label: "Propofol Erection 2010", citation: "Management of propofol-induced penile erection. Anaesthesia. 2010;65(11):1130-1133.", url: "https://doi.org/10.1111/j.1365-2044.2010.06362.x" },
@@ -1714,6 +1719,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ Liver Pharmacology", citation: "Verbeeck RK / BJA Education review of pharmacokinetics and dosage adjustment in patients with hepatic dysfunction. Eur J Clin Pharmacol. 2008;64(12):1147-1161. Increased volume of distribution and receptor sensitivity mandate propofol induction dose reduction; rocuronium duration may double; cisatracurium elimination is organ-independent.", url: "https://doi.org/10.1007/s00228-008-0553-z" },
   ],
   "ent-anaesthesia": [
+    { label: "Gray's Anatomy 42e", citation: "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.", url: "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0" },
+    { label: "Furlan 2002 SLN", citation: "Furlan JC. Anatomical study applied to anesthetic block technique of the superior laryngeal nerve. Acta Anaesthesiol Scand. 2002;46(2):199-202.", url: "https://doi.org/10.1034/j.1399-6576.2002.460214.x" },
     { label: "DAS 2015", citation: "Frerk C et al. Difficult Airway Society 2015 guidelines for management of unanticipated difficult intubation in adults. Br J Anaesth. 2015;115(6):827-848.", url: "https://doi.org/10.1093/bja/aev371" },
     { label: "NAP4 2011", citation: "Cook TM, Woodall N, Frerk C. Major complications of airway management in the UK (NAP4). Br J Anaesth. 2011;106(5):617-631.", url: "https://doi.org/10.1093/bja/aer058" },
     { label: "NTSP 2014", citation: "McGrath BA et al. Multidisciplinary guidelines for the management of tracheostomy and laryngectomy airway emergencies (National Tracheostomy Safety Project). Anaesthesia. 2012;67(9):1025-1041.", url: "https://doi.org/10.1111/j.1365-2044.2012.07217.x" },

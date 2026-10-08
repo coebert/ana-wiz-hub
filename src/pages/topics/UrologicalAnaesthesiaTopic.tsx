@@ -1,3 +1,4 @@
+import { UrologicalAnaesthesiaAtlas } from "@/components/topic/UrologicalAnaesthesiaAtlas";
 import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -106,6 +107,7 @@ const UrologicalAnaesthesiaTopic = () => {
       coreConcepts={
         <>
           <TopicTableOfContents items={tocItems} />
+          <UrologicalAnaesthesiaAtlas />
 
           <div id="intro" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>

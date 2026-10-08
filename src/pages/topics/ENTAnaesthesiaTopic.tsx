@@ -1,3 +1,4 @@
+import { EntAnaesthesiaAtlas } from "@/components/topic/EntAnaesthesiaAtlas";
 import { Helmet } from "react-helmet-async";
 import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
@@ -106,6 +107,7 @@ const ENTAnaesthesiaTopic = () => {
       coreConcepts={
         <>
           <TopicTableOfContents items={tocItems} />
+          <EntAnaesthesiaAtlas />
 
           <div id="shared-airway" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
