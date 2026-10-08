@@ -236,12 +236,12 @@ const OrganDonationTopic = () => {
             <CollapsibleSubsection title="Physiological Management of the Donor">
             <div className="space-y-2">
               {[
-                { system: "Cardiovascular", goal: "MAP 60–80 mmHg, CVP 4–10 mmHg. Vasopressin first-line (UK protocols ~0.4–2.4 U/h; treats DI + hypotension); noradrenaline second-line. Avoid high-dose catecholamines." },
-                { system: "Respiratory", goal: "Lung-protective: VT 6–8 ml/kg IBW, PEEP 8–10 cmH₂O, recruitment manoeuvres after disconnection; target PaO₂/FiO₂ >300 mmHg (>40 kPa). Bronchoscopy and physiotherapy." },
+                { system: "Cardiovascular", goal: "MAP 60–80 mmHg, CVP 4–10 mmHg. Vasopressin first-line (NHSBT bundle 0.5–4 units/h; treats DI + hypotension); noradrenaline second-line. Avoid high-dose catecholamines." },
+                { system: "Respiratory", goal: "Lung-protective: VT 4–8 ml/kg IBW, PEEP 5–10 cmH₂O, recruitment manoeuvres after apnoea tests/disconnection; target PaO₂ ≥10 kPa (FiO₂ <0.4 as able), PaCO₂ 5–6.5 kPa with pH >7.25. Bronchoscopy and physiotherapy." },
                 { system: "Endocrine", goal: "Hormonal resuscitation: methylprednisolone 15 mg/kg (max 1 g), vasopressin infusion, T3/T4 considered in cardiovascular instability (evidence mixed). Insulin infusion for glucose 4–10 mmol/L." },
-                { system: "Fluids / DI", goal: "DI (polyuria >4 ml/kg/h, rising Na⁺) in ~65% — DDAVP 1–4 µg IV boluses; replace losses. Na⁺ <155 mmol/L to protect liver grafts." },
-                { system: "Temperature", goal: "Normothermia (aim ~36.5–37.5 °C, minimum >35 °C) with active warming." },
-                { system: "Metabolic", goal: "Na⁺ <155 mmol/L. Glucose 4–10. Correct electrolytes." },
+                { system: "Fluids / DI", goal: "DI (polyuria >4 ml/kg/h, rising Na⁺) in ~65% — DDAVP 1–4 µg IV titrated to effect; replace losses. Na⁺ <150 mmol/L (NHSBT bundle)." },
+                { system: "Temperature", goal: "Normothermia 36–37.5 °C with active warming (NHSBT bundle)." },
+                { system: "Metabolic", goal: "Na⁺ <150 mmol/L. Glucose 4–10 mmol/L (insulin minimum 1 unit/h). Correct electrolytes." },
               ].map((s) => (
                 <div key={s.system} className="flex gap-3 p-3 rounded border border-border">
                   <span className="font-bold text-primary text-sm whitespace-nowrap">{s.system}</span>
@@ -255,10 +255,10 @@ const OrganDonationTopic = () => {
             </p>
             <div className="space-y-2">
               {[
-                { agent: "Methylprednisolone", detail: "15 mg/kg single IV dose — attenuates the systemic inflammatory response and improves lung function/oxygenation, increasing lungs suitable for retrieval." },
-                { agent: "Vasopressin", detail: "Infusion 0.5–2.4 units/h — dual role treating vasoplegia and diabetes insipidus; spares catecholamines and reduces noradrenaline requirement." },
+                { agent: "Methylprednisolone", detail: "15 mg/kg (max 1 g) single IV dose — attenuates the systemic inflammatory response and improves lung function/oxygenation, increasing lungs suitable for retrieval." },
+                { agent: "Vasopressin", detail: "Infusion 0.5–4 units/h (NHSBT bundle) — dual role treating vasoplegia and diabetes insipidus; spares catecholamines and reduces noradrenaline requirement." },
                 { agent: "Thyroid hormone (T3/T4)", detail: "Controversial evidence but commonly used with cardiovascular instability, e.g. thyroxine (T4) 20 mcg bolus then 10 mcg/h infusion." },
-                { agent: "Insulin", detail: "Infusion targeting glucose ~6–10 mmol/L — counters steroid- and stress-induced hyperglycaemia and improves pancreas/whole-organ viability." },
+                { agent: "Insulin", detail: "Infusion targeting glucose 4–10 mmol/L — counters steroid- and stress-induced hyperglycaemia and improves pancreas/whole-organ viability." },
               ].map((h) => (
                 <div key={h.agent} className="flex gap-3 p-3 rounded border border-border">
                   <span className="font-bold text-primary text-sm whitespace-nowrap">{h.agent}</span>
@@ -286,9 +286,9 @@ const OrganDonationTopic = () => {
             <div className="space-y-2">
               {[
                 { point: "The physiology has changed", detail: "After coning, the catecholamine storm is followed by loss of medullary vasomotor tone and pituitary failure. The resulting shock is vasoplegic and endocrine, not a failure of adrenergic drive — the donor is already maximally catecholamine-exposed and adrenoceptors are downregulated and desensitised." },
-                { point: "Vasopressin exploits a different receptor", detail: "V1 receptor agonism restores vascular tone independently of α₁ adrenoceptors, so it works where escalating noradrenaline does not, and it restores the low endogenous vasopressin level caused by posterior pituitary infarction. Typical infusion 0.5–2.4 (up to 4) units/h." },
+                { point: "Vasopressin exploits a different receptor", detail: "V1 receptor agonism restores vascular tone independently of α₁ adrenoceptors, so it works where escalating noradrenaline does not, and it restores the low endogenous vasopressin level caused by posterior pituitary infarction. NHSBT bundle range 0.5–4 units/h." },
                 { point: "It is catecholamine-sparing", detail: "High-dose noradrenaline causes myocardial injury (calcium overload, contraction-band necrosis, β-receptor downregulation), splanchnic and renal vasoconstriction, and pulmonary venoconstriction with extravascular lung water. Retrieval teams grade hearts partly by the vasopressor dose the donor needed; getting noradrenaline down improves the chance a heart, liver and kidneys are accepted." },
-                { point: "One drug treats two problems", detail: "Around two-thirds of DBD donors develop cranial diabetes insipidus. Vasopressin also provides V2 antidiuretic activity, so it simultaneously controls polyuria, protects intravascular volume and limits the rise in serum sodium that damages liver grafts (target Na⁺ < 155 mmol/L)." },
+                { point: "One drug treats two problems", detail: "Around two-thirds of DBD donors develop cranial diabetes insipidus. Vasopressin also provides V2 antidiuretic activity, so it simultaneously controls polyuria, protects intravascular volume and limits the rise in serum sodium that damages liver grafts (NHSBT target Na⁺ < 150 mmol/L)." },
                 { point: "What it is not", detail: "It is not a rescue for hypovolaemia — restore preload first (CVP 4–12 mmHg, MAP 60–80 mmHg). Watch for excessive vasoconstriction with reduced cardiac output and splanchnic ischaemia, so titrate to the lowest effective rate and use echocardiography or cardiac-output monitoring if the heart is being considered." },
               ].map((p) => (
                 <div key={p.point} className="p-3 rounded border border-border">
@@ -304,8 +304,8 @@ const OrganDonationTopic = () => {
             <h3 className="text-base font-semibold text-foreground mt-5 mb-2">The rest of the request list — and the reason behind each</h3>
             <div className="space-y-2">
               {[
-                { agent: "DDAVP (desmopressin) 1–2 µg IV", detail: "Selective V2 agonist for diabetes insipidus when polyuria persists despite vasopressin, or when vasopressin is not needed haemodynamically. Chosen over more vasopressin when you want antidiuresis without additional vasoconstriction — protects circulating volume, sodium and kidney grafts." },
-                { agent: "Methylprednisolone 15 mg/kg IV (single dose)", detail: "Brainstem death releases a systemic inflammatory cascade that injures grafts before retrieval, and cortisol production falls. Steroid attenuates this inflammation, reduces extravascular lung water and improves oxygenation, so it measurably increases the number of lungs suitable for transplant. Given early, once donation is a possibility and authorisation is in place." },
+                { agent: "DDAVP (desmopressin) 1–4 µg IV titrated to effect", detail: "Selective V2 agonist for diabetes insipidus when polyuria persists despite vasopressin, or when vasopressin is not needed haemodynamically. Chosen over more vasopressin when you want antidiuresis without additional vasoconstriction — protects circulating volume, sodium and kidney grafts." },
+                { agent: "Methylprednisolone 15 mg/kg IV, max 1 g (single dose)", detail: "Brainstem death releases a systemic inflammatory cascade that injures grafts before retrieval, and cortisol production falls. Steroid attenuates this inflammation, reduces extravascular lung water and improves oxygenation, so it measurably increases the number of lungs suitable for transplant. Given early, once donation is a possibility and authorisation is in place." },
                 { agent: "Thyroid hormone (T4 20 µg bolus then 10 µg/h, or T3)", detail: "Pituitary failure lowers circulating thyroid hormone, and low T3 states are associated with impaired myocardial energetics. Used mainly for cardiovascular instability that persists despite volume, vasopressin and modest noradrenaline. The evidence is genuinely contested, so present it as a rescue component of the hormonal bundle rather than routine." },
                 { agent: "Insulin infusion (glucose 4–10 mmol/L)", detail: "Steroids, catecholamines, dextrose-containing fluids and loss of insulin sensitivity all drive hyperglycaemia, which causes osmotic diuresis, worsens the sodium load and is associated with poorer pancreas and kidney graft function. Insulin also has direct anti-inflammatory and anabolic effects on grafts." },
                 { agent: "Short-acting vasodilators (GTN, esmolol, sodium nitroprusside) during the storm", detail: "Requested before or during the hypertensive catecholamine surge to protect the heart and lungs from afterload injury and neurogenic pulmonary oedema. Short-acting agents are chosen deliberately so that the profound vasodilatation that follows can be managed without a lingering drug effect." },
@@ -365,10 +365,10 @@ const OrganDonationTopic = () => {
               {[
                 { step: "1. Brainstem death testing", detail: "Two sets of tests by two doctors; legal time of death = completion of the first set. From this moment the therapeutic goal switches from brain protection to organ protection." },
                 { step: "2. First drug swap — catecholamine storm control", detail: "If the hypertensive surge is ongoing: short-acting agents only (GTN, esmolol, sodium nitroprusside) so the vasoplegia that follows is not compounded by a lingering drug." },
-                { step: "3. Start the hormonal bundle — immediately after BSD", detail: "Methylprednisolone 15 mg/kg IV single dose; insulin infusion to glucose 4–10 mmol/L; T4 20 µg bolus then 10 µg/h is added for persisting cardiovascular instability rather than routinely." },
-                { step: "4. The noradrenaline → vasopressin swap", detail: "As the storm resolves into vasoplegic, endocrine shock: start vasopressin 0.5–2.4 (up to 4) U/h and titrate noradrenaline down. Rationale — V1 agonism bypasses downregulated adrenoceptors, the V2 effect treats the diabetes insipidus (~65% of donors), and catecholamine-sparing protects the heart, liver and kidneys. Done within hours of confirmation, aiming for the lowest catecholamine dose before the heart is assessed." },
-                { step: "5. Add DDAVP if polyuria persists", detail: "Desmopressin 1–2 µg IV when urine output remains high despite vasopressin, or when antidiuresis is wanted without further vasoconstriction. Corrects Na⁺ toward <155 mmol/L to protect liver grafts." },
-                { step: "6. Multi-organ optimisation until theatre", detail: "Targets: MAP 60–80, CVP 4–12, VT 6–8 mL/kg with PEEP 5–10, PaO₂/FiO₂ >300, Hb >80–100 g/L, temperature 35–37 °C, urine output ~100 mL/h. Broad-spectrum antibiotics for donor infection; bronchoscopy and lung recruitment as requested." },
+                { step: "3. Start the hormonal bundle — immediately after BSD", detail: "Methylprednisolone 15 mg/kg IV (max 1 g) single dose; insulin infusion to glucose 4–10 mmol/L; T4 20 µg bolus then 10 µg/h is added for persisting cardiovascular instability rather than routinely." },
+                { step: "4. The noradrenaline → vasopressin swap", detail: "As the storm resolves into vasoplegic, endocrine shock: start vasopressin 0.5–4 units/h and titrate noradrenaline down. Rationale — V1 agonism bypasses downregulated adrenoceptors, the V2 effect treats the diabetes insipidus (~65% of donors), and catecholamine-sparing protects the heart, liver and kidneys. Done within hours of confirmation, aiming for the lowest catecholamine dose before the heart is assessed." },
+                { step: "5. Add DDAVP if polyuria persists", detail: "Desmopressin 1–4 µg IV titrated to effect when urine output remains high despite vasopressin, or when antidiuresis is wanted without further vasoconstriction. Corrects Na⁺ toward <150 mmol/L to protect liver grafts." },
+                { step: "6. Multi-organ optimisation until theatre", detail: "NHSBT bundle targets: MAP 60–80 mmHg, CVP 4–10 mmHg, cardiac index >2.1 L/min/m², ScvO₂ >60%, VT 4–8 mL/kg with PEEP 5–10, PaO₂ ≥10 kPa, temperature 36–37.5 °C, urine output 0.5–2 mL/kg/h. (Hb thresholds are not set by the bundle — follow local SN-OD advice.) Broad-spectrum antibiotics for donor infection; bronchoscopy and lung recruitment as requested." },
                 { step: "7. In theatre, after death (post-mortem)", detail: "Retrieval team gives heparin (typically 25,000–30,000 units) immediately before aortic cross-clamp, then cold perfusion. Continued neuromuscular blockade prevents spinal reflexes. Organ-directed ICU drugs are stopped once cross-clamp occurs — the graft is now managed ex situ." },
               ].map((s) => (
                 <div key={s.step} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
@@ -456,7 +456,7 @@ const OrganDonationTopic = () => {
             <CollapsibleSubsection title="Paediatric Organ Donation">
             <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
               <li>Death by neurological criteria cannot be diagnosed in infants below <strong>37 weeks corrected gestational age</strong>. <InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" /></li>
-              <li>From 37 weeks to 2 months, the RCPCH 2015 guidance applies: the same clinical tests as adults, with stricter attention to preconditions; the apnoea test uses a higher PaCO₂ threshold (rise to &gt;8.0 kPa with pH &lt;7.30). Beyond 2 months, the adult code applies.</li>
+              <li>From 37 weeks to 2 months, the RCPCH 2015 guidance applies: the same clinical tests as adults, with stricter attention to preconditions; the apnoea test uses a stronger hypercarbic stimulus — a PaCO₂ rise of &gt;2.7 kPa from a baseline of at least 5.3 kPa to &gt;8.0 kPa with no respiratory response; ancillary tests are not required. The paediatric criteria are now consolidated in Appendix 2 of the AoMRC 2025 Code of Practice. <InlineRef topicId="organ-donation" refLabel="RCPCH DNC 2015" /></li>
               <li>Ancillary tests have a larger role when preconditions cannot be met, but are not mandated by the UK codes.</li>
               <li>Epidemiology differs: brain death is a smaller share of PICU deaths; most follow withdrawal of life-sustaining treatment, so paediatric DCD and neonatal DCD are increasingly important. <InlineRef topicId="organ-donation" refLabel="Meert PICU Deaths 2014" /></li>
               <li>Communication: parents hold authorisation (deemed consent does not apply to under-18s in England); involve the SNOD and paediatric specialist nurse early, and separate the conversation about death from the conversation about donation.</li>
@@ -601,11 +601,11 @@ const OrganDonationTopic = () => {
                 <strong>Donor optimisation (DBD)</strong> — concrete UK targets{" "}
                 <InlineRef topicId="organ-donation" refLabel="BJA Donor Management 2012" />:
                 <ul className="mt-1 ml-5 space-y-1 list-disc list-inside">
-                  <li><strong>Cardiovascular</strong>: MAP 60–80 mmHg, CVP 4–12 mmHg (aim normovolaemia); vasopressin 0.5–2.4 units/h first-line, noradrenaline added if needed; avoid high-dose catecholamines (myocardial injury and graft dysfunction).</li>
-                  <li><strong>Respiratory</strong>: VT 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, recruitment manoeuvres and bronchial toilet; target PaO₂/FiO₂ &gt;300 (PaO₂ &gt;13.3 kPa on FiO₂ &lt;0.5) for lung retrieval.</li>
-                  <li><strong>Endocrine (hormonal replacement bundle)</strong>: methylprednisolone 15 mg/kg IV single dose, vasopressin infusion (vasoplegia + diabetes insipidus, with DDAVP 1–2 µg IV if polyuric), insulin infusion targeting glucose 4–10 mmol/L; T3/T4 (e.g. T4 20 µg bolus then 10 µg/h) remains controversial but is commonly added for refractory cardiovascular instability.</li>
-                  <li><strong>Fluid &amp; electrolytes</strong>: urine output &gt;1 mL/kg/h, serum Na⁺ &lt;155 mmol/L to protect liver grafts, correct K⁺/Mg²⁺/PO₄³⁻.</li>
-                  <li><strong>Temperature</strong>: active warming to normothermia 36.5–37.5 °C.</li>
+                  <li><strong>Cardiovascular</strong>: MAP 60–80 mmHg, CVP 4–10 mmHg (aim normovolaemia); vasopressin 0.5–4 units/h first-line, noradrenaline added if needed; avoid high-dose catecholamines (myocardial injury and graft dysfunction). <InlineRef topicId="organ-donation" refLabel="NHSBT DBD Care Bundle" /></li>
+                  <li><strong>Respiratory</strong>: VT 4–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, recruitment manoeuvres and bronchial toilet; NHSBT target PaO₂ ≥10 kPa (FiO₂ &lt;0.4 as able). Retrieval teams may assess lungs against PaO₂/FiO₂ &gt;300 mmHg — a widely used figure not stated in the bundle.</li>
+                  <li><strong>Endocrine (hormonal replacement bundle)</strong>: methylprednisolone 15 mg/kg IV (max 1 g) single dose, vasopressin infusion (vasoplegia + diabetes insipidus, with DDAVP 1–4 µg IV if polyuric), insulin infusion targeting glucose 4–10 mmol/L; T3/T4 (e.g. T4 20 µg bolus then 10 µg/h) remains controversial but is commonly added for refractory cardiovascular instability.</li>
+                  <li><strong>Fluid &amp; electrolytes</strong>: urine output 0.5–2 mL/kg/h, serum Na⁺ &lt;150 mmol/L (NHSBT bundle), correct K⁺/Mg²⁺/PO₄³⁻.</li>
+                  <li><strong>Temperature</strong>: active warming to normothermia 36–37.5 °C.</li>
                 </ul>
               </li>
               <li><strong>Family approach</strong>: collaborative between intensivist and SN-OD, separate from prognosis discussion.</li>

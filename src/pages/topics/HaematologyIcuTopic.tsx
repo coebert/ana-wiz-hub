@@ -236,7 +236,7 @@ const HaematologyIcuTopic = () => {
                 <li><strong>Therapeutic Plasma Exchange (TPE):</strong> 1–1.5× plasma volume daily. Continue until platelets &gt;150 × 10⁹/L for ≥2 days + normalising LDH.</li>
                 <li><strong>Corticosteroids:</strong> Methylprednisolone 1 g IV daily × 3 days, then prednisolone 1 mg/kg.</li>
                 <li><strong>Caplacizumab:</strong> Nanobody targeting the A1 domain of von Willebrand factor, blocking the vWF–platelet GPIb interaction and preventing further microthrombi formation while ADAMTS13 activity recovers; used alongside plasma exchange and immunosuppression (steroids ± rituximab) in acute immune TTP <InlineRef topicId="haematology-icu" refLabel="HERCULES 2019" />. Dosing: 10 mg IV before the first plasma exchange session, then 10 mg subcutaneously daily during plasma exchange and for at least 30 days afterwards, guided by ADAMTS13 activity recovery <InlineRef topicId="haematology-icu" refLabel="ISTH TTP 2020" />. Main adverse effect is mucocutaneous bleeding; it does not treat the underlying ADAMTS13 deficiency, so relapse can follow premature cessation.</li>
-                <li><strong>Rituximab:</strong> Anti-CD20 mAb started early, alongside the initial PEX and steroids, in all patients with immune (acquired) TTP to suppress anti-ADAMTS13 antibody and reduce relapse — typically 375 mg/m² weekly × 4 (give after a PEX session, as PEX removes it). <InlineRef topicId="haematology-icu" refLabel="BSH TTP 2023" /></li>
+                <li><strong>Rituximab:</strong> Anti-CD20 mAb started within 3 days of admission for acute immune TTP, alongside PEX and steroids — reduces PEX sessions, ICU days, relapse and mortality. Usual dose 375 mg/m², at least four infusions; during daily PEX it is given every 3–4 days because PEX clears the antibody. <InlineRef topicId="haematology-icu" refLabel="BSH TTP 2023" /></li>
               </ol>
             </div>
             <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5">
@@ -387,7 +387,7 @@ const HaematologyIcuTopic = () => {
             <div className="rounded-xl border border-border bg-card p-5 mb-4">
               <h3 className="font-semibold text-foreground mb-2">Prophylaxis</h3>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                <li><strong>PCP prophylaxis:</strong> co-trimoxazole 480–960 mg daily, or 960 mg three times weekly, indicated for patients on rituximab or prednisolone ≥20 mg/day for &gt;4 weeks <InlineRef topicId="haematology-icu" refLabel="BSH TTP 2023" />.</li>
+                <li><strong>PCP prophylaxis:</strong> co-trimoxazole 480–960 mg daily, or 960 mg three times weekly, indicated for patients on rituximab or prednisolone ≥20 mg/day for &gt;4 weeks <em>(no supporting source yet — the BSH TTP guideline does not cover this; check local policy)</em>.</li>
                 <li><strong>Antifungal prophylaxis:</strong> posaconazole (or equivalent mould-active azole) in high-risk haematology patients (e.g. prolonged neutropenia, AML induction, GvHD).</li>
                 <li><strong>Antiviral prophylaxis:</strong> aciclovir for HSV/VZV reactivation; CMV surveillance (PCR monitoring) with pre-emptive therapy in seropositive/high-risk transplant patients.</li>
               </ul>
