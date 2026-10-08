@@ -26,7 +26,7 @@ const Dermatomes = () => (
       return (
         <g key={s}>
           <line x1={195} y1={y} x2={205} y2={y} stroke={ink} />
-          <text x={220} y={y + 4} fontSize={12} fontWeight={600} fill={ink}>{s}</text>
+          <text x={226} y={y + 4} fontSize={12} fontWeight={600} fill={ink}>{s}</text>
         </g>
       );
     })}
