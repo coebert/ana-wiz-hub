@@ -33,11 +33,11 @@ const Chest = () => (
     <circle cx={200} cy={165} r={6} fill={danger} />
     <path d="M170 160 Q200 170 230 160" stroke={vessel} strokeWidth={2} fill="none" />
     <Label x={200} y={40} tx={200} ty={14} anchor="middle">Base of axilla (apex)</Label>
-    <Label x={138} y={140} tx={40} ty={120} anchor="end">Latissimus dorsi (posterior border)</Label>
-    <Label x={285} y={125} tx={360} ty={110}>Pectoralis major (lateral border)</Label>
-    <Label x={200} y={165} tx={360} ty={200}>4th/5th ICS, anterior–mid-axillary line</Label>
+    <Label x={138} y={140} tx={40} ty={120} anchor="end">Latissimus dorsi</Label>
+    <Label x={285} y={125} tx={340} ty={95}>Pectoralis major</Label>
+    <Label x={200} y={165} tx={340} ty={200}>4th/5th ICS, mid-axillary</Label>
     <Label x={110} y={190} tx={40} ty={200} anchor="end">5th rib / nipple level (base)</Label>
-    <Label x={225} y={163} tx={360} ty={250}>Intercostal bundle under rib above — go over the lower rib</Label>
+    <Label x={225} y={163} tx={340} ty={250}>Go over the lower rib</Label>
   </Svg>
 );
 
@@ -76,9 +76,9 @@ const Aorta = () => (
     <rect x={262} y={45} width={10} height={80} fill={accent} fillOpacity={0.4} />
     <rect x={262} y={125} width={10} height={50} fill={muted} fillOpacity={0.5} />
     <rect x={262} y={175} width={10} height={95} fill={accent} fillOpacity={0.25} />
-    <Label x={267} y={85} tx={330} ty={85}>Zone I — left subclavian to coeliac</Label>
-    <Label x={267} y={150} tx={330} ty={150}>Zone II — coeliac to lowest renal (no-occlusion)</Label>
-    <Label x={267} y={220} tx={330} ty={220}>Zone III — lowest renal to bifurcation</Label>
+    <Label x={267} y={85} tx={300} ty={70}>Zone I</Label>
+    <Label x={267} y={150} tx={300} ty={150}>Zone II (no occlusion)</Label>
+    <Label x={267} y={220} tx={300} ty={230}>Zone III</Label>
     <Label x={230} y={10} tx={150} ty={10} anchor="end">Left subclavian artery</Label>
     <Label x={285} y={125} tx={150} ty={100} anchor="end">Coeliac trunk</Label>
     <Label x={190} y={175} tx={110} ty={175} anchor="end">Renal arteries</Label>

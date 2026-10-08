@@ -8,7 +8,7 @@ const Interscalene = () => (
     <path d="M60 70 Q140 55 210 80 L200 100 Q130 85 60 95 Z" fill={danger} fillOpacity={0.2} stroke={ink} />
     <ellipse cx={150} cy={150} rx={30} ry={40} fill={danger} fillOpacity={0.25} stroke={ink} />
     <ellipse cx={280} cy={160} rx={36} ry={44} fill={danger} fillOpacity={0.25} stroke={ink} />
-    {[130, 155, 180].map((y) => <circle key={y} cx={215} cy={y} r={9} fill="none" stroke={nerve} strokeWidth={2} />)}
+    {[130, 155, 180].map((y) => <circle key={y} cx={215} cy={y} r={9} fill={accent} fillOpacity={0.35} stroke={accent} strokeWidth={2} />)}
     <circle cx={90} cy={140} r={14} fill={vessel} fillOpacity={0.6} />
     <ellipse cx={95} cy={105} rx={22} ry={10} fill="hsl(var(--primary) / 0.25)" stroke={ink} />
     <path d="M178 120 L183 175" stroke={nerve} strokeWidth={1.5} strokeDasharray="3 2" />
@@ -61,10 +61,10 @@ const Adductor = () => (
     <path d="M175 72 L235 72 L230 105 L180 105 Z" fill={accent} fillOpacity={0.08} stroke={accent} strokeDasharray="4 3" />
     <circle cx={200} cy={88} r={7} fill={vessel} />
     <ellipse cx={215} cy={92} rx={6} ry={5} fill="hsl(var(--primary) / 0.35)" stroke={ink} />
-    <circle cx={188} cy={82} r={4} fill="none" stroke={nerve} strokeWidth={2} />
+    <circle cx={188} cy={82} r={4} fill={accent} stroke={accent} strokeWidth={2} />
     <Label x={205} y={60} tx={205} ty={18} anchor="middle">Sartorius (roof)</Label>
     <Label x={120} y={95} tx={30} ty={80} anchor="end">Vastus medialis (lateral wall)</Label>
-    <Label x={275} y={100} tx={370} ty={110}>Adductor longus / magnus (floor)</Label>
+    <Label x={275} y={100} tx={340} ty={130}>Adductors (floor)</Label>
     <Label x={200} y={88} tx={340} ty={50}>Femoral (superficial) artery</Label>
     <Label x={215} y={95} tx={370} ty={140}>Femoral vein</Label>
     <Label x={188} y={82} tx={30} ty={40} anchor="end">Saphenous nerve</Label>
@@ -97,7 +97,7 @@ const Neuraxial = () => (
     <Label x={236} y={122} tx={370} ty={115}>Conus medullaris ≈ L1–L2</Label>
     <Label x={238} y={240} tx={370} ty={250}>Cauda equina</Label>
     <Label x={300} y={215} tx={370} ty={290}>Vertebral body</Label>
-    <Label x={60} y={175} tx={10} ty={200} anchor="end">Tuffier's line ≈ L4 (unreliable)</Label>
+    <Label x={60} y={175} tx={10} ty={230} anchor="end">Tuffier's line ≈ L4</Label>
   </Svg>
 );
 
