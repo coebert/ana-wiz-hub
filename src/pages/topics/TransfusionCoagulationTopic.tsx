@@ -605,7 +605,7 @@ const TransfusionCoagulationTopic = () => {
               <p className="font-semibold text-destructive">Caution: TXA builds up when the kidneys are not working</p>
               <ul className="list-disc list-inside space-y-1">
                 <li>About 95% of TXA is passed out unchanged in the urine, so acute or chronic kidney impairment raises and prolongs blood levels.</li>
-                <li>High levels are linked to seizures, best described after high-dose TXA in cardiac surgery. <InlineRef topicId="transfusion-coagulation" refLabel="POISE-3 2022" /></li>
+                <li>High levels are linked to seizures, best described after high-dose TXA in cardiac surgery.</li>
                 <li>The UK product information (for repeated IV dosing) adjusts by serum creatinine: 120–249 µmol/L → 10 mg/kg every 12 h; 250–500 µmol/L → 10 mg/kg every 24 h; &gt;500 µmol/L → 5 mg/kg every 24 h. <InlineRef topicId="transfusion-coagulation" refLabel="Cyklokapron SmPC" /></li>
                 <li>A single 1 g dose for trauma or bleeding usually does not need reducing; it is repeated or high-dose regimens that need adjusting. Keep track of the total dose given and watch for seizures.</li>
                 <li>Follow your local renal-adjusted protocol (cardiac surgery units often have their own).</li>
