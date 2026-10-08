@@ -191,7 +191,7 @@ const BurnsIcuTopic = () => {
               apoptosis vs coagulative necrosis), the depth (epidermal only, so healing is usually without
               grafting), the mucosal and ocular involvement, and the lower fluid requirement — but emphasise
               that the burns-unit supportive bundle and SCORTEN-based prognostication are the same discipline
-              <InlineRef topicId="burns-icu" refLabel="SCORTEN 2000" />.
+              <InlineRef topicId="burns-icu" refLabel="SCORTEN 2000" />. Plasma exchange showed no significant treatment effect in a TEN cohort <InlineRef topicId="burns-icu" refLabel="Furubacke TEN Plasma Exchange 1999" />.
             </p>
             </CollapsibleSubsection>
           </ExamSection>
