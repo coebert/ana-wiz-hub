@@ -274,8 +274,8 @@ const RocuroniumTopic = () => {
                 <p className="text-sm font-medium text-foreground">Sugammadex caveats</p>
                 <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
                   <li>Inactivates hormonal contraceptives for 7 days — counsel and document.</li>
-                  <li>Anaphylaxis ~1:2500–1:5000 (0.02–0.04%) — most reactions occur within minutes of administration and present with hypotension, bronchospasm or rash; rare bradycardia and marked bradycardia/asystole have also been described<InlineRef topicId="rocuronium" refLabel="JOACP 2022 Sugammadex Anaphylaxis" />.</li>
-                  <li>Avoid in severe renal impairment (eGFR &lt;30) — limited data.</li>
+                  <li>Anaphylaxis is rare (incidence ~0.02–0.04% in observational studies) — most reactions occur within minutes of administration and present with hypotension, bronchospasm or rash; rare bradycardia and marked bradycardia/asystole have also been described<InlineRef topicId="rocuronium" refLabel="JOACP 2022 Sugammadex Anaphylaxis" />.</li>
+                  <li>Severe renal impairment (CrCl &lt;30 mL/min): reversal is still effective, but the sugammadex–rocuronium complex is cleared renally so elimination is markedly delayed; the manufacturer does not recommend routine use, so use with careful quantitative monitoring for recurarisation <InlineRef topicId="rocuronium" refLabel="ESAIC 2023 NMB Guideline" />.</li>
                   <li>Re-paralysis within 24 h after sugammadex requires a benzylisoquinolinium (e.g. cisatracurium) or much larger rocuronium dose.</li>
                 </ul>
               </div>
