@@ -200,8 +200,20 @@ const ObstetricAnaesthesiaTopic = () => {
             </div>
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">General Anaesthesia</p>
-              <p className="text-sm text-muted-foreground mt-1">Reserved for failed/contraindicated neuraxial, time-critical Cat 1, or maternal refusal. RSI with cricoid pressure. Significant airway and aspiration risk — failed intubation ~1:224 for caesarean GA (~1:390 all obstetric GA)<InlineRef topicId="obstetric-anaesthesia" refLabel="Kinsella 2015 Failed Intubation" />, awareness 1:670 (NAP5).</p>
+              <p className="text-sm text-muted-foreground mt-1">Reserved for failed/contraindicated neuraxial, time-critical Cat 1, or maternal refusal. RSI with cricoid pressure. Significant airway and aspiration risk — failed intubation 1 in 224 in the UK national study <InlineRef topicId="obstetric-anaesthesia" refLabel="Quinn 2013 UKOSS Failed Intubation" /> (~1:390 across all obstetric GA in a later review <InlineRef topicId="obstetric-anaesthesia" refLabel="Kinsella 2015 Failed Intubation" />), awareness 1:670 (NAP5).</p>
             </div>
+          </div>
+          <div className="p-4 rounded-lg border border-border mt-3">
+            <p className="font-semibold text-foreground text-sm">Failed epidural top-up for caesarean section</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              In a prospective study of 501 women, the labour epidural failed to give adequate surgical anaesthesia in 5.9%, and 4.1% needed conversion to GA. Greater maternal height and more clinician top-ups during labour independently predicted failure <InlineRef topicId="obstetric-anaesthesia" refLabel="BJA 2009 Epidural Conversion" />.
+            </p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+              <li><strong className="text-foreground">Prevent:</strong> review any epidural that needs repeated top-ups in labour early, and resite it rather than relying on it for theatre.</li>
+              <li><strong className="text-foreground">Test the block before knife to skin:</strong> check height and density (cold and light touch to T5–T6 or higher). Many failures only become obvious during surgery, so keep reassessing.</li>
+              <li><strong className="text-foreground">If the block is inadequate, judge the urgency:</strong> for a category 2–3 delivery with time, remove the catheter and give a spinal (consider a reduced dose after recent epidural top-ups, as the block may rise higher than expected); for category 1 or a failed repeat block, proceed to GA.</li>
+              <li><strong className="text-foreground">Pain during surgery:</strong> acknowledge it, give supplementary analgesia (for example IV opioid or nitrous oxide), and offer GA if pain persists. Document the discussion and follow up afterwards.</li>
+            </ul>
           </div>
         </CollapsibleSubsection>
 
@@ -690,6 +702,15 @@ const ObstetricAnaesthesiaTopic = () => {
               <li>Daily anaesthetic review while an inpatient and a documented contact number for at least 6 weeks; explicit written warning about fever, neck stiffness, seizures, focal neurology or a headache that loses its postural component (subdural haematoma, cerebral venous sinus thrombosis).</li>
               <li>Conservative measures (regular paracetamol and NSAIDs, hydration, caffeine, avoiding constipation and pushing) first; offer epidural blood patch (15–20 ml autologous blood) for severe or persisting headache, ideally after 24–48 h, with a success rate of 60–70% at first attempt.</li>
               <li>Avoid prophylactic bed rest and prophylactic fluids — neither prevents PDPH. Report to the local audit of dural puncture rate (a national key indicator).</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg border border-border mt-3">
+            <p className="font-semibold text-foreground text-sm">Managing established PDPH</p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+              <li><strong className="text-foreground">Supportive:</strong> lying flat when it helps symptoms, keeping well hydrated (orally, or IV if not drinking), and help with caring for the baby. An abdominal binder is sometimes offered, but evidence is weak <InlineRef topicId="obstetric-anaesthesia" refLabel="OAA PDPH 2023" />.</li>
+              <li><strong className="text-foreground">Medicines:</strong> regular paracetamol and an NSAID, with short-term opioid only if needed. Caffeine may give short-lived relief. A Cochrane review found some benefit for caffeine, cosyntropin and aminophylline in small trials, but the evidence is low quality, so these are second-line at best <InlineRef topicId="obstetric-anaesthesia" refLabel="Cochrane 2013 PDPH Drugs" />. Sphenopalatine ganglion block is an option in some units, with limited evidence.</li>
+              <li><strong className="text-foreground">Epidural blood patch:</strong> consider when headache is severe or still limiting activity after 24–48 h. Two anaesthetists: one sites the epidural at or one space below the puncture, the other takes 15–20 ml (up to about 20–30 ml, stopping if back pain develops) of blood under strict asepsis. Lie flat for 1–2 h afterwards. First-patch success is about 60–70% for complete relief, higher for partial relief, and a second patch can be offered.</li>
+              <li><strong className="text-foreground">Blood patch risks:</strong> back pain (common, usually brief), a second dural puncture, infection, radicular pain and, rarely, nerve injury. Rethink the diagnosis (and image the brain) if the headache changes character or two patches fail.</li>
             </ul>
           </div>
         </CollapsibleSubsection>
