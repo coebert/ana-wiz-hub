@@ -236,10 +236,11 @@ const OrganDonationTopic = () => {
             <CollapsibleSubsection title="Physiological Management of the Donor">
             <div className="space-y-2">
               {[
-                { system: "Cardiovascular", goal: "MAP >60 mmHg. Vasopressin 0.5–4 U/h (treats DI + hypotension). Noradrenaline if needed. Avoid high-dose inotropes." },
-                { system: "Respiratory", goal: "VT 6–8 ml/kg, PEEP 5–10. Target PaO₂/FiO₂ >300 for lung retrieval. Recruitment, bronchoscopy." },
-                { system: "Endocrine", goal: "DI in ~65% — DDAVP 1–2 µg IV. Methylprednisolone 15 mg/kg. T3/T4 controversial but commonly used." },
-                { system: "Temperature", goal: "Active warming to 35–37°C." },
+                { system: "Cardiovascular", goal: "MAP 60–80 mmHg, CVP 4–10 mmHg. Vasopressin first-line (UK protocols ~0.4–2.4 U/h; treats DI + hypotension); noradrenaline second-line. Avoid high-dose catecholamines." },
+                { system: "Respiratory", goal: "Lung-protective: VT 6–8 ml/kg IBW, PEEP 8–10 cmH₂O, recruitment manoeuvres after disconnection; target PaO₂/FiO₂ >300 mmHg (>40 kPa). Bronchoscopy and physiotherapy." },
+                { system: "Endocrine", goal: "Hormonal resuscitation: methylprednisolone 15 mg/kg (max 1 g), vasopressin infusion, T3/T4 considered in cardiovascular instability (evidence mixed). Insulin infusion for glucose 4–10 mmol/L." },
+                { system: "Fluids / DI", goal: "DI (polyuria >4 ml/kg/h, rising Na⁺) in ~65% — DDAVP 1–4 µg IV boluses; replace losses. Na⁺ <155 mmol/L to protect liver grafts." },
+                { system: "Temperature", goal: "Normothermia (aim ~36.5–37.5 °C, minimum >35 °C) with active warming." },
                 { system: "Metabolic", goal: "Na⁺ <155 mmol/L. Glucose 4–10. Correct electrolytes." },
               ].map((s) => (
                 <div key={s.system} className="flex gap-3 p-3 rounded border border-border">
@@ -428,7 +429,7 @@ const OrganDonationTopic = () => {
                 { c: "II — Failed resuscitation", d: "Uncontrolled. Used in some EU centres; not UK." },
                 { c: "III — Awaiting cardiac arrest after WLST", d: "Controlled. ~95% of UK DCD." },
                 { c: "IV — Arrest after BSD", d: "Uncommon — switch from DBD to DCD pathway." },
-                { c: "V — Unexpected hospital arrest", d: "Not in UK classification." },
+                { c: "V — Donation after euthanasia / medically assisted death", d: "Added in the 2013 modified Maastricht classification; practised in Belgium, the Netherlands and Canada. Not legal in the UK." },
               ].map((m) => (
                 <div key={m.c} className="p-3 rounded border border-border">
                   <p className="font-bold text-primary text-sm">{m.c}</p>
@@ -448,6 +449,18 @@ const OrganDonationTopic = () => {
                 </div>
               ))}
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="paediatric-donation" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <CollapsibleSubsection title="Paediatric Organ Donation">
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li>Death by neurological criteria cannot be diagnosed in infants below <strong>37 weeks corrected gestational age</strong>. <InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" /></li>
+              <li>From 37 weeks to 2 months, the RCPCH 2015 guidance applies: the same clinical tests as adults, with stricter attention to preconditions; the apnoea test uses a higher PaCO₂ threshold (rise to &gt;8.0 kPa with pH &lt;7.30). Beyond 2 months, the adult code applies.</li>
+              <li>Ancillary tests have a larger role when preconditions cannot be met, but are not mandated by the UK codes.</li>
+              <li>Epidemiology differs: brain death is a smaller share of PICU deaths; most follow withdrawal of life-sustaining treatment, so paediatric DCD and neonatal DCD are increasingly important.</li>
+              <li>Communication: parents hold authorisation (deemed consent does not apply to under-18s in England); involve the SNOD and paediatric specialist nurse early, and separate the conversation about death from the conversation about donation.</li>
+            </ul>
             </CollapsibleSubsection>
           </ExamSection>
 

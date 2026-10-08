@@ -154,6 +154,14 @@ const PerioperativeFluidsTopic = () => {
               </div>
             </div>
             <div className="p-4 rounded-lg border border-border mt-4">
+              <p className="font-semibold text-foreground text-sm">Monitoring devices used for GDFT</p>
+              <ul className="list-disc pl-5 text-sm text-muted-foreground mt-1 space-y-1">
+                <li><strong>Oesophageal Doppler</strong> — measures descending aortic blood flow velocity; stroke volume is derived from the velocity–time integral and an estimated aortic cross-sectional area. Most of the original GDFT trial evidence uses this device. <InlineRef topicId="perioperative-fluids" refLabel="BJA Educ GDFT 2016" /></li>
+                <li><strong>Calibrated pulse contour analysis</strong> (e.g. LiDCOplus, PiCCO) — the arterial waveform analysis is calibrated against an indicator-dilution cardiac output (lithium dilution or transpulmonary thermodilution), improving accuracy when vascular tone changes.</li>
+                <li><strong>Uncalibrated pulse contour analysis</strong> (e.g. FloTrac, LiDCOrapid) — estimates stroke volume from arterial waveform morphology plus patient demographics, without external calibration; less reliable with rapid changes in vascular tone or arrhythmia.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border mt-4">
               <p className="font-semibold text-foreground text-sm">De-resuscitation — the "Evacuation" phase of ROSE</p>
               <p className="text-sm text-muted-foreground mt-1">
                 A cumulative positive fluid balance is not benign: it is associated with prolonged mechanical ventilation, impaired oxygenation, gut oedema and ileus, acute kidney injury, and increased mortality. GDFT should therefore include active planning for fluid removal, not only fluid administration. <InlineRef topicId="perioperative-fluids" refLabel="Front Med Fluids 2025" />

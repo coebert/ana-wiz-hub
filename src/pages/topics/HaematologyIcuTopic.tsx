@@ -236,7 +236,7 @@ const HaematologyIcuTopic = () => {
                 <li><strong>Therapeutic Plasma Exchange (TPE):</strong> 1–1.5× plasma volume daily. Continue until platelets &gt;150 × 10⁹/L for ≥2 days + normalising LDH.</li>
                 <li><strong>Corticosteroids:</strong> Methylprednisolone 1 g IV daily × 3 days, then prednisolone 1 mg/kg.</li>
                 <li><strong>Caplacizumab:</strong> Nanobody targeting the A1 domain of von Willebrand factor, blocking the vWF–platelet GPIb interaction and preventing further microthrombi formation while ADAMTS13 activity recovers; used alongside plasma exchange and immunosuppression (steroids ± rituximab) in acute immune TTP <InlineRef topicId="haematology-icu" refLabel="HERCULES 2019" />. Dosing: 10 mg IV before the first plasma exchange session, then 10 mg subcutaneously daily during plasma exchange and for at least 30 days afterwards, guided by ADAMTS13 activity recovery <InlineRef topicId="haematology-icu" refLabel="ISTH TTP 2020" />. Main adverse effect is mucocutaneous bleeding; it does not treat the underlying ADAMTS13 deficiency, so relapse can follow premature cessation.</li>
-                <li><strong>Rituximab:</strong> Anti-CD20 mAb for refractory/relapsing TTP — 375 mg/m² weekly × 4.</li>
+                <li><strong>Rituximab:</strong> Anti-CD20 mAb started early, alongside the initial PEX and steroids, in all patients with immune (acquired) TTP to suppress anti-ADAMTS13 antibody and reduce relapse — typically 375 mg/m² weekly × 4 (give after a PEX session, as PEX removes it). <InlineRef topicId="haematology-icu" refLabel="BSH TTP 2023" /></li>
               </ol>
             </div>
             <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5">

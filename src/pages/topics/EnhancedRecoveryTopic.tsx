@@ -68,6 +68,7 @@ const tocItems = [
   { id: "section-ponv", label: "Postoperative Nausea & Vomiting", group: "Core" },
   { id: "section-evidence-base", label: "Evidence Base", group: "Trials" },
   { id: "section-specialty-protocols", label: "Specialty Protocols", group: "Protocols" },
+  { id: "section-eras-icu", label: "ERAS in the ICU", group: "Protocols" },
   { id: "section-implementation-audit", label: "Implementation & Audit", group: "Protocols" },
 ];
 
@@ -394,6 +395,21 @@ const EnhancedRecoveryTopic = () => {
               ))}
             </div>
           </DiagramSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
+            <section id="section-eras-icu" className="space-y-3">
+              <h2 className="text-2xl font-serif font-bold text-foreground">ERAS in the ICU</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                ERAS principles — limiting physiological insult, avoiding unnecessary sedation and immobility, and restoring nutrition early — translate directly to critical care, where the equivalent "liberation" approach aims to shorten ventilation, reduce delirium and preserve function after discharge. <InlineRef topicId="enhanced-recovery" refLabel="Ljungqvist 2017" />
+              </p>
+              <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+                <li><strong>ABCDEF bundle</strong>: Assess, prevent and manage pain; Both spontaneous awakening and spontaneous breathing trials; Choice of analgesia and sedation (light sedation, avoid benzodiazepines); Delirium assessment and management (e.g. CAM-ICU); Early mobility and exercise; Family engagement.</li>
+                <li><strong>Early mobilisation</strong>: protocolised, progressive mobility from sitting to standing and walking as soon as physiologically safe, including in ventilated patients.</li>
+                <li><strong>Nutrition</strong>: early enteral nutrition within 24–48 h when the patient is haemodynamically stable, as recommended by ESICM, to maintain gut integrity and blunt the catabolic response.</li>
+                <li><strong>Analgesia/sedation</strong>: analgesia-first, multimodal opioid-sparing strategies (paracetamol, regional techniques, ketamine or dexmedetomidine where appropriate) to permit earlier weaning and mobilisation.</li>
+              </ul>
+            </section>
+          </ExamSection>
 
           <DiagramSection
             id="section-implementation-audit"
