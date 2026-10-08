@@ -458,7 +458,7 @@ const OrganDonationTopic = () => {
               <li>Death by neurological criteria cannot be diagnosed in infants below <strong>37 weeks corrected gestational age</strong>. <InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" /></li>
               <li>From 37 weeks to 2 months, the RCPCH 2015 guidance applies: the same clinical tests as adults, with stricter attention to preconditions; the apnoea test uses a higher PaCO₂ threshold (rise to &gt;8.0 kPa with pH &lt;7.30). Beyond 2 months, the adult code applies.</li>
               <li>Ancillary tests have a larger role when preconditions cannot be met, but are not mandated by the UK codes.</li>
-              <li>Epidemiology differs: brain death is a smaller share of PICU deaths; most follow withdrawal of life-sustaining treatment, so paediatric DCD and neonatal DCD are increasingly important.</li>
+              <li>Epidemiology differs: brain death is a smaller share of PICU deaths; most follow withdrawal of life-sustaining treatment, so paediatric DCD and neonatal DCD are increasingly important. <InlineRef topicId="organ-donation" refLabel="Meert PICU Deaths 2014" /></li>
               <li>Communication: parents hold authorisation (deemed consent does not apply to under-18s in England); involve the SNOD and paediatric specialist nurse early, and separate the conversation about death from the conversation about donation.</li>
             </ul>
             </CollapsibleSubsection>

@@ -600,7 +600,7 @@ const PreoperativeAssessmentTopic = () => {
             <p className="font-semibold text-foreground text-sm">TARGET MET</p>
             <p className="text-xs font-mono text-muted-foreground mt-1">Hb ≥ 130 g/L (men)<br/>Hb ≥ 120 g/L (women, standard WHO definition)<br/><span className="font-sans">Some PBM guidelines now use a universal 130 g/L target to minimise transfusion, but the formal definition of anaemia in women remains &lt;120 g/L.</span></p>
             <p className="text-sm text-muted-foreground mt-2 leading-snug">
-              No iron / ESA required. Note: the 2017 international PBM consensus argues for treating even mild anaemia (120–129 g/L) in women before major surgery, because the same absolute blood loss consumes a larger share of a lower red-cell mass — this is a rationale for treatment, not a change to the WHO definition.
+              No iron / ESA required. Note: the 2017 international PBM consensus argues for treating even mild anaemia (120–129 g/L) in women before major surgery, because the same absolute blood loss consumes a larger share of a lower red-cell mass — this is a rationale for treatment, not a change to the WHO definition. <InlineRef topicId="preoperative-assessment" refLabel="ESAIC Preop 2025" />
             </p>
           </div>
           <div className="p-4 rounded-lg border-2 border-accent/40 bg-accent/5">
