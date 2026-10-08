@@ -120,7 +120,7 @@ const ThoracicAnatomyTopic = () => {
               </div>
             ))}
             <p className="text-xs text-muted-foreground mt-2">
-              <strong className="text-foreground">VAN:</strong> Vein, Artery, Nerve — run in the costal groove at the inferior border of the rib above. Insert chest drains above the rib below to avoid the neurovascular bundle.
+              <strong className="text-foreground">VAN:</strong> Vein, Artery, Nerve — run in the costal groove at the inferior border of the rib above. Insert chest drains above the rib below to avoid the neurovascular bundle. A smaller <strong>collateral branch</strong> leaves the main intercostal nerve near the angle of the rib and runs along the <strong>superior border of the rib below</strong>. It can be missed by a single-injection intercostal block, giving incomplete analgesia, and can be injured by a drain placed hard on the upper rib border.
             </p>
             <p className="text-sm text-muted-foreground mt-3">
               Posterior intercostal arteries arise from the supreme intercostal artery in spaces 1–2 and directly from
