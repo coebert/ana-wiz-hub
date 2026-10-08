@@ -11,7 +11,7 @@ const Aortocaval = () => (
     <path d="M60 280 L340 280" stroke={muted} strokeWidth={3} />
     <BigLabel x={200} y={110} tx={330} ty={40}>Gravid uterus</BigLabel>
     <BigLabel x={225} y={205} tx={340} ty={200}>Aorta (left)</BigLabel>
-    <BigLabel x={175} y={205} tx={40} ty={200} anchor="end">IVC (right, compressed)</BigLabel>
+    <BigLabel x={175} y={205} tx={100} ty={200} anchor="end">IVC (right, compressed)</BigLabel>
     <BigLabel x={200} y={255} tx={300} ty={290}>Vertebral body</BigLabel>
     <BigLabel x={100} y={280} tx={40} ty={250} anchor="end">Supine on table</BigLabel>
   </Svg>
@@ -26,7 +26,7 @@ const Dermatomes = () => (
       return (
         <g key={s}>
           <line x1={195} y1={y} x2={205} y2={y} stroke={ink} />
-          <text x={212} y={y + 3} fontSize={9} fill={ink}>{s}</text>
+          <text x={212} y={y + 4} fontSize={12} fontWeight={600} fill={ink}>{s}</text>
         </g>
       );
     })}

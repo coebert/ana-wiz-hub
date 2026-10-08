@@ -18,7 +18,7 @@ const Aorta = () => (
     <BigLabel x={222} y={190} tx={330} ty={190}>Infrarenal aneurysm</BigLabel>
     <BigLabel x={165} y={110} tx={40} ty={100} anchor="end">Suprarenal clamp</BigLabel>
     <BigLabel x={165} y={145} tx={40} ty={150} anchor="end">Infrarenal clamp</BigLabel>
-    <BigLabel x={165} y={35} tx={40} ty={40} anchor="end">Artery of Adamkiewicz (T8–L1)</BigLabel>
+    <BigLabel x={165} y={35} tx={120} ty={40} anchor="end">Artery of Adamkiewicz</BigLabel>
     <BigLabel x={175} y={270} tx={80} ty={280} anchor="end">Common iliac arteries</BigLabel>
   </Svg>
 );
@@ -42,7 +42,7 @@ const Carotid = () => (
     <BigLabel x={130} y={103} tx={90} ty={80} anchor="end">Hypoglossal nerve (XII)</BigLabel>
     <BigLabel x={240} y={230} tx={330} ty={220}>Vagus nerve (X)</BigLabel>
     <BigLabel x={245} y={85} tx={330} ty={95}>Sinus nerve (IX)</BigLabel>
-    <BigLabel x={150} y={207} tx={90} ty={200} anchor="end">Superficial cervical plexus</BigLabel>
+    <BigLabel x={150} y={207} tx={105} ty={200} anchor="end">Superficial cervical plexus</BigLabel>
   </Svg>
 );
 
