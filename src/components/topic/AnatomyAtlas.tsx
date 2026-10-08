@@ -18,8 +18,17 @@ export const Label = ({ x, y, tx, ty, children, anchor = "start" }: { x: number;
   </g>
 );
 
+/* Larger, bolder label for phone readers */
+export const BigLabel = ({ x, y, tx, ty, children, anchor = "start" }: { x: number; y: number; tx: number; ty: number; children: string; anchor?: "start" | "end" | "middle" }) => (
+  <g>
+    <line x1={x} y1={y} x2={tx} y2={ty} stroke={muted} strokeWidth={1.2} />
+    <circle cx={x} cy={y} r={2.8} fill={ink} />
+    <text x={tx + (anchor === "start" ? 4 : anchor === "end" ? -4 : 0)} y={ty + 4} fontSize={14} fontWeight={600} fill={ink} textAnchor={anchor}>{children}</text>
+  </g>
+);
+
 export const Svg = ({ title, children }: { title: string; children: ReactNode }) => (
-  <svg viewBox="-110 0 620 300" role="img" aria-label={title} className="w-full h-auto bg-background">
+  <svg viewBox="-110 0 620 300" role="img" aria-label={title} className="w-full h-auto bg-card">
     <title>{title}</title>
     {children}
   </svg>

@@ -1,4 +1,4 @@
-import { AnatomyAtlas, Label, Svg, ink, muted, accent, danger, vessel, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, BigLabel, Svg, ink, muted, accent, danger, vessel, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Abdominal aorta and clamp levels */
 const Aorta = () => (
@@ -12,14 +12,14 @@ const Aorta = () => (
     <ellipse cx={200} cy={190} rx={22} ry={35} fill={danger} fillOpacity={0.3} stroke={danger} strokeWidth={2} />
     <path d="M165 110 L235 110" stroke={accent} strokeWidth={3} strokeDasharray="6 3" />
     <path d="M165 145 L235 145" stroke={accent} strokeWidth={3} />
-    <Label x={250} y={60} tx={330} ty={50}>Coeliac trunk</Label>
-    <Label x={250} y={100} tx={330} ty={90}>Superior mesenteric</Label>
-    <Label x={270} y={128} tx={330} ty={130}>Renal arteries</Label>
-    <Label x={222} y={190} tx={330} ty={190}>Infrarenal aneurysm</Label>
-    <Label x={165} y={110} tx={40} ty={100} anchor="end">Suprarenal clamp</Label>
-    <Label x={165} y={145} tx={40} ty={150} anchor="end">Infrarenal clamp</Label>
-    <Label x={165} y={35} tx={40} ty={40} anchor="end">Artery of Adamkiewicz (T8–L1)</Label>
-    <Label x={175} y={270} tx={80} ty={280} anchor="end">Common iliac arteries</Label>
+    <BigLabel x={250} y={60} tx={330} ty={50}>Coeliac trunk</BigLabel>
+    <BigLabel x={250} y={100} tx={330} ty={90}>Superior mesenteric</BigLabel>
+    <BigLabel x={270} y={128} tx={330} ty={130}>Renal arteries</BigLabel>
+    <BigLabel x={222} y={190} tx={330} ty={190}>Infrarenal aneurysm</BigLabel>
+    <BigLabel x={165} y={110} tx={40} ty={100} anchor="end">Suprarenal clamp</BigLabel>
+    <BigLabel x={165} y={145} tx={40} ty={150} anchor="end">Infrarenal clamp</BigLabel>
+    <BigLabel x={165} y={35} tx={120} ty={40} anchor="end">Artery of Adamkiewicz</BigLabel>
+    <BigLabel x={175} y={270} tx={80} ty={280} anchor="end">Common iliac arteries</BigLabel>
   </Svg>
 );
 
@@ -35,14 +35,14 @@ const Carotid = () => (
     <path d="M260 60 Q235 100 215 150" fill="none" stroke={ink} strokeWidth={1.5} strokeDasharray="3 2" />
     <path d="M120 210 Q200 200 280 230" fill="none" stroke={muted} strokeWidth={1.5} />
     <ellipse cx={210} cy={250} rx={8} ry={4} fill={accent} fillOpacity={0.5} stroke={accent} />
-    <Label x={200} y={250} tx={110} ty={270} anchor="end">Common carotid</Label>
-    <Label x={222} y={40} tx={330} ty={30}>Internal carotid</Label>
-    <Label x={163} y={40} tx={90} ty={30} anchor="end">External carotid</Label>
-    <Label x={220} y={170} tx={330} ty={175}>Carotid sinus / bulb</Label>
-    <Label x={130} y={103} tx={90} ty={80} anchor="end">Hypoglossal nerve (XII)</Label>
-    <Label x={240} y={230} tx={330} ty={220}>Vagus nerve (X)</Label>
-    <Label x={245} y={85} tx={330} ty={95}>Sinus nerve (IX)</Label>
-    <Label x={150} y={207} tx={90} ty={200} anchor="end">Superficial cervical plexus</Label>
+    <BigLabel x={200} y={250} tx={110} ty={270} anchor="end">Common carotid</BigLabel>
+    <BigLabel x={222} y={40} tx={330} ty={30}>Internal carotid</BigLabel>
+    <BigLabel x={163} y={40} tx={90} ty={30} anchor="end">External carotid</BigLabel>
+    <BigLabel x={220} y={170} tx={330} ty={175}>Carotid sinus / bulb</BigLabel>
+    <BigLabel x={130} y={103} tx={90} ty={80} anchor="end">Hypoglossal nerve (XII)</BigLabel>
+    <BigLabel x={240} y={230} tx={330} ty={220}>Vagus nerve (X)</BigLabel>
+    <BigLabel x={245} y={85} tx={330} ty={95}>Sinus nerve (IX)</BigLabel>
+    <BigLabel x={150} y={207} tx={105} ty={200} anchor="end">Superficial cervical plexus</BigLabel>
   </Svg>
 );
 
