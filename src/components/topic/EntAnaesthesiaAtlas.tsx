@@ -1,4 +1,4 @@
-import { AnatomyAtlas, Label, Svg, ink, muted, fillA, accent, vessel, nerve, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, BigLabel, Svg, ink, muted, fillA, accent, vessel, nerve, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Laryngeal innervation, anterolateral view */
 const Larynx = () => (
@@ -15,15 +15,15 @@ const Larynx = () => (
     <path d="M305 30 L305 290" stroke={vessel} fill="none" strokeWidth={4} />
     <path d="M95 30 L95 290" stroke={vessel} fill="none" strokeWidth={4} strokeOpacity={0.5} />
     <rect x={172} y={155} width={56} height={13} fill="hsl(var(--primary) / 0.3)" stroke={ink} />
-    <Label x={200} y={45} tx={330} ty={30}>Hyoid bone</Label>
-    <Label x={200} y={115} tx={330} ty={100}>Thyroid cartilage</Label>
-    <Label x={200} y={179} tx={330} ty={175}>Cricoid cartilage</Label>
-    <Label x={200} y={240} tx={330} ty={245}>Trachea</Label>
-    <Label x={160} y={92} tx={40} ty={70} anchor="end">Internal SLN</Label>
-    <Label x={155} y={130} tx={40} ty={130} anchor="end">External SLN</Label>
-    <Label x={130} y={250} tx={40} ty={250} anchor="end">Recurrent laryngeal nerve</Label>
-    <Label x={305} y={200} tx={330} ty={210}>Carotid sheath (one each side)</Label>
-    <Label x={225} y={161} tx={330} ty={140}>Cricothyroid membrane</Label>
+    <BigLabel x={200} y={45} tx={330} ty={30}>Hyoid bone</BigLabel>
+    <BigLabel x={200} y={115} tx={330} ty={100}>Thyroid cartilage</BigLabel>
+    <BigLabel x={200} y={179} tx={330} ty={175}>Cricoid cartilage</BigLabel>
+    <BigLabel x={200} y={240} tx={330} ty={245}>Trachea</BigLabel>
+    <BigLabel x={160} y={92} tx={40} ty={70} anchor="end">Internal SLN</BigLabel>
+    <BigLabel x={155} y={130} tx={40} ty={130} anchor="end">External SLN</BigLabel>
+    <BigLabel x={130} y={250} tx={40} ty={250} anchor="end">Recurrent laryngeal nerve</BigLabel>
+    <BigLabel x={305} y={200} tx={330} ty={210}>Carotid sheath (one each side)</BigLabel>
+    <BigLabel x={225} y={161} tx={330} ty={140}>Cricothyroid membrane</BigLabel>
   </Svg>
 );
 
@@ -41,15 +41,15 @@ const Tonsil = () => (
     <path d="M60 260 Q100 230 125 205" stroke={vessel} fill="none" strokeWidth={3} />
     <path d="M124 135 Q118 170 126 205" stroke={vessel} strokeOpacity={0.55} fill="none" strokeWidth={2.5} strokeDasharray="4 2" />
     <path d="M150 230 Q200 250 250 230 L240 290 L160 290 Z" fill="hsl(var(--primary) / 0.12)" stroke={ink} />
-    <Label x={200} y={45} tx={330} ty={20}>Soft palate</Label>
-    <Label x={200} y={80} tx={330} ty={80}>Uvula</Label>
-    <Label x={108} y={110} tx={40} ty={95} anchor="end">Palatoglossal arch (front)</Label>
-    <Label x={122} y={145} tx={40} ty={135} anchor="end">Paratonsillar vein</Label>
-    <Label x={132} y={170} tx={40} ty={170} anchor="end">Palatine tonsil in fossa</Label>
-    <Label x={80} y={248} tx={40} ty={250} anchor="end">Tonsillar artery</Label>
-    <Label x={252} y={120} tx={340} ty={130}>Palatopharyngeal arch (behind)</Label>
-    <Label x={298} y={190} tx={340} ty={190}>Palatoglossal arch (front)</Label>
-    <Label x={200} y={265} tx={340} ty={270}>Tongue</Label>
+    <BigLabel x={200} y={45} tx={330} ty={20}>Soft palate</BigLabel>
+    <BigLabel x={200} y={80} tx={330} ty={80}>Uvula</BigLabel>
+    <BigLabel x={108} y={110} tx={40} ty={95} anchor="end">Palatoglossal arch (front)</BigLabel>
+    <BigLabel x={122} y={145} tx={40} ty={135} anchor="end">Paratonsillar vein</BigLabel>
+    <BigLabel x={132} y={170} tx={40} ty={170} anchor="end">Palatine tonsil in fossa</BigLabel>
+    <BigLabel x={80} y={248} tx={40} ty={250} anchor="end">Tonsillar artery</BigLabel>
+    <BigLabel x={252} y={120} tx={340} ty={130}>Palatopharyngeal arch (behind)</BigLabel>
+    <BigLabel x={298} y={190} tx={340} ty={190}>Palatoglossal arch (front)</BigLabel>
+    <BigLabel x={200} y={265} tx={340} ty={270}>Tongue</BigLabel>
   </Svg>
 );
 

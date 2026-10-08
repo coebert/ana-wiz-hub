@@ -1,4 +1,4 @@
-import { AnatomyAtlas, Label, Svg, ink, muted, fillA, accent, nerve, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, BigLabel, Svg, ink, muted, fillA, accent, nerve, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Sacral hiatus for caudal block, posterior view */
 const Caudal = () => (
@@ -16,13 +16,13 @@ const Caudal = () => (
     <path d="M200 250 L200 290" stroke={ink} strokeWidth={3} />
     <path d="M185 90 L215 90" stroke={ink} strokeWidth={2} />
     <path d="M185 145 L215 145" stroke={nerve} strokeWidth={2} />
-    <Label x={112} y={88} tx={40} ty={75} anchor="end">PSIS (ilium, ≈S2 level)</Label>
-    <Label x={200} y={232} tx={330} ty={235}>Sacral hiatus</Label>
-    <Label x={185} y={218} tx={40} ty={215} anchor="end">Sacral cornua</Label>
-    <Label x={215} y={90} tx={330} ty={80}>Adult dural sac end ≈ S2</Label>
-    <Label x={215} y={145} tx={330} ty={150}>Neonate dural sac end ≈ S3–S4</Label>
-    <Label x={150} y={140} tx={40} ty={140} anchor="end">PSIS–hiatus triangle</Label>
-    <Label x={200} y={280} tx={330} ty={285}>Coccyx</Label>
+    <BigLabel x={112} y={88} tx={40} ty={75} anchor="end">PSIS (ilium, ≈S2 level)</BigLabel>
+    <BigLabel x={200} y={232} tx={330} ty={235}>Sacral hiatus</BigLabel>
+    <BigLabel x={185} y={218} tx={40} ty={215} anchor="end">Sacral cornua</BigLabel>
+    <BigLabel x={215} y={90} tx={330} ty={80}>Adult dural sac end ≈ S2</BigLabel>
+    <BigLabel x={215} y={145} tx={330} ty={150}>Neonate dural sac end ≈ S3–S4</BigLabel>
+    <BigLabel x={150} y={140} tx={40} ty={140} anchor="end">PSIS–hiatus triangle</BigLabel>
+    <BigLabel x={200} y={280} tx={330} ty={285}>Coccyx</BigLabel>
   </Svg>
 );
 
@@ -38,12 +38,12 @@ const Penile = () => (
     <circle cx={200} cy={78} r={5} fill="hsl(var(--destructive) / 0.75)" />
     <circle cx={160} cy={84} r={5} fill={nerve} />
     <circle cx={240} cy={84} r={5} fill={nerve} />
-    <Label x={160} y={84} tx={40} ty={50} anchor="end">Dorsal nerve (≈10–11 o'clock)</Label>
-    <Label x={240} y={84} tx={340} ty={50}>Dorsal nerve (≈1–2 o'clock)</Label>
-    <Label x={200} y={78} tx={340} ty={20}>Deep dorsal vein / arteries</Label>
-    <Label x={160} y={130} tx={40} ty={140} anchor="end">Corpus cavernosum</Label>
-    <Label x={200} y={200} tx={340} ty={230}>Corpus spongiosum + urethra</Label>
-    <Label x={300} y={180} tx={340} ty={180}>Buck's fascia</Label>
+    <BigLabel x={160} y={84} tx={40} ty={50} anchor="end">Dorsal nerve (≈10–11 o'clock)</BigLabel>
+    <BigLabel x={240} y={84} tx={340} ty={50}>Dorsal nerve (≈1–2 o'clock)</BigLabel>
+    <BigLabel x={200} y={78} tx={340} ty={20}>Deep dorsal vein / arteries</BigLabel>
+    <BigLabel x={160} y={130} tx={40} ty={140} anchor="end">Corpus cavernosum</BigLabel>
+    <BigLabel x={200} y={200} tx={340} ty={230}>Corpus spongiosum + urethra</BigLabel>
+    <BigLabel x={300} y={180} tx={340} ty={180}>Buck's fascia</BigLabel>
   </Svg>
 );
 

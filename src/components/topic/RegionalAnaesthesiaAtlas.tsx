@@ -1,4 +1,4 @@
-import { AnatomyAtlas, Label, Svg, ink, muted, fillA, accent, danger, vessel, nerve, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, BigLabel, Svg, ink, muted, fillA, accent, danger, vessel, nerve, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Interscalene groove, transverse ultrasound-style section at C6 */
 const Interscalene = () => (
@@ -13,16 +13,16 @@ const Interscalene = () => (
     <ellipse cx={95} cy={105} rx={22} ry={10} fill="hsl(var(--primary) / 0.25)" stroke={ink} />
     <path d="M178 120 L183 175" stroke={nerve} strokeWidth={1.5} strokeDasharray="3 2" />
     <path d="M150 250 L250 250 L240 225 L160 225 Z" fill={fillA} stroke={ink} />
-    <Label x={140} y={75} tx={40} ty={60} anchor="end">Sternocleidomastoid</Label>
-    <Label x={150} y={170} tx={40} ty={200} anchor="end">Anterior scalene</Label>
-    <Label x={295} y={170} tx={360} ty={210}>Middle scalene</Label>
-    <Label x={224} y={130} tx={330} ty={90}>C5 root/trunk</Label>
-    <Label x={224} y={155} tx={330} ty={110}>C6</Label>
-    <Label x={224} y={180} tx={330} ty={130}>C7</Label>
-    <Label x={181} y={145} tx={150} ty={290} anchor="end">Phrenic nerve (on anterior scalene)</Label>
-    <Label x={90} y={140} tx={40} ty={150} anchor="end">Carotid artery</Label>
-    <Label x={95} y={105} tx={40} ty={110} anchor="end">Internal jugular vein</Label>
-    <Label x={200} y={238} tx={270} ty={275}>C6 transverse process</Label>
+    <BigLabel x={140} y={75} tx={40} ty={60} anchor="end">Sternocleidomastoid</BigLabel>
+    <BigLabel x={150} y={170} tx={40} ty={200} anchor="end">Anterior scalene</BigLabel>
+    <BigLabel x={295} y={170} tx={360} ty={210}>Middle scalene</BigLabel>
+    <BigLabel x={224} y={130} tx={330} ty={90}>C5 root/trunk</BigLabel>
+    <BigLabel x={224} y={155} tx={330} ty={110}>C6</BigLabel>
+    <BigLabel x={224} y={180} tx={330} ty={130}>C7</BigLabel>
+    <BigLabel x={181} y={145} tx={150} ty={290} anchor="end">Phrenic nerve (on anterior scalene)</BigLabel>
+    <BigLabel x={90} y={140} tx={40} ty={150} anchor="end">Carotid artery</BigLabel>
+    <BigLabel x={95} y={105} tx={40} ty={110} anchor="end">Internal jugular vein</BigLabel>
+    <BigLabel x={200} y={238} tx={270} ty={275}>C6 transverse process</BigLabel>
   </Svg>
 );
 
@@ -38,14 +38,14 @@ const Femoral = () => (
     <path d="M90 140 Q140 120 165 108" fill="none" stroke={accent} strokeWidth={1} />
     <path d="M60 50 L230 260" stroke={danger} strokeWidth={8} strokeOpacity={0.35} />
     <path d="M340 50 L250 230" stroke={danger} strokeWidth={8} strokeOpacity={0.35} />
-    <Label x={200} y={50} tx={200} ty={20} anchor="middle">Inguinal ligament (ASIS → pubic tubercle)</Label>
-    <Label x={150} y={95} tx={40} ty={95} anchor="end">Femoral nerve (lateral)</Label>
-    <Label x={185} y={98} tx={160} ty={160} anchor="end">Femoral artery</Label>
-    <Label x={215} y={98} tx={370} ty={100}>Femoral vein (medial)</Label>
-    <Label x={110} y={115} tx={40} ty={130} anchor="end">Fascia iliaca</Label>
-    <Label x={130} y={130} tx={40} ty={170} anchor="end">Iliacus / psoas</Label>
-    <Label x={120} y={125} tx={40} ty={215} anchor="end">Sartorius (lateral border)</Label>
-    <Label x={300} y={130} tx={360} ty={170}>Adductor longus (medial border)</Label>
+    <BigLabel x={200} y={50} tx={200} ty={20} anchor="middle">Inguinal ligament (ASIS → pubic tubercle)</BigLabel>
+    <BigLabel x={150} y={95} tx={40} ty={95} anchor="end">Femoral nerve (lateral)</BigLabel>
+    <BigLabel x={185} y={98} tx={160} ty={160} anchor="end">Femoral artery</BigLabel>
+    <BigLabel x={215} y={98} tx={370} ty={100}>Femoral vein (medial)</BigLabel>
+    <BigLabel x={110} y={115} tx={40} ty={130} anchor="end">Fascia iliaca</BigLabel>
+    <BigLabel x={130} y={130} tx={40} ty={170} anchor="end">Iliacus / psoas</BigLabel>
+    <BigLabel x={120} y={125} tx={40} ty={215} anchor="end">Sartorius (lateral border)</BigLabel>
+    <BigLabel x={300} y={130} tx={360} ty={170}>Adductor longus (medial border)</BigLabel>
     <text x={200} y={292} fontSize={9} fill={muted} textAnchor="middle">Nerve lies deep to fascia iliaca; artery and vein lie superficial to it, within the femoral sheath</text>
   </Svg>
 );
@@ -62,13 +62,13 @@ const Adductor = () => (
     <circle cx={200} cy={88} r={7} fill={vessel} />
     <ellipse cx={215} cy={92} rx={6} ry={5} fill="hsl(var(--primary) / 0.35)" stroke={ink} />
     <circle cx={188} cy={82} r={4} fill={accent} stroke={accent} strokeWidth={2} />
-    <Label x={205} y={60} tx={205} ty={18} anchor="middle">Sartorius (roof)</Label>
-    <Label x={120} y={95} tx={30} ty={80} anchor="end">Vastus medialis (lateral wall)</Label>
-    <Label x={275} y={100} tx={340} ty={130}>Adductors (floor)</Label>
-    <Label x={200} y={88} tx={340} ty={50}>Femoral (superficial) artery</Label>
-    <Label x={215} y={95} tx={340} ty={165}>Femoral vein</Label>
-    <Label x={188} y={82} tx={30} ty={40} anchor="end">Saphenous nerve</Label>
-    <Label x={200} y={160} tx={300} ty={220}>Femur</Label>
+    <BigLabel x={205} y={60} tx={205} ty={18} anchor="middle">Sartorius (roof)</BigLabel>
+    <BigLabel x={120} y={95} tx={30} ty={80} anchor="end">Vastus medialis (lateral wall)</BigLabel>
+    <BigLabel x={275} y={100} tx={340} ty={130}>Adductors (floor)</BigLabel>
+    <BigLabel x={200} y={88} tx={340} ty={50}>Femoral (superficial) artery</BigLabel>
+    <BigLabel x={215} y={95} tx={340} ty={165}>Femoral vein</BigLabel>
+    <BigLabel x={188} y={82} tx={30} ty={40} anchor="end">Saphenous nerve</BigLabel>
+    <BigLabel x={200} y={160} tx={300} ty={220}>Femur</BigLabel>
     <text x={200} y={292} fontSize={9} fill={muted} textAnchor="middle">Dashed: adductor canal. Nerve to vastus medialis often lies just outside the canal.</text>
   </Svg>
 );
@@ -87,17 +87,17 @@ const Neuraxial = () => (
     {[0, 6, 12].map((o) => <path key={o} d={`M${232 + o} 125 L${232 + o} 270`} stroke={nerve} strokeWidth={1} />)}
     <path d="M10 175 L195 175" stroke={muted} strokeWidth={1.5} strokeDasharray="6 3" />
     <path d="M30 170 L210 166" stroke={ink} strokeWidth={1.2} />
-    <Label x={80} y={60} tx={10} ty={40} anchor="end">Skin</Label>
-    <Label x={118} y={100} tx={10} ty={80} anchor="end">Supraspinous ligament</Label>
-    <Label x={160} y={110} tx={10} ty={120} anchor="end">Interspinous ligament</Label>
-    <Label x={205} y={250} tx={150} ty={290} anchor="end">Ligamentum flavum</Label>
-    <Label x={213} y={60} tx={190} ty={20} anchor="end">Epidural space</Label>
-    <Label x={220} y={90} tx={260} ty={20}>Dura / arachnoid</Label>
-    <Label x={245} y={180} tx={370} ty={175}>CSF (subarachnoid)</Label>
-    <Label x={236} y={122} tx={370} ty={115}>Conus medullaris ≈ L1–L2</Label>
-    <Label x={238} y={240} tx={370} ty={250}>Cauda equina</Label>
-    <Label x={300} y={215} tx={370} ty={290}>Vertebral body</Label>
-    <Label x={60} y={175} tx={10} ty={230} anchor="end">Tuffier's line ≈ L4</Label>
+    <BigLabel x={80} y={60} tx={10} ty={40} anchor="end">Skin</BigLabel>
+    <BigLabel x={118} y={100} tx={10} ty={80} anchor="end">Supraspinous ligament</BigLabel>
+    <BigLabel x={160} y={110} tx={10} ty={120} anchor="end">Interspinous ligament</BigLabel>
+    <BigLabel x={205} y={250} tx={150} ty={290} anchor="end">Ligamentum flavum</BigLabel>
+    <BigLabel x={213} y={60} tx={190} ty={20} anchor="end">Epidural space</BigLabel>
+    <BigLabel x={220} y={90} tx={260} ty={20}>Dura / arachnoid</BigLabel>
+    <BigLabel x={245} y={180} tx={370} ty={175}>CSF (subarachnoid)</BigLabel>
+    <BigLabel x={236} y={122} tx={370} ty={115}>Conus medullaris ≈ L1–L2</BigLabel>
+    <BigLabel x={238} y={240} tx={370} ty={250}>Cauda equina</BigLabel>
+    <BigLabel x={300} y={215} tx={370} ty={290}>Vertebral body</BigLabel>
+    <BigLabel x={60} y={175} tx={10} ty={230} anchor="end">Tuffier's line ≈ L4</BigLabel>
   </Svg>
 );
 
