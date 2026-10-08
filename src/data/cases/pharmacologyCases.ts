@@ -213,7 +213,7 @@ export const pharmacologyCaseBank: CaseBank = {
           answer: [
             "Neostigmine cannot reverse this depth of block; it requires at least two twitches on train-of-four and has a ceiling effect from acetylcholinesterase saturation.",
             "Give sugammadex 4 mg/kg for deep block (2 mg/kg once two twitches have returned), and confirm recovery quantitatively to a train-of-four ratio of 0.9 or more.",
-            "Although sugammadex is not licensed in severe renal impairment, it is widely used with the caveat of delayed complex clearance; discuss the risk of recurarisation and monitor accordingly.",
+            "In severe renal impairment sugammadex is still recommended for reversal. The sugammadex–rocuronium complex is cleared by the kidneys, so its elimination is significantly delayed; clinical reversal is nevertheless effective, but monitor carefully for any recurarisation.",
           ],
         },
         {

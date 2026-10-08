@@ -21,7 +21,7 @@ const workedExamples: WorkedExample[] = [
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li>RSI dose = 1.2 mg/kg (2× ED₉₅ of 0.6 mg/kg for rapid onset): 70 × 1.2 = <strong>84 mg IV</strong>.</li>
+          <li>RSI dose = 0.9–1.2 mg/kg (3–4× ED₉₅ of ~0.3 mg/kg for rapid onset); at the top of the range: 70 × 1.2 = <strong>84 mg IV</strong> <InlineRef topicId="rocuronium" refLabel="ESAIC 2023 NMB Guideline" />.</li>
           <li>Onset to intubating conditions ≈ 45–60 s (comparable to suxamethonium 1.5 mg/kg).</li>
           <li>Clinical duration of a 1.2 mg/kg dose: ~45–70 min (vs ~30–45 min after 0.6 mg/kg).</li>
           <li>Rescue reversal if "can't intubate": sugammadex 16 mg/kg = 70 × 16 = <strong>1120 mg IV</strong> — restores TOF to ≥0.9 within ~2–3 min regardless of depth.</li>
@@ -274,8 +274,8 @@ const RocuroniumTopic = () => {
                 <p className="text-sm font-medium text-foreground">Sugammadex caveats</p>
                 <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
                   <li>Inactivates hormonal contraceptives for 7 days — counsel and document.</li>
-                  <li>Anaphylaxis ~1:2500–1:5000 (0.02–0.04%) — most reactions occur within minutes of administration and present with hypotension, bronchospasm or rash; rare bradycardia and marked bradycardia/asystole have also been described<InlineRef topicId="rocuronium" refLabel="JOACP 2022 Sugammadex Anaphylaxis" />.</li>
-                  <li>Avoid in severe renal impairment (eGFR &lt;30) — limited data.</li>
+                  <li>Anaphylaxis is rare (incidence ~0.02–0.04% in observational studies) — most reactions occur within minutes of administration and present with hypotension, bronchospasm or rash; rare bradycardia and marked bradycardia/asystole have also been described<InlineRef topicId="rocuronium" refLabel="JOACP 2022 Sugammadex Anaphylaxis" />.</li>
+                  <li>Severe renal impairment (CrCl &lt;30 mL/min): reversal is still effective, but the sugammadex–rocuronium complex is cleared renally so elimination is markedly delayed; the manufacturer does not recommend routine use, so use with careful quantitative monitoring for recurarisation <InlineRef topicId="rocuronium" refLabel="ESAIC 2023 NMB Guideline" />.</li>
                   <li>Re-paralysis within 24 h after sugammadex requires a benzylisoquinolinium (e.g. cisatracurium) or much larger rocuronium dose.</li>
                 </ul>
               </div>
