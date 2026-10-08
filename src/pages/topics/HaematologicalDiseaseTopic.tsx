@@ -347,6 +347,14 @@ const HaematologicalDiseaseTopic = () => {
                   <li>Add vancomycin/teicoplanin only for suspected line infection, MRSA risk or severe mucositis</li>
                   <li>Escalate to critical care early; admit even if initially stable for IV antibiotics and monitoring</li>
                 </ul>
+                <p className="font-semibold text-foreground text-sm mt-3">After the first hour</p>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Review antibiotics at 48–72 h with culture results and the clinical picture</li>
+                  <li><strong>De-escalate:</strong> stop vancomycin/teicoplanin if cultures show no Gram-positive organism needing them and the patient is stable</li>
+                  <li><strong>Oral switch:</strong> NICE suggests considering a step-down to oral antibiotics in patients judged low-risk once they have improved (a typical choice is ciprofloxacin plus co-amoxiclav); local policy usually also asks for being afebrile and stable for about 48 h</li>
+                  <li><strong>Low-risk outpatient care:</strong> the MASCC risk index (score ≥21 = low risk) helps pick patients who can finish treatment at home — they must be clinically stable, able to take oral drugs, and have rapid access back to the cancer unit</li>
+                  <li>Stop empirical antibiotics once neutrophils recover and the patient is afebrile, unless a specific infection needs a full course <InlineRef topicId="haematological-disease" refLabel="NICE NG141" /></li>
+                </ul>
               </div>
 
               <div className="bg-card border-2 border-clinical/40 rounded-lg p-4">

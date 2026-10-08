@@ -574,6 +574,46 @@ const TransfusionCoagulationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="transfusion-triggers" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
+            <CollapsibleSubsection title="Transfusion Triggers & Special Populations">
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground leading-relaxed">
+              <li><strong>General ICU patients:</strong> a restrictive threshold of Hb 70 g/L (target 70–90) is as safe as a liberal one (TRICC). <InlineRef topicId="transfusion-coagulation" refLabel="BPA Transfusion 2026" /></li>
+              <li><strong>Septic shock:</strong> no difference in 90-day mortality between Hb 70 and 90 g/L thresholds (TRISS).</li>
+              <li><strong>Acute myocardial infarction:</strong> MINT (2023, n≈3500) compared thresholds of 80 vs 100 g/L; the liberal group had fewer deaths or repeat MIs at 30 days (14.5% vs 16.9%), but the primary result was not statistically significant. Many clinicians now aim higher (around 80–100 g/L) in acute MI. <InlineRef topicId="transfusion-coagulation" refLabel="MINT 2023" /></li>
+              <li><strong>Acute brain injury (TBI, subarachnoid or intracerebral haemorrhage):</strong> TRAIN (2024) found fewer poor neurological outcomes at 180 days with a 90 g/L threshold than with 70 g/L (62.6% vs 72.6%). Evidence is still limited and debated, but a higher threshold of about 90 g/L is increasingly used. <InlineRef topicId="transfusion-coagulation" refLabel="TRAIN 2024" /></li>
+              <li><strong>After cardiac surgery:</strong> restrictive thresholds (about 75 g/L) are generally safe (TITRe2, TRICS-III), but individualise in ongoing bleeding or low cardiac output.</li>
+              <li>In every group, transfuse one unit at a time and reassess, and treat active bleeding by clinical picture rather than by Hb alone.</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="liver-coagulopathy" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
+            <CollapsibleSubsection title="Coagulopathy in Liver Disease & Liver Transplantation">
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground leading-relaxed">
+              <li><strong>Rebalanced haemostasis:</strong> chronic liver disease lowers both clotting factors and natural anticoagulants (protein C, protein S, antithrombin), while raised von Willebrand factor offsets low platelets. The balance is fragile and can tip towards bleeding or clotting.</li>
+              <li><strong>Typical tests:</strong> prolonged PT/INR and low platelets, yet thrombin generation is often normal or even increased — so these patients still get portal vein thrombosis and VTE and still need thromboprophylaxis.</li>
+              <li><strong>PT/INR predicts bleeding poorly</strong> in liver disease; do not give FFP just to "correct" an INR before a procedure. Viscoelastic tests (ROTEM/TEG) show the overall clot and guide targeted treatment.</li>
+              <li><strong>Liver transplantation:</strong> the anhepatic phase brings loss of clotting-factor production and of clearance of tissue plasminogen activator, so hyperfibrinolysis can occur; after reperfusion (neohepatic phase) heparin-like effects, further fibrinolysis and platelet sequestration in the new liver add to bleeding. <InlineRef topicId="transfusion-coagulation" refLabel="Cleland WJT 2016" /></li>
+              <li><strong>Targeted treatment:</strong> fibrinogen concentrate or cryoprecipitate for a low FIBTEM; platelets for thrombocytopenia with bleeding; TXA if ROTEM shows hyperfibrinolysis; cautious FFP or PCC for low thrombin generation (prolonged EXTEM CT), remembering FFP's volume load raises portal pressure and PCC can cause clots.</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="txa-renal" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Tranexamic Acid in Renal Impairment">
+            <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5 text-sm text-muted-foreground space-y-2">
+              <p className="font-semibold text-destructive">Caution: TXA builds up when the kidneys are not working</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li>About 95% of TXA is passed out unchanged in the urine, so acute or chronic kidney impairment raises and prolongs blood levels.</li>
+                <li>High levels are linked to seizures, best described after high-dose TXA in cardiac surgery.</li>
+                <li>The UK product information (for repeated IV dosing) adjusts by serum creatinine: 120–249 µmol/L → 10 mg/kg every 12 h; 250–500 µmol/L → 10 mg/kg every 24 h; &gt;500 µmol/L → 5 mg/kg every 24 h. <InlineRef topicId="transfusion-coagulation" refLabel="Cyklokapron SmPC" /></li>
+                <li>A single 1 g dose for trauma or bleeding usually does not need reducing; it is repeated or high-dose regimens that need adjusting. Keep track of the total dose given and watch for seizures.</li>
+                <li>Follow your local renal-adjusted protocol (cardiac surgery units often have their own).</li>
+              </ul>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="dic" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6", "EDIC 5.6"]}>
             <CollapsibleSubsection title="Disseminated Intravascular Coagulation">
             <p className="text-muted-foreground leading-relaxed mb-3">

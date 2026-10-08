@@ -358,9 +358,17 @@ const HaematologyIcuTopic = () => {
               <h3 className="font-semibold text-foreground mb-2">Management</h3>
               <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
                 <li>Treat the trigger (antimicrobials, chemotherapy).</li>
-                <li>HLH-94/2004: dexamethasone 10 mg/m² + etoposide 150 mg/m² biweekly.</li>
-                <li><strong>Anakinra</strong> — recombinant IL-1 receptor antagonist; increasingly used first-line alongside steroids in sepsis-induced HLH/MAS given its short half-life and favourable safety profile in critical illness compared with etoposide (less myelosuppression, easier to titrate/withdraw if infection is uncontrolled) <InlineRef topicId="haematology-icu" refLabel="HLH Anakinra" />.</li>
-                <li><strong>Ruxolitinib</strong> — JAK1/2 inhibitor acting downstream of IFN-γ and other pro-inflammatory cytokines in the HLH cascade; used as salvage therapy for disease refractory to steroids and etoposide.</li>
+                <li><strong>First line, HLH-94/2004:</strong> dexamethasone 10 mg/m² (dampens inflammatory gene expression) plus etoposide 150 mg/m² twice weekly (kills activated T cells and macrophages). Etoposide causes marked bone-marrow suppression — dose-reduce in renal or liver failure and watch for neutropenic sepsis.</li>
+                <li><strong>First line, MAS / rheumatology-associated HLH:</strong> high-dose corticosteroids (e.g. IV methylprednisolone) ± <strong>anakinra</strong> (IL-1 receptor antagonist); anakinra is also increasingly used in sepsis-associated HLH because of its short half-life and good safety record. <InlineRef topicId="haematology-icu" refLabel="HLH Anakinra" /></li>
+                <li><strong>Refractory disease or where etoposide is unsafe:</strong>
+                  <ul className="list-disc list-inside ml-4 mt-1 space-y-1">
+                    <li><strong>Ruxolitinib</strong> — JAK1/2 inhibitor; blocks signalling from IFN-γ and several other cytokines at once</li>
+                    <li><strong>Emapalumab</strong> — anti-IFN-γ antibody; directly neutralises a key driver of HLH (licensed for primary HLH in children)</li>
+                    <li><strong>Alemtuzumab</strong> — anti-CD52 antibody; depletes lymphocytes, with high risk of opportunistic infection</li>
+                    <li><strong>Tocilizumab</strong> — anti-IL-6 receptor antibody; used where hyperinflammation with high IL-6 dominates (e.g. CAR-T cytokine release)</li>
+                  </ul>
+                </li>
+                <li>Treat the trigger in parallel; definitive treatment for primary (genetic) HLH is stem-cell transplantation.</li>
                 <li>Organ support; track ferritin trend as marker of activity.</li>
               </ol>
             </div>

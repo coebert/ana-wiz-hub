@@ -404,6 +404,12 @@ const AcidsBasesBuffersTopic = () => {
                 anions are simultaneously pushing towards acidosis.
               </p>
               <p>
+                Electroneutrality means total positive charge must equal total negative charge. In plasma this simplifies to
+                <strong> SID − [A⁻] ≈ [HCO₃⁻]</strong>, where [A⁻] is the charged (dissociated) part of ATOT — so bicarbonate
+                is whatever is left over once strong ions and weak acids have been accounted for, rather than a cause in its own right.
+                <InlineRef topicId="acids-bases-buffers" refLabel="Stewart 1983" />
+              </p>
+              <p>
                 Compared with the traditional Henderson-Hasselbalch/base excess approach, Stewart's model gives a more complete,
                 mechanistic account of quantitatively complex derangements (e.g. mixed disorders in sepsis or after large-volume
                 resuscitation), but its practical criticism is that the underlying algebra is <strong>cumbersome for bedside

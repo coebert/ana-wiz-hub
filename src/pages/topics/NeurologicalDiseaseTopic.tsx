@@ -49,6 +49,7 @@ const tocItems = [
   { id: "section-spinal-cord-injury", label: "Spinal Cord Injury", group: "Spinal" },
   { id: "section-guillain-barre", label: "Guillain–Barré Syndrome", group: "Neuropathy" },
   { id: "section-stroke-cognitive", label: "Stroke, Perioperative Cognition & ICP Cross-Links", group: "Cerebrovascular" },
+  { id: "section-raised-icp", label: "Raised Intracranial Pressure", group: "Cerebrovascular" },
 ];
 
 const keyPoints = [
@@ -241,6 +242,15 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Safe agents: propofol (anticonvulsant), thiopentone, sevoflurane, isoflurane, fentanyl, rocuronium</li>
                 <li>Intraoperative seizure management: ensure oxygenation, midazolam 2–5 mg IV, propofol bolus, thiopentone for refractory seizures</li>
               </ul>
+              <h4 className="font-semibold text-foreground mt-3 mb-1 text-sm">Convulsive status epilepticus</h4>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Definition:</strong> a convulsive seizure lasting 5 minutes or more, or repeated seizures without recovery in between</li>
+                <li><strong>0–5 min:</strong> airway, high-flow O₂, IV access, check glucose (treat hypoglycaemia; thiamine if alcohol or malnutrition)</li>
+                <li><strong>First line (at 5 min):</strong> IV lorazepam 0.1 mg/kg (usually 4 mg), repeated once after 5–10 min if needed; no IV access → buccal midazolam 10 mg (or rectal diazepam)</li>
+                <li><strong>Second line (if still fitting after two benzodiazepine doses):</strong> IV levetiracetam 60 mg/kg (max 4.5 g), or phenytoin 20 mg/kg (ECG and BP monitoring), or sodium valproate 40 mg/kg (max 3 g; avoid in women who could become pregnant)</li>
+                <li><strong>Refractory (still fitting after second line, about 30–45 min):</strong> rapid sequence induction with propofol, thiopentone or midazolam, intubation, infusion titrated to seizure control (EEG if available) and critical care admission</li>
+                <li>Doses and timings follow NICE NG217 (2022, which replaced CG137) <InlineRef topicId="neurological-disease" refLabel="NICE NG217" /></li>
+              </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Parenteral Equivalents & Perioperative AED Continuity</h3>
@@ -300,7 +310,14 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Use lowest effective concentration of LA for neuraxial techniques</li>
                 <li>General anaesthesia: all agents considered safe; avoid suxamethonium if significant motor deficit (hyperkalaemia risk from denervation)</li>
                 <li>Document all pre-existing neurological deficits preoperatively (medicolegal importance)</li>
-                <li>Disease-modifying therapies (natalizumab, fingolimod): immunosuppressive — infection risk; discuss with neurologist</li>
+                <li>Disease-modifying therapies — agree with the patient's neurologist whether to continue or pause around surgery:
+                  <ul className="list-disc list-inside ml-4 mt-1 space-y-1">
+                    <li><strong>Natalizumab:</strong> risk of progressive multifocal leukoencephalopathy (PML), higher with prior immunosuppressants — document and investigate any new neurological signs</li>
+                    <li><strong>Fingolimod</strong> (and other S1P modulators): bradycardia and AV block, mainly at first dose; get a baseline ECG and take care with drugs that slow the heart (remifentanil, high-dose opioids, neostigmine, dexmedetomidine)</li>
+                    <li><strong>Alemtuzumab:</strong> profound, prolonged lymphopenia and opportunistic infection; secondary autoimmunity (immune thrombocytopenia, thyroid disease, kidney disease) — check platelets, thyroid and renal function</li>
+                    <li><strong>Ocrelizumab / rituximab:</strong> B-cell depletion, low antibody levels and more infections; check FBC (late neutropenia can occur)</li>
+                  </ul>
+                </li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
@@ -655,6 +672,33 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Screening tools: Confusion Assessment Method (CAM/CAM-ICU) and the 4AT (Alertness, AMT4, Attention, Acute change) are validated rapid bedside screens for delirium</li>
                 <li>Prevention bundle: avoid deliriogenic drugs where possible, ensure adequate analgesia, maintain hydration/nutrition, promote normal sleep-wake cycles, early mobilisation, sensory aids (glasses/hearing aids), and reorientation strategies; depth-of-anaesthesia monitoring (e.g. BIS) to avoid excessively deep anaesthesia has some evidence for reducing POD incidence</li>
                 <li>Cross-reference: severe traumatic brain injury and raised intracranial pressure management (osmotherapy, CPP-targeted care, decompressive craniectomy) and neuromuscular respiratory failure (ventilatory support thresholds, weaning) are covered in detail in the dedicated Neurocritical Care and Neuromuscular Respiratory Failure topics — the principles of avoiding secondary neuronal injury (hypoxaemia, hypotension, hyperthermia, hypo/hyperglycaemia) apply equally to the stroke and cognitively vulnerable patient perioperatively</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section id="section-raised-icp" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Raised Intracranial Pressure</h2>
+          <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["NA_BK_01"]} />
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Physiology and recognition</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Monro–Kellie doctrine:</strong> the skull is a rigid box holding brain, blood and CSF; a rise in one must be offset by a fall in another (CSF and venous blood move out first). Once this buffering is used up, small volume increases cause steep rises in ICP</li>
+                <li>Normal ICP is about 5–15 mmHg; sustained values above 22 mmHg are treated in severe traumatic brain injury</li>
+                <li><strong>Cerebral perfusion pressure:</strong> CPP = MAP − ICP; target 60–70 mmHg in adult severe TBI <InlineRef topicId="neurological-disease" refLabel="BTF TBI 2017" /></li>
+                <li><strong>Features:</strong> headache (worse lying flat or in the morning), vomiting, papilloedema, falling GCS, unequal or fixed pupils, and Cushing's triad (hypertension, bradycardia, irregular breathing) as a late sign of impending herniation</li>
+              </ul>
+            </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Anaesthetic management</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Goals:</strong> keep CPP up, avoid anything that raises ICP, and keep blood pressure stable (avoid both hypotension and hypertensive surges)</li>
+                <li><strong>Induction:</strong> propofol or thiopentone lower cerebral metabolic rate and blood flow; blunt the response to laryngoscopy (opioid, lidocaine, adequate depth) and support MAP with a vasopressor. Ketamine is no longer thought to raise ICP when ventilation is controlled, but is usually not first choice</li>
+                <li><strong>Maintenance:</strong> TIVA is often preferred; volatile agents dilate cerebral vessels in a dose-dependent way — if used, keep below about 1 MAC. Avoid nitrous oxide</li>
+                <li><strong>Ventilation:</strong> normocapnia (PaCO₂ 4.5–5.0 kPa) and PaO₂ above 13 kPa; brief hyperventilation only as a rescue for impending herniation, because it can cause cerebral ischaemia</li>
+                <li><strong>Positioning:</strong> head up 15–30°, head in the midline, avoid tight tube ties or collars that block jugular venous drainage; avoid high PEEP where possible</li>
+                <li><strong>Other:</strong> osmotherapy (mannitol 0.25–1 g/kg or hypertonic saline), normoglycaemia, normothermia (treat fever), adequate sedation and treat seizures</li>
+                <li><strong>Drug effects on ICP:</strong> propofol, thiopentone, benzodiazepines and opioids (with controlled ventilation) lower or do not change ICP; volatiles and nitrous oxide raise cerebral blood flow; suxamethonium causes a small, brief rise that is not a reason to avoid it when a rapid sequence is needed</li>
               </ul>
             </div>
           </div>
