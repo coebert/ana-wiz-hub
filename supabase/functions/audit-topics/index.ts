@@ -2220,6 +2220,15 @@ Deno.serve(async (req) => {
 
     // Watchdog: re-chain any sweep that stopped progressing. Called by cron
     // every few minutes and by the dashboard's Resume button.
+    // An explicit admin action (Resume or a new sweep) clears a credit/policy
+    // pause; automated watchdog/continue calls never do.
+    if (action !== "watchdog" && action !== "continue") {
+      await supa
+        .from("audit_job_state")
+        .update({ paused: false, paused_reason: null, updated_at: new Date().toISOString() })
+        .eq("id", "content-audit");
+    }
+
     if (action === "watchdog" || action === "resume") {
       if (body.job_id) {
         const nowIso = new Date().toISOString();
