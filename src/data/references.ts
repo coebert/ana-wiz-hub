@@ -777,6 +777,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "AAGBI Coagulation 2013", citation: "Harrop-Griffiths W, Cook T, Gill H, et al. Regional anaesthesia and patients with abnormalities of coagulation. Anaesthesia. 2013;68(9):966-972.", url: "https://doi.org/10.1111/anae.12359" },
   ],
   "paediatric-anaesthesia": [
+    { label: "O'Connor 2016 Remi-Prop Layering", citation: "O'Connor S, Zhang YL, Lynch MJ, et al. Remifentanil and propofol undergo separation and layering when mixed in the same syringe for total intravenous anesthesia. Paediatr Anaesth. 2016;26(7):703-709.", url: "https://doi.org/10.1111/pan.12917" },
     { label: "Gray's Anatomy 42e", citation: "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.", url: "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0" },
     { label: "van Schoor 2018 Dural Sac", citation: "van Schoor AN, et al. Determining the extent of the dural sac for the performance of caudal epidural blocks in newborns. Paediatr Anaesth. 2018;28(9):852-856.", url: "https://doi.org/10.1111/pan.13483" },
     { label: "Zadrazil 2023 Penile Block", citation: "Zadrazil M, et al. Ultrasound-guided dorsal penile nerve block in children: an anatomical-based observational study of a new anesthesia technique. Children (Basel). 2023;11(1):50.", url: "https://doi.org/10.3390/children11010050" },
