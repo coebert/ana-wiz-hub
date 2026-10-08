@@ -1,4 +1,4 @@
-import { AnatomyAtlas, Label, Svg, ink, muted, fillA, accent, vessel, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, BigLabel, Svg, ink, muted, fillA, accent, vessel, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Aortocaval compression, transverse section */
 const Aortocaval = () => (
@@ -9,11 +9,11 @@ const Aortocaval = () => (
     <circle cx={225} cy={205} r={11} fill={vessel} />
     <ellipse cx={175} cy={205} rx={16} ry={6} fill="hsl(var(--primary) / 0.5)" stroke={ink} />
     <path d="M60 280 L340 280" stroke={muted} strokeWidth={3} />
-    <Label x={200} y={110} tx={330} ty={40}>Gravid uterus</Label>
-    <Label x={225} y={205} tx={340} ty={200}>Aorta (left)</Label>
-    <Label x={175} y={205} tx={40} ty={200} anchor="end">IVC (right, compressed)</Label>
-    <Label x={200} y={255} tx={300} ty={290}>Vertebral body</Label>
-    <Label x={100} y={280} tx={40} ty={250} anchor="end">Supine on table</Label>
+    <BigLabel x={200} y={110} tx={330} ty={40}>Gravid uterus</BigLabel>
+    <BigLabel x={225} y={205} tx={340} ty={200}>Aorta (left)</BigLabel>
+    <BigLabel x={175} y={205} tx={40} ty={200} anchor="end">IVC (right, compressed)</BigLabel>
+    <BigLabel x={200} y={255} tx={300} ty={290}>Vertebral body</BigLabel>
+    <BigLabel x={100} y={280} tx={40} ty={250} anchor="end">Supine on table</BigLabel>
   </Svg>
 );
 
@@ -36,11 +36,11 @@ const Dermatomes = () => (
     <ellipse cx={90} cy={150} rx={45} ry={55} fill="hsl(var(--primary) / 0.12)" stroke={ink} />
     <path d="M130 140 L185 130" stroke={ink} strokeWidth={1.5} />
     <path d="M110 200 L185 230" stroke={accent} strokeWidth={1.5} />
-    <Label x={215} y={130} tx={330} ty={110}>1st stage: T10–L1</Label>
-    <Label x={215} y={230} tx={330} ty={230}>2nd stage: S2–S4</Label>
-    <Label x={178} y={30} tx={330} ty={30}>Caesarean: T4–T5 block</Label>
-    <Label x={90} y={140} tx={40} ty={100} anchor="end">Uterus / cervix</Label>
-    <Label x={120} y={204} tx={40} ty={240} anchor="end">Vagina / perineum</Label>
+    <BigLabel x={215} y={130} tx={330} ty={110}>1st stage: T10–L1</BigLabel>
+    <BigLabel x={215} y={230} tx={330} ty={230}>2nd stage: S2–S4</BigLabel>
+    <BigLabel x={178} y={30} tx={330} ty={30}>Caesarean: T4–T5 block</BigLabel>
+    <BigLabel x={90} y={140} tx={40} ty={100} anchor="end">Uterus / cervix</BigLabel>
+    <BigLabel x={120} y={204} tx={40} ty={240} anchor="end">Vagina / perineum</BigLabel>
   </Svg>
 );
 

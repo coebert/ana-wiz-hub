@@ -1,4 +1,4 @@
-import { AnatomyAtlas, Label, Svg, ink, muted, fillA, accent, vessel, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, BigLabel, Svg, ink, muted, fillA, accent, vessel, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Circle of Willis, inferior view */
 const Willis = () => (
@@ -14,14 +14,14 @@ const Willis = () => (
     <circle cx={150} cy={120} r={6} fill={vessel} />
     <circle cx={250} cy={120} r={6} fill={vessel} />
     <path d="M160 185 L90 200 M240 185 L310 200" stroke={vessel} strokeWidth={3} />
-    <Label x={200} y={235} tx={260} ty={250}>Basilar artery</Label>
-    <Label x={186} y={285} tx={120} ty={290} anchor="end">Vertebral arteries</Label>
-    <Label x={110} y={195} tx={40} ty={215} anchor="end">Posterior cerebral</Label>
-    <Label x={155} y={150} tx={40} ty={160} anchor="end">Posterior communicating</Label>
-    <Label x={250} y={120} tx={340} ty={140}>Internal carotid</Label>
-    <Label x={300} y={112} tx={340} ty={90}>Middle cerebral</Label>
-    <Label x={222} y={50} tx={300} ty={30}>Anterior cerebral</Label>
-    <Label x={200} y={80} tx={120} ty={40} anchor="end">Anterior communicating</Label>
+    <BigLabel x={200} y={235} tx={260} ty={250}>Basilar artery</BigLabel>
+    <BigLabel x={186} y={285} tx={120} ty={290} anchor="end">Vertebral arteries</BigLabel>
+    <BigLabel x={110} y={195} tx={40} ty={215} anchor="end">Posterior cerebral</BigLabel>
+    <BigLabel x={155} y={150} tx={40} ty={160} anchor="end">Posterior communicating</BigLabel>
+    <BigLabel x={250} y={120} tx={340} ty={140}>Internal carotid</BigLabel>
+    <BigLabel x={300} y={112} tx={340} ty={90}>Middle cerebral</BigLabel>
+    <BigLabel x={222} y={50} tx={300} ty={30}>Anterior cerebral</BigLabel>
+    <BigLabel x={200} y={80} tx={120} ty={40} anchor="end">Anterior communicating</BigLabel>
   </Svg>
 );
 
@@ -36,13 +36,13 @@ const Compartments = () => (
     <path d="M185 175 L185 280 M215 175 L215 280" stroke={ink} strokeWidth={1.5} />
     <path d="M170 245 L230 245" stroke={ink} strokeWidth={4} />
     <path d="M140 140 Q160 165 185 160" fill="none" stroke={vessel} strokeWidth={2} strokeDasharray="4 2" />
-    <Label x={60} y={120} tx={-20} ty={60} anchor="end">Skull (fixed volume)</Label>
-    <Label x={200} y={60} tx={290} ty={20}>Falx cerebri</Label>
-    <Label x={225} y={100} tx={360} ty={70}>Lateral ventricles (CSF)</Label>
-    <Label x={300} y={165} tx={360} ty={150}>Tentorium cerebelli</Label>
-    <Label x={160} y={160} tx={-20} ty={170} anchor="end">Uncal herniation</Label>
-    <Label x={200} y={245} tx={300} ty={260}>Foramen magnum</Label>
-    <Label x={200} y={210} tx={120} ty={280} anchor="end">Brainstem / tonsils</Label>
+    <BigLabel x={60} y={120} tx={-20} ty={60} anchor="end">Skull (fixed volume)</BigLabel>
+    <BigLabel x={200} y={60} tx={290} ty={20}>Falx cerebri</BigLabel>
+    <BigLabel x={225} y={100} tx={360} ty={70}>Lateral ventricles (CSF)</BigLabel>
+    <BigLabel x={300} y={165} tx={360} ty={150}>Tentorium cerebelli</BigLabel>
+    <BigLabel x={160} y={160} tx={-20} ty={170} anchor="end">Uncal herniation</BigLabel>
+    <BigLabel x={200} y={245} tx={300} ty={260}>Foramen magnum</BigLabel>
+    <BigLabel x={200} y={210} tx={120} ty={280} anchor="end">Brainstem / tonsils</BigLabel>
   </Svg>
 );
 
@@ -55,12 +55,12 @@ const Sinuses = () => (
     <path d="M250 190 Q220 200 215 240 L205 290" fill="none" stroke="hsl(var(--primary) / 0.7)" strokeWidth={6} />
     <path d="M140 110 Q240 90 300 150" fill="none" stroke="hsl(var(--primary) / 0.5)" strokeWidth={3} />
     <circle cx={340} cy={150} r={7} fill="hsl(var(--primary) / 0.8)" />
-    <Label x={200} y={35} tx={200} ty={12} anchor="middle">Superior sagittal sinus</Label>
-    <Label x={220} y={100} tx={30} ty={60} anchor="end">Straight sinus</Label>
-    <Label x={340} y={150} tx={380} ty={130}>Confluence</Label>
-    <Label x={300} y={182} tx={380} ty={200}>Transverse sinus</Label>
-    <Label x={235} y={215} tx={370} ty={250}>Sigmoid sinus</Label>
-    <Label x={207} y={280} tx={120} ty={290} anchor="end">Internal jugular vein</Label>
+    <BigLabel x={200} y={35} tx={200} ty={12} anchor="middle">Superior sagittal sinus</BigLabel>
+    <BigLabel x={220} y={100} tx={30} ty={60} anchor="end">Straight sinus</BigLabel>
+    <BigLabel x={340} y={150} tx={380} ty={130}>Confluence</BigLabel>
+    <BigLabel x={300} y={182} tx={380} ty={200}>Transverse sinus</BigLabel>
+    <BigLabel x={235} y={215} tx={370} ty={250}>Sigmoid sinus</BigLabel>
+    <BigLabel x={207} y={280} tx={120} ty={290} anchor="end">Internal jugular vein</BigLabel>
   </Svg>
 );
 
