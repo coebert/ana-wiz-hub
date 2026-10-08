@@ -31,6 +31,7 @@ const tocItems = [
   { id: "spinal-vs-epidural", label: "Spinal vs epidural", group: "Neuraxial" },
   { id: "complications", label: "Neuraxial complications", group: "Neuraxial" },
   { id: "upper-limb", label: "Upper limb & truncal blocks", group: "Peripheral blocks" },
+  { id: "pnb-indications-safety", label: "Block selection & complications", group: "Peripheral blocks" },
   { id: "block-height", label: "Block height assessment", group: "Assessment" },
   { id: "bromage", label: "Bromage scale", group: "Assessment" },
   { id: "regression", label: "Block regression times", group: "Assessment" },
@@ -55,7 +56,7 @@ const regionalFaqs: Array<[string, string]> = [
   ],
   [
     "Does spinal anaesthesia hurt and is it safe?",
-    "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 reported vertebral canal haematoma around 1:220,000 for spinal anaesthesia and 1:150,000 for epidural anaesthesia, and meningitis < 1:50,000. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
+    "Local anaesthetic infiltration of the skin is briefly stinging; the spinal needle itself is felt as pressure rather than pain in most patients. Serious complications are rare: NAP3 (≈700,000 central neuraxial blocks in the UK; Cook 2009) estimated permanent harm at 2.0–4.2 per 100,000 (≈1:50,000–1:24,000) and paraplegia or death at 0.7–1.8 per 100,000, with risk lower for spinals and obstetric blocks than for perioperative epidurals. Permanent neurological injury does occur but is rare, and its causes overlap — direct needle or catheter trauma, vertebral canal haematoma, infection, spinal cord ischaemia and, importantly, surgical and patient factors unrelated to the block — so a single incidence figure for spinal anaesthesia alone cannot be quoted reliably. The most common side effects — hypotension, shivering, transient back ache and post-dural puncture headache — are predictable and treatable.",
   ],
   [
     "Why does spinal anaesthesia drop blood pressure?",
@@ -63,15 +64,15 @@ const regionalFaqs: Array<[string, string]> = [
   ],
   [
     "What is post-dural puncture headache (PDPH) and how is it treated?",
-    "PDPH is a positional fronto-occipital headache caused by CSF leak through the dural puncture, with traction on meningeal vessels. Incidence: 1–2% after 25–27 G pencil-point spinal needles, 50–80% after accidental 16–18 G epidural Tuohy puncture. Worse on sitting/standing, better lying flat. Conservative management (analgesia, hydration, caffeine) for 24–48 h; epidural blood patch (15–20 ml autologous blood) is the gold standard with 70–90% success and is offered if symptoms persist beyond 24–48 h or are severe.",
+    "PDPH is a positional fronto-occipital headache caused by CSF leak through the dural puncture, with traction on meningeal vessels. Incidence: around 1% or less after 25–27 G pencil-point spinal needles, and over half of patients after accidental 16–18 G epidural Tuohy puncture. Worse on sitting/standing, better lying flat. Supportive care with regular simple analgesia (evidence for caffeine and fluids is weak); the OAA 2023 consensus advises offering an epidural blood patch (up to ~20 ml autologous blood) when symptoms limit daily activity, ideally after 48 h. It relieves symptoms in most patients but complete resolution is less common and a repeat patch is sometimes needed.",
   ],
   [
     "When is spinal anaesthesia contraindicated?",
-    "Absolute: patient refusal, raised intracranial pressure, local infection at insertion site, severe coagulopathy or therapeutic anticoagulation outside the AAGBI/ESAIC interval, true allergy to local anaesthetic, fixed-output cardiac lesions (e.g. severe AS — relative in modern practice). Relative: bacteraemia/sepsis, pre-existing neurological disease (document baseline), spinal deformity, hypovolaemia.",
+    "Absolute: patient refusal, raised intracranial pressure, local infection at insertion site, severe coagulopathy or therapeutic anticoagulation outside the AAGBI/ESAIC interval, true allergy to local anaesthetic. Relative: fixed-output cardiac lesions such as severe aortic stenosis (a carefully titrated technique may be used), bacteraemia/sepsis, pre-existing neurological disease (document baseline), spinal deformity, hypovolaemia.",
   ],
   [
     "How are local anaesthetics dosed safely to avoid toxicity (LAST)?",
-    "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% Intralipid 1.5 ml/kg bolus then 0.25 ml/kg/min infusion (AAGBI 2010 guideline), avoid lidocaine antiarrhythmics and vasopressin.",
+    "Maximum safe doses: lidocaine 3 mg/kg plain (7 mg/kg with adrenaline); bupivacaine and levobupivacaine 2 mg/kg; ropivacaine 3 mg/kg. Always calculate by lean body weight. LAST presents with peri-oral tingling, agitation, seizures, then cardiovascular collapse. Management: stop injection, ABC, 20% Intralipid 1.5 ml/kg bolus then 0.25 ml/kg/min infusion (repeat bolus up to twice at 5-minute intervals, maximum cumulative 12 ml/kg — AAGBI LAST guideline). Treat arrhythmias without lidocaine; ASRA also advises avoiding vasopressin, calcium-channel and β-blockers and reducing adrenaline boluses to <1 µg/kg. Prolonged CPR may be needed.",
   ],
   [
     "How is block height tested at the bedside?",
@@ -79,7 +80,7 @@ const regionalFaqs: Array<[string, string]> = [
   ],
   [
     "How long should anticoagulants be stopped before a neuraxial block?",
-    "Per AAGBI 2013 / ESAIC 2022: prophylactic LMWH 12 h, treatment-dose LMWH 24 h; unfractionated heparin (s/c prophylaxis) 4 h with normal APTT; warfarin INR < 1.4; clopidogrel 7 days; ticagrelor 5 days; rivaroxaban prophylactic 18 h, treatment 48 h; apixaban prophylactic 24–48 h; dabigatran 48–96 h (renal-function dependent). Aspirin and NSAIDs alone do not preclude neuraxial. The same intervals apply to catheter removal.",
+    "Per AAGBI 2013 (ESAIC 2022 intervals are similar but sometimes longer, e.g. 7 days for ticagrelor and prasugrel): prophylactic LMWH 12 h, treatment-dose LMWH 24 h; unfractionated heparin (s/c prophylaxis) 4 h with normal APTT; warfarin INR < 1.4; clopidogrel 7 days; ticagrelor 5 days; rivaroxaban prophylactic 18 h, treatment 48 h; apixaban prophylactic 24–48 h; dabigatran 48–96 h (renal-function dependent). Aspirin and NSAIDs alone do not preclude neuraxial. The same intervals apply to catheter removal.",
   ],
 ];
 
@@ -89,6 +90,7 @@ const objectives = [
   "Apply AAGBI 2013 / ESAIC 2022 anticoagulation timing for safe neuraxial block",
   "Recognise and manage PDPH, neuraxial haematoma/abscess and total spinal",
   "Assess sensory level (cold spray) and motor block (Bromage) and predict regression",
+  "Select peripheral blocks by surgical site and recognise their complications, including nerve injury and LAST",
 ];
 
 const workedExamples: WorkedExample[] = [
@@ -100,7 +102,7 @@ const workedExamples: WorkedExample[] = [
       "Adequate block for CS: bilateral loss of cold sensation (Aδ-fibre block) to T4 (nipple line) and loss of light touch to T5.\nUse ethyl chloride spray; calibrate on the forearm, then start at the abdomen and move cranially until the patient reports cold returning. Document the highest dermatome with bilateral loss.\nAlso check motor (Bromage 3 expected) and sympathetic block (warm dry feet, hypotension).\nIf level <T4: consider topping up via uplift positioning, IV ketamine/midazolam supplementation, conversion to GA — never rush to start surgery on an inadequate block.",
     answer:
       "Need bilateral cold loss to T4 (nipple). Test with ethyl chloride spray, calibrating on the forearm and moving cranially from the abdomen.",
-    cites: ["AAGBI 2020"],
+    cites: ["Russell 1995 Block Height"],
   },
   {
     title: "Epidural top-up timing on a patient on rivaroxaban",
@@ -110,7 +112,7 @@ const workedExamples: WorkedExample[] = [
       "AAGBI 2013 / ESAIC 2022: rivaroxaban (treatment dose) requires a 48 h gap before neuraxial intervention (insertion or catheter removal) due to bleeding/haematoma risk.\nFor prophylactic dose rivaroxaban (10 mg OD), the gap is 18 h.\nNo neuraxial intervention should occur within these windows. Wait the appropriate interval, then remove the catheter and monitor for 6 h with regular neurological observations.\nNext rivaroxaban dose: 6 h after catheter removal.",
     answer:
       "Wait 48 h after the rivaroxaban dose (treatment dose) before removing the catheter, then perform regular neurological observations for 6 h. Next dose 6 h after removal.",
-    cites: ["BJA Educ 2018"],
+    cites: ["AAGBI Coagulation 2013"],
   },
 ];
 
@@ -134,27 +136,27 @@ const RegionalAnaesthesiaTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "BJA Educ 2018",
-          "AAGBI 2020",
-          "BJA Educ 2018b",
+          "Hocking 2004 Intrathecal Spread",
+          "AAGBI Coagulation 2013",
+          "ESAIC 2022 Antithrombotics",
         ],
         keyPoints: [
-          "BJA Educ 2018",
-          "AAGBI 2020",
-          "BJA Educ 2018b",
+          "Hocking 2004 Intrathecal Spread",
+          "AAGBI Coagulation 2013",
+          "OAA PDPH 2023",
         ],
-        workedExamples: ["AAGBI 2020", "BJA Educ 2018"],
+        workedExamples: ["Russell 1995 Block Height", "AAGBI Coagulation 2013"],
       }}
       keyPoints={[
-        { text: "Spinal: rapid dense block, single-shot; Epidural: titratable, catheter-based, differential block", cites: ["BJA Educ 2018b"] },
-        { text: "Hyperbaric bupivacaine spread influenced by baricity and patient position", cites: ["AAGBI 2020"] },
-        { text: "Interscalene block causes ipsilateral phrenic nerve palsy in ~100% of cases", cites: ["BJA Educ 2018"] },
-        { text: "PDPH: worse sitting/standing, treat with epidural blood patch if conservative measures fail", cites: ["BJA Educ 2018b"] },
-        { text: "Follow AAGBI/ESRA anticoagulation guidelines — timing of neuraxial relative to anticoagulants is critical", cites: ["AAGBI 2020"] },
-        { text: "Test block height with cold spray: start from blocked area, move cranially until cold sensation returns", cites: ["BJA Educ 2018"] },
-        { text: "Differential block order: sympathetic (+2 above) > sensory (cold/pinprick) > motor (−2 below sensory level)", cites: ["BJA Educ 2018b"] },
-        { text: "Bromage 0 = full motor; Bromage 3 = complete block. Bromage 0 required before mobilisation/discharge", cites: ["AAGBI 2020"] },
-        { text: "Heavy bupivacaine 2-segment regression: 60–90 min; full motor recovery 3–4 hours", cites: ["BJA Educ 2018"] },
+        { text: "Spinal: rapid dense block, single-shot; Epidural: titratable, catheter-based, differential block", cites: ["Hocking 2004 Intrathecal Spread"] },
+        { text: "Hyperbaric bupivacaine spread influenced by baricity and patient position", cites: ["Hocking 2004 Intrathecal Spread"] },
+        { text: "Conventional-volume interscalene block causes ipsilateral hemidiaphragmatic paresis in almost all patients; low volumes reduce but do not abolish it", cites: ["Urmey 1991 Interscalene"] },
+        { text: "PDPH: worse sitting/standing, treat with epidural blood patch if symptoms persist and limit activity", cites: ["OAA PDPH 2023"] },
+        { text: "Follow AAGBI 2013 / ESAIC 2022 anticoagulation guidelines — timing of neuraxial relative to anticoagulants is critical", cites: ["AAGBI Coagulation 2013", "ESAIC 2022 Antithrombotics"] },
+        { text: "Test block height with cold spray: start from blocked area, move cranially until cold sensation returns", cites: ["Russell 1995 Block Height"] },
+        { text: "Differential block order: sympathetic (+2 above) > sensory (cold/pinprick) > motor (−2 below sensory level)", cites: ["Hocking 2004 Intrathecal Spread"] },
+        { text: "Bromage 0 = full motor; Bromage 3 = complete block. Confirm motor recovery before mobilising, per local protocol", cites: [] },
+        { text: "Heavy bupivacaine 2-segment regression: 60–90 min; full motor recovery 3–4 hours (typical values; dose-dependent)", cites: [] },
       ]}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
@@ -220,17 +222,17 @@ const RegionalAnaesthesiaTopic = () => {
         <div id="upper-limb" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Peripheral Nerve Blocks</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Ultrasound-guided blocks have revolutionised regional anaesthesia, improving success rates and reducing complications.
+            Ultrasound-guided blocks have revolutionised regional anaesthesia, improving success, onset and LA dose requirements and reducing LAST and vascular puncture — though it has not been shown to reduce nerve injury.
           </p>
           <div className="my-4">
             <RegionalBlocksDiagram />
           </div>
           <div className="grid sm:grid-cols-2 gap-3">
             {[
-              { block: "Interscalene", indication: "Shoulder surgery", nerves: "C5-C7 roots", risk: "Phrenic nerve palsy (100%)" },
-              { block: "Supraclavicular", indication: "Arm/forearm surgery", nerves: "Brachial plexus trunks", risk: "Pneumothorax (rare with US)" },
-              { block: "Adductor Canal", indication: "Knee surgery (motor-sparing)", nerves: "Saphenous nerve", risk: "Minimal — preferred over femoral" },
-              { block: "Popliteal Sciatic", indication: "Foot/ankle surgery", nerves: "Sciatic nerve", risk: "Foot drop if excessive volume" },
+              { block: "Interscalene", indication: "Shoulder surgery", nerves: "C5-C7 roots", risk: "Hemidiaphragmatic paresis (near-universal at conventional volumes); Horner's, recurrent laryngeal block" },
+              { block: "Supraclavicular", indication: "Arm/forearm surgery", nerves: "Brachial plexus trunks", risk: "Pneumothorax (rare with US), phrenic palsy (~30–50%)" },
+              { block: "Adductor Canal", indication: "Knee surgery (motor-sparing)", nerves: "Saphenous nerve ± nerve to vastus medialis", risk: "Low; preserves quadriceps strength vs femoral" },
+              { block: "Popliteal Sciatic", indication: "Foot/ankle surgery", nerves: "Sciatic nerve", risk: "Intraneural injection/nerve injury; insensate foot — protect heel and limb, falls risk" },
               { block: "TAP Block", indication: "Abdominal wall analgesia", nerves: "T6-L1 intercostals", risk: "Visceral injury, LA toxicity" },
               { block: "Erector Spinae Plane", indication: "Thoracic/abdominal analgesia", nerves: "Dorsal & ventral rami", risk: "Pneumothorax (very rare)" },
             ].map((b) => (
@@ -372,13 +374,53 @@ const RegionalAnaesthesiaTopic = () => {
         </div>
 
 
+        <div id="pnb-indications-safety" className="scroll-mt-24 mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Block Selection, Safety and Peripheral Block Complications</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+            Regional Anaesthesia UK's seven "Plan A" blocks — interscalene, axillary, erector spinae plane, rectus sheath, femoral, adductor canal and popliteal sciatic — cover most surgical indications and are the recommended core skills for all anaesthetists
+            <InlineRef topicId="regional-anaesthesia" refLabel="Turbitt 2020 Plan A Blocks" />.
+          </p>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border"><th className="text-left py-2 pr-3 text-foreground">Surgery</th><th className="text-left py-2 pr-3 text-foreground">Typical block(s)</th><th className="text-left py-2 text-foreground">Key caveat</th></tr></thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 pr-3">Shoulder / proximal humerus</td><td className="pr-3">Interscalene; superior trunk or suprascapular-based diaphragm-sparing options</td><td>Avoid or modify in poor respiratory reserve</td></tr>
+                <tr className="border-b border-border"><td className="py-2 pr-3">Elbow, forearm, hand</td><td className="pr-3">Supraclavicular, infraclavicular or axillary</td><td>Axillary avoids phrenic and pleural risk</td></tr>
+                <tr className="border-b border-border"><td className="py-2 pr-3">Hip fracture</td><td className="pr-3">Fascia iliaca or femoral (on admission and peri-operatively)</td><td>Recommended for analgesia in hip fracture pathways</td></tr>
+                <tr className="border-b border-border"><td className="py-2 pr-3">Knee arthroplasty</td><td className="pr-3">Adductor canal ± iPACK or local infiltration analgesia</td><td>Femoral block weakens quadriceps — falls risk</td></tr>
+                <tr className="border-b border-border"><td className="py-2 pr-3">Foot and ankle</td><td className="pr-3">Popliteal sciatic + saphenous; ankle block</td><td>Protect the insensate limb</td></tr>
+                <tr className="border-b border-border"><td className="py-2 pr-3">Thoracic / breast / rib fractures</td><td className="pr-3">Paravertebral, ESP, serratus anterior, PECS</td><td>Paravertebral more reliable; ESP spread variable</td></tr>
+                <tr><td className="py-2 pr-3">Midline laparotomy / lower abdomen</td><td className="pr-3">Epidural, intrathecal morphine, rectus sheath catheters, TAP</td><td>Fascial blocks give no visceral analgesia</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="space-y-3">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Stop Before You Block</p>
+              <p className="text-sm text-muted-foreground mt-1">Wrong-side block is an NHS Never Event. Immediately before needle insertion, the anaesthetist and assistant re-check the surgical-site mark and side, even if the WHO sign-in has been done — particularly after any delay or change of position<InlineRef topicId="regional-anaesthesia" refLabel="SBYB 2011" />.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Peripheral nerve injury</p>
+              <p className="text-sm text-muted-foreground mt-1">Transient postoperative sensory symptoms are common in the first days, but long-term injury attributable to the block is rare (registry estimates in the order of 2–4 per 10,000). Mechanisms are needle trauma, intrafascicular injection, local anaesthetic neurotoxicity and ischaemia; surgical, tourniquet and positioning causes are often more likely. Avoid injecting against high pressure or with pain/paraesthesia, document the technique, and refer persistent or progressive deficits early for neurological assessment and nerve conduction studies<InlineRef topicId="regional-anaesthesia" refLabel="ASRA Nerve Injury 2015" /><InlineRef topicId="regional-anaesthesia" refLabel="Barrington 2009 Registry" />.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Local anaesthetic systemic toxicity (LAST)</p>
+              <p className="text-sm text-muted-foreground mt-1">Signs range from perioral tingling, tinnitus and agitation to seizures, arrhythmia and cardiovascular collapse — sometimes cardiac signs occur first, especially under sedation or GA. Stop injecting, call for help, manage airway and seizures (benzodiazepine), and give <strong>20% lipid emulsion 1.5 ml/kg over 1 min then 15 ml/kg/h</strong>, repeating the bolus up to twice and doubling the infusion if unstable (maximum 12 ml/kg). Prevention: dose by lean body weight, incremental aspiration-guided injection, ultrasound, and an adrenaline-containing marker where appropriate<InlineRef topicId="regional-anaesthesia" refLabel="AAGBI LAST 2010" />.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Other block-specific complications</p>
+              <p className="text-sm text-muted-foreground mt-1">Interscalene: hemidiaphragmatic paresis, Horner's syndrome, hoarseness, and rarely intrathecal/epidural or vertebral artery injection. Supraclavicular and infraclavicular: pneumothorax, phrenic palsy. Lower limb: falls from quadriceps weakness after femoral or fascia iliaca blocks. All catheters: infection, migration and secondary failure — review daily.</p>
+            </div>
+          </div>
+        </div>
+
         <div id="complications" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Complications of Neuraxial Blockade</h2>
           <div className="space-y-2">
             {[
-              { complication: "Post-dural puncture headache", incidence: "1–2% (spinal), higher with large-gauge/cutting needles", management: "Conservative → epidural blood patch (gold standard)" },
-              { complication: "Epidural abscess", incidence: "1:10,000–1:50,000", management: "Urgent MRI, neurosurgical decompression within 12h, IV antibiotics" },
-              { complication: "Epidural haematoma", incidence: "1:150,000 (epidural), 1:220,000 (spinal)", management: "Urgent MRI + decompression. Follow anticoagulation guidelines (AAGBI/ESRA)" },
+              { complication: "Post-dural puncture headache", incidence: "≤1% (fine pencil-point spinal); >50% after accidental Tuohy dural puncture", management: "Conservative → epidural blood patch (gold standard)" },
+              { complication: "Epidural abscess", incidence: "Rare — a leading cause of permanent harm in NAP3, mostly with perioperative epidurals", management: "Urgent MRI, cultures then IV antibiotics, neurosurgical drainage if deficit" },
+              { complication: "Vertebral canal haematoma", incidence: "Rare (NAP3); higher with epidurals, anticoagulation, elderly and female patients", management: "Urgent MRI + decompression ideally <8–12 h. Follow AAGBI 2013 / ESAIC 2022 intervals" },
               { complication: "Total spinal", incidence: "Rare — accidental intrathecal injection of epidural dose", management: "Cardiovascular support, intubation, await regression" },
             ].map((c) => (
               <div key={c.complication} className="p-3 rounded-lg bg-secondary/30 border border-border">
