@@ -273,7 +273,7 @@ const CardiovascularDiseaseTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Stage 1: clinic BP 140/90–159/99 mmHg with ABPM/HBPM ≥135/85</li>
                 <li>Stage 2: clinic BP 160/100–179/119 mmHg with ABPM/HBPM ≥150/95</li>
-                <li>Stage 3 / severe: clinic systolic ≥180 mmHg <em>or</em> diastolic ≥110 mmHg (NICE NG136)<InlineRef topicId="cardiovascular-disease" refLabel="NICE NG136" /></li>
+                <li>Stage 3 / severe: clinic BP ≥180/120 mmHg (NICE NG136)<InlineRef topicId="cardiovascular-disease" refLabel="NICE NG136" /></li>
                 <li>Treatment thresholds and targets (clinic): &lt;140/90 mmHg under 80 y; &lt;150/90 mmHg ≥80 y</li>
               </ul>
             </div>
@@ -284,7 +284,7 @@ const CardiovascularDiseaseTopic = () => {
                 <li>Accept primary-care BP &lt;160/100 mmHg documented within the last 12 months without further measurement</li>
                 <li>If no recent reading, measure in pre-assessment using a standardised technique (seated, rested, validated device)</li>
                 <li>Proceed with elective surgery if pre-assessment BP &lt;180 systolic <strong>and</strong> &lt;110 mmHg diastolic</li>
-                <li>Defer and refer back to primary care only if BP ≥180/110 mmHg — no evidence that short-term in-hospital treatment reduces perioperative cardiac risk, and rapid lowering may cause harm</li>
+                <li>Defer and refer back to primary care if systolic BP is ≥180 mmHg or diastolic BP is ≥110 mmHg<InlineRef topicId="cardiovascular-disease" refLabel="AAGBI HTN 2016" /> — no evidence that short-term in-hospital treatment reduces perioperative cardiac risk, and rapid lowering may cause harm</li>
                 <li>End-organ damage (LVH, retinopathy, renal impairment), not the absolute BP alone, drives true perioperative risk — investigate where suspected</li>
               </ul>
             </div>
