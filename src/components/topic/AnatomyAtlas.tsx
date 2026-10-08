@@ -8,7 +8,7 @@ export const fillA = "hsl(var(--muted))";
 export const accent = "hsl(var(--primary))";
 export const danger = "hsl(var(--destructive))";
 export const vessel = "hsl(var(--destructive) / 0.75)";
-export const nerve = "hsl(var(--accent-foreground))";
+export const nerve = "hsl(var(--foreground) / 0.8)";
 
 export const Label = ({ x, y, tx, ty, children, anchor = "start" }: { x: number; y: number; tx: number; ty: number; children: string; anchor?: "start" | "end" | "middle" }) => (
   <g>
