@@ -585,6 +585,17 @@ const StatisticsEBMTopic = () => {
                 Choosing the correct test depends on the type of data (continuous, categorical, ordinal), number of groups, paired vs unpaired design, and whether the data is normally distributed.
               </p>
               <div className="bg-muted/30 rounded-lg p-4">
+                <h3 className="text-sm font-semibold text-foreground mb-2">Choosing a test — step by step</h3>
+                <ol className="list-decimal list-inside space-y-1 text-sm">
+                  <li><strong>What type of data?</strong> Continuous (interval/ratio), ordinal, or nominal (categorical).</li>
+                  <li><strong>Nominal</strong> → chi-squared (Fisher&rsquo;s exact if expected counts &lt;5); paired nominal → McNemar.</li>
+                  <li><strong>Paired or unpaired?</strong> Same subjects before/after vs independent groups.</li>
+                  <li><strong>How many groups?</strong> Two vs more than two.</li>
+                  <li><strong>Continuous and normally distributed?</strong> Yes (parametric) → t-test (paired or unpaired) for 2 groups, ANOVA (repeated-measures if paired) for &gt;2. No, or ordinal (non-parametric) → Mann–Whitney U (2 unpaired), Wilcoxon signed-rank (2 paired), Kruskal–Wallis (&gt;2 unpaired), Friedman (&gt;2 paired).</li>
+                  <li><strong>Relationship rather than difference?</strong> Pearson (normal, linear) or Spearman (ordinal/non-normal); regression to predict <InlineRef topicId="statistics-ebm" refLabel="CEACCP 2007 Statistics II" />.</li>
+                </ol>
+              </div>
+              <div className="bg-muted/30 rounded-lg p-4">
                 <h3 className="text-sm font-semibold text-foreground mb-2">Parametric Tests (normal distribution assumed)</h3>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li><strong>Student's t-test</strong> — compares means of 2 groups (unpaired) or before/after (paired)</li>
@@ -624,8 +635,13 @@ const StatisticsEBMTopic = () => {
               </p>
               <p>
                 <strong>Confounding</strong> occurs when a third variable is associated with both exposure and outcome. Address via randomisation, restriction, matching,
-                stratification, and multivariable regression. <strong>Intention-to-treat (ITT)</strong> preserves randomisation; <strong>per-protocol</strong> only includes
-                compliant patients and is more prone to bias.
+                stratification, and multivariable regression. <strong>Intention-to-treat (ITT)</strong> analyses every patient in the group to which they were randomised, whatever
+                treatment they actually received or whether they completed it. It preserves randomisation (groups stay balanced for
+                known and unknown confounders) and reflects real-world <em>effectiveness</em>, but non-adherence and crossover dilute the
+                effect towards the null — conservative for superiority trials. <strong>Per-protocol (PP)</strong> includes only patients who
+                completed the allocated treatment as planned. It estimates <em>efficacy</em> under ideal conditions, but excluding patients
+                breaks randomisation and introduces selection/attrition bias. ITT is the primary analysis for superiority trials; for
+                non-inferiority trials ITT can falsely suggest equivalence, so both should be reported and agree <InlineRef topicId="statistics-ebm" refLabel="CEACCP 2007 Statistics IV" />.
               </p>
               <p>
                 <strong>Internal validity</strong>: freedom from bias within the study. <strong>External validity (generalisability)</strong>: applicability to other populations.
@@ -641,6 +657,13 @@ const StatisticsEBMTopic = () => {
               <p>
                 A <strong>systematic review</strong> uses a pre-defined protocol (PRISMA) to identify, appraise and synthesise all relevant studies. A <strong>meta-analysis</strong>
                 is the statistical pooling of results to produce a single summary estimate with narrower CIs.
+              </p>
+              <p>
+                <strong>PRISMA</strong> (Preferred Reporting Items for Systematic Reviews and Meta-Analyses) is a reporting guideline that
+                ensures systematic reviews are transparent and completely reported. PRISMA 2020 has a <strong>27-item checklist</strong>
+                covering title, abstract, introduction, methods, results, discussion and other information (registration, funding), plus a
+                <strong> flow diagram</strong> of study selection. The 2009 diagram had four phases — <strong>Identification,
+                Screening, Eligibility and Inclusion</strong>; the 2020 version merges eligibility into screening (Identification → Screening → Included).
               </p>
               <p>
                 Results are displayed on a <strong>forest plot</strong>: each study as a point estimate with CI, pooled estimate as a diamond. <strong>Heterogeneity</strong>

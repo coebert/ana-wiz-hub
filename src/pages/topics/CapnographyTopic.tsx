@@ -242,6 +242,17 @@ const CapnographyTopic = () => {
               </p>
             </div>
 
+            <div className="rounded-lg border border-border p-4">
+              <h3 className="text-lg font-semibold text-foreground mb-2">Physics of infrared analysis</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+                <li><strong>Beer–Lambert law</strong>: A = ε·c·l — absorbance (A) equals the molar absorptivity of CO₂ at the chosen wavelength (ε) × concentration (c) × path length of the sample cell (l). With ε and l fixed, absorbance at 4.26 µm is proportional to CO₂ concentration.</li>
+                <li><strong>Why CO₂ absorbs</strong>: infrared is absorbed only by molecules whose vibration changes their dipole moment — CO₂&rsquo;s asymmetric stretch does; symmetrical diatomic O₂ and N₂ have no changing dipole and do not absorb.</li>
+                <li><strong>Collision broadening</strong>: N₂O collides with CO₂ molecules and widens its absorption band, and also absorbs near 4.5 µm; volatile agents absorb at longer wavelengths. Without electronic compensation the capnograph over-reads CO₂.</li>
+                <li><strong>Water vapour</strong>: absorbs infrared and condenses on cell windows, blocking light. Mainstream sensors are heated above body temperature; sidestream systems use water traps and moisture-permeable (Nafion) tubing.</li>
+                <li><strong>High oxygen</strong>: high O₂ concentrations cause a small under-reading of CO₂, corrected by most analysers <InlineRef topicId="capnography" refLabel="Al-Shaikh & Stacey Ch.10-11" />.</li>
+              </ul>
+            </div>
+
             <CapnographyWaveformDiagram />
 
             <p className="text-sm text-muted-foreground italic">

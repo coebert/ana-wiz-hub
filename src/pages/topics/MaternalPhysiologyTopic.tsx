@@ -223,7 +223,9 @@ const MaternalPhysiologyTopic = () => {
             <CollapsibleSubsection title="Gastrointestinal & Airway Changes">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>↓ Lower oesophageal sphincter tone</strong> (progesterone) + ↑ intragastric pressure (gravid uterus) → ↑ aspiration risk.</li>
-              <li><strong>Delayed gastric emptying</strong> in labour (opioids compound this further).</li>
+              <li><strong>Gastric emptying is not delayed in pregnancy itself</strong> — only during labour (and further by opioids).</li>
+              <li><strong>Gastric acid</strong>: secretion increases and gastric pH is lower (placental gastrin).</li>
+              <li>Before labour, the aspiration risk comes from lower LOS tone, raised intragastric pressure and more acidic gastric contents — not delayed emptying.</li>
               <li><strong>Airway oedema</strong>: capillary engorgement of nasopharyngeal/laryngeal mucosa — use smaller ETT (6.0–6.5), avoid nasal intubation if possible.</li>
               <li><strong>Mallampati score worsens</strong> during pregnancy and especially during labour.</li>
               <li>Failed intubation rate in obstetrics is historically about <strong>1:300</strong> — follow the OAA/DAS obstetric failed-intubation algorithm <InlineRef topicId="maternal-physiology" refLabel="OAA/AAGBI 2013" />.</li>
@@ -236,7 +238,8 @@ const MaternalPhysiologyTopic = () => {
               <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
                 <li><strong>First trimester:</strong> hCG has weak TSH-like activity, transiently increasing free T4 and suppressing TSH.</li>
                 <li><strong>Binding proteins:</strong> oestrogen increases thyroxine-binding globulin, so total T3 and T4 rise; free T3/T4 remain broadly stable or may fall slightly later in pregnancy.</li>
-                <li><strong>Iodide:</strong> increased GFR raises renal iodide clearance and can expose marginal iodine deficiency.</li>
+                <li><strong>Iodide:</strong> increased GFR raises renal iodide clearance and fetal uptake, so iodine requirement rises by about 50% (WHO 250 µg/day); this can expose marginal deficiency.</li>
+                <li><strong>Fetal relevance:</strong> the fetus depends on maternal T4 until its own thyroid functions (~12 weeks); maternal hypothyroidism impairs fetal neurodevelopment.</li>
                 <li><strong>Interpretation:</strong> use trimester-specific thyroid reference ranges rather than non-pregnant limits.</li>
                 <li><strong>Known hypothyroidism:</strong> check TSH early and frequently; levothyroxine requirements commonly rise by roughly 30–50% during pregnancy <InlineRef topicId="maternal-physiology" refLabel="RCOG Pregnancy Physiology" />.</li>
               </ul>
@@ -258,8 +261,10 @@ const MaternalPhysiologyTopic = () => {
           <ExamSection id="pharmacology" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_02"]}>
             <CollapsibleSubsection title="Pharmacological Implications">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-              <li><strong>↑ Volume of distribution</strong>: ↑ plasma volume and total body water → larger loading doses may be needed for some drugs.</li>
-              <li><strong>↓ Protein binding</strong>: ↓ albumin → ↑ free fraction of highly protein-bound drugs (thiopentone, diazepam).</li>
+              <li><strong>↑ Volume of distribution</strong>: ↑ plasma volume and total body water → hydrophilic drugs have a larger Vd and may need bigger loading doses; for lipophilic drugs Vd changes little despite the extra fat.</li>
+              <li><strong>↓ Protein binding</strong>: ↓ albumin → ↑ free fraction of acidic drugs bound to albumin (thiopentone, diazepam, phenytoin). Basic drugs such as lidocaine and bupivacaine bind α₁-acid glycoprotein, which is broadly unchanged, so their free fraction changes less.</li>
+              <li><strong>↑ Hepatic metabolism</strong>: CYP3A4 and CYP2D6 activity rise, accelerating metabolism of drugs such as fentanyl, ropivacaine and metoprolol (CYP1A2 falls).</li>
+              <li><strong>↑ Renal clearance</strong>: renal blood flow and GFR rise ~50%, increasing clearance of renally excreted drugs (e.g. cefazolin, gentamicin, enoxaparin).</li>
               <li><strong>MAC ↓ 30–40%</strong> for volatile agents (progesterone, endorphins).</li>
               <li><strong>↑ Sensitivity to local anaesthetics</strong>: epidural/spinal doses reduced by ~30% (engorged epidural veins ↓ CSF volume + ↑ neural sensitivity).</li>
               <li><strong>↑ Sensitivity to neuromuscular blockers</strong>: ↓ plasma cholinesterase (clinically subtle).</li>

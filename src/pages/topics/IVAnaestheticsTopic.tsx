@@ -133,10 +133,30 @@ const IVAnaestheticsTopic = () => {
           <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
             <p className="text-sm font-medium text-foreground">TIVA & TCI</p>
             <p className="text-sm text-muted-foreground mt-1">
-              Target-controlled infusion (TCI) uses pharmacokinetic models (Marsh — weight-based; Schnider — age, weight, height,
-              LBM) to achieve and maintain a target plasma or effect-site concentration. Propofol is ideal for TIVA due to its
+              Target-controlled infusion (TCI) uses pharmacokinetic models (e.g. Marsh, Schnider, Eleveld) to achieve and maintain a
+              target plasma or effect-site concentration. Marsh (weight-based) and Schnider (age, weight, height, LBM) were derived in
+              specific adult populations, whereas the Eleveld model (2018) is a universal model designed for a wide range of ages and
+              body weights <InlineRef topicId="iv-anaesthetics" refLabel="Eleveld 2018 Universal Propofol" />. Propofol is ideal for TIVA due to its
               short context-sensitive half-time at moderate infusion durations.
             </p>
+          </div>
+          <div className="bg-secondary/30 rounded-lg p-4 border border-border mt-4">
+            <p className="text-sm font-medium text-foreground">Formulations &amp; Carrier Solutions</p>
+            <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+              <li><strong>Propofol</strong>: oil-in-water emulsion — soybean oil 10% (solvent), egg lecithin 1.2% (emulsifier) and glycerol 2.25% (makes it isotonic), with sodium hydroxide to adjust pH. 1% (10 mg/mL) is standard for induction; 2% (20 mg/mL) halves the lipid and volume load for long infusions (ICU sedation, TIVA) but is more viscous and not for bolus induction in small children. Preparations with disodium edetate (EDTA) or metabisulfite slow microbial growth; lipid-free/medium-chain formulations aim to reduce injection pain and lipid load. Lipid emulsions support bacterial and fungal growth, so draw up aseptically and discard after 6 h (12 h for infusion sets) <InlineRef topicId="iv-anaesthetics" refLabel="Anaesthesia 1993 Microbial Growth" />.</li>
+              <li><strong>Thiopentone</strong>: yellow powder (sodium salt with 6% sodium carbonate, under nitrogen) reconstituted with water to 2.5% (25 mg/mL). pH ~10.5 keeps it water-soluble — extravasation causes tissue necrosis, intra-arterial injection causes crystal-induced arteritis, and it precipitates with acidic drugs.</li>
+              <li><strong>Etomidate</strong>: 2 mg/mL in 35% propylene glycol (pain on injection, venous irritation, haemolysis); a lipid-emulsion version causes less pain.</li>
+              <li><strong>Ketamine</strong>: aqueous solution (10, 50, 100 mg/mL; preservative benzethonium chloride in multidose vials). Racemic in the UK; the S(+)-isomer (esketamine) is about twice as potent with faster recovery and fewer emergence phenomena.</li>
+            </ul>
+          </div>
+          <div className="bg-secondary/30 rounded-lg p-4 border border-border mt-4">
+            <p className="text-sm font-medium text-foreground">Considerations in Specific Populations</p>
+            <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+              <li><strong>Elderly</strong>: lower cardiac output, smaller central compartment and reduced clearance → lower induction dose (often 30–50% less), slower arm-brain time (give slowly and wait) and greater hypotension.</li>
+              <li><strong>Children</strong>: larger Vd and higher clearance → higher mg/kg doses (propofol 2.5–3.5 mg/kg); paediatric TCI models (Paedfusor, Kataria) or Eleveld.</li>
+              <li><strong>Obesity</strong>: base induction doses on lean body weight (propofol) to avoid overdose and hypotension; maintenance infusions on adjusted body weight. Marsh with total body weight overdoses; Eleveld uses fat-free mass and is suitable across BMI 12–52.</li>
+              <li><strong>Pregnancy</strong>: larger Vd and cardiac output, but increased sensitivity to induction agents (lower requirement in early pregnancy); all agents cross the placenta rapidly — limit the induction-to-delivery interval at caesarean section.</li>
+            </ul>
           </div>
 
           <div className="mt-6 rounded-lg border border-border p-4">
