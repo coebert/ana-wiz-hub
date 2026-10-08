@@ -211,6 +211,16 @@ const IcuEndocrineEmergenciesTopic = () => {
                 </p>
               </div>
               <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">DKA — hourly treatment targets (JBDS-IP 2023)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Check capillary ketones and glucose hourly, and venous pH/bicarbonate hourly for 2–4 h then
+                  2–4-hourly. Aim for ketones falling ≥ 0.5 mmol/L/h, venous bicarbonate rising ≥ 3.0
+                  mmol/L/h and capillary glucose falling ≥ 3.0 mmol/L/h. If these are not met, check the
+                  infusion and pump, then increase the fixed-rate insulin infusion by 1 unit/h until they
+                  are.<InlineRef topicId="icu-endocrine-emergencies" refLabel="JBDS-IP DKA 2023 (ABCD)" />
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">HHS — distinguishing features</p>
                 <p className="text-sm text-muted-foreground mt-1">
                   Osmolality &gt; 320 (= 2[Na⁺] + glucose + urea), pH &gt; 7.30, ketones
@@ -247,6 +257,12 @@ const IcuEndocrineEmergenciesTopic = () => {
                   fall in osmolality to 3–8 mosmol/kg/h and the fall in glucose ≤ 5 mmol/L/h. Rapid
                   correction risks cerebral oedema and osmotic demyelination (central pontine
                   myelinolysis).
+                </li>
+                <li>
+                  <strong>Sodium trend:</strong> measure sodium hourly initially. Measured sodium may not
+                  fall, and may even rise, early in treatment as glucose falls; a rising sodium despite a
+                  positive fluid balance prompts the switch from 0.9% to 0.45% sodium chloride, and 5%
+                  dextrose may be needed later to replace the remaining free-water deficit.<InlineRef topicId="icu-endocrine-emergencies" refLabel="JBDS-IP HHS 2022 (ABCD)" />
                 </li>
                 <li>
                   <strong>Insulin only once fluids are running</strong> — start fixed-rate 0.05 units/kg/h

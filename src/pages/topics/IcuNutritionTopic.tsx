@@ -368,6 +368,21 @@ const IcuNutritionTopic = () => {
           </ExamSection>
 
           <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Feed Intolerance — Monitoring and Stepwise Management">
+              <div className="space-y-3 text-sm text-muted-foreground">
+                <p><strong className="text-foreground">Monitoring adequacy:</strong> record daily calories and protein delivered against target (deficits accumulate silently because of fasting for procedures and interruptions), and review weight, fluid balance and phosphate, potassium and magnesium daily during the first week.</p>
+                <p><strong className="text-foreground">Signs of intolerance (beyond gastric residual volume):</strong> vomiting or regurgitation, abdominal distension or pain, absent or abnormal bowel sounds, diarrhoea, rising intra-abdominal pressure, and a rising lactate — the last two should prompt assessment for bowel ischaemia.</p>
+                <ol className="list-decimal list-inside space-y-1">
+                  <li>Look for reversible causes: opioids, sedatives, hypokalaemia/hypomagnesaemia, hyperglycaemia, ileus after surgery.</li>
+                  <li>Start a prokinetic: IV erythromycin (first-line, short course) ± metoclopramide.</li>
+                  <li>Reduce the rate temporarily or use a more energy-dense feed to reduce volume.</li>
+                  <li>Trial post-pyloric (nasojejunal) feeding if gastric intolerance persists.</li>
+                  <li>Consider supplemental parenteral nutrition if enteral delivery remains well below target despite these steps (typically after about the first week).</li>
+                </ol>
+                <p className="text-xs">Every ICU should have written feeding, fasting and intolerance protocols with early access to post-pyloric feeding.<InlineRef topicId="icu-nutrition" refLabel="Anaesthesia 2023 Malnutrition" /></p>
+              </div>
+            </CollapsibleSubsection>
+
             <CollapsibleSubsection title="Special Populations — ECMO / ECLS and Severe Pancreatitis">
             <p className="text-sm text-muted-foreground mb-3">
               Two groups are repeatedly cited in vivas as &lsquo;too sick to feed&rsquo; when in fact early
@@ -395,7 +410,7 @@ const IcuNutritionTopic = () => {
                 </p>
               </div>
               <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Severe acute pancreatitis</p>
+                <p className="font-semibold text-foreground text-sm">Severe acute pancreatitis <InlineRef topicId="icu-nutrition" refLabel="McClave 2025 Pancreatitis PN" /></p>
                 <p className="text-sm text-muted-foreground mt-1">
                   &lsquo;Gut rest&rsquo; is obsolete. Offer <strong>early oral diet as tolerated</strong> in
                   mild disease, and in predicted severe or intolerant patients start{" "}
