@@ -21,7 +21,7 @@ const workedExamples: WorkedExample[] = [
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li>RSI dose = 1.2 mg/kg (2× ED₉₅ of 0.6 mg/kg for rapid onset): 70 × 1.2 = <strong>84 mg IV</strong>.</li>
+          <li>RSI dose = 0.9–1.2 mg/kg (3–4× ED₉₅ of ~0.3 mg/kg for rapid onset); at the top of the range: 70 × 1.2 = <strong>84 mg IV</strong> <InlineRef topicId="rocuronium" refLabel="ESAIC 2023 NMB Guideline" />.</li>
           <li>Onset to intubating conditions ≈ 45–60 s (comparable to suxamethonium 1.5 mg/kg).</li>
           <li>Clinical duration of a 1.2 mg/kg dose: ~45–70 min (vs ~30–45 min after 0.6 mg/kg).</li>
           <li>Rescue reversal if "can't intubate": sugammadex 16 mg/kg = 70 × 16 = <strong>1120 mg IV</strong> — restores TOF to ≥0.9 within ~2–3 min regardless of depth.</li>

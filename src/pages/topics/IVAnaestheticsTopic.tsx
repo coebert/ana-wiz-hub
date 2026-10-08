@@ -120,7 +120,7 @@ const IVAnaestheticsTopic = () => {
           <p className="text-foreground/90 leading-relaxed">
             <strong>2,6-diisopropylphenol</strong> in a lipid emulsion (soybean oil, egg lecithin, glycerol). Induction dose
             1.5–2.5 mg/kg<InlineRef topicId="iv-anaesthetics" refLabel="Peck & Hill Ch.5" />. Onset 30–40 s (one arm-brain circulation time). Duration ~5–10 min (redistribution). pKa 11 —
-            almost entirely un-ionised at physiological pH.
+            almost entirely un-ionised at physiological pH. <strong>~98% protein-bound</strong> (albumin): hypoalbuminaemia (liver failure, malnutrition, critical illness) raises the free fraction and exaggerates the effect.
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
             <strong>Mechanism</strong>: positive allosteric modulator of the GABA_A receptor, increasing the
@@ -263,7 +263,7 @@ const IVAnaestheticsTopic = () => {
           <p className="text-foreground/90 leading-relaxed">
             Thiobarbiturate. Induction dose 3–5 mg/kg<InlineRef topicId="iv-anaesthetics" refLabel="Peck & Hill Ch.5" />. Highly lipid-soluble, rapid onset. Prepared as 2.5% solution (pH 10.5
             — highly alkaline, tissue necrosis if extravasation). Precipitates if mixed with acidic drugs (e.g., suxamethonium,
-            atracurium, opioids).
+            atracurium, opioids). <strong>~80–85% protein-bound</strong>: as with propofol, hypoalbuminaemia, uraemia and displacement increase the free fraction, so reduce the dose.
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
             <strong>Mechanism</strong>: GABA_A agonist (opens chloride channel directly at high doses, potentiates at low doses).
@@ -290,7 +290,7 @@ const IVAnaestheticsTopic = () => {
           <p className="text-foreground/90 leading-relaxed">
             Phencyclidine derivative. <strong>NMDA receptor antagonist</strong>. Dose: 1–2 mg/kg IV, 5–10 mg/kg IM<InlineRef topicId="iv-anaesthetics" refLabel="Peck & Hill Ch.5" />. The
             S(+)-enantiomer is 2× more potent. Produces "dissociative anaesthesia" — catalepsy, analgesia, amnesia with eyes
-            open and maintained airway reflexes (relatively).
+            open and maintained airway reflexes (relatively). <strong>Lowest protein binding of the induction agents (~12–47%)</strong>, so changes in plasma proteins have little effect on its potency.
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
             <strong>CVS</strong>: ketamine's haemodynamic profile is a <strong>dual action</strong>.
@@ -327,7 +327,7 @@ const IVAnaestheticsTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground">Etomidate</h2>
           <p className="text-foreground/90 leading-relaxed">
             Imidazole derivative. Dose 0.3 mg/kg IV. <strong>Most haemodynamically stable</strong> induction agent — minimal
-            effect on HR, BP, or cardiac output. Ideal for patients with limited cardiovascular reserve.
+            effect on HR, BP, or cardiac output. Ideal for patients with limited cardiovascular reserve. <strong>~75% protein-bound</strong>: less affected by albumin changes than propofol or thiopentone, but the dose should still be reduced in hypoalbuminaemia.
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
             <strong>Mechanism</strong>: GABA_A receptor (selective for β₂/β₃ subunit). <strong>Problems</strong>: adrenocortical
