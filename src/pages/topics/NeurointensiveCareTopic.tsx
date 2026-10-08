@@ -29,6 +29,7 @@ const DecompressiveCraniectomyTimelineDiagram = lazy(
 const tocItems = [
   { id: "toc-tbi", label: "TBI" },
   { id: "toc-status", label: "Status Epilepticus" },
+  { id: "toc-eeg", label: "EEG" },
   { id: "toc-sah", label: "SAH" },
   { id: "toc-bsd", label: "Brainstem Death" },
   { id: "toc-sci", label: "Spinal Cord Injury" },
@@ -51,7 +52,7 @@ const objectives = [
   "Escalate status epilepticus through benzodiazepine → second-line AED → general anaesthesia with EEG.",
   "Manage SAH complications: rebleeding, vasospasm (nimodipine), hydrocephalus, and associated sodium disturbance.",
   "Differentiate SIADH, cerebral salt wasting and diabetes insipidus using volume status, urine Na/osmolality and the diagnostic flowchart, and treat each appropriately.",
-  "Perform UK brainstem death testing — confounder exclusion, two doctors, two sets, apnoea test PaCO₂ ≥6.0 kPa with pH ≤7.30 (AoMRC 2023).",
+  "Perform UK brainstem death testing — confounder exclusion, two doctors, two sets, apnoea test end-PaCO₂ ≥8.0 kPa, rise ≥2.7 kPa, pH <7.30 (AoMRC 2025); time of death at completion of the second set.",
   "Manage acute SCI: MAP ≥85 mmHg, neurogenic vs spinal shock, autonomic dysreflexia, suxamethonium safety window, plus respiratory, bowel and bladder care.",
   "Interpret ICP, EVD, PbtO₂ and microdialysis (LPR, glucose, glycerol) to guide tier-based therapy and multimodal neuromonitoring.",
   "Recognise and manage autoimmune encephalitis (antibody classes, first- and second-line immunotherapy) and GBS respiratory failure (20/30/40 rule).",
@@ -99,14 +100,14 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        UK criteria (AoMRC 2023): starting from a <strong>normal baseline PaCO₂ (4.5–6.0 kPa)</strong>,
-        the PaCO₂ must be allowed to reach <strong>≥6.0 kPa</strong> with a concomitant fall in arterial
-        pH to <strong>≤7.30</strong>, with no respiratory effort observed throughout — this confirms a
-        maximal respiratory stimulus has been delivered. The older targets (PaCO₂ &gt;6.65 kPa, pH &lt;7.40,
-        a rise of &gt;0.5 kPa from baseline) are superseded. Here baseline PaCO₂ 5.0 kPa rose to 7.2 kPa with
-        pH 7.20: both current criteria met, so the test confirms absent respiratory drive. PaCO₂ rises at roughly
-        0.5 kPa/min, which is used only to estimate the required duration of disconnection (usually ≥5
-        min) — it is not itself a diagnostic criterion.
+        UK criteria (AoMRC 2025 Code, in force from 1 January 2025): confirm a <strong>starting PaCO₂ of at
+        least 5.3 kPa</strong>, then observe for at least 5 minutes off the ventilator. All three end-points must
+        be met on the confirmatory gas: <strong>PaCO₂ ≥8.0 kPa</strong>, a <strong>rise of ≥2.7 kPa</strong>{" "}
+        from the starting value, and <strong>pH &lt;7.30</strong>. Here the starting PaCO₂ (5.0 kPa) is below
+        5.3 kPa and the end PaCO₂ (7.2 kPa, a rise of only 2.2 kPa) is below 8.0 kPa, so the test is{" "}
+        <strong>not valid</strong> despite the pH of 7.20. Adjust ventilation to reach a starting PaCO₂ ≥5.3 kPa,
+        then repeat with a longer disconnection (CPAP or oxygen insufflation to maintain oxygenation). The
+        2008 targets (PaCO₂ &gt;6.0 kPa, pH &lt;7.40, rise &gt;0.5 kPa) are superseded.
 
       </>
     ),
@@ -189,7 +190,7 @@ const NeurointensiveCareTopic = () => {
         { text: "Eurotherm trial: therapeutic hypothermia is harmful in TBI — do not use", cites: ["BJA Educ 2014"] },
         { text: "SAH vasospasm peaks day 7 — nimodipine is the only proven pharmacological intervention", cites: ["BTF 2017"] },
         { text: "Status epilepticus: benzodiazepine → levetiracetam/phenytoin/valproate → RSI + thiopentone/propofol", cites: ["BJA Educ 2018"] },
-        { text: "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test PaCO₂ ≥6.0 kPa with pH ≤7.30 (AoMRC 2023)", cites: ["AoMRC 2023"] },
+        { text: "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test end-PaCO₂ ≥8.0 kPa, rise ≥2.7 kPa, pH <7.30; time of death = completion of second set (AoMRC 2025)", cites: ["AoMRC 2025"] },
         { text: "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)", cites: ["BTF 2017"] },
         { text: "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically", cites: ["BJA Educ 2018"] },
         { text: "Cerebral microdialysis: LPR >25 = metabolic crisis. ↓ pyruvate = ischaemia; normal/↑ pyruvate = mitochondrial dysfunction (won't respond to ↑ CPP)", cites: ["BJA Educ 2014"] },
@@ -251,6 +252,18 @@ const NeurointensiveCareTopic = () => {
               </tbody>
             </table>
           </div>
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-5 mb-2">Ventilation in Acute Brain Injury</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+            Goals: avoid hypoxia, keep normocapnia and prevent ventilator-induced lung injury without raising ICP.<InlineRef topicId="neurointensive-care" refLabel="ESICM Brain-Injury Ventilation 2020" />
+          </p>
+          <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+            <li><strong>Oxygenation:</strong> PaO₂ 10.7–16 kPa (80–120 mmHg); avoid both hypoxaemia and hyperoxia.</li>
+            <li><strong>CO₂:</strong> normocapnia, PaCO₂ 4.7–6.0 kPa (35–45 mmHg). Hypercapnia vasodilates and raises ICP; hypocapnia causes cerebral vasoconstriction and ischaemia — brief hyperventilation only as a bridge for herniation.</li>
+            <li><strong>Tidal volume:</strong> lung-protective, 6–8 mL/kg predicted body weight, unless this cannot be achieved without hypercapnia that raises ICP.</li>
+            <li><strong>PEEP:</strong> start at about 5 cmH₂O and titrate cautiously, watching ICP and CPP; PEEP is safe when it improves oxygenation without lowering MAP.</li>
+            <li><strong>Recruitment manoeuvres:</strong> generally avoided because they can raise ICP and lower CPP.</li>
+            <li><strong>ARDS with brain injury:</strong> rescue therapies (e.g. prone positioning) can be used with continuous ICP monitoring; balance the lung and brain goals case by case.</li>
+          </ul>
           </CollapsibleSubsection>
         </ExamSection>
 
@@ -297,6 +310,23 @@ const NeurointensiveCareTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
+        <ExamSection id="toc-eeg" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+          <CollapsibleSubsection title="EEG Monitoring in Neuro-ICU">
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            EEG detects non-convulsive seizures (NCS), helps find delayed cerebral ischaemia and supports
+            prognosis. The ESICM consensus <strong>recommends</strong> EEG in generalised convulsive status
+            epilepticus and to rule out NCS in brain-injured patients and in comatose ICU patients with
+            unexplained, persistent altered consciousness. It <strong>suggests</strong> EEG to detect ischaemia
+            in comatose patients with SAH and to improve prognostication after cardiac arrest.<InlineRef topicId="neurointensive-care" refLabel="ESICM EEG 2013" />
+          </p>
+          <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+            <li><strong>Continuous vs intermittent:</strong> routine 20–30 min recordings miss many NCS; use continuous EEG in refractory status epilepticus, suspected ongoing seizures and when titrating anaesthetic infusions to seizure or burst suppression.</li>
+            <li><strong>Patterns to know:</strong> electrographic seizures, the ictal–interictal continuum, lateralised and generalised periodic discharges (LPDs, GPDs), and burst suppression.</li>
+            <li><strong>Practical points:</strong> standard 10–20 electrode placement (reduced montages for screening); ICU artefacts include electrical equipment, movement, sweating and ventilator noise. Interpretation needs neurophysiology input.</li>
+          </ul>
+          </CollapsibleSubsection>
+        </ExamSection>
+
         <ExamSection id="toc-sah" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="Subarachnoid Haemorrhage (SAH)">
           <div className="grid sm:grid-cols-2 gap-3">
@@ -306,7 +336,7 @@ const NeurointensiveCareTopic = () => {
             </div>
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Complications</p>
-              <p className="text-sm text-muted-foreground mt-1">Rebleeding (highest risk day 1 — secure aneurysm early). Vasospasm (days 3–14, peak day 7 — nimodipine 60 mg 4-hourly, triple-H therapy). Hydrocephalus (EVD). Hyponatraemia (cerebral salt wasting vs SIADH).</p>
+              <p className="text-sm text-muted-foreground mt-1">Rebleeding (highest risk day 1 — secure aneurysm early). Vasospasm (days 3–14, peak day 7): nimodipine 60 mg 4-hourly is standard. If delayed cerebral ischaemia (DCI) occurs, historical &lsquo;triple-H&rsquo; therapy (hypervolaemia, hypertension, haemodilution) is no longer recommended — maintain strict euvolaemia and use induced hypertension (e.g. noradrenaline), guided by clinical status and advanced monitoring.<InlineRef topicId="neurointensive-care" refLabel="Svedung Wettervik 2023" /> Hydrocephalus (EVD). Hyponatraemia (cerebral salt wasting vs SIADH).</p>
             </div>
           </div>
           </CollapsibleSubsection>
@@ -461,19 +491,18 @@ const NeurointensiveCareTopic = () => {
         <ExamSection id="toc-bsd" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="Brain Death & Brainstem Testing">
           <p className="text-muted-foreground leading-relaxed mb-2">
-            UK criteria: known irreversible cause of brain damage. Exclude confounders (hypothermia &lt;34°C, drugs, metabolic/endocrine derangement). Two sets of tests by two senior doctors (one ≥5 years registered); the certified <strong>time of death is the completion of the second set</strong> of tests.<InlineRef topicId="neurointensive-care" refLabel="AoMRC 2008" />
+            UK criteria: known irreversible cause of brain damage. Exclude confounders (core temperature must be ≥36 °C, sodium ≥125 mmol/L, drugs, metabolic/endocrine derangement). Two sets of tests by at least two doctors, each fully registered for more than 5 years and at least one a consultant; the recorded <strong>time of death is ordinarily the completion of the second set</strong> of clinical tests.<InlineRef topicId="neurointensive-care" refLabel="AoMRC 2025" />
           </p>
           <p className="text-muted-foreground leading-relaxed mb-2">
-            <strong>Apnoea test criteria (AoMRC 2023):</strong> pre-oxygenate, confirm a{" "}
-            <strong>normal baseline PaCO₂ (4.5–6.0 kPa)</strong> and pH, then disconnect with apnoeic
-            oxygen insufflation and allow the PaCO₂ to reach <strong>≥6.0 kPa</strong> with a concomitant
-            fall in arterial <strong>pH to ≤7.30</strong>, observing for any respiratory effort. The test
-            may be concluded before PaCO₂ reaches 6.0 kPa if the pH is already ≤7.30, and should not be
-            abandoned before the pH is ≤7.30 unless the patient becomes haemodynamically unstable. PaCO₂
-            climbs at approximately 0.5 kPa/min, so ≥5 min of disconnection is usually needed — the rate of
-            rise estimates test duration only and is not a diagnostic threshold, and the previous
-            &gt;6.65 kPa / pH &lt;7.40 / rise &gt;0.5 kPa targets are superseded. In chronic CO₂ retention
-            the baseline is higher and the target PaCO₂ must be raised accordingly.<InlineRef topicId="neurointensive-care" refLabel="AoMRC 2023" />
+            <strong>Apnoea test criteria (AoMRC 2025):</strong> pre-oxygenate and confirm a{" "}
+            <strong>starting PaCO₂ of at least 5.3 kPa</strong>, then disconnect with apnoeic oxygenation
+            (or CPAP) and observe for respiratory effort for <strong>at least 5 minutes</strong>. A
+            confirmatory arterial gas must show <strong>PaCO₂ ≥8.0 kPa</strong>, a{" "}
+            <strong>rise of ≥2.7 kPa</strong> from the starting value and <strong>pH &lt;7.30</strong>. If the
+            targets are not met and the patient is stable, disconnection is extended; if the patient becomes
+            unstable, optimise and reattempt. The 2008 targets (PaCO₂ &gt;6.0 kPa, pH &lt;7.40, rise &gt;0.5 kPa)
+            are superseded. In chronic CO₂ retention, specialist advice and ancillary investigation may be
+            needed.<InlineRef topicId="neurointensive-care" refLabel="AoMRC 2025" />
           </p>
           <div className="grid sm:grid-cols-3 gap-2">
             {[
@@ -1066,7 +1095,7 @@ const NeurointensiveCareTopic = () => {
           <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-4">
             <li><strong>BTF 4th edition (2017):</strong> bifrontal DC <em>not</em> recommended to improve outcomes in diffuse TBI with early refractory ICP (DECRA), but recommended to reduce ICP and ICU days. Large fronto-temporo-parietal DC recommended over small DC for better outcomes.</li>
             <li><strong>Seattle International Consensus (SIBICC, 2019/2020):</strong> DC sits at <em>tier 3</em>, alongside barbiturate coma and hypothermia, reserved for ICP refractory to optimised tier 1 and 2 management.</li>
-            <li><strong>NICE NG232 (TBI, 2023):</strong> consider DC after multidisciplinary discussion when medical management has failed, with explicit counselling on survival-with-disability trade-off.</li>
+            <li><strong>NICE NG232 (TBI, 2023):</strong> consider decompressive craniectomy after multidisciplinary discussion when medical management has failed, ensuring an explicit discussion with family/carers about the trade-off between survival and the risk of severe disability.<InlineRef topicId="neurointensive-care" refLabel="NICE NG232" /></li>
           </ul>
 
           <h4 className="text-sm font-semibold text-foreground mb-2">Complications &amp; later issues</h4>
