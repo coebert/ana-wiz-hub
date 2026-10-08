@@ -330,6 +330,21 @@ const AirwayManagementTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="section-airway-equipment" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]} className="scroll-mt-24">
+            <CollapsibleSubsection title="The Difficult Airway Trolley">
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Every theatre suite, ICU and emergency department should have a standardised difficult airway trolley that is immediately available, checked daily and identical across sites, so that the team can find equipment without thinking during a crisis. A common layout follows the DAS A–B–C–D algorithm, with each drawer matching a step <InlineRef topicId="airway-management" refLabel="Difficult Airway Trolley 2019" /> <InlineRef topicId="airway-management" refLabel="DAS 2015" />.
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+              <li><strong className="text-foreground">Drawer A — tracheal intubation:</strong> videolaryngoscope and blades (including hyperangulated), direct laryngoscope blades, tracheal tubes of several sizes, bougies and stylets.</li>
+              <li><strong className="text-foreground">Drawer B — supraglottic airway:</strong> second-generation supraglottic airways in a range of sizes, including ones suitable for intubation through the device.</li>
+              <li><strong className="text-foreground">Drawer C — facemask oxygenation:</strong> facemasks, oropharyngeal (Guedel) and nasopharyngeal airways.</li>
+              <li><strong className="text-foreground">Drawer D — front-of-neck access:</strong> size 10 scalpel, bougie and size 6.0 cuffed tracheal tube.</li>
+              <li><strong className="text-foreground">Also nearby:</strong> a flexible bronchoscope (or single-use scope), airway exchange catheters, a cognitive aid and, where local policy supports it, jet ventilation equipment.</li>
+            </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
             <CollapsibleSubsection title="Front-of-neck access (FONA)">
             <p className="text-foreground/90 leading-relaxed mb-3">

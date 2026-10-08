@@ -623,6 +623,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2018 Pregnancy", citation: "Bookstaver PB, Bland CM, Griffin B, et al. A review of antibiotic use in pregnancy. Pharmacotherapy. 2015;35(11):1052-1062.", url: "https://doi.org/10.1002/phar.1649", excerpt: "Penicillins, cephalosporins and macrolides such as azithromycin are generally regarded as safe in pregnancy, whereas tetracyclines, fluoroquinolones and first-trimester trimethoprim are best avoided; aminoglycosides carry a theoretical risk of fetal ototoxicity and nephrotoxicity and should be reserved for serious infection with monitoring." },
   ],
   "tiva": [
+    { label: "BJA 2007 TIVA Coughing", citation: "Hohlrieder M, Tiefenthaler W, Klaus H, et al. Effect of total intravenous anaesthesia and balanced anaesthesia on the frequency of coughing during emergence from the anaesthesia. Br J Anaesth. 2007;99(4):587-591.", url: "https://doi.org/10.1093/bja/aem203" },
+    { label: "Anaesthesia 2009 Cardioprotection", citation: "A comparison of volatile and non volatile agents for cardioprotection during on-pump coronary surgery. Anaesthesia. 2009;64(9):953-960.", url: "https://doi.org/10.1111/j.1365-2044.2009.06008.x" },
     { label: "BJA Educ 2016", citation: "Absalom AR, Mani V, De Smet T, Struys MMRF. Pharmacokinetic models for propofol — defining and illuminating the devil in the detail. BJA Education. 2009;103(1):26-37.", url: "https://doi.org/10.1093/bja/aep143" },
     { label: "Schnider 1998", citation: "Schnider TW et al. The influence of method of administration and covariates on the pharmacokinetics of propofol in adult volunteers. Anesthesiology. 1998;88(5):1170-1182.", url: "https://doi.org/10.1097/00000542-199805000-00006" },
     { label: "Marsh 1991", citation: "Marsh B, White M, Morton N, Kenny GNC. Pharmacokinetic model driven infusion of propofol in children. Br J Anaesth. 1991;67(1):41-48.", url: "https://doi.org/10.1093/bja/67.1.41" },
@@ -722,6 +724,7 @@ export const topicReferences: Record<string, Reference[]> = {
 
   // ──────── CLINICAL ────────
   "airway-management": [
+    { label: "Difficult Airway Trolley 2019", citation: "Bhagwan SD, Ramnath R, et al. The difficult airway trolley: a narrative review and practical guide. Anesthesiol Res Pract. 2019;2019:6780254.", url: "https://doi.org/10.1155/2019/6780254" },
     { label: "DAS 2015", citation: "Frerk C et al. Difficult Airway Society 2015 guidelines for management of unanticipated difficult intubation in adults. Br J Anaesth. 2015;115(6):827-848.", url: "https://doi.org/10.1093/bja/aev371" },
     { label: "NAP4 2011", citation: "Cook TM et al. Major complications of airway management in the UK (NAP4). Br J Anaesth. 2011;106(5):617-631.", url: "https://doi.org/10.1093/bja/aer058" },
     { label: "BJA Educ 2017", citation: "Ahmad I, El-Boghdadly K. Difficult airway management. BJA Education. 2019;19(7):215-221.", url: "https://doi.org/10.1016/j.bjae.2019.03.002" },
@@ -759,6 +762,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2020 Fascial Planes", citation: "Chin KJ, Versyck B, Pawa A. Ultrasound-guided fascial plane blocks of the chest wall: a state-of-the-art review. Anaesthesia. 2021;76(Suppl 1):110-126.", url: "https://doi.org/10.1111/anae.15276" },
   ],
   "obstetric-anaesthesia": [
+    { label: "BJA 2009 Epidural Conversion", citation: "Conversion of epidural labour analgesia to anaesthesia for Caesarean section: a prospective study of the incidence and determinants of failure. Br J Anaesth. 2009;102(2):240-243.", url: "https://doi.org/10.1093/bja/aen352" },
+    { label: "Cochrane 2013 PDPH Drugs", citation: "Basurto Ona X, Uriona Tuma SM, Martínez García L, et al. Drug therapy for preventing post-dural puncture headache. Cochrane Database Syst Rev. 2013;(2):CD001792.", url: "https://doi.org/10.1002/14651858.cd001792.pub3" },
+    { label: "Quinn 2013 UKOSS Failed Intubation", citation: "Quinn AC, Milne D, Columb M, Gorton H, Knight M. Failed tracheal intubation in obstetric anaesthesia: 2 yr national case-control study in the UK. Br J Anaesth. 2013;110(1):74-80.", url: "https://doi.org/10.1093/bja/aes320" },
     { label: "Gray's Anatomy 42e", citation: "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.", url: "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0" },
     { label: "Kinsella 1994 Supine Hypotension", citation: "Kinsella SM, Lohmann G. Supine hypotensive syndrome. Obstet Gynecol 1994;83:774-88.", url: "https://pubmed.ncbi.nlm.nih.gov/8164943/" },
     { label: "Russell 1995 Caesarean Block", citation: "Russell IF. Levels of anaesthesia and intraoperative pain at caesarean section under regional block. Int J Obstet Anesth 1995;4:71-7.", url: "https://doi.org/10.1016/0959-289x(95)82995-m" },

@@ -204,8 +204,59 @@ const PainMedicineTopic = () => {
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Descending Modulation</p>
               <p className="text-sm text-muted-foreground mt-1">Periaqueductal grey (PAG) → rostral ventromedial medulla (RVM) → dorsal horn. Serotonergic and noradrenergic inhibition. Gate control theory (Melzack & Wall).</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong className="text-foreground">Pathway:</strong> the PAG receives input from the cortex, amygdala and hypothalamus (so mood, attention and fear change pain) and projects to the RVM, which sends fibres down the dorsolateral funiculus to the dorsal horn.</li>
+                <li><strong className="text-foreground">ON and OFF cells:</strong> RVM "ON" cells fire just before a withdrawal reflex and facilitate nociceptive transmission; "OFF" cells pause before it and inhibit transmission. Opioids silence ON cells and activate OFF cells. The balance can tip towards facilitation in chronic pain.</li>
+                <li><strong className="text-foreground">Transmitters:</strong> noradrenaline from the locus coeruleus acts on α₂ receptors in the dorsal horn to inhibit second-order neurons (the basis for clonidine and dexmedetomidine); serotonin (5-HT) from the RVM can either inhibit or facilitate depending on receptor subtype.</li>
+                <li><strong className="text-foreground">Endogenous opioids:</strong> enkephalins, endorphins and dynorphins act on opioid receptors in the PAG, RVM and dorsal horn. Spinal enkephalinergic interneurons inhibit transmitter release from primary afferents and hyperpolarise second-order neurons.</li>
+                <li><strong className="text-foreground">Endocannabinoids:</strong> CB₁ receptors on neurons in the PAG, spinal cord and periphery also modulate nociception, and CB₂ receptors on immune cells may reduce neuroinflammation <InlineRef topicId="pain-medicine" refLabel="BJA 2008 Cannabinoids" />.</li>
+                <li><strong className="text-foreground">Gate control theory:</strong> activity in large Aβ touch fibres excites inhibitory interneurons in the substantia gelatinosa (lamina II), which "close the gate" on input from Aδ and C fibres — why rubbing a painful area or TENS helps.</li>
+              </ul>
             </div>
           </div>
+        </CollapsibleSubsection>
+        </div>
+
+        <div id="acute-postop" className="scroll-mt-24">
+        <CollapsibleSubsection title="Acute Post-operative Pain Management">
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Principles</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                <li><strong className="text-foreground">Assess:</strong> self-report scores (numerical rating 0–10, visual analogue scale) at rest and on movement, with function (can the patient cough, breathe deeply and mobilise?). Use observational tools when the patient cannot self-report (see below).</li>
+                <li><strong className="text-foreground">Step up or step down:</strong> the WHO ladder steps up from simple analgesics to opioids. After major surgery, start at the top — epidural, nerve block or opioid PCA — and step down as pain settles.</li>
+                <li><strong className="text-foreground">Preventive and multimodal:</strong> give analgesia that covers the period of surgical injury and after (preventive), combine drugs with different mechanisms (paracetamol, NSAID, regional techniques, adjuncts) to spare opioid, and prescribe regular rather than only as-needed doses.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Opioid stewardship &amp; the Acute Pain Service</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                <li>Use immediate-release opioids after surgery; avoid modified-release opioids for acute pain. For opioid-naive patients, discharge with no more than 7 days' supply, and plan a review and taper. Ongoing need should prompt assessment for chronic post-surgical pain <InlineRef topicId="pain-medicine" refLabel="BJA 2021 Surgery & Opioids" />.</li>
+                <li>The Acute Pain Service runs daily ward rounds, manages epidurals, PCAs and nerve catheters, supports complex patients (long-term opioid users, substance use disorder), and trains ward staff.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="p-4 rounded-lg border border-border mt-3">
+            <p className="font-semibold text-foreground text-sm">Pain assessment in the critically ill</p>
+            <p className="text-sm text-muted-foreground mt-1">Self-report is the gold standard but is often impossible in sedated, ventilated or delirious patients, so validated behavioural tools are used:</p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+              <li><strong className="text-foreground">Critical-Care Pain Observation Tool (CPOT):</strong> facial expression, body movements, muscle tension, and either compliance with the ventilator (intubated) or vocalisation (extubated). Each scored 0–2 (total 0–8); a score above 2 suggests significant pain.</li>
+              <li><strong className="text-foreground">Behavioural Pain Scale (BPS):</strong> facial expression, upper-limb movements and compliance with ventilation, each 1–4 (total 3–12); a score above 5 suggests significant pain.</li>
+              <li>A high score should trigger treatment and reassessment. Heart rate and blood pressure rise with pain but are non-specific, so use them only alongside a behavioural tool.</li>
+            </ul>
+          </div>
+        </CollapsibleSubsection>
+        </div>
+
+        <div id="paediatric-pain" className="scroll-mt-24">
+        <CollapsibleSubsection title="Principles of Paediatric Pain Management">
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+            <li><strong className="text-foreground">Assessment:</strong> use age-appropriate tools — FLACC (face, legs, activity, cry, consolability) for infants and non-verbal children, Wong-Baker FACES for young children, and numerical scales for older children.</li>
+            <li><strong className="text-foreground">Pharmacology:</strong> dose by weight and check maximum doses. Neonates clear paracetamol and morphine more slowly, so doses and intervals are adjusted; NSAIDs are widely used after the first months of life.</li>
+            <li><strong className="text-foreground">Codeine:</strong> contraindicated under 12 years, after tonsillectomy or adenoidectomy for sleep apnoea in under-18s, and in breastfeeding mothers, because ultra-rapid CYP2D6 metabolisers make dangerous amounts of morphine.</li>
+            <li><strong className="text-foreground">Regional anaesthesia:</strong> caudal blocks, epidurals, and peripheral blocks (penile, ilioinguinal, rectus sheath, limb blocks) are often placed under general anaesthesia and reduce opioid needs.</li>
+            <li><strong className="text-foreground">Non-drug techniques:</strong> distraction, play, parental presence, topical anaesthetic cream before cannulation, and oral sucrose with non-nutritive sucking for brief procedures in neonates.</li>
+          </ul>
         </CollapsibleSubsection>
         </div>
 
