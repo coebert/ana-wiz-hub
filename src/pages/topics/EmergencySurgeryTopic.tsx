@@ -36,7 +36,7 @@ const objectives = [
 
 const keyPoints = [
   { text: "All emergency patients are 'full stomach' — RSI is the default unless awake intubation indicated", cites: ["P-POSSUM"] },
-  { text: "Emergency laparotomy mortality 10-15%; NELA standards mandate consultant presence for high-risk cases", cites: ["DAS 2015 RSI"] },
+  { text: "Emergency laparotomy 30-day mortality about 9–10% (NELA); NELA standards mandate consultant surgeon and anaesthetist presence for high-risk cases", cites: ["NELA Year 9 Report"] },
   { text: "Ruptured ectopic: do NOT delay surgery — haemorrhage control IS the resuscitation", cites: ["BJA Educ EmLap 2017"] },
   { text: "Ketamine is the induction agent of choice in haemodynamically unstable emergency patients", cites: ["RCoA Emergency Laparotomy"] },
   { text: "Resuscitate before/during induction: correct hypovolaemia, anticipate cardiovascular collapse", cites: ["NCEPOD Knowing the Risk"] },
@@ -55,7 +55,7 @@ const EmergencySurgeryTopicWorkedExamples: WorkedExample[] = [
           <li>Pre-op: blood cultures + antibiotics within 1 h, IV crystalloid 30 mL/kg if hypoperfused, lactate trend, prepare blood products, mark patient</li>
           <li>Consultant anaesthetist and surgeon present for risk ≥5%; theatre target within 6 h</li>
           <li>Intra-op: invasive monitoring, cardiac output monitoring for fluid responsiveness, lung-protective ventilation, normothermia, vasopressor as needed</li>
-          <li>Postoperative: critical care admission for risk ≥10% or organ support; structured handover; daily multidisciplinary review</li>
+          <li>Postoperative: critical care admission for predicted mortality ≥5% or organ support; structured handover; daily multidisciplinary review</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
@@ -265,7 +265,7 @@ const EmergencySurgeryTopic = () => {
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Emergency Laparotomy</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Emergency laparotomy carries 10–15% overall mortality (NELA data), rising to &gt;25% in high-risk patients. The National Emergency Laparotomy Audit (NELA) has driven quality improvement through standardised care bundles.
+              Emergency laparotomy carries about 9–10% 30-day mortality in recent NELA reports, and much higher in older, frail and high predicted-risk patients <InlineRef topicId="emergency-surgery" refLabel="NELA Year 9 Report" />. The National Emergency Laparotomy Audit (NELA) has driven quality improvement through standardised care bundles.
             </p>
             <div className="bg-secondary/20 border border-border rounded-lg p-4 space-y-2">
               <p className="font-semibold text-foreground text-sm">NELA Care Bundle Standards</p>
@@ -293,7 +293,7 @@ const EmergencySurgeryTopic = () => {
               <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside">
                 <li><strong>Monitoring</strong>: use cardiac output monitoring (e.g. oesophageal Doppler or pulse-contour devices) in high-risk patients, as recommended in NELA standards, to guide goal-directed fluid and vasopressor therapy.</li>
                 <li><strong>Haemodynamic goals</strong>: MAP ≥ 65 mmHg (higher in chronic hypertension), falling lactate, urine output ≥ 0.5 mL/kg/h, and a stroke volume that no longer rises with fluid.</li>
-                <li><strong>Fluids</strong>: balanced crystalloid is first choice; give boluses (e.g. 250 mL) only while the patient is fluid-responsive. Both under-resuscitation (organ hypoperfusion) and overload (gut oedema, anastomotic and lung complications) cause harm.</li>
+                <li><strong>Fluids</strong>: balanced crystalloid is first choice; give boluses (e.g. 200–250 mL) only while the patient is fluid-responsive. Both under-resuscitation (organ hypoperfusion) and overload (gut oedema, anastomotic and lung complications) cause harm.</li>
                 <li><strong>Vasopressors and inotropes</strong>: noradrenaline first-line for septic or vasodilatory shock; add an inotrope such as dobutamine if monitoring shows low cardiac output despite adequate filling.</li>
                 <li><strong>Ventilation</strong>: lung-protective settings — tidal volume 6–8 mL/kg predicted body weight, PEEP, and plateau pressure &lt; 30 cmH₂O.</li>
                 <li><strong>Analgesia</strong>: epidurals give excellent analgesia but are often unsuitable in sepsis, coagulopathy or haemodynamic instability; fascial plane blocks (TAP, rectus sheath, quadratus lumborum) or wound catheters are safer alternatives and can be placed at the end of surgery.</li>
