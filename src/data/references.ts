@@ -801,6 +801,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA 2016 Brain Relaxation", citation: "Li J, Gelb AW, Flexman AM, Ji F, Meng L. Definition, evaluation, and management of brain relaxation during craniotomy. Br J Anaesth. 2016;116(6):759-769.", url: "https://doi.org/10.1093/bja/aew096", excerpt: "The term 'brain relaxation' is routinely used to describe the size and firmness of the brain tissue during craniotomy. The status of brain relaxation is an important aspect of neuroanaesthesia practice and is relevant to the operating conditions, retraction injury, and likely patient outcomes. ... It is a concept related to, but distinct from, intracranial pressure." },
   ],
   "cardiothoracic": [
+    { label: "Gray's Anatomy 42e", citation: "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.", url: "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0" },
     { label: "BJA Educ 2018", citation: "Gao Smith F. One-lung anaesthesia. BJA Education. 2017;17(1):24-28.", url: "https://doi.org/10.1093/bjaed/mkw039" },
     { label: "Kaplan's Cardiac", citation: "Kaplan JA, Augoustides JGT, et al. Kaplan's Cardiac Anesthesia. 7th ed. Elsevier; 2017." },
     { label: "BJA Educ 2015", citation: "Maguire S, Slinger P. Cardiopulmonary bypass. BJA Education. 2005;5(3):100-104.", url: "https://doi.org/10.1093/bjaceaccp/mki027" },
@@ -942,6 +943,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Middleton Ch.18", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 18: Electrodes and Gas Measurement." },
   ],
   "vascular-access-devices": [
+    { label: "Gray's Anatomy 42e", citation: "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.", url: "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0" },
     { label: "AoA Vascular Access 2025", citation: "Association of Anaesthetists. Association of Anaesthetists guidelines: safe vascular access 2025. Anaesthesia. 2025. Fifteen recommendations covering operational, training and clinical aspects of vascular access, including tip confirmation, anticoagulation and catheter-related thrombosis.", url: "https://doi.org/10.1111/anae.16727", excerpt: "We agreed successfully 15 recommendations encompassing operational, training and clinical issues with an emphasis on a holistic approach to vascular access and long-term vessel health. [...] the management of anticoagulation therapy, catheter-related thrombosis and coagulopathies; and training in advanced vascular access." },
     { label: "NICE TA49", citation: "NICE. Guidance on the use of ultrasound locating devices for placing central venous catheters (TA49). 2002.", url: "https://www.nice.org.uk/guidance/ta49" },
     { label: "BJA Educ 2016", citation: "Bodenham A, Babu S, Bennett J et al. AAGBI Safe vascular access 2016. Anaesthesia. 2016;71(5):573-585.", url: "https://doi.org/10.1111/anae.13360" },
@@ -1397,6 +1399,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Can J Anaesth 2007 Lower Limb Blocks", citation: "Enneking FK, Chan V, Greger J, Hadžić A, Lang SA, Horlocker TT. Lower-extremity peripheral nerve blockade: essentials of our current understanding. Reg Anesth Pain Med. 2005;30(1):4-35. Review of lower-extremity block approaches and techniques.", url: "https://doi.org/10.1007/bf03026798" },
   ],
   "orthopaedic-anaesthesia": [
+    { label: "Gray's Anatomy 42e", citation: "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.", url: "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0" },
     { label: "Allman & Wilson Ch.27", citation: "Allman K, Wilson I, O'Donnell A. Oxford Handbook of Anaesthesia. 4th ed. OUP; 2016. Chapter 27: Orthopaedic Surgery." },
     { label: "BJA Educ 2014", citation: "Patel V, et al. Anaesthesia for hip fracture. BJA Education. 2014;14(4):166-172.", url: "https://doi.org/10.1093/bjaceaccp/mkt040" },
     { label: "AAGBI Tourniquet", citation: "Association of Anaesthetists. Recommendations for the safe use of tourniquets in limb surgery. Anaesthesia. 2021;76(11):1531-1539.", url: "https://doi.org/10.1111/anae.15345" },

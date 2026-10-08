@@ -1,3 +1,4 @@
+import { VascularAccessAtlas } from "@/components/topic/VascularAccessAtlas";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
@@ -114,6 +115,7 @@ const VascularAccessDevicesTopic = () => {
       coreConcepts={
         <>
           <TopicTableOfContents items={tocItems} />
+          <VascularAccessAtlas />
           <ExamSection id="section-device-overview" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <DiagramSection title="Devices to scale — length and tip position" intro={<p>Catheters compared on a single length axis. Tip position (forearm vein → axillary vein → SVC) determines whether the device is peripheral, midline or central, and therefore which drugs and what flow rates are safe.</p>}>
               <VascularAccessDevicesDiagram />

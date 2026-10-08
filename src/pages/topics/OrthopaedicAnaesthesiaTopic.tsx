@@ -1,3 +1,4 @@
+import { OrthopaedicAnaesthesiaAtlas } from "@/components/topic/OrthopaedicAnaesthesiaAtlas";
 import { Helmet } from "react-helmet-async";
 import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
@@ -161,6 +162,7 @@ const OrthopaedicAnaesthesiaTopic = () => {
       coreConcepts={
         <>
           <TopicTableOfContents items={tocItems} />
+          <OrthopaedicAnaesthesiaAtlas />
 
           <div id="nof" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]}>
