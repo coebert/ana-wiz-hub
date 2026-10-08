@@ -697,6 +697,27 @@ const ImmunologyIntensivistsTopic = () => {
               of the infected host cell (cell-mediated).
             </p>
             <HumoralCellMediatedSplit />
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4">CD4⁺ T-helper subsets</h3>
+            <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+              <li><strong>Th1</strong> — cell-mediated immunity; IFN-γ activates macrophages to kill intracellular pathogens (mycobacteria, viruses).</li>
+              <li><strong>Th2</strong> — humoral immunity and allergy; IL-4, IL-5, IL-13 drive B-cell class switching to IgE and activate eosinophils (helminths, atopy).</li>
+              <li><strong>Th17</strong> — mucosal defence and inflammation; IL-17 recruits neutrophils (extracellular bacteria, fungi).</li>
+              <li><strong>Treg</strong> — suppression and tolerance; TGF-β and IL-10 prevent autoimmunity and damp inflammation (expanded in sepsis-induced immunoparalysis). <InlineRef topicId="immunology-intensivists" refLabel="Janeway's Immunobiology 9e" /></li>
+            </ul>
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4">Immunoglobulin classes</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm text-muted-foreground border border-border">
+                <thead><tr className="bg-muted/40 text-foreground"><th className="p-2 text-left">Class</th><th className="p-2 text-left">Structure</th><th className="p-2 text-left">Location</th><th className="p-2 text-left">Function / clinical relevance</th></tr></thead>
+                <tbody>
+                  <tr className="border-t border-border"><td className="p-2 font-medium">IgG</td><td className="p-2">Monomer</td><td className="p-2">Serum (~75%), tissues</td><td className="p-2">Opsonisation, complement activation, neutralisation; secondary response; only class crossing the placenta; basis of IVIG.</td></tr>
+                  <tr className="border-t border-border"><td className="p-2 font-medium">IgA</td><td className="p-2">Dimer (secretory), monomer in serum</td><td className="p-2">Mucosa, secretions, breast milk</td><td className="p-2">Mucosal immunity; IgA deficiency → risk of anaphylaxis to blood products containing IgA.</td></tr>
+                  <tr className="border-t border-border"><td className="p-2 font-medium">IgM</td><td className="p-2">Pentamer</td><td className="p-2">Serum; B-cell surface (monomer)</td><td className="p-2">First antibody of the primary response; strongest complement fixation; ABO isohaemagglutinins.</td></tr>
+                  <tr className="border-t border-border"><td className="p-2 font-medium">IgE</td><td className="p-2">Monomer</td><td className="p-2">Bound to mast cells/basophils</td><td className="p-2">Allergy and anti-helminth defence; cross-linking triggers degranulation in anaphylaxis.</td></tr>
+                  <tr className="border-t border-border"><td className="p-2 font-medium">IgD</td><td className="p-2">Monomer</td><td className="p-2">Naive B-cell surface</td><td className="p-2">B-cell receptor role in activation; little serum function.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-muted-foreground"><InlineRef topicId="immunology-intensivists" refLabel="Peakman & Vergani 3e" /></p>
           </section>
 
           {/* ---------------- Cell lines table ---------------- */}

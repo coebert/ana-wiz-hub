@@ -568,11 +568,11 @@ const PreoperativeAssessmentTopic = () => {
             </div>
             <div className="p-3 rounded-lg border border-border bg-card">
               <p className="font-semibold text-foreground text-sm">Continue established antihypertensives — with caveats</p>
-              <p className="text-sm text-muted-foreground mt-1">β-blockers, CCBs, α-blockers, diuretics: continue. ACE-I / ARB: omit morning of surgery (NEJM/POISE-3 sub-study: continuation associated with intra-op hypotension and MINS). Restart within 48h post-op.</p>
+              <p className="text-sm text-muted-foreground mt-1">β-blockers, CCBs, α-blockers, diuretics: continue. ACE-I / ARB: omit morning of surgery (POISE-3 perioperative blood-pressure management arm — a hypotension-avoidance strategy that withheld antihypertensives — Marcucci et al, Ann Intern Med 2023; distinct from the tranexamic-acid arm, Devereaux et al, NEJM 2022). Restart within 48h post-op.</p>
             </div>
             <div className="p-3 rounded-lg border border-border bg-card">
               <p className="font-semibold text-foreground text-sm">Intra-op MAP target follows patient baseline</p>
-              <p className="text-sm text-muted-foreground mt-1">POISE-3 (NEJM 2023) and Sessler 2019: maintain MAP &gt; 80 mmHg in chronically hypertensive patients. SBP fall &gt; 20% from baseline, or any MAP &lt; 65 mmHg, increases risk of MINS, AKI, stroke.</p>
+              <p className="text-sm text-muted-foreground mt-1">POISE-3 BP-management arm (Marcucci, Ann Intern Med 2023) and Sessler 2019: maintain MAP &gt; 80 mmHg in chronically hypertensive patients. SBP fall &gt; 20% from baseline, or any MAP &lt; 65 mmHg, increases risk of MINS, AKI, stroke.</p>
             </div>
           </div>
 
@@ -600,7 +600,7 @@ const PreoperativeAssessmentTopic = () => {
             <p className="font-semibold text-foreground text-sm">TARGET MET</p>
             <p className="text-xs font-mono text-muted-foreground mt-1">Hb ≥ 130 g/L (men)<br/>Hb ≥ 120 g/L (women, standard WHO definition)<br/><span className="font-sans">Some PBM guidelines now use a universal 130 g/L target to minimise transfusion, but the formal definition of anaemia in women remains &lt;120 g/L.</span></p>
             <p className="text-sm text-muted-foreground mt-2 leading-snug">
-              No iron / ESA required. Note: WHO 2017 raised the female pre-op target to 130 g/L (from 120) to equalise transfusion risk — surgery causes equal blood loss regardless of sex.
+              No iron / ESA required. Note: the 2017 international PBM consensus argues for treating even mild anaemia (120–129 g/L) in women before major surgery, because the same absolute blood loss consumes a larger share of a lower red-cell mass — this is a rationale for treatment, not a change to the WHO definition. <InlineRef topicId="preoperative-assessment" refLabel="ESAIC Preop 2025" />
             </p>
           </div>
           <div className="p-4 rounded-lg border-2 border-accent/40 bg-accent/5">
