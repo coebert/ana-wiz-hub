@@ -272,11 +272,13 @@ const EcmoTopic = () => {
             {/* Circuit */}
             <div>
               <h2 id="circuit" className="text-2xl font-serif font-bold text-foreground mb-3">Circuit components</h2>
+              <p className="text-sm text-muted-foreground mb-3">Modern circuits are shorter, heparin-coated and centrifugal-pump based, allowing longer support with fewer complications.<InlineRef topicId="ecmo" refLabel="Chauhan 2012 ECMO Part II" /></p>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
-                  { part: "Drainage cannula", detail: "Large-bore (21–29 Fr), multi-fenestrated. Femoral vein → IVC/RA most common. Pre-pump pressure should be negative but > –100 mmHg to avoid haemolysis and cavitation." },
-                  { part: "Centrifugal pump", detail: "Magnetically levitated impeller (e.g. CentriMag, Rotaflow). Preload- and afterload-sensitive — flow drops if venous return is poor or systemic resistance rises. Watch for line chatter (hypovolaemia)." },
-                  { part: "Membrane oxygenator", detail: "Polymethylpentene hollow-fibre. Blood flows on one side, sweep gas the other. FdO₂ controls oxygenation; sweep flow controls CO₂ removal. Integrated heat exchanger." },
+                  { part: "Drainage cannula", detail: "Drainage cannula size and tip position are the main determinants of achievable flow (resistance falls steeply with radius and rises with length). Large-bore (21–29 Fr), multi-fenestrated. Femoral vein → IVC/RA most common. Pre-pump pressure should be negative but > –100 mmHg to avoid haemolysis and cavitation." },
+                  { part: "Centrifugal pump", detail: "Magnetically levitated impeller (e.g. CentriMag, Rotaflow). Preload- and afterload-sensitive — flow drops if venous return is poor or systemic resistance rises. Watch for line chatter (hypovolaemia). Afterload-sensitive: flow falls with hypertension or a kinked return line, so flow must be measured, not inferred from RPM. Replaced roller pumps, which are occlusive, displace a fixed volume and generate dangerous pressures if a line is obstructed." },
+                  { part: "Membrane oxygenator", detail: "Polymethylpentene hollow-fibre. Blood flows on one side, sweep gas the other. FdO₂ controls oxygenation; sweep flow controls CO₂ removal. Monitor pre- and post-oxygenator pressures: a rising trans-membrane gradient, falling post-membrane PaO₂, visible clot, and falling platelets/fibrinogen with rising D-dimer signal failure and the need for change-out." },
+                  { part: "Heat exchanger", detail: "Usually integrated with the oxygenator; water circulating around the blood path maintains normothermia (or a target temperature) — large extracorporeal flows otherwise cool the patient quickly and can mask fever." },
                   { part: "Return cannula", detail: "VV: internal jugular → SVC/RA, or contralateral femoral vein. VA: femoral artery (peripheral) or aorta (central). Distal perfusion cannula essential for femoral arterial return." },
                 ].map((c) => (
                   <div key={c.part} className="p-3 rounded-lg border border-border">
@@ -465,6 +467,16 @@ const EcmoTopic = () => {
               </p>
             </div>
 
+            <div>
+              <h2 id="vv-hypoxaemia" className="text-2xl font-serif font-bold text-foreground mb-3">Refractory hypoxaemia on VV-ECMO</h2>
+              <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-1 mb-3">
+                <li><strong>Patient:</strong> new pathology (pneumothorax, PE, tamponade, mucus plugging), rising O₂ demand (fever, agitation, seizures, sepsis), and native cardiac output — a high native output dilutes the ECMO fraction of total flow.</li>
+                <li><strong>Circuit:</strong> recirculation (high pre-membrane saturation with low patient PaO₂), oxygenator failure (falling post-membrane PaO₂, rising trans-membrane gradient), inadequate flow (kinks, chatter, cannula malposition, hypovolaemia).</li>
+                <li><strong>First steps:</strong> FdO₂ 1.0; increase blood flow to the safe maximum; deepen sedation ± neuromuscular blockade; control fever (cooling via the heat exchanger); transfuse if Hb is low; consider prone positioning.</li>
+                <li><strong>Advanced:</strong> reposition cannulae (echo-guided) to reduce recirculation; add a second drainage cannula to raise flow; change the oxygenator if failing; for new cardiac dysfunction convert to hybrid (VAV) or VA support — converted patients are a high-mortality group (about 61% in-hospital in the ELSO registry, highest for VV→VA)<InlineRef topicId="ecmo" refLabel="ELSO Registry VV Conversion 2026" />.</li>
+              </ol>
+            </div>
+
             {/* Configuration change & special indications */}
             <div>
               <h2 id="conversion" className="text-2xl font-serif font-bold text-foreground mb-3">Changing configuration: VV → VA and hybrid (VAV)</h2>
@@ -565,6 +577,29 @@ const EcmoTopic = () => {
                 <li>End-tidal CO₂ &gt; 1.3 kPa (10 mmHg) during CPR — surrogate for adequate compressions and tissue perfusion.</li>
                 <li>Reversible cause suspected (commonly ACS for downstream PCI).</li>
               </ul>
+              <div className="grid sm:grid-cols-2 gap-3 mb-3">
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Usually excluded (absolute)</p>
+                  <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mt-1">
+                    <li>Unwitnessed arrest or prolonged no-flow time (&gt; 5–10 min)</li>
+                    <li>Terminal illness or limited life expectancy; known treatment limitations</li>
+                    <li>Severe pre-existing neurological injury</li>
+                    <li>Aortic dissection or severe aortic regurgitation</li>
+                    <li>Uncontrolled haemorrhage / contraindication to anticoagulation</li>
+                  </ul>
+                </div>
+                <div className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">Relative (centre-dependent)</p>
+                  <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mt-1">
+                    <li>Age &gt; 70 years</li>
+                    <li>Low-flow time &gt; 60 min to anticipated flow</li>
+                    <li>Non-shockable initial rhythm</li>
+                    <li>Severe comorbidity (end-stage heart, lung, liver or renal disease)</li>
+                    <li>No identifiable reversible cause</li>
+                    <li>Anatomy or obesity making femoral cannulation difficult</li>
+                  </ul>
+                </div>
+              </div>
               <p className="text-sm text-muted-foreground">
                 <strong>ARREST (2020)</strong> and <strong>Prague-OHCA (2022)</strong>
                 supported ECPR in highly selected centres; <strong>INCEPTION (2023)</strong>

@@ -545,11 +545,33 @@ const InfectiousDiseaseIcuTopic = () => {
           </ExamSection>
 
 
+          <ExamSection id="sdd" exams={[Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Prophylactic Strategies — Selective Decontamination of the Digestive Tract (SDD)">
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <p><strong className="text-foreground">Definition:</strong> prophylaxis to prevent ICU-acquired (secondary endogenous) infection by eradicating potentially pathogenic aerobic Gram-negative bacilli, <em>S. aureus</em> and yeasts from the oropharynx and gut while sparing the anaerobic flora.</p>
+              <ul className="list-disc pl-5 space-y-1">
+                <li><strong>Parenteral:</strong> about 4 days of IV cefotaxime (third-generation cephalosporin) from admission.</li>
+                <li><strong>Enteral:</strong> non-absorbable polymyxin E (colistin), tobramycin and amphotericin B (PTA) via NG tube throughout the ICU stay.</li>
+                <li><strong>Oropharyngeal:</strong> PTA paste to the buccal mucosa four times daily.</li>
+                <li><strong>Hygiene and surveillance:</strong> high standards of infection control with regular surveillance cultures.</li>
+              </ul>
+              <p><strong className="text-foreground">SOD</strong> (selective oropharyngeal decontamination) uses the oral paste alone.</p>
+              <p><strong className="text-foreground">Evidence and controversy:</strong> meta-analyses show fewer VAP and ICU-acquired bacteraemia episodes and a probable mortality reduction; SuDDICU (2022) found a non-significant mortality difference in ventilated patients. The main concern is selection of antimicrobial resistance (especially in settings with high baseline resistance), so SDD is widely used in the Netherlands but is not routine UK or North American practice.</p>
+            </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="abdo" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Intra-abdominal Sepsis">
             <p className="text-muted-foreground leading-relaxed mb-3">
               ~20% of ICU sepsis. Source control (surgery or drainage) is the critical intervention.
             </p>
+            <div className="space-y-2 mb-3 text-sm text-muted-foreground">
+              <p><strong className="text-foreground">Resuscitation:</strong> sepsis bundle, balanced crystalloid, vasopressors to MAP ≥ 65 mmHg; optimise before (not instead of) theatre — physiology-guided damage-control laparotomy if unstable.</p>
+              <p><strong className="text-foreground">Source control:</strong> as early as practical, ideally within 6–12 h. Percutaneous image-guided drainage for well-defined collections (diverticular, liver or post-operative abscess); emergency laparotomy for diffuse or faecal peritonitis from a perforated viscus or major anastomotic leak; urgent ERCP/biliary drainage for obstructive cholangitis.</p>
+              <p><strong className="text-foreground">Antibiotics:</strong> polymicrobial — Enterobacterales and anaerobes, ± enterococci. Piperacillin-tazobactam, or meropenem where ESBL risk or severe illness (add metronidazole to agents without anaerobic cover). Add an echinocandin for high-risk <em>Candida</em> (upper-GI perforation, recurrent perforation or leak, tertiary peritonitis, heavy prior antibiotics). About 4 days after adequate source control is usually enough (STOP-IT).</p>
+              <p><strong className="text-foreground">Specific pathways:</strong> perforated peptic ulcer — repair/omental patch, PPI, <em>H. pylori</em> eradication, consider antifungal cover; diverticular abscess — antibiotics alone if small, drainage if larger, surgery if generalised peritonitis; infected pancreatic necrosis — antibiotics, then delayed step-up drainage/necrosectomy rather than early surgery.</p>
+            </div>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Common Sources</p>

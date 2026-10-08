@@ -368,6 +368,21 @@ const IcuNutritionTopic = () => {
           </ExamSection>
 
           <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Feed Intolerance — Monitoring and Stepwise Management">
+              <div className="space-y-3 text-sm text-muted-foreground">
+                <p><strong className="text-foreground">Monitoring adequacy:</strong> record daily calories and protein delivered against target (deficits accumulate silently because of fasting for procedures and interruptions), and review weight, fluid balance and phosphate, potassium and magnesium daily during the first week.</p>
+                <p><strong className="text-foreground">Signs of intolerance (beyond gastric residual volume):</strong> vomiting or regurgitation, abdominal distension or pain, absent or abnormal bowel sounds, diarrhoea, rising intra-abdominal pressure, and a rising lactate — the last two should prompt assessment for bowel ischaemia.</p>
+                <ol className="list-decimal list-inside space-y-1">
+                  <li>Look for reversible causes: opioids, sedatives, hypokalaemia/hypomagnesaemia, hyperglycaemia, ileus after surgery.</li>
+                  <li>Start a prokinetic: IV erythromycin (first-line, short course) ± metoclopramide.</li>
+                  <li>Reduce the rate temporarily or use a more energy-dense feed to reduce volume.</li>
+                  <li>Trial post-pyloric (nasojejunal) feeding if gastric intolerance persists.</li>
+                  <li>Consider supplemental parenteral nutrition if enteral delivery remains well below target despite these steps (typically after about the first week).</li>
+                </ol>
+                <p className="text-xs">Every ICU should have written feeding, fasting and intolerance protocols with early access to post-pyloric feeding.<InlineRef topicId="icu-nutrition" refLabel="Anaesthesia 2023 Malnutrition" /></p>
+              </div>
+            </CollapsibleSubsection>
+
             <CollapsibleSubsection title="Special Populations — ECMO / ECLS and Severe Pancreatitis">
             <p className="text-sm text-muted-foreground mb-3">
               Two groups are repeatedly cited in vivas as &lsquo;too sick to feed&rsquo; when in fact early
@@ -381,7 +396,7 @@ const IcuNutritionTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">
                   <strong>Feed early and enterally.</strong> Multiple cohorts show early EN on VV- and
                   VA-ECMO is safe and tolerated in ~85% of patients; ECMO itself is not a contraindication
-                  and non-occlusive bowel ischaemia is rare. Start within 24–48 h at trophic rates once
+                  and non-occlusive bowel ischaemia is rare<InlineRef topicId="icu-nutrition" refLabel="D'Alesio 2022 ECLS Nutrition" />. Start within 24–48 h at trophic rates once
                   flows are stable. Energy needs are frequently{" "}
                   <em>over</em>-estimated because the oxygenator removes CO₂ — standard indirect
                   calorimetry is invalid unless membrane gas exchange is accounted for, so use
@@ -395,7 +410,7 @@ const IcuNutritionTopic = () => {
                 </p>
               </div>
               <div className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Severe acute pancreatitis</p>
+                <p className="font-semibold text-foreground text-sm">Severe acute pancreatitis <InlineRef topicId="icu-nutrition" refLabel="McClave 2025 Pancreatitis PN" /></p>
                 <p className="text-sm text-muted-foreground mt-1">
                   &lsquo;Gut rest&rsquo; is obsolete. Offer <strong>early oral diet as tolerated</strong> in
                   mild disease, and in predicted severe or intolerant patients start{" "}
@@ -425,7 +440,7 @@ const IcuNutritionTopic = () => {
                   admission (NRS-2002 / GLIM) and expect refeeding risk. Feed enterally and early: EN is
                   tolerated on inotropes and low-dose vasopressors, but withhold or keep trophic during
                   escalating vasopressor requirement, uncontrolled shock, or high-dose noradrenaline plus
-                  rising lactate, because of the small risk of non-occlusive bowel ischaemia. Use dry or
+                  rising lactate, because of the small risk of non-occlusive bowel ischaemia<InlineRef topicId="icu-nutrition" refLabel="D'Alesio 2022 ECLS Nutrition" />. Use dry or
                   ideal weight (not oedematous weight) for targets, energy-dense (1.5–2 kcal/mL) low-volume
                   feeds where fluid is restricted, and remember open-chest, delayed sternal closure and
                   mechanical support are not contraindications. Watch sodium and fluid balance, thiamine
