@@ -144,5 +144,5 @@ const plates: AtlasPlate[] = [
 ];
 
 export const RegionalAnaesthesiaAtlas = () => (
-  <AnatomyAtlas id="anatomy-atlas" heading="Atlas of Block Anatomy &amp; Key Landmarks".replace("&amp;", "&")} topicId="regional-anaesthesia" plates={plates} />
+  <AnatomyAtlas id="anatomy-atlas" heading="Atlas of Block Anatomy & Key Landmarks" topicId="regional-anaesthesia" plates={plates} />
 );
