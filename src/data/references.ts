@@ -81,6 +81,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Cross & Plunkett Ch.10", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 10: The Anaesthetic Machine." },
   ],
   "breathing-circuits": [
+    { label: "Coppens 2006 (CO production)", citation: "Coppens MJ, Versichelen LFM, Rolly G, Mortier EP, Struys MMRF. The mechanisms of carbon monoxide production by inhalational agents. Anaesthesia. 2006;61(5):462-468.", url: "https://doi.org/10.1111/j.1365-2044.2006.04536.x" },
     { label: "BJA Educ 2005", citation: "Waters DJ, Mapleson WW. Breathing systems for use in anaesthesia. BJA Education. 2005;5(1):2-7.", url: "https://doi.org/10.1093/bjaceaccp/mki002", excerpt: "Mapleson A is the most efficient system for spontaneous ventilation, requiring a fresh gas flow equal to the patient's alveolar minute ventilation (approximately 70 mL/kg/min). For controlled ventilation, the Mapleson D system (and its coaxial form, the Bain) is most efficient, requiring a fresh gas flow of about 70–100 mL/kg/min to maintain normocapnia. The Ayre's T-piece (Mapleson E) and the Jackson-Rees modification (Mapleson F) are valveless and have low resistance, making them suitable for paediatric anaesthesia." },
     { label: "Al-Shaikh & Stacey Ch.6-7", citation: "Al-Shaikh B, Stacey S. Essentials of Anaesthetic Equipment. 5th ed. Chapters 6-7: Breathing Systems." },
     { label: "Davey & Diba Ch.5", citation: "Davey AJ, Diba A. Ward's Anaesthetic Equipment. 6th ed. Chapter 5: Breathing Systems and Their Components." },
@@ -164,6 +165,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NEJM 2013 (PAC)", citation: "Kelly CR, Rabbani LE. Videos in clinical medicine: pulmonary-artery catheterization. N Engl J Med. 2013;369(25):e35.", url: "https://doi.org/10.1056/NEJMvcm1212416" },
   ],
   "temperature-measurement": [
+    { label: "Moran 2007 (Tympanic ICU)", citation: "Moran JL, Peter JV, Solomon PJ, et al. Tympanic temperature measurements: are they reliable in the critically ill? A clinical study of measures of agreement. Crit Care Med. 2007;35(1):155-164.", url: "https://doi.org/10.1097/01.ccm.0000250318.31453.cb" },
     { label: "NICE NG125", citation: "National Institute for Health and Care Excellence. Perioperative care in adults / surgical site infection guidance referenced for perioperative temperature standards (NG125). 2019.", url: "https://www.nice.org.uk/guidance/ng125" },
     { label: "BJA Educ Temperature 2020", citation: "Temperature monitoring and management during anaesthesia. BJA Education. 2020;20(9):305-312. Tympanic membrane infrared thermometry estimates core temperature from the aural canal, sharing blood supply with the hypothalamus via the carotid circulation.", url: "https://bjanaesthesia.org/article/S2058-5349(20)30172-8/fulltext" },
     { label: "BJA Educ 2014", citation: "Bindu B, Bindra A, Rath G. Temperature management under general anesthesia. Anesth Essays Res. 2017;11(2):306-316.", url: "https://doi.org/10.4103/aer.AER_123_16" },
