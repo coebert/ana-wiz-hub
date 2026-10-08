@@ -501,7 +501,7 @@ const HeadNeckAnatomyTopic = () => {
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Trachea</p>
-                <p className="text-sm text-muted-foreground mt-1">C6–T4/5 (carina). 10–12 cm long, 16–20 C-shaped cartilaginous rings. Posterior membranous wall (trachealis muscle). Blood supply: inferior thyroid artery.</p>
+                <p className="text-sm text-muted-foreground mt-1">C6–T4/5 (carina). 10–12 cm long, 16–20 C-shaped cartilaginous rings. Posterior membranous wall (trachealis muscle). Arterial supply: upper two-thirds from branches of the inferior thyroid artery, lower third from the bronchial arteries. Venous drainage: inferior thyroid venous plexus. Lymphatics: pre-tracheal and para-tracheal nodes — relevant to tracheostomy and tracheal surgery <InlineRef topicId="head-neck-anatomy" refLabel="Ellis & Feldman Ch.1" />.</p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Bronchial Anatomy</p>

@@ -275,6 +275,25 @@ const AnticoagulantsTopic = () => {
                   <p><strong>Non-urgent (INR 5–9, no bleeding):</strong> Withhold ± oral vitamin K 1–2 mg</p>
                   <p><strong>Urgent (significant bleeding):</strong> IV vitamin K 5 mg + PCC 25–50 IU/kg</p>
                   <p><strong>Life-threatening:</strong> PCC immediately + IV vitamin K 5 mg. FFP second-line.</p>
+                  <p><strong>Why FFP is second-line:</strong> PCC gives rapid, reliable, small-volume replacement of factors II, VII, IX and X. FFP should only be used if PCC is unavailable, because it needs ABO-compatible units, must be thawed (delay), needs a large volume (typically 15–20 mL/kg, risking TACO), has variable factor content, and carries risks of TRALI and allergic reactions <InlineRef topicId="anticoagulants" refLabel="BSH 2011" />.</p>
+                </div>
+              </div>
+              <div className="rounded-lg p-4 border border-border bg-card">
+                <h3 className="font-semibold text-foreground">Vitamin K (Phytomenadione) Pharmacology</h3>
+                <div className="text-sm text-foreground/80 mt-1 space-y-1">
+                  <p><strong>Mechanism:</strong> cofactor for γ-glutamyl carboxylase, which activates factors II, VII, IX and X and proteins C and S. It allows synthesis of <em>new</em> functional factors but does not affect existing non-functional ones.</p>
+                  <p><strong>Oral:</strong> well absorbed but slower; used for non-urgent reversal (e.g. INR 5–9 without bleeding, 1–2 mg).</p>
+                  <p><strong>IV:</strong> fastest effect on factor synthesis — INR starts to fall after ~6–8 h, full effect ~24 h. Used with PCC for urgent reversal. Give slowly (e.g. over 15–30 min) because of a risk of anaphylactoid reactions related to the solubilising agent.</p>
+                  <p><strong>Key point:</strong> even IV vitamin K takes hours to act, so PCC is essential for immediate reversal of major bleeding <InlineRef topicId="anticoagulants" refLabel="BSH 2011" />.</p>
+                </div>
+              </div>
+              <div className="rounded-lg p-4 border border-border bg-card">
+                <h3 className="font-semibold text-foreground">Anticoagulant Resistance</h3>
+                <div className="text-sm text-foreground/80 mt-1 space-y-1">
+                  <p><strong>Heparin resistance:</strong> needing unusually high UFH doses to reach a therapeutic APTT (e.g. &gt;35,000 units/day). Main cause is acquired antithrombin deficiency (sepsis, DIC, liver disease, nephrotic syndrome, ECMO/bypass); raised factor VIII and fibrinogen can also shorten the APTT despite adequate heparin effect.</p>
+                  <p><strong>Diagnosis:</strong> measure anti-Xa (low despite a high UFH dose suggests true resistance; adequate anti-Xa suggests APTT &ldquo;pseudo-resistance&rdquo;) and antithrombin levels.</p>
+                  <p><strong>Management:</strong> antithrombin concentrate, or switch to a direct thrombin inhibitor (argatroban, bivalirudin), which does not need antithrombin.</p>
+                  <p><strong>DOAC failure:</strong> can occur through non-adherence, impaired absorption (e.g. after bariatric surgery; PPIs reduce dabigatran absorption), and drug interactions — strong CYP3A4/P-gp inducers (phenytoin, carbamazepine, rifampicin) lower rivaroxaban and apixaban levels <InlineRef topicId="anticoagulants" refLabel="BNF Oral Anticoagulants" />.</p>
                 </div>
               </div>
               <div className="rounded-lg p-4 border border-border bg-card">

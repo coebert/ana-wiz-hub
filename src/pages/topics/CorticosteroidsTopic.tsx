@@ -17,11 +17,11 @@ const corticosteroidsFaqs: Array<[string, string]> = [
   ],
   [
     "When is perioperative steroid cover required and what regimen is used?",
-    "Required when HPA suppression is likely, including prednisolone ≥5 mg/day for more than four weeks. Minor surgery needs the usual dose only; if fasting causes a dose to be missed, give its equivalent parenterally. Moderate surgery: usual dose + hydrocortisone 50 mg IV at induction, then 25 mg IV 8-hourly for 24 h. Major surgery: usual dose + hydrocortisone 100 mg IV at induction, then 200 mg/24 h by infusion or 50 mg IV 6-hourly for 24–48 h and until stable enough to resume oral treatment."
+    "Required when HPA suppression is likely, including prednisolone ≥5 mg/day for more than four weeks. Minor surgery needs the usual oral dose only, with no additional parenteral supplementation; if fasting is brief and only one dose is missed (e.g. a minor procedure under local or regional anaesthesia), parenteral replacement is not required. Moderate surgery: usual dose + hydrocortisone 50 mg IV at induction, then 25 mg IV 8-hourly for 24 h. Major surgery: usual dose + hydrocortisone 100 mg IV at induction, then 200 mg/24 h by infusion or 50 mg IV 6-hourly for 24–48 h and until stable enough to resume oral treatment."
   ],
   [
     "What are the major side effects of long-term corticosteroids?",
-    "Cushingoid (truncal obesity, moon face, buffalo hump), osteoporosis (DXA + bisphosphonates if >5 mg pred for >3 months), hyperglycaemia/diabetes, hypertension, peptic ulcer (especially with NSAIDs), proximal myopathy, immunosuppression, skin thinning/bruising, cataracts, glaucoma, mood disturbance/psychosis, growth retardation in children, adrenal suppression. Withdrawal must be gradual after >3 weeks of treatment to allow HPA recovery."
+    "Cushingoid features (truncal obesity, moon face, buffalo hump — fat redistribution driven by hyperinsulinaemia and lipolysis in the limbs). Osteoporosis (DXA + bisphosphonates if >5 mg pred for >3 months) — reduced gut calcium absorption (antagonism of vitamin D action), increased renal calcium excretion, reduced osteoblast activity. Hyperglycaemia/diabetes — increased hepatic gluconeogenesis and peripheral insulin resistance. Hypertension — mineralocorticoid-mediated sodium and water retention plus enhanced vascular catecholamine sensitivity. Peptic ulcer (especially with NSAIDs) — reduced mucosal prostaglandin protection. Proximal myopathy — increased muscle protein catabolism and wasting. Immunosuppression — reduced cytokine production (NF-κB/AP-1 transrepression) and lymphocyte redistribution/apoptosis. Skin thinning/bruising — inhibition of fibroblast activity and collagen synthesis. Also cataracts, glaucoma, mood disturbance/psychosis, growth retardation in children and adrenal suppression. Withdrawal must be gradual after >4 weeks of treatment to allow HPA recovery."
   ]
 ];
 
@@ -207,7 +207,7 @@ const CorticosteroidsTopic = () => {
             <CollapsibleSubsection title="Perioperative Steroid Cover (AAGBI/AOMRC 2020)">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>HPA suppression</strong>: a concern with prednisolone ≥5 mg/day for &gt;4 weeks (or equivalent), Cushingoid features, or recent cessation of long-term treatment.</li>
-              <li><strong>Minor surgery</strong>: continue the usual oral dose; if fasting causes a dose to be missed, replace that dose parenterally rather than giving a routine extra 25 mg.</li>
+              <li><strong>Minor surgery</strong>: continue the usual oral dose only — no additional IV hydrocortisone is required. If fasting is brief and only one dose is missed (e.g. a minor procedure under local or regional anaesthesia), parenteral replacement is not needed; resume normal oral medication afterwards <InlineRef topicId="corticosteroids" refLabel="Anaesthesia 2020 Glucocorticoids" />.</li>
               <li><strong>Moderate surgery</strong>: usual dose + hydrocortisone 50 mg IV at induction, then 25 mg IV 8-hourly for 24 h.</li>
               <li><strong>Major surgery</strong>: usual dose + hydrocortisone 100 mg IV at induction, then 200 mg over 24 h by infusion or 50 mg IV 6-hourly for 24–48 h and until stable enough to resume oral treatment <InlineRef topicId="corticosteroids" refLabel="Anaesthesia 2020 Glucocorticoids" />.</li>
               <li><strong>Critical illness / septic shock</strong>: 200 mg/24 h is the same target dose — it is not an escalation above major surgery</li>
@@ -220,6 +220,14 @@ const CorticosteroidsTopic = () => {
               <li><strong>Procedure</strong>: baseline serum cortisol (ideally 08:00–09:00), then 250 µg synthetic ACTH (tetracosactide/Synacthen) IV or IM, with further cortisol samples at 30 and/or 60 min.</li>
               <li><strong>Interpretation</strong>: a peak cortisol above roughly 420–500 nmol/L (assay- and laboratory-dependent) indicates an adequate response; failure to reach it indicates adrenal insufficiency.</li>
               <li><strong>Clinical relevance</strong>: an adequate response in a patient with previous steroid exposure supports omitting perioperative cover; an inadequate response mandates cover. Note the test is unreliable in acute-onset (recent pituitary) disease, and exogenous hydrocortisone cross-reacts with the assay — omit the morning dose or use dexamethasone before sampling <InlineRef topicId="corticosteroids" refLabel="Anaesthesia 2020 Glucocorticoids" /></li>
+            </ul>
+            </CollapsibleSubsection>
+            <CollapsibleSubsection title="Critical Illness-Related Corticosteroid Insufficiency (CIRCI)">
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Definition</strong>: inadequate cellular corticosteroid activity for the severity of the patient&rsquo;s illness <InlineRef topicId="corticosteroids" refLabel="CIRCI 2017" />.</li>
+              <li><strong>Pathophysiology</strong>: dysregulation of the HPA axis (impaired CRH/ACTH and adrenal cortisol synthesis), altered cortisol metabolism (reduced hepatic and renal breakdown, low cortisol-binding globulin) and tissue resistance to glucocorticoids (reduced receptor number and affinity, driven by inflammatory mediators).</li>
+              <li><strong>Diagnosis is controversial</strong>: total cortisol is distorted by low binding proteins, free cortisol assays are not widely available, and random cortisol and the 250 µg ACTH stimulation test (delta cortisol &lt;250 nmol/L, or random cortisol &lt;276 nmol/L, suggested by the 2017 guideline) correlate poorly with tissue activity. In practice, treatment is guided by the clinical picture rather than a test.</li>
+              <li><strong>Management in septic shock</strong>: low-dose hydrocortisone (200 mg/day) for vasopressor-dependent shock, as below. ADRENAL showed faster shock reversal without a 90-day mortality benefit; APROCCHSS (with fludrocortisone) showed lower 90-day mortality.</li>
             </ul>
             </CollapsibleSubsection>
             <CollapsibleSubsection title="Stress-Dose Steroids in Septic Shock">
