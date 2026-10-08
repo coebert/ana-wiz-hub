@@ -4,19 +4,24 @@ import { AnatomyAtlas, Label, Svg, ink, muted, fillA, accent, nerve, type AtlasP
 const Caudal = () => (
   <Svg title="Sacrum and sacral hiatus for caudal block, posterior view, labelled">
     <path d="M130 40 L270 40 L240 210 L215 250 L185 250 L160 210 Z" fill={fillA} stroke={ink} strokeWidth={2} />
-    <circle cx={110} cy={45} r={7} fill={accent} />
-    <circle cx={290} cy={45} r={7} fill={accent} />
-    <path d="M110 45 L290 45 L200 215 Z" fill="none" stroke={accent} strokeDasharray="5 3" />
+    <path d="M130 45 Q90 20 70 40 Q85 80 112 100" fill="none" stroke={muted} strokeWidth={2} />
+    <path d="M270 45 Q310 20 330 40 Q315 80 288 100" fill="none" stroke={muted} strokeWidth={2} />
+    <circle cx={112} cy={88} r={7} fill={accent} />
+    <circle cx={288} cy={88} r={7} fill={accent} />
+    <path d="M112 88 L288 88 L200 215 Z" fill="none" stroke={accent} strokeDasharray="5 3" />
     <path d="M185 215 Q200 200 215 215 L210 250 L190 250 Z" fill="hsl(var(--background))" stroke={ink} />
     <circle cx={185} cy={218} r={5} fill={ink} />
     <circle cx={215} cy={218} r={5} fill={ink} />
-    <path d="M200 20 L200 130" stroke={nerve} fill="none" strokeWidth={8} strokeOpacity={0.35} strokeLinecap="round" />
+    <path d="M200 20 L200 145" stroke={nerve} fill="none" strokeWidth={8} strokeOpacity={0.35} strokeLinecap="round" />
     <path d="M200 250 L200 290" stroke={ink} strokeWidth={3} />
-    <Label x={110} y={45} tx={40} ty={25} anchor="end">PSIS</Label>
+    <path d="M185 90 L215 90" stroke={ink} strokeWidth={2} />
+    <path d="M185 145 L215 145" stroke={nerve} strokeWidth={2} />
+    <Label x={112} y={88} tx={40} ty={75} anchor="end">PSIS (ilium, ≈S2 level)</Label>
     <Label x={200} y={232} tx={330} ty={235}>Sacral hiatus</Label>
     <Label x={185} y={218} tx={40} ty={215} anchor="end">Sacral cornua</Label>
-    <Label x={200} y={125} tx={330} ty={120}>Dural sac (ends lower in infants)</Label>
-    <Label x={150} y={130} tx={40} ty={130} anchor="end">PSIS–hiatus triangle</Label>
+    <Label x={215} y={90} tx={330} ty={80}>Adult dural sac end ≈ S2</Label>
+    <Label x={215} y={145} tx={330} ty={150}>Neonate dural sac end ≈ S3–S4</Label>
+    <Label x={150} y={140} tx={40} ty={140} anchor="end">PSIS–hiatus triangle</Label>
     <Label x={200} y={280} tx={330} ty={285}>Coccyx</Label>
   </Svg>
 );
@@ -47,7 +52,7 @@ const plates: AtlasPlate[] = [
     Diagram: Caudal,
     title: "Sacral hiatus (caudal block)",
     landmarks: [
-      { text: "The sacral hiatus lies between the sacral cornua and roughly forms an equilateral triangle with the two posterior superior iliac spines", ref: "Gray's Anatomy 42e" },
+      { text: "The sacral hiatus lies between the sacral cornua and roughly forms an equilateral triangle with the two posterior superior iliac spines, which lie on the ilia at about the S2 level", ref: "Gray's Anatomy 42e" },
       { text: "In newborns the dural sac ends lower and closer to the hiatus than in adults, so excessive needle advancement risks dural puncture", ref: "van Schoor 2018 Dural Sac" },
     ],
     relevance: "Insert the caudal needle just through the sacrococcygeal membrane and advance only minimally; aspirate and give a test dose to exclude intrathecal or intravascular placement.",
