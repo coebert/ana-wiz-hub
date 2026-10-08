@@ -341,6 +341,7 @@ const AcidBaseTopic = () => {
                   <li><strong>Bicarbonate</strong> is <em>not</em> routinely indicated. BICAR-ICU (Lancet 2018) showed no 28-day mortality benefit for sodium bicarbonate in severe metabolic acidaemia overall, but a signal for renal-replacement-free days and reduced mortality in the AKI (KDIGO 2–3) subgroup when pH &lt; 7.20. Reasonable to consider in life-threatening acidaemia (pH &lt; 7.1) with AKI, or to facilitate vasopressor responsiveness.</li>
                   <li><strong>Renal replacement therapy</strong> for toxic alcohols (high clearance, removes parent + toxic metabolites), severe salicylate toxicity (level &gt; 700 mg/L, CNS features, refractory acidosis), metformin-associated lactic acidosis with AKI, refractory uraemic acidosis.</li>
                   <li><strong>Avoid harm:</strong> aggressive 0.9% saline resuscitation adds a hyperchloraemic NAGMA on top of HAGMA — prefer balanced crystalloids (Hartmann's, Plasma-Lyte) unless contraindicated.</li>
+                  <li><strong>Think beyond the acute episode:</strong> AKI is a major risk factor for later chronic kidney disease (and end-stage renal disease) through maladaptive repair and renal fibrosis; risk rises with the severity, duration and number of AKI episodes. Arrange renal follow-up after significant AKI, because CKD brings chronic acid-base disturbance (persistent metabolic acidosis) of its own<InlineRef topicId="acid-base" refLabel="Niculae 2023 AKI-CKD" />.</li>
                 </ul>
               </div>
 

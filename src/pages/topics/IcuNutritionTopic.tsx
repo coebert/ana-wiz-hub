@@ -396,7 +396,7 @@ const IcuNutritionTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">
                   <strong>Feed early and enterally.</strong> Multiple cohorts show early EN on VV- and
                   VA-ECMO is safe and tolerated in ~85% of patients; ECMO itself is not a contraindication
-                  and non-occlusive bowel ischaemia is rare. Start within 24–48 h at trophic rates once
+                  and non-occlusive bowel ischaemia is rare<InlineRef topicId="icu-nutrition" refLabel="D'Alesio 2022 ECLS Nutrition" />. Start within 24–48 h at trophic rates once
                   flows are stable. Energy needs are frequently{" "}
                   <em>over</em>-estimated because the oxygenator removes CO₂ — standard indirect
                   calorimetry is invalid unless membrane gas exchange is accounted for, so use
@@ -440,7 +440,7 @@ const IcuNutritionTopic = () => {
                   admission (NRS-2002 / GLIM) and expect refeeding risk. Feed enterally and early: EN is
                   tolerated on inotropes and low-dose vasopressors, but withhold or keep trophic during
                   escalating vasopressor requirement, uncontrolled shock, or high-dose noradrenaline plus
-                  rising lactate, because of the small risk of non-occlusive bowel ischaemia. Use dry or
+                  rising lactate, because of the small risk of non-occlusive bowel ischaemia<InlineRef topicId="icu-nutrition" refLabel="D'Alesio 2022 ECLS Nutrition" />. Use dry or
                   ideal weight (not oedematous weight) for targets, energy-dense (1.5–2 kcal/mL) low-volume
                   feeds where fluid is restricted, and remember open-chest, delayed sternal closure and
                   mechanical support are not contraindications. Watch sodium and fluid balance, thiamine
