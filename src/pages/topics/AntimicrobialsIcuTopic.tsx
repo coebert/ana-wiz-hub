@@ -342,6 +342,16 @@ const AntimicrobialsIcuTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               Effective stewardship combines the "Start Smart Then Focus" principles below with structural programme elements <InlineRef topicId="antimicrobials-icu" refLabel="NICE NG15" />: formulary restriction and pre-authorisation, prospective audit and feedback, antibiogram-driven guidelines, systematic de-escalation, IV-to-oral switch criteria, decision support, consumption/resistance surveillance and prescriber education. De-escalation on microbiology results and limiting treatment duration are the two interventions with the clearest effect on resistance pressure without harming outcomes <InlineRef topicId="antimicrobials-icu" refLabel="Curr Opin Crit Care 2022 AMS" />; scheduled antibiotic cycling remains a debated adjunct <InlineRef topicId="antimicrobials-icu" refLabel="Drugs Today 2003 Cycling" />.
             </p>
+            <div className="p-3 rounded-lg border border-border mb-3">
+              <p className="font-semibold text-foreground text-sm">Procalcitonin-guided duration</p>
+              <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1 mt-1">
+                <li><strong>What it is:</strong> a calcitonin precursor released by many tissues in response to bacterial endotoxin and cytokines (IL-6, TNF-α); it rises within about 4–6 h, peaks at 12–24 h and falls by roughly half each day once infection is controlled. Interferon-γ in viral infection blunts the rise.</li>
+                <li><strong>How to use it:</strong> a stopping aid, not a starting test. With clinical improvement, consider stopping antibiotics when PCT is &lt; 0.5 µg/L or has fallen by ≥ 80% from its peak. Do not withhold antibiotics in suspected sepsis because of a low PCT.</li>
+                <li><strong>Evidence:</strong> PRORATA (2010) cut antibiotic exposure by about 2.7 days with no mortality difference; SAPS (2016) shortened courses and was associated with lower 28-day mortality.</li>
+                <li><strong>Confounders:</strong> raised without infection after major surgery, trauma, burns, pancreatitis, cardiogenic shock/cardiac arrest, CPB and in renal failure; may stay low in localised or early infection (abscess, empyema, endocarditis) and in some fungal or atypical infections.</li>
+              </ul>
+              <p className="text-xs text-muted-foreground mt-1">Biomarker-guided cessation is one component of ICU stewardship.<InlineRef topicId="antimicrobials-icu" refLabel="Curr Opin Crit Care 2022 AMS" /></p>
+            </div>
             <div className="space-y-2">
               {[
                 { principle: "Start Smart", detail: "Take cultures before antibiotics (do NOT delay first dose >45 min in septic shock). Empiric broad-spectrum within 1 h of sepsis recognition (SSC 2021). Follow local guidelines and antibiogram." },
