@@ -105,7 +105,7 @@ const keyPoints = [
   { text: "Echinocandins inhibit β-(1,3)-D-glucan synthase — first-line for invasive candidiasis; IV only", cites: ["Peck & Hill Ch.14"] },
   { text: "Aciclovir is selectively activated by viral thymidine kinase — excellent safety profile due to selective toxicity", cites: ["BJA Educ 2017"] },
   { text: "Rifampicin is a potent CYP inducer — reduces levels of warfarin, OCP, midazolam, ciclosporin", cites: ["BNF"] },
-  { text: "MRSA resistance: PBP2a (mecA gene); VRE resistance: D-Ala-D-Lac modification of vancomycin target", cites: ["Peck & Hill Ch.14"] },
+  { text: "MRSA resistance: PBP2a (mecA gene) — low affinity for nearly all β-lactams; VRE resistance: D-Ala-D-Lac modification of vancomycin target", cites: ["Peck & Hill Ch.14", "Crit Care 2017 MRSA"] },
 ];
 
 const antimicrobialsWorkedExamples: WorkedExample[] = [
