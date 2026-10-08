@@ -1,3 +1,4 @@
+import { NeuroanaesthesiaAtlas } from "@/components/topic/NeuroanaesthesiaAtlas";
 import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -105,6 +106,7 @@ const NeuroanaesthesiaTopic = () => {
       coreConcepts={
         <>
           <TopicTableOfContents items={tocItems} />
+          <NeuroanaesthesiaAtlas />
 
           <div id="physiology" className="scroll-mt-24">
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CN_BK_03"]}>

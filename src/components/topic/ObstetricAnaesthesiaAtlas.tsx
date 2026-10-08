@@ -38,7 +38,7 @@ const Dermatomes = () => (
     <path d="M110 200 L185 230" stroke={accent} strokeWidth={1.5} />
     <Label x={215} y={130} tx={330} ty={110}>1st stage: T10–L1</Label>
     <Label x={215} y={230} tx={330} ty={230}>2nd stage: S2–S4</Label>
-    <Label x={178} y={30} tx={330} ty={30}>Caesarean: block to T4</Label>
+    <Label x={178} y={30} tx={330} ty={30}>Caesarean: T4–T5 block</Label>
     <Label x={90} y={140} tx={40} ty={100} anchor="end">Uterus / cervix</Label>
     <Label x={120} y={204} tx={40} ty={240} anchor="end">Vagina / perineum</Label>
   </Svg>
@@ -60,7 +60,7 @@ const plates: AtlasPlate[] = [
     landmarks: [
       { text: "First-stage pain from the uterus and cervix travels with sympathetic fibres to T10–L1", ref: "Gray's Anatomy 42e" },
       { text: "Second-stage pain from the vagina and perineum travels in the pudendal nerve (S2–S4)", ref: "Gray's Anatomy 42e" },
-      { text: "Block to cold to T4 (with touch to T5) is associated with less intraoperative pain at caesarean section", ref: "Russell 1995 Caesarean Block" },
+      { text: "Block height to light touch (aim T5 or above) predicted intraoperative comfort better than cold or pinprick", ref: "Russell 1995 Caesarean Block" },
     ],
     relevance: "Labour epidurals must cover T10–S4; test and document block height to touch and cold before caesarean incision.",
   },

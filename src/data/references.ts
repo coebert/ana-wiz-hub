@@ -751,6 +751,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2020 Fascial Planes", citation: "Chin KJ, Versyck B, Pawa A. Ultrasound-guided fascial plane blocks of the chest wall: a state-of-the-art review. Anaesthesia. 2021;76(Suppl 1):110-126.", url: "https://doi.org/10.1111/anae.15276" },
   ],
   "obstetric-anaesthesia": [
+    { label: "Gray's Anatomy 42e", citation: "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.", url: "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0" },
+    { label: "Kinsella 1994 Supine Hypotension", citation: "Kinsella SM, Lohmann G. Supine hypotensive syndrome. Obstet Gynecol 1994;83:774-88.", url: "https://pubmed.ncbi.nlm.nih.gov/8164943/" },
+    { label: "Russell 1995 Caesarean Block", citation: "Russell IF. Levels of anaesthesia and intraoperative pain at caesarean section under regional block. Int J Obstet Anesth 1995;4:71-7.", url: "https://doi.org/10.1016/0959-289x(95)82995-m" },
     { label: "BJA Educ 2019", citation: "Kinsella SM et al. Anaesthesia for caesarean section. BJA Education. 2019;19(9):299-305.", url: "https://doi.org/10.1016/j.bjae.2019.05.003" },
     { label: "OAA/DAS 2015", citation: "Mushambi MC, Kinsella SM, Popat M et al. OAA/DAS guidelines for the management of difficult and failed tracheal intubation in obstetrics. Anaesthesia. 2015;70:1286-1306.", url: "https://doi.org/10.1111/anae.13260", excerpt: "These guidelines, developed by the Obstetric Anaesthetists' Association and the Difficult Airway Society, describe a structured approach to airway management for general anaesthesia in obstetric patients, with Master, Obstetric and Rescue algorithms and emphasis on early decision-making about waking, surgery via supraglottic airway, or front-of-neck access. Reported failed-intubation rates in obstetrics are approximately 1 in 300 general anaesthetics." },
     { label: "MBRRACE-UK", citation: "Knight M et al. Saving Lives, Improving Mothers' Care (MBRRACE-UK). National Perinatal Epidemiology Unit, Oxford. 2022.", url: "https://www.npeu.ox.ac.uk/mbrrace-uk" },
@@ -778,6 +781,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Weiss 2009 Cuffed Tubes", citation: "Weiss M, Dullenkopf A, Fischer JE, Keller C, Gerber AC. Prospective randomized controlled multi-centre trial of cuffed or uncuffed endotracheal tubes in small children. Br J Anaesth. 2009;103(6):867-873.", url: "https://doi.org/10.1093/bja/aep290" },
   ],
   "neuroanaesthesia": [
+    { label: "Gray's Anatomy 42e", citation: "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.", url: "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0" },
+    { label: "Krabbe-Hartkamp 1998", citation: "Krabbe-Hartkamp MJ, van der Grond J, de Leeuw FE, et al. Circle of Willis: morphologic variation on three-dimensional time-of-flight MR angiograms. Radiology 1998;207:103-11.", url: "https://doi.org/10.1148/radiology.207.1.9530305" },
+    { label: "Mokri 2001 Monro-Kellie", citation: "Mokri B. The Monro-Kellie hypothesis: applications in CSF volume depletion. Neurology 2001;56:1746-8.", url: "https://doi.org/10.1212/wnl.56.12.1746" },
+    { label: "Mirski 2007 Air Embolism", citation: "Mirski MA, Lele AV, Fitzsimmons L, Toung TJ. Diagnosis and treatment of vascular air embolism. Anesthesiology 2007;106:164-77.", url: "https://doi.org/10.1097/00000542-200701000-00026" },
     { label: "BJA Educ 2018", citation: "Dinsmore J. Anaesthesia for elective neurosurgery. BJA Education. 2007;7(3):89-94.", url: "https://doi.org/10.1093/bjaceaccp/mkm016" },
     { label: "Matta et al.", citation: "Matta BF, Menon DK, Turner JM. Textbook of Neuroanaesthesia and Critical Care. Cambridge University Press; 2000." },
     { label: "BJA Educ 2015", citation: "Prabhakar H, Sandhu K. Monitoring of intracranial pressure. BJA Education. 2014;14(5):218-223.", url: "https://doi.org/10.1093/bjaceaccp/mkt055" },
@@ -1829,6 +1836,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "AHA PH 2018", citation: "Klinger JR et al. Therapy for pulmonary arterial hypertension in adults: update of the CHEST guideline and expert panel report. Chest. 2019;155(3):565-586.", url: "https://doi.org/10.1016/j.chest.2018.11.030" },
   ],
   "vascular-anaesthesia": [
+    { label: "Gray's Anatomy 42e", citation: "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.", url: "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0" },
+    { label: "Taterra 2019 Adamkiewicz", citation: "Taterra D, Skinningsrud B, Pękala PA, et al. Artery of Adamkiewicz: a meta-analysis of anatomical characteristics. Neuroradiology 2019;61:869-80.", url: "https://doi.org/10.1007/s00234-019-02207-y" },
+    { label: "Cunningham 2004 CEA Nerves", citation: "Cunningham EJ, Bond R, Mayberg MR, Warlow CP, Rothwell PM. Risk of persistent cranial nerve injury after carotid endarterectomy. J Neurosurg 2004;101:445-8.", url: "https://doi.org/10.3171/jns.2004.101.3.0445" },
     { label: "BJA Educ AAA 2016", citation: "Spence S, Doyle J. Anaesthesia for elective open and endovascular abdominal aortic aneurysm repair. BJA Education. 2016;16(11):373-378.", url: "https://doi.org/10.1093/bjaed/mkw014" },
     { label: "BJA Educ CEA 2015", citation: "Howell SJ. Carotid endarterectomy. Br J Anaesth. 2007;99(1):119-131.", url: "https://doi.org/10.1093/bja/aem137" },
     { label: "ESVS AAA 2019", citation: "Wanhainen A et al. Editor's choice — European Society for Vascular Surgery (ESVS) 2019 clinical practice guidelines on the management of abdominal aorto-iliac artery aneurysms. Eur J Vasc Endovasc Surg. 2019;57(1):8-93.", url: "https://doi.org/10.1016/j.ejvs.2018.09.020" },
