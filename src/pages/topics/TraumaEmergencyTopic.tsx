@@ -1,3 +1,4 @@
+import { TraumaAtlas } from "@/components/topic/TraumaAtlas";
 import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -221,6 +222,7 @@ const TraumaEmergencyTopic = () => {
       coreConcepts={
         <>
           <TopicTableOfContents items={tocItems} />
+          <TraumaAtlas />
 
           <ExamSection id="introduction" exams={[Exam.FINAL, Exam.FFICM]}>
             <p className="text-muted-foreground leading-relaxed">

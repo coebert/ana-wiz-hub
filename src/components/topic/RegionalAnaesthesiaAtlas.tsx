@@ -127,7 +127,7 @@ const plates: AtlasPlate[] = [
     title: "Adductor canal",
     landmarks: [
       { text: "Roof: sartorius; lateral wall: vastus medialis; floor: adductor longus and magnus", ref: "Gray's Anatomy 42e" },
-      { text: "Contents: femoral artery and vein, saphenous nerve; nerve to vastus medialis lies close to or outside the canal", ref: "Burckett-St Laurent 2016" },
+      { text: "Contents: femoral artery and vein, saphenous nerve; nerve to vastus medialis lies close to or outside the canal", ref: "Saena 2025 Adductor Canal" },
     ],
     relevance: "Knee arthroplasty analgesia with less quadriceps weakness than femoral block; proximal injection may spread to the nerve to vastus medialis.",
   },

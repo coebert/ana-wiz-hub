@@ -1,3 +1,4 @@
+import { RegionalAnaesthesiaAtlas } from "@/components/topic/RegionalAnaesthesiaAtlas";
 import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { ExamSection } from "@/components/exam/ExamSection";
@@ -161,6 +162,7 @@ const RegionalAnaesthesiaTopic = () => {
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
           <TopicTableOfContents items={tocItems} />
+          <RegionalAnaesthesiaAtlas />
           <section id="dermatomes" className="scroll-mt-24 mb-10">
         <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dermatome Anatomy — Foundations</h2>
         <p className="text-muted-foreground leading-relaxed mb-4">
