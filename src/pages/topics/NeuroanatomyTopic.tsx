@@ -88,7 +88,10 @@ const NeuroanatomyTopic = () => {
             <div className="space-y-2">
               {[
                 { structure: "Dura Mater", detail: "Tough fibrous layer. Two layers — periosteal (adherent to skull) and meningeal. Meningeal layer forms dural folds: falx cerebri, tentorium cerebelli, falx cerebelli." },
-                { structure: "Arachnoid Mater", detail: "Avascular. Bridging veins cross subdural space to reach dural venous sinuses — tearing causes subdural haematoma." },
+                { structure: "Arachnoid Mater", detail: "Avascular. Bridging veins cross subdural space to reach dural venous sinuses — tearing causes subdural haematoma. Arachnoid granulations project into the dural venous sinuses (mainly the superior sagittal sinus) and are the main site of CSF absorption." },
+                { structure: "Extradural (epidural) space", detail: "Potential space between skull and periosteal dura. Rupture of the middle meningeal artery (often after a pterional fracture) strips the dura off the skull — extradural haematoma, classically lens-shaped with a lucid interval." },
+                { structure: "Subdural space", detail: "Potential space between dura and arachnoid. Torn bridging veins (elderly, alcohol, anticoagulants, shaken infants) cause a crescent-shaped subdural haematoma that may cross suture lines." },
+                { structure: "Subarachnoid space", detail: "Real space between arachnoid and pia containing CSF and the major cerebral arteries of the Circle of Willis — the site of subarachnoid haemorrhage from aneurysm rupture. In the spine it continues to about S2 and is where spinal anaesthesia is injected." },
                 { structure: "Pia Mater", detail: "Closely adherent to brain surface. Carries blood vessels into brain substance." },
                 { structure: "CSF", detail: "Produced by choroid plexus (500 ml/day, total volume 150 ml). Flows: lateral ventricles → foramen of Monro → 3rd ventricle → aqueduct of Sylvius → 4th ventricle → foramina of Luschka/Magendie → subarachnoid space → arachnoid granulations → superior sagittal sinus." },
                 { structure: "ICP", detail: "Normal 7–15 mmHg. Monro-Kellie doctrine: skull is fixed volume (brain 80%, blood 10%, CSF 10%). ↑ one component requires ↓ another or ICP rises." },
@@ -106,6 +109,46 @@ const NeuroanatomyTopic = () => {
           </ExamSection>
 
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_07"]}>
+            <CollapsibleSubsection title="Dural Venous Sinuses &amp; Cerebral Venous Drainage">
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Superficial system and sinuses</p>
+                <p className="text-sm text-muted-foreground mt-1">Superficial cerebral veins drain into the <strong>superior sagittal sinus</strong> (upper border of the falx). The <strong>inferior sagittal sinus</strong> (lower free edge of the falx) joins the great cerebral vein to form the <strong>straight sinus</strong>. The superior sagittal and straight sinuses meet at the <strong>confluence of sinuses</strong> (torcular Herophili), which drains into the paired <strong>transverse sinuses</strong>, then the S-shaped <strong>sigmoid sinuses</strong>, which leave through the jugular foramen as the internal jugular veins.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Deep system</p>
+                <p className="text-sm text-muted-foreground mt-1">The paired <strong>internal cerebral veins</strong> (draining the basal ganglia, thalamus and deep white matter) and the <strong>basal veins of Rosenthal</strong> join to form the <strong>great cerebral vein of Galen</strong>, which drains into the straight sinus. The cerebral veins and sinuses have no valves.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Cavernous sinus</p>
+                <p className="text-sm text-muted-foreground mt-1">Either side of the sella turcica. The <strong>internal carotid artery and abducens nerve (VI)</strong> run through the sinus; <strong>III, IV, V1 and V2</strong> run in its lateral wall. It connects with facial veins through the ophthalmic veins, so infection in the "danger triangle" of the face can cause cavernous sinus thrombosis (eye swelling, ophthalmoplegia, sensory loss in V1/V2).</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Clinical relevance</p>
+                <p className="text-sm text-muted-foreground mt-1"><strong>Cerebral venous thrombosis:</strong> risk factors include pregnancy and the puerperium, oral contraceptives, dehydration, thrombophilia, cancer and local infection; it presents with headache, seizures, focal signs and raised ICP. A post-dural-puncture-type headache that loses its postural pattern should prompt imaging. Head-down tilt and IJV obstruction (tight tube ties, extreme neck rotation) raise venous pressure and ICP; sinus injury in neurosurgery risks major bleeding and venous air embolism.</p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
+            <CollapsibleSubsection title="Spinal Cord Blood Supply">
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Longitudinal arteries</p>
+                <p className="text-sm text-muted-foreground mt-1">One <strong>anterior spinal artery</strong>, formed from a branch of each vertebral artery, supplies the anterior two-thirds of the cord (motor tracts, spinothalamic tracts). Two <strong>posterior spinal arteries</strong>, from the vertebral arteries or the posterior inferior cerebellar arteries, supply the posterior third (dorsal columns).</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Radicular (segmental) arteries</p>
+                <p className="text-sm text-muted-foreground mt-1">The longitudinal arteries cannot supply the whole cord alone and are reinforced by segmental medullary arteries from the vertebral, intercostal and lumbar arteries. The largest is the <strong>artery of Adamkiewicz</strong> (arteria radicularis magna), usually arising on the left between T9 and T12 (range T5–L2), which supplies most of the lower two-thirds of the cord.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Watershed areas</p>
+                <p className="text-sm text-muted-foreground mt-1">Supply is weakest in the <strong>upper and mid-thoracic cord (around T4–T8)</strong>, between the cervical and Adamkiewicz territories, so this region is most vulnerable to low blood pressure or loss of a segmental artery.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Clinical relevance</p>
+                <p className="text-sm text-muted-foreground mt-1"><strong>Anterior spinal artery syndrome:</strong> sudden paraplegia or quadriplegia with loss of pain and temperature sensation, but preserved joint position and vibration sense. Causes include thoracoabdominal aortic surgery or endovascular repair (cross-clamping, intercostal sacrifice; reduced with CSF drainage and maintaining perfusion pressure), prolonged severe hypotension, and, rarely, neuraxial block. Spinal or epidural haematoma compresses the cord and needs urgent MRI and decompression.</p>
+              </div>
+            </div>
+            </CollapsibleSubsection>
             <CollapsibleSubsection title="Skull Base & Foramina">
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">

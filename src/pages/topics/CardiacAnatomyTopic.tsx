@@ -59,10 +59,12 @@ const CardiacAnatomyTopic = () => {
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Right Heart</p>
                 <p className="text-sm text-muted-foreground mt-1">RA: receives SVC, IVC, coronary sinus. SA node (RA/SVC junction). AV node (triangle of Koch — tendon of Todaro, coronary sinus os, tricuspid annulus). RV: trabeculated, infundibulum leads to pulmonary valve.</p>
+                <p className="text-sm text-muted-foreground mt-1"><strong>Right ventricle in detail:</strong> the most anterior chamber, crescent-shaped in cross-section as it wraps around the LV, with a thin wall (3–5 mm) reflecting the low pulmonary afterload. A rough, trabeculated inflow tract (trabeculae carneae) is separated from the smooth outflow tract (infundibulum or conus arteriosus) by the <strong>supraventricular crest</strong>. The <strong>moderator band</strong> (septomarginal trabecula) runs from the septum to the anterior papillary muscle and carries the right bundle branch.</p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Left Heart</p>
                 <p className="text-sm text-muted-foreground mt-1">LA: smooth-walled (except appendage). 4 pulmonary veins enter posteriorly. Mitral valve: 2 leaflets with chordae tendineae to papillary muscles. LV: thick-walled (8–15 mm). Aortic valve: 3 semilunar cusps with sinuses of Valsalva.</p>
+                <p className="text-sm text-muted-foreground mt-1"><strong>Left atrium in detail:</strong> the most posterior chamber, with the oesophagus, descending aorta and left main bronchus directly behind it — why TOE gives excellent views of the LA and mitral valve, and why a grossly enlarged LA can cause dysphagia. The smooth-walled body comes from the embryonic pulmonary veins; the muscular, trabeculated <strong>left atrial appendage</strong> is the main site of thrombus formation in non-valvular atrial fibrillation.</p>
               </div>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">

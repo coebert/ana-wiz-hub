@@ -183,6 +183,16 @@ const UpperLimbAnatomyTopic = () => {
             The arterial supply follows a continuous chain: subclavian → axillary → brachial → radial and ulnar arteries. Each segment is defined by anatomical landmarks and gives important branches. The radial and ulnar arteries form the superficial and deep palmar arches in the hand, providing redundant perfusion — the basis for Allen's test.
           </p>
           <UpperLimbArteriesDiagram />
+          <div className="p-4 rounded-lg border border-border mt-4">
+            <p className="font-semibold text-foreground text-sm">The axillary artery and its three parts</p>
+            <p className="text-sm text-muted-foreground mt-1">Continues from the subclavian artery at the outer border of the first rib and becomes the brachial artery at the lower border of teres major. <strong>Pectoralis minor</strong> crosses it and divides it into three parts, with one, two and three branches:</p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+              <li><strong className="text-foreground">Part 1 (above pectoralis minor):</strong> superior thoracic artery.</li>
+              <li><strong className="text-foreground">Part 2 (behind pectoralis minor):</strong> thoraco-acromial and lateral thoracic arteries.</li>
+              <li><strong className="text-foreground">Part 3 (below pectoralis minor):</strong> subscapular, anterior circumflex humeral and posterior circumflex humeral arteries.</li>
+            </ul>
+            <p className="text-sm text-muted-foreground mt-2">The cords of the brachial plexus are named by their position around the second part, and the terminal branches surround the third part — the target for infraclavicular and axillary blocks. Aspirate before injecting, as the artery and axillary vein lie within the sheath.</p>
+          </div>
           <div className="grid sm:grid-cols-2 gap-3 mt-4">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Allen's Test</p>
@@ -191,6 +201,30 @@ const UpperLimbAnatomyTopic = () => {
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Elbow Anastomosis</p>
               <p className="text-sm text-muted-foreground mt-1">Rich periarticular anastomosis formed by: profunda brachii → radial/middle collateral aa.; superior/inferior ulnar collateral aa.; radial, ulnar, and interosseous recurrent aa. Maintains perfusion despite positional compression or injury.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* ── LYMPHATIC DRAINAGE ── */}
+        <div id="lymphatic-drainage" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lymphatic Drainage</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            <strong>Superficial lymphatics</strong> follow the superficial veins: vessels with the cephalic vein drain to the infraclavicular (deltopectoral) and apical nodes, and those with the basilic vein pass through the cubital (supratrochlear) nodes to the lateral axillary nodes. <strong>Deep lymphatics</strong> follow the radial, ulnar and brachial arteries to the lateral axillary nodes.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Five axillary node groups</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-1 space-y-1">
+                <li><strong className="text-foreground">Anterior (pectoral):</strong> along the lateral thoracic vessels; drain most of the breast and anterior chest wall.</li>
+                <li><strong className="text-foreground">Posterior (subscapular):</strong> along the subscapular vessels; drain the back and shoulder.</li>
+                <li><strong className="text-foreground">Lateral (humeral):</strong> along the axillary vein; drain most of the upper limb.</li>
+                <li><strong className="text-foreground">Central:</strong> in the axillary fat; receive from the three groups above.</li>
+                <li><strong className="text-foreground">Apical:</strong> at the apex of the axilla; receive from all groups and drain via the subclavian trunk to the thoracic duct (left) or right lymphatic duct.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Clinical relevance</p>
+              <p className="text-sm text-muted-foreground mt-1">Axillary node clearance in breast cancer surgery risks <strong>lymphoedema</strong> of the arm and injury to the intercostobrachial, long thoracic and thoracodorsal nerves. Many units avoid cannulation, blood-pressure cuffs and venepuncture on the affected arm, though evidence for harm is limited — follow local policy and the patient's wishes.</p>
             </div>
           </div>
         </div>
