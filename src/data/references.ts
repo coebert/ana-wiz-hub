@@ -1715,6 +1715,11 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "HIPEC Anaesth 2013", citation: "Webb CA, Weyker PD, Moitra VK, Raker RK. An overview of cytoreductive surgery and hyperthermic intraperitoneal chemoperfusion for the anesthesiologist. Anesth Analg. 2013;116(4):924-931.", url: "https://doi.org/10.1213/ANE.0b013e3182860fff" },
     { label: "RCOG Cerclage 2022", citation: "Shennan A, Story L, et al. Cervical cerclage: Green-top Guideline No. 75. BJOG. 2022;129(7):1178-1210.", url: "https://doi.org/10.1111/1471-0528.17003" },
   ],
+  "surgical-protocols": [
+    { label: "NICE NG180", citation: "NICE. Perioperative care in adults (NG180). 2020.", url: "https://www.nice.org.uk/guidance/ng180" },
+    { label: "AoA Preop 2021", citation: "Association of Anaesthetists. Pre-operative assessment and patient preparation: the role of the anaesthetist. Anaesthesia. 2021 (Guidelines).", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines" },
+    { label: "WHO Checklist 2009", citation: "World Health Organization. WHO Guidelines for Safe Surgery 2009: Safe Surgery Saves Lives.", url: "https://www.who.int/publications/i/item/9789241598552" },
+  ],
   "general-colorectal-surgery": [
     { label: "ERAS Colorectal 2025", citation: "Gustafsson UO, Rockall TA, Wexner S, et al. Guidelines for perioperative care in elective colorectal surgery: Enhanced Recovery After Surgery (ERAS) Society recommendations 2025. Surgery. 2025;184:109397.", url: "https://doi.org/10.1016/j.surg.2025.109397" },
     { label: "PROSPECT Open Colorectal 2024", citation: "Uten T, Chesnais M, van de Velde M, Raeder J, Beloeil H; PROSPECT Working Group. Pain management after open colorectal surgery: an update of the systematic review and procedure-specific postoperative pain management (PROSPECT) recommendations. Eur J Anaesthesiol. 2024;41:363-366.", url: "https://doi.org/10.1097/EJA.0000000000001978" },
