@@ -314,6 +314,13 @@ const IcuEndocrineEmergenciesTopic = () => {
                   (≥ 1 h later) → hydrocortisone → support (cooling, fluids, treat trigger).
                   Avoid aspirin.
                 </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  <strong>Adjuncts:</strong> cholestyramine (e.g. 4 g four times daily) binds thyroid hormone in the gut,
+                  interrupting enterohepatic recirculation and speeding clearance. <strong>Plasmapheresis</strong> is a
+                  rescue therapy for severe storm that fails standard treatment or when thionamides are contraindicated;
+                  it removes circulating thyroid hormone (and antibodies), is resource-intensive and needs specialist
+                  input, and is often a bridge to emergency thyroidectomy.<InlineRef topicId="icu-endocrine-emergencies" refLabel="ATA 2016" />
+                </p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Myxoedema coma (mortality 30–40 %)</p>

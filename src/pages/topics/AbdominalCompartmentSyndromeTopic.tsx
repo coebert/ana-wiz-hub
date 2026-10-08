@@ -269,10 +269,14 @@ const AbdominalCompartmentSyndromeTopic = () => {
                 <div className="p-3 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">Alternative routes</p>
                   <p className="text-sm text-muted-foreground mt-1">
-                    Intragastric (nasogastric transducer), intracolonic and direct intraperitoneal (via catheter) —
-                    used if Foley not possible (e.g. cystectomy, ruptured bladder). All correlate reasonably with
-                    intravesical measurement.
+                    Used when the bladder route is unavailable or unreliable (e.g. cystectomy, bladder trauma,
+                    neurogenic bladder).<InlineRef topicId="abdominal-compartment-syndrome" refLabel="Malbrain 2004" />
                   </p>
+                  <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1 mt-1">
+                    <li><strong>Intragastric:</strong> a standard NG tube with 50–100 mL saline connected to a transducer (or a balloon-tipped catheter). Useful in anuric patients or bladder injury; unreliable with gastric distension, active enteral feeding or recent upper GI surgery.</li>
+                    <li><strong>Direct intraperitoneal:</strong> the most accurate but invasive — a catheter placed at laparotomy or percutaneously (e.g. a peritoneal dialysis or drainage catheter). Used during laparotomy or with an open abdomen; carries infection and bowel-injury risk.</li>
+                    <li><strong>Less common:</strong> intracolonic (rectal balloon) and inferior vena cava pressure via a femoral catheter are described in specialist literature but are not routine.</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -306,7 +310,18 @@ const AbdominalCompartmentSyndromeTopic = () => {
                 Enteral nutrition should be delayed or stopped in established ACS or severe intra-abdominal
                 hypertension with gut dysfunction; trophic, post-pyloric or parenteral feeding routes are considered
                 once intra-abdominal pressures fall<InlineRef topicId="abdominal-compartment-syndrome" refLabel="ESICM EN 2017" />.
+                In IAH without ACS (IAP 12–20 mmHg), cautious trophic enteral feeding can be tried, with close
+                monitoring for intolerance (rising gastric residuals, distension) and repeat IAP measurement; stop if IAP
+                rises. In established ACS (IAP &gt; 20 mmHg with new organ failure), ESICM suggests delaying enteral
+                nutrition because of the risk of bowel ischaemia.
               </p>
+              <h3 className="text-base font-semibold text-foreground mt-4 mb-2">Fluid management in IAH/ACS</h3>
+              <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-1 mb-3">
+                <li><strong>Fluid creep and secondary ACS:</strong> large-volume resuscitation (especially crystalloid) causes bowel and abdominal-wall oedema, ascites and capillary leak, raising IAP even without abdominal pathology.</li>
+                <li><strong>The vicious cycle:</strong> IAH causes organ dysfunction (oliguria, hypotension), which prompts more fluid, which worsens IAH.<InlineRef topicId="abdominal-compartment-syndrome" refLabel="Jacobs 2022" /></li>
+                <li><strong>Phased strategy:</strong> resuscitate adequately early, then move promptly to de-resuscitation once shock is controlled, aiming for a neutral-to-negative balance. Clear triggers for this switch are lacking, so use daily reassessment.</li>
+                <li><strong>Active fluid removal:</strong> diuretics (often combined with 20% albumin to support oncotic pressure) or renal replacement therapy with ultrafiltration. Concentrated albumin can limit crystalloid volume, though evidence for colloids in ACS is limited.</li>
+              </ul>
               <div className="space-y-3">
                 {[
                   { topic: "1. Evacuate intraluminal contents", detail: "Large-bore NG tube on free drainage and rectal decompression; prokinetics — metoclopramide 10 mg TDS and erythromycin 250 mg QDS; neostigmine for pseudo-obstruction; endoscopic or colonoscopic decompression; stop enteral feed." },
