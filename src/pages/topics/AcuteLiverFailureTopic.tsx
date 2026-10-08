@@ -196,7 +196,7 @@ const AcuteLiverFailureTopic = () => {
               ) },
 
               { system: "Metabolic", management: "Hypoglycaemia (impaired gluconeogenesis — 10% dextrose infusion). Metabolic acidosis (lactate). Hypokalaemia, hyponatraemia, hypophosphataemia." },
-              { system: "Renal", management: "Hepatorenal syndrome or ATN. Avoid nephrotoxins. CRRT preferred (haemodynamic stability, avoids ICP spikes from IHD). Indications: conventional AKI criteria (anuria, refractory hyperkalaemia, acidosis or fluid overload); hyperammonaemia (ammonia >150–200 µmol/L) with cerebral oedema risk, as adjunctive clearance; severe lactic acidosis; and other electrolyte or acid–base disturbance. Regional citrate can be used with care — citrate clearance is reduced, so monitor for accumulation (total:ionised calcium ratio >2.5) [Schultheiss 2012]." },
+              { system: "Renal", management: "Hepatorenal syndrome or ATN. Avoid nephrotoxins. CRRT preferred (haemodynamic stability, avoids ICP spikes from IHD). Indications: conventional AKI criteria (anuria, refractory hyperkalaemia, acidosis or fluid overload); hyperammonaemia (ammonia >150–200 µmol/L) with cerebral oedema risk, as adjunctive clearance; severe lactic acidosis; and other electrolyte or acid–base disturbance. Regional citrate can be used with care — citrate clearance is reduced, so monitor for accumulation (total:ionised calcium ratio >2.5)." },
               { system: "Infection", management: "High infection risk (impaired innate immunity). Low threshold for cultures and empiric antibiotics. Fungal infection common — consider antifungals." },
             ].map((s) => (
               <div key={s.system} className="flex gap-3 p-3 rounded border border-border">
@@ -205,6 +205,7 @@ const AcuteLiverFailureTopic = () => {
               </div>
             ))}
           </div>
+          <p className="text-xs text-muted-foreground mt-2">Regional citrate anticoagulation for CRRT in liver failure is feasible with close monitoring of the total:ionised calcium ratio (accumulation if ≥2.5).<InlineRef topicId="acute-liver-failure" refLabel="Schultheiss 2012" /></p>
         </div>
 
         <div>
