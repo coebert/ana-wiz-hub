@@ -1,4 +1,4 @@
-import { AnatomyAtlas, Label, Svg, ink, muted, fillA, accent, vessel, nerve, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, Label, Svg, ink, muted, fillA, accent, vessel, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Aortocaval compression, transverse section */
 const Aortocaval = () => (
@@ -30,11 +30,11 @@ const Dermatomes = () => (
         </g>
       );
     })}
-    <rect x={185} y={100} width={30} height={60} fill={nerve} fillOpacity={0.3} stroke={nerve} />
+    <rect x={185} y={100} width={30} height={60} fill={ink} fillOpacity={0.3} stroke={ink} />
     <rect x={185} y={200} width={30} height={60} fill={accent} fillOpacity={0.3} stroke={accent} />
     <path d="M178 30 L178 270" stroke={vessel} strokeWidth={2} strokeDasharray="4 3" />
     <ellipse cx={90} cy={150} rx={45} ry={55} fill="hsl(var(--primary) / 0.12)" stroke={ink} />
-    <path d="M130 140 L185 130" stroke={nerve} strokeWidth={1.5} />
+    <path d="M130 140 L185 130" stroke={ink} strokeWidth={1.5} />
     <path d="M110 200 L185 230" stroke={accent} strokeWidth={1.5} />
     <Label x={215} y={130} tx={330} ty={110}>1st stage: T10–L1</Label>
     <Label x={215} y={230} tx={330} ty={230}>2nd stage: S2–S4</Label>

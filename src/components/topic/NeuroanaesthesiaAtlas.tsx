@@ -56,7 +56,7 @@ const Sinuses = () => (
     <path d="M140 110 Q240 90 300 150" fill="none" stroke="hsl(var(--primary) / 0.5)" strokeWidth={3} />
     <circle cx={340} cy={150} r={7} fill="hsl(var(--primary) / 0.8)" />
     <Label x={200} y={35} tx={200} ty={12} anchor="middle">Superior sagittal sinus</Label>
-    <Label x={220} y={100} tx={30} ty={60} anchor="end">Inferior sagittal / straight sinus</Label>
+    <Label x={220} y={100} tx={30} ty={60} anchor="end">Straight sinus</Label>
     <Label x={340} y={150} tx={380} ty={130}>Confluence</Label>
     <Label x={300} y={182} tx={380} ty={200}>Transverse sinus</Label>
     <Label x={235} y={215} tx={370} ty={250}>Sigmoid sinus</Label>

@@ -1,4 +1,4 @@
-import { AnatomyAtlas, Label, Svg, ink, muted, accent, danger, vessel, nerve, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, Label, Svg, ink, muted, accent, danger, vessel, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Abdominal aorta and clamp levels */
 const Aorta = () => (
@@ -30,9 +30,9 @@ const Carotid = () => (
     <path d="M200 170 Q215 120 225 20" fill="none" stroke={vessel} strokeWidth={11} />
     <path d="M200 170 Q175 120 160 20" fill="none" stroke={vessel} strokeWidth={8} />
     <ellipse cx={210} cy={160} rx={14} ry={20} fill={danger} fillOpacity={0.25} stroke={danger} />
-    <path d="M110 105 Q200 95 290 110" fill="none" stroke={nerve} strokeWidth={2.5} />
-    <path d="M240 20 L240 290" fill="none" stroke={nerve} strokeWidth={2.5} strokeDasharray="5 2" />
-    <path d="M260 60 Q235 100 215 150" fill="none" stroke={nerve} strokeWidth={1.5} strokeDasharray="3 2" />
+    <path d="M110 105 Q200 95 290 110" fill="none" stroke={ink} strokeWidth={2.5} />
+    <path d="M240 20 L240 290" fill="none" stroke={ink} strokeWidth={2.5} strokeDasharray="5 2" />
+    <path d="M260 60 Q235 100 215 150" fill="none" stroke={ink} strokeWidth={1.5} strokeDasharray="3 2" />
     <path d="M120 210 Q200 200 280 230" fill="none" stroke={muted} strokeWidth={1.5} />
     <ellipse cx={210} cy={250} rx={8} ry={4} fill={accent} fillOpacity={0.5} stroke={accent} />
     <Label x={200} y={250} tx={110} ty={270} anchor="end">Common carotid</Label>
