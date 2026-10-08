@@ -604,7 +604,7 @@ const OrganDonationTopic = () => {
                   <li><strong>Cardiovascular</strong>: MAP 60–80 mmHg, CVP 4–10 mmHg (aim normovolaemia); vasopressin 0.5–4 units/h first-line, noradrenaline added if needed; avoid high-dose catecholamines (myocardial injury and graft dysfunction).</li>
                   <li><strong>Respiratory</strong>: VT 4–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, recruitment manoeuvres and bronchial toilet; NHSBT target PaO₂ ≥10 kPa (FiO₂ &lt;0.4 as able). Retrieval teams may assess lungs against PaO₂/FiO₂ &gt;300 mmHg — a widely used figure not stated in the bundle.</li>
                   <li><strong>Endocrine (hormonal replacement bundle)</strong>: methylprednisolone 15 mg/kg IV (max 1 g) single dose, vasopressin infusion (vasoplegia + diabetes insipidus, with DDAVP 1–4 µg IV if polyuric), insulin infusion targeting glucose 4–10 mmol/L; T3/T4 (e.g. T4 20 µg bolus then 10 µg/h) remains controversial but is commonly added for refractory cardiovascular instability.</li>
-                  <li><strong>Fluid &amp; electrolytes</strong>: urine output &gt;1 mL/kg/h, serum Na⁺ &lt;155 mmol/L to protect liver grafts, correct K⁺/Mg²⁺/PO₄³⁻.</li>
+                  <li><strong>Fluid &amp; electrolytes</strong>: urine output 0.5–2 mL/kg/h, serum Na⁺ &lt;150 mmol/L (NHSBT bundle), correct K⁺/Mg²⁺/PO₄³⁻.</li>
                   <li><strong>Temperature</strong>: active warming to normothermia 36–37.5 °C.</li>
                 </ul>
               </li>
