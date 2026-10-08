@@ -1,8 +1,8 @@
-import { AnatomyAtlas, Label, Svg, ink, muted, fillA, accent, danger, vessel, type AtlasPlate } from "./AnatomyAtlas";
+import { AnatomyAtlas, BigLabel, WideSvg, ink, muted, fillA, accent, danger, vessel, type AtlasPlate } from "./AnatomyAtlas";
 
 /* 1 — Front-of-neck airway, sagittal-ish anterior view */
 const Fona = () => (
-  <Svg title="Laryngeal cartilages and cricothyroid membrane for front-of-neck access, labelled">
+  <WideSvg title="Laryngeal cartilages and cricothyroid membrane for front-of-neck access, labelled">
     <ellipse cx={200} cy={30} rx={60} ry={10} fill={fillA} stroke={ink} />
     <path d="M140 60 L260 60 L235 130 L200 145 L165 130 Z" fill={fillA} stroke={ink} strokeWidth={1.5} />
     <path d="M190 60 L200 72 L210 60" fill="none" stroke={ink} />
@@ -11,20 +11,20 @@ const Fona = () => (
     {[205, 225, 245, 265].map((y) => <rect key={y} x={175} y={y} width={50} height={10} rx={4} fill={fillA} stroke={ink} />)}
     <path d="M140 205 Q200 230 260 205 L260 225 Q200 250 140 225 Z" fill="hsl(var(--primary) / 0.15)" stroke={ink} />
     <path d="M150 159 L250 159" stroke={danger} strokeWidth={2} strokeDasharray="6 3" />
-    <Label x={200} y={30} tx={300} ty={25}>Hyoid bone</Label>
-    <Label x={200} y={68} tx={300} ty={60}>Laryngeal prominence</Label>
-    <Label x={240} y={100} tx={300} ty={100}>Thyroid cartilage</Label>
-    <Label x={225} y={159} tx={300} ty={145}>Cricothyroid membrane</Label>
-    <Label x={238} y={182} tx={300} ty={182}>Cricoid cartilage (complete ring)</Label>
-    <Label x={175} y={240} tx={40} ty={270} anchor="end">Thyroid isthmus</Label>
-    <Label x={176} y={250} tx={40} ty={225} anchor="end">Tracheal rings</Label>
-    <Label x={152} y={159} tx={40} ty={159} anchor="end">Transverse stab incision</Label>
-  </Svg>
+    <BigLabel x={200} y={30} tx={300} ty={25}>Hyoid bone</BigLabel>
+    <BigLabel x={200} y={68} tx={300} ty={60}>Laryngeal prominence</BigLabel>
+    <BigLabel x={240} y={100} tx={300} ty={100}>Thyroid cartilage</BigLabel>
+    <BigLabel x={225} y={159} tx={300} ty={145}>Cricothyroid membrane</BigLabel>
+    <BigLabel x={238} y={182} tx={300} ty={182}>Cricoid cartilage (complete ring)</BigLabel>
+    <BigLabel x={175} y={240} tx={40} ty={270} anchor="end">Thyroid isthmus</BigLabel>
+    <BigLabel x={176} y={250} tx={40} ty={225} anchor="end">Tracheal rings</BigLabel>
+    <BigLabel x={152} y={159} tx={40} ty={159} anchor="end">Transverse stab incision</BigLabel>
+  </WideSvg>
 );
 
 /* 2 — Chest wall decompression sites */
 const Chest = () => (
-  <Svg title="Lateral chest wall showing the safe triangle and decompression sites, labelled">
+  <WideSvg title="Lateral chest wall showing the safe triangle and decompression sites, labelled">
     <path d="M90 30 Q60 150 110 280 L300 280 Q340 150 310 30 Z" fill={fillA} fillOpacity={0.4} stroke={ink} />
     {[70, 100, 130, 160, 190, 220].map((y) => <path key={y} d={`M95 ${y} Q200 ${y + 20} 315 ${y}`} fill="none" stroke={muted} strokeWidth={1.5} />)}
     <path d="M150 60 L250 60 L200 190 Z" fill={accent} fillOpacity={0.15} stroke={accent} strokeWidth={2} strokeDasharray="5 3" />
@@ -32,18 +32,18 @@ const Chest = () => (
     <path d="M250 60 Q280 120 300 140" fill="none" stroke={danger} strokeWidth={6} strokeOpacity={0.35} />
     <circle cx={200} cy={165} r={6} fill={danger} />
     <path d="M170 160 Q200 170 230 160" stroke={vessel} strokeWidth={2} fill="none" />
-    <Label x={200} y={40} tx={200} ty={14} anchor="middle">Base of axilla (apex)</Label>
-    <Label x={138} y={140} tx={40} ty={120} anchor="end">Latissimus dorsi</Label>
-    <Label x={285} y={125} tx={340} ty={95}>Pectoralis major</Label>
-    <Label x={200} y={165} tx={340} ty={200}>4th/5th ICS, mid-axillary</Label>
-    <Label x={110} y={190} tx={40} ty={200} anchor="end">5th rib / nipple level (base)</Label>
-    <Label x={225} y={163} tx={340} ty={250}>Go over the lower rib</Label>
-  </Svg>
+    <BigLabel x={200} y={40} tx={200} ty={14} anchor="middle">Base of axilla (apex)</BigLabel>
+    <BigLabel x={138} y={140} tx={40} ty={120} anchor="end">Latissimus dorsi</BigLabel>
+    <BigLabel x={285} y={125} tx={340} ty={95}>Pectoralis major</BigLabel>
+    <BigLabel x={200} y={165} tx={340} ty={200}>4th/5th ICS, mid-axillary</BigLabel>
+    <BigLabel x={110} y={190} tx={40} ty={200} anchor="end">5th rib / nipple level (base)</BigLabel>
+    <BigLabel x={225} y={163} tx={340} ty={250}>Go over the lower rib</BigLabel>
+  </WideSvg>
 );
 
 /* 3 — Pelvic ring and binder */
 const Pelvis = () => (
-  <Svg title="Pelvic ring with binder position at the greater trochanters, labelled">
+  <WideSvg title="Pelvic ring with binder position at the greater trochanters, labelled">
     <path d="M90 60 Q200 20 310 60 Q330 140 270 190 L130 190 Q70 140 90 60 Z" fill={fillA} fillOpacity={0.5} stroke={ink} strokeWidth={2} />
     <path d="M175 60 L225 60 L215 150 L185 150 Z" fill={fillA} stroke={ink} />
     <circle cx={140} cy={175} r={18} fill="none" stroke={ink} strokeWidth={2} />
@@ -54,19 +54,19 @@ const Pelvis = () => (
     <rect x={70} y={200} width={260} height={22} rx={6} fill={accent} fillOpacity={0.25} stroke={accent} strokeWidth={2} />
     <path d="M185 120 Q200 130 215 120 M180 140 Q200 150 220 140" stroke={vessel} strokeWidth={2} fill="none" />
     <path d="M110 70 L60 40" stroke={muted} />
-    <Label x={95} y={60} tx={40} ty={45} anchor="end">Iliac crest (too high for binder)</Label>
-    <Label x={200} y={90} tx={300} ty={20}>Sacrum / SI joints</Label>
-    <Label x={210} y={135} tx={370} ty={110}>Presacral venous plexus</Label>
-    <Label x={260} y={175} tx={370} ty={160}>Obturator foramen</Label>
-    <Label x={200} y={195} tx={200} ty={260} anchor="middle">Pubic symphysis</Label>
-    <Label x={305} y={210} tx={370} ty={235}>Greater trochanter</Label>
-    <Label x={80} y={211} tx={40} ty={250} anchor="end">Binder centred here</Label>
-  </Svg>
+    <BigLabel x={95} y={60} tx={40} ty={45} anchor="end">Iliac crest (too high for binder)</BigLabel>
+    <BigLabel x={200} y={90} tx={300} ty={20}>Sacrum / SI joints</BigLabel>
+    <BigLabel x={210} y={135} tx={370} ty={110}>Presacral venous plexus</BigLabel>
+    <BigLabel x={260} y={175} tx={370} ty={160}>Obturator foramen</BigLabel>
+    <BigLabel x={200} y={195} tx={200} ty={260} anchor="middle">Pubic symphysis</BigLabel>
+    <BigLabel x={305} y={210} tx={370} ty={235}>Greater trochanter</BigLabel>
+    <BigLabel x={80} y={211} tx={40} ty={250} anchor="end">Binder centred here</BigLabel>
+  </WideSvg>
 );
 
 /* 4 — Aortic zones for REBOA */
 const Aorta = () => (
-  <Svg title="Aortic zones for endovascular balloon occlusion, labelled">
+  <WideSvg title="Aortic zones for endovascular balloon occlusion, labelled">
     <path d="M200 20 Q250 15 255 45 L240 60 L240 270" fill="none" stroke={vessel} strokeWidth={14} strokeLinecap="round" />
     <path d="M240 270 L200 295 M240 270 L280 295" stroke={vessel} strokeWidth={10} strokeLinecap="round" />
     <path d="M235 30 L225 5" stroke={vessel} strokeWidth={5} />
@@ -76,15 +76,15 @@ const Aorta = () => (
     <rect x={262} y={45} width={10} height={80} fill={accent} fillOpacity={0.4} />
     <rect x={262} y={125} width={10} height={50} fill={muted} fillOpacity={0.5} />
     <rect x={262} y={175} width={10} height={95} fill={accent} fillOpacity={0.25} />
-    <Label x={267} y={85} tx={300} ty={70}>Zone I</Label>
-    <Label x={267} y={150} tx={300} ty={150}>Zone II (no occlusion)</Label>
-    <Label x={267} y={220} tx={300} ty={230}>Zone III</Label>
-    <Label x={230} y={10} tx={150} ty={10} anchor="end">Left subclavian artery</Label>
-    <Label x={285} y={125} tx={150} ty={100} anchor="end">Coeliac trunk</Label>
-    <Label x={190} y={175} tx={110} ty={175} anchor="end">Renal arteries</Label>
-    <Label x={210} y={135} tx={110} ty={135} anchor="end">Diaphragm</Label>
-    <Label x={215} y={288} tx={110} ty={260} anchor="end">Common iliac arteries</Label>
-  </Svg>
+    <BigLabel x={267} y={85} tx={300} ty={70}>Zone I</BigLabel>
+    <BigLabel x={267} y={150} tx={300} ty={150}>Zone II (no occlusion)</BigLabel>
+    <BigLabel x={267} y={220} tx={300} ty={230}>Zone III</BigLabel>
+    <BigLabel x={230} y={10} tx={150} ty={10} anchor="end">Left subclavian artery</BigLabel>
+    <BigLabel x={285} y={125} tx={150} ty={100} anchor="end">Coeliac trunk</BigLabel>
+    <BigLabel x={190} y={175} tx={110} ty={175} anchor="end">Renal arteries</BigLabel>
+    <BigLabel x={210} y={135} tx={110} ty={135} anchor="end">Diaphragm</BigLabel>
+    <BigLabel x={215} y={288} tx={110} ty={260} anchor="end">Common iliac arteries</BigLabel>
+  </WideSvg>
 );
 
 const plates: AtlasPlate[] = [

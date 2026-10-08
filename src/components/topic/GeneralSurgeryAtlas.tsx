@@ -14,14 +14,14 @@ const nerve = "hsl(var(--foreground) / 0.8)";
 
 const Label = ({ x, y, tx, ty, children, anchor = "start" }: { x: number; y: number; tx: number; ty: number; children: string; anchor?: "start" | "end" | "middle" }) => (
   <g>
-    <line x1={x} y1={y} x2={tx} y2={ty} stroke={muted} strokeWidth={0.8} />
-    <circle cx={x} cy={y} r={2} fill={ink} />
-    <text x={tx + (anchor === "start" ? 3 : anchor === "end" ? -3 : 0)} y={ty + 3} fontSize={10} fill={ink} textAnchor={anchor}>{children}</text>
+    <line x1={x} y1={y} x2={tx} y2={ty} stroke={muted} strokeWidth={1.2} />
+    <circle cx={x} cy={y} r={2.8} fill={ink} />
+    <text x={tx + (anchor === "start" ? 4 : anchor === "end" ? -4 : 0)} y={ty + 4} fontSize={14} fontWeight={600} fill={ink} textAnchor={anchor}>{children}</text>
   </g>
 );
 
 const Svg = ({ title, children }: { title: string; children: ReactNode }) => (
-  <svg viewBox="-110 0 620 300" role="img" aria-label={title} className="w-full h-auto bg-background">
+  <svg viewBox="-260 -12 920 324" role="img" aria-label={title} className="w-full h-auto bg-card">
     <title>{title}</title>
     {children}
   </svg>
@@ -51,9 +51,9 @@ const AbdominalWall = () => (
     <Label x={270} y={99} tx={320} ty={95}>Anterior rectus sheath</Label>
     <Label x={260} y={136} tx={310} ty={165}>Posterior rectus sheath</Label>
     <Label x={165} y={134} tx={175} ty={190}>Inferior epigastric vessels</Label>
-    <Label x={60} y={128} tx={20} ty={240}>External oblique</Label>
-    <Label x={70} y={142} tx={20} ty={255}>Internal oblique</Label>
-    <Label x={75} y={157} tx={20} ty={270}>Transversus abdominis</Label>
+    <Label x={60} y={128} tx={20} ty={236}>External oblique</Label>
+    <Label x={70} y={142} tx={20} ty={256}>Internal oblique</Label>
+    <Label x={75} y={157} tx={20} ty={276}>Transversus abdominis</Label>
     <Label x={60} y={175} tx={140} ty={225}>TAP plane (T6–L1 nerves)</Label>
     <text x={200} y={292} fontSize={9} fill={muted} textAnchor="middle">Schematic, not to scale. Below the arcuate line the posterior sheath is absent.</text>
   </Svg>
@@ -118,7 +118,7 @@ const Pelvis = () => (
     <Label x={340} y={120} tx={370} ty={60}>Sacrum</Label>
     <Label x={318} y={150} tx={370} ty={170}>Presacral venous plexus</Label>
     <Label x={262} y={130} tx={300} ty={110} anchor="start">Mesorectal fascia</Label>
-    <Label x={262} y={190} tx={170} ty={110} anchor="end">Rectum (in mesorectum)</Label>
+    <Label x={262} y={190} tx={170} ty={80} anchor="end">Rectum (in mesorectum)</Label>
     <Label x={210} y={170} tx={40} ty={110} anchor="end">Hypogastric nerves</Label>
     <Label x={120} y={190} tx={40} ty={150} anchor="end">Bladder</Label>
     <Label x={190} y={260} tx={110} ty={285} anchor="end">Levator ani</Label>
