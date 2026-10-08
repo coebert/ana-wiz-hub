@@ -36,6 +36,7 @@ import { toast } from "sonner";
 import EsicmValidatorPanel from "@/components/admin/EsicmValidatorPanel";
 import FormularyVerificationPanel from "@/components/admin/FormularyVerificationPanel";
 import InaccuracyReportsPanel from "@/components/admin/InaccuracyReportsPanel";
+import OpenFindingsByTopic from "@/components/admin/OpenFindingsByTopic";
 import { Sparkles } from "lucide-react";
 
 type Job = {
@@ -1210,6 +1211,8 @@ const ContentAudit = () => {
           <StatTile label="Diagram issues" value={stats.diagrams} />
           <StatTile label="Thin / gap / update" value={stats.expansion} />
         </div>
+
+        <OpenFindingsByTopic />
 
         {/* Companion checks: formulary verification + ESICM dose validator */}
         <FormularyVerificationPanel />

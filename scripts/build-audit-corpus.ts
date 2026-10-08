@@ -7,7 +7,7 @@
  * could not fully see. Reading the source gives the complete text of every topic
  * including diagram labels, plus the citation list, with no rendering involved.
  *
- * Output: `supabase/functions/audit-topics/audit-corpus.json`, deployed alongside
+ * Output: `data-build/audit-corpus.json`, uploaded to the private `audit-corpus` storage bucket (read by
  * the audit function as a plain data import.
  *
  * Run: `bun run scripts/build-audit-corpus.ts`
@@ -22,7 +22,7 @@ import { perioperativeCases } from "../src/pages/PerioperativeCaseBank";
 import type { PerioperativeCase } from "../src/components/perioperative/ProgressiveCase";
 
 const ROOT = resolve(import.meta.dirname ?? __dirname, "..");
-const OUT = resolve(ROOT, "supabase/functions/audit-topics/audit-corpus.json");
+const OUT = resolve(ROOT, "data-build/audit-corpus.json");
 const PODCAST_OUT = resolve(
   ROOT,
   "supabase/functions/process-podcast-rerecord/topic-corpus.json",

@@ -1,0 +1,1 @@
+- Audit corpus lives in the private `audit-corpus` storage bucket (built to data-build/ by `npm run build:audit-corpus`, then uploaded); the audit-topics function downloads it at runtime — bundling it made the function too large to deploy.

@@ -17,7 +17,6 @@ import {
   isReputableJournal,
   type LiteratureRecord,
 } from "../_shared/literature.ts";
-import corpusData from "./audit-corpus.json" with { type: "json" };
 
 interface CorpusEntry {
   topic_id: string;
@@ -53,14 +52,29 @@ interface CorpusCase {
   text: string;
 }
 
-const CORPUS: Map<string, CorpusEntry> = new Map(
-  ((corpusData as { entries: CorpusEntry[] }).entries ?? []).map((e) => [e.topic_id, e]),
-);
+// The corpus lives in the private `audit-corpus` storage bucket (uploaded after
+// `npm run build:audit-corpus`), so the function bundle stays small and the
+// audit always reads the latest uploaded topic text. Loaded once per worker.
+let CORPUS: Map<string, CorpusEntry> = new Map();
 /** Case-bank cases, stored once in the corpus and referenced by id per topic. */
-const CASE_TEXTS: Record<string, CorpusCase> =
-  (corpusData as { cases?: Record<string, CorpusCase> }).cases ?? {};
+let CASE_TEXTS: Record<string, CorpusCase> = {};
+let CORPUS_GENERATED_AT: string | null = null;
+let corpusLoad: Promise<void> | null = null;
 
-const CORPUS_GENERATED_AT = (corpusData as { generated_at?: string }).generated_at ?? null;
+function loadCorpus(): Promise<void> {
+  if (!corpusLoad) {
+    corpusLoad = (async () => {
+      const { data, error } = await supa.storage.from("audit-corpus").download("audit-corpus.json");
+      if (error || !data) throw new Error(`Could not load audit corpus from storage: ${error?.message ?? "empty"}`);
+      const parsed = JSON.parse(await data.text()) as { entries?: CorpusEntry[]; cases?: Record<string, CorpusCase>; generated_at?: string };
+      CORPUS = new Map((parsed.entries ?? []).map((e) => [e.topic_id, e]));
+      CASE_TEXTS = parsed.cases ?? {};
+      CORPUS_GENERATED_AT = parsed.generated_at ?? null;
+      console.log(`[audit-topics] loaded ${CORPUS.size} topics from storage (generated ${CORPUS_GENERATED_AT})`);
+    })().catch((e) => { corpusLoad = null; throw e; });
+  }
+  return corpusLoad;
+}
 
 function getCorpusEntry(topicId: string): CorpusEntry | undefined {
   return CORPUS.get(topicId);
@@ -2153,6 +2167,7 @@ Deno.serve(async (req) => {
   try {
     const body = await req.json().catch(() => ({}));
     const action = body.action ?? "start";
+    await loadCorpus();
 
     // Authorise: either an internal token (self-chain / cron) or an admin JWT.
     // Scheduled runs come from the database, which cannot read the service-role
