@@ -163,7 +163,16 @@ const OxidationReductionTopic = () => {
                 <strong>Clark electrode (PO₂)</strong>: amperometric. A polarising voltage (~0.6 V) is applied between a platinum
                 cathode and a silver/silver-chloride anode in KCl electrolyte. O₂ diffuses through a polypropylene membrane and is
                 reduced at the cathode; the resulting current is proportional to PO₂.
+                <InlineRef topicId="oxidation-reduction" refLabel="Cross & Plunkett Ch.3" />
               </p>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Cathode (platinum, made negative by about −0.6 V):</strong> O₂ + 2H₂O + 4e⁻ → 4OH⁻ — O₂ is reduced.</li>
+                <li><strong>Anode (silver/silver chloride):</strong> Ag + Cl⁻ → AgCl + e⁻ — silver is oxidised, supplying the electrons.</li>
+                <li><strong>Polarising voltage:</strong> at about −0.6 V the current reaches a plateau where it depends only on the rate at which O₂ arrives at the cathode, so current is proportional to PO₂ and not to small voltage changes.</li>
+                <li><strong>Membrane (polypropylene or Teflon):</strong> lets O₂ through but keeps out proteins and blood cells, which would otherwise coat the cathode and slow or distort the reading.</li>
+                <li><strong>Temperature control:</strong> the electrode is kept at 37 °C, because both membrane diffusion and gas solubility change with temperature.</li>
+                <li><strong>Calibration:</strong> two-point, using an O₂-free gas or solution (zero point) and a gas of known O₂ concentration (for example 12% or 21%), because the current drifts as the membrane and electrolyte age.</li>
+              </ul>
               <p>
                 <strong>Severinghaus electrode (PCO₂)</strong>: CO₂ diffuses across a Teflon membrane into a thin film of sodium
                 bicarbonate solution, forming carbonic acid and lowering the pH. The pH change is measured by a glass electrode and
