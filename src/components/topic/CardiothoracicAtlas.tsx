@@ -31,7 +31,7 @@ const Bronchi = () => (
     <ellipse cx={200} cy={100} rx={14} ry={6} fill="none" stroke={muted} strokeWidth={2} />
     <Label x={200} y={40} tx={330} ty={30}>Trachea</Label>
     <Label x={200} y={122} tx={330} ty={100}>Carina</Label>
-    <Label x={110} y={142} tx={40} ty={120} anchor="end">RUL bronchus (~2 cm)</Label>
+    <Label x={110} y={142} tx={40} ty={120} anchor="end">RUL (~2 cm)</Label>
     <Label x={145} y={235} tx={40} ty={240} anchor="end">Right main bronchus</Label>
     <Label x={262} y={187} tx={330} ty={170}>Bronchial cuff</Label>
     <Label x={295} y={225} tx={330} ty={250}>Left main (~4–5 cm)</Label>

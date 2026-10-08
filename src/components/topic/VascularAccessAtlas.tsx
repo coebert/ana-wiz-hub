@@ -12,7 +12,7 @@ const Neck = () => (
     <circle cx={165} cy={215} r={8} fill="none" stroke={ink} strokeWidth={2} />
     <Label x={240} y={40} tx={330} ty={30}>Trachea (midline)</Label>
     <Label x={188} y={90} tx={330} ty={80}>Common carotid (medial)</Label>
-    <Label x={168} y={140} tx={40} ty={130} anchor="end">Internal jugular (lateral)</Label>
+    <Label x={168} y={140} tx={40} ty={130} anchor="end">IJV (lateral)</Label>
     <Label x={196} y={250} tx={330} ty={240}>Sternal head SCM</Label>
     <Label x={125} y={240} tx={40} ty={230} anchor="end">Clavicular head SCM</Label>
     <Label x={165} y={215} tx={330} ty={190}>Apex of SCM triangle</Label>
