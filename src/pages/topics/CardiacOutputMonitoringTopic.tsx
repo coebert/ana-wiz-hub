@@ -123,6 +123,11 @@ const CoreConcepts = () => (
           <p className="text-sm text-muted-foreground">
             CO = VO₂ / (CaO₂ − CvO₂). The volume of oxygen consumed per minute equals the difference in O₂ content between arterial and mixed venous blood multiplied by the flow. Requires steady-state VO₂ (metabolic cart), arterial blood gas, and a true mixed venous sample from the PA. Accurate but cumbersome — used to validate other methods rather than at the bedside.
           </p>
+          <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1 mt-2">
+            <li><strong>Oxygen content:</strong> CxO₂ = (Hb × 1.34 × SxO₂) + (PxO₂ × 0.023) mL/dL, with PO₂ in kPa (0.003 if mmHg). CaO₂ uses arterial values; CvO₂ uses a true mixed venous sample from the pulmonary artery.</li>
+            <li><strong>VO₂:</strong> measured by indirect calorimetry (metabolic cart) from inspired–expired O₂ differences and minute ventilation; normally about 250 mL/min (≈ 120–140 mL/min/m²).</li>
+            <li><strong>Error sources:</strong> requires a steady metabolic state; VO₂ measurement is inaccurate at high FiO₂ and with circuit leaks in ventilated patients; needs simultaneous arterial and PAC samples; intrapulmonary O₂ consumption in inflamed lungs is not counted. Hence a research or validation tool rather than a bedside monitor.<InlineRef topicId="cardiac-output-monitoring" refLabel="BJA 2017 (Non-invasive CO accuracy)" /></li>
+          </ul>
         </div>
         <div className="rounded-lg border border-border p-4">
           <p className="font-semibold text-foreground text-sm mb-1">Indicator dilution & the Stewart-Hamilton equation</p>
@@ -207,10 +212,18 @@ const CoreConcepts = () => (
         <div className="p-4 rounded-lg border border-border">
           <p className="font-semibold text-foreground text-sm">Right-heart thermodilution (PAC)</p>
           <p className="text-sm text-muted-foreground mt-1">10 mL iced saline injected via the RA port; thermistor at the PA tip detects the temperature change. Short transit time. Provides intermittent (or continuous via a heated filament) CO, plus PAOP, CVP, PAP, SvO₂, and derived PVR/SVR.</p>
+          <p className="text-xs text-muted-foreground mt-1">PA rupture is rare (well under 0.2% of insertions) but carries a mortality of about 50%; avoid over-wedging and deflate the balloon after each wedge reading.<InlineRef topicId="cardiac-output-monitoring" refLabel="BJA Educ PAC" /></p>
         </div>
         <div className="p-4 rounded-lg border border-border">
           <p className="font-semibold text-foreground text-sm">Transpulmonary thermodilution (TPTD, PiCCO/EV1000)</p>
           <p className="text-sm text-muted-foreground mt-1">15–20 mL iced saline via CVC; thermistor at the femoral artery. The longer transit through both ventricles and the pulmonary circulation allows mathematical derivation of GEDV (preload) and EVLW (lung water) from the mean transit time and exponential down-slope of the curve.</p>
+          <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1 mt-2">
+            <li><strong>From the curve:</strong> mean transit time (MTt) × CO = intrathoracic thermal volume (ITTV); exponential downslope time (DSt) × CO = pulmonary thermal volume (PTV). GEDV = ITTV − PTV.</li>
+            <li><strong>Derived:</strong> ITBV ≈ 1.25 × GEDV; EVLW = ITTV − ITBV; PVPI = EVLW / PBV (PBV ≈ 0.25 × GEDV).</li>
+            <li><strong>Typical normal values:</strong> GEDI 680–800 mL/m² (preload); EVLWI 3–7 mL/kg, &gt; 10 mL/kg indicates pulmonary oedema; PVPI 1–3.</li>
+            <li><strong>Interpretation:</strong> high EVLWI with PVPI &lt; 3 suggests hydrostatic (cardiogenic or overload) oedema; high EVLWI with PVPI &gt; 3 suggests permeability oedema (ARDS).</li>
+            <li><strong>Why volumes:</strong> unlike CVP and PAOP, these volumetric markers are not directly distorted by intrathoracic and PEEP-related pressures, which matters in ventilated ARDS patients.<InlineRef topicId="cardiac-output-monitoring" refLabel="ICM 2016 (Haemodynamics in ARDS)" /></li>
+          </ul>
         </div>
       </div>
       <div className="mt-3 rounded-lg border border-border bg-muted/30 p-3">
