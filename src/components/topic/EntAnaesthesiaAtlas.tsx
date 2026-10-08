@@ -8,17 +8,17 @@ const Larynx = () => (
     <rect x={165} y={170} width={70} height={18} rx={6} fill={fillA} stroke={ink} />
     <rect x={170} y={195} width={60} height={95} fill="none" stroke={muted} strokeDasharray="4 3" />
     {[210, 230, 250, 270].map((y) => <line key={y} x1={170} y1={y} x2={230} y2={y} stroke={muted} />)}
-    <path d="M130 55 L150 78" stroke={muted} strokeWidth={2} />
-    <path d="M80 30 Q110 60 150 78 L168 100" stroke={nerve} strokeWidth={2} />
-    <path d="M150 78 Q140 130 160 165" stroke={nerve} strokeWidth={1.5} strokeDasharray="5 3" />
-    <path d="M110 290 Q140 230 162 180" stroke={nerve} strokeWidth={2} />
-    <path d="M260 30 L260 290" stroke={vessel} strokeWidth={4} />
+    <path d="M130 55 L150 78" stroke={muted} fill="none" strokeWidth={2} />
+    <path d="M80 30 Q110 60 150 78 L168 100" stroke={nerve} fill="none" strokeWidth={2} />
+    <path d="M150 78 Q140 130 160 165" stroke={nerve} fill="none" strokeWidth={1.5} strokeDasharray="5 3" />
+    <path d="M110 290 Q140 230 162 180" stroke={nerve} fill="none" strokeWidth={2} />
+    <path d="M260 30 L260 290" stroke={vessel} fill="none" strokeWidth={4} />
     <Label x={200} y={45} tx={330} ty={30}>Hyoid bone</Label>
     <Label x={200} y={115} tx={330} ty={100}>Thyroid cartilage</Label>
     <Label x={200} y={179} tx={330} ty={175}>Cricoid cartilage</Label>
     <Label x={200} y={240} tx={330} ty={245}>Trachea</Label>
-    <Label x={160} y={92} tx={40} ty={70} anchor="end">Internal SLN (sensation above cords)</Label>
-    <Label x={155} y={130} tx={40} ty={130} anchor="end">External SLN (cricothyroid)</Label>
+    <Label x={160} y={92} tx={40} ty={70} anchor="end">Internal SLN</Label>
+    <Label x={155} y={130} tx={40} ty={130} anchor="end">External SLN</Label>
     <Label x={130} y={250} tx={40} ty={250} anchor="end">Recurrent laryngeal nerve</Label>
     <Label x={260} y={200} tx={330} ty={210}>Carotid sheath</Label>
   </Svg>
@@ -35,13 +35,13 @@ const Tonsil = () => (
     <path d="M250 70 Q260 170 240 270" stroke={ink} strokeWidth={2} fill="none" />
     <path d="M290 70 Q310 170 280 270" stroke={ink} strokeWidth={2} fill="none" />
     <ellipse cx={268} cy={170} rx={16} ry={45} fill={accent} fillOpacity={0.25} stroke={ink} />
-    <path d="M60 260 Q100 230 125 205" stroke={vessel} strokeWidth={3} />
+    <path d="M60 260 Q100 230 125 205" stroke={vessel} fill="none" strokeWidth={3} />
     <path d="M150 230 Q200 250 250 230 L240 290 L160 290 Z" fill="hsl(var(--primary) / 0.12)" stroke={ink} />
     <Label x={200} y={45} tx={330} ty={20}>Soft palate</Label>
     <Label x={200} y={80} tx={330} ty={80}>Uvula</Label>
     <Label x={110} y={120} tx={40} ty={100} anchor="end">Palatoglossal arch</Label>
     <Label x={132} y={170} tx={40} ty={170} anchor="end">Palatine tonsil in fossa</Label>
-    <Label x={80} y={248} tx={40} ty={250} anchor="end">Tonsillar branch, facial artery</Label>
+    <Label x={80} y={248} tx={40} ty={250} anchor="end">Tonsillar artery</Label>
     <Label x={290} y={150} tx={340} ty={150}>Palatopharyngeal arch</Label>
     <Label x={200} y={265} tx={340} ty={270}>Tongue</Label>
   </Svg>

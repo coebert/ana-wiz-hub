@@ -10,13 +10,13 @@ const Caudal = () => (
     <path d="M185 215 Q200 200 215 215 L210 250 L190 250 Z" fill="hsl(var(--background))" stroke={ink} />
     <circle cx={185} cy={218} r={5} fill={ink} />
     <circle cx={215} cy={218} r={5} fill={ink} />
-    <path d="M200 20 L200 130" stroke={nerve} strokeWidth={8} strokeOpacity={0.35} strokeLinecap="round" />
+    <path d="M200 20 L200 130" stroke={nerve} fill="none" strokeWidth={8} strokeOpacity={0.35} strokeLinecap="round" />
     <path d="M200 250 L200 290" stroke={ink} strokeWidth={3} />
     <Label x={110} y={45} tx={40} ty={25} anchor="end">PSIS</Label>
     <Label x={200} y={232} tx={330} ty={235}>Sacral hiatus</Label>
     <Label x={185} y={218} tx={40} ty={215} anchor="end">Sacral cornua</Label>
     <Label x={200} y={125} tx={330} ty={120}>Dural sac (ends lower in infants)</Label>
-    <Label x={150} y={130} tx={40} ty={130} anchor="end">Equilateral triangle (PSIS–hiatus)</Label>
+    <Label x={150} y={130} tx={40} ty={130} anchor="end">PSIS–hiatus triangle</Label>
     <Label x={200} y={280} tx={330} ty={285}>Coccyx</Label>
   </Svg>
 );

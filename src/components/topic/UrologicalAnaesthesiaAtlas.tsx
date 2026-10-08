@@ -5,14 +5,14 @@ const Obturator = () => (
   <Svg title="Bladder lateral wall and obturator nerve, coronal section, labelled">
     <path d="M60 60 Q200 0 340 60 L320 200 Q200 260 80 200 Z" fill="none" stroke={ink} strokeWidth={3} />
     <ellipse cx={200} cy={160} rx={80} ry={60} fill={accent} fillOpacity={0.15} stroke={ink} strokeWidth={2} />
-    <path d="M130 160 L170 165" stroke={muted} strokeWidth={6} strokeLinecap="round" />
-    <path d="M100 40 Q95 120 110 170 L70 240" stroke={nerve} strokeWidth={2.5} />
-    <path d="M300 40 Q305 120 290 170 L330 240" stroke={nerve} strokeWidth={2.5} />
+    <path d="M130 160 L170 165" stroke={muted} fill="none" strokeWidth={6} strokeLinecap="round" />
+    <path d="M100 40 Q95 120 110 170 L70 240" stroke={nerve} fill="none" strokeWidth={2.5} />
+    <path d="M300 40 Q305 120 290 170 L330 240" stroke={nerve} fill="none" strokeWidth={2.5} />
     <circle cx={85} cy={215} r={12} fill="none" stroke={ink} />
     <circle cx={315} cy={215} r={12} fill="none" stroke={ink} />
-    <path d="M70 240 L60 290" stroke={nerve} strokeWidth={2} />
+    <path d="M70 240 L60 290" stroke={nerve} fill="none" strokeWidth={2} />
     <Label x={200} y={150} tx={330} ty={120}>Bladder</Label>
-    <Label x={140} y={160} tx={40} ty={130} anchor="end">Resectoscope loop at lateral wall</Label>
+    <Label x={140} y={160} tx={40} ty={130} anchor="end">Resection loop</Label>
     <Label x={105} y={120} tx={40} ty={80} anchor="end">Obturator nerve (L2–L4)</Label>
     <Label x={85} y={215} tx={40} ty={215} anchor="end">Obturator canal</Label>
     <Label x={62} y={280} tx={40} ty={280} anchor="end">To adductors</Label>
@@ -26,10 +26,10 @@ const Prostate = () => (
     <ellipse cx={200} cy={90} rx={90} ry={60} fill={accent} fillOpacity={0.15} stroke={ink} strokeWidth={2} />
     <ellipse cx={200} cy={185} rx={50} ry={40} fill={fillA} stroke={ink} strokeWidth={2} />
     <ellipse cx={200} cy={185} rx={56} ry={46} fill="none" stroke={ink} strokeDasharray="3 2" />
-    <path d="M200 150 L200 290" stroke={muted} strokeWidth={5} />
+    <path d="M200 150 L200 290" stroke={muted} fill="none" strokeWidth={5} />
     {[[165, 170], [235, 175], [175, 210], [228, 205]].map(([x, y]) => <circle key={x} cx={x} cy={y} r={5} fill={vessel} />)}
-    <path d="M60 30 L60 100" stroke={muted} strokeWidth={2} />
-    <path d="M60 30 L120 50" stroke={muted} strokeWidth={2} markerEnd="" />
+    <path d="M60 30 L60 100" stroke={muted} fill="none" strokeWidth={2} />
+    <path d="M60 30 L120 50" stroke={muted} fill="none" strokeWidth={2} markerEnd="" />
     <Label x={200} y={70} tx={330} ty={50}>Bladder (irrigation fluid)</Label>
     <Label x={200} y={185} tx={330} ty={150}>Prostate</Label>
     <Label x={254} y={195} tx={330} ty={200}>Capsule</Label>
