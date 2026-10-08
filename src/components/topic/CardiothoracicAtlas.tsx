@@ -22,20 +22,20 @@ const Coronary = () => (
 
 /* 2 — Tracheobronchial tree and double-lumen tube */
 const Bronchi = () => (
-  <Svg title="Tracheobronchial tree with left double-lumen tube position, labelled">
+  <Svg title="Tracheobronchial tree with left double-lumen tube position, anterior view, labelled">
     <path d="M190 10 L190 120 L210 120 L210 10 Z" fill={fillA} stroke={ink} strokeWidth={2} />
-    <path d="M190 120 L120 250 M210 120 L245 170 L300 250" stroke={ink} strokeWidth={14} strokeLinecap="round" fill="none" opacity={0.25} />
-    <path d="M245 170 L310 150" stroke={ink} strokeWidth={10} strokeLinecap="round" opacity={0.25} />
-    <path d="M195 15 L195 125 L135 230" stroke={accent} strokeWidth={4} fill="none" />
-    <ellipse cx={150} cy={205} rx={10} ry={6} fill="none" stroke={accent} strokeWidth={3} />
+    <path d="M190 120 L160 175 L140 250 M210 120 L300 230" stroke={ink} strokeWidth={14} strokeLinecap="round" fill="none" opacity={0.25} />
+    <path d="M168 160 L105 140" stroke={ink} strokeWidth={10} strokeLinecap="round" opacity={0.25} />
+    <path d="M205 15 L205 125 L280 207" stroke={accent} strokeWidth={4} fill="none" />
+    <ellipse cx={262} cy={187} rx={10} ry={6} transform="rotate(48 262 187)" fill="none" stroke={accent} strokeWidth={3} />
     <ellipse cx={200} cy={100} rx={14} ry={6} fill="none" stroke={muted} strokeWidth={2} />
     <Label x={200} y={40} tx={330} ty={30}>Trachea</Label>
-    <Label x={200} y={120} tx={330} ty={100}>Carina</Label>
-    <Label x={300} y={152} tx={330} ty={150}>RUL bronchus (~2 cm)</Label>
-    <Label x={290} y={235} tx={330} ty={240}>Right main bronchus</Label>
-    <Label x={140} y={200} tx={40} ty={190} anchor="end">Bronchial cuff</Label>
-    <Label x={125} y={240} tx={40} ty={250} anchor="end">Left main (~4–5 cm)</Label>
-    <Label x={188} y={100} tx={40} ty={95} anchor="end">Tracheal cuff</Label>
+    <Label x={200} y={122} tx={330} ty={100}>Carina</Label>
+    <Label x={110} y={142} tx={40} ty={120} anchor="end">RUL bronchus (~2 cm)</Label>
+    <Label x={145} y={235} tx={40} ty={240} anchor="end">Right main bronchus</Label>
+    <Label x={262} y={187} tx={330} ty={170}>Bronchial cuff</Label>
+    <Label x={295} y={225} tx={330} ty={250}>Left main (~4–5 cm)</Label>
+    <Label x={188} y={100} tx={40} ty={80} anchor="end">Tracheal cuff</Label>
   </Svg>
 );
 

@@ -2,20 +2,21 @@ import { AnatomyAtlas, BigLabel as Label, Svg, ink, muted, fillA, vessel, nerve,
 
 /* 1 — Internal jugular vein in the neck */
 const Neck = () => (
-  <Svg title="Internal jugular vein and carotid artery in the neck, labelled">
-    <path d="M200 10 L200 290" stroke={muted} strokeWidth={30} opacity={0.2} />
-    <path d="M120 290 L250 30" stroke={ink} strokeWidth={10} opacity={0.3} />
-    <path d="M160 290 L250 30" stroke={ink} strokeWidth={10} opacity={0.3} />
-    <path d="M60 285 L190 285" stroke={ink} strokeWidth={6} opacity={0.4} />
-    <path d="M232 30 L210 270" stroke={vessel} strokeWidth={5} fill="none" />
-    <path d="M252 30 L148 270" stroke={vessel} strokeWidth={10} strokeOpacity={0.5} fill="none" />
-    <circle cx={175} cy={210} r={8} fill="none" stroke={ink} strokeWidth={2} />
-    <Label x={200} y={40} tx={40} ty={30} anchor="end">Trachea (midline)</Label>
-    <Label x={225} y={90} tx={330} ty={70}>Common carotid</Label>
-    <Label x={200} y={140} tx={330} ty={140}>Internal jugular vein</Label>
-    <Label x={140} y={270} tx={40} ty={250} anchor="end">Clavicular head SCM</Label>
-    <Label x={175} y={210} tx={330} ty={210}>Apex of SCM triangle</Label>
-    <Label x={100} y={285} tx={40} ty={290} anchor="end">Clavicle</Label>
+  <Svg title="Internal jugular vein and carotid artery in the right side of the neck, anterior view, labelled">
+    <path d="M240 10 L240 290" stroke={muted} strokeWidth={30} opacity={0.2} />
+    <path d="M90 285 L210 285" stroke={ink} strokeWidth={6} opacity={0.4} />
+    <path d="M200 20 L195 280" stroke={ink} strokeWidth={10} opacity={0.3} />
+    <path d="M200 20 L110 280" stroke={ink} strokeWidth={10} opacity={0.3} />
+    <path d="M190 20 L185 280" stroke={vessel} strokeWidth={5} fill="none" />
+    <path d="M175 20 L150 280" stroke={vessel} strokeWidth={10} strokeOpacity={0.5} fill="none" />
+    <circle cx={165} cy={215} r={8} fill="none" stroke={ink} strokeWidth={2} />
+    <Label x={240} y={40} tx={330} ty={30}>Trachea (midline)</Label>
+    <Label x={188} y={90} tx={330} ty={80}>Common carotid (medial)</Label>
+    <Label x={168} y={140} tx={40} ty={130} anchor="end">Internal jugular (lateral)</Label>
+    <Label x={196} y={250} tx={330} ty={240}>Sternal head SCM</Label>
+    <Label x={125} y={240} tx={40} ty={230} anchor="end">Clavicular head SCM</Label>
+    <Label x={165} y={215} tx={330} ty={190}>Apex of SCM triangle</Label>
+    <Label x={110} y={285} tx={40} ty={285} anchor="end">Clavicle</Label>
   </Svg>
 );
 
@@ -31,7 +32,7 @@ const Femoral = () => (
     <Label x={300} y={50} tx={330} ty={30}>Inguinal ligament</Label>
     <Label x={240} y={140} tx={330} ty={130}>Femoral nerve (lateral)</Label>
     <Label x={205} y={180} tx={330} ty={190}>Femoral artery</Label>
-    <Label x={175} y={150} tx={40} ty={150} anchor="end">Femoral vein (medial)</Label>
+    <Label x={175} y={150} tx={40} ty={150} anchor="end">Femoral vein</Label>
     <Label x={150} y={90} tx={40} ty={80} anchor="end">Femoral canal</Label>
   </Svg>
 );
