@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
+// Sensory-territory schematic, not a literal sagittal anatomical section.
+// V1 anterior ethmoidal supply: https://radiopaedia.org/articles/anterior-ethmoidal-nerve
+// Anterior pillar block: https://pmc.ncbi.nlm.nih.gov/articles/PMC6224283/
+
 interface Zone {
   id: string;
   label: string;
@@ -16,7 +20,7 @@ const zones: Zone[] = [
   {
     id: "nasal",
     label: "Nasal Cavity",
-    nerve: "Trigeminal (V₂)",
+     nerve: "Trigeminal (V₁ / V₂)",
     branch: "Anterior ethmoidal n. & sphenopalatine ganglion",
     color: "hsl(210,70%,55%)",
     topicalMethod: "Co-phenylcaine spray or cocaine paste on pledgets",
@@ -30,7 +34,7 @@ const zones: Zone[] = [
     branch: "Lingual & pharyngeal branches",
     color: "hsl(340,65%,55%)",
     topicalMethod: "Lidocaine spray / gargle or bilateral IX nerve block",
-    detail: "CN IX provides sensation to the posterior third of the tongue, tonsillar fossa, soft palate, and oropharynx. The gag reflex afferent runs via IX. Block by injecting LA at the palatoglossal fold (posterior tonsillar pillar) or topicalise with 4% lidocaine gargle.",
+     detail: "CN IX provides sensation to the posterior third of the tongue, tonsillar fossa and oropharynx. The gag reflex afferent runs via IX. The palatoglossal fold is the anterior tonsillar pillar, a landmark for an intraoral glossopharyngeal block. Topical lidocaine is an alternative; soft-palate sensation is principally via palatine branches of V₂.",
     path: "M 140,175 C 145,160 160,150 180,148 L 210,148 C 225,150 235,158 238,170 L 240,190 C 242,205 238,220 230,230 L 200,238 C 180,240 160,238 150,230 C 142,222 138,200 140,175 Z",
   },
   {
@@ -82,7 +86,7 @@ const AirwayInnervationDiagram = () => {
         <div className="flex flex-col lg:flex-row gap-4">
           {/* SVG diagram */}
           <div className="flex-shrink-0 mx-auto">
-            <svg viewBox="60 10 270 480" className="w-full max-w-[320px]" role="img" aria-label="Sagittal cross-section of upper airway showing sensory innervation zones">
+             <svg viewBox="60 10 270 480" className="w-full max-w-[320px]" role="img" aria-label="Schematic of upper-airway sensory territories, not a literal anatomical section">
               <defs>
                 {zones.map((z) => (
                   <linearGradient key={z.id} id={`aw-grad-${z.id}`} x1="0" y1="0" x2="0" y2="1">
