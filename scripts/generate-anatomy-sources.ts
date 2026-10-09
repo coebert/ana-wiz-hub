@@ -74,6 +74,7 @@ function add(e: Omit<Entry, "status">) {
   if (sources.some(s => s.detail?.includes("could not be resolved"))) uncertainty.push("One or more citation labels require reconciliation with the topic reference list.");
   entries.push({ ...e, sources, uncertainty, status: uncertainty.length ? "needs-review" : "cited" });
 }
+import { anatomyDiagramCitations } from "../src/data/anatomyDiagramCitations";
 const excluded = new Set(["BrainPlatesViewer", "CorPictumFolio"]);
 const clinicalNames = new Set(["AirwayInnervationDiagram", "CaudalSurfaceAnatomyDiagram", "CaudalBlockDiagram", "DermatomeMapDiagram", "NerveDermatomeOverlayDiagram", "NephronDiagram", "CorticalJuxtamedullaryDiagram", "LaryngoscopeBladesDiagram", "SpinalCordStimulatorDiagram"]);
 const componentFiles = allComponents.filter(p => (p.includes("/diagrams/anatomy/") && !excluded.has(path.basename(p, ".tsx"))) || /\/shared\/Brain(?:Axial|Coronal|Anatomy|Medial)Diagram\.tsx$/.test(p) || clinicalNames.has(path.basename(p, ".tsx")));
@@ -89,6 +90,7 @@ for (const p of componentFiles) {
       if (n.name.getText() === "title" && /DiagramFigure/.test(n.parent.parent.getText().slice(0, 30)) && text(v)) title = text(v);
     }
   });
+  for (const c of anatomyDiagramCitations[name] ?? []) sources.push({ label: c.label, detail: c.detail, url: c.url, basis: /Gray's/.test(c.label) ? "Reference figure used to check the schematic (public domain)" : "Reference paper used to check the schematic" });
   // Comments are labelled as notes, not promoted to bibliographic/image provenance.
   if (!sources.length) {
     const comments = read(p).match(/\/\*[\s\S]*?\*\/|\/\/[^\n]*/g) ?? [];
