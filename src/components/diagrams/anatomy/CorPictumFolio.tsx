@@ -86,6 +86,8 @@ export interface CorPictumPlate {
   alt: string;
   /** Italic Latin caption that sits beneath the plate-mark */
   caption: string;
+  /** Specific unresolved anatomy issue in the printed artwork. */
+  auditWarning?: string;
   /** Italic Latin labels with English translations and notes */
   labels: CorPictumLabel[];
   /**
@@ -1007,6 +1009,11 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
             <p className="mt-3 text-center font-serif text-xs sm:text-sm text-muted-foreground">
               {active.caption}
             </p>
+            {active.auditWarning && (
+              <p role="note" className="mt-2 border-l-2 border-destructive pl-3 text-sm text-foreground">
+                <strong>Anatomy correction:</strong> {active.auditWarning}
+              </p>
+            )}
   
             {/* FRCA curriculum mapping chips — filtered by the exam header */}
             {visibleCurriculumLinks.length > 0 ? (

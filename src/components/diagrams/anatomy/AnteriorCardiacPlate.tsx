@@ -69,11 +69,11 @@ const AnteriorCardiacPlate: React.FC = () => {
         { id: "apex", text: "Apex (LV)",             target: [700, 575], label: [880, 605], accent: C.stroke },
 
         // ---- Conduction & coronaries ---------------------------------------
-        // SA node circle at (430, 195) (SVC–RA junction on viewer-LEFT)
+         // SA node circle at (420, 310) (depicted SVC–RA junction on viewer-LEFT)
          { id: "sa",   text: "SA node",               target: [420, 310], label: [110, 130], side: "right", accent: C.nerve, sub: "SVC–RA junction" },
         // LAD path 540,310 → 700,560 — midpoint ~(620, 435)
         { id: "lad",  text: "LAD",                   target: [620, 435], label: [880, 410], accent: C.artery, sub: "anterior IV groove" },
-        // RCA path 460,320 → 420,540 (viewer-LEFT AV groove) — midpoint ~(440, 430)
+         // RCA target (425,430) on its viewer-LEFT AV-groove path
          { id: "rca",  text: "RCA",                   target: [425, 430], label: [110, 430], side: "right", accent: C.artery, sub: "right AV groove" },
         // LCx path 540,310 → 670,355 (viewer-RIGHT AV groove) — midpoint ~(605, 333)
         { id: "lcx",  text: "Circumflex (LCx)",      target: [605, 333], label: [880, 320], accent: C.artery, sub: "left AV groove" },

@@ -51,6 +51,7 @@ export const airwayFolio: CorPictumFolioData = {
       title: "Oropharynx and Larynx", subtitle: "Sagittal view of the airway",
       image: airwaySagittal, alt: "Painted sagittal section of the upper airway",
       caption: "Sagittal section of the upper airway",
+      auditWarning: "The printed vertebral labels are unreliable: the atlas (C1) has no vertebral body, and the cricoid is normally at approximately C6 in adults. The vallecula is between the tongue base and epiglottis, not behind the epiglottis as the printed leader suggests. Use the labelled diagrams and text for these landmarks.",
       labels: [
         { latin: "lingua", english: "Tongue", note: "Falls posteriorly under sedation — first cause of obstruction." },
         { latin: "palatum molle", english: "Soft palate", note: "Velopharyngeal seal; relaxes in deep anaesthesia." },
@@ -218,9 +219,9 @@ export const headNeckFolio: CorPictumFolioData = {
     },
     {
       id: "orbit-frontal", tabLabel: "Bony orbit", folio: "IV",
-      title: "Bony Orbit — Frontal View", subtitle: "Bones, foramina and fissures of the right orbit",
-      image: headneckOrbitFrontal, alt: "Painted frontal view of the bony orbit showing the seven contributing bones and orbital foramina",
-      caption: "Anterior view of the bony orbit — seven bones, three openings at the apex",
+      title: "Orbit — Extraocular Muscles", subtitle: "Anterior view of the right orbit",
+      image: headneckOrbitFrontal, alt: "Painted anterior view of the right orbit showing the globe and extraocular muscles",
+      caption: "Anterior orbital illustration — the globe obscures the apex; use the separate bony-orbit diagram for foramina and fissures",
       labels: [
         { latin: "", english: "Frontal bone", note: "Forms the orbital roof; supraorbital nerve (V1) emerges through the notch/foramen on its rim." },
         { latin: "", english: "Supraorbital notch", note: "Surface landmark for supraorbital nerve block (V1) — supraorbital nerve and vessels exit here." },
@@ -1266,6 +1267,7 @@ export const thoracicFolio: CorPictumFolioData = {
       title: "Thoracic Cavity", subtitle: "Anterior view with chest wall removed",
       image: thoracicAnterior, alt: "Painted anterior view of the thoracic cavity",
       caption: "Anterior view of the thoracic cavity",
+      auditWarning: "The printed ‘Left lung’ leader incorrectly points to the patient's right chest. In an anterior view, the patient's left lung is on the viewer's right. The chest wall is shown, not removed; the clavicle is not rib 1.",
       labels: [
         { latin: "pulmo dexter", english: "Right lung", note: "Three lobes; horizontal and oblique fissures." },
         { latin: "pulmo sinister", english: "Left lung", note: "Two lobes; cardiac notch and lingula." },

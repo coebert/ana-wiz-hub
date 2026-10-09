@@ -1126,7 +1126,7 @@ const CardiacAnatomyDiagram = () => {
   const [cutaway, setCutaway] = useState(false);
   const [showLabels, setShowLabels] = useState(true);
   const [autoRotate, setAutoRotate] = useState(true);
-  const [autoFocus, setAutoFocus] = useState(true);
+  const [autoFocus, setAutoFocus] = useState(false);
   const [focusCategory, setFocusCategory] = useState<"all" | "coronary" | "conduction" | "valve">("all");
   const [dissectMode, setDissectMode] = useState(false);
   const [dissectStep, setDissectStep] = useState(0);

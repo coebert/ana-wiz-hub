@@ -176,6 +176,7 @@ export const BrainAxialPlate = () => (
       </div>
       <figcaption className="px-4 sm:px-6 py-3 text-xs text-muted-foreground italic border-t border-border">
         Anatomical reference plate with overlay labels. Frontal lobes anterior (top); occipital lobes posterior (bottom).
+        <span className="block mt-2 not-italic text-foreground">Anatomical review pending: some deep-structure leaders need specialist confirmation; the occipital-horn leader currently points to the posterior midline, not a lateral ventricular horn. Do not use these endpoints as a definitive identification guide.</span>
       </figcaption>
     </figure>
 
