@@ -47,6 +47,7 @@ const SeoIndexing = lazy(() => import("./pages/SeoIndexing"));
 const A11yAudit = lazy(() => import("./pages/A11yAudit"));
 const Curriculum = lazy(() => import("./pages/Curriculum"));
 const DiagramSnapshot = lazy(() => import("./pages/DiagramSnapshot"));
+const DiagramSources = lazy(() => import("./pages/DiagramSources"));
 const Errata = lazy(() => import("./pages/Errata"));
 const Trust = lazy(() => import("./pages/Trust"));
 const Login = lazy(() => import("./pages/Login"));
@@ -269,6 +270,7 @@ const App = () => (
           <Route path="/perioperative/calculator" element={<AnaesthesiaDrugCalculator />} />
 
           <Route path="/anatomy" element={<AnatomySection />} />
+          <Route path="/anatomy/diagram-sources" element={<DiagramSources />} />
           <Route path="/chemistry" element={<ChemistrySection />} />
           {/* Topic pages — data-driven, see src/routes/topicRoutes.ts */}
           {topicRouteEntries.map(({ path, Component }) => (
