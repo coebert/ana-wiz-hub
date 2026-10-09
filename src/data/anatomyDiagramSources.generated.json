@@ -20,25 +20,6 @@
       "status": "needs-review"
     },
     {
-      "id": "AirwayAssessmentDiagram",
-      "title": "Airway assessment",
-      "group": "Anatomy & applied diagrams",
-      "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
-      ],
-      "topicLinks": [
-        {
-          "path": "/clinical/airway-management",
-          "title": "airway management"
-        }
-      ],
-      "sourceFile": "src/components/diagrams/clinical/AirwayAssessmentDiagram.tsx",
-      "status": "needs-review"
-    },
-    {
       "id": "AirwayInnervationDiagram",
       "title": "Airway innervation",
       "group": "Anatomy & applied diagrams",
@@ -391,6 +372,25 @@
       "status": "needs-review"
     },
     {
+      "id": "CaudalBlockDiagram",
+      "title": "Caudal block — sagittal anatomy",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/clinical/paediatric-anaesthesia",
+          "title": "paediatric anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/clinical/CaudalBlockDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
       "id": "CaudalSurfaceAnatomyDiagram",
       "title": "Caudal surface anatomy",
       "group": "Anatomy & applied diagrams",
@@ -483,6 +483,25 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/CoronaryTreeDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "CorticalJuxtamedullaryDiagram",
+      "title": "Cortical juxtamedullary",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/physiology/renal-physiology",
+          "title": "renal physiology"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/physiology/CorticalJuxtamedullaryDiagram.tsx",
       "status": "needs-review"
     },
     {
@@ -686,6 +705,25 @@
       "status": "needs-review"
     },
     {
+      "id": "LaryngoscopeBladesDiagram",
+      "title": "Laryngoscope blades",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/physics/equipment-monitoring",
+          "title": "equipment monitoring"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/physics/LaryngoscopeBladesDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
       "id": "LowerLimbArteriesDiagram",
       "title": "Lower limb arteries",
       "group": "Anatomy & applied diagrams",
@@ -839,6 +877,25 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/NeckTrianglesDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "NephronDiagram",
+      "title": "Nephron segments: glomerulus, tubule, loop of Henle and collecting duct",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/physiology/renal-physiology",
+          "title": "renal physiology"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/physiology/NephronDiagram.tsx",
       "status": "needs-review"
     },
     {
@@ -1001,6 +1058,25 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/SpinalCordSagittalDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "SpinalCordStimulatorDiagram",
+      "title": "Spinal cord stimulator",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/clinical/pain-medicine",
+          "title": "pain medicine"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/clinical/SpinalCordStimulatorDiagram.tsx",
       "status": "needs-review"
     },
     {
