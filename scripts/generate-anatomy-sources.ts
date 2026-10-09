@@ -75,7 +75,7 @@ function add(e: Omit<Entry, "status">) {
   entries.push({ ...e, sources, uncertainty, status: uncertainty.length ? "needs-review" : "cited" });
 }
 const excluded = new Set(["BrainPlatesViewer", "CorPictumFolio"]);
-const clinicalNames = new Set(["AirwayInnervationDiagram", "CaudalSurfaceAnatomyDiagram", "DermatomeMapDiagram", "NerveDermatomeOverlayDiagram", "AirwayAssessmentDiagram"]);
+const clinicalNames = new Set(["AirwayInnervationDiagram", "CaudalSurfaceAnatomyDiagram", "CaudalBlockDiagram", "DermatomeMapDiagram", "NerveDermatomeOverlayDiagram", "NephronDiagram", "CorticalJuxtamedullaryDiagram", "LaryngoscopeBladesDiagram", "SpinalCordStimulatorDiagram"]);
 const componentFiles = allComponents.filter(p => (p.includes("/diagrams/anatomy/") && !excluded.has(path.basename(p, ".tsx"))) || /\/shared\/Brain(?:Axial|Coronal|Anatomy|Medial)Diagram\.tsx$/.test(p) || clinicalNames.has(path.basename(p, ".tsx")));
 for (const p of componentFiles) {
   const file = parse(p), ctx = context(file), name = path.basename(p, ".tsx");
