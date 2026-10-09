@@ -8,7 +8,7 @@ interface Bone {
   short: string;
   walls: string;
   clinical: string;
-  /** Filled polygon describing the bone's contribution to the anterior view of the right orbit */
+   /** Filled polygon describing the bone's contribution to the anterior view of the left orbit */
   path: string;
   labelX: number;
   labelY: number;
@@ -33,7 +33,7 @@ interface Opening {
  * Geometry
  *
  * The orbital aperture is drawn as a rounded quadrilateral (anterior view of
- * the RIGHT orbit, viewer's left = patient's medial). Seven bones tile the
+ * the LEFT orbit, viewer's left = patient's medial). Seven bones tile the
  * aperture; their boundaries follow the standard topographical layout used
  * in Gray's Anatomy and Last's:
  *
@@ -339,12 +339,12 @@ const OrbitBonyAnatomyDiagram = () => {
     <DiagramFigure
       id="orbit-bony-anatomy-diagram"
       title="Orbit bony anatomy"
-      description="Filled polygon describing the bone's contribution to the anterior view of the right orbit"
+      description="Anterior view of the left orbit; medial wall on the viewer's left, lateral wall on the viewer's right."
     >
               <div className="my-6 space-y-4">
         <div className="bg-muted/30 rounded-xl border border-border p-4">
           <DiagramToggleBar
-            title="Bony Orbit — Right Orbit, Anterior View"
+            title="Bony Orbit — Left Orbit, Anterior View"
             subtitle="Tap a bone or an opening to reveal its contents and clinical relevance."
             toggles={[
               { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
@@ -356,7 +356,7 @@ const OrbitBonyAnatomyDiagram = () => {
             viewBox="0 0 600 500"
             className="w-full max-w-2xl mx-auto"
             role="img"
-            aria-label="Anatomical diagram of the right bony orbit showing the seven constituent bones, foramina and fissures"
+            aria-label="Anatomical diagram of the left bony orbit showing the seven constituent bones, foramina and fissures"
           >
             <defs>
               {/* Radial gradient — depth at the apex */}

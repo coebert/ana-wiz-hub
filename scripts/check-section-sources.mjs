@@ -58,6 +58,11 @@ function loadReferenceLabels() {
 }
 
 function extractTopicId(src) {
+  const variable = src.match(/topicId\s*=\s*\{\s*([A-Za-z_$][\w$]*)\s*\}/)?.[1];
+  if (variable) {
+    const value = src.match(new RegExp(`\\bconst\\s+${variable}\\s*=\\s*"([^"]+)"`))?.[1];
+    if (value) return value;
+  }
   const m =
     src.match(/topicId\s*=\s*"([^"]+)"/) ||
     src.match(/topicId\s*:\s*"([^"]+)"/) ||
