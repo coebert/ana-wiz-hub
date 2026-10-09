@@ -770,7 +770,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         </span>
       </div>
 
-      <div className="mt-3 flex items-center justify-between gap-2">
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
         <Button
           onClick={cycleSpeed}
           size="sm"
@@ -781,7 +781,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
           <Gauge className="mr-1.5 h-3.5 w-3.5" />
           {speed}×
         </Button>
-        <div className="flex items-center gap-1">
+        <div className="flex flex-wrap items-center gap-1">
           {/*
             Always visible: the real gate is the owner code, checked server-side
             before any regeneration is accepted. Hiding it behind the client-side
