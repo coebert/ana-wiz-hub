@@ -77,6 +77,7 @@ export const AutoTOC = ({ children, disabled, minHeadings = 4, topicId }: AutoTO
         h.id = id;
         h.classList.add("scroll-mt-24");
       }
+      if (used.has(id)) continue;
       used.add(id);
       next.push({ id, label });
 

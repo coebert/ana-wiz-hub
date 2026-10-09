@@ -156,7 +156,7 @@ function CSHTDiagram() {
 
       <div className="flex flex-col lg:flex-row gap-4 items-start">
         <div className="w-full lg:flex-1 lg:min-w-0">
-          <svg viewBox={`0 0 ${svgW} ${svgH}`} width="100%" height="auto" preserveAspectRatio="xMidYMid meet"
+          <svg viewBox={`0 0 ${svgW} ${svgH}`} width="100%" preserveAspectRatio="xMidYMid meet"
             className="w-full h-auto border border-border rounded bg-gradient-to-b from-background to-secondary/10"
 
             onMouseMove={e => {

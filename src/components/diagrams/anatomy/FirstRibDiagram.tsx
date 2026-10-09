@@ -437,7 +437,6 @@ const FirstRibDiagram = () => {
 
             {/* Long thoracic nerve - posterior to scalenus medius */}
             <g className="cursor-pointer" onClick={() => setSelected("long-thoracic-nerve")}>
-              <path d="M148" fill="none" />
               <path d="M150,140 Q148,165 145,190 Q143,210 140,230"
                 fill="none"
                 stroke={structures["long-thoracic-nerve"].color}
