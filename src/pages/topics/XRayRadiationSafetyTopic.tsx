@@ -373,6 +373,12 @@ const XRayRadiationSafetyTopic = () => {
                 with patient diameter (angular and z-axis modulation) and the kVp can be lowered for paediatric and contrast-enhanced
                 studies — together typically halving dose for an equivalent diagnostic image.<Cite refs={[{ id: "aapm-ct", n: 9 }]} />
               </p>
+              <ul className="list-disc list-inside space-y-1">
+                <li><strong>Iterative reconstruction</strong> (e.g. ASIR, IMR) builds a diagnostic image from noisier, lower-dose raw data than filtered back-projection can use.</li>
+                <li><strong>Automatic exposure control</strong> covers both mA modulation and <strong>automatic kV selection</strong>, choosing the tube voltage that gives the best contrast-to-noise ratio for that patient size and task.</li>
+                <li><strong>Collimation:</strong> pre-patient collimation limits the beam to the area of interest; post-patient (detector) collimation and anti-scatter grids reduce scatter reaching the detector.</li>
+                <li><strong>Cardiac gating:</strong> retrospective gating scans throughout the cardiac cycle and picks phases afterwards (high dose); <strong>prospective gating</strong> switches the beam on only in a chosen ECG phase, usually diastole, cutting dose substantially.</li>
+              </ul>
 
               <div className="rounded-lg border border-border bg-muted/30 p-3 not-prose">
                 <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1.5">

@@ -175,7 +175,7 @@ const keyPoints = [
     cites: ["Bhavani-Shankar & Philip 2000"],
   },
   {
-    text: "Raised baseline = patient is inspiring CO₂ (rebreathing). Causes: exhausted soda lime, faulty expiratory unidirectional valve, inadequate FGF in a Mapleson D or coaxial inner-tube disconnection (Bain — positive Pethick's test).",
+    text: "Raised baseline = patient is inspiring CO₂ (rebreathing). Causes: exhausted soda lime, faulty expiratory unidirectional valve, inadequate FGF in a Mapleson D or coaxial inner-tube disconnection (Bain — positive Pethick's test). Sort causes by breathing system. Circle: exhausted soda lime (most common — check colour change); incompetent expiratory valve (exhaled gas re-enters the inspiratory side: raised baseline with a slurred inspiratory downstroke/widened β angle); incompetent inspiratory valve (exhaled gas pushed back up the inspiratory limb). Mapleson A/D/Bain: FGF too low for the minute ventilation; for a Bain also do Pethick's test (flush with the patient port occluded then released — the bag should collapse via the Venturi effect if the inner tube is intact). Troubleshooting: (1) raise FGF immediately to wash out CO₂; (2) check soda lime colour; (3) watch the valve discs move; (4) if unresolved, switch to a self-inflating bag or a fresh circuit and change the absorber.",
     cites: ["BJA Educ 2017 Capnography"],
   },
   {
@@ -396,6 +396,30 @@ const CapnographyTopic = () => {
               </ul>
             </div>
 
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+                Nasogastric tube placement confirmation
+              </h2>
+              <div className="text-sm text-muted-foreground leading-relaxed space-y-2">
+                <p>
+                  <strong>Technique:</strong> the proximal end of the nasogastric (NG) tube is connected to a capnometer or
+                  colorimetric CO₂ detector as it is advanced, before any feed, fluid or drug is given. A sustained CO₂ trace means
+                  the tube is in the <strong>tracheobronchial tree</strong> — withdraw it immediately.
+                </p>
+                <p>
+                  <strong>Limits:</strong> absence of CO₂ makes airway placement unlikely but does <strong>not</strong> prove the tip is
+                  in the stomach — it may be coiled in the oesophagus or pharynx. False positives occur when gastric CO₂ comes from
+                  carbonated drinks, antacids or recent bag-mask ventilation; a blocked or kinked tube can give a false negative.
+                </p>
+                <p>
+                  <strong>Place in UK practice:</strong> NHS patient safety alerts name only <strong>aspirate pH 1–5.5</strong> and, if
+                  pH fails, a <strong>chest X-ray</strong> read by a competent clinician as first-line confirmation tests. Capnography is
+                  a useful extra safeguard during insertion in ventilated ICU patients but is not on its own an accepted method of
+                  confirming gastric placement. Never use the &ldquo;whoosh&rdquo; test, litmus paper or the absence of respiratory distress.
+                  <InlineRef topicId="capnography" refLabel="NHSI 2016 NG Tubes" />
+                </p>
+              </div>
+            </div>
 
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">

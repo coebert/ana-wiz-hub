@@ -296,6 +296,18 @@ const TemperatureMeasurementTopic = () => {
               </table>
               <p className="p-2 text-xs text-muted-foreground"><InlineRef topicId="temperature-measurement" refLabel="Intensive Care Med 2003" /></p>
             </div>
+            <div className="rounded-lg border border-border p-3">
+              <p className="font-semibold text-foreground mb-1">Brain temperature</p>
+              <p>
+                After traumatic brain injury, brain temperature is often higher than core temperature — on average about 1 °C,
+                and by up to 2 °C or more in some patients. The gap is associated with worse outcome and changes with cerebral
+                perfusion pressure and blood flow (a fall in CPP narrows it). <strong>Direct intraparenchymal probes</strong> (often
+                combined with an ICP monitor) are the gold standard. Nasopharyngeal probes, near the hypothalamus and internal
+                carotid supply, are the usual non-invasive surrogate, but they still read below injured-brain temperature;
+                jugular bulb temperature reflects mixed cerebral venous blood and can underestimate regional brain temperature
+                <InlineRef topicId="temperature-measurement" refLabel="Rumana 1998 Brain Temp" />.
+              </p>
+            </div>
             <p>
               The <strong>core-peripheral temperature gradient</strong> is measured simultaneously between a central site (distal oesophagus,
               bladder or pulmonary artery) and a peripheral site (finger/toe skin). Sympathetic vasoconstriction lowers peripheral temperature

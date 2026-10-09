@@ -283,7 +283,7 @@ export const physicsCaseBank: CaseBank = {
           answer: [
             "The always-on static field causes projectile injury, implant torque and displacement, and disables non-MR-safe equipment.",
             "Radiofrequency pulses deposit energy, quantified as specific absorption rate, and can heat tissue, loops of wire and ECG leads, causing burns.",
-            "Rapidly switching gradients generate acoustic noise (often over 100 dB) and peripheral nerve stimulation; cryogen loss during a quench causes asphyxiation risk from displaced oxygen.",
+            "Rapidly switching gradients generate acoustic noise (often over 110 dBA — Lorentz forces between the switched gradient current and B₀ make the coils vibrate; hearing protection is mandatory for patient and staff in the room) and peripheral nerve stimulation (Faraday induction from rapid dB/dt, felt as twitching or tapping, worse with echoplanar sequences — reassure and alter the sequence if uncomfortable); cryogen loss during a quench causes asphyxiation risk from displaced oxygen.",
           ],
         },
         {
