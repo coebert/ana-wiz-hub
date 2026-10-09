@@ -64,10 +64,10 @@ describe("CorPictumFolio overlay labels", () => {
     expect(texts.length).toBe(1);
   });
 
-  it("upper- and lower-limb folios contain polygon labels (so suppression matters)", () => {
+  it("sourced limb plates carry no hotspots drawn for the old paintings", () => {
     const hasPolygons = (folio: typeof upperLimbFolio) =>
       folio.plates.some((p) => p.labels.some((l) => l.polygon && l.polygon.length >= 3));
-    expect(hasPolygons(upperLimbFolio)).toBe(true);
-    expect(hasPolygons(lowerLimbFolio)).toBe(true);
+    expect(hasPolygons(upperLimbFolio)).toBe(false);
+    expect(hasPolygons(lowerLimbFolio)).toBe(false);
   });
 });
