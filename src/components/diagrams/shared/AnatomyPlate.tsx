@@ -144,11 +144,11 @@ const AnatomyPlate: React.FC<AnatomyPlateProps> = ({
                 {labelMetrics.map(({ label, side, w, h }) => {
                   const isHover = hovered === label.id;
                   const accent = label.accent ?? "hsl(var(--anatomy-stroke))";
-                  const labelX =
-                    side === "left" ? label.label[0] : label.label[0] - w;
+                   const requestedX = side === "left" ? label.label[0] : label.label[0] - w;
+                   const labelX = Math.max(8, Math.min(width - w - 8, requestedX));
                   const labelY = label.label[1] - h / 2;
                   const lineEndX =
-                    side === "left" ? label.label[0] + w : label.label[0] - w;
+                     side === "left" ? labelX + w : labelX;
                   const lineEndY = label.label[1];
                   const points = label.elbow
                     ? `${lineEndX},${lineEndY} ${label.elbow[0]},${label.elbow[1]} ${label.target[0]},${label.target[1]}`
