@@ -115,6 +115,7 @@ const plates: AtlasPlate[] = [
   {
     Diagram: Femoral,
     title: "Femoral triangle and fascia iliaca",
+    orientation: "Patient's right thigh, anterior view: lateral (nerve) on the viewer's left, medial (vein) on the viewer's right.",
     landmarks: [
       { text: "Borders: inguinal ligament (superior), sartorius (lateral), adductor longus (medial)", ref: "Gray's Anatomy 42e" },
       { text: "Lateral to medial: femoral nerve, artery, vein — nerve lies deep to fascia iliaca, outside the femoral sheath", ref: "Gray's Anatomy 42e" },

@@ -48,6 +48,7 @@ const plates: AtlasPlate[] = [
   {
     Diagram: Aortocaval,
     title: "Aortocaval compression",
+    orientation: "Transverse section viewed from the feet (CT convention), patient supine: patient's right on the viewer's left, spine at the bottom.",
     landmarks: [
       { text: "From about 20 weeks the supine uterus compresses the IVC and can compress the aorta, reducing venous return and uteroplacental flow", ref: "Kinsella 1994 Supine Hypotension" },
       { text: "Many women compensate through paravertebral and azygos collaterals, so compression can occur without obvious maternal hypotension", ref: "Kinsella 1994 Supine Hypotension" },

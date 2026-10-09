@@ -42,7 +42,7 @@ export const Svg = ({ title, children }: { title: string; children: ReactNode })
   </svg>
 );
 
-export type AtlasPlate = { Diagram: () => JSX.Element; title: string; landmarks: { text: string; ref: string }[]; relevance: string };
+export type AtlasPlate = { Diagram: () => JSX.Element; title: string; landmarks: { text: string; ref: string }[]; relevance: string; /** Explicit patient side and viewing direction. */ orientation?: string };
 
 export const AnatomyAtlas = ({ id, heading, topicId, plates }: { id: string; heading: string; topicId: string; plates: AtlasPlate[] }) => (
   <section id={id} className="scroll-mt-24 mb-10">
@@ -56,6 +56,7 @@ export const AnatomyAtlas = ({ id, heading, topicId, plates }: { id: string; hea
           <Diagram />
           <figcaption className="p-4 space-y-2">
             <p className="font-semibold text-foreground">{title}</p>
+            {orientation && <p className="text-xs text-muted-foreground"><strong>Orientation:</strong> {orientation}</p>}
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
               {landmarks.map((l) => (
                 <li key={l.text}>{l.text} <InlineRef topicId={topicId} refLabel={l.ref} /></li>

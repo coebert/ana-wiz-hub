@@ -50,6 +50,7 @@ const plates: AtlasPlate[] = [
   {
     Diagram: Femoral,
     title: "Femoral triangle",
+    orientation: "Patient's left thigh, anterior view: lateral (nerve) on the viewer's right, medial (vein) on the viewer's left.",
     landmarks: [
       { text: "Below the inguinal ligament the order from lateral to medial is femoral nerve, artery, vein, then the femoral canal", ref: "Gray's Anatomy 42e" },
       { text: "Femoral catheters carried a higher rate of infection and thrombosis than subclavian catheters in a large randomised trial", ref: "3SITES 2015" },
