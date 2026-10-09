@@ -34,7 +34,7 @@ const text = (v: Value | undefined) => typeof v === "string" ? v : "";
 const refsFile = parse("src/data/references.ts");
 const refsContext = context(refsFile);
 const topicReferences = object(refsContext.value(refsContext.vars.get("topicReferences")));
-const routes = [...read("src/routes/topicRoutes.ts").matchAll(/\["([^"]+)",\s*"([^"]+)"\]/g)].map(m => ({ path: m[1], module: m[2], code: read(`src/pages/topics/${m[2]}.tsx`) }));
+const routes = [...read("src/routes/topicRoutes.ts").split("export const TOPIC_REDIRECTS")[0].matchAll(/\["([^"]+)",\s*"([^"]+)"\]/g)].filter(m => fs.existsSync(`src/pages/topics/${m[2]}.tsx`)).map(m => ({ path: m[1], module: m[2], code: read(`src/pages/topics/${m[2]}.tsx`) }));
 function files(dir: string): string[] {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap(e => e.isDirectory() ? files(`${dir}/${e.name}`) : [`${dir}/${e.name}`]);
 }
@@ -76,7 +76,7 @@ function add(e: Omit<Entry, "status">) {
 }
 const excluded = new Set(["BrainPlatesViewer", "CorPictumFolio"]);
 const clinicalNames = new Set(["AirwayInnervationDiagram", "CaudalSurfaceAnatomyDiagram", "DermatomeMapDiagram", "NerveDermatomeOverlayDiagram", "AirwayAssessmentDiagram"]);
-const componentFiles = allComponents.filter(p => (p.includes("/diagrams/anatomy/") && !excluded.has(path.basename(p, ".tsx"))) || /\/shared\/Brain(?:Axial|Coronal|Sagittal|Inferior|Midsagittal).*Diagram\.tsx$/.test(p) || clinicalNames.has(path.basename(p, ".tsx")));
+const componentFiles = allComponents.filter(p => (p.includes("/diagrams/anatomy/") && !excluded.has(path.basename(p, ".tsx"))) || /\/shared\/Brain(?:Axial|Coronal|Anatomy|Medial)Diagram\.tsx$/.test(p) || clinicalNames.has(path.basename(p, ".tsx")));
 for (const p of componentFiles) {
   const file = parse(p), ctx = context(file), name = path.basename(p, ".tsx");
   const sources: Source[] = [], credits: string[] = [];
@@ -102,7 +102,8 @@ for (const p of componentFiles) {
 }
 for (const p of allComponents.filter(p => p.includes("/topic/") && /Atlas\.tsx$/.test(p) && !p.endsWith("/AnatomyAtlas.tsx"))) {
   const file = parse(p), ctx = context(file), name = path.basename(p, ".tsx");
-  const topic = text(ctx.value(ctx.vars.get("T"))) || text(ctx.value(ctx.vars.get("TOPIC")));
+  let topic = text(ctx.value(ctx.vars.get("T"))) || text(ctx.value(ctx.vars.get("TOPIC")));
+  walk(file, n => { if (ts.isJsxAttribute(n) && n.name.getText() === "topicId" && n.initializer) topic = text(ctx.value(ts.isJsxExpression(n.initializer) ? n.initializer.expression : n.initializer)) || topic; });
   walk(file, n => {
     if (!ts.isObjectLiteralExpression(n)) return;
     const plate = object(ctx.value(n));
