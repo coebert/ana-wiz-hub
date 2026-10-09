@@ -120,7 +120,8 @@ for (const [name, node] of folioCtx.vars) {
   if (!Array.isArray(folio.plates)) continue;
   for (const v of folio.plates) {
     const plate = object(v);
-    add({ id: `${name}-${text(plate.id)}`, title: text(plate.title), group: text(folio.atlasTitle), kind: "Painted atlas plate", sources: [], credit: "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.", uncertainty: [text(plate.auditWarning), "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas."].filter(Boolean), topicLinks: routes.filter(r => r.code.includes(name)).map(r => ({ title: r.path.split("/").pop()?.replace(/-/g, " ") ?? name, path: r.path })), sourceFile: folioPath });
+    const credit = text(plate.imageCredit), srcUrl = text(plate.imageSourceUrl);
+    add({ id: `${name}-${text(plate.id)}`, title: text(plate.title), group: text(folio.atlasTitle), kind: credit ? "Sourced public-domain plate" : "Painted atlas plate", sources: credit ? [{ label: "Gray's Anatomy (1918)", detail: credit, ...(srcUrl ? { url: srcUrl } : {}), basis: "Image source and licence" }] : [], credit: credit || "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.", uncertainty: credit ? [] : [text(plate.auditWarning), "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas."].filter(Boolean), topicLinks: routes.filter(r => r.code.includes(name)).map(r => ({ title: r.path.split("/").pop()?.replace(/-/g, " ") ?? name, path: r.path })), sourceFile: folioPath });
   }
 }
 entries.sort((a, b) => a.group.localeCompare(b.group) || a.title.localeCompare(b.title));

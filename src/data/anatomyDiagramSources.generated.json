@@ -1163,13 +1163,17 @@
       "id": "abdominalFolio-anterior",
       "title": "Abdominal Cavity",
       "group": "Atlas of Anatomy — Abdomen",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1034.png”: Front view of the thoracic and abdominal viscera. a. Median plane. b b. Lateral planes. c c. Trans tubercular plane. d d. Subcostal plane. e e. Transpyloric pla Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray1034.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1034.png”: Front view of the thoracic and abdominal viscera. a. Median plane. b b. Lateral planes. c c. Trans tubercular plane. d d. Subcostal plane. e e. Transpyloric pla Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "abdominal anatomy",
@@ -1177,19 +1181,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "abdominalFolio-retroperitoneum",
       "title": "Retroperitoneum",
       "group": "Atlas of Anatomy — Abdomen",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1121.png”: Posterior abdominal wall, after removal of the peritoneum, showing kidneys, suprarenal capsules, and great vessels. (Corning). Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray1121.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1121.png”: Posterior abdominal wall, after removal of the peritoneum, showing kidneys, suprarenal capsules, and great vessels. (Corning). Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "abdominal anatomy",
@@ -1197,19 +1205,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "brachialFolio-plexus",
       "title": "Brachial Plexus",
       "group": "Atlas of Anatomy — Brachial Plexus",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray807.png”: Plan of brachial plexus. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray807.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray807.png”: Plan of brachial plexus. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "brachial plexus",
@@ -1217,19 +1229,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "brachialFolio-interscalene",
       "title": "Interscalene Groove",
       "group": "Atlas of Anatomy — Brachial Plexus",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray808.png”: The right brachial plexus with its short branches, viewed from in front. The sternomastoid and trapezius muscles have been completely removed, the omohyoid and  Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray808.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray808.png”: The right brachial plexus with its short branches, viewed from in front. The sternomastoid and trapezius muscles have been completely removed, the omohyoid and  Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "brachial plexus",
@@ -1237,19 +1253,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "neuroFolio-willis",
       "title": "Circle of Willis",
       "group": "Atlas of Anatomy — Brain",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray519.png”: \"Fig. 519. — iagram of the arterial circulation at the base of the brain. A.L. Antero-lateral. A.M. Antero-medial. P.L. Postero-lateral. P.M. Posteromedial gang Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray519.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray519.png”: \"Fig. 519. — iagram of the arterial circulation at the base of the brain. A.L. Antero-lateral. A.M. Antero-medial. P.L. Postero-lateral. P.M. Posteromedial gang Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "neuroanatomy",
@@ -1257,19 +1277,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "neuroFolio-midsagittal",
       "title": "Midsagittal Section of the Brain",
       "group": "Atlas of Anatomy — Brain",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray720.png”:  Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray720.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray720.png”:  Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "neuroanatomy",
@@ -1277,19 +1301,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "neuroFolio-skullbase-superior",
       "title": "Skull Base from Above",
       "group": "Atlas of Anatomy — Brain",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray193.png”: Base of the en:skull. Inner or cerebral surface. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray193.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray193.png”: Base of the en:skull. Inner or cerebral surface. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "neuroanatomy",
@@ -1297,19 +1325,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "neuroFolio-skullbase-inferior",
       "title": "Skull Base from Below",
       "group": "Atlas of Anatomy — Brain",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray187.png”: Base of the Human skull. External surface. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray187.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray187.png”: Base of the Human skull. External surface. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "neuroanatomy",
@@ -1317,19 +1349,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "headNeckFolio-neck-c6-axial",
       "title": "Axial Section — C6 (Cricoid Level)",
       "group": "Atlas of Anatomy — Head and Neck",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray384.png”: A cross-section diagram of the human neck at the level of C6 showing the fascia compartments, muscles, organs, bone, and major arteries, veins, and nerves. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray384.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray384.png”: A cross-section diagram of the human neck at the level of C6 showing the fascia compartments, muscles, organs, bone, and major arteries, veins, and nerves. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "head neck anatomy",
@@ -1337,19 +1373,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "headNeckFolio-carotid",
       "title": "Carotid Sheath",
       "group": "Atlas of Anatomy — Head and Neck",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray513.png”: The internal carotid and vertebral arteries. Right side. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray513.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray513.png”: The internal carotid and vertebral arteries. Right side. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "head neck anatomy",
@@ -1357,19 +1397,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "headNeckFolio-orbit-frontal",
       "title": "Orbit — Extraocular Muscles",
       "group": "Atlas of Anatomy — Head and Neck",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray890.png”: Blick in die rechte Orbita von vorne nach Entfernen des Bulbus und der vorderen Anteile der anderen Strukturen. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray890.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray890.png”: Blick in die rechte Orbita von vorne nach Entfernen des Bulbus und der vorderen Anteile der anderen Strukturen. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "head neck anatomy",
@@ -1377,19 +1421,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "headNeckFolio-superficial",
       "title": "Parotid and Cervical Region",
       "group": "Atlas of Anatomy — Head and Neck",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray378.png”: Muscles of the head, face, and neck. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray378.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray378.png”: Muscles of the head, face, and neck. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "head neck anatomy",
@@ -1397,19 +1445,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "headNeckFolio-orbit",
       "title": "The Orbit",
       "group": "Atlas of Anatomy — Head and Neck",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray889.png”:  Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray889.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray889.png”:  Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "head neck anatomy",
@@ -1417,19 +1469,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "lowerLimbFolio-lower-arteries",
       "title": "Arterial Supply of the Lower Limb",
       "group": "Atlas of Anatomy — Lower Limb",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray548.png”:  Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray548.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray548.png”:  Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "lower limb anatomy",
@@ -1437,19 +1493,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "lowerLimbFolio-femoral",
       "title": "Femoral Triangle",
       "group": "Atlas of Anatomy — Lower Limb",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray549.png”:  Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray549.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray549.png”:  Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "lower limb anatomy",
@@ -1457,19 +1517,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "lowerLimbFolio-lower-nerves",
       "title": "Innervation of the Lower Limb",
       "group": "Atlas of Anatomy — Lower Limb",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray832.png”: Nerves of the right lower extremity Posterior view. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray832.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray832.png”: Nerves of the right lower extremity Posterior view. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "lower limb anatomy",
@@ -1477,19 +1541,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "lowerLimbFolio-popliteal",
       "title": "Popliteal Fossa",
       "group": "Atlas of Anatomy — Lower Limb",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray550.png”:  Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray550.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray550.png”:  Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "lower limb anatomy",
@@ -1497,19 +1565,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "lowerLimbFolio-lower-veins",
       "title": "Venous Drainage of the Lower Limb",
       "group": "Atlas of Anatomy — Lower Limb",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray581.png”:  Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray581.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray581.png”:  Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "lower limb anatomy",
@@ -1517,19 +1589,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "thoracicFolio-first-rib",
       "title": "First Rib",
       "group": "Atlas of Anatomy — Thorax",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “First rib Gray.png”: Peculiar ribs. First rib. Atipic rib. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:First_rib_Gray.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “First rib Gray.png”: Peculiar ribs. First rib. Atipic rib. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "thoracic anatomy",
@@ -1537,7 +1613,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "thoracicFolio-mediastinum",
@@ -1563,14 +1639,17 @@
       "id": "thoracicFolio-anterior",
       "title": "Thoracic Cavity",
       "group": "Atlas of Anatomy — Thorax",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "The printed ‘Left lung’ leader incorrectly points to the patient's right chest. In an anterior view, the patient's left lung is on the viewer's right. The chest wall is shown, not removed; the clavicle is not rib 1.",
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1178.png”:  Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray1178.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1178.png”:  Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "thoracic anatomy",
@@ -1578,19 +1657,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "airwayFolio-laryngoscopic",
       "title": "Laryngeal Inlet",
       "group": "Atlas of Anatomy — Upper Airway",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray956.png”: Laryngoscopic view of interior of larynx. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray956.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray956.png”: Laryngoscopic view of interior of larynx. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "airway management",
@@ -1602,19 +1685,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "airwayFolio-axial",
       "title": "Larynx — Axial Section",
       "group": "Atlas of Anatomy — Upper Airway",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray960.png”: Muscles of larynx, seen from above. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray960.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray960.png”: Muscles of larynx, seen from above. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "airway management",
@@ -1626,19 +1713,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "airwayFolio-coronal",
       "title": "Larynx — Coronal Section",
       "group": "Atlas of Anatomy — Upper Airway",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray954.png”: Coronal section of larynx and upper part of trachea. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray954.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray954.png”: Coronal section of larynx and upper part of trachea. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "airway management",
@@ -1650,20 +1741,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "airwayFolio-sagittal",
       "title": "Oropharynx and Larynx",
       "group": "Atlas of Anatomy — Upper Airway",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "The printed vertebral labels are unreliable: the atlas (C1) has no vertebral body, and the cricoid is normally at approximately C6 in adults. The vallecula is between the tongue base and epiglottis, not behind the epiglottis as the printed leader suggests. Use the labelled diagrams and text for these landmarks.",
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray994.png”: Sagittal section of nose, mouth, pharynx, and larynx. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray994.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray994.png”: Sagittal section of nose, mouth, pharynx, and larynx. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "airway management",
@@ -1675,19 +1769,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "upperLimbFolio-upper-arteries",
       "title": "Arterial Supply of the Upper Limb",
       "group": "Atlas of Anatomy — Upper Limb",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray528.png”:  Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray528.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray528.png”:  Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "upper limb anatomy",
@@ -1695,19 +1793,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "upperLimbFolio-axilla",
       "title": "Axillary Region",
       "group": "Atlas of Anatomy — Upper Limb",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray523.png”: The axillary artery and its branches. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray523.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray523.png”: The axillary artery and its branches. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "upper limb anatomy",
@@ -1715,19 +1817,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "upperLimbFolio-forearm",
       "title": "Forearm and Wrist",
       "group": "Atlas of Anatomy — Upper Limb",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray417.png”:  Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray417.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray417.png”:  Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "upper limb anatomy",
@@ -1735,19 +1841,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "upperLimbFolio-upper-nerves",
       "title": "Innervation of the Upper Limb",
       "group": "Atlas of Anatomy — Upper Limb",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray818.png”: The suprascapular, axillary, and radial nerves. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray818.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray818.png”: The suprascapular, axillary, and radial nerves. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "upper limb anatomy",
@@ -1755,19 +1865,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "upperLimbFolio-upper-veins",
       "title": "Venous Drainage of the Upper Limb",
       "group": "Atlas of Anatomy — Upper Limb",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray574.png”:  Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray574.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray574.png”:  Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "upper limb anatomy",
@@ -1775,19 +1889,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "spinalFolio-caudal",
       "title": "Caudal Block Landmarks",
       "group": "Atlas of Anatomy — Vertebral Column",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray96.png”: Sacrum, dorsal surface. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray96.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray96.png”: Sacrum, dorsal surface. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "spinal anatomy",
@@ -1795,19 +1913,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "spinalFolio-sagittal",
       "title": "Epidural and Subarachnoid Spaces",
       "group": "Atlas of Anatomy — Vertebral Column",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray301.png”: Median sagittal section of two lumbar vertebræ and their ligaments. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray301.png",
+          "basis": "Image source and licence"
+        }
       ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray301.png”: Median sagittal section of two lumbar vertebræ and their ligaments. Public domain.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "title": "spinal anatomy",
@@ -1815,7 +1937,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "spinalFolio-posterior",
