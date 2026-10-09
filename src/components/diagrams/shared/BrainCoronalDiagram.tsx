@@ -148,7 +148,7 @@ export const BrainCoronalPlate = () => (
         />
       </div>
       <figcaption className="px-4 sm:px-6 py-3 text-xs text-muted-foreground italic border-t border-border">
-        Gray's Anatomy reference plate with its original printed labels. Right hemisphere on viewer's left (anatomical convention).
+        Gray's Anatomy reference plate with its original printed labels. One hemisphere shown, midline on the viewer's left and lateral surface on the right.
       </figcaption>
     </figure>
 

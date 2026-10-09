@@ -148,7 +148,7 @@ export const BrainAxialPlate = () => (
         />
       </div>
       <figcaption className="px-4 sm:px-6 py-3 text-xs text-muted-foreground italic border-t border-border">
-        Gray's Anatomy reference plate with its original printed labels. Frontal lobes anterior (top); occipital lobes posterior (bottom).
+        Gray's Anatomy reference plate with its original printed labels. Right hemisphere only: frontal pole at the top, occipital pole at the bottom, midline on the viewer's left.
       </figcaption>
     </figure>
 
