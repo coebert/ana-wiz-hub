@@ -218,8 +218,8 @@ const TemperatureMeasurementTopic = () => {
               Vout is zero (most accurate, no current drawn), while a <em>deflection</em> version reads Vout directly
               (used for continuous monitoring). A second, identical thermistor in an adjacent arm can compensate for
               ambient temperature. Long lead resistance introduces error, mitigated by a three- or four-wire RTD
-              connection. Self-heating of the thermistor by the excitation current is itself a source of error, so the
-              excitation current is kept small <InlineRef topicId="temperature-measurement" refLabel="Cross & Plunkett Ch.11" />.
+              connection. <strong>Self-heating</strong> is a key source of error: a current must pass through the thermistor to measure its resistance, and that current dissipates power (P = I²R) as heat, warming the bead slightly above the tissue it is measuring so it over-reads. It is minimised by keeping the
+              excitation current very small <InlineRef topicId="temperature-measurement" refLabel="Cross & Plunkett Ch.11" />.
             </p>
             <p>
               <strong>Clinical use:</strong> The thermistor at the tip of a <strong>pulmonary artery (PA) catheter</strong> measures
@@ -363,11 +363,31 @@ const TemperatureMeasurementTopic = () => {
           <p className="text-muted-foreground leading-relaxed">
             For a new fever in a critically ill adult, use a central measurement—PA-catheter, bladder-catheter or oesophageal
             thermistor—when already present or when precision will change diagnosis or treatment. Do not insert an invasive device solely
-            to measure temperature. Without central access, oral or rectal measurement is preferred over less reliable axillary, temporal
-            or non-contact methods. This differs from routine intraoperative practice, where distal oesophageal or nasopharyngeal probes
+            to measure temperature. Without these devices, <strong>oral or rectal</strong> measurement is recommended. <strong>Axillary, tympanic, temporal artery and chemical dot</strong> thermometers are less reliable and should not be used for critical decisions when a better method is available. This differs from routine intraoperative practice, where distal oesophageal or nasopharyngeal probes
             are convenient continuous choices <InlineRef topicId="temperature-measurement" refLabel="SCCM IDSA Fever 2023" />.
           </p>
         </div>
+          <div className="mt-6">
+            <h2 className="text-xl font-bold text-foreground mb-2">Accidental Hypothermia</h2>
+            <div className="text-muted-foreground leading-relaxed space-y-3">
+              <p><strong>Definition:</strong> an unintended fall in core temperature below <strong>35 °C</strong>.</p>
+              <div className="overflow-x-auto rounded-lg border border-border">
+                <table className="w-full text-sm">
+                  <thead className="bg-secondary/40"><tr><th className="p-2 text-left text-foreground">Swiss stage</th><th className="p-2 text-left text-foreground">Clinical signs</th><th className="p-2 text-left text-foreground">Typical core temp</th></tr></thead>
+                  <tbody>
+                    <tr className="border-t border-border"><td className="p-2">I</td><td className="p-2">Conscious, shivering</td><td className="p-2">35–32 °C</td></tr>
+                    <tr className="border-t border-border"><td className="p-2">II</td><td className="p-2">Impaired consciousness, not shivering</td><td className="p-2">&lt;32–28 °C</td></tr>
+                    <tr className="border-t border-border"><td className="p-2">III</td><td className="p-2">Unconscious, vital signs present</td><td className="p-2">&lt;28 °C</td></tr>
+                    <tr className="border-t border-border"><td className="p-2">IV</td><td className="p-2">No vital signs (cardiac arrest)</td><td className="p-2">Variable</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>Staging uses clinical signs because core temperature is often hard to measure in the field; the 2021 update grades by risk of cardiac arrest.</p>
+              <p><strong>High risk of cardiac arrest:</strong> core temperature &lt;30 °C in young healthy patients or &lt;32 °C in the elderly or comorbid, ventricular arrhythmias, or systolic BP &lt;90 mmHg. These patients should go directly to a centre that can provide extracorporeal life support (ECLS).</p>
+              <p><strong>Rewarming:</strong> passive external (remove wet clothes, insulate — mild cases); active external (forced warm air, warming blankets); active internal (warm IV fluids, warm humidified gases, body-cavity lavage); and extracorporeal (VA-ECMO or cardiopulmonary bypass), the fastest method.</p>
+              <p><strong>ECLS rewarming</strong> is indicated for hypothermic cardiac arrest and for hypothermia with cardiovascular instability that does not respond to treatment. Survival with good neurological outcome is possible after prolonged CPR — hence &ldquo;nobody is dead until warm and dead&rdquo;. A very high serum potassium suggests asphyxia before cooling and makes survival unlikely <InlineRef topicId="temperature-measurement" refLabel="Paal 2022 Accidental Hypothermia" />.</p>
+            </div>
+          </div>
           <ExamPitfallsCallout
             accent="physics"
             pitfalls={[

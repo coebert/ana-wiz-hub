@@ -247,6 +247,11 @@ const GasLawsTopic = () => {
                 A pneumothorax at altitude: as atmospheric pressure decreases, Boyle's law predicts the trapped gas will
                 expand, potentially converting a simple pneumothorax to a tension pneumothorax.
               </p>
+              <ul className="text-sm text-muted-foreground mt-2 list-disc list-inside space-y-1">
+                <li><strong>Spontaneous breathing:</strong> diaphragm contraction enlarges the chest, so intrapleural and alveolar pressure fall below atmospheric and air flows in.</li>
+                <li><strong>Mechanical ventilation:</strong> squeezing a reservoir bag or compressing ventilator bellows reduces gas volume, raising its pressure and driving gas into the lungs.</li>
+                <li><strong>Cylinder contents:</strong> for a gas cylinder (not N₂O), remaining volume at atmospheric pressure ≈ gauge pressure (bar) × water capacity (L) — e.g. a half-reading of 68 bar in a 4.7 L cylinder leaves roughly 320 L.</li>
+              </ul>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -604,6 +609,11 @@ const GasLawsTopic = () => {
               coefficient). It underpins oxygen and carbon dioxide transport in blood, alveolar uptake of volatile
               anaesthetic agents, and the behaviour of dissolved gases under altered ambient pressure.
             </p>
+            <ul className="text-foreground/90 leading-relaxed list-disc list-inside space-y-1 mt-2">
+              <li><strong>Solubility coefficients:</strong> the <strong>Bunsen</strong> coefficient is the volume of gas, corrected to STP, dissolved per unit volume of liquid at 1 atm partial pressure; the <strong>Ostwald</strong> coefficient is the volume dissolved per unit volume of liquid at the temperature concerned (independent of pressure). A partition coefficient such as blood:gas is the ratio of concentrations in two phases at equilibrium.</li>
+              <li><strong>Temperature:</strong> gas solubility in liquids rises as temperature falls. In hypothermic cardiopulmonary bypass more CO₂ dissolves, so PaCO₂ falls and pH rises. <strong>Alpha-stat</strong> management reads gases corrected to 37 °C and accepts this; <strong>pH-stat</strong> adds CO₂ to keep the temperature-corrected PaCO₂ normal.</li>
+              <li>CO₂ is about <strong>20–24 times more soluble</strong> in blood than O₂.</li>
+            </ul>
             <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
               <p className="text-sm font-medium text-foreground">Clinical Application</p>
               <p className="text-sm text-muted-foreground mt-1">

@@ -162,6 +162,11 @@ const OpticsLightTopic = () => {
                 of the speed of light in vacuum to its speed in the medium.
               </p>
               <p>
+                Put simply, it measures how much light slows down — and therefore bends — when entering a medium. Typical values:
+                air ≈ 1.0, water ≈ 1.33, glass ≈ 1.5, diamond ≈ 2.4. Refractive index also varies with wavelength
+                (<strong>dispersion</strong>), which is why a prism splits white light into a spectrum.
+              </p>
+              <p>
                 When light travels from a dense to a less dense medium (n₁ &gt; n₂) and exceeds the <strong>critical angle</strong>
                 (sin θc = n₂/n₁), all light is reflected back into the denser medium — <strong>total internal reflection (TIR)</strong>.
                 This is the fundamental principle behind fibreoptic light transmission. TIR is complete, with no light lost to
@@ -219,6 +224,16 @@ const OpticsLightTopic = () => {
                 <li>Absorbers must be <strong>independent</strong>; with a mixture, total absorbance is only the simple sum of
                   each species' absorbance if they do not interact — and n wavelengths are needed to resolve n species.</li>
               </ul>
+              <p className="font-medium text-foreground mt-3">Advanced optical monitoring: the microcirculation</p>
+              <p>
+                <strong>Orthogonal polarisation spectral (OPS)</strong> imaging and its successor <strong>sidestream dark field (SDF)</strong>
+                imaging (and newer incident dark field devices) use green light absorbed by haemoglobin to show red cells flowing in
+                small vessels, usually under the tongue. In sepsis and shock they show microcirculatory flow, which can stay poor even
+                when blood pressure and cardiac output have been restored. Reported measures include the <strong>Microvascular Flow
+                Index (MFI)</strong>, <strong>proportion of perfused vessels (PPV)</strong>, total and perfused vessel density, and a
+                heterogeneity index. It remains a research and specialist tool, but it gives a direct view of tissue perfusion beyond
+                global measures <InlineRef topicId="optics-light" refLabel="Massey 2016 Microcirculation" />.
+              </p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
