@@ -178,11 +178,11 @@ export const DiaphragmDiagram = () => {
   
           {/* ===== PHRENIC NERVES ===== */}
           {/* Right phrenic */}
-           <path d="M 190,60 Q 200,100 210,140 Q 220,165 225,172" fill="none" stroke="hsl(50, 70%, 50%)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5" />
+           <path d="M 190,60 Q 200,100 210,140 Q 220,165 225,172" fill="none" stroke="hsl(50, 70%, 50%)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5" pointerEvents="none" />
            <text x="165" y="95" fontSize="6" fill="hsl(50, 65%, 45%)" fontStyle="italic">R. phrenic (C3,4,5)</text>
   
           {/* Left phrenic */}
-           <path d="M 310,60 Q 300,100 290,140 Q 280,170 275,190" fill="none" stroke="hsl(50, 70%, 50%)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5" />
+           <path d="M 310,60 Q 300,100 290,140 Q 280,170 275,190" fill="none" stroke="hsl(50, 70%, 50%)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5" pointerEvents="none" />
            <text x="315" y="95" fontSize="6" fill="hsl(50, 65%, 45%)" fontStyle="italic">L. phrenic (C3,4,5)</text>
   
           {/* Motor supply label */}
