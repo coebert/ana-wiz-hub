@@ -35,7 +35,7 @@ const zones: Zone[] = [
     color: "hsl(340,65%,55%)",
     topicalMethod: "Lidocaine spray / gargle or bilateral IX nerve block",
      detail: "CN IX provides sensation to the posterior third of the tongue, tonsillar fossa and oropharynx. The gag reflex afferent runs via IX. The palatoglossal fold is the anterior tonsillar pillar, a landmark for an intraoral glossopharyngeal block. Topical lidocaine is an alternative; soft-palate sensation is principally via palatine branches of V₂.",
-    path: "M 140,175 C 145,160 160,150 180,148 L 210,148 C 225,150 235,158 238,170 L 240,190 C 242,205 238,220 230,230 L 200,238 C 180,240 160,238 150,230 C 142,222 138,200 140,175 Z",
+    path: "M 142,152 L 236,152 C 238,160 239,170 240,190 C 242,205 238,216 230,224 L 200,228 C 180,229 160,228 150,222 C 142,214 138,200 140,175 C 140,165 141,158 142,152 Z",
   },
   {
     id: "supraglottic",
@@ -45,7 +45,7 @@ const zones: Zone[] = [
     color: "hsl(45,80%,50%)",
     topicalMethod: "Bilateral SLN block or 'spray-as-you-go' via scope",
     detail: "The internal branch of the SLN pierces the thyrohyoid membrane to provide sensation from the epiglottis to the vocal cords (supraglottic mucosa). Blocked by depositing LA in the pyriform fossa or by infiltrating below the greater cornu of the hyoid. This abolishes the cough reflex above the cords.",
-    path: "M 150,250 C 155,240 170,232 185,230 L 205,230 C 220,232 232,240 235,252 L 237,268 C 238,278 235,290 228,298 L 210,305 C 195,310 175,310 162,305 C 153,298 148,280 150,250 Z",
+    path: "M 150,250 C 155,240 170,232 185,230 L 205,230 C 220,232 232,240 235,252 L 237,268 C 238,278 235,288 228,294 L 210,299 C 195,300 175,300 162,297 C 153,292 148,280 150,250 Z",
   },
   {
     id: "subglottic",
@@ -65,7 +65,7 @@ const zones: Zone[] = [
     color: "hsl(270,55%,55%)",
     topicalMethod: "Topical lidocaine or lingual nerve block",
     detail: "The lingual nerve (branch of V₃) provides general sensation to the anterior two-thirds of the tongue and floor of the mouth. It travels medial to the mandible in the submandibular region. Topical 4% lidocaine applied to the tongue or bilateral lingual nerve block at the pterygomandibular fold.",
-    path: "M 155,148 C 158,135 170,125 185,122 L 205,122 C 218,125 228,132 230,145 L 232,155 C 233,162 230,170 222,175 L 205,178 C 190,180 172,180 160,175 C 153,170 152,160 155,148 Z",
+    path: "M 155,140 C 158,131 170,124 185,122 L 205,122 C 218,124 228,131 230,140 L 231,150 L 155,150 Z",
   },
 ];
 

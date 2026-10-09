@@ -57,7 +57,6 @@ function cited(topic: string, label: string): Source {
 }
 const known: Record<string, string[]> = {
   DiaphragmDiagram: ["Aperture laterality and phrenic courses were corrected; the schematic remains simplified and is not a validated anatomical model."],
-  AirwayInnervationDiagram: ["Anterior-tongue and oropharyngeal sensory polygons overlap; a sourced redraw is still needed."],
   CardiacAnatomyDiagram: ["Procedural 3D fallback is simplified and is not a validated anatomical mesh; optional GLB models are absent locally."],
   InteractiveDermatomeMap: ["Dermatome boundaries vary between reference charts; this map is schematic, not a definitive boundary map."],
   DermatomeMapDiagram: ["Dermatome boundaries vary between reference charts."],

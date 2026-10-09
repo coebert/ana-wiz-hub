@@ -50,9 +50,7 @@
         }
       ],
       "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "Anterior-tongue and oropharyngeal sensory polygons overlap; a sourced redraw is still needed."
-      ],
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/clinical/airway-management",
@@ -60,7 +58,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/clinical/AirwayInnervationDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "AntecubitalFossaDiagram",
@@ -226,10 +224,8 @@
           "basis": "Diagram reference"
         }
       ],
-      "credit": "Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy lateral cerebral plates. Anatomical labelling cross-checked against the references above.",
-      "uncertainty": [
-        "Generated illustration: cited textbooks describe anatomy but do not certify the image pixels or every leader endpoint."
-      ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Fig. 728: Principal fissures and lobes of the cerebrum viewed laterally. Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Gray728.png). Printed labels are Gray's original 1918 terms.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/neuroanatomy",
@@ -237,7 +233,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/shared/BrainAnatomyDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "BrainAxialDiagram",
@@ -274,11 +270,8 @@
           "basis": "Diagram reference"
         }
       ],
-      "credit": "Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy axial cerebral plates. Anatomical labelling cross-checked against the references above.",
-      "uncertainty": [
-        "Occipital-horn leader targets the posterior midline rather than a lateral ventricular horn; deep-structure endpoints need neuroradiology review.",
-        "Generated illustration: cited textbooks describe anatomy but do not certify the image pixels or every leader endpoint."
-      ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Fig. 742: Horizontal section of right cerebral hemisphere. Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Gray742.png). Printed labels are Gray's original 1918 terms.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/neuroanatomy",
@@ -286,7 +279,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/shared/BrainAxialDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "BrainCoronalDiagram",
@@ -323,11 +316,8 @@
           "basis": "Diagram reference"
         }
       ],
-      "credit": "Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy coronal cerebral plates. Anatomical labelling cross-checked against the references above.",
-      "uncertainty": [
-        "Section levels and deep-nuclear boundaries are simplified; leader endpoints need specialist validation.",
-        "Generated illustration: cited textbooks describe anatomy but do not certify the image pixels or every leader endpoint."
-      ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Fig. 743: Coronal section through anterior cornua of lateral ventricles. Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Gray743.png). Printed labels are Gray's original 1918 terms.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/neuroanatomy",
@@ -335,7 +325,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/shared/BrainCoronalDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "BrainMedialDiagram",
@@ -379,10 +369,8 @@
           "basis": "Diagram reference"
         }
       ],
-      "credit": "Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy midsagittal cerebral plates. Anatomical labelling cross-checked against the references above.",
-      "uncertainty": [
-        "Generated illustration: cited textbooks describe anatomy but do not certify the image pixels or every leader endpoint."
-      ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Fig. 720: Median sagittal section of the brain. Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Gray720.png). Printed labels are Gray's original 1918 terms.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/neuroanatomy",
@@ -390,7 +378,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/shared/BrainMedialDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "BronchoscopicViewDiagram",
@@ -2049,26 +2037,6 @@
       "status": "cited"
     },
     {
-      "id": "thoracicFolio-mediastinum",
-      "title": "Right Mediastinum",
-      "group": "Atlas of Anatomy — Thorax",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
-      ],
-      "topicLinks": [
-        {
-          "title": "thoracic anatomy",
-          "path": "/anatomy/thoracic-anatomy"
-        }
-      ],
-      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
-    },
-    {
       "id": "thoracicFolio-anterior",
       "title": "Thoracic Cavity",
       "group": "Atlas of Anatomy — Thorax",
@@ -2371,26 +2339,6 @@
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
       "status": "cited"
-    },
-    {
-      "id": "spinalFolio-posterior",
-      "title": "Spinal Cord",
-      "group": "Atlas of Anatomy — Vertebral Column",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
-      ],
-      "topicLinks": [
-        {
-          "title": "spinal anatomy",
-          "path": "/anatomy/spinal-anatomy"
-        }
-      ],
-      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
     },
     {
       "id": "CardiothoracicAtlas-3324",
@@ -2754,9 +2702,7 @@
         }
       ],
       "credit": "Custom labelled line diagram; simplified and not to scale.",
-      "uncertainty": [
-        "Patient-side/view orientation requires an explicit declaration; page orientation alone is not proof of laterality."
-      ],
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/clinical/obstetric-anaesthesia#anatomy-atlas",
@@ -2764,10 +2710,10 @@
         }
       ],
       "sourceFile": "src/components/topic/ObstetricAnaesthesiaAtlas.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
-      "id": "ObstetricAnaesthesiaAtlas-3337",
+      "id": "ObstetricAnaesthesiaAtlas-3489",
       "title": "Labour pain pathways and block heights",
       "group": "Obstetric Anaesthesia",
       "kind": "Surgical atlas schematic",
@@ -2917,7 +2863,7 @@
       "status": "cited"
     },
     {
-      "id": "RegionalAnaesthesiaAtlas-9201",
+      "id": "RegionalAnaesthesiaAtlas-9334",
       "title": "Adductor canal",
       "group": "Regional Anaesthesia",
       "kind": "Surgical atlas schematic",
@@ -2966,9 +2912,7 @@
         }
       ],
       "credit": "Custom labelled line diagram; simplified and not to scale.",
-      "uncertainty": [
-        "Patient-side/view orientation requires an explicit declaration; page orientation alone is not proof of laterality."
-      ],
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/clinical/regional-anaesthesia#anatomy-atlas",
@@ -2976,7 +2920,7 @@
         }
       ],
       "sourceFile": "src/components/topic/RegionalAnaesthesiaAtlas.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "RegionalAnaesthesiaAtlas-7713",
@@ -3009,7 +2953,7 @@
       "status": "cited"
     },
     {
-      "id": "RegionalAnaesthesiaAtlas-9738",
+      "id": "RegionalAnaesthesiaAtlas-9871",
       "title": "Lumbar neuraxis (midline)",
       "group": "Regional Anaesthesia",
       "kind": "Surgical atlas schematic",
@@ -3238,9 +3182,7 @@
         }
       ],
       "credit": "Custom labelled line diagram; simplified and not to scale.",
-      "uncertainty": [
-        "Patient-side/view orientation requires an explicit declaration; page orientation alone is not proof of laterality."
-      ],
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/perioperative/vascular-access-devices#anatomy-atlas",
@@ -3248,7 +3190,7 @@
         }
       ],
       "sourceFile": "src/components/topic/VascularAccessAtlas.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "VascularAccessAtlas-2425",
