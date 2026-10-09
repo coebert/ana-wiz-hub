@@ -8,7 +8,8 @@ vi.mock("@/components/layout/SectionLayout", () => ({ SectionLayout: ({ children
 
 describe("Anatomy diagram sources", () => {
   it("includes every surgical atlas plate, all painted plates and all four brain views", () => {
-    expect(inventory.entries.filter(e => e.kind === "Painted atlas plate")).toHaveLength(33);
+    expect(inventory.entries.filter(e => e.kind === "Painted atlas plate")).toHaveLength(2);
+    expect(inventory.entries.filter(e => e.kind === "Sourced public-domain plate")).toHaveLength(31);
     expect(inventory.entries.filter(e => e.kind === "Surgical atlas schematic")).toHaveLength(32);
     for (const id of ["BrainAxialDiagram", "BrainCoronalDiagram", "BrainAnatomyDiagram", "BrainMedialDiagram", "NephronDiagram"]) expect(inventory.entries.some(e => e.id === id)).toBe(true);
     expect(new Set(inventory.entries.map(e => e.id)).size).toBe(inventory.entries.length);
@@ -20,7 +21,9 @@ describe("Anatomy diagram sources", () => {
       expect(e.sources.some(s => s.detail?.includes("could not be resolved"))).toBe(false);
     }
     expect(inventory.entries.find(e => e.id === "BrainAxialDiagram")?.uncertainty.join(" ")).toContain("Occipital-horn");
-    expect(inventory.entries.find(e => e.id === "airwayFolio-sagittal")?.uncertainty.join(" ")).toContain("C1");
+    const sagittal = inventory.entries.find(e => e.id === "airwayFolio-sagittal");
+    expect(sagittal?.credit).toContain("Public domain");
+    expect(sagittal?.sources[0]?.url).toContain("commons.wikimedia.org");
   });
   it("searches by source and shows an honest empty state", () => {
     render(<MemoryRouter><DiagramSources /></MemoryRouter>);

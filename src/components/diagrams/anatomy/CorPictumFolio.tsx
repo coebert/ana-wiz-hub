@@ -88,6 +88,10 @@ export interface CorPictumPlate {
   caption: string;
   /** Specific unresolved anatomy issue in the printed artwork. */
   auditWarning?: string;
+  /** Attribution and licence for sourced (non-original) artwork. */
+  imageCredit?: string;
+  /** Source page for the artwork (e.g. Wikimedia Commons file page). */
+  imageSourceUrl?: string;
   /** Italic Latin labels with English translations and notes */
   labels: CorPictumLabel[];
   /**
@@ -1009,6 +1013,14 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
             <p className="mt-3 text-center font-serif text-xs sm:text-sm text-muted-foreground">
               {active.caption}
             </p>
+            {active.imageCredit && (
+              <p className="mt-1 text-center text-[11px] text-muted-foreground">
+                Image: {active.imageCredit}{" "}
+                {active.imageSourceUrl && (
+                  <a href={active.imageSourceUrl} target="_blank" rel="noopener noreferrer" className="underline">Source</a>
+                )}
+              </p>
+            )}
             {active.auditWarning && (
               <p role="note" className="mt-2 border-l-2 border-destructive pl-3 text-sm text-foreground">
                 <strong>Anatomy correction:</strong> {active.auditWarning}
