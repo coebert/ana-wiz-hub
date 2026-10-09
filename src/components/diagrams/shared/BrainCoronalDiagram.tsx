@@ -172,6 +172,7 @@ export const BrainCoronalPlate = () => (
       </div>
       <figcaption className="px-4 sm:px-6 py-3 text-xs text-muted-foreground italic border-t border-border">
         Anatomical reference plate with overlay labels. Right hemisphere on viewer's left (anatomical convention).
+        <span className="block mt-2 not-italic text-foreground">Specialist anatomical review pending: this illustration simplifies section levels and deep-nuclear boundaries; its leader endpoints are not certified for definitive structure identification.</span>
       </figcaption>
     </figure>
 
