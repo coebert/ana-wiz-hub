@@ -284,7 +284,7 @@ const BreathingCircuitsTopic = () => {
                     reservoir bag and APL valve (lever up — <strong>A</strong>) or to the ventilator port, bypassing bag and valve
                     (lever down — <strong>D/E</strong>). Moving it re-routes expiratory gas; it does not change the tubing.</li>
                   <li><strong>A mode (spontaneous):</strong> behaves like a Lack (coaxial Mapleson A); efficient at FGF ≈ alveolar
-                    minute ventilation (around 50–70 mL/kg/min in adults).</li>
+                    minute ventilation (around 50–70 mL/kg/min in adults) <InlineRef topicId="breathing-circuits" refLabel="Anaesthesia 1989 ADE" />.</li>
                   <li><strong>D mode (controlled):</strong> with a ventilator attached it behaves like a Bain (coaxial Mapleson D),
                     efficient for IPPV.</li>
                   <li><strong>E mode:</strong> with low-resistance tubing and no bag in circuit, it acts as a T-piece (Mapleson E) —
