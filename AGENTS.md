@@ -1,1 +1,2 @@
 - Audit corpus lives in the private `audit-corpus` storage bucket (built to data-build/ by `npm run build:audit-corpus`, then uploaded); the audit-topics function downloads it at runtime — bundling it made the function too large to deploy.
+- Diagram snapshot discovery recursively scans diagram folders and topic atlases, including static SVG plates, so moving a file or omitting interaction cannot silently remove it from visual review.
