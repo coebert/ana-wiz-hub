@@ -40,7 +40,9 @@ function findObjects(src) {
   function visit(node) {
     if (ts.isObjectLiteralExpression(node)) {
       // Only direct properties: nested objects must not supply a parent's label/roots.
-      const body = node.properties.filter(ts.isPropertyAssignment).map((p) => p.getText(tree)).join(",\n");
+      const body = node.properties.filter(ts.isPropertyAssignment)
+        .filter((p) => !ts.isObjectLiteralExpression(p.initializer))
+        .map((p) => p.getText(tree)).join(",\n");
       out.push({ body, idx: node.getStart(tree) });
     }
     ts.forEachChild(node, visit);
