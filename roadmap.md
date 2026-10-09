@@ -22,3 +22,5 @@
   - [x] Review source inventories and rendered views; correct verified code-side anatomy and rendering errors
   - [ ] Specialist verification/redrawing of painted plate leaders and deep-brain geometry (blocked by unverified artwork/reference matching)
 - [x] Build anatomy diagram source directory with per-plate citations and uncertainty flags
+
+- [x] Replace painted anatomy plates with credited public-domain Gray's Anatomy plates (31 done; spinal-posterior and thoracic-mediastinum still painted — no good match found)
