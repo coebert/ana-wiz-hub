@@ -109,7 +109,7 @@ for (const p of allComponents.filter(p => p.includes("/topic/") && /Atlas\.tsx$/
     const plate = object(ctx.value(n));
     if (!text(plate.title) || !Array.isArray(plate.landmarks)) return;
     const uncertainty: string[] = [];
-    if (/Femoral|Aortocaval/i.test(text(plate.title))) uncertainty.push("Patient-side/view orientation requires an explicit declaration; page orientation alone is not proof of laterality.");
+    if (/Femoral|Aortocaval/i.test(text(plate.title)) && !text(plate.orientation)) uncertainty.push("Patient-side/view orientation requires an explicit declaration; page orientation alone is not proof of laterality.");
     if (/Adamkiewicz/i.test(JSON.stringify(plate))) uncertainty.push("Adamkiewicz origin is variable and this depiction is simplified.");
     add({ id: `${name}-${n.pos}`, title: text(plate.title), group: human(name), kind: "Surgical atlas schematic", sources: plate.landmarks.map(object).filter(l => text(l.ref)).map(l => ({ ...cited(topic, text(l.ref)), basis: `Landmark: ${text(l.text)}` })), credit: "Custom labelled line diagram; simplified and not to scale.", uncertainty, topicLinks: links(name).map(l => ({ ...l, path: `${l.path}#anatomy-atlas` })), sourceFile: p });
   });

@@ -51,7 +51,7 @@ export const AnatomyAtlas = ({ id, heading, topicId, plates }: { id: string; hea
       Labelled schematic diagrams — positions are simplified and not to scale. Each landmark is linked to its source.
     </p>
     <div className="grid gap-6 md:grid-cols-2">
-      {plates.map(({ Diagram, title, landmarks, relevance }) => (
+      {plates.map(({ Diagram, title, landmarks, relevance, orientation }) => (
         <figure key={title} className="rounded-lg border border-border bg-card overflow-hidden">
           <Diagram />
           <figcaption className="p-4 space-y-2">
