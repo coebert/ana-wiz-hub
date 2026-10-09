@@ -344,7 +344,7 @@ const CircleOfWillisDiagram = () => {
                 <path d="M260,275 C250,278 235,280 225,278" strokeWidth="0.5" opacity="0.4" />
                 <path d="M265,290 C252,294 235,296 220,294" strokeWidth="0.5" opacity="0.4" />
                 {/* Vermis */}
-                <path d="M168,305 C174,310 180,312 186,312 C190,310 192,305" strokeWidth="0.5" opacity="0.5" />
+                <path d="M168,305 C174,310 180,312 186,312 C190,310 192,305 190,302" strokeWidth="0.5" opacity="0.5" />
                 <text x="180" y="318" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">vermis</text>
   
                 {/* Optic chiasm — more anatomical */}
