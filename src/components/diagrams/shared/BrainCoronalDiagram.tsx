@@ -1,29 +1,9 @@
-import brainCoronalImg from "@/assets/brain-anatomy-coronal.jpg";
+import brainCoronalImgAsset from "@/assets/brain-coronal-gray743.png.asset.json";
+const brainCoronalImg = brainCoronalImgAsset.url;
 import { DiagramSourcesPanel, DiagramSource } from "@/components/diagrams/shared/DiagramSourcesPanel";
 import { BrainRegionsList } from "@/components/diagrams/shared/BrainRegionsList";
-import BrainPlateLabels, { type PlateLabel } from "@/components/diagrams/shared/BrainPlateLabels";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
-const plateLabels: PlateLabel[] = [
-  // Cortex & deep white matter (right hemisphere, viewer's left)
-  { text: "Cerebral cortex", dot: { x: 18, y: 22 }, label: { x: 3, y: 8 }, anchor: "start" },
-  { text: "Subcortical white matter", dot: { x: 28, y: 32 }, label: { x: 3, y: 22 }, anchor: "start" },
-  // Midline white-matter / ventricular complex
-  { text: "Corpus callosum (body)", dot: { x: 50, y: 36 }, label: { x: 97, y: 8 }, anchor: "end" },
-  { text: "Lateral ventricle (body)", dot: { x: 44, y: 42 }, label: { x: 3, y: 36 }, anchor: "start" },
-  { text: "Septum pellucidum", dot: { x: 50, y: 41 }, label: { x: 97, y: 22 }, anchor: "end" },
-  { text: "Fornix", dot: { x: 50, y: 46 }, label: { x: 97, y: 36 }, anchor: "end" },
-  // Deep grey nuclei & capsules (right hemisphere, viewer's left)
-  { text: "Caudate (head)", dot: { x: 42, y: 43 }, label: { x: 3, y: 50 }, anchor: "start" },
-  { text: "Internal capsule", dot: { x: 38, y: 53 }, label: { x: 3, y: 64 }, anchor: "start" },
-  { text: "Lentiform nucleus\n(putamen + pallidus)", dot: { x: 32, y: 53 }, label: { x: 3, y: 78 }, anchor: "start" },
-  { text: "External capsule ·\nclaustrum · insula", dot: { x: 24, y: 54 }, label: { x: 3, y: 92 }, anchor: "start" },
-  // Diencephalon (left hemisphere, viewer's right)
-  { text: "Thalamus", dot: { x: 56, y: 52 }, label: { x: 97, y: 50 }, anchor: "end" },
-  { text: "Hypothalamus", dot: { x: 50, y: 64 }, label: { x: 97, y: 64 }, anchor: "end" },
-  { text: "Optic tract /\nmammillary bodies", dot: { x: 50, y: 70 }, label: { x: 97, y: 78 }, anchor: "end" },
-  { text: "Hippocampus\n(inferior horn)", dot: { x: 72, y: 70 }, label: { x: 97, y: 92 }, anchor: "end" },
-];
 
 
 
@@ -162,17 +142,13 @@ export const BrainCoronalPlate = () => (
       <div className="relative">
         <img
           src={brainCoronalImg}
-          alt="Detailed anatomical mid-coronal section of the human brain through the thalamus and basal ganglia, showing cerebral cortex, white matter, corpus callosum, lateral ventricles, septum pellucidum, fornix, caudate nucleus, putamen and globus pallidus (lentiform nucleus), internal capsule, external capsule, claustrum, insula, thalamus, hypothalamus, mammillary bodies, optic tract and hippocampus."
+          alt="Gray's Anatomy (1918) Fig. 743 — Coronal section through anterior cornua of lateral ventricles"
           loading="lazy"
-          width={1200}
-          height={896}
-          className="w-full h-auto block"
+                    className="w-full h-auto block"
         />
-        <BrainPlateLabels labels={plateLabels} />
       </div>
       <figcaption className="px-4 sm:px-6 py-3 text-xs text-muted-foreground italic border-t border-border">
-        Anatomical reference plate with overlay labels. Right hemisphere on viewer's left (anatomical convention).
-        <span className="block mt-2 not-italic text-foreground">Specialist anatomical review pending: this illustration simplifies section levels and deep-nuclear boundaries; its leader endpoints are not certified for definitive structure identification.</span>
+        Gray's Anatomy reference plate with its original printed labels. One hemisphere shown, midline on the viewer's left and lateral surface on the right.
       </figcaption>
     </figure>
 
@@ -180,7 +156,7 @@ export const BrainCoronalPlate = () => (
 
     <DiagramSourcesPanel
       references={references}
-      imageCredit="Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy coronal cerebral plates. Anatomical labelling cross-checked against the references above."
+      imageCredit="Henry Gray, Anatomy of the Human Body (20th ed., 1918), Fig. 743: Coronal section through anterior cornua of lateral ventricles. Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Gray743.png). Printed labels are Gray's original 1918 terms."
       note="Educational use only. Not a substitute for primary anatomical references."
     />
   </>

@@ -42,7 +42,7 @@ export const Svg = ({ title, children }: { title: string; children: ReactNode })
   </svg>
 );
 
-export type AtlasPlate = { Diagram: () => JSX.Element; title: string; landmarks: { text: string; ref: string }[]; relevance: string };
+export type AtlasPlate = { Diagram: () => JSX.Element; title: string; landmarks: { text: string; ref: string }[]; relevance: string; /** Explicit patient side and viewing direction. */ orientation?: string };
 
 export const AnatomyAtlas = ({ id, heading, topicId, plates }: { id: string; heading: string; topicId: string; plates: AtlasPlate[] }) => (
   <section id={id} className="scroll-mt-24 mb-10">
@@ -51,11 +51,12 @@ export const AnatomyAtlas = ({ id, heading, topicId, plates }: { id: string; hea
       Labelled schematic diagrams — positions are simplified and not to scale. Each landmark is linked to its source.
     </p>
     <div className="grid gap-6 md:grid-cols-2">
-      {plates.map(({ Diagram, title, landmarks, relevance }) => (
+      {plates.map(({ Diagram, title, landmarks, relevance, orientation }) => (
         <figure key={title} className="rounded-lg border border-border bg-card overflow-hidden">
           <Diagram />
           <figcaption className="p-4 space-y-2">
             <p className="font-semibold text-foreground">{title}</p>
+            {orientation && <p className="text-xs text-muted-foreground"><strong>Orientation:</strong> {orientation}</p>}
             <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
               {landmarks.map((l) => (
                 <li key={l.text}>{l.text} <InlineRef topicId={topicId} refLabel={l.ref} /></li>

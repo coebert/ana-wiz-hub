@@ -24,3 +24,4 @@
 - [x] Build anatomy diagram source directory with per-plate citations and uncertainty flags
 
 - [x] Replace painted anatomy plates with credited public-domain Gray's Anatomy plates (31 done; spinal-posterior and thoracic-mediastinum still painted — no good match found)
+- [x] Cite flagged diagrams, replace AI brain images and last 2 paintings, add orientation notes (7 inherent limits stay flagged)

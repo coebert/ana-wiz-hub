@@ -57,9 +57,6 @@ function cited(topic: string, label: string): Source {
 }
 const known: Record<string, string[]> = {
   DiaphragmDiagram: ["Aperture laterality and phrenic courses were corrected; the schematic remains simplified and is not a validated anatomical model."],
-  BrainAxialDiagram: ["Occipital-horn leader targets the posterior midline rather than a lateral ventricular horn; deep-structure endpoints need neuroradiology review."],
-  BrainCoronalDiagram: ["Section levels and deep-nuclear boundaries are simplified; leader endpoints need specialist validation."],
-  AirwayInnervationDiagram: ["Anterior-tongue and oropharyngeal sensory polygons overlap; a sourced redraw is still needed."],
   CardiacAnatomyDiagram: ["Procedural 3D fallback is simplified and is not a validated anatomical mesh; optional GLB models are absent locally."],
   InteractiveDermatomeMap: ["Dermatome boundaries vary between reference charts; this map is schematic, not a definitive boundary map."],
   DermatomeMapDiagram: ["Dermatome boundaries vary between reference charts."],
@@ -74,6 +71,7 @@ function add(e: Omit<Entry, "status">) {
   if (sources.some(s => s.detail?.includes("could not be resolved"))) uncertainty.push("One or more citation labels require reconciliation with the topic reference list.");
   entries.push({ ...e, sources, uncertainty, status: uncertainty.length ? "needs-review" : "cited" });
 }
+import { anatomyDiagramCitations } from "../src/data/anatomyDiagramCitations";
 const excluded = new Set(["BrainPlatesViewer", "CorPictumFolio"]);
 const clinicalNames = new Set(["AirwayInnervationDiagram", "CaudalSurfaceAnatomyDiagram", "CaudalBlockDiagram", "DermatomeMapDiagram", "NerveDermatomeOverlayDiagram", "NephronDiagram", "CorticalJuxtamedullaryDiagram", "LaryngoscopeBladesDiagram", "SpinalCordStimulatorDiagram"]);
 const componentFiles = allComponents.filter(p => (p.includes("/diagrams/anatomy/") && !excluded.has(path.basename(p, ".tsx"))) || /\/shared\/Brain(?:Axial|Coronal|Anatomy|Medial)Diagram\.tsx$/.test(p) || clinicalNames.has(path.basename(p, ".tsx")));
@@ -89,6 +87,7 @@ for (const p of componentFiles) {
       if (n.name.getText() === "title" && /DiagramFigure/.test(n.parent.parent.getText().slice(0, 30)) && text(v)) title = text(v);
     }
   });
+  for (const c of anatomyDiagramCitations[name] ?? []) sources.push({ label: c.label, detail: c.detail, url: c.url, basis: /Gray's/.test(c.label) ? "Reference figure used to check the schematic (public domain)" : "Reference paper used to check the schematic" });
   // Comments are labelled as notes, not promoted to bibliographic/image provenance.
   if (!sources.length) {
     const comments = read(p).match(/\/\*[\s\S]*?\*\/|\/\/[^\n]*/g) ?? [];
@@ -109,7 +108,7 @@ for (const p of allComponents.filter(p => p.includes("/topic/") && /Atlas\.tsx$/
     const plate = object(ctx.value(n));
     if (!text(plate.title) || !Array.isArray(plate.landmarks)) return;
     const uncertainty: string[] = [];
-    if (/Femoral|Aortocaval/i.test(text(plate.title))) uncertainty.push("Patient-side/view orientation requires an explicit declaration; page orientation alone is not proof of laterality.");
+    if (/Femoral|Aortocaval/i.test(text(plate.title)) && !text(plate.orientation)) uncertainty.push("Patient-side/view orientation requires an explicit declaration; page orientation alone is not proof of laterality.");
     if (/Adamkiewicz/i.test(JSON.stringify(plate))) uncertainty.push("Adamkiewicz origin is variable and this depiction is simplified.");
     add({ id: `${name}-${n.pos}`, title: text(plate.title), group: human(name), kind: "Surgical atlas schematic", sources: plate.landmarks.map(object).filter(l => text(l.ref)).map(l => ({ ...cited(topic, text(l.ref)), basis: `Landmark: ${text(l.text)}` })), credit: "Custom labelled line diagram; simplified and not to scale.", uncertainty, topicLinks: links(name).map(l => ({ ...l, path: `${l.path}#anatomy-atlas` })), sourceFile: p });
   });

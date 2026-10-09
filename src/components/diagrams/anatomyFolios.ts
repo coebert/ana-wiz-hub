@@ -27,7 +27,6 @@ import skullbaseSuperiorAsset from "@/assets/plates/skullbase-superior-gray.png.
 const skullbaseSuperior = skullbaseSuperiorAsset.url;
 import skullbaseInferiorAsset from "@/assets/plates/skullbase-inferior-gray.png.asset.json";
 const skullbaseInferior = skullbaseInferiorAsset.url;
-import spinalPosterior from "@/assets/plates/spinal-posterior.jpg";
 import spinalSagittalAsset from "@/assets/plates/spinal-sagittal-gray.png.asset.json";
 const spinalSagittal = spinalSagittalAsset.url;
 import spinalCaudalAsset from "@/assets/plates/spinal-caudal-gray.png.asset.json";
@@ -58,7 +57,6 @@ import lowerlimbNervesAsset from "@/assets/plates/lowerlimb-nerves-gray.png.asse
 const lowerlimbNerves = lowerlimbNervesAsset.url;
 import thoracicAnteriorAsset from "@/assets/plates/thoracic-anterior-gray.png.asset.json";
 const thoracicAnterior = thoracicAnteriorAsset.url;
-import thoracicMediastinum from "@/assets/plates/thoracic-mediastinum.jpg";
 import thoracicFirstRibAsset from "@/assets/plates/thoracic-first-rib-gray.png.asset.json";
 const thoracicFirstRib = thoracicFirstRibAsset.url;
 import abdominalAnteriorAsset from "@/assets/plates/abdominal-anterior-gray.png.asset.json";
@@ -450,26 +448,6 @@ export const spinalFolio: CorPictumFolioData = {
   atlasTitle: "Atlas of Anatomy — Vertebral Column",
   atlasSubtitle: "Painted plates of the spinal cord and neuraxial spaces",
   plates: [
-    {
-      id: "posterior", tabLabel: "Posterior", folio: "I",
-      title: "Spinal Cord", subtitle: "Posterior view of the cord and cauda equina",
-      image: spinalPosterior, alt: "Painted posterior view of the lumbar spinal cord",
-      caption: "Posterior view of the spinal cord and cauda equina",
-      labels: [
-        { latin: "lamina vertebrae", english: "Vertebral lamina", note: "Removed in laminectomy to access the cord." },
-        { latin: "processus spinosus", english: "Spinous process", note: "Surface midline landmark for neuraxial blocks." },
-        { latin: "ligamentum flavum", english: "Ligamentum flavum", note: "Final resistance felt before epidural loss-of-resistance." },
-        { latin: "dura mater spinalis", english: "Spinal dura mater", note: "Outer meningeal layer — separates epidural from subarachnoid." },
-        { latin: "conus medullaris", english: "Conus medullaris", note: "Cord ends at L1/L2 in adults — block below to avoid injury." },
-        { latin: "cauda equina", english: "Cauda equina", note: "Lumbosacral nerve roots floating in CSF below the conus." },
-        { latin: "filum terminale", english: "Filum terminale", note: "Pial extension anchoring cord to coccyx." },
-        { latin: "radix nervi spinalis", english: "Spinal nerve root", note: "Exits through the intervertebral foramen." },
-      ],
-      curriculumLinks: [
-        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Spinal cord & cauda equina — surface landmarks", anchor: "spinal-cord" },
-        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Surface anatomy for neuraxial procedures", anchor: "spinal-cord" },
-      ],
-    },
     {
       id: "sagittal", tabLabel: "Sagittal", folio: "II",
       title: "Epidural and Subarachnoid Spaces", subtitle: "Sagittal view for neuraxial anaesthesia",
@@ -1280,27 +1258,6 @@ export const thoracicFolio: CorPictumFolioData = {
         { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Thoracic cavity & lung anatomy", anchor: "lung-anatomy" },
         { code: "RC_BK_01", exams: [Exam.FINAL], title: "Anaesthesia for thoracic surgery", anchor: "lung-anatomy" },
         { code: "RC_BK_02", exams: [Exam.FINAL], title: "One-lung ventilation & DLT placement", anchor: "lung-anatomy" },
-      ],
-    },
-    {
-      id: "mediastinum", tabLabel: "Mediastinum", folio: "II",
-      title: "Right Mediastinum", subtitle: "Right lateral view after lung removal",
-      image: thoracicMediastinum, alt: "Painted lateral view of the right mediastinum",
-      caption: "Right lateral view of the mediastinum",
-      labels: [
-        { latin: "vena cava superior", english: "Superior vena cava", note: "Receives azygos vein before entering right atrium." },
-        { latin: "vena azygos", english: "Azygos vein", note: "Arches over right main bronchus." },
-        { latin: "nervus phrenicus dexter", english: "Right phrenic nerve", note: "Anterior to lung root, on the pericardium." },
-        { latin: "nervus vagus dexter", english: "Right vagus nerve", note: "Posterior to lung root; recurrent loops under right subclavian." },
-        { latin: "oesophagus", english: "Oesophagus", note: "Behind the trachea; passes through diaphragm at T10." },
-        { latin: "trachea", english: "Trachea", note: "Bifurcates at the carina (T4/T5)." },
-        { latin: "bronchus principalis dexter", english: "Right main bronchus", note: "Wider, shorter, more vertical — common aspiration site." },
-        { latin: "truncus sympathicus", english: "Sympathetic chain", note: "On heads of ribs; thoracic ganglia for sympathectomy." },
-      ],
-      curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Mediastinal contents & relations", anchor: "mediastinum" },
-        { code: "RC_BK_01", exams: [Exam.FINAL], title: "Anaesthesia for thoracic surgery — mediastinal masses", anchor: "mediastinum" },
-        { code: "CR_BK_01", exams: [Exam.FINAL], title: "Cardiothoracic anatomy for the anaesthetist", anchor: "mediastinum" },
       ],
     },
     {

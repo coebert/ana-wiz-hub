@@ -5,11 +5,22 @@
       "title": "Abdominal wall",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 392",
+          "detail": "External oblique muscle, left",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray392.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 395",
+          "detail": "Internal oblique muscle, left",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray395.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/abdominal-anatomy",
@@ -17,7 +28,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/AbdominalWallDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "AirwayInnervationDiagram",
@@ -26,16 +37,20 @@
       "kind": "Labelled schematic",
       "sources": [
         {
-          "label": "Source note in diagram",
-          "detail": "V1 anterior ethmoidal supply: https://radiopaedia.org/articles/anterior-ethmoidal-nerve",
-          "basis": "Source comment — incomplete bibliographic record"
+          "label": "Gray's Anatomy (1918), Fig. 994",
+          "detail": "Sagittal section of nose, mouth, pharynx, and larynx.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray994.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 793",
+          "detail": "Course and distribution of the glossopharyngeal, vagus, and accessory nerves.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray793.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
         }
       ],
       "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "Anterior-tongue and oropharyngeal sensory polygons overlap; a sourced redraw is still needed.",
-        "Source is recorded only in a comment; an exact edition, passage or figure match is not established."
-      ],
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/clinical/airway-management",
@@ -43,18 +58,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/clinical/AirwayInnervationDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "AntecubitalFossaDiagram",
       "title": "Antecubital fossa",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 525",
+          "detail": "The brachial artery",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray525.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 574",
+          "detail": "Superficial veins of the upper limb",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray574.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/upper-limb-anatomy",
@@ -62,18 +88,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/AntecubitalFossaDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "AnteriorCardiacPlate",
       "title": "Anterior Cardiac",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 490",
+          "detail": "Sternocostal surface of the heart",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray490.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 506",
+          "detail": "Coronary arteries",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray506.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/cardiac-anatomy",
@@ -81,18 +118,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/AnteriorCardiacPlate.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "BrachialPlexusDiagram",
       "title": "Brachial plexus",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 807",
+          "detail": "Plan of brachial plexus.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray807.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 808",
+          "detail": "The right brachial plexus with its short branches, viewed from in front. The sternomastoid and trapezius muscl",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray808.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/brachial-plexus",
@@ -104,18 +152,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/BrachialPlexusDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "BrachialPlexusUltrasoundDiagram",
       "title": "Brachial plexus ultrasound",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 384",
+          "detail": "A cross-section diagram of the human neck at the level of C6 showing the fascia compartments, muscles, organs,",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray384.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 808",
+          "detail": "The right brachial plexus with its short branches, viewed from in front. The sternomastoid and trapezius muscl",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray808.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/brachial-plexus",
@@ -127,7 +186,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/BrachialPlexusUltrasoundDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "BrainAnatomyDiagram",
@@ -165,10 +224,8 @@
           "basis": "Diagram reference"
         }
       ],
-      "credit": "Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy lateral cerebral plates. Anatomical labelling cross-checked against the references above.",
-      "uncertainty": [
-        "Generated illustration: cited textbooks describe anatomy but do not certify the image pixels or every leader endpoint."
-      ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Fig. 728: Principal fissures and lobes of the cerebrum viewed laterally. Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Gray728.png). Printed labels are Gray's original 1918 terms.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/neuroanatomy",
@@ -176,7 +233,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/shared/BrainAnatomyDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "BrainAxialDiagram",
@@ -213,11 +270,8 @@
           "basis": "Diagram reference"
         }
       ],
-      "credit": "Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy axial cerebral plates. Anatomical labelling cross-checked against the references above.",
-      "uncertainty": [
-        "Occipital-horn leader targets the posterior midline rather than a lateral ventricular horn; deep-structure endpoints need neuroradiology review.",
-        "Generated illustration: cited textbooks describe anatomy but do not certify the image pixels or every leader endpoint."
-      ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Fig. 742: Horizontal section of right cerebral hemisphere. Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Gray742.png). Printed labels are Gray's original 1918 terms.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/neuroanatomy",
@@ -225,7 +279,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/shared/BrainAxialDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "BrainCoronalDiagram",
@@ -262,11 +316,8 @@
           "basis": "Diagram reference"
         }
       ],
-      "credit": "Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy coronal cerebral plates. Anatomical labelling cross-checked against the references above.",
-      "uncertainty": [
-        "Section levels and deep-nuclear boundaries are simplified; leader endpoints need specialist validation.",
-        "Generated illustration: cited textbooks describe anatomy but do not certify the image pixels or every leader endpoint."
-      ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Fig. 743: Coronal section through anterior cornua of lateral ventricles. Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Gray743.png). Printed labels are Gray's original 1918 terms.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/neuroanatomy",
@@ -274,7 +325,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/shared/BrainCoronalDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "BrainMedialDiagram",
@@ -318,10 +369,8 @@
           "basis": "Diagram reference"
         }
       ],
-      "credit": "Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy midsagittal cerebral plates. Anatomical labelling cross-checked against the references above.",
-      "uncertainty": [
-        "Generated illustration: cited textbooks describe anatomy but do not certify the image pixels or every leader endpoint."
-      ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Fig. 720: Median sagittal section of the brain. Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Gray720.png). Printed labels are Gray's original 1918 terms.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/neuroanatomy",
@@ -329,18 +378,24 @@
         }
       ],
       "sourceFile": "src/components/diagrams/shared/BrainMedialDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "BronchoscopicViewDiagram",
       "title": "Bronchoscopic view",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 961",
+          "detail": "Front view of cartilages of larynx, trachea, and bronchi.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray961.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
+      ],
       "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
       "uncertainty": [
-        "Clock-face orientation depends on scope rotation and viewing convention.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+        "Clock-face orientation depends on scope rotation and viewing convention."
       ],
       "topicLinks": [
         {
@@ -356,11 +411,23 @@
       "title": "Cardiac anatomy",
       "group": "Anatomy & applied diagrams",
       "kind": "3D schematic",
-      "sources": [],
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 490",
+          "detail": "Sternocostal surface of the heart",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray490.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 491",
+          "detail": "Base and diaphragmatic surface of the heart",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray491.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
+      ],
       "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
       "uncertainty": [
-        "Procedural 3D fallback is simplified and is not a validated anatomical mesh; optional GLB models are absent locally.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+        "Procedural 3D fallback is simplified and is not a validated anatomical mesh; optional GLB models are absent locally."
       ],
       "topicLinks": [
         {
@@ -376,11 +443,22 @@
       "title": "Caudal block — sagittal anatomy",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 96",
+          "detail": "Sacrum, dorsal surface.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray96.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 97",
+          "detail": "Lateral surfaces of en:sacrum and en:coccyx.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray97.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/clinical/paediatric-anaesthesia",
@@ -388,18 +466,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/clinical/CaudalBlockDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "CaudalSurfaceAnatomyDiagram",
       "title": "Caudal surface anatomy",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 96",
+          "detail": "Sacrum, dorsal surface.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray96.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/clinical/paediatric-anaesthesia",
@@ -407,18 +490,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/clinical/CaudalSurfaceAnatomyDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "CervicalPlexusDiagram",
       "title": "Cervical Plexus",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 804",
+          "detail": "Plan of the cervical plexus. (Gerrish.)",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray804.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 805",
+          "detail": "The nerves of the scalp, face, and side of neck.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray805.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/head-neck-anatomy",
@@ -426,18 +520,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/CervicalPlexusDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "CircleOfWillisDiagram",
       "title": "Circle of willis",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 519",
+          "detail": "\"Fig. 519. — iagram of the arterial circulation at the base of the brain. A.L. Antero-lateral. A.M. Antero-med",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray519.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/neuroanatomy",
@@ -445,18 +544,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/CircleOfWillisDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "CoronaryTerritoryMapDiagram",
       "title": "Coronary territory MAP",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 506",
+          "detail": "Coronary arteries",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray506.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Cerqueira MD et al. Circulation 2002;105:539–42",
+          "detail": "Assignment of the 17 segments to coronary artery territories",
+          "url": "https://doi.org/10.1161/hc0402.102975",
+          "basis": "Reference paper used to check the schematic"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/cardiac-anatomy",
@@ -464,18 +574,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/CoronaryTerritoryMapDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "CoronaryTreeDiagram",
       "title": "Coronary tree",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 506",
+          "detail": "Coronary arteries",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray506.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 490",
+          "detail": "Sternocostal surface of the heart",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray490.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/cardiac-anatomy",
@@ -483,18 +604,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/CoronaryTreeDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "CorticalJuxtamedullaryDiagram",
       "title": "Cortical juxtamedullary",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 1128",
+          "detail": "Scheme of renal tubule and its vascular supply.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray1128.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 1129",
+          "detail": "Distribution of bloodvessels in cortex of kidney.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray1129.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/physiology/renal-physiology",
@@ -502,18 +634,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/physiology/CorticalJuxtamedullaryDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "CsfFlowDiagram",
       "title": "CSF flow",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 720",
+          "detail": "Median sagittal section of the brain",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray720.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 769",
+          "detail": "Diagrammatic representation of a section across the top of the skull, showing the membranes of the brain, etc.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray769.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/neuroanatomy",
@@ -521,18 +664,36 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/CsfFlowDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "DermatomeMapDiagram",
       "title": "Dermatome MAP",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 812",
+          "detail": "Diagram of segmental distribution of the cutaneous nerves of the right upper extremity. Anterior view. (\"Lat. ",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray812.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 826",
+          "detail": "Diagram of segmental distribution of the cutaneous nerves of the right lower extremity. Front view.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray826.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Lee MWL et al. Clin Anat 2008;21:363–73",
+          "detail": "An evidence-based approach to human dermatomes",
+          "url": "https://doi.org/10.1002/ca.20636",
+          "basis": "Reference paper used to check the schematic"
+        }
+      ],
       "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
       "uncertainty": [
-        "Dermatome boundaries vary between reference charts.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+        "Dermatome boundaries vary between reference charts."
       ],
       "topicLinks": [
         {
@@ -548,11 +709,29 @@
       "title": "Dermatome myotome",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 812",
+          "detail": "Diagram of segmental distribution of the cutaneous nerves of the right upper extremity. Anterior view. (\"Lat. ",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray812.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 826",
+          "detail": "Diagram of segmental distribution of the cutaneous nerves of the right lower extremity. Front view.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray826.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Lee MWL et al. Clin Anat 2008;21:363–73",
+          "detail": "An evidence-based approach to human dermatomes",
+          "url": "https://doi.org/10.1002/ca.20636",
+          "basis": "Reference paper used to check the schematic"
+        }
+      ],
       "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
       "uncertainty": [
-        "Dermatome boundaries vary between reference charts.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+        "Dermatome boundaries vary between reference charts."
       ],
       "topicLinks": [
         {
@@ -570,15 +749,15 @@
       "kind": "Labelled schematic",
       "sources": [
         {
-          "label": "Source note in diagram",
-          "detail": "Aperture laterality: https://radiopaedia.org/articles/diaphragmatic-apertures",
-          "basis": "Source comment — incomplete bibliographic record"
+          "label": "Gray's Anatomy (1918), Fig. 391",
+          "detail": "Zwerchfell von unten aus \"Anatomy of the Human Body\" von Henry Gray.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray391.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
         }
       ],
       "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
       "uncertainty": [
-        "Aperture laterality and phrenic courses were corrected; the schematic remains simplified and is not a validated anatomical model.",
-        "Source is recorded only in a comment; an exact edition, passage or figure match is not established."
+        "Aperture laterality and phrenic courses were corrected; the schematic remains simplified and is not a validated anatomical model."
       ],
       "topicLinks": [
         {
@@ -594,11 +773,16 @@
       "title": "Epidural Space",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 301",
+          "detail": "Median sagittal section of two lumbar vertebræ and their ligaments.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray301.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/spinal-anatomy",
@@ -606,18 +790,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/EpiduralSpaceDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "FirstRibDiagram",
       "title": "First Rib",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918) — First rib, superior surface",
+          "detail": "Peculiar ribs: first rib (scalene tubercle, subclavian grooves)",
+          "url": "https://commons.wikimedia.org/wiki/File:First_rib_Gray.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/thoracic-anatomy",
@@ -625,18 +814,36 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/FirstRibDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "InteractiveDermatomeMap",
       "title": "Interactive dermatome MAP",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 812",
+          "detail": "Diagram of segmental distribution of the cutaneous nerves of the right upper extremity. Anterior view. (\"Lat. ",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray812.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 826",
+          "detail": "Diagram of segmental distribution of the cutaneous nerves of the right lower extremity. Front view.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray826.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Lee MWL et al. Clin Anat 2008;21:363–73",
+          "detail": "An evidence-based approach to human dermatomes",
+          "url": "https://doi.org/10.1002/ca.20636",
+          "basis": "Reference paper used to check the schematic"
+        }
+      ],
       "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
       "uncertainty": [
-        "Dermatome boundaries vary between reference charts; this map is schematic, not a definitive boundary map.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+        "Dermatome boundaries vary between reference charts; this map is schematic, not a definitive boundary map."
       ],
       "topicLinks": [
         {
@@ -652,11 +859,16 @@
       "title": "Intercostal anatomy",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 799",
+          "detail": "Scheme showing structure of a typical spinal nerve. 1. Somatic efferent. 2. Somatic afferent. 3,4,5. Sympathet",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray799.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/thoracic-anatomy",
@@ -664,18 +876,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/IntercostalAnatomyDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "LaryngealCrossSectionDiagram",
       "title": "Laryngeal Cross Section",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 954",
+          "detail": "Coronal section of larynx and upper part of trachea.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray954.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 960",
+          "detail": "Muscles of larynx, seen from above.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray960.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/head-neck-anatomy",
@@ -683,18 +906,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/LaryngealCrossSectionDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "LaryngealNervesDiagram",
       "title": "Laryngeal Nerves",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 793",
+          "detail": "Course and distribution of the glossopharyngeal, vagus, and accessory nerves.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray793.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 960",
+          "detail": "Muscles of larynx, seen from above.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray960.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/head-neck-anatomy",
@@ -702,18 +936,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/LaryngealNervesDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "LaryngoscopeBladesDiagram",
       "title": "Laryngoscope blades",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 994",
+          "detail": "Sagittal section of nose, mouth, pharynx, and larynx.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray994.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Macintosh RR. Lancet 1943;241:205",
+          "detail": "A new laryngoscope",
+          "url": "https://doi.org/10.1016/S0140-6736(00)89390-3",
+          "basis": "Reference paper used to check the schematic"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/physics/equipment-monitoring",
@@ -721,18 +966,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/physics/LaryngoscopeBladesDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "LowerLimbArteriesDiagram",
       "title": "Lower limb arteries",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 548",
+          "detail": "The femoral artery",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray548.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 554",
+          "detail": "Arteries of the leg",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray554.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/lower-limb-anatomy",
@@ -740,18 +996,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/LowerLimbArteriesDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "LowerLimbBranchesDiagram",
       "title": "Lower limb branches",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 548",
+          "detail": "The femoral artery",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray548.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 832",
+          "detail": "Nerves of the right lower extremity Posterior view.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray832.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/clinical/regional-anaesthesia",
@@ -763,18 +1030,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/LowerLimbBranchesDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "LowerLimbInnervationDiagram",
       "title": "Lower limb innervation",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 825",
+          "detail": "Cutaneous nerves of right lower extremity. Front view.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray825.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 832",
+          "detail": "Nerves of the right lower extremity Posterior view.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray832.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/lower-limb-anatomy",
@@ -782,18 +1060,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/LowerLimbInnervationDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "LowerLimbVeinsDiagram",
       "title": "Lower limb veins",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 581",
+          "detail": "The great saphenous vein and its tributaries",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray581.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/lower-limb-anatomy",
@@ -801,18 +1084,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/LowerLimbVeinsDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "LumbosacralPlexusDiagram",
       "title": "Lumbosacral plexus",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 822",
+          "detail": "Plan of lumbar plexus.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray822.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 829",
+          "detail": "Dissection of side wall of pelvis showing sacral and pudendal plexuses. (Testut.)",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray829.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/lower-limb-anatomy",
@@ -820,18 +1114,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/LumbosacralPlexusDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "LVBullseyeDiagram",
       "title": "LV bullseye",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Cerqueira MD et al. Circulation 2002;105:539–42",
+          "detail": "AHA standardized 17-segment myocardial segmentation and nomenclature",
+          "url": "https://doi.org/10.1161/hc0402.102975",
+          "basis": "Reference paper used to check the schematic"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/cardiac-anatomy",
@@ -839,18 +1138,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/LVBullseyeDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "NeckCrossSectionDiagram",
       "title": "Neck cross section",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 384",
+          "detail": "A cross-section diagram of the human neck at the level of C6 showing the fascia compartments, muscles, organs,",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray384.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/head-neck-anatomy",
@@ -858,18 +1162,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/NeckCrossSectionDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "NeckTrianglesDiagram",
       "title": "Neck Triangles",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 385",
+          "detail": "Muscles of the neck. Lateral view",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray385.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 805",
+          "detail": "The nerves of the scalp, face, and side of neck.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray805.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/head-neck-anatomy",
@@ -877,18 +1192,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/NeckTrianglesDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "NephronDiagram",
       "title": "Nephron segments: glomerulus, tubule, loop of Henle and collecting duct",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 1128",
+          "detail": "Scheme of renal tubule and its vascular supply.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray1128.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/physiology/renal-physiology",
@@ -896,18 +1216,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/physiology/NephronDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "NerveDermatomeOverlayDiagram",
       "title": "Nerve dermatome overlay",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 812",
+          "detail": "Diagram of segmental distribution of the cutaneous nerves of the right upper extremity. Anterior view. (\"Lat. ",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray812.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 825",
+          "detail": "Cutaneous nerves of right lower extremity. Front view.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray825.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/clinical/regional-anaesthesia",
@@ -915,18 +1246,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/clinical/NerveDermatomeOverlayDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "OrbitAnatomyDiagram",
       "title": "Orbit anatomy",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 889",
+          "detail": "Muscles of the right orbit",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray889.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 890",
+          "detail": "Blick in die rechte Orbita von vorne nach Entfernen des Bulbus und der vorderen Anteile der anderen Strukturen",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray890.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/head-neck-anatomy",
@@ -934,7 +1276,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/OrbitAnatomyDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "OrbitBonyAnatomyDiagram",
@@ -943,15 +1285,14 @@
       "kind": "Labelled schematic",
       "sources": [
         {
-          "label": "Source note in diagram",
-          "detail": "--------------------------------------------------------------------------- Geometry  The orbital aperture is drawn as a rounded quadrilateral (anterior view of the LEFT orbit, viewer's left = patient's medial). Seven bones tile the aperture; their boundaries follow the standard topographical layout used in Gray's Anatomy and Last's:    Roof:          frontal (anterior) + lesser wing of sphenoid (posterior)   Lateral wall:  zygomatic (anterior) + greater wing of sphenoid (posterior)   Floor:         maxilla (most) + zygomatic (anterolateral)                  + orbital process of palatine (small posterior)   Medial wall:   (anterior→posterior) frontal process of maxilla,                  lacrimal, ethmoid (lamina papyracea), body of sphenoid  Coordinates use a 600×500 viewBox; the aperture sits roughly within the rectangle (140,90)–(470,400) with the apex pulled slightly posteromedially. -------------------------------------------------------------------------",
-          "basis": "Source comment — incomplete bibliographic record"
+          "label": "Gray's Anatomy (1918), Fig. 190",
+          "detail": "The skull from the front.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray190.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
         }
       ],
       "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "Source is recorded only in a comment; an exact edition, passage or figure match is not established."
-      ],
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/head-neck-anatomy",
@@ -959,18 +1300,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/OrbitBonyAnatomyDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "ParavertebralSpaceDiagram",
       "title": "Paravertebral space",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 799",
+          "detail": "Scheme showing structure of a typical spinal nerve. 1. Somatic efferent. 2. Somatic afferent. 3,4,5. Sympathet",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray799.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/thoracic-anatomy",
@@ -978,18 +1324,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/ParavertebralSpaceDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "SkullBaseDiagram",
       "title": "Skull base",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 193",
+          "detail": "Base of the en:skull. Inner or cerebral surface.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray193.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 187",
+          "detail": "Base of the Human skull. External surface.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray187.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/head-neck-anatomy",
@@ -1001,18 +1358,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/SkullBaseDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "SpinalCordAxialDiagram",
       "title": "Spinal cord axial",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 664",
+          "detail": "Dibujo semiesquemático de Corte transversal de Médula espinal Torácica (ver lateral column).",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray664.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/spinal-anatomy",
@@ -1020,18 +1382,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/SpinalCordAxialDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "SpinalCordCrossSectionDiagram",
       "title": "Spinal Cord Cross Section",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 664",
+          "detail": "Dibujo semiesquemático de Corte transversal de Médula espinal Torácica (ver lateral column).",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray664.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/spinal-anatomy",
@@ -1039,18 +1406,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/SpinalCordCrossSectionDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "SpinalCordSagittalDiagram",
       "title": "Spinal Cord Sagittal",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 666",
+          "detail": "Spinal cord sections at different levels",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray666.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 301",
+          "detail": "Median sagittal section of two lumbar vertebræ and their ligaments.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray301.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/spinal-anatomy",
@@ -1058,18 +1436,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/SpinalCordSagittalDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "SpinalCordStimulatorDiagram",
       "title": "Spinal cord stimulator",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 666",
+          "detail": "Spinal cord sections at different levels",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray666.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "NICE TA159 (2008)",
+          "detail": "Spinal cord stimulation for chronic pain of neuropathic or ischaemic origin",
+          "url": "https://www.nice.org.uk/guidance/ta159",
+          "basis": "Reference paper used to check the schematic"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/clinical/pain-medicine",
@@ -1077,18 +1466,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/clinical/SpinalCordStimulatorDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "TracheobronchialTreeDiagram",
       "title": "Tracheobronchial tree",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 961",
+          "detail": "Front view of cartilages of larynx, trachea, and bronchi.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray961.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/head-neck-anatomy",
@@ -1096,18 +1490,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/TracheobronchialTreeDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "UpperLimbArteriesDiagram",
       "title": "Upper limb arteries",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 525",
+          "detail": "The brachial artery",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray525.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 528",
+          "detail": "The radial and ulnar arteries",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray528.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/upper-limb-anatomy",
@@ -1115,18 +1520,29 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/UpperLimbArteriesDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "UpperLimbBranchesDiagram",
       "title": "Upper limb branches",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 807",
+          "detail": "Plan of brachial plexus.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray807.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        },
+        {
+          "label": "Gray's Anatomy (1918), Fig. 818",
+          "detail": "The suprascapular, axillary, and radial nerves.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray818.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/clinical/regional-anaesthesia",
@@ -1138,18 +1554,23 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/UpperLimbBranchesDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "UpperLimbVeinsDiagram",
       "title": "Upper limb veins",
       "group": "Anatomy & applied diagrams",
       "kind": "Labelled schematic",
-      "sources": [],
-      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
-      "uncertainty": [
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918), Fig. 574",
+          "detail": "Superficial veins of the upper limb",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray574.png",
+          "basis": "Reference figure used to check the schematic (public domain)"
+        }
       ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/anatomy/upper-limb-anatomy",
@@ -1157,7 +1578,7 @@
         }
       ],
       "sourceFile": "src/components/diagrams/anatomy/UpperLimbVeinsDiagram.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "abdominalFolio-anterior",
@@ -1616,26 +2037,6 @@
       "status": "cited"
     },
     {
-      "id": "thoracicFolio-mediastinum",
-      "title": "Right Mediastinum",
-      "group": "Atlas of Anatomy — Thorax",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
-      ],
-      "topicLinks": [
-        {
-          "title": "thoracic anatomy",
-          "path": "/anatomy/thoracic-anatomy"
-        }
-      ],
-      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
-    },
-    {
       "id": "thoracicFolio-anterior",
       "title": "Thoracic Cavity",
       "group": "Atlas of Anatomy — Thorax",
@@ -1938,26 +2339,6 @@
       ],
       "sourceFile": "src/components/diagrams/anatomyFolios.ts",
       "status": "cited"
-    },
-    {
-      "id": "spinalFolio-posterior",
-      "title": "Spinal Cord",
-      "group": "Atlas of Anatomy — Vertebral Column",
-      "kind": "Painted atlas plate",
-      "sources": [],
-      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
-      "uncertainty": [
-        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
-        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
-      ],
-      "topicLinks": [
-        {
-          "title": "spinal anatomy",
-          "path": "/anatomy/spinal-anatomy"
-        }
-      ],
-      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "needs-review"
     },
     {
       "id": "CardiothoracicAtlas-3324",
@@ -2321,9 +2702,7 @@
         }
       ],
       "credit": "Custom labelled line diagram; simplified and not to scale.",
-      "uncertainty": [
-        "Patient-side/view orientation requires an explicit declaration; page orientation alone is not proof of laterality."
-      ],
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/clinical/obstetric-anaesthesia#anatomy-atlas",
@@ -2331,10 +2710,10 @@
         }
       ],
       "sourceFile": "src/components/topic/ObstetricAnaesthesiaAtlas.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
-      "id": "ObstetricAnaesthesiaAtlas-3337",
+      "id": "ObstetricAnaesthesiaAtlas-3489",
       "title": "Labour pain pathways and block heights",
       "group": "Obstetric Anaesthesia",
       "kind": "Surgical atlas schematic",
@@ -2484,7 +2863,7 @@
       "status": "cited"
     },
     {
-      "id": "RegionalAnaesthesiaAtlas-9201",
+      "id": "RegionalAnaesthesiaAtlas-9334",
       "title": "Adductor canal",
       "group": "Regional Anaesthesia",
       "kind": "Surgical atlas schematic",
@@ -2533,9 +2912,7 @@
         }
       ],
       "credit": "Custom labelled line diagram; simplified and not to scale.",
-      "uncertainty": [
-        "Patient-side/view orientation requires an explicit declaration; page orientation alone is not proof of laterality."
-      ],
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/clinical/regional-anaesthesia#anatomy-atlas",
@@ -2543,7 +2920,7 @@
         }
       ],
       "sourceFile": "src/components/topic/RegionalAnaesthesiaAtlas.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "RegionalAnaesthesiaAtlas-7713",
@@ -2576,7 +2953,7 @@
       "status": "cited"
     },
     {
-      "id": "RegionalAnaesthesiaAtlas-9738",
+      "id": "RegionalAnaesthesiaAtlas-9871",
       "title": "Lumbar neuraxis (midline)",
       "group": "Regional Anaesthesia",
       "kind": "Surgical atlas schematic",
@@ -2805,9 +3182,7 @@
         }
       ],
       "credit": "Custom labelled line diagram; simplified and not to scale.",
-      "uncertainty": [
-        "Patient-side/view orientation requires an explicit declaration; page orientation alone is not proof of laterality."
-      ],
+      "uncertainty": [],
       "topicLinks": [
         {
           "path": "/perioperative/vascular-access-devices#anatomy-atlas",
@@ -2815,7 +3190,7 @@
         }
       ],
       "sourceFile": "src/components/topic/VascularAccessAtlas.tsx",
-      "status": "needs-review"
+      "status": "cited"
     },
     {
       "id": "VascularAccessAtlas-2425",

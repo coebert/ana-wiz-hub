@@ -1,33 +1,9 @@
-import brainAxialImg from "@/assets/brain-anatomy-axial.jpg";
+import brainAxialImgAsset from "@/assets/brain-axial-gray742.png.asset.json";
+const brainAxialImg = brainAxialImgAsset.url;
 import { DiagramSourcesPanel, DiagramSource } from "@/components/diagrams/shared/DiagramSourcesPanel";
 import { BrainRegionsList } from "@/components/diagrams/shared/BrainRegionsList";
-import BrainPlateLabels, { type PlateLabel } from "@/components/diagrams/shared/BrainPlateLabels";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
-const plateLabels: PlateLabel[] = [
-  // Anterior pole
-  { text: "Frontal lobe", dot: { x: 32, y: 14 }, label: { x: 3, y: 8 }, anchor: "start" },
-  { text: "Longitudinal fissure", dot: { x: 50, y: 12 }, label: { x: 97, y: 8 }, anchor: "end" },
-  // Anterior midline
-  { text: "Genu of corpus callosum", dot: { x: 50, y: 28 }, label: { x: 3, y: 22 }, anchor: "start" },
-  { text: "Frontal horn\n(lateral ventricle)", dot: { x: 46, y: 34 }, label: { x: 97, y: 22 }, anchor: "end" },
-  { text: "Septum pellucidum", dot: { x: 50, y: 35 }, label: { x: 3, y: 35 }, anchor: "start" },
-  // Basal ganglia + capsule (left hemisphere)
-  { text: "Caudate (head)", dot: { x: 42, y: 36 }, label: { x: 3, y: 47 }, anchor: "start" },
-  { text: "Internal capsule", dot: { x: 39, y: 45 }, label: { x: 97, y: 36 }, anchor: "end" },
-  { text: "Putamen", dot: { x: 33, y: 44 }, label: { x: 3, y: 58 }, anchor: "start" },
-  { text: "Globus pallidus", dot: { x: 38, y: 47 }, label: { x: 97, y: 48 }, anchor: "end" },
-  { text: "External capsule ·\nclaustrum · insula", dot: { x: 27, y: 45 }, label: { x: 3, y: 70 }, anchor: "start" },
-  { text: "Sylvian fissure", dot: { x: 23, y: 43 }, label: { x: 3, y: 81 }, anchor: "start" },
-  // Diencephalon midline
-  { text: "Third ventricle", dot: { x: 50, y: 49 }, label: { x: 97, y: 60 }, anchor: "end" },
-  { text: "Thalamus", dot: { x: 56, y: 51 }, label: { x: 97, y: 72 }, anchor: "end" },
-  { text: "Pineal gland", dot: { x: 50, y: 58 }, label: { x: 97, y: 84 }, anchor: "end" },
-  // Posterior
-  { text: "Choroid plexus\n(atrium)", dot: { x: 38, y: 63 }, label: { x: 3, y: 92 }, anchor: "start" },
-  { text: "Occipital horn", dot: { x: 50, y: 70 }, label: { x: 97, y: 95 }, anchor: "end" },
-  { text: "Occipital lobe", dot: { x: 40, y: 88 }, label: { x: 3, y: 96 }, anchor: "start" },
-];
 
 
 
@@ -166,17 +142,13 @@ export const BrainAxialPlate = () => (
       <div className="relative">
         <img
           src={brainAxialImg}
-          alt="Detailed anatomical axial (transverse) section of the human brain at the level of the basal ganglia and thalamus, showing frontal lobes, longitudinal fissure, genu and splenium of corpus callosum, frontal horns of lateral ventricles, septum pellucidum, third ventricle, caudate nucleus, putamen, globus pallidus, internal capsule, external capsule, claustrum, insula, Sylvian fissure, thalami, pineal gland, choroid plexus, atrium and occipital horns of lateral ventricles, calcarine cortex and occipital lobes."
+          alt="Gray's Anatomy (1918) Fig. 742 — Horizontal section of right cerebral hemisphere"
           loading="lazy"
-          width={1200}
-          height={896}
-          className="w-full h-auto block"
+                    className="w-full h-auto block"
         />
-        <BrainPlateLabels labels={plateLabels} />
       </div>
       <figcaption className="px-4 sm:px-6 py-3 text-xs text-muted-foreground italic border-t border-border">
-        Anatomical reference plate with overlay labels. Frontal lobes anterior (top); occipital lobes posterior (bottom).
-        <span className="block mt-2 not-italic text-foreground">Anatomical review pending: some deep-structure leaders need specialist confirmation; the occipital-horn leader currently points to the posterior midline, not a lateral ventricular horn. Do not use these endpoints as a definitive identification guide.</span>
+        Gray's Anatomy reference plate with its original printed labels. Right hemisphere only: frontal pole at the top, occipital pole at the bottom, midline on the viewer's left.
       </figcaption>
     </figure>
 
@@ -184,7 +156,7 @@ export const BrainAxialPlate = () => (
 
     <DiagramSourcesPanel
       references={references}
-      imageCredit="Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy axial cerebral plates. Anatomical labelling cross-checked against the references above."
+      imageCredit="Henry Gray, Anatomy of the Human Body (20th ed., 1918), Fig. 742: Horizontal section of right cerebral hemisphere. Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Gray742.png). Printed labels are Gray's original 1918 terms."
       note="Educational use only. Not a substitute for primary anatomical references."
     />
   </>
