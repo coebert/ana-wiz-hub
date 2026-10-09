@@ -320,7 +320,7 @@ const BronchoscopicViewDiagram = () => {
                         className="cursor-pointer"
                         style={selected === "carina" ? { filter: "url(#bvd-glow)" } : undefined}
                       />
-                      {/* Right main lumen (right of screen) */}
+                       {/* Right main lumen (left of screen) */}
                       <ellipse
                         cx="115" cy="180" rx="48" ry="56"
                         fill="url(#bvd-lumen)"

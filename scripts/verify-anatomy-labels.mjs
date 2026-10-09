@@ -3,7 +3,7 @@
  * verify-anatomy-labels.mjs
  *
  * Cross-checks anatomy diagram source files against a canonical ground-truth
- * map (scripts/anatomy-ground-truth.mjs). Three pass categories:
+ * map (scripts/anatomy-ground-truth.mjs). Two heuristic categories:
  *
  *   1. ROOT LEVELS — for any object literal containing both a `label`/`name`
  *      string and a `roots` string, look up the nerve in NERVES and compare
@@ -15,10 +15,8 @@
  *      the drawn x is on the correct side of the SVG midline using the
  *      "patient RIGHT = viewer LEFT" convention.
  *
- *   3. VIEW (anterior vs posterior) — for diagrams that tag labels with
- *      `view: "anterior" | "posterior"`, ensure those labels live in the
- *      half of the canvas allocated to that view (left half = anterior in
- *      our LowerLimbInnervationDiagram convention; otherwise skipped).
+ * Does not verify drawn geometry, leader endpoints, dermatome maps or
+ * plexus wiring. A pass is not an anatomical accuracy certification.
  *
  * Output: human-readable report to stdout AND
  * /mnt/documents/anatomy-label-verification.md
@@ -28,36 +26,28 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import ts from "typescript";
 import { NERVES, VESSELS, parseRoots, diffRoots } from "./anatomy-ground-truth.mjs";
 
-const ROOTS_DIRS = ["src/components/diagrams", "src/components/diagrams/anatomy"];
+const ROOTS_DIRS = ["src/components/diagrams", "src/components/topic"];
 
 const SKIP_RX = /(Sagittal|Medial|Axial|CrossSection|Posterior|Lateral|Bronchoscopic|MRI|CT|TOE|Bullseye|Ultrasound|Wellens|Wiggers|Capno|Loop|Cascade|Algorithm|Curve|Score|Timeline|Cycle|Comparison|Trace|Receptor|Channel|PK|PD|Kinetic|Spectro|Bundle|Cascade|Pathway|Mechanism|Animation|Calculator|Stepper|Tool|Selector|Chooser|Drawer|Decision|Flowchart|Triage|Profile|Map(?!Diagram))/i;
 
 // --- Object literal scanner ----------------------------------------------
 function findObjects(src) {
   const out = [];
-  for (let i = 0; i < src.length; i++) {
-    if (src[i] !== "{") continue;
-    let depth = 1, j = i + 1, inStr = null;
-    while (j < src.length && depth > 0) {
-      const c = src[j];
-      if (inStr) {
-        if (c === "\\") { j += 2; continue; }
-        if (c === inStr) inStr = null;
-      } else {
-        if (c === '"' || c === "'" || c === "`") inStr = c;
-        else if (c === "{") depth++;
-        else if (c === "}") depth--;
-      }
-      j++;
+  const tree = ts.createSourceFile("diagram.tsx", src, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  function visit(node) {
+    if (ts.isObjectLiteralExpression(node)) {
+      // Only direct properties: nested objects must not supply a parent's label/roots.
+      const body = node.properties.filter(ts.isPropertyAssignment)
+        .filter((p) => !ts.isObjectLiteralExpression(p.initializer))
+        .map((p) => p.getText(tree)).join(",\n");
+      out.push({ body, idx: node.getStart(tree) });
     }
-    if (depth === 0) {
-      const body = src.slice(i, j);
-      if (body.length < 6000 && body.length > 30) out.push({ body, idx: i });
-      i = j - 1;
-    }
+    ts.forEachChild(node, visit);
   }
+  visit(tree);
   return out;
 }
 
@@ -86,7 +76,7 @@ function getArrayFirst(body, key) {
 function audit(file) {
   const src = fs.readFileSync(file, "utf8");
   const base = path.basename(file);
-  if (SKIP_RX.test(base)) return null;
+   const allowSideCheck = !SKIP_RX.test(base) && /anterior (?:\([^)]*\) )?view/i.test(src);
   const vbMatch = src.match(/viewBox\s*=\s*["'`]\s*\d+(?:\.\d+)?\s+\d+(?:\.\d+)?\s+(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)/);
   const width = vbMatch ? parseFloat(vbMatch[1]) : null;
 
@@ -123,13 +113,13 @@ function audit(file) {
     }
 
     // --- 2. side cross-check (need width + x)
-    if (width != null) {
+    if (width != null && allowSideCheck) {
       const vessel = VESSELS.find((v) => v.match.test(label));
       if (vessel && vessel.side !== "midline") {
         const x =
-          getNumberField(body, "labelX", "x", "cx", "x1") ??
-          getArrayFirst(body, "anchor") ??
           getArrayFirst(body, "target") ??
+          getNumberField(body, "x", "cx", "x1") ??
+          getArrayFirst(body, "anchor") ??
           getArrayFirst(body, "pos") ??
           getArrayFirst(body, "label");
         if (x != null && x >= 0 && x <= width) {
@@ -152,22 +142,28 @@ function audit(file) {
 
 // --- Walk diagrams --------------------------------------------------------
 const files = [];
+function walk(dir) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.name.startsWith("__")) continue;
+    const file = path.join(dir, entry.name);
+    if (entry.isDirectory()) walk(file);
+    else if (entry.name.endsWith(".tsx") && !entry.name.endsWith(".test.tsx")) files.push(file);
+  }
+}
 for (const dir of ROOTS_DIRS) {
   if (!fs.existsSync(dir)) continue;
-  for (const f of fs.readdirSync(dir)) {
-    if (f.endsWith(".tsx")) files.push(path.join(dir, f));
-  }
+  walk(dir);
 }
 
 const lines = [
   "# Anatomy label verification",
   "",
-  "Cross-checks every diagram source file against a canonical ground-truth map",
+  `Recursively scanned ${files.length} source files against a canonical ground-truth map`,
   "(`scripts/anatomy-ground-truth.mjs`) covering:",
   "",
   "1. **Spinal-root levels** for named nerves (e.g. femoral = L2–L4).",
   "2. **Side** of major vessels/nerves vs SVG midline (patient-RIGHT = viewer-LEFT).",
-  "3. **View** (anterior vs posterior) labelling of plexus diagrams.",
+  "**Limitations:** source-data heuristics only; no geometry, leader-target, dermatome or plexus-wiring certification. Side checks require an explicit anterior view and exclude other projections.",
   "",
   "Run: `node scripts/verify-anatomy-labels.mjs`",
   "",

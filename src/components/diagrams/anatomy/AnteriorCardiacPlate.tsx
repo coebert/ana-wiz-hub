@@ -48,7 +48,7 @@ const AnteriorCardiacPlate: React.FC = () => {
         { id: "lcca", text: "Left common carotid",   target: [540, 35],  label: [820, 20],  accent: C.artery },
         { id: "lsa",  text: "Left subclavian",       target: [605, 60],  label: [870, 100], accent: C.artery },
         // Pulmonary trunk vertical at x=560 y 250→350 (anterior to aorta, viewer-LEFT of aorta)
-        { id: "pa",   text: "Pulmonary trunk",       target: [560, 305], label: [820, 320], accent: C.vein },
+         { id: "pa",   text: "Pulmonary trunk",       target: [560, 305], label: [820, 290], accent: C.vein },
         // PA bifurcation: LPA continues to viewer-RIGHT (patient-left lung) end ~ (640,205)
         { id: "lpa",  text: "L. pulmonary artery",   target: [640, 205], label: [880, 165], accent: C.vein },
         // RPA crosses behind aorta to viewer-LEFT end ~ (470,200)
@@ -70,11 +70,11 @@ const AnteriorCardiacPlate: React.FC = () => {
 
         // ---- Conduction & coronaries ---------------------------------------
         // SA node circle at (430, 195) (SVC–RA junction on viewer-LEFT)
-        { id: "sa",   text: "SA node",               target: [430, 195], label: [110, 130], side: "right", accent: C.nerve, sub: "SVC–RA junction" },
+         { id: "sa",   text: "SA node",               target: [420, 310], label: [110, 130], side: "right", accent: C.nerve, sub: "SVC–RA junction" },
         // LAD path 540,310 → 700,560 — midpoint ~(620, 435)
         { id: "lad",  text: "LAD",                   target: [620, 435], label: [880, 410], accent: C.artery, sub: "anterior IV groove" },
         // RCA path 460,320 → 420,540 (viewer-LEFT AV groove) — midpoint ~(440, 430)
-        { id: "rca",  text: "RCA",                   target: [440, 430], label: [110, 430], side: "right", accent: C.artery, sub: "right AV groove" },
+         { id: "rca",  text: "RCA",                   target: [425, 430], label: [110, 430], side: "right", accent: C.artery, sub: "right AV groove" },
         // LCx path 540,310 → 670,355 (viewer-RIGHT AV groove) — midpoint ~(605, 333)
         { id: "lcx",  text: "Circumflex (LCx)",      target: [605, 333], label: [880, 320], accent: C.artery, sub: "left AV groove" },
         // Diagonal off LAD endpoint ~(680, 510)
@@ -212,7 +212,7 @@ const AnteriorCardiacPlate: React.FC = () => {
       <path d="M 425 440 L 440 525" stroke={C.artery} strokeWidth="3" fill="none" strokeLinecap="round" />
 
       {/* SA node marker — SVC/RA junction on viewer-LEFT */}
-      <circle cx="430" cy="195" r="6" fill={C.nerve} stroke={C.stroke} strokeWidth="1" />
+       <circle cx="420" cy="310" r="6" fill={C.nerve} stroke={C.stroke} strokeWidth="1" />
       {/* Apex marker */}
       <circle cx="700" cy="575" r="4" fill={C.stroke} />
     </AnatomyPlate>

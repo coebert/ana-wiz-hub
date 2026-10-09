@@ -2,6 +2,9 @@ import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
+// Inferior view: anterior at top; patient's right is viewer-left.
+// Aperture laterality: https://radiopaedia.org/articles/diaphragmatic-apertures
+
 const hiatus = [
   { name: "Aortic hiatus", level: "T12", contents: "Aorta, thoracic duct, azygos vein", color: "hsl(0, 60%, 55%)", clinical: "Passes BEHIND the crura — not through the diaphragm. Aorta is therefore not compressed during diaphragmatic contraction." },
   { name: "Oesophageal hiatus", level: "T10", contents: "Oesophagus, vagal trunks (anterior & posterior)", color: "hsl(140, 50%, 45%)", clinical: "Passes through the right crus, which contributes to the lower oesophageal sphincter mechanism. Site of sliding/rolling hiatus hernia." },
@@ -139,27 +142,27 @@ export const DiaphragmDiagram = () => {
   
           {/* T8 — IVC foramen (in central tendon, right of midline) */}
           <ellipse
-            cx="275" cy="172" rx="14" ry="10"
+             cx="225" cy="172" rx="14" ry="10"
             fill={active === 2 ? "hsl(220, 60%, 55%)" : "hsl(220, 50%, 60%)"}
             fillOpacity={active === 2 ? 0.4 : 0.15}
             stroke="hsl(220, 60%, 55%)" strokeWidth={active === 2 ? 2 : 1.2}
             className="cursor-pointer transition-all"
-            onClick={() => setActive(active === 2 ? null : 2)}
+             onClick={() => setActive(2)}
           />
-          <text x="275" y="175" textAnchor="middle" fontSize="7" fill="hsl(220, 60%, 55%)" fontWeight="600" className="pointer-events-none">IVC</text>
-          <text x="275" y="158" textAnchor="middle" fontSize="6" fill="hsl(220, 50%, 50%)" fontWeight="bold" className="pointer-events-none">T8</text>
+           <text x="225" y="175" textAnchor="middle" fontSize="7" fill="hsl(220, 60%, 55%)" fontWeight="600" className="pointer-events-none">IVC</text>
+           <text x="225" y="158" textAnchor="middle" fontSize="6" fill="hsl(220, 50%, 50%)" fontWeight="bold" className="pointer-events-none">T8</text>
   
           {/* T10 — Oesophageal hiatus (through right crus, slightly left) */}
           <ellipse
-            cx="242" cy="255" rx="12" ry="9"
+             cx="265" cy="255" rx="12" ry="9"
             fill={active === 1 ? "hsl(140, 50%, 45%)" : "hsl(140, 40%, 50%)"}
             fillOpacity={active === 1 ? 0.4 : 0.15}
             stroke="hsl(140, 50%, 45%)" strokeWidth={active === 1 ? 2 : 1.2}
             className="cursor-pointer transition-all"
-            onClick={() => setActive(active === 1 ? null : 1)}
+             onClick={() => setActive(1)}
           />
-          <text x="242" y="258" textAnchor="middle" fontSize="6.5" fill="hsl(140, 50%, 40%)" fontWeight="600" className="pointer-events-none">Oes.</text>
-          <text x="242" y="242" textAnchor="middle" fontSize="6" fill="hsl(140, 45%, 42%)" fontWeight="bold" className="pointer-events-none">T10</text>
+           <text x="265" y="258" textAnchor="middle" fontSize="6.5" fill="hsl(140, 50%, 40%)" fontWeight="600" className="pointer-events-none">Oes.</text>
+           <text x="265" y="242" textAnchor="middle" fontSize="6" fill="hsl(140, 45%, 42%)" fontWeight="bold" className="pointer-events-none">T10</text>
   
           {/* T12 — Aortic hiatus (behind crura, posterior) */}
           <ellipse
@@ -168,22 +171,22 @@ export const DiaphragmDiagram = () => {
             fillOpacity={active === 0 ? 0.4 : 0.15}
             stroke="hsl(0, 60%, 55%)" strokeWidth={active === 0 ? 2 : 1.2}
             className="cursor-pointer transition-all"
-            onClick={() => setActive(active === 0 ? null : 0)}
+             onClick={() => setActive(0)}
           />
           <text x="250" y="298" textAnchor="middle" fontSize="6.5" fill="hsl(0, 60%, 50%)" fontWeight="600" className="pointer-events-none">Aorta</text>
           <text x="250" y="310" textAnchor="middle" fontSize="6" fill="hsl(0, 55%, 50%)" fontWeight="bold" className="pointer-events-none">T12</text>
   
           {/* ===== PHRENIC NERVES ===== */}
           {/* Right phrenic */}
-          <path d="M 310,60 Q 300,100 290,140 Q 280,165 275,172" fill="none" stroke="hsl(50, 70%, 50%)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5" />
-          <text x="315" y="95" fontSize="6" fill="hsl(50, 65%, 45%)" fontStyle="italic">R. phrenic (C3,4,5)</text>
+           <path d="M 190,60 Q 200,100 210,140 Q 220,165 225,172" fill="none" stroke="hsl(50, 70%, 50%)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5" pointerEvents="none" />
+           <text x="165" y="95" fontSize="6" fill="hsl(50, 65%, 45%)" fontStyle="italic">R. phrenic (C3,4,5)</text>
   
           {/* Left phrenic */}
-          <path d="M 190,60 Q 200,100 210,140 Q 220,170 225,190" fill="none" stroke="hsl(50, 70%, 50%)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5" />
-          <text x="165" y="95" fontSize="6" fill="hsl(50, 65%, 45%)" fontStyle="italic">L. phrenic (C3,4,5)</text>
+           <path d="M 310,60 Q 300,100 290,140 Q 280,170 275,190" fill="none" stroke="hsl(50, 70%, 50%)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5" pointerEvents="none" />
+           <text x="315" y="95" fontSize="6" fill="hsl(50, 65%, 45%)" fontStyle="italic">L. phrenic (C3,4,5)</text>
   
           {/* Motor supply label */}
-          <text x="250" y="410" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.5">Motor: phrenic nerve (C3,4,5) — "keeps the diaphragm alive"</text>
+           <text x="250" y="400" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.5">Motor: phrenic nerve (C3,4,5) — "keeps the diaphragm alive"</text>
   
           {/* ===== SPLANCHNIC NERVES ===== */}
           <path d="M 200,310 Q 195,330 192,350" fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.2" strokeDasharray="2 2" />
@@ -235,7 +238,7 @@ export const DiaphragmDiagram = () => {
                 <p className="font-semibold text-foreground text-sm">{item.name}</p>
                 <span
                   className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                  style={{ background: `${item.color}26`, color: item.color }}
+                   style={{ background: item.color.replace(")", " / 0.15)"), color: item.color }}
                 >
                   {item.level}
                 </span>

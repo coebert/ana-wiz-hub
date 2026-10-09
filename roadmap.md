@@ -18,3 +18,4 @@
 - [x] Re-audit and correct the general/colorectal surgery topic against current primary guidance
 - [x] Audit and correct the burns and plastics topic against clinical sources
 - [x] Audit ICU Sedation & Delirium page against ICU guidelines
+- [ ] Audit all anatomy diagrams: source/geometry review, verified corrections, rendering checks and explicit unresolved findings

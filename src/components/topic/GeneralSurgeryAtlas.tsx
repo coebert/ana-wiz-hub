@@ -126,7 +126,8 @@ const Pelvis = () => (
   </Svg>
 );
 
-/* 5 — Oesophagus relations */
+/* 5 — Oesophagus relations: anterior view; patient-right = viewer-left.
+ * RLN courses: https://radiopaedia.org/articles/recurrent-laryngeal-nerve */
 const Oesophagus = () => (
   <Svg title="Oesophagus and its relations, anterior view, labelled">
     <rect x={185} y={20} width={30} height={90} rx={8} fill={fillA} stroke={ink} />
@@ -134,15 +135,15 @@ const Oesophagus = () => (
     <path d="M200 20 L205 240" stroke={accent} strokeWidth={14} strokeOpacity={0.5} />
     <path d="M150 115 Q200 75 250 115 L250 260" fill="none" stroke={vessel} strokeWidth={10} strokeOpacity={0.5} />
     <path d="M130 70 Q140 130 175 145" fill="none" stroke={vessel} strokeWidth={4} strokeOpacity={0.6} />
-    <path d="M178 40 L178 105 Q190 130 225 120" fill="none" stroke={nerve} strokeWidth={1.5} strokeDasharray="4 2" />
-    <path d="M222 40 L222 80" fill="none" stroke={nerve} strokeWidth={1.5} strokeDasharray="4 2" />
+    <path d="M222 40 L222 105 Q230 140 250 120" fill="none" stroke={nerve} strokeWidth={1.5} strokeDasharray="4 2" />
+    <path d="M178 40 L178 80" fill="none" stroke={nerve} strokeWidth={1.5} strokeDasharray="4 2" />
     <path d="M60 240 Q200 210 340 240" fill="none" stroke={ink} strokeWidth={4} strokeOpacity={0.5} />
     <path d="M205 240 Q240 255 290 245 Q320 280 260 290 Q215 290 205 260 Z" fill="hsl(var(--primary) / 0.15)" stroke={ink} />
     <Label x={200} y={50} tx={300} ty={30}>Trachea (anterior)</Label>
     <Label x={203} y={180} tx={300} ty={190}>Oesophagus (posterior)</Label>
     <Label x={230} y={95} tx={310} ty={85}>Aortic arch</Label>
-    <Label x={178} y={70} tx={40} ty={40} anchor="end">Left recurrent laryngeal n.</Label>
-    <Label x={222} y={60} tx={330} ty={55}>Right recurrent laryngeal n.</Label>
+    <Label x={222} y={70} tx={330} ty={55}>Left recurrent laryngeal n.</Label>
+    <Label x={178} y={60} tx={40} ty={40} anchor="end">Right recurrent laryngeal n.</Label>
     <Label x={140} y={110} tx={40} ty={110} anchor="end">Azygos arch</Label>
     <Label x={158} y={140} tx={40} ty={160} anchor="end">Right main bronchus</Label>
     <Label x={100} y={233} tx={40} ty={205} anchor="end">Diaphragm / hiatus ≈T10</Label>

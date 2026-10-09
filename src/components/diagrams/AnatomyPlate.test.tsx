@@ -44,4 +44,16 @@ describe("AnatomyPlate", () => {
     expect(queryByText("Left ventricle")).toBeNull();
     expect(container.querySelector("svg")).not.toBeNull();
   });
+
+  it("keeps left-edge labels inside the canvas and attaches leaders to their boxes", () => {
+    const { container } = render(
+      <AnatomyPlate title="Edge labels" labels={[
+        { id: "svc", text: "Superior vena cava", target: [430, 220], label: [120, 180], side: "right" },
+      ]}><path d="M430 100 L430 300" /></AnatomyPlate>,
+    );
+    const box = container.querySelector(".anatomy-labels rect");
+    const line = container.querySelector(".anatomy-labels polyline");
+    expect(Number(box?.getAttribute("x"))).toBeGreaterThanOrEqual(8);
+    expect(line?.getAttribute("points")?.split(",")[0]).toBe(box?.getAttribute("x"));
+  });
 });

@@ -5,7 +5,7 @@ import BrainPlateLabels, { type PlateLabel } from "@/components/diagrams/shared/
 import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const plateLabels: PlateLabel[] = [
-  // Cortex & deep white matter (left hemisphere)
+  // Cortex & deep white matter (right hemisphere, viewer's left)
   { text: "Cerebral cortex", dot: { x: 18, y: 22 }, label: { x: 3, y: 8 }, anchor: "start" },
   { text: "Subcortical white matter", dot: { x: 28, y: 32 }, label: { x: 3, y: 22 }, anchor: "start" },
   // Midline white-matter / ventricular complex
@@ -13,12 +13,12 @@ const plateLabels: PlateLabel[] = [
   { text: "Lateral ventricle (body)", dot: { x: 44, y: 42 }, label: { x: 3, y: 36 }, anchor: "start" },
   { text: "Septum pellucidum", dot: { x: 50, y: 41 }, label: { x: 97, y: 22 }, anchor: "end" },
   { text: "Fornix", dot: { x: 50, y: 46 }, label: { x: 97, y: 36 }, anchor: "end" },
-  // Deep grey nuclei & capsules (left hemisphere)
+  // Deep grey nuclei & capsules (right hemisphere, viewer's left)
   { text: "Caudate (head)", dot: { x: 42, y: 43 }, label: { x: 3, y: 50 }, anchor: "start" },
   { text: "Internal capsule", dot: { x: 38, y: 53 }, label: { x: 3, y: 64 }, anchor: "start" },
   { text: "Lentiform nucleus\n(putamen + pallidus)", dot: { x: 32, y: 53 }, label: { x: 3, y: 78 }, anchor: "start" },
   { text: "External capsule ·\nclaustrum · insula", dot: { x: 24, y: 54 }, label: { x: 3, y: 92 }, anchor: "start" },
-  // Diencephalon (right hemisphere)
+  // Diencephalon (left hemisphere, viewer's right)
   { text: "Thalamus", dot: { x: 56, y: 52 }, label: { x: 97, y: 50 }, anchor: "end" },
   { text: "Hypothalamus", dot: { x: 50, y: 64 }, label: { x: 97, y: 64 }, anchor: "end" },
   { text: "Optic tract /\nmammillary bodies", dot: { x: 50, y: 70 }, label: { x: 97, y: 78 }, anchor: "end" },
