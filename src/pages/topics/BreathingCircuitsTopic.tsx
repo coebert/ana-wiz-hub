@@ -254,6 +254,18 @@ const BreathingCircuitsTopic = () => {
               <div className="not-prose">
                 <BreathingCircuitsDiagram />
               </div>
+              <div className="mt-4 rounded-lg border border-border p-3 text-sm text-muted-foreground leading-relaxed">
+                <p className="font-semibold text-foreground mb-1">Mapleson B</p>
+                <pre className="text-xs overflow-x-auto mb-2">{"Patient — [FGF inlet + APL valve] ——— corrugated tubing ——— reservoir bag (machine end)"}</pre>
+                <p>
+                  Fresh gas enters next to the APL valve, both close to the patient, with the tubing and bag beyond. Because fresh
+                  gas, dead-space gas and alveolar gas all mix in the tubing, the valve vents a mixture rather than selectively
+                  venting alveolar gas. It is therefore <strong>inefficient for both spontaneous and controlled ventilation</strong>:
+                  to prevent rebreathing it needs an FGF of about <strong>2 × minute volume</strong> (spontaneous) and
+                  <strong> 2–2.5 × minute volume</strong> (controlled). It is now rarely used clinically, but remains an exam
+                  favourite <InlineRef topicId="breathing-circuits" refLabel="BJA Educ 2005" />.
+                </p>
+              </div>
             </div>
 
             <div>
@@ -267,6 +279,19 @@ const BreathingCircuitsTopic = () => {
                   controlled ventilation. The mode can therefore change without replacing the circuit
                   <InlineRef topicId="breathing-circuits" refLabel="Anaesthesia 1989 ADE" />.
                 </p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li><strong>Lever mechanism:</strong> a lever on the metal block at the machine end directs gas either to the
+                    reservoir bag and APL valve (lever up — <strong>A</strong>) or to the ventilator port, bypassing bag and valve
+                    (lever down — <strong>D/E</strong>). Moving it re-routes expiratory gas; it does not change the tubing.</li>
+                  <li><strong>A mode (spontaneous):</strong> behaves like a Lack (coaxial Mapleson A); efficient at FGF ≈ alveolar
+                    minute ventilation (around 50–70 mL/kg/min in adults).</li>
+                  <li><strong>D mode (controlled):</strong> with a ventilator attached it behaves like a Bain (coaxial Mapleson D),
+                    efficient for IPPV.</li>
+                  <li><strong>E mode:</strong> with low-resistance tubing and no bag in circuit, it acts as a T-piece (Mapleson E) —
+                    useful for children and spontaneous breathing with minimal resistance.</li>
+                  <li><strong>Why it was designed:</strong> to give Mapleson A efficiency for spontaneous breathing and Mapleson D
+                    efficiency for IPPV in one device, avoiding a circuit change mid-case. A built-in safety valve limits pressure.</li>
+                </ul>
                 <p>
                   The <strong>Aintree Intubation Catheter</strong> is an airway-exchange catheter, not a Mapleson class. It is passed
                   over a flexible bronchoscope through a suitable supraglottic airway, the SAD is removed, and a tracheal tube is

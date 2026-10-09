@@ -174,8 +174,8 @@ const keyPoints = [
     cites: ["Al-Shaikh & Stacey Ch.5", "Davey & Diba Ch.3"],
   },
   {
-    text: "Pumping effect: intermittent back-pressure (IPPV, O₂ flush) can push gas back into the chamber and then forward again, transiently raising output. Modern Tec designs incorporate a one-way valve and long inlet tube to mitigate this.",
-    cites: ["Davey & Diba Ch.3"],
+    text: "Pumping effect: intermittent back-pressure (IPPV, O₂ flush) can push gas back into the chamber and then forward again, transiently raising output. Modern Tec designs incorporate a one-way valve and long inlet tube to mitigate this. The effect is worse with: low fresh gas flows; low dial settings; little liquid left in the chamber (more vapour space to compress); and rapid, large pressure swings (high respiratory rates and peak pressures during IPPV, or the O₂ flush).",
+    cites: ["Davey & Diba Ch.3", "BJA Educ 2014"],
   },
   {
     text: "Pre-use check (Association of Anaesthetists / RCoA 2024, 'Anaesthesia, anaesthetic machines and patient safety'): correct agent and adequate fill level with the filler cap closed, vaporiser seated and locked on the back bar with the interlock preventing two agents running simultaneously, dials returning to zero, and no leaks (single-vaporiser leak test with the common gas outlet occluded, repeated at each dial setting).",
@@ -341,6 +341,14 @@ const VaporisersTopic = () => {
                   <li><strong>Very low flows (&lt;250 mL/min):</strong> output is unpredictable and typically <strong>lower than dialled</strong>. Flow within the chamber is too slow and too laminar to mix and sweep vapour off the wicks efficiently, and back-diffusion and the relatively greater effect of internal resistances distort the splitting ratio.</li>
                   <li><strong>Very high flows (&gt;15 L/min):</strong> output again falls <strong>below</strong> the dial because gas transit time through the chamber is too short for <strong>complete saturation</strong>, and the cooling effect of rapid vaporisation outstrips temperature compensation.</li>
                   <li><strong>Gas composition and viscosity/density:</strong> switching from oxygen to a nitrous oxide–oxygen mixture alters gas viscosity and density and therefore the distribution of flow between the low-resistance bypass and the chamber channels, causing a small change in output. There is also a transient dip as nitrous oxide dissolves in the liquid agent when it is first introduced. Modern designs keep resistances similar in both limbs, so these effects are small and clinically minor — but they are the reason a vaporiser is calibrated for a specific carrier gas.</li>
+                  <li><strong>Effect of carrier gas composition (the &ldquo;nitrous effect&rdquo;):</strong> gases dissolve in liquid volatile
+                    agent to different extents, and N₂O is much more soluble in it than O₂ or air. When N₂O is first added, some
+                    dissolves in the liquid, so a smaller volume of gas leaves the chamber than entered it and output <strong>falls
+                    briefly</strong> (often by up to ~10 %). Once the liquid is saturated, output returns to near the dialled value; the
+                    lasting change is small and comes mainly from the different viscosity of the mixture. When N₂O is switched
+                    off, dissolved N₂O comes out of the liquid and output <strong>rises briefly</strong>. Modern vaporisers are
+                    calibrated in O₂ or air, so performance with N₂O differs slightly
+                    <InlineRef topicId="vaporisers" refLabel="BJA Educ 2014" />.</li>
                   <li><strong>Practical corollary:</strong> at very low or very high flows, and after changing carrier gas, confirm the delivered concentration with an <strong>agent monitor</strong> rather than trusting the dial.</li>
                 </ul>
               </div>

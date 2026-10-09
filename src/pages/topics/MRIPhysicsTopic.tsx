@@ -163,6 +163,22 @@ const MRIPhysicsTopic = () => {
                 Their switching against B₀ generates the Lorentz forces responsible for the characteristic
                 <strong> acoustic noise (up to ~110 dB)</strong> that mandates hearing protection.
               </p>
+              <p>
+                <strong>Acoustic noise in more detail:</strong> current pulses switched through the gradient coils sit inside the
+                static field B₀, so each pulse produces a <strong>Lorentz force</strong> on the coil windings. The coils flex and vibrate
+                like a loudspeaker, giving the knocking noise. Sound levels often exceed <strong>110 dBA</strong> on fast sequences, so
+                hearing protection (ear plugs and/or ear defenders) is <strong>mandatory for the patient — including the anaesthetised
+                patient — and for any staff staying in the scan room</strong>
+                <InlineRef topicId="mri-physics" refLabel="Assoc Anaesth 2024 (MRI)" />.
+              </p>
+              <p>
+                <strong>Peripheral nerve stimulation (PNS):</strong> by <strong>Faraday's law</strong>, a rapidly changing magnetic
+                field (high dB/dt) induces electric currents in conductive tissue. Above threshold these depolarise peripheral nerves,
+                felt as twitching, tingling or tapping — usually over the trunk, shoulders or buttocks. It is more likely with
+                high-performance gradients and fast sequences such as <strong>echoplanar imaging</strong> (diffusion, functional MRI).
+                Scanners limit dB/dt by regulation; if it is uncomfortable, reassure the patient and the radiographer can change the
+                sequence <InlineRef topicId="mri-physics" refLabel="Middleton Ch.17" />.
+              </p>
               <ul className="list-disc list-inside space-y-1.5">
                 <li>
                   <strong>Slice selection</strong> — a gradient (conventionally z for axial slices) is applied

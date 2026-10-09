@@ -710,6 +710,8 @@ const EquipmentMonitoringTopic = () => {
               <div className="rounded-lg border border-border p-3"><strong className="text-foreground">Equipment classes</strong><p className="mt-1">Class I uses protective earth; Class II uses double/reinforced insulation; Class III is supplied at safety extra-low voltage. Type B applied parts provide basic protection, BF are electrically floating, and CF have the greatest leakage-current protection for direct cardiac application.</p></div>
               <div className="rounded-lg border border-border p-3"><strong className="text-foreground">Supply protection</strong><p className="mt-1">Fuses and circuit breakers interrupt overcurrent. Theatre isolated-power systems use an isolation transformer so the first earth fault does not stop supply; a line-isolation monitor alarms falling impedance so the fault can be found before a second fault completes a dangerous circuit.</p></div>
               <div className="rounded-lg border border-border p-3"><strong className="text-foreground">Diathermy</strong><p className="mt-1">For monopolar surgery, place the return electrode on clean, dry, well-perfused muscle with full contact and a short current path that avoids metal implants, ECG electrodes and implanted devices. Bipolar current remains between forceps tips and avoids a remote return plate. Inspect insulation and never rely on the return plate as an electrical earth.</p></div>
+              <div className="rounded-lg border border-border p-3"><strong className="text-foreground">Thresholds (mains 50 Hz)</strong><p className="mt-1">Macroshock: ~1 mA is felt, ~10–15 mA causes muscle spasm with inability to let go, and ~100 mA can cause VF. Microshock: currents of about <strong>100 µA</strong> (some sources 50 µA) applied directly to the heart can cause VF. Leakage limits in normal use are therefore 100 µA for B/BF applied parts and <strong>10 µA</strong> for CF parts. Symbols: B is a figure on its own, BF a figure in a square, CF a heart in a square.</p></div>
+              <div className="rounded-lg border border-border p-3"><strong className="text-foreground">Equipotential bonding</strong><p className="mt-1">All metal equipment and fittings in a cardiac or theatre area are connected by low-resistance conductors to a common earth point, so no two surfaces a patient or staff member can touch are at different voltages. This removes the potential difference that drives microshock currents.</p></div>
             </div>
             <p className="mt-2 text-xs text-muted-foreground"><InlineRef topicId="equipment-monitoring" refLabel="IEC 60601 Electrical Safety" /></p>
           </div>
@@ -935,6 +937,15 @@ const EquipmentMonitoringTopic = () => {
                 <p className="font-semibold text-foreground text-sm">Stimulating needles</p>
                 <p className="text-xs text-muted-foreground mt-1">Insulated shaft, exposed tip — short-bevel reduces nerve injury. Often combined with US guidance.</p>
               </div>
+            </div>
+            <div className="rounded-lg border border-border p-3 mt-3 text-sm text-muted-foreground leading-relaxed">
+              <p className="font-semibold text-foreground mb-1">Ultrasound physics for anaesthesia</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li><strong>Principles:</strong> piezoelectric crystals convert voltage to sound (2–15 MHz) and returning echoes back into voltage. Echoes form where <strong>acoustic impedance</strong> changes (reflection); sound bends at oblique interfaces (refraction), scatters off small structures and is <strong>attenuated</strong> with depth — more at higher frequency.</li>
+                <li><strong>Probes:</strong> linear (high frequency, superficial nerve blocks and vascular access); curvilinear (low frequency, deep blocks, abdomen, neuraxial); phased array (small footprint, low frequency — echocardiography, lung between ribs).</li>
+                <li><strong>Knobology:</strong> frequency (resolution vs penetration), depth (put the target in the middle of the screen), gain (overall brightness), time-gain compensation (brightness by depth), focus (narrowest beam at the target depth) and colour Doppler (identify vessels; aim the beam along the flow).</li>
+                <li><strong>Artefacts:</strong> acoustic shadowing behind bone; posterior acoustic enhancement behind fluid (vessels, cysts); edge artefact at the sides of round structures; reverberation from strong parallel reflectors such as the needle shaft or pleura (A-lines).</li>
+              </ul>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 mt-3">
               <NeuraxialNeedlesDiagram />
