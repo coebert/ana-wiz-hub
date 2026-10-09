@@ -38,6 +38,12 @@ const plate: CorPictumPlate = {
 };
 
 describe("CorPictumFolio overlay labels", () => {
+  it("shows a plate-specific anatomy correction when artwork remains unresolved", () => {
+    const { getByRole } = renderWithProviders(
+      <CorPictumFolio atlasTitle="A" atlasSubtitle="" plates={[{ ...plate, auditWarning: "Printed leader points to the wrong lung." }]} />,
+    );
+    expect(getByRole("note")).toHaveTextContent("Printed leader points to the wrong lung.");
+  });
   it("suppresses auto labels by default", () => {
     const { container } = renderWithProviders(
       <CorPictumFolio atlasTitle="A" atlasSubtitle="" plates={[plate]} />,
