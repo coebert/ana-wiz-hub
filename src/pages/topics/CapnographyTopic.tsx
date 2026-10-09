@@ -175,7 +175,7 @@ const keyPoints = [
     cites: ["Bhavani-Shankar & Philip 2000"],
   },
   {
-    text: "Raised baseline = patient is inspiring CO₂ (rebreathing). Causes: exhausted soda lime, faulty expiratory unidirectional valve, inadequate FGF in a Mapleson D or coaxial inner-tube disconnection (Bain — positive Pethick's test).",
+    text: "Raised baseline = patient is inspiring CO₂ (rebreathing). Causes: exhausted soda lime, faulty expiratory unidirectional valve, inadequate FGF in a Mapleson D or coaxial inner-tube disconnection (Bain — positive Pethick's test). Sort causes by breathing system. Circle: exhausted soda lime (most common — check colour change); incompetent expiratory valve (exhaled gas re-enters the inspiratory side: raised baseline with a slurred inspiratory downstroke/widened β angle); incompetent inspiratory valve (exhaled gas pushed back up the inspiratory limb). Mapleson A/D/Bain: FGF too low for the minute ventilation; for a Bain also do Pethick's test (flush with the patient port occluded then released — the bag should collapse via the Venturi effect if the inner tube is intact). Troubleshooting: (1) raise FGF immediately to wash out CO₂; (2) check soda lime colour; (3) watch the valve discs move; (4) if unresolved, switch to a self-inflating bag or a fresh circuit and change the absorber.",
     cites: ["BJA Educ 2017 Capnography"],
   },
   {
