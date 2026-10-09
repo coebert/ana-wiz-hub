@@ -35,7 +35,8 @@
     "prepublish": "npm run check && npm run lint && npm run format:check && npm run test",
     "test": "vitest run",
     "test:watch": "vitest",
-    "gen:diagram-snapshots": "node scripts/generate-diagram-snapshot-registry.mjs",
+    "gen:diagram-snapshots": "node scripts/generate-diagram-snapshot-registry.mjs && bun scripts/generate-anatomy-sources.ts",
+    "gen:anatomy-sources": "bun scripts/generate-anatomy-sources.ts",
     "test:layout": "playwright test tests/visual/diagram-text-squish.spec.ts",
     "test:diagram-snapshots": "npm run gen:diagram-snapshots && playwright test tests/visual/diagram-snapshots.spec.ts",
     "test:e2e": "playwright test tests/e2e --project=chromium --project=firefox --project=webkit"

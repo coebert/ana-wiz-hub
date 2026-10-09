@@ -1,0 +1,2803 @@
+{
+  "entries": [
+    {
+      "id": "AbdominalWallDiagram",
+      "title": "Abdominal wall",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/abdominal-anatomy",
+          "title": "abdominal anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/AbdominalWallDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "AirwayInnervationDiagram",
+      "title": "Airway innervation",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [
+        {
+          "label": "Source note in diagram",
+          "detail": "V1 anterior ethmoidal supply: https://radiopaedia.org/articles/anterior-ethmoidal-nerve",
+          "basis": "Source comment — incomplete bibliographic record"
+        }
+      ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "Anterior-tongue and oropharyngeal sensory polygons overlap; a sourced redraw is still needed.",
+        "Source is recorded only in a comment; an exact edition, passage or figure match is not established."
+      ],
+      "topicLinks": [
+        {
+          "path": "/clinical/airway-management",
+          "title": "airway management"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/clinical/AirwayInnervationDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "AntecubitalFossaDiagram",
+      "title": "Antecubital fossa",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/upper-limb-anatomy",
+          "title": "upper limb anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/AntecubitalFossaDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "AnteriorCardiacPlate",
+      "title": "Anterior Cardiac",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/cardiac-anatomy",
+          "title": "cardiac anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/AnteriorCardiacPlate.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "BrachialPlexusDiagram",
+      "title": "Brachial plexus",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/brachial-plexus",
+          "title": "brachial plexus"
+        },
+        {
+          "path": "/anatomy/upper-limb-anatomy",
+          "title": "upper limb anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/BrachialPlexusDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "BrachialPlexusUltrasoundDiagram",
+      "title": "Brachial plexus ultrasound",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/brachial-plexus",
+          "title": "brachial plexus"
+        },
+        {
+          "path": "/anatomy/upper-limb-anatomy",
+          "title": "upper limb anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/BrachialPlexusUltrasoundDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "BrainAnatomyDiagram",
+      "title": "Brain anatomy",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Illustrated plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy for Students (Drake, Vogl & Mitchell), 4th ed.",
+          "detail": "Chapter 8: Head and Neck — surface anatomy of the cerebrum and brainstem",
+          "url": "https://www.elsevier.com/books/grays-anatomy-for-students/drake/978-0-323-39304-1",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "Standring S. Gray's Anatomy: The Anatomical Basis of Clinical Practice, 42nd ed.",
+          "detail": "Section 4: Head and Neck — cerebral lobes, sulci and gyri",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "TeachMeAnatomy — Cerebrum: Lobes, Surfaces & Functions",
+          "detail": "",
+          "url": "https://teachmeanatomy.info/neuroanatomy/structures/cerebrum/",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "Kenhub — Lateral surface of the cerebrum",
+          "detail": "",
+          "url": "https://www.kenhub.com/en/library/anatomy/the-cerebrum",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "Brodmann K. (1909) Localisation in the Cerebral Cortex",
+          "detail": "Cytoarchitectonic basis for primary motor (area 4), sensory (1–3) and visual (17) cortices",
+          "basis": "Diagram reference"
+        }
+      ],
+      "credit": "Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy lateral cerebral plates. Anatomical labelling cross-checked against the references above.",
+      "uncertainty": [
+        "Generated illustration: cited textbooks describe anatomy but do not certify the image pixels or every leader endpoint."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/neuroanatomy",
+          "title": "neuroanatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/shared/BrainAnatomyDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "BrainAxialDiagram",
+      "title": "Brain axial",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Illustrated plate",
+      "sources": [
+        {
+          "label": "Standring S. Gray's Anatomy: The Anatomical Basis of Clinical Practice, 42nd ed.",
+          "detail": "Axial sections through the basal ganglia and thalamus",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "Netter FH. Atlas of Human Anatomy, 7th ed.",
+          "detail": "Axial cerebral plates",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy, 2nd ed.",
+          "detail": "Axial neuro-anatomy at the level of the basal ganglia and thalamus",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "Radiopaedia — Axial brain anatomy (basal ganglia level)",
+          "detail": "",
+          "url": "https://radiopaedia.org/articles/axial-brain-anatomy",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "TeachMeAnatomy — The Cerebrum",
+          "detail": "",
+          "url": "https://teachmeanatomy.info/neuroanatomy/structures/cerebrum/",
+          "basis": "Diagram reference"
+        }
+      ],
+      "credit": "Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy axial cerebral plates. Anatomical labelling cross-checked against the references above.",
+      "uncertainty": [
+        "Occipital-horn leader targets the posterior midline rather than a lateral ventricular horn; deep-structure endpoints need neuroradiology review.",
+        "Generated illustration: cited textbooks describe anatomy but do not certify the image pixels or every leader endpoint."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/neuroanatomy",
+          "title": "neuroanatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/shared/BrainAxialDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "BrainCoronalDiagram",
+      "title": "Brain coronal",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Illustrated plate",
+      "sources": [
+        {
+          "label": "Standring S. Gray's Anatomy: The Anatomical Basis of Clinical Practice, 42nd ed.",
+          "detail": "Coronal sections through the diencephalon and basal ganglia",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "Netter FH. Atlas of Human Anatomy, 7th ed.",
+          "detail": "Plates 110–112 — coronal sections of the cerebrum",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "Snell RS. Clinical Neuroanatomy, 8th ed.",
+          "detail": "Internal capsule, basal nuclei and limbic structures",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "Radiopaedia — Coronal brain anatomy",
+          "detail": "",
+          "url": "https://radiopaedia.org/articles/coronal-brain-anatomy",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "TeachMeAnatomy — Basal ganglia and internal capsule",
+          "detail": "",
+          "url": "https://teachmeanatomy.info/neuroanatomy/structures/basal-ganglia/",
+          "basis": "Diagram reference"
+        }
+      ],
+      "credit": "Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy coronal cerebral plates. Anatomical labelling cross-checked against the references above.",
+      "uncertainty": [
+        "Section levels and deep-nuclear boundaries are simplified; leader endpoints need specialist validation.",
+        "Generated illustration: cited textbooks describe anatomy but do not certify the image pixels or every leader endpoint."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/neuroanatomy",
+          "title": "neuroanatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/shared/BrainCoronalDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "BrainMedialDiagram",
+      "title": "Brain medial",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Illustrated plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy for Students (Drake, Vogl & Mitchell), 4th ed.",
+          "detail": "Chapter 8: Midsagittal section — corpus callosum, diencephalon, brainstem",
+          "url": "https://www.elsevier.com/books/grays-anatomy-for-students/drake/978-0-323-39304-1",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "Standring S. Gray's Anatomy: The Anatomical Basis of Clinical Practice, 42nd ed.",
+          "detail": "Diencephalon, ventricular system and brainstem",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "Snell RS. Clinical Neuroanatomy, 8th ed.",
+          "detail": "Limbic system, hypothalamus and pituitary anatomy",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "TeachMeAnatomy — The Diencephalon: Thalamus & Hypothalamus",
+          "detail": "",
+          "url": "https://teachmeanatomy.info/neuroanatomy/structures/diencephalon/",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "Kenhub — Median sagittal section of the brain",
+          "detail": "",
+          "url": "https://www.kenhub.com/en/library/anatomy/midsagittal-section-of-the-brain",
+          "basis": "Diagram reference"
+        },
+        {
+          "label": "Radiopaedia — Cerebral ventricular system",
+          "detail": "",
+          "url": "https://radiopaedia.org/articles/ventricles-of-the-brain",
+          "basis": "Diagram reference"
+        }
+      ],
+      "credit": "Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy midsagittal cerebral plates. Anatomical labelling cross-checked against the references above.",
+      "uncertainty": [
+        "Generated illustration: cited textbooks describe anatomy but do not certify the image pixels or every leader endpoint."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/neuroanatomy",
+          "title": "neuroanatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/shared/BrainMedialDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "BronchoscopicViewDiagram",
+      "title": "Bronchoscopic view",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "Clock-face orientation depends on scope rotation and viewing convention.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/head-neck-anatomy",
+          "title": "head neck anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/BronchoscopicViewDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "CardiacAnatomyDiagram",
+      "title": "Cardiac anatomy",
+      "group": "Anatomy & applied diagrams",
+      "kind": "3D schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "Procedural 3D fallback is simplified and is not a validated anatomical mesh; optional GLB models are absent locally.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/cardiac-anatomy",
+          "title": "cardiac anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/CardiacAnatomyDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "CaudalBlockDiagram",
+      "title": "Caudal block — sagittal anatomy",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/clinical/paediatric-anaesthesia",
+          "title": "paediatric anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/clinical/CaudalBlockDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "CaudalSurfaceAnatomyDiagram",
+      "title": "Caudal surface anatomy",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/clinical/paediatric-anaesthesia",
+          "title": "paediatric anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/clinical/CaudalSurfaceAnatomyDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "CervicalPlexusDiagram",
+      "title": "Cervical Plexus",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/head-neck-anatomy",
+          "title": "head neck anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/CervicalPlexusDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "CircleOfWillisDiagram",
+      "title": "Circle of willis",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/neuroanatomy",
+          "title": "neuroanatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/CircleOfWillisDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "CoronaryTerritoryMapDiagram",
+      "title": "Coronary territory MAP",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/cardiac-anatomy",
+          "title": "cardiac anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/CoronaryTerritoryMapDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "CoronaryTreeDiagram",
+      "title": "Coronary tree",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/cardiac-anatomy",
+          "title": "cardiac anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/CoronaryTreeDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "CorticalJuxtamedullaryDiagram",
+      "title": "Cortical juxtamedullary",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/physiology/renal-physiology",
+          "title": "renal physiology"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/physiology/CorticalJuxtamedullaryDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "CsfFlowDiagram",
+      "title": "CSF flow",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/neuroanatomy",
+          "title": "neuroanatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/CsfFlowDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "DermatomeMapDiagram",
+      "title": "Dermatome MAP",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "Dermatome boundaries vary between reference charts.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/clinical/regional-anaesthesia",
+          "title": "regional anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/clinical/DermatomeMapDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "DermatomeMyotomeDiagram",
+      "title": "Dermatome myotome",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "Dermatome boundaries vary between reference charts.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/spinal-anatomy",
+          "title": "spinal anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/DermatomeMyotomeDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "DiaphragmDiagram",
+      "title": "Diaphragm",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [
+        {
+          "label": "Source note in diagram",
+          "detail": "Aperture laterality: https://radiopaedia.org/articles/diaphragmatic-apertures",
+          "basis": "Source comment — incomplete bibliographic record"
+        }
+      ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "Aperture laterality and phrenic courses were corrected; the schematic remains simplified and is not a validated anatomical model.",
+        "Source is recorded only in a comment; an exact edition, passage or figure match is not established."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/thoracic-anatomy",
+          "title": "thoracic anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/DiaphragmDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "EpiduralSpaceDiagram",
+      "title": "Epidural Space",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/spinal-anatomy",
+          "title": "spinal anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/EpiduralSpaceDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "FirstRibDiagram",
+      "title": "First Rib",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/thoracic-anatomy",
+          "title": "thoracic anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/FirstRibDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "InteractiveDermatomeMap",
+      "title": "Interactive dermatome MAP",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "Dermatome boundaries vary between reference charts; this map is schematic, not a definitive boundary map.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/spinal-anatomy",
+          "title": "spinal anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/InteractiveDermatomeMap.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "IntercostalAnatomyDiagram",
+      "title": "Intercostal anatomy",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/thoracic-anatomy",
+          "title": "thoracic anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/IntercostalAnatomyDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "LaryngealCrossSectionDiagram",
+      "title": "Laryngeal Cross Section",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/head-neck-anatomy",
+          "title": "head neck anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/LaryngealCrossSectionDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "LaryngealNervesDiagram",
+      "title": "Laryngeal Nerves",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/head-neck-anatomy",
+          "title": "head neck anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/LaryngealNervesDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "LaryngoscopeBladesDiagram",
+      "title": "Laryngoscope blades",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/physics/equipment-monitoring",
+          "title": "equipment monitoring"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/physics/LaryngoscopeBladesDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "LowerLimbArteriesDiagram",
+      "title": "Lower limb arteries",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/lower-limb-anatomy",
+          "title": "lower limb anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/LowerLimbArteriesDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "LowerLimbBranchesDiagram",
+      "title": "Lower limb branches",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/clinical/regional-anaesthesia",
+          "title": "regional anaesthesia"
+        },
+        {
+          "path": "/anatomy/lower-limb-anatomy",
+          "title": "lower limb anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/LowerLimbBranchesDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "LowerLimbInnervationDiagram",
+      "title": "Lower limb innervation",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/lower-limb-anatomy",
+          "title": "lower limb anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/LowerLimbInnervationDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "LowerLimbVeinsDiagram",
+      "title": "Lower limb veins",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/lower-limb-anatomy",
+          "title": "lower limb anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/LowerLimbVeinsDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "LumbosacralPlexusDiagram",
+      "title": "Lumbosacral plexus",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/lower-limb-anatomy",
+          "title": "lower limb anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/LumbosacralPlexusDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "LVBullseyeDiagram",
+      "title": "LV bullseye",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/cardiac-anatomy",
+          "title": "cardiac anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/LVBullseyeDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "NeckCrossSectionDiagram",
+      "title": "Neck cross section",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/head-neck-anatomy",
+          "title": "head neck anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/NeckCrossSectionDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "NeckTrianglesDiagram",
+      "title": "Neck Triangles",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/head-neck-anatomy",
+          "title": "head neck anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/NeckTrianglesDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "NephronDiagram",
+      "title": "Nephron segments: glomerulus, tubule, loop of Henle and collecting duct",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/physiology/renal-physiology",
+          "title": "renal physiology"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/physiology/NephronDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "NerveDermatomeOverlayDiagram",
+      "title": "Nerve dermatome overlay",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/clinical/regional-anaesthesia",
+          "title": "regional anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/clinical/NerveDermatomeOverlayDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "OrbitAnatomyDiagram",
+      "title": "Orbit anatomy",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/head-neck-anatomy",
+          "title": "head neck anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/OrbitAnatomyDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "OrbitBonyAnatomyDiagram",
+      "title": "Orbit bony anatomy",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [
+        {
+          "label": "Source note in diagram",
+          "detail": "--------------------------------------------------------------------------- Geometry  The orbital aperture is drawn as a rounded quadrilateral (anterior view of the LEFT orbit, viewer's left = patient's medial). Seven bones tile the aperture; their boundaries follow the standard topographical layout used in Gray's Anatomy and Last's:    Roof:          frontal (anterior) + lesser wing of sphenoid (posterior)   Lateral wall:  zygomatic (anterior) + greater wing of sphenoid (posterior)   Floor:         maxilla (most) + zygomatic (anterolateral)                  + orbital process of palatine (small posterior)   Medial wall:   (anterior→posterior) frontal process of maxilla,                  lacrimal, ethmoid (lamina papyracea), body of sphenoid  Coordinates use a 600×500 viewBox; the aperture sits roughly within the rectangle (140,90)–(470,400) with the apex pulled slightly posteromedially. -------------------------------------------------------------------------",
+          "basis": "Source comment — incomplete bibliographic record"
+        }
+      ],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "Source is recorded only in a comment; an exact edition, passage or figure match is not established."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/head-neck-anatomy",
+          "title": "head neck anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/OrbitBonyAnatomyDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "ParavertebralSpaceDiagram",
+      "title": "Paravertebral space",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/thoracic-anatomy",
+          "title": "thoracic anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/ParavertebralSpaceDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "SkullBaseDiagram",
+      "title": "Skull base",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/head-neck-anatomy",
+          "title": "head neck anatomy"
+        },
+        {
+          "path": "/anatomy/neuroanatomy",
+          "title": "neuroanatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/SkullBaseDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "SpinalCordAxialDiagram",
+      "title": "Spinal cord axial",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/spinal-anatomy",
+          "title": "spinal anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/SpinalCordAxialDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "SpinalCordCrossSectionDiagram",
+      "title": "Spinal Cord Cross Section",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/spinal-anatomy",
+          "title": "spinal anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/SpinalCordCrossSectionDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "SpinalCordSagittalDiagram",
+      "title": "Spinal Cord Sagittal",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/spinal-anatomy",
+          "title": "spinal anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/SpinalCordSagittalDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "SpinalCordStimulatorDiagram",
+      "title": "Spinal cord stimulator",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/clinical/pain-medicine",
+          "title": "pain medicine"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/clinical/SpinalCordStimulatorDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "TracheobronchialTreeDiagram",
+      "title": "Tracheobronchial tree",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/head-neck-anatomy",
+          "title": "head neck anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/TracheobronchialTreeDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "UpperLimbArteriesDiagram",
+      "title": "Upper limb arteries",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/upper-limb-anatomy",
+          "title": "upper limb anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/UpperLimbArteriesDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "UpperLimbBranchesDiagram",
+      "title": "Upper limb branches",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/clinical/regional-anaesthesia",
+          "title": "regional anaesthesia"
+        },
+        {
+          "path": "/anatomy/upper-limb-anatomy",
+          "title": "upper limb anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/UpperLimbBranchesDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "UpperLimbVeinsDiagram",
+      "title": "Upper limb veins",
+      "group": "Anatomy & applied diagrams",
+      "kind": "Labelled schematic",
+      "sources": [],
+      "credit": "Custom teaching schematic; original image/geometry provenance not separately recorded.",
+      "uncertainty": [
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "path": "/anatomy/upper-limb-anatomy",
+          "title": "upper limb anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomy/UpperLimbVeinsDiagram.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "abdominalFolio-anterior",
+      "title": "Abdominal Cavity",
+      "group": "Atlas of Anatomy — Abdomen",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "abdominal anatomy",
+          "path": "/anatomy/abdominal-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "abdominalFolio-retroperitoneum",
+      "title": "Retroperitoneum",
+      "group": "Atlas of Anatomy — Abdomen",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "abdominal anatomy",
+          "path": "/anatomy/abdominal-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "brachialFolio-plexus",
+      "title": "Brachial Plexus",
+      "group": "Atlas of Anatomy — Brachial Plexus",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "brachial plexus",
+          "path": "/anatomy/brachial-plexus"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "brachialFolio-interscalene",
+      "title": "Interscalene Groove",
+      "group": "Atlas of Anatomy — Brachial Plexus",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "brachial plexus",
+          "path": "/anatomy/brachial-plexus"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "neuroFolio-willis",
+      "title": "Circle of Willis",
+      "group": "Atlas of Anatomy — Brain",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "neuroanatomy",
+          "path": "/anatomy/neuroanatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "neuroFolio-midsagittal",
+      "title": "Midsagittal Section of the Brain",
+      "group": "Atlas of Anatomy — Brain",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "neuroanatomy",
+          "path": "/anatomy/neuroanatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "neuroFolio-skullbase-superior",
+      "title": "Skull Base from Above",
+      "group": "Atlas of Anatomy — Brain",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "neuroanatomy",
+          "path": "/anatomy/neuroanatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "neuroFolio-skullbase-inferior",
+      "title": "Skull Base from Below",
+      "group": "Atlas of Anatomy — Brain",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "neuroanatomy",
+          "path": "/anatomy/neuroanatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "headNeckFolio-neck-c6-axial",
+      "title": "Axial Section — C6 (Cricoid Level)",
+      "group": "Atlas of Anatomy — Head and Neck",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "head neck anatomy",
+          "path": "/anatomy/head-neck-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "headNeckFolio-carotid",
+      "title": "Carotid Sheath",
+      "group": "Atlas of Anatomy — Head and Neck",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "head neck anatomy",
+          "path": "/anatomy/head-neck-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "headNeckFolio-orbit-frontal",
+      "title": "Orbit — Extraocular Muscles",
+      "group": "Atlas of Anatomy — Head and Neck",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "head neck anatomy",
+          "path": "/anatomy/head-neck-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "headNeckFolio-superficial",
+      "title": "Parotid and Cervical Region",
+      "group": "Atlas of Anatomy — Head and Neck",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "head neck anatomy",
+          "path": "/anatomy/head-neck-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "headNeckFolio-orbit",
+      "title": "The Orbit",
+      "group": "Atlas of Anatomy — Head and Neck",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "head neck anatomy",
+          "path": "/anatomy/head-neck-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "lowerLimbFolio-lower-arteries",
+      "title": "Arterial Supply of the Lower Limb",
+      "group": "Atlas of Anatomy — Lower Limb",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "lower limb anatomy",
+          "path": "/anatomy/lower-limb-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "lowerLimbFolio-femoral",
+      "title": "Femoral Triangle",
+      "group": "Atlas of Anatomy — Lower Limb",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "lower limb anatomy",
+          "path": "/anatomy/lower-limb-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "lowerLimbFolio-lower-nerves",
+      "title": "Innervation of the Lower Limb",
+      "group": "Atlas of Anatomy — Lower Limb",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "lower limb anatomy",
+          "path": "/anatomy/lower-limb-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "lowerLimbFolio-popliteal",
+      "title": "Popliteal Fossa",
+      "group": "Atlas of Anatomy — Lower Limb",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "lower limb anatomy",
+          "path": "/anatomy/lower-limb-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "lowerLimbFolio-lower-veins",
+      "title": "Venous Drainage of the Lower Limb",
+      "group": "Atlas of Anatomy — Lower Limb",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "lower limb anatomy",
+          "path": "/anatomy/lower-limb-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "thoracicFolio-first-rib",
+      "title": "First Rib",
+      "group": "Atlas of Anatomy — Thorax",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "thoracic anatomy",
+          "path": "/anatomy/thoracic-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "thoracicFolio-mediastinum",
+      "title": "Right Mediastinum",
+      "group": "Atlas of Anatomy — Thorax",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "thoracic anatomy",
+          "path": "/anatomy/thoracic-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "thoracicFolio-anterior",
+      "title": "Thoracic Cavity",
+      "group": "Atlas of Anatomy — Thorax",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "The printed ‘Left lung’ leader incorrectly points to the patient's right chest. In an anterior view, the patient's left lung is on the viewer's right. The chest wall is shown, not removed; the clavicle is not rib 1.",
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "thoracic anatomy",
+          "path": "/anatomy/thoracic-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "airwayFolio-laryngoscopic",
+      "title": "Laryngeal Inlet",
+      "group": "Atlas of Anatomy — Upper Airway",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "airway management",
+          "path": "/clinical/airway-management"
+        },
+        {
+          "title": "head neck anatomy",
+          "path": "/anatomy/head-neck-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "airwayFolio-axial",
+      "title": "Larynx — Axial Section",
+      "group": "Atlas of Anatomy — Upper Airway",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "airway management",
+          "path": "/clinical/airway-management"
+        },
+        {
+          "title": "head neck anatomy",
+          "path": "/anatomy/head-neck-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "airwayFolio-coronal",
+      "title": "Larynx — Coronal Section",
+      "group": "Atlas of Anatomy — Upper Airway",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "airway management",
+          "path": "/clinical/airway-management"
+        },
+        {
+          "title": "head neck anatomy",
+          "path": "/anatomy/head-neck-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "airwayFolio-sagittal",
+      "title": "Oropharynx and Larynx",
+      "group": "Atlas of Anatomy — Upper Airway",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "The printed vertebral labels are unreliable: the atlas (C1) has no vertebral body, and the cricoid is normally at approximately C6 in adults. The vallecula is between the tongue base and epiglottis, not behind the epiglottis as the printed leader suggests. Use the labelled diagrams and text for these landmarks.",
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "airway management",
+          "path": "/clinical/airway-management"
+        },
+        {
+          "title": "head neck anatomy",
+          "path": "/anatomy/head-neck-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "upperLimbFolio-upper-arteries",
+      "title": "Arterial Supply of the Upper Limb",
+      "group": "Atlas of Anatomy — Upper Limb",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "upper limb anatomy",
+          "path": "/anatomy/upper-limb-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "upperLimbFolio-axilla",
+      "title": "Axillary Region",
+      "group": "Atlas of Anatomy — Upper Limb",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "upper limb anatomy",
+          "path": "/anatomy/upper-limb-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "upperLimbFolio-forearm",
+      "title": "Forearm and Wrist",
+      "group": "Atlas of Anatomy — Upper Limb",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "upper limb anatomy",
+          "path": "/anatomy/upper-limb-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "upperLimbFolio-upper-nerves",
+      "title": "Innervation of the Upper Limb",
+      "group": "Atlas of Anatomy — Upper Limb",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "upper limb anatomy",
+          "path": "/anatomy/upper-limb-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "upperLimbFolio-upper-veins",
+      "title": "Venous Drainage of the Upper Limb",
+      "group": "Atlas of Anatomy — Upper Limb",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "upper limb anatomy",
+          "path": "/anatomy/upper-limb-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "spinalFolio-caudal",
+      "title": "Caudal Block Landmarks",
+      "group": "Atlas of Anatomy — Vertebral Column",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "spinal anatomy",
+          "path": "/anatomy/spinal-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "spinalFolio-sagittal",
+      "title": "Epidural and Subarachnoid Spaces",
+      "group": "Atlas of Anatomy — Vertebral Column",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "spinal anatomy",
+          "path": "/anatomy/spinal-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "spinalFolio-posterior",
+      "title": "Spinal Cord",
+      "group": "Atlas of Anatomy — Vertebral Column",
+      "kind": "Painted atlas plate",
+      "sources": [],
+      "credit": "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.",
+      "uncertainty": [
+        "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas.",
+        "No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance."
+      ],
+      "topicLinks": [
+        {
+          "title": "spinal anatomy",
+          "path": "/anatomy/spinal-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "needs-review"
+    },
+    {
+      "id": "CardiothoracicAtlas-3324",
+      "title": "Bronchial tree and double-lumen tubes",
+      "group": "Cardiothoracic",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: The right main bronchus is shorter, wider and more vertical; the right upper lobe bronchus arises about 2 cm from the carina"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/cardiothoracic#anatomy-atlas",
+          "title": "cardiothoracic"
+        }
+      ],
+      "sourceFile": "src/components/topic/CardiothoracicAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "CardiothoracicAtlas-2789",
+      "title": "Coronary artery anatomy",
+      "group": "Cardiothoracic",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: The left main stem divides into the LAD and circumflex; the RCA runs in the right atrioventricular groove"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/cardiothoracic#anatomy-atlas",
+          "title": "cardiothoracic"
+        }
+      ],
+      "sourceFile": "src/components/topic/CardiothoracicAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "EntAnaesthesiaAtlas-4092",
+      "title": "Larynx and its nerve supply",
+      "group": "Ent Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: The internal branch of the superior laryngeal nerve pierces the thyrohyoid membrane and supplies sensation above the vocal cords"
+        },
+        {
+          "label": "Furlan 2002 SLN",
+          "detail": "Furlan JC. Anatomical study applied to anesthetic block technique of the superior laryngeal nerve. Acta Anaesthesiol Scand. 2002;46(2):199-202.",
+          "url": "https://doi.org/10.1034/j.1399-6576.2002.460214.x",
+          "basis": "Landmark: The superior laryngeal nerve can be blocked near the greater horn of the hyoid; cadaver measurements describe its position relative to these landmarks"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/ent-anaesthesia#anatomy-atlas",
+          "title": "ent anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/EntAnaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "EntAnaesthesiaAtlas-5131",
+      "title": "Tonsillar fossa",
+      "group": "Ent Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: The palatine tonsil sits on each side between the palatoglossal arch (in front) and the palatopharyngeal arch (behind); its main supply is the tonsillar branch of the facial artery"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/ent-anaesthesia#anatomy-atlas",
+          "title": "ent anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/EntAnaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "GeneralSurgeryAtlas-10351",
+      "title": "Anterior abdominal wall",
+      "group": "General Surgery",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://shop.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Linea alba — avascular midline for laparotomy; umbilicus ≈ T10 dermatome"
+        },
+        {
+          "label": "Hebbard TAP 2007",
+          "detail": "Hebbard P, Fujiwara Y, Shibata Y, Royse C. Ultrasound-guided transversus abdominis plane (TAP) block. Anaesth Intensive Care. 2007;35(4):616-617.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18020088/",
+          "basis": "Landmark: Lateral layers: external oblique, internal oblique, transversus abdominis — TAP block plane lies between internal oblique and transversus"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/general-colorectal-surgery#anatomy-atlas",
+          "title": "general colorectal surgery"
+        }
+      ],
+      "sourceFile": "src/components/topic/GeneralSurgeryAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "GeneralSurgeryAtlas-12037",
+      "title": "Colon and its arterial supply",
+      "group": "General Surgery",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://shop.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: SMA (midgut): ileocolic, right colic, middle colic — caecum to proximal two-thirds of transverse colon"
+        },
+        {
+          "label": "Fisher 1987",
+          "detail": "Fisher DF Jr, Fry WJ. Collateral mesenteric circulation. Surg Gynecol Obstet. 1987;164(5):487-492.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/3554567/",
+          "basis": "Landmark: Marginal artery links both systems; watershed at the splenic flexure (Griffiths' point)"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/general-colorectal-surgery#anatomy-atlas",
+          "title": "general colorectal surgery"
+        }
+      ],
+      "sourceFile": "src/components/topic/GeneralSurgeryAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "GeneralSurgeryAtlas-11243",
+      "title": "Hepatocystic (Calot's) triangle",
+      "group": "General Surgery",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Strasberg 1995",
+          "detail": "Strasberg SM, Hertl M, Soper NJ. An analysis of the problem of biliary injury during laparoscopic cholecystectomy. J Am Coll Surg. 1995;180(1):101-125.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/8000648/",
+          "basis": "Landmark: Boundaries: cystic duct, common hepatic duct, inferior surface of the liver"
+        },
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://shop.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Contents: cystic artery (usually from the right hepatic artery), cystic lymph node"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/general-colorectal-surgery#anatomy-atlas",
+          "title": "general colorectal surgery"
+        }
+      ],
+      "sourceFile": "src/components/topic/GeneralSurgeryAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "GeneralSurgeryAtlas-13581",
+      "title": "Oesophagus and its relations",
+      "group": "General Surgery",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Hosoda 2020",
+          "detail": "Hosoda K, Niihara M, Harada H, et al. Prevention of intra-thoracic recurrent laryngeal nerve injury with robot-assisted esophagectomy. Langenbecks Arch Surg. 2020.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32494883/",
+          "basis": "Landmark: Cervical: behind trachea; recurrent laryngeal nerves in the tracheo-oesophageal grooves (left loops under the aortic arch)"
+        },
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://shop.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Thoracic: azygos vein arches over the right main bronchus — divided in the right thoracic (Ivor Lewis) approach"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/general-colorectal-surgery#anatomy-atlas",
+          "title": "general colorectal surgery"
+        }
+      ],
+      "sourceFile": "src/components/topic/GeneralSurgeryAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "GeneralSurgeryAtlas-12831",
+      "title": "Pelvis, rectum and mesorectum",
+      "group": "General Surgery",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Heald 1982",
+          "detail": "Heald RJ, Husband EM, Ryall RD. The mesorectum in rectal cancer surgery — the clue to pelvic recurrence? Br J Surg. 1982;69(10):613-616.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/6751457/",
+          "basis": "Landmark: Mesorectal fascia — the plane for total mesorectal excision (TME)"
+        },
+        {
+          "label": "Baqué 2004",
+          "detail": "Baqué P, Karimdjee B, Iannelli A, et al. Anatomy of the presacral venous plexus: implications for rectal surgery. Surg Radiol Anat. 2004;26(5):355-358.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15300413/",
+          "basis": "Landmark: Presacral venous plexus — source of sudden, hard-to-control haemorrhage"
+        },
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://shop.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Hypogastric nerves and pelvic plexus on the sidewall — injury causes bladder and sexual dysfunction"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/general-colorectal-surgery#anatomy-atlas",
+          "title": "general colorectal surgery"
+        }
+      ],
+      "sourceFile": "src/components/topic/GeneralSurgeryAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "NeuroanaesthesiaAtlas-4557",
+      "title": "Circle of Willis",
+      "group": "Neuroanaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Anastomosis of the internal carotid and vertebrobasilar systems via the anterior and posterior communicating arteries"
+        },
+        {
+          "label": "Krabbe-Hartkamp 1998",
+          "detail": "Krabbe-Hartkamp MJ, van der Grond J, de Leeuw FE, et al. Circle of Willis: morphologic variation on three-dimensional time-of-flight MR angiograms. Radiology 1998;207:103-11.",
+          "url": "https://doi.org/10.1148/radiology.207.1.9530305",
+          "basis": "Landmark: A complete, symmetrical circle is present in only a minority of adults — collateral flow during carotid clamping or vasospasm is unpredictable"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/neuroanaesthesia#anatomy-atlas",
+          "title": "neuroanaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/NeuroanaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "NeuroanaesthesiaAtlas-5969",
+      "title": "Dural venous sinuses",
+      "group": "Neuroanaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Superior sagittal → confluence → transverse → sigmoid sinus → internal jugular vein"
+        },
+        {
+          "label": "Mirski 2007 Air Embolism",
+          "detail": "Mirski MA, Lele AV, Fitzsimmons L, Toung TJ. Diagnosis and treatment of vascular air embolism. Anesthesiology 2007;106:164-77.",
+          "url": "https://doi.org/10.1097/00000542-200701000-00026",
+          "basis": "Landmark: Sinuses are held open by dura and cannot collapse, so air is entrained when the head is above the heart (e.g. sitting craniotomy)"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/neuroanaesthesia#anatomy-atlas",
+          "title": "neuroanaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/NeuroanaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "NeuroanaesthesiaAtlas-5327",
+      "title": "Intracranial compartments",
+      "group": "Neuroanaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Mokri 2001 Monro-Kellie",
+          "detail": "Mokri B. The Monro-Kellie hypothesis: applications in CSF volume depletion. Neurology 2001;56:1746-8.",
+          "url": "https://doi.org/10.1212/wnl.56.12.1746",
+          "basis": "Landmark: Monro–Kellie: brain, blood and CSF share a fixed volume — a rise in one must be offset by a fall in another or ICP rises"
+        },
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Falx and tentorium divide the cranium; uncal herniation compresses the third nerve, tonsillar herniation at the foramen magnum compresses the medulla"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/neuroanaesthesia#anatomy-atlas",
+          "title": "neuroanaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/NeuroanaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "ObstetricAnaesthesiaAtlas-2730",
+      "title": "Aortocaval compression",
+      "group": "Obstetric Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Kinsella 1994 Supine Hypotension",
+          "detail": "Kinsella SM, Lohmann G. Supine hypotensive syndrome. Obstet Gynecol 1994;83:774-88.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/8164943/",
+          "basis": "Landmark: From about 20 weeks the supine uterus compresses the IVC and can compress the aorta, reducing venous return and uteroplacental flow"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [
+        "Patient-side/view orientation requires an explicit declaration; page orientation alone is not proof of laterality."
+      ],
+      "topicLinks": [
+        {
+          "path": "/clinical/obstetric-anaesthesia#anatomy-atlas",
+          "title": "obstetric anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/ObstetricAnaesthesiaAtlas.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "ObstetricAnaesthesiaAtlas-3337",
+      "title": "Labour pain pathways and block heights",
+      "group": "Obstetric Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: First-stage pain from the uterus and cervix travels with sympathetic fibres to T10–L1"
+        },
+        {
+          "label": "Russell 1995 Caesarean Block",
+          "detail": "Russell IF. Levels of anaesthesia and intraoperative pain at caesarean section under regional block. Int J Obstet Anesth 1995;4:71-7.",
+          "url": "https://doi.org/10.1016/0959-289x(95)82995-m",
+          "basis": "Landmark: Block height to light touch (aim T5 or above) predicted intraoperative comfort better than cold or pinprick"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/obstetric-anaesthesia#anatomy-atlas",
+          "title": "obstetric anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/ObstetricAnaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "OrthopaedicAnaesthesiaAtlas-3935",
+      "title": "Adductor canal and knee innervation",
+      "group": "Orthopaedic Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: The saphenous nerve runs with the femoral artery under sartorius in the adductor canal, then supplies the medial leg"
+        },
+        {
+          "label": "Jaeger 2013",
+          "detail": "Jaeger P, Nielsen ZJK, Henningsen MH, Hilsted KL, Mathiesen O, Dahl JB. Adductor canal block versus femoral nerve block and quadriceps strength: a randomized, double-blind, placebo-controlled, crossover study in healthy volunteers. Anesthesiology. 2013;118(2):409-415.",
+          "url": "https://doi.org/10.1097/ALN.0b013e318279fa0b",
+          "basis": "Landmark: Adductor canal block preserves quadriceps strength better than femoral nerve block"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/orthopaedic-anaesthesia#anatomy-atlas",
+          "title": "orthopaedic anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/OrthopaedicAnaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "OrthopaedicAnaesthesiaAtlas-3285",
+      "title": "Hip joint innervation and the PENG block",
+      "group": "Orthopaedic Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: The anterior hip capsule is supplied by articular branches of the femoral, obturator and accessory obturator nerves"
+        },
+        {
+          "label": "Girón-Arango 2018",
+          "detail": "Girón-Arango L, Peng PWH, Chin KJ, Brull R, Perlas A. Pericapsular nerve group (PENG) block for hip fracture. Reg Anesth Pain Med. 2018;43(8):859-863.",
+          "url": "https://doi.org/10.1097/AAP.0000000000000847",
+          "basis": "Landmark: PENG targets the plane between the psoas tendon and the pubic ramus, between the AIIS and the iliopubic eminence"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/orthopaedic-anaesthesia#anatomy-atlas",
+          "title": "orthopaedic anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/OrthopaedicAnaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "PaediatricAnaesthesiaAtlas-3989",
+      "title": "Dorsal nerves of the penis (penile block)",
+      "group": "Paediatric Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: The paired dorsal nerves run deep to Buck's fascia beside the dorsal vessels, roughly at the 10–11 and 1–2 o'clock positions"
+        },
+        {
+          "label": "Zadrazil 2023 Penile Block",
+          "detail": "Zadrazil M, et al. Ultrasound-guided dorsal penile nerve block in children: an anatomical-based observational study of a new anesthesia technique. Children (Basel). 2023;11(1):50.",
+          "url": "https://doi.org/10.3390/children11010050",
+          "basis": "Landmark: Ultrasound shows the subpubic space and the nerves' relation to the vessels, supporting an ultrasound-guided approach"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/paediatric-anaesthesia#anatomy-atlas",
+          "title": "paediatric anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/PaediatricAnaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "PaediatricAnaesthesiaAtlas-3288",
+      "title": "Sacral hiatus (caudal block)",
+      "group": "Paediatric Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: The sacral hiatus lies between the sacral cornua and roughly forms an equilateral triangle with the two posterior superior iliac spines, which lie on the ilia at about the S2 level"
+        },
+        {
+          "label": "van Schoor 2018 Dural Sac",
+          "detail": "van Schoor AN, et al. Determining the extent of the dural sac for the performance of caudal epidural blocks in newborns. Paediatr Anaesth. 2018;28(9):852-856.",
+          "url": "https://doi.org/10.1111/pan.13483",
+          "basis": "Landmark: In newborns the dural sac ends lower and closer to the hiatus than in adults, so excessive needle advancement risks dural puncture"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/paediatric-anaesthesia#anatomy-atlas",
+          "title": "paediatric anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/PaediatricAnaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "RegionalAnaesthesiaAtlas-9201",
+      "title": "Adductor canal",
+      "group": "Regional Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Roof: sartorius; lateral wall: vastus medialis; floor: adductor longus and magnus"
+        },
+        {
+          "label": "Saena 2025 Adductor Canal",
+          "detail": "Saena S, et al. Anatomical presentation of the nerve to vastus medialis within the adductor canal and femoral nerve. Surg Radiol Anat 2025;47:250.",
+          "url": "https://doi.org/10.1007/s00276-025-03763-0",
+          "basis": "Landmark: Contents: femoral artery and vein, saphenous nerve; nerve to vastus medialis lies close to or outside the canal"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/regional-anaesthesia#anatomy-atlas",
+          "title": "regional anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/RegionalAnaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "RegionalAnaesthesiaAtlas-8488",
+      "title": "Femoral triangle and fascia iliaca",
+      "group": "Regional Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Borders: inguinal ligament (superior), sartorius (lateral), adductor longus (medial)"
+        },
+        {
+          "label": "Dalens 1989 Fascia Iliaca",
+          "detail": "Dalens B, Vanneuville G, Tanguy A. Comparison of the fascia iliaca compartment block with the 3-in-1 block in children. Anesth Analg 1989;69:705-13.",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/2589650/",
+          "basis": "Landmark: Fascia iliaca compartment block spreads beneath the fascia to femoral and lateral femoral cutaneous nerves"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [
+        "Patient-side/view orientation requires an explicit declaration; page orientation alone is not proof of laterality."
+      ],
+      "topicLinks": [
+        {
+          "path": "/clinical/regional-anaesthesia#anatomy-atlas",
+          "title": "regional anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/RegionalAnaesthesiaAtlas.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "RegionalAnaesthesiaAtlas-7713",
+      "title": "Interscalene brachial plexus",
+      "group": "Regional Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: C5–C7 roots/trunks lie in the groove between anterior and middle scalene, lateral to the carotid and internal jugular vein"
+        },
+        {
+          "label": "Urmey 1991 Interscalene",
+          "detail": "Urmey WF, Talts KH, Sharrock NE. One hundred percent incidence of hemidiaphragmatic paresis associated with interscalene brachial plexus anesthesia as diagnosed by ultrasonography. Anesth Analg. 1991;72(4):498-503.",
+          "url": "https://doi.org/10.1213/00000539-199104000-00014",
+          "basis": "Landmark: Phrenic nerve (C3–C5) runs on the anterior surface of anterior scalene — blocked in nearly all patients at conventional volumes"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/regional-anaesthesia#anatomy-atlas",
+          "title": "regional anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/RegionalAnaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "RegionalAnaesthesiaAtlas-9738",
+      "title": "Lumbar neuraxis (midline)",
+      "group": "Regional Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Midline needle passes skin, supraspinous and interspinous ligaments, ligamentum flavum, epidural space, then dura–arachnoid into CSF"
+        },
+        {
+          "label": "Kim 2003 Conus",
+          "detail": "Kim JT, Bahk JH, Sung J. Influence of age and sex on the position of the conus medullaris and Tuffier's line in adults. Anesthesiology 2003;99:1359-63.",
+          "url": "https://doi.org/10.1097/00000542-200312000-00018",
+          "basis": "Landmark: Conus medullaris usually ends at L1–L2 but varies, and Tuffier's line often lies higher than L4"
+        },
+        {
+          "label": "Broadbent 2000 Interspace",
+          "detail": "Broadbent CR, Maxwell WB, Ferrie R, et al. Ability of anaesthetists to identify a marked lumbar interspace. Anaesthesia 2000;55:1122-6.",
+          "url": "https://doi.org/10.1046/j.1365-2044.2000.01547-4.x",
+          "basis": "Landmark: Anaesthetists frequently misidentify the lumbar interspace by palpation, usually choosing one too high"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/regional-anaesthesia#anatomy-atlas",
+          "title": "regional anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/RegionalAnaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "TraumaAtlas-8511",
+      "title": "Aortic zones for REBOA",
+      "group": "Trauma",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Stannard 2011 REBOA",
+          "detail": "Stannard A, Eliason JL, Rasmussen TE. Resuscitative endovascular balloon occlusion of the aorta (REBOA) as an adjunct for hemorrhagic shock. J Trauma 2011;71:1869-72.",
+          "url": "https://doi.org/10.1097/TA.0b013e31823fe90c",
+          "basis": "Landmark: Zone I (left subclavian to coeliac) for abdominal bleeding; Zone III (lowest renal to bifurcation) for pelvic bleeding; Zone II is not used for occlusion"
+        },
+        {
+          "label": "UK-REBOA 2023",
+          "detail": "Jansen JO, Hudson J, Cochran C, et al. Emergency department resuscitative endovascular balloon occlusion of the aorta in trauma patients with exsanguinating hemorrhage: the UK-REBOA randomized clinical trial. JAMA. 2023;330(19):1862-1871.",
+          "url": "https://doi.org/10.1001/jama.2023.20850",
+          "basis": "Landmark: UK-REBOA found higher mortality with REBOA than standard care — not supported outside research in UK practice"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/trauma-emergency#anatomy-atlas",
+          "title": "trauma emergency"
+        }
+      ],
+      "sourceFile": "src/components/topic/TraumaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "TraumaAtlas-7184",
+      "title": "Chest decompression sites",
+      "group": "Trauma",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "BTS Pleural 2023",
+          "detail": "Roberts ME, Rahman NM, Maskell NA, et al. British Thoracic Society Guideline for pleural disease. Thorax 2023;78(Suppl 3):s1-s42.",
+          "url": "https://doi.org/10.1136/thorax-2022-219784",
+          "basis": "Landmark: Safe triangle: lateral border of pectoralis major, anterior border of latissimus dorsi, line at the 5th intercostal space, apex below the axilla"
+        },
+        {
+          "label": "ATLS 10th ed",
+          "detail": "American College of Surgeons. Advanced Trauma Life Support (ATLS). 10th ed. 2018.",
+          "url": "https://www.facs.org/quality-programs/trauma/education/advanced-trauma-life-support/",
+          "basis": "Landmark: ATLS recommends 4th/5th intercostal space just anterior to the mid-axillary line for needle decompression in adults"
+        },
+        {
+          "label": "Laan 2016 Chest Wall",
+          "detail": "Laan DV, Vu TD, Thiels CA, et al. Chest wall thickness and decompression failure: a systematic review and meta-analysis comparing anatomic locations in needle thoracostomy. Injury 2016;47:797-804.",
+          "url": "https://doi.org/10.1016/j.injury.2015.11.045",
+          "basis": "Landmark: Chest wall is thinner at the 4th/5th ICS lateral site than the 2nd ICS midclavicular site, so needle failure is less likely"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/trauma-emergency#anatomy-atlas",
+          "title": "trauma emergency"
+        }
+      ],
+      "sourceFile": "src/components/topic/TraumaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "TraumaAtlas-6529",
+      "title": "Front-of-neck airway",
+      "group": "Trauma",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "DAS 2015 (CICO)",
+          "detail": "Frerk C, Mitchell VS, McNarry AF, et al. Difficult Airway Society 2015 guidelines for management of unanticipated difficult intubation in adults. Br J Anaesth. 2015;115(6):827-848.",
+          "url": "https://doi.org/10.1093/bja/aev371",
+          "basis": "Landmark: Cricothyroid membrane lies between thyroid and cricoid cartilages — identify with the laryngeal handshake"
+        },
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Thyroid isthmus overlies tracheal rings 2–4 — below the cricoid, not at the membrane"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/trauma-emergency#anatomy-atlas",
+          "title": "trauma emergency"
+        }
+      ],
+      "sourceFile": "src/components/topic/TraumaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "TraumaAtlas-7926",
+      "title": "Pelvic ring and binder position",
+      "group": "Trauma",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Bonner 2011 Binder",
+          "detail": "Bonner TJ, Eardley WG, Newell N, et al. Accurate placement of a pelvic binder improves reduction of unstable fractures of the pelvic ring. J Bone Joint Surg Br 2011;93:1524-8.",
+          "url": "https://doi.org/10.1302/0301-620X.93B11.27023",
+          "basis": "Landmark: Centre the binder over the greater trochanters, not the iliac crests — high placement reduces the fracture poorly"
+        },
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Most pelvic fracture bleeding is venous, from the presacral and paravesical plexuses and fracture surfaces"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/trauma-emergency#anatomy-atlas",
+          "title": "trauma emergency"
+        }
+      ],
+      "sourceFile": "src/components/topic/TraumaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "UrologicalAnaesthesiaAtlas-2872",
+      "title": "Obturator nerve and the bladder wall",
+      "group": "Urological Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: The obturator nerve (L2–L4) runs along the lateral pelvic wall, close to the inferolateral bladder wall, to the obturator canal"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/urological-anaesthesia#anatomy-atlas",
+          "title": "urological anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/UrologicalAnaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "UrologicalAnaesthesiaAtlas-3538",
+      "title": "Prostate and fluid absorption in TURP",
+      "group": "Urological Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Hahn 2006 Fluid Absorption",
+          "detail": "Hahn RG. Fluid absorption in endoscopic surgery. Br J Anaesth. 2006;96(1):8-20.",
+          "url": "https://doi.org/10.1093/bja/aei279",
+          "basis": "Landmark: Irrigating fluid enters the circulation through opened prostatic venous sinuses, and into the tissues if the capsule is perforated"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/urological-anaesthesia#anatomy-atlas",
+          "title": "urological anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/UrologicalAnaesthesiaAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "VascularAccessAtlas-2985",
+      "title": "Femoral triangle",
+      "group": "Vascular Access",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Below the inguinal ligament the order from lateral to medial is femoral nerve, artery, vein, then the femoral canal"
+        },
+        {
+          "label": "3SITES 2015",
+          "detail": "Parienti JJ et al. Intravascular complications of central venous catheterization by insertion site (3SITES). N Engl J Med. 2015;373(13):1220-1229.",
+          "url": "https://doi.org/10.1056/NEJMoa1500964",
+          "basis": "Landmark: Femoral catheters carried a higher rate of infection and thrombosis than subclavian catheters in a large randomised trial"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [
+        "Patient-side/view orientation requires an explicit declaration; page orientation alone is not proof of laterality."
+      ],
+      "topicLinks": [
+        {
+          "path": "/perioperative/vascular-access-devices#anatomy-atlas",
+          "title": "vascular access devices"
+        }
+      ],
+      "sourceFile": "src/components/topic/VascularAccessAtlas.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "VascularAccessAtlas-2425",
+      "title": "Internal jugular vein",
+      "group": "Vascular Access",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: The internal jugular vein lies in the carotid sheath, usually lateral to the carotid artery, beneath sternocleidomastoid"
+        },
+        {
+          "label": "NICE TA49",
+          "detail": "NICE. Guidance on the use of ultrasound locating devices for placing central venous catheters (TA49). 2002.",
+          "url": "https://www.nice.org.uk/guidance/ta49",
+          "basis": "Landmark: Ultrasound guidance is recommended for internal jugular cannulation"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/perioperative/vascular-access-devices#anatomy-atlas",
+          "title": "vascular access devices"
+        }
+      ],
+      "sourceFile": "src/components/topic/VascularAccessAtlas.tsx",
+      "status": "cited"
+    },
+    {
+      "id": "VascularAnaesthesiaAtlas-3398",
+      "title": "Abdominal aorta and clamp levels",
+      "group": "Vascular Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Coeliac trunk, superior mesenteric and renal arteries arise in sequence; most aneurysms are infrarenal"
+        },
+        {
+          "label": "BJA Educ AAA 2016",
+          "detail": "Spence S, Doyle J. Anaesthesia for elective open and endovascular abdominal aortic aneurysm repair. BJA Education. 2016;16(11):373-378.",
+          "url": "https://doi.org/10.1093/bjaed/mkw014",
+          "basis": "Landmark: Suprarenal clamping adds renal (and possibly visceral) ischaemia and a larger rise in afterload than infrarenal clamping"
+        },
+        {
+          "label": "Taterra 2019 Adamkiewicz",
+          "detail": "Taterra D, Skinningsrud B, Pękala PA, et al. Artery of Adamkiewicz: a meta-analysis of anatomical characteristics. Neuroradiology 2019;61:869-80.",
+          "url": "https://doi.org/10.1007/s00234-019-02207-y",
+          "basis": "Landmark: The artery of Adamkiewicz usually arises on the left between T8 and L1 — at risk in thoracoabdominal repair"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [
+        "Adamkiewicz origin is variable and this depiction is simplified."
+      ],
+      "topicLinks": [
+        {
+          "path": "/clinical/vascular-anaesthesia#anatomy-atlas",
+          "title": "vascular anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/VascularAnaesthesiaAtlas.tsx",
+      "status": "needs-review"
+    },
+    {
+      "id": "VascularAnaesthesiaAtlas-4129",
+      "title": "Carotid bifurcation",
+      "group": "Vascular Anaesthesia",
+      "kind": "Surgical atlas schematic",
+      "sources": [
+        {
+          "label": "Gray's Anatomy 42e",
+          "detail": "Standring S, ed. Gray's Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.",
+          "url": "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+          "basis": "Landmark: Common carotid divides at about C4 (upper border of thyroid cartilage); the carotid sinus baroreceptor sits at the bulb, supplied by IX"
+        },
+        {
+          "label": "Cunningham 2004 CEA Nerves",
+          "detail": "Cunningham EJ, Bond R, Mayberg MR, Warlow CP, Rothwell PM. Risk of persistent cranial nerve injury after carotid endarterectomy. J Neurosurg 2004;101:445-8.",
+          "url": "https://doi.org/10.3171/jns.2004.101.3.0445",
+          "basis": "Landmark: Hypoglossal, vagus (recurrent laryngeal) and marginal mandibular nerves are at risk; most injuries are transient"
+        },
+        {
+          "label": "GALA 2008",
+          "detail": "GALA Trial Collaborative Group. General anaesthesia versus local anaesthesia for carotid surgery (GALA): a multicentre, randomised controlled trial. Lancet. 2008;372(9656):2132-2142.",
+          "url": "https://doi.org/10.1016/S0140-6736(08)61699-2",
+          "basis": "Landmark: GALA found no difference in stroke, MI or death between general and local anaesthesia"
+        }
+      ],
+      "credit": "Custom labelled line diagram; simplified and not to scale.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "path": "/clinical/vascular-anaesthesia#anatomy-atlas",
+          "title": "vascular anaesthesia"
+        }
+      ],
+      "sourceFile": "src/components/topic/VascularAnaesthesiaAtlas.tsx",
+      "status": "cited"
+    }
+  ]
+}

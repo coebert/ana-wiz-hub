@@ -21,3 +21,4 @@
 - [ ] Audit all anatomy diagrams: source/geometry review, verified corrections, rendering checks and explicit unresolved findings
   - [x] Review source inventories and rendered views; correct verified code-side anatomy and rendering errors
   - [ ] Specialist verification/redrawing of painted plate leaders and deep-brain geometry (blocked by unverified artwork/reference matching)
+- [x] Build anatomy diagram source directory with per-plate citations and uncertainty flags

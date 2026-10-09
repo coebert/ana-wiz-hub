@@ -2,3 +2,4 @@
 - Diagram snapshot discovery recursively scans diagram folders and topic atlases, including static SVG plates, so moving a file or omitting interaction cannot silently remove it from visual review.
 - Anatomy root verification recursively parses TSX object properties; positional heuristics are limited to declared anterior projections because label positions and other views cannot prove anatomical laterality.
 - Painted anatomy plates carry optional plate-specific audit warnings beside the artwork so uncorrected printed labels cannot silently appear verified.
+- Anatomy source directory is generated from component/atlas metadata before dev/build, with one entry per atlas plate and explicit missing-source flags; citations must never imply anatomical certification.

@@ -6,6 +6,9 @@ import { SectionSummary } from "@/components/topic/SectionSummary";
 import { anatomyTopics } from "@/data/curriculum";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
+import { Link } from "react-router-dom";
+import { BookOpen } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const AnatomySection = () => {
   const { getSectionProgress } = useProgress();
@@ -42,6 +45,9 @@ const AnatomySection = () => {
       />
 
       <section id="topics" className="scroll-mt-28">
+        <Button asChild variant="outline" className="mb-6">
+          <Link to="/anatomy/diagram-sources"><BookOpen className="mr-2 h-4 w-4" aria-hidden="true" />Diagram sources &amp; review status</Link>
+        </Button>
         <SectionTopicsList section="anatomy" topics={visibleTopics} />
       </section>
 
