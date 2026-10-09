@@ -191,6 +191,11 @@ const DefibrillationPacingTopic = () => {
                 pressure (~8 kg), and exclude reversible factors (electrolytes, hypoxia, thyroid). Anticoagulation
                 status must be confirmed for AF &gt;48 h or unknown duration before elective DCCV.
               </p>
+              <ul className="list-disc list-inside space-y-1">
+                <li><strong>Anticoagulation:</strong> at least <strong>3 weeks</strong> of therapeutic anticoagulation before elective cardioversion of AF lasting over 48 hours or of unknown duration, and at least <strong>4 weeks</strong> afterwards (atrial stunning — the atria contract poorly for a time and clot can still form). Long-term anticoagulation then follows the stroke-risk score.</li>
+                <li><strong>Role of TOE:</strong> if cardioversion is urgent or 3 weeks of anticoagulation is not possible or wanted, a transoesophageal echo before the shock must exclude left atrial appendage thrombus (with anticoagulation started at once). TOE may also be considered in high-risk patients (high CHA₂DS₂-VA score, previous stroke or clot) even after adequate anticoagulation <InlineRef topicId="defibrillation-pacing" refLabel="ESC 2024 AF" />.</li>
+                <li><strong>Troubleshooting synchronisation failure:</strong> the device may not sense small, broad or unusual QRS complexes, or may mark tall T waves or artefact. Change the monitored ECG lead (e.g. II to I or III), increase the ECG gain, check electrode contact and reduce movement or interference, and confirm the marker sits on each R wave. In pulseless or peri-arrest polymorphic VT, abandon synchronisation and give an unsynchronised shock.</li>
+              </ul>
               <p className="text-xs italic">
                 Sources: Resuscitation Council UK Adult Advanced Life Support (2021); ERC Guidelines 2021; ESC
                 Guidelines for AF (2024) and Ventricular Arrhythmias (2022); APLS / RCUK Paediatric ALS 2021.
