@@ -1,4 +1,5 @@
-import brainCoronalImg from "@/assets/brain-anatomy-coronal.jpg";
+import brainCoronalImgAsset from "@/assets/brain-coronal-gray743.png.asset.json";
+const brainCoronalImg = brainCoronalImgAsset.url;
 import { DiagramSourcesPanel, DiagramSource } from "@/components/diagrams/shared/DiagramSourcesPanel";
 import { BrainRegionsList } from "@/components/diagrams/shared/BrainRegionsList";
 import BrainPlateLabels, { type PlateLabel } from "@/components/diagrams/shared/BrainPlateLabels";
@@ -162,17 +163,13 @@ export const BrainCoronalPlate = () => (
       <div className="relative">
         <img
           src={brainCoronalImg}
-          alt="Detailed anatomical mid-coronal section of the human brain through the thalamus and basal ganglia, showing cerebral cortex, white matter, corpus callosum, lateral ventricles, septum pellucidum, fornix, caudate nucleus, putamen and globus pallidus (lentiform nucleus), internal capsule, external capsule, claustrum, insula, thalamus, hypothalamus, mammillary bodies, optic tract and hippocampus."
+          alt="Gray's Anatomy (1918) Fig. 743 — Coronal section through anterior cornua of lateral ventricles"
           loading="lazy"
-          width={1200}
-          height={896}
-          className="w-full h-auto block"
+                    className="w-full h-auto block"
         />
-        <BrainPlateLabels labels={plateLabels} />
       </div>
       <figcaption className="px-4 sm:px-6 py-3 text-xs text-muted-foreground italic border-t border-border">
-        Anatomical reference plate with overlay labels. Right hemisphere on viewer's left (anatomical convention).
-        <span className="block mt-2 not-italic text-foreground">Specialist anatomical review pending: this illustration simplifies section levels and deep-nuclear boundaries; its leader endpoints are not certified for definitive structure identification.</span>
+        Gray's Anatomy reference plate with its original printed labels. Right hemisphere on viewer's left (anatomical convention).
       </figcaption>
     </figure>
 
@@ -180,7 +177,7 @@ export const BrainCoronalPlate = () => (
 
     <DiagramSourcesPanel
       references={references}
-      imageCredit="Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy coronal cerebral plates. Anatomical labelling cross-checked against the references above."
+      imageCredit="Henry Gray, Anatomy of the Human Body (20th ed., 1918), Fig. 743: Coronal section through anterior cornua of lateral ventricles. Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Gray743.png). Printed labels are Gray's original 1918 terms."
       note="Educational use only. Not a substitute for primary anatomical references."
     />
   </>

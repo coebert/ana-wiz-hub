@@ -1,4 +1,5 @@
-import brainMedialImg from "@/assets/brain-anatomy-medial.jpg";
+import brainMedialImgAsset from "@/assets/brain-medial-gray720.png.asset.json";
+const brainMedialImg = brainMedialImgAsset.url;
 import { DiagramSourcesPanel, DiagramSource } from "@/components/diagrams/shared/DiagramSourcesPanel";
 import { BrainRegionsList } from "@/components/diagrams/shared/BrainRegionsList";
 import { DiagramFigure } from "../_shared/DiagramFigure";
@@ -202,11 +203,9 @@ export const BrainMedialPlate = () => {
       <figure className="bg-[hsl(var(--background))]">
         <img
           src={brainMedialImg}
-          alt="Detailed anatomical illustration of the human brain in midsagittal section, showing corpus callosum (genu, body, splenium), septum pellucidum, fornix, thalamus, hypothalamus, mammillary body, pituitary gland, optic chiasm, third ventricle, cerebral aqueduct, fourth ventricle, midbrain, pons, medulla oblongata, cerebellum with arbor vitae, cingulate gyrus and calcarine sulcus."
+          alt="Gray's Anatomy (1918) Fig. 720 — Median sagittal section of the brain"
           loading="lazy"
-          width={1200}
-          height={896}
-          className="w-full h-auto block"
+                    className="w-full h-auto block"
         />
         <figcaption className="px-4 sm:px-6 py-3 text-xs text-muted-foreground italic border-t border-border">
           Anatomical reference plate. Anterior to the left, posterior to the right.
@@ -344,7 +343,7 @@ export const BrainMedialPlate = () => {
 
       <DiagramSourcesPanel
         references={references}
-        imageCredit="Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy midsagittal cerebral plates. Anatomical labelling cross-checked against the references above."
+        imageCredit="Henry Gray, Anatomy of the Human Body (20th ed., 1918), Fig. 720: Median sagittal section of the brain. Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Gray720.png). Printed labels are Gray's original 1918 terms."
         note="Educational use only. Not a substitute for primary anatomical references."
       />
     </>

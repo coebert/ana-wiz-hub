@@ -1,4 +1,5 @@
-import brainAnatomyImg from "@/assets/brain-anatomy-lateral.jpg";
+import brainAnatomyImgAsset from "@/assets/brain-lateral-gray728.png.asset.json";
+const brainAnatomyImg = brainAnatomyImgAsset.url;
 import { DiagramSourcesPanel, DiagramSource } from "@/components/diagrams/shared/DiagramSourcesPanel";
 import { BrainRegionsList } from "@/components/diagrams/shared/BrainRegionsList";
 import { DiagramFigure } from "../_shared/DiagramFigure";
@@ -169,11 +170,9 @@ export const BrainLateralPlate = () => (
     <figure className="bg-[hsl(var(--background))]">
       <img
         src={brainAnatomyImg}
-        alt="Detailed anatomical illustration of the human brain in lateral view, showing colour-coded frontal, parietal, temporal and occipital lobes, with labels for the precentral and postcentral gyri, central sulcus, lateral (Sylvian) fissure, Broca's and Wernicke's areas, primary visual cortex, cerebellum, midbrain, pons, medulla oblongata and spinal cord."
+        alt="Gray's Anatomy (1918) Fig. 728 — Principal fissures and lobes of the cerebrum viewed laterally"
         loading="lazy"
-        width={1200}
-        height={896}
-        className="w-full h-auto block"
+                className="w-full h-auto block"
       />
       <figcaption className="px-4 sm:px-6 py-3 text-xs text-muted-foreground italic border-t border-border">
         Anatomical reference plate. Anterior to the left, posterior to the right.
@@ -184,7 +183,7 @@ export const BrainLateralPlate = () => (
 
     <DiagramSourcesPanel
       references={references}
-      imageCredit="Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy lateral cerebral plates. Anatomical labelling cross-checked against the references above."
+      imageCredit="Henry Gray, Anatomy of the Human Body (20th ed., 1918), Fig. 728: Principal fissures and lobes of the cerebrum viewed laterally. Public domain, via Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Gray728.png). Printed labels are Gray's original 1918 terms."
       note="Educational use only. Not a substitute for primary anatomical references."
     />
   </>
