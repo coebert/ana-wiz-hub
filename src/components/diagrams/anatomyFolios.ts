@@ -1,39 +1,70 @@
 import type { CorPictumPlate } from "@/components/diagrams/anatomy/CorPictumFolio";
 import { Exam } from "@/data/curriculum";
 
-import airwaySagittal from "@/assets/plates/airway-sagittal.jpg";
-import airwayLaryngoscopic from "@/assets/plates/airway-laryngoscopic.jpg";
-import airwayCoronal from "@/assets/plates/airway-coronal.jpg";
-import airwayAxial from "@/assets/plates/airway-axial.jpg";
-import headneckSuperficial from "@/assets/plates/headneck-superficial.jpg";
-import headneckCarotid from "@/assets/plates/headneck-carotid.jpg";
-import headneckOrbit from "@/assets/plates/headneck-orbit.jpg";
-import headneckOrbitFrontal from "@/assets/plates/headneck-orbit-frontal.jpg";
-import neckC6Axial from "@/assets/plates/neck-c6-axial.jpg";
-import neuroMidsagittal from "@/assets/plates/neuro-midsagittal.jpg";
-import neuroCircleWillis from "@/assets/plates/neuro-circle-willis.jpg";
-import skullbaseSuperior from "@/assets/plates/skullbase-superior.jpg";
-import skullbaseInferior from "@/assets/plates/skullbase-inferior.jpg";
+import airwaySagittalAsset from "@/assets/plates/airway-sagittal-gray.png.asset.json";
+const airwaySagittal = airwaySagittalAsset.url;
+import airwayLaryngoscopicAsset from "@/assets/plates/airway-laryngoscopic-gray.png.asset.json";
+const airwayLaryngoscopic = airwayLaryngoscopicAsset.url;
+import airwayCoronalAsset from "@/assets/plates/airway-coronal-gray.png.asset.json";
+const airwayCoronal = airwayCoronalAsset.url;
+import airwayAxialAsset from "@/assets/plates/airway-axial-gray.png.asset.json";
+const airwayAxial = airwayAxialAsset.url;
+import headneckSuperficialAsset from "@/assets/plates/headneck-superficial-gray.png.asset.json";
+const headneckSuperficial = headneckSuperficialAsset.url;
+import headneckCarotidAsset from "@/assets/plates/headneck-carotid-gray.png.asset.json";
+const headneckCarotid = headneckCarotidAsset.url;
+import headneckOrbitAsset from "@/assets/plates/headneck-orbit-gray.png.asset.json";
+const headneckOrbit = headneckOrbitAsset.url;
+import headneckOrbitFrontalAsset from "@/assets/plates/headneck-orbit-frontal-gray.png.asset.json";
+const headneckOrbitFrontal = headneckOrbitFrontalAsset.url;
+import neckC6AxialAsset from "@/assets/plates/neck-c6-axial-gray.png.asset.json";
+const neckC6Axial = neckC6AxialAsset.url;
+import neuroMidsagittalAsset from "@/assets/plates/neuro-midsagittal-gray.png.asset.json";
+const neuroMidsagittal = neuroMidsagittalAsset.url;
+import neuroCircleWillisAsset from "@/assets/plates/neuro-circle-willis-gray.png.asset.json";
+const neuroCircleWillis = neuroCircleWillisAsset.url;
+import skullbaseSuperiorAsset from "@/assets/plates/skullbase-superior-gray.png.asset.json";
+const skullbaseSuperior = skullbaseSuperiorAsset.url;
+import skullbaseInferiorAsset from "@/assets/plates/skullbase-inferior-gray.png.asset.json";
+const skullbaseInferior = skullbaseInferiorAsset.url;
 import spinalPosterior from "@/assets/plates/spinal-posterior.jpg";
-import spinalSagittal from "@/assets/plates/spinal-sagittal.jpg";
-import spinalCaudal from "@/assets/plates/spinal-caudal.jpg";
-import brachialPlexus from "@/assets/plates/brachial-plexus.jpg";
-import brachialInterscalene from "@/assets/plates/brachial-interscalene.jpg";
-import upperlimbForearm from "@/assets/plates/upperlimb-forearm.jpg";
-import upperlimbAxilla from "@/assets/plates/upperlimb-axilla.jpg";
-import upperlimbArteries from "@/assets/plates/upperlimb-arteries.jpg";
-import upperlimbVeins from "@/assets/plates/upperlimb-veins.jpg";
-import upperlimbNerves from "@/assets/plates/upperlimb-nerves.jpg";
-import lowerlimbFemoral from "@/assets/plates/lowerlimb-femoral.jpg";
-import lowerlimbPopliteal from "@/assets/plates/lowerlimb-popliteal.jpg";
-import lowerlimbArteries from "@/assets/plates/lowerlimb-arteries.jpg";
-import lowerlimbVeins from "@/assets/plates/lowerlimb-veins.jpg";
-import lowerlimbNerves from "@/assets/plates/lowerlimb-nerves.jpg";
-import thoracicAnterior from "@/assets/plates/thoracic-anterior.jpg";
+import spinalSagittalAsset from "@/assets/plates/spinal-sagittal-gray.png.asset.json";
+const spinalSagittal = spinalSagittalAsset.url;
+import spinalCaudalAsset from "@/assets/plates/spinal-caudal-gray.png.asset.json";
+const spinalCaudal = spinalCaudalAsset.url;
+import brachialPlexusAsset from "@/assets/plates/brachial-plexus-gray.png.asset.json";
+const brachialPlexus = brachialPlexusAsset.url;
+import brachialInterscaleneAsset from "@/assets/plates/brachial-interscalene-gray.png.asset.json";
+const brachialInterscalene = brachialInterscaleneAsset.url;
+import upperlimbForearmAsset from "@/assets/plates/upperlimb-forearm-gray.png.asset.json";
+const upperlimbForearm = upperlimbForearmAsset.url;
+import upperlimbAxillaAsset from "@/assets/plates/upperlimb-axilla-gray.png.asset.json";
+const upperlimbAxilla = upperlimbAxillaAsset.url;
+import upperlimbArteriesAsset from "@/assets/plates/upperlimb-arteries-gray.png.asset.json";
+const upperlimbArteries = upperlimbArteriesAsset.url;
+import upperlimbVeinsAsset from "@/assets/plates/upperlimb-veins-gray.png.asset.json";
+const upperlimbVeins = upperlimbVeinsAsset.url;
+import upperlimbNervesAsset from "@/assets/plates/upperlimb-nerves-gray.png.asset.json";
+const upperlimbNerves = upperlimbNervesAsset.url;
+import lowerlimbFemoralAsset from "@/assets/plates/lowerlimb-femoral-gray.png.asset.json";
+const lowerlimbFemoral = lowerlimbFemoralAsset.url;
+import lowerlimbPoplitealAsset from "@/assets/plates/lowerlimb-popliteal-gray.png.asset.json";
+const lowerlimbPopliteal = lowerlimbPoplitealAsset.url;
+import lowerlimbArteriesAsset from "@/assets/plates/lowerlimb-arteries-gray.png.asset.json";
+const lowerlimbArteries = lowerlimbArteriesAsset.url;
+import lowerlimbVeinsAsset from "@/assets/plates/lowerlimb-veins-gray.png.asset.json";
+const lowerlimbVeins = lowerlimbVeinsAsset.url;
+import lowerlimbNervesAsset from "@/assets/plates/lowerlimb-nerves-gray.png.asset.json";
+const lowerlimbNerves = lowerlimbNervesAsset.url;
+import thoracicAnteriorAsset from "@/assets/plates/thoracic-anterior-gray.png.asset.json";
+const thoracicAnterior = thoracicAnteriorAsset.url;
 import thoracicMediastinum from "@/assets/plates/thoracic-mediastinum.jpg";
-import thoracicFirstRib from "@/assets/plates/thoracic-first-rib.jpg";
-import abdominalAnterior from "@/assets/plates/abdominal-anterior.jpg";
-import abdominalRetroperitoneum from "@/assets/plates/abdominal-retroperitoneum.jpg";
+import thoracicFirstRibAsset from "@/assets/plates/thoracic-first-rib-gray.png.asset.json";
+const thoracicFirstRib = thoracicFirstRibAsset.url;
+import abdominalAnteriorAsset from "@/assets/plates/abdominal-anterior-gray.png.asset.json";
+const abdominalAnterior = abdominalAnteriorAsset.url;
+import abdominalRetroperitoneumAsset from "@/assets/plates/abdominal-retroperitoneum-gray.png.asset.json";
+const abdominalRetroperitoneum = abdominalRetroperitoneumAsset.url;
 
 /** Shared painted Cor Pictum folios — one set per anatomy topic. */
 export interface CorPictumFolioData {
@@ -49,9 +80,10 @@ export const airwayFolio: CorPictumFolioData = {
     {
       id: "sagittal", tabLabel: "Sagittal", folio: "I",
       title: "Oropharynx and Larynx", subtitle: "Sagittal view of the airway",
-      image: airwaySagittal, alt: "Painted sagittal section of the upper airway",
+      image: airwaySagittal,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray994.png”: Sagittal section of nose, mouth, pharynx, and larynx. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray994.png", alt: "Gray's Anatomy plate — sagittal section of the upper airway",
       caption: "Sagittal section of the upper airway",
-      auditWarning: "The printed vertebral labels are unreliable: the atlas (C1) has no vertebral body, and the cricoid is normally at approximately C6 in adults. The vallecula is between the tongue base and epiglottis, not behind the epiglottis as the printed leader suggests. Use the labelled diagrams and text for these landmarks.",
       labels: [
         { latin: "lingua", english: "Tongue", note: "Falls posteriorly under sedation — first cause of obstruction." },
         { latin: "palatum molle", english: "Soft palate", note: "Velopharyngeal seal; relaxes in deep anaesthesia." },
@@ -71,7 +103,9 @@ export const airwayFolio: CorPictumFolioData = {
     {
       id: "laryngoscopic", tabLabel: "Laryngoscopic", folio: "II",
       title: "Laryngeal Inlet", subtitle: "View through the laryngoscope",
-      image: airwayLaryngoscopic, alt: "Painted superior view of the laryngeal inlet",
+      image: airwayLaryngoscopic,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray956.png”: Laryngoscopic view of interior of larynx. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray956.png", alt: "Gray's Anatomy plate — superior view of the laryngeal inlet",
       caption: "Superior view of the laryngeal inlet",
       labels: [
         { latin: "epiglottis", english: "Epiglottis", note: "Anterior boundary of the inlet." },
@@ -91,7 +125,9 @@ export const airwayFolio: CorPictumFolioData = {
     {
       id: "coronal", tabLabel: "Coronal", folio: "III",
       title: "Larynx — Coronal Section", subtitle: "The three laryngeal tiers",
-      image: airwayCoronal, alt: "Painted coronal section of the larynx showing supraglottis, glottis and subglottis",
+      image: airwayCoronal,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray954.png”: Coronal section of larynx and upper part of trachea. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray954.png", alt: "Gray's Anatomy plate — coronal section of the larynx showing supraglottis, glottis and subglottis",
       caption: "Coronal section of the larynx — supraglottis, glottis and subglottis",
       labels: [
         { latin: "", english: "Epiglottis", note: "Leaf-shaped fibroelastic cartilage; closes the inlet during swallowing." },
@@ -117,7 +153,9 @@ export const airwayFolio: CorPictumFolioData = {
     {
       id: "axial", tabLabel: "Axial", folio: "IV",
       title: "Larynx — Axial Section", subtitle: "Vocal cord level, superior view",
-      image: airwayAxial, alt: "Painted axial section of the larynx at the vocal cord level",
+      image: airwayAxial,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray960.png”: Muscles of larynx, seen from above. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray960.png", alt: "Gray's Anatomy plate — axial section of the larynx at the vocal cord level",
       caption: "Axial section of the larynx at the level of the true vocal cords",
       labels: [
         { latin: "", english: "Thyroid cartilage", note: "Anterior wing-shape; angle is more acute in males (Adam's apple)." },
@@ -149,7 +187,9 @@ export const headNeckFolio: CorPictumFolioData = {
     {
       id: "superficial", tabLabel: "Superficial", folio: "I",
       title: "Parotid and Cervical Region", subtitle: "Superficial dissection",
-      image: headneckSuperficial, alt: "Painted superficial dissection of the head and neck",
+      image: headneckSuperficial,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray378.png”: Muscles of the head, face, and neck. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray378.png", alt: "Gray's Anatomy plate — superficial dissection of the head and neck",
       caption: "Superficial dissection of the parotid and cervical region",
       labels: [
         { latin: "glandula parotidea", english: "Parotid gland", note: "Facial nerve traverses it — surgically perilous." },
@@ -168,7 +208,9 @@ export const headNeckFolio: CorPictumFolioData = {
     {
       id: "carotid", tabLabel: "Carotid sheath", folio: "II",
       title: "Carotid Sheath", subtitle: "Deep dissection of the carotid sheath",
-      image: headneckCarotid, alt: "Painted deep dissection of the carotid sheath",
+      image: headneckCarotid,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray513.png”: The internal carotid and vertebral arteries. Right side. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray513.png", alt: "Gray's Anatomy plate — deep dissection of the carotid sheath",
       caption: "Deep dissection of the carotid sheath",
       labels: [
         { latin: "arteria carotis communis", english: "Common carotid artery", note: "Bifurcates at C4 (upper border of thyroid cartilage)." },
@@ -189,7 +231,9 @@ export const headNeckFolio: CorPictumFolioData = {
     {
       id: "orbit", tabLabel: "Orbit", folio: "III",
       title: "The Orbit", subtitle: "Extraocular muscles and orbital contents",
-      image: headneckOrbit, alt: "Painted lateral cutaway view of the orbit showing extraocular muscles and the optic nerve",
+      image: headneckOrbit,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray889.png”:  Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray889.png", alt: "Gray's Anatomy plate — lateral cutaway view of the orbit showing extraocular muscles and the optic nerve",
       caption: "Lateral cutaway of the orbit — extraocular muscles, optic nerve and orbital contents",
       labels: [
         { latin: "", english: "Globe (eyeball)", note: "Axial length ~24 mm; risk of perforation with peribulbar/sub-Tenon's needles in long eyes." },
@@ -220,7 +264,9 @@ export const headNeckFolio: CorPictumFolioData = {
     {
       id: "orbit-frontal", tabLabel: "Bony orbit", folio: "IV",
       title: "Orbit — Extraocular Muscles", subtitle: "Anterior view of the right orbit",
-      image: headneckOrbitFrontal, alt: "Painted anterior view of the right orbit showing the globe and extraocular muscles",
+      image: headneckOrbitFrontal,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray890.png”: Blick in die rechte Orbita von vorne nach Entfernen des Bulbus und der vorderen Anteile der anderen Strukturen. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray890.png", alt: "Gray's Anatomy plate — anterior view of the right orbit showing the globe and extraocular muscles",
       caption: "Anterior orbital illustration — the globe obscures the apex; use the separate bony-orbit diagram for foramina and fissures",
       labels: [
         { latin: "", english: "Frontal bone", note: "Forms the orbital roof; supraorbital nerve (V1) emerges through the notch/foramen on its rim." },
@@ -249,7 +295,9 @@ export const headNeckFolio: CorPictumFolioData = {
     {
       id: "neck-c6-axial", tabLabel: "Neck axial (C6)", folio: "V",
       title: "Axial Section — C6 (Cricoid Level)", subtitle: "Transverse cross-section of the neck at the cricoid",
-      image: neckC6Axial, alt: "Painted axial cross-section of the neck at the level of the C6 vertebra (cricoid)",
+      image: neckC6Axial,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray384.png”: A cross-section diagram of the human neck at the level of C6 showing the fascia compartments, muscles, organs, bone, and major arteries, veins, and nerves. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray384.png", alt: "Gray's Anatomy plate — axial cross-section of the neck at the level of the C6 vertebra (cricoid)",
       caption: "Axial section at C6 — the anaesthetist's reference plane for central venous access, stellate ganglion block and tracheal landmarks",
       labels: [
         { latin: "", english: "Cricoid cartilage", note: "Only complete cartilaginous ring; landmark for cricoid pressure (Sellick) and front-of-neck access." },
@@ -293,7 +341,9 @@ export const neuroFolio: CorPictumFolioData = {
     {
       id: "midsagittal", tabLabel: "Midsagittal", folio: "I",
       title: "Midsagittal Section of the Brain", subtitle: "Midline section of the brain",
-      image: neuroMidsagittal, alt: "Painted midsagittal section of the brain",
+      image: neuroMidsagittal,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray720.png”:  Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray720.png", alt: "Gray's Anatomy plate — midsagittal section of the brain",
       caption: "Midsagittal section of the brain",
       labels: [
         { latin: "corpus callosum", english: "Corpus callosum", note: "Largest commissure; interhemispheric communication." },
@@ -314,7 +364,9 @@ export const neuroFolio: CorPictumFolioData = {
     {
       id: "willis", tabLabel: "Circle of Willis", folio: "II",
       title: "Circle of Willis", subtitle: "Arterial circle at the base of the brain",
-      image: neuroCircleWillis, alt: "Painted inferior view of the Circle of Willis",
+      image: neuroCircleWillis,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray519.png”: \"Fig. 519. — iagram of the arterial circulation at the base of the brain. A.L. Antero-lateral. A.M. Antero-medial. P.L. Postero-lateral. P.M. Posteromedial gang Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray519.png", alt: "Gray's Anatomy plate — inferior view of the Circle of Willis",
       caption: "Cerebral arterial circle — inferior view",
       labels: [
         { latin: "arteria cerebri anterior", english: "Anterior cerebral artery", note: "Medial frontal and parietal lobes; leg homunculus." },
@@ -336,7 +388,9 @@ export const neuroFolio: CorPictumFolioData = {
     {
       id: "skullbase-superior", tabLabel: "Skull base (above)", folio: "III",
       title: "Skull Base from Above", subtitle: "Internal cranial fossae and foramina",
-      image: skullbaseSuperior, alt: "Painted superior view of the skull base showing the three cranial fossae",
+      image: skullbaseSuperior,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray193.png”: Base of the en:skull. Inner or cerebral surface. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray193.png", alt: "Gray's Anatomy plate — superior view of the skull base showing the three cranial fossae",
       caption: "Internal view of the skull base — anterior, middle and posterior fossae",
       labels: [
         { latin: "", english: "Crista galli", note: "Midline anchor for the falx cerebri." },
@@ -363,7 +417,9 @@ export const neuroFolio: CorPictumFolioData = {
     {
       id: "skullbase-inferior", tabLabel: "Skull base (below)", folio: "IV",
       title: "Skull Base from Below", subtitle: "External view of the cranial base",
-      image: skullbaseInferior, alt: "Painted inferior view of the external skull base",
+      image: skullbaseInferior,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray187.png”: Base of the Human skull. External surface. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray187.png", alt: "Gray's Anatomy plate — inferior view of the external skull base",
       caption: "External view of the skull base — palate, foramina and occipital condyles",
       labels: [
         { latin: "", english: "Hard palate", note: "Roof of the mouth; landmark for nasal airway depth." },
@@ -417,7 +473,9 @@ export const spinalFolio: CorPictumFolioData = {
     {
       id: "sagittal", tabLabel: "Sagittal", folio: "II",
       title: "Epidural and Subarachnoid Spaces", subtitle: "Sagittal view for neuraxial anaesthesia",
-      image: spinalSagittal, alt: "Painted midsagittal section of the lumbar spine showing neuraxial spaces",
+      image: spinalSagittal,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray301.png”: Median sagittal section of two lumbar vertebræ and their ligaments. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray301.png", alt: "Gray's Anatomy plate — midsagittal section of the lumbar spine showing neuraxial spaces",
       caption: "Sagittal section of the lumbar spine — neuraxial access",
       labels: [
         { latin: "corpus vertebrae", english: "Vertebral body", note: "Anterior weight-bearing column." },
@@ -439,7 +497,9 @@ export const spinalFolio: CorPictumFolioData = {
     {
       id: "caudal", tabLabel: "Caudal block", folio: "III",
       title: "Caudal Block Landmarks", subtitle: "Sacral hiatus and the equilateral triangle",
-      image: spinalCaudal, alt: "Painted posterior view of the sacrum showing landmarks for caudal epidural block",
+      image: spinalCaudal,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray96.png”: Sacrum, dorsal surface. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray96.png", alt: "Gray's Anatomy plate — posterior view of the sacrum showing landmarks for caudal epidural block",
       caption: "Surface and bony landmarks for caudal epidural block",
       labels: [
         { latin: "", english: "Posterior superior iliac spine", note: "Forms the two upper points of an equilateral triangle with the sacral hiatus." },
@@ -470,7 +530,9 @@ export const brachialFolio: CorPictumFolioData = {
     {
       id: "plexus", tabLabel: "Whole plexus", folio: "I",
       title: "Brachial Plexus", subtitle: "Roots, trunks, divisions, cords, branches",
-      image: brachialPlexus, alt: "Painted view of the brachial plexus",
+      image: brachialPlexus,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray807.png”: Plan of brachial plexus. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray807.png", alt: "Gray's Anatomy plate — view of the brachial plexus",
       caption: "Brachial plexus — supraclavicular and infraclavicular regions",
       labels: [
         { latin: "truncus superior", english: "Superior trunk (C5–C6)", note: "Target of interscalene block; spares C8/T1." },
@@ -494,7 +556,9 @@ export const brachialFolio: CorPictumFolioData = {
     {
       id: "interscalene", tabLabel: "Interscalene", folio: "II",
       title: "Interscalene Groove", subtitle: "Cross-section at C6 for interscalene block",
-      image: brachialInterscalene, alt: "Painted cross-section of the interscalene groove at C6",
+      image: brachialInterscalene,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray808.png”: The right brachial plexus with its short branches, viewed from in front. The sternomastoid and trapezius muscles have been completely removed, the omohyoid and  Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray808.png", alt: "Gray's Anatomy plate — cross-section of the interscalene groove at C6",
       caption: "Cross-section of the neck at C6 — interscalene groove",
       labels: [
         { latin: "musculus scalenus anterior", english: "Anterior scalene", note: "Anterior border of the groove; phrenic nerve on its surface." },
@@ -522,7 +586,9 @@ export const upperLimbFolio: CorPictumFolioData = {
     {
       id: "axilla", tabLabel: "Axilla", folio: "I",
       title: "Axillary Region", subtitle: "Cords of the plexus around the axillary artery",
-      image: upperlimbAxilla, alt: "Painted view of the axilla and proximal upper arm",
+      image: upperlimbAxilla,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray523.png”: The axillary artery and its branches. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray523.png", alt: "Gray's Anatomy plate — view of the axilla and proximal upper arm",
       caption: "Dissection of the axilla and proximal arm",
       labels: [
         {
@@ -530,70 +596,60 @@ export const upperLimbFolio: CorPictumFolioData = {
           note: "Reflected superolaterally to expose the axillary contents.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Inferior border forms the anterior axillary fold; clavipectoral fascia lies deep to it.",
-          polygon: [[0.18, 0.06], [0.62, 0.06], [0.55, 0.20], [0.20, 0.22]],
         },
         {
           latin: "arteria axillaris", english: "Axillary artery",
           note: "Three parts defined by pectoralis minor; landmark for axillary block.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Cords of the plexus are named by their relation to the second part of the artery.",
-          polygon: [[0.45, 0.22], [0.55, 0.22], [0.56, 0.46], [0.46, 0.46]],
         },
         {
           latin: "vena axillaris", english: "Axillary vein",
           note: "Continuation of basilic + brachial veins; CVC target.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Lies medial and superficial to the artery — first structure encountered in infraclavicular CVC.",
-          polygon: [[0.40, 0.24], [0.48, 0.24], [0.49, 0.50], [0.41, 0.50]],
         },
         {
           latin: "fasciculus lateralis", english: "Lateral cord",
           note: "Lateral to the second part of axillary artery.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Gives musculocutaneous nerve and the lateral root of the median nerve.",
-          polygon: [[0.50, 0.38], [0.62, 0.36], [0.64, 0.46], [0.52, 0.48]],
         },
         {
           latin: "fasciculus medialis", english: "Medial cord",
           note: "Medial to the axillary artery.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Gives ulnar nerve and the medial root of the median nerve; medial pectoral, medial cutaneous nerves.",
-          polygon: [[0.34, 0.42], [0.46, 0.40], [0.48, 0.52], [0.36, 0.54]],
         },
         {
           latin: "fasciculus posterior", english: "Posterior cord",
           note: "Posterior to the axillary artery.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Gives the axillary and radial nerves — \"posterior compartments + deltoid\".",
-          polygon: [[0.42, 0.46], [0.56, 0.46], [0.56, 0.56], [0.42, 0.56]],
         },
         {
           latin: "nervus medianus", english: "Median nerve",
           note: "Forms over the artery from medial and lateral roots.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Crosses brachial artery from lateral to medial in the arm; supplies forearm flexors + LOAF.",
-          polygon: [[0.42, 0.56], [0.56, 0.56], [0.55, 0.66], [0.43, 0.66]],
         },
         {
           latin: "nervus ulnaris", english: "Ulnar nerve",
           note: "Descends medially from the medial cord.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Behind medial epicondyle (\"funny bone\"), then Guyon's canal — intrinsic hand muscles.",
-          polygon: [[0.34, 0.58], [0.46, 0.58], [0.46, 0.74], [0.34, 0.74]],
         },
         {
           latin: "musculus biceps brachii", english: "Biceps brachii",
           note: "Long and short heads; supplied by musculocutaneous.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Powerful supinator with the elbow flexed; tendon is the lateral landmark of the cubital fossa.",
-          polygon: [[0.18, 0.62], [0.42, 0.60], [0.40, 0.94], [0.18, 0.94]],
         },
         {
           latin: "musculus coracobrachialis", english: "Coracobrachialis",
           note: "Pierced by musculocutaneous — surgical landmark.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Block musculocutaneous separately within coracobrachialis at the axillary approach.",
-          polygon: [[0.30, 0.50], [0.42, 0.48], [0.42, 0.66], [0.30, 0.66]],
         },
       ],
       curriculumLinks: [
@@ -604,7 +660,9 @@ export const upperLimbFolio: CorPictumFolioData = {
     {
       id: "forearm", tabLabel: "Forearm & wrist", folio: "II",
       title: "Forearm and Wrist", subtitle: "Anterior forearm with carpal tunnel",
-      image: upperlimbForearm, alt: "Painted anterior view of the forearm and hand",
+      image: upperlimbForearm,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray417.png”:  Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray417.png", alt: "Gray's Anatomy plate — anterior view of the forearm and hand",
       caption: "Anterior view of the forearm and hand",
       labels: [
         {
@@ -612,77 +670,66 @@ export const upperLimbFolio: CorPictumFolioData = {
           note: "Tendon medial to radial artery at the wrist.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Lateral wrist landmark for radial artery cannulation — artery lies just lateral to the FCR tendon.",
-          polygon: [[0.32, 0.28], [0.46, 0.28], [0.48, 0.66], [0.34, 0.66]],
         },
         {
           latin: "musculus palmaris longus", english: "Palmaris longus",
           note: "Absent in ~15%; landmark for median nerve.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Median nerve lies just lateral and deep to PL tendon at the wrist — surface guide for wrist block.",
-          polygon: [[0.46, 0.30], [0.58, 0.30], [0.58, 0.66], [0.46, 0.66]],
         },
         {
           latin: "musculus flexor carpi ulnaris", english: "Flexor carpi ulnaris",
           note: "Tendon overlies ulnar nerve and artery at the wrist.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Ulnar nerve and artery lie just lateral to FCU tendon at the wrist — landmark for ulnar wrist block.",
-          polygon: [[0.58, 0.36], [0.72, 0.36], [0.72, 0.68], [0.58, 0.68]],
         },
         {
           latin: "musculus brachioradialis", english: "Brachioradialis",
           note: "Superficial radial nerve emerges from beneath it.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Lateral border of the cubital fossa; superficial radial nerve becomes subcutaneous mid-forearm.",
-          polygon: [[0.16, 0.30], [0.32, 0.30], [0.30, 0.62], [0.16, 0.62]],
         },
         {
           latin: "retinaculum flexorum", english: "Flexor retinaculum",
           note: "Roof of the carpal tunnel — divided in carpal tunnel release.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Spans scaphoid/trapezium to pisiform/hook of hamate; transmits 9 tendons + median nerve.",
-          polygon: [[0.30, 0.70], [0.74, 0.70], [0.74, 0.78], [0.30, 0.78]],
         },
         {
           latin: "nervus medianus", english: "Median nerve",
           note: "Through the carpal tunnel; thenar atrophy when compressed.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "LOAF muscles + lateral 3½ digits. Carpal tunnel syndrome spares the palmar cutaneous branch.",
-          polygon: [[0.18, 0.74], [0.34, 0.74], [0.34, 0.84], [0.18, 0.84]],
         },
         {
           latin: "nervus ulnaris", english: "Ulnar nerve",
           note: "In Guyon's canal at the wrist.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Superficial to flexor retinaculum within Guyon's canal — supplies most intrinsic hand muscles.",
-          polygon: [[0.66, 0.78], [0.82, 0.78], [0.82, 0.86], [0.66, 0.86]],
         },
         {
           latin: "arteria radialis", english: "Radial artery",
           note: "Standard arterial line site; Allen's test before cannulation.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Palpated lateral to FCR tendon; modified Allen's test confirms ulnar collateral before cannulation.",
-          polygon: [[0.30, 0.72], [0.42, 0.72], [0.42, 0.80], [0.30, 0.80]],
         },
         {
           latin: "arteria ulnaris", english: "Ulnar artery",
           note: "Dominant supply to the superficial palmar arch.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Lies lateral to ulnar nerve at the wrist; main contributor to the superficial palmar arch.",
-          polygon: [[0.62, 0.74], [0.74, 0.74], [0.74, 0.82], [0.62, 0.82]],
         },
         {
           latin: "vena cephalica", english: "Cephalic vein",
           note: "Lateral; standard IV cannulation site.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Ascends along radial border of forearm to drain into axillary vein at deltopectoral groove.",
-          polygon: [[0.10, 0.18], [0.24, 0.18], [0.30, 0.58], [0.16, 0.58]],
         },
         {
           latin: "vena basilica", english: "Basilic vein",
           note: "Medial; PICC line target.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Larger and straighter than cephalic — preferred PICC vein; pierces deep fascia mid-arm.",
-          polygon: [[0.74, 0.16], [0.88, 0.16], [0.82, 0.56], [0.68, 0.56]],
         },
       ],
       curriculumLinks: [
@@ -693,7 +740,9 @@ export const upperLimbFolio: CorPictumFolioData = {
     {
       id: "upper-arteries", tabLabel: "Arterial supply", folio: "III",
       title: "Arterial Supply of the Upper Limb", subtitle: "Subclavian → axillary → brachial → radial / ulnar",
-      image: upperlimbArteries, alt: "Painted anterior view of the arterial tree of the upper limb",
+      image: upperlimbArteries,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray528.png”:  Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray528.png", alt: "Gray's Anatomy plate — anterior view of the arterial tree of the upper limb",
       caption: "Arterial supply of the upper limb — anterior view",
       labels: [
         {
@@ -701,63 +750,54 @@ export const upperLimbFolio: CorPictumFolioData = {
           note: "Becomes axillary at the lateral border of the first rib.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Three parts divided by scalenus anterior; gives vertebral, internal thoracic, thyrocervical trunk.",
-          polygon: [[0.20, 0.06], [0.46, 0.06], [0.46, 0.18], [0.22, 0.18]],
         },
         {
           latin: "arteria axillaris", english: "Axillary artery",
           note: "Three parts defined by pectoralis minor; landmark for axillary block.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Cords of the brachial plexus surround its second part — basis of the infraclavicular block.",
-          polygon: [[0.36, 0.18], [0.56, 0.18], [0.56, 0.30], [0.36, 0.30]],
         },
         {
           latin: "arteria brachialis", english: "Brachial artery",
           note: "Medial bicipital groove; NIBP cuff occlusion site; brachial pulse for CPR in infants.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Bifurcates into radial and ulnar at the radial neck; auscultatory site for Korotkoff sounds.",
-          polygon: [[0.44, 0.30], [0.60, 0.30], [0.60, 0.54], [0.44, 0.54]],
         },
         {
           latin: "arteria profunda brachii", english: "Profunda brachii",
           note: "Spirals posteriorly with the radial nerve in the radial groove.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Largest brachial branch; at risk with the radial nerve in mid-shaft humeral fractures.",
-          polygon: [[0.56, 0.34], [0.70, 0.34], [0.70, 0.50], [0.56, 0.50]],
         },
         {
           latin: "arteria radialis", english: "Radial artery",
           note: "Standard arterial line site; perform Allen's test before cannulation.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Crosses the anatomical snuffbox to form the deep palmar arch.",
-          polygon: [[0.32, 0.58], [0.46, 0.58], [0.46, 0.80], [0.32, 0.80]],
         },
         {
           latin: "arteria ulnaris", english: "Ulnar artery",
           note: "Dominant supply to superficial palmar arch; alternative arterial line.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Larger terminal branch; gives common interosseous; main supply to the digits.",
-          polygon: [[0.48, 0.58], [0.64, 0.58], [0.64, 0.80], [0.48, 0.80]],
         },
         {
           latin: "arteria interossea communis", english: "Common interosseous",
           note: "Branch of ulnar; supplies the deep forearm compartment.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Divides into anterior (with median nerve's AIN) and posterior interosseous arteries.",
-          polygon: [[0.50, 0.62], [0.62, 0.62], [0.62, 0.74], [0.50, 0.74]],
         },
         {
           latin: "arcus palmaris superficialis", english: "Superficial palmar arch",
           note: "Mainly ulnar; assess collateral flow before radial cannulation.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Lies at the level of the distal extended thumb; complete in only ~80% of hands.",
-          polygon: [[0.40, 0.84], [0.66, 0.84], [0.66, 0.90], [0.40, 0.90]],
         },
         {
           latin: "arcus palmaris profundus", english: "Deep palmar arch",
           note: "Mainly radial continuation; completes the dual hand supply.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "More consistent than the superficial arch — basis of safety in radial artery harvest for CABG.",
-          polygon: [[0.40, 0.90], [0.66, 0.90], [0.66, 0.96], [0.40, 0.96]],
         },
       ],
       curriculumLinks: [
@@ -768,7 +808,9 @@ export const upperLimbFolio: CorPictumFolioData = {
     {
       id: "upper-veins", tabLabel: "Venous drainage", folio: "IV",
       title: "Venous Drainage of the Upper Limb", subtitle: "Superficial (cephalic, basilic) + deep system",
-      image: upperlimbVeins, alt: "Painted anterior view of the venous network of the upper limb",
+      image: upperlimbVeins,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray574.png”:  Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray574.png", alt: "Gray's Anatomy plate — anterior view of the venous network of the upper limb",
       caption: "Superficial and deep venous drainage — anterior view",
       labels: [
         {
@@ -776,49 +818,42 @@ export const upperLimbFolio: CorPictumFolioData = {
           note: "Lateral; ascends in deltopectoral groove to drain into axillary vein.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Acute angle at the deltopectoral groove → higher PICC failure rate than basilic.",
-          polygon: [[0.50, 0.18], [0.62, 0.18], [0.58, 0.58], [0.46, 0.58]],
         },
         {
           latin: "vena basilica", english: "Basilic vein",
           note: "Medial; PICC line target; pierces deep fascia to join brachial venae comitantes.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Preferred PICC vein — larger calibre, straighter course; tip aimed at cavoatrial junction.",
-          polygon: [[0.36, 0.22], [0.50, 0.22], [0.52, 0.62], [0.38, 0.62]],
         },
         {
           latin: "vena mediana cubiti", english: "Median cubital vein",
           note: "Antecubital connection between cephalic and basilic — standard venepuncture site.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Bicipital aponeurosis (\"grace à Dieu\") protects the brachial artery from misdirected needles.",
-          polygon: [[0.40, 0.56], [0.62, 0.56], [0.60, 0.66], [0.40, 0.66]],
         },
         {
           latin: "rete venosum dorsale manus", english: "Dorsal venous network of hand",
           note: "Common IV cannulation site.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Drains laterally into cephalic vein and medially into basilic vein.",
-          polygon: [[0.36, 0.84], [0.78, 0.84], [0.78, 0.96], [0.36, 0.96]],
         },
         {
           latin: "venae brachiales", english: "Brachial venae comitantes",
           note: "Paired deep veins with brachial artery; coalesce to form axillary vein.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Used for ultrasound-guided deep venous access when superficial veins are exhausted.",
-          polygon: [[0.42, 0.34], [0.54, 0.34], [0.54, 0.56], [0.42, 0.56]],
         },
         {
           latin: "vena axillaris", english: "Axillary vein",
           note: "Continuation of basilic + brachial veins; CVC target via infraclavicular approach.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Lies medial to the axillary artery; ultrasound-guided CVC alternative to subclavian.",
-          polygon: [[0.42, 0.18], [0.54, 0.18], [0.54, 0.30], [0.42, 0.30]],
         },
         {
           latin: "vena subclavia", english: "Subclavian vein",
           note: "Posterior to clavicle; classic CVC site (low infection risk, pneumothorax risk).",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Anterior to scalenus anterior (artery is posterior); joins IJV to form brachiocephalic vein.",
-          polygon: [[0.36, 0.08], [0.62, 0.08], [0.60, 0.18], [0.38, 0.18]],
         },
       ],
       curriculumLinks: [
@@ -829,7 +864,9 @@ export const upperLimbFolio: CorPictumFolioData = {
     {
       id: "upper-nerves", tabLabel: "Innervation", folio: "V",
       title: "Innervation of the Upper Limb", subtitle: "Five terminal branches of the brachial plexus",
-      image: upperlimbNerves, alt: "Painted anterior view of the nerves of the upper limb",
+      image: upperlimbNerves,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray818.png”: The suprascapular, axillary, and radial nerves. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray818.png", alt: "Gray's Anatomy plate — anterior view of the nerves of the upper limb",
       caption: "Innervation of the upper limb — anterior view",
       labels: [
         {
@@ -837,42 +874,36 @@ export const upperLimbFolio: CorPictumFolioData = {
           note: "Roots, trunks, divisions, cords, branches — \"Real Texans Drink Cold Beer\".",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Roots emerge between scalenus anterior and medius — the target of the interscalene block.",
-          polygon: [[0.10, 0.04], [0.40, 0.04], [0.40, 0.18], [0.12, 0.18]],
         },
         {
           latin: "nervus musculocutaneus", english: "Musculocutaneous nerve",
           note: "Pierces coracobrachialis; BBC muscles (biceps, brachialis, coracobrachialis); becomes lateral cutaneous nerve of forearm.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Leaves the axillary sheath early — block separately within coracobrachialis at the axilla.",
-          polygon: [[0.40, 0.26], [0.54, 0.26], [0.54, 0.44], [0.40, 0.44]],
         },
         {
           latin: "nervus medianus", english: "Median nerve",
           note: "Crosses brachial artery in the arm; through carpal tunnel; thenar wasting + LOAF muscles when compressed.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Sensory: lateral 3½ digits (palmar). Motor: forearm flexors (most) + LOAF.",
-          polygon: [[0.46, 0.30], [0.60, 0.30], [0.60, 0.66], [0.46, 0.66]],
         },
         {
           latin: "nervus ulnaris", english: "Ulnar nerve",
           note: "Behind medial epicondyle (\"funny bone\"); Guyon's canal at wrist; intrinsic hand muscles + medial 1½ digits.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Vulnerable to perioperative compression at the cubital tunnel — pad the elbow carefully.",
-          polygon: [[0.34, 0.42], [0.48, 0.42], [0.48, 0.70], [0.34, 0.70]],
         },
         {
           latin: "nervus radialis", english: "Radial nerve",
           note: "Spirals in radial groove of humerus — vulnerable in mid-shaft fractures (wrist drop).",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Saturday-night palsy: compression in spiral groove → wrist drop with sensory loss in snuffbox.",
-          polygon: [[0.58, 0.32], [0.74, 0.32], [0.72, 0.66], [0.56, 0.66]],
         },
         {
           latin: "nervus axillaris", english: "Axillary nerve",
           note: "Around surgical neck of humerus; deltoid + regimental badge sensation; risk in shoulder dislocation.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Test sensation over the regimental badge area before and after shoulder reduction.",
-          polygon: [[0.46, 0.18], [0.66, 0.18], [0.66, 0.30], [0.46, 0.30]],
         },
       ],
       curriculumLinks: [
@@ -890,7 +921,9 @@ export const lowerLimbFolio: CorPictumFolioData = {
     {
       id: "femoral", tabLabel: "Femoral triangle", folio: "I",
       title: "Femoral Triangle", subtitle: "Anterior thigh and femoral sheath",
-      image: lowerlimbFemoral, alt: "Painted anterior view of the femoral triangle",
+      image: lowerlimbFemoral,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray549.png”:  Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray549.png", alt: "Gray's Anatomy plate — anterior view of the femoral triangle",
       caption: "Femoral triangle — anterior view",
       labels: [
         {
@@ -898,63 +931,54 @@ export const lowerLimbFolio: CorPictumFolioData = {
           note: "Superior border of the triangle.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "ASIS to pubic tubercle; mid-inguinal point (midway) overlies the femoral artery.",
-          polygon: [[0.40, 0.10], [0.84, 0.10], [0.80, 0.20], [0.42, 0.22]],
         },
         {
           latin: "musculus sartorius", english: "Sartorius",
           note: "Lateral border of the triangle.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Forms the roof of the adductor canal — landmark for adductor canal block.",
-          polygon: [[0.20, 0.20], [0.42, 0.20], [0.40, 0.92], [0.18, 0.92]],
         },
         {
           latin: "musculus adductor longus", english: "Adductor longus",
           note: "Medial border of the triangle.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Tendon palpable in the groin — divides the floor between pectineus and adductor longus.",
-          polygon: [[0.62, 0.62], [0.86, 0.62], [0.84, 0.94], [0.60, 0.94]],
         },
         {
           latin: "nervus femoralis", english: "Femoral nerve",
           note: "Lateral in the NAVL arrangement; outside the femoral sheath.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Lies ~1 cm lateral to the artery, OUTSIDE the femoral sheath — target of the femoral block.",
-          polygon: [[0.40, 0.30], [0.48, 0.30], [0.48, 0.70], [0.40, 0.70]],
         },
         {
           latin: "arteria femoralis", english: "Femoral artery",
           note: "Mid-inguinal point landmark; arterial line site.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Mid-inguinal point landmark; primary access for IABP, ECMO, angiography.",
-          polygon: [[0.48, 0.26], [0.56, 0.26], [0.56, 0.70], [0.48, 0.70]],
         },
         {
           latin: "vena femoralis", english: "Femoral vein",
           note: "Medial to the artery; emergency CVC site.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Within the femoral sheath, MEDIAL to the artery — emergency CVC site (NAVeL).",
-          polygon: [[0.54, 0.24], [0.62, 0.24], [0.62, 0.72], [0.54, 0.72]],
         },
         {
           latin: "vena saphena magna", english: "Great saphenous vein",
           note: "Joins femoral vein at the saphenofemoral junction.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "SFJ ~3 cm inferior + lateral to pubic tubercle; cutdown 1 cm anterior + superior to medial malleolus.",
-          polygon: [[0.46, 0.74], [0.58, 0.74], [0.58, 0.96], [0.46, 0.96]],
         },
         {
           latin: "musculus iliopsoas", english: "Iliopsoas",
           note: "Floor of the triangle laterally.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Lumbar plexus forms within psoas major — the basis of the lumbar plexus (psoas compartment) block.",
-          polygon: [[0.62, 0.22], [0.86, 0.22], [0.84, 0.50], [0.62, 0.50]],
         },
         {
           latin: "musculus pectineus", english: "Pectineus",
           note: "Floor of the triangle medially.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Floor under the femoral vessels; obturator nerve runs deep to it.",
-          polygon: [[0.58, 0.46], [0.78, 0.46], [0.76, 0.66], [0.58, 0.66]],
         },
       ],
       curriculumLinks: [
@@ -965,7 +989,9 @@ export const lowerLimbFolio: CorPictumFolioData = {
     {
       id: "popliteal", tabLabel: "Popliteal fossa", folio: "II",
       title: "Popliteal Fossa", subtitle: "Posterior knee for sciatic block",
-      image: lowerlimbPopliteal, alt: "Painted posterior view of the popliteal fossa",
+      image: lowerlimbPopliteal,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray550.png”:  Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray550.png", alt: "Gray's Anatomy plate — posterior view of the popliteal fossa",
       caption: "Popliteal fossa — posterior view",
       labels: [
         {
@@ -973,63 +999,54 @@ export const lowerLimbFolio: CorPictumFolioData = {
           note: "Superolateral border; common peroneal nerve hugs its medial edge.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Superolateral border of the fossa; tendon inserts into fibular head — landmark for CPN.",
-          polygon: [[0.18, 0.10], [0.42, 0.08], [0.46, 0.50], [0.22, 0.52]],
         },
         {
           latin: "musculus semitendinosus", english: "Semitendinosus",
           note: "Superomedial border.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Tendon palpable medially — superomedial border with semimembranosus deep to it.",
-          polygon: [[0.58, 0.08], [0.82, 0.10], [0.78, 0.50], [0.54, 0.50]],
         },
         {
           latin: "musculus semimembranosus", english: "Semimembranosus",
           note: "Superomedial border, deep to semitendinosus.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Deep to semitendinosus; bursa here may communicate with the knee (Baker's cyst).",
-          polygon: [[0.56, 0.18], [0.78, 0.18], [0.74, 0.44], [0.54, 0.44]],
         },
         {
           latin: "musculus gastrocnemius", english: "Gastrocnemius",
           note: "Inferior borders — both heads frame the fossa.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Medial and lateral heads form the inferior borders; popliteal vessels pass between them.",
-          polygon: [[0.18, 0.74], [0.82, 0.74], [0.82, 0.98], [0.18, 0.98]],
         },
         {
           latin: "nervus tibialis", english: "Tibial nerve",
           note: "Central in the fossa; main target of popliteal sciatic block.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Most superficial neurovascular structure in the fossa — first hit in popliteal sciatic block.",
-          polygon: [[0.46, 0.50], [0.56, 0.50], [0.56, 0.78], [0.46, 0.78]],
         },
         {
           latin: "nervus peroneus communis", english: "Common peroneal nerve",
           note: "Hugs the medial border of biceps femoris.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Wraps around fibular neck — vulnerable to compression (foot drop).",
-          polygon: [[0.30, 0.40], [0.46, 0.46], [0.40, 0.74], [0.24, 0.66]],
         },
         {
           latin: "vena poplitea", english: "Popliteal vein",
           note: "Superficial to the artery.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Lies between the tibial nerve (superficial) and the popliteal artery (deep) — common DVT site.",
-          polygon: [[0.44, 0.34], [0.54, 0.34], [0.54, 0.66], [0.44, 0.66]],
         },
         {
           latin: "arteria poplitea", english: "Popliteal artery",
           note: "Deepest structure; aneurysm site.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Deepest structure in the fossa; commonest peripheral aneurysm; pulse palpated with knee flexed.",
-          polygon: [[0.46, 0.50], [0.56, 0.50], [0.56, 0.70], [0.46, 0.70]],
         },
         {
           latin: "vena saphena parva", english: "Small saphenous vein",
           note: "Pierces popliteal fascia to drain into popliteal vein.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Ascends the posterior calf with the sural nerve; pierces deep fascia to join the popliteal vein.",
-          polygon: [[0.46, 0.74], [0.58, 0.74], [0.58, 0.86], [0.46, 0.86]],
         },
       ],
       curriculumLinks: [
@@ -1040,7 +1057,9 @@ export const lowerLimbFolio: CorPictumFolioData = {
     {
       id: "lower-arteries", tabLabel: "Arterial supply", folio: "III",
       title: "Arterial Supply of the Lower Limb", subtitle: "External iliac → femoral → popliteal → tibials",
-      image: lowerlimbArteries, alt: "Painted anterior view of the arterial tree of the lower limb",
+      image: lowerlimbArteries,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray548.png”:  Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray548.png", alt: "Gray's Anatomy plate — anterior view of the arterial tree of the lower limb",
       caption: "Arterial supply of the lower limb — anterior view",
       labels: [
         {
@@ -1048,63 +1067,54 @@ export const lowerLimbFolio: CorPictumFolioData = {
           note: "Becomes common femoral artery beneath the inguinal ligament.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Continuation of the common iliac; gives the inferior epigastric just before the inguinal ligament.",
-          polygon: [[0.42, 0.06], [0.58, 0.06], [0.58, 0.22], [0.42, 0.22]],
         },
         {
           latin: "arteria femoralis communis", english: "Common femoral artery",
           note: "Mid-inguinal point; arterial line + IABP access; femoral pulse.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Mid-inguinal point landmark; primary access site for IABP, ECMO, angiography.",
-          polygon: [[0.42, 0.22], [0.58, 0.22], [0.58, 0.34], [0.42, 0.34]],
         },
         {
           latin: "arteria profunda femoris", english: "Profunda femoris",
           note: "Main supply to thigh musculature; gives medial + lateral circumflex (femoral head supply).",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Medial + lateral circumflex branches supply the femoral head — at risk in NOF fractures.",
-          polygon: [[0.56, 0.26], [0.72, 0.30], [0.66, 0.40], [0.54, 0.36]],
         },
         {
           latin: "arteria femoralis superficialis", english: "Superficial femoral artery",
           note: "Through adductor canal; becomes popliteal at adductor hiatus.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Most common site of atherosclerotic occlusion (claudication of calf and foot).",
-          polygon: [[0.40, 0.34], [0.52, 0.34], [0.52, 0.50], [0.40, 0.50]],
         },
         {
           latin: "arteria poplitea", english: "Popliteal artery",
           note: "Deepest structure in popliteal fossa; aneurysm site; popliteal pulse with knee flexed.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Commonest peripheral aneurysm; bifurcates into anterior tibial and tibioperoneal trunk.",
-          polygon: [[0.40, 0.50], [0.52, 0.50], [0.52, 0.62], [0.40, 0.62]],
         },
         {
           latin: "arteria tibialis anterior", english: "Anterior tibial artery",
           note: "Anterior compartment; becomes dorsalis pedis (lateral to EHL tendon).",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Pierces the interosseous membrane to enter the anterior compartment; vulnerable in compartment syndrome.",
-          polygon: [[0.36, 0.62], [0.46, 0.62], [0.46, 0.82], [0.36, 0.82]],
         },
         {
           latin: "arteria tibialis posterior", english: "Posterior tibial artery",
           note: "Behind medial malleolus — palpable pulse; supplies plantar arch.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Palpated behind medial malleolus; ABPI used for vascular assessment.",
-          polygon: [[0.50, 0.62], [0.62, 0.62], [0.62, 0.84], [0.50, 0.84]],
         },
         {
           latin: "arteria fibularis", english: "Peroneal (fibular) artery",
           note: "Lateral leg; collateral supply, often spared in PVD.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Branch of the tibioperoneal trunk; often the LAST artery patent in advanced PVD.",
-          polygon: [[0.58, 0.66], [0.68, 0.66], [0.68, 0.82], [0.58, 0.82]],
         },
         {
           latin: "arteria dorsalis pedis", english: "Dorsalis pedis",
           note: "Pulse lateral to EHL tendon — absent congenitally in 5–12%.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Continuation of anterior tibial; pulse lateral to EHL tendon — absent congenitally in 5–12%.",
-          polygon: [[0.34, 0.86], [0.48, 0.86], [0.48, 0.96], [0.34, 0.96]],
         },
       ],
       curriculumLinks: [
@@ -1115,7 +1125,9 @@ export const lowerLimbFolio: CorPictumFolioData = {
     {
       id: "lower-veins", tabLabel: "Venous drainage", folio: "IV",
       title: "Venous Drainage of the Lower Limb", subtitle: "Superficial (saphenous) + deep system",
-      image: lowerlimbVeins, alt: "Painted anterior view of the venous network of the lower limb",
+      image: lowerlimbVeins,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray581.png”:  Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray581.png", alt: "Gray's Anatomy plate — anterior view of the venous network of the lower limb",
       caption: "Superficial and deep venous drainage — anterior view",
       labels: [
         {
@@ -1123,49 +1135,42 @@ export const lowerLimbFolio: CorPictumFolioData = {
           note: "Longest vein in the body; medial leg + thigh; SFJ in groin; cutdown 1 cm anterior + superior to medial malleolus.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Reliable venous cutdown site (1 cm anterior + superior to medial malleolus) — runs with saphenous nerve.",
-          polygon: [[0.32, 0.10], [0.44, 0.10], [0.46, 0.78], [0.30, 0.80]],
         },
         {
           latin: "vena saphena parva", english: "Small saphenous vein",
           note: "Posterior calf; drains into popliteal vein.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Ascends the posterior calf with the sural nerve; drains into popliteal vein.",
-          polygon: [[0.42, 0.30], [0.50, 0.30], [0.48, 0.74], [0.40, 0.74]],
         },
         {
           latin: "arcus venosus dorsalis pedis", english: "Dorsal venous arch of foot",
           note: "Origin of great + small saphenous veins; useful IV cannulation site.",
           examTags: [Exam.PRIMARY],
           learningPoint: "Lateral end → small saphenous; medial end → great saphenous. Reliable IV cannulation site.",
-          polygon: [[0.18, 0.84], [0.46, 0.82], [0.46, 0.94], [0.18, 0.96]],
         },
         {
           latin: "venae perforantes", english: "Perforating veins",
           note: "Connect superficial → deep system; valvular incompetence underlies varicose veins.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Valves direct flow from superficial → deep. Failure (Cockett's perforators) underlies varicose veins.",
-          polygon: [[0.34, 0.40], [0.46, 0.40], [0.46, 0.62], [0.34, 0.62]],
         },
         {
           latin: "vena femoralis", english: "Femoral vein",
           note: "Medial to femoral artery in the femoral sheath; emergency CVC site.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Medial to femoral artery (NAVeL); emergency CVC site (lower infection-risk than once thought).",
-          polygon: [[0.36, 0.06], [0.48, 0.06], [0.48, 0.22], [0.36, 0.22]],
         },
         {
           latin: "vena poplitea", english: "Popliteal vein",
           note: "Superficial to popliteal artery; common DVT site.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Common origin of proximal DVT — assessed by compression duplex ultrasound.",
-          polygon: [[0.36, 0.20], [0.48, 0.20], [0.48, 0.36], [0.36, 0.36]],
         },
         {
           latin: "venae tibiales posteriores", english: "Posterior tibial veins",
           note: "Calf-pump driven; another common DVT origin.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Driven by calf-muscle pump; immobility + venous stasis (Virchow's triad) → calf DVT origin.",
-          polygon: [[0.38, 0.50], [0.50, 0.50], [0.50, 0.78], [0.38, 0.78]],
         },
       ],
       curriculumLinks: [
@@ -1176,7 +1181,9 @@ export const lowerLimbFolio: CorPictumFolioData = {
     {
       id: "lower-nerves", tabLabel: "Innervation", folio: "V",
       title: "Innervation of the Lower Limb", subtitle: "Lumbar + sacral plexus terminal branches",
-      image: lowerlimbNerves, alt: "Painted view of nerves of the lower limb",
+      image: lowerlimbNerves,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray832.png”: Nerves of the right lower extremity Posterior view. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray832.png", alt: "Gray's Anatomy plate — view of nerves of the lower limb",
       caption: "Innervation of the lower limb",
       labels: [
         {
@@ -1184,70 +1191,60 @@ export const lowerLimbFolio: CorPictumFolioData = {
           note: "Forms within psoas major; gives femoral, obturator, LCNT, ilioinguinal, iliohypogastric.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Forms within psoas major — basis of the psoas compartment (lumbar plexus) block.",
-          polygon: [[0.40, 0.10], [0.60, 0.10], [0.60, 0.24], [0.40, 0.24]],
         },
         {
           latin: "nervus femoralis", english: "Femoral nerve (L2–L4)",
           note: "Lateral to femoral artery under inguinal ligament; quadriceps + saphenous; femoral / fascia iliaca block.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Lateral to femoral artery, OUTSIDE the femoral sheath — \"lateral to NAVeL\".",
-          polygon: [[0.30, 0.26], [0.42, 0.26], [0.42, 0.50], [0.30, 0.50]],
         },
         {
           latin: "nervus saphenus", english: "Saphenous nerve",
           note: "Terminal sensory branch of femoral; medial leg to medial malleolus; adductor canal block target.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Pure sensory terminal branch of femoral — block in adductor canal preserves quadriceps power.",
-          polygon: [[0.32, 0.62], [0.42, 0.62], [0.42, 0.86], [0.32, 0.86]],
         },
         {
           latin: "nervus obturatorius", english: "Obturator nerve (L2–L4)",
           note: "Through obturator foramen; adductors of thigh; often missed by femoral block alone.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Sensory to medial thigh + hip joint; missed by femoral block — supplement for knee surgery.",
-          polygon: [[0.42, 0.30], [0.54, 0.30], [0.54, 0.50], [0.42, 0.50]],
         },
         {
           latin: "nervus cutaneus femoris lateralis", english: "Lateral cutaneous nerve of thigh",
           note: "Under ASIS; pure sensory; entrapment = meralgia paraesthetica.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Passes 1–2 cm medial to ASIS; entrapment under inguinal ligament = meralgia paraesthetica.",
-          polygon: [[0.20, 0.24], [0.32, 0.24], [0.32, 0.42], [0.20, 0.42]],
         },
         {
           latin: "nervus ischiadicus", english: "Sciatic nerve (L4–S3)",
           note: "Largest nerve in the body; tibial + common peroneal divisions; subgluteal / popliteal blocks.",
           examTags: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM],
           learningPoint: "Exits via greater sciatic foramen below piriformis; divides above the popliteal fossa.",
-          polygon: [[0.56, 0.26], [0.72, 0.26], [0.72, 0.50], [0.56, 0.50]],
         },
         {
           latin: "nervus tibialis", english: "Tibial nerve",
           note: "Posterior compartment + sole; behind medial malleolus; main popliteal block target.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Largest division of sciatic; sole of foot sensation; tarsal tunnel behind medial malleolus.",
-          polygon: [[0.56, 0.52], [0.68, 0.52], [0.68, 0.78], [0.56, 0.78]],
         },
         {
           latin: "nervus peroneus communis", english: "Common peroneal nerve",
           note: "Wraps around fibular neck — vulnerable to compression → foot drop.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Most commonly injured peripheral nerve; foot drop with sensory loss over dorsum of foot.",
-          polygon: [[0.66, 0.50], [0.78, 0.50], [0.78, 0.66], [0.66, 0.66]],
         },
         {
           latin: "nervus peroneus superficialis", english: "Superficial peroneal nerve",
           note: "Lateral leg + dorsum of foot (except first webspace).",
           examTags: [Exam.PRIMARY],
           learningPoint: "Lateral leg + dorsum of foot, sparing 1st webspace — subcutaneous infiltration completes ankle block.",
-          polygon: [[0.68, 0.66], [0.80, 0.66], [0.80, 0.86], [0.68, 0.86]],
         },
         {
           latin: "nervus peroneus profundus", english: "Deep peroneal nerve",
           note: "Anterior compartment (dorsiflexion); first webspace sensation.",
           examTags: [Exam.PRIMARY, Exam.FINAL],
           learningPoint: "Sensation = first webspace ONLY; motor = anterior compartment (dorsiflexion). Ankle block target.",
-          polygon: [[0.62, 0.70], [0.72, 0.70], [0.72, 0.88], [0.62, 0.88]],
         },
       ],
       curriculumLinks: [
@@ -1265,9 +1262,10 @@ export const thoracicFolio: CorPictumFolioData = {
     {
       id: "anterior", tabLabel: "Anterior", folio: "I",
       title: "Thoracic Cavity", subtitle: "Anterior view with chest wall removed",
-      image: thoracicAnterior, alt: "Painted anterior view of the thoracic cavity",
+      image: thoracicAnterior,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1178.png”:  Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray1178.png", alt: "Gray's Anatomy plate — anterior view of the thoracic cavity",
       caption: "Anterior view of the thoracic cavity",
-      auditWarning: "The printed ‘Left lung’ leader incorrectly points to the patient's right chest. In an anterior view, the patient's left lung is on the viewer's right. The chest wall is shown, not removed; the clavicle is not rib 1.",
       labels: [
         { latin: "pulmo dexter", english: "Right lung", note: "Three lobes; horizontal and oblique fissures." },
         { latin: "pulmo sinister", english: "Left lung", note: "Two lobes; cardiac notch and lingula." },
@@ -1308,7 +1306,9 @@ export const thoracicFolio: CorPictumFolioData = {
     {
       id: "first-rib", tabLabel: "First Rib", folio: "III",
       title: "First Rib", subtitle: "Superior view — structures crossing the rib",
-      image: thoracicFirstRib, alt: "Painted superior view of the right first rib with overlying structures",
+      image: thoracicFirstRib,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “First rib Gray.png”: Peculiar ribs. First rib. Atipic rib. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:First_rib_Gray.png", alt: "Gray's Anatomy plate — superior view of the right first rib with overlying structures",
       caption: "Superior view of the right first rib",
       labels: [
         { latin: "vena subclavia", english: "Subclavian vein", note: "Anterior groove; anterior to scalenus anterior — target for infraclavicular access." },
@@ -1336,7 +1336,9 @@ export const abdominalFolio: CorPictumFolioData = {
     {
       id: "anterior", tabLabel: "Anterior", folio: "I",
       title: "Abdominal Cavity", subtitle: "Anterior view with greater omentum removed",
-      image: abdominalAnterior, alt: "Painted anterior view of the abdominal viscera",
+      image: abdominalAnterior,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1034.png”: Front view of the thoracic and abdominal viscera. a. Median plane. b b. Lateral planes. c c. Trans tubercular plane. d d. Subcostal plane. e e. Transpyloric pla Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray1034.png", alt: "Gray's Anatomy plate — anterior view of the abdominal viscera",
       caption: "Anterior view of the abdominal viscera",
       labels: [
         { latin: "hepar", english: "Liver", note: "Right upper quadrant; eight Couinaud segments." },
@@ -1358,7 +1360,9 @@ export const abdominalFolio: CorPictumFolioData = {
     {
       id: "retroperitoneum", tabLabel: "Retroperitoneum", folio: "II",
       title: "Retroperitoneum", subtitle: "Posterior view of the great vessels and kidneys",
-      image: abdominalRetroperitoneum, alt: "Painted view of the retroperitoneum",
+      image: abdominalRetroperitoneum,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1121.png”: Posterior abdominal wall, after removal of the peritoneum, showing kidneys, suprarenal capsules, and great vessels. (Corning). Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray1121.png", alt: "Gray's Anatomy plate — view of the retroperitoneum",
       caption: "Posterior view of the retroperitoneal space",
       labels: [
         { latin: "ren dexter", english: "Right kidney", note: "Slightly lower due to the liver above." },
