@@ -84,21 +84,6 @@ export async function fetchReferenceCounts(
   return out;
 }
 
-/** Invoke the edge function to generate or refresh references. */
-export async function generateTopicReferences(args: {
-  topicId: string;
-  topicTitle: string;
-  section: string;
-  force?: boolean;
-}): Promise<{ status: TopicReferenceStatus; refs: TopicReference[] }> {
-  const { data, error } = await supabase.functions.invoke(
-    "generate-topic-references",
-    { body: args },
-  );
-  if (error) throw new Error(error.message || "Failed to generate references");
-  return data as { status: TopicReferenceStatus; refs: TopicReference[] };
-}
-
 /** Format a single reference in BJA Education / Vancouver style. */
 export function formatReference(r: TopicReference): string {
   const parts: string[] = [];
