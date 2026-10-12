@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { BookOpen, ChevronDown } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { Section, Topic } from "@/data/curriculum";
+import { topicReferences } from "@/data/references";
 import { TopicReferencesButton } from "@/components/topic/TopicReferencesButton";
 
 interface Props {
@@ -10,38 +9,18 @@ interface Props {
   topics: Topic[];
 }
 
-interface RefRow {
-  topic_id: string;
-  status: string;
-  refs: unknown;
-}
-
 /**
- * Collapsible "Key references for this section" panel.
- * Lists every topic in the section that has cached references with
- * a quick way to open each topic's drawer.
+ * Collapsible "Key references for this section" panel, built from the
+ * curated reference lists authored with each topic.
  */
 export const SectionReferencesPanel = ({ section, topics }: Props) => {
   const [open, setOpen] = useState(false);
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["section-references", section],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("topic_references")
-        .select("topic_id, status, refs")
-        .eq("section", section);
-      if (error) throw error;
-      return (data ?? []) as RefRow[];
-    },
-    staleTime: 5 * 60 * 1000,
-  });
+  const isLoading = false;
 
   const counts = new Map<string, number>();
-  for (const row of data ?? []) {
-    if (row.status === "ready" && Array.isArray(row.refs)) {
-      counts.set(row.topic_id, row.refs.length);
-    }
+  for (const t of topics) {
+    const n = topicReferences[t.id]?.length ?? 0;
+    if (n > 0) counts.set(t.id, n);
   }
 
   const withRefs = topics.filter((t) => (counts.get(t.id) ?? 0) > 0);
