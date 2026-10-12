@@ -1,17 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
-import { fetchReferenceCounts } from "@/lib/topicReferences";
+import { useMemo } from "react";
+import { topicReferences } from "@/data/references";
 
-/**
- * Fetch reference counts for a set of topic ids in one query, cached for
- * 5 minutes. All TopicCards on a section page mount with the same key,
- * so react-query deduplicates the fetch.
- */
+/** Count of curated (authored) references per topic id. */
 export const useReferenceCounts = (topicIds: string[]) => {
-  const key = topicIds.slice().sort().join(",");
-  return useQuery({
-    queryKey: ["topic-reference-counts", key],
-    queryFn: () => fetchReferenceCounts(topicIds),
-    enabled: topicIds.length > 0,
-    staleTime: 5 * 60 * 1000,
-  });
+  const key = topicIds.join(",");
+  const data = useMemo(() => {
+    const out: Record<string, number> = {};
+    for (const id of topicIds) {
+      const n = topicReferences[id]?.length ?? 0;
+      if (n > 0) out[id] = n;
+    }
+    return out;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key]);
+  return { data };
 };
