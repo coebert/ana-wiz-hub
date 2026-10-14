@@ -44,3 +44,4 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 - Remaining work: further Physics/Physiology review; Pharmacology, Clinical, ICU, Perioperative and mapped Anatomy/Chemistry expansions. This continuation is a checked batch, not completion of the curriculum.
 ## Pharmacology batch 1
 - Local anaesthetics: differential blockade lesson citing CrossRef-confirmed Fink & Cairns 1984 and Gokin 2001, correcting the oversimplified "C fibres block first" rule. No excerpts added (originals not retrieved verbatim). Topic not complete; Meyer–Overton limits and antivirals remain pending.
+- Volatile agents: Meyer–Overton evidence lesson citing CrossRef-confirmed Franks & Lieb 1984 and 1991, Koblin 1994 and Franks 2008. No excerpts added. Topic not complete; antivirals next.

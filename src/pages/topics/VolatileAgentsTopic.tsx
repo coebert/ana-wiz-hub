@@ -10,6 +10,7 @@ import SecondGasEffectDiagram from "@/components/diagrams/pharmacology/SecondGas
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { MeyerOvertonTeaching } from "@/components/topic/MeyerOvertonTeaching";
 import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
 
 const volatileAgentsFaqs: Array<[string, string]> = [
@@ -248,6 +249,7 @@ const VolatileAgentsTopic = () => {
                 <li>• <strong>Temperature anomaly</strong>: Does not fully account for temperature-dependent changes in potency</li>
               </ul>
             </div>
+            <MeyerOvertonTeaching />
 
             <h3 className="text-lg font-semibold text-foreground mt-6">The Protein Theory (Modern Consensus)</h3>
             <p className="text-foreground/90 leading-relaxed">
