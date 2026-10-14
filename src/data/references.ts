@@ -464,6 +464,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ Neonatal CHD", citation: "Sarkar M, Prabhu V. Basics of paediatric anaesthesia for congenital heart disease. BJA Education. 2017;17(10):341-347.", url: "https://doi.org/10.1093/bjaed/mkx033", excerpt: "Prostaglandin E1 is used to maintain ductal patency in neonates with duct-dependent pulmonary or systemic blood flow until definitive treatment can be undertaken." },
   ],
   "hepatic-physiology": [
+    { label: "Comar 2010 Nitrogen Zonation", citation: "Comar JF, Suzuki-Kemmelmeier F, Constantin J, Bracht A. Hepatic zonation of carbon and nitrogen fluxes derived from glutamine and ammonia transformations. Journal of Biomedical Science. 2010;17:1. Perfused-rat-liver experiment: metabolic distributions vary with ammonia concentration.", url: "https://link.springer.com/article/10.1186/1423-0127-17-1" },
     { label: "Kietzmann 2017 Zonation", citation: "Kietzmann T. Metabolic zonation of the liver: The oxygen gradient revisited. Redox Biology. 2017;11:622–630.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5257182/" },
     { label: "BJA Educ 2014", citation: "Lautt WW. Hepatic circulation: physiology and pathophysiology. In: Comprehensive Physiology. Wiley; 2011.", url: "https://doi.org/10.1002/cphy.cp060141" },
     { label: "Power & Kam Ch.10", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 10: Hepatic Physiology." },
