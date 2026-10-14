@@ -1,5 +1,6 @@
 import { render, screen, cleanup } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { MemoryRouter } from "react-router-dom";
 import { readFileSync } from "node:fs";
 import { topicReferences } from "@/data/references";
 import { intensiveCareTopics } from "@/data/curriculum";
@@ -8,7 +9,7 @@ vi.mock("@/components/references/InlineRef", () => ({ InlineRef: ({ refLabel }: 
 afterEach(cleanup);
 describe("Metabolic alkalosis sourced lessons", () => {
   it.each([AlkalosisMechanismsTeaching, AlkalosisAssessmentTeaching, AlkalosisCausesTeaching, AlkalosisTreatmentTeaching, AlkalosisSafetyTeaching])("renders substantive teaching, a check and resolved sources", Lesson => {
-    const { container } = render(<Lesson />);
+    const { container } = render(<MemoryRouter><Lesson /></MemoryRouter>);
     expect(container.textContent?.length).toBeGreaterThan(1800);
     expect(screen.getByText("Sources for this lesson")).toBeInTheDocument();
     expect(screen.getByText(/Learning check:/)).toBeInTheDocument();
