@@ -209,8 +209,14 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
       if (entry.normTitle.startsWith(tokens[0])) score += 40;
       if (entry.normDesc.includes(normQuery)) score += 30;
       for (const tok of tokens) {
-        if (tokenHit(entry.normTitle, tok)) score += 25;
-        if (tokenHit(entry.normDesc, tok)) score += 8;
+        score += tokenQuality(entry.normTitle, tok) * 25;
+        score += tokenQuality(entry.normDesc, tok) * 8;
+      }
+
+      // Exact-phrase bonus: a record containing the whole query (e.g. the
+      // label "Cauda equina") should outrank topics that merely share tokens.
+      if (tokens.length > 1 && entry.normRecords.some(({ norm }) => norm.includes(normQuery))) {
+        score += 60;
       }
 
       // Content records: every token must appear somewhere in the topic.
@@ -220,11 +226,13 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
         let best = -1;
         let bestScore = 0;
         entry.normRecords.forEach(({ rec, norm }, i) => {
-          if (!tokenHit(norm, tok)) return;
+          const q = tokenQuality(norm, tok);
+          if (q === 0) return;
           allTokensFound = true;
-          // Prefer heading records; prefer earlier (higher-level) records.
+          // Prefer heading records and word-start matches; prefer earlier
+          // (higher-level) records.
           const recScore =
-            (rec.k === "heading" ? 30 : 8) + (norm.startsWith(tok) ? 12 : 0);
+            (rec.k === "heading" ? 30 : 8) + q * 12 + (norm.startsWith(tok) ? 12 : 0);
           if (recScore > bestScore) {
             bestScore = recScore;
             best = i;
