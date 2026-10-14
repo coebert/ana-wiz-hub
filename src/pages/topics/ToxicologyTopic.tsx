@@ -9,6 +9,7 @@ import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { ParacetamolTeaching } from "@/components/topic/ParacetamolTeaching";
 
 const toxicologyFaqs: Array<[string, string]> = [
   ["When is haemodialysis indicated in poisoning?", "For low-Vd, low-protein-bound, water-soluble toxins: salicylates (≥7.2 mmol/L or AKI), methanol/ethylene glycol, lithium (>4 mmol/L acute), valproate (severe), metformin-associated lactic acidosis, and theophylline."],
@@ -217,6 +218,10 @@ const ToxicologyTopic = () => {
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Paracetamol Poisoning">
+              <ParacetamolTeaching />
+            </CollapsibleSubsection>
+
             <CollapsibleSubsection title="Opioid Overdose">
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">
               <strong>Clinical features:</strong> the classic triad of CNS depression (coma), respiratory depression
