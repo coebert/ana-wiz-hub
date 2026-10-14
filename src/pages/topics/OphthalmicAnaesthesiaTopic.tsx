@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { AnticoagulantCataractTeaching } from "@/components/topic/AnticoagulantCataractTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -192,6 +193,7 @@ const OphthalmicAnaesthesiaTopic = () => {
               <li><strong>Usually continue</strong> anticoagulants and antiplatelets for cataract surgery under topical or sub-Tenon's anaesthesia — the risk of thrombosis from stopping usually outweighs the bleeding risk. Check the INR is in the patient's target range (often ≤ 3.5 on warfarin) in the days before surgery, and decide with the surgeon and patient for higher-risk surgery or sharp-needle blocks (RCoA/RCOphth joint guidance) <InlineRef topicId="ophthalmic-anaesthesia" refLabel="RCOphth/RCoA 2012" />.</li>
             </ul>
 </CollapsibleSubsection>
+            <div className="mt-6"><AnticoagulantCataractTeaching /></div>
           </ExamSection>
           </div>
 
