@@ -1,5 +1,5 @@
 import { InlineRef } from "@/components/references/InlineRef";
-import { HyponatraemiaCorrectionTeaching } from "@/components/topic/EndocrineEmergenciesTeaching";
+import { HyponatraemiaCorrectionTeaching, PhaeochromocytomaPreparationTeaching } from "@/components/topic/EndocrineEmergenciesTeaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -309,6 +309,7 @@ const IcuEndocrineEmergenciesTopic = () => {
                   ephedrine, ketamine, halothane, metoclopramide.
                 </p>
               </div>
+              <div className="md:col-span-2"><PhaeochromocytomaPreparationTeaching /></div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Pituitary apoplexy</p>
                 <p className="text-sm text-muted-foreground mt-1">
