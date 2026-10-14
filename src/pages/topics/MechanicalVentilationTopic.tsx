@@ -9,6 +9,7 @@ import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/physiology/VentilatorWaveformsDiagram";
 import VentilatorWaveformsGuideDiagram from "@/components/diagrams/intensive-care/VentilatorWaveformsGuideDiagram";
 import { APRVSection } from "../../components/topic/APRVSection";
+import { StressUlcerProphylaxisTeaching } from "@/components/topic/StressUlcerProphylaxisTeaching";
 import { mechanicalVentilationQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
@@ -755,7 +756,7 @@ const MechanicalVentilationTopic = () => {
               { measure: "Subglottic secretion drainage", detail: "ETTs with subglottic suction ports reduce VAP by ~45% (NNT ~10). Recommended for patients expected to be ventilated >48–72 hours." },
               { measure: "Oral hygiene", detail: "Regular oral care with chlorhexidine 0.12–2% (4-hourly). Reduces oropharyngeal colonisation. Some recent meta-analyses question mortality benefit — still widely recommended." },
               { measure: "ETT cuff pressure", detail: "Maintain cuff pressure 20–30 cmH₂O. Below 20: micro-aspiration risk. Above 30: tracheal mucosal ischaemia. Continuous cuff pressure monitoring may be superior to intermittent checks." },
-              { measure: "DVT and peptic ulcer prophylaxis", detail: "Part of the care bundle. Stress ulcer prophylaxis with PPI or H₂RA (SUP-ICU trial suggests PPIs may be omitted in low-risk patients)." },
+              { measure: "DVT and peptic ulcer prophylaxis", detail: "Part of the care bundle. Pantoprazole reduced clinically important GI bleeding without changing mortality or VAP rates in SUP-ICU and REVISE — see the stress ulcer prophylaxis lesson below." },
               { measure: "Avoid unnecessary intubation", detail: "Use NIV/HFNO where appropriate. Early tracheostomy (TracMan: no benefit at day 30, but may reduce sedation). Minimise duration of intubation." },
               { measure: "Circuit management", detail: "Do not change ventilator circuits routinely (only if visibly soiled). Closed suction systems. Avoid unnecessary disconnections." },
             ].map((item) => (
@@ -902,6 +903,10 @@ const MechanicalVentilationTopic = () => {
         </ExamSection>
 
         <ExamSection id="toc-tracheostomy" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+          <CollapsibleSubsection title="Stress Ulcer Prophylaxis: SUP-ICU and REVISE">
+            <StressUlcerProphylaxisTeaching />
+          </CollapsibleSubsection>
+
           <CollapsibleSubsection title="Tracheostomy in the ICU">
           <p className="text-muted-foreground leading-relaxed mb-3">
             Tracheostomy is performed in ~10–15% of mechanically ventilated ICU patients. Potential benefits include reduced dead space, improved secretion management, lower sedation requirements, facilitated weaning, and improved patient comfort and communication. However, optimal timing remains debated.
