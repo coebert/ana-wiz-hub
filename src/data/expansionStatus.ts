@@ -30,7 +30,7 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
   },
   pharmacology: {
     status: "pending",
-    note: "Differential blockade batch started (local anaesthetics). Meyer–Overton evidence added (volatile agents). Antiviral evidence added (antimicrobials). Remaining pharmacology subsections need individual review.",
+    note: "Differential blockade batch started (local anaesthetics). Meyer–Overton evidence added (volatile agents). Antimicrobials (antibiotics, antifungals, antivirals) expanded. Remaining pharmacology subsections need individual review.",
   },
   anatomy: {
     status: "pending",
@@ -57,8 +57,8 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
 /** Topic-level overrides for topics with a completed expansion batch. */
 export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   "antimicrobials-pharm": {
-    status: "in-progress",
-    note: "Antiviral evidence lesson added (aciclovir selectivity, oseltamivir/remdesivir/nirmatrelvir trial interpretation, ritonavir interactions, learning checks). Antibacterial/antifungal subsections still need review.",
+    status: "expanded",
+    note: "Antibiotics (critical-illness exposure, DALI, loading doses, TDM, stewardship), antifungals (candidaemia sequencing per IDSA 2016 and Reboli 2007) and antivirals (selectivity and trial interpretation) lessons added with learning checks.",
   },
   "volatile-agents": {
     status: "in-progress",
