@@ -22,6 +22,9 @@ const CommentWall = lazy(() =>
   import("@/components/feedback/CommentWall").then((m) => ({ default: m.CommentWall })),
 );
 const DemoVivaStepper = lazy(() => import("@/components/viva/DemoVivaStepper"));
+const RecentExpansions = lazy(() =>
+  import("@/components/landing/RecentExpansions").then((m) => ({ default: m.RecentExpansions })),
+);
 
 
 const nf = new Intl.NumberFormat("en-GB");
@@ -287,6 +290,13 @@ const Landing = () => {
               </Link>
             ))}
           </div>
+        </div>
+
+        {/* Recently expanded — latest source-linked content batches */}
+        <div className="max-w-6xl mx-auto mt-10 md:mt-14">
+          <Suspense fallback={null}>
+            <RecentExpansions />
+          </Suspense>
         </div>
 
         {/* Evidence base — calm bordered band, no gradient */}

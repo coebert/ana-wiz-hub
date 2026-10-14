@@ -8,6 +8,7 @@ import { ProgressRing } from "@/components/shared/ProgressRing";
 import { Section, topicsBySection } from "@/data/curriculum";
 import { SupportSection } from "@/components/feedback/SupportSection";
 import { ContinueBand } from "@/components/landing/ContinueBand";
+import { RecentExpansions } from "@/components/landing/RecentExpansions";
 import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { PageContainer } from "@/components/layout/PageContainer";
@@ -238,6 +239,10 @@ const Index = () => {
             );
           })}
         </div>
+      </PageSection>
+
+      <PageSection spacing="loose" width="xwide">
+        <RecentExpansions />
       </PageSection>
 
       <SupportSection />
