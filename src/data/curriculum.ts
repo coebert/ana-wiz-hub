@@ -215,6 +215,7 @@ export const intensiveCareTopics: Topic[] = [
   // Ethics, Communication & Outcomes
   { id: "organ-donation", title: "Organ Donation", description: "Brainstem death testing, DCD, DBD, donor optimisation", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
   { id: "prognostication-ethics-icu", title: "Prognostication, Ethics & Outcomes", description: "Prognostic scoring, treatment escalation plans, medical ethics, withdrawal of treatment, PICS, long-term outcomes", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
+  { id: "pics-follow-up", title: "PICS Follow-Up Plan", description: "Step-by-step NICE CG83 pathway after critical illness: early risk check, rehabilitation goals, ward and home discharge, the 2–3 month review, and the evidence on ICU diaries and follow-up clinics", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   { id: "end-of-life-communication", title: "End-of-Life Care & Communication", description: "Breaking bad news, family meetings, withdrawal of life-sustaining treatment, symptom control at end of life, conflict resolution, cultural and spiritual care", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
   { id: "non-technical-skills", title: "Non-Technical Skills & Human Factors", description: "ANTS framework, situation awareness, decision-making, teamwork, leadership, crisis resource management, debriefing, just culture", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
 ];
