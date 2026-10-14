@@ -65,6 +65,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "in-progress",
     note: "HEMOTION/TRAIN transfusion-threshold lesson added with sources list. Other subsections still need review.",
   },
+  "resource-poor-anaesthesia": {
+    status: "in-progress",
+    note: "Evidence lesson added (WFSA workforce survey, ASOS, WHO checklist) with sources list. Lancet Commission figures still need source text.",
+  },
   "sepsis": {
     status: "in-progress",
     note: "Lesson added on the 65 trial (permissive hypotension) and HYPRESS (steroids before shock), with sources list and learning check. BLING III / prolonged β-lactam infusion meta-analysis lesson added.",
