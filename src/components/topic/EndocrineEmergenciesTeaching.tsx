@@ -106,3 +106,35 @@ export function PhaeochromocytomaCrisisTeaching() {
     <LessonSources topicId="icu-endocrine-emergencies" labels={["Whitelaw 2014 (Phaeo crisis)"]} />
   </div>;
 }
+
+export function DkaFluidChoiceTeaching() {
+  const S = () => <InlineRef topicId="icu-endocrine-emergencies" refLabel="SMART/SALT-ED DKA 2020" />;
+  return <div className="space-y-3 text-muted-foreground leading-relaxed p-4 rounded-lg border border-border mt-5">
+    <h3 className="text-lg font-serif font-bold text-foreground">Which Fluid in DKA? Balanced Crystalloid vs Saline</h3>
+    <p>Saline can cause hyperchloraemic acidosis, which can slow the fall in acidosis that defines DKA recovery. This analysis took the 172 adults with DKA from two Nashville cluster-randomised trials (SALT-ED and SMART): 94 received balanced crystalloid (Hartmann's-type or Plasma-Lyte) and 78 saline.<S /></p>
+    <ul className="list-disc pl-5 space-y-1">
+      <li><strong className="text-foreground">Resolution:</strong> median time to DKA resolution was 13.0 h with balanced crystalloid vs 16.9 h with saline (adjusted HR 1.68, 95% CI 1.18–2.38).<S /></li>
+      <li><strong className="text-foreground">Insulin:</strong> the insulin infusion was stopped sooner — median 9.8 h vs 13.4 h (adjusted HR 1.45).<S /></li>
+      <li><strong className="text-foreground">Limits:</strong> a secondary subgroup analysis from one US centre, young patients (median age 29), using US resolution criteria; it was not designed to show differences in harm or death.</li>
+      <li><strong className="text-foreground">UK practice point:</strong> the JBDS pathway above remains the local standard. This evidence explains why bicarbonate may lag behind ketone clearance with saline, and why resolution is judged on ketones and pH.</li>
+    </ul>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: what was the median time to DKA resolution with balanced crystalloid vs saline?</summary><p className="mt-2">13.0 h vs 16.9 h, in a secondary analysis of two cluster-randomised trials.</p></details>
+    <LessonSources topicId="icu-endocrine-emergencies" labels={["SMART/SALT-ED DKA 2020"]} />
+  </div>;
+}
+
+export function PituitaryApoplexyGuidelineTeaching() {
+  const U = () => <InlineRef topicId="icu-endocrine-emergencies" refLabel="UK pituitary apoplexy 2011" />;
+  return <div className="space-y-3 text-muted-foreground leading-relaxed p-4 rounded-lg border border-border mt-5">
+    <h3 className="text-lg font-serif font-bold text-foreground">Pituitary Apoplexy: What the UK Guideline Can and Cannot Say</h3>
+    <ul className="list-disc pl-5 space-y-1">
+      <li><strong className="text-foreground">Emergency:</strong> classical apoplexy is a medical emergency, and rapid hydrocortisone replacement may be life-saving.<U /></li>
+      <li><strong className="text-foreground">Syndrome:</strong> sudden headache, vomiting, visual impairment and reduced consciousness from haemorrhage or infarction of the gland, with or without palsies of cranial nerves II, III, IV and VI.<U /></li>
+      <li><strong className="text-foreground">Team:</strong> refer to a multidisciplinary team including a neurosurgeon and an endocrinologist.<U /></li>
+      <li><strong className="text-foreground">Surgery or not:</strong> surgery is indicated when neurological symptoms are worsening. For most other patients it is unclear whether conservative or surgical management gives the better outcome, and the guideline calls for trials.<U /></li>
+      <li><strong className="text-foreground">ICU point:</strong> give steroids first and watch vision and consciousness closely; a change in either moves the patient into the surgical group.</li>
+    </ul>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: which apoplexy patients does the UK guideline clearly say need surgery?</summary><p className="mt-2">Those with worsening neurological symptoms. For most others the best approach is uncertain.</p></details>
+    <LessonSources topicId="icu-endocrine-emergencies" labels={["UK pituitary apoplexy 2011"]} />
+  </div>;
+}

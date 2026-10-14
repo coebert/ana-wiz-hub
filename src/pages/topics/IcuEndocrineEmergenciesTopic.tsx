@@ -1,5 +1,5 @@
 import { InlineRef } from "@/components/references/InlineRef";
-import { HyponatraemiaCorrectionTeaching, PhaeochromocytomaPreparationTeaching, PhaeochromocytomaCrisisTeaching } from "@/components/topic/EndocrineEmergenciesTeaching";
+import { HyponatraemiaCorrectionTeaching, PhaeochromocytomaPreparationTeaching, PhaeochromocytomaCrisisTeaching, DkaFluidChoiceTeaching, PituitaryApoplexyGuidelineTeaching } from "@/components/topic/EndocrineEmergenciesTeaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -231,6 +231,7 @@ const IcuEndocrineEmergenciesTopic = () => {
               </div>
             </div>
             <HyperglycaemicEmergenciesTeaching />
+            <DkaFluidChoiceTeaching />
             <p className="text-sm text-muted-foreground mt-4">Routine phosphate and bicarbonate replacement are not recommended in DKA. Severe electrolyte depletion or cardiovascular compromise requires an individual critical-care/diabetes plan rather than a routine replacement recipe.<InlineRef topicId="icu-endocrine-emergencies" refLabel="JBDS-IP DKA 2023 PDF" /></p>
             <div className="grid md:grid-cols-2 gap-4 mt-4">
 
@@ -385,6 +386,7 @@ const IcuEndocrineEmergenciesTopic = () => {
               <AdrenalCrisisAnimation />
             </div>
             <AdrenalPituitaryEmergenciesTeaching />
+            <PituitaryApoplexyGuidelineTeaching />
             <GuidelineSources sources={ADRENAL_PITUITARY_SOURCES} />
             </CollapsibleSubsection>
           </ExamSection>
