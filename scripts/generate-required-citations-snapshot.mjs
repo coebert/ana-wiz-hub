@@ -49,6 +49,10 @@ for (const m of appSrc.matchAll(
   lazyImports.set(m[1], `src/${m[2]}.tsx`);
 }
 const topicFiles = new Map();
+const routeTable = readFileSync(resolve(ROOT, "src/routes/topicRoutes.ts"), "utf8");
+for (const m of routeTable.matchAll(/\["\/[^"\n]*\/([a-z0-9-]+)",\s*"(\w+)"\]/g)) {
+  topicFiles.set(m[1], `src/pages/topics/${m[2]}.tsx`);
+}
 for (const m of appSrc.matchAll(
   /<Route\s+path="\/[^"]*\/([a-z0-9-]+)"\s+element=\{<(\w+)\s*\/>\}/g,
 )) {
@@ -119,6 +123,10 @@ for (const [id, topicId, urlsJoined] of rows) {
     file,
     requiredLabels: [...new Set(labels)],
   });
+}
+
+if (rows.length > 0 && snapshot.length === 0) {
+  throw new Error("No fixed findings resolved to citations; refusing to erase the regression snapshot.");
 }
 
 writeFileSync(
