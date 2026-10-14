@@ -46,9 +46,8 @@ const STEPS: AnimatedMechanismStep[] = [
     detail: (
       <>
         High-output cardiac failure, atrial fibrillation with rapid response,
-        delirium → coma, hepatic dysfunction (jaundice = poor prognosis), GI
-        upset, dehydration. Mortality <strong>10–30 %</strong> even with
-        treatment.
+        delirium → coma, hepatic dysfunction (jaundice), GI
+        upset, dehydration. Mortality <strong>8–25 %</strong> in modern series (ATA 2016).
       </>
     ),
   },
@@ -59,10 +58,10 @@ const STEPS: AnimatedMechanismStep[] = [
         Multimodal treatment in parallel; iodide follows thionamide:
         <ol className="mt-2 space-y-1 list-decimal list-inside">
           <li><strong>β-blockade</strong>: assess perfusion/cardiac function first; propranolol at high doses reduces T₄→T₃ conversion, while esmolol provides short-acting rate control.</li>
-          <li><strong>Block synthesis</strong>: <strong>propylthiouracil (PTU) 500–1000 mg load then 250 mg q4h</strong> (preferred — also blocks peripheral conversion). Carbimazole alternative.</li>
-          <li><strong>Block release</strong>: <strong>Lugol's iodine / potassium iodide ≥ 1 h after PTU</strong> (Wolff-Chaikoff effect; iodine before thionamide → fuels storm).</li>
+          <li><strong>Block synthesis</strong>: <strong>propylthiouracil (PTU) 500–1000 mg load then 250 mg q4h</strong> (preferred — also blocks peripheral conversion). Methimazole 60–80 mg/day is the alternative.</li>
+          <li><strong>Block release</strong>: <strong>potassium iodide (SSKI) 5 drops (0.25 mL, 250 mg) orally every 6 h, started no sooner than 1 h after the thionamide</strong>; Lugol's solution is the alternative.</li>
           <li><strong>ATA: hydrocortisone 300 mg IV load, then 100 mg q8h</strong> — blocks T₄→T₃, treats co-existing adrenal insufficiency.</li>
-          <li><strong>Supportive</strong>: active cooling (paracetamol — NOT aspirin: displaces T₄ from TBG), fluids, treat trigger.</li>
+          <li><strong>Supportive</strong>: cooling with paracetamol and cooling blankets, fluids, nutritional and respiratory support, treat trigger.</li>
         </ol>
       </>
     ),

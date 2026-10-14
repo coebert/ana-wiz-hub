@@ -104,17 +104,17 @@ const workedExamples: WorkedExample[] = [
     working: (
       <ul className="list-disc list-inside space-y-1">
         <li>BWPS components: T 40.2 = 30 · agitation = 10 · jaundice = 20 · AF = 10 · HR 158 = 25 · precipitating event = 10 → <strong>105 → highly suggestive of storm</strong>.</li>
-        <li><strong>Step 1 — β-blockade</strong>: propranolol 1 mg IV titrated, or carefully titrated esmolol if appropriate after haemodynamic assessment. High-dose propranolol, not esmolol, reduces T₄→T₃ conversion.</li>
+        <li><strong>Step 1 — β-blockade</strong>: after haemodynamic assessment, ATA propranolol 60–80 mg every 4 h (consider invasive monitoring in heart failure), or an esmolol infusion as the alternative. High-dose propranolol, not esmolol, reduces T₄→T₃ conversion.</li>
         <li><strong>Step 2 — block synthesis</strong>: PTU 500–1000 mg PO/NG load then 250 mg q4h (PTU preferred — also blocks peripheral conversion).</li>
-        <li><strong>Step 3 — block release</strong>: Lugol's iodine 5 drops PO q6h <em>≥ 1 h after PTU</em> (otherwise iodine fuels storm).</li>
+        <li><strong>Step 3 — block release</strong>: potassium iodide (SSKI) 5 drops (0.25 mL) PO q6h, started <em>no sooner than 1 h after PTU</em>; Lugol's solution is the alternative.</li>
         <li><strong>Step 4 — steroid</strong>: ATA regimen hydrocortisone 300 mg IV load, then 100 mg IV q8h (blocks conversion + treats relative adrenal insufficiency).</li>
-        <li><strong>Step 5 — supportive</strong>: paracetamol + active cooling (avoid aspirin), fluids, treat surgical/septic precipitant. Plasmapheresis if refractory.</li>
+        <li><strong>Step 5 — supportive</strong>: paracetamol + cooling blankets, fluids, nutrition and respiratory support in ICU, treat surgical/septic precipitant. Plasmapheresis or emergency surgery have been used when response to standard therapy is poor.</li>
       </ul>
     ),
     answer: (
       <>
         BWPS &gt; 45 → thyroid storm. Treat in parallel with haemodynamically appropriate β-blockade, PTU,
-        hydrocortisone and supportive care; give iodide at least one hour after the thionamide. Mortality 10–30 % even with treatment.
+        hydrocortisone and supportive care; give iodide at least one hour after the thionamide. Modern series report mortality of 8–25 %.
       </>
     ),
    cites: ["ATA 2016"],
@@ -168,7 +168,7 @@ const IcuEndocrineEmergenciesTopic = () => {
         { text: "DKA diagnostic triad (JBDS-IP): glucose > 11 (or known DM) + ketones ≥ 3 (or 2+ on dipstick) + pH < 7.30 / HCO₃⁻ < 15", cites: ["JBDS-IP DKA 2023"] },
         { text: "DKA potassium paradox: serum K⁺ often normal/high at presentation despite massive total-body deficit — falls fast on insulin; replace K⁺ when 3.5–5.5, urgent senior review and additional potassium if K⁺ <3.5", cites: ["JBDS DKA potassium 2023"] },
         { text: "HHS: marked hyperglycaemia/hyperosmolality with minimal ketosis; in non-ketotic HHS start insulin 0.05 U/kg/h after adequate fluid replacement when glucose plateaus to avoid cerebral oedema and pontine myelinolysis", cites: ["JBDS HHS sodium 2023"] },
-        { text: "Thyroid storm (BWPS ≥45): multimodal treatment in parallel; assess cardiac function before β-blockade, and give iodide ≥1 h after thionamide. Avoid aspirin (displaces T₄ from TBG)", cites: ["ATA Thyroid Storm"] },
+        { text: "Thyroid storm (BWPS ≥45): multimodal treatment in parallel; assess cardiac function before β-blockade, and give iodide ≥1 h after thionamide", cites: ["ATA 2016"] },
         { text: "Adrenal crisis: refractory shock + low Na⁺ / high K⁺ / low glucose → hydrocortisone 100 mg IV stat BEFORE tests; high-dose hydrocortisone has full mineralocorticoid effect", cites: ["ES Adrenal Crisis 2016", "SfE adrenal emergency 2016"] },
         { text: "Myxoedema coma: hypothermia + hyponatraemia + hypoventilation + obtundation — IV glucocorticoid cover before initial IV levothyroxine; selected T3 adjunct under endocrine advice + passive rewarming + ICU ventilation", cites: ["ATA myxoedema 2014"] },
         { text: "Phaeochromocytoma: specialist-led α-blockade before β-blockade — never β-blocker alone (unopposed α → hypertensive crisis, pulmonary oedema)", cites: ["Endocrine Society PPGL 2014"] },
@@ -250,27 +250,25 @@ const IcuEndocrineEmergenciesTopic = () => {
             <CollapsibleSubsection title="Thyroid emergencies">
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Thyroid storm (mortality 10–30 %)</p>
+                <p className="font-semibold text-foreground text-sm">Thyroid storm (mortality 8–25 %)</p>
                 <p className="text-sm text-muted-foreground mt-1">
                   Decompensation of underlying hyperthyroidism by surgery, sepsis, DKA,
                   iodinated contrast or drug withdrawal. <strong>Burch-Wartofsky ≥ 45</strong>{" "}
                   highly suggestive. Treat in five steps: β-blockade → PTU → iodine
                   (≥ 1 h later) → hydrocortisone → support (cooling, fluids, treat trigger).
-                  Avoid aspirin.
                 </p>
                 <p className="text-sm text-muted-foreground mt-2">
-                  <strong>Adjuncts:</strong> cholestyramine (e.g. 4 g four times daily) binds thyroid hormone in the gut,
-                  interrupting enterohepatic recirculation and speeding clearance. <strong>Plasmapheresis</strong> is a
-                  rescue therapy for severe storm that fails standard treatment or when thionamides are contraindicated;
-                  it removes circulating thyroid hormone (and antibodies), is resource-intensive and needs specialist
-                  input, and is often a bridge to emergency thyroidectomy.<InlineRef topicId="icu-endocrine-emergencies" refLabel="ATA 2016" />
+                  <strong>Adjuncts:</strong> cholestyramine binds thyroid hormone in the gut during enterohepatic
+                  recirculation and has been used alongside other drugs. <strong>Plasmapheresis/plasma exchange</strong> and
+                  emergency surgery have been used in storm that responds poorly to standard treatment; both need
+                  specialist input.<InlineRef topicId="icu-endocrine-emergencies" refLabel="ATA 2016" />
                 </p>
               </div>
               <div className="p-4 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">Myxoedema coma (mortality 30–40 %)</p>
+                <p className="font-semibold text-foreground text-sm">Myxoedema coma</p>
                 <p className="text-sm text-muted-foreground mt-1">
                   Severe hypothyroid decompensation: <strong>hypothermia, hypoventilation,
-                  hyponatraemia, bradycardia, obtunded</strong>. Treat initially with IV levothyroxine under endocrine advice, with preceding IV glucocorticoid cover
+                  hyponatraemia, bradycardia, altered mental state</strong>. Treat initially with IV levothyroxine under endocrine advice, with preceding IV glucocorticoid cover
                   (cover potential adrenal insufficiency), passive rewarming,
                   ventilation as needed. Endocrinology referral.
                 </p>
