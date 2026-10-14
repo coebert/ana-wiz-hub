@@ -29,6 +29,8 @@ import skullbaseInferiorAsset from "@/assets/plates/skullbase-inferior-gray.png.
 const skullbaseInferior = skullbaseInferiorAsset.url;
 import spinalSagittalAsset from "@/assets/plates/spinal-sagittal-gray.png.asset.json";
 const spinalSagittal = spinalSagittalAsset.url;
+import spinalCaudaEquinaAsset from "@/assets/plates/spinal-cauda-equina-gray.png.asset.json";
+const spinalCaudaEquina = spinalCaudaEquinaAsset.url;
 import spinalCaudalAsset from "@/assets/plates/spinal-caudal-gray.png.asset.json";
 const spinalCaudal = spinalCaudalAsset.url;
 import brachialPlexusAsset from "@/assets/plates/brachial-plexus-gray.png.asset.json";
@@ -55,14 +57,14 @@ import lowerlimbVeinsAsset from "@/assets/plates/lowerlimb-veins-gray.png.asset.
 const lowerlimbVeins = lowerlimbVeinsAsset.url;
 import lowerlimbNervesAsset from "@/assets/plates/lowerlimb-nerves-gray.png.asset.json";
 const lowerlimbNerves = lowerlimbNervesAsset.url;
-import thoracicAnteriorAsset from "@/assets/plates/thoracic-anterior-gray.png.asset.json";
-const thoracicAnterior = thoracicAnteriorAsset.url;
+import thoracicMediastinumAsset from "@/assets/plates/thoracic-mediastinum-gray.png.asset.json";
+const thoracicMediastinum = thoracicMediastinumAsset.url;
 import thoracicFirstRibAsset from "@/assets/plates/thoracic-first-rib-gray.png.asset.json";
 const thoracicFirstRib = thoracicFirstRibAsset.url;
 import abdominalAnteriorAsset from "@/assets/plates/abdominal-anterior-gray.png.asset.json";
 const abdominalAnterior = abdominalAnteriorAsset.url;
-import abdominalRetroperitoneumAsset from "@/assets/plates/abdominal-retroperitoneum-gray.png.asset.json";
-const abdominalRetroperitoneum = abdominalRetroperitoneumAsset.url;
+import abdominalAortaAsset from "@/assets/plates/abdominal-aorta-gray.png.asset.json";
+const abdominalAorta = abdominalAortaAsset.url;
 
 /** Shared painted Cor Pictum folios — one set per anatomy topic. */
 export interface CorPictumFolioData {
@@ -450,26 +452,45 @@ export const spinalFolio: CorPictumFolioData = {
   plates: [
     {
       id: "sagittal", tabLabel: "Sagittal", folio: "II",
-      title: "Epidural and Subarachnoid Spaces", subtitle: "Sagittal view for neuraxial anaesthesia",
+      title: "Lumbar Vertebrae and Ligaments", subtitle: "Median sagittal section — layers crossed by a midline needle",
       image: spinalSagittal,
       imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray301.png”: Median sagittal section of two lumbar vertebræ and their ligaments. Public domain.",
-      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray301.png", alt: "Gray's Anatomy plate — midsagittal section of the lumbar spine showing neuraxial spaces",
-      caption: "Sagittal section of the lumbar spine — neuraxial access",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray301.png", alt: "Gray's Anatomy plate — median sagittal section of two lumbar vertebrae and their ligaments",
+      caption: "Median sagittal section of two lumbar vertebrae and their ligaments",
       labels: [
         { latin: "corpus vertebrae", english: "Vertebral body", note: "Anterior weight-bearing column." },
-        { latin: "discus intervertebralis", english: "Intervertebral disc", note: "Annulus fibrosus + nucleus pulposus." },
+        { latin: "fibrocartilago intervertebralis", english: "Intervertebral fibrocartilage (disc)", note: "Annulus fibrosus + nucleus pulposus." },
+        { latin: "ligamentum longitudinale anterius", english: "Anterior longitudinal ligament", note: "Runs along the front of the vertebral bodies." },
+        { latin: "ligamentum longitudinale posterius", english: "Posterior longitudinal ligament", note: "Lines the front of the vertebral canal; the dural sac lies behind it." },
+        { latin: "pediculus et lamina", english: "Pedicle and lamina", note: "Bony walls of the vertebral canal." },
+        { latin: "ligamenta flava", english: "Ligamenta flava", note: "Join adjacent laminae; loss-of-resistance endpoint before the epidural space." },
+        { latin: "ligamentum interspinale", english: "Interspinous ligament", note: "Crossed by a midline needle after the supraspinous ligament." },
+        { latin: "ligamentum supraspinale", english: "Supraspinous ligament", note: "Joins the spinous-process tips; first ligament on the midline approach." },
         { latin: "processus spinosus", english: "Spinous process", note: "Palpable midline landmark for needle entry." },
-        { latin: "ligamentum flavum", english: "Ligamentum flavum", note: "Yellow elastic ligament; loss-of-resistance endpoint." },
-        { latin: "spatium epidurale", english: "Epidural space", note: "Contains fat, venous plexus and segmental nerves." },
-        { latin: "dura mater", english: "Dura mater", note: "Penetration risks post-dural-puncture headache." },
-        { latin: "spatium subarachnoideum", english: "Subarachnoid space", note: "Contains CSF and the cauda equina; target for spinal anaesthesia." },
-        { latin: "cauda equina", english: "Cauda equina", note: "Free-floating roots — needle deflects rather than transfixes." },
-        { latin: "conus medullaris", english: "Conus medullaris", note: "Avoid puncture above L2." },
       ],
       curriculumLinks: [
         { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Vertebral column & neuraxial spaces", anchor: "neuraxial-layers" },
         { code: "RU_BK_02", exams: [Exam.FINAL], title: "Spinal & epidural anaesthesia — technique & complications", anchor: "neuraxial-layers" },
         { code: "OB_BK_01", exams: [Exam.FINAL], title: "Neuraxial anaesthesia in obstetrics", anchor: "neuraxial-layers" },
+      ],
+    },
+    {
+      id: "cauda-equina", tabLabel: "Cauda equina", folio: "II·b",
+      title: "Conus Medullaris and Cauda Equina", subtitle: "Dural sac opened, seen from behind",
+      image: spinalCaudaEquina,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray662.png”: Cauda equina and filum terminale seen from behind. The dura mater has been opened and spread out. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray662.png", alt: "Gray's Anatomy plate — cauda equina and filum terminale seen from behind with the dura mater opened",
+      caption: "Cauda equina and filum terminale, posterior view with dura opened",
+      labels: [
+        { latin: "dura mater", english: "Dura mater (opened)", note: "Outer wall of the dural sac; puncture risks post-dural-puncture headache." },
+        { latin: "conus medullaris", english: "Conus medullaris", note: "Tapered end of the cord, usually L1–L2 in adults; insert spinal needles below it." },
+        { latin: "radices posteriores", english: "Posterior nerve roots", note: "Lumbar and sacral roots descending to their exit foramina." },
+        { latin: "cauda equina", english: "Cauda equina", note: "Roots floating in CSF within the subarachnoid space below the conus." },
+        { latin: "filum terminale", english: "Filum terminale", note: "Pial filament from the conus, anchoring the cord to the coccyx." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Vertebral column & neuraxial spaces", anchor: "neuraxial-layers" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Spinal & epidural anaesthesia — technique & complications", anchor: "neuraxial-layers" },
       ],
     },
     {
@@ -1239,20 +1260,25 @@ export const thoracicFolio: CorPictumFolioData = {
   plates: [
     {
       id: "anterior", tabLabel: "Anterior", folio: "I",
-      title: "Thoracic Cavity", subtitle: "Anterior view with chest wall removed",
-      image: thoracicAnterior,
-      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1178.png”:  Public domain.",
-      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray1178.png", alt: "Gray's Anatomy plate — anterior view of the thoracic cavity",
-      caption: "Anterior view of the thoracic cavity",
+      title: "Heart, Great Vessels and Lungs", subtitle: "Anterior view of the mediastinum, pericardium opened",
+      image: thoracicMediastinum,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray490.png”: Front view of the heart and lungs. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray490.png", alt: "Gray's Anatomy plate — front view of the heart, great vessels and lungs with the pericardium opened",
+      caption: "Front view of the heart and lungs",
       labels: [
         { latin: "pulmo dexter", english: "Right lung", note: "Three lobes; horizontal and oblique fissures." },
         { latin: "pulmo sinister", english: "Left lung", note: "Two lobes; cardiac notch and lingula." },
-        { latin: "cor in pericardio", english: "Heart in pericardium", note: "Middle mediastinum; fibrous + serous layers." },
+        { latin: "trachea", english: "Trachea", note: "Midline above the arch; bifurcates behind it at about T4–T5." },
+        { latin: "vena brachiocephalica sinistra", english: "Left brachiocephalic (innominate) vein", note: "Crosses in front of the arch branches to join the right vein." },
+        { latin: "vena cava superior", english: "Superior vena cava", note: "Patient's right; target position for CVC tips." },
+        { latin: "aorta ascendens", english: "Ascending aorta", note: "Arises from the left ventricle within the pericardium." },
         { latin: "arcus aortae", english: "Aortic arch", note: "Branches: brachiocephalic, left CCA, left subclavian." },
-        { latin: "diaphragma", english: "Diaphragm", note: "Primary inspiratory muscle; phrenic nerve C3–C5." },
-        { latin: "musculi intercostales", english: "Intercostal muscles", note: "Innervated by intercostal nerves; block targets." },
-        { latin: "arteria thoracica interna", english: "Internal thoracic artery", note: "Lateral to sternum; CABG conduit." },
-        { latin: "nervus phrenicus", english: "Phrenic nerve", note: "On the lateral pericardium; sole motor to diaphragm." },
+        { latin: "truncus pulmonalis", english: "Pulmonary artery (trunk)", note: "Leaves the conus arteriosus to the left of the ascending aorta." },
+        { latin: "conus arteriosus", english: "Conus arteriosus", note: "Right ventricular outflow tract." },
+        { latin: "ventriculus dexter", english: "Right ventricle", note: "Forms most of the anterior surface of the heart." },
+        { latin: "ventriculus sinister", english: "Left ventricle", note: "Forms the left border and apex." },
+        { latin: "auricula sinistra", english: "Left auricle", note: "Left atrial appendage, beside the pulmonary trunk." },
+        { latin: "pericardium", english: "Cut edge of pericardium", note: "Fibrous and serous layers enclosing the heart in the middle mediastinum." },
       ],
       curriculumLinks: [
         { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Thoracic cavity & lung anatomy", anchor: "lung-anatomy" },
@@ -1316,23 +1342,25 @@ export const abdominalFolio: CorPictumFolioData = {
     },
     {
       id: "retroperitoneum", tabLabel: "Retroperitoneum", folio: "II",
-      title: "Retroperitoneum", subtitle: "Posterior view of the great vessels and kidneys",
-      image: abdominalRetroperitoneum,
-      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1121.png”: Posterior abdominal wall, after removal of the peritoneum, showing kidneys, suprarenal capsules, and great vessels. (Corning). Public domain.",
-      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray1121.png", alt: "Gray's Anatomy plate — view of the retroperitoneum",
-      caption: "Posterior view of the retroperitoneal space",
+      title: "Abdominal Aorta and Branches", subtitle: "Posterior abdominal wall with peritoneum removed",
+      image: abdominalAorta,
+      imageCredit: "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray531.png”: The abdominal aorta and its branches. Public domain.",
+      imageSourceUrl: "https://commons.wikimedia.org/wiki/File:Gray531.png", alt: "Gray's Anatomy plate — the abdominal aorta and its branches with kidneys and inferior vena cava",
+      caption: "The abdominal aorta and its branches",
       labels: [
-        { latin: "ren dexter", english: "Right kidney", note: "Slightly lower due to the liver above." },
-        { latin: "ren sinister", english: "Left kidney", note: "Hilum at L1; renal vein crosses anterior to aorta." },
-        { latin: "glandula suprarenalis", english: "Adrenal gland", note: "Cortex (steroids) + medulla (catecholamines)." },
-        { latin: "aorta abdominalis", english: "Abdominal aorta", note: "From T12 (diaphragm) to L4 bifurcation." },
-        { latin: "truncus coeliacus", english: "Coeliac trunk", note: "T12; supplies foregut (stomach, liver, spleen)." },
-        { latin: "arteria mesenterica superior", english: "Superior mesenteric artery", note: "L1; supplies midgut (small bowel to mid-transverse colon)." },
-        { latin: "arteriae renales", english: "Renal arteries", note: "L1/L2; right is longer (passes behind IVC)." },
-        { latin: "vena cava inferior", english: "Inferior vena cava", note: "Right of midline; pierces diaphragm at T8." },
-        { latin: "ureter", english: "Ureter", note: "Crosses pelvic brim at the bifurcation of common iliac." },
+        { latin: "diaphragma", english: "Diaphragm", note: "Aorta enters the abdomen through the aortic hiatus at T12." },
+        { latin: "arteriae phrenicae inferiores", english: "Inferior phrenic arteries", note: "First branches of the abdominal aorta." },
+        { latin: "aorta abdominalis", english: "Abdominal aorta", note: "From T12 to its bifurcation at about L4." },
+        { latin: "vena cava inferior", english: "Inferior vena cava", note: "Patient's right of the aorta; passes the diaphragm at T8." },
+        { latin: "glandula suprarenalis", english: "Suprarenal (adrenal) gland", note: "On the upper pole of each kidney." },
+        { latin: "ren dexter", english: "Right kidney", note: "Usually slightly lower than the left." },
+        { latin: "ren sinister", english: "Left kidney", note: "Left renal vein crosses in front of the aorta below the SMA." },
+        { latin: "vasa renalia", english: "Renal vessels", note: "Renal arteries arise at about L1–L2; clamp level relative to them sets renal ischaemia risk." },
+        { latin: "vasa spermatica interna", english: "Internal spermatic (gonadal) vessels", note: "Gonadal arteries arise from the aorta below the renal arteries." },
+        { latin: "arteria iliaca communis", english: "Common iliac arteries", note: "Terminal branches of the aorta." },
+        { latin: "ureter", english: "Ureter", note: "Descends on psoas and crosses the iliac vessels at the pelvic brim." },
         { latin: "musculus psoas major", english: "Psoas major", note: "Flanks the lumbar spine; landmark for lumbar plexus block." },
-        { latin: "diaphragma", english: "Diaphragm", note: "Crura attach to L1–L3 vertebral bodies." },
+        { latin: "musculus quadratus lumborum", english: "Quadratus lumborum", note: "Target fascial plane for quadratus lumborum block." },
       ],
       curriculumLinks: [
         { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Retroperitoneal anatomy — kidneys & great vessels", anchor: "key-abdominal-organs-anaesthetic-relevance" },
