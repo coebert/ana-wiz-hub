@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import inventory from "@/data/anatomyDiagramSources.generated.json";
+import { anatomyReferences } from "@/data/anatomyReferences";
 
 export default function DiagramSources() {
   const [query, setQuery] = useState("");
@@ -19,11 +20,43 @@ export default function DiagramSources() {
   }, [query, status, group]);
 
   return (
-    <SectionLayout title="Anatomy diagram sources" subtitle="References, artwork provenance and outstanding anatomical uncertainty." backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy" disableAutoTOC metaDescription="Sources for AnaesthesiaCore anatomy diagrams and surgical atlas plates, including landmark citations, image credits and outstanding anatomical review findings.">
+    <SectionLayout title="Anatomy references & diagram sources" subtitle="Curated topic bibliographies, artwork provenance and outstanding anatomical uncertainty." backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy" disableAutoTOC metaDescription="Curated references for every AnaesthesiaCore anatomy topic, with diagram citations, artwork credits and outstanding anatomical review findings.">
       <div className="border-l-2 border-anatomy pl-4 mb-7 space-y-2">
         <p className="text-foreground font-medium">A citation is not an accuracy certificate.</p>
         <p className="text-sm text-muted-foreground leading-relaxed">Listed sources support anatomical teaching; they do not prove every drawn boundary, printed label or hotspot. “Citations recorded” means references are present, not that the diagram is 100% verified. Known errors, missing provenance and incomplete source records are flagged below.</p>
       </div>
+
+      <section aria-labelledby="curated-anatomy-heading" className="mb-10">
+        <h2 id="curated-anatomy-heading" className="text-2xl font-serif font-semibold mb-3">Curated references by anatomy topic</h2>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-5">These are the existing editorial reference lists used by the topic pages and inline citations, not reading lists generated on request. No nightly AI pass reviews or certifies them. Inclusion here does not establish that every teaching claim has been checked against the original document; that review remains necessary. Diagram provenance is listed separately below.</p>
+        <div className="divide-y divide-border">
+          {anatomyReferences.map(topic => (
+            <details key={topic.id} id={`topic-sources-${topic.id}`} className="py-4 scroll-mt-28" data-anatomy-bibliography>
+              <summary className="cursor-pointer text-foreground font-semibold leading-relaxed">{topic.title} <span className="text-sm font-normal text-muted-foreground">({topic.references.length} references)</span></summary>
+              <div className="mt-3 space-y-4">
+                <p className="text-sm text-muted-foreground">{topic.reviewNote}</p>
+                {topic.missingReferences ? <p className="text-sm text-destructive">No curated references recorded; source review required.</p> : (
+                  <ol className="list-decimal pl-5 space-y-3 text-sm leading-relaxed">
+                    {topic.references.map(ref => <li key={ref.label} className="break-words">
+                      <p className="font-medium text-foreground">{ref.label}</p>
+                      <p className="text-muted-foreground">{ref.citation}</p>
+                      {ref.url && /^https?:\/\//.test(ref.url) && <a href={ref.url} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 inline-flex items-center gap-1">Open source<ArrowUpRight className="h-3 w-3" aria-hidden="true" /></a>}
+                      {ref.excerpt && <blockquote className="border-l-2 border-border pl-3 mt-2 text-muted-foreground whitespace-pre-line">{ref.excerpt}</blockquote>}
+                    </li>)}
+                  </ol>
+                )}
+                {topic.diagrams.filter(d => d.status === "needs-review").length > 0 && <p className="text-sm text-destructive">{topic.diagrams.filter(d => d.status === "needs-review").length} associated diagrams still need anatomical review.</p>}
+                <div className="flex flex-wrap gap-2">
+                  <Button asChild variant="outline" size="sm"><Link to={topic.path}>View topic<ArrowUpRight className="ml-1 h-3 w-3" aria-hidden="true" /></Link></Button>
+                  {topic.diagrams.map(diagram => <Button key={diagram.id} asChild variant="ghost" size="sm" className="h-auto min-h-9 whitespace-normal text-left max-w-full"><a href={`#${diagram.id}`}>{diagram.title}: sources</a></Button>)}
+                </div>
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <h2 className="text-2xl font-serif font-semibold mb-4">Diagram sources &amp; review status</h2>
 
       <dl className="grid grid-cols-3 border-y border-border py-4 mb-7 gap-3">
         {[{ label: "Diagrams & plates", value: inventory.entries.length }, { label: "Need review", value: needsReview }, { label: "Citations recorded", value: inventory.entries.length - needsReview }].map(s => (
