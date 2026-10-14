@@ -191,6 +191,10 @@ const OperatingTheatreEnvironmentTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
+            <LaminarFlowEvidenceTeaching />
+          </ExamSection>
+
           <ExamSection id="environment" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Temperature, Humidity & Noise">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">

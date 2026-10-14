@@ -499,9 +499,11 @@ const IcuNutritionTopic = () => {
               {[
                 { trial: "NICE-SUGAR (2009)", result: "Intensive glucose control (4.5–6 mmol/L) increased 90-day mortality vs conventional (6–10 mmol/L), driven by severe hypoglycaemia. Standard of care: target 6–10." },
                 { trial: "EPaNIC (2011)", result: "Late PN (day 8) vs early PN (day 3) — late PN reduced infections, ICU length of stay and ICU-acquired weakness. Do not start PN early to top up insufficient EN." },
-                { trial: "TARGET (2018)", result: "Energy-dense (1.5 kcal/mL) vs standard (1.0 kcal/mL) enteral feed — no difference in 90-day mortality. More is not better." },
+                { trial: "TARGET (2019)", result: "Energy-dense (1.5 kcal/mL) vs standard (1.0 kcal/mL) enteral feed — no difference in 90-day mortality (26.8% vs 26.2%). More is not better; the denser feed caused more vomiting and gastric residual problems." },
                 { trial: "CALORIES (2014)", result: "Early PN vs early EN in ICU — no difference in 30-day mortality. EN remains preferred (gut integrity, cost, fewer infections)." },
-                { trial: "NUTRIREA-2 / 3 (2018, 2023)", result: "Early hypocaloric EN vs early isocaloric PN in shock — no mortality difference; PN had more vomiting and bowel ischaemia signal. Reinforces EN-first." },
+                { trial: "NUTRIREA-2 (2018)", result: "Early EN vs early PN in ventilated patients with shock — no mortality difference (35.2% vs 34.0%); EN caused more vomiting, diarrhoea and rare bowel ischaemia. EN-first remains standard, but PN is a legitimate early alternative when the gut fails." },
+                { trial: "NUTRIREA-3 (2022)", result: "Low (≈6 kcal/kg/day) vs standard (≈25 kcal/kg/day) calories in shock — no 28-day mortality difference, but more patients alive and out of ICU by day 8 with low calories (72.9% vs 66.3%). Calorie restriction is acceptable in the acute phase." },
+                { trial: "EFFORT Protein (2023)", result: "High protein (≥2.2 g/kg/day) vs usual (≤1.2 g/kg/day) — no improvement in time to discharge alive; 90-day mortality 34.6% vs 32.1% and fewer discharged alive by day 60. Stopped early for a harm signal: more protein is not automatically better." },
               ].map((t) => (
                 <div key={t.trial} className="p-3 rounded-lg bg-secondary/30 border border-border">
                   <p className="font-semibold text-foreground text-sm">{t.trial}</p>
@@ -510,6 +512,10 @@ const IcuNutritionTopic = () => {
               ))}
             </div>
             </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <ProteinCalorieTrialsTeaching />
           </ExamSection>
           <ExamPitfallsCallout
             accent="icu"
