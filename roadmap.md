@@ -37,6 +37,9 @@
   - [x] Physics continuation batch: Joule–Thomson/process boundaries, transformers/isolation, Doppler interpretation, arterial dynamic response, flow/heliox assumptions and temperature errors; 17 targeted tests and authenticated desktop/phone lesson checks passed
   - [x] Rebuild and upload the 153-topic audit corpus; verify the six new prioritised lessons are retained
   - [ ] Next: finish Physics subsection review, then Physiology; Pharmacology: differential blockade done (local anaesthetics); Meyer–Overton (volatile agents) and antimicrobials (antibiotics, antifungals, antivirals, antimalarials, antiseptics, resistance) toxicology paracetamol and IV anaesthetics PRIS done; per-lesson source lists added; next remaining pharmacology subsections
+  - [ ] Clinical/ICU priority (owner request): batch 1 done (ACS, non-technical skills); next day surgery, resource-poor, surgical protocols, then subsection review of capped topics
   - [ ] Wider citation checks: resolve existing general/colorectal and surgical-protocol topic-ID extraction issues and two uncited regional-anaesthesia summaries; new physics references resolve
   - [ ] Further candidates: antivirals, innate immunity, hypothermia electrophysiology, ankle nerves, pelvic autonomics, metallic bonding, redox chemistry and chest-wall block planes (read-only reviewer suggestions, not yet verified)
   - [x] Owner-approved gateway replacements: Gemini 3.1 Flash Lite moderation/reviews, Gemini 3.1 Pro Preview audits/podcast scripts, Gemini 3.8 Flash drug checks; representative live responses passed (speech unchanged)
+
+- [ ] Clinical/ICU priority (owner request): batch 1 done (abdominal compartment syndrome, non-technical skills); next day surgery, resource-poor, surgical protocols, then subsection review of capped topics

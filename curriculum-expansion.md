@@ -51,3 +51,8 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 - Antimicrobials: resistance lesson (Murray 2022, Magiorakos 2012). Toxicology: new paracetamol subsection (SNAP 2014, MHRA 2012, TOXBASE). CrossRef-confirmed; no excerpts. Toxicology not complete.
 - Antimalarial/antiseptic lesson checked against PubMed abstracts: SEAQUAMAT, AQUAMAT and Darouiche figures confirmed; CLEAN scrub finding corrected to catheter colonisation and severe skin-reaction rate added. Browser-checked at 1280/390 px. Audit-corpus builder now follows @/components/topic/*Teaching imports first (they were previously skipped); corpus rebuilt and uploaded with all pharmacology/toxicology lessons present.
 - IV anaesthetics: PRIS lesson (Hemphill 2019; abstract verified on PubMed, verbatim excerpt added; full text not retrievable so management steps beyond its recommendations are labelled practice-based). Every pharmacology/toxicology lesson now ends with a "Sources for this lesson" list resolved from the curated topic references.
+
+## Clinical/ICU priority batch 1 (owner flagged clinical and ICU as most lacking)
+- Thinnest by extracted text: surgical-protocols, day-surgery, non-technical-skills, resource-poor-anaesthesia, abdominal-compartment-syndrome. Most other clinical/ICU topics hit the 24k audit cap, so size alone cannot rank them.
+- Added: ACS WSACS evidence-strength lesson (abstract-verified); NTS ANTS + WHO checklist evidence lesson (abstracts verified, verbatim excerpts added).
+- Blocked: day-surgery (AA/BADS 2019 full text not retrievable) and resource-poor (Lancet Commission abstract unavailable) — need accessible source text before expansion.

@@ -5,6 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { QuizQuestion } from "@/components/quiz/QuizSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { NTSEvidenceTeaching } from "@/components/topic/NTSEvidenceTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 
 const nonTechnicalSkillsFaqs: Array<[string, string]> = [
@@ -322,6 +323,8 @@ const NonTechnicalSkillsTopic = () => {
             curriculumCodes={["FFICM 5.4"]}
             className="scroll-mt-24"
           >
+            <NTSEvidenceTeaching />
+            <div className="mt-8" />
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Patient Safety & Incident Response</h2>
             <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
               <li><strong>Just culture</strong> (Reason; Marx 2001) — distinguish three categories of behaviour and respond proportionately. Neither blame-free nor punitive:
