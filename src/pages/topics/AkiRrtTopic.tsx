@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { RrtTimingTeaching } from "@/components/topic/RrtTimingTeaching";
+import { RrtIntensityTeaching } from "@/components/topic/RrtIntensityTeaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
@@ -849,6 +850,9 @@ const AkiRrtTopic = () => {
           </CollapsibleSubsection>
           <CollapsibleSubsection title="RRT Timing: STARRT-AKI in Detail">
             <RrtTimingTeaching />
+          </CollapsibleSubsection>
+          <CollapsibleSubsection title="CRRT Dose: the RENAL Trial">
+            <RrtIntensityTeaching />
           </CollapsibleSubsection>
         </ExamSection>
 
