@@ -16,6 +16,7 @@ import EmpiricalSepsisChooser from "@/components/diagrams/pharmacology/Empirical
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { AntiviralEvidenceTeaching } from "@/components/topic/AntiviralEvidenceTeaching";
 
 const antimicrobialsPharmFaqs: Array<[string, string]> = [
   [
@@ -286,6 +287,7 @@ const AntimicrobialsTopic = () => {
                 <p className="text-sm text-muted-foreground">
                   In critically ill patients, altered volume of distribution, renal clearance and extracorporeal support make antiviral exposure less predictable; individualise treatment to organ function, indication and specialist guidance <InlineRef topicId="antimicrobials-pharm" refLabel="ESICM TDM 2020" />.
                 </p>
+                <AntiviralEvidenceTeaching />
               </div>
             )}
           </div>
