@@ -56,7 +56,7 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
 
 /** Topic-level overrides for topics with a completed expansion batch. */
 export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
-  "surgical-protocols": { status: "in-progress", note: "ERAS evidence lesson (Greco 2014 meta-analysis) added; nine of ten surgery guides source-linked; neurosurgery guide still needs sources." },
+  "surgical-protocols": { status: "in-progress", note: "ERAS evidence lesson (Greco 2014 meta-analysis) added; all ten surgery guides source-linked (neurosurgery CO₂ target explicitly marked as consensus without a checked trial source)." },
   "cardiac-arrest-post-resus": {
     status: "in-progress",
     note: "BOX oxygen-target lesson added with sources list. Other subsections still need review.",

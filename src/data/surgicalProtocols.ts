@@ -132,6 +132,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
   },
   {
     id: "protocol-neuro",
+    sources: ["Tankisi 2007 head-up craniotomy", "Fathi 2009 sitting position PFO"],
     title: "Neurosurgery",
     link: "/clinical/neuroanaesthesia",
     scope: "Supratentorial craniotomy, posterior fossa surgery.",
@@ -141,10 +142,10 @@ export const surgicalProtocols: SurgicalProtocol[] = [
       "Plan for awake craniotomy if eloquent cortex",
     ],
     intraop: [
-      "Smooth induction avoiding ICP/BP surges; head up 15–30°, neutral neck",
-      "Maintain CPP; normocapnia (short hyperventilation only for brain herniation)",
+      "Smooth induction avoiding ICP/BP surges; modest head-up tilt with neutral neck — in supratentorial tumour craniotomy, 10° reduced dural tension, but CPP fell at 10–15°, so titrate to ICP and CPP rather than a fixed angle",
+      "Maintain CPP; normocapnia (short hyperventilation only for brain herniation) — no checked trial source is cited here for elective-surgery CO₂ targets; this is consensus practice",
       "TIVA or <1 MAC volatile; avoid hyperglycaemia and hypotonic fluids",
-      "Sitting position (posterior fossa): venous air embolism risk — monitoring and plan",
+      "Sitting position (posterior fossa): venous air embolism in ~39% (12% cervical); screen for patent foramen ovale because paradoxical embolism is reported in 0–14% — evidence is observational, not trial-based",
     ],
     postop: [
       "Smooth emergence; early neurological assessment",
