@@ -8,6 +8,7 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { DiagramSection } from "@/components/topic/DiagramSection";
 import AntibioticPKPDPrimer from "@/components/diagrams/pharmacology/AntibioticPKPDPrimer";
 import { InlineRef } from "@/components/references/InlineRef";
+import { AntimicrobialEvidenceTeaching } from "@/components/topic/AntimicrobialEvidenceTeaching";
 
 const antimicrobialsIcuFaqs: Array<[string, string]> = [
   ["Why does volume of distribution change for hydrophilic antibiotics in sepsis?", "Capillary leak and aggressive fluid resuscitation expand Vd for β-lactams, aminoglycosides and glycopeptides, often requiring loading doses (e.g. meropenem 2 g, vancomycin 25–30 mg/kg) to reach therapeutic levels."],
@@ -332,6 +333,9 @@ const AntimicrobialsIcuTopic = () => {
           </ExamSection>
 
 
+          <ExamSection id="trial-evidence" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <AntimicrobialEvidenceTeaching />
+          </ExamSection>
           <ExamSection
             id="stewardship"
             exams={[Exam.FFICM, Exam.EDIC]}

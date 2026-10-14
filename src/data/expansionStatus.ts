@@ -117,6 +117,14 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "in-progress",
     note: "Paracetamol poisoning subsection added (NAPQI mechanism, 2012 UK treatment line, SNAP 2014 regimen evidence, anaphylactoid reactions, learning checks). Other toxicology subsections still need review.",
   },
+  "antimicrobials-icu": {
+    status: "expanded",
+    note: "Trial-evidence lesson added (Chastre 2003 VAP 8 vs 15 days, BALANCE 2025 bacteraemia 7 vs 14 days, MERINO 2018 ESBL carbapenem-sparing) with quoted abstracts, learning checks and sources. Content/source review, not consultant certification.",
+  },
+  "end-of-life-communication": {
+    status: "expanded",
+    note: "Family-support trial lesson added (Lautrette 2007 VALUE/brochure, PARTNER 2018, Kentish-Barnes 2017 condolence letter) with quoted abstracts, learning checks and sources. Content/source review, not consultant certification.",
+  },
   "antimicrobials-pharm": {
     status: "expanded",
     note: "Antibiotics (critical-illness exposure, DALI, loading doses, TDM, stewardship), antifungals (candidaemia sequencing per IDSA 2016 and Reboli 2007) antivirals (selectivity and trial interpretation), antimalarials (SEAQUAMAT/AQUAMAT) and antiseptics (Darouiche 2010, CLEAN 2015, NAP6 chlorhexidine allergy) and resistance (GBD 2022 burden, MDR/XDR definitions, spread, selection) lessons added with learning checks.",
