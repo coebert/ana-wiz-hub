@@ -4,10 +4,22 @@ import { MemoryRouter } from "react-router-dom";
 import { readFileSync } from "node:fs";
 import { topicReferences } from "@/data/references";
 import { intensiveCareTopics } from "@/data/curriculum";
-import { AlkalosisMechanismsTeaching, AlkalosisAssessmentTeaching, AlkalosisCausesTeaching, AlkalosisTreatmentTeaching, AlkalosisSafetyTeaching } from "@/components/topic/MetabolicAlkalosisTeaching";
+import { AcidBaseAlkalosisTeaching, AlkalosisMechanismsTeaching, AlkalosisAssessmentTeaching, AlkalosisCausesTeaching, AlkalosisTreatmentTeaching, AlkalosisSafetyTeaching } from "@/components/topic/MetabolicAlkalosisTeaching";
 vi.mock("@/components/references/InlineRef", () => ({ InlineRef: ({ refLabel }: { refLabel: string }) => <span>{refLabel}</span> }));
 afterEach(cleanup);
 describe("Metabolic alkalosis sourced lessons", () => {
+  it("renders the parent-page lesson with five exact existing review quotations and a learning check", () => {
+    const { container } = render(<MemoryRouter><AcidBaseAlkalosisTeaching /></MemoryRouter>);
+    const quotes = container.querySelectorAll("blockquote");
+    expect(quotes).toHaveLength(5);
+    for (const quote of quotes) expect(topicReferences["metabolic-alkalosis"].some(ref => ref.excerpt && quote.textContent?.includes(ref.excerpt))).toBe(true);
+    expect(screen.getByText(/Learning check:/)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "its freely readable archived copy" })).toHaveAttribute("href", "https://pmc.ncbi.nlm.nih.gov/articles/PMC10028421/");
+    const parent = readFileSync("src/pages/topics/AcidBaseTopic.tsx", "utf8");
+    expect(parent).toContain('<AcidBaseAlkalosisTeaching />');
+    expect(parent).toContain('id="section-metabolic-alkalosis"');
+    expect(container.textContent).not.toContain("is missing from the topic list");
+  });
   it.each([AlkalosisMechanismsTeaching, AlkalosisAssessmentTeaching, AlkalosisCausesTeaching, AlkalosisTreatmentTeaching, AlkalosisSafetyTeaching])("renders substantive teaching, a check and resolved sources", Lesson => {
     const { container } = render(<MemoryRouter><Lesson /></MemoryRouter>);
     expect(container.textContent?.length).toBeGreaterThan(1800);
