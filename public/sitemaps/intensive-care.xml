@@ -121,6 +121,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/intensive-care/peep-management</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/intensive-care/circulatory-failure</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
