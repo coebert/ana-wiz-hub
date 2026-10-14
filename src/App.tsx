@@ -169,6 +169,7 @@ const App = () => (
           <Route path="/revise" element={<Index />} />
           <Route path="/map" element={<TopicMap />} />
           <Route path="/curriculum" element={<Curriculum />} />
+          <Route path="/curriculum/expansion" element={<CurriculumExpansion />} />
           <Route path="/progress" element={<ProgressTracker />} />
           <Route path="/study-stats" element={<StudyStats />} />
           <Route path="/study-plan" element={<StudyPlan />} />
