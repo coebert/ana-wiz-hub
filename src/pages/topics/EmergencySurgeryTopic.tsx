@@ -10,7 +10,7 @@ import { EmergencySurgeryGlossaryDrawer } from "@/components/clinical/EmergencyS
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
-import { EmergencyPrioritisationTeaching, EmergencyAirwayEvidenceTeaching, EmergencyAppendicitisTeaching, EmergencyObstructionTeaching, EmergencyHipFractureTeaching } from "@/components/topic/EmergencySurgeryTeaching";
+import { EmergencyPrioritisationTeaching, EmergencyAirwayEvidenceTeaching, EmergencyAppendicitisTeaching, EmergencyObstructionTeaching, EmergencyHipFractureTeaching, EmergencyXaReversalTeaching } from "@/components/topic/EmergencySurgeryTeaching";
 
 const emergencySurgeryFaqs: Array<[string, string]> = [
   [
@@ -171,6 +171,7 @@ const EmergencySurgeryTopic = () => {
               <li><strong>Adjuncts</strong>: tranexamic acid (1 g IV, repeat/infusion as per protocol), fibrinogen replacement (cryoprecipitate or fibrinogen concentrate) if fibrinogen &lt;1.5 g/L, guided by viscoelastic testing (TEG/ROTEM) rather than fixed-ratio empirical products where available.</li>
               <li><strong>Neuraxial techniques</strong>: respect standard time-based cessation/reintroduction intervals for each agent before and after block/catheter removal — do not proceed with neuraxial anaesthesia solely on the basis of a normalised INR/anti-Xa if timing criteria are not met.</li>
             </ul>
+            <div className="mt-4"><EmergencyXaReversalTeaching /></div>
           </div>
           </div>
 

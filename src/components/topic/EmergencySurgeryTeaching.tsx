@@ -58,3 +58,18 @@ export function EmergencyHipFractureTeaching() {
     <LessonSources topicId="emergency-surgery" labels={["NICE CG124"]} />
   </div>;
 }
+export function EmergencyXaReversalTeaching() {
+  const A = () => <InlineRef topicId="emergency-surgery" refLabel="ANNEXA-I 2024" />;
+  return <div className="space-y-3 text-muted-foreground leading-relaxed p-4 rounded-lg border border-border">
+    <h3 className="text-lg font-serif font-bold text-foreground">Reversing Factor Xa Inhibitors: What ANNEXA-I Showed</h3>
+    <p>ANNEXA-I randomised 530 patients with acute intracerebral haemorrhage on apixaban, rivaroxaban or edoxaban (mostly for atrial fibrillation) to andexanet or usual care. In the usual-care group, 85.5% received prothrombin complex concentrate (PCC).<A /></p>
+    <ul className="list-disc pl-5 space-y-1">
+      <li><strong className="text-foreground">Bleeding control:</strong> haemostatic efficacy was 67.0% with andexanet vs 53.1% with usual care (adjusted difference 13.4 percentage points). Anti-Xa activity fell by a median 94.5% vs 26.9%.<A /></li>
+      <li><strong className="text-foreground">Harm:</strong> thrombotic events were 10.3% vs 5.6%, and ischaemic stroke 6.5% vs 1.5%.<A /></li>
+      <li><strong className="text-foreground">Patient outcomes:</strong> modified Rankin scores and 30-day mortality did not differ appreciably.<A /></li>
+      <li><strong className="text-foreground">Applying it:</strong> the trial studied brain haemorrhage, not surgical bleeding or reversal before an operation. A better laboratory and scan result came with more clots and no shown improvement in function or survival. Follow local haematology policy for the choice between andexanet and PCC.</li>
+    </ul>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: why is "andexanet improves haemostasis" an incomplete answer?</summary><p className="mt-2">Thrombotic events nearly doubled (10.3% vs 5.6%), ischaemic stroke was higher, and there was no appreciable difference in disability or 30-day death.</p></details>
+    <LessonSources topicId="emergency-surgery" labels={["ANNEXA-I 2024"]} />
+  </div>;
+}
