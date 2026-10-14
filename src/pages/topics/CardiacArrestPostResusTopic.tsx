@@ -20,6 +20,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { InlineRef } from "@/components/references/InlineRef";
+import { PostArrestOxygenTeaching } from "@/components/topic/PostArrestOxygenTeaching";
 
 const arrestFaqs: Array<[string, string]> = [
   [
@@ -697,6 +698,9 @@ const coreConcepts = (
             </AccordionItem>
           ))}
         </Accordion>
+      </CollapsibleSubsection>
+      <CollapsibleSubsection title="Oxygen Targets After ROSC (BOX)">
+        <PostArrestOxygenTeaching />
       </CollapsibleSubsection>
     </ExamSection>
 
