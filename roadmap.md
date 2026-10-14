@@ -27,9 +27,13 @@
 - [x] Cite flagged diagrams, replace AI brain images and last 2 paintings, add orientation notes (7 inherent limits stay flagged)
 - [x] Expand APRV teaching with verified sources, corrected waveforms, bedside cautions and learning checks
 - [ ] Review curriculum-wide subsection depth and expand outline-only teaching into comprehensive, source-led content
+  - [ ] Section-by-section continuation requested: Physics → Physiology → Pharmacology → Clinical → ICU → Perioperative; record actual subsection coverage, including anatomy and chemistry
   - [x] First batch: ENT laryngectomy emergencies; paediatric URTI/fluid decisions; established renal-transplant care; bariatric equipment pathway; colorectal assessment/AP-resection phases
   - [x] Check first-batch pages, source labels/excerpts, tests and rebuild/upload private audit corpus
   - [ ] Remaining curriculum expansion: subsection-by-subsection review and verified-source teaching beyond the first batch (not yet completed)
-  - [ ] Candidate next batch: Joule–Thomson effect, transformers, Doppler spectral broadening, differential blockade and Meyer–Overton limitations (original-source verification required)
+  - [x] Physics continuation batch: Joule–Thomson/process boundaries, transformers/isolation, Doppler interpretation, arterial dynamic response, flow/heliox assumptions and temperature errors; 17 targeted tests and authenticated desktop/phone lesson checks passed
+  - [x] Rebuild and upload the 153-topic audit corpus; verify the six new prioritised lessons are retained
+  - [ ] Next: finish Physics subsection review, then Physiology; Pharmacology candidates include differential blockade and Meyer–Overton limitations (original-source verification required)
+  - [ ] Wider citation checks: resolve existing general/colorectal and surgical-protocol topic-ID extraction issues and two uncited regional-anaesthesia summaries; new physics references resolve
   - [ ] Further candidates: antivirals, innate immunity, hypothermia electrophysiology, ankle nerves, pelvic autonomics, metallic bonding, redox chemistry and chest-wall block planes (read-only reviewer suggestions, not yet verified)
   - [x] Owner-approved gateway replacements: Gemini 3.1 Flash Lite moderation/reviews, Gemini 3.1 Pro Preview audits/podcast scripts, Gemini 3.8 Flash drug checks; representative live responses passed (speech unchanged)

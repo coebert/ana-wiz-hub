@@ -33,6 +33,7 @@ export interface Reference {
 export const topicReferences: Record<string, Reference[]> = {
   // ──────── PHYSICS ────────
   "gas-laws": [
+    { label: "LibreTexts Joule–Thomson", citation: "Ellgen P. Thermodynamics and Chemical Equilibrium. Section 10.14: The Joule–Thomson Effect. Chemistry LibreTexts.", url: "https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Thermodynamics_and_Chemical_Equilibrium_(Ellgen)/10%3A_Some_Mathematical_Consequences_of_the_Fundamental_Equation/10.14%3A_The_Joule-Thomson_Effect", excerpt: "The temperature change is called the Joule-Thomson effect. The enthalpy of the gas remains constant." },
     { label: "Peck & Hill Ch.1", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 1: Basic Principles." },
     { label: "Cross & Plunkett Ch.1", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapter 1: Mathematical Concepts." },
     { label: "BJA Educ 2017", citation: "Thomas G. Gas laws and physics relevant to anaesthesia. BJA Education. 2017;17(3):73-78.", url: "https://doi.org/10.1093/bjaed/mkw052" },
@@ -43,6 +44,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NEJM 2009 (CO poisoning)", citation: "Weaver LK. Carbon monoxide poisoning. N Engl J Med. 2009;360(12):1217-1225.", url: "https://doi.org/10.1056/NEJMcp0808891", excerpt: "The elimination half-life of CO while breathing room air is approximately 320 minutes; while breathing 100% oxygen, the elimination half-life is about 80 minutes; and with hyperbaric oxygen at 3 atmospheres, it is about 23 minutes." },
   ],
   "pressure-measurement": [
+    { label: "Saugel 2020 Arterial Measurement", citation: "Saugel B, Kouz K, Meidert AS, Schulte-Uentrop L, Romagnoli S. How to measure blood pressure using an arterial catheter: a systematic 5-step approach. Critical Care. 2020;24:172.", url: "https://doi.org/10.1186/s13054-020-02859-w", excerpt: "The natural frequency of the system is calculated by dividing the monitor speed (e.g., 25 mm/s) by the wavelength (peak to peak distance in mm) of the oscillating waves (Fig. 4)." },
     { label: "BJA Educ 2015", citation: "Magee P, Tooley M. The physics of arterial pressure measurement. BJA Education. 2005;5(4):132-135.", url: "https://doi.org/10.1093/bjaceaccp/mki036" },
     { label: "Cross & Plunkett Ch.7", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 7: Pressure Measurement." },
     { label: "Al-Shaikh & Stacey Ch.19", citation: "Al-Shaikh B, Stacey S. Essentials of Anaesthetic Equipment. 5th ed. Elsevier; 2019. Chapter 19: Pressure and Flow Measurement." },
@@ -56,6 +58,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Hypertension 2023 Aurora", citation: "Mukkamala R, Yavarimanesh M, Natarajan K, et al. Evaluation of the accuracy of cuffless blood pressure measurement devices: challenges and proposals. Hypertension. 2023;80(10):e179-e193.", url: "https://doi.org/10.1161/hypertensionaha.122.20410" },
   ],
   "flow-measurement": [
+    { label: "OpenStax Viscosity and Turbulence", citation: "Urone PP, Hinrichs R. College Physics 2e. Sections 12.4: Viscosity and Laminar Flow; Poiseuille’s Law, and 12.5: The Onset of Turbulence. OpenStax; 2022.", url: "https://openstax.org/books/college-physics-2e/pages/12-4-viscosity-and-laminar-flow-poiseuilles-law" },
+    { label: "OpenStax Reynolds Number", citation: "Urone PP, Hinrichs R. College Physics 2e. Section 12.5: The Onset of Turbulence. OpenStax; 2022.", url: "https://openstax.org/books/college-physics-2e/pages/12-5-the-onset-of-turbulence" },
+    { label: "Hashemian 2014 Heliox", citation: "Hashemian SM, Fallahian F. The use of heliox in critical care. Int J Crit Illn Inj Sci. 2014;4(2):138–142.", url: "https://doi.org/10.4103/2229-5151.134153" },
+    { label: "NIST Process Gas Flowmeters", citation: "Wright JD, Cobu T, Berg RF, Moldover MR. Calibration of Laminar Flow Meters for Process Gases. Flow Measurement and Instrumentation. 2012;25:8–14.", url: "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=908560" },
     { label: "BJA Educ 2004", citation: "Patel S, Glendenning C. Measurement of gas flow and volume. BJA Education. 2004;4(5):150-153.", url: "https://doi.org/10.1093/bjaceaccp/mkh041" },
     { label: "Cross & Plunkett Ch.8", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 8: Flow." },
     { label: "Middleton Ch.6", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 6: Fluid Flow." },
@@ -139,6 +145,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "MHRA Electrosurgery", citation: "Medicines and Healthcare products Regulatory Agency. Guidance on the safe use of electrosurgery (diathermy) devices — return-electrode burns, alternate-site burns and monitoring of contact quality.", url: "https://www.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency" },
   ],
   "electricity-magnetism": [
+    { label: "OpenStax Transformers", citation: "Ling SJ, Sanny J, Moebs W. University Physics Volume 2. Section 15.6: Transformers. OpenStax; 2016.", url: "https://openstax.org/books/university-physics-volume-2/pages/15-6-transformers" },
+    { label: "OpenAnesthesia OR Electrical Safety", citation: "OpenAnesthesia. Electrical Safety in the Operating Room. Educational review of isolation transformers, line isolation monitors and macroshock/microshock; US installation context.", url: "https://www.openanesthesia.org/keywords/electrical-safety-in-the-operating-room/", excerpt: "The line isolation monitor detects the potential for current to flow from the isolated power supply to ground." },
     { label: "Cross & Plunkett Ch.12-13", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapters 12-13: Electricity and Magnetism." },
     { label: "Middleton Ch.15", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Scion Publishing; 2019. Chapter 15: Electricity." },
     { label: "BJA Educ 2017", citation: "Pollard BJ. Electrical safety in the operating theatre. BJA Education. 2017;17(10):339-344.", url: "https://doi.org/10.1093/bjaed/mkx035" },
@@ -167,6 +175,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "NEJM 2013 (PAC)", citation: "Kelly CR, Rabbani LE. Videos in clinical medicine: pulmonary-artery catheterization. N Engl J Med. 2013;369(25):e35.", url: "https://doi.org/10.1056/NEJMvcm1212416" },
   ],
   "temperature-measurement": [
+    { label: "NIST Thermistor Alternatives", citation: "National Institute of Standards and Technology. Mercury Thermometer Alternatives: Thermistor. Physical Measurement Laboratory.", url: "https://www.nist.gov/pml/sensor-science/thermodynamic-metrology/mercury-thermometer-alternatives/mercury-thermometer-4" },
+    { label: "NIST Industrial Thermometer Calibration", citation: "National Institute of Standards and Technology. Industrial Thermometer Calibrations. Physical Measurement Laboratory.", url: "https://www.nist.gov/pml/sensor-science/thermodynamic-metrology/industrial-thermometer-calibrations" },
+    { label: "NICE CG65 Measurement Sites", citation: "National Institute for Health and Care Excellence. Hypothermia: prevention and management in adults having surgery (CG65). Recommendation 1.1.3: temperature measurement methods. Updated 2016.", url: "https://www.nice.org.uk/guidance/cg65/chapter/Recommendations#preoperative-phase", excerpt: "Measure the patient's temperature using a site that produces either a direct measurement of core temperature or a direct estimate of core temperature that has been shown in research studies to be accurate to within 0.5ºC of direct measurement; a direct estimate of core temperature is the reading produced by a thermometer with no correction factors applied." },
     { label: "Moran 2007 (Tympanic ICU)", citation: "Moran JL, Peter JV, Solomon PJ, et al. Tympanic temperature measurements: are they reliable in the critically ill? A clinical study of measures of agreement. Crit Care Med. 2007;35(1):155-164.", url: "https://doi.org/10.1097/01.ccm.0000250318.31453.cb" },
     { label: "NICE NG125", citation: "National Institute for Health and Care Excellence. Perioperative care in adults / surgical site infection guidance referenced for perioperative temperature standards (NG125). 2019.", url: "https://www.nice.org.uk/guidance/ng125" },
     { label: "BJA Educ Temperature 2020", citation: "Temperature monitoring and management during anaesthesia. BJA Education. 2020;20(9):305-312. Tympanic membrane infrared thermometry estimates core temperature from the aural canal, sharing blood supply with the hypothalamus via the carotid circulation.", url: "https://bjanaesthesia.org/article/S2058-5349(20)30172-8/fulltext" },
@@ -188,6 +199,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA 1983 Pneumotachography", citation: "Principles of pneumotachography and the Fleisch capillary resistance. British Journal of Anaesthesia. 1983.", url: "https://doi.org/10.1093/bja/55.12.1239", excerpt: "The Fleisch pneumotachograph consists of a metal housing that contains a capillary bundle. The resistance to flow is linear and is produced by the bundle of capillaries." },
   ],
   "ultrasound-physics": [
+    { label: "BMUS Doppler Basic Theory", citation: "Deane C. Medical Ultrasound: Doppler Introduction and Basic Theory (Lecture D1). King’s College London; hosted by the British Medical Ultrasound Society.", url: "https://www.bmus.org/static/uploads/resources/Kings_College_London_-_Medical_Ultrasound_-_Lecture_D1_-_Introduction_and_Basic_Theory.pdf", excerpt: "Maximum “Doppler” frequency = 0.5 x pulse repetition frequency" },
+    { label: "Jones 1993 Spectral Broadening", citation: "Jones SA. Fundamental Sources of Error and Spectral Broadening in Doppler Ultrasound Signals. Crit Rev Biomed Eng. 1993;21:399–483.", url: "https://www2.latech.edu/~sajones/Export/Research/CRC%20Review%20Article.pdf" },
     { label: "BJA Educ Ultrasound 2017", citation: "Gadsden J, Choi D, Lin E. Ultrasound physics. BJA Education. 2017;17(7):229-234.", url: "https://doi.org/10.1093/bjaed/mkw061" },
     { label: "BJA Educ 2017", citation: "Defined A, Sites BD. Ultrasound physics for the anaesthetist. BJA Education. 2006;6(1):21-25.", url: "https://doi.org/10.1093/bjaceaccp/mki064" },
     { label: "Cross & Plunkett Ch.17", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 17: Ultrasound." },

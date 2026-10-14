@@ -14,6 +14,7 @@ import { flowMeasurementQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { FlowRegimeTeaching } from "../../components/topic/FlowRegimeTeaching";
 
 const flowMeasurementFaqs: Array<[string, string]> = [
   [
@@ -56,8 +57,8 @@ const workedExamples: WorkedExample[] = [
     working:
       "In turbulent flow Q ∝ √(ΔP/ρ) — flow depends on density (ρ), not viscosity.\nDensity (g/L): O₂ ≈ 1.43, N₂ ≈ 1.25, He ≈ 0.18.\n70:30 He:O₂ density ≈ 0.7 × 0.18 + 0.3 × 1.43 ≈ 0.55 g/L vs air ≈ 1.29 g/L → ~1/2.3 the density.\n√(2.3) ≈ 1.5 → ~50% increase in turbulent flow at the same driving pressure.",
     answer:
-      "Heliox reduces gas density and therefore flow resistance under turbulent conditions, raising achievable minute ventilation by ~50% and buying time while definitive airway management is arranged.",
-    cites: ["BJA Educ 2004"],
+      "The simplified same-pressure model predicts about 50% greater flow for these illustrative densities, not a guaranteed increase in patient minute ventilation. Heliox may reduce work of breathing in selected obstruction but requires compatible delivery, adequate oxygen and prompt definitive management.",
+    cites: ["Hashemian 2014 Heliox", "OpenStax Reynolds Number"],
   },
 ];
 
@@ -86,7 +87,7 @@ const FlowMeasurementTopic = () => {
       }}
       keyPoints={[
         { text: "Hagen-Poiseuille: Q = πΔPr⁴/8ηl. Flow ∝ r⁴ — halving radius reduces flow 16-fold.", cites: ["Middleton Ch.6"] },
-        { text: "Reynolds number (Re = ρvd/η): <2000 laminar, >4000 turbulent. Turbulence depends on density, not viscosity.", cites: ["Cross & Plunkett Ch.8"] },
+        { text: "Reynolds number (Re = ρvd/η) compares inertial and viscous effects. Transition thresholds are approximate and geometry-dependent; turbulent losses are strongly density-dependent, but viscosity remains relevant.", cites: ["OpenStax Reynolds Number"] },
         { text: "Heliox reduces resistance in turbulent flow conditions because helium has low density.", cites: ["BJA Educ 2004"] },
         { text: "Rotameters: laminar (low flow) depends on viscosity; turbulent (high flow) depends on density. Gas-specific calibration.", cites: ["Middleton Ch.6"] },
         { text: "Pneumotachograph measures flow via pressure drop across a resistance; integration gives volume.", cites: ["Cross & Plunkett Ch.8"] },
@@ -112,6 +113,7 @@ const FlowMeasurementTopic = () => {
             <div className="bg-card rounded-xl border border-border p-6">
               <FlowDiagram />
             </div>
+            <div className="mt-4"><FlowRegimeTeaching /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -125,7 +127,7 @@ const FlowMeasurementTopic = () => {
             <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
               <p className="text-sm font-medium text-foreground">Clinical Application</p>
               <p className="text-sm text-muted-foreground mt-1">
-                A 4.0 mm ETT has only 1/16 the flow of an 8.0 mm tube at the same driving pressure. This explains why small
+                Under the equal-length laminar model, a 4.0 mm tube has 1/16 the flow of an 8.0 mm tube at the same driving pressure; this is not an exact prediction for real ETT flow. This illustrates why small
                 tubes produce significant resistance and why even a small reduction in airway calibre (e.g., subglottic oedema)
                 dramatically increases work of breathing.
               </p>
@@ -138,8 +140,7 @@ const FlowMeasurementTopic = () => {
             <p className="text-foreground/90 leading-relaxed">
               <strong>Re = ρvd / η</strong>, where ρ = density, v = velocity, d = diameter, η = viscosity. Laminar flow occurs
               when Re &lt; 2000; turbulent flow when Re &gt; 4000. Between 2000–4000 is the transition zone. Turbulent flow
-              depends on gas <em>density</em> (not viscosity), which is why heliox (low density) reduces resistance in upper
-              airway obstruction.
+              has strongly density-dependent pressure losses, but viscosity remains relevant to the regime and transition. These thresholds describe idealised pipe flow, not every point in a branching airway <InlineRef topicId="flow-measurement" refLabel="OpenStax Reynolds Number" />.
             </p>
             </CollapsibleSubsection>
           </ExamSection>

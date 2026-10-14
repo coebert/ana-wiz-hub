@@ -8,6 +8,7 @@ import { ultrasoundPhysicsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { DopplerInterpretationTeaching } from "../../components/topic/DopplerInterpretationTeaching";
 
 const ultrasoundPhysicsFaqs: Array<[string, string]> = [
   [
@@ -284,6 +285,7 @@ const UltrasoundPhysicsTopic = () => {
                 characterisation of liver, thyroid, breast and endobronchial lesions
                 <InlineRef topicId="ultrasound-physics" refLabel="Diagnostics 2024 Elastography" />.
               </p>
+              <DopplerInterpretationTeaching />
             </div>
             </CollapsibleSubsection>
           </ExamSection>

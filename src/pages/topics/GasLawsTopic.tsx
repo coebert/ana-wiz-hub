@@ -11,6 +11,7 @@ import { gasLawsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import InlineRef from "@/components/references/InlineRef";
+import { JouleThomsonTeaching } from "../../components/topic/JouleThomsonTeaching";
 
 const gasLawsFaqs: Array<[string, string]> = [
   [
@@ -47,7 +48,7 @@ const workedExamples: WorkedExample[] = [
           <li><strong>Pick the right relationship.</strong> Reversible adiabatic process for an ideal gas: T₂ = T₁ × (P₂ / P₁)<sup>(γ−1)/γ</sup>.</li>
           <li><strong>Compute the exponent.</strong> (γ − 1) / γ = 0.4 / 1.4 ≈ 0.286.</li>
           <li><strong>Substitute.</strong> T₂ = 293 × (1 / 138)<sup>0.286</sup> ≈ 293 × 0.266 ≈ <strong>78 K (≈ −195 °C)</strong>.</li>
-          <li><strong>Reality check.</strong> True adiabatic conditions never hold — heat conducts in from the cylinder wall and ambient air, so observed surface cooling is only ~30–50 °C. Frost on the cylinder body is the visual sign.</li>
+          <li><strong>Reality check.</strong> This is a reversible ideal-gas comparison, not a measured discharge prediction. A real emptying cylinder is an open, unsteady system with wall heat transfer; its surface temperature cannot be inferred from this calculation.</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
@@ -60,7 +61,7 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer:
-      "The reversible-adiabatic prediction is ~78 K (−195 °C). In practice heat conduction limits surface cooling to ~30–50 °C, but it explains the frost on a rapidly discharged O₂ cylinder.",
+      "The reversible ideal-gas comparison gives ~78 K (−195 °C). It does not predict a real cylinder’s final gas or surface temperature: mass outflow, irreversible processes, heat transfer and real-gas behaviour require separate consideration.",
    cites: ["Peck & Hill Ch.1"],
   },
   {
@@ -73,8 +74,8 @@ const workedExamples: WorkedExample[] = [
         <ol className="list-decimal list-inside space-y-1">
           <li><strong>Two-phase storage.</strong> N₂O at 20 °C is below its Tc (36.5 °C) — the cylinder contains liquid + vapour at the saturated vapour pressure (~52 bar).</li>
           <li><strong>Latent heat of vaporisation.</strong> ~376 kJ/kg is taken from the liquid and cylinder wall as withdrawn vapour is replaced by evaporation, cooling the cylinder.</li>
-          <li><strong>Joule–Thomson cooling at the regulator.</strong> ΔT ≈ μ<sub>JT</sub> × ΔP ≈ 0.25 × (52 − 4) ≈ <strong>12 °C</strong> drop across the regulator.</li>
-          <li><strong>Frost forms at the liquid–vapour interface.</strong> The wall there is coldest because that is where evaporation is occurring; ambient water vapour deposits as frost. <strong>The height of the frost line ≈ remaining liquid contents.</strong></li>
+          <li><strong>Regulator process.</strong> Throttling may change the gas temperature, but a quantitative estimate needs a coefficient appropriate to the state and pressure range; a universal 12 °C drop is not established.</li>
+          <li><strong>Frost is not a calibrated level indicator.</strong> Frost distribution reflects local wall cooling, humidity and heat transfer as well as liquid evaporation. Use weighing, not the frost line, to assess remaining N₂O contents.</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
@@ -87,7 +88,7 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer:
-      "Latent heat of vaporisation cools the cylinder where evaporation occurs (the liquid–vapour interface), and J–T cooling at the regulator adds ~12 °C drop. The frost line marks the level of remaining liquid — the only reliable visual gauge of N₂O contents.",
+      "Evaporation removes latent heat from the contents and wall; regulator throttling is a separate process. Frost can indicate cooling but cannot reliably quantify remaining liquid. Assess N₂O contents by weight, not frost height or the pressure gauge while liquid remains.",
    cites: ["Cross & Plunkett Ch.1"],
   },
   {
@@ -521,8 +522,8 @@ const GasLawsTopic = () => {
             <p className="text-foreground/90 leading-relaxed">
               When a real gas expands, its temperature changes. Two distinct mechanisms operate in clinical practice:
               <strong> adiabatic expansion</strong> (work done by the gas as it pushes back its surroundings, no heat
-              exchange) and the <strong>Joule–Thomson effect</strong> (isenthalpic throttling through a restriction with
-              no external work). Both produce cooling on cylinder discharge but for different physical reasons.
+              and the <strong>Joule–Thomson effect</strong> (approximately isenthalpic throttling under steady-flow assumptions).
+              Cooling depends on the process and gas state; adiabatic alone does not prove a temperature fall.
             </p>
 
             <h3 className="text-xl font-serif font-bold text-foreground mt-6">Adiabatic expansion</h3>
@@ -540,9 +541,7 @@ const GasLawsTopic = () => {
               </p>
             </div>
             <p className="text-foreground/90 leading-relaxed mt-3">
-              Adiabatic expansion underlies <strong>cryotherapy probes</strong> (rapid expansion of high-pressure gas at
-              the probe tip cools tissue to −70 °C or below for ablation of tumours, arrhythmic foci or skin lesions),
-              and the <strong>cooling of an O₂ cylinder during fast discharge</strong>.
+              This reversible relation describes an idealised closed-system expansion. An emptying O₂ cylinder is an unsteady open system; cryoprobes using a throttling valve require the separate Joule–Thomson description and device-specific conditions.
             </p>
 
             <h3 className="text-xl font-serif font-bold text-foreground mt-6">The Joule–Thomson (throttling) effect</h3>
@@ -577,7 +576,7 @@ const GasLawsTopic = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
-                  <tr><td className="p-3 font-medium text-foreground">N₂O</td><td className="p-3 text-foreground/80">~1500 K</td><td className="p-3 text-foreground/80">Cools strongly (~0.25 K per bar)</td></tr>
+                  <tr><td className="p-3 font-medium text-foreground">N₂O</td><td className="p-3 text-foreground/80">State-dependent inversion curve</td><td className="p-3 text-foreground/80">Cooling depends on inlet state; do not use a universal coefficient</td></tr>
                   <tr><td className="p-3 font-medium text-foreground">CO₂</td><td className="p-3 text-foreground/80">~1500 K</td><td className="p-3 text-foreground/80">Cools strongly — used in cryotherapy</td></tr>
                   <tr><td className="p-3 font-medium text-foreground">N₂</td><td className="p-3 text-foreground/80">~620 K</td><td className="p-3 text-foreground/80">Cools modestly</td></tr>
                   <tr><td className="p-3 font-medium text-foreground">O₂</td><td className="p-3 text-foreground/80">~760 K</td><td className="p-3 text-foreground/80">Cools modestly (~0.31 K per bar)</td></tr>
@@ -586,6 +585,7 @@ const GasLawsTopic = () => {
                 </tbody>
               </table>
             </div>
+            <p className="text-sm text-muted-foreground mt-3">The remaining approximate maximum inversion temperatures are legacy teaching values, not verified operating specifications. Use a validated equation of state for quantitative predictions; no table value determines the temperature of a clinical device.</p>
 
             <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
               <p className="text-sm font-medium text-foreground">Clinical Application — H₂ and He</p>
@@ -593,10 +593,10 @@ const GasLawsTopic = () => {
                 Hydrogen and helium have inversion temperatures below room temperature (205 K and 45 K respectively),
                 so they <em>warm</em> on throttling at 20 °C. To liquefy them they must first be pre-cooled below the
                 inversion temperature. This is why MRI cryostats use liquid helium pre-cooled through a multi-stage
-                cascade — and why a sudden quench of an MRI magnet vents enormous volumes of warming He gas rather
-                than a self-cooling jet.
+                cooling process. A magnet quench involves boiling cryogenic helium and warming as it absorbs environmental heat; room-temperature throttling behaviour alone cannot describe the vented gas.
               </p>
             </div>
+            <div className="mt-4"><JouleThomsonTeaching /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
