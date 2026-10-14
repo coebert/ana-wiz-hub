@@ -1,3 +1,4 @@
+import { RenalTransplantTeaching } from "../../components/topic/RenalTransplantTeaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
@@ -373,17 +374,7 @@ const RenalDiseaseTopic = () => {
             <section id="section-renal-transplant-recipient" className="scroll-mt-24">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Renal Transplant Recipient</h2>
               <ExamMappingBadges exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PO_BK_06"]} />
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <div className="bg-card border border-border rounded-lg p-4">
-                  <ul className="list-disc list-inside space-y-1 text-sm">
-                    <li><strong>Uninterrupted immunosuppression</strong>: continue calcineurin inhibitors (tacrolimus/ciclosporin), mycophenolate and prednisolone through the perioperative period wherever possible; if the patient cannot take oral medication, liaise with the transplant team for IV equivalents/stress-dose steroid cover and resume enteral dosing as soon as feasible.</li>
-                    <li><strong>Graft perfusion</strong>: the transplanted kidney is typically denervated (no autoregulatory sympathetic response) and relies on adequate MAP for perfusion — avoid hypotension and hypovolaemia; maintain MAP ≥70–80 mmHg intraoperatively, especially for non-renal surgery under GA or neuraxial block.</li>
-                    <li><strong>Avoid instrumentation/access on the graft side</strong> where a residual fistula or vascular access exists, and take care with lower abdominal/pelvic surgical positioning and retraction, as the graft usually sits in the iliac fossa (extraperitoneal).</li>
-                    <li><strong>Infection risk</strong>: immunosuppression increases risk of surgical site infection, atypical/opportunistic infection and delayed wound healing — strict asepsis, consider broader-spectrum or prolonged prophylaxis per local protocol, and maintain a low threshold for early treatment of sepsis.</li>
-                    <li>Continue nephrotoxin avoidance (NSAIDs, contrast, aminoglycosides) — a single kidney has no functional reserve; monitor graft function (creatinine, urine output) closely postoperatively.</li>
-                  </ul>
-                </div>
-              </div>
+              <RenalTransplantTeaching />
             </section>
 
             <ExamPitfallsCallout
