@@ -143,7 +143,10 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
           })),
         );
       })
-      .catch(() => setIndex([]))
+      .catch((err) => {
+        console.error("[search] failed to load search index", err);
+        setIndex([]);
+      })
       .finally(() => setIndexLoading(false));
   }, [open, index, indexLoading]);
 
