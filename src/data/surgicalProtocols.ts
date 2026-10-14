@@ -21,7 +21,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
     link: "/clinical/general-colorectal-surgery",
     scope: "Laparoscopic and open bowel resection, cholecystectomy, upper GI surgery.",
     preop: [
-      "ERAS pathway: education, prehabilitation, anaemia correction (IV iron if iron-deficient)",
+      "ERAS pathway: education, prehabilitation, anaemia correction (NICE NG24: oral iron for iron-deficiency anaemia; IV iron if oral is unsuitable or surgery is too soon)",
       "Risk stratification (e.g. NSQIP/P-POSSUM); CPET for major or high-risk resection",
       "Carbohydrate drink up to 2 h pre-op where pathway allows; avoid routine bowel preparation unless surgeon requires",
       "Plan analgesia by incision: laparoscopic vs open",
