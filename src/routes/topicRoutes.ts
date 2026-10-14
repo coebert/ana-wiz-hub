@@ -109,6 +109,7 @@ export const TOPIC_ROUTES: ReadonlyArray<readonly [string, string]> = [
   ["/clinical/mass-casualty-military", "MassCasualtyMilitaryTopic"],
   ["/clinical/pain-medicine", "PainMedicineTopic"],
   ["/clinical/tiva", "TIVATopic"],
+  ["/clinical/anaesthesia-basics", "AnaesthesiaBasicsTopic"],
   ["/clinical/orthopaedic-anaesthesia", "OrthopaedicAnaesthesiaTopic"],
   ["/clinical/ophthalmic-anaesthesia", "OphthalmicAnaesthesiaTopic"],
   ["/clinical/day-surgery", "DaySurgeryTopic"],
