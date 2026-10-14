@@ -23,7 +23,7 @@ const SurgicalProtocolsTopic = () => (
     backPath="/clinical"
     backLabel="Clinical"
     accentColor="text-clinical"
-    topicId={T}
+    topicId="surgical-protocols"
     topicTitle="Perioperative Protocols by Surgery Type"
     objectives={[
       "Structure a pre-, intra- and post-operative plan for each major surgical specialty",

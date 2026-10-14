@@ -178,7 +178,7 @@ const GeneralColorectalSurgeryTopic = () => (
     backPath="/clinical"
     backLabel="Clinical"
     accentColor="text-clinical"
-    topicId={T}
+    topicId="general-colorectal-surgery"
     topicTitle="Anaesthesia for General & Colorectal Surgery"
     workedExamples={workedExamples}
     quizQuestions={generalColorectalSurgeryQuestions}
