@@ -113,6 +113,8 @@ const FoetalCirculationTopic = () => {
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PA_BK_01"] },
         workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["PA_BK_02"] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        placentalTransfer: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PA_BK_01"] },
+        transitionMechanisms: { exams: [Exam.PRIMARY], curriculumCodes: ["PA_BK_02"] },
       }}
       sectionSources={{
         placentalTransfer: ["Am Zool 1992", "e-Safe Anaesthesia"],
@@ -206,6 +208,34 @@ const FoetalCirculationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="placental-transfer" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_01"]}>
+            <CollapsibleSubsection title="Placental Transfer Physiology">
+              <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  Placental gas and nutrient exchange is governed by <strong>Fick's Law of Diffusion</strong>, where transfer rate is proportional to surface area and concentration gradient, and inversely proportional to membrane thickness.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <div className="p-3 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground mb-1">Flow-Limited Transfer</p>
+                    <p>Substances with high lipid solubility (e.g., O₂, CO₂, volatile anaesthetics) equilibrate fully in a single pass. Transfer is limited only by maternal/foetal blood flow rates <InlineRef topicId="foetal-circulation" refLabel="Am Zool 1992" />.</p>
+                  </div>
+                  <div className="p-3 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground mb-1">Diffusion-Limited Transfer</p>
+                    <p>Lipid-insoluble or large molecules (e.g., glucose, ions, non-depolarising neuromuscular blockers) are limited by the physical properties of the placental barrier (thickness, surface area) <InlineRef topicId="foetal-circulation" refLabel="Am Zool 1992" />.</p>
+                  </div>
+                </div>
+                <div className="rounded-lg bg-secondary/20 p-4 border border-border">
+                  <p className="font-semibold text-foreground text-xs uppercase tracking-wider mb-2">Oxygen Transfer Efficiency</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li><strong>Vascular Geometry:</strong> The human placenta uses a "villous" arrangement allowing end-venous equilibration. This is less efficient than the counter-current systems found in other mammals (e.g., rabbits) <InlineRef topicId="foetal-circulation" refLabel="Am Zool 1992" />.</li>
+                    <li><strong>Geometric Determinants:</strong> Fetal oxygen uptake is primarily determined by villi density and effective villi radius within the placentone <InlineRef topicId="foetal-circulation" refLabel="Serov et al. 2015" />.</li>
+                    <li><strong>Membrane Gradient:</strong> Maternal-to-foetal PO₂ gradient is ~4–6 kPa, maintained by high maternal flow and foetal HbF affinity.</li>
+                  </ul>
+                </div>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="transitional" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_02"]}>
             <CollapsibleSubsection title="Transitional Circulation at Birth">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
@@ -216,6 +246,40 @@ const FoetalCirculationTopic = () => {
               <li><strong>Ductus venosus</strong> closes as umbilical venous flow ceases.</li>
               <li>Transition from <strong>parallel</strong> circulation (two ventricles in parallel) to <strong>series</strong> circulation (adult pattern).</li>
             </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+
+
+          <ExamSection id="transition-mechanisms" exams={[Exam.PRIMARY]} curriculumCodes={["PA_BK_02"]}>
+            <CollapsibleSubsection title="Physiological Mechanisms of Transition">
+              <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  The transition from in-parallel to in-series circulation is triggered by two near-simultaneous events: lung aeration and umbilical cord clamping.
+                </p>
+                <div className="space-y-3">
+                  <div className="p-4 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground">1. Lung Aeration (The Primary Trigger)</p>
+                    <p className="mt-1">Establishment of functional residual capacity (FRC) through the first breath triggers a dramatic <strong>8–10 fold decrease in PVR</strong>. This occurs via:</p>
+                    <ul className="mt-2 list-disc list-inside space-y-1 ml-2">
+                      <li><strong>Mechanical expansion:</strong> Unfolding of alveolar capillaries.</li>
+                      <li><strong>Chemical vasodilation:</strong> Increase in alveolar PaO₂ and release of endogenous nitric oxide and prostacyclin <InlineRef topicId="foetal-circulation" refLabel="Pediatr Res 2023" />.</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground">2. Cord Clamping</p>
+                    <p className="mt-1">Removal of the low-resistance placental circuit (which received ~40% of fetal cardiac output) leads to an immediate <strong>increase in SVR</strong>. This elevates left-sided pressures, contributing to the functional closure of the foramen ovale <InlineRef topicId="foetal-circulation" refLabel="Karger 2014" />.</p>
+                  </div>
+                  <div className="p-4 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground">3. Molecular Closure of the Ductus Arteriosus</p>
+                    <p className="mt-1">In utero, the DA is kept patent by low PaO₂ and <strong>PGE₂</strong> acting on EP4 receptors. Postnatal closure involves:</p>
+                    <ul className="mt-2 list-disc list-inside space-y-1 ml-2">
+                      <li><strong>Oxygen Sensing:</strong> DA smooth muscle cells sense the rise in PaO₂ via a mitochondrial-redox mechanism, leading to calcium influx and constriction <InlineRef topicId="foetal-circulation" refLabel="Bentley et al. 2021" />.</li>
+                      <li><strong>Prostaglandin Withdrawal:</strong> Loss of placental PGE₂ and increased pulmonary metabolism of prostaglandins <InlineRef topicId="foetal-circulation" refLabel="NCBI Bookshelf 2016" />.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 
