@@ -15,6 +15,7 @@ import {
   TopicalIntracameralIllustration,
 } from "@/components/diagrams/clinical/EyeBlockIllustrations";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { OphthalmicEvidenceTeaching } from "@/components/topic/OphthalmicEvidenceTeaching";
 import {
   Accordion,
   AccordionContent,
@@ -281,6 +282,14 @@ const OphthalmicAnaesthesiaTopic = () => {
               ventilation, cardiovascular support until block resolves (1–2 h). Always perform ophthalmic regional blocks with full
               monitoring, IV access and resuscitation drugs immediately available.
             </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+          </div>
+
+          <div id="evidence" className="scroll-mt-24">
+          <ExamSection exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Evidence Base: Topical vs Sub-Tenon's and the Oculocardiac Reflex">
+              <OphthalmicEvidenceTeaching />
             </CollapsibleSubsection>
           </ExamSection>
           </div>
