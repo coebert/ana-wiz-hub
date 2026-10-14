@@ -8,3 +8,4 @@
 
 - Keep expanded safety-critical teaching in source-linked Teaching components imported relatively by their topics; the audit corpus prioritises those components so detailed guidance is not silently truncated.
 - Keep curriculum subsection coverage in curriculum-expansion.md and mark batches checked only after source, rendering and audit-corpus verification, so partial expansion cannot imply whole-topic completion.
+- Site search runs on a generated full-text index (src/data/searchIndex.generated.json, rebuilt by scripts/build-search-index.ts on predev/prebuild and lazy-loaded on first dialog open), which reuses the audit-corpus extractor and records each snippet's CollapsibleSubsection anchor so results deep-link to the exact section; named-import filtering keeps shared modules (e.g. anatomyFolios.ts) from leaking one topic's content into another topic's results.
