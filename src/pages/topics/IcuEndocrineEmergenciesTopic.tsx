@@ -1,4 +1,5 @@
 import { InlineRef } from "@/components/references/InlineRef";
+import { HyponatraemiaCorrectionTeaching } from "@/components/topic/EndocrineEmergenciesTeaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -370,6 +371,7 @@ const IcuEndocrineEmergenciesTopic = () => {
                   diagnose SIADH before confirming adequate cortisol and thyroid replacement, since
                   hypocortisolaemia itself causes hyponatraemia.
                 </p>
+                <div className="mt-3"><HyponatraemiaCorrectionTeaching /></div>
 
               </div>
               <div className="p-4 rounded-lg border border-border">
