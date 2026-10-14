@@ -11,6 +11,7 @@ import PropofolLidocaineMechanismDiagram from "@/components/diagrams/pharmacolog
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { DifferentialBlockadeTeaching } from "@/components/topic/DifferentialBlockadeTeaching";
 import { AnaesthesiaDosingCallout } from "@/components/perioperative/AnaesthesiaDosingCallout";
 
 const localAnaestheticsFaqs: Array<[string, string]> = [
@@ -304,6 +305,7 @@ const LocalAnaestheticsTopic = () => {
               <li><strong>Anatomical factors:</strong> in a mixed nerve, mantle fibres (supplying proximal structures) are exposed first, giving a proximal-to-distal onset for peripheral blocks; in neuraxial block the sympathetic level typically extends two or more segments above the sensory level, and the motor level lies below it.</li>
               <li><strong>Clinical relevance:</strong> test cold or pinprick rather than touch when assessing a block for surgery; expect hypotension from early sympathetic block; and warn patients that the ability to move does not mean the block has failed, while a dense motor block signals a high concentration or intrathecal spread.</li>
             </ul>
+            <DifferentialBlockadeTeaching />
           </section>
 
           <section className="mb-10">
