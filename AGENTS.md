@@ -6,3 +6,4 @@
 - Keep detailed APRV teaching in the shared APRVSection rendered by the mechanical ventilation topic, so its source-linked guidance and learning checks stay together.
 
 - Keep expanded safety-critical teaching in source-linked Teaching components imported relatively by their topics; the audit corpus prioritises those components so detailed guidance is not silently truncated.
+- Keep curriculum subsection coverage in curriculum-expansion.md and mark batches checked only after source, rendering and audit-corpus verification, so partial expansion cannot imply whole-topic completion.
