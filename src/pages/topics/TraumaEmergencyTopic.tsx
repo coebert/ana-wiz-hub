@@ -8,6 +8,7 @@ import { traumaEmergencyQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { TraumaABCDETeaching, TraumaFluidBolusTeaching, TraumaTransfusionTeaching, TraumaSurgicalPriorityTeaching } from "@/components/topic/TraumaPrimarySurveyTeaching";
 import { HaemostaticTrialsTeaching } from "@/components/topic/HaemostaticTrialsTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import {
@@ -19,12 +20,16 @@ import {
 
 const tocItems = [
   { id: "introduction", label: "Introduction", group: "Overview" },
+  { id: "abcde", label: "<C>ABCDE primary survey", group: "Overview" },
   { id: "rsi", label: "RSI in trauma", group: "Airway & Induction" },
   { id: "spinal-immobilisation", label: "Spinal immobilisation", group: "Airway & Induction" },
   { id: "damage-control", label: "Damage control resuscitation", group: "Resuscitation" },
   { id: "fluid-resuscitation", label: "Fluid resuscitation", group: "Resuscitation" },
   { id: "haemorrhage-control", label: "Haemorrhage control", group: "Resuscitation" },
   { id: "mtp", label: "Massive transfusion protocol", group: "Resuscitation" },
+  { id: "fluid-boluses", label: "Fluid boluses and targets", group: "Resuscitation" },
+  { id: "transfusion-thresholds", label: "Transfusion ratios and thresholds", group: "Resuscitation" },
+  { id: "surgical-priorities", label: "Surgical priorities", group: "Resuscitation" },
   { id: "lethal-triad", label: "Lethal triad", group: "Resuscitation" },
   { id: "tbi", label: "Traumatic brain injury", group: "Special scenarios" },
   { id: "complications", label: "Complications of MHP", group: "Resuscitation" },
@@ -233,6 +238,12 @@ const TraumaEmergencyTopic = () => {
             </p>
           </ExamSection>
 
+          <ExamSection id="abcde" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="&lt;C&gt;ABCDE Primary Survey">
+              <TraumaABCDETeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="rsi" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Trauma & Stabilisation"]}>
             <CollapsibleSubsection title="Rapid Sequence Induction (RSI)" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -327,6 +338,24 @@ const TraumaEmergencyTopic = () => {
               (loss of sympathetic tone) — distinguish it from haemorrhagic shock, exclude bleeding first, and treat with vasopressors rather than
               fluid loading. Maintain spinal perfusion pressure; avoid both hypotension and over-resuscitation.
             </p>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="fluid-boluses" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Fluid Boluses and Blood Pressure Targets">
+              <TraumaFluidBolusTeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="transfusion-thresholds" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Blood Transfusion Ratios and Haemoglobin Thresholds">
+              <TraumaTransfusionTeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="surgical-priorities" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Surgical Priorities and Damage Control Decisions">
+              <TraumaSurgicalPriorityTeaching />
             </CollapsibleSubsection>
           </ExamSection>
 
