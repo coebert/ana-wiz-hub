@@ -115,6 +115,8 @@ const FoetalCirculationTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
+        placentalTransfer: ["Am Zool 1992", "e-Safe Anaesthesia"],
+        transitionMechanisms: ["Pediatr Res 2023", "NCBI Bookshelf 2016", "J Physiol 2015"],
         objectives: ["Power & Kam Ch.18"],
         workedExamples: ["BJA Educ 2015", "Power & Kam Ch.18"],
         keyPoints: ["Power & Kam Ch.18", "Ganong Ch.33", "BJA Educ 2015"],
