@@ -242,7 +242,7 @@ const NeurologicalDiseaseTopic = () => {
                 <li>Safe agents: propofol (anticonvulsant), thiopentone, sevoflurane, isoflurane, fentanyl, rocuronium</li>
                 <li>Intraoperative seizure management: ensure oxygenation, midazolam 2–5 mg IV, propofol bolus, thiopentone for refractory seizures</li>
               </ul>
-              <h4 className="font-semibold text-foreground mt-3 mb-1 text-sm">Convulsive status epilepticus</h4>
+              <h3 className="font-semibold text-foreground mt-3 mb-1 text-sm">Convulsive status epilepticus</h3>
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li><strong>Definition:</strong> a convulsive seizure lasting 5 minutes or more, or repeated seizures without recovery in between</li>
                 <li><strong>0–5 min:</strong> airway, high-flow O₂, IV access, check glucose (treat hypoglycaemia; thiamine if alcohol or malnutrition)</li>
