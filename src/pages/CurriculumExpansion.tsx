@@ -246,7 +246,9 @@ const CurriculumExpansion = () => {
                       <StatusBadge status={entry.status} />
                     </div>
                     <p className="mt-1.5 text-xs md:text-sm text-muted-foreground">
-                      {entry.note}
+                      {TOPIC_EXPANSION[topic.id]
+                        ? entry.note
+                        : "No topic-specific batch yet — status follows the section."}
                     </p>
                   </li>
                 ))}
