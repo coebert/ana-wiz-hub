@@ -121,3 +121,35 @@ export function EmergencyEctopicTeaching() {
     <LessonSources topicId="emergency-surgery" labels={["NICE NG126 2026"]} />
   </div>;
 }
+
+export function EmergencyTivaTeaching() {
+  const G = () => <InlineRef topicId="emergency-surgery" refLabel="AoA/SIVA TIVA 2019" />;
+  const E = () => <InlineRef topicId="emergency-surgery" refLabel="Anaesthesia 2026 (TIVA emergency)" />;
+  return <div className="space-y-3 text-muted-foreground leading-relaxed p-4 rounded-lg border border-border">
+    <h3 className="text-lg font-serif font-bold text-foreground">Why Every Emergency Anaesthetist Needs TIVA Skills</h3>
+    <ul className="list-disc pl-5 space-y-1">
+      <li><strong className="text-foreground">Guideline position:</strong> the joint Association of Anaesthetists/SIVA guideline notes that volatile maintenance remains commonest in the UK and Ireland, but an inhalational technique is sometimes not possible or is contraindicated. It therefore states that all anaesthetists should be able to deliver TIVA competently and safely.<G /></li>
+      <li><strong className="text-foreground">Scope:</strong> the guideline covers safe practice when TIVA is used, including mixed infusion and volatile techniques. It deliberately does not judge whether TIVA is better than volatile anaesthesia when both are possible.<G /></li>
+      <li><strong className="text-foreground">Emergency gap:</strong> a 2026 narrative review notes TIVA is well established electively but its use remains limited in emergencies, particularly for rapid sequence induction.<E /></li>
+      <li><strong className="text-foreground">Practice point:</strong> the emergency list is where an inhalational technique may suddenly be unavailable or contraindicated, so TIVA competence is a safety skill, not a preference. A narrative review is not trial evidence that TIVA improves emergency outcomes.</li>
+    </ul>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: does the 2019 TIVA guideline say TIVA is better than volatile anaesthesia?</summary><p className="mt-2">No. It sets safe-practice standards and says all anaesthetists should be competent in TIVA, but explicitly does not review TIVA versus volatile where both are possible.</p></details>
+    <LessonSources topicId="emergency-surgery" labels={["AoA/SIVA TIVA 2019", "Anaesthesia 2026 (TIVA emergency)"]} />
+  </div>;
+}
+
+export function EmergencyCompartmentPressureTeaching() {
+  const M = () => <InlineRef topicId="emergency-surgery" refLabel="McQueen 1996" />;
+  return <div className="space-y-3 text-muted-foreground leading-relaxed p-4 rounded-lg border border-border">
+    <h3 className="text-lg font-serif font-bold text-foreground">The Differential Pressure Threshold: McQueen and Court-Brown</h3>
+    <p>This prospective Edinburgh study continuously monitored anterior compartment pressure for 24 hours in 116 patients with tibial shaft fractures. Three (2.6%) developed acute compartment syndrome.<M /></p>
+    <ul className="list-disc pl-5 space-y-1">
+      <li><strong className="text-foreground">Absolute pressure overcalls:</strong> in the first 12 hours, 53 patients had absolute pressures over 30 mmHg. A 30 mmHg threshold would have meant fasciotomy for 50 patients (43%); a 40 mmHg threshold would have considered 27 (23%) for an unnecessary fasciotomy.<M /></li>
+      <li><strong className="text-foreground">Differential pressure:</strong> only the three patients whose differential pressure (diastolic minus compartment pressure) fell below 30 mmHg had fasciotomy. No case was missed and none of the 116 had sequelae at six months or later.<M /></li>
+      <li><strong className="text-foreground">Anaesthetic relevance:</strong> differential pressure depends on diastolic pressure, so hypotension under anaesthesia lowers it. Read pressures alongside the current blood pressure, and agree monitoring with the surgeons when the patient is obtunded or blocked.</li>
+      <li><strong className="text-foreground">Limits:</strong> a single-centre study of tibial fractures with only three cases; it cannot define the threshold precisely for other limbs or injuries.</li>
+    </ul>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: diastolic 60 mmHg, compartment pressure 35 mmHg. Does this meet the McQueen threshold?</summary><p className="mt-2">Yes. The differential pressure is 25 mmHg, below 30 mmHg.</p></details>
+    <LessonSources topicId="emergency-surgery" labels={["McQueen 1996"]} />
+  </div>;
+}
