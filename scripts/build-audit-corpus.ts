@@ -325,7 +325,13 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
     const next: typeof frontier = [];
     for (const node of frontier) {
       const extracted = extractFromSource(node.src);
-      lines.push(...extracted.lines);
+      // Shared APRV teaching must precede large waveform component output
+      // so the audit's per-topic text budget cannot silently discard it.
+      if (topic.id === "mechanical-ventilation" && node.file.endsWith("/APRVSection.tsx")) {
+        lines.unshift(...extracted.lines);
+      } else {
+        lines.push(...extracted.lines);
+      }
       svgLabels.push(...extracted.svgLabels);
       if (node.depth >= MAX_IMPORT_DEPTH) continue;
       for (const dep of localImportsOf(node.src, node.file)) {
