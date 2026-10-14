@@ -9,6 +9,7 @@ import TheatreZoningDiagram from "@/components/diagrams/clinical/TheatreZoningDi
 import CssdWasteFlowSubMap from "@/components/diagrams/clinical/CssdWasteFlowSubMap";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { LaminarFlowEvidenceTeaching } from "@/components/topic/LaminarFlowEvidenceTeaching";
 
 const operatingTheatreEnvironmentFaqs: Array<[string, string]> = [
   [
@@ -188,6 +189,10 @@ const OperatingTheatreEnvironmentTopic = () => {
               door openings and personnel movement readily destroy the unidirectional flow. The team behaviour matters as much as the engineering.
             </p>
             </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} className="scroll-mt-24">
+            <LaminarFlowEvidenceTeaching />
           </ExamSection>
 
           <ExamSection id="environment" exams={[Exam.PRIMARY, Exam.FINAL]}>

@@ -68,6 +68,18 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "in-progress",
     note: "Lesson added on the 65 trial (permissive hypotension) and HYPRESS (steroids before shock), with sources list and learning check.",
   },
+  "elderly-anaesthesia": {
+    status: "in-progress",
+    note: "RAGA/REGAIN hip-fracture anaesthesia lesson added (30-day mortality and delirium no different between spinal and general), with a correction to the NICE mortality claim and sources list. Other subsections still need review.",
+  },
+  "icu-nutrition": {
+    status: "in-progress",
+    note: "Protein/calorie trials lesson added (EFFORT Protein, NUTRIREA-2/3, TARGET), trial list corrected (TARGET year, NUTRIREA-2/3 split, EFFORT added) and three cross-wired key-point citations fixed. Other subsections still need review.",
+  },
+  "operating-theatre-environment": {
+    status: "in-progress",
+    note: "Laminar-flow evidence lesson added (Lidwell 1982 vs Brandt 2008 and WHO 2016 conditional recommendation), with sources list. Other subsections still need review.",
+  },
   "abdominal-compartment-syndrome": {
     status: "in-progress",
     note: "WSACS 2013 evidence-strength lesson added (recommendations vs suggestions vs no recommendation, bedside application, learning check, sources list). Other subsections still need review.",
