@@ -81,6 +81,14 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "in-progress",
     note: "Laminar-flow evidence lesson added (Lidwell 1982 vs Brandt 2008 and WHO 2016 conditional recommendation), with sources list. Other subsections still need review.",
   },
+  "ophthalmic-anaesthesia": {
+    status: "in-progress",
+    note: "Evidence lesson added (Guay 2015 Cochrane: topical vs sub-Tenon's pain outcomes and insufficient complication evidence; OCR incidence with and without sub-Tenon's bupivacaine), with sources list. Other subsections still need review.",
+  },
+  "interventional-radiology": {
+    status: "in-progress",
+    note: "Thrombectomy anaesthesia evidence lesson added (SIESTA/ANSTROKE/GOLIATH, Bai 2021 meta-analysis, GOLIATH haemodynamic analysis) and the thrombectomy FAQ answer corrected; sources list added. Other subsections still need review.",
+  },
   "abdominal-compartment-syndrome": {
     status: "in-progress",
     note: "WSACS 2013 evidence-strength lesson added (recommendations vs suggestions vs no recommendation, bedside application, learning check, sources list). Other subsections still need review.",
