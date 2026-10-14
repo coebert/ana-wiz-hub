@@ -64,6 +64,12 @@ export interface SearchIndexEntry {
 interface Piece {
   text: string;
   index: number;
+  /**
+   * Diagram/atlas label text (folio titles, latin/english label pairs, tab
+   * labels). Labels are teaching content and bypass the prose budget, so a
+   * long topic cannot silently lose the searchable names of its diagrams.
+   */
+  label?: boolean;
 }
 
 /**
@@ -99,6 +105,16 @@ function extractPositioned(src: string): Piece[] {
   while ((m = longStrings.exec(body))) {
     const t = decode(m[1]);
     if (looksLikeProse(t) && /\s/.test(t)) pieces.push({ text: t, index: m.index });
+  }
+
+  // Diagram/atlas label fields (anatomy folios: latin/english pairs, tab
+  // labels, short titles) — searchable names even when the surrounding
+  // topic prose has exhausted the budget.
+  const labelProps =
+    /\b(?:english|latin|tabLabel|shortLabel|acronym|abbr)\s*[:=]\s*(?:"([^"\\]*(?:\\.[^"\\]*)*)"|'([^'\\]*(?:\\.[^'\\]*)*)'|`([^`\\]*(?:\\.[^`\\]*)*)`)/g;
+  while ((m = labelProps.exec(body))) {
+    const t = decode(m[1] ?? m[2] ?? m[3] ?? "");
+    if (t.length >= 3 && /[a-zA-Z]/.test(t)) pieces.push({ text: t, index: m.index, label: true });
   }
 
   return pieces.sort((a, b) => a.index - b.index);
