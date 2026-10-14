@@ -374,7 +374,7 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
   const prose = [`# ${topic.title}`, topic.description, "", ...uniqueLines].join("\n");
   // This long topic includes the shared APRV section after its root content.
   // Keep that source-linked teaching in the audit, rather than truncating it.
-  const textBudget = ["mechanical-ventilation", "paediatric-anaesthesia", "ent-anaesthesia", "renal-disease", "general-colorectal-surgery", "bariatric-anaesthesia", "gas-laws", "electricity-magnetism", "ultrasound-physics", "pressure-measurement", "flow-measurement", "temperature-measurement", "renal-physiology", "hepatic-physiology", "foetal-circulation", "local-anaesthetics", "volatile-agents", "antimicrobials-pharm", "toxicology", "iv-anaesthetics"].includes(topic.id) ? 64_000 : MAX_TEXT_CHARS;
+  const textBudget = ["mechanical-ventilation", "paediatric-anaesthesia", "ent-anaesthesia", "renal-disease", "general-colorectal-surgery", "bariatric-anaesthesia", "gas-laws", "electricity-magnetism", "ultrasound-physics", "pressure-measurement", "flow-measurement", "temperature-measurement", "renal-physiology", "hepatic-physiology", "foetal-circulation", "local-anaesthetics", "volatile-agents", "antimicrobials-pharm", "toxicology", "iv-anaesthetics", "abdominal-compartment-syndrome", "non-technical-skills"].includes(topic.id) ? 64_000 : MAX_TEXT_CHARS;
   const text = [
     prose.slice(0, textBudget - (labelBlock ? labelBlock.length + 2 : 0)),
     "",

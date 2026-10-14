@@ -1713,6 +1713,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2017", citation: "Hawryluck L. Withdrawal of life-sustaining therapy in the ICU. BJA Education. 2017;17(11):359-364." },
   ],
   "non-technical-skills": [
+    { label: "Fletcher 2003 ANTS", citation: "Fletcher G, Flin R, McGeorge P, Glavin R, Maran N, Patey R. Anaesthetists' Non-Technical Skills (ANTS): evaluation of a behavioural marker system. Br J Anaesth. 2003;90(5):580-588.", url: "https://doi.org/10.1093/bja/aeg112", excerpt: "The findings of the evaluation indicated that the ANTS system has a satisfactory level of validity, reliability and usability in an experimental setting, provided users receive adequate training." },
+    { label: "Haynes 2009 WHO Checklist", citation: "Haynes AB, Weiser TG, Berry WR, et al. A surgical safety checklist to reduce morbidity and mortality in a global population. N Engl J Med. 2009;360(5):491-499.", url: "https://doi.org/10.1056/NEJMsa0810119", excerpt: "The rate of death was 1.5% before the checklist was introduced and declined to 0.8% afterward (P=0.003). Inpatient complications occurred in 11.0% of patients at baseline and in 7.0% after introduction of the checklist (P<0.001)." },
     { label: "BJA Educ 2003", citation: "Fletcher G, Flin R, McGeorge P, et al. Anaesthetists' Non-Technical Skills (ANTS): evaluation of a behavioural marker system. Br J Anaesth. 2003;90(5):580-588.", url: "https://doi.org/10.1093/bja/aeg112" },
     { label: "RCoA ANTS", citation: "Royal College of Anaesthetists. ANTS — Anaesthetists' Non-Technical Skills handbook.", url: "https://www.rcoa.ac.uk" },
     { label: "BMJ 2000", citation: "Reason J. Human error: models and management. BMJ. 2000;320(7237):768-770." },

@@ -56,6 +56,14 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
 
 /** Topic-level overrides for topics with a completed expansion batch. */
 export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
+  "abdominal-compartment-syndrome": {
+    status: "in-progress",
+    note: "WSACS 2013 evidence-strength lesson added (recommendations vs suggestions vs no recommendation, bedside application, learning check, sources list). Other subsections still need review.",
+  },
+  "non-technical-skills": {
+    status: "in-progress",
+    note: "Evidence lesson added (ANTS validation, WHO checklist before-after data and limits, ICU translation, sources list). Other subsections still need review.",
+  },
   "iv-anaesthetics": {
     status: "in-progress",
     note: "Propofol infusion syndrome lesson added (Hemphill 2019 case analysis: child vs adult phenotype, mortality markers, dose relationship, recognition and haemofiltration). Other subsections still need review.",

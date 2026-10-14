@@ -6,6 +6,7 @@ import { abdominalCompartmentSyndromeQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { InlineRef } from "@/components/references/InlineRef";
+import { WSACSEvidenceTeaching } from "@/components/topic/WSACSEvidenceTeaching";
 
 const abdominalCompartmentSyndromeFaqs: Array<[string, string]> = [
   ["How is intra-abdominal pressure measured and what defines ACS?", "Bladder pressure with 25 mL saline at end-expiration, supine, transduced at the mid-axillary line; intra-abdominal hypertension ≥12 mmHg, ACS = sustained IAP >20 mmHg with new organ dysfunction (WSACS 2013)."],
@@ -431,6 +432,10 @@ const AbdominalCompartmentSyndromeTopic = () => {
                 Beyond this window, options include component separation, biological or synthetic mesh, or a planned
                 ventral hernia for staged reconstruction<InlineRef topicId="abdominal-compartment-syndrome" refLabel="Björck 2016" /><InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
               </p>
+            </CollapsibleSubsection>
+
+            <CollapsibleSubsection title="Evidence Strength of WSACS Recommendations">
+              <WSACSEvidenceTeaching />
             </CollapsibleSubsection>
 
             {/* Prognosis */}
