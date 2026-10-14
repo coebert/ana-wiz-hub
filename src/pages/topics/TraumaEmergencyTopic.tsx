@@ -376,7 +376,7 @@ const TraumaEmergencyTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               Stopping the bleeding is the single most effective resuscitation intervention — every other measure buys time.
               Control proceeds from simple external measures to endovascular and surgical techniques, often in parallel with
-              resuscitation rather than before it.<InlineRef topicId="trauma-emergency" refLabel="NICE NG39" /><InlineRef topicId="trauma-emergency" refLabel="UK-REBOA 2023" />
+              resuscitation rather than before it.<InlineRef topicId="trauma-emergency" refLabel="NICE NG39" /><InlineRef topicId="trauma-emergency" refLabel="UK-REBOA 2023" /><InlineRef topicId="trauma-emergency" refLabel="European Trauma Bleeding Guideline 2023" /><InlineRef topicId="trauma-emergency" refLabel="Holcomb 2023 Tourniquet Conversion" />
             </p>
             <div className="space-y-3">
               {[
