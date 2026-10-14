@@ -13,7 +13,7 @@ const wrap = "space-y-4 text-sm text-muted-foreground leading-relaxed mt-5 mb-4"
 export function EegMonitoringTeaching() {
   return <div className={wrap}>
     <H>What a depth-of-anaesthesia monitor actually measures</H>
-    <p>Processed EEG monitors such as the Bispectral Index (BIS), E-Entropy and Narcotrend reduce the frontal EEG to a single number. <B>The widely used indices assume that the same value means the same level of unconsciousness whatever drug is given.</B> Purdon and colleagues argue that this assumption is wrong: different anaesthetics act on different receptors and neural circuits and produce distinct brain states that can be seen directly in the raw EEG.<R label="Purdon 2015" /></p>
+    <p>Processed EEG monitors such as the Bispectral Index (BIS), E-Entropy and Narcotrend reduce the EEG to a single number. <B>The widely used indices assume that the same value means the same level of unconsciousness whatever drug is given.</B> Purdon and colleagues argue that this assumption is wrong: different anaesthetics act on different receptors and neural circuits and produce distinct brain states that can be seen directly in the raw EEG.<R label="Purdon 2015" /></p>
 
     <H>Reading the raw EEG: drug signatures</H>
     <ul className="list-disc list-inside space-y-1">
@@ -62,7 +62,7 @@ export function TivaBasicsTeaching() {
     <p>Volatile maintenance remains the commonest technique in the UK and Ireland. But an inhalational technique is sometimes not possible, and sometimes contraindicated, so the joint Association of Anaesthetists and Society for Intravenous Anaesthesia guideline says <B>all anaesthetists should be able to deliver TIVA competently and safely</B>. The guideline deliberately sets out safe practice rather than arguing that TIVA is better than volatile anaesthesia where both are possible.<R label="AoA/SIVA TIVA 2019" /></p>
 
     <H>Why TIVA changes the awareness picture</H>
-    <p>With a volatile agent you can measure the end-tidal concentration. With TIVA there is no equivalent measured drug concentration, and the infusion depends on an intact line and pump. That is the reasoning behind NICE recommending an EEG-based depth-of-anaesthesia monitor as an option in <B>all</B> patients receiving TIVA.<R label="NICE HTG292 (DG6)" /> NAP5 also identified interruptions in anaesthetic delivery, such as the move from the anaesthetic room to theatre, as a contributor to awareness at induction.<R label="NAP5 2014" /></p>
+    <p>With a volatile agent you can measure the end-tidal concentration. With TIVA there is no equivalent measured drug concentration, and the infusion depends on an intact line and pump. (That is teaching reasoning, not a quoted source.) NICE recommends an EEG-based depth-of-anaesthesia monitor as an option in <B>all</B> patients receiving TIVA.<R label="NICE HTG292 (DG6)" /> NAP5 also identified interruptions in anaesthetic delivery, such as the move from the anaesthetic room to theatre, as a contributor to awareness at induction.<R label="NAP5 2014" /></p>
     <p>For pump models, target-controlled infusion and practical line set-up, see the full TIVA page.</p>
 
     <Check q="what does the 2019 joint guideline say about TIVA versus volatile anaesthesia?" a="That all anaesthetists should be able to give TIVA competently and safely, because volatile is sometimes impossible or contraindicated. It explicitly does not set out to say which technique is better when both are possible." />
