@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Maximize2, Minimize2 } from "lucide-react";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
@@ -155,6 +156,7 @@ const MechanicalVentilationTopic = () => {
     <>
       <StickyTOC items={tocItems} />
       <section className="space-y-6 mb-10">
+        <p className="text-sm text-muted-foreground">Related lesson: <Link to="/intensive-care/peep-management" className="font-semibold text-primary underline underline-offset-4">PEEP Management</Link> — measurement, titration, lung protection and the settings that influence intrinsic PEEP.</p>
         {/* ───── 1. Indications ───── */}
         <ExamSection id="toc-introduction" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="1. Indications for Invasive Ventilation" defaultOpen>
