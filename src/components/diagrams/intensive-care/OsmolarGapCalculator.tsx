@@ -134,7 +134,7 @@ const OsmolarGapCalculator = () => {
       <div className="border border-border rounded-lg p-4 mb-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-base font-serif font-bold text-foreground">Osmolar gap calculator</h3>
-          <Button
+          <Button variant="outline" size="sm"
             onClick={reset}
             className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded border border-border hover:bg-secondary transition-colors"
           >
@@ -149,8 +149,8 @@ const OsmolarGapCalculator = () => {
             <NumInput label="Urea" value={urea} set={setUrea} unit={ureaUnit} min={0} max={200} step={0.1} />
             <div className="mt-1 inline-flex rounded border border-border overflow-hidden text-[10px] w-full">
               {(["mmol/L", "mg/dL (BUN)"] as UreaUnit[]).map((u) => (
-                <Button key={u} onClick={() => setUreaUnit(u)}
-                  className={`flex-1 px-1 py-0.5 transition-colors ${ureaUnit === u ? "bg-primary text-primary-foreground" : "hover:bg-secondary"}`}>
+                <Button variant="ghost" size="sm" aria-pressed={ureaUnit === u} key={u} onClick={() => setUreaUnit(u)}
+                  className={`min-w-0 flex-1 rounded-none px-1 text-[10px] transition-colors ${ureaUnit === u ? "bg-primary text-primary-foreground" : "hover:bg-secondary"}`}>
                   {u}
                 </Button>
               ))}
@@ -161,8 +161,8 @@ const OsmolarGapCalculator = () => {
             <NumInput label="Glucose" value={glucose} set={setGlucose} unit={gluUnit} min={0} max={200} step={0.1} />
             <div className="mt-1 inline-flex rounded border border-border overflow-hidden text-[10px] w-full">
               {(["mmol/L", "mg/dL"] as GlucoseUnit[]).map((u) => (
-                <Button key={u} onClick={() => setGluUnit(u)}
-                  className={`flex-1 px-1 py-0.5 transition-colors ${gluUnit === u ? "bg-primary text-primary-foreground" : "hover:bg-secondary"}`}>
+                <Button variant="ghost" size="sm" aria-pressed={gluUnit === u} key={u} onClick={() => setGluUnit(u)}
+                  className={`min-w-0 flex-1 rounded-none px-1 text-[10px] transition-colors ${gluUnit === u ? "bg-primary text-primary-foreground" : "hover:bg-secondary"}`}>
                   {u}
                 </Button>
               ))}

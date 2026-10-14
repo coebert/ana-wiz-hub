@@ -190,7 +190,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "acid-base": {
     status: "expanded",
-    note: "Audited: mislinked BJA source replaced; saline/balanced fluid (SMART, PLUS) and bicarbonate (BICAR-ICU) lessons added.",
+    note: "HAGMA, NAGMA, osmolar gap, Stewart and citrate subsections source-reviewed and complete; linked formulae, displays and toxin criteria corrected. Source-checked, not consultant-reviewed; this does not certify the remaining older sections.",
   },
   // --- Physiology batch ---
   "renal-physiology": {
