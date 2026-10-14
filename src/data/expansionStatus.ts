@@ -99,7 +99,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "mass-casualty-military": {
     status: "in-progress",
-    note: "Triage section rewritten from the NARU Ten Second Triage document (2023) and NHS England MITT letter (2023): conflicting respiratory-rate cut-offs removed, TST steps and MITT role added, quiz updated. Other sections still need review.",
+    note: "Triage section rewritten from the NARU Ten Second Triage document (2023) and NHS England MITT letter (2023): conflicting respiratory-rate cut-offs removed, TST steps and MITT role added, quiz updated. Line-by-line review of the triage content against NARU TST 2023 / NHS England MITT 2023 done (paediatric tape and JumpSTART mislabel corrected); internal inconsistencies fixed elsewhere (TXA maintenance infusion, nerve-agent atropine dosing, duplicated key point, mis-attributed key-point citations). Ethics, CRM, DCR, military and CBRN sections fall outside NARU scope and still need checking against their own sources.",
   },
   "burns-icu": {
     status: "in-progress",
