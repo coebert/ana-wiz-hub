@@ -114,7 +114,7 @@ const ToxicAlcoholTimelineDiagram = () => {
         <div>
           <h4 className="font-semibold text-foreground">Toxic alcohol timeline — OG vs AG</h4>
           <p className="text-xs text-muted-foreground">
-            Animated, illustrative kinetics. Watch the <span className="text-primary font-medium">osmolar gap</span> fall as the
+            Illustrative only: timings and values are not patient predictions. Watch the <span className="text-primary font-medium">osmolar gap</span> fall as the
             <span className="text-destructive font-medium"> anion gap</span> rises.
           </p>
         </div>
@@ -272,7 +272,7 @@ const ToxicAlcoholTimelineDiagram = () => {
         <strong className="text-foreground">Clinical pearl: </strong>
         {phase} An <em>early</em> presentation may show a high OG with a near-normal AG (mostly parent alcohol);
         a <em>late</em> presentation may show a normalised OG with a marked HAGMA (metabolite-dominant). Fomepizole blocks
-        ADH and freezes the OG curve while extending the window before the AG rises — buying time for dialysis to remove
+        ADH, prolonging parent alcohol persistence and reducing further acid production; it does not freeze the curve or remove existing metabolites. Dialysis can remove
         both parent and metabolite.
       </p>
     </div>
