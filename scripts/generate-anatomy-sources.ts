@@ -56,7 +56,7 @@ function cited(topic: string, label: string): Source {
   return { label, detail: text(ref?.citation) || "Citation label could not be resolved in the topic references.", ...(text(ref?.url) ? { url: text(ref?.url) } : {}), basis: "Landmark citation" };
 }
 const known: Record<string, string[]> = {
-  DiaphragmDiagram: ["Aperture laterality and phrenic courses were corrected; the schematic remains simplified and is not a validated anatomical model."],
+  DiaphragmDiagram: ["The schematic is simplified; aperture laterality and phrenic courses require comparison with an anatomical source. This is not a validated anatomical model."],
   CardiacAnatomyDiagram: ["Procedural 3D fallback is simplified and is not a validated anatomical mesh; optional GLB models are absent locally."],
   InteractiveDermatomeMap: ["Dermatome boundaries vary between reference charts; this map is schematic, not a definitive boundary map."],
   DermatomeMapDiagram: ["Dermatome boundaries vary between reference charts."],
@@ -87,7 +87,7 @@ for (const p of componentFiles) {
       if (n.name.getText() === "title" && /DiagramFigure/.test(n.parent.parent.getText().slice(0, 30)) && text(v)) title = text(v);
     }
   });
-  for (const c of anatomyDiagramCitations[name] ?? []) sources.push({ label: c.label, detail: c.detail, url: c.url, basis: /Gray's/.test(c.label) ? "Reference figure used to check the schematic (public domain)" : "Reference paper used to check the schematic" });
+  for (const c of anatomyDiagramCitations[name] ?? []) sources.push({ label: c.label, detail: c.detail, url: c.url, basis: /Gray's/.test(c.label) ? "Recorded reference figure; consult the linked file for rights information" : "Recorded reference paper; claim-to-source matching not certified" });
   // Comments are labelled as notes, not promoted to bibliographic/image provenance.
   if (!sources.length) {
     const comments = read(p).match(/\/\*[\s\S]*?\*\/|\/\/[^\n]*/g) ?? [];
@@ -120,7 +120,9 @@ for (const [name, node] of folioCtx.vars) {
   for (const v of folio.plates) {
     const plate = object(v);
     const credit = text(plate.imageCredit), srcUrl = text(plate.imageSourceUrl);
-    add({ id: `${name}-${text(plate.id)}`, title: text(plate.title), group: text(folio.atlasTitle), kind: credit ? "Sourced public-domain plate" : "Painted atlas plate", sources: credit ? [{ label: "Gray's Anatomy (1918)", detail: credit, ...(srcUrl ? { url: srcUrl } : {}), basis: "Image source and licence" }] : [], credit: credit || "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.", uncertainty: credit ? [] : [text(plate.auditWarning), "Printed labels and broad hotspot polygons are not fully verified against an independently sourced atlas."].filter(Boolean), topicLinks: routes.filter(r => r.code.includes(name)).map(r => ({ title: r.path.split("/").pop()?.replace(/-/g, " ") ?? name, path: r.path })), sourceFile: folioPath });
+    const sourced = Boolean(credit && srcUrl);
+    const historicGray = sourced && /Gray's Anatomy|Henry Gray/.test(credit) && /1918/.test(credit) && /^https:\/\/commons\.wikimedia\.org\/wiki\/File:Gray\d+\.png$/.test(srcUrl) && /Public domain/i.test(credit);
+    add({ id: `${name}-${text(plate.id)}`, title: text(plate.title), group: text(folio.atlasTitle), kind: historicGray ? "Sourced public-domain plate" : sourced ? "Credited plate; rights not verified" : "Painted atlas plate", sources: sourced ? [{ label: historicGray ? "Gray's Anatomy (1918)" : "Recorded artwork source", detail: credit, url: srcUrl, basis: "Recorded image source and rights statement; not anatomical validation" }] : [], credit: credit || "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.", uncertainty: [text(plate.auditWarning), ...(historicGray ? [] : ["Artwork source and public-domain status require verification."]), "Historical artwork and added labels/hotspots are not certified against current anatomical references."].filter(Boolean), topicLinks: routes.filter(r => r.code.includes(name)).map(r => ({ title: r.path.split("/").pop()?.replace(/-/g, " ") ?? name, path: r.path })), sourceFile: folioPath });
   }
 }
 entries.sort((a, b) => a.group.localeCompare(b.group) || a.title.localeCompare(b.title));
