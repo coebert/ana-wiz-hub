@@ -19,6 +19,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { InlineRef } from "@/components/references/InlineRef";
+import { AcidBaseFluidsTeaching, BicarbonateTherapyTeaching } from "@/components/topic/AcidBaseTherapyTeaching";
 
 const acidBaseFaqs: Array<[string, string]> = [
   ["How do you calculate and interpret the anion gap?", "AG = (Na⁺ + K⁺) − (Cl⁻ + HCO₃⁻); normal 8–12 mmol/L. A raised AG metabolic acidosis points to lactate, ketones, renal failure or toxins (MUDPILES); a normal AG acidosis suggests GI HCO₃⁻ loss or RTA."],
@@ -53,7 +54,7 @@ const workedExamples: WorkedExample[] = [
       "Expected PaCO₂ (Winter's) = 1.5 × 6 + 8 ± 2 = 17 ± 2 mmHg → measured 15 mmHg = within range → appropriate respiratory compensation, no superimposed respiratory disorder.\nAG = 134 − (96 + 6) = 32 (raised, ketoacids).\nΔAG = 32 − 12 = 20; ΔHCO₃⁻ = 24 − 6 = 18 → delta ratio = 20/18 ≈ 1.1 → pure HAGMA without superimposed normal-AG acidosis or metabolic alkalosis.",
     answer:
       "Pure HAGMA from ketoacidosis with appropriate respiratory compensation. Treat with fluids + fixed-rate insulin + K⁺ replacement; bicarbonate not indicated.",
-    cites: ["BJA Educ 2015"],
+    cites: ["BJA Educ 2022 Acid-Base"],
   },
 ];
 
@@ -67,6 +68,8 @@ const tocItems = [
   { id: "section-comparing-frameworks", label: "Comparing Frameworks", group: "Advanced" },
   { id: "section-citrate", label: "Citrate Anticoagulation", group: "Advanced" },
   { id: "section-lactic", label: "Lactic Acidosis", group: "Disorders" },
+  { id: "section-fluids-chloride", label: "Saline vs Balanced Fluids", group: "Treatment" },
+  { id: "section-bicarbonate", label: "Bicarbonate Therapy", group: "Treatment" },
 ];
 
 const AcidBaseTopic = () => {
@@ -89,24 +92,24 @@ const AcidBaseTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "BJA Educ 2015",
+          "BJA Educ 2022 Acid-Base",
           "Brandis",
           "Power & Kam Ch.11",
         ],
         keyPoints: [
-          "BJA Educ 2015",
+          "BJA Educ 2022 Acid-Base",
           "Brandis",
           "Power & Kam Ch.11",
         ],
-        workedExamples: ["Brandis", "BJA Educ 2015"],
+        workedExamples: ["Brandis", "BJA Educ 2022 Acid-Base"],
       }}
       keyPoints={[
         { text: "Systematic approach: oxygenation → primary disorder → compensation → anion gap → delta ratio", cites: ["Power & Kam Ch.11"] },
         { text: "HAGMA: MUDPILES. Normal AG acidosis: renal tubular acidosis, diarrhoea, saline excess", cites: ["Brandis"] },
-        { text: "Stewart: pH determined by SID, PaCO₂, and Atot (albumin). ↓SID = acidosis", cites: ["BJA Educ 2015"] },
-        { text: "0.9% NaCl causes hyperchloraemic acidosis by reducing SID (SPLIT/SMART evidence)", cites: ["Power & Kam Ch.11"] },
+        { text: "Stewart: pH determined by SID, PaCO₂, and Atot (albumin). ↓SID = acidosis", cites: ["BJA Educ 2022 Acid-Base"] },
+        { text: "0.9% NaCl causes hyperchloraemic acidosis by reducing SID; whether this changes outcomes is contested — SMART found fewer major kidney events with balanced fluids, PLUS found no mortality difference", cites: ["SMART 2018", "PLUS 2022"] },
         { text: "Type A lactate = tissue hypoxia; Type B = metabolic (metformin, liver failure, PRIS)", cites: ["Brandis"] },
-        { text: "Always albumin-correct the anion gap in ICU patients — uncorrected AG misses unmeasured anions in hypoalbuminaemia", cites: ["BJA Educ 2015"] },
+        { text: "Always albumin-correct the anion gap in ICU patients — uncorrected AG misses unmeasured anions in hypoalbuminaemia", cites: ["BJA Educ 2022 Acid-Base"] },
       ]}
       coreConcepts={
         <>
@@ -694,6 +697,16 @@ const AcidBaseTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1">Metformin, liver failure, malignancy, thiamine deficiency, propofol infusion syndrome.</p>
               </div>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+          <ExamSection id="section-fluids-chloride" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Saline, Balanced Fluids and Outcome">
+              <AcidBaseFluidsTeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+          <ExamSection id="section-bicarbonate" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Sodium Bicarbonate for Severe Metabolic Acidaemia">
+              <BicarbonateTherapyTeaching />
             </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
