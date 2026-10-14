@@ -25,7 +25,7 @@ const objectives = [
 const keyPoints = [
   { text: "Diabetes mellitus: target perioperative blood glucose 6–10 mmol/L; avoid hypoglycaemia (more dangerous than moderate hyperglycaemia); use variable-rate insulin infusion (VRIII) for patients who will miss ≥1 meal", cites: ["JBDS-IP 2021", "BJA Educ DM 2015"] },
   { text: "Thyroid storm (thyrotoxic crisis) has >20% mortality — treat with β-blockers, Lugol's iodine, propylthiouracil, hydrocortisone, and active cooling; never anaesthetise an uncontrolled hyperthyroid patient electively", cites: ["BJA Educ Thyroid 2014"] },
-  { text: "Phaeochromocytoma requires 10–14 days of α-blockade (phenoxybenzamine) before surgery, followed by β-blockade — never give β-blockers first (risk of unopposed α-stimulation and hypertensive crisis)", cites: ["BJA Educ Phaeo 2017"] },
+  { text: "Phaeochromocytoma requires 10–14 days of α-blockade (phenoxybenzamine) before surgery, followed by β-blockade — never give β-blockers first (risk of unopposed α-stimulation and hypertensive crisis)", cites: ["BJA Educ Phaeo 2016"] },
   { text: "Patients on long-term corticosteroids (≥5 mg prednisolone/day for ≥3 months) may have HPA axis suppression — give perioperative steroid supplementation based on surgical stress", cites: ["Addison's Guidelines"] },
   { text: "Addisonian crisis (acute adrenal insufficiency) presents as refractory hypotension, hypoglycaemia, and hyperkalaemia — treat with IV hydrocortisone 100 mg stat, IV fluids, and glucose", cites: ["Addison's Guidelines"] },
 
@@ -96,7 +96,7 @@ const EndocrineDiseaseTopic = () => {
       }}
       sectionSources={{
         objectives: ["BJA Educ DM 2015", "JBDS-IP 2021", "Addison's Guidelines"],
-        keyPoints: ["BJA Educ DM 2015", "JBDS-IP 2021", "BJA Educ Thyroid 2014", "BJA Educ Phaeo 2017", "Addison's Guidelines"],
+        keyPoints: ["BJA Educ DM 2015", "JBDS-IP 2021", "BJA Educ Thyroid 2014", "BJA Educ Phaeo 2016", "Addison's Guidelines"],
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
@@ -306,7 +306,7 @@ const EndocrineDiseaseTopic = () => {
                 <li>β-blockade (e.g. propranolol 10–40 mg TDS, or atenolol) is added only once α-blockade is established, usually after 2–3 days, to control reflex tachycardia and any catecholamine-induced arrhythmia</li>
                 <li>Never give β-blockers before adequate α-blockade → unopposed α-adrenergic vasoconstriction → severe hypertensive crisis and potential acute heart failure/pulmonary oedema</li>
                 <li>Volume repletion: patients are chronically vasoconstricted and intravascularly volume-depleted despite hypertension; encourage a high-salt diet and oral fluid intake during preparation, and give generous IV crystalloid preoperatively to blunt the post-ligation hypotension</li>
-                <li>Readiness criteria (Roizen's criteria): arterial pressure &lt;160/90 mmHg for the preceding 24–48 h; postural hypotension present but standing blood pressure &gt;80/45 mmHg; no ST/T-wave changes on ECG for at least one week; no more than one ventricular premature beat every 5 minutes <InlineRef topicId="endocrine-disease" refLabel="BJA Educ Phaeo 2017" /></li>
+                <li>Readiness criteria (Roizen's criteria): arterial pressure &lt;160/90 mmHg for the preceding 24–48 h; postural hypotension present but standing blood pressure &gt;80/45 mmHg; no ST/T-wave changes on ECG for at least one week; no more than one ventricular premature beat every 5 minutes <InlineRef topicId="endocrine-disease" refLabel="BJA Educ Phaeo 2016" /></li>
               </ul>
             </div>
             <div className="bg-card border border-border rounded-lg p-4">
