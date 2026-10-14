@@ -98,12 +98,14 @@ describe("Hub FAQPage JSON-LD ↔ visible FAQ parity", () => {
       const entries = faqs!;
       expect(entries.length, "FAQPage.mainEntity must be non-empty").toBeGreaterThan(0);
 
-      // Visible <summary> elements should equal the JSON-LD questions, in order.
+      // Every JSON-LD question must be a visible <summary>, in order. Hubs may
+      // carry other <details> (e.g. model viva answers) that are not FAQ entries.
       const summaries = Array.from(container.querySelectorAll("summary")).map((el) =>
         collapseWs(el.textContent ?? ""),
       );
       const jsonQs = entries.map((e) => collapseWs(e.question));
-      expect(summaries).toEqual(jsonQs);
+      const faqSummaries = summaries.filter((s) => jsonQs.includes(s));
+      expect(faqSummaries).toEqual(jsonQs);
 
       // Each answer paragraph should appear verbatim in the rendered DOM.
       const pageText = collapseWs(container.textContent ?? "");
