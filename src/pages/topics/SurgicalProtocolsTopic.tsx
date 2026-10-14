@@ -5,6 +5,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 import { QuizSection } from "@/components/quiz/QuizSection";
 import { Exam } from "@/data/curriculum";
 import { surgicalProtocols } from "@/data/surgicalProtocols";
+import { LessonSources } from "@/components/topic/LessonSources";
 import { ErasEvidenceTeaching } from "@/components/topic/ErasEvidenceTeaching";
 
 const T = "surgical-protocols";
@@ -62,6 +63,7 @@ const SurgicalProtocolsTopic = () => (
                   </div>
                 ))}
               </div>
+              {p.sources?.length ? <LessonSources topicId={T} labels={p.sources} /> : null}
               <div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">Quiz — {p.title}</h3>
                 <QuizSection questions={p.quiz} />
