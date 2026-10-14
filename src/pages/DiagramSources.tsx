@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import inventory from "@/data/anatomyDiagramSources.generated.json";
-import { anatomyReferences } from "@/data/anatomyReferences";
+import { anatomyReferences, anatomyDirectoryReview, anatomyReferenceLabel } from "@/data/anatomyReferences";
 
 export default function DiagramSources() {
   const [query, setQuery] = useState("");
@@ -27,7 +27,8 @@ export default function DiagramSources() {
       </Helmet>
       <div className="border-l-2 border-anatomy pl-4 mb-7 space-y-2">
         <p className="text-foreground font-medium">A citation is not an accuracy certificate.</p>
-        <p className="text-sm text-muted-foreground leading-relaxed">Listed sources support anatomical teaching; they do not prove every drawn boundary, printed label or hotspot. “Citations recorded” means references are present, not that the diagram is 100% verified. Known errors, missing provenance and incomplete source records are flagged below.</p>
+        <p className="text-sm text-foreground" data-anatomy-directory-review><strong>Reference-page review complete · {anatomyDirectoryReview.date}.</strong> {anatomyDirectoryReview.scope}</p>
+        <p className="text-sm text-muted-foreground leading-relaxed">These sources are recorded alongside the teaching; their inclusion does not establish support for a particular anatomical claim, drawn boundary, printed label or hotspot. “No recorded flags” means only that the inventory has no warning for that entry, not that it has been verified. Recorded uncertainties and missing source details are listed below; the list is not exhaustive.</p>
       </div>
 
       <section aria-labelledby="curated-anatomy-heading" className="mb-10">
@@ -42,8 +43,9 @@ export default function DiagramSources() {
                 {topic.missingReferences ? <p className="text-sm text-destructive">No curated references recorded; source review required.</p> : (
                   <ol className="list-decimal pl-5 space-y-3 text-sm leading-relaxed">
                     {topic.references.map(ref => <li key={ref.label} className="break-words">
-                      <p className="font-medium text-foreground">{ref.label}</p>
+                      <p className="font-medium text-foreground">{anatomyReferenceLabel(topic.id, ref.label)}</p>
                       <p className="text-muted-foreground">{ref.citation}</p>
+                      {ref.reviewNote && <p className="text-destructive mt-1">{ref.reviewNote}</p>}
                       {ref.url && /^https?:\/\//.test(ref.url) && <a href={ref.url} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 inline-flex items-center gap-1">Open source<ArrowUpRight className="h-3 w-3" aria-hidden="true" /></a>}
                       {ref.excerpt && <blockquote className="border-l-2 border-border pl-3 mt-2 text-muted-foreground whitespace-pre-line">{ref.excerpt}</blockquote>}
                     </li>)}
@@ -63,7 +65,7 @@ export default function DiagramSources() {
       <h2 className="text-2xl font-serif font-semibold mb-4">Diagram sources &amp; review status</h2>
 
       <dl className="grid grid-cols-3 border-y border-border py-4 mb-7 gap-3">
-        {[{ label: "Diagrams & plates", value: inventory.entries.length }, { label: "Need review", value: needsReview }, { label: "Citations recorded", value: inventory.entries.length - needsReview }].map(s => (
+        {[{ label: "Diagrams & plates", value: inventory.entries.length }, { label: "Flagged for review", value: needsReview }, { label: "No recorded flags", value: inventory.entries.length - needsReview }].map(s => (
           <div key={s.label}><dt className="text-xs sm:text-sm text-muted-foreground">{s.label}</dt><dd className="mt-1 text-2xl font-semibold text-foreground tabular-nums">{s.value}</dd></div>
         ))}
       </dl>
@@ -72,7 +74,7 @@ export default function DiagramSources() {
         <label htmlFor="diagram-search" className="text-sm font-medium">Search diagrams and sources</label>
         <div className="relative"><Search aria-hidden="true" className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" /><Input id="diagram-search" value={query} onChange={e => setQuery(e.target.value)} placeholder="Brain, femoral, Gray’s Anatomy…" className="pl-9" /></div>
         <div className="grid sm:grid-cols-2 gap-3">
-          <Select value={status} onValueChange={setStatus}><SelectTrigger aria-label="Review status"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">All review statuses</SelectItem><SelectItem value="needs-review">Needs review</SelectItem><SelectItem value="cited">Citations recorded</SelectItem></SelectContent></Select>
+          <Select value={status} onValueChange={setStatus}><SelectTrigger aria-label="Review status"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">All review statuses</SelectItem><SelectItem value="needs-review">Needs review</SelectItem><SelectItem value="cited">No recorded flags</SelectItem></SelectContent></Select>
           <Select value={group} onValueChange={setGroup}><SelectTrigger aria-label="Diagram group"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="all">All diagram groups</SelectItem>{groups.map(g => <SelectItem key={g} value={g}>{g}</SelectItem>)}</SelectContent></Select>
         </div>
       </div>
@@ -83,7 +85,7 @@ export default function DiagramSources() {
             <article key={entry.id} id={entry.id} className="py-6 scroll-mt-28 min-w-0" data-diagram-entry>
               <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                 <div className="min-w-0"><p className="text-xs text-muted-foreground mb-1">{entry.group} · {entry.kind}</p><h2 className="text-xl font-serif font-semibold text-foreground break-words">{entry.title}</h2></div>
-                <span className={`inline-flex items-center gap-1.5 text-xs font-medium ${entry.status === "needs-review" ? "text-destructive" : "text-muted-foreground"}`}>{entry.status === "needs-review" ? <AlertTriangle className="h-4 w-4 shrink-0" aria-hidden="true" /> : <BookOpen className="h-4 w-4 shrink-0" aria-hidden="true" />}{entry.status === "needs-review" ? "Needs review" : "Citations recorded"}</span>
+                <span className={`inline-flex items-center gap-1.5 text-xs font-medium ${entry.status === "needs-review" ? "text-destructive" : "text-muted-foreground"}`}>{entry.status === "needs-review" ? <AlertTriangle className="h-4 w-4 shrink-0" aria-hidden="true" /> : <BookOpen className="h-4 w-4 shrink-0" aria-hidden="true" />}{entry.status === "needs-review" ? "Needs review" : "No recorded flags"}</span>
               </div>
               {entry.uncertainty.length > 0 && <ul className="border-l-2 border-destructive pl-3 space-y-1.5 mb-4 text-sm text-foreground leading-relaxed">{entry.uncertainty.map((note, i) => <li key={i}>{note}</li>)}</ul>}
               <p className="text-sm text-muted-foreground mb-3"><strong className="font-medium text-foreground">Artwork:</strong> {entry.credit}</p>

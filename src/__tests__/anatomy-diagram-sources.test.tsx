@@ -26,6 +26,14 @@ describe("Anatomy diagram sources", () => {
     const sagittal = inventory.entries.find(e => e.id === "airwayFolio-sagittal");
     expect(sagittal?.credit).toContain("Public domain");
     expect(sagittal?.sources[0]?.url).toContain("commons.wikimedia.org");
+    for (const e of inventory.entries.filter(e => e.kind === "Sourced public-domain plate")) {
+      expect(e.status).toBe("needs-review");
+      expect(e.uncertainty.join(" ")).toContain("not certified");
+    }
+    for (const e of inventory.entries) {
+      expect(e.sources.some(s => s.basis.includes("used to check"))).toBe(false);
+      if (e.sources.some(s => s.detail?.includes("Unverified legacy reference"))) expect(e.status).toBe("needs-review");
+    }
   });
   it("searches by source and shows an honest empty state", () => {
     render(<HelmetProvider><MemoryRouter><DiagramSources /></MemoryRouter></HelmetProvider>);

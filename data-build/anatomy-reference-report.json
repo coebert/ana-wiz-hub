@@ -16,13 +16,13 @@
         },
         {
           "label": "BJA Educ 2005",
-          "citation": "Dua A. Applied anatomy of the head and neck. BJA Education. 2005;5(4):118-121.",
-          "url": "https://doi.org/10.1093/bjaceaccp/mki033"
+          "citation": "Unverified legacy reference: “Applied anatomy of the head and neck” (Dua, 2005). Bibliographic identity not established.",
+          "reviewNote": "Do not use this legacy record as source support. The previous link or publication details were incorrect or unverified; a replacement source is required."
         },
         {
           "label": "BJA Educ 2019",
-          "citation": "Ahmad I, El-Boghdadly K. Applied anatomy of the airway. BJA Education. 2019;19(7):215-221.",
-          "url": "https://doi.org/10.1016/j.bjae.2019.03.002"
+          "citation": "Unverified legacy reference: “Applied anatomy of the airway” (Ahmad & El-Boghdadly, 2019). Bibliographic identity not established.",
+          "reviewNote": "Do not use this legacy record as source support. The previous link or publication details were incorrect or unverified; a replacement source is required."
         },
         {
           "label": "Power & Kam Ch.12",
@@ -30,12 +30,66 @@
         }
       ],
       "issues": [],
-      "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
+      "reviewNote": "Reference-page record review complete; full anatomical claim-to-source matching still requires editorial review. Legacy records marked unverified are not source support.",
       "diagramsNeedingReview": [
         {
           "id": "BronchoscopicViewDiagram",
           "uncertainty": [
             "Clock-face orientation depends on scope rotation and viewing convention."
+          ]
+        },
+        {
+          "id": "headNeckFolio-neck-c6-axial",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "headNeckFolio-carotid",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "headNeckFolio-orbit-frontal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "headNeckFolio-superficial",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "headNeckFolio-orbit",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "airwayFolio-laryngoscopic",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "airwayFolio-axial",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "airwayFolio-coronal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "airwayFolio-sagittal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
           ]
         }
       ]
@@ -54,25 +108,50 @@
         },
         {
           "label": "BJA Educ 2007",
-          "citation": "Dinsmore J. Cerebral blood flow and metabolism — anatomy and physiology. BJA Education. 2007;7(3):89-94.",
-          "url": "https://doi.org/10.1093/bjaceaccp/mkm016"
+          "citation": "Unverified legacy reference: “Cerebral blood flow and metabolism — anatomy and physiology” (Dinsmore, 2007). Bibliographic identity not established.",
+          "reviewNote": "Do not use this legacy record as source support. The previous link or publication details were incorrect or unverified; a replacement source is required."
         },
         {
           "label": "Crit Care 2020 Brainstem",
-          "citation": "Rocha S, et al. Brainstem: neglected in critical care? Review of brainstem anatomy, functional organisation and clinical syndromes. Crit Care. 2020;24:5.",
+          "citation": "Benghanem S, Mazeraud A, Azabou E, et al. Brainstem dysfunction in critically ill patients. Crit Care. 2020;24:5.",
           "url": "https://doi.org/10.1186/s13054-019-2718-9",
-          "excerpt": "The brainstem contains the nuclei of cranial nerves III to XII, the ascending and descending long tracts (corticospinal, spinothalamic and medial lemniscus pathways), the reticular formation with the ascending reticular activating system, and the cardiorespiratory centres. Because long tracts and cranial nerve nuclei are packed closely together, small lesions produce characteristic crossed syndromes such as lateral medullary (Wallenberg) and medial medullary syndromes."
+          "reviewNote": "Previous text was not established as a verbatim quotation and has been removed. Claim-to-source matching remains unverified."
         },
         {
           "label": "BJA Educ 2016 ANS",
           "citation": "Wehrwein EA, Orer HS, Barman SM. Overview of the anatomy, physiology, and pharmacology of the autonomic nervous system. Compr Physiol. 2016;6(3):1239-1278.",
           "url": "https://doi.org/10.1002/cphy.c150037",
-          "excerpt": "The sympathetic division has short preganglionic neurones arising from the thoracolumbar spinal cord (T1-L2) that synapse in paravertebral or prevertebral ganglia, with long postganglionic noradrenergic fibres. The parasympathetic division has long preganglionic neurones arising from cranial nerves III, VII, IX and X and the sacral segments S2-S4, synapsing in ganglia close to their target organs, with short postganglionic cholinergic fibres."
+          "reviewNote": "Previous text was not established as a verbatim quotation and has been removed. Claim-to-source matching remains unverified."
         }
       ],
       "issues": [],
-      "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
-      "diagramsNeedingReview": []
+      "reviewNote": "Reference-page record review complete; full anatomical claim-to-source matching still requires editorial review. Legacy records marked unverified are not source support.",
+      "diagramsNeedingReview": [
+        {
+          "id": "neuroFolio-willis",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "neuroFolio-midsagittal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "neuroFolio-skullbase-superior",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "neuroFolio-skullbase-inferior",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        }
+      ]
     },
     {
       "topicId": "spinal-anatomy",
@@ -80,7 +159,7 @@
       "references": [
         {
           "label": "BJA Educ 2006",
-          "citation": "Richardson J, Groen GJ. Applied epidural anatomy. BJA Education. 2005;5(3):98-100.",
+          "citation": "Richardson J, Groen GJ. Applied epidural anatomy. Continuing Education in Anaesthesia Critical Care & Pain. 2005;5(3):98-100.",
           "url": "https://doi.org/10.1093/bjaceaccp/mki026"
         },
         {
@@ -89,12 +168,12 @@
         },
         {
           "label": "BJA Educ 2018",
-          "citation": "Collier CB. Anatomy of the lumbar epidural region. BJA Education. 2018;18(7):211-217.",
-          "url": "https://doi.org/10.1016/j.bjae.2018.03.005"
+          "citation": "Unverified legacy reference: “Anatomy of the lumbar epidural region” (Collier, 2018). Bibliographic identity not established.",
+          "reviewNote": "Do not use this legacy record as source support. The previous link or publication details were incorrect or unverified; a replacement source is required."
         }
       ],
       "issues": [],
-      "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
+      "reviewNote": "Reference-page record review complete; full anatomical claim-to-source matching still requires editorial review. Legacy records marked unverified are not source support.",
       "diagramsNeedingReview": [
         {
           "id": "DermatomeMyotomeDiagram",
@@ -106,6 +185,24 @@
           "id": "InteractiveDermatomeMap",
           "uncertainty": [
             "Dermatome boundaries vary between reference charts; this map is schematic, not a definitive boundary map."
+          ]
+        },
+        {
+          "id": "spinalFolio-caudal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "spinalFolio-cauda-equina",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "spinalFolio-sagittal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
           ]
         }
       ]
@@ -120,8 +217,8 @@
         },
         {
           "label": "BJA Educ 2007",
-          "citation": "Richardson J, Lönnqvist PA. Thoracic paravertebral block — anatomy and clinical applications. BJA Education. 2005;95(6):905-913.",
-          "url": "https://doi.org/10.1093/bja/aei323"
+          "citation": "Richardson J, Lönnqvist PA. Thoracic paravertebral block. Br J Anaesth. 1998;81(2):230-238.",
+          "url": "https://doi.org/10.1093/bja/81.2.230"
         },
         {
           "label": "Power & Kam Ch.5",
@@ -129,24 +226,35 @@
         },
         {
           "label": "BJA Educ 2017 Diaphragm",
-          "citation": "Kokatnur L, Rudrappa M, et al. The diaphragm: anatomy, physiology and clinical relevance. BJA Education. 2017;17(9):306-311.",
-          "url": "https://academic.oup.com/bjaed/article/17/9/306/3855562",
-          "excerpt": "The diaphragm is the principal muscle of inspiration. It arises from the xiphoid process, the costal margin of the lower six ribs and costal cartilages, and the lumbar vertebrae via the right and left crura and the medial and lateral arcuate ligaments, inserting into a central tendon. Motor innervation is entirely from the phrenic nerves (C3-C5); the aortic hiatus lies at T12, the oesophageal hiatus at T10 and the caval foramen at T8."
+          "citation": "Unverified legacy reference: “The diaphragm: anatomy, physiology and clinical relevance”. Author, article and URL matching not established.",
+          "reviewNote": "Do not use this legacy record as source support. The previous link or publication details were incorrect or unverified; a replacement source is required."
         },
         {
           "label": "BJA Educ 2015 Thoracic Duct",
-          "citation": "Riquet M, Le Pimpec Barthes F. Surgical anatomy of the thoracic duct and lymphatics of the chest. In: Shields TW, ed. General Thoracic Surgery. Reviewed in: Nair SK, Petko M, Hayward MP. Aetiology and management of chylothorax in adults. Eur J Cardiothorac Surg. 2007;32(2):362-369.",
+          "citation": "Nair SK, Petko M, Hayward MP. Aetiology and management of chylothorax in adults. Eur J Cardiothorac Surg. 2007;32(2):362-369.",
           "url": "https://doi.org/10.1016/j.ejcts.2007.04.024",
-          "excerpt": "The thoracic duct arises from the cisterna chyli at the level of the second lumbar vertebra, enters the thorax through the aortic hiatus, ascends to the right of the aorta, crosses to the left at the level of the fifth thoracic vertebra and drains into the junction of the left subclavian and internal jugular veins. Injury results in chylothorax."
+          "reviewNote": "Previous text was not established as a verbatim quotation and has been removed. Claim-to-source matching remains unverified."
         }
       ],
       "issues": [],
-      "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
+      "reviewNote": "Reference-page record review complete; full anatomical claim-to-source matching still requires editorial review. Legacy records marked unverified are not source support.",
       "diagramsNeedingReview": [
         {
           "id": "DiaphragmDiagram",
           "uncertainty": [
-            "Aperture laterality and phrenic courses were corrected; the schematic remains simplified and is not a validated anatomical model."
+            "The schematic is simplified; aperture laterality and phrenic courses require comparison with an anatomical source. This is not a validated anatomical model."
+          ]
+        },
+        {
+          "id": "thoracicFolio-first-rib",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "thoracicFolio-anterior",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
           ]
         }
       ]
@@ -165,12 +273,12 @@
         },
         {
           "label": "BJA Educ 2005",
-          "citation": "Brown D, Edwards H. Cardiac anatomy for the anaesthetist. BJA Education. 2005;5(3):82-86.",
-          "url": "https://doi.org/10.1093/bjaceaccp/mki024"
+          "citation": "Unverified legacy reference: “Cardiac anatomy for the anaesthetist” (Brown & Edwards, 2005). Bibliographic identity not established.",
+          "reviewNote": "Do not use this legacy record as source support. The previous link or publication details were incorrect or unverified; a replacement source is required."
         }
       ],
       "issues": [],
-      "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
+      "reviewNote": "Reference-page record review complete; full anatomical claim-to-source matching still requires editorial review. Legacy records marked unverified are not source support.",
       "diagramsNeedingReview": [
         {
           "id": "CardiacAnatomyDiagram",
@@ -190,8 +298,8 @@
         },
         {
           "label": "BJA Educ 2015",
-          "citation": "Hebbard PD et al. Transversus abdominis plane block — anatomy and technique. BJA Education. 2007;7(5):171-174.",
-          "url": "https://doi.org/10.1093/bjaceaccp/mkm033"
+          "citation": "Unverified legacy reference: “Transversus abdominis plane block — anatomy and technique” (Hebbard et al.). Bibliographic identity not established.",
+          "reviewNote": "Do not use this legacy record as source support. The previous link or publication details were incorrect or unverified; a replacement source is required."
         },
         {
           "label": "Miller Ch.47",
@@ -218,8 +326,21 @@
         }
       ],
       "issues": [],
-      "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
-      "diagramsNeedingReview": []
+      "reviewNote": "Reference-page record review complete; full anatomical claim-to-source matching still requires editorial review. Legacy records marked unverified are not source support.",
+      "diagramsNeedingReview": [
+        {
+          "id": "abdominalFolio-retroperitoneum",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "abdominalFolio-anterior",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        }
+      ]
     },
     {
       "topicId": "upper-limb-anatomy",
@@ -227,8 +348,8 @@
       "references": [
         {
           "label": "BJA Educ 2021",
-          "citation": "Jagannathan R, Nair VP. Brachial plexus anatomy and ultrasound-guided blocks. BJA Education. 2021;21(7):259-264.",
-          "url": "https://doi.org/10.1016/j.bjae.2021.02.005"
+          "citation": "Unverified legacy reference: “Brachial plexus anatomy and ultrasound-guided blocks” (Jagannathan & Nair, 2021). Bibliographic identity not established.",
+          "reviewNote": "Do not use this legacy record as source support. The previous link or publication details were incorrect or unverified; a replacement source is required."
         },
         {
           "label": "Ellis & Feldman Ch.8",
@@ -240,17 +361,49 @@
         },
         {
           "label": "BJA Educ 2005",
-          "citation": "Defined by arterial cannulation and the Allen test. BJA Education. 2005;5(4):132-135."
+          "citation": "Unverified legacy reference: arterial cannulation and the Allen test. No identifiable author or article title recorded.",
+          "reviewNote": "Do not use this legacy record as source support. The previous link or publication details were incorrect or unverified; a replacement source is required."
         },
         {
           "label": "NICE CG49",
-          "citation": "National Institute for Health and Care Excellence. Guidance on the use of ultrasound locating devices for placing central venous catheters. NICE CG49. 2002 (updated 2016).",
+          "citation": "National Institute for Health and Care Excellence. Guidance on the use of ultrasound locating devices for placing central venous catheters. NICE TA49. 2002 (last reviewed 2016).",
           "url": "https://www.nice.org.uk/guidance/ta49"
         }
       ],
       "issues": [],
-      "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
-      "diagramsNeedingReview": []
+      "reviewNote": "Reference-page record review complete; full anatomical claim-to-source matching still requires editorial review. Legacy records marked unverified are not source support.",
+      "diagramsNeedingReview": [
+        {
+          "id": "upperLimbFolio-upper-arteries",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "upperLimbFolio-axilla",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "upperLimbFolio-forearm",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "upperLimbFolio-upper-nerves",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "upperLimbFolio-upper-veins",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        }
+      ]
     },
     {
       "topicId": "brachial-plexus",
@@ -258,8 +411,8 @@
       "references": [
         {
           "label": "BJA Educ 2014",
-          "citation": "Jagannathan R, Nair VP. Brachial plexus anatomy and ultrasound-guided blocks. BJA Education. 2021;21(7):259-264.",
-          "url": "https://doi.org/10.1016/j.bjae.2021.02.005"
+          "citation": "Unverified legacy reference: “Brachial plexus anatomy and ultrasound-guided blocks” (Jagannathan & Nair, 2021). Bibliographic identity not established.",
+          "reviewNote": "Do not use this legacy record as source support. The previous link or publication details were incorrect or unverified; a replacement source is required."
         },
         {
           "label": "Ellis & Feldman Ch.8",
@@ -292,7 +445,7 @@
         },
         {
           "label": "BJA 2024 Dexamethasone ISB",
-          "citation": "Sondekoppam RV, et al. Intravenous versus perineural dexamethasone to prolong analgesia after interscalene brachial plexus block: a systematic review with meta-analysis and trial sequential analysis. Br J Anaesth. 2024;133(2):334-345.",
+          "citation": "Albrecht E, Renard Y, Desai N. Intravenous versus perineural dexamethasone to prolong analgesia after interscalene brachial plexus block: a systematic review with meta-analysis and trial sequential analysis. Br J Anaesth. 2024;133(1):135-145.",
           "url": "https://doi.org/10.1016/j.bja.2024.03.042",
           "excerpt": "There is low-quality evidence that perineural administration of dexamethasone as a local anaesthetic adjunct increases duration of analgesia by an average of 2 h compared with intravenous injection for interscalene brachial plexus block."
         },
@@ -309,8 +462,21 @@
         }
       ],
       "issues": [],
-      "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
-      "diagramsNeedingReview": []
+      "reviewNote": "Reference-page record review complete; full anatomical claim-to-source matching still requires editorial review. Legacy records marked unverified are not source support.",
+      "diagramsNeedingReview": [
+        {
+          "id": "brachialFolio-plexus",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "brachialFolio-interscalene",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        }
+      ]
     },
     {
       "topicId": "lower-limb-anatomy",
@@ -327,18 +493,49 @@
         },
         {
           "label": "BJA Educ 2016",
-          "citation": "Elkassabany NM, et al. Lower extremity peripheral nerve blocks. BJA Education. 2015;15(5):258-264.",
-          "url": "https://doi.org/10.1093/bjaceaccp/mku055"
+          "citation": "Unverified legacy reference: “Lower extremity peripheral nerve blocks” (Elkassabany et al.). Bibliographic identity not established.",
+          "reviewNote": "Do not use this legacy record as source support. The previous link or publication details were incorrect or unverified; a replacement source is required."
         },
         {
           "label": "Can J Anaesth 2007 Lower Limb Blocks",
-          "citation": "Enneking FK, Chan V, Greger J, Hadžić A, Lang SA, Horlocker TT. Lower-extremity peripheral nerve blockade: essentials of our current understanding. Reg Anesth Pain Med. 2005;30(1):4-35. Review of lower-extremity block approaches and techniques.",
+          "citation": "Tran DQ, Clemente A, Finlayson RJ. A review of approaches and techniques for lower extremity nerve blocks. Can J Anaesth. 2007;54(11):922-934.",
           "url": "https://doi.org/10.1007/bf03026798"
         }
       ],
       "issues": [],
-      "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
-      "diagramsNeedingReview": []
+      "reviewNote": "Reference-page record review complete; full anatomical claim-to-source matching still requires editorial review. Legacy records marked unverified are not source support.",
+      "diagramsNeedingReview": [
+        {
+          "id": "lowerLimbFolio-lower-arteries",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "lowerLimbFolio-femoral",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "lowerLimbFolio-lower-nerves",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "lowerLimbFolio-popliteal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "lowerLimbFolio-lower-veins",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        }
+      ]
     }
   ]
 }
