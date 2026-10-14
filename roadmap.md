@@ -1,3 +1,4 @@
+- [ ] Fix the two anatomy reference source-check failures and run the published-site comparison end to end; report any publication drift without publishing automatically.
 - [x] Build Metabolic Alkalosis under Acid-Base Disorders using verified BJA Education quotations; five lessons/quiz/source popover verified, 138 checks pass, search and private audit copy updated.
 - [x] Build sourced PEEP management page under Mechanical Ventilation; verify lessons, controls, citations, search and private audit copy (29 checks; five lessons and quiz/timing verified in browser).
 - [x] Fix all current preview typecheck/build errors
