@@ -135,7 +135,7 @@ const MechanicalVentilationTopic = () => {
       }}
       sectionSources={{
         diagrams: ["Swindin APRV 2020", "Lumb Ch.31"],
-        objectives: ["Swindin APRV 2020", [
+        objectives: ["Swindin APRV 2020",
           "BJA Educ 2018",
           "Lumb Ch.31",
           "BJA Educ 2019",
