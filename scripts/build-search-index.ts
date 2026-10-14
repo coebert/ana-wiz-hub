@@ -61,6 +61,60 @@ export interface SearchIndexEntry {
 
 // ------------------------------------------------------- positioned extraction
 
+/**
+ * Named imports of local modules, so a file that imports one export from a
+ * shared module (e.g. `headNeckFolio` from anatomyFolios.ts, which also
+ * defines every other topic's folios) only contributes that export's content
+ * to the index. Returns null for default/namespace imports (whole file).
+ */
+function namedImportsOf(src: string, fromFile: string): Map<string, Set<string> | null> {
+  const out = new Map<string, Set<string> | null>();
+  const re = /^\s*import\s+(?:type\s+)?([\s\S]*?)\s+from\s+["']([^"']+)["'];?/gm;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(src))) {
+    const clause = m[1].trim();
+    const spec = m[2];
+    if (!spec.startsWith("@/") && !spec.startsWith(".")) continue;
+    const file = resolveImport(spec, fromFile);
+    if (!file) continue;
+    // `import X from` / `import * as X from` → whole file.
+    if (!clause.startsWith("{")) {
+      out.set(file, null);
+      continue;
+    }
+    const names = clause
+      .replace(/[{}]/g, " ")
+      .split(",")
+      .map((s) => s.trim().split(/\s+as\s+/)[0])
+      .filter(Boolean);
+    const existing = out.get(file);
+    if (existing === null) continue; // whole-file import already wins
+    const set = existing ?? new Set<string>();
+    for (const n of names) set.add(n);
+    out.set(file, set);
+  }
+  return out;
+}
+
+/**
+ * Slice a module into top-level `export const NAME` / `export function NAME`
+ * blocks so named-import filtering can keep only what the importer uses.
+ * Returns null when the module has no nameable top-level exports.
+ */
+function sliceExports(src: string): Map<string, string> | null {
+  const re = /^export\s+(?:const|function|class|let)\s+([A-Za-z_$][\w$]*)/gm;
+  const starts: Array<{ name: string; index: number }> = [];
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(src))) starts.push({ name: m[1], index: m.index });
+  if (starts.length === 0) return null;
+  const out = new Map<string, string>();
+  for (let i = 0; i < starts.length; i++) {
+    const end = i + 1 < starts.length ? starts[i + 1].index : src.length;
+    out.set(starts[i].name, src.slice(starts[i].index, end));
+  }
+  return out;
+}
+
 interface Piece {
   text: string;
   index: number;
