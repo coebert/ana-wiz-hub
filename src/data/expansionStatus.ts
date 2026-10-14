@@ -121,9 +121,13 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "in-progress",
     note: "Equipment pathway added earlier. Evidence lesson added (AAGBI/SOBA 2015 status, STOP questionnaire validation, lean-body-weight dosing, ramped vs sniffing videolaryngoscopy meta-analysis) with quoted abstracts and learning checks. Older sections not yet reviewed.",
   },
+  "trauma-emergency": {
+    status: "expanded",
+    note: "Full line-by-line review: NG39/NG41 attribution fixed, CRASH-2/CRASH-3 TXA claim corrected, quiz TBI SBP aligned to BTF age bands. Some practice details (fibrinogen yields, tourniquet placement, etomidate pharmacology) remain uncited. Content/source review, not consultant certification.",
+  },
   "transfer-medicine": {
-    status: "in-progress",
-    note: "Evidence lesson added (Parmentier-Decrucq 2013 adverse-event incidence/risk factors, Fanara 2010 checklist, Droogh 2012 CRM training) with quoted abstracts and evidence-strength checks. Older sections not yet reviewed.",
+    status: "expanded",
+    note: "Evidence lesson added (Parmentier-Decrucq 2013, Fanara 2010, Droogh 2012). Full line-by-line review: AAGBI dependency levels corrected (no Category 1–4 scheme), unsupported ST4+ grade removed, Droogh 2015 reference corrected, altitude figure harmonised. Drug-dose and neuroprotection targets remain uncited. Content/source review, not consultant certification.",
   },
   "postop-high-risk-icu": {
     status: "expanded",
