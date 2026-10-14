@@ -1618,7 +1618,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How is diabetic ketoacidosis managed in the first hour?",
     },
     {
-      "a": "HHS: glucose >30, osmolality >320, minimal ketones, no acidosis, profound dehydration (often 8–10 L deficit); fluid resuscitation is the priority — insulin only when glucose stops falling with fluids alone, at lower rates (0.05 U/kg/h) to prevent osmotic shifts.",
+      "a": "HHS: glucose ≥30 mmol/L, osmolality ≥320 mOsm/kg, ketones ≤3.0 mmol/L, pH >7.3, bicarbonate ≥15 and marked hypovolaemia (losses 100–220 ml/kg); 0.9% saline is the priority — fixed-rate insulin at 0.05 U/kg/h once osmolality stops falling with fluids alone, unless there is significant ketonaemia (JBDS 2023).",
       "q": "What distinguishes HHS from DKA and how does management differ?",
     },
     {
@@ -6749,7 +6749,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "HHS: glucose >30, osmolality >320, minimal ketones, no acidosis, profound dehydration (often 8–10 L deficit); fluid resuscitation is the priority — insulin only when glucose stops falling with fluids alone, at lower rates (0.05 U/kg/h) to prevent osmotic shifts.",
+          "text": "HHS: glucose ≥30 mmol/L, osmolality ≥320 mOsm/kg, ketones ≤3.0 mmol/L, pH >7.3, bicarbonate ≥15 and marked hypovolaemia (losses 100–220 ml/kg); 0.9% saline is the priority — fixed-rate insulin at 0.05 U/kg/h once osmolality stops falling with fluids alone, unless there is significant ketonaemia (JBDS 2023).",
         },
         "name": "What distinguishes HHS from DKA and how does management differ?",
       },
