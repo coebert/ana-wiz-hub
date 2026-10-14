@@ -43,7 +43,7 @@ const workedExamples: WorkedExample[] = [
       "Recognise as severe (anaphylactoid) contrast reaction. Stop the contrast. Call for help, ABCDE.\nGive 100% O₂ via face mask, lay flat with legs raised.\nIM adrenaline 0.5 mg (500 μg) into anterolateral thigh, repeat every 5 min as needed; or IV 50 μg titrated boluses if monitored.\nIV fluid bolus 500–1000 ml crystalloid; nebulised salbutamol for wheeze.\nAfter stabilisation: a non-sedating oral antihistamine for skin symptoms; routine steroids and IV chlorphenamine are no longer recommended in initial treatment (Resuscitation Council UK 2021); mast cell tryptase samples (immediate, 1–2 h, 24 h).\nTransfer to a monitored area — biphasic reactions occur in about 5%.",
     answer:
       "Treat as anaphylaxis: stop contrast, ABCDE with 100% O₂, IM adrenaline 0.5 mg, IV fluid bolus, nebulised salbutamol, then oral antihistamine for skin symptoms only, tryptase samples, and post-event monitoring for biphasic reaction.",
-    cites: ["AAGBI Remote Sites 2023"],
+    cites: ["RCUK Anaphylaxis 2021"],
   },
   {
     title: "Preventing CI-AKI before TIPSS",
@@ -53,7 +53,7 @@ const workedExamples: WorkedExample[] = [
       "Identify high risk: eGFR below 45 for intra-arterial contrast, diabetes, hypovolaemia, large contrast load. Stop nephrotoxins (NSAIDs, ACEi/ARB if appropriate, metformin).\nIV 0.9% NaCl 1 ml/kg/h for 3–4 h before and 4–6 h after (or 1.4% sodium bicarbonate 3 ml/kg/h for 1 h before).\nUse iso-osmolar or low-osmolar non-ionic contrast at the smallest effective volume; avoid repeat contrast within 48 h.\nN-acetylcysteine is no longer routinely recommended.\nMonitor creatinine at 48–72 h.",
     answer:
       "IV crystalloid hydration 1 ml/kg/h for 3–4 h before and 4–6 h after, withhold nephrotoxins, use the lowest effective volume of low-osmolar contrast, and recheck creatinine at 48–72 h. NAC is not routinely indicated.",
-    cites: ["ESUR 2011"],
+    cites: ["ESUR 2018"],
   },
 ];
 
@@ -90,7 +90,7 @@ const InterventionalRadiologyTopic = () => {
       }}
       keyPoints={[
         { text: "IR suites are remote locations — apply AAGBI standards: full equipment, monitoring, capnography and trained assistance", cites: ["AAGBI Remote Sites 2023"] },
-        { text: "Iodinated contrast can cause anaphylactoid reactions, CI-AKI and thyroid storm — hydrate only high-risk patients", cites: ["ESUR 2011"] },
+        { text: "Iodinated contrast can cause anaphylactoid reactions, CI-AKI and thyroid storm — hydrate only high-risk patients", cites: ["ESUR 2018"] },
         { text: "Radiation: ALARA — distance (inverse-square law), shielding (lead, thyroid, glasses), time, dosimetry", cites: ["IR(ME)R 2017"] },
         { text: "TIPSS, embolisation for haemorrhage and EVAR carry significant haemodynamic risk and often need GA + invasive monitoring", cites: ["AAGBI Remote Sites 2023"] },
         { text: "Capnography is mandatory for moderate/deep sedation (NAP5 / AAGBI)", cites: ["AAGBI Remote Sites 2023"] },
