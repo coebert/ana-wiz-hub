@@ -22,7 +22,7 @@
   - [x] Review source inventories and rendered views; correct verified code-side anatomy and rendering errors
   - [ ] Specialist verification/redrawing of painted plate leaders and deep-brain geometry (blocked by unverified artwork/reference matching)
 - [x] Build anatomy diagram source directory with per-plate citations and uncertainty flags
-- [ ] Replace nightly AI citation verification with per-topic curated anatomy bibliographies, deterministic source-record checks and reader-visible uncertainty
+- [x] Replace nightly AI citation verification with per-topic curated anatomy bibliographies, deterministic source-record checks and reader-visible uncertainty (nine topics, 47 existing editorial references; six tests and live source-list/filter checks passed; original-document matching is not certified)
 
 - [x] Replace painted anatomy plates with credited public-domain Gray's Anatomy plates (31 done; spinal-posterior and thoracic-mediastinum still painted — no good match found)
 - [x] Cite flagged diagrams, replace AI brain images and last 2 paintings, add orientation notes (7 inherent limits stay flagged)
