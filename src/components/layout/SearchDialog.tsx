@@ -54,19 +54,26 @@ const tokenVariants = (token: string): string[] => {
   return out;
 };
 
-/** Does `norm` contain the token, preferring word-start matches? */
-const tokenHit = (norm: string, token: string): boolean => {
+/**
+ * Match quality of `token` within `norm`:
+ *   2 — word-start match (best), 1 — substring inside a longer word, 0 — none.
+ * Substring matches are only allowed for longer tokens and score lower, so
+ * "cauda" prefers "Cauda equina" over "caudally".
+ */
+const tokenQuality = (norm: string, token: string): number => {
+  let best = 0;
   for (const v of tokenVariants(token)) {
-    if (v.length >= 4) {
-      if (norm.includes(v)) return true;
-    } else {
-      // Short tokens (e.g. "icu", "tiva") must match at a word start.
-      const idx = norm.indexOf(v);
-      if (idx === 0 || (idx > 0 && /[^a-z0-9]/.test(norm[idx - 1]))) return true;
-    }
+    const idx = norm.indexOf(v);
+    if (idx < 0) continue;
+    const atWordStart = idx === 0 || /[^a-z0-9]/.test(norm[idx - 1]);
+    if (atWordStart) return 2;
+    if (v.length >= 5 && best < 1) best = 1;
   }
-  return false;
+  return best;
 };
+
+/** Does `norm` contain the token at all? */
+const tokenHit = (norm: string, token: string): boolean => tokenQuality(norm, token) > 0;
 
 const sectionIcons: Record<Section, typeof Atom> = {
   physics: Atom,
