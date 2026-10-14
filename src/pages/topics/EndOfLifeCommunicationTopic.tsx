@@ -6,6 +6,7 @@ import { QuizQuestion } from "@/components/quiz/QuizSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { EndOfLifeEvidenceTeaching } from "@/components/topic/EndOfLifeEvidenceTeaching";
 
 const endOfLifeCommunicationFaqs: Array<[string, string]> = [
   ["What is the SPIKES framework for breaking bad news?", "Setting up, Perception ('what do you understand?'), Invitation (how much do they want to know), Knowledge (information in chunks, warning shot), Empathy (acknowledge emotion), Strategy and Summary."],
@@ -306,6 +307,9 @@ const EndOfLifeCommunicationTopic = () => {
             </div>
           </ExamSection>
 
+          <ExamSection id="trial-evidence" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <EndOfLifeEvidenceTeaching />
+          </ExamSection>
           <ExamSection
             id="after-death"
             exams={[Exam.FFICM, Exam.EDIC]}
