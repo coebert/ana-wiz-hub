@@ -71,11 +71,11 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "aki-rrt": {
     status: "in-progress",
-    note: "STARRT-AKI RRT-timing lesson added (abstract-verified) with sources list; timing-table verdict softened. Other subsections still need review.",
+    note: "STARRT-AKI RRT-timing and RENAL CRRT-dose lessons added (abstract-verified) with sources list; timing-table verdict softened. Other subsections still need review.",
   },
   "sepsis": {
     status: "in-progress",
-    note: "Lesson added on the 65 trial (permissive hypotension) and HYPRESS (steroids before shock), with sources list and learning check. BLING III / prolonged β-lactam infusion meta-analysis lesson added.",
+    note: "Lesson added on the 65 trial (permissive hypotension) and HYPRESS (steroids before shock), with sources list and learning check. BLING III / prolonged β-lactam infusion meta-analysis and Seymour 2017 antibiotic-timing lessons added. Other subsections still need review.",
   },
   "elderly-anaesthesia": {
     status: "in-progress",

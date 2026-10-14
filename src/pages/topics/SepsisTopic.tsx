@@ -18,6 +18,7 @@ import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { InlineRef } from "@/components/references/InlineRef";
 import { SepsisTargetsSteroidsTeaching } from "@/components/topic/SepsisTargetsSteroidsTeaching";
 import { SepsisBetaLactamInfusionTeaching } from "@/components/topic/SepsisBetaLactamInfusionTeaching";
+import { SepsisAntibioticTimingTeaching } from "@/components/topic/SepsisAntibioticTimingTeaching";
 import { CollapsibleSubsection as LessonSubsection } from "@/components/topic/CollapsibleSubsection";
 
 const sepsisTocItems = [
@@ -966,6 +967,9 @@ const SepsisTopic = () => {
         </LessonSubsection>
         <LessonSubsection title="Continuous β-Lactam Infusions: BLING III">
           <SepsisBetaLactamInfusionTeaching />
+        </LessonSubsection>
+        <LessonSubsection title="Antibiotic Timing: the New York Mandate Data">
+          <SepsisAntibioticTimingTeaching />
         </LessonSubsection>
       </section>
 
