@@ -44,7 +44,7 @@ async function moderateWithAI(text: string): Promise<{ allowed: boolean; reason?
       Authorization: `Bearer ${LOVABLE_API_KEY}`,
     },
     body: JSON.stringify({
-      model: 'google/gemini-2.5-flash-lite',
+      model: 'google/gemini-3.1-flash-lite',
       messages: [
         {
           role: 'system',

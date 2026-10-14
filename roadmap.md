@@ -32,4 +32,4 @@
   - [ ] Remaining curriculum expansion: subsection-by-subsection review and verified-source teaching beyond the first batch (not yet completed)
   - [ ] Candidate next batch: Joule–Thomson effect, transformers, Doppler spectral broadening, differential blockade and Meyer–Overton limitations (original-source verification required)
   - [ ] Further candidates: antivirals, innate immunity, hypothermia electrophysiology, ankle nerves, pelvic autonomics, metallic bonding, redox chemistry and chest-wall block planes (read-only reviewer suggestions, not yet verified)
-  - [ ] Outdated gateway models: wait for owner approval before changing moderation, content audit/podcast scripting and drug-check models
+  - [x] Owner-approved gateway replacements: Gemini 3.1 Flash Lite moderation/reviews, Gemini 3.1 Pro Preview audits/podcast scripts, Gemini 3.8 Flash drug checks; representative live responses passed (speech unchanged)

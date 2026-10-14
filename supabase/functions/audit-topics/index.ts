@@ -866,7 +866,7 @@ async function callAI(args: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: args.model ?? "google/gemini-2.5-pro",
+        model: args.model ?? "google/gemini-3.1-pro-preview",
         messages: [
           { role: "system", content: args.system },
           { role: "user", content: userContent },
@@ -1500,7 +1500,7 @@ async function auditTopic(
             "Audit every diagram for visual / anatomical / physiological accuracy.",
           ].join("\n"),
           imageUrl: screenshot,
-          model: "google/gemini-2.5-pro",
+          model: "google/gemini-3.1-pro-preview",
           timeoutMs: Math.min(22_000, Math.max(10_000, remainingBudget() - 4_000)),
         });
         stages.diagram_findings = diagramFindings.length;
