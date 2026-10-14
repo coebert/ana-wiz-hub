@@ -62,6 +62,8 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 - Added: ACS WSACS evidence-strength lesson (abstract-verified); NTS ANTS + WHO checklist evidence lesson (abstracts verified, verbatim excerpts added).
 - Blocked: day-surgery (AA/BADS 2019 full text not retrievable) and resource-poor (Lancet Commission abstract unavailable) — need accessible source text before expansion.
 - Batch 2: sepsis — 65 trial + HYPRESS lesson (abstract-verified, verbatim excerpts).
+- Sepsis — BLING III + Abdul-Aziz 2024 prolonged β-lactam infusion lesson (abstract-verified).
+- Resource-poor — partially unblocked: WFSA workforce survey, ASOS and WHO checklist evidence lesson (abstract-verified). Lancet Commission figures still unverified.
 - Batch 3: neurointensive care (HEMOTION + TRAIN), post-arrest (BOX oxygen) — abstract-verified.
 - surgical-protocols: ERAS evidence lesson (Greco 2014) — in progress
 - ophthalmic-anaesthesia: evidence lesson added (Guay 2015 Cochrane — topical vs sub-Tenon's pain outcomes, insufficient complication evidence; OCR JAMC 2023 — reflex incidence 90.3% vs 21% with sub-Tenon's bupivacaine), abstract-verified, verbatim excerpts added. Topic not complete; other subsections need review.

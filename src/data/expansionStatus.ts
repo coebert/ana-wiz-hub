@@ -67,7 +67,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "sepsis": {
     status: "in-progress",
-    note: "Lesson added on the 65 trial (permissive hypotension) and HYPRESS (steroids before shock), with sources list and learning check.",
+    note: "Lesson added on the 65 trial (permissive hypotension) and HYPRESS (steroids before shock), with sources list and learning check. BLING III / prolonged β-lactam infusion meta-analysis lesson added.",
   },
   "elderly-anaesthesia": {
     status: "in-progress",
