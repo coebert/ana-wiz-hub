@@ -8,6 +8,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import InlineRef from "@/components/references/InlineRef";
 import { GlobalSurgeryEvidenceTeaching } from "@/components/topic/GlobalSurgeryEvidenceTeaching";
+import { LowResourceCaesareanTeaching } from "@/components/topic/LowResourceCaesareanTeaching";
 
 const resourcePoorAnaesthesiaFaqs: Array<[string, string]> = [
   [
@@ -243,6 +244,9 @@ const ResourcePoorAnaesthesiaTopic = () => {
           <ExamSection id="global-evidence" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Evidence: Workforce, ASOS and the Safety Checklist">
               <GlobalSurgeryEvidenceTeaching />
+            </CollapsibleSubsection>
+            <CollapsibleSubsection title="Caesarean Anaesthesia in Africa: ASOS Substudy">
+              <LowResourceCaesareanTeaching />
             </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout

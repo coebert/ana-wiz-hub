@@ -10,7 +10,7 @@ export function RrtTimingTeaching() {
       <li><strong className="text-foreground">How many got RRT:</strong> 96.8% in the accelerated group vs 61.8% in the standard group. More than a third of the standard group never needed RRT.<R /></li>
       <li><strong className="text-foreground">90-day mortality:</strong> 43.9% vs 43.7% (RR 1.00, 95% CI 0.93–1.09; P = 0.92).<R /></li>
       <li><strong className="text-foreground">Still on dialysis at 90 days (survivors):</strong> 10.4% vs 6.0% (RR 1.74, 1.24–2.43), worse with the accelerated strategy.<R /></li>
-      <li><strong className="text-foreground">Adverse events:</strong> 23.0% vs 16.5% (P &lt; 0.001), mainly hypotension and low phosphate.<R /></li>
+      <li><strong className="text-foreground">Adverse events:</strong> 23.0% vs 16.5% (P &lt; 0.001).<R /></li>
     </ul>
     <p><strong className="text-foreground">Practice point:</strong> without an urgent indication (refractory hyperkalaemia, acidosis, fluid overload, uraemic complications), close monitoring with a standard strategy is reasonable. Starting early exposes patients to RRT that many will not need, with more adverse events and more patients still on dialysis at 90 days, and no survival benefit. The standard strategy is not "never": it still triggers RRT when indications arise or AKI persists.</p>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: name two outcomes that were worse with accelerated RRT in STARRT-AKI.</summary><p className="mt-2">More survivors still dependent on RRT at 90 days (10.4% vs 6.0%) and more adverse events (23.0% vs 16.5%). 90-day mortality was the same.</p></details>
