@@ -589,23 +589,79 @@ const PaediatricAnaesthesiaTopic = () => {
               </p>
               <div className="grid sm:grid-cols-2 gap-3">
                 <div className="p-4 rounded-lg border-l-4 border-destructive bg-destructive/5">
-                  <p className="font-semibold text-foreground text-sm">Defer (usually 2–4 weeks, and up to 6 weeks after LRTI)</p>
+                  <p className="font-semibold text-foreground text-sm">Defer (High Risk / COLDS >12.5)</p>
                   <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
-                    <li>Fever &gt;38°C, lethargy, poor feeding, or a systemically unwell child</li>
-                    <li>Purulent nasal or airway secretions, productive/wet cough</li>
-                    <li>Wheeze, crepitations, or clinical signs of lower respiratory tract involvement</li>
-                    <li>Child &lt;1 year, ex-premature, congenital heart or airway disease, poorly controlled asthma</li>
-                    <li>Major or airway surgery planned, or a long procedure requiring tracheal intubation</li>
+                    <li>Fever >38°C, lethargy, poor feeding, or systemically unwell</li>
+                    <li>Purulent nasal secretions or productive/wet cough</li>
+                    <li>New wheeze or signs of lower respiratory involvement (LRTI)</li>
+                    <li>High-risk modifiers: ex-prematurity, paternal smoking, copious secretions <InlineRef topicId="paediatric-anaesthesia" refLabel="Tait 2001" /></li>
+                    <li>Major airway surgery or ETT required in child <5 years</li>
                   </ul>
                 </div>
                 <div className="p-4 rounded-lg border border-border">
-                  <p className="font-semibold text-foreground text-sm">Proceed with an optimised plan</p>
+                  <p className="font-semibold text-foreground text-sm">Proceed (Acceptable Risk)</p>
                   <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
-                    <li>Afebrile, well, clear secretions, dry cough only, chest clear</li>
-                    <li>Older child, short peripheral procedure, no significant comorbidity</li>
-                    <li>Recognise that airway hyper-reactivity persists for up to 4–6 weeks after symptoms clear, so deferral does not abolish risk</li>
-                    <li>Weigh the harms of cancellation: repeated fasting, parental work loss, delayed surgery, and a high chance of another URTI at the next date</li>
+                    <li>Afebrile, clear secretions, dry cough only, chest clear</li>
+                    <li>Older child, short peripheral procedure, no major comorbidity</li>
+                    <li>URTI symptoms occurred >2 weeks ago (risk significantly lower at 2–4 weeks) <InlineRef topicId="paediatric-anaesthesia" refLabel="von Ungern-Sternberg 2010" /></li>
+                    <li>COLDS score ≤12.5 <InlineRef topicId="paediatric-anaesthesia" refLabel="Kim 2022" /></li>
                   </ul>
+                </div>
+              </div>
+
+              <div className="mt-6 p-4 rounded-lg border border-border bg-muted/5">
+                <h3 className="text-lg font-serif font-bold text-foreground mb-2">COLDS Score for Risk Stratification</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  The COLDS score is a validated tool for predicting Perioperative Respiratory Adverse Events (PRAE) in children with URTI. A score >12.5 is associated with significantly higher risk <InlineRef topicId="paediatric-anaesthesia" refLabel="Kim 2022" />.
+                </p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs border-collapse">
+                    <thead>
+                      <tr className="border-b border-border text-foreground">
+                        <th className="text-left py-2 font-semibold w-1/4">Criteria</th>
+                        <th className="text-left py-2 font-semibold">1 Point</th>
+                        <th className="text-left py-2 font-semibold">2 Points</th>
+                        <th className="text-left py-2 font-semibold">5 Points</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-muted-foreground">
+                      <tr className="border-b border-border">
+                        <td className="py-2 font-medium text-foreground">Current symptoms</td>
+                        <td>None</td>
+                        <td>Clear/mild URTI</td>
+                        <td>Fever, wet cough, purulent</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="py-2 font-medium text-foreground">Onset</td>
+                        <td>>2 weeks ago</td>
+                        <td>1–2 weeks ago</td>
+                        <td><1 week ago (acute)</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="py-2 font-medium text-foreground">Lung disease</td>
+                        <td>None</td>
+                        <td>Controlled asthma/RAD</td>
+                        <td>Active wheeze/recent admit</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="py-2 font-medium text-foreground">Device</td>
+                        <td>Facemask</td>
+                        <td>SGA (LMA)</td>
+                        <td>ETT</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="py-2 font-medium text-foreground">Surgery</td>
+                        <td>Non-airway</td>
+                        <td>Airway (brief)</td>
+                        <td>Airway (major/long)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-[10px] text-muted-foreground mt-3 italic">
+                  *Risk modifiers (Tait 2001): ex-prematurity, paternal smoking, copious secretions, and age <5yr (if ETT used) all independently increase PRAE risk.*
+                </p>
+              </div>
                 </div>
               </div>
               <div className="p-4 rounded-lg border border-border mt-3">
