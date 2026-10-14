@@ -31,6 +31,7 @@ interface SearchIndexEntry {
   title: string;
   description: string;
   examTags: string[];
+  available: boolean;
   records: SearchRecord[];
 }
 

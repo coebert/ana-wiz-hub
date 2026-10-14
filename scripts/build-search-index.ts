@@ -55,6 +55,7 @@ export interface SearchIndexEntry {
   title: string;
   description: string;
   examTags: string[];
+  available: boolean;
   records: SearchRecord[];
 }
 
@@ -210,6 +211,7 @@ function buildTopicEntry(topic: (typeof allTopics)[number]): SearchIndexEntry | 
     title: topic.title,
     description: topic.description,
     examTags: topic.examTags,
+    available: topic.available !== false,
     records,
   };
 }
