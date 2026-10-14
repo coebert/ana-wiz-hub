@@ -128,6 +128,8 @@ const CurriculumExpansion = () => {
           name="description"
           content="Expansion status of every AnaesthesiaCore topic: which topics have checked, source-led teaching and which are still to review."
         />
+        <link rel="canonical" href="https://anaesthesiacore.app/curriculum/expansion" />
+        <meta property="og:url" content="https://anaesthesiacore.app/curriculum/expansion" />
         <meta name="robots" content="noindex" />
       </Helmet>
 

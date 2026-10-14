@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { AlertTriangle, ArrowUpRight, BookOpen, Search } from "lucide-react";
 import { SectionLayout } from "@/components/layout/SectionLayout";
 import { Button } from "@/components/ui/button";
@@ -21,6 +22,9 @@ export default function DiagramSources() {
 
   return (
     <SectionLayout title="Anatomy references & diagram sources" subtitle="Curated topic bibliographies, artwork provenance and outstanding anatomical uncertainty." backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy" disableAutoTOC metaDescription="Curated references for every AnaesthesiaCore anatomy topic, with diagram citations, artwork credits and outstanding anatomical review findings.">
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify({ "@context": "https://schema.org", "@type": "LearningResource", name: "Anatomy references & diagram sources", description: "Curated references, diagram citations and artwork credits for AnaesthesiaCore anatomy topics.", url: "https://anaesthesiacore.app/anatomy/diagram-sources", inLanguage: "en-GB" })}</script>
+      </Helmet>
       <div className="border-l-2 border-anatomy pl-4 mb-7 space-y-2">
         <p className="text-foreground font-medium">A citation is not an accuracy certificate.</p>
         <p className="text-sm text-muted-foreground leading-relaxed">Listed sources support anatomical teaching; they do not prove every drawn boundary, printed label or hotspot. “Citations recorded” means references are present, not that the diagram is 100% verified. Known errors, missing provenance and incomplete source records are flagged below.</p>

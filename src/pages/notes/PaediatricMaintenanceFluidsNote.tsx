@@ -46,7 +46,7 @@ const PaediatricMaintenanceFluidsNote = () => (
     
     <div className="grid gap-4">
       <div className="bg-muted/50 p-4 rounded-lg">
-        <h4 className="font-bold mb-2">Resuscitation</h4>
+        <h3 className="font-bold mb-2">Resuscitation</h3>
         <blockquote className="text-sm italic">
           "If children and young people need IV fluid resuscitation, use glucose‑free crystalloids that contain sodium in the range 131–154 mmol/litre, with a bolus of 10 ml/kg over less than 10 minutes."
         </blockquote>
@@ -54,7 +54,7 @@ const PaediatricMaintenanceFluidsNote = () => (
       </div>
 
       <div className="bg-muted/50 p-4 rounded-lg">
-        <h4 className="font-bold mb-2">Routine Maintenance</h4>
+        <h3 className="font-bold mb-2">Routine Maintenance</h3>
         <blockquote className="text-sm italic">
           "Calculate routine maintenance IV fluid rates... using the Holliday–Segar formula (100 ml/kg/day for the first 10 kg, 50 ml/kg/day for the next 10 kg and 20 ml/kg/day for weight over 20 kg)."
         </blockquote>
@@ -62,14 +62,14 @@ const PaediatricMaintenanceFluidsNote = () => (
       </div>
 
       <div className="bg-muted/50 p-4 rounded-lg">
-        <h4 className="font-bold mb-2">Non-osmotic ADH Trigger</h4>
+        <h3 className="font-bold mb-2">Non-osmotic ADH Trigger</h3>
         <blockquote className="text-sm italic">
           "If there is a risk of water retention associated with non‑osmotic antidiuretic hormone (ADH) secretion, consider... restricting fluids to 50% to 80% of routine maintenance needs."
         </blockquote>
       </div>
 
       <div className="bg-muted/50 p-4 rounded-lg">
-        <h4 className="font-bold mb-2">Replacement & Redistribution (Deficit vs Loss)</h4>
+        <h3 className="font-bold mb-2">Replacement & Redistribution (Deficit vs Loss)</h3>
         <blockquote className="text-sm italic mb-2">
           "If children and young people need IV fluids for replacement or redistribution, adjust the IV fluid prescription (in addition to maintenance needs) to account for existing fluid and/or electrolyte deficits or excesses, ongoing losses (see the diagram of ongoing losses) or abnormal distribution..."
         </blockquote>
@@ -77,7 +77,7 @@ const PaediatricMaintenanceFluidsNote = () => (
       </div>
 
       <div className="bg-muted/50 p-4 rounded-lg">
-        <h4 className="font-bold mb-2">Monitoring</h4>
+        <h3 className="font-bold mb-2">Monitoring</h3>
         <blockquote className="text-sm italic">
           "Measure plasma electrolyte concentrations and blood glucose when starting IV fluids for routine maintenance (except before most elective surgery), and at least every 24 hours thereafter."
         </blockquote>

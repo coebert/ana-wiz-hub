@@ -48,6 +48,7 @@ const EXCLUDE_EXACT = new Set<string>([
   "/review",
   "/viva/voice",
   "/ask",
+  "/curriculum/expansion",
 ]);
 
 

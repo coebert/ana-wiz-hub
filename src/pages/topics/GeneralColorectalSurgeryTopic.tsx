@@ -206,6 +206,7 @@ const GeneralColorectalSurgeryTopic = () => (
     }}
     coreConcepts={
       <>
+        <p className="text-muted-foreground leading-relaxed mb-6">This topic covers anaesthesia for elective and major general and colorectal surgery: preoperative assessment, enhanced recovery, laparoscopic physiology, analgesia, fluids, feeding and postoperative care.</p>
         <GeneralSurgeryAtlas />
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
           <section className="space-y-8 mb-10">

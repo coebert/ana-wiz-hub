@@ -47,6 +47,8 @@ const RICH_RESULT_REQUIRED: Record<string, string[]> = {
   CollectionPage: ["name"],
   ItemList: ["itemListElement"],
   Drug: ["name"],
+  // Topic podcast players mark up each episode.
+  PodcastEpisode: ["name"],
 };
 
 // ─── annotation collector ──────────────────────────────────────────────────
