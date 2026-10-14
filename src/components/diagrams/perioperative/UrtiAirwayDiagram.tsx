@@ -5,20 +5,20 @@ import { DiagramFigure } from "../_shared/DiagramFigure";
  * Animated pathophysiology diagram — Recent URTI and airway hyper-reactivity.
  * Viral epithelial injury → exposure of irritant C-fibres + neurogenic
  * inflammation → vagally-mediated reflex bronchoconstriction & laryngospasm
- * for 6–8 weeks. Risk amplified in children with airway instrumentation.
+ * with a variable recovery time. Risk amplified in children with airway instrumentation.
  */
 const UrtiAirwayDiagram = () => {
   return (
     <DiagramFigure
       id="urti-airway-diagram"
       title="Urti airway"
-      description="Animated pathophysiology diagram — Recent URTI and airway hyper-reactivity. Viral epithelial injury → exposure of irritant C-fibres + neurogenic inflammation → vagally-mediated reflex bronchoconstriction & laryngospasm for 6–8 weeks."
+      description="Animated pathophysiology diagram — Recent URTI and airway hyper-reactivity. Viral epithelial injury → exposure of irritant C-fibres + neurogenic inflammation → vagally-mediated reflex bronchoconstriction & laryngospasm with a variable recovery time."
     >
                   <div className="rounded-2xl border border-border bg-card overflow-hidden">
         <div className="px-4 sm:px-6 py-4 border-b border-border bg-muted/30">
           <h3 className="text-lg font-serif font-bold text-foreground">Recent URTI — Airway Hyper-reactivity</h3>
           <p className="text-xs text-muted-foreground mt-1">
-            Why airway reflexes remain primed for 6–8 weeks after a "simple" cold
+            Why infection, airway sensitivity and instrumentation interact
           </p>
         </div>
   
@@ -136,7 +136,7 @@ const UrtiAirwayDiagram = () => {
                 <animate attributeName="width" values="180;40;180" dur="3s" repeatCount="indefinite" stroke="hsl(var(--border))" strokeWidth="0.75" />
               </rect>
               <text x="110" y="84" textAnchor="middle" className="fill-clinical" fontSize="10" fontWeight="600">↓ SpO₂</text>
-              <text x="110" y="102" textAnchor="middle" className="fill-muted-foreground" fontSize="9">2–4× risk <2 weeks</text>
+              <text x="110" y="102" textAnchor="middle" className="fill-muted-foreground" fontSize="9">Higher PRAE risk within 2 weeks</text>
             </g>
   
             {/* Top arrows */}
