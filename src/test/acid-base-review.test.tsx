@@ -36,7 +36,7 @@ describe("acid-base line-by-line review", () => {
   });
   it("converts salicylate using 138.12, not aspirin mass 180", () => {
     render(<ToxinConverter />);
-    fireEvent.click(screen.getByRole("button", { name: "Salicylate", exact: true }));
+    fireEvent.click(screen.getByRole("button", { name: /^Salicylate$/ }));
     fireEvent.change(screen.getByLabelText("Concentration unit"), { target: { value: "mmol/L" } });
     fireEvent.change(screen.getByLabelText("Salicylate concentration"), { target: { value: "1" } });
     expect(screen.getByRole("status")).toHaveTextContent("138.1 mg/L");
