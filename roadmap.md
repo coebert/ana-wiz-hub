@@ -28,6 +28,7 @@
 - [x] Cite flagged diagrams, replace AI brain images and last 2 paintings, add orientation notes (7 inherent limits stay flagged)
 - [x] Expand APRV teaching with verified sources, corrected waveforms, bedside cautions and learning checks
 - [ ] Review curriculum-wide subsection depth and expand outline-only teaching into comprehensive, source-led content
+  - [x] Build /curriculum/expansion index page listing every topic with expansion status (data in src/data/expansionStatus.ts; keep in sync with this file)
   - [ ] Section-by-section continuation requested: Physics → Physiology → Pharmacology → Clinical → ICU → Perioperative; record actual subsection coverage, including anatomy and chemistry
   - [x] First batch: ENT laryngectomy emergencies; paediatric URTI/fluid decisions; established renal-transplant care; bariatric equipment pathway; colorectal assessment/AP-resection phases
   - [x] Check first-batch pages, source labels/excerpts, tests and rebuild/upload private audit corpus
