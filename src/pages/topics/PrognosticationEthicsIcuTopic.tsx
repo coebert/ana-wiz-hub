@@ -10,6 +10,7 @@ import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { PicsTeaching } from "@/components/topic/PicsTeaching";
 
 const prognosticationEthicsIcuFaqs: Array<[string, string]> = [
   ["What ethical framework underpins withdrawal of life-sustaining treatment?", "Four principles (Beauchamp & Childress): autonomy, beneficence, non-maleficence, justice — applied through best-interests assessment under the Mental Capacity Act 2005, involving family, IMCA if no representative, and shared decision-making."],
@@ -101,13 +102,13 @@ const PrognosticationEthicsIcuTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        { text: "Prognostic scores predict population outcomes — never use a single score to determine treatment for an individual patient", cites: ["BJA Educ PICS 2018"] },
+        { text: "Prognostic scores predict population outcomes — never use a single score to determine treatment for an individual patient", cites: ["Rawal 2017 (J Transl Int Med)"] },
         { text: "Post-cardiac arrest prognostication: multimodal at ≥72 h — at least 2 concordant poor prognostic signs required (ERC/ESICM 2021)", cites: ["NICE CG83"] },
         { text: "Withholding and withdrawing treatment are ethically and legally equivalent (GMC/BMA guidance)", cites: ["Mental Capacity Act 2005"] },
         { text: "DNACPR does NOT mean withdrawal of all active treatment — it only applies to CPR", cites: ["GMC 2022"] },
         { text: "The Mental Capacity Act presumes capacity; best-interests decisions must consider the patient's values, wishes, and beliefs", cites: ["ERC/ESICM 2021"] },
-        { text: "Doctrine of double effect permits medications for comfort even if they may hasten death — this is NOT euthanasia", cites: ["BJA Educ PICS 2018"] },
-        { text: "PICS affects up to 50–80% of ICU survivors: physical (ICU-AW), cognitive (delirium-related), and psychological (PTSD, depression)", cites: ["NICE CG83"] },
+        { text: "Doctrine of double effect permits medications for comfort even if they may hasten death — this is NOT euthanasia", cites: ["Rawal 2017 (J Transl Int Med)"] },
+        { text: "PICS: new or worsening physical, cognitive or mental health problems after critical illness; in a UK cohort 55% of responding survivors had anxiety, depression or PTSD symptoms", cites: ["SCCM PICS 2012", "Hatch 2018"] },
         { text: "ICU-acquired weakness: CIP is axonal neuropathy, CIM is primary myopathy — often coexist. Sepsis is the strongest risk factor", cites: ["Mental Capacity Act 2005"] },
         { text: "ABCDEF bundle reduces delirium, ICU-AW, and improves long-term outcomes — early mobilisation is a key component", cites: ["GMC 2022"] },
         { text: "Self-fulfilling prophecy: withdrawing treatment based on early prediction confirms the prediction — use blinded multimodal assessment", cites: ["ERC/ESICM 2021"] },
@@ -118,7 +119,7 @@ const PrognosticationEthicsIcuTopic = () => {
       sectionSources={{
         objectives: ["ERC/ESICM 2021", "GMC 2022", "Mental Capacity Act 2005"],
         workedExamples: ["ERC/ESICM 2021", "Mental Capacity Act 2005", "GMC 2022"],
-        keyPoints: ["GMC 2022", "NICE CG83", "BJA Educ PICS 2018", "Mental Capacity Act 2005", "ERC/ESICM 2021"],
+        keyPoints: ["GMC 2022", "NICE CG83", "Rawal 2017 (J Transl Int Med)", "Mental Capacity Act 2005", "ERC/ESICM 2021"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 5.4", "EDIC 7.2"] },
@@ -355,23 +356,7 @@ const PrognosticationEthicsIcuTopic = () => {
 
           <ExamSection id="pics" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Long-Term Outcomes & PICS">
-            <div className="overflow-x-auto mb-4">
-              <table className="w-full text-sm border-collapse">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-2 text-foreground font-semibold">Domain</th>
-                    <th className="text-left py-2 text-foreground font-semibold">Manifestations</th>
-                    <th className="text-left py-2 text-foreground font-semibold">Risk &amp; Prevalence</th>
-                  </tr>
-                </thead>
-                <tbody className="text-muted-foreground">
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Physical</td><td>ICU-AW (CIP/CIM), reduced exercise, fatigue, dysphagia, tracheal stenosis</td><td>25–50% of patients ventilated &gt;7 days. Risk: sepsis, MOF, steroids, NMB.</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cognitive</td><td>Memory, executive function, processing speed</td><td>30–80% at hospital discharge. Delirium duration is strongest predictor.</td></tr>
-                  <tr><td className="py-2 font-medium text-foreground">Psychological</td><td>PTSD (10–50%), anxiety (30–40%), depression (25–30%)</td><td>Risk: delirium, benzodiazepines, frightening memories. PICS-F affects family.</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p className="text-sm text-muted-foreground"><strong>ABCDEF bundle</strong>: Assess pain, Both SAT/SBT, Choice of analgesia/sedation, Delirium, Early mobility, Family. Reduces delirium, ICU-AW, ventilator days. NICE CG83 recommends structured rehabilitation assessment at ICU and ward discharge plus 2–3 months. ICU follow-up clinics with patient diaries reduce PTSD.</p>
+            <PicsTeaching />
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -477,7 +462,7 @@ const PrognosticationEthicsIcuTopic = () => {
               "Treatment escalation plans (TEPs) / ReSPECT documents should be reviewed on every ICU admission.",
               "Four principles: autonomy, beneficence, non-maleficence, justice — apply to escalation, withdrawal, resource allocation.",
               "Withdrawal of life-sustaining treatment is ethically and legally equivalent to withholding; second opinion + family/MDT consensus.",
-              "PICS (post-intensive-care syndrome): physical, cognitive and psychological sequelae — affects up to 50% of survivors; offer follow-up.",
+              "PICS (post-intensive-care syndrome): physical, cognitive and psychological sequelae — common in survivors and families; NICE CG83 asks for rehabilitation review 2–3 months after critical care discharge.",
             ]}
           />
         </>
