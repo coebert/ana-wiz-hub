@@ -8,6 +8,7 @@ import { traumaEmergencyQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { TraumaABCDETeaching, TraumaFluidBolusTeaching, TraumaTransfusionTeaching, TraumaSurgicalPriorityTeaching } from "@/components/topic/TraumaPrimarySurveyTeaching";
 import { HaemostaticTrialsTeaching } from "@/components/topic/HaemostaticTrialsTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import {
@@ -19,12 +20,16 @@ import {
 
 const tocItems = [
   { id: "introduction", label: "Introduction", group: "Overview" },
+  { id: "abcde", label: "<C>ABCDE primary survey", group: "Overview" },
   { id: "rsi", label: "RSI in trauma", group: "Airway & Induction" },
   { id: "spinal-immobilisation", label: "Spinal immobilisation", group: "Airway & Induction" },
   { id: "damage-control", label: "Damage control resuscitation", group: "Resuscitation" },
   { id: "fluid-resuscitation", label: "Fluid resuscitation", group: "Resuscitation" },
   { id: "haemorrhage-control", label: "Haemorrhage control", group: "Resuscitation" },
   { id: "mtp", label: "Massive transfusion protocol", group: "Resuscitation" },
+  { id: "fluid-boluses", label: "Fluid boluses and targets", group: "Resuscitation" },
+  { id: "transfusion-thresholds", label: "Transfusion ratios and thresholds", group: "Resuscitation" },
+  { id: "surgical-priorities", label: "Surgical priorities", group: "Resuscitation" },
   { id: "lethal-triad", label: "Lethal triad", group: "Resuscitation" },
   { id: "tbi", label: "Traumatic brain injury", group: "Special scenarios" },
   { id: "complications", label: "Complications of MHP", group: "Resuscitation" },
@@ -233,6 +238,12 @@ const TraumaEmergencyTopic = () => {
             </p>
           </ExamSection>
 
+          <ExamSection id="abcde" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="&lt;C&gt;ABCDE Primary Survey">
+              <TraumaABCDETeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="rsi" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Trauma & Stabilisation"]}>
             <CollapsibleSubsection title="Rapid Sequence Induction (RSI)" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -330,6 +341,24 @@ const TraumaEmergencyTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="fluid-boluses" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Fluid Boluses and Blood Pressure Targets">
+              <TraumaFluidBolusTeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="transfusion-thresholds" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Blood Transfusion Ratios and Haemoglobin Thresholds">
+              <TraumaTransfusionTeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="surgical-priorities" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Surgical Priorities and Damage Control Decisions">
+              <TraumaSurgicalPriorityTeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="damage-control" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.5"]}>
             <CollapsibleSubsection title="Damage Control Resuscitation">
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -356,7 +385,7 @@ const TraumaEmergencyTopic = () => {
             </p>
             <div className="space-y-3">
               {[
-                { label: "Before blood is available", detail: "NG39 limits crystalloid to the pre-hospital setting when blood is unavailable: 250 mL boluses titrated to a palpable radial pulse (central pulse in penetrating trunk trauma). Do not chase a normal blood pressure with litres of clear fluid — this 'resuscitation injury' worsens the lethal triad." },
+                { label: "Before blood is available", detail: "NG39 limits crystalloid to the pre-hospital setting when blood components are unavailable, titrated to a palpable central (carotid or femoral) pulse; it does not specify a bolus volume. Do not chase a normal blood pressure with litres of clear fluid — this 'resuscitation injury' worsens the lethal triad." },
                 { label: "Permissive hypotension", detail: "Target SBP 80–90 mmHg (or palpable radial pulse) until surgical or radiological haemorrhage control. Restoring normal pressure in uncontrolled bleeding 'pops the clot' and increases blood loss. Key exception: TBI, where hypotension must be avoided (Brain Trauma Foundation: SBP ≥110 mmHg aged 15–49 or >70, ≥100 mmHg aged 50–69). Permissive hypotension is consensus-based; trial evidence is limited." },
                 { label: "Balanced blood-product resuscitation", detail: "1:1:1 PRBC:FFP:platelets approximates whole blood. PROPPR (680 patients) found no significant difference in 24-h (12.7% vs 17.0%) or 30-day mortality (22.4% vs 26.1%) between 1:1:1 and 1:1:2, but 1:1:1 achieved haemostasis more often (86% vs 78%) with fewer deaths from exsanguination at 24 h (9.2% vs 14.6%) and no increase in complications. Give via a warmed rapid infuser through wide-bore access (two 14–16 G peripherals or a trauma line)." },
                 { label: "Endpoints of resuscitation", detail: "After haemorrhage control, resuscitate to normal physiology: lactate or base deficit trending down, urine output >0.5 mL/kg/h, normothermia, iCa²⁺ >1.0 mmol/L, fibrinogen >1.5 g/L, platelets >50–100 × 10⁹/L. Lactate clearance and base deficit are better guides than blood pressure alone." },
