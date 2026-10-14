@@ -1898,6 +1898,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "RCOG Cerclage 2022", citation: "Shennan A, Story L, et al. Cervical cerclage: Green-top Guideline No. 75. BJOG. 2022;129(7):1178-1210.", url: "https://doi.org/10.1111/1471-0528.17003" },
   ],
   "surgical-protocols": [
+    { label: "Greco 2014 ERAS meta-analysis", citation: "Greco M, Capretti G, Beretta L, et al. Enhanced recovery program in colorectal surgery: a meta-analysis of randomized controlled trials. World J Surg. 2014;38(6):1531-1541.", url: "https://pubmed.ncbi.nlm.nih.gov/24368573/", excerpt: "The ERAS pathway reduced overall morbidity rates and shortened the length of hospital stay, without increasing readmission rates. A significant reduction in nonsurgical complications was evident, while no significant reduction was found for surgical complications." },
     { label: "NICE NG180", citation: "NICE. Perioperative care in adults (NG180). 2020.", url: "https://www.nice.org.uk/guidance/ng180" },
     { label: "AoA Preop 2021", citation: "Association of Anaesthetists. Pre-operative assessment and patient preparation: the role of the anaesthetist. Anaesthesia. 2021 (Guidelines).", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines" },
     { label: "WHO Checklist 2009", citation: "World Health Organization. WHO Guidelines for Safe Surgery 2009: Safe Surgery Saves Lives.", url: "https://www.who.int/publications/i/item/9789241598552" },
