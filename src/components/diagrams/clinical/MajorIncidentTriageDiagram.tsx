@@ -19,8 +19,8 @@ import { svgNodeProps } from "../_shared/DiagramFigure";
 const CYCLE_MS = 12000;
 const PHASES = [
   { id: 0, label: "METHANE alert", t0: 0.0, t1: 0.2 },
-  { id: 1, label: "Triage Sieve (scene)", t0: 0.2, t1: 0.55 },
-  { id: 2, label: "Triage Sort / TRTS (ED)", t0: 0.55, t1: 0.8 },
+  { id: 1, label: "Ten Second Triage (scene)", t0: 0.2, t1: 0.55 },
+  { id: 2, label: "MITT / re-triage (CCS, ED)", t0: 0.55, t1: 0.8 },
   { id: 3, label: "Stream & re-triage", t0: 0.8, t1: 1.0 },
 ];
 
@@ -71,7 +71,7 @@ export const MajorIncidentTriageDiagram = () => {
       <figcaption className="mb-3 flex items-start justify-between gap-3">
         <div>
           <h3 className="text-base font-semibold text-foreground">
-            Major-incident triage flow: METHANE → Sieve → Sort → Stream
+            Major-incident triage flow: METHANE → TST → MITT → Stream
           </h3>
           <p className="text-xs text-muted-foreground mt-1">
             Animated walkthrough of the UK major-incident triage chain. Re-triage occurs at every node;
