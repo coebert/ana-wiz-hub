@@ -49,8 +49,8 @@ const workedExamples: WorkedExample[] = [
           <li><strong>Establish command</strong>: Gold (strategic — exec on call), Silver (tactical — designated tactical coordinator), Bronze (operational — ED/theatre/ICU leads). Wear tabards. Use action cards from the plan, do not rely on memory.</li>
           <li><strong>Triage at the door</strong>: senior clinicians reassess arrivals using the agreed incident pathway. Direct casualties to designated areas according to urgency; any exceptional allocation or palliation decision requires documented senior review and reassessment.</li>
           <li><strong>CRM principles</strong>: stay hands-off as MEDCO — your value is overview. Allocate teams (anaesthetist + surgeon + nurse + ODP) to each P1 bay; agree structured updates at clinically appropriate intervals; appoint a runner; use a whiteboard tracker for casualties and theatres.</li>
-          <li><strong>Damage-control resuscitation</strong> for haemorrhagic shock: permissive hypotension (SBP 80–90 mmHg, &gt;110 if TBI), 1:1:1 RBC:FFP:platelets, TXA &lt;3 h, calcium, warming, early surgical control. Avoid large-volume crystalloid dilution; use a restricted crystalloid bridge if blood is unavailable.</li>
-          <li><strong>Theatre prioritisation</strong>: damage-control surgery first (haemorrhage control, bowel stapling, packs and abbreviated closure), definitive surgery later. Theatre coordinator allocates lists.</li>
+          <li><strong>Damage-control resuscitation</strong> for haemorrhagic shock: SBP 80–90 mmHg only without brain injury; severe TBI requires MAP ≥80 mmHg. Use protocol-based blood products, TXA within 3 h, ionised-calcium monitoring, warming and early haemostasis. Avoid large-volume crystalloid dilution; use a restricted crystalloid bridge if blood is unavailable.</li>
+          <li><strong>Theatre prioritisation</strong>: prioritise source control and abbreviate procedures when physiological compromise prevents definitive repair. The theatre coordinator allocates capacity.</li>
           <li><strong>Communication out</strong>: regular sit-reps to Gold; liaise with mortuary, police, families' liaison; debrief team in waves; preserve documentation for inquiry.</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
@@ -58,7 +58,7 @@ const workedExamples: WorkedExample[] = [
           <ul className="list-disc list-inside space-y-1 text-foreground">
             <li>MEDCO becoming a hands-on clinician — loses overview, decisions stall.</li>
             <li>Failing to re-triage — physiology changes faster than labels.</li>
-            <li>Using crystalloid resuscitation in penetrating trauma — worsens dilution and coagulopathy.</li>
+            <li>Large-volume crystalloid resuscitation without haemorrhage control — risks dilution and coagulopathy.</li>
             <li>Forgetting CBRN — protect staff, assess contamination and use controlled pathways without withholding urgent care from protected teams.</li>
           </ul>
         </div>

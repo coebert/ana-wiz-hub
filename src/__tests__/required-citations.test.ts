@@ -46,8 +46,21 @@ describe("required-citations snapshot", () => {
       if (fileCache.has(rel)) return fileCache.get(rel)!;
       const abs = resolve(ROOT, rel);
       const src = existsSync(abs) ? readFileSync(abs, "utf8") : null;
+      if (src === null) {
+        fileCache.set(rel, null);
+        return null;
+      }
+      // Teaching sections retain their own citations after extraction from a topic.
+      // Seed the cache before recursion to guard circular shared imports.
       fileCache.set(rel, src);
-      return src;
+      const imported = [...src.matchAll(/from\s+["'](@\/components\/topic\/[\w/]+Teaching|\.\/\w+Teaching)["']/g)]
+        .map((match) => match[1].startsWith("@/")
+          ? `src/${match[1].slice(2)}.tsx`
+          : `${rel.slice(0, rel.lastIndexOf("/"))}/${match[1].slice(2)}.tsx`)
+        .map((path) => read(path) ?? "");
+      const combined = [src, ...imported].join("\n");
+      fileCache.set(rel, combined);
+      return combined;
     };
 
     for (const entry of snapshot.entries) {
