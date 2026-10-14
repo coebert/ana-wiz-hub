@@ -100,3 +100,4 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 - Emergency surgery: TIVA (AoA/SIVA 2019) and compartment pressure (McQueen 1996) lessons added; damage control and ectopic already had lessons. Page stays in progress.
 - Emergency surgery marked complete after TIVA/fasciotomy line-by-line review (BOAST 2025).
 - Endocrine emergencies marked expanded: DKA fluid, apoplexy guideline and phaeo crisis lessons added.
+- **PICS follow-up plan (new page, /intensive-care/pics-follow-up):** six NICE CG83 steps (early short assessment + table 1 markers, early rehab, pre-discharge reassessment, ward programme incl. 6-week manual, home discharge info, 2–3 month face-to-face review) and diary/clinic evidence (Jones 2010, Garrouste-Orgeas 2019 JAMA, PRaCTICaL). Verbatim excerpts. Marked expanded.
