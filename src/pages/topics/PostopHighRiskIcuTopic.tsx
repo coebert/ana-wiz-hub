@@ -10,6 +10,7 @@ import GoalDirectedTherapyAnimation from "@/components/diagrams/intensive-care/G
 import ComplicationBundlesAnimation from "@/components/diagrams/intensive-care/ComplicationBundlesAnimation";
 import PostopRiskCalculators from "@/components/diagrams/intensive-care/PostopRiskCalculators";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { PostopHighRiskEvidenceTeaching } from "@/components/topic/PostopHighRiskEvidenceTeaching";
 
 const postopHighRiskIcuFaqs: Array<[string, string]> = [
   ["How are high-risk surgical patients identified preoperatively?", "Combine clinical (frailty, METs <4, P-POSSUM), biochemical (NT-proBNP, troponin) and functional (CPET — anaerobic threshold <11 mL/kg/min, VO₂peak <15) measures; aggregate predicts 30-day mortality >5%."],
@@ -435,12 +436,15 @@ const PostopHighRiskIcuTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+          <ExamSection id="trial-evidence" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+            <PostopHighRiskEvidenceTeaching />
+          </ExamSection>
           <ExamPitfallsCallout
             accent="icu"
             pitfalls={[
               "Risk scores: P-POSSUM, SORT, NELA risk, CPET (AT <11), Clinical Frailty Scale ≥5.",
               "Level-2/3 indications: predicted mortality >5%, intraoperative instability, complex comorbidity, major emergency surgery.",
-              "Goal-directed fluid therapy (oesophageal Doppler/PPV) reduces complications in major surgery.",
+              "Cardiac output-guided fluid/inotrope therapy has not been shown to reduce complications in large trials (OPTIMISE, OPTIMISE II); do not present it as proven.",
               "MINS (myocardial injury after non-cardiac surgery): hs-troponin rise within 30 days; associated with high 30-day mortality — surveillance protocols recommended.",
               "Structured handover (SBAR/ATMIST), early HDU/ITU step-down planning, EWS triggers and consultant-delivered review.",
             ]}

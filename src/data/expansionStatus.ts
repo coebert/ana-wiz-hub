@@ -117,6 +117,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "in-progress",
     note: "Paracetamol poisoning subsection added (NAPQI mechanism, 2012 UK treatment line, SNAP 2014 regimen evidence, anaphylactoid reactions, learning checks). Other toxicology subsections still need review.",
   },
+  "postop-high-risk-icu": {
+    status: "expanded",
+    note: "Trial-evidence lesson added (OPTIMISE 2014, OPTIMISE II 2024, Kahan 2017 ISOS critical-care admission, PRISM 2021 CPAP) with quoted abstracts and learning checks; corrected overstated goal-directed therapy pitfall. Content/source review, not consultant certification.",
+  },
   "antimicrobials-icu": {
     status: "expanded",
     note: "Trial-evidence lesson added (Chastre 2003 VAP 8 vs 15 days, BALANCE 2025 bacteraemia 7 vs 14 days, MERINO 2018 ESBL carbapenem-sparing) with quoted abstracts, learning checks and sources. Content/source review, not consultant certification.",
