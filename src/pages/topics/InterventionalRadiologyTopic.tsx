@@ -9,6 +9,7 @@ import tipssIllustration from "@/assets/ir/tipss-procedure.jpg";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { StaffRadiationTeaching } from "@/components/topic/StaffRadiationTeaching";
 import { ContrastKidneyTeaching } from "@/components/topic/ContrastKidneyTeaching";
 import { ThrombectomyAnaesthesiaTeaching } from "@/components/topic/ThrombectomyAnaesthesiaTeaching";
 
@@ -241,6 +242,10 @@ const InterventionalRadiologyTopic = () => {
               </ul>
             </div>
             </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="staff-radiation-evidence" exams={[Exam.FINAL]}>
+            <StaffRadiationTeaching />
           </ExamSection>
 
           <ExamSection id="procedure-specific" exams={[Exam.FINAL]}>
