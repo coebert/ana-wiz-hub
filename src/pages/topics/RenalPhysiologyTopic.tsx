@@ -18,6 +18,7 @@ import HyponatraemiaWorkupDiagram from "@/components/diagrams/physiology/Hyponat
 import { EGFRCalculator } from "@/components/diagrams/physiology/EGFRCalculator";
 import { Exam } from "@/data/curriculum";
 import { InlineRef } from "@/components/references/InlineRef";
+import { RenalAcidHandlingTeaching } from "../../components/topic/RenalAcidHandlingTeaching";
 
 const renalPhysiologyFaqs: Array<[string, string]> = [
   [
@@ -526,8 +527,9 @@ const RenalPhysiologyTopic = () => {
                 <li><strong>Ammoniagenesis:</strong> proximal-tubule glutamine is metabolised through glutamate to α-ketoglutarate, generating two NH₄⁺ and two new HCO₃⁻ ions per glutamine.</li>
                 <li><strong>Proximal secretion:</strong> NH₄⁺ substitutes for H⁺ on NHE3 and enters the tubular lumen while newly generated bicarbonate returns to blood.</li>
                 <li><strong>Medullary recycling:</strong> NH₄⁺ substitutes for K⁺ on NKCC2 in the thick ascending limb and accumulates in the medullary interstitium.</li>
-                <li><strong>Ammonia trapping:</strong> lipid-soluble NH₃ diffuses into the collecting duct, where secreted H⁺ converts it to poorly permeable NH₄⁺. It is trapped in acidic urine and excreted. Chronic acidosis markedly increases this adaptive pathway <InlineRef topicId="renal-physiology" refLabel="Ganong Ch.37-38" />.</li>
+                <li><strong>Ammonia trapping and transport:</strong> NH₃ entry, including protein-mediated transport, combines with hydrogen secretion to produce urinary NH₄⁺. The simple diffusion-trapping model does not explain all epithelial transport. Chronic acidosis increases this adaptive pathway <InlineRef topicId="renal-physiology" refLabel="Kim 2009 Renal Ammonium" />.</li>
               </ol>
+              <RenalAcidHandlingTeaching />
             </section>
           </ExamSection>
 

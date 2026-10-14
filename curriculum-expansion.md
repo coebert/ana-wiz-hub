@@ -12,7 +12,7 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 
 ## Section order and remaining work
 1. **Physics — in progress.** Six-subsection batch implemented and checked: Joule–Thomson/process boundaries; transformers and isolation limitations; Doppler spectral interpretation; arterial dynamic response; flow-regime assumptions and heliox; temperature sensor/site errors. This does not complete these six topics or the whole physics section. Other subsections still require individual review.
-2. **Physiology — pending.** Review renal acid–base handling, hepatic zonation and fetal/placental physiology first; include mechanism, application and evidence limits.
+2. **Physiology — in progress.** Added renal net acid accounting, distal transport, ammonium adaptation and urine-pH interpretation; hepatic gradients, ammonia scavenging and model limits; fetal preload/afterload handover and experimental evidence limits. Placental transfer classifications and misquoted pulmonary flow/resistance changes were corrected. This does not complete the topics; remaining physiology subsections need individual review.
 3. **Pharmacology — pending.** Differential blockade, Meyer–Overton limitations and antivirals are priority candidates, not yet source-verified expansions.
 4. **Clinical — pending beyond the completed batch.** Review surgery-specific protocol detail and operative hazards against the existing linked teaching rather than duplicating brief protocol checklists.
 5. **ICU — pending beyond APRV.** Innate immunity and endocrine crises are candidates; audit actual subsection depth before adding material.
@@ -34,3 +34,11 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 - Expanded lesson headings and text were present in the rebuilt 153-topic audit corpus; the private stored corpus was refreshed. Flow-measurement still reaches its total extraction budget: prioritised new teaching is retained, but this is not a whole-topic completeness claim.
 - Wider citation-coverage tests still report existing issues outside these six pages: topic-ID extraction for general/colorectal surgery and surgical protocols, plus two uncited regional-anaesthesia summary points. No new physics citation failure was reported.
 - Scope remaining: complete the physics subsection review, then physiology, pharmacology, clinical, ICU, perioperative and mapped anatomy/chemistry. This work has not run unattended or been published.
+
+## Physiology continuation verification
+- Three shared source-linked lessons added to renal physiology, hepatic physiology and foetal circulation, with mechanisms, clinical interpretation, limitations and learning checks; no whole-topic completion claimed.
+- Original Hamm 2015, Kim 2009, Kietzmann 2017 and Bhatt 2013 documents retrieved. Comar 2010 experimental results qualify the simplified urea-zonation model. Newly quoted Kim and Bhatt sentences were checked against retrieved text.
+- Six focused regression tests passed; all three lessons, toggles and actual source popovers checked at desktop and phone widths without overflow or runtime exceptions. Current app compilation is clean.
+- Source-excerpt check passed, but this does not certify older quotes. The newly present fetal bibliography includes previously recorded excerpts not independently verified verbatim; the Pediatric Research citation explicitly flags this and its volume/pages were corrected from bibliographic metadata. Existing excerpts were retained, not silently rewritten.
+- All three prioritised lessons are retained in the rebuilt 153-topic audit corpus and the private stored corpus was refreshed successfully; renal physiology reaches the extraction budget, so whole-topic extraction is not guaranteed.
+- Remaining work: further Physics/Physiology review; Pharmacology, Clinical, ICU, Perioperative and mapped Anatomy/Chemistry expansions. This continuation is a checked batch, not completion of the curriculum.

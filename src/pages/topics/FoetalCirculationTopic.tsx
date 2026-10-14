@@ -8,6 +8,7 @@ import { foetalCirculationQuestions } from "@/data/quizzes";
 import FoetalCirculationDiagram from "@/components/diagrams/physiology/FoetalCirculationDiagram";
 import { Exam } from "@/data/curriculum";
 import { InlineRef } from "@/components/references/InlineRef";
+import { FoetalTransitionTeaching } from "../../components/topic/FoetalTransitionTeaching";
 
 const foetalCirculationFaqs: Array<[string, string]> = [
   [
@@ -204,16 +205,79 @@ const FoetalCirculationTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+          <ExamSection id="placental-transfer" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_01"]}>
+            <CollapsibleSubsection title="Placental Transfer Physiology">
+              <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  Placental gas and nutrient exchange is governed by <strong>Fick's Law of Diffusion</strong>, where transfer rate is proportional to surface area and concentration gradient, and inversely proportional to membrane thickness.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <div className="p-3 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground mb-1">Flow-Limited Transfer</p>
+                    <p>When exchange is rapid relative to blood transit, transfer is predominantly limited by maternal and fetal perfusion. This is a limiting model, not proof that every soluble substance equilibrates completely in every human placenta. Oxygen transfer also depends on blood oxygen content, gradients and exchange geometry <InlineRef topicId="foetal-circulation" refLabel="Am Zool 1992" />.</p>
+                  </div>
+                  <div className="p-3 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground mb-1">Diffusion-Limited Transfer</p>
+                    <p>When membrane conductance is insufficient for equilibration during transit, permeability, exchange area and diffusion distance constrain transfer. Passive-diffusion models must not be applied indiscriminately to glucose or ions, whose transfer includes carrier-mediated processes <InlineRef topicId="foetal-circulation" refLabel="Am Zool 1992" />.</p>
+                  </div>
+                </div>
+                <div className="rounded-lg bg-secondary/20 p-4 border border-border">
+                  <p className="font-semibold text-foreground text-xs uppercase tracking-wider mb-2">Oxygen Transfer Efficiency</p>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li><strong>Vascular Geometry:</strong> The human placenta uses a "villous" arrangement allowing end-venous equilibration. This is less efficient than the counter-current systems found in other mammals (e.g., rabbits) <InlineRef topicId="foetal-circulation" refLabel="Am Zool 1992" />.</li>
+                    <li><strong>Geometric Determinants:</strong> Fetal oxygen uptake is primarily determined by villi density and effective villi radius within the placentone <InlineRef topicId="foetal-circulation" refLabel="Serov et al. 2015" />.</li>
+                    <li><strong>Membrane Gradient:</strong> Maternal-to-foetal PO₂ gradient is ~4–6 kPa, maintained by high maternal flow and foetal HbF affinity.</li>
+                  </ul>
+                </div>
+              </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamSection id="transitional" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_02"]}>
             <CollapsibleSubsection title="Transitional Circulation at Birth">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li><strong>First breath</strong>: alveolar expansion → dramatic ↓ PVR (8–10×) → ↑ pulmonary blood flow.</li>
+              <li><strong>Lung aeration</strong>: falling pulmonary vascular resistance increases pulmonary blood flow; a reported fold-change in flow is not an identical reciprocal change in resistance <InlineRef topicId="foetal-circulation" refLabel="Bhatt 2013 Transition Experiment" />.</li>
               <li><strong>Cord clamping</strong>: removes low-resistance placental circuit → ↑ SVR.</li>
               <li><strong>LA pressure rises</strong> above RA pressure → <strong>foramen ovale closes</strong> (functional).</li>
               <li><strong>↑ PaO₂ + ↓ PGE₂</strong> → smooth-muscle constriction → <strong>ductus arteriosus closes</strong> (10–15 h).</li>
               <li><strong>Ductus venosus</strong> closes as umbilical venous flow ceases.</li>
               <li>Transition from <strong>parallel</strong> circulation (two ventricles in parallel) to <strong>series</strong> circulation (adult pattern).</li>
             </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+
+
+          <ExamSection id="transition-mechanisms" exams={[Exam.PRIMARY]} curriculumCodes={["PA_BK_02"]}>
+            <CollapsibleSubsection title="Physiological Mechanisms of Transition">
+              <FoetalTransitionTeaching />
+              <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  The transition from in-parallel to in-series circulation is triggered by two near-simultaneous events: lung aeration and umbilical cord clamping.
+                </p>
+                <div className="space-y-3">
+                  <div className="p-4 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground">1. Lung Aeration (The Primary Trigger)</p>
+                    <p className="mt-1">Lung aeration is associated with falling pulmonary resistance and increasing pulmonary flow. The 8–10-fold flow increase described in physiological literature should not be relabelled as an equivalent measured resistance decrease <InlineRef topicId="foetal-circulation" refLabel="Bhatt 2013 Transition Experiment" />. Contributing mechanisms include:</p>
+                    <ul className="mt-2 list-disc list-inside space-y-1 ml-2">
+                      <li><strong>Mechanical expansion:</strong> Unfolding of alveolar capillaries.</li>
+                      <li><strong>Chemical vasodilation:</strong> Improved oxygenation and pulmonary vasodilator signalling. PaO₂ denotes arterial, not alveolar, oxygen tension <InlineRef topicId="foetal-circulation" refLabel="Pediatr Res 2023" />.</li>
+                    </ul>
+                  </div>
+                  <div className="p-4 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground">2. Cord Clamping</p>
+                    <p className="mt-1">Removal of the low-resistance placenta increases systemic afterload while interrupting umbilical venous return. Pulmonary venous return after aeration is essential to the changing left-heart filling and atrial pressure relationship; clamping alone is not a complete explanation of foramen-ovale closure <InlineRef topicId="foetal-circulation" refLabel="Bhatt 2013 Transition Experiment" />.</p>
+                  </div>
+                  <div className="p-4 rounded-lg border border-border">
+                    <p className="font-semibold text-foreground">3. Molecular Closure of the Ductus Arteriosus</p>
+                    <p className="mt-1">In utero, the DA is kept patent by low PaO₂ and <strong>PGE₂</strong> acting on EP4 receptors. Postnatal closure involves:</p>
+                    <ul className="mt-2 list-disc list-inside space-y-1 ml-2">
+                      <li><strong>Oxygen Sensing:</strong> DA smooth muscle cells sense the rise in PaO₂ via a mitochondrial-redox mechanism, leading to calcium influx and constriction <InlineRef topicId="foetal-circulation" refLabel="Bentley et al. 2021" />.</li>
+                      <li><strong>Prostaglandin Withdrawal:</strong> Loss of placental PGE₂ and increased pulmonary metabolism of prostaglandins <InlineRef topicId="foetal-circulation" refLabel="NCBI Bookshelf 2016" />.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </CollapsibleSubsection>
           </ExamSection>
 

@@ -32,6 +32,7 @@
   - [x] First batch: ENT laryngectomy emergencies; paediatric URTI/fluid decisions; established renal-transplant care; bariatric equipment pathway; colorectal assessment/AP-resection phases
   - [x] Check first-batch pages, source labels/excerpts, tests and rebuild/upload private audit corpus
   - [ ] Remaining curriculum expansion: subsection-by-subsection review and verified-source teaching beyond the first batch (not yet completed)
+  - [x] Physiology continuation: renal net acid excretion and urine interpretation; hepatic zonation and model limitations; fetal shunt transition and placental transfer corrections (six tests, live lesson/source checks and private audit upload passed; older fetal excerpts explicitly unverified)
   - [x] Physics continuation batch: Joule–Thomson/process boundaries, transformers/isolation, Doppler interpretation, arterial dynamic response, flow/heliox assumptions and temperature errors; 17 targeted tests and authenticated desktop/phone lesson checks passed
   - [x] Rebuild and upload the 153-topic audit corpus; verify the six new prioritised lessons are retained
   - [ ] Next: finish Physics subsection review, then Physiology; Pharmacology candidates include differential blockade and Meyer–Overton limitations (original-source verification required)
