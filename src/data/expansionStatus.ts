@@ -188,6 +188,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "Temperature sensor/site error sources expanded.",
   },
+  "acid-base": {
+    status: "expanded",
+    note: "Audited: mislinked BJA source replaced; saline/balanced fluid (SMART, PLUS) and bicarbonate (BICAR-ICU) lessons added.",
+  },
   // --- Physiology batch ---
   "renal-physiology": {
     status: "expanded",
