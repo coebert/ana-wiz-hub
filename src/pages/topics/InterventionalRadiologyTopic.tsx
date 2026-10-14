@@ -9,6 +9,7 @@ import tipssIllustration from "@/assets/ir/tipss-procedure.jpg";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { ContrastKidneyTeaching } from "@/components/topic/ContrastKidneyTeaching";
 import { ThrombectomyAnaesthesiaTeaching } from "@/components/topic/ThrombectomyAnaesthesiaTeaching";
 
 const interventionalRadiologyFaqs: Array<[string, string]> = [
@@ -189,6 +190,10 @@ const InterventionalRadiologyTopic = () => {
               </ul>
             </div>
             </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="contrast-kidney-evidence" exams={[Exam.FINAL]}>
+            <ContrastKidneyTeaching />
           </ExamSection>
 
           <ExamSection id="radiation" exams={[Exam.FINAL]}>
