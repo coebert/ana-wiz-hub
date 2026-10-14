@@ -112,9 +112,10 @@ const IcuNutritionTopic = () => {
         { text: "Start enteral nutrition within 48 h of ICU admission — maintains gut integrity, reduces translocation", cites: ["NICE CG32", "ESICM Early EN 2017"] },
         { text: "ESPEN target 20–25 kcal/kg/day; in the first 48 h give ≤70% of REE (avoid early overfeeding)", cites: ["BJA Educ 2016"] },
         { text: "Protein 1.2–2.0 g/kg/day is the most important macronutrient target; protein delivery often lags calories", cites: ["ESPEN 2019"] },
-        { text: "NICE-SUGAR: target glucose 6–10 mmol/L — tight control (4.5–6) increases mortality via hypoglycaemia", cites: ["EPaNIC 2011"] },
-        { text: "EPaNIC: defer parenteral nutrition until day 7–8 if EN insufficient — early PN increases infections and weakness", cites: ["NICE-SUGAR 2009"] },
-        { text: "TARGET: energy-dense (1.5 kcal/mL) feed gives no mortality benefit over 1.0 kcal/mL — more is not better", cites: ["NICE CG32"] },
+        { text: "NICE-SUGAR: target glucose 6–10 mmol/L — tight control (4.5–6) increases mortality via hypoglycaemia", cites: ["NICE-SUGAR 2009"] },
+        { text: "EPaNIC: defer parenteral nutrition until day 7–8 if EN insufficient — early PN increases infections and weakness", cites: ["EPaNIC 2011"] },
+        { text: "TARGET: energy-dense (1.5 kcal/mL) feed gives no mortality benefit over 1.0 kcal/mL — more is not better", cites: ["TARGET 2019"] },
+        { text: "EFFORT Protein: high protein (≥2.2 g/kg/day) gave no outcome benefit and a possible harm signal — aim within the 1.2–2.0 g/kg/day range rather than overshooting", cites: ["EFFORT Protein 2023"] },
         { text: "Refeeding syndrome (NICE CG32): start 10 kcal/kg/day (5 if extreme), thiamine 200–300 mg before feeding, replace K⁺/PO₄/Mg²⁺ during (not before) feed", cites: ["BJA Educ 2016"] },
         { text: "Indirect calorimetry is the gold standard for energy targeting; predictive equations are second best", cites: ["ESPEN 2019"] },
       ]}
