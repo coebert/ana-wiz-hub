@@ -49,7 +49,7 @@ const PITFALLS_SOURCES: GuidelineSource[] = [
 
 const icuEndocrineEmergenciesFaqs: Array<[string, string]> = [
   ["How is diabetic ketoacidosis managed in the first hour?", "0.9% saline 500–1000 mL bolus, fixed-rate insulin 0.1 U/kg/h, replace K⁺ once <5.5 mmol/L (urgent senior review if K⁺ <3.5 mmol/L), and check ketones, glucose and bicarbonate hourly (JBDS 2023)."],
-  ["What distinguishes HHS from DKA and how does management differ?", "HHS: glucose >30, osmolality >320, minimal ketones, no acidosis, profound dehydration (often 8–10 L deficit); fluid resuscitation is the priority — insulin only when glucose stops falling with fluids alone, at lower rates (0.05 U/kg/h) to prevent osmotic shifts."],
+  ["What distinguishes HHS from DKA and how does management differ?", "HHS: glucose ≥30 mmol/L, osmolality ≥320 mOsm/kg, ketones ≤3.0 mmol/L, pH >7.3, bicarbonate ≥15 and marked hypovolaemia (losses 100–220 ml/kg); 0.9% saline is the priority — fixed-rate insulin at 0.05 U/kg/h once osmolality stops falling with fluids alone, unless there is significant ketonaemia (JBDS 2023)."],
   ["How is myxoedema coma treated?", "IV levothyroxine initially (ATA: 200–400 µg load, reduced for age, size and cardiac risk), subsequent weight-based replacement, preceded by IV glucocorticoid cover, passive rewarming, treat precipitants and avoid sedatives."],
 ];
 
@@ -206,16 +206,16 @@ const IcuEndocrineEmergenciesTopic = () => {
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Severity criteria — DKA (JBDS-IP)</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Severe / HDU referral if any of: pH &lt; 7.10, HCO₃⁻ &lt; 5, K⁺ &lt; 3.5
-                  on admission, GCS &lt; 12, SpO₂ &lt; 92% on air, SBP &lt; 90, HR &gt; 100
-                  or &lt; 60, anion gap &gt; 16, ketones &gt; 6.
+                  Severe DKA (consider HDU/critical care) if any of: ketones &gt; 6, HCO₃⁻ &lt; 5, pH &lt; 7.0, K⁺ &lt; 3.5
+                  on admission, GCS &lt; 12 or abnormal AVPU, SpO₂ &lt; 92% on air, SBP &lt; 90, HR &gt; 100
+                  or &lt; 60, anion gap &gt; 16.<InlineRef topicId="icu-endocrine-emergencies" refLabel="JBDS-IP DKA 2023 PDF" />
                 </p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">DKA — hourly treatment targets (JBDS-IP 2023)</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Check capillary ketones and glucose hourly, and venous pH/bicarbonate hourly for 2–4 h then
-                  2–4-hourly. Aim for ketones falling ≥ 0.5 mmol/L/h, venous bicarbonate rising ≥ 3.0
+                  Check capillary ketones and glucose hourly, and venous pH, bicarbonate and potassium at 60 minutes, 2 hours and
+                  2-hourly thereafter. Aim for ketones falling ≥ 0.5 mmol/L/h, venous bicarbonate rising ≥ 3.0
                   mmol/L/h and capillary glucose falling ≥ 3.0 mmol/L/h. If these are not met, check the
                   infusion and pump, then increase the fixed-rate insulin infusion by 1 unit/h until they
                   are.<InlineRef topicId="icu-endocrine-emergencies" refLabel="JBDS-IP DKA 2023 (ABCD)" />
@@ -224,9 +224,9 @@ const IcuEndocrineEmergenciesTopic = () => {
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">HHS — distinguishing features</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Osmolality &gt; 320 (= 2[Na⁺] + glucose + urea), pH &gt; 7.30, ketones
-                  &lt; 3, glucose &gt; 30. Fluid deficit 100–220 ml/kg. Aim glucose fall
-                  ≤ 5 mmol/L/h, Na⁺ change ≤ 10 mmol/L/24 h. Always give VTE prophylaxis.
+                  Osmolality ≥ 320 mOsm/kg (= 2[Na⁺] + glucose + urea), glucose ≥ 30, ketones
+                  ≤ 3.0, pH &gt; 7.3, bicarbonate ≥ 15. Fluid losses 100–220 ml/kg. Aim osmolality fall 3–8 mOsm/kg/h, glucose fall
+                  ≤ 5 mmol/L/h, Na⁺ fall ≤ 10 mmol/L in 24 h. Prophylactic LMWH for the whole admission unless contraindicated.<InlineRef topicId="icu-endocrine-emergencies" refLabel="JBDS HHS sodium 2023" />
                 </p>
               </div>
             </div>
