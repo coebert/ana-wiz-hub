@@ -149,7 +149,7 @@ export function buildCaseDictionary(): Record<string, CaseBankTextEntry> {
 
 // ---------------------------------------------------------------- source reading
 
-function readIfExists(path: string): string | null {
+export function readIfExists(path: string): string | null {
   try {
     return existsSync(path) ? readFileSync(path, "utf8") : null;
   } catch {
@@ -158,7 +158,7 @@ function readIfExists(path: string): string | null {
 }
 
 /** Resolve an import specifier used in app source to a real file on disk. */
-function resolveImport(spec: string, fromFile: string): string | null {
+export function resolveImport(spec: string, fromFile: string): string | null {
   let base: string;
   if (spec.startsWith("@/")) base = resolve(ROOT, "src", spec.slice(2));
   else if (spec.startsWith(".")) base = resolve(dirname(fromFile), spec);
@@ -183,7 +183,7 @@ function resolveImport(spec: string, fromFile: string): string | null {
 }
 
 /** Local imports worth following: our own components/data, not UI primitives. */
-function localImportsOf(src: string, fromFile: string): string[] {
+export function localImportsOf(src: string, fromFile: string): string[] {
   const out: string[] = [];
   const re = /^\s*import\s+(?:[\s\S]*?)\s+from\s+["']([^"']+)["'];?/gm;
   let m: RegExpExecArray | null;
@@ -210,7 +210,7 @@ const CONTENT_PROPS =
   /\b(?:title|label|heading|subtitle|description|text|caption|name|question|answer|summary|term|definition|value|unit|note|tooltip|content|point|detail|body|placeholder|alt|aria-label)\s*[:=]\s*(?:"((?:[^"\\]|\\.)*)"|'((?:[^'\\]|\\.)*)'|\{?`((?:[^`\\]|\\.)*)`\}?)/g;
 
 /** Anything that looks like human prose rather than code/config. */
-function looksLikeProse(s: string): boolean {
+export function looksLikeProse(s: string): boolean {
   const t = s.trim();
   if (t.length < 3) return false;
   if (!/[a-zA-Z]/.test(t)) return false;
@@ -225,7 +225,7 @@ function looksLikeProse(s: string): boolean {
   return true;
 }
 
-function decode(s: string): string {
+export function decode(s: string): string {
   return s
     .replace(/\\n/g, " ")
     .replace(/\\"/g, '"')
@@ -288,7 +288,7 @@ function extractFromSource(src: string): Extracted {
  * Read the route table as text rather than importing it — the module uses
  * `import.meta.glob`, which only exists inside Vite.
  */
-function loadTopicRoutes(): Array<[string, string]> {
+export function loadTopicRoutes(): Array<[string, string]> {
   const src = readFileSync(resolve(ROOT, "src/routes/topicRoutes.ts"), "utf8");
   const out: Array<[string, string]> = [];
   const re = /\[\s*"(\/[^"]+)"\s*,\s*"([A-Za-z0-9_]+)"\s*\]/g;
@@ -300,7 +300,7 @@ function loadTopicRoutes(): Array<[string, string]> {
 const TOPIC_ROUTES = loadTopicRoutes();
 
 /** topicId → route, derived from the route table (`/section/topic-id`). */
-const componentByTopicId = new Map<string, { component: string; route: string }>();
+export const componentByTopicId = new Map<string, { component: string; route: string }>();
 for (const [path, moduleName] of TOPIC_ROUTES) {
   const id = path.split("/").filter(Boolean).pop();
   if (id) componentByTopicId.set(id, { component: moduleName, route: path });
