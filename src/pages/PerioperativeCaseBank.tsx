@@ -10,7 +10,7 @@ import { PageJsonLd } from "@/components/layout/PageJsonLd";
 
 const sources = {
   steroid: { label: "Association of Anaesthetists 2020", href: "https://doi.org/10.1111/anae.14963" },
-  phaeo: { label: "BJA Education: phaeochromocytoma", href: "https://doi.org/10.1093/bjaed/mkv051" },
+  phaeo: { label: "BJA Education: phaeochromocytoma", href: "https://doi.org/10.1093/bjaed/mkv033" },
   crash2: { label: "CRASH-2", href: "https://doi.org/10.1016/S0140-6736(10)60835-5" },
   woman: { label: "WOMAN trial", href: "https://doi.org/10.1016/S0140-6736(17)30638-4" },
   poise3: { label: "POISE-3", href: "https://doi.org/10.1056/NEJMoa2201171" },
