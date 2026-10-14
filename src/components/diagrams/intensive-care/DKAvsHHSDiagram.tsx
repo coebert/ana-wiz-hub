@@ -96,7 +96,7 @@ const ROWS: Array<{
     key: "treatment",
     label: "Treatment differences",
     dka: "Fixed-rate insulin 0.1 U/kg/h immediately + 0.9% NaCl",
-    hhs: "0.9% NaCl FIRST · insulin only after fluids running, lower rate (0.05 U/kg/h)",
+    hhs: "0.9% NaCl FIRST · non-ketotic HHS: insulin 0.05 U/kg/h after adequate fluids when glucose plateaus",
     detail:
       "In HHS, fluids alone usually drop glucose substantially. Adding insulin too early causes rapid osmotic shift → cerebral oedema and central pontine myelinolysis. Aim for glucose fall ≤ 5 mmol/L/h and Na⁺ change ≤ 10 mmol/L/24 h.",
   },
@@ -120,7 +120,8 @@ const ROWS: Array<{
 
 const DKAvsHHSDiagram = () => {
   const [selected, setSelected] = useState<RowKey>("ketones");
-  const sel = ROWS.find((r) => r.key === selected)!;
+  const sel = ROWS.find((r) => r.key === selected) ?? ROWS[0];
+  if (!sel) return null;
 
   return (
     <DiagramFigure

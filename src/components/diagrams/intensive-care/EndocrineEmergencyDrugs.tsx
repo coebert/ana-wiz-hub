@@ -33,13 +33,13 @@ const DRUGS: Drug[] = [
     cls: "insulin",
     use: "DKA & HHS",
     dose:
-      "DKA: 0.1 U/kg/h IV fixed-rate (FRIII).\nHHS: 0.05 U/kg/h IV — only after fluids running and if ketones >1 or glucose plateau.",
+      "DKA: 0.1 U/kg/h IV fixed-rate (FRIII).\nHHS without significant ketosis: 0.05 U/kg/h IV after adequate fluids when glucose plateaus. Mixed DKA/HHS requires DKA dosing.",
     onset: "IV: <15 min. Effects on ketones over hours.",
     duration: "Half-life ~5 min IV; effect ends rapidly when infusion stopped.",
     mechanism:
       "Suppresses lipolysis and ketogenesis, activates Na⁺/K⁺-ATPase (drives K⁺, Mg²⁺, PO₄³⁻ intracellularly), promotes peripheral glucose uptake.",
     contraindications:
-      "K⁺ <3.5 mmol/L → halt infusion until replaced (DKA potassium paradox). Avoid bolus dosing in DKA/HHS — fixed-rate only. Caution in HHS: rapid glucose fall → cerebral oedema, central pontine myelinolysis.",
+      "K⁺ <3.5 mmol/L → urgent senior review, monitored correction and individual insulin plan. Avoid bolus dosing in DKA/HHS — fixed-rate only. Caution in HHS: rapid glucose fall → cerebral oedema, central pontine myelinolysis.",
     pearl:
       "Continue the patient's long-acting (basal) insulin throughout DKA treatment. Add 10% dextrose alongside saline once glucose <14 mmol/L so the FRIII can keep clearing ketones safely.",
   },
@@ -158,7 +158,7 @@ const DRUGS: Drug[] = [
     contraindications:
       "Decompensated heart failure (caution — high-output failure in storm may need esmolol with rapid titrability). Severe asthma / COPD. 2nd/3rd-degree heart block. Phaeochromocytoma WITHOUT α-blockade (unopposed α stimulation → hypertensive crisis, pulmonary oedema).",
     pearl:
-      "In thyroid storm, β-blockade is the FIRST drug given — controls tachycardia, AF, tremor, anxiety, AND blocks T4→T3. Do not delay other steps while titrating.",
+      "Assess perfusion and cardiac function before β-blockade. Propranolol at high doses reduces T4→T3 conversion; begin the other storm treatments in parallel.",
   },
   {
     id: "esmolol",
@@ -172,7 +172,7 @@ const DRUGS: Drug[] = [
     contraindications:
       "Same as propranolol but the rapid offset makes it preferred when haemodynamically borderline. Do NOT give as monotherapy in phaeochromocytoma crisis.",
     pearl:
-      "Excellent if patient has heart failure and you need β-blockade you can switch off quickly. Less effective at blocking peripheral T4→T3 conversion than propranolol.",
+      "Rapid offset permits reassessment but does not prevent collapse in low-output failure. It should not be credited with propranolol’s high-dose T4→T3 conversion effect.",
   },
   {
     id: "labetalol",
@@ -243,7 +243,7 @@ const DRUGS: Drug[] = [
     cls: "support",
     use: "DKA / HHS — replace as insulin drives K⁺ intracellularly",
     dose:
-      "K⁺ 3.5–5.5: 40 mmol KCl/L of replacement fluid.\nK⁺ <3.5: 20 mmol/h via central line + halt insulin until K⁺ ≥3.5.\nK⁺ >5.5: no KCl this bag.",
+      "K⁺ 3.5–5.5: 40 mmol KCl/L of replacement fluid.\nK⁺ <3.5: urgent senior review and additional monitored replacement under the local protocol.\nK⁺ >5.5: no KCl this bag.",
     onset: "Distribution into cells over hours (insulin-driven).",
     contraindications:
       "Anuric AKI (caution; titrate). Concentrated KCl (>40 mmol/L) → central line only — NEVER peripheral push (cardiac arrest).",
@@ -258,13 +258,13 @@ const DRUGS: Drug[] = [
     cls: "support",
     use: "DKA · HHS · adrenal crisis · myxoedema",
     dose:
-      "DKA: 1 L over 1 h, then titrated.\nHHS: 1 L/h × 2–3, total 100–220 mL/kg over 24–48 h.\nAdrenal crisis: 1 L over 1 h, then 2–4 L/24 h.",
+      "DKA: 1 L over 1 h, then titrated.\nHHS: individual fluid replacement with repeated perfusion/osmolality assessment, slower in heart or renal failure.\nAdrenal crisis: 1 L over 1 h, then 2–4 L/24 h.",
     onset: "Immediate intravascular expansion.",
     mechanism: "Isotonic crystalloid — restores intravascular volume and Na⁺.",
     contraindications:
       "Severe HF / pulmonary oedema (titrate carefully). Risk of hyperchloraemic acidosis with large volumes — Hartmann's reasonable alternative once initial resus done in DKA.",
     pearl:
-      "In HHS: aim glucose fall ≤5 mmol/L/h AND Na⁺ change ≤10 mmol/L/24 h to avoid cerebral oedema and central pontine myelinolysis. Switch to 0.45% saline if corrected Na⁺ rising despite adequate fluid.",
+      "In HHS: aim glucose fall ≤5 mmol/L/h AND Na⁺ change ≤10 mmol/L/24 h to avoid cerebral oedema and central pontine myelinolysis. Consider 0.45% saline only when osmolality is not declining despite adequate isotonic fluid replacement and positive balance; not for a sodium rise alone.",
   },
   {
     id: "dextrose-10",
@@ -313,7 +313,7 @@ const DRUGS: Drug[] = [
     cls: "support",
     use: "Myxoedema coma",
     dose:
-      "Load 10–20 mcg IV slow, then 10 mcg q4h (or T4 200–400 mcg IV load + 50–100 mcg/day).",
+      "ATA: IV T4 is initial therapy (load 200–400 mcg, lower for age, size and cardiac risk). T3 is a selected adjunct: load 5–20 mcg, then 2.5–10 mcg every 8 h under endocrine advice.",
     onset: "Hours (T3 faster than T4).",
     mechanism: "Direct active thyroid hormone replacement.",
     contraindications:
