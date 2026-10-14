@@ -153,6 +153,7 @@ export const TOPIC_ROUTES: ReadonlyArray<readonly [string, string]> = [
   // Intensive Care
   ["/intensive-care/sepsis", "SepsisTopic"],
   ["/intensive-care/mechanical-ventilation", "MechanicalVentilationTopic"],
+  ["/intensive-care/peep-management", "PEEPManagementTopic"],
   ["/intensive-care/circulatory-failure", "CirculatoryFailureTopic"],
   ["/intensive-care/aki-rrt", "AkiRrtTopic"],
   ["/intensive-care/acute-liver-failure", "AcuteLiverFailureTopic"],
