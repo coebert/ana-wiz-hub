@@ -65,7 +65,7 @@ export const CollapsibleSubsection = ({
           className="h-5 w-5 text-muted-foreground transition-transform duration-200 group-open/collapsible:rotate-90 shrink-0"
           aria-hidden="true"
         />
-        <h2 className="text-2xl font-serif font-bold text-foreground m-0">
+        <h2 className="text-xl sm:text-2xl font-serif font-bold text-foreground m-0">
           {title}
         </h2>
       </summary>
