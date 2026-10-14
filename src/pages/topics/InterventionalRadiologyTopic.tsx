@@ -9,6 +9,7 @@ import tipssIllustration from "@/assets/ir/tipss-procedure.jpg";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { ThrombectomyAnaesthesiaTeaching } from "@/components/topic/ThrombectomyAnaesthesiaTeaching";
 
 const interventionalRadiologyFaqs: Array<[string, string]> = [
   [

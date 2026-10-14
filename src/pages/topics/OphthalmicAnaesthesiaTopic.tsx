@@ -30,6 +30,7 @@ const tocItems = [
   { id: "open-globe", label: "Open-globe injury", group: "Emergency" },
   { id: "strabismus", label: "Strabismus surgery", group: "Paediatric" },
   { id: "brainstem", label: "Brainstem anaesthesia", group: "Complications" },
+  { id: "evidence", label: "Evidence base", group: "Complications" },
   { id: "faq", label: "FAQ", group: "Reference" },
 ];
 
