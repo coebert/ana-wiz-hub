@@ -1,4 +1,5 @@
 - [x] Fix all current preview typecheck/build errors
+- [ ] Review acid-base HAGMA, NAGMA, osmolar gap, Stewart and citrate line by line; correct linked teaching/calculators, verify sources/rendering/search/private audit copy, then mark these subsections complete.
 - [x] Build perioperative case bank using steroid cover, phaeochromocytoma and antifibrinolytic content
 - [x] Complete the 23 physics content-audit expansions and sync actioned findings
 - [x] Expand the perioperative case bank with additional anonymised, evidence-based clinical scenarios in the established two-pass format
