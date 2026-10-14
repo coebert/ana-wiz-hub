@@ -18,6 +18,7 @@ import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
 import { ProprietaryModesTeaching } from "@/components/topic/ProprietaryModesTeaching";
+import { ICUWeaningTeaching } from "@/components/topic/ICUWeaningTeaching";
 
 const mechanicalVentilationFaqs: Array<[string, string]> = [
   ["What lung-protective tidal volume should I set in ARDS?", "Use 6 mL/kg predicted body weight (ARDSNet), aiming for a plateau pressure ≤30 cmH₂O and driving pressure ≤15 cmH₂O; permit hypercapnia provided pH ≥7.20."],
@@ -31,7 +32,7 @@ const objectives = [
   "Deliver lung-protective ventilation (Vt 6 mL/kg PBW, Pplat ≤ 30, ΔP ≤ 15) and explain the four mechanisms of VILI.",
   "Identify common dyssynchrony patterns on pressure/flow waveforms and adjust trigger, flow or cycle settings.",
   "Explain APRV physiology, protocol-dependent flow titration, safe monitoring, weaning and evidence limitations.",
-  "Run paired daily SAT + SBT, predict extubation failure (cuff leak, RSBI, TFdi) and manage post-extubation respiratory failure.",
+  "Assess ICU weaning readiness, conduct and interpret an SBT, and distinguish breathing tolerance from airway and extubation readiness.",
   "Prevent and recognise VAP/VAE, ICUAW, VIDD and post-intensive-care syndrome (PICS).",
 ];
 
@@ -57,14 +58,14 @@ const workedExamples: WorkedExample[] = [
     cites: ["Lumb Ch.31"],
   },
   {
-    title: "Predicting extubation success",
+    title: "SBT tolerance is not extubation clearance",
     scenario:
-      "Day 6 of MV for pneumonia. SAT passed. SBT on PSV 5/PEEP 5 for 30 min: RR 24, Vt 380 mL, HR 95, SpO₂ 96 % on FiO₂ 0.4. Cuff leak 90 mL. RSBI?",
+      "Day 6 of MV for pneumonia. Awakening assessment satisfactory. SBT on PSV 5/PEEP 5 for 30 min: RR 24, Vt 380 mL, HR 95, SpO₂ 96% on unchanged FiO₂ 0.4. Weak cough and abundant secretions. RSBI? Is extubation appropriate?",
     working:
-      "RSBI = RR/Vt(L) = 24 / 0.38 = 63 (< 105 favours success). Cuff leak < 110 mL predicts post-extubation stridor. SBT physiologically passed. Risk-stratify high.",
+      "RSBI = RR/Vt(L) = 24 / 0.38 ≈63 breaths/min/L. AARC 2024 does not require this index to determine SBT readiness. Stable observations support trial tolerance, but airway protection and secretion clearance remain separate assessments.",
     answer:
-      "Pass SBT but high stridor risk — give dexamethasone 4 mg IV every 6 h for 12–24 h pre-extubation (Cochrane). Extubate to HFNO (or NIV if hypercapnic/cardiac), have reintubation kit at the bedside. Monitor ROX index (SpO₂/FiO₂)/RR — ≥ 4.88 at 2/6/12 h predicts HFNO success.",
-    cites: ["BJA Educ 2018"],
+      "Do not extubate automatically. Assess cough, airway protection, secretion clearance and a safe post-extubation/rescue plan. Document the barrier and reassessment plan; a favourable RSBI does not solve the airway problem.",
+    cites: ["AARC SBT 2024 RSBI", "AARC SBT 2024 airway"],
   },
   {
     title: "APRV T low titration",
@@ -81,7 +82,7 @@ const workedExamples: WorkedExample[] = [
 const keyPoints = [
   { text: "VCV guarantees volume; PCV guarantees pressure — know the trade-offs", cites: ["Lumb Ch.31"] },
   { text: "Lung-protective ventilation: 6 ml/kg IBW, Pplat ≤30, driving pressure ≤15", cites: ["BJA Educ 2018", "ESICM ARDS 2023"] },
-  { text: "Daily SBTs are the best strategy for weaning — do not delay", cites: ["BJA Educ 2019"] },
+  { text: "Assess SBT readiness daily; RSBI is not a required gate, and a passed trial does not establish airway readiness", cites: ["AARC SBT 2024 daily", "AARC SBT 2024 RSBI", "AARC SBT 2024 airway"] },
   { text: "Driving pressure (Pplat − PEEP) is the strongest predictor of ARDS mortality", cites: ["Lumb Ch.31"] },
   { text: "APRV supports recruitment with prolonged P high and brief releases; flow titration is protocol-dependent and lung protection must be checked", cites: ["Swindin APRV 2020", "Hirshberg APRV 2018"] },
   { text: "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 32.8% to 16.0% (NNT about 6)", cites: ["Guérin 2013 PROSEVA"] },
@@ -139,17 +140,18 @@ const MechanicalVentilationTopic = () => {
       }}
       sectionSources={{
         diagrams: ["Swindin APRV 2020", "Lumb Ch.31"],
-        objectives: ["Swindin APRV 2020",
+        objectives: ["AARC SBT 2024 readiness", "AARC SBT 2024 airway", "Swindin APRV 2020",
           "BJA Educ 2018",
           "Lumb Ch.31",
           "BJA Educ 2019",
         ],
         keyPoints: [
+          "AARC SBT 2024 daily", "AARC SBT 2024 RSBI", "AARC SBT 2024 airway",
           "BJA Educ 2018",
           "Lumb Ch.31",
           "BJA Educ 2019",
         ],
-        workedExamples: ["BJA Educ 2019", "Lumb Ch.31", "BJA Educ 2018", "Swindin APRV 2020", "Zhou APRV 2017"],
+        workedExamples: ["AARC SBT 2024 RSBI", "AARC SBT 2024 airway", "BJA Educ 2019", "Lumb Ch.31", "BJA Educ 2018", "Swindin APRV 2020", "Zhou APRV 2017"],
       }}
       coreConcepts={
         <>
@@ -547,12 +549,10 @@ const MechanicalVentilationTopic = () => {
           </CollapsibleSubsection>
         </ExamSection>
 
-        {/* ───── 7. Brief weaning placeholder (full section later) ───── */}
+        {/* ───── 7. Source-led ICU weaning lesson ───── */}
         <ExamSection id="toc-weaning" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
-          <CollapsibleSubsection title="7. Weaning — Overview">
-          <p className="text-muted-foreground leading-relaxed">
-            Weaning accounts for ~40% of total ventilation time. WIND classification: <strong>simple</strong> (extubated on first SBT, ~60%), <strong>difficult</strong> (1–7 days / 2–3 SBTs), <strong>prolonged</strong> (&gt; 7 days or &gt; 3 SBTs). Daily paired SAT + SBT (ABC trial — Girard, Lancet 2008) reduce ventilator days. Detailed extubation criteria, cuff-leak test and high-risk extubation are covered in <a href="#toc-tracheostomy" className="text-primary hover:underline">section 11–12</a>.
-          </p>
+          <CollapsibleSubsection title="7. ICU Weaning: Readiness & Spontaneous Breathing Trials">
+            <ICUWeaningTeaching />
           </CollapsibleSubsection>
         </ExamSection>
 
@@ -1005,11 +1005,11 @@ const MechanicalVentilationTopic = () => {
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
             {[
               { label: "Resolving pathology", detail: "The indication for intubation is improving or resolved." },
-              { label: "Oxygenation", detail: "FiO₂ ≤0.4, PEEP ≤8 cmH₂O, SpO₂ ≥92%." },
-              { label: "Haemodynamics", detail: "Stable without high-dose vasopressors (noradrenaline ≤0.1 μg/kg/min)." },
-              { label: "Neurological", detail: "GCS ≥8 (≥8T), intact cough and gag reflexes, able to protect airway." },
-              { label: "Respiratory drive", detail: "Adequate spontaneous breathing on minimal support. RSBI (f/VT) <105." },
-              { label: "Secretion burden", detail: "Manageable secretions, suctioning ≤2-hourly, no copious thick secretions." },
+              { label: "Oxygenation", detail: "Adequate oxygenation on the planned trial settings and within the patient's prescribed target." },
+              { label: "Haemodynamics", detail: "Haemodynamic stability assessed clinically, including the trajectory of vasoactive support." },
+              { label: "Airway protection", detail: "Assess airway patency, protection and cough; no single consciousness score guarantees safety." },
+              { label: "Respiratory drive", detail: "Can initiate inspiratory effort and tolerate an SBT; RSBI is not a mandatory readiness threshold." },
+              { label: "Secretion burden", detail: "Assess the ability to clear secretions; abundant secretions with a weak cough may prevent extubation despite SBT tolerance." },
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                 <p className="font-semibold text-foreground text-sm">{item.label}</p>
@@ -1018,6 +1018,7 @@ const MechanicalVentilationTopic = () => {
             ))}
           </div>
 
+          <p className="text-sm text-muted-foreground mb-4">These clinical domains follow the readiness and airway distinctions in AARC 2024; they are not automatic extubation criteria.<InlineRef topicId="mechanical-ventilation" refLabel="AARC SBT 2024 readiness" /><InlineRef topicId="mechanical-ventilation" refLabel="AARC SBT 2024 airway" /></p>
           <h3 className="text-lg font-semibold text-foreground mb-2">High-Risk Extubation Criteria</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The DAS extubation guidelines (2012) classify extubation risk based on airway and general factors. An "at-risk" extubation requires a plan for failure:
