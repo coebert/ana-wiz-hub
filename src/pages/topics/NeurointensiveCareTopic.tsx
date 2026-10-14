@@ -1568,7 +1568,7 @@ const NeurointensiveCareTopic = () => {
               ["Status epilepticus", ">5 min seizure or recurrent", "IV benzo → levetiracetam/phenytoin/valproate → anaesthesia"],
               ["Acute stroke", "<4.5 h thrombolysis; <6 h (up to 24 h) thrombectomy", "NIHSS, CT/CTA, BP <185/110 pre-tPA"],
               ["Brainstem death", "Coma + apnoea + absent brainstem reflexes ×2 by 2 doctors", "Refer SN-OD before testing for organ donation pathway"],
-              ["WLST decision", "≥72 h full active treatment (DBI 2025)", "MDT involvement; family collaboration; SN-OD discussion"],
+              ["WLST decision", "≥72 h full active treatment (DBI consensus 2018)", "MDT involvement; family collaboration; SN-OD discussion"],
             ].map(([domain, target, action]) => (
               <tr key={domain as string} className="border-b border-border/50">
                 <td className="p-2 font-medium">{domain}</td>
