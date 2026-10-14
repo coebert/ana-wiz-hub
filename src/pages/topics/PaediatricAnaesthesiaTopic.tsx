@@ -51,7 +51,7 @@ const paediatricFaqs: Array<[string, string]> = [
   ],
   [
     "What is the WETFLAG emergency drug dose framework?",
-    "WETFLAG is a paediatric emergency checklist used to rapidly estimate weight and calculate critical drug doses and equipment sizes: W (Weight = (age + 4) × 2 kg), E (Energy for defibrillation = 4 J/kg), T (Tube size = age/4 + 4 mm uncuffed), F (Fluids = 10–20 mL/kg bolus), L (Length of ETT at lips = age/2 + 12 cm), A (Adrenaline = 10 µg/kg IV/IO for cardiac arrest; 0.1 µg/kg/min for infusion), G (Glucose = 2 mL/kg of 10% dextrose for hypoglycaemia). This ensures standardised, rapid preparation during paediatric emergencies and arrests.",
+    "WETFLAG is a paediatric emergency checklist used to rapidly estimate weight and calculate critical drug doses and equipment sizes: W (Weight = (age + 4) × 2 kg), E (Energy for defibrillation = 4 J/kg), T (Tube size = age/4 + 4 mm uncuffed), F (Fluids = 10 mL/kg bolus (NICE NG29)), L (Length of ETT at lips = age/2 + 12 cm), A (Adrenaline = 10 µg/kg IV/IO for cardiac arrest; 0.1 µg/kg/min for infusion), G (Glucose = 2 mL/kg of 10% dextrose for hypoglycaemia). This ensures standardised, rapid preparation during paediatric emergencies and arrests.",
   ],
   [
     "How do you manage laryngospasm in a child?",
@@ -67,7 +67,7 @@ const paediatricFaqs: Array<[string, string]> = [
   ],
   [
     "How do you anaesthetise a child with pyloric stenosis?",
-    "Pyloric stenosis presents with projectile vomiting leading to a hypochloraemic, hypokalaemic metabolic alkalosis. It is a MEDICAL emergency, not a surgical one — the alkalosis must be corrected before theatre because post-operative apnoea is common if HCO₃ remains ≥28 mmol/L. Resuscitate with 0.9% saline 10–20 ml/kg boluses to restore intravascular volume, then 0.45% saline + 5% dextrose with 20 mmol/L KCl at 1.5 × maintenance. Targets before surgery: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ <28, and adequate urine output. In theatre, use a modified RSI (full stomach) with ketamine or propofol and rocuronium, maintain normothermia, and monitor glucose closely.",
+    "Pyloric stenosis presents with projectile vomiting leading to a hypochloraemic, hypokalaemic metabolic alkalosis. It is a MEDICAL emergency, not a surgical one — the alkalosis must be corrected before theatre because post-operative apnoea is common if HCO₃ remains ≥28 mmol/L. Resuscitate with 0.9% saline 10 ml/kg boluses to restore intravascular volume, then 0.45% saline + 5% dextrose with 20 mmol/L KCl at 1.5 × maintenance. Targets before surgery: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ <28, and adequate urine output. In theatre, use a modified RSI (full stomach) with ketamine or propofol and rocuronium, maintain normothermia, and monitor glucose closely.",
   ],
   [
     "What is a caudal block and when is it used in children?",
@@ -75,7 +75,7 @@ const paediatricFaqs: Array<[string, string]> = [
   ],
   [
     "What fluids should be used for paediatric maintenance and resuscitation?",
-    "For maintenance, use the Holliday-Segar 4-2-1 rule: 4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg, and 1 ml/kg/hr for each kg thereafter. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10–20 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
+    "For maintenance, use the Holliday-Segar 4-2-1 rule: 4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg, and 1 ml/kg/hr for each kg thereafter. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
   ],
   [
     "What is the difference between PCA and NCA in children?",
@@ -97,7 +97,7 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "A 5-week-old infant presents with projectile vomiting, weight loss and a palpable olive. Bloods: Na 132, K 2.9, Cl 88, HCO₃ 34, pH 7.52. Is he ready for theatre?",
     working:
-      "Classic hypochloraemic, hypokalaemic metabolic alkalosis from prolonged vomiting of gastric HCl.\nThis is a MEDICAL emergency, not a surgical one — uncorrected alkalosis causes post-op apnoea (compensatory hypoventilation perpetuated under anaesthesia).\nResuscitate: 0.9% saline 10–20 ml/kg bolus to restore intravascular volume, then 0.45% saline + 5% dextrose with KCl 20 mmol/L at 1.5 × maintenance.\nTargets before theatre: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ ≤26, normal urine output.\nThen RSI (modified — full stomach), maintain normothermia and glucose monitoring.",
+      "Classic hypochloraemic, hypokalaemic metabolic alkalosis from prolonged vomiting of gastric HCl.\nThis is a MEDICAL emergency, not a surgical one — uncorrected alkalosis causes post-op apnoea (compensatory hypoventilation perpetuated under anaesthesia).\nResuscitate: 0.9% saline 10 ml/kg bolus to restore intravascular volume, then 0.45% saline + 5% dextrose with KCl 20 mmol/L at 1.5 × maintenance.\nTargets before theatre: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ ≤26, normal urine output.\nThen RSI (modified — full stomach), maintain normothermia and glucose monitoring.",
     answer:
       "Not yet. Correct the alkalosis and electrolyte deficit (Cl ≥100, HCO₃ <28, K ≥3.5) over 24–48 h before theatre, then proceed with modified RSI.",
     cites: ["BJA Educ 2019"],
@@ -137,8 +137,13 @@ const PaediatricAnaesthesiaTopic = () => {
           "BJA Educ 2019",
           "Sury et al.",
           "APAGBI 2020",
+          "Tait 2001",
+          "von Ungern-Sternberg 2010",
+          "Kim 2022",
         ],
         keyPoints: [
+          "Tait 2001",
+          "von Ungern-Sternberg 2010",
           "BJA Educ 2019",
           "Sury et al.",
           "APAGBI 2020",
@@ -231,7 +236,7 @@ const PaediatricAnaesthesiaTopic = () => {
                   { scenario: "Epiglottitis", management: "Now rare (Hib vaccine). Do NOT examine throat. Gaseous induction in theatre with ENT standby. IV access after induction. Tracheostomy rarely needed." },
                   { scenario: "Pyloric Stenosis", management: "Hypochloraemic, hypokalaemic metabolic alkalosis. Medical emergency, NOT surgical. Correct electrolytes and dehydration first. RSI with modified approach." },
                   { scenario: "Inhaled Foreign Body", management: "Typically a toddler (1–3 years) with a sudden choking or gagging episode, then a quiet period, then cough, wheeze or stridor. Signs: one-sided reduced air entry or localised wheeze. Most objects (nuts, food) are not visible on X-ray; look for one-sided over-inflation from air trapping (inspiratory/expiratory or lateral decubitus films) or collapse. Removal is by rigid bronchoscopy, a shared airway: inhalational (or carefully titrated IV) induction keeping the child breathing spontaneously where possible, IV access once asleep, topical lidocaine to the cords, then ventilation through the bronchoscope side-port or a Sanders injector. Plan with the surgeon beforehand. Complications: laryngospasm, bronchospasm, the object moving into the trachea or fragmenting, airway trauma and post-operative oedema (consider dexamethasone)." },
-                  { scenario: "Tonsillectomy Bleeding", management: "Assume full stomach and hypovolaemia. Resuscitate with 20 ml/kg crystalloid. RSI with head-down, left lateral position. Suction before induction." },
+                  { scenario: "Tonsillectomy Bleeding", management: "Assume full stomach and hypovolaemia. Resuscitate with 10 ml/kg crystalloid (repeat as needed). RSI with head-down, left lateral position. Suction before induction." },
                 ].map((s) => (
                   <div key={s.scenario} className="p-3 rounded-lg bg-secondary/30 border border-border">
                     <p className="font-semibold text-foreground text-sm">{s.scenario}</p>
@@ -584,23 +589,79 @@ const PaediatricAnaesthesiaTopic = () => {
               </p>
               <div className="grid sm:grid-cols-2 gap-3">
                 <div className="p-4 rounded-lg border-l-4 border-destructive bg-destructive/5">
-                  <p className="font-semibold text-foreground text-sm">Defer (usually 2–4 weeks, and up to 6 weeks after LRTI)</p>
+                  <p className="font-semibold text-foreground text-sm">Defer (High Risk / COLDS >12.5)</p>
                   <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
-                    <li>Fever &gt;38°C, lethargy, poor feeding, or a systemically unwell child</li>
-                    <li>Purulent nasal or airway secretions, productive/wet cough</li>
-                    <li>Wheeze, crepitations, or clinical signs of lower respiratory tract involvement</li>
-                    <li>Child &lt;1 year, ex-premature, congenital heart or airway disease, poorly controlled asthma</li>
-                    <li>Major or airway surgery planned, or a long procedure requiring tracheal intubation</li>
+                    <li>Fever >38°C, lethargy, poor feeding, or systemically unwell</li>
+                    <li>Purulent nasal secretions or productive/wet cough</li>
+                    <li>New wheeze or signs of lower respiratory involvement (LRTI)</li>
+                    <li>High-risk modifiers: ex-prematurity, paternal smoking, copious secretions <InlineRef topicId="paediatric-anaesthesia" refLabel="Tait 2001" /></li>
+                    <li>Major airway surgery or ETT required in child <5 years</li>
                   </ul>
                 </div>
                 <div className="p-4 rounded-lg border border-border">
-                  <p className="font-semibold text-foreground text-sm">Proceed with an optimised plan</p>
+                  <p className="font-semibold text-foreground text-sm">Proceed (Acceptable Risk)</p>
                   <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
-                    <li>Afebrile, well, clear secretions, dry cough only, chest clear</li>
-                    <li>Older child, short peripheral procedure, no significant comorbidity</li>
-                    <li>Recognise that airway hyper-reactivity persists for up to 4–6 weeks after symptoms clear, so deferral does not abolish risk</li>
-                    <li>Weigh the harms of cancellation: repeated fasting, parental work loss, delayed surgery, and a high chance of another URTI at the next date</li>
+                    <li>Afebrile, clear secretions, dry cough only, chest clear</li>
+                    <li>Older child, short peripheral procedure, no major comorbidity</li>
+                    <li>URTI symptoms occurred >2 weeks ago (risk significantly lower at 2–4 weeks) <InlineRef topicId="paediatric-anaesthesia" refLabel="von Ungern-Sternberg 2010" /></li>
+                    <li>COLDS score ≤12.5 <InlineRef topicId="paediatric-anaesthesia" refLabel="Kim 2022" /></li>
                   </ul>
+                </div>
+              </div>
+
+              <div className="mt-6 p-4 rounded-lg border border-border bg-muted/5">
+                <h3 className="text-lg font-serif font-bold text-foreground mb-2">COLDS Score for Risk Stratification</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  The COLDS score is a validated tool for predicting Perioperative Respiratory Adverse Events (PRAE) in children with URTI. A score >12.5 is associated with significantly higher risk <InlineRef topicId="paediatric-anaesthesia" refLabel="Kim 2022" />.
+                </p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs border-collapse">
+                    <thead>
+                      <tr className="border-b border-border text-foreground">
+                        <th className="text-left py-2 font-semibold w-1/4">Criteria</th>
+                        <th className="text-left py-2 font-semibold">1 Point</th>
+                        <th className="text-left py-2 font-semibold">2 Points</th>
+                        <th className="text-left py-2 font-semibold">5 Points</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-muted-foreground">
+                      <tr className="border-b border-border">
+                        <td className="py-2 font-medium text-foreground">Current symptoms</td>
+                        <td>None</td>
+                        <td>Clear/mild URTI</td>
+                        <td>Fever, wet cough, purulent</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="py-2 font-medium text-foreground">Onset</td>
+                        <td>>2 weeks ago</td>
+                        <td>1–2 weeks ago</td>
+                        <td><1 week ago (acute)</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="py-2 font-medium text-foreground">Lung disease</td>
+                        <td>None</td>
+                        <td>Controlled asthma/RAD</td>
+                        <td>Active wheeze/recent admit</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="py-2 font-medium text-foreground">Device</td>
+                        <td>Facemask</td>
+                        <td>SGA (LMA)</td>
+                        <td>ETT</td>
+                      </tr>
+                      <tr className="border-b border-border">
+                        <td className="py-2 font-medium text-foreground">Surgery</td>
+                        <td>Non-airway</td>
+                        <td>Airway (brief)</td>
+                        <td>Airway (major/long)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-[10px] text-muted-foreground mt-3 italic">
+                  *Risk modifiers (Tait 2001): ex-prematurity, paternal smoking, copious secretions, and age <5yr (if ETT used) all independently increase PRAE risk.*
+                </p>
+              </div>
                 </div>
               </div>
               <div className="p-4 rounded-lg border border-border mt-3">
@@ -618,27 +679,65 @@ const PaediatricAnaesthesiaTopic = () => {
           </ExamSection>
 
 
+          
           <ExamSection id="fluids" exams={[Exam.FINAL]}>
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fluid Management</h2>
-              <p className="text-muted-foreground leading-relaxed mb-2">
-                Maintenance fluids: 4-2-1 rule (Holliday-Segar). Use isotonic balanced solutions (Hartmann's/Plasmalyte). Avoid hypotonic solutions — risk of hyponatraemia.
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">NICE NG29 Fluid Management (2020)</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Guidance for hospital IV fluids (updated Dec 2020). Note: applies to general ward/ED management; intraoperative requirements may differ based on surgical losses and physiology.
               </p>
-              <div className="p-4 rounded-lg border border-border">
-                <p className="text-sm text-muted-foreground">
-                  <strong className="text-foreground">4-2-1 Rule:</strong> 4 ml/kg/hr for first 10 kg, 2 ml/kg/hr for next 10 kg, 1 ml/kg/hr for each kg thereafter.
-                  <br /><strong className="text-foreground">Replacement:</strong> 10 ml/kg isotonic crystalloid boluses. Reassess after each bolus.
-                  <br /><strong className="text-foreground">Blood:</strong> Maximum allowable blood loss = EBV × (Hct_start − Hct_min) / Hct_start. Neonatal EBV = 80 ml/kg.
-                </p>
+              
+              <div className="space-y-4">
+                <div className="p-4 rounded-lg border border-border bg-secondary/10">
+                  <p className="font-semibold text-foreground text-sm mb-2">1. Resuscitation</p>
+                  <blockquote className="text-xs italic text-muted-foreground border-l-2 border-primary/30 pl-3 mb-2">
+                    "If children and young people need IV fluid resuscitation, use glucose‑free crystalloids that contain sodium in the range 131–154 mmol/litre, with a bolus of 10 ml/kg over less than 10 minutes."
+                  </blockquote>
+                  <p className="text-sm text-muted-foreground italic">
+                    Seek expert advice if 40–60 ml/kg or more is needed during initial resuscitation.
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-lg border border-border bg-secondary/10">
+                  <p className="font-semibold text-foreground text-sm mb-2">2. Routine Maintenance (Holliday-Segar)</p>
+                  <blockquote className="text-xs italic text-muted-foreground border-l-2 border-primary/30 pl-3 mb-2">
+                    "Calculate routine maintenance IV fluid rates... using the Holliday–Segar formula (100 ml/kg/day for the first 10 kg, 50 ml/kg/day for the next 10 kg and 20 ml/kg/day for weight over 20 kg)."
+                  </blockquote>
+                  <p className="text-sm text-muted-foreground">
+                    Initially use isotonic crystalloids (sodium 131–154 mmol/L). AVOID hypotonic solutions (e.g. 0.18% saline) due to hyponatraemia risk.
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-lg border border-border bg-secondary/10">
+                  <p className="font-semibold text-foreground text-sm mb-2">3. Non-osmotic ADH / Hyponatraemia Risk</p>
+                  <blockquote className="text-xs italic text-muted-foreground border-l-2 border-primary/30 pl-3 mb-2">
+                    "If there is a risk of water retention associated with non‑osmotic ADH secretion, consider... restricting fluids to 50% to 80% of routine maintenance needs."
+                  </blockquote>
+                </div>
+
+                <div className="p-4 rounded-lg border border-border bg-secondary/10">
+                  <p className="font-semibold text-foreground text-sm mb-2">4. Deficits and Ongoing Losses</p>
+                  <blockquote className="text-xs italic text-muted-foreground border-l-2 border-primary/30 pl-3 mb-2">
+                    "Adjust the IV fluid prescription (in addition to maintenance needs) to account for existing fluid and/or electrolyte deficits or excesses, ongoing losses... or abnormal distribution."
+                  </blockquote>
+                </div>
+
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm mb-2">5. Monitoring</p>
+                  <p className="text-sm text-muted-foreground">
+                    Measure plasma electrolytes and glucose when starting maintenance (except before most elective surgery) and at least every 24 hours. Record 12-hourly fluid balance subtotals and 24-hourly totals.
+                  </p>
+                </div>
               </div>
             </div>
           </ExamSection>
+
 
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
               "Neonates are obligate nose-breathers, have a high O₂ consumption (~6 mL/kg/min), large head and short trachea — desaturate quickly.",
-              "Fluid maintenance (Holliday-Segar): 4-2-1 mL/kg/h; resuscitation bolus 10–20 mL/kg isotonic crystalloid.",
+              "Fluid maintenance (Holliday-Segar): 4-2-1 mL/kg/h; resuscitation bolus 10 mL/kg isotonic crystalloid.",
               "Avoid hypotonic maintenance fluids in children — use 0.9% saline or balanced solution with 5% glucose where needed (NICE/APAGBI).",
               "ETT size: uncuffed = age/4 + 4; cuffed = age/4 + 3.5; length (oral) = age/2 + 12.",
               "Laryngospasm: 100% O₂, CPAP, deepen anaesthesia, Larson's manoeuvre, suxamethonium 1–2 mg/kg IV (or 4 mg/kg IM) if persistent.",

@@ -40,7 +40,51 @@ const PaediatricMaintenanceFluidsNote = () => (
       { label: "Paediatric emergency drug doses", to: "/tools/paediatric-emergency-doses" },
     ]}
   >
-    <h2>The rule itself</h2>
+    
+    <h2>NICE NG29 Guidelines (Last updated Dec 2020)</h2>
+    <p className="text-sm italic mb-4">Caution: This guideline applies to hospital IV fluids for term neonates, children and young people; it is not a complete intraoperative fluid recipe.</p>
+    
+    <div className="grid gap-4">
+      <div className="bg-muted/50 p-4 rounded-lg">
+        <h4 className="font-bold mb-2">Resuscitation</h4>
+        <blockquote className="text-sm italic">
+          "If children and young people need IV fluid resuscitation, use glucose‑free crystalloids that contain sodium in the range 131–154 mmol/litre, with a bolus of 10 ml/kg over less than 10 minutes."
+        </blockquote>
+        <p className="text-xs mt-2">Seek expert advice if 40–60 ml/kg or more is needed during initial resuscitation.</p>
+      </div>
+
+      <div className="bg-muted/50 p-4 rounded-lg">
+        <h4 className="font-bold mb-2">Routine Maintenance</h4>
+        <blockquote className="text-sm italic">
+          "Calculate routine maintenance IV fluid rates... using the Holliday–Segar formula (100 ml/kg/day for the first 10 kg, 50 ml/kg/day for the next 10 kg and 20 ml/kg/day for weight over 20 kg)."
+        </blockquote>
+        <p className="text-xs mt-2">Initially use isotonic crystalloids (sodium 131–154 mmol/L).</p>
+      </div>
+
+      <div className="bg-muted/50 p-4 rounded-lg">
+        <h4 className="font-bold mb-2">Non-osmotic ADH Trigger</h4>
+        <blockquote className="text-sm italic">
+          "If there is a risk of water retention associated with non‑osmotic antidiuretic hormone (ADH) secretion, consider... restricting fluids to 50% to 80% of routine maintenance needs."
+        </blockquote>
+      </div>
+
+      <div className="bg-muted/50 p-4 rounded-lg">
+        <h4 className="font-bold mb-2">Replacement & Redistribution (Deficit vs Loss)</h4>
+        <blockquote className="text-sm italic mb-2">
+          "If children and young people need IV fluids for replacement or redistribution, adjust the IV fluid prescription (in addition to maintenance needs) to account for existing fluid and/or electrolyte deficits or excesses, ongoing losses (see the diagram of ongoing losses) or abnormal distribution..."
+        </blockquote>
+        <p className="text-xs">NICE distinguishes routine maintenance from <strong>replacement and redistribution</strong>; the latter must be calculated separately to cover existing deficits and dynamic ongoing losses.</p>
+      </div>
+
+      <div className="bg-muted/50 p-4 rounded-lg">
+        <h4 className="font-bold mb-2">Monitoring</h4>
+        <blockquote className="text-sm italic">
+          "Measure plasma electrolyte concentrations and blood glucose when starting IV fluids for routine maintenance (except before most elective surgery), and at least every 24 hours thereafter."
+        </blockquote>
+        <p className="text-xs mt-2">Maintain hourly records of input/output with 12-hourly fluid balance subtotals.</p>
+      </div>
+    </div>
+<h2>The rule itself</h2>
     <p>
       Maintenance water replaces obligatory losses: urine, stool and insensible
       loss from skin and respiratory tract. Holliday and Segar tied those losses

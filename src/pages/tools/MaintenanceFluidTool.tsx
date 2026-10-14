@@ -46,7 +46,7 @@ export default function MaintenanceFluidTool() {
             fluid therapy. Pediatrics 1957; 19:823–32.
           </p>
           <p>
-            NICE NG29: IV fluid therapy in children and young people in hospital.
+            NICE NG29: IV fluid therapy in children and young people in hospital (updated 2020).
           </p>
           <p>
             NICE CG174: IV fluid therapy in adults in hospital.
@@ -220,12 +220,12 @@ export default function MaintenanceFluidTool() {
           Using the rule in practice
         </h2>
         <ul className="mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5">
-          <li>
+                    <li>
             <span className="font-semibold text-foreground">
-              Maintenance is only one of four components
+              Maintenance is one of four components
             </span>{" "}
-            — prescribe resuscitation, replacement of deficit, redistribution
-            and maintenance separately (NICE CG174 "the 5 Rs").
+            — NICE NG29 distinguishes routine maintenance from replacement, redistribution and resuscitation. 
+            Resuscitate with 10 mL/kg isotonic crystalloid boluses; seek expert advice if >40–60 mL/kg is required.
           </li>
           <li>
             <span className="font-semibold text-foreground">Deficit:</span>{" "}

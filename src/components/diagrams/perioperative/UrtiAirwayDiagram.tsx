@@ -74,7 +74,7 @@ const UrtiAirwayDiagram = () => {
               <text x="640" y="52" textAnchor="middle" className="fill-foreground" fontSize="12" fontWeight="700">Sensitised C-fibres</text>
               <text x="640" y="70" textAnchor="middle" className="fill-muted-foreground" fontSize="10">substance P · neurokinin A</text>
               <text x="640" y="86" textAnchor="middle" className="fill-muted-foreground" fontSize="10">low threshold to mechanical / chemical stimuli</text>
-              <text x="640" y="104" textAnchor="middle" className="fill-clinical" fontSize="9" fontWeight="600">persists 6–8 weeks</text>
+              <text x="640" y="104" textAnchor="middle" className="fill-clinical" fontSize="9" fontWeight="600">persists up to 4–6 weeks</text>
             </g>
   
             {/* Trigger row */}
@@ -136,7 +136,7 @@ const UrtiAirwayDiagram = () => {
                 <animate attributeName="width" values="180;40;180" dur="3s" repeatCount="indefinite" stroke="hsl(var(--border))" strokeWidth="0.75" />
               </rect>
               <text x="110" y="84" textAnchor="middle" className="fill-clinical" fontSize="10" fontWeight="600">↓ SpO₂</text>
-              <text x="110" y="102" textAnchor="middle" className="fill-muted-foreground" fontSize="9">2–4× risk in children</text>
+              <text x="110" y="102" textAnchor="middle" className="fill-muted-foreground" fontSize="9">2–4× risk <2 weeks</text>
             </g>
   
             {/* Top arrows */}
@@ -151,12 +151,12 @@ const UrtiAirwayDiagram = () => {
               { glyph: "mediator", label: "Travelling dots", meaning: "neurogenic inflammation signalling along sensory afferents" },
               { glyph: "structure", label: "Narrowing airway", meaning: "reflex glottic / bronchial closure on instrumentation" },
               { glyph: "arrow", label: "Solid arrow", meaning: "causal step from trigger to airway event" },
-              { glyph: "outcome", label: "Tinted ↓SpO₂ box", meaning: "desaturation — risk amplified 2–4× in children for 6–8 weeks" },
+              { glyph: "outcome", label: "Tinted ↓SpO₂ box", meaning: "desaturation — risk amplified 2–4× for ~4 weeks (peak <2w)" },
             ]}
           />
   
           <p className="text-xs text-muted-foreground mt-3 italic">
-            Mitigation: postpone elective surgery 2–4 weeks (severe URTI/LRTI ≥6 weeks), prefer LMA over ETT, deepen anaesthesia before instrumentation, humidify gases, avoid desflurane, and have suxamethonium + atropine immediately available for laryngospasm.
+            Mitigation: postpone elective surgery 2 weeks for mild URTI (severe/LRTI ≥4 weeks), prefer LMA over ETT, deepen anaesthesia before instrumentation, humidify gases, avoid desflurane, and have suxamethonium + atropine immediately available for laryngospasm.
           </p>
         </div>
       </div>
