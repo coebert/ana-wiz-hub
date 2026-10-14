@@ -137,8 +137,13 @@ const PaediatricAnaesthesiaTopic = () => {
           "BJA Educ 2019",
           "Sury et al.",
           "APAGBI 2020",
+          "Tait 2001",
+          "von Ungern-Sternberg 2010",
+          "Kim 2022",
         ],
         keyPoints: [
+          "Tait 2001",
+          "von Ungern-Sternberg 2010",
           "BJA Educ 2019",
           "Sury et al.",
           "APAGBI 2020",
