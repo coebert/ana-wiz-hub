@@ -327,7 +327,7 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
       const extracted = extractFromSource(node.src);
       // Shared APRV teaching must precede large waveform component output
       // so the audit's per-topic text budget cannot silently discard it.
-      if (topic.id === "mechanical-ventilation" && node.file.endsWith("/APRVSection.tsx")) {
+      if (node.file.endsWith("/APRVSection.tsx") || /(?:Teaching)\.tsx$/.test(node.file)) {
         lines.unshift(...extracted.lines);
       } else {
         lines.push(...extracted.lines);
@@ -367,7 +367,7 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
   const prose = [`# ${topic.title}`, topic.description, "", ...uniqueLines].join("\n");
   // This long topic includes the shared APRV section after its root content.
   // Keep that source-linked teaching in the audit, rather than truncating it.
-  const textBudget = topic.id === "mechanical-ventilation" ? 64_000 : MAX_TEXT_CHARS;
+  const textBudget = ["mechanical-ventilation", "paediatric-anaesthesia", "ent-anaesthesia", "renal-disease", "general-colorectal-surgery", "bariatric-anaesthesia"].includes(topic.id) ? 64_000 : MAX_TEXT_CHARS;
   const text = [
     prose.slice(0, textBudget - (labelBlock ? labelBlock.length + 2 : 0)),
     "",

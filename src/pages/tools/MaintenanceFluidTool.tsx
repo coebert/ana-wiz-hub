@@ -225,13 +225,11 @@ export default function MaintenanceFluidTool() {
               Maintenance is one of four components
             </span>{" "}
             — NICE NG29 distinguishes routine maintenance from replacement, redistribution and resuscitation. 
-            Resuscitate with 10 mL/kg isotonic crystalloid boluses; seek expert advice if >40–60 mL/kg is required.
+            For children needing resuscitation, start with 10 mL/kg glucose-free isotonic crystalloid and reassess; seek expert advice if 40–60 mL/kg or more is needed. Term neonates and specialist pathways differ.
           </li>
           <li>
             <span className="font-semibold text-foreground">Deficit:</span>{" "}
-            fasting deficit ≈ hourly maintenance × hours fasted; modern
-            practice with clear fluids until 1 hour pre-operatively makes this
-            small.
+            assess intake, losses and clinical fluid status; do not automatically replace an assumed hourly-maintenance-times-fasting deficit. Follow the age- and procedure-specific fasting policy.
           </li>
           <li>
             <span className="font-semibold text-foreground">Choose isotonic:</span>{" "}

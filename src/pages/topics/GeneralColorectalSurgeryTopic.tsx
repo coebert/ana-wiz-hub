@@ -1,3 +1,5 @@
+import { ColorectalAssessmentTeaching } from "../../components/topic/ColorectalAssessmentTeaching";
+import { APResectionTeaching } from "../../components/topic/APResectionTeaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
@@ -209,30 +211,9 @@ const GeneralColorectalSurgeryTopic = () => (
           <section className="space-y-8 mb-10">
             <div className="space-y-6">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Preoperative Assessment & Optimisation: NICE NG180 Framework</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
-                <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
-                  <p><strong className="text-foreground">Shared Decision & Risk.</strong> "Use a validated risk stratification tool to supplement clinical assessment... Discuss the person’s risks and surgical options with them to allow for informed shared decision making"<R l="NICE NG180" />. Risk tools like P-POSSUM or NSQIP guide discussions but do not replace clinical judgement.</p>
-                  <p><strong className="text-foreground">CPET & Functional Capacity.</strong> NG180 (and NG45) clarify: <span className="text-foreground font-semibold">"Do not use cardiopulmonary exercise testing (CPET) alone to decide whether to offer surgery"</span>. No single anaerobic threshold or VO₂peak cutoff should automatically determine care; it informs risk, prehab, and postoperative level-of-care decisions<R l="NICE NG180" /><R l="CPET 2018" />.</p>
-                </div>
-                <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
-                  <p><strong className="text-foreground">Anaemia Management.</strong> Screen for iron-deficiency anaemia (IDA). "Offer iron to people with iron-deficiency anaemia... Offer intravenous iron... if oral iron is not tolerated... or if surgery is planned for less than 2 weeks"<R l="NICE NG24" /><R l="NICE NG180" />. IV iron is preferred if surgery is imminent to ensure Hb optimization.</p>
-                  <p><strong className="text-foreground">Nutritional Screening.</strong> "Offer preoperative nutritional screening to people having intermediate surgery or major or complex surgery"<R l="NICE NG180" />. Use a validated tool (e.g., MUST). Follow with "nutrition support for adults" (CG32) for those at risk, including oral supplements or enteral feeding<R l="ERAS Colorectal 2018" />.</p>
-                </div>
-              </div>
-              
-              <h3 className="text-lg font-semibold text-foreground mb-2">Practical Assessment Sequence</h3>
-              <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground leading-relaxed">
-                <li><strong className="text-foreground text-xs uppercase tracking-wider">Screening</strong>: Full blood count, Ferritin/TfSats, and nutritional status (MUST) early in the pathway.</li>
-                <li><strong className="text-foreground text-xs uppercase tracking-wider">Stratification</strong>: Calculate mortality/complication risk (P-POSSUM, NSQIP). Arrange CPET for major/complex cases to identify physiological reserve and specific limitations.</li>
-                <li><strong className="text-foreground text-xs uppercase tracking-wider">Optimization</strong>: Correct iron deficiency (IV iron if <2 weeks); start nutritional support if MUST ≥2; implement prehabilitation (aerobic + resistance exercise); smoking/alcohol cessation >4 weeks.</li>
-                <li><strong className="text-foreground text-xs uppercase tracking-wider">Consultation</strong>: Shared decision-making discussion using calculated risk, functional data, and patient values to agree on surgical approach and ceiling of care.</li>
-                <li><strong className="text-foreground text-xs uppercase tracking-wider">Final Planning</strong>: 6h/2h fasting, carbohydrate loading (except in high-risk diabetes), and clarify mechanical bowel preparation (avoid routine use; MBP+oral antibiotics if indicated).</li>
-              </ol>
-
-              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-                <li><strong>Neoadjuvant therapy</strong>: Check for cardiotoxicity (5-FU spasm, anthracyclines), neuropathy, marrow suppression, and fatigue.</li>
-              </ul>
+              <ColorectalAssessmentTeaching />
             </div>
+            <APResectionTeaching />
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Enhanced Recovery After Surgery (ERAS)</h2>
               <div className="overflow-x-auto rounded-lg border border-border">

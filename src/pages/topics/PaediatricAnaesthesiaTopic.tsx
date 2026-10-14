@@ -1,3 +1,5 @@
+import { PaediatricURTITeaching } from "../../components/topic/PaediatricURTITeaching";
+import { PaediatricFluidTeaching } from "../../components/topic/PaediatricFluidTeaching";
 import { PaediatricAnaesthesiaAtlas } from "@/components/topic/PaediatricAnaesthesiaAtlas";
 import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
@@ -51,7 +53,7 @@ const paediatricFaqs: Array<[string, string]> = [
   ],
   [
     "What is the WETFLAG emergency drug dose framework?",
-    "WETFLAG is a paediatric emergency checklist used to rapidly estimate weight and calculate critical drug doses and equipment sizes: W (Weight = (age + 4) × 2 kg), E (Energy for defibrillation = 4 J/kg), T (Tube size = age/4 + 4 mm uncuffed), F (Fluids = 10 mL/kg bolus (NICE NG29)), L (Length of ETT at lips = age/2 + 12 cm), A (Adrenaline = 10 µg/kg IV/IO for cardiac arrest; 0.1 µg/kg/min for infusion), G (Glucose = 2 mL/kg of 10% dextrose for hypoglycaemia). This ensures standardised, rapid preparation during paediatric emergencies and arrests.",
+    "WETFLAG is a paediatric emergency checklist used to rapidly estimate weight and calculate critical drug doses and equipment sizes: W (Weight = (age + 4) × 2 kg), E (Energy for defibrillation = 4 J/kg), T (Tube size = age/4 + 4 mm uncuffed), F (Fluids = 10 mL/kg initial crystalloid bolus for children needing resuscitation (NICE NG29; term neonates and specialist pathways differ)), L (Length of ETT at lips = age/2 + 12 cm), A (Adrenaline = 10 µg/kg IV/IO for cardiac arrest; 0.1 µg/kg/min for infusion), G (Glucose = 2 mL/kg of 10% dextrose for hypoglycaemia). This ensures standardised, rapid preparation during paediatric emergencies and arrests.",
   ],
   [
     "How do you manage laryngospasm in a child?",
@@ -139,7 +141,7 @@ const PaediatricAnaesthesiaTopic = () => {
           "APAGBI 2020",
           "Tait 2001",
           "von Ungern-Sternberg 2010",
-          "Kim 2022",
+          "NICE NG29 Maintenance",
         ],
         keyPoints: [
           "Tait 2001",
@@ -584,97 +586,7 @@ const PaediatricAnaesthesiaTopic = () => {
           <ExamSection id="urti" exams={[Exam.FINAL]} className="scroll-mt-24">
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Child with an Upper Respiratory Tract Infection</h2>
-              <p className="text-muted-foreground leading-relaxed mb-3">
-                Preschool children have 6–8 URTIs a year, so a blanket cancellation policy would make elective surgery almost impossible. Children with a URTI have an increased risk of perioperative respiratory adverse events (PRAE) — cough, breath-holding, desaturation &lt;95%, laryngospasm, bronchospasm and, rarely, cardiorespiratory arrest — and PRAE are among the most serious consequences of paediatric anaesthesia; optimising modifiable respiratory risk factors reduces that risk <InlineRef topicId="paediatric-anaesthesia" refLabel="BJA 2024 Paediatric URTI" />. The decision is therefore one of risk stratification, not a simple yes/no.
-              </p>
-              <div className="grid sm:grid-cols-2 gap-3">
-                <div className="p-4 rounded-lg border-l-4 border-destructive bg-destructive/5">
-                  <p className="font-semibold text-foreground text-sm">Defer (High Risk / COLDS >12.5)</p>
-                  <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
-                    <li>Fever >38°C, lethargy, poor feeding, or systemically unwell</li>
-                    <li>Purulent nasal secretions or productive/wet cough</li>
-                    <li>New wheeze or signs of lower respiratory involvement (LRTI)</li>
-                    <li>High-risk modifiers: ex-prematurity, paternal smoking, copious secretions <InlineRef topicId="paediatric-anaesthesia" refLabel="Tait 2001" /></li>
-                    <li>Major airway surgery or ETT required in child <5 years</li>
-                  </ul>
-                </div>
-                <div className="p-4 rounded-lg border border-border">
-                  <p className="font-semibold text-foreground text-sm">Proceed (Acceptable Risk)</p>
-                  <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-0.5">
-                    <li>Afebrile, clear secretions, dry cough only, chest clear</li>
-                    <li>Older child, short peripheral procedure, no major comorbidity</li>
-                    <li>URTI symptoms occurred >2 weeks ago (risk significantly lower at 2–4 weeks) <InlineRef topicId="paediatric-anaesthesia" refLabel="von Ungern-Sternberg 2010" /></li>
-                    <li>COLDS score ≤12.5 <InlineRef topicId="paediatric-anaesthesia" refLabel="Kim 2022" /></li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="mt-6 p-4 rounded-lg border border-border bg-muted/5">
-                <h3 className="text-lg font-serif font-bold text-foreground mb-2">COLDS Score for Risk Stratification</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  The COLDS score is a validated tool for predicting Perioperative Respiratory Adverse Events (PRAE) in children with URTI. A score >12.5 is associated with significantly higher risk <InlineRef topicId="paediatric-anaesthesia" refLabel="Kim 2022" />.
-                </p>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-xs border-collapse">
-                    <thead>
-                      <tr className="border-b border-border text-foreground">
-                        <th className="text-left py-2 font-semibold w-1/4">Criteria</th>
-                        <th className="text-left py-2 font-semibold">1 Point</th>
-                        <th className="text-left py-2 font-semibold">2 Points</th>
-                        <th className="text-left py-2 font-semibold">5 Points</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-muted-foreground">
-                      <tr className="border-b border-border">
-                        <td className="py-2 font-medium text-foreground">Current symptoms</td>
-                        <td>None</td>
-                        <td>Clear/mild URTI</td>
-                        <td>Fever, wet cough, purulent</td>
-                      </tr>
-                      <tr className="border-b border-border">
-                        <td className="py-2 font-medium text-foreground">Onset</td>
-                        <td>>2 weeks ago</td>
-                        <td>1–2 weeks ago</td>
-                        <td><1 week ago (acute)</td>
-                      </tr>
-                      <tr className="border-b border-border">
-                        <td className="py-2 font-medium text-foreground">Lung disease</td>
-                        <td>None</td>
-                        <td>Controlled asthma/RAD</td>
-                        <td>Active wheeze/recent admit</td>
-                      </tr>
-                      <tr className="border-b border-border">
-                        <td className="py-2 font-medium text-foreground">Device</td>
-                        <td>Facemask</td>
-                        <td>SGA (LMA)</td>
-                        <td>ETT</td>
-                      </tr>
-                      <tr className="border-b border-border">
-                        <td className="py-2 font-medium text-foreground">Surgery</td>
-                        <td>Non-airway</td>
-                        <td>Airway (brief)</td>
-                        <td>Airway (major/long)</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p className="text-[10px] text-muted-foreground mt-3 italic">
-                  *Risk modifiers (Tait 2001): ex-prematurity, paternal smoking, copious secretions, and age <5yr (if ETT used) all independently increase PRAE risk.*
-                </p>
-              </div>
-                </div>
-              </div>
-              <div className="p-4 rounded-lg border border-border mt-3">
-                <p className="font-semibold text-foreground text-sm">Risk-reduction strategy when proceeding</p>
-                <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-1">
-                  <li><strong className="text-foreground">Personnel:</strong> the most experienced available anaesthetist should manage the airway — seniority is one of the strongest modifiable determinants of PRAE.</li>
-                  <li><strong className="text-foreground">Premedication:</strong> salbutamol 2.5 mg nebulised (or 200–400 µg via spacer) 10–30 min preoperatively reduces PRAE; avoid drying agents as routine but consider them for copious secretions.</li>
-                  <li><strong className="text-foreground">Airway device:</strong> prefer a facemask or supraglottic airway over a tracheal tube where the surgery permits; if intubation is needed use a cuffed tube of correct size and avoid multiple attempts.</li>
-                  <li><strong className="text-foreground">Technique:</strong> propofol induction and TIVA (or propofol before instrumentation) reduces airway reactivity relative to desflurane; sevoflurane is acceptable, desflurane is avoided in the instrumented airway.</li>
-                  <li><strong className="text-foreground">Depth and emergence:</strong> instrument and extubate either deeply anaesthetised or fully awake, never in the light plane; suction secretions before waking; lateral recovery position with oxygen; consider deep extubation in the child with a very reactive airway.</li>
-                  <li><strong className="text-foreground">Preparedness:</strong> have suxamethonium (1–2 mg/kg IV / 4 mg/kg IM), atropine, salbutamol and CPAP immediately available and a rehearsed laryngospasm plan; plan for extended recovery observation and warn parents of a possible unplanned overnight stay.</li>
-                </ul>
-              </div>
+              <PaediatricURTITeaching />
             </div>
           </ExamSection>
 
@@ -682,53 +594,8 @@ const PaediatricAnaesthesiaTopic = () => {
           
           <ExamSection id="fluids" exams={[Exam.FINAL]}>
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">NICE NG29 Fluid Management (2020)</h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Guidance for hospital IV fluids (updated Dec 2020). Note: applies to general ward/ED management; intraoperative requirements may differ based on surgical losses and physiology.
-              </p>
-              
-              <div className="space-y-4">
-                <div className="p-4 rounded-lg border border-border bg-secondary/10">
-                  <p className="font-semibold text-foreground text-sm mb-2">1. Resuscitation</p>
-                  <blockquote className="text-xs italic text-muted-foreground border-l-2 border-primary/30 pl-3 mb-2">
-                    "If children and young people need IV fluid resuscitation, use glucose‑free crystalloids that contain sodium in the range 131–154 mmol/litre, with a bolus of 10 ml/kg over less than 10 minutes."
-                  </blockquote>
-                  <p className="text-sm text-muted-foreground italic">
-                    Seek expert advice if 40–60 ml/kg or more is needed during initial resuscitation.
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-lg border border-border bg-secondary/10">
-                  <p className="font-semibold text-foreground text-sm mb-2">2. Routine Maintenance (Holliday-Segar)</p>
-                  <blockquote className="text-xs italic text-muted-foreground border-l-2 border-primary/30 pl-3 mb-2">
-                    "Calculate routine maintenance IV fluid rates... using the Holliday–Segar formula (100 ml/kg/day for the first 10 kg, 50 ml/kg/day for the next 10 kg and 20 ml/kg/day for weight over 20 kg)."
-                  </blockquote>
-                  <p className="text-sm text-muted-foreground">
-                    Initially use isotonic crystalloids (sodium 131–154 mmol/L). AVOID hypotonic solutions (e.g. 0.18% saline) due to hyponatraemia risk.
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-lg border border-border bg-secondary/10">
-                  <p className="font-semibold text-foreground text-sm mb-2">3. Non-osmotic ADH / Hyponatraemia Risk</p>
-                  <blockquote className="text-xs italic text-muted-foreground border-l-2 border-primary/30 pl-3 mb-2">
-                    "If there is a risk of water retention associated with non‑osmotic ADH secretion, consider... restricting fluids to 50% to 80% of routine maintenance needs."
-                  </blockquote>
-                </div>
-
-                <div className="p-4 rounded-lg border border-border bg-secondary/10">
-                  <p className="font-semibold text-foreground text-sm mb-2">4. Deficits and Ongoing Losses</p>
-                  <blockquote className="text-xs italic text-muted-foreground border-l-2 border-primary/30 pl-3 mb-2">
-                    "Adjust the IV fluid prescription (in addition to maintenance needs) to account for existing fluid and/or electrolyte deficits or excesses, ongoing losses... or abnormal distribution."
-                  </blockquote>
-                </div>
-
-                <div className="p-4 rounded-lg border border-border">
-                  <p className="font-semibold text-foreground text-sm mb-2">5. Monitoring</p>
-                  <p className="text-sm text-muted-foreground">
-                    Measure plasma electrolytes and glucose when starting maintenance (except before most elective surgery) and at least every 24 hours. Record 12-hourly fluid balance subtotals and 24-hourly totals.
-                  </p>
-                </div>
-              </div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Paediatric Fluid Management: Purpose, Prescription and Reassessment</h2>
+              <PaediatricFluidTeaching />
             </div>
           </ExamSection>
 

@@ -27,3 +27,9 @@
 - [x] Cite flagged diagrams, replace AI brain images and last 2 paintings, add orientation notes (7 inherent limits stay flagged)
 - [x] Expand APRV teaching with verified sources, corrected waveforms, bedside cautions and learning checks
 - [ ] Review curriculum-wide subsection depth and expand outline-only teaching into comprehensive, source-led content
+  - [x] First batch: ENT laryngectomy emergencies; paediatric URTI/fluid decisions; established renal-transplant care; bariatric equipment pathway; colorectal assessment/AP-resection phases
+  - [x] Check first-batch pages, source labels/excerpts, tests and rebuild/upload private audit corpus
+  - [ ] Remaining curriculum expansion: subsection-by-subsection review and verified-source teaching beyond the first batch (not yet completed)
+  - [ ] Candidate next batch: Joule–Thomson effect, transformers, Doppler spectral broadening, differential blockade and Meyer–Overton limitations (original-source verification required)
+  - [ ] Further candidates: antivirals, innate immunity, hypothermia electrophysiology, ankle nerves, pelvic autonomics, metallic bonding, redox chemistry and chest-wall block planes (read-only reviewer suggestions, not yet verified)
+  - [ ] Outdated gateway models: wait for owner approval before changing moderation, content audit/podcast scripting and drug-check models
