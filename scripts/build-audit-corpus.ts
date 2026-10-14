@@ -196,7 +196,9 @@ export function localImportsOf(src: string, fromFile: string): string[] {
     // topic's own text in content belonging to every other topic.
     const isDiagram = /@\/components\/diagrams\//.test(spec);
     const isRelative = spec.startsWith(".");
-    if (!isDiagram && !isRelative) continue;
+    // Source-linked Teaching components hold expanded topic teaching.
+    const isTeaching = /@\/components\/topic\/[A-Za-z]+Teaching$/.test(spec);
+    if (!isDiagram && !isRelative && !isTeaching) continue;
     if (/@\/components\/ui\//.test(spec)) continue;
     const file = resolveImport(spec, fromFile);
     if (file) out.push(file);
