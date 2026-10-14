@@ -90,3 +90,19 @@ export function PhaeochromocytomaPreparationTeaching() {
     <LessonSources topicId="icu-endocrine-emergencies" labels={["Endocrine Society PPGL 2014", "PRESCRIPT 2020"]} />
   </div>;
 }
+
+export function PhaeochromocytomaCrisisTeaching() {
+  const W = () => <InlineRef topicId="icu-endocrine-emergencies" refLabel="Whitelaw 2014 (Phaeo crisis)" />;
+  return <div className="space-y-3 text-muted-foreground leading-relaxed p-4 rounded-lg border border-border">
+    <h3 className="text-lg font-serif font-bold text-foreground">Phaeochromocytoma Crisis: Not Only Hypertension</h3>
+    <ul className="list-disc pl-5 space-y-1">
+      <li><strong className="text-foreground">Evidence base:</strong> crisis is an endocrine emergency with significant mortality, and there is little published guidance; this clinical practice update draws on published cases and proposes a classification.<W /></li>
+      <li><strong className="text-foreground">Alpha-blockade:</strong> it is strongly associated with surviving a crisis.<W /></li>
+      <li><strong className="text-foreground">Shock:</strong> for sustained hypotension, mechanical circulatory support such as an intra-aortic balloon pump or ECMO is strongly recommended. Do not assume the crisis will look like hypertension.<W /></li>
+      <li><strong className="text-foreground">Timing of surgery:</strong> defer it until the patient is medically stable; emergency adrenalectomy in a crisis is not the default.<W /></li>
+      <li><strong className="text-foreground">Limits:</strong> this is a review of case reports and series, not trials, so the associations may reflect who was well enough to be treated.</li>
+    </ul>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: a patient in phaeochromocytoma crisis has sustained hypotension despite treatment. What does the review strongly recommend?</summary><p className="mt-2">Mechanical circulatory support (e.g. intra-aortic balloon pump or ECMO), with surgery deferred until medical stabilisation.</p></details>
+    <LessonSources topicId="icu-endocrine-emergencies" labels={["Whitelaw 2014 (Phaeo crisis)"]} />
+  </div>;
+}

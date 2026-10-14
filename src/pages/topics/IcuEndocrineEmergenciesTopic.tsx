@@ -1,5 +1,5 @@
 import { InlineRef } from "@/components/references/InlineRef";
-import { HyponatraemiaCorrectionTeaching, PhaeochromocytomaPreparationTeaching } from "@/components/topic/EndocrineEmergenciesTeaching";
+import { HyponatraemiaCorrectionTeaching, PhaeochromocytomaPreparationTeaching, PhaeochromocytomaCrisisTeaching } from "@/components/topic/EndocrineEmergenciesTeaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -300,16 +300,16 @@ const IcuEndocrineEmergenciesTopic = () => {
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Phaeochromocytoma crisis</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Catecholamine surge → severe hypertension, arrhythmia, MI, cerebral
-                  haemorrhage, takotsubo. Manage with{" "}
-                  <strong>α-blockade FIRST</strong> (phentolamine bolus, or
-                  phenoxybenzamine 10 mg q6h titrated, or IV magnesium 2–4 g),{" "}
-                  <em>then</em> β-blockade (esmolol). NEVER β-blocker alone — unopposed
-                  α stimulation causes hypertensive crisis and pulmonary oedema. Avoid
-                  ephedrine, ketamine, halothane, metoclopramide.
+                  Catecholamine surge causing severe hypertension, arrhythmia, myocardial injury or
+                  stroke — or sustained hypotension and shock. Alpha-blockade is strongly associated
+                  with surviving a crisis; never give a β-blocker before α-blockade. Mechanical
+                  circulatory support is strongly recommended for sustained hypotension, and surgery
+                  is deferred until the patient is medically stable.{" "}
+                  <InlineRef topicId="icu-endocrine-emergencies" refLabel="Whitelaw 2014 (Phaeo crisis)" />
                 </p>
               </div>
               <div className="md:col-span-2"><PhaeochromocytomaPreparationTeaching /></div>
+              <div className="md:col-span-2"><PhaeochromocytomaCrisisTeaching /></div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Pituitary apoplexy</p>
                 <p className="text-sm text-muted-foreground mt-1">
