@@ -1,10 +1,11 @@
 import { DiagramFigure } from "../_shared/DiagramFigure";
+import { InlineRef } from "@/components/references/InlineRef";
 const APRVWaveformDiagram = () => {
   // Layout constants
   const W = 700;
   const H = 340;
   const ml = 70; // margin left
-  const mr = 30;
+  const mr = 75;
   const mt = 40;
   const mb = 60;
   const plotW = W - ml - mr;
@@ -127,11 +128,11 @@ const APRVWaveformDiagram = () => {
           <text x={W - mr + 4} y={yZero - 4} fontSize={11} fontWeight="bold" fill="hsl(var(--destructive))">P_low</text>
   
           {/* T high annotation (first cycle) */}
-          <line x1={xScale(riseTime)} y1={yHigh - 18} x2={xScale(tHigh - fallTime)} y2={yHigh - 18} stroke="hsl(var(--foreground))" strokeWidth={1} markerStart="url(#arrowL)" markerEnd="url(#arrowR)" />
+              <line x1={xScale(riseTime)} y1={yHigh - 18} x2={xScale(tHigh - fallTime)} y2={yHigh - 18} stroke="hsl(var(--foreground))" strokeWidth={1} markerStart="url(#aprv-arrowL)" markerEnd="url(#aprv-arrowR)" />
           <text x={xScale(tHighMid)} y={yHigh - 24} textAnchor="middle" fontSize={12} fontWeight="bold" fill="hsl(var(--foreground))">T high</text>
   
           {/* T low annotation (first release) */}
-          <line x1={xScale(tHigh)} y1={yLow + 18} x2={xScale(tHigh + tLow)} y2={yLow + 18} stroke="hsl(var(--foreground))" strokeWidth={1} markerStart="url(#arrowL)" markerEnd="url(#arrowR)" />
+          <line x1={xScale(tHigh)} y1={yLow + 18} x2={xScale(tHigh + tLow)} y2={yLow + 18} stroke="hsl(var(--foreground))" strokeWidth={1} markerStart="url(#aprv-arrowL)" markerEnd="url(#aprv-arrowR)" />
           <text x={xScale(tLowMid)} y={yLow + 32} textAnchor="middle" fontSize={12} fontWeight="bold" fill="hsl(var(--foreground))">T low</text>
   
           {/* Spontaneous breathing label */}
@@ -139,16 +140,19 @@ const APRVWaveformDiagram = () => {
   
           {/* Arrow markers */}
           <defs>
-            <marker id="arrowR" markerWidth={6} markerHeight={6} refX={5} refY={3} orient="auto">
+            <marker id="aprv-arrowR" markerWidth={6} markerHeight={6} refX={5} refY={3} orient="auto">
               <path d="M 0 0 L 6 3 L 0 6" fill="none" stroke="hsl(var(--foreground))" strokeWidth={1} />
             </marker>
-            <marker id="arrowL" markerWidth={6} markerHeight={6} refX={1} refY={3} orient="auto">
+            <marker id="aprv-arrowL" markerWidth={6} markerHeight={6} refX={1} refY={3} orient="auto">
               <path d="M 6 0 L 0 3 L 6 6" fill="none" stroke="hsl(var(--foreground))" strokeWidth={1} />
             </marker>
           </defs>
         </svg>
         <p className="text-xs text-muted-foreground text-center mt-2">
-          The prolonged T<sub>high</sub> maintains alveolar recruitment. The brief T<sub>low</sub> release allows CO₂ clearance while preserving intrinsic PEEP. Small ripples represent spontaneous breathing on the P<sub>high</sub> plateau.
+          Illustrative airway pressure trace: the prolonged high phase aims to maintain recruitment;
+          brief releases permit gas clearance while limiting loss of end-expiratory volume.
+          Ripples indicate possible spontaneous breaths, not measured patient data. P<sub>low</sub> is set airway pressure, not measured total PEEP.
+          <InlineRef topicId="mechanical-ventilation" refLabel="Swindin APRV 2020" />
         </p>
       </div>
     </DiagramFigure>
