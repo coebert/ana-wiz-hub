@@ -30,7 +30,7 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
   },
   pharmacology: {
     status: "pending",
-    note: "Differential blockade batch started (local anaesthetics). Remaining candidates: Meyer–Overton limitations, antivirals (original-source verification required).",
+    note: "Differential blockade batch started (local anaesthetics). Meyer–Overton evidence added (volatile agents). Remaining candidates: antivirals (original-source verification required).",
   },
   anatomy: {
     status: "pending",
@@ -56,6 +56,10 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
 
 /** Topic-level overrides for topics with a completed expansion batch. */
 export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
+  "volatile-agents": {
+    status: "in-progress",
+    note: "Meyer–Overton evidence lesson added (luciferase, isoflurane isomers, non-immobilisers, modern target/pathway view, learning checks). Other subsections still need review.",
+  },
   "local-anaesthetics": {
     status: "in-progress",
     note: "Differential blockade lesson added (size-principle limits from Fink 1984 and Gokin 2001, bedside testing, evidence limits, learning checks). Other subsections still need review.",
