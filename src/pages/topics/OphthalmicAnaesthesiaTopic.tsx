@@ -15,6 +15,7 @@ import {
   TopicalIntracameralIllustration,
 } from "@/components/diagrams/clinical/EyeBlockIllustrations";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { BlockComparisonTeaching } from "@/components/topic/BlockComparisonTeaching";
 import { OphthalmicEvidenceTeaching } from "@/components/topic/OphthalmicEvidenceTeaching";
 import {
   Accordion,
@@ -45,7 +46,7 @@ const eyeFaqs: Array<[string, string]> = [
   ],
   [
     "What are the different regional techniques for ophthalmic surgery?",
-    "Four main regional techniques are used. (1) Sub-Tenon's block: a blunt cannula is inserted through an inferonasal conjunctival incision into the sub-Tenon's space. It is the safest technique with the lowest risk of globe perforation or brainstem spread, provides good akinesia and anaesthesia, and is suitable for most intraocular surgery. (2) Peribulbar block: local anaesthetic is injected outside the muscle cone (inferotemporal, sometimes medial as well). It has a lower risk of brainstem anaesthesia and optic nerve damage than retrobulbar, but onset is slower (10–15 min) and akinesia may be less complete. (3) Retrobulbar block: local anaesthetic is injected inside the muscle cone. It produces rapid, dense akinesia but carries the highest risk of globe perforation, retrobulbar haemorrhage, optic nerve injury, and brainstem anaesthesia. It is now rarely used. (4) Topical ± intracameral: anaesthetic drops with or without injection into the anterior chamber by the surgeon. No akinesia, so patient cooperation is essential. Mainly used for cataract surgery in cooperative adults.",
+    "Four main regional techniques are used. (1) Sub-Tenon's block: a blunt cannula is inserted through an inferonasal conjunctival incision into the sub-Tenon's space. It is the safest technique with the lowest risk of globe perforation or brainstem spread, provides good akinesia and anaesthesia, and is suitable for most intraocular surgery. (2) Peribulbar block: local anaesthetic is injected outside the muscle cone (inferotemporal, sometimes medial as well). It has a lower risk of brainstem anaesthesia and optic nerve damage than retrobulbar, and onset is slower (10–15 min); a 2015 Cochrane review of six trials found no difference from retrobulbar block in pain, complete akinesia or need for top-up injections. (3) Retrobulbar block: local anaesthetic is injected inside the muscle cone. It produces rapid, dense akinesia but carries the highest risk of globe perforation, retrobulbar haemorrhage, optic nerve injury, and brainstem anaesthesia. It is now rarely used. (4) Topical ± intracameral: anaesthetic drops with or without injection into the anterior chamber by the surgeon. No akinesia, so patient cooperation is essential. Mainly used for cataract surgery in cooperative adults.",
   ],
   [
     "Why is suxamethonium relatively contraindicated in open-globe injury?",
@@ -291,6 +292,7 @@ const OphthalmicAnaesthesiaTopic = () => {
           <ExamSection exams={[Exam.FINAL]}>
             <CollapsibleSubsection title="Evidence Base: Topical vs Sub-Tenon's and the Oculocardiac Reflex">
               <OphthalmicEvidenceTeaching />
+              <div className="mt-6"><BlockComparisonTeaching /></div>
             </CollapsibleSubsection>
           </ExamSection>
           </div>

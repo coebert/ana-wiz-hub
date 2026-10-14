@@ -9,6 +9,7 @@ import TheatreZoningDiagram from "@/components/diagrams/clinical/TheatreZoningDi
 import CssdWasteFlowSubMap from "@/components/diagrams/clinical/CssdWasteFlowSubMap";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { ChecklistEvidenceTeaching } from "@/components/topic/ChecklistEvidenceTeaching";
 import { LaminarFlowEvidenceTeaching } from "@/components/topic/LaminarFlowEvidenceTeaching";
 
 const operatingTheatreEnvironmentFaqs: Array<[string, string]> = [
@@ -88,7 +89,7 @@ const OperatingTheatreEnvironmentTopic = () => {
         { text: "Environmental targets: temperature 18–25 °C (raise to 23–26 °C for paediatric/burns/long open cavity), relative humidity 40–60%, noise <40 dB(A) baseline", cites: ["HTM 03-01"] },
         { text: "Active scavenging (AGSS) keeps theatre WAG concentrations below COSHH 8-h TWA limits: N₂O 100 ppm, isoflurane 50 ppm, sevoflurane 60 ppm (informal). Minimal-flow anaesthesia is the strongest single mitigation", cites: ["COSHH WAG 2020"] },
         { text: "Electrical supply uses an isolated (IT) power system with a line isolation monitor — a single fault to earth alarms but does not produce shock current; equipment classified CF (cardiac-floating) for direct cardiac contact", cites: ["IEC 60601-1"] },
-        { text: "WHO Surgical Safety Checklist (Sign In before induction → Time Out before incision → Sign Out before leaving theatre) reduces morbidity and mortality and embeds team briefing and human-factors practice", cites: ["WHO Checklist 2009"] },
+        { text: "WHO Surgical Safety Checklist (Sign In before induction → Time Out before incision → Sign Out before leaving theatre) was associated with fewer deaths and complications in the 2009 before–after study, but mandatory roll-out across Ontario showed no significant change — benefit depends on genuine team use", cites: ["WHO Checklist 2009", "Urbach 2014 Ontario"] },
         { text: "Isolation theatres for highly infectious cases reverse the cascade (negative pressure with airlock lobby) — must be requested explicitly and confirmed with estates", cites: ["HTM 03-01"] },
       ]}
       coreConcepts={
@@ -286,6 +287,10 @@ const OperatingTheatreEnvironmentTopic = () => {
             </p>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <ExamSection id="checklist-evidence" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <ChecklistEvidenceTeaching />
+          </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
@@ -293,7 +298,7 @@ const OperatingTheatreEnvironmentTopic = () => {
               "Standard theatres: 20–25 air changes/hour, temperature 18–22 °C, humidity 50–60% to balance comfort, electrostatic risk and infection.",
               "Scavenging removes waste anaesthetic gases — passive systems rely on patient effort; active systems use vacuum but need a reservoir to prevent suction injury.",
               "Theatre zoning (protective, clean, aseptic, disposal) controls personnel flow and reduces wound contamination.",
-              "WHO Surgical Safety Checklist (sign-in, time-out, sign-out) is mandatory and reduces mortality and complications.",
+              "WHO Surgical Safety Checklist (sign-in, time-out, sign-out) is mandatory; the 2009 before–after study linked it to fewer deaths and complications, but mandated roll-out in Ontario (2014) showed no significant change.",
             ]}
           />
           <TopicFaqs faqs={operatingTheatreEnvironmentFaqs} />
