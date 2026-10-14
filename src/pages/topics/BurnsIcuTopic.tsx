@@ -12,6 +12,7 @@ import ParklandCalculator from "@/components/diagrams/intensive-care/ParklandCal
 import BurnsIcuCaseStepper from "@/components/diagrams/intensive-care/BurnsIcuCaseStepper";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { BurnsIcuEvidenceTeaching } from "@/components/topic/BurnsIcuEvidenceTeaching";
 
 const burnsIcuFaqs: Array<[string, string]> = [
   ["How is fluid resuscitation calculated for major burns?", "Modified Parkland: 3–4 mL/kg/%TBSA Hartmann's in the first 24 h, half in the first 8 h from time of burn; titrate to urine output 0.5 mL/kg/h (adults), 1 mL/kg/h (children) — avoid fluid creep."],
@@ -385,6 +386,9 @@ const BurnsIcuTopic = () => {
               full Burns Centre referral proforma.
             </p>
             </CollapsibleSubsection>
+          </ExamSection>
+          <ExamSection id="evidence" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <BurnsIcuEvidenceTeaching />
           </ExamSection>
           <ExamPitfallsCallout
             accent="icu"
