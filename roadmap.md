@@ -46,4 +46,4 @@
 
 - [x] ICU antimicrobials + end-of-life communication trial-evidence lessons (Oct 2026). Open: audit corpus upload; Day Surgery blocked on 2019 guideline PDF.
 - [ ] Remaining clinical/ICU expansion: bariatric + transfer older-section review; day surgery (2019 PDF needed), theatre environment, ophthalmic, IR.
-- [ ] Expand and source-check mass-casualty ethics, crisis teamwork, bleeding control, military care and chemical incidents; reconcile examples/quiz and verify rendering, search and audit corpus before marking complete.
+- [x] Expand and source-check mass-casualty ethics, crisis teamwork, bleeding control, military care and chemical incidents; reconcile examples/quiz; 20 focused tests, authenticated desktop/phone lesson/source/quiz checks, search rebuild and verified private audit upload completed. Marked expanded (editorial completion, not clinical certification).
