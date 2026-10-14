@@ -117,8 +117,8 @@ const FoetalCirculationTopic = () => {
         transitionMechanisms: { exams: [Exam.PRIMARY], curriculumCodes: ["PA_BK_02"] },
       }}
       sectionSources={{
-        placentalTransfer: ["Am Zool 1992", "e-Safe Anaesthesia"],
-        transitionMechanisms: ["Pediatr Res 2023", "NCBI Bookshelf 2016", "J Physiol 2015"],
+        placentalTransfer: ["Am Zool 1992", "Serov et al. 2015"],
+        transitionMechanisms: ["Pediatr Res 2023", "Karger 2014", "Bentley et al. 2021", "NCBI Bookshelf 2016"],
         objectives: ["Power & Kam Ch.18"],
         workedExamples: ["BJA Educ 2015", "Power & Kam Ch.18"],
         keyPoints: ["Power & Kam Ch.18", "Ganong Ch.33", "BJA Educ 2015"],

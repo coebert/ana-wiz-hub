@@ -5,6 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { InlineRef } from "@/components/references/InlineRef";
+import { HepaticZonationTeaching } from "../../components/topic/HepaticZonationTeaching";
 import { hepaticPhysiologyQuestions } from "@/data/quizzes";
 import HepaticAcinusDiagram from "@/components/diagrams/physiology/HepaticAcinusDiagram";
 import PortalFirstPassDiagram from "@/components/diagrams/physiology/PortalFirstPassDiagram";
@@ -176,9 +177,9 @@ const HepaticPhysiologyTopic = () => {
             <div className="space-y-3">
 
               {[
-                { zone: "Zone 1 (Periportal)", desc: "Closest to portal triad. Highest O₂ supply. Most active in oxidative metabolism, gluconeogenesis, bile salt excretion, urea synthesis. Most resistant to ischaemia. First affected by viral hepatitis." },
+                { zone: "Zone 1 (Periportal)", desc: "Closest to incoming blood. Relatively high O₂ availability; preferential oxidative metabolism, gluconeogenesis and urea synthesis. Disease patterns depend on the mechanism rather than a universal sequence of zonal injury." },
                 { zone: "Zone 2 (Intermediate)", desc: "Transitional zone with intermediate metabolic activity." },
-                { zone: "Zone 3 (Perivenular/Centrilobular)", desc: "Closest to central vein. Lowest O₂ supply. Dominant in drug metabolism (CYP450), glycolysis, lipogenesis, glutamine synthesis. Most vulnerable to ischaemia and toxic injury (paracetamol NAPQI, halothane hepatitis)." },
+                { zone: "Zone 3 (Perivenular/Centrilobular)", desc: "Downstream, nearer the central vein. Relatively low O₂ availability; preferential glycolysis and several xenobiotic-metabolism pathways, with glutamine synthetase in a small pericentral population. Vulnerability to hypoxic and metabolic injury is mechanism-dependent." },
               ].map((z) => (
                 <div key={z.zone} className="p-4 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">{z.zone}</p>
@@ -186,6 +187,7 @@ const HepaticPhysiologyTopic = () => {
                 </div>
               ))}
             </div>
+            <HepaticZonationTeaching />
             </CollapsibleSubsection>
           </ExamSection>
 
