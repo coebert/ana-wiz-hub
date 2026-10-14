@@ -21,7 +21,7 @@ const massCasualtyMilitaryFaqs: Array<[string, string]> = [
   ],
   [
     "How are nerve-agent (organophosphate) casualties managed?",
-    "Don PPE and decontaminate before any clinical contact. Treat with atropine 2 mg IV repeated every 5 min until secretions dry, pralidoxime 30 mg/kg IV (reactivates acetylcholinesterase if given before ageing), and diazepam for seizures. Support airway, ventilation, and circulation. Avoid suxamethonium — prolonged paralysis."
+    "Don PPE and decontaminate before any clinical contact. Treat with high-dose atropine, starting at 2 mg IV and doubling every 5 min until secretions dry and oxygenation is adequate (pupils are not the endpoint), pralidoxime 30 mg/kg IV (reactivates acetylcholinesterase if given before ageing), and diazepam for seizures. Support airway, ventilation, and circulation. Avoid suxamethonium — prolonged paralysis."
   ]
 ];
 
@@ -149,11 +149,11 @@ const MassCasualtyMilitaryTopic = () => {
         { text: "Major incident = casualty load exceeds normal resources. Declared by first emergency service on scene; cascade activates hospital plan.", cites: ["JRCALC 2022"] },
         { text: "METHANE message structures the alert: Major incident, Exact location, Type, Hazards, Access, Number, Emergency services.", cites: ["BJA Educ MCI 2017"] },
         { text: "Since 2023 UK major-incident triage is two-step: Ten Second Triage (TST) by any responder — walking → P3; severe bleeding → P1 (pressure, tourniquet, packing); not talking → open airway, recovery position, P1 if breathing or 'Not Breathing' if not; talking with a penetrating injury to neck, chest, armpits, back, abdomen, groin or buttocks → P1, otherwise P2 — then the NHS Major Incident Triage Tool (MITT) at the casualty clearing station. MITT replaced the Triage Sieve, Triage Sort and paediatric triage tape and is derived from MPTT-24.", cites: ["NARU TST 2023", "NHS England MITT 2023"] },
-        { text: "Crisis Resource Management: leadership, role clarity, closed-loop communication, situational awareness, workload distribution, calling for help early.", cites: ["Damage Control Resuscitation"] },
-        { text: "Damage-control resuscitation: permissive hypotension, 1:1:1 ratio (or whole blood), TXA 1 g IV as soon as possible and within 3 h of injury (the routine 8-hour maintenance infusion is no longer recommended in bleeding trauma other than isolated TBI, where the CRASH-3 regimen still applies), calcium, warmth, early surgical haemostasis, calcium, warmth, early surgical haemostasis.", cites: ["NHS EPRR 2022"] },
-        { text: "Damage-control surgery: abbreviated procedure to control haemorrhage and contamination, with planned return for definitive surgery once physiology corrected.", cites: ["JRCALC 2022"] },
+        { text: "Crisis Resource Management: leadership, role clarity, closed-loop communication, situational awareness, workload distribution, calling for help early.", cites: ["Gaba CRM 2015"] },
+        { text: "Damage-control resuscitation: permissive hypotension, 1:1:1 ratio (or whole blood), TXA 1 g IV as soon as possible and within 3 h of injury (the routine 8-hour maintenance infusion is no longer recommended in bleeding trauma other than isolated TBI, where the CRASH-3 regimen still applies), calcium, warmth, early surgical haemostasis.", cites: ["Damage Control Resuscitation", "UK TXA Consensus 2023", "CRASH-3 2019"] },
+        { text: "Damage-control surgery: abbreviated procedure to control haemorrhage and contamination, with planned return for definitive surgery once physiology corrected.", cites: ["Damage Control Resuscitation"] },
         { text: "Military Role 1 (point of wounding) → Role 2 (forward surgical) → Role 3 (deployed hospital) → Role 4 (home) — same paradigm informs civilian disaster pathways.", cites: ["BJA Educ MCI 2017"] },
-        { text: "CBRN casualties: decontaminate before treatment; PPE for staff; antidotes rehearsed (atropine/pralidoxime, hydroxocobalamin, dicobalt edetate).", cites: ["MARCH Algorithm"] },
+        { text: "CBRN casualties: decontaminate before treatment; PPE for staff; antidotes rehearsed (atropine/pralidoxime, hydroxocobalamin, dicobalt edetate).", cites: ["UKHSA CBRN"] },
       ]}
       coreConcepts={
         <>
@@ -188,7 +188,7 @@ const MassCasualtyMilitaryTopic = () => {
                 { tool: "NHS Major Incident Triage Tool (MITT)", detail: "Used by healthcare responders at a casualty collection point or clearing station once every casualty has a TST band; the switch is decided by the ambulance on-scene commander. A single adult-and-paediatric tool that replaced the Triage Sieve, Triage Sort and paediatric triage tape, derived from the Modified Physiological Triage Tool-24 (MPTT-24). MITT tags are solid colour; TST bands have a white checked border." },
                 { tool: "Legacy Triage Sieve (historical)", detail: "The older physiological sieve (walking, breathing, respiratory rate, capillary refill) still appears in older texts and exam questions, but has been replaced by TST and MITT in NHS practice." },
                 { tool: "Reverse / expectant triage", detail: "When demand vastly exceeds capacity (austere or wartime), the most resource-intensive may be designated expectant (P4) to maximise survivors. Ethically reviewed by senior team and documented." },
-                { tool: "Paediatric triage tape", detail: "Length-based vital sign thresholds (e.g. JumpSTART) — children's normal ranges differ; do not apply adult sieve directly." },
+                { tool: "Paediatric triage tape (historical)", detail: "The length-based Paediatric Triage Tape adjusted sieve thresholds for children's size. In NHS practice it has been replaced by the single adult-and-paediatric MITT; in TST, children too young to walk or talk (under 2) are automatically P1. (JumpSTART is a separate US paediatric algorithm, not a tape.)" },
               ].map(t => (
                 <div key={t.tool} className="p-3 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">{t.tool}</p>
@@ -305,7 +305,7 @@ const MassCasualtyMilitaryTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Permissive hypotension</strong>: SBP 80–90 mmHg until haemorrhage controlled (&gt;110 if TBI). Avoids "pop-the-clot" rebleeding and dilution</li>
               <li><strong>Haemostatic resuscitation</strong>: 1:1:1 ratio of RBC:FFP:platelets (PROPPR trial), or whole blood (military standard, growing civilian uptake)</li>
-              <li><strong>Tranexamic acid 1 g IV</strong> within 3 h (CRASH-2; CRASH-3 for TBI); maintenance 1 g over 8 h. After 3 h may worsen outcome</li>
+              <li><strong>Tranexamic acid 1 g IV</strong> as soon as possible and within 3 h (CRASH-2); in bleeding major trauma the routine 8-hour maintenance infusion is no longer recommended in UK consensus, whereas isolated TBI follows the CRASH-3 regimen. Starting after 3 h may worsen outcome</li>
               <li><strong>Calcium</strong>: ionised Ca²⁺ &gt;1.0 mmol/L; give 1 g calcium chloride per 4 units of blood products (citrate chelation + calcium is factor IV)</li>
               <li><strong>Warm everything</strong>: target core temperature &gt;36 °C; fluid warmer, forced air, warmed environment</li>
               <li><strong>Damage-control surgery</strong>: stop bleeding, control contamination, abbreviate (&lt;90 min), pack and temporary closure; planned return for definitive surgery once physiology corrected</li>
