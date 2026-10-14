@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -115,6 +116,7 @@ const AcidBaseTopic = () => {
       coreConcepts={
         <>
           <TopicTableOfContents items={tocItems} />
+          <p className="text-muted-foreground leading-relaxed mb-6">For chloride depletion, renal maintenance, post-hypercapnic alkalosis and mechanism-led treatment, see <Link to="/intensive-care/metabolic-alkalosis" className="text-primary font-semibold underline underline-offset-4">Metabolic Alkalosis</Link>.</p>
           <ExamSection id="section-systematic-abg" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4"]}>
             <CollapsibleSubsection title="Systematic ABG Interpretation" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
