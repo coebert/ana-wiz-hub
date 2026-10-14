@@ -15,20 +15,21 @@ import EndocrineSymptomTriage from "@/components/diagrams/intensive-care/Endocri
 import GuidelineSources, { type GuidelineSource } from "@/components/references/GuidelineSources";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { HyperglycaemicEmergenciesTeaching, ThyroidEmergenciesTeaching, AdrenalPituitaryEmergenciesTeaching, EndocrinePerioperativeTeaching } from "@/components/topic/EndocrineEmergenciesTeaching";
 
 // Section-specific guideline references (BJA Education + primary guidelines)
 const HYPERGLYCAEMIC_SOURCES: GuidelineSource[] = [
   { label: "JBDS-IP — DKA in adults (2023)", url: "https://abcd.care/sites/default/files/site_uploads/JBDS_Guidelines_Current/JBDS_02_DKA_Guideline_with_QR_code_March_2023.pdf", detail: "Joint British Diabetes Societies fixed-rate insulin protocol, K⁺ replacement and resolution criteria." },
   { label: "JBDS-IP — HHS in adults (2022)", url: "https://abcd.care/sites/default/files/site_uploads/JBDS_Guidelines_Current/JBDS_06_The_Management_of_the_Hyperosmolar_Hyperglycaemic_State_HHS_in_Adults_FINAL_0.pdf", detail: "HHS diagnosis (osmolality > 320, glucose > 30, pH > 7.30), fluid-first strategy, low-rate insulin." },
   { label: "BJA Educ — DKA & HHS perioperative", url: "https://www.bjaed.org/article/S2058-5349(22)00076-1/fulltext", detail: "Perioperative recognition and management of hyperglycaemic emergencies." },
-  { label: "NICE NG28 — Type 2 diabetes", url: "https://www.nice.org.uk/guidance/ng28", detail: "SGLT2 inhibitor cessation and euglycaemic DKA risk." },
+  { label: "NICE NG28 — Type 2 diabetes", url: "https://www.nice.org.uk/guidance/ng28", detail: "General type 2 diabetes management; see the MHRA notice below for treatment interruption." },
 ];
 
 const THYROID_SOURCES: GuidelineSource[] = [
   { label: "ATA 2016 — Hyperthyroidism guideline", url: "https://www.thyroid.org/wp-content/uploads/publications/guidelines/2016/ATA-2016-Hyperthyroidism-Guidelines.pdf", detail: "American Thyroid Association management of thyroid storm — 5-step block & support." },
   { label: "Burch & Wartofsky 1993", url: "https://pubmed.ncbi.nlm.nih.gov/8325286/", detail: "Original Burch-Wartofsky Point Scale for thyroid storm severity." },
   { label: "BJA Educ — Thyroid disease & anaesthesia", url: "https://www.bjaed.org/article/S2058-5349(20)30005-X/fulltext", detail: "Perioperative thyroid emergencies including storm and myxoedema coma." },
-  { label: "Endocrine Society — Myxoedema coma review", url: "https://academic.oup.com/jcem/article/99/8/2745/2538045", detail: "Diagnosis and IV T3/T4 + hydrocortisone management of myxoedema coma." },
+  { label: "ATA 2014 — Hypothyroidism guideline", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4267409/", detail: "Recommendations 21a–21d: IV levothyroxine, preceding glucocorticoids and clinical endpoints." },
 ];
 
 const ADRENAL_PITUITARY_SOURCES: GuidelineSource[] = [
@@ -41,14 +42,14 @@ const ADRENAL_PITUITARY_SOURCES: GuidelineSource[] = [
 
 const PITFALLS_SOURCES: GuidelineSource[] = [
   { label: "BJA Educ — Etomidate & adrenal suppression", url: "https://www.bjaed.org/article/S2058-5349(17)30068-9/fulltext", detail: "Single dose suppresses 11β-hydroxylase ~24 h." },
-  { label: "MHRA — SGLT2 inhibitors & DKA", url: "https://www.gov.uk/drug-safety-update/sglt2-inhibitors-monitor-ketones-in-blood-during-treatment-interruption-for-surgical-procedures-or-acute-serious-medical-illness", detail: "Stop ≥ 3 days pre-op; monitor ketones — euglycaemic DKA risk." },
+  { label: "MHRA — SGLT2 inhibitors & DKA", url: "https://www.gov.uk/drug-safety-update/sglt2-inhibitors-monitor-ketones-in-blood-during-treatment-interruption-for-surgical-procedures-or-acute-serious-medical-illness", detail: "Interrupt during hospitalisation for major surgery/serious illness; monitor blood ketones. This notice does not specify an elective cessation interval." },
   { label: "BJA Educ — Vasopressors in shock", url: "https://www.bjaed.org/article/S2058-5349(19)30075-1/fulltext", detail: "Differential for catecholamine-resistant shock including adrenal insufficiency." },
 ];
 
 const icuEndocrineEmergenciesFaqs: Array<[string, string]> = [
-  ["How is diabetic ketoacidosis managed in the first hour?", "0.9% saline 500–1000 mL bolus, fixed-rate insulin 0.1 U/kg/h, replace K⁺ once <5.5 mmol/L (do not start insulin if K⁺ <3.3 mmol/L), and check ketones, glucose and bicarbonate hourly (JBDS 2021)."],
+  ["How is diabetic ketoacidosis managed in the first hour?", "0.9% saline 500–1000 mL bolus, fixed-rate insulin 0.1 U/kg/h, replace K⁺ once <5.5 mmol/L (urgent senior review if K⁺ <3.5 mmol/L), and check ketones, glucose and bicarbonate hourly (JBDS 2023)."],
   ["What distinguishes HHS from DKA and how does management differ?", "HHS: glucose >30, osmolality >320, minimal ketones, no acidosis, profound dehydration (often 8–10 L deficit); fluid resuscitation is the priority — insulin only when glucose stops falling with fluids alone, at lower rates (0.05 U/kg/h) to prevent osmotic shifts."],
-  ["How is myxoedema coma treated?", "IV levothyroxine 200–400 µg load then 50–100 µg daily (or T3 if available), IV hydrocortisone 100 mg 8-hourly until adrenal insufficiency excluded, passive rewarming, treat precipitants and avoid sedatives."],
+  ["How is myxoedema coma treated?", "IV levothyroxine initially (ATA: 200–400 µg load, reduced for age, size and cardiac risk), subsequent weight-based replacement, preceded by IV glucocorticoid cover, passive rewarming, treat precipitants and avoid sedatives."],
 ];
 
 const objectives = [
@@ -75,20 +76,20 @@ const workedExamples: WorkedExample[] = [
         <li>Diagnostic triad met: glucose &gt; 11, ketones ≥ 3, pH &lt; 7.30 → severe DKA (pH &lt; 7.10 or HCO₃⁻ &lt; 5 or K⁺ &lt; 3.5 → HDU/ICU).</li>
         <li>Hour 1: <strong>0.9% NaCl 1 L over 1 h</strong>. Start <strong>fixed-rate insulin 0.1 U/kg/h = 7 U/h</strong> as soon as fluid running. Continue patient's long-acting insulin.</li>
         <li>K⁺ 5.6 → no KCl in first bag. Once K⁺ 3.5–5.5 → add 40 mmol KCl/L. K⁺ &lt; 3.5 → halt insulin until replaced.</li>
-        <li>Switch to <strong>10% dextrose at 125 ml/h</strong> when glucose &lt; 14 (run alongside saline) — keeps insulin running until ketones clear.</li>
+        <li>Add <strong>10% dextrose at 125 ml/h</strong> when glucose &lt; 14 (run alongside saline) — keeps insulin running until ketones clear.</li>
         <li>Aim ketones falling ≥ 0.5/h (or HCO₃⁻ rising ≥ 3/h, or glucose falling ≥ 3/h). If not met: increase fixed-rate by 1 U/h.</li>
-        <li>Resolution: ketones &lt; 0.6 + venous pH &gt; 7.30 + HCO₃⁻ &gt; 18.</li>
+        <li>Resolution: ketones &lt; 0.6 and venous pH &gt; 7.30; do not require bicarbonate normalisation.</li>
       </ul>
     ),
     answer: (
       <>
         Severe DKA. Activate fixed-rate insulin 7 U/h after 1 L 0.9% NaCl.
-        Withhold KCl until next bag. Continue long-acting insulin. Add 10% dextrose
-        when glucose &lt; 14. Daily K⁺/PO₄/Mg, hourly glucose, 2-hourly ketones
+        Withhold KCl while potassium remains above 5.5; reassess before the next bag. Continue long-acting insulin. Add 10% dextrose
+        when glucose &lt; 14. Frequent potassium checks, hourly glucose and ketones
         until resolution.
       </>
     ),
-   cites: ["ATA Thyroid Storm"],
+   cites: ["JBDS-IP DKA 2023 (ABCD)", "JBDS DKA resolution 2023"],
   },
   {
     title: "Thyroid storm — applying the Burch-Wartofsky scale",
@@ -101,22 +102,21 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <ul className="list-disc list-inside space-y-1">
-        <li>BWPS components: T 40.2 = 25 · agitation = 20 · diarrhoea/jaundice = 20 · AF = 10 · HR 158 = 25 · precipitating event = 10 → <strong>~ 110 → highly suggestive of storm</strong>.</li>
-        <li><strong>Step 1 — β-blockade</strong>: propranolol 1 mg IV titrated, or esmolol infusion (also blocks T₄→T₃).</li>
+        <li>BWPS components: T 40.2 = 30 · agitation = 10 · jaundice = 20 · AF = 10 · HR 158 = 25 · precipitating event = 10 → <strong>105 → highly suggestive of storm</strong>.</li>
+        <li><strong>Step 1 — β-blockade</strong>: propranolol 1 mg IV titrated, or carefully titrated esmolol if appropriate after haemodynamic assessment. High-dose propranolol, not esmolol, reduces T₄→T₃ conversion.</li>
         <li><strong>Step 2 — block synthesis</strong>: PTU 500–1000 mg PO/NG load then 250 mg q4h (PTU preferred — also blocks peripheral conversion).</li>
         <li><strong>Step 3 — block release</strong>: Lugol's iodine 5 drops PO q6h <em>≥ 1 h after PTU</em> (otherwise iodine fuels storm).</li>
-        <li><strong>Step 4 — steroid</strong>: hydrocortisone 100 mg IV q8h (blocks conversion + treats relative adrenal insufficiency).</li>
+        <li><strong>Step 4 — steroid</strong>: ATA regimen hydrocortisone 300 mg IV load, then 100 mg IV q8h (blocks conversion + treats relative adrenal insufficiency).</li>
         <li><strong>Step 5 — supportive</strong>: paracetamol + active cooling (avoid aspirin), fluids, treat surgical/septic precipitant. Plasmapheresis if refractory.</li>
       </ul>
     ),
     answer: (
       <>
-        BWPS &gt; 45 → thyroid storm. Treat in this order: β-blocker → PTU →
-        Lugol's iodine (≥ 1 h later) → hydrocortisone → cooling/fluids/treat
-        precipitant. Mortality 10–30 % even with treatment.
+        BWPS &gt; 45 → thyroid storm. Treat in parallel with haemodynamically appropriate β-blockade, PTU,
+        hydrocortisone and supportive care; give iodide at least one hour after the thionamide. Mortality 10–30 % even with treatment.
       </>
     ),
-   cites: ["ES Adrenal Crisis 2016"],
+   cites: ["ATA 2016"],
   },
   {
     title: "Adrenal crisis — refractory shock under anaesthesia",
@@ -130,12 +130,12 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <ul className="list-disc list-inside space-y-1">
-        <li>Vasopressor-resistant shock + classic biochemistry (low Na⁺, high K⁺, low glucose) in a chronic steroid user → adrenal crisis until proven otherwise.</li>
+        <li>Vasopressor-resistant shock + hyponatraemia and hypoglycaemia in a chronic steroid user; high K⁺ also needs investigation for AKI or another cause → adrenal crisis until proven otherwise.</li>
         <li>Take paired random cortisol + ACTH if possible — but <strong>do not delay treatment</strong>.</li>
         <li><strong>Hydrocortisone 100 mg IV stat</strong>, then 200 mg/24 h (50 mg q6h or infusion).</li>
         <li><strong>1 L 0.9% NaCl over 1 h</strong>; correct glucose with 10% dextrose if &lt; 4.</li>
-        <li>Treat trigger (surgical stress + chronic HPA suppression). Convert to oral hydrocortisone once stable, add fludrocortisone when oral dose &lt; 50 mg/day.</li>
-        <li>Sick-day rules going forward: triple oral dose for 24–48 h around stress; IV cover for any major surgery / vomiting.</li>
+        <li>Treat trigger (surgical stress + chronic HPA suppression). Convert to oral hydrocortisone once stable, fludrocortisone is needed below 50 mg/day hydrocortisone in primary adrenal insufficiency, not routinely in steroid-induced secondary insufficiency.</li>
+        <li>Sick-day rules going forward: follow individual sick-day replacement advice; IV cover for any major surgery / vomiting.</li>
       </ul>
     ),
     answer: (
@@ -146,7 +146,7 @@ const workedExamples: WorkedExample[] = [
         needed acutely.
       </>
     ),
-   cites: ["JBDS-IP DKA 2023"],
+   cites: ["SfE adrenal emergency 2016"],
   },
 ];
 
@@ -165,19 +165,19 @@ const IcuEndocrineEmergenciesTopic = () => {
       workedExamples={workedExamples}
       keyPoints={[
         { text: "DKA diagnostic triad (JBDS-IP): glucose > 11 (or known DM) + ketones ≥ 3 (or 2+ on dipstick) + pH < 7.30 / HCO₃⁻ < 15", cites: ["JBDS-IP DKA 2023"] },
-        { text: "DKA potassium paradox: serum K⁺ often normal/high at presentation despite massive total-body deficit — falls fast on insulin; replace K⁺ when 3.5–5.5, halt insulin if K⁺ < 3.5", cites: ["JBDS-IP HHS 2022"] },
-        { text: "HHS: glucose > 30 + osmolality > 320 + minimal ketones — give fluids FIRST (insulin only after fluids running, lower rate 0.05 U/kg/h) to avoid cerebral oedema and pontine myelinolysis", cites: ["BJA Educ Endo 2014"] },
-        { text: "Thyroid storm (BWPS ≥ 45): treat in order — β-blocker → PTU → Lugol's iodine (≥ 1 h after PTU) → hydrocortisone → cooling. Avoid aspirin (displaces T₄ from TBG)", cites: ["ATA Thyroid Storm"] },
-        { text: "Adrenal crisis: refractory shock + low Na⁺ / high K⁺ / low glucose → hydrocortisone 100 mg IV stat BEFORE tests; high-dose hydrocortisone has full mineralocorticoid effect", cites: ["ES Adrenal Crisis 2016", "SfE Adrenal Crisis 2020"] },
-        { text: "Myxoedema coma: hypothermia + hyponatraemia + hypoventilation + obtundation — IV T3/T4 + IV hydrocortisone (cover concurrent adrenal insufficiency) + passive rewarming + ICU ventilation", cites: ["JBDS-IP DKA 2023"] },
-        { text: "Phaeochromocytoma crisis: phenoxybenzamine / phentolamine / IV magnesium FIRST (α-blockade) then β-blockade — never β-blocker alone (unopposed α → hypertensive crisis, pulmonary oedema)", cites: ["JBDS-IP HHS 2022"] },
-        { text: "DKA: do not give routine phosphate or bicarbonate — replace phosphate only below 0.3 mmol/L or with muscle/cardiac dysfunction; reserve bicarbonate for pH < 6.9 with collapse", cites: ["JBDS-IP DKA 2023 PDF"] },
-        { text: "Pituitary apoplexy: sudden headache + visual loss + ophthalmoplegia + hypopituitarism → hydrocortisone 100 mg IV + urgent neurosurgical referral; replace cortisol BEFORE thyroxine", cites: ["BJA Educ Endo 2014", "UK Pituitary Apoplexy 2011"] },
+        { text: "DKA potassium paradox: serum K⁺ often normal/high at presentation despite massive total-body deficit — falls fast on insulin; replace K⁺ when 3.5–5.5, urgent senior review and additional potassium if K⁺ <3.5", cites: ["JBDS DKA potassium 2023"] },
+        { text: "HHS: marked hyperglycaemia/hyperosmolality with minimal ketosis; in non-ketotic HHS start insulin 0.05 U/kg/h after adequate fluid replacement when glucose plateaus to avoid cerebral oedema and pontine myelinolysis", cites: ["JBDS HHS sodium 2023"] },
+        { text: "Thyroid storm (BWPS ≥45): multimodal treatment in parallel; assess cardiac function before β-blockade, and give iodide ≥1 h after thionamide. Avoid aspirin (displaces T₄ from TBG)", cites: ["ATA Thyroid Storm"] },
+        { text: "Adrenal crisis: refractory shock + low Na⁺ / high K⁺ / low glucose → hydrocortisone 100 mg IV stat BEFORE tests; high-dose hydrocortisone has full mineralocorticoid effect", cites: ["ES Adrenal Crisis 2016", "SfE adrenal emergency 2016"] },
+        { text: "Myxoedema coma: hypothermia + hyponatraemia + hypoventilation + obtundation — IV glucocorticoid cover before initial IV levothyroxine; selected T3 adjunct under endocrine advice + passive rewarming + ICU ventilation", cites: ["ATA myxoedema 2014"] },
+        { text: "Phaeochromocytoma: specialist-led α-blockade before β-blockade — never β-blocker alone (unopposed α → hypertensive crisis, pulmonary oedema)", cites: ["Endocrine Society PPGL 2014"] },
+        { text: "DKA: no routine phosphate or bicarbonate; discuss severe depletion or cardiovascular compromise with diabetes and critical care", cites: ["JBDS-IP DKA 2023 PDF"] },
+        { text: "Pituitary apoplexy: sudden headache + visual loss + ophthalmoplegia + hypopituitarism → hydrocortisone 100 mg IV + urgent neurosurgical referral; replace cortisol BEFORE thyroxine", cites: ["SfE apoplexy emergency 2016"] },
       ]}
       sectionSources={{
-        objectives: ["JBDS-IP DKA 2023", "JBDS-IP HHS 2022", "Endocrine Society 2016"],
-        workedExamples: ["JBDS-IP DKA 2023", "Burch-Wartofsky 1993", "Bornstein 2016", "ATA Thyroid Storm", "ES Adrenal Crisis 2016"],
-        keyPoints: ["JBDS-IP", "BJA Educ", "Endocrine Society", "JBDS-IP DKA 2023", "JBDS-IP HHS 2022", "BJA Educ Endo 2014", "ATA Thyroid Storm", "ES Adrenal Crisis 2016"],
+        objectives: ["JBDS-IP DKA 2023 (ABCD)", "JBDS HHS sodium 2023", "ATA 2016", "SfE adrenal emergency 2016"],
+        workedExamples: ["JBDS-IP DKA 2023 (ABCD)", "ATA 2016", "SfE adrenal emergency 2016"],
+        keyPoints: ["JBDS-IP DKA 2023 (ABCD)", "JBDS HHS sodium 2023", "ATA 2016", "ATA myxoedema 2014", "SfE adrenal emergency 2016", "SfE apoplexy emergency 2016", "SfE Adrenal Crisis 2020", "JBDS-IP HHS 2022 (ABCD)", "UK Pituitary Apoplexy 2011"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
@@ -229,83 +229,8 @@ const IcuEndocrineEmergenciesTopic = () => {
                 </p>
               </div>
             </div>
-            <div className="p-4 rounded-lg border border-border mt-4">
-              <p className="font-semibold text-foreground text-sm">
-                HHS — managing the hypernatraemia and hyperosmolality (JBDS-IP 2022)
-
-              </p>
-              <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground mt-2">
-                <li>
-                  <strong>Resuscitate with 0.9% sodium chloride</strong> — 1 L over the first hour, then
-                  0.5–1 L/h titrated to haemodynamics; expect 3–6 L positive by 12 h and total replacement
-                  of the 100–220 ml/kg deficit over 24–48 h. Fluid alone lowers glucose and osmolality; the
-                  serum sodium will often <em>rise</em> initially as glucose falls, and this is expected.
-                </li>
-                <li>
-                  <strong>Corrected (osmolality-adjusted) sodium</strong> = measured Na⁺ + 0.4 ×
-                  (glucose − 5.5) mmol/L. Track this alongside calculated osmolality hourly, and plot the
-                  trend rather than reacting to a single value.
-                </li>
-                <li>
-                  <strong>Switch to 0.45% sodium chloride</strong> if the corrected sodium is rising, or
-                  remains high, while osmolality is not falling despite an adequate rate of 0.9% saline and
-                  a positive fluid balance — 0.45% saline delivers the free water needed to correct the
-                  hyperosmolar state once the patient is haemodynamically stable.
-                </li>
-                <li>
-                  <strong>Rate limits:</strong> do not change sodium by &gt; 10 mmol/L in any 24 h, keep the
-                  fall in osmolality to 3–8 mosmol/kg/h and the fall in glucose ≤ 5 mmol/L/h. Rapid
-                  correction risks cerebral oedema and osmotic demyelination (central pontine
-                  myelinolysis).
-                </li>
-                <li>
-                  <strong>Sodium trend:</strong> measure sodium hourly initially. Measured sodium may not
-                  fall, and may even rise, early in treatment as glucose falls; a rising sodium despite a
-                  positive fluid balance prompts the switch from 0.9% to 0.45% sodium chloride, and 5%
-                  dextrose may be needed later to replace the remaining free-water deficit.<InlineRef topicId="icu-endocrine-emergencies" refLabel="JBDS-IP HHS 2022 (ABCD)" />
-                </li>
-                <li>
-                  <strong>Insulin only once fluids are running</strong> — start fixed-rate 0.05 units/kg/h
-                  when glucose stops falling with fluid alone (or immediately if significant ketonaemia).
-                  Starting insulin early accelerates the intracellular shift of water, sodium and
-                  potassium, and worsens cardiovascular collapse.
-                </li>
-                <li>
-                  Add 10% glucose alongside saline once glucose reaches 10–15 mmol/L, replace potassium as
-                  in DKA, monitor for foot ulceration, and give full-dose LMWH prophylaxis for the duration
-                  of admission (very high thrombotic risk).
-                </li>
-              </ul>
-            </div>
-            <div className="p-4 rounded-lg border border-border mt-4">
-              <p className="font-semibold text-foreground text-sm">
-                DKA — phosphate and bicarbonate (JBDS-IP 2023)
-              </p>
-              <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground mt-2">
-                <li>
-                  <strong>Phosphate:</strong> total-body phosphate is depleted by osmotic diuresis, and serum
-                  phosphate falls further once insulin drives it intracellularly. JBDS-IP advises{" "}
-                  <strong>against routine replacement</strong> — trials show no benefit for acidosis
-                  resolution, morbidity or mortality, and over-replacement causes hypocalcaemia and
-                  hypomagnesaemia. Replace only if phosphate is &lt; 0.3 mmol/L or there is respiratory or
-                  skeletal muscle weakness, cardiac dysfunction, haemolysis or unexplained failure to wean,
-                  giving 9–18 mmol IV over 6–12 h with paired calcium and magnesium monitoring. Check
-                  phosphate at least daily in prolonged or severe DKA, particularly when feeding is started
-                  (refeeding risk).
-                </li>
-                <li>
-                  <strong>Bicarbonate:</strong> <strong>not recommended</strong>. Insulin plus fluid
-                  resuscitation halts ketogenesis and corrects the acidosis; giving bicarbonate risks
-                  paradoxical CSF acidosis and cerebral oedema (especially in children and young adults),
-                  a left shift of the oxyhaemoglobin curve, worsened hypokalaemia, sodium and volume
-                  loading, rebound alkalosis and delayed ketone clearance. Reserve discussion of
-                  bicarbonate for extreme acidaemia (pH &lt; 6.9) with cardiovascular collapse, as a
-                  consultant-level decision alongside critical care — and remember that a persisting
-                  acidosis with clearing ketones is usually a hyperchloraemic acidosis from saline
-                  resuscitation, which needs no treatment.
-                </li>
-              </ul>
-            </div>
+            <HyperglycaemicEmergenciesTeaching />
+            <p className="text-sm text-muted-foreground mt-4">Routine phosphate and bicarbonate replacement are not recommended in DKA. Severe electrolyte depletion or cardiovascular compromise requires an individual critical-care/diabetes plan rather than a routine replacement recipe.<InlineRef topicId="icu-endocrine-emergencies" refLabel="JBDS-IP DKA 2023 PDF" /></p>
             <div className="grid md:grid-cols-2 gap-4 mt-4">
 
               <div className="bg-card rounded-xl border border-border p-4 md:p-6">
@@ -343,9 +268,8 @@ const IcuEndocrineEmergenciesTopic = () => {
                 <p className="font-semibold text-foreground text-sm">Myxoedema coma (mortality 30–40 %)</p>
                 <p className="text-sm text-muted-foreground mt-1">
                   Severe hypothyroid decompensation: <strong>hypothermia, hypoventilation,
-                  hyponatraemia, bradycardia, obtunded</strong>. Treat with IV T3 (10–20 mcg
-                  bolus then 10 mcg q4h) or IV T4, plus IV hydrocortisone 100 mg q8h
-                  (always cover potential adrenal insufficiency), passive rewarming,
+                  hyponatraemia, bradycardia, obtunded</strong>. Treat initially with IV levothyroxine under endocrine advice, with preceding IV glucocorticoid cover
+                  (cover potential adrenal insufficiency), passive rewarming,
                   ventilation as needed. Endocrinology referral.
                 </p>
               </div>
@@ -353,6 +277,7 @@ const IcuEndocrineEmergenciesTopic = () => {
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
               <ThyroidStormAnimation />
             </div>
+            <ThyroidEmergenciesTeaching />
             <GuidelineSources sources={THYROID_SOURCES} />
             </CollapsibleSubsection>
           </ExamSection>
@@ -425,7 +350,7 @@ const IcuEndocrineEmergenciesTopic = () => {
                   diabetes insipidus; formal visual field and acuity assessment; and joint
                   endocrinology/neurosurgical/ophthalmology review. <strong>Urgent transsphenoidal
                   decompression</strong> is indicated for acute or deteriorating visual loss, declining
-                  consciousness or progressive ophthalmoplegia; isolated ophthalmoplegia with intact
+                  consciousness ; isolated ophthalmoplegia with intact
                   vision can often be managed conservatively. Replace cortisol{" "}
                   <strong>before thyroxine</strong> — thyroid hormone accelerates cortisol metabolism and
                   will precipitate adrenal crisis.
@@ -449,34 +374,14 @@ const IcuEndocrineEmergenciesTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Surgical / sick-day steroid cover</p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Patients on &gt; 5 mg prednisolone/day for &gt; 3 weeks risk HPA
-                  suppression. Minor surgery: 25 mg hydrocortisone IV at induction, normal
-                  oral dose post-op. Major surgery: 50–100 mg IV at induction + 200 mg/24 h
-                  for 24–72 h. Sepsis / vomiting / unable to take oral: IV hydrocortisone
-                  100 mg + 200 mg/24 h until eating.
-                </p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  <strong>Weaning and tapering:</strong> stress-dose hydrocortisone is reduced as the
-                  physiological stress resolves, not stopped abruptly. After major surgery or critical
-                  illness, halve the dose each day (e.g. 200 mg → 100 mg → 50 mg/24 h) until the patient
-                  is back on their usual replacement or maintenance dose — typically over 48–72 h, longer
-                  if there is ongoing sepsis, ileus or a further procedure. Patients on long-term
-                  glucocorticoids resume their pre-admission oral dose (doubled for 24–48 h if still
-                  unwell). Where steroids were started <em>de novo</em> for septic shock, stop or taper
-                  hydrocortisone as vasopressors are weaned (abrupt cessation can cause rebound
-                  hypotension). For prolonged supraphysiological courses, reduce to the equivalent of
-                  7.5 mg prednisolone/day, then taper slowly (e.g. 1 mg every 2–4 weeks) with an early
-                  09:00 cortisol or Synacthen test to confirm HPA recovery before final withdrawal.
-                  Warn every patient about sick-day rules, issue a steroid emergency card and IM
-                  hydrocortisone for home use, and never omit doses during vomiting or diarrhoea.
-                </p>
+                <p className="text-sm text-muted-foreground mt-1">Patients with established adrenal insufficiency or glucocorticoid-induced suppression need an individual perioperative replacement plan. Do not omit replacement while fasting or vomiting. Suspected crisis needs hydrocortisone 100 mg IV/IM followed by 200 mg/24 h and resuscitation. Taper with recovery under endocrine advice; do not apply a universal minor-surgery dose or daily-halving rule.<InlineRef topicId="icu-endocrine-emergencies" refLabel="SfE adrenal emergency 2016" /></p>
 
               </div>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
               <AdrenalCrisisAnimation />
             </div>
+            <AdrenalPituitaryEmergenciesTeaching />
             <GuidelineSources sources={ADRENAL_PITUITARY_SOURCES} />
             </CollapsibleSubsection>
           </ExamSection>
@@ -485,11 +390,11 @@ const IcuEndocrineEmergenciesTopic = () => {
             <CollapsibleSubsection title="Anaesthetic pitfalls">
             <div className="space-y-2">
               {[
-                { topic: "Etomidate", detail: "Single induction dose suppresses 11β-hydroxylase for 24 h — avoid in septic / adrenally compromised patients; consider hydrocortisone cover if used." },
-                { topic: "SGLT2 inhibitors", detail: "Stop ≥ 3 days pre-op (MHRA). Cause euglycaemic DKA — measure ketones in any unwell perioperative patient on these drugs even if glucose normal. See the dedicated euglycaemic DKA panel below." },
+                { topic: "Etomidate", detail: "Etomidate can suppress adrenal steroid synthesis. Consider this when selecting induction agents; a single dose does not itself establish a diagnosis of adrenal crisis or an automatic indication for steroid treatment." },
+                { topic: "SGLT2 inhibitors", detail: "Interrupt during hospitalisation for major surgery or serious acute illness (MHRA); elective timing follows current local guidance. Cause euglycaemic DKA — measure ketones in any unwell perioperative patient on these drugs even if glucose normal. See the dedicated euglycaemic DKA panel below." },
                 { topic: "Iodinated contrast", detail: "Can precipitate thyroid storm in untreated hyperthyroidism, and contrast-induced thyrotoxicosis weeks later. Check TFTs in known thyroid disease before contrast." },
-                { topic: "Vasopressor failure", detail: "MAP not responding to noradrenaline ≥ 0.4 mcg/kg/min in shock → think adrenal crisis (give hydrocortisone) and check cortisol; also consider vasopressin and methylene blue." },
-                { topic: "Beta-blockers in phaeo", detail: "Never first-line. Even labetalol's α:β ratio (1:7 PO) is insufficient — use phentolamine or magnesium for crisis." },
+                { topic: "Vasopressor failure", detail: "Persistent shock needs reassessment for infection, bleeding, cardiac dysfunction and adrenal insufficiency. Treat suspected adrenal crisis promptly; do not diagnose it from a single vasopressor-dose threshold." },
+                { topic: "Beta-blockers in phaeo", detail: "Do not give β-blockade before adequate α-blockade in phaeochromocytoma; obtain specialist advice for acute crisis management." },
               ].map((it) => (
                 <div key={it.topic} className="p-3 rounded-lg bg-secondary/30 border border-border">
                   <p className="font-semibold text-foreground text-sm">{it.topic}</p>
@@ -505,44 +410,7 @@ const IcuEndocrineEmergenciesTopic = () => {
                 <EndocrineEmergencyDrugs />
               </div>
             </div>
-            <div className="p-4 rounded-lg border border-border mt-4">
-              <p className="font-semibold text-foreground text-sm">
-                Euglycaemic DKA — the diagnosis that is missed
-              </p>
-              <p className="text-sm text-muted-foreground mt-1">
-                <strong>Definition:</strong> significant ketoacidosis (capillary ketones ≥ 3.0 mmol/L or
-                urine ketones ≥ 2+, with pH &lt; 7.30 and/or HCO₃⁻ &lt; 15) in a patient whose glucose is{" "}
-                <strong>&lt; 14 mmol/L</strong> — and often entirely normal. Because the usual trigger for
-                a DKA pathway (hyperglycaemia) is absent, the diagnosis is repeatedly delayed.
-              </p>
-              <p className="text-sm text-muted-foreground mt-1">
-                <strong>Mechanism:</strong> SGLT2 inhibition (dapagliflozin, empagliflozin, canagliflozin)
-                causes glycosuria, lowering plasma glucose and insulin secretion while raising glucagon;
-                the fall in the insulin:glucagon ratio drives lipolysis and hepatic ketogenesis, and
-                ketone reabsorption is increased. Superimposed on fasting, surgery, sepsis, vomiting,
-                dehydration, low-carbohydrate diet, alcohol excess or reduced insulin dose, ketoacidosis
-                develops with a normal glucose. The same picture occurs in pregnancy, prolonged starvation
-                and after bariatric surgery.
-              </p>
-              <p className="text-sm text-muted-foreground mt-1">
-                <strong>Who to test:</strong> measure blood ketones and a venous gas in{" "}
-                <em>any</em> unwell, vomiting, tachypnoeic, acidotic or perioperative patient taking an
-                SGLT2 inhibitor, regardless of glucose — and in any unexplained high-anion-gap metabolic
-                acidosis. Stop the SGLT2 inhibitor at least 3 days before elective surgery (MHRA) and
-                immediately on acute illness.
-              </p>
-              <p className="text-sm text-muted-foreground mt-1">
-                <strong>Management:</strong> treat as DKA but give the carbohydrate first — stop the SGLT2
-                inhibitor, start <strong>fixed-rate intravenous insulin 0.1 units/kg/h</strong> (insulin is
-                needed to switch off ketogenesis) <strong>with concurrent 10% glucose</strong> at
-                125 ml/h from the outset to prevent hypoglycaemia, plus 0.9% sodium chloride with
-                potassium for volume and electrolyte replacement. Continue long-acting basal insulin.
-                Track resolution by <strong>ketones and bicarbonate/pH, not glucose</strong> — aim ketone
-                fall ≥ 0.5 mmol/L/h, HCO₃⁻ rise ≥ 3 mmol/L/h; only convert to variable-rate insulin once
-                ketones &lt; 0.6 mmol/L and the acidosis has resolved. Ketosis may persist 24–48 h because
-                the drug&rsquo;s effect outlasts the last dose.
-              </p>
-            </div>
+            <EndocrinePerioperativeTeaching />
             <GuidelineSources sources={PITFALLS_SOURCES} />
             </CollapsibleSubsection>
           </ExamSection>

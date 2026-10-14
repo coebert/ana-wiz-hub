@@ -56,6 +56,8 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
 
 /** Topic-level overrides for topics with a completed expansion batch. */
 export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
+  "icu-endocrine-emergencies": { status: "in-progress", note: "Four source-led lessons added: DKA/HHS treatment and resolution; thyroid storm/myxoedema; adrenal crisis/apoplexy; perioperative SGLT2 safety. Corrected worked-example citations, BWPS arithmetic, HHS sodium/insulin rules, ATA steroid load, secondary adrenal mineralocorticoid advice and linked displays. Lesson/source tests, authenticated lesson/quiz rendering, search and private audit-copy refresh passed. Remaining whole-page review includes phaeochromocytoma details and water-balance treatment." },
+  "emergency-surgery": { status: "in-progress", note: "Five lessons added: urgency/source control, airway trial interpretation, appendicitis, adhesive obstruction and hip fracture. Corrected KETASED/IRIS overclaims, appendicitis timing, hip-fracture citation and fixed-volume obstruction advice; ten-question quiz reconciled. Lesson/source tests, authenticated rendering/quiz, search and private audit-copy refresh passed. Anticoagulant reversal, damage control, ectopic pregnancy, TIVA and fasciotomy sections still need separate source-led review." },
   "surgical-protocols": { status: "in-progress", note: "ERAS evidence lesson (Greco 2014 meta-analysis) added; all ten surgery guides source-linked (neurosurgery CO₂ target explicitly marked as consensus without a checked trial source)." },
   "cardiac-arrest-post-resus": {
     status: "expanded",

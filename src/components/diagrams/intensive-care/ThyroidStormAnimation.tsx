@@ -56,12 +56,12 @@ const STEPS: AnimatedMechanismStep[] = [
     label: "Treatment cascade",
     detail: (
       <>
-        Five-pronged attack — give in this order:
+        Multimodal treatment in parallel; iodide follows thionamide:
         <ol className="mt-2 space-y-1 list-decimal list-inside">
-          <li><strong>β-blockade</strong>: propranolol 60–80 mg PO q4h (or esmolol IV) — also blocks T₄→T₃.</li>
+          <li><strong>β-blockade</strong>: assess perfusion/cardiac function first; propranolol at high doses reduces T₄→T₃ conversion, while esmolol provides short-acting rate control.</li>
           <li><strong>Block synthesis</strong>: <strong>propylthiouracil (PTU) 500–1000 mg load then 250 mg q4h</strong> (preferred — also blocks peripheral conversion). Carbimazole alternative.</li>
           <li><strong>Block release</strong>: <strong>Lugol's iodine / potassium iodide ≥ 1 h after PTU</strong> (Wolff-Chaikoff effect; iodine before thionamide → fuels storm).</li>
-          <li><strong>Hydrocortisone 100 mg IV q8h</strong> — blocks T₄→T₃, treats co-existing adrenal insufficiency.</li>
+          <li><strong>ATA: hydrocortisone 300 mg IV load, then 100 mg q8h</strong> — blocks T₄→T₃, treats co-existing adrenal insufficiency.</li>
           <li><strong>Supportive</strong>: active cooling (paracetamol — NOT aspirin: displaces T₄ from TBG), fluids, treat trigger.</li>
         </ol>
       </>
@@ -76,7 +76,7 @@ const ThyroidStormScene = ({ active }: { active: number }) => {
     { label: "T₃/T₄ surge", sub: "↑ free hormone, T₄ → T₃ peripherally", token: "clinical" },
     { label: "β-receptor amplification", sub: "tachy · AF · HTN · tremor · sweating", token: "pharmacology" },
     { label: "Hyperthermia + organ failure", sub: "T > 40°C · HF · delirium · jaundice", token: "destructive" },
-    { label: "Treatment cascade", sub: "βB → PTU → iodine → steroids → cool", token: "physiology" },
+    { label: "Treatment cascade", sub: "parallel support · PTU before iodine", token: "physiology" },
   ];
 
   // BWPS gauge — climbs through cascade, drops on treatment

@@ -44,12 +44,12 @@ const DIAGNOSES: Record<DxKey, Diagnosis> = {
     oneLiner: "Profound hyperglycaemia + hyperosmolality, minimal ketones, days of dehydration.",
     investigations: [
       { test: "Glucose, ketones (< 3), VBG (pH > 7.30, HCO₃⁻ > 15)", why: "Distinguishes HHS from DKA — minimal ketonaemia and absent acidosis are diagnostic; insulin's residual action prevents ketogenesis." },
-      { test: "Calculated osmolality: 2[Na⁺] + glucose + urea (target > 320)", why: "Osmolality > 320 mOsm/kg defines HHS; correlates with coma > 340. Drives the slow-fluid strategy (Δ ≤ 5 mOsm/kg/h)." },
+      { test: "Calculated osmolality: 2[Na⁺] + glucose + urea (target > 320)", why: "Osmolality > 320 mOsm/kg defines HHS; correlates with coma > 340. Track a controlled osmolality fall of 3–8 mOsm/kg/h." },
       { test: "U&Es, corrected Na⁺, magnesium, phosphate", why: "Apparent low Na⁺ is dilutional — correct +2.4 per 5.5 mmol/L glucose above 5.5. True Na⁺ guides safe rate of fluid replacement." },
       { test: "ECG, troponin, CXR — look for MI / sepsis as precipitant", why: "Silent MI and sepsis trigger most HHS. Identifying precipitant changes prognosis more than the metabolic correction itself." },
       { test: "VTE risk assessment — high thrombotic risk, prophylactic LMWH", why: "Hyperviscosity + dehydration + immobility produce VTE rates 5× DKA — prophylaxis is mandatory unless contraindicated." },
     ],
-    immediate: "Fluids FIRST (0.9% NaCl ~ 1 L/h titrated). Insulin only after fluids running, low rate 0.05 U/kg/h.",
+    immediate: "Fluids FIRST (0.9% NaCl ~ 1 L/h titrated). Non-ketotic HHS: insulin 0.05 U/kg/h after adequate fluids when glucose plateaus.",
     tokenClass: "destructive",
   },
   storm: {
@@ -59,11 +59,11 @@ const DIAGNOSES: Record<DxKey, Diagnosis> = {
     investigations: [
       { test: "TSH (suppressed) + free T4 / T3 (raised)", why: "Confirms biochemical hyperthyroidism, but storm is a CLINICAL diagnosis — hormone level correlates poorly with severity." },
       { test: "Burch-Wartofsky Point Scale — ≥ 45 highly suggestive", why: "Operational diagnostic tool: scores temperature, CNS, GI/hepatic, CV and precipitant — separates storm from severe thyrotoxicosis." },
-      { test: "FBC, LFTs (cholestasis common), U&Es, glucose, calcium", why: "Cholestatic LFTs are typical and influence drug choice (PTU > carbimazole if jaundiced). Hypercalcaemia from bone resorption." },
+      { test: "FBC, LFTs (cholestasis common), U&Es, glucose, calcium", why: "Liver injury affects drug choice; PTU can be hepatotoxic, so jaundice is not a reason to prefer it automatically. Hypercalcaemia from bone resorption." },
       { test: "ECG (AF in 25%), troponin, echo if HF", why: "High-output cardiac failure and AF with rapid response are major killers — guide rate control and anticoagulation." },
       { test: "Septic screen + cortisol (cover relative adrenal insufficiency)", why: "Sepsis is the commonest precipitant. Accelerated cortisol clearance produces relative adrenal insufficiency — cover with hydrocortisone." },
     ],
-    immediate: "β-blocker (propranolol/esmolol) → PTU → Lugol's iodine ≥ 1 h later → hydrocortisone → cooling.",
+    immediate: "Multimodal therapy in parallel; assess cardiac function before β-blockade; iodide ≥1 h after thionamide.",
     tokenClass: "physiology",
   },
   myxoedema: {
@@ -77,15 +77,15 @@ const DIAGNOSES: Record<DxKey, Diagnosis> = {
       { test: "ECG (bradycardia, low voltage, prolonged QT), CK (rhabdomyolysis)", why: "Long QT predisposes to torsades during rewarming; CK rise reflects myopathy and prognosticates." },
       { test: "Glucose, blood cultures, CXR — sepsis is the usual trigger", why: "Infection (especially pneumonia/UTI) precipitates 35% of cases; hypothermia masks the usual fever response." },
     ],
-    immediate: "IV T3 10–20 mcg bolus then 10 mcg q4h (or T4) + IV hydrocortisone 100 mg q8h + passive rewarming + ventilation.",
+    immediate: "Glucocorticoid cover before IV levothyroxine; selected T3 adjunct under endocrine advice, ventilation and careful supportive care.",
     tokenClass: "clinical",
   },
   adrenal: {
     key: "adrenal",
     name: "Adrenal (Addisonian) crisis",
-    oneLiner: "Refractory shock + low Na⁺ / high K⁺ / low glucose; classic in chronic steroid users.",
+    oneLiner: "Shock with possible low sodium/glucose; hyperkalaemia is characteristic of primary rather than steroid-induced insufficiency.",
     investigations: [
-      { test: "Paired random cortisol + ACTH BEFORE first steroid dose (if practical — never delay treatment)", why: "Cortisol < 100 nmol/L during shock is diagnostic; ACTH localises primary (high) vs secondary (low). Single best diagnostic test." },
+      { test: "Paired random cortisol + ACTH BEFORE first steroid dose (if practical — never delay treatment)", why: "Interpret cortisol with assay, timing and steroid exposure; ACTH can help distinguish primary from secondary disease. Do not delay treatment." },
       { test: "U&Es: ↓ Na⁺, ↑ K⁺, ↑ urea; glucose (often low); VBG (mild metabolic acidosis)", why: "Classic biochemical fingerprint reflects aldosterone deficit (Na⁺/K⁺) + cortisol deficit (glucose). Confirms suspicion at the bedside." },
       { test: "Septic screen — infection is the commonest trigger", why: "Most adrenal crises are precipitated by intercurrent infection in known Addison's; missing it perpetuates the crisis." },
       { test: "Short Synacthen test once stable (not in acute phase)", why: "Definitive test for primary adrenal insufficiency; pointless acutely (high endogenous ACTH already + dexamethasone doesn't interfere with assay)." },

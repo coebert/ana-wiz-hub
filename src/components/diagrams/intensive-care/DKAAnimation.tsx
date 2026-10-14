@@ -73,10 +73,10 @@ const STEPS: AnimatedMechanismStep[] = [
         <strong>JBDS-IP treatment:</strong> 0.9% NaCl 1 L over 1 h, then add{" "}
         <strong>fixed-rate insulin 0.1 U/kg/h</strong>. Add KCl when K⁺ &lt; 5.5
         (40 mmol/L if K⁺ 3.5–5.5). Continue patient's long-acting insulin.
-        Switch to 10% dextrose when glucose &lt; 14.
+        Add 10% dextrose alongside saline when glucose &lt; 14.
       </>
     ),
-    callout: <>Resolution criteria: ketones &lt; 0.6, venous pH &gt; 7.30, HCO₃⁻ &gt; 18. Avoid bicarbonate (cerebral oedema, paradoxical CSF acidosis).</>,
+    callout: <>Resolution: ketones &lt; 0.6 and venous pH &gt; 7.30; bicarbonate is not a resolution marker. Avoid bicarbonate (cerebral oedema, paradoxical CSF acidosis).</>,
   },
 ];
 

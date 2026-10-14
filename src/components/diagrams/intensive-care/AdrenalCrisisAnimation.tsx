@@ -53,7 +53,7 @@ const STEPS: AnimatedMechanismStep[] = [
         Short Synacthen test once stable (not in the acute phase).
       </>
     ),
-    callout: <>Random cortisol &lt; 100 nmol/L during severe stress is diagnostic; &gt; 500 effectively rules out crisis.</>,
+    callout: <>Interpret cortisol with assay, timing, steroid exposure and clinical context; do not use one universal cutoff to delay treatment.</>,
   },
   {
     label: "Treatment",
@@ -64,10 +64,10 @@ const STEPS: AnimatedMechanismStep[] = [
         so fludrocortisone not required acutely. <strong>1 L 0.9% NaCl over
         1 h</strong>, glucose if hypoglycaemic, treat trigger
         (broad-spectrum antibiotics if septic). Mineralocorticoid (fludrocortisone)
-        added once on oral hydrocortisone &lt; 50 mg/day.
+        added below 50 mg/day hydrocortisone in primary adrenal insufficiency only; not routinely in secondary insufficiency.
       </>
     ),
-    callout: <>Surgical / sick-day rules: triple oral dose; if NBM/vomiting → IV hydrocortisone 100 mg + 200 mg/24 h until eating.</>,
+    callout: <>Surgical / sick-day rules: follow the individual replacement plan; if NBM/vomiting → IV hydrocortisone 100 mg + 200 mg/24 h until eating.</>,
   },
 ];
 
