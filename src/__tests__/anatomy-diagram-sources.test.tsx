@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import inventory from "@/data/anatomyDiagramSources.generated.json";
 import DiagramSources from "@/pages/DiagramSources";
 
@@ -27,7 +28,7 @@ describe("Anatomy diagram sources", () => {
     expect(sagittal?.sources[0]?.url).toContain("commons.wikimedia.org");
   });
   it("searches by source and shows an honest empty state", () => {
-    render(<MemoryRouter><DiagramSources /></MemoryRouter>);
+    render(<HelmetProvider><MemoryRouter><DiagramSources /></MemoryRouter></HelmetProvider>);
     const search = screen.getByLabelText("Search diagrams and sources");
     fireEvent.change(search, { target: { value: "Adamkiewicz" } });
     expect(document.querySelectorAll("[data-diagram-entry]")).toHaveLength(1);
