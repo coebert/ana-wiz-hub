@@ -194,8 +194,8 @@ export const MajorIncidentTriageDiagram = () => {
           <path d="M 530 130 L 565 130" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#arr)" opacity={phase >= 2 ? 1 : 0.3} />
 
           {/* ===== Phase 2: Triage Sort / TRTS ===== */}
-          <g {...svgNodeProps("Step 3/4: Triage Sort (TRTS) at ED")} opacity={phase === 2 ? 1 : phase > 2 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
-            <text x="575" y="35" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Triage Sort — TRTS (ED)</text>
+          <g {...svgNodeProps("Step 3/4: Legacy Triage Sort (TRTS), now replaced by NHS MITT")} opacity={phase === 2 ? 1 : phase > 2 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
+            <text x="575" y="35" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Legacy Triage Sort — TRTS (replaced by MITT)</text>
             <rect x="575" y="50" width="205" height="170" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--border))" />
             <text x="585" y="68" fontSize="10" fontWeight="600" fill="hsl(var(--foreground))">Score 0–4 each:</text>
             <text x="585" y="84" fontSize="10" fill="hsl(var(--muted-foreground))">• Respiratory rate</text>
