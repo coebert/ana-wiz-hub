@@ -560,15 +560,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/clinical/emergency-surgery": [
     {
-      "a": "The National Emergency Laparotomy Audit (NELA) is a mandatory UK audit that records risk-adjusted mortality and process measures for every emergency laparotomy. It drives the NELA care bundle: documented P-POSSUM risk, consultant surgeon and anaesthetist for high-risk cases, theatre within target time, goal-directed fluid therapy, and post-op critical care for predicted mortality ≥5 %.",
+      "a": "The National Emergency Laparotomy Audit (NELA) is a mandatory UK audit that records risk-adjusted mortality and process measures for every emergency laparotomy. It supports documented emergency-laparotomy risk assessment, consultant surgeon and anaesthetist for high-risk cases, theatre within target time, goal-directed fluid therapy, and post-op critical care for predicted mortality ≥5 %.",
       "q": "What is NELA and how does it influence emergency laparotomy care?",
     },
     {
-      "a": "Reduce induction dose (e.g. ketamine 1–2 mg/kg or etomidate 0.2 mg/kg + reduced propofol), pre-load with vasopressor (metaraminol/noradrenaline bolus), have fluid and blood drawn up, use rocuronium 1.2 mg/kg for fast onset with sugammadex available, and maintain cricoid pressure unless it impedes view. Anticipate cardiovascular collapse on induction.",
+      "a": "Choose and titrate a reduced induction dose appropriate to physiology; ketamine or etomidate may be considered, neither guarantees stability, pre-load with vasopressor (metaraminol/noradrenaline bolus), have fluid and blood drawn up, use rocuronium 1.2 mg/kg for fast onset with sugammadex available, and maintain cricoid pressure unless it impedes view. Anticipate cardiovascular collapse on induction.",
       "q": "How is a rapid sequence induction modified in the haemodynamically unstable patient?",
     },
     {
-      "a": "The 'lethal triad' — pH <7.2, temperature <34 °C, INR >1.5 — or massive transfusion >10 units. Aim is haemorrhage and contamination control only, with abdomen left open (laparostomy), planned return to theatre 24–48 h after physiological correction in critical care. Avoid prolonged primary surgery in the unstable patient.",
+      "a": "Ongoing bleeding, physiological exhaustion, coagulopathy, hypothermia or an injury pattern making definitive repair unsafe; no single laboratory threshold or transfusion count mandates it. Aim is haemorrhage and contamination control only, with abdomen left open (laparostomy), planned return to theatre 24–48 h after physiological correction in critical care. Avoid prolonged primary surgery in the unstable patient.",
       "q": "What are the indications for damage-control laparotomy?",
     },
   ],
@@ -610,7 +610,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What nerve monitoring is used in thyroid and parotid surgery, and how does it affect anaesthesia?",
     },
     {
-      "a": "For surgical tracheostomy under general anaesthesia, the existing endotracheal tube is withdrawn under direct vision to just above the stoma before tracheostomy tube insertion, with FiO₂ 1.0 throughout. At total laryngectomy, the surgeon places an armoured cuffed tube into the divided distal trachea; the anaesthetist connects a sterile circuit and confirms bilateral ventilation and ETCO₂ before removing the oral tube. Post-laryngectomy, the patient is a permanent neck-breather — there is no connection between mouth/nose and trachea, so bag-mask ventilation via the face will not work. Emergency ventilation must be via the stoma. The National Tracheostomy Safety Project (NTSP) red emergency board and colour-coded bedhead signs are mandatory. For percutaneous dilatational tracheostomy (PDT) in ICU, bronchoscopic guidance reduces paratracheal misplacement risk.",
+      "a": "For surgical tracheostomy, agree and directly observe the transition from the existing tracheal tube to the new airway. At total laryngectomy, confirm ventilation and waveform capnography through the tube in the divided distal trachea before removing the oral tube. A total laryngectomy is a permanent neck airway with no connection to the mouth or nose: give oxygen and rescue ventilation through the stoma. If the anatomy is uncertain, give oxygen to face and stoma. Follow the NTSP red algorithm: remove covers/inner cannula, test with a suction catheter, deflate any cuff and remove a tube if the patient does not improve. Leave a TEP voice prosthesis in place. Rescue with a mask over the stoma, escalating to a capnography-confirmed stomal tube. Display the appropriate emergency bedhead sign.",
       "q": "What are the considerations for tracheostomy and laryngectomy airway management?",
     },
   ],
@@ -704,25 +704,25 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the AAGBI recommendations for anaesthesia in remote locations?",
     },
     {
-      "a": "Identify at-risk patients (eGFR <60, diabetes, dehydration, NSAIDs, ACEi). Use the lowest volume of iso- or low-osmolar contrast, pre- and post-procedure IV 0.9 % saline 1 mL/kg/h for 6–12 h, withhold metformin for 48 h if eGFR <30, avoid nephrotoxins, and recheck creatinine at 48–72 h. N-acetylcysteine evidence is weak — no longer routinely recommended.",
+      "a": "Identify at-risk patients (eGFR <45 before intra-arterial first-pass contrast or <30 before IV contrast, diabetes, dehydration, NSAIDs, ACEi). Use the lowest volume of iso- or low-osmolar contrast, IV 0.9% saline 1 mL/kg/h for 3–4 h before and 4–6 h after in high-risk patients only, stop metformin at the time of contrast if eGFR <30 and restart after 48 h if renal function is stable, avoid nephrotoxins, and recheck creatinine at 48–72 h. N-acetylcysteine evidence is weak — no longer routinely recommended.",
       "q": "How is contrast-induced nephropathy prevented in IR patients?",
     },
     {
-      "a": "Speed is critical — door-to-puncture <90 min. Conscious sedation is preferred over general anaesthesia where feasible (faster, better functional outcomes in some trials), but GA is needed for agitation or airway risk. Maintain SBP 140–180 mmHg pre-recanalisation and avoid hypotension; tight glycaemic control 6–10 mmol/L; normocapnia; immediate post-procedure neuro-imaging.",
+      "a": "Both techniques are acceptable. The three randomised trials (SIESTA, ANSTROKE and GOLIATH) found no harm from general anaesthesia compared with conscious sedation, and a pooled analysis of five trials found general anaesthesia associated with higher recanalisation and 3-month functional independence — but more intra-procedural hypotension and pneumonia, with no mortality difference. The strongest determinant of outcome is haemodynamic management rather than the technique: avoid MAP below 70 mmHg and hypocapnia, maintain normoglycaemia and normothermia, and never delay reperfusion for an anaesthetic decision. Speed is critical — door-to-puncture <90 min; immediate post-procedure neuro-imaging is required.",
       "q": "What are the anaesthetic considerations for endovascular thrombectomy in acute stroke?",
     },
   ],
   "/clinical/mass-casualty-military": [
     {
-      "a": "Primary triage (Triage Sieve) at scene uses walking/breathing/pulse-or-capillary-refill to assign P1/P2/P3/Dead in <30 s. Secondary triage (Triage Sort) at casualty clearing applies the Triage Revised Trauma Score (GCS, RR, SBP). Tertiary triage occurs in hospital after initial resuscitation and continuously thereafter.",
+      "a": "Primary triage at scene now uses NARU Ten Second Triage (walking, severe bleeding, talking, penetrating torso injury) to assign P1/P2/P3/Not Breathing, with life-saving bleeding control and airway positioning done during triage. Secondary triage at the casualty clearing station uses the NHS Major Incident Triage Tool (MITT), which replaced the Triage Sieve and Triage Sort in 2023. Tertiary triage occurs in hospital after initial resuscitation and continuously thereafter.",
       "q": "What is the difference between primary, secondary and tertiary triage?",
     },
     {
-      "a": "Permissive hypotension (SBP 80–90 mmHg until haemorrhage controlled, except TBI), haemostatic resuscitation with 1:1:1 plasma:platelets:red cells, early tranexamic acid (1 g within 3 h — CRASH-2/MATTERs), avoidance of crystalloid, active rewarming, and rapid surgical haemorrhage control.",
+      "a": "Rapid source control, restrictive resuscitation with SBP 80–90 mmHg only when there is no brain injury, early protocol-based blood products, TXA, ionised-calcium monitoring and warming. European 2023 guidance specifies TXA 1 g over 10 minutes within 3 hours then 1 g over 8 hours; severe TBI requires MAP ≥80 mmHg rather than permissive hypotension. Adapt to the applicable local protocol.",
       "q": "What are the principles of damage-control resuscitation?",
     },
     {
-      "a": "Don PPE and decontaminate before any clinical contact. Treat with atropine 2 mg IV repeated every 5 min until secretions dry, pralidoxime 30 mg/kg IV (reactivates acetylcholinesterase if given before ageing), and diazepam for seizures. Support airway, ventilation, and circulation. Avoid suxamethonium — prolonged paralysis.",
+      "a": "Protect responders and prevent secondary contamination. Disrobe and use appropriate decontamination while trained, protected teams provide urgent resuscitation and antidotes. Treat respiratory secretions and circulatory toxicity with atropine, give pralidoxime and treat convulsions with benzodiazepines according to current TOXBASE/specialist advice. Pupils are not an atropine endpoint. Support ventilation and avoid suxamethonium because paralysis may be prolonged.",
       "q": "How are nerve-agent (organophosphate) casualties managed?",
     },
   ],
@@ -820,7 +820,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the steps of the WHO Surgical Safety Checklist?",
     },
     {
-      "a": "Temperature 18–25 °C (typically 20–22 °C; warmer for paediatric/burns 24–26 °C). Relative humidity 40–60 % — lower risks static electricity and patient drying, higher promotes microbial growth and condensation. Fresh air supply ≥1000 L/s. Monitor continuously via the theatre BMS.",
+      "a": "Temperature 18–25 °C (typically 20–22 °C; warmer, about 23–26 °C, for paediatric/burns cases). Relative humidity 40–60 % — lower risks static electricity and patient drying, higher promotes microbial growth and condensation. Monitor continuously via the theatre BMS.",
       "q": "What temperature and humidity should a theatre maintain?",
     },
   ],
@@ -834,11 +834,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How does intra-ocular pressure change during anaesthesia?",
     },
     {
-      "a": "Four main regional techniques are used. (1) Sub-Tenon's block: a blunt cannula is inserted through an inferonasal conjunctival incision into the sub-Tenon's space. It is the safest technique with the lowest risk of globe perforation or brainstem spread, provides good akinesia and anaesthesia, and is suitable for most intraocular surgery. (2) Peribulbar block: local anaesthetic is injected outside the muscle cone (inferotemporal, sometimes medial as well). It has a lower risk of brainstem anaesthesia and optic nerve damage than retrobulbar, but onset is slower (10–15 min) and akinesia may be less complete. (3) Retrobulbar block: local anaesthetic is injected inside the muscle cone. It produces rapid, dense akinesia but carries the highest risk of globe perforation, retrobulbar haemorrhage, optic nerve injury, and brainstem anaesthesia. It is now rarely used. (4) Topical ± intracameral: anaesthetic drops with or without injection into the anterior chamber by the surgeon. No akinesia, so patient cooperation is essential. Mainly used for cataract surgery in cooperative adults.",
+      "a": "Four main regional techniques are used. (1) Sub-Tenon's block: a blunt cannula is inserted through an inferonasal conjunctival incision into the sub-Tenon's space. It is the safest technique with the lowest risk of globe perforation or brainstem spread, provides good akinesia and anaesthesia, and is suitable for most intraocular surgery. (2) Peribulbar block: local anaesthetic is injected outside the muscle cone (inferotemporal, sometimes medial as well). It has a lower risk of brainstem anaesthesia and optic nerve damage than retrobulbar, and onset is slower (10–15 min); a 2015 Cochrane review of six trials found no difference from retrobulbar block in pain, complete akinesia or need for top-up injections. (3) Retrobulbar block: local anaesthetic is injected inside the muscle cone. It produces rapid, dense akinesia but carries the highest risk of globe perforation, retrobulbar haemorrhage, optic nerve injury, and brainstem anaesthesia. It is now rarely used. (4) Topical ± intracameral: anaesthetic drops with or without injection into the anterior chamber by the surgeon. No akinesia, so patient cooperation is essential. Mainly used for cataract surgery in cooperative adults.",
       "q": "What are the different regional techniques for ophthalmic surgery?",
     },
     {
-      "a": "Suxamethonium causes a transient rise in intra-ocular pressure of 5–10 mmHg due to extraocular muscle fasciculation and increased aqueous humour outflow resistance. In an open-globe injury, any rise in IOP can cause expulsion of vitreous humour and permanent visual loss. However, suxamethonium is not absolutely contraindicated — if the patient has a full stomach and aspiration risk is the dominant concern, the literature supports its use because coughing and vomiting (which occur with a failed or difficult intubation) cause far larger IOP rises than suxamethonium. The preferred technique for open-globe injury with a full stomach is rapid sequence induction with rocuronium 1.2 mg/kg, which provides rapid onset without raising IOP, and sugammadex is available for reversal if needed. A smooth induction, maintenance, and emergence are equally important.",
+      "a": "Suxamethonium causes a transient rise in intra-ocular pressure of 5–10 mmHg — the mechanism is uncertain (tonic contraction of the extraocular muscles and choroidal vascular engorgement are proposed). In an open-globe injury, any rise in IOP can cause expulsion of vitreous humour and permanent visual loss. However, suxamethonium is not absolutely contraindicated — if the patient has a full stomach and aspiration risk is the dominant concern, the literature supports its use because coughing and vomiting (which occur with a failed or difficult intubation) cause far larger IOP rises than suxamethonium. The preferred technique for open-globe injury with a full stomach is rapid sequence induction with rocuronium 1.2 mg/kg, which provides rapid onset without raising IOP, and sugammadex is available for reversal if needed. A smooth induction, maintenance, and emergence are equally important.",
       "q": "Why is suxamethonium relatively contraindicated in open-globe injury?",
     },
     {
@@ -846,11 +846,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is brainstem anaesthesia and how is it managed?",
     },
     {
-      "a": "Nitrous oxide diffuses into closed gas spaces 34 times faster than nitrogen leaves. Sulphur hexafluoride (SF₆) and perfluoropropane (C₃F₈) are long-acting gases injected into the vitreous cavity during retinal detachment surgery to provide internal tamponade. If N₂O is administered, it rapidly diffuses into the gas bubble, causing expansion and a catastrophic rise in intra-ocular pressure that can compromise retinal blood flow and cause infarction. N₂O must be avoided for the entire duration that the gas remains in the eye — typically 1–3 months for SF₆ and up to 3 months for C₃F₈. Patients with intraocular gas should carry a warning bracelet, and anaesthetists must specifically ask about recent vitrectomy before any anaesthetic.",
+      "a": "Nitrous oxide is about 34 times more soluble in blood than nitrogen, so it enters closed gas spaces far faster than nitrogen can leave. Sulphur hexafluoride (SF₆) and perfluoropropane (C₃F₈) are long-acting gases injected into the vitreous cavity during retinal detachment surgery to provide internal tamponade. If N₂O is administered, it rapidly diffuses into the gas bubble, causing expansion and a catastrophic rise in intra-ocular pressure that can compromise retinal blood flow and cause infarction. N₂O must be avoided for the entire duration that the gas remains in the eye — about 2 weeks for SF₆ and 6–8 weeks for C₃F₈; check the surgeon's instructions and the wristband date. Patients with intraocular gas should carry a warning bracelet, and anaesthetists must specifically ask about recent vitrectomy before any anaesthetic.",
       "q": "Why must N₂O be avoided after intraocular gas injection?",
     },
     {
-      "a": "Paediatric strabismus surgery requires a secured but unobtrusive airway, anticipation of the oculocardiac reflex, and aggressive PONV prophylaxis. A laryngeal mask airway (LMA) is standard for most children; a reinforced/flexible LMA allows the surgeon to drape and rotate the head without kinking. Maintenance with TIVA (propofol ± remifentanil) is increasingly favoured because it produces markedly lower PONV rates than volatile-based anaesthesia, smoother emergence, and ideal conditions for shared-airway work. Analgesia is provided with paracetamol, NSAIDs, and topical local anaesthetic drops or sub-Tenon's block by the surgeon — avoid long-acting opioids which worsen PONV. Dual antiemetic prophylaxis (ondansetron + dexamethasone) is mandatory because baseline PONV rates approach 60–80% without prophylaxis. Suxamethonium should be avoided because it raises IOP, causes extraocular muscle contracture that confuses surgical testing, and carries a historical association with malignant hyperthermia in this population.",
+      "a": "Paediatric strabismus surgery requires a secured but unobtrusive airway, anticipation of the oculocardiac reflex, and aggressive PONV prophylaxis. A laryngeal mask airway (LMA) is standard for most children; a reinforced/flexible LMA allows the surgeon to drape and rotate the head without kinking. Maintenance with TIVA (propofol ± remifentanil) is increasingly favoured because it produces markedly lower PONV rates than volatile-based anaesthesia, smoother emergence, and ideal conditions for shared-airway work. Analgesia is provided with paracetamol, NSAIDs, and topical local anaesthetic drops or sub-Tenon's block by the surgeon — avoid long-acting opioids which worsen PONV. Dual antiemetic prophylaxis (ondansetron + dexamethasone) is recommended because about two-thirds of children vomit without prophylaxis (65–68% in pooled placebo groups). Suxamethonium should be avoided because it raises IOP, causes extraocular muscle contracture that confuses surgical testing, and carries a historical association with malignant hyperthermia in this population.",
       "q": "What is the best anaesthetic technique for paediatric strabismus surgery?",
     },
     {
@@ -858,11 +858,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How do IOP-lowering drugs used in ophthalmic surgery interact with anaesthesia?",
     },
     {
-      "a": "Ophthalmic surgery creates several unique airway challenges. The surgeon works at the head, so the airway must be secured but unobtrusive — south-facing oral RAE tubes, reinforced LMAs, and nasal intubation are commonly used. Prone positioning for posterior segment surgery requires meticulous airway security and pressure-area protection. A throat pack prevents blood and debris entering the larynx and stomach but must be documented and removed — a retained pack is a never event. In paediatric strabismus, a reinforced LMA is standard because it allows head turning without dislodgement. For laser or microlaryngoscopy work, small-bore tubes or tubeless techniques (jet ventilation, THRIVE) are used. Shared-airway discipline is essential: the anaesthetist and surgeon must agree on tube type, ventilation mode, and an emergency plan for accidental extubation before starting.",
+      "a": "Ophthalmic surgery creates several unique airway challenges. The surgeon works at the head, so the airway must be secured but unobtrusive — south-facing oral RAE tubes, reinforced LMAs, and nasal intubation are commonly used. Prone positioning for posterior segment surgery requires meticulous airway security and pressure-area protection. A throat pack prevents blood and debris entering the larynx and stomach but must be documented and removed — a retained pack is a serious reportable incident. In paediatric strabismus, a reinforced LMA is standard because it allows head turning without dislodgement. Shared-airway discipline is essential: the anaesthetist and surgeon must agree on tube type, ventilation mode, and an emergency plan for accidental extubation before starting.",
       "q": "What are the specific airway considerations for ophthalmic surgery?",
     },
     {
-      "a": "Vitreoretinal surgery involves the posterior segment and often requires controlled hypotension to reduce bleeding, particularly during scleral buckling or membrane peeling. The patient may be prone, requiring careful airway security and pressure-point protection. Intraocular gas (SF₆ or C₃F₈) may be injected — N₂O is absolutely contraindicated for 1–3 months postoperatively because it expands the gas bubble and raises IOP catastrophically. General anaesthesia is often chosen because the surgery is long and delicate and needs a completely still patient, though many vitrectomies are now done under sub-Tenon's or peribulbar block. Under GA, aim for a deep, smooth plane with full immobility — remifentanil-based TIVA or volatile with remifentanil works well, and modest controlled hypotension (e.g. MAP 60–70 mmHg, or within 20–30% of baseline in hypertensive patients) reduces bleeding. N₂O is absolutely contraindicated while gas remains in the eye: about 2 weeks for air, 2–4 weeks for SF₆ and up to 8–12 weeks for C₃F₈; the patient should wear a warning wristband. Scleral buckling involves traction on the extraocular muscles and commonly triggers the oculocardiac reflex — warn the surgeon to release traction and give atropine or glycopyrronium if bradycardia persists. Buckling is more painful than vitrectomy, so plan regular analgesia and consider a block. Postoperative positioning (often face-down for several days) is critical for gas tamponade; avoid pressure on the eye during recovery. PONV is common after vitrectomy; use TIVA and multimodal antiemetics.",
+      "a": "Vitreoretinal surgery involves the posterior segment and may use modest blood-pressure control to limit bleeding. The patient may be prone, requiring careful airway security and pressure-point protection. Intraocular gas (SF₆ or C₃F₈) may be injected. General anaesthesia is often chosen because the surgery is long and delicate and needs a completely still patient, though many vitrectomies are now done under sub-Tenon's or peribulbar block. Under GA, aim for a deep, smooth plane with full immobility — remifentanil-based TIVA or volatile with remifentanil works well, and modest controlled hypotension (e.g. MAP 60–70 mmHg, or within 20–30% of baseline in hypertensive patients) reduces bleeding. N₂O is absolutely contraindicated while gas remains in the eye: about 5–7 days for air, about 2 weeks for SF₆ and 6–8 weeks for C₃F₈; the patient should wear a warning wristband. Scleral buckling involves traction on the extraocular muscles and commonly triggers the oculocardiac reflex — warn the surgeon to release traction and give atropine or glycopyrronium if bradycardia persists. Buckling is more painful than vitrectomy, so plan regular analgesia and consider a block. Postoperative positioning (often face-down for several days) is critical for gas tamponade; avoid pressure on the eye during recovery. PONV is common after vitrectomy; use TIVA and multimodal antiemetics.",
       "q": "What are the anaesthetic considerations for vitreoretinal surgery?",
     },
   ],
@@ -918,7 +918,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the correct ETT size for a child?",
     },
     {
-      "a": "WETFLAG is a paediatric emergency checklist used to rapidly estimate weight and calculate critical drug doses and equipment sizes: W (Weight = (age + 4) × 2 kg), E (Energy for defibrillation = 4 J/kg), T (Tube size = age/4 + 4 mm uncuffed), F (Fluids = 10–20 mL/kg bolus), L (Length of ETT at lips = age/2 + 12 cm), A (Adrenaline = 10 µg/kg IV/IO for cardiac arrest; 0.1 µg/kg/min for infusion), G (Glucose = 2 mL/kg of 10% dextrose for hypoglycaemia). This ensures standardised, rapid preparation during paediatric emergencies and arrests.",
+      "a": "WETFLAG is a paediatric emergency checklist used to rapidly estimate weight and calculate critical drug doses and equipment sizes: W (Weight = (age + 4) × 2 kg), E (Energy for defibrillation = 4 J/kg), T (Tube size = age/4 + 4 mm uncuffed), F (Fluids = 10 mL/kg initial crystalloid bolus for children needing resuscitation (NICE NG29; term neonates and specialist pathways differ)), L (Length of ETT at lips = age/2 + 12 cm), A (Adrenaline = 10 µg/kg IV/IO for cardiac arrest; 0.1 µg/kg/min for infusion), G (Glucose = 2 mL/kg of 10% dextrose for hypoglycaemia). This ensures standardised, rapid preparation during paediatric emergencies and arrests.",
       "q": "What is the WETFLAG emergency drug dose framework?",
     },
     {
@@ -934,7 +934,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is propofol infusion syndrome (PRIS) and how do you prevent it?",
     },
     {
-      "a": "Pyloric stenosis presents with projectile vomiting leading to a hypochloraemic, hypokalaemic metabolic alkalosis. It is a MEDICAL emergency, not a surgical one — the alkalosis must be corrected before theatre because post-operative apnoea is common if HCO₃ remains ≥28 mmol/L. Resuscitate with 0.9% saline 10–20 ml/kg boluses to restore intravascular volume, then 0.45% saline + 5% dextrose with 20 mmol/L KCl at 1.5 × maintenance. Targets before surgery: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ <28, and adequate urine output. In theatre, use a modified RSI (full stomach) with ketamine or propofol and rocuronium, maintain normothermia, and monitor glucose closely.",
+      "a": "Pyloric stenosis presents with projectile vomiting leading to a hypochloraemic, hypokalaemic metabolic alkalosis. It is a MEDICAL emergency, not a surgical one — the alkalosis must be corrected before theatre because post-operative apnoea is common if HCO₃ remains ≥28 mmol/L. Resuscitate with 0.9% saline 10 ml/kg boluses to restore intravascular volume, then 0.45% saline + 5% dextrose with 20 mmol/L KCl at 1.5 × maintenance. Targets before surgery: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ <28, and adequate urine output. In theatre, use a modified RSI (full stomach) with ketamine or propofol and rocuronium, maintain normothermia, and monitor glucose closely.",
       "q": "How do you anaesthetise a child with pyloric stenosis?",
     },
     {
@@ -942,7 +942,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is a caudal block and when is it used in children?",
     },
     {
-      "a": "For maintenance, use the Holliday-Segar 4-2-1 rule: 4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg, and 1 ml/kg/hr for each kg thereafter. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10–20 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
+      "a": "For maintenance, use the Holliday-Segar 4-2-1 rule: 4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg, and 1 ml/kg/hr for each kg thereafter. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
       "q": "What fluids should be used for paediatric maintenance and resuscitation?",
     },
     {
@@ -1162,8 +1162,8 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/clinical/transfer-medicine": [
     {
-      "a": "Category 1 — life- or limb-threatening (requires consultant anaesthetist and ICU nurse). Category 2 — urgent (specialty input needed but not immediate). Category 3 — non-urgent (repatriation). Category 4 — return to local hospital. Staffing, monitoring and vehicle choice escalate with category.",
-      "q": "What are the AAGBI categories of inter-hospital transfer?",
+      "a": "AAGBI 2009 grades the patient, not the transfer: critical-care dependency Levels 0–3. Level 2 and 3 patients (organ support, advanced respiratory support) must be escorted by competent, trained and experienced personnel — usually a doctor and a nurse or paramedic. The decision to transfer is made consultant-to-consultant; a consultant is not required to travel on every transfer. Staffing, monitoring and vehicle choice escalate with dependency.",
+      "q": "How does AAGBI guidance grade inter-hospital transfers?",
     },
     {
       "a": "ECG, SpO₂, NIBP (every 5 min) or invasive arterial pressure, EtCO₂ if intubated, temperature, and infusion pump status. A means of measuring CVP if cardiovascularly unstable. All monitors must be battery-powered with ≥2× expected transfer duration and a printed transfer chart kept.",
@@ -1196,7 +1196,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is permissive hypotension and when is it contraindicated?",
     },
     {
-      "a": "Give TXA 1 g IV over 10 minutes as early as possible, and always within 3 hours of injury — the CRASH-2 mortality benefit is strongly time-dependent, and treatment started beyond 3 hours confers no benefit and may cause harm. The classic CRASH-2/CRASH-3 regimen adds a second 1 g by infusion over 8 hours, but this maintenance dose is no longer treated as an automatic requirement: the survival benefit in both trials was driven by the early loading dose, and many UK major-haemorrhage protocols now give the second gram as a further short bolus, or omit it once bleeding is controlled, continuing antifibrinolytic therapy only where haemorrhage is ongoing or viscoelastic testing shows persistent hyperfibrinolysis. Follow your local major haemorrhage protocol. TXA inhibits fibrinolysis by blocking plasminogen activation and should be given to all trauma patients with significant bleeding or at risk of it, unless clearly contraindicated.",
+      "a": "Give TXA 1 g IV over 10 minutes as early as possible, and always within 3 hours of injury — the CRASH-2 mortality benefit is strongly time-dependent, and treatment started beyond 3 hours confers no benefit and may cause harm. The CRASH-2 regimen adds a second 1 g by infusion over 8 hours; neither CRASH-2 nor CRASH-3 tested the loading dose separately from the infusion, so give the full regimen unless your local major haemorrhage protocol specifies otherwise. CRASH-3 (isolated head injury) showed no significant overall reduction in head-injury death; benefit was confined to mild-to-moderate injury treated early. Follow your local major haemorrhage protocol. TXA inhibits fibrinolysis by blocking plasminogen activation and should be given to all trauma patients with significant bleeding or at risk of it, unless clearly contraindicated.",
       "q": "When should tranexamic acid (TXA) be given in trauma?",
     },
     {
@@ -1224,7 +1224,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What fluid should be used for resuscitation in major trauma?",
     },
     {
-      "a": "Follow a stepwise approach: (1) direct pressure on external bleeding; (2) a windlass tourniquet for catastrophic limb bleeding — applied early, tightened until bleeding stops, time recorded; (3) haemostatic or plain gauze wound packing for junctional wounds (groin, axilla, neck) where a tourniquet cannot go; (4) a pelvic binder applied at the greater trochanters for suspected unstable pelvic fracture — it reduces pelvic volume and tamponades venous bleeding; (5) rapid transfer to definitive care. In hospital, options include interventional radiology embolisation, damage control surgery (packing, shunting, clamping), and REBOA (resuscitative endovascular balloon occlusion of the aorta) for torso haemorrhage below the diaphragm — though the UK-REBOA trial found higher 90-day mortality with ED REBOA (54% vs 42%; 86% probability of harm), so it is not supported outside research in UK practice.",
+      "a": "Follow a stepwise approach: (1) direct pressure on external bleeding; (2) a tourniquet for life-threatening open limb bleeding — applied early, time recorded, and converted or moved closer to the wound within 2 hours where possible; (3) haemostatic or plain gauze wound packing for junctional wounds (groin, axilla, neck) where a tourniquet cannot go; (4) a pelvic binder applied at the greater trochanters for suspected unstable pelvic fracture — it reduces pelvic volume and tamponades venous bleeding; (5) rapid transfer to definitive care. In hospital, options include interventional radiology embolisation, damage control surgery (packing, shunting, clamping), and REBOA (resuscitative endovascular balloon occlusion of the aorta) for torso haemorrhage below the diaphragm — though the UK-REBOA trial found higher 90-day mortality with ED REBOA (54% vs 42%; 86% probability of harm), so it is not supported outside research in UK practice.",
       "q": "How is haemorrhage controlled in major trauma?",
     },
   ],
@@ -1314,7 +1314,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/abdominal-compartment-syndrome": [
     {
-      "a": "Bladder pressure with 25 mL saline at end-expiration, supine, transduced at the mid-axillary line; intra-abdominal hypertension ≥12 mmHg, ACS = sustained IAP >20 mmHg with new organ dysfunction (WSACS 2013).",
+      "a": "Via the bladder with no more than 25 mL sterile saline, at end-expiration, supine, with abdominal muscle contractions absent and the transducer zeroed at the mid-axillary line. IAH is a sustained or repeated IAP ≥12 mmHg; ACS is a sustained IAP >20 mmHg with new organ dysfunction or failure (WSACS 2013).",
       "q": "How is intra-abdominal pressure measured and what defines ACS?",
     },
     {
@@ -1322,7 +1322,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the physiological consequences of raised intra-abdominal pressure?",
     },
     {
-      "a": "Nasogastric and rectal decompression, neuromuscular blockade, prokinetics, percutaneous drainage of ascites, deep sedation, and conservative fluid strategy; surgery is reserved for refractory ACS with organ failure.",
+      "a": "WSACS 2013 suggests optimal analgesia and sedation, brief trials of neuromuscular blockade, attention to body position, nasogastric or rectal decompression when the bowel is dilated, neostigmine for refractory colonic ileus, percutaneous drainage of obvious intraperitoneal fluid, and avoiding a positive fluid balance after initial resuscitation. Decompressive laparotomy is recommended for overt ACS.",
       "q": "What are the non-surgical options before decompressive laparotomy?",
     },
   ],
@@ -1502,7 +1502,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the 4 Hs and 4 Ts and how do I treat each at the bedside?",
     },
     {
-      "a": "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. UK and ERC guidance now permit vector change or DSED for refractory VF after the third shock where local protocols allow.",
+      "a": "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. The ERC 2021 guidelines predate DOSE-VF; subsequent ILCOR (2023) treatment recommendations suggest vector change or DSED may be considered for refractory VF — follow local protocols, and note DOSE-VF was a single-system Canadian trial stopped early by COVID-19.",
       "q": "When should defibrillation energy be escalated and what's the role of dual sequential defibrillation?",
     },
     {
@@ -1510,7 +1510,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Does adrenaline actually improve outcome — what did PARAMEDIC2 show?",
     },
     {
-      "a": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) demonstrated equivalence of 33 °C and 36 °C — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with active normothermia (≤ 37.5 °C, fever treated aggressively) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Contemporary ERC/ESICM 2021 guidance therefore recommends a constant temperature 32–36 °C, with active normothermia ≤ 37.7 °C now the most common pragmatic default; fever (> 37.7 °C) must be prevented for at least 72 hours regardless of strategy. Rewarming should be slow (0.25–0.5 °C / h) when starting from 33 °C.",
+      "a": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) demonstrated equivalence of 33 °C and 36 °C — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with active normothermia (≤ 37.5 °C, fever treated aggressively) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. The 2022 ERC–ESICM temperature-control update therefore recommends continuous core-temperature monitoring and active prevention of fever (> 37.7 °C) for at least 72 hours, and states there is insufficient evidence to recommend for or against cooling to 32–36 °C in subpopulations. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
       "q": "Should I cool post-arrest patients to 33 °C or aim for active normothermia? What changed after TTM2?",
     },
     {
@@ -1518,11 +1518,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Who is an appropriate candidate for eCPR and what does ARREST, Prague OHCA and INCEPTION tell us?",
     },
     {
-      "a": "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response). ERC/ESICM 2021 require at least two concordant poor-outcome markers from independent modalities before predicting poor outcome: (1) bilaterally absent pupillary AND corneal reflexes (or NPi < 2 on automated pupillometry); (2) bilaterally absent N20 cortical SSEPs; (3) NSE > 60 µg/L at 48 h and/or 72 h, or a rising trend; (4) highly malignant EEG (suppression < 10 µV, or unreactive burst-suppression); (5) diffuse anoxic injury on CT (loss of grey-white differentiation, GWR < 1.10) or MRI (widespread restricted diffusion). Status myoclonus alone is not sufficient. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
+      "a": "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response) at ≥ 72 h. ERC/ESICM 2021 consider poor outcome likely when two or more of these are present: (1) bilaterally absent pupillary and corneal reflexes at ≥ 72 h (quantitative pupillometry may be used); (2) bilaterally absent N20 SSEP waves at ≥ 24 h; (3) highly malignant EEG (suppressed background or burst-suppression) at > 24 h; (4) NSE > 60 µg/L at 48 h and/or 72 h; (5) status myoclonus ≤ 72 h; (6) diffuse and extensive anoxic injury on CT or MRI. No single marker is sufficient on its own. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
       "q": "What is multimodal neuroprognostication and when do I perform it?",
     },
     {
-      "a": "Intubate if not already (or replace a supraglottic with a tracheal tube once stable). Set tidal volume 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, FiO₂ titrated to SpO₂ 94–98% (avoid hyperoxia — observational data link PaO₂ > 40 kPa to higher mortality; the EXACT pilot RCT supports normoxic targeting). Set minute ventilation to PaCO₂ 4.5–6.0 kPa (avoid hypocapnia which causes cerebral vasoconstriction and is independently associated with worse neurological outcome — TAME trial 2023 found no benefit from mild hypercapnia 6.7–7.3 kPa over normocapnia). Use continuous waveform capnography. Sedate with short-acting agents (propofol + remifentanil or fentanyl ± dexmedetomidine) to facilitate later neuroprognostication. Avoid prolonged NMBA except briefly for shivering not controlled by sedation and counter-warming.",
+      "a": "Intubate if not already (or replace a supraglottic with a tracheal tube once stable). Set tidal volume 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, FiO₂ titrated to SpO₂ 94–98% (avoid hyperoxia — observational data link PaO₂ > 40 kPa to higher mortality; but the EXACT RCT found lower survival when pre-hospital SpO₂ was targeted at 90–94%, so avoid aiming below 94%). Set minute ventilation to PaCO₂ 4.5–6.0 kPa (avoid hypocapnia which causes cerebral vasoconstriction and is independently associated with worse neurological outcome — TAME trial 2023 found no benefit from mild hypercapnia 6.7–7.3 kPa over normocapnia). Use continuous waveform capnography. Sedate with short-acting agents (propofol + remifentanil or fentanyl ± dexmedetomidine) to facilitate later neuroprognostication. Avoid prolonged NMBA except briefly for shivering not controlled by sedation and counter-warming.",
       "q": "How should I manage the airway and ventilator in the first 6 hours post-ROSC?",
     },
   ],
@@ -1614,7 +1614,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/icu-endocrine-emergencies": [
     {
-      "a": "0.9% saline 500–1000 mL bolus, fixed-rate insulin 0.1 U/kg/h, replace K⁺ once <5.5 mmol/L (do not start insulin if K⁺ <3.3 mmol/L), and check ketones, glucose and bicarbonate hourly (JBDS 2021).",
+      "a": "0.9% saline 500–1000 mL bolus, fixed-rate insulin 0.1 U/kg/h, replace K⁺ once <5.5 mmol/L (urgent senior review if K⁺ <3.5 mmol/L), and check ketones, glucose and bicarbonate hourly (JBDS 2023).",
       "q": "How is diabetic ketoacidosis managed in the first hour?",
     },
     {
@@ -1622,7 +1622,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What distinguishes HHS from DKA and how does management differ?",
     },
     {
-      "a": "IV levothyroxine 200–400 µg load then 50–100 µg daily (or T3 if available), IV hydrocortisone 100 mg 8-hourly until adrenal insufficiency excluded, passive rewarming, treat precipitants and avoid sedatives.",
+      "a": "IV levothyroxine initially (ATA: 200–400 µg load, reduced for age, size and cardiac risk), subsequent weight-based replacement, preceded by IV glucocorticoid cover, passive rewarming, treat precipitants and avoid sedatives.",
       "q": "How is myxoedema coma treated?",
     },
   ],
@@ -1770,7 +1770,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How are high-risk surgical patients identified preoperatively?",
     },
     {
-      "a": "Meta-analyses (OPTIMISE, Cochrane 2013) show GDT with SV optimisation reduces complications and length of stay in moderate–high-risk surgery but no consistent mortality benefit; effect is greatest where baseline care is poor.",
+      "a": "Older meta-analyses suggested fewer complications, but the OPTIMISE trial itself was not significant (36.6% vs 43.4%, P=0.07) and the larger OPTIMISE II (2024, n=2,498) found no reduction in postoperative infection and more early arrhythmias with the inotrope protocol. Routine GDT is therefore not proven in modern enhanced-recovery care.",
       "q": "What is the evidence for goal-directed haemodynamic therapy?",
     },
     {
@@ -3206,11 +3206,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physics/pressure-measurement": [
     {
-      "a": "Natural frequency f₀ = (1/2π) × √(πd²E / 4ρLV) — depends on tubing diameter, stiffness, length and fluid density. The pulse pressure waveform contains harmonics up to ~10× heart rate (~25 Hz at HR 150). To reproduce these without resonance distortion, f₀ should exceed 40 Hz. Short, stiff, wide-bore, bubble-free tubing maximises f₀.",
-      "q": "What is the natural frequency of an arterial line and why must it exceed 40 Hz?",
+      "a": "The catheter–tubing–transducer system has a dynamic response. Natural frequency and damping must be assessed together against the frequencies present in the pulse. A single 40 Hz threshold does not establish accuracy. Use an approved pressure-monitoring kit, inspect the waveform and assess its fast-flush response.",
+      "q": "How do natural frequency and damping affect an arterial waveform?",
     },
     {
-      "a": "Damping coefficient 0.6–0.7 is optimal — fast response without overshoot. Measured by the fast-flush (square-wave) test: count oscillations after release. ≥2 oscillations = under-damped (overshoots, overestimates SBP); ≤1 oscillation = over-damped (underestimates SBP). MAP is reliable in both cases.",
+      "a": "A fast-flush perturbation reveals the return and decaying oscillations. Ringing suggests underdamping; a sluggish response suggests overdamping. Oscillation spacing and successive amplitudes allow a more complete assessment than a fixed count alone. Underdamping exaggerates pulse pressure; overdamping blunts it. MAP is often less affected, but is not guaranteed reliable.",
       "q": "What is optimal damping and how is it measured?",
     },
     {
@@ -3262,7 +3262,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/physics/temperature-measurement": [
     {
-      "a": "Thermistor — semiconductor whose resistance falls exponentially with temperature. Highly sensitive, small, used in PA catheters and oesophageal probes; non-linear so needs linearising circuit. Thermocouple — two dissimilar metals; voltage proportional to temperature difference (Seebeck effect). Linear, robust, requires a reference junction; used in some skin probes.",
+      "a": "A thermistor measures temperature through a steep, nonlinear resistance change. A thermocouple produces an EMF related to the temperature difference between measuring and reference junctions, requiring reference compensation and calibration. Sensitivity, accuracy and response time differ; probe construction and placement matter as well as sensor type.",
       "q": "Compare thermistors and thermocouples for clinical use.",
     },
     {
@@ -4555,7 +4555,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The National Emergency Laparotomy Audit (NELA) is a mandatory UK audit that records risk-adjusted mortality and process measures for every emergency laparotomy. It drives the NELA care bundle: documented P-POSSUM risk, consultant surgeon and anaesthetist for high-risk cases, theatre within target time, goal-directed fluid therapy, and post-op critical care for predicted mortality ≥5 %.",
+          "text": "The National Emergency Laparotomy Audit (NELA) is a mandatory UK audit that records risk-adjusted mortality and process measures for every emergency laparotomy. It supports documented emergency-laparotomy risk assessment, consultant surgeon and anaesthetist for high-risk cases, theatre within target time, goal-directed fluid therapy, and post-op critical care for predicted mortality ≥5 %.",
         },
         "name": "What is NELA and how does it influence emergency laparotomy care?",
       },
@@ -4563,7 +4563,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Reduce induction dose (e.g. ketamine 1–2 mg/kg or etomidate 0.2 mg/kg + reduced propofol), pre-load with vasopressor (metaraminol/noradrenaline bolus), have fluid and blood drawn up, use rocuronium 1.2 mg/kg for fast onset with sugammadex available, and maintain cricoid pressure unless it impedes view. Anticipate cardiovascular collapse on induction.",
+          "text": "Choose and titrate a reduced induction dose appropriate to physiology; ketamine or etomidate may be considered, neither guarantees stability, pre-load with vasopressor (metaraminol/noradrenaline bolus), have fluid and blood drawn up, use rocuronium 1.2 mg/kg for fast onset with sugammadex available, and maintain cricoid pressure unless it impedes view. Anticipate cardiovascular collapse on induction.",
         },
         "name": "How is a rapid sequence induction modified in the haemodynamically unstable patient?",
       },
@@ -4571,7 +4571,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The 'lethal triad' — pH <7.2, temperature <34 °C, INR >1.5 — or massive transfusion >10 units. Aim is haemorrhage and contamination control only, with abdomen left open (laparostomy), planned return to theatre 24–48 h after physiological correction in critical care. Avoid prolonged primary surgery in the unstable patient.",
+          "text": "Ongoing bleeding, physiological exhaustion, coagulopathy, hypothermia or an injury pattern making definitive repair unsafe; no single laboratory threshold or transfusion count mandates it. Aim is haemorrhage and contamination control only, with abdomen left open (laparostomy), planned return to theatre 24–48 h after physiological correction in critical care. Avoid prolonged primary surgery in the unstable patient.",
         },
         "name": "What are the indications for damage-control laparotomy?",
       },
@@ -4657,7 +4657,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For surgical tracheostomy under general anaesthesia, the existing endotracheal tube is withdrawn under direct vision to just above the stoma before tracheostomy tube insertion, with FiO₂ 1.0 throughout. At total laryngectomy, the surgeon places an armoured cuffed tube into the divided distal trachea; the anaesthetist connects a sterile circuit and confirms bilateral ventilation and ETCO₂ before removing the oral tube. Post-laryngectomy, the patient is a permanent neck-breather — there is no connection between mouth/nose and trachea, so bag-mask ventilation via the face will not work. Emergency ventilation must be via the stoma. The National Tracheostomy Safety Project (NTSP) red emergency board and colour-coded bedhead signs are mandatory. For percutaneous dilatational tracheostomy (PDT) in ICU, bronchoscopic guidance reduces paratracheal misplacement risk.",
+          "text": "For surgical tracheostomy, agree and directly observe the transition from the existing tracheal tube to the new airway. At total laryngectomy, confirm ventilation and waveform capnography through the tube in the divided distal trachea before removing the oral tube. A total laryngectomy is a permanent neck airway with no connection to the mouth or nose: give oxygen and rescue ventilation through the stoma. If the anatomy is uncertain, give oxygen to face and stoma. Follow the NTSP red algorithm: remove covers/inner cannula, test with a suction catheter, deflate any cuff and remove a tube if the patient does not improve. Leave a TEP voice prosthesis in place. Rescue with a mask over the stoma, escalating to a capnography-confirmed stomal tube. Display the appropriate emergency bedhead sign.",
         },
         "name": "What are the considerations for tracheostomy and laryngectomy airway management?",
       },
@@ -4851,7 +4851,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Identify at-risk patients (eGFR <60, diabetes, dehydration, NSAIDs, ACEi). Use the lowest volume of iso- or low-osmolar contrast, pre- and post-procedure IV 0.9 % saline 1 mL/kg/h for 6–12 h, withhold metformin for 48 h if eGFR <30, avoid nephrotoxins, and recheck creatinine at 48–72 h. N-acetylcysteine evidence is weak — no longer routinely recommended.",
+          "text": "Identify at-risk patients (eGFR <45 before intra-arterial first-pass contrast or <30 before IV contrast, diabetes, dehydration, NSAIDs, ACEi). Use the lowest volume of iso- or low-osmolar contrast, IV 0.9% saline 1 mL/kg/h for 3–4 h before and 4–6 h after in high-risk patients only, stop metformin at the time of contrast if eGFR <30 and restart after 48 h if renal function is stable, avoid nephrotoxins, and recheck creatinine at 48–72 h. N-acetylcysteine evidence is weak — no longer routinely recommended.",
         },
         "name": "How is contrast-induced nephropathy prevented in IR patients?",
       },
@@ -4859,7 +4859,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Speed is critical — door-to-puncture <90 min. Conscious sedation is preferred over general anaesthesia where feasible (faster, better functional outcomes in some trials), but GA is needed for agitation or airway risk. Maintain SBP 140–180 mmHg pre-recanalisation and avoid hypotension; tight glycaemic control 6–10 mmol/L; normocapnia; immediate post-procedure neuro-imaging.",
+          "text": "Both techniques are acceptable. The three randomised trials (SIESTA, ANSTROKE and GOLIATH) found no harm from general anaesthesia compared with conscious sedation, and a pooled analysis of five trials found general anaesthesia associated with higher recanalisation and 3-month functional independence — but more intra-procedural hypotension and pneumonia, with no mortality difference. The strongest determinant of outcome is haemodynamic management rather than the technique: avoid MAP below 70 mmHg and hypocapnia, maintain normoglycaemia and normothermia, and never delay reperfusion for an anaesthetic decision. Speed is critical — door-to-puncture <90 min; immediate post-procedure neuro-imaging is required.",
         },
         "name": "What are the anaesthetic considerations for endovascular thrombectomy in acute stroke?",
       },
@@ -4873,7 +4873,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Primary triage (Triage Sieve) at scene uses walking/breathing/pulse-or-capillary-refill to assign P1/P2/P3/Dead in <30 s. Secondary triage (Triage Sort) at casualty clearing applies the Triage Revised Trauma Score (GCS, RR, SBP). Tertiary triage occurs in hospital after initial resuscitation and continuously thereafter.",
+          "text": "Primary triage at scene now uses NARU Ten Second Triage (walking, severe bleeding, talking, penetrating torso injury) to assign P1/P2/P3/Not Breathing, with life-saving bleeding control and airway positioning done during triage. Secondary triage at the casualty clearing station uses the NHS Major Incident Triage Tool (MITT), which replaced the Triage Sieve and Triage Sort in 2023. Tertiary triage occurs in hospital after initial resuscitation and continuously thereafter.",
         },
         "name": "What is the difference between primary, secondary and tertiary triage?",
       },
@@ -4881,7 +4881,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Permissive hypotension (SBP 80–90 mmHg until haemorrhage controlled, except TBI), haemostatic resuscitation with 1:1:1 plasma:platelets:red cells, early tranexamic acid (1 g within 3 h — CRASH-2/MATTERs), avoidance of crystalloid, active rewarming, and rapid surgical haemorrhage control.",
+          "text": "Rapid source control, restrictive resuscitation with SBP 80–90 mmHg only when there is no brain injury, early protocol-based blood products, TXA, ionised-calcium monitoring and warming. European 2023 guidance specifies TXA 1 g over 10 minutes within 3 hours then 1 g over 8 hours; severe TBI requires MAP ≥80 mmHg rather than permissive hypotension. Adapt to the applicable local protocol.",
         },
         "name": "What are the principles of damage-control resuscitation?",
       },
@@ -4889,7 +4889,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Don PPE and decontaminate before any clinical contact. Treat with atropine 2 mg IV repeated every 5 min until secretions dry, pralidoxime 30 mg/kg IV (reactivates acetylcholinesterase if given before ageing), and diazepam for seizures. Support airway, ventilation, and circulation. Avoid suxamethonium — prolonged paralysis.",
+          "text": "Protect responders and prevent secondary contamination. Disrobe and use appropriate decontamination while trained, protected teams provide urgent resuscitation and antidotes. Treat respiratory secretions and circulatory toxicity with atropine, give pralidoxime and treat convulsions with benzodiazepines according to current TOXBASE/specialist advice. Pupils are not an atropine endpoint. Support ventilation and avoid suxamethonium because paralysis may be prolonged.",
         },
         "name": "How are nerve-agent (organophosphate) casualties managed?",
       },
@@ -5091,7 +5091,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Temperature 18–25 °C (typically 20–22 °C; warmer for paediatric/burns 24–26 °C). Relative humidity 40–60 % — lower risks static electricity and patient drying, higher promotes microbial growth and condensation. Fresh air supply ≥1000 L/s. Monitor continuously via the theatre BMS.",
+          "text": "Temperature 18–25 °C (typically 20–22 °C; warmer, about 23–26 °C, for paediatric/burns cases). Relative humidity 40–60 % — lower risks static electricity and patient drying, higher promotes microbial growth and condensation. Monitor continuously via the theatre BMS.",
         },
         "name": "What temperature and humidity should a theatre maintain?",
       },
@@ -5121,7 +5121,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Four main regional techniques are used. (1) Sub-Tenon's block: a blunt cannula is inserted through an inferonasal conjunctival incision into the sub-Tenon's space. It is the safest technique with the lowest risk of globe perforation or brainstem spread, provides good akinesia and anaesthesia, and is suitable for most intraocular surgery. (2) Peribulbar block: local anaesthetic is injected outside the muscle cone (inferotemporal, sometimes medial as well). It has a lower risk of brainstem anaesthesia and optic nerve damage than retrobulbar, but onset is slower (10–15 min) and akinesia may be less complete. (3) Retrobulbar block: local anaesthetic is injected inside the muscle cone. It produces rapid, dense akinesia but carries the highest risk of globe perforation, retrobulbar haemorrhage, optic nerve injury, and brainstem anaesthesia. It is now rarely used. (4) Topical ± intracameral: anaesthetic drops with or without injection into the anterior chamber by the surgeon. No akinesia, so patient cooperation is essential. Mainly used for cataract surgery in cooperative adults.",
+          "text": "Four main regional techniques are used. (1) Sub-Tenon's block: a blunt cannula is inserted through an inferonasal conjunctival incision into the sub-Tenon's space. It is the safest technique with the lowest risk of globe perforation or brainstem spread, provides good akinesia and anaesthesia, and is suitable for most intraocular surgery. (2) Peribulbar block: local anaesthetic is injected outside the muscle cone (inferotemporal, sometimes medial as well). It has a lower risk of brainstem anaesthesia and optic nerve damage than retrobulbar, and onset is slower (10–15 min); a 2015 Cochrane review of six trials found no difference from retrobulbar block in pain, complete akinesia or need for top-up injections. (3) Retrobulbar block: local anaesthetic is injected inside the muscle cone. It produces rapid, dense akinesia but carries the highest risk of globe perforation, retrobulbar haemorrhage, optic nerve injury, and brainstem anaesthesia. It is now rarely used. (4) Topical ± intracameral: anaesthetic drops with or without injection into the anterior chamber by the surgeon. No akinesia, so patient cooperation is essential. Mainly used for cataract surgery in cooperative adults.",
         },
         "name": "What are the different regional techniques for ophthalmic surgery?",
       },
@@ -5129,7 +5129,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Suxamethonium causes a transient rise in intra-ocular pressure of 5–10 mmHg due to extraocular muscle fasciculation and increased aqueous humour outflow resistance. In an open-globe injury, any rise in IOP can cause expulsion of vitreous humour and permanent visual loss. However, suxamethonium is not absolutely contraindicated — if the patient has a full stomach and aspiration risk is the dominant concern, the literature supports its use because coughing and vomiting (which occur with a failed or difficult intubation) cause far larger IOP rises than suxamethonium. The preferred technique for open-globe injury with a full stomach is rapid sequence induction with rocuronium 1.2 mg/kg, which provides rapid onset without raising IOP, and sugammadex is available for reversal if needed. A smooth induction, maintenance, and emergence are equally important.",
+          "text": "Suxamethonium causes a transient rise in intra-ocular pressure of 5–10 mmHg — the mechanism is uncertain (tonic contraction of the extraocular muscles and choroidal vascular engorgement are proposed). In an open-globe injury, any rise in IOP can cause expulsion of vitreous humour and permanent visual loss. However, suxamethonium is not absolutely contraindicated — if the patient has a full stomach and aspiration risk is the dominant concern, the literature supports its use because coughing and vomiting (which occur with a failed or difficult intubation) cause far larger IOP rises than suxamethonium. The preferred technique for open-globe injury with a full stomach is rapid sequence induction with rocuronium 1.2 mg/kg, which provides rapid onset without raising IOP, and sugammadex is available for reversal if needed. A smooth induction, maintenance, and emergence are equally important.",
         },
         "name": "Why is suxamethonium relatively contraindicated in open-globe injury?",
       },
@@ -5145,7 +5145,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Nitrous oxide diffuses into closed gas spaces 34 times faster than nitrogen leaves. Sulphur hexafluoride (SF₆) and perfluoropropane (C₃F₈) are long-acting gases injected into the vitreous cavity during retinal detachment surgery to provide internal tamponade. If N₂O is administered, it rapidly diffuses into the gas bubble, causing expansion and a catastrophic rise in intra-ocular pressure that can compromise retinal blood flow and cause infarction. N₂O must be avoided for the entire duration that the gas remains in the eye — typically 1–3 months for SF₆ and up to 3 months for C₃F₈. Patients with intraocular gas should carry a warning bracelet, and anaesthetists must specifically ask about recent vitrectomy before any anaesthetic.",
+          "text": "Nitrous oxide is about 34 times more soluble in blood than nitrogen, so it enters closed gas spaces far faster than nitrogen can leave. Sulphur hexafluoride (SF₆) and perfluoropropane (C₃F₈) are long-acting gases injected into the vitreous cavity during retinal detachment surgery to provide internal tamponade. If N₂O is administered, it rapidly diffuses into the gas bubble, causing expansion and a catastrophic rise in intra-ocular pressure that can compromise retinal blood flow and cause infarction. N₂O must be avoided for the entire duration that the gas remains in the eye — about 2 weeks for SF₆ and 6–8 weeks for C₃F₈; check the surgeon's instructions and the wristband date. Patients with intraocular gas should carry a warning bracelet, and anaesthetists must specifically ask about recent vitrectomy before any anaesthetic.",
         },
         "name": "Why must N₂O be avoided after intraocular gas injection?",
       },
@@ -5153,7 +5153,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Paediatric strabismus surgery requires a secured but unobtrusive airway, anticipation of the oculocardiac reflex, and aggressive PONV prophylaxis. A laryngeal mask airway (LMA) is standard for most children; a reinforced/flexible LMA allows the surgeon to drape and rotate the head without kinking. Maintenance with TIVA (propofol ± remifentanil) is increasingly favoured because it produces markedly lower PONV rates than volatile-based anaesthesia, smoother emergence, and ideal conditions for shared-airway work. Analgesia is provided with paracetamol, NSAIDs, and topical local anaesthetic drops or sub-Tenon's block by the surgeon — avoid long-acting opioids which worsen PONV. Dual antiemetic prophylaxis (ondansetron + dexamethasone) is mandatory because baseline PONV rates approach 60–80% without prophylaxis. Suxamethonium should be avoided because it raises IOP, causes extraocular muscle contracture that confuses surgical testing, and carries a historical association with malignant hyperthermia in this population.",
+          "text": "Paediatric strabismus surgery requires a secured but unobtrusive airway, anticipation of the oculocardiac reflex, and aggressive PONV prophylaxis. A laryngeal mask airway (LMA) is standard for most children; a reinforced/flexible LMA allows the surgeon to drape and rotate the head without kinking. Maintenance with TIVA (propofol ± remifentanil) is increasingly favoured because it produces markedly lower PONV rates than volatile-based anaesthesia, smoother emergence, and ideal conditions for shared-airway work. Analgesia is provided with paracetamol, NSAIDs, and topical local anaesthetic drops or sub-Tenon's block by the surgeon — avoid long-acting opioids which worsen PONV. Dual antiemetic prophylaxis (ondansetron + dexamethasone) is recommended because about two-thirds of children vomit without prophylaxis (65–68% in pooled placebo groups). Suxamethonium should be avoided because it raises IOP, causes extraocular muscle contracture that confuses surgical testing, and carries a historical association with malignant hyperthermia in this population.",
         },
         "name": "What is the best anaesthetic technique for paediatric strabismus surgery?",
       },
@@ -5169,7 +5169,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ophthalmic surgery creates several unique airway challenges. The surgeon works at the head, so the airway must be secured but unobtrusive — south-facing oral RAE tubes, reinforced LMAs, and nasal intubation are commonly used. Prone positioning for posterior segment surgery requires meticulous airway security and pressure-area protection. A throat pack prevents blood and debris entering the larynx and stomach but must be documented and removed — a retained pack is a never event. In paediatric strabismus, a reinforced LMA is standard because it allows head turning without dislodgement. For laser or microlaryngoscopy work, small-bore tubes or tubeless techniques (jet ventilation, THRIVE) are used. Shared-airway discipline is essential: the anaesthetist and surgeon must agree on tube type, ventilation mode, and an emergency plan for accidental extubation before starting.",
+          "text": "Ophthalmic surgery creates several unique airway challenges. The surgeon works at the head, so the airway must be secured but unobtrusive — south-facing oral RAE tubes, reinforced LMAs, and nasal intubation are commonly used. Prone positioning for posterior segment surgery requires meticulous airway security and pressure-area protection. A throat pack prevents blood and debris entering the larynx and stomach but must be documented and removed — a retained pack is a serious reportable incident. In paediatric strabismus, a reinforced LMA is standard because it allows head turning without dislodgement. Shared-airway discipline is essential: the anaesthetist and surgeon must agree on tube type, ventilation mode, and an emergency plan for accidental extubation before starting.",
         },
         "name": "What are the specific airway considerations for ophthalmic surgery?",
       },
@@ -5177,7 +5177,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Vitreoretinal surgery involves the posterior segment and often requires controlled hypotension to reduce bleeding, particularly during scleral buckling or membrane peeling. The patient may be prone, requiring careful airway security and pressure-point protection. Intraocular gas (SF₆ or C₃F₈) may be injected — N₂O is absolutely contraindicated for 1–3 months postoperatively because it expands the gas bubble and raises IOP catastrophically. General anaesthesia is often chosen because the surgery is long and delicate and needs a completely still patient, though many vitrectomies are now done under sub-Tenon's or peribulbar block. Under GA, aim for a deep, smooth plane with full immobility — remifentanil-based TIVA or volatile with remifentanil works well, and modest controlled hypotension (e.g. MAP 60–70 mmHg, or within 20–30% of baseline in hypertensive patients) reduces bleeding. N₂O is absolutely contraindicated while gas remains in the eye: about 2 weeks for air, 2–4 weeks for SF₆ and up to 8–12 weeks for C₃F₈; the patient should wear a warning wristband. Scleral buckling involves traction on the extraocular muscles and commonly triggers the oculocardiac reflex — warn the surgeon to release traction and give atropine or glycopyrronium if bradycardia persists. Buckling is more painful than vitrectomy, so plan regular analgesia and consider a block. Postoperative positioning (often face-down for several days) is critical for gas tamponade; avoid pressure on the eye during recovery. PONV is common after vitrectomy; use TIVA and multimodal antiemetics.",
+          "text": "Vitreoretinal surgery involves the posterior segment and may use modest blood-pressure control to limit bleeding. The patient may be prone, requiring careful airway security and pressure-point protection. Intraocular gas (SF₆ or C₃F₈) may be injected. General anaesthesia is often chosen because the surgery is long and delicate and needs a completely still patient, though many vitrectomies are now done under sub-Tenon's or peribulbar block. Under GA, aim for a deep, smooth plane with full immobility — remifentanil-based TIVA or volatile with remifentanil works well, and modest controlled hypotension (e.g. MAP 60–70 mmHg, or within 20–30% of baseline in hypertensive patients) reduces bleeding. N₂O is absolutely contraindicated while gas remains in the eye: about 5–7 days for air, about 2 weeks for SF₆ and 6–8 weeks for C₃F₈; the patient should wear a warning wristband. Scleral buckling involves traction on the extraocular muscles and commonly triggers the oculocardiac reflex — warn the surgeon to release traction and give atropine or glycopyrronium if bradycardia persists. Buckling is more painful than vitrectomy, so plan regular analgesia and consider a block. Postoperative positioning (often face-down for several days) is critical for gas tamponade; avoid pressure on the eye during recovery. PONV is common after vitrectomy; use TIVA and multimodal antiemetics.",
         },
         "name": "What are the anaesthetic considerations for vitreoretinal surgery?",
       },
@@ -5293,7 +5293,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "WETFLAG is a paediatric emergency checklist used to rapidly estimate weight and calculate critical drug doses and equipment sizes: W (Weight = (age + 4) × 2 kg), E (Energy for defibrillation = 4 J/kg), T (Tube size = age/4 + 4 mm uncuffed), F (Fluids = 10–20 mL/kg bolus), L (Length of ETT at lips = age/2 + 12 cm), A (Adrenaline = 10 µg/kg IV/IO for cardiac arrest; 0.1 µg/kg/min for infusion), G (Glucose = 2 mL/kg of 10% dextrose for hypoglycaemia). This ensures standardised, rapid preparation during paediatric emergencies and arrests.",
+          "text": "WETFLAG is a paediatric emergency checklist used to rapidly estimate weight and calculate critical drug doses and equipment sizes: W (Weight = (age + 4) × 2 kg), E (Energy for defibrillation = 4 J/kg), T (Tube size = age/4 + 4 mm uncuffed), F (Fluids = 10 mL/kg initial crystalloid bolus for children needing resuscitation (NICE NG29; term neonates and specialist pathways differ)), L (Length of ETT at lips = age/2 + 12 cm), A (Adrenaline = 10 µg/kg IV/IO for cardiac arrest; 0.1 µg/kg/min for infusion), G (Glucose = 2 mL/kg of 10% dextrose for hypoglycaemia). This ensures standardised, rapid preparation during paediatric emergencies and arrests.",
         },
         "name": "What is the WETFLAG emergency drug dose framework?",
       },
@@ -5325,7 +5325,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Pyloric stenosis presents with projectile vomiting leading to a hypochloraemic, hypokalaemic metabolic alkalosis. It is a MEDICAL emergency, not a surgical one — the alkalosis must be corrected before theatre because post-operative apnoea is common if HCO₃ remains ≥28 mmol/L. Resuscitate with 0.9% saline 10–20 ml/kg boluses to restore intravascular volume, then 0.45% saline + 5% dextrose with 20 mmol/L KCl at 1.5 × maintenance. Targets before surgery: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ <28, and adequate urine output. In theatre, use a modified RSI (full stomach) with ketamine or propofol and rocuronium, maintain normothermia, and monitor glucose closely.",
+          "text": "Pyloric stenosis presents with projectile vomiting leading to a hypochloraemic, hypokalaemic metabolic alkalosis. It is a MEDICAL emergency, not a surgical one — the alkalosis must be corrected before theatre because post-operative apnoea is common if HCO₃ remains ≥28 mmol/L. Resuscitate with 0.9% saline 10 ml/kg boluses to restore intravascular volume, then 0.45% saline + 5% dextrose with 20 mmol/L KCl at 1.5 × maintenance. Targets before surgery: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ <28, and adequate urine output. In theatre, use a modified RSI (full stomach) with ketamine or propofol and rocuronium, maintain normothermia, and monitor glucose closely.",
         },
         "name": "How do you anaesthetise a child with pyloric stenosis?",
       },
@@ -5341,7 +5341,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For maintenance, use the Holliday-Segar 4-2-1 rule: 4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg, and 1 ml/kg/hr for each kg thereafter. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10–20 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
+          "text": "For maintenance, use the Holliday-Segar 4-2-1 rule: 4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg, and 1 ml/kg/hr for each kg thereafter. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
         },
         "name": "What fluids should be used for paediatric maintenance and resuscitation?",
       },
@@ -5797,9 +5797,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Category 1 — life- or limb-threatening (requires consultant anaesthetist and ICU nurse). Category 2 — urgent (specialty input needed but not immediate). Category 3 — non-urgent (repatriation). Category 4 — return to local hospital. Staffing, monitoring and vehicle choice escalate with category.",
+          "text": "AAGBI 2009 grades the patient, not the transfer: critical-care dependency Levels 0–3. Level 2 and 3 patients (organ support, advanced respiratory support) must be escorted by competent, trained and experienced personnel — usually a doctor and a nurse or paramedic. The decision to transfer is made consultant-to-consultant; a consultant is not required to travel on every transfer. Staffing, monitoring and vehicle choice escalate with dependency.",
         },
-        "name": "What are the AAGBI categories of inter-hospital transfer?",
+        "name": "How does AAGBI guidance grade inter-hospital transfers?",
       },
       {
         "@type": "Question",
@@ -5867,7 +5867,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Give TXA 1 g IV over 10 minutes as early as possible, and always within 3 hours of injury — the CRASH-2 mortality benefit is strongly time-dependent, and treatment started beyond 3 hours confers no benefit and may cause harm. The classic CRASH-2/CRASH-3 regimen adds a second 1 g by infusion over 8 hours, but this maintenance dose is no longer treated as an automatic requirement: the survival benefit in both trials was driven by the early loading dose, and many UK major-haemorrhage protocols now give the second gram as a further short bolus, or omit it once bleeding is controlled, continuing antifibrinolytic therapy only where haemorrhage is ongoing or viscoelastic testing shows persistent hyperfibrinolysis. Follow your local major haemorrhage protocol. TXA inhibits fibrinolysis by blocking plasminogen activation and should be given to all trauma patients with significant bleeding or at risk of it, unless clearly contraindicated.",
+          "text": "Give TXA 1 g IV over 10 minutes as early as possible, and always within 3 hours of injury — the CRASH-2 mortality benefit is strongly time-dependent, and treatment started beyond 3 hours confers no benefit and may cause harm. The CRASH-2 regimen adds a second 1 g by infusion over 8 hours; neither CRASH-2 nor CRASH-3 tested the loading dose separately from the infusion, so give the full regimen unless your local major haemorrhage protocol specifies otherwise. CRASH-3 (isolated head injury) showed no significant overall reduction in head-injury death; benefit was confined to mild-to-moderate injury treated early. Follow your local major haemorrhage protocol. TXA inhibits fibrinolysis by blocking plasminogen activation and should be given to all trauma patients with significant bleeding or at risk of it, unless clearly contraindicated.",
         },
         "name": "When should tranexamic acid (TXA) be given in trauma?",
       },
@@ -5923,7 +5923,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Follow a stepwise approach: (1) direct pressure on external bleeding; (2) a windlass tourniquet for catastrophic limb bleeding — applied early, tightened until bleeding stops, time recorded; (3) haemostatic or plain gauze wound packing for junctional wounds (groin, axilla, neck) where a tourniquet cannot go; (4) a pelvic binder applied at the greater trochanters for suspected unstable pelvic fracture — it reduces pelvic volume and tamponades venous bleeding; (5) rapid transfer to definitive care. In hospital, options include interventional radiology embolisation, damage control surgery (packing, shunting, clamping), and REBOA (resuscitative endovascular balloon occlusion of the aorta) for torso haemorrhage below the diaphragm — though the UK-REBOA trial found higher 90-day mortality with ED REBOA (54% vs 42%; 86% probability of harm), so it is not supported outside research in UK practice.",
+          "text": "Follow a stepwise approach: (1) direct pressure on external bleeding; (2) a tourniquet for life-threatening open limb bleeding — applied early, time recorded, and converted or moved closer to the wound within 2 hours where possible; (3) haemostatic or plain gauze wound packing for junctional wounds (groin, axilla, neck) where a tourniquet cannot go; (4) a pelvic binder applied at the greater trochanters for suspected unstable pelvic fracture — it reduces pelvic volume and tamponades venous bleeding; (5) rapid transfer to definitive care. In hospital, options include interventional radiology embolisation, damage control surgery (packing, shunting, clamping), and REBOA (resuscitative endovascular balloon occlusion of the aorta) for torso haemorrhage below the diaphragm — though the UK-REBOA trial found higher 90-day mortality with ED REBOA (54% vs 42%; 86% probability of harm), so it is not supported outside research in UK practice.",
         },
         "name": "How is haemorrhage controlled in major trauma?",
       },
@@ -6109,7 +6109,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Bladder pressure with 25 mL saline at end-expiration, supine, transduced at the mid-axillary line; intra-abdominal hypertension ≥12 mmHg, ACS = sustained IAP >20 mmHg with new organ dysfunction (WSACS 2013).",
+          "text": "Via the bladder with no more than 25 mL sterile saline, at end-expiration, supine, with abdominal muscle contractions absent and the transducer zeroed at the mid-axillary line. IAH is a sustained or repeated IAP ≥12 mmHg; ACS is a sustained IAP >20 mmHg with new organ dysfunction or failure (WSACS 2013).",
         },
         "name": "How is intra-abdominal pressure measured and what defines ACS?",
       },
@@ -6125,7 +6125,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Nasogastric and rectal decompression, neuromuscular blockade, prokinetics, percutaneous drainage of ascites, deep sedation, and conservative fluid strategy; surgery is reserved for refractory ACS with organ failure.",
+          "text": "WSACS 2013 suggests optimal analgesia and sedation, brief trials of neuromuscular blockade, attention to body position, nasogastric or rectal decompression when the bowel is dilated, neostigmine for refractory colonic ileus, percutaneous drainage of obvious intraperitoneal fluid, and avoiding a positive fluid balance after initial resuscitation. Decompressive laparotomy is recommended for overt ACS.",
         },
         "name": "What are the non-surgical options before decompressive laparotomy?",
       },
@@ -6505,7 +6505,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. UK and ERC guidance now permit vector change or DSED for refractory VF after the third shock where local protocols allow.",
+          "text": "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. The ERC 2021 guidelines predate DOSE-VF; subsequent ILCOR (2023) treatment recommendations suggest vector change or DSED may be considered for refractory VF — follow local protocols, and note DOSE-VF was a single-system Canadian trial stopped early by COVID-19.",
         },
         "name": "When should defibrillation energy be escalated and what's the role of dual sequential defibrillation?",
       },
@@ -6521,7 +6521,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) demonstrated equivalence of 33 °C and 36 °C — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with active normothermia (≤ 37.5 °C, fever treated aggressively) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Contemporary ERC/ESICM 2021 guidance therefore recommends a constant temperature 32–36 °C, with active normothermia ≤ 37.7 °C now the most common pragmatic default; fever (> 37.7 °C) must be prevented for at least 72 hours regardless of strategy. Rewarming should be slow (0.25–0.5 °C / h) when starting from 33 °C.",
+          "text": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) demonstrated equivalence of 33 °C and 36 °C — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with active normothermia (≤ 37.5 °C, fever treated aggressively) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. The 2022 ERC–ESICM temperature-control update therefore recommends continuous core-temperature monitoring and active prevention of fever (> 37.7 °C) for at least 72 hours, and states there is insufficient evidence to recommend for or against cooling to 32–36 °C in subpopulations. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
         },
         "name": "Should I cool post-arrest patients to 33 °C or aim for active normothermia? What changed after TTM2?",
       },
@@ -6537,7 +6537,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response). ERC/ESICM 2021 require at least two concordant poor-outcome markers from independent modalities before predicting poor outcome: (1) bilaterally absent pupillary AND corneal reflexes (or NPi < 2 on automated pupillometry); (2) bilaterally absent N20 cortical SSEPs; (3) NSE > 60 µg/L at 48 h and/or 72 h, or a rising trend; (4) highly malignant EEG (suppression < 10 µV, or unreactive burst-suppression); (5) diffuse anoxic injury on CT (loss of grey-white differentiation, GWR < 1.10) or MRI (widespread restricted diffusion). Status myoclonus alone is not sufficient. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
+          "text": "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response) at ≥ 72 h. ERC/ESICM 2021 consider poor outcome likely when two or more of these are present: (1) bilaterally absent pupillary and corneal reflexes at ≥ 72 h (quantitative pupillometry may be used); (2) bilaterally absent N20 SSEP waves at ≥ 24 h; (3) highly malignant EEG (suppressed background or burst-suppression) at > 24 h; (4) NSE > 60 µg/L at 48 h and/or 72 h; (5) status myoclonus ≤ 72 h; (6) diffuse and extensive anoxic injury on CT or MRI. No single marker is sufficient on its own. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
         },
         "name": "What is multimodal neuroprognostication and when do I perform it?",
       },
@@ -6545,7 +6545,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Intubate if not already (or replace a supraglottic with a tracheal tube once stable). Set tidal volume 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, FiO₂ titrated to SpO₂ 94–98% (avoid hyperoxia — observational data link PaO₂ > 40 kPa to higher mortality; the EXACT pilot RCT supports normoxic targeting). Set minute ventilation to PaCO₂ 4.5–6.0 kPa (avoid hypocapnia which causes cerebral vasoconstriction and is independently associated with worse neurological outcome — TAME trial 2023 found no benefit from mild hypercapnia 6.7–7.3 kPa over normocapnia). Use continuous waveform capnography. Sedate with short-acting agents (propofol + remifentanil or fentanyl ± dexmedetomidine) to facilitate later neuroprognostication. Avoid prolonged NMBA except briefly for shivering not controlled by sedation and counter-warming.",
+          "text": "Intubate if not already (or replace a supraglottic with a tracheal tube once stable). Set tidal volume 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, FiO₂ titrated to SpO₂ 94–98% (avoid hyperoxia — observational data link PaO₂ > 40 kPa to higher mortality; but the EXACT RCT found lower survival when pre-hospital SpO₂ was targeted at 90–94%, so avoid aiming below 94%). Set minute ventilation to PaCO₂ 4.5–6.0 kPa (avoid hypocapnia which causes cerebral vasoconstriction and is independently associated with worse neurological outcome — TAME trial 2023 found no benefit from mild hypercapnia 6.7–7.3 kPa over normocapnia). Use continuous waveform capnography. Sedate with short-acting agents (propofol + remifentanil or fentanyl ± dexmedetomidine) to facilitate later neuroprognostication. Avoid prolonged NMBA except briefly for shivering not controlled by sedation and counter-warming.",
         },
         "name": "How should I manage the airway and ventilator in the first 6 hours post-ROSC?",
       },
@@ -6741,7 +6741,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "0.9% saline 500–1000 mL bolus, fixed-rate insulin 0.1 U/kg/h, replace K⁺ once <5.5 mmol/L (do not start insulin if K⁺ <3.3 mmol/L), and check ketones, glucose and bicarbonate hourly (JBDS 2021).",
+          "text": "0.9% saline 500–1000 mL bolus, fixed-rate insulin 0.1 U/kg/h, replace K⁺ once <5.5 mmol/L (urgent senior review if K⁺ <3.5 mmol/L), and check ketones, glucose and bicarbonate hourly (JBDS 2023).",
         },
         "name": "How is diabetic ketoacidosis managed in the first hour?",
       },
@@ -6757,7 +6757,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "IV levothyroxine 200–400 µg load then 50–100 µg daily (or T3 if available), IV hydrocortisone 100 mg 8-hourly until adrenal insufficiency excluded, passive rewarming, treat precipitants and avoid sedatives.",
+          "text": "IV levothyroxine initially (ATA: 200–400 µg load, reduced for age, size and cardiac risk), subsequent weight-based replacement, preceded by IV glucocorticoid cover, passive rewarming, treat precipitants and avoid sedatives.",
         },
         "name": "How is myxoedema coma treated?",
       },
@@ -7073,7 +7073,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Meta-analyses (OPTIMISE, Cochrane 2013) show GDT with SV optimisation reduces complications and length of stay in moderate–high-risk surgery but no consistent mortality benefit; effect is greatest where baseline care is poor.",
+          "text": "Older meta-analyses suggested fewer complications, but the OPTIMISE trial itself was not significant (36.6% vs 43.4%, P=0.07) and the larger OPTIMISE II (2024, n=2,498) found no reduction in postoperative infection and more early arrhythmias with the inotrope protocol. Routine GDT is therefore not proven in modern enhanced-recovery care.",
         },
         "name": "What is the evidence for goal-directed haemodynamic therapy?",
       },
@@ -10101,15 +10101,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Natural frequency f₀ = (1/2π) × √(πd²E / 4ρLV) — depends on tubing diameter, stiffness, length and fluid density. The pulse pressure waveform contains harmonics up to ~10× heart rate (~25 Hz at HR 150). To reproduce these without resonance distortion, f₀ should exceed 40 Hz. Short, stiff, wide-bore, bubble-free tubing maximises f₀.",
+          "text": "The catheter–tubing–transducer system has a dynamic response. Natural frequency and damping must be assessed together against the frequencies present in the pulse. A single 40 Hz threshold does not establish accuracy. Use an approved pressure-monitoring kit, inspect the waveform and assess its fast-flush response.",
         },
-        "name": "What is the natural frequency of an arterial line and why must it exceed 40 Hz?",
+        "name": "How do natural frequency and damping affect an arterial waveform?",
       },
       {
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Damping coefficient 0.6–0.7 is optimal — fast response without overshoot. Measured by the fast-flush (square-wave) test: count oscillations after release. ≥2 oscillations = under-damped (overshoots, overestimates SBP); ≤1 oscillation = over-damped (underestimates SBP). MAP is reliable in both cases.",
+          "text": "A fast-flush perturbation reveals the return and decaying oscillations. Ringing suggests underdamping; a sluggish response suggests overdamping. Oscillation spacing and successive amplitudes allow a more complete assessment than a fixed count alone. Underdamping exaggerates pulse pressure; overdamping blunts it. MAP is often less affected, but is not guaranteed reliable.",
         },
         "name": "What is optimal damping and how is it measured?",
       },
@@ -10221,7 +10221,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Thermistor — semiconductor whose resistance falls exponentially with temperature. Highly sensitive, small, used in PA catheters and oesophageal probes; non-linear so needs linearising circuit. Thermocouple — two dissimilar metals; voltage proportional to temperature difference (Seebeck effect). Linear, robust, requires a reference junction; used in some skin probes.",
+          "text": "A thermistor measures temperature through a steep, nonlinear resistance change. A thermocouple produces an EMF related to the temperature difference between measuring and reference junctions, requiring reference compensation and calibration. Sensitivity, accuracy and response time differ; probe construction and placement matter as well as sensor type.",
         },
         "name": "Compare thermistors and thermocouples for clinical use.",
       },
