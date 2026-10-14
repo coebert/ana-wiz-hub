@@ -19,7 +19,7 @@ const families = [
   {
     family: "Biphasic / airway pressure release (two CPAP levels)",
     names: "BIPAP — Dräger; BiLevel — Medtronic Puritan Bennett; Bi-Vent — Getinge (Maquet); DuoPAP — Hamilton Medical; APRV — available on most platforms",
-    what: "Time-controlled switching between two pressure levels, with spontaneous breathing possible at both. The guideline notes these are different names for the same basic principle, and that many versions let the patient trigger the switch, like SIMV. APRV is the extreme setting: long high-pressure time and a brief release.",
+    what: "Time-controlled switching between two pressure levels, with spontaneous breathing possible at both. The guideline notes these are different names for the same basic principle, and that many versions let the patient trigger the switch, like SIMV. (APRV is covered in detail in its own section.)",
     ref: "S3 Ventilation 2025 (BIPAP family)",
   },
   {
@@ -31,25 +31,25 @@ const families = [
   {
     family: "Intelligent / fully closed-loop",
     names: "INTELLiVENT-ASV — Hamilton Medical",
-    what: "ASV plus automatic adjustment of oxygenation (PEEP and FiO₂) and ventilation from SpO₂ and end-tidal CO₂ feedback.",
+    what: "A development of ASV that automatically adjusts both ventilation and oxygenation settings.",
     ref: "Arnal 2012 (IntelliVent-ASV)",
   },
   {
     family: "Servo targeting from the diaphragm",
     names: "NAVA — Getinge (Maquet) Servo",
-    what: "Support in proportion to the electrical activity of the diaphragm (Edi), measured by a dedicated nasogastric catheter. Edi triggers and cycles the breath, so timing follows the patient's own neural drive.",
+    what: "Ventilation pressure proportional to respiratory effort, measured as the electrical activity of the diaphragm (Edi). See the diaphragm-protection section for the Edi catheter.",
     ref: "S3 Ventilation 2025 (mode table)",
   },
   {
     family: "Servo targeting from flow and volume",
-    names: "PAV+ — Medtronic Puritan Bennett; (PPS — Dräger, proportional pressure support)",
-    what: "Pressure rises in proportion to the patient's own instantaneous flow and volume, so support scales with effort. PAV+ measures resistance and compliance automatically to set the gain.",
+    names: "PAV+ — Medtronic Puritan Bennett",
+    what: "Proportional assist with load-adjustable gain factors: the level of support follows the patient's own effort rather than a fixed pressure.",
     ref: "Xirouchaki 2008 (PAV+)",
   },
   {
     family: "Knowledge-based weaning",
     names: "SmartCare/PS — Dräger",
-    what: "Automatically adjusts pressure support to keep the patient in a target comfort zone (rate, tidal volume, end-tidal CO₂), reduces support step by step and runs a spontaneous breathing trial.",
+    what: "Automatically adjusts pressure support to keep the patient in a target comfort zone, gradually reduces support, runs spontaneous breathing trials and signals when one is passed.",
     ref: "Lellouche 2006 (SmartCare)",
   },
 ];
@@ -84,7 +84,7 @@ export function ProprietaryModesTeaching() {
       <li><B>ASV / INTELLiVENT-ASV:</B> the 2025 German S3 guideline <em>suggests considering</em> partly or fully automated ventilation, with very low certainty of evidence.<R label="S3 Ventilation 2025 (adaptive recs)" /> In Arnal's crossover study of 50 sedated patients, INTELLiVENT-ASV lowered plateau pressure (24 to 20 cmH₂O) and FiO₂ (40% to 30%) compared with ASV over 2 hours.<R label="Arnal 2012 (IntelliVent-ASV)" /></li>
       <li><B>NAVA:</B> the guideline also <em>suggests considering</em> NAVA, again with very low certainty: trials show better synchrony than pressure support but no proven benefit in mortality or ventilation duration.<R label="S3 Ventilation 2025 (adaptive recs)" /></li>
       <li><B>PAV / PAV+:</B> an early randomised study of 208 patients found fewer failures (11.1% v 22.0%) and less major dyssynchrony (5.6% v 29.0%) than pressure support.<R label="Xirouchaki 2008 (PAV+)" /> But the guideline makes a <em>weak recommendation against</em> it: a later multicentre trial showed no benefit and frequent intolerance, with a mode change needed in 42%.<R label="S3 Ventilation 2025 (adaptive recs)" /><R label="S3 Ventilation 2025 (PAV intolerance)" /></li>
-      <li><B>SmartCare/PS:</B> in a 144-patient multicentre trial, computer-driven weaning cut median weaning time from 5 to 3 days and total ventilation from 12 to 7.5 days, with no difference in reintubation. Usual care in that trial ran spontaneous breathing trials only about half the time, which may explain part of the effect.<R label="Lellouche 2006 (SmartCare)" /></li>
+      <li><B>SmartCare/PS:</B> in a 144-patient multicentre trial, computer-driven weaning cut median weaning time from 5 to 3 days and total ventilation from 12 to 7.5 days, with no difference in reintubation. Usual-care compliance with spontaneous breathing trials was only 51%, which may explain part of the effect.<R label="Lellouche 2006 (SmartCare)" /></li>
     </ul>
 
     <H>Practical traps</H>
