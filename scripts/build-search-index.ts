@@ -173,7 +173,16 @@ function buildTopicEntry(topic: (typeof allTopics)[number]): SearchIndexEntry | 
     records.push({ t, a: anchor, k: kind });
   };
 
-  // Breadth-first walk through the topic's own component tree.
+  // Breadth-first walk through the topic's own component tree. Headings and
+  // label fields are recorded immediately; prose pieces are queued per file
+  // and budgeted round-robin afterwards, so a long root file cannot consume
+  // the whole allowance before the topic's diagram/Teaching imports are seen.
+  interface FileProse {
+    items: Array<{ text: string; anchor: string | null }>;
+    cursor: number;
+  }
+  const proseQueues: FileProse[] = [];
+
   let frontier: Array<{ file: string; src: string; depth: number; anchor: string | null }> = [
     { file: entryFile, src: rootSrc, depth: 0, anchor: null },
   ];
@@ -182,6 +191,7 @@ function buildTopicEntry(topic: (typeof allTopics)[number]): SearchIndexEntry | 
     for (const node of frontier) {
       const anchors = findSubsectionAnchors(node.src);
       const pieces = extractPositioned(node.src);
+      const queue: FileProse = { items: [], cursor: 0 };
       let ai = 0;
       let currentAnchor = node.anchor;
       for (const p of pieces) {
@@ -192,9 +202,12 @@ function buildTopicEntry(topic: (typeof allTopics)[number]): SearchIndexEntry | 
           currentAnchor = a.anchor;
           ai += 1;
         }
-        if (proseChars < MAX_PROSE_CHARS) {
+        if (p.label) {
+          // Labels bypass the budget — bounded by the diagram count.
+          pushRecord(p.text, currentAnchor, "prose");
+        } else {
           for (const chunk of splitLongProse(p.text)) {
-            pushRecord(chunk, currentAnchor, "prose");
+            queue.items.push({ text: chunk, anchor: currentAnchor });
           }
         }
       }
@@ -204,6 +217,7 @@ function buildTopicEntry(topic: (typeof allTopics)[number]): SearchIndexEntry | 
         pushRecord(a.title, a.anchor, "heading");
         ai += 1;
       }
+      if (queue.items.length > 0) proseQueues.push(queue);
       if (node.depth >= MAX_IMPORT_DEPTH) continue;
       for (const dep of localImportsOf(node.src, node.file)) {
         if (seen.has(dep) || seen.size > MAX_IMPORTED_FILES) continue;
@@ -215,6 +229,21 @@ function buildTopicEntry(topic: (typeof allTopics)[number]): SearchIndexEntry | 
       }
     }
     frontier = next;
+  }
+
+  // Round-robin prose budget across files: each file gets its turn, so every
+  // imported component contributes before any file is fully drained.
+  let progress = true;
+  while (proseChars < MAX_PROSE_CHARS && progress) {
+    progress = false;
+    for (const q of proseQueues) {
+      if (proseChars >= MAX_PROSE_CHARS) break;
+      const item = q.items[q.cursor];
+      if (!item) continue;
+      q.cursor += 1;
+      progress = true;
+      pushRecord(item.text, item.anchor, "prose");
+    }
   }
 
   // Headings first so they survive any client-side trimming, then prose.
