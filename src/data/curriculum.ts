@@ -137,6 +137,7 @@ export const clinicalTopics: Topic[] = [
   { id: "airway-management", title: "Airway Management", description: "Difficult airway algorithms, DAS guidelines, supraglottic devices, surgical airway", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "regional-anaesthesia", title: "Regional & Neuraxial Anaesthesia", description: "Spinal, epidural, nerve blocks, ultrasound-guided techniques", section: "clinical", examTags: ["final"], available: true },
   { id: "tiva", title: "Total Intravenous Anaesthesia (TIVA)", description: "TCI pharmacokinetic models, Marsh vs Schnider vs Eleveld, Cp vs Ce targeting, practical TIVA setup", section: "clinical", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "anaesthesia-basics", title: "Anaesthesia Basics: EEG, Awareness & TIVA", description: "Processed and raw EEG, accidental awareness (NAP5), BIS trials, NICE depth-of-anaesthesia guidance and why TIVA changes the risk", section: "clinical", examTags: ["primary", "final"], available: true },
   { id: "pain-medicine", title: "Pain Medicine", description: "Acute and chronic pain, neuropathic pain, multimodal analgesia, interventions", section: "clinical", examTags: ["final", "fficm"], available: true },
   // Major sub-specialties
   { id: "obstetric-anaesthesia", title: "Obstetric Anaesthesia", description: "Caesarean section, epidural labour analgesia, high-risk obstetrics, PPH", section: "clinical", examTags: ["final"], available: true },
