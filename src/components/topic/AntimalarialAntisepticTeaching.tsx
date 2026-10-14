@@ -1,4 +1,5 @@
 import { InlineRef } from "@/components/references/InlineRef";
+import { LessonSources } from "@/components/topic/LessonSources";
 const R = ({ label }: { label: string }) => <InlineRef topicId="antimicrobials-pharm" refLabel={label} />;
 
 export function AntimalarialAntisepticTeaching() {
@@ -21,5 +22,6 @@ export function AntimalarialAntisepticTeaching() {
     </ul>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: what metabolic complication should you anticipate with IV quinine?</summary><p className="mt-2">Hypoglycaemia, because quinine stimulates insulin release. It is easily missed in sedated or unconscious patients, so monitor glucose frequently.</p></details>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: does Darouiche 2010 prove chlorhexidine is superior to iodine?</summary><p className="mt-2">Not by itself. It compared chlorhexidine in alcohol with aqueous povidone-iodine, so the alcohol vehicle may contribute to the effect.</p></details>
+    <LessonSources topicId="antimicrobials-pharm" labels={["SEAQUAMAT 2005", "AQUAMAT 2010", "Darouiche 2010", "CLEAN 2015"]} extra={[{ topicId: "clinical-incidents", label: "NAP6 2018 (Triggers)" }]} />
   </div>;
 }

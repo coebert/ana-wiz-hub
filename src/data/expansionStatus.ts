@@ -30,7 +30,7 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
   },
   pharmacology: {
     status: "pending",
-    note: "Differential blockade batch started (local anaesthetics). Meyer–Overton evidence added (volatile agents). Antimicrobials (antibiotics, antifungals, antivirals, antimalarials, antiseptics, resistance) expanded; toxicology paracetamol batch added. Remaining pharmacology subsections need individual review.",
+    note: "Differential blockade batch started (local anaesthetics). Meyer–Overton evidence added (volatile agents). Antimicrobials (antibiotics, antifungals, antivirals, antimalarials, antiseptics, resistance) expanded; toxicology paracetamol and IV anaesthetics PRIS batches added; each lesson lists its sources. Remaining pharmacology subsections need individual review.",
   },
   anatomy: {
     status: "pending",
@@ -56,6 +56,10 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
 
 /** Topic-level overrides for topics with a completed expansion batch. */
 export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
+  "iv-anaesthetics": {
+    status: "in-progress",
+    note: "Propofol infusion syndrome lesson added (Hemphill 2019 case analysis: child vs adult phenotype, mortality markers, dose relationship, recognition and haemofiltration). Other subsections still need review.",
+  },
   toxicology: {
     status: "in-progress",
     note: "Paracetamol poisoning subsection added (NAPQI mechanism, 2012 UK treatment line, SNAP 2014 regimen evidence, anaphylactoid reactions, learning checks). Other toxicology subsections still need review.",

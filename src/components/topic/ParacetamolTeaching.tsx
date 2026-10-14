@@ -1,4 +1,5 @@
 import { InlineRef } from "@/components/references/InlineRef";
+import { LessonSources } from "@/components/topic/LessonSources";
 const R = ({ label }: { label: string }) => <InlineRef topicId="toxicology" refLabel={label} />;
 
 export function ParacetamolTeaching() {
@@ -15,5 +16,6 @@ export function ParacetamolTeaching() {
     </ul>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: a 2-hour paracetamol level is below the line — can you discharge?</summary><p className="mt-2">No. Levels before 4 hours cannot be interpreted against the nomogram. Repeat at 4 hours or later, or treat if the timing is uncertain.</p></details>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: does an acetylcysteine reaction mean true allergy?</summary><p className="mt-2">Usually not. It is an anaphylactoid, dose-rate-related reaction. Most patients complete treatment after a pause and a slower restart.</p></details>
+    <LessonSources topicId="toxicology" labels={["MHRA NAC 2012", "NPIS Toxbase", "SNAP 2014"]} />
   </div>;
 }

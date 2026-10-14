@@ -1,4 +1,5 @@
 import { InlineRef } from "@/components/references/InlineRef";
+import { LessonSources } from "@/components/topic/LessonSources";
 const R = ({ label }: { label: string }) => <InlineRef topicId="antimicrobials-pharm" refLabel={label} />;
 
 export function AntiviralEvidenceTeaching() {
@@ -17,5 +18,6 @@ export function AntiviralEvidenceTeaching() {
     <p><strong className="text-foreground">Evidence limits:</strong> trial populations, viral variants and vaccination status change over time; follow current national guidance and local infection-specialist advice for indications and doses.</p>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: why is aciclovir ineffective against CMV?</summary><p className="mt-2">CMV does not encode the thymidine kinase that efficiently activates aciclovir. Ganciclovir is phosphorylated by the CMV UL97 kinase instead.</p></details>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: does ACTT-1 show remdesivir reduces mortality in ventilated patients?</summary><p className="mt-2">No. Its primary benefit was shorter time to recovery, clearest in patients on low-flow oxygen; no clear benefit was shown in those already ventilated or on ECMO.</p></details>
+    <LessonSources topicId="antimicrobials-pharm" labels={["Elion 1977 Aciclovir Selectivity", "ESICM TDM 2020", "Dobson 2015 Oseltamivir", "Beigel 2020 ACTT-1", "Hammond 2022 EPIC-HR"]} />
   </div>;
 }
