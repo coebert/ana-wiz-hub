@@ -104,6 +104,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
   },
   {
     id: "protocol-thoracic",
+    sources: ["Brunelli 2009 ERS/ESTS fitness"],
     title: "Thoracic",
     link: "/clinical/cardiothoracic",
     scope: "Lobectomy, pneumonectomy, VATS.",
@@ -212,6 +213,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
   },
   {
     id: "protocol-ent",
+    sources: ["DAS Extubation 2012"],
     title: "ENT & Head and Neck",
     link: "/clinical/ent-anaesthesia",
     scope: "Tonsillectomy, laser airway surgery, major head and neck resection.",
@@ -239,6 +241,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
   },
   {
     id: "protocol-urology",
+    sources: ["Alexander 2019 Cochrane bipolar TURP"],
     title: "Urology",
     link: "/clinical/urological-anaesthesia",
     scope: "TURP, cystectomy, robotic prostatectomy.",
@@ -248,7 +251,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
       "Robotic: assess tolerance of steep Trendelenburg (glaucoma, cerebrovascular disease)",
     ],
     intraop: [
-      "TURP: limit resection time; bipolar resection with saline reduces TURP syndrome",
+      "TURP: limit resection time; bipolar resection with saline reduces TURP syndrome (Cochrane 2019: RR 0.17, about 20 fewer cases per 1,000)",
       "Lithotomy: pressure points, compartment syndrome in long cases",
       "Robotic: steep head-down + pneumoperitoneum — airway oedema, raised ICP/IOP",
     ],
