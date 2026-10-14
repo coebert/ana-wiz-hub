@@ -61,7 +61,7 @@ const STEPS: AnimatedMechanismStep[] = [
           <li><strong>β-blockade</strong>: assess perfusion/cardiac function first; propranolol at high doses reduces T₄→T₃ conversion, while esmolol provides short-acting rate control.</li>
           <li><strong>Block synthesis</strong>: <strong>propylthiouracil (PTU) 500–1000 mg load then 250 mg q4h</strong> (preferred — also blocks peripheral conversion). Carbimazole alternative.</li>
           <li><strong>Block release</strong>: <strong>Lugol's iodine / potassium iodide ≥ 1 h after PTU</strong> (Wolff-Chaikoff effect; iodine before thionamide → fuels storm).</li>
-          <li><strong>Hydrocortisone 100 mg IV q8h</strong> — blocks T₄→T₃, treats co-existing adrenal insufficiency.</li>
+          <li><strong>ATA: hydrocortisone 300 mg IV load, then 100 mg q8h</strong> — blocks T₄→T₃, treats co-existing adrenal insufficiency.</li>
           <li><strong>Supportive</strong>: active cooling (paracetamol — NOT aspirin: displaces T₄ from TBG), fluids, treat trigger.</li>
         </ol>
       </>

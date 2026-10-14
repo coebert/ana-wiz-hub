@@ -52,7 +52,7 @@ const DRUGS: Drug[] = [
     cls: "steroid",
     use: "Adrenal crisis · thyroid storm · myxoedema · pituitary apoplexy",
     dose:
-      "Adrenal crisis: 100 mg IV stat, then 200 mg/24 h (50 mg q6h or infusion).\nThyroid storm: 100 mg IV q8h.\nSurgical cover (major): 100 mg IV at induction + 200 mg/24 h × 24–72 h.",
+      "Adrenal crisis: 100 mg IV stat, then 200 mg/24 h (50 mg q6h or infusion).\nThyroid storm (ATA): 300 mg IV load, then 100 mg q8h.\nSurgical cover (major): 100 mg IV at induction + 200 mg/24 h × 24–72 h.",
     onset: "30–60 min IV (genomic effects). Peak anti-inflammatory at 4–6 h.",
     duration: "Biological t½ 8–12 h.",
     mechanism:
@@ -319,7 +319,7 @@ const DRUGS: Drug[] = [
     contraindications:
       "Untreated adrenal insufficiency — give hydrocortisone FIRST (T3 accelerates cortisol metabolism → precipitates adrenal crisis). Cardiac ischaemia (caution).",
     pearl:
-      "Always give IV hydrocortisone 100 mg q8h alongside thyroid hormone in myxoedema coma — the two often coexist, and missing it is fatal.",
+      "Give empiric IV glucocorticoid cover before thyroid hormone in myxoedema coma; ATA specifies stress-appropriate dosing rather than a fixed hydrocortisone regimen.",
   },
 ];
 

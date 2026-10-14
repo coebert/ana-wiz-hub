@@ -275,7 +275,7 @@ const ALGOS: AlgoDef[] = [
         kind: "drug",
         title: "Step 4 — Block conversion (steroid)",
         detail: "Blocks peripheral T4→T3 AND treats relative adrenal insufficiency that frequently coexists.",
-        dose: "Hydrocortisone 100 mg IV q8h\n· OR dexamethasone 2 mg IV q6h",
+        dose: "ATA: hydrocortisone 300 mg IV load, then 100 mg q8h\n· OR dexamethasone 2 mg IV q6h",
       },
       {
         id: "ts-8",

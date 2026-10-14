@@ -106,7 +106,7 @@ const workedExamples: WorkedExample[] = [
         <li><strong>Step 1 — β-blockade</strong>: propranolol 1 mg IV titrated, or carefully titrated esmolol if appropriate after haemodynamic assessment. High-dose propranolol, not esmolol, reduces T₄→T₃ conversion.</li>
         <li><strong>Step 2 — block synthesis</strong>: PTU 500–1000 mg PO/NG load then 250 mg q4h (PTU preferred — also blocks peripheral conversion).</li>
         <li><strong>Step 3 — block release</strong>: Lugol's iodine 5 drops PO q6h <em>≥ 1 h after PTU</em> (otherwise iodine fuels storm).</li>
-        <li><strong>Step 4 — steroid</strong>: hydrocortisone 100 mg IV q8h (blocks conversion + treats relative adrenal insufficiency).</li>
+        <li><strong>Step 4 — steroid</strong>: ATA regimen hydrocortisone 300 mg IV load, then 100 mg IV q8h (blocks conversion + treats relative adrenal insufficiency).</li>
         <li><strong>Step 5 — supportive</strong>: paracetamol + active cooling (avoid aspirin), fluids, treat surgical/septic precipitant. Plasmapheresis if refractory.</li>
       </ul>
     ),
@@ -268,8 +268,8 @@ const IcuEndocrineEmergenciesTopic = () => {
                 <p className="font-semibold text-foreground text-sm">Myxoedema coma (mortality 30–40 %)</p>
                 <p className="text-sm text-muted-foreground mt-1">
                   Severe hypothyroid decompensation: <strong>hypothermia, hypoventilation,
-                  hyponatraemia, bradycardia, obtunded</strong>. Treat initially with IV levothyroxine under endocrine advice, plus IV hydrocortisone 100 mg q8h
-                  (always cover potential adrenal insufficiency), passive rewarming,
+                  hyponatraemia, bradycardia, obtunded</strong>. Treat initially with IV levothyroxine under endocrine advice, with preceding IV glucocorticoid cover
+                  (cover potential adrenal insufficiency), passive rewarming,
                   ventilation as needed. Endocrinology referral.
                 </p>
               </div>
