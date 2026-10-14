@@ -67,7 +67,11 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "resource-poor-anaesthesia": {
     status: "in-progress",
-    note: "Evidence lesson added (WFSA workforce survey, ASOS, WHO checklist) with sources list. Lancet Commission figures still need source text.",
+    note: "Evidence lessons added (WFSA workforce survey, ASOS, WHO checklist; ASOS caesarean spinal vs GA substudy) with sources lists. Lancet Commission figures still need source text.",
+  },
+  "aki-rrt": {
+    status: "in-progress",
+    note: "STARRT-AKI RRT-timing lesson added (abstract-verified) with sources list; timing-table verdict softened. Other subsections still need review.",
   },
   "sepsis": {
     status: "in-progress",

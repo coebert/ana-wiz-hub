@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { RrtTimingTeaching } from "@/components/topic/RrtTimingTeaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
@@ -823,7 +824,7 @@ const AkiRrtTopic = () => {
                     ["AKIKI (Gaudry, NEJM 2016)", "Early (≤ 6 h) vs delayed RRT in KDIGO stage 3 AKI, n = 620", "No 60-d mortality difference (48.5% vs 49.7%); 49% of delayed arm avoided RRT", "Supports waiting for AEIOU triggers"],
                     ["ELAIN (Zarbock, JAMA 2016)", "Early (KDIGO 2) vs delayed (KDIGO 3) RRT, single-centre, n = 231", "90-d mortality 39.3% vs 54.7% with early (HR 0.66)", "Outlier positive; not reproduced in larger trials"],
                     ["IDEAL-ICU (Barbar, NEJM 2018)", "Early (12 h) vs delayed (48 h) RRT in septic shock + RIFLE-F, n = 488", "Stopped early for futility — no 90-d mortality difference", "No benefit to early initiation in septic AKI"],
-                    ["STARRT-AKI (Bagshaw, NEJM 2020)", "Accelerated (≤ 12 h) vs standard RRT initiation, n = 3 019", "No 90-d mortality difference (43.9% vs 43.7%); MORE dialysis dependence with accelerated (10.4% vs 6.0%)", "Definitive — wait for conventional indications"],
+                    ["STARRT-AKI (Bagshaw, NEJM 2020)", "Accelerated (≤ 12 h) vs standard RRT initiation, n = 3 019", "No 90-d mortality difference (43.9% vs 43.7%); MORE dialysis dependence with accelerated (10.4% vs 6.0%)", "Largest trial — no benefit from accelerated start; standard strategy reasonable"],
                     ["AKIKI 2 (Gaudry, Lancet 2021)", "Further delayed vs delayed RRT (very late strategy) in KDIGO 3, n = 278", "No mortality benefit and trend to harm from very late strategy", "Don't delay past urea > 40 mmol/L or 72 h of oliguria"],
                     ["RENAL (NEJM 2009)", "Higher (40 mL/kg/h) vs lower (25 mL/kg/h) CVVHDF dose, n = 1 508", "No 90-d mortality difference (44.7% vs 44.7%)", "Effluent dose 20–25 mL/kg/h is standard"],
                     ["ATN (VA/NIH, NEJM 2008)", "Intensive vs less intensive RRT, n = 1 124", "No 60-d mortality difference (53.6% vs 51.5%)", "Confirms standard-dose CRRT/IHD"],
@@ -845,6 +846,9 @@ const AkiRrtTopic = () => {
                 </tbody>
               </table>
             </div>
+          </CollapsibleSubsection>
+          <CollapsibleSubsection title="RRT Timing: STARRT-AKI in Detail">
+            <RrtTimingTeaching />
           </CollapsibleSubsection>
         </ExamSection>
 
