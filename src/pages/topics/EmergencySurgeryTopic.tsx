@@ -244,21 +244,19 @@ const EmergencySurgeryTopic = () => {
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Total Intravenous Anaesthesia for Emergency Surgery</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              TIVA is well established electively but historically under-used for emergency RSI. Rationale includes reduced PONV, avoidance of volatile agents in malignant hyperthermia susceptibility, elimination of theatre volatile pollution during rapid turnover, and smoother haemodynamics with careful titration in the shocked patient. <InlineRef topicId="emergency-surgery" refLabel="Anaesthesia 2026 (TIVA emergency)" />
+              TIVA is well established electively, but its use in emergencies — especially rapid sequence induction — remains limited. <InlineRef topicId="emergency-surgery" refLabel="Anaesthesia 2026 (TIVA emergency)" /> The national guideline expects every anaesthetist to deliver it competently and safely, because volatile anaesthesia is sometimes not possible or is contraindicated. <InlineRef topicId="emergency-surgery" refLabel="AoA/SIVA TIVA 2019" />
             </p>
             <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">TIVA-based RSI technique</h3>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
-              <li>Target-controlled infusion using the Marsh (blood-target) or Schnider (effect-site, age/lean-body-mass adjusted) propofol models; effect-site targeting reduces the delay to loss of consciousness relevant to RSI timing.</li>
-              <li>Co-induction with a short-acting opioid (remifentanil TCI/effect-site) smooths the pressor response and reduces propofol dose requirement.</li>
-              <li>Reduced target concentrations in shock — hypovolaemia and low cardiac output increase effect-site drug delivery for a given plasma target, risking cardiovascular collapse if targets are not reduced.</li>
-              <li>Use a pre-checked dedicated IV line with anti-reflux and anti-siphon valves, and keep the cannula and connection visible throughout to detect extravasation or disconnection promptly.</li>
+              <li>Propofol is usually given by target-controlled infusion; effect-site targeting is the mode generally used to time loss of consciousness for induction. Know which model your pump uses before an emergency.</li>
+              <li>Pharmacological reasoning: in shock, a smaller central volume and lower cardiac output mean a given target produces a larger effect, so start with reduced targets and titrate.</li>
+              <li>Give the infusion through a dedicated, pre-checked line with an anti-reflux valve, and keep the cannula and connections visible so disconnection or extravasation is noticed. <InlineRef topicId="emergency-surgery" refLabel="AoA/SIVA TIVA 2019" /></li>
             </ul>
             <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Safety considerations from national reports</h3>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
-              <li>Risk of accidental awareness is higher with TIVA than volatile anaesthesia, particularly when combined with neuromuscular blockade masking clinical signs (NAP5).</li>
-              <li>Pump programming errors, line disconnection, and drug/diluent dilution errors are recurring themes in incident reports.</li>
-              <li>Processed EEG (e.g. BIS/entropy) monitoring is recommended whenever TIVA is combined with neuromuscular blockade.</li>
-              <li>Local protocols, checklists and structured training reduce error rates and are advocated for departments extending TIVA to emergency practice.</li>
+              <li>NAP5 identified TIVA, particularly combined with neuromuscular blockade, as a risk factor for accidental awareness; failures were often drug-delivery problems. <InlineRef topicId="emergency-surgery" refLabel="NAP5 2014" /></li>
+              <li>The joint guideline recommends processed EEG monitoring when TIVA is used with neuromuscular blockade. <InlineRef topicId="emergency-surgery" refLabel="AoA/SIVA TIVA 2019" /></li>
+              <li>Departments extending TIVA to emergency lists should provide local protocols and training, as the guideline sets standards for all anaesthetists rather than TIVA enthusiasts only. <InlineRef topicId="emergency-surgery" refLabel="AoA/SIVA TIVA 2019" /></li>
             </ul>
             <div className="my-4"><EmergencyTivaTeaching /></div>
             <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Patient selection</h3>
@@ -491,15 +489,15 @@ const EmergencySurgeryTopic = () => {
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fasciotomy for Acute Compartment Syndrome</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Acute compartment syndrome is a surgical emergency in which pressure within a closed fascial compartment exceeds perfusion pressure, causing ischaemia and
-              irreversible muscle and nerve necrosis within hours. Decompression is time-critical <InlineRef topicId="emergency-surgery" refLabel="BOA Fasciotomy 2020" />.
+              Acute compartment syndrome causes local tissue ischaemia from raised pressure within a myo-fascial compartment. Early diagnosis and treatment are vital, and immediate surgical decompression should follow diagnosis (NCEPOD category 1). <InlineRef topicId="emergency-surgery" refLabel="BOAST Compartment Syndrome 2025" />
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li><strong>Diagnosis:</strong> clinical — pain out of proportion to injury, pain on passive stretch, a tense swollen compartment, and escalating analgesic requirement. Paraesthesia is late; pulselessness and pallor are very late and their presence does not exclude the diagnosis. Compartment pressure measurement helps in the obtunded or blocked patient (a differential pressure — diastolic minus compartment pressure — below 30 mmHg is the usual threshold).</li>
-              <li><strong>Anaesthetic caution:</strong> regional blockade and patient-controlled analgesia can mask the cardinal warning sign of escalating pain. Where compartment syndrome is a real risk (tibial fracture, crush, revascularised limb, prolonged lithotomy), discuss the analgesic plan with the surgical team, document it, and hand over the need for hourly limb observations rather than simply withholding effective analgesia.</li>
-              <li><strong>Preoperative:</strong> remove casts and dressings, keep the limb at heart level (not elevated), correct hypotension because perfusion pressure is what matters, and treat hypoxaemia. Do not delay for imaging.</li>
-              <li><strong>Intraoperative:</strong> general anaesthesia is usual; expect significant blood loss from open compartments and a reperfusion insult on decompression — hyperkalaemia, metabolic acidosis, myoglobinaemia and a fall in blood pressure. Have calcium, insulin/dextrose and a vasopressor immediately available, ventilate to normocapnia and monitor the ECG closely.</li>
-              <li><strong>Postoperative:</strong> aggressive crystalloid to maintain urine output and limit myoglobinuric AKI, monitor creatine kinase, potassium and renal function, provide multimodal analgesia for what are extremely painful wounds, and plan repeat theatre visits for debridement and delayed closure or grafting. Involve critical care early in crush injury or multi-compartment involvement.</li>
+              <li><strong>Diagnosis:</strong> the key clinical findings are pain out of proportion to the injury and pain on passive movement of the compartment's muscles. At-risk patients should be assessed hourly, with the dose and rate of analgesics, especially opioids, recorded. <InlineRef topicId="emergency-surgery" refLabel="BOAST Compartment Syndrome 2025" /></li>
+              <li><strong>Pressure measurement:</strong> where signs are inconclusive or assessment is incomplete (for example impaired consciousness or a regional block), consider measuring pressure in every suspected compartment with a simultaneous blood pressure. A diastolic-minus-compartment difference below 30 mmHg indicates increased risk, and a consultant orthopaedic surgeon decides on decompression; urgent decompression should be considered when absolute pressure exceeds 40 mmHg. <InlineRef topicId="emergency-surgery" refLabel="BOAST Compartment Syndrome 2025" /></li>
+              <li><strong>Regional anaesthesia:</strong> in limb trauma it should follow joint decision-making between patient, anaesthetist and surgeon with documented consent, and an agreed policy on who monitors for compartment syndrome afterwards — invasive monitoring or review by staff trained in both regional anaesthesia and compartment assessment. <InlineRef topicId="emergency-surgery" refLabel="BOAST Compartment Syndrome 2025" /></li>
+              <li><strong>Before theatre:</strong> with symptoms or signs, release circumferential dressings to expose the skin, elevate the limb and re-evaluate within 30 minutes. <InlineRef topicId="emergency-surgery" refLabel="BOAST Compartment Syndrome 2025" /></li>
+              <li><strong>Surgery:</strong> open decompression of all involved compartments with debridement of dead muscle; two-incision, four-compartment decompression for the lower leg. Discuss with plastic surgery within 24 hours and re-explore within 72 hours. Late presentations need a two-consultant decision, and non-operative management with renal protection is an option. <InlineRef topicId="emergency-surgery" refLabel="BOAST Compartment Syndrome 2025" /></li>
+              <li><strong>Anaesthetic reasoning:</strong> decompressing ischaemic muscle can release potassium, acid and myoglobin, so anticipate hypotension, hyperkalaemia and kidney injury, check potassium, creatine kinase and renal function, and plan analgesia for very painful wounds and repeat theatre visits.</li>
             </ul>
             <div className="my-4"><EmergencyCompartmentPressureTeaching /></div>
           </div>
