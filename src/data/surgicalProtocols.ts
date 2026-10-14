@@ -76,6 +76,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
   },
   {
     id: "protocol-cardiac",
+    sources: ["ATACAS 2017"],
     title: "Cardiac",
     link: "/clinical/cardiothoracic",
     scope: "CABG and valve surgery on cardiopulmonary bypass.",
@@ -88,7 +89,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
       "Arterial line before induction; central line, TOE",
       "Haemodynamically stable induction; maintain coronary perfusion pressure",
       "Heparin for bypass (target ACT typically >400–480 s), reversal with protamine; watch for protamine reaction",
-      "Antifibrinolytic (tranexamic acid); viscoelastic-guided transfusion",
+      "Antifibrinolytic (tranexamic acid): ATACAS halved reoperation for bleeding/tamponade (1.4% vs 2.8%) but raised seizures (0.7% vs 0.1%); viscoelastic-guided transfusion",
     ],
     postop: [
       "Cardiac ICU: early extubation when stable",
@@ -183,6 +184,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
   },
   {
     id: "protocol-obstetric",
+    sources: ["Kinsella 2018 vasopressor consensus", "Gayet-Ageron 2018 TXA delay"],
     title: "Obstetric (Caesarean Section)",
     link: "/clinical/obstetric-anaesthesia",
     scope: "Elective and emergency caesarean section.",
@@ -195,7 +197,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
       "Left uterine displacement to avoid aortocaval compression",
       "Spinal: phenylephrine infusion to maintain BP near baseline",
       "GA: RSI, difficult/failed obstetric airway plan (OAA/DAS)",
-      "Oxytocin by slow bolus/infusion; tranexamic acid for PPH",
+      "Oxytocin by slow bolus/infusion; tranexamic acid for PPH as early as possible — benefit falls ~10% per 15 min of delay and is lost after 3 h",
     ],
     postop: [
       "Intrathecal diamorphine/morphine + regular paracetamol and NSAIDs",
@@ -263,6 +265,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
   },
   {
     id: "protocol-paediatric",
+    sources: ["Thomas 2018 clear fluids"],
     title: "Paediatric (Day Case)",
     link: "/clinical/paediatric-anaesthesia",
     scope: "Common day-case surgery in children.",
