@@ -1,4 +1,5 @@
 import { EntAnaesthesiaAtlas } from "@/components/topic/EntAnaesthesiaAtlas";
+import { LaryngectomyEmergencyTeaching } from "../../components/topic/LaryngectomyEmergencyTeaching";
 import { Helmet } from "react-helmet-async";
 import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
@@ -73,7 +74,7 @@ const entFaqs: Array<[string, string]> = [
   ],
   [
     "What are the considerations for tracheostomy and laryngectomy airway management?",
-    "For surgical tracheostomy under general anaesthesia, the existing endotracheal tube is withdrawn under direct vision to just above the stoma before tracheostomy tube insertion, with FiO₂ 1.0 throughout. At total laryngectomy, the surgeon places an armoured cuffed tube into the divided distal trachea; the anaesthetist connects a sterile circuit and confirms bilateral ventilation and ETCO₂ before removing the oral tube. Post-laryngectomy, the patient is a permanent neck-breather — there is no connection between mouth/nose and trachea, so bag-mask ventilation via the face will not work. Emergency ventilation must be via the stoma. The National Tracheostomy Safety Project (NTSP) red emergency board and colour-coded bedhead signs are mandatory. For percutaneous dilatational tracheostomy (PDT) in ICU, bronchoscopic guidance reduces paratracheal misplacement risk.",
+    "For surgical tracheostomy, agree and directly observe the transition from the existing tracheal tube to the new airway. At total laryngectomy, confirm ventilation and waveform capnography through the tube in the divided distal trachea before removing the oral tube. A total laryngectomy is a permanent neck airway with no connection to the mouth or nose: give oxygen and rescue ventilation through the stoma. If the anatomy is uncertain, give oxygen to face and stoma. Follow the NTSP red algorithm: remove covers/inner cannula, test with a suction catheter, deflate any cuff and remove a tube if the patient does not improve. Leave a TEP voice prosthesis in place. Rescue with a mask over the stoma, escalating to a capnography-confirmed stomal tube. Display the appropriate emergency bedhead sign.",
   ],
 ];
 
@@ -371,7 +372,7 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Managing problems during the procedure</strong>: <em>bleeding</em> — apply pressure, insert the tube to tamponade, and convert to surgical exploration if it continues; <em>posterior wall puncture</em> (seen on bronchoscopy) — withdraw and redirect, with ENT/thoracic review if a tear is suspected; <em>ETT cuff puncture or accidental extubation</em> — re-advance the tube under bronchoscopic view or re-intubate via laryngoscopy, keeping a smaller tube to hand; <em>desaturation</em> — stop, recruit and re-oxygenate before continuing</li>
               <li><strong>Immediately after</strong>: confirm ventilation with waveform capnography and bilateral air entry, secure the tube with sutures plus tapes, document tube type/size and insertion depth, complete an NTSP bedside emergency algorithm sign, check pressures and cuff pressure (20–30 cmH₂O), and request a chest radiograph if there was difficulty or suspicion of pneumothorax. Keep the first tube change to experienced staff after 5–7 days</li>
               <li><strong>Stomal transition at laryngectomy</strong>: surgeon inserts an armoured cuffed tube into the divided distal trachea; you connect a sterile circuit off the field. Confirm bilateral ventilation and ETCO₂ before removing the oral tube</li>
-              <li><strong>Neck-breather safety</strong>: post-laryngectomy there is <strong>no connection</strong> between mouth/nose and trachea. Bag-mask via face will not work — ventilate via the stoma. NTSP red emergency board mandatory</li>
+              <li><strong>Neck-breather safety</strong>: post-laryngectomy there is <strong>no connection</strong> between mouth/nose and trachea. Bag-mask via face will not work — ventilate via the stoma. Display the NTSP red bedhead sign and follow the detailed emergency sequence below<InlineRef topicId="ent-anaesthesia" refLabel="NTSP Laryngectomy Algorithm" /></li>
               <li><strong>Le Fort fractures</strong>: I (maxilla), II (pyramidal — maxilla + nasal bridge), III (craniofacial disjunction). Risks CSF leak and airway compromise — nasal intubation contraindicated in II/III. See the expanded management notes below</li>
               <li><strong>Free flap surgery</strong>: long procedures (8–12h). Avoid α-agonist boluses (flap vasospasm); use noradrenaline by infusion, MAP ≥70 mmHg, normothermia, Hb 80–100 g/L</li>
             </ul>
@@ -383,6 +384,7 @@ const ENTAnaesthesiaTopic = () => {
                 <LeFortFractureDiagram />
               </div>
             </div>
+            <LaryngectomyEmergencyTeaching />
             <h4 className="text-base font-semibold text-foreground mt-5 mb-2">Anaesthetic management of Le Fort and mid-face fractures</h4>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">
               These are usually high-energy injuries in young patients, and the airway, the associated injuries and the bleeding are all more dangerous than the fracture itself<InlineRef topicId="ent-anaesthesia" refLabel="BJA Educ Maxillofacial 2018" />.
