@@ -19,6 +19,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 import { AntibioticExposureTeaching } from "@/components/topic/AntibioticExposureTeaching";
 import { CandidaemiaTeaching } from "@/components/topic/CandidaemiaTeaching";
 import { AntimalarialAntisepticTeaching } from "@/components/topic/AntimalarialAntisepticTeaching";
+import { ResistanceTeaching } from "@/components/topic/ResistanceTeaching";
 import { AntiviralEvidenceTeaching } from "@/components/topic/AntiviralEvidenceTeaching";
 
 const antimicrobialsPharmFaqs: Array<[string, string]> = [
@@ -387,6 +388,7 @@ const AntimicrobialsTopic = () => {
             <p className="text-sm text-muted-foreground mt-3">
               Prophylaxis is not routine for every ICU admission: selection and dosing should follow the local microbiology service, patient-specific pharmacokinetics and therapeutic drug monitoring where indicated <InlineRef topicId="antimicrobials-pharm" refLabel="ESICM TDM 2020" />.
             </p>
+            <ResistanceTeaching />
           </div>
 
           <div>

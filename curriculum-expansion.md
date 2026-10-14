@@ -48,3 +48,4 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 - Antimicrobials: antiviral evidence lesson citing CrossRef-confirmed Elion 1977, Dobson 2015, Beigel 2020 (ACTT-1) and Hammond 2022 (EPIC-HR). No excerpts added. Topic not complete.
 - Antimicrobials: antibiotic exposure lesson (DALI 2014, ESICM TDM 2020, IDSA stewardship 2016) and candidaemia lesson (Reboli 2007, IDSA 2016), all CrossRef-confirmed. All three tabs now carry source-led lessons; no excerpts added.
 - Antimicrobials: antimalarial (SEAQUAMAT 2005, AQUAMAT 2010) and antiseptic (Darouiche 2010, CLEAN 2015, NAP6) lesson added, CrossRef-confirmed; no excerpts added.
+- Antimicrobials: resistance lesson (Murray 2022, Magiorakos 2012). Toxicology: new paracetamol subsection (SNAP 2014, MHRA 2012, TOXBASE). CrossRef-confirmed; no excerpts. Toxicology not complete.

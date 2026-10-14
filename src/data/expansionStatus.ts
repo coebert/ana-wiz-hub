@@ -30,7 +30,7 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
   },
   pharmacology: {
     status: "pending",
-    note: "Differential blockade batch started (local anaesthetics). Meyer–Overton evidence added (volatile agents). Antimicrobials (antibiotics, antifungals, antivirals, antimalarials, antiseptics) expanded. Remaining pharmacology subsections need individual review.",
+    note: "Differential blockade batch started (local anaesthetics). Meyer–Overton evidence added (volatile agents). Antimicrobials (antibiotics, antifungals, antivirals, antimalarials, antiseptics, resistance) expanded; toxicology paracetamol batch added. Remaining pharmacology subsections need individual review.",
   },
   anatomy: {
     status: "pending",
@@ -56,9 +56,13 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
 
 /** Topic-level overrides for topics with a completed expansion batch. */
 export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
+  toxicology: {
+    status: "in-progress",
+    note: "Paracetamol poisoning subsection added (NAPQI mechanism, 2012 UK treatment line, SNAP 2014 regimen evidence, anaphylactoid reactions, learning checks). Other toxicology subsections still need review.",
+  },
   "antimicrobials-pharm": {
     status: "expanded",
-    note: "Antibiotics (critical-illness exposure, DALI, loading doses, TDM, stewardship), antifungals (candidaemia sequencing per IDSA 2016 and Reboli 2007) antivirals (selectivity and trial interpretation), antimalarials (SEAQUAMAT/AQUAMAT) and antiseptics (Darouiche 2010, CLEAN 2015, NAP6 chlorhexidine allergy) lessons added with learning checks.",
+    note: "Antibiotics (critical-illness exposure, DALI, loading doses, TDM, stewardship), antifungals (candidaemia sequencing per IDSA 2016 and Reboli 2007) antivirals (selectivity and trial interpretation), antimalarials (SEAQUAMAT/AQUAMAT) and antiseptics (Darouiche 2010, CLEAN 2015, NAP6 chlorhexidine allergy) and resistance (GBD 2022 burden, MDR/XDR definitions, spread, selection) lessons added with learning checks.",
   },
   "volatile-agents": {
     status: "in-progress",
