@@ -31,7 +31,7 @@
  *   node scripts/verify-claims.mjs                       # verify all
  *   node scripts/verify-claims.mjs --topic propofol      # one topic
  *   node scripts/verify-claims.mjs --limit 20            # cap for cost
- *   node scripts/verify-claims.mjs --model google/gemini-2.5-flash
+ *   node scripts/verify-claims.mjs --model google/gemini-3.8-flash
  *
  * Requires LOVABLE_API_KEY in the environment (already present inside
  * Lovable edge functions and CI). The script exits 0 even when issues are
@@ -49,7 +49,7 @@ const args = process.argv.slice(2);
 const EXTRACT_ONLY = args.includes("--extract-only");
 const TOPIC_FILTER = argValue("--topic");
 const LIMIT = Number(argValue("--limit") ?? "0") || 0;
-const MODEL = argValue("--model") ?? "google/gemini-2.5-flash";
+const MODEL = argValue("--model") ?? "google/gemini-3.8-flash";
 const ENDPOINT =
   process.env.LOVABLE_AI_GATEWAY ?? "https://ai.gateway.lovable.dev/v1/chat/completions";
 

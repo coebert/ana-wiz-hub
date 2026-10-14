@@ -16,7 +16,7 @@ on:
       model:
         description: "Lovable AI model id"
         required: false
-        default: "google/gemini-2.5-flash"
+        default: "google/gemini-3.8-flash"
       limit:
         description: "Max triples to verify (0 = all)"
         required: false
@@ -42,7 +42,7 @@ jobs:
           LOVABLE_API_KEY: ${{ secrets.LOVABLE_API_KEY }}
         run: |
           node scripts/verify-claims.mjs \
-            --model "${{ github.event.inputs.model || 'google/gemini-2.5-flash' }}" \
+            --model "${{ github.event.inputs.model || 'google/gemini-3.8-flash' }}" \
             --limit "${{ github.event.inputs.limit || '0' }}"
 
       - name: Upload report
