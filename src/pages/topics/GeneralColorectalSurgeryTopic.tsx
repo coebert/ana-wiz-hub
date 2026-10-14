@@ -207,8 +207,7 @@ const GeneralColorectalSurgeryTopic = () => (
         <GeneralSurgeryAtlas />
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
           <section className="space-y-8 mb-10">
-            <div>
-            <div>
+            <div className="space-y-6">
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Preoperative Assessment & Optimisation: NICE NG180 Framework</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                 <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
@@ -221,7 +220,7 @@ const GeneralColorectalSurgeryTopic = () => (
                 </div>
               </div>
               
-              <h3 className="text-lg font-semibold text-foreground mb-2 mt-6">Practical Assessment Sequence</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-2">Practical Assessment Sequence</h3>
               <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground leading-relaxed">
                 <li><strong className="text-foreground text-xs uppercase tracking-wider">Screening</strong>: Full blood count (Hb), Ferritin/Transferrin saturations, and nutritional status (MUST) early in the pathway.</li>
                 <li><strong className="text-foreground text-xs uppercase tracking-wider">Stratification</strong>: Calculate mortality/complication risk (P-POSSUM, NSQIP). Arrange CPET for major/complex cases to identify physiological reserve and specific limitations.</li>
@@ -230,12 +229,10 @@ const GeneralColorectalSurgeryTopic = () => (
                 <li><strong className="text-foreground text-xs uppercase tracking-wider">Final Planning</strong>: 6h/2h fasting, carbohydrate loading (except in high-risk diabetes), and clarify mechanical bowel preparation (avoid routine use; oral antibiotics + MBP if indicated).</li>
               </ol>
 
-              <ul className="mt-6 space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
                 <li><strong>Neoadjuvant therapy</strong>: Check for cardiotoxicity (5-FU spasm, anthracyclines), neuropathy, marrow suppression, and fatigue.</li>
               </ul>
             </div>
-              </div>
-              
               <h3 className="text-lg font-semibold text-foreground mb-2 mt-6">Practical Assessment Sequence</h3>
               <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground leading-relaxed">
                 <li><strong className="text-foreground text-xs uppercase tracking-wider">Screening</strong>: Full blood count (Hb), Ferritin/Transferrin saturations, and nutritional status (MUST) early in the pathway.</li>
