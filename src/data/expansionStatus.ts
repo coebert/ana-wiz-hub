@@ -213,7 +213,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   // --- Earlier completed batches ---
   "mechanical-ventilation": {
     status: "expanded",
-    note: "Shared APRV lesson: physiology, settings, monitoring, troubleshooting and evidence-based cautions. Stress ulcer prophylaxis lesson (SUP-ICU 2018, REVISE 2024) added with sources list; care-bundle SUP-ICU misstatement corrected. PROSEVA prone-positioning lesson added; PROSEVA key-point citation fixed. Older sections reviewed: EOLIA ECMO criteria, respiratory-failure definitions, FLORALI mortality attribution, Masip 2000 (NIV not CPAP), diaphragm atrophy data and ARDS escalation order corrected.",
+    note: "ICU weaning lesson added: AARC 2024 readiness screen, SBT method/duration, oxygen and daily-assessment cautions, intolerance and separate airway/extubation assessment; three learning checks and verified short quotations. Related RSBI example and readiness summary reconciled. Shared APRV lesson: physiology, settings, monitoring, troubleshooting and evidence-based cautions. Stress ulcer prophylaxis lesson (SUP-ICU 2018, REVISE 2024) added with sources list; care-bundle SUP-ICU misstatement corrected. PROSEVA prone-positioning lesson added; PROSEVA key-point citation fixed. Older sections reviewed: EOLIA ECMO criteria, respiratory-failure definitions, FLORALI mortality attribution, Masip 2000 (NIV not CPAP), diaphragm atrophy data and ARDS escalation order corrected. Editorial/source-led expansion, not consultant certification.",
   },
   "ent-anaesthesia": {
     status: "expanded",
