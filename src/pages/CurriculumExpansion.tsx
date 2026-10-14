@@ -10,6 +10,8 @@ import {
 } from "@/data/curriculum";
 import {
   expansionFor,
+  SECTION_EXPANSION,
+  TOPIC_EXPANSION,
   STATUS_LABEL,
   type ExpansionStatus,
 } from "@/data/expansionStatus";
@@ -224,6 +226,10 @@ const CurriculumExpansion = () => {
                   {topics.length} topic{topics.length === 1 ? "" : "s"} shown
                 </p>
               </div>
+              <p className="mt-2 text-xs md:text-sm text-muted-foreground">
+                <StatusBadge status={SECTION_EXPANSION[section].status} />{" "}
+                {SECTION_EXPANSION[section].note}
+              </p>
               <ul className="mt-3 flex flex-col gap-2">
                 {topics.map(({ topic, entry }) => (
                   <li
