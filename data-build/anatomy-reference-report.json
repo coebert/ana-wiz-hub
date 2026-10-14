@@ -37,6 +37,60 @@
           "uncertainty": [
             "Clock-face orientation depends on scope rotation and viewing convention."
           ]
+        },
+        {
+          "id": "headNeckFolio-neck-c6-axial",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "headNeckFolio-carotid",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "headNeckFolio-orbit-frontal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "headNeckFolio-superficial",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "headNeckFolio-orbit",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "airwayFolio-laryngoscopic",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "airwayFolio-axial",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "airwayFolio-coronal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "airwayFolio-sagittal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
         }
       ]
     },
@@ -72,7 +126,32 @@
       ],
       "issues": [],
       "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
-      "diagramsNeedingReview": []
+      "diagramsNeedingReview": [
+        {
+          "id": "neuroFolio-willis",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "neuroFolio-midsagittal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "neuroFolio-skullbase-superior",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "neuroFolio-skullbase-inferior",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        }
+      ]
     },
     {
       "topicId": "spinal-anatomy",
@@ -106,6 +185,24 @@
           "id": "InteractiveDermatomeMap",
           "uncertainty": [
             "Dermatome boundaries vary between reference charts; this map is schematic, not a definitive boundary map."
+          ]
+        },
+        {
+          "id": "spinalFolio-caudal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "spinalFolio-cauda-equina",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "spinalFolio-sagittal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
           ]
         }
       ]
@@ -146,7 +243,20 @@
         {
           "id": "DiaphragmDiagram",
           "uncertainty": [
-            "Aperture laterality and phrenic courses were corrected; the schematic remains simplified and is not a validated anatomical model."
+            "The schematic is simplified; aperture laterality and phrenic courses require comparison with an anatomical source. This is not a validated anatomical model."
+          ]
+        },
+        {
+          "id": "thoracicFolio-first-rib",
+          "uncertainty": [
+            "Artwork source and public-domain status require verification.",
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "thoracicFolio-anterior",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
           ]
         }
       ]
@@ -219,7 +329,20 @@
       ],
       "issues": [],
       "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
-      "diagramsNeedingReview": []
+      "diagramsNeedingReview": [
+        {
+          "id": "abdominalFolio-retroperitoneum",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "abdominalFolio-anterior",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        }
+      ]
     },
     {
       "topicId": "upper-limb-anatomy",
@@ -250,7 +373,38 @@
       ],
       "issues": [],
       "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
-      "diagramsNeedingReview": []
+      "diagramsNeedingReview": [
+        {
+          "id": "upperLimbFolio-upper-arteries",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "upperLimbFolio-axilla",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "upperLimbFolio-forearm",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "upperLimbFolio-upper-nerves",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "upperLimbFolio-upper-veins",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        }
+      ]
     },
     {
       "topicId": "brachial-plexus",
@@ -310,7 +464,20 @@
       ],
       "issues": [],
       "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
-      "diagramsNeedingReview": []
+      "diagramsNeedingReview": [
+        {
+          "id": "brachialFolio-plexus",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "brachialFolio-interscalene",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        }
+      ]
     },
     {
       "topicId": "lower-limb-anatomy",
@@ -338,7 +505,38 @@
       ],
       "issues": [],
       "reviewNote": "Curated sources recorded; full claim-to-source matching still requires editorial review.",
-      "diagramsNeedingReview": []
+      "diagramsNeedingReview": [
+        {
+          "id": "lowerLimbFolio-lower-arteries",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "lowerLimbFolio-femoral",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "lowerLimbFolio-lower-nerves",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "lowerLimbFolio-popliteal",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        },
+        {
+          "id": "lowerLimbFolio-lower-veins",
+          "uncertainty": [
+            "Historical artwork and added labels/hotspots are not certified against current anatomical references."
+          ]
+        }
+      ]
     }
   ]
 }
