@@ -9,6 +9,7 @@ import tipssIllustration from "@/assets/ir/tipss-procedure.jpg";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { ThrombectomyAnaesthesiaTeaching } from "@/components/topic/ThrombectomyAnaesthesiaTeaching";
 
 const interventionalRadiologyFaqs: Array<[string, string]> = [
   [
@@ -21,7 +22,7 @@ const interventionalRadiologyFaqs: Array<[string, string]> = [
   ],
   [
     "What are the anaesthetic considerations for endovascular thrombectomy in acute stroke?",
-    "Speed is critical — door-to-puncture <90 min. Conscious sedation is preferred over general anaesthesia where feasible (faster, better functional outcomes in some trials), but GA is needed for agitation or airway risk. Maintain SBP 140–180 mmHg pre-recanalisation and avoid hypotension; tight glycaemic control 6–10 mmol/L; normocapnia; immediate post-procedure neuro-imaging."
+    "Both techniques are acceptable. The three randomised trials (SIESTA, ANSTROKE and GOLIATH) found no harm from general anaesthesia compared with conscious sedation, and a pooled analysis of five trials found general anaesthesia associated with higher recanalisation and 3-month functional independence — but more intra-procedural hypotension and pneumonia, with no mortality difference. The strongest determinant of outcome is haemodynamic management rather than the technique: avoid MAP below 70 mmHg and hypocapnia, maintain normoglycaemia and normothermia, and never delay reperfusion for an anaesthetic decision. Speed is critical — door-to-puncture <90 min; immediate post-procedure neuro-imaging is required."
   ]
 ];
 
@@ -338,6 +339,13 @@ const InterventionalRadiologyTopic = () => {
             </div>
             </CollapsibleSubsection>
           </ExamSection>
+
+          <ExamSection id="thrombectomy-evidence" exams={[Exam.FINAL]}>
+            <CollapsibleSubsection title="Evidence Base: Anaesthesia for Stroke Thrombectomy">
+              <ThrombectomyAnaesthesiaTeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
