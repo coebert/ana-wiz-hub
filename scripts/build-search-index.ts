@@ -273,13 +273,29 @@ function buildTopicEntry(topic: (typeof allTopics)[number]): SearchIndexEntry | 
       }
       if (queue.items.length > 0) proseQueues.push(queue);
       if (node.depth >= MAX_IMPORT_DEPTH) continue;
+      const namedImports = namedImportsOf(node.src, node.file);
       for (const dep of localImportsOf(node.src, node.file)) {
         if (seen.has(dep) || seen.size > MAX_IMPORTED_FILES) continue;
         seen.add(dep);
-        const src = readIfExists(dep);
+        let src = readIfExists(dep);
+        if (!src) continue;
+        // Shared modules (e.g. anatomyFolios.ts holds every topic's folios):
+        // keep only the named exports this topic actually imports, so one
+        // topic's diagram labels cannot leak into another's search results.
+        const allowed = namedImports.get(dep);
+        if (allowed) {
+          const blocks = sliceExports(src);
+          if (blocks) {
+            src = [...allowed]
+              .map((n) => blocks.get(n) ?? "")
+              .filter(Boolean)
+              .join("\n");
+            if (!src) continue; // import resolves to nothing we index
+          }
+        }
         // Imported components (Teaching sections, diagrams) have no stable
         // anchor context of their own; link them to the topic page top.
-        if (src) next.push({ file: dep, src, depth: node.depth + 1, anchor: null });
+        next.push({ file: dep, src, depth: node.depth + 1, anchor: null });
       }
     }
     frontier = next;
