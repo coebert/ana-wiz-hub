@@ -63,3 +63,4 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 - Blocked: day-surgery (AA/BADS 2019 full text not retrievable) and resource-poor (Lancet Commission abstract unavailable) — need accessible source text before expansion.
 - Batch 2: sepsis — 65 trial + HYPRESS lesson (abstract-verified, verbatim excerpts).
 - Batch 3: neurointensive care (HEMOTION + TRAIN), post-arrest (BOX oxygen) — abstract-verified.
+- surgical-protocols: ERAS evidence lesson (Greco 2014) — in progress

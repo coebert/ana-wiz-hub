@@ -5,6 +5,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 import { QuizSection } from "@/components/quiz/QuizSection";
 import { Exam } from "@/data/curriculum";
 import { surgicalProtocols } from "@/data/surgicalProtocols";
+import { ErasEvidenceTeaching } from "@/components/topic/ErasEvidenceTeaching";
 
 const T = "surgical-protocols";
 
@@ -42,6 +43,7 @@ const SurgicalProtocolsTopic = () => (
           preoperative assessment per the Association of Anaesthetists<InlineRef topicId={T} refLabel="AoA Preop 2021" /> and the WHO
           surgical safety checklist.<InlineRef topicId={T} refLabel="WHO Checklist 2009" />
         </p>
+        <ErasEvidenceTeaching />
         {surgicalProtocols.map((p) => (
           <ExamSection key={p.id} id={p.id} exams={[Exam.FINAL]}>
             <section className="space-y-4">
