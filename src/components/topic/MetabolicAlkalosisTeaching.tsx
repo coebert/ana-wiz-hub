@@ -2,12 +2,44 @@ import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { InlineRef } from "@/components/references/InlineRef";
 import { LessonSources } from "./LessonSources";
+import { topicReferences } from "@/data/references";
 
 const T = "metabolic-alkalosis";
 const R = ({ label }: { label: string }) => <InlineRef topicId={T} refLabel={label} />;
 const H = ({ children }: { children: ReactNode }) => <h3 className="text-lg font-semibold text-foreground">{children}</h3>;
 const Check = ({ question, children }: { question: string; children: ReactNode }) => <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: {question}</summary><p className="mt-2">{children}</p></details>;
 const wrap = "space-y-4 text-sm text-muted-foreground leading-relaxed";
+
+// Reuse verified excerpt records rather than maintaining another quotation copy.
+const ReviewQuote = ({ label }: { label: string }) => {
+  const ref = topicReferences[T]?.find(item => item.label === label);
+  if (!ref?.excerpt) return null;
+  return <blockquote className="border-l-2 border-primary pl-4 text-foreground"><p>“{ref.excerpt}”<R label={label} /></p></blockquote>;
+};
+
+export function AcidBaseAlkalosisTeaching() {
+  return <div className={wrap}>
+    <p>Park and Sidebotham's <em>Metabolic alkalosis and mixed acid–base disturbance in anaesthesia and critical care</em> (BJA Education, 2023;23:128–135) is available in full through <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10028421/" target="_blank" rel="noopener noreferrer" className="text-primary underline">its freely readable archived copy</a>. The short quotations below are the authors' wording; the accompanying explanations are teaching synthesis.</p>
+    <H>Recognise the process, not just the pH</H>
+    <ReviewQuote label="BJA 2023 definition" />
+    <p>Metabolic alkalosis is the non-respiratory alkalinising process. Read pH, bicarbonate and PaCO₂ together: a raised bicarbonate may instead be compensation for chronic respiratory acidosis. Mixed disorders can leave the measured pH normal or low; compare previous gases and assess the anion gap, albumin and clinical history rather than excluding alkalosis from pH alone.<R label="BJA 2023 mixed disorders" /></p>
+    <H>Separate generation from maintenance</H>
+    <ReviewQuote label="BJA 2023 maintenance" />
+    <p>Vomiting or gastric drainage removes acid and chloride; diuretics promote renal electrolyte losses; bicarbonate or metabolised precursors can add alkali. Ask separately why the kidney has not removed it: volume/chloride depletion, potassium deficiency and impaired renal function can maintain the disturbance after the original cause stops. Volume depletion activates the renin–angiotensin–aldosterone system (RAAS), favouring sodium retention and hydrogen/potassium loss.<R label="BJA 2023 alkali gain" /><R label="Core 2022 potassium" /></p>
+    <H>Check the clinical setting before choosing treatment</H>
+    <ReviewQuote label="BJA 2023 treatment" />
+    <p>Review gastric losses, diuretic and alkali exposure, volume status, blood pressure, chloride, potassium, magnesium and kidney function. Urine chloride can help classify the mechanism, but active diuretics and the examination matter; it is not an automatic instruction to give fluid.<R label="Core 2022 assessment" /><R label="Core 2022 urine chloride" /></p>
+    <ReviewQuote label="BJA 2023 chloride" />
+    <p>For a genuinely volume-depleted patient able to receive fluid, chloride-rich replacement can restore renal bicarbonate excretion. Potassium chloride addresses concomitant hypokalaemia; replacement needs local protocols, renal assessment and repeat measurements. A fluid-overloaded or mineralocorticoid-driven patient needs a different, cause-led strategy—not indiscriminate saline.<R label="BJA 2023 potassium" /><R label="BJA 2023 volume expansion" /></p>
+    <H>Post-hypercapnic alkalosis and treatment limits</H>
+    <p>When ventilation rapidly lowers chronically elevated PaCO₂, renal adaptation can persist, revealing metabolic alkalosis. Review previous gases, ventilation goals and chloride/potassium deficits; this is not a reason to deliberately hypoventilate. Acetazolamide may lower bicarbonate, but biochemical improvement is not evidence of faster weaning:<R label="BJA 2023 posthypercapnia" /></p>
+    <ReviewQuote label="BJA 2023 acetazolamide" />
+    <p>Alkalaemia can lower ionised calcium through increased albumin binding. Symptomatic or worsening disturbance requires senior assessment of the patient, ECG, electrolytes, gas trend and fluid balance; this is clinical safety synthesis, not an automatic pH-based treatment rule.<R label="BJA 2023 calcium" /></p>
+    <Check question="vomiting has stopped but bicarbonate stays high with low chloride and potassium. What should you explain?">The generating event has ended, but renal maintenance persists. Assess volume status, kidney function and electrolyte deficits, stop ongoing contributors and replace losses appropriately. A normal pH would not exclude a concurrent alkalosis if another acidifying process were present.</Check>
+    <p><Link to="/intensive-care/metabolic-alkalosis" className="text-primary underline">Metabolic Alkalosis: detailed assessment, causes, treatment and learning checks</Link></p>
+    <LessonSources topicId={T} labels={["BJA 2023 definition", "BJA 2023 maintenance", "BJA 2023 mixed disorders", "BJA 2023 treatment", "BJA 2023 chloride", "BJA 2023 potassium", "BJA 2023 volume expansion", "BJA 2023 posthypercapnia", "BJA 2023 acetazolamide", "BJA 2023 calcium", "BJA 2023 alkali gain", "Core 2022 assessment", "Core 2022 potassium", "Core 2022 urine chloride"]} />
+  </div>;
+}
 
 export function AlkalosisMechanismsTeaching() {
   return <div className={wrap}>

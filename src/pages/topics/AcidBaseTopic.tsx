@@ -22,6 +22,7 @@ import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { InlineRef } from "@/components/references/InlineRef";
 import { HAGMATeaching, NAGMATeaching, OsmolarGapTeaching, StewartTeaching, CitrateTeaching } from "@/components/topic/AcidBaseReviewTeaching";
 import { AcidBaseFluidsTeaching, BicarbonateTherapyTeaching } from "@/components/topic/AcidBaseTherapyTeaching";
+import { AcidBaseAlkalosisTeaching } from "@/components/topic/MetabolicAlkalosisTeaching";
 
 const acidBaseFaqs: Array<[string, string]> = [
   ["How do you calculate and interpret the anion gap?", "AG = Na⁺ − (Cl⁻ + HCO₃⁻); use the local laboratory range (often around 12 ± 4 mmol/L without potassium). Correct for albumin using AG + 0.25 × (40 − albumin g/L). A raised AG metabolic acidosis points to lactate, ketones, renal failure or toxins (MUDPILES); a normal AG acidosis suggests GI HCO₃⁻ loss or RTA."],
@@ -32,6 +33,7 @@ const acidBaseFaqs: Array<[string, string]> = [
 const objectives = [
   "Apply a five-step systematic ABG interpretation (oxygenation → primary disorder → compensation → anion gap → delta ratio)",
   "Recall the differentials for HAGMA (MUDPILES) and normal-AG metabolic acidosis",
+  "Explain metabolic alkalosis generation and maintenance, recognise mixed disorders and select a cause-led treatment strategy",
   "Explain the Stewart approach (SID, SIG, Atot) and use it to interpret complex ICU acid-base disturbances",
   "Distinguish Type A and Type B lactic acidosis and their bedside implications",
   "Compare Henderson-Hasselbalch, Base Excess and Stewart frameworks and choose the appropriate tool for each clinical scenario",
@@ -65,6 +67,7 @@ const tocItems = [
   { id: "section-henderson-hasselbalch", label: "Henderson–Hasselbalch", group: "Core" },
   { id: "section-hagma", label: "HAGMA", group: "Disorders" },
   { id: "section-nagma", label: "NAGMA & RTA", group: "Disorders" },
+  { id: "section-metabolic-alkalosis", label: "Metabolic Alkalosis", group: "Disorders" },
   { id: "section-osmolar-gap", label: "Osmolar Gap", group: "Disorders" },
   { id: "section-stewart", label: "Stewart Approach", group: "Advanced" },
   { id: "section-comparing-frameworks", label: "Comparing Frameworks", group: "Advanced" },
@@ -251,6 +254,12 @@ const AcidBaseTopic = () => {
           <ExamSection id="section-osmolar-gap" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="The Osmolar Gap">
               <OsmolarGapTeaching /><OsmolarityBreakdownDiagram /><OsmolarGapCalculator /><ToxicAlcoholTimelineDiagram />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="section-metabolic-alkalosis" className="scroll-mt-24" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Metabolic Alkalosis — BJA Education Lesson">
+              <AcidBaseAlkalosisTeaching />
             </CollapsibleSubsection>
           </ExamSection>
 

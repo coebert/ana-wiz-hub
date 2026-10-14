@@ -14,5 +14,5 @@
 
 - Keep acid-base teaching and linked displays aligned with canonical charge/unit conventions; qualitative Stewart controls must not present an unvalidated numerical pH, and toxin unit conversion must not issue automated treatment verdicts from incomplete clinical inputs.
 - Keep PEEP management in its own registered topic linked from Mechanical Ventilation; its timing explorer performs arithmetic only, so breath timing cannot imply a predicted intrinsic PEEP or patient-safe setting.
-- Keep metabolic alkalosis as a source-led registered topic linked from Acid-Base Disorders; use verified short source excerpts and distinguish physiological correction from proven clinical outcome benefits.
+- Keep metabolic alkalosis as a source-led registered topic linked from Acid-Base Disorders, with its parent-page lesson in the shared Teaching module; reuse verified excerpt records so quotations cannot drift and distinguish physiological correction from proven clinical outcome benefits.
 - Keep ICU liberation teaching in the Mechanical Ventilation Teaching module; separate readiness screening, SBT tolerance and airway/extubation decisions so a numeric index cannot become automatic clearance.
