@@ -3,6 +3,7 @@ import { Maximize2, Minimize2 } from "lucide-react";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { ProsevaTeaching } from "@/components/topic/ProsevaTeaching";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { StickyTOC } from "@/components/layout/StickyTOC";
 import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
@@ -81,7 +82,7 @@ const keyPoints = [
   { text: "Daily SBTs are the best strategy for weaning — do not delay", cites: ["BJA Educ 2019"] },
   { text: "Driving pressure (Pplat − PEEP) is the strongest predictor of ARDS mortality", cites: ["Lumb Ch.31"] },
   { text: "APRV supports recruitment with prolonged P high and brief releases; flow titration is protocol-dependent and lung protection must be checked", cites: ["Swindin APRV 2020", "Hirshberg APRV 2018"] },
-  { text: "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 33% to 16% (NNT 6)", cites: ["BJA Educ 2019"] },
+  { text: "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 32.8% to 16.0% (NNT about 6)", cites: ["Guérin 2013 PROSEVA"] },
   { text: "VAP prevention: HOB elevation, daily sedation hold, subglottic drainage, cuff pressure 20–30", cites: ["Lumb Ch.31"] },
   { text: "Cuff leak <110 mL predicts stridor — give prophylactic steroids 12–24h pre-extubation", cites: ["BJA Educ 2018"] },
   { text: "HFNO: dead space washout + ~1 cmH₂O PEEP per 10 L/min; ROX index ≥4.88 predicts success", cites: ["BJA Educ 2019"] },
@@ -905,6 +906,9 @@ const MechanicalVentilationTopic = () => {
         <ExamSection id="toc-tracheostomy" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="Stress Ulcer Prophylaxis: SUP-ICU and REVISE">
             <StressUlcerProphylaxisTeaching />
+          </CollapsibleSubsection>
+          <CollapsibleSubsection title="Prone Positioning: PROSEVA in Detail">
+            <ProsevaTeaching />
           </CollapsibleSubsection>
 
           <CollapsibleSubsection title="Tracheostomy in the ICU">

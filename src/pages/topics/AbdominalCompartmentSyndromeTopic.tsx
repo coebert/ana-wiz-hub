@@ -5,6 +5,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { abdominalCompartmentSyndromeQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { IahEpidemiologyTeaching } from "@/components/topic/IahEpidemiologyTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import { WSACSEvidenceTeaching } from "@/components/topic/WSACSEvidenceTeaching";
 
@@ -436,6 +437,9 @@ const AbdominalCompartmentSyndromeTopic = () => {
 
             <CollapsibleSubsection title="Evidence Strength of WSACS Recommendations">
               <WSACSEvidenceTeaching />
+            </CollapsibleSubsection>
+            <CollapsibleSubsection title="Does IAH Predict Death? Multicentre Epidemiology">
+              <IahEpidemiologyTeaching />
             </CollapsibleSubsection>
 
             {/* Prognosis */}
