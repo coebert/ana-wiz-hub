@@ -16,3 +16,5 @@
 - Keep PEEP management in its own registered topic linked from Mechanical Ventilation; put case teaching in a Teaching module and label invented observations as fictional, not patient records or predicted responses. Its timing explorer performs arithmetic only, so breath timing cannot imply a predicted intrinsic PEEP or patient-safe setting.
 - Keep metabolic alkalosis as a source-led registered topic linked from Acid-Base Disorders, with its parent-page lesson in the shared Teaching module; reuse verified excerpt records so quotations cannot drift and distinguish physiological correction from proven clinical outcome benefits.
 - Keep ICU liberation teaching in the Mechanical Ventilation Teaching module; separate readiness screening, SBT tolerance and airway/extubation decisions so a numeric index cannot become automatic clearance.
+
+- Keep fluid tonicity teaching in its own registered topic linked from Acid-Base Disorders; trial outcome detail stays in the acid-base saline/balanced lesson so the two cannot drift.

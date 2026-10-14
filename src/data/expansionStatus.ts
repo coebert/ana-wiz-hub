@@ -189,6 +189,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "Temperature sensor/site error sources expanded.",
   },
+  "fluid-balance": {
+    status: "expanded",
+    note: "Four source-led lessons linked from Acid-Base Disorders: tonicity basics, isotonic resuscitation, hypotonic maintenance and hospital-acquired hyponatraemia, hypertonic saline. Verbatim NICE CG174/NG29, European hyponatraemia guideline, SALSA, SMART and PLUS excerpts; learning checks and quiz. Source-checked, not consultant-reviewed.",
+  },
   "metabolic-alkalosis": {
     status: "expanded",
     note: "Five source-led lessons linked from Acid-Base Disorders: mechanisms/maintenance, assessment/urine chloride, causes/post-hypercapnia, treatment/evidence, safety. Verified short Park/Sidebotham BJA Education 2023 quotations with separate AJKD Core Curriculum 2022 diagnostic excerpts; learning checks and five-question quiz. Source-checked, not consultant-reviewed.",

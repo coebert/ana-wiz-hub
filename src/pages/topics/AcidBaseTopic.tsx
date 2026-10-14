@@ -310,6 +310,7 @@ const AcidBaseTopic = () => {
           </ExamSection>
           <ExamSection id="section-fluids-chloride" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Saline, Balanced Fluids and Outcome">
+              <p className="text-muted-foreground leading-relaxed mb-4">For isotonic, hypotonic and hypertonic fluids, NICE maintenance prescribing and 3% saline, see <Link to="/intensive-care/fluid-balance" className="text-primary font-semibold underline underline-offset-4">Fluid Balance and Tonicity</Link>.</p>
               <AcidBaseFluidsTeaching />
             </CollapsibleSubsection>
           </ExamSection>
