@@ -392,6 +392,10 @@ const ElderlyAnaesthesiaTopic = () => {
           </div>
         </section>
 
+        <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
+          <HipFractureAnaesthesiaTeaching />
+        </ExamSection>
+
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[

@@ -10,6 +10,7 @@ import EnergyProteinTargetDiagram from "@/components/diagrams/intensive-care/Ene
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import InlineRef from "@/components/references/InlineRef";
+import { ProteinCalorieTrialsTeaching } from "@/components/topic/ProteinCalorieTrialsTeaching";
 
 const icuNutritionFaqs: Array<[string, string]> = [
   ["When should enteral nutrition be started in the critically ill?", "Within 24–48 h of ICU admission once haemodynamically stable, even at trophic rates; early EN preserves gut mucosa and reduces infectious complications (ESPEN 2019, ASPEN/SCCM 2016)."],

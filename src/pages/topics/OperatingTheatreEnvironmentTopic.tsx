@@ -9,6 +9,7 @@ import TheatreZoningDiagram from "@/components/diagrams/clinical/TheatreZoningDi
 import CssdWasteFlowSubMap from "@/components/diagrams/clinical/CssdWasteFlowSubMap";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { LaminarFlowEvidenceTeaching } from "@/components/topic/LaminarFlowEvidenceTeaching";
 
 const operatingTheatreEnvironmentFaqs: Array<[string, string]> = [
   [
