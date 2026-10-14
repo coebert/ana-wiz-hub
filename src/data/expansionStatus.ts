@@ -97,6 +97,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "in-progress",
     note: "Thrombectomy anaesthesia evidence lesson added (SIESTA/ANSTROKE/GOLIATH, Bai 2021 meta-analysis, GOLIATH haemodynamic analysis) and the thrombectomy FAQ answer corrected; sources list added. Other subsections still need review.",
   },
+  "burns-icu": {
+    status: "in-progress",
+    note: "Evidence lesson added (ABA 2024 burn shock resuscitation CPG: start 2 mL/kg/%TBSA, albumin, no recommendation for vitamin C/FFP/early RRT; Saffle 2007 fluid creep; Herndon 2001 and Williams 2011 propranolol RCTs; Herndon 1989 early-excision RCT vs Wang 2026 meta-analysis), with sources list and learning checks. Other subsections still need review.",
+  },
   "abdominal-compartment-syndrome": {
     status: "expanded",
     note: "Whole topic reviewed against the full WSACS 2013 guideline text (PMC3680657) and Malbrain 2005: definitions, paediatric values, risk-factor table, measurement, medical algorithm with GRADE strengths, open-abdomen classification (3a/3b added), FAQs, worked examples, key points and quiz corrected. Removed unsourced figures (APP target presented as a recommendation, 250 mL/kg and 3.5 L thresholds, 7–10 day closure, 40–70% mortality, palpation <50%). Evidence-strength and IAH epidemiology lessons added.",
