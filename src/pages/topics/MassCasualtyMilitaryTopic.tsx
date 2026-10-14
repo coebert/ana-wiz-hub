@@ -13,7 +13,7 @@ import InlineRef from "@/components/references/InlineRef";
 const massCasualtyMilitaryFaqs: Array<[string, string]> = [
   [
     "What is the difference between primary, secondary and tertiary triage?",
-    "Primary triage (Triage Sieve) at scene uses walking/breathing/pulse-or-capillary-refill to assign P1/P2/P3/Dead in <30 s. Secondary triage (Triage Sort) at casualty clearing applies the Triage Revised Trauma Score (GCS, RR, SBP). Tertiary triage occurs in hospital after initial resuscitation and continuously thereafter."
+    "Primary triage at scene now uses NARU Ten Second Triage (walking, severe bleeding, talking, penetrating torso injury) to assign P1/P2/P3/Not Breathing, with life-saving bleeding control and airway positioning done during triage. Secondary triage at the casualty clearing station uses the NHS Major Incident Triage Tool (MITT), which replaced the Triage Sieve and Triage Sort in 2023. Tertiary triage occurs in hospital after initial resuscitation and continuously thereafter."
   ],
   [
     "What are the principles of damage-control resuscitation?",
@@ -27,7 +27,7 @@ const massCasualtyMilitaryFaqs: Array<[string, string]> = [
 
 const objectives = [
   "Apply the principles of major-incident command (MIMMS / NHS EPRR) to a mass-casualty event involving multiple critically injured patients",
-  "Triage casualties using validated tools (Triage Sieve, Triage Sort, MPTT-24) and understand reverse triage in austere environments",
+  "Triage casualties using validated tools (Ten Second Triage, NHS MITT; legacy Sieve/Sort) and understand reverse triage in austere environments",
   "Use crisis resource management (CRM) — leadership, situational awareness, communication and resource allocation — under acute cognitive load",
   "Describe damage-control resuscitation, damage-control surgery and the lethal triad in the context of military and civilian trauma",
   "Outline how forward (Role 1–4) military medical care is organised and how it informs civilian disaster anaesthesia and critical care",
@@ -46,7 +46,7 @@ const workedExamples: WorkedExample[] = [
           <li><strong>METHANE report</strong> from scene confirmed: Major incident declared, Exact location, Type (vehicle-as-weapon), Hazards (secondary device possible), Access, Number of casualties, Emergency services on scene.</li>
           <li><strong>Activate hospital plan</strong>: cascade call, cancel all non-urgent activity, free theatres &amp; ICU beds, surge anaesthetic and surgical rota, call blood bank for major haemorrhage stand-by.</li>
           <li><strong>Establish command</strong>: Gold (strategic — exec on call), Silver (tactical — site MEDCO), Bronze (operational — ED/theatre/ICU leads). Wear tabards. Use action cards from the plan, do not rely on memory.</li>
-          <li><strong>Triage at the door</strong>: senior clinician using Triage Sieve → Sort. P1 (immediate) to resus, P2 (urgent) to majors, P3 (delayed) to minors area, P4/expectant to a designated area with palliation. Re-triage every 15 min.</li>
+          <li><strong>Triage at the door</strong>: senior clinician re-triaging with the NHS MITT (or clinical judgement). P1 (immediate) to resus, P2 (urgent) to majors, P3 (delayed) to minors area, P4/expectant to a designated area with palliation. Re-triage every 15 min.</li>
           <li><strong>CRM principles</strong>: stay hands-off as MEDCO — your value is overview. Allocate teams (anaesthetist + surgeon + nurse + ODP) to each P1 bay; demand SBAR updates every 10 min; appoint a runner; use a whiteboard tracker for casualties and theatres.</li>
           <li><strong>Damage-control resuscitation</strong> for haemorrhagic shock: permissive hypotension (SBP 80–90 mmHg, &gt;110 if TBI), 1:1:1 RBC:FFP:platelets, TXA &lt;3 h, calcium, warming, early surgical control. Avoid clear fluids.</li>
           <li><strong>Theatre prioritisation</strong>: damage-control surgery first (haemorrhage control, bowel stapling, packs and abbreviated closure), definitive surgery later. Theatre coordinator allocates lists.</li>
@@ -148,7 +148,7 @@ const MassCasualtyMilitaryTopic = () => {
       keyPoints={[
         { text: "Major incident = casualty load exceeds normal resources. Declared by first emergency service on scene; cascade activates hospital plan.", cites: ["JRCALC 2022"] },
         { text: "METHANE message structures the alert: Major incident, Exact location, Type, Hazards, Access, Number, Emergency services.", cites: ["BJA Educ MCI 2017"] },
-        { text: "Triage Sieve (walking? breathing? RR? CRT or radial pulse?) → categorises P1/P2/P3/P4 within 30 s per casualty. Respiratory threshold is now RR <10 or >22 = P1, aligned with the physiologically validated MPTT-24 and the NARU Ten Second Triage tool (legacy MIMMS taught >29/>30, which under-triaged patients needing immediate intervention). Circulation step uses CRT >2 s OR absent radial pulse (not a heart-rate cut-off). Triage Sort uses TRTS for in-hospital re-triage.", cites: ["NARU MPTT-24", "MIMMS 4e", "BJA Educ Major Incident 2017"] },
+        { text: "Since 2023 UK major-incident triage is two-step: Ten Second Triage (TST) by any responder — walking → P3; severe bleeding → P1 (pressure, tourniquet, packing); not talking → open airway, recovery position, P1 if breathing or 'Not Breathing' if not; talking with a penetrating injury to neck, chest, armpits, back, abdomen, groin or buttocks → P1, otherwise P2 — then the NHS Major Incident Triage Tool (MITT) at the casualty clearing station. MITT replaced the Triage Sieve, Triage Sort and paediatric triage tape and is derived from MPTT-24.", cites: ["NARU TST 2023", "NHS England MITT 2023"] },
         { text: "Crisis Resource Management: leadership, role clarity, closed-loop communication, situational awareness, workload distribution, calling for help early.", cites: ["Damage Control Resuscitation"] },
         { text: "Damage-control resuscitation: permissive hypotension, 1:1:1 ratio (or whole blood), TXA 1 g IV as soon as possible and within 3 h of injury (the routine 8-hour maintenance infusion is no longer recommended in bleeding trauma other than isolated TBI, where the CRASH-3 regimen still applies), calcium, warmth, early surgical haemostasis, calcium, warmth, early surgical haemostasis.", cites: ["NHS EPRR 2022"] },
         { text: "Damage-control surgery: abbreviated procedure to control haemorrhage and contamination, with planned return for definitive surgery once physiology corrected.", cites: ["JRCALC 2022"] },
@@ -179,15 +179,14 @@ const MassCasualtyMilitaryTopic = () => {
             </p>
             <MajorIncidentTriageDiagram />
             <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-              UK primary triage now uses the NARU Major Incident Triage Tool (Ten Second Triage, followed by the revised Triage Sieve and in-hospital Triage Sort)
-              <InlineRef topicId="mass-casualty-military" refLabel="NARU Triage Tool 2023" /><InlineRef topicId="mass-casualty-military" refLabel="NARU Triage Sieve 2021" />.
+              UK primary triage now uses Ten Second Triage (TST) first, followed by the NHS Major Incident Triage Tool (MITT) once casualties reach a casualty collection point or clearing station
+              <InlineRef topicId="mass-casualty-military" refLabel="NARU TST 2023" /><InlineRef topicId="mass-casualty-military" refLabel="NHS England MITT 2023" />.
             </p>
             <div className="space-y-3">
               {[
-                { tool: "Triage Sieve", detail: "Pre-hospital, &lt;30 s. Walking → P3 (delayed). Not breathing despite airway opening → Dead. Then RR &lt;10 or &gt;22 → P1; CRT &gt;2 s or absent radial pulse → P1; otherwise P2. The narrower upper respiratory threshold of 22 replaces the legacy MIMMS figure of &gt;29, matching MPTT-24 and the current NARU Ten Second Triage tool; the older cut-off missed a substantial proportion of casualties who needed life-saving intervention. No heart-rate threshold is used in the civilian sieve." },
-                { tool: "Ten Second Triage (TST)", detail: "The UK's current national primary triage tool for major incidents (NARU): a rapid catastrophic-haemorrhage-first sweep giving Priority 1/2/3/Dead in about ten seconds per casualty, designed for use by any responder including police and fire, and followed by the Triage Sort in hospital." },
-                { tool: "Triage Sort (TRTS)", detail: "In hospital. Scores RR, SBP, GCS to give Triage Revised Trauma Score 0–12. ≤10 = P1, 11 = P2, 12 = P3." },
-                { tool: "MPTT-24 (military)", detail: "Modified Physiological Triage Tool — RR &lt;10 or &gt;22, HR &gt;100, GCS motor &lt;6 = P1. Better discrimination for needs-immediate-intervention than civilian sieve." },
+                { tool: "Ten Second Triage (TST)", detail: "NARU's first-line tool for all responders, including police and fire. Walking → P3. Severe bleeding → P1, with direct pressure, tourniquet or wound packing done during triage. Not talking → open the airway and place in the recovery position: breathing = P1; not breathing despite airway opening = silver &lsquo;Not Breathing&rsquo; band (TST has no &lsquo;Dead&rsquo; category; CPR if resources allow). Talking → P1 if any penetrating injury to neck, chest, armpits, back, abdomen, groin or buttocks, otherwise P2. Children under 2 (too young to walk or talk) are automatically P1. Re-triage about every 15 minutes or if condition changes." },
+                { tool: "NHS Major Incident Triage Tool (MITT)", detail: "Used by healthcare responders at a casualty collection point or clearing station once every casualty has a TST band; the switch is decided by the ambulance on-scene commander. A single adult-and-paediatric tool that replaced the Triage Sieve, Triage Sort and paediatric triage tape, derived from the Modified Physiological Triage Tool-24 (MPTT-24). MITT tags are solid colour; TST bands have a white checked border." },
+                { tool: "Legacy Triage Sieve (historical)", detail: "The older physiological sieve (walking, breathing, respiratory rate, capillary refill) still appears in older texts and exam questions, but has been replaced by TST and MITT in NHS practice." },
                 { tool: "Reverse / expectant triage", detail: "When demand vastly exceeds capacity (austere or wartime), the most resource-intensive may be designated expectant (P4) to maximise survivors. Ethically reviewed by senior team and documented." },
                 { tool: "Paediatric triage tape", detail: "Length-based vital sign thresholds (e.g. JumpSTART) — children's normal ranges differ; do not apply adult sieve directly." },
               ].map(t => (
@@ -419,7 +418,7 @@ const MassCasualtyMilitaryTopic = () => {
             accent="clinical"
             pitfalls={[
               "METHANE report: Major incident, Exact location, Type, Hazards, Access, Number, Emergency services.",
-              "Triage Sieve (walking → P3; airway/breathing/circulation criteria → P1/P2/dead); Sort uses TRTS; MPTT-24 prioritises by mobility/RR/HR.",
+              "Ten Second Triage (walking → P3; severe bleeding or not talking → P1; not breathing after airway opening → Not Breathing; talking with penetrating torso injury → P1, else P2), then NHS MITT — which replaced the Sieve and Sort in 2023.",
               "Damage-control resuscitation + surgery: minimise time to haemorrhage control, permissive hypotension, blood products only.",
               "Military Roles 1–4: Role 1 first aid, Role 2 forward surgical, Role 3 field hospital, Role 4 home-base definitive care.",
               "CBRN: identify hazard, don PPE before patient contact, decontaminate before treatment, specific antidotes (atropine + pralidoxime for nerve agents).",

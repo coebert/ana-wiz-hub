@@ -97,6 +97,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "Contrast-kidney trials lesson added (AMACING no-hydration non-inferiority, PRESERVE bicarbonate/acetylcysteine). Line-by-line review done (contrast AKI definition, eGFR thresholds and hydration regimen per ESUR 2018, anaphylaxis per RCUK 2021, contrast premedication, metformin, mis-cited key points). Thrombectomy anaesthesia evidence lesson added (SIESTA/ANSTROKE/GOLIATH, Bai 2021 meta-analysis, GOLIATH haemodynamic analysis) and the thrombectomy FAQ answer corrected; sources list added. Other subsections still need review.",
   },
+  "mass-casualty-military": {
+    status: "in-progress",
+    note: "Triage section rewritten from the NARU Ten Second Triage document (2023) and NHS England MITT letter (2023): conflicting respiratory-rate cut-offs removed, TST steps and MITT role added, quiz updated. Other sections still need review.",
+  },
   "burns-icu": {
     status: "in-progress",
     note: "Evidence lesson added (ABA 2024 burn shock resuscitation CPG: start 2 mL/kg/%TBSA, albumin, no recommendation for vitamin C/FFP/early RRT; Saffle 2007 fluid creep; Herndon 2001 and Williams 2011 propranolol RCTs; Herndon 1989 early-excision RCT vs Wang 2026 meta-analysis), with sources list and learning checks. Other subsections still need review.",

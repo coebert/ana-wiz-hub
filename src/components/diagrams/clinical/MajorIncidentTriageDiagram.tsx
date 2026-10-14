@@ -19,8 +19,8 @@ import { svgNodeProps } from "../_shared/DiagramFigure";
 const CYCLE_MS = 12000;
 const PHASES = [
   { id: 0, label: "METHANE alert", t0: 0.0, t1: 0.2 },
-  { id: 1, label: "Triage Sieve (scene)", t0: 0.2, t1: 0.55 },
-  { id: 2, label: "Triage Sort / TRTS (ED)", t0: 0.55, t1: 0.8 },
+  { id: 1, label: "Ten Second Triage (scene)", t0: 0.2, t1: 0.55 },
+  { id: 2, label: "MITT / re-triage (CCS, ED)", t0: 0.55, t1: 0.8 },
   { id: 3, label: "Stream & re-triage", t0: 0.8, t1: 1.0 },
 ];
 
@@ -71,7 +71,7 @@ export const MajorIncidentTriageDiagram = () => {
       <figcaption className="mb-3 flex items-start justify-between gap-3">
         <div>
           <h3 className="text-base font-semibold text-foreground">
-            Major-incident triage flow: METHANE → Sieve → Sort → Stream
+            Major-incident triage flow: METHANE → TST → MITT → Stream
           </h3>
           <p className="text-xs text-muted-foreground mt-1">
             Animated walkthrough of the UK major-incident triage chain. Re-triage occurs at every node;
@@ -159,14 +159,14 @@ export const MajorIncidentTriageDiagram = () => {
           </defs>
 
           {/* ===== Phase 1: Triage Sieve decision tree ===== */}
-          <g {...svgNodeProps("Step 2/4: Triage Sieve at scene")} opacity={phase === 1 ? 1 : phase > 1 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
-            <text x="300" y="35" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Triage Sieve (&lt; 30 s per casualty)</text>
+          <g {...svgNodeProps("Step 2/4: Ten Second Triage at scene")} opacity={phase === 1 ? 1 : phase > 1 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
+            <text x="300" y="35" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Ten Second Triage (TST, NARU 2023)</text>
 
             {[
               { y: 55, q: "Walking?", yes: "→ P3 Delayed", no: "↓ next", color: PRIORITY.P3.color },
-              { y: 100, q: "Breathing after airway opening?", yes: "↓ next", no: "→ Dead", color: PRIORITY.DEAD.color },
-              { y: 145, q: "RR < 10 or > 29?", yes: "→ P1 Immediate", no: "↓ next", color: PRIORITY.P1.color },
-              { y: 190, q: "CRT > 2 s or no radial pulse?", yes: "→ P1 Immediate", no: "→ P2 Urgent", color: PRIORITY.P1.color },
+              { y: 100, q: "Severe bleeding? (pressure/tourniquet/pack)", yes: "→ P1 Immediate", no: "↓ next", color: PRIORITY.P1.color },
+              { y: 145, q: "Talking?", yes: "↓ next", no: "→ Airway + recovery: P1 / Not Breathing", color: PRIORITY.DEAD.color },
+              { y: 190, q: "Penetrating torso/junctional injury?", yes: "→ P1 Immediate", no: "→ P2 Urgent", color: PRIORITY.P1.color },
             ].map((row, i) => {
               const active = phase === 1 && sieveStep === i;
               return (
@@ -194,8 +194,8 @@ export const MajorIncidentTriageDiagram = () => {
           <path d="M 530 130 L 565 130" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" markerEnd="url(#arr)" opacity={phase >= 2 ? 1 : 0.3} />
 
           {/* ===== Phase 2: Triage Sort / TRTS ===== */}
-          <g {...svgNodeProps("Step 3/4: Triage Sort (TRTS) at ED")} opacity={phase === 2 ? 1 : phase > 2 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
-            <text x="575" y="35" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Triage Sort — TRTS (ED)</text>
+          <g {...svgNodeProps("Step 3/4: Legacy Triage Sort (TRTS), now replaced by NHS MITT")} opacity={phase === 2 ? 1 : phase > 2 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
+            <text x="575" y="35" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Legacy Triage Sort — TRTS (replaced by MITT)</text>
             <rect x="575" y="50" width="205" height="170" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--border))" />
             <text x="585" y="68" fontSize="10" fontWeight="600" fill="hsl(var(--foreground))">Score 0–4 each:</text>
             <text x="585" y="84" fontSize="10" fill="hsl(var(--muted-foreground))">• Respiratory rate</text>
@@ -273,16 +273,17 @@ export const MajorIncidentTriageDiagram = () => {
         )}
         {phase === 1 && (
           <p className="md:col-span-2 text-muted-foreground">
-            <span className="font-semibold text-foreground">Triage Sieve</span> is a &lt; 30 s physiological
-            sort done at the casualty's location. Walking patients are P3; apnoeic patients despite airway opening
-            are declared dead; deranged RR or perfusion = P1.
+            <span className="font-semibold text-foreground">Ten Second Triage</span> (NARU 2023) can be done by any responder.
+            Walking casualties are P3; severe bleeding is controlled and tagged P1; non-talking casualties get an opened airway and
+            recovery position (P1 if breathing, &lsquo;Not Breathing&rsquo; if not — there is no &lsquo;Dead&rsquo; category); talking casualties are P1 with a
+            penetrating torso or junctional injury, otherwise P2.
           </p>
         )}
         {phase === 2 && (
           <p className="md:col-span-2 text-muted-foreground">
-            <span className="font-semibold text-foreground">Triage Sort</span> uses the Triage Revised Trauma
-            Score (RR + SBP + GCS, each 0–4) to refine priority on hospital arrival. A senior clinician can
-            up- or down-grade based on mechanism and clinical impression.
+            <span className="font-semibold text-foreground">Triage Sort</span> (legacy) used the Triage Revised Trauma
+            Score (RR + SBP + GCS, each 0–4). Since 2023 the NHS Major Incident Triage Tool (MITT) replaces it for healthcare
+            responders at the casualty clearing station.
           </p>
         )}
         {phase === 3 && (
