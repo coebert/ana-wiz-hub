@@ -131,7 +131,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "trauma-emergency": {
     status: "expanded",
-    note: "Full line-by-line review: NG39/NG41 attribution fixed, CRASH-2/CRASH-3 TXA claim corrected, quiz TBI SBP aligned to BTF age bands. Some practice details (fibrinogen yields, tourniquet placement, etomidate pharmacology) remain uncited. Content/source review, not consultant certification.",
+    note: "Full line-by-line review: NG39/NG41 attribution fixed, CRASH-2/CRASH-3 TXA claim corrected, quiz TBI SBP aligned to BTF age bands. Some practice details (fibrinogen yields, tourniquet placement, etomidate pharmacology) remain uncited. Haemostatic-trials lesson added (CRYOSTAT-2 and PATCH-Trauma with verbatim results). Content/source review, not consultant certification.",
   },
   "transfer-medicine": {
     status: "expanded",
