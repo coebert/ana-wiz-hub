@@ -58,3 +58,4 @@
 - [x] Next critical-care/emergency batch: nine sourced endocrine/emergency-surgery lessons added; affected examples, linked displays and quizzes reconciled; 17 tests, authenticated lesson/quiz checks, narrow-screen fit, search and private audit upload verified. Whole-page remainder tracked in curriculum-expansion.md; both pages remain in progress.
 
 - [x] Fluid Balance and Tonicity page under Acid-Base Disorders (isotonic/hypotonic/hypertonic), linked both ways with the saline vs balanced fluids lesson; search and audit copy rebuilt.
+- [x] Trauma: sourced lessons on <C>ABCDE, fluid boluses/BP targets, transfusion ratios/Hb thresholds, surgical priorities (NICE NG39, Rossaint 2023, PROPPR); corrected misquoted NG39 bolus wording.

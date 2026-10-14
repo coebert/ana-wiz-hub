@@ -142,3 +142,4 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 - Nine focused tests pass. Signed-in browser verified all three cases/tables, three opened answers and actual mode-source popover without runtime errors or page overflow at 1280/390px. Search retains the exact case anchor; private audit text retains all three cases and source records and was uploaded. Source-led educational verification, not validation of patient-specific settings.
 
 - [x] fluid-balance: four lessons (tonicity, isotonic, hypotonic, hypertonic) source-checked against NICE CG174/NG29, Spasovski 2014, SALSA.
+- [x] trauma-emergency: <C>ABCDE, fluid boluses, transfusion thresholds and surgical priorities lessons verified verbatim against NG39, Rossaint 2023 and PROPPR abstract.
