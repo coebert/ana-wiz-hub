@@ -16,6 +16,8 @@ import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { InlineRef } from "@/components/references/InlineRef";
+import { SepsisTargetsSteroidsTeaching } from "@/components/topic/SepsisTargetsSteroidsTeaching";
+import { CollapsibleSubsection as LessonSubsection } from "@/components/topic/CollapsibleSubsection";
 
 const sepsisTocItems = [
   { id: "sepsis-3", label: "Sepsis-3 definitions & scores", group: "Core" },
@@ -957,7 +959,11 @@ const SepsisTopic = () => {
         </Helmet>
       </section>
 
-
+      <section className="max-w-5xl mx-auto px-4 py-6">
+        <LessonSubsection title="Lower MAP Targets and Steroids Before Shock">
+          <SepsisTargetsSteroidsTeaching />
+        </LessonSubsection>
+      </section>
 
       <SynthesisBlock
         title="Sepsis — Hour-1 Bundle Synthesis"

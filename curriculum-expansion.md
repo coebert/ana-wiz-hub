@@ -56,3 +56,4 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 - Thinnest by extracted text: surgical-protocols, day-surgery, non-technical-skills, resource-poor-anaesthesia, abdominal-compartment-syndrome. Most other clinical/ICU topics hit the 24k audit cap, so size alone cannot rank them.
 - Added: ACS WSACS evidence-strength lesson (abstract-verified); NTS ANTS + WHO checklist evidence lesson (abstracts verified, verbatim excerpts added).
 - Blocked: day-surgery (AA/BADS 2019 full text not retrievable) and resource-poor (Lancet Commission abstract unavailable) — need accessible source text before expansion.
+- Batch 2: sepsis — 65 trial + HYPRESS lesson (abstract-verified, verbatim excerpts).
