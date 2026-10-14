@@ -14,6 +14,7 @@ import { SpinalCordStimulatorDiagram } from "@/components/diagrams/clinical/Spin
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { GabapentinoidEvidenceTeaching } from "@/components/topic/GabapentinoidEvidenceTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 
 const objectives = [
@@ -276,7 +277,7 @@ const PainMedicineTopic = () => {
               <tbody className="text-muted-foreground">
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Paracetamol</td><td>Central COX inhibition, serotonergic pathways</td><td>1g QDS (max 4g/day). Hepatotoxic in overdose. IV onset 5 min.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">NSAIDs</td><td>COX-1 & COX-2 inhibition</td><td>Renal, GI, platelet effects. Avoid post-CABG. Ibuprofen, diclofenac, ketorolac.</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Gabapentinoids</td><td>α₂δ calcium channel subunit binding</td><td>Pregabalin, gabapentin. Neuropathic pain. NICE recommends for post-op. Sedation, dizziness.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Gabapentinoids</td><td>α₂δ calcium channel subunit binding</td><td>Pregabalin, gabapentin. Neuropathic pain. Routine perioperative use not supported — see below. Sedation, dizziness.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Ketamine</td><td>NMDA receptor antagonist</td><td>Prevents central sensitisation, opioid-sparing. 0.1–0.5 mg/kg/hr infusion. Psychomimetic effects.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Clonidine/Dexmedetomidine</td><td>α₂-agonists</td><td>Analgesic, opioid-sparing, anxiolytic. Dexmedetomidine: cooperative sedation without respiratory depression.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">IV Magnesium</td><td>NMDA receptor antagonist, Ca²⁺ channel blocker</td><td>30–50 mg/kg bolus then 6–15 mg/kg/hr. Opioid-sparing (20–25%). Monitor for hypotension, muscle weakness.</td></tr>
@@ -286,6 +287,8 @@ const PainMedicineTopic = () => {
           </div>
         </CollapsibleSubsection>
         </div>
+
+        <div className="mb-6"><GabapentinoidEvidenceTeaching /></div>
 
         <div id="regional-analgesia" className="scroll-mt-24">
         <CollapsibleSubsection title="Regional Analgesia within a Multimodal Plan">
