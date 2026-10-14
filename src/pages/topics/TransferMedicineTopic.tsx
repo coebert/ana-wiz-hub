@@ -9,6 +9,7 @@ import { transferMedicineQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import InlineRef from "@/components/references/InlineRef";
+import { TransferEvidenceTeaching } from "@/components/topic/TransferEvidenceTeaching";
 
 const transferMedicineFaqs: Array<[string, string]> = [
   [
@@ -413,6 +414,9 @@ const TransferMedicineTopic = () => {
               <li><strong>Consent &amp; indemnity</strong>: best-interests documentation when patient lacks capacity; medical indemnity for transfers including air/international</li>
             </ul>
             </CollapsibleSubsection>
+          </ExamSection>
+          <ExamSection id="trial-evidence" exams={[Exam.FINAL]} className="scroll-mt-24">
+            <TransferEvidenceTeaching />
           </ExamSection>
           <ExamPitfallsCallout
             accent="clinical"
