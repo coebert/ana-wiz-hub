@@ -23,7 +23,7 @@ const operatingTheatreEnvironmentFaqs: Array<[string, string]> = [
   ],
   [
     "What temperature and humidity should a theatre maintain?",
-    "Temperature 18–25 °C (typically 20–22 °C; warmer for paediatric/burns 24–26 °C). Relative humidity 40–60 % — lower risks static electricity and patient drying, higher promotes microbial growth and condensation. Fresh air supply ≥1000 L/s. Monitor continuously via the theatre BMS."
+    "Temperature 18–25 °C (typically 20–22 °C; warmer, about 23–26 °C, for paediatric/burns cases). Relative humidity 40–60 % — lower risks static electricity and patient drying, higher promotes microbial growth and condensation. Monitor continuously via the theatre BMS."
   ]
 ];
 
@@ -52,7 +52,7 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "Three hours into a long laparotomy you notice the theatre smells faintly of sevoflurane and the scrub nurse complains of a headache. Scavenging is connected. What are the possible causes and how would you investigate?",
     working:
-      "Ambient volatile concentration should remain below the COSHH 8-h TWA limits (sevoflurane ~60 ppm, isoflurane 50 ppm, N₂O 100 ppm). Possible causes:\n1. Active scavenging failure — disconnection at the AGSS receiver, blocked transfer tubing, or the theatre suction pump tripped.\n2. Leak around an uncuffed tracheal tube or poorly sealing supraglottic airway → expired gas escapes around the device into room air.\n3. Filling station leak (Quik-Fil), spillage, or a damaged vaporiser O-ring.\n4. Theatre ventilation set to low flow / fault — air-change rate has fallen below 20 ACH.\nManagement: confirm patient is safe (FiO₂, EtCO₂, end-tidal agent, airway seal), check the AGSS receiver float/indicator and tubing, switch to cuffed airway if leaking, increase fresh gas to flush via scavenged limb, and request estates/medical-physics check of theatre ventilation. Document as a clinical incident and notify the WAGD/COSHH lead.",
+      "Ambient volatile concentration should remain below the COSHH 8-h TWA limits (N₂O 100 ppm, isoflurane and enflurane 50 ppm, halothane 10 ppm; sevoflurane and desflurane have no UK limit). Possible causes:\n1. Active scavenging failure — disconnection at the AGSS receiver, blocked transfer tubing, or the theatre suction pump tripped.\n2. Leak around an uncuffed tracheal tube or poorly sealing supraglottic airway → expired gas escapes around the device into room air.\n3. Filling station leak (Quik-Fil), spillage, or a damaged vaporiser O-ring.\n4. Theatre ventilation set to low flow / fault — air-change rate has fallen below 20 ACH.\nManagement: confirm patient is safe (FiO₂, EtCO₂, end-tidal agent, airway seal), check the AGSS receiver float/indicator and tubing, switch to cuffed airway if leaking, increase fresh gas to flush via scavenged limb, and request estates/medical-physics check of theatre ventilation. Document as a clinical incident and notify the WAGD/COSHH lead.",
     answer:
       "Most likely a scavenging system fault or airway leak. Check AGSS first (it is the commonest cause of acute exposure complaints), then airway seal, then theatre ventilation. Long-term mitigation: minimal-flow anaesthesia, cuffed airways, regular scavenging servicing, and ensuring theatre ACH ≥20.",
     cites: ["COSHH WAG 2020", "HTM 03-01"],
@@ -84,10 +84,10 @@ const OperatingTheatreEnvironmentTopic = () => {
       }}
       keyPoints={[
         { text: "Theatre complex is zoned protective → clean → aseptic/sterile, with a positive-pressure cascade (theatre +25 Pa → corridor 0 Pa) to drive airflow OUTWARDS", cites: ["HTM 03-01"] },
-        { text: "Conventionally (plenum) ventilated theatres: ≥20 air changes/h via HEPA filters (>99.97% at 0.3 µm); ultra-clean laminar-flow canopies deliver ~300 ACH at ~0.3 m/s over the field", cites: ["HTM 03-01"] },
+        { text: "Conventionally (plenum) ventilated theatres: ≥20 air changes/h through high-efficiency fine filters (true HEPA is reserved for ultra-clean terminal units); ultra-clean laminar-flow canopies deliver ~300 ACH at ~0.3 m/s over the field", cites: ["HTM 03-01"] },
         { text: "Ultra-clean laminar flow is endorsed for prosthetic implant orthopaedic surgery (Lidwell evidence); benefit in other clean surgery is now contested", cites: ["Lidwell 1982"] },
         { text: "Environmental targets: temperature 18–25 °C (raise to 23–26 °C for paediatric/burns/long open cavity), relative humidity 40–60%, noise <40 dB(A) baseline", cites: ["HTM 03-01"] },
-        { text: "Active scavenging (AGSS) keeps theatre WAG concentrations below COSHH 8-h TWA limits: N₂O 100 ppm, isoflurane 50 ppm, sevoflurane 60 ppm (informal). Minimal-flow anaesthesia is the strongest single mitigation", cites: ["COSHH WAG 2020"] },
+        { text: "Active scavenging (AGSS) keeps theatre WAG concentrations below COSHH 8-h TWA limits: N₂O 100 ppm, isoflurane 50 ppm, halothane 10 ppm; no UK limit for sevoflurane or desflurane. Minimal-flow anaesthesia is the strongest single mitigation", cites: ["COSHH WAG 2020"] },
         { text: "Electrical supply uses an isolated (IT) power system with a line isolation monitor — a single fault to earth alarms but does not produce shock current; equipment classified CF (cardiac-floating) for direct cardiac contact", cites: ["IEC 60601-1"] },
         { text: "WHO Surgical Safety Checklist (Sign In before induction → Time Out before incision → Sign Out before leaving theatre) was associated with fewer deaths and complications in the 2009 before–after study, but mandatory roll-out across Ontario showed no significant change — benefit depends on genuine team use", cites: ["WHO Checklist 2009", "Urbach 2014 Ontario"] },
         { text: "Isolation theatres for highly infectious cases reverse the cascade (negative pressure with airlock lobby) — must be requested explicitly and confirmed with estates", cites: ["HTM 03-01"] },
@@ -152,13 +152,13 @@ const OperatingTheatreEnvironmentTopic = () => {
                   </tr>
                   <tr className="border-t border-border">
                     <td className="p-2 font-medium text-foreground">Airflow pattern</td>
-                    <td className="p-2">Mixing / dilution; HEPA-filtered air enters at ceiling, exhausts at low-level grilles</td>
+                    <td className="p-2">Mixing / dilution; Filtered air enters at ceiling, exhausts at low-level grilles</td>
                     <td className="p-2">Unidirectional vertical or horizontal flow ~0.3 m/s through a defined canopy</td>
                   </tr>
                   <tr className="border-t border-border">
                     <td className="p-2 font-medium text-foreground">Filtration</td>
-                    <td className="p-2">HEPA (≥99.97% at 0.3 µm)</td>
-                    <td className="p-2">HEPA + canopy seals; sometimes terminal HEPA at diffuser</td>
+                    <td className="p-2">High-efficiency fine filters (not true HEPA)</td>
+                    <td className="p-2">Terminal HEPA filters in the canopy</td>
                   </tr>
                   <tr className="border-t border-border">
                     <td className="p-2 font-medium text-foreground">Pressure</td>
@@ -167,8 +167,8 @@ const OperatingTheatreEnvironmentTopic = () => {
                   </tr>
                   <tr className="border-t border-border">
                     <td className="p-2 font-medium text-foreground">Bioburden achieved</td>
-                    <td className="p-2">~50–150 CFU/m³</td>
-                    <td className="p-2">&lt; 10 CFU/m³ (empty); &lt; 20 CFU/m³ (busy)</td>
+                    <td className="p-2">≤ 35 CFU/m³ empty; ≤ 180 CFU/m³ during surgery</td>
+                    <td className="p-2">&lt; 10 CFU/m³ in the canopy during surgery</td>
                   </tr>
                   <tr className="border-t border-border">
                     <td className="p-2 font-medium text-foreground">Indications</td>
@@ -199,7 +199,7 @@ const OperatingTheatreEnvironmentTopic = () => {
           <ExamSection id="environment" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <CollapsibleSubsection title="Temperature, Humidity & Noise">
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li><strong>Temperature 18–25 °C</strong> (typically 20–22 °C). Raise to <strong>23–26 °C</strong> for neonates/infants, burns, prolonged or open-cavity surgery to limit radiative and convective patient heat loss. NICE CG65 mandates perioperative core temperature ≥36.0 °C.</li>
+              <li><strong>Temperature 18–25 °C</strong> (typically 20–22 °C). Raise to <strong>23–26 °C</strong> for neonates/infants, burns, prolonged or open-cavity surgery to limit radiative and convective patient heat loss. NICE CG65 recommends not inducing anaesthesia unless core temperature is ≥36.0 °C (unless urgent).</li>
               <li><strong>Relative humidity 40–60%.</strong> Too low → static electricity, dry mucosae and increased airborne particle dispersion; too high → bacterial proliferation, condensation and impaired wound healing.</li>
               <li><strong>Noise &lt; 40 dB(A) at baseline,</strong> rising to ~50 dB(A) during surgery; alarms and conversation are the main contributors. Noise impairs communication, increases error and disturbs the patient at induction and emergence.</li>
               <li><strong>Lighting:</strong> ambient ~1 000 lux; surgical field 40 000–160 000 lux from shadowless coaxial pendant lamps with colour temperature ~4 500 K (close to daylight) for accurate tissue colour rendering.</li>
@@ -216,8 +216,8 @@ const OperatingTheatreEnvironmentTopic = () => {
             <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
               <li>Nitrous oxide — <strong>100 ppm</strong></li>
               <li>Isoflurane — <strong>50 ppm</strong></li>
-              <li>Sevoflurane — informal target <strong>60 ppm</strong> (no formal UK limit; adopted from NIOSH)</li>
-              <li>Desflurane — no formal UK limit; commonly quoted target ≤ 20 ppm</li>
+              <li>Halothane — <strong>10 ppm</strong>; enflurane — <strong>50 ppm</strong></li>
+              <li>Sevoflurane and desflurane — no UK workplace exposure limit; follow local monitoring targets</li>
             </ul>
             <p className="text-muted-foreground leading-relaxed mb-3">
               An <strong>active scavenging system</strong> has four parts: (1) collecting assembly (APL valve and ventilator spill), (2) transfer
@@ -295,7 +295,7 @@ const OperatingTheatreEnvironmentTopic = () => {
             accent="clinical"
             pitfalls={[
               "Laminar-flow theatres deliver 300+ air changes/hour with HEPA-filtered, unidirectional flow — primarily for orthopaedic implants and immunocompromised patients.",
-              "Standard theatres: 20–25 air changes/hour, temperature 18–22 °C, humidity 50–60% to balance comfort, electrostatic risk and infection.",
+              "Standard theatres: 20–25 air changes/hour, temperature 18–25 °C, relative humidity 40–60% to balance comfort, electrostatic risk and infection.",
               "Scavenging removes waste anaesthetic gases — passive systems rely on patient effort; active systems use vacuum but need a reservoir to prevent suction injury.",
               "Theatre zoning (protective, clean, aseptic, disposal) controls personnel flow and reduces wound contamination.",
               "WHO Surgical Safety Checklist (sign-in, time-out, sign-out) is mandatory; the 2009 before–after study linked it to fewer deaths and complications, but mandated roll-out in Ontario (2014) showed no significant change.",
