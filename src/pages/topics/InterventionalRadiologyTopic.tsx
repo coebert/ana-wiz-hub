@@ -18,7 +18,7 @@ const interventionalRadiologyFaqs: Array<[string, string]> = [
   ],
   [
     "How is contrast-induced nephropathy prevented in IR patients?",
-    "Identify at-risk patients (eGFR <60, diabetes, dehydration, NSAIDs, ACEi). Use the lowest volume of iso- or low-osmolar contrast, pre- and post-procedure IV 0.9 % saline 1 mL/kg/h for 6–12 h, withhold metformin for 48 h if eGFR <30, avoid nephrotoxins, and recheck creatinine at 48–72 h. N-acetylcysteine evidence is weak — no longer routinely recommended."
+    "Identify at-risk patients (eGFR <45 before intra-arterial first-pass contrast or <30 before IV contrast, diabetes, dehydration, NSAIDs, ACEi). Use the lowest volume of iso- or low-osmolar contrast, IV 0.9% saline 1 mL/kg/h for 3–4 h before and 4–6 h after in high-risk patients only, stop metformin at the time of contrast if eGFR <30 and restart after 48 h if renal function is stable, avoid nephrotoxins, and recheck creatinine at 48–72 h. N-acetylcysteine evidence is weak — no longer routinely recommended."
   ],
   [
     "What are the anaesthetic considerations for endovascular thrombectomy in acute stroke?",
@@ -40,9 +40,9 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "Three minutes after IV iodinated contrast, an awake patient develops widespread urticaria, wheeze and BP 70/40. How do you manage this?",
     working:
-      "Recognise as severe (anaphylactoid) contrast reaction. Stop the contrast. Call for help, ABCDE.\nGive 100% O₂ via face mask, lay flat with legs raised.\nIM adrenaline 0.5 mg (500 μg) into anterolateral thigh, repeat every 5 min as needed; or IV 50 μg titrated boluses if monitored.\nIV fluid bolus 500–1000 ml crystalloid; nebulised salbutamol for wheeze.\nSecondary: chlorphenamine 10 mg IV, hydrocortisone 200 mg IV; mast cell tryptase samples (immediate, 1–2 h, 24 h).\nTransfer to a monitored area — biphasic reactions occur in up to 20%.",
+      "Recognise as severe (anaphylactoid) contrast reaction. Stop the contrast. Call for help, ABCDE.\nGive 100% O₂ via face mask, lay flat with legs raised.\nIM adrenaline 0.5 mg (500 μg) into anterolateral thigh, repeat every 5 min as needed; or IV 50 μg titrated boluses if monitored.\nIV fluid bolus 500–1000 ml crystalloid; nebulised salbutamol for wheeze.\nAfter stabilisation: a non-sedating oral antihistamine for skin symptoms; routine steroids and IV chlorphenamine are no longer recommended in initial treatment (Resuscitation Council UK 2021); mast cell tryptase samples (immediate, 1–2 h, 24 h).\nTransfer to a monitored area — biphasic reactions occur in about 5%.",
     answer:
-      "Treat as anaphylaxis: stop contrast, ABCDE with 100% O₂, IM adrenaline 0.5 mg, IV fluid bolus, nebulised salbutamol, then chlorphenamine + hydrocortisone, tryptase samples, and post-event monitoring for biphasic reaction.",
+      "Treat as anaphylaxis: stop contrast, ABCDE with 100% O₂, IM adrenaline 0.5 mg, IV fluid bolus, nebulised salbutamol, then oral antihistamine for skin symptoms only, tryptase samples, and post-event monitoring for biphasic reaction.",
     cites: ["AAGBI Remote Sites 2023"],
   },
   {
@@ -50,10 +50,10 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "A 65-year-old man with cirrhosis (eGFR 38) is listed for TIPSS. How do you reduce his risk of contrast-induced AKI?",
     working:
-      "Identify high risk: eGFR <60, diabetes, hypovolaemia, large contrast load. Stop nephrotoxins (NSAIDs, ACEi/ARB if appropriate, metformin).\nIV 0.9% NaCl 1 ml/kg/h for 12 h pre and 12 h post procedure (or sodium bicarbonate 1.4% as alternative).\nUse iso-osmolar or low-osmolar non-ionic contrast at the smallest effective volume; avoid repeat contrast within 48 h.\nN-acetylcysteine is no longer routinely recommended.\nMonitor creatinine at 48–72 h.",
+      "Identify high risk: eGFR below 45 for intra-arterial contrast, diabetes, hypovolaemia, large contrast load. Stop nephrotoxins (NSAIDs, ACEi/ARB if appropriate, metformin).\nIV 0.9% NaCl 1 ml/kg/h for 3–4 h before and 4–6 h after (or 1.4% sodium bicarbonate 3 ml/kg/h for 1 h before).\nUse iso-osmolar or low-osmolar non-ionic contrast at the smallest effective volume; avoid repeat contrast within 48 h.\nN-acetylcysteine is no longer routinely recommended.\nMonitor creatinine at 48–72 h.",
     answer:
-      "IV crystalloid hydration 1 ml/kg/h for 12 h pre and post, withhold nephrotoxins, use the lowest effective volume of low-osmolar contrast, and recheck creatinine at 48–72 h. NAC is not routinely indicated.",
-    cites: ["ACR Sedation 2017"],
+      "IV crystalloid hydration 1 ml/kg/h for 3–4 h before and 4–6 h after, withhold nephrotoxins, use the lowest effective volume of low-osmolar contrast, and recheck creatinine at 48–72 h. NAC is not routinely indicated.",
+    cites: ["ESUR 2011"],
   },
 ];
 
@@ -89,10 +89,10 @@ const InterventionalRadiologyTopic = () => {
         workedExamples: ["AAGBI Remote Sites 2023", "ACR Sedation 2017"],
       }}
       keyPoints={[
-        { text: "IR suites are remote locations — apply AAGBI standards: full equipment, monitoring, capnography and trained assistance", cites: ["ESUR 2011"] },
-        { text: "Iodinated contrast can cause anaphylactoid reactions, CI-AKI and thyroid storm — pre-hydrate high-risk patients", cites: ["AAGBI Remote Sites 2023"] },
-        { text: "Radiation: ALARA — distance (inverse-square law), shielding (lead, thyroid, glasses), time, dosimetry", cites: ["ACR Sedation 2017"] },
-        { text: "TIPSS, embolisation for haemorrhage and EVAR carry significant haemodynamic risk and often need GA + invasive monitoring", cites: ["ESUR 2011"] },
+        { text: "IR suites are remote locations — apply AAGBI standards: full equipment, monitoring, capnography and trained assistance", cites: ["AAGBI Remote Sites 2023"] },
+        { text: "Iodinated contrast can cause anaphylactoid reactions, CI-AKI and thyroid storm — hydrate only high-risk patients", cites: ["ESUR 2011"] },
+        { text: "Radiation: ALARA — distance (inverse-square law), shielding (lead, thyroid, glasses), time, dosimetry", cites: ["IR(ME)R 2017"] },
+        { text: "TIPSS, embolisation for haemorrhage and EVAR carry significant haemodynamic risk and often need GA + invasive monitoring", cites: ["AAGBI Remote Sites 2023"] },
         { text: "Capnography is mandatory for moderate/deep sedation (NAP5 / AAGBI)", cites: ["AAGBI Remote Sites 2023"] },
       ]}
       coreConcepts={
@@ -182,9 +182,9 @@ const InterventionalRadiologyTopic = () => {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Contrast-Induced AKI (CI-AKI)</h3>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                <li>Rise in creatinine ≥25% or ≥44 μmol/L within 72 h of contrast</li>
-                <li>Risk factors: pre-existing CKD (eGFR &lt;30), diabetes, dehydration, nephrotoxic drugs, large contrast volume</li>
-                <li>Prevention: IV hydration (NaCl 0.9% 1 ml/kg/h for 12 h pre and post), iso-/low-osmolar contrast, minimise volume</li>
+                <li>Rise in creatinine ≥26.5 μmol/L within 48 h, or to ≥1.5× baseline within 7 days of contrast (KDIGO-based definition adopted by ESUR in 2018)</li>
+                <li>Risk factors: pre-existing CKD (eGFR &lt;45 intra-arterial, &lt;30 IV), diabetes, dehydration, nephrotoxic drugs, large contrast volume</li>
+                <li>Prevention: IV hydration for high-risk patients (NaCl 0.9% 1 ml/kg/h for 3–4 h before and 4–6 h after), iso-/low-osmolar contrast, minimise volume</li>
                 <li>N-acetylcysteine is no longer routinely recommended</li>
               </ul>
             </div>
@@ -350,7 +350,7 @@ const InterventionalRadiologyTopic = () => {
             accent="clinical"
             pitfalls={[
               "Remote-site anaesthesia: same standards of monitoring, equipment, drug availability and trained help as theatre.",
-              "Iodinated contrast reactions: pretreat high-risk (previous reaction, asthma); treat anaphylaxis with adrenaline 0.5 mg IM.",
+              "Iodinated contrast reactions: premedication is no longer recommended — it has not been shown to prevent reactions; for a previous reaction, use a different contrast agent; treat anaphylaxis with adrenaline 0.5 mg IM.",
               "Contrast-induced nephropathy: hydrate, minimise contrast volume, hold ACEi/ARB/NSAIDs/metformin around the procedure.",
               "Radiation safety (ALARA): distance, lead aprons + thyroid shield, dosimeter, leave room during DSA runs where possible.",
               "EVAR / TIPSS / embolisation: long supine cases — pressure care, temperature management, plan post-procedure HDU bed.",
