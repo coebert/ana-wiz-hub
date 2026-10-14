@@ -72,6 +72,14 @@ const Curriculum = () => {
             Every topic in AnaesthesiaCore mapped to the FRCA Primary and Final
             curricula. Ticks show topics you've marked as complete.
           </p>
+          <p className="mt-2 text-sm">
+            <Link
+              to="/curriculum/expansion"
+              className="text-primary underline underline-offset-2"
+            >
+              See expansion status for every topic
+            </Link>
+          </p>
         </header>
 
         {/* Desktop / tablet: true matrix. Mobile: section-stacked cards. */}

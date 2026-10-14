@@ -46,6 +46,7 @@ const DrugReferenceTopic = lazy(() => import("./pages/reference/DrugReferenceTop
 const SeoIndexing = lazy(() => import("./pages/SeoIndexing"));
 const A11yAudit = lazy(() => import("./pages/A11yAudit"));
 const Curriculum = lazy(() => import("./pages/Curriculum"));
+const CurriculumExpansion = lazy(() => import("./pages/CurriculumExpansion"));
 const DiagramSnapshot = lazy(() => import("./pages/DiagramSnapshot"));
 const DiagramSources = lazy(() => import("./pages/DiagramSources"));
 const Errata = lazy(() => import("./pages/Errata"));
