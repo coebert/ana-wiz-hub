@@ -94,8 +94,8 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     note: "Line-by-line review done (intraocular gas durations, N₂O solubility, suxamethonium mechanism, off-topic airway text, mislabelled citation). Peribulbar vs retrobulbar lesson added (Alhassan 2015 Cochrane); FAQ claim of less complete peribulbar akinesia corrected. Evidence lesson added (Guay 2015 Cochrane: topical vs sub-Tenon's pain outcomes and insufficient complication evidence; OCR incidence with and without sub-Tenon's bupivacaine), with sources list. Other subsections still need review.",
   },
   "interventional-radiology": {
-    status: "in-progress",
-    note: "Thrombectomy anaesthesia evidence lesson added (SIESTA/ANSTROKE/GOLIATH, Bai 2021 meta-analysis, GOLIATH haemodynamic analysis) and the thrombectomy FAQ answer corrected; sources list added. Other subsections still need review.",
+    status: "expanded",
+    note: "Line-by-line review done (contrast AKI definition, eGFR thresholds and hydration regimen per ESUR 2018, anaphylaxis per RCUK 2021, contrast premedication, metformin, mis-cited key points). Thrombectomy anaesthesia evidence lesson added (SIESTA/ANSTROKE/GOLIATH, Bai 2021 meta-analysis, GOLIATH haemodynamic analysis) and the thrombectomy FAQ answer corrected; sources list added. Other subsections still need review.",
   },
   "burns-icu": {
     status: "in-progress",
