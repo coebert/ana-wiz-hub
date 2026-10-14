@@ -69,6 +69,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "in-progress",
     note: "Evidence lessons added (WFSA workforce survey, ASOS, WHO checklist; ASOS caesarean spinal vs GA substudy) with sources lists. Lancet Commission figures still need source text.",
   },
+  "aki-rrt": {
+    status: "in-progress",
+    note: "STARRT-AKI RRT-timing lesson added (abstract-verified) with sources list; timing-table verdict softened. Other subsections still need review.",
+  },
   "sepsis": {
     status: "in-progress",
     note: "Lesson added on the 65 trial (permissive hypotension) and HYPRESS (steroids before shock), with sources list and learning check. BLING III / prolonged β-lactam infusion meta-analysis lesson added.",
