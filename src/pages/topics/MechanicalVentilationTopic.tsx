@@ -8,7 +8,7 @@ import { StickyTOC } from "@/components/layout/StickyTOC";
 import { SynthesisBlock } from "@/components/topic/SynthesisBlock";
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/physiology/VentilatorWaveformsDiagram";
 import VentilatorWaveformsGuideDiagram from "@/components/diagrams/intensive-care/VentilatorWaveformsGuideDiagram";
-import { APRVSection } from "@/components/topic/APRVSection";
+import { APRVSection } from "../../components/topic/APRVSection";
 import { mechanicalVentilationQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
