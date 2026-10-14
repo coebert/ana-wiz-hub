@@ -46,7 +46,7 @@ const AnatomySection = () => {
 
       <section id="topics" className="scroll-mt-28">
         <Button asChild variant="outline" className="mb-6">
-          <Link to="/anatomy/diagram-sources"><BookOpen className="mr-2 h-4 w-4" aria-hidden="true" />Diagram sources &amp; review status</Link>
+          <Link to="/anatomy/diagram-sources"><BookOpen className="mr-2 h-4 w-4" aria-hidden="true" />Curated references &amp; diagram sources</Link>
         </Button>
         <SectionTopicsList section="anatomy" topics={visibleTopics} />
       </section>
