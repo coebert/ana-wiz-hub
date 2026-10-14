@@ -24,10 +24,10 @@ const CYCLE_MS = 14000;
 
 const NODES = [
   { id: 0, x: 60, label: "Point of wounding", sub: "Buddy aid · CAT · <C>ABC", color: "hsl(var(--destructive))" },
-  { id: 1, x: 180, label: "Role 1", sub: "RAP · TXA · package", color: "hsl(0 75% 55%)" },
-  { id: 2, x: 320, label: "Role 2", sub: "Forward surgical · DCR + DCS", color: "hsl(20 85% 50%)" },
-  { id: 3, x: 500, label: "Role 3", sub: "Deployed hospital · definitive Sx + ICU", color: "hsl(200 85% 45%)" },
-  { id: 4, x: 700, label: "Role 4", sub: "Home base · rehabilitation", color: "hsl(142 65% 40%)" },
+  { id: 1, x: 180, label: "Role 1", sub: "RAP · TXA · package", color: "hsl(var(--destructive))" },
+  { id: 2, x: 320, label: "Role 2", sub: "Forward surgical · DCR + DCS", color: "hsl(var(--clinical))" },
+  { id: 3, x: 500, label: "Role 3", sub: "Deployed hospital · hospital care + ICU", color: "hsl(var(--primary))" },
+  { id: 4, x: 700, label: "Role 4", sub: "Home base · rehabilitation", color: "hsl(var(--physiology))" },
 ];
 
 // Casualty progress checkpoints: tValue at which patient sits at node[i].x
@@ -57,10 +57,10 @@ function currentTransit(t: number) {
     const a = CHECKPOINTS[i], b = CHECKPOINTS[i + 1];
     if (t > a.t && t < b.t && a.node !== b.node) {
       const mode =
-        b.node === 1 ? "Forward MEDEVAC (MERT)" :
+        b.node === 1 ? "Forward evacuation" :
         b.node === 2 ? "Tactical transfer" :
-        b.node === 3 ? "CCAST tactical (rotary/fixed)" :
-        "Strategic CCAST (fixed-wing)";
+        b.node === 3 ? "Critical-care transfer" :
+        "Strategic evacuation";
       return { from: a.node, to: b.node, mode, p: (t - a.t) / (b.t - a.t) };
     }
   }
@@ -125,8 +125,8 @@ export const MilitaryRolesFlowDiagram = () => {
               Roles of medical care &amp; CCAST handover flow
             </h3>
             <p className="text-xs text-muted-foreground mt-1">
-              Animated journey of a single casualty from point of wounding through Role 4, with ISBAR handovers
-              at each interface and reverse logistics of blood / consumables forward.
+              Illustrative journey from point of injury to definitive care. Roles describe capability; casualties may bypass
+              a role, and transfer teams depend on the mission. Based on NATO AJP-4.10 (2019), §§2.42–2.47.
             </p>
           </div>
           <div className="flex items-center gap-1 shrink-0">
@@ -269,7 +269,7 @@ export const MilitaryRolesFlowDiagram = () => {
               </text>
               <text x="20" y="30" fontSize="10.5" fontWeight="700" fill="hsl(var(--foreground))">CCAST:</text>
               <text x="65" y="30" fontSize="10" fill="hsl(var(--muted-foreground))">
-                consultant-led ICU team that delivers Level 3 care in transit between Roles 2/3 and Role 4
+                specialist critical-care transfer; team and platform depend on clinical and operational need
               </text>
             </g>
           </svg>
@@ -286,10 +286,10 @@ export const MilitaryRolesFlowDiagram = () => {
           ) : (
             <p>
               <span className="font-semibold text-foreground">{NODES[active].label}:</span>{" "}
-              {active === 0 && "Self / buddy aid: catastrophic haemorrhage control (CAT, haemostatic dressing), open airway, decompress chest, call for MERT."}
+              {active === 0 && "Self / buddy aid: catastrophic haemorrhage control, airway positioning and call for trained assistance. Invasive procedures require appropriate training and a clinical indication."}
               {active === 1 && "Regimental Aid Post — primary survey, advanced airway if trained, TXA <3 h, antibiotics, package for forward MEDEVAC."}
-              {active === 2 && "Forward surgical (Role 2) — Damage Control Resuscitation (whole blood / 1:1:1) + Damage Control Surgery (<90 min). Stabilise for onward CCAST."}
-              {active === 3 && "Deployed hospital (Role 3) — definitive surgery, ICU, imaging, blood bank. Re-evaluate physiology before strategic evacuation."}
+              {active === 2 && "Role 2 — enhanced resuscitation and configured surgical capability; abbreviate surgery according to physiology and prepare for transfer."}
+              {active === 3 && "Deployed hospital (Role 3) — specialist hospital care, CT and critical-care capability. Re-evaluate physiology before strategic evacuation."}
               {active === 4 && "Home base (Role 4) — definitive reconstructive surgery, rehabilitation, psychological support, governance and learning."}
             </p>
           )}
