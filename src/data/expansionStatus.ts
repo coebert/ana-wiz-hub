@@ -67,7 +67,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "resource-poor-anaesthesia": {
     status: "in-progress",
-    note: "Evidence lessons added (WFSA workforce survey, ASOS, WHO checklist; ASOS caesarean spinal vs GA substudy) with sources lists. Lancet Commission figures still need source text.",
+    note: "Evidence lessons added (WFSA workforce survey, ASOS, WHO checklist; ASOS caesarean spinal vs GA substudy) with sources lists. Lancet Commission workforce target (20 specialist SAO physicians/100,000 by 2030) verified via PubMed-indexed secondary sources and the workforce claim corrected.",
   },
   "aki-rrt": {
     status: "in-progress",
