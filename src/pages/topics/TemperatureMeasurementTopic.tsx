@@ -261,10 +261,7 @@ const TemperatureMeasurementTopic = () => {
               <strong> thermopile</strong> (multiple thermocouples in series) to detect the IR radiation emitted by the tympanic membrane.
             </p>
             <p>
-              Although the tympanic membrane is itself supplied predominantly by branches of the <em>external</em> carotid
-              artery, its close anatomical proximity to the <strong>internal carotid artery</strong> means its emitted
-              infrared radiation acts as a surrogate for the temperature of blood supplying the <strong>hypothalamus</strong>,
-              does not establish reliable core-temperature measurement for an infrared ear-canal device. Device validation and technique are essential; critically ill adults may show poor agreement with central measurements <InlineRef topicId="temperature-measurement" refLabel="Moran 2007 (Tympanic ICU)" />.
+              Proximity of the ear to the brain does not establish reliable core-temperature measurement for an infrared ear-canal device. The device may sample canal radiation rather than directly measure the tympanic membrane. Device validation and technique are essential; critically ill adults may show poor agreement with central measurements <InlineRef topicId="temperature-measurement" refLabel="Moran 2007 (Tympanic ICU)" />.
             </p>
             <p>
               <strong>Sources of error:</strong> straighten the canal (pinna up and back in adults; down and back in infants), insert far enough
