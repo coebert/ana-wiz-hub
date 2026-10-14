@@ -98,8 +98,8 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     note: "Thrombectomy anaesthesia evidence lesson added (SIESTA/ANSTROKE/GOLIATH, Bai 2021 meta-analysis, GOLIATH haemodynamic analysis) and the thrombectomy FAQ answer corrected; sources list added. Other subsections still need review.",
   },
   "abdominal-compartment-syndrome": {
-    status: "in-progress",
-    note: "WSACS 2013 evidence-strength and Malbrain 2005 IAH epidemiology lessons added (recommendations vs suggestions vs no recommendation, bedside application, learning check, sources list). Other subsections still need review.",
+    status: "expanded",
+    note: "Whole topic reviewed against the full WSACS 2013 guideline text (PMC3680657) and Malbrain 2005: definitions, paediatric values, risk-factor table, measurement, medical algorithm with GRADE strengths, open-abdomen classification (3a/3b added), FAQs, worked examples, key points and quiz corrected. Removed unsourced figures (APP target presented as a recommendation, 250 mL/kg and 3.5 L thresholds, 7–10 day closure, 40–70% mortality, palpation <50%). Evidence-strength and IAH epidemiology lessons added.",
   },
   "non-technical-skills": {
     status: "in-progress",
