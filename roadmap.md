@@ -56,3 +56,5 @@
 - [ ] Remaining clinical/ICU expansion: bariatric + transfer older-section review; day surgery (2019 PDF needed), theatre environment, ophthalmic, IR.
 - [x] Expand and source-check mass-casualty ethics, crisis teamwork, bleeding control, military care and chemical incidents; reconcile examples/quiz; 20 focused tests, authenticated desktop/phone lesson/source/quiz checks, search rebuild and verified private audit upload completed. Marked expanded (editorial completion, not clinical certification).
 - [x] Next critical-care/emergency batch: nine sourced endocrine/emergency-surgery lessons added; affected examples, linked displays and quizzes reconciled; 17 tests, authenticated lesson/quiz checks, narrow-screen fit, search and private audit upload verified. Whole-page remainder tracked in curriculum-expansion.md; both pages remain in progress.
+
+- [x] Fluid Balance and Tonicity page under Acid-Base Disorders (isotonic/hypotonic/hypertonic), linked both ways with the saline vs balanced fluids lesson; search and audit copy rebuilt.
