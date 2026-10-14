@@ -241,6 +241,10 @@ const Index = () => {
         </div>
       </PageSection>
 
+      <PageSection spacing="loose" width="xwide">
+        <RecentExpansions />
+      </PageSection>
+
       <SupportSection />
 
       <SiteFooter />
