@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import inventory from "@/data/anatomyDiagramSources.generated.json";
-import { anatomyReferences } from "@/data/anatomyReferences";
+import { anatomyReferences, anatomyDirectoryReview, anatomyReferenceLabel } from "@/data/anatomyReferences";
 
 export default function DiagramSources() {
   const [query, setQuery] = useState("");
@@ -27,6 +27,7 @@ export default function DiagramSources() {
       </Helmet>
       <div className="border-l-2 border-anatomy pl-4 mb-7 space-y-2">
         <p className="text-foreground font-medium">A citation is not an accuracy certificate.</p>
+        <p className="text-sm text-foreground" data-anatomy-directory-review><strong>Reference-page review complete · {anatomyDirectoryReview.date}.</strong> {anatomyDirectoryReview.scope}</p>
         <p className="text-sm text-muted-foreground leading-relaxed">These sources are recorded alongside the teaching; their inclusion does not establish support for a particular anatomical claim, drawn boundary, printed label or hotspot. “No recorded flags” means only that the inventory has no warning for that entry, not that it has been verified. Recorded uncertainties and missing source details are listed below; the list is not exhaustive.</p>
       </div>
 
@@ -42,8 +43,9 @@ export default function DiagramSources() {
                 {topic.missingReferences ? <p className="text-sm text-destructive">No curated references recorded; source review required.</p> : (
                   <ol className="list-decimal pl-5 space-y-3 text-sm leading-relaxed">
                     {topic.references.map(ref => <li key={ref.label} className="break-words">
-                      <p className="font-medium text-foreground">{ref.label}</p>
+                      <p className="font-medium text-foreground">{anatomyReferenceLabel(topic.id, ref.label)}</p>
                       <p className="text-muted-foreground">{ref.citation}</p>
+                      {ref.reviewNote && <p className="text-destructive mt-1">{ref.reviewNote}</p>}
                       {ref.url && /^https?:\/\//.test(ref.url) && <a href={ref.url} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 inline-flex items-center gap-1">Open source<ArrowUpRight className="h-3 w-3" aria-hidden="true" /></a>}
                       {ref.excerpt && <blockquote className="border-l-2 border-border pl-3 mt-2 text-muted-foreground whitespace-pre-line">{ref.excerpt}</blockquote>}
                     </li>)}

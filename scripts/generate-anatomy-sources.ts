@@ -53,7 +53,7 @@ const human = (s: string) => s.replace(/Diagram$|Atlas$|Plate$/g, "").replace(/(
 function cited(topic: string, label: string): Source {
   const refs = topicReferences[topic];
   const ref = Array.isArray(refs) ? refs.map(object).find(r => r.label === label) : undefined;
-  return { label, detail: text(ref?.citation) || "Citation label could not be resolved in the topic references.", ...(text(ref?.url) ? { url: text(ref?.url) } : {}), basis: "Landmark citation" };
+  return { label, detail: [text(ref?.citation) || "Citation label could not be resolved in the topic references.", text(ref?.reviewNote)].filter(Boolean).join(" "), ...(text(ref?.url) ? { url: text(ref?.url) } : {}), basis: "Recorded landmark citation; support not certified" };
 }
 const known: Record<string, string[]> = {
   DiaphragmDiagram: ["The schematic is simplified; aperture laterality and phrenic courses require comparison with an anatomical source. This is not a validated anatomical model."],
@@ -69,6 +69,7 @@ function add(e: Omit<Entry, "status">) {
   const uncertainty = [...e.uncertainty];
   if (!sources.length) uncertainty.push("No diagram-specific bibliographic source is recorded. Topic reading lists do not establish artwork provenance.");
   if (sources.some(s => s.detail?.includes("could not be resolved"))) uncertainty.push("One or more citation labels require reconciliation with the topic reference list.");
+  if (sources.some(s => /Unverified legacy reference|Do not use this legacy record/.test(s.detail ?? ""))) uncertainty.push("A recorded landmark reference has unverified bibliographic identity; it cannot establish source support.");
   entries.push({ ...e, sources, uncertainty, status: uncertainty.length ? "needs-review" : "cited" });
 }
 import { anatomyDiagramCitations } from "../src/data/anatomyDiagramCitations";
@@ -119,9 +120,9 @@ for (const [name, node] of folioCtx.vars) {
   if (!Array.isArray(folio.plates)) continue;
   for (const v of folio.plates) {
     const plate = object(v);
-    const credit = text(plate.imageCredit), srcUrl = text(plate.imageSourceUrl);
+    const credit = text(plate.imageCredit).replace(/:\s+Public domain\./, ". Public domain."), srcUrl = text(plate.imageSourceUrl);
     const sourced = Boolean(credit && srcUrl);
-    const historicGray = sourced && /Gray's Anatomy|Henry Gray/.test(credit) && /1918/.test(credit) && /^https:\/\/commons\.wikimedia\.org\/wiki\/File:Gray\d+\.png$/.test(srcUrl) && /Public domain/i.test(credit);
+    const historicGray = sourced && /Gray's Anatomy|Henry Gray/.test(credit) && /1918/.test(credit) && /^https:\/\/commons\.wikimedia\.org\/wiki\/File:(Gray\d+|First_rib_Gray)\.png$/.test(srcUrl) && /Public domain/i.test(credit);
     add({ id: `${name}-${text(plate.id)}`, title: text(plate.title), group: text(folio.atlasTitle), kind: historicGray ? "Sourced public-domain plate" : sourced ? "Credited plate; rights not verified" : "Painted atlas plate", sources: sourced ? [{ label: historicGray ? "Gray's Anatomy (1918)" : "Recorded artwork source", detail: credit, url: srcUrl, basis: "Recorded image source and rights statement; not anatomical validation" }] : [], credit: credit || "Local painted artwork; original image source and licence provenance were not established in the anatomy audit.", uncertainty: [text(plate.auditWarning), ...(historicGray ? [] : ["Artwork source and public-domain status require verification."]), "Historical artwork and added labels/hotspots are not certified against current anatomical references."].filter(Boolean), topicLinks: routes.filter(r => r.code.includes(name)).map(r => ({ title: r.path.split("/").pop()?.replace(/-/g, " ") ?? name, path: r.path })), sourceFile: folioPath });
   }
 }

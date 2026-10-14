@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { readFileSync } from "node:fs";
 import { anatomyTopics } from "@/data/curriculum";
-import { anatomyReferences } from "@/data/anatomyReferences";
+import { anatomyReferences, anatomyDirectoryReview, anatomyReferenceLabel } from "@/data/anatomyReferences";
 import { topicReferences } from "@/data/references";
 import DiagramSources from "@/pages/DiagramSources";
 
@@ -25,7 +25,8 @@ describe("Curated anatomy references", () => {
     expect(screen.getByRole("heading", { name: "Curated references by anatomy topic" })).toBeTruthy();
     expect(document.querySelectorAll("[data-anatomy-bibliography]")).toHaveLength(anatomyTopics.length);
     expect(screen.getByText(/No nightly AI pass/)).toBeTruthy();
-    expect(screen.getAllByText("Curated sources recorded; full claim-to-source matching still requires editorial review.")).toHaveLength(anatomyTopics.length);
+    expect(screen.getAllByText("Reference-page record review complete; full anatomical claim-to-source matching still requires editorial review. Legacy records marked unverified are not source support.")).toHaveLength(anatomyTopics.length);
+    expect(screen.getByText(/Reference-page review complete ·/)).toBeTruthy();
     cleanup();
   });
   it("does not schedule AI reviews or require gateway credentials", () => {
@@ -34,5 +35,21 @@ describe("Curated anatomy references", () => {
     expect(workflow).not.toMatch(/schedule:|cron:|LOVABLE_API_KEY|--model/);
     expect(checker).not.toMatch(/fetch\(|ai.gateway|LOVABLE_API_KEY/);
     expect(checker).toContain("accuracyCertified: false");
+  });
+  it("separates completed page review from unresolved sources and removes false quotations", () => {
+    expect(anatomyDirectoryReview.status).toBe("complete");
+    expect(anatomyDirectoryReview.scope).toContain("not certified");
+    for (const topic of anatomyReferences) {
+      for (const ref of topic.references.filter(r => r.citation.startsWith("Unverified legacy reference"))) {
+        expect(ref.url).toBeUndefined();
+        expect(ref.excerpt).toBeUndefined();
+        expect(ref.reviewNote).toContain("replacement source is required");
+      }
+    }
+    for (const [id, label] of [["neuroanatomy", "Crit Care 2020 Brainstem"], ["neuroanatomy", "BJA Educ 2016 ANS"], ["thoracic-anatomy", "BJA Educ 2015 Thoracic Duct"]]) {
+      expect(topicReferences[id].find(r => r.label === label)?.excerpt).toBeUndefined();
+    }
+    expect(anatomyReferenceLabel("upper-limb-anatomy", "NICE CG49")).toBe("NICE TA49");
+    expect(topicReferences["lower-limb-anatomy"].find(r => r.label === "Can J Anaesth 2007 Lower Limb Blocks")?.citation).toContain("Tran DQ");
   });
 });

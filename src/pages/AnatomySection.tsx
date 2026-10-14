@@ -9,6 +9,7 @@ import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { Link } from "react-router-dom";
 import { BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { anatomyDirectoryReview } from "@/data/anatomyReferences";
 
 const AnatomySection = () => {
   const { getSectionProgress } = useProgress();
@@ -45,6 +46,7 @@ const AnatomySection = () => {
       />
 
       <section id="topics" className="scroll-mt-28">
+        <p className="text-sm text-muted-foreground mb-4" data-anatomy-directory-review><strong className="text-foreground">Reference-page review complete · {anatomyDirectoryReview.date}.</strong> {anatomyDirectoryReview.scope}</p>
         <Button asChild variant="outline" className="mb-6">
           <Link to="/anatomy/diagram-sources"><BookOpen className="mr-2 h-4 w-4" aria-hidden="true" />Curated references &amp; diagram sources</Link>
         </Button>
