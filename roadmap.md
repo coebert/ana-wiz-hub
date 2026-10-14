@@ -1,3 +1,4 @@
+- [ ] Build Metabolic Alkalosis under Acid-Base Disorders using verified BJA Education quotations; check lessons, links, search and private audit copy.
 - [x] Build sourced PEEP management page under Mechanical Ventilation; verify lessons, controls, citations, search and private audit copy (29 checks; five lessons and quiz/timing verified in browser).
 - [x] Fix all current preview typecheck/build errors
 - [x] Review acid-base HAGMA, NAGMA, osmolar gap, Stewart and citrate line by line; correct linked teaching/calculators, verify sources/rendering/search/private audit copy, then mark these subsections complete (43 focused tests; authenticated five-section checks; not consultant certification).
