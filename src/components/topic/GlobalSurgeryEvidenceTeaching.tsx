@@ -1,5 +1,6 @@
 import { InlineRef } from "@/components/references/InlineRef";
 import { LessonSources } from "@/components/topic/LessonSources";
+const C = ({ l }: { l: string }) => <InlineRef topicId="resource-poor-anaesthesia" refLabel={l} />;
 const R = ({ label }: { label: string }) => <InlineRef topicId="resource-poor-anaesthesia" refLabel={label} />;
 
 export function GlobalSurgeryEvidenceTeaching() {
@@ -11,6 +12,8 @@ export function GlobalSurgeryEvidenceTeaching() {
       <li><strong className="text-foreground">Non-physician providers</strong> make up a large share of the workforce, especially where resources are limited. Even when they are counted, 70 countries had fewer than 5 anaesthesia providers of any kind per 100,000.<R label="Kempthorne 2017 WFSA survey" /></li>
       <li><strong className="text-foreground">The interim target:</strong> the authors recommend at least 5 specialist physician anaesthesia providers per 100,000. Reaching it immediately would need over 136,000 more PAPs.<R label="Kempthorne 2017 WFSA survey" /></li>
     </ul>
+    <h3 className="text-lg font-semibold text-foreground">The Lancet Commission workforce target</h3>
+    <p>The Lancet Commission on Global Surgery (2015) set a target of at least 20 specialist surgical, anaesthetic and obstetric (SAO) physicians per 100,000 population by 2030.<C l="Lancet Commission GS 2015" /><C l="Epiu 2017 East Africa obstetric anaesthesia" /> It is a combined figure for all three specialties and does not count non-physician providers. Measured against it, Somaliland had 0.8 specialist SAO providers per 100,000.<C l="Dahir 2020 Somaliland indicators" /> The WFSA's figure of 5 per 100,000 is a separate, anaesthesia-specific interim goal.<R label="Kempthorne 2017 WFSA survey" /></p>
     <h3 className="text-lg font-semibold text-foreground">What happens to patients? The African Surgical Outcomes Study (ASOS)</h3>
     <p>ASOS was a 7-day prospective cohort of 11,422 adult inpatients from 247 hospitals in 25 African countries (2016). Hospitals had a median of 0.7 specialist surgeons, obstetricians and anaesthetists combined per 100,000 population served. The patients were young (mean age 38.5 years) and low-risk (median ASA 1). Fifty-seven per cent of operations were urgent or emergent, and caesarean delivery was the commonest (33%).<R label="Biccard 2018 ASOS" /></p>
     <ul className="list-disc pl-5 space-y-1">
@@ -23,7 +26,7 @@ export function GlobalSurgeryEvidenceTeaching() {
       <li><strong className="text-foreground">Caution:</strong> this was a before-and-after study, so it shows an association, not proof that the checklist caused the improvement. Teamwork, pulse oximetry and other changes may have contributed.<R label="WHO Checklist 2009" /></li>
     </ul>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: in ASOS, when did most postoperative deaths occur, and what does that imply?</summary><p className="mt-2">After the day of surgery (94.1%). The priority is recognising and rescuing ward patients who develop complications, such as infection, not only making theatre safer.</p></details>
-    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: what interim workforce target did the WFSA recommend?</summary><p className="mt-2">At least 5 specialist physician anaesthesia providers per 100,000 population.</p></details>
-    <LessonSources topicId="resource-poor-anaesthesia" labels={["Kempthorne 2017 WFSA survey", "Biccard 2018 ASOS", "WHO Checklist 2009"]} />
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: how do the Lancet Commission and WFSA workforce targets differ?</summary><p className="mt-2">The Lancet Commission target is at least 20 specialist surgical, anaesthetic and obstetric physicians combined per 100,000 by 2030. The WFSA interim goal is at least 5 specialist physician anaesthesia providers per 100,000.</p></details>
+    <LessonSources topicId="resource-poor-anaesthesia" labels={["Lancet Commission GS 2015", "Epiu 2017 East Africa obstetric anaesthesia", "Dahir 2020 Somaliland indicators", "Kempthorne 2017 WFSA survey", "Biccard 2018 ASOS", "WHO Checklist 2009"]} />
   </div>;
 }
