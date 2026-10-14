@@ -8,6 +8,7 @@ import { traumaEmergencyQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
+import { HaemostaticTrialsTeaching } from "@/components/topic/HaemostaticTrialsTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import {
   Accordion,
@@ -418,6 +419,7 @@ const TraumaEmergencyTopic = () => {
                 <li><strong>Caveats:</strong> FFP alone contains only about 2 g/L of fibrinogen and cannot correct hypofibrinogenaemia in a bleeding patient. Empirical early high-dose cryoprecipitate given to all trauma patients on top of a standard major haemorrhage protocol did not improve mortality in CRYOSTAT-2, so replacement should be targeted to measured or viscoelastic deficiency rather than given routinely <InlineRef topicId="trauma-emergency" refLabel="CRYOSTAT-2 2023" />.</li>
               </ul>
             </div>
+            <div className="mt-4"><HaemostaticTrialsTeaching /></div>
             </CollapsibleSubsection>
           </ExamSection>
 
