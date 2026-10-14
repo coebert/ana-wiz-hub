@@ -196,7 +196,9 @@ export function localImportsOf(src: string, fromFile: string): string[] {
     // topic's own text in content belonging to every other topic.
     const isDiagram = /@\/components\/diagrams\//.test(spec);
     const isRelative = spec.startsWith(".");
-    if (!isDiagram && !isRelative) continue;
+    // Source-linked Teaching components hold expanded topic teaching.
+    const isTeaching = /@\/components\/topic\/[A-Za-z]+Teaching$/.test(spec);
+    if (!isDiagram && !isRelative && !isTeaching) continue;
     if (/@\/components\/ui\//.test(spec)) continue;
     const file = resolveImport(spec, fromFile);
     if (file) out.push(file);
@@ -334,7 +336,12 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
       }
       svgLabels.push(...extracted.svgLabels);
       if (node.depth >= MAX_IMPORT_DEPTH) continue;
-      for (const dep of localImportsOf(node.src, node.file)) {
+      // Visit source-linked Teaching components first so the imported-file cap
+      // cannot drop them on topics with many diagram imports.
+      const deps = [...localImportsOf(node.src, node.file)].sort(
+        (x, y) => Number(/Teaching\.tsx$/.test(y) || y.endsWith("/APRVSection.tsx")) - Number(/Teaching\.tsx$/.test(x) || x.endsWith("/APRVSection.tsx")),
+      );
+      for (const dep of deps) {
         if (seen.has(dep) || seen.size > MAX_IMPORTED_FILES) continue;
         seen.add(dep);
         const src = readIfExists(dep);
@@ -367,7 +374,7 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
   const prose = [`# ${topic.title}`, topic.description, "", ...uniqueLines].join("\n");
   // This long topic includes the shared APRV section after its root content.
   // Keep that source-linked teaching in the audit, rather than truncating it.
-  const textBudget = ["mechanical-ventilation", "paediatric-anaesthesia", "ent-anaesthesia", "renal-disease", "general-colorectal-surgery", "bariatric-anaesthesia", "gas-laws", "electricity-magnetism", "ultrasound-physics", "pressure-measurement", "flow-measurement", "temperature-measurement", "renal-physiology", "hepatic-physiology", "foetal-circulation"].includes(topic.id) ? 64_000 : MAX_TEXT_CHARS;
+  const textBudget = ["mechanical-ventilation", "paediatric-anaesthesia", "ent-anaesthesia", "renal-disease", "general-colorectal-surgery", "bariatric-anaesthesia", "gas-laws", "electricity-magnetism", "ultrasound-physics", "pressure-measurement", "flow-measurement", "temperature-measurement", "renal-physiology", "hepatic-physiology", "foetal-circulation", "local-anaesthetics", "volatile-agents", "antimicrobials-pharm", "toxicology"].includes(topic.id) ? 64_000 : MAX_TEXT_CHARS;
   const text = [
     prose.slice(0, textBudget - (labelBlock ? labelBlock.length + 2 : 0)),
     "",
