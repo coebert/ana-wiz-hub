@@ -17,7 +17,7 @@
  */
 import { describe, it, expect } from "vitest";
 import { readFileSync, existsSync } from "node:fs";
-import { resolve } from "node:path";
+import { resolve, dirname, relative } from "node:path";
 
 const ROOT = resolve(__dirname, "../..");
 const SNAPSHOT = resolve(ROOT, "scripts/required-citations.snapshot.json");
@@ -46,8 +46,21 @@ describe("required-citations snapshot", () => {
       if (fileCache.has(rel)) return fileCache.get(rel)!;
       const abs = resolve(ROOT, rel);
       const src = existsSync(abs) ? readFileSync(abs, "utf8") : null;
+      if (src === null) {
+        fileCache.set(rel, null);
+        return null;
+      }
+      // Teaching sections retain their own citations after extraction from a topic.
+      // Seed the cache before recursion to guard circular shared imports.
       fileCache.set(rel, src);
-      return src;
+      const imported = [...src.matchAll(/from\s+["'](@\/components\/topic\/[\w/]+Teaching|(?:\.\.\/|\.\/)[\w./]+Teaching)["']/g)]
+        .map((match) => match[1].startsWith("@/")
+          ? `src/${match[1].slice(2)}.tsx`
+          : relative(ROOT, resolve(dirname(abs), `${match[1]}.tsx`)))
+        .map((path) => read(path) ?? "");
+      const combined = [src, ...imported].join("\n");
+      fileCache.set(rel, combined);
+      return combined;
     };
 
     for (const entry of snapshot.entries) {

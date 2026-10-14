@@ -7,5 +7,6 @@
 - Keep detailed APRV teaching in the shared APRVSection rendered by the mechanical ventilation topic, so its source-linked guidance and learning checks stay together.
 
 - Keep expanded teaching in Teaching components (relative or `@/components/topic/*Teaching` imports); the audit corpus follows and prioritises those files so detailed guidance is not skipped or truncated.
+- Citation-snapshot generation must resolve the data-driven topic route table and refuse empty output when fixed findings exist, so routing refactors cannot erase regression coverage.
 - Keep curriculum subsection coverage in curriculum-expansion.md and mark batches checked only after source, rendering and audit-corpus verification, so partial expansion cannot imply whole-topic completion.
 - Site search runs on a generated full-text index (src/data/searchIndex.generated.json, rebuilt by scripts/build-search-index.ts on predev/prebuild and lazy-loaded on first dialog open), which reuses the audit-corpus extractor and records each snippet's CollapsibleSubsection anchor so results deep-link to the exact section; named-import filtering keeps shared modules (e.g. anatomyFolios.ts) from leaking one topic's content into another topic's results.
