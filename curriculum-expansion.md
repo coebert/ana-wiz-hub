@@ -34,3 +34,11 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 - Expanded lesson headings and text were present in the rebuilt 153-topic audit corpus; the private stored corpus was refreshed. Flow-measurement still reaches its total extraction budget: prioritised new teaching is retained, but this is not a whole-topic completeness claim.
 - Wider citation-coverage tests still report existing issues outside these six pages: topic-ID extraction for general/colorectal surgery and surgical protocols, plus two uncited regional-anaesthesia summary points. No new physics citation failure was reported.
 - Scope remaining: complete the physics subsection review, then physiology, pharmacology, clinical, ICU, perioperative and mapped anatomy/chemistry. This work has not run unattended or been published.
+
+## Physiology continuation verification
+- Three shared source-linked lessons added to renal physiology, hepatic physiology and foetal circulation, with mechanisms, clinical interpretation, limitations and learning checks; no whole-topic completion claimed.
+- Original Hamm 2015, Kim 2009, Kietzmann 2017 and Bhatt 2013 documents retrieved. Comar 2010 experimental results qualify the simplified urea-zonation model. Newly quoted Kim and Bhatt sentences were checked against retrieved text.
+- Six focused regression tests passed; all three lessons, toggles and actual source popovers checked at desktop and phone widths without overflow or runtime exceptions. Current app compilation is clean.
+- Source-excerpt check passed, but this does not certify older quotes. The newly present fetal bibliography includes previously recorded excerpts not independently verified verbatim; the Pediatric Research citation explicitly flags this and its volume/pages were corrected from bibliographic metadata. Existing excerpts were retained, not silently rewritten.
+- All three prioritised lessons are retained in the rebuilt 153-topic audit corpus; renal physiology reaches the extraction budget, so whole-topic extraction is not guaranteed.
+- Remaining work: further Physics/Physiology review; Pharmacology, Clinical, ICU, Perioperative and mapped Anatomy/Chemistry expansions. This continuation is a checked batch, not completion of the curriculum.
