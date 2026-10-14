@@ -67,7 +67,7 @@ const paediatricFaqs: Array<[string, string]> = [
   ],
   [
     "How do you anaesthetise a child with pyloric stenosis?",
-    "Pyloric stenosis presents with projectile vomiting leading to a hypochloraemic, hypokalaemic metabolic alkalosis. It is a MEDICAL emergency, not a surgical one — the alkalosis must be corrected before theatre because post-operative apnoea is common if HCO₃ remains ≥28 mmol/L. Resuscitate with 0.9% saline 10–20 ml/kg boluses to restore intravascular volume, then 0.45% saline + 5% dextrose with 20 mmol/L KCl at 1.5 × maintenance. Targets before surgery: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ <28, and adequate urine output. In theatre, use a modified RSI (full stomach) with ketamine or propofol and rocuronium, maintain normothermia, and monitor glucose closely.",
+    "Pyloric stenosis presents with projectile vomiting leading to a hypochloraemic, hypokalaemic metabolic alkalosis. It is a MEDICAL emergency, not a surgical one — the alkalosis must be corrected before theatre because post-operative apnoea is common if HCO₃ remains ≥28 mmol/L. Resuscitate with 0.9% saline 10 ml/kg boluses to restore intravascular volume, then 0.45% saline + 5% dextrose with 20 mmol/L KCl at 1.5 × maintenance. Targets before surgery: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ <28, and adequate urine output. In theatre, use a modified RSI (full stomach) with ketamine or propofol and rocuronium, maintain normothermia, and monitor glucose closely.",
   ],
   [
     "What is a caudal block and when is it used in children?",
@@ -75,7 +75,7 @@ const paediatricFaqs: Array<[string, string]> = [
   ],
   [
     "What fluids should be used for paediatric maintenance and resuscitation?",
-    "For maintenance, use the Holliday-Segar 4-2-1 rule: 4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg, and 1 ml/kg/hr for each kg thereafter. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10–20 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
+    "For maintenance, use the Holliday-Segar 4-2-1 rule: 4 ml/kg/hr for the first 10 kg, 2 ml/kg/hr for the next 10 kg, and 1 ml/kg/hr for each kg thereafter. Use isotonic balanced crystalloids (Plasmalyte, Hartmann's) — AVOID hypotonic solutions (0.45% saline, 0.18% saline/4% glucose) because they carry a significant risk of iatrogenic hyponatraemia and cerebral oedema. For resuscitation, give 10 ml/kg boluses of warmed isotonic crystalloid and reassess after each bolus. For blood replacement, estimate maximum allowable blood loss (MABL) = EBV × (Hct_start − Hct_min) / Hct_start, where neonatal estimated blood volume = 80 ml/kg.",
   ],
   [
     "What is the difference between PCA and NCA in children?",
@@ -679,21 +679,59 @@ const PaediatricAnaesthesiaTopic = () => {
           </ExamSection>
 
 
+          
           <ExamSection id="fluids" exams={[Exam.FINAL]}>
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fluid Management</h2>
-              <p className="text-muted-foreground leading-relaxed mb-2">
-                Maintenance fluids: 4-2-1 rule (Holliday-Segar). Use isotonic balanced solutions (Hartmann's/Plasmalyte). Avoid hypotonic solutions — risk of hyponatraemia.
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">NICE NG29 Fluid Management (2020)</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Guidance for hospital IV fluids (updated Dec 2020). Note: applies to general ward/ED management; intraoperative requirements may differ based on surgical losses and physiology.
               </p>
-              <div className="p-4 rounded-lg border border-border">
-                <p className="text-sm text-muted-foreground">
-                  <strong className="text-foreground">4-2-1 Rule:</strong> 4 ml/kg/hr for first 10 kg, 2 ml/kg/hr for next 10 kg, 1 ml/kg/hr for each kg thereafter.
-                  <br /><strong className="text-foreground">Replacement:</strong> 10 ml/kg isotonic crystalloid boluses. Reassess after each bolus.
-                  <br /><strong className="text-foreground">Blood:</strong> Maximum allowable blood loss = EBV × (Hct_start − Hct_min) / Hct_start. Neonatal EBV = 80 ml/kg.
-                </p>
+              
+              <div className="space-y-4">
+                <div className="p-4 rounded-lg border border-border bg-secondary/10">
+                  <p className="font-semibold text-foreground text-sm mb-2">1. Resuscitation</p>
+                  <blockquote className="text-xs italic text-muted-foreground border-l-2 border-primary/30 pl-3 mb-2">
+                    "If children and young people need IV fluid resuscitation, use glucose‑free crystalloids that contain sodium in the range 131–154 mmol/litre, with a bolus of 10 ml/kg over less than 10 minutes."
+                  </blockquote>
+                  <p className="text-sm text-muted-foreground italic">
+                    Seek expert advice if 40–60 ml/kg or more is needed during initial resuscitation.
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-lg border border-border bg-secondary/10">
+                  <p className="font-semibold text-foreground text-sm mb-2">2. Routine Maintenance (Holliday-Segar)</p>
+                  <blockquote className="text-xs italic text-muted-foreground border-l-2 border-primary/30 pl-3 mb-2">
+                    "Calculate routine maintenance IV fluid rates... using the Holliday–Segar formula (100 ml/kg/day for the first 10 kg, 50 ml/kg/day for the next 10 kg and 20 ml/kg/day for weight over 20 kg)."
+                  </blockquote>
+                  <p className="text-sm text-muted-foreground">
+                    Initially use isotonic crystalloids (sodium 131–154 mmol/L). AVOID hypotonic solutions (e.g. 0.18% saline) due to hyponatraemia risk.
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-lg border border-border bg-secondary/10">
+                  <p className="font-semibold text-foreground text-sm mb-2">3. Non-osmotic ADH / Hyponatraemia Risk</p>
+                  <blockquote className="text-xs italic text-muted-foreground border-l-2 border-primary/30 pl-3 mb-2">
+                    "If there is a risk of water retention associated with non‑osmotic ADH secretion, consider... restricting fluids to 50% to 80% of routine maintenance needs."
+                  </blockquote>
+                </div>
+
+                <div className="p-4 rounded-lg border border-border bg-secondary/10">
+                  <p className="font-semibold text-foreground text-sm mb-2">4. Deficits and Ongoing Losses</p>
+                  <blockquote className="text-xs italic text-muted-foreground border-l-2 border-primary/30 pl-3 mb-2">
+                    "Adjust the IV fluid prescription (in addition to maintenance needs) to account for existing fluid and/or electrolyte deficits or excesses, ongoing losses... or abnormal distribution."
+                  </blockquote>
+                </div>
+
+                <div className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm mb-2">5. Monitoring</p>
+                  <p className="text-sm text-muted-foreground">
+                    Measure plasma electrolytes and glucose when starting maintenance (except before most elective surgery) and at least every 24 hours. Record 12-hourly fluid balance subtotals and 24-hourly totals.
+                  </p>
+                </div>
               </div>
             </div>
           </ExamSection>
+
 
           <ExamPitfallsCallout
             accent="clinical"
