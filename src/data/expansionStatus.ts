@@ -119,7 +119,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "bariatric-anaesthesia": {
     status: "in-progress",
-    note: "Evidence lesson added (AAGBI/SOBA 2015 status, STOP questionnaire validation, lean-body-weight dosing, ramped vs sniffing videolaryngoscopy meta-analysis) with quoted abstracts and learning checks. Older sections not yet reviewed.",
+    note: "Equipment pathway added earlier. Evidence lesson added (AAGBI/SOBA 2015 status, STOP questionnaire validation, lean-body-weight dosing, ramped vs sniffing videolaryngoscopy meta-analysis) with quoted abstracts and learning checks. Older sections not yet reviewed.",
   },
   "transfer-medicine": {
     status: "in-progress",
@@ -211,10 +211,6 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   "general-colorectal-surgery": {
     status: "expanded",
     note: "Assessment and AP-resection phases added.",
-  },
-  "bariatric-anaesthesia": {
-    status: "expanded",
-    note: "Equipment pathway added.",
   },
 };
 
