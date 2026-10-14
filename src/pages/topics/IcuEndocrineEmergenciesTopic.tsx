@@ -165,19 +165,19 @@ const IcuEndocrineEmergenciesTopic = () => {
       workedExamples={workedExamples}
       keyPoints={[
         { text: "DKA diagnostic triad (JBDS-IP): glucose > 11 (or known DM) + ketones ≥ 3 (or 2+ on dipstick) + pH < 7.30 / HCO₃⁻ < 15", cites: ["JBDS-IP DKA 2023"] },
-        { text: "DKA potassium paradox: serum K⁺ often normal/high at presentation despite massive total-body deficit — falls fast on insulin; replace K⁺ when 3.5–5.5, halt insulin if K⁺ < 3.5", cites: ["JBDS DKA potassium 2023"] },
+        { text: "DKA potassium paradox: serum K⁺ often normal/high at presentation despite massive total-body deficit — falls fast on insulin; replace K⁺ when 3.5–5.5, urgent senior review and additional potassium if K⁺ <3.5", cites: ["JBDS DKA potassium 2023"] },
         { text: "HHS: marked hyperglycaemia/hyperosmolality with minimal ketosis; in non-ketotic HHS start insulin 0.05 U/kg/h after adequate fluid replacement when glucose plateaus to avoid cerebral oedema and pontine myelinolysis", cites: ["JBDS HHS sodium 2023"] },
         { text: "Thyroid storm (BWPS ≥45): multimodal treatment in parallel; assess cardiac function before β-blockade, and give iodide ≥1 h after thionamide. Avoid aspirin (displaces T₄ from TBG)", cites: ["ATA Thyroid Storm"] },
         { text: "Adrenal crisis: refractory shock + low Na⁺ / high K⁺ / low glucose → hydrocortisone 100 mg IV stat BEFORE tests; high-dose hydrocortisone has full mineralocorticoid effect", cites: ["ES Adrenal Crisis 2016", "SfE adrenal emergency 2016"] },
-        { text: "Myxoedema coma: hypothermia + hyponatraemia + hypoventilation + obtundation — IV T3/T4 + IV hydrocortisone (cover concurrent adrenal insufficiency) + passive rewarming + ICU ventilation", cites: ["ATA myxoedema 2014"] },
-        { text: "Phaeochromocytoma crisis: phenoxybenzamine / phentolamine / IV magnesium FIRST (α-blockade) then β-blockade — never β-blocker alone (unopposed α → hypertensive crisis, pulmonary oedema)", cites: ["JBDS-IP HHS 2022"] },
+        { text: "Myxoedema coma: hypothermia + hyponatraemia + hypoventilation + obtundation — IV glucocorticoid cover before initial IV levothyroxine; selected T3 adjunct under endocrine advice + passive rewarming + ICU ventilation", cites: ["ATA myxoedema 2014"] },
+        { text: "Phaeochromocytoma crisis: phenoxybenzamine / phentolamine / IV magnesium FIRST (α-blockade) then β-blockade — never β-blocker alone (unopposed α → hypertensive crisis, pulmonary oedema)", cites: ["BJA Educ Phaeo"] },
         { text: "DKA: no routine phosphate or bicarbonate; discuss severe depletion or cardiovascular compromise with diabetes and critical care", cites: ["JBDS-IP DKA 2023 PDF"] },
         { text: "Pituitary apoplexy: sudden headache + visual loss + ophthalmoplegia + hypopituitarism → hydrocortisone 100 mg IV + urgent neurosurgical referral; replace cortisol BEFORE thyroxine", cites: ["SfE apoplexy emergency 2016"] },
       ]}
       sectionSources={{
         objectives: ["JBDS-IP DKA 2023 (ABCD)", "JBDS HHS sodium 2023", "ATA 2016", "SfE adrenal emergency 2016"],
         workedExamples: ["JBDS-IP DKA 2023 (ABCD)", "ATA 2016", "SfE adrenal emergency 2016"],
-        keyPoints: ["JBDS-IP DKA 2023 (ABCD)", "JBDS HHS sodium 2023", "ATA 2016", "ATA myxoedema 2014", "SfE adrenal emergency 2016", "SfE apoplexy emergency 2016"],
+        keyPoints: ["JBDS-IP DKA 2023 (ABCD)", "JBDS HHS sodium 2023", "ATA 2016", "ATA myxoedema 2014", "SfE adrenal emergency 2016", "SfE apoplexy emergency 2016", "SfE Adrenal Crisis 2020", "JBDS-IP HHS 2022 (ABCD)", "UK Pituitary Apoplexy 2011"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
