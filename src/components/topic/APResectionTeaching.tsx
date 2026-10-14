@@ -1,0 +1,22 @@
+import { InlineRef } from "@/components/references/InlineRef";
+const R = ({ label = "Celentano Presacral 2014" }: { label?: string }) => <InlineRef topicId="general-colorectal-surgery" refLabel={label} />;
+
+export function APResectionTeaching() {
+  return <section aria-labelledby="ap-resection-phase-heading" className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+    <h3 id="ap-resection-phase-heading" className="text-lg font-semibold text-foreground">AP resection: abdominal-to-perineal transition and haemorrhage control</h3>
+    <p>Confirm whether the perineal phase remains in lithotomy or requires a prone/jack-knife turn. Plan the transition before induction: access to the airway and lines, monitoring, pressure protection and resuscitation changes when the patient is repositioned. A flap-reconstruction phase can extend duration and add a further wound and analgesic burden.<R label="BJA Educ Positioning 2004" /></p>
+    <h4 className="font-semibold text-foreground">Before, during and after the turn</h4>
+    <ul className="list-disc pl-5 space-y-2">
+      <li><strong className="text-foreground">Before:</strong> agree the turn leader and roles, ensure sufficient staff, secure the tracheal tube and access, anticipate circuit/line reach and protect the eyes. Confirm that table attachments and supports are suitable for the patient and required position.</li>
+      <li><strong className="text-foreground">During:</strong> maintain control of the head and airway, avoid traction on tubes/lines and support limbs without twisting or compressing nerves. When prone, position the trunk to avoid abdominal compression and protect vulnerable pressure areas.</li>
+      <li><strong className="text-foreground">After:</strong> reconfirm waveform capnography, ventilation, circuit connections, tube position, blood pressure, line function, eye protection and pressure points. Investigate a new ventilation or haemodynamic change; do not attribute it to “the turn” without checking reversible problems.</li>
+    </ul>
+    <p>Long lithotomy increases pressure and nerve-injury risks; protect the common fibular nerve near the fibular head and reassess positioning through a prolonged case. Risk is continuous, not absent before a universal four-hour boundary. Document position changes and review limb pain, swelling or neurological symptoms after surgery.<R label="BJA Educ Positioning 2004" /></p>
+    <h4 className="font-semibold text-foreground">Why presacral bleeding can become torrential</h4>
+    <p>Presacral and communicating veins can bleed briskly during pelvic dissection and are difficult to control in a confined field. Conventional haemostasis can extend tears in delicate vessels; the review describes direct pressure with aspiration as the first temporary manoeuvre, followed by several possible surgical techniques rather than one universally superior method.<R /></p>
+    <p>The anaesthetist should recognise the bleeding promptly, communicate and activate the local major-haemorrhage pathway when appropriate, secure effective access, coordinate blood delivery and warming, and follow coagulation, physiology and electrolyte assessment. Surgical haemorrhage control and resuscitation proceed together. Do not delay resuscitation while waiting for an exact blood-loss estimate.<R /></p>
+    <p>Packing, tacking, topical haemostatic agents, muscle-based methods and cautery/suture techniques are options selected by the surgeon according to the bleeding site and stability. They are not a mandatory linear sequence. The review stresses timely packing when physiological deterioration makes prolonged attempts unsafe. If packs remain, handover the planned return to theatre and postoperative observation needs.<R /></p>
+    <h4 className="font-semibold text-foreground">Viva application</h4>
+    <p>“After a prone turn, rising airway pressure prompts me to check the tube, circuit, ventilation and abdominal support immediately. Brisk presacral bleeding is a separate threat: I alert the team, support surgical control and activate major-haemorrhage care early. At handover I state the positions, bleeding, transfusion/coagulation issues, any retained packs and the analgesic and recovery plan.”<R label="BJA Educ Positioning 2004" /><R /></p>
+  </section>;
+}

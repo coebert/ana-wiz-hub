@@ -1,0 +1,26 @@
+import { InlineRef } from "@/components/references/InlineRef";
+const R = ({ label = "NICE NG180" }: { label?: string }) => <InlineRef topicId="general-colorectal-surgery" refLabel={label} />;
+
+export function ColorectalAssessmentTeaching() {
+  return <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+    <h3 className="text-lg font-semibold text-foreground">Assess the person, the operation and the time available</h3>
+    <p>Establish whether this is elective resection, time-sensitive cancer surgery or an emergency with obstruction, perforation or sepsis. These are different optimisation windows. Clarify the intended approach, possible conversion, stoma or reconstruction, expected duration and positions. Assess function, frailty, cardiovascular and respiratory disease, renal function and the consequences of neoadjuvant treatment alongside the operative burden.<R /></p>
+    <p>Use a validated risk-stratification tool to supplement clinical assessment and discuss the person’s risks and options. Choose a tool appropriate to the population and available information: a score requiring operative variables is not necessarily a complete preoperative estimate. Explain uncertainty, recovery burden, alternatives and the person’s priorities; neither a low score nor chronological age alone settles consent or postoperative destination.<R /></p>
+    <h3 className="text-lg font-semibold text-foreground">Functional capacity and selective investigations</h3>
+    <p>Ask what the person can actually do and what limits them. Choose further tests to answer a clinical question and inform management. CPET can characterise physiological reserve and limitations in selected major-surgery patients, but no single anaerobic threshold or peak oxygen-consumption value should automatically determine eligibility. Do not attribute a quoted “CPET alone” prohibition to NG180: its recommendation is to combine risk tools with clinical assessment.<R label="CPET 2018" /><R /></p>
+    <h3 className="text-lg font-semibold text-foreground">Anaemia: identify the cause, not just the haemoglobin</h3>
+    <p>Review the blood count and investigate iron deficiency, inflammation, renal disease, bleeding or other causes as indicated. NICE NG24 advises oral iron before and after surgery for iron-deficiency anaemia. Consider IV iron when oral treatment is not tolerated, absorbed or adhered to, with functional iron deficiency, or when the interval to surgery is too short for oral iron to be effective. It does not define a universal “less than two weeks” trigger or guarantee haemoglobin correction by theatre.<R label="NICE NG24 Colorectal Iron" /><R /></p>
+    <p>Agree timing with the surgical team, particularly in cancer or emergency surgery. An iron-treatment plan is not a transfusion decision; active bleeding, symptoms, physiology and procedure-specific risks require their own assessment. Document the expected response and follow-up rather than assuming an infusion completes optimisation.<R label="NICE NG24 Colorectal Iron" /></p>
+    <h3 className="text-lg font-semibold text-foreground">Nutrition, prehabilitation and medicines</h3>
+    <p>NG180 recommends nutritional screening before intermediate, major or complex surgery and directs at-risk patients to NICE nutrition-support guidance. Establish intake, weight loss and the underlying cause; request dietetic input and an appropriate oral, enteral or parenteral plan when indicated. Malnutrition is not corrected by carbohydrate loading alone.<R /><R label="NICE CG32 Colorectal Nutrition" /></p>
+    <p>Discuss smoking cessation, alcohol reduction and physical preparation suited to the person and time available. Avoid presenting a fixed cessation interval as a condition for every operation. Reconcile anticoagulants, diabetes medicines and steroids, and agree interruption/restart and monitoring plans. Follow the VTE pathway and the colorectal team’s bowel-preparation and fasting instructions rather than applying an unqualified default to obstruction or delayed gastric emptying.<R /><R label="NICE NG89" /></p>
+    <h3 className="text-lg font-semibold text-foreground">Complete a practical handover plan</h3>
+    <ol className="list-decimal pl-5 space-y-2">
+      <li><strong className="text-foreground">Define unresolved risks:</strong> illness requiring optimisation, aspiration risk, vascular access, monitoring and blood availability.</li>
+      <li><strong className="text-foreground">Agree intraoperative priorities:</strong> position changes, analgesia by incision and approach, individualised fluid support and haemorrhage contingency.</li>
+      <li><strong className="text-foreground">Agree recovery:</strong> observation level, pain strategy, mobilisation/nutrition goals, medicine restart and escalation if recovery deviates from the expected course.</li>
+      <li><strong className="text-foreground">Record shared decisions:</strong> patient priorities, realistic risks and any agreed limits of treatment; a risk calculator does not make these decisions for the patient.</li>
+    </ol>
+    <p>These steps translate NG180’s shared decision-making and enhanced-recovery principles into a case-specific plan; they are not mandatory numerical cut-offs or a substitute for local colorectal pathways.<R /></p>
+  </div>;
+}
