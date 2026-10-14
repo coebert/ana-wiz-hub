@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search, X, Atom, Heart, FlaskConical, Stethoscope, Activity, ClipboardList, Bone, Beaker, Loader2 } from "lucide-react";
-import { allTopics, Topic, Section, sectionMeta } from "@/data/curriculum";
+import { allTopics, Topic, Section, ExamTag, sectionMeta } from "@/data/curriculum";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 
 /**
@@ -133,7 +133,9 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
     setIndexLoading(true);
     import("@/data/searchIndex.generated.json")
       .then((mod) => {
-        const data = mod.default as { topics: SearchIndexEntry[] };
+        // JSON import types are inferred loosely; the shape is contract-checked
+        // by scripts/build-search-index.ts.
+        const data = mod.default as unknown as { topics: SearchIndexEntry[] };
         setIndex(
           data.topics.map((e) => ({
             ...e,
@@ -159,7 +161,7 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
   }, [open, onClose]);
 
   const filtered = useMemo(
-    () => index?.filter((e) => matchesFilter(e.examTags)) ?? null,
+    () => index?.filter((e) => matchesFilter(e.examTags as ExamTag[])) ?? null,
     [index, matchesFilter],
   );
 
