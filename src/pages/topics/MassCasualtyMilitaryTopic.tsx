@@ -65,7 +65,7 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer:
-      "Run the incident, do not run a patient. Activate the plan, command and control with action cards, triage and re-triage, push damage-control resuscitation and damage-control surgery for P1s, and communicate ruthlessly. Hot debrief and welfare for the team afterwards.",
+      "Maintain incident oversight: activate the plan and named leads, triage and re-triage, coordinate haemorrhage control and resuscitation according to each casualty's needs, and communicate changes. Damage-control surgery is selected by physiology, not by a P1 tag alone. Arrange operational learning and welfare support afterwards.",
    cites: ["NHS Major Incidents Clinical", "JESIP Joint Doctrine", "European Trauma 2023 Pressure", "European Trauma 2023 Transfusion"],
   },
   {
@@ -87,7 +87,7 @@ const workedExamples: WorkedExample[] = [
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
           <ul className="list-disc list-inside space-y-1 text-foreground">
-            <li>Using crystalloid in haemorrhagic shock — worsens the lethal triad (acidosis, hypothermia, coagulopathy).</li>
+            <li>Large-volume crystalloid without source control — risks dilution and coagulopathy; a restricted bridge may be needed if blood is unavailable.</li>
             <li>Prolonged definitive surgery in an unstable casualty — assess physiology and the facility’s actual capability before committing.</li>
             <li>Uncontrolled tourniquet release — document time and reassess, but removal or conversion requires a trained clinician, a controlled setting and a plan for recurrent bleeding.</li>
             <li>Inadequate analgesia — titrate to clinical response with appropriate monitoring and transfer documentation.</li>
@@ -96,7 +96,7 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer:
-      "Stop the bleeding, support physiology with damage-control resuscitation (whole blood, TXA, calcium, warming, permissive hypotension), abbreviate surgery according to physiology, and evacuate to definitive care under critical-care escort. The lethal triad — hypothermia, acidosis, coagulopathy — is the enemy at every step.",
+      "Stop bleeding and resuscitate concurrently using available authorised blood products, protocol-based TXA, calcium monitoring and warming. Do not use permissive hypotension when brain injury is suspected. Abbreviate surgery according to physiology and arrange an accepted destination with critical-care escort and a delay contingency.",
    cites: ["NHS Major Incidents Clinical", "NATO Medical Support", "European Trauma 2023 TXA", "European Trauma 2023 Surgery"],
   },
 ];
@@ -208,7 +208,7 @@ const MassCasualtyMilitaryTopic = () => {
             <p className="text-sm text-muted-foreground mb-3">Apply mechanism-specific assessment and seek specialist advice.<InlineRef topicId="mass-casualty-military" refLabel="NHS Major Incidents Clinical" /></p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Blast injury</strong>: primary (barotrauma — blast lung, tympanic rupture, bowel), secondary (fragments), tertiary (displacement), quaternary (burns, crush, inhalation). Always examine tympanic membranes and anticipate delayed ARDS</li>
-              <li><strong>Ballistic / penetrating</strong>: damage-control surgery; consider thoracotomy for cardiac arrest with penetrating chest trauma &lt;15 min downtime</li>
+              <li><strong>Ballistic / penetrating</strong>: identify concealed bleeding and expedite appropriate haemostasis. Resuscitative thoracotomy is a specialist, time-critical decision based on mechanism, signs of life, arrest circumstances, expertise and the trauma-arrest protocol; a single downtime cut-off is not sufficient.</li>
               <li><strong>Burns</strong>: airway oedema (early specialist airway assessment for progressive obstruction, respiratory failure or reduced consciousness; facial burns alone do not mandate intubation), use the burns service fluid protocol and titrate to physiology/urine output; circumferential burns require assessment for impaired perfusion or ventilation, not automatic escharotomy. Carbon monoxide and cyanide poisoning suspected in enclosed-space fires (hydroxocobalamin)</li>
               <li><strong>CBRN</strong>: protect responders, assess contamination, use appropriate decontamination and deliver urgent care through controlled pathways. Antidotes are agent-specific and require current specialist guidance; detailed teaching follows below.</li>
               <li><strong>Crush syndrome</strong>: anticipate reperfusion collapse, hyperkalaemia, rhabdomyolysis and AKI; coordinate safe extrication, obtain access where feasible, and titrate fluid to clinical status with repeated electrolyte, ECG and urine-output assessment. Do not apply a universal 1 L/h rate or routine urine alkalinisation</li>
