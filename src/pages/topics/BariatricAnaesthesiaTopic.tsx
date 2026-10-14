@@ -280,9 +280,9 @@ const BariatricAnaesthesiaTopic = () => {
           </p>
           <div className="space-y-3">
             {[
-              { t: "Operating table and trolleys", d: "Check the safe working load of the table, trolley, bed and chairs (standard tables are often limited to 130–180 kg; bariatric tables extend to 250–450 kg). Wide tables or side extensions/arm supports prevent limb overhang and pressure injury, and the table must still tilt and break at the declared load. Confirm the load rating in the pre-list check, not in the anaesthetic room." },
+              { t: "Operating table and trolleys", d: "Check the manufacturer-declared safe working load of the exact table, trolley, bed, chairs and attachments. There is no universal “standard” or “bariatric” weight limit. Confirm permitted loading in the intended configuration and position; use the device instructions rather than assuming that a rating applies to every accessory or tilt. Wide tables or side extensions/arm supports prevent limb overhang and pressure injury, and the table must still tilt and break at the declared load. Confirm the load rating in the pre-list check, not in the anaesthetic room." },
               { t: "Patient positioning aids", d: "Ramping devices or a stacked blanket/commercial head-elevation pillow to align the external auditory meatus with the sternal notch, gel pads and heel/sacral protection for the increased contact pressures, and a firm footplate for head-up positions. Pressure area care starts before induction because obese patients are at high risk of pressure sores, rhabdomyolysis and brachial plexus injury." },
-              { t: "Transfer and hoisting", d: "Hover mattresses, lateral transfer boards, slide sheets and ceiling or mobile hoists rated for the weight, with enough trained staff for a planned transfer. Never improvise a lift: staff back injury and patient falls are the commonest incidents. Encourage patients who can to walk to theatre and self-position on the table." },
+              { t: "Transfer and hoisting", d: "Hover mattresses, lateral transfer boards, slide sheets and ceiling or mobile hoists rated for the weight, with enough trained staff for a planned transfer. Never improvise a lift: unsafe handling risks staff injury and patient falls. Encourage patients who can to walk to theatre and self-position on the table." },
               { t: "Airway and ventilation equipment", d: "Videolaryngoscope as a first-line or immediately available device, second-generation supraglottic airways in large sizes, difficult-airway trolley, high-flow nasal oxygen and a CPAP/NIV circuit for pre-oxygenation and recovery, and a ventilator capable of high inspiratory pressures with PEEP and recruitment manoeuvres. Patients should bring their own CPAP machine and mask." },
               { t: "Monitoring and access", d: "Correctly sized (or forearm/conical) NIBP cuffs — an undersized cuff over-reads; low threshold for invasive arterial monitoring where the cuff is unreliable or the case is long. Ultrasound for vascular access and regional blocks, long block and spinal needles, quantitative neuromuscular monitoring, and processed EEG depth monitoring in TIVA." },
               { t: "Imaging and diagnostics", d: "Confirm the weight and bore limits of the CT/MRI scanner and the fluoroscopy table before booking; radiography may be non-diagnostic in very high BMI. Plan alternative diagnostic strategies if imaging will not be possible postoperatively." },
@@ -295,6 +295,14 @@ const BariatricAnaesthesiaTopic = () => {
               </div>
             ))}
           </div>
+          <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">Equipment readiness: a whole-journey check</h3>
+          <ol className="list-decimal pl-5 space-y-2 text-sm text-muted-foreground leading-relaxed">
+            <li><strong>Before the list:</strong> establish actual weight and dimensions; confirm a suitable bed, transfer route, table, supports, recovery space and any planned imaging. A suitable operating table alone does not make the pathway safe.</li>
+            <li><strong>At the team brief:</strong> name the transfer/positioning lead, confirm staff and moving equipment, identify airway/access difficulties and allow the time required. Escalate a missing suitable device before induction rather than improvising after the patient is anaesthetised.</li>
+            <li><strong>Before induction:</strong> establish head-elevated positioning, an effective oxygenation plan, an appropriately sized cuff, functioning access and rescue-airway equipment. Confirm whether the patient’s usual CPAP equipment is available for recovery.</li>
+            <li><strong>After positioning and at handover:</strong> recheck ventilation, pressure protection, line function and restraints, then confirm the recovery bed, oxygen/CPAP plan, monitoring and transfer arrangements.</li>
+          </ol>
+          <p className="text-sm text-muted-foreground mt-3">This checklist operationalises the guideline’s organisational responsibilities and equipment list. Device capacity remains manufacturer- and configuration-specific; neither BMI nor a generic weight table replaces that check<InlineRef topicId="bariatric-anaesthesia" refLabel="AAGBI Obesity 2015" />.</p>
         </div>
 
         <div>
