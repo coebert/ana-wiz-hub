@@ -25,7 +25,7 @@ describe("Fluid balance lessons", () => {
     expect(readFileSync("src/routes/topicRoutes.ts", "utf8")).toContain('["/intensive-care/fluid-balance", "FluidBalanceTopic"]');
     expect(readFileSync("src/pages/topics/AcidBaseTopic.tsx", "utf8")).toContain('to="/intensive-care/fluid-balance"');
     const src = readFileSync("src/components/topic/FluidBalanceTeaching.tsx", "utf8");
-    expect(src).toContain("/intensive-care/acid-base#section-fluids-chloride");
+    expect(src).toContain("/intensive-care/acid-base#section-saline-balanced-fluids-and-outcome");
     for (const m of src.matchAll(/label="([^"]+)"/g)) expect(topicReferences["fluid-balance"].some(r => r.label === m[1]), m[1]).toBe(true);
   });
 });

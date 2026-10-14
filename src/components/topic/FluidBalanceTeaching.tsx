@@ -36,7 +36,7 @@ export function TonicityTeaching() {
           </tbody>
         </table>
       </div>
-      <p>Arithmetic, not a quotation: 0.9% sodium chloride is 9 g/L. Dividing by the molar mass of sodium chloride (58.44 g/mol) gives about 154 mmol/L each of sodium and chloride, which is why saline carries more chloride than plasma and can cause the hyperchloraemic acidosis discussed in the <Link to="/intensive-care/acid-base#section-fluids-chloride" className="text-primary underline">saline vs balanced fluids lesson</Link>.<R label="SMART 2018" /></p>
+      <p>Arithmetic, not a quotation: 0.9% sodium chloride is 9 g/L. Dividing by the molar mass of sodium chloride (58.44 g/mol) gives about 154 mmol/L each of sodium and chloride, which is why saline carries more chloride than plasma and can cause the hyperchloraemic acidosis discussed in the <Link to="/intensive-care/acid-base#section-saline-balanced-fluids-and-outcome" className="text-primary underline">saline vs balanced fluids lesson</Link>.<R label="SMART 2018" /></p>
       <Check question="why does glucose 5% count as hypotonic?">
         <p>Because glucose is metabolised after infusion, leaving free water that spreads into cells. Its effect on plasma sodium is that of water, even though its bag osmolarity is near plasma.</p>
       </Check>
@@ -54,7 +54,7 @@ export function IsotonicTeaching() {
       <p>For children and young people, NICE gives a weight-based bolus and requires glucose-free fluid:</p>
       <Q>"use glucose‑free crystalloids that contain sodium in the range 131–154 mmol/litre, with a bolus of 10 ml/kg over less than 10 minutes."<R label="NICE NG29 resuscitation" /></Q>
       <H>Saline or balanced crystalloid?</H>
-      <p>Both sit inside the NICE sodium band. The difference is chloride. In SMART (15,802 adults), a major adverse kidney event within 30 days occurred in 14.3% with balanced fluid and 15.4% with saline; in the blinded multicentre PLUS trial (5,037 patients), 90-day death was 21.8% v 22.0%.<R label="SMART 2018" /><R label="PLUS 2022" /> The full trial discussion lives in the <Link to="/intensive-care/acid-base#section-fluids-chloride" className="text-primary underline">Saline, Balanced Fluids and Outcome lesson on Acid-Base Disorders</Link>.</p>
+      <p>Both sit inside the NICE sodium band. The difference is chloride. In SMART (15,802 adults), a major adverse kidney event within 30 days occurred in 14.3% with balanced fluid and 15.4% with saline; in the blinded multicentre PLUS trial (5,037 patients), 90-day death was 21.8% v 22.0%.<R label="SMART 2018" /><R label="PLUS 2022" /> The full trial discussion lives in the <Link to="/intensive-care/acid-base#section-saline-balanced-fluids-and-outcome" className="text-primary underline">Saline, Balanced Fluids and Outcome lesson on Acid-Base Disorders</Link>.</p>
       <Reasoning>isotonic fluid is not "free" fluid. Each bolus should answer a clinical question (is perfusion improving?), and continued boluses without response add oedema rather than benefit. The NICE "500 ml over less than 15 minutes" wording sets a unit for reassessment, not a total volume.</Reasoning>
       <Check question="a 20 kg child needs fluid resuscitation. What does NICE's bolus wording give?">
         <p>10 ml/kg × 20 kg = <strong>200 ml</strong> of glucose-free crystalloid with sodium 131–154 mmol/litre, over less than 10 minutes, then reassess.<R label="NICE NG29 resuscitation" /></p>
