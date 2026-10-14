@@ -22,7 +22,7 @@ describe("PEEP management source-led teaching", () => {
     expect(readFileSync("src/routes/topicRoutes.ts", "utf8")).toContain('["/intensive-care/peep-management", "PEEPManagementTopic"]');
     const refs = topicReferences["peep-management"];
     for (const path of ["src/components/topic/PEEPManagementTeaching.tsx", "src/components/diagrams/intensive-care/PEEPTimingDiagram.tsx"]) {
-      for (const match of readFileSync(path, "utf8").matchAll(/(?:label|refLabel)="([^"]+)"/g)) {
+      for (const match of readFileSync(path, "utf8").matchAll(/(?:<R label|refLabel)="([^"]+)"/g)) {
         if (match[1].includes("PEEP breath")) continue;
         expect(refs.some(r => r.label === match[1]), match[1]).toBe(true);
       }

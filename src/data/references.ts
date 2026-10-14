@@ -1455,94 +1455,94 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "peep-management": [
     {
-        "label": "ATS 2024 protection",
-        "citation": "Qadir N, Sahetya S, Munshi L, et al. An Update on Management of Adult Patients with Acute Respiratory Distress Syndrome: An Official American Thoracic Society Clinical Practice Guideline. Am J Respir Crit Care Med. 2024;209(1):24–36.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10870893/",
-        "excerpt": "We recommend using mechanical ventilation strategies that limit tidal volume (4–8 mL/kg predicted body weight) and inspiratory pressures (plateau pressure <30 cm H 2 O) in patients with ARDS (strong recommendation, moderate certainty of evidence). • We recommend prone positioning for >12 hours per day in patients with severe ARDS (strong recommendation, moderate certainty of evidence)."
+        label: "ATS 2024 protection",
+        citation: "Qadir N, Sahetya S, Munshi L, et al. An Update on Management of Adult Patients with Acute Respiratory Distress Syndrome: An Official American Thoracic Society Clinical Practice Guideline. Am J Respir Crit Care Med. 2024;209(1):24–36.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10870893/",
+        excerpt: "We recommend using mechanical ventilation strategies that limit tidal volume (4–8 mL/kg predicted body weight) and inspiratory pressures (plateau pressure <30 cm H 2 O) in patients with ARDS (strong recommendation, moderate certainty of evidence). • We recommend prone positioning for >12 hours per day in patients with severe ARDS (strong recommendation, moderate certainty of evidence)."
     },
     {
-        "label": "ATS 2024 higher PEEP",
-        "citation": "Qadir N, Sahetya S, Munshi L, et al. An Update on Management of Adult Patients with Acute Respiratory Distress Syndrome: An Official American Thoracic Society Clinical Practice Guideline. Am J Respir Crit Care Med. 2024;209(1):24–36.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10870893/",
-        "excerpt": "higher PEEP without lung recruitment maneuvers as opposed to lower PEEP in patients with moderate to severe ARDS (conditional recommendation, low to moderate certainty)"
+        label: "ATS 2024 higher PEEP",
+        citation: "Qadir N, Sahetya S, Munshi L, et al. An Update on Management of Adult Patients with Acute Respiratory Distress Syndrome: An Official American Thoracic Society Clinical Practice Guideline. Am J Respir Crit Care Med. 2024;209(1):24–36.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10870893/",
+        excerpt: "higher PEEP without lung recruitment maneuvers as opposed to lower PEEP in patients with moderate to severe ARDS (conditional recommendation, low to moderate certainty)"
     },
     {
-        "label": "ATS 2024 recruitment",
-        "citation": "Qadir N, Sahetya S, Munshi L, et al. An Update on Management of Adult Patients with Acute Respiratory Distress Syndrome: An Official American Thoracic Society Clinical Practice Guideline. Am J Respir Crit Care Med. 2024;209(1):24–36.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10870893/",
-        "excerpt": "we recommend against using prolonged lung recruitment maneuvers in patients with moderate to severe ARDS (strong recommendation, moderate certainty)."
+        label: "ATS 2024 recruitment",
+        citation: "Qadir N, Sahetya S, Munshi L, et al. An Update on Management of Adult Patients with Acute Respiratory Distress Syndrome: An Official American Thoracic Society Clinical Practice Guideline. Am J Respir Crit Care Med. 2024;209(1):24–36.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10870893/",
+        excerpt: "we recommend against using prolonged lung recruitment maneuvers in patients with moderate to severe ARDS (strong recommendation, moderate certainty)."
     },
     {
-        "label": "ATS 2024 balance",
-        "citation": "Qadir N, Sahetya S, Munshi L, et al. An Update on Management of Adult Patients with Acute Respiratory Distress Syndrome: An Official American Thoracic Society Clinical Practice Guideline. Am J Respir Crit Care Med. 2024;209(1):24–36.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10870893/",
-        "excerpt": "However, PEEP can also cause injurious overdistension in aerated lung and hemodynamic compromise via increased right ventricular afterload and decreased venous return. The net balance of benefit to harm is reliant on the proportion of recruitment to overdistension in an individual patient."
+        label: "ATS 2024 balance",
+        citation: "Qadir N, Sahetya S, Munshi L, et al. An Update on Management of Adult Patients with Acute Respiratory Distress Syndrome: An Official American Thoracic Society Clinical Practice Guideline. Am J Respir Crit Care Med. 2024;209(1):24–36.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10870893/",
+        excerpt: "However, PEEP can also cause injurious overdistension in aerated lung and hemodynamic compromise via increased right ventricular afterload and decreased venous return. The net balance of benefit to harm is reliant on the proportion of recruitment to overdistension in an individual patient."
     },
     {
-        "label": "ATS 2024 individualisation",
-        "citation": "Qadir N, Sahetya S, Munshi L, et al. An Update on Management of Adult Patients with Acute Respiratory Distress Syndrome: An Official American Thoracic Society Clinical Practice Guideline. Am J Respir Crit Care Med. 2024;209(1):24–36.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10870893/",
-        "excerpt": "The strategy chosen should be tailored to the clinician’s expertise and accompanied by continuous monitoring of respiratory mechanics, hemodynamics, and assessments of the patient’s physiologic response to PEEP. Uncertainties and research priorities The optimal strategy for setting PEEP in patients with ARDS remains uncertain."
+        label: "ATS 2024 individualisation",
+        citation: "Qadir N, Sahetya S, Munshi L, et al. An Update on Management of Adult Patients with Acute Respiratory Distress Syndrome: An Official American Thoracic Society Clinical Practice Guideline. Am J Respir Crit Care Med. 2024;209(1):24–36.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10870893/",
+        excerpt: "The strategy chosen should be tailored to the clinician’s expertise and accompanied by continuous monitoring of respiratory mechanics, hemodynamics, and assessments of the patient’s physiologic response to PEEP. Uncertainties and research priorities The optimal strategy for setting PEEP in patients with ARDS remains uncertain."
     },
     {
-        "label": "ESICM 2023 PEEP",
-        "citation": "Grasselli G, Calfee CS, Camporota L, et al. ESICM guidelines on acute respiratory distress syndrome: definition, phenotyping and respiratory support strategies. Intensive Care Med. 2023;49:727–759.",
-        "url": "https://doi.org/10.1007/s00134-023-07050-7",
-        "excerpt": "We are unable to make a recommendation for or against routine PEEP titration with a higher PEEP/FiO 2 strategy versus a lower PEEP/FiO 2 strategy to reduce mortality in patients with ARDS. No recommendation; high level of evidence of no effect."
+        label: "ESICM 2023 PEEP",
+        citation: "Grasselli G, Calfee CS, Camporota L, et al. ESICM guidelines on acute respiratory distress syndrome: definition, phenotyping and respiratory support strategies. Intensive Care Med. 2023;49:727–759.",
+        url: "https://doi.org/10.1007/s00134-023-07050-7",
+        excerpt: "We are unable to make a recommendation for or against routine PEEP titration with a higher PEEP/FiO 2 strategy versus a lower PEEP/FiO 2 strategy to reduce mortality in patients with ARDS. No recommendation; high level of evidence of no effect."
     },
     {
-        "label": "ART 2017",
-        "citation": "Writing Group for the ART Investigators. Effect of Lung Recruitment and Titrated PEEP vs Low PEEP on Mortality in Patients With ARDS: A Randomized Clinical Trial. JAMA. 2017;318(14):1335–1345.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5710484/",
-        "excerpt": "At 28 days, 277 of 501 patients (55.3%) in the experimental group and 251 of 509 patients (49.3%) in the control group had died (hazard ratio [HR], 1.20; 95% CI, 1.01 to 1.42; P = .041). Compared with the control group"
+        label: "ART 2017",
+        citation: "Writing Group for the ART Investigators. Effect of Lung Recruitment and Titrated PEEP vs Low PEEP on Mortality in Patients With ARDS: A Randomized Clinical Trial. JAMA. 2017;318(14):1335–1345.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5710484/",
+        excerpt: "At 28 days, 277 of 501 patients (55.3%) in the experimental group and 251 of 509 patients (49.3%) in the control group had died (hazard ratio [HR], 1.20; 95% CI, 1.01 to 1.42; P = .041). Compared with the control group"
     },
     {
-        "label": "Stather 2005 measurement",
-        "citation": "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
-        "excerpt": "If the expiratory port of the ventilator is occluded at end-expiration, then the proximal airway pressure will equilibrate with alveolar pressure and permit measurement of auto-PEEP (end-expiratory pressure above applied PEEP) at the airway opening (Fig. 3 ). Expiratory muscle contraction can elevate auto-PEEP without adding to dynamic hyperinflation, and therefore for accurate measurement of auto-PEEP the patient should be relaxed."
+        label: "Stather 2005 measurement",
+        citation: "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
+        excerpt: "If the expiratory port of the ventilator is occluded at end-expiration, then the proximal airway pressure will equilibrate with alveolar pressure and permit measurement of auto-PEEP (end-expiratory pressure above applied PEEP) at the airway opening (Fig. 3 ). Expiratory muscle contraction can elevate auto-PEEP without adding to dynamic hyperinflation, and therefore for accurate measurement of auto-PEEP the patient should be relaxed."
     },
     {
-        "label": "Stather 2005 occult",
-        "citation": "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
-        "excerpt": "that there may at times be 'unmeasured' or 'occult' auto-PEEP [ 23 ]. This occult auto-PEEP has all of the untoward effects of the measurable auto-PEEP, but it cannot be quantified using the usual approaches [ 23 ]."
+        label: "Stather 2005 occult",
+        citation: "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
+        excerpt: "that there may at times be 'unmeasured' or 'occult' auto-PEEP [ 23 ]. This occult auto-PEEP has all of the untoward effects of the measurable auto-PEEP, but it cannot be quantified using the usual approaches [ 23 ]."
     },
     {
-        "label": "Stather 2005 plateau",
-        "citation": "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
-        "excerpt": "Pplat can be determined by stopping flow at end-inspiration utilizing an end-inspiratory pause (typically 0.4 s). During this pause, airway opening pressure falls from peak pressure (the sum of static and resistive pressures) to Pplat (static pressure alone) as resistive pressure falls to zero (Fig. 4 ). Patients must be paralyzed or heavily sedated to obtain reliable measurements."
+        label: "Stather 2005 plateau",
+        citation: "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
+        excerpt: "Pplat can be determined by stopping flow at end-inspiration utilizing an end-inspiratory pause (typically 0.4 s). During this pause, airway opening pressure falls from peak pressure (the sum of static and resistive pressures) to Pplat (static pressure alone) as resistive pressure falls to zero (Fig. 4 ). Patients must be paralyzed or heavily sedated to obtain reliable measurements."
     },
     {
-        "label": "Stather 2005 expiration",
-        "citation": "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
-        "excerpt": "Expiratory time can be lengthened by using higher inspiratory flow settings (70–100 l/min) during volume cycled ventilation, using a shorter inspiratory time fraction, reducing respiratory rate, and eliminating any inspiratory pause."
+        label: "Stather 2005 expiration",
+        citation: "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
+        excerpt: "Expiratory time can be lengthened by using higher inspiratory flow settings (70–100 l/min) during volume cycled ventilation, using a shorter inspiratory time fraction, reducing respiratory rate, and eliminating any inspiratory pause."
     },
     {
-        "label": "Stather 2005 minute ventilation",
-        "citation": "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
-        "excerpt": "by far the most effective method of decreasing dynamic hyperinflation/gas-trapping is to reduce the minute ventilation [ 31 , 32 ]."
+        label: "Stather 2005 minute ventilation",
+        citation: "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
+        excerpt: "by far the most effective method of decreasing dynamic hyperinflation/gas-trapping is to reduce the minute ventilation [ 31 , 32 ]."
     },
     {
-        "label": "Stather 2005 external PEEP",
-        "citation": "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
-        "excerpt": "The application of external PEEP in severe asthma remains a controversial topic. It could theoretically decrease the work of breathing and hence carbon dioxide production, while limiting gas-trapping by splinting the airways open [ 29 , 30 ]; however, in practice there are situations in which the application of external PEEP may increase total PEEP and worsen gas-trapping."
+        label: "Stather 2005 external PEEP",
+        citation: "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
+        excerpt: "The application of external PEEP in severe asthma remains a controversial topic. It could theoretically decrease the work of breathing and hence carbon dioxide production, while limiting gas-trapping by splinting the airways open [ 29 , 30 ]; however, in practice there are situations in which the application of external PEEP may increase total PEEP and worsen gas-trapping."
     },
     {
-        "label": "Stather 2005 harms",
-        "citation": "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
-        "excerpt": "however, excessive dynamic hyperinflation has been shown to predict the development of hypotension and barotrauma during mechanical ventilation of severe asthma [ 25 ]."
+        label: "Stather 2005 harms",
+        citation: "Stather DR, Stewart TE. Clinical review: Mechanical ventilation in severe asthma. Crit Care. 2005;9(6):581–587.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1414026/",
+        excerpt: "however, excessive dynamic hyperinflation has been shown to predict the development of hypotension and barotrauma during mechanical ventilation of severe asthma [ 25 ]."
     },
     {
-        "label": "Respiratory mechanics 2005",
-        "citation": "Grinnan DC, Truwit JD. Clinical review: Respiratory mechanics in spontaneous and assisted ventilation. Crit Care. 2005;9(5):472–484.",
-        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1297597/",
-        "excerpt": "Pex is the pressure associated with alveolar distention at the end of a breath. In normal individuals this is usually zero when referenced to atmosphere. However, when positive end-expiratory pressure (PEEP) is applied, Pex is at least as great as PEEP. It may be greater if air trapping occurs, and the associated pressure beyond PEEP is termed auto-PEEP or intrinsic PEEP. The clinician will need to know Ps, Pex, auto-PEEP, and Vt to determine respiratory compliance at the bedside."
+        label: "Respiratory mechanics 2005",
+        citation: "Grinnan DC, Truwit JD. Clinical review: Respiratory mechanics in spontaneous and assisted ventilation. Crit Care. 2005;9(5):472–484.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1297597/",
+        excerpt: "Pex is the pressure associated with alveolar distention at the end of a breath. In normal individuals this is usually zero when referenced to atmosphere. However, when positive end-expiratory pressure (PEEP) is applied, Pex is at least as great as PEEP. It may be greater if air trapping occurs, and the associated pressure beyond PEEP is termed auto-PEEP or intrinsic PEEP. The clinician will need to know Ps, Pex, auto-PEEP, and Vt to determine respiratory compliance at the bedside."
     }
 ],
   "pics-follow-up": [
