@@ -57,3 +57,18 @@ export function EndocrinePerioperativeTeaching() {
     <LessonSources topicId="icu-endocrine-emergencies" labels={["MHRA SGLT2 interruption 2020", "JBDS-IP DKA 2023 (ABCD)", "SfE adrenal emergency 2016"]} />
   </div>;
 }
+export function HyponatraemiaCorrectionTeaching() {
+  const S = () => <InlineRef topicId="icu-endocrine-emergencies" refLabel="SALSA 2021" />;
+  return <div className="space-y-3 text-muted-foreground leading-relaxed p-4 rounded-lg border border-border">
+    <h3 className="text-lg font-serif font-bold text-foreground">Giving Hypertonic Saline: Bolus or Infusion? (SALSA)</h3>
+    <p>SALSA randomised 178 adults with symptomatic hyponatraemia (mean sodium 118.2 mmol/L, mean age 73) to rapid intermittent boluses or a slow continuous infusion of hypertonic saline.<S /></p>
+    <ul className="list-disc pl-5 space-y-1">
+      <li><strong className="text-foreground">Overcorrection (primary outcome):</strong> 17.2% with boluses vs 24.2% with infusion. The difference was not statistically significant (P = 0.26).<S /></li>
+      <li><strong className="text-foreground">Re-lowering treatment</strong> was needed less often with boluses (41.4% vs 57.1%; number needed to treat 6.3), and more bolus patients reached the target rise within 1 hour (32.2% vs 17.6%).<S /></li>
+      <li><strong className="text-foreground">Symptoms and overall sodium rise</strong> did not differ between groups.<S /></li>
+      <li><strong className="text-foreground">Practice point:</strong> both methods worked, and about one patient in five overcorrected either way. Frequent sodium checks and a plan to re-lower are essential whichever method is chosen.</li>
+    </ul>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: did SALSA show that boluses cause less overcorrection?</summary><p className="mt-2">No. Overcorrection was 17.2% vs 24.2%, which was not significant. Boluses did reduce the need for re-lowering treatment.</p></details>
+    <LessonSources topicId="icu-endocrine-emergencies" labels={["SALSA 2021"]} />
+  </div>;
+}
