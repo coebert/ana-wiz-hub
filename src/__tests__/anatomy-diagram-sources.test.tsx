@@ -9,7 +9,7 @@ vi.mock("@/components/layout/SectionLayout", () => ({ SectionLayout: ({ children
 describe("Anatomy diagram sources", () => {
   it("includes every surgical atlas plate, all painted plates and all four brain views", () => {
     expect(inventory.entries.filter(e => e.kind === "Painted atlas plate")).toHaveLength(0);
-    expect(inventory.entries.filter(e => e.kind === "Sourced public-domain plate")).toHaveLength(31);
+    expect(inventory.entries.filter(e => e.kind === "Sourced public-domain plate")).toHaveLength(32);
     expect(inventory.entries.filter(e => e.kind === "Surgical atlas schematic")).toHaveLength(32);
     for (const id of ["BrainAxialDiagram", "BrainCoronalDiagram", "BrainAnatomyDiagram", "BrainMedialDiagram", "NephronDiagram"]) expect(inventory.entries.some(e => e.id === id)).toBe(true);
     expect(new Set(inventory.entries.map(e => e.id)).size).toBe(inventory.entries.length);

@@ -1581,6 +1581,30 @@
       "status": "cited"
     },
     {
+      "id": "abdominalFolio-retroperitoneum",
+      "title": "Abdominal Aorta and Branches",
+      "group": "Atlas of Anatomy — Abdomen",
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray531.png”: The abdominal aorta and its branches. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray531.png",
+          "basis": "Image source and licence"
+        }
+      ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray531.png”: The abdominal aorta and its branches. Public domain.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "title": "abdominal anatomy",
+          "path": "/anatomy/abdominal-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "cited"
+    },
+    {
       "id": "abdominalFolio-anterior",
       "title": "Abdominal Cavity",
       "group": "Atlas of Anatomy — Abdomen",
@@ -1594,30 +1618,6 @@
         }
       ],
       "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1034.png”: Front view of the thoracic and abdominal viscera. a. Median plane. b b. Lateral planes. c c. Trans tubercular plane. d d. Subcostal plane. e e. Transpyloric pla Public domain.",
-      "uncertainty": [],
-      "topicLinks": [
-        {
-          "title": "abdominal anatomy",
-          "path": "/anatomy/abdominal-anatomy"
-        }
-      ],
-      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
-      "status": "cited"
-    },
-    {
-      "id": "abdominalFolio-retroperitoneum",
-      "title": "Retroperitoneum",
-      "group": "Atlas of Anatomy — Abdomen",
-      "kind": "Sourced public-domain plate",
-      "sources": [
-        {
-          "label": "Gray's Anatomy (1918)",
-          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1121.png”: Posterior abdominal wall, after removal of the peritoneum, showing kidneys, suprarenal capsules, and great vessels. (Corning). Public domain.",
-          "url": "https://commons.wikimedia.org/wiki/File:Gray1121.png",
-          "basis": "Image source and licence"
-        }
-      ],
-      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1121.png”: Posterior abdominal wall, after removal of the peritoneum, showing kidneys, suprarenal capsules, and great vessels. (Corning). Public domain.",
       "uncertainty": [],
       "topicLinks": [
         {
@@ -2038,18 +2038,18 @@
     },
     {
       "id": "thoracicFolio-anterior",
-      "title": "Thoracic Cavity",
+      "title": "Heart, Great Vessels and Lungs",
       "group": "Atlas of Anatomy — Thorax",
       "kind": "Sourced public-domain plate",
       "sources": [
         {
           "label": "Gray's Anatomy (1918)",
-          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1178.png”:  Public domain.",
-          "url": "https://commons.wikimedia.org/wiki/File:Gray1178.png",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray490.png”: Front view of the heart and lungs. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray490.png",
           "basis": "Image source and licence"
         }
       ],
-      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray1178.png”:  Public domain.",
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray490.png”: Front view of the heart and lungs. Public domain.",
       "uncertainty": [],
       "topicLinks": [
         {
@@ -2317,8 +2317,32 @@
       "status": "cited"
     },
     {
+      "id": "spinalFolio-cauda-equina",
+      "title": "Conus Medullaris and Cauda Equina",
+      "group": "Atlas of Anatomy — Vertebral Column",
+      "kind": "Sourced public-domain plate",
+      "sources": [
+        {
+          "label": "Gray's Anatomy (1918)",
+          "detail": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray662.png”: Cauda equina and filum terminale seen from behind. The dura mater has been opened and spread out. Public domain.",
+          "url": "https://commons.wikimedia.org/wiki/File:Gray662.png",
+          "basis": "Image source and licence"
+        }
+      ],
+      "credit": "Henry Gray, Anatomy of the Human Body (20th ed., 1918), Wikimedia Commons “Gray662.png”: Cauda equina and filum terminale seen from behind. The dura mater has been opened and spread out. Public domain.",
+      "uncertainty": [],
+      "topicLinks": [
+        {
+          "title": "spinal anatomy",
+          "path": "/anatomy/spinal-anatomy"
+        }
+      ],
+      "sourceFile": "src/components/diagrams/anatomyFolios.ts",
+      "status": "cited"
+    },
+    {
       "id": "spinalFolio-sagittal",
-      "title": "Epidural and Subarachnoid Spaces",
+      "title": "Lumbar Vertebrae and Ligaments",
       "group": "Atlas of Anatomy — Vertebral Column",
       "kind": "Sourced public-domain plate",
       "sources": [

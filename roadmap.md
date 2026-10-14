@@ -24,7 +24,7 @@
 - [x] Build anatomy diagram source directory with per-plate citations and uncertainty flags
 - [x] Replace nightly AI citation verification with per-topic curated anatomy bibliographies, deterministic source-record checks and reader-visible uncertainty (nine topics, 47 existing editorial references; six tests and live source-list/filter checks passed; original-document matching is not certified)
 
-- [x] Replace painted anatomy plates with credited public-domain Gray's Anatomy plates (31 done; spinal-posterior and thoracic-mediastinum still painted — no good match found)
+- [x] Replace painted anatomy plates with credited public-domain Gray's Anatomy plates (done; cauda equina Gray662, mediastinum Gray490 and abdominal aorta Gray531 replaced mismatched plates; labels limited to structures shown)
 - [x] Cite flagged diagrams, replace AI brain images and last 2 paintings, add orientation notes (7 inherent limits stay flagged)
 - [x] Expand APRV teaching with verified sources, corrected waveforms, bedside cautions and learning checks
 - [ ] Review curriculum-wide subsection depth and expand outline-only teaching into comprehensive, source-led content
