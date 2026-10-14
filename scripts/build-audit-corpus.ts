@@ -334,7 +334,12 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
       }
       svgLabels.push(...extracted.svgLabels);
       if (node.depth >= MAX_IMPORT_DEPTH) continue;
-      for (const dep of localImportsOf(node.src, node.file)) {
+      // Visit source-linked Teaching components first so the imported-file cap
+      // cannot drop them on topics with many diagram imports.
+      const deps = [...localImportsOf(node.src, node.file)].sort(
+        (x, y) => Number(/Teaching\.tsx$/.test(y) || y.endsWith("/APRVSection.tsx")) - Number(/Teaching\.tsx$/.test(x) || x.endsWith("/APRVSection.tsx")),
+      );
+      for (const dep of deps) {
         if (seen.has(dep) || seen.size > MAX_IMPORTED_FILES) continue;
         seen.add(dep);
         const src = readIfExists(dep);
