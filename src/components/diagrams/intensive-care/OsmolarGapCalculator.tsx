@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
+import { Button } from "@/components/ui/button";
 import { RotateCcw } from "lucide-react";
 
 /**
@@ -34,12 +35,11 @@ interface Field {
   placeholder?: string;
 }
 
-const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n));
 const parseNum = (s: string, lo: number, hi: number): number | null => {
   if (s.trim() === "") return null;
   const n = Number(s);
   if (!Number.isFinite(n)) return null;
-  return clamp(n, lo, hi);
+  return n < lo || n > hi ? null : n;
 };
 
 const NumInput = ({ label, value, set, unit, min, max, step = 0.1, placeholder }: Field) => (
@@ -84,7 +84,7 @@ const OsmolarGapCalculator = () => {
     const measV = parseNum(measured, 200, 450);
     const agV = parseNum(ag, 0, 60);
 
-    if (naV === null || ureaRaw === null || gluRaw === null) return null;
+    if (naV === null || ureaRaw === null || gluRaw === null || (measured.trim() !== "" && measV === null) || (ethanol.trim() !== "" && ethRaw === null) || (ag.trim() !== "" && agV === null)) return null;
 
     // Convert to mmol/L
     const ureaMmol = ureaUnit === "mg/dL (BUN)" ? ureaRaw * 0.357 : ureaRaw;
@@ -100,21 +100,21 @@ const OsmolarGapCalculator = () => {
       interpretation = "Enter a measured osmolality to compute the gap.";
     } else if (gap < 10) {
       tone = "ok";
-      interpretation = "Normal osmolar gap (< 10 mOsm/kg). Toxic alcohols unlikely if presentation is early; remember a late presentation may have a normal gap with a high AG.";
+      interpretation = "Gap below the illustrative +10 review threshold. This does not exclude toxic alcohol poisoning at any stage; use the laboratory reference range, exposure history and direct toxin levels.";
     } else if (gap < 25) {
       tone = "warn";
       interpretation = "Mildly raised osmolar gap. Consider ethanol, mannitol, propylene glycol (lorazepam/diazepam infusions), severe lactic/ketoacidosis, or pseudohyponatraemia.";
     } else {
       tone = "alarm";
-      interpretation = "Markedly raised osmolar gap. Strongly suspect toxic alcohol ingestion (methanol, ethylene glycol, diethylene glycol). Send levels, start fomepizole empirically and consider RRT.";
+      interpretation = "Markedly raised gap: review toxic alcohols and other osmoles urgently. Send toxin levels and obtain NPIS/TOXBASE advice. Antidote and dialysis decisions require exposure and clinical assessment, not this number alone.";
     }
 
     let combo = "";
     if (gap !== null && agV !== null) {
-      if (gap > 10 && agV > 14) combo = "↑ osmolar gap + ↑ anion gap → toxic alcohol with metabolism underway (formate / glycolate / oxalate).";
-      else if (gap > 10 && agV <= 14) combo = "↑ osmolar gap, normal AG → early toxic alcohol ingestion before ADH metabolism, or osmotic agent (mannitol, propylene glycol).";
+      if (gap > 10 && agV > 14) combo = "↑ osmolar gap + ↑ anion gap → consider toxic alcohol with metabolism underway (formate / glycolate / oxalate).";
+      else if (gap > 10 && agV <= 14) combo = "↑ osmolar gap, normal AG → consider early toxic alcohol ingestion before ADH metabolism, or osmotic agent (mannitol, propylene glycol).";
       else if (gap <= 10 && agV > 14) combo = "Normal osmolar gap + ↑ AG → late toxic alcohol presentation (parent metabolised) OR another HAGMA cause (lactate, ketones, uraemia, salicylate).";
-      else combo = "Both gaps normal — toxic alcohol very unlikely.";
+      else combo = "Neither gap is raised by these illustrative thresholds; this does not rule out toxic alcohol exposure.";
     }
 
     return { naV, ureaMmol, gluMmol, ethMOsm, calc, gap, interpretation, tone, combo };
@@ -134,12 +134,12 @@ const OsmolarGapCalculator = () => {
       <div className="border border-border rounded-lg p-4 mb-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-base font-serif font-bold text-foreground">Osmolar gap calculator</h3>
-          <button
+          <Button variant="outline" size="sm"
             onClick={reset}
             className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded border border-border hover:bg-secondary transition-colors"
           >
             <RotateCcw className="h-3 w-3"  aria-hidden="true" focusable={false}/> Reset
-          </button>
+          </Button>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
@@ -149,10 +149,10 @@ const OsmolarGapCalculator = () => {
             <NumInput label="Urea" value={urea} set={setUrea} unit={ureaUnit} min={0} max={200} step={0.1} />
             <div className="mt-1 inline-flex rounded border border-border overflow-hidden text-[10px] w-full">
               {(["mmol/L", "mg/dL (BUN)"] as UreaUnit[]).map((u) => (
-                <button key={u} onClick={() => setUreaUnit(u)}
-                  className={`flex-1 px-1 py-0.5 transition-colors ${ureaUnit === u ? "bg-primary text-primary-foreground" : "hover:bg-secondary"}`}>
+                <Button variant="ghost" size="sm" aria-pressed={ureaUnit === u} key={u} onClick={() => setUreaUnit(u)}
+                  className={`min-w-0 flex-1 rounded-none px-1 text-[10px] transition-colors ${ureaUnit === u ? "bg-primary text-primary-foreground" : "hover:bg-secondary"}`}>
                   {u}
-                </button>
+                </Button>
               ))}
             </div>
           </div>
@@ -161,10 +161,10 @@ const OsmolarGapCalculator = () => {
             <NumInput label="Glucose" value={glucose} set={setGlucose} unit={gluUnit} min={0} max={200} step={0.1} />
             <div className="mt-1 inline-flex rounded border border-border overflow-hidden text-[10px] w-full">
               {(["mmol/L", "mg/dL"] as GlucoseUnit[]).map((u) => (
-                <button key={u} onClick={() => setGluUnit(u)}
-                  className={`flex-1 px-1 py-0.5 transition-colors ${gluUnit === u ? "bg-primary text-primary-foreground" : "hover:bg-secondary"}`}>
+                <Button variant="ghost" size="sm" aria-pressed={gluUnit === u} key={u} onClick={() => setGluUnit(u)}
+                  className={`min-w-0 flex-1 rounded-none px-1 text-[10px] transition-colors ${gluUnit === u ? "bg-primary text-primary-foreground" : "hover:bg-secondary"}`}>
                   {u}
-                </button>
+                </Button>
               ))}
             </div>
           </div>
@@ -174,6 +174,8 @@ const OsmolarGapCalculator = () => {
           <NumInput label="Anion gap (optional)" value={ag} set={setAg} unit="mEq/L" min={0} max={60} step={1} placeholder="optional" />
         </div>
 
+        {!result && <p role="status" className="text-sm text-destructive">Enter valid values within the displayed ranges; no result is calculated from invalid inputs.</p>}
+        <p className="text-xs text-muted-foreground mb-3">Teaching estimate: ethanol uses mg/dL ÷ 4.6 (ideal molar contribution). Empirical laboratory formulas and reference intervals differ. AG comparisons use an illustrative Na-only threshold, not a universal range.</p>
         {result && (
           <>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-xs">
@@ -216,7 +218,7 @@ Gap = measured − calculated`}
           <div className="mt-2 p-3 rounded border border-border bg-secondary/30 text-muted-foreground space-y-1">
             <p>A 42-year-old presents 4 h after ingesting an unknown alcohol. Na⁺ 140, urea 5, glucose 5, ethanol 0; measured osmolality 332; AG 14.</p>
             <p>Calculated = 2(140) + 5 + 5 = 290. Gap = 332 − 290 = <strong>42 mOsm/kg</strong>.</p>
-            <p>AG only marginally raised, osmolar gap markedly raised → <strong>early toxic alcohol ingestion</strong>, parent still unmetabolised. Send methanol/ethylene glycol levels, give <strong>fomepizole 15 mg/kg IV</strong> empirically, consider haemodialysis (especially if methanol &gt; 50 mg/dL, ethylene glycol &gt; 50 mg/dL, AKI, visual symptoms, or severe acidosis).</p>
+            <p>AG only marginally raised, osmolar gap markedly raised → <strong>early toxic alcohol ingestion</strong>, parent still unmetabolised. Send methanol/ethylene glycol levels, obtain urgent NPIS advice and initiate indicated ADH blockade without waiting for levels. Dialysis criteria differ by toxin, antidote, acid–base findings and organ injury; a universal 50 mg/dL cut-off is not appropriate.</p>
           </div>
         </details>
       </div>

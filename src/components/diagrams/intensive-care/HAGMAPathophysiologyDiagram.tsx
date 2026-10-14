@@ -151,7 +151,7 @@ const HAGMAPathophysiologyDiagram = () => {
     { label: mode === "hagma" ? "UA + A⁻" : "UA", value: ua, color: "hsl(0 65% 55% / 0.8)", pulse: mode === "hagma" && step >= 2 },
   ];
 
-  const current = STEPS[step];
+  const current = mode === "nagma" && step > 0 ? { title: step === 1 ? "Bicarbonate is lost" : step === 2 ? "Chloride replaces lost bicarbonate" : "NAGMA pattern established", body: "In this simplified bicarbonate-loss model, chloride rises as bicarbonate falls. Unmeasured anions stay unchanged and AG remains 12. Clinical mixed disorders need separate assessment." } : STEPS[step];
 
   return (
     <DiagramFigure
@@ -219,42 +219,14 @@ const HAGMAPathophysiologyDiagram = () => {
           {/* Anions bar */}
           <IonBar x={290} width={120} segments={anions} title="Anions" scale={scale} baseY={baseY} />
 
-          {/* AG bracket */}
-          {step >= 3 && (
-            <g style={{ transition: "opacity 500ms", opacity: 1 }}>
-              <line
-                x1={415}
-                y1={baseY - hco * scale}
-                x2={425}
-                y2={baseY - hco * scale}
-                stroke="hsl(var(--primary))"
-                strokeWidth={1.5}
-              />
-              <line
-                x1={415}
-                y1={baseY - (hco + cl) * scale}
-                x2={425}
-                y2={baseY - (hco + cl) * scale}
-                stroke="hsl(var(--primary))"
-                strokeWidth={1.5}
-              />
-              <line
-                x1={425}
-                y1={baseY - hco * scale}
-                x2={425}
-                y2={baseY - (hco + cl) * scale}
-                stroke="hsl(var(--primary))"
-                strokeWidth={1.5}
-                strokeDasharray="2 2"
-              />
-              <text x={430} y={baseY - (hco + cl / 2) * scale + 4} className="fill-primary" style={{ fontSize: 10, fontWeight: 600 }}>
-                AG = {ag}
-              </text>
-            </g>
-          )}
+          {/* AG bracket: unmeasured-anion segment */}
+          {step >= 3 && <g>
+            <path d={`M 415 ${baseY - (hco + cl) * scale} H 425 V ${baseY - (hco + cl + ua) * scale} H 415`} fill="none" stroke="hsl(var(--primary))" strokeWidth={1.5} />
+            <text x={430} y={baseY - (hco + cl + ua / 2) * scale + 4} className="fill-primary" style={{ fontSize: 9, fontWeight: 600 }}>AG {ag}</text>
+          </g>}
 
           {/* Floating HA molecule animation during step 1-2 */}
-          {step === 1 && (
+          {step === 1 && mode === "hagma" && (
             <g>
               <circle cx={240} cy={120} r={18} fill="hsl(0 70% 55% / 0.85)">
                 <animate attributeName="cy" values="80;130;80" dur="1.8s" repeatCount="indefinite" />
@@ -263,7 +235,7 @@ const HAGMAPathophysiologyDiagram = () => {
               <text x={240} y={170} textAnchor="middle" className="fill-muted-foreground" style={{ fontSize: 10 }}>strong acid load</text>
             </g>
           )}
-          {step === 2 && (
+          {step === 2 && mode === "hagma" && (
             <g>
               <text x={240} y={100} textAnchor="middle" className="fill-foreground" style={{ fontSize: 11, fontWeight: 600 }}>
                 H⁺ + HCO₃⁻ → H₂O + CO₂↑

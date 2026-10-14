@@ -15,6 +15,8 @@
  */
 import { describe, it, expect } from "vitest";
 import {
+  albuminCorrectedAnionGap,
+  apparentSID,
   alveolarPO2_kPa,
   aAGradient_kPa,
   anionGap,
@@ -127,5 +129,16 @@ describe("Henderson–Hasselbalch", () => {
   });
   it("acute respiratory acidosis (PaCO2 8 kPa) → pH ~7.22", () => {
     expect(henderson_pH(24, 8)).toBeCloseTo(7.22, 2);
+  });
+});
+
+
+describe("reviewed acid-base charge and unit conventions", () => {
+  it("uses 0.25 for albumin in g/L, avoiding a tenfold correction", () => {
+    expect(albuminCorrectedAnionGap(12, 20)).toBe(17);
+    expect(albuminCorrectedAnionGap(12, 40)).toBe(12);
+  });
+  it("counts divalent cations as charge equivalents", () => {
+    expect(apparentSID({ Na: 140, K: 4.5, Ca: 1.1, Mg: 0.9, Cl: 115, lactate: 3.5 })).toBe(30);
   });
 });

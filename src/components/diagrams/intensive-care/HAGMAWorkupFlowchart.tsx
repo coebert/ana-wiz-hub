@@ -32,47 +32,47 @@ const NODES: Node[] = [
 
   { id: "ph", kind: "decision", x: 280, y: 100, w: 200, h: 60,
     label: "pH < 7.35 AND HCO₃⁻ < 22?",
-    detail: "Confirms metabolic acidosis. If pH normal with low HCO₃⁻, suspect compensated chronic respiratory alkalosis OR mixed disorder — still calculate the AG." },
+    detail: "Supports a metabolic acidosis, but mixed disturbances need assessment. If pH normal with low HCO₃⁻, suspect compensated chronic respiratory alkalosis OR mixed disorder — still calculate the AG." },
 
   { id: "winters", kind: "action", x: 40, y: 100, w: 200, h: 60,
     label: "Apply Winter's: expected PaCO₂ = 1.5 × HCO₃⁻ + 8 ± 2",
     detail: "Confirms respiratory compensation is appropriate. PaCO₂ above expected → coexisting respiratory acidosis. PaCO₂ below expected → coexisting respiratory alkalosis (think sepsis, salicylate, pregnancy)." },
 
   { id: "ag", kind: "decision", x: 280, y: 190, w: 200, h: 60,
-    label: "AG = Na⁺ − (Cl⁻ + HCO₃⁻) > 12?",
-    detail: "Normal AG 8–12 (3–11 if K⁺ excluded). A raised AG means unmeasured anions: lactate, ketones, formate, glycolate, oxalate, sulphate, urate, salicylate." },
+    label: "Albumin-corrected AG above lab range?",
+    detail: "Use the local Na-only AG reference interval; the French panel quotes 12 ±4 mmol/L without potassium. A raised AG means unmeasured anions: lactate, ketones, formate, glycolate, oxalate, sulphate, urate, salicylate." },
 
   { id: "albcorr", kind: "redflag", x: 520, y: 190, w: 220, h: 60,
     label: "Albumin-correct (always in ICU)",
-    detail: "Corrected AG = measured AG + 2.5 × (40 − albumin g/L). Hypoalbuminaemia masks a raised AG — an ICU patient with albumin 20 g/L and 'normal' AG of 12 actually has a corrected AG of 17 → HAGMA hiding in plain sight." },
+    detail: "Corrected AG = measured AG + 0.25 × (40 − albumin g/L). Hypoalbuminaemia masks a raised AG — an ICU patient with albumin 20 g/L and 'normal' AG of 12 actually has a corrected AG of 17 → HAGMA hiding in plain sight." },
 
   { id: "nagma", kind: "action", x: 40, y: 280, w: 200, h: 60,
-    label: "Normal AG → NAGMA",
-    detail: "Hyperchloraemic acidosis. Causes: GI HCO₃⁻ loss (diarrhoea, high-output stoma, ileal conduit), renal tubular acidosis (1/2/4), large-volume 0.9% saline, post-hypocapnia, carbonic-anhydrase inhibitors. Calculate urinary AG to distinguish renal from GI loss." },
+    label: "Normal corrected AG → assess NAGMA",
+    detail: "Hyperchloraemic acidosis. Causes: GI HCO₃⁻ loss (diarrhoea, high-output stoma, ileal conduit), renal tubular acidosis (1/2/4), large-volume 0.9% saline, post-hypocapnia, carbonic-anhydrase inhibitors. If the cause is unclear, consider urinary ammonium/UAG with its limitations; proximal RTA can have a negative UAG." },
 
   { id: "hagma-conf", kind: "decision", x: 280, y: 280, w: 200, h: 60,
-    label: "Raised AG → HAGMA confirmed",
+    label: "Raised corrected AG → investigate",
     detail: "Bicarbonate has been consumed buffering H⁺ from a strong acid HA; A⁻ has joined the unmeasured-anion pool. Cl⁻ is unchanged. Now hunt for the cause." },
 
   { id: "lact", kind: "decision", x: 280, y: 370, w: 200, h: 60,
-    label: "Lactate > 4? Ketones ≥ 3?",
-    detail: "Cover the two commonest HAGMA causes first. Lactate > 4 mmol/L triggers Sepsis-6/SSC bundles. Capillary β-hydroxybutyrate ≥ 3 in a hyperglycaemic patient diagnoses DKA (JBDS 2023)." },
+    label: "Measure lactate and blood ketones",
+    detail: "Cover the two commonest HAGMA causes first. Any raised lactate merits clinical assessment; do not wait for 4 mmol/L. Blood ketones require interpretation with pH/bicarbonate, diabetes and drug history; SGLT2-associated DKA may be euglycaemic." },
 
   { id: "treat-common", kind: "action", x: 40, y: 460, w: 200, h: 60,
     label: "Treat lactic acidosis / DKA",
-    detail: "Lactic acidosis: source control, balanced crystalloid, vasopressor early (MAP ≥ 65), trend lactate. DKA: fixed-rate insulin 0.1 U/kg/h + K⁺ replete + fluids; switch to glucose 10% at CBG < 14; target ketone fall ≥ 0.5 mmol/L/h." },
+    detail: "Treat the clinical cause of lactate elevation. For DKA use the current fluid, insulin and potassium protocol and monitor blood ketones; do not substitute glucose for resuscitation fluid or wait for a high glucose to recognise euglycaemic DKA." },
 
   { id: "osm-gap", kind: "decision", x: 280, y: 460, w: 200, h: 60,
     label: "Osmolar gap > 10?",
-    detail: "Osm gap = measured − (2×Na⁺ + urea + glucose). Raised → toxic alcohols (methanol, ethylene glycol), propylene glycol (lorazepam/diazepam infusions), mannitol, severe ketoacidosis, or pseudohyponatraemia. A normal gap LATE in presentation does not exclude toxic alcohol (parent already metabolised)." },
+    detail: "Osm gap = measured − (2×Na⁺ + urea + glucose). Raised → toxic alcohols (methanol, ethylene glycol), propylene glycol (lorazepam/diazepam infusions), mannitol, severe ketoacidosis, or pseudohyponatraemia. A normal gap at any stage cannot exclude toxic exposure; late presentation may have little remaining parent alcohol." },
 
   { id: "tox-alc", kind: "redflag", x: 520, y: 460, w: 220, h: 60,
     label: "Suspect toxic alcohol — fomepizole",
-    detail: "Start fomepizole 15 mg/kg IV empirically while awaiting levels if history strong. Send methanol/EG, lactate, Ca²⁺, urine microscopy (oxalate). Add folinic acid (methanol) or pyridoxine + thiamine (EG). HD if level > 50 mg/dL, pH < 7.15–7.30, end-organ injury, or AKI." },
+    detail: "Urgent NPIS/TOXBASE advice; sample for direct levels without delaying indicated ADH blockade. Dialysis depends on toxin, antidote, acid–base status and organ injury. Use the current EXTRIP criteria shown below, not a universal 50 mg/dL trigger." },
 
   { id: "uraemic", kind: "decision", x: 280, y: 560, w: 200, h: 60,
     label: "Uraemia / AKI stage 3?",
-    detail: "Retained sulphate, phosphate, urate, hippurate; AG usually 16–24. If AG > 26, hunt for a second cause (lactate, ketones, toxin). Treat hyperkalaemia, consider oral NaHCO₃ in stable CKD to keep HCO₃⁻ > 22." },
+    detail: "Assess renal function and retained acid, but also lactate, ketones and exposure. Do not impose a fixed maximum renal AG or prescribe bicarbonate from the gap alone; seek renal input for refractory acidosis or other dialysis indications." },
 
   { id: "salic", kind: "decision", x: 280, y: 650, w: 200, h: 60,
     label: "Salicylate ingestion? (mixed picture)",
@@ -80,19 +80,19 @@ const NODES: Node[] = [
 
   { id: "salic-tx", kind: "redflag", x: 520, y: 650, w: 220, h: 60,
     label: "Alkalinise urine ± HD",
-    detail: "1.5 L 1.26% NaHCO₃ over 2 h, urinary pH target 7.5–8.5; K⁺ MUST stay > 4 (alkalinisation fails if hypokalaemic). HD for level > 700 mg/L acute / > 500 mg/L chronic, altered mental state, pulmonary/cerebral oedema, AKI, or pH < 7.20 (EXTRIP 2015)." },
+    detail: "Urgent NPIS/TOXBASE advice for specialist-directed bicarbonate therapy and dialysis assessment. EXTRIP uses symptoms, oxygen requirement, treatment failure, pH and level/renal function together. Do not use a universal 700 mg/L acute or 500 mg/L chronic rule." },
 
   { id: "delta", kind: "decision", x: 280, y: 740, w: 200, h: 60,
     label: "Calculate delta ratio (ΔAG / ΔHCO₃⁻)",
-    detail: "< 0.4 = pure NAGMA. 0.4–1.0 = mixed HAGMA + NAGMA. 1.0–2.0 = pure HAGMA. > 2 = HAGMA + concurrent metabolic alkalosis or chronic respiratory acidosis (e.g. DKA in a vomiting patient, COPD with sepsis). Ratio outside expectation → look for a second disorder." },
+    detail: "< 0.4 = pure NAGMA. 0.4–1.0 = mixed HAGMA + NAGMA. 1.0–2.0 = compatible with predominantly HAGMA; mixed disorders remain possible. > 2 = HAGMA + concurrent metabolic alkalosis or chronic respiratory acidosis (e.g. DKA in a vomiting patient, COPD with sepsis). Ratio outside expectation → look for a second disorder." },
 
   { id: "redflags", kind: "redflag", x: 280, y: 820, w: 460, h: 48,
-    label: "RED FLAGS — escalate / HD now",
-    detail: "pH < 7.10 with cardiovascular compromise; refractory shock; KDIGO 3 AKI with acidosis; methanol > 50 mg/dL; EG > 50 mg/dL with oxaluria; salicylate > 700 mg/L acute; MALA with lactate > 20; lactate rising despite source control; coma / seizures from any HAGMA cause." },
+    label: "RED FLAGS — urgent senior assessment",
+    detail: "Urgently escalate severe acidaemia with cardiovascular compromise, refractory shock, organ dysfunction or suspected severe poisoning. The need for dialysis is cause-specific and is not established by one generic numerical threshold." },
 
   { id: "support", kind: "action", x: 40, y: 820, w: 200, h: 48,
     label: "Supportive: K⁺, fluids, NO routine bicarbonate",
-    detail: "BICAR-ICU (Lancet 2018): bicarbonate had no overall mortality benefit but reduced RRT need in the AKI (KDIGO 2–3) subgroup with pH < 7.20. Consider only as a bridge in life-threatening acidaemia." },
+    detail: "Treat the cause and monitor ventilation and electrolytes. Bicarbonate is not routine for every HAGMA. See the separate BICAR-ICU lesson for trial eligibility, AKIN stage 2–3 subgroup findings and limitations." },
 ];
 
 const EDGES: Edge[] = [
@@ -104,14 +104,14 @@ const EDGES: Edge[] = [
   { from: "ag", to: "hagma-conf", label: "yes" },
   { from: "hagma-conf", to: "lact" },
   { from: "lact", to: "treat-common", label: "yes" },
-  { from: "lact", to: "osm-gap", label: "no" },
-  { from: "osm-gap", to: "tox-alc", label: "yes" },
+  { from: "lact", to: "osm-gap", label: "also assess" },
+  { from: "osm-gap", to: "tox-alc", label: "exposure suspected" },
   { from: "osm-gap", to: "uraemic", label: "no" },
   { from: "uraemic", to: "salic", label: "no/also" },
   { from: "salic", to: "salic-tx", label: "yes" },
   { from: "salic", to: "delta", label: "no" },
   { from: "delta", to: "redflags" },
-  { from: "redflags", to: "support", label: "if absent" },
+  { from: "redflags", to: "support", label: "in parallel" },
 ];
 
 const nodeFill = (kind: Kind, active: boolean): string => {
@@ -136,13 +136,13 @@ const nodeText = (kind: Kind, active: boolean): string => {
 
 const HAGMAWorkupFlowchart = () => {
   const [active, setActive] = useState<string>("abg");
-  const node = NODES.find((n) => n.id === active)!;
+  const node = NODES.find((n) => n.id === active) ?? NODES[0];
 
   const center = (n: Node) => ({ cx: n.x + n.w / 2, cy: n.y + n.h / 2 });
 
   const edgePath = (e: Edge): { d: string; mx: number; my: number } => {
-    const a = NODES.find((n) => n.id === e.from)!;
-    const b = NODES.find((n) => n.id === e.to)!;
+    const a = NODES.find((n) => n.id === e.from) ?? NODES[0];
+    const b = NODES.find((n) => n.id === e.to) ?? NODES[0];
     const ac = center(a);
     const bc = center(b);
     // Start at bottom of a (or side if horizontal), end at top of b (or side)

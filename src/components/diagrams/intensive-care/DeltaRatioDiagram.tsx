@@ -32,7 +32,7 @@ const SCENARIOS: Scenario[] = [
     ratio: 0.17,
     story: "AG barely rises while HCO₃⁻ falls substantially.",
     example: "Severe diarrhoea or proximal RTA — HCO₃⁻ lost from the body, replaced by Cl⁻.",
-    takeaway: "Pure NAGMA (hyperchloraemic acidosis). No unmeasured anion accumulation.",
+    takeaway: "Predominantly NAGMA pattern; correct AG for albumin and assess for other causes.",
   },
   {
     key: "mixed",
@@ -51,8 +51,8 @@ const SCENARIOS: Scenario[] = [
     dHCO: 12,
     ratio: 1.17,
     story: "ΔAG ≈ ΔHCO₃⁻ — 1:1 stoichiometric exchange of bicarbonate for the unmeasured anion.",
-    example: "Lactic acidosis (~1.6) or pure DKA (~1.0). Lactate clears partly via non-HCO₃⁻ routes, hence ratio drifts above 1.",
-    takeaway: "Pure HAGMA. No second metabolic process hiding.",
+    example: "Lactic acidosis or ketoacidosis. Distribution, urinary anion losses, baseline values and treatment affect the ratio.",
+    takeaway: "Compatible with predominantly HAGMA; a second process is not excluded.",
   },
   {
     key: "alkalosis",
@@ -68,7 +68,7 @@ const SCENARIOS: Scenario[] = [
 
 const DeltaRatioDiagram = () => {
   const [active, setActive] = useState<ScenarioKey>("pure-hagma");
-  const s = SCENARIOS.find((x) => x.key === active)!;
+  const s = SCENARIOS.find((x) => x.key === active) ?? SCENARIOS[0];
 
   // SVG plot config
   const W = 460, H = 320;
@@ -95,6 +95,7 @@ const DeltaRatioDiagram = () => {
       description="ΔAG plotted against ΔHCO₃⁻ with four diagnostic zones. Selecting a scenario animates the marker into the corresponding zone."
     >
       <div className="border border-border rounded-lg p-4 mb-4">
+        <p className="text-xs text-muted-foreground mb-3">Illustrative zones, not diagnostic cut-offs. Use albumin-corrected AG and the local reference value; the examples assume 12. Do not calculate with bicarbonate ≥24 mmol/L.</p>
         <div className="flex flex-wrap gap-1.5 mb-3">
           {SCENARIOS.map((sc) => (
             <button

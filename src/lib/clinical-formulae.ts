@@ -127,3 +127,13 @@ export function arterialO2Content_mLdL(args: {
 export function henderson_pH(HCO3_mmolL: number, PaCO2_kPa: number): number {
   return 6.1 + Math.log10(HCO3_mmolL / (0.23 * PaCO2_kPa));
 }
+
+/** Albumin-corrected Na-only or K-inclusive AG; albumin in g/L (Figge 1998). */
+export function albuminCorrectedAnionGap(measuredAG: number, albumin_gL: number): number {
+  return measuredAG + 0.25 * (40 - albumin_gL);
+}
+
+/** Apparent SID in mEq/L; concentrations in mmol/L, with divalent charge counted. */
+export function apparentSID(args: { Na: number; K: number; Ca: number; Mg: number; Cl: number; lactate: number }): number {
+  return args.Na + args.K + 2 * args.Ca + 2 * args.Mg - args.Cl - args.lactate;
+}

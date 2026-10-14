@@ -47,7 +47,7 @@ const TERMS: Term[] = [
     color: "hsl(145 55% 50% / 0.8)",
     short: "Effective osmole — pulls water out of cells",
     detail:
-      "Glucose is impermeant to cells without insulin and drives water from the intracellular to the extracellular compartment in hyperglycaemia — the basis of HHS. Convert mg/dL to mmol/L by dividing by 18. A glucose of 30 mmol/L contributes 30 mOsm/kg directly and pulls dilutional hyponatraemia in addition.",
+      "Extracellular glucose accumulation, especially in insulin deficiency, drives water from the intracellular to the extracellular compartment in hyperglycaemia — the basis of HHS. Convert mg/dL to mmol/L by dividing by 18. A glucose of 30 mmol/L contributes 30 mOsm/kg directly and can cause translocational hyponatraemia; some tissues take up glucose independently of insulin.",
   },
   {
     key: "gap",
@@ -56,7 +56,7 @@ const TERMS: Term[] = [
     color: "hsl(0 65% 55% / 0.8)",
     short: "Unmeasured osmoles — the diagnostic signal",
     detail:
-      "Anything else osmotically active that the calculator doesn't see: ethanol, methanol, ethylene glycol, propylene glycol (lorazepam/diazepam vehicle), mannitol, glycerol, sorbitol, severe ketones, acetone, paraprotein. Normal < 10 mOsm/kg. A markedly raised gap with an unexplained HAGMA is the toxic-alcohol screening test that the AG alone misses early in the course.",
+      "Anything else osmotically active that the calculator doesn't see: ethanol, methanol, ethylene glycol, propylene glycol (lorazepam/diazepam vehicle), mannitol, glycerol, sorbitol, acetone and other small solutes. Reference limits depend on the laboratory and equation. A raised gap is non-specific, and a normal gap cannot exclude a toxic alcohol exposure. Paraproteinaemia may artefactually elevate the gap through pseudohyponatraemia rather than a large direct particle contribution.",
   },
 ];
 
@@ -86,7 +86,7 @@ const OsmolarityBreakdownDiagram = () => {
   const measuredCalcWidth = TOTAL_CALCULATED * SCALE;
   const measuredGapWidth = 10 * SCALE;
 
-  const node = TERMS.find((t) => t.key === active)!;
+  const node = TERMS.find((t) => t.key === active) ?? TERMS[0];
 
   return (
     <DiagramFigure
@@ -138,7 +138,7 @@ const OsmolarityBreakdownDiagram = () => {
               <animate attributeName="opacity" values="1;0.7;1" dur="2.4s" repeatCount="indefinite" />
             </rect>
             <text x={PAD_L + measuredCalcWidth + measuredGapWidth / 2} y={62} textAnchor="middle" className="fill-foreground" style={{ fontSize: 10, fontWeight: 700 }}>
-              gap
+              +10
             </text>
           </g>
           <text x={PAD_L + (measuredCalcWidth + measuredGapWidth) + 6} y={56} className="fill-foreground" style={{ fontSize: 11, fontWeight: 600 }}>
@@ -177,7 +177,7 @@ const OsmolarityBreakdownDiagram = () => {
                   className="fill-foreground pointer-events-none"
                   style={{ fontSize: seg.w > 120 ? 11 : 9, fontWeight: 700 }}
                 >
-                  {seg.label}
+                  {seg.w > 120 ? seg.label : ""}
                 </text>
               </g>
             );
