@@ -7,11 +7,12 @@ import TemperatureMeasurementDiagram from "@/components/diagrams/physics/Tempera
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { TemperatureErrorTeaching } from "../../components/topic/TemperatureErrorTeaching";
 
 const temperatureMeasurementFaqs: Array<[string, string]> = [
   [
     "Compare thermistors and thermocouples for clinical use.",
-    "Thermistor — semiconductor whose resistance falls exponentially with temperature. Highly sensitive, small, used in PA catheters and oesophageal probes; non-linear so needs linearising circuit. Thermocouple — two dissimilar metals; voltage proportional to temperature difference (Seebeck effect). Linear, robust, requires a reference junction; used in some skin probes."
+    "A thermistor measures temperature through a steep, nonlinear resistance change. A thermocouple produces an EMF related to the temperature difference between measuring and reference junctions, requiring reference compensation and calibration. Sensitivity, accuracy and response time differ; probe construction and placement matter as well as sensor type."
   ],
   [
     "Where are core temperature measurements taken and which is the gold standard?",
@@ -34,7 +35,7 @@ const objectives = [
 const keyPoints = [
   { text: "Thermocouples use the Seebeck effect — EMF generated at junction of two dissimilar metals proportional to temperature difference", cites: ["BJA Educ 2014"] },
   { text: "Thermistors are NTC semiconductors — resistance falls exponentially with rising temperature; very sensitive but non-linear", cites: ["Cross & Plunkett Ch.11"] },
-  { text: "Platinum resistance thermometers (RTD/Pt100) have a linear PTC response — most accurate but slowest; laboratory standard", cites: ["Cross & Plunkett Ch.11"] },
+  { text: "Platinum RTDs have a positive temperature coefficient and stable calibrated response. Accuracy and speed depend on the complete probe and readout; they are not universally the slowest sensor.", cites: ["NIST Industrial Thermometer Calibration"] },
   { text: "Infrared tympanic thermometry uses the Stefan-Boltzmann law (P ∝ T⁴) with a thermopile sensor to detect IR radiation from the tympanic membrane", cites: ["BJA Educ 2014"] },
   { text: "The tympanic membrane lies close to the internal carotid artery; its emitted IR radiation is therefore a surrogate for the temperature of blood supplying the hypothalamus, reflecting core temperature", cites: ["Cross & Plunkett Ch.11"] },
   { text: "Infrared tympanic readings are error-prone: poor probe alignment, ear canal wax or narrowing, and a cooler canal wall cause under-reading. In critically ill adults they agreed poorly with pulmonary artery temperature, so they should not replace a core site when accuracy matters", cites: ["Moran 2007 (Tympanic ICU)"] },
@@ -240,7 +241,7 @@ const TemperatureMeasurementTopic = () => {
             <p>
               The relationship is described by: <strong>Rₜ = R₀(1 + αΔT)</strong> where α = 0.00385 Ω/Ω/°C.
               The <strong>linear response</strong> is its main advantage over the thermistor. However, it has lower sensitivity
-              and the <strong>slowest response time</strong> of all electronic thermometers.
+              and response time depends on probe construction, thermal mass and contact rather than a universal ranking of sensor types <InlineRef topicId="temperature-measurement" refLabel="NIST Industrial Thermometer Calibration" />.
             </p>
             <p>
               <strong>Clinical use:</strong> its stability, repeatability and near-linear calibration make platinum resistance thermometers
@@ -263,7 +264,7 @@ const TemperatureMeasurementTopic = () => {
               Although the tympanic membrane is itself supplied predominantly by branches of the <em>external</em> carotid
               artery, its close anatomical proximity to the <strong>internal carotid artery</strong> means its emitted
               infrared radiation acts as a surrogate for the temperature of blood supplying the <strong>hypothalamus</strong>,
-              making it a reliable reflection of core temperature.
+              does not establish reliable core-temperature measurement for an infrared ear-canal device. Device validation and technique are essential; critically ill adults may show poor agreement with central measurements <InlineRef topicId="temperature-measurement" refLabel="Moran 2007 (Tympanic ICU)" />.
             </p>
             <p>
               <strong>Sources of error:</strong> straighten the canal (pinna up and back in adults; down and back in infants), insert far enough
@@ -278,6 +279,7 @@ const TemperatureMeasurementTopic = () => {
 
         <div>
           <h2 className="text-xl font-bold text-foreground mb-2">Clinical Temperature Monitoring Sites</h2>
+          <TemperatureErrorTeaching />
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
               <strong>Core sites:</strong> PA catheter (gold standard), distal oesophagus (lower third), nasopharynx,

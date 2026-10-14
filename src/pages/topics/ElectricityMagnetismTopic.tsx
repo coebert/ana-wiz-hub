@@ -8,6 +8,7 @@ import { electricityMagnetismQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { TransformerTeaching } from "../../components/topic/TransformerTeaching";
 
 const electricityMagnetismFaqs: Array<[string, string]> = [
   [
@@ -93,7 +94,7 @@ const ElectricityMagnetismTopic = () => {
         { text: "Impedance (Z) is the AC equivalent of resistance: Z = √(R² + (XL − XC)²) — includes capacitive and inductive reactance", cites: ["BJA Educ 2017"] },
         { text: "Capacitors store energy in electric fields (E = ½CV²); Xc = 1/(2πfC) — pass AC, block DC. Time constant τ = RC", cites: ["Middleton Ch.15"] },
         { text: "Inductors store energy in magnetic fields (E = ½LI²); XL = 2πfL — pass DC, block AC. Basis of transformers", cites: ["Cross & Plunkett Ch.12-13", "BJA Educ 2013 (Basic physics)"] },
-        { text: "Transformer equation: V₁/V₂ = N₁/N₂ = I₂/I₁. Only works with AC. Isolation transformers eliminate earth reference", cites: ["BJA Educ 2017"] },
+        { text: "Ideal transformer: V₁/V₂ = N₁/N₂ = I₂/I₁. Changing magnetic flux is required. Isolation removes the intentional secondary earth reference but does not eliminate all shock hazards.", cites: ["OpenStax Transformers", "OpenAnesthesia OR Electrical Safety"] },
         { text: "Wheatstone bridge: balanced when R₁/R₃ = R₂/R₄. Used in arterial transducers (strain gauge) and thermistor circuits", cites: ["Middleton Ch.15"] },
         { text: "Defibrillators use capacitors: charge to high voltage → rapid discharge. E = ½CV² determines energy delivered", cites: ["Cross & Plunkett Ch.12-13"] },
       ]}
@@ -223,14 +224,7 @@ const ElectricityMagnetismTopic = () => {
                 E = ½CV² for a capacitor. <strong>Inductive reactance XL = 2πfL</strong> increases with frequency —
                 inductors pass DC and block AC, the opposite of capacitors.
               </p>
-              <p>
-                <strong>Transformers</strong> exploit mutual inductance between two coils sharing a magnetic core. The voltage
-                ratio equals the turns ratio: <strong>V₁/V₂ = N₁/N₂</strong>, and since power is conserved (ideally),
-                V₁I₁ = V₂I₂. Step-up transformers increase voltage (X-ray tubes, defibrillator charging). Step-down transformers
-                decrease voltage (equipment power supplies). <strong>Isolation transformers (1:1)</strong> are used in operating
-                theatres to eliminate the earth reference, preventing macroshock — a <strong>line isolation monitor</strong>
-                continuously checks for earth faults.
-              </p>
+              <TransformerTeaching />
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -264,7 +258,7 @@ const ElectricityMagnetismTopic = () => {
             pitfalls={[
               "Ohm's law (V = IR) applies to DC and resistive AC circuits; for AC with reactive components use impedance Z.",
               "Capacitive reactance falls with rising frequency (Xc = 1/2πfC); inductive reactance rises (XL = 2πfL).",
-              "Transformers only work with AC; turns ratio sets voltage ratio. Isolation transformers protect from earth-leakage shock.",
+              "Transformers require changing flux; steady DC does not give a sustained secondary voltage. Isolation is not protection against every shock, subsequent faults or intracardiac leakage.",
               "The Wheatstone bridge is a null-deflection circuit used by strain-gauge transducers and thermistors.",
               "Modern biphasic defibrillators typically use capacitors of ≈ 32 µF (older monophasic devices used larger values, e.g. ≈ 64 µF); stored energy E = ½CV². Know how to derive delivered energy.",
             ]}
