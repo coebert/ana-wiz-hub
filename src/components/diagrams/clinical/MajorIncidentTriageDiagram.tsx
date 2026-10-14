@@ -273,16 +273,17 @@ export const MajorIncidentTriageDiagram = () => {
         )}
         {phase === 1 && (
           <p className="md:col-span-2 text-muted-foreground">
-            <span className="font-semibold text-foreground">Triage Sieve</span> is a &lt; 30 s physiological
-            sort done at the casualty's location. Walking patients are P3; apnoeic patients despite airway opening
-            are declared dead; deranged RR or perfusion = P1.
+            <span className="font-semibold text-foreground">Ten Second Triage</span> (NARU 2023) can be done by any responder.
+            Walking casualties are P3; severe bleeding is controlled and tagged P1; non-talking casualties get an opened airway and
+            recovery position (P1 if breathing, &lsquo;Not Breathing&rsquo; if not — there is no &lsquo;Dead&rsquo; category); talking casualties are P1 with a
+            penetrating torso or junctional injury, otherwise P2.
           </p>
         )}
         {phase === 2 && (
           <p className="md:col-span-2 text-muted-foreground">
-            <span className="font-semibold text-foreground">Triage Sort</span> uses the Triage Revised Trauma
-            Score (RR + SBP + GCS, each 0–4) to refine priority on hospital arrival. A senior clinician can
-            up- or down-grade based on mechanism and clinical impression.
+            <span className="font-semibold text-foreground">Triage Sort</span> (legacy) used the Triage Revised Trauma
+            Score (RR + SBP + GCS, each 0–4). Since 2023 the NHS Major Incident Triage Tool (MITT) replaces it for healthcare
+            responders at the casualty clearing station.
           </p>
         )}
         {phase === 3 && (
