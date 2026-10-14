@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { RescueIcpTeaching } from "@/components/topic/RescueIcpTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import { BrainInjuryTransfusionTeaching } from "@/components/topic/BrainInjuryTransfusionTeaching";
 import { ExamSection } from "@/components/exam/ExamSection";
@@ -1537,6 +1538,9 @@ const NeurointensiveCareTopic = () => {
           </CollapsibleSubsection>
           <CollapsibleSubsection title="Transfusion Thresholds After Brain Injury">
             <BrainInjuryTransfusionTeaching />
+          </CollapsibleSubsection>
+          <CollapsibleSubsection title="Decompressive Craniectomy: RESCUEicp in Detail">
+            <RescueIcpTeaching />
           </CollapsibleSubsection>
         </ExamSection>
       </section>

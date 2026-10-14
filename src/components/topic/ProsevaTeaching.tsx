@@ -11,7 +11,7 @@ export function ProsevaTeaching() {
       <li><strong className="text-foreground">90-day mortality:</strong> 23.6% vs 41.0% (HR 0.44, 0.29–0.67).<R /></li>
       <li><strong className="text-foreground">Complications:</strong> no significant differences, except that cardiac arrests were more common in the <em>supine</em> group.<R /></li>
     </ul>
-    <p><strong className="text-foreground">Why it worked where earlier trials did not:</strong> patients were enrolled early, had severe hypoxaemia, received long sessions and were already on lung-protective ventilation. Teams were also experienced in proning. Apply the result to patients who match these entry criteria, not to mild ARDS.</p>
+    <p><strong className="text-foreground">What defined the trial:</strong> patients were enrolled early, had severe hypoxaemia, received long sessions and were already on lung-protective ventilation. Apply the result to patients who match these entry criteria, not to mild ARDS.</p>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: state PROSEVA's entry criteria.</summary><p className="mt-2">PaO₂/FiO₂ below 150 mmHg, FiO₂ at least 0.6, PEEP at least 5 cmH₂O, and tidal volume around 6 mL/kg PBW. Prone sessions lasted at least 16 hours.</p></details>
     <LessonSources topicId="mechanical-ventilation" labels={["Guérin 2013 PROSEVA"]} />
   </div>;

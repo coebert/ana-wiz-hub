@@ -59,11 +59,11 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   "surgical-protocols": { status: "in-progress", note: "ERAS evidence lesson (Greco 2014 meta-analysis) added; all ten surgery guides source-linked (neurosurgery CO₂ target explicitly marked as consensus without a checked trial source)." },
   "cardiac-arrest-post-resus": {
     status: "in-progress",
-    note: "BOX oxygen-target lesson added with sources list. Other subsections still need review.",
+    note: "BOX oxygen-target and TTM2 temperature lessons added (TTM2 key point corrected: superiority trial, fever ≥37.8 °C) with sources list. Other subsections still need review.",
   },
   "neurointensive-care": {
     status: "in-progress",
-    note: "HEMOTION/TRAIN transfusion-threshold lesson added with sources list. Other subsections still need review.",
+    note: "HEMOTION/TRAIN transfusion-threshold and RESCUEicp craniectomy lessons added with sources list. Other subsections still need review.",
   },
   "resource-poor-anaesthesia": {
     status: "in-progress",
@@ -99,7 +99,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "abdominal-compartment-syndrome": {
     status: "in-progress",
-    note: "WSACS 2013 evidence-strength lesson added (recommendations vs suggestions vs no recommendation, bedside application, learning check, sources list). Other subsections still need review.",
+    note: "WSACS 2013 evidence-strength and Malbrain 2005 IAH epidemiology lessons added (recommendations vs suggestions vs no recommendation, bedside application, learning check, sources list). Other subsections still need review.",
   },
   "non-technical-skills": {
     status: "in-progress",
@@ -166,7 +166,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   // --- Earlier completed batches ---
   "mechanical-ventilation": {
     status: "expanded",
-    note: "Shared APRV lesson: physiology, settings, monitoring, troubleshooting and evidence-based cautions. Stress ulcer prophylaxis lesson (SUP-ICU 2018, REVISE 2024) added with sources list; care-bundle SUP-ICU misstatement corrected.",
+    note: "Shared APRV lesson: physiology, settings, monitoring, troubleshooting and evidence-based cautions. Stress ulcer prophylaxis lesson (SUP-ICU 2018, REVISE 2024) added with sources list; care-bundle SUP-ICU misstatement corrected. PROSEVA prone-positioning lesson added; PROSEVA key-point citation fixed.",
   },
   "ent-anaesthesia": {
     status: "expanded",

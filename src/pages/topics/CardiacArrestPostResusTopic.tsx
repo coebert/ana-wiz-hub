@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
+import { Ttm2Teaching } from "@/components/topic/Ttm2Teaching";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { cardiacArrestPostResusQuestions } from "@/data/quizzes";
 import TopicTableOfContents from "@/components/layout/TopicTableOfContents";
@@ -130,7 +131,7 @@ const workedExamples: WorkedExample[] = [
 const keyPoints = [
   { text: "Post-cardiac-arrest syndrome = brain injury + myocardial dysfunction + ischaemia–reperfusion + precipitating pathology — treat all four.", cites: ["TTM2 2021"] },
   { text: "Avoid hyperoxia and hypocapnia: target SpO₂ 94–98 %, PaCO₂ 4.5–6.0 kPa, MAP ≥ 65 mmHg, glucose 7.8–10 mmol/L.", cites: ["ERC/ESICM 2021 Post-Resus"] },
-  { text: "TTM2 (2021): normothermia ≤ 37.7 °C is the contemporary default; whichever target chosen, deliver strict fever control to ≥ 72 h with closed-loop feedback cooling.", cites: ["BJA Educ Neuroprog 2018"] },
+  { text: "TTM2 (2021): normothermia ≤ 37.7 °C is the contemporary default; whichever target chosen, deliver strict fever control to ≥ 72 h with closed-loop feedback cooling.", cites: ["TTM2 2021", "BJA Educ Neuroprog 2018"] },
   { text: "Rewarm slowly (0.25–0.5 °C/h) — watch for hyperkalaemic rebound and prolonged drug clearance during cooling.", cites: ["ELSO Guidelines 2020"] },
   { text: "Neuroprognostication is multimodal, performed ≥ 72 h after ROSC, after confounders are excluded, and requires ≥ 2 concordant poor-outcome markers.", cites: ["INCEPTION 2023"] },
   { text: "Specific markers: bilaterally absent pupil + corneal reflexes, bilaterally absent N20 SSEPs, NSE > 60 (48 h) / > 75 (72 h) µg/L or rising, highly malignant unreactive EEG, loss of grey-white differentiation on CT or restricted diffusion on MRI.", cites: ["Prague OHCA 2022"] },
@@ -635,7 +636,7 @@ const coreConcepts = (
       accent="icu"
       pitfalls={[
         "Post-ROSC bundle: PaCO₂ 4.5–6.0 kPa, SpO₂ 94–98%, MAP ≥65, 12-lead ECG, urgent PCI if STEMI.",
-        "TTM2: targeted normothermia (≤37.5 °C) non-inferior to 33 °C — prevent fever for 72 h.",
+        "TTM2: hypothermia at 33 °C was not superior to normothermia with early treatment of fever (≥37.8 °C) — death at 6 months 50% vs 48%.",
         "Neuroprognostication is multimodal — clinical (≥72 h), bilateral absent N20 SSEP, suppressed/burst EEG, NSE >60, MRI changes.",
         "eCPR: witnessed arrest, shockable rhythm, low-flow <60 min, no irreversible cause — only in selected centres.",
         "Avoid premature withdrawal in the first 72 h; sedation, hypothermia and metabolic confounders cloud neuro exam.",
@@ -701,6 +702,9 @@ const coreConcepts = (
       </CollapsibleSubsection>
       <CollapsibleSubsection title="Oxygen Targets After ROSC (BOX)">
         <PostArrestOxygenTeaching />
+      </CollapsibleSubsection>
+      <CollapsibleSubsection title="Temperature Control: TTM2 in Detail">
+        <Ttm2Teaching />
       </CollapsibleSubsection>
     </ExamSection>
 
