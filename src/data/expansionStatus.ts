@@ -71,7 +71,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "elderly-anaesthesia": {
     status: "in-progress",
-    note: "RAGA/REGAIN hip-fracture anaesthesia lesson added (30-day mortality and delirium no different between spinal and general), with a correction to the NICE mortality claim and sources list. Other subsections still need review.",
+    note: "RAGA/REGAIN hip-fracture anaesthesia lesson added (death, mobility and delirium no different between spinal and general), with a correction to the NICE mortality claim and sources list. Other subsections still need review.",
   },
   "icu-nutrition": {
     status: "in-progress",
