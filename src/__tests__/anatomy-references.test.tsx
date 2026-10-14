@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { readFileSync } from "node:fs";
 import { anatomyTopics } from "@/data/curriculum";
 import { anatomyReferences } from "@/data/anatomyReferences";
@@ -20,7 +21,7 @@ describe("Curated anatomy references", () => {
     }
   });
   it("shows topic citations separately from artwork provenance", () => {
-    render(<MemoryRouter><DiagramSources /></MemoryRouter>);
+    render(<HelmetProvider><MemoryRouter><DiagramSources /></MemoryRouter></HelmetProvider>);
     expect(screen.getByRole("heading", { name: "Curated references by anatomy topic" })).toBeTruthy();
     expect(document.querySelectorAll("[data-anatomy-bibliography]")).toHaveLength(anatomyTopics.length);
     expect(screen.getByText(/No nightly AI pass/)).toBeTruthy();
