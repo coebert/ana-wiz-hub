@@ -303,7 +303,7 @@ const OphthalmicAnaesthesiaTopic = () => {
               "IOP is raised by coughing, suxamethonium, hypoventilation, hypoxia, light anaesthesia and external pressure (mask).",
               "Oculocardiac reflex: traction on extraocular muscles → bradycardia/asystole — stop traction, atropine if persistent.",
               "Peribulbar > retrobulbar (lower risk of globe perforation, optic-nerve injury, brainstem anaesthesia); sub-Tenon's is safest.",
-              "SF₆ or C₃F₈ intraocular gas: avoid N₂O until 1–3 months after vitrectomy (expansion can cause retinal infarction).",
+              "SF₆ or C₃F₈ intraocular gas: avoid N₂O until the bubble has gone (about 2 weeks for SF₆, 6–8 weeks for C₃F₈) (expansion can cause retinal infarction).",
               "Open-globe injury: 'full stomach' RSI without sux is preferred — use rocuronium + sugammadex if reversal needed.",
             ]}
           />

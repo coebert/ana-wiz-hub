@@ -87,11 +87,11 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "operating-theatre-environment": {
     status: "expanded",
-    note: "Checklist evidence lesson added (Haynes 2009 before–after vs Urbach 2014 Ontario mandated roll-out); overstated 'checklist reduces mortality' key point and exam tip corrected. Laminar-flow evidence lesson added (Lidwell 1982 vs Brandt 2008 and WHO 2016 conditional recommendation), with sources list. Other subsections still need review.",
+    note: "Line-by-line review done (WEL table, filtration, bioburden, NICE CG65 wording, harmonised temperature/humidity). Checklist evidence lesson added (Haynes 2009 before–after vs Urbach 2014 Ontario mandated roll-out); overstated 'checklist reduces mortality' key point and exam tip corrected. Laminar-flow evidence lesson added (Lidwell 1982 vs Brandt 2008 and WHO 2016 conditional recommendation), with sources list. Other subsections still need review.",
   },
   "ophthalmic-anaesthesia": {
     status: "expanded",
-    note: "Peribulbar vs retrobulbar lesson added (Alhassan 2015 Cochrane); FAQ claim of less complete peribulbar akinesia corrected. Evidence lesson added (Guay 2015 Cochrane: topical vs sub-Tenon's pain outcomes and insufficient complication evidence; OCR incidence with and without sub-Tenon's bupivacaine), with sources list. Other subsections still need review.",
+    note: "Line-by-line review done (intraocular gas durations, N₂O solubility, suxamethonium mechanism, off-topic airway text, mislabelled citation). Peribulbar vs retrobulbar lesson added (Alhassan 2015 Cochrane); FAQ claim of less complete peribulbar akinesia corrected. Evidence lesson added (Guay 2015 Cochrane: topical vs sub-Tenon's pain outcomes and insufficient complication evidence; OCR incidence with and without sub-Tenon's bupivacaine), with sources list. Other subsections still need review.",
   },
   "interventional-radiology": {
     status: "in-progress",

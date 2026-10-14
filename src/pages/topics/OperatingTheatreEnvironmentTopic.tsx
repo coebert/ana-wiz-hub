@@ -216,7 +216,7 @@ const OperatingTheatreEnvironmentTopic = () => {
             <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
               <li>Nitrous oxide — <strong>100 ppm</strong></li>
               <li>Isoflurane — <strong>50 ppm</strong></li>
-              <li>Sevoflurane — informal target <strong>60 ppm</strong> (no formal UK limit; adopted from NIOSH)</li>
+              <li>Halothane — <strong>10 ppm</strong>; enflurane — <strong>50 ppm</strong></li>
               <li>Sevoflurane and desflurane — no UK workplace exposure limit; follow local monitoring targets</li>
             </ul>
             <p className="text-muted-foreground leading-relaxed mb-3">
