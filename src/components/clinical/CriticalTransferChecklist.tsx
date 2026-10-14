@@ -48,7 +48,7 @@ const PHASES: Phase[] = [
       { id: "d1", label: "Senior referring + receiving consultants agree timing & plan" },
       { id: "d2", label: "Bed, theatre and specialist team confirmed at destination" },
       { id: "d3", label: "Mode of transport selected (road / rotary / fixed-wing)" },
-      { id: "d4", label: "Transfer team briefed: doctor (ST4+ / equivalent) + assistant" },
+      { id: "d4", label: "Transfer team briefed: competent, trained doctor + assistant" },
       { id: "d5", label: "Team trained in equipment; PPE and high-vis available" },
       { id: "d6", label: "Next-of-kin informed; consent / best-interests documented" },
       { id: "d7", label: "Insurance / indemnity confirmed (esp. air or international)" },

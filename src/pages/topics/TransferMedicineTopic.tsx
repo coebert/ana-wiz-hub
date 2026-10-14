@@ -13,8 +13,8 @@ import { TransferEvidenceTeaching } from "@/components/topic/TransferEvidenceTea
 
 const transferMedicineFaqs: Array<[string, string]> = [
   [
-    "What are the AAGBI categories of inter-hospital transfer?",
-    "Category 1 — life- or limb-threatening (requires consultant anaesthetist and ICU nurse). Category 2 — urgent (specialty input needed but not immediate). Category 3 — non-urgent (repatriation). Category 4 — return to local hospital. Staffing, monitoring and vehicle choice escalate with category."
+    "How does AAGBI guidance grade inter-hospital transfers?",
+    "AAGBI 2009 grades the patient, not the transfer: critical-care dependency Levels 0–3. Level 2 and 3 patients (organ support, advanced respiratory support) must be escorted by competent, trained and experienced personnel — usually a doctor and a nurse or paramedic. The decision to transfer is made consultant-to-consultant; a consultant is not required to travel on every transfer. Staffing, monitoring and vehicle choice escalate with dependency."
   ],
   [
     "What is the minimum monitoring required for a critical-care transfer?",
@@ -146,9 +146,9 @@ const TransferMedicineTopic = () => {
         { text: "Standard of care during transfer must be at least as good as at the referring hospital (ICS Transfer 2019)", cites: ["ICS Transfer 2019"] },
         { text: "Secure airway BEFORE transfer if any concern. Chest drains must NEVER be clamped — use Heimlich valve", cites: ["ICS Transfer 2019"] },
         { text: "O₂ calculation: E-cylinder = 680L. Calculate flow × time × 2 safety factor. Always carry spare (ICS 2019)", cites: ["ICS Transfer 2019"] },
-        { text: "Altitude: gas expands (Boyle's law) — ETT cuff, pneumothorax, bowel gas. ↓ PaO₂ at cabin altitude", cites: ["BJA Educ 2018"] },
+        { text: "Altitude: gas expands (Boyle's law) — ETT cuff, pneumothorax, bowel gas. ↓ PaO₂ at cabin altitude", cites: ["Martin Aeromedical 2006"] },
         { text: "Minimum monitoring: ECG, SpO₂, ETCO₂, invasive BP, temperature. Battery backup essential", cites: ["ICS Transfer 2019"] },
-        { text: "Senior-to-senior decision; transfer team minimum doctor (ST4+ or equivalent) + assistant, both familiar with equipment (ICS 2019)", cites: ["ICS Transfer 2019"] },
+        { text: "Senior-to-senior decision; transfer team of a competent, appropriately trained doctor + assistant, both familiar with equipment (ICS 2019)", cites: ["ICS Transfer 2019"] },
       ]}
       coreConcepts={
         <>
