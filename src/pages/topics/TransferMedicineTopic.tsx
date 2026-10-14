@@ -13,8 +13,8 @@ import { TransferEvidenceTeaching } from "@/components/topic/TransferEvidenceTea
 
 const transferMedicineFaqs: Array<[string, string]> = [
   [
-    "What are the AAGBI categories of inter-hospital transfer?",
-    "Category 1 — life- or limb-threatening (requires consultant anaesthetist and ICU nurse). Category 2 — urgent (specialty input needed but not immediate). Category 3 — non-urgent (repatriation). Category 4 — return to local hospital. Staffing, monitoring and vehicle choice escalate with category."
+    "How does AAGBI guidance grade inter-hospital transfers?",
+    "AAGBI 2009 grades the patient, not the transfer: critical-care dependency Levels 0–3. Level 2 and 3 patients (organ support, advanced respiratory support) must be escorted by competent, trained and experienced personnel — usually a doctor and a nurse or paramedic. The decision to transfer is made consultant-to-consultant; a consultant is not required to travel on every transfer. Staffing, monitoring and vehicle choice escalate with dependency."
   ],
   [
     "What is the minimum monitoring required for a critical-care transfer?",
@@ -146,9 +146,9 @@ const TransferMedicineTopic = () => {
         { text: "Standard of care during transfer must be at least as good as at the referring hospital (ICS Transfer 2019)", cites: ["ICS Transfer 2019"] },
         { text: "Secure airway BEFORE transfer if any concern. Chest drains must NEVER be clamped — use Heimlich valve", cites: ["ICS Transfer 2019"] },
         { text: "O₂ calculation: E-cylinder = 680L. Calculate flow × time × 2 safety factor. Always carry spare (ICS 2019)", cites: ["ICS Transfer 2019"] },
-        { text: "Altitude: gas expands (Boyle's law) — ETT cuff, pneumothorax, bowel gas. ↓ PaO₂ at cabin altitude", cites: ["BJA Educ 2018"] },
+        { text: "Altitude: gas expands (Boyle's law) — ETT cuff, pneumothorax, bowel gas. ↓ PaO₂ at cabin altitude", cites: ["Martin Aeromedical 2006"] },
         { text: "Minimum monitoring: ECG, SpO₂, ETCO₂, invasive BP, temperature. Battery backup essential", cites: ["ICS Transfer 2019"] },
-        { text: "Senior-to-senior decision; transfer team minimum doctor (ST4+ or equivalent) + assistant, both familiar with equipment (ICS 2019)", cites: ["ICS Transfer 2019"] },
+        { text: "Senior-to-senior decision; transfer team of a competent, appropriately trained doctor + assistant, both familiar with equipment (ICS 2019)", cites: ["ICS Transfer 2019"] },
       ]}
       coreConcepts={
         <>
@@ -222,7 +222,7 @@ const TransferMedicineTopic = () => {
               <InlineRef topicId="transfer-medicine" refLabel="Martin Aeromedical 2006" />:
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
-              <li><strong>Boyle</strong> (P ∝ 1/V): trapped gas expands ~30% at 8 000 ft — pneumothorax (drain it and never clamp the drain), bowel gas, pneumocephalus, air splints, ETT and tracheostomy cuffs (inflate with saline or measure cuff pressure in flight), and air in giving sets or the ECMO circuit</li>
+              <li><strong>Boyle</strong> (P ∝ 1/V): trapped gas expands ~35% at 8 000 ft — pneumothorax (drain it and never clamp the drain), bowel gas, pneumocephalus, air splints, ETT and tracheostomy cuffs (inflate with saline or measure cuff pressure in flight), and air in giving sets or the ECMO circuit</li>
               <li><strong>Dalton</strong>: falling barometric pressure lowers the inspired oxygen partial pressure — a patient marginal at sea level desaturates in flight; pre-oxygenate, raise FiO₂, and calculate cylinder needs for the whole flight plus reserve</li>
               <li><strong>Henry</strong>: dissolved gas comes out of solution — decompression illness (fly low, or at sea-level cabin pressure, after diving injuries)</li>
               <li><strong>Charles / Gay-Lussac</strong>: gas volume and cylinder pressure vary with temperature — cold cabins alter cylinder gauge readings and drug/fluid warming performance</li>

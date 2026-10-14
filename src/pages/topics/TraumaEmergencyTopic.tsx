@@ -57,7 +57,7 @@ const traumaFaqs: Array<[string, string]> = [
   ],
   [
     "When should tranexamic acid (TXA) be given in trauma?",
-    "Give TXA 1 g IV over 10 minutes as early as possible, and always within 3 hours of injury — the CRASH-2 mortality benefit is strongly time-dependent, and treatment started beyond 3 hours confers no benefit and may cause harm. The classic CRASH-2/CRASH-3 regimen adds a second 1 g by infusion over 8 hours, but this maintenance dose is no longer treated as an automatic requirement: the survival benefit in both trials was driven by the early loading dose, and many UK major-haemorrhage protocols now give the second gram as a further short bolus, or omit it once bleeding is controlled, continuing antifibrinolytic therapy only where haemorrhage is ongoing or viscoelastic testing shows persistent hyperfibrinolysis. Follow your local major haemorrhage protocol. TXA inhibits fibrinolysis by blocking plasminogen activation and should be given to all trauma patients with significant bleeding or at risk of it, unless clearly contraindicated.",
+    "Give TXA 1 g IV over 10 minutes as early as possible, and always within 3 hours of injury — the CRASH-2 mortality benefit is strongly time-dependent, and treatment started beyond 3 hours confers no benefit and may cause harm. The CRASH-2 regimen adds a second 1 g by infusion over 8 hours; neither CRASH-2 nor CRASH-3 tested the loading dose separately from the infusion, so give the full regimen unless your local major haemorrhage protocol specifies otherwise. CRASH-3 (isolated head injury) showed no significant overall reduction in head-injury death; benefit was confined to mild-to-moderate injury treated early. Follow your local major haemorrhage protocol. TXA inhibits fibrinolysis by blocking plasminogen activation and should be given to all trauma patients with significant bleeding or at risk of it, unless clearly contraindicated.",
   ],
   [
     "How do you manage a traumatic brain injury (TBI) patient?",
@@ -348,7 +348,7 @@ const TraumaEmergencyTopic = () => {
           <ExamSection id="fluid-resuscitation" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Trauma & Stabilisation", "FFICM 2.5"]}>
             <CollapsibleSubsection title="Fluid Resuscitation in Major Trauma">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              The resuscitation fluid of choice in bleeding trauma is <strong>blood</strong>. NICE NG41 (NICE NG39, Major trauma: assessment and initial management) recommends
+              The resuscitation fluid of choice in bleeding trauma is <strong>blood</strong>. NICE NG39 (Major trauma: assessment and initial management) recommends
               blood products for active haemorrhage, a <strong>1:1 plasma:red cell</strong> ratio, and <strong>no crystalloid</strong> in hospital for patients with active bleeding: large crystalloid
               volumes dilute clotting factors and platelets, worsen hypothermia and acidosis, disrupt glycocalyx and increase tissue oedema
               without meaningfully restoring oxygen delivery.<InlineRef topicId="trauma-emergency" refLabel="NICE NG39" /><InlineRef topicId="trauma-emergency" refLabel="PROPPR 2015" />
