@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-10-14T07:59:11.612Z",
+  "model": "google/gemini-3.8-flash",
+  "totalTriples": 1,
+  "flagged": 1,
+  "findings": [
+    {
+      "file": "src/pages/topics/AbdominalCompartmentSyndromeTopic.tsx",
+      "line": 105,
+      "topicId": "abdominal-compartment-syndrome",
+      "claim": "Normal IAP in the critically ill ≈ 5–7 mmHg. IAH = sustained IAP ≥ 12 mmHg. ACS = sustained IAP ≥ 20 mmHg WITH new organ dysfunction (WSACS 2013).",
+      "refLabel": "WSACS 2013",
+      "excerpt": "Intra-abdominal hypertension (IAH) is defined as a sustained or repeated pathological elevation of IAP ≥ 12 mmHg. Abdominal compartment syndrome (ACS) is defined as a sustained IAP > 20 mmHg (with or without an APP < 60 mmHg) that is associated with new organ dysfunction/failure. Abdominal perfusion pressure (APP) = MAP − IAP and should be maintained ≥ 60 mmHg.",
+      "citation": "Kirkpatrick AW, Roberts DJ, De Waele J, et al. Intra-abdominal hypertension and the abdominal compartment syndrome: updated consensus definitions and clinical practice guidelines from the World Society of the Abdominal Compartment Syndrome. Intensive Care Med. 2013;39(7):1190-1206.",
+      "url": "https://doi.org/10.1007/s00134-013-2906-z",
+      "verdict": "CONTRADICTS",
+      "rationale": "The excerpt defines abdominal compartment syndrome as sustained IAP > 20 mmHg rather than ≥ 20 mmHg, and it omits the claim's statement regarding normal IAP values.",
+      "quote": "Abdominal compartment syndrome (ACS) is defined as a sustained IAP > 20 mmHg (with or without an APP < 60 mmHg) that is associated with new organ dysfunction/failure."
+    }
+  ]
+}
