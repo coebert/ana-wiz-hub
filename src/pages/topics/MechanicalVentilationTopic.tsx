@@ -41,7 +41,7 @@ const workedExamples: WorkedExample[] = [
     working:
       "Vt/PBW = 550/70 = 7.9 mL/kg (above 6 mL/kg target). ΔP = Pplat − PEEP = 32 − 10 = 22 cmH₂O (above 15 cmH₂O ceiling — strongest mortality predictor, Amato 2015). Pplat 32 > 30. Resistance = (38 − 32)/Flow — acceptable. Compliance = 550/(32 − 10) = 25 mL/cmH₂O (severe ARDS).",
     answer:
-      "Reduce Vt to 420 mL (6 mL/kg PBW), recheck Pplat. If ΔP still > 15, increase PEEP per FiO₂/PEEP table to recruit (lower ΔP for same Vt) and accept permissive hypercapnia (pH ≥ 7.20). If P/F < 13.3 kPa persists despite optimisation → NMB (ACURASYS), prone ≥ 16 h/day (PROSEVA), then ECMO (EOLIA/Combes).",
+      "Reduce Vt to 420 mL (6 mL/kg PBW), recheck Pplat. If ΔP still > 15, increase PEEP per FiO₂/PEEP table to recruit (lower ΔP for same Vt) and accept permissive hypercapnia (pH ≥ 7.20). If P/F < 20 kPa (150 mmHg) persists despite optimisation → prone ≥ 16 h/day (PROSEVA); consider a short NMB infusion for refractory dyssynchrony (ACURASYS positive, ROSE neutral); refer for ECMO if EOLIA-type criteria are met.",
     cites: ["BJA Educ 2019"],
   },
   {
@@ -170,8 +170,8 @@ const MechanicalVentilationTopic = () => {
                 </tr>
               </thead>
               <tbody className="text-muted-foreground">
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Type 1 (hypoxaemic) failure</td><td>PaO₂ &lt; 8 kPa on FiO₂ ≥ 0.6 — V/Q mismatch, shunt</td><td>ARDS, severe pneumonia, pulmonary oedema, PE</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Type 2 (hypercapnic) failure</td><td>PaCO₂ &gt; 6.5 kPa with acidosis — alveolar hypoventilation</td><td>COPD exacerbation, severe asthma, opioid overdose, neuromuscular weakness</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Type 1 (hypoxaemic) failure</td><td>PaO₂ &lt; 8 kPa (breathing air) with normal or low PaCO₂ — V/Q mismatch, shunt</td><td>ARDS, severe pneumonia, pulmonary oedema, PE</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Type 2 (hypercapnic) failure</td><td>PaCO₂ &gt; 6.0 kPa (acute if pH &lt; 7.35) — alveolar hypoventilation</td><td>COPD exacerbation, severe asthma, opioid overdose, neuromuscular weakness</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Airway protection</td><td>GCS ≤ 8 or loss of protective reflexes</td><td>TBI, status epilepticus, intoxication, anaphylaxis</td></tr>
                 <tr><td className="py-2 font-medium text-foreground">Reduce work of breathing / metabolic demand</td><td>Offload respiratory muscles to redirect O₂ delivery</td><td>Severe sepsis, cardiogenic shock, post-cardiac arrest, raised ICP requiring controlled PaCO₂</td></tr>
               </tbody>
@@ -705,7 +705,7 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">Neuromuscular blockade</span> — consider for refractory dyssynchrony, severe hypoxaemia, or to facilitate proning (limit 48h)</li>
             <li><span className="font-semibold text-foreground">Prone positioning ≥16 hours/day</span> — strongest evidence, do not skip</li>
             <li>Inhaled pulmonary vasodilator (epoprostenol or iNO) as oxygenation bridge</li>
-            <li>Consider ECMO referral if P/F &lt;80 for &gt;6 hours or pH &lt;7.20 with Pplat &gt;30 despite above</li>
+            <li>Consider ECMO referral using EOLIA entry criteria: P/F &lt;50 mmHg for &gt;3 h, P/F &lt;80 mmHg for &gt;6 h, or pH &lt;7.25 with PaCO₂ ≥60 mmHg for &gt;6 h despite optimised ventilation</li>
           </ol>
 
           <h3 className="text-lg font-semibold text-foreground mb-2">Electrical Impedance Tomography (EIT)</h3>
@@ -1118,7 +1118,7 @@ const MechanicalVentilationTopic = () => {
           <h3 className="text-lg font-semibold text-foreground mb-2">Clinical Evidence</h3>
           <div className="space-y-3 mb-4">
             {[
-              { trial: "FLORALI Trial (Frat et al., 2015)", detail: "Landmark multicentre RCT, 310 patients with acute hypoxaemic respiratory failure (P/F ≤300, non-hypercapnic). Three arms: HFNO vs standard O₂ vs NIV. Primary outcome (intubation rate at day 28): HFNO 38% vs standard O₂ 47% vs NIV 50% — not statistically significant overall. However, in the pre-specified severe subgroup (P/F ≤200), HFNO significantly reduced intubation (35% vs 53% vs 58%, p=0.009) and 90-day mortality (12% vs 23% vs 28%, p=0.02). NIV may have been harmful due to high tidal volumes and P-SILI." },
+              { trial: "FLORALI Trial (Frat et al., 2015)", detail: "Landmark multicentre RCT, 310 patients with acute hypoxaemic respiratory failure (P/F ≤300, non-hypercapnic). Three arms: HFNO vs standard O₂ vs NIV. Primary outcome (intubation rate at day 28): HFNO 38% vs standard O₂ 47% vs NIV 50% — not statistically significant overall. However, in the pre-specified severe subgroup (P/F ≤200), HFNO significantly reduced intubation (35% vs 53% vs 58%, p=0.009). Across the whole trial, 90-day mortality was lower with HFNO (12% vs 23% vs 28%, p=0.02) — a secondary outcome. NIV may have been harmful due to high tidal volumes and P-SILI." },
               { trial: "OPERA Trial (Futier et al., 2016)", detail: "RCT in post-operative abdominal surgery patients. Prophylactic HFNO vs standard O₂. HFNO did not reduce the primary composite of hypoxaemia, but reduced re-intubation rate and was better tolerated. Supports HFNO as post-operative prophylaxis in high-risk surgical patients." },
               { trial: "HOT-ER Trial (2022)", detail: "Prehospital and ED use of HFNO vs standard O₂ in acute respiratory failure. HFNO reduced intubation rates within 72 hours. Supports early initiation of HFNO in the emergency setting." },
               { trial: "FLORALI-2 (Hernández et al., 2019)", detail: "Post-extubation: HFNO non-inferior to NIV for preventing re-intubation in high-risk patients. HFNO better tolerated with fewer skin complications. Supports HFNO as first-line post-extubation support." },
@@ -1208,7 +1208,7 @@ const MechanicalVentilationTopic = () => {
               { trial: "Brochard et al. (1995)", detail: "Landmark RCT, 85 patients with acute COPD exacerbation and respiratory acidosis (pH <7.35). NIV (BiPAP) vs standard medical therapy. NIV reduced intubation rate (26% vs 74%), in-hospital mortality (9% vs 29%), and hospital LOS. Established NIV as first-line therapy for acute hypercapnic COPD exacerbations. NNT for avoiding intubation = 2." },
               { trial: "Plant et al. (2000)", detail: "UK multicentre RCT, 236 patients with COPD exacerbation (pH 7.25–7.35). NIV delivered on general respiratory wards (not ICU). NIV reduced treatment failure (15% vs 27%) and in-hospital mortality (10% vs 20%). Showed NIV is effective and safe outside ICU for mild-moderate acidosis. Patients with pH <7.25 had higher failure rates on wards — these patients need ICU-level NIV." },
               { trial: "3CPO Trial (Gray et al., 2008)", detail: "Multicentre RCT, 1069 patients with acute cardiogenic pulmonary oedema. Three arms: standard O₂ vs CPAP vs NIV (BiPAP). Both CPAP and BiPAP improved dyspnoea, heart rate, acidosis, and hypercapnia faster than standard O₂. However, no difference in 7-day or 30-day mortality between groups. No increase in MI rate with NIV (contrary to earlier concerns from the NIPPV study). CPAP is preferred over BiPAP for ACPO — simpler, equally effective, and avoids theoretical risk of reduced coronary perfusion pressure." },
-              { trial: "Masip et al. (2000)", detail: "RCT in acute cardiogenic pulmonary oedema. CPAP vs standard O₂. CPAP reduced intubation (5% vs 33%) and improved oxygenation more rapidly. Supports early CPAP as first-line in ACPO." },
+              { trial: "Masip et al. (2000)", detail: "RCT (n = 37) in acute cardiogenic pulmonary oedema. Non-invasive pressure-support ventilation vs standard O₂: NIV reduced intubation (5% vs 33%) and improved oxygenation more rapidly. Small trial; 3CPO later showed no mortality benefit from CPAP or NIV." },
               { trial: "RECOVERY-RS (Perkins et al., 2022)", detail: "COVID-19 respiratory failure: CPAP reduced the composite of intubation or death vs standard O₂ (36% vs 44%). HFNO did not show significant benefit over standard O₂ in this population. Supports CPAP as the preferred non-invasive support modality in viral pneumonitis." },
               { trial: "Keenan et al. meta-analysis (2011)", detail: "NIV for acute hypoxaemic (non-COPD, non-cardiogenic) respiratory failure. No consistent reduction in intubation or mortality. NIV is less well-established in de novo hypoxaemic respiratory failure — use with caution and close monitoring. Risk of large tidal volumes causing P-SILI." },
             ].map((item) => (
@@ -1280,7 +1280,7 @@ const MechanicalVentilationTopic = () => {
 
           <h3 className="text-lg font-semibold text-foreground mb-2">Pathophysiology</h3>
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground mb-4">
-            <li><span className="font-semibold text-foreground">Disuse atrophy:</span> Complete diaphragmatic unloading during controlled ventilation activates proteolytic pathways (ubiquitin-proteasome, calpain, caspase-3), causing rapid type I and II fibre atrophy — up to 50% cross-sectional area loss within 5 days.</li>
+            <li><span className="font-semibold text-foreground">Disuse atrophy:</span> Complete diaphragmatic unloading during controlled ventilation activates proteolytic pathways (ubiquitin-proteasome, calpain, caspase-3), causing rapid type I and II fibre atrophy — in brain-dead organ donors, about 50% loss of fibre cross-sectional area after only 18–69 h of complete inactivity (Levine 2008).</li>
             <li><span className="font-semibold text-foreground">Oxidative stress:</span> Mitochondrial reactive oxygen species (ROS) production increases within hours of CMV, driving protein oxidation and lipid peroxidation in diaphragm myofibres.</li>
             <li><span className="font-semibold text-foreground">Structural remodelling:</span> Sarcomere disruption, myofilament protein degradation (myosin heavy chain loss), and impaired excitation-contraction coupling reduce force-generating capacity.</li>
             <li><span className="font-semibold text-foreground">Mitochondrial dysfunction:</span> Decreased mitochondrial biogenesis and increased autophagy lead to reduced ATP production and further contractile impairment.</li>

@@ -55,7 +55,7 @@ const objectives = [
   "Manage SAH complications: rebleeding, vasospasm (nimodipine), hydrocephalus, and associated sodium disturbance.",
   "Differentiate SIADH, cerebral salt wasting and diabetes insipidus using volume status, urine Na/osmolality and the diagnostic flowchart, and treat each appropriately.",
   "Perform UK brainstem death testing — confounder exclusion, two doctors, two sets, apnoea test end-PaCO₂ ≥8.0 kPa, rise ≥2.7 kPa, pH <7.30 (AoMRC 2025); time of death at completion of the second set.",
-  "Manage acute SCI: MAP ≥85 mmHg, neurogenic vs spinal shock, autonomic dysreflexia, suxamethonium safety window, plus respiratory, bowel and bladder care.",
+  "Manage acute SCI: MAP targets (AO Spine 2024 75–80 lower limit), neurogenic vs spinal shock, autonomic dysreflexia, suxamethonium safety window, plus respiratory, bowel and bladder care.",
   "Interpret ICP, EVD, PbtO₂ and microdialysis (LPR, glucose, glycerol) to guide tier-based therapy and multimodal neuromonitoring.",
   "Recognise and manage autoimmune encephalitis (antibody classes, first- and second-line immunotherapy) and GBS respiratory failure (20/30/40 rule).",
   "Manage myasthenic crisis: identify triggers, distinguish myasthenic from cholinergic crisis, and escalate immunotherapy and ventilatory support.",
@@ -193,7 +193,7 @@ const NeurointensiveCareTopic = () => {
         { text: "SAH vasospasm peaks day 7 — nimodipine is the only proven pharmacological intervention", cites: ["BTF 2017"] },
         { text: "Status epilepticus: benzodiazepine → levetiracetam/phenytoin/valproate → RSI + thiopentone/propofol", cites: ["BJA Educ 2018"] },
         { text: "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test end-PaCO₂ ≥8.0 kPa, rise ≥2.7 kPa, pH <7.30; time of death = completion of second set (AoMRC 2025)", cites: ["AoMRC 2025"] },
-        { text: "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)", cites: ["BTF 2017"] },
+        { text: "SCI: MAP ≥75–80 mmHg (AO Spine 2024; older AANS/CNS 85–90) for 3–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)", cites: ["BTF 2017"] },
         { text: "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically", cites: ["BJA Educ 2018"] },
         { text: "Cerebral microdialysis: LPR >25 = metabolic crisis. ↓ pyruvate = ischaemia; normal/↑ pyruvate = mitochondrial dysfunction (won't respond to ↑ CPP)", cites: ["BJA Educ 2014"] },
         { text: "Anti-NMDAR encephalitis: start immunotherapy empirically — do not wait for antibody results", cites: ["BTF 2017"] },
@@ -247,9 +247,9 @@ const NeurointensiveCareTopic = () => {
               </thead>
               <tbody className="text-muted-foreground">
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">ICP</td><td>&lt;22 mmHg</td><td>BTF guidelines (4th edition). Higher thresholds associated with worse outcomes.</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">CPP</td><td>60–70 mmHg</td><td>Below 60: ischaemia risk. Above 70: no additional benefit, risk of ARDS (Lund concept).</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PaCO₂</td><td>4.5–5.0 kPa</td><td>Normocapnia. Prophylactic hyperventilation harmful. Brief hyperventilation only for acute herniation.</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Temperature</td><td>36–37°C</td><td>Pyrexia increases CMRO₂ by 7% per °C. Eurotherm: therapeutic hypothermia harmful in TBI.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">CPP</td><td>60–70 mmHg</td><td>Below 60: ischaemia risk. Above 70 with fluid and vasopressors: no outcome benefit and a five-fold higher ARDS rate (Robertson 1999 trial; BTF 2016).</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PaCO₂</td><td>4.7–6.0 kPa (35–45 mmHg)</td><td>Normocapnia (SIBICC tier 0–1). Mild hypocapnia 4.3–4.7 kPa only as a tier-2 ICP option; prophylactic hyperventilation is harmful and deeper hyperventilation is a brief bridge for herniation.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Temperature</td><td>36–37°C</td><td>Pyrexia increases CMRO₂ by roughly 7% per °C. Eurotherm3235 (hypothermia for raised ICP) had worse functional outcome and POLAR (prophylactic hypothermia) showed no benefit — avoid fever, do not cool routinely.</td></tr>
                 <tr><td className="py-2 font-medium text-foreground">Glucose</td><td>6–10 mmol/L</td><td>Avoid hypoglycaemia and hyperglycaemia — both worsen outcomes.</td></tr>
               </tbody>
             </table>
@@ -493,7 +493,7 @@ const NeurointensiveCareTopic = () => {
         <ExamSection id="toc-bsd" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="Brain Death & Brainstem Testing">
           <p className="text-muted-foreground leading-relaxed mb-2">
-            UK criteria: known irreversible cause of brain damage. Exclude confounders (core temperature must be ≥36 °C, sodium ≥125 mmol/L, drugs, metabolic/endocrine derangement). Two sets of tests by at least two doctors, each fully registered for more than 5 years and at least one a consultant; the recorded <strong>time of death is ordinarily the completion of the second set</strong> of clinical tests.<InlineRef topicId="neurointensive-care" refLabel="AoMRC 2025" />
+            UK criteria: known irreversible cause of brain damage. Exclude confounders (core temperature must be ≥36 °C; sedative, opioid and neuromuscular-blocking drug effects; and significant electrolyte, glucose, metabolic or endocrine derangement — use the thresholds in the AoMRC code). Two sets of tests by at least two doctors, each fully registered for more than 5 years and at least one a consultant; the recorded <strong>time of death is ordinarily the completion of the second set</strong> of clinical tests.<InlineRef topicId="neurointensive-care" refLabel="AoMRC 2025" />
           </p>
           <p className="text-muted-foreground leading-relaxed mb-2">
             <strong>Apnoea test criteria (AoMRC 2025):</strong> pre-oxygenate and confirm a{" "}
@@ -514,7 +514,7 @@ const NeurointensiveCareTopic = () => {
               "No motor response in cranial nerve distribution",
               "Absent gag reflex (CN IX, X)",
               "Absent cough reflex (CN X)",
-              "Apnoea test: no respiratory effort with PaCO₂ ≥6.0 kPa and pH ≤7.30",
+              "Apnoea test: no respiratory effort with PaCO₂ ≥8.0 kPa, rise ≥2.7 kPa and pH <7.30",
 
             ].map((test) => (
               <div key={test} className="p-2 rounded border border-border text-xs text-muted-foreground">{test}</div>
@@ -818,7 +818,7 @@ const NeurointensiveCareTopic = () => {
           <div className="space-y-2 mb-4">
             {[
               { phase: "Neurogenic shock (acute — hours to weeks)", detail: "Loss of sympathetic tone below injury level (T1–L2 sympathetic outflow). Unopposed vagal tone → bradycardia, hypotension, vasodilation, hypothermia. Distinct from hypovolaemic shock: warm peripheries, low HR. Treat with vasopressors (noradrenaline first-line), cautious fluid resuscitation (avoid overload), and atropine/glycopyrrolate for symptomatic bradycardia." },
-              { phase: "MAP target", detail: "Maintain MAP ≥85 mmHg (some guidelines 85–90 mmHg) for the first 5–7 days to optimise spinal cord perfusion. Based on AANS/CNS guidelines — analogous to CPP targets in TBI. May require vasopressor infusion for days." },
+              { phase: "MAP target", detail: "AANS/CNS 2013 advised MAP 85–90 mmHg for the first 7 days, based on low-quality observational data. The 2024 AO Spine/Praxis guideline instead suggests a lower limit of 75–80 mmHg and an upper limit of 90–95 mmHg for 3–7 days. Follow local spinal-unit protocol; vasopressors are often needed for days." },
               { phase: "Autonomic dysreflexia (subacute/chronic — after spinal shock resolves)", detail: "Injuries above T6. Noxious stimulus below injury (full bladder, faecal impaction, pressure sore) → massive sympathetic discharge below lesion → severe hypertension, reflex bradycardia, pounding headache, flushing/sweating above level, pallor below. EMERGENCY: sit patient up, identify and remove stimulus (catheterise, disimpact), treat with GTN or nifedipine if persistent. Can cause seizures, ICH, death." },
               { phase: "VTE prophylaxis", detail: "SCI patients are at very high VTE risk. LMWH (enoxaparin) as soon as haemostasis allows + mechanical prophylaxis (IPC devices). Continue for 8–12 weeks post-injury. IVC filter if anticoagulation contraindicated." },
             ].map((item) => (

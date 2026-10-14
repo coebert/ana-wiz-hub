@@ -34,7 +34,7 @@ const arrestFaqs: Array<[string, string]> = [
   ],
   [
     "When should defibrillation energy be escalated and what's the role of dual sequential defibrillation?",
-    "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. UK and ERC guidance now permit vector change or DSED for refractory VF after the third shock where local protocols allow.",
+    "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. The ERC 2021 guidelines predate DOSE-VF; subsequent ILCOR (2023) treatment recommendations suggest vector change or DSED may be considered for refractory VF — follow local protocols, and note DOSE-VF was a single-system Canadian trial stopped early by COVID-19.",
   ],
   [
     "Does adrenaline actually improve outcome — what did PARAMEDIC2 show?",
@@ -42,7 +42,7 @@ const arrestFaqs: Array<[string, string]> = [
   ],
   [
     "Should I cool post-arrest patients to 33 °C or aim for active normothermia? What changed after TTM2?",
-    "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) demonstrated equivalence of 33 °C and 36 °C — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with active normothermia (≤ 37.5 °C, fever treated aggressively) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Contemporary ERC/ESICM 2021 guidance therefore recommends a constant temperature 32–36 °C, with active normothermia ≤ 37.7 °C now the most common pragmatic default; fever (> 37.7 °C) must be prevented for at least 72 hours regardless of strategy. Rewarming should be slow (0.25–0.5 °C / h) when starting from 33 °C.",
+    "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) demonstrated equivalence of 33 °C and 36 °C — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with active normothermia (≤ 37.5 °C, fever treated aggressively) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. The 2022 ERC–ESICM temperature-control update therefore recommends continuous core-temperature monitoring and active prevention of fever (> 37.7 °C) for at least 72 hours, and states there is insufficient evidence to recommend for or against cooling to 32–36 °C in subpopulations. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
   ],
   [
     "Who is an appropriate candidate for eCPR and what does ARREST, Prague OHCA and INCEPTION tell us?",
@@ -50,11 +50,11 @@ const arrestFaqs: Array<[string, string]> = [
   ],
   [
     "What is multimodal neuroprognostication and when do I perform it?",
-    "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response). ERC/ESICM 2021 require at least two concordant poor-outcome markers from independent modalities before predicting poor outcome: (1) bilaterally absent pupillary AND corneal reflexes (or NPi < 2 on automated pupillometry); (2) bilaterally absent N20 cortical SSEPs; (3) NSE > 60 µg/L at 48 h and/or 72 h, or a rising trend; (4) highly malignant EEG (suppression < 10 µV, or unreactive burst-suppression); (5) diffuse anoxic injury on CT (loss of grey-white differentiation, GWR < 1.10) or MRI (widespread restricted diffusion). Status myoclonus alone is not sufficient. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
+    "Neuroprognostication is performed in the comatose post-cardiac-arrest patient at ≥ 72 hours after ROSC, only once confounders (sedation, NMBA, hypothermia, severe metabolic derangement, hypoglycaemia, hypotension, ongoing seizure activity) are excluded. The entry criterion is GCS motor ≤ 3 (abnormal flexion, extension, or no motor response) at ≥ 72 h. ERC/ESICM 2021 consider poor outcome likely when two or more of these are present: (1) bilaterally absent pupillary and corneal reflexes at ≥ 72 h (quantitative pupillometry may be used); (2) bilaterally absent N20 SSEP waves at ≥ 24 h; (3) highly malignant EEG (suppressed background or burst-suppression) at > 24 h; (4) NSE > 60 µg/L at 48 h and/or 72 h; (5) status myoclonus ≤ 72 h; (6) diffuse and extensive anoxic injury on CT or MRI. No single marker is sufficient on its own. Withdrawal of life-sustaining therapy in the first 72 hours risks self-fulfilling prophecy.",
   ],
   [
     "How should I manage the airway and ventilator in the first 6 hours post-ROSC?",
-    "Intubate if not already (or replace a supraglottic with a tracheal tube once stable). Set tidal volume 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, FiO₂ titrated to SpO₂ 94–98% (avoid hyperoxia — observational data link PaO₂ > 40 kPa to higher mortality; the EXACT pilot RCT supports normoxic targeting). Set minute ventilation to PaCO₂ 4.5–6.0 kPa (avoid hypocapnia which causes cerebral vasoconstriction and is independently associated with worse neurological outcome — TAME trial 2023 found no benefit from mild hypercapnia 6.7–7.3 kPa over normocapnia). Use continuous waveform capnography. Sedate with short-acting agents (propofol + remifentanil or fentanyl ± dexmedetomidine) to facilitate later neuroprognostication. Avoid prolonged NMBA except briefly for shivering not controlled by sedation and counter-warming.",
+    "Intubate if not already (or replace a supraglottic with a tracheal tube once stable). Set tidal volume 6–8 mL/kg predicted body weight, PEEP 5–10 cmH₂O, FiO₂ titrated to SpO₂ 94–98% (avoid hyperoxia — observational data link PaO₂ > 40 kPa to higher mortality; but the EXACT RCT found lower survival when pre-hospital SpO₂ was targeted at 90–94%, so avoid aiming below 94%). Set minute ventilation to PaCO₂ 4.5–6.0 kPa (avoid hypocapnia which causes cerebral vasoconstriction and is independently associated with worse neurological outcome — TAME trial 2023 found no benefit from mild hypercapnia 6.7–7.3 kPa over normocapnia). Use continuous waveform capnography. Sedate with short-acting agents (propofol + remifentanil or fentanyl ± dexmedetomidine) to facilitate later neuroprognostication. Avoid prolonged NMBA except briefly for shivering not controlled by sedation and counter-warming.",
   ],
 ];
 
@@ -94,17 +94,17 @@ const workedExamples: WorkedExample[] = [
       "Hyperoxia (PaO₂ 38 kPa) is associated with worse outcome — wean FiO₂ to target SpO₂ 94–98 %. Hypocapnia (PaCO₂ 3.4 kPa) causes cerebral vasoconstriction — reduce minute ventilation to target 4.5–6.0 kPa. Tidal volume 550 mL = 7.9 mL/kg PBW — acceptable but trim to 6–8 mL/kg. MAP 60 is below the ≥ 65 mmHg target — uptitrate noradrenaline.",
     answer:
       "Wean FiO₂ for SpO₂ 94–98 %, reduce RR for PaCO₂ 4.5–6.0 kPa, TV ~ 480 mL (6.8 mL/kg PBW), increase noradrenaline to MAP ≥ 65 mmHg, then start active normothermia ≤ 37.7 °C and book early coronary angiography.",
-    cites: ["INCEPTION 2023"],
+    cites: ["ERC/ESICM 2021 Post-Resus", "Schmidt 2022 BOX oxygen"],
   },
   {
     title: "Multimodal neuroprognostication at 72 h",
     scenario:
       "Day 4 post-OHCA, fully rewarmed, off sedation for 36 h. GCS E1 VT M2. Pupils fixed bilaterally, corneals absent, NPi 0. NSE 88 µg/L at 72 h (rising from 62 at 48 h). Continuous EEG: burst-suppression unreactive. SSEPs: bilaterally absent N20.",
     working:
-      "Confounders excluded (rewarmed, sedation washed out, no metabolic derangement, no status epilepticus). Apply ERC/ESICM 2021 algorithm — entry criterion (GCS M ≤ 2) met. Look for ≥ 2 concordant poor-outcome markers from independent modalities: (1) bilaterally absent pupillary + corneal reflexes, (2) NSE > 75 at 72 h with rising trend, (3) highly malignant unreactive burst-suppression EEG, (4) bilaterally absent N20 SSEPs.",
+      "Confounders excluded (rewarmed, sedation washed out, no metabolic derangement, no status epilepticus). Apply ERC/ESICM 2021 algorithm — entry criterion (GCS M ≤ 3 at ≥ 72 h) met. Look for ≥ 2 concordant poor-outcome markers from independent modalities: (1) bilaterally absent pupillary + corneal reflexes, (2) NSE > 60 µg/L at 48 h and 72 h, (3) highly malignant unreactive burst-suppression EEG, (4) bilaterally absent N20 SSEPs.",
     answer:
       "Four concordant poor-outcome markers across clinical, biochemical, electrophysiological and SSEP modalities — poor neurological outcome can be predicted with high specificity. Discuss WLST with family, refer to SNOD before withdrawal for potential DCD donation.",
-    cites: ["Prague OHCA 2022"],
+    cites: ["ERC/ESICM 2021 Post-Resus"],
   },
   {
     title: "eCPR candidate selection",
@@ -124,20 +124,20 @@ const workedExamples: WorkedExample[] = [
       "Differential hypoxia: well-oxygenated retrograde ECMO blood meets poorly oxygenated antegrade native cardiac output in the aortic arch. The 'mixing point' has shifted distal to the great vessels because native LV ejection (with diseased lungs) has improved while the lungs cannot oxygenate. Upper body (cerebral, coronary) perfused by hypoxic native blood.",
     answer:
       "Optimise native lung function first (recruit, increase PEEP/FiO₂, diuresis). If persistent, convert to VAV-ECMO by adding an internal jugular return cannula to oxygenate the upper body, or move to central VA-ECMO. Monitor right radial saturation continuously as the early warning.",
-    cites: ["TTM 2013"],
+    cites: ["ELSO Guidelines 2020"],
   },
 ];
 
 const keyPoints = [
   { text: "Post-cardiac-arrest syndrome = brain injury + myocardial dysfunction + ischaemia–reperfusion + precipitating pathology — treat all four.", cites: ["TTM2 2021"] },
-  { text: "Avoid hyperoxia and hypocapnia: target SpO₂ 94–98 %, PaCO₂ 4.5–6.0 kPa, MAP ≥ 65 mmHg, glucose 7.8–10 mmol/L.", cites: ["ERC/ESICM 2021 Post-Resus"] },
+  { text: "Avoid hyperoxia, hypoxaemia and hypocapnia: target SpO₂ 94–98 %, PaCO₂ 4.5–6.0 kPa, avoid MAP < 65 mmHg, and avoid hypoglycaemia (manage glucose by standard ICU protocol).", cites: ["ERC/ESICM 2021 Post-Resus"] },
   { text: "TTM2 (2021): normothermia ≤ 37.7 °C is the contemporary default; whichever target chosen, deliver strict fever control to ≥ 72 h with closed-loop feedback cooling.", cites: ["TTM2 2021", "BJA Educ Neuroprog 2018"] },
   { text: "Rewarm slowly (0.25–0.5 °C/h) — watch for hyperkalaemic rebound and prolonged drug clearance during cooling.", cites: ["ELSO Guidelines 2020"] },
-  { text: "Neuroprognostication is multimodal, performed ≥ 72 h after ROSC, after confounders are excluded, and requires ≥ 2 concordant poor-outcome markers.", cites: ["INCEPTION 2023"] },
-  { text: "Specific markers: bilaterally absent pupil + corneal reflexes, bilaterally absent N20 SSEPs, NSE > 60 (48 h) / > 75 (72 h) µg/L or rising, highly malignant unreactive EEG, loss of grey-white differentiation on CT or restricted diffusion on MRI.", cites: ["Prague OHCA 2022"] },
+  { text: "Neuroprognostication is multimodal, performed ≥ 72 h after ROSC, after confounders are excluded, and requires ≥ 2 concordant poor-outcome markers.", cites: ["ERC/ESICM 2021 Post-Resus", "BJA Educ Neuroprog 2018"] },
+  { text: "Specific markers: bilaterally absent pupil + corneal reflexes, bilaterally absent N20 SSEPs, NSE > 60 µg/L at 48 h and/or 72 h, highly malignant EEG after 24 h, status myoclonus ≤ 72 h, diffuse anoxic injury on CT or MRI.", cites: ["ERC/ESICM 2021 Post-Resus"] },
   { text: "eCPR: ARREST and Prague OHCA show benefit only in highly selected witnessed shockable arrests with rapid cannulation (< 60 min); INCEPTION emphasises system speed.", cites: ["ARREST 2020"] },
-  { text: "VA-ECMO: anticipate limb ischaemia (distal perfusion cannula), Harlequin syndrome (right radial sat monitoring → consider VAV), LV distension (vent with IABP/Impella).", cites: ["TTM 2013"] },
-  { text: "Avoid the self-fulfilling prophecy — do not withdraw before multimodal assessment is complete.", cites: ["TTM2 2021"] },
+  { text: "VA-ECMO: anticipate limb ischaemia (distal perfusion cannula), Harlequin syndrome (right radial sat monitoring → consider VAV), LV distension (vent with IABP/Impella).", cites: ["ELSO Guidelines 2020"] },
+  { text: "Avoid the self-fulfilling prophecy — do not withdraw before multimodal assessment is complete.", cites: ["ERC/ESICM 2021 Post-Resus"] },
   { text: "Refer DCD candidates to SNOD before WLST is raised with the family — preserves donation potential without altering care.", cites: ["ERC/ESICM 2021 Post-Resus"] },
 ];
 
@@ -156,7 +156,8 @@ const coreConcepts = (
         and the <span className="font-medium text-foreground">precipitating pathology</span>. Bundled care — coronary
         reperfusion, controlled temperature, lung-protective ventilation,
         haemodynamic targets and delayed multimodal neuroprognostication —
-        doubles the rate of intact neurological survival.
+        was associated with better neurological survival in before-and-after
+        cohort studies, although the individual contribution of each element is uncertain.
       </p>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-2">
@@ -295,7 +296,7 @@ const coreConcepts = (
           <li><span className="font-medium text-foreground">Airway and breathing</span> — secure a definitive airway; lung-protective ventilation (6–8 mL/kg PBW); target SpO₂ 94–98 %; target PaCO₂ 4.5–6.0 kPa (normocapnia).</li>
           <li><span className="font-medium text-foreground">Circulation</span> — target MAP ≥ 65 mmHg, aiming for urine output &gt; 0.5 mL/kg/h and a normal or falling lactate; obtain early echocardiography to assess myocardial function; use fluids, vasopressors and inotropes as required, with mechanical circulatory support (IABP, Impella, VA-ECMO) considered for refractory cardiogenic shock.</li>
           <li><span className="font-medium text-foreground">Disability / neuroprotection</span> — temperature control with active prevention of fever (&lt; 37.7 °C) for at least 72 h; continuous EEG for seizure detection and prompt anticonvulsant treatment; a clear sedation strategy that permits later neuroprognostication.</li>
-          <li><span className="font-medium text-foreground">Metabolic control</span> — glucose target 6–10 mmol/L; correct potassium, magnesium and calcium.</li>
+          <li><span className="font-medium text-foreground">Metabolic control</span> — avoid hypoglycaemia and manage glucose by standard ICU protocol (many units use about 6–10 mmol/L); correct potassium, magnesium and calcium.</li>
         </ol>
       </div>
 
@@ -315,14 +316,14 @@ const coreConcepts = (
             items: [
               "Immediate angiography ± PCI for STEMI or new LBBB",
               "Strong consider in any ROSC patient with suspected coronary cause, even if comatose",
-              "COACT (2019) showed no benefit of immediate PCI in shockable arrest without STEMI — selectivity matters",
+              "COACT (2019) and TOMAHAWK (2021) showed no benefit of immediate angiography without ST elevation — selectivity matters",
             ],
           },
           {
             title: "Haemodynamics",
             items: [
-              "MAP target 65–80 mmHg (some evidence higher MAP improves cerebral oxygenation in selected patients)",
-              "Avoid persistent hypotension — every minute below MAP 65 increases poor outcome",
+              "Avoid MAP < 65 mmHg; BOX (MAP 77 vs 63 mmHg) showed no benefit from a higher target",
+              "Hypotension after ROSC is associated with worse outcome in observational studies",
               "Echocardiogram early — myocardial stunning is common, often resolves by 48–72 h",
               "Vasopressors as needed; consider mechanical support (IABP, Impella, VA-ECMO) for cardiogenic shock",
             ],
@@ -341,9 +342,9 @@ const coreConcepts = (
           {
             title: "Temperature control",
             items: [
-              "Targeted temperature management (TTM) for at least 24 h within first 6 h of ROSC",
-              "Normothermia ≤ 37.7 °C is the contemporary default (TTM2 2021)",
-              "Strict fever control to ≥ 72 h post-ROSC regardless of strategy chosen",
+              "Continuous core-temperature monitoring and active fever prevention (> 37.7 °C) for ≥ 72 h (ERC–ESICM 2022 update)",
+              "No routine hypothermic target: TTM2 found 33 °C no better than normothermia with fever control",
+              "Avoid fever in the comatose patient regardless of strategy chosen",
               "Active cooling device + core temperature feedback (oesophageal/bladder/intravascular)",
             ],
           },
@@ -352,7 +353,7 @@ const coreConcepts = (
             items: [
               "EEG within 24 h if comatose — early seizure detection & treatment",
               "Treat status epilepticus aggressively (levetiracetam, valproate, sodium channel blockers)",
-              "Avoid prophylactic anticonvulsants (no outcome benefit)",
+              "Avoid prophylactic anticonvulsants (no outcome benefit); TELSTAR (2022) found aggressively suppressing rhythmic/periodic EEG patterns did not improve outcome",
               "NIRS / cerebral oximetry is an emerging adjunct",
             ],
           },
@@ -377,9 +378,9 @@ const coreConcepts = (
       <p className="text-muted-foreground leading-relaxed mb-3">
         TTM aims to <span className="font-medium text-foreground">prevent secondary brain injury</span> from
         ischaemia–reperfusion and to <span className="font-medium text-foreground">avoid pyrexia</span>, which
-        independently worsens outcome. Choose a target (33 °C, 36 °C or
-        normothermia ≤ 37.7 °C), induce within 6 h, hold for 24 h,
-        rewarm at <span className="font-medium text-foreground">0.25–0.5 °C/h</span>, then maintain
+        independently worsens outcome. The 2022 ERC–ESICM update no longer recommends a routine hypothermic target;
+        if a unit still cools to 33–36 °C, rewarm slowly
+        (<span className="font-medium text-foreground">about 0.25–0.5 °C/h</span>), then maintain
         <span className="font-medium text-foreground"> strict fever control to 72 h post-ROSC</span>.
       </p>
 
@@ -434,12 +435,12 @@ const coreConcepts = (
           </thead>
           <tbody>
             {[
-              ["MAP", "≥ 65 mmHg (consider 80–100 in selected)", "Maintain cerebral perfusion. MAP-COOL, NEUROPROTECT trials suggest higher MAP improves rSO₂."],
+              ["MAP", "Avoid < 65 mmHg", "BOX (77 vs 63 mmHg) and NEUROPROTECT (higher MAP raised rSO₂ but did not reduce anoxic brain injury on MRI) found no benefit from higher targets."],
               ["SpO₂", "94–98 %", "Avoid hyperoxia (free-radical injury) and hypoxia."],
               ["PaCO₂", "4.5–6.0 kPa (35–45 mmHg)", "Hypocapnia → cerebral vasoconstriction; hypercapnia → ↑ICP."],
               ["Tidal volume", "6–8 mL/kg PBW", "Lung-protective; reduces VILI."],
-              ["Glucose", "7.8–10 mmol/L", "Avoid hypo and severe hyper-glycaemia."],
-              ["Hb", "≥ 70 g/L (≥ 90 if cardiogenic shock)", "Maintain DO₂ to vulnerable brain."],
+              ["Glucose", "Standard ICU protocol", "Avoid hypoglycaemia and severe hyperglycaemia; no post-arrest-specific target is mandated."],
+              ["Hb", "General ICU thresholds", "No post-arrest-specific transfusion trial; most units use ~70 g/L, often higher with active myocardial ischaemia."],
               ["Sedation depth", "RASS −2 to −4 during TTM", "Suppress shivering, avoid awareness; minimise to allow neuro assessment after rewarming."],
             ].map((r) => (
               <tr key={r[0]} className="border-t border-border">
@@ -500,7 +501,7 @@ const coreConcepts = (
           {
             title: "Clinical examination (≥ 72 h)",
             detail:
-              "Bilateral absent pupillary light reflex AND absent corneal reflex at ≥ 72 h is the single most specific bedside sign of poor outcome (FPR ~ 1 %). Quantitative pupillometry (NPi < 2) is more reproducible than manual examination. GCS Motor 1–2 at 72 h is the trigger for formal multimodal assessment, but is NOT sufficient on its own. Status myoclonus within 72 h is concerning but does not equal status epilepticus.",
+              "Bilateral absent pupillary light reflex AND absent corneal reflex at ≥ 72 h is the single most specific bedside sign of poor outcome (FPR ~ 1 %). Quantitative pupillometry is more reproducible than manual examination. GCS motor ≤ 3 at ≥ 72 h is the trigger for formal multimodal assessment, but is NOT sufficient on its own. Status myoclonus within 72 h counts as one ERC/ESICM poor-outcome marker; it is not the same as status epilepticus and should prompt EEG.",
             color: "hsl(0, 75%, 55%)",
           },
           {
@@ -512,19 +513,19 @@ const coreConcepts = (
           {
             title: "Electroencephalography (EEG)",
             detail:
-              "Continuous EEG within 24 h if available; targeted EEG ≥ 72 h. Highly malignant patterns (suppression < 10 µV background, burst-suppression with or without superimposed discharges) at ≥ 72 h predict poor outcome. Reactivity testing is essential — a reactive background is reassuring even in the comatose patient. Confounders: sedation, hypothermia, metabolic derangement.",
+              "Continuous or early EEG if available. Highly malignant patterns (suppressed background with or without periodic discharges, or burst-suppression) after 24 h count as a poor-outcome marker in ERC/ESICM 2021. Reactivity testing is essential — a reactive background is reassuring even in the comatose patient. Confounders: sedation, hypothermia, metabolic derangement.",
             color: "hsl(270, 65%, 55%)",
           },
           {
             title: "Somatosensory evoked potentials (SSEPs)",
             detail:
-              "Bilaterally absent N20 cortical responses to median nerve stimulation at ≥ 72 h is one of the most specific markers of poor outcome (FPR ~ 0–1 %). Less affected by sedation and hypothermia than EEG. Operator-dependent; requires technical expertise. Best performed off muscle relaxant. A present N20 does not predict good outcome — it just removes one piece of bad evidence.",
+              "Bilaterally absent N20 cortical responses to median nerve stimulation at ≥ 24 h is one of the most specific markers of poor outcome (FPR ~ 0–1 %). Less affected by sedation and hypothermia than EEG. Operator-dependent; requires technical expertise. Best performed off muscle relaxant. A present N20 does not predict good outcome — it just removes one piece of bad evidence.",
             color: "hsl(220, 65%, 50%)",
           },
           {
             title: "Brain imaging (CT and MRI)",
             detail:
-              "CT within 24 h: loss of grey-white differentiation, decreased grey-white ratio (GWR < 1.10–1.20) and effacement of sulci predict poor outcome. MRI at 2–7 days is more sensitive — restricted diffusion (low ADC) in cortex, basal ganglia, hippocampus and thalamus on DWI is a strong negative prognostic marker. Quantitative ADC mapping is increasingly used in research protocols.",
+              "CT within 24 h: loss of grey-white differentiation, decreased grey-white ratio (published thresholds vary, roughly 1.10–1.20) and effacement of sulci predict poor outcome. MRI at 2–7 days is more sensitive — restricted diffusion (low ADC) in cortex, basal ganglia, hippocampus and thalamus on DWI is a strong negative prognostic marker. Quantitative ADC mapping is increasingly used in research protocols.",
             color: "hsl(40, 75%, 50%)",
           },
           {
@@ -662,16 +663,16 @@ const coreConcepts = (
                 ["HACA (NEJM 2002)", "32–34 °C × 24 h vs standard care after VF OHCA", "Mortality 41% vs 55%; favourable neuro 55% vs 39%", "Established mild hypothermia as standard"],
                 ["Bernard (NEJM 2002)", "33 °C × 12 h after VF OHCA", "Good outcome 49% vs 26%", "Confirmed HACA in independent cohort"],
                 ["TTM (Nielsen, NEJM 2013)", "33 °C vs 36 °C × 24 h, n = 950", "No difference in mortality (50% vs 48%) or neuro outcome", "Either target acceptable; fever-prevention is what matters"],
-                ["TTM2 (Dankiewicz, NEJM 2021)", "33 °C vs active normothermia (≤ 37.5 °C), n = 1 850", "No difference 6-mo mortality (50% vs 48%)", "Active normothermia ≤ 37.7 °C now acceptable default"],
+                ["TTM2 (Dankiewicz, NEJM 2021)", "33 °C vs active normothermia (≤ 37.5 °C), n = 1 850", "No difference 6-mo mortality (50% vs 48%)", "Fever prevention rather than routine 33 °C; 2022 ERC–ESICM update"],
                 ["TAME (NEJM 2023)", "Mild hypercapnia 6.7–7.3 kPa vs normocapnia post-arrest", "No difference 6-mo good neuro outcome (43.5% vs 44.6%)", "Continue normocapnia 4.5–6.0 kPa"],
                 ["EXACT (Bernard, JAMA 2022)", "SpO₂ 90–94% vs 98–100% during pre-hospital post-ROSC", "Survival to discharge 38.3% vs 47.9% (lower with restrictive)", "Avoid hypoxaemia; do not aim ≤ 94% in pre-hospital phase"],
                 ["BOX (NEJM 2022)", "MAP 63 vs 77 mmHg AND restrictive vs liberal O₂ post-ROSC", "No difference in death/poor neuro outcome at 90 d", "MAP ≥ 65 reasonable; no clear benefit from higher targets"],
                 ["PARAMEDIC2 (NEJM 2018)", "Adrenaline 1 mg IV vs placebo in OHCA, n = 8 014", "30-d survival 3.2% vs 2.4%; severe disability 31% vs 18% of survivors", "Adrenaline retained but with explicit trade-off"],
-                ["DOSE-VF (NEJM 2022)", "Standard vs vector-change vs DSED for refractory VF after 3 shocks", "Survival to discharge: DSED 30.4% vs standard 13.3%", "DSED / vector change now permitted for refractory VF"],
+                ["DOSE-VF (NEJM 2022)", "Standard vs vector-change vs DSED for refractory VF after 3 shocks", "Survival to discharge: DSED 30.4% vs standard 13.3%", "ILCOR 2023: DSED / vector change may be considered"],
                 ["ARREST (Lancet 2020)", "eCPR vs standard ALS in refractory shockable OHCA, n = 30", "Stopped early — 43% vs 7% survival to discharge", "Proof of concept in optimal system"],
                 ["Prague OHCA (JAMA 2022)", "Invasive (eCPR + cath) vs standard, n = 256", "180-d good neuro 31.5% vs 22.0% (NS overall; benefit in longer arrests)", "Supports eCPR in selected refractory arrest"],
                 ["INCEPTION (NEJM 2023)", "eCPR vs standard ALS, multicentre Dutch, n = 134", "No difference in 30-d good neuro outcome (20% vs 16%)", "Highlights importance of system speed & volume"],
-                ["COACT (NEJM 2019)", "Immediate vs delayed angiography after shockable OHCA without STEMI", "No 90-d mortality difference (64.5% vs 67.2%)", "Defer angiography in stable post-ROSC without STEMI"],
+                ["COACT (NEJM 2019)", "Immediate vs delayed angiography after shockable OHCA without STEMI", "No 90-d survival difference (64.5% vs 67.2%)", "Defer angiography in stable post-ROSC without STEMI"],
                 ["TOMAHAWK (NEJM 2021)", "Immediate vs selective angiography after OHCA without STEMI", "No 30-d mortality difference (54% vs 46%)", "Reinforces selective approach without ST elevation"],
                 ["AIRWAYS-2 (JAMA 2018)", "Supraglottic airway vs tracheal intubation in paramedic-led OHCA", "No difference in modified Rankin at 30 d", "SGA acceptable initial airway in OHCA"],
               ].map((r) => (
@@ -759,7 +760,7 @@ const CardiacArrestPostResusTopic = () => {
           "ELSO Guidelines 2020",
           "BJA Educ Neuroprog 2018",
         ],
-        workedExamples: ["INCEPTION 2023", "Prague OHCA 2022", "ARREST 2020", "TTM 2013"],
+        workedExamples: ["ERC/ESICM 2021 Post-Resus", "Schmidt 2022 BOX oxygen", "ARREST 2020", "ELSO Guidelines 2020"],
       }}
       coreConcepts={coreConcepts}
       workedExamples={workedExamples}
