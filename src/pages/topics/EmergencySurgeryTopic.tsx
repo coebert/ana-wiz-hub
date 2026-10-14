@@ -10,7 +10,7 @@ import { EmergencySurgeryGlossaryDrawer } from "@/components/clinical/EmergencyS
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
-import { EmergencyPrioritisationTeaching, EmergencyAirwayEvidenceTeaching, EmergencyAppendicitisTeaching, EmergencyObstructionTeaching, EmergencyHipFractureTeaching, EmergencyXaReversalTeaching, EmergencyDabigatranReversalTeaching, EmergencyEctopicTeaching, EmergencyReboaTeaching } from "@/components/topic/EmergencySurgeryTeaching";
+import { EmergencyPrioritisationTeaching, EmergencyAirwayEvidenceTeaching, EmergencyAppendicitisTeaching, EmergencyObstructionTeaching, EmergencyHipFractureTeaching, EmergencyXaReversalTeaching, EmergencyDabigatranReversalTeaching, EmergencyEctopicTeaching, EmergencyReboaTeaching, EmergencyTivaTeaching, EmergencyCompartmentPressureTeaching } from "@/components/topic/EmergencySurgeryTeaching";
 
 const emergencySurgeryFaqs: Array<[string, string]> = [
   [
@@ -260,6 +260,7 @@ const EmergencySurgeryTopic = () => {
               <li>Processed EEG (e.g. BIS/entropy) monitoring is recommended whenever TIVA is combined with neuromuscular blockade.</li>
               <li>Local protocols, checklists and structured training reduce error rates and are advocated for departments extending TIVA to emergency practice.</li>
             </ul>
+            <div className="my-4"><EmergencyTivaTeaching /></div>
             <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Patient selection</h3>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Favourable</strong>: severe PONV history, malignant hyperthermia susceptibility, shared airway/airway surgery where volatile scavenging is difficult.</li>
@@ -500,6 +501,7 @@ const EmergencySurgeryTopic = () => {
               <li><strong>Intraoperative:</strong> general anaesthesia is usual; expect significant blood loss from open compartments and a reperfusion insult on decompression — hyperkalaemia, metabolic acidosis, myoglobinaemia and a fall in blood pressure. Have calcium, insulin/dextrose and a vasopressor immediately available, ventilate to normocapnia and monitor the ECG closely.</li>
               <li><strong>Postoperative:</strong> aggressive crystalloid to maintain urine output and limit myoglobinuric AKI, monitor creatine kinase, potassium and renal function, provide multimodal analgesia for what are extremely painful wounds, and plan repeat theatre visits for debridement and delayed closure or grafting. Involve critical care early in crush injury or multi-compartment involvement.</li>
             </ul>
+            <div className="my-4"><EmergencyCompartmentPressureTeaching /></div>
           </div>
           <ExamPitfallsCallout
             accent="clinical"
