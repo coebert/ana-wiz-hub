@@ -1,4 +1,5 @@
 import { InlineRef } from "@/components/references/InlineRef";
+import { LessonSources } from "@/components/topic/LessonSources";
 const R = ({ label }: { label: string }) => <InlineRef topicId="antimicrobials-pharm" refLabel={label} />;
 
 export function AntibioticExposureTeaching() {
@@ -13,5 +14,6 @@ export function AntibioticExposureTeaching() {
       <li><strong className="text-foreground">Stewardship:</strong> review cultures and the diagnosis at 48–72 h, de-escalate or stop, and use the shortest effective course. These are core elements of hospital stewardship programmes.<R label="IDSA Stewardship 2016" /></li>
     </ul>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: should the first meropenem dose be reduced in a septic patient with AKI?</summary><p className="mt-2">No. The loading dose depends on volume of distribution, which is often increased. Adjust subsequent doses or intervals to renal function, ideally guided by TDM.</p></details>
+    <LessonSources topicId="antimicrobials-pharm" labels={["ESICM TDM 2020", "DALI 2014", "IDSA Stewardship 2016"]} />
   </div>;
 }

@@ -1,4 +1,5 @@
 import { InlineRef } from "@/components/references/InlineRef";
+import { LessonSources } from "@/components/topic/LessonSources";
 const R = ({ label }: { label: string }) => <InlineRef topicId="antimicrobials-pharm" refLabel={label} />;
 
 export function ResistanceTeaching() {
@@ -13,5 +14,6 @@ export function ResistanceTeaching() {
       <li><strong className="text-foreground">Infection control:</strong> because resistance genes spread between patients, hand hygiene, screening and isolation per local policy are as important as drug choice.</li>
     </ul>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: can an organism be carbapenem-resistant without a carbapenemase?</summary><p className="mt-2">Yes. Reduced porin entry combined with ESBL or AmpC production, or efflux, can raise carbapenem MICs. Molecular testing distinguishes these mechanisms, which matters for infection control and newer agents.</p></details>
+    <LessonSources topicId="antimicrobials-pharm" labels={["Murray 2022 GBD AMR", "Magiorakos 2012 MDR/XDR", "IDSA Stewardship 2016"]} />
   </div>;
 }

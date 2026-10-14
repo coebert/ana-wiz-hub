@@ -1,4 +1,5 @@
 import { InlineRef } from "@/components/references/InlineRef";
+import { LessonSources } from "@/components/topic/LessonSources";
 const R = ({ label }: { label: string }) => <InlineRef topicId="antimicrobials-pharm" refLabel={label} />;
 
 export function CandidaemiaTeaching() {
@@ -14,5 +15,6 @@ export function CandidaemiaTeaching() {
     </ul>
     <p><strong className="text-foreground">Evidence limits:</strong> trial populations predated emerging <em>Candida auris</em>, and local susceptibility patterns differ. Follow local microbiology advice.</p>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: is caspofungin a good choice for <em>Candida</em> cystitis?</summary><p className="mt-2">Usually not. Echinocandins reach low urinary concentrations. Fluconazole is preferred for susceptible isolates.</p></details>
+    <LessonSources topicId="antimicrobials-pharm" labels={["Reboli 2007 Anidulafungin", "IDSA Candidiasis 2016"]} />
   </div>;
 }

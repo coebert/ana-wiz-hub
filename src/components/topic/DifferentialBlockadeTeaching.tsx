@@ -1,4 +1,5 @@
 import { InlineRef } from "@/components/references/InlineRef";
+import { LessonSources } from "@/components/topic/LessonSources";
 const R = ({ label }: { label: string }) => <InlineRef topicId="local-anaesthetics" refLabel={label} />;
 
 export function DifferentialBlockadeTeaching() {
@@ -15,5 +16,6 @@ export function DifferentialBlockadeTeaching() {
     </ul>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: is loss of cold sensation proof the block is ready for incision?</summary><p className="mt-2">No. Cold sensation can be lost before full block of the fibres carrying sharp or surgical pain. Confirm with the relevant modality (e.g. pinprick or touch for caesarean section, per local practice) at the required level, and have a supplementation plan.</p></details>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: do C fibres always block first?</summary><p className="mt-2">No. Single-axon and in vivo studies found small myelinated (Aδ, Aγ) fibres more sensitive to lidocaine than unmyelinated C fibres. “Small fibres first” is a simplification.</p></details>
+    <LessonSources topicId="local-anaesthetics" labels={["Fink 1984 Single-Axon Block", "Gokin 2001 Preferential Block", "BJA Educ 2015"]} />
   </div>;
 }

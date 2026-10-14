@@ -7,6 +7,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 import { ivAnaestheticsQuiz } from "@/data/quizzes";
 import IVAnaestheticStructures from "@/components/diagrams/pharmacology/IVAnaestheticStructures";
 import { PropofolTCISimulatorDiagram } from "@/components/diagrams/pharmacology/PropofolTCISimulatorDiagram";
+import { PRISTeaching } from "@/components/topic/PRISTeaching";
 import { PRISDiagram } from "@/components/diagrams/pharmacology/PRISDiagram";
 import { SchniderEleveldDiagram } from "@/components/diagrams/pharmacology/SchniderEleveldDiagram";
 import { KetaminePharmacologyDiagram } from "@/components/diagrams/pharmacology/KetaminePharmacologyDiagram";
@@ -192,6 +193,7 @@ const IVAnaestheticsTopic = () => {
               shorter exposures in susceptible patients<InlineRef topicId="iv-anaesthetics" refLabel="BJA Educ 2014" />.
             </p>
             <PRISDiagram />
+            <PRISTeaching />
           </div>
 
           <div className="mt-8">

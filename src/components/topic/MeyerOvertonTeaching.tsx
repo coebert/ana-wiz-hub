@@ -1,4 +1,5 @@
 import { InlineRef } from "@/components/references/InlineRef";
+import { LessonSources } from "@/components/topic/LessonSources";
 const R = ({ label }: { label: string }) => <InlineRef topicId="volatile-agents" refLabel={label} />;
 
 export function MeyerOvertonTeaching() {
@@ -15,5 +16,6 @@ export function MeyerOvertonTeaching() {
     <p><strong className="text-foreground">Evidence limits:</strong> no single target has been shown to explain all actions of every agent; much of the binding and channel data come from isolated preparations or animal models, and relating a molecular effect to a clinical end-point remains inferential. In exams, present Meyer–Overton as a robust empirical correlation that the protein theory explains, rather than as a disproved idea.<R label="Franks 2008 Targets & Pathways" /></p>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: why do the isoflurane isomer experiments argue against a lipid site?</summary><p className="mt-2">Mirror-image isomers have identical solubility and identical effects on lipid bilayers, so a lipid mechanism predicts identical actions. Different effects on ion channels imply a chiral, protein-based site.</p></details>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: does the luciferase study prove luciferase is the anaesthetic target?</summary><p className="mt-2">No. It shows that a hydrophobic protein pocket is sufficient to reproduce the Meyer–Overton correlation, so the correlation cannot by itself prove a lipid site.</p></details>
+    <LessonSources topicId="volatile-agents" labels={["Franks & Lieb 1984 Luciferase", "Franks & Lieb 1991 Isomers", "Koblin 1994 Non-immobilisers", "Franks 2008 Targets & Pathways"]} />
   </div>;
 }
