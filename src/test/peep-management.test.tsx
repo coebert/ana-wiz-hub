@@ -7,9 +7,27 @@ import { intensiveCareTopics } from "@/data/curriculum";
 import { breathTiming } from "@/lib/peep-teaching";
 import PEEPTimingDiagram from "@/components/diagrams/intensive-care/PEEPTimingDiagram";
 import { PEEPFoundationsTeaching, PEEPLungProtectionTeaching, PEEPTitrationTeaching, PEEPSettingsTeaching, PEEPSafetyTeaching } from "@/components/topic/PEEPManagementTeaching";
+import { PEEPCaseTeaching } from "@/components/topic/PEEPCaseTeaching";
 vi.mock("@/components/references/InlineRef", () => ({ InlineRef: ({ refLabel }: { refLabel: string }) => <span>{refLabel}</span> }));
 afterEach(cleanup);
 describe("PEEP management source-led teaching", () => {
+  it("renders three explicitly fictional cases, observed transitions and worked answers", () => {
+    const { container } = render(<MemoryRouter><PEEPCaseTeaching /></MemoryRouter>);
+    expect(container.querySelectorAll('[data-peep-case]')).toHaveLength(3);
+    expect(container.querySelectorAll('table')).toHaveLength(3);
+    expect(screen.getAllByText(/Learning check:/)).toHaveLength(3);
+    expect(screen.getByText(/Fictional adult ICU teaching cases/)).toBeInTheDocument();
+    expect(screen.getByText('17 − 5 = 12 cmH₂O')).toBeInTheDocument();
+    expect(screen.getByText('630 mL = 9 mL/kg PBW after obstruction improves')).toBeInTheDocument();
+    expect(screen.getByText(/Do not report a precise intrinsic PEEP/)).toBeInTheDocument();
+    expect(container.textContent).not.toContain('is missing from the topic list');
+    const refs = topicReferences['peep-management'];
+    for (const m of readFileSync('src/components/topic/PEEPCaseTeaching.tsx','utf8').matchAll(/<R label="([^"]+)"/g)) expect(refs.some(r => r.label === m[1]), m[1]).toBe(true);
+    expect(breathTiming(22,1)?.expiration).toBeCloseTo(1.72727);
+    expect(breathTiming(12,0.35)?.expiration).toBeCloseTo(4.65);
+    expect(560*22/1000).toBeCloseTo(12.32);
+    expect(420*12/1000).toBeCloseTo(5.04);
+  });
   it.each([PEEPFoundationsTeaching, PEEPLungProtectionTeaching, PEEPTitrationTeaching, PEEPSettingsTeaching, PEEPSafetyTeaching])("renders a sourced substantive lesson with a learning check", Lesson => {
     const { container } = render(<MemoryRouter><Lesson /></MemoryRouter>);
     expect(container.textContent?.length).toBeGreaterThan(1600);

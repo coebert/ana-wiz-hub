@@ -1488,6 +1488,18 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "peep-management": [
     {
+        label: "Keller 2022 mode response",
+        citation: "Keller M, Applefeld W, Acho M, Lee BW. How I Teach Auto-PEEP: Applying the Physiology of Expiration. ATS Scholar. 2022;3(4):610–624.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9886194/",
+        excerpt: "In volume-controlled ventilation, the progressive accumulation of auto-PEEP may cause alveolar overdistention and ventilator-induced lung injury."
+    },
+    {
+        label: "Keller 2022 triggering",
+        citation: "Keller M, Applefeld W, Acho M, Lee BW. How I Teach Auto-PEEP: Applying the Physiology of Expiration. ATS Scholar. 2022;3(4):610–624.",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9886194/",
+        excerpt: "This depiction also allows learners to visualize how increasing the PEEP set may reduce the threshold load required to trigger a breath."
+    },
+    {
         label: "ATS 2024 protection",
         citation: "Qadir N, Sahetya S, Munshi L, et al. An Update on Management of Adult Patients with Acute Respiratory Distress Syndrome: An Official American Thoracic Society Clinical Practice Guideline. Am J Respir Crit Care Med. 2024;209(1):24–36.",
         url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10870893/",
