@@ -56,6 +56,10 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
 
 /** Topic-level overrides for topics with a completed expansion batch. */
 export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
+  "sepsis": {
+    status: "in-progress",
+    note: "Lesson added on the 65 trial (permissive hypotension) and HYPRESS (steroids before shock), with sources list and learning check.",
+  },
   "abdominal-compartment-syndrome": {
     status: "in-progress",
     note: "WSACS 2013 evidence-strength lesson added (recommendations vs suggestions vs no recommendation, bedside application, learning check, sources list). Other subsections still need review.",
