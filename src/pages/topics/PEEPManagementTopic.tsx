@@ -4,6 +4,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { Exam } from "@/data/curriculum";
 import { PEEPFoundationsTeaching, PEEPLungProtectionTeaching, PEEPTitrationTeaching, PEEPSettingsTeaching, PEEPSafetyTeaching } from "@/components/topic/PEEPManagementTeaching";
+import { PEEPCaseTeaching } from "@/components/topic/PEEPCaseTeaching";
 
 const exams = [Exam.FINAL, Exam.FFICM, Exam.EDIC];
 const quiz = [
@@ -32,6 +33,7 @@ export default function PEEPManagementTopic() {
       <ExamSection id="peep-titration" exams={exams}><CollapsibleSubsection title="PEEP titration and response assessment"><PEEPTitrationTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="peep-settings" exams={exams}><CollapsibleSubsection title="Ventilator settings that influence PEEP"><PEEPSettingsTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="peep-safety" exams={exams}><CollapsibleSubsection title="Recruitment risks and obstructive lung disease"><PEEPSafetyTeaching /></CollapsibleSubsection></ExamSection>
+      <ExamSection id="peep-cases" exams={exams}><CollapsibleSubsection title="ICU cases — bronchospasm, intrinsic PEEP and mode transitions"><PEEPCaseTeaching /></CollapsibleSubsection></ExamSection>
     </div>}
   />;
 }
