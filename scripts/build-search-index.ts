@@ -35,7 +35,7 @@ const OUT = resolve(ROOT, "src/data/searchIndex.generated.json");
 const MAX_IMPORT_DEPTH = 2;
 const MAX_IMPORTED_FILES = 40;
 /** Prose budget per topic (chars). Headings are never trimmed. */
-const MAX_PROSE_CHARS = 10_000;
+const MAX_PROSE_CHARS = 6_000;
 /** Longest single prose record before sentence-splitting. */
 const MAX_RECORD_CHARS = 320;
 
