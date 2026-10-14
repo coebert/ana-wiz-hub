@@ -72,3 +72,21 @@ export function HyponatraemiaCorrectionTeaching() {
     <LessonSources topicId="icu-endocrine-emergencies" labels={["SALSA 2021"]} />
   </div>;
 }
+
+export function PhaeochromocytomaPreparationTeaching() {
+  const G = () => <InlineRef topicId="icu-endocrine-emergencies" refLabel="Endocrine Society PPGL 2014" />;
+  const P = () => <InlineRef topicId="icu-endocrine-emergencies" refLabel="PRESCRIPT 2020" />;
+  return <div className="space-y-3 text-muted-foreground leading-relaxed p-4 rounded-lg border border-border">
+    <h3 className="text-lg font-serif font-bold text-foreground">Preparing for Phaeochromocytoma Surgery: Guideline and PRESCRIPT</h3>
+    <ul className="list-disc pl-5 space-y-1">
+      <li><strong className="text-foreground">Diagnosis:</strong> initial testing should be plasma free or urinary fractionated metanephrines; CT is suggested for first imaging.<G /></li>
+      <li><strong className="text-foreground">Preparation:</strong> every patient with a functional tumour should have preoperative blockade, with a high-sodium diet and fluid intake to prevent hypotension after removal.<G /></li>
+      <li><strong className="text-foreground">Surgery:</strong> minimally invasive adrenalectomy for most phaeochromocytomas; open resection for most paragangliomas.<G /></li>
+      <li><strong className="text-foreground">Which α-blocker? PRESCRIPT:</strong> 134 patients in 9 Dutch centres were randomised to phenoxybenzamine or doxazosin for 2–3 weeks before surgery. Time outside blood pressure targets (SBP &gt;160 or MAP &lt;60 mmHg) did not differ: 11.1% vs 12.2% (P = .75).<P /></li>
+      <li><strong className="text-foreground">Secondary results:</strong> phenoxybenzamine gave a lower haemodynamic instability score (38.0 vs 50.0, P = .02). 30-day cardiovascular complications were 8.8% vs 6.9% (P = .68), with no deaths. Whether the steadier course improves outcome could not be established.<P /></li>
+      <li><strong className="text-foreground">Anaesthetic point:</strong> expect surges on induction and tumour handling, and hypotension after the veins are tied. Both α-blockers are reasonable; the trial was open-label and too small to compare complications.</li>
+    </ul>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: in PRESCRIPT, did phenoxybenzamine reduce time outside blood pressure targets compared with doxazosin?</summary><p className="mt-2">No — 11.1% vs 12.2% (P = .75). It did lower the instability score, a secondary measure.</p></details>
+    <LessonSources topicId="icu-endocrine-emergencies" labels={["Endocrine Society PPGL 2014", "PRESCRIPT 2020"]} />
+  </div>;
+}
