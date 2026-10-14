@@ -51,7 +51,7 @@ const paediatricFaqs: Array<[string, string]> = [
   ],
   [
     "What is the WETFLAG emergency drug dose framework?",
-    "WETFLAG is a paediatric emergency checklist used to rapidly estimate weight and calculate critical drug doses and equipment sizes: W (Weight = (age + 4) × 2 kg), E (Energy for defibrillation = 4 J/kg), T (Tube size = age/4 + 4 mm uncuffed), F (Fluids = 10–20 mL/kg bolus), L (Length of ETT at lips = age/2 + 12 cm), A (Adrenaline = 10 µg/kg IV/IO for cardiac arrest; 0.1 µg/kg/min for infusion), G (Glucose = 2 mL/kg of 10% dextrose for hypoglycaemia). This ensures standardised, rapid preparation during paediatric emergencies and arrests.",
+    "WETFLAG is a paediatric emergency checklist used to rapidly estimate weight and calculate critical drug doses and equipment sizes: W (Weight = (age + 4) × 2 kg), E (Energy for defibrillation = 4 J/kg), T (Tube size = age/4 + 4 mm uncuffed), F (Fluids = 10 mL/kg bolus (NICE NG29)), L (Length of ETT at lips = age/2 + 12 cm), A (Adrenaline = 10 µg/kg IV/IO for cardiac arrest; 0.1 µg/kg/min for infusion), G (Glucose = 2 mL/kg of 10% dextrose for hypoglycaemia). This ensures standardised, rapid preparation during paediatric emergencies and arrests.",
   ],
   [
     "How do you manage laryngospasm in a child?",
@@ -236,7 +236,7 @@ const PaediatricAnaesthesiaTopic = () => {
                   { scenario: "Epiglottitis", management: "Now rare (Hib vaccine). Do NOT examine throat. Gaseous induction in theatre with ENT standby. IV access after induction. Tracheostomy rarely needed." },
                   { scenario: "Pyloric Stenosis", management: "Hypochloraemic, hypokalaemic metabolic alkalosis. Medical emergency, NOT surgical. Correct electrolytes and dehydration first. RSI with modified approach." },
                   { scenario: "Inhaled Foreign Body", management: "Typically a toddler (1–3 years) with a sudden choking or gagging episode, then a quiet period, then cough, wheeze or stridor. Signs: one-sided reduced air entry or localised wheeze. Most objects (nuts, food) are not visible on X-ray; look for one-sided over-inflation from air trapping (inspiratory/expiratory or lateral decubitus films) or collapse. Removal is by rigid bronchoscopy, a shared airway: inhalational (or carefully titrated IV) induction keeping the child breathing spontaneously where possible, IV access once asleep, topical lidocaine to the cords, then ventilation through the bronchoscope side-port or a Sanders injector. Plan with the surgeon beforehand. Complications: laryngospasm, bronchospasm, the object moving into the trachea or fragmenting, airway trauma and post-operative oedema (consider dexamethasone)." },
-                  { scenario: "Tonsillectomy Bleeding", management: "Assume full stomach and hypovolaemia. Resuscitate with 20 ml/kg crystalloid. RSI with head-down, left lateral position. Suction before induction." },
+                  { scenario: "Tonsillectomy Bleeding", management: "Assume full stomach and hypovolaemia. Resuscitate with 10 ml/kg crystalloid (repeat as needed). RSI with head-down, left lateral position. Suction before induction." },
                 ].map((s) => (
                   <div key={s.scenario} className="p-3 rounded-lg bg-secondary/30 border border-border">
                     <p className="font-semibold text-foreground text-sm">{s.scenario}</p>
@@ -737,7 +737,7 @@ const PaediatricAnaesthesiaTopic = () => {
             accent="clinical"
             pitfalls={[
               "Neonates are obligate nose-breathers, have a high O₂ consumption (~6 mL/kg/min), large head and short trachea — desaturate quickly.",
-              "Fluid maintenance (Holliday-Segar): 4-2-1 mL/kg/h; resuscitation bolus 10–20 mL/kg isotonic crystalloid.",
+              "Fluid maintenance (Holliday-Segar): 4-2-1 mL/kg/h; resuscitation bolus 10 mL/kg isotonic crystalloid.",
               "Avoid hypotonic maintenance fluids in children — use 0.9% saline or balanced solution with 5% glucose where needed (NICE/APAGBI).",
               "ETT size: uncuffed = age/4 + 4; cuffed = age/4 + 3.5; length (oral) = age/2 + 12.",
               "Laryngospasm: 100% O₂, CPAP, deepen anaesthesia, Larson's manoeuvre, suxamethonium 1–2 mg/kg IV (or 4 mg/kg IM) if persistent.",

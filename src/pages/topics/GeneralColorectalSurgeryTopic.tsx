@@ -208,16 +208,32 @@ const GeneralColorectalSurgeryTopic = () => (
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">
           <section className="space-y-8 mb-10">
             <div>
-              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Preoperative Assessment & Optimisation</h2>
-              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-                <li><strong>Risk stratification</strong>: validated tools (P-POSSUM, NSQIP; NELA score for emergency laparotomy). CPET for major resections — a low anaerobic threshold (commonly &lt;~11 ml/kg/min) or low VO₂peak identifies higher risk<R l="CPET 2018" /></li>
-                <li><strong>Anaemia</strong>: common in colorectal cancer (iron deficiency from occult bleeding). Treat iron deficiency preoperatively, IV iron if surgery is within weeks<R l="NICE NG180" /></li>
-                <li><strong>Nutrition</strong>: screen (e.g. MUST); oral supplements or enteral feeding if malnourished; immunonutrition may be considered<R l="ERAS Colorectal 2018" /></li>
-                <li><strong>Prehabilitation</strong>: exercise, nutrition, psychological support, smoking and alcohol cessation</li>
-                <li><strong>Fasting</strong>: 6 h solids, 2 h clear fluids; preoperative carbohydrate drink for non-diabetic patients (ERAS 2018 allows it in diabetes alongside usual medication, but evidence there is limited — monitor glucose)<R l="ERAS Colorectal 2018" /></li>
-                <li><strong>Bowel preparation</strong>: mechanical preparation causes dehydration and electrolyte loss — ask about it and give fluids; ERAS 2018 suggests oral antibiotic plus mechanical preparation may be used before colonic resection but mechanical preparation alone is not recommended<R l="ERAS Colorectal 2018" /></li>
-                <li><strong>Neoadjuvant therapy</strong>: chemoradiotherapy may cause cardiotoxicity (5-FU coronary spasm, anthracyclines), neuropathy, marrow suppression, fibrosis and fatigue</li>
-              </ul>
+            <div>
+              <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Preoperative Assessment & Optimisation: NICE NG180 Framework</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+                  <p><strong className="text-foreground">Shared Decision & Risk.</strong> "Use a validated risk stratification tool to supplement clinical assessment... Discuss the person’s risks and surgical options with them to allow for informed shared decision making"<R l="NICE NG180" />. Risk is a continuum; tools like P-POSSUM or NSQIP guide discussions but do not replace clinical judgement.</p>
+                  <p><strong className="text-foreground">CPET & Functional Capacity.</strong> NG180 clarifies: <span className="text-foreground font-semibold">"Do not use cardiopulmonary exercise testing (CPET) alone to decide whether to offer surgery"</span>. No single anaerobic threshold or VO₂peak cutoff (e.g., <11 ml/kg/min) should automatically determine care; it informs the risk profile, optimization (prehab), and level of postoperative care<R l="NICE NG180" /><R l="CPET 2018" />.</p>
+                </div>
+                <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+                  <p><strong className="text-foreground">Anaemia Management.</strong> Screen for iron-deficiency anaemia (IDA). "Offer iron to people with iron-deficiency anaemia... Offer intravenous iron... if oral iron is not tolerated... or if surgery is planned for less than 2 weeks"<R l="NICE NG24" /><R l="NICE NG180" />. In colorectal cancer, IDA is often due to occult bleeding; IV iron is preferred if surgery is imminent to ensure Hb optimization.</p>
+                  <p><strong className="text-foreground">Nutritional Screening.</strong> "Offer preoperative nutritional screening to people having intermediate surgery or major or complex surgery"<R l="NICE NG180" />. Use a validated tool (e.g., MUST). Follow with "nutrition support for adults" (CG32) for those at risk, including oral supplements or enteral feeding<R l="ERAS Colorectal 2018" />.</p>
+                </div>
+              </div>
+              
+              <h3 className="text-lg font-semibold text-foreground mb-2 mt-6">Practical Assessment Sequence</h3>
+              <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground leading-relaxed">
+                <li><strong className="text-foreground text-xs uppercase tracking-wider">Screening</strong>: Full blood count (Hb), Ferritin/Transferrin saturations, and nutritional status (MUST) early in the pathway.</li>
+                <li><strong className="text-foreground text-xs uppercase tracking-wider">Stratification</strong>: Calculate mortality/complication risk (P-POSSUM, NSQIP). Arrange CPET for major/complex cases to identify physiological reserve and specific limitations.</li>
+                <li><strong className="text-foreground text-xs uppercase tracking-wider">Optimization</strong>: Correct iron deficiency (IV iron if <2 weeks); start nutritional support if MUST ≥2; implement prehabilitation (aerobic + resistance exercise); smoking/alcohol cessation >4 weeks.</li>
+                <li><strong className="text-foreground text-xs uppercase tracking-wider">Consultation</strong>: Shared decision-making discussion using the calculated risk, functional data, and patient values to agree on the surgical approach and ceiling of care.</li>
+                <li><strong className="text-foreground text-xs uppercase tracking-wider">Final Planning</strong>: 6h/2h fasting, carbohydrate loading (except in high-risk diabetes), and clarify mechanical bowel preparation (avoid routine use; oral antibiotics + MBP if indicated).</li>
+              </ol>
+
+              <div className="mt-6 space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+                <li><strong>Neoadjuvant therapy</strong>: Check for cardiotoxicity (5-FU spasm, anthracyclines), neuropathy, marrow suppression, and fatigue.</li>
+              </div>
+            </div>
             </div>
 
             <div>

@@ -69,10 +69,11 @@ const PaediatricMaintenanceFluidsNote = () => (
       </div>
 
       <div className="bg-muted/50 p-4 rounded-lg">
-        <h4 className="font-bold mb-2">Deficit vs Ongoing Loss</h4>
-        <blockquote className="text-sm italic">
-          "Adjust the IV fluid prescription (in addition to maintenance needs) to account for existing fluid and/or electrolyte deficits or excesses, ongoing losses... or abnormal distribution."
+        <h4 className="font-bold mb-2">Replacement & Redistribution (Deficit vs Loss)</h4>
+        <blockquote className="text-sm italic mb-2">
+          "If children and young people need IV fluids for replacement or redistribution, adjust the IV fluid prescription (in addition to maintenance needs) to account for existing fluid and/or electrolyte deficits or excesses, ongoing losses (see the diagram of ongoing losses) or abnormal distribution..."
         </blockquote>
+        <p className="text-xs">NICE distinguishes routine maintenance from <strong>replacement and redistribution</strong>; the latter must be calculated separately to cover existing deficits and dynamic ongoing losses.</p>
       </div>
 
       <div className="bg-muted/50 p-4 rounded-lg">
