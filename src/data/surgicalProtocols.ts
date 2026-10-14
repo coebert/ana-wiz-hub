@@ -9,16 +9,19 @@ export interface SurgicalProtocol {
   intraop: string[];
   postop: string[];
   quiz: QuizQuestion[];
+  /** Reference labels from the surgical-protocols list that support this guide. */
+  sources?: string[];
 }
 
 export const surgicalProtocols: SurgicalProtocol[] = [
   {
     id: "protocol-general-colorectal",
+    sources: ["Greco 2014 ERAS meta-analysis", "NICE NG24 Colorectal Iron", "NICE NG180"],
     title: "General & Colorectal",
     link: "/clinical/general-colorectal-surgery",
     scope: "Laparoscopic and open bowel resection, cholecystectomy, upper GI surgery.",
     preop: [
-      "ERAS pathway: education, prehabilitation, anaemia correction (IV iron if iron-deficient)",
+      "ERAS pathway: education, prehabilitation, anaemia correction (NICE NG24: oral iron for iron-deficiency anaemia; IV iron if oral is unsuitable or surgery is too soon)",
       "Risk stratification (e.g. NSQIP/P-POSSUM); CPET for major or high-risk resection",
       "Carbohydrate drink up to 2 h pre-op where pathway allows; avoid routine bowel preparation unless surgeon requires",
       "Plan analgesia by incision: laparoscopic vs open",
@@ -43,6 +46,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
   },
   {
     id: "protocol-orthopaedic",
+    sources: ["REGAIN 2021"],
     title: "Orthopaedic (Hip & Knee)",
     link: "/clinical/orthopaedic-anaesthesia",
     scope: "Elective arthroplasty and hip fracture surgery.",
@@ -153,6 +157,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
   },
   {
     id: "protocol-vascular",
+    sources: ["GALA 2008"],
     title: "Vascular",
     link: "/clinical/vascular-anaesthesia",
     scope: "Open/endovascular AAA repair, carotid endarterectomy.",
@@ -164,7 +169,7 @@ export const surgicalProtocols: SurgicalProtocol[] = [
     intraop: [
       "Open AAA: cross-clamp ↑afterload (vasodilators), unclamp hypotension (volume, vasopressors)",
       "EVAR: often regional/local; prepare to convert",
-      "Carotid: GA or regional; tight BP control; monitor neurology (awake) or cerebral oximetry",
+      "Carotid: GA or local — GALA found no outcome difference (stroke, MI or death 4.8% vs 4.5%); tight BP control; monitor neurology (awake) or cerebral oximetry",
     ],
     postop: [
       "Critical care after open AAA; watch AKI, bleeding, gut ischaemia, abdominal compartment syndrome",
