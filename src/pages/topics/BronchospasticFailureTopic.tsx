@@ -10,6 +10,7 @@ import SedacondaDiagram from "@/components/diagrams/intensive-care/SedacondaDiag
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { IntrinsicPeepTeaching } from "@/components/topic/IntrinsicPeepTeaching";
 
 const bronchospasticFailureFaqs: Array<[string, string]> = [
   ["How is severe acute asthma treated in ICU?", "High-flow O₂, back-to-back salbutamol/ipratropium nebs, IV hydrocortisone 100 mg, IV magnesium 2 g over 20 min; escalate to IV salbutamol or aminophylline; intubate for exhaustion, silent chest or PaCO₂ rising despite treatment (BTS 2019)."],
@@ -215,6 +216,7 @@ const BronchospasticFailureTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             Narrowed airways increase expiratory time constants. If insufficient time is allowed for expiration, gas trapping occurs → progressive hyperinflation → intrinsic PEEP (auto-PEEP) → reduced venous return → cardiovascular collapse. This is the primary mechanism of peri-arrest deterioration in severe asthma.
           </p>
+          <IntrinsicPeepTeaching />
           <div className="space-y-2 mb-4">
             {[
               { label: "Clinical Signs", detail: "Tracheal tug, hyperexpanded chest, reduced air entry, paradoxical abdominal movement, pulsus paradoxus (>10 mmHg fall in systolic BP on inspiration — reflects exaggerated intrathoracic pressure swings)." },
