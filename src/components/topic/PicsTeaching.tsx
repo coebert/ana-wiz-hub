@@ -1,4 +1,5 @@
 import { InlineRef } from "@/components/references/InlineRef";
+import { Link } from "react-router-dom";
 import { LessonSources } from "@/components/topic/LessonSources";
 
 const T = "prognostication-ethics-icu";
@@ -27,6 +28,7 @@ export function PicsTeaching() {
     <p>The bundle is: <B>A</B>ssess, prevent and manage pain; <B>B</B>oth spontaneous awakening and breathing trials; <B>C</B>hoice of analgesia and sedation; <B>D</B>elirium assessment and management; <B>E</B>arly mobility and exercise; <B>F</B>amily engagement. In the ICU Liberation Collaborative (over 15,000 adults), complete bundle performance was associated with lower delirium (AOR 0.60), coma (AOR 0.35), next-day ventilation (AOR 0.28), physical restraint (AOR 0.37), ICU readmission (AOR 0.54) and discharge somewhere other than home (AOR 0.64).<R label="ICU Liberation 2019" /> This was an observational quality-improvement study, so it shows association, not that the bundle prevents PICS itself.</p>
 
     <H>After the ICU: what NICE asks for</H>
+    <p>For the full step-by-step plan, see the <Link to="/intensive-care/pics-follow-up" className="text-primary underline-offset-4 hover:underline">PICS Follow-Up Plan</Link>.</p>
     <ul className="list-disc list-inside space-y-1">
       <li><B>During the ICU stay:</B> a short clinical assessment as early as possible to find patients at risk of physical and non-physical morbidity, followed by a comprehensive assessment of rehabilitation needs for those at risk.<R label="NICE CG83 recs" /></li>
       <li><B>2–3 months after critical care discharge:</B> review patients with rehabilitation needs, with a face-to-face functional reassessment of health and social care needs.<R label="NICE CG83 recs" /></li>
