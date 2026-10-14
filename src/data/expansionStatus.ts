@@ -158,7 +158,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   // --- Earlier completed batches ---
   "mechanical-ventilation": {
     status: "expanded",
-    note: "Shared APRV lesson: physiology, settings, monitoring, troubleshooting and evidence-based cautions.",
+    note: "Shared APRV lesson: physiology, settings, monitoring, troubleshooting and evidence-based cautions. Stress ulcer prophylaxis lesson (SUP-ICU 2018, REVISE 2024) added with sources list; care-bundle SUP-ICU misstatement corrected.",
   },
   "ent-anaesthesia": {
     status: "expanded",
