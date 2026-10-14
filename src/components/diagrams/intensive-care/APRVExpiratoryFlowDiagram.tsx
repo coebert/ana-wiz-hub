@@ -1,9 +1,10 @@
 import { DiagramFigure } from "../_shared/DiagramFigure";
+import { InlineRef } from "@/components/references/InlineRef";
 const APRVExpiratoryFlowDiagram = () => {
   const W = 700;
   const H = 320;
   const ml = 80;
-  const mr = 40;
+  const mr = 90;
   const mt = 40;
   const mb = 55;
   const plotW = W - ml - mr;
@@ -25,7 +26,7 @@ const APRVExpiratoryFlowDiagram = () => {
   const pefrY = yScale(pefr);
 
   // T low termination points
-  const tLowCorrect = 0.6; // correct T low — flow at 50-75% PEFR
+  const tLowCorrect = 0.05 - Math.log(0.75) / 4.5; // 75% of peak on this illustrative curve
   const tLowTooLong = 0.95; // too long — flow near zero
 
   // Expiratory flow curve: rapid peak then exponential decay
@@ -150,7 +151,7 @@ const APRVExpiratoryFlowDiagram = () => {
           <circle cx={xScale(tLowCorrect)} cy={yScale(flowAtCorrect)} r={5}
             fill="hsl(var(--accent))" stroke="hsl(var(--background))" strokeWidth={2} />
           <text x={xScale(tLowCorrect)} y={yZero + 30} textAnchor="middle" fontSize={10} fontWeight="bold" fill="hsl(var(--accent))">
-            ✓ Correct T low
+            75% termination
           </text>
           <text x={xScale(tLowCorrect)} y={yZero + 42} textAnchor="middle" fontSize={9} fill="hsl(var(--accent))">
             ({percentCorrect}% PEFR)
@@ -165,7 +166,7 @@ const APRVExpiratoryFlowDiagram = () => {
             ✗ Too long
           </text>
           <text x={xScale(tLowTooLong)} y={yZero + 42} textAnchor="middle" fontSize={9} fill="hsl(var(--destructive))">
-            (derecruitment)
+            (near-zero flow)
           </text>
   
           {/* Inspiratory flow label */}
@@ -190,8 +191,11 @@ const APRVExpiratoryFlowDiagram = () => {
           </defs>
         </svg>
         <p className="text-xs text-muted-foreground text-center mt-2">
-          T<sub>low</sub> should be set so expiratory flow terminates at <span className="font-semibold text-foreground">50–75% of peak expiratory flow rate (PEFR)</span>. 
-          If flow reaches zero, alveoli have fully emptied and derecruitment occurs. The shaded zone shows the target termination window.
+          Illustrative curve, not a prescribed release time. The marker is at {percentCorrect}% of peak expiratory flow magnitude.
+          Swindin’s approach targets approximately 75%; other protocols use ≥50%. The shaded band illustrates those differing targets,
+          not a guaranteed safe range. Near-zero airway flow does not prove complete alveolar emptying or collapse.
+          <InlineRef topicId="mechanical-ventilation" refLabel="Swindin APRV 2020" />
+          <InlineRef topicId="mechanical-ventilation" refLabel="Zhou APRV 2017" />
         </p>
       </div>
     </DiagramFigure>

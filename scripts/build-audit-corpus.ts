@@ -325,7 +325,13 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
     const next: typeof frontier = [];
     for (const node of frontier) {
       const extracted = extractFromSource(node.src);
-      lines.push(...extracted.lines);
+      // Shared APRV teaching must precede large waveform component output
+      // so the audit's per-topic text budget cannot silently discard it.
+      if (topic.id === "mechanical-ventilation" && node.file.endsWith("/APRVSection.tsx")) {
+        lines.unshift(...extracted.lines);
+      } else {
+        lines.push(...extracted.lines);
+      }
       svgLabels.push(...extracted.svgLabels);
       if (node.depth >= MAX_IMPORT_DEPTH) continue;
       for (const dep of localImportsOf(node.src, node.file)) {
@@ -359,13 +365,16 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
           .slice(0, MAX_LABEL_CHARS)}`
       : "";
   const prose = [`# ${topic.title}`, topic.description, "", ...uniqueLines].join("\n");
+  // This long topic includes the shared APRV section after its root content.
+  // Keep that source-linked teaching in the audit, rather than truncating it.
+  const textBudget = topic.id === "mechanical-ventilation" ? 64_000 : MAX_TEXT_CHARS;
   const text = [
-    prose.slice(0, MAX_TEXT_CHARS - (labelBlock ? labelBlock.length + 2 : 0)),
+    prose.slice(0, textBudget - (labelBlock ? labelBlock.length + 2 : 0)),
     "",
     labelBlock,
   ]
     .join("\n")
-    .slice(0, MAX_TEXT_CHARS);
+    .slice(0, textBudget);
 
   const caseEntries = CASE_INDEX.get(topic.id) ?? [];
 
