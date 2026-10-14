@@ -189,6 +189,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "Temperature sensor/site error sources expanded.",
   },
+  "metabolic-alkalosis": {
+    status: "expanded",
+    note: "Five source-led lessons linked from Acid-Base Disorders: mechanisms/maintenance, assessment/urine chloride, causes/post-hypercapnia, treatment/evidence, safety. Verified short Park/Sidebotham BJA Education 2023 quotations with separate AJKD Core Curriculum 2022 diagnostic excerpts; learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "acid-base": {
     status: "expanded",
     note: "HAGMA, NAGMA, osmolar gap, Stewart and citrate subsections source-reviewed and complete; linked formulae, displays and toxin criteria corrected. Source-checked, not consultant-reviewed; this does not certify the remaining older sections.",
