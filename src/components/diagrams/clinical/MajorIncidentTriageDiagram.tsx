@@ -159,14 +159,14 @@ export const MajorIncidentTriageDiagram = () => {
           </defs>
 
           {/* ===== Phase 1: Triage Sieve decision tree ===== */}
-          <g {...svgNodeProps("Step 2/4: Triage Sieve at scene")} opacity={phase === 1 ? 1 : phase > 1 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
-            <text x="300" y="35" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Triage Sieve (&lt; 30 s per casualty)</text>
+          <g {...svgNodeProps("Step 2/4: Ten Second Triage at scene")} opacity={phase === 1 ? 1 : phase > 1 ? 0.35 : 0.15} style={{ transition: "opacity 300ms" }}>
+            <text x="300" y="35" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Ten Second Triage (TST, NARU 2023)</text>
 
             {[
               { y: 55, q: "Walking?", yes: "→ P3 Delayed", no: "↓ next", color: PRIORITY.P3.color },
-              { y: 100, q: "Breathing after airway opening?", yes: "↓ next", no: "→ Dead", color: PRIORITY.DEAD.color },
-              { y: 145, q: "RR < 10 or > 29?", yes: "→ P1 Immediate", no: "↓ next", color: PRIORITY.P1.color },
-              { y: 190, q: "CRT > 2 s or no radial pulse?", yes: "→ P1 Immediate", no: "→ P2 Urgent", color: PRIORITY.P1.color },
+              { y: 100, q: "Severe bleeding? (pressure/tourniquet/pack)", yes: "→ P1 Immediate", no: "↓ next", color: PRIORITY.P1.color },
+              { y: 145, q: "Talking?", yes: "↓ next", no: "→ Airway + recovery: P1 / Not Breathing", color: PRIORITY.DEAD.color },
+              { y: 190, q: "Penetrating torso/junctional injury?", yes: "→ P1 Immediate", no: "→ P2 Urgent", color: PRIORITY.P1.color },
             ].map((row, i) => {
               const active = phase === 1 && sieveStep === i;
               return (

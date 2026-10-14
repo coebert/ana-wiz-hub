@@ -13,7 +13,7 @@ import InlineRef from "@/components/references/InlineRef";
 const massCasualtyMilitaryFaqs: Array<[string, string]> = [
   [
     "What is the difference between primary, secondary and tertiary triage?",
-    "Primary triage (Triage Sieve) at scene uses walking/breathing/pulse-or-capillary-refill to assign P1/P2/P3/Dead in <30 s. Secondary triage (Triage Sort) at casualty clearing applies the Triage Revised Trauma Score (GCS, RR, SBP). Tertiary triage occurs in hospital after initial resuscitation and continuously thereafter."
+    "Primary triage at scene now uses NARU Ten Second Triage (walking, severe bleeding, talking, penetrating torso injury) to assign P1/P2/P3/Not Breathing, with life-saving bleeding control and airway positioning done during triage. Secondary triage at the casualty clearing station uses the NHS Major Incident Triage Tool (MITT), which replaced the Triage Sieve and Triage Sort in 2023. Tertiary triage occurs in hospital after initial resuscitation and continuously thereafter."
   ],
   [
     "What are the principles of damage-control resuscitation?",
@@ -27,7 +27,7 @@ const massCasualtyMilitaryFaqs: Array<[string, string]> = [
 
 const objectives = [
   "Apply the principles of major-incident command (MIMMS / NHS EPRR) to a mass-casualty event involving multiple critically injured patients",
-  "Triage casualties using validated tools (Triage Sieve, Triage Sort, MPTT-24) and understand reverse triage in austere environments",
+  "Triage casualties using validated tools (Ten Second Triage, NHS MITT; legacy Sieve/Sort) and understand reverse triage in austere environments",
   "Use crisis resource management (CRM) — leadership, situational awareness, communication and resource allocation — under acute cognitive load",
   "Describe damage-control resuscitation, damage-control surgery and the lethal triad in the context of military and civilian trauma",
   "Outline how forward (Role 1–4) military medical care is organised and how it informs civilian disaster anaesthesia and critical care",
@@ -46,7 +46,7 @@ const workedExamples: WorkedExample[] = [
           <li><strong>METHANE report</strong> from scene confirmed: Major incident declared, Exact location, Type (vehicle-as-weapon), Hazards (secondary device possible), Access, Number of casualties, Emergency services on scene.</li>
           <li><strong>Activate hospital plan</strong>: cascade call, cancel all non-urgent activity, free theatres &amp; ICU beds, surge anaesthetic and surgical rota, call blood bank for major haemorrhage stand-by.</li>
           <li><strong>Establish command</strong>: Gold (strategic — exec on call), Silver (tactical — site MEDCO), Bronze (operational — ED/theatre/ICU leads). Wear tabards. Use action cards from the plan, do not rely on memory.</li>
-          <li><strong>Triage at the door</strong>: senior clinician using Triage Sieve → Sort. P1 (immediate) to resus, P2 (urgent) to majors, P3 (delayed) to minors area, P4/expectant to a designated area with palliation. Re-triage every 15 min.</li>
+          <li><strong>Triage at the door</strong>: senior clinician re-triaging with the NHS MITT (or clinical judgement). P1 (immediate) to resus, P2 (urgent) to majors, P3 (delayed) to minors area, P4/expectant to a designated area with palliation. Re-triage every 15 min.</li>
           <li><strong>CRM principles</strong>: stay hands-off as MEDCO — your value is overview. Allocate teams (anaesthetist + surgeon + nurse + ODP) to each P1 bay; demand SBAR updates every 10 min; appoint a runner; use a whiteboard tracker for casualties and theatres.</li>
           <li><strong>Damage-control resuscitation</strong> for haemorrhagic shock: permissive hypotension (SBP 80–90 mmHg, &gt;110 if TBI), 1:1:1 RBC:FFP:platelets, TXA &lt;3 h, calcium, warming, early surgical control. Avoid clear fluids.</li>
           <li><strong>Theatre prioritisation</strong>: damage-control surgery first (haemorrhage control, bowel stapling, packs and abbreviated closure), definitive surgery later. Theatre coordinator allocates lists.</li>
@@ -418,7 +418,7 @@ const MassCasualtyMilitaryTopic = () => {
             accent="clinical"
             pitfalls={[
               "METHANE report: Major incident, Exact location, Type, Hazards, Access, Number, Emergency services.",
-              "Triage Sieve (walking → P3; airway/breathing/circulation criteria → P1/P2/dead); Sort uses TRTS; MPTT-24 prioritises by mobility/RR/HR.",
+              "Ten Second Triage (walking → P3; severe bleeding or not talking → P1; not breathing after airway opening → Not Breathing; talking with penetrating torso injury → P1, else P2), then NHS MITT — which replaced the Sieve and Sort in 2023.",
               "Damage-control resuscitation + surgery: minimise time to haemorrhage control, permissive hypotension, blood products only.",
               "Military Roles 1–4: Role 1 first aid, Role 2 forward surgical, Role 3 field hospital, Role 4 home-base definitive care.",
               "CBRN: identify hazard, don PPE before patient contact, decontaminate before treatment, specific antidotes (atropine + pralidoxime for nerve agents).",
