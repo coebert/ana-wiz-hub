@@ -16,6 +16,7 @@ import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { ProprietaryModesTeaching } from "@/components/topic/ProprietaryModesTeaching";
 
 const mechanicalVentilationFaqs: Array<[string, string]> = [
   ["What lung-protective tidal volume should I set in ARDS?", "Use 6 mL/kg predicted body weight (ARDSNet), aiming for a plateau pressure ≤30 cmH₂O and driving pressure ≤15 cmH₂O; permit hypercapnia provided pH ≥7.20."],
@@ -466,6 +467,7 @@ const MechanicalVentilationTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             <strong>Pitfalls:</strong> <em>delayed cycling</em> (ETS set too low, e.g. in COPD with slow expiratory flow decay) causes breath-stacking and dynamic hyperinflation; <em>premature cycling</em> (ETS too high, or high resistance/low compliance causing flow to fall quickly) causes double-triggering as the patient's neural inspiration continues after the ventilator has cycled off; <em>auto-triggering</em> occurs when trigger sensitivity is set too low relative to circuit leak or cardiac oscillation, delivering unwanted breaths; and patients with a very high respiratory drive (e.g. severe sepsis, metabolic acidosis) may experience air hunger on PSV because tidal volume — not minute ventilation — is what is guaranteed, so an unstable or inadequate PS level can leave the patient dyspnoeic despite a "normal" set pressure.
           </p>
+          <ProprietaryModesTeaching />
           </CollapsibleSubsection>
         </ExamSection>
 
