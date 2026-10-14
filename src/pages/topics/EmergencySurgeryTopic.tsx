@@ -10,19 +10,20 @@ import { EmergencySurgeryGlossaryDrawer } from "@/components/clinical/EmergencyS
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { EmergencyPrioritisationTeaching, EmergencyAirwayEvidenceTeaching, EmergencyAppendicitisTeaching, EmergencyObstructionTeaching, EmergencyHipFractureTeaching } from "@/components/topic/EmergencySurgeryTeaching";
 
 const emergencySurgeryFaqs: Array<[string, string]> = [
   [
     "What is NELA and how does it influence emergency laparotomy care?",
-    "The National Emergency Laparotomy Audit (NELA) is a mandatory UK audit that records risk-adjusted mortality and process measures for every emergency laparotomy. It drives the NELA care bundle: documented P-POSSUM risk, consultant surgeon and anaesthetist for high-risk cases, theatre within target time, goal-directed fluid therapy, and post-op critical care for predicted mortality ≥5 %."
+    "The National Emergency Laparotomy Audit (NELA) is a mandatory UK audit that records risk-adjusted mortality and process measures for every emergency laparotomy. It supports documented emergency-laparotomy risk assessment, consultant surgeon and anaesthetist for high-risk cases, theatre within target time, goal-directed fluid therapy, and post-op critical care for predicted mortality ≥5 %."
   ],
   [
     "How is a rapid sequence induction modified in the haemodynamically unstable patient?",
-    "Reduce induction dose (e.g. ketamine 1–2 mg/kg or etomidate 0.2 mg/kg + reduced propofol), pre-load with vasopressor (metaraminol/noradrenaline bolus), have fluid and blood drawn up, use rocuronium 1.2 mg/kg for fast onset with sugammadex available, and maintain cricoid pressure unless it impedes view. Anticipate cardiovascular collapse on induction."
+    "Choose and titrate a reduced induction dose appropriate to physiology; ketamine or etomidate may be considered, neither guarantees stability, pre-load with vasopressor (metaraminol/noradrenaline bolus), have fluid and blood drawn up, use rocuronium 1.2 mg/kg for fast onset with sugammadex available, and maintain cricoid pressure unless it impedes view. Anticipate cardiovascular collapse on induction."
   ],
   [
     "What are the indications for damage-control laparotomy?",
-    "The 'lethal triad' — pH <7.2, temperature <34 °C, INR >1.5 — or massive transfusion >10 units. Aim is haemorrhage and contamination control only, with abdomen left open (laparostomy), planned return to theatre 24–48 h after physiological correction in critical care. Avoid prolonged primary surgery in the unstable patient."
+    "Ongoing bleeding, physiological exhaustion, coagulopathy, hypothermia or an injury pattern making definitive repair unsafe; no single laboratory threshold or transfusion count mandates it. Aim is haemorrhage and contamination control only, with abdomen left open (laparostomy), planned return to theatre 24–48 h after physiological correction in critical care. Avoid prolonged primary surgery in the unstable patient."
   ]
 ];
 
@@ -35,10 +36,10 @@ const objectives = [
 ];
 
 const keyPoints = [
-  { text: "All emergency patients are 'full stomach' — RSI is the default unless awake intubation indicated", cites: ["P-POSSUM"] },
-  { text: "Emergency laparotomy 30-day mortality about 9–10% (NELA); NELA standards mandate consultant surgeon and anaesthetist presence for high-risk cases", cites: ["NELA Year 9 Report"] },
+  { text: "Assess aspiration and difficult-airway risk; bowel obstruction, active vomiting and physiological compromise require an explicit airway strategy", cites: ["DAS 2015 RSI"] },
+  { text: "Emergency laparotomy carries substantial risk; use current NELA risk assessment rather than a population average for individual decisions; NELA standards mandate consultant surgeon and anaesthetist presence for high-risk cases", cites: ["NELA Year 9 Report"] },
   { text: "Ruptured ectopic: do NOT delay surgery — haemorrhage control IS the resuscitation", cites: ["BJA Educ EmLap 2017"] },
-  { text: "Ketamine is the induction agent of choice in haemodynamically unstable emergency patients", cites: ["RCoA Emergency Laparotomy"] },
+  { text: "Ketamine is an induction option in shock, not a guarantee of haemodynamic stability; dose and support depend on physiology", cites: ["KETASED 2009"] },
   { text: "Resuscitate before/during induction: correct hypovolaemia, anticipate cardiovascular collapse", cites: ["NCEPOD Knowing the Risk"] },
   { text: "Risk stratification (P-POSSUM, NELA calculator) guides level of care and senior involvement", cites: ["NELA Year 9 Report"] },
 ];
@@ -51,9 +52,9 @@ const EmergencySurgeryTopicWorkedExamples: WorkedExample[] = [
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li>Surgeon-anaesthetist-radiologist huddle within 2 h of CT diagnosis; calculate P-POSSUM and NELA risk score</li>
-          <li>Pre-op: blood cultures + antibiotics within 1 h, IV crystalloid 30 mL/kg if hypoperfused, lactate trend, prepare blood products, mark patient</li>
-          <li>Consultant anaesthetist and surgeon present for risk ≥5%; theatre target within 6 h</li>
+          <li>Prompt surgeon-anaesthetist-radiologist discussion; document emergency-laparotomy risk and agree the urgency</li>
+          <li>Pre-op: blood cultures + antibiotics within 1 h, individual crystalloid resuscitation with reassessment if hypoperfused, lactate trend, prepare blood products, mark patient</li>
+          <li>Consultant anaesthetist and surgeon present for risk ≥5%; theatre timing appropriate to physiological deterioration and source-control urgency</li>
           <li>Intra-op: invasive monitoring, cardiac output monitoring for fluid responsiveness, lung-protective ventilation, normothermia, vasopressor as needed</li>
           <li>Postoperative: critical care admission for predicted mortality ≥5% or organ support; structured handover; daily multidisciplinary review</li>
         </ol>
@@ -91,8 +92,8 @@ const EmergencySurgeryTopic = () => {
         keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
-        objectives: ["NCEPOD 2011", "NELA Year 9 2023", "RCoA GPAS Ch.5"],
-        keyPoints: ["NELA Year 9 2023", "BJA Educ 2017", "DAS 2015", "P-POSSUM", "DAS 2015 RSI", "BJA Educ EmLap 2017", "RCoA Emergency Laparotomy", "NCEPOD Knowing the Risk", "NELA Year 9 Report"],
+        objectives: ["NCEPOD classification", "NELA Year 9 Report", "RCoA Emergency Laparotomy"],
+        keyPoints: ["DAS 2015 RSI", "KETASED 2009", "BJA Educ EmLap 2017", "RCoA Emergency Laparotomy", "NCEPOD Knowing the Risk", "NELA Year 9 Report"],
       }}
       coreConcepts={
         <>
@@ -110,11 +111,12 @@ const EmergencySurgeryTopic = () => {
 
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">NCEPOD Classification</h2>
+            <EmergencyPrioritisationTeaching />
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { label: "Immediate (1)", value: "Life-saving, resuscitation simultaneous with surgery — e.g. ruptured AAA, ruptured ectopic" },
                 { label: "Urgent (2)", value: "Within hours of decision — e.g. perforated viscus, compound fracture, intestinal obstruction" },
-                { label: "Expedited (3)", value: "Early surgery but not immediately life-threatening — e.g. acute appendicitis, open fracture debridement" },
+                { label: "Expedited (3)", value: "Normally within days; early treatment needed without immediate threat to life, limb or organ survival" },
                 { label: "Elective (4)", value: "Planned procedure at a time to suit both patient and hospital" },
               ].map((item) => (
                 <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
@@ -131,11 +133,11 @@ const EmergencySurgeryTopic = () => {
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Preoperative Considerations</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-              <li><strong>Aspiration risk</strong>: all emergency patients are assumed to have a full stomach — RSI or awake intubation</li>
+              <li><strong>Aspiration risk</strong>: assess vomiting, obstruction, gastric emptying, fasting and airway difficulty; plan RSI or awake intubation when indicated</li>
               <li><strong>Resuscitation</strong>: correct hypovolaemia, electrolyte abnormalities, and acidosis before or during induction</li>
               <li><strong>Coagulation</strong>: check coagulation status; reverse anticoagulation if actively bleeding</li>
               <li><strong>Consent</strong>: may be limited; document capacity assessment; treat without consent if life-threatening and patient lacks capacity</li>
-              <li><strong>Fasting status</strong>: often irrelevant as RSI is indicated regardless; do not delay life-saving surgery for fasting</li>
+              <li><strong>Fasting status</strong>: record and interpret alongside the clinical condition; do not delay life-saving surgery solely to complete fasting</li>
               <li><strong>Team briefing</strong>: WHO checklist adapted for emergency; clear communication of plan A/B/C</li>
             </ul>
 
@@ -174,6 +176,7 @@ const EmergencySurgeryTopic = () => {
 
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">RSI &amp; Cricoid Pressure — The Evidence</h2>
+            <EmergencyAirwayEvidenceTeaching />
             <p className="text-muted-foreground leading-relaxed mb-3">
               Classical RSI (pre-oxygenation, predetermined dose of induction agent + suxamethonium 1.5 mg/kg, no bag-mask ventilation, cricoid pressure 10 N awake → 30 N asleep) was described by Sellick in 1961 from cadaveric and small case-series data. More than six decades later almost every component has been challenged by higher-quality evidence, and contemporary "modified" RSI is now standard UK/European practice.
             </p>
@@ -197,9 +200,9 @@ const EmergencySurgeryTopic = () => {
                 <tbody className="text-muted-foreground">
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Pre-oxygenation</td><td>3 min tidal-volume or 8 vital-capacity breaths achieves ETO₂ &gt;90%; head-up 20–25° + HFNO/THRIVE prolongs apnoea time, especially in obese/obstetric patients (Patel &amp; Nouraei, <em>Anaesthesia</em> 2015). In RSI its key proven benefit is <strong>fewer desaturations</strong>: in a randomised trial, 0% of THRIVE patients vs 12.5% with facemask fell below 93%, with no difference in intubation or apnoea time <InlineRef topicId="emergency-surgery" refLabel="Lodenius 2018 (THRIVE RSI)" />.</td><td>Mandatory; aim ETO₂ ≥85–90%; routine apnoeic oxygenation in high-risk patients.</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Suxamethonium 1.5 mg/kg</td><td>Faster onset and superior intubating conditions vs rocuronium 0.6 mg/kg, but rocuronium 1.0–1.2 mg/kg is non-inferior (Cochrane 2015 — Tran et al.) and reversible by sugammadex 16 mg/kg.</td><td>Either acceptable; rocuronium-sugammadex preferred when sux contraindicated (hyperkalaemia, burns &gt;24 h, denervation, MH risk).</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">"No ventilation" rule</td><td>Gentle facemask ventilation at peak pressure &lt;15–20 cmH₂O does not distend the stomach and reduces desaturation, particularly in critically ill ICU patients (<strong>PreVent</strong>, Casey <em>NEJM</em> 2019).</td><td>Permitted in obese, ICU, paediatric and obstetric RSI (controlled gentle ventilation).</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">"No ventilation" rule</td><td>Bag-mask ventilation reduced severe hypoxaemia in critically ill adults; low aspiration event counts do not prove safety in every full-stomach patient, particularly in critically ill ICU patients (<strong>PreVent</strong>, Casey <em>NEJM</em> 2019).</td><td>Permitted in obese, ICU, paediatric and obstetric RSI (controlled gentle ventilation).</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Opioid co-induction</td><td>Sole-agent induction worsens haemodynamics; alfentanil/fentanyl/remifentanil obtund the pressor response and improve intubating conditions without measurable aspiration risk.</td><td>Routine inclusion of a short-acting opioid (alfentanil 10–20 µg/kg or fentanyl 1–3 µg/kg).</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Choice of induction agent</td><td>Etomidate causes adrenal suppression and increases mortality in septic shock (KETASED, Jabre <em>Lancet</em> 2009; <strong>EvK</strong>, Matchett <em>Intensive Care Med</em> 2022 — higher 7-day mortality vs ketamine in critically ill).</td><td>Ketamine 1–2 mg/kg first-line in shock; reduced-dose propofol/thiopentone if cardiovascularly stable.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Choice of induction agent</td><td>Etomidate suppresses adrenal steroid synthesis, but KETASED did not establish a mortality advantage for ketamine. Select the agent and dose for the patient rather than inferring guaranteed stability from drug choice. <InlineRef topicId="emergency-surgery" refLabel="KETASED 2009" /></td><td>Individual reduced-dose induction with haemodynamic support prepared; ketamine is one option, not universally first-line.</td></tr>
                   <tr><td className="py-2 font-medium text-foreground">Videolaryngoscopy</td><td><strong>DEVICE</strong> trial (Prekker <em>NEJM</em> 2023, n=1417 critically ill): VL improved first-pass success 85% vs 71% DL with no increase in adverse events.</td><td>VL recommended as first-choice device for emergency intubation (DAS 2018; UK ICS).</td></tr>
                 </tbody>
               </table>
@@ -210,7 +213,7 @@ const EmergencySurgeryTopic = () => {
               Cricoid pressure (Sellick's manoeuvre) compresses the post-cricoid hypopharynx against the C6 vertebral body, theoretically occluding the upper oesophagus and preventing regurgitation of gastric contents. Despite &gt;60 years of practice, no RCT has ever shown a reduction in clinically apparent aspiration.
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
-              <li><strong>IRIS trial</strong> (Birenbaum, <em>JAMA Surgery</em> 2019, n≈3,500) — multicentre RCT of cricoid vs sham during RSI. Aspiration 0.6% vs 0.5% (non-inferiority not formally met but no significant difference); cricoid prolonged intubation time and worsened laryngoscopic view in ~10%. The largest RCT to date — <strong>does not support routine use</strong>.</li>
+              <li><strong>IRIS trial</strong> (Birenbaum, <em>JAMA Surgery</em> 2019, n≈3,500) — multicentre RCT of cricoid vs sham during RSI. Aspiration 0.6% vs 0.5% (non-inferiority not formally met but no significant difference); cricoid prolonged intubation time and worsened laryngoscopic view in ~10%. An inconclusive non-inferiority result; <strong>not proof that sham and cricoid are equivalent</strong>.</li>
               <li>MRI/imaging studies (Smith 2003; Zeidan 2014) show the oesophagus lies lateral to the cricoid in &gt;50% of adults, so compression often distorts rather than occludes it.</li>
               <li>Cricoid pressure can worsen the laryngoscopic view, displace the larynx, impede face-mask ventilation, and obstruct insertion of supraglottic airways — a particular concern in CICO.</li>
               <li>Force is poorly calibrated in practice — most assistants apply &lt;20 N or &gt;40 N unless specifically trained on a weighing scale.</li>
@@ -226,7 +229,7 @@ const EmergencySurgeryTopic = () => {
 
             <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Practical synthesis for the FRCA/FFICM viva</h3>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-              <li>Perform a <strong>modified RSI</strong>: ramped/head-up position, pre-oxygenation to ETO₂ &gt;85% ± apnoeic O₂, opioid co-induction, ketamine if shocked, rocuronium 1.2 mg/kg or sux 1.5 mg/kg, videolaryngoscope first-line.</li>
+              <li>Perform a <strong>modified RSI</strong>: ramped/head-up position, pre-oxygenation to ETO₂ &gt;85% ± apnoeic O₂, individual co-induction and reduced doses if shocked, rocuronium 1.2 mg/kg or sux 1.5 mg/kg, videolaryngoscope first-line.</li>
               <li>Apply cricoid 10 N awake → 30 N asleep, but be <strong>prepared to release</strong> immediately if view is poor, mask ventilation difficult, or an SGA is required as rescue.</li>
               <li>Use gentle (peak &lt;15 cmH₂O) facemask ventilation between induction and intubation in patients at high risk of desaturation (obese, septic, ICU, paediatric).</li>
               <li>Document the rationale for any deviation from classical RSI — defensible because it reflects current best evidence (NAP4, DAS, IRIS, DEVICE, EvK).</li>
@@ -265,7 +268,7 @@ const EmergencySurgeryTopic = () => {
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Emergency Laparotomy</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Emergency laparotomy carries about 9–10% 30-day mortality in recent NELA reports, and much higher in older, frail and high predicted-risk patients <InlineRef topicId="emergency-surgery" refLabel="NELA Year 9 Report" />. The National Emergency Laparotomy Audit (NELA) has driven quality improvement through standardised care bundles.
+              Emergency laparotomy carries substantial 30-day mortality, particularly in older, frail and high predicted-risk patients <InlineRef topicId="emergency-surgery" refLabel="NELA Year 9 Report" />. The National Emergency Laparotomy Audit (NELA) has driven quality improvement through standardised care bundles.
             </p>
             <div className="bg-secondary/20 border border-border rounded-lg p-4 space-y-2">
               <p className="font-semibold text-foreground text-sm">NELA Care Bundle Standards</p>
@@ -352,15 +355,16 @@ const EmergencySurgeryTopic = () => {
 
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Emergency Appendicectomy</h2>
+            <EmergencyAppendicitisTeaching />
             <p className="text-muted-foreground leading-relaxed mb-3">
               Appendicitis is the most common surgical emergency. Typically affects young, otherwise healthy patients, but elderly patients may present late with perforation and sepsis.
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-              <li><strong>Timing</strong>: NCEPOD expedited (within 6–18 hours); urgent if peritonitis</li>
+              <li><strong>Timing</strong>: WSES 2020: do not delay surgery beyond 24 h after admission in uncomplicated appendicitis needing surgery; deterioration/peritonitis increases urgency</li>
               <li><strong>Approach</strong>: usually laparoscopic — consider specific pneumoperitoneum effects (↑ IAP, ↓ venous return, ↑ PaCO₂)</li>
               <li><strong>Induction</strong>: RSI (full stomach); standard IV induction if stable</li>
               <li><strong>Analgesia</strong>: simple multimodal — paracetamol, NSAID (if no contraindication), local infiltration, ± opioid</li>
-              <li><strong>Antibiotics</strong>: IV co-amoxiclav or cefuroxime + metronidazole at induction</li>
+              <li><strong>Antibiotics</strong>: single preoperative broad-spectrum dose under local policy; no routine postoperative antibiotics for uncomplicated appendicitis</li>
               <li><strong>PONV</strong>: high risk — ondansetron + dexamethasone; consider cyclizine</li>
               <li><strong>Day-case potential</strong>: uncomplicated laparoscopic appendicectomy in selected patients</li>
             </ul>
@@ -401,11 +405,12 @@ const EmergencySurgeryTopic = () => {
 
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intestinal Obstruction</h2>
+            <EmergencyObstructionTeaching />
             <p className="text-muted-foreground leading-relaxed mb-3">
               Patients with bowel obstruction present unique anaesthetic challenges including massive fluid shifts, electrolyte derangement, high aspiration risk, and abdominal compartment syndrome.
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-              <li><strong>Fluid resuscitation</strong>: may need 3–6L crystalloid preoperatively; guided by urine output and lactate</li>
+              <li><strong>Fluid resuscitation</strong>: individual fluid/electrolyte replacement guided by perfusion, renal function, losses and response, not a fixed litre target</li>
               <li><strong>NG decompression</strong>: reduces gastric volume but does NOT eliminate aspiration risk — still RSI</li>
               <li><strong>Electrolytes</strong>: correct hypokalaemia (from vomiting) and hyponatraemia before induction if possible</li>
               <li><strong>Third-space losses</strong>: ongoing intraoperative losses may be substantial</li>
@@ -464,14 +469,15 @@ const EmergencySurgeryTopic = () => {
 
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fractured Neck of Femur</h2>
+            <EmergencyHipFractureTeaching />
             <p className="text-muted-foreground leading-relaxed mb-3">
               A high-volume, high-mortality emergency of frail patients: 30-day mortality is around 6–7% and one-year mortality approaches 25–30%. Outcome is driven by
-              prompt surgery, analgesia and medical optimisation rather than by anaesthetic technique <InlineRef topicId="emergency-surgery" refLabel="NICE NG111" />.
+              prompt surgery, analgesia and medical optimisation rather than by anaesthetic technique <InlineRef topicId="emergency-surgery" refLabel="NICE CG124" />.
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Timing:</strong> operate on the day of, or the day after, admission. Only correct reversible conditions that would independently require treatment — anaemia, hypovolaemia, uncontrolled diabetes, arrhythmia with haemodynamic compromise, sepsis, electrolyte derangement. Do not delay for an echocardiogram unless it will change management.</li>
               <li><strong>Analgesia:</strong> paracetamol regularly plus a fascia iliaca or femoral nerve block; minimise opioids and avoid NSAIDs in this population. Blocks reduce delirium and opioid requirement.</li>
-              <li><strong>Anaesthetic technique:</strong> spinal or general anaesthesia produce equivalent mortality and delirium rates. If spinal is chosen, use a low intrathecal dose without intrathecal opioid and avoid sedation. Whichever technique is used, maintain blood pressure within 20% of baseline.</li>
+              <li><strong>Anaesthetic technique:</strong> offer spinal or general anaesthesia after discussing risks and benefits; individualise anaesthetic dosing, sedation and haemodynamic management.</li>
               <li><strong>Specific hazards:</strong> bone cement implantation syndrome during cemented arthroplasty (hypoxia, hypotension, arrhythmia, arrest — warn the surgeon, increase FiO₂, ensure normovolaemia at cementing), hypothermia, and occult blood loss of a litre or more into the thigh.</li>
               <li><strong>Perioperative care:</strong> orthogeriatric review, delirium prevention bundle, early mobilisation, nutrition, bone protection and falls assessment. Document a treatment escalation plan preoperatively given the frailty of this cohort.</li>
             </ul>
@@ -498,7 +504,7 @@ const EmergencySurgeryTopic = () => {
               "NELA: emergency laparotomy bundle — consultant surgeon + anaesthetist, risk assessment, antibiotics <1 h, lactate, postoperative HDU.",
               "RSI for full stomach: pre-oxygenate, cricoid pressure (release if difficulty), short-acting induction + rapid-onset NMB.",
               "P-POSSUM/NELA risk score communicates risk to patient, family and team — informs level of postoperative care.",
-              "Sepsis bundle (Sepsis Six) within 1 h: O₂, cultures, antibiotics, IV fluids, lactate, urine output.",
+              "Septic shock: immediate resuscitation and prompt antibiotics, with source control as soon as medically and logistically practical.",
             ]}
           />
         </section>
