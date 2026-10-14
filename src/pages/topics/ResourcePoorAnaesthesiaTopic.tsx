@@ -7,6 +7,7 @@ import { resourcePoorAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import InlineRef from "@/components/references/InlineRef";
+import { GlobalSurgeryEvidenceTeaching } from "@/components/topic/GlobalSurgeryEvidenceTeaching";
 
 const resourcePoorAnaesthesiaFaqs: Array<[string, string]> = [
   [
@@ -237,6 +238,11 @@ const ResourcePoorAnaesthesiaTopic = () => {
               <li><strong>Common problems</strong>: nausea and vomiting (cheap options include dexamethasone, metoclopramide or promethazine, plus a lateral position if drowsy); shivering (warm blankets, warm fluids; pethidine if stocked); hypotension (look for bleeding first, then give fluid and leg elevation, with ephedrine if needed).</li>
               <li><strong>Discharge to the ward</strong>: awake and protecting the airway, oxygen saturation maintained on air or on the ward's available oxygen, stable pulse and blood pressure, pain and nausea controlled, no active bleeding, and a written plan for observations and analgesia.</li>
             </ul>
+            </CollapsibleSubsection>
+          </ExamSection>
+          <ExamSection id="global-evidence" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Evidence: Workforce, ASOS and the Safety Checklist">
+              <GlobalSurgeryEvidenceTeaching />
             </CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
