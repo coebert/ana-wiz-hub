@@ -356,7 +356,7 @@ const ElderlyAnaesthesiaTopic = () => {
               <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Surgery within 36 hours of admission (ideally within 24 hours)</li>
                 <li><strong className="text-foreground">Fascia iliaca block</strong> on admission — reduces opioid requirements and delirium incidence</li>
-                <li><strong className="text-foreground">Technique choice:</strong> NICE recommends <em>considering</em> spinal anaesthesia, but the RAGA and REGAIN randomised trials showed no difference in 30-day mortality or delirium versus general anaesthesia — choose the technique on patient factors (see the RAGA/REGAIN lesson below)<InlineRef topicId="elderly-anaesthesia" refLabel="RAGA 2021" /></li>
+                <li><strong className="text-foreground">Technique choice:</strong> NICE recommends <em>considering</em> spinal anaesthesia, but the RAGA and REGAIN randomised trials showed no difference in death, mobility or delirium versus general anaesthesia — choose the technique on patient factors (see the RAGA/REGAIN lesson below)<InlineRef topicId="elderly-anaesthesia" refLabel="REGAIN 2021" /></li>
                 <li>Avoid hypotension: MAP &gt;65 mmHg or within 20% of baseline; careful fluid management</li>
                 <li>Cement implantation syndrome — see below</li>
                 <li>Early mobilisation, orthogeriatric review, delirium prevention protocols</li>

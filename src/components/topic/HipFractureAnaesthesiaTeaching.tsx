@@ -10,20 +10,20 @@ export function HipFractureAnaesthesiaTeaching() {
       argued for decades. Two large randomised trials have now tested the assumption that neuraxial anaesthesia improves outcomes.
     </p>
     <div className="bg-card border border-border rounded-lg p-4">
-      <h3 className="font-semibold text-foreground mb-2">RAGA (NEJM 2021) — 30-day mortality</h3>
+      <h3 className="font-semibold text-foreground mb-2">REGAIN (NEJM 2021) — death or inability to walk at 60 days</h3>
       <p className="text-sm mb-2">
-        1,600 patients aged ≥50 across 46 centres were randomised to spinal or general anaesthesia for hip fracture surgery. Death
-        within 30 days occurred in <strong className="text-foreground">6.2% with spinal versus 7.5% with general anaesthesia</strong>
-        (95% CI for the difference −2.9 to 1.4 percentage points; P = 0.48) — no significant difference. There was also no difference
-        in the ability to walk without assistance at 60 days.<R label="RAGA 2021" />
+        1,600 patients aged ≥50 were randomised to spinal or general anaesthesia for hip fracture surgery. The composite primary
+        outcome occurred in <strong className="text-foreground">18.5% with spinal versus 18.0% with general anaesthesia</strong>
+        (RR 1.03, 95% CI 0.84–1.27; P = 0.83). Death within 60 days was 3.9% vs 4.1%, and delirium 20.5% vs 19.7% (RR 1.04,
+        95% CI 0.84–1.30) — no differences. Note that 16% of the spinal group did not receive their assigned technique.<R label="REGAIN 2021" />
       </p>
     </div>
     <div className="bg-card border border-border rounded-lg p-4">
-      <h3 className="font-semibold text-foreground mb-2">REGAIN (JAMA 2022) — postoperative delirium</h3>
+      <h3 className="font-semibold text-foreground mb-2">RAGA (JAMA 2022) — postoperative delirium</h3>
       <p className="text-sm mb-2">
-        1,640 patients aged ≥65 were randomised in the same design. The primary outcome — delirium during the first three
-        postoperative days — occurred in <strong className="text-foreground">20.5% with spinal versus 19.7% with general
-        anaesthesia</strong> (RR 1.04, 95% CI 0.84–1.30; P = 0.70) — again no significant difference.<R label="REGAIN 2022" />
+        950 patients aged ≥65 in China were randomised to regional or general anaesthesia (without benzodiazepines). Delirium within
+        7 days occurred in <strong className="text-foreground">6.2% with regional versus 5.1% with general anaesthesia</strong>
+        (risk difference 1.1%, 95% CI −1.7% to 3.8%; P = 0.48) — no significant difference.<R label="RAGA 2022" />
       </p>
     </div>
     <ul className="list-disc pl-5 space-y-1">
@@ -31,7 +31,7 @@ export function HipFractureAnaesthesiaTeaching() {
       <li><strong className="text-foreground">What it does not test:</strong> the trials do not license poor technique in either arm. Hypotension is common in both groups and remains independently associated with harm, so whichever technique is used, the priorities are the same: fascia-iliaca block early, avoidance of hypotension, and orthogeriatric co-management.</li>
       <li><strong className="text-foreground">Practice point:</strong> a reasonable default is spinal where there is no contraindication (it is quick, reliable and reduces early opioid requirement), with general anaesthesia reserved for anticoagulation, severe aortic stenosis, sepsis or patient refusal — an individualised decision, not a rigid protocol.</li>
     </ul>
-    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: did spinal anaesthesia reduce 30-day mortality or delirium in the randomised trials?</summary><p className="mt-2">No. RAGA found 30-day mortality of 6.2% (spinal) vs 7.5% (general) — not significant; REGAIN found delirium in 20.5% vs 19.7% — not significant.</p></details>
-    <LessonSources topicId="elderly-anaesthesia" labels={["RAGA 2021", "REGAIN 2022"]} />
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: did spinal or regional anaesthesia improve outcome in REGAIN or RAGA?</summary><p className="mt-2">No. REGAIN: death or inability to walk at 60 days 18.5% (spinal) vs 18.0% (general), delirium 20.5% vs 19.7%. RAGA: delirium 6.2% (regional) vs 5.1% (general). None significant.</p></details>
+    <LessonSources topicId="elderly-anaesthesia" labels={["REGAIN 2021", "RAGA 2022"]} />
   </div>;
 }
