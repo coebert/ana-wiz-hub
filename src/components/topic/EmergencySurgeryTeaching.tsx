@@ -73,3 +73,51 @@ export function EmergencyXaReversalTeaching() {
     <LessonSources topicId="emergency-surgery" labels={["ANNEXA-I 2024"]} />
   </div>;
 }
+
+export function EmergencyDabigatranReversalTeaching() {
+  const R = () => <InlineRef topicId="emergency-surgery" refLabel="REVERSE-AD 2017" />;
+  return <div className="space-y-3 text-muted-foreground leading-relaxed p-4 rounded-lg border border-border">
+    <h3 className="text-lg font-serif font-bold text-foreground">Reversing Dabigatran Before Urgent Surgery: REVERSE-AD</h3>
+    <p>REVERSE-AD gave idarucizumab 5 g to 503 patients on dabigatran: 301 with serious bleeding (group A) and 202 needing an urgent procedure (group B). It was a single-arm study with no control group.<R /></p>
+    <ul className="list-disc pl-5 space-y-1">
+      <li><strong className="text-foreground">Reversal:</strong> the median maximum reversal was 100%, measured by diluted thrombin time or ecarin clotting time.<R /></li>
+      <li><strong className="text-foreground">Urgent surgery:</strong> the median time to starting the procedure was 1.6 h, and haemostasis during the procedure was judged normal in 93.4%.<R /></li>
+      <li><strong className="text-foreground">Outcomes at 90 days:</strong> thrombotic events 6.3% (A) and 7.4% (B); mortality 18.8% and 18.9%.<R /></li>
+      <li><strong className="text-foreground">Interpretation:</strong> the drug reliably reverses the laboratory effect. Without a comparison group, the study cannot show that it improves survival. The high death rate reflects how sick these patients were.</li>
+    </ul>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: why can't REVERSE-AD prove idarucizumab saves lives?</summary><p className="mt-2">Every patient received the drug, so there was no comparison group. It shows reversal and procedural haemostasis, not a mortality benefit.</p></details>
+    <LessonSources topicId="emergency-surgery" labels={["REVERSE-AD 2017"]} />
+  </div>;
+}
+
+export function EmergencyReboaTeaching() {
+  const R = () => <InlineRef topicId="emergency-surgery" refLabel="UK-REBOA 2023" />;
+  return <div className="space-y-3 text-muted-foreground leading-relaxed p-4 rounded-lg border border-border">
+    <h3 className="text-lg font-serif font-bold text-foreground">Balloon Occlusion of the Aorta in Damage Control: UK-REBOA</h3>
+    <p>REBOA inflates a balloon in the aorta to reduce bleeding below it while the patient is taken to surgery. UK-REBOA randomised 90 trauma patients with exsanguinating haemorrhage in emergency departments to REBOA plus standard care or standard care alone.<R /></p>
+    <ul className="list-disc pl-5 space-y-1">
+      <li><strong className="text-foreground">Primary result:</strong> 90-day mortality was 54% with REBOA vs 42% with standard care (OR 1.58, 95% credible interval 0.72–3.52). The probability that REBOA increased the odds of death was 86.9%.<R /></li>
+      <li><strong className="text-foreground">Timing of deaths:</strong> the excess was larger at earlier time points, and more deaths were due to bleeding (32% vs 17% of deaths), mostly within 24 h.<R /></li>
+      <li><strong className="text-foreground">Practice point:</strong> in this setting REBOA did not help and probably harmed. Damage control still means rapid surgical or radiological bleeding control alongside blood-product resuscitation.</li>
+      <li><strong className="text-foreground">Limits:</strong> the trial was small and its Bayesian results are probabilities, not definitive proof. It does not test REBOA before hospital or in other systems.</li>
+    </ul>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: what was the posterior probability that REBOA increased the odds of death?</summary><p className="mt-2">86.9%. Mortality was 54% vs 42% at 90 days.</p></details>
+    <LessonSources topicId="emergency-surgery" labels={["UK-REBOA 2023"]} />
+  </div>;
+}
+
+export function EmergencyEctopicTeaching() {
+  const N = () => <InlineRef topicId="emergency-surgery" refLabel="NICE NG126 2026" />;
+  return <div className="space-y-3 text-muted-foreground leading-relaxed p-4 rounded-lg border border-border">
+    <h3 className="text-lg font-serif font-bold text-foreground">Ectopic Pregnancy Surgery: What NICE NG126 Recommends</h3>
+    <ul className="list-disc pl-5 space-y-1">
+      <li><strong className="text-foreground">Approach:</strong> operate laparoscopically whenever possible, taking into account the patient's condition and the complexity of surgery. A shocked patient may still need a laparotomy.<N /></li>
+      <li><strong className="text-foreground">Procedure:</strong> offer salpingectomy unless there are other risk factors for infertility. Consider salpingotomy if, for example, the other tube is damaged; up to 1 in 5 then need further treatment.<N /></li>
+      <li><strong className="text-foreground">Anti-D (updated June 2026):</strong> do not offer anti-D for ectopic pregnancy up to and including 11+6 weeks. Offer at least 250 IU to RhD-negative patients at 12+0 to 12+6 weeks having medical or surgical management. Use the ultrasound gestation if dates differ.<N /></li>
+      <li><strong className="text-foreground">After salpingectomy:</strong> advise a urine pregnancy test after 3 weeks.<N /></li>
+      <li><strong className="text-foreground">Anaesthetic point:</strong> NICE sets surgical, not anaesthetic, policy. For the unstable patient, the priorities remain early senior help, major-haemorrhage activation and preparing for collapse at induction.</li>
+    </ul>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: an RhD-negative patient has surgery for an ectopic at 8 weeks. Is anti-D offered?</summary><p className="mt-2">No. Under the 2026 update, anti-D is not offered up to and including 11+6 weeks.</p></details>
+    <LessonSources topicId="emergency-surgery" labels={["NICE NG126 2026"]} />
+  </div>;
+}

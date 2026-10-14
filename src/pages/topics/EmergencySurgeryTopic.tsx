@@ -10,7 +10,7 @@ import { EmergencySurgeryGlossaryDrawer } from "@/components/clinical/EmergencyS
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
-import { EmergencyPrioritisationTeaching, EmergencyAirwayEvidenceTeaching, EmergencyAppendicitisTeaching, EmergencyObstructionTeaching, EmergencyHipFractureTeaching, EmergencyXaReversalTeaching } from "@/components/topic/EmergencySurgeryTeaching";
+import { EmergencyPrioritisationTeaching, EmergencyAirwayEvidenceTeaching, EmergencyAppendicitisTeaching, EmergencyObstructionTeaching, EmergencyHipFractureTeaching, EmergencyXaReversalTeaching, EmergencyDabigatranReversalTeaching, EmergencyEctopicTeaching, EmergencyReboaTeaching } from "@/components/topic/EmergencySurgeryTeaching";
 
 const emergencySurgeryFaqs: Array<[string, string]> = [
   [
@@ -172,6 +172,7 @@ const EmergencySurgeryTopic = () => {
               <li><strong>Neuraxial techniques</strong>: respect standard time-based cessation/reintroduction intervals for each agent before and after block/catheter removal — do not proceed with neuraxial anaesthesia solely on the basis of a normalised INR/anti-Xa if timing criteria are not met.</li>
             </ul>
             <div className="mt-4"><EmergencyXaReversalTeaching /></div>
+            <div className="mt-4"><EmergencyDabigatranReversalTeaching /></div>
           </div>
           </div>
 
@@ -380,7 +381,7 @@ const EmergencySurgeryTopic = () => {
               {[
                 { label: "Classification", value: "NCEPOD immediate — life-saving surgery" },
                 { label: "Key concern", value: "Massive haemorrhage; may need ≥4 units PRBC rapidly" },
-                { label: "Induction", value: "RSI — ketamine 1-2 mg/kg preferred (haemodynamic stability)" },
+                { label: "Induction", value: "RSI with a reduced, cardiovascularly stable induction dose; agent choice matters less than dose and preparation for collapse" },
                 { label: "Access", value: "Two large-bore (14-16G) IVCs; consider intraosseous if peripheral access difficult" },
                 { label: "Blood products", value: "Group O Rh-negative immediately; crossmatch ASAP; activate MTP if needed" },
                 { label: "Monitoring", value: "Arterial line ASAP (may be placed post-induction); urinary catheter" },
@@ -398,10 +399,11 @@ const EmergencySurgeryTopic = () => {
                 <li>Prepare for cardiovascular collapse at induction (loss of sympathetic drive)</li>
                 <li>Surgeon scrubbed and ready before induction — knife-to-skin within seconds</li>
                 <li>Cell salvage may be available but should not delay surgery</li>
-                <li>Anti-D immunoglobulin if Rh-negative</li>
+                <li>Anti-D: follow NICE NG126 (2026) by gestation — not offered up to 11+6 weeks; offered to RhD-negative patients at 12+0 to 12+6 weeks having surgery (see lesson below)</li>
                 <li>Emotional support — this is a pregnancy loss; debrief team and patient</li>
               </ul>
             </div>
+            <div className="mt-4"><EmergencyEctopicTeaching /></div>
           </div>
 
           <div>
@@ -445,6 +447,7 @@ const EmergencySurgeryTopic = () => {
               It originated in military trauma but is now applied to any exsanguinating emergency laparotomy, ruptured aneurysm or obstetric catastrophe
               <InlineRef topicId="emergency-surgery" refLabel="Holcomb DCR 2007" />.
             </p>
+            <div className="my-4"><EmergencyReboaTeaching /></div>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
                 { label: "Permissive hypotension", value: "Accept a systolic pressure of about 80–90 mmHg (or a palpable radial pulse) until surgical control is achieved — this limits clot disruption and dilution. Does not apply to traumatic brain injury, where cerebral perfusion pressure takes priority." },
