@@ -41,3 +41,5 @@
   - [ ] Wider citation checks: resolve existing general/colorectal and surgical-protocol topic-ID extraction issues and two uncited regional-anaesthesia summaries; new physics references resolve
   - [ ] Further candidates: antivirals, innate immunity, hypothermia electrophysiology, ankle nerves, pelvic autonomics, metallic bonding, redox chemistry and chest-wall block planes (read-only reviewer suggestions, not yet verified)
   - [x] Owner-approved gateway replacements: Gemini 3.1 Flash Lite moderation/reviews, Gemini 3.1 Pro Preview audits/podcast scripts, Gemini 3.8 Flash drug checks; representative live responses passed (speech unchanged)
+
+- [ ] Clinical/ICU priority (owner request): batch 1 done (abdominal compartment syndrome, non-technical skills); next day surgery, resource-poor, surgical protocols, then subsection review of capped topics
