@@ -18,6 +18,7 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
 import { AntibioticExposureTeaching } from "@/components/topic/AntibioticExposureTeaching";
 import { CandidaemiaTeaching } from "@/components/topic/CandidaemiaTeaching";
+import { AntimalarialAntisepticTeaching } from "@/components/topic/AntimalarialAntisepticTeaching";
 import { AntiviralEvidenceTeaching } from "@/components/topic/AntiviralEvidenceTeaching";
 
 const antimicrobialsPharmFaqs: Array<[string, string]> = [
@@ -361,6 +362,10 @@ const AntimicrobialsTopic = () => {
             <p className="text-sm text-muted-foreground mt-3">
               <strong>Lactation:</strong> most antibacterials appear in breast milk in small amounts and are compatible with feeding. Penicillins, cephalosporins and macrolides are well tolerated; tetracyclines, fluoroquinolones and chloramphenicol are usually avoided, and high-dose metronidazole may impart a bitter taste and cause infant loose stools. Check the BNF or a specialist source for individual agents<InlineRef topicId="antimicrobials-pharm" refLabel="BNF" />.
             </p>
+          </div>
+
+          <div>
+            <AntimalarialAntisepticTeaching />
           </div>
 
           <div>
