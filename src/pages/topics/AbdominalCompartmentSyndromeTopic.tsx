@@ -10,9 +10,9 @@ import { InlineRef } from "@/components/references/InlineRef";
 import { WSACSEvidenceTeaching } from "@/components/topic/WSACSEvidenceTeaching";
 
 const abdominalCompartmentSyndromeFaqs: Array<[string, string]> = [
-  ["How is intra-abdominal pressure measured and what defines ACS?", "Bladder pressure with 25 mL saline at end-expiration, supine, transduced at the mid-axillary line; intra-abdominal hypertension ≥12 mmHg, ACS = sustained IAP >20 mmHg with new organ dysfunction (WSACS 2013)."],
+  ["How is intra-abdominal pressure measured and what defines ACS?", "Via the bladder with no more than 25 mL sterile saline, at end-expiration, supine, with abdominal muscle contractions absent and the transducer zeroed at the mid-axillary line. IAH is a sustained or repeated IAP ≥12 mmHg; ACS is a sustained IAP >20 mmHg with new organ dysfunction or failure (WSACS 2013)."],
   ["What are the physiological consequences of raised intra-abdominal pressure?", "Reduced venous return and CO, raised airway pressure with reduced FRC, oliguria from renal venous congestion, raised ICP from impaired cerebral venous drainage, and gut ischaemia from reduced splanchnic perfusion."],
-  ["What are the non-surgical options before decompressive laparotomy?", "Nasogastric and rectal decompression, neuromuscular blockade, prokinetics, percutaneous drainage of ascites, deep sedation, and conservative fluid strategy; surgery is reserved for refractory ACS with organ failure."],
+  ["What are the non-surgical options before decompressive laparotomy?", "WSACS 2013 suggests optimal analgesia and sedation, brief trials of neuromuscular blockade, attention to body position, nasogastric or rectal decompression when the bowel is dilated, neostigmine for refractory colonic ileus, percutaneous drainage of obvious intraperitoneal fluid, and avoiding a positive fluid balance after initial resuscitation. Decompressive laparotomy is recommended for overt ACS."],
 ];
 
 const objectives = [
@@ -44,7 +44,7 @@ const workedExamples: WorkedExample[] = [
     answer: (
       <>
         Deepen sedation, give a trial of NMB, NG decompression and rectal tube, stop maintenance fluid, give 20 % HAS
-        + furosemide or initiate RRT for negative balance, head-up &lt; 20°. Reassess IAP hourly. If IAP remains
+        + furosemide or RRT if a negative balance is needed (WSACS 2013 made no recommendation on these, so this is pragmatic practice), review head-of-bed angle. Reassess IAP hourly. If IAP remains
         ≥ 20 mmHg with organ failure, proceed to <strong>decompressive laparotomy</strong> and leave open abdomen with
         a negative-pressure temporary closure (e.g. ABThera).
       </>
@@ -61,8 +61,8 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        Secondary ACS from massive resuscitation without intra-abdominal injury. Risk is &gt; 10 % once volumes
-        exceed 250 mL/kg/24 h. Aggressive medical management first; escharotomy if circumferential torso eschar
+        Secondary ACS from massive resuscitation without intra-abdominal injury; major burns and massive fluid
+        resuscitation are both WSACS risk factors. Aggressive medical management first; escharotomy if circumferential torso eschar
         contributes to abdominal-wall non-compliance.
       </>
     ),
@@ -71,7 +71,6 @@ const workedExamples: WorkedExample[] = [
         Stop crystalloid, switch to 5 % albumin / 20 % HAS for ongoing losses, deepen sedation + NMB, decompress
         stomach and rectum, escharotomy of torso eschar. Trial percutaneous catheter drainage if free intraperitoneal
         fluid on US. Decompressive laparotomy if IAP &gt; 20 mmHg with organ failure persists despite the above.
-        Mortality of established ACS in this group exceeds 50 %.
       </>
     ),
     cites: ["WSACS 2013"],
@@ -87,16 +86,15 @@ const workedExamples: WorkedExample[] = [
     working: (
       <>
         IAP must be measured: supine, end-expiration, no abdominal muscle contraction (deepen sedation ± NMB),
-        transducer zeroed at the mid-axillary line at the iliac crest, 25 mL of saline instilled into an empty
-        bladder via the Foley, read after 30–60 s equilibration. Patient position, PEEP, coughing and a full
+        transducer zeroed at the mid-axillary line, no more than 25 mL of sterile saline instilled via the Foley. Patient position, PEEP, coughing and a full
         rectum all falsely elevate the value.
       </>
     ),
     answer: (
       <>
-        Repeat the measurement supine, end-expiration, fully sedated, transducer at iliac-crest mid-axillary line,
-        25 mL saline instilled. If sustained ≥ 12 mmHg → IAH; ≥ 20 mmHg + new organ failure → ACS. Trend rather
-        than single values, every 4–6 h in at-risk patients.
+        Repeat the measurement supine, at end-expiration, with abdominal muscles relaxed, transducer at the mid-axillary line,
+        ≤ 25 mL saline instilled. If sustained ≥ 12 mmHg → IAH; ≥ 20 mmHg + new organ failure → ACS. Trend rather
+        than single values, using a local protocol in at-risk patients (WSACS recommends protocolised monitoring).
       </>
     ),
     cites: ["WSACS 2013"],
@@ -105,15 +103,15 @@ const workedExamples: WorkedExample[] = [
 
 const keyPoints = [
   { text: "Normal IAP in the critically ill ≈ 5–7 mmHg. IAH = sustained IAP ≥ 12 mmHg. ACS = sustained IAP ≥ 20 mmHg WITH new organ dysfunction (WSACS 2013).", cites: ["WSACS 2013"] },
-  { text: "Grades: I 12–15, II 16–20, III 21–25, IV > 25 mmHg. Risk of organ failure rises steeply above grade III.", cites: ["WSACS 2013"] },
-  { text: "Measure via Foley: supine, end-expiration, 25 mL saline, transducer zeroed at mid-axillary line at iliac crest, no abdominal contraction.", cites: ["WSACS 2013"] },
+  { text: "Grades: I 12–15, II 16–20, III 21–25, IV > 25 mmHg. Grade alone does not define ACS — new organ dysfunction is required.", cites: ["WSACS 2013"] },
+  { text: "Measure via the bladder: supine, end-expiration, maximum 25 mL sterile saline, transducer zeroed at the mid-axillary line, no abdominal muscle contraction.", cites: ["WSACS 2013"] },
   { text: "Primary ACS = intra-abdominal/pelvic pathology (trauma, ruptured AAA, pancreatitis, peritonitis). Secondary ACS = extra-abdominal cause, typically massive resuscitation (burns, sepsis). Recurrent ACS = re-develops after decompression.", cites: ["WSACS 2013"] },
   { text: "Pathophysiology is global: ↓ venous return, ↓ CO, ↑ SVR; ↑ ITP → ↓ FRC, ↑ plateau pressures, V/Q mismatch; renal vein compression + ↓ RBF → AKI; ↑ ICP via ↑ CVP; gut ischaemia and bacterial translocation; hepatic congestion.", cites: ["WSACS 2013"] },
-  { text: "Abdominal perfusion pressure (APP = MAP − IAP) ≥ 60 mmHg correlates with survival better than IAP alone — the resuscitation target in IAH.", cites: ["WSACS 2013"] },
-  { text: "WSACS medical bundle (5 domains): (1) evacuate intraluminal contents (NG, rectal tube, prokinetics); (2) evacuate intra-abdominal collections (percutaneous drain); (3) improve abdominal-wall compliance (sedation, NMB, escharotomy, head-up < 20°); (4) optimise fluid balance (avoid positive balance, HAS + diuretic, RRT); (5) optimise systemic perfusion (APP-guided).", cites: ["WSACS 2013"] },
-  { text: "Surgical decompression: indicated for ACS unresponsive to medical management. Midline laparotomy left open with temporary abdominal closure (Bogotá bag, Wittmann patch, ABThera negative-pressure dressing). Aim for delayed primary fascial closure within 7–10 days.", cites: ["WSACS 2013"] },
-  { text: "Risk factors to screen 4–6-hourly: massive resuscitation (> 3.5 L/24 h crystalloid), damage-control laparotomy, severe pancreatitis, major burns > 30 % TBSA, ileus, prone position, high PEEP, capillary leak, intra-abdominal infection.", cites: ["WSACS 2013"] },
-  { text: "Prognosis: established ACS carries mortality 40–70 %; early recognition and decompression reduce mortality; survivors have prolonged ventilation, AKI requiring RRT in up to 50 %, and high rates of ventral hernia and enteric fistula.", cites: ["WSACS 2013"] },
+  { text: "Abdominal perfusion pressure (APP = MAP − IAP) appears in the ACS definition (with or without APP < 60 mmHg), but WSACS 2013 made NO recommendation on using APP to guide resuscitation.", cites: ["WSACS 2013"] },
+  { text: "WSACS medical bundle (5 domains): (1) evacuate intraluminal contents (NG, rectal tube, prokinetics); (2) evacuate intra-abdominal collections (percutaneous drain); (3) improve abdominal-wall compliance (analgesia/sedation, brief NMB trials, body position, escharotomy); (4) optimise fluid administration (avoid a positive balance after resuscitation — WSACS made no recommendation on diuretics, albumin or RRT); (5) optimise systemic and regional perfusion. Most are weak suggestions on low-quality evidence.", cites: ["WSACS 2013"] },
+  { text: "Surgical decompression: indicated for ACS unresponsive to medical management. Midline laparotomy left open with temporary abdominal closure; WSACS recommends negative-pressure wound therapy and protocolised efforts to achieve early, or at least same-hospital-stay, fascial closure.", cites: ["WSACS 2013"] },
+  { text: "WSACS recommends measuring IAP whenever any risk factor is present: e.g. abdominal surgery, major trauma or burns, prone position, ileus, pancreatitis, intra-abdominal fluid or infection, damage-control laparotomy, massive fluid resuscitation or positive balance, acidosis, hypothermia, mechanical ventilation, PEEP > 10, obesity, sepsis, shock.", cites: ["WSACS 2013"] },
+  { text: "Prognosis: IAH developing during the ICU stay independently predicted mortality (RR 1.85) in a multicentre mixed ICU cohort; admission IAP did not. WSACS rated the overall evidence base as generally low quality.", cites: ["Malbrain 2005 IAH epidemiology", "WSACS 2013"] },
 ];
 
 const AbdominalCompartmentSyndromeTopic = () => {
@@ -154,7 +152,8 @@ const AbdominalCompartmentSyndromeTopic = () => {
                 <li><strong>Intra-abdominal pressure (IAP)</strong> — steady-state pressure in the abdominal cavity. Normal in the critically ill ≈ 5–7 mmHg.</li>
                 <li><strong>Intra-abdominal hypertension (IAH)</strong> — sustained or repeated pathological elevation of IAP ≥ 12 mmHg.</li>
                 <li><strong>Abdominal compartment syndrome (ACS)</strong> — sustained IAP &gt; 20 mmHg (with or without APP &lt; 60 mmHg) <em>plus</em> new organ dysfunction or failure.</li>
-                <li><strong>Abdominal perfusion pressure (APP)</strong> = MAP − IAP; target ≥ 60 mmHg.</li>
+                <li><strong>Children:</strong> IAP is about 4–10 mmHg and IAH is defined as &gt; 10 mmHg; bladder instillation is 1 mL/kg (minimum 3 mL, maximum 25 mL).<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" /></li>
+                <li><strong>Abdominal perfusion pressure (APP)</strong> = MAP − IAP. WSACS 2013 could make no recommendation on using APP in resuscitation.<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" /></li>
               </ul>
               <div className="grid sm:grid-cols-4 gap-3">
                 {[
@@ -176,8 +175,8 @@ const AbdominalCompartmentSyndromeTopic = () => {
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Causes & Classification</h2>
               <div className="grid sm:grid-cols-3 gap-3">
                 {[
-                  { type: "Primary ACS", detail: "Intra-abdominal or pelvic pathology — abdominal trauma (haematoma, packing), ruptured AAA, severe pancreatitis, perforated viscus / peritonitis, mesenteric ischaemia, ileus, post-laparotomy haemorrhage, retroperitoneal bleed." },
-                  { type: "Secondary ACS", detail: "No intra-abdominal injury — typically massive resuscitation: major burns > 30 % TBSA, septic shock, prolonged CPR, polytrauma without abdominal injury, capillary-leak states (Parkland > 250 mL/kg/24 h is the recognised threshold)." },
+                  { type: "Primary ACS", detail: "Injury or disease in the abdominopelvic region that frequently needs early surgical or radiological intervention — abdominal trauma (haematoma, packing), ruptured AAA, severe pancreatitis, perforated viscus / peritonitis, mesenteric ischaemia, ileus, post-laparotomy haemorrhage, retroperitoneal bleed." },
+                  { type: "Secondary ACS", detail: "No intra-abdominal injury — typically massive resuscitation: major burns > 30 % TBSA, septic shock, prolonged CPR, polytrauma without abdominal injury, capillary-leak states. WSACS defines it simply as IAH/ACS from conditions that do not originate in the abdominopelvic region." },
                   { type: "Recurrent ACS", detail: "Recurrence after surgical or medical resolution of a previous episode — usually in patients with an open abdomen who fail to achieve early fascial closure or develop ongoing capillary leak." },
                 ].map((c) => (
                   <div key={c.type} className="p-3 rounded-lg border border-border">
@@ -187,12 +186,13 @@ const AbdominalCompartmentSyndromeTopic = () => {
                 ))}
               </div>
               <div className="mt-4 p-3 rounded-lg border border-border bg-secondary/20">
-                <p className="text-xs font-semibold text-foreground mb-1">WSACS risk factors — screen IAP 4–6 hourly if any are present</p>
+                <p className="text-xs font-semibold text-foreground mb-1">WSACS 2013 risk factors — measure IAP if any are present (frequency per local protocol)</p>
                 <p className="text-xs text-muted-foreground">
-                  Diminished abdominal-wall compliance (mechanical ventilation, high PEEP, prone position, abdominal-wall burns) ·
-                  Increased intraluminal contents (gastroparesis, ileus, pseudo-obstruction) ·
-                  Increased intra-abdominal contents (haemoperitoneum, ascites, intra-abdominal infection, tumour) ·
-                  Capillary leak / massive resuscitation (sepsis, burns, pancreatitis, damage-control surgery, polytrauma, &gt; 3.5 L crystalloid/24 h)
+                  Diminished abdominal-wall compliance (abdominal surgery, major trauma, major burns, prone positioning) ·
+                  Increased intraluminal contents (gastroparesis/distension, ileus, colonic pseudo-obstruction, volvulus) ·
+                  Increased intra-abdominal contents (pancreatitis, haemo-/pneumoperitoneum or fluid collections, infection/abscess, tumour, excessive laparoscopic insufflation, cirrhosis with ascites, peritoneal dialysis) ·
+                  Capillary leak / fluid resuscitation (acidosis, damage-control laparotomy, hypothermia, high APACHE II/SOFA, massive resuscitation or positive balance, polytransfusion) ·
+                  Others (age, bacteraemia, coagulopathy, raised head-of-bed angle, massive incisional hernia repair, mechanical ventilation, obesity, PEEP &gt; 10, peritonitis, pneumonia, sepsis, shock)<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />
                 </p>
               </div>
             </div>
@@ -201,8 +201,7 @@ const AbdominalCompartmentSyndromeTopic = () => {
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pathophysiology — a multi-organ disease</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
-                Raised IAP transmits to every adjacent compartment and impairs venous return globally. Even moderate
-                IAH (12–15 mmHg) reduces splanchnic perfusion before any clinical sign is apparent.
+                Raised IAP transmits to every adjacent compartment and impairs venous return globally. 
               </p>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 <strong>Polycompartment syndrome</strong> describes raised pressure in two or more anatomical compartments
@@ -213,9 +212,9 @@ const AbdominalCompartmentSyndromeTopic = () => {
               </p>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
-                  { sys: "Cardiovascular", detail: "↓ IVC return → ↓ preload, ↓ CO; ↑ intrathoracic pressure → falsely elevated CVP/PAOP; ↑ SVR and PVR. Cardiac output falls long before BP, masked by vasopressors." },
+                  { sys: "Cardiovascular", detail: "↓ IVC return → ↓ preload, ↓ CO; ↑ intrathoracic pressure → falsely elevated CVP/PAOP; ↑ SVR and PVR. " },
                   { sys: "Respiratory", detail: "Diaphragmatic splinting → ↓ FRC and chest-wall compliance → ↑ plateau and peak pressures, hypoxaemia, hypercapnia, V/Q mismatch. Mimics ARDS." },
-                  { sys: "Renal", detail: "Renal vein compression + ↓ cardiac output + ↑ renal parenchymal pressure → oliguria → AKI. Oliguria is often the earliest sign; unresponsive to fluid challenge." },
+                  { sys: "Renal", detail: "Renal vein compression + ↓ cardiac output + ↑ renal parenchymal pressure → oliguria → AKI. Oliguria is common and may not respond to fluid challenge." },
                   { sys: "Neurological", detail: "↑ intrathoracic pressure obstructs cerebral venous drainage → ↑ ICP, ↓ CPP. Particularly dangerous in TBI." },
                   { sys: "GI / hepatic", detail: "↓ mesenteric perfusion → mucosal ischaemia, bacterial translocation, lactic acidosis, anastomotic breakdown. Hepatic congestion → impaired lactate clearance and drug metabolism." },
                   { sys: "Abdominal wall", detail: "Ischaemia of rectus sheath → necrosis, dehiscence, surgical-site infection, late ventral hernia." },
@@ -232,8 +231,8 @@ const AbdominalCompartmentSyndromeTopic = () => {
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Clinical Presentation</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
-                Examination is insensitive — palpation correctly identifies IAH in fewer than 50 % of cases. Have a
-                high index of suspicion in any at-risk patient and measure IAP.
+                Clinical examination is inaccurate for detecting raised IAP, so diagnosis relies on measurement in any
+                at-risk patient<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
               </p>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
                 <li>Tense, distended abdomen (insensitive sign).</li>
@@ -249,16 +248,16 @@ const AbdominalCompartmentSyndromeTopic = () => {
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Diagnosis & Measurement of IAP</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
-                The <strong>intravesical (Foley) technique</strong> is the gold standard. It is cheap, reproducible
-                and the reference method in all WSACS literature.
+                The <strong>trans-bladder technique</strong> is the WSACS reference standard for intermittent IAP
+                measurement<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
               </p>
               <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-1 mb-3">
-                <li>Patient fully supine (head-up &lt; 20°) and at end-expiration.</li>
+                <li>Patient supine, measured at end-expiration.</li>
                 <li>No abdominal muscle contraction — deepen sedation ± neuromuscular blockade if needed.</li>
-                <li>Empty the bladder, then instil 25 mL of warmed sterile saline via the Foley.</li>
-                <li>Zero the transducer at the <strong>mid-axillary line at the iliac crest</strong>.</li>
-                <li>Read after 30–60 s equilibration. Express in <strong>mmHg</strong>.</li>
-                <li>Trend every 4–6 h in at-risk patients; isolated values are misleading.</li>
+                <li>Instil no more than 25 mL of sterile saline via the urinary catheter.</li>
+                <li>Zero the transducer at the <strong>mid-axillary line</strong>.</li>
+                <li>Express in <strong>mmHg</strong> (not cmH₂O).</li>
+                <li>Trend values using a protocol; WSACS recommends protocolised monitoring and management.</li>
               </ol>
               <div className="grid sm:grid-cols-2 gap-3">
                 <div className="p-3 rounded-lg border border-border">
@@ -305,8 +304,8 @@ const AbdominalCompartmentSyndromeTopic = () => {
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Management — WSACS Medical Bundle</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
-                Apply <strong>all five domains</strong> in parallel as IAH worsens; reassess IAP every 1–2 h. Escalate
-                to surgical decompression if IAP remains ≥ 20 mmHg with organ failure<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
+                The WSACS medical algorithm groups therapies into five domains, escalated stepwise while IAP is re-measured.
+                Decompressive laparotomy is recommended for overt ACS (GRADE 1D); most medical measures are weak suggestions (GRADE 2C–2D)<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Enteral nutrition should be delayed or stopped in established ACS or severe intra-abdominal
@@ -326,11 +325,11 @@ const AbdominalCompartmentSyndromeTopic = () => {
               </ul>
               <div className="space-y-3">
                 {[
-                  { topic: "1. Evacuate intraluminal contents", detail: "Large-bore NG tube on free drainage and rectal decompression; prokinetics — metoclopramide 10 mg TDS and erythromycin 250 mg QDS; neostigmine for pseudo-obstruction; endoscopic or colonoscopic decompression; stop enteral feed." },
-                  { topic: "2. Evacuate intra/extra-abdominal fluid collections", detail: "Image-guided percutaneous drainage of ascites, haematoma or abscess under ultrasound or CT guidance — can avoid laparotomy in selected cases." },
-                  { topic: "3. Improve abdominal-wall compliance", detail: "Adequate analgesia and sedation; neuromuscular blockade can drop IAP dramatically and is a useful temporising measure; nurse supine / head-up < 20°; escharotomy for circumferential torso burns; avoid tight dressings and prone positioning." },
-                  { topic: "4. Optimise fluid balance", detail: "De-resuscitate — aim for a neutral-to-negative fluid balance once initial resuscitation is complete: 20 % albumin with furosemide, early renal replacement therapy with ultrafiltration, avoid excessive crystalloid, and use balanced blood-component ratios rather than crystalloid in ongoing haemorrhage." },
-                  { topic: "5. Optimise systemic and regional perfusion", detail: "Target abdominal perfusion pressure (APP = MAP − IAP) ≥ 60 mmHg — noradrenaline first-line, avoiding over-zealous fluid administration purely to raise MAP." },
+                  { topic: "1. Evacuate intraluminal contents", detail: "Large-bore NG tube on free drainage and rectal decompression; neostigmine for established colonic ileus not responding to simple measures (suggestion, 2D). Other prokinetics and endoscopic decompression are used in practice but are not specifically graded by WSACS." },
+                  { topic: "2. Evacuate intra/extra-abdominal fluid collections", detail: "Percutaneous catheter drainage of obvious intraperitoneal fluid when technically possible — suggested over doing nothing (2C) and over immediate laparotomy (2D), as it may avoid the need for decompression." },
+                  { topic: "3. Improve abdominal-wall compliance", detail: "Optimal analgesia and sedation (2D); brief trials of neuromuscular blockade as a temporising measure (2D); consider the contribution of body position, including head-of-bed angle and prone positioning (2D); escharotomy for circumferential torso burns." },
+                  { topic: "4. Optimise fluid balance", detail: "Use a protocol to avoid a positive cumulative fluid balance once acute resuscitation is complete (2C), and an enhanced plasma:red-cell ratio in massive haemorrhage (2D). WSACS could make NO recommendation on diuretics, albumin or RRT to mobilise fluid — their use is pragmatic." },
+                  { topic: "5. Optimise systemic and regional perfusion", detail: "Support organ perfusion while avoiding fluid loading purely to raise MAP. WSACS could make NO recommendation on targeting APP; an APP of 60 mmHg is sometimes used as a pragmatic goal." },
                 ].map((m) => (
                   <div key={m.topic} className="p-3 rounded-lg border border-border">
                     <p className="font-semibold text-foreground text-sm">{m.topic}</p>
@@ -342,14 +341,14 @@ const AbdominalCompartmentSyndromeTopic = () => {
               <h3 className="text-base font-semibold text-foreground mt-5 mb-2">Stepwise escalation by IAH grade</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                 The WSACS algorithm is deliberately stepwise: measure IAP, treat, re-measure, and escalate only if the
-                pressure or organ function fails to improve. A practical ladder<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" /><InlineRef topicId="abdominal-compartment-syndrome" refLabel="Malbrain 2006" />:
+                pressure or organ function fails to improve. A pragmatic ladder — grade-specific actions are local practice, not graded WSACS statements<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" /><InlineRef topicId="abdominal-compartment-syndrome" refLabel="Malbrain 2006" />:
               </p>
               <div className="space-y-3">
                 {[
-                  { grade: "Grade I — IAP 12–15 mmHg", detail: "Maintain a high index of suspicion. Measure IAP 4–6-hourly, avoid a positive fluid balance, decompress the stomach and rectum, review sedation and analgesia, nurse head-up < 20–30°, and remove constricting dressings/binders. No intervention beyond these; treat the underlying pathology." },
-                  { grade: "Grade II — IAP 16–20 mmHg", detail: "Escalate the medical bundle and measure IAP hourly. Prokinetics for ileus, image-guided drainage of any ascites/collection, active de-resuscitation (20% albumin plus furosemide, or RRT with ultrafiltration), and start targeting abdominal perfusion pressure (MAP − IAP) ≥ 60 mmHg with noradrenaline rather than fluid loading." },
+                  { grade: "Grade I — IAP 12–15 mmHg", detail: "Maintain a high index of suspicion. Measure IAP 4–6-hourly, avoid a positive fluid balance, decompress the stomach and rectum, review sedation and analgesia, consider head-of-bed angle, and remove constricting dressings/binders. No intervention beyond these; treat the underlying pathology." },
+                  { grade: "Grade II — IAP 16–20 mmHg", detail: "Escalate the medical bundle and measure IAP hourly. Prokinetics for ileus, image-guided drainage of any ascites/collection, avoid a positive balance (diuretics, albumin or RRT are pragmatic options without a WSACS recommendation), and support perfusion with vasopressors rather than fluid loading." },
                   { grade: "Grade III — IAP 21–25 mmHg", detail: "Full medical bundle plus deeper sedation and a trial of neuromuscular blockade, which can drop IAP quickly and buys time. Escharotomy for circumferential torso burns. Stop enteral feed. Inform the surgeon now: if IAP remains ≥ 20 mmHg with new organ dysfunction after a few hours of maximal medical therapy, this is ACS and decompression is indicated." },
-                  { grade: "Grade IV — IAP > 25 mmHg", detail: "Assume ACS. Urgent decompressive laparotomy with temporary abdominal closure — medical measures alone rarely rescue this grade, and delay is the strongest predictor of death. Prepare for reperfusion hypotension and continue IAP monitoring afterwards for recurrent ACS." },
+                  { grade: "Grade IV — IAP > 25 mmHg", detail: "If there is new organ dysfunction this is ACS: proceed to decompressive laparotomy with temporary abdominal closure if medical measures do not rapidly lower IAP. Prepare for reperfusion hypotension and continue IAP monitoring afterwards for recurrent ACS." },
                 ].map((g) => (
                   <div key={g.grade} className="p-3 rounded-lg border border-border">
                     <p className="font-semibold text-foreground text-sm">{g.grade}</p>
@@ -369,17 +368,17 @@ const AbdominalCompartmentSyndromeTopic = () => {
                 bowel oedema, prolonged operating time).
               </p>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-                <li>Midline laparotomy under general anaesthesia — anticipate profound reperfusion hypotension on opening (ischaemia-reperfusion mediators, abrupt drop in SVR). Pre-load with fluid and have vasopressor running.</li>
-                <li>Leave abdomen open with a <strong>temporary abdominal closure (TAC)</strong>: negative-pressure systems (ABThera, vacuum-pack) are preferred over Bogotá bag for fluid handling, reducing visceral oedema, and improving rates of primary fascial closure.</li>
-                <li>Plan for early <strong>delayed primary fascial closure</strong> within 7–10 days. Beyond this, consider mesh-mediated traction or component separation; otherwise expect a planned ventral hernia.</li>
+                <li>Midline laparotomy under general anaesthesia — anticipate hypotension on opening the abdomen and have vasopressors ready.</li>
+                <li>Leave abdomen open with a <strong>temporary abdominal closure (TAC)</strong>: WSACS recommends negative-pressure wound therapy for the open abdomen (GRADE 1C).</li>
+                <li>Make protocolised efforts to achieve early, or at least same-hospital-stay, <strong>fascial closure</strong> (GRADE 1D). Avoid routine early biological mesh (suggestion, 2D); no recommendation was possible on acute component separation.</li>
                 <li>Continue IAP monitoring even with an open abdomen — recurrent ACS can occur through the dressing.</li>
               </ul>
             </div>
 
             <CollapsibleSubsection title="Management of the Open Abdomen">
               <p className="text-muted-foreground leading-relaxed mb-3">
-                The WSACS/Björck open-abdomen classification grades the wound by contamination and fixation, and
-                guides the urgency and technique of closure<InlineRef topicId="abdominal-compartment-syndrome" refLabel="Björck 2016" />.
+                The WSACS 2013 open-abdomen classification (an update of Björck's original scheme) grades the wound by
+                contamination and fixation<InlineRef topicId="abdominal-compartment-syndrome" refLabel="Björck 2016" />.
               </p>
               <div className="grid sm:grid-cols-2 gap-3 mb-4">
                 {[
@@ -389,8 +388,9 @@ const AbdominalCompartmentSyndromeTopic = () => {
                   { g: "Grade 2a", v: "Clean, developing fixation." },
                   { g: "Grade 2b", v: "Contaminated, developing fixation." },
                   { g: "Grade 2c", v: "Enteric leak, developing fixation." },
-                  { g: "Grade 3", v: "Frozen abdomen, without enteric leak." },
-                  { g: "Grade 4", v: "Frozen abdomen with established enteroatmospheric fistula." },
+                  { g: "Grade 3a", v: "Clean, frozen abdomen." },
+                  { g: "Grade 3b", v: "Contaminated, frozen abdomen." },
+                  { g: "Grade 4", v: "Established enteroatmospheric fistula, frozen abdomen." },
                 ].map((s) => (
                   <div key={s.g} className="p-3 rounded-lg border border-border">
                     <p className="font-semibold text-foreground text-sm">{s.g}</p>
@@ -422,15 +422,15 @@ const AbdominalCompartmentSyndromeTopic = () => {
                 <strong>Complications of the open abdomen</strong>:
               </p>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
-                <li>High-output effluent — 1–2 L/day of protein-rich fluid loss.</li>
+                <li>High-volume protein-rich fluid loss through the wound.</li>
                 <li>Enterocutaneous or enteroatmospheric fistula formation.</li>
                 <li>Loss of domain as the abdominal wall retracts.</li>
                 <li>Recurrent intra-abdominal hypertension despite an already-open abdomen.</li>
                 <li>Ventral hernia at the time of eventual closure.</li>
               </ul>
               <p className="text-muted-foreground leading-relaxed">
-                <strong>Definitive closure</strong> should aim for delayed primary fascial closure within 7–10 days.
-                Beyond this window, options include component separation, biological or synthetic mesh, or a planned
+                <strong>Definitive closure</strong>: aim for early, or at least same-hospital-stay, fascial closure.
+                If this fails, options include component separation, biological or synthetic mesh, or a planned
                 ventral hernia for staged reconstruction<InlineRef topicId="abdominal-compartment-syndrome" refLabel="Björck 2016" /><InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" />.
               </p>
             </CollapsibleSubsection>
@@ -446,11 +446,11 @@ const AbdominalCompartmentSyndromeTopic = () => {
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Prognosis</h2>
               <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-                <li>IAH is independently associated with increased mortality even in the absence of ACS.</li>
-                <li>Established ACS carries hospital mortality of <strong>40–70 %</strong>, highest in secondary ACS from burns and septic shock.</li>
-                <li>Early recognition with structured IAP monitoring and the WSACS bundle significantly reduces mortality and progression to surgical decompression.</li>
-                <li>Survivors face prolonged ventilation, AKI requiring RRT in up to 50 %, gut dysfunction with enterocutaneous fistula in 5–15 % of open abdomens, and high rates of planned ventral hernia requiring later reconstruction.</li>
-                <li>Long-term: increased risk of PICS (post-intensive-care syndrome), reduced HRQoL at 6–12 months, and significant rehabilitation needs.</li>
+                <li>IAH developing during the ICU stay independently predicted mortality (RR 1.85) in a multicentre mixed ICU cohort.<InlineRef topicId="abdominal-compartment-syndrome" refLabel="Malbrain 2005 IAH epidemiology" /></li>
+                <li>Established ACS carries high mortality; published figures vary widely by population and are not given in the WSACS guideline.</li>
+                <li>WSACS recommends protocolised IAP monitoring and management (GRADE 1C), but rates the overall evidence as generally low quality.<InlineRef topicId="abdominal-compartment-syndrome" refLabel="WSACS 2013" /></li>
+                <li>Survivors face prolonged ventilation, AKI, enteroatmospheric fistula after an open abdomen, and planned ventral hernia requiring later reconstruction.</li>
+                <li>Long-term rehabilitation needs are common, as for other survivors of prolonged critical illness.</li>
               </ul>
             </div>
           </section>
