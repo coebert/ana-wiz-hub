@@ -156,8 +156,7 @@ const RegionalAnaesthesiaTopic = () => {
         { text: "Follow AAGBI 2013 / ESAIC 2022 anticoagulation guidelines — timing of neuraxial relative to anticoagulants is critical", cites: ["AAGBI Coagulation 2013", "ESAIC 2022 Antithrombotics"] },
         { text: "Test block height with cold spray: start from blocked area, move cranially until cold sensation returns", cites: ["Russell 1995 Block Height"] },
         { text: "Differential block order: sympathetic (+2 above) > sensory (cold/pinprick) > motor (−2 below sensory level)", cites: ["Hocking 2004 Intrathecal Spread"] },
-        { text: "Bromage 0 = full motor; Bromage 3 = complete block. Confirm motor recovery before mobilising, per local protocol", cites: [] },
-        { text: "Heavy bupivacaine 2-segment regression: 60–90 min; full motor recovery 3–4 hours (typical values; dose-dependent)", cites: [] },
+        { text: "Bromage 0 = full motor; Bromage 3 = complete block. Confirm motor recovery before mobilising, per local protocol", cites: ["Bromage 1965 Motor Scale"] },
       ]}
       coreConcepts={
         <ExamSection exams={[Exam.FINAL]} className="scroll-mt-24">

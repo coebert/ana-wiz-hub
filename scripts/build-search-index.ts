@@ -286,11 +286,13 @@ function buildTopicEntry(topic: (typeof allTopics)[number]): SearchIndexEntry | 
         if (allowed) {
           const blocks = sliceExports(src);
           if (blocks) {
-            src = [...allowed]
-              .map((n) => blocks.get(n) ?? "")
-              .filter(Boolean)
-              .join("\n");
-            if (!src) continue; // import resolves to nothing we index
+            const parts = [...allowed].map((n) => blocks.get(n) ?? "").filter(Boolean);
+            if (parts.length === 0) continue; // import resolves to nothing we index
+            // Each imported export (e.g. one Teaching lesson) gets its own
+            // prose queue, so later lessons in a shared file are not starved
+            // by the round-robin budget.
+            for (const part of parts.slice(1)) next.push({ file: dep, src: part, depth: node.depth + 1, anchor: null });
+            src = parts[0];
           }
         }
         // Imported components (Teaching sections, diagrams) have no stable
