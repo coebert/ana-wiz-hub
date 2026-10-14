@@ -222,7 +222,7 @@ const TransferMedicineTopic = () => {
               <InlineRef topicId="transfer-medicine" refLabel="Martin Aeromedical 2006" />:
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
-              <li><strong>Boyle</strong> (P ∝ 1/V): trapped gas expands ~30% at 8 000 ft — pneumothorax (drain it and never clamp the drain), bowel gas, pneumocephalus, air splints, ETT and tracheostomy cuffs (inflate with saline or measure cuff pressure in flight), and air in giving sets or the ECMO circuit</li>
+              <li><strong>Boyle</strong> (P ∝ 1/V): trapped gas expands ~35% at 8 000 ft — pneumothorax (drain it and never clamp the drain), bowel gas, pneumocephalus, air splints, ETT and tracheostomy cuffs (inflate with saline or measure cuff pressure in flight), and air in giving sets or the ECMO circuit</li>
               <li><strong>Dalton</strong>: falling barometric pressure lowers the inspired oxygen partial pressure — a patient marginal at sea level desaturates in flight; pre-oxygenate, raise FiO₂, and calculate cylinder needs for the whole flight plus reserve</li>
               <li><strong>Henry</strong>: dissolved gas comes out of solution — decompression illness (fly low, or at sea-level cabin pressure, after diving injuries)</li>
               <li><strong>Charles / Gay-Lussac</strong>: gas volume and cylinder pressure vary with temperature — cold cabins alter cylinder gauge readings and drug/fluid warming performance</li>
