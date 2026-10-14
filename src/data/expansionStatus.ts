@@ -117,6 +117,14 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "in-progress",
     note: "Paracetamol poisoning subsection added (NAPQI mechanism, 2012 UK treatment line, SNAP 2014 regimen evidence, anaphylactoid reactions, learning checks). Other toxicology subsections still need review.",
   },
+  "bariatric-anaesthesia": {
+    status: "in-progress",
+    note: "Evidence lesson added (AAGBI/SOBA 2015 status, STOP questionnaire validation, lean-body-weight dosing, ramped vs sniffing videolaryngoscopy meta-analysis) with quoted abstracts and learning checks. Older sections not yet reviewed.",
+  },
+  "transfer-medicine": {
+    status: "in-progress",
+    note: "Evidence lesson added (Parmentier-Decrucq 2013 adverse-event incidence/risk factors, Fanara 2010 checklist, Droogh 2012 CRM training) with quoted abstracts and evidence-strength checks. Older sections not yet reviewed.",
+  },
   "postop-high-risk-icu": {
     status: "expanded",
     note: "Trial-evidence lesson added (OPTIMISE 2014, OPTIMISE II 2024, Kahan 2017 ISOS critical-care admission, PRISM 2021 CPAP) with quoted abstracts and learning checks; corrected overstated goal-directed therapy pitfall. Content/source review, not consultant certification.",

@@ -8,6 +8,7 @@ import StopBangCalculator from "@/components/diagrams/clinical/StopBangCalculato
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { BariatricEvidenceTeaching } from "@/components/topic/BariatricEvidenceTeaching";
 
 
 const bariatricAnaesthesiaFaqs: Array<[string, string]> = [
@@ -412,6 +413,9 @@ const BariatricAnaesthesiaTopic = () => {
           />
       </section>
       </ExamSection>
+          <ExamSection id="trial-evidence" exams={[Exam.FINAL]} className="scroll-mt-24">
+            <BariatricEvidenceTeaching />
+          </ExamSection>
           <TopicFaqs faqs={bariatricAnaesthesiaFaqs} />
         </>
       }
