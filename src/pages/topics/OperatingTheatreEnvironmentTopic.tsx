@@ -11,6 +11,7 @@ import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { NormothermiaEvidenceTeaching } from "@/components/topic/NormothermiaEvidenceTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import { ChecklistEvidenceTeaching } from "@/components/topic/ChecklistEvidenceTeaching";
+import { TheatreNoiseTeaching } from "@/components/topic/TheatreNoiseTeaching";
 import { LaminarFlowEvidenceTeaching } from "@/components/topic/LaminarFlowEvidenceTeaching";
 
 const operatingTheatreEnvironmentFaqs: Array<[string, string]> = [
@@ -202,10 +203,14 @@ const OperatingTheatreEnvironmentTopic = () => {
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Temperature 18–25 °C</strong> (typically 20–22 °C). Raise to <strong>23–26 °C</strong> for neonates/infants, burns, prolonged or open-cavity surgery to limit radiative and convective patient heat loss. NICE CG65 recommends not inducing anaesthesia unless core temperature is ≥36.0 °C (unless urgent).</li>
               <li><strong>Relative humidity 40–60%.</strong> Too low → static electricity, dry mucosae and increased airborne particle dispersion; too high → bacterial proliferation, condensation and impaired wound healing.</li>
-              <li><strong>Noise &lt; 40 dB(A) at baseline,</strong> rising to ~50 dB(A) during surgery; alarms and conversation are the main contributors. Noise impairs communication, increases error and disturbs the patient at induction and emergence.</li>
+              <li><strong>Noise:</strong> alarms and conversation are major contributors, and noise impairs communication. A small pilot study linked louder operations — and off-topic conversation — with wound infection, an association rather than proven cause (see the evidence lesson below).</li>
               <li><strong>Lighting:</strong> ambient ~1 000 lux; surgical field 40 000–160 000 lux from shadowless coaxial pendant lamps with colour temperature ~4 500 K (close to daylight) for accurate tissue colour rendering.</li>
             </ul>
             </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="noise-evidence" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <TheatreNoiseTeaching />
           </ExamSection>
 
           <ExamSection id="normothermia-evidence" exams={[Exam.PRIMARY, Exam.FINAL]}>

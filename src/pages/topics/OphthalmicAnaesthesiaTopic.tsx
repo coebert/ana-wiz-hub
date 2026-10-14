@@ -16,6 +16,7 @@ import {
   TopicalIntracameralIllustration,
 } from "@/components/diagrams/clinical/EyeBlockIllustrations";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { StrabismusPonvTeaching } from "@/components/topic/StrabismusPonvTeaching";
 import { BlockComparisonTeaching } from "@/components/topic/BlockComparisonTeaching";
 import { OphthalmicEvidenceTeaching } from "@/components/topic/OphthalmicEvidenceTeaching";
 import {
@@ -63,7 +64,7 @@ const eyeFaqs: Array<[string, string]> = [
   ],
   [
     "What is the best anaesthetic technique for paediatric strabismus surgery?",
-    "Paediatric strabismus surgery requires a secured but unobtrusive airway, anticipation of the oculocardiac reflex, and aggressive PONV prophylaxis. A laryngeal mask airway (LMA) is standard for most children; a reinforced/flexible LMA allows the surgeon to drape and rotate the head without kinking. Maintenance with TIVA (propofol ± remifentanil) is increasingly favoured because it produces markedly lower PONV rates than volatile-based anaesthesia, smoother emergence, and ideal conditions for shared-airway work. Analgesia is provided with paracetamol, NSAIDs, and topical local anaesthetic drops or sub-Tenon's block by the surgeon — avoid long-acting opioids which worsen PONV. Dual antiemetic prophylaxis (ondansetron + dexamethasone) is recommended because baseline PONV rates approach 60–80% without prophylaxis. Suxamethonium should be avoided because it raises IOP, causes extraocular muscle contracture that confuses surgical testing, and carries a historical association with malignant hyperthermia in this population.",
+    "Paediatric strabismus surgery requires a secured but unobtrusive airway, anticipation of the oculocardiac reflex, and aggressive PONV prophylaxis. A laryngeal mask airway (LMA) is standard for most children; a reinforced/flexible LMA allows the surgeon to drape and rotate the head without kinking. Maintenance with TIVA (propofol ± remifentanil) is increasingly favoured because it produces markedly lower PONV rates than volatile-based anaesthesia, smoother emergence, and ideal conditions for shared-airway work. Analgesia is provided with paracetamol, NSAIDs, and topical local anaesthetic drops or sub-Tenon's block by the surgeon — avoid long-acting opioids which worsen PONV. Dual antiemetic prophylaxis (ondansetron + dexamethasone) is recommended because about two-thirds of children vomit without prophylaxis (65–68% in pooled placebo groups). Suxamethonium should be avoided because it raises IOP, causes extraocular muscle contracture that confuses surgical testing, and carries a historical association with malignant hyperthermia in this population.",
   ],
   [
     "How do IOP-lowering drugs used in ophthalmic surgery interact with anaesthesia?",
@@ -250,7 +251,7 @@ const OphthalmicAnaesthesiaTopic = () => {
               Strabismus (squint) correction is the commonest paediatric ophthalmic procedure. It is short (20–60 min), extra-ocular,
               day-case in most children, and shared-airway with the surgeon working at the head. Three features dominate the
               anaesthetic plan: a secured but unobtrusive airway, a high incidence of the oculocardiac reflex (OCR), and one of the
-              highest baseline rates of post-operative nausea and vomiting (PONV) of any paediatric operation (up to 60–80% without
+              highest baseline rates of post-operative nausea and vomiting (PONV) of any paediatric operation (about two-thirds of children without
               prophylaxis).
             </p>
             <p className="font-semibold text-foreground text-sm mb-1">Anaesthetic conduct</p>
@@ -272,6 +273,7 @@ const OphthalmicAnaesthesiaTopic = () => {
               <li><strong className="text-foreground">Postoperative diplopia and disorientation</strong> — common after eye-muscle realignment; warn parents and nurse the child in a calm, dimly lit recovery bay</li>
               <li><strong className="text-foreground">Co-existing conditions</strong> — strabismus is over-represented in cerebral palsy, craniofacial syndromes (Crouzon, Apert), trisomy 21 and prematurity (ROP). Tailor airway plan, drug doses and post-operative apnoea monitoring (ex-prems &lt; 60 weeks PCA) accordingly</li>
             </ul>
+            <div className="mt-6"><StrabismusPonvTeaching /></div>
             </CollapsibleSubsection>
           </ExamSection>
           </div>
