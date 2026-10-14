@@ -9,6 +9,7 @@ import PaediatricVitalsTable from "@/components/diagrams/intensive-care/Paediatr
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { FeastTrialTeaching } from "@/components/topic/FeastTrialTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { paediatricEmergenciesQuestions } from "@/data/quizzes";
@@ -264,7 +265,7 @@ const PaediatricIcuTopic = () => {
         { text: "Paediatric septic shock: 10 ml/kg boluses with reassessment after each (20 ml/kg only for profound shock); adrenaline for cold shock, noradrenaline for warm shock", cites: ["BJA Educ 2010"] },
         { text: "Single ventricle physiology: target SpO₂ 75–85%; excessive O₂ causes pulmonary overcirculation and systemic steal", cites: ["RCPCH 2019"] },
         { text: "Propofol is contraindicated by its product licence for ICU sedation at or below 16 years — use it for induction and short procedures only, never as a PICU sedation infusion", cites: ["MHRA Propofol"] },
-        { text: "Isotonic maintenance fluids only — hypotonic fluids can cause fatal hyponatraemia in children", cites: ["FEAST 2011"] },
+        { text: "Isotonic maintenance fluids only — hypotonic fluids can cause fatal hyponatraemia in children", cites: ["NICE NG29"] },
         { text: "Paediatric cardiac arrest is usually respiratory in origin — 5 rescue breaths first, defibrillation 4 J/kg", cites: ["Resuscitation Council UK 2021"] },
         { text: "Death by neurological criteria can be diagnosed from 37 weeks corrected gestation; between term and 2 months it is possible but requires the separate RCPCH infant criteria and longer observation — it is not an absolute bar", cites: ["RCPCH DNC Infants 2015"] },
         { text: "FEAST trial: fluid boluses increased mortality in resource-limited settings — does NOT change UK practice", cites: ["RCPCH 2019"] },
@@ -652,12 +653,7 @@ const PaediatricIcuTopic = () => {
                 epidemiology and audit — treat the child in front of you <InlineRef topicId="paediatric-icu" refLabel="NICE NG51" />.
               </p>
             </div>
-            <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5">
-              <p className="text-sm font-semibold text-destructive">⚠ FEAST Trial (2011)</p>
-              <p className="text-sm text-muted-foreground mt-1">
-                In resource-limited settings, fluid boluses increased 48-h mortality. Does NOT apply to UK PICU practice but is frequently examined.
-              </p>
-            </div>
+            <FeastTrialTeaching />
             </CollapsibleSubsection>
           </ExamSection>
 
