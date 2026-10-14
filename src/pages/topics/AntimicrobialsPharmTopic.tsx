@@ -16,6 +16,8 @@ import EmpiricalSepsisChooser from "@/components/diagrams/pharmacology/Empirical
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { AntibioticExposureTeaching } from "@/components/topic/AntibioticExposureTeaching";
+import { CandidaemiaTeaching } from "@/components/topic/CandidaemiaTeaching";
 import { AntiviralEvidenceTeaching } from "@/components/topic/AntiviralEvidenceTeaching";
 
 const antimicrobialsPharmFaqs: Array<[string, string]> = [
@@ -231,6 +233,7 @@ const AntimicrobialsTopic = () => {
                 <BetaLactamaseClassificationTable />
                 <MDRGramNegativeSelector />
                 <EmpiricalSepsisChooser />
+                <AntibioticExposureTeaching />
                 {antibioticClasses.map((group) => (
                   <div key={group.group}>
                     <h3 className="text-lg font-serif font-bold text-foreground mb-3">{group.group}</h3>
@@ -267,6 +270,7 @@ const AntimicrobialsTopic = () => {
                     </div>
                   </div>
                 ))}
+                <CandidaemiaTeaching />
               </div>
             )}
 
