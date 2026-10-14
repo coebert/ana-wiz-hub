@@ -16,7 +16,7 @@ describe("Fluid balance lessons", () => {
     expect(screen.getByText("Sources for this lesson")).toBeInTheDocument();
     expect(container.textContent).not.toContain("is missing from the topic list");
     for (const q of container.querySelectorAll("blockquote")) {
-      const text = norm(q.textContent!);
+      const c = q.cloneNode(true) as HTMLElement; c.querySelectorAll("span").forEach(s => s.remove()); const text = norm(c.textContent!);
       expect(topicReferences["fluid-balance"].some(r => r.excerpt && (text.includes(norm(r.excerpt)) || norm(r.excerpt).includes(text.replace(/\s*\.$/, ""))))).toBe(true);
     }
   });
