@@ -8,6 +8,7 @@ import { Exam } from "@/data/curriculum";
 import TheatreZoningDiagram from "@/components/diagrams/clinical/TheatreZoningDiagram";
 import CssdWasteFlowSubMap from "@/components/diagrams/clinical/CssdWasteFlowSubMap";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
+import { NormothermiaEvidenceTeaching } from "@/components/topic/NormothermiaEvidenceTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import { ChecklistEvidenceTeaching } from "@/components/topic/ChecklistEvidenceTeaching";
 import { LaminarFlowEvidenceTeaching } from "@/components/topic/LaminarFlowEvidenceTeaching";
@@ -205,6 +206,10 @@ const OperatingTheatreEnvironmentTopic = () => {
               <li><strong>Lighting:</strong> ambient ~1 000 lux; surgical field 40 000–160 000 lux from shadowless coaxial pendant lamps with colour temperature ~4 500 K (close to daylight) for accurate tissue colour rendering.</li>
             </ul>
             </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="normothermia-evidence" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <NormothermiaEvidenceTeaching />
           </ExamSection>
 
           <ExamSection id="scavenging" exams={[Exam.PRIMARY, Exam.FINAL]}>
