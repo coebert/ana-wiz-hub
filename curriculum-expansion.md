@@ -12,7 +12,7 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 
 ## Section order and remaining work
 1. **Physics — in progress.** Six-subsection batch implemented and checked: Joule–Thomson/process boundaries; transformers and isolation limitations; Doppler spectral interpretation; arterial dynamic response; flow-regime assumptions and heliox; temperature sensor/site errors. This does not complete these six topics or the whole physics section. Other subsections still require individual review.
-2. **Physiology — pending.** Review renal acid–base handling, hepatic zonation and fetal/placental physiology first; include mechanism, application and evidence limits.
+2. **Physiology — in progress.** Added renal net acid accounting, distal transport, ammonium adaptation and urine-pH interpretation; hepatic gradients, ammonia scavenging and model limits; fetal preload/afterload handover and experimental evidence limits. Placental transfer classifications and misquoted pulmonary flow/resistance changes were corrected. This does not complete the topics; remaining physiology subsections need individual review.
 3. **Pharmacology — pending.** Differential blockade, Meyer–Overton limitations and antivirals are priority candidates, not yet source-verified expansions.
 4. **Clinical — pending beyond the completed batch.** Review surgery-specific protocol detail and operative hazards against the existing linked teaching rather than duplicating brief protocol checklists.
 5. **ICU — pending beyond APRV.** Innate immunity and endocrine crises are candidates; audit actual subsection depth before adding material.
