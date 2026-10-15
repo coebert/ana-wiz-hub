@@ -19,6 +19,8 @@ interface RecentExpansion {
 }
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
+  { topicId: "icu-anaphylaxis", section: "intensive-care", title: "Anaphylaxis in Critical Care", note: "New page: IM adrenaline doses and repeats, refractory anaphylaxis and adrenaline infusion, tryptase and biphasic reactions (RCUK 2021)." },
+  { topicId: "icu-eclampsia", section: "intensive-care", title: "Severe Pre-eclampsia and Eclampsia", note: "New page: magnesium sulfate regimen, Magpie, severe hypertension control and fluid restriction (NICE NG133)." },
   {
     topicId: "sepsis-resuscitation",
     section: "intensive-care",
