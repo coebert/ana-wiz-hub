@@ -13,7 +13,7 @@ import { AcidsBasesDiagram } from "@/components/diagrams/chemistry/AcidsBasesDia
 import { InlineRef } from "@/components/references/InlineRef";
 import { acidsBasesQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { DrugPkaTeaching, WaterTemperatureTeaching } from "@/components/topic/ChemistryGapsTeaching";
+import { DrugPkaTeaching, HendersonHasselbalchTeaching, WaterTemperatureTeaching } from "@/components/topic/ChemistryGapsTeaching";
 
 const objectives = [
   "Define pH, pKa, and apply the Henderson-Hasselbalch equation to drug ionisation",
@@ -180,7 +180,7 @@ const AcidsBasesBuffersTopic = () => {
                 pKa, the drug is predominantly ionised (A⁻ form). In acidic conditions, it exists mainly as the unionised acid (HA).
               </p>
               <p>
-                <strong>For weak bases</strong> (e.g. morphine pKa 8.0, local anaesthetics pKa ~7.7–8.1): in acidic conditions, the
+                <strong>For weak bases</strong> (e.g. morphine pKa 8.0, most local anaesthetics pKa ~7.6–8.1; chloroprocaine 8.7): in acidic conditions, the
                 base accepts a proton and becomes ionised (BH⁺). In alkaline conditions, it is unionised (B).
               </p>
               <p>
@@ -189,6 +189,10 @@ const AcidsBasesBuffersTopic = () => {
                 tissue (lower pH → more ionised → less crosses the nerve membrane).
               </p>
             </div>
+            </CollapsibleSubsection>
+
+            <CollapsibleSubsection title="Henderson-Hasselbalch: Derivation and Blood Gases">
+              <HendersonHasselbalchTeaching />
             </CollapsibleSubsection>
 
             <CollapsibleSubsection title="Drug pKa & Ionisation at pH 7.4">
@@ -252,7 +256,7 @@ const AcidsBasesBuffersTopic = () => {
               </p>
               <p>
                 <strong>Rule of thumb for converting pH to [H⁺]:</strong> pH 7.4 corresponds to [H⁺] 40 nmol/L, and between
-                pH 7.2 and 7.5 each 0.01 change in pH corresponds to roughly a 1 nmol/L change in [H⁺] (in the opposite
+                about pH 7.28 and 7.45 each 0.01 change in pH corresponds to roughly a 1 nmol/L change in [H⁺] (in the opposite
                 direction) — allowing rapid mental conversion without a calculator.
               </p>
               <p>

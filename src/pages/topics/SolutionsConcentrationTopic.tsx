@@ -13,7 +13,7 @@ import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { SolutionsConcentrationDiagram } from "@/components/diagrams/chemistry/SolutionsConcentrationDiagram";
 import { solutionsConcentrationQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
-import { DonnanTeaching, OsmometryTeaching } from "@/components/topic/ChemistryGapsTeaching";
+import { DonnanTeaching, OsmolarGapTeaching, OsmometryTeaching, StarlingTeaching } from "@/components/topic/ChemistryGapsTeaching";
 
 const objectives = [
   "Convert between %, mg/mL, mmol/L and ratio expressions of drug concentration",
@@ -173,16 +173,19 @@ const SolutionsConcentrationTopic = () => {
             <CollapsibleSubsection title="Calculated Osmolarity & The Osmolar Gap">
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
-                <strong>Calculated osmolarity = 2[Na⁺] + [urea] + [glucose]</strong> (all in mmol/L). The factor of 2 accounts for
-                the accompanying anion (mainly Cl⁻ and HCO₃⁻). The <strong>osmolar gap</strong> = measured − calculated; normally
-                &lt;10 mOsm/kg.
+                <strong>Calculated osmolality ≈ 2[Na⁺] + [urea] + [glucose]</strong> (all in mmol/L). The factor of 2 accounts for
+                the accompanying anion (mainly Cl⁻ and HCO₃⁻). The <strong>osmolar gap</strong> = measured − calculated; commonly
+                quoted as &lt;10 mOsm/kg, though healthy values vary widely.
               </p>
               <p>
                 A raised osmolar gap suggests an <strong>unmeasured osmole</strong>: methanol, ethylene glycol, ethanol, mannitol,
                 propylene glycol (a vehicle in lorazepam and phenytoin infusions) or isopropanol. Combined with a high anion-gap
-                metabolic acidosis, methanol or ethylene glycol toxicity should be suspected and treated empirically with fomepizole.
+                metabolic acidosis, methanol or ethylene glycol toxicity should be suspected; seek poisons advice (TOXBASE) promptly on fomepizole or ethanol and haemodialysis. A normal gap does not exclude late presentation.
               </p>
             </div>
+            </CollapsibleSubsection>
+            <CollapsibleSubsection title="Osmolar Gap: Calculation and Pitfalls">
+              <OsmolarGapTeaching />
             </CollapsibleSubsection>
           </ExamSection>
 
@@ -239,13 +242,16 @@ const SolutionsConcentrationTopic = () => {
                 and oncotic pressure gradients across the capillary wall. The <strong>revised Starling principle</strong>
                 incorporates the endothelial glycocalyx layer, showing that the subglycocalyx oncotic pressure (not interstitial
                 oncotic pressure) opposes filtration, and that under normal conditions there is little or no absorption at the
-                venous end of most capillaries — filtered fluid is instead returned via lymphatics. Clinically, this explains why
-                <strong> hypoalbuminaemia</strong> (nephrotic syndrome, liver disease, sepsis, critical illness) lowers oncotic
-                pressure and promotes oedema, and why the benefit of infused <strong>colloids</strong> in expanding plasma volume
+                venous end of most capillaries — filtered fluid is instead returned via lymphatics. Clinically, <strong>hypoalbuminaemia</strong> (nephrotic syndrome, liver disease, sepsis, critical illness) lowers oncotic
+                pressure and is associated with oedema, although the revised model suggests low albumin alone explains less than
+                classical teaching implied; it also explains why the benefit of infused <strong>colloids</strong> in expanding plasma volume
                 is less durable than once assumed once the glycocalyx is damaged (e.g. by inflammation, sepsis, or excessive
                 crystalloid administration), allowing colloid to leak into the interstitium.
               </p>
             </div>
+            </CollapsibleSubsection>
+            <CollapsibleSubsection title="Starling Forces: Classical and Revised">
+              <StarlingTeaching />
             </CollapsibleSubsection>
           </ExamSection>
 
