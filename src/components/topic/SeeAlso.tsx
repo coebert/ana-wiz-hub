@@ -8,12 +8,17 @@ interface SeeAlsoProps {
 }
 
 export const SeeAlso = ({ topicId }: SeeAlsoProps) => {
-  const explicitIds = seeAlsoMap[topicId];
+  // Links run both ways: this topic's own list, plus every topic that lists it.
+  const reverseIds = Object.entries(seeAlsoMap)
+    .filter(([id, ids]) => id !== topicId && ids.includes(topicId))
+    .map(([id]) => id);
+  const explicitIds = [...new Set([...(seeAlsoMap[topicId] ?? []), ...reverseIds])];
 
-  // Resolve explicit map entries first.
-  let relatedTopics = (explicitIds ?? [])
+  // Resolve explicit and reverse entries first.
+  let relatedTopics = explicitIds
     .map((id) => allTopics.find((t) => t.id === id))
-    .filter((t): t is NonNullable<typeof t> => Boolean(t));
+    .filter((t): t is NonNullable<typeof t> => Boolean(t) && t!.available !== false)
+    .slice(0, 12);
 
   // Fallback: when no explicit map entry, auto-suggest up to 6 topics in the
   // same section that share at least one exam tag. This keeps every topic
