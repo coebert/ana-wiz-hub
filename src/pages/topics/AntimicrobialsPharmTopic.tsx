@@ -19,6 +19,8 @@ import { InlineRef } from "@/components/references/InlineRef";
 import { AntibioticExposureTeaching } from "@/components/topic/AntibioticExposureTeaching";
 import { CandidaemiaTeaching } from "@/components/topic/CandidaemiaTeaching";
 import { AntimalarialAntisepticTeaching } from "@/components/topic/AntimalarialAntisepticTeaching";
+import { StewardshipTrialsTeaching } from "@/components/topic/StewardshipTrialsTeaching";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ResistanceTeaching } from "@/components/topic/ResistanceTeaching";
 import { AntiviralEvidenceTeaching } from "@/components/topic/AntiviralEvidenceTeaching";
 
@@ -452,6 +454,7 @@ const AntimicrobialsTopic = () => {
                 </div>
               ))}
             </div>
+            <div className="mt-4"><CollapsibleSubsection title="Stewardship trials: course length and procalcitonin"><StewardshipTrialsTeaching /></CollapsibleSubsection></div>
           </div>
 
           <SynthesisBlock

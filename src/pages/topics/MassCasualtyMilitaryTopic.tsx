@@ -9,7 +9,7 @@ import { MajorIncidentTriageDiagram } from "@/components/diagrams/clinical/Major
 import { MilitaryRolesFlowDiagram } from "@/components/diagrams/clinical/MilitaryRolesFlowDiagram";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import InlineRef from "@/components/references/InlineRef";
-import { MassCasualtyEthicsTeaching, MassCasualtyTeamworkTeaching, MassCasualtyBleedingTeaching, MassCasualtyMilitaryTeaching, MassCasualtyChemicalTeaching } from "@/components/topic/MassCasualtyTeaching";
+import { MassCasualtyEthicsTeaching, MassCasualtyTeamworkTeaching, MassCasualtyBleedingTeaching, MassCasualtyMilitaryTeaching, MassCasualtyChemicalTeaching, MassCasualtyDecontaminationTeaching } from "@/components/topic/MassCasualtyTeaching";
 
 const massCasualtyMilitaryFaqs: Array<[string, string]> = [
   [
@@ -221,6 +221,12 @@ const MassCasualtyMilitaryTopic = () => {
           <ExamSection id="chemical-incidents" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Chemical Incidents & CBRN Response">
               <MassCasualtyChemicalTeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="decontamination-evidence" exams={[Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Mass Decontamination: Dry, Wet and Assisted">
+              <MassCasualtyDecontaminationTeaching />
             </CollapsibleSubsection>
           </ExamSection>
 
