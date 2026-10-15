@@ -61,3 +61,4 @@
 - [x] Trauma: sourced lessons on <C>ABCDE, fluid boluses/BP targets, transfusion ratios/Hb thresholds, surgical priorities (NICE NG39, Rossaint 2023, PROPPR); corrected misquoted NG39 bolus wording.
 
 - [x] Haemorrhagic Shock & Resuscitation page (shock recognition, BP monitoring, transfusion/TXA) — sourced, tested, search + audit rebuilt
+- [x] Mass decontamination evidence lesson (PRISM) + stewardship trials lesson (STOP-IT, SAPS, ADAPT-Sepsis)

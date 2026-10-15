@@ -146,3 +146,6 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 
 ## Haemorrhagic Shock & Resuscitation (2026-10-15)
 - [x] Shock recognition; BP monitoring and targets; transfusion ratios, prehospital blood, TXA timing, calcium, ITACTIC — verbatim excerpts, rendered, audit corpus verified
+
+## Mass casualty & antimicrobials (2026-10-15)
+- [x] Mass decontamination (PRISM 2019); stewardship trials (STOP-IT, SAPS, ADAPT-Sepsis) — verbatim, rendered, audit corpus verified

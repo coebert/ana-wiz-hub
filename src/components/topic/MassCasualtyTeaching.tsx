@@ -93,3 +93,15 @@ export function MassCasualtyChemicalTeaching() {
     <LessonSources topicId="mass-casualty-military" labels={["UKHSA Nerve Agents 2024", "UKHSA CBRN Priorities", "UK CBRN Nerve Antidotes 2018", "UK CBRN Phosgene", "UK CBRN Cyanide", "UKHSA CBRN"]} />
   </div>;
 }
+export function MassCasualtyDecontaminationTeaching() {
+  return <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+    <h3 className="text-lg font-semibold text-foreground">What the volunteer trials show</h3>
+    <p>The PRISM programme tested mass decontamination on volunteers contaminated with a harmless simulant, comparing dry decontamination (blotting and rubbing with absorbent material), ladder-pipe showers from fire appliances, and technical (tented) showers.</p>
+    <blockquote className="border-l-2 border-border pl-4 italic">The most effective process was a triple combination of dry, ladder pipe system, and technical decontamination, which attained an average decontamination efficiency of approximately 100% on exposed hair and skin sites.<R label="PRISM 2019 wet" /></blockquote>
+    <blockquote className="border-l-2 border-border pl-4 italic">In compliant individuals, dry decontamination was effective (decontamination efficiency approximately 99%), but noncompliance (tentatively attributed to suboptimal communication) resulted in significantly reduced efficacy (decontamination efficiency approximately 70%).<R label="PRISM 2019 efficacy" /></blockquote>
+    <blockquote className="border-l-2 border-border pl-4 italic">At-risk volunteers (because of chronic illness, disability, or language barrier) were 3 to 8 times slower than ambulatory casualties in undergoing dry and ladder pipe system decontamination<R label="PRISM 2019 at-risk" /></blockquote>
+    <p><strong className="text-foreground">Teaching reasoning (not a quoted guideline):</strong> dry decontamination can start within minutes with simple materials, while showers take time to set up, so it buys the biggest early gain. Its weak point is people: clear, repeated instructions decide whether it works, and non-ambulant, disabled or non-English-speaking casualties need assisted pathways planned in advance. These were simulant studies on volunteers, not patient outcome trials. The UK sequence (disrobe, then dry decontamination unless caustic, then wet if needed) is set out in the chemical incidents section above.<R label="UKHSA Nerve Agents 2024" /></p>
+    <Check question="why did dry decontamination fall from about 99% to about 70% efficiency?" answer="Because casualties did not follow the instructions, which the authors attributed to poor communication. Clear, simple, repeated directions are part of the treatment." />
+    <LessonSources topicId="mass-casualty-military" labels={["PRISM 2019 wet", "PRISM 2019 efficacy", "PRISM 2019 at-risk", "UKHSA Nerve Agents 2024"]} />
+  </div>;
+}
