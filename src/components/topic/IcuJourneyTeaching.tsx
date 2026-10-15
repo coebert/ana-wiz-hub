@@ -85,6 +85,7 @@ export function IcuJourneyDischargeTeaching() {
     <H>Handover to the ward team</H>
     <Quote label="GPICS 2.1 discharge handover" />
     <p>A good discharge summary covers diagnoses, procedures, ongoing drugs and antimicrobial plan, lines to remove, nutrition and swallow status, mobility, delirium, treatment limits and the follow-up plan (teaching synthesis). Outreach review after discharge helps catch early deterioration.</p>
+    <p>Discharge planning and longer-term recovery have their own page: <L to="/intensive-care/icu-discharge-planning">ICU Discharge Planning and Longer-Term Recovery</L>.</p>
     <H>Life after critical care</H>
     <Quote label="NICE CG83 ward step-down" />
     <Quote label="NICE CG83 review" />
