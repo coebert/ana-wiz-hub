@@ -21,3 +21,5 @@
 - Keep haemorrhagic shock physiology, monitoring and trial evidence in its own registered topic linked with Trauma; NICE NG39 primary survey and bolus detail stay on the trauma page so the two cannot drift.
 - Keep ICU ventilation protocol teaching in its own registered topic linked from Mechanical Ventilation; weaning readiness and SBT detail stay in the Mechanical Ventilation weaning lesson so the two cannot drift.
 - Load the user-provided heart through CDN asset pointers with precomputed detail levels; keep DOM figure wrappers outside the Three.js scene and never simplify the mesh on the render thread.
+
+- Keep endocrine resuscitation lessons in the shared EndocrineEmergenciesTeaching module; distinguish adrenal replacement from septic-shock adjuncts and explicitly name the adopted DKA guideline so different resolution criteria cannot silently merge.

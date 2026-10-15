@@ -152,3 +152,7 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 
 ## ICU Ventilation Protocols (2026-10-15)
 - [x] Admission (ARDSNet), monitoring (Amato ΔP), sedation/weaning protocols (ABC, Blackwood Cochrane, closed-loop Cochrane 2025) — verbatim, rendered, audit corpus verified
+
+## Endocrine resuscitation continuation — checked 15 October 2026
+- Added three lessons within Endocrine Emergencies: adrenal insufficiency recognition/resuscitation/recovery (SfE 2016); sepsis cortisol replacement versus adjunctive corticosteroids (SSC 2021, SCCM 2024); DKA euglycaemia, potassium gate, glucose support and resolution (international 2024 consensus, with explicit JBDS 2023 differences). Thirteen quotations verified against original accessible texts; explanations/arithmetic labelled teaching reasoning, fictional observations labelled. Corrected the DKA worked-example severe-pH threshold and HHS quiz osmolality wording.
+- Nine focused tests passed; signed-in desktop/390px lessons, all three learning checks, source popover and four new quiz answers verified; no page errors or horizontal overflow. Search and private audit corpus rebuilt, all three headings retained, audit uploaded. This batch is source-checked, not whole-page re-audit or consultant certification.

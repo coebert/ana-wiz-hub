@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { topicReferences } from "@/data/references";
 import { InlineRef } from "@/components/references/InlineRef";
 import { LessonSources } from "@/components/topic/LessonSources";
 
@@ -136,5 +138,70 @@ export function PituitaryApoplexyGuidelineTeaching() {
     </ul>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: which apoplexy patients does the UK guideline clearly say need surgery?</summary><p className="mt-2">Those with worsening neurological symptoms. For most others the best approach is uncertain.</p></details>
     <LessonSources topicId="icu-endocrine-emergencies" labels={["UK pituitary apoplexy 2011"]} />
+  </div>;
+}
+
+// New lessons keep exact quotations in the shared reference records.
+const EQuote = ({ label }: { label: string }) => {
+  const reference = topicReferences["icu-endocrine-emergencies"].find((entry) => entry.label === label);
+  return <blockquote className="border-l-2 border-border pl-4 italic">{reference?.excerpt}<R label={label} /></blockquote>;
+};
+
+export function AdrenalInsufficiencyResuscitationTeaching() {
+  return <div className="space-y-4 text-muted-foreground leading-relaxed">
+    <h3 className="text-lg font-semibold text-foreground">Recognise cortisol failure before the full biochemical pattern appears</h3>
+    <p>Adrenal insufficiency means inadequate cortisol availability for the stress of illness. Primary adrenal failure also impairs aldosterone secretion; pituitary disease or suppression from exogenous glucocorticoids usually preserves aldosterone. Therefore hyperkalaemia supports primary disease but is not required for crisis. Consider the diagnosis in a patient with known adrenal disease, pituitary disease, omitted replacement or prolonged steroid exposure who develops vomiting, volume depletion, hypotension, confusion or hypoglycaemia. Infection can trigger a crisis and coexist with it.<R label="SfE adrenal emergency 2016" /></p>
+    <h3 className="text-lg font-semibold text-foreground">First decisions: sample if feasible, replace immediately, resuscitate in parallel</h3>
+    <EQuote label="SfE crisis immediate treatment 2016" />
+    <p>Take paired cortisol and ACTH before hydrocortisone if this can be done immediately. Record the time of sampling and steroid administration for later interpretation. An unstable patient must not wait for a cortisol result or a Synacthen test; endocrine confirmation can follow recovery. Obtain electrolytes, renal function and glucose while assessing haemodynamics and the precipitant.<R label="SfE adrenal emergency 2016" /></p>
+    <EQuote label="SfE crisis hydrocortisone 2016" />
+    <EQuote label="SfE crisis fluids 2016" />
+    <p><strong className="text-foreground">Teaching reasoning (not a quoted guideline):</strong> the first-hour saline recommendation is not permission to give an unreviewed daily fluid total. Reassess perfusion, lung findings, urine output and fluid balance after resuscitation, especially with renal or cardiac disease. Treat hypoglycaemia using the local emergency protocol. Persistent shock needs parallel reassessment for sepsis, bleeding and cardiac dysfunction; a response to hydrocortisone alone cannot prove the cause.</p>
+    <h3 className="text-lg font-semibold text-foreground">Recovery is more than a normal blood pressure</h3>
+    <p>Arrange endocrine review, taper stress hydrocortisone after clinical recovery and establish the underlying diagnosis. In primary insufficiency, fludrocortisone is introduced when daily hydrocortisone falls below 50 mg; it is not routinely required for secondary insufficiency. Explain sick-day replacement, provide a steroid emergency card and teach emergency injection use. Prolonged vomiting needs parenteral replacement rather than repeated oral doses that may not be absorbed.<R label="SfE adrenal emergency 2016" /></p>
+    <EQuote label="SfE crisis sick day 2016" />
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: can normal potassium rule out adrenal crisis after missed prednisolone?</summary><p className="mt-2">No. Secondary insufficiency generally preserves aldosterone. If crisis is suspected, give emergency hydrocortisone without delaying for diagnostic confirmation. In the quoted infusion regimen, 200 mg over 24 hours equals about 8.3 mg/hour; that is arithmetic, not a pump prescription or concentration instruction.</p></details>
+    <LessonSources topicId="icu-endocrine-emergencies" labels={["SfE crisis immediate treatment 2016", "SfE crisis hydrocortisone 2016", "SfE crisis fluids 2016", "SfE crisis sick day 2016", "SfE adrenal emergency 2016"]} />
+  </div>;
+}
+
+export function SepsisSteroidDecisionsTeaching() {
+  return <div className="space-y-4 text-muted-foreground leading-relaxed">
+    <h3 className="text-lg font-semibold text-foreground">Three steroid decisions that must not be confused</h3>
+    <p><strong className="text-foreground">Teaching reasoning (not a quoted guideline):</strong> distinguish replacing missing cortisol in suspected adrenal crisis, maintaining replacement during severe infection in someone with established insufficiency, and giving adjunctive corticosteroids in septic shock. These are different indications. Sepsis is not synonymous with adrenal failure, and vasopressor use does not itself establish Addison's disease. Infection may precipitate both DKA and adrenal crisis, so address the endocrine emergency and infection together.</p>
+    <h3 className="text-lg font-semibold text-foreground">What the sepsis guidelines actually recommend</h3>
+    <EQuote label="SSC steroid indication 2021" />
+    <p>SSC 2021 makes a weak recommendation with moderate-quality evidence for IV corticosteroids in adult septic shock with an ongoing vasopressor requirement. Its suggested vasopressor dose/timing is an implementation remark, not an adrenal diagnostic test. Do not wait for that remark's threshold when adrenal crisis is suspected.<R label="SSC steroid indication 2021" /><R label="SfE crisis immediate treatment 2016" /></p>
+    <EQuote label="SSC hydrocortisone regimen 2021" />
+    <EQuote label="SCCM septic shock steroids 2024" />
+    <p>The SCCM 2024 update is a conditional recommendation with low certainty of evidence. These recommendations concern septic shock, not routine steroid treatment for every patient with infection. They do not replace antimicrobial therapy, source control, haemodynamic reassessment or appropriate organ support. Broader management remains on the <Link to="/intensive-care/sepsis" className="text-primary underline">Sepsis page</Link>.<R label="SCCM septic shock steroids 2024" /></p>
+    <h3 className="text-lg font-semibold text-foreground">Benefits, harms and what not to infer</h3>
+    <EQuote label="SSC steroid tradeoffs 2021" />
+    <p>SSC's synthesis favoured faster shock resolution and more vasopressor-free days, but did not establish a clear mortality benefit. That is not the same as proof of no benefit in any patient, and the 2024 panel graded its updated recommendation separately. Do not present these guideline conclusions as a guarantee of survival or as proof that the patient had cortisol deficiency.<R label="SSC steroid tradeoffs 2021" /><R label="SCCM septic shock steroids 2024" /></p>
+    <EQuote label="SCCM avoid steroid pulses 2024" />
+    <p><strong className="text-foreground">Teaching reasoning (not a quoted guideline):</strong> document the indication and review plan, avoid duplicate steroid prescriptions, and follow glucose, electrolytes, fluid balance, infection progress and weakness. If a patient has DKA as well as a genuine steroid indication, anticipate changing insulin requirements rather than omitting needed cortisol replacement. The emergency adrenal-crisis bolus and the warning against high-dose septic-shock pulse courses describe different clinical decisions.</p>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: does sepsis without shock automatically need hydrocortisone?</summary><p className="mt-2">No. The cited sepsis recommendations concern septic shock. Established replacement needs or suspected adrenal crisis are separate indications. Do not use a random cortisol result or a single noradrenaline dose as an automatic diagnosis.</p></details>
+    <LessonSources topicId="icu-endocrine-emergencies" labels={["SSC steroid indication 2021", "SSC hydrocortisone regimen 2021", "SSC steroid tradeoffs 2021", "SCCM septic shock steroids 2024", "SCCM avoid steroid pulses 2024", "SfE crisis immediate treatment 2016"]} />
+  </div>;
+}
+
+export function DkaSafetyAndRecoveryTeaching() {
+  return <div className="space-y-4 text-muted-foreground leading-relaxed">
+    <h3 className="text-lg font-semibold text-foreground">Recognise DKA even when glucose is not high</h3>
+    <p>The 2024 international adult consensus was endorsed by ADA, EASD, JBDS, AACE and DTS. It complements the UK JBDS 2023 pathway already described above; it does not justify mixing isolated thresholds from different protocols. Assess diabetes history or hyperglycaemia, ketonaemia and metabolic acidosis together. Glucose alone cannot establish recovery or exclude DKA.<R label="DKA euglycaemia consensus 2024" /></p>
+    <EQuote label="DKA euglycaemia consensus 2024" />
+    <p>Reduced intake, pregnancy and SGLT2 inhibitors can accompany euglycaemic presentations. Check blood ketones and a venous gas in an unwell at-risk patient. Treat the precipitant alongside the metabolic emergency: suspected infection needs clinical assessment, not an assumption that every DKA episode is sepsis.<R label="DKA euglycaemia consensus 2024" /></p>
+    <h3 className="text-lg font-semibold text-foreground">Potassium is the insulin safety gate</h3>
+    <EQuote label="DKA potassium safety 2024" />
+    <p>Serum potassium may initially look normal or high despite depletion. Insulin and correction of acidosis can uncover a dangerous deficit. The international consensus explicitly delays insulin below 3.5 mmol/L until potassium is above 3.5. The JBDS table instead directs urgent senior review and additional replacement below 3.5; use the locally adopted monitored pathway rather than converting this lesson into a concentrated-potassium prescription. Renal impairment and urine output change replacement safety.<R label="DKA potassium safety 2024" /><R label="JBDS DKA potassium 2023" /></p>
+    <h3 className="text-lg font-semibold text-foreground">Falling glucose means add substrate, not abandon ketone clearance</h3>
+    <EQuote label="DKA glucose support 2024" />
+    <p>The international threshold is 13.9 mmol/L, conventionally rounded to 14 in the UK pathway. Dextrose permits insulin to continue while ketoacidosis resolves. Keep glucose, ketones, venous acid–base status and potassium trends visible together. For the UK monitoring schedule use the JBDS section above; the international report uses a different sampling schedule, so do not silently substitute it.<R label="DKA glucose support 2024" /><R label="JBDS-IP DKA 2023 (ABCD)" /></p>
+    <h3 className="text-lg font-semibold text-foreground">Resolution and safe transition</h3>
+    <EQuote label="DKA resolution consensus 2024" />
+    <p>The consensus requires ketone clearance plus either the pH or bicarbonate criterion. The UK JBDS pathway uses ketones below 0.6 mmol/L AND venous pH above 7.3, and advises against using bicarbonate at this stage. These are explicitly different definitions, not a new combined rule. Urinary ketones and the anion gap can mislead during recovery; saline-related hyperchloraemia can persist after ketosis clears.<R label="DKA resolution consensus 2024" /><R label="JBDS DKA resolution 2023" /></p>
+    <p><strong className="text-foreground">Teaching reasoning (not a quoted guideline):</strong> before stopping IV insulin, document that the chosen protocol's resolution criteria are met, the subcutaneous-insulin/overlap plan, oral intake and the next glucose check. Identify why DKA occurred and address medicine access, injection problems and sick-day planning. A normal bedside glucose is not a discharge criterion.</p>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: glucose 10, ketones 2.4, pH 7.25 — may insulin stop?</summary><p className="mt-2">No. These fictional observations show persisting ketoacidosis. Continue the adopted DKA pathway with glucose support and potassium review. For a fictional 70 kg adult, 0.1 units/kg/hour is 7 units/hour and 0.05 units/kg/hour is 3.5 units/hour: arithmetic illustrating the guideline rates, not an individual prescription.</p></details>
+    <LessonSources topicId="icu-endocrine-emergencies" labels={["DKA euglycaemia consensus 2024", "DKA potassium safety 2024", "DKA glucose support 2024", "DKA resolution consensus 2024", "JBDS DKA resolution 2023", "JBDS DKA potassium 2023"]} />
   </div>;
 }
