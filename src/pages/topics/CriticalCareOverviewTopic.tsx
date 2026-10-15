@@ -3,10 +3,11 @@ import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { Exam } from "@/data/curriculum";
-import { IcuStructureTeaching, IcuTeamRolesTeaching, IcuCommunicationTeaching } from "@/components/topic/CriticalCareOverviewTeaching";
+import { GpicsTeaching, IcuStructureTeaching, IcuTeamRolesTeaching, IcuCommunicationTeaching } from "@/components/topic/CriticalCareOverviewTeaching";
 
 const exams = [Exam.FINAL, Exam.FFICM, Exam.EDIC];
 const quiz = [
+  { question: "In GPICS V3 (2026), what were the old 'standards' renamed?", options: ["Quality recommendations", "Minimum standards", "Core requirements", "Essential practices"], correctIndex: 1, explanation: "V3 renamed 'standards' to 'minimum standards' — something all UK ICUs are expected to meet. 'Recommendations' became 'recommendations for a quality service'." },
   { question: "Under the ICS 2021 levels, a patient who needs invasive ventilation alone is which level?", options: ["Level 1", "Level 2", "Level 3", "Ward care"], correctIndex: 2, explanation: "“Patients needing advanced respiratory monitoring and support alone” is a level 3 descriptor." },
   { question: "GPICS 2.1: within what time must an ICU consultant review a new admission in person?", options: ["4 hours", "12 hours", "24 hours", "Next ward round"], correctIndex: 1, explanation: "As urgently as the clinical state dictates and always within 12 hours of admission." },
   { question: "What is the GPICS minimum registered nurse ratio for a level 2 patient?", options: ["1:1", "1:2", "1:3", "1:4"], correctIndex: 1, explanation: "Level 3 needs at least 1:1; level 2 needs at least 1:2, plus a supernumerary nurse in charge." },
@@ -16,10 +17,11 @@ const quiz = [
 
 export default function CriticalCareOverviewTopic() {
   return <TopicTemplate title="Critical Care Overview: Structure, Team & Communication" subtitle="Final / FFICM / EDIC — Organisation of Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu" topicId="critical-care-overview" topicTitle="Critical Care Overview: Structure, Team & Communication"
-    objectives={["Define ward care and levels 1–3 using the ICS 2021 descriptors", "State GPICS admission, consultant review and discharge time standards", "Give GPICS medical and nursing ratios and explain the supernumerary nurse in charge", "Interpret the evidence for intensivist-led care, including the overnight staffing trial", "Describe daily goals, structured handover and family communication evidence, and their limits"]}
+    objectives={["Explain what GPICS is, its editions, and the difference between minimum standards and quality recommendations", "Define ward care and levels 1–3 using the ICS 2021 descriptors", "State GPICS admission, consultant review and discharge time standards", "Give GPICS medical and nursing ratios and explain the supernumerary nurse in charge", "Interpret the evidence for intensivist-led care, including the overnight staffing trial", "Describe daily goals, structured handover and family communication evidence, and their limits"]}
     sectionExamMapping={{ objectives: { exams }, keyPoints: { exams } }}
     sectionSources={{ objectives: ["ICS Levels 2021 purpose", "GPICS 2.1 consultant review", "GPICS 2.1 nurse ratios", "Pronovost 2002 staffing", "Starmer 2014 I-PASS"] }}
     keyPoints={[
+      { text: "GPICS V3 (2026) is the definitive reference for planning, commissioning and delivering UK adult intensive care; its tiers are minimum standards and quality recommendations", cites: ["GPICS V3 definitive", "GPICS V3 minimum standards", "GPICS V3 quality recommendations"] },
       { text: "Levels of care describe what the patient needs, not where they are", cites: ["ICS Levels 2021 purpose"] },
       { text: "Advanced respiratory support alone makes a patient level 3", cites: ["ICS Levels 2021 level 3"] },
       { text: "Unplanned admission within 4 hours of the decision; consultant review in person within 12 hours", cites: ["GPICS 2.1 admission timing", "GPICS 2.1 consultant review"] },
@@ -31,6 +33,7 @@ export default function CriticalCareOverviewTopic() {
     coreConcepts={<div className="space-y-8">
       <p className="text-muted-foreground leading-relaxed">To follow one patient from referral to discharge, see <Link to="/intensive-care/icu-inpatient-journey" className="text-primary underline">The ICU Inpatient Journey</Link>. Emergency pages: <Link to="/intensive-care/sepsis-resuscitation" className="text-primary underline">Septic shock resuscitation</Link>, <Link to="/intensive-care/icu-anaphylaxis" className="text-primary underline">Anaphylaxis</Link> and <Link to="/intensive-care/icu-eclampsia" className="text-primary underline">Severe pre-eclampsia and eclampsia</Link>.</p>
       <p className="text-muted-foreground leading-relaxed">These lessons quote the ICS levels of care, the FICM/ICS GPICS 2.1 standards and key trials word for word in the source popovers. Worked numbers and explanations are teaching reasoning, not local staffing policy. Related pages: <Link to="/intensive-care/non-technical-skills" className="text-primary underline">Non-technical Skills</Link>, <Link to="/intensive-care/end-of-life-communication" className="text-primary underline">End-of-Life Care &amp; Communication</Link>, <Link to="/intensive-care/ventilation-protocols" className="text-primary underline">ICU Ventilation Protocols</Link> and <Link to="/intensive-care/pics-follow-up" className="text-primary underline">PICS Follow-up</Link>.</p>
+      <ExamSection id="gpics" exams={exams}><CollapsibleSubsection title="GPICS: the UK intensive care standards" defaultOpen><GpicsTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="icu-structure" exams={exams}><CollapsibleSubsection title="ICU structure: levels of care and time standards" defaultOpen><IcuStructureTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="icu-team-roles" exams={exams}><CollapsibleSubsection title="Team roles and staffing"><IcuTeamRolesTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="icu-communication" exams={exams}><CollapsibleSubsection title="Communication: daily goals, handover and families"><IcuCommunicationTeaching /></CollapsibleSubsection></ExamSection>

@@ -1812,7 +1812,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the Sepsis-3 definition of sepsis and septic shock?",
     },
     {
-      "a": "The 2021 Surviving Sepsis Campaign Hour-1 bundle is a recognition-to-action package that should be initiated within 1 hour of sepsis recognition: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin rapid 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L; (5) start vasopressors during or after fluid if MAP < 65 mmHg. For sepsis without shock where infection is possible but not proven, SSC 2021 permits up to 3 hours for antibiotics while diagnostic work-up continues.",
+      "a": "The 2021 Surviving Sepsis Campaign Hour-1 bundle is a recognition-to-action package that should be initiated within 1 hour of sepsis recognition: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L — SSC 2021 suggests giving this within the first 3 hours (weak recommendation, low-quality evidence); (5) start vasopressors during or after fluid if MAP < 65 mmHg. For sepsis without shock where infection is possible but not proven, SSC 2021 permits up to 3 hours for antibiotics while diagnostic work-up continues.",
       "q": "What is the Surviving Sepsis Hour-1 bundle?",
     },
     {
@@ -7163,7 +7163,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The 2021 Surviving Sepsis Campaign Hour-1 bundle is a recognition-to-action package that should be initiated within 1 hour of sepsis recognition: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin rapid 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L; (5) start vasopressors during or after fluid if MAP < 65 mmHg. For sepsis without shock where infection is possible but not proven, SSC 2021 permits up to 3 hours for antibiotics while diagnostic work-up continues.",
+          "text": "The 2021 Surviving Sepsis Campaign Hour-1 bundle is a recognition-to-action package that should be initiated within 1 hour of sepsis recognition: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L — SSC 2021 suggests giving this within the first 3 hours (weak recommendation, low-quality evidence); (5) start vasopressors during or after fluid if MAP < 65 mmHg. For sepsis without shock where infection is possible but not proven, SSC 2021 permits up to 3 hours for antibiotics while diagnostic work-up continues.",
         },
         "name": "What is the Surviving Sepsis Hour-1 bundle?",
       },
