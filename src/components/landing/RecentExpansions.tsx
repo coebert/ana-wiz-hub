@@ -19,6 +19,7 @@ interface RecentExpansion {
 }
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
+  { topicId: "icu-staffing-by-unit", section: "intensive-care", title: "ICU Staffing by Unit Type (GPICS V3)", note: "New page: what GPICS V3 adds for cardiothoracic, neuro, burns, remote and rural, and enhanced care units." },
   { topicId: "icu-costs", section: "intensive-care", title: "ICU Costs (NHS data)", note: "New page: NHS cost per adult critical care day by organs supported and unit type, from the National Schedule of NHS Costs." },
   { topicId: "icu-length-of-stay", section: "intensive-care", title: "ICU Length of Stay", note: "New page: ICNARC and NHS hospital statistics on stay, days of each organ support and stays by condition." },
   { topicId: "icu-outcomes", section: "intensive-care", title: "ICU Outcomes", note: "New page: survival after ICU and the late excess mortality, length of stay, readmission rates and their link to death (Wunsch 2010, Herridge 2003, Rosenberg 2000)." },

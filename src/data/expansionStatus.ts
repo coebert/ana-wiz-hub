@@ -238,6 +238,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from ICU Outcomes: four lessons on ICNARC 2024-25 and NHS HES Adult Critical Care stays, support days by organ type, condition-specific stays and deprivation; six-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "icu-staffing-by-unit": {
+    status: "expanded",
+    note: "New page linked from ICU Staffing Ratios: four lessons quoting GPICS V3 (January 2026) unit-type chapters (cardiothoracic, neurocritical care, burns, smaller remote and rural, enhanced care) against the general staffing baseline; six-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "icu-staffing-ratios": {
     status: "expanded",
     note: "New page linked from Critical Care Overview: five lessons quoting GPICS V3 (January 2026) staffing chapters for consultants, resident doctors/ACCPs, registered nurses and nursing associates, pharmacy, AHPs and support staff, by day/night; worked nurse and pharmacist arithmetic; eight-question quiz. Source-checked, not consultant-reviewed.",

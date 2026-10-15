@@ -30,7 +30,7 @@ export default function IcuStaffingByUnitTopic() {
     ]}
     quizQuestions={quiz}
     coreConcepts={<div className="space-y-8">
-      <p className="text-muted-foreground leading-relaxed">This page complements <Link to="/intensive-care/icu-staffing-ratios" className="text-primary underline">ICU Staffing Ratios</Link>, which covers each role in a general ICU. Quotations are verbatim from GPICS Version 3 (FICM/ICS, January 2026), checked 15 October 2026; the summary table is teaching synthesis. GPICS V3 does not cover paediatric units; local commissioning and specialist service specifications also apply. Source-checked, not consultant-reviewed.</p>
+      <p className="text-muted-foreground leading-relaxed">This page complements <Link to="/intensive-care/icu-staffing-ratios" className="text-primary underline">ICU Staffing Ratios</Link>, which covers each role in a general ICU. Quotations are verbatim from GPICS Version 3 (FICM/ICS, January 2026), checked 15 October 2026; the summary table is teaching synthesis. GPICS V3 covers adult intensive care; local commissioning and specialist service specifications also apply. Source-checked, not consultant-reviewed.</p>
       <ExamSection id="unit-summary" exams={exams}><CollapsibleSubsection title="1. Summary by unit type" defaultOpen><UnitSummaryTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="unit-cardiothoracic" exams={exams}><CollapsibleSubsection title="2. Cardiothoracic intensive care"><UnitCardiothoracicTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="unit-neuro-burns" exams={exams}><CollapsibleSubsection title="3. Neurocritical care and burns"><UnitNeuroBurnsTeaching /></CollapsibleSubsection></ExamSection>
