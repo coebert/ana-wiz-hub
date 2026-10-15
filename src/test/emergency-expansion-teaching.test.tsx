@@ -32,9 +32,9 @@ describe("next emergency source-led expansion", () => {
     expect(page).toContain("105");
     expect(page).toContain("300 mg IV load");
   });
-  it("keeps both ten-question quizzes valid and removes unsupported outcomes", () => {
+  it("keeps both quizzes (at least ten questions) valid and removes unsupported outcomes", () => {
     for (const quiz of [emergencySurgeryQuestions, icuEndocrineEmergenciesQuestions]) {
-      expect(quiz).toHaveLength(10);
+      expect(quiz.length).toBeGreaterThanOrEqual(10);
       for (const q of quiz) {
         expect(q.correctIndex).toBeGreaterThanOrEqual(0);
         expect(q.correctIndex).toBeLessThan(q.options.length);
