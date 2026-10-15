@@ -78,8 +78,21 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
-  const messages = body.messages;
-  if (!Array.isArray(messages) || messages.length === 0) {
+  // Rebuild the history server-side: only plain text from user/assistant turns
+  // is kept, so callers cannot inject system/tool roles or non-text parts.
+  const rawMessages = Array.isArray(body.messages) ? body.messages.slice(-20) : [];
+  const messages: UIMessage[] = rawMessages
+    .filter((m) => m && (m.role === "user" || m.role === "assistant"))
+    .map((m, i) => {
+      const text = (Array.isArray(m.parts) ? m.parts : [])
+        .map((p) => (p as { type?: string; text?: unknown }).type === "text" && typeof (p as { text?: unknown }).text === "string" ? (p as { text: string }).text : "")
+        .join(" ")
+        .slice(0, 4000)
+        .trim();
+      return { id: typeof m.id === "string" ? m.id.slice(0, 64) : `m${i}`, role: m.role, parts: [{ type: "text", text }] } as UIMessage;
+    })
+    .filter((m) => (m.parts[0] as { text: string }).text.length > 0);
+  if (messages.length === 0 || messages[messages.length - 1].role !== "user") {
     return new Response(JSON.stringify({ error: "messages required" }), {
       status: 400,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
