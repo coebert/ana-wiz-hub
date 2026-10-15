@@ -181,7 +181,7 @@ const SepsisTopic = () => {
         { text: "Each hour of antibiotic delay is associated with about 4% higher odds of in-hospital death (OR 1.04 per hour); faster fluid bolus completion was not", cites: ["Seymour 2017 NY sepsis mandate"] },
         { text: "Source control is critical — drain, debride, or remove infected sources early", cites: ["SSC 2021"] },
         { text: "PCT-guided de-escalation reduces antibiotic duration by 2–3 days without increasing mortality", cites: ["Sepsis-3 2016"] },
-        { text: "Lactate >4 mmol/L carries 30–40% mortality; serial clearance guides resuscitation adequacy", cites: ["BJA Educ 2019"] },
+        { text: "Lactate ≥4 mmol/L carried 28.4% mortality in ED patients with infection (vs 4.9% below 2.5); serial clearance guides resuscitation", cites: ["Shapiro 2005 lactate mortality", "SSC 2021 lactate"] },
         { text: "No single biomarker diagnoses sepsis — trends are more informative than single values", cites: ["SSC 2021"] },
         { text: "IDSA 2024 challenges rigid 1h antibiotic + 30 mL/kg fluid targets in undifferentiated sepsis", cites: ["Sepsis-3 2016"] },
       ]}
@@ -203,6 +203,7 @@ const SepsisTopic = () => {
           "Sepsis-3 2016",
           "SSC 2021",
           "BJA Educ 2019",
+          "Shapiro 2005 lactate mortality",
         ],
         workedExamples: ["Sepsis-3 2016", "SSC 2021"],
       }}
@@ -584,7 +585,7 @@ const SepsisTopic = () => {
             {[
               { label: "Diagnosis", detail: "No biomarker replaces clinical assessment. PCT >0.5 ng/mL with compatible clinical picture supports bacterial sepsis. Presepsin may add value in early detection but availability is limited." },
               { label: "Antibiotic Stewardship", detail: "PCT-guided algorithms reduce antibiotic duration by 2–3 days without increasing mortality (multiple RCTs). SSC 2021 recommends daily PCT for de-escalation. PCT that fails to decline suggests inadequate source control, resistant organism, or non-infectious cause." },
-              { label: "Prognostication", detail: "Lactate >4 mmol/L: mortality ~30–40%. Persistently elevated lactate despite resuscitation is the strongest predictor of poor outcome. Rising PCT/CRP despite treatment suggests treatment failure." },
+              { label: "Prognostication", detail: "Lactate ≥4 mmol/L carried 28.4% mortality in ED patients with infection (Shapiro 2005). Persistently elevated lactate despite resuscitation is the strongest predictor of poor outcome. Rising PCT/CRP despite treatment suggests treatment failure." },
               { label: "Serial Monitoring", detail: "Trends are more informative than single values. Lactate 2–4 hourly during resuscitation, CRP daily, PCT 24–48 hourly. Declining trajectory supports current management; plateau or rise mandates reassessment." },
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
