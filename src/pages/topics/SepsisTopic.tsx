@@ -46,7 +46,7 @@ const sepsisFaqs: Array<[string, string]> = [
   ],
   [
     "What is the Surviving Sepsis Hour-1 bundle?",
-    "The 2021 Surviving Sepsis Campaign Hour-1 bundle is a recognition-to-action package that should be initiated within 1 hour of sepsis recognition: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin rapid 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L; (5) start vasopressors during or after fluid if MAP < 65 mmHg. For sepsis without shock where infection is possible but not proven, SSC 2021 permits up to 3 hours for antibiotics while diagnostic work-up continues.",
+    "The 2021 Surviving Sepsis Campaign Hour-1 bundle is a recognition-to-action package that should be initiated within 1 hour of sepsis recognition: (1) measure lactate and re-measure if > 2 mmol/L; (2) obtain blood cultures before antibiotics; (3) administer broad-spectrum antibiotics; (4) begin 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L — SSC 2021 suggests giving this within the first 3 hours (weak recommendation, low-quality evidence); (5) start vasopressors during or after fluid if MAP < 65 mmHg. For sepsis without shock where infection is possible but not proven, SSC 2021 permits up to 3 hours for antibiotics while diagnostic work-up continues.",
   ],
   [
     "Why does every hour of delayed antibiotics matter in septic shock?",
@@ -176,7 +176,7 @@ const SepsisTopic = () => {
       workedExamples={workedExamples}
       keyPoints={[
         { text: "Sepsis-3: infection + organ dysfunction (SOFA ≥2). Septic shock: vasopressors needed + lactate >2", cites: ["Sepsis-3 2016"] },
-        { text: "Hour-1 bundle: lactate, cultures, antibiotics, fluids (30 ml/kg), vasopressors", cites: ["SSC 2021"] },
+        { text: "Hour-1 bundle: lactate, cultures, antibiotics, fluids (30 ml/kg within 3 h — weak suggestion), vasopressors", cites: ["SSC 2021"] },
         { text: "Noradrenaline is the first-line vasopressor; vasopressin is second-line", cites: ["SSC 2021", "ESICM Shock 2014"] },
         { text: "Each hour of antibiotic delay is associated with about 4% higher odds of in-hospital death (OR 1.04 per hour); faster fluid bolus completion was not", cites: ["Seymour 2017 NY sepsis mandate"] },
         { text: "Source control is critical — drain, debride, or remove infected sources early", cites: ["SSC 2021"] },
