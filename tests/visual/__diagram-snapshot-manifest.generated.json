@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-15T16:19:27.536Z",
-  "count": 463,
+  "generatedAt": "2026-10-15T21:03:37.985Z",
+  "count": 465,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -197,6 +197,10 @@
     {
       "name": "BlockAnalgesiaProfileDiagram",
       "route": "/dev/diagram-snapshot/BlockAnalgesiaProfileDiagram"
+    },
+    {
+      "name": "BloodGasCalculator",
+      "route": "/dev/diagram-snapshot/BloodGasCalculator"
     },
     {
       "name": "BonfilsDeviceDiagram",
@@ -837,6 +841,10 @@
     {
       "name": "ICPVolumeCurveDiagram",
       "route": "/dev/diagram-snapshot/ICPVolumeCurveDiagram"
+    },
+    {
+      "name": "IcuCostCalculator",
+      "route": "/dev/diagram-snapshot/IcuCostCalculator"
     },
     {
       "name": "ICUSedationComparisonDiagram",
