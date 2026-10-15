@@ -211,7 +211,7 @@ export const AcidsBasesDiagram = () => {
                 </div>
               </div>
               <p className="text-xs text-muted-foreground mt-2 text-center">
-                [A⁻]/[HA] ratio = {ratio < 0.01 ? ratio.toExponential(1) : ratio > 100 ? ratio.toExponential(1) : ratio.toFixed(2)}
+                {(() => { const r = percentIonised / Math.max(percentUnionised, 1e-9); const f = r < 0.01 || r > 100 ? r.toExponential(1) : r.toFixed(2); return drugType === "acid" ? `[A⁻]/[HA] ratio = ${f}` : `[BH⁺]/[B] ratio = ${f}`; })()}
               </p>
             </div>
   
