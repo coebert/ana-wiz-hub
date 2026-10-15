@@ -4803,7 +4803,7 @@
       "topicId": "organic-chemistry",
       "file": "src/pages/topics/OrganicChemistryTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2008"
+        "Nau & Strichartz 2002"
       ]
     },
     {
@@ -4811,7 +4811,7 @@
       "topicId": "organic-chemistry",
       "file": "src/pages/topics/OrganicChemistryTopic.tsx",
       "requiredLabels": [
-        "Eger Structure-Activity"
+        "Peck & Hill Volatiles"
       ]
     },
     {
@@ -4843,7 +4843,7 @@
       "topicId": "oxidation-reduction",
       "file": "src/pages/topics/OxidationReductionTopic.tsx",
       "requiredLabels": [
-        "BJA Educ Oxygen Toxicity 2016"
+        "Horncastle & Lumb 2019 Hyperoxia"
       ]
     },
     {
@@ -4851,7 +4851,7 @@
       "topicId": "oxidation-reduction",
       "file": "src/pages/topics/OxidationReductionTopic.tsx",
       "requiredLabels": [
-        "BJA Educ Paracetamol 2021",
+        "Freo 2021 Paracetamol",
         "Rumack-Matthew Nomogram"
       ]
     },
@@ -4860,7 +4860,7 @@
       "topicId": "oxidation-reduction",
       "file": "src/pages/topics/OxidationReductionTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2010"
+        "Blood Gas Review 2025"
       ]
     },
     {

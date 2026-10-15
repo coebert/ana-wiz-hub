@@ -354,11 +354,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Why is methaemoglobin clinically dangerous?",
     },
     {
-      "a": "A galvanic (fuel) cell consumes O₂ at a lead anode (Pb → Pb²⁺ + 2e⁻), generating a current proportional to O₂ partial pressure at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻). It is self-powered, accurate to ±3%, and lasts ~12 months because the anode is consumed.",
+      "a": "A galvanic (fuel) cell consumes O₂ at a lead anode (Pb + 2OH⁻ → PbO + H₂O + 2e⁻), generating a current proportional to O₂ partial pressure at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻). It is self-powered, accurate to ±3%, and lasts typically 1–2 years because the anode is consumed.",
       "q": "How does a fuel cell oxygen analyser work?",
     },
     {
-      "a": "Sevoflurane reacts with strong bases (KOH, NaOH) in soda-lime to form Compound A, a vinyl ether with renal toxicity in rats. Desflurane, isoflurane and enflurane react with dry CO₂ absorbent to generate carbon monoxide. Both risks are mitigated by using KOH/NaOH-free absorbents (e.g. Amsorb Plus) and avoiding desiccated absorbent.",
+      "a": "Sevoflurane reacts with strong bases (KOH, NaOH) in soda-lime to form Compound A, a vinyl ether with renal toxicity in rats. Desflurane, enflurane and isoflurane (in descending order of risk; sevoflurane produces little) react with desiccated CO₂ absorbent to generate carbon monoxide. Both risks are mitigated by using KOH/NaOH-free absorbents (e.g. Amsorb Plus) and avoiding desiccated absorbent.",
       "q": "Which inhaled anaesthetics are degraded by CO₂ absorbents?",
     },
   ],
@@ -4125,7 +4125,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A galvanic (fuel) cell consumes O₂ at a lead anode (Pb → Pb²⁺ + 2e⁻), generating a current proportional to O₂ partial pressure at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻). It is self-powered, accurate to ±3%, and lasts ~12 months because the anode is consumed.",
+          "text": "A galvanic (fuel) cell consumes O₂ at a lead anode (Pb + 2OH⁻ → PbO + H₂O + 2e⁻), generating a current proportional to O₂ partial pressure at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻). It is self-powered, accurate to ±3%, and lasts typically 1–2 years because the anode is consumed.",
         },
         "name": "How does a fuel cell oxygen analyser work?",
       },
@@ -4133,7 +4133,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sevoflurane reacts with strong bases (KOH, NaOH) in soda-lime to form Compound A, a vinyl ether with renal toxicity in rats. Desflurane, isoflurane and enflurane react with dry CO₂ absorbent to generate carbon monoxide. Both risks are mitigated by using KOH/NaOH-free absorbents (e.g. Amsorb Plus) and avoiding desiccated absorbent.",
+          "text": "Sevoflurane reacts with strong bases (KOH, NaOH) in soda-lime to form Compound A, a vinyl ether with renal toxicity in rats. Desflurane, enflurane and isoflurane (in descending order of risk; sevoflurane produces little) react with desiccated CO₂ absorbent to generate carbon monoxide. Both risks are mitigated by using KOH/NaOH-free absorbents (e.g. Amsorb Plus) and avoiding desiccated absorbent.",
         },
         "name": "Which inhaled anaesthetics are degraded by CO₂ absorbents?",
       },
