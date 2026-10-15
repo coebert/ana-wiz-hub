@@ -20,6 +20,12 @@ interface RecentExpansion {
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
   {
+    topicId: "critical-care-overview",
+    section: "intensive-care",
+    title: "Critical Care Overview",
+    note: "New page: ICS levels of care, GPICS admission and staffing standards, intensivist staffing evidence, daily goals, structured handover and family meetings.",
+  },
+  {
     topicId: "ventilation-protocols",
     section: "intensive-care",
     title: "ICU Ventilation Protocols",
