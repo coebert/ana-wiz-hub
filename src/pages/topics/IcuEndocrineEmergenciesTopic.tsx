@@ -136,20 +136,21 @@ const workedExamples: WorkedExample[] = [
         <li>Vasopressor-resistant shock + hyponatraemia and hypoglycaemia in a chronic steroid user; high K⁺ also needs investigation for AKI or another cause → adrenal crisis until proven otherwise.</li>
         <li>Take paired random cortisol + ACTH if possible — but <strong>do not delay treatment</strong>.</li>
         <li><strong>Hydrocortisone 100 mg IV stat</strong>, then 200 mg/24 h (50 mg q6h or infusion).</li>
-        <li><strong>1 L 0.9% NaCl over 1 h</strong>; correct glucose with 10% dextrose if &lt; 4.</li>
-        <li>Treat trigger (surgical stress + chronic HPA suppression). Convert to oral hydrocortisone once stable, fludrocortisone is needed below 50 mg/day hydrocortisone in primary adrenal insufficiency, not routinely in steroid-induced secondary insufficiency.</li>
+        <li><strong>1 L isotonic saline within the first hour</strong>, then further IV fluid as required with monitoring for overload; treat hypoglycaemia using the local emergency protocol.</li>
+        <li>Treat trigger (surgical stress + chronic HPA suppression). Taper with recovery under endocrine advice. In primary adrenal insufficiency, start fludrocortisone (100 micrograms daily) once hydrocortisone falls below 50 mg/24 h; it is not routinely needed in steroid-induced secondary insufficiency.</li>
         <li>Sick-day rules going forward: follow individual sick-day replacement advice; IV cover for any major surgery / vomiting.</li>
       </ul>
     ),
     answer: (
       <>
         Adrenal crisis from chronic steroid HPA suppression. Hydrocortisone
-        100 mg IV stat + 200 mg/24 h + 0.9% NaCl 1 L/h + glucose. High-dose
-        hydrocortisone has full mineralocorticoid effect — fludrocortisone not
-        needed acutely.
+        100 mg IV stat, then 200 mg/24 h by infusion (or 50 mg every 6 h), with
+        1 L isotonic saline in the first hour and correction of hypoglycaemia.
+        Fludrocortisone is only started in primary insufficiency, once
+        hydrocortisone falls below 50 mg/24 h.
       </>
     ),
-   cites: ["SfE adrenal emergency 2016"],
+   cites: ["SfE crisis hydrocortisone 2016", "SfE crisis fluids 2016", "SfE adrenal emergency 2016"],
   },
 ];
 
@@ -171,11 +172,11 @@ const IcuEndocrineEmergenciesTopic = () => {
         { text: "DKA potassium paradox: serum K⁺ often normal/high at presentation despite massive total-body deficit — falls fast on insulin; replace K⁺ when 3.5–5.5, urgent senior review and additional potassium if K⁺ <3.5", cites: ["JBDS DKA potassium 2023"] },
         { text: "HHS: marked hyperglycaemia/hyperosmolality with minimal ketosis; in non-ketotic HHS start insulin 0.05 U/kg/h after adequate fluid replacement when glucose plateaus to avoid cerebral oedema and pontine myelinolysis", cites: ["JBDS HHS sodium 2023"] },
         { text: "Thyroid storm (BWPS ≥45): multimodal treatment in parallel; assess cardiac function before β-blockade, and give iodide ≥1 h after thionamide", cites: ["ATA 2016"] },
-        { text: "Adrenal crisis: refractory shock + low Na⁺ / high K⁺ / low glucose → hydrocortisone 100 mg IV stat BEFORE tests; high-dose hydrocortisone has full mineralocorticoid effect", cites: ["ES Adrenal Crisis 2016", "SfE adrenal emergency 2016"] },
+        { text: "Adrenal crisis: refractory shock + low Na⁺ / high K⁺ / low glucose → hydrocortisone 100 mg IV/IM stat then 200 mg/24 h, without waiting for tests; fludrocortisone only in primary insufficiency once hydrocortisone is below 50 mg/24 h", cites: ["SfE crisis hydrocortisone 2016", "SfE crisis immediate treatment 2016", "SfE adrenal emergency 2016"] },
         { text: "Myxoedema coma: hypothermia + hyponatraemia + hypoventilation + obtundation — IV glucocorticoid cover before initial IV levothyroxine; selected T3 adjunct under endocrine advice + passive rewarming + ICU ventilation", cites: ["ATA myxoedema 2014"] },
         { text: "Phaeochromocytoma: specialist-led α-blockade before β-blockade — never β-blocker alone (unopposed α → hypertensive crisis, pulmonary oedema)", cites: ["Endocrine Society PPGL 2014"] },
         { text: "DKA: no routine phosphate or bicarbonate; discuss severe depletion or cardiovascular compromise with diabetes and critical care", cites: ["JBDS-IP DKA 2023 PDF"] },
-        { text: "Pituitary apoplexy: sudden headache + visual loss + ophthalmoplegia + hypopituitarism → hydrocortisone 100 mg IV + urgent neurosurgical referral; replace cortisol BEFORE thyroxine", cites: ["SfE apoplexy emergency 2016"] },
+        { text: "Pituitary apoplexy: sudden headache + visual loss + ophthalmoplegia + hypopituitarism → empirical hydrocortisone (100–200 mg IV bolus then 2–4 mg/h infusion, per SfE 2016) when unstable or vision is threatened + urgent neurosurgical referral; replace cortisol BEFORE thyroxine", cites: ["SfE apoplexy dose 2016", "SfE apoplexy emergency 2016"] },
       ]}
       sectionSources={{
         objectives: ["JBDS-IP DKA 2023 (ABCD)", "JBDS HHS sodium 2023", "ATA 2016", "SfE adrenal emergency 2016"],
@@ -345,9 +346,7 @@ const IcuEndocrineEmergenciesTopic = () => {
                 </p>
                 <p className="text-sm text-muted-foreground mt-1">
                   <strong>Initial ICU management:</strong> ABC with airway protection if obtunded;{" "}
-                  <strong>hydrocortisone 100 mg IV stat then 200 mg/24 h</strong> before any other
-                  hormone (cortisol replacement is life-saving and is given empirically — take a random
-                  cortisol first if it does not delay treatment); cautious isotonic fluid resuscitation
+                  empirical hydrocortisone when there is haemodynamic instability, altered consciousness, reduced visual acuity or severe visual field defects — <strong>100–200 mg IV bolus then 2–4 mg/h by continuous infusion</strong>, or 100 mg IM then 50–100 mg IM 6-hourly — before any other hormone (take a random cortisol first if it does not delay treatment);<InlineRef topicId="icu-endocrine-emergencies" refLabel="SfE apoplexy dose 2016" /> cautious isotonic fluid resuscitation
                   with vasopressors as required; treat hypoglycaemia and correct sodium slowly (≤ 10
                   mmol/L/24 h); full anterior pituitary profile (cortisol, ACTH, TFTs, prolactin, IGF-1,
                   LH/FSH, testosterone/oestradiol) plus hourly urine output and paired osmolalities for
@@ -430,7 +429,7 @@ const IcuEndocrineEmergenciesTopic = () => {
               "DKA: fluids first (1 L 0.9% saline over 1 h), then fixed-rate insulin 0.1 U/kg/h, replace K⁺ once <5.5, continue long-acting insulin.",
               "HHS: slower correction than DKA; high VTE risk — prophylactic anticoagulation; watch for cerebral oedema.",
               "Thyroid storm: propranolol, propylthiouracil, iodine (after PTU), hydrocortisone, supportive cooling — treat trigger.",
-              "Addisonian crisis: hydrocortisone 100 mg IV stat then 200 mg/24 h, fluids, glucose; do not delay for cortisol assay.",
+              "Addisonian crisis: hydrocortisone 100 mg IV/IM stat then 200 mg/24 h (SfE 2016), 1 L isotonic saline in the first hour, treat hypoglycaemia; do not delay for cortisol assay.",
               "Phaeochromocytoma crisis: α-block first (phenoxybenzamine/phentolamine) before β-block — avoid β-blocker alone (unopposed α causes worsening hypertension).",
             ]}
           />
