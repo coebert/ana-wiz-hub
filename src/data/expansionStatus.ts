@@ -119,7 +119,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "non-technical-skills": {
     status: "in-progress",
-    note: "Evidence lesson added (ANTS validation, WHO checklist before-after data and limits, ICU translation, sources list). Other subsections still need review.",
+    note: "ANTS/WHO evidence lesson retained. Added detailed operational debriefing, crisis speaking-up and TeamSTEPPS lessons with AHRQ/NICE quotations, fictional applications, learning checks and four additional quiz questions (15 October 2026). Removed conflicting unsourced STOP-5/timing and PTSD-benefit implications; canonical CUS distinguished from local adaptations. This batch does not complete review of older cognitive-bias, SHEEP, safety or introductory claims; topic remains in progress, not consultant-certified.",
   },
   "iv-anaesthetics": {
     status: "in-progress",
