@@ -8,8 +8,8 @@ type LessonGroup = { title: string; lessons: Lesson[] };
 const physiology: LessonGroup = {
   title: "Physiology",
   lessons: [
-    { topicId: "physiology-overview", label: "Homeostasis and set points", anchor: "homeostasis" },
-    { topicId: "physiology-overview", label: "Negative and positive feedback", anchor: "feedback-loops" },
+    { topicId: "physiology-overview", label: "Homeostasis and set points", anchor: "section-homeostasis-and-set-points" },
+    { topicId: "physiology-overview", label: "Negative and positive feedback", anchor: "section-feedback-loops-negative-and-positive" },
     { topicId: "renal-system-overview", label: "Renal filtration, concentration and hormonal control" },
     { topicId: "cardiovascular-system-overview", label: "Cardiac output and blood pressure" },
     { topicId: "respiratory-system-overview", label: "Ventilation, gas exchange and transport" },
@@ -21,17 +21,17 @@ export const examLessonGroups: Record<"primary" | "final", LessonGroup[]> = {
   primary: [physiology, {
     title: "Endocrine foundations",
     lessons: [
-      { topicId: "thyroid-function", label: "Thyroid synthesis, control and carriage", anchor: "thyroid-function-1" },
-      { topicId: "diabetes-management", label: "Insulin physiology and the stress response", anchor: "diabetes-management-1" },
-      { topicId: "endocrine-tumours", label: "Adrenal medulla and catecholamine physiology", anchor: "endocrine-tumours-1" },
+      { topicId: "thyroid-function", label: "Thyroid synthesis, control and carriage", anchor: "section-synthesis-control-and-carriage" },
+      { topicId: "diabetes-management", label: "Insulin physiology and the stress response", anchor: "section-insulin-physiology-and-the-stress-response" },
+      { topicId: "endocrine-tumours", label: "Adrenal medulla and catecholamine physiology", anchor: "section-adrenal-medulla-and-phaeochromocytoma-physiology" },
     ],
   }],
   final: [physiology, {
     title: "Endocrine disease and emergencies",
     lessons: [
-      { topicId: "thyroid-function", label: "Perioperative hyper- and hypothyroidism", anchor: "thyroid-function-3" },
-      { topicId: "diabetes-management", label: "Perioperative diabetes: assessment and newer drugs", anchor: "diabetes-management-2" },
-      { topicId: "endocrine-tumours", label: "Anaesthesia for phaeochromocytoma", anchor: "endocrine-tumours-3" },
+      { topicId: "thyroid-function", label: "Perioperative hyper- and hypothyroidism", anchor: "section-perioperative-hyper-and-hypothyroidism" },
+      { topicId: "diabetes-management", label: "Perioperative diabetes: assessment and newer drugs", anchor: "section-preoperative-assessment-and-newer-drugs" },
+      { topicId: "endocrine-tumours", label: "Anaesthesia for phaeochromocytoma", anchor: "section-anaesthesia-for-phaeochromocytoma" },
       { topicId: "icu-endocrine-emergencies", label: "Endocrine emergencies in ICU" },
       { topicId: "dka", label: "Diabetic ketoacidosis" },
       { topicId: "thyroid-storm", label: "Thyroid storm" },
@@ -48,8 +48,8 @@ export const examLessonGroups: Record<"primary" | "final", LessonGroup[]> = {
       { topicId: "mechanical-ventilation", label: "Mechanical ventilation and weaning" },
       { topicId: "icu-discharge-planning", label: "ICU discharge planning and rehabilitation" },
       { topicId: "icu-outcomes", label: "Survival and functional recovery after ICU" },
-      { topicId: "icu-outcomes", label: "Return to work after ICU", anchor: "outcomes-work" },
-      { topicId: "icu-outcomes", label: "PTSD, depression and anxiety after ICU", anchor: "outcomes-psychological" },
+      { topicId: "icu-outcomes", label: "Return to work after ICU", anchor: "section-7-return-to-work-and-usual-activities" },
+      { topicId: "icu-outcomes", label: "PTSD, depression and anxiety after ICU", anchor: "section-8-ptsd-depression-and-anxiety" },
       { topicId: "pics-follow-up", label: "PICS follow-up plan" },
     ],
   }],
