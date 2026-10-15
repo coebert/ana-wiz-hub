@@ -60,6 +60,7 @@ export const TOPIC_ROUTES: ReadonlyArray<readonly [string, string]> = [
   ["/physics/venturi-mask", "VenturiMaskTopic"],
 
   // Physiology
+  ["/physiology/physiology-overview", "PhysiologyOverviewTopic"],
   ["/physiology/oxygen-haemoglobin", "OxygenHaemoglobinTopic"],
   ["/physiology/cardiac-cycle", "CardiacCycleTopic"],
   ["/physiology/lung-mechanics", "LungMechanicsTopic"],

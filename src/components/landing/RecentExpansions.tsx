@@ -20,6 +20,12 @@ interface RecentExpansion {
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
   {
+    topicId: "physiology-overview",
+    section: "physiology",
+    title: "Physiology Overview",
+    note: "New page: homeostasis and set points, negative and positive feedback loops, and the organ systems, with links to every physiology topic.",
+  },
+  {
     topicId: "endocrine-tumours",
     section: "perioperative",
     title: "Endocrine Tumours",
