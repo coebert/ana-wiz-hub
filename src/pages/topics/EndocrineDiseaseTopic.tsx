@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
@@ -100,6 +101,7 @@ const EndocrineDiseaseTopic = () => {
       }}
       coreConcepts={
         <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} className="scroll-mt-24">
+          <p className="text-muted-foreground leading-relaxed mb-4">Dedicated pages, physiology first then perioperative care: <Link to="/perioperative/thyroid-function" className="text-primary underline">Thyroid Function</Link>, <Link to="/perioperative/diabetes-management" className="text-primary underline">Diabetes Management</Link> and <Link to="/perioperative/endocrine-tumours" className="text-primary underline">Endocrine Tumours</Link>.</p>
           <p className="text-muted-foreground leading-relaxed">
            Endocrine disease alters perioperative physiology in ways that demand specific planning: glucose targets and insulin handling in diabetes, the catastrophic risk of unrecognised thyroid storm or phaeochromocytoma, and the need for steroid supplementation in patients with HPA-axis suppression. This topic covers the high-yield endocrine conditions encountered in adult anaesthetic practice and the principles that prevent decompensation.
          </p>
