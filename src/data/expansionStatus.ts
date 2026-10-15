@@ -210,6 +210,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "Five source-led lessons linked from Acid-Base Disorders: mechanisms/maintenance, assessment/urine chloride, causes/post-hypercapnia, treatment/evidence, safety. Verified short Park/Sidebotham BJA Education 2023 quotations with separate AJKD Core Curriculum 2022 diagnostic excerpts; learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "dka": {
+    status: "expanded",
+    note: "New standalone page linked from Endocrine Emergencies: five source-led lessons (diagnosis/blood ketones, fluids and balanced-crystalloid evidence, fixed-rate insulin and potassium safety, resolution criteria and transition, euglycaemic DKA/SGLT2/escalation). Verified JBDS 2023, Umpierrez 2024 consensus, SMART/SALT-ED 2020 and Jung 2019 quotations reused from the endocrine reference block; learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "acid-base": {
     status: "expanded",
     note: "HAGMA, NAGMA, osmolar gap, Stewart and citrate subsections source-reviewed and complete; linked formulae, displays and toxin criteria corrected. Source-checked, not consultant-reviewed; this does not certify the remaining older sections.",

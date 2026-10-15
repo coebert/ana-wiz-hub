@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { AdrenalInsufficiencyResuscitationTeaching, SepsisSteroidDecisionsTeaching, DkaSafetyAndRecoveryTeaching } from "@/components/topic/EndocrineEmergenciesTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import { HyponatraemiaCorrectionTeaching, PhaeochromocytomaPreparationTeaching, PhaeochromocytomaCrisisTeaching, DkaFluidChoiceTeaching, PituitaryApoplexyGuidelineTeaching } from "@/components/topic/EndocrineEmergenciesTeaching";
@@ -193,6 +194,9 @@ const IcuEndocrineEmergenciesTopic = () => {
         <>
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Hyperglycaemic emergencies — DKA & HHS" defaultOpen>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                For the full DKA lesson — diagnosis, fluids, fixed-rate insulin, potassium safety, resolution criteria and euglycaemic DKA — see the dedicated <Link to="/intensive-care/dka" className="text-primary underline">Diabetic Ketoacidosis (DKA)</Link> page.
+              </p>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Two ends of the same spectrum: insulin deficiency drives counter-regulatory
               hormone release, hyperglycaemia, osmotic diuresis and dehydration. DKA
