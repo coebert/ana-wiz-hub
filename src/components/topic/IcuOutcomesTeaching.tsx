@@ -146,3 +146,58 @@ export function OutcomesContemporaryTeaching() {
     <Check question="Can the 60.3% pooled PICS prevalence be used as an individual patient's risk?">No. Definitions, follow-up times and populations vary markedly; it describes a heterogeneous body of evidence, not an individual prognosis or a UK national audit rate.</Check>
   </div>;
 }
+
+export function OutcomesCostTeaching() {
+  return <div className={lessonWrap}>
+    <H>What an ICU day costs</H>
+    <Q label="Dasta 2005 daily cost" />
+    <Q label="Dasta 2005 cost by day" />
+    <Q label="Dasta 2005 ventilation increment" />
+    <p><Reasoning />Dasta analysed 51,009 adult ICU patients in 253 US hospitals in late 2002, converting billed charges to costs with hospital cost-to-charge ratios. Costs are front-loaded: day 1 is the most expensive, so shortening a stay by a day saves less than the mean daily cost suggests, because the day removed is usually a cheaper late day (teaching summary). These are 2002 US dollars in a US billing system; they are not NHS tariffs or current prices and must not be converted to pounds by an exchange rate. The ventilated group was also sicker and stayed longer, so the unadjusted difference is not all due to the ventilator; the adjusted increment is $1,522 per day.</p>
+    <H>Costs continue after discharge</H>
+    <Q label="Lone 2016 hospital costs" />
+    <p><Reasoning />In Scottish linked data, hospital survivors of ICU used more hospital care over five years than matched hospital controls, even after adjustment. The economic burden of critical illness therefore extends well beyond the index admission, which supports rehabilitation and follow-up planning (see <L to="/intensive-care/icu-discharge-planning">ICU Discharge Planning</L>). The costs are reported in US dollars by the authors and describe a 2005 cohort; they measure hospital resource use only, not social care, lost earnings or carer time, which the work and caregiver evidence on this page shows are also substantial (teaching summary).</p>
+    <Check question="On which ICU day were costs highest in Dasta 2005, and when did they stabilise?">Day 1 (US$10,794 ventilated; $6,667 not ventilated); costs fell on day 2 and became stable after day 3.</Check>
+    <Check question="Lone 2016: how did 5-year hospital costs of ICU survivors compare with hospital controls?">51% higher mean 5-year hospital costs ($25,608 vs $16,913 per patient), persisting after confounder adjustment.</Check>
+  </div>;
+}
+
+export function OutcomesLosByConditionTeaching() {
+  return <div className={lessonWrap}>
+    <H>Diagnosis shapes expected stay</H>
+    <Q label="ICNARC CMP 2024-25 length of stay" />
+    <Q label="Zimmerman 2006 APACHE IV stay" />
+    <Q label="Zimmerman 2006 conclusion" />
+    <p><Reasoning />APACHE IV predicts ICU stay from day-1 data with admission diagnosis among its inputs, and it matched observed group means for 93% of 116 diagnoses. It explained 62% of the variation between ICUs but only 21.5% between individual patients: diagnosis-based benchmarks are useful for judging unit throughput, not for telling one family how long their relative will stay. The 3.86-day US mean is lower than ICNARC's UK mean of about 6 days; case mix, admission thresholds, bed numbers and discharge delays differ, so neither figure is &quot;correct&quot; for the other system (teaching summary).</p>
+    <H>Illustrative condition-specific figures</H>
+    <div className="overflow-x-auto"><table className="w-full text-sm border border-border">
+      <thead className="bg-muted/50"><tr><th className="p-2 text-left">Group (source)</th><th className="p-2 text-left">ICU stay reported</th><th className="p-2 text-left">Population caveat</th></tr></thead>
+      <tbody>
+        <tr className="border-t border-border"><td className="p-2">All UK adult critical care admissions (ICNARC 2024–25)</td><td className="p-2">Mean ≈ 6 days</td><td className="p-2">Mixed national case mix</td></tr>
+        <tr className="border-t border-border"><td className="p-2">US ICU patients not ventilated (Dasta 2005)</td><td className="p-2">Mean 8.5 days (SD 10.5)</td><td className="p-2">2002 US hospital billing data</td></tr>
+        <tr className="border-t border-border"><td className="p-2">US ICU patients ventilated (Dasta 2005)</td><td className="p-2">Mean 14.4 days (SD 15.8)</td><td className="p-2">Sicker group; not adjusted</td></tr>
+        <tr className="border-t border-border"><td className="p-2">Flail chest admitted to ICU (Dehghan 2014)</td><td className="p-2">Mean 11.7 days (82% admitted)</td><td className="p-2">US National Trauma Data Bank</td></tr>
+        <tr className="border-t border-border"><td className="p-2">ARDS survivors (Herridge 2003)</td><td className="p-2">See quotation in lesson 3</td><td className="p-2">Small Canadian survivor cohort</td></tr>
+      </tbody></table></div>
+    <Q label="Dehghan 2014 flail chest stay" />
+    <p><Reasoning />The table collects figures from different countries, years and definitions; it shows how diagnosis and organ support lengthen stays, not a ranking to compare directly. Standard deviations larger than the mean (Dasta) show a right-skewed distribution: most patients stay briefly and a few stay very long, so medians are usually lower than means. Patients who die early shorten average stay, so a unit with a shorter mean stay is not necessarily providing better care (teaching summary).</p>
+    <Check question="Why can't APACHE IV tell an individual patient's family how long they will be in ICU?">It explained only 21.5% of variation between individual patients (62% between ICUs); the authors state its accuracy and utility are limited for individuals.</Check>
+  </div>;
+}
+
+export function OutcomesQualityOfLifeTeaching() {
+  return <div className={lessonWrap}>
+    <H>Measuring health-related quality of life</H>
+    <p><Reasoning />Health-related quality of life (HRQoL) instruments ask the patient about their own health. The EQ-5D covers five dimensions — mobility, self-care, usual activities, pain/discomfort and anxiety/depression — and is converted into a single utility value, where 1 represents full health and 0 a state equivalent to death, using a country-specific valuation set. Utilities multiplied by time give quality-adjusted life years (QALYs), the unit NICE uses in cost-effectiveness analysis. The SF-36 instead gives physical and mental component scores normed to a population mean of 50 (teaching summary; instrument description, not a quotation).</p>
+    <Q label="Oeyen 2010 instruments" />
+    <Q label="Oeyen 2010 quality of life" />
+    <Q label="Oeyen 2010 study quality" />
+    <p><Reasoning />Survivors report lower quality of life than matched populations, and it varies by diagnosis, with severe ARDS, prolonged ventilation, severe trauma and severe sepsis faring worst. Only 8% of studies met the review's quality criteria — notably, few measured quality of life <em>before</em> admission. Without a baseline, a low score may reflect pre-existing illness rather than harm from the ICU stay.</p>
+    <H>A UK five-year cohort using EQ-5D</H>
+    <Q label="Cuthbertson 2010 EQ-5D" />
+    <Q label="Cuthbertson 2010 QALYs" />
+    <p><Reasoning />In 300 level 3 patients from one Scottish university hospital (median stay 6.7 days), physical quality of life dipped, recovered by a year, then fell again, while mental scores reached population norms after six months. An EQ-5D utility of 0.677 at five years means survivors valued their health state at roughly two-thirds of full health on that scale; it is a group mean, not an individual's score. Scores are only available from survivors who respond, so non-responders and deaths can bias averages upwards. Physical, mental and utility measures can move in different directions — report which one is meant (teaching summary). Function and disability measures are in lessons 3 and 6–8.</p>
+    <Check question="What five dimensions does the EQ-5D cover, and what does a utility of 1 represent?">Mobility, self-care, usual activities, pain/discomfort and anxiety/depression; 1 represents full health (0 equivalent to death).</Check>
+    <Check question="In Cuthbertson 2010, what was the EQ-5D utility at 5 years?">0.677; physical scores were below population norms at all time points, while mental scores were similar to norms after 6 months.</Check>
+  </div>;
+}
