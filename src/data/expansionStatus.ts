@@ -242,6 +242,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from ICU Costs and ICU Outcomes: UK/NHS beside US cost figures for sepsis, VAP/HAP, ARDS and ventilation, quoting abstracts and the NHS 2021/22 schedule; six-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "icu-staffing-by-country": {
+    status: "expanded",
+    note: "New page linked from ICU Staffing Ratios and Staffing by Unit Type: GPICS V3 compared with CICM IC-1 (2016), ESICM 2011 and Leapfrog 2026, all quoted verbatim; six-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "icu-staffing-by-unit": {
     status: "expanded",
     note: "New page linked from ICU Staffing Ratios: four lessons quoting GPICS V3 (January 2026) unit-type chapters (cardiothoracic, neurocritical care, burns, smaller remote and rural, enhanced care) against the general staffing baseline; six-question quiz. Source-checked, not consultant-reviewed.",
