@@ -21,6 +21,7 @@ const REQUIRED: Record<string, string[]> = {
   BreadcrumbList: ["itemListElement"],
   Course: ["name", "description", "provider"],
   WebPage: ["name"],
+  MedicalWebPage: ["name"],
   LearningResource: ["name"],
 };
 const SITEWIDE = ["WebSite", "Organization"];
