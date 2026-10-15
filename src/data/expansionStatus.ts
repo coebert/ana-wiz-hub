@@ -214,6 +214,14 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from Critical Care Overview: four stages (referral/triage, admission, daily treatment, discharge/follow-up) linking to existing ICU pages. Verbatim ICS 2021, GPICS 2.1, Pronovost 2003, Starmer 2014 and Lautrette 2007 excerpts reused from the overview block; learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "temperature-ph": {
+    status: "expanded",
+    note: "New page linked from Acids, Bases & Buffers: Kw and neutral pH, blood-sample temperature correction, alpha-stat vs pH-stat. Verbatim OpenStax, StatPearls and Chatzopoulou 2025 excerpts reused; textbook constants labelled. Learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
+  },
+  "septic-shock": {
+    status: "expanded",
+    note: "New page linked from Sepsis: Sepsis-3 shock criteria, SSC 2021 MAP/noradrenaline/vasopressin/steroid recommendations, 65 trial and ADRENAL. Learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "physiology-overview": {
     status: "expanded",
     note: "New page under Physiology: three lessons (homeostasis and set points, negative and positive feedback loops, organ systems working together) quoting OpenStax Anatomy and Physiology 2e (CC BY) word for word, with links to every physiology topic. Learning checks and five-question quiz. Source-checked, not consultant-reviewed.",

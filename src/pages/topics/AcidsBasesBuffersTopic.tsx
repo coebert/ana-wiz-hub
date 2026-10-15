@@ -201,6 +201,7 @@ const AcidsBasesBuffersTopic = () => {
 
             <CollapsibleSubsection title="Kw, Temperature & Neutral pH">
               <WaterTemperatureTeaching />
+              <p className="text-sm text-muted-foreground mt-3">Full lesson with blood-sample correction and alpha-stat vs pH-stat: <a href="/chemistry/temperature-ph" className="text-primary underline">Temperature &amp; pH</a>.</p>
             </CollapsibleSubsection>
 
             <CollapsibleSubsection title="Buffer Capacity and Titration Curves">

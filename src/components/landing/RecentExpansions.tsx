@@ -20,6 +20,18 @@ interface RecentExpansion {
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
   {
+    topicId: "septic-shock",
+    section: "intensive-care",
+    title: "Septic Shock",
+    note: "New page under Sepsis: Sepsis-3 shock criteria, MAP 65, noradrenaline then vasopressin, the 65 trial and corticosteroids (ADRENAL).",
+  },
+  {
+    topicId: "temperature-ph",
+    section: "chemistry",
+    title: "Temperature & pH",
+    note: "New page: Kw and neutral pH, cooling a blood sample, alpha-stat versus pH-stat.",
+  },
+  {
     topicId: "physiology-overview",
     section: "physiology",
     title: "Physiology Overview",
