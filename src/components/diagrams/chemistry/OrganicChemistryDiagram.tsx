@@ -96,7 +96,7 @@ export const OrganicChemistryDiagram = () => {
                 <path d="M 200 85 Q 200 100 200 105" stroke="hsl(210 70% 50%)" strokeWidth="1.5" fill="none" markerEnd="url(#arrowBlue)" />
                 <text x={220} y={95} fontSize="8" className="fill-muted-foreground">+ H₂O</text>
                 <text x={200} y={120} textAnchor="middle" fontSize="9" className="fill-foreground font-medium">→ R—COOH + HO—R'</text>
-                <text x={200} y={138} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Rapid hydrolysis by plasma esterases (e.g. remifentanil t½ 3-4 min)</text>
+                <text x={200} y={138} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Rapid hydrolysis by plasma esterases (e.g. remifentanil: context-sensitive half-time 3–4 min)</text>
               </g>
             )}
             {activeGroup === "amide" && (
@@ -132,11 +132,11 @@ export const OrganicChemistryDiagram = () => {
                     <text x={a.x} y={70} textAnchor="middle" fontSize="10" className="fill-foreground font-mono">{a.formula}</text>
                   </g>
                 ))}
-                <text x={60} y={100} textAnchor="middle" fontSize="7" className="fill-muted-foreground">Crosses BBB ✓</text>
-                <text x={150} y={100} textAnchor="middle" fontSize="7" className="fill-muted-foreground">Crosses BBB ✓</text>
-                <text x={240} y={100} textAnchor="middle" fontSize="7" className="fill-muted-foreground">Crosses BBB ✓</text>
+                <text x={60} y={100} textAnchor="middle" fontSize="7" className="fill-muted-foreground">Depends on lipid solubility</text>
+                <text x={150} y={100} textAnchor="middle" fontSize="7" className="fill-muted-foreground">Depends on lipid solubility</text>
+                <text x={240} y={100} textAnchor="middle" fontSize="7" className="fill-muted-foreground">Can cross when unionised</text>
                 <text x={340} y={100} textAnchor="middle" fontSize="7" className="fill-muted-foreground">Cannot cross ✗</text>
-                <text x={60} y={115} textAnchor="middle" fontSize="7" className="fill-muted-foreground">(atropine)</text>
+                <text x={60} y={115} textAnchor="middle" fontSize="7" className="fill-muted-foreground">(noradrenaline)</text>
                 <text x={150} y={115} textAnchor="middle" fontSize="7" className="fill-muted-foreground">(ketamine)</text>
                 <text x={240} y={115} textAnchor="middle" fontSize="7" className="fill-muted-foreground">(morphine)</text>
                 <text x={340} y={115} textAnchor="middle" fontSize="7" className="fill-muted-foreground">(glycopyrrolate)</text>
@@ -189,7 +189,7 @@ export const OrganicChemistryDiagram = () => {
               <text x={160} y={98} textAnchor="middle" fontSize="8" className="fill-muted-foreground">C=O</text>
               <line x1={120} y1={78} x2={120} y2={100} stroke="hsl(var(--foreground))" strokeWidth="1.5" strokeDasharray="3 3" />
               <text x={120} y={112} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Ar</text>
-              <text x={120} y={135} textAnchor="middle" fontSize="8" fill="hsl(95 55% 38%)" fontWeight="600">3-4× more potent</text>
+              <text x={120} y={135} textAnchor="middle" fontSize="8" fill="hsl(95 55% 38%)" fontWeight="600">~2× racemate (3–4× R)</text>
               <text x={120} y={148} textAnchor="middle" fontSize="7" className="fill-muted-foreground">Less dysphoria</text>
             </g>
 
@@ -220,10 +220,10 @@ export const OrganicChemistryDiagram = () => {
             <div className="space-y-2 text-xs text-muted-foreground">
               {[
                 { drug: "Bupivacaine", note: "S(−) levobupivacaine: less cardiotoxic than racemic mixture" },
-                { drug: "Ketamine", note: "S(+) esketamine: ~3× more potent analgesic, faster recovery, less emergence phenomena" },
-                { drug: "Atracurium", note: "R-cis,R'-cis isomer (cisatracurium): ~3× more potent, no histamine release, Hofmann elimination" },
+                { drug: "Ketamine", note: "S(+) esketamine: about twice as potent as the racemic mixture (3–4× R-ketamine), faster recovery, less emergence phenomena" },
+                { drug: "Atracurium", note: "R-cis,R'-cis isomer (cisatracurium): ~3× more potent than atracurium, minimal histamine release, Hofmann elimination" },
                 { drug: "Omeprazole", note: "S-esomeprazole: higher bioavailability (less first-pass CYP2C19)" },
-                { drug: "Thiopentone", note: "Racemic mixture — both enantiomers contribute to hypnosis" },
+                { drug: "Thiopentone", note: "Racemic mixture — S(−) is roughly twice as potent as R(+)" },
               ].map((item, i) => (
                 <div key={i} className="flex gap-2">
                   <span className="font-medium text-foreground min-w-[90px]">{item.drug}</span>

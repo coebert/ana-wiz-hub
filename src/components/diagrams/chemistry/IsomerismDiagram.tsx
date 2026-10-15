@@ -69,7 +69,7 @@ const IsomerismDiagram = () => {
                 {tab === "structural" &&
                   "Enflurane and isoflurane share the same molecular formula (C₂HClF₅O) but the atoms are connected differently. Result: isoflurane has lower blood:gas solubility (1.4 vs 1.8), faster onset/offset, and far less epileptogenic potential."}
                 {tab === "geometric" &&
-                  "Atracurium has 4 chiral centres and 2 geometric (cis/trans) configurations → 10 stereoisomers in the racemic mixture. Cisatracurium is the single 1R-cis, 1′R-cis isomer — 4× more potent, less histamine release, no laudanosine accumulation."}
+                  "Atracurium has 4 chiral centres and 2 geometric (cis/trans) configurations → 10 stereoisomers in the racemic mixture. Cisatracurium is the single 1R-cis, 1′R-cis isomer — about 3× more potent than atracurium, less histamine release, and less laudanosine because smaller doses are given (it is still produced)."}
                 {tab === "optical" &&
                   "Enantiomers are non-superimposable mirror images at a chiral carbon (4 different groups). They have identical physical properties EXCEPT the direction they rotate plane-polarised light. Biological receptors are chiral, so enantiomers can have very different potency, toxicity, and side-effect profiles."}
                 {tab === "tautomer" &&
@@ -94,7 +94,7 @@ const IsomerismDiagram = () => {
                 )}
                 {tab === "optical" && (
                   <>
-                    <li>• <strong>Ketamine</strong>: S(+) ~4× more potent for analgesia/anaesthesia, fewer emergence reactions than R(−)</li>
+                    <li>• <strong>Ketamine</strong>: S(+) is 3–4× more potent than R(−) and about twice as potent as the racemic mixture, with fewer emergence reactions</li>
                     <li>• <strong>Bupivacaine → levobupivacaine</strong>: S(−) isomer alone, less cardiotoxic than racemic mix</li>
                     <li>• <strong>Ropivacaine</strong>: pure S(−) isomer by design</li>
                     <li>• <strong>Isoflurane, desflurane, sevoflurane</strong>: chiral but used as racemates (no clinical difference)</li>
@@ -237,7 +237,7 @@ const OpticalPanel = ({ mirrorHover, setMirrorHover }: OpticalProps) => (
       <text x="180" y="160" fill="hsl(var(--muted-foreground))">H</text>
     </g>
     <text x="115" y="225" textAnchor="middle" fontSize="9" fill="hsl(var(--chemistry))" fontWeight="600">
-      4× analgesic potency
+      3–4× potency vs R(−)
     </text>
 
     {/* Right enantiomer R(−) — mirrored */}

@@ -120,7 +120,7 @@ const elements: Element[] = [
     symbol: "HCO₃⁻", name: "Bicarbonate", atomicNumber: 6, atomicMass: "61.02",
     category: "polyatomic", group: 14, period: 2, electronConfig: "HCO₃⁻",
     normalRange: "22–26 mmol/L",
-    physiology: "The most important extracellular buffer. Bicarbonate buffer system: CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻ (catalysed by carbonic anhydrase). Open system — CO₂ eliminated by lungs, HCO₃⁻ regulated by kidneys. Henderson-Hasselbalch: pH = 6.1 + log([HCO₃⁻] / 0.03 × PaCO₂). Normal ratio 20:1 maintains pH 7.4.",
+    physiology: "The most important extracellular buffer. Bicarbonate buffer system: CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻ (catalysed by carbonic anhydrase). Open system — CO₂ eliminated by lungs, HCO₃⁻ regulated by kidneys. Henderson-Hasselbalch: pH = 6.1 + log([HCO₃⁻] / (0.03 × PaCO₂)). Normal ratio 20:1 maintains pH 7.4.",
     pharmacology: "8.4% NaHCO₃ (1 mmol/mL) for severe metabolic acidosis (pH <7.1), hyperkalaemia (drives K⁺ intracellularly), and tricyclic antidepressant overdose (sodium loading + alkalinisation). 1.26% NaHCO₃ is isotonic. Generates CO₂ — ensure adequate ventilation. Citrate in RRT is metabolised to HCO₃⁻.",
     clinicalPearl: "Bicarbonate therapy is controversial — generates CO₂ (worsens intracellular acidosis if ventilation inadequate), causes hypokalaemia, hypernatraemia, and left-shifts the O₂ dissociation curve. ALS guidelines: consider in pH <7.1 or hyperkalaemia. Stewart approach: HCO₃⁻ is a dependent variable — treat the cause (SID, weak acids, CO₂) not the number.",
     disorders: ["Metabolic acidosis — low HCO₃⁻ (DKA, lactic acidosis, renal tubular acidosis)", "Metabolic alkalosis — high HCO₃⁻ (vomiting, diuretics, Cushing's)", "Respiratory compensation — Winter's formula: expected PaCO₂ = 1.5 × [HCO₃⁻] + 8 ± 2"]
@@ -174,7 +174,7 @@ export const PeriodicTableAnaestheticDiagram = () => {
                   ${isSelected ? `ring-${el.category === 'alkali' ? 'red' : el.category === 'alkaline' ? 'orange' : el.category === 'transition' ? 'sky' : 'emerald'}-400/50` : ''}
                 `}
               >
-                <span className="text-[9px] text-muted-foreground leading-none">{el.atomicNumber}</span>
+                <span className="text-[9px] text-muted-foreground leading-none">{/[₀-₉]/.test(el.symbol) ? "ion" : el.atomicNumber}</span>
                 <span className={`text-lg sm:text-2xl font-bold ${cat.text} leading-tight`}>{el.symbol}</span>
                 <span className="text-[8px] sm:text-[9px] text-muted-foreground leading-tight truncate w-full text-center">{el.name}</span>
                 <span className="text-[7px] sm:text-[8px] text-muted-foreground/60 leading-none">{el.atomicMass}</span>
@@ -189,7 +189,7 @@ export const PeriodicTableAnaestheticDiagram = () => {
             {/* Header */}
             <div className="flex items-start gap-4">
               <div className={`flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-xl border-2 ${categoryColors[selected.category].border} bg-background/50`}>
-                <span className="text-xs text-muted-foreground">{selected.atomicNumber}</span>
+                <span className="text-xs text-muted-foreground">{/[₀-₉]/.test(selected.symbol) ? "polyatomic ion" : selected.atomicNumber}</span>
                 <span className={`text-3xl sm:text-4xl font-bold ${categoryColors[selected.category].text}`}>{selected.symbol}</span>
                 <span className="text-[10px] text-muted-foreground">{selected.atomicMass}</span>
               </div>
