@@ -59,3 +59,5 @@
 
 - [x] Fluid Balance and Tonicity page under Acid-Base Disorders (isotonic/hypotonic/hypertonic), linked both ways with the saline vs balanced fluids lesson; search and audit copy rebuilt.
 - [x] Trauma: sourced lessons on <C>ABCDE, fluid boluses/BP targets, transfusion ratios/Hb thresholds, surgical priorities (NICE NG39, Rossaint 2023, PROPPR); corrected misquoted NG39 bolus wording.
+
+- [x] Haemorrhagic Shock & Resuscitation page (shock recognition, BP monitoring, transfusion/TXA) — sourced, tested, search + audit rebuilt

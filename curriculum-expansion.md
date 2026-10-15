@@ -143,3 +143,6 @@ Coverage means substantive source-led teaching added and checked; it does not ce
 
 - [x] fluid-balance: four lessons (tonicity, isotonic, hypotonic, hypertonic) source-checked against NICE CG174/NG29, Spasovski 2014, SALSA.
 - [x] trauma-emergency: <C>ABCDE, fluid boluses, transfusion thresholds and surgical priorities lessons verified verbatim against NG39, Rossaint 2023 and PROPPR abstract.
+
+## Haemorrhagic Shock & Resuscitation (2026-10-15)
+- [x] Shock recognition; BP monitoring and targets; transfusion ratios, prehospital blood, TXA timing, calcium, ITACTIC — verbatim excerpts, rendered, audit corpus verified
