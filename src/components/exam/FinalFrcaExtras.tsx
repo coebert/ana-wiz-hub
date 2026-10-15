@@ -110,9 +110,9 @@ const AREAS: { title: string; items: string; topics: string[]; vivas: number[] }
   { title: "Obstetrics", items: "Labour analgesia, category 1 section, pre-eclampsia, haemorrhage, maternal collapse.", topics: ["obstetric-anaesthesia", "maternal-physiology", "transfusion-coagulation"], vivas: [5] },
   { title: "Paediatrics", items: "Neonatal physiology, airway, fluids, safeguarding, the unwell child.", topics: ["paediatric-anaesthesia", "paediatric-core", "paediatric-physiology", "paediatric-icu"], vivas: [6] },
   { title: "Cardiothoracic & neuro", items: "Bypass, one-lung ventilation, raised ICP, subarachnoid haemorrhage, spinal injury.", topics: ["cardiothoracic", "neuroanaesthesia", "neurointensive-care", "vascular-anaesthesia"], vivas: [7] },
-  { title: "Perioperative medicine", items: "Pre-operative assessment, risk scores, CPET, frailty, ERAS, anaemia, diabetes.", topics: ["preoperative-assessment", "enhanced-recovery", "elderly-anaesthesia", "perioperative-fluids"], vivas: [4] },
-  { title: "Intensive care", items: "Sepsis, ARDS, AKI, trauma, burns, organ donation, end-of-life care.", topics: ["sepsis", "ards", "aki-rrt", "organ-donation"], vivas: [8] },
-  { title: "Applied sciences & patient safety", items: "Physiology, pharmacology and equipment applied to cases; crises, human factors, NAP findings.", topics: ["pulse-oximetry", "clinical-incidents", "non-technical-skills", "muscle-relaxants"], vivas: [9, 1, 3] },
+  { title: "Perioperative medicine", items: "Pre-operative assessment, risk scores, CPET, frailty, ERAS, anaemia, diabetes.", topics: ["preoperative-assessment", "enhanced-recovery", "elderly-anaesthesia", "perioperative-fluids", "thyroid-function", "diabetes-management", "endocrine-tumours"], vivas: [4] },
+  { title: "Intensive care", items: "Sepsis, ARDS, AKI, trauma, burns, organ donation, end-of-life care.", topics: ["sepsis", "ards", "aki-rrt", "organ-donation", "mechanical-ventilation", "icu-endocrine-emergencies", "icu-inpatient-journey", "icu-discharge-planning", "icu-outcomes", "pics-follow-up"], vivas: [8] },
+  { title: "Applied sciences & patient safety", items: "Physiology, pharmacology and equipment applied to cases; crises, human factors, NAP findings.", topics: ["pulse-oximetry", "clinical-incidents", "non-technical-skills", "muscle-relaxants", "physiology-overview", "renal-system-overview", "cardiovascular-system-overview", "respiratory-system-overview"], vivas: [9, 1, 3] },
 ];
 
 const topicById = new Map(allTopics.map((t) => [t.id, t]));
