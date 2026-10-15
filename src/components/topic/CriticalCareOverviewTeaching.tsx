@@ -100,6 +100,7 @@ export function IcuTeamRolesTeaching() {
       <Check question="a 14-bed unit has eleven level 3 and three level 2 patients. What is the minimum number of registered nurses needed for direct care?">
         <p>11 (1:1 for level 3) + 2 (1:2 for three level 2 patients, rounded up) = 13 bedside nurses, plus a clinical shift leader, who must not take a patient. The unit also has more than ten beds, and GPICS V3 requires at least one additional enhanced critical care nurse who is not allocated a patient. (Arithmetic from the standards; actual rostering also depends on how sick each patient is.)</p>
       </Check>
+      <p>Every GPICS V3 staffing role, with day and night requirements and worked examples, is on <Link to="/intensive-care/icu-staffing-ratios" className="text-primary underline">ICU Staffing Ratios</Link>.</p>
       <LessonSources topicId={T} labels={["GPICS V3 consultant ratio", "GPICS V3 resident ratio", "Pronovost 2002 staffing", "Kerlin 2013 night staffing", "GPICS V3 nurse ratios", "GPICS V3 coordinator", "GPICS V3 ward round"]} />
     </div>
   );

@@ -22,6 +22,7 @@ const RECENT_EXPANSIONS: RecentExpansion[] = [
   { topicId: "icu-outcomes", section: "intensive-care", title: "ICU Outcomes", note: "New page: survival after ICU and the late excess mortality, length of stay, readmission rates and their link to death (Wunsch 2010, Herridge 2003, Rosenberg 2000)." },
   { topicId: "icu-discharge-planning", section: "intensive-care", title: "ICU Discharge Planning", note: "New page: rehabilitation from day one, safe ward transfer and handover, home discharge information and 2–3 month review (NICE CG83, CG50, GPICS)." },
   { topicId: "icu-anaphylaxis", section: "intensive-care", title: "Anaphylaxis in Critical Care", note: "New page: IM adrenaline doses and repeats, refractory anaphylaxis and adrenaline infusion, tryptase and biphasic reactions (RCUK 2021)." },
+  { topicId: "icu-staffing-ratios", section: "intensive-care", title: "ICU Staffing Ratios (GPICS V3)", note: "New page: every GPICS V3 staffing role, with day and night requirements and worked nurse-ratio examples." },
   { topicId: "icu-eclampsia", section: "intensive-care", title: "Severe Pre-eclampsia and Eclampsia", note: "New page: magnesium sulfate regimen, Magpie, severe hypertension control and fluid restriction (NICE NG133)." },
   {
     topicId: "sepsis-resuscitation",

@@ -230,6 +230,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from Critical Care Overview: three lessons (recognition and first doses, refractory anaphylaxis, after the reaction) quoting RCUK 2021; five-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "icu-staffing-ratios": {
+    status: "expanded",
+    note: "New page linked from Critical Care Overview: five lessons quoting GPICS V3 (January 2026) staffing chapters for consultants, resident doctors/ACCPs, registered nurses and nursing associates, pharmacy, AHPs and support staff, by day/night; worked nurse and pharmacist arithmetic; eight-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "icu-eclampsia": {
     status: "expanded",
     note: "New page linked from Critical Care Overview: three lessons (magnesium sulfate, severe hypertension, fluids) quoting NICE NG133 and Magpie 2002; five-question quiz. Source-checked, not consultant-reviewed.",
