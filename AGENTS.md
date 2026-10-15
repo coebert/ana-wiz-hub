@@ -24,3 +24,4 @@
 
 - Keep endocrine resuscitation lessons in the shared EndocrineEmergenciesTeaching module; distinguish adrenal replacement from septic-shock adjuncts and explicitly name the adopted DKA guideline so different resolution criteria cannot silently merge.
 - Keep NTS expansions in NTSEvidenceTeaching using topic-reference quotations; distinguish operational debriefs from psychological interventions and TeamSTEPPS tools from local adaptations to prevent unsafe conflation.
+- Standalone endocrine pages reuse parent excerpt records by label; a test enforces identical wording to prevent drift.

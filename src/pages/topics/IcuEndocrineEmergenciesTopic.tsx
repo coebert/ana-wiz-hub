@@ -256,6 +256,9 @@ const IcuEndocrineEmergenciesTopic = () => {
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Thyroid emergencies">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                For the full thyroid storm lessons — diagnosis, thionamide and iodide timing, beta-blockade, steroids, cooling and plasmapheresis — see the dedicated <Link to="/intensive-care/thyroid-storm" className="text-primary underline">Thyroid Storm</Link> page.
+              </p>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Thyroid storm (mortality 8–25 %)</p>
@@ -292,6 +295,9 @@ const IcuEndocrineEmergenciesTopic = () => {
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CollapsibleSubsection title="Adrenal & pituitary emergencies">
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                Full lessons are on the dedicated <Link to="/intensive-care/adrenal-crisis" className="text-primary underline">Adrenal Crisis</Link> and <Link to="/intensive-care/pituitary-apoplexy" className="text-primary underline">Pituitary Apoplexy</Link> pages.
+              </p>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Adrenal (Addisonian) crisis</p>

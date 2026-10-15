@@ -241,6 +241,24 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/intensive-care/thyroid-storm</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/intensive-care/adrenal-crisis</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/intensive-care/pituitary-apoplexy</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/intensive-care/transfusion-coagulation</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
