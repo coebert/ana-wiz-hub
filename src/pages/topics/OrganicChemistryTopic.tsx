@@ -83,6 +83,16 @@ const OrganicChemistryTopic = () => {
                 and explains its yellow colour in solution.
               </p>
               <p>
+                <strong>Midazolam</strong> shows a related, pH-dependent and reversible structural change (ring–chain
+                equilibrium, often taught as "tautomerism"). In acidic solution its diazepine ring opens to a water-soluble
+                benzophenone form, which is why the ampoule can be an aqueous solution without a solvent; at physiological pH
+                the ring closes again, giving the lipid-soluble form that crosses the blood–brain barrier. A study of its
+                acid–base behaviour reported a pKa of 6.04 and states that "in acidic media midazolam is reversibly
+                converted to the corresponding benzophenone (open-ring form)".
+                <InlineRef topicId="organic-chemistry" refLabel="Andersin 1991 Midazolam" /> (The link between ring
+                closure and brain penetration is teaching reasoning, not a quotation from that study.)
+              </p>
+              <p>
                 <strong>Diastereoisomers</strong> are stereoisomers that are <em>not</em> mirror images of one another. They
                 arise whenever a molecule has more than one chiral centre: n chiral centres generate up to 2ⁿ stereoisomers,
                 and only some of these pairs are related as mirror images (enantiomers) — the rest are diastereoisomers.
