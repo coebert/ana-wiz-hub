@@ -175,10 +175,10 @@ const SepsisTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        { text: "Sepsis-3: infection + organ dysfunction (SOFA ≥2). Septic shock: vasopressors needed + lactate >2", cites: ["BJA Educ 2019"] },
+        { text: "Sepsis-3: infection + organ dysfunction (SOFA ≥2). Septic shock: vasopressors needed + lactate >2", cites: ["Sepsis-3 2016"] },
         { text: "Hour-1 bundle: lactate, cultures, antibiotics, fluids (30 ml/kg), vasopressors", cites: ["SSC 2021"] },
         { text: "Noradrenaline is the first-line vasopressor; vasopressin is second-line", cites: ["SSC 2021", "ESICM Shock 2014"] },
-        { text: "Each hour delay in antibiotics increases mortality by approximately 7%", cites: ["BJA Educ 2019"] },
+        { text: "Each hour of antibiotic delay is associated with about 4% higher odds of in-hospital death (OR 1.04 per hour); faster fluid bolus completion was not", cites: ["Seymour 2017 NY sepsis mandate"] },
         { text: "Source control is critical — drain, debride, or remove infected sources early", cites: ["SSC 2021"] },
         { text: "PCT-guided de-escalation reduces antibiotic duration by 2–3 days without increasing mortality", cites: ["Sepsis-3 2016"] },
         { text: "Lactate >4 mmol/L carries 30–40% mortality; serial clearance guides resuscitation adequacy", cites: ["BJA Educ 2019"] },
@@ -255,8 +255,8 @@ const SepsisTopic = () => {
               {[
                 { step: "1", action: "Measure lactate", detail: "Re-measure if initial lactate >2 mmol/L" },
                 { step: "2", action: "Obtain blood cultures", detail: "Before antibiotics, from 2 separate sites" },
-                { step: "3", action: "Administer broad-spectrum antibiotics", detail: "Within 1 hour. Each hour delay increases mortality ~7%" },
-                { step: "4", action: "Begin rapid IV fluid resuscitation", detail: "30 ml/kg crystalloid for hypotension or lactate ≥4 mmol/L" },
+                { step: "3", action: "Administer broad-spectrum antibiotics", detail: "Within 1 hour for possible shock or probable sepsis (up to 3 h if sepsis only possible, no shock). Each hour of delay: ~4% higher odds of death (Seymour 2017)" },
+                { step: "4", action: "Begin rapid IV fluid resuscitation", detail: "Start 30 mL/kg crystalloid for hypotension or lactate ≥4 mmol/L — SSC 2021 suggests completing it within 3 h (weak recommendation)" },
                 { step: "5", action: "Apply vasopressors", detail: "If hypotensive during or after fluid resuscitation. Target MAP ≥65 mmHg" },
               ].map((s) => (
                 <div key={s.step} className="flex gap-3">
