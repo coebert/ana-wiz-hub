@@ -7,11 +7,12 @@ import { PeriodicTableAnaestheticDiagram } from "@/components/diagrams/chemistry
 import { atomicStructureQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
+import { AtomsIonsTeaching, ElectronegativityTeaching, HydrogenBondingTeaching, CarbonFluorineTeaching, VapourPressureTeaching } from "@/components/topic/AtomicStructureTeaching";
 
 const atomicStructureFaqs: Array<[string, string]> = [
   [
     "Why does desflurane boil at room temperature while halothane boils at 50 °C?",
-    "Halothane carries heavy bromine and chlorine atoms whose large, polarisable electron clouds generate strong van der Waals forces, holding molecules together until ~50 °C. Desflurane has only small fluorine atoms with weak van der Waals attraction, so it boils at 23.5 °C — requiring the heated, pressurised Tec 6 vaporiser to deliver predictable partial pressures clinically.",
+    "Halothane carries heavy bromine and chlorine atoms whose large, polarisable electron clouds generate strong van der Waals forces, holding molecules together until ~50 °C. Desflurane has only small fluorine atoms with weak van der Waals attraction, so it boils at 23.5 °C — requiring the heated, pressurised Tec 6 vaporiser for a predictable output concentration.",
   ],
   [
     "Why is sodium chloride soluble in water but not in lipid?",
@@ -19,7 +20,7 @@ const atomicStructureFaqs: Array<[string, string]> = [
   ],
   [
     "What determines whether a bond is ionic or covalent?",
-    "The electronegativity difference (ΔEN) between the atoms. ΔEN > ~1.7 (e.g. Na-Cl, 2.1) gives ionic bonding with full electron transfer. ΔEN < ~1.7 (e.g. C-H, 0.4) gives covalent bonding with electron sharing — polar covalent if ΔEN is 0.4–1.7 (e.g. O-H), non-polar if essentially zero (e.g. C-C). This in turn dictates solubility, melting point, and how drugs interact with receptors.",
+    "The electronegativity difference (ΔEN) between the atoms. ΔEN above roughly 1.7 (a rule of thumb, not a sharp boundary; e.g. Na-Cl, about 2.2) gives ionic bonding with full electron transfer. ΔEN < ~1.7 (e.g. C-H, 0.4) gives covalent bonding with electron sharing — polar covalent if ΔEN is 0.4–1.7 (e.g. O-H), non-polar if essentially zero (e.g. C-C). This in turn dictates solubility, melting point, and how drugs interact with receptors.",
   ],
 ];
 
@@ -57,14 +58,14 @@ const workedExamples: WorkedExample[] = [
           <ul className="list-disc list-inside space-y-1 text-foreground">
             <li>Quoting molecular weight alone — it predicts boiling point only within the same family.</li>
             <li>Confusing 'polar' with 'hydrogen-bonded' — desflurane has C-F dipoles but no H-bonds.</li>
-            <li>Forgetting that a Tec 6 vaporiser delivers desflurane at constant <strong>partial pressure</strong>, not volume %.</li>
+            <li>Forgetting that the Tec 6 delivers a constant <strong>volume %</strong>, not a constant partial pressure — so at altitude the dial must be turned up.</li>
           </ul>
         </div>
       </div>
     ),
     answer:
       "Halothane's heavy, polarisable Br and Cl atoms generate strong van der Waals forces, raising its boiling point. Desflurane has only small fluorine atoms with weak van der Waals attraction, so it boils near room temperature — and therefore needs the heated, pressurised Tec 6 vaporiser.",
-    cites: ["BJA Educ 2010"],
+    cites: ["O'Hagan 2008 C–F bond", "OpenAnesthesia Tec 6"],
   },
   {
     title: "Why is sodium chloride soluble in water?",
@@ -74,7 +75,7 @@ const workedExamples: WorkedExample[] = [
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li><strong>Classify the bond.</strong> Na-Cl electronegativity difference ≈ 2.1 → IONIC bond. NaCl is a 3-D crystal lattice of Na⁺ and Cl⁻.</li>
+          <li><strong>Classify the bond.</strong> Na-Cl electronegativity difference ≈ 2.2 (Pauling 3.16 − 0.93) → IONIC bond. NaCl is a 3-D crystal lattice of Na⁺ and Cl⁻.</li>
           <li><strong>Energy required to dissolve.</strong> Lattice energy of NaCl ≈ +787 kJ/mol — significant.</li>
           <li><strong>Why water can do it.</strong> Water is a strongly polar molecule (O δ-, H δ+). Its dipoles surround Na⁺ and Cl⁻ ('hydration shells'). Hydration enthalpy ≈ −784 kJ/mol — almost matches the lattice energy.</li>
           <li><strong>Why lipid cannot.</strong> Non-polar lipid solvents have no permanent dipole, can only form weak van der Waals forces. They cannot pay the lattice-energy 'cost' → NaCl remains undissolved.</li>
@@ -124,23 +125,23 @@ const AtomicStructureBondingTopic = () => {
           "Peck & Hill Ch.2",
         ],
         workedExamples: [
-          "BJA Educ 2010",
-          "Cross & Plunkett Ch.2",
+          "O'Hagan 2008 C–F bond",
+          "OpenAnesthesia Tec 6",
         ],
         keyPoints: [
-          "Peck & Hill Ch.2",
-        
-          "BJA Educ 2010",
+          "IUPAC Electronegativity",
+          "IUPAC Hydrogen Bond 2011",
           "Cross & Plunkett Ch.2",
         ],
       }}
       keyPoints={[
         { text: "Atoms bond by transferring (ionic) or sharing (covalent) electrons to achieve stable outer shells", cites: ["Peck & Hill Ch.2"] },
-        { text: "Electronegativity difference determines bond type: large ΔEN → ionic, small → covalent", cites: ["BJA Educ 2010"] },
+        { text: "Electronegativity difference determines bond type: large ΔEN → ionic, small → covalent", cites: ["IUPAC Electronegativity"] },
         { text: "Ionic compounds (e.g. NaCl) dissolve in water to form electrolytes — basis of IV fluid physiology", cites: ["Cross & Plunkett Ch.2"] },
         { text: "Covalent bonds form most drug molecules; their structure determines receptor interactions", cites: ["Peck & Hill Ch.2"] },
-        { text: "Hydrogen bonds give water its high boiling point, specific heat capacity, and protein folding", cites: ["BJA Educ 2010"] },
-        { text: "Van der Waals forces explain boiling point trends in volatile anaesthetic agents (halothane vs desflurane)", cites: ["Cross & Plunkett Ch.2"] },
+        { text: "Hydrogen bonds give water its high boiling point, specific heat capacity, and protein folding", cites: ["IUPAC Hydrogen Bond 2011"] },
+        { text: "Van der Waals forces explain boiling point trends in volatile anaesthetic agents (halothane vs desflurane)", cites: ["O'Hagan 2008 C–F bond"] },
+        { text: "Desflurane's heated Tec 6 vaporiser keeps volume % constant, so the dial must be increased at altitude", cites: ["OpenAnesthesia Altitude"] },
         { text: "Metallic bonding explains conductivity of monitoring electrodes and diathermy equipment", cites: ["Peck & Hill Ch.2"] },
       ]}
       coreConcepts={
@@ -182,7 +183,7 @@ const AtomicStructureBondingTopic = () => {
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
                 Electrons orbit the nucleus in <strong>shells</strong> (energy levels). Each shell holds a maximum number of electrons:
-                Shell 1 (2), Shell 2 (8), Shell 3 (18). The outermost electrons (<strong>valence electrons</strong>) determine
+                Shell 1 (2), Shell 2 (8), Shell 3 (up to 18, although for the elements up to calcium it behaves as a stable octet of 8 before the fourth shell starts filling). The outermost electrons (<strong>valence electrons</strong>) determine
                 an element's chemical behaviour and bonding.
               </p>
               <p>
@@ -205,9 +206,39 @@ const AtomicStructureBondingTopic = () => {
               <ul className="list-disc list-inside space-y-1">
                 <li><strong>Van der Waals (London dispersion):</strong> Weakest. Present in all molecules. Stronger with larger molecular size and polarisability → why halothane (heavy Br/Cl) has a higher boiling point than desflurane (small F atoms).</li>
                 <li><strong>Dipole-dipole:</strong> Between polar molecules. Moderate strength.</li>
-                <li><strong>Hydrogen bonds:</strong> Strong intermolecular force (~20 kJ/mol). Requires H bonded to F, O, or N. Explains water's uniquely high boiling point, heat capacity, and surface tension.</li>
+                <li><strong>Hydrogen bonds:</strong> Strong intermolecular force (~20 kJ/mol). Strongest when H is bonded to F, O or N (IUPAC 2011 defines it more broadly). Explains water's uniquely high boiling point, heat capacity, and surface tension.</li>
               </ul>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="atoms-ions" exams={[Exam.PRIMARY]}>
+            <CollapsibleSubsection title="Atoms, Ions, Isotopes & the Mole">
+              <AtomsIonsTeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="electronegativity" exams={[Exam.PRIMARY]}>
+            <CollapsibleSubsection title="Electronegativity & Bond Polarity">
+              <ElectronegativityTeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="hydrogen-bonding" exams={[Exam.PRIMARY]}>
+            <CollapsibleSubsection title="Hydrogen Bonding, Water & Drug Binding">
+              <HydrogenBondingTeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="carbon-fluorine" exams={[Exam.PRIMARY]}>
+            <CollapsibleSubsection title="The C–F Bond & Fluorinated Volatiles">
+              <CarbonFluorineTeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="vapour-pressure" exams={[Exam.PRIMARY]}>
+            <CollapsibleSubsection title="Vapour Pressure, Boiling Point & the Desflurane Vaporiser">
+              <VapourPressureTeaching />
             </CollapsibleSubsection>
           </ExamSection>
 
