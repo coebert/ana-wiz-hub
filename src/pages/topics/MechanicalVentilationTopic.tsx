@@ -157,6 +157,7 @@ const MechanicalVentilationTopic = () => {
         <>
     <>
       <StickyTOC items={tocItems} />
+      <p className="text-sm text-muted-foreground">Intubating a patient in septic shock? See <a href="/intensive-care/sepsis-resuscitation" className="text-primary underline">ICU Resuscitation: The First Hour of Septic Shock</a> for where ventilation fits in the resuscitation sequence.</p>
       <section className="space-y-6 mb-10">
         <p className="text-sm text-muted-foreground">Related lesson: <Link to="/intensive-care/peep-management" className="font-semibold text-primary underline underline-offset-4">PEEP Management</Link> — measurement, titration, lung protection and the settings that influence intrinsic PEEP.</p>
         <p className="text-sm text-muted-foreground">Related lesson: <Link to="/intensive-care/ventilation-protocols" className="font-semibold text-primary underline underline-offset-4">ICU Ventilation Protocols</Link> — standardised admission settings, monitoring checks and sedation and weaning protocols.</p>

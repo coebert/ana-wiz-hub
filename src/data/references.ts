@@ -2772,3 +2772,10 @@ export const topicReferences: Record<string, Reference[]> = {
     },
   ],
 };
+
+/** Septic-shock resuscitation page: reuse verified records by label so quotations cannot drift. */
+{
+  const all = Object.values(topicReferences).flat().concat(septicShockReferences);
+  const pick = (l: string) => { const r = all.find((x) => x.label === l); if (!r) throw new Error(`Missing reference ${l}`); return r; };
+  topicReferences["sepsis-resuscitation"] = ["Sepsis-3 2016 septic shock", "SSC 2021 qSOFA screening", "SSC 2021 lactate", "SSC 2021 capillary refill", "SSC 2021 (Antimicrobial timing)", "Seymour 2017 NY sepsis mandate", "SSC 2021", "ESICM Shock 2014", "SSC 2021 MAP target", "SSC 2021 norepinephrine", "SSC 2021 vasopressin", "ARDSNet 2000 settings", "ARDSNet 2000 mortality"].map(pick);
+}

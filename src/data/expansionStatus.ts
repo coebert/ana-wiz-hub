@@ -218,6 +218,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from Acids, Bases & Buffers: Kw and neutral pH, blood-sample temperature correction, alpha-stat vs pH-stat. Verbatim OpenStax, StatPearls and Chatzopoulou 2025 excerpts reused; textbook constants labelled. Learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "sepsis-resuscitation": {
+    status: "expanded",
+    note: "New page under Intensive Care linked from Sepsis and Mechanical Ventilation: four lessons (recognition, first-hour antimicrobials, fluids and vasopressors, ventilation if intubated) reusing verified Sepsis-3, SSC 2021, ESICM 2014, Seymour 2017 and ARDSNet 2000 excerpts; five-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "septic-shock": {
     status: "expanded",
     note: "New page linked from Sepsis: Sepsis-3 shock criteria, SSC 2021 MAP/noradrenaline/vasopressin/steroid recommendations, 65 trial and ADRENAL. Learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
