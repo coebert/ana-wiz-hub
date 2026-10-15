@@ -238,6 +238,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from ICU Outcomes: four lessons on ICNARC 2024-25 and NHS HES Adult Critical Care stays, support days by organ type, condition-specific stays and deprivation; six-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "icu-cost-by-condition": {
+    status: "expanded",
+    note: "New page linked from ICU Costs and ICU Outcomes: UK/NHS beside US cost figures for sepsis, VAP/HAP, ARDS and ventilation, quoting abstracts and the NHS 2021/22 schedule; six-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "icu-staffing-by-unit": {
     status: "expanded",
     note: "New page linked from ICU Staffing Ratios: four lessons quoting GPICS V3 (January 2026) unit-type chapters (cardiothoracic, neurocritical care, burns, smaller remote and rural, enhanced care) against the general staffing baseline; six-question quiz. Source-checked, not consultant-reviewed.",

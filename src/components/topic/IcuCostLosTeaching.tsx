@@ -16,6 +16,7 @@ const Table = ({ head, rows }: { head: string[]; rows: ReactNode[][] }) => <div 
 
 export function CostAverageTeaching() {
   return <div className={lessonWrap}>
+    <p>Costs for individual conditions, UK beside US, are on <L to="/intensive-care/icu-cost-by-condition">ICU Cost by Condition</L>.</p>
     <H>The headline NHS figure</H>
     <QO label="DHSC 2023 NHS bed-day costs" />
     <QO label="DHSC 2023 critical care caveat" />
