@@ -246,6 +246,26 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from ICU Staffing Ratios: four lessons quoting GPICS V3 (January 2026) unit-type chapters (cardiothoracic, neurocritical care, burns, smaller remote and rural, enhanced care) against the general staffing baseline; six-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "icu-general-unit": {
+    status: "expanded",
+    note: "New page: GPICS V3 baseline staffing for the general adult ICU plus NHS 2019/20 general adult critical care bed-day costs (about £1,689, 838,376 bed days); five-question quiz. Source-checked, not consultant-reviewed.",
+  },
+  "icu-cardiac-unit": {
+    status: "expanded",
+    note: "New page: GPICS V3 cardiothoracic staffing additions (surgeon on site, CALS rota, perfusion 24/7) plus NHS 2019/20 cardiac surgical bed-day costs (about £1,660); five-question quiz. Source-checked, not consultant-reviewed.",
+  },
+  "icu-neuro-unit": {
+    status: "expanded",
+    note: "New page: GPICS V3 neurocritical care staffing and specialist access plus NHS 2019/20 neurosciences bed-day costs (about £1,616); five-question quiz. Source-checked, not consultant-reviewed.",
+  },
+  "icu-liver-unit": {
+    status: "expanded",
+    note: "New page: general GPICS V3 staffing applied to liver intensive care (no liver-specific chapter) plus NHS 2019/20 liver unit bed-day costs (about £1,760); five-question quiz. Source-checked, not consultant-reviewed.",
+  },
+  "icu-obstetric-unit": {
+    status: "expanded",
+    note: "New page: general GPICS V3 staffing applied to obstetric critical care (no obstetric chapter) plus NHS 2019/20 obstetric and gynaecology bed-day costs (about £2,303, highest unit-function average); five-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "icu-staffing-ratios": {
     status: "expanded",
     note: "New page linked from Critical Care Overview: five lessons quoting GPICS V3 (January 2026) staffing chapters for consultants, resident doctors/ACCPs, registered nurses and nursing associates, pharmacy, AHPs and support staff, by day/night; worked nurse and pharmacist arithmetic; eight-question quiz. Source-checked, not consultant-reviewed.",
