@@ -222,6 +222,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from The ICU Inpatient Journey: four lessons (rehabilitation during the stay, ICU-to-ward transfer, ward step-down and home, 2–3 month review) quoting NICE CG83, NICE CG50 and GPICS 2.1; five-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "icu-outcomes": {
+    status: "expanded",
+    note: "New page linked from ICU Discharge Planning: three lessons (survival after ICU, length of stay, readmission) quoting Wunsch 2010, Herridge 2003, Rosenberg & Watts 2000, Duke 2004 and NICE CG50/CG83; five-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "icu-anaphylaxis": {
     status: "expanded",
     note: "New page linked from Critical Care Overview: three lessons (recognition and first doses, refractory anaphylaxis, after the reaction) quoting RCUK 2021; five-question quiz. Source-checked, not consultant-reviewed.",
