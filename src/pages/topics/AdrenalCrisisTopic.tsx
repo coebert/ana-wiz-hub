@@ -15,7 +15,7 @@ const quiz = [
 ];
 
 export default function AdrenalCrisisTopic() {
-  return <TopicTemplate title="Adrenal Crisis" subtitle="Final / FFICM / EDIC \u2014 Endocrine Emergencies" backPath="/intensive-care/icu-endocrine-emergencies" backLabel="Endocrine Emergencies" accentColor="text-icu" topicId="adrenal-crisis" topicTitle="Adrenal Crisis"
+  return <TopicTemplate title="Adrenal Crisis" subtitle="Final / FFICM / EDIC — Endocrine Emergencies" backPath="/intensive-care/icu-endocrine-emergencies" backLabel="Endocrine Emergencies" accentColor="text-icu" topicId="adrenal-crisis" topicTitle="Adrenal Crisis"
     objectives={["Recognise adrenal crisis in primary, secondary and steroid-induced adrenal insufficiency", "Give hydrocortisone and fluids immediately without waiting for tests", "Taper safely, start fludrocortisone when indicated and teach sick-day rules", "Distinguish hydrocortisone replacement from the septic-shock adjunct"]}
     sectionExamMapping={{ objectives: { exams }, keyPoints: { exams } }}
     sectionSources={{ objectives: ["SfE crisis definition 2016", "SfE crisis immediate treatment 2016"], keyPoints: ["SfE crisis immediate treatment 2016", "SfE crisis hydrocortisone 2016", "SfE crisis fluids 2016", "SfE secondary insufficiency 2016", "SfE crisis sick day 2016"] }}

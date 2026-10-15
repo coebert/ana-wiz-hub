@@ -15,7 +15,7 @@ const quiz = [
 ];
 
 export default function ThyroidStormTopic() {
-  return <TopicTemplate title="Thyroid Storm" subtitle="Final / FFICM / EDIC \u2014 Endocrine Emergencies" backPath="/intensive-care/icu-endocrine-emergencies" backLabel="Endocrine Emergencies" accentColor="text-icu" topicId="thyroid-storm" topicTitle="Thyroid Storm"
+  return <TopicTemplate title="Thyroid Storm" subtitle="Final / FFICM / EDIC — Endocrine Emergencies" backPath="/intensive-care/icu-endocrine-emergencies" backLabel="Endocrine Emergencies" accentColor="text-icu" topicId="thyroid-storm" topicTitle="Thyroid Storm"
     objectives={["Recognise thyroid storm clinically and use the Burch–Wartofsky score appropriately", "Sequence antithyroid drugs and iodide, and explain the ATA vs JTA/JES timing difference", "Use beta-blockade, corticosteroids and cooling safely", "Know when to consider plasmapheresis", "Prevent and manage perioperative storm"]}
     sectionExamMapping={{ objectives: { exams }, keyPoints: { exams } }}
     sectionSources={{ objectives: ["JTA storm multimodal 2016", "JTA storm ATA iodide timing 2016"], keyPoints: ["JTA storm mortality 2016", "JTA storm multimodal 2016", "JTA storm ATA iodide timing 2016", "JTA storm beta-blockade 2016", "JTA storm corticosteroids 2016"] }}

@@ -15,7 +15,7 @@ const quiz = [
 ];
 
 export default function PituitaryApoplexyTopic() {
-  return <TopicTemplate title="Pituitary Apoplexy" subtitle="Final / FFICM / EDIC \u2014 Endocrine Emergencies" backPath="/intensive-care/icu-endocrine-emergencies" backLabel="Endocrine Emergencies" accentColor="text-icu" topicId="pituitary-apoplexy" topicTitle="Pituitary Apoplexy"
+  return <TopicTemplate title="Pituitary Apoplexy" subtitle="Final / FFICM / EDIC — Endocrine Emergencies" backPath="/intensive-care/icu-endocrine-emergencies" backLabel="Endocrine Emergencies" accentColor="text-icu" topicId="pituitary-apoplexy" topicTitle="Pituitary Apoplexy"
     objectives={["Recognise pituitary apoplexy and distinguish it from subarachnoid haemorrhage and meningitis", "Give empirical steroids when indicated, at the guidance dose", "Understand the evidence on early surgery versus conservative management", "Plan follow-up and perioperative care"]}
     sectionExamMapping={{ objectives: { exams }, keyPoints: { exams } }}
     sectionSources={{ objectives: ["SfE apoplexy suspicion 2016", "SfE apoplexy emergency 2016"], keyPoints: ["SfE apoplexy suspicion 2016", "SfE apoplexy imaging 2016", "SfE apoplexy emergency 2016", "SfE apoplexy dose 2016", "UK pituitary apoplexy 2011"] }}
