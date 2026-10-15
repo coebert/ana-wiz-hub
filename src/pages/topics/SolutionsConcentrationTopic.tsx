@@ -13,6 +13,7 @@ import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { SolutionsConcentrationDiagram } from "@/components/diagrams/chemistry/SolutionsConcentrationDiagram";
 import { solutionsConcentrationQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { DonnanTeaching, OsmometryTeaching } from "@/components/topic/ChemistryGapsTeaching";
 
 const objectives = [
   "Convert between %, mg/mL, mmol/L and ratio expressions of drug concentration",
@@ -182,6 +183,18 @@ const SolutionsConcentrationTopic = () => {
                 metabolic acidosis, methanol or ethylene glycol toxicity should be suspected and treated empirically with fomepizole.
               </p>
             </div>
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="osmometry" exams={[Exam.PRIMARY]}>
+            <CollapsibleSubsection title="Measuring Osmolality: Osmometers">
+              <OsmometryTeaching />
+            </CollapsibleSubsection>
+          </ExamSection>
+
+          <ExamSection id="donnan" exams={[Exam.PRIMARY]}>
+            <CollapsibleSubsection title="The Donnan Effect">
+              <DonnanTeaching />
             </CollapsibleSubsection>
           </ExamSection>
 
