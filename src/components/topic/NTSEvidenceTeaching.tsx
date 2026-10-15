@@ -100,7 +100,7 @@ export function SpeakingUpTeaching() {
     <p><strong className="text-foreground">The lesson for both sides:</strong> the junior team members had the right information and even acted on it, but the message never reached the decision-makers in a form they registered. Speaking up is necessary but not sufficient — the leader must actively invite, hear and visibly respond to challenge, especially when absorbed in a difficult task.</p>
     <p><strong className="text-foreground">Evidence limits:</strong> these AHRQ pages define communication and escalation tools, not a guaranteed reduction in mortality from using an individual phrase. Rehearse with the whole team, including how leaders respond, rather than treating a mnemonic as an independently proven treatment.<R label="AHRQ CUS" /><R label="AHRQ Two-Challenge" /></p>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: must you complete two challenges before stopping an immediately unsafe action?</summary><p className="mt-2">No. The two-challenge rule supports escalation when an initial concern is ignored; it is not a mandatory delay in imminent danger. State the hazard and requested action clearly, seek immediate help and follow the applicable emergency pathway. The receiver should acknowledge and address the concern, not just demand more assertiveness.</p></details>
-    <LessonSources topicId="non-technical-skills" labels={["AHRQ CUS", "AHRQ Two-Challenge", "AHRQ DESC"]} />
+    <LessonSources topicId="non-technical-skills" labels={["AHRQ CUS", "AHRQ Two-Challenge", "AHRQ DESC", "CHFG"]} />
   </div>;
 }
 
