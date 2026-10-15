@@ -113,6 +113,14 @@ const CORE_SEO: Record<string, { title: string; description: string }> = {
     title: "Revise – FRCA & FFICM Topic Search | AnaesthesiaCore",
     description: "Search the unified FRCA Primary, Final and FFICM curriculum: 300+ topics across physics, physiology, pharmacology, clinical anaesthesia and intensive care.",
   },
+  "/frca-primary": {
+    title: "FRCA Primary Revision – Physics, Physiology, Pharmacology",
+    description: "Free FRCA Primary revision: exam-mapped notes, interactive diagrams, MCQ-style quizzes and viva practice across physics, physiology, pharmacology and chemistry.",
+  },
+  "/frca-final": {
+    title: "FRCA Final Revision – Clinical Anaesthesia & ICU Notes",
+    description: "Free FRCA Final revision: exam-mapped notes, quizzes and structured viva answers across clinical anaesthesia, intensive care and perioperative medicine.",
+  },
   "/map": {
     title: "Topic Map – FRCA & FFICM Curriculum | AnaesthesiaCore",
     description: "Visual map of the FRCA Primary, Final and FFICM curriculum showing how every topic links across physics, physiology, pharmacology, clinical and ICU.",

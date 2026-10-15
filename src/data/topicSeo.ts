@@ -424,6 +424,13 @@ export const topicSeo: Record<string, TopicSeo> = {
       "sugammadex reversal",
     ],
   },
+  // ===== Notes =====
+  "mac-for-age-formula": {
+    title: "MAC for Age Formula – Age-Adjusted MAC Calculator",
+    description: "Calculate age-adjusted MAC with the Mapleson formula MAC = MAC₄₀ × 10^(−0.00269 × (age − 40)): worked sevoflurane, isoflurane and desflurane values for FRCA.",
+    aliases: ["MAC for age", "Age-adjusted MAC", "Mapleson MAC formula", "MAC age correction"],
+    keywords: ["MAC for age formula", "age adjusted MAC", "Mapleson MAC", "sevoflurane MAC elderly", "MAC calculation FRCA"],
+  },
 };
 
 
