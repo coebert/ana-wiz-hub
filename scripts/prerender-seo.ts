@@ -115,7 +115,7 @@ const CORE_SEO: Record<string, { title: string; description: string }> = {
   },
   "/frca-primary": {
     title: "Primary FRCA Revision Notes – Free MCQs & Viva Practice",
-    description: "Free Primary FRCA revision: exam-mapped physics, physiology and pharmacology notes, interactive diagrams, MCQ quizzes and viva practice. No sign-up to start.",
+    description: "Free Primary FRCA revision: exam-mapped physics, physiology and pharmacology notes, interactive diagrams, MCQ quizzes, viva practice and chemistry.",
   },
   "/frca-final": {
     title: "Final FRCA Revision – Free SBAs & Model Viva Answers",
