@@ -19,6 +19,11 @@ interface RecentExpansion {
 }
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
+  { topicId: "icu-general-unit", section: "intensive-care", title: "The General Adult ICU", note: "New page: GPICS V3 baseline staffing and NHS 2019/20 general critical care costs." },
+  { topicId: "icu-cardiac-unit", section: "intensive-care", title: "The Cardiothoracic ICU", note: "New page: GPICS V3 cardiothoracic staffing additions and NHS cardiac surgical costs." },
+  { topicId: "icu-neuro-unit", section: "intensive-care", title: "The Neurocritical Care Unit", note: "New page: GPICS V3 neuro staffing and specialist access, plus NHS neurosciences costs." },
+  { topicId: "icu-liver-unit", section: "intensive-care", title: "The Liver ICU", note: "New page: general GPICS V3 staffing applied to liver intensive care, plus NHS liver unit costs." },
+  { topicId: "icu-obstetric-unit", section: "intensive-care", title: "Obstetric Critical Care", note: "New page: general GPICS V3 staffing applied to obstetric critical care, plus the highest NHS unit-function cost." },
   { topicId: "icu-cost-by-condition", section: "intensive-care", title: "ICU Cost by Condition", note: "New page: UK/NHS and US cost figures side by side for sepsis, ventilator pneumonia, ARDS and ventilation." },
   { topicId: "icu-staffing-by-unit", section: "intensive-care", title: "ICU Staffing by Unit Type (GPICS V3)", note: "New page: what GPICS V3 adds for cardiothoracic, neuro, burns, remote and rural, and enhanced care units." },
   { topicId: "icu-costs", section: "intensive-care", title: "ICU Costs (NHS data)", note: "New page: NHS cost per adult critical care day by organs supported and unit type, from the National Schedule of NHS Costs." },
