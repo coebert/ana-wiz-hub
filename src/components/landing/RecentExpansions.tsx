@@ -20,6 +20,12 @@ interface RecentExpansion {
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
   {
+    topicId: "dka",
+    section: "intensive-care",
+    title: "Diabetic Ketoacidosis (DKA)",
+    note: "New page: JBDS 2023 criteria, blood-ketone monitoring, balanced-crystalloid evidence, fixed-rate insulin, potassium safety, resolution criteria and euglycaemic DKA.",
+  },
+  {
     topicId: "critical-care-overview",
     section: "intensive-care",
     title: "Critical Care Overview",
