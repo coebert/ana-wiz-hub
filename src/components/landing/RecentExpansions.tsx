@@ -117,7 +117,7 @@ const RECENT_EXPANSIONS: RecentExpansion[] = [
   },
   {
     topicId: "non-technical-skills",
-    section: "clinical",
+    section: "intensive-care",
     title: "Non-technical Skills",
     note: "ANTS framework and WHO surgical checklist evidence lessons with verbatim excerpts.",
   },
