@@ -64,6 +64,8 @@ export const TOPIC_ROUTES: ReadonlyArray<readonly [string, string]> = [
   ["/chemistry/temperature-ph", "TemperaturePhTopic"],
   ["/intensive-care/septic-shock", "SepticShockTopic"],
   ["/intensive-care/sepsis-resuscitation", "SepsisResuscitationTopic"],
+  ["/intensive-care/icu-anaphylaxis", "IcuAnaphylaxisTopic"],
+  ["/intensive-care/icu-eclampsia", "IcuEclampsiaTopic"],
   ["/physiology/oxygen-haemoglobin", "OxygenHaemoglobinTopic"],
   ["/physiology/cardiac-cycle", "CardiacCycleTopic"],
   ["/physiology/lung-mechanics", "LungMechanicsTopic"],

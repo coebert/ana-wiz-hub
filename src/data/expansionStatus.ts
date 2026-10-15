@@ -218,6 +218,14 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from Acids, Bases & Buffers: Kw and neutral pH, blood-sample temperature correction, alpha-stat vs pH-stat. Verbatim OpenStax, StatPearls and Chatzopoulou 2025 excerpts reused; textbook constants labelled. Learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "icu-anaphylaxis": {
+    status: "expanded",
+    note: "New page linked from Critical Care Overview: three lessons (recognition and first doses, refractory anaphylaxis, after the reaction) quoting RCUK 2021; five-question quiz. Source-checked, not consultant-reviewed.",
+  },
+  "icu-eclampsia": {
+    status: "expanded",
+    note: "New page linked from Critical Care Overview: three lessons (magnesium sulfate, severe hypertension, fluids) quoting NICE NG133 and Magpie 2002; five-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "sepsis-resuscitation": {
     status: "expanded",
     note: "New page under Intensive Care linked from Sepsis and Mechanical Ventilation: four lessons (recognition, first-hour antimicrobials, fluids and vasopressors, ventilation if intubated) reusing verified Sepsis-3, SSC 2021, ESICM 2014, Seymour 2017 and ARDSNet 2000 excerpts; five-question quiz. Source-checked, not consultant-reviewed.",
