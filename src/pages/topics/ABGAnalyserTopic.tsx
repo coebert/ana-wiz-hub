@@ -33,13 +33,13 @@ const objectives = [
 ];
 
 const keyPoints = [
-  { text: "ABG directly measures pH (glass electrode), PO\u2082 (Clark), PCO\u2082 (Severinghaus). HCO\u2083\u207B and BE are calculated.", cites: ["BJA Educ 2017"] },
+  { text: "ABG directly measures pH (glass electrode), PO\u2082 (Clark), PCO\u2082 (Severinghaus). HCO\u2083\u207B and BE are calculated.", cites: ["Blood Gas Review 2025"] },
   { text: "Clark electrode: amperometric, \u22120.6V polarizing voltage, Pt cathode reduces O\u2082 (O\u2082+2H\u2082O+4e\u207B\u21924OH\u207B), Ag anode oxidised (4Ag+4Cl\u207B\u21924AgCl+4e\u207B). Current \u221D PO\u2082.", cites: ["Middleton Ch.18"] },
   { text: "pH glass electrode: H\u207A exchanges with Li\u207A/Na\u207A in hydrated gel layers \u2014 boundary potential follows Nernst equation (61.5 mV/pH unit at 37\u00B0C).", cites: ["Cross & Plunkett Ch.15-16"] },
-  { text: "Severinghaus: CO\u2082 crosses Teflon membrane \u2192 CO\u2082+H\u2082O\u2192H\u207A+HCO\u2083\u207B \u2192 pH change measured by inner glass electrode. Slowest response (~60\u2013120s).", cites: ["BJA Educ 2017"] },
+  { text: "Severinghaus: CO\u2082 crosses Teflon membrane \u2192 CO\u2082+H\u2082O\u2192H\u207A+HCO\u2083\u207B \u2192 pH change measured by inner glass electrode. Slowest response (~60\u2013120s).", cites: ["Blood Gas Review 2025"] },
   { text: "Galvanic fuel cell: self-generating EMF, gold cathode/lead anode (consumed), same cathode reaction as Clark. Measures FiO\u2082 in breathing circuit.", cites: ["Middleton Ch.18"] },
   { text: "\u03B1-stat vs pH-stat: \u03B1-stat (uncorrected at 37\u00B0C) preferred in adults; pH-stat (corrected to patient temp) in paediatric cardiac surgery.", cites: ["Cross & Plunkett Ch.15-16"] },
-  { text: "Optodes: fibre-optic fluorescence sensors. PO\u2082 optode uses ruthenium dye fluorescence quenching (Stern\u2013Volmer); pH optode is ratiometric; PCO\u2082 optode = Severinghaus with pH optode inside. Don't consume O\u2082, MRI-compatible, used in POC cartridges, intravascular and CPB monitors.", cites: ["BJA Educ 2017"] },
+  { text: "Optodes: fibre-optic fluorescence sensors. PO\u2082 optode uses ruthenium dye fluorescence quenching (Stern\u2013Volmer); pH optode is ratiometric; PCO\u2082 optode = Severinghaus with pH optode inside. Don't consume O\u2082, MRI-compatible, used in POC cartridges, intravascular and CPB monitors.", cites: ["Blood Gas Review 2025"] },
 ];
 
 const ABGAnalyserTopicWorkedExamples: WorkedExample[] = [
@@ -67,7 +67,7 @@ const ABGAnalyserTopicWorkedExamples: WorkedExample[] = [
       </div>
     ),
     answer: "SpO₂ is falsely normal because COHb absorbs at 660 nm. Co-oximetry reveals 22% COHb. Treat with 100% O₂, escalate to hyperbaric O₂ given exposure and clinical context.",
-    cites: ["BJA Educ 2017", "Cross & Plunkett Ch.15-16", "Middleton Ch.18"],
+    cites: ["Blood Gas Review 2025", "Cross & Plunkett Ch.15-16", "Middleton Ch.18"],
   },
 ];
 
@@ -90,8 +90,8 @@ const ABGAnalyserTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        objectives: ["BJA Educ 2017", "Cross & Plunkett Ch.15-16", "Middleton Ch.18"],
-        keyPoints: ["BJA Educ 2017", "Cross & Plunkett Ch.15-16", "Middleton Ch.18"],
+        objectives: ["Blood Gas Review 2025", "Cross & Plunkett Ch.15-16", "Middleton Ch.18"],
+        keyPoints: ["Blood Gas Review 2025", "Cross & Plunkett Ch.15-16", "Middleton Ch.18"],
       }}
       coreConcepts={
         <>
@@ -314,7 +314,7 @@ const ABGAnalyserTopic = () => {
           <div className="mt-3 text-sm text-muted-foreground space-y-2"><p>Cooling increases the solubility of O₂ and CO₂ (Henry's law), so their measured partial pressures fall. At the same time, the neutral pH of water and the pKa of histidine imidazole groups rise; if total CO₂ is unchanged, blood therefore becomes more alkaline as temperature falls.</p><p><strong>α-stat</strong> leaves results referenced to 37°C and maintains total CO₂ and histidine protonation, preserving intracellular electroneutrality. <strong>pH-stat</strong> adds CO₂ to hold pH 7.40 at the patient's actual temperature, increasing total-body CO₂ and producing relative respiratory acidosis with greater cerebral blood flow. <InlineRef topicId="abg-analyser" refLabel="Cross & Plunkett Ch.15-16" /></p></div>
         </div>
 
-        <div><h2 className="text-2xl font-serif font-bold text-foreground mb-3">Co-oximetry</h2><div className="text-muted-foreground space-y-2"><p>A co-oximeter haemolyses the sample and applies Beer–Lambert spectrophotometry (A = εcl) at multiple wavelengths, typically 4–7 or more. The ~805 nm isobestic point gives equal HbO₂ and HHb absorptivity; additional wavelengths resolve HbO₂, HHb, COHb and MetHb.</p><p>It directly measures total haemoglobin and each species fraction. It then calculates functional saturation, HbO₂/(HbO₂+HHb), and fractional FO₂Hb, HbO₂/tHb. Fractional saturation is clinically decisive in dyshaemoglobinaemia because it reports the true fraction of haemoglobin carrying oxygen. <InlineRef topicId="abg-analyser" refLabel="BJA Educ 2017" /></p></div></div>
+        <div><h2 className="text-2xl font-serif font-bold text-foreground mb-3">Co-oximetry</h2><div className="text-muted-foreground space-y-2"><p>A co-oximeter haemolyses the sample and applies Beer–Lambert spectrophotometry (A = εcl) at multiple wavelengths, typically 4–7 or more. The ~805 nm isobestic point gives equal HbO₂ and HHb absorptivity; additional wavelengths resolve HbO₂, HHb, COHb and MetHb.</p><p>It directly measures total haemoglobin and each species fraction. It then calculates functional saturation, HbO₂/(HbO₂+HHb), and fractional FO₂Hb, HbO₂/tHb. Fractional saturation is clinically decisive in dyshaemoglobinaemia because it reports the true fraction of haemoglobin carrying oxygen. <InlineRef topicId="abg-analyser" refLabel="Blood Gas Review 2025" /></p></div></div>
 
         <div><h2 className="text-2xl font-serif font-bold text-foreground mb-3">Calibration and Quality Control</h2><div className="text-muted-foreground space-y-2"><p>Calibration establishes the relationship between electrode voltage/current and analyte concentration. Frequent <strong>one-point calibration</strong> corrects offset using one known standard (for example pH 7.384), often every 30 minutes or around sampling. Less frequent <strong>two-point calibration</strong> corrects both offset and slope using standards bracketing the physiological range: pH 6.840/7.384 and gas mixtures such as 5% CO₂/20% O₂ and 10% CO₂/0% O₂.</p><p>Independent multi-level controls with known low, normal and high values verify the whole analyser remains within acceptable limits after calibration and maintenance. <InlineRef topicId="abg-analyser" refLabel="Middleton Ch.18" /></p></div></div>
 
@@ -322,7 +322,7 @@ const ABGAnalyserTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sources of Error</h2>
           <div className="grid sm:grid-cols-2 gap-2">
             {[
-              { error: "Air bubbles in sample", effect: "↑PO₂, ↓PCO₂ (equilibration with room air)" },
+              { error: "Air bubbles in sample", effect: "PO₂ pulled towards room air (~21 kPa: rises if lower, falls if higher), ↓PCO₂" },
               { error: "Excess heparin", effect: "Dilution → ↓PCO₂, ↓HCO₃⁻. Acidic heparin → ↓pH" },
               { error: "Delayed analysis", effect: "Ongoing metabolism → ↓PO₂, ↑PCO₂, ↓pH, ↑lactate" },
               { error: "Hypothermia (uncorrected)", effect: "At 37°C: PO₂ and PCO₂ appear higher than in vivo" },
@@ -499,7 +499,7 @@ const ABGAnalyserTopic = () => {
               "Clark electrode measures pO₂ amperometrically — current proportional to O₂ reduced at a polarised platinum cathode.",
               "Severinghaus electrode measures pCO₂ — a modified pH electrode behind a CO₂-permeable membrane.",
               "Galvanic fuel cell measures FiO₂ — self-powered, depletes over months; replace when low-O₂ alarm fails calibration.",
-              "Pre-analytical errors: air bubbles (falsely high pO₂), delayed analysis (falling pO₂, rising pCO₂), heparin dilution (falsely low pCO₂).",
+              "Pre-analytical errors: air bubbles (pO₂ pulled towards room-air value, pCO₂ falls), delayed analysis (falling pO₂, rising pCO₂), heparin dilution (falsely low pCO₂).",
             ]}
           />
         </section>
