@@ -224,7 +224,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "icu-outcomes": {
     status: "expanded",
-    note: "New page linked from ICU Discharge Planning: three lessons (survival after ICU, length of stay, readmission) quoting Wunsch 2010, Herridge 2003, Rosenberg & Watts 2000, Duke 2004 and NICE CG50/CG83; five-question quiz. Source-checked, not consultant-reviewed.",
+    note: "Nine source-led lessons: ICNARC 2024–25 public/clinical outcomes, long-term survival, physical/cognitive recovery, readmissions, scoring, return to work, PTSD/depression/anxiety and 2026 PICS evidence. Named study populations, thresholds and denominators; 16-question quiz. Source-checked, not consultant-reviewed.",
   },
   "icu-anaphylaxis": {
     status: "expanded",
