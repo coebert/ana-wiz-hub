@@ -19,6 +19,31 @@ const Check = ({ question, children }: { question: string; children: ReactNode }
 const wrap = "space-y-4 text-muted-foreground leading-relaxed";
 const link = "text-primary underline";
 
+export function GpicsTeaching() {
+  return (
+    <div className={wrap}>
+      <H>What GPICS is</H>
+      <p>The Guidelines for the Provision of Intensive Care Services (GPICS) are the joint FICM/Intensive Care Society standards for how UK intensive care is organised and staffed:</p>
+      <Q>GPICS V3 (2026) is the definitive reference source for the planning, commissioning and delivery of adult intensive care services in the UK.<R label="GPICS V3 definitive" /></Q>
+      <Q>This latest version is broken down into five sections covering intensive care structure, workforce, clinical care, service development and preparedness.<R label="GPICS V3 sections" /></Q>
+      <H>Standards versus recommendations</H>
+      <p>GPICS grades its advice. In V3 the two tiers were renamed to make the distinction clearer:</p>
+      <Q>For V3, the previously named ‘standards’ have been renamed ‘minimum standards’ and are defined as something we expect all ICUs in the UK to be able to meet.<R label="GPICS V3 minimum standards" /></Q>
+      <Q>‘Recommendations’ are now ‘recommendations for a quality service’ and are intended to act as markers for a high quality intensive care service.<R label="GPICS V3 quality recommendations" /></Q>
+      <Reasoning>when you read a GPICS statement, check which tier it is. A minimum standard is a commissioning floor every unit should meet; a quality recommendation marks out a high-quality service. The numbered time standards and staffing ratios quoted in the other lessons on this page come from GPICS V2.1 (2022), the edition current when they were verified — always check the latest edition for the current wording.</Reasoning>
+      <H>Editions and who uses it</H>
+      <Q>The first version of GPICS was published in 2015. In 2016, GPICS Edition 1 was subject to a review. Edition 2 began in Summer 2017 and was published Summer 2019. Edition 2.1 was published in Summer 2022.<R label="GPICS editions" /></Q>
+      <p>GPICS is not just an internal document — regulators and auditors use it to judge units:</p>
+      <Q>Groups that check hospital quality, such as the Care Quality Commission (CQC) in England, also use GPICS. In Scotland, Scottish Intensive Care Society Audit Group (SICSAG) uses GPICS to help check how well intensive care units are working.<R label="GPICS CQC SICSAG" /></Q>
+      <Reasoning>this is why GPICS gaps matter beyond the unit: they can surface in CQC inspections and national audit comparisons, and they are the evidence base when a unit bids for more staff, beds or equipment.</Reasoning>
+      <Check question="a unit meets every GPICS quality recommendation but misses one minimum standard. How would GPICS describe this?">
+        <p>It would still fall short: minimum standards are “something we expect all ICUs in the UK to be able to meet”, so a missed minimum standard is a gap in the floor of provision, however many quality recommendations are met. Quality recommendations mark a high-quality service built on top of the minimum standards.</p>
+      </Check>
+      <LessonSources topicId={T} labels={["GPICS V3 definitive", "GPICS V3 sections", "GPICS V3 minimum standards", "GPICS V3 quality recommendations", "GPICS editions", "GPICS CQC SICSAG"]} />
+    </div>
+  );
+}
+
 export function IcuStructureTeaching() {
   return (
     <div className={wrap}>
