@@ -4,9 +4,9 @@ import { NoteLayout } from "./NoteLayout";
 const ApfelScoreNote = () => (
   <NoteLayout
     slug="apfel-score-ponv-risk"
-    title="Apfel score: predicting PONV risk"
+    title="Apfel Score for PONV – 4 Risk Factors & Risk % Explained"
     shortTitle="Apfel score for PONV"
-    description="The four-item Apfel score predicts postoperative nausea and vomiting risk: variables, the 10/20/40/60/80% gradient, and multimodal antiemetic prophylaxis."
+    description="Apfel PONV score: female sex, non-smoker, PONV or motion sickness history, postoperative opioids. 0–4 factors ≈ 10/20/40/60/80% risk, plus prophylaxis."
     datePublished="2026-06-18"
     examTags={["primary", "final"]}
     lede="The Apfel score is a four-item bedside predictor of postoperative nausea and vomiting (PONV) in adults. Each present risk factor adds one point and shifts the predicted 24-hour PONV risk from 10% (zero factors) to 80% (all four)."

@@ -426,10 +426,16 @@ export const topicSeo: Record<string, TopicSeo> = {
   },
   // ===== Notes =====
   "mac-for-age-formula": {
-    title: "MAC for Age Formula – Age-Adjusted MAC Calculator",
-    description: "Calculate age-adjusted MAC with the Mapleson formula MAC = MAC₄₀ × 10^(−0.00269 × (age − 40)): worked sevoflurane, isoflurane and desflurane values for FRCA.",
+    title: "MAC for Age Formula – Mapleson Equation & Worked Examples",
+    description: "MAC falls about 6% per decade after 40. Mapleson formula MAC = MAC₄₀ × 10^(−0.00269 × (age − 40)), with worked sevoflurane, isoflurane and desflurane values.",
     aliases: ["MAC for age", "Age-adjusted MAC", "Mapleson MAC formula", "MAC age correction"],
     keywords: ["MAC for age formula", "age adjusted MAC", "Mapleson MAC", "sevoflurane MAC elderly", "MAC calculation FRCA"],
+  },
+  "apfel-score-ponv-risk": {
+    title: "Apfel Score for PONV – 4 Risk Factors & Risk % Explained",
+    description: "Apfel PONV score: female sex, non-smoker, PONV or motion sickness history, postoperative opioids. 0–4 factors ≈ 10/20/40/60/80% risk, plus prophylaxis.",
+    aliases: ["Apfel score", "Apfel PONV score", "PONV risk score"],
+    keywords: ["Apfel score", "Apfel score PONV", "PONV risk factors", "simplified Apfel score"],
   },
 };
 
