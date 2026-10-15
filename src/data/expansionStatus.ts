@@ -50,7 +50,7 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
   },
   chemistry: {
     status: "pending",
-    note: "Not yet reviewed. Candidates: metallic bonding, redox chemistry.",
+    note: "Atomic Structure & Bonding audited and expanded; the other four chemistry topics are not yet reviewed. Noted for the redox audit: its 'BJA Educ 2010' electrode citation points to a DOI belonging to a different article.",
   },
 };
 
@@ -116,6 +116,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   "abdominal-compartment-syndrome": {
     status: "expanded",
     note: "Whole topic reviewed against the full WSACS 2013 guideline text (PMC3680657) and Malbrain 2005: definitions, paediatric values, risk-factor table, measurement, medical algorithm with GRADE strengths, open-abdomen classification (3a/3b added), FAQs, worked examples, key points and quiz corrected. Removed unsourced figures (APP target presented as a recommendation, 250 mL/kg and 3.5 L thresholds, 7–10 day closure, 40–70% mortality, palpation <50%). Evidence-strength and IAH epidemiology lessons added.",
+  },
+  "atomic-structure-bonding": {
+    status: "expanded",
+    note: "Line-by-line audit (15 October 2026): replaced an unverifiable 'BJA Educ 2010' bonding citation, corrected the Tec 6 altitude trap (constant volume %, not partial pressure), Na–Cl ΔEN (~2.2) and the hydrogen-bond definition. Added five lessons (atoms/ions/isotopes/mole; electronegativity; hydrogen bonding and drug binding; C–F bond and volatiles; vapour pressure and the desflurane vaporiser) with IUPAC, O'Hagan, OpenAnesthesia and WFSA quotations, learning checks and three quiz questions. Textbook citations remain general references; diagram content not separately reviewed. Not consultant-certified.",
   },
   "non-technical-skills": {
     status: "in-progress",

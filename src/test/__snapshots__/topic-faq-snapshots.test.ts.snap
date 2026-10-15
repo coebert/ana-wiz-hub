@@ -322,7 +322,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/chemistry/atomic-structure-bonding": [
     {
-      "a": "Halothane carries heavy bromine and chlorine atoms whose large, polarisable electron clouds generate strong van der Waals forces, holding molecules together until ~50 °C. Desflurane has only small fluorine atoms with weak van der Waals attraction, so it boils at 23.5 °C — requiring the heated, pressurised Tec 6 vaporiser to deliver predictable partial pressures clinically.",
+      "a": "Halothane carries heavy bromine and chlorine atoms whose large, polarisable electron clouds generate strong van der Waals forces, holding molecules together until ~50 °C. Desflurane has only small fluorine atoms with weak van der Waals attraction, so it boils at 23.5 °C — requiring the heated, pressurised Tec 6 vaporiser for a predictable output concentration.",
       "q": "Why does desflurane boil at room temperature while halothane boils at 50 °C?",
     },
     {
@@ -330,7 +330,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Why is sodium chloride soluble in water but not in lipid?",
     },
     {
-      "a": "The electronegativity difference (ΔEN) between the atoms. ΔEN > ~1.7 (e.g. Na-Cl, 2.1) gives ionic bonding with full electron transfer. ΔEN < ~1.7 (e.g. C-H, 0.4) gives covalent bonding with electron sharing — polar covalent if ΔEN is 0.4–1.7 (e.g. O-H), non-polar if essentially zero (e.g. C-C). This in turn dictates solubility, melting point, and how drugs interact with receptors.",
+      "a": "The electronegativity difference (ΔEN) between the atoms. ΔEN above roughly 1.7 (a rule of thumb, not a sharp boundary; e.g. Na-Cl, about 2.2) gives ionic bonding with full electron transfer. ΔEN < ~1.7 (e.g. C-H, 0.4) gives covalent bonding with electron sharing — polar covalent if ΔEN is 0.4–1.7 (e.g. O-H), non-polar if essentially zero (e.g. C-C). This in turn dictates solubility, melting point, and how drugs interact with receptors.",
       "q": "What determines whether a bond is ionic or covalent?",
     },
   ],
@@ -1328,11 +1328,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/acid-base": [
     {
-      "a": "AG = (Na⁺ + K⁺) − (Cl⁻ + HCO₃⁻); normal 8–12 mmol/L. A raised AG metabolic acidosis points to lactate, ketones, renal failure or toxins (MUDPILES); a normal AG acidosis suggests GI HCO₃⁻ loss or RTA.",
+      "a": "AG = Na⁺ − (Cl⁻ + HCO₃⁻); use the local laboratory range (often around 12 ± 4 mmol/L without potassium). Correct for albumin using AG + 0.25 × (40 − albumin g/L). A raised AG metabolic acidosis points to lactate, ketones, renal failure or toxins (MUDPILES); a normal AG acidosis suggests GI HCO₃⁻ loss or RTA.",
       "q": "How do you calculate and interpret the anion gap?",
     },
     {
-      "a": "Stewart uses strong ion difference (SID), weak acids (Atot) and pCO₂ as independent determinants of [H⁺]; it explains hyperchloraemic acidosis from saline (SID = 0) and the alkalinising effect of albumin loss better than the Henderson–Hasselbalch view.",
+      "a": "Stewart uses strong ion difference (SID), weak acids (Atot) and pCO₂ as independent determinants of [H⁺]; it explains hyperchloraemic acidosis from saline (SID = 0) and the alkalinising effect of albumin loss alongside the albumin-corrected anion-gap approach; neither framework is a substitute for identifying the cause.",
       "q": "What is the Stewart approach and when does it help?",
     },
     {
@@ -4057,7 +4057,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Halothane carries heavy bromine and chlorine atoms whose large, polarisable electron clouds generate strong van der Waals forces, holding molecules together until ~50 °C. Desflurane has only small fluorine atoms with weak van der Waals attraction, so it boils at 23.5 °C — requiring the heated, pressurised Tec 6 vaporiser to deliver predictable partial pressures clinically.",
+          "text": "Halothane carries heavy bromine and chlorine atoms whose large, polarisable electron clouds generate strong van der Waals forces, holding molecules together until ~50 °C. Desflurane has only small fluorine atoms with weak van der Waals attraction, so it boils at 23.5 °C — requiring the heated, pressurised Tec 6 vaporiser for a predictable output concentration.",
         },
         "name": "Why does desflurane boil at room temperature while halothane boils at 50 °C?",
       },
@@ -4073,7 +4073,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The electronegativity difference (ΔEN) between the atoms. ΔEN > ~1.7 (e.g. Na-Cl, 2.1) gives ionic bonding with full electron transfer. ΔEN < ~1.7 (e.g. C-H, 0.4) gives covalent bonding with electron sharing — polar covalent if ΔEN is 0.4–1.7 (e.g. O-H), non-polar if essentially zero (e.g. C-C). This in turn dictates solubility, melting point, and how drugs interact with receptors.",
+          "text": "The electronegativity difference (ΔEN) between the atoms. ΔEN above roughly 1.7 (a rule of thumb, not a sharp boundary; e.g. Na-Cl, about 2.2) gives ionic bonding with full electron transfer. ΔEN < ~1.7 (e.g. C-H, 0.4) gives covalent bonding with electron sharing — polar covalent if ΔEN is 0.4–1.7 (e.g. O-H), non-polar if essentially zero (e.g. C-C). This in turn dictates solubility, melting point, and how drugs interact with receptors.",
         },
         "name": "What determines whether a bond is ionic or covalent?",
       },
@@ -6139,7 +6139,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "AG = (Na⁺ + K⁺) − (Cl⁻ + HCO₃⁻); normal 8–12 mmol/L. A raised AG metabolic acidosis points to lactate, ketones, renal failure or toxins (MUDPILES); a normal AG acidosis suggests GI HCO₃⁻ loss or RTA.",
+          "text": "AG = Na⁺ − (Cl⁻ + HCO₃⁻); use the local laboratory range (often around 12 ± 4 mmol/L without potassium). Correct for albumin using AG + 0.25 × (40 − albumin g/L). A raised AG metabolic acidosis points to lactate, ketones, renal failure or toxins (MUDPILES); a normal AG acidosis suggests GI HCO₃⁻ loss or RTA.",
         },
         "name": "How do you calculate and interpret the anion gap?",
       },
@@ -6147,7 +6147,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Stewart uses strong ion difference (SID), weak acids (Atot) and pCO₂ as independent determinants of [H⁺]; it explains hyperchloraemic acidosis from saline (SID = 0) and the alkalinising effect of albumin loss better than the Henderson–Hasselbalch view.",
+          "text": "Stewart uses strong ion difference (SID), weak acids (Atot) and pCO₂ as independent determinants of [H⁺]; it explains hyperchloraemic acidosis from saline (SID = 0) and the alkalinising effect of albumin loss alongside the albumin-corrected anion-gap approach; neither framework is a substitute for identifying the cause.",
         },
         "name": "What is the Stewart approach and when does it help?",
       },
