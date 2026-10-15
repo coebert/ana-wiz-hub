@@ -42,7 +42,7 @@ export function ResusCirculationTeaching() {
       <Quote label="SSC 2021 MAP target" />
       <Quote label="SSC 2021 norepinephrine" />
       <Quote label="SSC 2021 vasopressin" />
-      <p>Arterial line, MAP targets, vasopressin and steroids are covered on <L to="/intensive-care/septic-shock">Septic Shock: Vasopressors, MAP &amp; Steroids</L>; fluid choice on <L to="/intensive-care/fluid-tonicity">Fluid Tonicity</L>.</p>
+      <p>Arterial line, MAP targets, vasopressin and steroids are covered on <L to="/intensive-care/septic-shock">Septic Shock: Vasopressors, MAP &amp; Steroids</L>; fluid choice on <L to="/intensive-care/fluid-balance">Fluid Balance and Tonicity</L>.</p>
       <Check question="After 1.5 L crystalloid, MAP is 60 mm Hg and crackles are developing. Next step?">Stop routine boluses (fluid intolerance) and start or escalate noradrenaline to a MAP of 65 mm Hg, reassessing perfusion.</Check>
     </div>
   );
