@@ -116,12 +116,6 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/mechanical-ventilation</loc>
-    <lastmod>2026-10-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://anaesthesiacore.app/intensive-care/ventilation-protocols</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -129,6 +123,12 @@
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/peep-management</loc>
     <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/intensive-care/ventilation-protocols</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -187,14 +187,14 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://anaesthesiacore.app/intensive-care/haemorrhagic-shock</loc>
-    <lastmod>2026-10-15</lastmod>
+    <loc>https://anaesthesiacore.app/intensive-care/fluid-balance</loc>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://anaesthesiacore.app/intensive-care/fluid-balance</loc>
-    <lastmod>2026-10-14</lastmod>
+    <loc>https://anaesthesiacore.app/intensive-care/haemorrhagic-shock</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
