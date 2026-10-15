@@ -214,6 +214,18 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from Critical Care Overview: four stages (referral/triage, admission, daily treatment, discharge/follow-up) linking to existing ICU pages. Verbatim ICS 2021, GPICS 2.1, Pronovost 2003, Starmer 2014 and Lautrette 2007 excerpts reused from the overview block; learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "thyroid-function": {
+    status: "expanded",
+    note: "New standalone page linked from Endocrine Co-Existing Disease: four lessons (synthesis/control, tests, perioperative disease, post-thyroidectomy haematoma) quoting OpenStax and DAS 2022. Physiology then perioperative care, verbatim quotations checked against the sources, learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
+  },
+  "diabetes-management": {
+    status: "expanded",
+    note: "New standalone page linked from Endocrine Co-Existing Disease: four lessons (insulin physiology, preoperative/newer drugs, VRIII and hypoglycaemia, postoperative/ICU) quoting OpenStax and BJA Education 2024. Physiology then perioperative care, verbatim quotations checked against the sources, learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
+  },
+  "endocrine-tumours": {
+    status: "expanded",
+    note: "New standalone page linked from Endocrine Co-Existing Disease: four lessons (catecholamine physiology, phaeochromocytoma diagnosis, anaesthesia and resection, carcinoid) quoting Gombert 2025 and Xu 2022. Physiology then perioperative care, verbatim quotations checked against the sources, learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "thyroid-storm": {
     status: "expanded",
     note: "New standalone page linked from Endocrine Emergencies: four lessons (recognition/BWPS, thionamides and iodide timing, beta-blockade/steroids/cooling/plasmapheresis, perioperative) with verbatim JTA/JES 2016 and ATA 2016 quotations; learning checks and five-question quiz. Source-checked, not consultant-reviewed.",

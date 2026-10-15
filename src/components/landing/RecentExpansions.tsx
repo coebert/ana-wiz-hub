@@ -20,6 +20,24 @@ interface RecentExpansion {
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
   {
+    topicId: "endocrine-tumours",
+    section: "perioperative",
+    title: "Endocrine Tumours",
+    note: "New page: catecholamine physiology, phaeochromocytoma tests, alpha-blockade, after resection, and carcinoid crisis evidence.",
+  },
+  {
+    topicId: "diabetes-management",
+    section: "perioperative",
+    title: "Diabetes Management",
+    note: "New page: insulin physiology, GLP-1 and SGLT2 risks, variable-rate insulin with glucose, and postoperative and ICU glucose.",
+  },
+  {
+    topicId: "thyroid-function",
+    section: "perioperative",
+    title: "Thyroid Function",
+    note: "New page: hormone synthesis and tests, perioperative thyroid disease, and haematoma after thyroid surgery (SCOOP).",
+  },
+  {
     topicId: "pituitary-apoplexy",
     section: "intensive-care",
     title: "Pituitary Apoplexy",

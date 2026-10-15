@@ -61,6 +61,24 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/perioperative/thyroid-function</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/perioperative/diabetes-management</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://anaesthesiacore.app/perioperative/endocrine-tumours</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/perioperative/neurological-disease</loc>
     <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
