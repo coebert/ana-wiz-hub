@@ -40,22 +40,22 @@ export function IcuJourneyReferralTeaching() {
 export function IcuJourneyAdmissionTeaching() {
   return <div className={wrap}>
     <H>Time standards after the decision to admit</H>
-    <Quote label="GPICS 2.1 admission timing" />
-    <Quote label="GPICS 2.1 consultant review" />
+    <Quote label="GPICS V3 admission timing" />
+    <Quote label="GPICS V3 consultant review" />
     <p>Delay between decision and arrival is time spent at the wrong level of care; resuscitation continues wherever the patient is. If the patient must move between hospitals or departments, follow <L to="/clinical/transfer-medicine">Transfer Medicine</L>.</p>
     <H>The first hours</H>
     <p>A typical sequence (teaching synthesis): structured ABCDE reassessment; secure the airway and start <L to="/intensive-care/mechanical-ventilation">mechanical ventilation</L> if needed; establish monitoring and vascular access; resuscitate the circulation (<L to="/intensive-care/circulatory-failure">Circulatory Failure</L>, <L to="/intensive-care/fluid-balance">Fluid Balance</L>); send gases and cultures (<L to="/physics/abg-analyser">ABG Analyser</L>, <L to="/intensive-care/acid-base">Acid-Base</L>); start source control and <L to="/intensive-care/antimicrobials-icu">antimicrobials</L>; document the admission plan, escalation limits and next-of-kin contact.</p>
     <H>Staffing at the bedside</H>
-    <Quote label="GPICS 2.1 nurse ratios" />
+    <Quote label="GPICS V3 nurse ratios" />
     <Check question="the decision to admit is made at 22:00 and the patient arrives at 03:30. Which standard was missed?">GPICS 2.1 requires unplanned admission within four hours of the decision; 5.5 hours breaches it. The consultant must still review in person within 12 hours of arrival.</Check>
-    <LessonSources topicId={T} labels={["GPICS 2.1 admission timing", "GPICS 2.1 consultant review", "GPICS 2.1 nurse ratios"]} />
+    <LessonSources topicId={T} labels={["GPICS V3 admission timing", "GPICS V3 consultant review", "GPICS V3 nurse ratios"]} />
   </div>;
 }
 
 export function IcuJourneyTreatmentTeaching() {
   return <div className={wrap}>
     <H>The daily cycle: ward rounds and goals</H>
-    <Quote label="GPICS 2.1 ward round" />
+    <Quote label="GPICS V3 ward round" />
     <Quote label="Pronovost 2003 daily goals" />
     <p>Each round should review the cause of admission, each organ system and every line, tube and drug, then state explicit goals for the next 24 hours. The Pronovost study measured staff understanding of goals, not patient mortality.</p>
     <H>Organ support and prevention bundles</H>
@@ -72,18 +72,18 @@ export function IcuJourneyTreatmentTeaching() {
     <p>Rehabilitation planning therefore starts during the ICU stay, not at discharge.</p>
     <Check question="when should rehabilitation risk first be assessed?">During the critical care stay, as early as clinically possible (NICE CG83 1.2), not at ward transfer.</Check>
     <Check question="does the daily goals study show that goals forms reduce ICU mortality?">No. It showed that staff understanding of the day's goals rose from under 10% to over 95%; it did not measure mortality.</Check>
-    <LessonSources topicId={T} labels={["GPICS 2.1 ward round", "Pronovost 2003 daily goals", "Starmer 2014 I-PASS", "Lautrette 2007 family"]} />
+    <LessonSources topicId={T} labels={["GPICS V3 ward round", "Pronovost 2003 daily goals", "Starmer 2014 I-PASS", "Lautrette 2007 family"]} />
   </div>;
 }
 
 export function IcuJourneyDischargeTeaching() {
   return <div className={wrap}>
     <H>Timing of discharge to the ward</H>
-    <Quote label="GPICS 2.1 discharge" />
+    <Quote label="GPICS V3 discharge" />
     <Quote label="NICE CG50 night transfer" />
     <p>Night-time and delayed discharges matter because the patient leaves a 1:1 or 1:2 nursing environment for a ward with far fewer staff per patient. A discharge decision should state why the patient no longer needs critical care and what would prompt readmission.</p>
     <H>Handover to the ward team</H>
-    <Quote label="GPICS 2.1 discharge handover" />
+    <Quote label="GPICS V3 discharge handover" />
     <p>A good discharge summary covers diagnoses, procedures, ongoing drugs and antimicrobial plan, lines to remove, nutrition and swallow status, mobility, delirium, treatment limits and the follow-up plan (teaching synthesis). Outreach review after discharge helps catch early deterioration.</p>
     <p>Discharge planning and longer-term recovery have their own page: <L to="/intensive-care/icu-discharge-planning">ICU Discharge Planning and Longer-Term Recovery</L>.</p>
     <H>Life after critical care</H>
@@ -92,6 +92,6 @@ export function IcuJourneyDischargeTeaching() {
     <p>Survivors often have physical, cognitive and psychological problems after discharge. Rehabilitation, follow-up clinics and support for families are taught on <L to="/intensive-care/pics-follow-up">PICS & follow-up</L>. When the outcome is death or organ donation, see <L to="/intensive-care/end-of-life-communication">End-of-Life Communication</L> and <L to="/intensive-care/organ-donation">Organ Donation</L>.</p>
     <Check question="the bed manager asks to move a stable patient to the ward at 23:30. What does GPICS 2.1 say?">Discharge to a general ward must occur between 07:00 and 21:59. A 23:30 move breaches the standard; the patient should stay until morning unless there is a safer alternative. NICE CG50 adds that a transfer between 22:00 and 07:00 should be documented as an adverse incident.</Check>
     <Check question="when should a patient with rehabilitation needs be reviewed after leaving critical care?">At 2 to 3 months, face to face, by a professional familiar with their critical care course (NICE CG83 1.23–1.24).</Check>
-    <LessonSources topicId={T} labels={["GPICS 2.1 discharge", "NICE CG50 night transfer", "GPICS 2.1 discharge handover", "NICE CG83 ward step-down", "NICE CG83 review"]} />
+    <LessonSources topicId={T} labels={["GPICS V3 discharge", "NICE CG50 night transfer", "GPICS V3 discharge handover", "NICE CG83 ward step-down", "NICE CG83 review"]} />
   </div>;
 }

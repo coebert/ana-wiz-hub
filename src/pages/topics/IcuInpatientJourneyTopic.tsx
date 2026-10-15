@@ -18,13 +18,13 @@ export default function IcuInpatientJourneyTopic() {
   return <TopicTemplate title="The ICU Inpatient Journey" subtitle="Final / FFICM / EDIC — From referral to follow-up" backPath="/intensive-care/critical-care-overview" backLabel="Critical Care Overview" accentColor="text-icu" topicId="icu-inpatient-journey" topicTitle="The ICU Inpatient Journey"
     objectives={["Triage a referred patient using the ICS 2021 levels of care", "Apply the GPICS 2.1 admission and consultant-review time standards", "Structure daily treatment around ward rounds, goals and handover", "Plan a safe, timely discharge with ward handover and follow-up"]}
     sectionExamMapping={{ objectives: { exams }, keyPoints: { exams } }}
-    sectionSources={{ objectives: ["ICS Levels 2021 purpose", "GPICS 2.1 admission timing", "GPICS 2.1 ward round", "GPICS 2.1 discharge"], keyPoints: ["ICS Levels 2021 purpose", "GPICS 2.1 admission timing", "GPICS 2.1 consultant review", "GPICS 2.1 discharge", "GPICS 2.1 discharge handover"] }}
+    sectionSources={{ objectives: ["ICS Levels 2021 purpose", "GPICS V3 admission timing", "GPICS V3 ward round", "GPICS V3 discharge"], keyPoints: ["ICS Levels 2021 purpose", "GPICS V3 admission timing", "GPICS V3 consultant review", "GPICS V3 discharge", "GPICS V3 discharge handover"] }}
     keyPoints={[
       { text: "Levels of care describe what the patient needs, not where they are", cites: ["ICS Levels 2021 purpose"] },
-      { text: "Unplanned admission within 4 hours of the decision; consultant review in person within 12 hours", cites: ["GPICS 2.1 admission timing", "GPICS 2.1 consultant review"] },
-      { text: "Consultant-led ward rounds twice daily with multidisciplinary input", cites: ["GPICS 2.1 ward round"] },
-      { text: "Ward discharge within 4 hours of the decision and between 07:00 and 21:59", cites: ["GPICS 2.1 discharge"] },
-      { text: "The receiving ward team should get verbal as well as written handover", cites: ["GPICS 2.1 discharge handover"] },
+      { text: "Unplanned admission within 4 hours of the decision; consultant review in person within 12 hours", cites: ["GPICS V3 admission timing", "GPICS V3 consultant review"] },
+      { text: "Consultant-led ward rounds twice daily with multidisciplinary input", cites: ["GPICS V3 ward round"] },
+      { text: "Ward discharge within 4 hours of the decision and between 07:00 and 21:59", cites: ["GPICS V3 discharge"] },
+      { text: "The receiving ward team should get verbal as well as written handover", cites: ["GPICS V3 discharge handover"] },
     ]}
     quizQuestions={quiz}
     coreConcepts={<div className="space-y-8">

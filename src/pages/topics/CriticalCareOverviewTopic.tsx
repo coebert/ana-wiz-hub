@@ -19,13 +19,13 @@ export default function CriticalCareOverviewTopic() {
   return <TopicTemplate title="Critical Care Overview: Structure, Team & Communication" subtitle="Final / FFICM / EDIC — Organisation of Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu" topicId="critical-care-overview" topicTitle="Critical Care Overview: Structure, Team & Communication"
     objectives={["Explain what GPICS is, its editions, and the difference between minimum standards and quality recommendations", "Define ward care and levels 1–3 using the ICS 2021 descriptors", "State GPICS admission, consultant review and discharge time standards", "Give GPICS medical and nursing ratios and explain the supernumerary nurse in charge", "Interpret the evidence for intensivist-led care, including the overnight staffing trial", "Describe daily goals, structured handover and family communication evidence, and their limits"]}
     sectionExamMapping={{ objectives: { exams }, keyPoints: { exams } }}
-    sectionSources={{ objectives: ["ICS Levels 2021 purpose", "GPICS 2.1 consultant review", "GPICS 2.1 nurse ratios", "Pronovost 2002 staffing", "Starmer 2014 I-PASS"] }}
+    sectionSources={{ objectives: ["ICS Levels 2021 purpose", "GPICS V3 consultant review", "GPICS V3 nurse ratios", "Pronovost 2002 staffing", "Starmer 2014 I-PASS"] }}
     keyPoints={[
       { text: "GPICS V3 (2026) is the definitive reference for planning, commissioning and delivering UK adult intensive care; its tiers are minimum standards and quality recommendations", cites: ["GPICS V3 definitive", "GPICS V3 minimum standards", "GPICS V3 quality recommendations"] },
       { text: "Levels of care describe what the patient needs, not where they are", cites: ["ICS Levels 2021 purpose"] },
       { text: "Advanced respiratory support alone makes a patient level 3", cites: ["ICS Levels 2021 level 3"] },
-      { text: "Unplanned admission within 4 hours of the decision; consultant review in person within 12 hours", cites: ["GPICS 2.1 admission timing", "GPICS 2.1 consultant review"] },
-      { text: "Nurse ratios at least 1:1 for level 3 and 1:2 for level 2, with a supernumerary coordinator 24/7", cites: ["GPICS 2.1 nurse ratios", "GPICS 2.1 coordinator"] },
+      { text: "Unplanned admission within 4 hours of the decision; consultant review in person within 12 hours", cites: ["GPICS V3 admission timing", "GPICS V3 consultant review"] },
+      { text: "Nurse ratios at least 1:1 for level 3 and 1:2 for level 2, with a supernumerary coordinator 24/7", cites: ["GPICS V3 nurse ratios", "GPICS V3 coordinator"] },
       { text: "High-intensity intensivist staffing: pooled hospital mortality RR 0.71 in observational studies", cites: ["Pronovost 2002 staffing"] },
       { text: "I-PASS handover programme: medical errors down 23%, preventable adverse events down 30%", cites: ["Starmer 2014 I-PASS"] },
     ]}

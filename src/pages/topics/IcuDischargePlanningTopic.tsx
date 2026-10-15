@@ -18,11 +18,11 @@ export default function IcuDischargePlanningTopic() {
   return <TopicTemplate title="ICU Discharge Planning and Longer-Term Recovery" subtitle="Final / FFICM / EDIC — Intensive Care" backPath="/intensive-care/icu-inpatient-journey" backLabel="The ICU Inpatient Journey" accentColor="text-icu" topicId="icu-discharge-planning" topicTitle="ICU Discharge Planning and Longer-Term Recovery"
     objectives={["Assess rehabilitation risk and start rehabilitation during the ICU stay", "Time and hand over ICU-to-ward transfer safely", "Prepare patients and families for home", "Plan the 2–3 month review and onward referral"]}
     sectionExamMapping={{ objectives: { exams }, keyPoints: { exams } }}
-    sectionSources={{ objectives: ["NICE CG83 early assessment", "NICE CG50 night transfer", "NICE CG83 review"], keyPoints: ["NICE CG83 early assessment", "GPICS 2.1 discharge", "NICE CG50 shared handover", "NICE CG83 review"] }}
+    sectionSources={{ objectives: ["NICE CG83 early assessment", "NICE CG50 night transfer", "NICE CG83 review"], keyPoints: ["NICE CG83 early assessment", "GPICS V3 discharge", "NICE CG50 shared handover", "NICE CG83 review"] }}
     keyPoints={[
       { text: "Assess rehabilitation risk during the ICU stay and start rehabilitation early", cites: ["NICE CG83 early assessment", "NICE CG83 start early"] },
-      { text: "Avoid night-time ward transfer; document it as an adverse incident if it happens", cites: ["GPICS 2.1 discharge", "NICE CG50 night transfer"] },
-      { text: "Shared ICU–ward responsibility with a structured handover and written plan", cites: ["NICE CG50 shared handover", "GPICS 2.1 discharge handover"] },
+      { text: "Avoid night-time ward transfer; document it as an adverse incident if it happens", cites: ["GPICS V3 discharge", "NICE CG50 night transfer"] },
+      { text: "Shared ICU–ward responsibility with a structured handover and written plan", cites: ["NICE CG50 shared handover", "GPICS V3 discharge handover"] },
       { text: "Information before home discharge; consider a 6-week self-directed rehabilitation manual", cites: ["NICE CG83 home discharge", "NICE CG83 ward step-down"] },
       { text: "Face-to-face review 2–3 months after critical care discharge", cites: ["NICE CG83 review"] },
     ]}
