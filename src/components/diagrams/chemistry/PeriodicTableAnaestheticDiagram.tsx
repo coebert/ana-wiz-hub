@@ -174,7 +174,7 @@ export const PeriodicTableAnaestheticDiagram = () => {
                   ${isSelected ? `ring-${el.category === 'alkali' ? 'red' : el.category === 'alkaline' ? 'orange' : el.category === 'transition' ? 'sky' : 'emerald'}-400/50` : ''}
                 `}
               >
-                <span className="text-[9px] text-muted-foreground leading-none">{el.atomicNumber}</span>
+                <span className="text-[9px] text-muted-foreground leading-none">{/[₀-₉]/.test(el.symbol) ? "ion" : el.atomicNumber}</span>
                 <span className={`text-lg sm:text-2xl font-bold ${cat.text} leading-tight`}>{el.symbol}</span>
                 <span className="text-[8px] sm:text-[9px] text-muted-foreground leading-tight truncate w-full text-center">{el.name}</span>
                 <span className="text-[7px] sm:text-[8px] text-muted-foreground/60 leading-none">{el.atomicMass}</span>
@@ -189,7 +189,7 @@ export const PeriodicTableAnaestheticDiagram = () => {
             {/* Header */}
             <div className="flex items-start gap-4">
               <div className={`flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-xl border-2 ${categoryColors[selected.category].border} bg-background/50`}>
-                <span className="text-xs text-muted-foreground">{selected.atomicNumber}</span>
+                <span className="text-xs text-muted-foreground">{/[₀-₉]/.test(selected.symbol) ? "polyatomic ion" : selected.atomicNumber}</span>
                 <span className={`text-3xl sm:text-4xl font-bold ${categoryColors[selected.category].text}`}>{selected.symbol}</span>
                 <span className="text-[10px] text-muted-foreground">{selected.atomicMass}</span>
               </div>
