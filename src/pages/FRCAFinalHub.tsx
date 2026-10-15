@@ -1,5 +1,6 @@
 import ExamHub from "@/components/exam/ExamHub";
 import FinalFrcaExtras from "@/components/exam/FinalFrcaExtras";
+import { ExamLessonLinks } from "@/components/exam/ExamLessonLinks";
 
 const FRCAFinalHub = () => (
   <ExamHub
@@ -10,7 +11,7 @@ const FRCAFinalHub = () => (
     metaDescription="Free Final FRCA notes mapped to the 2026 curriculum: model viva answers, SBA quizzes and interactive diagrams for every subspecialty and ICU."
     h1="FRCA Final revision"
     intro="A focused hub for the Final FRCA exam. Every published AnaesthesiaCore topic mapped to the Final syllabus — applied physiology and pharmacology, clinical anaesthesia subspecialties, perioperative medicine and intensive care — with structured notes, worked examples and SBA-style questions."
-    extras={<FinalFrcaExtras />}
+    extras={<><ExamLessonLinks exam="final" /><FinalFrcaExtras /></>}
     faqs={[
       {
         question: "What is the Final FRCA exam?",

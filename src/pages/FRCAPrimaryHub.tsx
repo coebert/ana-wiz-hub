@@ -1,4 +1,5 @@
 import ExamHub from "@/components/exam/ExamHub";
+import { ExamLessonLinks } from "@/components/exam/ExamLessonLinks";
 
 const FRCAPrimaryHub = () => (
   <ExamHub
@@ -8,6 +9,7 @@ const FRCAPrimaryHub = () => (
     metaTitle="Primary FRCA Revision Notes – Free MCQs & Viva Practice"
     metaDescription="Free Primary FRCA revision: exam-mapped physics, physiology and pharmacology notes, interactive diagrams, MCQ quizzes, viva practice and chemistry."
     h1="FRCA Primary revision"
+    extras={<ExamLessonLinks exam="primary" />}
     intro="A focused hub for the Primary FRCA exam. Every published AnaesthesiaCore topic mapped to the Primary syllabus — physics, physiology, pharmacology and clinical foundations — with structured notes, diagrams, worked examples and MCQs that mirror the RCoA blueprint."
     faqs={[
       {

@@ -1,4 +1,5 @@
-- Audit corpus lives in the private `audit-corpus` storage bucket (built to data-build/ by `npm run build:audit-corpus`, then uploaded); the audit-topics function downloads it at runtime — bundling it made the function too large to deploy.
+- Build audit data to data-build/ with build:audit-corpus; upload to private audit-corpus for runtime downloads, avoiding oversized bundles.
+- FRCA hubs share ExamLessonLinks, resolving curriculum IDs and collapsible anchors to avoid drift.
 - Diagram snapshot discovery recursively scans diagram folders and topic atlases, including static SVG plates, so moving a file or omitting interaction cannot silently remove it from visual review.
 - Anatomy root verification recursively parses TSX object properties; positional heuristics are limited to declared anterior projections because label positions and other views cannot prove anatomical laterality.
 - Painted anatomy plates carry optional plate-specific audit warnings beside the artwork so uncorrected printed labels cannot silently appear verified.
