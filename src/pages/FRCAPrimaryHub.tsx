@@ -5,8 +5,8 @@ const FRCAPrimaryHub = () => (
     examTag="primary"
     examName="FRCA Primary"
     path="/frca-primary"
-    metaTitle="FRCA Primary Revision Notes & MCQ Topics | AnaesthesiaCore"
-    metaDescription="Free FRCA Primary revision covering physics, physiology and pharmacology with exam-shaped notes, diagrams and MCQ-style questions."
+    metaTitle="Primary FRCA Revision Notes – Free MCQs & Viva Practice"
+    metaDescription="Free Primary FRCA revision: exam-mapped physics, physiology and pharmacology notes, interactive diagrams, MCQ quizzes and viva practice. No sign-up to start."
     h1="FRCA Primary revision"
     intro="A focused hub for the Primary FRCA exam. Every published AnaesthesiaCore topic mapped to the Primary syllabus — physics, physiology, pharmacology and clinical foundations — with structured notes, diagrams, worked examples and MCQs that mirror the RCoA blueprint."
     faqs={[
