@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { InlineRef } from "@/components/references/InlineRef";
 
 const AcidBaseInterpretationDiagram = () => {
   const [selectedStep, setSelectedStep] = useState<number | null>(null);
@@ -28,7 +29,7 @@ const AcidBaseInterpretationDiagram = () => {
     {
       step: 4, title: "Calculate Anion Gap",
       action: "AG = Na⁺ − (Cl⁻ + HCO₃⁻)",
-      detail: "Normal AG: 12 ± 4 mEq/L (or 8 ± 4 if corrected for albumin). Correct AG for albumin: corrected AG = AG + 2.5 × (40 − albumin g/L). ↑AG = unmeasured anions (lactate, ketones, uraemia, toxins). MUDPILES mnemonic.",
+      detail: "Use the local laboratory's Na-only AG reference interval (the French panel quotes 12 ± 4 mmol/L). Corrected AG = measured AG + 0.25 × (40 − albumin g/L), equivalently AG + 2.5 × (4 − albumin g/dL). For AG 12 and albumin 20 g/L, corrected AG = 17 mmol/L. Correction does not create a different normal range. A raised gap suggests unmeasured anions; measure lactate and blood ketones directly.",
       color: "hsl(25 80% 50%)",
     },
     {
@@ -87,7 +88,7 @@ const AcidBaseInterpretationDiagram = () => {
                     </div>
                   </div>
                   {selectedStep === s.step && (
-                    <p className="text-xs text-muted-foreground mt-2 ml-8 animate-fade-in">{s.detail}</p>
+                    <p className="text-xs text-muted-foreground mt-2 ml-8 animate-fade-in">{s.detail}{s.step === 4 && <InlineRef topicId="acid-base" refLabel="Jung 2019 albumin" />}</p>
                   )}
                 </div>
                 {s.step < 5 && (

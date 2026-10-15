@@ -7,6 +7,7 @@ import { HAGMATeaching, NAGMATeaching, OsmolarGapTeaching, StewartTeaching, Citr
 import StewartDiagram from "@/components/diagrams/intensive-care/StewartAcidBaseDiagram";
 import ToxinConverter from "@/components/diagrams/intensive-care/ToxicAlcoholSalicylateCalculator";
 import OsmolarCalculator from "@/components/diagrams/intensive-care/OsmolarGapCalculator";
+import InterpretationGuide from "@/components/diagrams/intensive-care/AcidBaseInterpretationDiagram";
 
 describe("acid-base line-by-line review", () => {
   it.each([HAGMATeaching, NAGMATeaching, OsmolarGapTeaching, StewartTeaching, CitrateTeaching])("retains substantive sourced teaching and a learning check", Lesson => {
@@ -24,8 +25,23 @@ describe("acid-base line-by-line review", () => {
     for (const r of refs) if (r.excerpt) expect(r.excerpt.length, r.label).toBeLessThanOrEqual(650);
   });
   it("does not retain the tenfold albumin error in linked views", () => {
-    for (const path of ["src/pages/topics/AcidBaseTopic.tsx", "src/components/diagrams/intensive-care/HAGMAWorkupFlowchart.tsx"]) {
+    for (const path of ["src/pages/topics/AcidBaseTopic.tsx", "src/components/diagrams/intensive-care/HAGMAWorkupFlowchart.tsx", "src/components/diagrams/intensive-care/AcidBaseInterpretationDiagram.tsx"]) {
       expect(readFileSync(path, "utf8")).not.toContain("2.5 × (40 −");
+    }
+  });
+  it("shows the correct albumin units and worked result in the interpretation guide", () => {
+    render(<InterpretationGuide />);
+    fireEvent.click(screen.getByRole("button", { name: /Calculate Anion Gap/ }));
+    expect(screen.getByText(/corrected AG = 17 mmol\/L/)).toHaveTextContent("0.25 × (40 − albumin g/L)");
+    expect(screen.getByText(/corrected AG = 17 mmol\/L/)).toHaveTextContent("2.5 × (4 − albumin g/dL)");
+  });
+  it("keeps toxin advice conditional and toxin-specific in linked displays", () => {
+    const calculator = readFileSync("src/components/diagrams/intensive-care/OsmolarGapCalculator.tsx", "utf8");
+    const flowchart = readFileSync("src/components/diagrams/intensive-care/HAGMAWorkupFlowchart.tsx", "utf8");
+    expect(calculator).toContain("compatible with, but does not prove");
+    for (const source of [calculator, flowchart]) {
+      expect(source).toContain("Isopropanol is different and is not a routine indication");
+      expect(source).toContain("NPIS/TOXBASE");
     }
   });
   it("shows weak-acid direction without a false numerical pH", () => {
@@ -33,6 +49,13 @@ describe("acid-base line-by-line review", () => {
     fireEvent.change(screen.getByLabelText("Total weak acids (A tot)"), { target: { value: "-1" } });
     expect(screen.getByText("Fewer weak acids → alkalinising")).toBeInTheDocument();
     expect(screen.queryByText("Calculated pH")).not.toBeInTheDocument();
+    fireEvent.change(screen.getByLabelText("Strong ion difference"), { target: { value: "-1" } });
+    expect(screen.getByText("Lower SID → acidifying")).toBeInTheDocument();
+    fireEvent.change(screen.getByLabelText("PaCO₂"), { target: { value: "1" } });
+    expect(screen.getByText("Higher PaCO₂ → acidifying")).toBeInTheDocument();
+    expect(screen.getByText(/these controls do not calculate patient pH/)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Reset variables" }));
+    expect(screen.getAllByText("No change in this variable")).toHaveLength(3);
   });
   it("converts salicylate using 138.12, not aspirin mass 180", () => {
     render(<ToxinConverter />);
