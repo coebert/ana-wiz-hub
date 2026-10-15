@@ -110,7 +110,10 @@ Deno.serve(async (req) => {
     let country = (req.headers.get("cf-ipcountry") ?? "").toUpperCase();
     if (!country || country === "XX" || country === "T1" || country.length !== 2) {
       const fwd = req.headers.get("x-forwarded-for") ?? "";
-      const ip = fwd.split(",")[0]?.trim();
+      // Use the right-most hop (appended by the platform proxy); earlier
+      // entries are caller-controlled and must not drive outbound lookups.
+      const hops = fwd.split(",").map((h) => h.trim()).filter(Boolean);
+      const ip = hops[hops.length - 1];
       if (ip) {
         const looked = await lookupCountryByIp(ip);
         if (looked) country = looked;
