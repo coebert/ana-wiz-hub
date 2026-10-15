@@ -153,11 +153,25 @@ export function OutcomesCostTeaching() {
     <Q label="Dasta 2005 daily cost" />
     <Q label="Dasta 2005 cost by day" />
     <Q label="Dasta 2005 ventilation increment" />
-    <p><Reasoning />Dasta analysed 51,009 adult ICU patients in 253 US hospitals in late 2002, converting billed charges to costs with hospital cost-to-charge ratios. Costs are front-loaded: day 1 is the most expensive, so shortening a stay by a day saves less than the mean daily cost suggests, because the day removed is usually a cheaper late day (teaching summary). These are 2002 US dollars in a US billing system; they are not NHS tariffs or current prices and must not be converted to pounds by an exchange rate. The ventilated group was also sicker and stayed longer, so the unadjusted difference is not all due to the ventilator; the adjusted increment is $1,522 per day.</p>
+    <p><Reasoning />Dasta analysed 51,009 adult ICU patients in 253 US hospitals in late 2002, converting billed charges to costs with hospital cost-to-charge ratios. Costs are front-loaded: day 1 is the most expensive, so shortening a stay by a day saves less than the mean daily cost suggests, because the day removed is usually a cheaper late day (teaching summary). These are 2002 US dollars in a US billing system; they are not NHS costs or current prices (NHS figures follow below). The ventilated group was also sicker and stayed longer, so the unadjusted difference is not all due to the ventilator; the adjusted increment is $1,522 per day.</p>
+    <H>NHS costs: what an English critical care bed day costs</H>
+    <Q label="DHSC 2023 NHS bed-day costs" />
+    <Q label="DHSC 2023 critical care caveat" />
+    <div className="overflow-x-auto"><table className="w-full text-sm border border-border">
+      <thead className="bg-muted/50"><tr><th className="p-2 text-left">Measure</th><th className="p-2 text-left">US (Dasta 2005)</th><th className="p-2 text-left">NHS England (DHSC 2023)</th></tr></thead>
+      <tbody>
+        <tr className="border-t border-border"><td className="p-2">Data year</td><td className="p-2">Oct–Dec 2002</td><td className="p-2">2020/21</td></tr>
+        <tr className="border-t border-border"><td className="p-2">How cost was derived</td><td className="p-2">Hospital charges × cost-to-charge ratios</td><td className="p-2">Trust-submitted National Cost Collection unit costs</td></tr>
+        <tr className="border-t border-border"><td className="p-2">Population</td><td className="p-2">Adults ≥18 years</td><td className="p-2">Adults, children and neonates averaged</td></tr>
+        <tr className="border-t border-border"><td className="p-2">Daily ICU cost</td><td className="p-2">$3,184–$10,794 depending on day and ventilation</td><td className="p-2">£1,881 average per critical care day</td></tr>
+        <tr className="border-t border-border"><td className="p-2">Comparator</td><td className="p-2">—</td><td className="p-2">Standard ward bed £345 (excluding treatment)</td></tr>
+      </tbody></table></div>
+    <p><Reasoning />On the NHS figures, a critical care day costs about 5.5 times a standard bed day (£1,881 ÷ £345; arithmetic, not a published ratio) — though the ward figure excludes treatment, so the true gap is smaller. The US and NHS columns cannot be compared by an exchange rate: they come from different decades, costing methods (US charges reflect billing, NHS unit costs reflect trust-reported expenditure), case mix and age groups, and the NHS average includes neonatal and paediatric care. A 2002 dollar figure would also need inflation adjustment. The most defensible UK statement is the NHS figure itself: an average critical care day in England in 2020/21 cost £1,881, and 2020/21 was a COVID-affected year. Payment tariffs and costs by number of organs supported are published separately by NHS England and are not quoted here (teaching summary).</p>
     <H>Costs continue after discharge</H>
     <Q label="Lone 2016 hospital costs" />
     <p><Reasoning />In Scottish linked data, hospital survivors of ICU used more hospital care over five years than matched hospital controls, even after adjustment. The economic burden of critical illness therefore extends well beyond the index admission, which supports rehabilitation and follow-up planning (see <L to="/intensive-care/icu-discharge-planning">ICU Discharge Planning</L>). The costs are reported in US dollars by the authors and describe a 2005 cohort; they measure hospital resource use only, not social care, lost earnings or carer time, which the work and caregiver evidence on this page shows are also substantial (teaching summary).</p>
     <Check question="On which ICU day were costs highest in Dasta 2005, and when did they stabilise?">Day 1 (US$10,794 ventilated; $6,667 not ventilated); costs fell on day 2 and became stable after day 3.</Check>
+    <Check question="What was the average NHS cost of a critical care bed day in 2020/21, and what does it include?">£1,881 per day, averaged across adults, children and neonates (standard ward bed £345 excluding treatment).</Check>
     <Check question="Lone 2016: how did 5-year hospital costs of ICU survivors compare with hospital controls?">51% higher mean 5-year hospital costs ($25,608 vs $16,913 per patient), persisting after confounder adjustment.</Check>
   </div>;
 }
