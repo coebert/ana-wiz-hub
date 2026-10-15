@@ -3,7 +3,7 @@ import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { Exam } from "@/data/curriculum";
-import { OutcomesSurvivalTeaching, OutcomesIcnarcTeaching, OutcomesLengthOfStayTeaching, OutcomesReadmissionTeaching, OutcomesSeverityTeaching, OutcomesCognitionTeaching, OutcomesWorkTeaching, OutcomesPsychologicalTeaching, OutcomesContemporaryTeaching } from "@/components/topic/IcuOutcomesTeaching";
+import { OutcomesSurvivalTeaching, OutcomesIcnarcTeaching, OutcomesLengthOfStayTeaching, OutcomesReadmissionTeaching, OutcomesSeverityTeaching, OutcomesCognitionTeaching, OutcomesWorkTeaching, OutcomesPsychologicalTeaching, OutcomesContemporaryTeaching, OutcomesCostTeaching, OutcomesLosByConditionTeaching, OutcomesQualityOfLifeTeaching } from "@/components/topic/IcuOutcomesTeaching";
 
 const exams = [Exam.FINAL, Exam.FFICM, Exam.EDIC];
 const quiz = [
@@ -23,6 +23,12 @@ const quiz = [
   { question: "Why should PTSD, anxiety and depression percentages not be added?", options: ["None can coexist", "They measure ICU mortality", "The conditions overlap and use different instruments and cohorts", "Only PTSD affects function"], correctIndex: 2, explanation: "The same survivor can screen positive in several domains; summing prevalences overcounts people." },
   { question: "BRAIN-ICU's comparison with mild Alzheimer's disease describes:", options: ["A new diagnosis of Alzheimer's in all survivors", "Similar severity of cognitive test performance, not that diagnosis", "A normal cognitive score", "A predictor of certain death"], correctIndex: 1, explanation: "At 12 months 24% of assessed patients had comparable test-score severity. This overlaps the broader 34% impaired group and is not a diagnostic label." },
   { question: "How should the 2026 pooled PICS prevalence of 60.3% be interpreted?", options: ["An exact risk for each UK ICU patient", "A ward mortality rate", "Evidence of substantial morbidity across highly heterogeneous studies", "Proof that follow-up clinics prevent PICS"], correctIndex: 2, explanation: "Zare-Kaseb 2026 accepted varying definitions and reported I² 98.67% for prevalence. It is not an individual prediction or national UK audit rate." },
+  { question: "Dasta 2005: on which ICU day were daily costs highest?", options: ["Day 1", "Day 3", "The final day", "Costs were constant"], correctIndex: 0, explanation: "Day 1 ($10,794 ventilated, $6,667 not), falling on day 2 and stable after day 3 — 2002 US costs, not NHS prices." },
+  { question: "Adjusted incremental cost of mechanical ventilation per ICU day in Dasta 2005:", options: ["$152", "$1,522", "$15,220", "No difference"], correctIndex: 1, explanation: "$1,522 per day after adjusting for patient and hospital characteristics." },
+  { question: "Lone 2016: 5-year hospital costs in ICU survivors versus hospital controls were:", options: ["Similar", "51% higher", "Five times higher", "Lower"], correctIndex: 1, explanation: "$25,608 vs $16,913 per patient, persisting after adjustment; greatest excess in younger patients without major comorbidity." },
+  { question: "APACHE IV length-of-stay predictions (Zimmerman 2006) are best used for:", options: ["Telling individual families the exact discharge date", "Benchmarking groups and unit throughput", "Deciding treatment withdrawal", "Replacing diagnosis"], correctIndex: 1, explanation: "It explained 62% of variation across ICUs but only 21.5% across individual patients." },
+  { question: "Which EQ-5D statement is correct?", options: ["It is a mortality score", "It covers five dimensions and yields a utility where 1 = full health", "It is only valid in children", "Higher values mean worse health"], correctIndex: 1, explanation: "Utilities combined with time give QALYs. Cuthbertson 2010 reported a 5-year utility of 0.677 in UK level 3 survivors." },
+  { question: "Oeyen 2010's review of quality of life after ICU found the main methodological weakness was:", options: ["Too many trials", "Few studies met quality criteria such as a baseline assessment (8%)", "All used EQ-5D", "No studies from Europe"], correctIndex: 1, explanation: "Without a pre-admission baseline, low scores may reflect pre-existing illness." },
 ];
 
 export default function IcuOutcomesTopic() {
@@ -43,6 +49,9 @@ export default function IcuOutcomesTopic() {
       { text: "PTSD symptoms at 7–12 months were 17% with IES ≥35 or 34% with IES ≥20: specify the threshold and do not equate symptoms with diagnosis", cites: ["Parker 2015 PTSD one year", "Parker 2015 PTSD thresholds"] },
       { text: "Depression and anxiety symptoms affect around a third of assessed survivors at a year; overlapping domains cannot be added", cites: ["Rabiee 2016 depression", "Nikayin 2016 anxiety"] },
       { text: "Cognitive and participation outcomes can remain impaired even when lung function recovers", cites: ["Pandharipande 2013 cognition", "Hodgson 2017 disability", "Herridge 2003 lung function"] },
+      { text: "ICU costs are front-loaded on day 1 and rise with ventilation; survivors keep using more hospital care for years", cites: ["Dasta 2005 cost by day", "Dasta 2005 ventilation increment", "Lone 2016 hospital costs"] },
+      { text: "Diagnosis-based length-of-stay benchmarks work for groups, not individuals", cites: ["Zimmerman 2006 APACHE IV stay", "Zimmerman 2006 conclusion"] },
+      { text: "Quality of life (SF-36, EQ-5D) stays below population norms after ICU; few studies have a pre-admission baseline", cites: ["Oeyen 2010 quality of life", "Oeyen 2010 study quality", "Cuthbertson 2010 EQ-5D"] },
       { text: "Recent PICS reviews demonstrate substantial morbidity but heterogeneous estimates and uncertain intervention benefits", cites: ["Zare-Kaseb 2026 PICS prevalence", "Cesari 2026 psychological interventions"] },
     ]}
     quizQuestions={quiz}
@@ -57,6 +66,9 @@ export default function IcuOutcomesTopic() {
       <ExamSection id="outcomes-work" exams={exams}><CollapsibleSubsection title="7. Return to work and usual activities"><OutcomesWorkTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="outcomes-psychological" exams={exams}><CollapsibleSubsection title="8. PTSD, depression and anxiety"><OutcomesPsychologicalTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="outcomes-contemporary" exams={exams}><CollapsibleSubsection title="9. Contemporary PICS evidence and follow-up"><OutcomesContemporaryTeaching /></CollapsibleSubsection></ExamSection>
+      <ExamSection id="outcomes-cost" exams={exams}><CollapsibleSubsection title="10. Cost of ICU care"><OutcomesCostTeaching /></CollapsibleSubsection></ExamSection>
+      <ExamSection id="outcomes-los-condition" exams={exams}><CollapsibleSubsection title="11. Length of stay by condition"><OutcomesLosByConditionTeaching /></CollapsibleSubsection></ExamSection>
+      <ExamSection id="outcomes-quality-of-life" exams={exams}><CollapsibleSubsection title="12. Quality of life and EQ-5D"><OutcomesQualityOfLifeTeaching /></CollapsibleSubsection></ExamSection>
     </div>}
   />;
 }
