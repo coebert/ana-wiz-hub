@@ -157,3 +157,51 @@ export function OsmometryTeaching() {
     </div>
   );
 }
+
+/** Henderson-Hasselbalch: derivation, bicarbonate form and drug ionisation. */
+export function HendersonHasselbalchTeaching() {
+  return (
+    <div className={wrap}>
+      <SourceQuote topicId={ACID} label="OpenStax Chemistry 2e Henderson-Hasselbalch" />
+      <H>Where the equation comes from</H>
+      <p>For a weak acid HA ⇌ H⁺ + A⁻, Ka = [H⁺][A⁻]/[HA]. Taking negative logs gives pH = pKa + log([A⁻]/[HA]). When pH equals pKa the log term is zero, so the drug is exactly 50% ionised. Each whole pH unit away from pKa changes the ratio tenfold.</p>
+      <H>Acids and bases written the same way</H>
+      <p>Always write it as pH = pKa + log([proton acceptor]/[proton donor]). For a weak acid the acceptor is the ionised A⁻; for a weak base the acceptor is the unionised B and the donor is the ionised BH⁺. This avoids having to memorise two separate formulas.</p>
+      <H>The bicarbonate form used for blood gases</H>
+      <p>pH = 6.1 + log([HCO₃⁻] ÷ (0.23 × PaCO₂ in kPa)). With HCO₃⁻ 24 mmol/L and PaCO₂ 5.3 kPa, 0.23 × 5.3 ≈ 1.2, the ratio is about 20:1, log 20 ≈ 1.3, and pH ≈ 7.4. (0.03 replaces 0.23 when PaCO₂ is in mmHg.) The 6.1 and 0.23 are standard textbook constants for plasma at 37 °C, not from the quotation above.</p>
+      <p><Reasoning />the 20:1 ratio is why the bicarbonate system works well in the body despite a pKa 1.3 units from blood pH: it is an open system, so the lungs control CO₂ and the kidneys control bicarbonate independently.</p>
+      <Check q="A weak base has a pKa of 8.4. What fraction is unionised at pH 7.4?" a="pH − pKa = −1, so [B]/[BH⁺] = 10⁻¹ = 1:10. About 1 part in 11, roughly 9%, is unionised — the same figure as fentanyl in the pKa table." />
+    </div>
+  );
+}
+
+/** Calculated osmolality and the osmolar gap. */
+export function OsmolarGapTeaching() {
+  return (
+    <div className={wrap}>
+      <SourceQuote topicId={SOL} label="Atluri 2021 Osmolal Gap" />
+      <H>The calculation</H>
+      <p>Calculated osmolality ≈ 2[Na⁺] + [glucose] + [urea], all in mmol/L. Some laboratories add [ethanol] in mmol/L when it has been measured, so the remaining gap points to other substances. Osmolal gap = measured (freezing-point) − calculated.</p>
+      <H>What "normal" means</H>
+      <p>Textbooks commonly quote a normal gap below about 10 mOsm/kg, but healthy people vary widely — some have a negative gap — so a patient's own baseline is unknown. A "normal" result therefore cannot rule out toxic alcohol ingestion. The ranges here are standard teaching, not from the quotation.</p>
+      <H>The timing trap</H>
+      <p><Reasoning />methanol and ethylene glycol are themselves osmotically active but cause little acidosis. As they are metabolised, the osmolal gap falls while their acidic metabolites (formate, glycolate) raise the anion gap. Early after ingestion: high osmolal gap, normal anion gap. Late: the osmolal gap may be normal while there is a severe high anion gap acidosis. Seek specialist poisons advice (TOXBASE / National Poisons Information Service) on fomepizole or ethanol and haemodialysis.</p>
+      <Check q="A patient presents 30 hours after drinking antifreeze with a severe high anion gap acidosis and a normal osmolal gap. Is ethylene glycol excluded?" a="No. Late after ingestion most ethylene glycol has been converted to acidic metabolites, so the osmolal gap can be normal while the anion gap is very high." />
+    </div>
+  );
+}
+
+/** Classical and revised Starling principle. */
+export function StarlingTeaching() {
+  return (
+    <div className={wrap}>
+      <SourceQuote topicId={SOL} label="Woodcock 2012 Revised Starling" />
+      <H>The equation</H>
+      <p>Jv = Kf [(Pc − Pi) − σ(πc − πg)], where Jv is fluid filtration, Kf the filtration coefficient, Pc and Pi capillary and interstitial hydrostatic pressures, σ the reflection coefficient for protein, πc plasma oncotic pressure and πg the oncotic pressure in the small space just under the glycocalyx. In the classical version, πg is replaced by interstitial oncotic pressure.</p>
+      <H>What changed in the revised model</H>
+      <p>Classical teaching drew filtration at the arterial end and reabsorption at the venous end. In the revised model the space under the glycocalyx is kept almost protein-free by the outward flow of filtrate, so the oncotic gradient that opposes filtration stays large — but it slows filtration rather than reversing it (the "no absorption" rule). Filtered fluid returns via lymph.</p>
+      <p><Reasoning />this is why transfusing colloid or albumin is a poor treatment for oedema, and why the source argues crystalloids are reasonable when capillary pressure is low. Hypoalbuminaemia is still associated with oedema, but the revised model suggests low albumin alone explains it less than classical teaching implied.</p>
+      <Check q="According to the revised Starling model, how does fluid filtered at the capillary normally return to the circulation?" a="Mainly as lymph. The oncotic gradient across the glycocalyx opposes filtration but does not reverse it, so there is little venous-end reabsorption in most tissues." />
+    </div>
+  );
+}
