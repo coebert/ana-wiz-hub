@@ -181,7 +181,7 @@ const SepsisTopic = () => {
         { text: "Each hour of antibiotic delay is associated with about 4% higher odds of in-hospital death (OR 1.04 per hour); faster fluid bolus completion was not", cites: ["Seymour 2017 NY sepsis mandate"] },
         { text: "Source control is critical — drain, debride, or remove infected sources early", cites: ["SSC 2021"] },
         { text: "PCT-guided de-escalation reduces antibiotic duration by 2–3 days without increasing mortality", cites: ["Sepsis-3 2016"] },
-        { text: "Lactate >4 mmol/L carries 30–40% mortality; serial clearance guides resuscitation adequacy", cites: ["BJA Educ 2019"] },
+        { text: "Lactate ≥4 mmol/L carried 28.4% mortality in ED patients with infection (vs 4.9% below 2.5); serial clearance guides resuscitation", cites: ["Shapiro 2005 lactate mortality", "SSC 2021 lactate"] },
         { text: "No single biomarker diagnoses sepsis — trends are more informative than single values", cites: ["SSC 2021"] },
         { text: "IDSA 2024 challenges rigid 1h antibiotic + 30 mL/kg fluid targets in undifferentiated sepsis", cites: ["Sepsis-3 2016"] },
       ]}
