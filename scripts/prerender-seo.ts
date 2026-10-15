@@ -118,8 +118,8 @@ const CORE_SEO: Record<string, { title: string; description: string }> = {
     description: "Free FRCA Primary revision: exam-mapped notes, interactive diagrams, MCQ-style quizzes and viva practice across physics, physiology, pharmacology and chemistry.",
   },
   "/frca-final": {
-    title: "FRCA Final Revision – Clinical Anaesthesia & ICU Notes",
-    description: "Free FRCA Final revision: exam-mapped notes, quizzes and structured viva answers across clinical anaesthesia, intensive care and perioperative medicine.",
+    title: "Final FRCA Revision Notes – Curriculum Map & Viva Answers",
+    description: "Free Final FRCA revision notes mapped to the 2026 curriculum, with interactive diagrams, SBA quizzes and model viva answers for every subspecialty and ICU.",
   },
   "/map": {
     title: "Topic Map – FRCA & FFICM Curriculum | AnaesthesiaCore",
