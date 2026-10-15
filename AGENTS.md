@@ -19,3 +19,4 @@
 
 - Keep fluid tonicity teaching in its own registered topic linked from Acid-Base Disorders; trial outcome detail stays in the acid-base saline/balanced lesson so the two cannot drift.
 - Keep haemorrhagic shock physiology, monitoring and trial evidence in its own registered topic linked with Trauma; NICE NG39 primary survey and bolus detail stay on the trauma page so the two cannot drift.
+- Keep ICU ventilation protocol teaching in its own registered topic linked from Mechanical Ventilation; weaning readiness and SBT detail stay in the Mechanical Ventilation weaning lesson so the two cannot drift.
