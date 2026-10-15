@@ -10,6 +10,7 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { WorkedExample } from "@/components/topic/WorkedExamples";
 import { AcidsBasesDiagram } from "@/components/diagrams/chemistry/AcidsBasesDiagram";
+import { BloodGasCalculator } from "@/components/topic/BloodGasCalculator";
 import { InlineRef } from "@/components/references/InlineRef";
 import { acidsBasesQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
@@ -385,6 +386,12 @@ const AcidsBasesBuffersTopic = () => {
             </CollapsibleSubsection>
           </ExamSection>
 
+
+          <ExamSection id="blood-gas-calculator" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <CollapsibleSubsection title="Blood-gas calculator: H⁺, bicarbonate, base excess and anion gap" defaultOpen>
+              <BloodGasCalculator />
+            </CollapsibleSubsection>
+          </ExamSection>
 
           <ExamSection id="stewart-model" exams={[Exam.FINAL, Exam.FFICM]}>
             <CollapsibleSubsection title="Stewart's Quantitative Acid-Base Model">

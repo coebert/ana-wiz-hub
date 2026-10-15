@@ -23,7 +23,7 @@ export function BloodGasCalculator() {
   const pH = num(v.pH), pco2 = num(v.pco2), po2 = num(v.po2), na = num(v.na), cl = num(v.cl), k = num(v.k), fio2 = num(v.fio2);
   const phOk = pH !== null && pH >= 6.5 && pH <= 8.0;
   const pco2Ok = pco2 !== null && pco2 > 0 && pco2 <= (unit === "kPa" ? 30 : 225);
-  const pco2mmHg = pco2Ok ? (unit === "kPa" ? pco2! : pco2! ) * (unit === "kPa" ? KPA_TO_MMHG : 1) : null;
+  const pco2mmHg = pco2Ok ? pco2! * (unit === "kPa" ? KPA_TO_MMHG : 1) : null;
 
   const h = phOk ? Math.pow(10, 9 - pH!) : null;
   const hco3 = phOk && pco2mmHg !== null ? 2.46e-8 * pco2mmHg / Math.pow(10, -pH!) : null;
