@@ -3,6 +3,12 @@
 Coverage means substantive source-led teaching added and checked; it does not certify every claim in a topic. Introductions are not automatically gaps merely because they are short. Existing content is retained unless a supported correction is needed.
 
 ## Completed before this continuation
+### Non-technical skills continuation — checked 15 October 2026
+- Added three detailed lessons: operational debriefing and staff support; crisis speaking-up with CUS, two-challenge escalation and DESC; TeamSTEPPS briefs/huddles/SBAR/call-outs/check-backs. Eleven new AHRQ/NICE source records include short exact excerpts; eight quotations appear in the lessons and resolve from those records. AHRQ direct fetching was blocked, so official page text was checked through the search reader; NICE recommendation 1.6.5 was fetched directly.
+- Removed the older unsupported STOP-5 attribution/incorrect mnemonic, fixed universal debrief timing and PTSD-prevention implications, and distinguished canonical CUS from local CUSS adaptations. Fictional dialogue and clinical applications are explicitly teaching synthesis. Three learning checks and four quiz questions added (six questions total).
+- 497 tests passed, including seven focused teamwork tests. Signed-in browser verified all three lessons/check answers, an actual quotation popover, six quiz answers (6/6), narrow-screen fit and lesson deep-link opening, with no page errors. Search contains all three anchored headings; private audit text retains all three lessons and sources. Corpus refreshed/uploaded; bucket remains non-public. Preview compilation passed.
+- This batch is source-checked, not whole-page review or consultant certification. Older introductory percentages, cognitive-bias, SHEEP and patient-safety statements still require separate review; topic remains in progress.
+
 - Mechanical ventilation: shared APRV lesson.
 - ENT: laryngectomy emergency pathway.
 - Paediatric anaesthesia: URTI decisions and fluid prescribing.
