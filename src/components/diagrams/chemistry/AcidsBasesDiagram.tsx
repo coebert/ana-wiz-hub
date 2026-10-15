@@ -7,8 +7,9 @@ export const AcidsBasesDiagram = () => {
   const [activeTab, setActiveTab] = useState<"ph" | "hh" | "buffers">("ph");
 
   // Henderson-Hasselbalch
-  const ratio = Math.pow(10, ph - pka);
-  const percentIonised = (ratio / (1 + ratio)) * 100;
+  // Weak acid: ionised A⁻ fraction = 1/(1+10^(pKa−pH)). Weak base: ionised BH⁺ fraction = 1/(1+10^(pH−pKa)).
+  const [drugType, setDrugType] = useState<"acid" | "base">("acid");
+  const percentIonised = (drugType === "acid" ? 1 / (1 + Math.pow(10, pka - ph)) : 1 / (1 + Math.pow(10, ph - pka))) * 100;
   const percentUnionised = 100 - percentIonised;
 
   return (
@@ -163,6 +164,15 @@ export const AcidsBasesDiagram = () => {
             </div>
   
             <div className="space-y-3">
+              <div className="flex gap-2" role="group" aria-label="Drug type">
+                {(["acid", "base"] as const).map(t => (
+                  <button key={t} type="button" aria-pressed={drugType === t} onClick={() => setDrugType(t)}
+                    className={`px-3 py-1 rounded-md text-xs border border-border ${drugType === t ? "bg-primary text-primary-foreground" : "bg-secondary text-foreground"}`}>
+                    Weak {t}
+                  </button>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground">{drugType === "acid" ? "Weak acid: HA ⇌ H⁺ + A⁻. More ionised as pH rises above pKa (e.g. aspirin 3.5)." : "Weak base: BH⁺ ⇌ H⁺ + B. More ionised as pH falls below pKa (e.g. lidocaine 7.9, morphine 8.0, atropine 9.7)."}</p>
               <div>
                 <div className="flex justify-between text-xs mb-1">
                   <span className="text-muted-foreground">pKa</span>
@@ -189,8 +199,8 @@ export const AcidsBasesDiagram = () => {
             {/* Visual bar */}
             <div className="bg-card rounded-xl border border-border p-4">
               <div className="flex justify-between text-xs mb-2">
-                <span className="text-muted-foreground">Unionised (HA) — lipid-soluble</span>
-                <span className="text-muted-foreground">Ionised (A⁻) — water-soluble</span>
+                <span className="text-muted-foreground">Unionised ({drugType === "acid" ? "HA" : "B"}) — lipid-soluble</span>
+                <span className="text-muted-foreground">Ionised ({drugType === "acid" ? "A⁻" : "BH⁺"}) — water-soluble</span>
               </div>
               <div className="flex h-8 rounded-lg overflow-hidden border border-border">
                 <div className="flex items-center justify-center text-xs font-bold transition-all duration-300" style={{ width: `${percentUnionised}%`, background: "hsl(95 55% 38%)", color: "white" }}>
@@ -235,16 +245,16 @@ export const AcidsBasesDiagram = () => {
                     <th className="text-left p-2 font-semibold text-foreground">Buffer System</th>
                     <th className="text-left p-2 font-semibold text-foreground">pKa</th>
                     <th className="text-left p-2 font-semibold text-foreground">Location</th>
-                    <th className="text-left p-2 font-semibold text-foreground">% Buffering</th>
+                    <th className="text-left p-2 font-semibold text-foreground">Rank in blood</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    { name: "CO₂/HCO₃⁻", pka: "6.1", loc: "ECF (plasma)", pct: "~35%", note: "Open system — CO₂ exhaled. Most important ECF buffer despite pKa far from 7.4" },
-                    { name: "Haemoglobin", pka: "Variable", loc: "RBCs", pct: "~35%", note: "Histidine residues. Deoxyhaemoglobin is a better buffer (Haldane effect)" },
-                    { name: "Protein", pka: "Variable", loc: "ICF + plasma", pct: "~7%", note: "Albumin, histidine/cysteine side chains" },
-                    { name: "Phosphate", pka: "6.8", loc: "ICF + urine", pct: "~5%", note: "H₂PO₄⁻/HPO₄²⁻. Important renal buffer (titratable acidity)" },
-                    { name: "Bone CaCO₃", pka: "—", loc: "Bone", pct: "~18%", note: "Chronic buffering. CaCO₃ dissolution releases Ca²⁺ and HCO₃⁻" },
+                    { name: "CO₂/HCO₃⁻", pka: "6.1", loc: "ECF (plasma)", pct: "1st (largest)", note: "Open system — CO₂ exhaled. Most important ECF buffer despite pKa far from 7.4" },
+                    { name: "Haemoglobin", pka: "Variable", loc: "RBCs", pct: "2nd", note: "Histidine residues. Deoxyhaemoglobin is a better buffer (Haldane effect)" },
+                    { name: "Protein", pka: "Variable", loc: "ICF + plasma", pct: "Smaller", note: "Albumin, histidine/cysteine side chains" },
+                    { name: "Phosphate", pka: "6.8", loc: "ICF + urine", pct: "Small in plasma", note: "H₂PO₄⁻/HPO₄²⁻. Important renal buffer (titratable acidity)" },
+                    { name: "Bone CaCO₃", pka: "—", loc: "Bone", pct: "Slow, chronic only", note: "Chronic buffering. CaCO₃ dissolution releases Ca²⁺ and HCO₃⁻" },
                   ].map((row, i) => (
                     <tr key={i} className="border-b border-border/50 last:border-0">
                       <td className="p-2 font-medium text-foreground">{row.name}</td>

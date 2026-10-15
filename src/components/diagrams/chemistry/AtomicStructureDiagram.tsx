@@ -22,7 +22,7 @@ const bondInfo: Record<BondType, { title: string; description: string }> = {
   },
   vanderwaals: {
     title: "Van der Waals Forces",
-    description: "Weak, transient dipole interactions between all molecules. Strength increases with molecular size/surface area. Explains why larger volatile agents (desflurane > sevoflurane > isoflurane) have higher boiling points.",
+    description: "Weak, transient dipole interactions between all molecules. Strength increases with molecular size/surface area. Generally, larger molecules have higher boiling points, but heavy fluorination weakens these forces: desflurane boils at about 23°C, isoflurane about 49°C and sevoflurane about 59°C.",
   },
 };
 
@@ -265,8 +265,8 @@ export const AtomicStructureDiagram = () => {
               )}
   
               <text x={200} y={140} textAnchor="middle" fontSize="9" className="fill-muted-foreground">Transient dipoles form and induce dipoles in neighbours</text>
-              <text x={200} y={158} textAnchor="middle" fontSize="10" className="fill-foreground font-medium">↑ Molecular weight → ↑ VdW forces → ↑ boiling point</text>
-              <text x={200} y={175} textAnchor="middle" fontSize="9" className="fill-muted-foreground">Desflurane bp 23°C &lt; Sevoflurane 59°C &lt; Isoflurane 49°C</text>
+              <text x={200} y={158} textAnchor="middle" fontSize="10" className="fill-foreground font-medium">Usually ↑ size → ↑ VdW forces → ↑ boiling point</text>
+              <text x={200} y={175} textAnchor="middle" fontSize="9" className="fill-muted-foreground">Desflurane bp 23°C &lt; Isoflurane 49°C &lt; Sevoflurane 59°C</text>
             </g>
           )}
         </svg>
