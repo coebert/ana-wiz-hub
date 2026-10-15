@@ -23,6 +23,9 @@ export function IcuJourneyReferralTeaching() {
     <p>This page follows one adult through critical care, from ward deterioration to follow-up. Quotations are the sources' own wording; the surrounding sequence is teaching synthesis, not a local admission policy. Each stage links to the page that teaches it in depth.</p>
     <H>Recognition and referral</H>
     <p>Most unplanned admissions begin with a deteriorating ward patient: rising early-warning scores, new organ dysfunction or a clinician's concern. Referral should state the problem, the physiological trajectory, treatment already given and the patient's known wishes or treatment limits. Suspected infection with organ dysfunction should prompt the <L to="/intensive-care/sepsis">sepsis</L> pathway in parallel with referral, not after it.</p>
+    <Quote label="NICE CG50 graded response" />
+    <Quote label="NICE CG50 consultant decision" />
+    <p>NICE CG50 predates NEWS2, so its score bands are local; the principles — an immediate response to a high score and a consultant-to-consultant admission decision — still hold.</p>
     <H>Triage: what level of care does the patient need?</H>
     <Quote label="ICS Levels 2021 purpose" />
     <p>Levels describe the support a patient needs, not the bed they occupy. Ward care now absorbs the old levels 0 and 1; level 1 represents enhanced care.</p>
@@ -63,6 +66,11 @@ export function IcuJourneyTreatmentTeaching() {
     <p>I-PASS was studied in paediatric residents, and Lautrette in relatives of patients dying in ICU; applying them elsewhere is extrapolation.</p>
     <H>Liberation from support</H>
     <p>As the patient improves, the plan moves to weaning: readiness screening, spontaneous breathing trials and extubation are taught on <L to="/intensive-care/mechanical-ventilation">Mechanical Ventilation</L> and <L to="/intensive-care/ventilation-protocols">ICU Ventilation Protocols</L>.</p>
+    <Quote label="Girard 2008 ABC trial" />
+    <p>The ABC trial paired daily sedation interruption with a breathing trial and found more ventilator-free days, shorter ICU and hospital stays and lower one-year mortality, with more self-extubations but similar reintubation. It was a single trial; "suggest" is the authors' own wording.</p>
+    <Quote label="NICE CG83 early assessment" />
+    <p>Rehabilitation planning therefore starts during the ICU stay, not at discharge.</p>
+    <Check question="when should rehabilitation risk first be assessed?">During the critical care stay, as early as clinically possible (NICE CG83 1.2), not at ward transfer.</Check>
     <Check question="does the daily goals study show that goals forms reduce ICU mortality?">No. It showed that staff understanding of the day's goals rose from under 10% to over 95%; it did not measure mortality.</Check>
     <LessonSources topicId={T} labels={["GPICS 2.1 ward round", "Pronovost 2003 daily goals", "Starmer 2014 I-PASS", "Lautrette 2007 family"]} />
   </div>;
@@ -72,13 +80,17 @@ export function IcuJourneyDischargeTeaching() {
   return <div className={wrap}>
     <H>Timing of discharge to the ward</H>
     <Quote label="GPICS 2.1 discharge" />
+    <Quote label="NICE CG50 night transfer" />
     <p>Night-time and delayed discharges matter because the patient leaves a 1:1 or 1:2 nursing environment for a ward with far fewer staff per patient. A discharge decision should state why the patient no longer needs critical care and what would prompt readmission.</p>
     <H>Handover to the ward team</H>
     <Quote label="GPICS 2.1 discharge handover" />
     <p>A good discharge summary covers diagnoses, procedures, ongoing drugs and antimicrobial plan, lines to remove, nutrition and swallow status, mobility, delirium, treatment limits and the follow-up plan (teaching synthesis). Outreach review after discharge helps catch early deterioration.</p>
     <H>Life after critical care</H>
+    <Quote label="NICE CG83 ward step-down" />
+    <Quote label="NICE CG83 review" />
     <p>Survivors often have physical, cognitive and psychological problems after discharge. Rehabilitation, follow-up clinics and support for families are taught on <L to="/intensive-care/pics-follow-up">PICS & follow-up</L>. When the outcome is death or organ donation, see <L to="/intensive-care/end-of-life-communication">End-of-Life Communication</L> and <L to="/intensive-care/organ-donation">Organ Donation</L>.</p>
-    <Check question="the bed manager asks to move a stable patient to the ward at 23:30. What does GPICS 2.1 say?">Discharge to a general ward must occur between 07:00 and 21:59. A 23:30 move breaches the standard; the patient should stay until morning unless there is a safer alternative.</Check>
-    <LessonSources topicId={T} labels={["GPICS 2.1 discharge", "GPICS 2.1 discharge handover"]} />
+    <Check question="the bed manager asks to move a stable patient to the ward at 23:30. What does GPICS 2.1 say?">Discharge to a general ward must occur between 07:00 and 21:59. A 23:30 move breaches the standard; the patient should stay until morning unless there is a safer alternative. NICE CG50 adds that a transfer between 22:00 and 07:00 should be documented as an adverse incident.</Check>
+    <Check question="when should a patient with rehabilitation needs be reviewed after leaving critical care?">At 2 to 3 months, face to face, by a professional familiar with their critical care course (NICE CG83 1.23–1.24).</Check>
+    <LessonSources topicId={T} labels={["GPICS 2.1 discharge", "NICE CG50 night transfer", "GPICS 2.1 discharge handover", "NICE CG83 ward step-down", "NICE CG83 review"]} />
   </div>;
 }
