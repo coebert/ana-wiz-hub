@@ -3,6 +3,10 @@
 Coverage means substantive source-led teaching added and checked; it does not certify every claim in a topic. Introductions are not automatically gaps merely because they are short. Existing content is retained unless a supported correction is needed.
 
 ## Completed before this continuation
+### Chemistry — Atomic Structure & Bonding — checked 15 October 2026
+- Removed an unverifiable bonding citation; corrected the Tec 6 altitude trap, Na–Cl electronegativity difference and hydrogen-bond definition.
+- Added five sourced lessons with learning checks and three quiz questions (seven total). Other chemistry topics pending.
+
 ### Non-technical skills continuation — checked 15 October 2026
 - Added three detailed lessons: operational debriefing and staff support; crisis speaking-up with CUS, two-challenge escalation and DESC; TeamSTEPPS briefs/huddles/SBAR/call-outs/check-backs. Eleven new AHRQ/NICE source records include short exact excerpts; eight quotations appear in the lessons and resolve from those records. AHRQ direct fetching was blocked, so official page text was checked through the search reader; NICE recommendation 1.6.5 was fetched directly.
 - Removed the older unsupported STOP-5 attribution/incorrect mnemonic, fixed universal debrief timing and PTSD-prevention implications, and distinguished canonical CUS from local CUSS adaptations. Fictional dialogue and clinical applications are explicitly teaching synthesis. Three learning checks and four quiz questions added (six questions total).
