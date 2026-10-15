@@ -52,6 +52,7 @@ export function DischargeFollowUpTeaching() {
       <Q label="NICE CG83 review" />
       <p><Reasoning />the 2–3 month review checks recovery against the goals set during the stay and refers the patient on if they are recovering slowly. Physical, cognitive and mental-health problems after critical illness (PICS), follow-up clinics and support for families are covered on <L to="/intensive-care/pics-follow-up">PICS &amp; follow-up</L>. The full patient journey is on <L to="/intensive-care/icu-inpatient-journey">The ICU Inpatient Journey</L>.</p>
       <Check question="When and how should patients with rehabilitation needs be reviewed after leaving critical care?">At 2 to 3 months, face to face, by an appropriately skilled professional familiar with their critical care course.</Check>
+      <p>Survival, length of stay and readmission rates after ICU are covered on <L to="/intensive-care/icu-outcomes">ICU Outcomes</L>.</p>
     </div>
   );
 }
