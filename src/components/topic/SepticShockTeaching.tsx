@@ -28,7 +28,7 @@ export function ShockVasopressorTeaching() {
       <p><Reasoning />vasopressin adds a non-adrenergic vasoconstrictor (V1 receptors), so it can spare catecholamine dose. The guideline's own remark that it is usually started at noradrenaline 0.25–0.5 µg/kg/min is a practice note, not a separate recommendation.</p>
       <H>Is 65 too high for older patients?</H>
       <Quote label="Lamontagne 2020 65 trial" />
-      <p><Reasoning />the 65 trial (UK, age ≥65) targeted MAP 60–65 mm Hg and reduced vasopressor exposure without a significant mortality difference; the confidence interval does not exclude benefit. See <Link to="/intensive-care/vasoactive-agents" className="text-primary underline">Vasoactive Agents</Link> for receptor pharmacology.</p>
+      <p><Reasoning />the 65 trial (UK, age ≥65) targeted MAP 60–65 mm Hg and reduced vasopressor exposure without a significant mortality difference; the confidence interval does not exclude benefit. See <Link to="/pharmacology/vasoactive-agents" className="text-primary underline">Vasoactive Agents</Link> for receptor pharmacology.</p>
       <Check question="Noradrenaline is rising and MAP is still 58 mm Hg. What does SSC 2021 suggest?">Add vasopressin rather than continuing to escalate noradrenaline.</Check>
     </div>
   );
