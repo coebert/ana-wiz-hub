@@ -8,6 +8,7 @@ import ABGAnalyserDiagram from "@/components/diagrams/physics/ABGAnalyserDiagram
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { PreAnalyticalTeaching, VenousArterialTeaching, ElectrolytesLactateTeaching, TranscutaneousTeaching } from "@/components/topic/ABGAnalyserTeaching";
 
 const abgAnalyserFaqs: Array<[string, string]> = [
   [
@@ -460,6 +461,14 @@ const ABGAnalyserTopic = () => {
             </p>
           </div>
         </div>
+
+        <div id="pre-analytical" className="scroll-mt-24"><h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pre-analytical Error in Depth</h2><PreAnalyticalTeaching /></div>
+
+        <div id="venous-arterial" className="scroll-mt-24"><h2 className="text-2xl font-serif font-bold text-foreground mb-3">Arterial vs Venous Blood Gases</h2><VenousArterialTeaching /></div>
+
+        <div id="electrolytes-lactate" className="scroll-mt-24"><h2 className="text-2xl font-serif font-bold text-foreground mb-3">Electrolytes, Lactate & Glucose</h2><ElectrolytesLactateTeaching /></div>
+
+        <div id="transcutaneous" className="scroll-mt-24"><h2 className="text-2xl font-serif font-bold text-foreground mb-3">Transcutaneous O₂ & CO₂ Monitoring</h2><TranscutaneousTeaching /></div>
 
       <SynthesisBlock
         title="Blood Gas Analyser — What's Measured vs Calculated"
