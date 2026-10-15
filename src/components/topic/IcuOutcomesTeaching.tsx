@@ -14,8 +14,22 @@ export function OutcomesSurvivalTeaching() {
       <Q label="Wunsch 2010 ventilation risk" />
       <Q label="Wunsch 2010 conclusion" />
       <Q label="Duke 2004 post-ICU deaths" />
-      <p><Reasoning />ICU mortality, hospital mortality and long-term mortality are different numbers and must not be mixed. Some deaths happen on the ward after ICU discharge, and survivors who needed mechanical ventilation keep an excess risk for months afterwards. Wunsch studied elderly US Medicare patients, so the absolute figures do not transfer directly to younger or UK populations (teaching summary). UK units compare their risk-adjusted mortality nationally through ICNARC audit (teaching summary; not quoted here).</p>
+      <p><Reasoning />ICU mortality, hospital mortality and long-term mortality are different numbers and must not be mixed. Some deaths happen on the ward after ICU discharge, and survivors who needed mechanical ventilation keep an excess risk for months afterwards. Wunsch studied elderly US Medicare patients, so the absolute figures do not transfer directly to younger or UK populations (teaching summary). UK national figures are in the ICNARC lesson below.</p>
       <Check question="In Wunsch 2010, when was the excess mortality in ventilated ICU survivors concentrated?">In the first 6 months after hospital discharge.</Check>
+    </div>
+  );
+}
+
+export function OutcomesIcnarcTeaching() {
+  return (
+    <div className={lessonWrap}>
+      <H>UK national audit: ICNARC Case Mix Programme</H>
+      <Q label="ICNARC CMP 2024-25 scope" />
+      <Q label="ICNARC CMP 2024-25 survival" />
+      <Q label="ICNARC CMP 2024-25 length of stay" />
+      <p><Reasoning /><strong>Where these data come from:</strong> every figure above is quoted word for word from the public summary of the ICNARC Case Mix Programme (CMP) Public Report 2024-25, the national clinical audit of admissions to adult critical care in England, Wales and Northern Ireland, covering April 2024 to March 2025 across 286 participating units. The CMP is observational audit data, not a trial: the 11.5% critical care mortality and 15% acute hospital mortality are raw, unadjusted figures for a very mixed case mix, and they describe populations, not individual risk. Individual units are compared using risk-adjusted (not raw) mortality through the ICNARC model (teaching summary).</p>
+      <p><Reasoning />Note the gap between the two outcome rows: 88.5% survived to critical care discharge but only 85% survived to hospital discharge — about 3.5% of admissions died on the ward after leaving critical care, the same post-ICU deaths seen in the Duke 2004 cohort above (teaching summary).</p>
+      <Check question="In the ICNARC CMP 2024-25 public summary, what proportion of admissions died in critical care and in acute hospital?">11.5% died in critical care; 15% died in acute hospital (85% survived to hospital discharge).</Check>
     </div>
   );
 }
