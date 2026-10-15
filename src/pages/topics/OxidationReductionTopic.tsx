@@ -3,8 +3,8 @@ import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
 const oxidationReductionFaqs: Array<[string, string]> = [
   ["Why is methaemoglobin clinically dangerous?", "In methaemoglobin the haem iron is oxidised from Fe²⁺ to Fe³⁺ and cannot bind oxygen, while remaining haems bind O₂ more tightly (left-shifted curve) — so tissue delivery falls. Levels >15% cause cyanosis unresponsive to oxygen; >50% cause coma; >70% are fatal. Treat with IV methylene blue 1–2 mg/kg, which regenerates Fe²⁺ via NADPH-methaemoglobin reductase."],
-  ["How does a fuel cell oxygen analyser work?", "A galvanic (fuel) cell consumes O₂ at a lead anode (Pb → Pb²⁺ + 2e⁻), generating a current proportional to O₂ partial pressure at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻). It is self-powered, accurate to ±3%, and lasts ~12 months because the anode is consumed."],
-  ["Which inhaled anaesthetics are degraded by CO₂ absorbents?", "Sevoflurane reacts with strong bases (KOH, NaOH) in soda-lime to form Compound A, a vinyl ether with renal toxicity in rats. Desflurane, isoflurane and enflurane react with dry CO₂ absorbent to generate carbon monoxide. Both risks are mitigated by using KOH/NaOH-free absorbents (e.g. Amsorb Plus) and avoiding desiccated absorbent."],
+  ["How does a fuel cell oxygen analyser work?", "A galvanic (fuel) cell consumes O₂ at a lead anode (Pb + 2OH⁻ → PbO + H₂O + 2e⁻), generating a current proportional to O₂ partial pressure at the gold cathode (O₂ + 2H₂O + 4e⁻ → 4OH⁻). It is self-powered, accurate to ±3%, and lasts typically 1–2 years because the anode is consumed."],
+  ["Which inhaled anaesthetics are degraded by CO₂ absorbents?", "Sevoflurane reacts with strong bases (KOH, NaOH) in soda-lime to form Compound A, a vinyl ether with renal toxicity in rats. Desflurane, enflurane and isoflurane (in descending order of risk; sevoflurane produces little) react with desiccated CO₂ absorbent to generate carbon monoxide. Both risks are mitigated by using KOH/NaOH-free absorbents (e.g. Amsorb Plus) and avoiding desiccated absorbent."],
 ];
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { InlineRef } from "@/components/references/InlineRef";
@@ -38,10 +38,10 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "A blood-gas analyser reports PaO₂ 8 kPa on a sample taken from an arterial line. The ABG was drawn 15 minutes ago and left at room temperature in a plastic syringe. What's wrong?",
     working:
-      "The Clark electrode is amperometric: O₂ is reduced at a platinum cathode under a polarising voltage (~0.6 V) and the resulting current is proportional to PO₂.\nIn a plastic syringe at room temperature, leucocytes continue to consume O₂ (~7%/h). Plastic also allows slow O₂ diffusion — both lower the measured PaO₂.",
+      "The Clark electrode is amperometric: O₂ is reduced at a platinum cathode under a polarising voltage (~0.6 V) and the resulting current is proportional to PO₂.\nIn a plastic syringe at room temperature, leucocytes continue to consume O₂. Plastic also allows slow O₂ diffusion — both lower the measured PaO₂.",
     answer:
-      "The PaO₂ has fallen because of ongoing leucocyte O₂ consumption and diffusion through the plastic syringe wall. ABGs should be analysed within 10 minutes; samples for delayed analysis must be stored on ice in a glass syringe.",
-    cites: ["BJA Educ 2010"],
+      "The PaO₂ has fallen because of ongoing leucocyte O₂ consumption and diffusion through the plastic syringe wall. Analyse ABGs promptly; follow your analyser and local laboratory guidance on storage if analysis is delayed (traditionally iced glass syringes; this page does not quote a source for a specific time limit).",
+    cites: ["Cross & Plunkett Ch.3"],
   },
 ];
 
@@ -64,18 +64,18 @@ const OxidationReductionTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        workedExamples: ["Wright 1999 (MetHb)", "BJA Educ 2010", "Cross & Plunkett Ch.3"],
-        keyPoints: ["Halliwell & Gutteridge", "Wright 1999 (MetHb)", "Cross & Plunkett Ch.3", "BJA Educ 2010"],
+        workedExamples: ["Wright 1999 (MetHb)", "Blood Gas Review 2025", "Cross & Plunkett Ch.3"],
+        keyPoints: ["Halliwell & Gutteridge", "Wright 1999 (MetHb)", "Cross & Plunkett Ch.3", "Blood Gas Review 2025"],
       }}
       keyPoints={[
         { text: "OIL RIG: Oxidation Is Loss, Reduction Is Gain (of electrons). Always occur together", cites: ["Halliwell & Gutteridge"] },
         { text: "Methaemoglobin: Fe²⁺ oxidised to Fe³⁺ → cannot carry O₂. Caused by prilocaine, dapsone, GTN. Treat with methylene blue (avoid in G6PD)", cites: ["Wright 1999 (MetHb)"] },
         { text: "Clark electrode (PO₂): amperometric — O₂ reduced at a platinum cathode; current ∝ PO₂", cites: ["Cross & Plunkett Ch.3"] },
-        { text: "Severinghaus electrode (PCO₂): CO₂ diffuses through Teflon into NaHCO₃ → pH change measured", cites: ["BJA Educ 2010"] },
+        { text: "Severinghaus electrode (PCO₂): CO₂ diffuses through Teflon into NaHCO₃ → pH change measured", cites: ["Blood Gas Review 2025"] },
         { text: "Galvanic fuel cell: self-generating O₂ sensor (no external voltage); lead anode consumed over time", cites: ["Halliwell & Gutteridge"] },
         { text: "Free radicals have unpaired electrons — superoxide, hydroxyl radical, peroxynitrite", cites: ["Wright 1999 (MetHb)"] },
         { text: "Ischaemia–reperfusion generates ROS via xanthine oxidase — major cause of post-ROSC organ damage", cites: ["Cross & Plunkett Ch.3"] },
-        { text: "N-acetylcysteine replenishes glutathione — treats paracetamol toxicity by neutralising NAPQI", cites: ["BJA Educ 2010"] },
+        { text: "N-acetylcysteine replenishes glutathione — treats paracetamol toxicity by neutralising NAPQI", cites: ["Freo 2021 Paracetamol"] },
       ]}
       coreConcepts={
         <>
@@ -132,7 +132,7 @@ const OxidationReductionTopic = () => {
                 constant, T absolute temperature, n the number of electrons transferred, and F the Faraday constant. This
                 concentration-dependence is the working principle of ion-selective electrodes (pH glass electrode, Na⁺/K⁺
                 electrodes) and explains why electrode readings shift predictably with analyte concentration rather than being
-                fixed. <InlineRef topicId="oxidation-reduction" refLabel="BJA Educ 2010" />
+                fixed. <InlineRef topicId="oxidation-reduction" refLabel="Cross & Plunkett Ch.3" />
               </p>
             </div>
             </CollapsibleSubsection>
@@ -204,14 +204,14 @@ const OxidationReductionTopic = () => {
                 results are affected by protein and lipid content in the sample; measuring <strong>directly</strong> with an
                 ISE on a blood gas analyser avoids the <strong>pseudohyponatraemia</strong> seen with indirect, diluted
                 flame-photometric methods in samples with high protein or lipid content.
-                <InlineRef topicId="oxidation-reduction" refLabel="BJA Educ 2010" />
+                <InlineRef topicId="oxidation-reduction" refLabel="Blood Gas Review 2025" />
               </p>
               <p>
                 <strong>Glucose sensor</strong>: amperometric. Glucose oxidase oxidises glucose to gluconolactone, generating
                 <strong> hydrogen peroxide</strong>; the H₂O₂ is then oxidised at a polarised platinum anode
                 (~<strong>+0.6 V</strong>), producing a current proportional to glucose concentration — a
                 <strong> Clark-type cell</strong> arrangement. Readings can be affected by interfering substances such as
-                <strong> paracetamol, ascorbate and icodextrin</strong>. <InlineRef topicId="oxidation-reduction" refLabel="BJA Educ 2010" />
+                <strong> paracetamol, ascorbate and icodextrin</strong>. <InlineRef topicId="oxidation-reduction" refLabel="Cross & Plunkett Ch.3" />
               </p>
             </div>
             </CollapsibleSubsection>
@@ -251,14 +251,14 @@ const OxidationReductionTopic = () => {
                 <strong> PEEP, recruitment and prone positioning</strong> to reduce the FiO₂ required, avoid hyperoxia after
                 cardiac arrest and in traumatic brain injury, and be alert to drugs that increase susceptibility to oxygen
                 free-radical injury such as <strong>paraquat</strong> and <strong>bleomycin</strong>.
-                <InlineRef topicId="oxidation-reduction" refLabel="BJA Educ Oxygen Toxicity 2016" />
+                <InlineRef topicId="oxidation-reduction" refLabel="Horncastle & Lumb 2019 Hyperoxia" />
               </p>
               <p>
                 <strong>Paracetamol toxicity</strong>: normally, paracetamol is metabolised mainly by conjugation — approximately
                 <strong> 60% glucuronidation</strong> and <strong>35% sulphation</strong> — with only around <strong>5%</strong>
                 oxidised by cytochrome P450 (CYP2E1, 1A2, 3A4) to the reactive metabolite <strong>NAPQI</strong>. In overdose,
                 the conjugation pathways saturate, so a much larger fraction is shunted through CYP2E1 to NAPQI.
-                <InlineRef topicId="oxidation-reduction" refLabel="BJA Educ Paracetamol 2021" />
+                <InlineRef topicId="oxidation-reduction" refLabel="Freo 2021 Paracetamol" />
               </p>
               <p>
                 NAPQI is a reactive electrophile normally detoxified by conjugation with <strong>glutathione</strong>. Once
