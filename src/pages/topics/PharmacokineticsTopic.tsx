@@ -268,11 +268,11 @@ const PharmacokineticsTopic = () => {
       ]}
       keyPoints={[
         { text: "Pharmacokinetics is ADME: Absorption, Distribution, Metabolism, and Elimination.", cites: ["StatPearls PK 2023"] },
-        { text: "Compartment models describe drug distribution kinetically. The two-compartment model shows bi-exponential decline (α distribution, β elimination).", cites: ["Peck & Hill Ch.2", "Hughes 1992 CSHT"] },
+        { text: "Compartment models describe drug distribution kinetically. The two-compartment model shows bi-exponential decline (α distribution, β elimination).", cites: ["Peck & Hill Ch.2"] },
         { text: "Volume of distribution (Vd) is a theoretical concept; a large Vd indicates extensive tissue distribution.", cites: ["Calvey & Williams 2008"] },
         { text: "Clearance is the volume of plasma completely cleared of drug per unit time. High extraction ratio drugs are flow-dependent.", cites: ["StatPearls Clearance 2023", "Peck & Hill Ch.2"] },
         { text: "Half-life (t½ = 0.693 × Vd / Cl) determines time to steady state (~4-5 half-lives).", cites: ["Peck & Hill Ch.2"] },
-        { text: "Context-sensitive half-time is more clinically relevant for infusions than terminal half-life. Remifentanil has a uniquely short and constant CSHT.", cites: ["Calvey & Williams 2008"] },
+        { text: "Context-sensitive half-time is more clinically relevant for infusions than terminal half-life. Remifentanil has a uniquely short and constant CSHT.", cites: ["Hughes 1992 CSHT", "Calvey & Williams 2008"] },
       ]}
     />
   );
