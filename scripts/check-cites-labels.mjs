@@ -55,6 +55,20 @@ function loadReferenceLabels() {
     }
     map.set(topicId, labels);
   }
+  
+  // Resolve named lists (const fooReferences: Reference[] = [...]) and "topic": fooReferences entries.
+  const named = new Map();
+  for (const dm of src.matchAll(/const\s+(\w+)\s*:\s*Reference\[\]\s*=\s*\[/g)) {
+    let d = 1, j = dm.index + dm[0].length;
+    while (j < src.length && d > 0) { if (src[j] === "[") d++; else if (src[j] === "]") d--; j++; }
+    const body = src.slice(dm.index + dm[0].length, j - 1);
+    const set = new Set([...body.matchAll(/label\s*:\s*"([^"]+)"/g)].map(x => x[1]));
+    for (const sp of body.matchAll(/\.\.\.(\w+)/g)) for (const l of named.get(sp[1]) ?? []) set.add(l);
+    named.set(dm[1], set);
+  }
+  for (const am of src.matchAll(/"([a-z0-9-]+)"\s*:\s*(\w+)\s*,/g)) {
+    if (named.has(am[2]) && !map.has(am[1])) map.set(am[1], new Set(named.get(am[2])));
+  }
   return map;
 }
 
