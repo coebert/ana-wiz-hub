@@ -200,6 +200,7 @@ export function OutcomesCostTeaching() {
       </tbody></table></div>
     <p><Reasoning />In cash terms the adult average rose from £1,190 to £2,144 per bed day, about 80% over eight years (our arithmetic), with the steepest rise after 2019/20. Several things limit what this shows: the figures are not inflation-adjusted; the collection changed from Reference Costs to the National Cost Collection, with different costing methods, so part of any step change may be method rather than spending; 2021/22 still carried COVID-era pressures; and these are trust-reported costs, not prices paid. The trend says costs per day rose — not why, and not whether care became better or worse value. We could not download later years, which are published only as an interactive dashboard (teaching summary).</p>
     <H>Cost per condition</H>
+    <p>Each condition with UK and US figures side by side is on <L to="/intensive-care/icu-cost-by-condition">ICU Cost by Condition</L>.</p>
     <Q label="Marti 2016 ARDS costs" />
     <Q label="INHALE 2020 HAP/VAP costs" />
     <Q label="Edbrooke 1999 sepsis costs" />
