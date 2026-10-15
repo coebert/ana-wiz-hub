@@ -7,7 +7,7 @@
 - Anatomy topic bibliographies reuse editorial topicReferences through anatomyReferences; automation checks record integrity without AI, because a generated verdict cannot establish source support or anatomical accuracy.
 - Keep detailed APRV teaching in the shared APRVSection rendered by the mechanical ventilation topic, so its source-linked guidance and learning checks stay together.
 
-- Keep expanded teaching in Teaching components (relative or `@/components/topic/*Teaching` imports); the audit corpus follows and prioritises those files so detailed guidance is not skipped or truncated.
+- Keep expanded lessons in imported Teaching modules for audit retention; ICU outcomes use IcuOutcomesTeaching and reference excerpts, distinguishing periods, denominators, endpoints and symptom thresholds to avoid conflation.
 - Citation-snapshot generation must resolve the data-driven topic route table and refuse empty output when fixed findings exist, so routing refactors cannot erase regression coverage.
 - Keep curriculum subsection coverage in curriculum-expansion.md and mark batches checked only after source, rendering and audit-corpus verification, so partial expansion cannot imply whole-topic completion.
 - Search uses src/data/searchIndex.generated.json, rebuilt by scripts/build-search-index.ts on predev/prebuild and lazy-loaded on dialog open. Reuse the audit extractor and CollapsibleSubsection anchors for exact links; filter named imports to prevent cross-topic leakage and give each export a prose queue so later lessons are retained.
