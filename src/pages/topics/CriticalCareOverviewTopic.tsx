@@ -17,7 +17,7 @@ const quiz = [
 
 export default function CriticalCareOverviewTopic() {
   return <TopicTemplate title="Critical Care Overview: Structure, Team & Communication" subtitle="Final / FFICM / EDIC — Organisation of Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu" topicId="critical-care-overview" topicTitle="Critical Care Overview: Structure, Team & Communication"
-    objectives={["Define ward care and levels 1–3 using the ICS 2021 descriptors", "State GPICS admission, consultant review and discharge time standards", "Give GPICS medical and nursing ratios and explain the supernumerary nurse in charge", "Interpret the evidence for intensivist-led care, including the overnight staffing trial", "Describe daily goals, structured handover and family communication evidence, and their limits"]}
+    objectives={["Explain what GPICS is, its editions, and the difference between minimum standards and quality recommendations", "Define ward care and levels 1–3 using the ICS 2021 descriptors", "State GPICS admission, consultant review and discharge time standards", "Give GPICS medical and nursing ratios and explain the supernumerary nurse in charge", "Interpret the evidence for intensivist-led care, including the overnight staffing trial", "Describe daily goals, structured handover and family communication evidence, and their limits"]}
     sectionExamMapping={{ objectives: { exams }, keyPoints: { exams } }}
     sectionSources={{ objectives: ["ICS Levels 2021 purpose", "GPICS 2.1 consultant review", "GPICS 2.1 nurse ratios", "Pronovost 2002 staffing", "Starmer 2014 I-PASS"] }}
     keyPoints={[
