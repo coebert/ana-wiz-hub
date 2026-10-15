@@ -1,6 +1,16 @@
 import { InlineRef } from "@/components/references/InlineRef";
 import { LessonSources } from "@/components/topic/LessonSources";
+import { topicReferences } from "@/data/references";
 const R = ({ label }: { label: string }) => <InlineRef topicId="non-technical-skills" refLabel={label} />;
+
+function SourceQuote({ label }: { label: string }) {
+  const ref = topicReferences["non-technical-skills"].find(item => item.label === label);
+  if (!ref?.excerpt) return null;
+  return <figure className="border-l-2 border-primary pl-4 space-y-2">
+    <figcaption className="text-xs font-semibold text-foreground">From the source — {label}<R label={label} /></figcaption>
+    <blockquote className="text-sm text-muted-foreground">{ref.excerpt}</blockquote>
+  </figure>;
+}
 
 export function NTSEvidenceTeaching() {
   return <div className="space-y-4 text-muted-foreground leading-relaxed">
@@ -21,5 +31,81 @@ export function NTSEvidenceTeaching() {
     </ul>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: does the Haynes 2009 study prove the checklist halves surgical mortality?</summary><p className="mt-2">No. It showed an association in a before-and-after design across eight hospitals. Causation is plausible but not established by that design alone.</p></details>
     <LessonSources topicId="non-technical-skills" labels={["Fletcher 2003 ANTS", "Haynes 2009 WHO Checklist"]} />
+  </div>;
+}
+
+export function DebriefingTeaching() {
+  return <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+    <p>An operational debrief is an after-action conversation about how the team worked: what happened, what helped, what obstructed care and what should change next time. It is not a retrospective test of the most junior clinician, a substitute for incident investigation, or a treatment for traumatic stress. AHRQ TeamSTEPPS describes accurate event reconstruction, analysis, reinforcement of effective behaviours and a method for incorporating lessons into the next plan.<R label="AHRQ Debrief" /></p>
+    <SourceQuote label="AHRQ Debrief" />
+    <h3 className="text-lg font-semibold text-foreground">Start with readiness, not a rigid clock</h3>
+    <p>AHRQ describes debriefs that can be very short, including about three minutes or less; this is an example, not a minimum duration or an instruction to interrupt care. In clinical application, first ensure continuing care, safe handover and cover for other patients. Offer a quiet, appropriate setting rather than discussing identifiable events in a public coffee room. A short early review and a later multidisciplinary review can serve different purposes; neither “within 24 hours” nor “one to two weeks” is a universal TeamSTEPPS requirement.<R label="AHRQ Debrief" /></p>
+    <h3 className="text-lg font-semibold text-foreground">A practical learning sequence</h3>
+    <p><strong className="text-foreground">Teaching synthesis from the AHRQ debrief checklist:</strong> adapt these prompts to the event and local incident-response arrangements; they are not a separately validated named debrief model.</p>
+    <ol className="list-decimal pl-5 space-y-2">
+      <li><strong className="text-foreground">Set the purpose.</strong> Explain that the aim is to understand team performance, not allocate blame. Invite contributions across roles, including people who observed rather than performed the main procedure. Ask whether anyone has an immediate safety concern.</li>
+      <li><strong className="text-foreground">Reconstruct the shared facts.</strong> Recap the intended plan, key changes and actions. Separate observations from assumptions: “the request was not acknowledged” is more useful than “nobody cared”. Where recollections differ, record the uncertainty rather than forcing agreement.</li>
+      <li><strong className="text-foreground">Explore work as it actually happened.</strong> Ask what information each person had at the time, whether roles were clear, whether requests were heard and what equipment or workload constraints shaped decisions. Avoid judging earlier choices solely using facts learned afterwards.</li>
+      <li><strong className="text-foreground">Preserve strengths as well as identify gaps.</strong> Name a behaviour worth repeating, then explore a specific improvement. “The runner repeated the destination and confirmed the call” is actionable; “communication was good” is not sufficiently specific.</li>
+      <li><strong className="text-foreground">Close the improvement loop.</strong> Agree what changes, who owns it and when progress will be checked. Escalate unresolved hazards through the local safety system. A conversation without follow-through does not establish that a risk has been controlled.</li>
+    </ol>
+    <p>These prompts apply AHRQ’s performance-improvement approach. Any formal record, information sharing or incident response must follow local governance; do not promise absolute confidentiality or use a quick debrief to decide culpability.<R label="AHRQ Debrief" /></p>
+    <h3 className="text-lg font-semibold text-foreground">Operational learning is not psychological debriefing</h3>
+    <SourceQuote label="NICE NG116 Debriefing" />
+    <p>NICE’s recommendation concerns psychologically-focused debriefing intended to prevent or treat PTSD, not every conversation after an incident. It is not limited to compulsory sessions. Do not require staff to recount distressing emotions or relive the event as a purported preventive treatment. Equally, the recommendation does not prohibit compassionate listening, practical support or access to appropriate mental-health assessment. An operational debrief should not be advertised as proven PTSD prevention.<R label="NICE NG116 Debriefing" /></p>
+    <h3 className="text-lg font-semibold text-foreground">Worked application</h3>
+    <p><strong className="text-foreground">Fictional teaching example:</strong> after an emergency airway event, the team identifies that a request for additional help was made but nobody was named to make the call. The useful output is not “the nurse failed”: it is an agreed named caller, check-back of the request, confirmation that help is on the way, and an owner to rehearse that process at the next simulation. A staff member who is distressed is offered individual support without being made to disclose feelings in the group. This is educational reasoning, not a patient record or an outcome prediction.</p>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: should everyone describe their worst feelings to prevent PTSD?</summary><p className="mt-2">No. NICE advises against psychologically-focused debriefing for PTSD prevention or treatment. Keep the operational review focused on facts, team performance and agreed improvements; offer support separately without compelling emotional disclosure. A short debrief does not replace incident reporting or specialist assessment.</p></details>
+    <LessonSources topicId="non-technical-skills" labels={["AHRQ Debrief", "NICE NG116 Debriefing"]} />
+  </div>;
+}
+
+export function SpeakingUpTeaching() {
+  return <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+    <p>Speaking up in a crisis means making a safety concern audible, understandable and actionable, then checking that it has been addressed. Merely thinking that the leader must have noticed is not communication. TeamSTEPPS places advocacy and assertion within mutual support: the person raising a concern and the person receiving it both have responsibilities. The purpose is safer shared decision making, not winning an argument.<R label="AHRQ CUS" /><R label="AHRQ Two-Challenge" /></p>
+    <h3 className="text-lg font-semibold text-foreground">CUS: make the safety signal explicit</h3>
+    <p>AHRQ’s canonical tool is <strong className="text-foreground">CUS: Concerned, Uncomfortable, Safety issue.</strong> State the observation, explain why it worries you and ask for a specific response. If the concern remains unresolved, explicitly identify the safety issue. Local PACE or CUSS versions may add a “Stop” step; that adaptation is not the expansion of AHRQ’s three-letter CUS tool.<R label="AHRQ CUS" /></p>
+    <SourceQuote label="AHRQ CUS" />
+    <p><strong className="text-foreground">Fictional teaching dialogue, not an AHRQ quotation:</strong> “Alex, I am concerned that this syringe label does not match the prescription.” If unresolved: “I am uncomfortable giving it until we confirm the drug and concentration.” If the hazard persists: “This is a safety issue. Please pause this administration while we check it.” The specificity matters: an unexplained “Are you sure?” can be heard as routine uncertainty rather than a warning.</p>
+    <h3 className="text-lg font-semibold text-foreground">The two-challenge rule is an escalation aid, not a waiting rule</h3>
+    <SourceQuote label="AHRQ Two-Challenge" />
+    <p>If the initial assertion is ignored, repeat the concern assertively so that it is heard. If the response remains unacceptable, take stronger action through the supervisor or chain of command. AHRQ frames this for potential high-risk harm; it is not a requirement to repeat every minor disagreement twice. Repeating the same vague question without securing acknowledgement does not resolve the hazard.<R label="AHRQ Two-Challenge" /></p>
+    <p><strong className="text-foreground">Clinical application:</strong> imminent danger is not a reason to work slowly through a script. Give an unambiguous warning, seek immediate help and use the applicable emergency pathway; do not wait to complete two polite challenges before protecting a patient. The communication tool does not replace clinical algorithms or confer authority to perform an intervention beyond one’s competence.</p>
+    <h3 className="text-lg font-semibold text-foreground">Receiving a challenge is a leadership skill</h3>
+    <p>Acknowledge the concern, establish what the colleague has observed and explicitly resolve the discrepancy before proceeding where feasible. If the concern reflects different information rather than an error, explain that information and check agreement on the next step. A silent nod is not a shared plan. Invite challenge before an emergency and thank the person who raises it; do not frame safety as a junior clinician’s duty to overcome a hostile senior alone.<R label="AHRQ Two-Challenge" /><R label="AHRQ CUS" /></p>
+    <h3 className="text-lg font-semibold text-foreground">DESC: address conflict without distracting from resuscitation</h3>
+    <SourceQuote label="AHRQ DESC" />
+    <p>DESC structures a discussion around <strong className="text-foreground">Describe, Express, Suggest and Consequences</strong>: describe the specific situation, express the concern, suggest an alternative, and explain its consequences for team goals. AHRQ describes its particular usefulness for interpersonal conflict and recommends thoughtful timing, a private location and “I” statements. It is not a reason to postpone a time-critical safety warning for a private meeting.<R label="AHRQ DESC" /></p>
+    <p><strong className="text-foreground">Teaching application after stabilisation:</strong> “When my concern was dismissed before I could explain the label mismatch, I worried we would miss an error. Can we agree that a stated safety concern receives a read-back and check? That lets us clarify quickly and work together.” Persistent intimidation or an unresolved safety hazard also needs the appropriate local reporting or speaking-up process; practising scripts does not repair an unsafe organisational culture on its own.</p>
+    <p><strong className="text-foreground">Evidence limits:</strong> these AHRQ pages define communication and escalation tools, not a guaranteed reduction in mortality from using an individual phrase. Rehearse with the whole team, including how leaders respond, rather than treating a mnemonic as an independently proven treatment.<R label="AHRQ CUS" /><R label="AHRQ Two-Challenge" /></p>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: must you complete two challenges before stopping an immediately unsafe action?</summary><p className="mt-2">No. The two-challenge rule supports escalation when an initial concern is ignored; it is not a mandatory delay in imminent danger. State the hazard and requested action clearly, seek immediate help and follow the applicable emergency pathway. The receiver should acknowledge and address the concern, not just demand more assertiveness.</p></details>
+    <LessonSources topicId="non-technical-skills" labels={["AHRQ CUS", "AHRQ Two-Challenge", "AHRQ DESC"]} />
+  </div>;
+}
+
+export function TeamSTEPPSTeaching() {
+  return <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+    <p><strong className="text-foreground">TeamSTEPPS</strong> means Team Strategies and Tools to Enhance Performance and Patient Safety. The AHRQ framework organises teachable teamwork behaviours around communication, team leadership, situation monitoring and mutual support, with team structure at the centre. Unlike ANTS, which is a behavioural marker system for anaesthetists, TeamSTEPPS supplies a multidisciplinary toolkit for coordinating work. The frameworks overlap, but their category names are not interchangeable.<R label="AHRQ Huddle" /><R label="AHRQ SBAR" /><R label="AHRQ CUS" /><R label="Fletcher 2003 ANTS" /></p>
+    <h3 className="text-lg font-semibold text-foreground">Brief, huddle and debrief: three different jobs</h3>
+    <ul className="list-disc pl-5 space-y-2">
+      <li><strong className="text-foreground">Brief — establish the plan:</strong> identify the team and roles, current situation, intended actions, contingencies and resource needs. In a teaching application to an ICU procedure, name the lead, operator, monitor and caller for help; agree what would trigger a change of plan.</li>
+      <li><strong className="text-foreground">Huddle — update an existing plan:</strong> reconvene when the patient’s condition, team membership or workload changes, or the plan is not working. AHRQ explicitly allows any team member observing a need for adjustment to convene one. It is not a meeting reserved for the consultant.<R label="AHRQ Huddle" /></li>
+      <li><strong className="text-foreground">Debrief — learn after the event:</strong> reconstruct key events, reinforce effective actions and agree improvements for the next case. A debrief is not the right label for a mid-crisis reassessment that changes current care.<R label="AHRQ Debrief" /></li>
+    </ul>
+    <SourceQuote label="AHRQ Huddle" />
+    <p><strong className="text-foreground">Clinical application:</strong> a huddle need not stop ongoing life-saving treatment. The leader can request a short verbal update while essential tasks continue, summarise what has changed, redistribute work and confirm the new plan. The purpose is an updated shared mental model, not a ceremonial pause of fixed duration.</p>
+    <h3 className="text-lg font-semibold text-foreground">SBAR: finish with an actionable request</h3>
+    <SourceQuote label="AHRQ SBAR" />
+    <p>Situation states the current problem; Background gives relevant context; Assessment states what you think is happening and the uncertainty; Recommendation or Request identifies what you need next. Distinguish observed data from interpretation, and avoid a long history that buries the urgent concern. The receiver must still clarify urgency, responsibility and the response; a structured monologue alone does not close the loop.<R label="AHRQ SBAR" /></p>
+    <p><strong className="text-foreground">Fictional teaching example:</strong> “I am the ICU nurse in bed four. The patient has deteriorated during transfer preparation. They are ventilated and receiving vasopressor support. I am concerned the current plan is no longer safe. Please attend now and confirm who will review the airway and circulation.” This illustrates communication structure, not a clinical diagnosis or a prescribed treatment response.</p>
+    <h3 className="text-lg font-semibold text-foreground">Call-out versus check-back: broadcast is not confirmation</h3>
+    <p>A call-out makes important information available to the team; a named task request identifies who should respond. A check-back verifies exchanged information: the sender states the message, the receiver repeats it, and the sender confirms or corrects the repeat. “Someone call for help” does not establish ownership; hearing “OK” does not establish that the correct message was received.<R label="AHRQ Check-Back" /></p>
+    <SourceQuote label="AHRQ Check-Back" />
+    <p><strong className="text-foreground">Fictional teaching dialogue:</strong> “Sam, call the ICU consultant to bed four now.” “I will call the ICU consultant to bed four now.” “Correct.” Sam then confirms the call was made and communicates any response. Read-back checks understanding; completion reporting separately checks execution. Neither guarantees that help has arrived. These are teaching examples, not quotations from the source.</p>
+    <h3 className="text-lg font-semibold text-foreground">Make the toolkit observable</h3>
+    <p><strong className="text-foreground">Teaching synthesis:</strong> start with a locally relevant failure mode, agree shared wording, practise in simulation and observe whether the loop closes in real work. Useful process questions include whether roles were named, whether the changed plan reached everyone and whether an unresolved concern was escalated. Include patients and family caregivers when appropriate to the setting and their wishes; urgent care, privacy and capacity still govern what is feasible.<R label="AHRQ SBAR" /><R label="AHRQ Check-Back" /></p>
+    <p><strong className="text-foreground">Evidence limits:</strong> tool descriptions support how these techniques are used; they do not establish a particular mortality benefit or make a ticked checklist proof of effective teamwork. Evaluate actual behaviours and unintended burdens, not merely whether staff can recite the acronyms.</p>
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: the plan changes mid-crisis and a request is met with “OK”. What is missing?</summary><p className="mt-2">Use a huddle to communicate the revised plan and ownership while essential treatment continues. Obtain a specific check-back, confirm or correct it, then ask for completion reporting. Acknowledgement alone is not verified understanding or task completion; the after-action debrief comes later.</p></details>
+    <LessonSources topicId="non-technical-skills" labels={["AHRQ Huddle", "AHRQ Debrief", "AHRQ SBAR", "AHRQ Check-Back", "AHRQ CUS", "Fletcher 2003 ANTS"]} />
   </div>;
 }
