@@ -45,38 +45,83 @@ export function WaterTemperatureTeaching() {
   );
 }
 
-const pkaRows: [string, string, string][] = [
-  ["Lidocaine", "7.9", "Weak base, about 24% unionised"],
-  ["Bupivacaine", "8.1", "Weak base, about 17% unionised"],
-  ["Thiopental", "7.6", "Weak acid, about 61% unionised"],
-  ["Morphine", "8.0", "Weak base, about 20% unionised"],
+type PkaRow = { drug: string; pka: number | null; kind: "acid" | "base" | "quaternary"; note?: string };
+const pkaGroups: { group: string; rows: PkaRow[] }[] = [
+  { group: "Local anaesthetics", rows: [
+    { drug: "Mepivacaine", pka: 7.6, kind: "base" },
+    { drug: "Lidocaine", pka: 7.9, kind: "base" },
+    { drug: "Prilocaine", pka: 7.9, kind: "base" },
+    { drug: "Articaine", pka: 7.8, kind: "base" },
+    { drug: "Ropivacaine", pka: 8.1, kind: "base" },
+    { drug: "Bupivacaine / levobupivacaine", pka: 8.1, kind: "base" },
+    { drug: "Tetracaine (amethocaine)", pka: 8.5, kind: "base" },
+    { drug: "Chloroprocaine", pka: 8.7, kind: "base", note: "Fast onset despite high pKa — given at high concentration" },
+  ]},
+  { group: "Opioids", rows: [
+    { drug: "Alfentanil", pka: 6.5, kind: "base" },
+    { drug: "Remifentanil", pka: 7.1, kind: "base" },
+    { drug: "Morphine", pka: 8.0, kind: "base" },
+    { drug: "Sufentanil", pka: 8.0, kind: "base" },
+    { drug: "Fentanyl", pka: 8.4, kind: "base" },
+    { drug: "Pethidine", pka: 8.5, kind: "base" },
+  ]},
+  { group: "Induction agents and sedatives", rows: [
+    { drug: "Etomidate", pka: 4.2, kind: "base" },
+    { drug: "Midazolam", pka: 6.5, kind: "base", note: "Ring opens below about pH 4 (water-soluble), closes at body pH" },
+    { drug: "Ketamine", pka: 7.5, kind: "base" },
+    { drug: "Thiopental", pka: 7.6, kind: "acid" },
+    { drug: "Methohexital", pka: 7.9, kind: "acid" },
+    { drug: "Propofol", pka: 11, kind: "acid" },
+  ]},
+  { group: "Other drugs", rows: [
+    { drug: "Aspirin", pka: 3.5, kind: "acid" },
+    { drug: "Paracetamol", pka: 9.5, kind: "acid" },
+    { drug: "Atropine", pka: 9.8, kind: "base" },
+    { drug: "Neostigmine, glycopyrronium, rocuronium, atracurium", pka: null, kind: "quaternary", note: "Permanently charged — no pKa applies; poor membrane and blood–brain barrier crossing" },
+  ]},
 ];
 
-/** pKa of common drugs and what it means for ionisation at pH 7.4. */
+function unionised(r: PkaRow): string {
+  if (r.pka === null) return "~0% (always ionised)";
+  const f = r.kind === "base" ? 1 / (1 + 10 ** (r.pka - 7.4)) : 1 / (1 + 10 ** (7.4 - r.pka));
+  const pct = f * 100;
+  return pct > 99 ? ">99%" : pct < 1 ? "<1%" : `${Math.round(pct)}%`;
+}
+
+/** pKa of anaesthetic drugs and what it means for ionisation at pH 7.4. */
 export function DrugPkaTeaching() {
   return (
     <div className={wrap}>
       <SourceQuote topicId={ACID} label="Decloux 2021 Local Anaesthetics" />
+      <SourceQuote topicId={ACID} label="Egan 2019 Opioids" />
       <H>Working out the unionised fraction</H>
-      <p>For a weak base, the fraction unionised = 1 ÷ (1 + 10^(pKa − pH)). For a weak acid, it is 1 ÷ (1 + 10^(pH − pKa)). The further pH lies on the "wrong" side of pKa, the more drug is trapped in the charged, water-soluble form that cannot cross lipid membranes.</p>
+      <p>For a weak base, the fraction unionised = 1 ÷ (1 + 10^(pKa − pH)). For a weak acid, it is 1 ÷ (1 + 10^(pH − pKa)). The further pH lies on the "wrong" side of pKa, the more drug is held in the charged, water-soluble form that crosses lipid membranes poorly.</p>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="text-left text-foreground">
-              <th className="py-1 pr-3">Drug</th><th className="py-1 pr-3">Approx. pKa</th><th className="py-1">At pH 7.4 (calculated)</th>
+              <th className="py-1 pr-3">Drug</th><th className="py-1 pr-3">Approx. pKa</th><th className="py-1 pr-3">Acid / base</th><th className="py-1 pr-3">Unionised at pH 7.4 (calculated)</th><th className="py-1">Note</th>
             </tr>
           </thead>
-          <tbody>
-            {pkaRows.map(([d, p, f]) => (
-              <tr key={d} className="border-t border-border">
-                <td className="py-1 pr-3 text-foreground">{d}</td><td className="py-1 pr-3">{p}</td><td className="py-1">{f}</td>
-              </tr>
-            ))}
-          </tbody>
+          {pkaGroups.map(({ group, rows }) => (
+            <tbody key={group}>
+              <tr className="border-t border-border"><th colSpan={5} className="py-2 text-left text-foreground">{group}</th></tr>
+              {rows.map((r) => (
+                <tr key={r.drug} className="border-t border-border">
+                  <td className="py-1 pr-3 text-foreground">{r.drug}</td>
+                  <td className="py-1 pr-3">{r.pka === null ? "—" : r.pka.toFixed(1)}</td>
+                  <td className="py-1 pr-3">{r.kind === "quaternary" ? "Quaternary amine" : r.kind === "base" ? "Weak base" : "Weak acid"}</td>
+                  <td className="py-1 pr-3">{unionised(r)}</td>
+                  <td className="py-1">{r.note ?? ""}</td>
+                </tr>
+              ))}
+            </tbody>
+          ))}
         </table>
       </div>
-      <p className="text-xs">pKa values are commonly taught textbook figures (published values vary slightly by method and temperature) and are not quoted from the source above. The percentages are arithmetic from the equations, not measured values.</p>
-      <p><Reasoning />the quoted sentence explains the local anaesthetic pattern: lidocaine (lower pKa) has more unionised drug at pH 7.4 than bupivacaine, so it reaches the nerve faster. In inflamed, acidic tissue the gap between pH and pKa widens, more drug is ionised, and the block is slower and weaker. Ion trapping works the same way across the placenta: an acidotic fetus traps more of a basic drug such as lidocaine.</p>
+      <p className="text-xs">pKa values are commonly taught textbook figures; published values vary by up to about 0.3 depending on method and temperature, so small differences between tables are expected. They are not quoted from the sources above. The percentages are calculated from the equations, ignore protein binding, and are not measured values. This table covers the drugs most often examined, not every drug used in anaesthesia.</p>
+      <p><Reasoning />the local anaesthetic quotation explains why lidocaine (pKa 7.9) starts working faster than bupivacaine (8.1): more of it is unionised at pH 7.4. Chloroprocaine is the classic exception — its high pKa is outweighed by the large dose given. The opioid quotation explains alfentanil and remifentanil: their low pKa leaves most drug unionised, so they reach peak effect quickly. In inflamed, acidic tissue more local anaesthetic is ionised and the block is weaker. Ion trapping works the same way across the placenta: an acidotic fetus traps more of a basic drug such as lidocaine.</p>
+      <Check q="Why does alfentanil reach peak effect faster than fentanyl, even though fentanyl is more fat-soluble?" a="Alfentanil's pKa (6.5) is below body pH, so about 89% is unionised at pH 7.4, compared with about 9% for fentanyl (pKa 8.4). More unionised, unbound drug is available to cross into the brain straight away." />
       <Check q="Using the formula, why does adding bicarbonate to lidocaine speed onset?" a="Raising pH towards the pKa shrinks (pKa − pH), so 10^(pKa − pH) falls and the unionised fraction rises — more drug can cross the nerve membrane." />
     </div>
   );
