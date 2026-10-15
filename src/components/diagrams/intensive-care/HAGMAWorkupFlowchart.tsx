@@ -67,8 +67,8 @@ const NODES: Node[] = [
     detail: "Osm gap = measured − (2×Na⁺ + urea + glucose). Raised → toxic alcohols (methanol, ethylene glycol), propylene glycol (lorazepam/diazepam infusions), mannitol, severe ketoacidosis, or pseudohyponatraemia. A normal gap at any stage cannot exclude toxic exposure; late presentation may have little remaining parent alcohol." },
 
   { id: "tox-alc", kind: "redflag", x: 520, y: 460, w: 220, h: 60,
-    label: "Suspect toxic alcohol — fomepizole",
-    detail: "Urgent NPIS/TOXBASE advice; sample for direct levels without delaying indicated ADH blockade. Dialysis depends on toxin, antidote, acid–base status and organ injury. Use the current EXTRIP criteria shown below, not a universal 50 mg/dL trigger." },
+    label: "Suspected methanol / EG — urgent NPIS",
+    detail: "Seek urgent NPIS/TOXBASE advice for suspected methanol or ethylene glycol; sample for direct levels without delaying indicated ADH blockade. A gap alone neither diagnoses nor excludes exposure. Isopropanol is different and is not a routine indication for fomepizole. Dialysis depends on toxin, antidote, acid–base status and organ injury; use toxin-specific EXTRIP criteria, not a universal 50 mg/dL trigger." },
 
   { id: "uraemic", kind: "decision", x: 280, y: 560, w: 200, h: 60,
     label: "Uraemia / AKI stage 3?",

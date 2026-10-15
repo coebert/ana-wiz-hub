@@ -216,9 +216,9 @@ Gap = measured − calculated`}
         <details className="mt-3 text-xs">
           <summary className="cursor-pointer text-foreground font-medium">Worked example — suspected methanol</summary>
           <div className="mt-2 p-3 rounded border border-border bg-secondary/30 text-muted-foreground space-y-1">
-            <p>A 42-year-old presents 4 h after ingesting an unknown alcohol. Na⁺ 140, urea 5, glucose 5, ethanol 0; measured osmolality 332; AG 14.</p>
+            <p>Fictional teaching example: a 42-year-old presents 4 h after ingesting an unknown alcohol. Na⁺ 140, urea 5, glucose 5, ethanol 0; measured osmolality 332; AG 14.</p>
             <p>Calculated = 2(140) + 5 + 5 = 290. Gap = 332 − 290 = <strong>42 mOsm/kg</strong>.</p>
-            <p>AG only marginally raised, osmolar gap markedly raised → <strong>early toxic alcohol ingestion</strong>, parent still unmetabolised. Send methanol/ethylene glycol levels, obtain urgent NPIS advice and initiate indicated ADH blockade without waiting for levels. Dialysis criteria differ by toxin, antidote, acid–base findings and organ injury; a universal 50 mg/dL cut-off is not appropriate.</p>
+            <p>A markedly raised osmolar gap with an AG of 14 is <strong>compatible with, but does not prove, early methanol or ethylene glycol poisoning</strong>. Other osmoles can produce this pattern, and timing cannot be inferred from the gaps alone. Send direct toxin levels and obtain urgent NPIS/TOXBASE advice; do not delay indicated antidote treatment while awaiting results. Isopropanol is different and is not a routine indication for ADH blockade. Dialysis criteria differ by toxin, antidote, acid–base findings and organ injury; a universal 50 mg/dL cut-off is not appropriate.</p>
           </div>
         </details>
       </div>
