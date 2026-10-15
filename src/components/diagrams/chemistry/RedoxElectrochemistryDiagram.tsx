@@ -117,7 +117,7 @@ export const RedoxElectrochemistryDiagram = () => {
                 <circle key={i} cx={40 + osc * 15 + i * 3} cy={70 + i * 10} r={3} fill="hsl(0 70% 55%)" opacity="0.6" />
               ))}
               
-              <text x={105} y={145} textAnchor="middle" fontSize="7" className="fill-muted-foreground">O₂ + 4e⁻ + 2H₂O → 4OH⁻</text>
+              <text x={105} y={145} textAnchor="middle" fontSize="7" className="fill-muted-foreground">O₂ + 4e⁻ + 2H₂O → 4OH⁻ (same cathode reaction as fuel cell)</text>
               <text x={105} y={155} textAnchor="middle" fontSize="7" className="fill-muted-foreground">Current ∝ PO₂ (amperometric)</text>
   
               {/* Severinghaus electrode (PCO2) */}
@@ -143,7 +143,7 @@ export const RedoxElectrochemistryDiagram = () => {
                   { name: "pH (Sanz) electrode", type: "Potentiometric", principle: "H⁺-sensitive glass membrane generates voltage proportional to [H⁺]" },
                   { name: "Clark (PO₂) electrode", type: "Amperometric", principle: "O₂ reduced at Pt cathode → current proportional to PO₂. -0.6V applied." },
                   { name: "Severinghaus (PCO₂)", type: "Modified pH", principle: "CO₂ crosses Teflon membrane, dissolves in NaHCO₃, changes pH" },
-                  { name: "Galvanic fuel cell", type: "Amperometric", principle: "O₂ analysers. Lead anode + gold cathode in KOH. Self-generating — no external voltage." },
+                  { name: "Galvanic fuel cell", type: "Amperometric", principle: "O₂ analysers. Lead anode + gold cathode in KOH. Self-generating — no external voltage. Lead anode is consumed, so the cell lasts about 1–2 years." },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-2">
                     <span className="font-medium text-foreground min-w-[130px]">{item.name}</span>
@@ -189,10 +189,10 @@ export const RedoxElectrochemistryDiagram = () => {
   
               {/* Defence mechanisms */}
               <text x={200} y={105} textAnchor="middle" fontSize="9" className="fill-foreground font-semibold">Antioxidant Defences</text>
-              <text x={80} y={125} textAnchor="middle" fontSize="8" className="fill-muted-foreground">SOD</text>
-              <text x={160} y={125} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Catalase</text>
-              <text x={240} y={125} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Glutathione</text>
-              <text x={330} y={125} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Vit C, E</text>
+              <text x={160} y={125} textAnchor="middle" fontSize="8" className="fill-muted-foreground">SOD: O₂•⁻ → H₂O₂</text>
+              <text x={240} y={125} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Catalase, glutathione peroxidase:</text>
+              <text x={240} y={136} textAnchor="middle" fontSize="8" className="fill-muted-foreground">H₂O₂ → H₂O (before Fenton)</text>
+              <text x={330} y={125} textAnchor="middle" fontSize="8" className="fill-muted-foreground">Vit C, E: scavenge radicals</text>
             </svg>
   
             <div className="bg-card rounded-xl border border-border p-4">

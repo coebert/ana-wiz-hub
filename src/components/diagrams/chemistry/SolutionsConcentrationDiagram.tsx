@@ -99,7 +99,7 @@ export const SolutionsConcentrationDiagram = () => {
           </div>
 
           <div className="bg-card rounded-xl border border-border p-4">
-            <h4 className="text-xs font-semibold text-foreground mb-2">Normal Plasma Osmolality: 280–295 mOsm/kg</h4>
+            <h4 className="text-xs font-semibold text-foreground mb-2">Normal Plasma Osmolality: 275–295 mOsm/kg</h4>
             <p className="text-xs text-muted-foreground mb-2">Calculated osmolality = 2[Na⁺] + [urea] + [glucose] (all in mmol/L)</p>
             <p className="text-xs text-muted-foreground">
               <strong>Osmol gap</strong> = measured − calculated osmolality. Normal &lt;10 mOsm/kg.
@@ -143,7 +143,7 @@ export const SolutionsConcentrationDiagram = () => {
                 {[
                   { fluid: "0.9% NaCl", osm: "308", ton: "Isotonic" },
                   { fluid: "5% Dextrose", osm: "278", ton: "Hypotonic (in vivo)" },
-                  { fluid: "Hartmann's", osm: "278", ton: "Isotonic" },
+                  { fluid: "Hartmann's (Na 131, K 5, Ca 2, Cl 111, lactate 29)", osm: "278", ton: "Isotonic" },
                   { fluid: "3% NaCl", osm: "1026", ton: "Hypertonic" },
                   { fluid: "20% Mannitol", osm: "1098", ton: "Hypertonic" },
                   { fluid: "Gelofusine", osm: "274", ton: "Isotonic" },
