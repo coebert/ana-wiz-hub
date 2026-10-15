@@ -109,7 +109,7 @@ export function DrugPkaTeaching() {
               {rows.map((r) => (
                 <tr key={r.drug} className="border-t border-border">
                   <td className="py-1 pr-3 text-foreground">{r.drug}</td>
-                  <td className="py-1 pr-3">{r.pka ?? "—"}</td>
+                  <td className="py-1 pr-3">{r.pka === null ? "—" : r.pka.toFixed(1)}</td>
                   <td className="py-1 pr-3">{r.kind === "quaternary" ? "Quaternary amine" : r.kind === "base" ? "Weak base" : "Weak acid"}</td>
                   <td className="py-1 pr-3">{unionised(r)}</td>
                   <td className="py-1">{r.note ?? ""}</td>
