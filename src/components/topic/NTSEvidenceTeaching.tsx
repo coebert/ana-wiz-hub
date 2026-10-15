@@ -66,7 +66,7 @@ export function DebriefingTeaching() {
     <h3 className="text-lg font-semibold text-foreground">Worked application</h3>
     <p><strong className="text-foreground">Fictional teaching example:</strong> after an emergency airway event, the team identifies that a request for additional help was made but nobody was named to make the call. The useful output is not “the nurse failed”: it is an agreed named caller, check-back of the request, confirmation that help is on the way, and an owner to rehearse that process at the next simulation. A staff member who is distressed is offered individual support without being made to disclose feelings in the group. This is educational reasoning, not a patient record or an outcome prediction.</p>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: should everyone describe their worst feelings to prevent PTSD?</summary><p className="mt-2">No. NICE advises against psychologically-focused debriefing for PTSD prevention or treatment. Keep the operational review focused on facts, team performance and agreed improvements; offer support separately without compelling emotional disclosure. A short debrief does not replace incident reporting or specialist assessment.</p></details>
-    <LessonSources topicId="non-technical-skills" labels={["AHRQ Debrief", "NICE NG116 Debriefing"]} />
+    <LessonSources topicId="non-technical-skills" labels={["AHRQ Debrief", "NICE NG116 Debriefing", "PSIRF 2022", "Marx 2001"]} />
   </div>;
 }
 
