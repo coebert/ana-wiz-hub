@@ -212,9 +212,9 @@ ${routeIndex}`;
         if (existing) {
           const { error: updateErr } = await adminClient
             .from("ask_qa_library")
+            // Keep the first stored answer; callers only bump the count so
+            // no user can overwrite the shared answer everyone sees.
             .update({
-              answer,
-              question: userQuestion,
               ask_count: (existing.ask_count ?? 0) + 1,
             })
             .eq("id", existing.id);
