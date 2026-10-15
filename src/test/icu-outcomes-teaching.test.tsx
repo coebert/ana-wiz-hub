@@ -24,7 +24,7 @@ describe("ICU outcomes evidence", () => {
   it("does not calculate ward mortality by subtracting audit percentages", () => {
     render(<MemoryRouter><lessons.OutcomesIcnarcTeaching /></MemoryRouter>);
     expect(screen.queryByText(/about 3.5% of admissions died on the ward/)).not.toBeInTheDocument();
-    expect(screen.getByText(/denominator/i)).toBeInTheDocument();
+    expect(screen.getByText("Denominator caution:")).toBeInTheDocument();
   });
 
   it("keeps new source excerpts short and uniquely labelled", () => {
