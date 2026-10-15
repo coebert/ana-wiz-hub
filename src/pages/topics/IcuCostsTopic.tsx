@@ -4,6 +4,7 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { Exam } from "@/data/curriculum";
 import { CostAverageTeaching, CostOrgansTeaching, CostUnitTypeTeaching, CostInternationalTeaching } from "@/components/topic/IcuCostLosTeaching";
+import { IcuCostCalculator } from "@/components/topic/IcuCostCalculator";
 
 const exams = [Exam.FINAL, Exam.FFICM, Exam.EDIC];
 const quiz = [
@@ -32,6 +33,7 @@ export default function IcuCostsTopic() {
       <ExamSection id="cost-organs" exams={exams}><CollapsibleSubsection title="2. Cost by number of organs supported"><CostOrgansTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="cost-unit-type" exams={exams}><CollapsibleSubsection title="3. Cost by type of unit"><CostUnitTypeTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="cost-international" exams={exams}><CollapsibleSubsection title="4. US comparison and costs after discharge"><CostInternationalTeaching /></CollapsibleSubsection></ExamSection>
+      <ExamSection id="cost-calculator" exams={exams}><CollapsibleSubsection title="5. ICU cost calculator" defaultOpen><IcuCostCalculator /></CollapsibleSubsection></ExamSection>
     </div>}
   />;
 }
