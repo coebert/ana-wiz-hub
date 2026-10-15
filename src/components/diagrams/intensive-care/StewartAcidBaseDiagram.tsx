@@ -26,7 +26,7 @@ const StewartAcidBaseDiagram = () => {
         <p className="text-sm font-medium text-primary mt-2 min-h-10" aria-live="polite">{values[key] < 0 ? variables[key].low : values[key] > 0 ? variables[key].high : "No change in this variable"}</p>
       </div>)}
       <p className="text-sm text-muted-foreground min-h-16">{variables[selected].explanation}</p>
-      <Button variant="outline" size="sm" onClick={() => setValues({ sid: 0, atot: 0, pco2: 0 })}><RotateCcw className="h-4 w-4 mr-2" />Reset variables</Button>
+      <Button variant="outline" size="sm" onClick={() => setValues({ sid: 0, atot: 0, pco2: 0 })}><RotateCcw aria-hidden="true" focusable={false} className="h-4 w-4 mr-2" />Reset variables</Button>
     </div>
   </DiagramFigure>;
 };

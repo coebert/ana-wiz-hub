@@ -27,7 +27,7 @@ export default function PEEPTimingDiagram() {
       </svg>
       <p role="status" className="font-mono text-sm text-foreground">{timing ? `Expiratory time ${timing.expiration.toFixed(2)} s · I:E 1:${timing.expiratoryRatio.toFixed(2)}` : "No expiratory time remains: inspiratory time must be shorter than the breath cycle."}</p>
       <p className="text-sm text-muted-foreground">In severe airflow obstruction, more time for expiration can reduce air trapping, but waveform inspection and patient assessment are still essential. Longer time alone cannot establish that all lung regions have emptied.<InlineRef topicId="peep-management" refLabel="Stather 2005 expiration" /></p>
-      <Button variant="outline" size="sm" onClick={() => { setRate(12); setTi(1); }}><RotateCcw />Reset timing</Button>
+      <Button variant="outline" size="sm" onClick={() => { setRate(12); setTi(1); }}><RotateCcw aria-hidden="true" focusable={false} />Reset timing</Button>
     </div>
   </DiagramFigure>;
 }
