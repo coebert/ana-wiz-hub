@@ -189,6 +189,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "Temperature sensor/site error sources expanded.",
   },
+  "haemorrhagic-shock": {
+    status: "expanded",
+    note: "Three source-led lessons linked with Trauma: shock recognition (ATLS limits, shock index, lactate, lethal triad), blood pressure monitoring (Meidert cuff vs arterial, Rossaint/NG39 targets), transfusion (PROPPR, PAMPer, RePHILL, CRASH-2 timing, calcium, ITACTIC). Verbatim excerpts; learning checks and quiz. Source-checked, not consultant-reviewed.",
+  },
   "fluid-balance": {
     status: "expanded",
     note: "Four source-led lessons linked from Acid-Base Disorders: tonicity basics, isotonic resuscitation, hypotonic maintenance and hospital-acquired hyponatraemia, hypertonic saline. Verbatim NICE CG174/NG29, European hyponatraemia guideline, SALSA, SMART and PLUS excerpts; learning checks and quiz. Source-checked, not consultant-reviewed.",
