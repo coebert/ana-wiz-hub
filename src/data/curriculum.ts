@@ -69,6 +69,9 @@ export const physicsTopics: Topic[] = [
 export const physiologyTopics: Topic[] = [
   // Overview
   { id: "physiology-overview", title: "Physiology Overview: Homeostasis, Feedback & Organ Systems", description: "Homeostasis and set points, negative and positive feedback loops, and how the organ systems divide the work, with links to every physiology topic", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "renal-system-overview", title: "Renal System Overview: Filtration, Concentration & Hormonal Control", description: "GFR and net filtration pressure, the countercurrent multiplier, renin–angiotensin–aldosterone and ADH", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "cardiovascular-system-overview", title: "Cardiovascular System Overview: Cardiac Output & Blood Pressure", description: "Cardiac output, Frank–Starling, preload and afterload, MAP and baroreceptors", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "respiratory-system-overview", title: "Respiratory System Overview: Ventilation, Gas Exchange & Transport", description: "Pressure gradients and Boyle's law, Dalton and Henry, Bohr and Haldane effects, CO₂ transport", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
   // Cardiovascular
   { id: "cardiac-cycle", title: "The Cardiac Cycle", description: "Pressure-volume loops, Wiggers diagram, cardiac output", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "cardiac-electrophysiology", title: "Cardiac Electrophysiology", description: "Cardiac action potentials, ion channels, pacemaker cells, conduction system, anti-arrhythmic mechanisms", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },

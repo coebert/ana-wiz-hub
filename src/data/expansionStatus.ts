@@ -242,6 +242,18 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from Sepsis: Sepsis-3 shock criteria, SSC 2021 MAP/noradrenaline/vasopressin/steroid recommendations, 65 trial and ADRENAL. Learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "renal-system-overview": {
+    status: "expanded",
+    note: "New page under Physiology: three lessons (GFR and net filtration pressure, the countercurrent multiplier, renin–angiotensin–aldosterone and ADH) quoting OpenStax Anatomy and Physiology 2e (CC BY) word for word, with learning checks and a five-question quiz. Source-checked, not consultant-reviewed.",
+  },
+  "cardiovascular-system-overview": {
+    status: "expanded",
+    note: "New page under Physiology: three lessons (Cardiac output, Frank–Starling, preload and afterload, MAP and baroreceptors) quoting OpenStax Anatomy and Physiology 2e (CC BY) word for word, with learning checks and a five-question quiz. Source-checked, not consultant-reviewed.",
+  },
+  "respiratory-system-overview": {
+    status: "expanded",
+    note: "New page under Physiology: three lessons (Pressure gradients and Boyle's law, Dalton and Henry, Bohr and Haldane effects, CO₂ transport) quoting OpenStax Anatomy and Physiology 2e (CC BY) word for word, with learning checks and a five-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "physiology-overview": {
     status: "expanded",
     note: "New page under Physiology: three lessons (homeostasis and set points, negative and positive feedback loops, organ systems working together) quoting OpenStax Anatomy and Physiology 2e (CC BY) word for word, with links to every physiology topic. Learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
