@@ -170,25 +170,41 @@ export function OutcomesCostTeaching() {
     <H>Adult-only NHS costs by organs supported</H>
     <Q label="NCC 2019/20 schedule" />
     <Q label="NCC 2019/20 general ICU by organs" />
+    <Q label="NCC 2021/22 adult CC by organs" />
     <p><Reasoning />For an adult-only comparison, NHS England's National Schedule of NHS Costs lists adult critical care separately, as cost per bed day by the number of organ systems supported (HRGs XC01Z–XC07Z). Combining every adult unit type in the 2019/20 schedule, weighted by bed days (our arithmetic, rounded to the nearest pound):</p>
     <div className="overflow-x-auto"><table className="w-full text-sm border border-border">
-      <thead className="bg-muted/50"><tr><th className="p-2 text-left">Organs supported that day</th><th className="p-2 text-left">Adult bed days (2019/20)</th><th className="p-2 text-left">Average cost per bed day</th></tr></thead>
+      <thead className="bg-muted/50"><tr><th className="p-2 text-left">Organs supported that day</th><th className="p-2 text-left">Adult bed days (2019/20)</th><th className="p-2 text-left">Average cost per bed day (2019/20)</th><th className="p-2 text-left">Average cost per bed day (2021/22)</th></tr></thead>
       <tbody>
-        <tr className="border-t border-border"><td className="p-2">0</td><td className="p-2">35,030</td><td className="p-2">£1,087</td></tr>
-        <tr className="border-t border-border"><td className="p-2">1</td><td className="p-2">516,316</td><td className="p-2">£1,240</td></tr>
-        <tr className="border-t border-border"><td className="p-2">2</td><td className="p-2">333,957</td><td className="p-2">£1,704</td></tr>
-        <tr className="border-t border-border"><td className="p-2">3</td><td className="p-2">270,880</td><td className="p-2">£1,947</td></tr>
-        <tr className="border-t border-border"><td className="p-2">4</td><td className="p-2">123,347</td><td className="p-2">£2,160</td></tr>
-        <tr className="border-t border-border"><td className="p-2">5</td><td className="p-2">37,279</td><td className="p-2">£2,275</td></tr>
-        <tr className="border-t border-border"><td className="p-2">6 or more</td><td className="p-2">9,785</td><td className="p-2">£2,330</td></tr>
-        <tr className="border-t border-border font-medium"><td className="p-2">All adult critical care</td><td className="p-2">1,326,594</td><td className="p-2">£1,620</td></tr>
+        <tr className="border-t border-border"><td className="p-2">0</td><td className="p-2">35,030</td><td className="p-2">£1,087</td><td className="p-2">£1,640</td></tr>
+        <tr className="border-t border-border"><td className="p-2">1</td><td className="p-2">516,316</td><td className="p-2">£1,240</td><td className="p-2">£1,587</td></tr>
+        <tr className="border-t border-border"><td className="p-2">2</td><td className="p-2">333,957</td><td className="p-2">£1,704</td><td className="p-2">£2,278</td></tr>
+        <tr className="border-t border-border"><td className="p-2">3</td><td className="p-2">270,880</td><td className="p-2">£1,947</td><td className="p-2">£2,587</td></tr>
+        <tr className="border-t border-border"><td className="p-2">4</td><td className="p-2">123,347</td><td className="p-2">£2,160</td><td className="p-2">£2,861</td></tr>
+        <tr className="border-t border-border"><td className="p-2">5</td><td className="p-2">37,279</td><td className="p-2">£2,275</td><td className="p-2">£2,892</td></tr>
+        <tr className="border-t border-border"><td className="p-2">6 or more</td><td className="p-2">9,785</td><td className="p-2">£2,330</td><td className="p-2">£2,985</td></tr>
+        <tr className="border-t border-border font-medium"><td className="p-2">All adult critical care</td><td className="p-2">1,326,594</td><td className="p-2">£1,620</td><td className="p-2">£2,144</td></tr>
       </tbody></table></div>
     <p><Reasoning />The adult-only average of £1,620 per bed day (2019/20, the last full pre-COVID year) is the closer match to Dasta's adult population than the £1,881 all-ages figure, but the decades and costing methods still differ, so no exchange-rate conversion is valid. A day with six or more organs supported cost about twice a one-organ day. These are trust-reported costs, not the prices commissioners pay, and they vary between trusts. Costs by unit type and a worked example are on <L to="/intensive-care/icu-costs">ICU Costs</L> (teaching summary).</p>
+    <p><Reasoning />The 2021/22 column fills the gap after the COVID-affected 2020/21 year: it is the latest adult-only schedule we could download and check (later years are dashboard-only). Its national averages come from the Total HRGs worksheet, which already combines every adult unit type; the all-adult £2,144 is our bed-day-weighted arithmetic. Costs rose about a third from 2019/20, and in 2021/22 a day with no organs supported (£1,640) cost slightly more than a one-organ day (£1,587) — that is how the figures were published, probably reflecting few, unusual zero-organ days, so do not read it as a clinical effect. Bed-day columns differ slightly between years. These are cash figures, not inflation-adjusted (teaching summary).</p>
+    <H>Cost per condition</H>
+    <Q label="Marti 2016 ARDS costs" />
+    <Q label="INHALE 2020 HAP/VAP costs" />
+    <Q label="Edbrooke 1999 sepsis costs" />
+    <div className="overflow-x-auto"><table className="w-full text-sm border border-border">
+      <thead className="bg-muted/50"><tr><th className="p-2 text-left">Condition (UK study)</th><th className="p-2 text-left">Patients</th><th className="p-2 text-left">Reported cost</th><th className="p-2 text-left">Main caveat</th></tr></thead>
+      <tbody>
+        <tr className="border-t border-border"><td className="p-2">Ventilated ARDS (OSCAR trial, Marti 2016)</td><td className="p-2">795</td><td className="p-2">Mean initial ICU stay £26,857; £1,738 per ICU day</td><td className="p-2">Trial population; price year of the trial era</td></tr>
+        <tr className="border-t border-border"><td className="p-2">Hospital- or ventilator-acquired pneumonia (INHALE, 2020)</td><td className="p-2">143, four ICUs</td><td className="p-2">Mean stay 22 days; mean cost £43,100</td><td className="p-2">Conference abstract; heavily skewed; HAP/VAP acquired in hospital</td></tr>
+        <tr className="border-t border-border"><td className="p-2">Sepsis in one UK general ICU (Edbrooke 1999)</td><td className="p-2">36 septic vs 177 non-septic</td><td className="p-2">Median total $3,802–$17,963 by day sepsis began vs $1,667 without sepsis</td><td className="p-2">Single unit, 1990s, reported in US dollars, ICU patient-related costs only</td></tr>
+      </tbody></table></div>
+    <p><Reasoning />NHS England does not openly publish critical care cost by diagnosis — its schedule costs bed days by organs supported, so the cost of a condition depends mainly on how many days and how many organs it needs. The studies above are the condition-specific UK figures we could verify. They use different years, costing methods and cost scopes (ICU stay, hospital stay or patient-related ICU costs only), so they show relative scale, not a league table. Sepsis acquired later in the stay cost more mainly because those patients stayed longer. We found no verifiable current UK per-admission costs for pneumonia acquired in the community, trauma or cardiac surgery, so those are omitted (teaching summary).</p>
     <H>Costs continue after discharge</H>
     <Q label="Lone 2016 hospital costs" />
     <p><Reasoning />In Scottish linked data, hospital survivors of ICU used more hospital care over five years than matched hospital controls, even after adjustment. The economic burden of critical illness therefore extends well beyond the index admission, which supports rehabilitation and follow-up planning (see <L to="/intensive-care/icu-discharge-planning">ICU Discharge Planning</L>). The costs are reported in US dollars by the authors and describe a 2005 cohort; they measure hospital resource use only, not social care, lost earnings or carer time, which the work and caregiver evidence on this page shows are also substantial (teaching summary).</p>
     <Check question="On which ICU day were costs highest in Dasta 2005, and when did they stabilise?">Day 1 (US$10,794 ventilated; $6,667 not ventilated); costs fell on day 2 and became stable after day 3.</Check>
     <Check question="What was the average NHS cost of a critical care bed day in 2020/21, and what does it include?">£1,881 per day, averaged across adults, children and neonates (standard ward bed £345 excluding treatment). The adult-only average in the 2019/20 National Schedule was £1,620 per bed day.</Check>
+    <Check question="What did the OSCAR economic analysis report for the initial ICU stay of ventilated ARDS patients?">A mean of £26,857 per initial ICU stay, at £1,738 per ICU day (Marti 2016, 795 UK patients).</Check>
+    <Check question="Why can NHS figures not directly give ICU cost per condition?">The National Schedule costs adult critical care per bed day by number of organs supported, not by diagnosis; condition costs come from individual studies with different years and methods.</Check>
     <Check question="In the 2019/20 National Schedule, how did adult cost per bed day change with organs supported?">It rose from about £1,240 (1 organ) to £2,330 (6 or more organs) — roughly double; the adult-only average across all support levels was £1,620.</Check>
     <Check question="Lone 2016: how did 5-year hospital costs of ICU survivors compare with hospital controls?">51% higher mean 5-year hospital costs ($25,608 vs $16,913 per patient), persisting after confounder adjustment.</Check>
   </div>;
