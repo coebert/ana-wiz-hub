@@ -191,6 +191,7 @@ export const intensiveCareTopics: Topic[] = [
   { id: "neuroprognostication", title: "Neuroprognostication after Cardiac Arrest", description: "ERC/ESICM 2021 multimodal algorithm — timing, clinical signs, EEG, SSEP (N20), NSE thresholds, neuroimaging, confounders and WLST decisions", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
   { id: "ecmo", title: "Extracorporeal Membrane Oxygenation (ECMO)", description: "VV vs VA configurations, circuit physics, ELSO/EOLIA/CESAR criteria, ECPR (ARREST, Prague-OHCA, INCEPTION), Harlequin syndrome, LV distension, weaning trials", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
   // Sepsis & Infection
+  { id: "septic-shock", title: "Septic Shock: Vasopressors, MAP & Steroids", description: "Sepsis-3 shock criteria, lactate and capillary refill, MAP 65, noradrenaline and vasopressin, the 65 trial, corticosteroids and ADRENAL", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   { id: "sepsis", title: "Sepsis & Septic Shock", description: "Surviving Sepsis guidelines, early recognition, bundles, vasopressors", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   { id: "infectious-disease-icu", title: "Infectious Disease in ICU", description: "Organisms causing critical illness, pneumonia, urosepsis, CNS infections, necrotising fasciitis, fungal infections", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   { id: "antimicrobials-icu", title: "Antimicrobials in ICU", description: "Empiric therapy, antimicrobial resistance, stewardship, PK/PD dosing", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
@@ -260,6 +261,7 @@ export const perioperativeTopics: Topic[] = [
 
 export const chemistryTopics: Topic[] = [
   { id: "atomic-structure-bonding", title: "Atomic Structure & Chemical Bonding", description: "Electron configuration, ionic/covalent/metallic bonds, intermolecular forces, electronegativity", section: "chemistry", examTags: ["primary"], available: true },
+  { id: "temperature-ph", title: "Temperature & pH", description: "Kw and neutral pH, cooling a blood sample, temperature correction, alpha-stat versus pH-stat", section: "chemistry", examTags: ["primary", "final", "fficm"], available: true },
   { id: "acids-bases-buffers", title: "Acids, Bases & Buffer Systems", description: "pH, pKa, Henderson-Hasselbalch equation, physiological buffers, strong vs weak acids", section: "chemistry", examTags: ["primary", "final", "fficm"], available: true },
   { id: "organic-chemistry", title: "Organic Chemistry for Anaesthetists", description: "Functional groups, isomerism, chirality, and their relevance to drug structure and action", section: "chemistry", examTags: ["primary"], available: true },
   { id: "solutions-concentration", title: "Solutions & Concentration", description: "Molarity, molality, osmolality, osmolarity, tonicity, colligative properties", section: "chemistry", examTags: ["primary", "final"], available: true },
