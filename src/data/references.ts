@@ -66,6 +66,9 @@ const criticalCareOverviewReferences: Reference[] = [
     { label: "Lautrette 2007 family", citation: "Lautrette A, Darmon M, Megarbane B, et al. A communication strategy and brochure for relatives of patients dying in the ICU. N Engl J Med. 2007;356(5):469-478.", url: "https://doi.org/10.1056/NEJMoa063446", excerpt: "On day 90, the 56 participants in the intervention group who responded to the telephone interview had a significantly lower median IES score than the 52 participants in the control group (27 vs. 39, P=0.02) and a lower prevalence of PTSD-related symptoms (45% vs. 69%, P=0.01)." },
 ];
 
+// Reuses the verified Critical Care Overview records so quotations cannot drift.
+const icuInpatientJourneyReferences: Reference[] = [...criticalCareOverviewReferences];
+
 const haemorrhagicShockReferences: Reference[] = [
     { label: "NG39 restrictive", citation: "National Institute for Health and Care Excellence. Major trauma: assessment and initial management (NG39). 2016.", url: "https://www.nice.org.uk/guidance/ng39/chapter/Recommendations", excerpt: "For patients with active bleeding use a restrictive approach to volume resuscitation until definitive early control of bleeding has been achieved." },
     { label: "NG39 TBI and shock", citation: "National Institute for Health and Care Excellence. Major trauma: assessment and initial management (NG39). 2016.", url: "https://www.nice.org.uk/guidance/ng39/chapter/Recommendations", excerpt: "if haemorrhagic shock is the dominant condition, continue restrictive volume resuscitation or if traumatic brain injury is the dominant condition, use a less restrictive volume resuscitation approach to maintain cerebral perfusion." },
@@ -525,7 +528,7 @@ export const topicReferences: Record<string, Reference[]> = {
   "ventilation-protocols": ventilationProtocolsReferences,
   "haemorrhagic-shock": haemorrhagicShockReferences,
   "critical-care-overview": criticalCareOverviewReferences,
-  "icu-inpatient-journey": criticalCareOverviewReferences,
+  "icu-inpatient-journey": icuInpatientJourneyReferences,
   "acid-base": [
     ...metabolicAlkalosisReferences,
     { label: "Jung 2019 diagnosis", citation: "Jung B, et al. Diagnosis and management of metabolic acidosis: guidelines from a French expert panel. Ann Intensive Care. 2019;9:92.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6695455/", excerpt: "The experts suggest that arterial blood gas measurements be performed in patients with a decreased plasma bicarbonate level so as to eliminate respiratory alkalosis, confirm the diagnosis of metabolic acidosis, and test for mixed acidosis" },
