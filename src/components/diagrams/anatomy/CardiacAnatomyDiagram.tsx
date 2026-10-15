@@ -633,6 +633,18 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
   const septumColor = "#7A3030";
   const fatColor = "#D4A060";
 
+  // The Meshy surface has no registered landmarks or separate internal meshes.
+  // Do not overlay the old schematic's vessels and labels onto unrelated geometry.
+  if (useGltf) {
+    return (
+      <group ref={groupRef} position={[0, -0.1, 0]}>
+        <Suspense fallback={null}>
+          <GltfHeartModel autoRotate={false} opacity={cutaway ? 0.55 : 1} />
+        </Suspense>
+      </group>
+    );
+  }
+
   return (
     <group ref={groupRef} position={[0, -0.1, 0]} rotation={[0, 0, -0.2]}>
       <ClipController active={cutaway} />
@@ -1170,7 +1182,7 @@ const CardiacAnatomyDiagram = () => {
               dissectMode
                 ? `Dissect mode · step ${dissectStep + 1}/${DISSECT_STEPS.length} · ${DISSECT_STEPS[dissectStep].label.replace(/^\d+\.\s*/, "")}`
                 : heartGlbAvailable
-                ? "Realistic GLB heart loaded · drag to rotate · scroll to zoom · tap a chip"
+                ? "Meshy heart · AI-generated surface, not anatomically verified"
                 : "Drag to rotate · scroll to zoom · tap a structure for clinical detail"
             }
             toggles={[
