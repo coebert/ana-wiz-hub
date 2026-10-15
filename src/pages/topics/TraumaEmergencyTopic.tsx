@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { TraumaAtlas } from "@/components/topic/TraumaAtlas";
 import { Helmet } from "react-helmet-async";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
