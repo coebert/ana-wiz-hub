@@ -13,6 +13,7 @@ import { AcidsBasesDiagram } from "@/components/diagrams/chemistry/AcidsBasesDia
 import { InlineRef } from "@/components/references/InlineRef";
 import { acidsBasesQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { DrugPkaTeaching, WaterTemperatureTeaching } from "@/components/topic/ChemistryGapsTeaching";
 
 const objectives = [
   "Define pH, pKa, and apply the Henderson-Hasselbalch equation to drug ionisation",
@@ -188,6 +189,14 @@ const AcidsBasesBuffersTopic = () => {
                 tissue (lower pH → more ionised → less crosses the nerve membrane).
               </p>
             </div>
+            </CollapsibleSubsection>
+
+            <CollapsibleSubsection title="Drug pKa & Ionisation at pH 7.4">
+              <DrugPkaTeaching />
+            </CollapsibleSubsection>
+
+            <CollapsibleSubsection title="Kw, Temperature & Neutral pH">
+              <WaterTemperatureTeaching />
             </CollapsibleSubsection>
 
             <CollapsibleSubsection title="Buffer Capacity and Titration Curves">
