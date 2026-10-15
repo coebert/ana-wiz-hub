@@ -50,7 +50,7 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
   },
   chemistry: {
     status: "pending",
-    note: "Atomic Structure & Bonding audited and expanded; the other four chemistry topics are not yet reviewed. Noted for the redox audit: its 'BJA Educ 2010' electrode citation points to a DOI belonging to a different article.",
+    note: "Atomic Structure & Bonding, Acids, Bases & Buffers, Solutions & Concentration, Organic Chemistry and Oxidation & Reduction source-audited (15 October 2026); invented or mismatched sources replaced. Remaining gaps: uncited paragraphs on the acids and solutions pages, plus Kw/temperature, Donnan effect, osmometry and a drug pKa table not yet covered. Not consultant-certified.",
   },
 };
 
