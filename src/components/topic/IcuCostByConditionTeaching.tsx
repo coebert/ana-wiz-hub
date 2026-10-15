@@ -62,3 +62,36 @@ export function ConditionVentilationTeaching() {
     <Check question="What was the mean initial ICU stay cost in ventilated UK ARDS patients (OSCAR)?">£26,857, at £1,738 per ICU day.</Check>
   </div>;
 }
+
+export function ConditionChildrenTeaching() {
+  return <div className={lessonWrap}>
+    <H>Children's intensive care (PICU) in the NHS</H>
+    <p><Reasoning />Children's critical care is costed separately from adults, using its own HRGs (XB01Z–XB09Z). These group days by the intensity of care, not by the number of organs supported, and not by diagnosis. The rows below are the paediatric intensive care unit (CCU04) figures for 2019/20.</p>
+    <Q label="NCC 2019/20 PICU by care level" />
+    <div className="overflow-x-auto"><table className="w-full text-sm border border-border">
+      <thead className="bg-muted/50"><tr><th className="p-2 text-left">HRG</th><th className="p-2 text-left">Level of care</th><th className="p-2 text-left">Activity</th><th className="p-2 text-left">Average cost</th></tr></thead>
+      <tbody>
+        <R cells={["XB01Z", "Advanced critical care 5", "1,897", "£7,866"]} />
+        <R cells={["XB02Z", "Advanced critical care 4", "1,265", "£4,956"]} />
+        <R cells={["XB03Z", "Advanced critical care 3", "4,288", "£3,306"]} />
+        <R cells={["XB04Z", "Advanced critical care 2", "15,291", "£2,884"]} />
+        <R cells={["XB05Z", "Advanced critical care 1", "32,265", "£2,511"]} />
+        <R cells={["XB06Z", "Intermediate critical care", "34,738", "£1,927"]} />
+        <R cells={["XB07Z", "Basic critical care", "18,954", "£1,658"]} />
+        <R cells={["XB09Z", "Enhanced care", "14,782", "£1,162"]} />
+        <R cells={["XB08Z", "Transportation", "4,449", "£3,653"]} />
+        <R cells={[<strong key="a">All bed-day levels</strong>, "Excluding transportation", "123,480", <strong key="b">£2,235</strong>]} />
+      </tbody></table></div>
+    <p><Reasoning />The £2,235 average is our arithmetic (weighted by activity, transportation excluded because it is a retrieval, not a level of bedside care). It is above the 2019/20 adult average of £1,620, and the most intensive children's level costs over three times an adult day with six or more organs supported (£2,330). The two systems use different groupings, so compare them only as a rough guide. These are trust-reported costs, not prices paid, and not inflation-adjusted.</p>
+    <H>Children's costs by condition: UK trials</H>
+    <p><Reasoning />As for adults, NHS England publishes no children's ICU cost per diagnosis. The UK figures we could check come from trials in English and UK PICUs:</p>
+    <Q label="CHiP 2014 setting" />
+    <Q label="CHiP 2014 cardiac surgery costs" />
+    <p><Reasoning />So children admitted after cardiac surgery cost about £16,000–£17,000 each, whichever glucose strategy they had (2008–11 data). The trial reported its non-cardiac group only as differences between arms, not totals, so we give no per-patient figure for them.</p>
+    <Q label="FIRST-ABC 2024 cost difference" />
+    <Q label="FIRST-ABC 2024 index stay share" />
+    <p><Reasoning />FIRST-ABC (children needing non-invasive breathing support) reports cost differences between treatments rather than a total per child, so it shows what drives cost (the first hospital stay, about three-quarters of six-month costs) rather than a per-condition price. We found no verifiable UK per-admission costs for bronchiolitis, children's sepsis or trauma; the studies we found for those were from other countries, so we left them out.</p>
+    <Check question="How does the NHS group children's critical care days for costing?">By level of care (basic, intermediate, advanced 1–5, enhanced, transport; HRGs XB01Z–XB09Z), not by organs supported or diagnosis.</Check>
+    <Check question="In CHiP, what did children admitted after cardiac surgery cost per patient?">Mean total costs of £16,228 (tight glucose control) and £17,005 (conventional management).</Check>
+  </div>;
+}

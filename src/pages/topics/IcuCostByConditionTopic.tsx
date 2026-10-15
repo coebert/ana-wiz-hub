@@ -3,7 +3,7 @@ import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { Exam } from "@/data/curriculum";
-import { ConditionSummaryTeaching, ConditionSepsisTeaching, ConditionPneumoniaTeaching, ConditionVentilationTeaching } from "@/components/topic/IcuCostByConditionTeaching";
+import { ConditionSummaryTeaching, ConditionSepsisTeaching, ConditionPneumoniaTeaching, ConditionVentilationTeaching, ConditionChildrenTeaching } from "@/components/topic/IcuCostByConditionTeaching";
 
 const exams = [Exam.FINAL, Exam.FFICM, Exam.EDIC];
 const quiz = [
@@ -13,11 +13,13 @@ const quiz = [
   { question: "The matched hospital cost difference attributed to VAP in Kollef 2012 was about:", options: ["$1,522", "$16,324", "$39,828", "$99,598"], correctIndex: 2, explanation: "$99,598 vs $59,770 = $39,828." },
   { question: "The mean cost of the initial ICU stay for ventilated ARDS patients in the UK OSCAR analysis was:", options: ["£1,738", "£26,857", "£43,100", "£90,206"], correctIndex: 1, explanation: "£26,857, at £1,738 per ICU day. £43,100 is the INHALE HAP/VAP figure." },
   { question: "Why should UK and US condition costs not be converted by exchange rate?", options: ["Exchange rates are volatile", "Years, methods and cost scope differ", "US figures are estimates", "NHS figures exclude staff"], correctIndex: 1, explanation: "They span decades, use charges vs trust-reported costs, and count ICU-only vs whole-hospital stays." },
+  { question: "In the 2019/20 NHS schedule, the average cost of a paediatric intensive care unit bed day (excluding transport) was about:", options: ["£1,162", "£1,620", "£2,235", "£7,866"], correctIndex: 2, explanation: "£2,235 by our weighted arithmetic from the CCU04 rows; £1,620 is the adult average and £7,866 the most intensive children's level." },
+  { question: "In the CHiP trial, mean total cost per child admitted after cardiac surgery was about:", options: ["£5,702", "£16,000–£17,000", "£26,857", "£43,100"], correctIndex: 1, explanation: "£16,228 (tight control) and £17,005 (conventional)." },
 ];
 
 export default function IcuCostByConditionTopic() {
   return <TopicTemplate title="ICU Cost by Condition: UK and US Figures" subtitle="Final / FFICM / EDIC — Intensive Care" backPath="/intensive-care/icu-costs" backLabel="ICU Costs" accentColor="text-icu" topicId="icu-cost-by-condition" topicTitle="ICU Cost by Condition: UK and US Figures"
-    objectives={["Explain why NHS critical care is costed by organ support rather than diagnosis", "Quote UK and US cost figures for sepsis, VAP/HAP and ventilated ARDS", "Explain why longer stays drive condition costs", "Recognise the limits of comparing UK and US cost studies"]}
+    objectives={["Explain why NHS critical care is costed by organ support rather than diagnosis", "Quote UK and US cost figures for sepsis, VAP/HAP and ventilated ARDS", "Explain why longer stays drive condition costs", "Recognise the limits of comparing UK and US cost studies", "Quote NHS children's intensive care costs by level of care and UK paediatric trial costs"]}
     sectionExamMapping={{ objectives: { exams }, keyPoints: { exams } }}
     sectionSources={{ objectives: ["NCC 2021/22 adult CC by organs", "Paoli 2018 sepsis costs", "Kollef 2012 VAP costs", "Marti 2016 ARDS costs"] }}
     keyPoints={[
@@ -26,6 +28,7 @@ export default function IcuCostByConditionTopic() {
       { text: "UK ICU sepsis cost highest when sepsis began after day 2 (median $17,963, 1990s)", cites: ["Edbrooke 1999 sepsis costs"] },
       { text: "VAP added about $39,828 per US hospital stay; UK HAP/VAP patients averaged £43,100", cites: ["Kollef 2012 VAP costs", "INHALE 2020 HAP/VAP costs"] },
       { text: "Ventilated UK ARDS: mean initial ICU stay £26,857", cites: ["Marti 2016 ARDS costs"] },
+      { text: "NHS children's ICU days cost £1,162 (enhanced) to £7,866 (advanced level 5) in 2019/20; children after cardiac surgery about £16,000–£17,000 each (CHiP)", cites: ["NCC 2019/20 PICU by care level", "CHiP 2014 cardiac surgery costs"] },
     ]}
     quizQuestions={quiz}
     coreConcepts={<div className="space-y-8">
@@ -34,6 +37,7 @@ export default function IcuCostByConditionTopic() {
       <ExamSection id="condition-sepsis" exams={exams}><CollapsibleSubsection title="2. Sepsis"><ConditionSepsisTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="condition-pneumonia" exams={exams}><CollapsibleSubsection title="3. Ventilator- and hospital-acquired pneumonia"><ConditionPneumoniaTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="condition-ventilation" exams={exams}><CollapsibleSubsection title="4. ARDS and mechanical ventilation"><ConditionVentilationTeaching /></CollapsibleSubsection></ExamSection>
+      <ExamSection id="condition-children" exams={exams}><CollapsibleSubsection title="5. Children's intensive care (PICU)"><ConditionChildrenTeaching /></CollapsibleSubsection></ExamSection>
     </div>}
   />;
 }
