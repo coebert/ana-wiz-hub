@@ -19,6 +19,7 @@ interface RecentExpansion {
 }
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
+  { topicId: "icu-cost-by-condition", section: "intensive-care", title: "ICU Cost by Condition", note: "New page: UK/NHS and US cost figures side by side for sepsis, ventilator pneumonia, ARDS and ventilation." },
   { topicId: "icu-staffing-by-unit", section: "intensive-care", title: "ICU Staffing by Unit Type (GPICS V3)", note: "New page: what GPICS V3 adds for cardiothoracic, neuro, burns, remote and rural, and enhanced care units." },
   { topicId: "icu-costs", section: "intensive-care", title: "ICU Costs (NHS data)", note: "New page: NHS cost per adult critical care day by organs supported and unit type, from the National Schedule of NHS Costs." },
   { topicId: "icu-length-of-stay", section: "intensive-care", title: "ICU Length of Stay", note: "New page: ICNARC and NHS hospital statistics on stay, days of each organ support and stays by condition." },
