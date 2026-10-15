@@ -175,7 +175,7 @@ const SepsisTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       keyPoints={[
-        { text: "Sepsis-3: infection + organ dysfunction (SOFA ≥2). Septic shock: vasopressors needed + lactate >2", cites: ["BJA Educ 2019"] },
+        { text: "Sepsis-3: infection + organ dysfunction (SOFA ≥2). Septic shock: vasopressors needed + lactate >2", cites: ["Sepsis-3 2016"] },
         { text: "Hour-1 bundle: lactate, cultures, antibiotics, fluids (30 ml/kg), vasopressors", cites: ["SSC 2021"] },
         { text: "Noradrenaline is the first-line vasopressor; vasopressin is second-line", cites: ["SSC 2021", "ESICM Shock 2014"] },
         { text: "Each hour of antibiotic delay is associated with about 4% higher odds of in-hospital death (OR 1.04 per hour); faster fluid bolus completion was not", cites: ["Seymour 2017 NY sepsis mandate"] },
