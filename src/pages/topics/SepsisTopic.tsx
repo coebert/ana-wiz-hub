@@ -210,6 +210,7 @@ const SepsisTopic = () => {
     <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <section className="space-y-6">
         <TopicTableOfContents items={sepsisTocItems} />
+        <p className="text-sm text-muted-foreground">Vasopressors, MAP targets and steroids now have their own page: <a href="/intensive-care/septic-shock" className="text-primary underline">Septic Shock: Vasopressors, MAP &amp; Steroids</a>.</p>
         <DrugDosesCallout focus="antimicrobials, vasopressors and hydrocortisone in septic shock" />
 
 
