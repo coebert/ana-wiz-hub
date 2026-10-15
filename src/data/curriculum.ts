@@ -176,6 +176,7 @@ export const clinicalTopics: Topic[] = [
 export const intensiveCareTopics: Topic[] = [
   // Respiratory
   { id: "mechanical-ventilation", title: "Mechanical Ventilation", description: "Ventilator modes, ARDS protocols, lung-protective strategies, weaning", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
+  { id: "ventilation-protocols", title: "ICU Ventilation Protocols", description: "Standardised admission settings (ARDSNet), monitoring of plateau and driving pressure, paired sedation and weaning protocols, protocolised and automated weaning evidence", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   { id: "peep-management", title: "PEEP Management", description: "Set, total and intrinsic PEEP; bedside measurement, ARDS lung protection, PEEP titration, recruitment risks and ventilator timing settings", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   { id: "ards", title: "ARDS & Lung Injury", description: "Berlin definition, prone positioning, ECMO, rescue therapies", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   { id: "bronchospastic-failure", title: "Bronchospastic Respiratory Failure", description: "Life-threatening asthma, IECOPD, pharmacology, NIV, ventilation strategies, inhaled volatiles via Sedaconda", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },

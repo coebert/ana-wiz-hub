@@ -20,6 +20,12 @@ interface RecentExpansion {
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
   {
+    topicId: "ventilation-protocols",
+    section: "intensive-care",
+    title: "ICU Ventilation Protocols",
+    note: "New page: ARDSNet admission settings, plateau and driving pressure checks, paired sedation and breathing trials, protocolised and automated weaning.",
+  },
+  {
     topicId: "haemorrhagic-shock",
     section: "intensive-care",
     title: "Haemorrhagic Shock & Resuscitation",

@@ -62,3 +62,4 @@
 
 - [x] Haemorrhagic Shock & Resuscitation page (shock recognition, BP monitoring, transfusion/TXA) — sourced, tested, search + audit rebuilt
 - [x] Mass decontamination evidence lesson (PRISM) + stewardship trials lesson (STOP-IT, SAPS, ADAPT-Sepsis)
+- [x] ICU Ventilation Protocols page (admission, monitoring, weaning protocols)
