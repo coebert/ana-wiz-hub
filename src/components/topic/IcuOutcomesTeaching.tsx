@@ -39,10 +39,30 @@ export function OutcomesLengthOfStayTeaching() {
     <div className={lessonWrap}>
       <H>Length of stay and functional recovery</H>
       <Q label="Herridge 2003 ARDS stay" />
+      <Q label="Herridge 2003 lung function" />
+      <Q label="Herridge 2003 walk test" />
       <Q label="Herridge 2003 conclusion" />
       <p><Reasoning />a long ICU stay is a marker of severe illness and a cause of muscle wasting, weakness and lost weight. Length of stay is not a quality measure on its own: it reflects case mix, ward capacity and delayed discharge as well as care (teaching summary). Long stays are one of the NICE CG83 rehabilitation risk factors, covered on <L to="/intensive-care/icu-discharge-planning">ICU Discharge Planning</L>; physical, mental and cognitive consequences are on <L to="/intensive-care/pics-follow-up">PICS &amp; follow-up</L>.</p>
+      <H>Five years on</H>
+      <Q label="Herridge 2011 five-year function" />
+      <Q label="Herridge 2011 conclusion" />
+      <p><Reasoning />the lungs largely recover, but physical function does not return to normal even at five years, and the burden extends to family caregivers. Both Herridge cohorts were small Canadian ARDS groups of relatively young patients, so they show the pattern of recovery rather than the figures for every ICU survivor (teaching summary).</p>
       <Q label="NICE CG83 review" />
-      <Check question="What did Herridge find was the main reason for disability one year after ARDS?">Extrapulmonary problems, most prominently muscle wasting and weakness — lung volumes and spirometry were normal by 6 months.</Check>
+      <Check question="What did Herridge find was the main reason for disability one year after ARDS?">Extrapulmonary problems, most prominently muscle wasting and weakness — lung volumes and spirometry were normal by 6 months, though gas transfer stayed low.</Check>
+      <Check question="At 5 years in Herridge 2011, what was the median 6-minute walk distance?">436 m, 76% of predicted; neither younger nor older patients returned to normal predicted physical function.</Check>
+    </div>
+  );
+}
+
+export function OutcomesSeverityTeaching() {
+  return (
+    <div className={lessonWrap}>
+      <H>Severity scoring and fair comparison</H>
+      <Q label="Knaus 1985 APACHE II" />
+      <Q label="Knaus 1985 uses" />
+      <p><Reasoning />raw mortality cannot be compared between units because case mix differs. Severity scores predict the expected death rate for a population; dividing observed by expected deaths gives a standardised mortality ratio, and this is how the ICNARC audit compares units (teaching summary). A score describes groups: it should not be used alone to decide whether an individual patient is admitted or treatment is withdrawn (teaching summary). Note the authors' own condition — the score works best <em>combined with an accurate description of disease</em>.</p>
+      <Check question="What does APACHE II combine to give its severity score, and what is its range?">Initial values of 12 routine physiological measurements, age and previous health status; range 0 to 71.</Check>
+      <Check question="Why compare units using risk-adjusted rather than raw mortality?">Because units admit different case mixes; adjustment compares observed deaths with those expected for that severity of illness.</Check>
     </div>
   );
 }
