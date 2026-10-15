@@ -20,6 +20,12 @@ interface RecentExpansion {
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
   {
+    topicId: "sepsis-resuscitation",
+    section: "intensive-care",
+    title: "ICU Resuscitation: Septic Shock",
+    note: "New page: the first hour — recognition and lactate, immediate antimicrobials, fluids with reassessment, MAP 65 with noradrenaline, and lung-protective ventilation.",
+  },
+  {
     topicId: "septic-shock",
     section: "intensive-care",
     title: "Septic Shock",
