@@ -144,7 +144,7 @@
       "topicId": "acids-bases-buffers",
       "file": "src/pages/topics/AcidsBasesBuffersTopic.tsx",
       "requiredLabels": [
-        "Bailey & Whitfield alpha-stat"
+        "Chatzopoulou 2025 alpha/pH-stat"
       ]
     },
     {
@@ -152,7 +152,7 @@
       "topicId": "acids-bases-buffers",
       "file": "src/pages/topics/AcidsBasesBuffersTopic.tsx",
       "requiredLabels": [
-        "Bailey & Whitfield alpha-stat"
+        "Chatzopoulou 2025 alpha/pH-stat"
       ]
     },
     {
@@ -160,7 +160,7 @@
       "topicId": "acids-bases-buffers",
       "file": "src/pages/topics/AcidsBasesBuffersTopic.tsx",
       "requiredLabels": [
-        "BJA Educ 2009",
+        "StatPearls Acid-Base 2022",
         "Stewart 1983"
       ]
     },
@@ -4027,7 +4027,7 @@
       "topicId": "neuroanaesthesia",
       "file": "src/pages/topics/NeuroanaesthesiaTopic.tsx",
       "requiredLabels": [
-        "BJA 1989 N₂O & Volatiles"
+        "BJA 1989 N\u2082O & Volatiles"
       ]
     },
     {
@@ -5351,7 +5351,7 @@
       "topicId": "pharmacokinetics",
       "file": "src/pages/topics/PharmacokineticsTopic.tsx",
       "requiredLabels": [
-        "BJA Educ PK 2018"
+        "Hughes 1992 CSHT"
       ]
     },
     {
@@ -5383,7 +5383,7 @@
       "topicId": "pharmacokinetics",
       "file": "src/pages/topics/PharmacokineticsTopic.tsx",
       "requiredLabels": [
-        "Stanski & Shafer"
+        "StatPearls PK 2023"
       ]
     },
     {
@@ -5399,7 +5399,7 @@
       "topicId": "pharmacokinetics",
       "file": "src/pages/topics/PharmacokineticsTopic.tsx",
       "requiredLabels": [
-        "Stanski & Shafer"
+        "StatPearls PK 2023"
       ]
     },
     {
