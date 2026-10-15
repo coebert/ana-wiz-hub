@@ -47,7 +47,7 @@ export function IcuJourneyAdmissionTeaching() {
     <p>A typical sequence (teaching synthesis): structured ABCDE reassessment; secure the airway and start <L to="/intensive-care/mechanical-ventilation">mechanical ventilation</L> if needed; establish monitoring and vascular access; resuscitate the circulation (<L to="/intensive-care/circulatory-failure">Circulatory Failure</L>, <L to="/intensive-care/fluid-balance">Fluid Balance</L>); send gases and cultures (<L to="/physics/abg-analyser">ABG Analyser</L>, <L to="/intensive-care/acid-base">Acid-Base</L>); start source control and <L to="/intensive-care/antimicrobials-icu">antimicrobials</L>; document the admission plan, escalation limits and next-of-kin contact.</p>
     <H>Staffing at the bedside</H>
     <Quote label="GPICS V3 nurse ratios" />
-    <Check question="the decision to admit is made at 22:00 and the patient arrives at 03:30. Which standard was missed?">GPICS 2.1 requires unplanned admission within four hours of the decision; 5.5 hours breaches it. The consultant must still review in person within 12 hours of arrival.</Check>
+    <Check question="the decision to admit is made at 22:00 and the patient arrives at 03:30. Which standard was missed?">GPICS V3 requires unplanned admission within four hours of the decision (once essential resuscitation and imaging are complete); 5.5 hours breaches it unless those were still under way. The consultant must still review in person within 14 hours of admission.</Check>
     <LessonSources topicId={T} labels={["GPICS V3 admission timing", "GPICS V3 consultant review", "GPICS V3 nurse ratios"]} />
   </div>;
 }
@@ -90,7 +90,7 @@ export function IcuJourneyDischargeTeaching() {
     <Quote label="NICE CG83 ward step-down" />
     <Quote label="NICE CG83 review" />
     <p>Survivors often have physical, cognitive and psychological problems after discharge. Rehabilitation, follow-up clinics and support for families are taught on <L to="/intensive-care/pics-follow-up">PICS & follow-up</L>. When the outcome is death or organ donation, see <L to="/intensive-care/end-of-life-communication">End-of-Life Communication</L> and <L to="/intensive-care/organ-donation">Organ Donation</L>.</p>
-    <Check question="the bed manager asks to move a stable patient to the ward at 23:30. What does GPICS 2.1 say?">Discharge to a general ward must occur between 07:00 and 21:59. A 23:30 move breaches the standard; the patient should stay until morning unless there is a safer alternative. NICE CG50 adds that a transfer between 22:00 and 07:00 should be documented as an adverse incident.</Check>
+    <Check question="the bed manager asks to move a stable patient to the ward at 23:30. What does GPICS V3 say?">Discharge to a general ward must occur only between 07:00 and 21:59, except for reasons of surge. A 23:30 move breaches the standard; the patient should stay until morning unless there is a safer alternative. NICE CG50 adds that a transfer between 22:00 and 07:00 should be documented as an adverse incident.</Check>
     <Check question="when should a patient with rehabilitation needs be reviewed after leaving critical care?">At 2 to 3 months, face to face, by a professional familiar with their critical care course (NICE CG83 1.23–1.24).</Check>
     <LessonSources topicId={T} labels={["GPICS V3 discharge", "NICE CG50 night transfer", "GPICS V3 discharge handover", "NICE CG83 ward step-down", "NICE CG83 review"]} />
   </div>;

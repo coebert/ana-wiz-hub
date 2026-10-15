@@ -28,7 +28,7 @@ export default function IcuDischargePlanningTopic() {
     ]}
     quizQuestions={quiz}
     coreConcepts={<div className="space-y-8">
-      <p className="text-muted-foreground leading-relaxed">This page expands the discharge stage of <Link to="/intensive-care/icu-inpatient-journey" className="text-primary underline">The ICU Inpatient Journey</Link>. Quotations reuse verified records from NICE CG83, NICE CG50 and GPICS 2.1; surrounding explanation is teaching synthesis, not a local discharge policy.</p>
+      <p className="text-muted-foreground leading-relaxed">This page expands the discharge stage of <Link to="/intensive-care/icu-inpatient-journey" className="text-primary underline">The ICU Inpatient Journey</Link>. Quotations reuse verified records from NICE CG83, NICE CG50 and GPICS V3; surrounding explanation is teaching synthesis, not a local discharge policy.</p>
       <ExamSection id="discharge-rehab-start" exams={exams}><CollapsibleSubsection title="1. Rehabilitation during the stay" defaultOpen><DischargeRehabStartTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="discharge-transfer" exams={exams}><CollapsibleSubsection title="2. Transfer to the ward"><DischargeTransferTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="discharge-home" exams={exams}><CollapsibleSubsection title="3. Ward step-down and home"><DischargeHomeTeaching /></CollapsibleSubsection></ExamSection>
