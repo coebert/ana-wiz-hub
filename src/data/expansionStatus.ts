@@ -190,6 +190,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "Temperature sensor/site error sources expanded.",
   },
+  "critical-care-overview": {
+    status: "expanded",
+    note: "New page with three source-led lessons: ICU structure (ICS 2021 levels, GPICS 2.1 time standards), team roles (GPICS ratios, Pronovost 2002, Kerlin 2013) and communication (daily goals, I-PASS, discharge handover, Lautrette 2007). Verbatim excerpts; learning checks and quiz. Source-checked, not consultant-reviewed.",
+  },
   "haemorrhagic-shock": {
     status: "expanded",
     note: "Three source-led lessons linked with Trauma: shock recognition (ATLS limits, shock index, lactate, lethal triad), blood pressure monitoring (Meidert cuff vs arterial, Rossaint/NG39 targets), transfusion (PROPPR, PAMPer, RePHILL, CRASH-2 timing, calcium, ITACTIC). Verbatim excerpts; learning checks and quiz. Source-checked, not consultant-reviewed.",
