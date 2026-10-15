@@ -50,7 +50,7 @@ function loadReferenceLabels() {
     }
     const block = src.slice(topicRe.lastIndex, i - 1);
     const labels = new Set();
-    for (const lm of block.matchAll(/label\s*:\s*"([^"]+)"/g)) {
+    for (const lm of block.matchAll(/"?label"?\s*:\s*"([^"]+)"/g)) {
       labels.add(lm[1]);
     }
     map.set(topicId, labels);
@@ -62,7 +62,7 @@ function loadReferenceLabels() {
     let d = 1, j = dm.index + dm[0].length;
     while (j < src.length && d > 0) { if (src[j] === "[") d++; else if (src[j] === "]") d--; j++; }
     const body = src.slice(dm.index + dm[0].length, j - 1);
-    const set = new Set([...body.matchAll(/label\s*:\s*"([^"]+)"/g)].map(x => x[1]));
+    const set = new Set([...body.matchAll(/"?label"?\s*:\s*"([^"]+)"/g)].map(x => x[1]));
     for (const sp of body.matchAll(/\.\.\.(\w+)/g)) for (const l of named.get(sp[1]) ?? []) set.add(l);
     named.set(dm[1], set);
   }
