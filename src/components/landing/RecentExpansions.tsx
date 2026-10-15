@@ -19,6 +19,7 @@ interface RecentExpansion {
 }
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
+  { topicId: "icu-discharge-planning", section: "intensive-care", title: "ICU Discharge Planning", note: "New page: rehabilitation from day one, safe ward transfer and handover, home discharge information and 2–3 month review (NICE CG83, CG50, GPICS)." },
   { topicId: "icu-anaphylaxis", section: "intensive-care", title: "Anaphylaxis in Critical Care", note: "New page: IM adrenaline doses and repeats, refractory anaphylaxis and adrenaline infusion, tryptase and biphasic reactions (RCUK 2021)." },
   { topicId: "icu-eclampsia", section: "intensive-care", title: "Severe Pre-eclampsia and Eclampsia", note: "New page: magnesium sulfate regimen, Magpie, severe hypertension control and fluid restriction (NICE NG133)." },
   {

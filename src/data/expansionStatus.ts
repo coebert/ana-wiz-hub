@@ -218,6 +218,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from Acids, Bases & Buffers: Kw and neutral pH, blood-sample temperature correction, alpha-stat vs pH-stat. Verbatim OpenStax, StatPearls and Chatzopoulou 2025 excerpts reused; textbook constants labelled. Learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "icu-discharge-planning": {
+    status: "expanded",
+    note: "New page linked from The ICU Inpatient Journey: four lessons (rehabilitation during the stay, ICU-to-ward transfer, ward step-down and home, 2–3 month review) quoting NICE CG83, NICE CG50 and GPICS 2.1; five-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "icu-anaphylaxis": {
     status: "expanded",
     note: "New page linked from Critical Care Overview: three lessons (recognition and first doses, refractory anaphylaxis, after the reaction) quoting RCUK 2021; five-question quiz. Source-checked, not consultant-reviewed.",
