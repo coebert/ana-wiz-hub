@@ -5,7 +5,8 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { QuizQuestion } from "@/components/quiz/QuizSection";
 import { Exam } from "@/data/curriculum";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
-import { NTSEvidenceTeaching } from "@/components/topic/NTSEvidenceTeaching";
+import { NTSEvidenceTeaching, DebriefingTeaching, SpeakingUpTeaching, TeamSTEPPSTeaching } from "@/components/topic/NTSEvidenceTeaching";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { InlineRef } from "@/components/references/InlineRef";
 
 const nonTechnicalSkillsFaqs: Array<[string, string]> = [
@@ -18,7 +19,8 @@ const objectives = [
   "Define the four ANTS categories (situation awareness, decision making, task management, team working) and their elements.",
   "Recognise common cognitive biases and fixation errors that contribute to ICU adverse events.",
   "Apply Crisis Resource Management principles in simulated and real ICU emergencies.",
-  "Use structured tools (SBAR, SPIKES, STOP-5, PACE/CUSS, WHO checklist) to support safe communication and handover.",
+  "Use structured tools (SBAR, CUS, two-challenge rule, PACE/CUSS, WHO checklist) to support safe communication and handover.",
+  "Distinguish operational debriefing from psychologically-focused PTSD interventions, and apply TeamSTEPPS briefs, huddles and check-backs.",
   "Explain just culture, duty of candour and the NHS PSIRF approach to incident response.",
 ];
 
@@ -34,7 +36,7 @@ const quiz: QuizQuestion[] = [
     ],
     correctIndex: 1,
     explanation:
-      "All four ANTS categories are relevant, but the immediate failure is the trainee not escalating concern. The PACE/CUSS graded assertiveness model (Probe → Alert → Challenge → Emergency, or Concern → Uncomfortable → Safety issue → Stop) is taught precisely for this scenario. Fixation error ('plan continuation bias') by the consultant is a parallel situation-awareness failure.",
+      "The immediate speaking-up failure is not escalating a safety concern. AHRQ CUS means Concerned, Uncomfortable, Safety issue; local CUSS/PACE adaptations also exist. The leader must acknowledge and address challenges. Fixation by the consultant is a parallel failure; the communication example does not prescribe an airway intervention without the applicable clinical algorithm.",
   },
   {
     question:
@@ -48,6 +50,30 @@ const quiz: QuizQuestion[] = [
     correctIndex: 2,
     explanation:
       "A just culture (Reason; Marx) distinguishes inadvertent error and at-risk behaviour — addressed by system redesign, coaching and support — from reckless behaviour (conscious disregard of substantial risk), which warrants accountability. It is neither a 'no-blame' culture nor a punitive one. NHS England's Patient Safety Incident Response Framework (PSIRF, 2022) embeds this approach.",
+  },
+  {
+    question: "After a critical incident, which approach distinguishes operational learning from a PTSD intervention?",
+    options: ["Require every participant to relive distress to prevent PTSD", "Review team performance and actions, offering individual support separately", "Avoid all discussion because NICE prohibits debriefing", "Promise absolute confidentiality and decide culpability"],
+    correctIndex: 1,
+    explanation: "AHRQ operational debriefs review performance and improvements. NICE NG116 advises against psychologically-focused debriefing for PTSD prevention or treatment; it does not ban task-focused learning or compassionate support.",
+  },
+  {
+    question: "An immediately unsafe action is about to occur. How should the two-challenge rule be interpreted?",
+    options: ["Always wait for two ignored questions before acting", "Use DESC in private before warning the team", "Give an immediate clear warning and seek help; the rule is not a mandatory delay", "Only a consultant can challenge"],
+    correctIndex: 2,
+    explanation: "AHRQ recommends repeating an ignored assertion and escalating unresolved concerns. Clinical application must not turn the tool into a waiting rule in imminent danger: clearly state the hazard, seek help and follow the relevant emergency pathway.",
+  },
+  {
+    question: "During an ICU crisis the existing plan is no longer working. Which TeamSTEPPS tool updates the current care plan?",
+    options: ["An after-action debrief only", "A huddle, which any team member identifying a need for adjustment can convene", "ANTS scoring before continuing care", "A mandatory psychological debrief"],
+    correctIndex: 1,
+    explanation: "AHRQ defines a huddle as communicating adjustments to an existing plan. A brief establishes the plan and a debrief reviews performance afterwards. Essential treatment need not stop for the update.",
+  },
+  {
+    question: "A colleague replies ‘OK’ to a named task request. What completes verification and follow-through?",
+    options: ["Assume the task is finished", "Repeat the request to the whole room indefinitely", "Wait until the debrief to clarify", "Obtain a specific repeat-back, confirm or correct it, and receive a completion report"],
+    correctIndex: 3,
+    explanation: "AHRQ check-back verifies receipt and understanding through repeat-back and sender confirmation. Completion reporting separately establishes whether the action was performed; acknowledgement alone proves neither.",
   },
 ];
 
@@ -93,11 +119,11 @@ const NonTechnicalSkillsTopic = () => {
         { text: "ANTS taxonomy: Situation awareness · Decision making · Task management · Team working — memorise for SOEs.", cites: ["BMJ 2000"] },
         { text: "Up to 70% of critical care adverse events are non-technical; competence is examinable and assessable.", cites: ["RCoA ANTS"] },
         { text: "Fixation error and plan continuation bias are the most cited cognitive failures in airway disasters (Bromiley case).", cites: ["BJA Educ 2003"] },
-        { text: "PACE / CUSS provides graded assertiveness language to flatten authority gradients.", cites: ["BJA Educ 2018"] },
+        { text: "AHRQ CUS means Concerned, Uncomfortable, Safety issue; repeat ignored concerns and escalate unresolved safety risks.", cites: ["AHRQ CUS", "AHRQ Two-Challenge"] },
         { text: "Closed-loop communication and named role allocation are CRM cornerstones in any crisis.", cites: ["CHFG"] },
         { text: "Cognitive aids reduce error in low-frequency / high-stakes events — use them, don't rely on memory.", cites: ["Marx 2001"] },
         { text: "A just culture distinguishes error and at-risk behaviour (system response) from reckless behaviour (accountability).", cites: ["PSIRF 2022"] },
-        { text: "Hot debriefs within 24 h support team wellbeing and learning; cold debriefs drive system change.", cites: ["BMJ 2000"] },
+        { text: "Operational debriefs review team performance and improvements; do not offer psychologically-focused debriefing to prevent or treat PTSD.", cites: ["AHRQ Debrief", "NICE NG116 Debriefing"] },
         { text: "The Swiss Cheese Model frames adverse events as system holes aligning — fix the system, not just the person.", cites: ["RCoA ANTS"] },
         { text: "Statutory duty of candour applies in England since 2014 — be open promptly when harm occurs.", cites: ["BJA Educ 2003"] },
       ]}
@@ -106,8 +132,8 @@ const NonTechnicalSkillsTopic = () => {
       workedExamples={NonTechnicalSkillsTopicWorkedExamples}
       quizQuestions={quiz}
       sectionSources={{
-        objectives: ["BJA Educ 2003", "RCoA ANTS", "BJA Educ 2018", "BMJ 2000"],
-        keyPoints: ["BMJ 2000", "PSIRF 2022", "Marx 2001", "CHFG", "RCoA ANTS", "BJA Educ 2003", "BJA Educ 2018"],
+        objectives: ["BJA Educ 2003", "RCoA ANTS", "BJA Educ 2018", "BMJ 2000", "AHRQ CUS", "AHRQ Huddle", "NICE NG116 Debriefing"],
+        keyPoints: ["BMJ 2000", "PSIRF 2022", "Marx 2001", "CHFG", "RCoA ANTS", "BJA Educ 2003", "BJA Educ 2018", "AHRQ CUS", "AHRQ Two-Challenge", "AHRQ Debrief", "NICE NG116 Debriefing"],
       }}
       sectionExamMapping={{
         objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 5.4", "EDIC 11"] },
@@ -289,33 +315,19 @@ const NonTechnicalSkillsTopic = () => {
                 <p className="font-semibold text-foreground text-sm">Pre-procedure brief</p>
                 <p className="text-xs text-muted-foreground">WHO checklist (ICU adaptation), patient ID, planned procedure, anticipated difficulties, role allocation, equipment check, escalation plan.</p>
               </div>
-              <div className="rounded-lg border border-border bg-muted/30 p-3">
-                <p className="font-semibold text-foreground text-sm">Hot debrief (within 24 h) — STOP-5</p>
-                <p className="text-xs text-muted-foreground">Brief (3–5 min), at the bedside or in the coffee room, led by any team member. The STOP-5 structure (Walker et al., BJA Educ 2020):</p>
-                <ul className="text-xs text-muted-foreground list-disc pl-5 mt-1 space-y-0.5">
-                  <li><strong>S</strong>ummary of the case — one-sentence factual recap.</li>
-                  <li><strong>T</strong>hings that went well — reinforce positive behaviours.</li>
-                  <li><strong>O</strong>pportunities to improve — non-judgmental.</li>
-                  <li><strong>P</strong>oints to action — concrete, assigned to a named individual with a deadline.</li>
-                  <li><strong>R</strong>esponsibilities — close the loop on who owns each action. Reduces moral distress and supports learning.</li>
-                </ul>
-              </div>
-              <div className="rounded-lg border border-border bg-muted/30 p-3">
-                <p className="font-semibold text-foreground text-sm">Cold debrief / case review (1–2 weeks) — PEARLS</p>
-                <p className="text-xs text-muted-foreground">Multidisciplinary, psychologically safe, action-oriented. The PEARLS framework (Eppich & Cheng 2015) blends learner self-assessment, focused facilitation and directive feedback across four phases:</p>
-                <ol className="text-xs text-muted-foreground list-decimal pl-5 mt-1 space-y-0.5">
-                  <li><strong>Reactions</strong> — invite initial thoughts and emotions to defuse affect.</li>
-                  <li><strong>Description</strong> — establish a shared understanding of what actually happened.</li>
-                  <li><strong>Analysis</strong> — explore why things happened (advocacy–inquiry, focused facilitation, directive teaching as needed).</li>
-                  <li><strong>Summary / Application</strong> — agree take-home messages and a plan to change practice. Diamond and Plus-Delta are alternative structured models with the same intent.</li>
-                </ol>
-              </div>
+              <p className="text-sm text-muted-foreground">Operational debriefs review events, team performance and improvements after care is safely handed over. Timing and duration depend on circumstances; do not confuse learning with psychologically-focused debriefing for PTSD prevention.<InlineRef topicId="non-technical-skills" refLabel="AHRQ Debrief" /><InlineRef topicId="non-technical-skills" refLabel="NICE NG116 Debriefing" /></p>
               <div className="rounded-lg border border-border bg-muted/30 p-3">
                 <p className="font-semibold text-foreground text-sm">Handover tools</p>
                 <p className="text-xs text-muted-foreground">SBAR (Situation, Background, Assessment, Recommendation); ISBAR (adds Identification); ICU board rounds with daily goals (FAST-HUG-BID, ABCDEF bundle).</p>
               </div>
             </div>
           </ExamSection>
+
+          <div className="space-y-8 my-8">
+            <CollapsibleSubsection title="Debriefing: operational learning and staff support"><DebriefingTeaching /></CollapsibleSubsection>
+            <CollapsibleSubsection title="Speaking up in a crisis: CUS and escalation"><SpeakingUpTeaching /></CollapsibleSubsection>
+            <CollapsibleSubsection title="TeamSTEPPS: briefs, huddles and closed-loop communication"><TeamSTEPPSTeaching /></CollapsibleSubsection>
+          </div>
 
           <ExamSection
             id="safety"
@@ -347,7 +359,7 @@ const NonTechnicalSkillsTopic = () => {
               "ANTS framework: situation awareness, decision making, task management, team working.",
               "Closed-loop communication: state the task, name the person, get verbal acknowledgement on completion.",
               "Cognitive aids (DAS, MH, anaphylaxis flowcharts) reduce omissions in crises — use them, do not rely on memory.",
-              "Debrief after critical incidents — hot debrief immediately, cold debrief days later; focus on system, not individuals.",
+              "Debrief when care and team readiness allow; review performance and actions without treating operational learning as PTSD prevention.",
               "Just culture: separate human error, at-risk behaviour and reckless conduct; reporting systems must feel safe.",
             ]}
           />
