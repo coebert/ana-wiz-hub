@@ -39,7 +39,7 @@ export function IcuJourneyAdmissionTeaching() {
     <H>Time standards after the decision to admit</H>
     <Quote label="GPICS 2.1 admission timing" />
     <Quote label="GPICS 2.1 consultant review" />
-    <p>Delay between decision and arrival is time spent at the wrong level of care; resuscitation continues wherever the patient is. If the patient must move between hospitals or departments, follow <L to="/intensive-care/transfer-medicine">Transfer Medicine</L>.</p>
+    <p>Delay between decision and arrival is time spent at the wrong level of care; resuscitation continues wherever the patient is. If the patient must move between hospitals or departments, follow <L to="/clinical/transfer-medicine">Transfer Medicine</L>.</p>
     <H>The first hours</H>
     <p>A typical sequence (teaching synthesis): structured ABCDE reassessment; secure the airway and start <L to="/intensive-care/mechanical-ventilation">mechanical ventilation</L> if needed; establish monitoring and vascular access; resuscitate the circulation (<L to="/intensive-care/circulatory-failure">Circulatory Failure</L>, <L to="/intensive-care/fluid-balance">Fluid Balance</L>); send gases and cultures (<L to="/physics/abg-analyser">ABG Analyser</L>, <L to="/intensive-care/acid-base">Acid-Base</L>); start source control and <L to="/intensive-care/antimicrobials-icu">antimicrobials</L>; document the admission plan, escalation limits and next-of-kin contact.</p>
     <H>Staffing at the bedside</H>
