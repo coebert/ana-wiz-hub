@@ -32,7 +32,7 @@ const RECENT_EXPANSIONS: RecentExpansion[] = [
     note: "NCEPOD urgency classes, emergency-airway trial evidence (DEVICE, PreVent, IRIS), appendicectomy timing, bowel-obstruction trial and hip-fracture pathway lessons.",
   },
   {
-    topicId: "mass-casualty",
+    topicId: "mass-casualty-military",
     section: "clinical",
     title: "Mass Casualty & Major Incidents",
     note: "Rewritten triage teaching from NARU's Ten Second Triage and NHS England MITT guidance, plus ethics, teamwork, bleeding control and chemical-response lessons.",
@@ -128,7 +128,7 @@ const RECENT_EXPANSIONS: RecentExpansion[] = [
     note: "Meyer–Overton evidence lesson citing Franks & Lieb, Koblin 1994 and Franks 2008.",
   },
   {
-    topicId: "antimicrobials",
+    topicId: "antimicrobials-pharm",
     section: "pharmacology",
     title: "Antimicrobials",
     note: "Antiviral, antibiotic exposure (DALI, TDM), candidaemia, antimalarial, antiseptic and resistance lessons.",
