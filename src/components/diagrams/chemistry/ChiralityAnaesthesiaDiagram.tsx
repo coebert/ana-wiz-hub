@@ -208,9 +208,9 @@ const drugs: ChiralDrug[] = [
     form: "single",
     enantiomer: "S(+)",
     centres: 1,
-    reason: "Single enantiomer — only D-isomer is α2 agonist",
+    reason: "Single enantiomer — the S(+) (dextrorotatory) isomer is the α2 agonist",
     detail:
-      "The D-(dex) isomer of medetomidine is the active α2 agonist; the L-isomer is essentially inactive. Removing it doubles potency per mg and removes inert load.",
+      "Dexmedetomidine is the S-configured, dextrorotatory (+) isomer of medetomidine; 'dex' refers to optical rotation, a different naming system from R/S. The other isomer is essentially inactive. Removing it doubles potency per mg and removes inert load.",
   },
   {
     name: "Adrenaline / Noradrenaline",
