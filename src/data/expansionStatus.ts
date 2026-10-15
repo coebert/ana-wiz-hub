@@ -50,7 +50,7 @@ export const SECTION_EXPANSION: Record<Section, ExpansionEntry> = {
   },
   chemistry: {
     status: "pending",
-    note: "Atomic Structure & Bonding, Acids, Bases & Buffers, Solutions & Concentration, Organic Chemistry and Oxidation & Reduction source-audited (15 October 2026); invented or mismatched sources replaced. Remaining gaps: uncited paragraphs on the acids and solutions pages, plus Kw/temperature, Donnan effect, osmometry and a drug pKa table not yet covered. Not consultant-certified.",
+    note: "Atomic Structure & Bonding, Acids, Bases & Buffers, Solutions & Concentration, Organic Chemistry and Oxidation & Reduction source-audited (15 October 2026); invented or mismatched sources replaced. Remaining gaps: uncited paragraphs on the acids and solutions pages, Kw/temperature, drug pKa, osmometry and Donnan lessons added 15 October 2026. Not consultant-certified.",
   },
 };
 
