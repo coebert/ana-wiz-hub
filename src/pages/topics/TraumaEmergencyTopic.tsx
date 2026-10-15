@@ -236,6 +236,7 @@ const TraumaEmergencyTopic = () => {
               and perioperative care. The ATLS &lt;C&gt;ABCDE approach, damage control resuscitation, and massive transfusion protocols
               are fundamental.<InlineRef topicId="trauma-emergency" refLabel="ATLS 10th ed" />
             </p>
+            <p className="text-muted-foreground leading-relaxed mt-3">For shock index, cuff versus arterial blood pressure in shock, prehospital blood trials and tranexamic acid timing, see <Link to="/intensive-care/haemorrhagic-shock" className="text-primary font-semibold underline underline-offset-4">Haemorrhagic Shock &amp; Resuscitation</Link>.</p>
           </ExamSection>
 
           <ExamSection id="abcde" exams={[Exam.FINAL, Exam.FFICM]}>

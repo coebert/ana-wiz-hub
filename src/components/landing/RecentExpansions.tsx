@@ -20,6 +20,12 @@ interface RecentExpansion {
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
   {
+    topicId: "haemorrhagic-shock",
+    section: "intensive-care",
+    title: "Haemorrhagic Shock & Resuscitation",
+    note: "New page: shock index and lactate, why cuffs over-read in shock, blood pressure targets, PAMPer vs RePHILL, CRASH-2 timing, calcium and ITACTIC.",
+  },
+  {
     topicId: "icu-endocrine-emergencies",
     section: "intensive-care",
     title: "Endocrine Emergencies",
