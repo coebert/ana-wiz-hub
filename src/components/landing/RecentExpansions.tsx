@@ -42,6 +42,24 @@ const RECENT_EXPANSIONS: RecentExpansion[] = [
     note: "New page: Kw and neutral pH, cooling a blood sample, alpha-stat versus pH-stat.",
   },
   {
+    topicId: "renal-system-overview",
+    section: "physiology",
+    title: "Renal System Overview",
+    note: "New page: GFR and net filtration pressure, the countercurrent multiplier, renin–angiotensin–aldosterone and ADH.",
+  },
+  {
+    topicId: "cardiovascular-system-overview",
+    section: "physiology",
+    title: "Cardiovascular System Overview",
+    note: "New page: Cardiac output, Frank–Starling, preload and afterload, MAP and baroreceptors.",
+  },
+  {
+    topicId: "respiratory-system-overview",
+    section: "physiology",
+    title: "Respiratory System Overview",
+    note: "New page: Pressure gradients and Boyle's law, Dalton and Henry, Bohr and Haldane effects, CO₂ transport.",
+  },
+  {
     topicId: "physiology-overview",
     section: "physiology",
     title: "Physiology Overview",
