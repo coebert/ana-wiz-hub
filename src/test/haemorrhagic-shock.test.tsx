@@ -12,7 +12,7 @@ describe("Haemorrhagic shock lessons", () => {
   it.each([ShockRecognitionTeaching, BloodPressureMonitoringTeaching, TransfusionRatioTeaching])("renders teaching, a check, sources and verbatim quotes", Lesson => {
     const { container } = render(<MemoryRouter><Lesson /></MemoryRouter>);
     expect(container.textContent!.length).toBeGreaterThan(1200);
-    expect(screen.getByText(/Learning check:/)).toBeInTheDocument();
+    expect(screen.getAllByText(/Learning check:/).length).toBeGreaterThan(0);
     expect(screen.getByText("Sources for this lesson")).toBeInTheDocument();
     expect(container.textContent).not.toContain("is missing from the topic list");
     for (const q of container.querySelectorAll("blockquote")) {
