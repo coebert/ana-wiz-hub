@@ -1,3 +1,4 @@
+import { AdrenalInsufficiencyResuscitationTeaching, SepsisSteroidDecisionsTeaching, DkaSafetyAndRecoveryTeaching } from "@/components/topic/EndocrineEmergenciesTeaching";
 import { InlineRef } from "@/components/references/InlineRef";
 import { HyponatraemiaCorrectionTeaching, PhaeochromocytomaPreparationTeaching, PhaeochromocytomaCrisisTeaching, DkaFluidChoiceTeaching, PituitaryApoplexyGuidelineTeaching } from "@/components/topic/EndocrineEmergenciesTeaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
@@ -55,6 +56,7 @@ const icuEndocrineEmergenciesFaqs: Array<[string, string]> = [
 
 const objectives = [
   "Recognise and treat diabetic ketoacidosis using the JBDS-IP fixed-rate insulin protocol, including the potassium paradox",
+  "Distinguish emergency cortisol replacement from adjunctive steroids in septic shock, and apply current adult DKA safety guidance",
   "Differentiate hyperosmolar hyperglycaemic state (HHS) from DKA and adapt resuscitation accordingly",
   "Diagnose thyroid storm using the Burch-Wartofsky scale and apply the five-step block-and-support treatment",
   "Recognise adrenal (Addisonian) crisis as refractory shock with low Na⁺ / high K⁺ / low glucose, and treat with hydrocortisone before tests",
@@ -74,7 +76,7 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <ul className="list-disc list-inside space-y-1">
-        <li>Diagnostic triad met: glucose &gt; 11, ketones ≥ 3, pH &lt; 7.30 → severe DKA (pH &lt; 7.10 or HCO₃⁻ &lt; 5 or K⁺ &lt; 3.5 → HDU/ICU).</li>
+        <li>Diagnostic triad met: glucose &gt; 11, ketones ≥ 3, pH &lt; 7.30 → DKA with haemodynamic compromise; assess critical-care need (pH &lt; 7.0 or HCO₃⁻ &lt; 5 or K⁺ &lt; 3.5 → HDU/ICU).</li>
         <li>Hour 1: <strong>0.9% NaCl 1 L over 1 h</strong>. Start <strong>fixed-rate insulin 0.1 U/kg/h = 7 U/h</strong> as soon as fluid running. Continue patient's long-acting insulin.</li>
         <li>K⁺ 5.6 → no KCl in first bag. Once K⁺ 3.5–5.5 → add 40 mmol KCl/L. K⁺ &lt; 3.5 → halt insulin until replaced.</li>
         <li>Add <strong>10% dextrose at 125 ml/h</strong> when glucose &lt; 14 (run alongside saline) — keeps insulin running until ketones clear.</li>
@@ -84,7 +86,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        Severe DKA. Activate fixed-rate insulin 7 U/h after 1 L 0.9% NaCl.
+        DKA with haemodynamic compromise. Activate fixed-rate insulin 7 U/h after 1 L 0.9% NaCl.
         Withhold KCl while potassium remains above 5.5; reassess before the next bag. Continue long-acting insulin. Add 10% dextrose
         when glucose &lt; 14. Frequent potassium checks, hourly glucose and ketones
         until resolution.
@@ -232,6 +234,7 @@ const IcuEndocrineEmergenciesTopic = () => {
             </div>
             <HyperglycaemicEmergenciesTeaching />
             <DkaFluidChoiceTeaching />
+            <CollapsibleSubsection title="DKA safety and recovery — adult consensus 2024"><DkaSafetyAndRecoveryTeaching /></CollapsibleSubsection>
             <p className="text-sm text-muted-foreground mt-4">Routine phosphate and bicarbonate replacement are not recommended in DKA. Severe electrolyte depletion or cardiovascular compromise requires an individual critical-care/diabetes plan rather than a routine replacement recipe.<InlineRef topicId="icu-endocrine-emergencies" refLabel="JBDS-IP DKA 2023 PDF" /></p>
             <div className="grid md:grid-cols-2 gap-4 mt-4">
 
@@ -291,9 +294,9 @@ const IcuEndocrineEmergenciesTopic = () => {
                   Acute decompensation of primary (Addison's, autoimmune, bilateral
                   adrenal haemorrhage — Waterhouse-Friderichsen) or secondary (HPA
                   suppression by chronic steroid, pituitary disease) insufficiency.
-                  Refractory shock + Na⁺ ↓ + K⁺ ↑ + glucose ↓. Treat with{" "}
+                  Shock, hyponatraemia and hypoglycaemia may occur; hyperkalaemia is mainly a feature of primary insufficiency and is not required. Treat suspected crisis with{" "}
                   <strong>hydrocortisone 100 mg IV stat then 200 mg/24 h</strong> + 0.9% NaCl
-                  + glucose; do not delay for tests.
+                  + glucose as indicated; do not delay for tests.<InlineRef topicId="icu-endocrine-emergencies" refLabel="SfE crisis hydrocortisone 2016" />
                 </p>
               </div>
               <div className="p-4 rounded-lg border border-border">
@@ -383,6 +386,7 @@ const IcuEndocrineEmergenciesTopic = () => {
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
               <AdrenalCrisisAnimation />
             </div>
+            <CollapsibleSubsection title="Adrenal insufficiency — recognition, resuscitation and recovery"><AdrenalInsufficiencyResuscitationTeaching /></CollapsibleSubsection>
             <AdrenalPituitaryEmergenciesTeaching />
             <PituitaryApoplexyGuidelineTeaching />
             <GuidelineSources sources={ADRENAL_PITUITARY_SOURCES} />
@@ -416,6 +420,9 @@ const IcuEndocrineEmergenciesTopic = () => {
             <EndocrinePerioperativeTeaching />
             <GuidelineSources sources={PITFALLS_SOURCES} />
             </CollapsibleSubsection>
+          </ExamSection>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Sepsis and corticosteroids — replacement versus adjunctive treatment"><SepsisSteroidDecisionsTeaching /></CollapsibleSubsection>
           </ExamSection>
           <ExamPitfallsCallout
             accent="icu"
