@@ -525,6 +525,7 @@ export const topicReferences: Record<string, Reference[]> = {
   "ventilation-protocols": ventilationProtocolsReferences,
   "haemorrhagic-shock": haemorrhagicShockReferences,
   "critical-care-overview": criticalCareOverviewReferences,
+  "icu-inpatient-journey": criticalCareOverviewReferences,
   "acid-base": [
     ...metabolicAlkalosisReferences,
     { label: "Jung 2019 diagnosis", citation: "Jung B, et al. Diagnosis and management of metabolic acidosis: guidelines from a French expert panel. Ann Intensive Care. 2019;9:92.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6695455/", excerpt: "The experts suggest that arterial blood gas measurements be performed in patients with a decreased plasma bicarbonate level so as to eliminate respiratory alkalosis, confirm the diagnosis of metabolic acidosis, and test for mixed acidosis" },
