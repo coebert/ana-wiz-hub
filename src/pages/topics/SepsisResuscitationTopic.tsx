@@ -11,6 +11,7 @@ const quiz = [
   { question: "SSC 2021 initial crystalloid suggestion for sepsis-induced hypoperfusion:", options: ["At least 30 mL/kg within the first 3 h", "10 mL/kg once only", "60 mL/kg within 1 h", "No fluid before vasopressors"], correctIndex: 0, explanation: "A weak suggestion; give in steps with reassessment after each bolus." },
   { question: "Which screening approach does SSC 2021 recommend against?", options: ["NEWS", "qSOFA as a single screening tool", "SIRS", "MEWS"], correctIndex: 1, explanation: "qSOFA alone is not recommended compared with SIRS, NEWS or MEWS." },
   { question: "In Seymour 2017, which was NOT associated with lower risk-adjusted mortality?", options: ["Rapid antibiotics", "Rapid completion of the 3-hour bundle", "Rapid completion of an initial IV fluid bolus", "None of these"], correctIndex: 2, explanation: "Faster bolus completion was not associated with lower mortality." },
+  { question: "In Shapiro 2005 (1,278 ED patients with infection), mortality with lactate ≥4.0 mmol/L was:", options: ["4.9%", "9.0%", "28.4%", "55%"], correctIndex: 2, explanation: "28.4% versus 4.9% below 2.5 and 9.0% between 2.5–4.0 mmol/L; lactate severity tracks mortality risk." },
   { question: "ARDSNet 2000 low-tidal-volume arm mean tidal volume (days 1–3):", options: ["About 6 mL/kg actual weight", "About 6 mL/kg predicted body weight", "About 10 mL/kg predicted body weight", "About 12 mL/kg actual weight"], correctIndex: 1, explanation: "6.2 ± 0.8 mL/kg predicted body weight; mortality 31.0% vs 39.8%." },
 ];
 
