@@ -23,9 +23,9 @@ export function DischargeTransferTeaching() {
   return (
     <div className={lessonWrap}>
       <H>Transfer to the ward: timing and handover</H>
-      <Q label="GPICS 2.1 discharge" />
+      <Q label="GPICS V3 discharge" />
       <Q label="NICE CG50 night transfer" />
-      <Q label="GPICS 2.1 discharge handover" />
+      <Q label="GPICS V3 discharge handover" />
       <Q label="NICE CG50 shared handover" />
       <p><Reasoning />the patient moves to a ward with far fewer nurses per patient. The ICU and ward teams share responsibility, so the written plan must be something the ward can actually deliver. Outreach follow-up after transfer is a common local safety net (teaching synthesis).</p>
       <Check question="Who is responsible for the patient during ICU-to-ward transfer according to NICE CG50?">Both teams share responsibility, supported by a formal structured handover (medical and nursing) and a written plan.</Check>

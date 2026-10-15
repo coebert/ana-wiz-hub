@@ -196,7 +196,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "critical-care-overview": {
     status: "expanded",
-    note: "New page with three source-led lessons: ICU structure (ICS 2021 levels, GPICS 2.1 time standards), team roles (GPICS ratios, Pronovost 2002, Kerlin 2013) and communication (daily goals, I-PASS, discharge handover, Lautrette 2007). Verbatim excerpts; learning checks and quiz. Source-checked, not consultant-reviewed.",
+    note: "New page with three source-led lessons: ICU structure (ICS 2021 levels, GPICS V3 time standards), team roles (GPICS ratios, Pronovost 2002, Kerlin 2013) and communication (daily goals, I-PASS, discharge handover, Lautrette 2007). Verbatim excerpts; learning checks and quiz. Source-checked, not consultant-reviewed.",
   },
   "haemorrhagic-shock": {
     status: "expanded",
@@ -212,7 +212,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "icu-inpatient-journey": {
     status: "expanded",
-    note: "New page linked from Critical Care Overview: four stages (referral/triage, admission, daily treatment, discharge/follow-up) linking to existing ICU pages. Verbatim ICS 2021, GPICS 2.1, Pronovost 2003, Starmer 2014 and Lautrette 2007 excerpts reused from the overview block; learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
+    note: "New page linked from Critical Care Overview: four stages (referral/triage, admission, daily treatment, discharge/follow-up) linking to existing ICU pages. Verbatim ICS 2021, GPICS V3, Pronovost 2003, Starmer 2014 and Lautrette 2007 excerpts reused from the overview block; learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
   },
   "temperature-ph": {
     status: "expanded",
@@ -220,7 +220,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "icu-discharge-planning": {
     status: "expanded",
-    note: "New page linked from The ICU Inpatient Journey: four lessons (rehabilitation during the stay, ICU-to-ward transfer, ward step-down and home, 2–3 month review) quoting NICE CG83, NICE CG50 and GPICS 2.1; five-question quiz. Source-checked, not consultant-reviewed.",
+    note: "New page linked from The ICU Inpatient Journey: four lessons (rehabilitation during the stay, ICU-to-ward transfer, ward step-down and home, 2–3 month review) quoting NICE CG83, NICE CG50 and GPICS V3; five-question quiz. Source-checked, not consultant-reviewed.",
   },
   "icu-outcomes": {
     status: "expanded",
