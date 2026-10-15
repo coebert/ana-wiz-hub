@@ -88,7 +88,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer:
       "Sodium bicarbonate raises urinary pH to trap ionised salicylate in the tubule. Target urinary pH 7.5–8.5, monitoring serum K⁺ (replacement essential — alkalosis worsens hypokalaemia and hypokalaemia stops urinary alkalinisation working). Haemodialysis is indicated for severe toxicity (level > 700 mg/L, neurology, renal failure, refractory acidosis).",
-    cites: ["BJA Educ 2009"],
+    cites: ["StatPearls Acid-Base 2022"],
   },
 ];
 
@@ -112,33 +112,33 @@ const AcidsBasesBuffersTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "BJA Educ 2009",
+          "StatPearls Acid-Base 2022",
           "Peck & Hill Ch.2",
           "Cross & Plunkett Ch.3",
         ],
         workedExamples: [
-          "BJA Educ 2009",
+          "StatPearls Acid-Base 2022",
           "Peck & Hill Ch.2",
-          "BJA Educ 2009",
-          "BJA Educ 2009",
+          "StatPearls Acid-Base 2022",
+          "StatPearls Acid-Base 2022",
         ],
         keyPoints: [
           "Peck & Hill Ch.2",
           "Stewart 1983",
           "Cross & Plunkett Ch.3",
         
-          "BJA Educ 2009",
+          "StatPearls Acid-Base 2022",
         ],
       }}
       keyPoints={[
         { text: "pH = −log₁₀[H⁺]; each pH unit = 10-fold change in [H⁺]", cites: ["Stewart 1983"] },
         { text: "Normal blood pH 7.35–7.45 ([H⁺] 35–45 nmol/L). Compatible range ~6.8–7.8", cites: ["Cross & Plunkett Ch.3"] },
         { text: "Henderson-Hasselbalch: pH = pKa + log([A⁻]/[HA]). When pH = pKa → 50% ionised", cites: ["Peck & Hill Ch.2"] },
-        { text: "Only unionised drug crosses lipid membranes — basis of ion trapping and drug absorption", cites: ["BJA Educ 2009"] },
+        { text: "Only unionised drug crosses lipid membranes — basis of ion trapping and drug absorption", cites: ["StatPearls Acid-Base 2022"] },
         { text: "Bicarbonate buffer is the most important ECF buffer (open system — CO₂ exhaled by lungs)", cites: ["Stewart 1983"] },
         { text: "Haemoglobin provides ~35% of total body buffering; deoxyHb is a better buffer (Haldane effect)", cites: ["Cross & Plunkett Ch.3"] },
         { text: "Buffer systems work best within ±1 pH unit of their pKa", cites: ["Peck & Hill Ch.2"] },
-        { text: "Strong acids fully dissociate (HCl); weak acids partially dissociate (H₂CO₃) — only weak acids buffer", cites: ["BJA Educ 2009"] },
+        { text: "Strong acids fully dissociate (HCl); weak acids partially dissociate (H₂CO₃) — only weak acids buffer", cites: ["StatPearls Acid-Base 2022"] },
       ]}
       coreConcepts={
         <>
@@ -279,9 +279,9 @@ const AcidsBasesBuffersTopic = () => {
                 to 37 °C by the analyser, targeting a pH of 7.4 and PaCO₂ of 5.3 kPa at 37 °C — no correction is made for the
                 patient's actual (cold) temperature. At the patient's true temperature this represents a relative
                 <strong> respiratory alkalosis with a lower actual PaCO₂</strong> than the 37 °C value suggests. Alpha-stat
-                preserves cerebral autoregulation, maintains normal enzyme kinetics, and reduces cerebral microembolic load
-                (by avoiding the higher pump flows needed to wash out added CO₂). It is the usual approach in adult cardiac
-                surgery. <InlineRef topicId="acids-bases-buffers" refLabel="Bailey & Whitfield alpha-stat" />
+                preserves cerebral autoregulation, maintains normal enzyme kinetics, and limits cerebral microembolic load
+                (because preserved autoregulation avoids the excess, pressure-passive cerebral blood flow seen with added CO₂). It is the usual approach in adult cardiac
+                surgery. <InlineRef topicId="acids-bases-buffers" refLabel="Chatzopoulou 2025 alpha/pH-stat" />
               </p>
               <p>
                 <strong>pH-stat management</strong> instead targets pH 7.4 and PaCO₂ 5.3 kPa measured at the patient's
@@ -341,7 +341,7 @@ const AcidsBasesBuffersTopic = () => {
                 pair (bicarbonate/CO₂ on an arterial blood gas) reports the acid-base status of all the others — haemoglobin,
                 plasma protein, phosphate and bone carbonate — even though they are not measured directly. This is why the
                 bicarbonate system is used clinically despite its unfavourable pKa of 6.1, well away from physiological pH.
-                <InlineRef topicId="acids-bases-buffers" refLabel="BJA Educ 2009" />{" "}
+                <InlineRef topicId="acids-bases-buffers" refLabel="StatPearls Acid-Base 2022" />{" "}
                 <InlineRef topicId="acids-bases-buffers" refLabel="Cross & Plunkett Ch.3" />
               </p>
             </div>

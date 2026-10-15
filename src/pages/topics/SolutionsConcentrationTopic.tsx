@@ -219,7 +219,7 @@ const SolutionsConcentrationTopic = () => {
                 with the other colligative effects, and why even small solute concentration differences generate powerful fluid
                 shifts across semipermeable membranes. <strong>Oncotic (colloid osmotic) pressure</strong> — the osmotic pressure
                 specifically contributed by plasma proteins — is normally around <strong>25–28 mmHg</strong>, of which roughly
-                <strong> 65–80% is due to albumin</strong>. <InlineRef topicId="solutions-concentration" refLabel="Cross & Plunkett Ch.3" />
+                <strong> 75–80% is due to albumin</strong>. <InlineRef topicId="solutions-concentration" refLabel="Cross & Plunkett Ch.3" />
               </p>
               <p>
                 The classical <strong>Starling principle</strong> describes net capillary filtration as the balance of hydrostatic
