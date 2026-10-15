@@ -520,6 +520,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "ESICM Diuretic Consensus 2019", citation: "Joannidis M, et al. Expert consensus on practical approaches to diuretic use and diuretic resistance in critically ill patients with acute kidney injury. Intensive Care Med. 2019.", url: "https://doi.org/10.1007/s00134-019-05820-x", excerpt: "Diuretics should not be used to prevent or treat AKI, except in the management of volume overload. A furosemide stress test can be used to predict the progression of AKI and the need for renal replacement therapy. In patients with diuretic resistance, combination therapy or continuous infusion may be considered, with close monitoring of volume status, electrolytes and kidney function." },
   ],
   "metabolic-alkalosis": metabolicAlkalosisReferences,
+  "dka": dkaReferences,
   "fluid-balance": fluidBalanceReferences,
   "ventilation-protocols": ventilationProtocolsReferences,
   "haemorrhagic-shock": haemorrhagicShockReferences,
