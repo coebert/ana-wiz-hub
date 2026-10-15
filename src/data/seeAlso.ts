@@ -109,8 +109,8 @@ export const seeAlsoMap: Record<string, string[]> = {
   "neurological-disease": ["neuromuscular", "muscle-relaxants", "neuroanaesthesia", "neurointensive-care", "autonomic-nervous", "regional-anaesthesia", "depth-of-anaesthesia", "airway-management", "opioids"],
 
   // ── Intensive Care ──
-  "sepsis": ["vasoactive-agents", "antimicrobials-icu", "circulatory-failure", "acid-base", "infectious-disease-icu"],
-  "mechanical-ventilation": ["ventilators", "lung-mechanics", "ards", "respiratory-disease", "bronchospastic-failure"],
+  "sepsis": ["vasoactive-agents", "antimicrobials-icu", "circulatory-failure", "acid-base", "infectious-disease-icu", "icu-outcomes", "pics-follow-up"],
+  "mechanical-ventilation": ["ventilators", "lung-mechanics", "ards", "respiratory-disease", "bronchospastic-failure", "icu-outcomes", "pics-follow-up"],
   "circulatory-failure": ["vasoactive-agents", "cardiac-output-monitoring", "starling-forces", "sepsis", "cardiovascular-disease", "pulmonary-hypertension", "ards", "cardiothoracic", "mechanical-ventilation"],
   "aki-rrt": ["renal-physiology", "perioperative-fluids", "acid-base", "sepsis"],
   "acute-liver-failure": ["hepatic-physiology", "hepatobiliary-transplant", "toxicology"],
@@ -169,8 +169,9 @@ export const seeAlsoMap: Record<string, string[]> = {
   "renal-system-overview": ["physiology-overview", "renal-physiology", "renal-disease", "fluid-balance", "acid-base"],
   "icu-inpatient-journey": ["critical-care-overview", "icu-discharge-planning", "icu-outcomes", "sepsis-resuscitation"],
   "icu-discharge-planning": ["icu-inpatient-journey", "icu-outcomes", "pics-follow-up", "critical-care-overview"],
-  "icu-outcomes": ["icu-discharge-planning", "pics-follow-up", "icu-inpatient-journey", "sepsis", "icu-sedation-delirium"],
-  "pics-follow-up": ["icu-outcomes", "icu-discharge-planning", "icu-sedation-delirium"],
+  "critical-care-overview": ["icu-inpatient-journey", "icu-outcomes", "pics-follow-up", "sepsis", "mechanical-ventilation", "icu-anaphylaxis", "icu-eclampsia"],
+  "icu-outcomes": ["icu-discharge-planning", "pics-follow-up", "icu-inpatient-journey", "sepsis", "mechanical-ventilation", "critical-care-overview", "icu-sedation-delirium"],
+  "pics-follow-up": ["icu-outcomes", "icu-discharge-planning", "sepsis", "mechanical-ventilation", "critical-care-overview", "icu-sedation-delirium"],
   "sepsis-resuscitation": ["sepsis", "septic-shock", "mechanical-ventilation", "fluid-balance", "antimicrobials-pharm"],
   "septic-shock": ["sepsis", "sepsis-resuscitation", "haemorrhagic-shock", "adrenal-crisis", "icu-outcomes"],
   "icu-anaphylaxis": ["critical-care-overview", "sepsis-resuscitation", "icu-eclampsia"],
