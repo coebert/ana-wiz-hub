@@ -151,6 +151,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/intensive-care/icu-staffing-by-unit</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-costs</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
