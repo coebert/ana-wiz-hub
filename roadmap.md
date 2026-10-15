@@ -63,3 +63,4 @@
 - [x] Haemorrhagic Shock & Resuscitation page (shock recognition, BP monitoring, transfusion/TXA) — sourced, tested, search + audit rebuilt
 - [x] Mass decontamination evidence lesson (PRISM) + stewardship trials lesson (STOP-IT, SAPS, ADAPT-Sepsis)
 - [x] ICU Ventilation Protocols page (admission, monitoring, weaning protocols)
+- [ ] Expand Endocrine Emergencies with adrenal insufficiency, sepsis steroid decisions and DKA safety lessons; verify sources, learning checks, quiz, rendering, search and private audit copy.
