@@ -20,6 +20,24 @@ interface RecentExpansion {
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
   {
+    topicId: "pituitary-apoplexy",
+    section: "intensive-care",
+    title: "Pituitary Apoplexy",
+    note: "New page: when to suspect it, MRI, empirical steroid indications and doses, early surgery evidence and follow-up.",
+  },
+  {
+    topicId: "adrenal-crisis",
+    section: "intensive-care",
+    title: "Adrenal Crisis",
+    note: "New page: steroid-induced risk, immediate hydrocortisone and fluids, fludrocortisone, sick-day rules, and replacement versus septic-shock steroids.",
+  },
+  {
+    topicId: "thyroid-storm",
+    section: "intensive-care",
+    title: "Thyroid Storm",
+    note: "New page: clinical diagnosis and Burch–Wartofsky score, thionamide-then-iodide timing, beta-1 blockade, steroids, cooling and plasmapheresis.",
+  },
+  {
     topicId: "dka",
     section: "intensive-care",
     title: "Diabetic Ketoacidosis (DKA)",

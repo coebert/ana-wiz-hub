@@ -214,6 +214,18 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from Critical Care Overview: four stages (referral/triage, admission, daily treatment, discharge/follow-up) linking to existing ICU pages. Verbatim ICS 2021, GPICS 2.1, Pronovost 2003, Starmer 2014 and Lautrette 2007 excerpts reused from the overview block; learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "thyroid-storm": {
+    status: "expanded",
+    note: "New standalone page linked from Endocrine Emergencies: four lessons (recognition/BWPS, thionamides and iodide timing, beta-blockade/steroids/cooling/plasmapheresis, perioperative) with verbatim JTA/JES 2016 and ATA 2016 quotations; learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
+  },
+  "adrenal-crisis": {
+    status: "expanded",
+    note: "New standalone page linked from Endocrine Emergencies: four lessons (recognition, immediate hydrocortisone and fluids, recovery/sick-day rules, replacement vs septic-shock adjunct) reusing verified SfE 2016 and SSC 2021 excerpts plus two new SfE quotations; five-question quiz. Source-checked, not consultant-reviewed.",
+  },
+  "pituitary-apoplexy": {
+    status: "expanded",
+    note: "New standalone page linked from Endocrine Emergencies: three lessons (recognition/imaging, emergency steroids, surgery vs conservative and follow-up) with verbatim SfE 2016 and UK 2011 quotations; five-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "dka": {
     status: "expanded",
     note: "New standalone page linked from Endocrine Emergencies: five source-led lessons (diagnosis/blood ketones, fluids and balanced-crystalloid evidence, fixed-rate insulin and potassium safety, resolution criteria and transition, euglycaemic DKA/SGLT2/escalation). Verified JBDS 2023, Umpierrez 2024 consensus, SMART/SALT-ED 2020 and Jung 2019 quotations reused from the endocrine reference block; learning checks and five-question quiz. Source-checked, not consultant-reviewed.",
