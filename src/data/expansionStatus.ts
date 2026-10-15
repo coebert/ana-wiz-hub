@@ -230,6 +230,14 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from Critical Care Overview: three lessons (recognition and first doses, refractory anaphylaxis, after the reaction) quoting RCUK 2021; five-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "icu-costs": {
+    status: "expanded",
+    note: "New page linked from ICU Outcomes: four lessons on NHS critical care bed-day costs (DHSC 2020/21; NHS National Schedule 2019/20 adult costs by organs supported and unit function, aggregates labelled arithmetic), US comparison and post-discharge costs; six-question quiz. Source-checked, not consultant-reviewed.",
+  },
+  "icu-length-of-stay": {
+    status: "expanded",
+    note: "New page linked from ICU Outcomes: four lessons on ICNARC 2024-25 and NHS HES Adult Critical Care stays, support days by organ type, condition-specific stays and deprivation; six-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "icu-staffing-ratios": {
     status: "expanded",
     note: "New page linked from Critical Care Overview: five lessons quoting GPICS V3 (January 2026) staffing chapters for consultants, resident doctors/ACCPs, registered nurses and nursing associates, pharmacy, AHPs and support staff, by day/night; worked nurse and pharmacist arithmetic; eight-question quiz. Source-checked, not consultant-reviewed.",
