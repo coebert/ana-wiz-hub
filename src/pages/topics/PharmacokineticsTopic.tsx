@@ -48,9 +48,9 @@ const PharmacokineticsTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        objectives: ["Peck & Hill Ch.2", "BJA Educ 2017", "BJA Educ PK 2018"],
-        workedExamples: ["Peck & Hill Ch.2", "Stanski & Shafer", "BJA Educ 2017", "BJA Educ PK 2018"],
-        keyPoints: ["ICM 2013 (Antibiotic PK in critical illness)", "Peck & Hill Ch.2", "BJA Educ 2017", "Stanski & Shafer", "BJA Educ PK 2018"],
+        objectives: ["Peck & Hill Ch.2", "Calvey & Williams 2008", "Hughes 1992 CSHT"],
+        workedExamples: ["Peck & Hill Ch.2", "StatPearls PK 2023", "Calvey & Williams 2008", "Hughes 1992 CSHT"],
+        keyPoints: ["ICM 2013 (Antibiotic PK in critical illness)", "Peck & Hill Ch.2", "Calvey & Williams 2008", "StatPearls PK 2023", "Hughes 1992 CSHT"],
       }}
       coreConcepts={
         <>
@@ -263,16 +263,16 @@ const PharmacokineticsTopic = () => {
             </div>
           ),
           answer: "Remifentanil — flat CSHT ~3–4 min ensures predictable wake-up; bridge with longer-acting analgesia.",
-    cites: ["BJA Educ 2017"],
+    cites: ["Calvey & Williams 2008"],
   },
       ]}
       keyPoints={[
-        { text: "Pharmacokinetics is ADME: Absorption, Distribution, Metabolism, and Elimination.", cites: ["Stanski & Shafer"] },
-        { text: "Compartment models describe drug distribution kinetically. The two-compartment model shows bi-exponential decline (α distribution, β elimination).", cites: ["Peck & Hill Ch.2", "BJA Educ PK 2018"] },
-        { text: "Volume of distribution (Vd) is a theoretical concept; a large Vd indicates extensive tissue distribution.", cites: ["BJA Educ 2017"] },
-        { text: "Clearance is the volume of plasma completely cleared of drug per unit time. High extraction ratio drugs are flow-dependent.", cites: ["Stanski & Shafer"] },
+        { text: "Pharmacokinetics is ADME: Absorption, Distribution, Metabolism, and Elimination.", cites: ["StatPearls PK 2023"] },
+        { text: "Compartment models describe drug distribution kinetically. The two-compartment model shows bi-exponential decline (α distribution, β elimination).", cites: ["Peck & Hill Ch.2", "Hughes 1992 CSHT"] },
+        { text: "Volume of distribution (Vd) is a theoretical concept; a large Vd indicates extensive tissue distribution.", cites: ["Calvey & Williams 2008"] },
+        { text: "Clearance is the volume of plasma completely cleared of drug per unit time. High extraction ratio drugs are flow-dependent.", cites: ["StatPearls Clearance 2023", "Peck & Hill Ch.2"] },
         { text: "Half-life (t½ = 0.693 × Vd / Cl) determines time to steady state (~4-5 half-lives).", cites: ["Peck & Hill Ch.2"] },
-        { text: "Context-sensitive half-time is more clinically relevant for infusions than terminal half-life. Remifentanil has a uniquely short and constant CSHT.", cites: ["BJA Educ 2017"] },
+        { text: "Context-sensitive half-time is more clinically relevant for infusions than terminal half-life. Remifentanil has a uniquely short and constant CSHT.", cites: ["Calvey & Williams 2008"] },
       ]}
     />
   );
