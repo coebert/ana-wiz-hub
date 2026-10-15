@@ -46,7 +46,7 @@ export function RenalHormonesTeaching() {
       <RQ label="OpenStax renin" />
       <RQ label="OpenStax angiotensin II" />
       <RQ label="OpenStax ADH" />
-      <p><Reasoning />after blood loss or dehydration, angiotensin II and ADH act together to hold on to salt and water and support blood pressure, which is one reason urine output falls after surgery even when the kidneys are healthy (teaching summary). ACE inhibitors and angiotensin receptor blockers remove part of this defence, which helps explain the low blood pressure sometimes seen at induction in patients taking them (teaching summary). See <L to="/perioperative/aki-perioperative">perioperative kidney injury</L> pages for clinical detail where available.</p>
+      <p><Reasoning />after blood loss or dehydration, angiotensin II and ADH act together to hold on to salt and water and support blood pressure, which is one reason urine output falls after surgery even when the kidneys are healthy (teaching summary). ACE inhibitors and angiotensin receptor blockers remove part of this defence, which helps explain the low blood pressure sometimes seen at induction in patients taking them (teaching summary). See <L to="/intensive-care/aki-rrt">AKI &amp; renal replacement therapy</L> for clinical detail.</p>
       <Check question="How does ADH increase water reabsorption?">It moves aquaporin water channels into the apical membrane of principal cells in the collecting duct, so water leaves the duct by osmosis.</Check>
       <LessonSources topicId={RT} labels={["OpenStax renin", "OpenStax angiotensin II", "OpenStax ADH"]} />
     </div>
