@@ -83,7 +83,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "sepsis": {
     status: "in-progress",
-    note: "Lesson added on the 65 trial (permissive hypotension) and HYPRESS (steroids before shock), with sources list and learning check. BLING III / prolonged β-lactam infusion meta-analysis and Seymour 2017 antibiotic-timing lessons added. Other subsections still need review.",
+    note: "15 October 2026: added Sepsis-3 criteria/screening and EGDT (Rivers 2001 to PRISM 2017) lessons with verbatim Sepsis-3, SSC 2021, Rivers and PRISM quotations, learning checks and two quiz questions. Lesson added on the 65 trial (permissive hypotension) and HYPRESS (steroids before shock), with sources list and learning check. BLING III / prolonged β-lactam infusion meta-analysis and Seymour 2017 antibiotic-timing lessons added. Other subsections still need review.",
   },
   "elderly-anaesthesia": {
     status: "in-progress",

@@ -19,6 +19,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 import { SepsisTargetsSteroidsTeaching } from "@/components/topic/SepsisTargetsSteroidsTeaching";
 import { SepsisBetaLactamInfusionTeaching } from "@/components/topic/SepsisBetaLactamInfusionTeaching";
 import { SepsisAntibioticTimingTeaching } from "@/components/topic/SepsisAntibioticTimingTeaching";
+import { SepsisCriteriaTeaching, SepsisEgdtTeaching } from "@/components/topic/SepsisCriteriaEgdtTeaching";
 import { CollapsibleSubsection as LessonSubsection } from "@/components/topic/CollapsibleSubsection";
 
 const sepsisTocItems = [
@@ -962,6 +963,12 @@ const SepsisTopic = () => {
       </section>
 
       <section className="max-w-5xl mx-auto px-4 py-6">
+        <LessonSubsection title="Sepsis Criteria: Sepsis-3, Septic Shock and Screening">
+          <SepsisCriteriaTeaching />
+        </LessonSubsection>
+        <LessonSubsection title="Early Goal-Directed Therapy: Rivers to PRISM">
+          <SepsisEgdtTeaching />
+        </LessonSubsection>
         <LessonSubsection title="Lower MAP Targets and Steroids Before Shock">
           <SepsisTargetsSteroidsTeaching />
         </LessonSubsection>
