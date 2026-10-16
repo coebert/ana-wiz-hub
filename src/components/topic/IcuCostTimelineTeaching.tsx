@@ -39,7 +39,7 @@ export function TimelineOrgansTeaching() {
     <H>How each organ-support level changed</H>
     <p><Reasoning />Published national average cost per adult bed day by organs supported (rounded to the nearest pound). The 2019/20 rows are the general adult critical care rows used on <L to="/intensive-care/icu-costs">ICU Costs</L>; the other years are the all-adult Total HRGs rows (teaching summary).</p>
     <Table head={["Organs supported", "2013/14", "2015/16", "2021/22"]} rows={[
-      ["0", "£643", "—", "£1,640"],
+      ["0", "£643", "£700", "£1,640"],
       ["1", "£890", "£994", "£1,587"],
       ["2", "£1,266", "£1,345", "£2,278"],
       ["3", "£1,449", "£1,582", "£2,587"],
