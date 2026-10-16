@@ -50,7 +50,7 @@ const sepsisFaqs: Array<[string, string]> = [
   ],
   [
     "Why does every hour of delayed antibiotics matter in septic shock?",
-    "Observational data (Kumar 2006; Ferrer 2014; Seymour NEJM 2017 — New York State sepsis mandate cohort) show that each hour of delay in effective antibiotic administration in septic shock is associated with a ~4–8% absolute increase in in-hospital mortality. The 2017 New York data demonstrated an OR of 1.04 per hour for the 3-hour bundle. Empirical cover should target the suspected source and local resistance patterns, be broad enough to cover MRSA and Pseudomonas where clinical features suggest it, and be de-escalated once cultures and clinical course allow.",
+    "Observational data link antibiotic delay to worse outcomes: Kumar 2006 found a 7.6% average decrease in survival per hour of delay in starting effective antimicrobials over the first 6 hours of septic shock, and the 2017 New York State mandate cohort (Seymour, NEJM) found an OR of 1.04 per hour for in-hospital mortality with delayed completion of the 3-hour bundle. Empirical cover should target the suspected source and local resistance patterns, be broad enough to cover MRSA and Pseudomonas where clinical features suggest it, and be de-escalated once cultures and clinical course allow.",
   ],
   [
     "Is 30 mL/kg of crystalloid still the recommended initial fluid bolus?",
