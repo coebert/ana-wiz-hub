@@ -230,6 +230,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from Critical Care Overview: three lessons (recognition and first doses, refractory anaphylaxis, after the reaction) quoting RCUK 2021; five-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "icu-cost-timeline": {
+    status: "expanded",
+    note: "New page linked from ICU Costs and ICU Outcomes: three lessons on NHS adult critical care bed-day costs 2013/14–2021/22 from published schedules (averages labelled our arithmetic), organ-support rows and caveats; five-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "icu-costs": {
     status: "expanded",
     note: "New page linked from ICU Outcomes: four lessons on NHS critical care bed-day costs (DHSC 2020/21; NHS National Schedule 2019/20 adult costs by organs supported and unit function, aggregates labelled arithmetic), US comparison and post-discharge costs; six-question quiz. Source-checked, not consultant-reviewed.",
