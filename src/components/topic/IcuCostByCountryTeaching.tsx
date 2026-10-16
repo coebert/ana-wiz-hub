@@ -42,7 +42,7 @@ export function CostCountryAustraliaTeaching() {
     <Q label="Hicks 2019 study scope" />
     <p><Reasoning />Hicks and colleagues surveyed Australian ICUs through the ANZICS Centre for Outcome and Resource Evaluation registry. Larger units and higher occupancy were each significantly associated with lower cost per bed-day, suggesting economies of scale. An older single-unit study gives a lower figure from an earlier era:</p>
     <Q label="Rechner 2005 ICU day cost" />
-    <p><Reasoning />Rechner and Lipman costed one tertiary referral ICU in 2002/03; staff were about 69% of costs. The two studies are fifteen years apart with different methods, which is why their figures differ so much.</p>
+    <p><Reasoning />Rechner and Lipman costed one tertiary referral ICU in 2002/03; staff were about 69% of costs. The two studies used different methods and their data are about a decade apart (2002/03 versus 2013/14), which is why their figures differ so much.</p>
     <Check question="In the Hicks 2019 study, which two factors were significantly associated with lower cost per patient bed-day?">Higher ICU bed number and higher occupancy.</Check>
   </div>;
 }
