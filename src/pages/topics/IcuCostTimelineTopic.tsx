@@ -21,8 +21,8 @@ export default function IcuCostTimelineTopic() {
     sectionSources={{ objectives: ["RC 2013-14 adult CC by organs", "NCC 2021/22 adult CC by organs"] }}
     keyPoints={[
       { text: "Adult average per bed day: about £1,190 (2013/14), £1,307 (2015/16), £1,620 (2019/20), £2,144 (2021/22) — our arithmetic from published rows", cites: ["RC 2013-14 adult CC by organs", "RC 2015-16 adult CC by organs", "NCC 2019/20 schedule", "NCC 2021/22 adult CC by organs"] },
-      { text: "2020/21 was published only as an all-ages £1,881 per day, so it is not in the adult series", cites: ["DHSC 2023 NHS bed-day costs"] },
-      { text: "Figures are cash, trust-reported costs spanning a costing-method change and COVID", cites: ["DHSC 2023 critical care caveat"] },
+      { text: "2020/21 was published only as an all-ages £1,881 per day, so it is not in the adult series", cites: ["DHSC 2023 NHS bed-day costs", "DHSC 2023 critical care caveat"] },
+      { text: "Figures are cash, trust-reported costs spanning a costing-method change and COVID", cites: ["RC 2013-14 adult CC by organs", "NCC 2021/22 adult CC by organs"] },
     ]}
     quizQuestions={quiz}
     coreConcepts={<div className="space-y-8">
