@@ -37,7 +37,7 @@ export function ThyroidStormSupportTeaching() {
     <H>Corticosteroids</H>
     <Quote label="JTA storm corticosteroids 2016" />
     <Quote label="ATA 2016" />
-    <p>Steroids treat relative adrenal insufficiency in the hypermetabolic state and reduce T4-to-T3 conversion. The two guideline regimens are similar in total dose (about 300 mg hydrocortisone a day).</p>
+    <p>Steroids treat relative adrenal insufficiency in the hypermetabolic state and reduce T4-to-T3 conversion. JTA/JES uses 300 mg hydrocortisone a day outright; the ATA regimen totals more on day 1 because of its 300 mg loading dose, settling to an equivalent 300 mg/day maintenance rate (100 mg every 8 hours) thereafter.</p>
     <H>Cooling and the choice of antipyretic</H>
     <Quote label="JTA storm cooling 2016" />
     <p>JTA/JES also advises against aspirin and some other anti-inflammatory antipyretics because they may increase free thyroid hormone by displacing it from binding proteins (paraphrased from the guideline). Look for and treat infection as a trigger.</p>
