@@ -174,6 +174,7 @@ export const seeAlsoMap: Record<string, string[]> = {
   "icu-discharge-planning": ["icu-inpatient-journey", "icu-outcomes", "pics-follow-up", "critical-care-overview", "icu-length-of-stay"],
   "critical-care-overview": ["icu-inpatient-journey", "icu-outcomes", "pics-follow-up", "sepsis", "mechanical-ventilation", "icu-anaphylaxis", "icu-eclampsia", "icu-staffing-ratios"],
   "icu-staffing-by-country": ["icu-staffing-ratios", "icu-staffing-by-unit", "critical-care-overview", "icu-general-unit", "icu-cost-by-country"],
+  "icu-cost-timeline": ["icu-costs", "icu-outcomes", "icu-cost-by-country", "icu-cost-by-condition"],
   "icu-cost-by-country": ["icu-costs", "icu-cost-by-condition", "icu-staffing-by-country", "icu-outcomes", "critical-care-overview"],
   "icu-staffing-by-unit": ["icu-staffing-by-country", "icu-staffing-ratios", "critical-care-overview", "icu-inpatient-journey", "icu-general-unit", "icu-cardiac-unit", "icu-neuro-unit", "icu-liver-unit", "icu-obstetric-unit"],
   "icu-general-unit": ["icu-staffing-by-unit", "icu-staffing-ratios", "icu-costs", "critical-care-overview"],
