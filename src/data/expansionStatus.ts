@@ -246,6 +246,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from ICU Staffing Ratios and Staffing by Unit Type: GPICS V3 compared with CICM IC-1 (2016), ESICM 2011 and Leapfrog 2026, all quoted verbatim; six-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "icu-cost-by-country": {
+    status: "expanded",
+    note: "New page linked from ICU Costs: NHS 2019/20 bed-day costs beside Hicks 2019 (Australia), an Auckland DHB OIA figure (New Zealand), Tan 2012 and IPOC 2006 (Europe) and Dasta 2005 (US), all quoted verbatim with comparability caveats; six-question quiz. Source-checked, not consultant-reviewed.",
+  },
   "icu-staffing-by-unit": {
     status: "expanded",
     note: "New page linked from ICU Staffing Ratios: four lessons quoting GPICS V3 (January 2026) unit-type chapters (cardiothoracic, neurocritical care, burns, smaller remote and rural, enhanced care) against the general staffing baseline; six-question quiz. Source-checked, not consultant-reviewed.",
