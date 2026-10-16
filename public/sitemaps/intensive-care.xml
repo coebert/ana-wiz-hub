@@ -169,6 +169,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://anaesthesiacore.app/intensive-care/icu-cost-timeline</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://anaesthesiacore.app/intensive-care/icu-general-unit</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -218,7 +223,7 @@
   </url>
   <url>
     <loc>https://anaesthesiacore.app/intensive-care/sepsis</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
