@@ -15,7 +15,7 @@ const Table = ({ head, rows }: { head: string[]; rows: string[][] }) => (
 );
 
 export function TimelineSeriesTeaching() {
-  return lessonWrap(<>
+  return <div className={lessonWrap}>
     <H>Adult critical care cost per bed day, year by year</H>
     <p><Reasoning />Each national schedule costs adult critical care with the same seven currencies (HRGs XC01Z–XC07Z, from 0 to 6 or more organs supported). We took the published rows for every year we could download and verify, and weighted each row by its bed days to give one adult average per year. The averages are our arithmetic; the row values are as published. Figures are cash (not inflation-adjusted) and are trust-reported costs, not prices paid (teaching summary).</p>
     <Table head={["Year", "Collection", "Adult bed days", "All-adult average (our arithmetic)", "Change from previous verified year"]} rows={[
@@ -31,11 +31,11 @@ export function TimelineSeriesTeaching() {
     <Q label="NCC 2019/20 schedule" />
     <Q label="NCC 2021/22 adult CC by organs" />
     <Check question="What was the all-adult critical care cost per bed day in 2013/14 and in 2021/22?">About £1,190 and £2,144 respectively (bed-day-weighted arithmetic from the published rows), about 80% higher in cash terms.</Check>
-  </>);
+  </div>;
 }
 
 export function TimelineOrgansTeaching() {
-  return lessonWrap(<>
+  return <div className={lessonWrap}>
     <H>How each organ-support level changed</H>
     <p><Reasoning />Published national average cost per adult bed day by organs supported (rounded to the nearest pound). The 2019/20 rows are the general adult critical care rows used on <L to="/intensive-care/icu-costs">ICU Costs</L>; the other years are the all-adult Total HRGs rows (teaching summary).</p>
     <Table head={["Organs supported", "2013/14", "2015/16", "2021/22"]} rows={[
@@ -50,11 +50,11 @@ export function TimelineOrgansTeaching() {
     <Q label="NCC 2019/20 general ICU by organs" />
     <p><Reasoning />The ratio between the most and least intensive days narrowed: a six-plus-organ day cost about 2.1 times a one-organ day in 2013/14 and about 1.9 times in 2021/22 (our arithmetic). In 2021/22 a zero-organ day was published as slightly dearer than a one-organ day; that is how the data were reported, likely reflecting few and unusual zero-organ days, and should not be read as a clinical effect (teaching summary).</p>
     <Check question="Roughly how much more did a six-or-more-organ day cost than a one-organ day in 2021/22?">About 1.9 times (£2,985 vs £1,587), slightly less than the 2.1-fold gap in 2013/14.</Check>
-  </>);
+  </div>;
 }
 
 export function TimelineCaveatsTeaching() {
-  return lessonWrap(<>
+  return <div className={lessonWrap}>
     <H>Reading the trend safely</H>
     <Q label="DHSC 2023 NHS bed-day costs" />
     <Q label="DHSC 2023 critical care caveat" />
@@ -67,5 +67,5 @@ export function TimelineCaveatsTeaching() {
     </ul>
     <p>For costs by country see <L to="/intensive-care/icu-cost-by-country">ICU Costs by Country</L>; by condition see <L to="/intensive-care/icu-cost-by-condition">ICU Cost by Condition</L>.</p>
     <Check question="Give two reasons the 2013/14 to 2021/22 rise overstates real growth in ICU spending.">Figures are not inflation-adjusted, and the costing method changed from Reference Costs to the National Cost Collection (plus COVID effects in 2021/22).</Check>
-  </>);
+  </div>;
 }
