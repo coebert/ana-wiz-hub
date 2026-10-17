@@ -87,7 +87,7 @@ Deno.serve(async (req) => {
         const s = new Date(body.startDate)
         const e = new Date(body.endDate)
         if (!isNaN(s.getTime()) && !isNaN(e.getTime()) && s <= e) {
-          const maxSpan = 90
+          const maxSpan = 490
           const spanDays = Math.round((e.getTime() - s.getTime()) / (24 * 60 * 60 * 1000)) + 1
           if (spanDays <= maxSpan) {
             startStr = fmtDate(s)
@@ -95,6 +95,14 @@ Deno.serve(async (req) => {
             days = spanDays
           }
         }
+      }
+      if (!startStr && body && body.allTime === true) {
+        // App created April 2026; GSC keeps ~16 months.
+        const e = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)
+        const s = new Date('2026-04-01T00:00:00Z')
+        startStr = fmtDate(s)
+        endStr = fmtDate(e)
+        days = Math.round((e.getTime() - s.getTime()) / 86400000) + 1
       }
       if (!startStr && body && typeof body.days === 'number' && body.days > 0 && body.days <= 90) {
         days = Math.floor(body.days)

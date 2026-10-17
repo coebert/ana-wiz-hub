@@ -106,6 +106,7 @@ const RANGE_OPTIONS = [
   { label: "7d", days: 7 },
   { label: "28d", days: 28 },
   { label: "90d", days: 90 },
+  { label: "All time", days: -1 },
   { label: "Custom", days: 0 },
 ];
 
@@ -113,7 +114,7 @@ export default function SeoAnalyticsPanel() {
   const [data, setData] = useState<SeoData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [days, setDays] = useState(28);
+  const [days, setDays] = useState(-1);
   const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
   const [calendarOpen, setCalendarOpen] = useState(false);
 
@@ -124,7 +125,7 @@ export default function SeoAnalyticsPanel() {
     setError(null);
     const body = range?.from && range?.to
       ? { startDate: format(range.from, "yyyy-MM-dd"), endDate: format(range.to, "yyyy-MM-dd") }
-      : { days: d };
+      : d === -1 ? { allTime: true } : { days: d };
     const { data: res, error: err } = await supabase.functions.invoke("seo-analytics", { body });
     if (err) {
       setError(err.message);
