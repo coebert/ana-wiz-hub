@@ -129,8 +129,10 @@ export default function SeoAnalyticsPanel() {
     const { data: res, error: err } = await supabase.functions.invoke("seo-analytics", { body });
     if (err) {
       setError(err.message);
+      setData(null);
     } else if ((res as any)?.error) {
       setError((res as any).error);
+      setData(null);
     } else {
       setData(res as SeoData);
     }
@@ -240,14 +242,14 @@ export default function SeoAnalyticsPanel() {
       {/* KPI cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {[
-          { label: "Clicks",        value: fmtNum(totals?.clicks),       help: "Visits from Google search results" },
+          { label: "Clicks",        value: fmtNum(totals?.clicks),       help: "Clicks from Google search results" },
           { label: "Impressions",   value: fmtNum(totals?.impressions),  help: "Times a page from your site appeared in results" },
           { label: "Avg. CTR",      value: fmtPct(totals?.ctr),          help: "Clicks ÷ impressions" },
-          { label: "Avg. position", value: fmtPos(totals?.position),     help: "Mean ranking across all queries (1 = top)" },
+          { label: "Avg. position", value: fmtPos(totals?.position),     help: "GSC impression-weighted average position (1 = top)" },
         ].map(k => (
           <div key={k.label} className="p-4 rounded-xl border border-border bg-card">
             <p className="text-xs uppercase tracking-wide text-muted-foreground">{k.label}</p>
-            <p className="text-2xl font-bold tabular-nums mt-1">{loading && !data ? "…" : k.value}</p>
+            <p className="text-2xl font-bold tabular-nums mt-1">{error || data?.totals?.error ? "Unavailable" : loading && !data ? "…" : k.value}</p>
             <p className="text-xs text-muted-foreground mt-1">{k.help}</p>
           </div>
         ))}
@@ -271,7 +273,7 @@ export default function SeoAnalyticsPanel() {
             );
           })}
           {(!data?.byDate?.rows || data.byDate.rows.length === 0) && (
-            <p className="text-sm text-muted-foreground self-center w-full text-center">No data yet for this window.</p>
+            <p className="text-sm text-muted-foreground self-center w-full text-center">{error || data?.byDate?.error ? "Daily performance unavailable." : "No data yet for this window."}</p>
           )}
         </div>
       </div>
@@ -281,7 +283,7 @@ export default function SeoAnalyticsPanel() {
         <div className="p-4 rounded-xl border border-border bg-card">
           <h3 className="text-sm font-semibold mb-1">Avg. Google position over time</h3>
           <p className="text-xs text-muted-foreground mb-3">
-            Mean rank across all queries (lower = better, axis reversed).
+            GSC impression-weighted average position (lower = better, axis reversed).
           </p>
           <div className="h-64">
             {(data?.byDate?.rows ?? []).length > 0 ? (
@@ -369,7 +371,7 @@ export default function SeoAnalyticsPanel() {
                 </LineChart>
               </ResponsiveContainer>
             ) : (
-              <p className="text-sm text-muted-foreground text-center pt-10">No data yet for this window.</p>
+              <p className="text-sm text-muted-foreground text-center pt-10">{error || data?.byDate?.error ? "Daily performance unavailable." : "No data yet for this window."}</p>
             )}
           </div>
           <p className="text-[11px] text-muted-foreground mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -473,7 +475,7 @@ export default function SeoAnalyticsPanel() {
                 </LineChart>
               </ResponsiveContainer>
             ) : (
-              <p className="text-sm text-muted-foreground text-center pt-10">No data yet for this window.</p>
+              <p className="text-sm text-muted-foreground text-center pt-10">{error || data?.byDate?.error ? "Daily performance unavailable." : "No data yet for this window."}</p>
             )}
           </div>
           <p className="text-[11px] text-muted-foreground mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -517,7 +519,7 @@ export default function SeoAnalyticsPanel() {
                   </tr>
                 ))}
                 {(!data?.topQueries?.rows || data.topQueries.rows.length === 0) && (
-                  <tr><td colSpan={5} className="py-4 text-center text-muted-foreground">No queries yet.</td></tr>
+                  <tr><td colSpan={5} className="py-4 text-center text-muted-foreground">{error || data?.topQueries?.error ? "Unavailable: request failed." : "No queries yet."}</td></tr>
                 )}
               </tbody>
             </table>
@@ -557,7 +559,7 @@ export default function SeoAnalyticsPanel() {
                   );
                 })}
                 {(!data?.topPages?.rows || data.topPages.rows.length === 0) && (
-                  <tr><td colSpan={4} className="py-4 text-center text-muted-foreground">No pages yet.</td></tr>
+                  <tr><td colSpan={4} className="py-4 text-center text-muted-foreground">{error || data?.topPages?.error ? "Unavailable: request failed." : "No pages yet."}</td></tr>
                 )}
               </tbody>
             </table>
@@ -585,7 +587,7 @@ export default function SeoAnalyticsPanel() {
               );
             })}
             {(!data?.topCountries?.rows || data.topCountries.rows.length === 0) && (
-              <li className="text-muted-foreground">No data yet.</li>
+              <li className="text-muted-foreground">{error || data?.topCountries?.error ? "Unavailable: request failed." : "No data yet."}</li>
             )}
           </ul>
         </div>
@@ -603,7 +605,7 @@ export default function SeoAnalyticsPanel() {
               </li>
             ))}
             {(!data?.byDevice?.rows || data.byDevice.rows.length === 0) && (
-              <li className="text-muted-foreground">No data yet.</li>
+              <li className="text-muted-foreground">{error || data?.byDevice?.error ? "Unavailable: request failed." : "No data yet."}</li>
             )}
           </ul>
         </div>

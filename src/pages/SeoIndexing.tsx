@@ -131,7 +131,7 @@ export default function SeoIndexing() {
             {isLoading ? (
               <Skeleton className="h-8 w-32" />
             ) : !sitemap || hasError(sitemap) ? (
-              <Badge variant="destructive">Error</Badge>
+              <Badge variant="destructive">Unavailable</Badge>
             ) : (
               (() => {
                 const s = sitemap as SitemapInfo;
@@ -171,8 +171,10 @@ export default function SeoIndexing() {
           <CardContent>
             {isLoading ? (
               <Skeleton className="h-8 w-24" />
+            ) : error || !totals || hasError(totals) ? (
+              <p className="text-sm text-muted-foreground">Search performance unavailable.</p>
             ) : (
-              <p className="text-3xl font-semibold">{fmtNum(totalsRow?.impressions)}</p>
+              <p className="text-3xl font-semibold">{fmtNum(totalsRow?.impressions ?? 0)}</p>
             )}
             <p className="mt-1 text-xs text-muted-foreground">
               Clicks: {fmtNum(totalsRow?.clicks)} · CTR:{" "}
@@ -184,14 +186,16 @@ export default function SeoIndexing() {
         <Card>
           <CardHeader>
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Indexed pages (28d)
+              Top pages with impressions (max 10)
             </CardTitle>
           </CardHeader>
           <CardContent>
             {isLoading ? (
               <Skeleton className="h-8 w-24" />
+            ) : error || !topPages || hasError(topPages) ? (
+              <p className="text-sm text-muted-foreground">Top pages unavailable.</p>
             ) : (
-              <p className="text-3xl font-semibold">{fmtNum(topPagesRows.length ? totalsRowPagesCount(topPages) : undefined)}</p>
+              <p className="text-3xl font-semibold">{fmtNum(topPagesRows.length)}</p>
             )}
             <p className="mt-1 text-xs text-muted-foreground">
               Pages with at least one impression in the period
@@ -207,6 +211,8 @@ export default function SeoIndexing() {
         <CardContent>
           {isLoading ? (
             <Skeleton className="h-32 w-full" />
+          ) : error || !byDate || hasError(byDate) ? (
+            <p className="text-sm text-muted-foreground">Daily performance unavailable.</p>
           ) : byDateRows.length === 0 ? (
             <p className="text-sm text-muted-foreground">No data yet for the last 28 days.</p>
           ) : (
@@ -238,6 +244,8 @@ export default function SeoIndexing() {
         <CardContent>
           {isLoading ? (
             <Skeleton className="h-40 w-full" />
+          ) : error || !topPages || hasError(topPages) ? (
+            <p className="text-sm text-muted-foreground">Top pages unavailable.</p>
           ) : topPagesRows.length === 0 ? (
             <p className="text-sm text-muted-foreground">No page data yet.</p>
           ) : (
@@ -282,9 +290,4 @@ export default function SeoIndexing() {
 
     </PageSection>
   );
-}
-
-function totalsRowPagesCount(topPages: IndexingPayload["topPages"] | undefined): number | undefined {
-  if (!topPages || hasError(topPages)) return undefined;
-  return (topPages as { rows?: AnalyticsRow[] }).rows?.length;
 }
