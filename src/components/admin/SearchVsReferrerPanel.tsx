@@ -398,7 +398,7 @@ export const SearchVsReferrerPanel = () => {
     const days: string[] = [];
     for (let i = RANGE_DAYS - 1; i >= 0; i--) {
       days.push(
-        new Date(Date.now() - i * 24 * 60 * 60 * 1000).toISOString().slice(0, 10),
+        new Date(Date.parse(gsc?.endDate ?? new Date(Date.now() - 2 * 86400000).toISOString().slice(0, 10)) - i * 86400000).toISOString().slice(0, 10),
       );
     }
 
@@ -492,13 +492,13 @@ export const SearchVsReferrerPanel = () => {
         </button>
       </div>
       <p className="text-xs text-muted-foreground mb-4">
-        Last {RANGE_DAYS} days · Search Console is ground truth; in-app visits
+        {RANGE_DAYS} days{gsc ? ` · ${gsc.startDate} to ${gsc.endDate}` : ""} · Search Console reports search clicks; in-app visits
         with a <code>google.com</code> referrer are compared against it.
       </p>
 
       {error && (
         <p className="text-sm text-destructive mb-3">
-          Couldn’t load Search Console data: {error}
+          Comparison unavailable: {error}
         </p>
       )}
 

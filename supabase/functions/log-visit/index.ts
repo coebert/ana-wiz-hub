@@ -32,6 +32,8 @@ const COUNTRY_NAMES: Record<string, string> = {
 const IPV4_RE = /^(25[0-5]|2[0-4]\d|1?\d?\d)(\.(25[0-5]|2[0-4]\d|1?\d?\d)){3}$/;
 const IPV6_RE = /^[0-9a-fA-F:]{2,39}$/;
 
+const isValidCountry = (code: string): boolean => /^[A-Z]{2}$/.test(code) && code !== "XX" && code !== "T1";
+
 async function lookupCountryByIp(ip: string): Promise<string | null> {
   if (!(IPV4_RE.test(ip) || (IPV6_RE.test(ip) && ip.includes(":")))) return null;
   try {
@@ -44,7 +46,7 @@ async function lookupCountryByIp(ip: string): Promise<string | null> {
     clearTimeout(t);
     if (!res.ok) return null;
     const text = (await res.text()).trim().toUpperCase();
-    return /^[A-Z]{2}$/.test(text) ? text : null;
+    return isValidCountry(text) ? text : null;
   } catch {
     return null;
   }
@@ -56,25 +58,31 @@ function classifyReferrer(referrer: string | null): string {
   if (!referrer) return "direct";
   let host = "";
   try {
-    host = new URL(referrer).hostname.toLowerCase();
+    const url = new URL(referrer);
+    if (!["http:", "https:", "android-app:"].includes(url.protocol)) return "direct";
+    host = url.hostname.toLowerCase().replace(/\.$/, "");
+    if (url.protocol === "android-app:") {
+      return host === "com.reddit.frontpage" ? "social" : "direct";
+    }
   } catch {
     return "direct";
   }
   if (!host) return "direct";
   const SEARCH = [
-    "google.", "bing.com", "duckduckgo.com", "yahoo.", "yandex.",
+    "google.com", "google.co.uk", "google.co.in", "google.ca", "google.com.au", "google.de", "google.fr", "bing.com", "duckduckgo.com", "yahoo.com", "yahoo.co.uk", "yandex.com", "yandex.ru",
     "baidu.com", "ecosia.org", "search.brave.com", "qwant.com",
-    "startpage.com", "kagi.com", "search.yahoo.",
+    "startpage.com", "kagi.com", "search.yahoo.com",
   ];
   const SOCIAL = [
     "facebook.com", "fb.com", "l.facebook.com", "instagram.com",
     "x.com", "twitter.com", "t.co", "linkedin.com", "lnkd.in",
     "reddit.com", "youtube.com", "youtu.be", "tiktok.com",
     "whatsapp.com", "wa.me", "t.me", "telegram.org", "threads.net",
-    "pinterest.", "discord.com", "discord.gg",
+    "pinterest.com", "pinterest.co.uk", "discord.com", "discord.gg",
   ];
-  if (SEARCH.some((s) => host.includes(s))) return "search";
-  if (SOCIAL.some((s) => host === s || host.endsWith("." + s) || host.includes(s))) return "social";
+  const matches = (domain: string) => host === domain || host.endsWith("." + domain);
+  if (SEARCH.some(matches)) return "search";
+  if (SOCIAL.some(matches)) return "social";
   return "referral";
 }
 
@@ -108,7 +116,7 @@ Deno.serve(async (req) => {
     // Prefer the Cloudflare-provided country header (Supabase fronts edge
     // functions on Cloudflare). Fall back to ipapi.co on the client IP.
     let country = (req.headers.get("cf-ipcountry") ?? "").toUpperCase();
-    if (!country || country === "XX" || country === "T1" || country.length !== 2) {
+    if (!isValidCountry(country)) {
       const fwd = req.headers.get("x-forwarded-for") ?? "";
       // Use the right-most hop (appended by the platform proxy); earlier
       // entries are caller-controlled and must not drive outbound lookups.
@@ -119,7 +127,7 @@ Deno.serve(async (req) => {
         if (looked) country = looked;
       }
     }
-    if (country.length !== 2) country = "";
+    if (!isValidCountry(country)) country = "";
 
     const country_name = country ? (COUNTRY_NAMES[country] ?? country) : null;
 
