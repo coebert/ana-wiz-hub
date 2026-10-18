@@ -1683,6 +1683,15 @@ export type Database = {
         Args: { _day?: string; _seconds: number; _topic_id: string }
         Returns: undefined
       }
+      admin_engagement_counts: {
+        Args: never
+        Returns: {
+          subsection_learners: number
+          subsection_rows: number
+          topic_learners: number
+          topic_rows: number
+        }[]
+      }
       claim_podcast_rerecord_item: {
         Args: {
           _job_id: string

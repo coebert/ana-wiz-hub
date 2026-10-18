@@ -187,10 +187,10 @@ function buildNonBotVisitorSet(
 type TrafficSource = "direct" | "search" | "social" | "referral";
 
 const TRAFFIC_SOURCE_META: Record<TrafficSource, { label: string; help: string; icon: typeof Search; color: string }> = {
-  search:   { label: "Search engines", help: "Visitors who arrived via Google, Bing, DuckDuckGo, etc.", icon: Search,             color: "text-blue-500" },
-  direct:   { label: "Direct",         help: "Bookmarks, typed URL, or app links — no referrer header.",  icon: MousePointerClick, color: "text-emerald-500" },
-  social:   { label: "Social",         help: "Visitors arriving from a social network or messenger.",     icon: Share2,            color: "text-pink-500" },
-  referral: { label: "Other sites",    help: "Visitors who clicked a link on another website.",           icon: Link2,             color: "text-amber-500" },
+  search:   { label: "Search engines", help: "Heuristic referrer attribution: Google, Bing, DuckDuckGo, etc.", icon: Search,             color: "text-blue-500" },
+  direct:   { label: "Direct",         help: "Heuristic attribution: absent or unrecognised referrer; may include bookmarks, typed URLs or apps.",  icon: MousePointerClick, color: "text-emerald-500" },
+  social:   { label: "Social",         help: "Heuristic referrer attribution to social networks or messengers.",     icon: Share2,            color: "text-pink-500" },
+  referral: { label: "Other sites",    help: "Heuristic referrer attribution to other websites.",           icon: Link2,             color: "text-amber-500" },
 };
 
 interface TopicStat {
@@ -362,14 +362,17 @@ const AdminDashboard = () => {
       applyFilters: (q: any) => any,
     ): Promise<T[]> => {
       const out: T[] = [];
-      for (let offset = 0; ; offset += PAGE) {
-        let q: any = supabase.from("app_visits").select(columns);
-        q = applyFilters(q).order("visited_at", { ascending: true }).range(offset, offset + PAGE - 1);
+      let cursor: { visited_at: string; id: string } | undefined;
+      for (;; ) {
+        let q: any = supabase.from("app_visits").select(`${columns}, id`);
+        q = applyFilters(q).order("visited_at", { ascending: true }).order("id", { ascending: true }).limit(PAGE);
+        if (cursor) q = q.or(`visited_at.gt.${cursor.visited_at},and(visited_at.eq.${cursor.visited_at},id.gt.${cursor.id})`);
         const { data, error } = await q;
         if (error) { console.warn("[admin] fetch visits failed", error.message); break; }
         const rows = (data ?? []) as T[];
         out.push(...rows);
         if (rows.length < PAGE) break;
+        cursor = rows[rows.length - 1] as T & { visited_at: string; id: string };
       }
       return out;
     };
@@ -430,6 +433,14 @@ const AdminDashboard = () => {
 
     // First-seen timestamp per visitor → used for new-vs-returning split
     const firstSeen = new Map<string, string>();
+    // Reduce every lifetime visit to MIN(visited_at), independent of the selected range.
+    const lifetimeVisits = await fetchAllVisits<{ visitor_id: string; visited_at: string }>(
+      "visitor_id, visited_at", q => q,
+    );
+    lifetimeVisits.forEach(v => {
+      const previous = firstSeen.get(v.visitor_id);
+      if (!previous || v.visited_at < previous) firstSeen.set(v.visitor_id, v.visited_at);
+    });
     const visitsPerUser = new Map<string, number>();
     const activeDaysPerUser = new Map<string, Set<string>>();
     const lastSeen = new Map<string, string>();
@@ -566,7 +577,7 @@ const AdminDashboard = () => {
     const topCountries = computeTopCountries(visits);
 
     const newUsersToday = Array.from(firstSeen.entries()).filter(
-      ([, ts]) => ts >= todayStart,
+      ([uid, ts]) => uniqueVisitors.has(uid) && ts >= todayStart && ts <= now.toISOString(),
     ).length;
     const returningUsers = Array.from(visitsPerUser.values()).filter(n => n >= 2).length;
     const returningPct = uniqueVisitors.size > 0
@@ -712,7 +723,7 @@ const AdminDashboard = () => {
       userActiveDays.get(v.visitor_id)!.add(dayKey(v.visited_at));
     });
     const msDay = 86_400_000;
-    const todayDayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    const todayDayStart = Date.parse(now.toISOString().slice(0, 10) + "T00:00:00Z");
     // Week start = Monday
     const weekStartOf = (d: Date) => {
       const day = (d.getDay() + 6) % 7; // 0 = Monday
@@ -721,6 +732,7 @@ const AdminDashboard = () => {
     };
     const cohorts = new Map<string, string[]>(); // cohortStartISO(date-only) -> visitor_ids
     firstSeen.forEach((ts, uid) => {
+      if (!uniqueVisitors.has(uid) || (rangeStartIso && ts < rangeStartIso) || ts > now.toISOString()) return;
       const ws = weekStartOf(new Date(ts));
       const key = ws.toISOString().slice(0, 10);
       if (!cohorts.has(key)) cohorts.set(key, []);
@@ -729,10 +741,6 @@ const AdminDashboard = () => {
     const sortedCohortKeys = Array.from(cohorts.keys()).sort().slice(-8);
     const retentionCohorts = sortedCohortKeys.map(key => {
       const uids = cohorts.get(key)!;
-      const cohortStartMs = new Date(key + "T00:00:00").getTime();
-      // For each user, age = how many full days between cohort start and today
-      // Use cohort midpoint (start) for window eligibility.
-      const ageDays = Math.floor((todayDayStart - cohortStartMs) / msDay);
       // Range-based retention: a user counts toward Dn if they returned on
       // ANY day in the window (relative to their own first-seen day).
       //   D1  = active on day 1
@@ -741,21 +749,20 @@ const AdminDashboard = () => {
       // This avoids the false-zero you'd get from requiring an exact-day-7
       // hit when traffic is sparse but users do return within the window.
       const computeRange = (startOffset: number, endOffset: number): { count: number; pct: number } | null => {
-        // Need enough elapsed days to observe at least the start of the window.
-        if (ageDays < startOffset) return null;
-        // Cap the window at what we've actually observed so cohorts aren't
-        // penalised for time that hasn't happened yet.
-        const effectiveEnd = Math.min(endOffset, ageDays);
+        const eligible = uids.filter(uid => {
+          const firstDayMs = Date.parse(dayKey(firstSeen.get(uid)!) + "T00:00:00Z");
+          return firstDayMs + endOffset * msDay <= todayDayStart;
+        });
+        if (!eligible.length) return null;
         let count = 0;
-        uids.forEach(uid => {
-          const firstTs = firstSeen.get(uid)!;
-          const firstDayMs = new Date(dayKey(firstTs) + "T00:00:00").getTime();
-          for (let off = startOffset; off <= effectiveEnd; off++) {
+        eligible.forEach(uid => {
+          const firstDayMs = Date.parse(dayKey(firstSeen.get(uid)!) + "T00:00:00Z");
+          for (let off = startOffset; off <= endOffset; off++) {
             const targetKey = new Date(firstDayMs + off * msDay).toISOString().slice(0, 10);
             if (userActiveDays.get(uid)?.has(targetKey)) { count++; break; }
           }
         });
-        return { count, pct: uids.length > 0 ? Math.round((count / uids.length) * 100) : 0 };
+        return { count, pct: Math.round((count / eligible.length) * 100) };
       };
       const d1 = computeRange(1, 1);
       const d7 = computeRange(2, 7);
@@ -912,7 +919,7 @@ const AdminDashboard = () => {
   );
 
   const filteredTopCountries = useMemo(() => {
-    if (!allVisits.length) return [];
+    if (!allVisits.length) return { countries: [], users: 0 };
     const now = new Date();
     const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
     const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
@@ -924,10 +931,12 @@ const AdminDashboard = () => {
       if (countriesDateRange === "30d") return v.visited_at >= thirtyDaysAgo;
       return true;
     });
+    const globalUsers = new Set<string>();
     const countryVisits = new Map<string, { name: string; users: Set<string>; visits: number }>();
     subset.forEach((v: { visitor_id: string; country?: string | null; country_name?: string | null }) => {
       const c = (v.country ?? "").toUpperCase();
       if (!c || c.length !== 2) return;
+      globalUsers.add(v.visitor_id);
       if (!countryVisits.has(c)) {
         countryVisits.set(c, { name: v.country_name ?? c, users: new Set(), visits: 0 });
       }
@@ -935,10 +944,10 @@ const AdminDashboard = () => {
       entry.users.add(v.visitor_id);
       entry.visits += 1;
     });
-    return Array.from(countryVisits.entries())
+    const countries = Array.from(countryVisits.entries())
       .map(([country, e]) => ({ country, countryName: e.name, users: e.users.size, visits: e.visits }))
-      .sort((a, b) => b.users - a.users || b.visits - a.visits)
-      .slice(0, 15);
+      .sort((a, b) => b.users - a.users || b.visits - a.visits);
+    return { countries, users: globalUsers.size };
   }, [allVisits, countriesDateRange, nonBotVisitorIds]);
 
   // Count bot / missing-UA visits and unique visitor IDs that were filtered out
@@ -1401,7 +1410,7 @@ const AdminDashboard = () => {
                 { label: "Avg Pages / User", value: analytics.avgPagesPerUser, fmt: (v: number) => v.toFixed(1), icon: Layers, color: "text-rose-500", help: "Total page views ÷ unique visitors" },
                 { label: "Avg Visits / Active Day", value: analytics.avgVisitsPerActiveDay, fmt: (v: number) => v.toFixed(1), icon: BarChart3, color: "text-fuchsia-500", help: "Per-user visit intensity on days they engaged" },
                 { label: "Peak Hour Today", value: analytics.peakHourCount, fmt: () => `${analytics.peakHourLabel}${analytics.peakHourCount ? ` · ${analytics.peakHourCount}` : ""}`, icon: Clock, color: "text-cyan-500", help: "Hour-of-day with the most page views today" },
-                { label: "Engagement Rate", value: analytics.totalUniqueUsers > 0 ? Math.round((analytics.weeklyUsers / analytics.totalUniqueUsers) * 100) : 0, fmt: (v: number) => `${v}%`, icon: TrendingUp, color: "text-teal-500", help: "Share of all-time users active in the last 7 days" },
+                { label: "Weekly-active share of human visitors", value: analytics.totalNonBotUsers > 0 ? Math.round((analytics.weeklyUsers / analytics.totalNonBotUsers) * 100) : 0, fmt: (v: number) => `${v}%`, icon: TrendingUp, color: "text-teal-500", help: "Share of human visitors in the selected period active in its last 7 days; human detection is a user-agent heuristic" },
               ].map(stat => (
                 <div
                   key={stat.label}
@@ -1941,12 +1950,12 @@ const AdminDashboard = () => {
               <p className="text-xs text-muted-foreground mb-3">
                 Choropleth of {mapMetric === "users" ? "unique visitors" : "total visits"} per country (bots excluded). Hover a country for details; scroll or pinch to zoom.
               </p>
-              {filteredTopCountries.length === 0 ? (
+              {filteredTopCountries.countries.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
                   No country data yet — countries are recorded from new visits onwards.
                 </p>
               ) : (
-                <VisitorsWorldMap data={filteredTopCountries} metric={mapMetric} />
+                <VisitorsWorldMap data={filteredTopCountries.countries} totalUsers={filteredTopCountries.users} metric={mapMetric} />
               )}
             </div>
 
@@ -1996,7 +2005,7 @@ const AdminDashboard = () => {
                   </TooltipContent>
                 </Tooltip>
               </p>
-              {filteredTopCountries.length === 0 ? (
+              {filteredTopCountries.countries.length === 0 ? (
                 <p className="text-sm text-muted-foreground">
                   No country data yet — countries are recorded from new visits onwards.
                 </p>
@@ -2011,7 +2020,7 @@ const AdminDashboard = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {filteredTopCountries.map(c => (
+                      {filteredTopCountries.countries.slice(0, 15).map(c => (
                         <tr
                           key={c.country}
                           className="border-b border-border/50 cursor-pointer hover:bg-muted/40 transition-colors"
@@ -2133,7 +2142,7 @@ const AdminDashboard = () => {
                 <h2 className="text-sm font-semibold text-foreground">Cohort Retention</h2>
               </div>
               <p className="text-xs text-muted-foreground mb-3">
-                Weekly cohorts grouped by first visit. D1 = % active on day 1; D7 = % returning on any day 2–7; D30 = % returning on any day 8–30 (windows are capped at observed age, so recent cohorts aren't penalised).
+                Weekly cohorts grouped by first visit. D1 = % active on day 1; D7 = % returning on any day 2–7; D30 = % returning on any day 8–30 (each denominator includes only visitors whose lifetime first-seen day is at least 1, 7, or 30 days before the effective end date, respectively; cohorts starting before the selected range are excluded).
               </p>
               {analytics.retentionCohorts.length === 0 ? (
                 <p className="text-sm text-muted-foreground">No cohort data yet.</p>

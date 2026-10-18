@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { MousePointerClick, RefreshCw } from "lucide-react";
 
 interface ClickRow {
+  id: string;
   note_slug: string;
   target_path: string;
   target_section: string;
@@ -33,14 +34,30 @@ export const JumpClicksPanel = () => {
     setLoading(true);
     setError(null);
     const since = new Date(Date.now() - RANGE_DAYS * 24 * 60 * 60 * 1000).toISOString();
-    const { data, error } = await supabase
-      .from("note_jump_clicks")
-      .select("note_slug,target_path,target_section,target_label,clicked_at")
-      .gte("clicked_at", since)
-      .order("clicked_at", { ascending: false })
-      .limit(5000);
-    if (error) setError(error.message);
-    setRows((data as ClickRow[] | null) ?? []);
+    const collected: ClickRow[] = [];
+    let cursor: ClickRow | undefined;
+    for (;;) {
+      let query = supabase
+        .from("note_jump_clicks")
+        .select("id,note_slug,target_path,target_section,target_label,clicked_at")
+        .gte("clicked_at", since)
+        .order("clicked_at", { ascending: true })
+        .order("id", { ascending: true })
+        .limit(1000);
+      if (cursor) query = query.or(`clicked_at.gt.${cursor.clicked_at},and(clicked_at.eq.${cursor.clicked_at},id.gt.${cursor.id})`);
+      const { data, error } = await query;
+      if (error) {
+        setError(error.message);
+        setRows([]);
+        setLoading(false);
+        return;
+      }
+      const page = (data ?? []) as ClickRow[];
+      collected.push(...page);
+      if (page.length < 1000) break;
+      cursor = page[page.length - 1];
+    }
+    setRows(collected);
     setLoading(false);
   };
 

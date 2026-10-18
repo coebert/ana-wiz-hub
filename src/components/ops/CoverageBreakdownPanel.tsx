@@ -32,15 +32,6 @@ interface CoveragePayload {
 }
 
 async function fetchCoverage(limit: number, offset: number): Promise<CoveragePayload> {
-  const { data, error } = await supabase.functions.invoke("gsc-coverage", {
-    body: null,
-    method: "GET",
-    headers: {},
-    // edge function reads query params from URL — pass via path
-  } as never);
-  // Supabase invoke doesn't expose query params; fall back to a direct fetch.
-  if (data && !error) return data as CoveragePayload;
-
   const { data: session } = await supabase.auth.getSession();
   const token = session.session?.access_token;
   const projectUrl = (supabase as unknown as { supabaseUrl: string }).supabaseUrl;
@@ -195,22 +186,22 @@ export default function CoverageBreakdownPanel() {
 
             <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
               <span>
-                Showing {data.offset + 1}–{data.offset + data.inspected} of {data.total}
+                Showing {data.inspected ? data.offset + 1 : 0}–{data.offset + data.inspected} of {data.total}
               </span>
               <div className="flex gap-2">
                 <Button
                   size="sm"
                   variant="outline"
-                  disabled={offset === 0 || isFetching}
-                  onClick={() => setOffset(Math.max(0, offset - limit))}
+                  disabled={data.offset === 0 || isFetching}
+                  onClick={() => setOffset(Math.max(0, data.offset - data.limit))}
                 >
                   Previous
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
-                  disabled={data.offset + data.inspected >= data.total || isFetching}
-                  onClick={() => setOffset(offset + limit)}
+                  disabled={data.offset + data.limit >= data.total || isFetching}
+                  onClick={() => setOffset(data.offset + data.limit)}
                 >
                   Next
                 </Button>

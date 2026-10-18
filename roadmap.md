@@ -1,70 +1,27 @@
-- [x] Link Primary and Final FRCA revision topics directly to existing physiology, endocrine and ICU teaching; 9 Primary/24 Final links verified in signed-in browser including auto-opening subsection anchors; 12 hub tests pass. Existing Final curriculum areas also link the expanded lessons; no teaching or exam tags changed.
-- [x] Expand ICU Outcomes with current ICNARC discharge outcomes, long-term survival, physical/cognitive function, return to work and psychological symptoms; 13 source/teaching tests, signed-in lessons/source/16-of-16 quiz and desktop/phone checks pass; search and private audit refreshed/uploaded. Source-checked, not consultant-reviewed.
-- [x] Expand Non-technical Skills with debriefing, speaking-up and TeamSTEPPS lessons: eleven AHRQ/NICE source records, eight displayed quotations, three learning checks and four new quiz questions; 497 tests and signed-in lessons/source/6-of-6 quiz/deep-link/narrow-screen checks pass. Search and private audit refreshed/uploaded; bucket remains private. Older whole-page review remains outside this batch.
-- [x] Verify the three acid-base errors: fix remaining tenfold formula in Interpretation Guide, make linked toxin advice conditional and toxin-specific; confirm existing qualitative Stewart controls/reset. Thirty tests and signed-in browser checks pass; search/private audit copy refreshed and uploaded.
-- [x] Add three source-led fictional ICU bronchospasm cases to PEEP Management; nine tests, signed-in tables/answers/source popover and 1280/390px checks pass; exact search anchor and all cases retained in refreshed private audit copy.
-- [x] Add metabolic alkalosis directly on Acid-Base Disorders: five exact BJA quotations, cause-led explanations and learning check; eight tests and signed-in quotation/source/check/navigation verification pass; search anchor and private audit text/references retained and uploaded.
-- [x] Review Anatomy and Anatomy references & diagram sources: correct verified publication details, remove misleading links/four unverified quotations, explicitly flag eleven legacy records, preserve 39 artwork/source warnings; seven tests and signed-in page/filter/source checks pass, private audit refreshed. Page-copy review marked complete only; replacement source identities and specialist artwork matching remain unresolved, not certified.
-- [x] Expand Mechanical Ventilation with sourced ICU weaning readiness, spontaneous breathing trials and extubation distinctions; 18 focused checks pass, signed-in lesson/check/source popover verified, search anchor and private audit text retained and bucket refreshed.
-- [x] Fix the two anatomy reference source-check failures and run the published-site comparison end to end: added the real HelmetProvider to both page-render tests; all 9 anatomy/citation tests and deterministic anatomy record checks pass; signed-in source lists/filter/reset verified without runtime errors. Full published comparison (all sitemap URLs, no sampling): 18/20 pass; ICU sitemap lacks PEEP Management and Metabolic Alkalosis, and 10 source-noindex routes lack raw-response noindex signals (browser-rendered noindex confirmed on login and curriculum expansion). No automatic publication; unrelated whole-site exam-tag/safety-citation/drug-dose checker failures remain outside this request.
-- [x] Build Metabolic Alkalosis under Acid-Base Disorders using verified BJA Education quotations; five lessons/quiz/source popover verified, 138 checks pass, search and private audit copy updated.
-- [x] Build sourced PEEP management page under Mechanical Ventilation; verify lessons, controls, citations, search and private audit copy (29 checks; five lessons and quiz/timing verified in browser).
-- [x] Fix all current preview typecheck/build errors
-- [x] Review acid-base HAGMA, NAGMA, osmolar gap, Stewart and citrate line by line; correct linked teaching/calculators, verify sources/rendering/search/private audit copy, then mark these subsections complete (43 focused tests; authenticated five-section checks; not consultant certification).
-- [x] Build perioperative case bank using steroid cover, phaeochromocytoma and antifibrinolytic content
-- [x] Complete the 23 physics content-audit expansions and sync actioned findings
-- [x] Expand the perioperative case bank with additional anonymised, evidence-based clinical scenarios in the established two-pass format
-- [x] Investigate and fix the content audit getting stuck
-- [x] Add a discussion section (questions + replies) to each topic page, live on the site
-- [ ] Batch 1 of 10 content-audit fixes (7 topics, 24 findings) + mark fixed in DB
-- [ ] Batch 1 of 9 content-audit fixes (6 topics, 24 findings) + mark fixed in DB
-  - [x] Expand and cite the 2024 ESAIC/BJA paediatric airway section
-- [ ] Ongoing: close remaining open audit findings in batches (expand topics, add real citations, fix pages failing to load)
-- [x] Batch 1 of 4 content-audit fixes (7 physiology/measurement topics, 24 findings) + correct viva answers + mark fixed in DB
-- [x] Batch 1 of 9 content-audit fixes (7 anatomy/airway topics, 25 findings) + mark fixed in DB
-- [x] Batch 1 of 8 content-audit fixes (6 topics, 25 findings) + mark fixed in DB
-- [x] Batch 1 of 3 content-audit fixes (10 physics topics, 24 findings) + synchronize fixed findings
-- [x] Batch 1 of 2 content-audit fixes (8 physics topics, 26 findings) + correct viva answers + mark fixed in DB
-- [x] SI Units & Thermodynamics content-audit fixes (2 findings) + mark fixed in DB
-- [x] Add sourced evidence on epidural, intrathecal opioid and rectus sheath catheter analgesia to general/colorectal surgery topic
-- [x] Re-audit and correct the general/colorectal surgery topic against current primary guidance
-- [x] Audit and correct the burns and plastics topic against clinical sources
-- [x] Audit ICU Sedation & Delirium page against ICU guidelines
-- [ ] Audit all anatomy diagrams: source/geometry review, verified corrections, rendering checks and explicit unresolved findings
-  - [x] Review source inventories and rendered views; correct verified code-side anatomy and rendering errors
-  - [ ] Specialist verification/redrawing of painted plate leaders and deep-brain geometry (blocked by unverified artwork/reference matching)
-- [x] Build anatomy diagram source directory with per-plate citations and uncertainty flags
-- [x] Replace nightly AI citation verification with per-topic curated anatomy bibliographies, deterministic source-record checks and reader-visible uncertainty (nine topics, 47 existing editorial references; six tests and live source-list/filter checks passed; original-document matching is not certified)
+# Admin metrics audit fixes
 
-- [x] Replace painted anatomy plates with credited public-domain Gray's Anatomy plates (done; cauda equina Gray662, mediastinum Gray490 and abdominal aorta Gray531 replaced mismatched plates; labels limited to structures shown)
-- [x] Cite flagged diagrams, replace AI brain images and last 2 paintings, add orientation notes (7 inherent limits stay flagged)
-- [x] Expand APRV teaching with verified sources, corrected waveforms, bedside cautions and learning checks
-- [ ] Review curriculum-wide subsection depth and expand outline-only teaching into comprehensive, source-led content
-  - [x] Build /curriculum/expansion index page listing every topic with expansion status (data in src/data/expansionStatus.ts; keep in sync with this file)
-  - [ ] Section-by-section continuation requested: Physics → Physiology → Pharmacology → Clinical → ICU → Perioperative; record actual subsection coverage, including anatomy and chemistry
-  - [x] First batch: ENT laryngectomy emergencies; paediatric URTI/fluid decisions; established renal-transplant care; bariatric equipment pathway; colorectal assessment/AP-resection phases
-  - [x] Check first-batch pages, source labels/excerpts, tests and rebuild/upload private audit corpus
-  - [ ] Remaining curriculum expansion: subsection-by-subsection review and verified-source teaching beyond the first batch (not yet completed)
-  - [x] Physiology continuation: renal net acid excretion and urine interpretation; hepatic zonation and model limitations; fetal shunt transition and placental transfer corrections (six tests, live lesson/source checks and private audit upload passed; older fetal excerpts explicitly unverified)
-  - [x] Physics continuation batch: Joule–Thomson/process boundaries, transformers/isolation, Doppler interpretation, arterial dynamic response, flow/heliox assumptions and temperature errors; 17 targeted tests and authenticated desktop/phone lesson checks passed
-  - [x] Rebuild and upload the 153-topic audit corpus; verify the six new prioritised lessons are retained
-  - [ ] Next: finish Physics subsection review, then Physiology; Pharmacology: differential blockade done (local anaesthetics); Meyer–Overton (volatile agents) and antimicrobials (antibiotics, antifungals, antivirals, antimalarials, antiseptics, resistance) toxicology paracetamol and IV anaesthetics PRIS done; per-lesson source lists added; next remaining pharmacology subsections
-  - [ ] Clinical/ICU priority (owner request): batch 1 done (ACS, non-technical skills); next day surgery, resource-poor, surgical protocols, then subsection review of capped topics
-  - [ ] Wider citation checks: resolve existing general/colorectal and surgical-protocol topic-ID extraction issues and two uncited regional-anaesthesia summaries; new physics references resolve
-  - [ ] Further candidates: antivirals, innate immunity, hypothermia electrophysiology, ankle nerves, pelvic autonomics, metallic bonding, redox chemistry and chest-wall block planes (read-only reviewer suggestions, not yet verified)
-  - [x] Owner-approved gateway replacements: Gemini 3.1 Flash Lite moderation/reviews, Gemini 3.1 Pro Preview audits/podcast scripts, Gemini 3.8 Flash drug checks; representative live responses passed (speech unchanged)
+## Traffic (AdminDashboard.tsx, VisitorsWorldMap.tsx, log-visit/index.ts)
+- [x] Engagement rate: numerator is bot-excluded, denominator includes bots — use human/human
+- [x] World map footer sums only top-15 countries — pass all countries, slice table only
+- [x] Retention cohorts: maturity based on cohort Monday, not each visitor's first day; range-limited first-seen
+- [x] Source classifier substring matching (notgoogle.com → search) — exact/dot-suffix host matching
+- [x] "New Today" / lifetime labels wrong under date-range selection
+- [x] Jump clicks / google-referrer queries assume >1000 row cap (limit 5000/20000)
 
-- [ ] Clinical/ICU priority (owner request): batches done — ACS, non-technical skills, sepsis, neurointensive (HEMOTION/TRAIN), post-arrest (BOX), elderly (RAGA/REGAIN), ICU nutrition (EFFORT Protein/NUTRIREA-2/3/TARGET), theatre environment (laminar-flow), surgical protocols (ERAS + 10 sourced guides), ophthalmic (topical vs sub-Tenon's Cochrane), interventional radiology (thrombectomy anaesthesia evidence + FAQ correction), burns ICU (ABA 2024 resuscitation CPG, fluid creep, propranolol and early-excision RCTs + 2026 meta-analysis); next day surgery, resource-poor (both blocked on source documents), then subsection review of capped topics; sepsis BLING III; resource-poor evidence lesson (WFSA/ASOS/checklist) — Lancet target verified; ASOS caesarean lesson; AKI STARRT-AKI lesson; sepsis antibiotic timing; AKI RENAL dose; RESCUEicp, TTM2, PROSEVA, Malbrain 2005 IAH lessons; ACS complete (full WSACS review); neurointensive, post-arrest and ventilation older-section reviews complete
+## SEO (SeoIndexing.tsx, SeoAnalyticsPanel.tsx, gsc-search-analytics, seo-analytics, CoverageBreakdownPanel.tsx, SearchVsReferrerPanel.tsx)
+- [x] "Indexed pages (28d)" counts only 10 capped top-page rows — relabel or fix
+- [x] gsc-search-analytics ignores POST body `days`; N-day window returns N+1 dates; include lag cutoff
+- [x] SearchVsReferrerPanel: clicks summed over 30 dates, impressions over 31; UTC vs Pacific dates; suspected-spoof definition inconsistent
+- [x] CoverageBreakdownPanel fetchCoverage ignores limit/offset on normal path — Next refetches offset 0
+- [x] Failed GSC calls render as "No data yet" — show error/unavailable state
+- [x] Zero-value days render 2% minimum bars (cosmetic, skip unless trivial)
+- [x] seo-analytics allTime `days` overcount at/after noon UTC
 
-- [x] ICU antimicrobials + end-of-life communication trial-evidence lessons (Oct 2026). Open: audit corpus upload; Day Surgery blocked on 2019 guideline PDF.
-- [ ] Remaining clinical/ICU expansion: bariatric + transfer older-section review; day surgery (2019 PDF needed), theatre environment, ophthalmic, IR.
-- [x] Expand and source-check mass-casualty ethics, crisis teamwork, bleeding control, military care and chemical incidents; reconcile examples/quiz; 20 focused tests, authenticated desktop/phone lesson/source/quiz checks, search rebuild and verified private audit upload completed. Marked expanded (editorial completion, not clinical certification).
-- [x] Next critical-care/emergency batch: nine sourced endocrine/emergency-surgery lessons added; affected examples, linked displays and quizzes reconciled; 17 tests, authenticated lesson/quiz checks, narrow-screen fit, search and private audit upload verified. Whole-page remainder tracked in curriculum-expansion.md; both pages remain in progress.
-
-- [x] Fluid Balance and Tonicity page under Acid-Base Disorders (isotonic/hypotonic/hypertonic), linked both ways with the saline vs balanced fluids lesson; search and audit copy rebuilt.
-- [x] Trauma: sourced lessons on <C>ABCDE, fluid boluses/BP targets, transfusion ratios/Hb thresholds, surgical priorities (NICE NG39, Rossaint 2023, PROPPR); corrected misquoted NG39 bolus wording.
-
-- [x] Haemorrhagic Shock & Resuscitation page (shock recognition, BP monitoring, transfusion/TXA) — sourced, tested, search + audit rebuilt
-- [x] Mass decontamination evidence lesson (PRISM) + stewardship trials lesson (STOP-IT, SAPS, ADAPT-Sepsis)
-- [x] ICU Ventilation Protocols page (admission, monitoring, weaning protocols)
-- [x] Expand Endocrine Emergencies with adrenal insufficiency, sepsis steroid decisions and DKA safety lessons; 13 original-source quotations, nine tests, signed-in lessons/source/checks/four quiz answers and 390px fit verified; search and private audit copy refreshed/uploaded.
+## Other (WebVitalsPanel.tsx, OpenFindingsByTopic.tsx, seed-lighthouse-run, Donations.tsx, admin-user-count)
+- [x] Web Vitals uses only latest 1,000 rows (of 5,748 in 30d) — wrong p75s; FCP/TTFB ratings flip. Aggregate full window (paginate or SQL)
+- [x] Daily vitals chart drops earliest partial day (31 UTC dates vs 30 bars)
+- [x] Info findings (35) counted as minor (622 shown vs 587 actual) — separate info bucket
+- [x] Filtered OpenFindings header: finding total global, topic total filtered — consistent totals
+- [x] seed-lighthouse-run: missing PSI category score becomes 0 — preserve null
+- [x] Donations: `donated_on` parsed as UTC midnight then local getMonth — month boundary bug west of UTC
+- [x] admin-user-count: replace client-side capped scans with SQL counts (fine today, truncates at 50k)

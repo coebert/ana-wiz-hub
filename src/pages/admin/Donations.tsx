@@ -60,15 +60,18 @@ export default function Donations() {
     const byCurrency: Record<string, number> = {};
     const now = new Date();
     const thisMonth: Record<string, number> = {};
+    const monthStart = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-01`;
+    const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    const monthEnd = `${nextMonth.getFullYear()}-${String(nextMonth.getMonth() + 1).padStart(2, "0")}-01`;
     for (const r of rows) {
       byCurrency[r.currency] = (byCurrency[r.currency] ?? 0) + r.amount;
-      const d = new Date(r.donated_on);
-      if (d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth()) {
+      const date = r.donated_on.slice(0, 10);
+      if (date >= monthStart && date < monthEnd) {
         thisMonth[r.currency] = (thisMonth[r.currency] ?? 0) + r.amount;
       }
     }
     const show = (m: Record<string, number>) =>
-      Object.keys(m).length ? Object.entries(m).map(([c, v]) => fmt(v, c)).join(" + ") : fmt(0, "GBP");
+      Object.keys(m).length ? Object.entries(m).map(([c, v]) => fmt(v, c)).join("\n") : fmt(0, "GBP");
     return { all: show(byCurrency), month: show(thisMonth) };
   }, [rows]);
 
@@ -114,14 +117,14 @@ export default function Donations() {
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-6">
         {[
-          ["Total received", totals.all],
-          ["This month", totals.month],
+          ["Recorded donations", totals.all],
+          ["Recorded donations — this month", totals.month],
           ["Donations recorded", String(rows.length)],
           ["Donate button clicks", `${clicks.total} (${clicks.last30} in last 30 days)`],
         ].map(([label, value]) => (
           <div key={label} className="rounded-lg border border-border bg-card p-4">
             <p className="text-xs text-muted-foreground">{label}</p>
-            <p className="mt-1 text-lg font-semibold text-foreground">{value}</p>
+            <p className="mt-1 whitespace-pre-line text-lg font-semibold text-foreground">{value}</p>
           </div>
         ))}
       </div>

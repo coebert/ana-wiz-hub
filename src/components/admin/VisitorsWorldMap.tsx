@@ -13,6 +13,7 @@ export interface CountryDatum {
 
 interface Props {
   data: CountryDatum[];
+  totalUsers: number;
   metric?: "users" | "visits";
 }
 
@@ -22,7 +23,7 @@ function flag(code: string): string {
   return String.fromCodePoint(...[...code].map(c => 0x1f1a5 + c.charCodeAt(0)));
 }
 
-export const VisitorsWorldMap = ({ data, metric = "users" }: Props) => {
+export const VisitorsWorldMap = ({ data, totalUsers, metric = "users" }: Props) => {
   const [hover, setHover] = useState<{ code: string; name: string; users: number; visits: number; x: number; y: number } | null>(null);
 
   const byCode = useMemo(() => {
@@ -48,7 +49,7 @@ export const VisitorsWorldMap = ({ data, metric = "users" }: Props) => {
     return `hsl(var(--primary) / ${alpha.toFixed(3)})`;
   };
 
-  const total = data.reduce((s, d) => s + (metric === "users" ? d.users : d.visits), 0);
+  const total = metric === "users" ? totalUsers : data.reduce((s, d) => s + d.visits, 0);
 
   return (
     <div className="relative w-full">
