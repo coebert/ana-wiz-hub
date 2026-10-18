@@ -1,5 +1,5 @@
 // Proxies Google Search Console for the indexing dashboard.
-// Returns sitemap status, indexed page totals (last 28d), and crawl stats.
+// Returns sitemap status, search performance (last 28d), and crawl stats.
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -81,8 +81,8 @@ Deno.serve(async (req) => {
     const siteEnc = encodeURIComponent(SITE_URL)
     const sitemapEnc = encodeURIComponent(SITEMAP_URL)
 
-    const end = new Date()
-    const start = new Date(end.getTime() - 28 * 24 * 60 * 60 * 1000)
+    const end = new Date(Date.now() - 2 * 86400000)
+    const start = new Date(end.getTime() - 27 * 24 * 60 * 60 * 1000)
     const startStr = fmtDate(start)
     const endStr = fmtDate(end)
 

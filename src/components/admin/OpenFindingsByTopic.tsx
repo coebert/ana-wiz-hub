@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 type Row = { topic_id: string; topic_title: string; topic_url: string | null; severity: string; created_at: string };
-type Group = { topic_id: string; title: string; url: string | null; total: number; critical: number; major: number; minor: number; oldest: string };
+type Group = { topic_id: string; title: string; url: string | null; total: number; critical: number; major: number; minor: number; info: number; oldest: string };
 
 /** Every open finding across all audit runs, grouped by topic. */
 export default function OpenFindingsByTopic() {
@@ -36,11 +36,12 @@ export default function OpenFindingsByTopic() {
   const groups = useMemo(() => {
     const m = new Map<string, Group>();
     for (const r of rows ?? []) {
-      const g = m.get(r.topic_id) ?? { topic_id: r.topic_id, title: r.topic_title, url: r.topic_url, total: 0, critical: 0, major: 0, minor: 0, oldest: r.created_at };
+      const g = m.get(r.topic_id) ?? { topic_id: r.topic_id, title: r.topic_title, url: r.topic_url, total: 0, critical: 0, major: 0, minor: 0, info: 0, oldest: r.created_at };
       g.total++;
       if (r.severity === "critical") g.critical++;
       else if (r.severity === "major") g.major++;
-      else g.minor++;
+      else if (r.severity === "minor") g.minor++;
+      else if (r.severity === "info") g.info++;
       if (r.created_at < g.oldest) g.oldest = r.created_at;
       m.set(r.topic_id, g);
     }
@@ -60,7 +61,7 @@ export default function OpenFindingsByTopic() {
     <Card>
       <CardHeader className="pb-3 flex flex-row items-center justify-between gap-2 space-y-0">
         <CardTitle className="text-base">
-          Still open, by topic {rows && <span className="text-muted-foreground font-normal">— {rows.length} findings in {groups.length} topics</span>}
+          Still open, by topic {rows && <span className="text-muted-foreground font-normal">— {groups.reduce((sum, g) => sum + g.total, 0)} findings in {groups.length} topics</span>}
         </CardTitle>
         <Button size="sm" variant="outline" onClick={load}>Refresh</Button>
       </CardHeader>
@@ -82,6 +83,7 @@ export default function OpenFindingsByTopic() {
                   {g.critical > 0 && <Badge variant="destructive">{g.critical} critical</Badge>}
                   {g.major > 0 && <Badge>{g.major} major</Badge>}
                   {g.minor > 0 && <Badge variant="secondary">{g.minor} minor</Badge>}
+                  {g.info > 0 && <Badge variant="outline">{g.info} info</Badge>}
                   <span className="text-xs text-muted-foreground w-28 text-right">since {new Date(g.oldest).toLocaleDateString()}</span>
                 </li>
               );

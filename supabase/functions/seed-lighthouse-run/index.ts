@@ -103,8 +103,10 @@ Deno.serve(async (req) => {
     const v = a[key]?.numericValue;
     return typeof v === "number" ? v : null;
   };
-  const pct = (key: string) =>
-    Math.round(((c[key]?.score as number | null | undefined) ?? 0) * 100);
+  const pct = (key: string) => {
+    const score = c[key]?.score;
+    return typeof score === "number" ? Math.round(score * 100) : null;
+  };
 
   const lcp = num("largest-contentful-paint");
   const cls = num("cumulative-layout-shift");

@@ -81,33 +81,35 @@ Deno.serve(async (req) => {
     let days = 28
     let startStr = ''
     let endStr = ''
-    try {
-      const body = req.method === 'POST' ? await req.json() : null
-      if (body && typeof body.startDate === 'string' && typeof body.endDate === 'string') {
-        const s = new Date(body.startDate)
-        const e = new Date(body.endDate)
-        if (!isNaN(s.getTime()) && !isNaN(e.getTime()) && s <= e) {
-          const maxSpan = 490
-          const spanDays = Math.round((e.getTime() - s.getTime()) / (24 * 60 * 60 * 1000)) + 1
-          if (spanDays <= maxSpan) {
-            startStr = fmtDate(s)
-            endStr = fmtDate(e)
-            days = spanDays
-          }
-        }
+    const body = req.method === 'POST' ? await req.json().catch(() => null) : null
+    if (body && ('startDate' in body || 'endDate' in body)) {
+      const validDate = (value: unknown): value is string =>
+        typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+        !isNaN(Date.parse(value)) && fmtDate(new Date(value)) === value
+      if (!validDate(body.startDate) || !validDate(body.endDate)) {
+        return new Response(JSON.stringify({ error: 'Provide valid startDate and endDate dates (YYYY-MM-DD).' }), {
+          status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        })
       }
-      if (!startStr && body && body.allTime === true) {
-        // App created April 2026; GSC keeps ~16 months.
-        const e = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)
-        const s = new Date('2026-04-01T00:00:00Z')
-        startStr = fmtDate(s)
-        endStr = fmtDate(e)
-        days = Math.round((e.getTime() - s.getTime()) / 86400000) + 1
+      const spanDays = (Date.parse(body.endDate) - Date.parse(body.startDate)) / 86400000 + 1
+      if (spanDays < 1 || spanDays > 490) {
+        return new Response(JSON.stringify({ error: 'Custom ranges must contain 1 to 490 days, with startDate no later than endDate.' }), {
+          status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        })
       }
-      if (!startStr && body && typeof body.days === 'number' && body.days > 0 && body.days <= 90) {
-        days = Math.floor(body.days)
-      }
-    } catch { /* default */ }
+      startStr = body.startDate
+      endStr = body.endDate
+      days = spanDays
+    }
+    if (!startStr && body?.allTime === true) {
+      // App created April 2026; GSC keeps ~16 months.
+      startStr = '2026-04-01'
+      endStr = fmtDate(new Date(Date.now() - 2 * 86400000))
+      days = (Date.parse(endStr) - Date.parse(startStr)) / 86400000 + 1
+    }
+    if (!startStr && typeof body?.days === 'number' && body.days >= 1 && body.days <= 90) {
+      days = Math.floor(body.days)
+    }
 
     const siteEnc = encodeURIComponent(SITE_URL)
     if (!startStr) {

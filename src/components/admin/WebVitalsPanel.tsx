@@ -15,6 +15,7 @@ import {
 type MetricName = "LCP" | "INP" | "CLS" | "FCP" | "TTFB";
 
 interface VitalRow {
+  id: number;
   metric: string;
   value: number;
   rating: string | null;
@@ -86,18 +87,41 @@ export const WebVitalsPanel = () => {
   const [device, setDevice] = useState<"all" | "mobile" | "desktop">("all");
   const [trendMetric, setTrendMetric] = useState<MetricName>("LCP");
 
+  const [windowBounds, setWindowBounds] = useState<{ since: string; until: string } | null>(null);
+
   const load = async (rangeDays: number) => {
     setLoading(true);
     setError(null);
-    const since = new Date(Date.now() - rangeDays * 86_400_000).toISOString();
-    const { data, error } = await supabase
-      .from("web_vitals")
-      .select("metric,value,rating,route,device_type,created_at")
-      .gte("created_at", since)
-      .order("created_at", { ascending: false })
-      .limit(20000);
-    if (error) setError(error.message);
-    setRows((data as VitalRow[] | null) ?? []);
+    const until = new Date().toISOString();
+    const since = new Date(Date.parse(until) - rangeDays * 86_400_000).toISOString();
+    const all: VitalRow[] = [];
+    let cursor: VitalRow | undefined;
+    while (true) {
+      let query = supabase
+        .from("web_vitals")
+        .select("id,metric,value,rating,route,device_type,created_at")
+        .gte("created_at", since)
+        .lte("created_at", until)
+        .order("created_at", { ascending: true })
+        .order("id", { ascending: true })
+        .limit(1000);
+      if (cursor) {
+        query = query.or(`created_at.gt.${cursor.created_at},and(created_at.eq.${cursor.created_at},id.gt.${cursor.id})`);
+      }
+      const { data, error } = await query;
+      if (error) {
+        setError(error.message);
+        setRows([]);
+        setLoading(false);
+        return;
+      }
+      const batch = (data ?? []) as VitalRow[];
+      all.push(...batch);
+      if (batch.length === 0) break;
+      cursor = batch[batch.length - 1];
+    }
+    setWindowBounds({ since, until });
+    setRows(all);
     setLoading(false);
   };
 
@@ -145,14 +169,17 @@ export const WebVitalsPanel = () => {
       buckets.set(k, arr);
     }
     const out: { day: string; p75: number | null; samples: number }[] = [];
-    for (let i = days - 1; i >= 0; i--) {
-      const d = new Date(Date.now() - i * 86_400_000);
+    if (!windowBounds) return out;
+    const first = Date.parse(`${dayKey(windowBounds.since)}T00:00:00Z`);
+    const last = Date.parse(`${dayKey(windowBounds.until)}T00:00:00Z`);
+    for (let time = first; time <= last; time += 86_400_000) {
+      const d = new Date(time);
       const k = d.toISOString().slice(0, 10);
       const vals = buckets.get(k) ?? [];
       out.push({ day: k.slice(5), p75: p75(vals), samples: vals.length });
     }
     return out;
-  }, [filtered, trendMetric, days]);
+  }, [filtered, trendMetric, windowBounds]);
 
   const slowestRoutes = useMemo(() => {
     const buckets = new Map<string, number[]>();
@@ -350,7 +377,7 @@ export const WebVitalsPanel = () => {
         </div>
 
         <div className="rounded-lg border border-border p-4">
-          <h3 className="mb-3 text-sm font-medium">Samples by device</h3>
+          <h3 className="mb-3 text-sm font-medium">Samples by device (all devices)</h3>
           <ul className="space-y-2 text-sm">
             {Object.entries(deviceCounts)
               .sort((a, b) => b[1] - a[1])

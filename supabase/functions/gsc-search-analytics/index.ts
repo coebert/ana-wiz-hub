@@ -86,9 +86,11 @@ Deno.serve(async (req) => {
 
   try {
     const url = new URL(req.url)
-    const days = Math.min(90, Math.max(1, Number(url.searchParams.get('days') ?? 30)))
-    const end = new Date()
-    const start = new Date(end.getTime() - days * 24 * 60 * 60 * 1000)
+    const body = req.method === 'POST' ? await req.json() : null
+    const requestedDays = Number(url.searchParams.get('days') ?? body?.days ?? 30)
+    const days = Number.isFinite(requestedDays) ? Math.min(90, Math.max(1, Math.floor(requestedDays))) : 30
+    const end = new Date(Date.now() - 2 * 86400000)
+    const start = new Date(end.getTime() - (days - 1) * 86400000)
     const fmt = (d: Date) => d.toISOString().slice(0, 10)
     const startDate = fmt(start)
     const endDate = fmt(end)

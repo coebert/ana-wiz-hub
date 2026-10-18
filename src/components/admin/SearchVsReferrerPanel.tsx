@@ -168,7 +168,8 @@ export const SearchVsReferrerPanel = () => {
   const load = async () => {
     setLoading(true);
     setError(null);
-    const since = new Date(Date.now() - RANGE_DAYS * 24 * 60 * 60 * 1000);
+    const since = new Date(Date.now() - (RANGE_DAYS + 1) * 86400000);
+    since.setUTCHours(0, 0, 0, 0);
     const sinceIso = since.toISOString();
 
     const [gscRes, visitsRes] = await Promise.all([
@@ -184,15 +185,21 @@ export const SearchVsReferrerPanel = () => {
         .limit(20000),
     ]);
 
+    setGsc(null);
     if (gscRes.error) {
       setError(gscRes.error.message);
+    } else if ((gscRes.data as unknown as { error?: string })?.error) {
+      setError("Search Console data unavailable.");
     } else if (gscRes.data) {
       setGsc(gscRes.data);
+    } else {
+      setError("Search Console data unavailable.");
     }
     if (visitsRes.error) {
       setError((prev) => prev ?? visitsRes.error!.message);
     }
-    setVisits((visitsRes.data as VisitRow[] | null) ?? []);
+    setVisits(((visitsRes.data as VisitRow[] | null) ?? []).filter(v =>
+      !!gscRes.data && v.visited_at.slice(0, 10) >= gscRes.data.startDate && v.visited_at.slice(0, 10) <= gscRes.data.endDate));
     setLoading(false);
   };
 
@@ -220,7 +227,7 @@ export const SearchVsReferrerPanel = () => {
   const dailyRows = useMemo(() => {
     const days: { date: string; real: number; referrer: number; suspected: number }[] = [];
     for (let i = RANGE_DAYS - 1; i >= 0; i--) {
-      const d = new Date(Date.now() - i * 24 * 60 * 60 * 1000)
+      const d = new Date(Date.parse(gsc?.endDate ?? new Date(Date.now() - 2 * 86400000).toISOString().slice(0, 10)) - i * 86400000)
         .toISOString()
         .slice(0, 10);
       const real = realClicksByDay.get(d) ?? 0;
@@ -228,13 +235,14 @@ export const SearchVsReferrerPanel = () => {
       days.push({ date: d, real, referrer, suspected: Math.max(0, referrer - real) });
     }
     return days;
-  }, [realClicksByDay, spoofByDay]);
+  }, [realClicksByDay, spoofByDay, gsc]);
 
   const totals = useMemo(() => {
     const real = dailyRows.reduce((s, r) => s + r.real, 0);
     const referrer = dailyRows.reduce((s, r) => s + r.referrer, 0);
-    const impressions = (gsc?.byDate ?? []).reduce((s, r) => s + r.impressions, 0);
-    return { real, referrer, suspected: Math.max(0, referrer - real), impressions };
+    const dates = new Set(dailyRows.map(r => r.date));
+    const impressions = (gsc?.byDate ?? []).filter(r => dates.has(r.date)).reduce((s, r) => s + r.impressions, 0);
+    return { real, referrer, suspected: dailyRows.reduce((s, r) => s + r.suspected, 0), impressions };
   }, [dailyRows, gsc]);
 
   const topPages = useMemo(() => {
@@ -494,6 +502,7 @@ export const SearchVsReferrerPanel = () => {
         </p>
       )}
 
+      {!error && gsc && (<>
       {/* ── headline tiles ────────────────────────────────────────────── */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
         <Tile
@@ -979,6 +988,7 @@ export const SearchVsReferrerPanel = () => {
           </div>
         )}
       </div>
+      </>)}
     </section>
   );
 };

@@ -107,19 +107,15 @@ const InaccuracyReportsPanel = () => {
     setReports((data ?? []) as Report[]);
 
     // Refresh status counts (separate query so filters don't skew them).
-    const { data: allData } = await supabase
-      .from("inaccuracy_reports")
-      .select("status");
-    if (allData) {
-      const next: Record<Status, number> = {
-        new: 0,
-        acknowledged: 0,
-        published: 0,
-        dismissed: 0,
-      };
-      for (const row of allData as { status: Status }[]) {
-        if (row.status in next) next[row.status] += 1;
-      }
+    const statuses: Status[] = ["new", "acknowledged", "published", "dismissed"];
+    const results = await Promise.all(statuses.map(status =>
+      supabase.from("inaccuracy_reports").select("id", { count: "exact", head: true }).eq("status", status),
+    ));
+    if (results.some(result => result.error)) {
+      toast.error("Could not load report counts.");
+    } else {
+      const next = {} as Record<Status, number>;
+      statuses.forEach((status, i) => { next[status] = results[i].count ?? 0; });
       setCounts(next);
     }
     setLoading(false);
