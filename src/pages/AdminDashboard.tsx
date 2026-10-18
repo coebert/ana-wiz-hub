@@ -562,8 +562,7 @@ const AdminDashboard = () => {
         if (!nonBotVisitorIds.has(v.visitor_id)) return;
         const c = (v.country ?? "").toUpperCase();
         if (!c || c.length !== 2) return;
-        globalUsers.add(v.visitor_id);
-      if (!countryVisits.has(c)) {
+        if (!countryVisits.has(c)) {
           countryVisits.set(c, { name: v.country_name ?? c, users: new Set(), visits: 0 });
         }
         const entry = countryVisits.get(c)!;
