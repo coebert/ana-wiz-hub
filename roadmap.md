@@ -25,3 +25,7 @@
 - [x] seed-lighthouse-run: missing PSI category score becomes 0 — preserve null
 - [x] Donations: `donated_on` parsed as UTC midnight then local getMonth — month boundary bug west of UTC
 - [x] admin-user-count: replace client-side capped scans with SQL counts (fine today, truncates at 50k)
+
+## Topic learning progress
+- [ ] Show topic completions, active time and per-account detail in admin.
+- [ ] Harden account-scoped study-time syncing and verify signed-in learning flow.
