@@ -1,11 +1,11 @@
 - Build audit data to data-build/ with build:audit-corpus; upload to private audit-corpus for runtime downloads, avoiding oversized bundles.
 - FRCA hubs share ExamLessonLinks to resolve curriculum IDs and collapsible anchors without drift.
 - Diagram snapshots recursively scan diagram folders and topic atlases, including static SVG plates, so moves or missing interactions cannot remove visual-review coverage.
-- Anatomy root verification recursively parses TSX object properties; positional heuristics are limited to declared anterior projections because label positions and other views cannot prove anatomical laterality.
+- Anatomy root verification recursively parses TSX properties; positional heuristics require declared anterior projections; label positions/other views cannot prove laterality.
 - Painted anatomy plates carry optional plate-specific audit warnings beside the artwork so uncorrected printed labels cannot silently appear verified.
 - Anatomy source directory is generated from component/atlas metadata before dev/build, with one entry per atlas plate and explicit missing-source flags; citations must never imply anatomical certification.
-- Anatomy directory review completion applies only to page wording and record handling; derive artwork classification from source URL and rights metadata, retain historical-plate/hotspot uncertainty, and never infer verification from an empty warning list.
-- Anatomy topic bibliographies reuse editorial topicReferences through anatomyReferences; automation checks record integrity without AI, because a generated verdict cannot establish source support or anatomical accuracy.
+- Anatomy review completion covers wording/records only; classify artwork by URL/rights, retain historical-plate/hotspot uncertainty; empty warnings never imply verification.
+- Anatomy bibliographies reuse topicReferences via anatomyReferences; check integrity without AI; generated verdicts cannot establish source support or accuracy.
 - APRVSection unifies ventilation guidance, sources and learning checks.
 
 - Keep expanded lessons in imported Teaching modules for audit retention; ICU outcomes use IcuOutcomesTeaching and reference excerpts, distinguishing periods, denominators, endpoints and symptom thresholds to avoid conflation.
@@ -28,3 +28,4 @@
 - Standalone endocrine pages reuse parent excerpts; tests enforce identical wording.
 
 - Admin learning aggregates require server-checked admin access and account-scoped study-time caches; saved progress is distinct from visitor estimates.
+- Visitor reports share a three-way classifier; client automation/interaction are evidence, not identity; interaction updates must not inflate views.
