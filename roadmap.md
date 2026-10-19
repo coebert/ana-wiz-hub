@@ -1,5 +1,10 @@
 # Admin metrics audit fixes
 
+## Visitor survey
+- [ ] Add optional survey with first-response deduplication and recorded invitations.
+- [ ] Show self-reports and invitation response rates by visitor classification.
+- [ ] Test submission, privacy restrictions and signed-in admin reporting.
+
 ## Visitor classification
 - [x] Centralise automated / likely-human / unknown classification and regression tests.
 - [x] Collect browser automation and trusted interaction signals without claiming identity verification.
