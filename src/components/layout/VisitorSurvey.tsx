@@ -13,7 +13,7 @@ export function VisitorSurvey() {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
   const [evidence, setEvidence] = useState<{ visitor_id: string; visit_id: string } | null>(null);
-  const excluded = pathname.startsWith("/admin") || pathname.startsWith("/auth");
+  const excluded = pathname.startsWith("/admin") || pathname.startsWith("/auth") || pathname === "/login";
   useEffect(() => {
     if (excluded) return;
     const timer = window.setTimeout(async () => {
