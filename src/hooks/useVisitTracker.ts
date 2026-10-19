@@ -78,7 +78,11 @@ export const useVisitTracker = () => {
       })
       .then(({ data, error }) => {
         if (error) console.warn("[visit-tracker] log-visit failed", error.message);
-        if (typeof data?.visit_id === "string") { visitId = data.visit_id; reportInteraction(); }
+        if (typeof data?.visit_id === "string") {
+          visitId = data.visit_id;
+          try { sessionStorage.setItem("survey_visit_id", data.visit_id); } catch { /* optional survey */ }
+          reportInteraction();
+        }
       });
     return () => {
       cancelled = true;
