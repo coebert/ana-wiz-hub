@@ -112,6 +112,18 @@ Deno.serve(async (req) => {
     }
 
     const traffic_source = classifyReferrer(referrer);
+    const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+    // Public client evidence, not identity verification; never add page views.
+    if (body.event === "interaction") {
+      const visitId = typeof body.visit_id === "string" ? body.visit_id : "";
+      if (!/^[0-9a-f-]{36}$/i.test(visitId)) {
+        return new Response(JSON.stringify({ error: "Invalid visit_id" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+      }
+      const { error } = await admin.from("app_visits")
+        .update({ has_interaction: true }).eq("id", visitId).eq("visitor_id", visitor_id);
+      if (error) throw error;
+      return new Response(JSON.stringify({ ok: true }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
 
     // Prefer the Cloudflare-provided country header (Supabase fronts edge
     // functions on Cloudflare). Fall back to ipapi.co on the client IP.
@@ -133,8 +145,7 @@ Deno.serve(async (req) => {
 
     const ua = (req.headers.get("user-agent") ?? "").slice(0, 512) || null;
 
-    const admin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
-    const { error } = await admin.from("app_visits").insert({
+    const { data, error } = await admin.from("app_visits").insert({
       visitor_id,
       page_path,
       country: country || null,
@@ -142,10 +153,12 @@ Deno.serve(async (req) => {
       referrer,
       traffic_source,
       user_agent: ua,
-    });
+      automation_detected: typeof body.automation_detected === "boolean" ? body.automation_detected : null,
+      has_interaction: false,
+    }).select("id").single();
     if (error) throw error;
 
-    return new Response(JSON.stringify({ ok: true, country: country || null, traffic_source }), {
+    return new Response(JSON.stringify({ ok: true, visit_id: data?.id, country: country || null, traffic_source }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {

@@ -1,5 +1,10 @@
 # Admin metrics audit fixes
 
+## Visitor classification
+- [x] Centralise automated / likely-human / unknown classification and regression tests.
+- [x] Collect browser automation and trusted interaction signals without claiming identity verification.
+- [x] Show separate estimates and verify collection and signed-in admin reporting.
+
 ## Traffic (AdminDashboard.tsx, VisitorsWorldMap.tsx, log-visit/index.ts)
 - [x] Engagement rate: numerator is bot-excluded, denominator includes bots — use human/human
 - [x] World map footer sums only top-15 countries — pass all countries, slice table only

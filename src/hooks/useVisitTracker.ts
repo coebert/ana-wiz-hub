@@ -45,6 +45,25 @@ export const useVisitTracker = () => {
 
     const visitorId = getVisitorId();
     const referrer = getSessionReferrer();
+    let visitId: string | null = null;
+    let interacted = false;
+    let cancelled = false;
+    const reportInteraction = () => {
+      if (!visitId || !interacted || cancelled) return;
+      supabase.functions.invoke("log-visit", {
+        body: { visitor_id: visitorId, visit_id: visitId, event: "interaction" },
+      }).then(({ error }) => {
+        if (error) console.warn("[visit-tracker] interaction failed", error.message);
+      });
+      visitId = null;
+    };
+    const onInteraction = (event: Event) => {
+      if (!event.isTrusted || document.visibilityState !== "visible" || interacted) return;
+      interacted = true;
+      reportInteraction();
+    };
+    const events = ["pointerdown", "keydown", "touchstart", "wheel"];
+    events.forEach(name => window.addEventListener(name, onInteraction, { passive: true }));
     // Route through the log-visit edge function so the server can stamp the
     // visit with the caller's country (cf-ipcountry / ipapi fallback) and
     // classify the traffic source (search/social/direct/referral).
@@ -54,10 +73,16 @@ export const useVisitTracker = () => {
           visitor_id: visitorId,
           page_path: location.pathname,
           referrer,
+          automation_detected: navigator.webdriver === true,
         },
       })
-      .then(({ error }) => {
+      .then(({ data, error }) => {
         if (error) console.warn("[visit-tracker] log-visit failed", error.message);
+        if (typeof data?.visit_id === "string") { visitId = data.visit_id; reportInteraction(); }
       });
+    return () => {
+      cancelled = true;
+      events.forEach(name => window.removeEventListener(name, onInteraction));
+    };
   }, [location.pathname]);
 };
