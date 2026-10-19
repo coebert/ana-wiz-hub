@@ -5,8 +5,8 @@
 - Painted anatomy plates carry optional plate-specific audit warnings beside the artwork so uncorrected printed labels cannot silently appear verified.
 - Anatomy source directory is generated from component/atlas metadata before dev/build, with one entry per atlas plate and explicit missing-source flags; citations must never imply anatomical certification.
 - Anatomy review completion covers wording/records only; classify artwork by URL/rights, retain historical-plate/hotspot uncertainty; empty warnings never imply verification.
-- Anatomy bibliographies reuse topicReferences via anatomyReferences; check integrity without AI; generated verdicts cannot establish source support or accuracy.
-- APRVSection unifies ventilation guidance, sources and learning checks.
+- Anatomy bibliographies reuse topicReferences via anatomyReferences; check integrity without AI; AI verdicts cannot certify sources/accuracy.
+- APRVSection unifies guidance, sources and learning checks.
 
 - Keep expanded lessons in imported Teaching modules for audit retention; ICU outcomes use IcuOutcomesTeaching and reference excerpts, distinguishing periods, denominators, endpoints and symptom thresholds to avoid conflation.
 - Citation-snapshot generation must resolve the data-driven topic route table and refuse empty output when fixed findings exist, so routing refactors cannot erase regression coverage.
@@ -28,4 +28,4 @@
 - Standalone endocrine pages reuse parent excerpts; tests enforce identical wording.
 
 - Admin learning aggregates require server-checked admin access and account-scoped study-time caches; saved progress is distinct from visitor estimates.
-- Visitor reports share a three-way classifier; client automation/interaction are evidence, not identity; interaction updates must not inflate views.
+- Visitor classification is shared; client evidence is not identity; interactions never inflate views. Surveys retain first answers per browser ID with admin-only reads; self-reports never override classification.

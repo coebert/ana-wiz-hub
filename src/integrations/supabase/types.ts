@@ -1530,6 +1530,27 @@ export type Database = {
         }
         Relationships: []
       }
+      visitor_survey_responses: {
+        Row: {
+          answer: string | null
+          answered_at: string | null
+          shown_at: string
+          visitor_id: string
+        }
+        Insert: {
+          answer?: string | null
+          answered_at?: string | null
+          shown_at?: string
+          visitor_id: string
+        }
+        Update: {
+          answer?: string | null
+          answered_at?: string | null
+          shown_at?: string
+          visitor_id?: string
+        }
+        Relationships: []
+      }
       viva_model_answer_locks: {
         Row: {
           claimed_at: string
