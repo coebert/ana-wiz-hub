@@ -1,6 +1,6 @@
 - Build audit data to data-build/ with build:audit-corpus; upload to private audit-corpus for runtime downloads, avoiding oversized bundles.
-- FRCA hubs share ExamLessonLinks, resolving curriculum IDs and collapsible anchors to avoid drift.
-- Diagram snapshot discovery recursively scans diagram folders and topic atlases, including static SVG plates, so moving a file or omitting interaction cannot silently remove it from visual review.
+- FRCA hubs share ExamLessonLinks to resolve curriculum IDs and collapsible anchors without drift.
+- Diagram snapshots recursively scan diagram folders and topic atlases, including static SVG plates, so moves or missing interactions cannot remove visual-review coverage.
 - Anatomy root verification recursively parses TSX object properties; positional heuristics are limited to declared anterior projections because label positions and other views cannot prove anatomical laterality.
 - Painted anatomy plates carry optional plate-specific audit warnings beside the artwork so uncorrected printed labels cannot silently appear verified.
 - Anatomy source directory is generated from component/atlas metadata before dev/build, with one entry per atlas plate and explicit missing-source flags; citations must never imply anatomical certification.
@@ -25,6 +25,6 @@
 
 - Keep endocrine resuscitation lessons in the shared EndocrineEmergenciesTeaching module; distinguish adrenal replacement from septic-shock adjuncts and explicitly name the adopted DKA guideline so different resolution criteria cannot silently merge.
 - Keep NTS expansions in NTSEvidenceTeaching using topic-reference quotations; distinguish operational debriefs from psychological interventions and TeamSTEPPS tools from local adaptations to prevent unsafe conflation.
-- Standalone endocrine pages reuse parent excerpts; tests prevent drift.
+- Standalone endocrine pages reuse parent excerpts; tests enforce identical wording.
 
 - Admin learning aggregates require server-checked admin access and account-scoped study-time caches; saved progress is distinct from visitor estimates.
