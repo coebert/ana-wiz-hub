@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
-import { studyStorageKey } from "@/lib/learning-progress";
+import { studyStorageKey, countsAsActiveStudy } from "@/lib/learning-progress";
 
 /**
  * Study-time tracking.
@@ -19,7 +19,6 @@ const STORAGE_KEY = "anaesthesia-core-study-time";
 const SYNCED_KEY = "anaesthesia-core-study-time-synced";
 
 const TICK_MS = 5000;
-const IDLE_MS = 90_000;
 /** Never credit more than 4 h to a single topic-day (matches the RPC cap). */
 const MAX_SECONDS_PER_TOPIC_DAY = 14_400;
 
@@ -152,9 +151,7 @@ export function useTrackStudyTime(topicId: string | undefined) {
     };
 
     const interval = window.setInterval(() => {
-      const active =
-        document.visibilityState === "visible" &&
-        Date.now() - lastActivity.current < IDLE_MS;
+      const active = countsAsActiveStudy(document.visibilityState === "visible", Date.now() - lastActivity.current);
       if (active) pending.current += TICK_MS / 1000;
       if (pending.current >= 30) flush();
     }, TICK_MS);
