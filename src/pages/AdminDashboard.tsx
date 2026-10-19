@@ -19,6 +19,7 @@ import WebVitalsPanel from "@/components/admin/WebVitalsPanel";
 import JumpClicksPanel from "@/components/admin/JumpClicksPanel";
 import SearchVsReferrerPanel from "@/components/admin/SearchVsReferrerPanel";
 import LearningProgressPanel from "@/components/admin/LearningProgressPanel";
+import { buildNonBotVisitorSet, classifyVisitors, type VisitorEvidence } from "@/lib/visitor-classification";
 
 /** Format a number of seconds as "Hh Mm" or "Mm Ss" for compact display. */
 function formatDuration(totalSeconds: number): string {
@@ -153,38 +154,6 @@ function countryFlag(code: string | null | undefined): string {
   return String.fromCodePoint(A + cc.charCodeAt(0) - 65, A + cc.charCodeAt(1) - 65);
 }
 
-/**
- * Regex matching known bot / crawler / monitor user-agent signatures.
- * Kept at module scope so overview stats, per-country tables, and drill-downs
- * all apply the same exclusion rules. `yandex` alone would also match
- * `YandexBrowser` (a real end-user browser), so we target `yandexbot`.
- */
-const BOT_UA_RE = /bot|crawl|spider|slurp|bingpreview|facebookexternalhit|pingdom|uptimerobot|monitor|headless|phantomjs|puppeteer|playwright|lighthouse|ahrefsbot|semrush|dataforseo|petalbot|yandexbot|duckduckbot|baiduspider|applebot|gptbot|ccbot|claudebot|perplexity/i;
-
-/**
- * Build the set of visitor_ids that look like real humans: they must have sent
- * at least one User-Agent header, and none of their UAs may match BOT_UA_RE.
- * Visitors with no UA at all (can't confirm human) are excluded.
- */
-function buildNonBotVisitorSet(
-  visits: ReadonlyArray<{ visitor_id: string; user_agent?: string | null }>,
-): Set<string> {
-  const state = new Map<string, { hasUA: boolean; anyBot: boolean }>();
-  visits.forEach(v => {
-    const rawUa = (v as { user_agent?: unknown }).user_agent;
-    const ua = typeof rawUa === "string" ? rawUa.trim() : "";
-    const cur = state.get(v.visitor_id) ?? { hasUA: false, anyBot: false };
-    if (ua.length > 0) {
-      cur.hasUA = true;
-      if (BOT_UA_RE.test(ua)) cur.anyBot = true;
-    }
-    state.set(v.visitor_id, cur);
-  });
-  const out = new Set<string>();
-  state.forEach((v, id) => { if (v.hasUA && !v.anyBot) out.add(id); });
-  return out;
-}
-
 type TrafficSource = "direct" | "search" | "social" | "referral";
 
 const TRAFFIC_SOURCE_META: Record<TrafficSource, { label: string; help: string; icon: typeof Search; color: string }> = {
@@ -304,7 +273,7 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState<"overview" | "topics" | "seo">("overview");
   const [mapMetric, setMapMetric] = useState<"users" | "visits">("users");
   // Raw visits kept for sub-range filtering (e.g. top countries)
-  const [allVisits, setAllVisits] = useState<{ visitor_id: string; visited_at: string; country?: string | null; country_name?: string | null; user_agent?: string | null }[]>([]);
+  const [allVisits, setAllVisits] = useState<{ visitor_id: string; visited_at: string; country?: string | null; country_name?: string | null; user_agent?: string | null; automation_detected?: boolean | null; has_interaction?: boolean | null }[]>([]);
   const [countriesDateRange, setCountriesDateRange] = useState<"all" | "today" | "7d" | "30d">("all");
   const [drillCountry, setDrillCountry] = useState<{ code: string; name: string } | null>(null);
 
@@ -378,7 +347,7 @@ const AdminDashboard = () => {
       return out;
     };
 
-    const visits = await fetchAllVisits<{
+    const visits = await fetchAllVisits<VisitorEvidence & {
       visitor_id: string;
       visited_at: string;
       page_path: string | null;
@@ -386,7 +355,7 @@ const AdminDashboard = () => {
       country_name: string | null;
       referrer: string | null;
       traffic_source: string | null;
-    }>("visitor_id, visited_at, page_path, country, country_name, referrer, traffic_source, user_agent", (q) => {
+    }>("visitor_id, visited_at, page_path, country, country_name, referrer, traffic_source, user_agent, automation_detected, has_interaction", (q) => {
       let qq = q;
       if (rangeStartIso) qq = qq.gte("visited_at", rangeStartIso);
       if (rangeEndIso) qq = qq.lte("visited_at", rangeEndIso);
@@ -394,31 +363,14 @@ const AdminDashboard = () => {
     });
     const uniqueVisitors = new Set(visits.map(v => v.visitor_id));
 
-    // Non-bot users: visitors whose user_agent never matches known bot/crawler
-    // signatures. A visitor with any bot-looking UA is excluded, and visitors
-    // with no UA at all are also excluded (can't confirm they're human).
-    // Note: `yandex` alone would also match `YandexBrowser` (a real end-user
-    // browser), so we target `yandexbot` specifically.
-    const BOT_UA_RE = /bot|crawl|spider|slurp|bingpreview|facebookexternalhit|pingdom|uptimerobot|monitor|headless|phantomjs|puppeteer|playwright|lighthouse|ahrefsbot|semrush|dataforseo|petalbot|yandexbot|duckduckbot|baiduspider|applebot|gptbot|ccbot|claudebot|perplexity/i;
-    const uaByVisitor = new Map<string, { hasUA: boolean; anyBot: boolean }>();
-    visits.forEach(v => {
-      const rawUa = (v as { user_agent?: unknown }).user_agent;
-      const ua = typeof rawUa === "string" ? rawUa.trim() : "";
-      const cur = uaByVisitor.get(v.visitor_id) ?? { hasUA: false, anyBot: false };
-      if (ua.length > 0) {
-        cur.hasUA = true;
-        if (BOT_UA_RE.test(ua)) cur.anyBot = true;
-      }
-      uaByVisitor.set(v.visitor_id, cur);
-    });
-    let totalNonBotUsers = 0;
-    uaByVisitor.forEach(v => { if (v.hasUA && !v.anyBot) totalNonBotUsers += 1; });
+    const classification = classifyVisitors(visits);
+    const totalNonBotUsers = classification.likelyHuman.size;
 
     const todayData = await fetchAllVisits<{
       visitor_id: string;
       visited_at: string;
       user_agent: string | null;
-    }>("visitor_id, visited_at, user_agent", (q) =>
+    }>("visitor_id, visited_at, user_agent, automation_detected, has_interaction", (q) =>
       q.gte("visited_at", todayStart).lte("visited_at", now.toISOString()),
     );
     const todayNonBotVisitorIds = buildNonBotVisitorSet(todayData);
@@ -609,10 +561,7 @@ const AdminDashboard = () => {
     ).size;
 
     // Last 7 days
-    const isNonBotVisitor = (vid: string) => {
-      const u = uaByVisitor.get(vid);
-      return !!u && u.hasUA && !u.anyBot;
-    };
+    const isNonBotVisitor = (vid: string) => classification.likelyHuman.has(vid);
     const last7Days: { date: string; count: number }[] = [];
     const last7DaysNonBot: { date: string; count: number }[] = [];
     for (let i = 6; i >= 0; i--) {
@@ -918,6 +867,8 @@ const AdminDashboard = () => {
     () => buildNonBotVisitorSet(allVisits),
     [allVisits],
   );
+
+  const visitorClassification = useMemo(() => classifyVisitors(allVisits), [allVisits]);
 
   const filteredTopCountries = useMemo(() => {
     if (!allVisits.length) return { countries: [], users: 0 };
@@ -1308,12 +1259,17 @@ const AdminDashboard = () => {
             </div>
 
 
+            <div className="mb-4 space-y-1 text-sm text-muted-foreground" aria-label="Visitor classification">
+              <p><strong className="text-foreground">Visitor estimates:</strong> {visitorClassification.likelyHuman.size.toLocaleString()} likely human · {visitorClassification.automated.size.toLocaleString()} automated · {visitorClassification.unknown.size.toLocaleString()} uncertain.</p>
+              <p>{visitorClassification.interacted.size.toLocaleString()} likely-human visitor IDs have recorded interaction. Interaction collection starts with this update; older visits lack this evidence.</p>
+              <p>Browser identification and interaction can be disguised. These are browser IDs, not verified people; one person may use several devices. Saved learning progress below is a separate, stronger usage signal.</p>
+            </div>
             <div className="grid grid-cols-2 lg:grid-cols-6 gap-4" role="list" aria-label="Headline statistics">
               {[
-                { label: "Total Unique Users", value: analytics.totalUniqueUsers, icon: Users, color: "text-blue-500", help: "Distinct visitors ever recorded" },
-                { label: "Total Non-Bot Users", value: analytics.totalNonBotUsers, icon: Users, color: "text-emerald-500", help: "Distinct visitors with a human-looking user agent (bots, crawlers and monitors excluded)" },
+                { label: "All Visitor IDs", value: analytics.totalUniqueUsers, icon: Users, color: "text-blue-500", help: "Browser identifiers, not unique people" },
+                { label: "Likely Human Visitors", value: analytics.totalNonBotUsers, icon: Users, color: "text-emerald-500", help: "Estimated browser visitors after automation filtering; not verified people" },
                 { label: "Registered Accounts", value: registeredUsers ?? "—", icon: UserCheck, color: "text-indigo-500", help: "Accounts created in Supabase Auth (confirmed / unconfirmed)" },
-                { label: "Daily Active Users", value: analytics.dailyUsers, icon: CalendarDays, color: "text-green-500", help: "Distinct human-looking visitors today (bots, crawlers and monitors excluded)" },
+                { label: "Daily Active Users", value: analytics.dailyUsers, icon: CalendarDays, color: "text-green-500", help: "Estimated browser visitors today after automation filtering" },
                 { label: "Total Page Views", value: analytics.totalVisits, icon: TrendingUp, color: "text-purple-500", help: "All page visits ever recorded" },
                 { label: "Today's Page Views", value: analytics.todayVisits, icon: TrendingUp, color: "text-orange-500", help: "Page visits since midnight" },
               ].map(stat => {
@@ -2000,11 +1956,11 @@ const AdminDashboard = () => {
                   <TooltipTrigger asChild>
                     <span className="inline-flex items-center gap-1 ml-2 rounded-full border border-border bg-muted/50 px-2 py-0.5 text-[11px] cursor-help">
                       <Info className="w-3 h-3" aria-hidden="true" />
-                      {excludedCountryCounts.visits.toLocaleString()} probable bots excluded
+                      {excludedCountryCounts.visits.toLocaleString()} automated / uncertain visits excluded
                     </span>
                   </TooltipTrigger>
                   <TooltipContent side="top" className="max-w-xs">
-                    {excludedCountryCounts.visits.toLocaleString()} visits from {excludedCountryCounts.users.toLocaleString()} visitor IDs were filtered out. Includes user-agents matching known bot/crawler/monitor signatures and visits with no user-agent.
+                    {excludedCountryCounts.visits.toLocaleString()} visits from {excludedCountryCounts.users.toLocaleString()} visitor IDs were filtered out. Includes automation signatures, declared browser automation and missing or unrecognised browser identification.
                   </TooltipContent>
                 </Tooltip>
               </p>

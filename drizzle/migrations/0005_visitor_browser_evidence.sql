@@ -1,0 +1,3 @@
+ALTER TABLE public.app_visits ADD COLUMN IF NOT EXISTS automation_detected boolean, ADD COLUMN IF NOT EXISTS has_interaction boolean;
+COMMENT ON COLUMN public.app_visits.automation_detected IS 'Client-reported webdriver evidence; null for historical visits. Not identity verification.';
+COMMENT ON COLUMN public.app_visits.has_interaction IS 'Client-reported visible trusted browser interaction; not proof of a human.';

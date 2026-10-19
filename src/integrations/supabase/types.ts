@@ -16,8 +16,10 @@ export type Database = {
     Tables: {
       app_visits: {
         Row: {
+          automation_detected: boolean | null
           country: string | null
           country_name: string | null
+          has_interaction: boolean | null
           id: string
           page_path: string | null
           referrer: string | null
@@ -27,8 +29,10 @@ export type Database = {
           visitor_id: string
         }
         Insert: {
+          automation_detected?: boolean | null
           country?: string | null
           country_name?: string | null
+          has_interaction?: boolean | null
           id?: string
           page_path?: string | null
           referrer?: string | null
@@ -38,8 +42,10 @@ export type Database = {
           visitor_id: string
         }
         Update: {
+          automation_detected?: boolean | null
           country?: string | null
           country_name?: string | null
+          has_interaction?: boolean | null
           id?: string
           page_path?: string | null
           referrer?: string | null
