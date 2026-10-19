@@ -18,6 +18,7 @@ import SpoofedDomainsPanel from "@/components/admin/SpoofedDomainsPanel";
 import WebVitalsPanel from "@/components/admin/WebVitalsPanel";
 import JumpClicksPanel from "@/components/admin/JumpClicksPanel";
 import SearchVsReferrerPanel from "@/components/admin/SearchVsReferrerPanel";
+import LearningProgressPanel from "@/components/admin/LearningProgressPanel";
 
 /** Format a number of seconds as "Hh Mm" or "Mm Ss" for compact display. */
 function formatDuration(totalSeconds: number): string {
@@ -1345,7 +1346,7 @@ const AdminDashboard = () => {
               <div className="flex items-center gap-2 mb-3">
                 <CheckCircle2 className="w-5 h-5 text-emerald-500" aria-hidden="true" />
                 <h2 className="text-sm font-semibold text-foreground">Learner completions</h2>
-                <span className="text-[11px] text-muted-foreground">signed-up learners who actually study</span>
+                <span className="text-[11px] text-muted-foreground">learner-marked progress from signed-in accounts</span>
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" role="list" aria-label="Learner completion statistics">
                 {[
@@ -1399,6 +1400,8 @@ const AdminDashboard = () => {
                 })}
               </div>
             </div>
+
+            <LearningProgressPanel />
 
             {/* User insight tiles */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" role="list" aria-label="User engagement statistics">

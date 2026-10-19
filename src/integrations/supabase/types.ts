@@ -1692,6 +1692,10 @@ export type Database = {
           topic_rows: number
         }[]
       }
+      admin_topic_learning_progress: {
+        Args: { _from?: string; _to?: string }
+        Returns: Json
+      }
       claim_podcast_rerecord_item: {
         Args: {
           _job_id: string

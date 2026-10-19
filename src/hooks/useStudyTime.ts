@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { studyStorageKey, countsAsActiveStudy } from "@/lib/learning-progress";
 
 /**
  * Study-time tracking.
@@ -18,7 +19,6 @@ const STORAGE_KEY = "anaesthesia-core-study-time";
 const SYNCED_KEY = "anaesthesia-core-study-time-synced";
 
 const TICK_MS = 5000;
-const IDLE_MS = 90_000;
 /** Never credit more than 4 h to a single topic-day (matches the RPC cap). */
 const MAX_SECONDS_PER_TOPIC_DAY = 14_400;
 
@@ -63,19 +63,20 @@ function writeMap(key: string, map: StudyTimeMap) {
   }
 }
 
-export function readLocalStudyTime(): StudyTimeMap {
-  return readMap(STORAGE_KEY);
+export function readLocalStudyTime(userId?: string): StudyTimeMap {
+  return readMap(studyStorageKey(STORAGE_KEY, userId));
 }
 
 /** Add seconds to a topic's total for today, locally. Returns the new total. */
-function addLocalSeconds(topicId: string, seconds: number): number {
+function addLocalSeconds(topicId: string, seconds: number, userId?: string): number {
   const day = todayKey();
-  const map = readMap(STORAGE_KEY);
+  const key = studyStorageKey(STORAGE_KEY, userId);
+  const map = readMap(key);
   const forDay = map[day] ?? {};
   const next = Math.min((forDay[topicId] ?? 0) + seconds, MAX_SECONDS_PER_TOPIC_DAY);
   forDay[topicId] = next;
   map[day] = forDay;
-  writeMap(STORAGE_KEY, map);
+  writeMap(key, map);
   if (typeof window !== "undefined") {
     window.dispatchEvent(new CustomEvent("study-time-updated"));
   }
@@ -83,10 +84,18 @@ function addLocalSeconds(topicId: string, seconds: number): number {
 }
 
 /** Push any not-yet-synced local seconds for today to the cloud. */
+const syncing = new Set<string>();
 async function syncToCloud(userId: string) {
+  if (syncing.has(userId)) return;
+  const { data: auth } = await supabase.auth.getUser();
+  if (auth.user?.id !== userId || syncing.has(userId)) return;
+  syncing.add(userId);
+  try {
+  const localKey = studyStorageKey(STORAGE_KEY, userId);
+  const syncedKey = studyStorageKey(SYNCED_KEY, userId);
   const day = todayKey();
-  const local = readMap(STORAGE_KEY)[day] ?? {};
-  const syncedMap = readMap(SYNCED_KEY);
+  const local = readMap(localKey)[day] ?? {};
+  const syncedMap = readMap(syncedKey);
   const synced = syncedMap[day] ?? {};
 
   for (const [topicId, total] of Object.entries(local)) {
@@ -103,9 +112,9 @@ async function syncToCloud(userId: string) {
     }
     synced[topicId] = total;
     syncedMap[day] = synced;
-    writeMap(SYNCED_KEY, syncedMap);
+    writeMap(syncedKey, syncedMap);
   }
-  void userId;
+  } finally { syncing.delete(userId); }
 }
 
 /**
@@ -119,6 +128,8 @@ export function useTrackStudyTime(topicId: string | undefined) {
   useEffect(() => {
     if (!topicId || typeof window === "undefined") return;
 
+    lastActivity.current = Date.now();
+    pending.current = 0;
     const bump = () => {
       lastActivity.current = Date.now();
     };
@@ -136,13 +147,11 @@ export function useTrackStudyTime(topicId: string | undefined) {
       if (pending.current <= 0) return;
       const secs = Math.round(pending.current);
       pending.current = 0;
-      addLocalSeconds(topicId, secs);
+      addLocalSeconds(topicId, secs, user?.id);
     };
 
     const interval = window.setInterval(() => {
-      const active =
-        document.visibilityState === "visible" &&
-        Date.now() - lastActivity.current < IDLE_MS;
+      const active = countsAsActiveStudy(document.visibilityState === "visible", Date.now() - lastActivity.current);
       if (active) pending.current += TICK_MS / 1000;
       if (pending.current >= 30) flush();
     }, TICK_MS);
@@ -160,7 +169,7 @@ export function useTrackStudyTime(topicId: string | undefined) {
       window.removeEventListener("pagehide", flush);
       flush();
     };
-  }, [topicId]);
+  }, [topicId, user?.id]);
 
   // Periodically push local totals to the cloud while signed in.
   useEffect(() => {
@@ -208,11 +217,13 @@ function foldByTopic(byDay: StudyTimeMap): { byTopic: Record<string, number>; to
  */
 export function useStudyTime(): StudyTimeData {
   const { user } = useAuth();
-  const [local, setLocal] = useState<StudyTimeMap>(() => readLocalStudyTime());
+  const [local, setLocal] = useState<StudyTimeMap>(() => readLocalStudyTime(user?.id));
   const [cloud, setCloud] = useState<StudyTimeMap>({});
   const [loading, setLoading] = useState(false);
 
-  const refresh = useCallback(() => setLocal(readLocalStudyTime()), []);
+  const refresh = useCallback(() => setLocal(readLocalStudyTime(user?.id)), [user?.id]);
+
+  useEffect(() => { setLocal(readLocalStudyTime(user?.id)); setCloud({}); }, [user?.id]);
 
   useEffect(() => {
     const handler = () => refresh();
