@@ -50,6 +50,13 @@
       "when": 1792402509748,
       "tag": "0006_visitor_survey",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1792402760877,
+      "tag": "0007_restrict_visitor_survey_grants",
+      "breakpoints": true
     }
   ]
 }
