@@ -6,7 +6,7 @@
 - Anatomy source directory is generated from component/atlas metadata before dev/build, with one entry per atlas plate and explicit missing-source flags; citations must never imply anatomical certification.
 - Anatomy directory review completion applies only to page wording and record handling; derive artwork classification from source URL and rights metadata, retain historical-plate/hotspot uncertainty, and never infer verification from an empty warning list.
 - Anatomy topic bibliographies reuse editorial topicReferences through anatomyReferences; automation checks record integrity without AI, because a generated verdict cannot establish source support or anatomical accuracy.
-- APRVSection keeps ventilation guidance, sources and learning checks together.
+- APRVSection unifies ventilation guidance, sources and learning checks.
 
 - Keep expanded lessons in imported Teaching modules for audit retention; ICU outcomes use IcuOutcomesTeaching and reference excerpts, distinguishing periods, denominators, endpoints and symptom thresholds to avoid conflation.
 - Citation-snapshot generation must resolve the data-driven topic route table and refuse empty output when fixed findings exist, so routing refactors cannot erase regression coverage.
