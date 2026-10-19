@@ -27,5 +27,5 @@
 - [x] admin-user-count: replace client-side capped scans with SQL counts (fine today, truncates at 50k)
 
 ## Topic learning progress
-- [ ] Show topic completions, active time and per-account detail in admin.
-- [ ] Harden account-scoped study-time syncing and verify signed-in learning flow.
+- [x] Show topic completions, active time and per-account detail in admin.
+- [x] Harden account-scoped study-time syncing and verify signed-in learning flow.
