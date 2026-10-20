@@ -95,8 +95,19 @@ function OperationsLibrary() {
         ))}
       </div>
       <p className="text-xs text-muted-foreground" aria-live="polite">{results.length} of {operations.length} operations</p>
-      <div className="space-y-3">
-        {results.map((op) => <OperationCard key={op.id} op={op} open={op.id === target || (query.trim() !== "" && results.length <= 3)} />)}
+      <div className="space-y-6">
+        {specialties.map((sp) => {
+          const group = results.filter((o) => o.specialty === sp);
+          if (!group.length) return null;
+          return (
+            <section key={sp} aria-labelledby={`sp-${sp}`} className="space-y-3">
+              <h3 id={`sp-${sp}`} className="text-base font-serif font-bold text-foreground border-b border-border pb-1">
+                {sp} <span className="text-xs font-sans font-normal text-muted-foreground">({group.length})</span>
+              </h3>
+              {group.map((op) => <OperationCard key={op.id} op={op} open={op.id === target || (query.trim() !== "" && results.length <= 3)} />)}
+            </section>
+          );
+        })}
         {!results.length && <p className="text-sm text-muted-foreground">No operations match. Try a broader word.</p>}
       </div>
     </div>

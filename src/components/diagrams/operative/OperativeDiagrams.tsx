@@ -431,6 +431,118 @@ const TonsilDiagram = () => (
   </Shell>
 );
 
+const TevarDiagram = () => (
+  <Shell id="op-tevar" title="TEVAR: stent graft in the descending thoracic aorta" desc="Aortic arch with its branches. A stent graft lines the descending thoracic aorta from just beyond the left subclavian artery, delivered from the femoral artery. Covering the left subclavian and long segments of aorta raise the risk of spinal cord ischaemia; a lumbar CSF drain may be used.">
+    <path d="M120 120 C140 30, 300 30, 320 110 L320 300" stroke={ART} strokeWidth={30} fill="none" strokeLinecap="round" />
+    <path d="M170 70 L160 20 M220 50 L220 10 M265 60 L285 15" stroke={ART} strokeWidth={10} strokeLinecap="round" />
+    <path d="M320 100 L320 260" stroke={GRAFT} strokeWidth={16} />
+    <path d="M330 300 L330 315" stroke={INK} strokeWidth={4} />
+    <path d="M440 120 L440 300" stroke={VEIN} strokeWidth={4} strokeDasharray="6 4" />
+    <Label x={295} y={12}>Left subclavian</Label>
+    <Label x={350} y={180}>Stent graft</Label>
+    <Label x={40} y={150}>Ascending aorta</Label>
+    <Label x={380} y={110}>CSF drain (lumbar)</Label>
+    <Label x={20} y={250}>Lower BP briefly at deployment,</Label><Label x={20} y={266}>then keep it up for the spinal cord</Label>
+  </Shell>
+);
+
+const SleeveDiagram = () => (
+  <Shell id="op-sleeve" title="Sleeve gastrectomy: bougie and staple line" desc="Stomach outline with a bougie along the lesser curve. Staples divide the stomach alongside the bougie; the greater curve portion is removed, leaving a narrow tube.">
+    <path d="M220 30 L220 80 C120 90, 110 230, 200 270 C280 300, 380 260, 360 200 C340 150, 280 120, 250 85" fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M225 40 C230 120, 240 200, 300 255" stroke={VEIN} strokeWidth={8} fill="none" strokeLinecap="round" />
+    <path d="M245 75 C250 140, 265 200, 320 245" stroke={ART} strokeWidth={3} fill="none" strokeDasharray="7 4" />
+    <Label x={30} y={40}>Bougie (blue) passed by anaesthetist</Label>
+    <Label x={300} y={110}>Staple line</Label>
+    <Label x={340} y={290}>Greater curve removed</Label>
+    <Label x={30} y={300}>Remove NG tube / probes before stapling</Label>
+  </Shell>
+);
+
+const LiverDiagram = () => (
+  <Shell id="op-liver" title="Liver resection: Pringle manoeuvre and transection" desc="Liver with a transection line between right and left parts. A clamp around the hepatoduodenal ligament (portal vein and hepatic artery) is the Pringle manoeuvre. Hepatic veins drain to the inferior vena cava; low central venous pressure reduces back-bleeding during transection.">
+    <path d="M60 120 C80 50, 420 40, 460 110 C430 170, 300 230, 120 220 C70 210, 50 170, 60 120 Z" fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M270 55 L250 220" stroke={ART} strokeWidth={3} strokeDasharray="8 5" />
+    <rect x={250} y={40} width={30} height={20} fill={VEIN} opacity={0.6} />
+    <path d="M230 230 L230 300" stroke={VEIN} strokeWidth={10} /><Clamp x={230} y={265} />
+    <Label x={290} y={40}>IVC / hepatic veins</Label>
+    <Label x={290} y={160}>Transection line</Label>
+    <Label x={250} y={290}>Pringle clamp (portal inflow)</Label>
+    <Label x={30} y={310}>Keep CVP low during transection; refill afterwards</Label>
+  </Shell>
+);
+
+const CystectomyDiagram = () => (
+  <Shell id="op-cystectomy" title="Radical cystectomy with ileal conduit" desc="After the bladder is removed, both ureters are joined to an isolated segment of ileum, which is brought out to the skin as a urinary stoma. Urine output cannot be measured between ureteric division and conduit formation.">
+    <ellipse cx={170} cy={80} rx={30} ry={45} fill={FILL} stroke={INK} /><ellipse cx={350} cy={80} rx={30} ry={45} fill={FILL} stroke={INK} />
+    <path d="M175 125 C200 190, 230 200, 250 210 M345 125 C320 190, 290 200, 270 210" stroke={GRAFT} strokeWidth={5} fill="none" />
+    <rect x={230} y={200} width={160} height={28} rx={14} fill={ART} opacity={0.5} />
+    <circle cx={400} cy={214} r={12} fill={INK} />
+    <ellipse cx={260} cy={290} rx={40} ry={22} fill="none" stroke={MUTED} strokeDasharray="6 4" />
+    <Label x={110} y={20}>Kidney</Label><Label x={380} y={20}>Kidney</Label>
+    <Label x={40} y={170}>Ureters</Label>
+    <Label x={240} y={250}>Ileal conduit</Label>
+    <Label x={420} y={218}>Stoma</Label>
+    <Label x={310} y={295}>Bladder removed</Label>
+  </Shell>
+);
+
+const FreeFlapDiagram = () => (
+  <Shell id="op-free-flap" title="Head and neck free flap" desc="Tissue from the forearm or thigh, with its own artery and vein, is moved to the neck defect and joined to neck vessels under the microscope. A tracheostomy often protects the airway. Flap perfusion relies on cardiac output, blood pressure and avoiding vasoconstriction.">
+    <path d="M200 30 C120 40, 110 180, 190 230 L190 310 M330 30 C410 40, 410 180, 330 230 L330 310" stroke={INK} strokeWidth={2} fill="none" />
+    <ellipse cx={240} cy={140} rx={45} ry={30} fill={GRAFT} opacity={0.7} />
+    <path d="M280 145 C320 160, 330 200, 335 240" stroke={ART} strokeWidth={4} fill="none" />
+    <path d="M275 155 C305 175, 315 210, 318 250" stroke={VEIN} strokeWidth={4} fill="none" />
+    <rect x={245} y={250} width={30} height={14} rx={4} fill={INK} />
+    <Label x={20} y={135}>Flap in defect</Label>
+    <Label x={385} y={200}>Joined to neck</Label><Label x={385} y={216}>artery + vein</Label>
+    <Label x={70} y={260}>Tracheostomy</Label>
+    <Label x={30} y={20}>Warm, well filled, adequate BP</Label>
+  </Shell>
+);
+
+const HysterectomyDiagram = () => (
+  <Shell id="op-hysterectomy" title="Laparoscopic hysterectomy: steep head-down" desc="Patient in lithotomy with steep head-down tilt and carbon dioxide pneumoperitoneum. The uterus is removed after dividing the uterine vessels near the ureters. Head-down plus pneumoperitoneum raises airway pressure and can cause facial and airway swelling.">
+    <path d="M60 100 L460 220" stroke={INK} strokeWidth={6} />
+    <ellipse cx={260} cy={150} rx={110} ry={40} fill={FILL} stroke={INK} transform="rotate(17 260 150)" />
+    <circle cx={80} cy={90} r={22} fill={MUTED} opacity={0.6} />
+    <ellipse cx={330} cy={175} rx={26} ry={18} fill={ART} opacity={0.5} />
+    <path d="M440 210 L480 150 M440 210 L490 190" stroke={INK} strokeWidth={5} />
+    <Label x={300} y={230}>Uterus</Label>
+    <Label x={30} y={140}>Head down</Label>
+    <Label x={420} y={130}>Lithotomy legs</Label>
+    <Label x={30} y={300}>Watch airway pressures, ETCO2 and peroneal nerve padding</Label>
+  </Shell>
+);
+
+const BreastDiagram = () => (
+  <Shell id="op-breast" title="Mastectomy with DIEP flap reconstruction" desc="Abdominal skin and fat are raised on the deep inferior epigastric vessels and moved to the chest, where the vessels are joined to the internal mammary artery and vein. Abdominal and chest wall blocks help analgesia.">
+    <rect x={150} y={20} width={220} height={290} rx={60} fill={FILL} stroke={INK} />
+    <ellipse cx={210} cy={110} rx={40} ry={30} fill={GRAFT} opacity={0.7} />
+    <ellipse cx={260} cy={240} rx={80} ry={28} fill="none" stroke={ART} strokeWidth={3} strokeDasharray="8 5" />
+    <path d="M220 230 C200 190, 200 150, 210 130" stroke={ART} strokeWidth={3} fill="none" />
+    <path d="M250 60 L250 110" stroke={VEIN} strokeWidth={4} />
+    <Label x={20} y={110}>Reconstructed breast</Label>
+    <Label x={260} y={70}>Internal mammary vessels</Label>
+    <Label x={380} y={250}>Abdominal donor site</Label>
+    <Label x={20} y={300}>Blue dye can lower SpO2 readings</Label>
+  </Shell>
+);
+
+const CataractDiagram = () => (
+  <Shell id="op-cataract" title="Cataract surgery and local anaesthesia" desc="Eye in cross-section showing the cornea, lens and globe. Topical or sub-Tenon's anaesthesia avoids sharp needles near the globe; peribulbar and retrobulbar needle blocks carry risks of globe perforation and brainstem anaesthesia. The clouded lens is emulsified and replaced.">
+    <circle cx={250} cy={165} r={110} fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M150 110 A110 110 0 0 0 150 220" stroke={VEIN} strokeWidth={6} fill="none" />
+    <ellipse cx={175} cy={165} rx={22} ry={45} fill={GRAFT} opacity={0.7} />
+    <path d="M360 165 L460 165" stroke={MUTED} strokeWidth={10} />
+    <path d="M420 280 L310 220" stroke={ART} strokeWidth={3} />
+    <Label x={30} y={80}>Cornea</Label>
+    <Label x={60} y={260}>Lens replaced</Label>
+    <Label x={380} y={150}>Optic nerve</Label>
+    <Label x={330} y={300}>Needle block route (risk)</Label>
+    <Label x={20} y={20}>Topical / sub-Tenon's preferred: no sharp needle</Label>
+  </Shell>
+);
+
 export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
   switch (kind) {
     case "carotid": return <CarotidDiagram />;
@@ -459,5 +571,13 @@ export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
     case "robotic-prostate": return <RoboticProstateDiagram />;
     case "thyroid": return <ThyroidDiagram />;
     case "tonsil": return <TonsilDiagram />;
+    case "tevar": return <TevarDiagram />;
+    case "sleeve": return <SleeveDiagram />;
+    case "liver": return <LiverDiagram />;
+    case "cystectomy": return <CystectomyDiagram />;
+    case "free-flap": return <FreeFlapDiagram />;
+    case "hysterectomy": return <HysterectomyDiagram />;
+    case "breast": return <BreastDiagram />;
+    case "cataract": return <CataractDiagram />;
   }
 }
