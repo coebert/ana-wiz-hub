@@ -1,5 +1,10 @@
 # Admin metrics audit fixes
 
+## Operations Library: diagram detail and realism
+- [ ] Improve shared tissue, vessel and instrument rendering across the library.
+- [ ] Add operation-specific anatomical detail and correct misleading structures/routes.
+- [ ] Verify diagrams, search and audit retention; upload refreshed audit copy.
+
 ## Operations Library: ENT additions
 - [x] Add laryngectomy, glossectomy and microlaryngoscopy with stages, anaesthetic notes, diagrams and sources; two BJA full texts could not be independently fetched and have no displayed quote.
 - [x] Verify search and rendering; regenerate and upload audit coverage.
