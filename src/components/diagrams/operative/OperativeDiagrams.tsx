@@ -442,7 +442,7 @@ const TevarDiagram = () => (
     <Label x={350} y={180}>Stent graft</Label>
     <Label x={40} y={150}>Ascending aorta</Label>
     <Label x={380} y={110}>CSF drain (lumbar)</Label>
-    <Label x={30} y={300}>Lower pressure briefly at deployment, then keep it up for the spinal cord</Label>
+    <Label x={20} y={250}>Lower BP briefly at deployment,</Label><Label x={20} y={266}>then keep it up for the spinal cord</Label>
   </Shell>
 );
 
@@ -493,8 +493,8 @@ const FreeFlapDiagram = () => (
     <path d="M280 145 C320 160, 330 200, 335 240" stroke={ART} strokeWidth={4} fill="none" />
     <path d="M275 155 C305 175, 315 210, 318 250" stroke={VEIN} strokeWidth={4} fill="none" />
     <rect x={245} y={250} width={30} height={14} rx={4} fill={INK} />
-    <Label x={60} y={135}>Flap in defect</Label>
-    <Label x={350} y={200}>Joined to neck artery + vein</Label>
+    <Label x={20} y={135}>Flap in defect</Label>
+    <Label x={385} y={200}>Joined to neck</Label><Label x={385} y={216}>artery + vein</Label>
     <Label x={70} y={260}>Tracheostomy</Label>
     <Label x={30} y={20}>Warm, well filled, adequate BP</Label>
   </Shell>
@@ -523,7 +523,7 @@ const BreastDiagram = () => (
     <path d="M250 60 L250 110" stroke={VEIN} strokeWidth={4} />
     <Label x={20} y={110}>Reconstructed breast</Label>
     <Label x={260} y={70}>Internal mammary vessels</Label>
-    <Label x={360} y={250}>Abdominal flap donor site</Label>
+    <Label x={380} y={250}>Abdominal donor site</Label>
     <Label x={20} y={300}>Blue dye can lower SpO2 readings</Label>
   </Shell>
 );
