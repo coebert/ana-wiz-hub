@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { PageSection } from "@/components/layout/PageSection";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones, Play, SkipForward, ListFilter, X, CheckCircle2, Circle, RotateCcw, Flame, CalendarCheck, Rewind, FastForward, Gauge } from "lucide-react";
+import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones, Play, SkipForward, ListFilter, X, CheckCircle2, Circle, RotateCcw, Flame, CalendarCheck, Gauge } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { supabase } from "@/integrations/supabase/client";
-import { requestVivaAudio, VIVA_AUDIO_ERROR } from "@/lib/viva-audio";
+import { playVivaSpeech, isCancelled, VIVA_AUDIO_ERROR, type SpeechPlayback } from "@/lib/viva-audio";
 import { toast } from "sonner";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
 import { useVivaProgress } from "@/hooks/useVivaProgress";
@@ -275,7 +275,7 @@ const VivaQuestionLibrary = () => {
     | { scope: "all" }
     | { scope: "topic"; sectionKey: string; topicTitle: string; ids: string[] }
   >(null);
-  const playbackRef = useRef<{ cancelled: boolean; audio: HTMLAudioElement | null }>({
+  const playbackRef = useRef<{ cancelled: boolean; audio: SpeechPlayback | null }>({
     cancelled: false,
     audio: null,
   });
@@ -295,19 +295,9 @@ const VivaQuestionLibrary = () => {
     } catch {
       /* ignore */
     }
-    // Apply live to a currently-playing audio element.
-    const a = playbackRef.current.audio;
-    if (a) a.playbackRate = playbackRate;
+    // Streamed audio picks up the new rate from the next segment.
   }, [playbackRate]);
 
-  /** Skip the currently-playing audio segment by `delta` seconds (positive or negative). */
-  const seekBy = (delta: number) => {
-    const a = playbackRef.current.audio;
-    if (!a) return;
-    const dur = Number.isFinite(a.duration) ? a.duration : 0;
-    const target = Math.max(0, Math.min(dur || a.currentTime + delta, a.currentTime + delta));
-    a.currentTime = target;
-  };
 
   useEffect(() => {
     const load = async () => {
@@ -479,31 +469,23 @@ const VivaQuestionLibrary = () => {
     playbackRef.current.cancelled = true;
     const a = playbackRef.current.audio;
     if (a) {
-      try {
-        a.pause();
-        a.src = "";
-      } catch {
-        /* ignore */
-      }
+      a.stop();
     }
     playbackRef.current.audio = null;
     setSpeakingId(null);
   };
 
-  const synthesise = async (text: string, voice: string): Promise<string> => {
-    return requestVivaAudio(text, voice);
+  const playSegment = async (text: string, voice: string): Promise<void> => {
+    if (playbackRef.current.cancelled) return;
+    const playback = playVivaSpeech(text, { voice, rate: playbackRate });
+    playbackRef.current.audio = playback;
+    try {
+      await playback.done;
+    } catch (e) {
+      if (isCancelled(e)) return;
+      throw e;
+    }
   };
-
-  const playSegment = (src: string): Promise<void> =>
-    new Promise((resolve, reject) => {
-      if (playbackRef.current.cancelled) return resolve();
-      const audio = new Audio(src);
-      audio.playbackRate = playbackRate;
-      playbackRef.current.audio = audio;
-      audio.onended = () => resolve();
-      audio.onerror = () => reject(new Error("Audio playback failed"));
-      audio.play().catch(reject);
-    });
 
   /** Play examiner question + candidate model answer as a two-voice dialogue. */
   const playDialogue = async (row: ModelAnswerRow, opts?: { silent?: boolean }) => {
@@ -519,18 +501,13 @@ const VivaQuestionLibrary = () => {
     // Listening to the dialogue counts as practice (auto-mark; user can untick).
     mark(row.id);
     try {
-      // Generate both segments in parallel for faster start.
-      const [examinerSrc, candidateSrc] = await Promise.all([
-        synthesise(`Examiner: ${row.question}`, EXAMINER_VOICE),
-        synthesise(`Candidate: ${row.model_answer}`, CANDIDATE_VOICE),
-      ]);
-      if (playbackRef.current.cancelled) return;
-      await playSegment(examinerSrc);
+      // Each voice streams and starts speaking as soon as audio arrives.
+      await playSegment(`Examiner: ${row.question}`, EXAMINER_VOICE);
       if (playbackRef.current.cancelled) return;
       // Brief gap between speakers for natural pacing.
       await new Promise((r) => setTimeout(r, 350));
       if (playbackRef.current.cancelled) return;
-      await playSegment(candidateSrc);
+      await playSegment(`Candidate: ${row.model_answer}`, CANDIDATE_VOICE);
     } catch (e) {
       console.error(e);
       if (!playbackRef.current.cancelled) toast.error(VIVA_AUDIO_ERROR);
@@ -599,7 +576,7 @@ const VivaQuestionLibrary = () => {
     playbackRef.current.cancelled = true;
     const a = playbackRef.current.audio;
     if (a) {
-      try { a.pause(); a.src = ""; } catch { /* ignore */ }
+      a.stop();
     }
     playbackRef.current.audio = null;
   };
@@ -855,30 +832,6 @@ const VivaQuestionLibrary = () => {
                   </button>
                 );
               })}
-            </div>
-            <div className="ml-auto flex items-center gap-1">
-              <Button
-                type="button"
-                size="sm"
-                variant="outline"
-                onClick={() => seekBy(-15)}
-                disabled={!speakingId}
-                className="h-7 px-2 text-xs"
-                title="Skip back 15 seconds in current segment"
-              >
-                <Rewind className="h-3.5 w-3.5 mr-1" /> 15s
-              </Button>
-              <Button
-                type="button"
-                size="sm"
-                variant="outline"
-                onClick={() => seekBy(15)}
-                disabled={!speakingId}
-                className="h-7 px-2 text-xs"
-                title="Skip forward 15 seconds in current segment"
-              >
-                <FastForward className="h-3.5 w-3.5 mr-1" /> 15s
-              </Button>
             </div>
           </div>
 

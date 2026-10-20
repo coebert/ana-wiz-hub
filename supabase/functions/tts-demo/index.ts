@@ -1,78 +1,42 @@
 import { getAuthedUserId } from "../_shared/require-user.ts";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
-import { requestAudio } from "./request-audio.ts";
-// Lightweight OpenAI TTS endpoint for short demo segments on the landing page.
-// Mirrors the voice/model used by the podcast generator (alloy / gpt-4o-mini-tts)
-// so the demo viva sounds like the rest of the app.
-//
-// JWTs are validated in code before any paid generation request.
+import { requestSpeechStream, resolveVoice } from "./request-audio.ts";
+// Streams viva speech (24 kHz PCM over SSE) from the hosted voice engine.
+// The browser chunks long text, so each request stays short and playback starts at once.
 
-import { encodeBase64 } from "https://deno.land/std@0.224.0/encoding/base64.ts";
-
-const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
-const DEFAULT_VOICE = "alloy"; // matches podcast voice
-const ALLOWED_VOICES = new Set([
-  "alloy",
-  "ash",
-  "ballad",
-  "coral",
-  "echo",
-  "fable",
-  "onyx",
-  "nova",
-  "sage",
-  "shimmer",
-  "verse",
-]);
-const MAX_CHARS = 2000; // hard cap for demo segments
+const MAX_CHARS = 2000;
+const json = (body: unknown, status: number) =>
+  new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 
 Deno.serve(async (req) => {
-  if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
-  }
+  if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
+  if (!(await getAuthedUserId(req))) return json({ error: "Please sign in to use this feature." }, 401);
 
-  if (!(await getAuthedUserId(req))) {
-    return new Response(JSON.stringify({ error: "Please sign in to use this feature." }), {
-      status: 401,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  }
+  const apiKey = Deno.env.get("LOVABLE_API_KEY");
+  if (!apiKey) return json({ error: "Service unavailable" }, 503);
+
+  const { text, voice } = await req.json().catch(() => ({}));
+  if (!text || typeof text !== "string" || !text.trim()) return json({ error: "Missing text" }, 400);
+  if (text.length > MAX_CHARS) return json({ error: "Text too long for one segment" }, 400);
 
   try {
-    if (!OPENAI_API_KEY) {
-      console.error("[tts-demo] OPENAI_API_KEY not configured");
-      return new Response(
-        JSON.stringify({ error: "Service unavailable" }),
-        { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+    const upstream = await requestSpeechStream(apiKey, text, resolveVoice(voice), req.signal);
+    if (!upstream.ok || !upstream.body) {
+      const details = await upstream.text();
+      console.error(`[tts-demo] upstream ${upstream.status}: ${details}`);
+      return json({ error: "Voice generation unavailable. Please try again.", status: upstream.status }, upstream.status);
     }
-
-    const { text, voice } = await req.json().catch(() => ({}));
-    if (!text || typeof text !== "string") {
-      return new Response(
-        JSON.stringify({ error: "Missing text" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
-    }
-
-    const selectedVoice =
-      typeof voice === "string" && ALLOWED_VOICES.has(voice) ? voice : DEFAULT_VOICE;
-    const input = text.slice(0, MAX_CHARS);
-
-    const buf = await requestAudio(OPENAI_API_KEY, input, selectedVoice);
-    const audioBase64 = encodeBase64(new Uint8Array(buf));
-
-    return new Response(
-      JSON.stringify({ audioBase64, mimeType: "audio/mpeg" }),
-      { headers: { ...corsHeaders, "Content-Type": "application/json" } },
-    );
+    return new Response(upstream.body, {
+      status: 200,
+      headers: {
+        ...corsHeaders,
+        "Content-Type": upstream.headers.get("Content-Type") ?? "text/event-stream",
+        "Cache-Control": "no-cache",
+      },
+    });
   } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
-    console.error("[tts-demo] error", message);
-    const timedOut = err instanceof Error && err.name === "AbortError";
-    return new Response(
-      JSON.stringify({ error: timedOut ? "Voice generation took too long. Please try again." : "Voice generation unavailable. Please try again." }),
-      { status: timedOut ? 503 : 502, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-    );
+    if (req.signal.aborted) return new Response(null, { status: 499, headers: corsHeaders });
+    console.error("[tts-demo] error", err instanceof Error ? err.message : String(err));
+    return json({ error: "Voice generation unavailable. Please try again." }, 502);
   }
 });

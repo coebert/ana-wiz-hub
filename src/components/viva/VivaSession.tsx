@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Mic, MicOff, Volume2, RotateCcw, Loader2, AlertCircle, Target, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { requestVivaAudio, VIVA_AUDIO_ERROR } from "@/lib/viva-audio";
+import { playVivaSpeech, isCancelled, VIVA_AUDIO_ERROR, type SpeechPlayback } from "@/lib/viva-audio";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import type { ExamTag } from "@/data/curriculum";
@@ -203,7 +203,7 @@ const VivaSession = ({
   const sttSupported = !!getSpeechRecognitionCtor();
   // Remote voice may be unavailable; retain readable questions and a retry action.
   const ttsSupported = true;
-  const ttsAudioRef = useRef<HTMLAudioElement | null>(null);
+  const ttsAudioRef = useRef<SpeechPlayback | null>(null);
   const ttsAbortRef = useRef<AbortController | null>(null);
   const [ttsError, setTtsError] = useState<string | null>(null);
   /**
@@ -254,8 +254,7 @@ const VivaSession = ({
     ttsAbortRef.current?.abort();
     ttsAbortRef.current = null;
     if (ttsAudioRef.current) {
-      ttsAudioRef.current.pause();
-      ttsAudioRef.current.src = "";
+      ttsAudioRef.current.stop();
       ttsAudioRef.current = null;
     }
   }, []);
@@ -268,18 +267,9 @@ const VivaSession = ({
   const prefetchTts = useCallback(
     async (text: string, signal?: AbortSignal): Promise<void> => {
       if (!text) return;
-      const id = ttsIdFor(text);
-      if (ttsCacheRef.current.has(id)) return;
-      try {
-        const url = await requestVivaAudio(text, undefined, signal);
-        if (signal?.aborted) return;
-        ttsCacheRef.current.set(id, url);
-      } catch (err) {
-        // Background prefetch — log but don't surface; speak() will refetch on demand.
-        if (!signal?.aborted) {
-          console.warn("[VivaSession] TTS prefetch failed", err);
-        }
-      }
+      // Speech now streams on demand (first audio in about a second), so
+      // nothing is generated in the background — avoids paying for unplayed audio.
+      void signal;
     },
     [ttsIdFor],
   );
@@ -291,22 +281,12 @@ const VivaSession = ({
       setTtsError(null);
       const controller = new AbortController();
       ttsAbortRef.current = controller;
-      const id = ttsIdFor(text);
       try {
-        let url = ttsCacheRef.current.get(id);
-        if (!url) {
-          url = await requestVivaAudio(text, undefined, controller.signal);
-          ttsCacheRef.current.set(id, url);
-        }
-        if (controller.signal.aborted) return;
-        const audio = new Audio(url);
-        ttsAudioRef.current = audio;
-        audio.onerror = () => {
-          if (!controller.signal.aborted) setTtsError(VIVA_AUDIO_ERROR);
-        };
-        await audio.play();
+        const playback = playVivaSpeech(text, { signal: controller.signal });
+        ttsAudioRef.current = playback;
+        await playback.done;
       } catch (err) {
-        if (!controller.signal.aborted) {
+        if (!controller.signal.aborted && !isCancelled(err)) {
           setTtsError(VIVA_AUDIO_ERROR);
           console.warn("[VivaSession] TTS error", err);
         }
