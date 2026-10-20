@@ -179,13 +179,12 @@ const CabgDiagram = () => (
     <Clamp x={250} y={95} w={40} />
     <path d="M150 170 C80 170, 70 90, 80 60" stroke={VEIN} strokeWidth={6} fill="none" />
     <rect x={40} y={20} width={90} height={36} rx={6} fill={GRAFT} opacity={0.3} stroke={GRAFT} />
-    <path d="M130 38 L330 38" stroke={ART} strokeWidth={0} />
-    <path d="M250 70 C320 100, 310 180, 270 230" stroke={GRAFT} strokeWidth={5} fill="none" />
+        <path d="M250 70 C320 100, 310 180, 270 230" stroke={GRAFT} strokeWidth={5} fill="none" />
     <path d="M200 40 C180 120, 190 190, 210 240" stroke={GRAFT} strokeWidth={5} fill="none" strokeDasharray="6 4" />
     <Label x={48} y={42}>Bypass</Label>
     <Label x={340} y={45}>Aorta (return cannula)</Label>
     <Label x={300} y={100}>Cross-clamp + cardioplegia</Label>
-    <Label x={30} y={150}>Right atrial drain</Label>
+    <Label x={20} y={130}>Right atrial drain</Label>
     <Label x={320} y={210}>Vein graft from aorta</Label>
     <Label x={60} y={300}>Mammary artery graft (dashed)</Label>
   </Shell>
@@ -212,12 +211,12 @@ const LapCholeDiagram = () => (
     <path d="M140 90 C200 60, 330 60, 380 100 L340 140 L160 130 Z" fill={MUTED} opacity={0.5}><title>Liver</title></path>
     <ellipse cx={280} cy={150} rx={30} ry={16} fill={GRAFT} />
     <path d="M255 155 L230 175" stroke={INK} strokeWidth={4} />
-    {[[260, 250], [300, 120], [360, 150], [390, 190]].map(([x, y]) => <circle key={`${x}${y}`} cx={x} cy={y} r={7} fill={VEIN} />)}
+    {[[260, 250], [300, 120], [400, 150], [410, 200]].map(([x, y]) => <circle key={`${x}${y}`} cx={x} cy={y} r={7} fill={VEIN} />)}
     <Label x={160} y={80}>Liver</Label>
-    <Label x={320} y={158}>Gallbladder</Label>
+    <Label x={250} y={128}>Gallbladder</Label>
     <Label x={120} y={190}>Cystic duct clipped</Label>
     <Label x={270} y={258}>Umbilical camera port</Label>
-    <Label x={60} y={325}>CO2 pressure + head-up tilt affect breathing and BP</Label>
+    <Label x={60} y={312}>CO2 pressure + head-up tilt affect breathing and BP</Label>
   </Shell>
 );
 
@@ -255,7 +254,7 @@ const CaesareanDiagram = () => (
   <Shell id="op-caesarean" title="Caesarean section: spinal block height and incision" desc="Body outline showing a spinal block reaching about T4 for surgery, a low transverse skin incision, and left uterine displacement to relieve compression of the aorta and vena cava.">
     <rect x={200} y={20} width={120} height={280} rx={50} fill={FILL} stroke={INK} />
     <path d="M200 100 L320 100" stroke={VEIN} strokeWidth={3} strokeDasharray="8 5" />
-    <rect x={200} y={100} width={120} height={200} fill={VEIN} opacity={0.12} />
+    <path d="M200 100 L320 100 L320 250 A50 50 0 0 1 270 300 L250 300 A50 50 0 0 1 200 250 Z" fill={VEIN} opacity={0.12} />
     <path d="M225 250 Q260 262 295 250" stroke={ART} strokeWidth={4} fill="none" />
     <Label x={340} y={104}>Block to about T4</Label>
     <Label x={340} y={254}>Low transverse incision</Label>
