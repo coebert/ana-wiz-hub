@@ -28,7 +28,7 @@ export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | 
   | "pyloromyotomy" | "burr-hole" | "shoulder" | "mandible"
   | "dental" | "circumcision" | "paediatric-hernia" | "mitral" | "pneumonectomy"
   | "gastric-bypass" | "vitrectomy" | "microdiscectomy" | "manual-placenta"
-  | "cleft" | "tracheostomy";
+  | "cleft" | "tracheostomy" | "nephrectomy" | "awake-craniotomy" | "scoliosis";
 
 export interface OperativeStep {
   /** What the surgeon does. */
@@ -1255,6 +1255,54 @@ export const operations: Operation[] = [
     anaestheticNotes: ["Confirm placement with waveform capnography every time.", "Ensure the ward knows whether the upper airway is patent (tracheostomy) or not (laryngectomy)."],
     related: { label: "Airway management", path: "/clinical/airway-management" },
     sources: ["McGrath NTSP Guidelines 2012"],
+  },
+  {
+    id: "radical-nephrectomy", name: "Radical nephrectomy (open or laparoscopic), including IVC tumour thrombus", aka: ["nephrectomy", "kidney removal", "renal cell carcinoma", "IVC thrombectomy"],
+    specialty: "Urology", diagram: "nephrectomy", bloodLossRisk: "Moderate",
+    summary: "Removal of the kidney with its fat and fascia, usually for renal cell carcinoma. Most cases are laparoscopic or robotic; tumour extending into the renal vein or inferior vena cava (IVC) turns it into a major open vascular operation.",
+    position: "Lateral (flank) with the table broken, or supine for open transperitoneal and IVC cases.",
+    steps: [
+      { step: "Preoperative staging including the level of any venous tumour thrombus; assessment of renal function and the remaining kidney.", anaesthetic: "Thrombus level dictates the plan: higher levels may need large-bore access, cell salvage discussion, transoesophageal echo and, rarely, cardiopulmonary bypass. Plan for reduced renal reserve afterwards." },
+      { step: "Positioning in the lateral flank position with kidney rest and table break.", anaesthetic: "Lateral flexion can reduce venous return and cause hypotension; protect the dependent arm, eyes and brachial plexus, and check ventilation of the dependent lung." },
+      { step: "Mobilisation of the kidney; control and division of the renal artery, then the renal vein.", anaesthetic: "Sudden bleeding from the renal vessels or IVC is the main intraoperative danger. Pneumothorax can follow pleural breach in flank approaches." },
+      { step: "For IVC thrombus: clamping of the IVC above and below the thrombus, cavotomy and thrombus removal.", anaesthetic: "Caval clamping can sharply reduce venous return and cardiac output; the thrombus can embolise to the lungs — echo helps track it. Coordinate clamping with the surgeon." },
+      { step: "Haemostasis and closure; postoperative analgesia and renal monitoring.", anaesthetic: "Epidural, wound catheters or multimodal analgesia depending on approach; avoid nephrotoxins and dose renally cleared drugs for the new renal function." },
+    ],
+    criticalMoments: ["Renal hilum and IVC dissection — massive bleeding", "Caval clamping — loss of venous return", "Thrombus manipulation — tumour embolism"],
+    anaestheticNotes: ["Most uncomplicated nephrectomies are low-to-moderate blood loss; IVC extension changes this fundamentally.", "High-level thrombus cases belong in high-volume multidisciplinary centres."],
+    sources: ["Novacescu RCC Tumour Thrombus 2026"],
+  },
+  {
+    id: "awake-craniotomy", name: "Awake craniotomy (tumour resection with brain mapping)", aka: ["awake brain surgery", "asleep-awake-asleep", "eloquent cortex", "brain mapping"],
+    specialty: "Neurosurgery", diagram: "awake-craniotomy", bloodLossRisk: "Low",
+    summary: "Craniotomy during which the patient is awake for part of the operation, so speech or movement can be tested while the surgeon maps and removes tumour near eloquent cortex. Communication, comfort and airway access are central.",
+    position: "Supine or semi-lateral, head in pins; drapes arranged so the patient's face can be seen and the airway reached.",
+    steps: [
+      { step: "Patient selection and preparation: ability to cooperate, anxiety, airway, obesity and sleep apnoea; rehearsal of intraoperative tests.", anaesthetic: "Poor cooperation and difficult airway are relative contraindications; agree the technique (sedation/monitored care or asleep-awake-asleep) with the team." },
+      { step: "Scalp block and pin-site infiltration; head fixation.", anaesthetic: "Effective local anaesthesia is essential whatever technique is used; respect maximum local anaesthetic doses." },
+      { step: "Bone flap and dural opening under sedation or general anaesthesia (supraglottic airway in asleep-awake-asleep).", anaesthetic: "Avoid hypercapnia and airway obstruction with sedation; dural opening is painful unless infiltrated." },
+      { step: "Awake phase: cortical stimulation mapping and tumour resection while the patient talks or moves.", anaesthetic: "Patient must be awake but comfortable. Seizures can be provoked by stimulation — have cold saline for the cortex and anticonvulsant drugs ready. Watch for nausea, pain and agitation." },
+      { step: "Closure, often with sedation or general anaesthesia resumed; early neurological assessment.", anaesthetic: "Plan smooth emergence or deepening; continue PONV prophylaxis and pain control." },
+    ],
+    criticalMoments: ["Airway obstruction or apnoea during sedation", "Intraoperative seizure during stimulation", "Loss of cooperation in the awake phase"],
+    anaestheticNotes: ["No single technique is optimal; choose for the patient and surgeon.", "A supraglottic airway, or conversion to general anaesthesia, must be immediately available."],
+    sources: ["Lunardi Dinsmore Awake Craniotomy 2025"],
+  },
+  {
+    id: "scoliosis-correction", name: "Posterior spinal fusion for scoliosis", aka: ["scoliosis surgery", "spinal deformity correction", "neuromuscular scoliosis", "AIS"],
+    specialty: "Orthopaedic & Spine", diagram: "scoliosis", bloodLossRisk: "High",
+    summary: "Pedicle screws and rods are used to straighten and fuse a curved spine, usually in adolescents. Neuromuscular scoliosis (cerebral palsy, muscular dystrophies) carries much higher respiratory, cardiac and bleeding risk than idiopathic scoliosis.",
+    position: "Prone on a spinal frame with abdomen free; head in a pressure-relieving headrest.",
+    steps: [
+      { step: "Preoperative assessment: lung function, cardiac function (especially muscular dystrophies), nutrition, seizures and secretions; postoperative critical care bed.", anaesthetic: "Neuromuscular patients have a higher risk of perioperative complications; plan for postoperative ventilation or non-invasive support where reserve is poor. Avoid suxamethonium in muscular dystrophies." },
+      { step: "Induction, large-bore access, arterial line; prone positioning.", anaesthetic: "Protect eyes, face, breasts/genitals and limbs; keep the abdomen free to lower venous pressure and bleeding." },
+      { step: "Exposure and pedicle screw insertion across many levels.", anaesthetic: "Blood loss can be large: tranexamic acid and cell salvage are commonly used. Total intravenous anaesthesia suits motor evoked potential monitoring; avoid neuromuscular block after baseline." },
+      { step: "Rod insertion and curve correction.", anaesthetic: "Highest risk of spinal cord injury. If neuromonitoring signals fall, raise blood pressure, correct anaemia and temperature, and agree with the surgeon whether to release correction or do a wake-up test." },
+      { step: "Bone graft, closure and postoperative care.", anaesthetic: "Multimodal analgesia (often intrathecal morphine or PCA); monitor for respiratory depression, ileus and ongoing bleeding." },
+    ],
+    criticalMoments: ["Prone positioning", "Correction manoeuvre — spinal cord ischaemia", "Major blood loss during long instrumentation"],
+    anaestheticNotes: ["Blood pressure, haemoglobin and anaesthetic depth all affect neuromonitoring — keep them stable.", "Exact transfusion and tranexamic acid regimens follow local protocols; this summary does not set them."],
+    sources: ["Hudec Neuromuscular Scoliosis 2023"],
   },
 ];
 
