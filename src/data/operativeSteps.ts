@@ -451,8 +451,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: [
       "Neuraxial timing against antiplatelet and anticoagulant use",
-      "Maintaining perfusion pressure after reperfusion for graft patency",
-    ],
+      "Maintaining perfusion pressure after reperfusion for graft patency", "Heparin before arterial clamping"],
     anaestheticNotes: [
       "Patients usually have widespread arterial disease, diabetes, renal impairment and often frailty.",
       "BASIL-2 found that, for chronic limb-threatening ischaemia needing infrapopliteal revascularisation, a best-endovascular-first strategy gave better amputation-free survival than vein bypass first, mainly through fewer deaths. It should not be extrapolated directly to isolated femoro-popliteal disease; treatment is chosen by anatomy, vein availability, patient risk and MDT review.",
@@ -501,7 +500,7 @@ export const operations: Operation[] = [
       { step: "Bone section with a saw and bevelling of the bone end.", anaesthetic: "Highly stimulating; deepen anaesthesia or supplement the block." },
       { step: "Myoplasty or myodesis, flap closure and dressing.", anaesthetic: "Plan multimodal analgesia; pain before surgery and poorly controlled acute pain are associated with phantom and stump pain." },
     ],
-    criticalMoments: ["Bone section — strong stimulus", "Sepsis-related haemodynamic instability"],
+    criticalMoments: ["Bone section — strong stimulus", "Sepsis-related haemodynamic instability", "Postoperative delirium and pain in frail patients"],
     anaestheticNotes: [
       "Perineural catheters, nerve blocks and neuraxial techniques are all used; no technique reliably prevents phantom limb pain.",
       "High perioperative mortality reflects the underlying disease: treat it as high-risk surgery.",
@@ -523,12 +522,12 @@ export const operations: Operation[] = [
       { step: "Heparin, clamping, arteriotomy and venotomy, and anastomosis.", anaesthetic: "Short procedure; the patient must keep the arm still." },
       { step: "Release, check for a thrill and for distal hand perfusion, closure.", anaesthetic: "Hypotension after surgery risks early thrombosis of the fistula. New hand pain, pallor, coldness or numbness suggests access-related ischaemia (steal) and needs urgent surgical review." },
     ],
-    criticalMoments: ["Avoiding hypotension for fistula patency"],
+    criticalMoments: ["Avoiding hypotension for fistula patency", "Block or induction with high potassium or fluid overload", "Checking hand perfusion (steal) after the anastomosis"],
     anaestheticNotes: [
       "Patients have end-stage kidney disease: check potassium, timing of last dialysis, fluid status and drug dosing.",
-      "Avoid suxamethonium if potassium is raised; drugs cleared by the kidney accumulate.",
+      "Avoid suxamethonium if potassium is raised; drugs cleared by the kidney accumulate.", "In a randomised trial, brachial plexus block improved 3-month fistula patency compared with local infiltration.",
     ],
-    sources: ["ESVS 2018 vascular access"],
+    sources: ["ESVS 2018 vascular access", "Aitken Regional AVF 2016"],
   },
 
   // ─────────────────────── Cardiothoracic ───────────────────────
@@ -626,7 +625,7 @@ export const operations: Operation[] = [
       { step: "Clipping and division of cystic duct and artery; dissection of the gallbladder from the liver bed.", anaesthetic: "Bleeding from the liver bed is usually minor." },
       { step: "Removal of the gallbladder through a port; desufflation and closure.", anaesthetic: "Shoulder-tip pain from residual CO₂; PONV prophylaxis and multimodal analgesia; usually day case." },
     ],
-    criticalMoments: ["Insufflation — bradycardia, hypotension, CO₂ rise", "Rare: CO₂ embolism (sudden fall in end-tidal CO₂ and collapse)"],
+    criticalMoments: ["Insufflation — bradycardia, hypotension, CO₂ rise", "Rare: CO₂ embolism (sudden fall in end-tidal CO₂ and collapse)", "Head-up tilt — reduced venous return"],
     anaestheticNotes: [
       "Moderate to high PONV risk — give at least two antiemetics where risk factors are present.",
       "Local anaesthetic port infiltration reduces opioid need.",
@@ -698,7 +697,7 @@ export const operations: Operation[] = [
       { step: "Pancreatic neck transection and removal of the specimen.", anaesthetic: "Monitor glucose." },
       { step: "Reconstruction: pancreaticojejunostomy (or pancreaticogastrostomy), hepaticojejunostomy and gastro/duodenojejunostomy.", anaesthetic: "Avoid excessive fluids, which may contribute to anastomotic oedema; maintain perfusion." },
     ],
-    criticalMoments: ["Dissection off the portal and superior mesenteric veins — bleeding", "Prolonged surgery and heat loss"],
+    criticalMoments: ["Dissection off the portal and superior mesenteric veins — bleeding", "Prolonged surgery and heat loss", "Fluid balance — avoiding both overload and hypovolaemia"],
     anaestheticNotes: [
       "ERAS pancreatoduodenectomy guidance covers nutrition, avoidance of fluid overload, and epidural or alternative analgesia.",
       "Pancreatic leak (fistula) is the major surgical complication.",
@@ -746,7 +745,7 @@ export const operations: Operation[] = [
       { step: "Cement inserted retrograde with a gun, then the stem.", anaesthetic: "Bone cement implantation syndrome (hypoxia, hypotension, arrhythmia, arrest) can occur during canal preparation, cement and stem insertion, and joint reduction. The surgeon announces cementing; keep systolic pressure within 20% of pre-induction values, use an arterial line in higher-risk patients, and have vasopressors drawn up. A sudden fall in end-tidal CO₂ under general anaesthesia may signal right heart failure." },
       { step: "Head attached, joint reduced, closure.", anaesthetic: "Postoperative delirium prevention: avoid excess sedation and anticholinergics; treat pain." },
     ],
-    criticalMoments: ["Femoral canal preparation, cement and stem insertion, and reduction — bone cement implantation syndrome"],
+    criticalMoments: ["Femoral canal preparation, cement and stem insertion, and reduction — bone cement implantation syndrome", "Positioning a frail patient with a fracture — analgesia first", "Early postoperative delirium and hypotension"],
     anaestheticNotes: [
       "The hip fracture guideline recommends surgery on the day of or day after admission, with a block for analgesia and spinal or general anaesthesia chosen by individual factors.",
       "The safety guideline on cemented hemiarthroplasty describes team roles: identify high-risk patients, surgeon announces cementing, anaesthetist watches for early signs.",
@@ -769,8 +768,8 @@ export const operations: Operation[] = [
       { step: "Preparation of the femoral canal and insertion of the femoral stem (cemented or press-fit).", anaesthetic: "Femoral instrumentation and stem insertion — especially cemented — can cause embolic cardiovascular compromise (bone cement implantation syndrome): watch for hypoxia, hypotension and right heart failure." },
       { step: "Trial reduction, final components, closure.", anaesthetic: "Early mobilisation pathways rely on good analgesia without dense motor block." },
     ],
-    criticalMoments: ["Femoral stem cementing (if cemented)"],
-    anaestheticNotes: ["Local infiltration analgesia and multimodal analgesia support same-day or next-day mobilisation."],
+    criticalMoments: ["Femoral stem cementing (if cemented)", "Neuraxial or general anaesthesia and positioning", "Hip reduction and blood loss"],
+    anaestheticNotes: ["Local infiltration analgesia and multimodal analgesia support same-day or next-day mobilisation.", "NICE NG157 advises intravenous tranexamic acid for primary elective hip replacement."],
     related: { label: "Orthopaedic anaesthesia", path: "/clinical/orthopaedic-anaesthesia" },
     sources: ["AAGBI BCIS 2015", "NICE NG157"],
   },
@@ -789,7 +788,7 @@ export const operations: Operation[] = [
       { step: "Trial components then cemented implants.", anaesthetic: "Cement reactions are less common than in hip surgery while the tourniquet is up." },
       { step: "Local infiltration, closure, tourniquet deflation.", anaesthetic: "Deflation can cause transient hypotension and a rise in end-tidal CO₂ and potassium from washout." },
     ],
-    criticalMoments: ["Tourniquet deflation"],
+    criticalMoments: ["Tourniquet deflation", "Tourniquet inflation time", "Postoperative pain while preserving quadriceps strength"],
     anaestheticNotes: [
       "PROSPECT recommends paracetamol and an NSAID or COX-2 inhibitor (unless contraindicated), IV dexamethasone, a single-shot adductor canal block plus periarticular local infiltration, with opioids reserved for rescue; this preserves quadriceps strength for early mobilisation.",
       "NICE NG157 recommends tranexamic acid for knee replacement unless contraindicated.",
@@ -865,9 +864,9 @@ export const operations: Operation[] = [
       { step: "Removal of chips and insertion of a three-way catheter for irrigation.", anaesthetic: "Bladder perforation can cause abdominal or shoulder pain in the awake patient." },
     ],
     criticalMoments: ["Absorption of irrigation fluid (TURP syndrome)", "Bladder perforation", "Hidden blood loss"],
-    anaestheticNotes: ["Check sodium if the resection is long, absorption is suspected, or the patient becomes confused, bradycardic or hypertensive."],
+    anaestheticNotes: ["Check sodium if the resection is long, absorption is suspected, or the patient becomes confused, bradycardic or hypertensive.", "Spinal anaesthesia lets early confusion from fluid absorption be noticed; bipolar resection with saline lowers but does not abolish absorption risk."],
     related: { label: "Urology anaesthesia", path: "/clinical/urological-anaesthesia" },
-    sources: ["O'Donnell & Foo 2009"],
+    sources: ["O'Donnell & Foo 2009", "Ortner Irrigation Absorption 2022"],
   },
   {
     id: "robotic-prostatectomy",
@@ -890,7 +889,7 @@ export const operations: Operation[] = [
       "Once docked, the patient cannot be moved quickly — plan arrest and undocking drills.",
       "Before extubation, return to flat, check for facial and airway oedema (e.g. cuff-leak) and confirm full neuromuscular recovery.",
     ],
-    sources: ["Irvine & Patil 2009"],
+    sources: ["Irvine & Patil 2009", "Hernandez-Meza RALP 2023"],
     related: { label: "Robotic surgery anaesthesia", path: "/notes/anaesthesia-for-robotic-surgery-guide" },
   },
 
@@ -995,9 +994,10 @@ export const operations: Operation[] = [
       "ESVS guidance recommends measures to protect the spinal cord when extensive thoracic aortic coverage is planned, including cerebrospinal fluid drainage in selected high-risk patients and maintaining an adequate mean arterial pressure.",
       "A lumbar CSF drain needs coagulation and anticoagulation planning; drain complications include headache, bleeding and infection.",
       "Spinal cord ischaemia can be delayed: serial neurological checks after surgery; new weakness needs immediate pressure augmentation and CSF drainage if a drain is in place.",
+      "A 2023 meta-analysis found no clear reduction in spinal cord ischaemia with prophylactic drainage in TEVAR and a small risk of serious drain complications, so drainage is selective rather than routine.",
     ],
     related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-anaesthesia" },
-    sources: ["ESVS 2017 thoracic aorta"],
+    sources: ["ESVS 2017 thoracic aorta", "Chen CSF Drainage TEVAR 2023"],
   },
   {
     id: "sleeve-gastrectomy",
@@ -1153,12 +1153,12 @@ export const operations: Operation[] = [
       { step: "Phacoemulsification of the lens and aspiration.", anaesthetic: "Ocular manipulation can trigger the oculocardiac reflex (bradycardia), though less often than in squint surgery." },
       { step: "Intraocular lens inserted; incisions self-seal.", anaesthetic: "Patient goes home the same day." },
     ],
-    criticalMoments: ["Needle block placement", "Patient movement during intraocular steps"],
+    criticalMoments: ["Needle block placement", "Patient movement during intraocular steps", "Over-sedation under drapes with no airway access"],
     anaestheticNotes: [
       "Joint RCoA/RCOphth guidance: routine fasting is not required for topical or sub-Tenon's LA without sedation, and routine blood tests are not needed; check anticoagulation but usually continue it (block choice may change).",
       "General anaesthesia is reserved for patients who cannot cooperate or lie still.",
     ],
-    sources: ["RCoA/RCOphth LA 2012"],
+    sources: ["RCoA/RCOphth LA 2012", "Pucchio Ophthalmic Anaesthesia 2023"],
   },
   {
     id: "pyloromyotomy", name: "Pyloromyotomy (open or laparoscopic)", aka: ["Ramstedt", "pyloric stenosis", "IHPS"],
