@@ -1073,7 +1073,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Induction and intubation", "Intermaxillary fixation — loss of oral airway access", "Throat pack removal and extubation"],
     anaestheticNotes: ["Facial trauma may coexist with brain and cervical spine injury.", "Senior anaesthetic input and teamwork are required; direct laryngoscopy may not be the safest option."],
-    related: { label: "Trauma", path: "/clinical/trauma" },
+    related: { label: "Trauma", path: "/clinical/trauma-emergency" },
     sources: ["Harper Maxillofacial Trauma 2023", "Morosan OMFS Emergencies 2012"],
   },
 ];
