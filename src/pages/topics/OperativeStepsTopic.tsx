@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Search, AlertTriangle, Stethoscope } from "lucide-react";
+import { Search, AlertTriangle, Stethoscope, X } from "lucide-react";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { LessonSources } from "@/components/topic/LessonSources";
@@ -12,6 +12,8 @@ import { OperativeDiagram } from "@/components/diagrams/operative/OperativeDiagr
 
 const T = "operative-steps";
 const exams = [Exam.FINAL];
+
+type Filter = Specialty | "All";
 
 const quiz = [
   { question: "During carotid endarterectomy under local anaesthesia, a new contralateral hand weakness appears after cross-clamping. The usual response is:", options: ["Deepen sedation", "Tell the surgeon — a shunt is usually inserted, and blood pressure supported", "Give protamine", "Convert to EVAR"], correctIndex: 1, explanation: "New deficit on clamping signals cerebral ischaemia; shunting and raising blood pressure restore flow." },
@@ -26,7 +28,7 @@ const quiz = [
 
 function OperationCard({ op, open }: { op: Operation; open: boolean }) {
   return (
-    <details id={op.id} open={open} className="group rounded-xl border border-border bg-card scroll-mt-24">
+    <details id={op.id} open={open} className="group rounded-xl border border-border bg-card scroll-mt-[21rem]">
       <summary className="cursor-pointer list-none p-4 flex flex-wrap items-baseline justify-between gap-2">
         <div>
           <h3 className="text-lg font-serif font-bold text-foreground">{op.name}</h3>
@@ -69,52 +71,150 @@ function OperationCard({ op, open }: { op: Operation; open: boolean }) {
   );
 }
 
-function OperationsLibrary() {
-  const [query, setQuery] = useState("");
-  const [specialty, setSpecialty] = useState<Specialty | "All">("All");
-  const { hash } = useLocation();
-  const target = hash.replace("#", "");
-  const results = useMemo(() => searchOperations(query, specialty), [query, specialty]);
-
-  useEffect(() => {
-    if (target) document.getElementById(target)?.scrollIntoView({ block: "start" });
-  }, [target]);
-
+/**
+ * Search + specialty filter for the operations library. Rendered at the top of
+ * the page so learners can look up a specific operation as soon as they arrive,
+ * and pinned just under the header while the list itself is on screen.
+ */
+export function OperationsSearchBar({
+  query,
+  specialty,
+  resultCount,
+  sticky,
+  onQuery,
+  onSpecialty,
+  onEnter,
+  inputRef,
+}: {
+  query: string;
+  specialty: Filter;
+  resultCount: number;
+  sticky: boolean;
+  onQuery: (value: string) => void;
+  onSpecialty: (value: Filter) => void;
+  onEnter: () => void;
+  inputRef: RefObject<HTMLInputElement>;
+}) {
+  const trimmed = query.trim();
+  const summary = trimmed
+    ? `${resultCount} of ${operations.length} operations shown for "${trimmed}" — press Enter to open the first one`
+    : `${resultCount} of ${operations.length} operations shown`;
   return (
-    <div className="space-y-4">
+    <div
+      className={`rounded-xl border px-3 py-3 sm:px-4 ${
+        sticky
+          ? "sticky top-[7rem] z-30 border-border bg-background shadow-sm 2xl:top-[5.5rem]"
+          : "border-border bg-muted/30"
+      }`}
+    >
+      <label htmlFor="operations-search" className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+        Search the operations library
+      </label>
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" aria-hidden />
-        <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search operations, steps or hazards — e.g. carotid, cross-clamp, cement, one-lung" className="pl-9" aria-label="Search operations" />
+        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" aria-hidden />
+        <Input
+          id="operations-search"
+          ref={inputRef}
+          value={query}
+          onChange={(e) => onQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              onEnter();
+            }
+          }}
+          placeholder="Look up an operation — e.g. carotid endarterectomy — or a hazard: cross-clamp"
+          className="pl-9 pr-10"
+          aria-label="Search operations"
+        />
+        {query ? (
+          <button
+            type="button"
+            onClick={() => {
+              onQuery("");
+              inputRef.current?.focus();
+            }}
+            aria-label="Clear search"
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
+          >
+            <X className="h-4 w-4" aria-hidden />
+          </button>
+        ) : null}
       </div>
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by specialty">
+      <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="Filter by specialty">
         {(["All", ...specialties] as const).map((s) => (
-          <button key={s} type="button" onClick={() => setSpecialty(s)} aria-pressed={specialty === s}
-            className={`rounded-full border px-3 py-1 text-xs transition-colors ${specialty === s ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:text-foreground"}`}>
-            {s}{s !== "All" && ` (${operations.filter((o) => o.specialty === s).length})`}
+          <button
+            key={s}
+            type="button"
+            onClick={() => onSpecialty(s)}
+            aria-pressed={specialty === s}
+            className={`rounded-full border px-3 py-1 text-xs transition-colors ${specialty === s ? "bg-primary text-primary-foreground border-primary" : "border-border text-muted-foreground hover:text-foreground"}`}
+          >
+            {s}
+            {s !== "All" && ` (${operations.filter((o) => o.specialty === s).length})`}
           </button>
         ))}
       </div>
-      <p className="text-xs text-muted-foreground" aria-live="polite">{results.length} of {operations.length} operations</p>
-      <div className="space-y-6">
-        {specialties.map((sp) => {
-          const group = results.filter((o) => o.specialty === sp);
-          if (!group.length) return null;
-          return (
-            <section key={sp} aria-labelledby={`sp-${sp}`} className="space-y-3">
-              <h3 id={`sp-${sp}`} className="text-base font-serif font-bold text-foreground border-b border-border pb-1">
-                {sp} <span className="text-xs font-sans font-normal text-muted-foreground">({group.length})</span>
-              </h3>
-              {group.map((op) => <OperationCard key={op.id} op={op} open={op.id === target || (query.trim() !== "" && results.length <= 3)} />)}
-            </section>
-          );
-        })}
-        {!results.length && <p className="text-sm text-muted-foreground">No operations match. Try a broader word.</p>}
-      </div>
+      <p className="mt-2 text-xs text-muted-foreground" aria-live="polite">
+        {summary}
+      </p>
+    </div>
+  );
+}
+
+function OperationsLibrary({ results, target, query }: { results: Operation[]; target: string; query: string }) {
+  return (
+    <div className="space-y-6">
+      {specialties.map((sp) => {
+        const group = results.filter((o) => o.specialty === sp);
+        if (!group.length) return null;
+        return (
+          <section key={sp} aria-labelledby={`sp-${sp}`} className="space-y-3">
+            <h3 id={`sp-${sp}`} className="text-base font-serif font-bold text-foreground border-b border-border pb-1">
+              {sp} <span className="text-xs font-sans font-normal text-muted-foreground">({group.length})</span>
+            </h3>
+            {group.map((op) => (
+              <OperationCard key={op.id} op={op} open={op.id === target || (query.trim() !== "" && results.length <= 3)} />
+            ))}
+          </section>
+        );
+      })}
+      {!results.length && <p className="text-sm text-muted-foreground">No operations match. Try a broader word, or clear the search.</p>}
     </div>
   );
 }
 
 export default function OperativeStepsTopic() {
+  const [query, setQuery] = useState("");
+  const [specialty, setSpecialty] = useState<Filter>("All");
+  const { hash } = useLocation();
+  const target = hash.replace("#", "");
+  const results = useMemo(() => searchOperations(query, specialty), [query, specialty]);
+  const libraryRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [sticky, setSticky] = useState(false);
+
+  useEffect(() => {
+    if (target) document.getElementById(target)?.scrollIntoView({ block: "start" });
+  }, [target]);
+
+  // Pin the search bar only while the list is on screen, so it never floats
+  // over the objectives, quiz or references further down the page.
+  useEffect(() => {
+    const el = libraryRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(([entry]) => setSticky(entry.isIntersecting), {
+      rootMargin: "-80px 0px 0px 0px",
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const openFirstResult = () => {
+    const first = results[0];
+    if (first) document.getElementById(first.id)?.scrollIntoView({ block: "start" });
+  };
+
   return (
     <TopicTemplate
       title="Operations Library: Surgical Steps for Anaesthetists"
@@ -124,6 +224,18 @@ export default function OperativeStepsTopic() {
       accentColor="text-perioperative"
       topicId={T}
       topicTitle="Operations Library: Surgical Steps for Anaesthetists"
+      preContent={
+        <OperationsSearchBar
+          query={query}
+          specialty={specialty}
+          resultCount={results.length}
+          sticky={sticky}
+          onQuery={setQuery}
+          onSpecialty={setSpecialty}
+          onEnter={openFirstResult}
+          inputRef={inputRef}
+        />
+      }
       objectives={[
         "Describe the main stages of common operations, especially vascular procedures",
         "Anticipate the surgical moments that change anaesthetic management (cross-clamp, cementing, insufflation, one-lung ventilation)",
@@ -145,7 +257,9 @@ export default function OperativeStepsTopic() {
             For specialty-level plans see <Link to="/clinical/surgical-protocols" className="text-primary underline">Perioperative Protocols by Surgery Type</Link>.
           </p>
           <ExamSection id="operations-library" exams={exams}>
-            <OperationsLibrary />
+            <div ref={libraryRef}>
+              <OperationsLibrary results={results} target={target} query={query} />
+            </div>
           </ExamSection>
         </div>
       }

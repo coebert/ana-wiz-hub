@@ -54,6 +54,12 @@ interface TopicTemplateProps {
   backLabel?: string;
   accentColor?: string;
   disableAutoTOC?: boolean;
+  /**
+   * Optional tool strip rendered above the learning objectives — for pages
+   * whose main job is looking something up (e.g. a searchable library).
+   * Keep it short: one search box or filter row, not teaching content.
+   */
+  preContent?: ReactNode;
 
   // Required structural blocks
   /** 3–6 short, action-led objectives shown at the top of every topic. */
@@ -123,6 +129,7 @@ export const TopicTemplate = ({
   backLabel,
   accentColor,
   disableAutoTOC,
+  preContent,
   objectives,
   coreConcepts,
   keyPoints,
@@ -295,6 +302,7 @@ export const TopicTemplate = ({
       <ExamBadgeDedupeProvider>
       <div className="space-y-8 sm:space-y-10">
 
+        {preContent}
         <TopicPodcastPlayer topicId={topicId} topicTitle={topicTitle ?? title} />
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-lg border border-border bg-muted/30 px-3 sm:px-4 py-3">
           <div className="min-w-0">
