@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Operations Library: search bar
+- [x] Add a prominent search box at the top of the operations page, with specialty filters, live match count and Enter-to-open.
+- [x] Keep it pinned while the list is on screen without covering the header bars; test lookup, filtering, clearing and jump-to-first.
+
 ## Operations Library: October 20 next batch
 - [x] Add nine source-led operations across paediatric, cardiac, thoracic, GI, eye, spine and obstetric practice (53 total).
 - [x] Add diagrams; verify specialty filtering, procedure anchors and source integrity (14 new excerpts checked against fetched text).
