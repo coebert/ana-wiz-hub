@@ -15,7 +15,8 @@ export type Specialty =
   | "ENT & Head and Neck"
   | "Obstetric";
 
-export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | "ivor-lewis";
+export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | "ivor-lewis"
+  | "ruptured-aaa" | "aorto-bifem" | "amputation" | "av-fistula" | "cabg" | "vats" | "lap-chole" | "whipple" | "hip-hemi" | "caesarean";
 
 export interface OperativeStep {
   /** What the surgeon does. */
@@ -146,6 +147,7 @@ export const operations: Operation[] = [
   },
   {
     id: "ruptured-aaa",
+    diagram: "ruptured-aaa",
     name: "Ruptured AAA repair (open or endovascular)",
     aka: ["rAAA", "ruptured aneurysm"],
     specialty: "Vascular",
@@ -203,6 +205,7 @@ export const operations: Operation[] = [
   },
   {
     id: "aorto-bifemoral-bypass",
+    diagram: "aorto-bifem",
     name: "Aorto-bifemoral bypass",
     aka: ["aortobifemoral graft"],
     specialty: "Vascular",
@@ -226,6 +229,7 @@ export const operations: Operation[] = [
   },
   {
     id: "lower-limb-amputation",
+    diagram: "amputation",
     name: "Major lower limb amputation",
     aka: ["below-knee amputation", "BKA", "above-knee amputation", "AKA"],
     specialty: "Vascular",
@@ -248,6 +252,7 @@ export const operations: Operation[] = [
   },
   {
     id: "av-fistula",
+    diagram: "av-fistula",
     name: "Arteriovenous fistula formation",
     aka: ["AVF", "radiocephalic fistula", "brachiocephalic fistula"],
     specialty: "Vascular",
@@ -270,6 +275,7 @@ export const operations: Operation[] = [
   // ─────────────────────── Cardiothoracic ───────────────────────
   {
     id: "cabg",
+    diagram: "cabg",
     name: "Coronary artery bypass grafting (on-pump)",
     aka: ["CABG", "heart bypass"],
     specialty: "Cardiothoracic",
@@ -320,6 +326,7 @@ export const operations: Operation[] = [
   },
   {
     id: "vats-lobectomy",
+    diagram: "vats",
     name: "VATS lobectomy",
     aka: ["video-assisted thoracoscopic lobectomy", "lung resection"],
     specialty: "Cardiothoracic",
@@ -345,6 +352,7 @@ export const operations: Operation[] = [
   // ─────────────────────── General & GI ───────────────────────
   {
     id: "laparoscopic-cholecystectomy",
+    diagram: "lap-chole",
     name: "Laparoscopic cholecystectomy",
     aka: ["lap chole", "gallbladder removal"],
     specialty: "General & GI",
@@ -413,6 +421,7 @@ export const operations: Operation[] = [
   },
   {
     id: "whipple",
+    diagram: "whipple",
     name: "Pancreaticoduodenectomy (Whipple procedure)",
     aka: ["Whipple", "PD"],
     specialty: "General & GI",
@@ -460,6 +469,7 @@ export const operations: Operation[] = [
   // ─────────────────── Orthopaedic & Spine ───────────────────
   {
     id: "hip-hemiarthroplasty",
+    diagram: "hip-hemi",
     name: "Hemiarthroplasty for hip fracture",
     aka: ["NOF", "fractured neck of femur", "cemented hemiarthroplasty"],
     specialty: "Orthopaedic & Spine",
@@ -652,6 +662,7 @@ export const operations: Operation[] = [
   // ───────────────────────── Obstetric ─────────────────────────
   {
     id: "caesarean-section",
+    diagram: "caesarean",
     name: "Caesarean section",
     aka: ["LSCS", "caesarean birth", "C-section"],
     specialty: "Obstetric",
