@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Viva audio timeout
+- [x] Bound voice generation and all callers; surface a readable retry fallback.
+- [x] Test timeout handling and signed-in playback, then resolve the monitoring finding.
+
 ## Visitor survey
 - [x] Add optional survey with first-response deduplication and recorded invitations.
 - [x] Show self-reports and invitation response rates by visitor classification.

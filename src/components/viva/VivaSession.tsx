@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Mic, MicOff, Volume2, RotateCcw, Loader2, AlertCircle, Target, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { requestVivaAudio, VIVA_AUDIO_ERROR } from "@/lib/viva-audio";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import type { ExamTag } from "@/data/curriculum";
@@ -200,9 +201,11 @@ const VivaSession = ({
     }
   }, []);
   const sttSupported = !!getSpeechRecognitionCtor();
-  // OpenAI TTS (via tts-demo edge function) is always available — same voice as podcasts.
+  // Remote voice may be unavailable; retain readable questions and a retry action.
   const ttsSupported = true;
   const ttsAudioRef = useRef<HTMLAudioElement | null>(null);
+  const ttsAbortRef = useRef<AbortController | null>(null);
+  const [ttsError, setTtsError] = useState<string | null>(null);
   /**
    * Audio cache keyed by a *stable question ID* — a normalised hash of the
    * spoken text. This means any repeat attempt of the same viva question
@@ -248,6 +251,8 @@ const VivaSession = ({
   }, []);
 
   const stopSpeaking = useCallback(() => {
+    ttsAbortRef.current?.abort();
+    ttsAbortRef.current = null;
     if (ttsAudioRef.current) {
       ttsAudioRef.current.pause();
       ttsAudioRef.current.src = "";
@@ -266,15 +271,8 @@ const VivaSession = ({
       const id = ttsIdFor(text);
       if (ttsCacheRef.current.has(id)) return;
       try {
-        const { data, error } = await supabase.functions.invoke("tts-demo", {
-          body: { text },
-          // supabase-js forwards AbortSignal to the underlying fetch.
-          ...(signal ? { signal } : {}),
-        } as { body: unknown; signal?: AbortSignal });
+        const url = await requestVivaAudio(text, undefined, signal);
         if (signal?.aborted) return;
-        if (error) throw new Error(error.message || "TTS request failed");
-        if (!data?.audioBase64) throw new Error("No audio returned");
-        const url = `data:${data.mimeType ?? "audio/mpeg"};base64,${data.audioBase64}`;
         ttsCacheRef.current.set(id, url);
       } catch (err) {
         // Background prefetch — log but don't surface; speak() will refetch on demand.
@@ -290,23 +288,28 @@ const VivaSession = ({
     async (text: string) => {
       if (!text) return;
       stopSpeaking();
+      setTtsError(null);
+      const controller = new AbortController();
+      ttsAbortRef.current = controller;
       const id = ttsIdFor(text);
       try {
         let url = ttsCacheRef.current.get(id);
         if (!url) {
-          const { data, error } = await supabase.functions.invoke("tts-demo", {
-            body: { text },
-          });
-          if (error) throw new Error(error.message || "TTS request failed");
-          if (!data?.audioBase64) throw new Error("No audio returned");
-          url = `data:${data.mimeType ?? "audio/mpeg"};base64,${data.audioBase64}`;
+          url = await requestVivaAudio(text, undefined, controller.signal);
           ttsCacheRef.current.set(id, url);
         }
+        if (controller.signal.aborted) return;
         const audio = new Audio(url);
         ttsAudioRef.current = audio;
+        audio.onerror = () => {
+          if (!controller.signal.aborted) setTtsError(VIVA_AUDIO_ERROR);
+        };
         await audio.play();
       } catch (err) {
-        console.error("[VivaSession] TTS error", err);
+        if (!controller.signal.aborted) {
+          setTtsError(VIVA_AUDIO_ERROR);
+          console.warn("[VivaSession] TTS error", err);
+        }
       }
     },
     [stopSpeaking, ttsIdFor],
@@ -763,6 +766,7 @@ const VivaSession = ({
       )}
 
       <MicHelpPanel />
+      {ttsError && <p role="alert" className="text-sm text-muted-foreground">{ttsError}</p>}
       <div className="rounded-lg border border-border bg-card p-4 shadow-sm">
         <div className="flex items-start justify-between gap-2 mb-2">
           <Badge variant="secondary" className="text-[10px]">Examiner</Badge>
