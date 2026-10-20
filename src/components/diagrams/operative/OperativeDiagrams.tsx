@@ -554,6 +554,8 @@ export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
     case "vitrectomy": return <VitrectomyDiagram />;
     case "microdiscectomy": return <MicrodiscectomyDiagram />;
     case "manual-placenta": return <ManualPlacentaDiagram />;
+    case "cleft": return <CleftDiagram />;
+    case "tracheostomy": return <TracheostomyDiagram />;
     case "carotid-stent": return <CarotidStentDiagram />;
     case "femoral-endarterectomy": return <FemoralEndarterectomyDiagram />;
     case "kidney-transplant": return <KidneyTransplantDiagram />;
@@ -844,5 +846,35 @@ const ManualPlacentaDiagram = () => (
     <path d="M260 280 L260 155 L220 100 M260 155 L265 100 M260 155 L300 110" stroke={GRAFT} strokeWidth={12} fill="none" strokeLinecap="round" />
     <Label x={340} y={125}>Placenta</Label><Label x={30} y={240}>Access via cervix</Label>
     <Label x={30} y={30}>External uterine support</Label><Label x={25} y={310}>Anaesthesia + haemorrhage plan; no plane: stop, senior help</Label>
+  </Shell>
+);
+
+const CleftDiagram = () => (
+  <Shell id="op-cleft" title="Cleft palate repair: the shared airway" desc="View into the open mouth. A Dingman gag holds the mouth open; a south-facing RAE tube is fixed in the midline over the lower lip and runs under the gag's tongue blade. The cleft runs along the palate. A throat pack sits behind the tongue.">
+    <ellipse cx={260} cy={170} rx={190} ry={130} fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M260 60 L260 200" stroke={ART} strokeWidth={10} strokeLinecap="round" />
+    <rect x={150} y={215} width={220} height={22} rx={6} fill={MUTED} opacity={0.6} stroke={INK} />
+    <path d="M260 300 L260 230" stroke={GRAFT} strokeWidth={9} strokeLinecap="round" />
+    <path d="M70 90 L130 120 M450 90 L390 120" stroke={INK} strokeWidth={4} />
+    <Label x={280} y={110}>Cleft in palate</Label>
+    <Label x={300} y={265}>RAE tube, midline</Label>
+    <Label x={155} y={205}>Gag tongue blade</Label>
+    <Label x={25} y={40}>Dingman mouth gag</Label>
+    <Label x={25} y={318}>Gag can kink or move the tube; watch obstruction after extubation</Label>
+  </Shell>
+);
+
+const TracheostomyDiagram = () => (
+  <Shell id="op-tracheostomy" title="Surgical tracheostomy: the tube exchange" desc="Side view of the neck. The tracheal tube is withdrawn until its tip is just above the opening in the trachea, then the tracheostomy tube is inserted through the opening. Placement is confirmed with capnography before the tracheal tube is removed.">
+    <path d="M200 30 L200 300 M260 30 L260 300" stroke={INK} strokeWidth={3} />
+    {[150, 175, 200, 225, 250, 275].map((y) => <path key={y} d={`M200 ${y} L260 ${y}`} stroke={MUTED} />)}
+    <path d="M230 20 L230 140" stroke={VEIN} strokeWidth={8} strokeLinecap="round" />
+    <path d="M330 170 L260 190 Q235 198 235 240" stroke={GRAFT} strokeWidth={9} fill="none" strokeLinecap="round" />
+    <path d="M200 120 Q180 140 200 160" stroke={ART} strokeWidth={4} fill="none" />
+    <Label x={290} y={70}>Tracheal tube pulled back</Label>
+    <Label x={300} y={150}>Tracheostomy tube</Label>
+    <Label x={60} y={140}>Thyroid isthmus</Label>
+    <Label x={290} y={250}>Trachea</Label>
+    <Label x={25} y={318}>Low oxygen, no diathermy at tracheal opening; confirm with capnography</Label>
   </Shell>
 );
