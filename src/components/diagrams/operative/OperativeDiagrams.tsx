@@ -545,6 +545,12 @@ const CataractDiagram = () => (
 
 export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
   switch (kind) {
+    case "carotid-stent": return <CarotidStentDiagram />;
+    case "femoral-endarterectomy": return <FemoralEndarterectomyDiagram />;
+    case "kidney-transplant": return <KidneyTransplantDiagram />;
+    case "inguinal-hernia": return <InguinalHerniaDiagram />;
+    case "appendicectomy": return <AppendicectomyDiagram />;
+    case "pituitary": return <PituitaryDiagram />;
     case "carotid": return <CarotidDiagram />;
     case "open-aaa": return <OpenAaaDiagram />;
     case "evar": return <EvarDiagram />;
@@ -581,3 +587,84 @@ export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
     case "cataract": return <CataractDiagram />;
   }
 }
+
+/* Local vessel views are longitudinal, proximal at top; not whole-body projections.
+ * Transplant: anterior view, patient's right = viewer's left.
+ * Pituitary: sagittal view, anterior = viewer's left. */
+const CarotidStentDiagram = () => (
+  <Shell id="op-carotid-stent" title="Carotid stenting: crossing and protecting the lesion" desc="Longitudinal local vessel schematic, proximal below and brain above. A catheter crosses the carotid narrowing. A stent supports the lumen; a distal filter is one possible embolic protection method. Other systems use proximal flow reversal. Balloon inflation can provoke bradycardia and hypotension.">
+    <path d="M205 280 L205 40 M255 280 L255 40" stroke={ART} strokeWidth={5} />
+    <path d="M205 170 Q240 140 205 110 M255 170 Q220 140 255 110" stroke={MUTED} strokeWidth={10} fill="none" />
+    <rect x={213} y={100} width={34} height={82} fill="none" stroke={GRAFT} strokeWidth={3} />
+    {[110, 125, 140, 155, 170].map((y) => <path key={y} d={`M213 ${y} L247 ${y + 8}`} stroke={GRAFT} />)}
+    <path d="M230 290 L230 65 L215 80 L245 80 Z" fill="none" stroke={VEIN} strokeWidth={2} />
+    <Label x={230} y={25} anchor="middle">To brain</Label>
+    <Label x={280} y={75}>Distal protection filter</Label>
+    <Label x={280} y={140}>Stent across plaque</Label>
+    <Label x={280} y={260}>Catheter from access site</Label>
+    <Label x={25} y={315}>Ballooning: watch heart rate, BP and awake neurology</Label>
+  </Shell>
+);
+
+const FemoralEndarterectomyDiagram = () => (
+  <Shell id="op-femoral-endarterectomy" title="Femoral endarterectomy: plaque removal and patch" desc="Local longitudinal view of the common femoral bifurcation. The artery is opened, plaque removed, and a patch widens the closure. Flow continues into profunda and superficial femoral branches. A simultaneous iliac stent is possible in a hybrid procedure.">
+    <path d="M230 30 L230 190 L170 280 M230 190 L300 280" stroke={ART} strokeWidth={20} fill="none" />
+    <path d="M230 80 L230 175" stroke={GRAFT} strokeWidth={10} />
+    <Clamp x={230} y={55} /><Clamp x={180} y={260} /><Clamp x={290} y={260} />
+    <Label x={270} y={35}>Common femoral artery</Label>
+    <Label x={270} y={130}>Patch after plaque removal</Label>
+    <Label x={30} y={300}>Profunda branch</Label><Label x={290} y={300}>Superficial femoral branch</Label>
+    <Label x={25} y={315}>Heparin → clamp → clear plaque → patch → check flow</Label>
+  </Shell>
+);
+
+const KidneyTransplantDiagram = () => (
+  <Shell id="op-kidney-transplant" title="Kidney transplant: iliac vessels and bladder" desc="Anterior schematic of a kidney graft in the patient's right iliac fossa, viewer's left. The graft artery and vein join recipient iliac vessels. The donor ureter joins the bladder. The native kidneys are usually left in place. Reperfusion is a planned anaesthetic checkpoint.">
+    <path d="M100 65 C45 55, 35 160, 100 185 C140 175, 140 140, 110 130 C95 120, 140 90, 100 65 Z" fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M195 35 L195 235" stroke={ART} strokeWidth={12} /><path d="M220 35 L220 235" stroke={VEIN} strokeWidth={12} />
+    <path d="M115 115 L195 125" stroke={ART} strokeWidth={5} /><path d="M115 135 L220 150" stroke={VEIN} strokeWidth={5} />
+    <path d="M105 150 C110 230, 170 245, 240 260" stroke={GRAFT} strokeWidth={4} fill="none" />
+    <path d="M230 245 Q275 215 320 245 Q320 295 275 300 Q230 295 230 245 Z" fill={FILL} stroke={INK} />
+    <Label x={30} y={30}>Patient's right iliac fossa</Label>
+    <Label x={275} y={90}>Artery and vein joins</Label>
+    <Label x={30} y={235}>Donor ureter</Label><Label x={345} y={270}>Bladder</Label>
+    <Label x={25} y={315}>Before release: check perfusion, potassium and volume status</Label>
+  </Shell>
+);
+
+const InguinalHerniaDiagram = () => (
+  <Shell id="op-inguinal-hernia" title="Inguinal hernia repair: reduce the sac and reinforce" desc="Local groin cross-section, not a laterality map. A hernia sac protrudes through a weakness in the abdominal wall. Its contents are reduced and mesh reinforces the region. Open and laparoscopic repairs place the mesh in different tissue planes; this is a conceptual sketch, not a surgical placement guide.">
+    <path d="M40 110 L215 110 M305 110 L480 110" stroke={INK} strokeWidth={8} />
+    <path d="M215 110 C190 220, 320 220, 305 110" fill={FILL} stroke={GRAFT} strokeWidth={3} />
+    <path d="M230 105 C205 180, 300 180, 285 105" fill="none" stroke={ART} strokeWidth={5} />
+    <path d="M260 185 L260 65 M250 80 L260 65 L270 80" stroke={VEIN} strokeWidth={3} fill="none" />
+    <path d="M170 240 L350 240 M170 250 L350 250 M170 260 L350 260" stroke={GRAFT} strokeWidth={2} />
+    <Label x={30} y={70}>Abdominal wall</Label><Label x={330} y={185}>Hernia sac</Label>
+    <Label x={280} y={55}>Reduce contents</Label><Label x={365} y={255}>Mesh reinforcement</Label>
+    <Label x={25} y={315}>Open: local / regional / general; laparoscopic: usually general</Label>
+  </Shell>
+);
+
+const AppendicectomyDiagram = () => (
+  <Shell id="op-appendicectomy" title="Appendicectomy: mesoappendix and appendiceal base" desc="Local view of the caecum and appendix, no whole-body laterality implied. The appendiceal vessels in the mesoappendix are controlled, the base is secured, and the appendix is divided and retrieved. Perforation requires source control; contamination changes recovery planning.">
+    <path d="M170 35 L170 160 Q170 205 240 205 Q310 205 310 160 L310 35" fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M260 200 C330 250, 280 290, 230 265" stroke={GRAFT} strokeWidth={20} fill="none" strokeLinecap="round" />
+    <path d="M195 200 L275 235 L285 210 Z" fill={MUTED} opacity={0.35} />
+    <path d="M195 205 L275 235" stroke={ART} strokeWidth={3} /><Clamp x={275} y={215} w={25} />
+    <Label x={330} y={90}>Caecum</Label><Label x={330} y={225}>Base secured</Label>
+    <Label x={30} y={235}>Mesoappendix vessels</Label><Label x={330} y={285}>Appendix removed</Label>
+    <Label x={25} y={315}>Assess aspiration risk; antibiotics and source control</Label>
+  </Shell>
+);
+
+const PituitaryDiagram = () => (
+  <Shell id="op-pituitary" title="Transsphenoidal surgery: nasal route to the sella" desc="Sagittal conceptual view, anterior on viewer's left. Endoscopic instruments pass through the nose and sphenoid sinus to reach the pituitary in the sella. This is a route schematic, not a scaled skull-base anatomical plate. Carotid injury and postoperative endocrine disturbance are key risks.">
+    <path d="M75 200 L125 130 Q125 50 255 45 Q375 45 395 160 L395 275 L120 275 L120 210 Z" fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M95 190 L180 175 L245 155" stroke={GRAFT} strokeWidth={7} fill="none" />
+    <path d="M200 135 L250 135 L250 180 L200 180 Z" fill={VEIN} opacity={0.2} stroke={VEIN} />
+    <path d="M242 122 Q252 100 272 122 Q267 142 250 140 Z" fill={GRAFT} stroke={INK} />
+    <Label x={30} y={235}>Nasal route</Label><Label x={285} y={125}>Pituitary / sella</Label>
+    <Label x={285} y={180}>Sphenoid sinus</Label><Label x={25} y={30}>Anterior (nose) ← sagittal view → posterior</Label>
+    <Label x={25} y={315}>Check vision, cortisol needs, sodium and urine output</Label>
+  </Shell>
+);
