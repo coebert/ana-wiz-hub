@@ -300,7 +300,7 @@ export const operations: Operation[] = [
     criticalMoments: ["Difficult airway in hormone-excess syndromes", "Carotid injury or major bleeding", "CSF leak and reconstruction", "Extubation and postoperative water/sodium disturbance"],
     anaestheticNotes: ["The BJA Education review supports a multidisciplinary endocrine plan, smooth emergence and postoperative neurological assessment; local steroid practices should not be presented as universal guidance.", "New polyuria or sodium disturbance needs assessment for arginine vasopressin deficiency (central diabetes insipidus) and other causes. Delayed hyponatraemia may occur after discharge; follow the endocrine monitoring pathway.", "Plan postoperative breathing support jointly when sleep apnoea coexists with skull-base reconstruction, rather than assuming nasal positive-pressure treatment is automatically safe."],
     related: { label: "Neuroanaesthesia", path: "/clinical/neuroanaesthesia" },
-    sources: ["Raveendran Pituitary Surgery 2024"],
+    sources: ["Raveendran Pituitary Surgery 2024", "Dunn Nemergut Pituitary 2013"],
   },
   // ───────────────────────── Vascular ─────────────────────────
   {
@@ -605,7 +605,7 @@ export const operations: Operation[] = [
       "Preoperative lung function and predicted postoperative values guide risk.",
     ],
     related: { label: "Thoracic anaesthesia", path: "/clinical/cardiothoracic" },
-    sources: ["ERAS Thoracic 2019"],
+    sources: ["ERAS Thoracic 2019", "Grichnik OLV 2005"],
   },
 
   // ─────────────────────── General & GI ───────────────────────
@@ -631,7 +631,7 @@ export const operations: Operation[] = [
       "Local anaesthetic port infiltration reduces opioid need.",
     ],
     related: { label: "General and colorectal surgery", path: "/clinical/general-colorectal-surgery" },
-    sources: ["PROSPECT Lap Chole 2024"],
+    sources: ["PROSPECT Lap Chole 2024", "Henny Pneumoperitoneum 2005"],
   },
   {
     id: "laparoscopic-anterior-resection",
@@ -702,7 +702,7 @@ export const operations: Operation[] = [
       "ERAS pancreatoduodenectomy guidance covers nutrition, avoidance of fluid overload, and epidural or alternative analgesia.",
       "Pancreatic leak (fistula) is the major surgical complication.",
     ],
-    sources: ["ERAS Pancreatoduodenectomy 2020"],
+    sources: ["ERAS Pancreatoduodenectomy 2020", "Kelliher Pancreatic Anaesthesia 2022"],
   },
   {
     id: "ivor-lewis-oesophagectomy",
@@ -725,7 +725,7 @@ export const operations: Operation[] = [
       "ERAS oesophagectomy guidance covers prehabilitation, nutrition, epidural analgesia, goal-directed fluids, and early extubation and mobilisation.",
       "Pneumonia and anastomotic leak are the leading complications; new atrial fibrillation may be an early warning sign of leak.",
     ],
-    sources: ["ERAS Oesophagectomy 2019"],
+    sources: ["ERAS Oesophagectomy 2019", "Carney Oesophagectomy Anaesthesia 2015"],
   },
 
   // ─────────────────── Orthopaedic & Spine ───────────────────
@@ -939,7 +939,7 @@ export const operations: Operation[] = [
       "Return to theatre for bleeding: treat as a full stomach (swallowed blood), the patient may be hypovolaemic, and visualisation may be difficult.",
     ],
     related: { label: "ENT and head and neck anaesthesia", path: "/clinical/ent-anaesthesia" },
-    sources: ["Zalan 2020"],
+    sources: ["Zalan 2020", "AAO-HNS Tonsillectomy 2019"],
   },
 
   // ───────────────────────── Obstetric ─────────────────────────
@@ -1022,7 +1022,7 @@ export const operations: Operation[] = [
       "Monitor neuromuscular block quantitatively and ensure full reversal before extubation.",
     ],
     related: { label: "Bariatric anaesthesia", path: "/clinical/bariatric-anaesthesia" },
-    sources: ["ERAS Bariatric 2022"],
+    sources: ["ERAS Bariatric 2022", "Bariatric Anaesthesia Review"],
   },
   {
     id: "liver-resection",
@@ -1046,7 +1046,7 @@ export const operations: Operation[] = [
       "Major resections may cause postoperative coagulopathy — this affects the timing of epidural catheter removal.",
       "Have cell salvage available where appropriate (oncological use depends on local policy).",
     ],
-    sources: ["ERAS Liver 2022"],
+    sources: ["ERAS Liver 2022", "Hughes Low CVP Meta-analysis 2015"],
   },
   {
     id: "radical-cystectomy",
@@ -1068,7 +1068,7 @@ export const operations: Operation[] = [
       "ERAS cystectomy guidance supports avoiding prolonged fasting, multimodal analgesia, thromboprophylaxis and early feeding.",
       "Patients are often older smokers with cardiovascular and renal disease; check renal function before and after.",
     ],
-    sources: ["ERAS Cystectomy 2013"],
+    sources: ["ERAS Cystectomy 2013", "Patel Urological Anaesthesia 2022"],
   },
   {
     id: "free-flap-head-neck",
@@ -1092,7 +1092,7 @@ export const operations: Operation[] = [
       "Many patients are smokers or heavy drinkers: screen for alcohol withdrawal, malnutrition and cardiorespiratory disease.",
     ],
     related: { label: "Airway management", path: "/clinical/airway-management" },
-    sources: ["ERAS Head & Neck 2017"],
+    sources: ["ERAS Head & Neck 2017", "McCauley Free Flap Anaesthesia 2022"],
   },
   {
     id: "laparoscopic-hysterectomy",
@@ -1114,7 +1114,7 @@ export const operations: Operation[] = [
       "ERAS gynaecological/oncology guidance supports minimal fasting, carbohydrate loading, PONV prophylaxis, opioid-sparing analgesia and thromboprophylaxis.",
       "Lithotomy carries risk of common peroneal nerve injury and compartment syndrome in long cases.",
     ],
-    sources: ["ERAS Gynaecology 2019"],
+    sources: ["ERAS Gynaecology 2019", "Laskov Steep Trendelenburg 2021"],
   },
   {
     id: "mastectomy-reconstruction",
@@ -1136,7 +1136,7 @@ export const operations: Operation[] = [
       "ERAS breast reconstruction consensus supports PONV prophylaxis, multimodal analgesia, normothermia and avoiding fluid excess.",
       "Chronic post-mastectomy pain is common; good acute analgesia may help.",
     ],
-    sources: ["ERAS Breast Reconstruction 2017"],
+    sources: ["ERAS Breast Reconstruction 2017", "PROSPECT Breast 2020"],
   },
   {
     id: "cataract-surgery",
@@ -1174,7 +1174,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Induction — regurgitation and aspiration", "Mucosal perforation check", "Emergence and early postoperative period — apnoea"],
     anaestheticNotes: ["Surgery is never an emergency before metabolic correction.", "Regional or local techniques reduce opioid need in this apnoea-prone age group.", "Exact laboratory targets and induction technique are local-pathway decisions; this summary does not set them."],
-    sources: ["Craig & Deeley Pyloromyotomy 2018"],
+    sources: ["Craig & Deeley Pyloromyotomy 2018", "Rich Dolgin Pyloric Stenosis 2021"],
   },
   {
     id: "burr-hole-csdh", name: "Burr-hole drainage of chronic subdural haematoma", aka: ["CSDH", "burr holes", "subdural evacuation"],
@@ -1205,7 +1205,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Block placement — phrenic, vascular and neuraxial complications", "Sitting up — hypotension and cerebral hypoperfusion", "Rebound pain when the block wears off"],
     anaestheticNotes: ["Integrate preoperative education, regional anaesthesia and multimodal postoperative analgesia.", "Plan for rebound pain on block regression with regular oral analgesia."],
-    sources: ["Hewson Shoulder RA 2019"],
+    sources: ["Hewson Shoulder RA 2019", "Salazar Beach Chair 2019"],
   },
   {
     id: "mandibular-fracture-orif", name: "Open reduction and internal fixation of mandibular fracture", aka: ["jaw fracture", "ORIF mandible", "maxillofacial trauma"],
@@ -1238,7 +1238,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Laryngoscopy and intubation", "Mouth gag insertion and head movement — tube kinking or displacement", "Extubation and recovery — airway obstruction"],
     anaestheticNotes: ["Effective communication with the surgeon about the shared airway is essential.", "Timing of lip and palate surgery and analgesic doses follow the local cleft team protocol; this summary does not set them."],
-    sources: ["Denning Cleft Anaesthesia 2021"],
+    sources: ["Denning Cleft Anaesthesia 2021", "Desalu Cleft Airway 2010"],
   },
   {
     id: "surgical-tracheostomy", name: "Surgical (open) tracheostomy", aka: ["tracheostomy", "trache", "trachy", "open tracheostomy"],
@@ -1255,7 +1255,7 @@ export const operations: Operation[] = [
     criticalMoments: ["Tracheal opening — airway fire and cuff damage", "Tube exchange — loss of the airway", "Early displacement after surgery"],
     anaestheticNotes: ["Confirm placement with waveform capnography every time.", "Ensure the ward knows whether the upper airway is patent (tracheostomy) or not (laryngectomy)."],
     related: { label: "Airway management", path: "/clinical/airway-management" },
-    sources: ["McGrath NTSP Guidelines 2012"],
+    sources: ["McGrath NTSP Guidelines 2012", "Rogers Tracheostomy Fire 2001"],
   },
   {
     id: "radical-nephrectomy", name: "Radical nephrectomy (open or laparoscopic), including IVC tumour thrombus", aka: ["nephrectomy", "kidney removal", "renal cell carcinoma", "IVC thrombectomy"],
@@ -1271,7 +1271,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Renal hilum and IVC dissection — massive bleeding", "Caval clamping — loss of venous return", "Thrombus manipulation — tumour embolism"],
     anaestheticNotes: ["Most uncomplicated nephrectomies are low-to-moderate blood loss; IVC extension changes this fundamentally.", "High-level thrombus cases belong in high-volume multidisciplinary centres."],
-    sources: ["Novacescu RCC Tumour Thrombus 2026"],
+    sources: ["Novacescu RCC Tumour Thrombus 2026", "Fukazawa IVC Thrombus Anaesthesia 2014"],
   },
   {
     id: "awake-craniotomy", name: "Awake craniotomy (tumour resection with brain mapping)", aka: ["awake brain surgery", "asleep-awake-asleep", "eloquent cortex", "brain mapping"],
@@ -1287,7 +1287,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Airway obstruction or apnoea during sedation", "Intraoperative seizure during stimulation", "Loss of cooperation in the awake phase"],
     anaestheticNotes: ["No single technique is optimal; choose for the patient and surgeon.", "A supraglottic airway, or conversion to general anaesthesia, must be immediately available."],
-    sources: ["Lunardi Dinsmore Awake Craniotomy 2025"],
+    sources: ["Lunardi Dinsmore Awake Craniotomy 2025", "Kulikov Awake Craniotomy 2018"],
   },
   {
     id: "scoliosis-correction", name: "Posterior spinal fusion for scoliosis", aka: ["scoliosis surgery", "spinal deformity correction", "neuromuscular scoliosis", "AIS"],
@@ -1303,7 +1303,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Prone positioning", "Correction manoeuvre — spinal cord ischaemia", "Major blood loss during long instrumentation"],
     anaestheticNotes: ["Blood pressure, haemoglobin and anaesthetic depth all affect neuromonitoring — keep them stable.", "Exact transfusion and tranexamic acid regimens follow local protocols; this summary does not set them."],
-    sources: ["Hudec Neuromuscular Scoliosis 2023"],
+    sources: ["Hudec Neuromuscular Scoliosis 2023", "SRS Neuromonitoring 2020"],
   },
   {
     id: "liver-transplantation", name: "Orthotopic liver transplantation", aka: ["liver transplant", "OLT", "LT", "hepatectomy and graft implantation"],
@@ -1319,7 +1319,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Dissection — massive haemorrhage", "Caval clamping — loss of venous return", "Reperfusion — post-reperfusion syndrome and hyperkalaemia"],
     anaestheticNotes: ["Specialist transplant anaesthesia team; protocols for transfusion and coagulation management are centre-specific.", "Intracardiac thrombus and right heart failure may need advanced support including mechanical circulatory support."],
-    sources: ["Ramanujan Liver Transplant 2026"],
+    sources: ["Ramanujan Liver Transplant 2026", "Siniscalchi Post-reperfusion 2016"],
   },
   {
     id: "adrenalectomy-phaeochromocytoma", name: "Laparoscopic adrenalectomy for phaeochromocytoma", aka: ["phaeochromocytoma", "pheochromocytoma", "paraganglioma", "adrenalectomy"],
@@ -1336,7 +1336,7 @@ export const operations: Operation[] = [
     criticalMoments: ["Tumour handling — hypertensive crisis", "Adrenal vein ligation — sudden hypotension", "Early postoperative — hypoglycaemia"],
     anaestheticNotes: ["Close surgeon–anaesthetist communication during handling is essential.", "There are no randomised trials comparing preparation strategies."],
     related: { label: "Endocrine emergencies", path: "/intensive-care/icu-endocrine-emergencies" },
-    sources: ["Groeben Catecholamine Tumours 2020"],
+    sources: ["Groeben Catecholamine Tumours 2020", "Araujo-Castro Phaeo Protocol 2021"],
   },
   {
     id: "endoscopic-sinus-surgery", name: "Functional endoscopic sinus surgery (FESS)", aka: ["FESS", "ESS", "sinus surgery", "nasal polypectomy"],
@@ -1352,7 +1352,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Topical vasoconstrictor — hypertension and arrhythmia", "Bleeding obscuring the field", "Orbital or skull-base injury"],
     anaestheticNotes: ["Very low blood pressure targets risk organ hypoperfusion; balance field quality with patient safety.", "Throat pack removal must be part of the sign-out check."],
-    sources: ["De Sousa Machado ESS Anaesthesia 2023"],
+    sources: ["De Sousa Machado ESS Anaesthesia 2023", "Lu TIVA ESS Meta-analysis 2020"],
   },
 ];
 
