@@ -585,6 +585,10 @@ export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
     case "hysterectomy": return <HysterectomyDiagram />;
     case "breast": return <BreastDiagram />;
     case "cataract": return <CataractDiagram />;
+    case "pyloromyotomy": return <PyloromyotomyDiagram />;
+    case "burr-hole": return <BurrHoleDiagram />;
+    case "shoulder": return <ShoulderDiagram />;
+    case "mandible": return <MandibleDiagram />;
   }
 }
 
@@ -666,5 +670,60 @@ const PituitaryDiagram = () => (
     <Label x={30} y={235}>Nasal route</Label><Label x={285} y={125}>Pituitary / sella</Label>
     <Label x={285} y={180}>Sphenoid sinus</Label><Label x={25} y={30}>Anterior (nose) ← sagittal view → posterior</Label>
     <Label x={25} y={315}>Check vision, cortisol needs, sodium and urine output</Label>
+  </Shell>
+);
+
+const PyloromyotomyDiagram = () => (
+  <Shell id="op-pyloromyotomy" title="Pyloromyotomy: splitting the pyloric muscle" desc="Local schematic of the stomach outlet. The thickened pyloric muscle is split lengthways down to the mucosa, which bulges through, leaving the mucosa intact. A gastric tube empties the stomach before induction.">
+    <path d="M60 80 Q40 200 160 220 L230 200 L230 120 L160 90 Q120 60 60 80 Z" fill={FILL} stroke={INK} strokeWidth={2} />
+    <rect x={230} y={115} width={120} height={90} rx={40} fill={GRAFT} opacity={0.5} stroke={INK} />
+    <path d="M250 160 L330 160" stroke={ART} strokeWidth={4} strokeDasharray="6 4" />
+    <path d="M350 150 L460 150 M350 170 L460 170" stroke={INK} strokeWidth={3} />
+    <path d="M95 40 L120 140" stroke={VEIN} strokeWidth={4} />
+    <Label x={30} y={30}>Gastric tube: empty before induction</Label>
+    <Label x={60} y={250}>Stomach</Label><Label x={240} y={100}>Thickened pylorus</Label>
+    <Label x={230} y={235}>Muscle split to mucosa</Label><Label x={380} y={140}>Duodenum</Label>
+    <Label x={25} y={300}>Correct alkalosis first; watch for postoperative apnoea</Label>
+  </Shell>
+);
+
+const BurrHoleDiagram = () => (
+  <Shell id="op-burr-hole" title="Burr holes for chronic subdural haematoma" desc="Coronal conceptual view of the skull. A crescent of liquefied chronic subdural blood lies over one hemisphere. Two burr holes allow irrigation, with a drain left in place. Not a laterality map.">
+    <ellipse cx={260} cy={160} rx={170} ry={130} fill="none" stroke={INK} strokeWidth={8} />
+    <ellipse cx={260} cy={165} rx={150} ry={112} fill={FILL} />
+    <path d="M150 70 Q95 160 150 255 Q125 160 175 80 Z" fill={ART} opacity={0.45} />
+    <circle cx={140} cy={85} r={9} fill="hsl(var(--card))" stroke={INK} strokeWidth={2} />
+    <circle cx={110} cy={210} r={9} fill="hsl(var(--card))" stroke={INK} strokeWidth={2} />
+    <path d="M110 210 C60 240, 40 260, 30 290" stroke={GRAFT} strokeWidth={3} fill="none" />
+    <Label x={25} y={70}>Burr hole</Label><Label x={300} y={165}>Brain</Label>
+    <Label x={175} y={200}>Chronic subdural collection</Label><Label x={40} y={270}>Drain</Label>
+    <Label x={25} y={312}>Reverse anticoagulation; smooth emergence for neuro check</Label>
+  </Shell>
+);
+
+const ShoulderDiagram = () => (
+  <Shell id="op-shoulder" title="Shoulder arthroscopy in the beach chair position" desc="Side view of a seated patient. The arm blood pressure cuff sits below head level, so brain perfusion pressure is lower than the reading. An interscalene block in the neck can paralyse the diaphragm on that side.">
+    <circle cx={180} cy={60} r={30} fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M180 90 L180 200 L300 200 L300 290" stroke={INK} strokeWidth={10} fill="none" strokeLinecap="round" />
+    <path d="M180 120 L230 180" stroke={INK} strokeWidth={8} strokeLinecap="round" />
+    <rect x={200} y={140} width={30} height={14} fill={VEIN} opacity={0.6} transform="rotate(50 215 147)" />
+    <circle cx={198} cy={102} r={6} fill={GRAFT} />
+    <path d="M330 60 L330 160" stroke={ART} strokeWidth={2} /><path d="M322 70 L330 60 L338 70 M322 150 L330 160 L338 150" stroke={ART} fill="none" />
+    <Label x={210} y={95}>Interscalene block site</Label><Label x={240} y={190}>BP cuff on arm</Label>
+    <Label x={345} y={105}>Head higher:</Label><Label x={345} y={122}>brain BP lower</Label>
+    <Label x={25} y={312}>Phrenic palsy risk; avoid hypotension when sitting up</Label>
+  </Shell>
+);
+
+const MandibleDiagram = () => (
+  <Shell id="op-mandible" title="Mandibular fracture fixation and the airway" desc="Front-on schematic of the jaw. A fracture line crosses the mandible and is fixed with a miniplate. A nasal tube lets the teeth be brought together; intermaxillary fixation removes oral airway access.">
+    <path d="M90 90 L110 210 Q260 300 410 210 L430 90" stroke={INK} strokeWidth={14} fill="none" strokeLinecap="round" />
+    <path d="M300 230 L320 270" stroke={ART} strokeWidth={4} />
+    <rect x={285} y={240} width={50} height={10} fill={GRAFT} transform="rotate(-25 310 245)" />
+    <path d="M140 150 Q260 190 380 150" stroke={MUTED} strokeWidth={6} fill="none" />
+    <path d="M240 30 L250 120 L270 140" stroke={VEIN} strokeWidth={5} fill="none" />
+    <Label x={270} y={40}>Nasotracheal tube</Label><Label x={340} y={290}>Fracture + miniplate</Label>
+    <Label x={170} y={205}>Teeth in occlusion</Label>
+    <Label x={25} y={312}>Wired jaws: wire cutters travel with the patient</Label>
   </Shell>
 );

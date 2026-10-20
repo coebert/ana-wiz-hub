@@ -49,6 +49,15 @@ describe("operations library", () => {
     for (const op of operations) expect(specialties, op.id).toContain(op.specialty);
   });
 
+  it("adds paediatric and maxillofacial specialties with referenced, diagrammed operations", () => {
+    for (const [id, sp] of [["pyloromyotomy", "Paediatric"], ["mandibular-fracture-orif", "Oral & Maxillofacial"], ["burr-hole-csdh", "Neurosurgery"], ["shoulder-arthroscopy", "Orthopaedic & Spine"]]) {
+      const op = operations.find((o) => o.id === id);
+      expect(op?.specialty, id).toBe(sp);
+      expect(op?.diagram, id).toBeTruthy();
+    }
+    expect(searchOperations("beach chair").map((o) => o.id)).toContain("shoulder-arthroscopy");
+  });
+
   it("has unique ids", () => {
     expect(new Set(operations.map((o) => o.id)).size).toBe(operations.length);
   });
