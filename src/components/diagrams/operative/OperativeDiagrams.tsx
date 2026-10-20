@@ -41,20 +41,23 @@ function Shell({ id, title, desc, children, h = 340 }: { id: string; title: stri
 }
 
 const CarotidDiagram = () => (
-  <Shell id="op-carotid" title="Carotid endarterectomy: arteriotomy, shunt and patch" desc="Local longitudinal bifurcation, proximal below and cranial above; no side implied. A cutaway shows plaque at the bulb and a shunt joining common and internal carotid lumens across the opened segment. External carotid branches are represented. Clamps and shunt illustrate the clamped phase, not final closure." h={360}>
-    <path d="M210 305V175Q200 110 180 45" stroke={ART} strokeWidth={30} fill="none" />
-    <path d="M210 175L300 55M280 85L330 95M290 68L315 35" stroke={ART} strokeWidth={16} fill="none" />
-    <path d="M203 245V175Q197 140 187 110" stroke={FILL} strokeWidth={16} fill="none" />
-    <path d="M200 197Q175 169 191 138L200 185Z" fill={MUTED} stroke={INK} />
-    <path d="M210 275C245 230 238 160 182 85" stroke={GRAFT} strokeWidth={7} fill="none" />
-    <Sutures x={210} y={145} vertical count={10} />
-    <Clamp x={210} y={295}/><Clamp x={180} y={65}/><Clamp x={284} y={80} w={25}/>
-    <Label x={28} y={28}>Internal carotid → brain</Label><Leader from={[160,32]} to={[180,45]}/>
-    <Label x={330} y={50}>External carotid</Label><Leader from={[325,56]} to={[300,60]}/>
-    <Label x={25} y={162}>Plaque / opened wall</Label><Leader from={[158,165]} to={[190,165]}/>
-    <Label x={290} y={220}>Temporary shunt</Label><Leader from={[282,215]} to={[231,202]}/>
-    <Label x={290} y={280}>Common carotid</Label><Leader from={[280,275]} to={[210,275]}/>
-    <Label x={25} y={345}>Clamping: assess cerebral perfusion; awake testing when appropriate</Label>
+  <Shell id="op-carotid" title="Carotid endarterectomy: open bulb, plaque and intraluminal shunt" desc="Local longitudinal bifurcation cutaway, brain above and proximal common carotid below; no patient side implied. Eccentric plaque occupies the bulb alongside an opened arteriotomy. Both ends of the curved temporary shunt lie in common and internal carotid lumens inside the isolated segment. This is the clamped open phase; patch closure follows and is not shown simultaneously." h={390}>
+    <path d="M214 335V204Q216 139 176 42" stroke={ART} strokeWidth={30} fill="none"/>
+    <path d="M213 204L310 53M287 89L349 102M300 69L329 34" stroke={ART} strokeWidth={15} fill="none"/>
+    <path d="M214 302V204Q210 153 189 110" stroke={FILL} strokeWidth={19} fill="none"/>
+    <path d="M205 214Q180 174 184 137Q195 143 198 169L213 213Z" fill={MUTED} stroke={INK} strokeWidth={1.5}/>
+    <path d="M202 277V213Q194 164 182 125M226 277V209Q224 171 197 117" fill="none" stroke={INK} strokeWidth={1.5}/>
+    <path d="M214 303V275C261 237 252 182 187 118L182 99" stroke={GRAFT} strokeWidth={7} fill="none" strokeLinecap="round"/>
+    <ellipse cx={214} cy={290} rx={8} ry={5} fill="none" stroke={INK}/><ellipse cx={185} cy={110} rx={7} ry={5} fill="none" stroke={INK}/>
+    <Clamp x={214} y={326}/><Clamp x={178} y={71}/><Clamp x={282} y={95} w={27}/>
+    <Label x={25} y={26}>Internal carotid</Label><Leader from={[145,29]} to={[176,44]}/>
+    <Label x={335} y={46}>External carotid</Label><Leader from={[328,50]} to={[308,56]}/>
+    <Label x={25} y={151}>Eccentric plaque</Label><Leader from={[143,153]} to={[191,165]}/>
+    <Label x={25} y={234}>Arteriotomy edges</Label><Leader from={[149,232]} to={[202,230]}/>
+    <Label x={297} y={183}>Temporary shunt</Label><Leader from={[290,179]} to={[238,203]}/>
+    <Label x={297} y={279}>Shunt end in lumen</Label><Leader from={[289,273]} to={[216,289]}/>
+    <Label x={25} y={339}>Common carotid</Label><Leader from={[143,332]} to={[205,308]}/>
+    <Label x={25} y={376}>Assess cerebral perfusion during clamping; patch closure follows</Label>
   </Shell>
 );
 
@@ -81,18 +84,21 @@ const OpenAaaDiagram = () => (
 );
 
 const EvarDiagram = () => (
-  <Shell id="op-evar" title="EVAR: intraluminal graft and iliac landing zones" desc="Local anterior aortoiliac layout, patient's right on viewer's left. The bifurcated covered graft seals below the renal arteries and within the iliacs; catheters enter through connected femoral access routes. The aneurysm sac remains around the excluded lumen." h={360}>
-    <path d="M260 35V100M255 65L145 60M265 65L375 60" stroke={ART} strokeWidth={22} fill="none"/>
-    <path d="M244 95C185 125 190 215 235 245L180 315M276 95C335 125 330 215 285 245L340 315" fill={FILL} stroke={ART} strokeWidth={3}/>
-    <path d="M260 90V220M260 220L180 315M260 220L340 315" stroke={GRAFT} strokeWidth={25} fill="none" strokeLinejoin="round"/>
-    {[100,118,136,154,172,190,208].map(y=><path key={y} d={`M248 ${y}l6 6 6-6 6 6 6-6`} fill="none" stroke={INK} strokeWidth={1}/>)}
-    {[0,1,2,3].map(i=><g key={i} stroke={INK} fill="none"><path d={`M${230-i*13} ${242+i*15}l10 5 5-9`}/><path d={`M${285+i*13} ${238+i*15}l5 9 10-5`}/></g>)}
-    <path d="M165 338L190 297M355 338L330 297" stroke={VEIN} strokeWidth={5}/>
-    <Label x={45} y={42}>Renal arteries</Label><Leader from={[140,45]} to={[150,60]}/>
-    <Label x={310} y={96}>Proximal seal</Label><Leader from={[305,100]} to={[274,100]}/>
-    <Label x={355} y={180}>Excluded sac</Label><Leader from={[345,180]} to={[325,180]}/>
-    <Label x={25} y={275}>Iliac seal</Label><Leader from={[98,272]} to={[215,275]}/>
-    <Label x={330} y={305}>Femoral access</Label><Label x={25} y={352}>Check renal patency, limb flow and endoleak with imaging</Label>
+  <Shell id="op-evar" title="EVAR: patent renal branches and bifurcated covered graft" desc="Local anterior aortoiliac schematic, patient's right on viewer's left. The proximal covered graft begins below patent renal branches and seals in the infrarenal neck. Each limb seals in a common iliac artery; internal and external iliac continuations remain visible. Dashed access wires continue from external iliac/femoral routes and are distinct from the implanted graft. Distal extension and branch devices vary by anatomy." h={400}>
+    <path d="M242 25V107C190 126 180 217 226 255L177 316L154 370M278 25V107C330 126 340 217 294 255L343 316L366 370" fill={FILL} stroke={ART} strokeWidth={3}/>
+    <path d="M242 58L140 49M278 58L381 49" stroke={ART} strokeWidth={10}/>
+    <path d="M178 312L223 339M342 312L300 339" stroke={ART} strokeWidth={8}/>
+    <path d="M260 89V227M260 227L188 297M260 227L332 297" stroke={GRAFT} strokeWidth={25} fill="none" strokeLinejoin="round"/>
+    {[99,119,139,159,179,199,219].map(y=><path key={y} d={`M249 ${y}l5 6 6-6 6 6 5-6`} fill="none" stroke={INK} strokeWidth={1}/>)}
+    {[0,1,2,3].map(i=><g key={i} stroke={INK} fill="none"><path d={`M${232-i*13} ${244+i*13}l10 5 5-9`}/><path d={`M${283+i*13} ${240+i*13}l5 9 10-5`}/></g>)}
+    <path d="M148 379L187 298L260 226V74M372 379L332 298L264 232" stroke={VEIN} strokeWidth={2} strokeDasharray="5 4" fill="none"/>
+    <Label x={25} y={27}>Renal branches patent</Label><Leader from={[163,31]} to={[155,50]}/>
+    <Label x={316} y={97}>Infrarenal neck seal</Label><Leader from={[309,97]} to={[272,99]}/>
+    <Label x={349} y={181}>Excluded aneurysm</Label><Leader from={[342,179]} to={[329,184]}/>
+    <Label x={25} y={271}>Common iliac seal</Label><Leader from={[139,266]} to={[198,288]}/>
+    <Label x={25} y={341}>Internal iliac</Label><Leader from={[109,337]} to={[216,334]}/>
+    <Label x={379} y={345}>External iliac</Label><Leader from={[371,340]} to={[352,338]}/>
+    <Label x={25} y={393}>Dashed: access wires · assess seal, renal patency and limb flow</Label>
   </Shell>
 );
 
@@ -204,24 +210,30 @@ const AvFistulaDiagram = () => (
 );
 
 const CabgDiagram = () => (
-  <Shell id="op-cabg" title="CABG: coronary grafts and the bypass circuit" desc="Anterior conceptual heart view, patient's right on viewer's left. Vein graft joins a coronary target beyond a stenosis; an internal thoracic artery graft reaches the anterior descending territory. Venous drainage passes to the oxygenator/pump and arterial blood returns to the aorta above the clamp. Not a coronary dissection map." h={370}>
-    <path d="M175 125C115 115 125 220 185 260L270 322Q350 268 338 192Q335 118 270 137Q230 101 175 125Z" fill={FILL} stroke={INK} strokeWidth={2}/>
-    <path d="M254 140V68Q275 32 325 65L335 110" stroke={ART} strokeWidth={22} fill="none"/>
-    <path d="M238 143Q200 113 180 80M180 83L150 70" stroke={VEIN} strokeWidth={15} fill="none"/>
-    <path d="M260 153Q275 230 270 310M260 170Q315 190 320 250" stroke={ART} strokeWidth={4} fill="none"/>
-    <path d="M270 202L275 218M315 214L318 225" stroke={MUTED} strokeWidth={8}/>
-    <path d="M254 151C365 150 355 242 320 250" stroke={GRAFT} strokeWidth={6} fill="none"/>
-    <path d="M218 35C205 110 220 245 271 269" stroke={GRAFT} strokeWidth={5} fill="none" strokeDasharray="6 3"/>
-    <path d="M155 169H85V105M85 60V35H365V68H275" stroke={VEIN} strokeWidth={5} fill="none"/>
-    <path d="M85 60V35H365V68H275" stroke={ART} strokeWidth={5} fill="none"/>
-    <rect x={35} y={60} width={100} height={45} rx={5} fill={FILL} stroke={INK}/>
-    <Clamp x={254} y={109} w={35}/><Sutures x={309} y={248} count={3}/>
-    <Label x={45} y={78}>Oxygenator</Label><Label x={52} y={94}>and pump</Label>
-    <Label x={18} y={199}>Venous drain</Label><Leader from={[105,196]} to={[155,170]}/>
-    <Label x={373} y={68}>Aortic return</Label><Label x={365} y={128}>Cross-clamp</Label>
-    <Label x={360} y={215}>Vein graft</Label><Leader from={[353,219]} to={[349,212]}/>
-    <Label x={25} y={290}>Internal thoracic graft</Label><Leader from={[174,286]} to={[238,240]}/>
-    <Label x={25} y={355}>Grafts join beyond stenoses; assess rhythm, function and perfusion</Label>
+  <Shell id="op-cabg" title="CABG: coronary targets and separate bypass circuit" desc="Anterior conceptual heart view, patient's right on viewer's left. RCA follows the right atrioventricular groove on viewer's left; LAD descends towards the apex. A circumflex branch is partly hidden posteriorly. The internal thoracic artery remains attached to its subclavian origin and joins LAD beyond stenosis. A vein graft connects aortic root to a circumflex-territory target. Bypass circuit is drawn outside the heart; not a scaled coronary dissection map." h={430}>
+    <path d="M198 144C127 128 125 223 180 272L278 364Q371 298 351 210Q340 134 283 151Q244 120 198 144Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M252 153V83Q278 48 323 83L335 116" stroke={ART} strokeWidth={20} fill="none"/>
+    <path d="M180 140V105M175 200V235" stroke={VEIN} strokeWidth={13}/>
+    <path d="M255 160L261 183Q274 252 278 346M259 182Q221 170 173 189Q152 229 194 265M261 183Q317 166 336 217" stroke={ART} strokeWidth={4} fill="none"/>
+    <path d="M334 219Q347 245 329 270" stroke={ART} strokeWidth={4} strokeDasharray="4 3" fill="none"/>
+    <path d="M266 226L271 241M337 243L334 256" stroke={MUTED} strokeWidth={8}/>
+    <path d="M253 159C387 147 382 255 329 271" stroke={GRAFT} strokeWidth={6} fill="none"/>
+    <path d="M200 56L223 57M218 58C200 157 218 264 274 288" stroke={GRAFT} strokeWidth={5} fill="none"/>
+    <Sutures x={267} y={289} count={3}/><Sutures x={319} y={270} count={3}/>
+    <path d="M167 168H63V145" stroke={VEIN} strokeWidth={5} fill="none"/>
+    <rect x={20} y={101} width={89} height={44} rx={4} fill={FILL} stroke={INK}/>
+    <path d="M63 101V31H399V90H279" stroke={ART} strokeWidth={5} fill="none"/>
+    <Clamp x={252} y={117} w={38}/>
+    <Label x={25} y={117}>Oxygenator</Label><Label x={31} y={133}>and pump</Label>
+    <Label x={25} y={193}>Venous drainage</Label><Leader from={[104,188]} to={[147,167]}/>
+    <Label x={316} y={57}>Aortic return</Label><Leader from={[362,62]} to={[393,87]}/>
+    <Label x={25} y={68}>Attached ITA origin</Label><Leader from={[155,70]} to={[218,58]}/>
+    <Label x={391} y={205}>Vein graft</Label><Leader from={[384,202]} to={[368,212]}/>
+    <Label x={25} y={280}>RCA</Label><Leader from={[58,277]} to={[188,260]}/>
+    <Label x={390} y={290}>Circumflex target</Label><Leader from={[384,285]} to={[329,269]}/>
+    <Label x={25} y={335}>ITA → LAD</Label><Leader from={[107,330]} to={[264,276]}/>
+    <Label x={296} y={363}>LAD</Label><Leader from={[292,356]} to={[278,339]}/>
+    <Label x={25} y={416}>Grafts join beyond stenoses; coronary layout is simplified</Label>
   </Shell>
 );
 
@@ -1075,17 +1087,26 @@ const AdrenalectomyDiagram = () => (
 );
 
 const FessDiagram = () => (
-  <Shell id="op-fess" title="Endoscopic sinus surgery: a dry field near orbit and skull base" desc="Coronal conceptual view of the nose and sinuses. The endoscope enters through the nostril into the ethmoid sinuses, which lie between the orbits and just below the skull base. Even small bleeding obscures the view.">
-    <path d="M60 60 L400 60" stroke={INK} strokeWidth={4} />
-    <circle cx={110} cy={130} r={45} fill={FILL} stroke={INK} strokeWidth={2} />
-    <circle cx={350} cy={130} r={45} fill={FILL} stroke={INK} strokeWidth={2} />
-    <rect x={180} y={80} width={100} height={110} fill={MUTED} opacity={0.35} stroke={INK} />
-    <path d="M230 80 L230 290" stroke={INK} strokeWidth={2} />
-    <path d="M200 300 L210 120" stroke={GRAFT} strokeWidth={5} />
-    {[[194,99],[210,129],[256,102],[260,154],[196,166]].map(([x,y])=><ellipse key={x+y} cx={x} cy={y} rx={10} ry={14} fill={FILL} stroke={INK}/>)}<path d="M180 87V189M280 87V189" stroke={ART} strokeDasharray="3 3"/><path d="M302 130Q350 167 385 131M75 130Q114 167 151 131" stroke={MUTED} fill="none"/>
-    <Label x={140} y={45}>Skull base (CSF leak risk)</Label><Label x={40} y={200}>Orbit</Label>
-    <Label x={290} y={210}>Ethmoid sinuses</Label><Label x={60} y={260}>Endoscope via nostril</Label>
-    <Label x={25} y={318}>TIVA, head-up, controlled BP for a clear view</Label>
+  <Shell id="op-fess" title="Endoscopic sinus surgery: ethmoid corridor and risk boundaries" desc="Coronal conceptual section, superior above, anterior patient-facing convention; no side-specific surgical plan. The septum separates nasal cavities. Ethmoid air cells lie medial to the thin lamina papyracea bordering each orbit; the cribriform region lies above the septum. The endoscope route is a simplified projection from nostril alongside the middle turbinate into the ethmoid corridor, not a dissection guide." h={400}>
+    <path d="M60 77H174L189 66H282L297 77H460" stroke={INK} strokeWidth={5} fill="none"/>
+    <path d="M203 67H268" stroke={MUTED} strokeWidth={4} strokeDasharray="3 3"/>
+    <path d="M234 72V322" stroke={INK} strokeWidth={3}/>
+    <path d="M175 86V229M296 86V229" stroke={ART} strokeWidth={3}/>
+    <path d="M85 102Q140 70 167 114L167 220Q123 245 82 208Q59 159 85 102Z M307 113Q349 72 402 103Q434 155 405 209Q363 246 306 220Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <ellipse cx={123} cy={163} rx={31} ry={34} fill={FILL} stroke={MUTED}/><ellipse cx={357} cy={163} rx={31} ry={34} fill={FILL} stroke={MUTED}/>
+    {[[190,106],[214,106],[190,139],[216,143],[192,175],[272,108],[253,107],[276,141],[253,142],[275,178]].map(([x,y])=><path key={x+y} d={`M${x-9} ${y-11}q10-9 19 0l-1 20q-10 8-19 0Z`} fill={FILL} stroke={MUTED}/>)}
+    <path d="M212 191Q184 197 195 244Q205 258 220 241M256 191Q283 197 275 244Q266 258 250 241" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M178 275Q195 264 216 275M254 275Q281 259 295 275" stroke={MUTED} strokeWidth={5} fill="none"/>
+    <path d="M190 344L184 270L183 234L198 165" stroke={GRAFT} strokeWidth={5} fill="none"/>
+    <Label x={25} y={29}>Coronal section · superior ↑</Label>
+    <Label x={310} y={48}>Cribriform region</Label><Leader from={[303,52]} to={[252,67]}/>
+    <Label x={25} y={107}>Orbit</Label><Leader from={[66,104]} to={[89,138]}/>
+    <Label x={333} y={267}>Lamina papyracea</Label><Leader from={[327,258]} to={[296,207]}/>
+    <Label x={325} y={317}>Middle turbinate</Label><Leader from={[318,309]} to={[267,235]}/>
+    <Label x={25} y={243}>Ethmoid cells</Label><Leader from={[116,234]} to={[195,140]}/>
+    <Label x={25} y={320}>Endoscope route</Label><Leader from={[133,309]} to={[183,275]}/>
+    <Label x={264} y={354}>Nasal septum</Label><Leader from={[258,344]} to={[234,298]}/>
+    <Label x={25} y={386}>Thin orbit and skull-base boundaries: bleeding obscures the field</Label>
   </Shell>
 );
 
