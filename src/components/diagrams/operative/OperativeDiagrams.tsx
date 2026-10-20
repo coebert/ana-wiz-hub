@@ -56,6 +56,7 @@ const OpenAaaDiagram = () => (
     <rect x={246} y={115} width={28} height={140} fill={GRAFT} rx={4}><title>Tube graft</title></rect>
     <path d="M250 255 L200 305 M270 255 L320 305" stroke={ART} strokeWidth={14} strokeLinecap="round" />
     <Clamp x={260} y={112} w={60} /><Clamp x={210} y={292} w={28} /><Clamp x={310} y={292} w={28} />
+    <Sutures x={237} y={123} count={7}/><Sutures x={237} y={247} count={7}/><path d="M214 135Q186 190 218 229M305 134Q332 190 304 231" fill="none" stroke={MUTED} strokeWidth={2}/><Flow x={260} y={184}/>
     <Label x={120} y={50}>Renal artery</Label>
     <Label x={300} y={35}>Higher clamp = bigger effect</Label>
     <Label x={330} y={115}>Infrarenal cross-clamp</Label>
@@ -103,6 +104,7 @@ const IvorLewisDiagram = () => (
     <rect x={60} y={160} width={180} height={110} rx={10} fill={FILL} stroke={INK} />
     <path d="M150 40 L150 120" stroke={VEIN} strokeWidth={10} /><circle cx={150} cy={120} r={6} fill={INK}><title>Anastomosis</title></circle>
     <path d="M150 125 C140 170, 170 200, 150 240" stroke={GRAFT} strokeWidth={14} fill="none" strokeLinecap="round" />
+    <path d="M75 62Q120 82 80 113M215 61Q190 91 216 113" stroke={MUTED} fill="none"/><path d="M110 220Q90 184 137 192Q170 216 150 240" fill="none" stroke={MUTED}/><Sutures x={136} y={120}/>
     <Label x={70} y={50}>Right chest (stage 2)</Label>
     <Label x={70} y={180}>Abdomen (stage 1)</Label>
     <Label x={270} y={80}>Oesophagus resected;</Label>
@@ -123,6 +125,7 @@ const RupturedAaaDiagram = () => (
     <Clamp x={260} y={35} w={60} />
     <ellipse cx={260} cy={95} rx={14} ry={9} fill={GRAFT}><title>Occlusion balloon</title></ellipse>
     <path d="M260 104 L260 250 L320 305" stroke={GRAFT} strokeWidth={3} fill="none" strokeDasharray="6 4" />
+    <path d="M305 205l18 6-8 8 16 6" fill="none" stroke={ART} strokeWidth={4}/><path d="M315 215Q349 191 370 212M320 231Q343 259 363 241" stroke={ART} fill="none" opacity={0.4}/>
     <Label x={300} y={30}>Open: supracoeliac clamp</Label>
     <Label x={300} y={95}>Or: occlusion balloon</Label>
     <Label x={300} y={111}>from the groin</Label>
@@ -139,6 +142,7 @@ const AortoBifemDiagram = () => (
     <path d="M250 150 L190 260 L180 305 M270 150 L330 260 L340 305" stroke={MUTED} strokeWidth={14} fill="none" strokeLinecap="round"><title>Diseased iliac arteries</title></path>
     <path d="M260 110 L260 150 L180 290 M260 150 L340 290" stroke={GRAFT} strokeWidth={8} fill="none" strokeLinejoin="round" />
     <Clamp x={260} y={96} w={56} />
+    <Sutures x={245} y={117}/><Sutures x={165} y={290}/><Sutures x={325} y={290}/><Flow x={260} y={130}/>
     <Label x={120} y={50}>Renal artery</Label>
     <Label x={300} y={100}>Aortic clamp + graft join</Label>
     <Label x={60} y={200}>Diseased iliacs (grey)</Label>
@@ -156,6 +160,7 @@ const AmputationDiagram = () => (
     <path d="M180 110 L280 110" stroke={ART} strokeWidth={3} strokeDasharray="8 5" />
     <path d="M185 210 L285 210" stroke={ART} strokeWidth={3} strokeDasharray="8 5" />
     <path d="M250 60 L245 200" stroke={VEIN} strokeWidth={3} />
+    <path d="M211 20L211 140Q225 166 229 186L221 280M249 20L249 140Q237 166 249 186L258 280" fill="none" stroke={INK} strokeWidth={2}/><path d="M250 185L270 280" stroke={MUTED} strokeWidth={4}/>
     <Label x={300} y={114}>Above-knee level</Label>
     <Label x={300} y={214}>Below-knee level</Label>
     <Label x={300} y={160}>Knee</Label>
@@ -170,6 +175,7 @@ const AvFistulaDiagram = () => (
     <path d="M90 190 L330 190" stroke={ART} strokeWidth={10} strokeLinecap="round" />
     <path d="M330 190 C350 170, 360 140, 440 130 M90 130 L330 130 C340 150, 335 175, 330 190" stroke={VEIN} strokeWidth={10} fill="none" strokeLinecap="round" />
     <circle cx={330} cy={190} r={8} fill={INK}><title>Anastomosis</title></circle>
+    <Sutures x={317} y={190}/><Flow x={235} y={190} direction="right"/><Flow x={240} y={130}/><path d="M85 110Q180 95 315 108M85 209Q175 221 319 213" fill="none" stroke={MUTED}/>
     <Label x={90} y={215}>Radial artery</Label>
     <Label x={90} y={120}>Cephalic vein (enlarges)</Label>
     <Label x={300} y={260}>Join at the wrist</Label>
@@ -206,6 +212,7 @@ const VatsDiagram = () => (
     <ellipse cx={190} cy={110} rx={70} ry={40} fill={MUTED} opacity={0.4}><title>Collapsed lung</title></ellipse>
     <ellipse cx={200} cy={225} rx={80} ry={40} fill={VEIN} opacity={0.35}><title>Ventilated lung</title></ellipse>
     {[300, 350, 400].map((x) => <circle key={x} cx={x} cy={70} r={7} fill={GRAFT} />)}
+    <path d="M126 218Q178 202 243 228M153 241Q183 219 209 193" stroke={VEIN} fill="none" strokeWidth={2}/><path d="M160 112Q197 123 242 102" stroke={INK} strokeDasharray="4 3" fill="none"/><path d="M303 77L247 111M349 77L236 119" stroke={GRAFT} strokeWidth={2}/>
     <Label x={300} y={45}>Ports (camera + instruments)</Label>
     <Label x={120} y={105}>Upper lung collapsed</Label>
     <Label x={120} y={230}>Lower lung ventilated</Label>
@@ -222,6 +229,7 @@ const LapCholeDiagram = () => (
     <ellipse cx={280} cy={150} rx={30} ry={16} fill={GRAFT} />
     <path d="M255 155 L230 175" stroke={INK} strokeWidth={4} />
     {[[260, 250], [300, 120], [400, 150], [410, 200]].map(([x, y]) => <circle key={`${x}${y}`} cx={x} cy={y} r={7} fill={VEIN} />)}
+    <path d="M270 154Q286 182 303 204L304 240M303 203L330 175" stroke={GRAFT} strokeWidth={4} fill="none"/><path d="M248 137L269 164" stroke={ART} strokeWidth={3}/><path d="M254 145l12-8M277 172l12-8" stroke={INK} strokeWidth={2}/>
     <Label x={160} y={80}>Liver</Label>
     <Label x={250} y={128}>Gallbladder</Label>
     <Label x={120} y={190}>Cystic duct clipped</Label>
@@ -254,6 +262,7 @@ const HipHemiDiagram = () => (
     <path d="M250 290 L250 150 L195 95" stroke={GRAFT} strokeWidth={12} fill="none" strokeLinecap="round" />
     <circle cx={185} cy={85} r={26} fill={GRAFT} opacity={0.8}><title>Prosthetic head</title></circle>
     <path d="M200 125 L235 105" stroke={ART} strokeWidth={3} strokeDasharray="5 4" />
+    <path d="M138 49Q179 13 211 59M146 62Q181 26 210 66" stroke={INK} strokeWidth={3} fill="none"/><path d="M228 171V279M271 169V280" stroke={MUTED} strokeWidth={2}/>
     <Label x={60} y={40}>Prosthetic head in socket</Label>
     <Label x={60} y={150}>Old fracture line</Label>
     <Label x={280} y={220}>Cemented stem:</Label>
@@ -268,6 +277,7 @@ const CaesareanDiagram = () => (
     <path d="M200 100 L320 100" stroke={VEIN} strokeWidth={3} strokeDasharray="8 5" />
     <path d="M200 100 L320 100 L320 250 A50 50 0 0 1 270 300 L250 300 A50 50 0 0 1 200 250 Z" fill={VEIN} opacity={0.12} />
     <path d="M225 250 Q260 262 295 250" stroke={ART} strokeWidth={4} fill="none" />
+    <path d="M228 132Q260 112 293 143Q316 193 289 238Q260 260 232 234Q209 192 228 132Z" fill={FILL} stroke={MUTED}/><path d="M241 167Q265 144 280 173Q294 199 274 220Q251 233 238 211Q230 192 241 167Z" fill="none" stroke={INK} strokeWidth={2}/>
     <Label x={340} y={104}>Block to about T4</Label>
     <Label x={340} y={254}>Low transverse incision</Label>
     <Label x={30} y={180}>Left tilt / uterine</Label>
@@ -315,6 +325,7 @@ const LaparotomyDiagram = () => (
     <ellipse cx={260} cy={170} rx={150} ry={130} fill={FILL} stroke={INK} />
     <path d="M260 60 L260 280" stroke={ART} strokeWidth={4} />
     <path d="M110 170 L410 170" stroke={MUTED} strokeWidth={1} strokeDasharray="4 4" />
+    <path d="M156 135Q172 108 187 131Q200 156 178 179M304 141Q328 115 348 137Q367 170 335 184M165 213Q223 181 231 219Q259 261 291 218" fill="none" stroke={GRAFT} strokeWidth={6}/><path d="M251 70L236 87V255L251 274M269 70L284 87V255L269 274" stroke={INK} fill="none"/>
     <Label x={140} y={110}>Perforation</Label><Label x={300} y={110}>Bleeding</Label>
     <Label x={140} y={230}>Obstruction</Label><Label x={300} y={230}>Ischaemia</Label>
     <Label x={270} y={300}>Midline incision</Label>
@@ -329,6 +340,7 @@ const ThrDiagram = () => (
     <circle cx={214} cy={112} r={24} fill={GRAFT} />
     <path d="M300 300 L300 160 L225 120" stroke={FILL} strokeWidth={46} fill="none" strokeLinecap="round" />
     <path d="M300 290 L300 160 L230 122" stroke={GRAFT} strokeWidth={12} fill="none" strokeLinecap="round" />
+    <path d="M258 184V281M320 184V281" fill="none" stroke={MUTED} strokeWidth={2}/><path d="M161 107A53 53 0 0 1 267 107" stroke={INK} strokeWidth={2} fill="none"/>
     <Label x={40} y={30}>Pelvis</Label>
     <Label x={60} y={150}>Cup in socket (blue)</Label>
     <Label x={330} y={160}>Ball on femoral stem</Label>
@@ -345,6 +357,7 @@ const TkrDiagram = () => (
     <rect x={228} y={152} width={64} height={10} fill={MUTED} />
     <rect x={225} y={166} width={70} height={14} rx={4} fill={GRAFT} />
     <rect x={225} y={50} width={70} height={14} fill={INK}><title>Tourniquet</title></rect>
+    <path d="M235 24V112Q225 135 242 137M285 24V112Q294 135 278 137M240 205V301M280 205V301" stroke={INK} strokeWidth={2} fill="none"/><path d="M293 195L309 300" stroke={MUTED} strokeWidth={4}/><path d="M214 139Q195 156 215 174" fill={FILL} stroke={INK}/>
     <Label x={310} y={60}>Thigh tourniquet</Label>
     <Label x={310} y={140}>Femoral component</Label>
     <Label x={310} y={160}>Plastic spacer</Label>
@@ -359,6 +372,7 @@ const SpineDiagram = () => (
     {[60, 120, 180, 240].map((y) => <rect key={y} x={220} y={y} width={80} height={42} rx={8} fill={FILL} stroke={INK} />)}
     {[80, 140, 200, 260].map((y) => <g key={y}><circle cx={235} cy={y} r={6} fill={GRAFT} /><circle cx={285} cy={y} r={6} fill={GRAFT} /></g>)}
     <path d="M235 80 L235 260 M285 80 L285 260" stroke={GRAFT} strokeWidth={5} />
+    {[60,120,180,240].map(y=><g key={y} fill={FILL} stroke={INK}><path d={`M220 ${y+15}l-22 8 22 10M300 ${y+15}l22 8-22 10M250 ${y+42}l10 10 10-10`}/><path d={`M243 ${y+28}Q260 ${y+6}277 ${y+28}`} fill="none"/></g>)}
     <Label x={320} y={90}>Pedicle screws</Label>
     <Label x={320} y={110}>joined by rods</Label>
     <Label x={30} y={150}>Prone, abdomen free</Label>
@@ -376,6 +390,7 @@ const CraniotomyDiagram = () => (
     <path d="M190 70 A130 120 0 0 1 300 55" stroke={ART} strokeWidth={6} fill="none" strokeDasharray="8 5" />
     <circle cx={240} cy={120} r={28} fill={MUTED} opacity={0.7}><title>Tumour</title></circle>
     {[[140, 100], [380, 100], [260, 300]].map(([x, y]) => <circle key={`${x}`} cx={x} cy={y} r={7} fill={INK} />)}
+    <path d="M167 115Q177 93 192 117Q204 143 220 118M262 79Q282 102 300 86M286 190Q250 175 260 213M187 230Q222 245 230 222" stroke={MUTED} strokeWidth={2} fill="none"/>
     <Label x={310} y={45}>Bone flap</Label>
     <Label x={180} y={170}>Tumour</Label>
     <Label x={395} y={104}>Pin fixation</Label>
@@ -391,6 +406,7 @@ const TurpDiagram = () => (
     <ellipse cx={260} cy={170} rx={50} ry={34} fill={MUTED} opacity={0.6}><title>Prostate</title></ellipse>
     <path d="M260 140 L260 310" stroke={GRAFT} strokeWidth={10} strokeLinecap="round" />
     <path d="M240 200 C200 220, 180 240, 150 260" stroke={VEIN} strokeWidth={4} fill="none" strokeDasharray="6 4" />
+    <path d="M177 92Q193 123 212 112M308 106Q334 123 344 91" stroke={MUTED} fill="none"/><path d="M244 159Q229 169 243 188M277 158Q293 170 277 188" stroke={ART} strokeWidth={2} fill="none"/><path d="M252 300V176L268 166" stroke={INK} strokeWidth={2} fill="none"/>
     <Label x={360} y={90}>Bladder</Label>
     <Label x={320} y={175}>Prostate resected</Label>
     <Label x={280} y={290}>Resectoscope (urethra)</Label>
@@ -406,6 +422,7 @@ const RoboticProstateDiagram = () => (
     <ellipse cx={280} cy={140} rx={110} ry={40} fill={FILL} stroke={INK} transform="rotate(20 280 140)" />
     <circle cx={90} cy={80} r={22} fill={MUTED} opacity={0.6}><title>Head</title></circle>
     {[240, 290, 340].map((x) => <path key={x} d={`M${x} 40 L${x - 10} 110`} stroke={GRAFT} strokeWidth={5} />)}
+    <path d="M202 128Q231 120 252 141Q259 157 241 163Q210 156 202 128" fill={FILL} stroke={MUTED}/><path d="M230 164L224 190M240 167L245 195" stroke={ART} strokeWidth={2}/>
     <Label x={250} y={30}>Robot arms</Label>
     <Label x={40} y={130}>Head low (~25–45°)</Label>
     <Label x={300} y={240}>CO2 pneumoperitoneum</Label>
@@ -414,20 +431,20 @@ const RoboticProstateDiagram = () => (
 );
 
 const ThyroidDiagram = () => (
-  <Shell id="op-thyroid" title="Thyroidectomy: gland, airway and nerves" desc="Thyroid lobes either side of the trachea with the recurrent laryngeal nerves running behind and the parathyroid glands nearby. Risks include nerve injury affecting the vocal cords, low calcium, and a neck haematoma that can compress the airway.">
-    <rect x={240} y={20} width={40} height={290} rx={18} fill={FILL} stroke={INK} />
-    <ellipse cx={210} cy={150} rx={34} ry={60} fill={GRAFT} opacity={0.7} />
-    <ellipse cx={310} cy={150} rx={34} ry={60} fill={GRAFT} opacity={0.7} />
-    <path d="M232 300 L232 60 M288 300 L288 60" stroke={VEIN} strokeWidth={3} />
-    {[[185, 120], [190, 190], [335, 120], [330, 190]].map(([x, y]) => <circle key={`${x}${y}`} cx={x} cy={y} r={6} fill={ART} />)}
-    <Label x={30} y={60}>Thyroid lobes</Label>
-    <Label x={360} y={60}>Trachea</Label>
-    <Label x={360} y={130}>Parathyroids (red)</Label>
-    <Label x={360} y={150}>→ low calcium</Label>
-    <Label x={30} y={260}>Recurrent laryngeal</Label>
-    <Label x={30} y={276}>nerves (blue)</Label>
-    <Label x={360} y={260}>Neck haematoma:</Label>
-    <Label x={360} y={276}>open wound early</Label>
+  <Shell id="op-thyroid" title="Thyroidectomy: lobes, posterior glands and nerves" desc="Anterior conceptual neck view, patient's right on viewer's left; posterior structures are shown through translucent lobes. The thyroid isthmus crosses the trachea. Recurrent laryngeal nerves ascend in the tracheo-oesophageal grooves; small parathyroids lie on variable posterior gland surfaces, not at fixed operative coordinates." h={350}>
+    <path d="M245 55V305M280 55V305" stroke={INK} strokeWidth={2}/>
+    {[90,108,126,144,162,180,198,216,234,252,270,288].map(y=><path key={y} d={`M245 ${y}q18 7 35 0`} fill="none" stroke={MUTED}/>) }
+    <path d="M231 102Q184 85 174 153Q170 230 221 223L245 189H280L302 222Q350 224 349 154Q340 89 292 102L283 153H243Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M237 304Q231 238 233 172Q232 115 247 78M288 304Q296 234 293 172Q295 110 279 78" stroke={VEIN} strokeWidth={3} fill="none" strokeDasharray="5 3"/>
+    {[[207,129],[218,204],[321,128],[308,204]].map(([x,y])=><ellipse key={x} cx={x} cy={y} rx={6} ry={9} fill={GRAFT} stroke={INK}/>)}
+    <path d="M242 57L234 38Q263 24 289 38L281 57Z" fill={FILL} stroke={INK}/>
+    <Label x={25} y={32}>Anterior view; posterior structures shown dashed</Label>
+    <Label x={25} y={113}>Thyroid lobe</Label><Leader from={[115,115]} to={[187,145]}/>
+    <Label x={365} y={139}>Parathyroid</Label><Leader from={[358,136]} to={[321,128]}/>
+    <Label x={365} y={216}>Isthmus</Label><Leader from={[357,210]} to={[262,183]}/>
+    <Label x={25} y={263}>Recurrent nerves</Label><Leader from={[145,260]} to={[235,252]}/>
+    <Label x={345} y={291}>Tracheal rings</Label><Leader from={[337,286]} to={[278,279]}/>
+    <Label x={25} y={335}>Postoperative haematoma: urgent airway and wound assessment</Label>
   </Shell>
 );
 
@@ -436,8 +453,9 @@ const TonsilDiagram = () => (
     <ellipse cx={260} cy={170} rx={150} ry={120} fill={FILL} stroke={INK} />
     <ellipse cx={180} cy={170} rx={26} ry={40} fill={ART} opacity={0.5} />
     <ellipse cx={340} cy={170} rx={26} ry={40} fill={ART} opacity={0.5} />
-    <path d="M260 60 L260 270" stroke={GRAFT} strokeWidth={14} strokeLinecap="round" />
+    <path d="M260 260 L260 270" stroke={GRAFT} strokeWidth={14} strokeLinecap="round" />
     <path d="M150 70 L370 70" stroke={INK} strokeWidth={6} />
+    <path d="M164 154Q180 131 191 164M329 157Q343 179 326 197" stroke={MUTED} fill="none"/><path d="M199 202Q260 166 319 202Q320 238 260 250Q204 244 199 202Z" fill={FILL} stroke={MUTED}/><rect x={215} y={226} width={90} height={12} rx={3} fill={MUTED}/>
     <Label x={380} y={74}>Mouth gag</Label>
     <Label x={60} y={170}>Tonsil</Label>
     <Label x={380} y={170}>Tonsil</Label>
@@ -453,6 +471,7 @@ const TevarDiagram = () => (
     <path d="M320 130 L320 260" stroke={GRAFT} strokeWidth={16} />
     <path d="M330 300 L330 315" stroke={INK} strokeWidth={4} />
     <path d="M440 120 L440 300" stroke={VEIN} strokeWidth={4} strokeDasharray="6 4" />
+    {[145,165,185,205,225,245].map(y=><path key={y} d={`M312 ${y}l4 5 4-5 4 5 4-5`} fill="none" stroke={INK}/>)}<path d="M334 175l23 5M334 209l23 5M334 244l23 5" stroke={ART} strokeWidth={2}/>
     <Label x={295} y={12}>Left subclavian</Label>
     <Label x={350} y={180}>Stent graft</Label>
     <Label x={40} y={150}>Ascending aorta</Label>
@@ -466,6 +485,7 @@ const SleeveDiagram = () => (
     <path d="M220 30 L220 80 C120 90, 110 230, 200 270 C280 300, 380 260, 360 200 C340 150, 280 120, 250 85" fill={FILL} stroke={INK} strokeWidth={2} />
     <path d="M225 40 C230 120, 240 200, 300 255" stroke={VEIN} strokeWidth={8} fill="none" strokeLinecap="round" />
     <path d="M245 75 C250 140, 265 200, 320 245" stroke={ART} strokeWidth={3} fill="none" strokeDasharray="7 4" />
+    <path d="M126 168Q160 180 175 217M149 107Q173 134 189 149M177 258Q205 257 223 270" stroke={MUTED} fill="none"/><Sutures x={267} y={187} vertical count={7}/>
     <Label x={30} y={40}>Bougie (blue) passed by anaesthetist</Label>
     <Label x={300} y={110}>Staple line</Label>
     <Label x={340} y={290}>Greater curve removed</Label>
@@ -474,15 +494,21 @@ const SleeveDiagram = () => (
 );
 
 const LiverDiagram = () => (
-  <Shell id="op-liver" title="Liver resection: Pringle manoeuvre and transection" desc="Liver with a transection line between right and left parts. A clamp around the hepatoduodenal ligament (portal vein and hepatic artery) is the Pringle manoeuvre. Hepatic veins drain to the inferior vena cava; low central venous pressure reduces back-bleeding during transection.">
-    <path d="M60 120 C80 50, 420 40, 460 110 C430 170, 300 230, 120 220 C70 210, 50 170, 60 120 Z" fill={FILL} stroke={INK} strokeWidth={2} />
-    <path d="M270 55 L250 220" stroke={ART} strokeWidth={3} strokeDasharray="8 5" />
-    <rect x={250} y={40} width={30} height={20} fill={VEIN} opacity={0.6} />
-    <path d="M230 230 L230 300" stroke={VEIN} strokeWidth={10} /><Clamp x={230} y={265} />
-    <Label x={290} y={40}>IVC / hepatic veins</Label>
-    <Label x={290} y={160}>Transection line</Label>
-    <Label x={250} y={290}>Pringle clamp (portal inflow)</Label>
-    <Label x={30} y={310}>Keep CVP low during transection; refill afterwards</Label>
+  <Shell id="op-liver" title="Liver resection: inflow control versus venous back-bleeding" desc="Anterior conceptual view, patient's right on viewer's left. The larger right liver lies on viewer's left. At the hilum a Pringle tape surrounds the hepatoduodenal ligament containing portal vein, hepatic artery and bile duct. Hepatic veins drain separately to the posterior IVC; Pringle occlusion does not stop this back-bleeding." h={350}>
+    <path d="M70 108Q87 56 240 66Q355 38 445 87Q455 128 389 158L285 180L217 209Q115 234 74 178Q54 145 70 108Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M270 67Q260 116 239 196" stroke={ART} strokeWidth={3} strokeDasharray="6 4" fill="none"/>
+    <path d="M264 32V101M160 115L263 90M354 100L263 90" stroke={VEIN} strokeWidth={10} fill="none"/>
+    <path d="M254 292V185M237 290V187M274 187V292" stroke={VEIN} strokeWidth={8}/>
+    <path d="M236 287V186" stroke={ART} strokeWidth={4}/>
+    <path d="M275 187V292" stroke={GRAFT} strokeWidth={4}/>
+    <ellipse cx={254} cy={221} rx={37} ry={13} fill="none" stroke={INK} strokeWidth={3}/>
+    <path d="M218 221L190 253M289 221L305 252" stroke={INK} strokeWidth={2}/>
+    <Label x={28} y={30}>Anterior: patient R ← → patient L</Label>
+    <Label x={315} y={48}>IVC / hepatic veins</Label><Leader from={[309,52]} to={[269,79]}/>
+    <Label x={325} y={184}>Transection</Label><Leader from={[318,179]} to={[245,157]}/>
+    <Label x={310} y={247}>Pringle tape at hilum</Label><Leader from={[303,239]} to={[282,222]}/>
+    <Label x={25} y={285}>Portal triad</Label><Leader from={[108,280]} to={[240,259]}/>
+    <Label x={25} y={335}>Inflow occlusion does not control hepatic venous back-bleeding</Label>
   </Shell>
 );
 
@@ -493,6 +519,7 @@ const CystectomyDiagram = () => (
     <rect x={230} y={200} width={160} height={28} rx={14} fill={ART} opacity={0.5} />
     <circle cx={400} cy={214} r={12} fill={INK} />
     <ellipse cx={260} cy={290} rx={40} ry={22} fill="none" stroke={MUTED} strokeDasharray="6 4" />
+    <path d="M148 58Q154 89 171 99M365 58Q360 89 348 99" stroke={MUTED} fill="none"/><Sutures x={242} y={207} count={4}/><Sutures x={261} y={207} count={4}/><Flow x={341} y={214} direction="right"/>
     <Label x={110} y={20}>Kidney</Label><Label x={380} y={20}>Kidney</Label>
     <Label x={40} y={170}>Ureters</Label>
     <Label x={240} y={250}>Ileal conduit</Label>
@@ -508,6 +535,7 @@ const FreeFlapDiagram = () => (
     <path d="M280 145 C320 160, 330 200, 335 240" stroke={ART} strokeWidth={4} fill="none" />
     <path d="M275 155 C305 175, 315 210, 318 250" stroke={VEIN} strokeWidth={4} fill="none" />
     <rect x={245} y={250} width={30} height={14} rx={4} fill={INK} />
+    <path d="M205 126Q224 118 244 129M214 150Q246 139 271 151" stroke={MUTED} fill="none"/><Sutures x={324} y={228} count={3}/><Sutures x={309} y={242} count={3}/>
     <Label x={20} y={135}>Flap in defect</Label>
     <Label x={385} y={200}>Joined to neck</Label><Label x={385} y={216}>artery + vein</Label>
     <Label x={70} y={260}>Tracheostomy</Label>
@@ -522,6 +550,7 @@ const HysterectomyDiagram = () => (
     <circle cx={80} cy={90} r={22} fill={MUTED} opacity={0.6} />
     <ellipse cx={330} cy={175} rx={26} ry={18} fill={ART} opacity={0.5} />
     <path d="M440 210 L480 150 M440 210 L490 190" stroke={INK} strokeWidth={5} />
+    <path d="M308 170Q322 144 348 166L344 185Q330 198 315 183Z" fill={FILL} stroke={INK}/><path d="M319 167l-20-13M340 166l20-6" stroke={GRAFT} strokeWidth={3}/>
     <Label x={300} y={230}>Uterus</Label>
     <Label x={30} y={140}>Head down</Label>
     <Label x={420} y={130}>Lithotomy legs</Label>
@@ -536,6 +565,7 @@ const BreastDiagram = () => (
     <ellipse cx={260} cy={240} rx={80} ry={28} fill="none" stroke={ART} strokeWidth={3} strokeDasharray="8 5" />
     <path d="M220 230 C200 190, 200 150, 210 130" stroke={ART} strokeWidth={3} fill="none" />
     <path d="M250 60 L250 110" stroke={VEIN} strokeWidth={4} />
+    <path d="M163 212Q204 201 255 210Q316 201 354 220" fill="none" stroke={INK} strokeDasharray="3 3"/><Sutures x={195} y={120} count={5}/><path d="M211 231L226 191M224 230L235 190" stroke={ART} strokeWidth={2}/>
     <Label x={20} y={110}>Reconstructed breast</Label>
     <Label x={260} y={70}>Internal mammary vessels</Label>
     <Label x={380} y={250}>Abdominal donor site</Label>
@@ -550,6 +580,7 @@ const CataractDiagram = () => (
     <ellipse cx={175} cy={165} rx={22} ry={45} fill={GRAFT} opacity={0.7} />
     <path d="M360 165 L460 165" stroke={MUTED} strokeWidth={10} />
     <path d="M420 280 L310 220" stroke={ART} strokeWidth={3} />
+    <path d="M288 64Q350 95 350 166Q350 239 287 267" stroke={ART} strokeWidth={2} fill="none"/><path d="M155 128L173 130M154 204L173 202" stroke={INK} strokeWidth={3}/><path d="M146 122L174 149" stroke={GRAFT} strokeWidth={3}/>
     <Label x={30} y={80}>Cornea</Label>
     <Label x={60} y={260}>Lens replaced</Label>
     <Label x={380} y={150}>Optic nerve</Label>
@@ -637,6 +668,7 @@ const CarotidStentDiagram = () => (
     <rect x={213} y={100} width={34} height={82} fill="none" stroke={GRAFT} strokeWidth={3} />
     {[110, 125, 140, 155, 170].map((y) => <path key={y} d={`M213 ${y} L247 ${y + 8}`} stroke={GRAFT} />)}
     <path d="M230 290 L230 65 L215 80 L245 80 Z" fill="none" stroke={VEIN} strokeWidth={2} />
+    <path d="M214 107l32 14M214 135l32 14M214 163l32 14M214 121l32-14M214 149l32-14M214 177l32-14" fill="none" stroke={GRAFT}/><path d="M215 80L230 94L245 80" stroke={INK} strokeWidth={1} fill="none"/><Flow x={230} y={49} direction="up"/>
     <Label x={230} y={25} anchor="middle">To brain</Label>
     <Label x={280} y={75}>Distal protection filter</Label>
     <Label x={280} y={140}>Stent across plaque</Label>
@@ -650,6 +682,7 @@ const FemoralEndarterectomyDiagram = () => (
     <path d="M230 30 L230 190 L170 280 M230 190 L300 280" stroke={ART} strokeWidth={20} fill="none" />
     <path d="M230 80 L230 175" stroke={GRAFT} strokeWidth={10} />
     <Clamp x={230} y={55} /><Clamp x={180} y={260} /><Clamp x={290} y={260} />
+    <path d="M226 81Q216 119 226 171L234 171Q243 120 234 81Z" fill={FILL} stroke={GRAFT}/><Sutures x={228} y={82} vertical count={13}/><Flow x={230} y={215}/>
     <Label x={270} y={35}>Common femoral artery</Label>
     <Label x={270} y={130}>Patch after plaque removal</Label>
     <Label x={30} y={300}>Profunda branch</Label><Label x={290} y={300}>Superficial femoral branch</Label>
@@ -664,6 +697,7 @@ const KidneyTransplantDiagram = () => (
     <path d="M115 115 L195 125" stroke={ART} strokeWidth={5} /><path d="M115 135 L220 150" stroke={VEIN} strokeWidth={5} />
     <path d="M105 150 C110 230, 170 245, 240 260" stroke={GRAFT} strokeWidth={4} fill="none" />
     <path d="M230 245 Q275 215 320 245 Q320 295 275 300 Q230 295 230 245 Z" fill={FILL} stroke={INK} />
+    <path d="M68 87Q83 108 91 120M68 155Q85 140 92 135" stroke={MUTED} fill="none"/><Sutures x={188} y={119} count={3}/><Sutures x={212} y={146} count={3}/><Sutures x={231} y={259} count={3}/>
     <Label x={30} y={30}>Patient's right iliac fossa</Label>
     <Label x={275} y={90}>Artery and vein joins</Label>
     <Label x={30} y={235}>Donor ureter</Label><Label x={345} y={270}>Bladder</Label>
@@ -678,6 +712,7 @@ const InguinalHerniaDiagram = () => (
     <path d="M230 105 C205 180, 300 180, 285 105" fill="none" stroke={ART} strokeWidth={5} />
     <path d="M260 185 L260 65 M250 80 L260 65 L270 80" stroke={VEIN} strokeWidth={3} fill="none" />
     <path d="M170 240 L350 240 M170 250 L350 250 M170 260 L350 260" stroke={GRAFT} strokeWidth={2} />
+    <path d="M44 87H208M307 87H476M46 131H210M307 131H474" stroke={MUTED} strokeWidth={4}/><rect x={170} y={236} width={180} height={30} fill="url(#op-inguinal-hernia-mesh)" stroke={GRAFT}/>
     <Label x={30} y={70}>Abdominal wall</Label><Label x={330} y={185}>Hernia sac</Label>
     <Label x={280} y={55}>Reduce contents</Label><Label x={365} y={255}>Mesh reinforcement</Label>
     <Label x={25} y={315}>Open: local / regional / general; laparoscopic: usually general</Label>
@@ -690,6 +725,7 @@ const AppendicectomyDiagram = () => (
     <path d="M260 200 C330 250, 280 290, 230 265" stroke={GRAFT} strokeWidth={20} fill="none" strokeLinecap="round" />
     <path d="M195 200 L275 235 L285 210 Z" fill={MUTED} opacity={0.35} />
     <path d="M195 205 L275 235" stroke={ART} strokeWidth={3} /><Clamp x={275} y={215} w={25} />
+    <path d="M177 79Q239 94 303 79M178 115Q244 132 304 115M178 152Q242 172 303 152" stroke={MUTED} fill="none"/><path d="M182 189Q221 230 257 218" stroke={MUTED} fill="none"/><Sutures x={260} y={204} count={3}/>
     <Label x={330} y={90}>Caecum</Label><Label x={330} y={225}>Base secured</Label>
     <Label x={30} y={235}>Mesoappendix vessels</Label><Label x={330} y={285}>Appendix removed</Label>
     <Label x={25} y={315}>Assess aspiration risk; antibiotics and source control</Label>
@@ -702,6 +738,7 @@ const PituitaryDiagram = () => (
     <path d="M95 190 L180 175 L245 155" stroke={GRAFT} strokeWidth={7} fill="none" />
     <path d="M200 135 L250 135 L250 180 L200 180 Z" fill={VEIN} opacity={0.2} stroke={VEIN} />
     <path d="M242 122 Q252 100 272 122 Q267 142 250 140 Z" fill={GRAFT} stroke={INK} />
+    <path d="M149 145Q174 112 190 138M150 159Q178 139 190 159M190 185H250" fill="none" stroke={MUTED} strokeWidth={2}/><path d="M250 103V85Q279 61 298 84" fill="none" stroke={INK} strokeWidth={2}/>
     <Label x={30} y={235}>Nasal route</Label><Label x={285} y={125}>Pituitary / sella</Label>
     <Label x={285} y={180}>Sphenoid sinus</Label><Label x={25} y={30}>Anterior (nose) ← sagittal view → posterior</Label>
     <Label x={25} y={315}>Check vision, cortisol needs, sodium and urine output</Label>
@@ -715,6 +752,7 @@ const PyloromyotomyDiagram = () => (
     <path d="M250 160 L330 160" stroke={ART} strokeWidth={4} strokeDasharray="6 4" />
     <path d="M350 150 L460 150 M350 170 L460 170" stroke={INK} strokeWidth={3} />
     <path d="M95 40 L120 140" stroke={VEIN} strokeWidth={4} />
+    <path d="M251 139Q295 132 331 139M251 182Q295 189 332 182" fill="none" stroke={INK} strokeWidth={2}/><path d="M258 157Q289 145 323 157L323 165Q285 177 258 165Z" fill={FILL} stroke={MUTED}/>
     <Label x={30} y={30}>Gastric tube: empty before induction</Label>
     <Label x={60} y={250}>Stomach</Label><Label x={240} y={100}>Thickened pylorus</Label>
     <Label x={230} y={235}>Muscle split to mucosa</Label><Label x={380} y={140}>Duodenum</Label>
@@ -730,6 +768,7 @@ const BurrHoleDiagram = () => (
     <circle cx={140} cy={85} r={9} fill="hsl(var(--card))" stroke={INK} strokeWidth={2} />
     <circle cx={110} cy={210} r={9} fill="hsl(var(--card))" stroke={INK} strokeWidth={2} />
     <path d="M110 210 C60 240, 40 260, 30 290" stroke={GRAFT} strokeWidth={3} fill="none" />
+    <path d="M186 90Q174 119 199 131M238 65Q257 93 280 72M296 199Q269 176 255 205M203 236Q225 209 239 237" fill="none" stroke={MUTED} strokeWidth={2}/><path d="M258 58V272" stroke={MUTED} strokeDasharray="4 5"/>
     <Label x={25} y={70}>Burr hole</Label><Label x={300} y={165}>Brain</Label>
     <Label x={175} y={200}>Chronic subdural collection</Label><Label x={40} y={270}>Drain</Label>
     <Label x={25} y={312}>Reverse anticoagulation; smooth emergence for neuro check</Label>
@@ -744,6 +783,7 @@ const ShoulderDiagram = () => (
     <rect x={200} y={140} width={30} height={14} fill={VEIN} opacity={0.6} transform="rotate(50 215 147)" />
     <circle cx={198} cy={102} r={6} fill={GRAFT} />
     <path d="M330 60 L330 160" stroke={ART} strokeWidth={2} /><path d="M322 70 L330 60 L338 70 M322 150 L330 160 L338 150" stroke={ART} fill="none" />
+    <path d="M156 112Q168 106 190 115L200 136Q179 145 161 131Z" fill={FILL} stroke={MUTED}/><path d="M151 205L270 205V285" stroke={MUTED} strokeWidth={5} fill="none"/>
     <Label x={210} y={95}>Interscalene block site</Label><Label x={240} y={190}>BP cuff on arm</Label>
     <Label x={345} y={105}>Head higher:</Label><Label x={345} y={122}>brain BP lower</Label>
     <Label x={25} y={312}>Phrenic palsy risk; avoid hypotension when sitting up</Label>
@@ -757,6 +797,7 @@ const MandibleDiagram = () => (
     <rect x={285} y={240} width={50} height={10} fill={GRAFT} transform="rotate(-25 310 245)" />
     <path d="M140 150 Q260 190 380 150" stroke={MUTED} strokeWidth={6} fill="none" />
     <path d="M240 30 L250 120 L270 140" stroke={VEIN} strokeWidth={5} fill="none" />
+    {[150,175,200,225,250,275,300,325,350].map(x=><rect key={x} x={x-8} y={150} width={16} height={18} rx={3} fill={FILL} stroke={INK}/>)}{[294,307,320].map(x=><circle key={x} cx={x} cy={246-(x-294)/2} r={2} fill={INK}/>)}
     <Label x={270} y={40}>Nasotracheal tube</Label><Label x={340} y={290}>Fracture + miniplate</Label>
     <Label x={170} y={205}>Teeth in occlusion</Label>
     <Label x={25} y={312}>Wired jaws: wire cutters travel with the patient</Label>
@@ -773,6 +814,7 @@ const DentalDiagram = () => (
     {[150, 200, 250, 350].map((x) => <path key={x} d={`M${x} 175 q-15 -25 -25 0 l5 40 h20 Z`} fill={FILL} stroke={INK} strokeWidth={2} />)}
     <path d="M285 205 L310 205 M300 160 L300 105 M290 115 L300 105 L310 115" fill="none" stroke={GRAFT} strokeWidth={3} />
     <path d="M170 30 L180 110 L230 145" fill="none" stroke={VEIN} strokeWidth={6} />
+    <path d="M118 207Q213 251 389 212" stroke={MUTED} strokeWidth={12} fill="none"/><path d="M303 97l-9-15 2-17q12-16 20 0l1 17-9 15Z" fill={FILL} stroke={INK}/><path d="M281 202q15-10 30 0" stroke={ART} strokeWidth={2} fill="none"/>
     <Label x={220} y={35}>Secured tube: nasal route if suitable</Label>
     <Label x={330} y={130}>Tooth removed</Label><Label x={320} y={225}>Socket haemostasis</Label>
     <Label x={25} y={310}>Suction → confirm pack removed if used → airway recovery</Label>
@@ -784,6 +826,7 @@ const CircumcisionDiagram = () => (
     <path d="M75 120 L280 120 Q355 160 280 200 L75 200" fill={FILL} stroke={INK} strokeWidth={3} />
     <path d="M260 108 Q395 160 260 212" fill="none" stroke={GRAFT} strokeWidth={10} strokeDasharray="7 5" />
     <path d="M245 115 L245 205" stroke={ART} strokeWidth={3} strokeDasharray="5 5" />
+    <path d="M78 136H247M78 182H247M276 136Q298 158 280 185" fill="none" stroke={MUTED} strokeWidth={2}/><Sutures x={248} y={124} vertical count={11}/>
     <Label x={30} y={65}>Local view: not a cutting guide</Label><Label x={370} y={165}>Glans</Label>
     <Label x={240} y={245}>Foreskin removed (dashed)</Label><Label x={55} y={245}>Skin closure</Label>
     <Label x={25} y={310}>Analgesia plan → haemostasis → recovery and voiding advice</Label>
@@ -796,6 +839,7 @@ const PaediatricHerniaDiagram = () => (
     <path d="M220 100 L220 195 Q260 275 300 195 L280 100" fill={FILL} stroke={GRAFT} strokeWidth={3} />
     <path d="M250 195 L250 65 M240 80 L250 65 L260 80" fill="none" stroke={VEIN} strokeWidth={3} />
     <path d="M210 120 L290 120" stroke={ART} strokeWidth={5} />
+    <path d="M59 80H206M300 80H461" stroke={MUTED} strokeWidth={3}/><ellipse cx={259} cy={238} rx={24} ry={28} fill={FILL} stroke={INK}/><path d="M285 160Q320 201 284 240" stroke={VEIN} strokeWidth={2} fill="none"/>
     <Label x={25} y={55}>Abdominal cavity</Label><Label x={315} y={120}>Close sac neck</Label>
     <Label x={325} y={210}>Patent processus</Label><Label x={325} y={228}>vaginalis / hernia sac</Label>
     <Label x={25} y={310}>Reduce contents → close communication; usually no mesh</Label>
@@ -808,6 +852,7 @@ const MitralDiagram = () => (
     <path d="M145 180 Q115 270 235 280 Q355 270 325 180 Z" fill={FILL} stroke={INK} strokeWidth={2} />
     <ellipse cx={235} cy={165} rx={85} ry={16} fill="none" stroke={GRAFT} strokeWidth={5} />
     <path d="M200 163 L220 197 M270 163 L250 197" stroke={INK} strokeWidth={4} />
+    <path d="M211 188L185 237M252 188L280 237M218 195L190 231M247 195L276 231" stroke={MUTED} strokeWidth={2} fill="none"/><path d="M172 243l14-17 14 21M263 246l16-20 15 17" fill={FILL} stroke={INK}/><Flow x={235} y={116}/><Sutures x={207} y={163} count={9}/>
     <Label x={175} y={105}>Left atrium</Label><Label x={180} y={245}>Left ventricle</Label>
     <Label x={345} y={155}>Ring / prosthesis</Label><Label x={345} y={175}>at mitral valve</Label>
     <Label x={25} y={310}>Bypass → valve work → de-air → TOE check and separation</Label>
@@ -820,6 +865,7 @@ const PneumonectomyDiagram = () => (
     <path d="M330 55 Q425 70 425 245 Q360 270 300 225 L300 100 Z" fill={FILL} stroke={GRAFT} strokeWidth={3} strokeDasharray="8 5" />
     <path d="M260 25 L260 105 L190 145 M260 105 L330 145" stroke={INK} strokeWidth={9} fill="none" />
     <path d="M295 125 L320 145 M295 170 L320 175" stroke={ART} strokeWidth={5} />
+    <path d="M109 160Q160 150 218 188M149 218L185 168M323 165Q370 143 416 160" fill="none" stroke={MUTED} strokeWidth={2}/><path d="M294 180L329 186" stroke={VEIN} strokeWidth={4}/><Sutures x={300} y={137} count={3}/>
     <Label x={25} y={35}>Patient R / remaining lung</Label><Label x={300} y={285}>Patient L / removed</Label>
     <Label x={35} y={285}>Lung isolation</Label><Label x={25} y={310}>Protect remaining lung; avoid fluid overload; check stump</Label>
   </Shell>
@@ -851,6 +897,7 @@ const VitrectomyDiagram = () => (
     <path d="M290 90 Q395 160 290 230" stroke={ART} strokeWidth={4} fill="none" />
     <path d="M230 30 L250 150 M220 285 L250 180" stroke={GRAFT} strokeWidth={4} />
     <ellipse cx={270} cy={135} rx={40} ry={30} fill="none" stroke={VEIN} strokeWidth={3} strokeDasharray="5 4" />
+    <path d="M175 102Q223 74 276 88M175 218Q228 249 276 232" stroke={MUTED} fill="none"/><path d="M215 83L238 83M213 238L236 238" stroke={INK} strokeWidth={4}/>
     <Label x={25} y={160}>Lens</Label><Label x={355} y={65}>Retina</Label><Label x={25} y={30}>Scleral ports</Label>
     <Label x={375} y={185}>Gas bubble</Label><Label x={25} y={310}>If intraocular gas: no nitrous oxide; follow posture advice</Label>
   </Shell>
@@ -863,6 +910,7 @@ const MicrodiscectomyDiagram = () => (
     <path d="M100 148 L205 148 Q250 165 205 174 L100 174 Z" fill={GRAFT} stroke={INK} strokeWidth={2} />
     <path d="M260 55 L260 145 L315 225" fill="none" stroke={VEIN} strokeWidth={6} />
     <path d="M395 125 L240 163" stroke={ART} strokeWidth={3} strokeDasharray="6 5" />
+    <path d="M211 81L233 94L215 112M211 206L233 219L215 239" stroke={INK} strokeWidth={3} fill="none"/><path d="M277 78V140M272 190L294 207" stroke={MUTED} strokeWidth={2}/>
     <Label x={25} y={30}>Anterior ← local sagittal view → posterior</Label>
     <Label x={300} y={75}>Nerve root</Label><Label x={25} y={290}>Disc fragment removed</Label>
     <Label x={340} y={245}>Posterior access</Label><Label x={25} y={310}>Prone safety → decompression → postoperative neuro check</Label>
@@ -874,6 +922,7 @@ const ManualPlacentaDiagram = () => (
     <path d="M130 65 Q260 10 390 65 Q410 180 300 235 L285 280 L235 280 L220 235 Q110 180 130 65 Z" fill={FILL} stroke={INK} strokeWidth={3} />
     <path d="M165 70 Q260 40 345 70 L335 100 Q260 75 175 100 Z" fill={ART} opacity={0.65} />
     <path d="M260 280 L260 155 L220 100 M260 155 L265 100 M260 155 L300 110" stroke={GRAFT} strokeWidth={12} fill="none" strokeLinecap="round" />
+    <path d="M147 90Q145 174 230 226M373 91Q379 176 289 226" fill="none" stroke={MUTED} strokeWidth={6}/><path d="M184 78L195 91M214 70L224 82M249 66L252 81M279 66L278 83M312 73L302 87" stroke={INK} strokeWidth={1}/>
     <Label x={340} y={125}>Placenta</Label><Label x={30} y={240}>Access via cervix</Label>
     <Label x={30} y={30}>External uterine support</Label><Label x={25} y={310}>Anaesthesia + haemorrhage plan; no plane: stop, senior help</Label>
   </Shell>
@@ -886,6 +935,7 @@ const CleftDiagram = () => (
     <rect x={150} y={215} width={220} height={22} rx={6} fill={MUTED} opacity={0.6} stroke={INK} />
     <path d="M260 300 L260 230" stroke={GRAFT} strokeWidth={9} strokeLinecap="round" />
     <path d="M70 90 L130 120 M450 90 L390 120" stroke={INK} strokeWidth={4} />
+    {[150,178,206,234,286,314,342,370].map(x=><rect key={x} x={x-8} y={82} width={16} height={16} rx={4} fill={FILL} stroke={INK}/>)}<path d="M146 150Q180 107 225 134M293 134Q347 112 374 151" stroke={MUTED} fill="none"/>
     <Label x={280} y={110}>Cleft in palate</Label>
     <Label x={300} y={265}>RAE tube, midline</Label>
     <Label x={105} y={207}>Gag tongue blade</Label>
@@ -901,6 +951,7 @@ const TracheostomyDiagram = () => (
     <path d="M230 20 L230 140" stroke={VEIN} strokeWidth={8} strokeLinecap="round" />
     <path d="M330 170 L260 190 Q235 198 235 240" stroke={GRAFT} strokeWidth={9} fill="none" strokeLinecap="round" />
     <path d="M200 120 Q180 140 200 160" stroke={ART} strokeWidth={4} fill="none" />
+    <ellipse cx={235} cy={222} rx={18} ry={10} fill="none" stroke={VEIN} strokeWidth={2}/><rect x={276} y={177} width={8} height={35} rx={3} fill={FILL} stroke={INK}/>
     <Label x={290} y={70}>Tracheal tube pulled back</Label>
     <Label x={300} y={150}>Tracheostomy tube</Label>
     <Label x={60} y={140}>Thyroid isthmus</Label>
@@ -919,6 +970,7 @@ const NephrectomyDiagram = () => (
     <path d="M178 190 L283 190" stroke={ART} strokeWidth={4} />
     <rect x={243} y={120} width={14} height={60} fill={MUTED} />
     <path d="M232 105 L268 105 M232 200 L268 200" stroke={INK} strokeWidth={4} />
+    <path d="M136 99Q98 119 114 142M96 191Q116 217 149 221" stroke={MUTED} fill="none"/><path d="M139 247L142 289" stroke={GRAFT} strokeWidth={3}/>
     <Label x={60} y={275}>Kidney with tumour</Label>
     <Label x={310} y={60}>Aorta</Label><Label x={310} y={110}>IVC clamps above and below</Label>
     <Label x={310} y={150}>Tumour thrombus in IVC</Label><Label x={310} y={200}>Renal artery tied first</Label>
@@ -933,6 +985,7 @@ const AwakeCraniotomyDiagram = () => (
     <path d="M110 160 L60 160 M290 160 L340 160" stroke={INK} strokeWidth={5} />
     <path d="M200 40 L200 95" stroke={GRAFT} strokeWidth={3} />
     <path d="M300 240 Q360 200 420 240" stroke={MUTED} strokeWidth={3} fill="none" strokeDasharray="6 4" />
+    <path d="M163 101Q175 89 187 109M195 93Q215 100 210 126M218 96Q236 114 233 134" stroke={INK} strokeWidth={1} fill="none"/><path d="M142 187L153 187L157 199M150 219Q175 235 183 214" stroke={MUTED} strokeWidth={2} fill="none"/>
     <Label x={210} y={50}>Stimulation probe</Label><Label x={25} y={145}>Head pins</Label>
     <Label x={300} y={110}>Bone flap over tumour</Label><Label x={330} y={270}>Tented drapes: face visible</Label>
     <Label x={60} y={275}>Scalp block for pins and incision</Label>
@@ -947,6 +1000,7 @@ const ScoliosisDiagram = () => (
     {[60, 100, 140, 180, 220, 260].map((y) => <circle key={y} cx={330} cy={y} r={6} fill={INK} />)}
     <path d="M240 165 L300 165" stroke={INK} strokeWidth={2} /><path d="M290 158 L300 165 L290 172" stroke={INK} fill="none" />
     <path d="M90 35 L90 120" stroke={VEIN} strokeWidth={3} strokeDasharray="5 3" />
+    {[50,90,130,170,210,250,285].map((y,i)=><g key={y} stroke={INK} fill={FILL}><rect x={315} y={y} width={30} height={18} rx={4}/><path d={`M315 ${y+6}l-10 4 10 4M345 ${y+6}l10 4-10 4`}/></g>)}
     <Label x={60} y={170}>Curved spine</Label><Label x={350} y={100}>Pedicle screws</Label>
     <Label x={350} y={200}>Rod: corrected spine</Label><Label x={25} y={20}>Evoked potential monitoring</Label>
     <Label x={25} y={318}>Correction: keep BP and Hb up; TIVA; big blood loss</Label>
@@ -960,6 +1014,7 @@ const LiverTransplantDiagram = () => (
     <path d="M160 300 L160 175" stroke={VEIN} strokeWidth={6} />
     <path d="M230 300 L230 165" stroke={ART} strokeWidth={4} />
     <path d="M130 175 Q120 230 100 260" stroke={GRAFT} strokeWidth={4} fill="none" />
+    <path d="M165 300V192L185 138M230 280V165L253 132" stroke={INK} strokeWidth={1} fill="none"/><Sutures x={186} y={93} count={4}/><Sutures x={146} y={180} count={4}/><Sutures x={217} y={172} count={4}/>
     <Label x={300} y={60}>Inferior vena cava</Label><Label x={300} y={110}>Donor liver</Label>
     <Label x={250} y={260}>Hepatic artery</Label><Label x={20} y={290}>Bile duct</Label><Label x={110} y={315}>Portal vein</Label>
     <Label x={300} y={160}>Reperfusion: low BP, high K⁺</Label>
@@ -974,6 +1029,7 @@ const AdrenalectomyDiagram = () => (
     <path d="M240 115 L340 115" stroke={VEIN} strokeWidth={5} />
     <path d="M300 105 L300 125" stroke={INK} strokeWidth={4} />
     <path d="M345 30 L345 275" stroke={VEIN} strokeWidth={12} opacity={0.8} />
+    <path d="M175 170Q195 190 213 179M175 231Q197 210 213 225" stroke={MUTED} fill="none"/><path d="M166 127Q193 109 228 125" stroke={INK} strokeWidth={1.5} fill="none"/>
     <Label x={30} y={80}>Phaeochromocytoma</Label><Label x={60} y={260}>Kidney</Label>
     <Label x={262} y={145}>Adrenal vein tied</Label><Label x={360} y={200}>IVC</Label>
     <Label x={25} y={300}>Handling: BP surges · vein tied: BP and glucose fall</Label>
@@ -988,6 +1044,7 @@ const FessDiagram = () => (
     <rect x={180} y={80} width={100} height={110} fill={MUTED} opacity={0.35} stroke={INK} />
     <path d="M230 80 L230 290" stroke={INK} strokeWidth={2} />
     <path d="M200 300 L210 120" stroke={GRAFT} strokeWidth={5} />
+    {[[194,99],[210,129],[256,102],[260,154],[196,166]].map(([x,y])=><ellipse key={x+y} cx={x} cy={y} rx={10} ry={14} fill={FILL} stroke={INK}/>)}<path d="M180 87V189M280 87V189" stroke={ART} strokeDasharray="3 3"/><path d="M302 130Q350 167 385 131M75 130Q114 167 151 131" stroke={MUTED} fill="none"/>
     <Label x={140} y={45}>Skull base (CSF leak risk)</Label><Label x={40} y={200}>Orbit</Label>
     <Label x={290} y={210}>Ethmoid sinuses</Label><Label x={60} y={260}>Endoscope via nostril</Label>
     <Label x={25} y={318}>TIVA, head-up, controlled BP for a clear view</Label>
@@ -1017,15 +1074,19 @@ const LaryngectomyDiagram = () => (
 );
 
 const GlossectomyDiagram = () => (
-  <Shell id="op-glossectomy" title="Glossectomy: resection, reconstruction and airway planning" desc="View into the mouth, without a laterality claim. A dashed region represents a possible partial tongue resection, not a required margin or the extent of total glossectomy. A flap may reconstruct a larger defect. Swelling, bleeding and flap bulk can obstruct the postoperative upper airway." h={340}>
-    <path d="M100 85 Q260 30 420 85 L400 220 Q260 285 120 220 Z" fill={FILL} stroke={INK} strokeWidth={3} />
-    <path d="M170 140 Q260 100 350 140 L340 215 Q260 250 180 215 Z" fill={FILL} stroke={INK} strokeWidth={2} />
-    <path d="M260 120 Q310 115 350 140 L340 215 Q295 235 260 232 Z" fill="none" stroke={ART} strokeWidth={3} strokeDasharray="6 4" />
-    <path d="M355 290 L310 220" stroke={GRAFT} strokeWidth={3} />
-    <Label x={25} y={30}>Local mouth view — extent varies</Label>
-    <Label x={30} y={120}>Tongue</Label><Label x={260} y={80}>Dashed: example resection</Label>
-    <Label x={295} y={305}>Flap if required</Label>
-    <Label x={25} y={325}>Agree tracheostomy / delayed extubation before resection</Label>
+  <Shell id="op-glossectomy" title="Glossectomy: tongue resection and reconstructive flap" desc="Local view into the mouth, no patient-side resection inferred. Teeth, palate and tongue are represented. A dashed partial tongue defect is an example, not an oncological margin or a total glossectomy. Stippled flap tissue occupies a possible reconstruction site; extent and airway strategy vary." h={360}>
+    <path d="M100 110Q260 42 420 110L410 218Q260 304 110 218Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M121 109Q260 75 399 109M130 218Q260 274 391 218" fill="none" stroke={MUTED} strokeWidth={9}/>
+    {[150,178,206,234,262,290,318,346,374].map(x=><g key={x} fill={FILL} stroke={INK}><rect x={x-9} y={103} width={18} height={15} rx={4}/><rect x={x-9} y={226} width={18} height={14} rx={4}/></g>)}
+    <path d="M170 170Q188 128 258 141Q337 134 350 173L338 216Q260 262 181 216Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M260 150Q299 135 348 172L336 216Q300 236 260 234Z" fill="url(#op-glossectomy-mesh)" stroke={ART} strokeWidth={2} strokeDasharray="5 4"/>
+    <path d="M250 169Q255 189 250 221" stroke={MUTED} strokeWidth={1.5} fill="none"/>
+    <Sutures x={260} y={162} vertical count={9}/>
+    <Label x={25} y={30}>Open-mouth view: extent varies</Label>
+    <Label x={25} y={156}>Tongue</Label><Leader from={[82,159]} to={[178,188]}/>
+    <Label x={300} y={65}>Example resection</Label><Leader from={[321,72]} to={[325,157]}/>
+    <Label x={305} y={295}>Flap if required</Label><Leader from={[300,286]} to={[296,219]}/>
+    <Label x={25} y={341}>Plan postoperative airway for oedema, bleeding and flap bulk</Label>
   </Shell>
 );
 
@@ -1035,6 +1096,7 @@ const MicrolaryngoscopyDiagram = () => (
     <path d="M205 180 L225 230 L225 290 M295 180 L275 230 L275 290" stroke={INK} strokeWidth={3} fill="none" />
     <path d="M230 35 L240 265" stroke={VEIN} strokeWidth={10} />
     <path d="M205 180 L235 193 M295 180 L265 193" stroke={GRAFT} strokeWidth={6} />
+    {[236,252,268,284].map(y=><path key={y} d={`M225 ${y}q25 7 50 0`} stroke={MUTED} fill="none"/>)}<path d="M163 72V146M337 72V146" stroke={MUTED} strokeWidth={2}/><ellipse cx={242} cy={246} rx={11} ry={7} fill="none" stroke={VEIN} strokeWidth={2}/>
     <Label x={25} y={25}>Suspension laryngoscope</Label>
     <Label x={280} y={60}>Small tube shown</Label><Label x={320} y={195}>Vocal folds</Label>
     <Label x={25} y={245}>Shared field</Label><Label x={295} y={285}>Trachea</Label>
