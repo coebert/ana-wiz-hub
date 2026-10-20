@@ -103,18 +103,24 @@ const EvarDiagram = () => (
 );
 
 const FemPopDiagram = () => (
-  <Shell id="op-fem-pop" title="Femoro-popliteal bypass: graft around an occluded SFA" desc="Local limb view, proximal above. The profunda branches near the groin; a bypass graft joins the common femoral artery to the popliteal artery distal to superficial femoral occlusion. Dashed knee level distinguishes the distal target, not a laterality map." h={350}>
-    <path d="M215 30V80Q220 155 215 220V305M215 80L165 155L150 200M175 143L140 155" stroke={ART} strokeWidth={16} fill="none"/>
-    <path d="M216 125V212" stroke={MUTED} strokeWidth={17}/>
-    <path d="M215 68C320 92 320 250 215 285" stroke={GRAFT} strokeWidth={9} fill="none"/>
-    <Sutures x={202} y={68} count={4}/><Sutures x={202} y={285} count={4}/>
-    <path d="M160 245H320" stroke={MUTED} strokeDasharray="4 5"/>
-    <Label x={25} y={30}>Common femoral</Label><Leader from={[147,33]} to={[207,42]}/>
-    <Label x={25} y={176}>Profunda</Label><Leader from={[96,170]} to={[160,170]}/>
-    <Label x={310} y={150}>Bypass graft</Label><Leader from={[303,155]} to={[293,170]}/>
-    <Label x={315} y={210}>Occluded SFA</Label><Leader from={[310,205]} to={[220,180]}/>
-    <Label x={25} y={249}>Knee level</Label><Label x={270} y={302}>Popliteal join</Label>
-    <Flow x={215} y={310}/><Label x={25} y={340}>Check distal perfusion after clamp release</Label>
+  <Shell id="op-fem-pop" title="Femoro-popliteal bypass: native runoff and graft joins" desc="Local longitudinal limb schematic, proximal above; no patient side implied. A graft joins the common femoral artery to the below-knee popliteal artery beyond superficial femoral occlusion. Profunda flow is preserved. Tibial runoff and two end-to-side joins are shown conceptually; conduit and target level vary." h={410}>
+    <path d="M174 49Q135 125 151 219L172 326M287 49Q326 131 305 219L282 326" fill="none" stroke={MUTED} strokeWidth={2}/>
+    <path d="M220 25V96Q230 173 220 248V322M220 96L172 145L151 202M174 143L137 159" stroke={ART} strokeWidth={14} fill="none"/>
+    <path d="M218 140Q234 181 220 230" stroke={MUTED} strokeWidth={15} fill="none"/>
+    <path d="M217 72C322 107 317 246 222 299" stroke={GRAFT} strokeWidth={11} fill="none"/>
+    <path d="M217 72C322 107 317 246 222 299" stroke={INK} strokeWidth={1} strokeDasharray="3 9" fill="none"/>
+    <path d="M220 322L180 363M220 322L249 351L267 372M247 349L226 371" stroke={ART} strokeWidth={6} fill="none"/>
+    <path d="M164 257H313" stroke={MUTED} strokeDasharray="5 4"/>
+    <Sutures x={210} y={73} count={3}/><Sutures x={213} y={300} count={3}/>
+    <Flow x={279} y={180}/><Flow x={220} y={316}/>
+    <Label x={25} y={28}>Common femoral</Label><Leader from={[145,31]} to={[214,44]}/>
+    <Label x={25} y={108}>Proximal join</Label><Leader from={[115,106]} to={[224,76]}/>
+    <Label x={25} y={198}>Profunda branches</Label><Leader from={[135,190]} to={[156,189]}/>
+    <Label x={332} y={140}>Graft tunnel</Label><Leader from={[326,138]} to={[284,141]}/>
+    <Label x={332} y={207}>Occluded SFA</Label><Leader from={[325,204]} to={[228,186]}/>
+    <Label x={25} y={265}>Knee level</Label><Label x={320} y={305}>Distal popliteal join</Label><Leader from={[313,300]} to={[226,298]}/>
+    <Label x={25} y={363}>Tibial runoff</Label><Leader from={[111,356]} to={[192,350]}/>
+    <Label x={25} y={398}>After release: distal pulses / Doppler, haemostasis and limb perfusion</Label>
   </Shell>
 );
 
@@ -136,22 +142,25 @@ const IvorLewisDiagram = () => (
 );
 
 const RupturedAaaDiagram = () => (
-  <Shell id="op-ruptured-aaa" title="Ruptured AAA: getting proximal control" desc="Aorta with a ruptured aneurysm bleeding into the retroperitoneum. Proximal control is gained either by a supracoeliac clamp at open surgery or by an aortic occlusion balloon passed from the groin before the stent graft is placed.">
-    <rect x={240} y={20} width={40} height={90} fill={ART} rx={6} />
-    <path d="M240 70 L150 60 M280 70 L370 60" stroke={ART} strokeWidth={12} strokeLinecap="round" />
-    <ellipse cx={260} cy={185} rx={62} ry={70} fill={FILL} stroke={ART} strokeWidth={3} />
-    <ellipse cx={330} cy={215} rx={45} ry={30} fill={ART} opacity={0.35}><title>Retroperitoneal haematoma</title></ellipse>
-    <path d="M250 255 L200 305 M270 255 L320 305" stroke={ART} strokeWidth={14} strokeLinecap="round" />
-    <Clamp x={260} y={35} w={60} />
-    <ellipse cx={260} cy={95} rx={14} ry={9} fill={GRAFT}><title>Occlusion balloon</title></ellipse>
-    <path d="M260 104 L260 250 L320 305" stroke={GRAFT} strokeWidth={3} fill="none" strokeDasharray="6 4" />
-    <path d="M305 205l18 6-8 8 16 6" fill="none" stroke={ART} strokeWidth={4}/><path d="M315 215Q349 191 370 212M320 231Q343 259 363 241" stroke={ART} fill="none" opacity={0.4}/>
-    <Label x={300} y={30}>Open: supracoeliac clamp</Label>
-    <Label x={300} y={95}>Or: occlusion balloon</Label>
-    <Label x={300} y={111}>from the groin</Label>
-    <Label x={360} y={260}>Haematoma</Label>
-    <Label x={40} y={160}>Induce only once</Label>
-    <Label x={40} y={176}>surgeon is ready</Label>
+  <Shell id="op-ruptured-aaa" title="Ruptured AAA: alternative routes to proximal control" desc="Local longitudinal aortic schematic, cranial above, not a whole-body projection. A rupture communicates with retroperitoneal haematoma. Open supracoeliac clamping and an endovascular occlusion balloon above the renal arteries are alternatives, shown together only for comparison; neither is a universal target. Definitive graft repair is not depicted." h={420}>
+    <path d="M236 26V155Q182 189 197 262Q209 289 237 305V322L183 370M278 26V155Q332 189 323 256L307 269L310 288L278 306V322L335 370" fill={FILL} stroke={ART} strokeWidth={4}/>
+    <path d="M257 94L168 82M257 123L151 136M236 153L152 165M278 153L364 165" stroke={ART} strokeWidth={8} fill="none"/>
+    <path d="M216 186Q198 224 216 277M301 183Q320 208 303 238" stroke={MUTED} strokeWidth={10} fill="none"/>
+    <path d="M307 252Q365 219 412 266Q447 321 388 350Q332 353 309 287L318 271Z" fill={ART} fillOpacity={0.22} stroke={ART} strokeWidth={1.5}/>
+    <path d="M308 258l14 9-12 9 15 9" stroke={ART} strokeWidth={3} fill="none"/>
+    <Clamp x={257} y={60} w={64}/>
+    <ellipse cx={257} cy={110} rx={18} ry={12} fill={GRAFT} stroke={INK}/>
+    <path d="M257 122V314L330 374" stroke={GRAFT} strokeWidth={3} strokeDasharray="5 4" fill="none"/>
+    <Label x={25} y={28}>Cranial ↑ · alternatives, not simultaneous treatment</Label>
+    <Label x={326} y={60}>Open clamp</Label><Leader from={[319,58]} to={[290,60]}/>
+    <Label x={25} y={85}>Coeliac branch</Label><Leader from={[123,85]} to={[173,83]}/>
+    <Label x={25} y={127}>SMA</Label><Leader from={[61,126]} to={[158,133]}/>
+    <Label x={338} y={111}>Balloon option</Label><Leader from={[332,108]} to={[275,110]}/>
+    <Label x={25} y={175}>Renal branches</Label><Leader from={[127,176]} to={[162,164]}/>
+    <Label x={25} y={240}>Mural thrombus</Label><Leader from={[136,237]} to={[211,242]}/>
+    <Label x={353} y={218}>Rupture</Label><Leader from={[347,217]} to={[312,269]}/>
+    <Label x={353} y={374}>Haematoma</Label><Leader from={[351,364]} to={[384,340]}/>
+    <Label x={25} y={408}>Coordinate induction, haemorrhage resuscitation and proximal control</Label>
   </Shell>
 );
 
@@ -317,37 +326,53 @@ const CaesareanDiagram = () => (
 );
 
 const AvrDiagram = () => (
-  <Shell id="op-avr" title="Aortic valve replacement: annulus and aortotomy" desc="Local longitudinal cutaway of the left ventricular outflow and ascending aorta. A prosthetic valve is sutured at the aortic annulus, below an aortotomy and aortic cross-clamp. Coronary ostia arise above the annulus. This is not a full anterior heart plate." h={350}>
-    <path d="M205 35V160Q130 185 165 260Q210 318 290 270Q330 230 285 170V35" fill={FILL} stroke={INK} strokeWidth={3}/>
-    <path d="M210 40V153M280 40V153" stroke={ART} strokeWidth={9}/>
-    <path d="M205 141L170 130M285 141L320 130" stroke={ART} strokeWidth={6}/>
-    <ellipse cx={245} cy={167} rx={38} ry={12} fill={FILL} stroke={GRAFT} strokeWidth={5}/>
-    <path d="M225 163L235 174M255 163L265 174" stroke={INK} strokeWidth={4}/>
-    <Sutures x={216} y={166} count={9}/><Clamp x={245} y={65} w={90}/>
-    <path d="M205 103Q245 118 285 103" stroke={ART} strokeWidth={3} fill="none" strokeDasharray="5 3"/>
-    <Label x={330} y={44}>Ascending aorta</Label><Label x={340} y={81}>Cross-clamp</Label>
-    <Label x={335} y={112}>Aortotomy</Label><Leader from={[328,108]} to={[283,105]}/>
-    <Label x={30} y={131}>Coronary ostium</Label><Leader from={[147,128]} to={[176,132]}/>
-    <Label x={330} y={184}>Prosthetic valve</Label><Leader from={[323,181]} to={[277,169]}/>
-    <Label x={220} y={250}>LV outflow</Label><Flow x={245} y={200} direction="up"/>
-    <Label x={25} y={335}>De-air and TOE assessment before separation from bypass</Label>
+  <Shell id="op-avr" title="Aortic valve replacement: sewing ring, ostia and LV outflow" desc="Local longitudinal left ventricular outflow and aortic-root cutaway, cranial above; not an anterior whole-heart plate. A representative mechanical bileaflet valve has a sewing ring at the annulus. Coronary ostia lie in root sinuses above it; the aortotomy is below the cross-clamp. Biological prostheses look different. Sutures and vent route are conceptual, not a placement guide." h={410}>
+    <path d="M208 28V125Q187 150 201 182Q123 214 160 301Q208 361 296 309Q332 271 292 187Q310 150 286 125V28" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M213 30V119M281 30V119" stroke={ART} strokeWidth={7}/>
+    <path d="M201 154L164 145M294 154L334 144" stroke={ART} strokeWidth={6}/>
+    <path d="M173 222Q151 282 226 321M304 223Q329 283 271 322" stroke={MUTED} strokeWidth={9} fill="none" opacity={0.5}/>
+    <ellipse cx={247} cy={192} rx={45} ry={14} fill={FILL} stroke={GRAFT} strokeWidth={5}/>
+    <path d="M219 188L236 199M258 188L276 199" stroke={INK} strokeWidth={6}/>
+    {[211,223,235,247,259,271,283].map(x=><Sutures key={x} x={x} y={193} count={1}/>)}
+    <Clamp x={247} y={60} w={90}/>
+    <path d="M209 109Q247 122 284 109" stroke={ART} strokeWidth={3} strokeDasharray="5 4" fill="none"/>
+    <path d="M298 282Q287 278 281 260" stroke={VEIN} strokeWidth={3} fill="none" strokeDasharray="4 3"/>
+    <Flow x={247} y={252} direction="up"/>
+    <Label x={25} y={27}>Local LV outflow cutaway · cranial ↑</Label>
+    <Label x={337} y={58}>Cross-clamp</Label><Leader from={[331,55]} to={[291,60]}/>
+    <Label x={337} y={110}>Aortotomy</Label><Leader from={[329,108]} to={[281,111]}/>
+    <Label x={25} y={144}>Coronary ostium</Label><Leader from={[134,142]} to={[174,146]}/>
+    <Label x={337} y={163}>Root sinus</Label><Leader from={[331,161]} to={[299,169]}/>
+    <Label x={337} y={219}>Valve sewing ring</Label><Leader from={[330,212]} to={[284,195]}/>
+    <Label x={25} y={248}>Bileaflet example</Label><Leader from={[139,241]} to={[230,194]}/>
+    <Label x={335} y={293}>Vent route</Label><Leader from={[329,286]} to={[290,275]}/>
+    <Label x={181} y={355}>Left ventricular outflow</Label>
+    <Label x={25} y={397}>De-air; TOE checks valve motion, leaks, gradient and ventricular function</Label>
   </Shell>
 );
 
 const AnteriorResectionDiagram = () => (
-  <Shell id="op-anterior-resection" title="Anterior resection: segment removal and restored continuity" desc="Two local bowel schematics, before resection on left and after anastomosis on right; these are not a whole-body projection. Sigmoid/rectal tumour is removed and descending colon joined to the rectal stump. Mesenteric vessels are controlled; exact tie level and need for diversion vary." h={340}>
-    <path d="M100 60V140Q100 175 170 186Q210 200 170 239L165 287" stroke={GRAFT} strokeWidth={24} fill="none"/>
-    <path d="M100 143Q100 175 170 186Q210 200 170 239" stroke={ART} strokeWidth={26} fill="none" strokeDasharray="5 4"/>
-    <circle cx={177} cy={202} r={10} fill={ART}/>
-    <path d="M142 149L84 160M197 243L150 228" stroke={INK} strokeWidth={2}/>
-    <path d="M360 60V185Q360 224 383 237V287" stroke={GRAFT} strokeWidth={24} fill="none"/>
-    <Sutures x={367} y={239}/>
-    <path d="M270 178H308M298 170L308 178L298 186" stroke={INK} strokeWidth={2} fill="none"/>
-    <Label x={35} y={30}>Before: resection interval</Label><Label x={315} y={30}>After: colon to rectum</Label>
-    <Label x={28} y={115}>Descending colon</Label><Label x={27} y={273}>Rectal stump</Label>
-    <Label x={213} y={112}>Vessels tied</Label><Leader from={[207,118]} to={[145,155]}/>
-    <Label x={405} y={247}>Join</Label><Leader from={[402,240]} to={[385,239]}/>
-    <Label x={25} y={326}>Check perfusion and join integrity; diverting ileostomy when indicated</Label>
+  <Shell id="op-anterior-resection" title="Anterior resection: mesentery, specimen and anastomosis" desc="Two local bowel schematics: resection interval on viewer's left and reconstructed continuity on viewer's right. No whole-body laterality implied. A sigmoid/rectal tumour and its mesentery are removed, then colon joins the rectal stump. Mesenteric vessel tie level, total mesorectal excision extent and diversion vary with the lesion; dashed boundaries are conceptual, not oncological margins." h={390}>
+    <path d="M83  60 V145Q88 184 153 194Q199 213 166 249L161 320" stroke={GRAFT} strokeWidth={25} fill="none"/>
+    <path d="M100 132L159 171L208 226L183 269L136 250L113 185Z" fill={FILL} stroke={MUTED} strokeDasharray="4 4"/>
+    <path d="M83 143Q87 184 153 194Q199 213 166 249" stroke={ART} strokeWidth={27} strokeDasharray="5 4" fill="none"/>
+    <path d="M177 199Q190 211 177 223L163 221L164 206Z" fill={ART} stroke={INK}/>
+    <path d="M203 130L157 167L121 175M157 167L182 201" stroke={ART} strokeWidth={3} fill="none"/>
+    <path d="M175 148l8 11M170 153l8 11" stroke={INK} strokeWidth={2}/>
+    <path d="M68 133L104 139M149 255L181 263" stroke={INK} strokeWidth={2}/>
+    <path d="M348 60V174Q348 222 374 246V321" stroke={GRAFT} strokeWidth={25} fill="none"/>
+    <path d="M328 65H368M330 104H366M331 143H365M358 277H390M358 308H390" stroke={MUTED} strokeWidth={1}/>
+    <ellipse cx={374} cy={248} rx={14} ry={6} fill="none" stroke={INK} strokeWidth={2}/>
+    <Sutures x={363} y={248} count={4}/>
+    <path d="M246 199H291M282 191L291 199L282 207" stroke={INK} strokeWidth={2} fill="none"/>
+    <Label x={25} y={28}>Resection interval</Label><Label x={307} y={28}>Restored continuity</Label>
+    <Label x={25} y={88}>Colon</Label><Leader from={[65,86]} to={[78,100]}/>
+    <Label x={193} y={107}>Vessel control</Label><Leader from={[209,116]} to={[179,152]}/>
+    <Label x={25} y={228}>Tumour</Label><Leader from={[78,221]} to={[170,215]}/>
+    <Label x={25} y={292}>Mesentery</Label><Leader from={[97,284]} to={[131,239]}/>
+    <Label x={403} y={253}>Join</Label><Leader from={[400,247]} to={[386,248]}/>
+    <Label x={25} y={343}>Rectal stump</Label><Leader from={[119,336]} to={[161,315]}/>
+    <Label x={25} y={377}>Assess perfusion and join integrity; diversion when indicated</Label>
   </Shell>
 );
 
@@ -703,46 +728,67 @@ export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
  * Transplant: anterior view, patient's right = viewer's left.
  * Pituitary: sagittal view, anterior = viewer's left. */
 const CarotidStentDiagram = () => (
-  <Shell id="op-carotid-stent" title="Carotid stenting: crossing and protecting the lesion" desc="Longitudinal local vessel schematic, proximal below and brain above. A catheter crosses the carotid narrowing. A stent supports the lumen; a distal filter is one possible embolic protection method. Other systems use proximal flow reversal. Balloon inflation can provoke bradycardia and hypotension.">
-    <path d="M205 280 L205 40 M255 280 L255 40" stroke={ART} strokeWidth={5} />
-    <path d="M205 170 Q240 140 205 110 M255 170 Q220 140 255 110" stroke={MUTED} strokeWidth={10} fill="none" />
-    <rect x={213} y={100} width={34} height={82} fill="none" stroke={GRAFT} strokeWidth={3} />
-    {[110, 125, 140, 155, 170].map((y) => <path key={y} d={`M213 ${y} L247 ${y + 8}`} stroke={GRAFT} />)}
-    <path d="M230 290 L230 65 L215 80 L245 80 Z" fill="none" stroke={VEIN} strokeWidth={2} />
-    <path d="M214 107l32 14M214 135l32 14M214 163l32 14M214 121l32-14M214 149l32-14M214 177l32-14" fill="none" stroke={GRAFT}/><path d="M215 80L230 94L245 80" stroke={INK} strokeWidth={1} fill="none"/><Flow x={230} y={49} direction="up"/>
-    <Label x={230} y={25} anchor="middle">To brain</Label>
-    <Label x={280} y={75}>Distal protection filter</Label>
-    <Label x={280} y={140}>Stent across plaque</Label>
-    <Label x={280} y={260}>Catheter from access site</Label>
-    <Label x={25} y={315}>Ballooning: watch heart rate, BP and awake neurology</Label>
+  <Shell id="op-carotid-stent" title="Carotid stenting: expanded stent and distal filter" desc="Local longitudinal carotid bifurcation view, brain above and common carotid below; no patient side implied. Expanded stent compresses plaque in the bulb and internal carotid. A distal filter basket on a wire lies beyond the treated segment; proximal flow reversal is an alternative not depicted. This shows the deployed phase, not simultaneous balloon inflation." h={390}>
+    <path d="M208 345V231Q203 182 179 59M248 345V231Q244 168 214 59" stroke={ART} strokeWidth={4} fill="none"/>
+    <path d="M246 231L324 83M221 184L291 64" stroke={ART} strokeWidth={4} fill="none"/>
+    <path d="M209 227Q213 176 194 133L201 133Q226 180 221 227Z M239 229Q233 168 210 131L216 130Q245 178 246 229Z" fill={MUTED} stroke={INK} strokeWidth={1}/>
+    <path d="M219 249Q229 198 203 120L213 118Q242 200 237 249Z" fill="url(#op-carotid-stent-mesh)" stroke={GRAFT} strokeWidth={2}/>
+    <path d="M229 363V250Q232 163 198 80V46" stroke={VEIN} strokeWidth={2} fill="none"/>
+    <path d="M183 79Q198 117 212 79Z" fill="url(#op-carotid-stent-mesh)" stroke={INK} strokeWidth={1.5}/>
+    <ellipse cx={198} cy={79} rx={15} ry={4} fill="none" stroke={INK}/>
+    <Flow x={195} y={45} direction="up"/>
+    <Label x={25} y={29}>Internal carotid → brain</Label><Leader from={[172,31]} to={[184,55]}/>
+    <Label x={321} y={52}>External carotid</Label><Leader from={[317,57]} to={[309,104]}/>
+    <Label x={25} y={115}>Filter basket</Label><Leader from={[112,111]} to={[196,94]}/>
+    <Label x={313} y={160}>Compressed plaque</Label><Leader from={[306,158]} to={[234,186]}/>
+    <Label x={313} y={226}>Expanded stent</Label><Leader from={[306,221]} to={[237,224]}/>
+    <Label x={25} y={300}>Common carotid</Label><Leader from={[138,294]} to={[211,298]}/>
+    <Label x={306} y={327}>Access wire</Label><Leader from={[300,323]} to={[230,333]}/>
+    <Label x={25} y={377}>Ballooning can slow heart rate and lower BP; monitor cerebral function</Label>
   </Shell>
 );
 
 const FemoralEndarterectomyDiagram = () => (
-  <Shell id="op-femoral-endarterectomy" title="Femoral endarterectomy: plaque removal and patch" desc="Local longitudinal view of the common femoral bifurcation. The artery is opened, plaque removed, and a patch widens the closure. Flow continues into profunda and superficial femoral branches. A simultaneous iliac stent is possible in a hybrid procedure.">
-    <path d="M230 30 L230 190 L170 280 M230 190 L300 280" stroke={ART} strokeWidth={20} fill="none" />
-    <path d="M230 80 L230 175" stroke={GRAFT} strokeWidth={10} />
-    <Clamp x={230} y={55} /><Clamp x={180} y={260} /><Clamp x={290} y={260} />
-    <path d="M226 81Q216 119 226 171L234 171Q243 120 234 81Z" fill={FILL} stroke={GRAFT}/><Sutures x={228} y={82} vertical count={13}/><Flow x={230} y={215}/>
-    <Label x={270} y={35}>Common femoral artery</Label>
-    <Label x={270} y={130}>Patch after plaque removal</Label>
-    <Label x={30} y={300}>Profunda branch</Label><Label x={290} y={300}>Superficial femoral branch</Label>
-    <Label x={25} y={315}>Heparin → clamp → clear plaque → patch → check flow</Label>
+  <Shell id="op-femoral-endarterectomy" title="Femoral endarterectomy: patch closure and branch origins" desc="Local longitudinal common femoral bifurcation view, proximal above, no patient side implied. Patch closure spans the opened common femoral artery and bulb, preserving profunda and superficial femoral origins. Two suture lines mark patch edges. Clamps indicate controlled closure before release; plaque removal is an earlier phase, not shown through the closed patch." h={390}>
+    <path d="M212 32V191Q203 224 165 309M250 32V191Q263 224 300 309" fill="none" stroke={ART} strokeWidth={4}/>
+    <path d="M220 208L185 312M242 208L281 312" stroke={ART} strokeWidth={4} fill="none"/>
+    <path d="M225 84Q207 133 217 189Q224 209 238 212Q254 185 246 137L236 84Z" fill={GRAFT} fillOpacity={0.32} stroke={GRAFT} strokeWidth={2}/>
+    <path d="M225 86Q208 143 219 190M236 86Q258 154 237 211" stroke={INK} strokeWidth={1} strokeDasharray="2 5" fill="none"/>
+    <Sutures x={219} y={101} vertical count={13}/><Sutures x={239} y={101} vertical count={13}/>
+    <Clamp x={231} y={57} w={50}/><Clamp x={174} y={281}/><Clamp x={290} y={281}/>
+    <Label x={25} y={28}>Common femoral artery</Label><Leader from={[165,30]} to={[213,42]}/>
+    <Label x={312} y={90}>Proximal control</Label><Leader from={[307,87]} to={[260,57]}/>
+    <Label x={312} y={156}>Patch closure</Label><Leader from={[306,153]} to={[244,153]}/>
+    <Label x={25} y={174}>Suture line</Label><Leader from={[101,170]} to={[215,158]}/>
+    <Label x={25} y={244}>Profunda origin</Label><Leader from={[133,241]} to={[206,231]}/>
+    <Label x={312} y={246}>SFA origin</Label><Leader from={[305,241]} to={[266,240]}/>
+    <Label x={25} y={340}>Profunda runoff</Label><Leader from={[130,331]} to={[174,304]}/>
+    <Label x={307} y={340}>Superficial femoral</Label><Leader from={[301,330]} to={[290,302]}/>
+    <Label x={25} y={377}>Flush and restore flow in the planned sequence; check distal perfusion</Label>
   </Shell>
 );
 
 const KidneyTransplantDiagram = () => (
-  <Shell id="op-kidney-transplant" title="Kidney transplant: iliac vessels and bladder" desc="Anterior schematic of a kidney graft in the patient's right iliac fossa, viewer's left. The graft artery and vein join recipient iliac vessels. The donor ureter joins the bladder. The native kidneys are usually left in place. Reperfusion is a planned anaesthetic checkpoint.">
-    <path d="M100 65 C45 55, 35 160, 100 185 C140 175, 140 140, 110 130 C95 120, 140 90, 100 65 Z" fill={FILL} stroke={INK} strokeWidth={2} />
-    <path d="M195 35 L195 235" stroke={ART} strokeWidth={12} /><path d="M220 35 L220 235" stroke={VEIN} strokeWidth={12} />
-    <path d="M115 115 L195 125" stroke={ART} strokeWidth={5} /><path d="M115 135 L220 150" stroke={VEIN} strokeWidth={5} />
-    <path d="M105 150 C110 230, 170 245, 240 260" stroke={GRAFT} strokeWidth={4} fill="none" />
-    <path d="M230 245 Q275 215 320 245 Q320 295 275 300 Q230 295 230 245 Z" fill={FILL} stroke={INK} />
-    <path d="M68 87Q83 108 91 120M68 155Q85 140 92 135" stroke={MUTED} fill="none"/><Sutures x={188} y={119} count={3}/><Sutures x={212} y={146} count={3}/><Sutures x={231} y={259} count={3}/>
-    <Label x={30} y={30}>Patient's right iliac fossa</Label>
-    <Label x={275} y={90}>Artery and vein joins</Label>
-    <Label x={30} y={235}>Donor ureter</Label><Label x={345} y={270}>Bladder</Label>
-    <Label x={25} y={315}>Before release: check perfusion, potassium and volume status</Label>
+  <Shell id="op-kidney-transplant" title="Kidney transplant: graft hilum and three joins" desc="Anterior local right iliac-fossa schematic, patient's right on viewer's left. The renal graft hilum faces recipient iliac vessels. Donor artery and vein have separate end-to-side joins to recipient external iliac vessels; ureter passes to bladder with a short intramural course. Native kidneys are outside the field and usually retained. Positions and vessel configuration vary." h={390}>
+    <path d="M95 65C41 44 29 137 58 190Q89 221 124 184Q142 163 113 140Q94 130 122 107Q140 85 95 65Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M72 84Q50 122 77 177M85 93Q75 112 95 122M85 166Q76 147 96 137" stroke={MUTED} strokeWidth={2} fill="none"/>
+    <path d="M192 34V282" stroke={ART} strokeWidth={13}/><path d="M222 34V282" stroke={VEIN} strokeWidth={14}/>
+    <path d="M112 121Q155 97 192 121" stroke={ART} strokeWidth={6} fill="none"/>
+    <path d="M113 141Q163 164 222 152" stroke={VEIN} strokeWidth={8} fill="none"/>
+    <path d="M102 145Q99 226 194 272L253 288" stroke={GRAFT} strokeWidth={5} fill="none"/>
+    <path d="M250 263Q284 236 331 266Q344 305 290 333Q244 319 250 263Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M253 288L265 299" stroke={GRAFT} strokeWidth={3}/>
+    <Sutures x={185} y={113} vertical count={3}/><Sutures x={216} y={145} vertical count={3}/><Sutures x={251} y={285} count={3}/>
+    <Flow x={192} y={246}/>
+    <Label x={25} y={27}>Anterior: patient R ← → patient L</Label>
+    <Label x={25} y={50}>Graft kidney</Label><Leader from={[115,53]} to={[91,68]}/>
+    <Label x={285} y={77}>External iliac vessels</Label><Leader from={[279,82]} to={[221,89]}/>
+    <Label x={288} y={126}>Arterial join</Label><Leader from={[282,124]} to={[191,121]}/>
+    <Label x={289} y={188}>Venous join</Label><Leader from={[282,181]} to={[221,152]}/>
+    <Label x={25} y={252}>Donor ureter</Label><Leader from={[115,246]} to={[137,242]}/>
+    <Label x={366} y={292}>Bladder</Label><Leader from={[359,285]} to={[332,284]}/>
+    <Label x={25} y={331}>Ureteric join</Label><Leader from={[116,324]} to={[258,294]}/>
+    <Label x={25} y={377}>Prepare for reperfusion; reassess perfusion, potassium and urine output</Label>
   </Shell>
 );
 
@@ -787,17 +833,21 @@ const PituitaryDiagram = () => (
 );
 
 const PyloromyotomyDiagram = () => (
-  <Shell id="op-pyloromyotomy" title="Pyloromyotomy: splitting the pyloric muscle" desc="Local schematic of the stomach outlet. The thickened pyloric muscle is split lengthways down to the mucosa, which bulges through, leaving the mucosa intact. A gastric tube empties the stomach before induction.">
-    <path d="M60 80 Q40 200 160 220 L230 200 L230 120 L160 90 Q120 60 60 80 Z" fill={FILL} stroke={INK} strokeWidth={2} />
-    <rect x={230} y={115} width={120} height={90} rx={40} fill={GRAFT} opacity={0.5} stroke={INK} />
-    <path d="M250 160 L330 160" stroke={ART} strokeWidth={4} strokeDasharray="6 4" />
-    <path d="M350 150 L460 150 M350 170 L460 170" stroke={INK} strokeWidth={3} />
-    <path d="M95 40 L120 140" stroke={VEIN} strokeWidth={4} />
-    <path d="M251 139Q295 132 331 139M251 182Q295 189 332 182" fill="none" stroke={INK} strokeWidth={2}/><path d="M258 157Q289 145 323 157L323 165Q285 177 258 165Z" fill={FILL} stroke={MUTED}/>
-    <Label x={30} y={30}>Gastric tube: empty before induction</Label>
-    <Label x={60} y={250}>Stomach</Label><Label x={240} y={100}>Thickened pylorus</Label>
-    <Label x={230} y={235}>Muscle split to mucosa</Label><Label x={380} y={140}>Duodenum</Label>
-    <Label x={25} y={300}>Correct alkalosis first; watch for postoperative apnoea</Label>
+  <Shell id="op-pyloromyotomy" title="Pyloromyotomy: split muscle with intact mucosa" desc="Local longitudinal stomach-outlet cutaway, stomach on viewer's left and duodenum on viewer's right, no body laterality claim. Hypertrophied pyloric muscle is split lengthways and separated, allowing intact mucosa to bulge between the edges. The underlying lumen remains continuous. This is an after-splitting schematic, not an incision-depth guide." h={380}>
+    <path d="M70 105Q35 130 62 218Q107 276 191 221L228 206V123L171 115Q135 73 70 105Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M227 120Q292 100 357 124V143Q288 132 229 146Z M229 188Q292 203 357 187V210Q289 231 227 211Z" fill={GRAFT} fillOpacity={0.4} stroke={INK} strokeWidth={2}/>
+    <path d="M229 147Q292 127 357 147V187Q292 207 229 187Z" fill={FILL} stroke={ART} strokeWidth={2}/>
+    <path d="M229 164H445M229 175H445" stroke={MUTED} strokeWidth={2}/>
+    <path d="M357 143H445M357 190H445" stroke={INK} strokeWidth={3}/>
+    <path d="M117 39Q122 99 130 154L111 178" stroke={VEIN} strokeWidth={5} fill="none"/>
+    <path d="M87 129Q70 175 115 213M156 137Q170 165 151 199" stroke={MUTED} strokeWidth={1.5} fill="none"/>
+    <Label x={25} y={28}>Local stomach-outlet cutaway</Label>
+    <Label x={25} y={70}>Gastric tube</Label><Leader from={[117,74]} to={[123,95]}/>
+    <Label x={267} y={68}>Separated muscle edges</Label><Leader from={[290,87]} to={[299,118]}/>
+    <Label x={25} y={284}>Stomach</Label><Leader from={[88,276]} to={[137,231]}/>
+    <Label x={250} y={282}>Intact bulging mucosa</Label><Leader from={[292,267]} to={[290,193]}/>
+    <Label x={383} y={128}>Duodenum</Label><Leader from={[396,133]} to={[411,144]}/>
+    <Label x={25} y={367}>Correct fluid / electrolyte deficits first; decompress stomach before induction</Label>
   </Shell>
 );
 
@@ -995,18 +1045,26 @@ const CleftDiagram = () => (
 );
 
 const TracheostomyDiagram = () => (
-  <Shell id="op-tracheostomy" title="Surgical tracheostomy: the tube exchange" desc="Side view of the neck. The tracheal tube is withdrawn until its tip is just above the opening in the trachea, then the tracheostomy tube is inserted through the opening. Placement is confirmed with capnography before the tracheal tube is removed.">
-    <path d="M200 30 L200 300 M260 30 L260 300" stroke={INK} strokeWidth={3} />
-    {[150, 175, 200, 225, 250, 275].map((y) => <path key={y} d={`M200 ${y} L260 ${y}`} stroke={MUTED} />)}
-    <path d="M230 20 L230 140" stroke={VEIN} strokeWidth={8} strokeLinecap="round" />
-    <path d="M330 170 L260 190 Q235 198 235 240" stroke={GRAFT} strokeWidth={9} fill="none" strokeLinecap="round" />
-    <path d="M200 120 Q180 140 200 160" stroke={ART} strokeWidth={4} fill="none" />
-    <ellipse cx={235} cy={222} rx={18} ry={10} fill="none" stroke={VEIN} strokeWidth={2}/><rect x={276} y={177} width={8} height={35} rx={3} fill={FILL} stroke={INK}/>
-    <Label x={290} y={70}>Tracheal tube pulled back</Label>
-    <Label x={300} y={150}>Tracheostomy tube</Label>
-    <Label x={60} y={140}>Thyroid isthmus</Label>
-    <Label x={290} y={250}>Trachea</Label>
-    <Label x={25} y={318}>Low oxygen, no diathermy at tracheal opening; confirm with capnography</Label>
+  <Shell id="op-tracheostomy" title="Surgical tracheostomy: anterior opening and cuffed tube" desc="Local sagittal neck cutaway, anterior on viewer's left, posterior on viewer's right. The oral tube tip is withdrawn above the anterior tracheal opening before the curved tracheostomy tube is advanced caudally; its cuff lies inside the trachea below the opening. The thyroid isthmus is displaced away from the opening. Tube position is confirmed with capnography before oral-tube removal." h={400}>
+    <path d="M145 45Q155 104 147 165L142 305M336 45V314" stroke={MUTED} strokeWidth={2} fill="none"/>
+    <path d="M202 51V161M202 197V332M280 51V332" stroke={INK} strokeWidth={3} fill="none"/>
+    {[78,102,126,150,216,240,264,288,312].map(y=><path key={y} d={`M203 ${y}H220M265 ${y}H279`} stroke={MUTED} strokeWidth={3}/>)}
+    <path d="M229 29V144" stroke={VEIN} strokeWidth={9}/>
+    <ellipse cx={229} cy={123} rx={12} ry={9} fill="none" stroke={VEIN} strokeWidth={2}/>
+    <path d="M84 180H185Q239 180 241 228V287" stroke={GRAFT} strokeWidth={12} fill="none"/>
+    <path d="M87 180H185Q239 180 241 228V287" stroke={INK} strokeWidth={1} fill="none"/>
+    <ellipse cx={241} cy={257} rx={29} ry={14} fill="none" stroke={GRAFT} strokeWidth={2}/>
+    <rect x={164} y={157} width={9} height={47} rx={3} fill={FILL} stroke={INK}/>
+    <path d="M181 133Q162 117 180 102" stroke={ART} strokeWidth={7} fill="none"/>
+    <Flow x={241} y={305}/>
+    <Label x={25} y={26}>Anterior ← sagittal cutaway → posterior</Label>
+    <Label x={308} y={77}>Oral tube withdrawn</Label><Leader from={[301,80]} to={[232,104]}/>
+    <Label x={25} y={80}>Isthmus displaced</Label><Leader from={[128,90]} to={[174,117]}/>
+    <Label x={25} y={232}>External flange</Label><Leader from={[132,222]} to={[168,198]}/>
+    <Label x={305} y={183}>Tracheal opening</Label><Leader from={[299,177]} to={[202,179]}/>
+    <Label x={306} y={260}>Cuff in trachea</Label><Leader from={[300,254]} to={[269,257]}/>
+    <Label x={25} y={330}>Tracheostomy tube</Label><Leader from={[144,319]} to={[239,283]}/>
+    <Label x={25} y={386}>Agree oxygen / ignition precautions; confirm ventilation with capnography</Label>
   </Shell>
 );
 
@@ -1150,15 +1208,26 @@ const GlossectomyDiagram = () => (
 );
 
 const MicrolaryngoscopyDiagram = () => (
-  <Shell id="op-microlaryngoscopy" title="Microlaryngoscopy: access and ventilation share one space" desc="Local access schematic. A rigid suspension laryngoscope exposes the vocal folds. A small tracheal tube is one ventilation option; specialist tubeless or jet techniques are alternatives, not additions shown here. Jet ventilation requires an unobstructed expiratory route; laser use requires a separate airway-fire plan." h={340}>
-    <path d="M155 65 L155 155 L205 175 M345 65 L345 155 L295 175" stroke={INK} strokeWidth={6} fill="none" />
-    <path d="M205 180 L225 230 L225 290 M295 180 L275 230 L275 290" stroke={INK} strokeWidth={3} fill="none" />
-    <path d="M230 35 L240 265" stroke={VEIN} strokeWidth={10} />
-    <path d="M205 180 L235 193 M295 180 L265 193" stroke={GRAFT} strokeWidth={6} />
-    {[236,252,268,284].map(y=><path key={y} d={`M225 ${y}q25 7 50 0`} stroke={MUTED} fill="none"/>)}<path d="M163 72V146M337 72V146" stroke={MUTED} strokeWidth={2}/><ellipse cx={242} cy={246} rx={11} ry={7} fill="none" stroke={VEIN} strokeWidth={2}/>
-    <Label x={25} y={25}>Suspension laryngoscope</Label>
-    <Label x={280} y={60}>Small tube shown</Label><Label x={320} y={195}>Vocal folds</Label>
-    <Label x={25} y={245}>Shared field</Label><Label x={295} y={285}>Trachea</Label>
-    <Label x={25} y={325}>Jet: free expiration · laser: tube / oxygen / ignition plan</Label>
+  <Shell id="op-microlaryngoscopy" title="Microlaryngoscopy: suspension, folds and a small tube" desc="Local longitudinal access cutaway, mouth above and trachea below, no patient-side mapping. A rigid laryngoscope exposes the glottis and is supported by a suspension arm. A small cuffed tube passes between the vocal folds, with cuff below them. Instrument access is shown beside the tube. Tubeless and jet ventilation are alternatives, not simultaneously illustrated; laser use needs a separate fire plan." h={400}>
+    <path d="M140 76Q251 36 361 76L342 163L302 197M157 90L173 160L203 197" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M171 81L194 183M330 81L307 183" stroke={INK} strokeWidth={7}/>
+    <path d="M165 86L196  80 M310  80 L336 86" stroke={MUTED} strokeWidth={4}/>
+    <path d="M330 93H394V48H443" fill="none" stroke={INK} strokeWidth={5}/>
+    <path d="M443 28V71M425 71H462" stroke={INK} strokeWidth={4}/>
+    <path d="M204 199L226 238V340M303 199L277 238V340" fill="none" stroke={INK} strokeWidth={3}/>
+    <path d="M204 196Q225 193 243 220M304 196Q279 192 258 220" fill="none" stroke={GRAFT} strokeWidth={6}/>
+    <path d="M242 45L250 320" stroke={VEIN} strokeWidth={9}/>
+    <ellipse cx={250} cy={287} rx={20} ry={12} fill="none" stroke={VEIN} strokeWidth={2}/>
+    <path d="M282 67L269 194L276 205" stroke={MUTED} strokeWidth={3} fill="none"/>
+    {[251,275,299,323].map(y=><path key={y} d={`M227 ${y}h9M267 ${y}h9`} stroke={MUTED} strokeWidth={2}/>)}
+    <Label x={25} y={27}>Longitudinal access cutaway · mouth above</Label>
+    <Label x={25} y={115}>Rigid scope</Label><Leader from={[111,113]} to={[178,113]}/>
+    <Label x={345} y={125}>Suspension arm</Label><Leader from={[348,111]} to={[394,92]}/>
+    <Label x={25} y={183}>Small tube</Label><Leader from={[101,180]} to={[246,162]}/>
+    <Label x={343} y={190}>Instrument</Label><Leader from={[337,186]} to={[271,173]}/>
+    <Label x={25} y={245}>Vocal folds</Label><Leader from={[108,237]} to={[227,204]}/>
+    <Label x={333} y={287}>Cuff below glottis</Label><Leader from={[326,281]} to={[269,287]}/>
+    <Label x={306} y={345}>Trachea</Label><Leader from={[299,337]} to={[277,326]}/>
+    <Label x={25} y={386}>Shared field: ventilation plan, unobstructed expiration and fire precautions</Label>
   </Shell>
 );
