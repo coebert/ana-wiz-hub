@@ -77,6 +77,9 @@ describe("operations library", () => {
     ["radical-nephrectomy", "Urology", "nephrectomy"],
     ["awake-craniotomy", "Neurosurgery", "awake-craniotomy"],
     ["scoliosis-correction", "Orthopaedic & Spine", "scoliosis"],
+    ["liver-transplantation", "General & GI", "liver-transplant"],
+    ["adrenalectomy-phaeochromocytoma", "General & GI", "adrenalectomy"],
+    ["endoscopic-sinus-surgery", "ENT & Head and Neck", "fess"],
   ])("retains specialty, stages, per-stage notes and quoted sources for %s", (id, specialty, diagram) => {
     const op = operations.find((entry) => entry.id === id);
     expect(op?.specialty).toBe(specialty);
