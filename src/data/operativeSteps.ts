@@ -16,13 +16,16 @@ export type Specialty =
   | "Obstetric"
   | "Gynaecology"
   | "Breast & Plastics"
-  | "Ophthalmic";
+  | "Ophthalmic"
+  | "Oral & Maxillofacial"
+  | "Paediatric";
 
 export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | "ivor-lewis"
   | "ruptured-aaa" | "aorto-bifem" | "amputation" | "av-fistula" | "cabg" | "vats" | "lap-chole" | "whipple" | "hip-hemi" | "caesarean"
   | "avr" | "anterior-resection" | "laparotomy" | "thr" | "tkr" | "spine" | "craniotomy" | "turp" | "robotic-prostate" | "thyroid" | "tonsil"
   | "tevar" | "sleeve" | "liver" | "cystectomy" | "free-flap" | "hysterectomy" | "breast" | "cataract"
-  | "carotid-stent" | "femoral-endarterectomy" | "kidney-transplant" | "inguinal-hernia" | "appendicectomy" | "pituitary";
+  | "carotid-stent" | "femoral-endarterectomy" | "kidney-transplant" | "inguinal-hernia" | "appendicectomy" | "pituitary"
+  | "pyloromyotomy" | "burr-hole" | "shoulder" | "mandible";
 
 export interface OperativeStep {
   /** What the surgeon does. */
@@ -1009,6 +1012,70 @@ export const operations: Operation[] = [
     ],
     sources: ["RCoA/RCOphth LA 2012"],
   },
+  {
+    id: "pyloromyotomy", name: "Pyloromyotomy (open or laparoscopic)", aka: ["Ramstedt", "pyloric stenosis", "IHPS"],
+    specialty: "Paediatric", diagram: "pyloromyotomy", bloodLossRisk: "Low",
+    summary: "Division of the hypertrophied pyloric muscle down to the mucosa in an infant with hypertrophic pyloric stenosis. A medical, not surgical, emergency: fluid and electrolyte correction comes first.",
+    position: "Supine infant on a warmed table; open right upper quadrant/umbilical incision or laparoscopic ports.",
+    steps: [
+      { step: "Preoperative resuscitation and correction of the hypochloraemic, hypokalaemic metabolic alkalosis.", anaesthetic: "Do not list the infant until electrolytes and acid-base status are corrected per local paediatric criteria; alkalosis is associated with delayed emergence and postoperative apnoea." },
+      { step: "Gastric emptying before induction via nasogastric or orogastric tube (gastric ultrasound may be used to assess the antrum).", anaesthetic: "Aspiration risk is high. Ensure adequate depth and complete neuromuscular block before laryngoscopy; agree the induction technique (rapid sequence or modified) with the team." },
+      { step: "Access to the pylorus (open or laparoscopic) and delivery of the pyloric 'olive'.", anaesthetic: "Laparoscopic insufflation in an infant reduces compliance and can raise end-tidal CO₂; keep the infant warm." },
+      { step: "Longitudinal seromuscular incision and splitting of the muscle until the mucosa bulges; mucosal integrity may be tested with air via the gastric tube.", anaesthetic: "The surgeon may ask for air to be injected down the gastric tube to check for a leak — be ready." },
+      { step: "Closure and local anaesthetic infiltration or block.", anaesthetic: "Analgesia options include rectus sheath block, TAP block or wound infiltration; minimise opioids and extubate fully awake. Monitor for apnoea postoperatively." },
+    ],
+    criticalMoments: ["Induction — regurgitation and aspiration", "Mucosal perforation check", "Emergence and early postoperative period — apnoea"],
+    anaestheticNotes: ["Surgery is never an emergency before metabolic correction.", "Regional or local techniques reduce opioid need in this apnoea-prone age group.", "Exact laboratory targets and induction technique are local-pathway decisions; this summary does not set them."],
+    sources: ["Craig & Deeley Pyloromyotomy 2018"],
+  },
+  {
+    id: "burr-hole-csdh", name: "Burr-hole drainage of chronic subdural haematoma", aka: ["CSDH", "burr holes", "subdural evacuation"],
+    specialty: "Neurosurgery", diagram: "burr-hole", bloodLossRisk: "Low",
+    summary: "One or two burr holes are made over a chronic subdural collection, the membrane is opened, the liquefied haematoma is irrigated out and a drain is usually left. Patients are often elderly and anticoagulated.",
+    position: "Supine with the head turned and supported on a head ring; head-up tilt per surgeon.",
+    steps: [
+      { step: "Preoperative review: neurology, anticoagulant/antiplatelet use and reversal plan, comorbidities.", anaesthetic: "Agree reversal with the neurosurgical and haematology teams. Older patients with frailty and cardiac disease are common." },
+      { step: "Anaesthesia: general anaesthesia or local anaesthesia with or without sedation, depending on patient and surgeon.", anaesthetic: "General anaesthesia allows ventilatory control; local techniques avoid airway instrumentation but require a cooperative, still patient. Avoid hypercapnia and hypotension." },
+      { step: "Scalp incision and burr hole(s); dura and outer membrane opened.", anaesthetic: "Scalp infiltration helps analgesia; the release of a large collection may cause transient haemodynamic change." },
+      { step: "Irrigation of the cavity with warm saline; drain placement (subdural or subperiosteal).", anaesthetic: "Surgeons may request a Valsalva manoeuvre to help expel fluid and air — coordinate with ventilation." },
+      { step: "Closure; postoperative drain management and neurological observation.", anaesthetic: "Plan a smooth emergence with prompt neurological assessment; prevent PONV and screen for delirium." },
+    ],
+    criticalMoments: ["Anticoagulation reversal before incision", "Membrane opening and decompression", "Emergence — neurological reassessment"],
+    anaestheticNotes: ["Choice of anaesthesia depends on neurological status, haematoma size and location and surgical approach.", "Recurrence is common; reoperation patients need the same review.", "Local-versus-general comparisons are largely observational; do not treat them as proof of superiority."],
+    sources: ["Rosenblatt CSDH Anaesthesia 2021", "Ebel Burr Hole 2020"],
+  },
+  {
+    id: "shoulder-arthroscopy", name: "Arthroscopic shoulder surgery (e.g. rotator cuff repair, subacromial decompression)", aka: ["rotator cuff", "shoulder scope", "beach chair"],
+    specialty: "Orthopaedic & Spine", diagram: "shoulder", bloodLossRisk: "Low",
+    summary: "Arthroscopic repair or decompression in the shoulder through several small portals with fluid distension of the joint. Pain can be severe; position carries haemodynamic and cerebral risks.",
+    position: "Beach chair (sitting) or lateral decubitus with arm traction.",
+    steps: [
+      { step: "Regional anaesthesia: interscalene brachial plexus block or a phrenic-sparing alternative (e.g. suprascapular plus axillary nerve blocks).", anaesthetic: "Interscalene block causes ipsilateral phrenic nerve palsy in most patients — caution in respiratory disease. Consider alternatives; check for Horner's, hoarseness and local anaesthetic toxicity." },
+      { step: "Positioning in beach chair or lateral; head secured in neutral.", anaesthetic: "In beach chair, cerebral perfusion pressure is lower than arm BP suggests; correct BP measurement for height difference and avoid hypotension. Protect eyes, neck and pressure points." },
+      { step: "Portal placement and joint distension with irrigation fluid; surgeon may request controlled hypotension for visibility.", anaesthetic: "Agree acceptable BP limits — deliberate hypotension in the sitting position risks cerebral ischaemia. Fluid can extravasate into neck tissues; check airway at the end." },
+      { step: "Repair (anchors, sutures) or decompression; closure of portals.", anaesthetic: "Awake or sedated surgery under block is possible; otherwise GA with a secured airway accessible despite drapes." },
+    ],
+    criticalMoments: ["Block placement — phrenic, vascular and neuraxial complications", "Sitting up — hypotension and cerebral hypoperfusion", "Rebound pain when the block wears off"],
+    anaestheticNotes: ["Integrate preoperative education, regional anaesthesia and multimodal postoperative analgesia.", "Plan for rebound pain on block regression with regular oral analgesia."],
+    sources: ["Hewson Shoulder RA 2019"],
+  },
+  {
+    id: "mandibular-fracture-orif", name: "Open reduction and internal fixation of mandibular fracture", aka: ["jaw fracture", "ORIF mandible", "maxillofacial trauma"],
+    specialty: "Oral & Maxillofacial", diagram: "mandible", bloodLossRisk: "Low",
+    summary: "Fracture fragments are reduced, the teeth placed in correct occlusion, and the bone fixed with miniplates through intraoral (or sometimes external) incisions. The surgeon needs the teeth to meet, which shapes airway choice.",
+    position: "Supine, head ring, shared airway with the surgeon; table often turned 90–180°.",
+    steps: [
+      { step: "Airway assessment: mouth opening (trismus from pain versus mechanical block), bleeding, associated head, cervical spine and midface injuries.", anaesthetic: "Plan the airway jointly. Options include videolaryngoscopy, awake tracheal intubation, nasal intubation, submental intubation or tracheostomy, depending on injuries and occlusion needs." },
+      { step: "Intubation — commonly nasotracheal, so the teeth can be brought together.", anaesthetic: "Nasal intubation is avoided or approached cautiously if there are midface or skull-base fractures. Secure the tube well; throat pack per local safety checks." },
+      { step: "Intermaxillary fixation (temporary or arch bars) to restore occlusion.", anaesthetic: "Once jaws are fixed, there is no oral access to the airway. Know how and who removes the fixation." },
+      { step: "Fracture reduction and miniplate fixation through intraoral incisions; fixation released if not required postoperatively.", anaesthetic: "Ensure haemostasis and remove the throat pack before emergence; suction the pharynx." },
+      { step: "Extubation fully awake, with postoperative airway plan.", anaesthetic: "If the jaws stay wired, wire cutters must accompany the patient and staff must know how to use them. Give antiemetics to reduce vomiting with fixed jaws." },
+    ],
+    criticalMoments: ["Induction and intubation", "Intermaxillary fixation — loss of oral airway access", "Throat pack removal and extubation"],
+    anaestheticNotes: ["Facial trauma may coexist with brain and cervical spine injury.", "Senior anaesthetic input and teamwork are required; direct laryngoscopy may not be the safest option."],
+    related: { label: "Trauma", path: "/clinical/trauma" },
+    sources: ["Harper Maxillofacial Trauma 2023", "Morosan OMFS Emergencies 2012"],
+  },
 ];
 
 export const specialties: Specialty[] = [
@@ -1023,6 +1090,8 @@ export const specialties: Specialty[] = [
   "Gynaecology",
   "Breast & Plastics",
   "Ophthalmic",
+  "Oral & Maxillofacial",
+  "Paediatric",
 ];
 
 /** Case-insensitive match across name, aliases, specialty, summary and all step text. */
