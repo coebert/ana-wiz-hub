@@ -144,6 +144,7 @@ const VivaSession = ({
   const [interim, setInterim] = useState("");
   const [transcript, setTranscript] = useState("");
   const [feedback, setFeedback] = useState<Feedback | null>(null);
+  const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error" | "signin">("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [difficulty, setDifficulty] = useState<Difficulty>("standard");
   const [avoidRepeats, setAvoidRepeats] = useState(true);
@@ -595,10 +596,31 @@ const VivaSession = ({
       return;
     }
     setFeedback(data as Feedback);
+    setSaveState("idle");
     setPhase("feedback");
     // Kick off background prefetch of the next question while user reads feedback.
     void prefetchNext();
   }, [interim, topicTitle, exam, question, prefetchNext]);
+
+  /** Opt-in only: nothing is stored unless the learner presses Save. */
+  const saveAttempt = useCallback(async () => {
+    if (!feedback) return;
+    const { data: auth } = await supabase.auth.getUser();
+    if (!auth.user) { setSaveState("signin"); return; }
+    setSaveState("saving");
+    const { error } = await supabase.from("viva_attempts").insert({
+      user_id: auth.user.id,
+      exam,
+      topic_id: topicId,
+      topic_title: topicTitle,
+      question: question.slice(0, 4000),
+      answer: transcript.slice(0, 20000),
+      score: Math.max(0, Math.min(10, Number(feedback.score) || 0)),
+      verdict: feedback.verdict ?? null,
+      feedback: feedback as unknown as Record<string, unknown>,
+    } as never);
+    setSaveState(error ? "error" : "saved");
+  }, [feedback, exam, topicId, topicTitle, question, transcript]);
 
   const stopListening = () => {
     recognitionRef.current?.stop();
@@ -1009,9 +1031,17 @@ const VivaSession = ({
                 <Target className="h-3.5 w-3.5 mr-1.5" /> Retake with different emphasis
               </Button>
             )}
+            <Button onClick={saveAttempt} variant="outline" size="sm" disabled={saveState === "saving" || saveState === "saved"}>
+              {saveState === "saved" ? "Saved to My viva scores" : saveState === "saving" ? "Saving…" : "Save this attempt"}
+            </Button>
             <Button onClick={fetchQuestion} variant="outline" size="sm">
               <RotateCcw className="h-3.5 w-3.5 mr-1.5" /> Try another question
             </Button>
+          </div>
+          <div className="text-right text-xs">
+            {saveState === "signin" && <span className="text-muted-foreground">Sign in to save attempts. </span>}
+            {saveState === "error" && <span className="text-destructive">Could not save — try again. </span>}
+            <a href="/viva/scores" className="text-primary underline">View my viva scores</a>
           </div>
 
           <VivaRubric
