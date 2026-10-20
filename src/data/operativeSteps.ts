@@ -25,7 +25,9 @@ export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | 
   | "avr" | "anterior-resection" | "laparotomy" | "thr" | "tkr" | "spine" | "craniotomy" | "turp" | "robotic-prostate" | "thyroid" | "tonsil"
   | "tevar" | "sleeve" | "liver" | "cystectomy" | "free-flap" | "hysterectomy" | "breast" | "cataract"
   | "carotid-stent" | "femoral-endarterectomy" | "kidney-transplant" | "inguinal-hernia" | "appendicectomy" | "pituitary"
-  | "pyloromyotomy" | "burr-hole" | "shoulder" | "mandible";
+  | "pyloromyotomy" | "burr-hole" | "shoulder" | "mandible"
+  | "dental" | "circumcision" | "paediatric-hernia" | "mitral" | "pneumonectomy"
+  | "gastric-bypass" | "vitrectomy" | "microdiscectomy" | "manual-placenta";
 
 export interface OperativeStep {
   /** What the surgeon does. */
@@ -53,6 +55,150 @@ export interface Operation {
 }
 
 export const operations: Operation[] = [
+  {
+    id: "paediatric-dental-extractions", name: "Paediatric dental extractions under general anaesthesia", aka: ["dental GA", "children dental clearance"],
+    specialty: "Paediatric", diagram: "dental", bloodLossRisk: "Low",
+    summary: "Removal of diseased teeth, sometimes alongside restorations, during one general anaesthetic. The dental team and anaesthetist share the airway; the extent of treatment is agreed before starting.",
+    position: "Supine with head supported; dental access, tube route and table rotation agreed with the team.",
+    steps: [
+      { step: "Review the dental plan, consent, medical history, fasting and airway; agree recovery and discharge arrangements.", anaesthetic: "Assess age, respiratory illness, obstructive sleep apnoea and comorbidities. Complex or high-risk children need an appropriate paediatric service, not simply a longer routine day-case slot." },
+      { step: "Induce anaesthesia and secure an airway compatible with the dental work; nasal tracheal intubation is common when suitable.", anaesthetic: "The airway is shared and may become inaccessible. Confirm tube position, fixation and the rescue plan; nasal instrumentation can itself cause bleeding." },
+      { step: "Examine the teeth; extract the planned teeth, with local anaesthetic and restorative treatment where indicated.", anaesthetic: "Record all local anaesthetic administered by both teams to avoid cumulative toxicity. Suction blood and debris; communicate before moving the head or applying instruments near the tube." },
+      { step: "Achieve socket haemostasis and clear the mouth; confirm removal of any throat pack used.", anaesthetic: "A throat pack is not automatically required. If used, its insertion and removal must be explicitly recorded and checked; do not rely on a pack to replace airway protection or suction." },
+      { step: "Recover the airway and observe until appropriate for discharge.", anaesthetic: "Anticipate laryngospasm, obstruction, pain, nausea and bleeding. Choose the extubation strategy by aspiration and airway risk; give carers clear bleeding, hydration and analgesia advice." },
+    ],
+    criticalMoments: ["Airway instrumentation and restricted access", "Blood/debris during extraction", "Pack-removal check if used", "Emergence — laryngospasm or obstruction"],
+    anaestheticNotes: ["Blood loss is usually small but must be judged against the child's size and extent of surgery.", "Coordinate multimodal analgesia and antiemetics without duplicating drugs given by the dental team.", "Service guidance supports the care setting; it does not prescribe the extraction technique."],
+    sources: ["RCoA Dental GPAS", "NHS Child Dental GA"],
+  },
+  {
+    id: "paediatric-circumcision", name: "Paediatric circumcision", aka: ["child circumcision", "foreskin excision"],
+    specialty: "Paediatric", diagram: "circumcision", bloodLossRisk: "Low",
+    summary: "Removal of the foreskin for an agreed indication. This entry concerns hospital surgery in children, not neonatal bedside device circumcision; technique and anaesthesia depend on age and clinical circumstances.",
+    position: "Supine, with warming and modesty maintained; local access without excessive leg abduction.",
+    steps: [
+      { step: "Confirm indication, consent and operative plan, including anatomical abnormalities and bleeding history.", anaesthetic: "Assess age, prematurity, respiratory illness and day-case suitability; postoperative respiratory observation is individualised." },
+      { step: "Provide anaesthesia and analgesia: commonly general anaesthesia with a penile/ring block or another agreed regional technique.", anaesthetic: "Selected infants may have spinal anaesthesia in experienced services. Track total local anaesthetic across all injections; a block does not remove the need for respiratory monitoring." },
+      { step: "Prepare the field, release adhesions as required and excise the foreskin using the planned technique.", anaesthetic: "Check that analgesia is adequate before incision. Surgical methods vary; this is not a cutting or block-placement guide." },
+      { step: "Control bleeding, suture skin edges and apply the planned dressing.", anaesthetic: "Persistent bleeding warrants surgical reassessment, even when the expected blood loss is low. Avoid assuming a distressed child only has pain." },
+      { step: "Recover and provide wound, pain and urinary advice.", anaesthetic: "Plan opioid-sparing analgesia; review bleeding and ability to pass urine according to the service's discharge pathway. Former preterm infants may need extended observation." },
+    ],
+    criticalMoments: ["Regional/local injection — cumulative dose", "Incision before block onset", "Bleeding and postoperative urinary problems"],
+    anaestheticNotes: ["General, local and neuraxial approaches are not interchangeable in every child.", "Use age- and risk-appropriate recovery arrangements; no universal discharge time is set here."],
+    sources: ["NHS Child Circumcision", "OpenAnesthesia Infant Spinal"],
+  },
+  {
+    id: "paediatric-inguinal-hernia", name: "Paediatric inguinal hernia repair", aka: ["child herniotomy", "high ligation", "patent processus vaginalis"],
+    specialty: "Paediatric", diagram: "paediatric-hernia", bloodLossRisk: "Low",
+    summary: "Closure of a patent processus vaginalis causing an indirect hernia. Open herniotomy or laparoscopic closure may be used; routine childhood repair usually does not require the mesh reinforcement used in adults.",
+    position: "Supine; open groin exposure or laparoscopic abdominal ports.",
+    steps: [
+      { step: "Confirm side, reducibility, urgency and evidence of incarceration or compromised bowel.", anaesthetic: "An incarcerated hernia can bring dehydration, obstruction and aspiration risk; it is not equivalent to a well elective infant. Assess prematurity and respiratory risk." },
+      { step: "Induce anaesthesia or establish an agreed regional technique in a selected infant.", anaesthetic: "An awake spinal approach can reduce some early respiratory events but does not abolish postoperative apnoea risk; sedation and conversion plans matter." },
+      { step: "Open approach: expose and separate the sac from cord structures. Laparoscopic approach: inspect the internal ring and hernia contents.", anaesthetic: "Maintain warmth. Laparoscopic insufflation affects ventilation and venous return; communicate pressure and positioning concerns rather than applying adult assumptions." },
+      { step: "Reduce contents and close the sac neck/internal ring while protecting adjacent structures.", anaesthetic: "If bowel is compromised, the operation and postoperative needs may expand. Contralateral inspection or repair is an individual surgical decision, not automatic." },
+      { step: "Close and recover with a risk-based respiratory and analgesia plan.", anaesthetic: "Former preterm and young infants may need monitored admission. Observe for apnoea irrespective of apparently uncomplicated surgery or the anaesthetic technique." },
+    ],
+    criticalMoments: ["Incarceration — possible obstruction", "Infant induction or regional conversion", "Pneumoperitoneum if laparoscopic", "Postoperative apnoea risk"],
+    anaestheticNotes: ["Adult hernia guidance and routine mesh repair should not be transferred to infants.", "Regional analgesia and local infiltration can reduce opioid requirements; discharge depends on infant risk and local policy."],
+    sources: ["AAP Inguinal Hernias 2023", "OpenAnesthesia Infant Spinal"],
+  },
+  {
+    id: "mitral-valve-surgery", name: "Mitral valve repair or replacement", aka: ["MVR", "mitral annuloplasty", "minimally invasive mitral"],
+    specialty: "Cardiothoracic", diagram: "mitral", bloodLossRisk: "High",
+    summary: "Repair of native valve leaflets/chordae and often the annulus, or replacement with a prosthesis. Sternotomy and minimally invasive approaches differ; this entry does not cover transcatheter edge-to-edge repair.",
+    position: "Supine for sternotomy; modified supine for right mini-thoracotomy, with peripheral cannulation access if planned.",
+    steps: [
+      { step: "Review lesion, ventricular and right-heart function, pulmonary pressures and the operative approach; establish monitoring and anaesthesia.", anaesthetic: "Mitral stenosis and regurgitation have different haemodynamic priorities. Avoid generic valve targets; assess rhythm, filling and cardiac output using the actual lesion and physiology." },
+      { step: "Expose the heart, anticoagulate and cannulate for cardiopulmonary bypass; clamp the aorta and give cardioplegia.", anaesthetic: "Confirm anticoagulation and bypass readiness. Peripheral cannulation adds limb/vascular risks; minimally invasive work may require lung isolation and makes airway access harder." },
+      { step: "Open the left atrium and repair or replace the valve.", anaesthetic: "Coordinate perfusion, temperature and blood conservation. Repair may use a ring and leaflet/chordal techniques; the chosen repair is not represented by one universal sequence." },
+      { step: "Close, de-air, release the clamp and separate from bypass with transoesophageal echocardiographic assessment.", anaesthetic: "Assess residual regurgitation/gradient, ventricular function and complications such as systolic anterior motion after repair. Troubleshoot low output with the surgeon and perfusionist rather than treating every cause alike." },
+      { step: "Reverse anticoagulation when agreed, achieve haemostasis and transfer to cardiac critical care.", anaesthetic: "Plan bleeding surveillance, rhythm/pacing and ventilatory support. Postoperative antithrombotic treatment depends on repair versus prosthesis, rhythm and the cardiology/surgical plan." },
+    ],
+    criticalMoments: ["Induction in severe valve disease", "Cannulation and anticoagulation", "De-airing and separation from bypass", "Residual valve dysfunction or low output"],
+    anaestheticNotes: ["High bleeding risk reflects bypass and major cardiac surgery, not a predicted transfusion requirement.", "TOE use requires expertise and assessment of contraindications; minimally invasive and sternotomy pathways differ."],
+    sources: ["Minimally Invasive Mitral Review", "EACTS CPB 2024"],
+  },
+  {
+    id: "pneumonectomy", name: "Pneumonectomy", aka: ["whole lung removal", "completion pneumonectomy"],
+    specialty: "Cardiothoracic", diagram: "pneumonectomy", bloodLossRisk: "High",
+    summary: "Removal of an entire lung, usually for malignancy. This is more physiologically demanding than lobectomy; postoperative reserve, right-heart load and protection of the remaining lung dominate planning.",
+    position: "Lateral decubitus with the operative side uppermost; approach may be open or minimally invasive.",
+    steps: [
+      { step: "Confirm resection extent and cardiopulmonary fitness, including predicted postoperative lung function and exercise assessment when indicated.", anaesthetic: "Review right ventricular function, pulmonary hypertension and previous treatment; a completion pneumonectomy can be especially complex. Agree analgesia and postoperative care before induction." },
+      { step: "Induce anaesthesia, establish lung isolation and position laterally.", anaesthetic: "Confirm device position bronchoscopically and recheck after positioning. Protect dependent pressure points and ensure access to the airway and vascular lines." },
+      { step: "Enter the chest and dissect the hilum, dividing pulmonary vessels and the main bronchus in the surgeon's chosen sequence.", anaesthetic: "Anticipate major vascular bleeding and hypoxaemia during one-lung ventilation. Communicate before vessel occlusion; protect the ventilated lung and investigate sudden haemodynamic change." },
+      { step: "Remove the lung and check bronchial stump closure, haemostasis and the surgical drainage plan.", anaesthetic: "Stump tests require coordinated ventilation. Drain management after pneumonectomy is procedure-specific; do not automatically apply lobectomy suction practices." },
+      { step: "Close, restore two-airway communication as appropriate and recover for close respiratory/cardiac surveillance.", anaesthetic: "Use careful, individualised fluid management to avoid both hypoperfusion and remaining-lung oedema. Watch for respiratory deterioration, arrhythmias and right-heart dysfunction." },
+    ],
+    criticalMoments: ["One-lung ventilation — hypoxaemia", "Hilar vessel division — major bleeding", "Bronchial stump and drainage plan", "Remaining-lung injury and postoperative arrhythmia"],
+    anaestheticNotes: ["Avoid fluid overload; a rigid fluid volume is not prescribed by this summary.", "Analgesia must allow effective breathing and coughing without excessive sedation. Planned recovery location reflects physiological risk, not operation name alone."],
+    sources: ["Pneumonectomy Anaesthesia Review", "ERAS Thoracic 2019"],
+  },
+  {
+    id: "roux-en-y-gastric-bypass", name: "Roux-en-Y gastric bypass", aka: ["RYGB", "bariatric bypass"],
+    specialty: "General & GI", diagram: "gastric-bypass", bloodLossRisk: "Moderate",
+    summary: "A small gastric pouch is joined to a Roux limb of jejunum; a second bowel join reunites it with the biliopancreatic limb. The excluded stomach usually remains in situ. This differs from sleeve gastrectomy and one-anastomosis bypass.",
+    position: "Supine, usually head-up during laparoscopy; secure against sliding and protect pressure points.",
+    steps: [
+      { step: "Review bariatric assessment, obstructive sleep apnoea, cardiometabolic disease, airway and thromboprophylaxis plans.", anaesthetic: "Plan preoxygenation, airway equipment and postoperative respiratory support; obesity does not itself justify treating all patients as having identical aspiration or airway risk." },
+      { step: "Induce anaesthesia, position and establish laparoscopic ports/pneumoperitoneum.", anaesthetic: "Rapid desaturation and difficult mask ventilation may occur. Reassess tube position, ventilation and haemodynamics after insufflation and head-up positioning." },
+      { step: "Create the small gastric pouch and divide the jejunum to form the Roux and biliopancreatic limbs.", anaesthetic: "Stapling/dissection can cause bleeding. Coordinate any gastric tube positioning or withdrawal before stapling; prevent accidental incorporation of the tube." },
+      { step: "Construct the gastrojejunostomy and jejunojejunostomy, in the surgeon's chosen order; close relevant mesenteric defects.", anaesthetic: "Maintain stable perfusion and ventilation through a potentially prolonged operation; technique and limb lengths vary and are not prescribed here." },
+      { step: "Check the joins as planned, remove instruments and recover through the bariatric pathway.", anaesthetic: "Use multimodal opioid-sparing analgesia, PONV prevention and risk-based respiratory support. Unexplained tachycardia, pain or deterioration may indicate bleeding or leak and warrants urgent review." },
+    ],
+    criticalMoments: ["Induction — limited oxygen reserve", "Insufflation and head-up", "Stapling near gastric tube", "Postoperative bleeding, leak or respiratory compromise"],
+    anaestheticNotes: ["VTE prevention, early mobilisation and safe nutrition follow the bariatric programme.", "Sleep-apnoea support is individualised; do not replace the patient's established plan with a blanket rule."],
+    sources: ["NHS Roux-en-Y", "Bariatric Anaesthesia Review", "ERAS Bariatric 2022"],
+  },
+  {
+    id: "pars-plana-vitrectomy", name: "Pars plana vitrectomy and retinal repair", aka: ["PPV", "vitreoretinal surgery", "retinal detachment", "intraocular gas"],
+    specialty: "Ophthalmic", diagram: "vitrectomy", bloodLossRisk: "Low",
+    summary: "Removal of vitreous through small scleral ports, followed by treatment of retinal pathology. Laser, membrane peeling and gas or silicone-oil tamponade may be used; external scleral buckling is a different or additional technique.",
+    position: "Supine with head still under ophthalmic drapes; postoperative posture depends on the repair.",
+    steps: [
+      { step: "Confirm eye, indication, previous ocular gas and choice of local/regional anaesthesia with monitored care or general anaesthesia.", anaesthetic: "Assess ability to lie still and tolerate duration/drapes. Check block risks and cardiopulmonary disease; general anaesthesia may be appropriate when cooperation or airway safety is uncertain." },
+      { step: "Prepare the eye and insert pars plana ports with an infusion system.", anaesthetic: "Prevent coughing, movement and straining during intraocular work. Sedation must not compromise ventilation under restricted-access drapes." },
+      { step: "Remove vitreous and perform the indicated retinal repair, such as membrane peeling or laser.", anaesthetic: "Ocular manipulation, particularly accompanying scleral buckle work, can trigger bradycardia. Alert the surgeon, stop the stimulus and assess oxygenation/ventilation before further treatment." },
+      { step: "Use gas or oil tamponade if needed; close the ports.", anaesthetic: "Do not use nitrous oxide when intraocular gas is present: bubble expansion can raise intraocular pressure and cause permanent visual loss. This also applies to later anaesthetics and nitrous-oxide analgesia while gas remains." },
+      { step: "Recover with antiemetic/analgesic treatment and explicit gas/posture instructions.", anaesthetic: "Record the gas and ophthalmic restrictions. Air travel, altitude and future anaesthesia advice lasts until ophthalmology confirms gas resolution, not a universal number of days." },
+    ],
+    criticalMoments: ["Ocular block and immobility", "Oculocardiac reflex", "Gas tamponade — nitrous oxide exclusion", "Postoperative posture and future anaesthesia advice"],
+    anaestheticNotes: ["A Low blood-loss category does not mean low consequence from ocular haemorrhage.", "Gas and silicone oil are not interchangeable; nitrous oxide restrictions specifically concern gas."],
+    sources: ["AAO Vitreoretinal Anaesthesia", "RCOphth Intraocular Gas Safety 2018"],
+  },
+  {
+    id: "lumbar-microdiscectomy", name: "Lumbar microdiscectomy", aka: ["disc prolapse surgery", "lumbar discectomy", "nerve root decompression"],
+    specialty: "Orthopaedic & Spine", diagram: "microdiscectomy", bloodLossRisk: "Low",
+    summary: "Removal of a herniated lumbar disc fragment compressing a nerve root, through open microscopic or minimally invasive access. It is not a spinal fusion; exposure and extent of disc removal vary.",
+    position: "Usually prone on supports that avoid abdominal compression, with eyes and pressure points protected.",
+    steps: [
+      { step: "Confirm symptoms, baseline neurology, level, imaging and consent; identify urgent deficits or cauda equina features.", anaesthetic: "Record neurological deficits before anaesthesia. Agree any neuromonitoring, positioning limitations and postoperative neurological review." },
+      { step: "Provide anaesthesia and turn prone with a secured airway and coordinated team.", anaesthetic: "Recheck tube, ventilation, lines, eyes and pressure areas after turning. The abdomen should not be compressed; prone positioning reduces access for airway rescue." },
+      { step: "Confirm the level with imaging, expose the operative area and perform limited bony/ligamentous access as required.", anaesthetic: "Wrong-level prevention is a team check. Monitor haemodynamics and blood loss; an apparently small operation can still cause a vascular or dural injury." },
+      { step: "Identify/protect the nerve root and remove the compressing fragment under magnification.", anaesthetic: "Communicate unexpected bleeding or physiological change. A dural tear may change the surgical closure and postoperative mobilisation plan." },
+      { step: "Check decompression/haemostasis, close, turn supine and recover.", anaesthetic: "Check limb movement and symptoms against baseline once assessable. New weakness, worsening pain or bladder dysfunction needs urgent surgical assessment rather than attribution to residual anaesthesia." },
+    ],
+    criticalMoments: ["Turning prone — airway/eye/line protection", "Level confirmation", "Disc removal — neural or dural injury", "New postoperative neurological deficit"],
+    anaestheticNotes: ["Multimodal analgesia and early mobilisation are individualised to the procedure and any complication.", "Fusion-specific blood-loss estimates and protocols do not automatically apply to microdiscectomy."],
+    sources: ["UCLH Microdiscectomy", "ASA Visual Loss 2019"],
+  },
+  {
+    id: "manual-removal-placenta", name: "Manual removal of retained placenta", aka: ["MROP", "retained placenta", "manual placental removal"],
+    specialty: "Obstetric", diagram: "manual-placenta", bloodLossRisk: "High",
+    summary: "Manual separation and removal of a retained placenta after vaginal birth under appropriate anaesthesia. Bleeding and haemodynamic state determine urgency; suspected placenta accreta spectrum requires senior obstetric planning, not forced separation.",
+    position: "Lithotomy in theatre, with safe supports and access for haemorrhage resuscitation.",
+    steps: [
+      { step: "Assess retention, blood loss, uterine tone and haemodynamic state; escalate and prepare theatre.", anaesthetic: "Visible bleeding may underestimate total loss. Activate the obstetric haemorrhage pathway when indicated, obtain access and prepare blood products according to the clinical situation." },
+      { step: "Establish regional or general anaesthesia appropriate to urgency, circulating volume and any existing epidural.", anaesthetic: "Neuraxial extension is not automatically safe in major hypovolaemia. General anaesthesia needs an obstetric airway and aspiration-risk plan; communicate the resuscitation priorities." },
+      { step: "Support the uterus externally and pass a hand through the cervix to locate the placental separation plane.", anaesthetic: "Ensure adequate anaesthesia and monitor continuing blood loss; uterine manipulation is painful and may provoke rapid physiological change." },
+      { step: "Separate and remove the placenta if a safe plane exists; assess completeness and uterine cavity.", anaesthetic: "If no plane can be found, stop and seek senior help for possible accreta. Do not force detachment; haemorrhage may escalate and require a different operative strategy." },
+      { step: "Treat uterine atony/haemorrhage, give prophylactic antibiotics per the adopted protocol and arrange recovery.", anaesthetic: "Reassess haemostasis, perfusion, coagulation and analgesia. Uterotonic choice and drug doses follow the local obstetric pathway; continue surveillance for bleeding and infection." },
+    ],
+    criticalMoments: ["Haemorrhage and anaesthetic choice", "Painful uterine exploration", "No separation plane — possible accreta", "Persistent atony or bleeding after removal"],
+    anaestheticNotes: ["High risk describes the potential for major postpartum haemorrhage, not a prediction that every patient will bleed heavily.", "This summary deliberately does not set a universal time-to-removal or drug regimen."],
+    sources: ["NHS Scotland Retained Placenta", "MSF Manual Placenta Removal"],
+  },
   {
     id: "carotid-artery-stenting", name: "Carotid artery stenting", aka: ["CAS", "carotid stent"],
     specialty: "Vascular", diagram: "carotid-stent", bloodLossRisk: "Low",

@@ -545,6 +545,15 @@ const CataractDiagram = () => (
 
 export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
   switch (kind) {
+    case "dental": return <DentalDiagram />;
+    case "circumcision": return <CircumcisionDiagram />;
+    case "paediatric-hernia": return <PaediatricHerniaDiagram />;
+    case "mitral": return <MitralDiagram />;
+    case "pneumonectomy": return <PneumonectomyDiagram />;
+    case "gastric-bypass": return <GastricBypassDiagram />;
+    case "vitrectomy": return <VitrectomyDiagram />;
+    case "microdiscectomy": return <MicrodiscectomyDiagram />;
+    case "manual-placenta": return <ManualPlacentaDiagram />;
     case "carotid-stent": return <CarotidStentDiagram />;
     case "femoral-endarterectomy": return <FemoralEndarterectomyDiagram />;
     case "kidney-transplant": return <KidneyTransplantDiagram />;
@@ -725,5 +734,115 @@ const MandibleDiagram = () => (
     <Label x={270} y={40}>Nasotracheal tube</Label><Label x={340} y={290}>Fracture + miniplate</Label>
     <Label x={170} y={205}>Teeth in occlusion</Label>
     <Label x={25} y={312}>Wired jaws: wire cutters travel with the patient</Label>
+  </Shell>
+);
+
+/* Next-batch drawings are local procedural schematics, not anatomical plates.
+ * Lung: anterior view, patient's right = viewer's left; left pneumonectomy shown.
+ * Eye and spine: sagittal local views, anterior = viewer's left.
+ * Other local schematics make no whole-body laterality claim. */
+const DentalDiagram = () => (
+  <Shell id="op-dental" title="Dental extractions: shared airway and socket haemostasis" desc="Local mouth schematic. A secured nasal tracheal tube leaves the teeth accessible. A tooth is removed from its socket; suction and haemostasis precede emergence. If a throat pack is used, its removal must be confirmed.">
+    <path d="M90 100 Q260 45 430 100 L410 235 Q260 290 110 235 Z" fill={FILL} stroke={INK} strokeWidth={3} />
+    {[150, 200, 250, 350].map((x) => <path key={x} d={`M${x} 175 q-15 -25 -25 0 l5 40 h20 Z`} fill={FILL} stroke={INK} strokeWidth={2} />)}
+    <path d="M285 205 L310 205 M300 160 L300 105 M290 115 L300 105 L310 115" fill="none" stroke={GRAFT} strokeWidth={3} />
+    <path d="M170 30 L180 110 L230 145" fill="none" stroke={VEIN} strokeWidth={6} />
+    <Label x={220} y={35}>Secured tube: nasal route if suitable</Label>
+    <Label x={330} y={130}>Tooth removed</Label><Label x={320} y={225}>Socket haemostasis</Label>
+    <Label x={25} y={310}>Suction → confirm pack removed if used → airway recovery</Label>
+  </Shell>
+);
+
+const CircumcisionDiagram = () => (
+  <Shell id="op-circumcision" title="Circumcision: foreskin excision and closure" desc="Local longitudinal conceptual view. Excess foreskin is removed, leaving the glans exposed. Skin edges are sutured and bleeding controlled. Regional or local analgesia supplements general anaesthesia in many children; this drawing is not a cutting or block-placement guide.">
+    <path d="M75 120 L280 120 Q355 160 280 200 L75 200" fill={FILL} stroke={INK} strokeWidth={3} />
+    <path d="M260 108 Q395 160 260 212" fill="none" stroke={GRAFT} strokeWidth={10} strokeDasharray="7 5" />
+    <path d="M245 115 L245 205" stroke={ART} strokeWidth={3} strokeDasharray="5 5" />
+    <Label x={30} y={65}>Local view: not a cutting guide</Label><Label x={370} y={165}>Glans</Label>
+    <Label x={240} y={245}>Foreskin removed (dashed)</Label><Label x={55} y={245}>Skin closure</Label>
+    <Label x={25} y={310}>Analgesia plan → haemostasis → recovery and voiding advice</Label>
+  </Shell>
+);
+
+const PaediatricHerniaDiagram = () => (
+  <Shell id="op-paediatric-hernia" title="Childhood inguinal hernia: close the patent processus" desc="Local groin schematic, not a laterality map. An open processus vaginalis permits abdominal contents to descend. Contents are reduced and the sac neck closed. Unlike adult mesh repair, routine childhood repair usually does not need mesh.">
+    <path d="M55 100 L205 100 M300 100 L465 100" stroke={INK} strokeWidth={7} />
+    <path d="M220 100 L220 195 Q260 275 300 195 L280 100" fill={FILL} stroke={GRAFT} strokeWidth={3} />
+    <path d="M250 195 L250 65 M240 80 L250 65 L260 80" fill="none" stroke={VEIN} strokeWidth={3} />
+    <path d="M210 120 L290 120" stroke={ART} strokeWidth={5} />
+    <Label x={25} y={55}>Abdominal cavity</Label><Label x={315} y={120}>Close sac neck</Label>
+    <Label x={325} y={210}>Patent processus</Label><Label x={325} y={228}>vaginalis / hernia sac</Label>
+    <Label x={25} y={310}>Reduce contents → close communication; usually no mesh</Label>
+  </Shell>
+);
+
+const MitralDiagram = () => (
+  <Shell id="op-mitral" title="Mitral surgery: repair or replace the valve" desc="Local flow schematic, not an anterior heart plate. Blood passes from the left atrium through the mitral valve to the left ventricle. Repair may use an annuloplasty ring; replacement uses a prosthesis. Cardiopulmonary bypass and cross-clamping permit surgery; transoesophageal echo checks the result after bypass.">
+    <path d="M140 65 Q100 110 145 150 L325 150 Q375 100 325 65 Z" fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M145 180 Q115 270 235 280 Q355 270 325 180 Z" fill={FILL} stroke={INK} strokeWidth={2} />
+    <ellipse cx={235} cy={165} rx={85} ry={16} fill="none" stroke={GRAFT} strokeWidth={5} />
+    <path d="M200 163 L220 197 M270 163 L250 197" stroke={INK} strokeWidth={4} />
+    <Label x={175} y={105}>Left atrium</Label><Label x={180} y={245}>Left ventricle</Label>
+    <Label x={345} y={155}>Ring / prosthesis</Label><Label x={345} y={175}>at mitral valve</Label>
+    <Label x={25} y={310}>Bypass → valve work → de-air → TOE check and separation</Label>
+  </Shell>
+);
+
+const PneumonectomyDiagram = () => (
+  <Shell id="op-pneumonectomy" title="Pneumonectomy: whole-lung resection" desc="Anterior conceptual chest view: patient's right is viewer's left. The left lung, on viewer's right, is shown dashed for removal. The main bronchus and pulmonary vessels are divided. Only the remaining right lung is ventilated during left-sided resection. This is not a hilar dissection map.">
+    <path d="M190 55 Q90 70 90 245 Q155 270 220 225 L220 100 Z" fill={FILL} stroke={INK} strokeWidth={3} />
+    <path d="M330 55 Q425 70 425 245 Q360 270 300 225 L300 100 Z" fill={FILL} stroke={GRAFT} strokeWidth={3} strokeDasharray="8 5" />
+    <path d="M260 25 L260 105 L190 145 M260 105 L330 145" stroke={INK} strokeWidth={9} fill="none" />
+    <path d="M295 125 L320 145 M295 170 L320 175" stroke={ART} strokeWidth={5} />
+    <Label x={25} y={35}>Patient R / remaining lung</Label><Label x={300} y={285}>Patient L / removed</Label>
+    <Label x={35} y={285}>Lung isolation</Label><Label x={25} y={310}>Protect remaining lung; avoid fluid overload; check stump</Label>
+  </Shell>
+);
+
+const GastricBypassDiagram = () => (
+  <Shell id="op-gastric-bypass" title="Roux-en-Y gastric bypass: two bowel joins" desc="Conceptual digestive-flow diagram, not a whole-body projection. A small gastric pouch joins a Roux limb of jejunum. Bile and pancreatic secretions travel from the excluded stomach and duodenum through a separate limb to the jejunojejunostomy. The excluded stomach stays in place.">
+    <path d="M160 25 L160 65" stroke={INK} strokeWidth={10} />
+    <path d="M140 65 Q130 105 180 105 L180 65 Z" fill={FILL} stroke={GRAFT} strokeWidth={3} />
+    <path d="M200 80 Q290 50 310 140 Q290 210 215 165 Z" fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M160 105 L160 240 L330 240 L330 285 M250 170 L250 240" stroke={GRAFT} strokeWidth={10} fill="none" />
+    <circle cx={160} cy={112} r={7} fill={ART} /><circle cx={250} cy={240} r={7} fill={ART} />
+    <Label x={25} y={75}>Small pouch</Label><Label x={325} y={110}>Excluded stomach</Label>
+    <Label x={25} y={175}>Roux limb</Label><Label x={325} y={185}>Biliopancreatic limb</Label>
+    <Label x={270} y={265}>Bowel-to-bowel join</Label><Label x={25} y={310}>Pouch-to-bowel join above; leak and bleeding checks</Label>
+  </Shell>
+);
+
+const VitrectomyDiagram = () => (
+  <Shell id="op-vitrectomy" title="Vitrectomy: retinal repair and tamponade" desc="Local sagittal eye section, anterior on viewer's left. Instruments enter through scleral ports to remove vitreous and treat the retina. Gas or silicone oil may be placed for tamponade; gas bubbles expand with nitrous oxide and reduced ambient pressure.">
+    <path d="M140 120 Q190 35 305 75 Q425 160 305 245 Q190 280 140 200 Q100 160 140 120 Z" fill={FILL} stroke={INK} strokeWidth={3} />
+    <ellipse cx={155} cy={160} rx={15} ry={30} fill="none" stroke={INK} strokeWidth={2} />
+    <path d="M290 90 Q395 160 290 230" stroke={ART} strokeWidth={4} fill="none" />
+    <path d="M230 30 L250 150 M220 285 L250 180" stroke={GRAFT} strokeWidth={4} />
+    <ellipse cx={270} cy={135} rx={40} ry={30} fill="none" stroke={VEIN} strokeWidth={3} strokeDasharray="5 4" />
+    <Label x={25} y={160}>Lens</Label><Label x={355} y={65}>Retina</Label><Label x={25} y={30}>Scleral ports</Label>
+    <Label x={375} y={185}>Gas bubble</Label><Label x={25} y={310}>If intraocular gas: no nitrous oxide; follow posture advice</Label>
+  </Shell>
+);
+
+const MicrodiscectomyDiagram = () => (
+  <Shell id="op-microdiscectomy" title="Lumbar microdiscectomy: decompress the nerve root" desc="Local sagittal lumbar schematic, anterior on viewer's left, posterior on viewer's right. A disc fragment protrudes towards a nerve root. Posterior access removes the compressing fragment; this is not a guide to the extent of bone or disc removal.">
+    <rect x={100} y={60} width={110} height={80} rx={8} fill={FILL} stroke={INK} strokeWidth={2} />
+    <rect x={100} y={180} width={110} height={80} rx={8} fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M100 148 L205 148 Q250 165 205 174 L100 174 Z" fill={GRAFT} stroke={INK} strokeWidth={2} />
+    <path d="M260 55 L260 145 L315 225" fill="none" stroke={VEIN} strokeWidth={6} />
+    <path d="M395 125 L240 163" stroke={ART} strokeWidth={3} strokeDasharray="6 5" />
+    <Label x={25} y={30}>Anterior ← local sagittal view → posterior</Label>
+    <Label x={300} y={75}>Nerve root</Label><Label x={25} y={290}>Disc fragment removed</Label>
+    <Label x={340} y={245}>Posterior access</Label><Label x={25} y={310}>Prone safety → decompression → postoperative neuro check</Label>
+  </Shell>
+);
+
+const ManualPlacentaDiagram = () => (
+  <Shell id="op-manual-placenta" title="Manual removal of retained placenta" desc="Local uterine cross-section. A hand passes through the cervix to separate a retained placenta while the other hand supports the uterus externally. If no safe separation plane exists, stop and seek senior help for possible placenta accreta spectrum; do not force separation.">
+    <path d="M130 65 Q260 10 390 65 Q410 180 300 235 L285 280 L235 280 L220 235 Q110 180 130 65 Z" fill={FILL} stroke={INK} strokeWidth={3} />
+    <path d="M165 70 Q260 40 345 70 L335 100 Q260 75 175 100 Z" fill={ART} opacity={0.65} />
+    <path d="M260 280 L260 155 L220 100 M260 155 L265 100 M260 155 L300 110" stroke={GRAFT} strokeWidth={12} fill="none" strokeLinecap="round" />
+    <Label x={340} y={125}>Placenta</Label><Label x={30} y={240}>Access via cervix</Label>
+    <Label x={30} y={30}>External uterine support</Label><Label x={25} y={310}>Anaesthesia + haemorrhage plan; no plane: stop, senior help</Label>
   </Shell>
 );
