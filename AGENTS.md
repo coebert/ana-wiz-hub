@@ -29,4 +29,5 @@
 
 - Admin learning aggregates require server-checked admin access and account-scoped study-time caches; saved progress is distinct from visitor estimates.
 - Visitor classification is shared; client evidence is not identity; interactions never inflate views. Surveys retain first answers per browser ID with admin-only reads; self-reports never override classification.
-- Viva audio streams PCM via tts-demo, chunked client-side, no artificial deadlines; errors keep text and retry.
+- Viva audio streams PCM via tts-demo, chunked client-side, no artificial deadlines; errors keep retry.
+- Operation summaries live in operativeSteps data; sources must resolve in references.
