@@ -20,7 +20,8 @@ export type Specialty =
 
 export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | "ivor-lewis"
   | "ruptured-aaa" | "aorto-bifem" | "amputation" | "av-fistula" | "cabg" | "vats" | "lap-chole" | "whipple" | "hip-hemi" | "caesarean"
-  | "avr" | "anterior-resection" | "laparotomy" | "thr" | "tkr" | "spine" | "craniotomy" | "turp" | "robotic-prostate" | "thyroid" | "tonsil";
+  | "avr" | "anterior-resection" | "laparotomy" | "thr" | "tkr" | "spine" | "craniotomy" | "turp" | "robotic-prostate" | "thyroid" | "tonsil"
+  | "tevar" | "sleeve" | "liver" | "cystectomy" | "free-flap" | "hysterectomy" | "breast" | "cataract";
 
 export interface OperativeStep {
   /** What the surgeon does. */
@@ -703,6 +704,7 @@ export const operations: Operation[] = [
   // ───────────────────────── Added: further specialties ─────────────────────────
   {
     id: "tevar",
+    diagram: "tevar",
     name: "Thoracic endovascular aortic repair (TEVAR)",
     aka: ["thoracic stent graft", "descending thoracic aneurysm repair"],
     specialty: "Vascular",
@@ -731,6 +733,7 @@ export const operations: Operation[] = [
   },
   {
     id: "sleeve-gastrectomy",
+    diagram: "sleeve",
     name: "Laparoscopic sleeve gastrectomy",
     aka: ["bariatric surgery", "weight-loss surgery"],
     specialty: "General & GI",
@@ -755,6 +758,7 @@ export const operations: Operation[] = [
   },
   {
     id: "liver-resection",
+    diagram: "liver",
     name: "Liver resection (hepatectomy)",
     aka: ["hepatectomy", "hemihepatectomy"],
     specialty: "General & GI",
@@ -778,6 +782,7 @@ export const operations: Operation[] = [
   },
   {
     id: "radical-cystectomy",
+    diagram: "cystectomy",
     name: "Radical cystectomy with ileal conduit",
     aka: ["cystectomy", "urinary diversion"],
     specialty: "Urology",
@@ -799,6 +804,7 @@ export const operations: Operation[] = [
   },
   {
     id: "free-flap-head-neck",
+    diagram: "free-flap",
     name: "Head and neck cancer resection with free flap reconstruction",
     aka: ["free flap", "microvascular reconstruction", "composite resection"],
     specialty: "ENT & Head and Neck",
@@ -822,6 +828,7 @@ export const operations: Operation[] = [
   },
   {
     id: "laparoscopic-hysterectomy",
+    diagram: "hysterectomy",
     name: "Total laparoscopic hysterectomy",
     aka: ["TLH", "hysterectomy"],
     specialty: "Gynaecology",
@@ -843,6 +850,7 @@ export const operations: Operation[] = [
   },
   {
     id: "mastectomy-reconstruction",
+    diagram: "breast",
     name: "Mastectomy with immediate breast reconstruction",
     aka: ["DIEP flap", "breast reconstruction", "implant reconstruction"],
     specialty: "Breast & Plastics",
@@ -864,6 +872,7 @@ export const operations: Operation[] = [
   },
   {
     id: "cataract-surgery",
+    diagram: "cataract",
     name: "Cataract surgery (phacoemulsification)",
     aka: ["phaco", "lens replacement"],
     specialty: "Ophthalmic",
