@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Operations Library: ENT additions
+- [ ] Add laryngectomy, glossectomy and microlaryngoscopy with stages, anaesthetic notes, diagrams and verified sources.
+- [ ] Verify search and rendering; regenerate and upload audit coverage.
+
 ## Operations Library: search bar
 - [x] Add a prominent search box at the top of the operations page, with specialty filters, live match count and Enter-to-open.
 - [x] Keep it pinned while the list is on screen without covering the header bars; test lookup, filtering, clearing and jump-to-first.
