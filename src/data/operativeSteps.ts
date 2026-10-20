@@ -76,7 +76,7 @@ export const operations: Operation[] = [
       "Postoperative blood pressure control matters: hypertension raises the risk of hyperperfusion syndrome (headache, seizures, intracerebral haemorrhage) and haematoma.",
       "Cranial nerve injury (hypoglossal, recurrent laryngeal, marginal mandibular) may affect swallowing or the airway after surgery.",
     ],
-    related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-surgery" },
+    related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-anaesthesia" },
     sources: ["GALA 2008", "ESVS 2023 carotid"],
   },
   {
@@ -110,7 +110,7 @@ export const operations: Operation[] = [
       "Coronary disease is common in this group; perioperative myocardial injury is a leading cause of death.",
       "NICE NG156 recommends offering open repair (rather than EVAR) for unruptured infrarenal aneurysms unless there are anaesthetic or medical contraindications or a hostile abdomen — EVAR has lower early mortality but more long-term reintervention.",
     ],
-    related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-surgery" },
+    related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-anaesthesia" },
     sources: ["NICE NG156", "ESVS 2024 AAA", "EVAR-1 2004"],
   },
   {
@@ -141,7 +141,7 @@ export const operations: Operation[] = [
       "Spinal cord ischaemia is rare with infrarenal EVAR but a recognised risk with more extensive (thoracic or complex) stent grafts.",
       "Hypothermia is less of a problem than with open repair but procedures can be long.",
     ],
-    related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-surgery" },
+    related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-anaesthesia" },
     sources: ["EVAR-1 2004", "NICE NG156", "ESVS 2024 AAA"],
   },
   {
@@ -198,7 +198,7 @@ export const operations: Operation[] = [
       "BASIL-2 found that, for chronic limb-threatening ischaemia needing infrapopliteal revascularisation, a best-endovascular-first strategy gave better amputation-free survival than vein bypass first — so surgical bypass is increasingly selected case by case.",
       "Graft failure in the first hours may need urgent return to theatre.",
     ],
-    related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-surgery" },
+    related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-anaesthesia" },
     sources: ["GVG CLTI 2019", "BASIL-2 2023"],
   },
   {
@@ -221,7 +221,7 @@ export const operations: Operation[] = [
       "Similar planning to open AAA repair including critical care admission.",
       "Endovascular aorto-iliac stenting is now often preferred where anatomy allows.",
     ],
-    related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-surgery" },
+    related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-anaesthesia" },
     sources: ["GVG CLTI 2019"],
   },
   {
@@ -292,7 +292,7 @@ export const operations: Operation[] = [
       "ERAS Cardiac Society guidance supports multimodal opioid-sparing analgesia, glycaemic control and early extubation pathways.",
       "Awareness risk during bypass; use depth-of-anaesthesia monitoring when using total intravenous anaesthesia.",
     ],
-    related: { label: "Cardiac surgery anaesthesia", path: "/clinical/cardiac-surgery" },
+    related: { label: "Cardiac surgery anaesthesia", path: "/clinical/cardiothoracic" },
     sources: ["ERAS Cardiac 2019"],
   },
   {
@@ -315,7 +315,7 @@ export const operations: Operation[] = [
       "Hypotension in severe aortic stenosis reduces coronary perfusion and can spiral into arrest; treat promptly with vasopressor rather than waiting.",
       "Transcatheter (TAVI) is an alternative for many patients, often under sedation.",
     ],
-    related: { label: "Cardiac surgery anaesthesia", path: "/clinical/cardiac-surgery" },
+    related: { label: "Cardiac surgery anaesthesia", path: "/clinical/cardiothoracic" },
     sources: ["ERAS Cardiac 2019"],
   },
   {
@@ -338,7 +338,7 @@ export const operations: Operation[] = [
       "ERAS thoracic guidance supports regional analgesia (paravertebral preferred to epidural for minimally invasive surgery), avoiding fluid overload and early mobilisation.",
       "Preoperative lung function and predicted postoperative values guide risk.",
     ],
-    related: { label: "Thoracic anaesthesia", path: "/clinical/thoracic-anaesthesia" },
+    related: { label: "Thoracic anaesthesia", path: "/clinical/cardiothoracic" },
     sources: ["ERAS Thoracic 2019"],
   },
 
@@ -582,7 +582,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Absorption of irrigation fluid (TURP syndrome)", "Bladder perforation", "Hidden blood loss"],
     anaestheticNotes: ["Check sodium if the resection is long, absorption is suspected, or the patient becomes confused, bradycardic or hypertensive."],
-    related: { label: "Urology anaesthesia", path: "/clinical/urology-anaesthesia" },
+    related: { label: "Urology anaesthesia", path: "/clinical/urological-anaesthesia" },
   },
   {
     id: "robotic-prostatectomy",
@@ -600,7 +600,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Steep head-down positioning", "Patient movement while docked", "Emergency undocking"],
     anaestheticNotes: ["See the robotic surgery note for ventilation, positioning and eye-protection details."],
-    related: { label: "Robotic surgery anaesthesia", path: "/notes/robotic-surgery-anaesthesia" },
+    related: { label: "Robotic surgery anaesthesia", path: "/notes/anaesthesia-for-robotic-surgery-guide" },
   },
 
   // ─────────────────── ENT & Head and Neck ───────────────────
