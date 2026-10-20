@@ -447,8 +447,8 @@ const TkrDiagram = () => (
 const SpineDiagram = () => (
   <Shell id="op-spine" title="Posterior lumbar fusion: paired screws, rods and graft bed" desc="Local posterior lumbar view, cranial above, no patient-side procedure implied. Posterior arches, spinous and transverse processes are shown. Paired pedicle screw heads connect longitudinal rods; posterolateral graft beds lie lateral to the rods. Screw trajectories into vertebral bodies are outside this posterior surface view." h={410}>
     {[72,143,214,285].map(y=><g key={y} fill={FILL} stroke={INK} strokeWidth={2}>
-      <path d={`M210 ${y}Q247 ${y-19}284 ${y}L294 ${y+31}L268 ${y+44}L247 ${y+58}L226 ${y+44}L200 ${y+31}Z`}/>
-      <path d={`M207 ${y+15}l-35 7 29 16M286 ${y+15}l35 7-29 16M232 ${y+16}Q247 ${y+4}262 ${y+16}`} fill="none"/>
+      <path d={`M210 ${y}Q247 ${y-19} 284 ${y}L294 ${y+31}L268 ${y+44}L247 ${y+58}L226 ${y+44}L200 ${y+31}Z`}/>
+      <path d={`M207 ${y+15}l-35 7 29 16M286 ${y+15}l35 7-29 16M232 ${y+16}Q247 ${y+4} 262 ${y+16}`} fill="none"/>
     </g>)}
     <path d="M212 83V318M283 83V318" stroke={GRAFT} strokeWidth={7}/>
     {[88,159,230,301].map(y=><g key={y}><circle cx={212} cy={y} r={8} fill={GRAFT} stroke={INK}/><circle cx={283} cy={y} r={8} fill={GRAFT} stroke={INK}/><path d={`M208 ${y}h8M279 ${y}h8`} stroke={INK}/></g>)}
@@ -1209,7 +1209,7 @@ const AwakeCraniotomyDiagram = () => (
 
     <Label x={25} y={28}>Lateral operative view · face to left</Label>
     <Label x={25} y={91}>Fixation pin</Label><Leader from={[103.0,87]} to={[129,117]}/>
-    <Label x={298} y={45}>Bipolar probe</Label><Leader from={[150,41]} to={[245,89]}/>
+    <Label x={298} y={45}>Bipolar probe</Label><Leader from={[291,41]} to={[245,89]}/>
     <Label x={338} y={153}>Exposed cortex</Label><Leader from={[331,149]} to={[259,138]}/>
     <Label x={25} y={284}>Face / airway access</Label><Leader from={[150,280]} to={[149,220]}/>
     <Label x={317} y={335}>Tented drapes</Label><Leader from={[310,331]} to={[414,250]}/>
@@ -1221,7 +1221,7 @@ const AwakeCraniotomyDiagram = () => (
 const ScoliosisDiagram = () => (
   <Shell id="op-scoliosis" title="Scoliosis correction: segmental fixation and paired rods" desc="Posterior conceptual views, cranial above, no side-specific curve diagnosis implied. The left panel shows a curved vertebral column; the right shows a representative corrected construct with bilateral rods and segmental screw heads. Correction involves translation and derotation, not simple stretching; monitoring and fixation levels vary." h={410}>
     {[61,97,133,169,205,241,277,313].map((y,i)=>{const x=[145,128,124,137,158,174,171,154][i];return <g key={y} transform={`translate(${x} ${y}) rotate(${[-14,-9,3,18,18,3,-12,-14][i]})`} fill={FILL} stroke={INK}><path d="M-19 -12Q0 -19 19 -12L23 9L0 22L-23 9Z"/><path d="M-22 0l-15 5 15 5M22 0l15 5-15 5" fill="none"/></g>})}
-    {[61,97,133,169,205,241,277,313].map(y=><g key={y} fill={FILL} stroke={INK}><path d={`M334 ${y-12}Q355 ${y-20}376 ${y-12}L380 ${y+9}L355 ${y+22}L330 ${y+9}Z`}/><path d={`M334 ${y}l-13 5 13 5M376 ${y}l13 5-13 5`} fill="none"/></g>)}
+    {[61,97,133,169,205,241,277,313].map(y=><g key={y} fill={FILL} stroke={INK}><path d={`M334 ${y-12}Q355 ${y-20} 376 ${y-12}L380 ${y+9}L355 ${y+22}L330 ${y+9}Z`}/><path d={`M334 ${y}l-13 5 13 5M376 ${y}l13 5-13 5`} fill="none"/></g>)}
     <path d="M334  60 V326M376  60 V326" stroke={GRAFT} strokeWidth={5}/>
     {[61,97,133,169,205,241,277,313].map(y=><g key={y} fill={GRAFT} stroke={INK}><circle cx={334} cy={y} r={5}/><circle cx={376} cy={y} r={5}/></g>)}
     <path d="M238 188H283M274 181L283 188L274 195" stroke={INK} strokeWidth={2} fill="none"/>
