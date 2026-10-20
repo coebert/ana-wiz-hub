@@ -932,7 +932,7 @@ const ScoliosisDiagram = () => (
 const LiverTransplantDiagram = () => (
   <Shell id="op-liver-transplant" title="Liver transplant: three phases and reperfusion" desc="Anterior conceptual view. The donor liver is joined to the inferior vena cava, portal vein and hepatic artery, then the bile duct. Removing the clamps lets cold, potassium-rich blood from the graft reach the heart: post-reperfusion syndrome.">
     <path d="M90 90 Q150 50 260 70 Q300 90 280 150 Q200 200 100 170 Q60 140 90 90 Z" fill={FILL} stroke={INK} strokeWidth={2} />
-    <path d="M200 20 L200 300" stroke={VEIN} strokeWidth={12} opacity={0.8} />
+    <path d="M200 45 L200 300" stroke={VEIN} strokeWidth={12} opacity={0.8} />
     <path d="M160 300 L160 175" stroke={VEIN} strokeWidth={6} />
     <path d="M230 300 L230 165" stroke={ART} strokeWidth={4} />
     <path d="M130 175 Q120 230 100 260" stroke={GRAFT} strokeWidth={4} fill="none" />
@@ -947,11 +947,11 @@ const AdrenalectomyDiagram = () => (
   <Shell id="op-adrenalectomy" title="Adrenalectomy for phaeochromocytoma" desc="Conceptual view of the kidney with the adrenal tumour on top. Handling the tumour releases catecholamines and causes hypertension. Once the adrenal vein is tied the catecholamine supply stops and blood pressure can fall.">
     <ellipse cx={200} cy={210} rx={55} ry={80} fill={FILL} stroke={INK} strokeWidth={2} />
     <path d="M160 130 Q200 70 240 130 Z" fill={ART} opacity={0.4} stroke={INK} />
-    <path d="M240 115 L320 115" stroke={VEIN} strokeWidth={5} />
+    <path d="M240 115 L340 115" stroke={VEIN} strokeWidth={5} />
     <path d="M300 105 L300 125" stroke={INK} strokeWidth={4} />
-    <path d="M330 30 L330 300" stroke={VEIN} strokeWidth={12} opacity={0.8} />
+    <path d="M345 30 L345 275" stroke={VEIN} strokeWidth={12} opacity={0.8} />
     <Label x={30} y={80}>Phaeochromocytoma</Label><Label x={60} y={260}>Kidney</Label>
-    <Label x={240} y={90}>Adrenal vein tied</Label><Label x={345} y={200}>IVC</Label>
+    <Label x={262} y={145}>Adrenal vein tied</Label><Label x={360} y={200}>IVC</Label>
     <Label x={25} y={300}>Handling: BP surges · vein tied: BP and glucose fall</Label>
   </Shell>
 );
