@@ -87,6 +87,7 @@
     "d3-geo": "3",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.6.0",
+    "eventsource-parser": "^4.1.2",
     "fflate": "^0.8.3",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.462.0",
