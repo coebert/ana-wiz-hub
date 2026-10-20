@@ -295,19 +295,27 @@ const WhippleDiagram = () => (
   </Shell>
 );
 
+/* Local coronal hip cutaway, proximal above, no patient side implied. */
 const HipHemiDiagram = () => (
-  <Shell id="op-hip-hemi" title="Hemiarthroplasty for hip fracture" desc="Femoral neck fracture with the head removed and replaced by a metal prosthetic head on a stem in the femoral canal. Cementing the stem can trigger bone cement implantation syndrome.">
-    <path d="M250 300 L250 150 L190 90" stroke={FILL} strokeWidth={50} fill="none" strokeLinecap="round" />
-    <circle cx={180} cy={80} r={34} fill={MUTED} opacity={0.6} />
-    <path d="M250 290 L250 150 L195 95" stroke={GRAFT} strokeWidth={12} fill="none" strokeLinecap="round" />
-    <circle cx={185} cy={85} r={26} fill={GRAFT} opacity={0.8}><title>Prosthetic head</title></circle>
-    <path d="M200 125 L235 105" stroke={ART} strokeWidth={3} strokeDasharray="5 4" />
-    <path d="M138 49Q179 13 211 59M146 62Q181 26 210 66" stroke={INK} strokeWidth={3} fill="none"/><path d="M228 171V279M271 169V280" stroke={MUTED} strokeWidth={2}/>
-    <Label x={60} y={40}>Prosthetic head in socket</Label>
-    <Label x={60} y={150}>Old fracture line</Label>
-    <Label x={280} y={220}>Cemented stem:</Label>
-    <Label x={280} y={236}>watch for low BP and</Label>
-    <Label x={280} y={252}>oxygen drop on cementing</Label>
+  <Shell id="op-hip-hemi" title="Hip hemiarthroplasty: native socket and cemented stem" desc="Local coronal hip cutaway, proximal above, no patient side implied. The prosthetic head articulates with retained native acetabular cartilage. The femoral neck is resected and a representative cemented stem sits in the medullary canal with a cement mantle and distal restrictor. Uncemented and bipolar designs differ; no residual fracture is depicted through the implant." h={410}>
+    <path d="M157 46Q116 93 146 134Q168 163 198 143" stroke={INK} strokeWidth={16} fill="none"/>
+    <path d="M165 59Q130 94 156 127Q172 145 194 132" stroke={VEIN} strokeWidth={4} fill="none"/>
+    <path d="M212 135L252 154L285 128L309 171V350H245V188L203 163Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M264 181H291V337H260V203L223 157L233 145Z" fill={FILL} stroke={MUTED} strokeWidth={2}/>
+    <path d="M275 330V188L208 121" stroke={GRAFT} strokeWidth={15} fill="none"/>
+    <circle cx={183} cy={104} r={30} fill={GRAFT} stroke={INK} strokeWidth={2}/>
+    <path d="M204 145L244 171" stroke={ART} strokeWidth={2} strokeDasharray="4 3"/>
+    <path d="M260 340H291" stroke={INK} strokeWidth={6}/>
+    <path d="M249 213V331M305 211V333" stroke={MUTED} strokeWidth={1}/>
+
+    <Label x={25} y={28}>Local hip cutaway</Label>
+    <Label x={25} y={83}>Native cartilage</Label><Leader from={[129.0,79]} to={[149,94]}/>
+    <Label x={332} y={91}>Prosthetic head</Label><Leader from={[325,87]} to={[211,99]}/>
+    <Label x={25} y={190}>Neck resection</Label><Leader from={[116.0,186]} to={[226,159]}/>
+    <Label x={330} y={225}>Femoral stem</Label><Leader from={[323,221]} to={[276,229]}/>
+    <Label x={25} y={270}>Cement mantle</Label><Leader from={[109.5,266]} to={[261,267]}/>
+    <Label x={333} y={340}>Distal restrictor</Label><Leader from={[326,336]} to={[289,340]}/>
+    <Label x={25} y={397}>Coordinate canal preparation, cementing and stem insertion; watch BP and oxygenation</Label>
   </Shell>
 );
 
@@ -389,100 +397,144 @@ const LaparotomyDiagram = () => (
   </Shell>
 );
 
+/* Local coronal hip cutaway, proximal above, no patient side implied. */
 const ThrDiagram = () => (
-  <Shell id="op-thr" title="Total hip replacement" desc="Both sides of the hip joint replaced: a cup in the acetabulum of the pelvis and a stem with a ball in the femur. Patient lies on the side. Cemented components can cause bone cement implantation syndrome.">
-    <path d="M90 60 C150 40, 230 50, 260 110" stroke={FILL} strokeWidth={40} fill="none" strokeLinecap="round" />
-    <path d="M180 110 A34 34 0 0 1 248 110" stroke={VEIN} strokeWidth={8} fill="none" />
-    <circle cx={214} cy={112} r={24} fill={GRAFT} />
-    <path d="M300 300 L300 160 L225 120" stroke={FILL} strokeWidth={46} fill="none" strokeLinecap="round" />
-    <path d="M300 290 L300 160 L230 122" stroke={GRAFT} strokeWidth={12} fill="none" strokeLinecap="round" />
-    <path d="M258 184V281M320 184V281" fill="none" stroke={MUTED} strokeWidth={2}/><path d="M161 107A53 53 0 0 1 267 107" stroke={INK} strokeWidth={2} fill="none"/>
-    <Label x={40} y={30}>Pelvis</Label>
-    <Label x={60} y={150}>Cup in socket (blue)</Label>
-    <Label x={330} y={160}>Ball on femoral stem</Label>
-    <Label x={330} y={240}>Cementing: watch BP</Label>
-    <Label x={330} y={256}>and oxygen saturation</Label>
+  <Shell id="op-thr" title="Total hip replacement: cup, liner and femoral component" desc="Local coronal hip cutaway, proximal above, no patient side implied. Acetabular shell and liner replace the socket surface; a prosthetic head connects to the femoral stem in the prepared canal. Representative uncemented components are shown. Cemented and hybrid fixation, approach and patient position vary." h={410}>
+    <path d="M150 47Q102 91 141 146Q161 174 203 142" stroke={INK} strokeWidth={18} fill="none"/>
+    <path d="M157 60Q120 96 150 136Q170 157 197 136" stroke={GRAFT} strokeWidth={9} fill="none"/>
+    <path d="M161 68Q131 98 155 129Q172 144 193 130" stroke={VEIN} strokeWidth={5} fill="none"/>
+    <path d="M218 140L252 158L284 129L308 174V351H246V189L208 167Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M280 337L286 190L215 121L206 132L267 199L268 337Z" fill={GRAFT} stroke={INK} strokeWidth={1}/>
+    <circle cx={183} cy={106} r={27} fill={GRAFT} stroke={INK} strokeWidth={2}/>
+    <path d="M266 208l19 8M266 220l18 8M266 232l18 8M267 244l17 8M267 256l16 8" stroke={MUTED} strokeWidth={1}/>
+    <path d="M250 211V339M303 213V339" stroke={MUTED} strokeWidth={1}/>
+
+    <Label x={25} y={28}>Local hip cutaway</Label>
+    <Label x={25} y={88}>Acetabular shell</Label><Leader from={[129.0,84]} to={[130,101]}/>
+    <Label x={25} y={161}>Bearing liner</Label><Leader from={[109.5,157]} to={[152,124]}/>
+    <Label x={328} y={87}>Prosthetic head</Label><Leader from={[321,83]} to={[205,97]}/>
+    <Label x={328} y={173}>Neck / taper</Label><Leader from={[321,169]} to={[237,152]}/>
+    <Label x={25} y={256}>Prepared canal</Label><Leader from={[116.0,252]} to={[254,257]}/>
+    <Label x={330} y={289}>Femoral stem</Label><Leader from={[323,285]} to={[277,276]}/>
+    <Label x={25} y={397}>Fixation varies; anticipate blood loss and coordinate cementing when used</Label>
   </Shell>
 );
 
+/* Local coronal knee cutaway, proximal above, no patient side implied. */
 const TkrDiagram = () => (
-  <Shell id="op-tkr" title="Total knee replacement" desc="Knee with metal components on the end of the femur and top of the tibia, a plastic spacer between them. A thigh tourniquet is usually inflated; adductor canal block and periarticular infiltration help mobilisation.">
-    <path d="M260 20 L260 140" stroke={FILL} strokeWidth={60} strokeLinecap="round" />
-    <path d="M260 180 L260 305" stroke={FILL} strokeWidth={56} strokeLinecap="round" />
-    <rect x={225} y={130} width={70} height={18} rx={8} fill={GRAFT} />
-    <rect x={228} y={152} width={64} height={10} fill={MUTED} />
-    <rect x={225} y={166} width={70} height={14} rx={4} fill={GRAFT} />
-    <rect x={225} y={50} width={70} height={14} fill={INK}><title>Tourniquet</title></rect>
-    <path d="M235 24V112Q225 135 242 137M285 24V112Q294 135 278 137M240 205V301M280 205V301" stroke={INK} strokeWidth={2} fill="none"/><path d="M293 195L309 300" stroke={MUTED} strokeWidth={4}/><path d="M214 139Q195 156 215 174" fill={FILL} stroke={INK}/>
-    <Label x={310} y={60}>Thigh tourniquet</Label>
-    <Label x={310} y={140}>Femoral component</Label>
-    <Label x={310} y={160}>Plastic spacer</Label>
-    <Label x={310} y={180}>Tibial component</Label>
-    <Label x={30} y={240}>Adductor canal block</Label>
-    <Label x={30} y={256}>spares quadriceps</Label>
+  <Shell id="op-tkr" title="Total knee replacement: contoured surfaces and insert" desc="Local coronal knee cutaway, proximal above, no patient side implied. Metal femoral condyles articulate with a polyethylene insert supported by a tibial tray and keel. Bone cut surfaces, tibia and fibula are shown schematically. Patella is outside this projection; resurfacing, fixation and tourniquet use vary." h={410}>
+    <path d="M214 51V154Q182 179 199 211Q218 230 247 206Q275 233 294 211Q313 180 282 154V51Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M201 181Q197 211 220 216L247 200L275 216Q299 211 295 181L280 172H215Z" fill={GRAFT} stroke={INK} strokeWidth={2}/>
+    <path d="M203 226Q225 221 247 230Q271 220 294 226V240H203Z" fill={FILL} stroke={VEIN} strokeWidth={2}/>
+    <path d="M204 251H292L284 343H215Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M202 243H294V253H257V278H240V253H202Z" fill={GRAFT} stroke={INK}/>
+    <path d="M312 265L321 344" stroke={MUTED} strokeWidth={7}/>
+    <path d="M220 58V151M277 58V151M221 282V334M278 282V334" stroke={MUTED} strokeWidth={1}/>
+    <path d="M215 170H281" stroke={ART} strokeDasharray="4 3"/>
+
+    <Label x={25} y={28}>Local knee cutaway</Label>
+    <Label x={25} y={106}>Femur</Label><Leader from={[57.5,102]} to={[215,110]}/>
+    <Label x={333} y={182}>Femoral component</Label><Leader from={[326,178]} to={[290,194]}/>
+    <Label x={25} y={241}>Polyethylene insert</Label><Leader from={[148.5,237]} to={[214,233]}/>
+    <Label x={333} y={254}>Tibial tray / keel</Label><Leader from={[326,250]} to={[256,269]}/>
+    <Label x={25} y={317}>Tibia</Label><Leader from={[57.5,313]} to={[218,307]}/>
+    <Label x={349} y={333}>Fibula</Label><Leader from={[342,329]} to={[319,331]}/>
+    <Label x={25} y={397}>Tourniquet and fixation vary; coordinate blood-loss, analgesia and mobilisation plans</Label>
   </Shell>
 );
 
+/* Local posterior lumbar view, cranial above, no patient-side procedure implied. */
 const SpineDiagram = () => (
-  <Shell id="op-spine" title="Posterior lumbar spinal fusion: prone position" desc="Patient prone on a frame with the abdomen hanging free, reducing venous pressure and bleeding. Pedicle screws and rods fix the vertebrae. Pressure points and eyes must be protected.">
-    {[60, 120, 180, 240].map((y) => <rect key={y} x={220} y={y} width={80} height={42} rx={8} fill={FILL} stroke={INK} />)}
-    {[80, 140, 200, 260].map((y) => <g key={y}><circle cx={235} cy={y} r={6} fill={GRAFT} /><circle cx={285} cy={y} r={6} fill={GRAFT} /></g>)}
-    <path d="M235 80 L235 260 M285 80 L285 260" stroke={GRAFT} strokeWidth={5} />
-    {[60,120,180,240].map(y=><g key={y} fill={FILL} stroke={INK}><path d={`M220 ${y+15}l-22 8 22 10M300 ${y+15}l22 8-22 10M250 ${y+42}l10 10 10-10`}/><path d={`M243 ${y+28}Q260 ${y+6}277 ${y+28}`} fill="none"/></g>)}
-    <Label x={320} y={90}>Pedicle screws</Label>
-    <Label x={320} y={110}>joined by rods</Label>
-    <Label x={30} y={150}>Prone, abdomen free</Label>
-    <Label x={30} y={166}>(less venous bleeding)</Label>
-    <Label x={30} y={220}>Protect eyes, face,</Label>
-    <Label x={30} y={236}>breasts, genitals</Label>
-    <Label x={320} y={230}>Neuromonitoring may</Label>
-    <Label x={320} y={246}>limit muscle relaxant</Label>
+  <Shell id="op-spine" title="Posterior lumbar fusion: paired screws, rods and graft bed" desc="Local posterior lumbar view, cranial above, no patient-side procedure implied. Posterior arches, spinous and transverse processes are shown. Paired pedicle screw heads connect longitudinal rods; posterolateral graft beds lie lateral to the rods. Screw trajectories into vertebral bodies are outside this posterior surface view." h={410}>
+    {[72,143,214,285].map(y=><g key={y} fill={FILL} stroke={INK} strokeWidth={2}>
+      <path d={`M210 ${y}Q247 ${y-19}284 ${y}L294 ${y+31}L268 ${y+44}L247 ${y+58}L226 ${y+44}L200 ${y+31}Z`}/>
+      <path d={`M207 ${y+15}l-35 7 29 16M286 ${y+15}l35 7-29 16M232 ${y+16}Q247 ${y+4}262 ${y+16}`} fill="none"/>
+    </g>)}
+    <path d="M212 83V318M283 83V318" stroke={GRAFT} strokeWidth={7}/>
+    {[88,159,230,301].map(y=><g key={y}><circle cx={212} cy={y} r={8} fill={GRAFT} stroke={INK}/><circle cx={283} cy={y} r={8} fill={GRAFT} stroke={INK}/><path d={`M208 ${y}h8M279 ${y}h8`} stroke={INK}/></g>)}
+    <path d="M183 93Q172 183 184 309M312 93Q322 183 311 309" stroke={MUTED} strokeWidth={9} strokeDasharray="3 5" fill="none"/>
+    <path d="M247 43V352" stroke={MUTED} strokeDasharray="3 5" opacity={0.35}/>
+
+    <Label x={25} y={28}>Posterior view · cranial ↑</Label>
+    <Label x={25} y={106}>Transverse process</Label><Leader from={[142.0,102]} to={[184,100]}/>
+    <Label x={333} y={89}>Pedicle screw head</Label><Leader from={[326,85]} to={[283,88]}/>
+    <Label x={333} y={170}>Connecting rod</Label><Leader from={[326,166]} to={[283,176]}/>
+    <Label x={25} y={221}>Graft bed</Label><Leader from={[83.5,217]} to={[184,224]}/>
+    <Label x={333} y={287}>Spinous process</Label><Leader from={[326,283]} to={[247,339]}/>
+    <Label x={25} y={397}>Prone positioning: protect pressure points; maintain perfusion for neuromonitoring</Label>
   </Shell>
 );
 
+/* Local surgical surface view into a cranial opening, not a whole-brain projection or laterality map. */
 const CraniotomyDiagram = () => (
-  <Shell id="op-craniotomy" title="Craniotomy for supratentorial tumour" desc="Head fixed in pins with a bone flap removed over the tumour. Anaesthetic aims are smooth control of intracranial pressure: head up, normal carbon dioxide, avoiding coughing and big blood pressure swings.">
-    <ellipse cx={260} cy={170} rx={130} ry={120} fill={FILL} stroke={INK} strokeWidth={3} />
-    <path d="M190 70 A130 120 0 0 1 300 55" stroke={ART} strokeWidth={6} fill="none" strokeDasharray="8 5" />
-    <circle cx={240} cy={120} r={28} fill={MUTED} opacity={0.7}><title>Tumour</title></circle>
-    {[[140, 100], [380, 100], [260, 300]].map(([x, y]) => <circle key={`${x}`} cx={x} cy={y} r={7} fill={INK} />)}
-    <path d="M167 115Q177 93 192 117Q204 143 220 118M262 79Q282 102 300 86M286 190Q250 175 260 213M187 230Q222 245 230 222" stroke={MUTED} strokeWidth={2} fill="none"/>
-    <Label x={310} y={45}>Bone flap</Label>
-    <Label x={180} y={170}>Tumour</Label>
-    <Label x={395} y={104}>Pin fixation</Label>
-    <Label x={20} y={30}>Pinning: deepen anaesthesia / local to stop BP spike</Label>
-    <Label x={395} y={250}>Keep CO2 normal,</Label>
-    <Label x={395} y={266}>head up,</Label><Label x={395} y={282}>smooth wake-up</Label>
+  <Shell id="op-craniotomy" title="Craniotomy: reflected dura, cortical exposure and lesion" desc="Local surgical surface view into a cranial opening, not a whole-brain projection or laterality map. Scalp and bone edges surround a craniotomy; a dural flap is reflected to expose cortical sulci and surface vessels. A dashed deeper tumour outline is projected beneath cortex, not a surface mass. The operative corridor depends on lesion location." h={410}>
+    <path d="M133 96Q247 38 364 94Q414 184 356 305Q248 355 137 303Q84 195 133 96Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M155 111Q248 65 343 109Q381 190 334 286Q248 324 160 284Q122 194 155 111Z" fill={FILL} stroke={INK} strokeWidth={7}/>
+    <path d="M177 125Q248 89 323 125Q353 195 317 267Q246 294 179 266Q149 194 177 125Z" fill={FILL} stroke={MUTED} strokeWidth={2}/>
+    <path d="M179 129L149  70 L220 81L250 110Z" fill={FILL} stroke={VEIN} strokeWidth={2}/>
+    <Sutures x={169} y={91} count={3}/>
+    <path d="M192 148Q215 126 221 158Q231 190 251 155M280 132Q259 166 286 180M194 215Q225 191 229 236M278 246Q294 224 310 242" fill="none" stroke={MUTED} strokeWidth={2}/>
+    <path d="M185 176L219 182L246 209M219 182L228 165M246 209L283 197" stroke={ART} strokeWidth={2} fill="none"/>
+    <path d="M247 177Q283 164 294 198Q306 229 272 238Q239 231 247 177Z" fill="none" stroke={ART} strokeWidth={2} strokeDasharray="4 4"/>
+
+    <Label x={25} y={28}>Local operative surface view</Label>
+    <Label x={25} y={90}>Dura reflected</Label><Leader from={[116.0,86]} to={[180,95]}/>
+    <Label x={336} y={80}>Bone edge</Label><Leader from={[329,76]} to={[346,117]}/>
+    <Label x={25} y={188}>Cortical vessel</Label><Leader from={[122.5,184]} to={[209,180]}/>
+    <Label x={350} y={229}>Deeper lesion</Label><Leader from={[343,225]} to={[285,222]}/>
+    <Label x={25} y={300}>Cortical sulci</Label><Leader from={[116.0,296]} to={[219,228]}/>
+    <Label x={25} y={397}>Coordinate pinning and stimulation; control perfusion, ventilation and emergence</Label>
   </Shell>
 );
 
+/* Local coronal urinary-outlet cutaway, bladder above and urethra below, no patient side implied. */
 const TurpDiagram = () => (
-  <Shell id="op-turp" title="TURP and irrigation fluid absorption" desc="Resectoscope passed through the urethra into the prostate. Irrigation fluid flows in continuously; opened venous sinuses allow fluid absorption, which can cause fluid overload. Classic dilutional hyponatraemia relates to hypotonic non-electrolyte irrigation; bipolar saline irrigation does not cause classic hyponatraemic TURP syndrome. Spinal anaesthesia lets early confusion be noticed.">
-    <ellipse cx={260} cy={90} rx={90} ry={60} fill={FILL} stroke={INK} />
-    <ellipse cx={260} cy={170} rx={50} ry={34} fill={MUTED} opacity={0.6}><title>Prostate</title></ellipse>
-    <path d="M260 140 L260 310" stroke={GRAFT} strokeWidth={10} strokeLinecap="round" />
-    <path d="M240 200 C200 220, 180 240, 150 260" stroke={VEIN} strokeWidth={4} fill="none" strokeDasharray="6 4" />
-    <path d="M177 92Q193 123 212 112M308 106Q334 123 344 91" stroke={MUTED} fill="none"/><path d="M244 159Q229 169 243 188M277 158Q293 170 277 188" stroke={ART} strokeWidth={2} fill="none"/><path d="M252 300V176L268 166" stroke={INK} strokeWidth={2} fill="none"/>
-    <Label x={360} y={90}>Bladder</Label>
-    <Label x={320} y={175}>Prostate resected</Label>
-    <Label x={280} y={290}>Resectoscope (urethra)</Label>
-    <Label x={30} y={280}>Fluid absorbed into veins</Label>
-    <Label x={30} y={296}>→ overload; Na⁺ risk varies</Label>
-    <Label x={20} y={30}>Spinal lets you spot early confusion</Label>
+  <Shell id="op-turp" title="TURP: resection cavity, irrigation and venous absorption" desc="Local coronal urinary-outlet cutaway, bladder above and urethra below, no patient side implied. A resectoscope passes through the prostatic urethra; its loop removes obstructing tissue inside the prostate. Separate arrows indicate irrigation channels and absorption through opened veins. Bipolar saline avoids classic hypotonic hyponatraemic TURP syndrome but fluid overload remains possible." h={410}>
+    <path d="M179 69Q248 33 318 69Q344 146 274 170L272 222H226V170Q153 145 179 69Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M219 169Q183 180 201 232Q218 259 249 249Q283 260 300 233Q317 185 279 169Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M236 171Q221 201 233 238H266Q281 201 264 171" fill="none" stroke={ART} strokeWidth={2}/>
+    <path d="M226 252V346M274 252V346" stroke={INK} strokeWidth={2}/>
+    <path d="M247 350V213" stroke={GRAFT} strokeWidth={12}/>
+    <path d="M242 335V213M252 215V335" stroke={VEIN} strokeWidth={1.5}/>
+    <path d="M239 213Q250 199 262 213" stroke={INK} strokeWidth={2} fill="none"/>
+    <path d="M201 205L169 223L139 258M299 210L338 229" stroke={VEIN} strokeWidth={3} strokeDasharray="4 4" fill="none"/>
+    <Flow x={240} y={294} direction="up"/><Flow x={255} y={310}/>
+    <path d="M194 111Q211 144 226 136M304 109Q287 141 274 136" stroke={MUTED} fill="none"/>
+
+    <Label x={25} y={28}>Local urinary-outlet cutaway</Label>
+    <Label x={25} y={90}>Bladder</Label><Leader from={[70.5,86]} to={[181,101]}/>
+    <Label x={330} y={163}>Resection cavity</Label><Leader from={[323,159]} to={[269,203]}/>
+    <Label x={25} y={190}>Prostate</Label><Leader from={[77.0,186]} to={[207,191]}/>
+    <Label x={330} y={240}>Opened veins</Label><Leader from={[323,236]} to={[320,222]}/>
+    <Label x={25} y={298}>Irrigation channels</Label><Leader from={[148.5,294]} to={[242,281]}/>
+    <Label x={329} y={328}>Resectoscope</Label><Leader from={[322,324]} to={[248,326]}/>
+    <Label x={25} y={397}>Absorbed fluid can cause overload; sodium risk depends on irrigation and technique</Label>
   </Shell>
 );
 
+/* Two local urinary-outlet schematics, before resection on viewer’s left and reconstruction on viewer’s right, no patient-side mapping. */
 const RoboticProstateDiagram = () => (
-  <Shell id="op-robotic-prostate" title="Robotic prostatectomy: steep head-down and pneumoperitoneum" desc="Patient in steep head-down (Trendelenburg) position with carbon dioxide in the abdomen and robot docked. This raises airway, intracranial and intraocular pressures; access to the patient is limited once docked.">
-    <path d="M70 90 L450 230" stroke={INK} strokeWidth={6} />
-    <ellipse cx={280} cy={140} rx={110} ry={40} fill={FILL} stroke={INK} transform="rotate(20 280 140)" />
-    <circle cx={90} cy={80} r={22} fill={MUTED} opacity={0.6}><title>Head</title></circle>
-    {[240, 290, 340].map((x) => <path key={x} d={`M${x} 40 L${x - 10} 110`} stroke={GRAFT} strokeWidth={5} />)}
-    <path d="M202 128Q231 120 252 141Q259 157 241 163Q210 156 202 128" fill={FILL} stroke={MUTED}/><path d="M230 164L224 190M240 167L245 195" stroke={ART} strokeWidth={2}/>
-    <Label x={250} y={30}>Robot arms</Label>
-    <Label x={40} y={130}>Head low (~25–45°)</Label>
-    <Label x={300} y={240}>CO2 pneumoperitoneum</Label>
-    <Label x={20} y={290}>Facial/airway swelling, high airway pressure, limited access</Label>
+  <Shell id="op-robotic-prostate" title="Radical prostatectomy: bladder-to-urethra reconstruction" desc="Two local urinary-outlet schematics, before resection on viewer’s left and reconstruction on viewer’s right, no patient-side mapping. Prostate and seminal vesicles are removed; bladder neck joins the urethral stump over a catheter. Posterolateral neurovascular bundles are conceptual projections; nerve-sparing depends on oncological suitability. Robot ports are outside this view." h={410}>
+    <path d="M 90  60 Q145  30 197  60 Q211 117 162 141H127Q78 114 90 60Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M120 146Q97 179 121 208H168Q193 177 169 146Z" fill={FILL} stroke={ART} strokeWidth={2} strokeDasharray="5 4"/>
+    <path d="M128 208V296M162 208V296" stroke={INK} strokeWidth={2}/>
+    <path d="M117 144Q88 142 103 122M173 143Q202 142 187 122" stroke={MUTED} strokeWidth={7} fill="none"/>
+    <path d="M102 166Q86 211 113 239M187 166Q203 211 177 239" stroke={VEIN} strokeWidth={2} strokeDasharray="4 4" fill="none"/>
+    <path d="M323  60 Q375  30 427  60 Q438 133 390 181H360Q314 133 323 60Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M360 181V296M390 181V296" stroke={INK} strokeWidth={2}/>
+    <path d="M375 321V108" stroke={GRAFT} strokeWidth={6}/>
+    <ellipse cx={375} cy={108} rx={18} ry={11} fill="none" stroke={GRAFT} strokeWidth={2}/>
+    <Sutures x={360} y={182} count={5}/>
+    <path d="M239 165H283M275 158L283 165L275 172" stroke={INK} strokeWidth={2} fill="none"/>
+
+    <Label x={25} y={28}>Resection</Label>
+    <Label x={312} y={28}>Reconstruction</Label>
+    <Label x={25} y={109}>Bladder</Label><Leader from={[70.5,105]} to={[93,90]}/>
+    <Label x={25} y={228}>Prostate</Label><Leader from={[77.0,224]} to={[124,192]}/>
+    <Label x={25} y={278}>Nerve bundles</Label><Leader from={[109.5,274]} to={[103,213]}/>
+    <Label x={307} y={335}>Urinary catheter</Label><Leader from={[300,331]} to={[375,290]}/>
+    <Label x={281} y={228}>Anastomosis</Label><Leader from={[150,224]} to={[364,182]}/>
+    <Label x={25} y={397}>Steep head-down and CO2: airway pressures, facial swelling and restricted access</Label>
   </Shell>
 );
 
@@ -578,19 +630,30 @@ const LiverDiagram = () => (
   </Shell>
 );
 
+/* Conceptual postoperative drainage layout, not a whole-body laterality projection. */
 const CystectomyDiagram = () => (
-  <Shell id="op-cystectomy" title="Radical cystectomy with ileal conduit" desc="After the bladder is removed, both ureters are joined to an isolated segment of ileum, which is brought out to the skin as a urinary stoma. Urine output cannot be measured between ureteric division and conduit formation.">
-    <ellipse cx={170} cy={80} rx={30} ry={45} fill={FILL} stroke={INK} /><ellipse cx={350} cy={80} rx={30} ry={45} fill={FILL} stroke={INK} />
-    <path d="M175 125 C200 190, 230 200, 250 210 M345 125 C320 190, 290 200, 270 210" stroke={GRAFT} strokeWidth={5} fill="none" />
-    <rect x={230} y={200} width={160} height={28} rx={14} fill={ART} opacity={0.5} />
-    <circle cx={400} cy={214} r={12} fill={INK} />
-    <ellipse cx={260} cy={290} rx={40} ry={22} fill="none" stroke={MUTED} strokeDasharray="6 4" />
-    <path d="M148 58Q154 89 171 99M365 58Q360 89 348 99" stroke={MUTED} fill="none"/><Sutures x={242} y={207} count={4}/><Sutures x={261} y={207} count={4}/><Flow x={341} y={214} direction="right"/>
-    <Label x={110} y={20}>Kidney</Label><Label x={380} y={20}>Kidney</Label>
-    <Label x={40} y={170}>Ureters</Label>
-    <Label x={240} y={250}>Ileal conduit</Label>
-    <Label x={420} y={218}>Stoma</Label>
-    <Label x={310} y={295}>Bladder removed</Label>
+  <Shell id="op-cystectomy" title="Cystectomy: ileal conduit and restored bowel continuity" desc="Conceptual postoperative drainage layout, not a whole-body laterality projection. Both ureters join an isolated vascularised ileal segment draining to a skin stoma. The remaining bowel is rejoined separately, and the conduit retains its mesenteric blood supply. Ureteroileal configurations vary. Bladder outline is dashed to indicate removal, not a second urinary reservoir." h={410}>
+    <path d="M112  50 C78 39  60 116 100 146Q131 158 143 123Q149 109 128 98Q118 90 135 76Q145 60 112 50Z M357 50C392 39 414 116 375 146Q344 158 332 123Q327 109 348 98Q358 90 341 76Q330 60 357 50Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M128 111Q147 182 212 220M347 111Q331 180 269 220" stroke={GRAFT} strokeWidth={5} fill="none"/>
+    <path d="M197 227H392" stroke={GRAFT} strokeWidth={20} strokeLinecap="round"/>
+    <ellipse cx={395} cy={227} rx={8} ry={14} fill={FILL} stroke={ART} strokeWidth={3}/>
+    <Sutures x={207} y={217} count={3}/><Sutures x={260} y={217} count={3}/>
+    <path d="M220 247L252 295L335 247Z" fill={FILL} stroke={MUTED} strokeWidth={1}/>
+    <path d="M252 295L257 265L281 253M257 265L241 251" stroke={ART} strokeWidth={2} fill="none"/>
+    <path d="M61 317Q112 277 151 319H330Q378 278 436 317" stroke={GRAFT} strokeWidth={12} fill="none"/>
+    <Sutures x={224} y={319} count={5}/>
+    <path d="M204 163Q240 143 277 163Q286 191 242 206Q197 193 204 163Z" fill="none" stroke={MUTED} strokeDasharray="4 4"/>
+    <Flow x={351} y={227} direction="right"/>
+
+    <Label x={25} y={28}>Conceptual drainage layout</Label>
+    <Label x={25} y={179}>Ureters</Label><Leader from={[70.5,175]} to={[163,190]}/>
+    <Label x={310} y={90}>Kidney</Label><Leader from={[303,86]} to={[353,65]}/>
+    <Label x={25} y={260}>Ileal conduit</Label><Leader from={[109.5,256]} to={[218,228]}/>
+    <Label x={415} y={230}>Stoma</Label><Leader from={[408,226]} to={[395,227]}/>
+    <Label x={319} y={285}>Mesenteric supply</Label><Leader from={[312,281]} to={[272,257]}/>
+    <Label x={25} y={355}>Bowel join</Label><Leader from={[90.0,351]} to={[240,319]}/>
+    <Label x={235} y={124}>Bladder removed</Label><Leader from={[150,120]} to={[241,161]}/>
+    <Label x={25} y={397}>Assess urine only after drainage is established; bowel and urinary joins are separate</Label>
   </Shell>
 );
 
@@ -819,16 +882,27 @@ const AppendicectomyDiagram = () => (
   </Shell>
 );
 
+/* Local mid-sagittal skull-base cutaway, anterior on viewer’s left and posterior on viewer’s right. */
 const PituitaryDiagram = () => (
-  <Shell id="op-pituitary" title="Transsphenoidal surgery: nasal route to the sella" desc="Sagittal conceptual view, anterior on viewer's left. Endoscopic instruments pass through the nose and sphenoid sinus to reach the pituitary in the sella. This is a route schematic, not a scaled skull-base anatomical plate. Carotid injury and postoperative endocrine disturbance are key risks.">
-    <path d="M75 200 L125 130 Q125 50 255 45 Q375 45 395 160 L395 275 L120 275 L120 210 Z" fill={FILL} stroke={INK} strokeWidth={2} />
-    <path d="M95 190 L180 175 L245 155" stroke={GRAFT} strokeWidth={7} fill="none" />
-    <path d="M200 135 L250 135 L250 180 L200 180 Z" fill={VEIN} opacity={0.2} stroke={VEIN} />
-    <path d="M242 122 Q252 100 272 122 Q267 142 250 140 Z" fill={GRAFT} stroke={INK} />
-    <path d="M149 145Q174 112 190 138M150 159Q178 139 190 159M190 185H250" fill="none" stroke={MUTED} strokeWidth={2}/><path d="M250 103V85Q279 61 298 84" fill="none" stroke={INK} strokeWidth={2}/>
-    <Label x={30} y={235}>Nasal route</Label><Label x={285} y={125}>Pituitary / sella</Label>
-    <Label x={285} y={180}>Sphenoid sinus</Label><Label x={25} y={30}>Anterior (nose) ← sagittal view → posterior</Label>
-    <Label x={25} y={315}>Check vision, cortisol needs, sodium and urine output</Label>
+  <Shell id="op-pituitary" title="Transsphenoidal surgery: sphenoid, sellar floor and target" desc="Local mid-sagittal skull-base cutaway, anterior on viewer’s left and posterior on viewer’s right. Instruments traverse nasal cavity and sphenoid sinus to a sellar-floor opening below pituitary. Optic chiasm lies superior; cavernous carotids are lateral and deliberately not projected into this midline corridor. Anatomy and pneumatization vary." h={410}>
+    <path d="M67 228L118 153Q112 80 216 59Q343 40 401 130L419 293H111L109 246Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M111 213Q158 204 197 195L218 217L179 229H116" fill="none" stroke={MUTED} strokeWidth={2}/>
+    <path d="M135 174Q168 147 197 175M140 192Q168 170 198 192" fill="none" stroke={MUTED} strokeWidth={3}/>
+    <path d="M213 175Q245 160 286 174L295 225H214Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M245 165Q262 159 280 165" stroke={INK} strokeWidth={5} fill="none"/>
+    <path d="M246 145Q259 125 278 141Q286 154 271 162H252Z" fill={GRAFT} stroke={INK}/>
+    <path d="M246 113Q263 102 281 113" stroke={VEIN} strokeWidth={5} fill="none"/>
+    <path d="M87 231L221 203L260 169" stroke={GRAFT} strokeWidth={5} fill="none"/>
+    <path d="M293 162L317 178L306 224" fill="none" stroke={INK} strokeWidth={3}/>
+
+    <Label x={25} y={28}>Anterior ← mid-sagittal cutaway → posterior</Label>
+    <Label x={25} y={90}>Nasal cavity</Label><Leader from={[103.0,86]} to={[150,182]}/>
+    <Label x={310} y={98}>Optic chiasm</Label><Leader from={[303,94]} to={[269,109]}/>
+    <Label x={329} y={155}>Pituitary</Label><Leader from={[322,151]} to={[270,145]}/>
+    <Label x={25} y={280}>Endoscopic route</Label><Leader from={[129.0,276]} to={[165,216]}/>
+    <Label x={318} y={245}>Sphenoid sinus</Label><Leader from={[311,241]} to={[275,211]}/>
+    <Label x={250} y={306}>Sellar floor opening</Label><Leader from={[150,302]} to={[260,167]}/>
+    <Label x={25} y={397}>Carotids lie lateral to the corridor; assess vision, cortisol, sodium and urine output</Label>
   </Shell>
 );
 
@@ -851,33 +925,49 @@ const PyloromyotomyDiagram = () => (
   </Shell>
 );
 
+/* Local coronal cranial cutaway, superior above, no side-specific diagnosis implied. */
 const BurrHoleDiagram = () => (
-  <Shell id="op-burr-hole" title="Burr holes for chronic subdural haematoma" desc="Coronal conceptual view of the skull. A crescent of liquefied chronic subdural blood lies over one hemisphere. Two burr holes allow irrigation, with a drain left in place. Not a laterality map.">
-    <ellipse cx={260} cy={160} rx={170} ry={130} fill="none" stroke={INK} strokeWidth={8} />
-    <ellipse cx={260} cy={165} rx={150} ry={112} fill={FILL} />
-    <path d="M150 70 Q95 160 150 255 Q125 160 175 80 Z" fill={ART} opacity={0.45} />
-    <circle cx={140} cy={85} r={9} fill="hsl(var(--card))" stroke={INK} strokeWidth={2} />
-    <circle cx={110} cy={210} r={9} fill="hsl(var(--card))" stroke={INK} strokeWidth={2} />
-    <path d="M110 210 C60 240, 40 260, 30 290" stroke={GRAFT} strokeWidth={3} fill="none" />
-    <path d="M186 90Q174 119 199 131M238 65Q257 93 280 72M296 199Q269 176 255 205M203 236Q225 209 239 237" fill="none" stroke={MUTED} strokeWidth={2}/><path d="M258 58V272" stroke={MUTED} strokeDasharray="4 5"/>
-    <Label x={25} y={70}>Burr hole</Label><Label x={300} y={165}>Brain</Label>
-    <Label x={175} y={200}>Chronic subdural collection</Label><Label x={40} y={270}>Drain</Label>
-    <Label x={25} y={312}>Reverse anticoagulation; smooth emergence for neuro check</Label>
+  <Shell id="op-burr-hole" title="Chronic subdural drainage: membranes, cortex and drain" desc="Local coronal cranial cutaway, superior above, no side-specific diagnosis implied. A crescentic collection lies between dura and arachnoid-covered cortex. One representative burr hole through bone accesses the collection, with a drain lying in the subdural compartment. Number of holes and drain compartment vary; no drain is intended inside brain tissue." h={410}>
+    <path d="M133 331Q 80 229 107 144Q145 49 252 48Q361 51 403 144Q433 231 381 331" stroke={INK} strokeWidth={10} fill="none"/>
+    <path d="M142 326Q95 224 118 148Q151 62 252  60 Q350 65 390 149Q416 231 371 326" stroke={MUTED} strokeWidth={2} fill="none"/>
+    <path d="M149  80 Q104 147 126 243L150 305Q132 212 162 154Q177 112 198 87Z" fill={ART} fillOpacity={0.3} stroke={ART} strokeWidth={1.5}/>
+    <path d="M198 86Q143 146 151 233Q157 290 189 326H366Q411 225 383 155Q347 79 269 77Q230 70 198 86Z" fill={FILL} stroke={INK} strokeWidth={2}/>
+    <path d="M213 112Q181 126 206 148M188 194Q216 174 222 213M289 102Q310 123 331 107M310 245Q337 224 355 250M232 285Q254 263 274 292" fill="none" stroke={MUTED} strokeWidth={2}/>
+    <path d="M260 83V327" stroke={MUTED} strokeDasharray="4 4"/>
+    <circle cx={113} cy={169} r={10} fill="hsl(var(--card))" stroke={INK} strokeWidth={2}/>
+    <path d="M42 286Q 70 248 111 172Q128 149 137 143" stroke={GRAFT} strokeWidth={4} fill="none"/>
+
+    <Label x={25} y={28}>Local coronal cutaway · superior ↑</Label>
+    <Label x={25} y={80}>Skull / dura</Label><Leader from={[103.0,76]} to={[129,105]}/>
+    <Label x={329} y={70}>Cortical surface</Label><Leader from={[322,66]} to={[307,87]}/>
+    <Label x={25} y={222}>Burr hole</Label><Leader from={[83.5,218]} to={[113,169]}/>
+    <Label x={322} y={185}>Brain</Label><Leader from={[315,181]} to={[333,186]}/>
+    <Label x={25} y={315}>Drain</Label><Leader from={[57.5,311]} to={[80,226]}/>
+    <Label x={299} y={351}>Subdural collection</Label><Leader from={[150,347]} to={[137,213]}/>
+    <Label x={25} y={397}>Drain plane varies by technique; plan anticoagulant reversal and neurological recovery</Label>
   </Shell>
 );
 
+/* Local coronal shoulder cutaway, superior above, no patient side implied. */
 const ShoulderDiagram = () => (
-  <Shell id="op-shoulder" title="Shoulder arthroscopy in the beach chair position" desc="Side view of a seated patient. The arm blood pressure cuff sits below head level, so brain perfusion pressure is lower than the reading. An interscalene block in the neck can paralyse the diaphragm on that side.">
-    <circle cx={180} cy={60} r={30} fill={FILL} stroke={INK} strokeWidth={2} />
-    <path d="M180 90 L180 200 L300 200 L300 290" stroke={INK} strokeWidth={10} fill="none" strokeLinecap="round" />
-    <path d="M180 120 L230 180" stroke={INK} strokeWidth={8} strokeLinecap="round" />
-    <rect x={200} y={140} width={30} height={14} fill={VEIN} opacity={0.6} transform="rotate(50 215 147)" />
-    <circle cx={198} cy={102} r={6} fill={GRAFT} />
-    <path d="M330 60 L330 160" stroke={ART} strokeWidth={2} /><path d="M322 70 L330 60 L338 70 M322 150 L330 160 L338 150" stroke={ART} fill="none" />
-    <path d="M156 112Q168 106 190 115L200 136Q179 145 161 131Z" fill={FILL} stroke={MUTED}/><path d="M151 205L270 205V285" stroke={MUTED} strokeWidth={5} fill="none"/>
-    <Label x={210} y={95}>Interscalene block site</Label><Label x={240} y={190}>BP cuff on arm</Label>
-    <Label x={345} y={105}>Head higher:</Label><Label x={345} y={122}>brain BP lower</Label>
-    <Label x={25} y={312}>Phrenic palsy risk; avoid hypotension when sitting up</Label>
+  <Shell id="op-shoulder" title="Shoulder arthroscopy: glenoid, cuff and instrument access" desc="Local coronal shoulder cutaway, superior above, no patient side implied. Humeral head lies against glenoid; rotator cuff passes beneath the acromion. Scope and working instrument illustrate separate approximate access routes. Portal choice and patient position vary; the drawing is not a needle or portal-placement guide." h={410}>
+    <path d="M165 79Q207 55 270 80L289 102H252L205 96L173 119Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M173 129Q198 155 177 207L152 277L143 174Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M186 145Q210 158 190 200" stroke={VEIN} strokeWidth={4} fill="none"/>
+    <path d="M248 149Q293 137 311 175Q333 211 301 237L301 338H253V236Q209 224 212 185Q212 163 248 149Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M188 140Q238 112 280 149L300 169" stroke={GRAFT} strokeWidth={6} fill="none"/>
+    <path d="M265 245V328M294 245V328" stroke={MUTED} strokeWidth={1}/>
+    <path d="M408 135L304 181M383 280L271 201" stroke={INK} strokeWidth={4}/>
+    <circle cx={304} cy={181} r={4} fill={GRAFT}/>
+
+    <Label x={25} y={28}>Local shoulder cutaway</Label>
+    <Label x={25} y={98}>Acromion</Label><Leader from={[77.0,94]} to={[221,81]}/>
+    <Label x={25} y={186}>Glenoid</Label><Leader from={[70.5,182]} to={[190,173]}/>
+    <Label x={332} y={106}>Rotator cuff</Label><Leader from={[325,102]} to={[271,141]}/>
+    <Label x={332} y={225}>Humeral head</Label><Leader from={[325,221]} to={[308,207]}/>
+    <Label x={354} y={323}>Working instrument</Label><Leader from={[347,319]} to={[329,241]}/>
+    <Label x={25} y={304}>Scapula</Label><Leader from={[70.5,300]} to={[158,249]}/>
+    <Label x={25} y={397}>Beach-chair brain BP is below arm-cuff BP; plan perfusion and regional-block risks</Label>
   </Shell>
 );
 
@@ -1003,17 +1093,27 @@ const VitrectomyDiagram = () => (
   </Shell>
 );
 
+/* Local sagittal lumbar cutaway, anterior on viewer’s left and posterior on viewer’s right. */
 const MicrodiscectomyDiagram = () => (
-  <Shell id="op-microdiscectomy" title="Lumbar microdiscectomy: decompress the nerve root" desc="Local sagittal lumbar schematic, anterior on viewer's left, posterior on viewer's right. A disc fragment protrudes towards a nerve root. Posterior access removes the compressing fragment; this is not a guide to the extent of bone or disc removal.">
-    <rect x={100} y={60} width={110} height={80} rx={8} fill={FILL} stroke={INK} strokeWidth={2} />
-    <rect x={100} y={180} width={110} height={80} rx={8} fill={FILL} stroke={INK} strokeWidth={2} />
-    <path d="M100 148 L205 148 Q250 165 205 174 L100 174 Z" fill={GRAFT} stroke={INK} strokeWidth={2} />
-    <path d="M260 55 L260 145 L315 225" fill="none" stroke={VEIN} strokeWidth={6} />
-    <path d="M395 125 L240 163" stroke={ART} strokeWidth={3} strokeDasharray="6 5" />
-    <path d="M211 81L233 94L215 112M211 206L233 219L215 239" stroke={INK} strokeWidth={3} fill="none"/><path d="M277 78V140M272 190L294 207" stroke={MUTED} strokeWidth={2}/>
-    <Label x={25} y={30}>Anterior ← local sagittal view → posterior</Label>
-    <Label x={300} y={75}>Nerve root</Label><Label x={25} y={290}>Disc fragment removed</Label>
-    <Label x={340} y={245}>Posterior access</Label><Label x={25} y={310}>Prone safety → decompression → postoperative neuro check</Label>
+  <Shell id="op-microdiscectomy" title="Microdiscectomy: disc fragment, root and posterior corridor" desc="Local sagittal lumbar cutaway, anterior on viewer’s left and posterior on viewer’s right. A posterior disc extrusion approaches the traversing root beside the thecal sac. A limited posterior corridor reaches the fragment after appropriate bone and ligament exposure. Root course is projected schematically; this is not a guide to retraction or removal extent." h={410}>
+    <path d="M115 61H215L221 143H110Z M111 207H218L214 300H116Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M114 152H215Q249 159 246 185L216 197H113Z" fill={GRAFT} fillOpacity={0.35} stroke={INK} strokeWidth={2}/>
+    <ellipse cx={168} cy={174} rx={29} ry={10} fill={FILL} stroke={MUTED}/>
+    <path d="M216 155Q266 155 259 185L237 189L239 171Z" fill={ART} fillOpacity={0.4} stroke={ART} strokeWidth={2}/>
+    <path d="M278 48V174Q277 228 280 326" stroke={VEIN} strokeWidth={19} strokeOpacity={0.3} fill="none"/>
+    <path d="M269 97Q257 152 269 196L314 272" stroke={VEIN} strokeWidth={4} fill="none"/>
+    <path d="M218 98L239 112L259 106L313 139L335 132M218 252L239 265L258 246L324 280" stroke={INK} strokeWidth={5} fill="none"/>
+    <path d="M310 145L301 194" stroke={MUTED} strokeWidth={4} strokeDasharray="4 4"/>
+    <path d="M405 193L263 178" stroke={GRAFT} strokeWidth={3} strokeDasharray="5 4"/>
+
+    <Label x={25} y={28}>Anterior ← sagittal cutaway → posterior</Label>
+    <Label x={25} y={102}>Vertebral body</Label><Leader from={[116.0,98]} to={[115,103]}/>
+    <Label x={25} y={219}>Disc / nucleus</Label><Leader from={[116.0,215]} to={[161,174]}/>
+    <Label x={333} y={76}>Thecal sac</Label><Leader from={[326,72]} to={[279,99]}/>
+    <Label x={337} y={157}>Exposure corridor</Label><Leader from={[330,153]} to={[306,167]}/>
+    <Label x={333} y={240}>Traversing root</Label><Leader from={[326,236]} to={[288,229]}/>
+    <Label x={25} y={330}>Extruded fragment</Label><Leader from={[135.5,326]} to={[249,174]}/>
+    <Label x={25} y={397}>Protect prone pressure points; postoperative neurological assessment</Label>
   </Shell>
 );
 
@@ -1068,50 +1168,71 @@ const TracheostomyDiagram = () => (
   </Shell>
 );
 
+/* Anterior local renal-vessel view, patient’s right on viewer’s left. */
 const NephrectomyDiagram = () => (
-  <Shell id="op-nephrectomy" title="Radical nephrectomy and IVC tumour thrombus" desc="Anterior conceptual view, not a laterality map. The kidney with its tumour is removed after tying the renal artery and vein. Tumour can grow along the renal vein into the inferior vena cava, which then has to be clamped above and below the thrombus.">
-    <path d="M250 20 L250 300" stroke={VEIN} strokeWidth={14} />
-    <path d="M290 20 L290 300" stroke={ART} strokeWidth={8} />
-    <ellipse cx={130} cy={170} rx={50} ry={80} fill={FILL} stroke={INK} strokeWidth={2} />
-    <circle cx={115} cy={140} r={22} fill={ART} opacity={0.4} />
-    <path d="M175 170 L243 170" stroke={VEIN} strokeWidth={8} />
-    <path d="M178 190 L283 190" stroke={ART} strokeWidth={4} />
-    <rect x={243} y={120} width={14} height={60} fill={MUTED} />
-    <path d="M232 105 L268 105 M232 200 L268 200" stroke={INK} strokeWidth={4} />
-    <path d="M136 99Q98 119 114 142M96 191Q116 217 149 221" stroke={MUTED} fill="none"/><path d="M139 247L142 289" stroke={GRAFT} strokeWidth={3}/>
-    <Label x={60} y={275}>Kidney with tumour</Label>
-    <Label x={310} y={60}>Aorta</Label><Label x={310} y={110}>IVC clamps above and below</Label>
-    <Label x={310} y={150}>Tumour thrombus in IVC</Label><Label x={310} y={200}>Renal artery tied first</Label>
-    <Label x={25} y={318}>Caval clamping drops venous return; watch for embolism</Label>
+  <Shell id="op-nephrectomy" title="Nephrectomy: right renal tumour and caval extension" desc="Anterior local renal-vessel view, patient’s right on viewer’s left. A right renal tumour extends through renal vein into the IVC. Aortic and caval channels are distinct; short right renal vein and renal artery passing behind IVC are represented. Dashed arterial segment is posterior. Clamps above and below a representative infrahepatic thrombus are illustrative; higher levels need different control." h={410}>
+    <path d="M118 81C66 58  50 163 85 229Q123 263 156 221Q171 197 139 170Q118 160 149 133Q170 102 118 81Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M92 108Q 70 123  90 155L117 169L130 143L117 116Z" fill={ART} fillOpacity={0.4} stroke={ART}/>
+    <path d="M228  40 V345" stroke={VEIN} strokeWidth={28}/>
+    <path d="M291 40V345" stroke={ART} strokeWidth={16}/>
+    <path d="M142 165H226" stroke={VEIN} strokeWidth={12}/>
+    <path d="M146 187H205M248 187H290" stroke={ART} strokeWidth={6}/>
+    <path d="M205 187H248" stroke={ART} strokeWidth={6} strokeDasharray="4 3"/>
+    <path d="M111 150Q154 157 222 164V121Q239 105 238 138V171Q210 181 153 171Z" fill={MUTED} stroke={INK} strokeWidth={1}/>
+    <Clamp x={228} y={80} w={48}/><Clamp x={228} y={267} w={48}/>
+    <path d="M139 219L153 319" stroke={GRAFT} strokeWidth={4}/>
+    <path d="M168 181V195" stroke={INK} strokeWidth={3}/>
+
+    <Label x={25} y={28}>Anterior: patient R ← → patient L</Label>
+    <Label x={25} y={70}>Right renal tumour</Label><Leader from={[142.0,66]} to={[100,125]}/>
+    <Label x={336} y={78}>Caval control</Label><Leader from={[329,74]} to={[251,80]}/>
+    <Label x={332} y={140}>Tumour thrombus</Label><Leader from={[325,136]} to={[232,134]}/>
+    <Label x={332} y={207}>Aorta</Label><Leader from={[325,203]} to={[291,213]}/>
+    <Label x={25} y={289}>Renal artery</Label><Leader from={[103.0,285]} to={[169,187]}/>
+    <Label x={330} y={292}>IVC</Label><Leader from={[323,288]} to={[227,310]}/>
+    <Label x={25} y={343}>Ureter</Label><Leader from={[64.0,339]} to={[153,313]}/>
+    <Label x={25} y={397}>Caval extension changes the plan: anticipate reduced venous return and embolic risk</Label>
   </Shell>
 );
 
+/* Local lateral operative head view, face anterior on viewer’s left. */
 const AwakeCraniotomyDiagram = () => (
-  <Shell id="op-awake-craniotomy" title="Awake craniotomy: mapping while the patient talks" desc="View from the anaesthetist's side. The head is fixed in pins after a scalp block. Drapes are tented so the face can be seen and the airway reached. During the awake phase the surgeon stimulates the cortex while the patient speaks or moves.">
-    <circle cx={200} cy={160} r={90} fill={FILL} stroke={INK} strokeWidth={2} />
-    <path d="M150 90 Q200 60 250 90 L235 140 Q200 125 165 140 Z" fill={ART} opacity={0.3} stroke={INK} />
-    <path d="M110 160 L60 160 M290 160 L340 160" stroke={INK} strokeWidth={5} />
-    <path d="M200 40 L200 95" stroke={GRAFT} strokeWidth={3} />
-    <path d="M300 240 Q360 200 420 240" stroke={MUTED} strokeWidth={3} fill="none" strokeDasharray="6 4" />
-    <path d="M163 101Q175 89 187 109M195 93Q215 100 210 126M218 96Q236 114 233 134" stroke={INK} strokeWidth={1} fill="none"/><path d="M142 187L153 187L157 199M150 219Q175 235 183 214" stroke={MUTED} strokeWidth={2} fill="none"/>
-    <Label x={210} y={50}>Stimulation probe</Label><Label x={25} y={145}>Head pins</Label>
-    <Label x={300} y={110}>Bone flap over tumour</Label><Label x={330} y={270}>Tented drapes: face visible</Label>
-    <Label x={60} y={275}>Scalp block for pins and incision</Label>
-    <Label x={25} y={318}>Seizure ready: cold saline and drugs; airway rescue to hand</Label>
+  <Shell id="op-awake-craniotomy" title="Awake craniotomy: accessible face and cortical mapping" desc="Local lateral operative head view, face anterior on viewer’s left. A scalp opening exposes cortical gyri beneath a craniotomy. A bipolar stimulation probe touches cortex during awake testing. Tented drapes are offset from the face for observation and airway access. Mapping sites are illustrative, not a functional cortical map." h={410}>
+    <path d="M117 166Q107 99 172 72Q267 43 314 121L318 224Q289 272 212 283L180 263L153 257L142 222L110 208L124 188Z" fill={FILL} stroke={INK} strokeWidth={3}/>
+    <path d="M144 177l18-3M139 221Q158 225 173 218M170 254Q181 246 188 259" stroke={MUTED} strokeWidth={2} fill="none"/>
+    <path d="M176 102Q240  70 281 115L275 165Q231 182 183 160Z" fill={FILL} stroke={INK} strokeWidth={5}/>
+    <path d="M190 120Q208 104 215 132Q224 153 238 128M244 105Q263 128 260 152" stroke={MUTED} strokeWidth={2} fill="none"/>
+    <path d="M244 44L230 130M252 44L238 130" stroke={GRAFT} strokeWidth={2}/>
+    <path d="M95 104L131 117M337 164L312 171" stroke={INK} strokeWidth={5}/>
+    <path d="M334 76Q382 103 399 204L437 301M335 76L411 83" stroke={MUTED} strokeWidth={3} strokeDasharray="5 4" fill="none"/>
+    <circle cx={234} cy={132} r={4} fill={ART}/>
+
+    <Label x={25} y={28}>Lateral operative view · face to left</Label>
+    <Label x={25} y={91}>Fixation pin</Label><Leader from={[103.0,87]} to={[129,117]}/>
+    <Label x={298} y={45}>Bipolar probe</Label><Leader from={[150,41]} to={[245,89]}/>
+    <Label x={338} y={153}>Exposed cortex</Label><Leader from={[331,149]} to={[259,138]}/>
+    <Label x={25} y={284}>Face / airway access</Label><Leader from={[150,280]} to={[149,220]}/>
+    <Label x={317} y={335}>Tented drapes</Label><Leader from={[310,331]} to={[414,250]}/>
+    <Label x={25} y={397}>Awake testing requires communication, seizure readiness and an accessible airway</Label>
   </Shell>
 );
 
+/* Posterior conceptual views, cranial above, no side-specific curve diagnosis implied. */
 const ScoliosisDiagram = () => (
-  <Shell id="op-scoliosis" title="Scoliosis correction: screws, rods and neuromonitoring" desc="Posterior view of a curved spine. Pedicle screws are placed across many levels and rods are used to straighten the curve. Motor and sensory evoked potentials monitor the spinal cord, which is most at risk during the correction manoeuvre.">
-    <path d="M200 30 Q120 120 200 180 Q280 240 200 300" stroke={MUTED} strokeWidth={22} fill="none" opacity={0.5} />
-    <path d="M330 30 L330 300" stroke={GRAFT} strokeWidth={5} />
-    {[60, 100, 140, 180, 220, 260].map((y) => <circle key={y} cx={330} cy={y} r={6} fill={INK} />)}
-    <path d="M240 165 L300 165" stroke={INK} strokeWidth={2} /><path d="M290 158 L300 165 L290 172" stroke={INK} fill="none" />
-    <path d="M90 35 L90 120" stroke={VEIN} strokeWidth={3} strokeDasharray="5 3" />
-    {[50,90,130,170,210,250,285].map((y,i)=><g key={y} stroke={INK} fill={FILL}><rect x={315} y={y} width={30} height={18} rx={4}/><path d={`M315 ${y+6}l-10 4 10 4M345 ${y+6}l10 4-10 4`}/></g>)}
-    <Label x={60} y={170}>Curved spine</Label><Label x={350} y={100}>Pedicle screws</Label>
-    <Label x={350} y={200}>Rod: corrected spine</Label><Label x={25} y={20}>Evoked potential monitoring</Label>
-    <Label x={25} y={318}>Correction: keep BP and Hb up; TIVA; big blood loss</Label>
+  <Shell id="op-scoliosis" title="Scoliosis correction: segmental fixation and paired rods" desc="Posterior conceptual views, cranial above, no side-specific curve diagnosis implied. The left panel shows a curved vertebral column; the right shows a representative corrected construct with bilateral rods and segmental screw heads. Correction involves translation and derotation, not simple stretching; monitoring and fixation levels vary." h={410}>
+    {[61,97,133,169,205,241,277,313].map((y,i)=>{const x=[145,128,124,137,158,174,171,154][i];return <g key={y} transform={`translate(${x} ${y}) rotate(${[-14,-9,3,18,18,3,-12,-14][i]})`} fill={FILL} stroke={INK}><path d="M-19 -12Q0 -19 19 -12L23 9L0 22L-23 9Z"/><path d="M-22 0l-15 5 15 5M22 0l15 5-15 5" fill="none"/></g>})}
+    {[61,97,133,169,205,241,277,313].map(y=><g key={y} fill={FILL} stroke={INK}><path d={`M334 ${y-12}Q355 ${y-20}376 ${y-12}L380 ${y+9}L355 ${y+22}L330 ${y+9}Z`}/><path d={`M334 ${y}l-13 5 13 5M376 ${y}l13 5-13 5`} fill="none"/></g>)}
+    <path d="M334  60 V326M376  60 V326" stroke={GRAFT} strokeWidth={5}/>
+    {[61,97,133,169,205,241,277,313].map(y=><g key={y} fill={GRAFT} stroke={INK}><circle cx={334} cy={y} r={5}/><circle cx={376} cy={y} r={5}/></g>)}
+    <path d="M238 188H283M274 181L283 188L274 195" stroke={INK} strokeWidth={2} fill="none"/>
+
+    <Label x={25} y={28}>Posterior · curve and construct compared</Label>
+    <Label x={25} y={80}>Curved column</Label><Leader from={[109.5,76]} to={[130,99]}/>
+    <Label x={395} y={96}>Screw heads</Label><Leader from={[388,92]} to={[376,97]}/>
+    <Label x={395} y={234}>Paired rods</Label><Leader from={[388,230]} to={[376,235]}/>
+    <Label x={36} y={354}>Before correction</Label>
+    <Label x={300} y={354}>Representative construct</Label>
+    <Label x={25} y={397}>Correction checkpoint: neuromonitoring, cord perfusion and blood-loss assessment</Label>
   </Shell>
 );
 
