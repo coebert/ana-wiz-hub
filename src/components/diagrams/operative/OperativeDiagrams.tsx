@@ -858,7 +858,7 @@ const CleftDiagram = () => (
     <path d="M70 90 L130 120 M450 90 L390 120" stroke={INK} strokeWidth={4} />
     <Label x={280} y={110}>Cleft in palate</Label>
     <Label x={300} y={265}>RAE tube, midline</Label>
-    <Label x={155} y={205}>Gag tongue blade</Label>
+    <Label x={105} y={207}>Gag tongue blade</Label>
     <Label x={25} y={40}>Dingman mouth gag</Label>
     <Label x={25} y={318}>Gag can kink or move the tube; watch obstruction after extubation</Label>
   </Shell>
