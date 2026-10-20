@@ -44,7 +44,7 @@ describe("bounded viva audio", () => {
   it("returns the successful audio unchanged and clears the timer", async () => {
     vi.useFakeTimers();
     const bytes = new Uint8Array([1, 2, 3]).buffer;
-    const fetcher = vi.fn(async () => new Response(bytes));
+    const fetcher = vi.fn(async (_url: RequestInfo | URL, _options?: RequestInit) => new Response(bytes));
     expect(await requestAudio("test-key", "Question", "onyx", fetcher)).toEqual(bytes);
     expect(vi.getTimerCount()).toBe(0);
     expect(JSON.parse(fetcher.mock.calls[0]?.[1]?.body as string).voice).toBe("onyx");
