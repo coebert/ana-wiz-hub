@@ -13,7 +13,10 @@ export type Specialty =
   | "Neurosurgery"
   | "Urology"
   | "ENT & Head and Neck"
-  | "Obstetric";
+  | "Obstetric"
+  | "Gynaecology"
+  | "Breast & Plastics"
+  | "Ophthalmic";
 
 export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | "ivor-lewis"
   | "ruptured-aaa" | "aorto-bifem" | "amputation" | "av-fistula" | "cabg" | "vats" | "lap-chole" | "whipple" | "hip-hemi" | "caesarean"
@@ -697,6 +700,189 @@ export const operations: Operation[] = [
     related: { label: "Obstetric anaesthesia", path: "/clinical/obstetric-anaesthesia" },
     sources: ["NICE NG192"],
   },
+  // ───────────────────────── Added: further specialties ─────────────────────────
+  {
+    id: "tevar",
+    name: "Thoracic endovascular aortic repair (TEVAR)",
+    aka: ["thoracic stent graft", "descending thoracic aneurysm repair"],
+    specialty: "Vascular",
+    summary: "Stent-graft repair of descending thoracic aortic disease (aneurysm, dissection, traumatic transection or penetrating ulcer) delivered from the femoral artery under fluoroscopy.",
+    position: "Supine with arms out or tucked to allow C-arm access; left arm access may be needed for left subclavian work.",
+    bloodLossRisk: "Moderate",
+    steps: [
+      { step: "Femoral access (percutaneous or cut-down); large-bore sheath; systemic heparin.", anaesthetic: "General or local anaesthesia with sedation; arterial line (right radial is usual because the left subclavian origin may be covered). Large-bore IV access and cross-matched blood for access-vessel injury." },
+      { step: "Angiography and measurement; the planned landing zone may mean covering the left subclavian artery (with or without prior bypass).", anaesthetic: "Covering the left subclavian reduces vertebral and spinal collateral flow: higher risk of stroke and spinal cord ischaemia." },
+      { step: "Stent-graft advanced and deployed; blood pressure may be lowered briefly during deployment to prevent graft migration.", anaesthetic: "Agree the target pressure and the drug (e.g. short-acting vasodilator, or rapid ventricular pacing in some units) before deployment; restore pressure promptly afterwards." },
+      { step: "Ballooning of seal zones and completion angiography for endoleak.", anaesthetic: "Ballooning briefly occludes the aorta, causing a pressure spike proximally." },
+      { step: "Sheath removal and access closure.", anaesthetic: "Reverse heparin if asked; check distal limb perfusion." },
+    ],
+    criticalMoments: [
+      "Deployment — controlled hypotension on request",
+      "Left subclavian coverage — stroke and spinal cord ischaemia risk",
+      "After repair — keep spinal cord perfusion pressure up; check leg power repeatedly",
+    ],
+    anaestheticNotes: [
+      "ESVS guidance recommends measures to protect the spinal cord when extensive thoracic aortic coverage is planned, including cerebrospinal fluid drainage in selected high-risk patients and maintaining an adequate mean arterial pressure.",
+      "A lumbar CSF drain needs coagulation and anticoagulation planning; drain complications include headache, bleeding and infection.",
+      "Spinal cord ischaemia can be delayed: serial neurological checks after surgery; new weakness needs immediate pressure augmentation and CSF drainage if a drain is in place.",
+    ],
+    related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-anaesthesia" },
+    sources: ["ESVS 2017 thoracic aorta"],
+  },
+  {
+    id: "sleeve-gastrectomy",
+    name: "Laparoscopic sleeve gastrectomy",
+    aka: ["bariatric surgery", "weight-loss surgery"],
+    specialty: "General & GI",
+    summary: "Laparoscopic removal of most of the greater curve of the stomach, leaving a narrow tube, for severe obesity.",
+    position: "Supine, reverse Trendelenburg (head-up), often with legs apart; secure strapping and padding for a heavy patient.",
+    bloodLossRisk: "Low",
+    steps: [
+      { step: "Pneumoperitoneum and port placement; liver retractor inserted.", anaesthetic: "Ramped preoxygenation and head-up positioning; expect rapid desaturation at induction. Dose drugs by an appropriate weight scalar (lean or adjusted weight for most)." },
+      { step: "Greater curve mobilised from the omentum, dividing short gastric vessels.", anaesthetic: "Keep good muscle relaxation for workspace; recruitment and PEEP help oxygenation with pneumoperitoneum." },
+      { step: "Bougie passed orally into the stomach along the lesser curve to size the sleeve.", anaesthetic: "The anaesthetist usually passes the bougie: remove any nasogastric or temperature probe first, and pass gently — oesophageal perforation is a recognised complication. Communicate clearly with the surgeon." },
+      { step: "Stomach divided with sequential staple firings alongside the bougie; staple-line leak test (air or dye) may be done.", anaesthetic: "Withdraw the bougie before the final staple fire unless the surgeon asks otherwise, so it is not stapled in." },
+      { step: "Specimen removed and ports closed.", anaesthetic: "Multimodal opioid-sparing analgesia and PONV prophylaxis; extubate awake, head-up, fully reversed." },
+    ],
+    criticalMoments: ["Induction and intubation — rapid desaturation", "Bougie passage", "Stapling — confirm all oesophageal devices are out", "Extubation — obstructive sleep apnoea risk"],
+    anaestheticNotes: [
+      "ERAS bariatric guidance supports multimodal, opioid-sparing analgesia, PONV prophylaxis and thromboprophylaxis.",
+      "Screen for obstructive sleep apnoea (e.g. STOP-BANG); patients using CPAP should bring and use it after surgery.",
+      "Monitor neuromuscular block quantitatively and ensure full reversal before extubation.",
+    ],
+    related: { label: "Obesity and anaesthesia", path: "/clinical/obesity" },
+    sources: ["ERAS Bariatric 2022"],
+  },
+  {
+    id: "liver-resection",
+    name: "Liver resection (hepatectomy)",
+    aka: ["hepatectomy", "hemihepatectomy"],
+    specialty: "General & GI",
+    summary: "Open or laparoscopic removal of part of the liver, usually for colorectal metastases or primary liver cancer.",
+    position: "Supine; arms out. Open surgery often uses a subcostal (rooftop or J-shaped) incision.",
+    bloodLossRisk: "High",
+    steps: [
+      { step: "Laparotomy or laparoscopy; liver mobilised and intraoperative ultrasound to map lesions and vessels.", anaesthetic: "Arterial line; central venous access is common. Epidural, wound catheters or intrathecal morphine for analgesia, depending on coagulation and local practice." },
+      { step: "Inflow control: hepatic artery and portal vein to the resected part divided; intermittent Pringle manoeuvre (clamping the hepatoduodenal ligament) may be used.", anaesthetic: "Pringle reduces bleeding; it causes a small rise in afterload and a fall in venous return. Record clamp times." },
+      { step: "Parenchymal transection.", anaesthetic: "The main bleeding phase. A low central venous pressure strategy (restricting fluid, head-down, vasodilators) is often used to reduce back-bleeding from hepatic veins — balance against hypotension and air embolism risk." },
+      { step: "Haemostasis and bile-leak check; once transection is complete, restore normovolaemia.", anaesthetic: "Give fluid back after transection; check lactate, glucose and coagulation." },
+      { step: "Closure, with or without drain.", anaesthetic: "Post-hepatectomy liver failure and coagulopathy can develop over days; adjust drug choice (e.g. paracetamol dose, avoid NSAIDs if renal risk)." },
+    ],
+    criticalMoments: ["Pringle manoeuvre", "Transection — haemorrhage, venous air embolism", "Restoring volume after transection"],
+    anaestheticNotes: [
+      "ERAS liver surgery guidance recommends a low central venous pressure approach during transection and multimodal analgesia.",
+      "Major resections may cause postoperative coagulopathy — this affects the timing of epidural catheter removal.",
+      "Have cell salvage available where appropriate (oncological use depends on local policy).",
+    ],
+    sources: ["ERAS Liver 2022"],
+  },
+  {
+    id: "radical-cystectomy",
+    name: "Radical cystectomy with ileal conduit",
+    aka: ["cystectomy", "urinary diversion"],
+    specialty: "Urology",
+    summary: "Removal of the bladder (with prostate in men, or uterus and anterior vaginal wall in women) and pelvic lymph nodes for muscle-invasive bladder cancer, with urine diverted through an ileal conduit or neobladder. Open or robotic.",
+    position: "Supine, or lithotomy with steep head-down for robotic surgery.",
+    bloodLossRisk: "High",
+    steps: [
+      { step: "Access (laparotomy or robotic ports with pneumoperitoneum) and pelvic lymph node dissection.", anaesthetic: "Long case: careful pressure-point care, warming, arterial line. Steep head-down for robotic cases raises airway pressure and causes facial/airway swelling." },
+      { step: "Bladder pedicles divided and bladder (with prostate or uterus) removed.", anaesthetic: "Major pelvic venous bleeding can be sudden; urine output cannot be measured once the ureters are divided." },
+      { step: "Isolation of a segment of ileum; bowel continuity restored.", anaesthetic: "Goal-directed fluid therapy guides fluids when urine output is unavailable." },
+      { step: "Ureters joined to the ileal conduit, which is brought out as a stoma (or a neobladder is made).", anaesthetic: "Urine appears again from the stoma or catheter once joined." },
+    ],
+    criticalMoments: ["Pelvic dissection — sudden bleeding", "Ureteric division — loss of urine output monitoring", "Long head-down duration (robotic)"],
+    anaestheticNotes: [
+      "ERAS cystectomy guidance supports avoiding prolonged fasting, multimodal analgesia, thromboprophylaxis and early feeding.",
+      "Patients are often older smokers with cardiovascular and renal disease; check renal function before and after.",
+    ],
+    sources: ["ERAS Cystectomy 2013"],
+  },
+  {
+    id: "free-flap-head-neck",
+    name: "Head and neck cancer resection with free flap reconstruction",
+    aka: ["free flap", "microvascular reconstruction", "composite resection"],
+    specialty: "ENT & Head and Neck",
+    summary: "Resection of a head and neck cancer, often with neck dissection and tracheostomy, reconstructed with tissue (e.g. radial forearm or anterolateral thigh flap) whose vessels are joined microsurgically to neck vessels.",
+    position: "Supine, head extended and turned; two teams may work at once (head and donor site).",
+    bloodLossRisk: "Moderate",
+    steps: [
+      { step: "Airway secured — sometimes awake intubation or awake tracheostomy for obstructing tumours.", anaesthetic: "Plan the airway jointly with the surgeon; a shared, distorted airway is common. Avoid the flap donor arm for cannulas and blood pressure cuffs." },
+      { step: "Tumour resection and neck dissection; tracheostomy if planned.", anaesthetic: "Carotid sinus handling can cause bradycardia. Swap to the tracheostomy tube with the surgeon in a planned, step-by-step way." },
+      { step: "Flap raised at the donor site.", anaesthetic: "Long operation: warming, pressure care, urinary catheter, thromboprophylaxis." },
+      { step: "Microvascular anastomosis of flap artery and vein to neck vessels; flap inset.", anaesthetic: "Flap perfusion depends on cardiac output and blood pressure: aim for normovolaemia, normothermia and an adequate mean pressure; avoid both under-filling and over-filling (oedema)." },
+      { step: "Closure; postoperative flap monitoring.", anaesthetic: "Smooth emergence; tracheostomy care. Avoid neck ties that compress the flap vessels." },
+    ],
+    criticalMoments: ["Airway at induction", "Tracheostomy formation", "Flap anastomosis and reperfusion", "Early postoperative flap failure (needs urgent return to theatre)"],
+    anaestheticNotes: [
+      "ERAS head and neck free flap guidance supports goal-directed fluids, avoidance of fluid excess, multimodal analgesia and thromboprophylaxis.",
+      "Many patients are smokers or heavy drinkers: screen for alcohol withdrawal, malnutrition and cardiorespiratory disease.",
+    ],
+    related: { label: "Airway management", path: "/clinical/airway" },
+    sources: ["ERAS Head & Neck 2017"],
+  },
+  {
+    id: "laparoscopic-hysterectomy",
+    name: "Total laparoscopic hysterectomy",
+    aka: ["TLH", "hysterectomy"],
+    specialty: "Gynaecology",
+    summary: "Laparoscopic removal of the uterus (and often tubes and ovaries) for benign disease or early cancer.",
+    position: "Lithotomy with steep Trendelenburg (head-down); arms tucked; anti-slip mattress.",
+    bloodLossRisk: "Moderate",
+    steps: [
+      { step: "Uterine manipulator inserted vaginally; pneumoperitoneum and ports.", anaesthetic: "Check position and padding before head-down; watch airway pressures and end-tidal CO2 after insufflation and tilting." },
+      { step: "Division of round ligaments, uterine vessels and ligaments.", anaesthetic: "Bleeding from uterine vessels can be brisk; ureteric injury is a surgical risk near this step." },
+      { step: "Colpotomy (cutting the vagina around the cervix) and removal of the uterus vaginally.", anaesthetic: "Loss of pneumoperitoneum is common at this point." },
+      { step: "Closure of the vaginal vault and port sites.", anaesthetic: "High PONV risk: multimodal prophylaxis. Check for facial and airway oedema after long head-down." },
+    ],
+    criticalMoments: ["Steep head-down with pneumoperitoneum", "Uterine vessel division", "Emergence — PONV"],
+    anaestheticNotes: [
+      "ERAS gynaecological/oncology guidance supports minimal fasting, carbohydrate loading, PONV prophylaxis, opioid-sparing analgesia and thromboprophylaxis.",
+      "Lithotomy carries risk of common peroneal nerve injury and compartment syndrome in long cases.",
+    ],
+    sources: ["ERAS Gynaecology 2019"],
+  },
+  {
+    id: "mastectomy-reconstruction",
+    name: "Mastectomy with immediate breast reconstruction",
+    aka: ["DIEP flap", "breast reconstruction", "implant reconstruction"],
+    specialty: "Breast & Plastics",
+    summary: "Removal of breast tissue (with sentinel node biopsy or axillary clearance) and same-operation reconstruction with an implant or the patient's own tissue, such as a free DIEP flap from the abdomen.",
+    position: "Supine with arms out on boards; sat up during surgery to check symmetry.",
+    bloodLossRisk: "Moderate",
+    steps: [
+      { step: "Mastectomy and axillary surgery; blue dye or isotope may be used for sentinel node.", anaesthetic: "Blue dye can cause falsely low pulse oximetry readings and, rarely, anaphylaxis." },
+      { step: "Implant reconstruction: pocket formed and implant placed. Flap reconstruction: abdominal flap raised on deep inferior epigastric vessels.", anaesthetic: "Regional options include paravertebral or chest wall fascial plane blocks; for flaps, abdominal wall (e.g. TAP or rectus sheath) catheters help." },
+      { step: "Free flap: microvascular anastomosis to the internal mammary vessels.", anaesthetic: "As for any free flap: warm, well filled but not overloaded, adequate blood pressure; avoid prolonged vasoconstriction." },
+      { step: "Patient sat up to check shape; closure with drains.", anaesthetic: "Secure the airway and lines before sitting up; check blood pressure after position change." },
+    ],
+    criticalMoments: ["Blue dye injection", "Flap anastomosis", "Sitting the patient up"],
+    anaestheticNotes: [
+      "ERAS breast reconstruction consensus supports PONV prophylaxis, multimodal analgesia, normothermia and avoiding fluid excess.",
+      "Chronic post-mastectomy pain is common; good acute analgesia may help.",
+    ],
+    sources: ["ERAS Breast Reconstruction 2017"],
+  },
+  {
+    id: "cataract-surgery",
+    name: "Cataract surgery (phacoemulsification)",
+    aka: ["phaco", "lens replacement"],
+    specialty: "Ophthalmic",
+    summary: "Day-case removal of the clouded lens by ultrasound and insertion of an intraocular lens, usually under local anaesthesia.",
+    position: "Supine and flat, head still, face draped; the patient must be able to lie flat for the procedure.",
+    bloodLossRisk: "Low",
+    steps: [
+      { step: "Local anaesthesia: topical with intracameral, sub-Tenon's, or less often peribulbar/retrobulbar block.", anaesthetic: "Needle blocks carry risks of globe perforation, retrobulbar haemorrhage and brainstem anaesthesia; sub-Tenon's and topical reduce needle risk. Monitoring, IV access and resuscitation equipment must be available." },
+      { step: "Small corneal incisions; capsulorhexis (opening the lens capsule).", anaesthetic: "The patient must stay still and avoid coughing; check they can lie flat and communicate. Minimal or no sedation is preferred." },
+      { step: "Phacoemulsification of the lens and aspiration.", anaesthetic: "Ocular manipulation can trigger the oculocardiac reflex (bradycardia), though less often than in squint surgery." },
+      { step: "Intraocular lens inserted; incisions self-seal.", anaesthetic: "Patient goes home the same day." },
+    ],
+    criticalMoments: ["Needle block placement", "Patient movement during intraocular steps"],
+    anaestheticNotes: [
+      "Joint RCoA/RCOphth guidance: routine fasting is not required for topical or sub-Tenon's LA without sedation, and routine blood tests are not needed; check anticoagulation but usually continue it (block choice may change).",
+      "General anaesthesia is reserved for patients who cannot cooperate or lie still.",
+    ],
+    sources: ["RCoA/RCOphth LA 2012"],
+  },
 ];
 
 export const specialties: Specialty[] = [
@@ -708,6 +894,9 @@ export const specialties: Specialty[] = [
   "Urology",
   "ENT & Head and Neck",
   "Obstetric",
+  "Gynaecology",
+  "Breast & Plastics",
+  "Ophthalmic",
 ];
 
 /** Case-insensitive match across name, aliases, specialty, summary and all step text. */
