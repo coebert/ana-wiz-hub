@@ -298,11 +298,6 @@ const VivaQuestionLibrary = () => {
     // Streamed audio picks up the new rate from the next segment.
   }, [playbackRate]);
 
-  /** Skip the currently-playing audio segment by `delta` seconds (positive or negative). */
-  const seekBy = (delta: number) => {
-    // Streamed audio plays as it is generated, so seeking is not available.
-    void delta;
-  };
 
   useEffect(() => {
     const load = async () => {
@@ -837,30 +832,6 @@ const VivaQuestionLibrary = () => {
                   </button>
                 );
               })}
-            </div>
-            <div className="ml-auto flex items-center gap-1">
-              <Button
-                type="button"
-                size="sm"
-                variant="outline"
-                onClick={() => seekBy(-15)}
-                disabled={!speakingId}
-                className="h-7 px-2 text-xs"
-                title="Skip back 15 seconds in current segment"
-              >
-                <Rewind className="h-3.5 w-3.5 mr-1" /> 15s
-              </Button>
-              <Button
-                type="button"
-                size="sm"
-                variant="outline"
-                onClick={() => seekBy(15)}
-                disabled={!speakingId}
-                className="h-7 px-2 text-xs"
-                title="Skip forward 15 seconds in current segment"
-              >
-                <FastForward className="h-3.5 w-3.5 mr-1" /> 15s
-              </Button>
             </div>
           </div>
 
