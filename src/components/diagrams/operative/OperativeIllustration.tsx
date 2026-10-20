@@ -15,7 +15,7 @@ export function IllustrationDefs({ id }: { id: string }) {
       <stop offset="1" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.45" />
     </radialGradient>
     {[["artery", artery], ["vein", vein], ["graft", graft], ["instrument", ink]].map(([name, color]) =>
-      <linearGradient key={name} id={`${id}-${name}`} x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <linearGradient key={name} id={`${id}-${name}`} x1="0" y1="0" x2="520" y2="0" gradientUnits="userSpaceOnUse">
         <stop offset="0" stopColor={color} /><stop offset="0.42" stopColor={color} />
         <stop offset="0.5" stopColor="hsl(var(--card))" stopOpacity="0.65" />
         <stop offset="0.6" stopColor={color} /><stop offset="1" stopColor={color} />

@@ -10,14 +10,24 @@ const MUTED = "hsl(var(--muted-foreground))";
 const GRAFT = "hsl(var(--perioperative))";
 const FILL = "hsl(var(--muted))";
 
-const Label = ({ x, y, children, anchor = "start" }: { x: number; y: number; children: string; anchor?: "start" | "middle" | "end" }) => (
-  <text x={x} y={y} fontSize={12} fill={INK} textAnchor={anchor}>{children}</text>
-);
+const Label = ({ x, y, children, anchor = "start" }: { x: number; y: number; children: string; anchor?: "start" | "middle" | "end" }) => {
+  const limit = anchor === "start" ? Math.max(16, Math.floor((505 - x) / 6.8)) : 72;
+  const lines: string[] = [];
+  for (const word of children.split(" ")) {
+    const last = lines.length - 1;
+    if (last < 0 || `${lines[last]} ${word}`.length > limit) lines.push(word);
+    else lines[last] += ` ${word}`;
+  }
+  const startY = y >= 300 ? y - (lines.length - 1) * 15 : y;
+  return <text x={x} y={startY} fontSize={12} fill={INK} textAnchor={anchor}>
+    {lines.map((line, i) => <tspan key={i} x={x} dy={i === 0 ? 0 : 15}>{line}</tspan>)}
+  </text>;
+};
 const Clamp = ({ x, y, w = 34 }: { x: number; y: number; w?: number }) => (
   <g stroke={INK} strokeWidth={2} fill={FILL}><path d={`M${x-w/2} ${y-5}H${x+w/2}M${x-w/2} ${y+5}H${x+w/2}M${x+w/2} ${y-5}l13 -12M${x+w/2} ${y+5}l13 12`} /><circle cx={x+w/2+16} cy={y-20} r={4} /><circle cx={x+w/2+16} cy={y+20} r={4} /><title>Vascular clamp</title></g>
 );
 
-function Shell({ id, title, desc, children, h = 320 }: { id: string; title: string; desc: string; children: React.ReactNode; h?: number }) {
+function Shell({ id, title, desc, children, h = 340 }: { id: string; title: string; desc: string; children: React.ReactNode; h?: number }) {
   return (
     <DiagramFigure id={id} title={title} description={desc} showCaption className="my-4">
       <svg viewBox={`0 0 520 ${h}`} className="w-full max-w-xl h-auto rounded-lg border border-border bg-card" {...svgImgProps({ id })}>
