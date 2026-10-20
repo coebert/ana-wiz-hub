@@ -29,7 +29,8 @@ export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | 
   | "dental" | "circumcision" | "paediatric-hernia" | "mitral" | "pneumonectomy"
   | "gastric-bypass" | "vitrectomy" | "microdiscectomy" | "manual-placenta"
   | "cleft" | "tracheostomy" | "nephrectomy" | "awake-craniotomy" | "scoliosis"
-  | "liver-transplant" | "adrenalectomy" | "fess";
+  | "liver-transplant" | "adrenalectomy" | "fess"
+  | "laryngectomy" | "glossectomy" | "microlaryngoscopy";
 
 export interface OperativeStep {
   /** What the surgeon does. */
