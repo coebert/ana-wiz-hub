@@ -31,6 +31,7 @@ const PodcastDownloads = lazy(() => import("./pages/PodcastDownloads"));
 const GlossaryAudit = lazy(() => import("./pages/GlossaryAudit"));
 const VivaHub = lazy(() => import("./pages/VivaHub"));
 const VivaQuestionLibrary = lazy(() => import("./pages/VivaQuestionLibrary"));
+const VivaScores = lazy(() => import("./pages/VivaScores"));
 const CoverageBarsResponsiveTest = lazy(() => import("./pages/CoverageBarsResponsiveTest"));
 const DrugsLibrary = lazy(() => import("./pages/DrugsLibrary"));
 const DrugDetail = lazy(() => import("./pages/DrugDetail"));
@@ -183,6 +184,7 @@ const App = () => (
           <Route path="/glossary-audit" element={<GlossaryAudit />} />
           <Route path="/viva" element={<VivaHub />} />
           <Route path="/viva/library" element={<VivaQuestionLibrary />} />
+          <Route path="/viva/scores" element={<VivaScores />} />
           <Route path="/viva/voice" element={<VoiceViva />} />
           <Route path="/dev/coverage-bars" element={<CoverageBarsResponsiveTest />} />
           <Route path="/dev/seo-indexing" element={<RequireAdmin><SeoIndexing /></RequireAdmin>} />

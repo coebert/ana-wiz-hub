@@ -8,8 +8,8 @@ describe("viva pass-rate comparison", () => {
   it("has no unverified FFICM figures", () => {
     expect(passRatesFor("fficm")).toBeNull();
   });
-  it("counts 6/10 as meeting the practice pass mark", () => {
-    expect(practicePassShare([6, 5, 8, 4])).toBe(50);
+  it("counts 5/10 as meeting the practice pass mark", () => {
+    expect(practicePassShare([5, 4, 8, 3])).toBe(50);
     expect(practicePassShare([])).toBeNull();
   });
   it("weights sittings by candidates", () => {

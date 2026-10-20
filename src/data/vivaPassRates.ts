@@ -63,8 +63,8 @@ export function weightedOverallPassRate(table: PassRateTable): number {
   return Math.round((passed / n) * 1000) / 10;
 }
 
-/** Share of a learner's saved attempts that met the practice pass mark (score ≥ 6/10). */
-export const PRACTICE_PASS_MARK = 6;
+/** Share of a learner's saved attempts that met the practice pass mark (score ≥ 5/10, the app rubric bare pass). */
+export const PRACTICE_PASS_MARK = 5;
 export function practicePassShare(scores: number[]): number | null {
   if (scores.length === 0) return null;
   const hit = scores.filter((s) => s >= PRACTICE_PASS_MARK).length;
