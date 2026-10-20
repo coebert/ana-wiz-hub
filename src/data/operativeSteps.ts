@@ -21,7 +21,8 @@ export type Specialty =
 export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | "ivor-lewis"
   | "ruptured-aaa" | "aorto-bifem" | "amputation" | "av-fistula" | "cabg" | "vats" | "lap-chole" | "whipple" | "hip-hemi" | "caesarean"
   | "avr" | "anterior-resection" | "laparotomy" | "thr" | "tkr" | "spine" | "craniotomy" | "turp" | "robotic-prostate" | "thyroid" | "tonsil"
-  | "tevar" | "sleeve" | "liver" | "cystectomy" | "free-flap" | "hysterectomy" | "breast" | "cataract";
+  | "tevar" | "sleeve" | "liver" | "cystectomy" | "free-flap" | "hysterectomy" | "breast" | "cataract"
+  | "carotid-stent" | "femoral-endarterectomy" | "kidney-transplant" | "inguinal-hernia" | "appendicectomy" | "pituitary";
 
 export interface OperativeStep {
   /** What the surgeon does. */
