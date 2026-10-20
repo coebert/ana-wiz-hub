@@ -19,6 +19,7 @@ interface RecentExpansion {
 }
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
+  { topicId: "operative-steps", section: "perioperative", title: "Operations Library", note: "New page: searchable surgical steps for 26 operations — carotid, aortic and bypass surgery and more — with what each step means for the anaesthetist, plus diagrams." },
   { topicId: "icu-general-unit", section: "intensive-care", title: "The General Adult ICU", note: "New page: GPICS V3 baseline staffing and NHS 2019/20 general critical care costs." },
   { topicId: "icu-cardiac-unit", section: "intensive-care", title: "The Cardiothoracic ICU", note: "New page: GPICS V3 cardiothoracic staffing additions and NHS cardiac surgical costs." },
   { topicId: "icu-neuro-unit", section: "intensive-care", title: "The Neurocritical Care Unit", note: "New page: GPICS V3 neuro staffing and specialist access, plus NHS neurosciences costs." },

@@ -230,6 +230,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page linked from Critical Care Overview: three lessons (recognition and first doses, refractory anaphylaxis, after the reaction) quoting RCUK 2021; five-question quiz. Source-checked, not consultant-reviewed.",
   },
+  "operative-steps": {
+    status: "expanded",
+    note: "New searchable library of 26 operations (8 vascular) with surgical steps, per-step anaesthetic notes, critical moments and five schematic diagrams; eight-question quiz. Sources checked to exist via Crossref; verbatim excerpts not yet captured. Not consultant-reviewed.",
+  },
   "icu-cost-timeline": {
     status: "expanded",
     note: "New page linked from ICU Costs and ICU Outcomes: three lessons on NHS adult critical care bed-day costs 2013/14–2021/22 from published schedules (averages labelled our arithmetic), organ-support rows and caveats; five-question quiz. Source-checked, not consultant-reviewed.",

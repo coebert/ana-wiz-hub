@@ -142,6 +142,7 @@ export const seeAlsoMap: Record<string, string[]> = {
   "toxicology": ["acute-liver-failure", "clinical-incidents", "nsaids-paracetamol", "pharmacokinetics"],
 
   // ── Perioperative ──
+  "operative-steps": ["surgical-protocols", "vascular-anaesthesia", "patient-positioning", "preoperative-assessment"],
   "preoperative-assessment": ["cardiovascular-disease", "respiratory-disease", "elderly-anaesthesia", "enhanced-recovery", "endocrine-disease"],
   "enhanced-recovery": ["preoperative-assessment", "perioperative-fluids", "day-surgery", "pain-medicine"],
   "perioperative-fluids": ["starling-forces", "renal-physiology", "enhanced-recovery", "cardiac-output-monitoring"],

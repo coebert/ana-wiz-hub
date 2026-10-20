@@ -156,6 +156,7 @@ export const TOPIC_ROUTES: ReadonlyArray<readonly [string, string]> = [
   ["/clinical/elderly-anaesthesia", "ElderlyAnaesthesiaTopic"],
 
   // Perioperative
+  ["/perioperative/operative-steps", "OperativeStepsTopic"],
   ["/perioperative/cardiovascular-disease", "CardiovascularDiseaseTopic"],
   ["/perioperative/respiratory-disease", "RespiratoryDiseaseTopic"],
   ["/perioperative/endocrine-disease", "EndocrineDiseaseTopic"],
