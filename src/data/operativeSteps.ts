@@ -149,7 +149,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Induction — limited oxygen reserve", "Insufflation and head-up", "Stapling near gastric tube", "Postoperative bleeding, leak or respiratory compromise"],
     anaestheticNotes: ["VTE prevention, early mobilisation and safe nutrition follow the bariatric programme.", "Sleep-apnoea support is individualised; do not replace the patient's established plan with a blanket rule."],
-    sources: ["StatPearls Roux-en-Y", "Bariatric Anaesthesia Review", "ERAS Bariatric 2022"],
+    sources: ["NHS Roux-en-Y", "Bariatric Anaesthesia Review", "ERAS Bariatric 2022"],
   },
   {
     id: "pars-plana-vitrectomy", name: "Pars plana vitrectomy and retinal repair", aka: ["PPV", "vitreoretinal surgery", "retinal detachment", "intraocular gas"],
@@ -181,7 +181,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Turning prone — airway/eye/line protection", "Level confirmation", "Disc removal — neural or dural injury", "New postoperative neurological deficit"],
     anaestheticNotes: ["Multimodal analgesia and early mobilisation are individualised to the procedure and any complication.", "Fusion-specific blood-loss estimates and protocols do not automatically apply to microdiscectomy."],
-    sources: ["StatPearls Microdiscectomy", "ASA Visual Loss 2019"],
+    sources: ["UCLH Microdiscectomy", "ASA Visual Loss 2019"],
   },
   {
     id: "manual-removal-placenta", name: "Manual removal of retained placenta", aka: ["MROP", "retained placenta", "manual placental removal"],

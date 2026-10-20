@@ -61,4 +61,33 @@ describe("operations library", () => {
   it("has unique ids", () => {
     expect(new Set(operations.map((o) => o.id)).size).toBe(operations.length);
   });
+
+  it.each([
+    ["paediatric-dental-extractions", "Paediatric", "dental"],
+    ["paediatric-circumcision", "Paediatric", "circumcision"],
+    ["paediatric-inguinal-hernia", "Paediatric", "paediatric-hernia"],
+    ["mitral-valve-surgery", "Cardiothoracic", "mitral"],
+    ["pneumonectomy", "Cardiothoracic", "pneumonectomy"],
+    ["roux-en-y-gastric-bypass", "General & GI", "gastric-bypass"],
+    ["pars-plana-vitrectomy", "Ophthalmic", "vitrectomy"],
+    ["lumbar-microdiscectomy", "Orthopaedic & Spine", "microdiscectomy"],
+    ["manual-removal-placenta", "Obstetric", "manual-placenta"],
+  ])("retains specialty, stages, per-stage notes and quoted sources for %s", (id, specialty, diagram) => {
+    const op = operations.find((entry) => entry.id === id);
+    expect(op?.specialty).toBe(specialty);
+    expect(op?.diagram).toBe(diagram);
+    expect(op?.steps).toHaveLength(5);
+    expect(op?.steps.every((step) => Boolean(step.anaesthetic))).toBe(true);
+    expect(op?.criticalMoments.length).toBeGreaterThanOrEqual(3);
+    const refs = (op?.sources ?? []).map((label) => topicReferences["operative-steps"].find((ref) => ref.label === label));
+    expect(refs.some((ref) => Boolean(ref?.excerpt))).toBe(true);
+    expect(searchOperations("", specialty as Parameters<typeof searchOperations>[1]).map((entry) => entry.id)).toContain(id);
+  });
+
+  it("finds this batch through aliases and surgical hazards", () => {
+    expect(searchOperations("MROP").map((op) => op.id)).toContain("manual-removal-placenta");
+    expect(searchOperations("RYGB").map((op) => op.id)).toContain("roux-en-y-gastric-bypass");
+    expect(searchOperations("intraocular gas", "Ophthalmic").map((op) => op.id)).toContain("pars-plana-vitrectomy");
+    expect(searchOperations("child herniotomy", "Paediatric").map((op) => op.id)).toContain("paediatric-inguinal-hernia");
+  });
 });
