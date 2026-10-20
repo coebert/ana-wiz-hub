@@ -695,7 +695,7 @@ const BurrHoleDiagram = () => (
     <circle cx={140} cy={85} r={9} fill="hsl(var(--card))" stroke={INK} strokeWidth={2} />
     <circle cx={110} cy={210} r={9} fill="hsl(var(--card))" stroke={INK} strokeWidth={2} />
     <path d="M110 210 C60 240, 40 260, 30 290" stroke={GRAFT} strokeWidth={3} fill="none" />
-    <Label x={160} y={40}>Burr hole</Label><Label x={300} y={165}>Brain</Label>
+    <Label x={25} y={70}>Burr hole</Label><Label x={300} y={165}>Brain</Label>
     <Label x={175} y={200}>Chronic subdural collection</Label><Label x={40} y={270}>Drain</Label>
     <Label x={25} y={312}>Reverse anticoagulation; smooth emergence for neuro check</Label>
   </Shell>
@@ -710,7 +710,7 @@ const ShoulderDiagram = () => (
     <circle cx={198} cy={102} r={6} fill={GRAFT} />
     <path d="M330 60 L330 160" stroke={ART} strokeWidth={2} /><path d="M322 70 L330 60 L338 70 M322 150 L330 160 L338 150" stroke={ART} fill="none" />
     <Label x={210} y={95}>Interscalene block site</Label><Label x={240} y={190}>BP cuff on arm</Label>
-    <Label x={345} y={115}>Height difference: head BP lower</Label>
+    <Label x={345} y={105}>Head higher:</Label><Label x={345} y={122}>brain BP lower</Label>
     <Label x={25} y={312}>Phrenic palsy risk; avoid hypotension when sitting up</Label>
   </Shell>
 );
@@ -723,7 +723,7 @@ const MandibleDiagram = () => (
     <path d="M140 150 Q260 190 380 150" stroke={MUTED} strokeWidth={6} fill="none" />
     <path d="M240 30 L250 120 L270 140" stroke={VEIN} strokeWidth={5} fill="none" />
     <Label x={270} y={40}>Nasotracheal tube</Label><Label x={340} y={290}>Fracture + miniplate</Label>
-    <Label x={60} y={140}>Teeth in occlusion</Label>
+    <Label x={170} y={205}>Teeth in occlusion</Label>
     <Label x={25} y={312}>Wired jaws: wire cutters travel with the patient</Label>
   </Shell>
 );
