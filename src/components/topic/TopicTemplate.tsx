@@ -54,6 +54,12 @@ interface TopicTemplateProps {
   backLabel?: string;
   accentColor?: string;
   disableAutoTOC?: boolean;
+  /**
+   * Optional tool strip rendered above the learning objectives — for pages
+   * whose main job is looking something up (e.g. a searchable library).
+   * Keep it short: one search box or filter row, not teaching content.
+   */
+  preContent?: ReactNode;
 
   // Required structural blocks
   /** 3–6 short, action-led objectives shown at the top of every topic. */
@@ -123,6 +129,7 @@ export const TopicTemplate = ({
   backLabel,
   accentColor,
   disableAutoTOC,
+  preContent,
   objectives,
   coreConcepts,
   keyPoints,
@@ -311,6 +318,7 @@ export const TopicTemplate = ({
             topicDescription={subtitle}
           />
         </div>
+        {preContent}
         {showObjectives && (
           <div id="objectives" className="scroll-mt-24">
             {sectionExamMapping?.objectives && (
