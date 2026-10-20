@@ -365,8 +365,8 @@ const CraniotomyDiagram = () => (
     <Label x={180} y={170}>Tumour</Label>
     <Label x={395} y={104}>Pin fixation</Label>
     <Label x={20} y={30}>Pinning: deepen anaesthesia / local to stop BP spike</Label>
-    <Label x={300} y={260}>Keep CO2 normal,</Label>
-    <Label x={300} y={276}>head up, smooth wake-up</Label>
+    <Label x={395} y={250}>Keep CO2 normal,</Label>
+    <Label x={395} y={266}>head up,</Label><Label x={395} y={282}>smooth wake-up</Label>
   </Shell>
 );
 
