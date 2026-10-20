@@ -1,9 +1,9 @@
 # Admin metrics audit fixes
 
 ## Operations Library: next expansion
-- [ ] Add six sourced operations across vascular, general surgery, urology and neurosurgery.
-- [ ] Add procedure diagrams and regression checks; verify search and specialty grouping in the preview.
-- [ ] Regenerate search and private audit records and upload the updated audit corpus.
+- [x] Add six sourced operations across vascular, general surgery, urology and neurosurgery.
+- [x] Add procedure diagrams and regression checks; verify search and specialty grouping in the preview.
+- [x] Regenerate search and private audit records and upload the updated audit corpus.
 
 ## Viva audio timeout
 - [x] Bound voice generation and all callers; surface a readable retry fallback.
