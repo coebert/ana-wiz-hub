@@ -1,9 +1,9 @@
 # Admin metrics audit fixes
 
 ## Operations Library: October 20 next batch
-- [ ] Add the next source-led operations across paediatric, cardiac, thoracic, GI, eye, spine and obstetric practice.
-- [ ] Add diagrams; verify specialty filtering, procedure anchors and source integrity.
-- [ ] Regenerate search and audit coverage, run regression checks and upload the private audit copy.
+- [x] Add nine source-led operations across paediatric, cardiac, thoracic, GI, eye, spine and obstetric practice (53 total).
+- [x] Add diagrams; verify specialty filtering, procedure anchors and source integrity (14 new excerpts checked against fetched text).
+- [x] Regenerate search and audit coverage, run 22 regression checks and upload the private audit copy.
 
 ## Operations Library: next expansion
 - [x] Add six sourced operations across vascular, general surgery, urology and neurosurgery.
