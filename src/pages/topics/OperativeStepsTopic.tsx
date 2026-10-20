@@ -28,7 +28,7 @@ const quiz = [
 
 function OperationCard({ op, open }: { op: Operation; open: boolean }) {
   return (
-    <details id={op.id} open={open} className="group rounded-xl border border-border bg-card scroll-mt-[21rem]">
+    <details id={op.id} open={open} className="group rounded-xl border border-border bg-card scroll-mt-28">
       <summary className="cursor-pointer list-none p-4 flex flex-wrap items-baseline justify-between gap-2">
         <div>
           <h3 className="text-lg font-serif font-bold text-foreground">{op.name}</h3>
@@ -73,14 +73,13 @@ function OperationCard({ op, open }: { op: Operation; open: boolean }) {
 
 /**
  * Search + specialty filter for the operations library. Rendered at the top of
- * the page so learners can look up a specific operation as soon as they arrive,
- * and pinned just under the header while the list itself is on screen.
+ * the page so learners can look up a specific operation as soon as they arrive.
+ * It stays at the top of the page and scrolls away with it.
  */
 export function OperationsSearchBar({
   query,
   specialty,
   resultCount,
-  sticky,
   onQuery,
   onSpecialty,
   onEnter,
@@ -89,7 +88,6 @@ export function OperationsSearchBar({
   query: string;
   specialty: Filter;
   resultCount: number;
-  sticky: boolean;
   onQuery: (value: string) => void;
   onSpecialty: (value: Filter) => void;
   onEnter: () => void;
@@ -100,13 +98,7 @@ export function OperationsSearchBar({
     ? `${resultCount} of ${operations.length} operations shown for "${trimmed}" — press Enter to open the first one`
     : `${resultCount} of ${operations.length} operations shown`;
   return (
-    <div
-      className={`rounded-xl border px-3 py-3 sm:px-4 ${
-        sticky
-          ? "sticky top-[7rem] z-30 border-border bg-background shadow-sm 2xl:top-[5.5rem]"
-          : "border-border bg-muted/30"
-      }`}
-    >
+    <div className="rounded-xl border border-border bg-muted/30 px-3 py-3 sm:px-4">
       <label htmlFor="operations-search" className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
         Search the operations library
       </label>
@@ -190,25 +182,12 @@ export default function OperativeStepsTopic() {
   const { hash } = useLocation();
   const target = hash.replace("#", "");
   const results = useMemo(() => searchOperations(query, specialty), [query, specialty]);
-  const libraryRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [sticky, setSticky] = useState(false);
 
   useEffect(() => {
     if (target) document.getElementById(target)?.scrollIntoView({ block: "start" });
   }, [target]);
 
-  // Pin the search bar only while the list is on screen, so it never floats
-  // over the objectives, quiz or references further down the page.
-  useEffect(() => {
-    const el = libraryRef.current;
-    if (!el || typeof IntersectionObserver === "undefined") return;
-    const observer = new IntersectionObserver(([entry]) => setSticky(entry.isIntersecting), {
-      rootMargin: "-80px 0px 0px 0px",
-    });
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   const openFirstResult = () => {
     const first = results[0];
@@ -229,7 +208,6 @@ export default function OperativeStepsTopic() {
           query={query}
           specialty={specialty}
           resultCount={results.length}
-          sticky={sticky}
           onQuery={setQuery}
           onSpecialty={setSpecialty}
           onEnter={openFirstResult}
@@ -257,7 +235,7 @@ export default function OperativeStepsTopic() {
             For specialty-level plans see <Link to="/clinical/surgical-protocols" className="text-primary underline">Perioperative Protocols by Surgery Type</Link>.
           </p>
           <ExamSection id="operations-library" exams={exams}>
-            <div ref={libraryRef}>
+            <div>
               <OperationsLibrary results={results} target={target} query={query} />
             </div>
           </ExamSection>

@@ -19,7 +19,6 @@ function Harness({ onQuery = vi.fn(), onSpecialty = vi.fn(), onEnter = vi.fn(), 
       query={query}
       specialty="All"
       resultCount={resultCount}
-      sticky={false}
       onQuery={onQuery}
       onSpecialty={onSpecialty}
       onEnter={onEnter}
