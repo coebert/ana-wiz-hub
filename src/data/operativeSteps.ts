@@ -28,7 +28,8 @@ export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | 
   | "pyloromyotomy" | "burr-hole" | "shoulder" | "mandible"
   | "dental" | "circumcision" | "paediatric-hernia" | "mitral" | "pneumonectomy"
   | "gastric-bypass" | "vitrectomy" | "microdiscectomy" | "manual-placenta"
-  | "cleft" | "tracheostomy" | "nephrectomy" | "awake-craniotomy" | "scoliosis";
+  | "cleft" | "tracheostomy" | "nephrectomy" | "awake-craniotomy" | "scoliosis"
+  | "liver-transplant" | "adrenalectomy" | "fess";
 
 export interface OperativeStep {
   /** What the surgeon does. */
@@ -1303,6 +1304,55 @@ export const operations: Operation[] = [
     criticalMoments: ["Prone positioning", "Correction manoeuvre — spinal cord ischaemia", "Major blood loss during long instrumentation"],
     anaestheticNotes: ["Blood pressure, haemoglobin and anaesthetic depth all affect neuromonitoring — keep them stable.", "Exact transfusion and tranexamic acid regimens follow local protocols; this summary does not set them."],
     sources: ["Hudec Neuromuscular Scoliosis 2023"],
+  },
+  {
+    id: "liver-transplantation", name: "Orthotopic liver transplantation", aka: ["liver transplant", "OLT", "LT", "hepatectomy and graft implantation"],
+    specialty: "General & GI", diagram: "liver-transplant", bloodLossRisk: "High",
+    summary: "The diseased liver is removed and a donor liver implanted, with vascular anastomoses (caval, portal, arterial) and biliary reconstruction. Three phases — dissection, anhepatic and neohepatic — each bring distinct anaesthetic problems, peaking at graft reperfusion.",
+    position: "Supine with arms out; access for large-bore lines, cell salvage and possible venovenous bypass.",
+    steps: [
+      { step: "Assessment of end-stage liver disease: coagulopathy, portopulmonary hypertension, hepatopulmonary syndrome, hepatorenal syndrome, cardiomyopathy and sarcopenia.", anaesthetic: "Portopulmonary hypertension and cardiac disease can make transplant unsafe; check echocardiography and right heart assessment per the transplant unit protocol." },
+      { step: "Dissection (pre-anhepatic) phase: mobilisation of the native liver despite portal hypertension and collaterals.", anaesthetic: "Major bleeding is common: large-bore access, rapid infuser, cell salvage and point-of-care viscoelastic testing guide replacement. Monitor for hypocalcaemia from citrate." },
+      { step: "Anhepatic phase: vascular clamping (caval or piggyback technique) and removal of the native liver.", anaesthetic: "Venous return falls with full caval clamping; no liver means no citrate or lactate clearance and worsening acidosis. Watch potassium." },
+      { step: "Graft implantation and reperfusion through the portal vein.", anaesthetic: "Post-reperfusion syndrome: sudden hypotension, bradycardia, hyperkalaemia and pulmonary hypertension; intracardiac thrombus can occur. Prepare vasopressors, calcium and treatment for hyperkalaemia; transoesophageal echo helps." },
+      { step: "Neohepatic phase: arterial and biliary anastomoses, haemostasis; transfer to critical care.", anaesthetic: "Graft function shows as falling lactate, improving coagulation and acid-base. Avoid fluid overload that congests the graft." },
+    ],
+    criticalMoments: ["Dissection — massive haemorrhage", "Caval clamping — loss of venous return", "Reperfusion — post-reperfusion syndrome and hyperkalaemia"],
+    anaestheticNotes: ["Specialist transplant anaesthesia team; protocols for transfusion and coagulation management are centre-specific.", "Intracardiac thrombus and right heart failure may need advanced support including mechanical circulatory support."],
+    sources: ["Ramanujan Liver Transplant 2026"],
+  },
+  {
+    id: "adrenalectomy-phaeochromocytoma", name: "Laparoscopic adrenalectomy for phaeochromocytoma", aka: ["phaeochromocytoma", "pheochromocytoma", "paraganglioma", "adrenalectomy"],
+    specialty: "General & GI", diagram: "adrenalectomy", bloodLossRisk: "Low",
+    summary: "Removal of a catecholamine-secreting adrenal tumour, usually laparoscopically. Tumour handling can cause severe hypertension and arrhythmias; after the adrenal vein is tied, blood pressure and glucose can fall sharply.",
+    position: "Lateral decubitus (transperitoneal) or prone (retroperitoneoscopic).",
+    steps: [
+      { step: "Preoperative preparation with an endocrinologist: biochemical confirmation, cardiac assessment and medical preparation (commonly α-blockade, then β-blockade if needed).", anaesthetic: "Practice varies: a 21-centre review found many patients had surgery without α-blockade with low complication rates, so follow the local multidisciplinary pathway." },
+      { step: "Induction and arterial line before induction; vasodilators and short-acting β-blocker ready.", anaesthetic: "Avoid triggers of catecholamine release: light anaesthesia, hypoxia, hypercapnia, histamine-releasing drugs and metoclopramide." },
+      { step: "Pneumoperitoneum and tumour mobilisation.", anaesthetic: "Insufflation and handling cause hypertensive surges and tachyarrhythmias; treat promptly (e.g. magnesium, phentolamine, nitroprusside or GTN, esmolol per local practice) and tell the surgeon." },
+      { step: "Ligation of the adrenal vein.", anaesthetic: "Catecholamine levels fall: expect hypotension needing fluid and vasopressors. Stop vasodilators in advance." },
+      { step: "Tumour removal, closure and postoperative monitoring in HDU.", anaesthetic: "Monitor for persistent hypotension and rebound hypoglycaemia; give steroid cover after bilateral adrenalectomy." },
+    ],
+    criticalMoments: ["Tumour handling — hypertensive crisis", "Adrenal vein ligation — sudden hypotension", "Early postoperative — hypoglycaemia"],
+    anaestheticNotes: ["Close surgeon–anaesthetist communication during handling is essential.", "There are no randomised trials comparing preparation strategies."],
+    related: { label: "Endocrine emergencies", path: "/clinical/endocrine-emergencies" },
+    sources: ["Groeben Catecholamine Tumours 2020"],
+  },
+  {
+    id: "endoscopic-sinus-surgery", name: "Functional endoscopic sinus surgery (FESS)", aka: ["FESS", "ESS", "sinus surgery", "nasal polypectomy"],
+    specialty: "ENT & Head and Neck", diagram: "fess", bloodLossRisk: "Low",
+    summary: "Endoscopic clearance of diseased sinus tissue and polyps to restore drainage. Small amounts of bleeding ruin the endoscopic view, so the anaesthetic aim is a still patient and a dry surgical field. The orbit and skull base lie close by.",
+    position: "Supine, reverse Trendelenburg (head-up), head slightly turned towards the surgeon; table often turned.",
+    steps: [
+      { step: "Preoperative assessment: asthma, aspirin-exacerbated respiratory disease, anticoagulants and obstructive sleep apnoea.", anaesthetic: "Nasal polyps often coexist with asthma and NSAID sensitivity — check before giving NSAIDs." },
+      { step: "Topical vasoconstrictor to the nose; induction and airway (reinforced tracheal tube or reinforced supraglottic airway with throat pack).", anaesthetic: "Topical vasoconstrictors (e.g. cocaine or adrenaline preparations) can cause hypertension and arrhythmias." },
+      { step: "Optimising the field: head-up tilt, controlled heart rate and blood pressure.", anaesthetic: "Evidence favours TIVA over volatile anaesthesia for a better surgical field with less blood loss; tranexamic acid is also used. Agree acceptable blood pressure limits." },
+      { step: "Endoscopic uncinectomy, ethmoidectomy and opening of sinus ostia.", anaesthetic: "Orbital or skull-base injury can occur: watch for sudden eye swelling or CSF leak and tell the surgeon." },
+      { step: "Haemostasis, packing, throat pack removal and smooth emergence.", anaesthetic: "Suction the pharynx under direct vision; avoid coughing and straining. Patients with nasal packs breathe through the mouth." },
+    ],
+    criticalMoments: ["Topical vasoconstrictor — hypertension and arrhythmia", "Bleeding obscuring the field", "Orbital or skull-base injury"],
+    anaestheticNotes: ["Very low blood pressure targets risk organ hypoperfusion; balance field quality with patient safety.", "Throat pack removal must be part of the sign-out check."],
+    sources: ["De Sousa Machado ESS Anaesthesia 2023"],
   },
 ];
 

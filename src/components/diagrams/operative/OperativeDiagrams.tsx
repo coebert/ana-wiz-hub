@@ -559,6 +559,9 @@ export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
     case "nephrectomy": return <NephrectomyDiagram />;
     case "awake-craniotomy": return <AwakeCraniotomyDiagram />;
     case "scoliosis": return <ScoliosisDiagram />;
+    case "liver-transplant": return <LiverTransplantDiagram />;
+    case "adrenalectomy": return <AdrenalectomyDiagram />;
+    case "fess": return <FessDiagram />;
     case "carotid-stent": return <CarotidStentDiagram />;
     case "femoral-endarterectomy": return <FemoralEndarterectomyDiagram />;
     case "kidney-transplant": return <KidneyTransplantDiagram />;
@@ -923,5 +926,46 @@ const ScoliosisDiagram = () => (
     <Label x={60} y={170}>Curved spine</Label><Label x={350} y={100}>Pedicle screws</Label>
     <Label x={350} y={200}>Rod: corrected spine</Label><Label x={25} y={20}>Evoked potential monitoring</Label>
     <Label x={25} y={318}>Correction: keep BP and Hb up; TIVA; big blood loss</Label>
+  </Shell>
+);
+
+const LiverTransplantDiagram = () => (
+  <Shell id="op-liver-transplant" title="Liver transplant: three phases and reperfusion" desc="Anterior conceptual view. The donor liver is joined to the inferior vena cava, portal vein and hepatic artery, then the bile duct. Removing the clamps lets cold, potassium-rich blood from the graft reach the heart: post-reperfusion syndrome.">
+    <path d="M90 90 Q150 50 260 70 Q300 90 280 150 Q200 200 100 170 Q60 140 90 90 Z" fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M200 20 L200 300" stroke={VEIN} strokeWidth={12} opacity={0.8} />
+    <path d="M160 300 L160 175" stroke={VEIN} strokeWidth={6} />
+    <path d="M230 300 L230 165" stroke={ART} strokeWidth={4} />
+    <path d="M130 175 Q120 230 100 260" stroke={GRAFT} strokeWidth={4} fill="none" />
+    <Label x={300} y={60}>Inferior vena cava</Label><Label x={300} y={110}>Donor liver</Label>
+    <Label x={250} y={260}>Hepatic artery</Label><Label x={20} y={290}>Bile duct</Label><Label x={110} y={315}>Portal vein</Label>
+    <Label x={300} y={160}>Reperfusion: low BP, high K⁺</Label>
+    <Label x={25} y={30}>Dissection → anhepatic → neohepatic</Label>
+  </Shell>
+);
+
+const AdrenalectomyDiagram = () => (
+  <Shell id="op-adrenalectomy" title="Adrenalectomy for phaeochromocytoma" desc="Conceptual view of the kidney with the adrenal tumour on top. Handling the tumour releases catecholamines and causes hypertension. Once the adrenal vein is tied the catecholamine supply stops and blood pressure can fall.">
+    <ellipse cx={200} cy={210} rx={55} ry={80} fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M160 130 Q200 70 240 130 Z" fill={ART} opacity={0.4} stroke={INK} />
+    <path d="M240 115 L320 115" stroke={VEIN} strokeWidth={5} />
+    <path d="M300 105 L300 125" stroke={INK} strokeWidth={4} />
+    <path d="M330 30 L330 300" stroke={VEIN} strokeWidth={12} opacity={0.8} />
+    <Label x={30} y={80}>Phaeochromocytoma</Label><Label x={60} y={260}>Kidney</Label>
+    <Label x={240} y={90}>Adrenal vein tied</Label><Label x={345} y={200}>IVC</Label>
+    <Label x={25} y={300}>Handling: BP surges · vein tied: BP and glucose fall</Label>
+  </Shell>
+);
+
+const FessDiagram = () => (
+  <Shell id="op-fess" title="Endoscopic sinus surgery: a dry field near orbit and skull base" desc="Coronal conceptual view of the nose and sinuses. The endoscope enters through the nostril into the ethmoid sinuses, which lie between the orbits and just below the skull base. Even small bleeding obscures the view.">
+    <path d="M60 60 L400 60" stroke={INK} strokeWidth={4} />
+    <circle cx={110} cy={130} r={45} fill={FILL} stroke={INK} strokeWidth={2} />
+    <circle cx={350} cy={130} r={45} fill={FILL} stroke={INK} strokeWidth={2} />
+    <rect x={180} y={80} width={100} height={110} fill={MUTED} opacity={0.35} stroke={INK} />
+    <path d="M230 80 L230 290" stroke={INK} strokeWidth={2} />
+    <path d="M200 300 L210 120" stroke={GRAFT} strokeWidth={5} />
+    <Label x={140} y={45}>Skull base (CSF leak risk)</Label><Label x={40} y={200}>Orbit</Label>
+    <Label x={290} y={210}>Ethmoid sinuses</Label><Label x={60} y={260}>Endoscope via nostril</Label>
+    <Label x={25} y={318}>TIVA, head-up, controlled BP for a clear view</Label>
   </Shell>
 );
