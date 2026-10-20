@@ -103,7 +103,7 @@ export function OperationsSearchBar({
     <div
       className={`rounded-xl border px-3 py-3 sm:px-4 ${
         sticky
-          ? "sticky top-[5.5rem] z-30 border-border/80 bg-background/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/85"
+          ? "sticky top-[5.5rem] z-30 border-border bg-background shadow-sm"
           : "border-border bg-muted/30"
       }`}
     >
@@ -123,7 +123,7 @@ export function OperationsSearchBar({
               onEnter();
             }
           }}
-          placeholder="Look up an operation — carotid endarterectomy, Whipple — or a hazard: cross-clamp, cement, one-lung"
+          placeholder="Look up an operation — e.g. carotid endarterectomy — or a hazard: cross-clamp"
           className="pl-9 pr-10"
           aria-label="Search operations"
         />
