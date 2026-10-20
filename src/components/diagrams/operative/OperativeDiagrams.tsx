@@ -263,6 +263,174 @@ const CaesareanDiagram = () => (
   </Shell>
 );
 
+const AvrDiagram = () => (
+  <Shell id="op-avr" title="Aortic valve replacement" desc="Heart on cardiopulmonary bypass with the aorta cross-clamped above the valve. The aorta is opened, the diseased valve is removed, and a prosthetic valve is sewn into the annulus. Air is removed before the clamp comes off.">
+    <ellipse cx={230} cy={210} rx={95} ry={80} fill={FILL} stroke={INK} />
+    <path d="M240 140 L240 50 L330 40" stroke={ART} strokeWidth={22} fill="none" strokeLinecap="round" />
+    <Clamp x={240} y={85} w={44} />
+    <circle cx={240} cy={140} r={16} fill={GRAFT}><title>Prosthetic valve</title></circle>
+    <path d="M258 110 L275 110" stroke={INK} strokeWidth={3} />
+    <Label x={340} y={45}>Ascending aorta</Label>
+    <Label x={300} y={90}>Cross-clamp + cardioplegia</Label>
+    <Label x={280} y={115}>Aortotomy</Label>
+    <Label x={270} y={150}>New valve in annulus</Label>
+    <Label x={30} y={300}>Before declamping: de-air, check TOE; watch for heart block</Label>
+  </Shell>
+);
+
+const AnteriorResectionDiagram = () => (
+  <Shell id="op-anterior-resection" title="Laparoscopic anterior resection" desc="Large bowel showing the sigmoid colon and upper rectum removed with the tumour. The inferior mesenteric artery is tied. The descending colon is joined to the rectal stump with a circular stapler passed through the anus; a temporary loop ileostomy may protect the join. Steep head-down tilt is used.">
+    <path d="M100 40 L100 160 C100 230, 180 240, 230 220 L260 300" stroke={GRAFT} strokeWidth={22} fill="none" strokeLinecap="round" />
+    <path d="M150 230 C190 240, 220 230, 235 225" stroke={MUTED} strokeWidth={24} strokeLinecap="round"><title>Resected segment</title></path>
+    <circle cx={190} cy={236} r={10} fill={ART}><title>Tumour</title></circle>
+    <path d="M330 40 L330 120 L260 190" stroke={ART} strokeWidth={6} fill="none" />
+    <path d="M318 120 L342 120" stroke={INK} strokeWidth={4} />
+    <circle cx={258} cy={272} r={7} fill={INK}><title>Stapled join</title></circle>
+    <Label x={115} y={60}>Descending colon</Label>
+    <Label x={60} y={275}>Sigmoid + tumour removed</Label>
+    <Label x={345} y={60}>Aorta / inferior mesenteric</Label>
+    <Label x={345} y={124}>artery tied</Label>
+    <Label x={275} y={280}>Stapled join to rectum</Label>
+    <Label x={300} y={190}>Steep head-down tilt</Label>
+  </Shell>
+);
+
+const LaparotomyDiagram = () => (
+  <Shell id="op-laparotomy" title="Emergency laparotomy: midline incision" desc="Abdomen with a long midline incision for access to all quadrants. Common sources are perforation, obstruction, ischaemia and bleeding. Damage control may leave the abdomen open.">
+    <ellipse cx={260} cy={170} rx={150} ry={130} fill={FILL} stroke={INK} />
+    <path d="M260 60 L260 280" stroke={ART} strokeWidth={4} />
+    <path d="M110 170 L410 170" stroke={MUTED} strokeWidth={1} strokeDasharray="4 4" />
+    <Label x={140} y={110}>Perforation</Label><Label x={300} y={110}>Bleeding</Label>
+    <Label x={140} y={230}>Obstruction</Label><Label x={300} y={230}>Ischaemia</Label>
+    <Label x={270} y={300}>Midline incision</Label>
+    <Label x={20} y={30}>Risk-score (NELA); sepsis, fluids, rapid sequence induction</Label>
+  </Shell>
+);
+
+const ThrDiagram = () => (
+  <Shell id="op-thr" title="Total hip replacement" desc="Both sides of the hip joint replaced: a cup in the acetabulum of the pelvis and a stem with a ball in the femur. Patient lies on the side. Cemented components can cause bone cement implantation syndrome.">
+    <path d="M90 60 C150 40, 230 50, 260 110" stroke={FILL} strokeWidth={40} fill="none" strokeLinecap="round" />
+    <path d="M180 110 A34 34 0 0 1 248 110" stroke={VEIN} strokeWidth={8} fill="none" />
+    <circle cx={214} cy={112} r={24} fill={GRAFT} />
+    <path d="M300 300 L300 160 L225 120" stroke={FILL} strokeWidth={46} fill="none" strokeLinecap="round" />
+    <path d="M300 290 L300 160 L230 122" stroke={GRAFT} strokeWidth={12} fill="none" strokeLinecap="round" />
+    <Label x={40} y={30}>Pelvis</Label>
+    <Label x={60} y={150}>Cup in socket (blue)</Label>
+    <Label x={330} y={160}>Ball on femoral stem</Label>
+    <Label x={330} y={240}>Cementing: watch BP</Label>
+    <Label x={330} y={256}>and oxygen saturation</Label>
+  </Shell>
+);
+
+const TkrDiagram = () => (
+  <Shell id="op-tkr" title="Total knee replacement" desc="Knee with metal components on the end of the femur and top of the tibia, a plastic spacer between them. A thigh tourniquet is usually inflated; adductor canal block and periarticular infiltration help mobilisation.">
+    <path d="M260 20 L260 140" stroke={FILL} strokeWidth={60} strokeLinecap="round" />
+    <path d="M260 180 L260 305" stroke={FILL} strokeWidth={56} strokeLinecap="round" />
+    <rect x={225} y={130} width={70} height={18} rx={8} fill={GRAFT} />
+    <rect x={228} y={152} width={64} height={10} fill={MUTED} />
+    <rect x={225} y={166} width={70} height={14} rx={4} fill={GRAFT} />
+    <rect x={225} y={50} width={70} height={14} fill={INK}><title>Tourniquet</title></rect>
+    <Label x={310} y={60}>Thigh tourniquet</Label>
+    <Label x={310} y={140}>Femoral component</Label>
+    <Label x={310} y={160}>Plastic spacer</Label>
+    <Label x={310} y={180}>Tibial component</Label>
+    <Label x={30} y={240}>Adductor canal block</Label>
+    <Label x={30} y={256}>spares quadriceps</Label>
+  </Shell>
+);
+
+const SpineDiagram = () => (
+  <Shell id="op-spine" title="Posterior lumbar spinal fusion: prone position" desc="Patient prone on a frame with the abdomen hanging free, reducing venous pressure and bleeding. Pedicle screws and rods fix the vertebrae. Pressure points and eyes must be protected.">
+    {[60, 120, 180, 240].map((y) => <rect key={y} x={220} y={y} width={80} height={42} rx={8} fill={FILL} stroke={INK} />)}
+    {[80, 140, 200, 260].map((y) => <g key={y}><circle cx={235} cy={y} r={6} fill={GRAFT} /><circle cx={285} cy={y} r={6} fill={GRAFT} /></g>)}
+    <path d="M235 80 L235 260 M285 80 L285 260" stroke={GRAFT} strokeWidth={5} />
+    <Label x={320} y={90}>Pedicle screws</Label>
+    <Label x={320} y={110}>joined by rods</Label>
+    <Label x={30} y={150}>Prone, abdomen free</Label>
+    <Label x={30} y={166}>(less venous bleeding)</Label>
+    <Label x={30} y={220}>Protect eyes, face,</Label>
+    <Label x={30} y={236}>breasts, genitals</Label>
+    <Label x={320} y={230}>Neuromonitoring may</Label>
+    <Label x={320} y={246}>limit muscle relaxant</Label>
+  </Shell>
+);
+
+const CraniotomyDiagram = () => (
+  <Shell id="op-craniotomy" title="Craniotomy for supratentorial tumour" desc="Head fixed in pins with a bone flap removed over the tumour. Anaesthetic aims are smooth control of intracranial pressure: head up, normal carbon dioxide, avoiding coughing and big blood pressure swings.">
+    <ellipse cx={260} cy={170} rx={130} ry={120} fill={FILL} stroke={INK} strokeWidth={3} />
+    <path d="M190 70 A130 120 0 0 1 300 55" stroke={ART} strokeWidth={6} fill="none" strokeDasharray="8 5" />
+    <circle cx={240} cy={120} r={28} fill={MUTED} opacity={0.7}><title>Tumour</title></circle>
+    {[[140, 100], [380, 100], [260, 300]].map(([x, y]) => <circle key={`${x}`} cx={x} cy={y} r={7} fill={INK} />)}
+    <Label x={310} y={45}>Bone flap</Label>
+    <Label x={180} y={170}>Tumour</Label>
+    <Label x={395} y={104}>Pin fixation</Label>
+    <Label x={20} y={30}>Pinning: deepen anaesthesia / local to stop BP spike</Label>
+    <Label x={395} y={250}>Keep CO2 normal,</Label>
+    <Label x={395} y={266}>head up,</Label><Label x={395} y={282}>smooth wake-up</Label>
+  </Shell>
+);
+
+const TurpDiagram = () => (
+  <Shell id="op-turp" title="TURP and irrigation fluid absorption" desc="Resectoscope passed through the urethra into the prostate. Irrigation fluid flows in continuously; opened venous sinuses allow fluid absorption, which can cause TURP syndrome with low sodium and fluid overload. Spinal anaesthesia lets early confusion be noticed.">
+    <ellipse cx={260} cy={90} rx={90} ry={60} fill={FILL} stroke={INK} />
+    <ellipse cx={260} cy={170} rx={50} ry={34} fill={MUTED} opacity={0.6}><title>Prostate</title></ellipse>
+    <path d="M260 140 L260 310" stroke={GRAFT} strokeWidth={10} strokeLinecap="round" />
+    <path d="M240 200 C200 220, 180 240, 150 260" stroke={VEIN} strokeWidth={4} fill="none" strokeDasharray="6 4" />
+    <Label x={360} y={90}>Bladder</Label>
+    <Label x={320} y={175}>Prostate resected</Label>
+    <Label x={280} y={290}>Resectoscope (urethra)</Label>
+    <Label x={30} y={280}>Fluid absorbed into veins</Label>
+    <Label x={30} y={296}>→ low sodium, overload</Label>
+    <Label x={20} y={30}>Spinal lets you spot early confusion</Label>
+  </Shell>
+);
+
+const RoboticProstateDiagram = () => (
+  <Shell id="op-robotic-prostate" title="Robotic prostatectomy: steep head-down and pneumoperitoneum" desc="Patient in steep head-down (Trendelenburg) position with carbon dioxide in the abdomen and robot docked. This raises airway, intracranial and intraocular pressures; access to the patient is limited once docked.">
+    <path d="M70 90 L450 230" stroke={INK} strokeWidth={6} />
+    <ellipse cx={280} cy={140} rx={110} ry={40} fill={FILL} stroke={INK} transform="rotate(20 280 140)" />
+    <circle cx={90} cy={80} r={22} fill={MUTED} opacity={0.6}><title>Head</title></circle>
+    {[240, 290, 340].map((x) => <path key={x} d={`M${x} 40 L${x - 10} 110`} stroke={GRAFT} strokeWidth={5} />)}
+    <Label x={250} y={30}>Robot arms</Label>
+    <Label x={40} y={130}>Head low (~25–45°)</Label>
+    <Label x={300} y={240}>CO2 pneumoperitoneum</Label>
+    <Label x={20} y={290}>Facial/airway swelling, high airway pressure, limited access</Label>
+  </Shell>
+);
+
+const ThyroidDiagram = () => (
+  <Shell id="op-thyroid" title="Thyroidectomy: gland, airway and nerves" desc="Thyroid lobes either side of the trachea with the recurrent laryngeal nerves running behind and the parathyroid glands nearby. Risks include nerve injury affecting the vocal cords, low calcium, and a neck haematoma that can compress the airway.">
+    <rect x={240} y={20} width={40} height={290} rx={18} fill={FILL} stroke={INK} />
+    <ellipse cx={210} cy={150} rx={34} ry={60} fill={GRAFT} opacity={0.7} />
+    <ellipse cx={310} cy={150} rx={34} ry={60} fill={GRAFT} opacity={0.7} />
+    <path d="M232 300 L232 60 M288 300 L288 60" stroke={VEIN} strokeWidth={3} />
+    {[[185, 120], [190, 190], [335, 120], [330, 190]].map(([x, y]) => <circle key={`${x}${y}`} cx={x} cy={y} r={6} fill={ART} />)}
+    <Label x={30} y={60}>Thyroid lobes</Label>
+    <Label x={360} y={60}>Trachea</Label>
+    <Label x={360} y={130}>Parathyroids (red)</Label>
+    <Label x={360} y={150}>→ low calcium</Label>
+    <Label x={30} y={260}>Recurrent laryngeal</Label>
+    <Label x={30} y={276}>nerves (blue)</Label>
+    <Label x={360} y={260}>Neck haematoma:</Label>
+    <Label x={360} y={276}>open wound early</Label>
+  </Shell>
+);
+
+const TonsilDiagram = () => (
+  <Shell id="op-tonsil" title="Tonsillectomy: shared airway" desc="Mouth held open by a gag with the tube secured in the midline. Both tonsils are removed. The surgeon and anaesthetist share the airway; post-tonsillectomy bleeding can cause a difficult, blood-filled airway.">
+    <ellipse cx={260} cy={170} rx={150} ry={120} fill={FILL} stroke={INK} />
+    <ellipse cx={180} cy={170} rx={26} ry={40} fill={ART} opacity={0.5} />
+    <ellipse cx={340} cy={170} rx={26} ry={40} fill={ART} opacity={0.5} />
+    <path d="M260 60 L260 270" stroke={GRAFT} strokeWidth={14} strokeLinecap="round" />
+    <path d="M150 70 L370 70" stroke={INK} strokeWidth={6} />
+    <Label x={380} y={74}>Mouth gag</Label>
+    <Label x={60} y={170}>Tonsil</Label>
+    <Label x={380} y={170}>Tonsil</Label>
+    <Label x={275} y={250}>Tube held midline</Label>
+    <Label x={20} y={310}>Watch for kinked tube on gag; plan for post-op bleed</Label>
+  </Shell>
+);
+
 export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
   switch (kind) {
     case "carotid": return <CarotidDiagram />;
@@ -280,5 +448,16 @@ export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
     case "whipple": return <WhippleDiagram />;
     case "hip-hemi": return <HipHemiDiagram />;
     case "caesarean": return <CaesareanDiagram />;
+    case "avr": return <AvrDiagram />;
+    case "anterior-resection": return <AnteriorResectionDiagram />;
+    case "laparotomy": return <LaparotomyDiagram />;
+    case "thr": return <ThrDiagram />;
+    case "tkr": return <TkrDiagram />;
+    case "spine": return <SpineDiagram />;
+    case "craniotomy": return <CraniotomyDiagram />;
+    case "turp": return <TurpDiagram />;
+    case "robotic-prostate": return <RoboticProstateDiagram />;
+    case "thyroid": return <ThyroidDiagram />;
+    case "tonsil": return <TonsilDiagram />;
   }
 }

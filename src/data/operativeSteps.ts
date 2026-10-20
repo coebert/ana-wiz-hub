@@ -16,7 +16,8 @@ export type Specialty =
   | "Obstetric";
 
 export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | "ivor-lewis"
-  | "ruptured-aaa" | "aorto-bifem" | "amputation" | "av-fistula" | "cabg" | "vats" | "lap-chole" | "whipple" | "hip-hemi" | "caesarean";
+  | "ruptured-aaa" | "aorto-bifem" | "amputation" | "av-fistula" | "cabg" | "vats" | "lap-chole" | "whipple" | "hip-hemi" | "caesarean"
+  | "avr" | "anterior-resection" | "laparotomy" | "thr" | "tkr" | "spine" | "craniotomy" | "turp" | "robotic-prostate" | "thyroid" | "tonsil";
 
 export interface OperativeStep {
   /** What the surgeon does. */
@@ -303,6 +304,7 @@ export const operations: Operation[] = [
   },
   {
     id: "aortic-valve-replacement",
+    diagram: "avr",
     name: "Aortic valve replacement (surgical)",
     aka: ["AVR", "SAVR"],
     specialty: "Cardiothoracic",
@@ -375,6 +377,7 @@ export const operations: Operation[] = [
   },
   {
     id: "laparoscopic-anterior-resection",
+    diagram: "anterior-resection",
     name: "Laparoscopic anterior resection",
     aka: ["rectal resection", "TME", "total mesorectal excision"],
     specialty: "General & GI",
@@ -398,6 +401,7 @@ export const operations: Operation[] = [
   },
   {
     id: "emergency-laparotomy",
+    diagram: "laparotomy",
     name: "Emergency laparotomy",
     aka: ["laparotomy for perforation", "laparotomy for obstruction"],
     specialty: "General & GI",
@@ -493,6 +497,7 @@ export const operations: Operation[] = [
   },
   {
     id: "total-hip-replacement",
+    diagram: "thr",
     name: "Total hip replacement",
     aka: ["THR", "THA", "hip arthroplasty"],
     specialty: "Orthopaedic & Spine",
@@ -512,6 +517,7 @@ export const operations: Operation[] = [
   },
   {
     id: "total-knee-replacement",
+    diagram: "tkr",
     name: "Total knee replacement",
     aka: ["TKR", "TKA", "knee arthroplasty"],
     specialty: "Orthopaedic & Spine",
@@ -530,6 +536,7 @@ export const operations: Operation[] = [
   },
   {
     id: "posterior-spinal-fusion",
+    diagram: "spine",
     name: "Posterior lumbar spinal fusion",
     aka: ["spinal fusion", "instrumented fusion", "pedicle screws"],
     specialty: "Orthopaedic & Spine",
@@ -554,6 +561,7 @@ export const operations: Operation[] = [
   // ─────────────────────── Neurosurgery ───────────────────────
   {
     id: "craniotomy-tumour",
+    diagram: "craniotomy",
     name: "Craniotomy for supratentorial tumour",
     aka: ["craniotomy", "brain tumour resection"],
     specialty: "Neurosurgery",
@@ -578,6 +586,7 @@ export const operations: Operation[] = [
   // ───────────────────────── Urology ─────────────────────────
   {
     id: "turp",
+    diagram: "turp",
     name: "Transurethral resection of the prostate",
     aka: ["TURP"],
     specialty: "Urology",
@@ -596,6 +605,7 @@ export const operations: Operation[] = [
   },
   {
     id: "robotic-prostatectomy",
+    diagram: "robotic-prostate",
     name: "Robotic-assisted radical prostatectomy",
     aka: ["RARP", "robotic prostatectomy"],
     specialty: "Urology",
@@ -616,6 +626,7 @@ export const operations: Operation[] = [
   // ─────────────────── ENT & Head and Neck ───────────────────
   {
     id: "thyroidectomy",
+    diagram: "thyroid",
     name: "Thyroidectomy",
     aka: ["total thyroidectomy", "hemithyroidectomy"],
     specialty: "ENT & Head and Neck",
@@ -639,6 +650,7 @@ export const operations: Operation[] = [
   },
   {
     id: "tonsillectomy",
+    diagram: "tonsil",
     name: "Tonsillectomy",
     aka: ["tonsils"],
     specialty: "ENT & Head and Neck",
