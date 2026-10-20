@@ -907,7 +907,7 @@ const AwakeCraniotomyDiagram = () => (
     <path d="M200 40 L200 95" stroke={GRAFT} strokeWidth={3} />
     <path d="M300 240 Q360 200 420 240" stroke={MUTED} strokeWidth={3} fill="none" strokeDasharray="6 4" />
     <Label x={210} y={50}>Stimulation probe</Label><Label x={25} y={145}>Head pins</Label>
-    <Label x={255} y={115}>Bone flap over tumour</Label><Label x={330} y={270}>Tented drapes: face visible</Label>
+    <Label x={300} y={110}>Bone flap over tumour</Label><Label x={330} y={270}>Tented drapes: face visible</Label>
     <Label x={60} y={275}>Scalp block for pins and incision</Label>
     <Label x={25} y={318}>Seizure ready: cold saline and drugs; airway rescue to hand</Label>
   </Shell>
@@ -919,9 +919,9 @@ const ScoliosisDiagram = () => (
     <path d="M330 30 L330 300" stroke={GRAFT} strokeWidth={5} />
     {[60, 100, 140, 180, 220, 260].map((y) => <circle key={y} cx={330} cy={y} r={6} fill={INK} />)}
     <path d="M240 165 L300 165" stroke={INK} strokeWidth={2} /><path d="M290 158 L300 165 L290 172" stroke={INK} fill="none" />
-    <path d="M90 40 L90 120" stroke={VEIN} strokeWidth={3} strokeDasharray="5 3" />
+    <path d="M90 35 L90 120" stroke={VEIN} strokeWidth={3} strokeDasharray="5 3" />
     <Label x={60} y={170}>Curved spine</Label><Label x={350} y={100}>Pedicle screws</Label>
-    <Label x={350} y={200}>Rod: corrected spine</Label><Label x={100} y={30}>Evoked potential monitoring</Label>
+    <Label x={350} y={200}>Rod: corrected spine</Label><Label x={25} y={20}>Evoked potential monitoring</Label>
     <Label x={25} y={318}>Correction: keep BP and Hb up; TIVA; big blood loss</Label>
   </Shell>
 );
