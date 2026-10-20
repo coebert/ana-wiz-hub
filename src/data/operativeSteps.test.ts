@@ -110,7 +110,7 @@ describe("operations library", () => {
     for (const label of op?.sources ?? []) {
       expect(topicReferences["operative-steps"].find((ref) => ref.label === label)?.url).toBeTruthy();
     }
-    expect(searchOperations(id.replaceAll("-", " "), "ENT & Head and Neck").map((entry) => entry.id)).toContain(id);
+    expect(searchOperations(id.replace(/-/g, " "), "ENT & Head and Neck").map((entry) => entry.id)).toContain(id);
   });
 
   it("finds ENT operations by alternative names and anaesthetic hazards", () => {

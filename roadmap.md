@@ -1,8 +1,8 @@
 # Admin metrics audit fixes
 
 ## Operations Library: ENT additions
-- [ ] Add laryngectomy, glossectomy and microlaryngoscopy with stages, anaesthetic notes, diagrams and verified sources.
-- [ ] Verify search and rendering; regenerate and upload audit coverage.
+- [x] Add laryngectomy, glossectomy and microlaryngoscopy with stages, anaesthetic notes, diagrams and sources; two BJA full texts could not be independently fetched and have no displayed quote.
+- [x] Verify search and rendering; regenerate and upload audit coverage.
 
 ## Operations Library: search bar
 - [x] Add a prominent search box at the top of the operations page, with specialty filters, live match count and Enter-to-open.
