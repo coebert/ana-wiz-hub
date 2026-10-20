@@ -1335,7 +1335,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Tumour handling — hypertensive crisis", "Adrenal vein ligation — sudden hypotension", "Early postoperative — hypoglycaemia"],
     anaestheticNotes: ["Close surgeon–anaesthetist communication during handling is essential.", "There are no randomised trials comparing preparation strategies."],
-    related: { label: "Endocrine emergencies", path: "/clinical/endocrine-emergencies" },
+    related: { label: "Endocrine emergencies", path: "/intensive-care/icu-endocrine-emergencies" },
     sources: ["Groeben Catecholamine Tumours 2020"],
   },
   {
