@@ -46,7 +46,11 @@ describe("Operations library search bar", () => {
 
   it("shows how many operations match the current search", () => {
     render(<Harness query="carotid" resultCount={3} />);
-    expect(screen.getByText(`3 of ${operations.length} operations shown for "carotid"`)).toBeInTheDocument();
+    expect(
+      screen.getByText(`3 of ${operations.length} operations shown for "carotid" — press Enter to open the first one`),
+    ).toBeInTheDocument();
+    render(<Harness resultCount={operations.length} />);
+    expect(screen.getByText(`${operations.length} of ${operations.length} operations shown`)).toBeInTheDocument();
   });
 
   it("opens the first match on Enter and clears the box on request", () => {

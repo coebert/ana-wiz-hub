@@ -96,6 +96,9 @@ export function OperationsSearchBar({
   inputRef: RefObject<HTMLInputElement>;
 }) {
   const trimmed = query.trim();
+  const summary = trimmed
+    ? `${resultCount} of ${operations.length} operations shown for "${trimmed}" — press Enter to open the first one`
+    : `${resultCount} of ${operations.length} operations shown`;
   return (
     <div
       className={`rounded-xl border px-3 py-3 sm:px-4 ${
@@ -153,9 +156,7 @@ export function OperationsSearchBar({
         ))}
       </div>
       <p className="mt-2 text-xs text-muted-foreground" aria-live="polite">
-        {resultCount} of {operations.length} operations shown
-        {trimmed ? ` for "${trimmed}"` : ""}
-        {trimmed ? " — press Enter to open the first one" : ""}
+        {summary}
       </p>
     </div>
   );
