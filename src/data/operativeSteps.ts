@@ -21,7 +21,8 @@ export type Specialty =
 export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | "ivor-lewis"
   | "ruptured-aaa" | "aorto-bifem" | "amputation" | "av-fistula" | "cabg" | "vats" | "lap-chole" | "whipple" | "hip-hemi" | "caesarean"
   | "avr" | "anterior-resection" | "laparotomy" | "thr" | "tkr" | "spine" | "craniotomy" | "turp" | "robotic-prostate" | "thyroid" | "tonsil"
-  | "tevar" | "sleeve" | "liver" | "cystectomy" | "free-flap" | "hysterectomy" | "breast" | "cataract";
+  | "tevar" | "sleeve" | "liver" | "cystectomy" | "free-flap" | "hysterectomy" | "breast" | "cataract"
+  | "carotid-stent" | "femoral-endarterectomy" | "kidney-transplant" | "inguinal-hernia" | "appendicectomy" | "pituitary";
 
 export interface OperativeStep {
   /** What the surgeon does. */
@@ -49,6 +50,107 @@ export interface Operation {
 }
 
 export const operations: Operation[] = [
+  {
+    id: "carotid-artery-stenting", name: "Carotid artery stenting", aka: ["CAS", "carotid stent"],
+    specialty: "Vascular", diagram: "carotid-stent", bloodLossRisk: "Low",
+    summary: "Endovascular treatment of selected carotid stenoses with a stent. This is not carotid endarterectomy: plaque remains in place, and patient selection, embolic protection and antiplatelet planning are central.",
+    position: "Supine on a radiolucent table; access may be femoral, radial or a selected direct carotid approach.",
+    steps: [
+      { step: "Confirm the planned access, antiplatelet preparation and baseline neurological examination; obtain arterial access, commonly under local anaesthesia.", anaesthetic: "Preserve communication for neurological assessment where feasible. Sedation must not obscure a new deficit or compromise ventilation; establish access to the patient despite the imaging equipment." },
+      { step: "Navigate catheters and perform angiography to define the lesion.", anaesthetic: "Review renal function, contrast exposure and allergy history. Access injury may cause groin or concealed retroperitoneal bleeding despite an apparently low-blood-loss procedure." },
+      { step: "Administer procedural heparin before crossing the lesion and establish the chosen embolic protection strategy.", anaesthetic: "Document heparin and anticoagulation monitoring with the operator. Distal filters and proximal flow reversal are different techniques; protection choice is not universal." },
+      { step: "Selective predilatation, self-expanding stent deployment and selective postdilatation.", anaesthetic: "Carotid sinus stimulation can cause bradycardia, hypotension or asystole. Agree anticholinergic preparation and haemodynamic support before balloon inflation; report neurological change immediately." },
+      { step: "Completion angiography, removal of protection devices and access closure.", anaesthetic: "Reassess neurology, blood pressure and the access site. Persistent haemodynamic depression or new headache, seizure or deficit needs urgent assessment; plan observation and the prescribed antiplatelet course." },
+    ],
+    criticalMoments: ["Lesion crossing — cerebral embolisation", "Balloon inflation — bradycardia and hypotension", "New neurological deficit", "Access bleeding and postprocedural blood-pressure disturbance"],
+    anaestheticNotes: ["CIRSE 2024 provides technical standards of practice, not a substitute for individual treatment selection or local emergency pathways.", "GALA studied endarterectomy, not stenting: do not transfer its general-versus-local trial result to this procedure.", "A qualitative Low blood-loss category does not exclude catastrophic vascular injury. Assess antithrombotic and access-related bleeding risk individually."],
+    related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-anaesthesia" },
+    sources: ["CIRSE Carotid Stenting 2024", "ESVS 2023 carotid"],
+  },
+  {
+    id: "femoral-endarterectomy", name: "Common femoral endarterectomy", aka: ["CFE", "femoral plaque removal", "femoral endarterectomy"],
+    specialty: "Vascular", diagram: "femoral-endarterectomy", bloodLossRisk: "Moderate",
+    summary: "Open removal of obstructing plaque at the common femoral artery, sometimes extending into its branches. A patch may widen the repair; additional angioplasty or stenting makes this a hybrid procedure rather than a bypass.",
+    position: "Supine with the operative groin exposed; hybrid cases need imaging access and preparation for additional arterial access.",
+    steps: [
+      { step: "Confirm the revascularisation plan and expose the femoral artery through a groin incision.", anaesthetic: "General or spinal anaesthesia is selected by the patient and team. Review cardiovascular, renal and diabetic comorbidity and the antithrombotic plan before choosing a neuraxial technique." },
+      { step: "Obtain vascular control and open the narrowed artery.", anaesthetic: "Agree and document the procedural anticoagulation plan; prepare for bleeding during arterial exposure. This is local arterial control, not an aortic cross-clamp." },
+      { step: "Remove plaque from the common femoral artery and any involved branch origins.", anaesthetic: "Maintain stable physiology, warming and adequate analgesia during the period of interrupted limb flow; the extent and duration depend on the disease." },
+      { step: "Close the arteriotomy, using a patch where appropriate; restore and check limb flow.", anaesthetic: "Communicate before restoration of flow and document the postoperative limb assessment. A cold, painful limb or new deficit requires prompt vascular review." },
+      { step: "If planned, treat other stenoses with angioplasty or stenting; then close the groin wound.", anaesthetic: "Hybrid work adds procedure time, imaging and contrast exposure. Monitor the access site and arrange analgesia and observation appropriate to the patient's vascular risk." },
+    ],
+    criticalMoments: ["Arterial exposure and anticoagulation — bleeding", "Restoration of flow and limb assessment", "Hybrid angioplasty — additional access and contrast"],
+    anaestheticNotes: ["The NHS leaflet supports the broad sequence and anaesthetic options; GVG supplies the limb-revascularisation context, not fixed anaesthetic drug or pressure targets.", "The choice of open, endovascular or hybrid treatment depends on disease distribution and patient risk. BASIL-2 is not a trial of anaesthesia for femoral endarterectomy."],
+    related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-anaesthesia" },
+    sources: ["Gloucestershire Femoral Endarterectomy", "GVG CLTI 2019"],
+  },
+  {
+    id: "kidney-transplantation", name: "Kidney transplantation (recipient)", aka: ["renal transplant", "kidney transplant"],
+    specialty: "Urology", diagram: "kidney-transplant", bloodLossRisk: "Moderate",
+    summary: "Placement of a donor kidney in the recipient's lower abdomen, joining its artery, vein and ureter to the recipient. This entry covers implantation, not donor nephrectomy; native kidneys usually remain in place.",
+    position: "Supine; lower abdominal incision into the chosen iliac fossa, with access to the bladder.",
+    steps: [
+      { step: "Confirm the graft and recipient plan; induce anaesthesia and prepare the lower abdomen.", anaesthetic: "Check recent dialysis, potassium, acid-base balance, fluid status and cardiovascular disease. Preserve dialysis access; review aspiration risk and renal handling of drugs." },
+      { step: "Expose recipient vessels and prepare the graft in the iliac fossa.", anaesthetic: "Maintain temperature, perfusion and access for resuscitation. Agree timing of locally prescribed immunosuppression and antimicrobial prophylaxis; infusions may have specific haemodynamic risks." },
+      { step: "Join the graft vein and artery to recipient vessels under vascular control; the precise sequence varies.", anaesthetic: "Know when reperfusion is approaching. Use clinical assessment and, where appropriate, haemodynamic monitoring to guide volume rather than loading every patient to a fixed central venous pressure." },
+      { step: "Release vascular control and assess graft perfusion.", anaesthetic: "Anticipate blood-pressure change and reassess potassium, acid-base status and volume. Maintain perfusion without fluid overload; titrated vasopressors may be needed despite adequate filling." },
+      { step: "Join the donor ureter to the bladder, commonly with a temporary ureteric stent; achieve haemostasis and close.", anaesthetic: "Monitor urine output and postoperative renal biochemistry. Immediate urine production is not guaranteed and its absence alone does not establish graft failure; delayed graft function needs transplant-team assessment." },
+    ],
+    criticalMoments: ["Induction in a dialysis patient with cardiovascular or electrolyte disturbance", "Graft reperfusion", "Balancing perfusion against pulmonary fluid overload", "Postoperative oliguria or electrolyte disturbance"],
+    anaestheticNotes: ["Renal clearance alters the duration of several drugs. Quantitative neuromuscular monitoring and an appropriate reversal plan are important.", "The 2024 anaesthesia review supports balanced crystalloids and assessment of fluid responsiveness; no single fluid volume or pressure target is appropriate for every recipient.", "Postoperative analgesia and medication choices must account for changing graft function; follow the transplant service's monitoring and immunosuppression pathway."],
+    related: { label: "Urology anaesthesia", path: "/clinical/urological-anaesthesia" },
+    sources: ["NHSBT Kidney Transplant Surgery", "Kim & Jung Renal Transplant 2024"],
+  },
+  {
+    id: "inguinal-hernia-repair", name: "Inguinal hernia repair (open or laparoscopic)", aka: ["Lichtenstein", "TEP", "TAPP", "groin hernia"],
+    specialty: "General & GI", diagram: "inguinal-hernia", bloodLossRisk: "Low",
+    summary: "Reduction of a groin hernia and reinforcement of the defect, commonly with mesh. Open anterior repair, totally extraperitoneal (TEP) and transabdominal preperitoneal (TAPP) repairs are distinct approaches; tissue repair is an alternative in selected circumstances.",
+    position: "Supine; laparoscopic repair may use head-down tilt. Agree unilateral or bilateral repair and the planned approach.",
+    steps: [
+      { step: "Open: groin incision with local, general or selected regional anaesthesia. Laparoscopic: ports and creation of the operative space, usually under general anaesthesia.", anaesthetic: "HerniaSurge recommends local anaesthesia for reducible open repair when the team is experienced. This recommendation is not for laparoscopic surgery or strangulated bowel." },
+      { step: "Identify the sac and reduce its contents; assess bowel viability if incarcerated or strangulated.", anaesthetic: "An emergency obstruction is not an uncomplicated day-case hernia: assess aspiration, dehydration and sepsis risks and agree whether bowel resection may be necessary." },
+      { step: "Reinforce the defect, usually with mesh in the tissue plane appropriate to the chosen approach.", anaesthetic: "During laparoscopy, monitor the effect of insufflation on airway pressures, oxygenation and carbon dioxide, and adjust ventilation. During awake open repair, respond to pain with supplementation rather than excessive sedation." },
+      { step: "Complete haemostasis; release insufflation if used and close the wounds.", anaesthetic: "Use multimodal analgesia and nausea prevention to support mobilisation. Recovery and discharge depend on pain, physiology, social circumstances and any complications, not just the small incision." },
+    ],
+    criticalMoments: ["Pain or movement during awake open repair", "Laparoscopic insufflation", "Unexpected ischaemic bowel in an emergency repair"],
+    anaestheticNotes: ["HerniaSurge 2023 suggests general or local rather than regional anaesthesia for older patients, reflecting medical-complication risk; anaesthetic choice remains individualised.", "These stages describe a broad repair pathway, not identical mesh placement for TEP, TAPP and open surgery.", "The NHS patient information supports the operative overview; HerniaSurge provides the technique-specific anaesthetic recommendations."],
+    related: { label: "General and colorectal surgery", path: "/clinical/general-colorectal-surgery" },
+    sources: ["NHS Inguinal Hernia Repair", "HerniaSurge Update 2023", "Jo & Kwak Laparoscopy 2017"],
+  },
+  {
+    id: "laparoscopic-appendicectomy", name: "Laparoscopic appendicectomy", aka: ["appendectomy", "appendix removal", "lap appendix"],
+    specialty: "General & GI", diagram: "appendicectomy", bloodLossRisk: "Low",
+    summary: "Laparoscopic removal of the appendix for appendicitis. Perforation, abscess or peritonitis changes the source-control and postoperative plan; this entry describes surgery once that treatment has been selected.",
+    position: "Supine, with table tilt adjusted for exposure and pressure areas protected.",
+    steps: [
+      { step: "Induce general anaesthesia; establish laparoscopic access and CO₂ insufflation.", anaesthetic: "Assess aspiration risk, fasting, vomiting, ileus and physiological disturbance individually. Monitor respiratory mechanics and haemodynamics after insufflation." },
+      { step: "Inspect the abdomen, identify the appendix and assess perforation or contamination.", anaesthetic: "Confirm antimicrobial prophylaxis and communicate any sepsis or hypovolaemia. The operative findings determine whether postoperative antibiotics and higher-acuity observation are needed." },
+      { step: "Separate and control the mesoappendix, including its vessels.", anaesthetic: "Maintain stillness and adequate anaesthesia. Bleeding is usually limited but monitor both surgical bleeding and physiological deterioration." },
+      { step: "Secure the appendiceal base, divide the appendix and retrieve it, usually in a bag.", anaesthetic: "Closure may use ligatures, clips or a stapler according to tissue condition and surgeon judgement; there is no universal device for every appendix." },
+      { step: "Complete source control and haemostasis, desufflate and close.", anaesthetic: "Plan analgesia, nausea prevention and postoperative destination. Routine lavage or drains should not be assumed; the adopted guideline and intraoperative findings guide management." },
+    ],
+    criticalMoments: ["Induction when aspiration or sepsis risk is present", "Pneumoperitoneum — altered ventilation", "Perforation or peritonitis — source control and postoperative planning"],
+    anaestheticNotes: ["WSES 2020 is cited for surgical technique, stump closure and antibiotic principles; it is explicitly a 2020 guideline, not a claim that all local pathways are unchanged.", "Do not equate appendicectomy with emergency laparotomy: many uncomplicated cases recover rapidly, whereas complicated disease may need prolonged treatment.", "The laparoscopy review supports assessment and adjustment of ventilation, not a universal ventilator setting."],
+    related: { label: "Emergency surgery", path: "/clinical/emergency-surgery" },
+    sources: ["HSE Appendicitis Treatment", "WSES Appendicitis 2020", "Jo & Kwak Laparoscopy 2017"],
+  },
+  {
+    id: "transsphenoidal-pituitary-surgery", name: "Endoscopic transsphenoidal pituitary surgery", aka: ["pituitary resection", "transnasal pituitary", "TSS"],
+    specialty: "Neurosurgery", diagram: "pituitary", bloodLossRisk: "Moderate",
+    summary: "Endoscopic access through the nasal passage and sphenoid sinus to remove a pituitary tumour. Hormone excess or deficiency, proximity to the optic apparatus and carotid arteries, and skull-base reconstruction shape the anaesthetic plan.",
+    position: "Supine, head positioned for endoscopic nasal access, commonly elevated; secure the oral tube away from the surgical field.",
+    steps: [
+      { step: "Assess endocrine status, vision and airway; induce anaesthesia and secure an oral tracheal tube.", anaesthetic: "Acromegaly, obesity and sleep apnoea may complicate airway management. Agree cortisol replacement with endocrinology; the review notes variable practice, so no universal steroid regimen is implied." },
+      { step: "Clear the nasal corridor and pass the endoscope through the sphenoid sinus towards the sella.", anaesthetic: "Access to the airway is restricted. If a throat pack is used, record insertion and removal explicitly; monitor cardiovascular responses to stimulation and any locally used vasoactive agents." },
+      { step: "Access the pituitary region and resect the tumour under endoscopic vision.", anaesthetic: "Provide stable neuroanaesthesia and absolute stillness. Carotid injury is uncommon but potentially catastrophic; agree a haemorrhage and interventional neuroradiology rescue pathway." },
+      { step: "Achieve haemostasis and reconstruct the skull base if needed, repairing a CSF leak with the chosen graft or material.", anaesthetic: "A thigh or abdominal donor site may need preparation and analgesia. Avoid emergence that disrupts reconstruction; CSF leak management is part of the surgical plan." },
+      { step: "Remove any pack, clear blood and secretions and undertake a planned smooth extubation.", anaesthetic: "Balance avoidance of coughing against an awake, protected airway in higher-risk patients. Check vision and neurology early; monitor sodium, urine output and endocrine function after surgery." },
+    ],
+    criticalMoments: ["Difficult airway in hormone-excess syndromes", "Carotid injury or major bleeding", "CSF leak and reconstruction", "Extubation and postoperative water/sodium disturbance"],
+    anaestheticNotes: ["The BJA Education review supports a multidisciplinary endocrine plan, smooth emergence and postoperative neurological assessment; local steroid practices should not be presented as universal guidance.", "New polyuria or sodium disturbance needs assessment for arginine vasopressin deficiency (central diabetes insipidus) and other causes. Delayed hyponatraemia may occur after discharge; follow the endocrine monitoring pathway.", "Plan postoperative breathing support jointly when sleep apnoea coexists with skull-base reconstruction, rather than assuming nasal positive-pressure treatment is automatically safe."],
+    related: { label: "Neuroanaesthesia", path: "/clinical/neuroanaesthesia" },
+    sources: ["Raveendran Pituitary Surgery 2024"],
+  },
   // ───────────────────────── Vascular ─────────────────────────
   {
     id: "carotid-endarterectomy",

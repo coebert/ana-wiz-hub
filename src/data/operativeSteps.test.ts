@@ -10,7 +10,7 @@ describe("operations library", () => {
 
   it("filters by specialty and requires every search word", () => {
     const vascular = searchOperations("", "Vascular");
-    expect(vascular.length).toBe(9);
+    expect(vascular.length).toBe(11);
     expect(vascular.every((o) => o.specialty === "Vascular")).toBe(true);
     expect(searchOperations("carotid tourniquet")).toHaveLength(0);
   });
@@ -22,6 +22,27 @@ describe("operations library", () => {
 
   it("references every operation", () => {
     for (const op of operations) expect(op.sources?.length ?? 0, op.id).toBeGreaterThan(0);
+  });
+
+  it("includes the six new procedures in their clinical specialties", () => {
+    const expected = [
+      ["carotid-artery-stenting", "Vascular"], ["femoral-endarterectomy", "Vascular"],
+      ["kidney-transplantation", "Urology"], ["inguinal-hernia-repair", "General & GI"],
+      ["laparoscopic-appendicectomy", "General & GI"], ["transsphenoidal-pituitary-surgery", "Neurosurgery"],
+    ];
+    for (const [id, specialty] of expected) {
+      const op = operations.find((entry) => entry.id === id);
+      expect(op?.specialty, id).toBe(specialty);
+      expect(op?.diagram, id).toBeTruthy();
+      expect(op?.steps.length ?? 0, id).toBeGreaterThanOrEqual(4);
+      expect((op?.sources ?? []).some((label) => topicReferences["operative-steps"].find((ref) => ref.label === label)?.excerpt), id).toBe(true);
+    }
+  });
+
+  it("finds new procedures by aliases and perioperative hazards", () => {
+    expect(searchOperations("CAS").map((o) => o.id)).toContain("carotid-artery-stenting");
+    expect(searchOperations("renal transplant").map((o) => o.id)).toContain("kidney-transplantation");
+    expect(searchOperations("CSF leak", "Neurosurgery").map((o) => o.id)).toContain("transsphenoidal-pituitary-surgery");
   });
 
   it("assigns every operation to a listed specialty", () => {

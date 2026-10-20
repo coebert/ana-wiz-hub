@@ -16,6 +16,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { resolve, dirname } from "path";
 import { allTopics, sectionMeta } from "../src/data/curriculum";
 import { topicReferences } from "../src/data/references";
+import { operations } from "../src/data/operativeSteps";
 import { caseBanks } from "../src/data/cases";
 import { perioperativeCaseIndex } from "../src/data/perioperativeCaseIndex";
 import { perioperativeCases } from "../src/pages/PerioperativeCaseBank";
@@ -371,17 +372,24 @@ function buildEntry(topic: (typeof allTopics)[number]): AuditCorpusEntry | null 
           .join(" · ")
           .slice(0, MAX_LABEL_CHARS)}`
       : "";
-  const prose = [`# ${topic.title}`, topic.description, "", ...uniqueLines].join("\n");
+  const operationText = topic.id === "operative-steps" ? operations.map((op) => [
+    `## ${op.name} (${op.specialty})`, op.summary, `Position: ${op.position}`,
+    `Blood loss risk (qualitative): ${op.bloodLossRisk}`,
+    ...op.steps.map((s, i) => `${i + 1}. ${s.step} Anaesthetic note: ${s.anaesthetic ?? ""}`),
+    ...op.criticalMoments, ...op.anaestheticNotes, `Sources: ${(op.sources ?? []).join("; ")}`,
+  ].join("\n")).join("\n\n") : "";
+  const prose = [`# ${topic.title}`, topic.description, "", operationText, ...uniqueLines].join("\n");
   // This long topic includes the shared APRV section after its root content.
   // Keep that source-linked teaching in the audit, rather than truncating it.
   const textBudget = ["mechanical-ventilation", "paediatric-anaesthesia", "ent-anaesthesia", "renal-disease", "general-colorectal-surgery", "bariatric-anaesthesia", "gas-laws", "electricity-magnetism", "ultrasound-physics", "pressure-measurement", "flow-measurement", "temperature-measurement", "renal-physiology", "hepatic-physiology", "foetal-circulation", "local-anaesthetics", "volatile-agents", "antimicrobials-pharm", "toxicology", "iv-anaesthetics", "abdominal-compartment-syndrome", "non-technical-skills", "sepsis", "neurointensive-care", "cardiac-arrest-post-resus", "elderly-anaesthesia", "icu-nutrition", "operating-theatre-environment", "surgical-protocols", "ophthalmic-anaesthesia", "interventional-radiology", "mass-casualty-military", "emergency-surgery", "icu-endocrine-emergencies"].includes(topic.id) ? 64_000 : MAX_TEXT_CHARS;
+  const effectiveBudget = operationText ? prose.length + labelBlock.length + 2 : textBudget;
   const text = [
-    prose.slice(0, textBudget - (labelBlock ? labelBlock.length + 2 : 0)),
+    prose.slice(0, effectiveBudget - (labelBlock ? labelBlock.length + 2 : 0)),
     "",
     labelBlock,
   ]
     .join("\n")
-    .slice(0, textBudget);
+    .slice(0, effectiveBudget);
 
   const caseEntries = CASE_INDEX.get(topic.id) ?? [];
 

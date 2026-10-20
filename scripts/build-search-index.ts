@@ -20,6 +20,7 @@ import { readFileSync, writeFileSync, existsSync } from "fs";
 import { resolve, dirname } from "path";
 import { allTopics, sectionMeta } from "../src/data/curriculum";
 import { sectionAnchorId } from "../src/lib/sectionAnchor";
+import { operations } from "../src/data/operativeSteps";
 import {
   readIfExists,
   resolveImport,
@@ -226,6 +227,18 @@ function buildTopicEntry(topic: (typeof allTopics)[number]): SearchIndexEntry | 
     if (kind === "prose") proseChars += t.length;
     records.push({ t, a: anchor, k: kind });
   };
+
+  // Every structured operation retains its own searchable anchor, outside
+  // the generic topic prose budget.
+  if (topic.id === "operative-steps") {
+    for (const op of operations) {
+      pushRecord([op.name, ...(op.aka ?? [])].join(" · "), op.id, "heading");
+      const text = [op.specialty, op.summary, op.position,
+        ...op.steps.flatMap((s) => [s.step, s.anaesthetic ?? ""]),
+        ...op.criticalMoments, ...op.anaestheticNotes];
+      for (const part of text) for (const chunk of splitLongProse(part)) pushRecord(chunk, op.id, "prose");
+    }
+  }
 
   // Breadth-first walk through the topic's own component tree. Headings and
   // label fields are recorded immediately; prose pieces are queued per file
