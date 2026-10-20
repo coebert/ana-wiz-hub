@@ -207,6 +207,9 @@ const VivaHub = () => {
               <BookOpen className="h-4 w-4 mr-2" /> Question library
             </Link>
           </Button>
+          <Button asChild variant="outline">
+            <Link to="/viva/scores">My viva scores</Link>
+          </Button>
           </div>
         </section>
 
