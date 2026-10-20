@@ -27,7 +27,8 @@ export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | 
   | "carotid-stent" | "femoral-endarterectomy" | "kidney-transplant" | "inguinal-hernia" | "appendicectomy" | "pituitary"
   | "pyloromyotomy" | "burr-hole" | "shoulder" | "mandible"
   | "dental" | "circumcision" | "paediatric-hernia" | "mitral" | "pneumonectomy"
-  | "gastric-bypass" | "vitrectomy" | "microdiscectomy" | "manual-placenta";
+  | "gastric-bypass" | "vitrectomy" | "microdiscectomy" | "manual-placenta"
+  | "cleft" | "tracheostomy";
 
 export interface OperativeStep {
   /** What the surgeon does. */
@@ -1221,6 +1222,39 @@ export const operations: Operation[] = [
     anaestheticNotes: ["Facial trauma may coexist with brain and cervical spine injury.", "Senior anaesthetic input and teamwork are required; direct laryngoscopy may not be the safest option."],
     related: { label: "Trauma", path: "/clinical/trauma-emergency" },
     sources: ["Harper Maxillofacial Trauma 2023", "Morosan OMFS Emergencies 2012"],
+  },
+  {
+    id: "cleft-lip-palate-repair", name: "Cleft lip and palate repair", aka: ["cleft lip", "cleft palate", "palatoplasty", "cheiloplasty"],
+    specialty: "Paediatric", diagram: "cleft", bloodLossRisk: "Low",
+    summary: "Staged reconstruction of the lip (typically in infancy) and palate (later in infancy) by a cleft team. The airway is shared with the surgeon, can be difficult, and is at risk of obstruction after palate repair.",
+    position: "Supine with head ring and shoulder roll (neck extended); table turned; patient fully draped.",
+    steps: [
+      { step: "Preoperative assessment for associated syndromes and congenital anomalies, feeding, weight and recent respiratory infection.", anaesthetic: "Cleft anomalies are associated with numerous congenital abnormalities; look specifically for features predicting difficult laryngoscopy and for cardiac disease." },
+      { step: "Induction and oral intubation with a preformed south-facing RAE tube secured in the midline below the lower lip.", anaesthetic: "Laryngoscopy may be difficult (blade can fall into the cleft); confirm tube tip position visually and by auscultation, since the preformed curve may not fit the child." },
+      { step: "Positioning with neck extension; throat pack; for palate surgery, insertion of the Dingman mouth gag.", anaesthetic: "Recheck the tube after every move. The gag can kink or displace the tube or raise airway pressures, and throat pack insertion/removal can cause accidental extubation." },
+      { step: "Infiltration with local anaesthetic and adrenaline; lip or palate repair.", anaesthetic: "Infiltration reduces bleeding and adds analgesia. Use multimodal analgesia and titrate opioids carefully because of the risk of respiratory events." },
+      { step: "Throat pack removal, suction under direct vision and awake extubation; postoperative airway monitoring.", anaesthetic: "Oropharyngeal/nasopharyngeal swelling in nasal-breathing infants can obstruct the airway; a nasopharyngeal airway or tongue suture may be placed. Monitor for obstruction throughout recovery." },
+    ],
+    criticalMoments: ["Laryngoscopy and intubation", "Mouth gag insertion and head movement — tube kinking or displacement", "Extubation and recovery — airway obstruction"],
+    anaestheticNotes: ["Effective communication with the surgeon about the shared airway is essential.", "Timing of lip and palate surgery and analgesic doses follow the local cleft team protocol; this summary does not set them."],
+    sources: ["Denning Cleft Anaesthesia 2021"],
+  },
+  {
+    id: "surgical-tracheostomy", name: "Surgical (open) tracheostomy", aka: ["tracheostomy", "trache", "trachy", "open tracheostomy"],
+    specialty: "ENT & Head and Neck", diagram: "tracheostomy", bloodLossRisk: "Low",
+    summary: "An opening is made in the anterior trachea (usually around the second to fourth rings) and a tracheostomy tube inserted, for prolonged ventilation, airway obstruction or head and neck surgery. The most dangerous moment is the handover from the tracheal tube to the tracheostomy tube.",
+    position: "Supine with shoulder roll and neck extended (if the cervical spine allows); head ring.",
+    steps: [
+      { step: "Planning: indication, airway plan if the tracheostomy fails, anticoagulation, and equipment (tube sizes, capnography).", anaesthetic: "Agree in advance who withdraws the tracheal tube and when; have a plan for re-intubation from above." },
+      { step: "Neck incision, division of strap muscles and division or retraction of the thyroid isthmus.", anaesthetic: "Bleeding from the isthmus or anterior jugular veins is possible. Keep the patient deeply anaesthetised and paralysed." },
+      { step: "Opening of the trachea (window or flap).", anaesthetic: "Reduce inspired oxygen as far as is safe and stop diathermy before the trachea is opened — airway fire risk. The cuff may be punctured if the tube is not withdrawn appropriately." },
+      { step: "Withdrawal of the tracheal tube under direct vision until its tip is just above the stoma, then insertion of the tracheostomy tube.", anaesthetic: "Do not remove the tracheal tube fully until correct tracheostomy placement is confirmed by sustained capnography; then remove it." },
+      { step: "Securing the tube (ties/sutures), chest auscultation and handover with bedhead signs.", anaesthetic: "Displacement in the early days is dangerous because the tract is not formed; follow National Tracheostomy Safety Project emergency algorithms." },
+    ],
+    criticalMoments: ["Tracheal opening — airway fire and cuff damage", "Tube exchange — loss of the airway", "Early displacement after surgery"],
+    anaestheticNotes: ["Confirm placement with waveform capnography every time.", "Ensure the ward knows whether the upper airway is patent (tracheostomy) or not (laryngectomy)."],
+    related: { label: "Airway management", path: "/clinical/airway-management" },
+    sources: ["McGrath NTSP Guidelines 2012"],
   },
 ];
 

@@ -72,6 +72,8 @@ describe("operations library", () => {
     ["pars-plana-vitrectomy", "Ophthalmic", "vitrectomy"],
     ["lumbar-microdiscectomy", "Orthopaedic & Spine", "microdiscectomy"],
     ["manual-removal-placenta", "Obstetric", "manual-placenta"],
+    ["cleft-lip-palate-repair", "Paediatric", "cleft"],
+    ["surgical-tracheostomy", "ENT & Head and Neck", "tracheostomy"],
   ])("retains specialty, stages, per-stage notes and quoted sources for %s", (id, specialty, diagram) => {
     const op = operations.find((entry) => entry.id === id);
     expect(op?.specialty).toBe(specialty);
