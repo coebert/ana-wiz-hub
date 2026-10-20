@@ -545,6 +545,9 @@ const CataractDiagram = () => (
 
 export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
   switch (kind) {
+    case "laryngectomy": return <LaryngectomyDiagram />;
+    case "glossectomy": return <GlossectomyDiagram />;
+    case "microlaryngoscopy": return <MicrolaryngoscopyDiagram />;
     case "dental": return <DentalDiagram />;
     case "circumcision": return <CircumcisionDiagram />;
     case "paediatric-hernia": return <PaediatricHerniaDiagram />;
@@ -967,5 +970,50 @@ const FessDiagram = () => (
     <Label x={140} y={45}>Skull base (CSF leak risk)</Label><Label x={40} y={200}>Orbit</Label>
     <Label x={290} y={210}>Ethmoid sinuses</Label><Label x={60} y={260}>Endoscope via nostril</Label>
     <Label x={25} y={318}>TIVA, head-up, controlled BP for a clear view</Label>
+  </Shell>
+);
+
+/* ENT procedural schematics, not scaled anatomical plates or laterality maps.
+ * Laryngectomy: local sagittal flow view; anterior/stoma on viewer's left.
+ * Glossectomy: view into mouth; no right/left resection implied.
+ * Microlaryngoscopy: local longitudinal access view, mouth above trachea. */
+const LaryngectomyDiagram = () => (
+  <Shell id="op-laryngectomy" title="Total laryngectomy: two permanently separate routes" desc="Conceptual postoperative flow view. The pharynx continues into the oesophagus for swallowing. The divided trachea is brought to the neck as a permanent end stoma. There is no mouth-to-lung connection after total laryngectomy. This does not depict partial laryngectomy." h={340}>
+    <path d="M290 70 L290 270" stroke={GRAFT} strokeWidth={26} fill="none" />
+    <path d="M95 175 L190 175 Q220 175 220 215 L220 270" stroke={VEIN} strokeWidth={24} fill="none" />
+    <path d="M220 80 L220 125" stroke={MUTED} strokeWidth={20} strokeDasharray="5 5" />
+    <path d="M205 125 L235 145 M235 125 L205 145" stroke={ART} strokeWidth={3} />
+    <Label x={25} y={30}>After TOTAL laryngectomy</Label>
+    <Label x={305} y={80}>Pharynx</Label><Label x={305} y={250}>Oesophagus</Label>
+    <Label x={25} y={150}>Neck end stoma</Label><Label x={25} y={220}>Oxygen enters here</Label>
+    <Label x={305} y={160}>No connection</Label><Label x={305} y={178}>to the lungs</Label>
+    <Label x={170} y={295}>Trachea → lungs</Label>
+    <Label x={25} y={325}>Stoma-only airway; mouth / nose oxygen cannot reach lungs</Label>
+  </Shell>
+);
+
+const GlossectomyDiagram = () => (
+  <Shell id="op-glossectomy" title="Glossectomy: resection, reconstruction and airway planning" desc="View into the mouth, without a laterality claim. A dashed region represents a possible partial tongue resection, not a required margin or the extent of total glossectomy. A flap may reconstruct a larger defect. Swelling, bleeding and flap bulk can obstruct the postoperative upper airway." h={340}>
+    <path d="M100 85 Q260 30 420 85 L400 220 Q260 285 120 220 Z" fill={FILL} stroke={INK} strokeWidth={3} />
+    <path d="M170 140 Q260 100 350 140 L340 215 Q260 250 180 215 Z" fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M260 120 Q310 115 350 140 L340 215 Q295 235 260 232 Z" fill="none" stroke={ART} strokeWidth={3} strokeDasharray="6 4" />
+    <path d="M355 290 L310 220" stroke={GRAFT} strokeWidth={3} />
+    <Label x={25} y={30}>Local mouth view — extent varies</Label>
+    <Label x={30} y={120}>Tongue</Label><Label x={260} y={80}>Dashed: example resection</Label>
+    <Label x={295} y={305}>Flap if required</Label>
+    <Label x={25} y={325}>Agree tracheostomy / delayed extubation before resection</Label>
+  </Shell>
+);
+
+const MicrolaryngoscopyDiagram = () => (
+  <Shell id="op-microlaryngoscopy" title="Microlaryngoscopy: access and ventilation share one space" desc="Local access schematic. A rigid suspension laryngoscope exposes the vocal folds. A small tracheal tube is one ventilation option; specialist tubeless or jet techniques are alternatives, not additions shown here. Jet ventilation requires an unobstructed expiratory route; laser use requires a separate airway-fire plan." h={340}>
+    <path d="M155 65 L155 155 L205 175 M345 65 L345 155 L295 175" stroke={INK} strokeWidth={6} fill="none" />
+    <path d="M205 180 L225 230 L225 290 M295 180 L275 230 L275 290" stroke={INK} strokeWidth={3} fill="none" />
+    <path d="M230 35 L240 265" stroke={VEIN} strokeWidth={10} />
+    <path d="M205 180 L235 193 M295 180 L265 193" stroke={GRAFT} strokeWidth={6} />
+    <Label x={25} y={25}>Suspension laryngoscope</Label>
+    <Label x={280} y={60}>Small tube shown</Label><Label x={320} y={195}>Vocal folds</Label>
+    <Label x={25} y={245}>Shared field</Label><Label x={295} y={285}>Trachea</Label>
+    <Label x={25} y={325}>Jet: free expiration · laser: tube / oxygen / ignition plan</Label>
   </Shell>
 );

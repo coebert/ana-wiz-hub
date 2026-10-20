@@ -29,7 +29,8 @@ export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | 
   | "dental" | "circumcision" | "paediatric-hernia" | "mitral" | "pneumonectomy"
   | "gastric-bypass" | "vitrectomy" | "microdiscectomy" | "manual-placenta"
   | "cleft" | "tracheostomy" | "nephrectomy" | "awake-craniotomy" | "scoliosis"
-  | "liver-transplant" | "adrenalectomy" | "fess";
+  | "liver-transplant" | "adrenalectomy" | "fess"
+  | "laryngectomy" | "glossectomy" | "microlaryngoscopy";
 
 export interface OperativeStep {
   /** What the surgeon does. */
@@ -57,6 +58,57 @@ export interface Operation {
 }
 
 export const operations: Operation[] = [
+  {
+    id: "total-laryngectomy", name: "Total laryngectomy", aka: ["laryngectomy", "larynx removal", "permanent neck breather"],
+    specialty: "ENT & Head and Neck", diagram: "laryngectomy", bloodLossRisk: "Moderate",
+    summary: "Removal of the entire larynx, usually for cancer, permanently separates the trachea from the pharynx. The trachea is sutured to the neck skin as an end stoma; the pharynx is closed for swallowing. Neck dissection or flap reconstruction may be added. Partial laryngectomy preserves different anatomy and is not covered by this sequence.",
+    position: "Supine, head supported with agreed neck extension; protect irradiated or restricted cervical tissues and maintain access to the airway and lines.",
+    steps: [
+      { step: "Review endoscopy/imaging, tumour obstruction, prior radiotherapy, nutrition and the resection/reconstruction plan; agree primary and rescue airway strategies.", anaesthetic: "Stridor, a friable tumour or restricted neck/mouth opening can make induction hazardous. An awake approach or awake surgical airway may be appropriate after specialist assessment; avoid assuming a standard asleep oral intubation will be safe." },
+      { step: "Establish anaesthesia and the agreed airway; expose the neck and perform neck dissection if indicated.", anaesthetic: "Secure the tube away from the field and keep rescue access available. Assess access/arterial monitoring and blood availability by anticipated extent; previous radiotherapy increases technical difficulty." },
+      { step: "Mobilise the larynx, divide the trachea and transfer ventilation to a sterile cuffed tube through the distal trachea.", anaesthetic: "Explicitly coordinate the airway handover. Protect the cuff from cutting instruments; use airway-fire precautions around an open oxygenated trachea. Confirm sustained waveform capnography, depth and fixation before abandoning the previous airway." },
+      { step: "Remove the larynx, close or reconstruct the pharyngeal defect, and mature the permanent tracheal end stoma; a voice prosthesis may be placed.", anaesthetic: "After separation, mouth/nose oxygen and oral intubation cannot reach the lungs. Check stomal-tube depth to avoid endobronchial placement; flap reconstruction adds prolonged surgery, perfusion and donor-site considerations." },
+      { step: "Complete haemostasis, drains and airway checks; transfer with a laryngectomy-specific handover and bedhead sign.", anaesthetic: "Oxygenation, suction and any ventilation are through the stoma. Ensure humidification, suitable emergency equipment and trained staff. Monitor bleeding, plugging and swelling; do not remove a TEP voice prosthesis during routine airway troubleshooting." },
+    ],
+    criticalMoments: ["Induction with a potentially obstructed tumour airway", "Tracheal division and transfer of ventilation", "Permanent loss of mouth-to-lung connection", "Postoperative stoma obstruction or bleeding"],
+    anaestheticNotes: ["A total laryngectomy is not a tracheostomy: the upper airway no longer connects to the lungs. If anatomy is uncertain in an emergency, oxygenate face and stoma until clarified.", "Plan multimodal analgesia, nutrition, communication support and postoperative care with the head-and-neck team. Pharyngocutaneous fistula and wound problems are later surgical concerns.", "These are typical high-level stages, not a dissection guide; combined neck dissection/flap work changes duration and blood-loss risk. Emergency recommendations follow NTSP."],
+    related: { label: "ENT anaesthesia and laryngectomy emergencies", path: "/clinical/ent-anaesthesia" },
+    sources: ["Stephens Elective Laryngectomy 2017", "NTSP Operative Laryngectomy Safety", "ERAS Head & Neck 2017"],
+  },
+  {
+    id: "glossectomy", name: "Glossectomy (partial, hemi- or total tongue resection)", aka: ["tongue resection", "hemiglossectomy", "tongue cancer surgery"],
+    specialty: "ENT & Head and Neck", diagram: "glossectomy", bloodLossRisk: "Moderate",
+    summary: "Resection of part or all of the tongue for cancer. A small accessible defect may be closed directly; larger defects can need regional or free-flap reconstruction, sometimes with neck dissection. The extent and location of resection determine airway, swallowing and speech consequences; total tongue resection is not equivalent to a small partial glossectomy.",
+    position: "Supine with head supported; oral access and tube route agreed before draping. A flap donor site may need simultaneous access and careful limb positioning.",
+    steps: [
+      { step: "Review tumour site/extent, mouth opening, endoscopy/imaging, bleeding, swallowing, aspiration risk, nutrition and prior radiotherapy.", anaesthetic: "Agree the primary airway and rescue plan with the surgeon. Large tongue/base-of-tongue lesions can obstruct ventilation and be damaged by instrumentation; consider awake airway management in an at-risk patient." },
+      { step: "Secure the airway using the agreed route and expose the oral cavity; elective tracheostomy may be performed for extensive surgery.", anaesthetic: "Nasal intubation can improve oral access when appropriate, but is not mandatory or suitable for every case. Plan postoperative airway protection before resection, not after swelling appears." },
+      { step: "Resect the involved tongue with oncological margins; control lingual vessels and perform neck dissection if indicated.", anaesthetic: "Bleeding can be brisk and enter the shared airway. Track suction losses and haemoglobin by clinical need; recheck the tube after retractors or head movements. Margins and resection extent are surgical decisions." },
+      { step: "Close the defect or reconstruct with a flap; free-flap vessels are joined to recipient neck vessels and perfusion assessed.", anaesthetic: "Maintain temperature, oxygenation and adequate perfusion without indiscriminate fluid loading. Goal-directed fluids and judicious vasopressors may be appropriate; protect donor-site pressure points and communicate perfusion concerns." },
+      { step: "Check haemostasis and the reconstructed airway; recover with planned tracheostomy care, delayed extubation or selected immediate extubation.", anaesthetic: "Tongue/floor-of-mouth oedema, flap bulk and haematoma can obstruct the airway and make reintubation difficult. Extubation requires an assessed rescue plan and appropriate monitoring; no single strategy suits all resections." },
+    ],
+    criticalMoments: ["Initial airway control with a friable or obstructing tumour", "Lingual vessel bleeding in a shared airway", "Flap reperfusion and prolonged reconstruction", "Postoperative obstruction from oedema, flap bulk or haematoma"],
+    anaestheticNotes: ["Tracheostomy is not routine for every small partial glossectomy, but may be essential for extensive or high-risk resections; evidence from selected reconstruction cohorts cannot override individual assessment.", "Plan opioid-sparing analgesia, aspiration precautions, enteral nutrition and speech/swallow rehabilitation with the multidisciplinary team.", "Blood loss and care requirements rise with neck dissection, extensive resection and free-flap reconstruction; the moderate-risk badge is qualitative, not a predicted volume."],
+    related: { label: "ENT anaesthesia", path: "/clinical/ent-anaesthesia" },
+    sources: ["Ma Oral Reconstruction 2024", "Madgar Reconstruction Airway 2022", "ERAS Head & Neck 2017", "McCauley Free Flap Anaesthesia 2022"],
+  },
+  {
+    id: "microlaryngoscopy", name: "Microlaryngoscopy (biopsy or endoscopic laryngeal surgery)", aka: ["microlaryngeal surgery", "suspension laryngoscopy", "vocal cord surgery", "MLS"],
+    specialty: "ENT & Head and Neck", diagram: "microlaryngoscopy", bloodLossRisk: "Low",
+    summary: "A rigid suspension laryngoscope exposes the larynx for magnified inspection, biopsy or treatment of vocal-fold lesions. Cold instruments or a laser may be used. The surgeon and anaesthetist share the same narrow airway; stenosis or an obstructing lesion can make a short procedure high risk.",
+    position: "Supine in an individually suitable laryngoscopy position; protect teeth, lips, eyes and cervical spine. Suspension limits airway access.",
+    steps: [
+      { step: "Review airway symptoms, endoscopy, lesion/stenosis, respiratory reserve and cervical/dental issues; agree surgical and ventilation plans.", anaesthetic: "Stridor and severe obstruction demand specialist planning, including rescue access and whether spontaneous breathing should initially be preserved. Select a small tube or a specialist tubeless technique according to lesion, access and team expertise." },
+      { step: "Induce anaesthesia using the agreed approach and establish ventilation; protect teeth and insert the suspension laryngoscope.", anaesthetic: "Insertion is strongly stimulating. TIVA is often useful for open-airway techniques; muscle relaxation depends on the strategy. Reassess ventilation and tube/catheter position after suspension rather than assuming the airway is unchanged." },
+      { step: "Inspect the larynx under magnification and perform biopsy or the planned lesion treatment.", anaesthetic: "A small tracheal tube may restrict surgical access and increase resistance. Tubeless approaches need explicit oxygenation, ventilation and rescue plans; oxygen insufflation alone does not guarantee carbon-dioxide clearance." },
+      { step: "If jet ventilation or laser treatment is selected, apply its dedicated safety plan throughout treatment.", anaesthetic: "Jet ventilation requires unobstructed expiration: impaired egress can cause gas trapping and barotrauma. Monitor oxygenation and CO2 by methods appropriate to the technique. For laser use, choose wavelength-appropriate laser-resistant equipment when a tube is used, minimise oxidiser enrichment as safely feasible, avoid nitrous oxide and coordinate ignition/oxygen delivery. Tubeless oxygen also carries fire risk." },
+      { step: "Secure haemostasis, remove instruments and reassess the airway before emergence and recovery.", anaesthetic: "Look for bleeding, oedema or residual obstruction; suction appropriately and agree extubation or continued airway support. Watch for laryngospasm, stridor, hypoventilation and barotrauma; recovery/discharge depends on airway status, not just procedure length." },
+    ],
+    criticalMoments: ["Induction with laryngeal obstruction", "Suspension — restricted access or displaced tube", "Jet ventilation — inadequate expiration and barotrauma", "Laser activation — airway fire", "Emergence — laryngospasm or oedema"],
+    anaestheticNotes: ["Small-tube ventilation, intermittent apnoea, spontaneous ventilation and jet ventilation are alternatives with different limitations; none is a default for all lesions.", "Jet pressures, frequencies and apnoea intervals require specialist equipment and patient-specific protocols, not values inferred from this summary.", "For suspected airway fire, stop surgery and oxidiser delivery, remove burning airway material and extinguish with saline/water, then re-establish ventilation and assess injury according to the local emergency protocol."],
+    related: { label: "ENT anaesthesia", path: "/clinical/ent-anaesthesia" },
+    sources: ["Pearson Laryngotracheal Anaesthesia 2017", "Dow Jet Ventilation 2023", "Rogers Tracheostomy Fire 2001"],
+  },
   {
     id: "paediatric-dental-extractions", name: "Paediatric dental extractions under general anaesthesia", aka: ["dental GA", "children dental clearance"],
     specialty: "Paediatric", diagram: "dental", bloodLossRisk: "Low",
