@@ -98,4 +98,24 @@ describe("operations library", () => {
     expect(searchOperations("intraocular gas", "Ophthalmic").map((op) => op.id)).toContain("pars-plana-vitrectomy");
     expect(searchOperations("child herniotomy", "Paediatric").map((op) => op.id)).toContain("paediatric-inguinal-hernia");
   });
+
+  it.each(["total-laryngectomy", "glossectomy", "microlaryngoscopy"])("includes %s in ENT with full staged notes and resolving sources", (id) => {
+    const op = operations.find((entry) => entry.id === id);
+    expect(op?.specialty).toBe("ENT & Head and Neck");
+    expect(op?.diagram).toBeTruthy();
+    expect(op?.steps.length ?? 0).toBeGreaterThanOrEqual(5);
+    expect(op?.steps.every((step) => Boolean(step.anaesthetic))).toBe(true);
+    expect(op?.criticalMoments.length ?? 0).toBeGreaterThanOrEqual(3);
+    expect(op?.sources?.length ?? 0).toBeGreaterThanOrEqual(2);
+    for (const label of op?.sources ?? []) {
+      expect(topicReferences["operative-steps"].find((ref) => ref.label === label)?.url).toBeTruthy();
+    }
+    expect(searchOperations(id.replaceAll("-", " "), "ENT & Head and Neck").map((entry) => entry.id)).toContain(id);
+  });
+
+  it("finds ENT operations by alternative names and anaesthetic hazards", () => {
+    expect(searchOperations("laryngectomy").map((op) => op.id)).toContain("total-laryngectomy");
+    expect(searchOperations("tongue resection").map((op) => op.id)).toContain("glossectomy");
+    expect(searchOperations("barotrauma", "ENT & Head and Neck").map((op) => op.id)).toContain("microlaryngoscopy");
+  });
 });
