@@ -170,7 +170,7 @@ export const operations: Operation[] = [
       "Tranexamic acid, point-of-care coagulation testing, cell salvage and warming.",
       "Plan critical care with renal replacement available.",
     ],
-    related: { label: "Major haemorrhage and haemorrhagic shock", path: "/clinical/haemorrhagic-shock" },
+    related: { label: "Major haemorrhage and haemorrhagic shock", path: "/intensive-care/haemorrhagic-shock" },
     sources: ["IMPROVE 2014", "ESVS 2024 AAA"],
   },
   {
