@@ -525,9 +525,9 @@ export const operations: Operation[] = [
     criticalMoments: ["Avoiding hypotension for fistula patency", "Block or induction with high potassium or fluid overload", "Checking hand perfusion (steal) after the anastomosis"],
     anaestheticNotes: [
       "Patients have end-stage kidney disease: check potassium, timing of last dialysis, fluid status and drug dosing.",
-      "Avoid suxamethonium if potassium is raised; drugs cleared by the kidney accumulate.",
+      "Avoid suxamethonium if potassium is raised; drugs cleared by the kidney accumulate.", "In a randomised trial, brachial plexus block improved 3-month fistula patency compared with local infiltration.",
     ],
-    sources: ["ESVS 2018 vascular access"],
+    sources: ["ESVS 2018 vascular access", "Aitken Regional AVF 2016"],
   },
 
   // ─────────────────────── Cardiothoracic ───────────────────────
@@ -866,7 +866,7 @@ export const operations: Operation[] = [
     criticalMoments: ["Absorption of irrigation fluid (TURP syndrome)", "Bladder perforation", "Hidden blood loss"],
     anaestheticNotes: ["Check sodium if the resection is long, absorption is suspected, or the patient becomes confused, bradycardic or hypertensive.", "Spinal anaesthesia lets early confusion from fluid absorption be noticed; bipolar resection with saline lowers but does not abolish absorption risk."],
     related: { label: "Urology anaesthesia", path: "/clinical/urological-anaesthesia" },
-    sources: ["O'Donnell & Foo 2009"],
+    sources: ["O'Donnell & Foo 2009", "Ortner Irrigation Absorption 2022"],
   },
   {
     id: "robotic-prostatectomy",
@@ -889,7 +889,7 @@ export const operations: Operation[] = [
       "Once docked, the patient cannot be moved quickly — plan arrest and undocking drills.",
       "Before extubation, return to flat, check for facial and airway oedema (e.g. cuff-leak) and confirm full neuromuscular recovery.",
     ],
-    sources: ["Irvine & Patil 2009"],
+    sources: ["Irvine & Patil 2009", "Hernandez-Meza RALP 2023"],
     related: { label: "Robotic surgery anaesthesia", path: "/notes/anaesthesia-for-robotic-surgery-guide" },
   },
 
@@ -994,9 +994,10 @@ export const operations: Operation[] = [
       "ESVS guidance recommends measures to protect the spinal cord when extensive thoracic aortic coverage is planned, including cerebrospinal fluid drainage in selected high-risk patients and maintaining an adequate mean arterial pressure.",
       "A lumbar CSF drain needs coagulation and anticoagulation planning; drain complications include headache, bleeding and infection.",
       "Spinal cord ischaemia can be delayed: serial neurological checks after surgery; new weakness needs immediate pressure augmentation and CSF drainage if a drain is in place.",
+      "A 2023 meta-analysis found no clear reduction in spinal cord ischaemia with prophylactic drainage in TEVAR and a small risk of serious drain complications, so drainage is selective rather than routine.",
     ],
     related: { label: "Vascular surgery anaesthesia", path: "/clinical/vascular-anaesthesia" },
-    sources: ["ESVS 2017 thoracic aorta"],
+    sources: ["ESVS 2017 thoracic aorta", "Chen CSF Drainage TEVAR 2023"],
   },
   {
     id: "sleeve-gastrectomy",
@@ -1157,7 +1158,7 @@ export const operations: Operation[] = [
       "Joint RCoA/RCOphth guidance: routine fasting is not required for topical or sub-Tenon's LA without sedation, and routine blood tests are not needed; check anticoagulation but usually continue it (block choice may change).",
       "General anaesthesia is reserved for patients who cannot cooperate or lie still.",
     ],
-    sources: ["RCoA/RCOphth LA 2012"],
+    sources: ["RCoA/RCOphth LA 2012", "Pucchio Ophthalmic Anaesthesia 2023"],
   },
   {
     id: "pyloromyotomy", name: "Pyloromyotomy (open or laparoscopic)", aka: ["Ramstedt", "pyloric stenosis", "IHPS"],
