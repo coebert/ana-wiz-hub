@@ -769,7 +769,7 @@ export const operations: Operation[] = [
       { step: "Trial reduction, final components, closure.", anaesthetic: "Early mobilisation pathways rely on good analgesia without dense motor block." },
     ],
     criticalMoments: ["Femoral stem cementing (if cemented)", "Neuraxial or general anaesthesia and positioning", "Hip reduction and blood loss"],
-    anaestheticNotes: ["Local infiltration analgesia and multimodal analgesia support same-day or next-day mobilisation.", "Tranexamic acid is offered to adults having hip replacement per NICE NG157 unless contraindicated."],
+    anaestheticNotes: ["Local infiltration analgesia and multimodal analgesia support same-day or next-day mobilisation.", "NICE NG157 advises intravenous tranexamic acid for primary elective hip replacement."],
     related: { label: "Orthopaedic anaesthesia", path: "/clinical/orthopaedic-anaesthesia" },
     sources: ["AAGBI BCIS 2015", "NICE NG157"],
   },
