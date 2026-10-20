@@ -103,7 +103,7 @@ export function OperationsSearchBar({
     <div
       className={`rounded-xl border px-3 py-3 sm:px-4 ${
         sticky
-          ? "sticky top-[5.5rem] z-30 border-border bg-background shadow-sm"
+          ? "sticky top-[7rem] z-30 border-border bg-background shadow-sm 2xl:top-[5.5rem]"
           : "border-border bg-muted/30"
       }`}
     >
