@@ -1,6 +1,7 @@
 # Admin metrics audit fixes
 
 ## Operations Library: diagram detail and realism
+- [ ] Refine remaining vascular, cardiac and ENT schematics, plus selected diagrams in other specialties; check rendering and refresh private audit coverage.
 - [x] Redraw ten vascular, cardiac and shared-airway diagrams with cutaways, vessel connections and surgical detail.
 - [x] Check all 64 drawings for clipped labels/runtime errors; verify mitral search/mobile/dark views, pass 38 regressions and refresh/upload the private audit copy.
 - [x] Improve shared tissue, vessel and instrument rendering across the library.
