@@ -1,6 +1,7 @@
 # Admin metrics audit fixes
 
 ## Operations Library: diagram detail and realism
+- [ ] Refine remaining orthopaedic, urological and neurosurgical drawings; verify labels, search and small-screen rendering, run regressions and refresh the private audit copy.
 - [x] Refine ten vascular, cardiac, ENT, paediatric, colorectal and transplant schematics; check all 64 for clipped labels/runtime errors, verify search/mobile/dark views, pass 38 regressions and refresh/upload private audit coverage. Further specialty refinements and consultant review remain future work.
 - [x] Redraw ten vascular, cardiac and shared-airway diagrams with cutaways, vessel connections and surgical detail.
 - [x] Check all 64 drawings for clipped labels/runtime errors; verify mitral search/mobile/dark views, pass 38 regressions and refresh/upload the private audit copy.
