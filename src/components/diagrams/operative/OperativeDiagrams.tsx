@@ -556,6 +556,9 @@ export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
     case "manual-placenta": return <ManualPlacentaDiagram />;
     case "cleft": return <CleftDiagram />;
     case "tracheostomy": return <TracheostomyDiagram />;
+    case "nephrectomy": return <NephrectomyDiagram />;
+    case "awake-craniotomy": return <AwakeCraniotomyDiagram />;
+    case "scoliosis": return <ScoliosisDiagram />;
     case "carotid-stent": return <CarotidStentDiagram />;
     case "femoral-endarterectomy": return <FemoralEndarterectomyDiagram />;
     case "kidney-transplant": return <KidneyTransplantDiagram />;
@@ -876,5 +879,49 @@ const TracheostomyDiagram = () => (
     <Label x={60} y={140}>Thyroid isthmus</Label>
     <Label x={290} y={250}>Trachea</Label>
     <Label x={25} y={318}>Low oxygen, no diathermy at tracheal opening; confirm with capnography</Label>
+  </Shell>
+);
+
+const NephrectomyDiagram = () => (
+  <Shell id="op-nephrectomy" title="Radical nephrectomy and IVC tumour thrombus" desc="Anterior conceptual view, not a laterality map. The kidney with its tumour is removed after tying the renal artery and vein. Tumour can grow along the renal vein into the inferior vena cava, which then has to be clamped above and below the thrombus.">
+    <path d="M250 20 L250 300" stroke={VEIN} strokeWidth={14} />
+    <path d="M290 20 L290 300" stroke={ART} strokeWidth={8} />
+    <ellipse cx={130} cy={170} rx={50} ry={80} fill={FILL} stroke={INK} strokeWidth={2} />
+    <circle cx={115} cy={140} r={22} fill={ART} opacity={0.4} />
+    <path d="M175 170 L243 170" stroke={VEIN} strokeWidth={8} />
+    <path d="M178 190 L283 190" stroke={ART} strokeWidth={4} />
+    <rect x={243} y={120} width={14} height={60} fill={MUTED} />
+    <path d="M232 105 L268 105 M232 200 L268 200" stroke={INK} strokeWidth={4} />
+    <Label x={60} y={275}>Kidney with tumour</Label>
+    <Label x={310} y={60}>Aorta</Label><Label x={310} y={110}>IVC clamps above and below</Label>
+    <Label x={310} y={150}>Tumour thrombus in IVC</Label><Label x={310} y={200}>Renal artery tied first</Label>
+    <Label x={25} y={318}>Caval clamping drops venous return; watch for embolism</Label>
+  </Shell>
+);
+
+const AwakeCraniotomyDiagram = () => (
+  <Shell id="op-awake-craniotomy" title="Awake craniotomy: mapping while the patient talks" desc="View from the anaesthetist's side. The head is fixed in pins after a scalp block. Drapes are tented so the face can be seen and the airway reached. During the awake phase the surgeon stimulates the cortex while the patient speaks or moves.">
+    <circle cx={200} cy={160} r={90} fill={FILL} stroke={INK} strokeWidth={2} />
+    <path d="M150 90 Q200 60 250 90 L235 140 Q200 125 165 140 Z" fill={ART} opacity={0.3} stroke={INK} />
+    <path d="M110 160 L60 160 M290 160 L340 160" stroke={INK} strokeWidth={5} />
+    <path d="M200 40 L200 95" stroke={GRAFT} strokeWidth={3} />
+    <path d="M300 240 Q360 200 420 240" stroke={MUTED} strokeWidth={3} fill="none" strokeDasharray="6 4" />
+    <Label x={210} y={50}>Stimulation probe</Label><Label x={25} y={145}>Head pins</Label>
+    <Label x={300} y={110}>Bone flap over tumour</Label><Label x={330} y={270}>Tented drapes: face visible</Label>
+    <Label x={60} y={275}>Scalp block for pins and incision</Label>
+    <Label x={25} y={318}>Seizure ready: cold saline and drugs; airway rescue to hand</Label>
+  </Shell>
+);
+
+const ScoliosisDiagram = () => (
+  <Shell id="op-scoliosis" title="Scoliosis correction: screws, rods and neuromonitoring" desc="Posterior view of a curved spine. Pedicle screws are placed across many levels and rods are used to straighten the curve. Motor and sensory evoked potentials monitor the spinal cord, which is most at risk during the correction manoeuvre.">
+    <path d="M200 30 Q120 120 200 180 Q280 240 200 300" stroke={MUTED} strokeWidth={22} fill="none" opacity={0.5} />
+    <path d="M330 30 L330 300" stroke={GRAFT} strokeWidth={5} />
+    {[60, 100, 140, 180, 220, 260].map((y) => <circle key={y} cx={330} cy={y} r={6} fill={INK} />)}
+    <path d="M240 165 L300 165" stroke={INK} strokeWidth={2} /><path d="M290 158 L300 165 L290 172" stroke={INK} fill="none" />
+    <path d="M90 35 L90 120" stroke={VEIN} strokeWidth={3} strokeDasharray="5 3" />
+    <Label x={60} y={170}>Curved spine</Label><Label x={350} y={100}>Pedicle screws</Label>
+    <Label x={350} y={200}>Rod: corrected spine</Label><Label x={25} y={20}>Evoked potential monitoring</Label>
+    <Label x={25} y={318}>Correction: keep BP and Hb up; TIVA; big blood loss</Label>
   </Shell>
 );
