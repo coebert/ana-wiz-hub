@@ -114,7 +114,7 @@ export function playVivaSpeech(text: string, opts: { voice?: string; signal?: Ab
 
   const schedule = (samples: Float32Array) => {
     const buffer = context.createBuffer(1, samples.length, SAMPLE_RATE);
-    buffer.copyToChannel(samples, 0);
+    buffer.getChannelData(0).set(samples);
     const source = context.createBufferSource();
     source.buffer = buffer;
     source.playbackRate.value = rate;
