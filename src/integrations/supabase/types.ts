@@ -1551,6 +1551,48 @@ export type Database = {
         }
         Relationships: []
       }
+      viva_attempts: {
+        Row: {
+          answer: string
+          created_at: string
+          exam: string
+          feedback: Json
+          id: string
+          question: string
+          score: number
+          topic_id: string
+          topic_title: string
+          user_id: string
+          verdict: string | null
+        }
+        Insert: {
+          answer: string
+          created_at?: string
+          exam: string
+          feedback?: Json
+          id?: string
+          question: string
+          score: number
+          topic_id: string
+          topic_title: string
+          user_id?: string
+          verdict?: string | null
+        }
+        Update: {
+          answer?: string
+          created_at?: string
+          exam?: string
+          feedback?: Json
+          id?: string
+          question?: string
+          score?: number
+          topic_id?: string
+          topic_title?: string
+          user_id?: string
+          verdict?: string | null
+        }
+        Relationships: []
+      }
       viva_model_answer_locks: {
         Row: {
           claimed_at: string
