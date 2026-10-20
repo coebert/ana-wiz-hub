@@ -11,7 +11,7 @@
 - Keep expanded lessons in imported Teaching modules for audit retention; ICU outcomes use IcuOutcomesTeaching and reference excerpts, distinguishing periods, denominators, endpoints and symptom thresholds to avoid conflation.
 - Citation-snapshot generation must resolve the data-driven topic route table and refuse empty output when fixed findings exist, so routing refactors cannot erase regression coverage.
 - Keep curriculum subsection coverage in curriculum-expansion.md and mark batches checked only after source, rendering and audit-corpus verification, so partial expansion cannot imply whole-topic completion.
-- Search uses src/data/searchIndex.generated.json, rebuilt by scripts/build-search-index.ts on predev/prebuild and lazy-loaded on dialog open. Reuse the audit extractor and CollapsibleSubsection anchors for exact links; filter named imports to prevent cross-topic leakage and give each export a prose queue so later lessons are retained.
+- Search is generated predev/prebuild and lazy-loaded. Reuse audit extraction and subsection anchors; filter named imports and queue prose per export to prevent leakage or loss.
 
 - Keep acid-base teaching and linked displays aligned with canonical charge/unit conventions; qualitative Stewart controls must not present an unvalidated numerical pH, and toxin unit conversion must not issue automated treatment verdicts from incomplete clinical inputs.
 - Keep PEEP management in its own registered topic linked from Mechanical Ventilation; put case teaching in a Teaching module and label invented observations as fictional, not patient records or predicted responses. Its timing explorer performs arithmetic only, so breath timing cannot imply a predicted intrinsic PEEP or patient-safe setting.
@@ -29,3 +29,4 @@
 
 - Admin learning aggregates require server-checked admin access and account-scoped study-time caches; saved progress is distinct from visitor estimates.
 - Visitor classification is shared; client evidence is not identity; interactions never inflate views. Surveys retain first answers per browser ID with admin-only reads; self-reports never override classification.
+- Viva audio uses shared client deadlines and an upstream/body deadline; errors keep text and retry available instead of silent failure.
