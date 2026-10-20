@@ -1,12 +1,12 @@
 - Build audit data to data-build/ with build:audit-corpus; upload to private audit-corpus for runtime downloads, avoiding oversized bundles.
-- FRCA hubs share ExamLessonLinks to resolve curriculum IDs and collapsible anchors without drift.
-- Diagram snapshots recursively scan diagram folders and topic atlases, including static SVG plates, so moves or missing interactions cannot remove visual-review coverage.
+- FRCA hubs share ExamLessonLinks for stable IDs and anchors.
+- Snapshots recursively include diagrams, atlases and static SVGs, preserving coverage after moves or interaction changes.
 - Anatomy root verification recursively parses TSX properties; positional heuristics require declared anterior projections; label positions/other views cannot prove laterality.
 - Painted anatomy plates carry optional plate-specific audit warnings beside the artwork so uncorrected printed labels cannot silently appear verified.
 - Anatomy source directory is generated from component/atlas metadata before dev/build, with one entry per atlas plate and explicit missing-source flags; citations must never imply anatomical certification.
 - Anatomy review completion covers wording/records only; classify artwork by URL/rights, retain historical-plate/hotspot uncertainty; empty warnings never imply verification.
 - Anatomy bibliographies reuse topicReferences via anatomyReferences; check integrity without AI; AI verdicts cannot certify sources/accuracy.
-- APRVSection unifies guidance, sources and learning checks.
+- APRVSection unifies guidance, sources and checks.
 
 - Keep expanded lessons in imported Teaching modules for audit retention; ICU outcomes use IcuOutcomesTeaching and reference excerpts, distinguishing periods, denominators, endpoints and symptom thresholds to avoid conflation.
 - Citation-snapshot generation must resolve the data-driven topic route table and refuse empty output when fixed findings exist, so routing refactors cannot erase regression coverage.
@@ -25,9 +25,9 @@
 
 - Keep endocrine resuscitation lessons in the shared EndocrineEmergenciesTeaching module; distinguish adrenal replacement from septic-shock adjuncts and explicitly name the adopted DKA guideline so different resolution criteria cannot silently merge.
 - Keep NTS expansions in NTSEvidenceTeaching using topic-reference quotations; distinguish operational debriefs from psychological interventions and TeamSTEPPS tools from local adaptations to prevent unsafe conflation.
-- Standalone endocrine pages reuse parent excerpts; tests enforce identical wording.
+- Endocrine pages reuse parent excerpts; tests enforce identical wording.
 
 - Admin learning aggregates require server-checked admin access and account-scoped study-time caches; saved progress is distinct from visitor estimates.
 - Visitor classification is shared; client evidence is not identity; interactions never inflate views. Surveys retain first answers per browser ID with admin-only reads; self-reports never override classification.
 - Viva audio streams PCM via tts-demo, chunked client-side, no deadlines; errors keep retry.
-- Operation steps: operativeSteps data; labels must resolve.
+- Operations use operativeSteps; resolving citations, procedure search anchors and uncapped audit retention prevent expansion loss.
