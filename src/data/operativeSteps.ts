@@ -750,7 +750,7 @@ export const operations: Operation[] = [
       "Screen for obstructive sleep apnoea (e.g. STOP-BANG); patients using CPAP should bring and use it after surgery.",
       "Monitor neuromuscular block quantitatively and ensure full reversal before extubation.",
     ],
-    related: { label: "Obesity and anaesthesia", path: "/clinical/obesity" },
+    related: { label: "Bariatric anaesthesia", path: "/clinical/bariatric-anaesthesia" },
     sources: ["ERAS Bariatric 2022"],
   },
   {
@@ -817,7 +817,7 @@ export const operations: Operation[] = [
       "ERAS head and neck free flap guidance supports goal-directed fluids, avoidance of fluid excess, multimodal analgesia and thromboprophylaxis.",
       "Many patients are smokers or heavy drinkers: screen for alcohol withdrawal, malnutrition and cardiorespiratory disease.",
     ],
-    related: { label: "Airway management", path: "/clinical/airway" },
+    related: { label: "Airway management", path: "/clinical/airway-management" },
     sources: ["ERAS Head & Neck 2017"],
   },
   {
