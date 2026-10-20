@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Pause, Play, Square, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
+import { requestVivaAudio, VIVA_AUDIO_ERROR } from "@/lib/viva-audio";
 import { toast } from "sonner";
 
 export interface DemoVivaSegment {
@@ -49,13 +49,7 @@ const DemoVivaPlayer = ({ segments }: DemoVivaPlayerProps) => {
       if (cached) return cached;
 
       const seg = segments[idx];
-      const { data, error } = await supabase.functions.invoke("tts-demo", {
-        body: { text: `${seg.label}. ${seg.text}` },
-      });
-      if (error) throw new Error(error.message || "TTS request failed");
-      if (!data?.audioBase64) throw new Error("No audio returned");
-
-      const url = `data:${data.mimeType ?? "audio/mpeg"};base64,${data.audioBase64}`;
+      const url = await requestVivaAudio(`${seg.label}. ${seg.text}`);
       cacheRef.current.set(idx, url);
       return url;
     },
@@ -109,7 +103,7 @@ const DemoVivaPlayer = ({ segments }: DemoVivaPlayerProps) => {
         try {
           await playSegment(url);
         } catch {
-          break;
+          throw new Error(VIVA_AUDIO_ERROR);
         }
       }
     } catch (err) {

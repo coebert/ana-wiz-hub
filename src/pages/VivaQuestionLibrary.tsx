@@ -19,6 +19,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { supabase } from "@/integrations/supabase/client";
+import { requestVivaAudio, VIVA_AUDIO_ERROR } from "@/lib/viva-audio";
 import { toast } from "sonner";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
 import { useVivaProgress } from "@/hooks/useVivaProgress";
@@ -490,13 +491,7 @@ const VivaQuestionLibrary = () => {
   };
 
   const synthesise = async (text: string, voice: string): Promise<string> => {
-    const { data, error } = await supabase.functions.invoke("tts-demo", {
-      body: { text, voice },
-    });
-    if (error) throw error;
-    const b64 = (data as { audioBase64?: string })?.audioBase64;
-    if (!b64) throw new Error("No audio returned");
-    return `data:audio/mpeg;base64,${b64}`;
+    return requestVivaAudio(text, voice);
   };
 
   const playSegment = (src: string): Promise<void> =>
@@ -538,7 +533,7 @@ const VivaQuestionLibrary = () => {
       await playSegment(candidateSrc);
     } catch (e) {
       console.error(e);
-      if (!playbackRef.current.cancelled) toast.error("Could not play dialogue");
+      if (!playbackRef.current.cancelled) toast.error(VIVA_AUDIO_ERROR);
     } finally {
       playbackRef.current.audio = null;
       setSpeakingId((current) => (current === row.id ? null : current));
