@@ -28,7 +28,7 @@ const quiz = [
 
 function OperationCard({ op, open }: { op: Operation; open: boolean }) {
   return (
-    <details id={op.id} open={open} className="group rounded-xl border border-border bg-card scroll-mt-44">
+    <details id={op.id} open={open} className="group rounded-xl border border-border bg-card scroll-mt-[21rem]">
       <summary className="cursor-pointer list-none p-4 flex flex-wrap items-baseline justify-between gap-2">
         <div>
           <h3 className="text-lg font-serif font-bold text-foreground">{op.name}</h3>
