@@ -1,8 +1,8 @@
 # Admin metrics audit fixes
 
 ## Operations Library: diagram detail and realism
-- [ ] Improve shared tissue, vessel and instrument rendering across the library.
-- [ ] Add operation-specific anatomical detail and correct misleading structures/routes.
+- [x] Improve shared tissue, vessel and instrument rendering across the library.
+- [x] Add operation-specific anatomical detail to all 64 drawings; redraw ten priority illustrations and correct misleading routes. Educational schematics, not anatomically certified plates.
 - [ ] Verify diagrams, search and audit retention; upload refreshed audit copy.
 
 ## Operations Library: ENT additions

@@ -17,7 +17,7 @@ export function IllustrationDefs({ id }: { id: string }) {
     {[["artery", artery], ["vein", vein], ["graft", graft], ["instrument", ink]].map(([name, color]) =>
       <linearGradient key={name} id={`${id}-${name}`} x1="0" y1="0" x2="520" y2="0" gradientUnits="userSpaceOnUse">
         <stop offset="0" stopColor={color} /><stop offset="0.42" stopColor={color} />
-        <stop offset="0.5" stopColor="hsl(var(--card))" stopOpacity="0.65" />
+        <stop offset="0.5" stopColor={color} stopOpacity="0.78" />
         <stop offset="0.6" stopColor={color} /><stop offset="1" stopColor={color} />
       </linearGradient>)}
     <pattern id={`${id}-mesh`} width="8" height="8" patternUnits="userSpaceOnUse">
