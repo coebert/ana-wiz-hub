@@ -10,12 +10,12 @@
 
 - Keep expanded lessons in imported Teaching modules for audit retention; ICU outcomes use IcuOutcomesTeaching and reference excerpts, distinguishing periods, denominators, endpoints and symptom thresholds to avoid conflation.
 - Citation-snapshot generation must resolve the data-driven topic route table and refuse empty output when fixed findings exist, so routing refactors cannot erase regression coverage.
-- Keep curriculum subsection coverage in curriculum-expansion.md and mark batches checked only after source, rendering and audit-corpus verification, so partial expansion cannot imply whole-topic completion.
+- Track subsections in curriculum-expansion.md; mark checked only after source, rendering and audit verification, never implying whole-topic completion.
 - Search is generated predev/prebuild and lazy-loaded. Reuse audit extraction and subsection anchors; filter named imports and queue prose per export to prevent leakage or loss.
 
 - Keep acid-base teaching and linked displays aligned with canonical charge/unit conventions; qualitative Stewart controls must not present an unvalidated numerical pH, and toxin unit conversion must not issue automated treatment verdicts from incomplete clinical inputs.
-- Keep PEEP management in its own registered topic linked from Mechanical Ventilation; put case teaching in a Teaching module and label invented observations as fictional, not patient records or predicted responses. Its timing explorer performs arithmetic only, so breath timing cannot imply a predicted intrinsic PEEP or patient-safe setting.
-- Keep metabolic alkalosis as a source-led registered topic linked from Acid-Base Disorders, with its parent-page lesson in the shared Teaching module; reuse verified excerpt records so quotations cannot drift and distinguish physiological correction from proven clinical outcome benefits.
+- PEEP has a registered topic linked from Mechanical Ventilation and a Teaching module. Label invented cases fictional, not patient records or predictions. Timing arithmetic never predicts intrinsic PEEP or patient-safe settings.
+- Metabolic alkalosis has a sourced registered topic linked from Acid-Base Disorders and a shared parent Teaching lesson. Reuse verified excerpts; distinguish physiological correction from proven outcome benefits.
 - Keep ICU liberation teaching in the Mechanical Ventilation Teaching module; separate readiness screening, SBT tolerance and airway/extubation decisions so a numeric index cannot become automatic clearance.
 
 - Keep fluid tonicity teaching in its own registered topic linked from Acid-Base Disorders; trial outcome detail stays in the acid-base saline/balanced lesson so the two cannot drift.
