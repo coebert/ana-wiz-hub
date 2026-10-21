@@ -75,3 +75,8 @@
 ## Topic learning progress
 - [x] Show topic completions, active time and per-account detail in admin.
 - [x] Harden account-scoped study-time syncing and verify signed-in learning flow.
+
+## ICU guideline expansions (checklists, fictional cases, calculators, comparison tables)
+- [x] Sepsis: NICE NG253 (2025–26) vs SSC 2021, CLOVERS/CLASSIC, fluid comparison calculator.
+- [ ] ARDS: ESICM 2023 / ATS 2024, prone, ECMO, steroids, PBW/driving-pressure calculator.
+- [ ] Transfusion: NICE NG24, BSH, restrictive thresholds, MINT/TRAIN.
