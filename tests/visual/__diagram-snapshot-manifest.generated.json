@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-21T18:55:36.500Z",
-  "count": 465,
+  "generatedAt": "2026-10-21T21:22:12.958Z",
+  "count": 468,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -145,6 +145,10 @@
     {
       "name": "APRVWaveformDiagram",
       "route": "/dev/diagram-snapshot/APRVWaveformDiagram"
+    },
+    {
+      "name": "ArdsPracticeTeaching",
+      "route": "/dev/diagram-snapshot/ArdsPracticeTeaching"
     },
     {
       "name": "ARDSVentModeComparisonDiagram",
@@ -1563,6 +1567,10 @@
       "route": "/dev/diagram-snapshot/SepsisManagementDiagram"
     },
     {
+      "name": "SepsisPracticeTeaching",
+      "route": "/dev/diagram-snapshot/SepsisPracticeTeaching"
+    },
+    {
       "name": "SepsisScoreCalculator",
       "route": "/dev/diagram-snapshot/SepsisScoreCalculator"
     },
@@ -1705,6 +1713,10 @@
     {
       "name": "TraliVsTacoDecisionTool",
       "route": "/dev/diagram-snapshot/TraliVsTacoDecisionTool"
+    },
+    {
+      "name": "TransfusionPracticeTeaching",
+      "route": "/dev/diagram-snapshot/TransfusionPracticeTeaching"
     },
     {
       "name": "TransportVentilationDiagram",
