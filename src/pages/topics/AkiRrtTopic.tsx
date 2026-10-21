@@ -10,7 +10,7 @@ import { RRTCircuitDiagram } from "@/components/diagrams/intensive-care/RRTCircu
 import { RRTCircuitFlowDiagram } from "@/components/diagrams/intensive-care/RRTCircuitFlowDiagram";
 import RRTModalitiesDiagram from "@/components/diagrams/intensive-care/RRTModalitiesDiagram";
 import { KDIGOAKIClassifier } from "@/components/diagrams/intensive-care/KDIGOAKIClassifier";
-import { MehranScoreCalculator } from "@/components/diagrams/intensive-care/MehranScoreCalculator";
+import { ContrastAkiTeaching } from "@/components/topic/ContrastAkiTeaching";
 import { akiRrtQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/topic/WorkedExamples";
 import { Exam } from "@/data/curriculum";
@@ -41,11 +41,11 @@ const akiFaqs: Array<[string, string]> = [
   ],
   [
     "How do I prevent contrast-induced AKI and is N-acetylcysteine still recommended?",
-    "Risk-stratify with the Mehran score (hypotension, IABP, CCF, age > 75, anaemia, diabetes, eGFR < 60, contrast volume). High risk = eGFR < 60 mL/min/1.73 m², diabetes, hypovolaemia, CCF, age > 75. Prevention: pre/post-procedure IV isotonic crystalloid 1 mL/kg/h for 6–12 h before and after; use iso-osmolar (iodixanol) or low-osmolar contrast; minimise contrast volume; withhold ACE-i / ARB / NSAID / metformin on the day of the procedure. PRESERVE (Weisbord, NEJM 2018, n = 5 177) showed N-acetylcysteine offered NO benefit over placebo, and saline was non-inferior to sodium bicarbonate. Statins given peri-procedure may attenuate risk in statin-naive patients (modest evidence). The major risk factor for AKI in modern practice is procedural haemodynamic instability rather than contrast itself.",
+    "CA-AKI describes AKI after contrast; CI-AKI means injury caused by it. Do not delay clinically essential emergency imaging. ACR recommends selective IV isotonic prophylaxis in AKI or eGFR <30, with individual consideration at 30–44; ESUR retains <45 for ICU or first-pass arterial exposure. Individualise fluids in congestion. PRESERVE found no benefit of bicarbonate over saline or acetylcysteine over placebo; it did not compare saline with no hydration. Medication holds depend on kidney function, exposure and illness, not a blanket rule. Mehran is a historical PCI score, not ICU CT clearance.",
   ],
   [
     "Which drugs require renal dose adjustment in AKI / CRRT and which are nephrotoxic?",
-    "Avoid where possible: NSAIDs, aminoglycosides (gentamicin, amikacin — therapeutic-drug monitoring mandatory if used), IV contrast in high-risk patients, ACE-i / ARB during AKI (then restart for long-term renoprotection), vancomycin without TDM, amphotericin B (use liposomal), tenofovir, calcineurin inhibitors at high trough. Opioids — avoid morphine (active metabolite M6G accumulates → respiratory depression) and pethidine (norpethidine → seizures); fentanyl, alfentanil and remifentanil are safe. Neuromuscular blockers — avoid pancuronium; cisatracurium (Hofmann elimination) and atracurium are first choice. Sugammadex is renally cleared but the sugammadex-rocuronium complex appears safe even in severe renal failure; avoid if eGFR < 30 by manufacturer label but widely used off-label. Antibiotics on CRRT need dose adjustment — meropenem, piperacillin-tazobactam, vancomycin and aminoglycosides need TDM. LMWH (dalteparin, enoxaparin) accumulates if CrCl < 30 — use UFH or anti-Xa monitoring.",
+    "Avoid where possible: NSAIDs, aminoglycosides (gentamicin, amikacin — therapeutic-drug monitoring mandatory if used), unnecessary contrast exposure (do not withhold essential emergency imaging), ACE-i / ARB during AKI (then restart for long-term renoprotection), vancomycin without TDM, amphotericin B (use liposomal), tenofovir, calcineurin inhibitors at high trough. Opioids — avoid morphine (active metabolite M6G accumulates → respiratory depression) and pethidine (norpethidine → seizures); fentanyl, alfentanil and remifentanil are safe. Neuromuscular blockers — avoid pancuronium; cisatracurium (Hofmann elimination) and atracurium are first choice. Sugammadex is renally cleared but the sugammadex-rocuronium complex appears safe even in severe renal failure; avoid if eGFR < 30 by manufacturer label but widely used off-label. Antibiotics on CRRT need dose adjustment — meropenem, piperacillin-tazobactam, vancomycin and aminoglycosides need TDM. LMWH (dalteparin, enoxaparin) accumulates if CrCl < 30 — use UFH or anti-Xa monitoring.",
   ],
   [
     "When and how do I manage severe hyperkalaemia in AKI?",
@@ -57,7 +57,7 @@ const akiFaqs: Array<[string, string]> = [
 const tocItems = [
   { id: "toc-classification", label: "Classification of Causes" },
   { id: "toc-kdigo", label: "KDIGO Staging" },
-  { id: "toc-ci-aki", label: "CI-AKI" },
+  { id: "toc-ci-aki", label: "Contrast & AKI" },
   { id: "toc-drug-dosing", label: "Drug Dosing" },
   { id: "toc-indications", label: "RRT Indications" },
   { id: "toc-modalities", label: "Modalities" },
@@ -71,7 +71,7 @@ const tocItems = [
 
 const objectives = [
   "Diagnose and stage AKI using KDIGO 2012 (creatinine and urine output criteria).",
-  "Risk-stratify and prevent contrast-induced AKI using the Mehran score and KDIGO prophylaxis bundle.",
+  "Distinguish CA-AKI from CI-AKI; assess ICU imaging benefit, fluid tolerance and current NICE, ACR and ESUR prevention guidance.",
   "Adjust perioperative drug dosing in renal impairment, identifying renal-friendly alternatives.",
   "List the AEIOU indications for RRT and apply STARRT-AKI / AKIKI evidence on timing of initiation.",
   "Compare CRRT, IHD, SLED and PD modalities and select appropriately by haemodynamics and goals.",
@@ -104,30 +104,11 @@ const workedExamples: WorkedExample[] = [
     cites: ["BJA Educ 2018"],
   },
   {
-    title: "CI-AKI prophylaxis dose calculation",
-    scenario: (
-      <>
-        78-year-old, 65 kg, eGFR 38, diabetic, listed for elective coronary angiogram with planned
-        contrast volume 120 mL of iohexol. Plan prophylaxis.
-      </>
-    ),
-    working: (
-      <>
-        Mehran high risk (age &gt;75, diabetes, eGFR &lt;60, anticipated contrast). Contrast safe
-        ceiling = 3 × eGFR = 3 × 38 = <strong>114 mL</strong> — planned 120 mL is borderline; ask
-        cardiology to minimise. IV 0.9% saline 1 mL/kg/h × 12 h pre + 12 h post = 65 × 1 × 24 ={" "}
-        <strong>1 560 mL total</strong>. Hold metformin/SGLT2 48 h, hold ACEi/diuretic on day,
-        avoid NSAIDs.
-      </>
-    ),
-    answer: (
-      <>
-        Iso-/low-osmolar contrast, minimise volume, isotonic saline 65 mL/h × 24 h around
-        procedure, withhold nephrotoxins, recheck creatinine at 48–72 h.{" "}
-        <strong>Do NOT give NAC or prophylactic RRT</strong> (PRESERVE — no benefit).
-      </>
-    ),
-    cites: ["KDIGO 2012"],
+    title: "Fictional contrast prophylaxis arithmetic — not an automatic prescription",
+    scenario: <>A stable 65 kg inpatient with eGFR 24 requires elective IV contrast. After assessing fluid tolerance, the team chooses the ESUR saline protocol at 1 mL/kg/h for 3 hours before and 4 hours after. Calculate the planned volume.</>,
+    working: <>65 × 1 = <strong>65 mL/h</strong>; 65 × (3 + 4) = <strong>455 mL</strong>. Count other fluids towards the total and reassess for congestion. This is arithmetic for a chosen protocol, not a prediction of kidney protection or a patient-safe setting.</>,
+    answer: <>Planned prophylaxis volume <strong>455 mL over 7 hours</strong>, only if appropriate to the clinical assessment. No universal contrast-volume “safe ceiling”, blanket medication holds, NAC or prophylactic RRT. Emergency imaging must not wait for this schedule.</>,
+    cites: ["ESUR current contrast hydration", "NICE NG148 2024 contrast"],
   },
   {
     title: "Citrate CRRT — metabolic alarm",
@@ -168,8 +149,8 @@ const AkiRrtTopic = () => {
       workedExamples={workedExamples}
       keyPoints={[
         { text: "KDIGO stages AKI by creatinine rise (1.5×, 2×, 3× baseline) and urine output (<0.5 ml/kg/hr).", cites: ["BJA Educ 2018"] },
-        { text: "CI-AKI: prevent with iso/low-osmolar contrast, IV isotonic crystalloid (1 ml/kg/hr pre/post), withhold nephrotoxins. NAC and prophylactic RRT not recommended.", cites: ["KDIGO 2012"] },
-        { text: "Mehran score stratifies CI-AKI risk using 8 weighted factors; high score patients need maximal prophylaxis.", cites: ["NICE CG169"] },
+        { text: "CA-AKI is temporal association, not proof of CI-AKI. Do not delay essential emergency contrast; select prophylaxis by AKI/CKD, route and fluid tolerance. NAC and prophylactic dialysis are not recommended.", cites: ["NICE NG148 2024 contrast", "ACR 2026 contrast prevention"] },
+        { text: "The original Mehran score is a historical PCI model, not a validated ICU CT prediction or automatic treatment decision.", cites: ["Mehran 2004 PCI"] },
         { text: "Renal-friendly perioperative drugs: fentanyl/alfentanil/remifentanil, cisatracurium, UFH, apixaban. Avoid morphine, pethidine, NSAIDs, gentamicin where possible.", cites: ["BJA Educ 2018"] },
         { text: "CRRT preferred in haemodynamically unstable ICU patients; IHD for stable / urgent K⁺.", cites: ["KDIGO 2012", "ESICM AKI 2017"] },
         { text: "AEIOU: Acidosis, Electrolytes, Intoxication, Overload, Uraemia — indications for RRT.", cites: ["NICE CG169"] },
@@ -310,88 +291,8 @@ const AkiRrtTopic = () => {
         </ExamSection>
 
         <ExamSection id="toc-ci-aki" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
-          <CollapsibleSubsection title="Contrast-Induced Acute Kidney Injury (CI-AKI)">
-          <p className="text-foreground/90 leading-relaxed mb-4">
-            CI-AKI (also termed contrast-associated AKI, CA-AKI) is defined as a rise in serum creatinine ≥26.5 µmol/L
-            or ≥1.5× baseline within 48–72 h of intravascular iodinated contrast, in the absence of an alternative cause.
-            Pathogenesis is multifactorial: direct tubular toxicity (osmotic and oxidative injury to PCT cells),
-            medullary ischaemia (contrast-induced renal vasoconstriction reduces outer-medullary blood flow), and
-            tubular obstruction by Tamm–Horsfall protein casts. Most cases are self-limiting, peaking at day 3–5 and
-            resolving within 7–10 days, but ~1% require RRT and CI-AKI is independently associated with increased
-            short- and long-term mortality.
-          </p>
-          <p className="text-foreground/90 leading-relaxed mb-4">
-            <strong>Risk factors</strong> are conventionally divided into <em>patient-related</em> (CKD — especially
-            eGFR &lt;30, diabetic nephropathy, age &gt;75, anaemia, heart failure, hypovolaemia, hypotension, IABP,
-            nephrotoxic drugs) and <em>procedure-related</em> (contrast volume, intra-arterial &gt; intravenous route,
-            high osmolality, repeated exposures within 72 h). The interaction of pre-existing CKD with diabetes is
-            particularly potent (CI-AKI in &gt;25%).
-          </p>
-
-          <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-3">Mehran Score</h3>
-          <p className="text-foreground/90 leading-relaxed mb-4">
-            The Mehran score (Mehran et al., <em>JACC</em> 2004) was derived from 8,357 PCI patients and remains the
-            most widely used CI-AKI risk prediction tool. It stratifies patients into four risk bands using eight
-            weighted clinical variables.
-          </p>
-          <div className="bg-card rounded-xl border border-border p-6 mb-6">
-            <h4 className="text-base font-serif font-bold text-foreground mb-1">Interactive Mehran Score Calculator</h4>
-            <p className="text-sm text-muted-foreground mb-5">
-              Tick the relevant risk factors and enter contrast volume and eGFR. Returns total score, risk band, and
-              estimated CI-AKI / dialysis incidence with management actions.
-            </p>
-            <MehranScoreCalculator />
-          </div>
-
-          <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-3">KDIGO 2012 Recommendations for Prevention</h3>
-          <ul className="list-disc pl-6 space-y-2 text-foreground/90">
-            <li>
-              <strong>Risk-stratify all patients</strong> before elective contrast-enhanced procedures using eGFR
-              (CKD-EPI) and clinical risk score (e.g. Mehran). Avoid contrast where a non-contrast alternative
-              (ultrasound, non-contrast MRI, V/Q scan) gives comparable diagnostic information.
-            </li>
-            <li>
-              <strong>Iso-osmolar (290 mOsm/kg, e.g. iodixanol)</strong> or <strong>low-osmolar non-ionic</strong>
-              contrast (~600–900 mOsm/kg, e.g. iohexol, iopamidol) is preferred over high-osmolar ionic contrast
-              (≥1500 mOsm/kg). KDIGO suggests iso-osmolar agents in patients at increased risk; head-to-head trials
-              (CARE, ICON, RECOVER) show inconsistent superiority of iodixanol over modern low-osmolar agents — the
-              key principle is to <em>avoid high-osmolar</em> contrast and <strong>minimise total volume</strong>.
-            </li>
-            <li>
-              <strong>IV volume expansion with isotonic crystalloid</strong> (KDIGO grade 1A) is the cornerstone of
-              prevention. Standard regimen: 0.9% saline 1 ml/kg/hr for 6–12 h pre-procedure and 6–12 h post (total
-              ~1–1.5 L). Sodium bicarbonate (1.26%/1.4%) is no longer recommended over saline (PRESERVE 2018: no
-              difference). Oral hydration alone is insufficient in high-risk patients.
-            </li>
-            <li>
-              <strong>Withhold nephrotoxins</strong>: NSAIDs, aminoglycosides, amphotericin, calcineurin inhibitors.
-              Hold ACEi/ARB and diuretics on the day if euvolaemic and at risk. Stop metformin and SGLT2 inhibitors
-              48 h pre-procedure if eGFR &lt;30 (lactic acidosis / euglycaemic DKA risk if AKI develops).
-            </li>
-            <li>
-              <strong>Minimise contrast dose</strong>: aim for contrast volume (mL) &lt; 3 × eGFR. Avoid repeat
-              exposure within 48–72 h if possible (cumulative risk).
-            </li>
-            <li>
-              <strong>N-acetylcysteine and prophylactic RRT are NOT recommended</strong>. PRESERVE (2018, n = 5177)
-              showed no benefit of NAC over placebo. Prophylactic haemofiltration/dialysis does not improve outcomes
-              and exposes patients to procedural risks.
-            </li>
-            <li>
-              <strong>Monitor</strong> serum creatinine at 48–72 h post-contrast in at-risk patients (eGFR &lt;60,
-              diabetes, ≥1 Mehran factor). Outpatient follow-up creatinine if eGFR &lt;45.
-            </li>
-          </ul>
-
-          <div className="rounded-lg bg-muted/40 border border-border p-4 mt-5 text-sm text-foreground/85">
-            <p className="font-semibold text-foreground mb-1">Anaesthetic/perioperative pearls</p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Maintain MAP ≥65 mmHg throughout — hypotension is the most modifiable peri-procedural risk factor.</li>
-              <li>Avoid hyperchloraemic fluids (large-volume 0.9% saline can cause hyperchloraemic acidosis); balanced crystalloid is reasonable but saline retains the strongest evidence base for CI-AKI prophylaxis.</li>
-              <li>Gadolinium-based MRI contrast does <em>not</em> cause CI-AKI but, at eGFR &lt;30, group I gadolinium agents risk nephrogenic systemic fibrosis (NSF) — use group II macrocyclic agents (gadobutrol, gadoteridol) at the lowest dose.</li>
-              <li>Document risk-benefit discussion when contrast is given in eGFR &lt;30 or established AKI.</li>
-            </ul>
-          </div>
+          <CollapsibleSubsection title="Contrast-Induced Nephropathy: Contrast-Associated and Contrast-Induced AKI">
+            <ContrastAkiTeaching />
           </CollapsibleSubsection>
         </ExamSection>
 
@@ -583,7 +484,7 @@ const AkiRrtTopic = () => {
                 <tr>
                   <td className="p-3 align-top font-medium text-foreground">Metformin</td>
                   <td className="p-3 align-top text-foreground/80">Renal — risk of lactic acidosis if AKI</td>
-                  <td className="p-3 align-top text-foreground/80">Hold 48 h pre-procedure if eGFR &lt;30 or contrast planned. Restart 48 h post if creatinine stable.</td>
+                  <td className="p-3 align-top text-foreground/80">No contrast-only hold for IV imaging if no AKI and eGFR ≥30 (ACR). In AKI/eGFR &lt;30 or renal-embolic arterial studies, hold at exposure; reassess after 48 h before restarting.</td>
                   <td className="p-3 align-top text-foreground/80">MALA carries high mortality.</td>
                 </tr>
                 <tr>
@@ -831,8 +732,8 @@ const AkiRrtTopic = () => {
                     ["ATN (VA/NIH, NEJM 2008)", "Intensive vs less intensive RRT, n = 1 124", "No 60-d mortality difference (53.6% vs 51.5%)", "Confirms standard-dose CRRT/IHD"],
                     ["RICH (Zarbock, JAMA 2020)", "Regional citrate vs systemic heparin anticoagulation, n = 596", "Citrate: longer circuit life (47 h vs 26 h), fewer bleeding events; no mortality difference", "RCA first-line where citrate available"],
                     ["CONVINT / HEMODIAFE", "CRRT vs IHD in haemodynamically tolerable AKI", "No mortality difference", "Modality choice driven by haemodynamics, not survival"],
-                    ["PRESERVE (Weisbord, NEJM 2018)", "Saline vs bicarbonate ± N-acetylcysteine for CI-AKI prevention, n = 5 177", "No difference in CI-AKI; NAC ineffective", "Hydration with saline; NAC abandoned"],
-                    ["AMACING (Nijssen, Lancet 2017)", "IV hydration vs no hydration in high-risk contrast exposure, n = 660", "Non-inferiority for AKI; cost-effective", "Selective hydration reasonable in stable outpatients"],
+                    ["PRESERVE (Weisbord, NEJM 2018)", "Factorial bicarbonate vs saline and NAC vs placebo; 5,177 randomised, 4,993 analysed", "No benefit in 90-day death/dialysis/persistent creatinine rise or CA-AKI", "No superiority of bicarbonate or NAC; not a saline vs no-fluid trial"],
+                    ["AMACING (Nijssen, Lancet 2017)", "Elective eGFR 30–59: saline vs no prophylaxis, n = 660", "CA-AKI 2.7% vs 2.6%; hydration complications 5.5%", "Selected elective evidence; not active AKI, eGFR <30 or unstable ICU"],
                     ["SPLIT / SMART", "Balanced crystalloids vs 0.9% saline in critically ill", "SMART: lower MAKE-30 with balanced (14.3% vs 15.4%)", "Prefer balanced crystalloids in ICU/AKI risk"],
                     ["EARLY-AKI (KDIGO bundle trials)", "KDIGO care bundle (avoid nephrotoxins, optimise haemodynamics, monitor) vs usual care after major surgery", "Reduces AKI incidence ~20–30%", "Implement KDIGO post-op bundle in high-risk surgery"],
                     ["FST (Furosemide Stress Test, Chawla 2013)", "1.0–1.5 mg/kg furosemide bolus; UO < 200 mL in 2 h predicts AKI progression", "AUC ~ 0.87 for progression to stage 3 / RRT", "Useful adjunct, not a treatment"],
@@ -898,7 +799,7 @@ const AkiRrtTopic = () => {
             <tbody className="text-foreground/90">
               {[
                 ["Staging (KDIGO)", "↑Cr ≥26 µmol/L in 48 h, or ≥1.5× baseline in 7 d, or UO <0.5 ml/kg/hr ×6 h", "Stage 1 → review nephrotoxins; Stage 2 → escalate care; Stage 3 → consider RRT"],
-                ["CI-AKI prevention", "eGFR <60, diabetes, CCF, age >75, contrast volume", "Isotonic crystalloid 1 ml/kg/hr pre/post; iso-/low-osmolar contrast; hold ACEi/ARB/NSAIDs/metformin"],
+                ["Contrast-associated AKI", "AKI/CKD, exposure route, clinical urgency and fluid tolerance; thresholds differ by guideline", "Do not delay essential imaging; individualise isotonic prophylaxis; no NAC/prophylactic dialysis or blanket drug holds"],
                 ["Drug dosing", "eGFR <30 ml/min/1.73 m²", "Avoid morphine/pethidine/NSAIDs/gentamicin; safe: fentanyl, cisatracurium, sugammadex (caution), apixaban (dose-adjusted)"],
                 ["RRT indication (AEIOU)", "Refractory Acidosis, Electrolytes (K⁺ >6.5), Intoxication, fluid Overload, Uraemic complications", "Initiate RRT — modality per haemodynamics"],
                 ["Modality choice", "Haemodynamic instability", "CRRT (CVVHDF preferred); IHD if stable or urgent K⁺ removal"],
@@ -924,7 +825,7 @@ const AkiRrtTopic = () => {
               "Indications for RRT (AEIOU): Acidosis, Electrolytes (K⁺ >6.5), Intoxications, Overload, Uraemic complications.",
               "CRRT preferred over IHD in haemodynamic instability; STARRT-AKI showed no benefit to early initiation.",
               "Citrate regional anticoagulation reduces bleeding risk but watch for citrate accumulation (high tCa/iCa ratio) in liver failure.",
-              "Avoid nephrotoxins (NSAIDs, aminoglycosides, contrast where possible); adjust drug doses by current eGFR/CRRT dose.",
+              "Avoid nephrotoxins (NSAIDs, aminoglycosides, unnecessary contrast; never delay essential emergency imaging); adjust drug doses by current eGFR/CRRT dose.",
             ]}
           />
     </>
