@@ -21,7 +21,7 @@ const factors: RiskFactor[] = [
   { id: "anaemia", label: "Anaemia", detail: "Hct <39% (M) or <36% (F)", points: 3 },
   { id: "diabetes", label: "Diabetes mellitus", detail: "Insulin- or non-insulin-dependent", points: 3 },
   { id: "contrast", label: "Contrast volume", detail: "1 point per 100 mL contrast administered", points: "contrast" },
-  { id: "egfr", label: "Reduced eGFR", detail: "2 (40–60), 4 (20–<40), 6 (<20) ml/min/1.73 m²", points: "egfr" },
+  { id: "egfr", label: "Reduced eGFR", detail: "2 (40–<60), 4 (20–<40), 6 (<20) ml/min/1.73 m²", points: "egfr" },
 ];
 
 interface RiskBand {
@@ -51,7 +51,7 @@ const bands: RiskBand[] = [
     advice: "Historical PCI cohort estimate only. This score does not establish contrast causation or determine hydration, medication withholding, dialysis or whether imaging should proceed. Use the individual clinical assessment and current guidance in this lesson.",
   },
   {
-    max: 16,
+    max: 15,
     label: "High risk",
     band: "bg-muted text-foreground border-border",
     ciAki: "~26%",
@@ -147,7 +147,7 @@ export const MehranScoreCalculator = () => {
               onChange={(e) => setEgfr(e.target.value)}
               placeholder="e.g. 45"
             />
-            <p className="text-xs text-muted-foreground">+2 (40–60), +4 (20–&lt;40), +6 (&lt;20)</p>
+            <p className="text-xs text-muted-foreground">+2 (40–&lt;60), +4 (20–&lt;40), +6 (&lt;20)</p>
           </div>
         </div>
   
@@ -180,7 +180,7 @@ export const MehranScoreCalculator = () => {
   
         <div className="rounded-lg bg-muted/40 border border-border p-4 text-xs text-foreground/80 space-y-1">
           <p className="font-semibold text-foreground">Mehran score (2004) — original PCI cohort</p>
-          <p>Bands: ≤5 low (~7.5% CI-AKI), 6–10 moderate (~14%), 11–16 high (~26%), &gt;16 very high (~57%). Developed for percutaneous coronary intervention, not calibrated for general ICU CT. These are historical cohort incidences, not modern patient-specific predictions or proof of injury caused by contrast.</p>
+          <p>Bands: ≤5 low (~7.5% CI-AKI), 6–10 moderate (~14%), 11–15 high (~26%), ≥16 very high (~57%). Developed for percutaneous coronary intervention, not calibrated for general ICU CT. These are historical cohort incidences, not modern patient-specific predictions or proof of injury caused by contrast.</p>
         </div>
       </div>
     </DiagramFigure>

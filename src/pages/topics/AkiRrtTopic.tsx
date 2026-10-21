@@ -291,7 +291,7 @@ const AkiRrtTopic = () => {
         </ExamSection>
 
         <ExamSection id="toc-ci-aki" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="mb-10 scroll-mt-24">
-          <CollapsibleSubsection title="Contrast-Induced Nephropathy: Contrast-Associated and Contrast-Induced AKI">
+          <CollapsibleSubsection title="Contrast-Induced Nephropathy: Contrast-Associated and Contrast-Induced AKI" defaultOpen>
             <ContrastAkiTeaching />
           </CollapsibleSubsection>
         </ExamSection>
