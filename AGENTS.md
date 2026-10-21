@@ -33,3 +33,4 @@
 - Operations use operativeSteps, resolving citations, search anchors and uncapped audits; diagrams share prefixed materials, wrapped labels and explicit views.
 
 - Keep ICU contrast-associated AKI teaching in ContrastAkiTeaching; linked summaries must distinguish causal injury, exposure routes and named guideline thresholds, and the historical PCI score must not issue treatment clearance.
+- Search index gives each imported Teaching lesson its own prose allowance beyond the shared per-topic budget, so large topics cannot hide new lessons.
