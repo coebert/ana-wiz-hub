@@ -37,6 +37,7 @@ const MAX_IMPORT_DEPTH = 2;
 const MAX_IMPORTED_FILES = 40;
 /** Prose budget per topic (chars). Headings are never trimmed. */
 const MAX_PROSE_CHARS = 6_000;
+const LESSON_PROSE_CHARS = 4_000;
 /** Longest single prose record before sentence-splitting. */
 const MAX_RECORD_CHARS = 320;
 
@@ -247,6 +248,8 @@ function buildTopicEntry(topic: (typeof allTopics)[number]): SearchIndexEntry | 
   interface FileProse {
     items: Array<{ text: string; anchor: string | null }>;
     cursor: number;
+    /** Imported Teaching lessons get a guaranteed allowance of their own. */
+    lesson: boolean;
   }
   const proseQueues: FileProse[] = [];
 
@@ -258,7 +261,7 @@ function buildTopicEntry(topic: (typeof allTopics)[number]): SearchIndexEntry | 
     for (const node of frontier) {
       const anchors = findSubsectionAnchors(node.src);
       const pieces = extractPositioned(node.src);
-      const queue: FileProse = { items: [], cursor: 0 };
+      const queue: FileProse = { items: [], cursor: 0, lesson: node.depth > 0 && /components\/topic\/[^/]*Teaching\.tsx$/.test(node.file) };
       let ai = 0;
       let currentAnchor = node.anchor;
       for (const p of pieces) {
@@ -327,6 +330,19 @@ function buildTopicEntry(topic: (typeof allTopics)[number]): SearchIndexEntry | 
       if (!item) continue;
       q.cursor += 1;
       progress = true;
+      pushRecord(item.text, item.anchor, "prose");
+    }
+  }
+
+  // Teaching lessons are the topic's core prose: after the shared budget,
+  // each imported lesson may keep indexing up to its own allowance so a large
+  // topic page cannot hide a newly added lesson from search.
+  for (const q of proseQueues) {
+    if (!q.lesson) continue;
+    let used = 0;
+    while (used < LESSON_PROSE_CHARS && q.cursor < q.items.length) {
+      const item = q.items[q.cursor++];
+      used += item.text.length;
       pushRecord(item.text, item.anchor, "prose");
     }
   }
