@@ -1,6 +1,7 @@
 # Admin metrics audit fixes
 
 ## ICU contrast-associated kidney injury
+- [x] Added supplied RCR–RCEM emergency CT advisory with verified excerpts; nine tests passed, learner display checked without page errors, search/audit regenerated and private audit copy uploaded.
 - [x] Expand AKI & RRT teaching with source-led mechanisms, current prevention evidence, management and fictional clinical cases; align the linked calculator, quizzes and summaries.
 - [x] Verify 27 regressions, desktop/mobile teaching, calculator, checks and a guideline quotation; rebuild search and upload private audit coverage. New cited evidence checked; global reference checker still reports 42 unrelated unresolved identifiers, not a whole-library pass. Consultant review remains outstanding.
 
