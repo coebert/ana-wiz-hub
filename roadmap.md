@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## ICU contrast-associated kidney injury
+- [x] Expand AKI & RRT teaching with source-led mechanisms, current prevention evidence, management and fictional clinical cases; align the linked calculator, quizzes and summaries.
+- [x] Verify 27 regressions, desktop/mobile teaching, calculator, checks and a guideline quotation; rebuild search and upload private audit coverage. New cited evidence checked; global reference checker still reports 42 unrelated unresolved identifiers, not a whole-library pass. Consultant review remains outstanding.
+
 ## Operations Library: diagram detail and realism
 - [x] Refine fifteen remaining orthopaedic, urological and neurosurgical drawings with implant interfaces, operative corridors and reconstruction detail; check all 64 for clipped labels/runtime errors, verify search/mobile/dark rendering and pass 38 regressions; refresh the private audit copy. Consultant review remains outstanding.
 - [x] Refine ten vascular, cardiac, ENT, paediatric, colorectal and transplant schematics; check all 64 for clipped labels/runtime errors, verify search/mobile/dark views, pass 38 regressions and refresh/upload private audit coverage. Further specialty refinements and consultant review remain future work.
