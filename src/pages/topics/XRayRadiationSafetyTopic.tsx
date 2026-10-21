@@ -915,20 +915,12 @@ const XRayRadiationSafetyTopic = () => {
                   reaction to contrast is <InlineRef topicId="xray-radiation-safety" refLabel="RCR Contrast 2023" />.
                 </li>
                 <li>
-                  <strong>Contrast-associated / contrast-induced nephropathy (CIN)</strong> — a rise in serum creatinine
-                  ≥26 micromol/L or ≥25% within 48–72 hours of intravascular contrast, without another cause. Risk factors:
-                  pre-existing CKD (especially eGFR &lt;30), diabetic nephropathy, dehydration/hypovolaemia, heart failure, large
-                  contrast volume, intra-arterial route, repeated exposure, sepsis and concurrent nephrotoxins. Prevention: check
-                  eGFR beforehand, correct hypovolaemia, give IV isotonic saline ~1 mL/kg/h peri-procedure in high-risk patients,
-                  use the lowest effective volume of a low- or iso-osmolar non-ionic agent, stop NSAIDs and other nephrotoxins, and
-                  avoid repeat contrast within 48–72 hours; N-acetylcysteine is no longer supported
-                  <InlineRef topicId="xray-radiation-safety" refLabel="RCR Contrast 2023" />.
+                  <strong>Contrast-associated AKI (CA-AKI)</strong> means AKI after contrast; <strong>CI-AKI</strong> means injury caused by it. Use KDIGO criteria (creatinine ≥26.5 µmol/L in 48 hours, ≥1.5× baseline in 7 days, or oliguria); temporal association alone does not establish causation. Assess AKI, stable CKD, route and fluid tolerance; selective isotonic prophylaxis must not delay essential emergency imaging. No NAC or prophylactic dialysis.
+                  <a href="/intensive-care/aki-rrt#toc-ci-aki" className="text-primary underline"> Detailed ICU contrast lesson and current sources</a>.
                 </li>
                 <li>
-                  <strong>Metformin</strong> — accumulation and lactic acidosis risk if contrast precipitates acute kidney injury.
-                  With eGFR ≥30 and a low-volume IV contrast study, no interruption is needed. With eGFR &lt;30, an intra-arterial
-                  study, or established acute kidney injury, stop metformin at the time of contrast and restart 48 hours later once
-                  renal function is confirmed stable <InlineRef topicId="xray-radiation-safety" refLabel="RCR Contrast 2023" />.
+                  <strong>Metformin</strong> is not nephrotoxic; accumulation during AKI can cause lactic acidosis. ACR allows continued use for IV contrast with no AKI and eGFR ≥30. In AKI/eGFR &lt;30 or renal-embolic arterial catheter studies, hold at exposure and reassess renal function after 48 hours before restarting. ESUR also withholds for first-pass arterial exposure; apply local policy and acute-illness precautions.
+                  <InlineRef topicId="aki-rrt" refLabel="ACR 2026 metformin" />
                 </li>
                 <li>
                   <strong>Phaeochromocytoma</strong> — the iodine load can precipitate catecholamine release and a hypertensive

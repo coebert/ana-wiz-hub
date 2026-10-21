@@ -31,3 +31,5 @@
 - Visitor classification is shared; client evidence is not identity; interactions never inflate views. Surveys retain first answers per browser ID with admin-only reads; self-reports never override classification.
 - Viva audio streams PCM via tts-demo, chunked client-side, no deadlines; errors keep retry.
 - Operations use operativeSteps, resolving citations, search anchors and uncapped audits; diagrams share prefixed materials, wrapped labels and explicit views.
+
+- Keep ICU contrast-associated AKI teaching in ContrastAkiTeaching; linked summaries must distinguish causal injury, exposure routes and named guideline thresholds, and the historical PCI score must not issue treatment clearance.

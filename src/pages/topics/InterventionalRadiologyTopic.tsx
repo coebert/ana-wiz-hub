@@ -20,7 +20,7 @@ const interventionalRadiologyFaqs: Array<[string, string]> = [
   ],
   [
     "How is contrast-induced nephropathy prevented in IR patients?",
-    "Identify at-risk patients (eGFR <45 before intra-arterial first-pass contrast or <30 before IV contrast, diabetes, dehydration, NSAIDs, ACEi). Use the lowest volume of iso- or low-osmolar contrast, IV 0.9% saline 1 mL/kg/h for 3–4 h before and 4–6 h after in high-risk patients only, stop metformin at the time of contrast if eGFR <30 and restart after 48 h if renal function is stable, avoid nephrotoxins, and recheck creatinine at 48–72 h. N-acetylcysteine evidence is weak — no longer routinely recommended."
+    "Distinguish CA-AKI (association) from CI-AKI (causation). Assess AKI, stable CKD, route, urgency and fluid tolerance. ESUR uses <45 for first-pass arterial exposure/ICU and <30 for IV/second-pass exposure. Individualise saline in high-risk patients; no NAC or prophylactic dialysis. Medication decisions are not blanket holds. Do not delay essential emergency imaging. See the detailed ICU AKI & RRT contrast lesson."
   ],
   [
     "What are the anaesthetic considerations for endovascular thrombectomy in acute stroke?",
@@ -52,9 +52,9 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "A 65-year-old man with cirrhosis (eGFR 38) is listed for TIPSS. How do you reduce his risk of contrast-induced AKI?",
     working:
-      "Identify high risk: eGFR below 45 for intra-arterial contrast, diabetes, hypovolaemia, large contrast load. Stop nephrotoxins (NSAIDs, ACEi/ARB if appropriate, metformin).\nIV 0.9% NaCl 1 ml/kg/h for 3–4 h before and 4–6 h after (or 1.4% sodium bicarbonate 3 ml/kg/h for 1 h before).\nUse iso-osmolar or low-osmolar non-ionic contrast at the smallest effective volume; avoid repeat contrast within 48 h.\nN-acetylcysteine is no longer routinely recommended.\nMonitor creatinine at 48–72 h.",
+      "Fictional case: TIPSS is a transvenous procedure, not automatically first-pass renal arterial exposure. Assess current AKI, renal trajectory, cirrhotic volume status and haemodynamics. eGFR 38 alone does not mandate IV fluid under ACR or the ESUR IV/second-pass threshold; ESUR is more cautious if the patient is in ICU. Avoid fluid overload, review avoidable nephrotoxins and use a diagnostic low-/iso-osmolar contrast dose. No routine NAC, blanket ACEi/diuretic cessation or metformin interruption in the absence of AKI for usual second-pass exposure.",
     answer:
-      "IV crystalloid hydration 1 ml/kg/h for 3–4 h before and 4–6 h after, withhold nephrotoxins, use the lowest effective volume of low-osmolar contrast, and recheck creatinine at 48–72 h. NAC is not routinely indicated.",
+      "Individual benefit–risk and fluid assessment, not automatic prehydration. Monitor according to illness and renal risk. The detailed ICU contrast lesson distinguishes guidance and medication thresholds.",
     cites: ["ESUR 2018"],
   },
 ];
@@ -184,10 +184,10 @@ const InterventionalRadiologyTopic = () => {
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Contrast-Induced AKI (CI-AKI)</h3>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                <li>Rise in creatinine ≥26.5 μmol/L within 48 h, or to ≥1.5× baseline within 7 days of contrast (KDIGO-based definition adopted by ESUR in 2018)</li>
-                <li>Risk factors: pre-existing CKD (eGFR &lt;45 intra-arterial, &lt;30 IV), diabetes, dehydration, nephrotoxic drugs, large contrast volume</li>
+                <li>CA-AKI means AKI after contrast; CI-AKI means causation. Use KDIGO staging; ESUR post-contrast creatinine surveillance is 48–72 hours. Timing alone is not proof.</li>
+                <li>Assess AKI, CKD, route and fluid tolerance. ESUR thresholds: eGFR &lt;45 for first-pass arterial exposure/ICU; &lt;30 for IV/second-pass exposure.</li>
                 <li>Prevention: IV hydration for high-risk patients (NaCl 0.9% 1 ml/kg/h for 3–4 h before and 4–6 h after), iso-/low-osmolar contrast, minimise volume</li>
-                <li>N-acetylcysteine is no longer routinely recommended</li>
+                <li>No N-acetylcysteine or prophylactic dialysis. Avoid fluid overload; do not delay essential emergency imaging. <a href="/intensive-care/aki-rrt#toc-ci-aki" className="text-primary underline">Detailed ICU contrast-associated kidney-injury lesson</a></li>
               </ul>
             </div>
             </CollapsibleSubsection>
