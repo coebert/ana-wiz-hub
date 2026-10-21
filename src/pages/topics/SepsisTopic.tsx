@@ -19,6 +19,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 import { SepsisTargetsSteroidsTeaching } from "@/components/topic/SepsisTargetsSteroidsTeaching";
 import { SepsisBetaLactamInfusionTeaching } from "@/components/topic/SepsisBetaLactamInfusionTeaching";
 import { SepsisAntibioticTimingTeaching } from "@/components/topic/SepsisAntibioticTimingTeaching";
+import { SepsisPracticeTeaching } from "@/components/topic/SepsisPracticeTeaching";
 import { SepsisCriteriaTeaching, SepsisEgdtTeaching } from "@/components/topic/SepsisCriteriaEgdtTeaching";
 import { CollapsibleSubsection as LessonSubsection } from "@/components/topic/CollapsibleSubsection";
 
@@ -965,6 +966,9 @@ const SepsisTopic = () => {
       </section>
 
       <section className="max-w-5xl mx-auto px-4 py-6">
+        <LessonSubsection title="Latest Guidelines and Bedside Management (NICE NG253, SSC 2021)">
+          <SepsisPracticeTeaching />
+        </LessonSubsection>
         <LessonSubsection title="Sepsis Criteria: Sepsis-3, Septic Shock and Screening">
           <SepsisCriteriaTeaching />
         </LessonSubsection>
@@ -991,7 +995,7 @@ const SepsisTopic = () => {
           <li><strong>Measure lactate</strong>; remeasure if &gt;2 mmol/L.</li>
           <li><strong>Blood cultures × 2</strong> before antibiotics (don't delay antibiotics &gt;45 min).</li>
           <li><strong>Broad-spectrum antibiotics within 1 h</strong> (septic shock); within 3 h (sepsis without shock if uncertain).</li>
-          <li><strong>30 ml/kg balanced crystalloid</strong> if hypotensive or lactate ≥4 mmol/L — reassess fluid responsiveness.</li>
+          <li><strong>Balanced crystalloid in reassessed steps</strong>: SSC 2021 suggests at least 30 mL/kg within 3 h; NICE NG253 uses 250 mL boluses with senior review at 1,000 mL.</li>
           <li><strong>Vasopressors for MAP ≥65</strong> if hypotensive after fluid (or alongside) — noradrenaline first-line; add vasopressin / hydrocortisone if catecholamine-resistant.</li>
           <li><strong>Source control</strong> as soon as anatomically feasible — drainage, debridement, removal of infected device.</li>
         </ul>
@@ -1004,7 +1008,7 @@ const SepsisTopic = () => {
               "Hour-1 bundle: lactate, blood cultures, broad-spectrum antibiotics, 30 mL/kg crystalloid for hypotension/lactate ≥4, vasopressors to MAP ≥65.",
               "Noradrenaline is first-line vasopressor; add vasopressin 0.03 U/min then hydrocortisone 200 mg/day in catecholamine-resistant shock.",
               "Source control within 6–12 h where feasible — undrained pus, infected lines, necrotic tissue.",
-              "Balanced crystalloids preferred over 0.9% saline (BaSICS, SMART trials); albumin if large volumes needed.",
+              "Balanced crystalloids are suggested over 0.9% saline (SSC 2021, NICE NG253); CLOVERS and CLASSIC found no mortality difference between restrictive and liberal fluid after initial resuscitation.",
             ]}
           />
     </ExamSection>
