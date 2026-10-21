@@ -78,5 +78,5 @@
 
 ## ICU guideline expansions (checklists, fictional cases, calculators, comparison tables)
 - [x] Sepsis: NICE NG253 (2025–26) vs SSC 2021, CLOVERS/CLASSIC, fluid comparison calculator.
-- [ ] ARDS: ESICM 2023 / ATS 2024, prone, ECMO, steroids, PBW/driving-pressure calculator.
-- [ ] Transfusion: NICE NG24, BSH, restrictive thresholds, MINT/TRAIN.
+- [x] ARDS: ESICM 2023 / ATS 2024, prone, ECMO, steroids, PBW/driving-pressure calculator.
+- [x] Transfusion: NICE NG24, BSH, restrictive thresholds, MINT/TRAIN.

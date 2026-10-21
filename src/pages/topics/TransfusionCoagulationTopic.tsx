@@ -1,3 +1,4 @@
+import { TransfusionPracticeTeaching } from "@/components/topic/TransfusionPracticeTeaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -117,6 +118,9 @@ const TransfusionCoagulationTopic = () => {
         <>
         <>
           <ExamSection id="cascade" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <CollapsibleSubsection title="Latest Guidelines and Bedside Management (NICE NG24, 2023–25 trials)">
+              <TransfusionPracticeTeaching />
+            </CollapsibleSubsection>
             <CollapsibleSubsection title="Coagulation Cascade — Foundations" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-4">
               A working knowledge of the intrinsic, extrinsic and common pathways underpins interpretation of clotting tests, transfusion targets, and the rational use of factor concentrates and antifibrinolytics covered below.

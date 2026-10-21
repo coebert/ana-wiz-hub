@@ -1,3 +1,4 @@
+import { ArdsPracticeTeaching } from "@/components/topic/ArdsPracticeTeaching";
 import { Helmet } from "react-helmet-async";
 import { TopicTableOfContents } from "@/components/layout/TopicTableOfContents";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
@@ -204,6 +205,9 @@ const ARDSTopic = () => {
       <section className="space-y-6">
 
         <ExamSection id="section-pathophysiology" className="scroll-mt-24" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC2.4"]}>
+          <CollapsibleSubsection title="Latest Guidelines and Bedside Management (ESICM 2023, ATS 2024)">
+            <ArdsPracticeTeaching />
+          </CollapsibleSubsection>
           <CollapsibleSubsection title="Pathophysiology of ARDS" defaultOpen>
             <p className="text-muted-foreground leading-relaxed mb-3">
               ARDS is the clinical expression of <strong>diffuse alveolar damage (DAD)</strong> — a stereotyped inflammatory injury to the alveolar–capillary unit triggered by a wide variety of pulmonary (direct) or extra-pulmonary (indirect) insults. The pathological course is conventionally divided into three overlapping phases: an early <strong>exudative</strong> phase (0–7 days) of barrier breakdown and protein-rich oedema, a <strong>proliferative</strong> phase (7–21 days) of epithelial repair, and, in a minority, a late <strong>fibrotic</strong> phase (&gt;3 weeks) of collagen deposition and persistent functional impairment.
