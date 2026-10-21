@@ -134,6 +134,24 @@ const RECENT_EXPANSIONS: RecentExpansion[] = [
     note: "New page: ARDSNet admission settings, plateau and driving pressure checks, paired sedation and breathing trials, protocolised and automated weaning.",
   },
   {
+    topicId: "circulatory-failure",
+    section: "intensive-care",
+    title: "Circulatory Failure & Shock",
+    note: "New lesson: MAP targets (SSC, 65 trial), noradrenaline vs dopamine, capillary refill (ANDROMEDA-SHOCK), ECLS-SHOCK and DanGer Shock, first-hour checklist and calculator.",
+  },
+  {
+    topicId: "hypovolaemia",
+    section: "intensive-care",
+    title: "Hypovolaemia & Fluid Resuscitation",
+    note: "New page: passive leg raise, NICE CG174 boluses and maintenance, SMART, BaSICS and PLUS, calculators and a fictional stoma case.",
+  },
+  {
+    topicId: "peritonitis",
+    section: "intensive-care",
+    title: "Peritonitis & Intra-abdominal Sepsis",
+    note: "New page: types of peritonitis, WSES vs SIS–IDSA, pre-laparotomy checklist, source control and STOP-IT antibiotic duration.",
+  },
+  {
     topicId: "haemorrhagic-shock",
     section: "intensive-care",
     title: "Haemorrhagic Shock & Resuscitation",

@@ -198,6 +198,14 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page with three source-led lessons: ICU structure (ICS 2021 levels, GPICS V3 time standards), team roles (GPICS ratios, Pronovost 2002, Kerlin 2013) and communication (daily goals, I-PASS, discharge handover, Lautrette 2007). Verbatim excerpts; learning checks and quiz. Source-checked, not consultant-reviewed.",
   },
+  "hypovolaemia": {
+    status: "expanded",
+    note: "New page with two source-led lessons: recognition and passive leg raise (Monnet 2016), NICE CG174 fluids and balanced-vs-saline trials. Verbatim excerpts, calculators, fictional case and quiz. Source-checked, not consultant-reviewed.",
+  },
+  "peritonitis": {
+    status: "expanded",
+    note: "New page with two source-led lessons: types, recognition and WSES/SIS–IDSA comparison; source control and STOP-IT duration. Verbatim excerpts, fictional case and quiz. Source-checked, not consultant-reviewed.",
+  },
   "haemorrhagic-shock": {
     status: "expanded",
     note: "Three source-led lessons linked with Trauma: shock recognition (ATLS limits, shock index, lactate, lethal triad), blood pressure monitoring (Meidert cuff vs arterial, Rossaint/NG39 targets), transfusion (PROPPR, PAMPer, RePHILL, CRASH-2 timing, calcium, ITACTIC). Verbatim excerpts; learning checks and quiz. Source-checked, not consultant-reviewed.",
