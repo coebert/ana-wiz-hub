@@ -190,5 +190,7 @@ export const seeAlsoMap: Record<string, string[]> = {
   "septic-shock": ["sepsis", "sepsis-resuscitation", "haemorrhagic-shock", "adrenal-crisis", "icu-outcomes"],
   "icu-anaphylaxis": ["critical-care-overview", "sepsis-resuscitation", "icu-eclampsia"],
   "icu-eclampsia": ["critical-care-overview", "obstetric-anaesthesia", "maternal-physiology", "icu-anaphylaxis"],
+  "hypovolaemia": ["haemorrhagic-shock", "circulatory-failure", "fluid-balance", "sepsis", "cardiac-output-monitoring"],
+  "peritonitis": ["sepsis", "septic-shock", "hypovolaemia", "abdominal-compartment-syndrome", "emergency-surgery", "circulatory-failure"],
   "temperature-ph": ["acids-bases-buffers", "acid-base", "abg-analyser"],
 };

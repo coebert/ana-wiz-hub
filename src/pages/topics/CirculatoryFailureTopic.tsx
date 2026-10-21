@@ -11,6 +11,8 @@ import VAECMOCircuitDiagram from "@/components/diagrams/intensive-care/VAECMOCir
 import CPPSpiralDiagram from "@/components/diagrams/intensive-care/CPPSpiralDiagram";
 import { ExamPitfallsCallout } from "@/components/exam/ExamPitfallsCallout";
 import { InlineRef } from "@/components/references/InlineRef";
+import { ShockPracticeTeaching } from "@/components/topic/ShockPracticeTeaching";
+import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 
 const circulatoryFailureFaqs: Array<[string, string]> = [
   ["Which dynamic indices predict fluid responsiveness and when are they invalid?", "PPV, SVV and passive leg raise predict a ≥10–15% SV rise after fluid; they are unreliable in spontaneous breathing, arrhythmia, low tidal volumes (<8 mL/kg), open chest or raised intra-abdominal pressure — use PLR or end-expiratory occlusion instead."],
@@ -579,7 +581,7 @@ const CirculatoryFailureTopic = () => {
         ],
         workedExamples: ["BJA Educ 2019", "IABP-SHOCK II", "SHOCK trial", "FICM ECMO 2021"],
       }}
-      coreConcepts={<>{coreConcepts}<TopicFaqs faqs={circulatoryFailureFaqs} /></>}
+      coreConcepts={<><CollapsibleSubsection title="Latest Guidelines and Bedside Management of Shock"><ShockPracticeTeaching /></CollapsibleSubsection>{coreConcepts}<TopicFaqs faqs={circulatoryFailureFaqs} /></>}
       workedExamples={workedExamples}
       keyPoints={keyPoints}
       topicId="circulatory-failure"
