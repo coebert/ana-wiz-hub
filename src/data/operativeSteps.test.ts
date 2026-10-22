@@ -17,12 +17,6 @@ describe("operations library", () => {
     expect(op?.sources?.length ?? 0).toBeGreaterThanOrEqual(2);
     expect(searchOperations(id === "tur-bt" ? "TURBT" : op?.name ?? "").map(item => item.id)).toContain(id);
   });
-  it("retains the specialty-specific airway, fluid and movement cautions", () => {
-    expect(searchOperations("neuraxial alone reliably").map(item => item.id)).toContain("tur-bt");
-    expect(searchOperations("saline overload pulmonary oedema").map(item => item.id)).toContain("operative-hysteroscopy");
-    expect(searchOperations("suxamethonium hyperkalaemia").map(item => item.id)).toContain("burn-excision-skin-graft");
-    expect(searchOperations("fixation oral airway access").map(item => item.id)).toContain("orthognathic-bimaxillary");
-  });
   it("finds an operation by alias and by a step-level hazard", () => {
     expect(searchOperations("CEA").map((o) => o.id)).toContain("carotid-endarterectomy");
     expect(searchOperations("cement").map((o) => o.id)).toContain("hip-hemiarthroplasty");

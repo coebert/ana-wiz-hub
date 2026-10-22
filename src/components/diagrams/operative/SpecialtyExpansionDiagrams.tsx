@@ -75,7 +75,7 @@ export default function SpecialtyExpansionDiagram({ kind, operation }: { kind: K
         <title id={`${id}-title`}>{operation.name}: stage {stage+1}</title><desc id={`${id}-desc`}>{orientation} {selected.step}. Educational schematic, not to scale.</desc>
         <IllustrationDefs id={id} />
         <defs><filter id={`${id}-depth`}><feDropShadow dx="0" dy="2" stdDeviation="2" floodColor={ink} floodOpacity={0.16}/></filter></defs>
-        <g filter={`url(#${id}-depth)`}>{shadeIllustration(<Drawing kind={kind} stage={stage} detail={detail} labels={labels} id={id}/>,id)}</g>
+        <g filter={`url(#${id}-depth)`}>{shadeIllustration(Drawing({kind, stage, detail, labels, id}),id)}</g>
         {detail && <path d="M260 15V32M260 353V369" stroke={ink} strokeDasharray="3 4" />}
         {labels && <g fill={ink} fontSize={10}><text x={235} y={15}>{kind==='burn-graft' ? 'Surface' : 'Cranial'}</text><text x={273} y={370}>{kind==='burn-graft' ? 'Deep' : 'Caudal'}</text><text x={8} y={360}>{kind==='burn-graft' ? 'Local section' : kind==='orthognathic' ? 'Posterior' : 'Anterior'}</text><text x={454} y={360}>{kind==='burn-graft' ? 'Local section' : kind==='orthognathic' ? 'Anterior' : 'Posterior'}</text></g>}
       </svg>
