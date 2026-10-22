@@ -3,6 +3,10 @@
 Coverage means substantive source-led teaching added and checked; it does not certify every claim in a topic. Introductions are not automatically gaps merely because they are short. Existing content is retained unless a supported correction is needed.
 
 ## Completed before this continuation
+### Operations Library — cross-specialty batch, checked 22 October 2026
+- Added operative hysteroscopy, TURBT, burn excision with skin grafting and bimaxillary orthognathic surgery; 68 entries across 13 specialty groups. Each addition has five stages, per-stage anaesthetic notes, critical moments, references and an interactive staged schematic.
+- Verified named guidance and five principal safety quotations against source text; distinguished fluid deficits from absorption, neuraxial block from obturator-reflex protection and technique-dependent airway choices. Verified local search, all 20 stage selections, label toggles and narrow-screen fit; 37 library/search/audit regressions passed. Search and audit regenerated, private audit copy uploaded. Source-checked teaching, not consultant review or anatomical certification.
+
 ### Chemistry — Atomic Structure & Bonding — checked 15 October 2026
 - Removed an unverifiable bonding citation; corrected the Tec 6 altitude trap, Na–Cl electronegativity difference and hydrogen-bond definition.
 - Added five sourced lessons with learning checks and three quiz questions (seven total). Other chemistry topics pending.

@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-22T08:47:07.930Z",
-  "count": 470,
+  "generatedAt": "2026-10-22T08:56:41.629Z",
+  "count": 471,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -1605,6 +1605,10 @@
     {
       "name": "SolutionsConcentrationDiagram",
       "route": "/dev/diagram-snapshot/SolutionsConcentrationDiagram"
+    },
+    {
+      "name": "SpecialtyExpansionDiagrams",
+      "route": "/dev/diagram-snapshot/SpecialtyExpansionDiagrams"
     },
     {
       "name": "SpinalBlockHeightAssessmentTool",

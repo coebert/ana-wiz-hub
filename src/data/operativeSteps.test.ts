@@ -3,6 +3,20 @@ import { operations, searchOperations, specialties } from "./operativeSteps";
 import { topicReferences } from "./references";
 
 describe("operations library", () => {
+  it.each([
+    ["operative-hysteroscopy", "Gynaecology", "hysteroscopy"],
+    ["tur-bt", "Urology", "tur-bt"],
+    ["burn-excision-skin-graft", "Breast & Plastics", "burn-graft"],
+    ["orthognathic-bimaxillary", "Oral & Maxillofacial", "orthognathic"],
+  ])("adds detailed specialty coverage for %s", (id, specialty, diagram) => {
+    const op = operations.find(item => item.id === id);
+    expect(op?.specialty).toBe(specialty);
+    expect(op?.diagram).toBe(diagram);
+    expect(op?.steps).toHaveLength(5);
+    expect(op?.steps.every(step => Boolean(step.anaesthetic))).toBe(true);
+    expect(op?.sources?.length ?? 0).toBeGreaterThanOrEqual(2);
+    expect(searchOperations(id === "tur-bt" ? "TURBT" : op?.name ?? "").map(item => item.id)).toContain(id);
+  });
   it("finds an operation by alias and by a step-level hazard", () => {
     expect(searchOperations("CEA").map((o) => o.id)).toContain("carotid-endarterectomy");
     expect(searchOperations("cement").map((o) => o.id)).toContain("hip-hemiarthroplasty");

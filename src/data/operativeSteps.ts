@@ -30,7 +30,8 @@ export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | 
   | "gastric-bypass" | "vitrectomy" | "microdiscectomy" | "manual-placenta"
   | "cleft" | "tracheostomy" | "nephrectomy" | "awake-craniotomy" | "scoliosis"
   | "liver-transplant" | "adrenalectomy" | "fess"
-  | "laryngectomy" | "glossectomy" | "microlaryngoscopy";
+  | "laryngectomy" | "glossectomy" | "microlaryngoscopy"
+  | "hysteroscopy" | "tur-bt" | "burn-graft" | "orthognathic";
 
 export interface OperativeStep {
   /** What the surgeon does. */
@@ -58,6 +59,70 @@ export interface Operation {
 }
 
 export const operations: Operation[] = [
+  {
+    id: "operative-hysteroscopy", name: "Operative hysteroscopy (polypectomy or submucosal fibroid resection)", aka: ["hysteroscopic resection", "uterine polypectomy", "hysteroscopic myomectomy"],
+    specialty: "Gynaecology", diagram: "hysteroscopy", bloodLossRisk: "Low",
+    summary: "A hysteroscope passes through the cervix into a fluid-distended uterine cavity. Polyps or selected submucosal fibroids are removed using mechanical or electrosurgical instruments. Larger/deeper fibroids may need staged treatment; a diagnostic outpatient hysteroscopy is a different procedure.",
+    position: "Lithotomy, with both legs moved together; protect pressure points and allow continuous access to fluid-balance monitoring.",
+    steps: [
+      { step: "Assess the lesion, bleeding/anaemia, pregnancy exclusion, comorbidities and intended distension medium; agree fluid-deficit stop limits.", anaesthetic: "Distinguish saline used with bipolar/mechanical systems from electrolyte-free media used with some monopolar systems. Tailor limits to cardiac/renal reserve; the surgeon and anaesthetist must agree them before starting." },
+      { step: "Establish the agreed anaesthesia, position in lithotomy, dilate the cervix if required and introduce the hysteroscope.", anaesthetic: "General, regional or selected local techniques depend on procedure and patient. Cervical manipulation can cause vagal bradycardia; perforation can occur during dilation or insertion." },
+      { step: "Distend and inspect the uterine cavity, identifying the lesion and tubal ostia.", anaesthetic: "Track inflow minus recovered outflow continuously, including spillage. A measured deficit is not identical to intravascular absorption. Use the lowest distension pressure compatible with visibility." },
+      { step: "Resect the polyp or fibroid under direct vision and retrieve tissue for histology.", anaesthetic: "Opened venous channels allow intravasation. Saline overload can cause pulmonary oedema; hypotonic media can also cause hyponatraemia. Suspect perforation or vascular gas embolism with sudden hypotension, hypoxaemia or an abrupt capnography change." },
+      { step: "Check haemostasis and final fluid deficit, withdraw instruments and plan recovery or escalation.", anaesthetic: "Communicate the medium, deficit and any suspected injury. New breathlessness, confusion, hypoxaemia or instability requires assessment for overload, electrolyte disturbance, haemorrhage or perforation rather than routine discharge." },
+    ],
+    criticalMoments: ["Cervical entry — perforation or vagal response", "Intravasation through opened uterine vessels", "Abrupt cardiorespiratory deterioration — gas embolism or bleeding", "Final fluid reconciliation and recovery assessment"],
+    anaestheticNotes: ["Fluid-deficit limits are stop/escalation safeguards, not quantities known to be safe for an individual patient. Avoid treating every recorded deficit as absorbed fluid.", "This entry covers transcervical intrauterine surgery, not laparoscopic hysterectomy. Confirm equipment, electrosurgical mode, medium and local emergency pathway at the brief."],
+    sources: ["BSGE ESGE Hysteroscopy Fluid 2016", "Operative Hysteroscopy Anaesthesia 2021"],
+  },
+  {
+    id: "tur-bt", name: "Transurethral resection of bladder tumour (TURBT)", aka: ["TURBT", "bladder tumour resection", "bladder tumor resection"],
+    specialty: "Urology", diagram: "tur-bt", bloodLossRisk: "Low",
+    summary: "A resectoscope enters through the urethra and removes visible bladder tumour with tissue for pathological staging, often including detrusor muscle where appropriate. Lateral-wall electrosurgery can stimulate the obturator nerve and cause an abrupt adductor contraction. Tumour burden and repeat/re-staging procedures vary.",
+    position: "Lithotomy with protected legs and pressure points; urinary drainage and irrigation remain accessible.",
+    steps: [
+      { step: "Review tumour site/size, haematuria, anaemia, anticoagulants, infection and the resection plan.", anaesthetic: "Identify a lateral-wall tumour before choosing anaesthesia. Agree how to prevent obturator-mediated leg movement; neuraxial anaesthesia alone does not reliably block this reflex." },
+      { step: "Establish anaesthesia, position and insert the resectoscope through the urethra.", anaesthetic: "General anaesthesia with adequate neuromuscular block or regional anaesthesia with selected obturator nerve block may be used according to the plan. Avoid assuming immobility because the patient is unconscious." },
+      { step: "Survey the bladder under irrigation, locating tumour, ureteric orifices and the intended resection margins.", anaesthetic: "Avoid overdistension and track irrigation losses. Bipolar saline avoids the classic hypotonic-medium mechanism but does not eliminate fluid overload or extravasation." },
+      { step: "Resect tumour and obtain appropriate base/deep tissue for staging, then coagulate bleeding points.", anaesthetic: "An obturator jerk can drive the loop through the bladder wall. Stop and reassess sudden leg movement, abdominal distension, pain in an awake patient, or unexplained instability; perforation may be intraperitoneal or extraperitoneal." },
+      { step: "Confirm haemostasis, retrieve specimens and establish drainage; decide whether immediate intravesical treatment is appropriate.", anaesthetic: "Suspected perforation or bleeding requiring irrigation changes the postoperative plan and can contraindicate immediate intravesical chemotherapy. Handover haematuria, catheter/irrigation requirements and any suspected injury." },
+    ],
+    criticalMoments: ["Lateral-wall resection — obturator jerk", "Bladder perforation and irrigation extravasation", "Haemostasis and postoperative clot retention"],
+    anaestheticNotes: ["Low blood-loss risk is a qualitative badge: large, vascular or extensive tumours can bleed substantially. Differentiate TURBT from prostate resection rather than copying a TURP plan.", "Coordinate analgesia, nausea prevention and monitoring with the intended day-case or inpatient pathway; persistent bleeding, pain or physiological change needs reassessment."],
+    sources: ["TURBT Technique Review 2020", "Obturator Jerk Review 2018", "EAU TURBT Instillation 2025"],
+  },
+  {
+    id: "burn-excision-skin-graft", name: "Burn excision and split-thickness skin grafting", aka: ["burn debridement", "tangential excision", "STSG", "skin graft", "burns surgery"],
+    specialty: "Breast & Plastics", diagram: "burn-graft", bloodLossRisk: "High",
+    summary: "Non-viable burned tissue is excised to a suitable wound bed and covered with a thin autologous skin graft, often meshed. The donor retains part of its dermis so it can heal. Large burns commonly need staged operations; temporary coverage may be used when definitive autograft is not yet feasible.",
+    position: "Depends on burn and donor sites; supine, lateral or prone. Plan turning, pressure protection and secure airway/vascular access before draping.",
+    steps: [
+      { step: "Review burn extent/depth, time since injury, inhalation injury, resuscitation, organ function, infection and donor sites.", anaesthetic: "The early shock phase and later hypermetabolic phase differ. Assess airway oedema or contracture, available access, haemoglobin and blood availability; small grafts do not share the risk of extensive excision." },
+      { step: "Establish anaesthesia, position and warm the patient; prepare recipient and donor sites.", anaesthetic: "Large exposed surfaces create substantial heat loss. Warm fluids and theatre measures must remain compatible with skin injury and fire safety. Altered drug responses and repeated anaesthetics require individual assessment." },
+      { step: "Excise eschar tangentially or to the selected deeper plane; achieve haemostasis.", anaesthetic: "Diffuse wound bleeding can be rapid and underestimated in soaked swabs/drapes. Reconcile losses, perfusion, haemoglobin and coagulation with the team; local adrenaline or tourniquet measures do not replace monitoring." },
+      { step: "Harvest partial-thickness donor skin, mesh if selected, and apply/fix the graft to the prepared bed.", anaesthetic: "The donor site adds pain and bleeding. Maintain perfusion and temperature without indiscriminate fluid loading; consider appropriate regional/local analgesia as part of a multimodal plan." },
+      { step: "Dress graft and donor sites, protect immobilisation and transfer with a recovery/critical-care plan.", anaesthetic: "Handover blood products, fluid balance, temperature, analgesia and graft positioning. Major burns, inhalation injury or ongoing instability may require continued ventilation and critical care rather than immediate extubation." },
+    ],
+    criticalMoments: ["Airway control with inhalation injury or contracture", "Excision — deceptively rapid blood loss", "Extensive exposure — hypothermia", "Transfer and dressing-related positioning requirements"],
+    anaestheticNotes: ["Burn resuscitation formulae are starting guides, not automatic intraoperative replacement prescriptions; use measured physiological endpoints and the burns-team plan.", "Suxamethonium can cause dangerous hyperkalaemia after burn-related receptor upregulation; avoid its use outside the immediate acute window and follow specialist guidance. Resistance to non-depolarising relaxants may develop; use quantitative neuromuscular monitoring.", "Graft and donor-site pain are distinct from background burn pain. Agree dressing-change analgesia, nutrition and rehabilitation with the specialist team."],
+    sources: ["Bittner Burn Perioperative 2015", "Burn Debridement Grafting 2023"],
+  },
+  {
+    id: "orthognathic-bimaxillary", name: "Bimaxillary orthognathic surgery (Le Fort I and mandibular sagittal split)", aka: ["orthognathic surgery", "double jaw surgery", "BSSO", "Le Fort I", "bimaxillary osteotomy"],
+    specialty: "Oral & Maxillofacial", diagram: "orthognathic", bloodLossRisk: "Moderate",
+    summary: "Planned osteotomies reposition the maxilla and mandible to correct skeletal jaw relationships. A Le Fort I mobilises the maxilla; bilateral sagittal splits mobilise the tooth-bearing mandible. Splints/temporary fixation establish occlusion before plates secure the new position. Jaw order, movements and additions vary.",
+    position: "Supine with supported head and agreed head-up tilt; protect eyes, teeth and nerves. The surgeon shares the airway and needs dental occlusion.",
+    steps: [
+      { step: "Review airway, jaw anatomy, OSA, nasal patency, imaging, orthodontic plan and anticipated blood loss.", anaesthetic: "Agree nasal versus alternative airway access and postoperative fixation/rescue plans. Restricted oral opening or abnormal craniofacial anatomy may alter airway strategy; elective nasal intubation is not automatically safe in every patient." },
+      { step: "Secure the agreed airway, protect pressure points and expose intraoral tissues.", anaesthetic: "Fix the tube away from the operative field and recheck it after movement. A throat pack is not routine; if selected, record insertion/removal. Local vasoconstrictors require dose communication and haemodynamic observation." },
+      { step: "Perform Le Fort I maxillary mobilisation and bilateral sagittal mandibular splits in the planned order.", anaesthetic: "Maxillary/pterygoid bleeding can be brisk. Monitor blood loss and be ready for trigeminocardiac bradycardia during manipulation. A field-quality strategy must not compromise cerebral or systemic perfusion." },
+      { step: "Reposition the jaw segments using the occlusal splint; apply temporary intermaxillary fixation and secure plates/screws.", anaesthetic: "Dental fixation removes oral airway access. Know how fixation will be released in an emergency; coordinate tube position and any release before extubation." },
+      { step: "Check haemostasis and occlusion, remove any pack, suction under direct vision and implement the agreed extubation plan.", anaesthetic: "Blood, facial swelling, nasal obstruction and residual sedation can compromise breathing. Selected high-risk patients need delayed extubation. Ensure fixation-release equipment, antiemesis and trained postoperative staff." },
+    ],
+    criticalMoments: ["Shared-airway access and tube protection", "Maxillary mobilisation — bleeding or trigeminocardiac reflex", "Intermaxillary fixation — loss of oral access", "Extubation with swelling and altered jaw anatomy"],
+    anaestheticNotes: ["The diagram is a local lateral teaching view, not a blueprint for osteotomy angles or a complete vascular map. Genioplasty and other adjuncts alter the sequence.", "Use multimodal analgesia and nausea prevention, especially if elastics/fixation remain. Postoperative airway strategy must account for OSA and the direction of jaw movement, not just procedure duration."],
+    sources: ["Haq Orthognathic Anaesthesia 2024", "RCoA Dental GPAS"],
+  },
   {
     id: "total-laryngectomy", name: "Total laryngectomy", aka: ["laryngectomy", "larynx removal", "permanent neck breather"],
     specialty: "ENT & Head and Neck", diagram: "laryngectomy", bloodLossRisk: "Moderate",
