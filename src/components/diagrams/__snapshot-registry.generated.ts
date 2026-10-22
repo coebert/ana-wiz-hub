@@ -402,6 +402,7 @@ export const diagramSnapshotRegistry: Record<string, LazyExoticComponent<Compone
   "SepsisPracticeTeaching": lazy(() => import("./../topic/SepsisPracticeTeaching").then((m) => ({ default: m.SepsisPracticeTeaching as ComponentType<any> }))),
   "SepsisScoreCalculator": lazy(() => import("./intensive-care/SepsisScoreCalculator")),
   "SeverePancreatitisCTDiagram": lazy(() => import("./intensive-care/SeverePancreatitisCTDiagram")),
+  "ShockPracticeTeaching": lazy(() => import("./../topic/ShockPracticeTeaching").then((m) => ({ default: m.ShockPracticeTeaching as ComponentType<any> }))),
   "SinogramFBPWalkthrough": lazy(() => import("./physics/SinogramFBPWalkthrough")),
   "SIUnitsThermodynamicsDiagram": lazy(() => import("./physics/SIUnitsThermodynamicsDiagram")),
   "SkewDistributionDiagram": lazy(() => import("./physics/SkewDistributionDiagram")),
