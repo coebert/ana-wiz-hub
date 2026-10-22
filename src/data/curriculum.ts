@@ -259,7 +259,7 @@ export const intensiveCareTopics: Topic[] = [
 
 export const perioperativeTopics: Topic[] = [
   // Assessment & optimisation
-  { id: "operative-steps", title: "Operations Library: Surgical Steps for Anaesthetists", description: "Searchable step-by-step summaries of 68 operations across 13 specialties, with anaesthetic notes for each step and diagrams", section: "perioperative", examTags: ["final"], available: true },
+  { id: "operative-steps", title: "Operations Library: Surgical Steps for Anaesthetists", description: "Searchable step-by-step summaries of 72 operations across 13 specialties, with anaesthetic notes for each step and diagrams", section: "perioperative", examTags: ["final"], available: true },
   { id: "preoperative-assessment", title: "Preoperative Assessment", description: "Risk stratification, CPET, cardiac risk indices, optimisation", section: "perioperative", examTags: ["final"], available: true },
   { id: "enhanced-recovery", title: "Enhanced Recovery (ERAS)", description: "Perioperative care pathways, prehabilitation, goal-directed therapy", section: "perioperative", examTags: ["final"], available: true },
   { id: "perioperative-fluids", title: "Perioperative Fluid Therapy", description: "Crystalloids vs colloids, goal-directed, fluid responsiveness", section: "perioperative", examTags: ["final", "fficm"], available: true },
