@@ -89,7 +89,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Lateral-wall resection — obturator jerk", "Bladder perforation and irrigation extravasation", "Haemostasis and postoperative clot retention"],
     anaestheticNotes: ["Low blood-loss risk is a qualitative badge: large, vascular or extensive tumours can bleed substantially. Differentiate TURBT from prostate resection rather than copying a TURP plan.", "Coordinate analgesia, nausea prevention and monitoring with the intended day-case or inpatient pathway; persistent bleeding, pain or physiological change needs reassessment."],
-    sources: ["TURBT Technique Review 2020", "Obturator Jerk Review 2018"],
+    sources: ["TURBT Technique Review 2020", "Obturator Jerk Review 2018", "EAU TURBT Instillation 2025"],
   },
   {
     id: "burn-excision-skin-graft", name: "Burn excision and split-thickness skin grafting", aka: ["burn debridement", "tangential excision", "STSG", "skin graft", "burns surgery"],
