@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-22T07:36:49.345Z",
-  "count": 469,
+  "generatedAt": "2026-10-22T08:47:07.930Z",
+  "count": 470,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -381,6 +381,10 @@
     {
       "name": "CitrateWashSeparationDiagram",
       "route": "/dev/diagram-snapshot/CitrateWashSeparationDiagram"
+    },
+    {
+      "name": "CleftPalateRepairDiagram",
+      "route": "/dev/diagram-snapshot/CleftPalateRepairDiagram"
     },
     {
       "name": "CLIFCACLFDiagram",

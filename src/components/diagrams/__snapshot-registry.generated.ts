@@ -103,6 +103,7 @@ export const diagramSnapshotRegistry: Record<string, LazyExoticComponent<Compone
   "CICODrillAnimation": lazy(() => import("./clinical/CICODrillAnimation")),
   "CircleOfWillisDiagram": lazy(() => import("./anatomy/CircleOfWillisDiagram")),
   "CitrateWashSeparationDiagram": lazy(() => import("./intensive-care/CitrateWashSeparationDiagram")),
+  "CleftPalateRepairDiagram": lazy(() => import("./operative/CleftPalateRepairDiagram")),
   "CLIFCACLFDiagram": lazy(() => import("./intensive-care/CLIFCACLFDiagram")),
   "ClinicalMeasurementDiagram": lazy(() => import("./physics/ClinicalMeasurementDiagram")),
   "CoagulationCascadeDiagram": lazy(() => import("./pharmacology/CoagulationCascadeDiagram")),
