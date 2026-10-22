@@ -105,7 +105,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Airway control with inhalation injury or contracture", "Excision — deceptively rapid blood loss", "Extensive exposure — hypothermia", "Transfer and dressing-related positioning requirements"],
     anaestheticNotes: ["Burn resuscitation formulae are starting guides, not automatic intraoperative replacement prescriptions; use measured physiological endpoints and the burns-team plan.", "Suxamethonium can cause dangerous hyperkalaemia after burn-related receptor upregulation; avoid its use outside the immediate acute window and follow specialist guidance. Resistance to non-depolarising relaxants may develop; use quantitative neuromuscular monitoring.", "Graft and donor-site pain are distinct from background burn pain. Agree dressing-change analgesia, nutrition and rehabilitation with the specialist team."],
-    sources: ["Bittner Burn Perioperative 2015", "Split Thickness Grafts StatPearls"],
+    sources: ["Bittner Burn Perioperative 2015", "Burn Debridement Grafting 2023"],
   },
   {
     id: "orthognathic-bimaxillary", name: "Bimaxillary orthognathic surgery (Le Fort I and mandibular sagittal split)", aka: ["orthognathic surgery", "double jaw surgery", "BSSO", "Le Fort I", "bimaxillary osteotomy"],
