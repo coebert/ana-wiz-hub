@@ -409,6 +409,7 @@ export const diagramSnapshotRegistry: Record<string, LazyExoticComponent<Compone
   "SkewDistributionDiagram": lazy(() => import("./physics/SkewDistributionDiagram")),
   "SkullBaseDiagram": lazy(() => import("./anatomy/SkullBaseDiagram")),
   "SolutionsConcentrationDiagram": lazy(() => import("./chemistry/SolutionsConcentrationDiagram").then((m) => ({ default: m.SolutionsConcentrationDiagram as ComponentType<any> }))),
+  "SpecialtyExpansionDiagrams": lazy(() => import("./operative/SpecialtyExpansionDiagrams")),
   "SpinalBlockHeightAssessmentTool": lazy(() => import("./clinical/SpinalBlockHeightAssessmentTool")),
   "SpinalCordAxialDiagram": lazy(() => import("./anatomy/SpinalCordAxialDiagram")),
   "SpinalCordCrossSectionDiagram": lazy(() => import("./anatomy/SpinalCordCrossSectionDiagram")),
