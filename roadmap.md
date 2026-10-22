@@ -1,7 +1,6 @@
 # Admin metrics audit fixes
 
 ## Colorectal Operations Library additions
-- [ ] Add AP resection, right/left hemicolectomy and Hartmann's procedure with stages, anaesthetic notes, diagrams and sources.
 - [ ] Verify search, staged artwork and references; refresh search and private audit coverage.
 
 ## Cross-specialty Operations Library expansion

@@ -33,7 +33,7 @@ export default function ColorectalOperationDiagram({ operation }: { operation: O
   const left = kind === "left-hemicolectomy";
   const ap = kind === "ap-resection";
   const resected = stage >= 3;
-  const segment = right ? ascending : left ? descending + " " + sigmoid : ap ? rectum : sigmoid;
+  const segment = right ? ascending : left ? descending + " " + sigmoid : ap ? sigmoid + " " + rectum : sigmoid;
   const orientation = "Anterior abdominal schematic: patient's right on viewer's left; cranial above. Resection extent and vascular division vary.";
   return <div className="my-4 rounded-lg border border-border bg-muted/30 p-4 space-y-4">
     <DiagramToggleBar title={operation.name} toggles={[
@@ -51,11 +51,11 @@ export default function ColorectalOperationDiagram({ operation }: { operation: O
         <path d="M143 73Q250 40 375 73L405 305Q376 386 269 404Q153 385 115 308Z" fill={`url(#${id}-tissue)`} stroke={ink} opacity={0.55} />
         <g fill="none" stroke={ink} strokeWidth={26} strokeLinecap="round" strokeLinejoin="round">
           {!right && <path d={ascending} />}{!left && <path d={descending} />}
-          {!left && kind !== "hartmann" && <path d={sigmoid} />}{!ap && <path d={rectum} />}
+          {!left && kind !== "hartmann" && !ap && <path d={sigmoid} />}{!ap && <path d={rectum} />}
         </g>
         <g fill="none" stroke={bowel} strokeWidth={22} strokeLinecap="round" strokeLinejoin="round">
           {!right && <path d={ascending} />}{!left && <path d={descending} />}
-          {!left && kind !== "hartmann" && <path d={sigmoid} />}{!ap && <path d={rectum} />}
+          {!left && kind !== "hartmann" && !ap && <path d={sigmoid} />}{!ap && <path d={rectum} />}
         </g>
         <path d={segment} fill="none" stroke={removed} strokeWidth={resected ? 3 : 24} strokeDasharray={resected ? "6 5" : undefined} strokeLinecap="round" opacity={resected ? 0.6 : 0.75} />
         {/* Terminal ileum joins the caecum before right colectomy. */}
@@ -67,8 +67,8 @@ export default function ColorectalOperationDiagram({ operation }: { operation: O
           {!left && [143,169,195,218].map(y => <path key={y} d={`M337 ${y}q10 7 20 0`} fill="none" stroke={ink} opacity={0.6} />)}
           {stage === 2 && <path d={ap ? "M247 295V350M291 295V350" : right ? "M145 132V238" : "M370 131V234"} fill="none" stroke={join} strokeWidth={3} strokeDasharray="5 4" />}
         </>}
-        {resected && right && <><path d="M220 215Q221 146 243 104" fill="none" stroke={bowel} strokeWidth={18} /><Sutures x={235} y={114} count={3} /></>}
-        {resected && left && <><path d="M243 104Q303 158 269 299" fill="none" stroke={bowel} strokeWidth={22} /><Sutures x={262} y={291} count={3} /></>}
+        {resected && right && <><path d="M220 215Q221 146 243 104" fill="none" stroke={ink} strokeWidth={20} /><path d="M220 215Q221 146 243 104" fill="none" stroke={bowel} strokeWidth={18} /><Sutures x={235} y={114} count={3} /></>}
+        {resected && left && <><path d="M243 104Q303 158 269 299" fill="none" stroke={ink} strokeWidth={24} /><path d="M243 104Q303 158 269 299" fill="none" stroke={bowel} strokeWidth={22} /><Sutures x={262} y={291} count={3} /></>}
         {resected && kind === "hartmann" && <><path d="M347 229L397 236" fill="none" stroke={bowel} strokeWidth={22} /><ellipse cx={400} cy={236} rx={12} ry={16} fill={removed} stroke={ink} /><path d="M256 299H282" stroke={ink} strokeWidth={3} /><Sutures x={260} y={299} count={3} /></>}
         {resected && ap && <><path d="M347 229L397 236" fill="none" stroke={bowel} strokeWidth={22} /><ellipse cx={400} cy={236} rx={12} ry={16} fill={removed} stroke={ink} /><path d="M255 355L283 355" stroke={join} strokeWidth={4} /></>}
         {ap && detail && <g>
@@ -79,7 +79,7 @@ export default function ColorectalOperationDiagram({ operation }: { operation: O
         {labels && <>
           <text x={36} y={28} fill={ink} fontSize={11}>Patient right</text><text x={425} y={28} fill={ink} fontSize={11}>Patient left</text>
           <Label x={23} y={69} target={[240,104]}>Transverse colon</Label>
-          <Label x={23} y={310} target={right ? [183,156] : left ? [323,157] : [269,321]}>{resected ? "Removed segment" : "Planned resection"}</Label>
+          <Label x={23} y={310} target={right ? [166,175] : left ? [347,179] : ap ? [269,321] : [312,266]}>{resected ? "Removed segment" : "Planned resection"}</Label>
           {resected && (right || left) && <Label x={354} y={302} target={right ? [237,116] : [269,291]}>{right ? "Ileocolic join" : "Colorectal join"}</Label>}
           {resected && !(right || left) && <Label x={418} y={198} target={[400,236]}>End colostomy</Label>}
           {kind === "hartmann" && <Label x={29} y={389} target={[269,299]}>Rectal stump</Label>}
