@@ -94,7 +94,7 @@ function SkinArt({ stage, mohs, detail, labels, id }: { stage: number; mohs: boo
     </g>}
     {labels && <>
       <text x={22} y={25} fontSize={11} fill={ink}>Local skin cross-section · surface above</text>
-      <Label x={24} y={79} to={[276,118]}>{removed ? "Excision defect" : "Skin lesion"}</Label>
+      <Label x={24} y={79} to={[276,118]}>{stage === 4 ? "Reconstruction example" : removed ? "Excision defect" : "Skin lesion"}</Label>
       <Label x={385} y={84} to={[442,137]}>Epidermis</Label>
       <Label x={385} y={310} to={[443,206]}>Dermis</Label>
       {detail && <Label x={24} y={409} to={[245,347]}>{mohs ? "En-face margin map" : "Surface excision inset"}</Label>}

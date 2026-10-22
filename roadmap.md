@@ -1,8 +1,8 @@
 # Admin metrics audit fixes
 
 ## Obstetric, gynaecological and dermatological expansion
-- [ ] Add six new operations with five stages, per-stage anaesthetic notes, checked references and interactive diagrams; introduce Dermatology specialty.
-- [ ] Verify stage controls, search, specialty filtering and narrow-screen fit; run regressions and refresh search/private audit coverage.
+- [x] Add six new operations with five stages, per-stage anaesthetic notes, source references and interactive diagrams; introduce Dermatology specialty (78 operations, 14 specialties).
+- [x] Verify all 30 stage controls, labels/detail, search, Dermatology filtering and narrow-screen fit; 52 regressions passed, search/private audit coverage refreshed and uploaded. Consultant review remains outstanding; RCOG direct access was blocked.
 
 ## Colorectal Operations Library additions
 - [x] Add AP resection, right/left hemicolectomy and Hartmann's procedure with five stages, anaesthetic notes, diagrams and sources (72 operations).
