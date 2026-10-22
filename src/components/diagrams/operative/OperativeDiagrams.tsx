@@ -2,6 +2,8 @@ import { DiagramFigure, svgImgProps } from "@/components/diagrams/_shared/Diagra
 import { IllustrationDefs, shadeIllustration, Leader, Sutures, Flow } from "./OperativeIllustration";
 import type { OperativeDiagramKey } from "@/data/operativeSteps";
 import CleftPalateRepairDiagram from "./CleftPalateRepairDiagram";
+import SpecialtyExpansionDiagram from "./SpecialtyExpansionDiagrams";
+import { operations } from "@/data/operativeSteps";
 
 /* Schematic, not-to-scale teaching diagrams. Colours use theme tokens. */
 const ART = "hsl(var(--destructive))";
@@ -734,6 +736,13 @@ export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
     case "microdiscectomy": return <MicrodiscectomyDiagram />;
     case "manual-placenta": return <ManualPlacentaDiagram />;
     case "cleft": return <CleftPalateRepairDiagram />;
+    case "hysteroscopy":
+    case "tur-bt":
+    case "burn-graft":
+    case "orthognathic": {
+      const operation = operations.find(item => item.diagram === kind);
+      return operation ? <SpecialtyExpansionDiagram kind={kind} operation={operation} /> : null;
+    }
     case "tracheostomy": return <TracheostomyDiagram />;
     case "nephrectomy": return <NephrectomyDiagram />;
     case "awake-craniotomy": return <AwakeCraniotomyDiagram />;
