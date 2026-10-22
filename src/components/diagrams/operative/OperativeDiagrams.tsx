@@ -1,6 +1,7 @@
 import { DiagramFigure, svgImgProps } from "@/components/diagrams/_shared/DiagramFigure";
 import { IllustrationDefs, shadeIllustration, Leader, Sutures, Flow } from "./OperativeIllustration";
 import type { OperativeDiagramKey } from "@/data/operativeSteps";
+import CleftPalateRepairDiagram from "./CleftPalateRepairDiagram";
 
 /* Schematic, not-to-scale teaching diagrams. Colours use theme tokens. */
 const ART = "hsl(var(--destructive))";
@@ -732,7 +733,7 @@ export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
     case "vitrectomy": return <VitrectomyDiagram />;
     case "microdiscectomy": return <MicrodiscectomyDiagram />;
     case "manual-placenta": return <ManualPlacentaDiagram />;
-    case "cleft": return <CleftDiagram />;
+    case "cleft": return <CleftPalateRepairDiagram />;
     case "tracheostomy": return <TracheostomyDiagram />;
     case "nephrectomy": return <NephrectomyDiagram />;
     case "awake-craniotomy": return <AwakeCraniotomyDiagram />;
@@ -1125,22 +1126,6 @@ const ManualPlacentaDiagram = () => (
     <path d="M147 90Q145 174 230 226M373 91Q379 176 289 226" fill="none" stroke={MUTED} strokeWidth={6}/><path d="M184 78L195 91M214 70L224 82M249 66L252 81M279 66L278 83M312 73L302 87" stroke={INK} strokeWidth={1}/>
     <Label x={340} y={125}>Placenta</Label><Label x={30} y={240}>Access via cervix</Label>
     <Label x={30} y={30}>External uterine support</Label><Label x={25} y={310}>Anaesthesia + haemorrhage plan; no plane: stop, senior help</Label>
-  </Shell>
-);
-
-const CleftDiagram = () => (
-  <Shell id="op-cleft" title="Cleft palate repair: the shared airway" desc="View into the open mouth. A Dingman gag holds the mouth open; a south-facing RAE tube is fixed in the midline over the lower lip and runs under the gag's tongue blade. The cleft runs along the palate. A throat pack sits behind the tongue.">
-    <ellipse cx={260} cy={170} rx={190} ry={130} fill={FILL} stroke={INK} strokeWidth={2} />
-    <path d="M260 60 L260 200" stroke={ART} strokeWidth={10} strokeLinecap="round" />
-    <rect x={150} y={215} width={220} height={22} rx={6} fill={MUTED} opacity={0.6} stroke={INK} />
-    <path d="M260 300 L260 230" stroke={GRAFT} strokeWidth={9} strokeLinecap="round" />
-    <path d="M70 90 L130 120 M450 90 L390 120" stroke={INK} strokeWidth={4} />
-    {[150,178,206,234,286,314,342,370].map(x=><rect key={x} x={x-8} y={82} width={16} height={16} rx={4} fill={FILL} stroke={INK}/>)}<path d="M146 150Q180 107 225 134M293 134Q347 112 374 151" stroke={MUTED} fill="none"/>
-    <Label x={280} y={110}>Cleft in palate</Label>
-    <Label x={300} y={265}>RAE tube, midline</Label>
-    <Label x={105} y={207}>Gag tongue blade</Label>
-    <Label x={25} y={40}>Dingman mouth gag</Label>
-    <Label x={25} y={318}>Gag can kink or move the tube; watch obstruction after extubation</Label>
   </Shell>
 );
 
