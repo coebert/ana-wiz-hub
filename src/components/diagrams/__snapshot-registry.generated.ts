@@ -347,6 +347,7 @@ export const diagramSnapshotRegistry: Record<string, LazyExoticComponent<Compone
   "PcaEpiduralCalculator": lazy(() => import("./clinical/PcaEpiduralCalculator")),
   "PCPHRCTDiagram": lazy(() => import("./intensive-care/PCPHRCTDiagram")),
   "PEEPTimingDiagram": lazy(() => import("./intensive-care/PEEPTimingDiagram")),
+  "PelvicSkinOperationDiagram": lazy(() => import("./operative/PelvicSkinOperationDiagram")),
   "PeriodicTableAnaestheticDiagram": lazy(() => import("./chemistry/PeriodicTableAnaestheticDiagram").then((m) => ({ default: m.PeriodicTableAnaestheticDiagram as ComponentType<any> }))),
   "PerioperativeDiabetesDiagram": lazy(() => import("./perioperative/PerioperativeDiabetesDiagram")),
   "PhaeochromocytomaDiagram": lazy(() => import("./perioperative/PhaeochromocytomaDiagram")),

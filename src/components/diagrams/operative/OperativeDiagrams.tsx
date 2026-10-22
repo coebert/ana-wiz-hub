@@ -3,6 +3,7 @@ import { IllustrationDefs, shadeIllustration, Leader, Sutures, Flow } from "./Op
 import type { OperativeDiagramKey } from "@/data/operativeSteps";
 import CleftPalateRepairDiagram from "./CleftPalateRepairDiagram";
 import ColorectalOperationDiagram from "./ColorectalOperationDiagram";
+import PelvicSkinOperationDiagram from "./PelvicSkinOperationDiagram";
 import SpecialtyExpansionDiagram from "./SpecialtyExpansionDiagrams";
 import { operations } from "@/data/operativeSteps";
 
@@ -737,6 +738,15 @@ export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
     case "microdiscectomy": return <MicrodiscectomyDiagram />;
     case "manual-placenta": return <ManualPlacentaDiagram />;
     case "cleft": return <CleftPalateRepairDiagram />;
+    case "cerclage":
+    case "peripartum-hysterectomy":
+    case "ovarian-cystectomy":
+    case "vaginal-hysterectomy":
+    case "skin-excision":
+    case "mohs": {
+      const operation = operations.find(item => item.diagram === kind);
+      return operation ? <PelvicSkinOperationDiagram operation={operation} /> : null;
+    }
     case "ap-resection":
     case "right-hemicolectomy":
     case "left-hemicolectomy":

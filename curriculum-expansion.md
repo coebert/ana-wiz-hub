@@ -3,6 +3,11 @@
 Coverage means substantive source-led teaching added and checked; it does not certify every claim in a topic. Introductions are not automatically gaps merely because they are short. Existing content is retained unless a supported correction is needed.
 
 ## Completed before this continuation
+### Operations Library — obstetric, gynaecological and dermatological additions, checked 22 October 2026
+- Added transvaginal cervical cerclage, peripartum hysterectomy, laparoscopic ovarian cystectomy, vaginal hysterectomy, skin lesion excision/reconstruction and Mohs surgery: 78 operations across 14 specialties, each new entry with five stages, per-stage notes and interactive diagrams.
+- References include NICE NG25, ACOG/SMFM PAS consensus (reaffirmed 2025), BJA Education PAS review, NHS surgical leaflets, BAD Mohs guidance (June 2025) and BSDS antithrombotic guidance. Eight new source quotations checked directly; RCOG cervical-stitch wording was checked during research but direct implementation fetch was blocked. Surgical stages and general anaesthetic precautions are educational synthesis, not verbatim protocols or consultant certification.
+- Verified all 30 stage selections, label/detail switches, local search, Dermatology filter and phone-width fit without page errors; 52 library/search/generated-coverage tests passed. Search and private audit corpus refreshed/uploaded. No fixed cancer margin, Mohs pass count, ovarian-preservation guarantee or universal PAS anaesthetic technique is implied.
+
 ### Operations Library — colorectal additions, checked 22 October 2026
 - Added AP resection, separate right/left hemicolectomy entries and Hartmann's procedure (72 operations). Each has five stages, per-stage anaesthetic notes, critical moments, references and staged diagrams. Distinguishes permanent APR colostomy, side-dependent hemicolectomy reconstruction and uncertain Hartmann reversal; WSES recommendation retains its low-quality-evidence caveat.
 - Verified 20 stage selections, label switches, local search and narrow-screen fit; 46 library/search/generated-coverage tests passed. Search and private audit copy refreshed and uploaded. Surgical source access was partial; source-linked teaching is not consultant review or anatomical certification.

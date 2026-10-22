@@ -4,6 +4,22 @@ import { topicReferences } from "./references";
 
 describe("operations library", () => {
   it.each([
+    ["cervical stitch", "cervical-cerclage", "Obstetric", "cerclage"],
+    ["obstetric hysterectomy", "peripartum-hysterectomy", "Obstetric", "peripartum-hysterectomy"],
+    ["ovarian cyst removal", "laparoscopic-ovarian-cystectomy", "Gynaecology", "ovarian-cystectomy"],
+    ["vaginal hysterectomy", "vaginal-hysterectomy", "Gynaecology", "vaginal-hysterectomy"],
+    ["skin cancer excision", "skin-lesion-excision", "Dermatology", "skin-excision"],
+    ["Mohs", "mohs-micrographic-surgery", "Dermatology", "mohs"],
+  ] as const)("finds %s in its specialty with five referenced stages", (query, id, specialty, diagram) => {
+    const op = searchOperations(query, specialty).find(item => item.id === id);
+    expect(op?.diagram).toBe(diagram);
+    expect(op?.steps).toHaveLength(5);
+    expect(op?.steps.every(step => Boolean(step.anaesthetic))).toBe(true);
+    expect(op?.criticalMoments.length ?? 0).toBeGreaterThanOrEqual(3);
+    expect(op?.sources?.length ?? 0).toBeGreaterThanOrEqual(2);
+    expect(op?.sources?.some(label => topicReferences["operative-steps"].find(ref => ref.label === label)?.excerpt)).toBe(true);
+  });
+  it.each([
     ["AP resection", "abdominoperineal-resection", "ap-resection"],
     ["right hemicolectomy", "right-hemicolectomy", "right-hemicolectomy"],
     ["left hemicolectomy", "left-hemicolectomy", "left-hemicolectomy"],

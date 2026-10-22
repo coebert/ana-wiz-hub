@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-22T12:51:05.048Z",
-  "count": 472,
+  "generatedAt": "2026-10-22T12:59:36.566Z",
+  "count": 473,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -1357,6 +1357,10 @@
     {
       "name": "PEEPTimingDiagram",
       "route": "/dev/diagram-snapshot/PEEPTimingDiagram"
+    },
+    {
+      "name": "PelvicSkinOperationDiagram",
+      "route": "/dev/diagram-snapshot/PelvicSkinOperationDiagram"
     },
     {
       "name": "PeriodicTableAnaestheticDiagram",
