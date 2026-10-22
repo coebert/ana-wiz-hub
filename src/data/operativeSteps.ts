@@ -31,7 +31,8 @@ export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | 
   | "cleft" | "tracheostomy" | "nephrectomy" | "awake-craniotomy" | "scoliosis"
   | "liver-transplant" | "adrenalectomy" | "fess"
   | "laryngectomy" | "glossectomy" | "microlaryngoscopy"
-  | "hysteroscopy" | "tur-bt" | "burn-graft" | "orthognathic";
+  | "hysteroscopy" | "tur-bt" | "burn-graft" | "orthognathic"
+  | "ap-resection" | "right-hemicolectomy" | "left-hemicolectomy" | "hartmann";
 
 export interface OperativeStep {
   /** What the surgeon does. */
@@ -59,6 +60,74 @@ export interface Operation {
 }
 
 export const operations: Operation[] = [
+  {
+    id: "abdominoperineal-resection", name: "Abdominoperineal resection (AP resection)", aka: ["APR", "APER", "AP resection", "abdominoperineal excision"],
+    specialty: "General & GI", diagram: "ap-resection", bloodLossRisk: "High",
+    summary: "Removal of the rectum, anal canal and sphincter complex with an end colostomy, usually for low rectal cancer when sphincter preservation is unsuitable. Unlike anterior resection, there is no colorectal anastomosis and the colostomy is permanent. Open, laparoscopic and robotic abdominal approaches and conventional or extralevator perineal excision vary by tumour and team.",
+    position: "Abdominal phase supine or Lloyd-Davies/lithotomy; perineal phase in lithotomy or prone jackknife. Two-team simultaneous surgery or repositioning may be used.",
+    steps: [
+      { step: "Confirm operative extent, marked colostomy site and perineal positioning; establish abdominal access and explore.", anaesthetic: "Assess anaemia, nutrition, frailty and effects of neoadjuvant treatment. Agree blood availability, analgesia, monitoring and postoperative destination. Secure the airway and lines before head-down tilt or a later prone turn." },
+      { step: "Mobilise the sigmoid/left colon and divide selected mesenteric vessels, protecting the ureters and autonomic nerves.", anaesthetic: "Pneumoperitoneum and Trendelenburg affect ventilation and venous return. Titrate fluids and vasoactive support to perfusion, avoiding both overload and hypovolaemia; watch for vascular or splenic injury during mobilisation." },
+      { step: "Dissect the rectum and mesorectum through the pelvis to meet the planned perineal plane.", anaesthetic: "Deep pelvic and presacral venous bleeding can be abrupt. Communicate suction loss and haemodynamics; prolonged lithotomy requires careful leg support, pressure protection and vigilance for well-leg compartment syndrome." },
+      { step: "Perform perineal excision of anus and sphincters, with levator excision where indicated; remove the specimen.", anaesthetic: "If turning prone, coordinate the turn, recheck tube, ventilation, eyes and lines, and keep the abdomen free of compression. Perineal dissection adds bleeding and pain; flap reconstruction, if needed, extends the operation." },
+      { step: "Close or reconstruct the perineal defect, mature the end colostomy and close the abdomen.", anaesthetic: "Provide analgesia for both abdominal and perineal wounds. Reassess temperature, haemostasis and airway oedema before extubation; arrange stoma support, VTE prevention and an appropriate recovery/critical-care plan." },
+    ],
+    criticalMoments: ["Presacral or pelvic haemorrhage", "Lithotomy-related nerve injury and well-leg compartment syndrome", "Airway/line security during prone repositioning", "Two operative wounds and possible flap reconstruction"],
+    anaestheticNotes: ["Elective enhanced recovery includes nutritional/anaemia optimisation, multimodal analgesia, individualised fluids and early mobilisation; emergency obstruction or sepsis changes this plan.", "APR permanently separates stool passage from the perineum: there is no colorectal join to leak, but pelvic collections, wound breakdown, urinary dysfunction and stoma complications remain possible.", "Neuraxial analgesia depends on surgical approach, coagulation, anticoagulants and local expertise; it is not mandatory for every APR."],
+    related: { label: "General and colorectal surgery", path: "/clinical/general-colorectal-surgery" },
+    sources: ["APR StatPearls 2024", "ASCRS SAGES Operative ERAS 2023", "Gill 2019 well-leg"],
+  },
+  {
+    id: "right-hemicolectomy", name: "Right hemicolectomy", aka: ["right colectomy", "extended right hemicolectomy", "hemicolectomy"],
+    specialty: "General & GI", diagram: "right-hemicolectomy", bloodLossRisk: "Moderate",
+    summary: "Resection of the caecum, ascending colon and a variable portion of transverse colon with terminal ileum, commonly for cancer. Continuity is usually restored with an ileocolic anastomosis. Extended resections remove more transverse colon; emergency ischaemia, obstruction or perforation may require a stoma or staged reconstruction instead.",
+    position: "Usually supine, with tilt adjusted for laparoscopic/robotic exposure; open surgery uses a suitable abdominal incision.",
+    steps: [
+      { step: "Explore the abdomen and establish open or minimally invasive access.", anaesthetic: "Assess anaemia, bowel preparation-related dehydration and obstruction. Decide aspiration precautions from the clinical state; pneumoperitoneum can cause bradycardia, raised airway pressures and hypercapnia." },
+      { step: "Mobilise the right colon and hepatic flexure, protecting the duodenum, right ureter and retroperitoneal structures.", anaesthetic: "Maintain relaxation and reassess ventilation after tilt. Mobilisation can injure adjacent structures; unexpected blood loss or instability needs immediate discussion rather than assuming an insufflation effect." },
+      { step: "Divide the ileocolic pedicle and other vessels required by the planned resection; complete mesenteric division.", anaesthetic: "Dissection is close to major mesenteric veins, so bleeding may be sudden. Monitor perfusion and temperature and communicate significant haemodynamic changes during vessel division." },
+      { step: "Divide terminal ileum and colon, remove the specimen and form an ileocolic anastomosis when appropriate.", anaesthetic: "Assess blood loss and perfusion before reconstruction; avoid both excessive fluids and undue restriction. A stapled or sutured, intracorporeal or extracorporeal join may be used; unstable emergency patients may need a different strategy." },
+      { step: "Inspect haemostasis and bowel viability, close incisions and agree postoperative care.", anaesthetic: "Use approach-appropriate multimodal analgesia and PONV prevention. Plan early feeding/mobilisation as tolerated; escalating pain, tachycardia, fever or organ dysfunction warrants assessment for leak, bleeding or sepsis." },
+    ],
+    criticalMoments: ["Aspiration risk in obstructed patients", "Mesenteric vascular bleeding", "Pneumoperitoneum and tilt", "Physiological suitability for anastomosis"],
+    anaestheticNotes: ["Right hemicolectomy usually joins ileum to colon, not colon to rectum. Resection extent and vessel ligation depend on pathology and anatomy.", "Elective ERAS principles include optimisation, opioid-sparing analgesia, individualised balanced fluids and early recovery; invasive monitoring and critical care depend on risk rather than the operation name.", "Open surgery may benefit from thoracic epidural where appropriate; routine epidural use is not recommended for laparoscopic colorectal surgery."],
+    related: { label: "General and colorectal surgery", path: "/clinical/general-colorectal-surgery" },
+    sources: ["Hemicolectomy StatPearls 2023", "ASCRS SAGES Operative ERAS 2023"],
+  },
+  {
+    id: "left-hemicolectomy", name: "Left hemicolectomy", aka: ["left colectomy", "hemicolectomy"],
+    specialty: "General & GI", diagram: "left-hemicolectomy", bloodLossRisk: "Moderate",
+    summary: "Removal of the descending colon with variable distal transverse/sigmoid colon, commonly for cancer. Reconstruction may be colocolic or colorectal depending on the remaining bowel; the diagram shows one colorectal reconstruction. This is not synonymous with low anterior resection, and it does not necessarily involve total mesorectal excision.",
+    position: "Supine or modified lithotomy, with tilt adjusted for minimally invasive exposure and access needed for reconstruction.",
+    steps: [
+      { step: "Explore and establish open, laparoscopic or robotic access; assess disease and planned resection.", anaesthetic: "Assess hydration, anaemia and cardiorespiratory reserve. Use aspiration precautions where obstruction is present; secure the patient and airway before tilt." },
+      { step: "Mobilise descending colon and, where needed, splenic flexure, protecting the left ureter and spleen.", anaesthetic: "Splenic capsular injury can produce unexpected bleeding. Adjust ventilation for pneumoperitoneum/tilt and protect pressure points; track lithotomy duration when legs are elevated." },
+      { step: "Divide the required vascular pedicles and mesentery, preserving adequate supply to the retained bowel.", anaesthetic: "Vessel division may cause significant blood loss. Support systemic perfusion without fluid overload; surgical assessment of bowel viability remains essential and cannot be inferred from normal blood pressure alone." },
+      { step: "Divide and remove affected colon; construct a tension-free colocolic or colorectal join if clinically suitable.", anaesthetic: "Communicate hypothermia, acidosis, vasopressor needs and bleeding before reconstruction. Anastomotic assessment and any protective stoma are surgical decisions based on local and systemic risk." },
+      { step: "Assess haemostasis and anastomosis as appropriate, close and implement the postoperative plan.", anaesthetic: "Tailor analgesia to incision and approach, minimise opioid-related ileus, and monitor recovery for bleeding, ileus, anastomotic leak and sepsis. Critical-care admission depends on physiology and risk." },
+    ],
+    criticalMoments: ["Splenic injury during flexure mobilisation", "Mesenteric bleeding", "Positioning injury during prolonged surgery", "Anastomotic perfusion and tension"],
+    anaestheticNotes: ["The retained bowel determines whether the join is colocolic or colorectal; the illustrated configuration is not universal.", "Apply elective colorectal enhanced recovery where appropriate, including early feeding and mobilisation, VTE prevention and tailored fluids; emergency contamination or shock changes priorities.", "Distinguish left hemicolectomy from Hartmann's procedure: Hartmann leaves a closed distal stump and end colostomy rather than a primary join."],
+    related: { label: "General and colorectal surgery", path: "/clinical/general-colorectal-surgery" },
+    sources: ["Hemicolectomy StatPearls 2023", "ASCRS SAGES Operative ERAS 2023", "Gill 2019 well-leg"],
+  },
+  {
+    id: "hartmann-procedure", name: "Hartmann's procedure", aka: ["Hartmanns procedure", "Hartmann procedure", "sigmoid colectomy with end colostomy"],
+    specialty: "General & GI", diagram: "hartmann", bloodLossRisk: "Moderate",
+    summary: "Resection of diseased sigmoid/rectosigmoid colon, closure of the distal rectal stump and formation of an end colostomy without a primary anastomosis. Often used for perforated diverticulitis or other high-risk emergency colorectal disease, but not the default for every perforation. Restoration of continuity is a separate later operation and is not guaranteed.",
+    position: "Supine or modified lithotomy; often open abdominal access in unstable patients, with minimally invasive approaches in selected cases.",
+    steps: [
+      { step: "Resuscitate and prepare for source control; explore the abdomen and identify perforation, contamination or obstruction.", anaesthetic: "Give indicated antibiotics promptly and manage hypovolaemia/sepsis alongside urgent surgery. Plan induction for aspiration risk and possible cardiovascular collapse, including appropriate monitoring and vasoactive support." },
+      { step: "Mobilise affected sigmoid/rectosigmoid bowel and identify/protect ureters within inflamed tissue.", anaesthetic: "Inflammation distorts tissue planes and may increase blood loss. Track haemodynamics, temperature, urine output and acid-base trends, interpreting them together rather than using one target alone." },
+      { step: "Control mesenteric vessels and resect the diseased bowel to suitable margins.", anaesthetic: "Communicate escalating vasopressor needs, coagulopathy, acidosis and hypothermia. In extreme instability, abbreviated damage-control surgery may supersede completing the planned procedure." },
+      { step: "Close the distal rectal stump and bring viable proximal colon to an end-colostomy site; do not form a primary join.", anaesthetic: "Maintain perfusion and reassess losses. A closed rectal stump can still leak and cause pelvic sepsis; absence of an anastomosis does not eliminate postoperative intra-abdominal complications." },
+      { step: "Complete source control, mature the colostomy, close when appropriate and transfer with a clear postoperative plan.", anaesthetic: "Reassess ventilation, perfusion and organ support before deciding on extubation. High-risk septic patients may require ongoing critical care; hand over antibiotics, fluid balance, vasoactive drugs and concerns about source-control adequacy." },
+    ],
+    criticalMoments: ["Induction in shock or bowel obstruction", "Dissection through inflamed planes and bleeding", "Adequacy of source control", "Postoperative organ support and rectal-stump leak"],
+    anaestheticNotes: ["WSES 2020 recommends Hartmann for diffuse diverticular peritonitis in critically ill patients and selected patients with multiple comorbidities; the recommendation is strong but based on low-quality evidence. Selected stable patients may instead undergo primary anastomosis with or without diversion.", "A later reversal requires reassessment of fitness and pelvic anatomy; many patients retain a permanent stoma. Do not promise reversal.", "Balance rapid source control with resuscitation, multimodal analgesia, VTE prevention and stoma care. Elective fasting/carbohydrate pathways are not automatically appropriate for obstructed or septic emergency patients."],
+    related: { label: "Emergency surgery", path: "/clinical/emergency-surgery" },
+    sources: ["WSES Hartmann 2020", "Hartmann Reversal Audit 2018", "ERAS Emergency Laparotomy 2023"],
+  },
   {
     id: "operative-hysteroscopy", name: "Operative hysteroscopy (polypectomy or submucosal fibroid resection)", aka: ["hysteroscopic resection", "uterine polypectomy", "hysteroscopic myomectomy"],
     specialty: "Gynaecology", diagram: "hysteroscopy", bloodLossRisk: "Low",

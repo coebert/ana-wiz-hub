@@ -3,6 +3,10 @@
 Coverage means substantive source-led teaching added and checked; it does not certify every claim in a topic. Introductions are not automatically gaps merely because they are short. Existing content is retained unless a supported correction is needed.
 
 ## Completed before this continuation
+### Operations Library — colorectal additions, checked 22 October 2026
+- Added AP resection, separate right/left hemicolectomy entries and Hartmann's procedure (72 operations). Each has five stages, per-stage anaesthetic notes, critical moments, references and staged diagrams. Distinguishes permanent APR colostomy, side-dependent hemicolectomy reconstruction and uncertain Hartmann reversal; WSES recommendation retains its low-quality-evidence caveat.
+- Verified 20 stage selections, label switches, local search and narrow-screen fit; 46 library/search/generated-coverage tests passed. Search and private audit copy refreshed and uploaded. Surgical source access was partial; source-linked teaching is not consultant review or anatomical certification.
+
 ### Operations Library — cross-specialty batch, checked 22 October 2026
 - Added operative hysteroscopy, TURBT, burn excision with skin grafting and bimaxillary orthognathic surgery; 68 entries across 13 specialty groups. Each addition has five stages, per-stage anaesthetic notes, critical moments, references and an interactive staged schematic.
 - Verified named guidance and five principal safety quotations against source text; distinguished fluid deficits from absorption, neuraxial block from obturator-reflex protection and technique-dependent airway choices. Verified local search, all 20 stage selections, label toggles and narrow-screen fit; 37 library/search/audit regressions passed. Search and audit regenerated, private audit copy uploaded. Source-checked teaching, not consultant review or anatomical certification.

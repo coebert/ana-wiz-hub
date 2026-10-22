@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Colorectal Operations Library additions
+- [x] Add AP resection, right/left hemicolectomy and Hartmann's procedure with five stages, anaesthetic notes, diagrams and sources (72 operations).
+- [x] Verify 20 stages, labels, local search and narrow-screen fit; 46 regressions pass and search/private audit coverage refreshed. Consultant review remains outstanding; surgical source access was partial.
+
 ## Cross-specialty Operations Library expansion
 - [x] Add hysteroscopy, TURBT, burn excision/grafting and bimaxillary osteotomy: 68 operations, each new entry with five stages, anaesthetic notes, staged diagrams and checked sources.
 - [x] Verify all 20 stage selections, label controls, local search and narrow-screen fit; 37 regressions pass, search/audit regenerated and private audit copy uploaded. Consultant review remains outstanding.

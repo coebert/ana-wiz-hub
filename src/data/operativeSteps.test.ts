@@ -4,6 +4,18 @@ import { topicReferences } from "./references";
 
 describe("operations library", () => {
   it.each([
+    ["AP resection", "abdominoperineal-resection", "ap-resection"],
+    ["right hemicolectomy", "right-hemicolectomy", "right-hemicolectomy"],
+    ["left hemicolectomy", "left-hemicolectomy", "left-hemicolectomy"],
+    ["Hartmanns procedure", "hartmann-procedure", "hartmann"],
+  ])("finds %s with five referenced surgical stages", (query, id, diagram) => {
+    const op = searchOperations(query, "General & GI").find(item => item.id === id);
+    expect(op?.diagram).toBe(diagram);
+    expect(op?.steps).toHaveLength(5);
+    expect(op?.steps.every(step => Boolean(step.anaesthetic))).toBe(true);
+    expect(op?.sources?.length ?? 0).toBeGreaterThanOrEqual(2);
+  });
+  it.each([
     ["operative-hysteroscopy", "Gynaecology", "hysteroscopy"],
     ["tur-bt", "Urology", "tur-bt"],
     ["burn-excision-skin-graft", "Breast & Plastics", "burn-graft"],

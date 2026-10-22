@@ -2,6 +2,7 @@ import { DiagramFigure, svgImgProps } from "@/components/diagrams/_shared/Diagra
 import { IllustrationDefs, shadeIllustration, Leader, Sutures, Flow } from "./OperativeIllustration";
 import type { OperativeDiagramKey } from "@/data/operativeSteps";
 import CleftPalateRepairDiagram from "./CleftPalateRepairDiagram";
+import ColorectalOperationDiagram from "./ColorectalOperationDiagram";
 import SpecialtyExpansionDiagram from "./SpecialtyExpansionDiagrams";
 import { operations } from "@/data/operativeSteps";
 
@@ -736,6 +737,13 @@ export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
     case "microdiscectomy": return <MicrodiscectomyDiagram />;
     case "manual-placenta": return <ManualPlacentaDiagram />;
     case "cleft": return <CleftPalateRepairDiagram />;
+    case "ap-resection":
+    case "right-hemicolectomy":
+    case "left-hemicolectomy":
+    case "hartmann": {
+      const operation = operations.find(item => item.diagram === kind);
+      return operation ? <ColorectalOperationDiagram operation={operation} /> : null;
+    }
     case "hysteroscopy":
     case "tur-bt":
     case "burn-graft":
