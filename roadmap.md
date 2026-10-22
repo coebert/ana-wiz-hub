@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Cross-specialty Operations Library expansion
+- [ ] Add four missing specialty entries with detailed stages, anaesthetic notes, diagrams and checked sources.
+- [ ] Verify specialty search, drawings, source integrity and generated search/audit coverage; refresh the private audit copy.
+
 ## Cleft palate repair diagram
 - [x] Add a five-stage illustration with palate layers, shared-airway risks and source links; verify all stages, label controls, desktop/mobile fit and 33 regressions. Private audit copy rebuilt locally; consultant review remains outstanding.
 
