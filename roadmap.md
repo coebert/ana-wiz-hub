@@ -1,5 +1,8 @@
 # Admin metrics audit fixes
 
+## Cleft palate repair diagram
+- [ ] Add a five-stage illustration matching the operative palette, with palate layers, shared-airway risks and source links; verify stage controls and desktop/mobile rendering.
+
 ## ICU contrast-associated kidney injury
 - [x] Added supplied RCR–RCEM emergency CT advisory with verified excerpts; nine tests passed, learner display checked without page errors, search/audit regenerated and private audit copy uploaded.
 - [x] Expand AKI & RRT teaching with source-led mechanisms, current prevention evidence, management and fictional clinical cases; align the linked calculator, quizzes and summaries.
