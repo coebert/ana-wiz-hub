@@ -109,6 +109,7 @@ export const diagramSnapshotRegistry: Record<string, LazyExoticComponent<Compone
   "CoagulationCascadeDiagram": lazy(() => import("./pharmacology/CoagulationCascadeDiagram")),
   "CoandaEffectDiagram": lazy(() => import("./physics/CoandaEffectDiagram")),
   "CollapsibleSubsection": lazy(() => import("./../topic/CollapsibleSubsection").then((m) => ({ default: m.CollapsibleSubsection as ComponentType<any> }))),
+  "ColorectalOperationDiagram": lazy(() => import("./operative/ColorectalOperationDiagram")),
   "CompartmentModelDiagram": lazy(() => import("./pharmacology/CompartmentModelDiagram").then((m) => ({ default: m.CompartmentModelDiagram as ComponentType<any> }))),
   "ComplianceDiagram": lazy(() => import("./physiology/ComplianceDiagram").then((m) => ({ default: m.ComplianceDiagram as ComponentType<any> }))),
   "ComplicationBundlesAnimation": lazy(() => import("./intensive-care/ComplicationBundlesAnimation")),
