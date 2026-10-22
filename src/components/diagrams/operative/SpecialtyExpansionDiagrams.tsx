@@ -5,8 +5,8 @@ import { DiagramFigure, svgImgProps } from "../_shared/DiagramFigure";
 import { IllustrationDefs, shadeIllustration, Leader, Sutures } from "./OperativeIllustration";
 import type { Operation } from "@/data/operativeSteps";
 
-/* Local cutaways, not whole-body projections: hysteroscopy/TURBT are sagittal
- * with anterior left; jaw is a left lateral view with anterior right; skin
+/* Local cavity cutaways, not whole-body projections: hysteroscopy/TURBT
+ * have cranial above without implied laterality; jaw is left lateral with anterior right; skin
  * is a local cross-section with surface above. No patient laterality inferred. */
 const tissue = "hsl(var(--muted))";
 const ink = "hsl(var(--foreground))";
@@ -66,7 +66,7 @@ export default function SpecialtyExpansionDiagram({ kind, operation }: { kind: K
   const selected = operation.steps[stage];
   if (!selected) return null;
   const id = `op-${kind}`;
-  const orientation = kind === "burn-graft" ? "Local skin section: surface above; deeper tissue below." : kind === "orthognathic" ? "Left lateral jaw schematic: anterior to the right." : "Local sagittal cutaway: anterior left; cranial above.";
+  const orientation = kind === "burn-graft" ? "Local skin section: surface above; deeper tissue below." : kind === "orthognathic" ? "Left lateral jaw schematic: anterior to the right." : "Local opened-cavity schematic: cranial above; no patient laterality implied.";
   return <div className="my-6 space-y-4"><div className="bg-muted/30 rounded-xl border border-border p-4">
     <DiagramToggleBar title={operation.name} toggles={[{ label: "Sutures", active: detail, onChange: () => setDetail(v => !v) }, { label: "Labels", active: labels, onChange: () => setLabels(v => !v) }]} />
     <div role="group" aria-label={`${operation.name} stages`} className="flex flex-wrap gap-2 mb-4">{operation.steps.map((_,index)=><Button key={index} variant={stage===index ? "default" : "outline"} onClick={()=>setStage(index)} aria-pressed={stage===index} aria-label={`Stage ${index+1}`} className="w-10 h-10 p-0">{index+1}</Button>)}</div>
@@ -77,7 +77,7 @@ export default function SpecialtyExpansionDiagram({ kind, operation }: { kind: K
         <defs><filter id={`${id}-depth`}><feDropShadow dx="0" dy="2" stdDeviation="2" floodColor={ink} floodOpacity={0.16}/></filter></defs>
         <g filter={`url(#${id}-depth)`}>{shadeIllustration(Drawing({kind, stage, detail, labels, id}),id)}</g>
         {detail && <path d="M260 15V32M260 353V369" stroke={ink} strokeDasharray="3 4" />}
-        {labels && <g fill={ink} fontSize={10}><text x={235} y={15}>{kind==='burn-graft' ? 'Surface' : 'Cranial'}</text><text x={273} y={370}>{kind==='burn-graft' ? 'Deep' : 'Caudal'}</text><text x={8} y={360}>{kind==='burn-graft' ? 'Local section' : kind==='orthognathic' ? 'Posterior' : 'Anterior'}</text><text x={454} y={360}>{kind==='burn-graft' ? 'Local section' : kind==='orthognathic' ? 'Anterior' : 'Posterior'}</text></g>}
+        {labels && <g fill={ink} fontSize={10}><text x={235} y={15}>{kind==='burn-graft' ? 'Surface' : 'Cranial'}</text><text x={273} y={370}>{kind==='burn-graft' ? 'Deep' : 'Caudal'}</text><text x={8} y={360}>{kind==='orthognathic' ? 'Posterior' : 'Local view'}</text><text x={454} y={360}>{kind==='orthognathic' ? 'Anterior' : 'Local view'}</text></g>}
       </svg>
     </DiagramFigure>
     <div aria-live="polite" className="mt-4 min-h-[110px] border-l-4 border-primary pl-4 space-y-2"><p className="text-sm font-semibold text-foreground">{stage+1}. {selected.step}</p><p className="text-sm text-muted-foreground"><strong>Anaesthetic focus: </strong>{selected.anaesthetic}</p></div>

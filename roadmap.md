@@ -1,8 +1,8 @@
 # Admin metrics audit fixes
 
 ## Cross-specialty Operations Library expansion
-- [ ] Add four missing specialty entries with detailed stages, anaesthetic notes, diagrams and checked sources.
-- [ ] Verify specialty search, drawings, source integrity and generated search/audit coverage; refresh the private audit copy.
+- [x] Add hysteroscopy, TURBT, burn excision/grafting and bimaxillary osteotomy: 68 operations, each new entry with five stages, anaesthetic notes, staged diagrams and checked sources.
+- [x] Verify all 20 stage selections, label controls, local search and narrow-screen fit; 37 regressions pass, search/audit regenerated and private audit copy uploaded. Consultant review remains outstanding.
 
 ## Cleft palate repair diagram
 - [x] Add a five-stage illustration with palate layers, shared-airway risks and source links; verify all stages, label controls, desktop/mobile fit and 33 regressions. Private audit copy rebuilt locally; consultant review remains outstanding.
