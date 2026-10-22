@@ -18,7 +18,8 @@ export type Specialty =
   | "Breast & Plastics"
   | "Ophthalmic"
   | "Oral & Maxillofacial"
-  | "Paediatric";
+  | "Paediatric"
+  | "Dermatology";
 
 export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | "ivor-lewis"
   | "ruptured-aaa" | "aorto-bifem" | "amputation" | "av-fistula" | "cabg" | "vats" | "lap-chole" | "whipple" | "hip-hemi" | "caesarean"
@@ -32,7 +33,8 @@ export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | 
   | "liver-transplant" | "adrenalectomy" | "fess"
   | "laryngectomy" | "glossectomy" | "microlaryngoscopy"
   | "hysteroscopy" | "tur-bt" | "burn-graft" | "orthognathic"
-  | "ap-resection" | "right-hemicolectomy" | "left-hemicolectomy" | "hartmann";
+  | "ap-resection" | "right-hemicolectomy" | "left-hemicolectomy" | "hartmann"
+  | "cerclage" | "peripartum-hysterectomy" | "ovarian-cystectomy" | "vaginal-hysterectomy" | "skin-excision" | "mohs";
 
 export interface OperativeStep {
   /** What the surgeon does. */
@@ -60,6 +62,102 @@ export interface Operation {
 }
 
 export const operations: Operation[] = [
+  {
+    id: "cervical-cerclage", name: "Transvaginal cervical cerclage", aka: ["cervical stitch", "McDonald cerclage", "Shirodkar cerclage"],
+    specialty: "Obstetric", diagram: "cerclage", bloodLossRisk: "Low",
+    summary: "A supporting suture is placed around the cervix during pregnancy in selected patients at risk of preterm birth. History-, ultrasound- and examination-indicated procedures differ: rescue cerclage with exposed membranes is not equivalent to an elective stitch. This entry illustrates a transvaginal McDonald-type stitch; Shirodkar and transabdominal techniques differ.",
+    position: "Lithotomy with supported legs; avoid sustained aortocaval compression as gestation advances and coordinate any head-down tilt with the obstetric team.",
+    steps: [
+      { step: "Confirm gestation, indication, cervical findings and suitability, including assessment for labour, infection, bleeding and ruptured membranes.", anaesthetic: "Agree maternal assessment, fasting/aspiration strategy and appropriate fetal assessment. Rescue cases may be urgent and have a greater risk of membrane rupture and pregnancy loss; anaesthesia cannot make an unsuitable cerclage safe." },
+      { step: "Establish regional or general anaesthesia, position and expose the cervix with vaginal instruments.", anaesthetic: "Check neuraxial contraindications and adequate block before instrumentation. Treat maternal hypotension promptly; general anaesthesia requires a pregnancy-appropriate airway plan. Cervical traction can provoke a vagal response." },
+      { step: "Identify the cervix and, if necessary, carefully reduce exposed membranes; pass a circumferential cervical suture.", anaesthetic: "Maintain immobility and communicate any bleeding or suspected membrane rupture. Reduction of membranes and needle placement are surgical decisions; the drawing is not a guide to needle depth." },
+      { step: "Tie the suture to support the cervix without occluding its canal; inspect the operative field and trim the ends.", anaesthetic: "Reassess blood loss and comfort. Unexpected pain, bleeding or cardiorespiratory change warrants reassessment rather than assuming a short procedure is risk-free." },
+      { step: "Remove instruments, complete maternal and appropriate fetal checks, and document follow-up and stitch-removal plans.", anaesthetic: "Confirm block recovery, analgesia and discharge suitability. Give a clear handover for contractions, bleeding, fluid loss or fever. Labour with a stitch in situ requires urgent obstetric review to prevent cervical injury." },
+    ],
+    criticalMoments: ["Suitability for rescue cerclage", "Maternal hypotension and positioning", "Membrane rupture during cervical instrumentation", "Labour with the stitch in situ"],
+    anaestheticNotes: ["Regional or general anaesthesia may be appropriate; the choice depends on urgency, gestation, patient preference, contraindications and local expertise.", "A cervical stitch reduces risk in selected patients but does not guarantee a term birth. Antibiotics, tocolysis and fetal monitoring follow the indication and local obstetric plan, not a universal anaesthetic prescription.", "Transabdominal cerclage is a separate abdominal operation and has different future delivery/removal implications."],
+    sources: ["RCOG Cervical Stitch", "NICE NG25 Cerclage"],
+  },
+  {
+    id: "peripartum-hysterectomy", name: "Peripartum hysterectomy (including placenta accreta spectrum)", aka: ["obstetric hysterectomy", "caesarean hysterectomy", "postpartum hysterectomy", "PAS surgery"],
+    specialty: "Obstetric", diagram: "peripartum-hysterectomy", bloodLossRisk: "High",
+    summary: "Removal of the uterus at or after delivery for uncontrollable haemorrhage or planned treatment of placenta accreta spectrum (PAS). Planned PAS surgery with a specialist multidisciplinary team differs from emergency hysterectomy for refractory postpartum bleeding. A total or subtotal procedure may be chosen according to pathology, bleeding and anatomy; the diagram illustrates total hysterectomy after caesarean delivery.",
+    position: "Usually supine with uterine displacement before delivery; possible lithotomy for vaginal access. Maintain access to the airway, vascular lines and blood-product delivery.",
+    steps: [
+      { step: "Agree specialist surgical, anaesthetic, neonatal and blood-bank plans, or activate the emergency haemorrhage pathway.", anaesthetic: "Prepare reliable large-bore access, monitoring, warming, rapid transfusion and a critical-care destination. In planned PAS, review imaging, anticipated bladder involvement and conversion to general anaesthesia if starting neuraxially; in an emergency, resuscitation and source control run together." },
+      { step: "Expose the uterus and deliver the baby if still pregnant, with the uterine incision selected to avoid the placenta where possible.", anaesthetic: "Coordinate delivery with the neonatal team and reassess haemodynamics immediately. For planned caesarean hysterectomy in PAS, leave the placenta in situ rather than attempting separation, which may trigger massive bleeding." },
+      { step: "Develop distorted pelvic planes, identify ureters and bladder, and control vascular pedicles.", anaesthetic: "Bleeding may be sudden and extreme, especially with invasion near the bladder. Follow physiological response, measured losses, haemoglobin/coagulation and local major-haemorrhage guidance; correct hypothermia and monitor ionised calcium during transfusion." },
+      { step: "Remove the uterus using the selected total or subtotal technique and repair associated injury if required.", anaesthetic: "Communicate ongoing bleeding, acidosis and vasoactive requirements. Pelvic vascular-control adjuncts are selected specialist measures, not guaranteed prevention of haemorrhage; their risks and monitoring needs should be discussed before use." },
+      { step: "Secure haemostasis, close the vault or cervical stump as appropriate and transfer with an explicit organ-support plan.", anaesthetic: "Reassess coagulation, temperature, fluid balance and ventilation before extubation. Ongoing shock, large transfusion or organ injury may require critical care. Arrange thromboprophylaxis when safe, pain relief and sensitive follow-up after fertility loss and difficult birth." },
+    ],
+    criticalMoments: ["Emergency induction in haemorrhagic shock", "Placental separation in suspected PAS", "Pelvic/bladder dissection and major haemorrhage", "Transfusion-related hypocalcaemia and coagulopathy", "Postoperative organ support"],
+    anaestheticNotes: ["The recommendation to leave the placenta in situ concerns the caesarean-hysterectomy approach to PAS; it is not a instruction to leave every retained placenta untreated. Conservative PAS approaches are separate selected specialist pathways.", "Neuraxial, general or combined strategies depend on anticipated bleeding, urgency and patient factors. No technique guarantees haemodynamic stability.", "Total and subtotal hysterectomy have different distal anatomy. Quantified blood loss and repeated physiological assessment matter more than the qualitative High badge."],
+    sources: ["ACOG PAS Consensus", "Reale Farber PAS 2022"],
+  },
+  {
+    id: "laparoscopic-ovarian-cystectomy", name: "Laparoscopic ovarian cystectomy", aka: ["ovarian cyst removal", "dermoid cystectomy", "endometrioma surgery"],
+    specialty: "Gynaecology", diagram: "ovarian-cystectomy", bloodLossRisk: "Moderate",
+    summary: "Laparoscopic removal of an ovarian cyst while aiming to preserve viable ovarian tissue. Management depends on symptoms, imaging, fertility wishes and malignancy risk; not every cyst needs surgery. The operation may change to oophorectomy, laparotomy or an oncology pathway if anatomy or findings require it. An emergency torsion pathway is not identical to elective cyst removal.",
+    position: "Supine or modified lithotomy with Trendelenburg as needed; secure the patient, protect pressure points and move both legs together.",
+    steps: [
+      { step: "Confirm imaging, pregnancy assessment where appropriate, malignancy-risk assessment and consent for possible change of approach or ovarian removal.", anaesthetic: "Review anaemia, pain, comorbidity and urgency. Vomiting or an acute abdomen changes aspiration risk; choose monitoring and blood availability from the patient and expected dissection rather than a routine day-case label." },
+      { step: "Establish laparoscopic ports and pneumoperitoneum, position and inspect the pelvis.", anaesthetic: "Recheck tube, lines and ventilation after tilt. Insufflation may cause bradycardia, raised airway pressures or hypercapnia; severe instability also requires assessment for entry-related vascular injury." },
+      { step: "Open the ovarian surface and develop the plane between the cyst wall and healthy ovarian tissue.", anaesthetic: "Maintain appropriate relaxation and perfusion while tracking bleeding. Adhesions and endometriosis may extend dissection close to bowel, ureter or vessels. Avoid assuming cyst rupture is benign: contents and malignancy risk matter." },
+      { step: "Separate the cyst, retrieve it in a suitable bag, manage spillage if present and secure ovarian haemostasis.", anaesthetic: "Communicate blood loss and operative extension. Irrigation and specimen retrieval can prolong surgery; haemostasis must balance bleeding control with preservation of ovarian tissue. Conversion or oophorectomy is a surgical decision." },
+      { step: "Reinspect the pelvis, remove ports and close; agree recovery and follow-up for histology.", anaesthetic: "Use multimodal analgesia and PONV prevention and assess bleeding and recovery before discharge. Worsening abdominal pain, fever, dizziness or instability warrants assessment for haemorrhage, visceral injury or other complications." },
+    ],
+    criticalMoments: ["Laparoscopic entry injury", "Pneumoperitoneum and head-down positioning", "Cyst dissection and ovarian bleeding", "Spillage or unexpected malignant features"],
+    anaestheticNotes: ["The diagram shows local coronal anatomy and one preserved ovary; it is not a guarantee of ovarian preservation or a prediction of fertility.", "Dermoid spillage can provoke chemical peritonitis; suspected malignancy requires appropriate specialist planning, not indiscriminate drainage.", "Apply procedure-appropriate multimodal analgesia, nausea prevention and risk-based VTE prophylaxis. Emergency torsion or haemorrhage can invalidate an elective recovery pathway."],
+    sources: ["RCOG Ovarian Masses 62", "Henny Pneumoperitoneum 2005"],
+  },
+  {
+    id: "vaginal-hysterectomy", name: "Vaginal hysterectomy", aka: ["VH", "vaginal uterine removal", "prolapse hysterectomy"],
+    specialty: "Gynaecology", diagram: "vaginal-hysterectomy", bloodLossRisk: "Moderate",
+    summary: "Removal of the uterus through the vagina for suitable benign disease, often alongside prolapse repair. The cervix is removed in a total vaginal hysterectomy; ovary/tube removal and pelvic-floor reconstruction are separate decisions. Vaginal access avoids abdominal ports but does not eliminate bleeding, visceral injury or postoperative urinary problems.",
+    position: "Lithotomy with carefully supported legs and access for vaginal surgery; protect pressure points and avoid excessive hip flexion/abduction.",
+    steps: [
+      { step: "Confirm the indication, uterine size, prolapse and intended adnexal or pelvic-floor procedures; catheterise and expose the cervix.", anaesthetic: "Review anaemia, frailty, cardiopulmonary reserve and anticoagulants. Agree general versus regional anaesthesia, expected duration, blood availability and postoperative bladder-care needs." },
+      { step: "Incise around the cervix, mobilise the bladder and enter the appropriate peritoneal planes.", anaesthetic: "Ensure adequate block/anaesthetic depth before traction; a vagal response is possible. Scarring from previous surgery can make bladder dissection difficult and increase injury risk." },
+      { step: "Sequentially divide and secure supporting ligaments and uterine vascular pedicles.", anaesthetic: "Bleeding from deep pedicles can be concealed from direct anaesthetic view. Communicate suction/swab loss and haemodynamics; the ureters lie close to the operative field and require surgical protection." },
+      { step: "Deliver and remove the uterus vaginally, completing any separately agreed adnexal procedure or prolapse repair.", anaesthetic: "Unexpected uterine size, adhesions or bleeding can prolong surgery or require another approach. Reassess position and block duration rather than assuming the original anaesthetic will remain adequate." },
+      { step: "Check haemostasis, provide appropriate apical support and close the vaginal vault; confirm packs and postoperative drainage plans.", anaesthetic: "Record any vaginal pack and its removal plan. Provide multimodal analgesia, antiemesis and risk-based thromboprophylaxis; postoperative bleeding or urinary retention needs assessment before discharge." },
+    ],
+    criticalMoments: ["Lithotomy-related pressure/nerve injury", "Bladder mobilisation", "Uterine pedicle bleeding and ureteric injury", "Pack accounting and urinary recovery"],
+    anaestheticNotes: ["Vaginal hysterectomy is not the same as vaginal prolapse repair alone, and the ovaries are not routinely removed solely because the uterus is removed.", "Regional anaesthesia is an option when suitable, not a requirement. A more extensive repair or change of approach alters duration and recovery.", "Support early mobilisation and oral intake as appropriate; escalating pain, bleeding, fever or oliguria warrants evaluation for complications."],
+    sources: ["RCOG Vaginal Hysterectomy Recovery", "ACOG Hysterectomy Route 701"],
+  },
+  {
+    id: "skin-lesion-excision", name: "Skin lesion excision and local reconstruction", aka: ["skin cancer excision", "wide local excision", "elliptical excision", "dermatological surgery"],
+    specialty: "Dermatology", diagram: "skin-excision", bloodLossRisk: "Low",
+    summary: "Excision of a skin lesion for diagnosis or treatment, with closure selected for the defect: primary suture, local flap or graft. Margin and depth depend on diagnosis, site and oncological guidance; an ellipse in the diagram is not a universal cancer margin. Most small procedures use local anaesthesia; larger, sensitive-site or complex reconstructions may require additional anaesthetic support.",
+    position: "Determined by lesion and reconstruction site; supine, lateral or prone. Plan airway access and pressure protection before draping.",
+    steps: [
+      { step: "Confirm lesion, site, consent and the intended excision/reconstruction, including histology and anticoagulant plans.", anaesthetic: "Assess comorbidity, anxiety, ability to remain still and whether sedation is really needed. Review bleeding and thrombosis risks individually; do not automatically stop prescribed antithrombotic treatment." },
+      { step: "Mark the lesion and planned margins, prepare the field and infiltrate local anaesthetic or establish another agreed technique.", anaesthetic: "Reconcile local-anaesthetic type and cumulative dose from every operator/site. Inject incrementally with appropriate precautions and be ready to recognise systemic toxicity; sedation does not replace effective local analgesia." },
+      { step: "Excise the lesion to the selected plane, orient the specimen and send it for histology.", anaesthetic: "Facial/scalp fields may bleed more than the Low badge suggests. Maintain verbal contact if awake and protect airway access when face drapes restrict visibility. The excision plane must follow pathology, not the schematic." },
+      { step: "Achieve haemostasis and assess defect size, tension and the choice of primary closure, local flap or skin graft.", anaesthetic: "Electrosurgery requires fire precautions, especially with oxygen near the face. Larger reconstruction may need more infiltration, time or a change of anaesthetic plan; record every additional dose." },
+      { step: "Complete reconstruction and dress the wound; provide bleeding, wound-care and pathology follow-up plans.", anaesthetic: "Confirm recovery after any sedation and appropriate escort/discharge arrangements. Give instructions for persistent bleeding, expanding haematoma, infection or compromised flap/graft; histology may require further treatment." },
+    ],
+    criticalMoments: ["Correct-site marking and pathology-dependent margins", "Cumulative local-anaesthetic exposure", "Facial oxygen/electrosurgery fire risk", "Postoperative bleeding and reconstruction viability"],
+    anaestheticNotes: ["The illustration shows primary closure of one small defect; it does not prescribe a melanoma margin or cover every flap/graft technique.", "Small skin surgery usually does not need general anaesthesia. Sedation requires monitoring and rescue capability appropriate to its depth, particularly when airway access is limited.", "Larger oncological resections and complex reconstruction can have materially greater bleeding and physiological risk than a minor lesion excision."],
+    sources: ["DermNet Excision Biopsy", "BSDS Antithrombotics 2023"],
+  },
+  {
+    id: "mohs-micrographic-surgery", name: "Mohs micrographic surgery", aka: ["Mohs surgery", "MMS", "micrographic skin cancer surgery"],
+    specialty: "Dermatology", diagram: "mohs", bloodLossRisk: "Low",
+    summary: "Staged skin-cancer excision with mapped microscopic assessment of peripheral and deep margins, aiming to conserve uninvolved tissue. Further tissue is removed from mapped positive areas until clearance, then reconstruction is planned. Used for selected cancers and sites; it is not interchangeable with a routine excision or an automatic indication for every skin cancer.",
+    position: "Usually awake with local anaesthesia, positioned for the lesion site and repeated access. Allow comfort and pressure protection during waiting periods.",
+    steps: [
+      { step: "Confirm the diagnosis, lesion/site and appropriateness for Mohs; explain repeated stages, waiting periods and reconstruction options.", anaesthetic: "Review ability to tolerate a potentially lengthy awake procedure, anxiety and comorbidity. Make an individual antithrombotic plan; medically necessary treatment is not routinely stopped simply because skin surgery is planned." },
+      { step: "Infiltrate local anaesthetic, debulk as appropriate and remove the first thin layer with orientation and mapping.", anaesthetic: "Account for all local-anaesthetic doses, including any later reconstruction. Assess analgesia before cutting; communicate vasoconstrictor use and watch for toxicity rather than relying on a single injection being small." },
+      { step: "Process and examine mapped peripheral/deep margins microscopically while protecting the wound.", anaesthetic: "Maintain comfort, hydration appropriate to the planned anaesthetic and clear communication during waiting. If sedation is used, monitoring continues during processing; its risks do not disappear when surgery pauses." },
+      { step: "Excise further tissue only from mapped positive regions and repeat microscopy until margins are clear.", anaesthetic: "Duration and final defect size are unpredictable. Reconcile additional infiltration, bleeding and patient tolerance at each pass; a new anaesthetic plan may be required for extended or complex reconstruction." },
+      { step: "After clearance, reconstruct by the selected closure/flap/graft or arrange delayed repair; dress and plan follow-up.", anaesthetic: "Agree whether reconstruction stays under local anaesthesia or needs theatre support. With facial surgery, manage oxygen/electrosurgery fire risk and airway access. Give bleeding and wound-care advice and reassess discharge after sedation." },
+    ],
+    criticalMoments: ["Mapped specimen orientation and margin assessment", "Repeated infiltration and cumulative local-anaesthetic dose", "Unpredictable duration/defect size", "Facial reconstruction and airway/fire precautions"],
+    anaestheticNotes: ["Five teaching stages do not mean five excision passes. The fourth stage may repeat; the positive sector shown in the diagram is illustrative, not a patient result.", "Microscopic margin control conserves tissue but does not promise freedom from recurrence. Diagnosis, histology, site and patient factors determine the treatment pathway.", "Most Mohs procedures use local anaesthesia without an anaesthetist; anaesthetic input is particularly relevant to sedation, difficult positioning, severe comorbidity or substantial reconstruction."],
+    sources: ["DermNet Mohs Surgery", "BSDS Antithrombotics 2023"],
+  },
   {
     id: "abdominoperineal-resection", name: "Abdominoperineal resection (AP resection)", aka: ["APR", "APER", "AP resection", "abdominoperineal excision"],
     specialty: "General & GI", diagram: "ap-resection", bloodLossRisk: "High",
@@ -1556,6 +1654,7 @@ export const specialties: Specialty[] = [
   "Ophthalmic",
   "Oral & Maxillofacial",
   "Paediatric",
+  "Dermatology",
 ];
 
 /** Case-insensitive match across name, aliases, specialty, summary and all step text. */

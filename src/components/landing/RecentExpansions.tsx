@@ -19,7 +19,7 @@ interface RecentExpansion {
 }
 
 const RECENT_EXPANSIONS: RecentExpansion[] = [
-  { topicId: "operative-steps", section: "perioperative", title: "Operations Library", note: "72 operations across 13 specialties; new AP resection, right and left hemicolectomy and Hartmann's procedure entries with staged diagrams and anaesthetic notes." },
+  { topicId: "operative-steps", section: "perioperative", title: "Operations Library", note: "78 operations across 14 specialties; new obstetric, gynaecological and dermatological entries with staged diagrams, anaesthetic notes and references." },
   { topicId: "icu-general-unit", section: "intensive-care", title: "The General Adult ICU", note: "New page: GPICS V3 baseline staffing and NHS 2019/20 general critical care costs." },
   { topicId: "icu-cardiac-unit", section: "intensive-care", title: "The Cardiothoracic ICU", note: "New page: GPICS V3 cardiothoracic staffing additions and NHS cardiac surgical costs." },
   { topicId: "icu-neuro-unit", section: "intensive-care", title: "The Neurocritical Care Unit", note: "New page: GPICS V3 neuro staffing and specialist access, plus NHS neurosciences costs." },
