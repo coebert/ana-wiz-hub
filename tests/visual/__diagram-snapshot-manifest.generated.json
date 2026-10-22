@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-21T21:22:12.958Z",
-  "count": 468,
+  "generatedAt": "2026-10-22T07:36:49.345Z",
+  "count": 469,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -1577,6 +1577,10 @@
     {
       "name": "SeverePancreatitisCTDiagram",
       "route": "/dev/diagram-snapshot/SeverePancreatitisCTDiagram"
+    },
+    {
+      "name": "ShockPracticeTeaching",
+      "route": "/dev/diagram-snapshot/ShockPracticeTeaching"
     },
     {
       "name": "SinogramFBPWalkthrough",
