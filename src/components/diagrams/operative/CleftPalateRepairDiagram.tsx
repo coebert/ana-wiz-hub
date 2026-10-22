@@ -88,7 +88,7 @@ export default function CleftPalateRepairDiagram() {
           </g>, id)}
           {showSutures && <path d="M260 52V76M260 346V362" stroke={muted} strokeDasharray="3 4" />}
           {showLabels && <g>
-            <Text x={233} y={23}>Anterior</Text><Text x={229} y={358}>Posterior</Text>
+            <Text x={233} y={23}>Anterior</Text><Text x={285} y={358}>Posterior</Text>
             <Text x={15} y={191}>Patient R</Text><Text x={505} y={191} end>Patient L</Text>
             <Text x={18} y={48}>Hard palate</Text><Leader from={[94,52]} to={[201,139]} />
             <Text x={352} y={46}>{closed ? "Midline repair" : "Open cleft"}</Text><Leader from={[352,51]} to={[260,157]} />
