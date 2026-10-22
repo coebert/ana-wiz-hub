@@ -108,7 +108,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Laparoscopic entry injury", "Pneumoperitoneum and head-down positioning", "Cyst dissection and ovarian bleeding", "Spillage or unexpected malignant features"],
     anaestheticNotes: ["The diagram shows local coronal anatomy and one preserved ovary; it is not a guarantee of ovarian preservation or a prediction of fertility.", "Dermoid spillage can provoke chemical peritonitis; suspected malignancy requires appropriate specialist planning, not indiscriminate drainage.", "Apply procedure-appropriate multimodal analgesia, nausea prevention and risk-based VTE prophylaxis. Emergency torsion or haemorrhage can invalidate an elective recovery pathway."],
-    sources: ["RCOG Ovarian Masses 62", "Henny Pneumoperitoneum 2005"],
+    sources: ["Royal Berkshire Ovarian Cystectomy 2025", "Henny Pneumoperitoneum 2005"],
   },
   {
     id: "vaginal-hysterectomy", name: "Vaginal hysterectomy", aka: ["VH", "vaginal uterine removal", "prolapse hysterectomy"],
@@ -124,7 +124,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Lithotomy-related pressure/nerve injury", "Bladder mobilisation", "Uterine pedicle bleeding and ureteric injury", "Pack accounting and urinary recovery"],
     anaestheticNotes: ["Vaginal hysterectomy is not the same as vaginal prolapse repair alone, and the ovaries are not routinely removed solely because the uterus is removed.", "Regional anaesthesia is an option when suitable, not a requirement. A more extensive repair or change of approach alters duration and recovery.", "Support early mobilisation and oral intake as appropriate; escalating pain, bleeding, fever or oliguria warrants evaluation for complications."],
-    sources: ["RCOG Vaginal Hysterectomy Recovery", "ACOG Hysterectomy Route 701"],
+    sources: ["Manchester Vaginal Hysterectomy 2024", "ERAS Gynaecology 2019", "Gill 2019 well-leg"],
   },
   {
     id: "skin-lesion-excision", name: "Skin lesion excision and local reconstruction", aka: ["skin cancer excision", "wide local excision", "elliptical excision", "dermatological surgery"],
@@ -140,7 +140,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Correct-site marking and pathology-dependent margins", "Cumulative local-anaesthetic exposure", "Facial oxygen/electrosurgery fire risk", "Postoperative bleeding and reconstruction viability"],
     anaestheticNotes: ["The illustration shows primary closure of one small defect; it does not prescribe a melanoma margin or cover every flap/graft technique.", "Small skin surgery usually does not need general anaesthesia. Sedation requires monitoring and rescue capability appropriate to its depth, particularly when airway access is limited.", "Larger oncological resections and complex reconstruction can have materially greater bleeding and physiological risk than a minor lesion excision."],
-    sources: ["DermNet Excision Biopsy", "BSDS Antithrombotics 2023"],
+    sources: ["UHD Skin Excision Reconstruction", "BSDS Antithrombotics 2023"],
   },
   {
     id: "mohs-micrographic-surgery", name: "Mohs micrographic surgery", aka: ["Mohs surgery", "MMS", "micrographic skin cancer surgery"],
@@ -156,7 +156,7 @@ export const operations: Operation[] = [
     ],
     criticalMoments: ["Mapped specimen orientation and margin assessment", "Repeated infiltration and cumulative local-anaesthetic dose", "Unpredictable duration/defect size", "Facial reconstruction and airway/fire precautions"],
     anaestheticNotes: ["Five teaching stages do not mean five excision passes. The fourth stage may repeat; the positive sector shown in the diagram is illustrative, not a patient result.", "Microscopic margin control conserves tissue but does not promise freedom from recurrence. Diagnosis, histology, site and patient factors determine the treatment pathway.", "Most Mohs procedures use local anaesthesia without an anaesthetist; anaesthetic input is particularly relevant to sedation, difficult positioning, severe comorbidity or substantial reconstruction."],
-    sources: ["DermNet Mohs Surgery", "BSDS Antithrombotics 2023"],
+    sources: ["BAD Mohs Surgery 2025", "BSDS Antithrombotics 2023"],
   },
   {
     id: "abdominoperineal-resection", name: "Abdominoperineal resection (AP resection)", aka: ["APR", "APER", "AP resection", "abdominoperineal excision"],
