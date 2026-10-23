@@ -1,3 +1,5 @@
+import { anaestheticRiskReferences } from "./anaestheticRiskReferences";
+
 export interface Reference {
   /** Short citation label, e.g. "Peck & Hill Ch.3" */
   label: string;
@@ -270,6 +272,7 @@ const septicShockReferences: Reference[] = [
 ];
 
 export const topicReferences: Record<string, Reference[]> = {
+  "anaesthetic-risk": anaestheticRiskReferences,
   // ──────── PHYSICS ────────
   "gas-laws": [
     { label: "LibreTexts Joule–Thomson", citation: "Ellgen P. Thermodynamics and Chemical Equilibrium. Section 10.14: The Joule–Thomson Effect. Chemistry LibreTexts.", url: "https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Thermodynamics_and_Chemical_Equilibrium_(Ellgen)/10%3A_Some_Mathematical_Consequences_of_the_Fundamental_Equation/10.14%3A_The_Joule-Thomson_Effect", excerpt: "The temperature change is called the Joule-Thomson effect. The enthalpy of the gas remains constant." },

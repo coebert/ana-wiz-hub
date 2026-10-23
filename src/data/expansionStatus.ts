@@ -202,6 +202,10 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
     status: "expanded",
     note: "New page with two source-led lessons: recognition and passive leg raise (Monnet 2016), NICE CG174 fluids and balanced-vs-saline trials. Verbatim excerpts, calculators, fictional case and quiz. Source-checked, not consultant-reviewed.",
   },
+  "anaesthetic-risk": {
+    status: "expanded",
+    note: "Five source-led lessons: qualified adverse-event frequencies, national audits, prediction tools, 2026 consent guidance, risk communication and prevention. Fictional cases and quiz; source-checked, not consultant-reviewed. Live-leaflet revision provenance and full Association recommendations remain partly unverified.",
+  },
   "peritonitis": {
     status: "expanded",
     note: "New page with two source-led lessons: types, recognition and WSES/SIS–IDSA comparison; source control and STOP-IT duration. Verbatim excerpts, fictional case and quiz. Source-checked, not consultant-reviewed.",
