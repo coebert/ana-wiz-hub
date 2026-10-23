@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Anaesthetic risk topic
+- [ ] Add a comprehensive registered topic with qualified adverse-event frequencies, risk prediction, informed consent, worked cases and quiz.
+- [ ] Verify sources, numeric rules, learner display and search; refresh private audit coverage.
+
 ## Obstetric, gynaecological and dermatological expansion
 - [x] Add six new operations with five stages, per-stage anaesthetic notes, source references and interactive diagrams; introduce Dermatology specialty (78 operations, 14 specialties).
 - [x] Verify all 30 stage controls, labels/detail, search, Dermatology filtering and narrow-screen fit; 52 regressions passed, search/private audit coverage refreshed and uploaded. Consultant review remains outstanding; RCOG direct access was blocked.
