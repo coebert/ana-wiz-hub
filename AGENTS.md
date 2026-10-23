@@ -8,7 +8,7 @@
 - Anatomy bibliographies reuse topicReferences via anatomyReferences; check integrity without AI; AI verdicts cannot certify sources/accuracy.
 - APRVSection unifies guidance, sources and checks.
 
-- Keep expanded lessons in imported Teaching modules for audit retention; ICU outcome rates retain periods, denominators, endpoints and symptom thresholds. Anaesthetic risk separates postoperative outcomes from causation; its arithmetic is not prediction.
+- Keep lessons in imported Teaching modules for audit retention; ICU rates retain periods, denominators, endpoints and symptom thresholds. Anaesthetic risk uses uncapped audit coverage, separates postoperative outcomes from causation, and arithmetic from prediction.
 - Citation-snapshot generation must resolve the data-driven topic route table and refuse empty output when fixed findings exist, so routing refactors cannot erase regression coverage.
 - Track subsections in curriculum-expansion.md; mark checked only after source, rendering and audit verification, never implying whole-topic completion.
 - Search is generated predev/prebuild and lazy-loaded. Reuse audit extraction and subsection anchors; filter named imports, queue prose per export, and give each imported Teaching lesson its own allowance, preventing leakage or loss.
