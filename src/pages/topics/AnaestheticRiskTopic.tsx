@@ -6,6 +6,7 @@ import { AnaestheticAdverseEventsTeaching, AnaestheticRiskReductionTeaching } fr
 import { RiskPredictionTeaching, RiskConsentTeaching, RiskCommunicationTeaching } from "@/components/topic/AnaestheticRiskTeaching";
 import { PreExistingConditionRiskTeaching, AgeRelatedRiskTeaching, SurgerySpecificRiskTeaching } from "@/components/topic/PatientSurgeryRiskTeaching";
 import { CognitiveRiskTeaching } from "@/components/topic/CognitiveRiskTeaching";
+import { RiskOperationLinks } from "@/components/topic/RiskOperationLinks";
 import { PositioningRiskTeaching } from "@/components/topic/PositioningRiskTeaching";
 import { RegionalAnaesthesiaRiskTeaching } from "@/components/topic/RegionalAnaesthesiaRiskTeaching";
 import { anaestheticRiskQuiz } from "@/data/anaestheticRiskQuiz";
@@ -41,6 +42,7 @@ export default function AnaestheticRiskTopic() {
       <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground pt-2">4. The procedure: technique and positioning</h2>
       <ExamSection id="regional-anaesthesia-risk" exams={exams}><CollapsibleSubsection title="Risks of regional anaesthetic techniques"><RegionalAnaesthesiaRiskTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="positioning-risk" exams={exams}><CollapsibleSubsection title="Risks of patient positioning during surgery"><PositioningRiskTeaching /></CollapsibleSubsection></ExamSection>
+      <RiskOperationLinks />
       <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground pt-2">5. Talking about risk and consent</h2>
       <ExamSection id="risk-communication" exams={exams}><CollapsibleSubsection title="Communicating probabilities without false reassurance"><RiskCommunicationTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="informed-consent" exams={exams}><CollapsibleSubsection title="Informed consent for anaesthesia: current UK guidance"><RiskConsentTeaching /></CollapsibleSubsection></ExamSection>
