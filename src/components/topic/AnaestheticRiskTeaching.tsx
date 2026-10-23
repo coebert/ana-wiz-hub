@@ -8,7 +8,7 @@ const heading = "text-lg font-semibold text-foreground";
 
 export function RiskPredictionTeaching() {
   return <div className="space-y-4 text-muted-foreground leading-relaxed">
-    <h2 className="text-2xl font-serif font-bold text-foreground">Individual risk prediction: choose the right endpoint</h2>
+    <h2 className="text-2xl font-serif font-bold text-foreground">General risk prediction tools: choose the right endpoint</h2>
     <p>Risk is the combination of the patient, operation, anaesthetic technique and care pathway. Frailty, functional capacity, organ disease, urgency, sepsis, blood loss, duration and available postoperative support matter. A healthy person having a short elective procedure and a critically ill person having emergency laparotomy cannot be assigned the same anaesthetic risk. A score complements assessment; it does not decide whether surgery should proceed.<R label="SORT 2014" /><R label="CPOC Frailty" /></p>
     <p><strong className="text-foreground">Postoperative mortality is not anaesthesia-attributable mortality.</strong> SORT, NELA and NSQIP estimate outcomes after surgery, reflecting illness, surgery and the whole perioperative course. They cannot tell you the probability of death caused solely by an anaesthetic. Discuss survival, complications, function, loss of independence, prolonged recovery and the consequences of not operating as separate outcomes.<R label="NELA calculator" /><R label="NSQIP" /></p>
     <div className="overflow-x-auto">

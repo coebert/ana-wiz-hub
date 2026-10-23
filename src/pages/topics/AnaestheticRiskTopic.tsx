@@ -16,10 +16,10 @@ export default function AnaestheticRiskTopic() {
     objectives={[
       "Describe common side effects and serious adverse events using qualified absolute frequencies",
       "Distinguish anaesthesia-attributable harms from perioperative complications and postoperative mortality",
+      "Explain how pre-existing conditions and age change perioperative risk",
+      "Select and interpret general and surgery-specific risk tools for the correct population, outcome and time horizon",
       "Quote technique-specific risks for neuraxial and peripheral regional anaesthesia, including nerve injury, PDPH and LAST",
-      "Explain how pre-existing conditions, age and the type of surgery change risk, and choose a surgery-specific prediction tool",
       "Describe position-specific harms (prone, lithotomy, beach-chair, lateral, steep head-down) and their evidence base",
-      "Select and interpret risk tools for the correct patient population, outcome and time horizon",
       "Communicate risk, uncertainty and reasonable alternatives in a patient-centred discussion",
       "Apply current UK consent principles, including material risk, capacity, refusal and emergencies",
       "Plan individualised prevention, postoperative monitoring and follow-up after harm",
@@ -27,15 +27,21 @@ export default function AnaestheticRiskTopic() {
     sectionExamMapping={{ objectives: { exams }, workedExamples: { exams }, keyPoints: { exams } }}
     sectionSources={{ objectives: ["RCoA population", "NAP7 incidence", "SORT 2014", "Association Consent 2026", "GMC patient priorities"] }}
     coreConcepts={<div className="space-y-8">
+      <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground pt-2">1. The baseline: what can go wrong</h2>
       <ExamSection id="adverse-event-frequencies" exams={exams}><CollapsibleSubsection title="Adverse events and side effects: frequencies with context" defaultOpen><AnaestheticAdverseEventsTeaching /></CollapsibleSubsection></ExamSection>
-      <ExamSection id="risk-prediction" exams={exams}><CollapsibleSubsection title="Individual risk prediction: choose the right endpoint"><RiskPredictionTeaching /></CollapsibleSubsection></ExamSection>
-      <ExamSection id="regional-anaesthesia-risk" exams={exams}><CollapsibleSubsection title="Risks of regional anaesthetic techniques"><RegionalAnaesthesiaRiskTeaching /></CollapsibleSubsection></ExamSection>
-      <ExamSection id="positioning-risk" exams={exams}><CollapsibleSubsection title="Risks of patient positioning during surgery"><PositioningRiskTeaching /></CollapsibleSubsection></ExamSection>
+      <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground pt-2">2. The patient: who is at higher risk</h2>
       <ExamSection id="pre-existing-condition-risk" exams={exams}><CollapsibleSubsection title="Pre-existing conditions and anaesthetic risk"><PreExistingConditionRiskTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="age-related-risk" exams={exams}><CollapsibleSubsection title="Age-related risks: older adults and children"><AgeRelatedRiskTeaching /></CollapsibleSubsection></ExamSection>
+      <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground pt-2">3. Predicting an individual’s risk</h2>
+      <ExamSection id="risk-prediction" exams={exams}><CollapsibleSubsection title="General risk prediction tools: choose the right endpoint"><RiskPredictionTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="surgery-specific-risk" exams={exams}><CollapsibleSubsection title="Risk prediction for specific types of surgery"><SurgerySpecificRiskTeaching /></CollapsibleSubsection></ExamSection>
-      <ExamSection id="informed-consent" exams={exams}><CollapsibleSubsection title="Informed consent for anaesthesia: current UK guidance"><RiskConsentTeaching /></CollapsibleSubsection></ExamSection>
+      <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground pt-2">4. The procedure: technique and positioning</h2>
+      <ExamSection id="regional-anaesthesia-risk" exams={exams}><CollapsibleSubsection title="Risks of regional anaesthetic techniques"><RegionalAnaesthesiaRiskTeaching /></CollapsibleSubsection></ExamSection>
+      <ExamSection id="positioning-risk" exams={exams}><CollapsibleSubsection title="Risks of patient positioning during surgery"><PositioningRiskTeaching /></CollapsibleSubsection></ExamSection>
+      <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground pt-2">5. Talking about risk and consent</h2>
       <ExamSection id="risk-communication" exams={exams}><CollapsibleSubsection title="Communicating probabilities without false reassurance"><RiskCommunicationTeaching /></CollapsibleSubsection></ExamSection>
+      <ExamSection id="informed-consent" exams={exams}><CollapsibleSubsection title="Informed consent for anaesthesia: current UK guidance"><RiskConsentTeaching /></CollapsibleSubsection></ExamSection>
+      <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground pt-2">6. Reducing risk</h2>
       <ExamSection id="risk-reduction" exams={exams}><CollapsibleSubsection title="Reducing risk and planning safe recovery"><AnaestheticRiskReductionTeaching /></CollapsibleSubsection></ExamSection>
     </div>}
     workedExamples={[
@@ -49,7 +55,10 @@ export default function AnaestheticRiskTopic() {
       { text: "NAP5 reported awareness about 1 in 19,600 general anaesthetics; ascertainment and neuromuscular-block subgroups materially change the estimate.", cites: ["NAP5 incidence", "NAP5 muscle relaxation"] },
       { text: "NAP6 severe perioperative anaphylaxis is about 1 in 10,000; NAP7 arrest is about 3 in 10,000. Neither figure is an all-case anaesthesia-attributable death rate.", cites: ["NAP6 incidence", "NAP7 incidence"] },
       { text: "Regional techniques have their own figures: NAP3 permanent neuraxial harm 2.0–4.2 per 100,000, permanent peripheral-block nerve injury 2–5 per 10,000, and LAST about 0.87 per 1,000 peripheral blocks; do not quote one technique's rate for another.", cites: ["NAP3 neuraxial", "RCoA PNB nerve damage", "LAST registry 2013"] },
+      { text: "Age raises risk mainly by reducing reserve: over-80s had 8% vs 3% 30-day mortality, and 26% vs 4% once a complication occurred; in children, APRICOT found severe critical events in 5.2%, mostly respiratory.", cites: ["Hamel over-80 2005", "APRICOT 2017"] },
       { text: "SORT, NELA and NSQIP predict postoperative outcomes, not anaesthetic causation; ASA physical status alone is not a calibrated risk percentage.", cites: ["SORT 2014", "NELA calculator", "NSQIP", "ASA physical status"] },
+      { text: "Use a tool built for the operation: NELA for emergency laparotomy, EuroSCORE II for cardiac surgery, the Nottingham Hip Fracture Score for hip fracture — and combine scores with clinical judgement.", cites: ["NELA calculator", "EuroSCORE II 2012", "Nottingham Hip Fracture Score 2008"] },
+      { text: "Positioning harm is position-specific: lithotomy beyond 2 hours raises leg neuropathy (1.5% overall), prone spinal fusion carries rare ischaemic optic neuropathy, and beach-chair blood pressure must be referenced to head level.", cites: ["Warner lithotomy 2000", "POVL study group 2012", "Pohl beach chair 2005"] },
       { text: "Use the Association’s 2026 consent guidance and current GMC principles: material risks, patient values, reasonable alternatives and no action; a form cannot replace dialogue.", cites: ["Association Consent 2026", "Montgomery 2015", "GMC patient priorities", "GMC recording"] },
       { text: "Capacity is time- and decision-specific; respect capable refusal, including in emergencies, and apply jurisdiction-specific law when capacity is lacking.", cites: ["GMC capacity", "GMC refusal", "GMC emergency", "Mental Capacity Act"] },
       { text: "Current PONV and delirium guidance support individualised prevention, but do not promise that a technique or prophylactic drug eliminates risk.", cites: ["PONV Fifth prevention", "ESAIC delirium 2024", "ASA older adults 2025"] },
