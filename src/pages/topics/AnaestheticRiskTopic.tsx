@@ -5,6 +5,7 @@ import { Exam } from "@/data/curriculum";
 import { AnaestheticAdverseEventsTeaching, AnaestheticRiskReductionTeaching } from "@/components/topic/AnaestheticAdverseEventsTeaching";
 import { RiskPredictionTeaching, RiskConsentTeaching, RiskCommunicationTeaching } from "@/components/topic/AnaestheticRiskTeaching";
 import { PreExistingConditionRiskTeaching, AgeRelatedRiskTeaching, SurgerySpecificRiskTeaching } from "@/components/topic/PatientSurgeryRiskTeaching";
+import { CognitiveRiskTeaching } from "@/components/topic/CognitiveRiskTeaching";
 import { PositioningRiskTeaching } from "@/components/topic/PositioningRiskTeaching";
 import { RegionalAnaesthesiaRiskTeaching } from "@/components/topic/RegionalAnaesthesiaRiskTeaching";
 import { anaestheticRiskQuiz } from "@/data/anaestheticRiskQuiz";
@@ -16,6 +17,7 @@ export default function AnaestheticRiskTopic() {
     objectives={[
       "Describe common side effects and serious adverse events using qualified absolute frequencies",
       "Distinguish anaesthesia-attributable harms from perioperative complications and postoperative mortality",
+      "Summarise the evidence on whether general anaesthesia causes postoperative cognitive dysfunction or permanent decline, in adults and children",
       "Explain how pre-existing conditions and age change perioperative risk",
       "Select and interpret general and surgery-specific risk tools for the correct population, outcome and time horizon",
       "Quote technique-specific risks for neuraxial and peripheral regional anaesthesia, including nerve injury, PDPH and LAST",
@@ -29,6 +31,7 @@ export default function AnaestheticRiskTopic() {
     coreConcepts={<div className="space-y-8">
       <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground pt-2">1. The baseline: what can go wrong</h2>
       <ExamSection id="adverse-event-frequencies" exams={exams}><CollapsibleSubsection title="Adverse events and side effects: frequencies with context" defaultOpen><AnaestheticAdverseEventsTeaching /></CollapsibleSubsection></ExamSection>
+      <ExamSection id="cognitive-risk" exams={exams}><CollapsibleSubsection title="Cognitive effects: postoperative cognitive dysfunction and lasting decline"><CognitiveRiskTeaching /></CollapsibleSubsection></ExamSection>
       <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground pt-2">2. The patient: who is at higher risk</h2>
       <ExamSection id="pre-existing-condition-risk" exams={exams}><CollapsibleSubsection title="Pre-existing conditions and anaesthetic risk"><PreExistingConditionRiskTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="age-related-risk" exams={exams}><CollapsibleSubsection title="Age-related risks: older adults and children"><AgeRelatedRiskTeaching /></CollapsibleSubsection></ExamSection>
@@ -55,6 +58,7 @@ export default function AnaestheticRiskTopic() {
       { text: "NAP5 reported awareness about 1 in 19,600 general anaesthetics; ascertainment and neuromuscular-block subgroups materially change the estimate.", cites: ["NAP5 incidence", "NAP5 muscle relaxation"] },
       { text: "NAP6 severe perioperative anaphylaxis is about 1 in 10,000; NAP7 arrest is about 3 in 10,000. Neither figure is an all-case anaesthesia-attributable death rate.", cites: ["NAP6 incidence", "NAP7 incidence"] },
       { text: "Regional techniques have their own figures: NAP3 permanent neuraxial harm 2.0–4.2 per 100,000, permanent peripheral-block nerve injury 2–5 per 10,000, and LAST about 0.87 per 1,000 peripheral blocks; do not quote one technique's rate for another.", cites: ["NAP3 neuraxial", "RCoA PNB nerve damage", "LAST registry 2013"] },
+      { text: "POCD is common after major surgery in older people (ISPOCD1: 25.8% at 1 week, 9.9% at 3 months), but randomised GA versus regional comparison showed no difference at 3 months, and GAS found no IQ effect of under 1 h of infant GA.", cites: ["ISPOCD1 1998", "Rasmussen GA vs regional 2003", "GAS trial 2019"] },
       { text: "Age raises risk mainly by reducing reserve: over-80s had 8% vs 3% 30-day mortality, and 26% vs 4% once a complication occurred; in children, APRICOT found severe critical events in 5.2%, mostly respiratory.", cites: ["Hamel over-80 2005", "APRICOT 2017"] },
       { text: "SORT, NELA and NSQIP predict postoperative outcomes, not anaesthetic causation; ASA physical status alone is not a calibrated risk percentage.", cites: ["SORT 2014", "NELA calculator", "NSQIP", "ASA physical status"] },
       { text: "Use a tool built for the operation: NELA for emergency laparotomy, EuroSCORE II for cardiac surgery, the Nottingham Hip Fracture Score for hip fracture — and combine scores with clinical judgement.", cites: ["NELA calculator", "EuroSCORE II 2012", "Nottingham Hip Fracture Score 2008"] },
