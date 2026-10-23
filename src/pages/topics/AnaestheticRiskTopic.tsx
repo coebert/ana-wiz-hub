@@ -4,6 +4,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { Exam } from "@/data/curriculum";
 import { AnaestheticAdverseEventsTeaching, AnaestheticRiskReductionTeaching } from "@/components/topic/AnaestheticAdverseEventsTeaching";
 import { RiskPredictionTeaching, RiskConsentTeaching, RiskCommunicationTeaching } from "@/components/topic/AnaestheticRiskTeaching";
+import { RegionalAnaesthesiaRiskTeaching } from "@/components/topic/RegionalAnaesthesiaRiskTeaching";
 import { anaestheticRiskQuiz } from "@/data/anaestheticRiskQuiz";
 
 const exams = [Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC];
@@ -13,6 +14,7 @@ export default function AnaestheticRiskTopic() {
     objectives={[
       "Describe common side effects and serious adverse events using qualified absolute frequencies",
       "Distinguish anaesthesia-attributable harms from perioperative complications and postoperative mortality",
+      "Quote technique-specific risks for neuraxial and peripheral regional anaesthesia, including nerve injury, PDPH and LAST",
       "Select and interpret risk tools for the correct patient population, outcome and time horizon",
       "Communicate risk, uncertainty and reasonable alternatives in a patient-centred discussion",
       "Apply current UK consent principles, including material risk, capacity, refusal and emergencies",
@@ -23,6 +25,7 @@ export default function AnaestheticRiskTopic() {
     coreConcepts={<div className="space-y-8">
       <ExamSection id="adverse-event-frequencies" exams={exams}><CollapsibleSubsection title="Adverse events and side effects: frequencies with context" defaultOpen><AnaestheticAdverseEventsTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="risk-prediction" exams={exams}><CollapsibleSubsection title="Individual risk prediction: choose the right endpoint"><RiskPredictionTeaching /></CollapsibleSubsection></ExamSection>
+      <ExamSection id="regional-anaesthesia-risk" exams={exams}><CollapsibleSubsection title="Risks of regional anaesthetic techniques"><RegionalAnaesthesiaRiskTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="informed-consent" exams={exams}><CollapsibleSubsection title="Informed consent for anaesthesia: current UK guidance"><RiskConsentTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="risk-communication" exams={exams}><CollapsibleSubsection title="Communicating probabilities without false reassurance"><RiskCommunicationTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="risk-reduction" exams={exams}><CollapsibleSubsection title="Reducing risk and planning safe recovery"><AnaestheticRiskReductionTeaching /></CollapsibleSubsection></ExamSection>
@@ -37,6 +40,7 @@ export default function AnaestheticRiskTopic() {
       { text: "Population averages require an event definition, denominator, date and case-mix; do not add overlapping risks or treat historical audit rates as individual predictions.", cites: ["RCoA population", "NAP7 incidence"] },
       { text: "NAP5 reported awareness about 1 in 19,600 general anaesthetics; ascertainment and neuromuscular-block subgroups materially change the estimate.", cites: ["NAP5 incidence", "NAP5 muscle relaxation"] },
       { text: "NAP6 severe perioperative anaphylaxis is about 1 in 10,000; NAP7 arrest is about 3 in 10,000. Neither figure is an all-case anaesthesia-attributable death rate.", cites: ["NAP6 incidence", "NAP7 incidence"] },
+      { text: "Regional techniques have their own figures: NAP3 permanent neuraxial harm 2.0–4.2 per 100,000, permanent peripheral-block nerve injury 2–5 per 10,000, and LAST about 0.87 per 1,000 peripheral blocks; do not quote one technique's rate for another.", cites: ["NAP3 neuraxial", "RCoA PNB nerve damage", "LAST registry 2013"] },
       { text: "SORT, NELA and NSQIP predict postoperative outcomes, not anaesthetic causation; ASA physical status alone is not a calibrated risk percentage.", cites: ["SORT 2014", "NELA calculator", "NSQIP", "ASA physical status"] },
       { text: "Use the Association’s 2026 consent guidance and current GMC principles: material risks, patient values, reasonable alternatives and no action; a form cannot replace dialogue.", cites: ["Association Consent 2026", "Montgomery 2015", "GMC patient priorities", "GMC recording"] },
       { text: "Capacity is time- and decision-specific; respect capable refusal, including in emergencies, and apply jurisdiction-specific law when capacity is lacking.", cites: ["GMC capacity", "GMC refusal", "GMC emergency", "Mental Capacity Act"] },

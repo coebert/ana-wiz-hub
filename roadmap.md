@@ -3,6 +3,7 @@
 ## Anaesthetic risk topic
 - [x] Add a comprehensive registered topic with qualified adverse-event frequencies, risk prediction, informed consent, four fictional worked cases and twelve-question quiz.
 - [x] Verify source labels, numeric rules, learner display, consent quotation and complete quiz; 33 final regressions pass, search includes imported lessons and uncapped private audit coverage refreshed/uploaded. Consultant review remains outstanding; live-leaflet revision provenance and full Association recommendations remain partly unverified.
+- [x] Expand with a regional anaesthesia risk section: NAP3 neuraxial harm, RCoA peripheral-block nerve injury (2–5/10,000 permanent), PDPH 1 in 100–500, LAST 0.87/1,000 with ASRA 2020 checklist, wrong-site block and consent; six new verified references, two quiz questions (14 total), 17 tests pass, search/audit regenerated and uploaded.
 
 ## Obstetric, gynaecological and dermatological expansion
 - [x] Add six new operations with five stages, per-stage anaesthetic notes, source references and interactive diagrams; introduce Dermatology specialty (78 operations, 14 specialties).
