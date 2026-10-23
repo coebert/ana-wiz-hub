@@ -34,6 +34,7 @@ export type OperativeDiagramKey = "carotid" | "open-aaa" | "evar" | "fem-pop" | 
   | "laryngectomy" | "glossectomy" | "microlaryngoscopy"
   | "hysteroscopy" | "tur-bt" | "burn-graft" | "orthognathic"
   | "ap-resection" | "right-hemicolectomy" | "left-hemicolectomy" | "hartmann"
+  | "orchidopexy" | "hypospadias" | "ureteroscopy" | "pcnl"
   | "cerclage" | "peripartum-hysterectomy" | "ovarian-cystectomy" | "vaginal-hysterectomy" | "skin-excision" | "mohs";
 
 export interface OperativeStep {
@@ -62,6 +63,70 @@ export interface Operation {
 }
 
 export const operations: Operation[] = [
+  {
+    id: "orchidopexy", name: "Orchidopexy (undescended testis)", aka: ["undescended testis surgery", "inguinal orchidopexy", "UDT repair"],
+    specialty: "Paediatric", diagram: "orchidopexy", bloodLossRisk: "Low",
+    summary: "Day-case operation in infants and young children to bring an undescended testis into the scrotum, usually through a groin and a scrotal incision. A palpable testis is usually corrected by open inguinal orchidopexy; an impalpable testis may need laparoscopy and staged surgery, which this entry does not illustrate.",
+    position: "Supine; small child on a warmed mattress with the groin and scrotum prepared.",
+    steps: [
+      { step: "Confirm side, examine under anaesthesia, and plan open or laparoscopic approach.", anaesthetic: "Paediatric pre-assessment: recent upper respiratory infection, fasting, parental presence at induction. Inhalational or intravenous induction with a supraglottic airway is common for a short day case." },
+      { step: "Make a groin incision and open the inguinal canal to find the testis.", anaesthetic: "Skin incision and canal opening are stimulating; give caudal or ilioinguinal/iliohypogastric block before incision, or deepen anaesthesia. Laryngospasm can follow light anaesthesia." },
+      { step: "Mobilise the testis and spermatic cord, separating the patent processus vaginalis.", anaesthetic: "Traction on the cord can cause a vagal bradycardia and laryngospasm; alert the surgeon, deepen anaesthesia and treat bradycardia promptly." },
+      { step: "Create a scrotal pouch through a second incision and fix the testis in it without tension.", anaesthetic: "A caudal covers both incisions; an ilioinguinal block alone may not cover the scrotum. Supplement with local infiltration by the surgeon." },
+      { step: "Close the wounds and recover the child for same-day discharge.", anaesthetic: "Plan regular paracetamol and NSAID if suitable. Warn parents about leg weakness after a caudal and post-operative nausea; confirm voiding policy per local guidance." },
+    ],
+    criticalMoments: ["Laryngospasm at light anaesthesia", "Spermatic cord traction and bradycardia", "Block coverage of the scrotal incision", "Day-case discharge criteria"],
+    anaestheticNotes: ["Caudal block and ilioinguinal/iliohypogastric block are both used; the scrotal incision needs sacral dermatomes or local infiltration.", "Laparoscopic orchidopexy for an impalpable testis adds pneumoperitoneum and possible staged surgery.", "Associated conditions (e.g. prematurity, some syndromes) change the airway and day-case plan."],
+    sources: ["GOSH Undescended Testis", "OpenAnesthesia Infant Spinal"],
+  },
+  {
+    id: "hypospadias-repair", name: "Hypospadias repair", aka: ["urethroplasty in children", "TIP repair", "hypospadias surgery"],
+    specialty: "Paediatric", diagram: "hypospadias", bloodLossRisk: "Low",
+    summary: "Reconstruction in which the abnormally placed urinary opening is moved to the tip of the penis, the penis straightened and excess foreskin removed. Distal repairs are often one stage; proximal hypospadias may need staged surgery with grafts. The diagram shows a one-stage tubularised repair.",
+    position: "Supine, sometimes with frog-legged hips; long microsurgical procedure for proximal forms.",
+    steps: [
+      { step: "Examine under anaesthesia, assess curvature with an artificial erection test and mark incisions.", anaesthetic: "Plan for a 1–3 hour case in a young child: warming, eye care and pressure care. Caudal block is common; some surgeons prefer penile block, depending on local practice and concern about outcomes." },
+      { step: "Deglove the penile skin and correct curvature.", anaesthetic: "Surgical stimulation is high; confirm the block works before incision. A tourniquet at the base of the penis may be used; record its time." },
+      { step: "Create the new urethra from the urethral plate and tubularise it over a catheter.", anaesthetic: "Requires a still field during fine suturing; avoid coughing and movement. Adrenaline-containing infiltration may be used by the surgeon: watch for arrhythmia." },
+      { step: "Cover the repair with a vascularised tissue layer and reconstruct the glans and skin.", anaesthetic: "Total local anaesthetic dose must include caudal and surgical infiltration. Prepare for emergence without coughing or straining." },
+      { step: "Leave a urethral catheter or stent and apply the dressing.", anaesthetic: "Plan analgesia for catheter discomfort and bladder spasm; arrange antibiotics per surgical plan. Parents need clear advice about dressing and catheter problems at home." },
+    ],
+    criticalMoments: ["Block confirmation before degloving", "Total local anaesthetic dose", "Prolonged case in a small child: heat loss and pressure care", "Smooth emergence protecting the repair"],
+    anaestheticNotes: ["Caudal block is widely used; the association between caudal block and urethral fistula is debated, so follow the surgical team's evidence-informed preference.", "Proximal or redo hypospadias is longer and may be staged, with grafts and more bleeding.", "Postoperative bladder spasm may need specific treatment such as oxybutynin according to local protocol."],
+    sources: ["GOSH Hypospadias Repair", "OpenAnesthesia Infant Spinal"],
+  },
+  {
+    id: "ureteroscopy-laser", name: "Ureteroscopy and laser lithotripsy", aka: ["URS", "ureteroscopy", "laser stone fragmentation", "FURS", "flexible ureterorenoscopy"],
+    specialty: "Urology", diagram: "ureteroscopy", bloodLossRisk: "Low",
+    summary: "Endoscopic treatment of ureteric or kidney stones: a telescope passes through the urethra and bladder into the ureter or kidney, and a laser breaks the stone; fragments are removed or left to pass. A temporary JJ stent is sometimes left in place.",
+    position: "Lithotomy; sometimes modified with the opposite leg lowered.",
+    steps: [
+      { step: "Confirm side, imaging and urine culture; insert a cystoscope and pass a safety guidewire up the ureter under X-ray.", anaesthetic: "General or spinal anaesthesia; the BAUS leaflet notes that both are discussed. Untreated infection behind an obstructing stone can cause sepsis: treat infection before elective stone surgery." },
+      { step: "Pass a rigid or flexible ureteroscope, sometimes through an access sheath, to the stone.", anaesthetic: "Coughing or movement risks ureteric injury: maintain adequate depth and consider muscle relaxation or apnoea briefly at critical moments. Lithotomy positioning risks apply." },
+      { step: "Fragment the stone with the laser; irrigation keeps the view clear.", anaesthetic: "Irrigation under pressure can raise pressure inside the kidney and cause bacteria to enter the bloodstream; watch for fever, rigors and hypotension after the case. Laser safety: eye protection for staff." },
+      { step: "Remove fragments with a basket or leave dust to pass; inspect the ureter for injury.", anaesthetic: "Respiratory movement can move the kidney; brief ventilation pauses may help the surgeon. Report any perforation, which changes the plan." },
+      { step: "Place a JJ stent if needed, drain the bladder and recover as a day case where possible.", anaesthetic: "Stent discomfort and bladder spasm are common; plan analgesia. Fever after ureteroscopy needs urgent sepsis assessment." },
+    ],
+    criticalMoments: ["Sepsis from infected obstructed system", "Patient movement during ureteric access", "Raised intrarenal pressure from irrigation", "Lithotomy positioning harm"],
+    anaestheticNotes: ["Most cases are short day cases with a supraglottic airway, but brief muscle relaxation or apnoea may be requested.", "Pregnancy, anticoagulation and solitary kidney change the plan and need specialist discussion.", "Post-operative fever is a sepsis warning sign, not a routine finding."],
+    sources: ["BAUS Ureteroscopy", "Warner lithotomy 2000"],
+  },
+  {
+    id: "pcnl", name: "Percutaneous nephrolithotomy (PCNL)", aka: ["PCNL", "percutaneous stone removal", "keyhole kidney stone surgery", "mini-PCNL"],
+    specialty: "Urology", diagram: "pcnl", bloodLossRisk: "Moderate",
+    summary: "Removal of large kidney stones through a tract made from the skin of the back into the kidney. A ureteric catheter is placed first; the kidney is punctured under X-ray or ultrasound, the tract dilated, and the stone broken and removed. A nephrostomy or stent may be left.",
+    position: "Lithotomy for ureteric catheter, then prone (or supine/Galdakao-modified Valdivia position per surgeon).",
+    steps: [
+      { step: "Under general anaesthesia, place a ureteric catheter from the bladder up to the kidney using a cystoscope.", anaesthetic: "General anaesthesia with a secure tracheal tube for prone positioning. Check urine culture and give antibiotics per policy: large infection stones are a major sepsis risk." },
+      { step: "Turn the patient prone (or position supine) and inject contrast to outline the kidney.", anaesthetic: "Prone turn: secure tube and lines, protect eyes, face, breasts and genitals, free abdomen, and check ventilation. Prone positioning risks apply." },
+      { step: "Puncture the kidney through the back and dilate a tract; insert a sheath.", anaesthetic: "An upper-pole puncture above the 12th rib risks pleural injury: watch for falling saturation, rising airway pressure or hypotension suggesting pneumothorax or fluid in the chest. Bleeding can be sudden." },
+      { step: "Break the stone with ultrasound, laser or pneumatic devices and remove fragments.", anaesthetic: "Large irrigation volumes can be absorbed, causing hypothermia, fluid overload and electrolyte change; use warmed fluids and track input–output. Watch for sepsis (fever, hypotension) intraoperatively." },
+      { step: "Place a nephrostomy tube or stent, turn supine and recover with a chest and bleeding check.", anaesthetic: "Assess for haemothorax/pneumothorax and haematuria; check haemoglobin if bleeding was significant. Plan analgesia for the nephrostomy site (paravertebral or erector spinae blocks are options)." },
+    ],
+    criticalMoments: ["Prone turn and airway security", "Supracostal puncture: pneumothorax/hydrothorax", "Tract bleeding", "Intraoperative urosepsis", "Irrigation absorption and hypothermia"],
+    anaestheticNotes: ["Supine PCNL avoids the prone turn and may suit patients with poor respiratory reserve or obesity.", "Bleeding needing transfusion is uncommon but tract or arterial bleeding may need embolisation.", "Combine the regional, positioning and sepsis risk sections of Anaesthetic Risk when consenting."],
+    sources: ["BAUS PCNL", "Edgcombe prone 2008"],
+  },
   {
     id: "cervical-cerclage", name: "Transvaginal cervical cerclage", aka: ["cervical stitch", "McDonald cerclage", "Shirodkar cerclage"],
     specialty: "Obstetric", diagram: "cerclage", bloodLossRisk: "Low",

@@ -4,6 +4,7 @@ import type { OperativeDiagramKey } from "@/data/operativeSteps";
 import CleftPalateRepairDiagram from "./CleftPalateRepairDiagram";
 import ColorectalOperationDiagram from "./ColorectalOperationDiagram";
 import PelvicSkinOperationDiagram from "./PelvicSkinOperationDiagram";
+import UroPaedOperationDiagram from "./UroPaedOperationDiagram";
 import SpecialtyExpansionDiagram from "./SpecialtyExpansionDiagrams";
 import { operations } from "@/data/operativeSteps";
 
@@ -746,6 +747,13 @@ export function OperativeDiagram({ kind }: { kind: OperativeDiagramKey }) {
     case "mohs": {
       const operation = operations.find(item => item.diagram === kind);
       return operation ? <PelvicSkinOperationDiagram operation={operation} /> : null;
+    }
+    case "orchidopexy":
+    case "hypospadias":
+    case "ureteroscopy":
+    case "pcnl": {
+      const operation = operations.find(item => item.diagram === kind);
+      return operation ? <UroPaedOperationDiagram operation={operation} /> : null;
     }
     case "ap-resection":
     case "right-hemicolectomy":
