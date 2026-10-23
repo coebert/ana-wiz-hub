@@ -1,4 +1,5 @@
 import { QuizQuestion } from "@/components/quiz/QuizSection";
+export { anaestheticRiskQuiz } from "./anaestheticRiskQuiz";
 
 export const gasLawsQuiz: QuizQuestion[] = [
   {
