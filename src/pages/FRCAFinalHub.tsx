@@ -7,10 +7,10 @@ const FRCAFinalHub = () => (
     examTag="final"
     examName="FRCA Final"
     path="/frca-final"
-    metaTitle="Final FRCA Revision – Free SBAs & Model Viva Answers"
-    metaDescription="Free Final FRCA notes mapped to the 2026 curriculum: model viva answers, SBA quizzes and interactive diagrams for every subspecialty and ICU."
+    metaTitle="Final FRCA Revision 2026 – Free Viva Practice, SBAs & Notes"
+    metaDescription="Prepare for the Final FRCA written paper and SOE: free sourced notes mapped to the 2026 curriculum, model viva answers with voice practice, SBA quizzes and an operations library."
     h1="FRCA Final revision"
-    intro="A focused hub for the Final FRCA exam. Every published AnaesthesiaCore topic mapped to the Final syllabus — applied physiology and pharmacology, clinical anaesthesia subspecialties, perioperative medicine and intensive care — with structured notes, worked examples and SBA-style questions."
+    intro="Everything for Final FRCA preparation in one place, for both the written paper and the structured oral exam (SOE): spoken viva practice with model answers, SBA-style quizzes, and an operations library covering the surgical steps anaesthetists need to know. Every published AnaesthesiaCore topic mapped to the Final syllabus — applied physiology and pharmacology, clinical anaesthesia subspecialties, perioperative medicine and intensive care — with structured notes, worked examples and SBA-style questions."
     extras={<><ExamLessonLinks exam="final" /><FinalFrcaExtras /></>}
     faqs={[
       {
