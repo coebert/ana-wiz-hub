@@ -38,7 +38,7 @@ describe("Source-qualified anaesthetic risk evidence", () => {
       expect(r.url).toMatch(/^https:\/\//);
       if (r.excerpt) expect(r.excerpt.length).toBeLessThanOrEqual(600);
     }
-    for (const file of ["AnaestheticRiskTeaching", "AnaestheticAdverseEventsTeaching", "RegionalAnaesthesiaRiskTeaching", "PositioningRiskTeaching", "RegionalTechniqueRiskTeaching"]) {
+    for (const file of ["AnaestheticRiskTeaching", "AnaestheticAdverseEventsTeaching", "RegionalAnaesthesiaRiskTeaching", "PositioningRiskTeaching", "RegionalTechniqueRiskTeaching", "PatientSurgeryRiskTeaching"]) {
       const source = readFileSync(`src/components/topic/${file}.tsx`, "utf8");
       for (const match of source.matchAll(/<R label="([^"]+)"/g)) expect(refs.some(r => r.label === match[1])).toBe(true);
     }
@@ -49,6 +49,6 @@ describe("Source-qualified anaesthetic risk evidence", () => {
     expect(topic?.section).toBe("perioperative");
     expect(topic?.available).toBe(true);
     expect(topic?.quiz).toEqual(anaestheticRiskQuiz);
-    expect(topic?.quiz.length).toBe(16);
+    expect(topic?.quiz.length).toBe(18);
   });
 });

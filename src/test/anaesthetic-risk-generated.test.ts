@@ -8,7 +8,7 @@ describe("Anaesthetic risk generated retention", () => {
     expect(topic).toBeDefined();
     expect(topic.text).toContain("Disclosure should not wait for certainty about blame");
     expect(topic.text).toContain("Absolute risk and natural frequencies");
-    expect(topic.references.length).toBe(58);
+    expect(topic.references.length).toBe(64);
   });
   it("search includes material risk and latest prevention rather than only the introduction", () => {
     const index = JSON.parse(readFileSync("src/data/searchIndex.generated.json", "utf8"));
