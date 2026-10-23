@@ -4,6 +4,7 @@ import { ExamSection } from "@/components/exam/ExamSection";
 import { Exam } from "@/data/curriculum";
 import { AnaestheticAdverseEventsTeaching, AnaestheticRiskReductionTeaching } from "@/components/topic/AnaestheticAdverseEventsTeaching";
 import { RiskPredictionTeaching, RiskConsentTeaching, RiskCommunicationTeaching } from "@/components/topic/AnaestheticRiskTeaching";
+import { PositioningRiskTeaching } from "@/components/topic/PositioningRiskTeaching";
 import { RegionalAnaesthesiaRiskTeaching } from "@/components/topic/RegionalAnaesthesiaRiskTeaching";
 import { anaestheticRiskQuiz } from "@/data/anaestheticRiskQuiz";
 
@@ -15,6 +16,7 @@ export default function AnaestheticRiskTopic() {
       "Describe common side effects and serious adverse events using qualified absolute frequencies",
       "Distinguish anaesthesia-attributable harms from perioperative complications and postoperative mortality",
       "Quote technique-specific risks for neuraxial and peripheral regional anaesthesia, including nerve injury, PDPH and LAST",
+      "Describe position-specific harms (prone, lithotomy, beach-chair, lateral, steep head-down) and their evidence base",
       "Select and interpret risk tools for the correct patient population, outcome and time horizon",
       "Communicate risk, uncertainty and reasonable alternatives in a patient-centred discussion",
       "Apply current UK consent principles, including material risk, capacity, refusal and emergencies",
@@ -26,6 +28,7 @@ export default function AnaestheticRiskTopic() {
       <ExamSection id="adverse-event-frequencies" exams={exams}><CollapsibleSubsection title="Adverse events and side effects: frequencies with context" defaultOpen><AnaestheticAdverseEventsTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="risk-prediction" exams={exams}><CollapsibleSubsection title="Individual risk prediction: choose the right endpoint"><RiskPredictionTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="regional-anaesthesia-risk" exams={exams}><CollapsibleSubsection title="Risks of regional anaesthetic techniques"><RegionalAnaesthesiaRiskTeaching /></CollapsibleSubsection></ExamSection>
+      <ExamSection id="positioning-risk" exams={exams}><CollapsibleSubsection title="Risks of patient positioning during surgery"><PositioningRiskTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="informed-consent" exams={exams}><CollapsibleSubsection title="Informed consent for anaesthesia: current UK guidance"><RiskConsentTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="risk-communication" exams={exams}><CollapsibleSubsection title="Communicating probabilities without false reassurance"><RiskCommunicationTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="risk-reduction" exams={exams}><CollapsibleSubsection title="Reducing risk and planning safe recovery"><AnaestheticRiskReductionTeaching /></CollapsibleSubsection></ExamSection>
