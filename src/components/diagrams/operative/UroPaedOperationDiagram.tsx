@@ -35,7 +35,7 @@ function StoneArt({ stage, detail, labels, id, pcnl }: { stage: number; detail: 
       {stage >= 1 && <path d="M282 400Q276 330 262 250Q250 210 232 190" fill="none" stroke={accent} strokeWidth={2} strokeDasharray="5 4" />}
       {stage >= 2 && <><path d="M60 110L190 150" stroke={accent} strokeWidth={stage >= 2 ? 10 : 3} strokeLinecap="round" /><rect x={40} y={92} width={30} height={30} fill="none" stroke={ink} /></>}
       {stage >= 4 && <path d="M70 120Q130 140 192 150" stroke={faint} strokeWidth={4} fill="none" />}
-      {detail && <><path d="M110 35V420" stroke={faint} strokeDasharray="3 6" /><path d="M120 60Q160 40 210 50" stroke={danger} strokeWidth={2} fill="none" /></>}
+      {detail && <><path d="M110 35V420" stroke={faint} strokeDasharray="3 6" /><path d="M120 62Q160 48 210 56" stroke={danger} strokeWidth={2} fill="none" /></>}
     </> : <>
       {stage >= 1 && <path d="M282 400Q276 360 270 320" stroke={accent} strokeWidth={stage >= 2 ? 6 : 2} fill="none" />}
       {stage === 3 && <path d="M268 312L262 296" stroke={danger} strokeWidth={3} />}
@@ -49,7 +49,7 @@ function StoneArt({ stage, detail, labels, id, pcnl }: { stage: number; detail: 
       <Label x={360} y={420} to={[320, 410]}>Bladder</Label>
       <Label x={pcnl ? 22 : 300} y={pcnl ? 200 : 340} to={stoneAt}>{fragmented ? "Fragments" : "Stone"}</Label>
       {pcnl && stage >= 2 && <Label x={22} y={80} to={[60, 110]}>Percutaneous tract</Label>}
-      {pcnl && detail && <Label x={130} y={30} to={[160, 46]}>Pleura / 12th rib: supracostal risk</Label>}
+      {pcnl && detail && <Label x={300} y={48} to={[205, 52]}>Pleura / 12th rib: supracostal risk</Label>}
       {!pcnl && stage >= 4 && <Label x={310} y={190} to={[245, 220]}>JJ stent (if used)</Label>}
       {!pcnl && detail && <Label x={380} y={370} to={[420, 345]}>Ureteric lumen inset</Label>}
     </>}
