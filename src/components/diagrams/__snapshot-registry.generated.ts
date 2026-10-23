@@ -388,6 +388,7 @@ export const diagramSnapshotRegistry: Record<string, LazyExoticComponent<Compone
   "RemifentanilPKDiagram": lazy(() => import("./pharmacology/RemifentanilPKDiagram").then((m) => ({ default: m.RemifentanilPKDiagram as ComponentType<any> }))),
   "RenalBloodFlowDiagram": lazy(() => import("./physiology/RenalBloodFlowDiagram")),
   "RespiratoryDrugSafetyDiagram": lazy(() => import("./perioperative/RespiratoryDrugSafetyDiagram")),
+  "RiskCommunicationFigure": lazy(() => import("./../topic/RiskCommunicationFigure").then((m) => ({ default: m.RiskCommunicationFigure as ComponentType<any> }))),
   "RitchieWhistleDiagram": lazy(() => import("./physics/RitchieWhistleDiagram")),
   "RotameterDiagram": lazy(() => import("./physics/RotameterDiagram")),
   "RRTCircuitDiagram": lazy(() => import("./intensive-care/RRTCircuitDiagram").then((m) => ({ default: m.RRTCircuitDiagram as ComponentType<any> }))),

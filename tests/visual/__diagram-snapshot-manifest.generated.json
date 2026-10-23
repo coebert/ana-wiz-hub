@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-23T11:14:22.436Z",
-  "count": 473,
+  "generatedAt": "2026-10-23T19:01:21.829Z",
+  "count": 474,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -1521,6 +1521,10 @@
     {
       "name": "RespiratoryDrugSafetyDiagram",
       "route": "/dev/diagram-snapshot/RespiratoryDrugSafetyDiagram"
+    },
+    {
+      "name": "RiskCommunicationFigure",
+      "route": "/dev/diagram-snapshot/RiskCommunicationFigure"
     },
     {
       "name": "RitchieWhistleDiagram",
