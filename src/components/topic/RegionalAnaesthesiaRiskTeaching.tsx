@@ -1,5 +1,6 @@
 import { InlineRef } from "@/components/references/InlineRef";
 import { LessonSources } from "@/components/topic/LessonSources";
+import { RegionalTechniqueRiskTeaching } from "@/components/topic/RegionalTechniqueRiskTeaching";
 
 const R = ({ label }: { label: string }) => <InlineRef topicId="anaesthetic-risk" refLabel={label} />;
 const heading = "text-lg font-semibold text-foreground";
@@ -27,10 +28,13 @@ export function RegionalAnaesthesiaRiskTeaching() {
       <li><strong>Block failure:</strong> partial or failed blocks are common enough that every plan needs an agreed fallback — supplementation, repeat block or conversion to general anaesthesia — discussed in advance.</li>
     </ul>
 
+    <RegionalTechniqueRiskTeaching />
+
     <h3 className={heading}>Consent for regional techniques</h3>
     <p>Apply the same material-risk standard as for general anaesthesia: explain benefits, common temporary effects, serious rare harms, the possibility of failure and conversion, and reasonable alternatives including no regional technique. An awake patient’s experience — hearing, pressure sensations, the possibility of sedation — should be described honestly. A capable patient may refuse a block even when the team believes it is the safer option; respect that refusal and agree an alternative.<R label="Montgomery 2015" /><R label="GMC refusal" /></p>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: can you quote NAP3’s 1 in 23,500–50,500 as the nerve-injury risk of a popliteal sciatic block?</summary><p className="mt-2">No. NAP3 studied central neuraxial blocks. For peripheral blocks, the RCoA leaflet’s 2–5 permanent injuries per 10,000 is the closer communication estimate, and even that spans block types. Use the source that matches the technique.</p></details>
     <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: a patient develops agitation and a seizure minutes after a peripheral block. What is the treatment framework?</summary><p className="mt-2">Treat as LAST: call for help, stop injection, manage airway and seizure (benzodiazepine), start 20% lipid emulsion early, and use reduced adrenaline doses if resuscitation is needed — per the ASRA 2020 checklist, not standard ALS dosing.</p></details>
-    <LessonSources topicId="anaesthetic-risk" labels={["NAP3 neuraxial", "RCoA PDPH", "ASRA anticoagulation 2018", "RCoA PNB nerve damage", "LAST registry 2013", "ASRA LAST checklist 2020", "RA-UK Stop Before You Block", "Montgomery 2015", "GMC refusal"]} />
+    <details className="border-l-2 border-primary pl-4"><summary className="cursor-pointer font-semibold text-foreground">Learning check: does ultrasound guidance let you quote a lower permanent nerve-injury risk for a peripheral block?</summary><p className="mt-2">No. Ultrasound improves block success and reduces vascular puncture and LAST, but no method of guidance has been shown to reduce permanent nerve injury.</p></details>
+    <LessonSources topicId="anaesthetic-risk" labels={["NAP3 neuraxial", "RCoA PDPH", "ASRA anticoagulation 2018", "RCoA PNB nerve damage", "LAST registry 2013", "ASRA LAST checklist 2020", "RA-UK Stop Before You Block", "Shaikh neuraxial ultrasound 2013", "Cochrane US blocks 2015", "ASRA neurologic advisory 2015", "Urmey interscalene 1991", "Montgomery 2015", "GMC refusal"]} />
   </div>;
 }
