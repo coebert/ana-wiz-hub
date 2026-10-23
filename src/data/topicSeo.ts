@@ -20,6 +20,12 @@ export interface TopicSeo {
 }
 
 export const topicSeo: Record<string, TopicSeo> = {
+  "anaesthetic-risk": {
+    title: "Anaesthetic Risk & Informed Consent | FRCA",
+    description: "Anaesthetic adverse-event frequencies, NAP audits, risk prediction tools and UK informed consent: material risks, capacity and shared decisions.",
+    aliases: ["Anaesthetic risk", "Anaesthesia risks", "Informed consent for anaesthesia", "Montgomery", "Risk prediction"],
+    keywords: ["anaesthetic risk", "anaesthesia side effects", "NAP7", "SORT", "material risk", "informed consent FRCA"],
+  },
   // ===== Physics =====
   "capnography": {
     title: "Capnography Waveforms & Normal ETCO₂ Range | FRCA",
