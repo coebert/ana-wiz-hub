@@ -3,7 +3,7 @@ import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
 import { ExamSection } from "@/components/exam/ExamSection";
 import { Exam } from "@/data/curriculum";
-import { OutcomesSurvivalTeaching, OutcomesIcnarcTeaching, OutcomesLengthOfStayTeaching, OutcomesReadmissionTeaching, OutcomesSeverityTeaching, OutcomesCognitionTeaching, OutcomesWorkTeaching, OutcomesPsychologicalTeaching, OutcomesContemporaryTeaching, OutcomesCostTeaching, OutcomesLosByConditionTeaching, OutcomesQualityOfLifeTeaching } from "@/components/topic/IcuOutcomesTeaching";
+import { OutcomesSurvivalTeaching, OutcomesIcnarcTeaching, OutcomesLengthOfStayTeaching, OutcomesReadmissionTeaching, OutcomesSeverityTeaching, OutcomesCognitionTeaching, OutcomesWorkTeaching, OutcomesPsychologicalTeaching, OutcomesContemporaryTeaching, OutcomesCostTeaching, OutcomesLosByConditionTeaching, OutcomesQualityOfLifeTeaching, OutcomesByAdmissionTypeTeaching } from "@/components/topic/IcuOutcomesTeaching";
 
 const exams = [Exam.FINAL, Exam.FFICM, Exam.EDIC];
 const quiz = [
@@ -33,6 +33,8 @@ const quiz = [
   { question: "APACHE IV length-of-stay predictions (Zimmerman 2006) are best used for:", options: ["Telling individual families the exact discharge date", "Benchmarking groups and unit throughput", "Deciding treatment withdrawal", "Replacing diagnosis"], correctIndex: 1, explanation: "It explained 62% of variation across ICUs but only 21.5% across individual patients." },
   { question: "Which EQ-5D statement is correct?", options: ["It is a mortality score", "It covers five dimensions and yields a utility where 1 = full health", "It is only valid in children", "Higher values mean worse health"], correctIndex: 1, explanation: "Utilities combined with time give QALYs. Cuthbertson 2010 reported a 5-year utility of 0.677 in UK level 3 survivors." },
   { question: "Oeyen 2010's review of quality of life after ICU found the main methodological weakness was:", options: ["Too many trials", "Few studies met quality criteria such as a baseline assessment (8%)", "All used EQ-5D", "No studies from Europe"], correctIndex: 1, explanation: "Without a pre-admission baseline, low scores may reflect pre-existing illness." },
+  { question: "ICNARC 2021–22: acute hospital mortality after elective/scheduled surgery admission to critical care was:", options: ["2.6%", "15.0%", "30.3%", "11.5%"], correctIndex: 0, explanation: "2.6%, versus 15.0% after emergency/urgent surgery and 30.3% for non-surgical admissions (unadjusted)." },
+  { question: "In ISOS 2016, patients admitted to critical care to treat a postoperative complication had a mortality of:", options: ["0.5%", "2.4%", "9.7%", "50.4%"], correctIndex: 2, explanation: "9.7%, compared with 2.4% in routine postoperative admissions, half of whom developed a complication." },
 ];
 
 export default function IcuOutcomesTopic() {
@@ -73,6 +75,7 @@ export default function IcuOutcomesTopic() {
       <ExamSection id="outcomes-cost" exams={exams}><CollapsibleSubsection title="10. Cost of ICU care"><OutcomesCostTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="outcomes-los-condition" exams={exams}><CollapsibleSubsection title="11. Length of stay by condition"><OutcomesLosByConditionTeaching /></CollapsibleSubsection></ExamSection>
       <ExamSection id="outcomes-quality-of-life" exams={exams}><CollapsibleSubsection title="12. Quality of life and EQ-5D"><OutcomesQualityOfLifeTeaching /></CollapsibleSubsection></ExamSection>
+      <ExamSection id="outcomes-admission-type" exams={exams}><CollapsibleSubsection title="13. Survival, stay and complications by admission type"><OutcomesByAdmissionTypeTeaching /></CollapsibleSubsection></ExamSection>
     </div>}
   />;
 }
