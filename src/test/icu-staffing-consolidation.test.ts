@@ -27,6 +27,6 @@ describe("consolidated ICU staffing", () => {
     for (const module of ["IcuStaffingTeaching", "IcuStaffingByUnitTeaching", "IcuStaffingByCountryTeaching"]) {
       expect(entry.source_files).toContain(`src/components/topic/${module}.tsx`);
     }
-    expect(entry.text_chars).toBeGreaterThan(24000);
+    expect(entry.text).toContain("More than 95% of the time.");
   });
 });
