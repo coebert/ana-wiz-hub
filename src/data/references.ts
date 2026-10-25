@@ -3317,3 +3317,7 @@ for (const label of ["DHSC 2023 NHS bed-day costs", "DHSC 2023 critical care cav
   if (reference) mergedIcuCostReferences.push(reference);
 }
 topicReferences["icu-costs"] = mergedIcuCostReferences.filter((r, i, all) => all.findIndex((candidate) => candidate.label === r.label) === i);
+
+// Keep former staffing source mappings for retained teaching and audit links.
+const mergedIcuStaffingReferences = ["icu-staffing-ratios", "icu-staffing-by-unit", "icu-staffing-by-country"].flatMap((id) => topicReferences[id] ?? []);
+topicReferences["icu-staffing-ratios"] = mergedIcuStaffingReferences.filter((r, i, all) => all.findIndex((candidate) => candidate.label === r.label) === i);
