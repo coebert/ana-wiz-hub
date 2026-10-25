@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-23T19:01:21.829Z",
-  "count": 474,
+  "generatedAt": "2026-10-25T15:34:20.784Z",
+  "count": 475,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -1793,6 +1793,10 @@
     {
       "name": "UrologicalAnaesthesiaAtlas",
       "route": "/dev/diagram-snapshot/UrologicalAnaesthesiaAtlas"
+    },
+    {
+      "name": "UroPaedOperationDiagram",
+      "route": "/dev/diagram-snapshot/UroPaedOperationDiagram"
     },
     {
       "name": "UrtiAirwayDiagram",

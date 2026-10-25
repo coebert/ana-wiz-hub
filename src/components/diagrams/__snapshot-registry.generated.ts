@@ -456,6 +456,7 @@ export const diagramSnapshotRegistry: Record<string, LazyExoticComponent<Compone
   "UpperLimbVeinsDiagram": lazy(() => import("./anatomy/UpperLimbVeinsDiagram")),
   "UrineConcentrationSimulator": lazy(() => import("./physiology/UrineConcentrationSimulator")),
   "UrologicalAnaesthesiaAtlas": lazy(() => import("./../topic/UrologicalAnaesthesiaAtlas").then((m) => ({ default: m.UrologicalAnaesthesiaAtlas as ComponentType<any> }))),
+  "UroPaedOperationDiagram": lazy(() => import("./operative/UroPaedOperationDiagram")),
   "UrtiAirwayDiagram": lazy(() => import("./perioperative/UrtiAirwayDiagram")),
   "VaccineTypesDiagram": lazy(() => import("./physiology/VaccineTypesDiagram")),
   "VAECMOCircuitDiagram": lazy(() => import("./intensive-care/VAECMOCircuitDiagram")),
