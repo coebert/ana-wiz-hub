@@ -25,7 +25,7 @@ describe("consolidated ICU costs", () => {
 
   it("retains complete teaching in the private audit corpus", () => {
     const corpus = JSON.parse(readFileSync("data-build/audit-corpus.json", "utf8"));
-    const entries = Array.isArray(corpus) ? corpus : corpus.topics;
+    const entries = Array.isArray(corpus) ? corpus : corpus.entries;
     const entry = entries.find((t: { topic_id: string }) => t.topic_id === "icu-costs");
     expect(entry).toBeDefined();
     for (const module of ["IcuCostLosTeaching", "IcuCostTimelineTeaching", "IcuCostByCountryTeaching", "IcuCostByConditionTeaching", "IcuCostCalculator"]) {

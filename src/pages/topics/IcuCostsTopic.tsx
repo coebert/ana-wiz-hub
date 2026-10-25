@@ -59,7 +59,7 @@ export default function IcuCostsTopic() {
   return <TopicTemplate title="ICU Costs: NHS Trends, Conditions and International Comparisons" subtitle="Final / FFICM / EDIC — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu" topicId="icu-costs" topicTitle="ICU Costs"
     objectives={["Interpret NHS adult bed-day costs by organ support and unit type", "Describe the verified NHS cost timeline and its limitations", "Distinguish condition-level, paediatric and whole-hospital costs", "Compare international studies without equating currencies or methods", "Use historical bed-day rates for teaching arithmetic, not patient cost prediction"]}
     sectionExamMapping={{ objectives: { exams }, keyPoints: { exams } }}
-    sectionSources={{ objectives: ["NCC 2019/20 schedule", "NCC 2021/22 adult CC by organs", "Hicks 2019 mean bed-day cost", "Marti 2016 ARDS costs"] }}
+    sectionSources={{ objectives: ["NCC 2019/20 schedule"] }}
     keyPoints={[
       { text: "NHS adult critical care bed days are grouped by organs supported; unit-function costs are not diagnosis costs or tariff prices", cites: ["NCC 2019/20 schedule", "NCC 2019/20 specialist one-organ rows"] },
       { text: "Verified adult weighted averages: £1,190 in 2013/14 to £2,144 in 2021/22, about 80% higher in cash terms (our arithmetic); missing years are not interpolated", cites: ["RC 2013-14 adult CC by organs", "NCC 2021/22 adult CC by organs"] },
