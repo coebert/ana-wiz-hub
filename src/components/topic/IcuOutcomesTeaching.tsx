@@ -264,3 +264,26 @@ export function OutcomesQualityOfLifeTeaching() {
     <Check question="In Cuthbertson 2010, what was the EQ-5D utility at 5 years?">0.677; physical scores were below population norms at all time points, while mental scores were similar to norms after 6 months.</Check>
   </div>;
 }
+
+export function OutcomesByAdmissionTypeTeaching() {
+  return <div className={lessonWrap}>
+    <H>Survival by admission type (UK national audit)</H>
+    <Q label="ICNARC 2021-22 admission group mortality" />
+    <Q label="ICNARC 2021-22 source of admission" />
+    <p><Reasoning />ICNARC groups adult general critical care admissions as elective/scheduled surgery, emergency/urgent surgery or non-surgical (medical). In April 2021–March 2022, acute hospital mortality was 2.6% after elective/scheduled surgery, 15.0% after emergency/urgent surgery and 30.3% for non-surgical admissions; the corresponding survival to hospital discharge is 97.4%, 85.0% and 69.7% (arithmetic complements of the published figures). Non-surgical admissions were 63% of the total. This year included COVID-19 admissions (11.8% of admissions), which raised medical mortality, so check the year before quoting. These are unadjusted figures: the groups differ in age, severity and diagnosis, so they describe populations and must not be read as an individual patient's risk. Planned admissions after elective surgery (15.6%) are distinct from unplanned admissions after elective surgery (2.8%), which usually follow a complication.</p>
+    <H>Length of stay by admission type</H>
+    <Q label="ICNARC 2021-22 length of stay" />
+    <Q label="Rhodes 2011 post-surgical admissions" />
+    <p><Reasoning />The ICNARC summary gives length of stay for all admissions (median 2.9 days, mean 5.9), not by admission group. The median is much lower than the mean because a minority of long stays skews the distribution. In Rhodes' 88,504 post-surgical admissions to Austrian ICUs, mean ICU stay was 6.5 days with ICU mortality 7.6%. Emergency surgery doubled the odds of hospital death compared with elective surgery (OR 2.02). Elective postoperative admissions are typically short, planned stays for monitoring. Emergency surgical and medical admissions more often need prolonged organ support. Locate a source for a specific group rather than assuming a national figure applies (teaching summary). Condition-specific stays are in lesson 11.</p>
+    <H>Elective versus urgent surgery: short- and long-term</H>
+    <Q label="Oliveira 2026 elective vs urgent surgery" />
+    <p><Reasoning />In this Portuguese multicentre cohort of 13,748 surgical ICU patients, urgent surgery carried three times the in-hospital mortality of elective surgery. Among hospital survivors, long-term mortality was slightly higher after elective surgery, possibly reflecting the cancer and comorbidity burden of patients selected for major elective operations (teaching interpretation, not established by the study). A low early death rate does not mean a good long-term prognosis.</p>
+    <H>Complications</H>
+    <Q label="ISOS 2016 critical care complications" />
+    <Q label="ICNARC 2021-22 unit-acquired infection" />
+    <Q label="ICNARC 2021-22 sepsis organ dysfunction" />
+    <p><Reasoning /><strong>Elective surgical:</strong> in ISOS, half of patients admitted to critical care routinely after elective surgery developed a postoperative complication, yet only 2.4% died; patients admitted to critical care <em>to treat</em> a complication had 9.7% mortality. Routine admissions are chosen because they are high risk, so the complication rate reflects selection and is not caused by critical care. <strong>All admissions:</strong> UK-wide, unit-acquired bloodstream infection occurred at 2.4 per 1,000 patient days in admissions staying at least 48 hours. The summary does not split this by admission type. <strong>Medical and emergency:</strong> organ dysfunction on admission strongly predicts outcome. Hospital mortality with Sepsis-3 rose from 19.6% with one organ dysfunction to 64.9% with four or more, and was 57.2% in septic shock. Complications after discharge — weakness, cognitive change, PTSD, readmission — are in lessons 3–9 and are reported for ICU survivors overall rather than by admission type.</p>
+    <Check question="ICNARC 2021–22: acute hospital mortality for elective/scheduled surgical, emergency/urgent surgical and non-surgical admissions?">2.6%, 15.0% and 30.3% respectively (unadjusted).</Check>
+    <Check question="In ISOS, what proportion of routine postoperative critical care admissions developed a complication, and how many died?">50.4% developed a complication; 2.4% died.</Check>
+  </div>;
+}
