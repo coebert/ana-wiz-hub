@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## ICU cost topic consolidation
+- [ ] Combine NHS bed-day costs, timeline, conditions, PICU, international comparisons and calculator into one organised ICU Costs topic; preserve source records and old links.
+- [ ] Verify navigation, citations, calculator and search; refresh private audit coverage.
+
 ## Anaesthetic risk topic
 - [x] Add a comprehensive registered topic with qualified adverse-event frequencies, risk prediction, informed consent, four fictional worked cases and twelve-question quiz.
 - [x] Verify source labels, numeric rules, learner display, consent quotation and complete quiz; 33 final regressions pass, search includes imported lessons and uncapped private audit coverage refreshed/uploaded. Consultant review remains outstanding; live-leaflet revision provenance and full Association recommendations remain partly unverified.
