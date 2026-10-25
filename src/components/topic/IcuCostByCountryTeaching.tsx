@@ -73,7 +73,7 @@ export function CostCountryUsTeaching() {
     <H>United States: charge-derived costs</H>
     <Q label="Dasta 2005 daily cost" />
     <Q label="Dasta 2005 ventilation increment" />
-    <p><Reasoning />Dasta's 2002 figures are derived from charges in a large US database, a different method from the trust-reported costs in the NHS schedule or the microcosting in the European studies. US figures also reflect a payer system with different input prices. The comparison lesson on <L to="/intensive-care/icu-costs">ICU Costs</L> explains why these cannot be converted into NHS costs by exchange rate. For condition-level US figures, see <L to="/intensive-care/icu-cost-by-condition">ICU Cost by Condition</L>.</p>
+    <p><Reasoning />Dasta's 2002 figures are derived from charges in a large US database, a different method from the trust-reported costs in the NHS schedule or the microcosting in the European studies. US figures also reflect a payer system with different input prices. The comparison lesson on <L to="/intensive-care/icu-costs">ICU Costs</L> explains why these cannot be converted into NHS costs by exchange rate. For condition-level US figures, see <L to="/intensive-care/icu-costs#condition-summary">ICU Cost by Condition</L>.</p>
     <Check question="In Dasta 2005, how much did mechanical ventilation add per ICU day after adjustment?">About $1,522 per day.</Check>
   </div>;
 }

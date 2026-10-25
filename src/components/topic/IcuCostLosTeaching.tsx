@@ -16,14 +16,14 @@ const Table = ({ head, rows }: { head: string[]; rows: ReactNode[][] }) => <div 
 
 export function CostAverageTeaching() {
   return <div className={lessonWrap}>
-    <p>Costs for individual conditions, UK beside US, are on <L to="/intensive-care/icu-cost-by-condition">ICU Cost by Condition</L>.</p>
+    <p>Costs for individual conditions, UK beside US, are on <L to="/intensive-care/icu-costs#condition-summary">ICU Cost by Condition</L>.</p>
     <H>The headline NHS figure</H>
     <QO label="DHSC 2023 NHS bed-day costs" />
     <QO label="DHSC 2023 critical care caveat" />
     <p><Reasoning />£1,881 is the average cost of one critical care bed day in England in 2020/21, averaged across adult, paediatric and neonatal critical care. A critical care day therefore cost about 5.5 times a standard bed day (£1,881 ÷ £345 — arithmetic, not a published ratio), but the £345 excludes treatment, so the real gap is smaller. 2020/21 was a COVID-affected year.</p>
     <H>Adult-only costs from the National Schedule</H>
     <QC label="NCC 2019/20 schedule" />
-    <p><Reasoning />NHS England's National Schedule of NHS Costs lists adult critical care separately from paediatric and neonatal care, as cost per bed day for each Healthcare Resource Group (HRG). The 2019/20 schedule is the most recent one we could download and check as a spreadsheet; later years are published only through an interactive dashboard, so their figures are not quoted here. Adding up every adult critical care row in 2019/20 gives 1,326,594 bed days costing about £2.15 billion, an average of <strong>£1,620 per adult bed day</strong> (our arithmetic from the published rows). That is the last full year before COVID-19 and is in 2019/20 prices.</p>
+    <p><Reasoning />NHS England's National Schedule of NHS Costs lists adult critical care separately from paediatric and neonatal care, as cost per bed day for each Healthcare Resource Group (HRG). The 2019/20 schedule supplies the detailed unit-function breakdown and calculator below; the timeline also includes a verified 2021/22 spreadsheet. Years from 2022/23 onwards are not quoted because we could not independently verify their dashboard figures here. Adding up every adult critical care row in 2019/20 gives 1,326,594 bed days costing about £2.15 billion, an average of <strong>£1,620 per adult bed day</strong> (our arithmetic from the published rows). That is the last full year before COVID-19 and is in 2019/20 prices.</p>
     <Check question="Why is the £1,881 DHSC figure not an adult-only ICU cost?">It averages adult, paediatric and neonatal critical care (2020/21 cost collection data).</Check>
   </div>;
 }

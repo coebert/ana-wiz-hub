@@ -3308,3 +3308,12 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Edgcombe prone 2008", citation: "Edgcombe H, Carter K, Yarrow S. Anaesthesia in the prone position. Br J Anaesth. 2008;100(2):165-83.", url: "https://doi.org/10.1093/bja/aem380", reviewNote: "Review of prone physiology and complications; verbatim excerpt not captured." },
   ],
 };
+
+// Preserve original provenance records while exposing one complete bibliography.
+const icuCostSourceGroups = ["icu-costs", "icu-cost-timeline", "icu-cost-by-condition", "icu-cost-by-country"];
+const mergedIcuCostReferences = icuCostSourceGroups.flatMap((id) => topicReferences[id] ?? []);
+for (const label of ["DHSC 2023 NHS bed-day costs", "DHSC 2023 critical care caveat", "Lone 2016 hospital costs"]) {
+  const reference = topicReferences["icu-outcomes"]?.find((r) => r.label === label);
+  if (reference) mergedIcuCostReferences.push(reference);
+}
+topicReferences["icu-costs"] = mergedIcuCostReferences.filter((r, i, all) => all.findIndex((candidate) => candidate.label === r.label) === i);

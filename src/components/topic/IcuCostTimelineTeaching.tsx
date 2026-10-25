@@ -65,7 +65,7 @@ export function TimelineCaveatsTeaching() {
       <li><Reasoning />Costs, not prices: these are what trusts report spending, not tariff payments or a bill for a patient.</li>
       <li><Reasoning />Bed days fell slightly over the period, so fixed costs spread over fewer days can raise the per-day figure without more care being delivered.</li>
     </ul>
-    <p>For costs by country see <L to="/intensive-care/icu-cost-by-country">ICU Costs by Country</L>; by condition see <L to="/intensive-care/icu-cost-by-condition">ICU Cost by Condition</L>.</p>
+    <p>For costs by country see <L to="/intensive-care/icu-costs#cost-country-summary">ICU Costs by Country</L>; by condition see <L to="/intensive-care/icu-costs#condition-summary">ICU Cost by Condition</L>.</p>
     <Check question="Give two reasons the 2013/14 to 2021/22 rise overstates real growth in ICU spending.">Figures are not inflation-adjusted, and the costing method changed from Reference Costs to the National Cost Collection (plus COVID effects in 2021/22).</Check>
   </div>;
 }

@@ -252,7 +252,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "icu-costs": {
     status: "expanded",
-    note: "New page linked from ICU Outcomes: four lessons on NHS critical care bed-day costs (DHSC 2020/21; NHS National Schedule 2019/20 adult costs by organs supported and unit function, aggregates labelled arithmetic), US comparison and post-discharge costs; six-question quiz. Source-checked, not consultant-reviewed.",
+    note: "Consolidated seven-part topic: NHS adult costs, timeline, condition studies, PICU, international comparisons, post-discharge costs and calculator; original sourced teaching and quiz questions retained. Source-checked, not consultant-reviewed.",
   },
   "icu-length-of-stay": {
     status: "expanded",
