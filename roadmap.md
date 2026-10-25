@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## ICU staffing topic consolidation
+- [ ] Combine role/shift, specialist-unit and international staffing lessons into one topic, preserving sources, quizzes and existing anchors.
+- [ ] Verify navigation, old links, citations and search; refresh private audit coverage.
+
 ## ICU cost topic consolidation
 - [x] Combine NHS bed-day costs, timeline, conditions, PICU, international comparisons and calculator into one seven-part ICU Costs topic; preserve source records and old links.
 - [x] Verify navigation, bibliography retention, calculator, old URLs/hashes and search; 127 focused checks pass and private audit coverage refreshed/uploaded. The whole-library source-label check still has its pre-existing anaesthetic-risk parser issue; no new source verification or consultant review claimed.
