@@ -5,7 +5,7 @@ import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection"
 import { ExamSection } from "@/components/exam/ExamSection";
 import { Exam } from "@/data/curriculum";
 import { CostAverageTeaching, CostOrgansTeaching, CostUnitTypeTeaching, CostInternationalTeaching } from "@/components/topic/IcuCostLosTeaching";
-import { IcuCostCalculator } from "@/components/topic/IcuCostCalculator";
+import { IcuCostCalculator } from "../../components/topic/IcuCostCalculator";
 import { TimelineSeriesTeaching, TimelineOrgansTeaching, TimelineCaveatsTeaching } from "@/components/topic/IcuCostTimelineTeaching";
 import { ConditionSummaryTeaching, ConditionSepsisTeaching, ConditionPneumoniaTeaching, ConditionVentilationTeaching, ConditionChildrenTeaching } from "@/components/topic/IcuCostByConditionTeaching";
 import { CostCountrySummaryTeaching, CostCountryUkTeaching, CostCountryAustraliaTeaching, CostCountryNzTeaching, CostCountryEuropeTeaching, CostCountryUsTeaching } from "@/components/topic/IcuCostByCountryTeaching";
