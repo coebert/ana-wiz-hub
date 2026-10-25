@@ -8,7 +8,7 @@ const L = ({ to, children }: { to: string; children: ReactNode }) => <Link to={t
 
 export function StaffingOverviewTeaching() {
   return <div className={lessonWrap}>
-    <p>What GPICS V3 adds for cardiothoracic, neuro, burns, remote and rural, and enhanced care units is on <L to="/intensive-care/icu-staffing-by-unit">ICU Staffing by Unit Type</L>.</p>
+    <p>What GPICS V3 adds for cardiothoracic, neuro, burns, remote and rural, and enhanced care units is in <L to="/intensive-care/icu-staffing-ratios#unit-summary">ICU Staffing by Unit Type</L>.</p>
     <H>Minimum standards versus quality recommendations</H>
     <Q label="GPICS V3 minimum standards" />
     <p><Reasoning />GPICS V3 (January 2026) separates <strong>minimum standards</strong> (&quot;must&quot;; unmet standards are expected to be recorded on a risk register) from <strong>recommendations for a quality service</strong> (&quot;should&quot;). Every ratio on this page is a minimum, not a target. The summary below lists each role's numeric requirement and the hours it applies; the lessons that follow quote the standards word for word.</p>

@@ -33,3 +33,5 @@
 
 - Keep ICU contrast-associated AKI teaching in ContrastAkiTeaching; linked summaries must distinguish causal injury, exposure routes and named guideline thresholds, and the historical PCI score must not issue treatment clearance.
 - ICU costs use one curriculum topic with imported teaching and merged source records; legacy cost URLs preserve hashes and audit extraction is uncapped to prevent consolidation losing coverage.
+
+- ICU staffing uses one curriculum topic with retained Teaching modules and merged source records; former staffing URLs preserve queries and anchors, and uncapped audit extraction prevents coverage loss.

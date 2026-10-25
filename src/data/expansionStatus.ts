@@ -296,7 +296,7 @@ export const TOPIC_EXPANSION: Record<string, ExpansionEntry> = {
   },
   "icu-staffing-ratios": {
     status: "expanded",
-    note: "New page linked from Critical Care Overview: five lessons quoting GPICS V3 (January 2026) staffing chapters for consultants, resident doctors/ACCPs, registered nurses and nursing associates, pharmacy, AHPs and support staff, by day/night; worked nurse and pharmacist arithmetic; eight-question quiz. Source-checked, not consultant-reviewed.",
+    note: "Consolidated role/shift, specialist-unit and international staffing lessons, retaining GPICS V3, CICM IC-1, ESICM 2011 and Leapfrog 2026 quotations, worked arithmetic and all 20 quiz questions. Source-checked, not consultant-reviewed.",
   },
   "icu-eclampsia": {
     status: "expanded",

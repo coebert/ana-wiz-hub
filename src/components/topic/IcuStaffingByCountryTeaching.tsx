@@ -22,7 +22,7 @@ export function CountrySummaryTeaching() {
         <R cells={["Resident doctors", "No more than 1:8, 24/7 (with ACCPs)", "At least one other doctor rostered at all times", "Not given as a ratio", "A doctor, PA, NP or FCCS nurse can reach ICU patients within 5 minutes"]} />
         <R cells={["Ward rounds", "Twice daily, one in person", "Two bedside rounds a day (should)", "Not specified", "Not specified"]} />
       </tbody></table></div>
-    <p><Reasoning />On nursing for the sickest patients, the four agree closely: one nurse per patient. They differ most on doctors: the UK fixes a consultant ratio and a 30-minute attendance time, Australia and New Zealand require a specialist rostered to the unit at all times, and the US standard measures intensivist presence and response times rather than a ratio. Comparing them does not show which is safer; they reflect different health systems and training models.</p>
+    <p><Reasoning />On nursing for the sickest patients, the UK, Australian/New Zealand and European standards agree closely: one nurse per patient. They differ most on doctors: the UK fixes a consultant ratio and a 30-minute attendance time, Australia and New Zealand require a specialist rostered to the unit at all times, and the US standard measures intensivist presence and response times rather than a ratio. Comparing them does not show which is safer; they reflect different health systems and training models.</p>
     <Check question="On which role do the UK, Australian/New Zealand and European standards most closely agree?">Nursing for the sickest patients: one nurse per patient (1:1).</Check>
   </div>;
 }
@@ -34,7 +34,7 @@ export function CountryUkTeaching() {
     <Q label="GPICS V3 consultant ratio" />
     <Q label="GPICS V3 consultant availability" />
     <Q label="GPICS V3 resident ratio" />
-    <p><Reasoning />Full role-by-role detail is on <L to="/intensive-care/icu-staffing-ratios">ICU Staffing Ratios</L>, and specialist unit additions on <L to="/intensive-care/icu-staffing-by-unit">ICU Staffing by Unit Type</L>. GPICS covers adult units; it does not set children's ICU ratios.</p>
+    <p><Reasoning />Full role-by-role detail is on <L to="/intensive-care/icu-staffing-ratios#staffing-roles">ICU Staffing Ratios</L>, and specialist unit additions on <L to="/intensive-care/icu-staffing-ratios#unit-summary">ICU Staffing by Unit Type</L>. GPICS covers adult units; it does not set children's ICU ratios.</p>
     <Check question="How quickly must a non-resident UK ICU consultant be able to attend?">Within 30 minutes, and continually contactable 24/7.</Check>
   </div>;
 }
