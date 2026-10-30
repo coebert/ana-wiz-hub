@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-30T12:34:17.151Z",
-  "count": 475,
+  "generatedAt": "2026-10-30T14:18:02.196Z",
+  "count": 474,
   "diagrams": [
     {
       "name": "AAShuntAnimation",
@@ -119,12 +119,12 @@
       "route": "/dev/diagram-snapshot/AntibodyKineticsDiagram"
     },
     {
-      "name": "AnticoagRestartTimeline",
-      "route": "/dev/diagram-snapshot/AnticoagRestartTimeline"
-    },
-    {
       "name": "AntifungalTargetsDiagram",
       "route": "/dev/diagram-snapshot/AntifungalTargetsDiagram"
+    },
+    {
+      "name": "AntithromboticGuidelineLookup",
+      "route": "/dev/diagram-snapshot/AntithromboticGuidelineLookup"
     },
     {
       "name": "AntiviralCycleDiagram",
@@ -1157,10 +1157,6 @@
     {
       "name": "NerveDermatomeOverlayDiagram",
       "route": "/dev/diagram-snapshot/NerveDermatomeOverlayDiagram"
-    },
-    {
-      "name": "NeuraxialAnticoagRiskTool",
-      "route": "/dev/diagram-snapshot/NeuraxialAnticoagRiskTool"
     },
     {
       "name": "NeuraxialNeedlesDiagram",
