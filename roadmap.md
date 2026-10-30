@@ -1,5 +1,11 @@
 # Admin metrics audit fixes
 
+## Authorised clinical corrections — 30 October 2026
+- [ ] Replace both anticoagulation clearance tools with source-linked educational lookups; test unsafe combinations and rendered controls.
+- [ ] Complete queued D01–D20 drug corrections, duplicates and auditable saved-content changes.
+- [ ] Apply SCI-001–SCI-018 science corrections, units and unrounded boundary decisions; correct cached oxygen viva answers with before/after records.
+- [ ] Run pertinent regressions, inspect learner displays, refresh generated content and append exact outcomes/remaining limitations to the audit record. No publication or whole-content verification.
+
 ## ICU staffing topic consolidation
 - [x] Combine role/shift, specialist-unit and international staffing lessons into one three-part topic, preserving sources, all 20 quiz questions and existing anchors.
 - [x] Verify navigation, former links with queries/hashes, bibliography retention and single-topic search; 132 focused checks passed and private audit coverage refreshed/uploaded. Source quotations retain previous verification dates; no new clinical audit or consultant review claimed.

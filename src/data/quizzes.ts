@@ -25,7 +25,7 @@ export const gasLawsQuiz: QuizQuestion[] = [
     explanation: "Boyle's law states that at constant temperature, the volume of a gas is inversely proportional to its pressure. As altitude increases and cabin pressure decreases, trapped gas in a pneumothorax expands, potentially converting a simple pneumothorax to a tension pneumothorax.",
   },
   {
-    question: "A spirometry reading is taken at room temperature (20°C). Using Charles' law, by approximately what percentage does the gas volume increase when corrected to body temperature (37°C)?",
+    question: "For a fixed amount of dry gas at constant dry-gas pressure, what is the temperature-only volume increase from 20°C to 37°C using Charles' law (not a full BTPS correction)?",
     options: [
       "17%",
       "6%",
@@ -33,18 +33,18 @@ export const gasLawsQuiz: QuizQuestion[] = [
       "37%",
     ],
     correctIndex: 1,
-    explanation: "Charles' law: V₁/T₁ = V₂/T₂. Using absolute temperatures: V₂ = V₁ × (310/293) = V₁ × 1.058, approximately a 6% increase. Temperature must always be converted to Kelvin (add 273).",
+    explanation: "Charles' law: V₂ = V₁ × (310.15/293.15), approximately a 5.8% increase (nearest option 6%). Convert Celsius to kelvin by adding 273.15. This temperature-only calculation is not a complete BTPS correction, which also accounts for water-vapour pressure and measured humidity.",
   },
   {
-    question: "Using the alveolar gas equation, which of the following is the approximate PaO₂ in a patient breathing room air at sea level (PaCO₂ = 5.3 kPa, R = 0.8)?",
+    question: "Using the alveolar gas equation, what is the approximate alveolar oxygen tension PAO₂ on room air at sea level (P_B = 101.3 kPa, PH₂O = 6.3 kPa, PaCO₂ = 5.3 kPa, R = 0.8)?",
     options: [
       "20 kPa",
-      "13.6 kPa",
+      "13.3 kPa",
       "10 kPa",
       "8 kPa",
     ],
     correctIndex: 1,
-    explanation: "PAO₂ = FiO₂ × (Patm − PH₂O) − PaCO₂/R = 0.21 × (101.3 − 6.3) − 5.3/0.8 = 0.21 × 95 − 6.6 = 19.95 − 6.6 ≈ 13.4 kPa. Dalton's law underpins the calculation of partial pressures in the alveolar gas equation.",
+    explanation: "PAO₂ = 0.21 × (101.3 − 6.3) − 5.3/0.8 = 19.95 − 6.625 = 13.325 kPa, displayed as approximately 13.3 kPa. This is alveolar PAO₂, not arterial PaO₂, which may be lower because of the A–a gradient.",
   },
   {
     question: "Henry's law is most directly relevant to which of the following clinical scenarios?",
@@ -465,7 +465,7 @@ export const renalPhysiologyQuiz: QuizQuestion[] = [
 
 export const autonomicNervousQuiz: QuizQuestion[] = [
   { question: "The postganglionic neurotransmitter of the sympathetic nervous system is:", options: ["Acetylcholine", "Noradrenaline", "Dopamine", "Adrenaline"], correctIndex: 1, explanation: "Sympathetic postganglionic neurones release noradrenaline (except sweat glands which use ACh, and the adrenal medulla which releases adrenaline and noradrenaline directly into the blood). All preganglionic neurones (sympathetic and parasympathetic) use ACh." },
-  { question: "α₂-adrenoceptor agonists (e.g., clonidine, dexmedetomidine) produce sedation and analgesia by acting on:", options: ["Postsynaptic receptors in vascular smooth muscle", "Presynaptic receptors in the locus coeruleus and spinal cord", "β₁ receptors in the heart", "Muscarinic receptors in the brainstem"], correctIndex: 1, explanation: "α₂ agonists act on presynaptic autoreceptors in the locus coeruleus (sedation without respiratory depression) and spinal cord dorsal horn (analgesia). They reduce noradrenaline release via negative feedback, producing sympatholysis, sedation, and analgesia." },
+  { question: "α₂-adrenoceptor agonists (e.g., clonidine, dexmedetomidine) produce sedation and analgesia by acting on:", options: ["Postsynaptic receptors in vascular smooth muscle", "Presynaptic receptors in the locus coeruleus and spinal cord", "β₁ receptors in the heart", "Muscarinic receptors in the brainstem"], correctIndex: 1, explanation: "α₂ agonists act on presynaptic autoreceptors in the locus coeruleus (sedation with relatively less respiratory depression; obstruction, hypoventilation and apnoea remain possible and require monitoring) and spinal cord dorsal horn (analgesia). They reduce noradrenaline release via negative feedback, producing sympatholysis, sedation, and analgesia." },
   { question: "The oculocardiac reflex is mediated by:", options: ["CN V afferent, CN X efferent", "CN II afferent, CN VII efferent", "CN IX afferent, CN X efferent", "CN V afferent, CN VII efferent"], correctIndex: 0, explanation: "Pressure on the globe → afferent via CN V₁ (ophthalmic division of trigeminal) → brainstem → efferent via CN X (vagus) → bradycardia. Treatment: release pressure, atropine or glycopyrrolate if persistent." },
   { question: "The rate-limiting enzyme in noradrenaline synthesis is:", options: ["DOPA decarboxylase", "Dopamine β-hydroxylase", "Tyrosine hydroxylase", "COMT"], correctIndex: 2, explanation: "Tyrosine hydroxylase converts tyrosine to DOPA and is the rate-limiting step. The full pathway: Tyrosine → DOPA (tyrosine hydroxylase) → Dopamine (DOPA decarboxylase) → Noradrenaline (dopamine β-hydroxylase) → Adrenaline (PNMT, adrenal medulla only)." },
   { question: "The baroreceptor reflex resets in chronic hypertension, meaning:", options: ["It becomes more sensitive", "It operates around a higher set-point pressure", "It is abolished completely", "It only responds to falls in pressure"], correctIndex: 1, explanation: "In chronic hypertension, baroreceptors reset to operate around the new, higher baseline pressure. This means they defend the elevated BP as 'normal' and resist acute reductions. The reflex is not abolished but shifted to a higher operating range." },

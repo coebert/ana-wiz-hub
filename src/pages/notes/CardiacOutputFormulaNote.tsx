@@ -288,14 +288,14 @@ const CardiacOutputFormulaNote = () => (
           SvO₂ 70–75%.
         </li>
         <li>
-          <strong>Oxygen content:</strong> CaO₂ = (Hb × 1.34 × SaO₂) + (0.003 × PaO₂),
-          in mL/dL. The dissolved term is trivial except in hyperbaric
+          <strong>Oxygen content:</strong> CaO₂ (mL O₂/dL) = Hb (g/dL) × 1.34 × SaO₂ (fraction 0–1) + 0.0225 × PaO₂ (kPa); use 0.003 only with mmHg.
+          DO₂ (mL O₂/min) = CO (L/min) × CaO₂ (mL O₂/dL) × 10; omit 10 if content is mL/L. The dissolved term is small except in hyperbaric
           conditions.
         </li>
         <li>
           <strong>Fick vs thermodilution:</strong> Fick = gold standard,
           slow, needs V̇O₂ + mixed venous gas. Thermodilution = near
-          real-time, invalidated by TR / shunt / very low output.
+          real-time; affected by TR, shunts and very low output. TR does not automatically invalidate all readings or establish error direction; corroborate discordant results.
         </li>
         <li>
           <strong>Stewart–Hamilton:</strong> CO ∝ 1 / area under indicator

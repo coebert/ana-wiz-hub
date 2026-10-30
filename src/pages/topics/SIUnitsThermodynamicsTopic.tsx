@@ -21,7 +21,7 @@ const siUnitsThermodynamicsFaqs: Array<[string, string]> = [
   ],
   [
     "What is the triple point of water and why is it important?",
-    "The unique temperature and pressure (273.16 K, 611.657 Pa) at which solid, liquid and vapour water coexist in equilibrium. It defines the kelvin scale: 1 K = 1/273.16 of the temperature of the triple point. Used as the primary calibration point for thermometers because it is highly reproducible."
+    "The triple point is the condition where solid, liquid and vapour water coexist (approximately 273.16 K and 611.657 Pa). Since 20 May 2019 the kelvin has been defined by fixing the Boltzmann constant k = 1.380649 × 10⁻²³ J/K exactly. The triple point of water is a practical calibration reference in ITS-90, not the current SI definition; the fractional triple-point definition is historical."
   ]
 ];
 
@@ -45,11 +45,11 @@ const workedExamples: WorkedExample[] = [
     cites: ["Middleton Ch.8"],
   },
   {
-    title: "Spirometry temperature correction (BTPS)",
+    title: "Temperature-only expansion — not full BTPS correction",
     scenario:
-      "A patient exhales a measured volume of 4.00 L at room temperature 20 °C, ambient pressure. Using Charles' law (constant pressure), what is the equivalent volume at body temperature 37 °C?",
+      "For a fixed amount of dry gas with volume 4.00 L at 20 °C, what is its volume at 37 °C at unchanged dry-gas pressure? This is a temperature-only illustration, not full BTPS conversion.",
     working:
-      "Charles' law: V₁/T₁ = V₂/T₂ (T in Kelvin)\nT₁ = 293 K, T₂ = 310 K\nV₂ = V₁ × (T₂/T₁) = 4.00 × (310/293) = 4.23 L\nThis ~5.8% expansion is why pulmonary function values must be reported BTPS (body temperature, ambient pressure, saturated).",
+      "Charles' law: V₁/T₁ = V₂/T₂ (T in kelvin)\nT₁ = 293.15 K, T₂ = 310.15 K\nV₂ = 4.00 × (310.15/293.15) ≈ 4.23 L, a temperature-only increase of 5.8%. Full BTPS (body temperature, ambient pressure, saturated) conversion also corrects dry-gas pressure: V_BTPS = V_measured × (310.15/T_measured) × [(P_B − P_H₂O,measured)/(P_B − 6.266 kPa)]. All pressures must use kPa. Specify measured humidity and barometric pressure. With saturated gas at 20 °C (P_H₂O ≈ 2.339 kPa), P_B = 101.325 kPa, 4 L becomes approximately 4.41 L BTPS.",
     answer:
       "≈4.23 L (an increase of ~5.8%), illustrating why temperatures in gas law calculations must always be converted to Kelvin.",
     cites: ["Middleton Ch.1"],
@@ -156,8 +156,8 @@ const SIUnitsThermodynamicsTopic = () => {
               <p>
                 <strong>Why Kelvin matters for gas laws:</strong> Charles' law states V ∝ T (at constant P). If you plot volume
                 against temperature in °C and extrapolate to zero volume, the line crosses the x-axis at −273.15 °C — this is
-                absolute zero. Spirometry readings taken at room temperature (20 °C = 293 K) corrected to body temperature (37 °C = 310 K)
-                increase by 310/293 = 5.8%.
+                absolute zero. A temperature-only illustration at fixed dry-gas pressure from 20 °C (293.15 K) to 37 °C (310.15 K)
+                increases volume by approximately 5.8%; full BTPS spirometry correction additionally requires humidity and barometric-pressure adjustment.
               </p>
               <div className="bg-muted/30 rounded-lg p-4 mt-2">
                 <h3 className="text-sm font-semibold text-foreground mb-2">Quick Conversion Reference</h3>
@@ -182,8 +182,7 @@ const SIUnitsThermodynamicsTopic = () => {
               <p>
                 <strong>Core temperature</strong> is best reflected by the <strong>pulmonary artery catheter</strong> (gold
                 standard), <strong>distal oesophageal probe</strong> (lower third, near the heart), and <strong>nasopharyngeal probe</strong>
-                (reflects brain temperature). <strong>Tympanic membrane</strong> thermometry uses infrared detection (its proximity to the
-                internal carotid artery allows a rapid, non-invasive estimate of core brain temperature)<InlineRef topicId="si-units-thermodynamics" refLabel="BJA Educ 2018 (Temperature)" />.
+                (reflects brain temperature). Distinguish direct tympanic-membrane measurement from indirect infrared estimates. NICE CG65 recommendation 1.1.6 advises against indirect estimates of core temperature from infrared tympanic, infrared temporal or infrared forehead devices for perioperative temperature management<InlineRef topicId="si-units-thermodynamics" refLabel="NICE CG65" />.
 
               </p>
               <p>
@@ -203,13 +202,15 @@ const SIUnitsThermodynamicsTopic = () => {
               </div>
               <p>
                 <strong>Perioperative temperature management:</strong> Hypothermia (&lt;36 °C) prolongs neuromuscular blockade, reduces MAC, impairs platelet
-                function, increases wound infection rates, and triggers shivering (↑VO₂ 200–400%). Current UK guidance is NICE
-                <strong> NG180</strong> (Perioperative care in adults, 2020), which superseded the earlier CG65 (2008/2016).
-                NG180 defines inadvertent perioperative hypothermia as a core temperature &lt;36.0 °C, requires induction not to begin unless the
-                patient is ≥36.0 °C, and instructs that forced-air warming devices be set to maintain a patient temperature of
-                <strong> at least 36.5 °C</strong><InlineRef topicId="si-units-thermodynamics" refLabel="NICE NG180" />. The
-                superseded CG65 is retained on the NICE site for archival reference only<InlineRef topicId="si-units-thermodynamics" refLabel="NICE CG65" />.
+                function, increases wound infection rates, and triggers shivering (↑VO₂ 200–400%). Applicable UK hypothermia guidance is
+                <strong> NICE CG65</strong> (2008, updated 2016); it remains active, not superseded by NG180. Induction generally waits until core temperature is ≥36.0 °C unless clinical urgency requires expedited surgery, for example bleeding or critical limb ischaemia<InlineRef topicId="si-units-thermodynamics" refLabel="NICE CG65" />.
               </p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Start active warming before surgery if temperature is below 36.0 °C, unless clinical urgency requires expedited surgery; if ≥36.0 °C, start at least 30 minutes before induction unless this delays emergency surgery. Maintain active warming intraoperatively.</li>
+                <li>Measure and document temperature before induction and every 30 minutes to the end of surgery. Use forced-air warming from induction when anaesthesia lasts &gt;30 minutes, or for shorter procedures in higher-risk patients; consider resistive warming if unsuitable. Set forced-air warming initially at maximum, then adjust to maintain ≥36.5 °C.</li>
+                <li>Keep theatre ≥21 °C while the patient is exposed until active warming is established; cover adequately. Warm IV fluids of 500 mL or more and blood products to 37 °C; warm irrigation fluids in a controlled cabinet to 38–40 °C.</li>
+                <li>In recovery, measure on arrival and every 15 minutes; do not arrange ward transfer until ≥36.0 °C. Use active forced-air warming if below 36.0 °C. On the ward measure on arrival and with routine 4-hourly observations; if below 36.0 °C, warm actively and measure at least every 30 minutes during warming.</li>
+              </ul>
             </div>
 
             </CollapsibleSubsection>

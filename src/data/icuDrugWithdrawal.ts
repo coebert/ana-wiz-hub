@@ -148,7 +148,7 @@ export const icuDrugWithdrawal: Record<string, DrugWithdrawal> = {
       "Half-life 12–16 h (longer in renal impairment), so rebound typically peaks 18–36 h after a missed dose — often after the patient has stepped down to the ward.",
     taper: [
       "Never stop abruptly. Reduce by roughly 25% of the total daily dose every 2–3 days.",
-      "If the enteral route is lost, cover with an alternative α2 agonist (dexmedetomidine infusion) or transdermal clonidine rather than omitting doses.",
+      "A new clonidine patch takes 2–3 days to reach effect and alone is not immediate cover when enteral doses are lost. Arrange specialist monitored bridging and staged conversion based on total daily dose and response (NPPG 2024); avoid abrupt interruption.",
       "Flag the taper explicitly in the ward handover and discharge summary — this is a common cause of readmission-level hypertension.",
     ],
     monitoring: [
@@ -198,12 +198,12 @@ export const icuDrugWithdrawal: Record<string, DrugWithdrawal> = {
     offset:
       "Accumulates in hepatic and renal impairment; after a long infusion recovery may take many hours despite the short single-dose duration.",
     taper: [
-      "Stop, do not wean — hold the infusion daily and confirm return of a train-of-four count of 4 before reducing sedation.",
+      "Stop rather than taper; keep adequate sedation/analgesia while blockade persists. Assess recovery using quantitative monitoring at adductor pollicis; four visible/equal twitches do not exclude residual block. Document TOF ratio ≥0.9 before extubation.",
       "Keep sedation and analgesia unchanged until neuromuscular recovery is documented; reduce them only afterwards.",
-      "Sugammadex reverses rocuronium if urgent recovery is needed, at 16 mg/kg for a profound block.",
+      "Adult Bridion: routine reversal 2 mg/kg at T2 or 4 mg/kg at PTC 1–2. The 16 mg/kg immediate-reversal evidence/label context is about 3 minutes after rocuronium 1.2 mg/kg, not any prolonged ICU block. Reversal cannot guarantee airway rescue (emc 6409).",
     ],
     monitoring: [
-      "Train-of-four with a peripheral nerve stimulator before and after stopping.",
+      "Quantitative neuromuscular monitoring at adductor pollicis before/after stopping; document TOF ratio ≥0.9 before extubation.",
       "Ventilatory effort, cough and grip strength; early physiotherapy assessment for ICU-acquired weakness.",
       "Depth-of-anaesthesia monitoring while paralysed, since sedation cannot be assessed clinically.",
     ],
@@ -219,7 +219,7 @@ export const icuDrugWithdrawal: Record<string, DrugWithdrawal> = {
       "Reassess whether ongoing paralysis is needed at least daily — the shortest possible duration limits myopathy.",
     ],
     monitoring: [
-      "Train-of-four and clinical strength.",
+      "Quantitative TOF ratio at adductor pollicis (≥0.9 before extubation) plus clinical assessment; visible twitches alone are insufficient.",
       "Sedation depth while paralysed, then pain and agitation scores after recovery.",
     ],
   },

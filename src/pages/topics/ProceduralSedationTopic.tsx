@@ -45,7 +45,7 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "A 58-year-old man (BMI 34, fixed flexion deformity of the cervical spine) is listed for elective awake fibreoptic intubation. Plan a sedation technique that preserves spontaneous ventilation and airway reflexes.",
     working:
-      "Awake fibreoptic intubation requires conscious sedation — the patient must remain rousable, cooperative and maintain airway protective reflexes. Remifentanil TCI (Minto model, effect-site target 1–3 ng/mL) is the technique of choice: rapid onset and offset, context-insensitive half-time independent of duration, antitussive at low doses. Adjunct: small dexmedetomidine load (0.5–1 µg/kg over 10 min) provides anxiolysis and an arousable plane without respiratory depression. Avoid propofol boluses — risk of apnoea and loss of airway in a patient predicted to be difficult to ventilate.",
+      "Awake fibreoptic intubation requires conscious sedation — the patient must remain rousable, cooperative and maintain airway protective reflexes. Remifentanil TCI (Minto model, effect-site target 1–3 ng/mL) is the technique of choice: rapid onset and offset, context-insensitive half-time independent of duration, antitussive at low doses. Adjunct: small dexmedetomidine load (0.5–1 µg/kg over 10 min) provides anxiolysis and an arousable plane with relatively less respiratory depression; obstruction, hypoventilation and apnoea remain possible and require monitoring. Avoid propofol boluses — risk of apnoea and loss of airway in a patient predicted to be difficult to ventilate.",
     answer:
       "Remifentanil TCI (Minto, Ce 1–2 ng/mL, titrate up to 3) ± dexmedetomidine 0.5 µg/kg load then 0.4 µg/kg/h. Topicalise the airway thoroughly (10% lidocaine spray, 4% nebulised, superior laryngeal nerve blocks if needed). Continuous SpO₂, ETCO₂ via nasal cannula, NIBP, ECG, and a trained assistant. Difficult-airway trolley and front-of-neck access ready. Aim for a calm, cooperative, spontaneously breathing patient (Ramsay 2–3, MOAA/S 4–5).",
    cites: ["ASA 2019"],
@@ -92,7 +92,7 @@ const ProceduralSedationTopic = () => {
         { text: "TCI sedation (propofol Marsh/Schnider, remifentanil Minto) gives stable plasma/effect-site concentrations and rapid titration vs intermittent boluses", cites: ["DAS ATI 2020"] },
         { text: "Synergy: propofol + midazolam + opioid causes profound respiratory depression — use the lowest effective single agent or carefully titrated pairs", cites: ["BSG 2023"] },
         { text: "Ketamine sedation preserves airway tone, ventilation and CV stability — first-line in paediatrics, trauma, low-resource and prehospital settings", cites: ["AAGBI/RCoA 2021"] },
-        { text: "Dexmedetomidine produces 'arousable' sedation without respiratory depression — useful for AFOI, MRI, paediatric procedures and ICU bridging", cites: ["AoMRC 2013"] },
+        { text: "Dexmedetomidine produces 'arousable' sedation with relatively less respiratory depression; obstruction, hypoventilation and apnoea remain possible and require monitoring — useful for AFOI, MRI, paediatric procedures and ICU bridging", cites: ["AoMRC 2013"] },
       ]}
       coreConcepts={
         <>

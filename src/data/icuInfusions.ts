@@ -207,7 +207,7 @@ export const icuInfusionGroups: InfusionGroup[] = [
       {
         drug: "Dexmedetomidine",
         diluent: "0.9% sodium chloride or 5% glucose",
-        drawUp: "400 micrograms (4 mL of 100 micrograms/mL) in 48 mL → 50 mL total",
+        drawUp: "400 micrograms (4 mL of 100 micrograms/mL concentrate) plus 46 mL compatible diluent to FINAL volume 50 mL = 8 micrograms/mL (emc 13154)",
         concentrationPerMl: 8,
         concentrationLabel: "8 micrograms/mL",
         unit: "micrograms/kg/h",
@@ -215,7 +215,7 @@ export const icuInfusionGroups: InfusionGroup[] = [
         minDose: 0.2,
         maxDose: 1.4,
         perKg: true,
-        notes: "α₂ agonist producing 'rousable' sedation without respiratory depression; bradycardia and hypotension are dose-limiting. Do not give a loading bolus on ICU.",
+        notes: "α₂ agonist producing rousable sedation; respiratory depression is relatively less prominent, but obstruction, hypoventilation and apnoea can occur. Continuously monitor respiration, oxygenation and haemodynamics; bradycardia/hypotension are dose-limiting. No loading bolus on ICU.",
         topicIds: ["icu-sedation-delirium"],
       },
       {
@@ -311,8 +311,8 @@ export const icuInfusionGroups: InfusionGroup[] = [
       },
       {
         drug: "Epoprostenol (prostacyclin)",
-        diluent: "Supplied glycine buffer only (never 0.9% saline or glucose)",
-        drawUp: "500 micrograms vial reconstituted and made to 50 mL with buffer (10 micrograms/mL)",
+        diluent: "Formulation-specific: Flolan requires its own supplied diluent; VELETRI uses sterile water for injection or sodium chloride 0.9% as its SmPC instructs. Preparations are not interchangeable.",
+        drawUp: "IV arithmetic only: 500 micrograms to FINAL 50 mL gives 10 micrograms/mL. Reconstitution, dilution and stability must follow the exact brand SmPC, not a generic buffer recipe.",
         concentrationPerMl: 10,
         concentrationLabel: "10 micrograms/mL",
         unit: "micrograms/kg/min",
@@ -320,7 +320,7 @@ export const icuInfusionGroups: InfusionGroup[] = [
         minDose: 0.002,
         maxDose: 0.02,
         perKg: true,
-        notes: "Inhaled/IV pulmonary vasodilator also used as extracorporeal-circuit anticoagulant. Very short half-life — interruptions cause rebound pulmonary hypertension; hypotension limits IV use.",
+        notes: "IV pulmonary vasodilator also used in extracorporeal circuits. This pump arithmetic does not describe inhaled/nebulised delivery. Very short half-life: interruptions risk rebound pulmonary hypertension; hypotension limits IV use. VELETRI preparation source: emc 3113 section 6.6; Flolan requires its separate product instructions.",
         topicIds: ["pulmonary-hypertension", "rrt-icu"],
       },
     ],

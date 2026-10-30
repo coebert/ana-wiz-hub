@@ -125,7 +125,7 @@ const OxygenHaemoglobinTopic = () => {
         { text: "Right shift (↓ affinity): ↑ temp, ↑ CO₂, ↓ pH, ↑ 2,3-DPG — aids tissue O₂ delivery.", cites: ["Power & Kam Ch.7"] },
         { text: "Left shift (↑ affinity): ↓ temp, ↓ CO₂, ↑ pH, HbF, COHb, methaemoglobin — impairs O₂ offloading.", cites: ["West Ch.6"] },
         { text: "Bohr effect: ↑CO₂/H⁺ in tissues → right shift → more O₂ released. Reverses in lungs.", cites: ["BJA Educ 2004"] },
-        { text: "DO₂ = CO × [(1.34 × Hb × SaO₂) + (0.0225 × PaO₂)]; normal ~1000 mL/min.", cites: ["Power & Kam Ch.7"] },
+        { text: "DO₂ (mL/min) = CO (L/min) × CaO₂ (mL/dL) × 10. CaO₂ = 1.34 × Hb (g/dL) × SaO₂ (fraction) + 0.0225 × PaO₂ (kPa); use 0.003 for PaO₂ in mmHg. Normal resting DO₂ is approximately 1000 mL/min.", cites: ["Power & Kam Ch.7"] },
         { text: "SpO₂ is a late indicator of falling PaO₂ — pre-oxygenation provides a reservoir on the flat upper part of the curve.", cites: ["West Ch.6"] },
         { text: "Standard pulse oximetry cannot detect COHb or metHb — use co-oximetry when these are suspected.", cites: ["BJA Educ 2004"] },
       ]}
@@ -205,8 +205,8 @@ const OxygenHaemoglobinTopic = () => {
           <ExamSection id="oxygen-delivery" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_02"]}>
             <CollapsibleSubsection title="Oxygen Delivery (DO₂)">
             <p className="text-foreground/90 leading-relaxed">
-              <strong>DO₂ = CO × CaO₂</strong>, where <strong>CaO₂ = (1.34 × Hb × SaO₂) + (0.0225 × PaO₂)</strong>{" "}
-              (with Hb in g/dL and PaO₂ in kPa). Normal DO₂ ≈ 1000 mL/min; whole-body VO₂ ≈ 250 mL/min, giving an
+              <strong>DO₂ (mL/min) = CO (L/min) × CaO₂ (mL/dL) × 10</strong>, where <strong>CaO₂ (mL/dL) = (1.34 × Hb (g/dL) × SaO₂ (fraction)) + (0.0225 × PaO₂ (kPa))</strong>.{" "}
+              Use 0.003 mL/dL/mmHg for PaO₂ in mmHg, not kPa. The factor 10 converts L/min to dL/min; if CaO₂ is already mL/L, DO₂ = CO × CaO₂ without that factor. Normal DO₂ ≈ 1000 mL/min; whole-body VO₂ ≈ 250 mL/min, giving an
               extraction ratio of ~25%. The bound fraction dominates carriage; dissolved O₂ becomes meaningful only at
               very high PaO₂ (e.g. hyperbaric therapy).
             </p>
