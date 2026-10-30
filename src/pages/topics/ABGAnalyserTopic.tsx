@@ -53,7 +53,7 @@ const ABGAnalyserTopicWorkedExamples: WorkedExample[] = [
         <ol className="list-decimal list-inside space-y-1">
           <li>Recognise SpO₂ measures the ratio of two wavelengths (660/940 nm) and cannot distinguish HbO₂ from COHb (both absorb similarly at 660 nm) — falsely reassuring</li>
           <li>Co-oximetry on the ABG uses ≥4 wavelengths and reports fractional saturations (HbO₂, HHb, COHb, MetHb) — gold standard</li>
-          <li>Calculate true oxygen content: CaO₂ = (1.34 × Hb × fractional SaO₂) + (0.003 × PaO₂); CO poisoning markedly reduces CaO₂ despite normal PaO₂</li>
+          <li>Calculate oxygen content in mL O₂/dL: CaO₂ = 1.34 × Hb (g/dL) × fractional SaO₂ (0–1) + 0.0225 × PaO₂ (kPa); use 0.003 only with PaO₂ in mmHg. CO poisoning reduces CaO₂ despite normal PaO₂.</li>
           <li>Treat with 100% O₂ via tight-fitting reservoir mask (t½ of COHb falls from 320 min to 80 min)</li>
           <li>Consider hyperbaric O₂ if COHb &gt;25%, neurological signs, pregnancy, or syncope/seizure</li>
         </ol>

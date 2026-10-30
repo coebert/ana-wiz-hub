@@ -718,7 +718,7 @@ export const pharmacologyCaseBank: CaseBank = {
           prompt: "What second-line measures might be needed?",
           answer: [
             "Refractory bronchospasm may need salbutamol, and refractory hypotension may need a noradrenaline or vasopressin infusion and additional fluid; glucagon is useful if the patient is on a beta-blocker and unresponsive to adrenaline.",
-            "Antihistamines and corticosteroids are given as second-line adjuncts but are not first-line treatment and must not delay adrenaline.",
+            "Antihistamines and corticosteroids are not useful for immediate ABC treatment; corticosteroids are not routine and have no established biphasic-prevention benefit. After stabilisation, a non-sedating oral antihistamine may relieve persistent skin symptoms (RCUK 2021/2024).",
             "Take a timed mast cell tryptase sample as soon as feasible after resuscitation, then at 1–2 hours and at 24 hours or convalescence for a baseline, since tryptase rises acutely and falls over hours.",
           ],
         },

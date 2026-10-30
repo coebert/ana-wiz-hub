@@ -35,3 +35,5 @@
 - ICU costs use one curriculum topic with imported teaching and merged source records; legacy cost URLs preserve hashes and audit extraction is uncapped to prevent consolidation losing coverage.
 
 - ICU staffing uses one curriculum topic with retained Teaching modules and merged source records; former staffing URLs preserve queries and anchors, and uncapped audit extraction prevents coverage loss.
+- Antithrombotic tools share an educational source lookup with no patient clearance or generated restart timing; incomplete inputs cannot establish clinical suitability.
+- Anaesthesia calculator arithmetic lives in a tested shared module with scoped product limits and explicit required weight bases; display rounding must never determine boundary decisions.
