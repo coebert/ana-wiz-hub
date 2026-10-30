@@ -348,7 +348,7 @@ const UltrasoundPhysicsTopic = () => {
                 between two strong parallel reflectors (e.g., pleura-air interface). In lung ultrasound, A-lines indicate an
                 <strong> air-containing interface</strong> — seen in normally aerated lung and in pneumothorax. <strong>B-lines</strong> (comet-tail artefact) are vertical hyperechoic lines
                 extending from the pleural line to the screen edge without fading — occasional B-lines occur in healthy lungs, while an excess or diffuse pattern may indicate <strong>interstitial syndrome</strong>
-                from multiple causes (e.g. cardiogenic or non-cardiogenic oedema, pneumonitis, fibrosis) and are not specific
+                from multiple causes (e.g. cardiogenic or non-cardiogenic oedema, pneumonitis, fibrosis); B-lines are not specific
                 for cardiogenic oedema. Multiple B-lines are interpreted by their number, distribution (focal vs diffuse,
                 bilateral) and clinical context, not by a single per-rib-space cut-off.
               </p>
