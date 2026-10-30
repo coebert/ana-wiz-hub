@@ -953,6 +953,8 @@ export type Database = {
       podcasts: {
         Row: {
           audio_path: string | null
+          audit_hold: boolean
+          audit_hold_reason: string | null
           content_hash: string | null
           created_at: string
           duration_seconds: number | null
@@ -968,6 +970,8 @@ export type Database = {
         }
         Insert: {
           audio_path?: string | null
+          audit_hold?: boolean
+          audit_hold_reason?: string | null
           content_hash?: string | null
           created_at?: string
           duration_seconds?: number | null
@@ -983,6 +987,8 @@ export type Database = {
         }
         Update: {
           audio_path?: string | null
+          audit_hold?: boolean
+          audit_hold_reason?: string | null
           content_hash?: string | null
           created_at?: string
           duration_seconds?: number | null

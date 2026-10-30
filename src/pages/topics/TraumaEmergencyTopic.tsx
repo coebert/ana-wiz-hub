@@ -154,7 +154,7 @@ const workedExamples: WorkedExample[] = [
           <li><strong>Recognise the pattern.</strong> Massive transfusion + ↓ iCa²⁺ (&lt; 0.9) + ↑ K⁺ + acidosis + impaired contractility = <strong>citrate toxicity</strong>.</li>
           <li><strong>Mechanism.</strong> Stored blood contains citrate (anticoagulant). Citrate chelates ionised Ca²⁺. Hepatic hypoperfusion in shock prevents normal citrate metabolism → it accumulates.</li>
           <li><strong>Treat ↓ iCa²⁺ now.</strong> 10 mL of 10% calcium chloride IV (= 6.8 mmol Ca²⁺) OR 30 mL of 10% calcium gluconate (= 6.6 mmol Ca²⁺). CaCl₂ delivers 3× more elemental calcium per mL but is more vesicant — central line preferred.</li>
-          <li><strong>Treat hyperkalaemia.</strong> 10 units soluble insulin in 100 mL 20% dextrose ± 5 mg salbutamol nebuliser; the calcium just given also stabilises the myocardium.</li>
+          <li><strong>Treat hyperkalaemia.</strong> 10 units soluble insulin with 25 g glucose (125 mL 20%, 50 mL 50%, or 250 mL 10%) per local protocol; nebulised salbutamol 10–20 mg as an adjunct. The calcium also stabilises the myocardium. Check glucose at baseline, 30, 60, 90, 120, 180, 240, 300 and 360 minutes; extend if high risk/repeated dosing. Pretreatment glucose &lt;7 mmol/L: follow with 10% glucose 50 mL/h for 5 h. <InlineRef topicId="trauma-emergency" refLabel="UKKA Hyperkalaemia July 2026" /></li>
           <li><strong>Address the lethal triad.</strong> Active warming (Bair Hugger + warmed fluids); correct acidosis by restoring perfusion (not bicarbonate); ROTEM/TEG to guide further FFP/cryo/platelets.</li>
           <li><strong>Repeat ABG every 30 min</strong> during ongoing MHP — iCa²⁺ &gt; 1.0, K⁺ &lt; 5.5, pH &gt; 7.25, temp &gt; 36 °C.</li>
         </ol>

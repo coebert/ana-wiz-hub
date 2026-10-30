@@ -81,7 +81,7 @@ const regionalFaqs: Array<[string, string]> = [
   ],
   [
     "How long should anticoagulants be stopped before a neuraxial block?",
-    "Per AAGBI 2013 (ESAIC 2022 intervals are similar but sometimes longer, e.g. 7 days for ticagrelor and prasugrel): prophylactic LMWH 12 h, treatment-dose LMWH 24 h; unfractionated heparin (s/c prophylaxis) 4 h with normal APTT; warfarin INR < 1.4; clopidogrel 7 days; ticagrelor 5 days; rivaroxaban prophylactic 18 h, treatment 48 h; apixaban prophylactic 24–48 h; dabigatran 48–96 h (renal-function dependent). Aspirin and NSAIDs alone do not preclude neuraxial. The same intervals apply to catheter removal.",
+    "Use the named guideline and local specialist protocol, not a generic clearance interval. ESAIC/ESRA 2022 R17 gives clopidogrel 5–7 days and ticagrelor 5 days before neuraxial procedures; catheter removal follows neuraxial interruption rules (R36). DOAC rules depend on agent, dose category, renal function and other clinical factors; ASRA fifth edition 2025 is a separate source, not interchangeable with historical AAGBI intervals. Single-shot spinal is neuraxial. Assess last dose, haemostasis, traumatic puncture and catheter status; routine PT/APTT/TEG cannot certify DOAC or platelet safety. The educational lookup gives no patient-specific timing or clearance.",
   ],
 ];
 
@@ -674,7 +674,7 @@ const RegionalAnaesthesiaTopic = () => {
             pitfalls={[
               "Spinal vs epidural: spinal — small dose into CSF, rapid dense block, single shot; epidural — large dose into potential space, slow titratable block via catheter.",
               "Always perform stop-before-you-block and check side, level, anticoagulation and consent — wrong-side blocks are a 'never event'.",
-              "Neuraxial anticoagulation timing (AAGBI): prophylactic LMWH 12 h before, treatment dose 24 h, DOACs 48–72 h depending on agent and renal function.",
+              "Use separate ESAIC/ESRA 2022 or ASRA 2025 source lookups for neuraxial and catheter decisions; dose, renal function, last administration and haemostasis matter. Never infer clearance from a generic DOAC interval.",
               "Total spinal: rapid ascending block with bradycardia, hypotension and apnoea — treat with airway support, vasopressors, atropine and fluids.",
               "Use ultrasound + nerve stimulation for peripheral blocks; intraneural injection causes high pressures (>15 psi) — stop immediately.",
             ]}

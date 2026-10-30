@@ -305,11 +305,9 @@ const EndocrinePhysiologyTopic = () => {
                 disease, stiff-joint syndrome and difficult airway in long-standing type 1).
               </li>
               <li>
-                <strong>Medication review</strong>: omit <strong>SGLT2 inhibitors</strong> for at least 3 days before major
-                surgery and on the day of any procedure (euglycaemic DKA risk); omit <strong>metformin</strong> on the day
+                <strong>Medication review</strong>: omit <strong>SGLT2 inhibitors</strong> the day before and day of procedure under UK multidisciplinary 2025 consensus (euglycaemic DKA risk); omit <strong>metformin</strong> on the day
                 of surgery if more than one meal is missed or contrast/renal impairment is expected; omit sulfonylureas on
-                the morning of surgery (hypoglycaemia); GLP-1 receptor agonists may be continued but consider gastric
-                residue and aspiration risk.
+                the morning of surgery (hypoglycaemia); continue GLP-1/GIP agents with individual aspiration-risk assessment and mitigation (UK multidisciplinary 2025).
               </li>
               <li>
                 <strong>Type 1 diabetes</strong>: <em>never</em> stop basal insulin. Reduce long-acting basal by ~20% the

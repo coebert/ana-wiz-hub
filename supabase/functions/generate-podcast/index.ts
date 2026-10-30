@@ -1689,6 +1689,10 @@ Deno.serve(async (req) => {
       .eq("voice", voiceIdResolved)
       .maybeSingle();
 
+    if (existing?.audit_hold === true) {
+      return jsonResponse({ status: "failed", audit_hold: true, error: existing.audit_hold_reason ?? "Clinical audit hold: a reviewed script and matching replacement recording are required." }, 409);
+    }
+
     // The spoken script is accent-independent — reuse it from any other voice's
     // ready episode for this topic instead of paying for a fresh LLM script.
     let reusedScript: string | null = null;
@@ -1698,6 +1702,7 @@ Deno.serve(async (req) => {
         .select("script")
         .eq("topic_id", topicId)
         .eq("status", "ready")
+        .eq("audit_hold", false)
         .not("script", "is", null)
         .limit(1)
         .maybeSingle();

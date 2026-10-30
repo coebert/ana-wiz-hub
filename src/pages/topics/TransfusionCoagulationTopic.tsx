@@ -39,7 +39,7 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "32-year-old, RTC, pelvic and femur fractures, BP 78/40, HR 138, FAST positive, Hb 68 on point-of-care. ABG: pH 7.18, lactate 6.8, iCa²⁺ 0.86, temperature 34.4°C.",
     working:
-      "Activate MHP: 1:1:1 (PRBC:FFP:platelets) packs. Give TXA 1 g IV bolus as soon as possible and within 3 h (CRASH-2); the follow-on 1 g over 8 h is retained by most UK major-haemorrhage protocols and is clearly indicated in isolated traumatic brain injury, where CRASH-3 showed benefit in mild-to-moderate injury given within 3 h — in elective non-cardiac surgery a single 1 g bolus is the standard regimen (POISE-3). Address lethal triad: warm fluids/forced-air warming → temperature; correct acidosis by source control + perfusion; coagulopathy by 1:1:1 + cryo or fibrinogen concentrate to keep fibrinogen >1.5–2 g/L. Citrate-induced hypocalcaemia: 10 mL CaCl₂ 10% per 4 units PRBC and whenever iCa²⁺ <1.0. Damage control resuscitation — permissive hypotension (SBP 80–90) until surgical/IR control. Send ROTEM to switch from empiric ratios to goal-directed.",
+      "Activate MHP: 1:1:1 (PRBC:FFP:platelets) packs. Give TXA 1 g IV bolus as soon as possible and within 3 h (CRASH-2); the follow-on 1 g over 8 h is retained by most UK major-haemorrhage protocols and is clearly indicated in isolated traumatic brain injury, where CRASH-3 showed benefit in mild-to-moderate injury given within 3 h — POISE-3 in non-cardiac surgery studied 1 g IV at the start AND 1 g at the end of surgery, not a universal elective-surgery regimen. Address lethal triad: warm fluids/forced-air warming → temperature; correct acidosis by source control + perfusion; coagulopathy by 1:1:1 + cryo or fibrinogen concentrate to keep fibrinogen >1.5–2 g/L. Citrate-induced hypocalcaemia: 10 mL CaCl₂ 10% per 4 units PRBC and whenever iCa²⁺ <1.0. Damage control resuscitation — permissive hypotension (SBP 80–90) until surgical/IR control. Send ROTEM to switch from empiric ratios to goal-directed.",
     answer:
       "Activate MHP, TXA within 3 h, 1:1:1 ratio, calcium replacement, active warming, permissive hypotension, urgent damage-control surgery/IR. Transition to ROTEM-guided once available.",
     cites: ["BSH 2017"],
@@ -59,10 +59,10 @@ const workedExamples: WorkedExample[] = [
     scenario:
       "Septic shock from urosepsis, day 2 ICU. Platelets 42 ×10⁹/L, PT prolonged 8 s above control, fibrinogen 0.9 g/L, D-dimer strongly raised, oozing from cannulae.",
     working:
-      "ISTH points: platelets 42 → 2; PT prolongation >6 s → 2; fibrinogen <1 g/L → 1; D-dimer strong increase → 3. Total = 8 (≥5 = overt DIC). Confirm clinical bleeding + microvascular thrombosis suspicion. Differentiate from TTP (normal coag screen + ADAMTS13 <10%) and from hepatic coagulopathy (FVIII low in liver disease, preserved in DIC).",
+      "ISTH points: platelets 42 → 2; PT prolongation >6 s → 2; fibrinogen <1 g/L → 1; D-dimer strong increase → 3. Total = 8 (≥5 = overt DIC). Confirm clinical bleeding + microvascular thrombosis suspicion. Differentiate from TTP (normal coag screen + ADAMTS13 <10%) and from hepatic coagulopathy using clinical context and serial laboratories; factor VIII may be normal or elevated in both and cannot reliably distinguish them.",
     answer:
       "Overt DIC (score 8). Treat the cause (source control + appropriate antimicrobials). Replace to clinical targets: platelets >50, fibrinogen >1.5 g/L (cryo or fibrinogen concentrate), FFP if PT ratio >1.5 + bleeding. Avoid TXA unless ROTEM confirms hyperfibrinolysis (ML >15%).",
-    cites: ["BJA Educ 2015"],
+    cites: ["BJA Educ 2015", "Factor VIII diagnostic study 2024"],
   },
 ];
 
@@ -107,11 +107,11 @@ const TransfusionCoagulationTopic = () => {
         { text: "Cell salvage washes shed blood, suspends RBCs in saline (Hct ~50–70%), and removes plasma, platelets, heparin, free Hb and most cytokines — returned blood has NO clotting factors or platelets", cites: ["BSH 2017"] },
         { text: "ICS contraindications are largely relative — sickle cell disease, contamination with iodine/topical haemostats, and pharmacological agents not licensed for IV use; obstetric and oncological use is now supported with a leucodepletion filter (NICE TA/OAA-AAGBI)", cites: ["NICE NG24"] },
         { text: "ROTEM/TEG enables goal-directed transfusion — FIBTEM guides fibrinogen, EXTEM guides FFP/platelets", cites: ["BJA Educ 2015"] },
-        { text: "TXA within 3 hours of trauma reduces mortality (CRASH-2: 1 g bolus then 1 g over 8 h). In elective non-cardiac surgery the regimen is a single 1 g bolus, which reduced bleeding in POISE-3 but did not meet non-inferiority for the cardiovascular composite — so weigh bleeding against thrombotic risk", cites: ["CRASH-2 2010", "POISE-3 2022"] },
+        { text: "TXA within 3 hours of trauma reduces mortality (CRASH-2: 1 g bolus then 1 g over 8 h). POISE-3 studied 1 g IV at the start and 1 g IV at the end of non-cardiac surgery, reducing bleeding but not establishing cardiovascular non-inferiority — so weigh bleeding against thrombotic risk", cites: ["CRASH-2 2010", "POISE-3 2022"] },
         { text: "Massive transfusion: hypocalcaemia is the most dangerous metabolic complication — give CaCl₂ early", cites: ["NICE NG24"] },
         { text: "Lethal triad: hypothermia + acidosis + coagulopathy — damage control resuscitation breaks the cycle", cites: ["BJA Educ 2015"] },
         { text: "DIC: ISTH score ≥5 = overt DIC. Treat the underlying cause — the most important intervention", cites: ["BSH 2017"] },
-        { text: "DIC vs TTP: coagulation screen normal in TTP, abnormal in DIC. Never give platelets in TTP", cites: ["NICE NG24"] },
+        { text: "DIC vs TTP: coagulation screen normal in TTP, abnormal in DIC. Avoid prophylactic platelet transfusion in TTP; life-threatening haemorrhage may justify transfusion with urgent specialist haematology input", cites: ["BSH Platelets 2021"] },
         { text: "TXA contraindicated in DIC with predominant thrombosis — only if hyperfibrinolysis dominant", cites: ["BJA Educ 2015"] },
       ]}
       coreConcepts={
@@ -296,7 +296,7 @@ const TransfusionCoagulationTopic = () => {
             <div className="p-3 rounded-lg bg-secondary/50 border border-destructive/30">
               <p className="text-sm font-semibold text-foreground mb-1">⚠️ TRALI vs TACO at the bedside</p>
               <p className="text-sm text-muted-foreground">
-                Both present with hypoxia and bilateral infiltrates within 6 h of transfusion. <strong>TRALI</strong>: normal CVP, no S3, BNP normal, fever common, transient leucopenia, worsens with fluid challenge — supportive ventilation only. <strong>TACO</strong>: raised CVP/JVP, S3, BNP &gt;1.5× baseline, hypertension, responds to diuresis. SHOT consistently reports TACO as the leading cause of transfusion-related death in the UK; TRALI incidence has fallen ~10-fold since the male-donor FFP policy. <InlineRef topicId="transfusion-coagulation" refLabel="SHOT 2023" /> In isolated traumatic brain injury, TXA 1 g over 10 min then 1 g over 8 h within 3 h of injury reduced head-injury-related death in mild-to-moderate TBI, whereas a single 1 g bolus is the regimen validated in elective non-cardiac surgery.<InlineRef topicId="transfusion-coagulation" refLabel="CRASH-3 2019" /><InlineRef topicId="transfusion-coagulation" refLabel="POISE-3 2022" />
+                Both present with hypoxia and bilateral infiltrates within 6 h of transfusion. <strong>TRALI</strong>: normal CVP, no S3, BNP normal, fever common, transient leucopenia, worsens with fluid challenge — supportive ventilation only. <strong>TACO</strong>: raised CVP/JVP, S3, BNP &gt;1.5× baseline, hypertension, responds to diuresis. SHOT consistently reports TACO as the leading cause of transfusion-related death in the UK; TRALI incidence has fallen ~10-fold since the male-donor FFP policy. <InlineRef topicId="transfusion-coagulation" refLabel="SHOT 2023" /> In isolated traumatic brain injury, TXA 1 g over 10 min then 1 g over 8 h within 3 h of injury reduced head-injury-related death in mild-to-moderate TBI, whereas POISE-3 studied 1 g IV at the start and 1 g IV at the end of non-cardiac surgery; this is trial evidence, not a universal prescription.<InlineRef topicId="transfusion-coagulation" refLabel="CRASH-3 2019" /><InlineRef topicId="transfusion-coagulation" refLabel="POISE-3 2022" />
               </p>
             </div>
 

@@ -93,7 +93,7 @@ const workedExamples: WorkedExample[] = [
           <ul className="list-disc list-inside space-y-1 text-foreground">
             <li>Stopping Lantus in a type 1 patient → DKA on the table.</li>
             <li>Running VRIII without a substrate (dextrose-containing fluid) → hypoglycaemia.</li>
-            <li>Forgetting to scan for ketones if hyperglycaemic — euglycaemic DKA is now common with SGLT2 inhibitors (stop 3 days pre-op).</li>
+            <li>Forgetting to scan for ketones if hyperglycaemic — SGLT2 inhibitors can cause euglycaemic DKA even with near-normal glucose; UK multidisciplinary 2025 omits day before/day of procedure.</li>
           </ul>
         </div>
       </div>
@@ -147,7 +147,7 @@ const CorticosteroidsTopic = () => {
         { text: "Addisonian crisis: refractory hypotension + hypoglycaemia + hyperkalaemia + hyponatraemia. IV hydrocortisone 100 mg", cites: ["Peck & Hill Ch.17"] },
         { text: "Type 1 diabetes: NEVER stop basal insulin (DKA risk). Continue Lantus at 80% the night before surgery", cites: ["AAGBI Steroid Cover"] },
         { text: "Carbimazole inhibits thyroid peroxidase; takes 4–6 weeks. PTU also blocks peripheral T₄→T₃. Risk: agranulocytosis", cites: ["BJA Educ 2012"] },
-        { text: "SGLT2 inhibitors → euglycaemic DKA. Stop 3 days before elective surgery (CPOC 2021)", cites: ["Peck & Hill Ch.17"] },
+        { text: "SGLT2 inhibitors → euglycaemic DKA. UK multidisciplinary 2025: omit day before/day of procedure", cites: ["Peck & Hill Ch.17"] },
       ]}
       coreConcepts={
         <>

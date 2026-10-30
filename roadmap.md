@@ -1,5 +1,12 @@
 # Admin metrics audit fixes
 
+## Clinical audit batch 4 — 30 October 2026
+- [ ] Hold exact ROOT-01/02/05 faulty podcast rows, preserve originals, explain hold and link current sources; only release with corrected script and matching audio.
+- [ ] Apply CL-11–18 and static GBS/MIP/DNC corrections including matching quizzes/FAQs/cases.
+- [ ] Inspect D21–30 current drug fields, consolidate prior tool fixes, apply remaining exact product corrections and content-only before/after audit.
+- [ ] Correct named ROOT saved viva/Ask claims; inspect matching variants and record IDs.
+- [ ] Run relevant tests/typecheck and browser safeguards; refresh local copies and append audit counts/sources/results/blockers. No publication.
+
 ## Authorised clinical corrections — 30 October 2026
 - [x] Replace both anticoagulation clearance tools with source-linked educational lookups; test unsafe combinations and rendered controls.
 - [ ] D01–D20 remaining scope: exact ropivacaine/prilocaine product-route adoption, blocked SNAP source and residual saved product fields need verified sources; unsafe universal calculators withheld.

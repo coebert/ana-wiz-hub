@@ -29,12 +29,12 @@ const objectives = [
 
 const keyPoints = [
   {
-    text: "Standard fasting (6 h solids, 2 h clear fluids) does not guarantee an empty stomach in gastroparesis, bowel obstruction, achalasia or opioid/GLP-1 receptor agonist use — treat as 'full stomach' regardless of fasting time.",
+    text: "Standard fasting (6 h solids, 2 h clear fluids) does not guarantee an empty stomach in gastroparesis, bowel obstruction, achalasia or opioid use; GLP-1/GIP therapy warrants individual risk assessment rather than automatic full-stomach classification.",
     cites: ["AoA Fasting 2019", "BJA Educ Aspiration 2014"],
   },
   {
-    text: "GLP-1 receptor agonists (semaglutide, liraglutide, tirzepatide) delay gastric emptying; guidance advises holding the dose for a full dosing interval (once weekly ≥ 1 week; daily ≥ 1 day) before elective anaesthesia and treating as high aspiration risk if GI symptoms persist.",
-    cites: ["AoA Fasting 2019", "BJA Educ Aspiration 2014"],
+    text: "UK multidisciplinary 2025 consensus: continue GLP-1/GIP agents with individual aspiration-risk assessment, mitigation and shared decision-making; symptoms alone cannot determine gastric contents.",
+    cites: ["UK diabetes consensus 2025"],
   },
   {
     text: "Rapid sequence induction: preoxygenate to ETO₂ > 90%, cricoid pressure (10 N awake → 30 N on loss of consciousness) is now applied selectively, rapid-onset agent (propofol/ketamine) with suxamethonium 1–1.5 mg/kg or rocuronium 1.2 mg/kg, cuffed tracheal tube secured before ventilation.",
@@ -147,7 +147,7 @@ const workedExamples: WorkedExample[] = [
 ];
 
 const gastrointestinalDiseaseFaqs: Array<[string, string]> = [
-  ["Do standard fasting times protect patients on GLP-1 receptor agonists from aspiration?", "Not reliably. GLP-1 receptor agonists (semaglutide, liraglutide, tirzepatide) delay gastric emptying even in fasted patients. Guidance recommends holding the drug for one dosing interval before elective surgery (≥1 week for weekly formulations, ≥1 day for daily ones) and treating the patient as high aspiration risk — considering RSI or gastric ultrasound — if GI symptoms (nausea, bloating, vomiting) persist or the drug could not be withheld."],
+  ["Do standard fasting times protect patients on GLP-1 receptor agonists from aspiration?", "Fasting does not guarantee an empty stomach, but UK multidisciplinary 2025 guidance recommends continuing GLP-1/GIP agents with individual aspiration-risk assessment, mitigation and shared decision-making. Symptoms alone do not establish gastric contents. Consider regional anaesthesia, appropriate airway strategy and gastric ultrasound when indicated. Historical withholding advice is not the current UK default."],
   ["Should biologics and thiopurines be stopped before surgery in IBD?", "For elective surgery, anti-TNF agents are often timed to trough levels (avoiding surgery in the days immediately after an infusion) because of an association with wound and infective complications, though evidence is mixed and disease control should not be sacrificed. Thiopurines (azathioprine/6-mercaptopurine) are usually continued. For emergency surgery (e.g. acute severe colitis), immunosuppression is not a reason to delay a life-saving operation."],
   ["What are the NICE criteria for 'high risk' of refeeding syndrome and how does this change feeding?", "High risk = one major criterion (BMI <16, unintentional weight loss >15% in 3-6 months, little/no nutritional intake for >10 days, or low potassium/phosphate/magnesium before feeding) or two minor criteria (BMI <18.5, weight loss >10% in 3-6 months, little/no intake >5 days, alcohol misuse or drugs including insulin, chemotherapy, antacids or diuretics). High-risk patients start at 10 kcal/kg/day (5 kcal/kg/day if extreme risk, e.g. BMI <14 or negligible intake >15 days), rising slowly over 4-7 days, with thiamine 200-300 mg/day and proactive potassium, phosphate and magnesium replacement started before or with feeding."],
   ["Why is a high-output stoma dangerous before anaesthesia?", "Outputs above 1500-2000 mL/day cause depletion of sodium, magnesium and water (the small bowel cannot compensate as the colon would), producing a contracted extracellular volume with secondary hyperaldosteronism and a thirsty, hyponatraemic patient who drinks hypotonic fluid and worsens losses further. Correct with a glucose-saline oral rehydration solution, loperamide/codeine to slow transit, and IV magnesium/sodium replacement guided by daily electrolytes before elective induction; treat as hypovolaemic even with a normal-looking blood pressure."],
@@ -219,8 +219,8 @@ const GastrointestinalDiseaseTopic = () => {
                   <h3 className="font-semibold text-foreground mb-2">Fasting Rules and Their Limits</h3>
                   <ul className="list-disc list-inside space-y-1 text-sm">
                     <li>Standard elective fasting: <strong>6 hours for solids/milk/formula, 2 hours for clear fluids</strong> (up to and including the time of surgery, "sip till send" encouraged) <InlineRef topicId="gastrointestinal-disease" refLabel="AoA Fasting 2019" />.</li>
-                    <li>These rules assume normal gastric emptying — they do <strong>not</strong> protect against aspiration in gastroparesis, achalasia, bowel obstruction, or recent opioid/GLP-1 receptor agonist use; such patients should be managed as "full stomach" irrespective of fasting duration.</li>
-                    <li>GLP-1 receptor agonists: hold for one dosing interval before elective anaesthesia (≥ 1 week for weekly formulations, ≥ 1 day for daily ones); if not held, or if GI symptoms present, treat as high aspiration risk (consider RSI or point-of-care gastric ultrasound) <InlineRef topicId="gastrointestinal-disease" refLabel="AoA Fasting 2019" />.</li>
+                    <li>These rules assume normal gastric emptying — they do <strong>not</strong> protect against aspiration in gastroparesis, achalasia, bowel obstruction, or opioid use. For GLP-1/GIP therapy use individual risk assessment, not automatic full-stomach classification.</li>
+                    <li>GLP-1/GIP agents: continue under UK multidisciplinary 2025 consensus, with individual aspiration-risk assessment, mitigation and shared decisions; symptoms alone cannot determine gastric contents <InlineRef topicId="gastrointestinal-disease" refLabel="UK diabetes consensus 2025" />.</li>
                   </ul>
                 </div>
                 <div className="bg-card border border-border rounded-lg p-4">

@@ -3,6 +3,8 @@ import { DEFAULT_PODCAST_VOICE } from "@/lib/podcastVoices";
 
 export interface PodcastResult {
   status: "ready" | "generating" | "failed";
+  audit_hold?: boolean;
+  audit_hold_reason?: string;
   audio_url?: string;
   script?: string;
   duration_seconds?: number;
@@ -221,12 +223,13 @@ export const fetchPodcast = async (
   const voice = voiceId ?? DEFAULT_PODCAST_VOICE;
   const { data, error } = await supabase
     .from("podcasts")
-    .select("status, audio_path, script, duration_seconds, updated_at, voice")
+    .select("status, audio_path, script, duration_seconds, updated_at, voice, audit_hold, audit_hold_reason")
     .eq("topic_id", topicId)
     .eq("voice", voice)
     .maybeSingle();
 
   if (error || !data) return null;
+  if (data.audit_hold) return { status: "failed", audit_hold: true, audit_hold_reason: data.audit_hold_reason ?? undefined, voice: data.voice ?? undefined };
   if (data.status !== "ready" || !data.audio_path) {
     return {
       status: data.status as PodcastResult["status"],
@@ -260,6 +263,7 @@ export const fetchRecordedVoices = async (topicId: string): Promise<string[]> =>
     .select("voice")
     .eq("topic_id", topicId)
     .eq("status", "ready")
+    .eq("audit_hold", false)
     .not("audio_path", "is", null);
   if (error || !data) return [];
   const voices = data
