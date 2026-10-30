@@ -396,7 +396,7 @@ const BurnsIcuTopic = () => {
               "Parkland: 4 mL/kg/%TBSA Hartmann's over 24 h, half in first 8 h from injury — titrate to UO 0.5 mL/kg/h (1 mL/kg/h in children, electrical burns).",
               "Airway burn signs: facial burns, singed nasal hairs, soot, stridor, hoarseness — intubate early.",
               "Escharotomy for circumferential full-thickness burns of limbs (compartment syndrome) or chest (ventilation).",
-              "Suxamethonium safe in first 24 h; avoid 24 h–12 months due to extrajunctional ACh receptor proliferation (hyperkalaemia).",
+              "Salisbury burns protocol: avoid suxamethonium after the initial 24 h. Assess other contraindications even during the first 24 h; continuing hyperkalaemia risk depends on injury and healing, with no universal fixed safe end date.",
               "Nutrition: hypermetabolic state — early enteral feeding, high protein (1.5–2 g/kg/day), micronutrient supplementation.",
             ]}
           />
