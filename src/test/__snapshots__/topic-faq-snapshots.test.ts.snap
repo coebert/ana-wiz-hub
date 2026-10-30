@@ -1691,7 +1691,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/intensive-care/organ-donation": [
     {
-      "a": "Coma of known irreversible cause, exclusion of confounders (drugs, core temperature <36 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, oculocephalic, oculovestibular, gag, cough) and an apnoea test from a starting PaCO₂ ≥5.3 kPa to an end PaCO₂ ≥8.0 kPa, a rise ≥2.7 kPa and pH <7.30 after at least 5 minutes (AoMRC 2025).",
+      "a": "Coma of known irreversible cause, exclusion of confounders (drugs, core temperature <36 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, vestibulo-ocular, motor response in the cranial nerve distribution, gag and cough) and an apnoea test from a starting PaCO₂ ≥5.3 kPa to an end PaCO₂ ≥8.0 kPa, a rise ≥2.7 kPa and pH <7.30 after at least 5 minutes (AoMRC 2025).",
       "q": "What are the UK criteria for brainstem death testing?",
     },
     {
@@ -6875,7 +6875,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Coma of known irreversible cause, exclusion of confounders (drugs, core temperature <36 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, oculocephalic, oculovestibular, gag, cough) and an apnoea test from a starting PaCO₂ ≥5.3 kPa to an end PaCO₂ ≥8.0 kPa, a rise ≥2.7 kPa and pH <7.30 after at least 5 minutes (AoMRC 2025).",
+          "text": "Coma of known irreversible cause, exclusion of confounders (drugs, core temperature <36 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, vestibulo-ocular, motor response in the cranial nerve distribution, gag and cough) and an apnoea test from a starting PaCO₂ ≥5.3 kPa to an end PaCO₂ ≥8.0 kPa, a rise ≥2.7 kPa and pH <7.30 after at least 5 minutes (AoMRC 2025).",
         },
         "name": "What are the UK criteria for brainstem death testing?",
       },
