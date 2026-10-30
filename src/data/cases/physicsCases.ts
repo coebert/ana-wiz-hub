@@ -242,9 +242,9 @@ export const physicsCaseBank: CaseBank = {
         },
         {
           title: "Manage the fire",
-          prompt: "What is the immediate sequence?",
+          prompt: "What immediate coordinated actions are required?",
           answer: [
-            "In order: announce 'Airway fire' and stop lasing; stop the flow of all airway gases; disconnect the breathing system; remove the tracheal tube and any burning material; pour saline into the airway.",
+            "Announce 'Airway fire'. Immediately coordinate stopping the laser, stopping all airway gases/disconnecting the circuit, removing the burning tube/material and extinguishing with saline or water. Each team member performs their allocated action immediately; gas cessation and tube removal should be as nearly simultaneous as possible. Nobody waits for another task to finish.",
             "Re-establish ventilation with air (oxygen only once the fire is out and if needed), then reintubate and inspect the airway with bronchoscopy for thermal injury and debris.",
             "Continue with humidified oxygen as required, consider critical care admission, and treat inhalational injury and oedema.",
           ],
@@ -261,10 +261,10 @@ export const physicsCaseBank: CaseBank = {
       ],
       detailedAnswer: [
         { title: "Clinical reasoning", content: "Laser output combines high irradiance with a specific wavelength. CO₂ lasers (10.6 µm) are absorbed by water and cut superficially, while Nd:YAG (1064 nm, or 1.064 µm) penetrates deeper — determining both tissue effect and eye-protection requirements. A fire needs fuel (tube, swabs, drapes), an oxidiser (oxygen or nitrous oxide) and an ignition source (the laser); anaesthetic control is mainly over the oxidiser and the fuel." },
-        { title: "Management and monitoring", content: "Rehearse the fire drill so the sequence is automatic: stop laser, stop gases, remove fuel, extinguish with saline, then reassess airway and ventilation. After the fire, expect airway oedema, mucosal burn and carbonaceous debris; plan bronchoscopy, consider corticosteroids case-by-case and secure critical care support. Non-technical skills — a pre-lasing brief and clear shared FiO₂ target — prevent most events." },
-        { title: "Exam pitfall", content: "Do not begin with 'remove the tube' without stopping the oxygen supply, and do not omit the wider laser-safety framework (eye protection, controlled area, smoke evacuation) which examiners expect alongside fire management." },
+        { title: "Management and monitoring", content: "Rehearse coordinated immediate actions: stop laser, stop airway gases/disconnect, remove burning fuel and extinguish with saline/water without waiting for another team member. Then reassess airway and ventilation; expect oedema, mucosal burn and debris, plan bronchoscopy and critical care support. A pre-lasing brief and agreed oxidiser precautions are essential." },
+        { title: "Exam pitfall", content: "Do not delay immediate tube removal while waiting for another team member to stop gases. Coordinate both actions as nearly simultaneously as possible. Retain eye protection, controlled-area and smoke-evacuation precautions." },
       ],
-      takeHome: "Control the oxidiser and the fuel before lasing; if fire occurs, stop the laser and gases, remove the burning tube, flood with saline, then reassess the airway.",
+      takeHome: "Control oxidiser and fuel before lasing; if fire occurs, immediately coordinate stopping laser/gases, circuit disconnection, burning-tube removal and saline/water extinguishing. Nobody waits. Then reassess the airway.",
       sourceLinks: [s.lasers, s.airwayFire],
     },
     {

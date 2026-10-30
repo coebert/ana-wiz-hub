@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { HYPERKALAEMIA_TEACHING } from "@/lib/clinical-audit-rules";
 import { RrtTimingTeaching } from "@/components/topic/RrtTimingTeaching";
 import { RrtIntensityTeaching } from "@/components/topic/RrtIntensityTeaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
@@ -49,7 +50,7 @@ const akiFaqs: Array<[string, string]> = [
   ],
   [
     "When and how do I manage severe hyperkalaemia in AKI?",
-    "Treat urgently if K⁺ > 6.5 mmol/L OR any K⁺ with ECG changes (peaked T waves, widened QRS, sine wave, bradyarrhythmia). 10 mL of 10% calcium chloride (or 30 mL 10% calcium gluconate) IV over 5–10 min — cardioprotective, onset within minutes, lasts 30–60 min, repeat as needed. Shift K⁺ intracellularly: 10 units soluble insulin in 50 mL 50% dextrose IV (or 100 mL 20% dextrose) over 15–30 min, monitor glucose hourly for 6 h (delayed hypoglycaemia in 10–20%); nebulised salbutamol 10–20 mg (additive with insulin/dextrose). Sodium bicarbonate only if profound metabolic acidosis. Remove K⁺: loop diuretic if responsive, oral / rectal potassium binders (patiromer, sodium zirconium cyclosilicate — replacing calcium resonium), or RRT (definitive in AKI). Address the cause: stop ACE-i / ARB / spironolactone / K⁺ supplements; treat rhabdomyolysis / tumour lysis; haemolysis sample? UK Renal Association 2020 guideline is the reference.",
+    HYPERKALAEMIA_TEACHING,
   ],
 ];
 

@@ -116,10 +116,10 @@ const workedExamples: WorkedExample[] = [
             Continuous cardiac monitoring; treat as a medical emergency in parallel with surgical preparation — do not delay life-saving surgery, but stabilise potassium first if at all possible.
           </li>
           <li>
-            Cardioprotection: <strong>calcium chloride 10 mL 10% IV</strong> (or calcium gluconate 30 mL 10% if only peripheral access) over 2–5 minutes, repeated if ECG changes persist after 5 minutes — does not lower potassium but stabilises the myocardium.
+            Adult non-arrest ECG-toxic hyperkalaemia: <strong>calcium gluconate 30 mL 10% IV over 10 minutes</strong>; equivalent-calcium chloride 10 mL 10% IV over 5 minutes is preferred in arrest/peri-arrest under the resuscitation protocol. Monitor ECG and reassess — calcium does not lower potassium. <InlineRef topicId="renal-disease" refLabel="UKKA Hyperkalaemia July 2026" />
           </li>
           <li>
-            Shift potassium intracellularly: <strong>insulin 10 units (Actrapid) in 25 g glucose IV</strong> (50 mL 50% glucose or 250 mL 10% glucose) over 15–30 minutes, plus <strong>nebulised salbutamol 10–20 mg</strong>; monitor capillary glucose for at least 4–6 hours after (risk of delayed hypoglycaemia).
+            Shift potassium intracellularly: <strong>10 units soluble insulin with 25 g glucose IV</strong> (125 mL 20%, 50 mL 50% or 250 mL 10%) per local protocol, plus <strong>nebulised salbutamol 10–20 mg</strong>. Check glucose at baseline, 30, 60, 90, 120, 180, 240, 300 and 360 minutes; extend for high risk/repeated doses. If pretreatment glucose &lt;7 mmol/L, follow with 10% glucose 50 mL/h for 5 h.
           </li>
           <li>
             Consider sodium bicarbonate 50–100 mL 8.4% IV if significant metabolic acidosis coexists (limited efficacy in isolation but useful adjunct in mixed acidosis/hyperkalaemia).
@@ -321,11 +321,11 @@ const RenalDiseaseTopic = () => {
                 <div className="bg-card border border-border rounded-lg p-4">
                   <h3 className="font-semibold text-foreground mb-2">Hyperkalaemia Treatment Ladder</h3>
                   <ul className="list-disc list-inside space-y-1 text-sm">
-                    <li><strong>1. Cardioprotection</strong>: calcium chloride 10 mL 10% IV (central line preferred) or calcium gluconate 30 mL 10% IV peripherally, over 2–5 minutes; repeat after 5 minutes if ECG changes persist. Does not lower potassium.</li>
+                    <li><strong>1. Cardioprotection</strong>: calcium gluconate 30 mL 10% IV over 10 minutes for non-arrest ECG-toxic hyperkalaemia. Equivalent calcium chloride 10 mL 10% over 5 minutes is preferred in arrest/peri-arrest per resuscitation protocol. Monitor ECG and reassess; does not lower potassium.</li>
                     <li><strong>2. Shift potassium intracellularly</strong>: insulin 10 units (soluble/Actrapid) in 25 g glucose IV (50 mL 50% or 250 mL 10% glucose) over 15–30 minutes; nebulised salbutamol 10–20 mg (higher than the standard bronchodilator dose).</li>
                     <li><strong>3. Sodium bicarbonate</strong> 50–100 mL 8.4% IV — useful adjunct if concurrent metabolic acidosis, of limited benefit as monotherapy.</li>
-                    <li><strong>4. Removal of potassium</strong>: definitive treatment is haemodialysis; loop diuretics if some residual renal function; calcium resonium is slow-acting and rarely useful acutely.</li>
-                    <li>Monitor capillary glucose for at least 4–6 hours post insulin/dextrose (delayed hypoglycaemia); continuous cardiac monitoring throughout.</li>
+                    <li><strong>4. Removal of potassium</strong>: dialysis when indicated, loop diuretics if responsive; oral sodium zirconium cyclosilicate or oral patiromer are adjuncts, not substitutes for immediate measures. UKKA July 2026 no longer recommends calcium resonium.</li>
+                    <li>Check glucose at baseline, 30, 60, 90, 120, 180, 240, 300 and 360 minutes; extend for high risk/repeated insulin doses. If pretreatment glucose &lt;7 mmol/L, follow insulin-glucose with 10% glucose 50 mL/h for 5 h. <InlineRef topicId="renal-disease" refLabel="UKKA Hyperkalaemia July 2026" /></li>
                   </ul>
                 </div>
                 <div className="bg-card border border-border rounded-lg p-4">
