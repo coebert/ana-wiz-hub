@@ -18,8 +18,8 @@ const ventilationPerfusionFaqs: Array<[string, string]> = [
     "Zone 1 (apex) — alveolar pressure > arterial > venous; no flow (alveolar dead space). Zone 2 — arterial > alveolar > venous; flow driven by arterial − alveolar pressure ('waterfall'). Zone 3 (base) — arterial > venous > alveolar; flow driven by arterial − venous (continuous). Zone 1 normally absent but appears with hypotension, PEEP overshoot, or PE."
   ],
   [
-    "Define shunt and V/Q mismatch, and how does 100 % oxygen distinguish them?",
-    "Shunt — perfused but not ventilated (V/Q = 0); blood bypasses gas exchange entirely (pneumonia, atelectasis, ARDS, intracardiac). 100 % O₂ does NOT correct shunt (>30 % shunt: PaO₂ ceiling). V/Q mismatch — areas of low V/Q ratio; partial gas exchange occurs; 100 % O₂ corrects hypoxaemia by filling poorly ventilated alveoli with O₂. Differentiating the two guides therapy (PEEP/recruitment for shunt vs bronchodilators for mismatch)."
+    "Define shunt and V/Q mismatch, and how do their responses to supplemental oxygen differ?",
+    "Shunt — perfused but not ventilated (V/Q = 0); blood bypasses gas exchange entirely (pneumonia, atelectasis, ARDS, intracardiac). Shunted blood bypasses ventilated alveoli, so supplemental oxygen has limited effect on it. V/Q mismatch — areas of low V/Q ratio; partial gas exchange occurs; low-V/Q units generally respond better to supplemental oxygen than true shunt. The whole-arterial response depends on the shunt fraction, mixed venous O₂ content and the ventilated units; neither the oxygen response nor a fixed 30% threshold alone determines treatment."
   ],
   [
     "What is hypoxic pulmonary vasoconstriction and why does it matter for one-lung ventilation?",
@@ -296,7 +296,7 @@ const VentilationPerfusionTopic = () => {
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Shunt</h2>
               <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-                <li><strong>True shunt</strong> (V/Q = 0): blood passes through non-ventilated lung (atelectasis, consolidation, ARDS). Does NOT respond to supplemental O₂</li>
+                <li><strong>True shunt</strong> (V/Q = 0): blood passes through non-ventilated lung (atelectasis, consolidation, ARDS). Shunted blood bypasses ventilated alveoli, so supplemental O₂ has limited effect; the arterial response depends on shunt fraction, mixed venous content and ventilated units</li>
                 <li><strong>Physiological shunt</strong>: bronchial circulation (~1-2% CO) + Thebesian veins → normal ~2-5% shunt</li>
                 <li><strong>HPV</strong>: low alveolar PO₂ → local pulmonary artery constriction → diverts blood to better-ventilated regions. Inhibited by volatile agents, vasodilators, sepsis</li>
                 <li><strong>Inhaled nitric oxide</strong> reaches ventilated alveoli and selectively dilates their adjacent pulmonary vessels, redirecting flow towards well-ventilated units, reducing shunt and transiently improving oxygenation in ARDS. Unlike inhaled therapy, IV vasodilators dilate vessels globally and may worsen V/Q mismatch <InlineRef topicId="ventilation-perfusion" refLabel="Biomedicines 2022 iNO" />.</li>
@@ -435,7 +435,7 @@ const VentilationPerfusionTopic = () => {
 
           <ExamPitfallsCallout
             pitfalls={[
-              <><strong>Shunt vs V/Q mismatch</strong>: shunt fails to correct with 100% O₂; V/Q mismatch does — single most tested point.</>,
+              <><strong>Shunt vs V/Q mismatch</strong>: low-V/Q units generally respond better to supplemental O₂ than true shunt, but the overall arterial response depends on shunt fraction, mixed venous content and ventilated units.</>,
               <><strong>Volatile agents abolish HPV</strong> at high doses — TIVA preferred for one-lung ventilation when oxygenation marginal.</>,
               <><strong>PEEP overshoot</strong>: too much PEEP creates West zone 1, increasing dead space and dropping cardiac output.</>,
               <><strong>EtCO₂–PaCO₂ gradient widens</strong> with dead space — seen with PE, low cardiac output or air trapping, but nonspecific and not diagnostic of PE.</>,
