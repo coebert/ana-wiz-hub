@@ -90,7 +90,7 @@ describe("D39 prose-derived preparation badges", () => {
   it("explicit final volume renders correct units", () => {
     expect(formatMassConcentration(extractMassDilutions("20 micrograms in 50 mL final volume")[0].mgPerMl)).toBe("0.4 mcg/mL");
     expect(formatMassConcentration(extractMassDilutions("2 mg in 50 mL final volume")[0].mgPerMl)).toBe("40 mcg/mL");
-    expect(formatMassConcentration(0.0000004)).toBe("0.4 ng/mL");
+    expect(formatMassConcentration(0.00004)).toBe("40 ng/mL");
     const { container } = render(<PreparationGuide raw="Give 20 micrograms in 50 mL final volume." drug={{} as never} />);
     expect(container.textContent).toContain("0.4 mcg/mL");
     expect(container.innerHTML).not.toMatch(/0\.000/);

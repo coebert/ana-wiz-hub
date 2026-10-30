@@ -116,7 +116,7 @@ export function formatMix(n: NormalisedStandard): string {
 export function formatMassConcentration(mgPerMl: number): string {
   if (!pos(mgPerMl)) return "";
   const sig = (n: number) => Number(n.toPrecision(3)).toString();
-  return mgPerMl >= 1 ? `${sig(mgPerMl)} mg/mL` : mgPerMl >= 0.001 ? `${sig(mgPerMl * 1000)} mcg/mL` : `${sig(mgPerMl * 1e6)} ng/mL`;
+  return mgPerMl >= 1 ? `${sig(mgPerMl)} mg/mL` : mgPerMl >= 0.0001 ? `${sig(mgPerMl * 1000)} mcg/mL` : `${sig(mgPerMl * 1e6)} ng/mL`;
 }
 
 /**
