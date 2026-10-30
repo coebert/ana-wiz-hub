@@ -47,7 +47,7 @@ const workedExamples: WorkedExample[] = [
         <ol className="list-decimal list-inside space-y-1">
           <li><strong>Pick the right relationship.</strong> Reversible adiabatic process for an ideal gas: T₂ = T₁ × (P₂ / P₁)<sup>(γ−1)/γ</sup>.</li>
           <li><strong>Compute the exponent.</strong> (γ − 1) / γ = 0.4 / 1.4 ≈ 0.286.</li>
-          <li><strong>Substitute.</strong> T₂ = 293 × (1 / 138)<sup>0.286</sup> ≈ 293 × 0.266 ≈ <strong>78 K (≈ −195 °C)</strong>.</li>
+          <li><strong>Substitute.</strong> T₂ = 293 × (1 / 138)<sup>0.285714…</sup> ≈ 293 × 0.2447 ≈ <strong>71.7 K (−201.5 °C), approximately 72 K (−201 °C)</strong>.</li>
           <li><strong>Reality check.</strong> This is a reversible ideal-gas comparison, not a measured discharge prediction. A real emptying cylinder is an open, unsteady system with wall heat transfer; its surface temperature cannot be inferred from this calculation.</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
@@ -61,7 +61,7 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer:
-      "The reversible ideal-gas comparison gives ~78 K (−195 °C). It does not predict a real cylinder’s final gas or surface temperature: mass outflow, irreversible processes, heat transfer and real-gas behaviour require separate consideration.",
+      "The reversible ideal-gas comparison gives 71.7 K (−201.5 °C), approximately 72 K (−201 °C). It does not predict a real cylinder’s final gas or surface temperature: mass outflow, irreversible processes, heat transfer and real-gas behaviour require separate consideration.",
    cites: ["Peck & Hill Ch.1"],
   },
   {
@@ -267,8 +267,7 @@ const GasLawsTopic = () => {
             <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
               <p className="text-sm font-medium text-foreground">Clinical Application</p>
               <p className="text-sm text-muted-foreground mt-1">
-                Spirometry measurements taken at room temperature (ATPS) must be corrected to body conditions (BTPS) using
-                Charles' law, as gas expands approximately 6% when warmed from 20°C to 37°C (310/293 = 1.058).
+                Warming a fixed amount of dry gas from 20°C to 37°C at fixed dry-gas pressure expands it by approximately 5.8% (310.15/293.15). This is only a temperature illustration, not a complete ATPS-to-BTPS spirometry correction. Full conversion includes humidity: V_BTPS = V_measured × (310.15/T_measured in K) × [(P_B − P_H₂O,measured)/(P_B − 6.266 kPa)], with all pressures in kPa. Barometric pressure and measured humidity must be specified; 4 L of saturated gas at 20°C (P_H₂O ≈ 2.339 kPa), P_B = 101.325 kPa, becomes approximately 4.41 L BTPS.
               </p>
             </div>
             </CollapsibleSubsection>

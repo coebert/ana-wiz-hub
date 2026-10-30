@@ -109,7 +109,7 @@ const CoreConcepts = () => (
         <li><span className="font-medium text-foreground">Define the type of shock</span> using a haemodynamic profile (CO, SVR, preload, oxygenation indices).</li>
         <li><span className="font-medium text-foreground">Predict fluid responsiveness</span> before committing to volume that may worsen lung water.</li>
         <li><span className="font-medium text-foreground">Titrate vasoactive drugs</span> (inotropes vs vasopressors) to a physiological endpoint.</li>
-        <li><span className="font-medium text-foreground">Calculate oxygen delivery</span> (DO₂ = CO × CaO₂) — the link between haemodynamics and tissue oxygenation.</li>
+        <li><span className="font-medium text-foreground">Calculate oxygen delivery</span> (DO₂ in mL/min = CO in L/min × CaO₂ in mL/dL × 10, or CO × CaO₂ when content is mL/L) — the link between haemodynamics and tissue oxygenation.</li>
         <li><span className="font-medium text-foreground">Detect and trend deterioration</span> earlier than BP, lactate, or urine output.</li>
       </ul>
     </div>
@@ -121,10 +121,10 @@ const CoreConcepts = () => (
         <div className="rounded-lg border border-border p-4">
           <p className="font-semibold text-foreground text-sm mb-1">Fick principle (the reference standard)</p>
           <p className="text-sm text-muted-foreground">
-            CO = VO₂ / (CaO₂ − CvO₂). The volume of oxygen consumed per minute equals the difference in O₂ content between arterial and mixed venous blood multiplied by the flow. Requires steady-state VO₂ (metabolic cart), arterial blood gas, and a true mixed venous sample from the PA. Accurate but cumbersome — used to validate other methods rather than at the bedside.
+            CO (L/min) = VO₂ (mL/min) / [(CaO₂ − CvO₂) (mL/dL) × 10]. With content instead expressed in mL/L, CO = VO₂ / (CaO₂ − CvO₂) without the factor 10. The volume of oxygen consumed per minute equals the difference in O₂ content between arterial and mixed venous blood multiplied by the flow. Requires steady-state VO₂ (metabolic cart), arterial blood gas, and a true mixed venous sample from the PA. Accurate but cumbersome — used to validate other methods rather than at the bedside.
           </p>
           <ul className="text-sm text-muted-foreground list-disc pl-5 space-y-1 mt-2">
-            <li><strong>Oxygen content:</strong> CxO₂ = (Hb × 1.34 × SxO₂) + (PxO₂ × 0.023) mL/dL, with PO₂ in kPa (0.003 if mmHg). CaO₂ uses arterial values; CvO₂ uses a true mixed venous sample from the pulmonary artery.</li>
+            <li><strong>Oxygen content:</strong> CxO₂ (mL/dL) = (Hb (g/dL) × 1.34 × SxO₂ (fraction)) + (PxO₂ (kPa) × 0.0225); use 0.003 if PO₂ is in mmHg. CaO₂ uses arterial values; CvO₂ uses a true mixed venous sample from the pulmonary artery.</li>
             <li><strong>VO₂:</strong> measured by indirect calorimetry (metabolic cart) from inspired–expired O₂ differences and minute ventilation; normally about 250 mL/min (≈ 120–140 mL/min/m²).</li>
             <li><strong>Error sources:</strong> requires a steady metabolic state; VO₂ measurement is inaccurate at high FiO₂ and with circuit leaks in ventilated patients; needs simultaneous arterial and PAC samples; intrapulmonary O₂ consumption in inflamed lungs is not counted. Hence a research or validation tool rather than a bedside monitor.<InlineRef topicId="cardiac-output-monitoring" refLabel="BJA 2017 (Non-invasive CO accuracy)" /></li>
           </ul>
@@ -386,7 +386,7 @@ const CoreConcepts = () => (
     <div>
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">9. Oxygen Delivery, SvO₂ & ScvO₂</h2>
       <p className="text-muted-foreground leading-relaxed mb-3">
-        CO matters because it drives oxygen delivery: <span className="font-mono text-foreground">DO₂ = CO × CaO₂ = CO × (1.34 × Hb × SaO₂ + 0.003 × PaO₂)</span> ≈ 1000 mL/min in a 70 kg adult. Tissue extraction (VO₂ ≈ 250 mL/min) gives a normal mixed venous saturation of 65–75%.
+        CO matters because it drives oxygen delivery: <span className="font-mono text-foreground">DO₂ (mL/min) = CO (L/min) × CaO₂ (mL/dL) × 10; CaO₂ = 1.34 × Hb (g/dL) × SaO₂ (fraction) + 0.0225 × PaO₂ (kPa)</span>. Use 0.003 for PaO₂ in mmHg. With CaO₂ already in mL/L, omit ×10. Resting DO₂ is approximately 1000 mL/min in a 70 kg adult. Tissue extraction (VO₂ ≈ 250 mL/min) gives a normal mixed venous saturation of 65–75%.
       </p>
       <div className="grid sm:grid-cols-2 gap-3">
         <div className="rounded-lg border border-border p-4">
