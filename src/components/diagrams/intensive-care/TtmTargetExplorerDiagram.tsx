@@ -80,7 +80,7 @@ const targets: Record<Target, TargetMeta> = {
     temp: 37.5,
     color: "hsl(140, 50%, 45%)",
     evidence:
-      "TTM2 (Dankiewicz 2021, n=1900): 33 °C vs normothermia with early fever treatment (≥37.8 °C trigger) showed no difference in 6-month mortality (50 vs 48 %) or poor neurological outcome (55 % both). Now the default for adult OHCA in most ICUs.",
+      "TTM2 (Dankiewicz 2021, n=1900): 33 °C vs normothermia ≤37.5 °C (device trigger ≥37.8 °C) showed no difference in 6-month mortality (50 vs 48 %) or poor neurological outcome (55 % both). Now the default for adult OHCA in most ICUs.",
     rationale:
       "Active fever prevention targeting ≤ 37.5 °C (RCUK / ERC–ESICM 2025). Avoids the harms of deeper cooling while preventing fever-driven secondary brain injury.",
     pros: [
@@ -337,7 +337,7 @@ const TtmTargetExplorerDiagram = () => {
           </div>
   
           <p className="text-[11px] text-muted-foreground mt-2 italic text-center">
-            Tip: TTM2 (2021) is the largest contemporary RCT — found 33 °C no better than normothermia with fever treated at ≥ 37.8 °C. RCUK / ERC–ESICM 2025 now target ≤ 37.5 °C fever prevention in comatose survivors (≥ 72 h in the RCUK algorithm).
+            Tip: TTM2 (2021) is the largest contemporary RCT — found 33 °C no better than normothermia ≤ 37.5 °C (device trigger ≥ 37.8 °C). RCUK / ERC–ESICM 2025 now target ≤ 37.5 °C fever prevention in comatose survivors (≥ 72 h in the RCUK algorithm).
           </p>
         </div>
       </div>

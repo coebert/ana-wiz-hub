@@ -46,3 +46,8 @@ src/pages/topics/{ClinicalIncidents,AirwayManagement,CardiacArrestPostResus,Paed
 - Elective MH-susceptible preparation (vapour-free machine) left unchanged — correct for planned cases.
 - Verbatim reference excerpts quoting the superseded 37.7 °C (TTM2/ILCOR 2022 entries) left unchanged as historical quotations.
 - RCUK 2026 algorithm PDFs, DAS 2025 full text and Wiley 2024 article were not re-read in this batch.
+
+## Batch 2 (in progress, 30 Oct 2026)
+
+- CL-08 refinement applied: TTM2 normothermia arm described as targeting ≤37.5 °C with device trigger ≥37.8 °C (CardiacArrestPostResusTopic, quizzes, Neuroprognostication, TtmTargetExplorerDiagram). The historical comparison is kept; the equivalence overclaim stays removed.
+- NOT YET STARTED: NeuraxialAnticoagRiskTool / AnticoagRestartTimeline replacement (urgent), drug findings D01–D20, database drug-entry corrections.
