@@ -228,7 +228,13 @@ export const fetchPodcast = async (
     .eq("voice", voice)
     .maybeSingle();
 
-  if (error || !data) return null;
+  if (error) return null;
+  if (!data || data.status !== "ready") {
+    const { data: held } = await supabase.from("podcasts")
+      .select("audit_hold_reason, voice").eq("topic_id", topicId).eq("audit_hold", true).limit(1).maybeSingle();
+    if (held) return { status: "failed", audit_hold: true, audit_hold_reason: held.audit_hold_reason ?? undefined, voice: held.voice ?? undefined };
+  }
+  if (!data) return null;
   if (data.audit_hold) return { status: "failed", audit_hold: true, audit_hold_reason: data.audit_hold_reason ?? undefined, voice: data.voice ?? undefined };
   if (data.status !== "ready" || !data.audio_path) {
     return {
