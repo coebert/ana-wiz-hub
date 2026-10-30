@@ -943,7 +943,7 @@ export const physicsCaseBank: CaseBank = {
           title: "Consider persistent failure",
           prompt: "What if shocks continue to fail despite good technique?",
           answer: [
-            "Consider changing pad position (anteroposterior), using a second defibrillator in rapid sequential (double sequential) defibrillation as per advanced protocols if refractory, and reassess reversible causes (the 4 Hs and 4 Ts).",
+            "After three failed shocks with correct antero-lateral pads, consider a vector change to antero-posterior pads and reassess reversible causes (the 4 Hs and 4 Ts). RCUK 2025 does not recommend routine dual (double) sequential defibrillation with two devices.",
             "Ensure amiodarone (or lidocaine) is given per algorithm timing to increase the chance of successful cardioversion on subsequent shocks.",
             "Confirm the defibrillator itself is functioning correctly (pad connections, battery, self-test) if there is any suspicion of equipment fault.",
           ],
@@ -951,7 +951,7 @@ export const physicsCaseBank: CaseBank = {
       ],
       detailedAnswer: [
         { title: "Clinical reasoning", content: "Defibrillation success depends on delivering sufficient current density through the myocardium to depolarise a critical mass simultaneously and allow the sinoatrial node to resume control. Transthoracic impedance is the major determinant of current for a given energy setting, and modern biphasic waveforms partly compensate for impedance variation but cannot fully overcome very high-impedance conditions." },
-        { title: "Management and monitoring", content: "Optimise pad contact and placement as the highest-yield intervention before considering waveform or protocol changes, and maintain high-quality CPR with minimal peri-shock pause. For refractory ventricular fibrillation, follow escalation pathways including antiarrhythmic drugs, alternative pad vectors and, where available, double sequential defibrillation, alongside a systematic search for reversible causes." },
+        { title: "Management and monitoring", content: "Optimise pad contact and placement as the highest-yield intervention before considering waveform or protocol changes, and maintain high-quality CPR with minimal peri-shock pause. For refractory ventricular fibrillation, follow escalation pathways including antiarrhythmic drugs and an antero-posterior vector change (RCUK 2025 does not recommend routine dual sequential defibrillation), alongside a systematic search for reversible causes." },
         { title: "Exam pitfall", content: "Do not attribute failed defibrillation solely to 'not enough energy'; examiners expect impedance as the central physical concept, with hair, contact and pad placement as the practical, immediately correctable factors." },
       ],
       takeHome: "Failed defibrillation is usually an impedance problem before it is an energy problem: optimise pad contact, hair removal and placement, then follow the escalation algorithm.",

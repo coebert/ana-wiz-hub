@@ -34,7 +34,7 @@ const arrestFaqs: Array<[string, string]> = [
   ],
   [
     "When should defibrillation energy be escalated and what's the role of dual sequential defibrillation?",
-    "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. The ERC 2021 guidelines predate DOSE-VF; subsequent ILCOR (2023) treatment recommendations suggest vector change or DSED may be considered for refractory VF — follow local protocols, and note DOSE-VF was a single-system Canadian trial stopped early by COVID-19.",
+    "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. That is trial evidence, not the UK recommendation: DOSE-VF was a single-system Canadian trial stopped early by COVID-19. RCUK 2025 advises considering a vector change (antero-posterior pads) after three failed shocks once correct antero-lateral positioning is ensured, and does not recommend routine dual (double) sequential defibrillation.",
   ],
   [
     "Does adrenaline actually improve outcome — what did PARAMEDIC2 show?",
@@ -42,7 +42,7 @@ const arrestFaqs: Array<[string, string]> = [
   ],
   [
     "Should I cool post-arrest patients to 33 °C or aim for active normothermia? What changed after TTM2?",
-    "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) demonstrated equivalence of 33 °C and 36 °C — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with active normothermia (≤ 37.5 °C, fever treated aggressively) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. The 2022 ERC–ESICM temperature-control update therefore recommends continuous core-temperature monitoring and active prevention of fever (> 37.7 °C) for at least 72 hours, and states there is insufficient evidence to recommend for or against cooling to 32–36 °C in subpopulations. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
+    "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) found no significant difference between 33 °C and 36 °C (no superiority shown; this is not proof of equivalence) — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with normothermia and early treatment of fever (device cooling triggered at ≥ 37.8 °C) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Current UK advice (RCUK / ERC–ESICM 2025) is to actively prevent fever by targeting ≤ 37.5 °C in patients who remain comatose after ROSC; the RCUK narrative gives 36–72 h, and its March 2026 algorithm states at least 72 h, which this page follows. The superseded 2022 update used > 37.7 °C. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
   ],
   [
     "Who is an appropriate candidate for eCPR and what does ARREST, Prague OHCA and INCEPTION tell us?",
@@ -77,7 +77,7 @@ const tocItems = [
 
 const objectives = [
   "Deliver the ERC/ESICM 2021 post-ROSC bundle including airway, ventilation, haemodynamic and metabolic targets within the first 6 hours.",
-  "Choose between TTM 33 °C, 36 °C and normothermia ≤ 37.7 °C citing TTM2 (2021) and apply strict fever control to 72 hours.",
+  "Explain why current UK guidance (RCUK 2025) targets ≤ 37.5 °C fever prevention for at least 72 h, distinguishing TTM2's ≥ 37.8 °C treatment trigger from the contemporary target.",
   "Set evidence-based MAP, SpO₂, PaCO₂, glucose and Hb targets and justify each in terms of secondary brain injury.",
   "Perform multimodal neuroprognostication ≥ 72 h post-ROSC using clinical exam, NSE, EEG, SSEPs and imaging while excluding confounders.",
   "Identify suitable candidates for ECMO-CPR (eCPR) and outline the cannulation pathway, complications and Harlequin physiology.",
@@ -93,7 +93,7 @@ const workedExamples: WorkedExample[] = [
     working:
       "Hyperoxia (PaO₂ 38 kPa) is associated with worse outcome — wean FiO₂ to target SpO₂ 94–98 %. Hypocapnia (PaCO₂ 3.4 kPa) causes cerebral vasoconstriction — reduce minute ventilation to target 4.5–6.0 kPa. Tidal volume 550 mL = 7.9 mL/kg PBW — acceptable but trim to 6–8 mL/kg. MAP 60 is below the ≥ 65 mmHg target — uptitrate noradrenaline.",
     answer:
-      "Wean FiO₂ for SpO₂ 94–98 %, reduce RR for PaCO₂ 4.5–6.0 kPa, TV ~ 480 mL (6.8 mL/kg PBW), increase noradrenaline to MAP ≥ 65 mmHg, then start active normothermia ≤ 37.7 °C and book early coronary angiography.",
+      "Wean FiO₂ for SpO₂ 94–98 %, reduce RR for PaCO₂ 4.5–6.0 kPa, TV ~ 480 mL (6.8 mL/kg PBW), increase noradrenaline to MAP ≥ 65 mmHg, then start active fever prevention targeting ≤ 37.5 °C and book early coronary angiography.",
     cites: ["ERC/ESICM 2021 Post-Resus", "Schmidt 2022 BOX oxygen"],
   },
   {
@@ -131,7 +131,7 @@ const workedExamples: WorkedExample[] = [
 const keyPoints = [
   { text: "Post-cardiac-arrest syndrome = brain injury + myocardial dysfunction + ischaemia–reperfusion + precipitating pathology — treat all four.", cites: ["TTM2 2021"] },
   { text: "Avoid hyperoxia, hypoxaemia and hypocapnia: target SpO₂ 94–98 %, PaCO₂ 4.5–6.0 kPa, avoid MAP < 65 mmHg, and avoid hypoglycaemia (manage glucose by standard ICU protocol).", cites: ["ERC/ESICM 2021 Post-Resus"] },
-  { text: "TTM2 (2021): normothermia ≤ 37.7 °C is the contemporary default; whichever target chosen, deliver strict fever control to ≥ 72 h with closed-loop feedback cooling.", cites: ["TTM2 2021", "BJA Educ Neuroprog 2018"] },
+  { text: "Temperature: RCUK 2025 targets ≤ 37.5 °C fever prevention in comatose survivors for at least 72 h (algorithm); TTM2 (2021) treated fever at ≥ 37.8 °C and found 33 °C no better.", cites: ["RCUK PRC 2025", "TTM2 2021"] },
   { text: "Rewarm slowly (0.25–0.5 °C/h) — watch for hyperkalaemic rebound and prolonged drug clearance during cooling.", cites: ["ELSO Guidelines 2020"] },
   { text: "Neuroprognostication is multimodal, performed ≥ 72 h after ROSC, after confounders are excluded, and requires ≥ 2 concordant poor-outcome markers.", cites: ["ERC/ESICM 2021 Post-Resus", "BJA Educ Neuroprog 2018"] },
   { text: "Specific markers: bilaterally absent pupil + corneal reflexes, bilaterally absent N20 SSEPs, NSE > 60 µg/L at 48 h and/or 72 h, highly malignant EEG after 24 h, status myoclonus ≤ 72 h, diffuse anoxic injury on CT or MRI.", cites: ["ERC/ESICM 2021 Post-Resus"] },
@@ -222,7 +222,7 @@ const coreConcepts = (
               <li>After shock 3: <span className="font-medium text-foreground">adrenaline 1 mg IV</span> + <span className="font-medium text-foreground">amiodarone 300 mg IV</span></li>
               <li>After shock 5: amiodarone 150 mg IV (or lidocaine 1 mg/kg if amiodarone unavailable)</li>
               <li>Repeat adrenaline 1 mg every 3–5 min (alternate loops)</li>
-              <li>Refractory VF after 3 shocks → consider vector change (AP pads) or double sequential external defibrillation (DOSE-VF 2022)</li>
+              <li>Refractory VF after 3 shocks (correct antero-lateral pads confirmed) → consider vector change to antero-posterior pads. RCUK 2025 does not recommend routine dual sequential defibrillation; DOSE-VF 2022 is trial evidence only</li>
             </ul>
           </div>
           <div className="p-4 rounded-lg border border-icu/30 bg-icu/5">
@@ -295,7 +295,7 @@ const coreConcepts = (
           <li><span className="font-medium text-foreground">Identify and treat the cause</span> — 12-lead ECG in all patients; immediate coronary angiography ± PCI for STEMI or ongoing myocardial ischaemia; CT pulmonary angiogram if PE is suspected as the precipitant.</li>
           <li><span className="font-medium text-foreground">Airway and breathing</span> — secure a definitive airway; lung-protective ventilation (6–8 mL/kg PBW); target SpO₂ 94–98 %; target PaCO₂ 4.5–6.0 kPa (normocapnia).</li>
           <li><span className="font-medium text-foreground">Circulation</span> — target MAP ≥ 65 mmHg, aiming for urine output &gt; 0.5 mL/kg/h and a normal or falling lactate; obtain early echocardiography to assess myocardial function; use fluids, vasopressors and inotropes as required, with mechanical circulatory support (IABP, Impella, VA-ECMO) considered for refractory cardiogenic shock.</li>
-          <li><span className="font-medium text-foreground">Disability / neuroprotection</span> — temperature control with active prevention of fever (&lt; 37.7 °C) for at least 72 h; continuous EEG for seizure detection and prompt anticonvulsant treatment; a clear sedation strategy that permits later neuroprognostication.</li>
+          <li><span className="font-medium text-foreground">Disability / neuroprotection</span> — temperature control with active prevention of fever targeting ≤ 37.5 °C for at least 72 h; continuous EEG for seizure detection and prompt anticonvulsant treatment; a clear sedation strategy that permits later neuroprognostication.</li>
           <li><span className="font-medium text-foreground">Metabolic control</span> — avoid hypoglycaemia and manage glucose by standard ICU protocol (many units use about 6–10 mmol/L); correct potassium, magnesium and calcium.</li>
         </ol>
       </div>
@@ -342,7 +342,7 @@ const coreConcepts = (
           {
             title: "Temperature control",
             items: [
-              "Continuous core-temperature monitoring and active fever prevention (> 37.7 °C) for ≥ 72 h (ERC–ESICM 2022 update)",
+              "Continuous core-temperature monitoring and active fever prevention targeting ≤ 37.5 °C for ≥ 72 h (RCUK / ERC–ESICM 2025)",
               "No routine hypothermic target: TTM2 found 33 °C no better than normothermia with fever control",
               "Avoid fever in the comatose patient regardless of strategy chosen",
               "Active cooling device + core temperature feedback (oesophageal/bladder/intravascular)",
@@ -663,12 +663,12 @@ const coreConcepts = (
                 ["HACA (NEJM 2002)", "32–34 °C × 24 h vs standard care after VF OHCA", "Mortality 41% vs 55%; favourable neuro 55% vs 39%", "Established mild hypothermia as standard"],
                 ["Bernard (NEJM 2002)", "33 °C × 12 h after VF OHCA", "Good outcome 49% vs 26%", "Confirmed HACA in independent cohort"],
                 ["TTM (Nielsen, NEJM 2013)", "33 °C vs 36 °C × 24 h, n = 950", "No difference in mortality (50% vs 48%) or neuro outcome", "Either target acceptable; fever-prevention is what matters"],
-                ["TTM2 (Dankiewicz, NEJM 2021)", "33 °C vs active normothermia (≤ 37.5 °C), n = 1 850", "No difference 6-mo mortality (50% vs 48%)", "Fever prevention rather than routine 33 °C; 2022 ERC–ESICM update"],
+                ["TTM2 (Dankiewicz, NEJM 2021)", "33 °C vs normothermia with early fever treatment (≥ 37.8 °C trigger), n = 1 850", "No difference 6-mo mortality (50% vs 48%)", "Fever prevention rather than routine 33 °C; now ≤ 37.5 °C (RCUK 2025)"],
                 ["TAME (NEJM 2023)", "Mild hypercapnia 6.7–7.3 kPa vs normocapnia post-arrest", "No difference 6-mo good neuro outcome (43.5% vs 44.6%)", "Continue normocapnia 4.5–6.0 kPa"],
                 ["EXACT (Bernard, JAMA 2022)", "SpO₂ 90–94% vs 98–100% during pre-hospital post-ROSC", "Survival to discharge 38.3% vs 47.9% (lower with restrictive)", "Avoid hypoxaemia; do not aim ≤ 94% in pre-hospital phase"],
                 ["BOX (NEJM 2022)", "MAP 63 vs 77 mmHg AND restrictive vs liberal O₂ post-ROSC", "No difference in death/poor neuro outcome at 90 d", "MAP ≥ 65 reasonable; no clear benefit from higher targets"],
                 ["PARAMEDIC2 (NEJM 2018)", "Adrenaline 1 mg IV vs placebo in OHCA, n = 8 014", "30-d survival 3.2% vs 2.4%; severe disability 31% vs 18% of survivors", "Adrenaline retained but with explicit trade-off"],
-                ["DOSE-VF (NEJM 2022)", "Standard vs vector-change vs DSED for refractory VF after 3 shocks", "Survival to discharge: DSED 30.4% vs standard 13.3%", "ILCOR 2023: DSED / vector change may be considered"],
+                ["DOSE-VF (NEJM 2022)", "Standard vs vector-change vs DSED for refractory VF after 3 shocks", "Survival to discharge: DSED 30.4% vs standard 13.3%", "Trial evidence; RCUK 2025 suggests vector change but does not recommend routine DSED"],
                 ["ARREST (Lancet 2020)", "eCPR vs standard ALS in refractory shockable OHCA, n = 30", "Stopped early — 43% vs 7% survival to discharge", "Proof of concept in optimal system"],
                 ["Prague OHCA (JAMA 2022)", "Invasive (eCPR + cath) vs standard, n = 256", "180-d good neuro 31.5% vs 22.0% (NS overall; benefit in longer arrests)", "Supports eCPR in selected refractory arrest"],
                 ["INCEPTION (NEJM 2023)", "eCPR vs standard ALS, multicentre Dutch, n = 134", "No difference in 30-d good neuro outcome (20% vs 16%)", "Highlights importance of system speed & volume"],

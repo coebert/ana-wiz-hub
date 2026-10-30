@@ -9,7 +9,7 @@ import { DiagramFigure } from "../_shared/DiagramFigure";
  * Lets the learner pick one of four post-ROSC temperature strategies and shows
  * the rationale, current evidence, physiological effects and complications.
  * Includes a simple temperature curve illustrating the 24h target + 12h
- * controlled rewarm at 0.25–0.5 °C/h, with strict <37.7 °C fever control out
+ * controlled rewarm at 0.25–0.5 °C/h, with ≤37.5 °C fever prevention out
  * to 72h post-ROSC (per ERC/ESICM 2021 + TTM2 evidence).
  */
 
@@ -80,9 +80,9 @@ const targets: Record<Target, TargetMeta> = {
     temp: 37.5,
     color: "hsl(140, 50%, 45%)",
     evidence:
-      "TTM2 (Dankiewicz 2021, n=1900): 33 °C vs targeted normothermia (≤37.8 °C) showed no difference in 6-month mortality (50 vs 48 %) or poor neurological outcome (55 % both). Now the default for adult OHCA in most ICUs.",
+      "TTM2 (Dankiewicz 2021, n=1900): 33 °C vs normothermia with early fever treatment (≥37.8 °C trigger) showed no difference in 6-month mortality (50 vs 48 %) or poor neurological outcome (55 % both). Now the default for adult OHCA in most ICUs.",
     rationale:
-      "Permissive temperature management with active intervention only above ~37.7 °C. Avoids the harms of deeper cooling while preventing fever-driven secondary brain injury.",
+      "Active fever prevention targeting ≤ 37.5 °C (RCUK / ERC–ESICM 2025). Avoids the harms of deeper cooling while preventing fever-driven secondary brain injury.",
     pros: [
       "Largest, most contemporary RCT (TTM2) supports this approach",
       "Fewer arrhythmias, less coagulopathy than active cooling",
@@ -94,7 +94,7 @@ const targets: Record<Target, TargetMeta> = {
       "Less protection if ROSC is delayed and severe ischaemic injury already established",
     ],
     whoBenefits:
-      "Default strategy for most adult OHCA per ERC/ESICM 2021 update. Maintain ≤37.7 °C for at least 72 h post-ROSC.",
+      "Default strategy for comatose adult survivors per RCUK / ERC–ESICM 2025. Maintain ≤37.5 °C for at least 72 h post-ROSC.",
   },
   fever: {
     label: "Fever control only",
@@ -116,7 +116,7 @@ const targets: Record<Target, TargetMeta> = {
       "Shivering on aggressive surface cooling without sedation",
     ],
     whoBenefits:
-      "Mandatory baseline for all post-ROSC patients. Even when 33 / 36 / normothermia targets are not reached, prevent T > 37.7 °C for ≥72 h.",
+      "Mandatory baseline for all post-ROSC patients. Even when 33 / 36 / normothermia targets are not reached, keep T ≤ 37.5 °C for ≥72 h.",
   },
 };
 
@@ -124,7 +124,7 @@ const phaseSpec = [
   { key: "induction", label: "Induction", durationH: 4, color: "hsl(210, 70%, 60%)" },
   { key: "maintenance", label: "Maintenance (24 h)", durationH: 24, color: "hsl(180, 55%, 50%)" },
   { key: "rewarm", label: "Controlled rewarm (0.25–0.5 °C/h)", durationH: 12, color: "hsl(45, 75%, 55%)" },
-  { key: "fever", label: "Strict fever control (≤37.7 °C, 72 h)", durationH: 32, color: "hsl(20, 75%, 55%)" },
+  { key: "fever", label: "Fever prevention (≤37.5 °C, ≥72 h)", durationH: 32, color: "hsl(20, 75%, 55%)" },
 ];
 
 const totalH = phaseSpec.reduce((s, p) => s + p.durationH, 0); // 72 h
@@ -141,10 +141,10 @@ const TtmTargetExplorerDiagram = () => {
   // X axis: 0–72 h → SVG x 40–460
   const hToX = (h: number) => 40 + (h / totalH) * 420;
 
-  // Build temperature curve: ROSC at h0, T~36.5; induce to target by 4h; hold 24h; rewarm to 37.0 over 12h; then strict ≤37.7 for 32h.
+  // Build temperature curve: ROSC at h0, T~36.5; induce to target by 4h; hold 24h; rewarm to 37.0 over 12h; then fever prevention ≤37.5 for 32h.
   const targetT = target === "fever" ? 37.0 : info.temp;
   const startT = 36.5;
-  const fevercapT = 37.7;
+  const fevercapT = 37.5;
 
   const induceEnd = 4;
   const maintEnd = induceEnd + 24; // 28
@@ -255,7 +255,7 @@ const TtmTargetExplorerDiagram = () => {
               {/* Fever cap line */}
               <line x1={40} y1={tToY(fevercapT)} x2={460} y2={tToY(fevercapT)} stroke={targets.fever.color} strokeWidth={1} strokeDasharray="4 3" opacity={0.7} />
               {showLabels && (
-                <text x={455} y={tToY(fevercapT) - 3} fontSize={6.5} fill={targets.fever.color} textAnchor="end" fontWeight="600">Fever cap 37.7 °C</text>
+                <text x={455} y={tToY(fevercapT) - 3} fontSize={6.5} fill={targets.fever.color} textAnchor="end" fontWeight="600">Fever cap 37.5 °C</text>
               )}
   
               {/* Phase labels */}
@@ -337,7 +337,7 @@ const TtmTargetExplorerDiagram = () => {
           </div>
   
           <p className="text-[11px] text-muted-foreground mt-2 italic text-center">
-            Tip: TTM2 (2021) is the largest contemporary RCT — favoured normothermia ≤ 37.7 °C. ERC/ESICM 2021 endorses any target between 32 and 37.5 °C provided fever is actively prevented for ≥ 72 h.
+            Tip: TTM2 (2021) is the largest contemporary RCT — found 33 °C no better than normothermia with fever treated at ≥ 37.8 °C. RCUK / ERC–ESICM 2025 now target ≤ 37.5 °C fever prevention in comatose survivors (≥ 72 h in the RCUK algorithm).
           </p>
         </div>
       </div>
