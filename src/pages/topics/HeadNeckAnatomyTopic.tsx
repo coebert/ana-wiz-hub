@@ -78,7 +78,7 @@ const HeadNeckAnatomyTopic = () => {
         { text: "RLN: motor to ALL intrinsic muscles except cricothyroid; left loops under aortic arch", cites: ["Ellis & Feldman Ch.1"] },
         { text: "Bilateral RLN palsy → cords paramedian → stridor → emergency airway required", cites: ["Ellis & Feldman Ch.5"] },
         { text: "Right main bronchus wider, shorter, more vertical — foreign bodies preferentially enter right side", cites: ["Power & Kam Ch.12"] },
-        { text: "Cricothyroid membrane: avascular midline landmark for emergency front-of-neck access", cites: ["BJA Educ 2019"] },
+        { text: "Cricothyroid membrane: midline, between inferior thyroid and superior cricoid borders; vessels can cross it (especially the upper part), with anatomical variation", cites: ["BJA Educ 2019"] },
         { text: "Right IJV preferred for CVC: straighter path to SVC, avoids thoracic duct (left side)", cites: ["BJA Educ 2005"] },
         { text: "Accessory nerve (XI) is superficial in posterior triangle — vulnerable to surgical injury", cites: ["Ellis & Feldman Ch.1"] },
         { text: "Deep cervical plexus block risks phrenic nerve paralysis — avoid bilaterally", cites: ["Ellis & Feldman Ch.5"] },
@@ -244,7 +244,7 @@ const HeadNeckAnatomyTopic = () => {
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Superficial (cutaneous) branches</p>
-                <p className="text-sm text-muted-foreground mt-1">All four emerge together at the midpoint of the posterior border of sternocleidomastoid (<strong>Erb's point</strong>, roughly at the level of the cricoid, C6): <strong>lesser occipital (C2)</strong> — scalp behind the ear; <strong>great auricular (C2,3)</strong> — lower pinna, angle of jaw, parotid skin (blocked for tympanomastoid and awake fibreoptic ear procedures); <strong>transverse cervical (C2,3)</strong> — anterior neck; <strong>supraclavicular (C3,4)</strong> — clavicle and skin to the second rib, explaining shoulder-tip and "cape" referral and the need to supplement an interscalene block for shoulder surgery.</p>
+                <p className="text-sm text-muted-foreground mt-1">All four emerge together at the midpoint of the posterior border of sternocleidomastoid (<strong>Erb's point</strong>; identified by the SCM midpoint, not a fixed vertebral level — distinct from the C6 anterior (Chassaignac) tubercle): <strong>lesser occipital (C2)</strong> — scalp behind the ear; <strong>great auricular (C2,3)</strong> — lower pinna, angle of jaw, parotid skin (blocked for tympanomastoid and awake fibreoptic ear procedures); <strong>transverse cervical (C2,3)</strong> — anterior neck; <strong>supraclavicular (C3,4)</strong> — clavicle and skin to the second rib, explaining shoulder-tip and "cape" referral and the need to supplement an interscalene block for shoulder surgery.</p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Deep (muscular) branches</p>
@@ -252,7 +252,7 @@ const HeadNeckAnatomyTopic = () => {
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Blocks</p>
-                <p className="text-sm text-muted-foreground mt-1"><strong>Superficial block:</strong> 10 mL of local anaesthetic subcutaneously along the posterior border of sternocleidomastoid at its midpoint (or an ultrasound-guided injection deep to the investing fascia but superficial to the prevertebral fascia). Used for carotid endarterectomy, thyroid surgery, clavicular fracture, superficial neck lesions and tunnelled line insertion. <strong>Intermediate/deep block:</strong> injection at the C2–C4 transverse processes or deep to the prevertebral fascia — better surgical anaesthesia for carotid endarterectomy but a higher complication rate; largely superseded by intermediate ultrasound-guided injection.</p>
+                <p className="text-sm text-muted-foreground mt-1">Terminology has varied historically, so describe the actual plane injected. <strong>Superficial block:</strong> subcutaneous, superficial to the investing fascia, along the midpoint of the posterior border of sternocleidomastoid. <strong>Intermediate block:</strong> deep to the investing fascia but superficial to the prevertebral fascia (often ultrasound-guided). <strong>Deep block:</strong> deep to the prevertebral fascia, near the cervical roots/C2–C4 transverse processes — a distinct technique with a different risk profile (e.g. phrenic, vertebral artery, intrathecal spread). Uses include carotid endarterectomy, thyroid and superficial neck surgery, clavicular procedures and tunnelled lines; technique choice is specialist and context-dependent.</p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Complications of deep block</p>
@@ -350,7 +350,7 @@ const HeadNeckAnatomyTopic = () => {
                 </thead>
                 <tbody className="text-muted-foreground">
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Thyroid</td><td>Hyaline</td><td>Largest cartilage. Laryngeal prominence ("Adam's apple"). Calcifies with age.</td></tr>
-                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cricoid</td><td>Hyaline</td><td>Only complete cartilaginous ring. Signet-ring shape. Landmark for cricothyroidotomy (below) and cricoid pressure.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cricoid</td><td>Hyaline</td><td>Only complete cartilaginous ring. Signet-ring shape. The cricothyroid membrane lies immediately above it; landmark for cricoid pressure.</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Epiglottis</td><td>Elastic</td><td>Leaf-shaped. Attached to hyoid by hyoepiglottic ligament. Vallecula is between epiglottis and tongue base (Macintosh blade tip).</td></tr>
                   <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Arytenoids</td><td>Hyaline</td><td>Paired pyramidal cartilages. Vocal process attaches vocal ligament. Muscular process attaches intrinsic muscles.</td></tr>
                   <tr><td className="py-2 font-medium text-foreground">Corniculate/Cuneiform</td><td>Elastic</td><td>Small cartilages within aryepiglottic folds. Visible during laryngoscopy.</td></tr>
@@ -437,7 +437,7 @@ const HeadNeckAnatomyTopic = () => {
           <div id="front-of-neck">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D4. Cricothyroidotomy & Tracheostomy Anatomy</h2>
             <p className="text-muted-foreground leading-relaxed">
-              <strong className="text-foreground">Cricothyroid membrane:</strong> Avascular midline between thyroid and cricoid cartilages. 9 × 30 mm. Used for emergency surgical airway. Structures at risk: superior cricothyroid artery (runs transversely across upper membrane).
+              <strong className="text-foreground">Cricothyroid membrane:</strong> Midline, between the inferior border of the thyroid cartilage and the superior border of the cricoid. Not avascular: vessels can cross it, especially its upper part, with anatomical variation. 9 × 30 mm. Used for emergency surgical airway. Structures at risk: superior cricothyroid artery (runs transversely across upper membrane).
             </p>
             <p className="text-muted-foreground leading-relaxed mt-2">
               <strong className="text-foreground">Tracheostomy:</strong> The stoma is placed between rings 2–3 or 3–4 — above this risks subglottic stenosis from cricoid damage, below it risks tracheo-innominate fistula and a tube too deep for the flange. Layers traversed, superficial to deep: skin → subcutaneous fat → platysma → investing (superficial) layer of deep cervical fascia → the midline "linea alba cervicalis" between the strap muscles (sternohyoid and sternothyroid) → pretracheal fascia → thyroid isthmus, which usually overlies rings 2–4 and may need retracting or dividing → pretracheal fat with the inferior thyroid vein plexus → anterior tracheal wall.
