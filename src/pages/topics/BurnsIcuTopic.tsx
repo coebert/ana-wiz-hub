@@ -39,7 +39,7 @@ const workedExamples: WorkedExample[] = [
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step approach</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li><strong>Airway</strong>: high index of suspicion for inhalation injury — soot, hoarse voice, facial burns. Early intubation with a large-bore (≥8.0 mm) uncut tube before oedema obliterates the airway. Use ketamine or etomidate; suxamethonium is safe in the first 24 h (denervation hyperkalaemia risk emerges from day 5).</li>
+          <li><strong>Airway</strong>: high index of suspicion for inhalation injury — soot, hoarse voice, facial burns. Early intubation with a large-bore (≥8.0 mm) uncut tube before oedema obliterates the airway. Select induction/NMBA agents individually. The Salisbury burns checklist avoids suxamethonium after the initial 24 h; the first 24 h is not universally safe if other contraindications exist.</li>
           <li><strong>Breathing</strong>: 100% O₂ until COHb &lt; 5% (treats CO; half-life 4 h on air, 80 min on 100% O₂). Suspect cyanide if persistent acidosis + lactate &gt; 10 — give hydroxocobalamin 5 g IV. Bronchoscopy to grade injury.</li>
           <li><strong>Circulation</strong>: large-bore IV access through unburned skin if possible. Estimate %TBSA using Lund–Browder (more accurate than Wallace's "rule of nines" especially in children). Here ≈ face 4 + chest 9 + each arm 9 + front of each thigh 4.5 = ~40 % TBSA.</li>
           <li><strong>Fluids — Parkland</strong>: 4 mL × 80 kg × 40 = 12,800 mL Hartmann's in 24 h from time of burn; half (6,400 mL) in the first 8 h. Titrate to urine output 0.5 mL/kg/h in adults (1 mL/kg/h children, 1–2 mL/kg/h electrical / rhabdo). Avoid "fluid creep" — colloids and albumin from 12–24 h reduce total volume.</li>
@@ -53,7 +53,7 @@ const workedExamples: WorkedExample[] = [
             <li>Delaying intubation in airway burns — fibreoptic intubation is much harder once oedema is established.</li>
             <li>Including superficial (erythema only) burns in TBSA — overestimates fluid requirements and worsens fluid creep.</li>
             <li>Chasing supranormal urine output — leads to abdominal compartment syndrome and pulmonary oedema.</li>
-            <li>Using suxamethonium after day 5 in major burns — risk of life-threatening hyperkalaemia for up to 1–2 years.</li>
+            <li>Waiting until day 5 to avoid suxamethonium: the adopted Salisbury burns protocol excludes it after the initial 24 h. Continuing hyperkalaemia risk depends on injury, healing and other risk factors; there is no universal safe end date.</li>
           </ul>
         </div>
       </div>
@@ -137,7 +137,7 @@ const BurnsIcuTopic = () => {
         { text: "Parkland formula: 4 mL × kg × %TBSA Hartmann’s in 24 h (half in first 8 h from burn). Modified Brooke: 2 mL × kg × %TBSA. Titrate to urine output, not the formula.", cites: ["ISBI 2016"] },
         { text: "CO competes with O₂ for haemoglobin (240× affinity); SpO₂ over-reads. Treat with 100 % O₂; consider HBO if COHb >25 %, neurology, pregnancy or persistent symptoms.", cites: ["ABA Burn 2023"] },
         { text: "Cyanide — suspect with persistent metabolic acidosis + lactate >10 mmol/L after enclosed-space fire. Treat empirically with hydroxocobalamin 5 g IV.", cites: ["BJA Educ Burns 2017"] },
-        { text: "Suxamethonium is safe within 24 h of injury but contra-indicated from day 5 to ~12–24 months due to extra-junctional ACh receptors and lethal hyperkalaemia.", cites: ["Parkland Formula"] },
+        { text: "Salisbury burns checklist: avoid suxamethonium after the initial 24 h. The UK SmPC describes greatest hyperkalaemia risk 5–70 days, not first onset at day 5, and prolonged risk with delayed healing/infection. Assess other contraindications even early; no universal fixed safe end date.", cites: ["Salisbury Burns Checklist", "Suxamethonium SmPC"] },
         { text: "Burn-wound sepsis is the leading cause of late mortality. Pseudomonas, MRSA and fungi predominate; quantitative wound biopsy >10⁷ cfu/g defines invasive infection.", cites: ["ISBI 2016", "BJA Educ Major Burns 2012"] },
         { text: "Hypermetabolism: rest energy expenditure 150–200 % predicted. Treat with early enteral nutrition, tight glycaemic control, propranolol and (in selected) oxandrolone.", cites: ["ABA Burn 2023"] },
         { text: "UK Burns Centre referral: ≥20 % TBSA adult / ≥10 % child, any face/hand/perineum/major joint, full-thickness, electrical, chemical, inhalation, or burn with comorbidity.", cites: ["BJA Educ Burns 2017"] },

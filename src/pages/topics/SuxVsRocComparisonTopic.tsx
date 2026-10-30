@@ -252,8 +252,8 @@ const SuxVsRocComparisonTopic = () => {
           </p>
           <ul className="list-disc list-inside space-y-1 text-foreground/90 mt-2">
             <li><strong>2 mg/kg</strong> — routine reversal at reappearance of T2.</li>
-            <li><strong>4 mg/kg</strong> — TOF count 1–2, no T2 yet.</li>
-            <li><strong>16 mg/kg</strong> — immediate reversal of an intubating dose (≥3 min after rocuronium 1.2 mg/kg).</li>
+            <li><strong>4 mg/kg</strong> — PTC 1–2, not TOF count 1–2.</li>
+            <li><strong>16 mg/kg</strong> — adult immediate reversal, approximately 3 min after rocuronium 1.2 mg/kg; not any prolonged block or paediatric immediate reversal. Quantitative TOF ratio ≥0.9 remains the recovery target.</li>
           </ul>
           <p className="text-foreground/90 leading-relaxed mt-3">
             Counsel patients that sugammadex inactivates hormonal contraceptives

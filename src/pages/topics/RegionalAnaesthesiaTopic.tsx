@@ -289,9 +289,9 @@ const RegionalAnaesthesiaTopic = () => {
           </p>
           <div className="space-y-3">
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
-              <p className="font-semibold text-foreground text-sm">Low-risk blocks — superficial and compressible</p>
+              <p className="font-semibold text-foreground text-sm">Superficial approaches — assess the actual bleeding risk</p>
               <p className="text-sm text-muted-foreground mt-1">
-                Interscalene, supraclavicular (with ultrasound), axillary, femoral, adductor canal, popliteal sciatic, saphenous, ankle, wrist, superficial cervical plexus, scalp block, fascia iliaca, TAP, rectus sheath, PECS and serratus plane. Bleeding is visible and compressible, and the consequence is a bruise rather than a neurological catastrophe. These may reasonably proceed on therapeutic anticoagulation or dual antiplatelet therapy after an individual risk–benefit discussion, using ultrasound, the smallest number of needle passes, avoiding a through-the-muscle trajectory, and documenting the rationale.
+                ESAIC/ESRA 2022 Table 2 gives examples, not absolute classifications. Assess the actual site and approach, depth, vascularity, compressibility and consequences of bleeding. A superficially classified approach may still cause serious bleeding: the guideline reports haemothorax after a supraclavicular block in an anticoagulated patient. Ultrasound may reduce vascular puncture but does not remove anticoagulant risk or waive adopted timing recommendations. Therapeutic anticoagulation or dual antiplatelet therapy does not produce automatic suitability; document the individual decision under the adopted protocol <InlineRef topicId="regional-anaesthesia" refLabel="ESAIC ESRA 2022" />.
               </p>
             </div>
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
