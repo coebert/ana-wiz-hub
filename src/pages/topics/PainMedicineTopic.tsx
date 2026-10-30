@@ -822,12 +822,12 @@ const PainMedicineTopic = () => {
           </div>
 
           <DiagramSection
-            title="Interactive Opioid Conversion Calculator"
+            title="Interactive Opioid Equivalence Estimator"
             intro={
               <p>
-                Translate the current opioid regimen into 24-h <strong>OMEDD</strong>, then rotate to a target opioid with the
-                standard 25–50% incomplete cross-tolerance reduction applied automatically. Use the high-risk toggle for
-                elderly/frail patients, renal/hepatic impairment, very high doses, or patch rotations.
+                Estimate the 24-h oral morphine equivalent using the FPM Opioids Aware tables, then an oral target estimate
+                after a chosen 25–50% (or greater) reduction. Patch rates stay in micrograms/hour; no patch, rescue dose or
+                titration step is generated — those are clinician decisions against a named product and protocol.
               </p>
             }
           >
@@ -835,12 +835,12 @@ const PainMedicineTopic = () => {
           </DiagramSection>
 
           <DiagramSection
-            title="PCA / NCA + Epidural Prescribing Calculator"
+            title="PCA + Epidural Teaching Calculator"
             intro={
               <p>
-                Weight-based PCA (morphine, fentanyl, oxycodone) and epidural infusion rates with adult and paediatric
-                variants. Includes APAGBI-aligned NCA settings for children &lt;6 yr, infant LA-toxicity ceilings, and
-                APM/RCoA monitoring requirements.
+                Paediatric PCA dilutions and ropivacaine 0.2% epidural ranges from the named RCH Melbourne protocols, using
+                measured weight; RCH special groups (neonates, infants under 8 months, hepatic impairment) receive no rate.
+                Adult values are example regimens only.
               </p>
             }
           >

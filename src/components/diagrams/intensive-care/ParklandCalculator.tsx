@@ -1,238 +1,174 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Calculator, Droplets, Clock, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { DiagramFigure } from "../_shared/DiagramFigure";
+import {
+  type BurnFormula,
+  burnFirstDayPlan,
+  burnFormula24h,
+  ivyIndex,
+  mostellerBsa,
+  urineTargetMlPerHour,
+} from "@/lib/calculators/t1-calculators";
 
 /**
- * Interactive burn-fluid resuscitation calculator.
- *
- * Supports four formulae taught in UK/EU exams:
- *   - Parkland (4 mL × kg × %TBSA, Hartmann's, half in 8 h)
- *   - Modified Brooke / ABA consensus (2 mL × kg × %TBSA)
- *   - Galveston paediatric (5,000 mL/m² burn + 2,000 mL/m² BSA)
- *   - Electrical / rhabdo target (4 mL × kg × %TBSA, UO 1–2 mL/kg/h)
- *
- * Outputs total 24-h volume, first-8-h volume, infusion rates (mL/h and
- * drops/min using Hartmann's giving set 20 dpm), maintenance, and a
- * fluid-creep warning if cumulative volume exceeds the Ivy index
- * (>250 mL/kg in 24 h).
+ * Burn-fluid formula estimator. Each formula is a named estimate, timed from injury,
+ * and the patient's urine output and perfusion — not the formula — guide the rate.
+ * A current rate is shown only when fluid actually given since injury is entered.
  */
 
-type Formula = "parkland" | "brooke" | "galveston" | "electrical";
+const ACI = "https://aci.health.nsw.gov.au/networks/burn-injury/resources/patient-management/fluid-resuscitation";
+const ABA = "https://doi.org/10.1093/jbcr/irad125";
 
-const FORMULA: Record<Formula, { label: string; factor: number; uo: string; note: string }> = {
-  parkland: {
-    label: "Parkland (4 mL/kg/%TBSA)",
-    factor: 4,
-    uo: "0.5 mL/kg/h adult · 1 mL/kg/h child",
-    note: "Hartmann's. Half in first 8 h from time of burn, half in next 16 h.",
+const FORMULA: Record<BurnFormula, { label: string; note: React.ReactNode }> = {
+  parkland: { label: "Parkland (4 mL/kg/%TBSA)", note: "Classic Parkland estimate; half in the first 8 h from injury, half over the next 16 h." },
+  "nsw-modified-parkland": {
+    label: "NSW ACI modified Parkland (3 mL/kg/%TBSA)",
+    note: <>NSW ACI: Hartmann's, half in first 8 h from injury; infusion rate is guided by urine output, not by formula. In children, maintenance fluid is given in addition. <a className="underline" href={ACI} target="_blank" rel="noopener noreferrer">Source</a></>,
   },
-  brooke: {
-    label: "Modified Brooke / ABA (2 mL/kg/%TBSA)",
-    factor: 2,
-    uo: "0.5 mL/kg/h adult",
-    note: "ABA consensus 2018 — start at 2 mL/kg/%TBSA and titrate up to avoid fluid creep.",
+  "aba-adult": {
+    label: "ABA 2023 adult start (2 mL/kg/%TBSA)",
+    note: <>ABA 2023 adult guideline (burns ≥20% TBSA): a lower starting estimate, titrated to response. Adults only. <a className="underline" href={ABA} target="_blank" rel="noopener noreferrer">Source</a></>,
   },
   galveston: {
     label: "Galveston (paediatric, BSA-based)",
-    factor: 0,
-    uo: "1 mL/kg/h",
-    note: "5,000 mL × m² burn + 2,000 mL × m² BSA total over 24 h. Half in 8 h.",
-  },
-  electrical: {
-    label: "Electrical / rhabdomyolysis (4 mL/kg/%TBSA)",
-    factor: 4,
-    uo: "1–2 mL/kg/h until myoglobinuria clears",
-    note: "Target higher UO; consider urinary alkalinisation. TBSA underestimates true tissue injury.",
+    note: "5,000 mL/m² burned + 2,000 mL/m² total BSA over 24 h. The 2,000 mL/m² term is the maintenance component — do not add a second maintenance allowance.",
   },
 };
 
-// Mosteller BSA (m²) = √(height × weight / 3600)
-function bsa(weightKg: number, heightCm: number) {
-  if (!weightKg || !heightCm) return 0;
-  return Math.sqrt((heightCm * weightKg) / 3600);
-}
+const num = (t: string) => (t.trim() === "" ? null : Number(t));
 
 export const ParklandCalculator = () => {
-  const [formula, setFormula] = useState<Formula>("parkland");
-  const [weight, setWeight] = useState(80);
-  const [tbsa, setTbsa] = useState(40);
-  const [height, setHeight] = useState(175);
-  const [hoursSinceBurn, setHoursSinceBurn] = useState(0);
+  const [formula, setFormula] = useState<BurnFormula>("parkland");
+  const [population, setPopulation] = useState<"adult" | "child">("adult");
+  const [weight, setWeight] = useState("80");
+  const [tbsa, setTbsa] = useState("40");
+  const [height, setHeight] = useState("175");
+  const [hours, setHours] = useState("");
+  const [given, setGiven] = useState("");
+  const [otherFluids, setOtherFluids] = useState("");
 
-  const result = useMemo(() => {
-    const m2 = bsa(weight, height);
-    let total24 = 0;
-    if (formula === "galveston") {
-      // 5000 × m² burn + 2000 × m² BSA
-      total24 = 5000 * (m2 * (tbsa / 100)) + 2000 * m2;
-    } else {
-      total24 = FORMULA[formula].factor * weight * tbsa;
-    }
-    const first8 = total24 / 2;
-    const remaining16 = total24 / 2;
+  const w = Number(weight);
+  const res = burnFormula24h(formula, w, Number(tbsa), Number(height));
+  const plan = res ? burnFirstDayPlan(res.totalMl, num(hours), num(given)) : null;
+  const other = num(otherFluids) ?? 0;
+  const ivy = res && Number.isFinite(other) && other >= 0 ? ivyIndex(res.totalMl + other, w) : null;
+  const uo = urineTargetMlPerHour(population, w);
+  const m2 = mostellerBsa(w, Number(height));
+  const popMismatch = (formula === "aba-adult" && population === "child") || (formula === "galveston" && population === "adult");
 
-    // Adjust for hours already elapsed since burn
-    const remainingFirst8 = Math.max(0, 8 - hoursSinceBurn);
-    const first8Rate = remainingFirst8 > 0 ? (first8 - (first8 * Math.min(hoursSinceBurn, 8)) / 8) / remainingFirst8 : 0;
-    const next16Rate = remaining16 / 16;
-
-    // Maintenance: 4-2-1 for adult ≈ 40 + 20 + (kg-20) = 100 + kg-20 mL/h, capped
-    const maintRate = weight <= 10 ? 4 * weight : weight <= 20 ? 40 + 2 * (weight - 10) : 60 + (weight - 20);
-
-    // Urine output target
-    const uoTarget = formula === "electrical" ? 1.5 * weight : formula === "galveston" ? 1 * weight : 0.5 * weight;
-
-    // Ivy index warning (>250 mL/kg in 24 h = fluid creep risk)
-    const ivyMl = 250 * weight;
-    const creepRisk = total24 > ivyMl;
-
-    // Drops/min using Hartmann's standard adult giving set (20 dpm = 1 mL)
-    const dropsFirst8 = (first8Rate * 20) / 60;
-
-    return { total24, first8, remaining16, first8Rate, next16Rate, maintRate, uoTarget, creepRisk, ivyMl, dropsFirst8, m2 };
-  }, [formula, weight, tbsa, height, hoursSinceBurn]);
+  const load = (f: BurnFormula, p: "adult" | "child", kg: number, pct: number, cm?: number) => {
+    setFormula(f); setPopulation(p); setWeight(String(kg)); setTbsa(String(pct)); if (cm) setHeight(String(cm));
+    setHours(""); setGiven(""); setOtherFluids("");
+  };
 
   return (
     <DiagramFigure
       id="parkland-calculator"
       title="Parkland"
-      description="Parkland calculator: enter patient values to compute the score step by step, with the interpretation thresholds and clinical actions FRCA and FFICM candidates should know."
+      description="Burn-fluid formula estimator: named Parkland, NSW modified Parkland, ABA adult and Galveston estimates, a rate only when fluid already given is entered, and an Ivy-index check on total projected intake."
     >
-              <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
+      <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
         <figcaption className="mb-4">
           <h3 className="flex items-center gap-2 text-base font-semibold text-foreground">
-            <Calculator className="h-4 w-4 text-primary" /> Burn fluid resuscitation calculator
+            <Calculator className="h-4 w-4 text-primary" /> Burn fluid formula estimator
           </h3>
           <p className="mt-1 text-xs text-muted-foreground">
-            Choose a formula, enter patient parameters, and read the prescription. The patient — not the formula — is the
-            monitor: titrate to urine output and end-organ markers.
+            Formulae give a starting estimate, not a prescription. Follow your burns-service protocol; reassess urine output and
+            perfusion repeatedly rather than accelerating fluid to "catch up" with a formula.
           </p>
         </figcaption>
-  
-        {/* Formula chips */}
-        <div className="mb-4 flex flex-wrap gap-1.5">
-          {(Object.keys(FORMULA) as Formula[]).map((f) => (
-            <button
-              key={f}
-              type="button"
-              onClick={() => setFormula(f)}
-              className={cn(
-                "rounded-full border px-3 py-1 text-[11px] font-medium transition-colors",
-                formula === f
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border bg-background text-muted-foreground hover:bg-muted",
-              )}
-            >
+
+        <div className="mb-3 flex flex-wrap gap-1.5">
+          {(Object.keys(FORMULA) as BurnFormula[]).map((f) => (
+            <button key={f} type="button" onClick={() => setFormula(f)} aria-pressed={formula === f}
+              className={cn("rounded-full border px-3 py-1 text-[11px] font-medium transition-colors",
+                formula === f ? "border-primary bg-primary text-primary-foreground" : "border-border bg-background text-muted-foreground hover:bg-muted")}>
               {FORMULA[f].label}
             </button>
           ))}
         </div>
-  
-        {/* Inputs */}
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-4">
-          <div>
-            <Label htmlFor="bw" className="text-xs">Weight (kg)</Label>
-            <Input id="bw" type="number" min={1} max={250} value={weight}
-              onChange={(e) => setWeight(Math.max(1, Number(e.target.value) || 0))} className="mt-1" />
-          </div>
-          <div>
-            <Label htmlFor="tbsa" className="text-xs">%TBSA burned (exclude erythema)</Label>
-            <Input id="tbsa" type="number" min={0} max={100} value={tbsa}
-              onChange={(e) => setTbsa(Math.max(0, Math.min(100, Number(e.target.value) || 0)))} className="mt-1" />
-          </div>
+        <div className="mb-4 flex gap-1.5 text-[11px]">
+          {(["adult", "child"] as const).map((p) => (
+            <button key={p} type="button" onClick={() => setPopulation(p)} aria-pressed={population === p}
+              className={cn("rounded border px-3 py-1", population === p ? "border-primary bg-primary/10 text-foreground" : "border-border text-muted-foreground")}>
+              {p === "adult" ? "Adult" : "Child"}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 mb-4">
+          <div><Label htmlFor="bw" className="text-xs">Weight (kg)</Label><Input id="bw" type="number" min={0} value={weight} onChange={(e) => setWeight(e.target.value)} className="mt-1" /></div>
+          <div><Label htmlFor="tbsa" className="text-xs">%TBSA burned (exclude erythema)</Label><Input id="tbsa" type="number" min={0} max={100} value={tbsa} onChange={(e) => setTbsa(e.target.value)} className="mt-1" /></div>
           {formula === "galveston" && (
-            <div>
-              <Label htmlFor="ht" className="text-xs">Height (cm)</Label>
-              <Input id="ht" type="number" min={30} max={220} value={height}
-                onChange={(e) => setHeight(Math.max(1, Number(e.target.value) || 0))} className="mt-1" />
-            </div>
+            <div><Label htmlFor="ht" className="text-xs">Height (cm)</Label><Input id="ht" type="number" min={30} max={220} value={height} onChange={(e) => setHeight(e.target.value)} className="mt-1" /></div>
           )}
-          <div>
-            <Label htmlFor="elapsed" className="text-xs">Hours since burn</Label>
-            <Input id="elapsed" type="number" min={0} max={24} value={hoursSinceBurn}
-              onChange={(e) => setHoursSinceBurn(Math.max(0, Math.min(24, Number(e.target.value) || 0)))} className="mt-1" />
-          </div>
+          <div><Label htmlFor="elapsed" className="text-xs">Hours since injury (optional)</Label><Input id="elapsed" type="number" min={0} value={hours} onChange={(e) => setHours(e.target.value)} className="mt-1" /></div>
+          <div><Label htmlFor="given" className="text-xs">Resuscitation fluid given since injury (mL)</Label><Input id="given" type="number" min={0} value={given} onChange={(e) => setGiven(e.target.value)} className="mt-1" /></div>
+          <div><Label htmlFor="other" className="text-xs">Other prescribed fluids over 24 h (mL, e.g. maintenance)</Label><Input id="other" type="number" min={0} value={otherFluids} onChange={(e) => setOtherFluids(e.target.value)} className="mt-1" /></div>
         </div>
-  
-        {/* Outputs */}
-        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-          <OutputCard
-            icon={<Droplets className="h-4 w-4" />}
-            label="Total 24 h volume"
-            value={`${Math.round(result.total24).toLocaleString()} mL`}
-            sub={formula === "galveston" ? `BSA ${result.m2.toFixed(2)} m²` : `${FORMULA[formula].factor} × ${weight} × ${tbsa}`}
-          />
-          <OutputCard
-            icon={<Clock className="h-4 w-4" />}
-            label="First 8 h (from burn)"
-            value={`${Math.round(result.first8).toLocaleString()} mL`}
-            sub={`Rate now ≈ ${Math.round(result.first8Rate).toLocaleString()} mL/h${result.dropsFirst8 > 0 ? ` (${Math.round(result.dropsFirst8)} dpm)` : ""}`}
-          />
-          <OutputCard
-            icon={<Clock className="h-4 w-4" />}
-            label="Next 16 h"
-            value={`${Math.round(result.remaining16).toLocaleString()} mL`}
-            sub={`Rate ${Math.round(result.next16Rate).toLocaleString()} mL/h`}
-          />
-          <OutputCard
-            icon={<Droplets className="h-4 w-4" />}
-            label="Urine-output target"
-            value={`${Math.round(result.uoTarget)} mL/h`}
-            sub={FORMULA[formula].uo}
-          />
-        </div>
-  
-        <div className="mt-3 rounded-md border border-border bg-muted/30 p-3 text-xs text-muted-foreground">
-          <p><span className="font-semibold text-foreground">Maintenance:</span> add ~ {Math.round(result.maintRate)} mL/h
-            using 4-2-1 (separate from resuscitation fluid; consider 5 % glucose for paediatrics).</p>
-          <p className="mt-1"><span className="font-semibold text-foreground">Notes:</span> {FORMULA[formula].note}</p>
-        </div>
-  
-        {result.creepRisk && (
-          <div className="mt-3 flex items-start gap-2 rounded-md border border-destructive/40 bg-destructive/10 p-3 text-xs text-destructive">
-            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
-            <p>
-              <span className="font-semibold">Fluid creep risk:</span> projected 24 h volume
-              ({Math.round(result.total24).toLocaleString()} mL) exceeds the Ivy index of 250 mL/kg
-              ({result.ivyMl.toLocaleString()} mL). Watch for abdominal compartment syndrome, ARDS, ocular and limb compartment
-              syndromes; consider early colloid (5 % albumin from 12–24 h) and re-evaluate %TBSA.
-            </p>
-          </div>
+
+        {popMismatch && (
+          <p role="status" className="mb-3 rounded-md border border-destructive/40 bg-destructive/10 p-2 text-xs text-destructive">
+            {formula === "aba-adult" ? "The ABA 2023 guideline is for adults; select Adult or another formula." : "Galveston is a paediatric formula; select Child."}
+          </p>
         )}
-  
-        {/* Worked examples */}
+
+        {!res || popMismatch ? (
+          <p role="status" className="text-sm text-muted-foreground">
+            {popMismatch ? "No estimate shown for this formula/population combination." : "Enter weight above 0, %TBSA between 0 and 100" + (formula === "galveston" ? " and height." : ".")}
+          </p>
+        ) : (
+          <>
+            <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+              <OutputCard icon={<Droplets className="h-4 w-4" />} label="24 h formula estimate" value={`${Math.round(res.totalMl).toLocaleString()} mL`}
+                sub={formula === "galveston" ? `BSA ${m2?.toFixed(2)} m² · includes maintenance` : "Resuscitation fluid only"} />
+              <OutputCard icon={<Clock className="h-4 w-4" />} label="First 8 h from injury" value={`${Math.round(res.totalMl / 2).toLocaleString()} mL`}
+                sub={plan?.status === "rate" ? `Remaining ${Math.round(plan.remainingFirst8Ml).toLocaleString()} mL over ${plan.hoursLeftInFirst8} h ≈ ${Math.round(plan.mlPerHour)} mL/h — reassess against urine output` :
+                  plan?.status === "estimate-only" ? "Enter hours AND fluid given for a remaining-volume rate" :
+                  plan?.status === "first-8h-ended" ? "First-8 h window has ended" : plan?.status === "window-ended" ? "First-day window has ended" : "Check hours/fluid inputs"} />
+              <OutputCard icon={<Clock className="h-4 w-4" />} label="Next 16 h" value={plan?.status === "window-ended" ? "—" : `${Math.round(res.totalMl / 2).toLocaleString()} mL`}
+                sub={plan?.status === "window-ended" ? "Beyond 24 h — no first-day output" : "Formula estimate for hours 8–24"} />
+              <OutputCard icon={<Droplets className="h-4 w-4" />} label="Urine-output target" value={uo === null ? "—" : `${Math.round(uo)} mL/h`}
+                sub={population === "child" ? "1 mL/kg/h (child)" : "0.5 mL/kg/h (adult)"} />
+            </div>
+
+            <div className="mt-3 rounded-md border border-border bg-muted/30 p-3 text-xs text-muted-foreground">
+              <p><span className="font-semibold text-foreground">Maintenance:</span>{" "}
+                {res.includesMaintenance ? "already included in the Galveston total — do not add a second allowance." :
+                  population === "child" ? "children also need maintenance fluid prescribed separately (NSW ACI); enter it above so total intake is counted." :
+                  "prescribe any maintenance or other fluids separately and enter them above."}</p>
+              <p className="mt-1"><span className="font-semibold text-foreground">Notes:</span> {FORMULA[formula].note}</p>
+              <p className="mt-1">Electrical injury, inhalation injury, haemochromogenuria and delayed resuscitation often need more fluid and higher urine-output targets — follow the specific burns-service protocol.</p>
+            </div>
+
+            {ivy && (
+              <div className={cn("mt-3 flex items-start gap-2 rounded-md border p-3 text-xs", ivy.exceeds ? "border-destructive/40 bg-destructive/10 text-destructive" : "border-border text-muted-foreground")}>
+                <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+                <p>
+                  <span className="font-semibold">Ivy index check:</span> projected 24 h intake {Math.round(res.totalMl + other).toLocaleString()} mL
+                  = {Math.round(ivy.mlPerKg)} mL/kg ({ivy.exceeds ? "above" : "not above"} 250 mL/kg). {ivy.exceeds ? "Higher risk of abdominal compartment syndrome — review the fluid strategy with the burns team." : "Actual intake often exceeds the estimate; recalculate with real volumes."}
+                </p>
+              </div>
+            )}
+          </>
+        )}
+
         <div className="mt-4 grid gap-3 md:grid-cols-2">
-          <ExampleButton
-            title="80 kg adult, 40 % TBSA flame"
-            onClick={() => { setFormula("parkland"); setWeight(80); setTbsa(40); setHoursSinceBurn(0); }}
-          >
-            Parkland 4 × 80 × 40 = <strong>12,800 mL</strong> in 24 h. 6,400 mL in first 8 h ≈ <strong>800 mL/h</strong>;
-            remainder 400 mL/h. Titrate to UO 40 mL/h.
+          <ExampleButton title="80 kg adult, 40% TBSA flame (Parkland)" onClick={() => load("parkland", "adult", 80, 40)}>
+            4 × 80 × 40 = <strong>12,800 mL</strong> over 24 h; 6,400 mL in the first 8 h from injury (≈800 mL/h only if started at injury with nothing given). Urine target 0.5 mL/kg/h = 40 mL/h.
           </ExampleButton>
-          <ExampleButton
-            title="20 kg child, 25 % TBSA scald"
-            onClick={() => { setFormula("parkland"); setWeight(20); setTbsa(25); setHoursSinceBurn(0); }}
-          >
-            Parkland 4 × 20 × 25 = <strong>2,000 mL</strong> + maintenance ~ 60 mL/h (4-2-1).
-            Target UO 1 mL/kg/h = 20 mL/h. Use Lund–Browder, not rule of nines.
+          <ExampleButton title="20 kg child, 25% TBSA scald (Parkland, child)" onClick={() => load("parkland", "child", 20, 25)}>
+            4 × 20 × 25 = <strong>2,000 mL</strong> resuscitation fluid, plus separately prescribed maintenance. Urine target 1 mL/kg/h = <strong>20 mL/h</strong>. Use Lund–Browder.
           </ExampleButton>
-          <ExampleButton
-            title="High-voltage electrical, 70 kg, 15 % visible TBSA"
-            onClick={() => { setFormula("electrical"); setWeight(70); setTbsa(15); setHoursSinceBurn(0); }}
-          >
-            Visible TBSA underestimates. Start at 4 × 70 × 15 = <strong>4,200 mL</strong> but target UO
-            <strong> 1–2 mL/kg/h </strong>(70–140 mL/h) until myoglobinuria clears; consider bicarbonate.
+          <ExampleButton title="20 kg, 110 cm child, 25% TBSA (Galveston)" onClick={() => load("galveston", "child", 20, 25, 110)}>
+            BSA ≈ 0.78 m²: 5,000 × 0.78 × 0.25 + 2,000 × 0.78 ≈ <strong>2,540 mL</strong>, maintenance already included.
           </ExampleButton>
-          <ExampleButton
-            title="100 kg adult, 60 % TBSA — fluid-creep alert"
-            onClick={() => { setFormula("parkland"); setWeight(100); setTbsa(60); setHoursSinceBurn(0); }}
-          >
-            Parkland 4 × 100 × 60 = <strong>24,000 mL</strong> — comfortably above the 250 mL/kg Ivy index.
-            Switch to modified Brooke (2 mL/kg/%TBSA) or add albumin from 12 h to limit creep.
+          <ExampleButton title="100 kg adult, 60% TBSA — Ivy index" onClick={() => load("parkland", "adult", 100, 60)}>
+            4 × 100 × 60 = <strong>24,000 mL</strong> = 240 mL/kg — just <em>below</em> 250 mL/kg before any maintenance or other fluids; adding these can cross it.
           </ExampleButton>
         </div>
       </figure>
@@ -241,14 +177,12 @@ export const ParklandCalculator = () => {
 };
 
 const OutputCard = ({ icon, label, value, sub }: { icon: React.ReactNode; label: string; value: string; sub: string }) => (
-      <div className="rounded-lg border border-border bg-background p-3">
-    <p className="flex items-center gap-1.5 text-[11px] uppercase tracking-wide text-muted-foreground">
-      {icon} {label}
-    </p>
+  <div className="rounded-lg border border-border bg-background p-3">
+    <p className="flex items-center gap-1.5 text-[11px] uppercase tracking-wide text-muted-foreground">{icon} {label}</p>
     <p className="mt-1 text-lg font-semibold text-foreground">{value}</p>
     <p className="text-[11px] text-muted-foreground">{sub}</p>
   </div>
-  );
+);
 
 const ExampleButton = ({ title, children, onClick }: { title: string; children: React.ReactNode; onClick: () => void }) => (
   <div className="rounded-lg border border-border bg-background/60 p-3">
