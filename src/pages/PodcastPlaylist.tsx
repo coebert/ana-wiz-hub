@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { isHeldPodcastAudio } from "@/lib/podcast-audit-holds";
 import { Link } from "react-router-dom";
 import {
   ArrowDown,
@@ -135,7 +136,7 @@ const PodcastPlaylist = () => {
         topicPath: topic && section ? `${sectionMeta[section].path}/${topic.id}` : null,
       };
     });
-    setEpisodes(resolved);
+    setEpisodes(resolved.filter((episode) => !isHeldPodcastAudio(episode.audio_url)));
   }, []);
 
   useEffect(() => {

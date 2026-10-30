@@ -1,4 +1,5 @@
 import { useSyncExternalStore } from "react";
+import { isHeldPodcastAudio } from "./podcast-audit-holds";
 
 export interface PlayerTrack {
   key: string;
@@ -40,6 +41,7 @@ export const getAudio = () => {
 };
 
 export function playTrack(track: PlayerTrack, list?: PlayerTrack[], autoAdvance = true) {
+  if (isHeldPodcastAudio(track.src)) { closePlayer(); return; }
   const a = getAudio();
   if (!a) return;
   if (state.track?.key === track.key) {
@@ -53,6 +55,7 @@ export function playTrack(track: PlayerTrack, list?: PlayerTrack[], autoAdvance 
 }
 
 export function togglePlay() {
+  if (state.track && isHeldPodcastAudio(state.track.src)) { closePlayer(); return; }
   const a = getAudio();
   if (!a || !state.track) return;
   if (a.paused) a.play().catch(() => {});
