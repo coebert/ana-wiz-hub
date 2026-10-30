@@ -1,6 +1,8 @@
 {
-  "totalCitations": 2858,
-  "uniqueSources": 2278,
-  "uniqueUrls": 1787,
-  "topicsWithRefs": 200
+  "totalReferenceEntries": 2870,
+  "uniqueReferenceTexts": 2290,
+  "uniqueUrls": 1799,
+  "referencePoolsWithReferences": 200,
+  "registeredTopics": 192,
+  "registeredTopicsWithReferences": 192
 }
