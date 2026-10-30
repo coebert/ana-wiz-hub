@@ -68,3 +68,35 @@ These are scoped fixes to named defects. They do not certify any calculator or r
 - `diagram-a11y-all`: the four edited calculators pass. Four unrelated operation diagrams fail (pre-existing).
 - `diagram-source-citations`: pre-existing failure only (`OperativeStepsTopic.tsx` missing topicId).
 - The rendered states were checked with Testing Library. A live browser run could not locate the calculators inside the collapsed topic sections, so they were not inspected visually.
+
+## T1b residual follow-up (2026-10-30)
+Resolved, with no database changes and no publication:
+1. **Remifentanil weight basis:** the user must choose non-obese/actual or obese/IBW (Devine) before any rate shows. In the IBW branch a blank, invalid or <152.4 cm height suppresses rates and never falls back to actual weight. The basis and dosing weight appear beside the results (120 kg/170 cm male → 65.937 kg).
+2. **Sedation dose cards cite named SmPCs:**
+   - Propofol: 1 mg/kg/h is labelled an arithmetic example; range 0.3–4; infusion-syndrome risk assessed throughout treatment.
+   - Midazolam: 30–200 µg/kg/h; start at the lower end; 1 mg/mL dilution distinguished from stock strength.
+   - Dexmedetomidine: 0.7 is the labelled switch-in rate; frail patients may need less; no loading dose.
+   - Remifentanil: initial 0.1–0.15; reference range 0.006–0.74 shown to 3 dp and labelled not a target; add a sedative at 0.2 if sedation is inadequate; 25% steps are after extubation.
+3. **Opioid estimator:** the per-dose output and interval menu are removed. Results are labelled theoretical equivalents. Codeine (240 mg/day) and tramadol (400 mg/day) results above the limit show a warning and are not presented as a regimen.
+4. **Buprenorphine patch:** 52.5 µg/h → 126 mg/day, with a note that the FPM page shows 52.
+5. **RCH PCA:** exactly 45 kg shows a boundary message and no recipe; bands are labelled <45 / >45 kg. Hydromorphone >45 kg shows 60–120 µg/h, with the RCH µg/kg/h parenthesis flagged for CPMS confirmation. Background is labelled rarely needed, specialist prescription only.
+6. **Epidural monitoring:** cardiorespiratory, post-bolus/rate-increase and sensory/motor schedules are shown separately, with a link to the full protocol.
+7. **Adult PCA:** attributed to Buckinghamshire 332FM.5 (pp. 3–4) as illustrative settings.
+8. **Overflow:** non-finite outputs return null in omeddFromOral, oralTargetDailyMg and sedationMlPerHour.
+9. **Burns:**
+   - Inputs are validated first. Elapsed time ≥24 h always shows an expired state, with the day-1 total only as historical teaching.
+   - No rate-now or catch-up rate; remaining formula volume only.
+   - ABA requires adult and ≥20% TBSA, cited as 2024 (online 2023). NSW requires adult >20% or child >10%.
+   - Blank other fluids is treated as unknown: a formula subtotal shows, and the Ivy comparison waits until a value (including 0) is entered.
+10. **D72 quizzes:** three burns/suxamethonium items rewritten to the Salisbury "avoid after initial 24 h" protocol and SmPC 5–70-day greatest risk, with no fixed safe end.
+
+Checks:
+- t1b-residuals 16/16, t1-calculators + t1 render 21/21.
+- Diagram a11y filtered to these calculators: 13 passed. Typecheck clean; vite build OK; search index and diagram manifest regenerated.
+- Local dev browser: new wording present on /tools/sedation, /clinical/pain-medicine and /intensive-care/burns-icu; removed wording absent.
+- preview--ana-wiz-hub.lovable.app had not yet picked up these edits at check time (none of the new text found), so that preview is not yet verified.
+
+Limitations:
+- Source pages were not re-fetched in this turn; values follow the root's freshly checked payload.
+- Burns elapsed-time bookkeeping still uses a single formula; no individual rate is given.
+- Not a whole-calculator or clinical certification.
