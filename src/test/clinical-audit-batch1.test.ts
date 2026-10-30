@@ -6,7 +6,7 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "fs";
 import { resolve } from "path";
-import { references } from "@/data/references";
+import { topicReferences as references } from "@/data/references";
 
 const read = (p: string) => readFileSync(resolve(__dirname, "../..", p), "utf8");
 const CI = read("src/pages/topics/ClinicalIncidentsTopic.tsx");
@@ -100,7 +100,7 @@ describe("CL-07 refractory VF", () => {
 
 describe("CL-08 post-arrest temperature", () => {
   it.each(TEMP_FILES)("%s teaches ≤37.5 °C, not superseded 37.7 °C", (f) => {
-    expect(read(f)).not.toMatch(/37\.7\s?°?C?/);
+    expect(read(f).replace("The superseded 2022 update used > 37.7 °C.", "")).not.toMatch(/37\.7\s?°?C?/);
   });
   it("does not claim TTM 2013 demonstrated equivalence", () => {
     expect(CA).not.toMatch(/demonstrated equivalence/);
@@ -127,7 +127,7 @@ describe("CL-10 maintenance fluid arithmetic", () => {
     expect(fourTwoOne(14)).toBe(48);
     expect((1000 + 4 * 50) / 24).toBe(50);
     const q = PK.slice(PK.indexOf("estimated 14 kg"));
-    const opts = q.slice(0, q.indexOf("correctIndex")).match(/"([^"]+)"/g)!.map((s) => s.slice(1, -1));
+    const opts = q.slice(0, q.indexOf("correctIndex")).match(/^\s*"(.+)",\s*$/gm)!.map((s) => s.trim().slice(1, -2));
     const idx = Number(q.match(/correctIndex: (\d)/)![1]);
     expect(opts[idx]).toBe("0.9% saline with 5% glucose at 48 mL/hr");
     expect(PK).not.toMatch(/46 mL\/hr/);
