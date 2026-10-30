@@ -52,7 +52,15 @@ const prefersReducedMotion = () =>
 export const scrollToSupport = (attempts = 20) => {
   const el = document.getElementById("support");
   if (el) {
-    el.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
+    const go = (smooth: boolean) =>
+      document.getElementById("support")?.scrollIntoView({
+        behavior: smooth && !prefersReducedMotion() ? "smooth" : "auto",
+        block: "start",
+      });
+    go(true);
+    // Content above may still be loading; re-align once layout settles.
+    window.setTimeout(() => go(false), 600);
+    window.setTimeout(() => go(false), 1500);
     return;
   }
   if (attempts > 0) window.setTimeout(() => scrollToSupport(attempts - 1), 100);
