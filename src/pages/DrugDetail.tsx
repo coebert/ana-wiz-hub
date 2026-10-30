@@ -7,9 +7,13 @@ import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta } from "@/data/curriculum";
 import { classifyImpact as classifyImpactExternal } from "@/lib/drug-impact-classifier";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { computeMlPerHr, extractMassDilutions, formatConcentration, formatMix, normaliseInfusionStandard } from "@/lib/infusion-standard";
 
 interface InfusionStandard {
   amount_mg?: number;
+  amount?: number;
+  amount_unit?: string;
+  final_volume_ml?: number;
   diluent_ml?: number;
   unit?: string;
   weight_based?: boolean;
@@ -481,28 +485,7 @@ function detectDiluents(text: string): Array<{ label: string; tone: string }> {
   return out;
 }
 
-function extractDilutions(text: string): Array<{ raw: string; mgPerMl: number; mcgPerMl: number }> {
-  const out: Array<{ raw: string; mgPerMl: number; mcgPerMl: number }> = [];
-  const seen = new Set<string>();
-  const re = /(\d+(?:\.\d+)?)\s*(mg|g|mcg|micrograms?|units?)\s*(?:in|\/)\s*(\d+(?:\.\d+)?)\s*(?:ml|mls)/gi;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(text)) !== null) {
-    const amount = parseFloat(m[1]);
-    const unit = m[2].toLowerCase();
-    const ml = parseFloat(m[3]);
-    if (!ml) continue;
-    let mg = amount;
-    if (unit === "g") mg = amount * 1000;
-    else if (unit.startsWith("mcg") || unit.startsWith("microgram")) mg = amount / 1000;
-    const key = `${m[1]}${unit}-${ml}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    const mgPerMl = mg / ml;
-    out.push({ raw: m[0], mgPerMl, mcgPerMl: mgPerMl * 1000 });
-    if (out.length >= 6) break;
-  }
-  return out;
-}
+const extractDilutions = extractMassDilutions;
 
 function splitSteps(raw: string): string[] {
   if (!raw) return [];
@@ -516,59 +499,38 @@ function splitSteps(raw: string): string[] {
     .filter((s) => s.length > 0);
 }
 
-function WorkedExample({ drug }: { drug: Drug }) {
-  const std = drug.infusion_standard || {};
-  if (!std.amount_mg || !std.diluent_ml || !std.unit) return null;
-
-  const concMgPerMl = std.amount_mg / std.diluent_ml;
-  const concMcgPerMl = concMgPerMl * 1000;
+export function WorkedExample({ drug }: { drug: Pick<Drug, "infusion_standard"> }) {
+  const n = normaliseInfusionStandard(drug.infusion_standard);
+  if (!n) return null;
+  if (!n.ok) {
+    return <div className="rounded-md border border-border p-3 mt-3 text-xs text-muted-foreground">Worked example unavailable: {n.reason}</div>;
+  }
   const weight = 70;
   const exampleRate =
-    std.unit === "mcg/kg/min" ? 0.1
-    : std.unit === "mcg/min" ? 20
-    : std.unit === "mg/kg/hr" ? 2
-    : std.unit === "mcg/kg/hr" ? 5
-    : std.unit === "units/hr" ? 2
-    : std.unit === "mg/hr" ? 5
-    : 1;
-
-  let mlPerHr = 0;
-  let workings = "";
-  if (std.unit === "mcg/kg/min") {
-    const mcgPerMin = exampleRate * weight;
-    mlPerHr = (mcgPerMin * 60) / concMcgPerMl;
-    workings = `${exampleRate} mcg/kg/min × ${weight} kg = ${mcgPerMin.toFixed(1)} mcg/min → ×60 = ${(mcgPerMin * 60).toFixed(0)} mcg/hr ÷ ${concMcgPerMl.toFixed(0)} mcg/mL = ${mlPerHr.toFixed(2)} mL/hr`;
-  } else if (std.unit === "mcg/min") {
-    mlPerHr = (exampleRate * 60) / concMcgPerMl;
-    workings = `${exampleRate} mcg/min × 60 = ${(exampleRate * 60).toFixed(0)} mcg/hr ÷ ${concMcgPerMl.toFixed(0)} mcg/mL = ${mlPerHr.toFixed(2)} mL/hr`;
-  } else if (std.unit === "mg/kg/hr") {
-    mlPerHr = (exampleRate * weight) / concMgPerMl;
-    workings = `${exampleRate} mg/kg/hr × ${weight} kg = ${(exampleRate * weight).toFixed(1)} mg/hr ÷ ${concMgPerMl.toFixed(2)} mg/mL = ${mlPerHr.toFixed(2)} mL/hr`;
-  } else if (std.unit === "mcg/kg/hr") {
-    mlPerHr = (exampleRate * weight) / concMcgPerMl;
-    workings = `${exampleRate} mcg/kg/hr × ${weight} kg = ${(exampleRate * weight).toFixed(1)} mcg/hr ÷ ${concMcgPerMl.toFixed(0)} mcg/mL = ${mlPerHr.toFixed(2)} mL/hr`;
-  } else if (std.unit === "units/hr" || std.unit === "mg/hr") {
-    mlPerHr = exampleRate / concMgPerMl;
-    workings = `${exampleRate} ${std.unit} ÷ ${concMgPerMl.toFixed(2)} ${std.unit.replace("/hr", "/mL")} = ${mlPerHr.toFixed(2)} mL/hr`;
-  }
+    n.target === "mcg/kg/min" ? 0.1
+    : n.target === "mcg/min" ? 20
+    : n.target === "mg/kg/hr" ? 2
+    : n.target === "mcg/kg/hr" ? 5
+    : n.target === "units/hr" ? 2
+    : 5;
+  const r = computeMlPerHr(n, exampleRate, weight);
+  const needsWeight = n.target.includes("/kg/");
 
   return (
-    <div className="rounded-md border border-drugs/30 bg-drugs/5 p-3 mt-3">
+    <div className="rounded-md border border-drugs/30 bg-drugs/5 p-3 mt-3" data-testid="worked-example">
       <div className="text-[10px] uppercase tracking-wide font-semibold text-drugs mb-1.5">Worked example</div>
       <div className="text-xs text-foreground/90 leading-relaxed">
         <div className="mb-1">
-          <span className="font-medium">Mix:</span> {std.amount_mg} mg in {std.diluent_ml} mL ={" "}
-          <span className="font-mono">{concMgPerMl.toFixed(2)} mg/mL</span>
-          {concMcgPerMl >= 1 && <> (<span className="font-mono">{concMcgPerMl.toFixed(0)} mcg/mL</span>)</>}
+          <span className="font-medium">Mix:</span> {formatMix(n)} = <span className="font-mono">{formatConcentration(n)}</span>
         </div>
         <div className="mb-1">
-          <span className="font-medium">Target:</span> {exampleRate} {std.unit}
-          {std.weight_based && <> for a {weight} kg adult</>}
+          <span className="font-medium">Target:</span> {exampleRate} {n.target}
+          {needsWeight && <> for a {weight} kg adult</>}
         </div>
         <div className="font-mono text-[11px] text-foreground/80 bg-background/60 rounded px-2 py-1 border border-border whitespace-pre-wrap">
-          {workings}
+          {r.ok ? r.workings : r.reason}
         </div>
-        <div className="text-[11px] text-muted-foreground mt-1.5">Adjust the live calculator below for other weights and target rates.</div>
+        <div className="text-[11px] text-muted-foreground mt-1.5">Arithmetic illustration only, not a dose recommendation. Adjust the live calculator below for other weights and target rates.</div>
       </div>
     </div>
   );
@@ -640,65 +602,61 @@ function PreparationGuide({ raw, drug }: { raw: string; drug: Drug }) {
   );
 }
 
-function InfusionCalculator({ drug }: { drug: Drug }) {
-  const std = drug.infusion_standard || {};
+export function InfusionCalculator({ drug }: { drug: Pick<Drug, "infusion_standard"> }) {
+  const n = normaliseInfusionStandard(drug.infusion_standard);
   const [weight, setWeight] = useState<number>(70);
-  const [rate, setRate] = useState<number>(0.1);
-
-  if (!std.amount_mg || !std.diluent_ml || !std.unit) return null;
-
-  const concMgPerMl = std.amount_mg / std.diluent_ml;
-  const concMcgPerMl = concMgPerMl * 1000;
-  const weightBased = std.weight_based;
-
-  // Compute mL/hr
-  let mlPerHr = 0;
-  if (std.unit === "mcg/kg/min") {
-    const mcgPerMin = rate * weight;
-    mlPerHr = (mcgPerMin * 60) / concMcgPerMl;
-  } else if (std.unit === "mcg/min") {
-    mlPerHr = (rate * 60) / concMcgPerMl;
-  } else if (std.unit === "mg/kg/hr") {
-    mlPerHr = (rate * weight) / concMgPerMl;
-  } else if (std.unit === "mcg/kg/hr") {
-    mlPerHr = (rate * weight) / concMcgPerMl;
-  } else if (std.unit === "units/hr" || std.unit === "mg/hr") {
-    mlPerHr = rate / concMgPerMl;
+  const [rate, setRate] = useState<number>(n && n.ok && n.kind === "units" ? 2 : 0.1);
+  if (!n) return null;
+  if (!n.ok) {
+    return (
+      <section className="bg-drugs/5 border border-drugs/30 rounded-lg p-4">
+        <h2 className="text-sm font-semibold text-foreground mb-1">Infusion calculator</h2>
+        <p className="text-xs text-muted-foreground">Calculator unavailable: {n.reason}</p>
+      </section>
+    );
   }
+  const needsWeight = n.target.includes("/kg/");
+  const r = computeMlPerHr(n, rate, needsWeight ? weight : undefined);
 
   return (
-    <section className="bg-drugs/5 border border-drugs/30 rounded-lg p-4">
+    <section className="bg-drugs/5 border border-drugs/30 rounded-lg p-4" data-testid="infusion-calculator">
       <h2 className="text-sm font-semibold text-foreground mb-1">Infusion calculator</h2>
       <p className="text-xs text-muted-foreground mb-3">
-        Standard mix: <span className="font-medium text-foreground">{std.amount_mg} mg in {std.diluent_ml} mL</span>
-        {" "}({concMgPerMl.toFixed(2)} mg/mL{std.note ? ` — ${std.note}` : ""})
+        Standard mix: <span className="font-medium text-foreground">{formatMix(n)}</span>
+        {" "}({formatConcentration(n)}{n.note ? ` — ${n.note}` : ""})
       </p>
       <div className="grid grid-cols-2 gap-3 mb-3">
-        {weightBased && (
+        {needsWeight && (
           <label className="text-xs">
             <span className="block text-muted-foreground mb-1">Weight (kg)</span>
             <input
               type="number"
-              value={weight}
-              onChange={(e) => setWeight(parseFloat(e.target.value) || 0)}
+              value={Number.isFinite(weight) ? weight : ""}
+              onChange={(e) => setWeight(parseFloat(e.target.value))}
               className="w-full px-2 py-1.5 rounded border border-border bg-background text-sm"
             />
           </label>
         )}
         <label className="text-xs">
-          <span className="block text-muted-foreground mb-1">Target ({std.unit})</span>
+          <span className="block text-muted-foreground mb-1">Target ({n.target})</span>
           <input
             type="number"
             step="0.01"
-            value={rate}
-            onChange={(e) => setRate(parseFloat(e.target.value) || 0)}
+            value={Number.isFinite(rate) ? rate : ""}
+            onChange={(e) => setRate(parseFloat(e.target.value))}
             className="w-full px-2 py-1.5 rounded border border-border bg-background text-sm"
           />
         </label>
       </div>
-      <div className="text-sm">
-        <span className="text-muted-foreground">Pump rate: </span>
-        <span className="font-semibold text-drugs">{mlPerHr.toFixed(2)} mL/hr</span>
+      <div className="text-sm" data-testid="pump-rate">
+        {r.ok ? (
+          <>
+            <span className="text-muted-foreground">Pump rate: </span>
+            <span className="font-semibold text-drugs">{r.mlPerHr.toFixed(2)} mL/hr</span>
+          </>
+        ) : (
+          <span className="text-muted-foreground">{r.reason}</span>
+        )}
       </div>
     </section>
   );
