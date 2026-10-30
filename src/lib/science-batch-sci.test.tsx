@@ -12,7 +12,7 @@ describe("SCI036/038 eGFR", () => {
     expect(computeEgfr("80", a, "male").ok).toBe(false);
   });
   it("rejects nonfinite/zero output (overflow)", () => {
-    expect(computeEgfr("1e-300", "60", "female").ok).toBe(false);
+    expect(computeEgfr("1e300", "60", "female").ok).toBe(false);
   });
   it("accepts finite adult values and matches CKD-EPI 2021", () => {
     const r = computeEgfr("80", "60", "male");
