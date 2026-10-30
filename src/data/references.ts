@@ -1445,6 +1445,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2020 Fascial Planes", citation: "Chin KJ, Versyck B, Pawa A. Ultrasound-guided fascial plane blocks of the chest wall: a state-of-the-art review. Anaesthesia. 2021;76(Suppl 1):110-126.", url: "https://doi.org/10.1111/anae.15276" },
   ],
   "obstetric-anaesthesia": [
+    { label: "NAP7 Ch26 2023", citation: "Royal College of Anaesthetists. NAP7 report, Chapter 26: Obstetrics (2023), p.6 — epidural test dose discussion.", url: "https://www.rcoa.ac.uk/sites/default/files/documents/2023-11/NAP7_Chapter%2026_FINAL.pdf" },
     { label: "BJA 2009 Epidural Conversion", citation: "Conversion of epidural labour analgesia to anaesthesia for Caesarean section: a prospective study of the incidence and determinants of failure. Br J Anaesth. 2009;102(2):240-243.", url: "https://doi.org/10.1093/bja/aen352" },
     { label: "Cochrane 2013 PDPH Drugs", citation: "Basurto Ona X, Uriona Tuma SM, Martínez García L, et al. Drug therapy for preventing post-dural puncture headache. Cochrane Database Syst Rev. 2013;(2):CD001792.", url: "https://doi.org/10.1002/14651858.cd001792.pub3" },
     { label: "Quinn 2013 UKOSS Failed Intubation", citation: "Quinn AC, Milne D, Columb M, Gorton H, Knight M. Failed tracheal intubation in obstetric anaesthesia: 2 yr national case-control study in the UK. Br J Anaesth. 2013;110(1):74-80.", url: "https://doi.org/10.1093/bja/aes320" },
@@ -1905,6 +1906,14 @@ export const topicReferences: Record<string, Reference[]> = {
 
   ],
   "acute-liver-failure": [
+    { label: "EMA Terlipressin 2022", citation: "European Medicines Agency. Terlipressin-containing medicinal products: Article 31 referral, Annex III (2022).", url: "https://www.ema.europa.eu/en/documents/referral/terlipressin-containing-medicinal-products-article-31-referral-annex-iii_en.pdf" },
+    { label: "CONFIRM 2021", citation: "Wong F, Pappas SC, Curry MP, et al. Terlipressin plus albumin for the treatment of type 1 hepatorenal syndrome. N Engl J Med. 2021;384:818-828.", url: "https://doi.org/10.1056/NEJMoa2008290" },
+    { label: "MHRA Terlipressin 2023", citation: "MHRA Drug Safety Update. Terlipressin: new recommendations to reduce risks of respiratory failure and septic shock in type 1 hepatorenal syndrome. 23 March 2023.", url: "https://www.gov.uk/drug-safety-update/terlipressin-new-recommendations-to-reduce-risks-of-respiratory-failure-and-septic-shock-in-patients-with-type-1-hepatorenal-syndrome" },
+    { label: "Lee NAC 2009", citation: "Lee WM, Hynan LS, Rossaro L, et al. Intravenous N-acetylcysteine improves transplant-free survival in early stage non-acetaminophen acute liver failure. Gastroenterology. 2009;137:856-864.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3189485/" },
+    { label: "EASL ALF 2017", citation: "European Association for the Study of the Liver. EASL Clinical Practical Guidelines on the management of acute (fulminant) liver failure. J Hepatol. 2017;66:1047-1081.", url: "https://easl.eu/wp-content/uploads/2018/10/LiverFailure-English-report.pdf" },
+    { label: "Acetylcysteine SmPC", citation: "Acetylcysteine 200 mg/mL concentrate for solution for infusion — Summary of Product Characteristics (emc 3447).", url: "https://www.medicines.org.uk/emc/product/3447/smpc" },
+    { label: "RCUK Anaphylaxis 2021", citation: "Resuscitation Council UK. Emergency treatment of anaphylaxis: guidelines for healthcare providers. May 2021.", url: "https://www.resus.org.uk/sites/default/files/2021-05/Emergency%20Treatment%20of%20Anaphylaxis%20May%202021_0.pdf" },
+    { label: "SNAP pathway", citation: "NHS Scotland Right Decisions. Paracetamol overdose 0–8 h SNAP treatment pathway.", url: "https://rightdecisions.scot.nhs.uk/media/uhhjzhos/paracetamol-overdose-0-8hr-snap-treatment.pdf" },
     { label: "Schultheiss 2012", citation: "Schultheiß C, Saugel B, Phillip V, et al. Continuous venovenous hemodialysis with regional citrate anticoagulation in patients with liver failure: a prospective observational study. Crit Care. 2012;16(4):R162.", url: "https://doi.org/10.1186/cc11485" },
     { label: "AASLD ALF 2023", citation: "Shingina A, Mukhtar N, Wakim-Fleming J, et al. Acute liver failure guidelines. Am J Gastroenterol / Hepatology. 2023.", url: "https://doi.org/10.1097/hep.0000000000000458" },
 
