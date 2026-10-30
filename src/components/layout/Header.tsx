@@ -61,9 +61,9 @@ export const Header = () => {
 
   useEffect(() => {
     if (location.pathname === "/" && location.hash === "#support") {
-      scrollToSupport();
+      return scrollToSupport();
     }
-  }, [location.pathname, location.hash]);
+  }, [location.pathname, location.hash, location.key]);
 
   // Close the mobile drawer automatically whenever the route changes.
   useEffect(() => {

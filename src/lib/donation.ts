@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
+import { getReduceMotion } from "@/contexts/MotionPreferenceContext";
 
 /** Single source of truth for the PayPal.me recipient. Do not duplicate. */
 export const PAYPAL_ME_HANDLE = "RCoe";
@@ -44,24 +45,48 @@ export const logDonateClick = (source: string) => {
   }
 };
 
-const prefersReducedMotion = () =>
-  typeof window !== "undefined" &&
-  window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+/** Stripe hosted contribution page (customer chooses amount, GBP, one-off). No API integration. */
+export const STRIPE_CONTRIBUTE_URL = "https://buy.stripe.com/bJebJ1ePnglq3hQ3om7IY00";
+export const STRIPE_SOURCE = "support-card-stripe";
 
-/** Scroll to #support, waiting briefly for the section to mount. */
-export const scrollToSupport = (attempts = 20) => {
-  const el = document.getElementById("support");
-  if (el) {
-    const go = (smooth: boolean) =>
-      document.getElementById("support")?.scrollIntoView({
-        behavior: smooth && !prefersReducedMotion() ? "smooth" : "auto",
-        block: "start",
-      });
-    go(true);
-    // Content above may still be loading; re-align once layout settles.
-    window.setTimeout(() => go(false), 600);
-    window.setTimeout(() => go(false), 1500);
-    return;
-  }
-  if (attempts > 0) window.setTimeout(() => scrollToSupport(attempts - 1), 100);
+let cancelActive: (() => void) | null = null;
+
+/**
+ * Scroll to #support, waiting briefly for the section to mount, then re-align once layout settles.
+ * Honours system and in-app reduced-motion preference. Pending re-alignment is cancelled by any
+ * user scroll input (wheel/touch/pointer/key), a new support request, or the returned cleanup
+ * (call it on unmount/navigation).
+ */
+export const scrollToSupport = (attempts = 20): (() => void) => {
+  cancelActive?.();
+  const timers: number[] = [];
+  const events = ["wheel", "touchstart", "pointerdown", "keydown"] as const;
+  let done = false;
+  const cancel = () => {
+    if (done) return;
+    done = true;
+    timers.forEach((t) => window.clearTimeout(t));
+    events.forEach((e) => window.removeEventListener(e, cancel, true));
+    if (cancelActive === cancel) cancelActive = null;
+  };
+  cancelActive = cancel;
+  const go = (smooth: boolean) =>
+    document.getElementById("support")?.scrollIntoView({
+      behavior: smooth && !getReduceMotion() ? "smooth" : "auto",
+      block: "start",
+    });
+  const attempt = (left: number) => {
+    if (done) return;
+    if (document.getElementById("support")) {
+      go(true);
+      events.forEach((e) => window.addEventListener(e, cancel, { capture: true, passive: true }));
+      timers.push(window.setTimeout(() => !done && go(false), 600));
+      timers.push(window.setTimeout(() => { if (!done) go(false); cancel(); }, 1500));
+      return;
+    }
+    if (left > 0) timers.push(window.setTimeout(() => attempt(left - 1), 100));
+    else cancel();
+  };
+  attempt(attempts);
+  return cancel;
 };

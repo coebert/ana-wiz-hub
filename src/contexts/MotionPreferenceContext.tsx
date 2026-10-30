@@ -53,6 +53,12 @@ const subscribeSystem = (cb: () => void) => {
 const useSystemReducedMotion = () =>
   useSyncExternalStore(subscribeSystem, getSystemReducedMotion, () => false);
 
+/** Non-hook read of the resolved preference (in-app override, else OS). */
+export const getReduceMotion = (): boolean => {
+  const o = useMotionStore.getState().override;
+  return o === null ? getSystemReducedMotion() : o;
+};
+
 interface MotionPreferenceHook {
   reduceMotion: boolean;
   override: Override;
