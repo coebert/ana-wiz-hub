@@ -1,0 +1,12 @@
+[
+  "docs/content-audit-2026-10-30-drugs-changes.json",
+  "docs/content-audit-2026-10-30-viva_model_answers-changes.json",
+  "src/components/diagrams/clinical/AntithromboticGuidelineLookup.tsx",
+  "src/lib/anaesthesia-dose-calculation.test.ts",
+  "src/lib/anaesthesia-dose-calculation.ts",
+  "src/lib/icu-infusion-calculation.test.ts",
+  "src/lib/icu-infusion-calculation.ts",
+  "src/lib/science-boundaries.test.ts",
+  "src/test/antithrombotic-lookup.test.tsx",
+  "src/test/clinical-audit-drug-science.test.ts"
+]

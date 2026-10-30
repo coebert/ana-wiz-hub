@@ -52,7 +52,7 @@ export function dilutionsForSlug(slug: string): DrugDilution[] {
 
 /** True when the recipe is measured in units (insulin, heparin, vasopressin). */
 export function isUnitDrug(unit: InfusionUnit): boolean {
-  return unit.startsWith("units");
+  return /^units(?:\/|$)/.test(unit);
 }
 
 /**

@@ -26,33 +26,6 @@ function isPerKg(drug: AnaesthesiaCalcDrug): boolean {
   return drug.unit.includes("/kg");
 }
 
-/** Total amount (in the drug's presentation unit) for a bolus or fixed dose. */
-function totalAmount(drug: AnaesthesiaCalcDrug, dose: number, weightKg: number): number {
-  switch (drug.unit) {
-    case "mg/kg":
-    case "micrograms/kg":
-      return dose * weightKg;
-    case "mg":
-    case "micrograms":
-      return dose;
-    default:
-      return dose;
-  }
-}
-
-/** Amount per hour (presentation unit) for an infusion. */
-function amountPerHour(drug: AnaesthesiaCalcDrug, dose: number, weightKg: number): number {
-  switch (drug.unit) {
-    case "mg/kg/h":
-    case "micrograms/kg/h":
-      return dose * weightKg;
-    case "micrograms/kg/min":
-      return dose * weightKg * 60;
-    default:
-      return dose;
-  }
-}
-
 function fmt(n: number, dp = 2): string {
   return n.toLocaleString("en-GB", { maximumFractionDigits: dp });
 }

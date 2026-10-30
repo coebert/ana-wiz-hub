@@ -16,8 +16,8 @@ import { AnaesthesiaDosingCallout } from "@/components/perioperative/Anaesthesia
 
 const localAnaestheticsFaqs: Array<[string, string]> = [
   [
-    "What are the maximum safe doses of common local anaesthetics?",
-    "Lidocaine — 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine/levobupivacaine — 2 mg/kg (with or without adrenaline; toxicity dominates). Ropivacaine — 3–4 mg/kg. Prilocaine — 6 mg/kg plain, 8 mg/kg with adrenaline (max for Bier's block). Doses should be reduced 30–50 % in the elderly, pregnant, debilitated, and infused at the lowest effective concentration. Always calculate maximum mg before drawing up."
+    "How should local-anaesthetic dose limits be selected?",
+    "Use the exact product, route and procedure table, not a universal maximum-safe dose. Named UK lidocaine 2% (emc 15150) limits a single dose to 4.5 mg/kg and 300 mg; more conservative local policies may apply. Xylocaine with adrenaline (emc 2397) has an adult single-dose ceiling 500 mg. Named bupivacaine field-block/infiltration (emc 11611) limits 150 mg; levobupivacaine (emc 13644) has single-dose 150 mg and daily 400 mg limits. These scopes are not interchangeable with spinal, major nerve blocks or IVRA; no universal ropivacaine/prilocaine maximum is inferred. Prior doses, mixed agents, vascularity, body-weight basis and patient factors matter. Below a listed ceiling, toxicity remains possible."
   ],
   [
     "How does pKa of a local anaesthetic relate to onset of action?",
@@ -74,7 +74,7 @@ const LocalAnaestheticsTopic = () => {
         "Explain how pKa, lipid solubility and protein binding determine onset, potency and duration of local anaesthetics",
         "Apply the Henderson–Hasselbalch equation and the concept of ion trapping to clinical scenarios (infected tissue, foetal acidosis)",
         "Distinguish ester from amide LAs by metabolism, allergy potential and clinical use",
-        "Calculate maximum safe doses for lidocaine, bupivacaine, ropivacaine and prilocaine, with and without adrenaline",
+        "Select product- and route-specific local-anaesthetic limits, accounting for prior and mixed-agent exposure",
         "Recognise and manage local anaesthetic systemic toxicity (LAST) using the RCoA/Association of Anaesthetists 2024 guideline and 20% lipid emulsion",
       ]}
       keyPoints={[

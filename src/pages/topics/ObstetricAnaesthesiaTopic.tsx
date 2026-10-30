@@ -60,7 +60,7 @@ const obstetricFaqs: Array<[string, string]> = [
   ],
   [
     "How is anaesthesia given for emergency (Category 1) caesarean section?",
-    "Category 1 = immediate threat to life of mother or baby; target decision-to-delivery interval ≤ 30 min (often 15 min). If a working epidural is in situ, extend with 20 ml 2% lidocaine + 100 µg adrenaline + 100 µg fentanyl (or levobupivacaine/bupivacaine 0.5%) — onset 5–8 min. No epidural: spinal if time allows (2.2–2.5 ml heavy bupivacaine 0.5% + 15 µg fentanyl + 300 µg diamorphine) or GA-RSI. Always have plan B (GA) prepared and antacid prophylaxis (sodium citrate 30 ml + ranitidine 50 mg IV or omeprazole 40 mg IV).",
+    "Category 1 = immediate threat to life of mother or baby; target decision-to-delivery interval ≤ 30 min (often 15 min). If a working epidural is in situ, extend with 20 ml 2% lidocaine + 100 µg adrenaline + 100 µg fentanyl (or levobupivacaine/bupivacaine 0.5%) — onset 5–8 min. No epidural: spinal if time allows (2.2–2.5 ml heavy bupivacaine 0.5% + 15 µg fentanyl + 300 µg diamorphine) or GA-RSI. Always have plan B (GA) prepared and antacid prophylaxis (sodium citrate 30 ml plus locally available acid suppression according to the obstetric protocol; ranitidine is not a current routine UK option).",
   ],
   [
     "How does pregnancy change anaesthetic physiology?",
@@ -97,7 +97,7 @@ const ObstetricAnaesthesiaTopicWorkedExamples: WorkedExample[] = [
       <div className="space-y-2">
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
-          <li>Pre-induction in &lt;10 min: 30° left tilt or manual displacement, pre-oxygenate to FeO₂ &gt;0.9 (3 min or 8 vital capacity breaths), aspiration prophylaxis (Na citrate 0.3 M 30 mL ± ranitidine/metoclopramide if time)</li>
+          <li>Pre-induction in &lt;10 min: 30° left tilt or manual displacement, pre-oxygenate to FeO₂ &gt;0.9 (3 min or 8 vital capacity breaths), aspiration prophylaxis (Na citrate 0.3 M 30 mL with locally available acid suppression and metoclopramide according to protocol if time)</li>
           <li>RSI with thiopentone 4–5 mg/kg or propofol 2 mg/kg + suxamethonium 1.5 mg/kg (TBW); cricoid pressure (per local policy)</li>
           <li>Use videolaryngoscopy first if available (OAA/DAS); have plan B (2nd-generation SAD) and plan C (FONA) ready</li>
           <li>Maintain with sevoflurane 1 MAC + 50% N₂O until delivery, then deepen and add opioid; uterotonics: oxytocin 5 IU slow bolus then 30 IU/500 mL infusion (RCOG/MBRRACE)</li>
@@ -232,7 +232,7 @@ const ObstetricAnaesthesiaTopic = () => {
               <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
                 <li>Call for senior help; declare Cat 1; brief team (WHO, allergies, weight, airway).</li>
                 <li>Two large-bore IVs, group &amp; save / crossmatch, FBC, coag, point-of-care Hb/lactate.</li>
-                <li>Aspiration prophylaxis: <strong>30 ml 0.3M sodium citrate PO</strong>, ranitidine 50 mg IV (or omeprazole 40 mg IV), metoclopramide 10 mg IV if time allows.</li>
+                <li>Aspiration prophylaxis: <strong>30 ml 0.3M sodium citrate PO</strong>, locally available acid suppression per obstetric protocol, metoclopramide 10 mg IV if time allows. Ranitidine is not a current routine UK option.</li>
                 <li>Difficult-airway trolley, videolaryngoscope, second-generation SAD, bougie, smaller ETTs (6.0–6.5).</li>
                 <li>Pre-drawn drug tray: induction agent, sux, phenylephrine 100 µg/ml, oxytocin 5 IU, ephedrine, atropine, magnesium, antibiotic.</li>
                 <li>Position: 15° left lateral tilt or manual uterine displacement, ramped (HELP) position for obese patients.</li>

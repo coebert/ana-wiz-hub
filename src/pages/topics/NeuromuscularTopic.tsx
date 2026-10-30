@@ -94,8 +94,8 @@ const workedExamples: WorkedExample[] = [
           </li>
           <li>
             Neostigmine works only when TOFR ≥ 0.4 (≥2 twitches reliably present). Sugammadex encapsulates
-            steroidal NMBAs and reverses any depth: 2 mg/kg if TOFR ≥ 0.2, 4 mg/kg for deep block, 16 mg/kg
-            for immediate rescue after rocuronium 1.2 mg/kg.
+            rocuronium/vecuronium in adults: 2 mg/kg at reappearance of T2 (TOF count, not ratio), 4 mg/kg at PTC 1–2.
+            Adult 16 mg/kg immediate reversal is the approximately 3-minute-after-rocuronium-1.2-mg/kg context, not any NMBA/depth or paediatric immediate reversal.
           </li>
         </ul>
       </>
@@ -141,7 +141,7 @@ const NeuromuscularTopic = () => {
         { text: "The safety margin means ~75% receptor occupancy before fade appears, ~80% before single twitch depression, >90% for complete block.", cites: ["Ganong Ch.5"] },
         { text: "Pre-junctional nAChRs (predominantly α₃β₂) mediate positive feedback — their block by non-depolarising agents explains train-of-four fade.", cites: ["BJA Educ 2018 (NMJ)"] },
         { text: "Extrajunctional receptor upregulation (burns, denervation, ICU immobility) causes suxamethonium-induced hyperkalaemia.", cites: ["BJA Educ 2018 (NMJ)"] },
-        { text: "Sugammadex dosing: 2 mg/kg if TOFR ≥0.2, 4 mg/kg for deep block, 16 mg/kg for immediate rescue after rocuronium 1.2 mg/kg (Assoc Anaesth 2023; BNF).", cites: ["Assoc Anaesth 2023 (NMB)"] },
+        { text: "Bridion: adult routine reversal 2 mg/kg at reappearance of T2, 4 mg/kg at PTC 1–2; 16 mg/kg immediate reversal approximately 3 min after rocuronium 1.2 mg/kg. Count, ratio and PTC are different; document quantitative TOF ratio ≥0.9 before extubation. Paediatric immediate reversal has not been investigated.", cites: ["Bridion SmPC"] },
       ]}
       coreConcepts={
         <>

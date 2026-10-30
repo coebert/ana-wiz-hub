@@ -3,7 +3,7 @@ import type { AnaesthesiaCalcDrug } from "@/data/anaesthesiaCalculatorDrugs";
 /** Arithmetic only; scoped limits are not patient-specific toxicity thresholds. */
 export function calculateAnaesthesiaDose(drug: AnaesthesiaCalcDrug, dose: number, weight: number, concentration: number, idealWeight?: number) {
   if (![dose, concentration].every(v => Number.isFinite(v) && v > 0)) return null;
-  if (drug.lookupOnly || (drug.minimumWeightKg !== undefined && weight < drug.minimumWeightKg)) return null;
+  if (drug.lookupOnly || (drug.minimumWeightKg !== undefined && (!Number.isFinite(weight) || weight < drug.minimumWeightKg))) return null;
   const dosingWeight = drug.weightBasis === "ideal" ? idealWeight : weight;
   const perKg = drug.unit.includes("/kg");
   if (perKg && (dosingWeight === undefined || !Number.isFinite(dosingWeight) || dosingWeight <= 0)) return null;

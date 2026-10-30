@@ -6,6 +6,7 @@ import { icuInfusionGroups, type Infusion } from "@/data/icuInfusions";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PageJsonLd } from "@/components/layout/PageJsonLd";
+import { icuInfusionAmountPerHour } from "@/lib/icu-infusion-calculation";
 import {
   Select,
   SelectContent,
@@ -38,29 +39,6 @@ function toMcgKgHr(infusion: Infusion, dose: number, weightKg: number): number |
     case "units/h":
     case "units/kg/h":
       return null; // unit-based drugs don't convert to micrograms
-  }
-}
-
-/**
- * Micrograms delivered per hour for the entered dose — used to derive the
- * mL/hr pump rate. For unit-based drugs this returns units per hour instead.
- */
-function amountPerHour(infusion: Infusion, dose: number, weightKg: number): number {
-  switch (infusion.unit) {
-    case "micrograms/kg/min":
-      return dose * 60 * weightKg;
-    case "micrograms/kg/h":
-      return dose * weightKg;
-    case "micrograms/min":
-      return dose * 60;
-    case "mg/kg/h":
-      return dose * 1000 * weightKg;
-    case "units/min":
-      return dose * 60;
-    case "units/h":
-      return dose;
-    case "units/kg/h":
-      return dose * weightKg;
   }
 }
 
@@ -111,7 +89,7 @@ const IcuDrugCalculator = () => {
     if (infusion.perKg && !weightValid) return null;
 
     const wkg = weightValid ? w : 70; // fallback for non-weight-based display only
-    const perHr = amountPerHour(infusion, d, wkg); // micrograms/h or units/h
+    const perHr = icuInfusionAmountPerHour(infusion, d, wkg); // micrograms/h or activity units/h
     const mlPerHr = perHr / c;
     const mlPerDay = mlPerHr * 24;
     const mcgKgHr = toMcgKgHr(infusion, d, wkg);

@@ -1,0 +1,148 @@
+{
+  "audit_date": "2026-10-30",
+  "table": "viva_model_answers",
+  "changes": [
+    {
+      "id": "064b58a0-a64b-479e-a771-c60fe0cf2e76",
+      "slug": null,
+      "fields": {
+        "pitfalls": {
+          "before": [
+            "Forgetting the dissolved oxygen component (PaO2 x 0.003).",
+            "Confusing DO2 (delivery) with VO2 (consumption)."
+          ],
+          "after": [
+            "Check coherent units: Hb g/dL, saturation as fraction, CaO2 mL O2/dL; dissolved coefficient 0.0225 per kPa or 0.003 per mmHg. Multiply CO L/min by CaO2 mL/dL and 10; omit 10 for content in mL/L.",
+            "Confusing DO2 (delivery) with VO2 (consumption)."
+          ]
+        },
+        "model_answer": {
+          "before": "Oxygen delivery (DO2) is the total volume of oxygen delivered to the tissues per minute. It is defined by the product of cardiac output (CO) and arterial oxygen content (CaO2). The formula for CaO2 is: (Hb x 1.34 x SaO2) + (PaO2 x 0.0225), where 1.34 is Hüfner’s constant (the volume of O2 in ml carried by 1g of fully saturated Hb).\n\nIn a healthy 70kg adult, DO2 is approximately 1000 mL/min. Oxygen consumption (VO2) is typically 250 mL/min, yielding an Oxygen Extraction Ratio (OER) of 25%. Under normal conditions, VO2 is independent of DO2. However, in states of shock or severe anaemia, DO2 may fall below a 'critical threshold'. Beyond this point, VO2 becomes 'supply-dependent', leading to anaerobic metabolism, lactic acidosis, and organ dysfunction.\n\nPhysiologically, we compensate for a drop in DO2 (e.g., in haemorrhage) by increasing cardiac output or increasing the OER. The ODC facilitates this; as tissue PO2 drops, the steep portion of the curve ensures high volumes of oxygen are released. Clinically, our goal in ICU is to maintain DO2 above the critical threshold, often by optimising preload, haemoglobin levels (typically >70g/L), and oxygenation, though 'supra-normal' targets are generally avoided as they do not improve outcomes in general ICU populations.",
+          "after": "Unit-explicit equation (educational physiology, not a patient clearance rule): DO2 (mL O2/min) = CO (L/min) × CaO2 (mL O2/dL) × 10. CaO2 (mL O2/dL) = 1.34 × Hb (g/dL) × SaO2 (fraction 0–1) + 0.0225 × PaO2 (kPa). Use coefficient 0.003 only with PaO2 in mmHg. If content is expressed in mL O2/L, DO2 = CO × CaO2 without factor 10. Source: BJA Education 2016, Oxygen transport (doi:10.1093/bjaed/mkw012).\n\nOxygen delivery (DO2) is the total volume of oxygen delivered to the tissues per minute. It is defined by the product of cardiac output (CO) and arterial oxygen content (CaO2). The formula for CaO2 is: (Hb [g/dL] x 1.34 x SaO2 [fraction 0–1]) + (PaO2 [kPa] x 0.0225), in mL O2/dL, where 1.34 is Hüfner’s constant (the volume of O2 in ml carried by 1g of fully saturated Hb).\n\nIn a healthy 70kg adult, DO2 is approximately 1000 mL/min. Oxygen consumption (VO2) is typically 250 mL/min, yielding an Oxygen Extraction Ratio (OER) of 25%. Under normal conditions, VO2 is independent of DO2. However, in states of shock or severe anaemia, DO2 may fall below a 'critical threshold'. Beyond this point, VO2 becomes 'supply-dependent', leading to anaerobic metabolism, lactic acidosis, and organ dysfunction.\n\nPhysiologically, we compensate for a drop in DO2 (e.g., in haemorrhage) by increasing cardiac output or increasing the OER. The ODC facilitates this; as tissue PO2 drops, the steep portion of the curve ensures high volumes of oxygen are released. Clinically, our goal in ICU is to maintain DO2 above the critical threshold, often by optimising preload, haemoglobin levels (typically >70g/L), and oxygenation, though 'supra-normal' targets are generally avoided as they do not improve outcomes in general ICU populations."
+        },
+        "high_yield_points": {
+          "before": [
+            "DO2 Formula: CO x {(Hb x SaO2 x 1.34) + (PaO2 x 0.003)}",
+            "Normal DO2: 1000 mL/min (approx. 600 mL/min/m2)",
+            "Oxygen Extraction Ratio (OER) normally 25%",
+            "Critical DO2: The point where VO2 becomes supply-dependent"
+          ],
+          "after": [
+            "DO2 (mL O2/min) = CO (L/min) × CaO2 (mL O2/dL) × 10. CaO2 (mL O2/dL) = 1.34 × Hb (g/dL) × SaO2 (fraction 0–1) + 0.0225 × PaO2 (kPa); use 0.003 only for PaO2 in mmHg. With CaO2 in mL/L, omit ×10.",
+            "Normal DO2: 1000 mL/min (approx. 600 mL/min/m2)",
+            "Oxygen Extraction Ratio (OER) normally 25%"
+          ]
+        }
+      }
+    },
+    {
+      "id": "55a4aea1-9124-41bf-8caa-2b5617a6cbe3",
+      "slug": null,
+      "fields": {
+        "model_answer": {
+          "before": "The Oxygen-Haemoglobin Dissociation Curve (ODC) describes the relationship between the partial pressure of oxygen (PO2) and the percentage saturation of haemoglobin (SaO2). The curve is characteristically sigmoid-shaped due to 'positive cooperativity': as each of the four haem subunits binds an oxygen molecule, a conformational change occurs (from the T-state to the R-state), increasing the affinity for subsequent oxygen molecules.\n\nKey numerical landmarks include the P50, which is the PO2 at which 50% of haemoglobin is saturated, normally 3.5-3.7 kPa (26.6 mmHg) at pH 7.4 and 37°C. The 'flat' upper portion (PO2 >9-10 kPa) represents a safety buffer, ensuring arterial saturation remains high despite moderate drops in alveolar oxygen. The 'steep' lower portion (PO2 2-6 kPa) facilitates rapid oxygen unloading at the metabolic tissues where PO2 is low.\n\nClinically, this relationship defines oxygen delivery (DO2 = CO x CaO2). Even with a high PaO2, the total oxygen content is limited by the haemoglobin concentration and its saturation. Understanding the ODC is vital for managing respiratory failure, where dropping below the 'shoulder' of the curve (approx. 8 kPa/60 mmHg) leads to a precipitate fall in oxygen saturation and content.",
+          "after": "The Oxygen-Haemoglobin Dissociation Curve (ODC) describes the relationship between the partial pressure of oxygen (PO2) and the percentage saturation of haemoglobin (SaO2). The curve is characteristically sigmoid-shaped due to 'positive cooperativity': as each of the four haem subunits binds an oxygen molecule, a conformational change occurs (from the T-state to the R-state), increasing the affinity for subsequent oxygen molecules.\n\nKey numerical landmarks include the P50, which is the PO2 at which 50% of haemoglobin is saturated, normally 3.5-3.7 kPa (26.6 mmHg) at pH 7.4 and 37°C. The 'flat' upper portion (PO2 >9-10 kPa) represents a safety buffer, ensuring arterial saturation remains high despite moderate drops in alveolar oxygen. The 'steep' lower portion (PO2 2-6 kPa) facilitates rapid oxygen unloading at the metabolic tissues where PO2 is low.\n\nClinically, this relationship defines oxygen delivery (DO2 = CO x CaO2). Even with a high PaO2, the total oxygen content is limited by the haemoglobin concentration and its saturation. Understanding the ODC is vital for managing respiratory failure, where dropping below the 'shoulder' of the curve (approx. 8 kPa/60 mmHg) leads to a precipitate fall in oxygen saturation and content.\n\nUnit convention: with CO in L/min and CaO2 in mL O2/dL, DO2 in mL O2/min = CO × CaO2 × 10. With content in mL O2/L the generic CO × CaO2 equation needs no factor 10. CaO2 = 1.34 × Hb (g/dL) × SaO2 (fraction 0–1) + 0.0225 × PaO2 (kPa); use 0.003 only for mmHg. Source: BJA Education 2016 Oxygen transport, doi:10.1093/bjaed/mkw012."
+        }
+      }
+    },
+    {
+      "id": "94a4102c-ea50-48d0-9d29-2cc3b151a8d8",
+      "slug": null,
+      "fields": {
+        "pitfalls": {
+          "before": [
+            "Forgetting to include Cardiac Output in the DO2 formula.",
+            "Using the wrong units for Hb (g/dL vs g/L affects the constant).",
+            "Failing to explain why a higher affinity (left shift) can be detrimental to the tissues."
+          ],
+          "after": [
+            "Forgetting to include Cardiac Output in the DO2 formula.",
+            "Check coherent units: Hb g/dL, saturation as fraction, CaO2 mL O2/dL; dissolved coefficient 0.0225 per kPa or 0.003 per mmHg. Multiply CO L/min by CaO2 mL/dL and 10; omit 10 for content in mL/L.",
+            "Failing to explain why a higher affinity (left shift) can be detrimental to the tissues."
+          ]
+        },
+        "model_answer": {
+          "before": "Global oxygen delivery (DO2) is the total volume of oxygen delivered to the peripheral tissues per minute. It is determined by the product of Cardiac Output (CO) and the Arterial Oxygen Content (CaO2). The formula is expressed as: DO2 = CO × CaO2.\n\nThe CaO2 itself is calculated by the sum of oxygen bound to haemoglobin and oxygen dissolved in plasma: CaO2 = (Hb × 1.34 × SaO2) + (PaO2 × 0.01). In clinical practice, the dissolved portion (0.01 ml/dL/kPa) is negligible unless the patient is in a hyperbaric chamber. Therefore, DO2 is primarily dependent on haemoglobin concentration, arterial saturation, and cardiac output. \n\nIn a healthy 70kg adult, normal DO2 is approximately 1000 mL/min, whereas the resting oxygen consumption (VO2) is roughly 250 mL/min, giving an oxygen extraction ratio (OER) of 25%. If DO2 falls below a 'critical' threshold, VO2 becomes delivery-dependent, leading to anaerobic metabolism and lactic acidosis. \n\nThe Oxygen Dissociation Curve is relevant here because it determines the SaO2 for a given PaO2. A left-shifted curve (e.g., in alkalosis or hypothermia) maintains a high SaO2 and high CaO2, but because the P50 is low, the 'unloading' gradient at the tissue level is reduced. This can lead to tissue hypoxia despite a seemingly adequate global DO2. Clinically, this explains why aggressive correction of pH and temperature is vital in shocked patients.",
+          "after": "Unit-explicit equation (educational physiology, not a patient clearance rule): DO2 (mL O2/min) = CO (L/min) × CaO2 (mL O2/dL) × 10. CaO2 (mL O2/dL) = 1.34 × Hb (g/dL) × SaO2 (fraction 0–1) + 0.0225 × PaO2 (kPa). Use coefficient 0.003 only with PaO2 in mmHg. If content is expressed in mL O2/L, DO2 = CO × CaO2 without factor 10. Source: BJA Education 2016, Oxygen transport (doi:10.1093/bjaed/mkw012).\n\nGlobal oxygen delivery (DO2) is the total volume of oxygen delivered to the peripheral tissues per minute. It is determined by the product of Cardiac Output (CO) and the Arterial Oxygen Content (CaO2). The formula is expressed as: DO2 = CO × CaO2.\n\nThe CaO2 itself is calculated by the sum of oxygen bound to haemoglobin and oxygen dissolved in plasma: CaO2 = (Hb × 1.34 × SaO2) + (PaO2 × 0.0225; PaO2 in kPa, Hb in g/dL, SaO2 as fraction 0–1, content in mL O2/dL). In clinical practice, the dissolved portion (0.0225 mL O2/dL/kPa) is negligible unless the patient is in a hyperbaric chamber. Therefore, DO2 is primarily dependent on haemoglobin concentration, arterial saturation, and cardiac output. \n\nIn a healthy 70kg adult, normal DO2 is approximately 1000 mL/min, whereas the resting oxygen consumption (VO2) is roughly 250 mL/min, giving an oxygen extraction ratio (OER) of 25%. If DO2 falls below a 'critical' threshold, VO2 becomes delivery-dependent, leading to anaerobic metabolism and lactic acidosis. \n\nThe Oxygen Dissociation Curve is relevant here because it determines the SaO2 for a given PaO2. A left-shifted curve (e.g., in alkalosis or hypothermia) maintains a high SaO2 and high CaO2, but because the P50 is low, the 'unloading' gradient at the tissue level is reduced. This can lead to tissue hypoxia despite a seemingly adequate global DO2. Clinically, this explains why aggressive correction of pH and temperature is vital in shocked patients."
+        },
+        "high_yield_points": {
+          "before": [
+            "DO2 = Cardiac Output x CaO2.",
+            "CaO2 formula: (Hb x 1.34 x SaO2) + (PaO2 x 0.003).",
+            "Normal DO2 is ~1000 mL/min.",
+            "Critical DO2 and oxygen debt concept.",
+            "Impact of ODC shifts on the SaO2 component of the equation."
+          ],
+          "after": [
+            "DO2 (mL O2/min) = CO (L/min) × CaO2 (mL O2/dL) × 10. CaO2 (mL O2/dL) = 1.34 × Hb (g/dL) × SaO2 (fraction 0–1) + 0.0225 × PaO2 (kPa); use 0.003 only for PaO2 in mmHg. With CaO2 in mL/L, omit ×10.",
+            "Normal DO2 is ~1000 mL/min.",
+            "Impact of ODC shifts on the SaO2 component of the equation."
+          ]
+        }
+      }
+    },
+    {
+      "id": "b0412283-c358-4ce0-8c7a-a65b5937a095",
+      "slug": null,
+      "fields": {
+        "pitfalls": {
+          "before": [
+            "Forgetting the dissolved oxygen component (PaO2 x 0.0225) in the formula, even if small.",
+            "Mixing up the units for Hb (g/dL vs g/L affects the constant 1.34 vs 0.0134).",
+            "Failing to identify the relationship between critical DO2 and lactic acidosis."
+          ],
+          "after": [
+            "Check coherent units: Hb g/dL, saturation as fraction, CaO2 mL O2/dL; dissolved coefficient 0.0225 per kPa or 0.003 per mmHg. Multiply CO L/min by CaO2 mL/dL and 10; omit 10 for content in mL/L.",
+            "Check coherent units: Hb g/dL, saturation as fraction, CaO2 mL O2/dL; dissolved coefficient 0.0225 per kPa or 0.003 per mmHg. Multiply CO L/min by CaO2 mL/dL and 10; omit 10 for content in mL/L.",
+            "Failing to identify the relationship between critical DO2 and lactic acidosis."
+          ]
+        },
+        "model_answer": {
+          "before": "Oxygen Delivery (DO2) is the total volume of oxygen delivered to the tissues per minute. It is the product of Cardiac Output (CO) and Arterial Oxygen Content (CaO2). The formula for content is CaO2 = (Hb x 1.34 x SaO2) + (PaO2 x 0.0225). In a healthy 70kg adult, DO2 is approximately 1000 mL/min.\n\nOxygen consumption (VO2) is the volume of oxygen used by the body, typically 250 mL/min at rest. The Oxygen Extraction Ratio (O2ER = VO2/DO2) is normally 0.25 (25%). \n\nIn health, VO2 is 'supply-independent'—if DO2 falls, the tissues compensate by increasing O2ER (extracting more oxygen from the blood), keeping VO2 constant. However, there is a 'Critical DO2' threshold (approx. 330-400 mL/min). Below this point, the tissues can no longer increase extraction sufficiently, and VO2 becomes 'supply-dependent'. This leads to anaerobic metabolism, lactic acidosis, and organ dysfunction. \n\nClinical applications include the 'Rivers' Early Goal-Directed Therapy (historically) and the management of shock. We monitor global markers of this balance using ScvO2 (aiming >70%) and lactate levels. Anaesthesia typically reduces VO2 (by ~15%), but factors like sepsis, shivering, or hyperthermia significantly increase it, necessitating higher DO2 to avoid the critical threshold.",
+          "after": "Unit-explicit equation (educational physiology, not a patient clearance rule): DO2 (mL O2/min) = CO (L/min) × CaO2 (mL O2/dL) × 10. CaO2 (mL O2/dL) = 1.34 × Hb (g/dL) × SaO2 (fraction 0–1) + 0.0225 × PaO2 (kPa). Use coefficient 0.003 only with PaO2 in mmHg. If content is expressed in mL O2/L, DO2 = CO × CaO2 without factor 10. Source: BJA Education 2016, Oxygen transport (doi:10.1093/bjaed/mkw012).\n\nOxygen Delivery (DO2) is the total volume of oxygen delivered to the tissues per minute. It is the product of Cardiac Output (CO) and Arterial Oxygen Content (CaO2). The formula for content is CaO2 = (Hb [g/dL] x 1.34 x SaO2 [fraction 0–1]) + (PaO2 [kPa] x 0.0225), in mL O2/dL. In a healthy 70kg adult, DO2 is approximately 1000 mL/min.\n\nOxygen consumption (VO2) is the volume of oxygen used by the body, typically 250 mL/min at rest. The Oxygen Extraction Ratio (O2ER = VO2/DO2) is normally 0.25 (25%). \n\nIn health, VO2 is 'supply-independent'—if DO2 falls, the tissues compensate by increasing O2ER (extracting more oxygen from the blood), keeping VO2 constant. However, there is a 'Critical DO2' threshold (approx. 330-400 mL/min). Below this point, the tissues can no longer increase extraction sufficiently, and VO2 becomes 'supply-dependent'. This leads to anaerobic metabolism, lactic acidosis, and organ dysfunction. \n\nClinical applications include the 'Rivers' Early Goal-Directed Therapy (historically) and the management of shock. We monitor global markers of this balance using ScvO2 (aiming >70%) and lactate levels. Anaesthesia typically reduces VO2 (by ~15%), but factors like sepsis, shivering, or hyperthermia significantly increase it, necessitating higher DO2 to avoid the critical threshold."
+        },
+        "high_yield_points": {
+          "before": [
+            "DO2 = Cardiac Output x [(Hb x 1.34 x SaO2) + (PaO2 x 0.0225)].",
+            "Normal DO2 is ~1000 mL/min (or 500 mL/min/m2).",
+            "Normal VO2 is ~250 mL/min.",
+            "Extraction ratio (O2ER) is typically 25%.",
+            "Critical DO2: The point where VO2 becomes supply-dependent."
+          ],
+          "after": [
+            "DO2 (mL O2/min) = CO (L/min) × CaO2 (mL O2/dL) × 10. CaO2 (mL O2/dL) = 1.34 × Hb (g/dL) × SaO2 (fraction 0–1) + 0.0225 × PaO2 (kPa); use 0.003 only for PaO2 in mmHg. With CaO2 in mL/L, omit ×10.",
+            "Normal DO2 is ~1000 mL/min (or 500 mL/min/m2).",
+            "Normal VO2 is ~250 mL/min.",
+            "Extraction ratio (O2ER) is typically 25%."
+          ]
+        }
+      }
+    },
+    {
+      "id": "b66fde43-16ab-4c86-a2d0-22138d4c6a14",
+      "slug": null,
+      "fields": {
+        "model_answer": {
+          "before": "The Oxygen-Haemoglobin Dissociation Curve (ODC) describes the relationship between the partial pressure of oxygen (PO2) and the oxygen saturation of haemoglobin (SaO2). It is characteristically sigmoid-shaped due to positive cooperativity, where the binding of one oxygen molecule to a haem group induces a conformational change (from T-state to R-state), facilitating subsequent binding.\n\nIn clinical practice, we define the position of the curve by the P50, which is the PO2 at which 50% of haemoglobin is saturated (normally 3.6–3.7 kPa). A 'right shift' (increased P50) denotes reduced affinity, facilitating oxygen offloading to tissues. This is driven by increased H+ ions, CO2 (the Bohr effect), temperature, and 2,3-DPG. Conversely, a 'left shift' (decreased P50) occurs in hypothermia, alkalosis, and carbon monoxide poisoning, increasing affinity but potentially impairing tissue delivery.\n\nOxygen delivery (DO2) is the product of Cardiac Output and arterial oxygen content (CaO2). In a healthy 70kg adult, DO2 is approximately 1000 mL/min, whereas consumption (VO2) is 250 mL/min. In the ICU, we monitor this relationship closely; when DO2 falls below a 'critical threshold' (approx. 330 mL/min/m2), VO2 becomes supply-dependent, leading to anaerobic metabolism and lactic acidosis. Understanding the ODC allows us to interpret why an anaemic or hypoxic patient may still maintain tissue oxygenation if the curve shifts right or CO increases, but also illustrates the dangers of severe alkalemia in the critically ill.",
+          "after": "Unit-explicit equation (educational physiology, not a patient clearance rule): DO2 (mL O2/min) = CO (L/min) × CaO2 (mL O2/dL) × 10. CaO2 (mL O2/dL) = 1.34 × Hb (g/dL) × SaO2 (fraction 0–1) + 0.0225 × PaO2 (kPa). Use coefficient 0.003 only with PaO2 in mmHg. If content is expressed in mL O2/L, DO2 = CO × CaO2 without factor 10. Source: BJA Education 2016, Oxygen transport (doi:10.1093/bjaed/mkw012).\n\nThe Oxygen-Haemoglobin Dissociation Curve (ODC) describes the relationship between the partial pressure of oxygen (PO2) and the oxygen saturation of haemoglobin (SaO2). It is characteristically sigmoid-shaped due to positive cooperativity, where the binding of one oxygen molecule to a haem group induces a conformational change (from T-state to R-state), facilitating subsequent binding.\n\nIn clinical practice, we define the position of the curve by the P50, which is the PO2 at which 50% of haemoglobin is saturated (normally 3.6–3.7 kPa). A 'right shift' (increased P50) denotes reduced affinity, facilitating oxygen offloading to tissues. This is driven by increased H+ ions, CO2 (the Bohr effect), temperature, and 2,3-DPG. Conversely, a 'left shift' (decreased P50) occurs in hypothermia, alkalosis, and carbon monoxide poisoning, increasing affinity but potentially impairing tissue delivery.\n\nOxygen delivery (DO2) is the product of Cardiac Output and arterial oxygen content (CaO2). In a healthy 70kg adult, DO2 is approximately 1000 mL/min, whereas consumption (VO2) is 250 mL/min. In the ICU, we monitor this relationship closely; when DO2 falls below a 'critical threshold' (approx. 330 mL/min/m2), VO2 becomes supply-dependent, leading to anaerobic metabolism and lactic acidosis. Understanding the ODC allows us to interpret why an anaemic or hypoxic patient may still maintain tissue oxygenation if the curve shifts right or CO increases, but also illustrates the dangers of severe alkalemia in the critically ill."
+        },
+        "high_yield_points": {
+          "before": [
+            "Sigmoid shape due to positive cooperativity.",
+            "P50 as a measure of affinity (normal 3.6-3.7 kPa).",
+            "Bohr effect vs. Haldane effect distinction.",
+            "DO2 = CO x [(Hb x 1.34 x SaO2) + (PaO2 x 0.003)].",
+            "Critically low DO2 leads to 'DO2-dependency' and lactic acidosis."
+          ],
+          "after": [
+            "Sigmoid shape due to positive cooperativity.",
+            "P50 as a measure of affinity (normal 3.6-3.7 kPa).",
+            "Bohr effect vs. Haldane effect distinction.",
+            "DO2 (mL O2/min) = CO (L/min) × CaO2 (mL O2/dL) × 10. CaO2 (mL O2/dL) = 1.34 × Hb (g/dL) × SaO2 (fraction 0–1) + 0.0225 × PaO2 (kPa); use 0.003 only for PaO2 in mmHg. With CaO2 in mL/L, omit ×10.",
+            "Critically low DO2 leads to 'DO2-dependency' and lactic acidosis."
+          ]
+        }
+      }
+    }
+  ]
+}

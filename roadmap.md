@@ -1,10 +1,10 @@
 # Admin metrics audit fixes
 
 ## Authorised clinical corrections — 30 October 2026
-- [ ] Replace both anticoagulation clearance tools with source-linked educational lookups; test unsafe combinations and rendered controls.
-- [ ] Complete queued D01–D20 drug corrections, duplicates and auditable saved-content changes.
-- [ ] Apply SCI-001–SCI-018 science corrections, units and unrounded boundary decisions; correct cached oxygen viva answers with before/after records.
-- [ ] Run pertinent regressions, inspect learner displays, refresh generated content and append exact outcomes/remaining limitations to the audit record. No publication or whole-content verification.
+- [x] Replace both anticoagulation clearance tools with source-linked educational lookups; test unsafe combinations and rendered controls.
+- [ ] D01–D20 remaining scope: exact ropivacaine/prilocaine product-route adoption, blocked SNAP source and residual saved product fields need verified sources; unsafe universal calculators withheld.
+- [ ] SCI complete per-ID coverage waits on unavailable original SCI-001–016 payload; retained concrete corrections and SCI-017/018 boundaries implemented, five oxygen viva answers corrected.
+- [x] Run pertinent regressions, inspect learner displays, refresh local search/audit copies and append exact outcomes/limitations; no publication.
 
 ## ICU staffing topic consolidation
 - [x] Combine role/shift, specialist-unit and international staffing lessons into one three-part topic, preserving sources, all 20 quiz questions and existing anchors.
@@ -114,3 +114,9 @@
 - [x] Sepsis: NICE NG253 (2025–26) vs SSC 2021, CLOVERS/CLASSIC, fluid comparison calculator.
 - [x] ARDS: ESICM 2023 / ATS 2024, prone, ECMO, steroids, PBW/driving-pressure calculator.
 - [x] Transfusion: NICE NG24, BSH, restrictive thresholds, MINT/TRAIN.
+
+## Additional authorized drug batch 12 (30 October 2026)
+- [x] D66–69: inspect current saved drug values, source-check and correct only remaining matching fields.
+- [x] D70–74: align static, quiz, chemistry and peripheral-block duplicates and add targeted regressions.
+- [x] D75: retain owner-applied calcium correction; reread and record status without overwriting.
+- [x] Finish queued calculator/unit safeguards, tests, audit record and affected dynamic IDs; no publication.
