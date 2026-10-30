@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DiagramFigure } from "../_shared/DiagramFigure";
-import { RCH_EPIDURAL_URL, RCH_PCA_URL, rchPaedsPca, rchRopivacaineEpidural } from "@/lib/calculators/t1-calculators";
+import { RCH_EPIDURAL_URL, RCH_PCA_URL, rchPaedsPca, rchRopivacaineEpidural, type RchPcaBoundary, type RchPcaResult } from "@/lib/calculators/t1-calculators";
 
 /**
  * PCA + epidural teaching calculator.
@@ -31,7 +31,9 @@ const PcaEpiduralCalculator = () => {
 
   const weight = Number(weightText);
   const ageMonths = Number(ageMonthsText);
-  const pca = pop === "paeds" && weightText !== "" ? rchPaedsPca(opioid, weight) : null;
+  const pcaRaw = pop === "paeds" && weightText !== "" ? rchPaedsPca(opioid, weight) : null;
+  const pcaBoundary = pcaRaw && "boundary" in pcaRaw && pcaRaw.boundary ? (pcaRaw as RchPcaBoundary) : null;
+  const pca = pcaRaw && !pcaBoundary ? (pcaRaw as RchPcaResult) : null;
   const ep = pop === "paeds" && weightText !== "" && ageMonthsText !== "" ? rchRopivacaineEpidural(weight, ageMonths, hepatic) : null;
   const opioidKeys: PcaOpioid[] = pop === "paeds" ? ["morphine", "fentanyl", "oxycodone", "hydromorphone"] : ["morphine", "fentanyl", "oxycodone"];
   const adult = ADULT_PCA_EXAMPLES[(opioid === "hydromorphone" ? "morphine" : opioid) as keyof typeof ADULT_PCA_EXAMPLES];
@@ -106,10 +108,10 @@ const PcaEpiduralCalculator = () => {
                 chosen individually, and restricts background infusion to specified settings. Opioid-tolerant patients need specialist review.
               </p>
             </>
+          ) : pcaBoundary ? (
+            <p className="text-sm text-destructive" role="status">{pcaBoundary.message}</p>
           ) : pca === null ? (
             <p className="text-sm text-muted-foreground" role="status">Enter a measured weight above zero to show the RCH dilution.</p>
-          ) : "boundary" in pca && pca.boundary ? (
-            <p className="text-sm text-destructive" role="status">{pca.message}</p>
           ) : (
             <>
               <div className="grid sm:grid-cols-3 gap-2">
