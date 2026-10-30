@@ -773,7 +773,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is obstetric anaesthesia?",
     },
     {
-      "a": "A 16–18 G Tuohy needle is sited at L3/4 or L4/5 using loss-of-resistance to saline. A multi-orifice catheter is threaded 4–5 cm into the epidural space. A test dose (3 ml 2% lidocaine + adrenaline) is given to exclude intravascular or intrathecal placement, followed by a low-dose bolus (e.g. 15 ml 0.1% levobupivacaine + 2 µg/ml fentanyl). Maintenance is via patient-controlled epidural analgesia (PCEA) or programmed intermittent epidural bolus (PIEB), which gives better analgesia and lower motor block than continuous infusion.",
+      "a": "A 16–18 G Tuohy needle is sited at L3/4 or L4/5 using loss-of-resistance to saline. A multi-orifice catheter is threaded 4–5 cm into the epidural space. Assess catheter position with aspiration, observation and the locally adopted obstetric test-dose/fractionated-loading protocol. A negative test cannot guarantee correct placement. Treat every dose as a potential test dose, giving the intended low-dose loading solution in cautious increments with monitoring and readiness to manage high block or systemic toxicity (RCoA NAP7 Ch 26, 2023). Maintenance is via patient-controlled epidural analgesia (PCEA) or programmed intermittent epidural bolus (PIEB), which gives better analgesia and lower motor block than continuous infusion.",
       "q": "How does a labour epidural work?",
     },
     {
@@ -1349,7 +1349,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How is raised intracranial pressure managed in acute liver failure?",
     },
     {
-      "a": "NAC improves transplant-free survival in early (grade I–II encephalopathy) non-paracetamol ALF (Lee et al., Gastroenterology 2009); start at the same 21-hour regimen as for paracetamol.",
+      "a": "Lee et al. (2009) studied a 72-hour NAC infusion in adults with non-paracetamol ALF. Overall survival was not significantly improved; transplant-free survival benefit was concentrated in grade I–II encephalopathy. Discuss use and duration with a liver centre; the trial does not establish a completed 21-hour paracetamol course as the non-paracetamol regimen.",
       "q": "When is N-acetylcysteine indicated in non-paracetamol ALF?",
     },
   ],
@@ -3523,8 +3523,8 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the West zones of the lung?",
     },
     {
-      "a": "Shunt — perfused but not ventilated (V/Q = 0); blood bypasses gas exchange entirely (pneumonia, atelectasis, ARDS, intracardiac). 100 % O₂ does NOT correct shunt (>30 % shunt: PaO₂ ceiling). V/Q mismatch — areas of low V/Q ratio; partial gas exchange occurs; 100 % O₂ corrects hypoxaemia by filling poorly ventilated alveoli with O₂. Differentiating the two guides therapy (PEEP/recruitment for shunt vs bronchodilators for mismatch).",
-      "q": "Define shunt and V/Q mismatch, and how does 100 % oxygen distinguish them?",
+      "a": "Shunt — perfused but not ventilated (V/Q = 0); blood bypasses gas exchange entirely (pneumonia, atelectasis, ARDS, intracardiac). Shunted blood bypasses ventilated alveoli, so supplemental oxygen has limited effect on it. V/Q mismatch — areas of low V/Q ratio; partial gas exchange occurs; low-V/Q units generally respond better to supplemental oxygen than true shunt. The whole-arterial response depends on the shunt fraction, mixed venous O₂ content and the ventilated units; neither the oxygen response nor a fixed 30% threshold alone determines treatment.",
+      "q": "Define shunt and V/Q mismatch, and how do their responses to supplemental oxygen differ?",
     },
     {
       "a": "HPV — pulmonary arteriolar constriction in response to low alveolar O₂; diverts blood from poorly ventilated alveoli to better-ventilated regions, reducing shunt. Volatile anaesthetics ≥1 MAC blunt HPV (~20 % attenuation). For one-lung ventilation during thoracic surgery, TIVA preserves HPV better and may improve oxygenation; CPAP to the non-ventilated lung or PEEP to the dependent lung are rescue strategies.",
@@ -4961,7 +4961,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A 16–18 G Tuohy needle is sited at L3/4 or L4/5 using loss-of-resistance to saline. A multi-orifice catheter is threaded 4–5 cm into the epidural space. A test dose (3 ml 2% lidocaine + adrenaline) is given to exclude intravascular or intrathecal placement, followed by a low-dose bolus (e.g. 15 ml 0.1% levobupivacaine + 2 µg/ml fentanyl). Maintenance is via patient-controlled epidural analgesia (PCEA) or programmed intermittent epidural bolus (PIEB), which gives better analgesia and lower motor block than continuous infusion.",
+          "text": "A 16–18 G Tuohy needle is sited at L3/4 or L4/5 using loss-of-resistance to saline. A multi-orifice catheter is threaded 4–5 cm into the epidural space. Assess catheter position with aspiration, observation and the locally adopted obstetric test-dose/fractionated-loading protocol. A negative test cannot guarantee correct placement. Treat every dose as a potential test dose, giving the intended low-dose loading solution in cautious increments with monitoring and readiness to manage high block or systemic toxicity (RCoA NAP7 Ch 26, 2023). Maintenance is via patient-controlled epidural analgesia (PCEA) or programmed intermittent epidural bolus (PIEB), which gives better analgesia and lower motor block than continuous infusion.",
         },
         "name": "How does a labour epidural work?",
       },
@@ -6149,7 +6149,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "NAC improves transplant-free survival in early (grade I–II encephalopathy) non-paracetamol ALF (Lee et al., Gastroenterology 2009); start at the same 21-hour regimen as for paracetamol.",
+          "text": "Lee et al. (2009) studied a 72-hour NAC infusion in adults with non-paracetamol ALF. Overall survival was not significantly improved; transplant-free survival benefit was concentrated in grade I–II encephalopathy. Discuss use and duration with a liver centre; the trial does not establish a completed 21-hour paracetamol course as the non-paracetamol regimen.",
         },
         "name": "When is N-acetylcysteine indicated in non-paracetamol ALF?",
       },
@@ -10747,9 +10747,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Shunt — perfused but not ventilated (V/Q = 0); blood bypasses gas exchange entirely (pneumonia, atelectasis, ARDS, intracardiac). 100 % O₂ does NOT correct shunt (>30 % shunt: PaO₂ ceiling). V/Q mismatch — areas of low V/Q ratio; partial gas exchange occurs; 100 % O₂ corrects hypoxaemia by filling poorly ventilated alveoli with O₂. Differentiating the two guides therapy (PEEP/recruitment for shunt vs bronchodilators for mismatch).",
+          "text": "Shunt — perfused but not ventilated (V/Q = 0); blood bypasses gas exchange entirely (pneumonia, atelectasis, ARDS, intracardiac). Shunted blood bypasses ventilated alveoli, so supplemental oxygen has limited effect on it. V/Q mismatch — areas of low V/Q ratio; partial gas exchange occurs; low-V/Q units generally respond better to supplemental oxygen than true shunt. The whole-arterial response depends on the shunt fraction, mixed venous O₂ content and the ventilated units; neither the oxygen response nor a fixed 30% threshold alone determines treatment.",
         },
-        "name": "Define shunt and V/Q mismatch, and how does 100 % oxygen distinguish them?",
+        "name": "Define shunt and V/Q mismatch, and how do their responses to supplemental oxygen differ?",
       },
       {
         "@type": "Question",

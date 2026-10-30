@@ -51,11 +51,17 @@ export const STRIPE_SOURCE = "support-card-stripe";
 
 let cancelActive: (() => void) | null = null;
 
+/** Cancel the active support-scroll job (route change, unmount, user input). Safe to call anytime. */
+export const cancelSupportScroll = () => cancelActive?.();
+
+const onSupportRoute = () => typeof window !== "undefined" && window.location.pathname === "/";
+
 /**
  * Scroll to #support, waiting briefly for the section to mount, then re-align once layout settles.
- * Honours system and in-app reduced-motion preference. Pending re-alignment is cancelled by any
- * user scroll input (wheel/touch/pointer/key), a new support request, or the returned cleanup
- * (call it on unmount/navigation).
+ * Honours system and in-app reduced-motion preference. Cancellation listeners (wheel/touch/pointer/key)
+ * are attached as soon as the job starts, so a user scrolling before the section mounts is never pulled
+ * back. Each retry/realignment checks the home route is still current. Only one job is active; a new
+ * request cancels the old one, and `cancelSupportScroll` cancels whichever job is current.
  */
 export const scrollToSupport = (attempts = 20): (() => void) => {
   cancelActive?.();
@@ -70,18 +76,19 @@ export const scrollToSupport = (attempts = 20): (() => void) => {
     if (cancelActive === cancel) cancelActive = null;
   };
   cancelActive = cancel;
+  events.forEach((e) => window.addEventListener(e, cancel, { capture: true, passive: true }));
   const go = (smooth: boolean) =>
     document.getElementById("support")?.scrollIntoView({
       behavior: smooth && !getReduceMotion() ? "smooth" : "auto",
       block: "start",
     });
+  const live = () => !done && onSupportRoute();
   const attempt = (left: number) => {
-    if (done) return;
+    if (!live()) return cancel();
     if (document.getElementById("support")) {
       go(true);
-      events.forEach((e) => window.addEventListener(e, cancel, { capture: true, passive: true }));
-      timers.push(window.setTimeout(() => !done && go(false), 600));
-      timers.push(window.setTimeout(() => { if (!done) go(false); cancel(); }, 1500));
+      timers.push(window.setTimeout(() => (live() ? go(false) : cancel()), 600));
+      timers.push(window.setTimeout(() => { if (live()) go(false); cancel(); }, 1500));
       return;
     }
     if (left > 0) timers.push(window.setTimeout(() => attempt(left - 1), 100));

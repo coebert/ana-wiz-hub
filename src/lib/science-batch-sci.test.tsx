@@ -56,6 +56,11 @@ describe("SCI039/033 worked examples", () => {
     expect(t).toContain("0.47898523");
     expect(t).toContain("272.727");
   });
+  it("V/Q FAQ, body and exam pearl: no categorical oxygen/shunt claims", () => {
+    const t = read("src/pages/topics/VentilationPerfusionTopic.tsx");
+    expect(t).not.toMatch(/does NOT correct shunt|Does NOT respond to supplemental|fails to correct with 100|single most tested point|PEEP\/recruitment for shunt vs bronchodilators/);
+    expect(t.match(/generally respond better to supplemental o(xygen|₂|2|\S*)/gi)?.length ?? 0).toBeGreaterThanOrEqual(2);
+  });
 });
 
 describe("SCI025/021/040/026 text", () => {
@@ -71,5 +76,7 @@ describe("SCI025/021/040/026 text", () => {
     const t = read("src/pages/topics/UltrasoundPhysicsTopic.tsx");
     expect(t).not.toMatch(/≥3 B-lines per rib space is pathological|A-lines \(reverberation\) = normal aerated lung|absent lung sliding → pneumothorax/);
     expect(t).toMatch(/not across the whole hemithorax/);
+    expect(t).not.toMatch(/B-lines = interstitial|they indicate <strong>interstitial/);
+    expect((t.match(/occasional B-lines occur in healthy lungs/g) ?? []).length).toBe(2);
   });
 });

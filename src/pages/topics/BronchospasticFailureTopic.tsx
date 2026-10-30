@@ -38,16 +38,19 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        Differential is dynamic hyperinflation (auto-PEEP) vs bilateral tension pneumothorax. Both are
-        managed by immediate <strong>disconnection from the ventilator</strong> ± bilateral finger
-        thoracostomies. Expiratory hold post-resus would confirm total PEEP ≫ set PEEP.
+        PEA requires standard ALS while reversible causes are treated. Dynamic hyperinflation and
+        tension pneumothorax are urgent possibilities; check the tube and circuit as well.
+        Brief circuit disconnection can relieve trapped gas, but does not treat tension pneumothorax.
       </>
     ),
     answer: (
       <>
-        Disconnect from circuit and let chest deflate (often gives ROSC). Resume at RR 8, I:E 1:5,
-        Vt 6 mL/kg, PEEP 0–3, accept pH ≥ 7.15. Bronchodilators, ketamine sedation, IV magnesium 2 g.
-        If still failing → volatile via Sedaconda or VV-ECMO referral.
+        Call for help, start high-quality CPR and give adrenaline according to the ALS algorithm.
+        Briefly disconnect the ventilator to relieve suspected hyperinflation, then resume effective
+        ventilation with adequate expiratory time. Assess for tension pneumothorax and decompress
+        promptly when suspected; do not delay for imaging in an unstable patient. After ROSC,
+        individualise ventilation, bronchodilator treatment and haemodynamic support. If resuscitation
+        fails, discuss ECPR with the expert team; VV-ECMO alone provides no direct circulatory support.
       </>
     ),
     cites: ["GOLD COPD 2023"],
@@ -62,16 +65,18 @@ const workedExamples: WorkedExample[] = [
     ),
     working: (
       <>
-        Hypercapnic acidosis pH 7.24 is in the NIV window (pH 7.25–7.35 ideal but use down to ~7.20 with
-        close monitoring). Conscious enough to protect airway. Controlled O₂ on Venturi already set
-        appropriately (88–92 %). NIV NNT to avoid intubation ≈ 5 (Plant 2000).
+        Persistent acute respiratory acidosis after optimal COPD treatment supports NIV: BTS/ICS uses
+        pH &lt;7.35 with PaCO₂ &gt;6.5 kPa. A pH of 7.24 increases the risk of failure but is not an
+        automatic exclusion. Assess airway protection and other adverse features; use an appropriate
+        monitored area with immediate intubation capability and document the escalation plan.
       </>
     ),
     answer: (
       <>
-        Start BiPAP (IPAP 12–15, EPAP 4–5, FiO₂ titrated to SpO₂ 88–92 %). Reassess pH, PaCO₂ and GCS at
-        1 h — if no improvement or deterioration, intubate (ketamine + rocuronium), set RR 10, I:E 1:4,
-        accept permissive hypercapnia.
+        Start closely monitored bilevel NIV, with pressures titrated to clinical response and SpO₂
+        88–92%. Reassess work of breathing, consciousness and blood gases promptly after starting.
+        Worsening acidosis, exhaustion or impaired airway protection needs immediate senior review
+        and timely intubation when indicated; do not wait for a fixed one-hour checkpoint.
       </>
     ),
     cites: ["BJA Educ Asthma 2017"],
@@ -106,7 +111,7 @@ const workedExamples: WorkedExample[] = [
 const keyPoints = [
   { text: "Dynamic hyperinflation and auto-PEEP cause cardiovascular collapse in ventilated bronchospasm — disconnect the ventilator if PEA arrest occurs", cites: ["BTS/SIGN Asthma 2019"] },
   { text: "Ventilation strategy: low RR, prolonged I:E ratio, high inspiratory flow, permissive hypercapnia — minimising gas trapping is the priority", cites: ["GOLD COPD 2023"] },
-  { text: "NIV is first-line for hypercapnic respiratory failure in COPD (pH 7.25–7.35) but NOT for acute asthma", cites: ["BJA Educ Asthma 2017"] },
+  { text: "In COPD, start NIV for persistent pH <7.35 and PaCO₂ >6.5 kPa despite optimal treatment; severe acidosis needs higher-level monitoring and an escalation plan. Acute-asthma NIV has weak evidence and requires separate specialist assessment.", cites: ["BTS/ICS AHRF 2016", "GINA 2026"] },
   { text: "Normal or rising PaCO₂ in acute asthma is a life-threatening sign — the patient is tiring", cites: ["GINA 2023"] },
   { text: "Ketamine is the ideal induction agent for intubation in bronchospasm (bronchodilator + haemodynamic stability)", cites: ["BTS/SIGN Asthma 2019"] },
   { text: "Volatile agents via Sedaconda/AnaConDa provide potent bronchodilation in refractory bronchospasm — rescue therapy when conventional treatment fails", cites: ["GOLD COPD 2023"] },
@@ -220,7 +225,7 @@ const BronchospasticFailureTopic = () => {
           <div className="space-y-2 mb-4">
             {[
               { label: "Clinical Signs", detail: "Tracheal tug, hyperexpanded chest, reduced air entry, paradoxical abdominal movement, pulsus paradoxus (>10 mmHg fall in systolic BP on inspiration — reflects exaggerated intrathoracic pressure swings)." },
-              { label: "Cardiovascular Compromise", detail: "Auto-PEEP acts like a sustained Valsalva manoeuvre → ↓ venous return → ↓ cardiac output → PEA arrest. Immediate management: (1) disconnect from the ventilator and allow prolonged expiration, with manual chest compression of the thorax to empty trapped gas; (2) give a rapid fluid bolus (250–500 mL crystalloid, repeated) because these patients are usually profoundly volume-depleted from days of dyspnoea, poor intake and insensible losses, and preload is the limiting factor once intrathoracic pressure is high; (3) start a vasopressor early — noradrenaline (or peripheral metaraminol/adrenaline while access is secured) to maintain coronary and cerebral perfusion pressure; adrenaline is the logical choice where continued bronchodilatation is also wanted; (4) deepen sedation and ensure full neuromuscular blockade to abolish patient-ventilator dyssynchrony and expiratory muscle activity that worsens trapping — ketamine infusion is useful for its bronchodilator and haemodynamically stable profile; (5) reduce minute ventilation (rate 8–10/min, tidal volume 6 mL/kg, I:E 1:3–1:5) and accept permissive hypercapnia; (6) perform bilateral thoracostomies to exclude tension pneumothorax if collapse persists after disconnection."},
+              { label: "Cardiovascular Compromise", detail: "Auto-PEEP can reduce venous return and cardiac output, causing hypotension or PEA. If cardiac arrest is confirmed, activate the arrest team and follow ALS with high-quality CPR and indicated adrenaline while treating reversible causes. Consider brief circuit disconnection and manual decompression to relieve dynamic hyperinflation; a sustained chest squeeze must not replace CPR. Assess the tube/circuit and tension pneumothorax, with immediate decompression when clinically suspected. With a pulse present, assess volume status and other causes of shock, give fluids when indicated, and titrate vasoactive support. Adjust sedation, synchrony and ventilation to allow expiration, reassessing total PEEP, plateau pressure, gas exchange and haemodynamics. Persistent collapse requires immediate senior review; bilateral diagnostic thoracostomies are not routine for every hypotensive asthmatic."},
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                 <p className="font-semibold text-foreground text-sm">{item.label}</p>
@@ -321,19 +326,15 @@ const BronchospasticFailureTopic = () => {
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">NIV in IECOPD (Strong Evidence)</p>
               <p className="text-xs text-muted-foreground mt-1">
-                First-line for acute hypercapnic respiratory failure (pH 7.25–7.35, PaCO₂ &gt;6 kPa) in COPD. Reduces intubation rates, mortality, and length of stay (Cochrane evidence). BiPAP: typical starting pressures IPAP 12–15 cmH₂O, EPAP 4–5 cmH₂O, titrate to tidal volume ~7 ml/kg and reduction in PaCO₂. Review ABG at 1–2 h — if no improvement, consider intubation early. BTS/ICS guideline: set ceiling of treatment before starting.
+                BTS/ICS recommends NIV when pH &lt;7.35 and PaCO₂ &gt;6.5 kPa persist or develop despite optimal medical treatment<InlineRef topicId="bronchospastic-failure" refLabel="BTS/ICS AHRF 2016" />. Target SpO₂ 88–92%. NIV reduces intubation and mortality in suitable patients. Severe acidosis alone does not exclude a trial in an appropriate area with staff able to intubate immediately; a pH below 7.25 signals greater risk of failure, not a universal lower boundary. Titrate bilevel support to clinical response, assess blood gases and work of breathing promptly, and document the ceiling of treatment and escalation plan. Deterioration requires immediate review rather than waiting for a scheduled blood gas.
               </p>
             </div>
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">NIV in Asthma (Limited Evidence)</p>
               <p className="text-xs text-muted-foreground mt-1">
-                NOT first-line in acute asthma<InlineRef topicId="bronchospastic-failure" refLabel="BTS/SIGN Asthma 2019" />. May be considered as a bridge in selected patients with hypercapnic respiratory failure who are tiring but not immediately requiring intubation.
-                <br /><strong>Rationale:</strong> unloads respiratory muscles, reduces work of breathing, may improve V/Q matching, and allows concurrent nebuliser delivery.
-                <br /><strong>Risks:</strong> delaying necessary intubation is the dominant hazard; also gastric insufflation and aspiration, barotrauma from worsening dynamic hyperinflation, inability to clear secretions, and mask intolerance.
-                <br /><strong>Patient selection:</strong> conscious, cooperative, able to protect the airway, haemodynamically stable — only in a critical care area with immediate intubation capability and a defined 1-hour review point.
-                <br /><strong>Contraindications specific to asthma:</strong> any life-threatening feature — exhaustion, confusion, silent chest, bradycardia, peri-arrest, vomiting, copious secretions, pneumothorax.
-                <br /><strong>Suggested settings:</strong> EPAP 5–8 cmH₂O, IPAP 10–15 cmH₂O, with close monitoring of pH/PaCO₂ at 1 hour and a low threshold for intubation.
-                <br />BTS/SIGN maintains a cautious stance, restricting use to experienced specialist centres.
+                BTS/ICS 2016 advises against NIV in acute asthma with acute hypercapnic respiratory failure. GINA 2026 makes no recommendation because the evidence is weak; if a specialist team attempts NIV, close observation is essential<InlineRef topicId="bronchospastic-failure" refLabel="GINA 2026" />. Do not attempt it in an agitated patient or sedate a patient simply to tolerate NIV.
+                <br /><strong>Safety:</strong> any trial requires careful selection, a clear escalation plan and immediate access to invasive ventilation. Exhaustion, deteriorating consciousness, ineffective ventilation or haemodynamic instability require urgent reassessment. NIV must not delay necessary intubation.
+                <br /><strong>Risks:</strong> aspiration, inability to clear secretions, mask intolerance, worsening hyperinflation and barotrauma. These limitations do not support a generic NIV bridge or universal pressure prescription for acute hypercapnic asthma.
               </p>
             </div>
           </div>
@@ -427,8 +428,8 @@ const BronchospasticFailureTopic = () => {
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">PEEP</td>
-                  <td>Low or zero (0–5 cmH₂O) — adding PEEP to a patient with auto-PEEP risks worsening hyperinflation. Some advocate matching ~80% of auto-PEEP to reduce trigger work.</td>
-                  <td>Low-moderate (5–8 cmH₂O) — match ~80% auto-PEEP to reduce trigger effort and work of breathing. More accepted in COPD than asthma.</td>
+                  <td>During controlled severe-asthma ventilation, start cautiously and individualise external PEEP; excessive PEEP can worsen hyperinflation. Reassess plateau pressure, total PEEP, tidal volume and haemodynamics after changes.</td>
+                  <td>In selected spontaneously triggering COPD patients, carefully titrated external PEEP can reduce the effort needed to overcome intrinsic PEEP. A fixed 80% rule is not universally safe; assess mechanics and haemodynamic response.</td>
                 </tr>
                 <tr>
                   <td className="py-2 font-medium text-foreground">Permissive Hypercapnia</td>
@@ -442,7 +443,7 @@ const BronchospasticFailureTopic = () => {
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Monitoring for Hyperinflation</h3>
           <div className="space-y-2 mb-4">
             {[
-              { label: "Plateau Pressure (Pplat)", detail: <>Measured on an inspiratory hold — the key barotrauma marker, target &lt;30 cmH₂O<InlineRef topicId="bronchospastic-failure" refLabel="BJA Educ Asthma 2017" />. Reflects alveolar pressure at end-inspiration. A high Pplat despite a low tidal volume confirms severe gas trapping rather than poor lung compliance.</> },
+              { label: "Plateau Pressure (Pplat)", detail: <>Measure during a valid passive inspiratory hold; a usual protective target is &lt;30 cmH₂O<InlineRef topicId="bronchospastic-failure" refLabel="BJA Educ Asthma 2017" />. High Pplat can reflect dynamic hyperinflation, reduced lung or chest-wall compliance, or both. It does not confirm gas trapping by itself. Review expiratory flow, total PEEP, tidal volume and haemodynamics, and assess for causes such as pneumothorax, oedema or atelectasis.</> },
               { label: "Auto-PEEP (Intrinsic PEEP)", detail: "Measured by end-expiratory hold; >10–15 cmH₂O is significant. Reduces venous return causing hypotension and can mimic cardiac tamponade. The measured value underestimates true alveolar pressure when airways close during expiration ('choke point' phenomenon). Increases patient trigger work and causes ineffective triggering efforts on the ventilator." },
               { label: "Driving Pressure", detail: "Pplat minus total PEEP — target <15 cmH₂O as the lung-protective marker, integrating both barotrauma and hyperinflation risk." },
               { label: "Expiratory Flow Waveform", detail: "Flow should return to zero before the next breath is delivered — the bedside real-time guide to titrating respiratory rate and I:E ratio. If flow does not return to zero, gas trapping is ongoing." },
@@ -540,7 +541,7 @@ const BronchospasticFailureTopic = () => {
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">External PEEP</td>
                   <td>Use cautiously — may worsen hyperinflation; low or zero PEEP while monitoring Pplat</td>
-                  <td>Often set to about 80% of intrinsic PEEP to reduce trigger work</td>
+                  <td>Individualise external PEEP. It may reduce trigger effort in selected spontaneously breathing patients; do not apply a fixed fraction of intrinsic PEEP without assessing plateau pressure, total PEEP, tidal volume and haemodynamics.</td>
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">Weaning</td>
@@ -608,7 +609,7 @@ const BronchospasticFailureTopic = () => {
               { label: "Device Design", detail: "A modified HME (heat-moisture exchanger) containing an activated carbon fibre reflector. Inserted between the Y-piece and ETT. Liquid volatile agent (isoflurane or sevoflurane) is infused via syringe pump through the device, evaporates within the reflector, and is delivered to the patient. On expiration, ~90% of exhaled volatile is adsorbed by the reflector and re-delivered on the next inspiration — minimising waste and environmental contamination." },
               { label: "Sedaconda-S (Small)", detail: "50 ml dead space device designed for sedation (lower agent concentrations). Suitable for most ICU patients. Isoflurane is the most commonly used agent (lower cost, less compound A concern than sevoflurane)." },
               { label: "Agent Delivery & Monitoring", detail: "Liquid isoflurane/sevoflurane infused via standard syringe pump — typical adult sedation rates ~3–7 mL/h with AnaConDa-S and ~5–12 mL/h with the larger AnaConDa, titrated to end-tidal agent concentration (Sedaconda SPC). End-tidal agent monitored by an inline anaesthetic gas monitor (essential for safe use). Target Fe'Iso 0.3–0.8% for sedation; higher for bronchodilation (0.5–1.5 MAC equivalent). Requires gas scavenging on ventilator exhaust port." },
-              { label: "Practical Setup", detail: "Compatible with standard ICU ventilators (no anaesthetic machine needed). Adds 50–100 ml dead space — may need to increase tidal volume slightly. Change AnaConDa device every 24 h. Ensure gas analyser is calibrated for the specific agent. Active charcoal filter on expiratory limb for scavenging." },
+              { label: "Practical Setup", detail: "Use a compatible ICU ventilator, circuit, agent and gas monitor according to manufacturer instructions. ACD-S adds 50 mL dead space and ACD-L 100 mL; this can worsen CO₂ retention. Review device size, other apparatus dead space and approved alternative placement while preserving safe tidal volume, airway pressures and expiratory time; do not automatically increase tidal volume. Replace the device at 24 hours or earlier when indicated. Use calibrated agent monitoring and the manufacturer-specified scavenging arrangement." },
               { label: "Advantages over IV Sedation", detail: "Rapid onset and offset (wake-up times 15–20 min vs hours with propofol/midazolam). No accumulation in renal/hepatic failure. Organ-protective properties (cardiac preconditioning). Reduced delirium incidence (some evidence). Direct bronchodilation — dual benefit in bronchospasm." },
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
@@ -649,7 +650,7 @@ const BronchospasticFailureTopic = () => {
           <div className="space-y-2">
             {[
               { label: "ECMO for Refractory Asthma", detail: "VV-ECMO has been used successfully in near-fatal asthma when conventional ventilation fails. Allows 'lung rest' — can reduce or stop mechanical ventilation entirely while bronchospasm resolves. Young patients with reversible pathology are ideal candidates. Early referral to ECMO centre." },
-              { label: "Extracorporeal CO₂ Removal (ECCO₂R)", detail: "Rationale: the problem in severe bronchospasm is CO₂ clearance, not oxygenation, so removing CO₂ extracorporeally permits 'ultra-protective' ventilation — cutting respiratory rate and tidal volume further than permissive hypercapnia alone allows, which lengthens expiratory time and unwinds dynamic hyperinflation. Mechanism: a low-flow veno-venous circuit (typically 0.4–1.5 L/min through a 13–19 Fr dual-lumen or two single-lumen cannulae) passes blood over a membrane lung; because CO₂ is far more diffusible and carried in much greater quantity than O₂, 20–50% of total CO₂ production can be cleared at a fraction of full ECMO flow, but oxygenation support is negligible. Indications: severe respiratory acidosis (pH < 7.15–7.20) with rising PaCO₂ despite optimised bronchodilators, deep sedation, neuromuscular blockade and volatile agent, where the patient is adequately oxygenated. Comparison with VV-ECMO: less invasive, smaller cannulae, lower anticoagulation burden and easier to site — but it does NOT support oxygenation, so if hypoxaemia or cardiovascular collapse is the problem, full VV-ECMO is required. Risks are those of any extracorporeal circuit: bleeding on anticoagulation, haemolysis, circuit thrombosis, cannula-site injury and infection. Evidence in asthma is limited to case series and registries, so treat it as a bridge in an expert centre, decided jointly with the regional ECMO service, rather than an established therapy." },
+              { label: "Extracorporeal CO₂ Removal (ECCO₂R)", detail: "Selected patients with refractory hypercapnic respiratory failure may be assessed by an expert centre for ECCO₂R, which removes CO₂ but provides little oxygenation and no direct circulatory support. It may permit lower minute ventilation and more expiratory time; it is not an established routine asthma treatment and carries bleeding, thrombosis, haemolysis and vascular-access risks. VV-ECMO supports gas exchange and may improve circulation indirectly by correcting hypoxia/acidosis and reducing ventilator pressures, but provides no direct haemodynamic support. Persistent refractory cardiovascular failure or cardiac arrest requires urgent expert assessment for an appropriate circulatory-support or ECPR configuration, commonly VA-ECMO, rather than an automatic VV-ECMO instruction. Choose the modality with the regional ECMO team according to the patient's respiratory and circulatory needs." },
 
               { label: "Heliox (Helium-Oxygen)", detail: "Available as premixed cylinders of 79% helium/21% oxygen or 70/30 (Heliox21/Heliox28); density is roughly one-third that of air, so the Reynolds number falls and flow through narrowed, turbulent airways becomes more laminar — reducing resistive work of breathing and peak airway pressures, and improving distal delivery of nebulised salbutamol (nebulise driven by heliox at 25–30% higher flow than usual). Practical points: use a tight-fitting non-rebreathing circuit or a ventilator validated for heliox, since the low density under-reads on standard flow sensors and can misdeliver tidal volumes (verify with a heliox-compatible ventilator or measure exhaled volumes independently); FiO₂ is capped at 30–40% before the density benefit is lost, so heliox is unsuitable for significant hypoxaemia; it changes voice pitch, cools the patient, and must be scavenged/handled per local cylinder policy; benefit is immediate if it is going to work, so review within 15–20 min and abandon if there is no fall in work of breathing or airway pressures. Evidence remains weak (no mortality benefit) so it is a physiologically rational bridge while steroids and bronchodilators take effect, not a standard therapy. See BJA Education (2023) guidance on the ventilated asthmatic." },
               { label: "Bronchoscopy & Lavage", detail: "Mucus plugging is the major cause of death in fatal asthma. Bronchoscopic lavage can remove inspissated mucus plugs in refractory cases. Risk of worsening bronchospasm during procedure. Consider in ventilated patients with persistent lobar or segmental collapse or persistently high airway pressures despite maximal therapy. Procedure: via the ETT in a deeply sedated (propofol or volatile), paralysed patient on FiO₂ 1.0, with a large-channel therapeutic bronchoscope and a swivel connector; instil small aliquots (about 20–50 mL) of warm saline and suction; nebulised N-acetylcysteine is controversial. Risks: worsening bronchospasm, hypoxaemia, barotrauma/high pressures, haemodynamic instability — have bronchodilators and adrenaline drawn up." },
@@ -681,7 +682,7 @@ const BronchospasticFailureTopic = () => {
           </thead>
           <tbody className="text-foreground/90">
             {[
-              ["1 — Recognise", "Wheeze, ↑Paw, ↑PetCO₂, expiratory flow not returning to baseline", "Diagnose dynamic hyperinflation — DISCONNECT if PEA arrest"],
+              ["1 — Recognise", "Wheeze, ↑Paw, ↑PetCO₂, expiratory flow not returning to baseline", "If PEA: standard ALS plus urgent treatment of gas trapping and other reversible causes"],
               ["2 — Ventilator", "↓ RR (8–10), ↑ Te (I:E 1:4–1:5), Vt 6 ml/kg, accept permissive hypercapnia", "Allow complete expiration; reduce auto-PEEP"],
               ["3 — Inhaled β₂", "Salbutamol MDI 8–12 puffs via spacer (or 5 mg neb)", "First-line bronchodilator — repeat as needed"],
               ["4 — Anticholinergic", "Ipratropium 500 µg neb 4–6-hrly", "Synergistic with β₂; useful in COPD"],

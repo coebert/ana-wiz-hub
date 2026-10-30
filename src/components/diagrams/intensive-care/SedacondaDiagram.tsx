@@ -50,7 +50,7 @@ const views: Record<ViewMode, ViewData> = {
       "Scavenging: activated charcoal filter on expiratory limb",
       "Change device every 24 h",
       "Compatible with standard ICU ventilators",
-      "Increase V_T slightly to compensate for 50 ml dead space",
+      "Assess device size, apparatus dead space and approved placement; preserve safe tidal volume, pressures and expiratory time",
     ],
   },
 };

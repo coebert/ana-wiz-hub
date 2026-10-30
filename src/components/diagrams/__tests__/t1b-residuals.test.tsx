@@ -131,14 +131,39 @@ describe("T1b rendered", () => {
     expect(container.textContent).toMatch(/No timed volumes/);
     expect(container.textContent).not.toMatch(/Next 16 h/);
     fireEvent.change(hours, { target: { value: "" } });
-    expect(container.textContent).toMatch(/Formula subtotal only/);
-    expect(container.textContent).not.toMatch(/not above 250/);
-    fireEvent.change(screen.getByLabelText(/Other prescribed fluids/), { target: { value: "0" } });
-    expect(container.textContent).toMatch(/Ivy index check/);
+    expect(container.textContent).not.toMatch(/Ivy index check|not above 250|projected 24 h intake/);
     fireEvent.click(screen.getByRole("button", { name: /ABA 2024/ }));
     fireEvent.change(screen.getByLabelText(/%TBSA/), { target: { value: "15" } });
     expect(container.textContent).toMatch(/No source-specific estimate/);
     expect(container.textContent).not.toMatch(/24 h formula estimate/);
+  });
+});
+
+describe("T1B-R01/R02 regressions", () => {
+  const setOpioid = (drug: string, dose: string, n: string, target: string) => {
+    const r = render(<OpioidConversionCalculator />);
+    const sels = r.container.querySelectorAll("select");
+    fireEvent.change(sels[0], { target: { value: `oral:${drug}` } });
+    const nums = r.container.querySelectorAll('input[type="number"]');
+    fireEvent.change(nums[0], { target: { value: dose } });
+    fireEvent.change(nums[1], { target: { value: n } });
+    fireEvent.change(screen.getByLabelText("Target oral opioid"), { target: { value: target } });
+    return r;
+  };
+  it.each([["oxycodone", "10", "2", "codeine", "225", "300"], ["morphine", "50", "1", "tramadol", "375", "500"]])(
+    "%s %s mg ×%s → %s: reduced %s below limit is not labelled over-limit", (drug, dose, n, target, reduced, unreduced) => {
+      const { container } = setOpioid(drug, dose, n, target);
+      expect(screen.getByTestId("reduced-equivalent").textContent).toContain(`${reduced} mg / 24 h`);
+      expect(container.textContent).not.toMatch(new RegExp(`calculated ${reduced} mg/24 h exceeds`));
+      expect(container.textContent).not.toMatch(/choose a different opioid/);
+      expect(screen.getByRole("alert").textContent).toMatch(new RegExp(`unreduced theoretical equivalent ${unreduced} mg/24 h exceeds`));
+    });
+  it.each([["6", "30000"], ["24", "0"], ["-1", "0"]])("burns hours %s given %s: no Ivy/projected-intake output", (h, g) => {
+    const { container } = render(<ParklandCalculator />);
+    fireEvent.change(screen.getByLabelText(/Hours since injury/), { target: { value: h } });
+    fireEvent.change(screen.getByLabelText(/Resuscitation fluid given/), { target: { value: g } });
+    expect(container.textContent).not.toMatch(/Ivy index check|projected 24 h intake|not above 250/);
+    expect(screen.queryByLabelText(/Other prescribed fluids/)).toBeNull();
   });
 });
 

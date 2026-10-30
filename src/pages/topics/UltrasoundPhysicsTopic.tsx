@@ -84,7 +84,7 @@ const UltrasoundPhysicsTopic = () => {
         { text: "Speed of sound in soft tissue is assumed to be 1,540 m/s for depth calculations", cites: ["Cross & Plunkett Ch.17"] },
         { text: "Doppler equation: Δf = 2f₀v cos θ / c — angle of insonation must be <60° for accurate velocity measurement", cites: ["BJA Educ 2017"] },
         { text: "CW Doppler has no aliasing but no depth discrimination; PW Doppler is depth-specific but aliases above Nyquist limit (PRF/2)", cites: ["Middleton Ch.13"] },
-        { text: "A-lines (reverberation) = air-containing interface (normal lung OR pneumothorax); B-lines = interstitial syndrome of several causes; absent sliding is nonspecific and alone does not diagnose pneumothorax", cites: ["Cross & Plunkett Ch.17"] },
+        { text: "A-lines (reverberation) = air-containing interface (normal lung OR pneumothorax); occasional B-lines occur in healthy lungs; an excess or diffuse B-line pattern may indicate interstitial syndrome of several causes; absent sliding is nonspecific and alone does not diagnose pneumothorax", cites: ["Cross & Plunkett Ch.17"] },
         { text: "Acoustic shadowing occurs behind bone/calculi; posterior enhancement occurs behind fluid-filled structures", cites: ["BJA Educ 2017"] },
       ]}
       coreConcepts={
@@ -347,8 +347,8 @@ const UltrasoundPhysicsTopic = () => {
                 <strong>Reverberation</strong> produces equidistant parallel lines (A-lines) when ultrasound bounces repeatedly
                 between two strong parallel reflectors (e.g., pleura-air interface). In lung ultrasound, A-lines indicate an
                 <strong> air-containing interface</strong> — seen in normally aerated lung and in pneumothorax. <strong>B-lines</strong> (comet-tail artefact) are vertical hyperechoic lines
-                extending from the pleural line to the screen edge without fading — they indicate <strong>interstitial syndrome</strong>
-                from multiple causes (e.g. cardiogenic or non-cardiogenic oedema, pneumonitis, fibrosis) and are not specific
+                extending from the pleural line to the screen edge without fading — occasional B-lines occur in healthy lungs, while an excess or diffuse pattern may indicate <strong>interstitial syndrome</strong>
+                from multiple causes (e.g. cardiogenic or non-cardiogenic oedema, pneumonitis, fibrosis); B-lines are not specific
                 for cardiogenic oedema. Multiple B-lines are interpreted by their number, distribution (focal vs diffuse,
                 bilateral) and clinical context, not by a single per-rib-space cut-off.
               </p>

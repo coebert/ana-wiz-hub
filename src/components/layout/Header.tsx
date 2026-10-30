@@ -1,4 +1,4 @@
-import { scrollToSupport } from "@/lib/donation";
+import { cancelSupportScroll, scrollToSupport } from "@/lib/donation";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network, BarChart3, Headphones, Mic, Pill, GraduationCap, Calculator, Brain, BookOpen, Sparkles, Menu } from "lucide-react";
@@ -61,7 +61,8 @@ export const Header = () => {
 
   useEffect(() => {
     if (location.pathname === "/" && location.hash === "#support") {
-      return scrollToSupport();
+      scrollToSupport();
+      return cancelSupportScroll;
     }
   }, [location.pathname, location.hash, location.key]);
 

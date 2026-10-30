@@ -82,16 +82,21 @@ const Trust = () => {
           </li>
         </ul>
 
-        <h2 className="flex items-center gap-2">
+        <h2 id="content-accuracy" className="flex items-center gap-2">
           <FileText className="h-4 w-4 text-primary" /> Content accuracy
         </h2>
         <p>
-          Every clinical claim on the site is cited to a named source
-          (guidelines, textbooks, primary literature). Mistakes are inevitable
-          in a curriculum this large — please flag any you find using the
-          “Report an inaccuracy” button on the relevant page. Published
+          Topic pages include references to guidelines, textbooks and primary
+          literature. Citation coverage and clinical review are ongoing;
+          a reference list does not establish that every statement has been
+          checked against its source. Check current original guidance before
+          using this educational material in clinical practice. Please flag
+          errors using “Report an inaccuracy” on the relevant page. Published
           corrections are listed on the public{" "}
           <Link to="/errata">errata page</Link>.
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Content-accuracy statement updated 30 October 2026 (this section only; the page-wide review date below is unchanged).
         </p>
 
         <h2>Subprocessors &amp; integrations</h2>

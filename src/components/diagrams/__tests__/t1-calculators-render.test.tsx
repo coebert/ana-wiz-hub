@@ -41,9 +41,8 @@ describe("T1 rendered states", () => {
     expect(container.textContent).toContain("20 mL/h");
     expect(container.textContent).not.toMatch(/mL\/h —|rate now/i);
     fireEvent.click(screen.getAllByRole("button", { name: "Load" })[3]);
-    expect(container.textContent).toMatch(/Formula subtotal only/);
-    fireEvent.change(screen.getByLabelText(/Other prescribed fluids/), { target: { value: "0" } });
-    expect(container.textContent).toMatch(/240 mL\/kg \(not above 250/);
+    expect(container.textContent).toMatch(/cannot establish actual intake or rule out fluid-overload risk/);
+    expect(container.textContent).not.toMatch(/not above 250|Ivy index check/);
   });
 
   it("sedation: negative weight shows no pump rate and no Stop row", () => {

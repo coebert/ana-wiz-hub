@@ -53,7 +53,9 @@ const OpioidConversionCalculator = () => {
   const targetDaily = omedd !== null ? oralTargetDailyMg(omedd, targetKey, sameDrug ? 0 : effectiveReduction) : null;
   const targetUnreduced = omedd !== null ? oralTargetDailyMg(omedd, targetKey, 0) : null;
   const limit = TARGET_DAILY_LIMITS[targetKey];
-  const overLimit = exceedsTargetLimit(targetKey, targetDaily) || exceedsTargetLimit(targetKey, targetUnreduced);
+  const exceedsReduced = exceedsTargetLimit(targetKey, targetDaily);
+  const exceedsUnreduced = exceedsTargetLimit(targetKey, targetUnreduced);
+  const overLimit = exceedsReduced;
   const targetLabel = FPM_ORAL.find((o) => o.key === targetKey)!.label;
 
   return (
@@ -98,6 +100,12 @@ const OpioidConversionCalculator = () => {
                   <option value="">Select strength</option>
                   {FPM_PATCH[source.key].rows.map((r) => <option key={r.ugPerHour} value={r.ugPerHour}>{r.ugPerHour} micrograms/hour</option>)}
                 </select>
+                {source.key === "buprenorphine-twice-weekly" && patchStrength === "52.5" && (
+                  <span className="block font-normal text-[11px] text-muted-foreground mt-1">
+                    FPM displays 52 micrograms/hour; the current Transtec strength is 52.5 micrograms/hour (
+                    <a href="https://www.medicines.org.uk/emc/product/14573/smpc" target="_blank" rel="noopener noreferrer" className="underline">SmPC</a>). The approximate 126 mg/day morphine equivalence is retained.
+                  </span>
+                )}
               </label>
             )}
           </div>
@@ -152,6 +160,12 @@ const OpioidConversionCalculator = () => {
                 <p className="font-mono font-bold text-primary">{overLimit ? "Not presented — exceeds named limit" : `${fmt(targetDaily)} mg / 24 h`}</p>
               </div>
             </div>
+            {!exceedsReduced && exceedsUnreduced && limit && (
+              <p role="alert" className="text-[11px] text-destructive mt-2">
+                The unreduced theoretical equivalent {fmt(targetUnreduced!)} mg/24 h exceeds the named maximum ({limit.maxMgPerDay} mg/day). The reduced theoretical figure ({fmt(targetDaily)} mg/24 h) is below that maximum, but it is a calculation, not a prescription — confirm product-specific limits and individual suitability.{" "}
+                <a href={limit.url} target="_blank" rel="noopener noreferrer" className="underline">Source</a>.
+              </p>
+            )}
             {overLimit && limit && (
               <p role="alert" className="text-[11px] text-destructive mt-2">
                 The calculated {fmt(targetDaily)} mg/24 h exceeds the named maximum ({limit.maxMgPerDay} mg/day). {limit.text}{" "}
