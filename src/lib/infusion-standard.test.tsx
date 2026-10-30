@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { computeMlPerHr, extractMassDilutions, normaliseInfusionStandard } from "./infusion-standard";
-import { InfusionCalculator, WorkedExample } from "@/pages/DrugDetail";
+import { computeMlPerHr, extractMassDilutions, formatMassConcentration, normaliseInfusionStandard } from "./infusion-standard";
+import { InfusionCalculator, PreparationGuide, WorkedExample } from "@/pages/DrugDetail";
 
 const insulin = { infusion_standard: { amount_mg: 50, diluent_ml: 50, unit: "units/hr", weight_based: false } };
 const vaso = { infusion_standard: { amount_mg: 20, diluent_ml: 50, unit: "units/hr", weight_based: false } };
@@ -28,7 +28,8 @@ describe("D39 biological units", () => {
   });
   it("ambiguous diluent prose yields no unit badge", () => {
     expect(extractMassDilutions("50 units in 49.5 mL sodium chloride")).toEqual([]);
-    expect(extractMassDilutions("4 mg in 50 mL")[0].mgPerMl).toBeCloseTo(0.08, 10);
+    expect(extractMassDilutions("4 mg in 50 mL")).toEqual([]); // unqualified volume is ambiguous
+    expect(extractMassDilutions("4 mg in 50 mL final volume")[0].mgPerMl).toBeCloseTo(0.08, 10);
   });
   it.each([
     [{ amount_mg: 50, diluent_ml: 0, unit: "units/hr" }],
@@ -65,5 +66,33 @@ describe("D39 rendered drug-page paths", () => {
   it("mass calculator still renders 5.25 mL/hr", () => {
     render(<InfusionCalculator drug={{ infusion_standard: { amount_mg: 4, diluent_ml: 50, unit: "mcg/kg/min", weight_based: true } }} />);
     expect(screen.getByTestId("pump-rate").textContent).toContain("5.25 mL/hr");
+  });
+});
+
+const LIVE = {
+  clonidine: "• Standard ampoule: 150 micrograms in 1 mL.\n• Bolus for IV administration: Dilute 150 micrograms in 9 mL sodium chloride 0.9% to a total volume of 10 mL (15 micrograms/mL).",
+  methadone: "SC: Not generally recommended due to irritancy. If used (e.g. palliative care, unlicensed), dilute with Water for Injections or 0.9% sodium chloride.\nIV: Not recommended by SPC. If used (e.g. critical care, unlicensed), 10 mg in 9 mL Water for Injections or 0.9% sodium chloride to 1 mg/mL. Administer slowly over 3-5 minutes.",
+  desmopressin: "For IV administration for haemostasis: Dilute the required dose (e.g. 20 micrograms) in 50 mL 0.9% sodium chloride or 5% glucose and infuse over 15–30 minutes. The resulting concentration for 20 micrograms in 50 mL is 0.4 micrograms/mL.",
+};
+
+describe("D39 prose-derived preparation badges", () => {
+  it.each([
+    ["clonidine", /17\s*mcg\/mL/],
+    ["methadone", /1\.11\s*mg\/mL/],
+    ["desmopressin", /(?<![\d.])0\s*(mcg|mg)\/mL|0\.000/],
+  ] as const)("%s live string: no misleading badge, prose retained", (k, bad) => {
+    const { container } = render(<PreparationGuide raw={LIVE[k]} drug={{} as never} />);
+    const html = container.innerHTML;
+    expect(html).not.toMatch(bad);
+    expect(container.textContent).not.toContain("Common concentrations");
+    expect(container.textContent).toContain(k === "clonidine" ? "total volume of 10 mL" : k === "methadone" ? "to 1 mg/mL" : "0.4 micrograms/mL");
+  });
+  it("explicit final volume renders correct units", () => {
+    expect(formatMassConcentration(extractMassDilutions("20 micrograms in 50 mL final volume")[0].mgPerMl)).toBe("0.4 mcg/mL");
+    expect(formatMassConcentration(extractMassDilutions("2 mg in 50 mL final volume")[0].mgPerMl)).toBe("40 mcg/mL");
+    expect(formatMassConcentration(0.0000004)).toBe("0.4 ng/mL");
+    const { container } = render(<PreparationGuide raw="Give 20 micrograms in 50 mL final volume." drug={{} as never} />);
+    expect(container.textContent).toContain("0.4 mcg/mL");
+    expect(container.innerHTML).not.toMatch(/0\.000/);
   });
 });
