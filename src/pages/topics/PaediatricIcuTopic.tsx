@@ -58,7 +58,7 @@ const paediatricIcuFaqs: Array<[string, string]> = [
     "Which children with acute stroke are considered for thrombolysis or thrombectomy?",
     "Decisions are made in a paediatric neuroscience centre. Intravenous thrombolysis is not routinely recommended in children outside specialist protocols and trials, while mechanical thrombectomy is increasingly offered for confirmed large-vessel occlusion with a significant deficit in older children within a treatment window, based on registry and adult trial data extrapolation. Sickle cell stroke is treated with urgent exchange transfusion, and haemorrhagic stroke is managed with neurosurgical involvement, so the first steps are always urgent imaging and a specialist call.",
   ],
-  ["What fluid resuscitation strategy is recommended for paediatric septic shock?", "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock), with smaller 5 mL/kg boluses in DKA or trauma. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings)."],
+  ["What fluid resuscitation strategy is recommended for paediatric septic shock?", "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock). DKA and trauma follow their own pathways: NICE NG18 uses a 10 mL/kg 0.9% saline bolus in DKA (given as soon as possible if shocked, over 30 minutes if dehydrated but not shocked), while haemorrhagic trauma needs early blood products and haemorrhage control. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings)."],
   ["What is paediatric ARDS (PARDS) and how does ventilation differ?", "The Global Definition of PARDS (2023) requires onset within 7 days, new infiltrates not fully explained by cardiac failure or fluid overload, and hypoxaemia by OI/OSI (or non-invasively, SpO₂/FiO₂ ≤250 on CPAP ≥5 cmH₂O). Ventilate with Vt 5–8 mL/kg PBW, plateau ≤28 cmH₂O, permissive hypercapnia (pH ≥7.20), PEEP titrated 8–15 cmH₂O; prone position for moderate/severe disease (OI ≥12)."],
   ["How is intraosseous access used in paediatric resuscitation?", "Insert in the proximal tibia (or distal femur/humerus) if IV access fails within 60–90 s in shock or arrest; flow rates approach IV after a 10 mL saline flush, and all resus drugs can be given at standard doses."],
 ];
@@ -629,7 +629,7 @@ const PaediatricIcuTopic = () => {
           <ExamSection id="sepsis" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Paediatric Sepsis & Shock — Management">
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Children more commonly present with <strong>cold shock</strong> (vasoconstricted, poor perfusion) than warm vasodilated shock. Antibiotics within 1 h. Fluid in <strong>10 mL/kg isotonic crystalloid boluses</strong>, reassessing after each — <strong>20 mL/kg is reserved for specific situations</strong> (e.g. severe hypovolaemia), while <strong>5 mL/kg</strong> boluses are used in DKA or trauma to reduce the risk of cerebral oedema and dilutional coagulopathy respectively <InlineRef topicId="paediatric-icu" refLabel="SSC Paediatric 2020" /> <InlineRef topicId="paediatric-icu" refLabel="APLS 2021" />. Hepatomegaly = fluid overload. Have <strong>earlier recourse to vasoactive infusions</strong> rather than repeatedly escalating fluid if shock persists after 1–2 boluses: peripheral adrenaline (cold) or noradrenaline (warm). Stress-dose hydrocortisone for catecholamine-resistant shock.
+              Children more commonly present with <strong>cold shock</strong> (vasoconstricted, poor perfusion) than warm vasodilated shock. Antibiotics within 1 h. Fluid in <strong>10 mL/kg isotonic crystalloid boluses</strong>, reassessing after each — <strong>20 mL/kg is reserved for specific situations</strong> (e.g. severe hypovolaemia), while DKA and trauma follow condition-specific pathways rather than a shared 5 mL/kg rule — DKA uses a 10 mL/kg 0.9% saline bolus with senior review before more than one (NICE NG18), and haemorrhagic trauma needs early blood products and haemorrhage control <InlineRef topicId="paediatric-icu" refLabel="NICE NG18" /> <InlineRef topicId="paediatric-icu" refLabel="SSC Paediatric 2020" /> <InlineRef topicId="paediatric-icu" refLabel="APLS 2021" />. Hepatomegaly = fluid overload. Have <strong>earlier recourse to vasoactive infusions</strong> rather than repeatedly escalating fluid if shock persists after 1–2 boluses: peripheral adrenaline (cold) or noradrenaline (warm). Stress-dose hydrocortisone for catecholamine-resistant shock.
             </p>
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">Defining paediatric sepsis — the Phoenix criteria (2024)</h3>
@@ -1467,7 +1467,7 @@ const PaediatricIcuTopic = () => {
               <p className="font-semibold text-foreground text-sm">2 · Resuscitation and deficit</p>
               <p className="text-sm text-muted-foreground mt-1">
                 <strong>Bolus:</strong> 10 mL/kg isotonic crystalloid over 5–10 min with reassessment after each
-                (20 mL/kg only for profound shock; <strong>5 mL/kg in DKA, trauma and neonates</strong>)
+                (20 mL/kg only for profound shock; DKA uses 10 mL/kg per NICE NG18 and haemorrhagic trauma prioritises blood and haemorrhage control)
                 <InlineRef topicId="paediatric-icu" refLabel="APLS 2021" />. After 40–60 mL/kg without
                 improvement, start vasoactive support and re-examine for hepatomegaly, crepitations and rising
                 oxygen requirement — signs of fluid overload.
@@ -1909,7 +1909,7 @@ const PaediatricIcuTopic = () => {
             <ul className="space-y-2 list-disc list-inside text-sm">
               <li><strong>PEWS</strong>: Paediatric Early Warning Scores combine HR, RR, BP, SpO₂, respiratory effort, capillary refill, consciousness and nurse/family concern against age-specific norms; a rising or triggering score escalates to senior review and, if needed, the critical care outreach/PICU retrieval team <InlineRef topicId="paediatric-icu" refLabel="Bedside PEWS 2009" />.</li>
               <li><strong>Tube sizing</strong>: cuffed ETT ID = (age/4) + 3.5; length = (age/2) + 12 (oral).</li>
-              <li><strong>Fluid resuscitation</strong>: 10 ml/kg isotonic crystalloid boluses, reassess after each (20 ml/kg reserved for profound shock; 5 ml/kg in DKA, trauma and neonates).</li>
+              <li><strong>Fluid resuscitation</strong>: 10 ml/kg isotonic crystalloid boluses, reassess after each (20 ml/kg reserved for profound shock; DKA and haemorrhagic trauma follow their own pathways).</li>
               <li><strong>Maintenance fluids</strong>: isotonic only (NICE 2015). Holliday-Segar 4-2-1.</li>
               <li><strong>Sepsis</strong>: antibiotics within 1 h; noradrenaline (warm) or adrenaline (cold).</li>
               <li><strong>Drug dosing</strong>: weight-based (mg/kg). Sugammadex 2–4 mg/kg, suxamethonium 1.5–2 mg/kg.</li>
@@ -1919,7 +1919,7 @@ const PaediatricIcuTopic = () => {
           <ExamPitfallsCallout
             accent="icu"
             pitfalls={[
-              "Paediatric sepsis: 10 mL/kg fluid boluses with reassessment after each (20 mL/kg only for profound shock, 5 mL/kg in DKA/trauma), early antibiotics, early inotropes (peripheral if needed).",
+              "Paediatric sepsis: 10 mL/kg fluid boluses with reassessment after each (20 mL/kg only for profound shock; DKA uses 10 mL/kg per NICE NG18), early antibiotics, early inotropes (peripheral if needed).",
               "ETT/drug doses: WET FLAG (weight, energy 4 J/kg, tube size, fluid 10 mL/kg, lorazepam, adrenaline 10 µg/kg, glucose 2 mL/kg 10%).",
               "Congenital cyanotic heart disease: maintain SpO₂ at usual baseline (often 75–85%), avoid hypoxia/hypocapnia changes that affect PVR/SVR balance.",
               "Paediatric TBI: target CPP age-appropriate (40–60 mmHg), avoid hyponatraemia, head-up, normothermia.",

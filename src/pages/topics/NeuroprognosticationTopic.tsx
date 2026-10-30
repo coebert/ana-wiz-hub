@@ -139,7 +139,7 @@ const keyPoints = [
     cites: ["ERC/ESICM 2021 Post-Resus"],
   },
   {
-    text: "TTM2 (2021): targeted hypothermia at 33 °C did not improve 6-month mortality vs targeted normothermia (≤ 37.7 °C). ERC/ESICM 2021 still recommends TTM (32–36 °C constant value for ≥ 24 h) and active fever avoidance to 72 h.",
+    text: "TTM2 (2021): targeted hypothermia at 33 °C did not improve 6-month mortality vs normothermia with early fever treatment (≥ 37.8 °C trigger). Current RCUK / ERC–ESICM 2025 guidance targets active fever prevention at ≤ 37.5 °C in comatose survivors (at least 72 h in the RCUK algorithm).",
     cites: ["TTM2 2021", "ERC/ESICM 2021 Post-Resus"],
   },
   {

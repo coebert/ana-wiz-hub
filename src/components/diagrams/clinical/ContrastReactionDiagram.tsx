@@ -22,7 +22,7 @@ const ContrastReactionDiagram = () => {
       color: "hsl(40 80% 50%)",
       bgClass: "bg-yellow-500/10 border-yellow-500/30",
       features: ["Widespread urticaria", "Facial / laryngeal oedema", "Bronchospasm (mild–moderate)", "Significant hypotension (transient)", "Persistent vomiting"],
-      management: ["Stop contrast infusion", "ABC approach — call for help", "Adrenaline 0.5 mg IM (1:1000)", "Salbutamol nebuliser for bronchospasm", "IV crystalloid bolus 500–1000 ml", "Hydrocortisone 200 mg IV (delayed effect)"],
+      management: ["Stop contrast infusion", "ABC approach — call for help", "Adrenaline 0.5 mg IM (1:1000)", "Salbutamol nebuliser for bronchospasm", "IV crystalloid bolus 500–1000 ml", "Steroids not routine — only for refractory reactions after resuscitation (RCUK 2021)"],
       frequency: "Uncommon (~0.4%)",
     },
     {

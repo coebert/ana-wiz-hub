@@ -86,8 +86,8 @@ const keyPoints = [
     cites: ["NICE NG29"],
   },
   {
-    text: "Resuscitation boluses are 10–20 mL/kg isotonic crystalloid with reassessment after each; use 5 mL/kg aliquots in DKA or trauma",
-    cites: ["APLS 2021"],
+    text: "Resuscitation boluses are 10–20 mL/kg isotonic crystalloid with reassessment after each; DKA uses a 10 mL/kg 0.9% saline bolus (NICE NG18) and haemorrhagic trauma prioritises blood products and haemorrhage control",
+    cites: ["APLS 2021", "NICE NG18"],
   },
   {
     text: "Estimate weight: (age + 4) × 2 for 1–9 years; verify with a length-based tape (Broselow/PAWPER) whenever possible",
@@ -132,13 +132,13 @@ const PaediatricCoreTopic = () => {
             "A 3-year-old (estimated 14 kg) needs IV maintenance fluids while nil by mouth. Which prescription is most appropriate?",
           options: [
             "0.45% saline with 5% glucose at 56 mL/hr",
-            "0.9% saline with 5% glucose at 46 mL/hr",
+            "0.9% saline with 5% glucose at 48 mL/hr",
             "Hartmann's solution at 14 mL/hr",
-            "5% glucose alone at 46 mL/hr",
+            "5% glucose alone at 48 mL/hr",
           ],
           correctIndex: 1,
           explanation:
-            "4-2-1: 10 kg × 4 + 4 kg × 2 = 48 mL/hr (≈46–48). NICE NG29 mandates isotonic maintenance fluids; 0.45% saline and glucose-only solutions risk hyponatraemia, and Hartmann's without glucose risks hypoglycaemia in small children.",
+            "4-2-1 arithmetic: 10 kg × 4 + 4 kg × 2 = 48 mL/hr (the daily Holliday–Segar form, 1000 + 4 × 50 = 1200 mL/day, is 50 mL/hr). This is the calculated starting rate; the actual prescription is then adjusted to the child's clinical state and losses. NICE NG29 mandates isotonic maintenance fluids; 0.45% saline and glucose-only solutions risk hyponatraemia, and Hartmann's without glucose risks hypoglycaemia in small children.",
         },
         {
           question:
@@ -276,7 +276,7 @@ const PaediatricCoreTopic = () => {
               <p className="text-muted-foreground leading-relaxed mb-3">
                 <strong>Resuscitation</strong>: give 10–20 mL/kg isotonic crystalloid boluses,
                 reassessing after each for overload (new hepatomegaly, crackles, rising oxygen
-                requirement). Use 5 mL/kg aliquots in DKA (cerebral oedema risk) and trauma; blood
+                requirement). In DKA, NICE NG18 gives a 10 mL/kg 0.9% saline bolus (as soon as possible if shocked; over 30 minutes if dehydrated but not shocked) and asks for senior review before more than one; haemorrhagic trauma needs blood products and haemorrhage control; blood
                 is given as 10–20 mL/kg. Hypoglycaemia is corrected with 2 mL/kg of 10% glucose —
                 never concentrated 50% dextrose.{" "}
                 <InlineRef topicId="paediatric-core" refLabel="APLS 2021" />
@@ -308,7 +308,7 @@ const PaediatricCoreTopic = () => {
                     </tr>
                     <tr className="border-b border-border/50">
                       <td className="py-2 pr-3 font-medium text-foreground">DKA</td>
-                      <td className="py-2 pr-3">5 mL/kg aliquots only if shocked; deficit over 48 h</td>
+                      <td className="py-2 pr-3">10 mL/kg 0.9% saline bolus (NICE NG18); deficit over 48 h</td>
                       <td className="py-2">Rapid fluids/insulin shifts → cerebral oedema</td>
                     </tr>
                     <tr>

@@ -26,7 +26,7 @@ const tocItems = [
 ];
 
 const geneticSyndromesFaqs: Array<[string, string]> = [
-  ["How is malignant hyperthermia treated?", "Stop all volatile agents and suxamethonium, switch to TIVA, hyperventilate with 100% oxygen via a clean circuit, give IV dantrolene 2.5 mg/kg repeated up to 10 mg/kg (more if required), cool actively, and treat hyperkalaemia, acidosis and arrhythmias (AAGBI 2020)."],
+  ["How is malignant hyperthermia treated?", "Stop all volatile agents and suxamethonium, switch to TIVA, remove the vaporiser without delaying to change the circuit or machine (charcoal filters if available), hyperventilate with 100% oxygen, give IV dantrolene 2–2.5 mg/kg (max 300 mg per dose) every 10 min to effect — totals above 10 mg/kg may be needed, cool actively, and treat hyperkalaemia, acidosis and arrhythmias (AAGBI 2020)."],
   ["Why is suxamethonium contraindicated in Duchenne and Becker muscular dystrophy?", "Even sub-clinical dystrophinopathy can precipitate rhabdomyolysis and hyperkalaemic cardiac arrest after suxamethonium or prolonged volatile exposure — TIVA with non-depolarising NMBs is mandatory."],
   ["What are the airway considerations in Down syndrome?", "Macroglossia, narrow nasopharynx, subglottic stenosis (use a smaller ETT than predicted) and atlanto-axial instability (careful neck positioning, neutral head) — plus a high prevalence of congenital cardiac disease and obstructive sleep apnoea."],
 ];
@@ -509,7 +509,7 @@ const GeneticSyndromesTopic = () => {
                 <li>Diagnose <strong>anaesthesia-induced rhabdomyolysis</strong> — hyperkalaemic arrest after sux + volatile in a dystrophinopathy. Not classical MH (no defective RYR1).</li>
                 <li>Start <strong>ALS</strong> — high-quality CPR; defibrillate VF; expect prolonged resuscitation (rhabdo + hyperK⁺ may need &gt;30 min CPR).</li>
                 <li>Treat hyperkalaemia: <strong>10 mL 10% calcium chloride IV</strong> (membrane stabilisation), insulin–dextrose, salbutamol nebs, NaHCO₃ if acidotic. Get an arterial line.</li>
-                <li>Stop volatile, change circuit/soda lime, run TIVA on propofol if continuing the case (case is likely abandoned).</li>
+                <li>Stop volatile and remove the vaporiser — do not delay treatment to change circuit or machine; add activated charcoal filters if available; run TIVA on propofol if continuing the case (case is likely abandoned).</li>
                 <li>Send urgent CK, myoglobin, urinary myoglobin; alkaline diuresis; consider early RRT if oliguric.</li>
                 <li>Document, report to MHRA/MH registry, refer family for testing, arrange post-arrest care + counselling.</li>
               </ol>

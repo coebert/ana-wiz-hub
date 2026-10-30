@@ -64,11 +64,11 @@ const airwayFaqs: Array<[string, string]> = [
   ],
   [
     "How do you perform a rapid sequence induction step-by-step?",
-    "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Apnoeic oxygenation 15 L/min nasal cannulae (THRIVE). 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm with capnography (sustained ≥ 2 waveforms). 8. Inflate cuff, secure tube, ventilate. 9. Have a Plan B (videolaryngoscope) and Plan D (FONA) ready before induction.",
+    "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Apnoeic oxygenation 15 L/min nasal cannulae (THRIVE). 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm sustained exhaled CO₂ (PUMA: rises with exhalation and falls with inspiration, consistent or increasing over at least seven breaths, peak > 1 kPa above baseline, clinically appropriate); if absent, actively exclude oesophageal intubation and remove the tube by default unless removal is judged more dangerous. Confirm tube depth separately. 8. Inflate cuff, secure tube, ventilate. 9. Have a Plan B (videolaryngoscope) and Plan D (FONA) ready before induction.",
   ],
   [
     "Is cricoid pressure still recommended in RSI?",
-    "Cricoid pressure remains part of the DAS / RCoA RSI bundle but its evidence base is weak. The 2018 IRIS trial (3472 patients) showed non-inferiority of sham vs cricoid for aspiration but did not establish equivalence and was underpowered. Current UK practice: apply 10 N awake increasing to 30 N when consciousness is lost, and release immediately if it impairs laryngoscopic view, mask ventilation or supraglottic airway placement. It is not a substitute for fasting or for skilled intubation.",
+    "Cricoid pressure remains part of the DAS / RCoA RSI bundle but its evidence base is weak. The 2018 IRIS trial (3472 patients) failed to demonstrate non-inferiority of sham versus cricoid pressure for aspiration: event rates were low (0.6% vs 0.5%) and the upper confidence limit (relative risk 2.00) exceeded the prespecified 1.50 margin. No significant difference is not proof of equivalence. Current UK practice: apply 10 N awake increasing to 30 N when consciousness is lost, and release immediately if it impairs laryngoscopic view, mask ventilation or supraglottic airway placement. It is not a substitute for fasting or for skilled intubation.",
   ],
   [
     "What is the DAS unanticipated difficult intubation algorithm?",
@@ -84,7 +84,7 @@ const airwayFaqs: Array<[string, string]> = [
   ],
   [
     "What is CICO and when should front-of-neck access be performed?",
-    "CICO = Can't Intubate, Can't Oxygenate: failed Plans A, B and C with falling SpO₂. Declare CICO out loud, stop further attempts, summon help and proceed to scalpel-bougie-tube cricothyroidotomy before SpO₂ falls below 80%. Technique: extend neck, palpate cricothyroid membrane, transverse stab with size 10 scalpel, rotate blade caudally, railroad a Frova/bougie, advance a 6.0 cuffed tube 2–3 cm, confirm with capnography. Needle cricothyroidotomy failed in > 60% of NAP4 emergencies and is no longer first-line.",
+    "CICO = Can't Intubate, Can't Oxygenate: failed Plans A, B and C with falling SpO₂. Declare CICO out loud, stop further attempts, summon help and proceed immediately to scalpel-bougie-tube cricothyroidotomy — the trigger is failed oxygenation via tube, SAD and optimised facemask, not a saturation number. Technique: extend neck, palpate cricothyroid membrane, transverse stab with size 10 scalpel, rotate blade caudally, railroad a Frova/bougie, advance a 6.0 cuffed tube 2–3 cm, confirm with capnography. Needle cricothyroidotomy failed in > 60% of NAP4 emergencies and is no longer first-line.",
   ],
   [
     "What's the difference between RSI and a modified RSI?",
@@ -120,7 +120,7 @@ const workedExamples: WorkedExample[] = [
           <li><strong>Plan B has failed</strong> (SAD inserted, oxygenation inadequate after 3 attempts).</li>
           <li><strong>Plan C: facemask ventilation</strong> with two-person technique, full muscle relaxation maintained. If oxygenation restored → wake and reassess. Here it has also failed.</li>
           <li><strong>Declare CICO out loud.</strong> Call for help, theatre stops, prepare scalpel, bougie, 6.0 cuffed ETT.</li>
-          <li><strong>Perform FONA before SpO₂ &lt; 80 %.</strong> Don't wait for arrest. Hypoxic brain injury occurs within minutes once SaO₂ &lt; 60 %.</li>
+          <li><strong>Perform FONA immediately once CICO is declared.</strong> Do not wait for a saturation threshold or for arrest — the trigger is failure of tracheal intubation, SAD and optimised facemask oxygenation.</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
@@ -298,8 +298,11 @@ const AirwayManagementTopic = () => {
             <CollapsibleSubsection title="Confirming Tracheal Tube Placement">
               <p className="text-muted-foreground leading-relaxed mb-3">
                 <strong className="text-foreground">Sustained exhaled carbon dioxide on waveform capnography is the
-                primary standard</strong>: require at least 3–5 consecutive waveforms of appropriate morphology rather
-                than a single transient trace. Clinical signs such as bilateral chest movement, auscultation, tube
+                primary standard</strong>. The PUMA criteria are a trace that rises with exhalation and falls during inspiration,
+                is consistent or increasing in amplitude over at least seven breaths, has a peak more than 1 kPa above
+                baseline, and is clinically appropriate. If sustained exhaled CO₂ is absent, actively exclude oesophageal
+                intubation without delaying oxygenation; by default remove the tube unless removal is judged more dangerous.
+                Tube depth is confirmed separately. Clinical signs such as bilateral chest movement, auscultation, tube
                 misting, improving oxygen saturation and reservoir-bag movement are secondary checks and cannot exclude
                 oesophageal intubation in isolation <InlineRef topicId="airway-management" refLabel="PUMA 2022" />.
               </p>

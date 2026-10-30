@@ -24,7 +24,7 @@ const volatileAgentsFaqs: Array<[string, string]> = [
   ],
   [
     "What is malignant hyperthermia and how is it treated?",
-    "Autosomal-dominant disorder of skeletal-muscle Ca²⁺ release (RYR1/CACNA1S mutations). Triggered by all volatile anaesthetics and suxamethonium. Features (often early): masseter spasm, ↑EtCO₂ despite ↑MV, tachycardia, mottling, rigidity, hyperthermia (late), rhabdomyolysis, hyperkalaemia, DIC. Management: stop trigger, switch to TIVA, hyperventilate 100 % O₂, dantrolene 2.5 mg/kg IV repeated every 5 min (max 10 mg/kg), active cooling, treat hyperkalaemia/arrhythmias, transfer to ICU. AAGBI MH hotline available 24/7."
+    "Autosomal-dominant disorder of skeletal-muscle Ca²⁺ release (RYR1/CACNA1S mutations). Triggered by all volatile anaesthetics and suxamethonium. Features (often early): masseter spasm, ↑EtCO₂ despite ↑MV, tachycardia, mottling, rigidity, hyperthermia (late), rhabdomyolysis, hyperkalaemia, DIC. Management: stop trigger, switch to TIVA, hyperventilate 100 % O₂, dantrolene 2–2.5 mg/kg IV (max 300 mg per dose) repeated every 10 min to effect — totals above 10 mg/kg may be needed (EMHG 2024), active cooling, treat hyperkalaemia/arrhythmias, transfer to ICU. AAGBI MH hotline available 24/7."
   ]
 ];
 
@@ -38,9 +38,9 @@ const workedExamples: WorkedExample[] = [
         <p className="font-semibold text-foreground">Step-by-step reasoning</p>
         <ol className="list-decimal list-inside space-y-1">
           <li>Call for help and the MH trolley. Declare an MH crisis to theatre and ICU.</li>
-          <li>Stop all volatile agents immediately. Switch to TIVA (propofol ± remifentanil). Use a clean (vapour-free) anaesthetic machine if available; otherwise remove the vaporiser, flush with high-flow O₂ ≥10 L/min for ≥20 min, and change the soda lime and circuit.</li>
+          <li>Stop all volatile agents immediately. Switch to TIVA (propofol ± remifentanil). Remove the vaporiser and hyperventilate with high-flow 100% O₂ — do not waste time changing the circuit or anaesthetic machine; place activated charcoal filters in the inspiratory and expiratory limbs if available (EMHG 2024).</li>
           <li>Hyperventilate with 100% O₂ at high fresh-gas flows to wash out CO₂ and minimise rebreathing of any volatile.</li>
-          <li>Give dantrolene 2.5 mg/kg IV bolus, repeated every 5–10 min up to 10 mg/kg until ETCO₂, HR and temperature fall. Active cooling: cold IV saline, surface cooling, stop only when core temp &lt;38.5 °C.</li>
+          <li>Give dantrolene 2–2.5 mg/kg IV (actual body weight, max 300 mg per dose), repeated every 10 min until PaCO₂ and temperature fall; a total above 10 mg/kg may be needed (reconsider the diagnosis if so). Active cooling: cold IV saline, surface cooling, stop only when core temp &lt;38.5 °C.</li>
           <li>Treat hyperkalaemia (calcium chloride, insulin/glucose, salbutamol; avoid suxamethonium); treat acidosis; manage arrhythmias (avoid calcium-channel blockers with dantrolene → risk of hyperkalaemia and cardiovascular collapse).</li>
           <li>After stabilisation transfer to ICU for ≥24 h: monitor for recrudescence, rhabdomyolysis (CK, urine myoglobin, fluids/forced diuresis to prevent AKI). Refer the patient and first-degree relatives for MH unit testing.</li>
         </ol>
@@ -54,7 +54,7 @@ const workedExamples: WorkedExample[] = [
         </div>
       </div>
     ),
-    answer: "Stop volatile, switch to TIVA on a flushed/vapour-free machine, hyperventilate with 100% O₂, give dantrolene 2.5 mg/kg boluses up to 10 mg/kg, treat hyperkalaemia and acidosis, actively cool to <38.5 °C, avoid calcium-channel blockers, and admit to ICU for ≥24 h with CK and renal-function monitoring. Refer the patient and family for formal MH testing.",
+    answer: "Stop volatile, remove the vaporiser (without delaying to change machine; charcoal filters if available), switch to TIVA, hyperventilate with 100% O₂, give dantrolene 2–2.5 mg/kg (max 300 mg per dose) every 10 min to effect with no fixed 10 mg/kg ceiling, treat hyperkalaemia and acidosis, actively cool to <38.5 °C, avoid calcium-channel blockers, and admit to ICU for ≥24 h with CK and renal-function monitoring. Refer the patient and family for formal MH testing.",
     cites: ["AAGBI MH 2020","Peck & Hill Ch.7"],
   },
 ];

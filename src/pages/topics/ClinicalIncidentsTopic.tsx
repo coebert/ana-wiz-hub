@@ -47,17 +47,17 @@ const workedExamples: WorkedExample[] = [
         <ol className="list-decimal list-inside space-y-1">
           <li><strong>Recognise.</strong> NMBA + bronchospasm + shock + flush = grade 3 anaphylaxis.</li>
           <li><strong>Stop trigger, call for help, note the time.</strong> Discontinue all suspect agents (NMBA, antibiotic, chlorhexidine).</li>
-          <li><strong>Adrenaline.</strong> IM 0.5 mg (0.5 mL of 1:1,000) into anterolateral thigh, OR IV <strong>50 µg boluses</strong> (5 mL of 1:100,000) titrated. Repeat every 1–2 min.</li>
+          <li><strong>Adrenaline.</strong> In a monitored anaesthetic or intensive-care setting give an initial <strong>IV bolus of 50 micrograms</strong> (0.5 mL of 1:10,000; child under 12 years 1 microgram/kg) and titrate further boluses to effect. If there is no IV access, give 10 micrograms/kg IM (maximum 500 micrograms) and secure IV/IO access. Start an adrenaline infusion if the response to boluses is poor (RCUK peri-operative algorithm 2024). Outside specialist settings the general RCUK algorithm uses IM adrenaline, repeated after 5 minutes if airway, breathing or circulation problems persist.</li>
           <li><strong>Airway and oxygen.</strong> 100% O₂; deepen anaesthesia; treat bronchospasm with salbutamol/MgSO₄ if refractory.</li>
-          <li><strong>Fluid bolus.</strong> 20 mL/kg crystalloid (1–2 L); start vasopressor infusion if persistent hypotension.</li>
-          <li><strong>Second-line.</strong> Chlorphenamine 10 mg IV, hydrocortisone 200 mg IV (no proven mortality benefit but reduces biphasic reactions).</li>
+          <li><strong>Fluid bolus.</strong> Rapid IV crystalloid 500–1000 mL in adults (20 mL/kg in children under 12), repeated to response — 3–5 L may be needed; avoid colloid. If refractory to an adrenaline infusion, add a second vasopressor.</li>
+          <li><strong>Not first-line.</strong> Antihistamines and corticosteroids do not treat airway, breathing or circulation problems. Routine corticosteroids are not advised and have no established benefit in preventing biphasic reactions; consider steroids only after initial resuscitation for refractory reactions or shock. Once stable, a non-sedating oral antihistamine may relieve persisting skin symptoms.</li>
           <li><strong>Tryptase samples.</strong> ASAP after resuscitation, at <strong>1–2 h</strong>, and a baseline at <strong>≥ 24 h</strong>. Yellow-top serum, label with exact times.</li>
           <li><strong>Refer.</strong> Specialist allergy clinic within 6 weeks (NAP6); document on anaesthetic chart and warning bracelet.</li>
         </ol>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
           <ul className="list-disc list-inside space-y-1 text-foreground">
-            <li>Reaching for chlorphenamine/hydrocortisone before adrenaline — adrenaline saves lives, the others don't.</li>
+            <li>Reaching for chlorphenamine/hydrocortisone before adrenaline — they do not treat airway, breathing or circulation problems.</li>
             <li>Using IV adrenaline 1:1,000 (1 mg/mL) — dilute to 1:100,000 first.</li>
             <li>Forgetting the baseline tryptase at 24 h — without it the acute level is uninterpretable.</li>
             <li>Missing chlorhexidine as a culprit (catheter coatings, skin prep).</li>
@@ -79,8 +79,8 @@ const workedExamples: WorkedExample[] = [
         <ol className="list-decimal list-inside space-y-1">
           <li><strong>Recognise the pattern.</strong> Unexplained rising EtCO₂ + tachycardia + masseter spasm post-sux on a volatile = MH until proven otherwise. Hyperthermia is a LATE sign.</li>
           <li><strong>Call for help and the MH trolley.</strong> Declare 'malignant hyperthermia' to the team.</li>
-          <li><strong>Stop triggers.</strong> Discontinue volatile, change circuit to vapour-free anaesthetic machine (or activated-charcoal filters), ventilate with 100% O₂ at high flows. Convert to TIVA.</li>
-          <li><strong>Dantrolene.</strong> <strong>2.5 mg/kg IV bolus</strong>. For a 70 kg patient = 175 mg = ~9 vials of 20 mg dantrolene. Repeat every 5–10 min up to 10 mg/kg until EtCO₂ and HR settle.</li>
+          <li><strong>Stop triggers.</strong> Discontinue volatile and remove the vaporiser — do not waste time changing the circuit or anaesthetic machine. Hyperventilate with high-flow 100% O₂ and place activated charcoal filters in the inspiratory and expiratory limbs if available. Convert to TIVA.</li>
+          <li><strong>Dantrolene.</strong> <strong>2–2.5 mg/kg IV</strong> by actual body weight, maximum 300 mg per dose. For a 70 kg patient 2.5 mg/kg = 175 mg (9 vials of the 20 mg formulation). Repeat every 10 min (or as often as possible if preparation takes longer) until PaCO₂ &lt; 6 kPa with normal minute ventilation and core temperature is falling. A total above 10 mg/kg may be needed — if so, reconsider the diagnosis, but do not stop necessary treatment at a fixed ceiling.</li>
           <li><strong>Active cooling.</strong> Cold IV fluids, surface ice packs to groin/axillae, gastric/bladder lavage if temp &gt; 39 °C. Stop cooling at 38.5 °C.</li>
           <li><strong>Treat hyperkalaemia.</strong> Calcium chloride 10% 10 mL, insulin/dextrose, salbutamol; haemofilter if refractory.</li>
           <li><strong>Investigations.</strong> ABG, K⁺, CK (peak at 12–24 h), urine for myoglobin, coagulation (DIC).</li>
@@ -88,13 +88,13 @@ const workedExamples: WorkedExample[] = [
         </ol>
         <p className="font-semibold text-foreground mt-2">Quick dantrolene maths</p>
         <ul className="list-disc list-inside space-y-1">
-          <li>Each vial = 20 mg in 60 mL water. For 70 kg × 2.5 mg/kg = 175 mg → reconstitute 9 vials. Maximum 10 mg/kg = 700 mg = 35 vials. Stock check matters.</li>
+          <li>Formulation-specific: the 20 mg vial is reconstituted with 60 mL water; concentrated formulations need different volumes. For 70 kg × 2.5 mg/kg = 175 mg → 9 × 20 mg vials. 10 mg/kg = 700 mg = 35 vials is a stock-planning figure, not a dose ceiling — EMHG notes an adult may need a total of 1,200 mg.</li>
         </ul>
         <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
           <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
           <ul className="list-disc list-inside space-y-1 text-foreground">
             <li>Waiting for hyperthermia before treating — it's the last sign.</li>
-            <li>Continuing volatile during preparation — change circuits IMMEDIATELY.</li>
+            <li>Delaying dantrolene to change the circuit or machine — remove the vaporiser, add charcoal filters if available and treat.</li>
             <li>Underdosing dantrolene because reconstitution is slow — assign one person to mix while another resuscitates.</li>
             <li>Missing rebound 6–12 h later — MH can recrudesce; ICU monitoring is mandatory.</li>
           </ul>
@@ -102,7 +102,7 @@ const workedExamples: WorkedExample[] = [
       </div>
     ),
     answer:
-      "Treat as MH: stop volatile, hyperventilate with 100% O₂, give dantrolene 2.5 mg/kg IV repeated to effect (max 10 mg/kg), cool actively, and treat hyperkalaemia. ICU admission for ≥ 24 h with referral for IVCT and family counselling.",
+      "Treat as MH: stop volatile, hyperventilate with 100% O₂, give dantrolene 2–2.5 mg/kg IV (max 300 mg per dose) every 10 min to effect — totals above 10 mg/kg may be needed (reconsider the diagnosis if so), cool actively, and treat hyperkalaemia. ICU admission for ≥ 24 h with referral for IVCT and family counselling.",
    cites: ["NAP Reports"],
   },
 ];
@@ -157,9 +157,9 @@ const ClinicalIncidentsTopic = () => {
         ],
       }}
       keyPoints={[
-        { text: "Anaphylaxis: IM adrenaline 0.5 mg (or IV 50 µg titrated) is FIRST-line — antihistamine and steroid are adjuncts only", cites: ["NAP Reports"] },
+        { text: "Peri-operative anaphylaxis: titrated IV adrenaline 50 micrograms boluses (IM 10 micrograms/kg, max 500 micrograms, if no IV access) and rapid crystalloid — antihistamines and steroids do not treat ABC problems", cites: ["RCUK Periop Anaphylaxis 2024", "RCUK Anaphylaxis 2021"] },
         { text: "Tryptase: take at presentation, 1–2 h, and a baseline at ≥ 24 h — labelled with exact times", cites: ["AAGBI 2009"] },
-        { text: "MH: rising EtCO₂ + tachycardia is the earliest sign. Dantrolene 2.5 mg/kg IV, repeat to 10 mg/kg", cites: ["AAGBI 2011"] },
+        { text: "MH: rising EtCO₂ + tachycardia is the earliest sign. Dantrolene 2–2.5 mg/kg IV (max 300 mg per dose), repeated every 10 min to effect; 10 mg/kg is not an absolute ceiling", cites: ["EMHG 2024"] },
         { text: "LAST: Intralipid 20% bolus 1.5 mL/kg, infusion 15 mL/kg/h (= 0.25 mL/kg/min). AVOID propofol, lidocaine, and amiodarone in arrest", cites: ["BJA Educ 2011"] },
         { text: "Awareness: NAP5 incidence ~1:19,000. BIS 40-60 reduces risk in TIVA; document, acknowledge, and refer for psychological follow-up", cites: ["NAP Reports"] },
         { text: <>NMBAs cause ~38% of perioperative anaphylaxis (NAP6), followed by antibiotics (26%) and chlorhexidine (9%) <InlineRef topicId="clinical-incidents" refLabel="NAP6 2018 (Triggers)" /></>, cites: ["AAGBI 2009"] },
@@ -173,13 +173,13 @@ const ClinicalIncidentsTopic = () => {
               Perioperative anaphylaxis occurs in ~1:10,000 anaesthetics (NAP6). <Link to="/pharmacology/muscle-relaxants" className="text-pharmacology underline">NMBAs</Link> account for ~38% of cases, with antibiotics (especially teicoplanin and co-amoxiclav, ~26%), chlorhexidine (~9%) and patent blue dye making up most of the rest <InlineRef topicId="clinical-incidents" refLabel="NAP6 2018 (Triggers)" />.
             </p>
             <div className="rounded-xl border border-border bg-card p-5 space-y-2">
-              <p className="font-semibold text-foreground text-sm">AAGBI/RCoA Management Algorithm</p>
+              <p className="font-semibold text-foreground text-sm">RCUK peri-operative anaphylaxis algorithm (2024)</p>
               <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
                 <li>Remove trigger, call for help, note the time</li>
-                <li><strong>Adrenaline IM</strong> 0.5 mg (0.5 mL of 1:1000) — repeat every 1–2 min. IV: 50 µg boluses if trained</li>
+                <li><strong>Adrenaline IV</strong> 50 micrograms bolus (adult/child &gt;12 y), titrated; infusion if poor response. No IV access: 10 micrograms/kg IM (max 500 micrograms). General (non-specialist) IM algorithm: repeat after 5 min</li>
                 <li>High-flow O₂, secure airway, IV access</li>
-                <li>Fluid bolus: 20 mL/kg crystalloid</li>
-                <li>Chlorphenamine 10 mg IV, hydrocortisone 200 mg IV</li>
+                <li>Rapid crystalloid bolus: 500–1000 mL adult, 20 mL/kg child; repeat to response</li>
+                <li>Antihistamines and steroids are not part of immediate ABC treatment; steroids only for refractory reactions or shock</li>
                 <li>Take mast cell tryptase at presentation, 1–2 h, and a baseline at ≥ 24 h</li>
                 <li>Refer to allergy clinic; document on records and warning bracelet</li>
               </ol>
@@ -207,8 +207,8 @@ const ClinicalIncidentsTopic = () => {
               </div>
             </div>
             <div className="mt-3 p-4 rounded-lg bg-destructive/5 border border-destructive/20">
-              <p className="font-semibold text-foreground text-sm">Treatment: Dantrolene 2.5 mg/kg IV</p>
-              <p className="text-sm text-muted-foreground mt-1">Repeat every 5–10 min up to 10 mg/kg. Discontinue triggers, hyperventilate with 100% O₂, active cooling, treat hyperkalaemia.</p>
+              <p className="font-semibold text-foreground text-sm">Treatment: Dantrolene 2–2.5 mg/kg IV (max 300 mg per dose)</p>
+              <p className="text-sm text-muted-foreground mt-1">Repeat every 10 min until PaCO₂ and temperature are falling; totals above 10 mg/kg may be needed (reconsider the diagnosis). Stop triggers and remove the vaporiser without changing the machine, hyperventilate with 100% O₂, active cooling, treat hyperkalaemia.</p>
             </div>
             <MHPathophysiologyDiagram />
             </CollapsibleSubsection>
@@ -445,9 +445,9 @@ const ClinicalIncidentsTopic = () => {
           <ExamPitfallsCallout
             accent="clinical"
             pitfalls={[
-              "Anaphylaxis (NAP6): NMBAs (38%), antibiotics (26%) and chlorhexidine (9%) top the list — adrenaline IM 0.5 mg first line.",
+              "Anaphylaxis (NAP6): NMBAs (38%), antibiotics (26%) and chlorhexidine (9%) top the list — adrenaline is first line (titrated IV 50 micrograms boluses in the monitored peri-operative setting).",
               <>Tryptase sampling: ASAP after resuscitation, at 1–2 h, and a baseline at ≥ 24 h — an uninterpretable acute value without the 24 h baseline is a common exam trap <InlineRef topicId="clinical-incidents" refLabel="RCUK Anaphylaxis 2021" /></>,
-              "Malignant hyperthermia: stop trigger, hyperventilate 100% O₂ high flows, dantrolene 2.5 mg/kg repeated to 10 mg/kg, cool, treat hyperkalaemia.",
+              "Malignant hyperthermia: stop trigger, hyperventilate 100% O₂ high flows, dantrolene 2–2.5 mg/kg (max 300 mg per dose) every 10 min to effect — no fixed 10 mg/kg ceiling, cool, treat hyperkalaemia.",
               <>LAST: stop injection, ABC, manage seizures, 20% Intralipid 1.5 mL/kg bolus then 15 mL/kg/h (0.25 mL/kg/min) infusion (max cumulative 12 mL/kg) <InlineRef topicId="clinical-incidents" refLabel="AAGBI LAST 2010" /></>,
               "Accidental awareness (NAP5): risk highest with TIVA + NMB; use processed EEG; debrief and refer for psychological support.",
               "Cannot intubate, cannot oxygenate: declare CICO, call for help, scalpel-bougie-tube cricothyroidotomy without delay.",
