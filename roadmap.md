@@ -114,3 +114,9 @@
 - [x] Sepsis: NICE NG253 (2025–26) vs SSC 2021, CLOVERS/CLASSIC, fluid comparison calculator.
 - [x] ARDS: ESICM 2023 / ATS 2024, prone, ECMO, steroids, PBW/driving-pressure calculator.
 - [x] Transfusion: NICE NG24, BSH, restrictive thresholds, MINT/TRAIN.
+
+## Additional authorized drug batch 12 (30 October 2026)
+- [ ] D66–69: inspect current saved drug values, source-check and correct only remaining matching fields.
+- [ ] D70–74: align static, quiz, chemistry and peripheral-block duplicates and add targeted regressions.
+- [ ] D75: retain owner-applied calcium correction; reread and record status without overwriting.
+- [ ] Finish queued calculator/unit corrections, tests, audit record and affected dynamic IDs; no publication.
