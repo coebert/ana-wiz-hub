@@ -85,7 +85,7 @@ const PreoperativeAssessmentTopic = () => {
         { text: "Omit ACE-I/ARBs on day of surgery; continue beta-blockers (POISE: don't initiate perioperatively)", cites: ["AAGBI 2010"] },
         { text: "Functional capacity >4 METs (climb 2 flights) suggests adequate cardiac reserve", cites: ["AAGBI 2010"] },
         { text: "Previous difficult intubation is the strongest predictor of future difficulty — always check records", cites: ["AAGBI 2010"] },
-        { text: "GLP-1 RA: hold weekly semaglutide 7 days pre-op; if not held, treat as full stomach (ASA 2023)", cites: ["NICE NG45"] },
+        { text: "UK multidisciplinary 2025: continue GLP-1/GIP agents with individual aspiration-risk assessment, mitigation and shared decision-making; omit SGLT2 inhibitors day before/day of procedure", cites: ["UK diabetes consensus 2025"] },
         { text: "Gastric ultrasound: antral CSA >340 mm² suggests significant residual volume — consider RSI", cites: ["BJA Educ 2019"] },
         { text: "Pre-op anaemia (Hb <130 g/L) is an independent risk factor — screen ≥4–6 wk pre-op (NICE NG24/CPOC)", cites: ["NICE NG45"] },
         { text: "Paediatric premedication: oral midazolam 0.25–0.5 mg/kg, buccal 0.3 mg/kg, oral clonidine 4 µg/kg, buccal/intranasal dexmedetomidine 2 µg/kg, oral ketamine 5–8 mg/kg", cites: ["BJA Educ 2020 (Paed premedication)"] },
@@ -295,15 +295,15 @@ const PreoperativeAssessmentTopic = () => {
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Beta-blockers</td><td>Continue</td><td>Withdrawal → rebound tachycardia, ischaemia. POISE trial: perioperative initiation harmful.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Anticoagulants</td><td>Bridge or hold per guideline</td><td>DOACs: stop 24–48h pre-op (renal function dependent). Warfarin: stop 5 days, bridge with LMWH if high thromboembolic risk.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Metformin</td><td>Continue for short fasts; omit on the day if multiple daily doses, renal impairment, or contrast expected</td><td>Risk of lactic acidosis, particularly with AKI or iodinated contrast. Resume when eating and drinking.</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">SGLT2 inhibitors (gliflozins)</td><td>Stop 3 days before surgery — omit on the day and the 2 preceding days</td><td>Risk of euglycaemic diabetic ketoacidosis (normal or near-normal glucose despite ketoacidosis).</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">SGLT2 inhibitors (gliflozins)</td><td>UK multidisciplinary 2025: omit the day before and day of procedure; stop earlier at commencement of a very-low-energy/liver-reduction diet in people with diabetes</td><td>Prevent euglycaemic ketoacidosis; avoid prolonged starvation. Restart when eating/drinking normally; hospital inpatients also require capillary ketones &lt;0.6 mmol/L. US FDA 3–4-day guidance is separate.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Sulfonylureas (e.g. gliclazide)</td><td>Omit on the morning of surgery</td><td>Hypoglycaemia risk while fasting.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Insulin</td><td>Continue long-acting basal at 80% of usual dose the evening before and on the morning of surgery; omit short-acting/rapid-acting while fasting</td><td>Start a variable-rate intravenous insulin infusion (VRIII) if fasting spans more than one meal, with hourly capillary glucose targeting <strong>6–10 mmol/L</strong>. Elective HbA1c target &lt; 69 mmol/mol.</td></tr>
-                <tr><td className="py-2 font-medium text-foreground">GLP-1 RA</td><td>Weekly (semaglutide): hold 7 days. Daily (liraglutide): hold day of surgery</td><td>Delayed gastric emptying → aspiration risk. If not held, treat as full stomach (RSI). ASA 2023 guidance.</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">GLP-1 / GIP agents</td><td>Continue under UK multidisciplinary 2025 consensus</td><td>Individual aspiration-risk assessment, shared decision-making and mitigation; use appropriate airway strategy, consider regional anaesthesia or gastric ultrasound when indicated.</td></tr>
               </tbody>
             </table>
           </div>
           <p className="text-xs text-muted-foreground mt-2">
-            Diabetes drug management above follows <InlineRef topicId="{TOPIC_ID}" refLabel="CPOC Diabetes 2021" /> guidance.
+            GLP-1/GIP and SGLT2 recommendations follow <InlineRef topicId={TOPIC_ID} refLabel="UK diabetes consensus 2025" />; other diabetes drug advice uses <InlineRef topicId={TOPIC_ID} refLabel="CPOC Diabetes 2021" />.
           </p>
         </div>
 
@@ -718,13 +718,14 @@ const PreoperativeAssessmentTopic = () => {
           </p>
 
           <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-5 space-y-3 mb-4">
-            <p className="font-semibold text-foreground text-sm">ASA 2023 Consensus Guidance</p>
+            <p className="font-semibold text-foreground text-sm">Current UK multidisciplinary consensus — 2025</p>
             <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside">
-              <li><strong>Weekly formulations</strong> (semaglutide): hold for 7 days before elective surgery</li>
-              <li><strong>Daily formulations</strong> (liraglutide): hold on day of surgery</li>
-              <li>If GLP-1 RA not held, or GI symptoms present → treat as <strong>full stomach</strong></li>
-              <li>Consider point-of-care gastric ultrasound to assess residual gastric volume</li>
+              <li>Continue GLP-1/GIP therapy; assess individual aspiration risk and agree mitigation with the patient.</li>
+              <li>Adhere to fasting guidance; symptoms alone cannot determine gastric contents.</li>
+              <li>Consider regional anaesthesia, an appropriate airway strategy and gastric ultrasound when indicated.</li>
+              <li>Historical ASA 2023 guidance advised weekly 7-day/daily day-of withholding; this is not the current UK default.</li>
             </ul>
+            <InlineRef topicId={TOPIC_ID} refLabel="UK diabetes consensus 2025" />
           </div>
 
           <div className="grid sm:grid-cols-2 gap-3 mb-3">
