@@ -1,0 +1,490 @@
+{
+  "audit_date": "2026-10-30",
+  "table": "drugs",
+  "changes": [
+    {
+      "id": "b49b2faa-61c8-4ea8-9a5e-72e85cf7ea6f",
+      "slug": "caspofungin",
+      "fields": {
+        "dosing": {
+          "before": "• Adult Maintenance: 50 mg IV daily from Day 2 over 1 hour. (70 mg daily for invasive aspergillosis, invasive candidiasis in selected patients, or with concomitant moderate hepatic enzyme inducers e.g. rifampicin, phenytoin, carbamazepine, dexamethasone, nevirapine, efavirenz).\n• Hepatic Impairment:\n  • Mild (Child-Pugh A): No dose adjustment required.\n  • Moderate (Child-Pugh B): After initial 70 mg loading dose, reduce maintenance dose to 35 mg IV daily. Avoid 70 mg daily dose if co-administered with ciclosporin.\n• Paediatrics (12 months to 17 years):\n  • >50 kg: 70 mg loading dose Day 1, then 50 mg daily.\n  • ≤50 kg: 70 mg/m² (max 70 mg) loading dose Day 1, then 50 mg/m² (max 50 mg) daily. All doses over 1 hour.\n• Renal Impairment: No dose adjustment required.\n• Elderly: No specific dose adjustment required.",
+          "after": "• Adult Maintenance: 50 mg IV daily from Day 2 over 1 hour. (70 mg daily for invasive aspergillosis, invasive candidiasis in selected patients, or with concomitant moderate hepatic enzyme inducers e.g. rifampicin, phenytoin, carbamazepine, dexamethasone, nevirapine, efavirenz).\n• Hepatic Impairment:\n  • Mild (Child-Pugh A): No dose adjustment required.\n  • Moderate (Child-Pugh B): After initial 70 mg loading dose, reduce maintenance dose to 35 mg IV daily. Avoid 70 mg daily dose if co-administered with ciclosporin.\n• Paediatrics (12 months–17 years): use BSA across the age group. Day 1: 70 mg/m² (maximum 70 mg); then 50 mg/m²/day (maximum 70 mg). If tolerated but response is inadequate, specialist increase to 70 mg/m²/day (maximum 70 mg). All doses over 1 hour. No paediatric >50 kg shortcut.\n• Adult weight >80 kg: after 70 mg loading, 70 mg/day is recommended; apply hepatic and interacting-drug guidance separately.\n• Renal Impairment: No dose adjustment required.\n• Elderly: No specific dose adjustment required."
+        },
+        "sources": {
+          "before": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=caspofungin",
+              "title": "Caspofungin — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=caspofungin",
+              "title": "Caspofungin — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=caspofungin",
+              "title": "Caspofungin — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            },
+            {
+              "url": "https://www.nice.org.uk/guidance/ng51",
+              "title": "Sepsis: recognition, diagnosis and early management (NG51)",
+              "accessed": "2026-09-13",
+              "publisher": "NICE"
+            }
+          ],
+          "after": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=caspofungin",
+              "title": "Caspofungin — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=caspofungin",
+              "title": "Caspofungin — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=caspofungin",
+              "title": "Caspofungin — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            },
+            {
+              "url": "https://www.nice.org.uk/guidance/ng51",
+              "title": "Sepsis: recognition, diagnosis and early management (NG51)",
+              "accessed": "2026-09-13",
+              "publisher": "NICE"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/product/13258/smpc",
+              "title": "Named UK SmPC — targeted 30 October 2026 audit correction",
+              "accessed": "2026-10-30",
+              "publisher": "electronic Medicines Compendium"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ed77b33f-39d7-4cd2-a874-c26bafe73a2e",
+      "slug": "ketorolac",
+      "fields": {
+        "dosing": {
+          "before": "• Adults (≥18 years): Initial dose IV/IM 10 mg. Then 10-30 mg every 4-6 hours. Max single dose 30 mg. Max daily dose: 90 mg; 60 mg for patients ≥65 years, <50 kg body weight, or with moderate renal impairment (serum creatinine >150-300 micromol/L). • Oral: 10 mg every 4-6 hours, maximum 40 mg/day. • Maximum treatment duration: 2 days parenteral, 5 days total (including oral). • Paediatrics: Not recommended for parenteral use. Oral use in children >16 years only if potential benefits outweigh risks, on advice of specialist.",
+          "after": "• Adults (≥18 years): Initial dose IV/IM 10 mg. Then 10-30 mg every 4-6 hours. Max single dose 30 mg. Max daily dose: 90 mg; 60 mg for patients ≥65 years, <50 kg body weight, or with lesser renal impairment where the product permits use; moderate–severe renal impairment is contraindicated, not covered by this reduced ceiling. • Oral: 10 mg every 4-6 hours, maximum 40 mg/day. • Maximum treatment duration: 2 days parenteral, 5 days total (including oral). • Paediatrics: Not recommended for parenteral use. Oral use in children >16 years only if potential benefits outweigh risks, on advice of specialist."
+        },
+        "sources": {
+          "before": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=ketorolac",
+              "title": "Ketorolac — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=ketorolac",
+              "title": "Ketorolac — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=ketorolac",
+              "title": "Ketorolac — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            }
+          ],
+          "after": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=ketorolac",
+              "title": "Ketorolac — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=ketorolac",
+              "title": "Ketorolac — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=ketorolac",
+              "title": "Ketorolac — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/product/14193/smpc",
+              "title": "Named UK product targeted correction, not monograph certification",
+              "accessed": "2026-10-30",
+              "publisher": "electronic Medicines Compendium"
+            }
+          ]
+        },
+        "adult_bolus_dose": {
+          "before": "IV/IM: Initial 10 mg. Then 10-30 mg every 4-6 hours. Max single dose 30 mg. Max daily dose: 90 mg (60 mg for elderly ≥65 years, patients <50 kg, or with moderate renal impairment). Oral: 10 mg every 4-6 hours, max 40 mg/day.",
+          "after": "IV/IM: Initial 10 mg. Then 10-30 mg every 4-6 hours. Max single dose 30 mg. Max daily dose: 90 mg (60 mg for elderly ≥65 years, patients <50 kg, or with lesser renal impairment where product permits use; moderate–severe renal impairment contraindicated). Oral: 10 mg every 4-6 hours, max 40 mg/day."
+        }
+      }
+    },
+    {
+      "id": "755df6c9-b589-4fea-b2f0-f3f25ec86475",
+      "slug": "micafungin",
+      "fields": {
+        "dosing": {
+          "before": "• Adult and adolescent ≥16 years:\n  • Invasive candidiasis: 100 mg once daily (150 mg for patients >40 kg or inadequate response).\n  • Oesophageal candidiasis: 150 mg once daily.\n  • Prophylaxis of Candida infection in HSCT: 50 mg once daily.\n• Children and adolescents <16 years:\n  • Invasive candidiasis: 1-2 mg/kg once daily (max 100 mg/day). If poor response, may increase to 2-3 mg/kg once daily (max 150 mg/day).\n  • Prophylaxis of Candida infection in HSCT: 1 mg/kg once daily (max 50 mg/day).\n• Renal impairment and dialysis: No dose adjustment needed.\n• Hepatic impairment: Mild or moderate (Child-Pugh A or B) no dose adjustment. Use with caution in severe (Child-Pugh C) hepatic impairment.",
+          "after": "Named UK micafungin product emc 11958: invasive candidiasis, age ≥4 months: >40 kg 100 mg/day; ≤40 kg 2 mg/kg/day. Inadequate response may justify specialist increase to 200 mg/day or 4 mg/kg/day respectively. Adult/adolescent ≥16 years oesophageal candidiasis: >40 kg 150 mg/day; ≤40 kg 3 mg/kg/day (distinct indication). Prophylaxis age ≥4 months: >40 kg 50 mg/day; ≤40 kg 1 mg/kg/day. Infants <4 months including neonates: specialist invasive-candidiasis treatment 4–10 mg/kg/day; suspected CNS infection requires higher-dose consideration (e.g. 10 mg/kg/day) under the product/specialist protocol; prophylaxis 2 mg/kg/day. No renal adjustment. Mild/moderate hepatic impairment: no dose adjustment; severe hepatic impairment: use not recommended. Confirm indication, duration and specialist monitoring."
+        },
+        "sources": {
+          "before": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=micafungin",
+              "title": "Micafungin — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=micafungin",
+              "title": "Micafungin — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=micafungin",
+              "title": "Micafungin — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            }
+          ],
+          "after": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=micafungin",
+              "title": "Micafungin — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=micafungin",
+              "title": "Micafungin — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=micafungin",
+              "title": "Micafungin — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/product/11958/smpc",
+              "title": "Named UK SmPC — targeted 30 October 2026 audit correction",
+              "accessed": "2026-10-30",
+              "publisher": "electronic Medicines Compendium"
+            }
+          ]
+        },
+        "contraindications": {
+          "before": "• Hypersensitivity to micafungin or other echinocandins.\n• Caution in severe hepatic impairment (Child-Pugh C).",
+          "after": "• Hypersensitivity to micafungin or other echinocandins.\n• Use is not recommended in severe hepatic impairment under the named product (not a formal contraindication)."
+        }
+      }
+    },
+    {
+      "id": "91a195ac-2185-40a7-b44b-df76183ea121",
+      "slug": "paracetamol",
+      "fields": {
+        "dosing": {
+          "before": "• Adults and adolescents >50 kg: 1 g every 4-6 hours, max 4 g in 24 hours.\n• Adults and adolescents 33-50 kg: 15 mg/kg every 4-6 hours, max 60 mg/kg/day (not exceeding 3 g total daily dose).\n• Children ≥10 kg to <33 kg: 15 mg/kg every 4-6 hours, max 60 mg/kg/day (not exceeding 2 g total daily dose).\n• Neonates to children <10 kg: 7.5 mg/kg every 6 hours, max 30 mg/kg/day.\n• Renal impairment (CrCl 10-50 mL/min): minimum dosing interval 6 hours. CrCl <10 mL/min: minimum interval 8 hours.\n• Hepatic impairment or chronic alcoholism: total daily dose should not exceed 2 g in 24 hours.",
+          "after": "IV paracetamol 10 mg/mL, named UK product emc 100803: ≤10 kg 7.5 mg/kg/dose, maximum 30 mg/kg/day; >10–33 kg 15 mg/kg/dose, maximum 60 mg/kg/day and 2 g/day; >33–50 kg 15 mg/kg/dose, maximum 60 mg/kg/day and 3 g/day; >50 kg 1 g/dose, maximum 3 g/day with additional hepatotoxicity risk factors or 4 g/day without. Give over 15 minutes; at least 4 h between doses, at least 6 h in severe renal impairment, no more than 4 doses/24 h within ceiling. Count ALL paracetamol products/routes; oral dosing is separate. Preterm safety/efficacy not established for this product; specialist neonatal formulary required."
+        },
+        "sources": {
+          "before": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=paracetamol",
+              "title": "Paracetamol (acetaminophen) — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=paracetamol",
+              "title": "Paracetamol (acetaminophen) — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=paracetamol",
+              "title": "Paracetamol (acetaminophen) — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            }
+          ],
+          "after": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=paracetamol",
+              "title": "Paracetamol (acetaminophen) — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=paracetamol",
+              "title": "Paracetamol (acetaminophen) — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=paracetamol",
+              "title": "Paracetamol (acetaminophen) — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/product/100803/smpc",
+              "title": "Named UK product targeted correction, not monograph certification",
+              "accessed": "2026-10-30",
+              "publisher": "electronic Medicines Compendium"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "2045eacd-184e-4cb9-b56c-746533af25d4",
+      "slug": "sugammadex",
+      "fields": {
+        "dosing": {
+          "before": "Adults and children ≥2 years (actual body weight):\n• Routine reversal (at reappearance of T2): 2 mg/kg IV.\n• Routine reversal (at 1–2 post-tetanic counts (PTC) or deep blockade): 4 mg/kg IV.\n• Immediate reversal (e.g., 3 minutes after rocuronium 1.2 mg/kg IV for intubation): 16 mg/kg IV (anaesthetic practice).",
+          "after": "Named UK Bridion emc 6409, actual body weight: adults rocuronium/vecuronium routine reversal 2 mg/kg at reappearance of T2; 4 mg/kg at PTC 1–2. Adult immediate reversal 16 mg/kg: approximately 3 minutes after rocuronium 1.2 mg/kg, not any prolonged ICU blockade. Paediatrics birth–17 years: routine rocuronium reversal only, 2 mg/kg at T2 or 4 mg/kg at PTC 1–2; paediatric immediate reversal has not been investigated. Reversal does not guarantee airway rescue. Use quantitative monitoring; document TOF ratio ≥0.9 before extubation."
+        },
+        "sources": {
+          "before": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=sugammadex",
+              "title": "Sugammadex — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=sugammadex",
+              "title": "Sugammadex — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=sugammadex",
+              "title": "Sugammadex — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            },
+            {
+              "url": "https://doi.org/10.1111/anae.15501",
+              "title": "Recommendations for standards of monitoring during anaesthesia and recovery 2021",
+              "accessed": "2026-09-13",
+              "publisher": "Association of Anaesthetists"
+            }
+          ],
+          "after": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=sugammadex",
+              "title": "Sugammadex — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=sugammadex",
+              "title": "Sugammadex — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=sugammadex",
+              "title": "Sugammadex — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            },
+            {
+              "url": "https://doi.org/10.1111/anae.15501",
+              "title": "Recommendations for standards of monitoring during anaesthesia and recovery 2021",
+              "accessed": "2026-09-13",
+              "publisher": "Association of Anaesthetists"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/product/6409/smpc",
+              "title": "Sugammadex — targeted dosing/safety source (4.1,4.2,4.5,6.6)",
+              "accessed": "2026-10-30",
+              "publisher": "electronic Medicines Compendium (emc)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/product/6409/smpc",
+              "title": "Named UK product targeted correction, not monograph certification",
+              "accessed": "2026-10-30",
+              "publisher": "electronic Medicines Compendium"
+            }
+          ]
+        },
+        "interactions": {
+          "before": "• Hormonal contraception: Sugammadex may reduce contraceptive efficacy; advise women to use an additional non-hormonal method of contraception for 7 days (oral contraceptives) or 5 days (implants).\n• Toremifene, fusidic acid: May displace rocuronium or vecuronium from sugammadex complex; monitor for recurarisation.\n• Re-administration of NMBAs: If rocuronium or vecuronium is required within 24 hours of sugammadex 2 mg/kg or 4 mg/kg, consider a benzylisoquinolinium NMBA (e.g., atracurium or cisatracurium) if a shorter onset NMBA is not essential. Suxamethonium can be given immediately. If rocuronium is given within 6 hours of sugammadex 2 mg/kg, onset may be delayed and duration shortened. If vecuronium is given within 24 hours of sugammadex 4 mg/kg, onset may be delayed and duration shortened.",
+          "after": "• Hormonal contraception: Sugammadex may reduce contraceptive efficacy. If an oral contraceptive was taken on the day of sugammadex administration, follow the contraceptive’s missed-dose instructions. For non-oral hormonal contraception, use an additional non-hormonal method for the next 7 days and follow the product advice.\n• Toremifene, fusidic acid: May displace rocuronium or vecuronium from sugammadex complex; monitor for recurarisation.\n• Re-administration of NMBAs: If rocuronium or vecuronium is required within 24 hours of sugammadex 2 mg/kg or 4 mg/kg, consider a benzylisoquinolinium NMBA (e.g., atracurium or cisatracurium) if a shorter onset NMBA is not essential. Suxamethonium can be given immediately. If rocuronium is given within 6 hours of sugammadex 2 mg/kg, onset may be delayed and duration shortened. If vecuronium is given within 24 hours of sugammadex 4 mg/kg, onset may be delayed and duration shortened."
+        },
+        "adult_bolus_dose": {
+          "before": "2–16 mg/kg IV on actual body weight.",
+          "after": "Adults: 2 mg/kg at T2, 4 mg/kg at PTC 1–2; 16 mg/kg only for the named immediate-reversal context approximately 3 min after rocuronium 1.2 mg/kg. Actual body weight, quantitative monitoring."
+        }
+      }
+    },
+    {
+      "id": "431c3b7d-d369-4690-96ba-5c556bae2749",
+      "slug": "ticagrelor",
+      "fields": {
+        "dosing": {
+          "before": "• Acute Coronary Syndrome (ACS) or history of Myocardial Infarction (MI): Loading dose 180 mg orally, then 90 mg twice daily. After 12 months, for patients with a history of MI and high risk of atherothrombotic events, 60 mg twice daily.\n• Peripheral Artery Disease (PAD): 60 mg twice daily.\n• Renal impairment: No dose adjustment for mild, moderate, or severe impairment. Contraindicated in dialysis patients or estimated glomerular filtration rate (eGFR) <15 mL/minute/1.73 m².\n• Hepatic impairment: Contraindicated in severe impairment. No dose adjustment in mild impairment. Caution in moderate impairment.\n• Paediatric population: Safety and efficacy not established; not recommended.",
+          "after": "Named UK ticagrelor product emc 100957: ACS 180 mg oral loading, then 90 mg twice daily for 12 months unless clinically indicated otherwise. Qualifying prior MI ≥1 year with high atherothrombotic risk: 60 mg twice daily under the product selection criteria. Not licensed solely for PAD. Product ASA maintenance recommendation: 75–150 mg/day unless specifically contraindicated; selected post-PCI high-bleeding-risk patients may discontinue ASA after 3 months per the product protocol. No renal dose adjustment; dialysis/eGFR <15 is not a listed contraindication. Severe hepatic impairment contraindicated; caution in moderate hepatic impairment. Paediatric safety/efficacy not established. Prior ischaemic stroke requires the product-specific duration/evidence discussion, not an invented PAD contraindication."
+        },
+        "sources": {
+          "before": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=ticagrelor",
+              "title": "Ticagrelor — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=ticagrelor",
+              "title": "Ticagrelor — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=ticagrelor",
+              "title": "Ticagrelor — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            },
+            {
+              "url": "https://www.nice.org.uk/guidance/ng89",
+              "title": "Venous thromboembolism in over 16s (NG89)",
+              "accessed": "2026-09-13",
+              "publisher": "NICE"
+            }
+          ],
+          "after": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=ticagrelor",
+              "title": "Ticagrelor — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=ticagrelor",
+              "title": "Ticagrelor — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=ticagrelor",
+              "title": "Ticagrelor — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            },
+            {
+              "url": "https://www.nice.org.uk/guidance/ng89",
+              "title": "Venous thromboembolism in over 16s (NG89)",
+              "accessed": "2026-09-13",
+              "publisher": "NICE"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/product/100957/smpc",
+              "title": "Named UK SmPC — targeted 30 October 2026 audit correction",
+              "accessed": "2026-10-30",
+              "publisher": "electronic Medicines Compendium"
+            }
+          ]
+        },
+        "contraindications": {
+          "before": "• Active pathological bleeding or history of intracranial haemorrhage (ICH).\n• Severe hepatic impairment.\n• Concomitant use with potent CYP3A4 inhibitors (e.g., ketoconazole, clarithromycin, ritonavir, atazanavir, indinavir, telithromycin, nelfinavir, saquinavir).\n• Concomitant use with aspirin maintenance doses >100 mg daily.\n• History of ischaemic stroke or transient ischaemic attack (TIA) in patients with PAD (MHRA alert, 2017).\n• Hypersensitivity to the active substance or to any of the excipients.",
+          "after": "Hypersensitivity; active pathological bleeding; history of intracranial haemorrhage; severe hepatic impairment; concomitant strong CYP3A4 inhibitors. Aspirin >100 mg/day and dialysis are not formal contraindications in the named UK SmPC. Assess bleeding risk and product-specific aspirin recommendations separately."
+        },
+        "indication_oneliner": {
+          "before": "Prevention of atherothrombotic events in adults with acute coronary syndromes, MI or peripheral artery disease (PAD).",
+          "after": "Prevention of atherothrombotic events in adults with ACS or qualifying prior MI at high risk; not standalone PAD."
+        }
+      }
+    },
+    {
+      "id": "e298ee7c-6737-452f-8870-e9931d88ac82",
+      "slug": "vitamin-k",
+      "fields": {
+        "dosing": {
+          "before": "• Adult (serious bleeding/INR >8.0): 5 mg by slow IV injection (over at least 30 seconds). Administer concurrently with PCC. Re-check INR after 6-8 hours; repeat vitamin K if INR remains elevated & bleeding persists.\n• Adult (INR 5.0–8.0, with minor or no bleeding, no planned invasive procedure): omit 1-2 doses of warfarin, consider 0.5-2 mg orally. Re-check INR in 24 hours.\n• Adult (INR >8.0, no significant bleeding, no planned invasive procedure): omit warfarin, give 1-5 mg orally. Re-check INR in 24 hours.\n• Adult (prior to urgent surgery/procedure, INR 1.5-8.0): 1–5 mg orally 24 hours prior. If more urgent (within 12 hours), give 1 mg IV over 30 seconds & reassess INR after 2–6 hours. PCC may be needed depending on urgency & INR.\n• Neonatal prophylaxis (haemorrhagic disease of the newborn): 1 mg IM (single dose at birth) OR 2 mg oral (single dose at birth, repeated at 2-4 weeks and 6-8 weeks for breastfed infants).\n• Neonatal/Paediatric (treatment of vitamin K deficiency bleeding): 0.3–1 mg/kg IV/oral per day, up to 10 mg max single dose. Continue for 3–5 days in established cholestasis. For established Vitamin K Deficiency Bleeding, current UK practice is 1 mg IV for term infants, 0.4 mg/kg IV for preterm, repeated if needed.",
+          "after": "• Adult (serious bleeding/INR >8.0): 5 mg by slow IV injection (over at least 30 seconds). Administer concurrently with PCC. Re-check INR after 6-8 hours; repeat vitamin K if INR remains elevated & bleeding persists.\n• Adult (INR 5.0–8.0, with minor or no bleeding, no planned invasive procedure): omit 1-2 doses of warfarin, consider 0.5-2 mg orally. Re-check INR in 24 hours.\n• Adult (INR >8.0, no significant bleeding, no planned invasive procedure): omit warfarin, give 1-5 mg orally. Re-check INR in 24 hours.\n• Adult (prior to urgent surgery/procedure, INR 1.5-8.0): 1–5 mg orally 24 hours prior. If more urgent (within 12 hours), give 1 mg IV over 30 seconds & reassess INR after 2–6 hours. PCC may be needed depending on urgency & INR.\n• Neonatal prophylaxis (haemorrhagic disease of the newborn): Konakion MM Paediatric, healthy neonates ≥36 weeks: 1 mg IM at birth, OR 2 mg orally at birth, 2 mg at age 4–7 days and 2 mg at 1 month; the third oral dose may be omitted if exclusively formula-fed. At-risk and preterm regimens are separate (SmPC 4.2).\n• Neonatal/Paediatric (treatment of vitamin K deficiency bleeding): 0.3–1 mg/kg IV/oral per day, up to 10 mg max single dose. Continue for 3–5 days in established cholestasis. For established Vitamin K Deficiency Bleeding, current UK practice is 1 mg IV for term infants, 0.4 mg/kg IV for preterm, repeated if needed."
+        },
+        "sources": {
+          "before": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=vitamin+k",
+              "title": "Vitamin K (phytomenadione) — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=vitamin+k",
+              "title": "Vitamin K (phytomenadione) — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=vitamin+k",
+              "title": "Vitamin K (phytomenadione) — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            },
+            {
+              "url": "https://www.nice.org.uk/guidance/ng89",
+              "title": "Venous thromboembolism in over 16s (NG89)",
+              "accessed": "2026-09-13",
+              "publisher": "NICE"
+            }
+          ],
+          "after": [
+            {
+              "url": "https://bnf.nice.org.uk/search/?q=vitamin+k",
+              "title": "Vitamin K (phytomenadione) — BNF monograph",
+              "accessed": "2026-09-13",
+              "publisher": "British National Formulary (NICE)"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/search?q=vitamin+k",
+              "title": "Vitamin K (phytomenadione) — Summary of Product Characteristics",
+              "accessed": "2026-09-13",
+              "publisher": "electronic Medicines Compendium (emc), Datapharm"
+            },
+            {
+              "url": "https://bnfc.nice.org.uk/search/?q=vitamin+k",
+              "title": "Vitamin K (phytomenadione) — BNF for Children monograph",
+              "accessed": "2026-09-13",
+              "publisher": "BNF for Children (NICE)"
+            },
+            {
+              "url": "https://www.nice.org.uk/guidance/ng89",
+              "title": "Venous thromboembolism in over 16s (NG89)",
+              "accessed": "2026-09-13",
+              "publisher": "NICE"
+            },
+            {
+              "url": "https://www.medicines.org.uk/emc/product/9754/smpc",
+              "title": "Named UK SmPC — targeted 30 October 2026 audit correction",
+              "accessed": "2026-10-30",
+              "publisher": "electronic Medicines Compendium"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
