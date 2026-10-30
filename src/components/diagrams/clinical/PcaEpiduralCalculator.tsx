@@ -126,7 +126,7 @@ const PcaEpiduralCalculator = () => {
             </p>
           ) : ep === null ? (
             <p className="text-sm text-muted-foreground" role="status">Enter measured weight and age in months.</p>
-          ) : !ep.eligible ? (
+          ) : "reason" in ep ? (
             <p className="text-sm text-destructive" role="status">{ep.reason}</p>
           ) : (
             <div className="grid sm:grid-cols-2 gap-2">
