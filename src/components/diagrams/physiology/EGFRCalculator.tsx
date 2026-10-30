@@ -191,7 +191,7 @@ export const EGFRCalculator = () => {
   
         {!computed.ok && (creatinine.trim() !== "" || age.trim() !== "" || submitted) && (
           <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-4 text-sm text-foreground">
-            {!computed.ok && computed.reason}
+            {"reason" in computed ? computed.reason : null}
           </div>
         )}
   
