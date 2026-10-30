@@ -43,7 +43,7 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
         ],
         contraindications: [
           "Known egg, soya or peanut anaphylaxis (relative — modern formulations use purified lecithin, but avoid if a true reaction is documented).",
-          "Not licensed for sedation of children in intensive care.",
+          "UK Propofol 2% (emc 1365): contraindicated for ICU sedation at age 16 years or younger; no short-duration exception. Anaesthesia/procedural sedation are separate product/age-specific indications.",
           "Avoid as a sole sedative in haemodynamic instability, severe aortic stenosis or fixed cardiac output states.",
           "Disordered fat metabolism, familial hypertriglyceridaemia and pancreatitis with hypertriglyceridaemia.",
         ],
@@ -1231,7 +1231,7 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
         monitoring: [
           "Potassium, sodium and creatinine every 2–3 days on high-dose therapy — hyperkalaemia and a benign creatinine rise are common.",
           "Full blood count for cytopenias; liver function; rash (Stevens–Johnson, DRESS).",
-          "Folinic acid rescue is used with high-dose therapy in some protocols; check local guidance for PCP dosing.",
+          "Do not routinely add folinic acid during PCP treatment: it can impair co-trimoxazole efficacy. Significant marrow toxicity requires infection/haematology advice and an individual rescue decision (UK SmPC/NIH PCP guideline).",
         ],
       },
       {

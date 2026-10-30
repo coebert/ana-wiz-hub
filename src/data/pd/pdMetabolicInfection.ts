@@ -217,7 +217,7 @@ export const pdMetabolicInfection: DrugPharmacodynamicsMap = {
     doseResponse:
       "Sequential blockade of folate synthesis (sulfamethoxazole on dihydropteroate synthase, trimethoprim on dihydrofolate reductase) gives synergy such that the combination is bactericidal where each drug alone is static. Dosing is indication-specific: 120 mg/kg/day in 2–4 divided doses (trimethoprim-equivalent 15–20 mg/kg/day) for Pneumocystis pneumonia versus 960 mg twice daily for ordinary infection — an order-of-magnitude difference.",
     therapeuticWindow:
-      "Narrow at PCP treatment doses: hyperkalaemia, marrow suppression, AKI and rash are frequent and dose-related. Requires renal dose adjustment (halve at eGFR 15–30 mL/min) and folinic acid rescue is sometimes needed.",
+      "Narrow at PCP treatment doses: hyperkalaemia, marrow suppression, AKI and rash are frequent and dose-related. Requires renal dose adjustment (halve at eGFR 15–30 mL/min) and significant marrow toxicity needs specialist advice. Do not routinely add folinic acid in PCP: antimicrobial efficacy can be impaired.",
     titrationTarget:
       "Clinical response with daily potassium, creatinine, full blood count and liver function during high-dose therapy; add corticosteroids in PCP with PaO₂ <9.3 kPa on air.",
     doseRelatedEffects: [

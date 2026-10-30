@@ -1488,7 +1488,7 @@ const MechanicalVentilationTopic = () => {
             <li><strong>Goal:</strong> comfort, safety and ventilator synchrony with the lightest effective sedation; over-sedation prolongs ventilation and increases delirium.</li>
             <li><strong>Scoring:</strong> Richmond Agitation-Sedation Scale (RASS) — usual target 0 to −2, deeper only for specific indications (severe ARDS with NMB, raised ICP, status epilepticus).</li>
             <li><strong>Analgesia first:</strong> treat pain (opioid, e.g. fentanyl or alfentanil) before adding a sedative.</li>
-            <li><strong>Agents:</strong> propofol — short context-sensitive half-time, hypotension, PRIS with high doses; dexmedetomidine — co-operative sedation without respiratory depression, bradycardia; benzodiazepines — accumulate and increase delirium, so avoid where possible.</li>
+            <li><strong>Agents:</strong> propofol — short context-sensitive half-time, hypotension, PRIS with high doses; dexmedetomidine — co-operative sedation with relatively less respiratory depression; obstruction, hypoventilation and apnoea remain possible and require monitoring, bradycardia; benzodiazepines — accumulate and increase delirium, so avoid where possible.</li>
             <li><strong>Daily sedation interruption paired with spontaneous breathing trials</strong> (SAT + SBT) reduces ventilator days and ICU stay.</li>
             <li><strong>Delirium:</strong> screen every shift (CAM-ICU or ICDSC); sedation choice affects delirium incidence.<InlineRef topicId="mechanical-ventilation" refLabel="SSC 2008" /></li>
           </ul>

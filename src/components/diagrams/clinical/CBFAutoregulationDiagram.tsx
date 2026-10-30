@@ -48,7 +48,7 @@ const CBFAutoregulationDiagram = () => {
     { name: "N₂O", cbf: "↑↑", cmro2: "↑", coupling: "Maintained but ↑", autoregulation: "Maintained", icp: "↑↑", clinical: "Increases both CBF AND CMRO₂ — unique among anaesthetics. Avoid in neurosurgery. Expands pneumocephalus (34× more soluble than N₂)." },
     { name: "Ketamine", cbf: "↑↑", cmro2: "↑↑", coupling: "Maintained", autoregulation: "Unknown", icp: "↑↑", clinical: "Traditionally contraindicated in ↑ICP. Recent evidence suggests safe with controlled ventilation. NMDA antagonism → ↑excitatory neurotransmission." },
     { name: "Remifentanil", cbf: "↓ (mild)", cmro2: "↓ (mild)", coupling: "Maintained", autoregulation: "Maintained", icp: "↓ (mild)", clinical: "Minimal cerebral effects. Excellent for neurosurgery — rapid offset, titratable. Reduces propofol requirements. Preserves autoregulation." },
-    { name: "Dexmedetomidine", cbf: "↓", cmro2: "↓", coupling: "Maintained", autoregulation: "Maintained", icp: "↓", clinical: "α₂-agonist. Useful for awake craniotomy — sedation without respiratory depression. Preserves neurological assessment. May cause bradycardia/hypotension." },
+    { name: "Dexmedetomidine", cbf: "↓", cmro2: "↓", coupling: "Maintained", autoregulation: "Maintained", icp: "↓", clinical: "α₂-agonist. Useful for awake craniotomy — sedation with relatively less respiratory depression; obstruction, hypoventilation and apnoea remain possible and require monitoring. Preserves neurological assessment. May cause bradycardia/hypotension." },
   ];
 
   return (

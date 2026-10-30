@@ -69,7 +69,7 @@ const agents: Agent[] = [
     target: "α₂-adrenoceptors",
     location: "descending",
     mechanism: "Activate α₂ receptors at three sites: (1) presynaptic on C-fibres → ↓ glutamate release; (2) postsynaptic on projection neurons → hyperpolarisation; (3) facilitate descending noradrenergic inhibition from locus coeruleus.",
-    effect: "Tri-site analgesia, anxiolysis, opioid-sparing, no respiratory depression",
+    effect: "Tri-site analgesia, anxiolysis, opioid-sparing, relatively less respiratory depression, but obstruction, hypoventilation and apnoea remain possible",
     evidence: "Dexmedetomidine: cooperative sedation. Useful intraoperatively and in ICU.",
     color: "hsl(140 55% 45%)",
   },
