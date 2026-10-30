@@ -114,7 +114,7 @@ describe("rendered components", () => {
     const { container } = render(<APACHEIICalculator />);
     for (const f of FORBIDDEN) expect(container.textContent).not.toMatch(f);
     expect(container.textContent).toContain("Example values (fictional)");
-    const fio2 = screen.getByLabelText(/FiO₂/);
+    const fio2 = screen.getByLabelText(/^FiO₂/);
     fireEvent.change(fio2, { target: { value: "0.50" } });
     const aa = screen.getByLabelText(/A–a gradient/);
     fireEvent.change(aa, { target: { value: "500" } });
