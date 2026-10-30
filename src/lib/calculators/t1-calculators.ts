@@ -52,7 +52,7 @@ export const FPM_PATCH: Record<"fentanyl" | "buprenorphine-weekly" | "buprenorph
     label: "Buprenorphine patch (changed every 3–4 days)",
     rows: [
       { ugPerHour: 35, morphineMgPerDay: 84 },
-      { ugPerHour: 52, morphineMgPerDay: 126 },
+      { ugPerHour: 52.5, morphineMgPerDay: 126 }, // FPM page shows "52"; current product strength is 52.5 µg/h (Transtec SmPC). Equivalence not rescaled.
       { ugPerHour: 70, morphineMgPerDay: 168 },
     ],
   },
@@ -63,7 +63,7 @@ export type FpmPatchKey = keyof typeof FPM_PATCH;
 export function omeddFromOral(key: FpmOralKey, mgPerDose: number, dosesPerDay: number): number | null {
   const row = FPM_ORAL.find((r) => r.key === key);
   if (!row || !isPositiveFinite(mgPerDose) || !Number.isInteger(dosesPerDay) || dosesPerDay < 1 || dosesPerDay > 24) return null;
-  return mgPerDose * dosesPerDay * row.potency;
+  return finiteOrNull(mgPerDose * dosesPerDay * row.potency);
 }
 
 /** Oral morphine mg/24 h for a LISTED patch strength (µg/h). No interpolation, no ÷24. */
@@ -81,8 +81,20 @@ export function minimumFpmReduction(omedd: number, elderlyFrailOrIntolerable: bo
 export function oralTargetDailyMg(omedd: number, targetKey: FpmOralKey, reductionPct: number): number | null {
   const row = FPM_ORAL.find((r) => r.key === targetKey);
   if (!row || !isPositiveFinite(omedd) || !Number.isFinite(reductionPct) || reductionPct < 0 || reductionPct >= 100) return null;
-  return (omedd / row.potency) * (1 - reductionPct / 100);
+  return finiteOrNull((omedd / row.potency) * (1 - reductionPct / 100));
 }
+
+/** Named product daily maxima for target opioids (others: no universal cap is invented). */
+export const TARGET_DAILY_LIMITS: Partial<Record<FpmOralKey, { maxMgPerDay: number; text: string; url: string }>> = {
+  codeine: { maxMgPerDay: 240, text: "Codeine phosphate SmPC 4.2: analgesic maximum 240 mg/day.", url: "https://www.medicines.org.uk/emc/product/2617/smpc" },
+  tramadol: { maxMgPerDay: 400, text: "Tramadol SmPC 4.2/4.4: ordinarily maximum 400 mg/day; special circumstances need specialist judgement.", url: "https://www.medicines.org.uk/emc/product/14589/smpc" },
+};
+export function exceedsTargetLimit(targetKey: FpmOralKey, dailyMg: number | null): boolean {
+  const lim = TARGET_DAILY_LIMITS[targetKey];
+  return !!lim && dailyMg !== null && dailyMg > lim.maxMgPerDay;
+}
+
+const finiteOrNull = (n: number) => (Number.isFinite(n) ? n : null);
 
 /** Per-dose division uses the TARGET formulation's own interval — never the source's. */
 export function perDoseMg(dailyMg: number | null, targetDosesPerDay: number | null): number | null {
@@ -98,7 +110,9 @@ export const RCH_EPIDURAL_URL = "https://www.rch.org.au/anaes/pain_management/Ep
 
 type RchPcaDrug = "morphine" | "fentanyl" | "oxycodone" | "hydromorphone";
 export interface RchPcaResult {
-  band: "<45 kg" | "≥45 kg";
+  boundary?: false;
+  band: "<45 kg" | ">45 kg";
+  flag?: string;
   syringe: string;
   bolusMl: number;
   bolusDose: number;
@@ -108,24 +122,26 @@ export interface RchPcaResult {
 }
 
 /** RCH PCA dilution table. Measured weight only. Lockout and maximum are on the RCH prescription, not output here. */
-export function rchPaedsPca(drug: RchPcaDrug, measuredWeightKg: number): RchPcaResult | null {
+export type RchPcaBoundary = { boundary: true; message: string };
+export function rchPaedsPca(drug: RchPcaDrug, measuredWeightKg: number): RchPcaResult | RchPcaBoundary | null {
   if (!isPositiveFinite(measuredWeightKg) || measuredWeightKg > 150) return null;
   const w = measuredWeightKg;
+  if (w === 45) return { boundary: true, message: "Exactly 45 kg: the RCH table lists <45 kg and >45 kg only. Clarify the band with CPMS / the protocol owner — no recipe is shown." };
   const small = w < 45;
   switch (drug) {
     case "morphine":
     case "oxycodone":
       return small
         ? { band: "<45 kg", syringe: `${round(0.5 * w, 2)} mg (0.5 mg/kg) in 50 mL 0.9% saline`, bolusMl: 2, bolusDose: round(20 * w, 1), bolusUnit: "micrograms", backgroundMlPerHour: "0.5", backgroundDose: `${round(5 * w, 1)} micrograms/h (5 micrograms/kg/h)` }
-        : { band: "≥45 kg", syringe: "50 mg in 50 mL 0.9% saline", bolusMl: 1, bolusDose: 1000, bolusUnit: "micrograms", backgroundMlPerHour: "0.5", backgroundDose: "500 micrograms/h" };
+        : { band: ">45 kg", syringe: "50 mg in 50 mL 0.9% saline", bolusMl: 1, bolusDose: 1000, bolusUnit: "micrograms", backgroundMlPerHour: "0.5", backgroundDose: "500 micrograms/h" };
     case "fentanyl":
       return small
         ? { band: "<45 kg", syringe: `${round(15 * w, 1)} micrograms (15 micrograms/kg) in 50 mL 0.9% saline`, bolusMl: 1, bolusDose: round(0.3 * w, 2), bolusUnit: "micrograms", backgroundMlPerHour: "1", backgroundDose: `${round(0.3 * w, 2)} micrograms/h (0.3 micrograms/kg/h)` }
-        : { band: "≥45 kg", syringe: "750 micrograms in 50 mL 0.9% saline", bolusMl: 1, bolusDose: 15, bolusUnit: "micrograms", backgroundMlPerHour: "1", backgroundDose: "15 micrograms/h" };
+        : { band: ">45 kg", syringe: "750 micrograms in 50 mL 0.9% saline", bolusMl: 1, bolusDose: 15, bolusUnit: "micrograms", backgroundMlPerHour: "1", backgroundDose: "15 micrograms/h" };
     case "hydromorphone":
       return small
         ? { band: "<45 kg", syringe: `${round(0.1 * w, 3)} mg (0.1 mg/kg) in 50 mL 0.9% saline`, bolusMl: 2, bolusDose: round(4 * w, 1), bolusUnit: "micrograms", backgroundMlPerHour: "0.5", backgroundDose: `${round(1 * w, 1)} micrograms/h (1 microgram/kg/h)` }
-        : { band: "≥45 kg", syringe: "6 mg in 50 mL 0.9% saline", bolusMl: 1, bolusDose: 120, bolusUnit: "micrograms", backgroundMlPerHour: "0.5–1", backgroundDose: "1–2 micrograms/kg/h (per RCH)" };
+        : { band: ">45 kg", syringe: "6 mg in 50 mL 0.9% saline", bolusMl: 1, bolusDose: 120, bolusUnit: "micrograms", backgroundMlPerHour: "0.5–1", backgroundDose: "60–120 micrograms/h (6 mg/50 mL × 0.5–1 mL/h)", flag: "RCH also states 1–2 micrograms/kg/h in parenthesis; this is not consistent with a fixed 60–120 micrograms/h across all weights >45 kg — confirm with CPMS. The pump rate is not adjusted to force that equivalence." };
   }
 }
 
@@ -161,7 +177,7 @@ export function sedationMlPerHour(unit: SedationUnit, dose: number, weightKg: nu
   if (!isPositiveFinite(dose) || !isPositiveFinite(weightKg) || weightKg > 300 || !isPositiveFinite(concUgPerMl)) return null;
   const perHour = unit.endsWith("min") ? dose * 60 : dose;
   const ug = unit.startsWith("mg") ? perHour * 1000 : perHour;
-  return (ug * weightKg) / concUgPerMl;
+  return finiteOrNull((ug * weightKg) / concUgPerMl);
 }
 
 /** Devine ideal body weight (kg), used where the product specifies IBW (remifentanil in obesity). */
@@ -202,25 +218,39 @@ export function burnFormula24h(
 
 export type FirstWindowPlan =
   | { status: "estimate-only"; first8Ml: number; next16Ml: number }
-  | { status: "rate"; remainingFirst8Ml: number; hoursLeftInFirst8: number; mlPerHour: number }
-  | { status: "first-8h-ended"; next16Ml: number; hoursLeftInDay: number }
-  | { status: "window-ended" };
+  | { status: "within-first-8h"; hoursLeftInFirst8: number; remainingFirst8Ml: number | null }
+  | { status: "first-8h-ended"; hoursLeftInDay: number; remainingDayMl: number | null }
+  | { status: "expired" }
+  | { status: "invalid"; reason: string };
 
 /**
- * Remaining first-8-h formula volume, timed from injury. A "rate now" is produced
- * ONLY when the volume actually given since injury is entered. After 8 h the
- * first-window instruction ends; after 24 h no first-day output is shown.
+ * Formula-volume bookkeeping timed from injury. Every provided input is validated first;
+ * a known elapsed time ≥24 h always gives "expired" regardless of missing prior fluid.
+ * No "rate now" is produced: elapsed time and prior fluid do not prescribe an individual rate.
  */
 export function burnFirstDayPlan(totalMl: number, hoursSinceBurn: number | null, givenSinceBurnMl: number | null): FirstWindowPlan | null {
   if (!isPositiveFinite(totalMl)) return null;
+  if (hoursSinceBurn !== null && (!Number.isFinite(hoursSinceBurn) || hoursSinceBurn < 0)) return { status: "invalid", reason: "Hours since injury must be a number ≥0." };
+  if (givenSinceBurnMl !== null && (!Number.isFinite(givenSinceBurnMl) || givenSinceBurnMl < 0)) return { status: "invalid", reason: "Fluid given must be a number ≥0 mL." };
   const half = totalMl / 2;
-  if (hoursSinceBurn === null || givenSinceBurnMl === null) return { status: "estimate-only", first8Ml: half, next16Ml: half };
-  if (!Number.isFinite(hoursSinceBurn) || hoursSinceBurn < 0 || !Number.isFinite(givenSinceBurnMl) || givenSinceBurnMl < 0) return null;
-  if (hoursSinceBurn >= 24) return { status: "window-ended" };
-  if (hoursSinceBurn >= 8) return { status: "first-8h-ended", next16Ml: half, hoursLeftInDay: 24 - hoursSinceBurn };
-  const remaining = Math.max(0, half - givenSinceBurnMl);
-  const hoursLeft = 8 - hoursSinceBurn;
-  return { status: "rate", remainingFirst8Ml: remaining, hoursLeftInFirst8: hoursLeft, mlPerHour: remaining / hoursLeft };
+  if (hoursSinceBurn === null) return { status: "estimate-only", first8Ml: half, next16Ml: half };
+  if (hoursSinceBurn >= 24) return { status: "expired" };
+  if (hoursSinceBurn >= 8) return { status: "first-8h-ended", hoursLeftInDay: 24 - hoursSinceBurn, remainingDayMl: givenSinceBurnMl === null ? null : Math.max(0, totalMl - givenSinceBurnMl) };
+  return { status: "within-first-8h", hoursLeftInFirst8: 8 - hoursSinceBurn, remainingFirst8Ml: givenSinceBurnMl === null ? null : Math.max(0, half - givenSinceBurnMl) };
+}
+
+/** Source applicability. Returns a reason when the named source does not apply (no estimate shown). */
+export function burnSourceScope(formula: BurnFormula, population: "adult" | "child", tbsaPct: number): string | null {
+  if (formula === "aba-adult") {
+    if (population !== "adult") return "ABA 2024 guideline applies to adults only.";
+    if (!(tbsaPct >= 20)) return "ABA 2024 guideline applies to adult burns ≥20% TBSA.";
+  }
+  if (formula === "nsw-modified-parkland") {
+    const min = population === "adult" ? 20 : 10;
+    if (!(tbsaPct > min)) return `NSW ACI formal resuscitation applies to ${population === "adult" ? "adults >20%" : "children >10%"} TBSA.`;
+  }
+  if (formula === "galveston" && population !== "child") return "Galveston is a paediatric formula.";
+  return null;
 }
 
 /** Ivy index comparison on TOTAL projected intake (formula + any separately prescribed fluids), mL/kg. */

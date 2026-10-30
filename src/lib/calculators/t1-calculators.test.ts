@@ -64,9 +64,9 @@ describe("ROOT-14 paediatric RCH protocol", () => {
     expect(rchRopivacaineEpidural(20, Number.NaN, false).eligible).toBe(false);
   });
   it("PCA uses the measured weight band", () => {
-    expect(rchPaedsPca("morphine", 20)?.bolusDose).toBe(400);
-    expect(rchPaedsPca("morphine", 45)?.band).toBe("≥45 kg");
-    expect(rchPaedsPca("fentanyl", 30)?.bolusDose).toBe(9);
+    expect(rchPaedsPca("morphine", 20)).toMatchObject({ bolusDose: 400 });
+    expect(rchPaedsPca("morphine", 46) as { band: string }).toMatchObject({ band: ">45 kg" });
+    expect(rchPaedsPca("fentanyl", 30)).toMatchObject({ bolusDose: 9 });
     expect(rchPaedsPca("morphine", -1)).toBeNull();
   });
 });
@@ -94,15 +94,16 @@ describe("ROOT-18 burns", () => {
     expect(r.includesMaintenance).toBe(true);
     expect(r.totalMl).toBeCloseTo(2540, -1);
   });
-  it("no current rate without fluid given; rate uses actual remaining volume", () => {
-    expect(burnFirstDayPlan(12800, 2, null)?.status).toBe("estimate-only");
+  it("remaining formula volume, never a rate", () => {
+    expect(burnFirstDayPlan(12800, null, null)?.status).toBe("estimate-only");
+    expect(burnFirstDayPlan(12800, 2, null)).toEqual({ status: "within-first-8h", hoursLeftInFirst8: 6, remainingFirst8Ml: null });
     const p = burnFirstDayPlan(12800, 2, 1000);
-    expect(p?.status).toBe("rate");
-    if (p?.status === "rate") expect(p.mlPerHour).toBeCloseTo(5400 / 6);
+    expect(p).toEqual({ status: "within-first-8h", hoursLeftInFirst8: 6, remainingFirst8Ml: 5400 });
+    expect(p).not.toHaveProperty("mlPerHour");
   });
   it("first-day window ends", () => {
     expect(burnFirstDayPlan(12800, 8, 0)?.status).toBe("first-8h-ended");
-    expect(burnFirstDayPlan(12800, 24, 0)?.status).toBe("window-ended");
+    expect(burnFirstDayPlan(12800, 24, 0)?.status).toBe("expired");
   });
   it("Ivy index: 100 kg / 60% Parkland is 240 mL/kg, below 250 until other fluids added", () => {
     const t = burnFormula24h("parkland", 100, 60)!.totalMl;

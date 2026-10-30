@@ -10,7 +10,8 @@ import {
   omeddFromOral,
   omeddFromPatch,
   oralTargetDailyMg,
-  perDoseMg,
+  TARGET_DAILY_LIMITS,
+  exceedsTargetLimit,
 } from "@/lib/calculators/t1-calculators";
 
 /**
@@ -29,13 +30,6 @@ const SOURCE_OPTIONS: { id: string; label: string; src: SourceKind }[] = [
   ...(Object.keys(FPM_PATCH) as FpmPatchKey[]).map((k) => ({ id: `patch:${k}`, label: FPM_PATCH[k].label, src: { kind: "patch", key: k } as SourceKind })),
 ];
 
-const TARGET_INTERVALS = [
-  { value: "", label: "Select the target formulation's prescribed interval" },
-  { value: "6", label: "4-hourly (6 doses/24 h)" },
-  { value: "2", label: "12-hourly (2 doses/24 h)" },
-  { value: "1", label: "24-hourly (1 dose/24 h)" },
-];
-
 const fmt = (n: number) => (n >= 10 ? Math.round(n).toString() : (Math.round(n * 10) / 10).toString());
 
 const OpioidConversionCalculator = () => {
@@ -44,7 +38,6 @@ const OpioidConversionCalculator = () => {
   const [dosesPerDay, setDosesPerDay] = useState("2");
   const [patchStrength, setPatchStrength] = useState("");
   const [targetKey, setTargetKey] = useState<FpmOralKey>("morphine");
-  const [targetInterval, setTargetInterval] = useState("");
   const [reductionPct, setReductionPct] = useState(25);
   const [highRisk, setHighRisk] = useState(false);
 
@@ -59,7 +52,8 @@ const OpioidConversionCalculator = () => {
   const sameDrug = source.kind === "oral" && source.key === targetKey;
   const targetDaily = omedd !== null ? oralTargetDailyMg(omedd, targetKey, sameDrug ? 0 : effectiveReduction) : null;
   const targetUnreduced = omedd !== null ? oralTargetDailyMg(omedd, targetKey, 0) : null;
-  const perDose = perDoseMg(targetDaily, targetInterval ? Number(targetInterval) : null);
+  const limit = TARGET_DAILY_LIMITS[targetKey];
+  const overLimit = exceedsTargetLimit(targetKey, targetDaily) || exceedsTargetLimit(targetKey, targetUnreduced);
   const targetLabel = FPM_ORAL.find((o) => o.key === targetKey)!.label;
 
   return (
@@ -75,7 +69,7 @@ const OpioidConversionCalculator = () => {
             Estimates only, using one named convention — the{" "}
             <a href={FPM_URL} target="_blank" rel="noopener noreferrer" className="underline">FPM dose-equivalents tables</a>{" "}
             (reviewed March 2023). FPM: conversion factors are approximate, an individualised approach is necessary and switching
-            should be supervised by a competent practitioner. This is not a prescription.
+            should be supervised by a competent practitioner. Adults only. A calculated equivalent is theoretical daily equivalence, not a usable target prescription; formulation, interval and dose must be chosen separately.
           </p>
         </div>
 
@@ -113,9 +107,6 @@ const OpioidConversionCalculator = () => {
             <select aria-label="Target oral opioid" value={targetKey} onChange={(e) => setTargetKey(e.target.value as FpmOralKey)} className="w-full px-2 py-1.5 rounded border border-border bg-background text-sm">
               {FPM_ORAL.map((o) => <option key={o.key} value={o.key}>{o.label}</option>)}
             </select>
-            <select aria-label="Target prescribed interval" value={targetInterval} onChange={(e) => setTargetInterval(e.target.value)} className="w-full px-2 py-1.5 rounded border border-border bg-background text-sm">
-              {TARGET_INTERVALS.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
-            </select>
             <label className="text-[11px] font-semibold text-foreground flex items-center justify-between">
               <span>Dose reduction from calculated equivalent</span>
               <span className="font-mono text-primary">−{sameDrug ? 0 : effectiveReduction}%</span>
@@ -151,20 +142,23 @@ const OpioidConversionCalculator = () => {
         {omedd !== null && targetDaily !== null && (
           <div className="p-3 rounded-lg border-2 border-primary/30 bg-primary/5">
             <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-2">{targetLabel} — equianalgesic estimate</p>
-            <div className="grid sm:grid-cols-3 gap-2 text-sm">
+            <div className="grid sm:grid-cols-2 gap-2 text-sm">
               <div className="p-2 rounded bg-background border border-border">
-                <p className="text-[10px] text-muted-foreground uppercase">Calculated equivalent</p>
+                <p className="text-[10px] text-muted-foreground uppercase">Theoretical equivalent</p>
                 <p className="font-mono font-semibold text-muted-foreground">{fmt(targetUnreduced!)} mg / 24 h</p>
               </div>
-              <div className="p-2 rounded bg-background border-2 border-primary">
-                <p className="text-[10px] text-primary uppercase font-semibold">After −{sameDrug ? 0 : effectiveReduction}%</p>
-                <p className="font-mono font-bold text-primary">{fmt(targetDaily)} mg / 24 h</p>
-              </div>
-              <div className="p-2 rounded bg-background border border-border">
-                <p className="text-[10px] text-muted-foreground uppercase">Per dose at chosen interval</p>
-                <p className="font-mono font-semibold text-foreground">{perDose === null ? "Select interval" : `${fmt(perDose)} mg`}</p>
+              <div className="p-2 rounded bg-background border-2 border-primary" data-testid="reduced-equivalent">
+                <p className="text-[10px] text-primary uppercase font-semibold">After −{sameDrug ? 0 : effectiveReduction}% (theoretical)</p>
+                <p className="font-mono font-bold text-primary">{overLimit ? "Not presented — exceeds named limit" : `${fmt(targetDaily)} mg / 24 h`}</p>
               </div>
             </div>
+            {overLimit && limit && (
+              <p role="alert" className="text-[11px] text-destructive mt-2">
+                The calculated {fmt(targetDaily)} mg/24 h exceeds the named maximum ({limit.maxMgPerDay} mg/day). {limit.text}{" "}
+                <a href={limit.url} target="_blank" rel="noopener noreferrer" className="underline">Source</a>. This is not a viable reduced regimen, and capping
+                it at the maximum would not give equal analgesia — choose a different opioid with specialist advice.
+              </p>
+            )}
             <p className="text-[11px] text-muted-foreground mt-2">
               Breakthrough doses are not generated. Choose any immediate-release rescue medicine separately from the protocol you are
               following, based on the final intended regular regimen. After switching, FPM advises titrating carefully to individual
