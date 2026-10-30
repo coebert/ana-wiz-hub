@@ -86,7 +86,7 @@ const phases: Record<Phase, PhaseData> = {
     flowTruncation: 0.1,
     alveolarPressure: ">25 cmH₂O",
     clinicalSigns: ["PEA / asystole", "No cardiac output despite CPR", "Bilateral hyperresonance"],
-    management: ["Disconnect ETT — manually compress chest for 60s", "Bilateral thoracostomies (exclude tension pneumothorax)", "IV adrenaline", "Slow hand ventilation once decompressed (6–8 bpm)"],
+    management: ["PEA: activate arrest team; standard ALS, high-quality CPR and indicated adrenaline", "Briefly disconnect ventilator for suspected gas trapping; consider manual decompression without replacing CPR", "Assess for tension pneumothorax and decompress immediately when suspected", "Resume effective ventilation with adequate expiratory time; consider expert ECPR if refractory"],
     color: "hsl(0, 84%, 60%)",
     heartRate: 0.3,
     heartScale: 0.15,

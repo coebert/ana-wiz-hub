@@ -13,7 +13,7 @@ import { InlineRef } from "@/components/references/InlineRef";
 const acuteLiverFailureFaqs: Array<[string, string]> = [
   ["What are the King's College criteria for liver transplantation in paracetamol-induced ALF?", "Arterial pH <7.30 after resuscitation, OR all three of: PT >100 s (INR >6.5), creatinine >300 µmol/L, and grade III/IV encephalopathy."],
   ["How is raised intracranial pressure managed in acute liver failure?", "Aim for serum sodium 145–155 mmol/L with hypertonic saline, head-up 30°, mannitol or hypertonic saline boluses for surges, mild hypothermia (35–36 °C) if refractory, and avoid hypotonic fluids and hypercapnia."],
-  ["When is N-acetylcysteine indicated in non-paracetamol ALF?", "NAC improves transplant-free survival in early (grade I–II encephalopathy) non-paracetamol ALF (Lee et al., Gastroenterology 2009); start at the same 21-hour regimen as for paracetamol."],
+  ["When is N-acetylcysteine indicated in non-paracetamol ALF?", "Lee et al. (2009) studied a 72-hour NAC infusion in adults with non-paracetamol ALF. Overall survival was not significantly improved; transplant-free survival benefit was concentrated in grade I–II encephalopathy. Discuss use and duration with a liver centre; the trial does not establish a completed 21-hour paracetamol course as the non-paracetamol regimen."],
 ];
 
 const objectives = [
@@ -71,8 +71,7 @@ const workedExamples: WorkedExample[] = [
     ),
     answer: (
       <>
-        Start <strong>terlipressin 2 mg IV q4–6h</strong> (or 2–4 mg/24 h infusion — fewer
-        ischaemic side effects, CONFIRM trial) + albumin 20–40 g/day. Target Cr &lt;133 µmol/L.
+        Start <strong>terlipressin using one complete HRS protocol</strong>, with the dose expressed explicitly as acetate or free base, plus albumin adjusted to volume status. The EMA continuous-infusion option starts at 2 mg terlipressin acetate/24 h and is titrated to a maximum of 12 mg/24 h. CONFIRM instead studied intermittent acetate boluses starting at 1 mg every 6 h, with protocol-based escalation; it did not establish the safety benefit of continuous infusion. Follow response/adverse-effect stopping criteria and a maximum 14-day course.
         If contraindicated (IHD, PVD): noradrenaline to ↑ MAP by 10 mmHg + albumin. Non-responder
         by day 4 → CRRT bridge to transplant assessment.
       </>
@@ -126,7 +125,7 @@ const AcuteLiverFailureTopic = () => {
         { text: "King's criteria (paracetamol): pH <7.3 is the strongest single predictor for transplant need", cites: ["BJA Educ 2019"] },
         { text: "ACLF is graded by number of organ failures (CLIF-C) — grade 3 has ~75% 28-day mortality", cites: ["King's Criteria"] },
         { text: "Trajectory at day 3–7 is more prognostically important than admission ACLF grade", cites: ["BJA Educ 2017"] },
-        { text: "HRS-AKI: terlipressin (2 mg q4–6h or infusion) + albumin; noradrenaline if terlipressin contraindicated", cites: ["BJA Educ 2019"] },
+        { text: "HRS-AKI: protocol-titrated terlipressin with explicit acetate/free-base units plus volume-guided albumin; noradrenaline when terlipressin cannot be used", cites: ["BJA Educ 2019"] },
         { text: "Alcoholic hepatitis: Maddrey DF ≥32 → prednisolone; Lille >0.45 at day 7 → stop steroids (non-responder)", cites: ["King's Criteria"] },
         { text: "Do NOT restrict protein in hepatic encephalopathy — target 1.2–1.5 g/kg/day", cites: ["BJA Educ 2017"] },
       ]}
@@ -162,7 +161,7 @@ const AcuteLiverFailureTopic = () => {
           </p>
           <div className="grid sm:grid-cols-2 gap-3">
             {[
-              { cause: "Paracetamol", detail: "Commonest cause in UK. ~5–10% is oxidised by CYP2E1/3A4 to NAPQI, normally conjugated by hepatic glutathione; in overdose glutathione is depleted, NAPQI binds mitochondrial proteins, causing oxidative stress, mitochondrial permeability transition and centrilobular (zone 3) necrosis. Toxicity occurs at lower doses with enzyme inducers (alcohol excess, rifampicin, phenytoin, carbamazepine, St John's wort), malnutrition/anorexia, low body weight and staggered ingestion. NAC replenishes glutathione, scavenges NAPQI and improves hepatic and cerebral oxygen delivery — give it as the UK 21-hour, two- or three-bag regimen and continue beyond 21 h if the INR is rising, ALT elevated or acidosis persists. Best prognosis of all ALF aetiologies." },
+              { cause: "Paracetamol", detail: "Commonest cause in UK. ~5–10% is oxidised by CYP2E1/3A4 to NAPQI, normally conjugated by hepatic glutathione; in overdose glutathione is depleted, NAPQI binds mitochondrial proteins, causing oxidative stress, mitochondrial permeability transition and centrilobular (zone 3) necrosis. Toxicity occurs at lower doses with enzyme inducers (alcohol excess, rifampicin, phenytoin, carbamazepine, St John's wort), malnutrition/anorexia, low body weight and staggered ingestion. NAC replenishes glutathione, scavenges NAPQI and improves hepatic and cerebral oxygen delivery — use one complete adopted protocol: the licensed 21-hour three-infusion regimen or a distinct local regimen such as 12-hour SNAP. Reassess and extend when indicated by the clinical course and current poisons/liver-centre advice. Best prognosis of all ALF aetiologies." },
               { cause: "Viral Hepatitis", detail: "Hepatitis A and E (faeco-oral; E is severe in pregnancy and in men with chronic liver disease), hepatitis B ± D superinfection, and HBV reactivation when immunosuppression or rituximab is given without prophylaxis — check HBsAg/anti-HBc first. HSV and VZV hepatitis cause anicteric ALF with very high transaminases in pregnancy and immunosuppression: give empirical aciclovir. Hepatitis C rarely causes ALF." },
               { cause: "Drug-induced (DILI)", detail: "DILI accounts for most non-paracetamol ALF and carries a fatality rate of up to 50%. Idiosyncratic and largely dose-independent: antituberculous drugs (isoniazid, rifampicin, pyrazinamide), co-amoxiclav (cholestatic, often after the course ends), flucloxacillin, anti-epileptics (valproate, phenytoin, lamotrigine), methotrexate, checkpoint inhibitors (immune hepatitis — needs steroids), MDMA/cocaine, and herbal or bodybuilding supplements. Diagnosis is by exclusion using a drug timeline; management is drug withdrawal, supportive care and early transplant referral." },
               { cause: "Other", detail: "Autoimmune hepatitis (high IgG, ASMA/ANA; steroid trial only if transplant assessment is under way). Wilson's disease — young patient, Coombs-negative haemolysis, low ALP, high bilirubin:ALP ratio, low uric acid, Kayser–Fleischer rings; almost always needs transplantation. Budd–Chiari (thrombophilia, tender hepatomegaly, ascites — consider TIPS/anticoagulation). Pregnancy-related HELLP/AFLP — treatment is delivery. Amanita phalloides poisoning (delayed diarrhoea then hepatic failure; silibinin, high-dose penicillin). Ischaemic hepatitis, malignant infiltration and heat stroke." },
@@ -241,12 +240,12 @@ const AcuteLiverFailureTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             The Rumack–Matthew nomogram (UK treatment line at 100 mg/L at 4 hours) applies <strong>only</strong> to a single, acute ingestion with a known time of overdose, plotted between 4 and 15 hours post-ingestion. Treat empirically with acetylcysteine, without waiting for a paracetamol level, in: staggered or repeated supratherapeutic ingestion; unknown or uncertain timing of ingestion; presentation {'>'}8 hours post-ingestion where a delay to level/treatment is anticipated; or any clinical or biochemical evidence of liver injury<InlineRef topicId="acute-liver-failure" refLabel="NPIS Toxbase" />.
           </p>
-          <p className="text-sm font-semibold text-foreground mb-2">UK 21-hour IV acetylcysteine (NAC) regimen</p>
+          <p className="text-sm font-semibold text-foreground mb-2">Licensed 21-hour IV NAC: adult dilution example for body weight ≥40 kg; use the product weight/volume tables, a 110 kg dosing ceiling and reduced-volume protocols when indicated</p>
           <div className="space-y-2 mb-4">
             {[
-              { step: "Bag 1", action: "150 mg/kg in 200 mL 5% glucose over 1 hour." },
-              { step: "Bag 2", action: "50 mg/kg in 500 mL 5% glucose over 4 hours." },
-              { step: "Bag 3", action: "100 mg/kg in 1000 mL 5% glucose over 16 hours." },
+              { step: "Bag 1", action: "150 mg/kg added to 200 mL 5% glucose (include drug volume in the final infusion volume) over 1 hour." },
+              { step: "Bag 2", action: "50 mg/kg added to 500 mL 5% glucose (include drug volume in the final infusion volume) over 4 hours." },
+              { step: "Bag 3", action: "100 mg/kg added to 1000 mL 5% glucose (include drug volume in the final infusion volume) over 16 hours." },
             ].map((s) => (
               <div key={s.step} className="flex gap-3 p-3 rounded border border-border">
                 <span className="font-bold text-primary text-sm whitespace-nowrap">{s.step}</span>
@@ -255,13 +254,13 @@ const AcuteLiverFailureTopic = () => {
             ))}
           </div>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            The SNAP two-bag 12-hour regimen (a higher initial dose over a longer first infusion, then a single maintenance infusion) is an alternative with fewer infusion-rate changes and a lower rate of anaphylactoid reactions.
+            SNAP is a distinct 12-hour regimen: 100 mg/kg over 2 hours, then 200 mg/kg over 10 hours. Its initial dose is lower and slower than the licensed first infusion of 150 mg/kg over 1 hour. Use the complete adopted SNAP protocol, including weight-specific preparation and criteria for extension; do not mix bag schedules.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            <strong>Prolonged treatment:</strong> continue NAC beyond the standard 21 hours if INR remains {'>'}1.3–1.5, ALT is rising, creatinine is rising, encephalopathy is present, or paracetamol is still detectable. However, prolonged NAC infusion may delay hepatic regeneration, so ongoing need should be reassessed regularly against trend in liver function rather than continued indefinitely by default<InlineRef topicId="acute-liver-failure" refLabel="NAC Prolonged 2009" />.
+            <strong>Prolonged treatment:</strong> reassess at the end of the chosen course and continue when indicated by persistent paracetamol, liver injury or clinical deterioration, with poisons/liver-centre advice. An isolated INR rise to 1.3 without raised transaminases does not itself require further NAC under the cited SmPC. The 2009 regeneration warning comes from mice, and EASL 2017 notes conflicting animal evidence; it is not proof of clinical harm from indicated extension<InlineRef topicId="acute-liver-failure" refLabel="NAC Prolonged 2009" />. EASL advises limiting prolonged ALF use to 5 days because of immunological concerns. Individualise duration with the specialist team rather than stopping or extending automatically.
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            <strong>Anaphylactoid reactions</strong> (flushing, urticaria, bronchospasm — usually during the first infusion) are common and dose/rate-related, not true IgE-mediated allergy. Manage by pausing the infusion, giving an antihistamine (and nebulised salbutamol for bronchospasm), then restarting at a slower rate once symptoms settle — treatment should not be abandoned. Refer early to a specialist liver/transplant centre using King's College Criteria if there is evidence of severe hepatotoxicity or evolving ALF.
+            <strong>NAC infusion reactions</strong> are usually non-IgE mediated, but can cause life-threatening anaphylaxis. Stop the infusion and assess ABC. With airway, breathing or circulation compromise, call for help and treat promptly with adrenaline under the RCUK algorithm (adult IM 500 micrograms of 1 mg/mL adrenaline, repeated after 5 minutes if needed), oxygen and IV crystalloid when indicated. Antihistamines treat skin symptoms; salbutamol is only an adjunct for bronchospasm and neither replaces adrenaline. Once stable, seek poisons/specialist advice on resuming NAC at an appropriate rate; do not abandon an indicated antidote solely because of a previous reaction. Refer evolving ALF promptly to a liver/transplant centre.
           </p>
         </CollapsibleSubsection>
 
@@ -361,7 +360,7 @@ const AcuteLiverFailureTopic = () => {
             {[
               { step: "Step 1", action: "Stop diuretics, nephrotoxins, and vasodilators. Exclude other causes of AKI (urinalysis, USS, urine sodium <20 mEq/L in HRS)." },
               { step: "Step 2", action: "Volume expansion with 20% albumin (1 g/kg, max 100 g) over 48 hours. If no response → HRS-AKI diagnosis confirmed." },
-              { step: "Step 3", action: "Terlipressin + albumin (20–40 g/day). Terlipressin: 2 mg IV bolus q4–6h or 2–4 mg/24h infusion (infusion may have fewer side effects). Target: creatinine ↓ to <133 µmol/L." },
+              { step: "Step 3", action: "Terlipressin plus albumin adjusted to volume status. Select one HRS regimen: EMA continuous infusion starts at 2 mg terlipressin acetate/24 h, with response-guided titration to at most 12 mg/24 h; bolus protocols have different starting/titration rules. Monitor creatinine, perfusion, oxygenation and fluid status, and stop for serious adverse effects or protocol-defined non-response; maximum course 14 days." },
               { step: "Step 4", action: "If terlipressin unavailable or contraindicated: noradrenaline infusion (target ↑ MAP by 10 mmHg) + albumin. Midodrine + octreotide is inferior but used where vasopressors not feasible." },
               { step: "Step 5", action: "Non-responders (no ↓ creatinine by day 4): consider CRRT as bridge to transplant. TIPS in selected patients without advanced liver failure. Liver transplantation is the definitive treatment." },
             ].map((s) => (
@@ -375,7 +374,7 @@ const AcuteLiverFailureTopic = () => {
           <div className="p-3 rounded-lg bg-secondary/50 border border-primary/20 mb-4">
             <p className="text-sm font-semibold text-foreground mb-1">⚠️ Terlipressin Safety</p>
             <p className="text-sm text-muted-foreground">
-              Contraindicated in ischaemic heart disease, PVD, mesenteric ischaemia. Monitor for cardiovascular ischaemia, arrhythmias, peripheral/splanchnic ischaemia, hyponatraemia, and fluid overload. The CONFIRM trial (2021) showed terlipressin improved HRS reversal but increased serious adverse events (respiratory failure) — careful patient selection essential.
+              Check product-specific contraindications and ischaemic risk. MHRA advises avoiding HRS terlipressin when baseline creatinine is ≥442 µmol/L, ACLF grade 3 or MELD ≥39 unless benefits outweigh risks. Stabilise respiratory deterioration before treatment; monitor oxygen saturation, circulation, electrolytes, fluid balance and infection. Reduce albumin with overload/respiratory symptoms and stop terlipressin if these are severe or persistent. CONFIRM improved HRS reversal but raised serious respiratory and sepsis concerns; it was not a continuous-infusion comparison.
             </p>
           </div>
 

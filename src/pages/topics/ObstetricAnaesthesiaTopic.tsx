@@ -32,7 +32,7 @@ const obstetricFaqs: Array<[string, string]> = [
   ],
   [
     "How does a labour epidural work?",
-    "A 16–18 G Tuohy needle is sited at L3/4 or L4/5 using loss-of-resistance to saline. A multi-orifice catheter is threaded 4–5 cm into the epidural space. A test dose (3 ml 2% lidocaine + adrenaline) is given to exclude intravascular or intrathecal placement, followed by a low-dose bolus (e.g. 15 ml 0.1% levobupivacaine + 2 µg/ml fentanyl). Maintenance is via patient-controlled epidural analgesia (PCEA) or programmed intermittent epidural bolus (PIEB), which gives better analgesia and lower motor block than continuous infusion.",
+    "A 16–18 G Tuohy needle is sited at L3/4 or L4/5 using loss-of-resistance to saline. A multi-orifice catheter is threaded 4–5 cm into the epidural space. Assess catheter position with aspiration, observation and the locally adopted obstetric test-dose/fractionated-loading protocol. A negative test cannot guarantee correct placement. Treat every dose as a potential test dose, giving the intended low-dose loading solution in cautious increments with monitoring and readiness to manage high block or systemic toxicity. Maintenance is via patient-controlled epidural analgesia (PCEA) or programmed intermittent epidural bolus (PIEB), which gives better analgesia and lower motor block than continuous infusion.",
   ],
   [
     "What is the difference between an epidural and a spinal for childbirth?",
@@ -436,7 +436,7 @@ const ObstetricAnaesthesiaTopic = () => {
                 <tr className="border-b border-border align-top">
                   <td className="py-2 font-medium text-foreground">Emergency LSCS (Cat 1/2)</td>
                   <td>Heavy bupivacaine 0.5% <strong>2.2–2.6 ml</strong> + fentanyl <strong>15 µg</strong> + diamorphine <strong>300 µg</strong> (or morphine 100 µg). Target T4.</td>
-                  <td><strong>2% lidocaine 20 ml + 1:200,000 adrenaline (100 µg) + fentanyl 100 µg + 8.4% bicarbonate 2 ml</strong> — onset 5–8 min. Alt: 0.5% levobupivacaine 15–20 ml (slower, 10–15 min). Always test dose; titrate in 5 ml aliquots.</td>
+                  <td><strong>2% lidocaine 20 ml + 1:200,000 adrenaline (100 µg) + fentanyl 100 µg + 8.4% bicarbonate 2 ml</strong> — onset 5–8 min. Alt: 0.5% levobupivacaine 15–20 ml (slower, 10–15 min). Follow the local obstetric extension protocol, aspirate and assess before each increment, and account for the entire cumulative local-anaesthetic dose; no negative test guarantees correct catheter placement.</td>
                 </tr>
                 <tr className="border-b border-border align-top">
                   <td className="py-2 font-medium text-foreground">Instrumental delivery (forceps/ventouse)</td>
@@ -1023,7 +1023,7 @@ const ObstetricAnaesthesiaTopic = () => {
               "Aortocaval compression after 20 weeks — always 15° left lateral tilt or manual uterine displacement.",
               "Pregnancy reduces FRC, doubles oxygen consumption and produces a difficult airway with failed intubation in ~1:224 caesarean GAs — pre-oxygenate well and prepare for failed intubation.",
               "Spinal-induced hypotension at LSCS: prophylactic phenylephrine infusion + co-load crystalloid; ephedrine causes more fetal acidosis.",
-              "Epidural test dose (lidocaine + adrenaline) detects intravascular and intrathecal placement; aspirate before every bolus.",
+              "Aspiration and a test dose may identify catheter misplacement but do not exclude it reliably; treat every epidural dose as a potential test dose and use monitored incremental dosing.",
               "Massive obstetric haemorrhage: activate MOH protocol, give tranexamic acid within 3 h, target fibrinogen >2 g/L.",
             ]}
           />

@@ -273,7 +273,7 @@ const OxidationReductionTopic = () => {
                 glutathione and allowing direct conjugation of NAPQI; it also improves microcirculatory oxygen delivery. It is
                 most effective when given within <strong>8 hours</strong> of ingestion. UK practice uses a single
                 <strong> 100 mg/L treatment line at 4 hours</strong> on the <strong>Rumack–Matthew nomogram</strong> to decide
-                on treatment, with the <strong>SNAP 12-hour NAC regimen</strong>. Patients meeting <strong>King's College
+                on treatment for a single acute ingestion with a reliable time. NAC schedules vary by service: use the complete adopted protocol, such as licensed 21-hour three-infusion treatment or a local 12-hour SNAP pathway; do not mix their schedules or stopping rules. Patients meeting <strong>King's College
                 criteria</strong> (e.g. pH &lt;7.3, or the combination of INR &gt;6.5, creatinine &gt;300 µmol/L and grade
                 III/IV encephalopathy) should be referred for liver transplant assessment.
                 <InlineRef topicId="oxidation-reduction" refLabel="Rumack-Matthew Nomogram" />
