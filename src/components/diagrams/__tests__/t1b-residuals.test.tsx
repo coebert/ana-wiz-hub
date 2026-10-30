@@ -143,7 +143,7 @@ describe("T1B-R01/R02 regressions", () => {
   const setOpioid = (drug: string, dose: string, n: string, target: string) => {
     const r = render(<OpioidConversionCalculator />);
     const sels = r.container.querySelectorAll("select");
-    fireEvent.change(sels[0], { target: { value: drug } });
+    fireEvent.change(sels[0], { target: { value: `oral:${drug}` } });
     const nums = r.container.querySelectorAll('input[type="number"]');
     fireEvent.change(nums[0], { target: { value: dose } });
     fireEvent.change(nums[1], { target: { value: n } });
