@@ -42,29 +42,6 @@ function toMcgKgHr(infusion: Infusion, dose: number, weightKg: number): number |
   }
 }
 
-/**
- * Micrograms delivered per hour for the entered dose — used to derive the
- * mL/hr pump rate. For unit-based drugs this returns units per hour instead.
- */
-function amountPerHour(infusion: Infusion, dose: number, weightKg: number): number {
-  switch (infusion.unit) {
-    case "micrograms/kg/min":
-      return dose * 60 * weightKg;
-    case "micrograms/kg/h":
-      return dose * weightKg;
-    case "micrograms/min":
-      return dose * 60;
-    case "mg/kg/h":
-      return dose * 1000 * weightKg;
-    case "units/min":
-      return dose * 60;
-    case "units/h":
-      return dose;
-    case "units/kg/h":
-      return dose * weightKg;
-  }
-}
-
 function fmt(n: number, dp = 2): string {
   return n.toLocaleString("en-GB", { maximumFractionDigits: dp });
 }
