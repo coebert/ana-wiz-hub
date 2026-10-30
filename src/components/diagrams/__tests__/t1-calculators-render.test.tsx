@@ -16,10 +16,10 @@ describe("T1 rendered states", () => {
     expect(container.textContent).not.toMatch(/nearest patch|PRN/);
   });
 
-  it("opioid: oxycodone 20 mg ×2 → 60 mg OMEDD and no per-dose until target interval chosen", () => {
+  it("opioid: oxycodone 20 mg ×2 → 60 mg OMEDD and no per-dose output", () => {
     const { container } = render(<OpioidConversionCalculator />);
     expect(container.textContent).toContain("60 mg oral morphine / 24 h");
-    expect(container.textContent).toContain("Select interval");
+    expect(container.textContent).not.toMatch(/Per dose|chosen interval/);
   });
 
   it("PCA: 20 kg child epidural range never exceeds 6 mL/h; 7 kg newborn gets no rate", () => {
@@ -39,8 +39,10 @@ describe("T1 rendered states", () => {
     const { container } = render(<ParklandCalculator />);
     fireEvent.click(screen.getAllByRole("button", { name: "Load" })[1]);
     expect(container.textContent).toContain("20 mL/h");
-    expect(container.textContent).toContain("Enter hours AND fluid given");
+    expect(container.textContent).not.toMatch(/mL\/h —|rate now/i);
     fireEvent.click(screen.getAllByRole("button", { name: "Load" })[3]);
+    expect(container.textContent).toMatch(/Formula subtotal only/);
+    fireEvent.change(screen.getByLabelText(/Other prescribed fluids/), { target: { value: "0" } });
     expect(container.textContent).toMatch(/240 mL\/kg \(not above 250/);
   });
 
