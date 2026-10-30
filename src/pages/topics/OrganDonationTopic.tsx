@@ -172,12 +172,12 @@ const OrganDonationTopic = () => {
           <ExamSection id="bsd-testing" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Brainstem Death Testing">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              UK definition (AoMRC 2008): irreversible loss of capacity for consciousness combined with irreversible loss of capacity to breathe. Two sets of tests by two senior doctors (one a consultant), both registered &gt;5 years, neither part of the transplant team.
+              UK definition (AoMRC 2025): irreversible loss of capacity for consciousness combined with irreversible loss of capacity to breathe. Two sets of tests by two senior doctors (one a consultant), both registered &gt;5 years, neither part of the transplant team.
             </p>
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">Prerequisites</h3>
             <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground mb-4">
               <li><strong>Known aetiology</strong> sufficient to explain the picture (massive ICH, severe TBI, hypoxic injury post-arrest).</li>
-              <li><strong>Exclude reversible causes</strong>: core temp ≥34°C; no residual sedation/paralysis; no severe metabolic/endocrine derangement; no unresuscitated shock.</li>
+              <li><strong>Exclude reversible causes</strong>: core temperature ≥36°C; no residual sedation/paralysis, severe metabolic/endocrine derangement or unresuscitated shock. After therapeutic/accidental hypothermia (&lt;36°C), wait at least 24 h after correction to ≥36°C; transient later temperature reductions do not mandate another 24 h.</li>
               <li><strong>Apnoea pre-condition</strong>: ventilated for inadequate spontaneous respiration.</li>
             </ol>
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">Six brainstem reflexes (bilateral)</h3>
@@ -191,7 +191,7 @@ const OrganDonationTopic = () => {
             </ol>
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">Apnoea test</h3>
             <p className="text-sm text-muted-foreground mb-3">
-              Pre-oxygenate with 100% O₂, confirm a starting PaCO₂ ≥5.3 kPa, disconnect with tracheal O₂ insufflation or CPAP, and observe for at least 5 min for any respiratory effort. Confirm <strong>PaCO₂ ≥8.0 kPa, a rise ≥2.7 kPa and pH &lt;7.30</strong> on the end gas, then reconnect.<InlineRef topicId="organ-donation" refLabel="AoMRC 2025" />
+              Pre-oxygenate with 100% O₂, confirm a starting PaCO₂ ≥5.3 kPa, disconnect with apnoeic oxygenation/CPAP per protocol and observe for at least 5 min without respiratory effort. Confirm <strong>PaCO₂ ≥8.0 kPa, a rise ≥2.7 kPa and pH &lt;7.30</strong>. Abort for respiratory effort, significant cardiovascular instability, significant desaturation despite FiO₂1.0/CPAP or unstable arrhythmia.<InlineRef topicId="organ-donation" refLabel="AoMRC 2025" />
             </p>
             <div className="p-3 rounded-lg bg-secondary/50 border border-primary/20">
               <p className="text-sm font-semibold text-foreground mb-1">Time of death</p>
@@ -202,7 +202,7 @@ const OrganDonationTopic = () => {
 
           <ExamSection id="bsd-redflags" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Red Flags & Ancillary Tests">
-            <p className="text-muted-foreground text-sm mb-3">Confounders that may render testing unreliable: residual sedation (esp. thiopentone, opioids in renal/hepatic failure), residual paralysis, hypothermia (&lt;34°C), severe metabolic derangement, high cervical injury, GBS / locked-in, cranial nerve injury, pre-existing pupil abnormalities, isolated posterior fossa pathology, neonates &lt;2 months.</p>
+            <p className="text-muted-foreground text-sm mb-3">Confounders that may render testing unreliable: residual sedation (especially with organ failure), residual paralysis, hypothermia (&lt;36°C), severe metabolic derangement, high cervical injury, GBS/locked-in, cranial nerve injury, pre-existing pupil abnormalities and isolated posterior fossa pathology. Apply the current age-specific rules.</p>
             <p className="text-muted-foreground text-sm mb-3">
               <strong>When are ancillary tests indicated?</strong> Only when the clinical determination cannot be completed or is unreliable — an unexaminable cranial nerve or limb (severe facial/ocular trauma, high cervical cord injury), an apnoea test that cannot be safely performed or must be abandoned (refractory hypoxaemia, haemodynamic instability, ECMO, pre-existing CO₂ retention), or a confounder that cannot be reversed or excluded within a reasonable time. Ancillary tests do not replace clinical testing and are never used to overrule it; they establish the <strong>absence of intracranial blood flow</strong> <InlineRef topicId="organ-donation" refLabel="CJA Death Determination 2023" />.
             </p>
@@ -456,7 +456,7 @@ const OrganDonationTopic = () => {
             <CollapsibleSubsection title="Paediatric Organ Donation">
             <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
               <li>Death by neurological criteria cannot be diagnosed in infants below <strong>37 weeks corrected gestational age</strong>. <InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" /></li>
-              <li>From 37 weeks to 2 months, the RCPCH 2015 guidance applies: the same clinical tests as adults, with stricter attention to preconditions; the apnoea test uses a stronger hypercarbic stimulus — a PaCO₂ rise of &gt;2.7 kPa from a baseline of at least 5.3 kPa to &gt;8.0 kPa with no respiratory response; ancillary tests are not required. The paediatric criteria are now consolidated in Appendix 2 of the AoMRC 2025 Code of Practice. <InlineRef topicId="organ-donation" refLabel="RCPCH DNC 2015" /></li>
+              <li>Current AoMRC 2025 Appendix 2 governs paediatric testing. From 37 weeks corrected gestational age to &lt;24 months, require a minimum 24-hour interval between complete sets; apply all paediatric preconditions. Apnoea endpoints: starting PaCO₂ ≥5.3 kPa, minimum 5 min, ending ≥8.0 kPa, rise ≥2.7 kPa and pH &lt;7.3. Historical RCPCH 2015 is not the current standalone protocol. <InlineRef topicId="organ-donation" refLabel="AoMRC 2025" /></li>
               <li>Ancillary tests have a larger role when preconditions cannot be met, but are not mandated by the UK codes.</li>
               <li>Epidemiology differs: brain death is a smaller share of PICU deaths; most follow withdrawal of life-sustaining treatment, so paediatric DCD and neonatal DCD are increasingly important. <InlineRef topicId="organ-donation" refLabel="Meert PICU Deaths 2014" /></li>
               <li>Communication: parents hold authorisation (deemed consent does not apply to under-18s in England); involve the SNOD and paediatric specialist nurse early, and separate the conversation about death from the conversation about donation.</li>

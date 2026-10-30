@@ -250,17 +250,17 @@ const NeuroanatomyTopic = () => {
             <div className="space-y-2">
               <p className="font-semibold text-foreground">Step-by-step reasoning</p>
               <ol className="list-decimal list-inside space-y-1">
-                <li>Confirm preconditions: known cause of irreversible brain damage, exclude sedatives/NMBAs, T &gt;34°C, normal electrolytes, no endocrine cause.</li>
-                <li>Pre-oxygenate with FiO₂ 1.0 for 5 min; aim baseline PaCO₂ 5.5–6.0 kPa, pH ≥7.35.</li>
+                <li>Confirm known irreversible cause and exclude confounders including sedatives/NMBAs and metabolic/endocrine disturbance. Core ≥36°C; after corrected therapeutic/accidental hypothermia, wait at least 24 h per AoMRC 2025.</li>
+                <li>Pre-oxygenate per protocol with FiO₂1.0; starting PaCO₂ ≥5.3 kPa.</li>
                 <li>Disconnect ventilator; deliver O₂ 6 L/min via tracheal catheter to apnoeic oxygenation.</li>
                 <li>Observe for 5 min for any respiratory effort. Recheck ABG at end.</li>
-                <li>Positive (consistent with brainstem death) if PaCO₂ rises by ≥0.5 kPa to ≥6.5 kPa AND pH &lt;7.40 AND no respiratory effort.</li>
+                <li>AoMRC 2025 endpoints: minimum 5 min without effort; ending PaCO₂ ≥8.0 kPa AND rise ≥2.7 kPa AND pH &lt;7.3. These thresholds alone do not establish death without full preconditions and both complete sets.</li>
                 <li>Two doctors perform two complete sets of tests, separated by an interval. Time of death = completion of second set.</li>
               </ol>
               <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
                 <p className="text-xs font-semibold text-destructive uppercase">Common traps</p>
                 <ul className="list-disc list-inside text-foreground">
-                  <li>Hypoxia during the test — abort if SpO₂ falls below 90%; result invalid.</li>
+                  <li>Abort for respiratory effort, significant cardiovascular instability, significant desaturation despite FiO₂1.0/CPAP or unstable arrhythmia; optimise before reattempting.</li>
                   <li>Residual sedation/NMBA — check levels, use TOF before testing.</li>
                   <li>Chronic CO₂ retainers need higher PaCO₂ rise above their baseline.</li>
                 </ul>
