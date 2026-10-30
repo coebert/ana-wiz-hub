@@ -122,7 +122,7 @@ describe("rendered components", () => {
     expect(within(row).getByText("4")).toBeTruthy();
     const creat = screen.getByLabelText(/^Creatinine/);
     fireEvent.change(creat, { target: { value: "133" } });
-    expect(within(screen.getByText("Creatinine").closest("tr")!).getByText("2")).toBeTruthy();
+    expect(within(screen.getByText("Creatinine", { selector: "td" }).closest("tr")!).getByText("2")).toBeTruthy();
     fireEvent.change(screen.getByLabelText(/Arterial pH/), { target: { value: "" } });
     expect(screen.getByTestId("apache-total").textContent).toMatch(/Incomplete/);
   });
