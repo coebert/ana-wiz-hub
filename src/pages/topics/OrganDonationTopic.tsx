@@ -13,7 +13,7 @@ import { OrganDonationPathwayDiagram } from "@/components/diagrams/intensive-car
 import { InlineRef } from "@/components/references/InlineRef";
 
 const organDonationFaqs: Array<[string, string]> = [
-  ["What are the UK criteria for brainstem death testing?", "Coma of known irreversible cause, exclusion of confounders (drugs, core temperature <36 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, oculocephalic, oculovestibular, gag, cough) and an apnoea test from a starting PaCO₂ ≥5.3 kPa to an end PaCO₂ ≥8.0 kPa, a rise ≥2.7 kPa and pH <7.30 after at least 5 minutes (AoMRC 2025)."],
+  ["What are the UK criteria for brainstem death testing?", "Coma of known irreversible cause, exclusion of confounders (drugs, core temperature <36 °C, metabolic/endocrine disturbance), absent brainstem reflexes (pupillary, corneal, vestibulo-ocular, motor response in the cranial nerve distribution, gag and cough) and an apnoea test from a starting PaCO₂ ≥5.3 kPa to an end PaCO₂ ≥8.0 kPa, a rise ≥2.7 kPa and pH <7.30 after at least 5 minutes (AoMRC 2025)."],
   ["What physiological derangements occur after brainstem death?", "Catecholamine storm followed by vasodilation, diabetes insipidus (DDAVP/vasopressin), hypothermia, coagulopathy and pituitary failure; manage with the 'rule of 100s' — SBP >100, urine output ~100 mL/h, PaO₂ >100, Hb >100 g/L."],
   ["How does DCD differ from DBD for donation?", "DCD (Maastricht III) occurs after planned withdrawal with death by circulatory criteria and a 5-minute 'no-touch' period; warm ischaemic time limits organ viability (typically <30 min for liver, <2 h for kidney) and outcomes are slightly inferior for some grafts but improve donor numbers."],
 ];
@@ -68,8 +68,7 @@ const workedExamples: WorkedExample[] = [
       <>
         <strong>Functional warm ischaemia time (fWIT)</strong> begins when SBP &lt; 50 mmHg. After
         cardiac arrest there is a mandatory <strong>5-minute hands-off observation</strong>;
-        legal time of death = <strong>start of the 5-minute observation period</strong> (the moment
-        the clinician begins observing the absent circulation, not the end of the standoff). Cold
+        recorded time of death is when all circulatory criteria are satisfied, <strong>after the continuous 5-minute assessment and required examination</strong>. It is not backdated to the start of observation. Cold
         perfusion should start within ~10 min of
         death; the standdown threshold (after which donation does not proceed) is typically 2–3 h
         from withdrawal — beyond this WIT is too prolonged for viable retrieval.
@@ -107,7 +106,7 @@ const OrganDonationTopic = () => {
         { text: "NRP reduces DCD liver discard and ischaemic cholangiopathy; reduces kidney DGF from ~50% to ~20%", cites: ["AoMRC 2008"] },
         { text: "Ethical framework: permanence vs irreversibility, dead donor rule, cerebral exclusion as safeguard", cites: ["BJA Educ 2016"] },
         { text: "AoMRC (2021) endorses NRP as ethically acceptable provided arch vessels are excluded before perfusion", cites: ["NICE CG135"] },
-        { text: "Time of death: BSD = completion of the second set of tests (AoMRC 2025); DCD = the time the 5-minute observation period starts (not its end) — NRP does not reverse death", cites: ["AoMRC 2025", "AoMRC DNC Code of Practice (PDF)"] },
+        { text: "Time of death: DNC ordinarily at completion of the second test set, or later when required ancillary evidence completes confirmation; DCD after the full 5-minute assessment and required examination, once all criteria are met (AoMRC 2025)", cites: ["AoMRC 2025", "AoMRC DNC Code of Practice (PDF)"] },
       ]}
       topicId="organ-donation"
       topicTitle="Organ Donation"
@@ -137,7 +136,7 @@ const OrganDonationTopic = () => {
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">DBD</p>
-                <p className="text-sm text-muted-foreground mt-1">Brainstem death confirmed by 2 sets of tests. Time of death = completion of the second set. Better graft outcomes (less warm ischaemia). ~40% of UK deceased donors.</p>
+                <p className="text-sm text-muted-foreground mt-1">Brainstem death confirmed by 2 sets of tests. Time of death is ordinarily completion of the second set, once all required criteria are satisfied; required ancillary evidence may delay confirmation. Better graft outcomes (less warm ischaemia). ~40% of UK deceased donors.</p>
               </div>
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">DCD</p>
@@ -172,13 +171,14 @@ const OrganDonationTopic = () => {
           <ExamSection id="bsd-testing" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="Brainstem Death Testing">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              UK definition (AoMRC 2025): irreversible loss of capacity for consciousness combined with irreversible loss of capacity to breathe. Two sets of tests by two senior doctors (one a consultant), both registered &gt;5 years, neither part of the transplant team.
+              UK definition (AoMRC 2025): permanent loss of capacity for consciousness combined with permanent loss of capacity to breathe. Two sets of tests by two senior doctors (one a consultant), both registered &gt;5 years, neither part of the transplant team.
             </p>
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">Prerequisites</h3>
             <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground mb-4">
               <li><strong>Known aetiology</strong> sufficient to explain the picture (massive ICH, severe TBI, hypoxic injury post-arrest).</li>
               <li><strong>Exclude reversible causes</strong>: core temperature ≥36°C; no residual sedation/paralysis, severe metabolic/endocrine derangement or unresuscitated shock. After therapeutic/accidental hypothermia (&lt;36°C), wait at least 24 h after correction to ≥36°C; transient later temperature reductions do not mandate another 24 h.</li>
               <li><strong>Apnoea pre-condition</strong>: ventilated for inadequate spontaneous respiration.</li>
+              <li><strong>Observation before testing</strong>: after loss of the last observed brainstem reflex or spontaneous breath, wait at least 6 h for primary intracranial injury and at least 24 h for hypoxic-ischaemic injury or cardiac arrest. Children under 24 months require at least 24 h before testing and at least 24 h between complete sets; use corrected age after prematurity. Extend observation whenever recovery or confounding remains uncertain.</li>
             </ol>
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">Six brainstem reflexes (bilateral)</h3>
             <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground mb-4">
@@ -195,7 +195,7 @@ const OrganDonationTopic = () => {
             </p>
             <div className="p-3 rounded-lg bg-secondary/50 border border-primary/20">
               <p className="text-sm font-semibold text-foreground mb-1">Time of death</p>
-              <p className="text-sm text-muted-foreground">Time of death = completion of the <strong>second</strong> set of clinical tests (AoMRC 2025; the 2008 Code used the first set).<InlineRef topicId="organ-donation" refLabel="AoMRC 2025" /><InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" /></p>
+              <p className="text-sm text-muted-foreground">Time of death is ordinarily completion of the <strong>second</strong> set of clinical tests. If ancillary investigation is required, record the later point when the final two doctors are satisfied that all criteria are met with its support (AoMRC 2025; the 2008 Code ordinarily used the first set).<InlineRef topicId="organ-donation" refLabel="AoMRC 2025" /><InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" /></p>
             </div>
             </CollapsibleSubsection>
           </ExamSection>
@@ -204,7 +204,7 @@ const OrganDonationTopic = () => {
             <CollapsibleSubsection title="Red Flags & Ancillary Tests">
             <p className="text-muted-foreground text-sm mb-3">Confounders that may render testing unreliable: residual sedation (especially with organ failure), residual paralysis, hypothermia (&lt;36°C), severe metabolic derangement, high cervical injury, GBS/locked-in, cranial nerve injury, pre-existing pupil abnormalities and isolated posterior fossa pathology. Apply the current age-specific rules.</p>
             <p className="text-muted-foreground text-sm mb-3">
-              <strong>When are ancillary tests indicated?</strong> Only when the clinical determination cannot be completed or is unreliable — an unexaminable cranial nerve or limb (severe facial/ocular trauma, high cervical cord injury), an apnoea test that cannot be safely performed or must be abandoned (refractory hypoxaemia, haemodynamic instability, ECMO, pre-existing CO₂ retention), or a confounder that cannot be reversed or excluded within a reasonable time. Ancillary tests do not replace clinical testing and are never used to overrule it; they establish the <strong>absence of intracranial blood flow</strong> <InlineRef topicId="organ-donation" refLabel="CJA Death Determination 2023" />.
+              <strong>When are ancillary investigations indicated?</strong> They are not routine, but are needed when specified preconditions cannot be satisfied or the full clinical examination, including apnoea testing, cannot be completed. They supplement the fullest possible clinical assessment; they do not replace it. Follow the Code for uncommon circumstances, including decompressive craniectomy and therapeutic steroids used to reduce brain oedema, and for age-specific safeguards. No ancillary investigation is currently recommended to support DNC in children under 24 months: delay and seek specialist advice when required; DNC may not be feasible. <InlineRef topicId="organ-donation" refLabel="AoMRC 2025" />
             </p>
             <ul className="list-disc pl-5 space-y-1.5 text-sm text-muted-foreground mb-3">
               <li><strong>CT angiography</strong> — the pragmatic first-line test in most UK and European centres. Principle: intracranial pressure exceeding arterial pressure abolishes cerebral perfusion, so intracranial vessels fail to opacify. A <strong>4-point scoring system</strong> is applied 60 s after contrast: absent opacification of the cortical segments of both middle cerebral arteries (M4) and both internal cerebral veins scores 4/4 and confirms circulatory arrest, with the superficial temporal arteries used as an internal control for adequate contrast delivery. False positives (apparent flow) occur with decompressive craniectomy or an open fontanelle, where ICP cannot rise sufficiently.</li>
@@ -363,7 +363,7 @@ const OrganDonationTopic = () => {
             <h3 className="text-base font-semibold text-foreground mb-2">Phase 2a — DBD branch (brainstem death confirmed)</h3>
             <div className="space-y-2 mb-4">
               {[
-                { step: "1. Brainstem death testing", detail: "Two sets of tests by two doctors; time of death = completion of the second set. From this moment the therapeutic goal switches from brain protection to organ protection." },
+                { step: "1. Brainstem death testing", detail: "Two sets of tests by two doctors; time of death is ordinarily completion of the second set, once all criteria are met (later if required ancillary evidence is outstanding). From this moment the therapeutic goal switches from brain protection to organ protection." },
                 { step: "2. First drug swap — catecholamine storm control", detail: "If the hypertensive surge is ongoing: short-acting agents only (GTN, esmolol, sodium nitroprusside) so the vasoplegia that follows is not compounded by a lingering drug." },
                 { step: "3. Start the hormonal bundle — immediately after BSD", detail: "Methylprednisolone 15 mg/kg IV (max 1 g) single dose; insulin infusion to glucose 4–10 mmol/L; T4 20 µg bolus then 10 µg/h is added for persisting cardiovascular instability rather than routinely." },
                 { step: "4. The noradrenaline → vasopressin swap", detail: "As the storm resolves into vasoplegic, endocrine shock: start vasopressin 0.5–4 units/h and titrate noradrenaline down. Rationale — V1 agonism bypasses downregulated adrenoceptors, the V2 effect treats the diabetes insipidus (~65% of donors), and catecholamine-sparing protects the heart, liver and kidneys. Done within hours of confirmation, aiming for the lowest catecholamine dose before the heart is assessed." },
@@ -384,7 +384,7 @@ const OrganDonationTopic = () => {
                 { step: "1. Decision that BSD criteria are not met", detail: "Catastrophic injury with treatment futile, but the brainstem is not dead — so death must be confirmed by circulatory criteria. The patient is alive until then; comfort, not organ protection, governs the prescription." },
                 { step: "2. Pre-mortem drug rule", detail: "Only drugs that benefit the patient (analgesia, sedation, secretions control) are given, titrated to distress and never to shorten life. Pre-mortem heparin is an authorised 'pre-mortem intervention' only where specifically agreed case-by-case with the SN-OD and treating team — it is not routine UK practice and is never prescribed unilaterally." },
                 { step: "3. Withdrawal (extubation) — clock starts", detail: "WLST, usually in theatre or ICU. Functional warm ischaemic time begins when SBP falls below 50 mmHg. No organ-directed drug is given during this window." },
-                { step: "4. Cardiac arrest → 5-minute hands-off observation", detail: "Legal time of death = the START of the 5-minute observation period (the moment observation of absent circulation begins). Nothing is touched, no drug is given, during the standoff; after 5 minutes of absent circulation, death is confirmed." },
+                { step: "4. Cardiac arrest → 5-minute hands-off observation", detail: "Observe continuously for 5 minutes after circulatory arrest and apnoea, then complete the required examination. Confirm and record death when all criteria are satisfied, not at the start of observation. Restart the assessment if spontaneous circulatory, respiratory or neurological function returns." },
                 { step: "5. Post-mortem — retrieval sequence", detail: "Only now may organ-directed drugs be given: heparin and vasodilators in the perfusate, cannulation for cold perfusion within ~10 minutes, or abdominal/thoraco-abdominal NRP with arch-vessel exclusion to prevent cerebral reperfusion. Stand-down if death has not occurred within the agreed window (typically 2–3 h from withdrawal) — warm ischaemia too long for viable retrieval." },
               ].map((s) => (
                 <div key={s.step} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
@@ -399,7 +399,7 @@ const OrganDonationTopic = () => {
               {[
                 { step: "1. Stop all organ-directed therapy", detail: "Vasopressin, noradrenaline, insulin, thyroid hormone, DDAVP and ventilation are discontinued once cross-clamp/retrieval is complete — their purpose ended with organ removal." },
                 { step: "2. Dignified end-of-life care", detail: "The body is cared for with the same dignity as any death; the coroner/procurator fiscal is informed where required, and the family is supported by the SN-OD with follow-up." },
-                { step: "3. Document the timing chain", detail: "Record the legal time of death (first BSD test set, or start of the 5-minute DCD observation), time of each drug swap, cross-clamp time and warm/cold ischaemic times — these feed the national audit and graft outcome reporting." },
+                { step: "3. Document the timing chain", detail: "Record the confirmed time of death (DNC: ordinarily after the second set, or later if required ancillary evidence remains outstanding; DCD: after 5 minutes of assessment and the required examination, when all criteria are satisfied), time of each drug swap, cross-clamp time and warm/cold ischaemic times — these feed the national audit and graft outcome reporting." },
               ].map((s) => (
                 <div key={s.step} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
                   <span className="font-bold text-primary text-sm sm:whitespace-nowrap sm:w-64 sm:shrink-0">{s.step}</span>
@@ -421,7 +421,7 @@ const OrganDonationTopic = () => {
           <ExamSection id="dcd" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <CollapsibleSubsection title="DCD — Pathway & Maastricht Classification">
             <p className="text-muted-foreground leading-relaxed mb-3">
-              DCD ~60% of UK deceased donations. Functional WIT begins when SBP &lt;50 mmHg. Mandatory 5-min hands-off period after asystole; the <strong>legal time of death is the start of the 5-minute observation period</strong> — i.e. the time the clinician begins observing the absent circulation, not the end of the standoff. Retrieval may only begin once the full 5 minutes have elapsed and death has been confirmed <InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" />.
+              DCD ~60% of UK deceased donations. Functional WIT begins when SBP &lt;50 mmHg. Mandatory 5-min hands-off period after asystole; the <strong>recorded time of death follows the full assessment and required examination</strong>, when the clinician is satisfied that all circulatory criteria are met. Do not backdate it to the start of observation. Retrieval may only begin once the full 5 minutes have elapsed and death has been confirmed <InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" />.
             </p>
             <div className="space-y-2 mb-4">
               {[
@@ -456,8 +456,8 @@ const OrganDonationTopic = () => {
             <CollapsibleSubsection title="Paediatric Organ Donation">
             <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
               <li>Death by neurological criteria cannot be diagnosed in infants below <strong>37 weeks corrected gestational age</strong>. <InlineRef topicId="organ-donation" refLabel="AoMRC DNC Code of Practice (PDF)" /></li>
-              <li>Current AoMRC 2025 Appendix 2 governs paediatric testing. From 37 weeks corrected gestational age to &lt;24 months, require a minimum 24-hour interval between complete sets; apply all paediatric preconditions. Apnoea endpoints: starting PaCO₂ ≥5.3 kPa, minimum 5 min, ending ≥8.0 kPa, rise ≥2.7 kPa and pH &lt;7.3. Historical RCPCH 2015 is not the current standalone protocol. <InlineRef topicId="organ-donation" refLabel="AoMRC 2025" /></li>
-              <li>Ancillary tests have a larger role when preconditions cannot be met, but are not mandated by the UK codes.</li>
+              <li>Current AoMRC 2025 Appendix 2 governs paediatric testing. From 37 weeks corrected gestational age to &lt;24 months, wait at least 24 hours after loss of the last observed brainstem reflex or spontaneous breath before testing, and allow at least 24 hours between complete sets. Use corrected age after prematurity and apply all paediatric preconditions. Apnoea endpoints: starting PaCO₂ ≥5.3 kPa, minimum 5 min, ending ≥8.0 kPa, rise ≥2.7 kPa and pH &lt;7.3. Historical RCPCH 2015 is not the current standalone protocol. <InlineRef topicId="organ-donation" refLabel="AoMRC 2025" /></li>
+              <li>Ancillary investigation is not routinely required but can be necessary in circumstances specified by the Code. In children under 24 months, no ancillary investigation is currently recommended to support DNC: delay and seek expert advice where needed; diagnosis may not be feasible. In older children, selection and interpretation require specialist expertise. <InlineRef topicId="organ-donation" refLabel="AoMRC 2025" /></li>
               <li>Epidemiology differs: brain death is a smaller share of PICU deaths; most follow withdrawal of life-sustaining treatment, so paediatric DCD and neonatal DCD are increasingly important. <InlineRef topicId="organ-donation" refLabel="Meert PICU Deaths 2014" /></li>
               <li>Communication: parents hold authorisation (deemed consent does not apply to under-18s in England); involve the SNOD and paediatric specialist nurse early, and separate the conversation about death from the conversation about donation.</li>
             </ul>
@@ -477,7 +477,7 @@ const OrganDonationTopic = () => {
             <h3 className="text-base font-semibold text-foreground mb-2">DBD — no withdrawal; support is maintained to retrieval</h3>
             <div className="space-y-2 mb-4">
               {[
-                { step: "Confirm death", detail: "Two sets of brainstem death tests; time of death is completion of the second set. From that moment the ventilator, vasopressors and monitoring are not 'treatment' — they are organ preservation." },
+                { step: "Confirm death", detail: "Two sets of brainstem death tests; time of death is ordinarily completion of the second set, once all criteria are met (later if required ancillary evidence is outstanding). From that moment the ventilator, vasopressors and monitoring are not 'treatment' — they are organ preservation." },
                 { step: "Optimise for hours to days", detail: "Hormonal bundle, noradrenaline→vasopressin swap, DDAVP, lung recruitment and cardiac output monitoring run until the retrieval teams are assembled. There is no warm ischaemic time pressure — grafts remain perfused until cross-clamp, which is why DBD yields the most organs per donor (typically 3–4, including heart and lungs)." },
                 { step: "Theatre", detail: "Transfer ventilated and monitored as for any ICU transfer. Heparin 25,000–30,000 units immediately before aortic cross-clamp, then cold flush. Support is disconnected only after cross-clamp." },
               ].map((s) => (
@@ -494,7 +494,7 @@ const OrganDonationTopic = () => {
                 { step: "Plan & position", detail: "Agree the location (theatre anaesthetic room adjacent to the operating theatre is standard; ICU only where geography forces it), who withdraws (the treating ICU team — never the retrieval team), the symptom-control prescription, and the stand-down time with the SN-OD before starting." },
                 { step: "Comfort measures first", detail: "Analgesia and sedation are titrated to distress exactly as for any dying patient; they are never escalated to hasten death. Family remain present for as long as they wish — the practical choreography (family step out just before transfer, or remain in the anaesthetic room) is agreed in advance." },
                 { step: "Withdrawal (extubation)", detail: "Tracheal extubation and discontinuation of vasoactive support; the withdrawal-to-arrest interval is documented minute-by-minute by the SN-OD. Most deaths occur within 1–2 hours of withdrawal." },
-                { step: "5-minute hands-off observation", detail: "After asystole (loss of arterial pulsatility), nothing is touched for 5 minutes. Legal time of death = the START of this observation period. Autoresuscitation after 5 minutes of observed absent circulation has not been reported in controlled DCD." },
+                { step: "5-minute hands-off observation", detail: "After asystole (loss of arterial pulsatility), nothing is touched for 5 minutes. After the observation period, complete the required examination and record death only when all circulatory criteria are met. The time is not backdated to the start. Autoresuscitation after 5 minutes of observed absent circulation has not been reported in controlled DCD." },
                 { step: "Death confirmed → rapid transfer", detail: "The retrieval team (who have stayed out of the room until now) take over. Cold perfusion or NRP cannulation should begin within ~10 minutes of confirmed death. If death has not occurred within the agreed stand-down window (commonly 2–3 hours, organ-specific), the donor is returned to the ward/ICU for continuing end-of-life care and donation does not proceed." },
               ].map((s) => (
                 <div key={s.step} className="flex flex-col sm:flex-row gap-1 sm:gap-3 p-3 rounded border border-border">
@@ -614,7 +614,7 @@ const OrganDonationTopic = () => {
           <ExamPitfallsCallout
             accent="icu"
             pitfalls={[
-              "DBD: brain-stem death testing — two doctors, two sets ≥6 h apart, prerequisites met.",
+              "DNC: two complete sets with all prerequisites met. For age ≥24 months, the interval need not be prolonged once gases and baseline parameters are suitable again; under24 months require at least24 h between sets. Pre-testing observation is a separate requirement.",
               "DCD: planned withdrawal in identified candidates — controlled (Maastricht III) is the commonest UK pathway.",
               "Donor optimisation: cardiovascular stability (noradrenaline + vasopressin), lung-protective ventilation, T4/methylprednisolone, glycaemic control.",
               "SNOD referral early — even before brain-stem death testing or withdrawal decisions.",
