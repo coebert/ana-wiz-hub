@@ -28,7 +28,7 @@ const FORMULA: Record<BurnFormula, { label: string; note: React.ReactNode }> = {
   parkland: { label: "Parkland (4 mL/kg/%TBSA)", note: "Classic Parkland teaching arithmetic; half in the first 8 h from injury, half over the next 16 h." },
   "nsw-modified-parkland": {
     label: "NSW ACI modified Parkland (3 mL/kg/%TBSA)",
-    note: <>NSW ACI (adults >20% TBSA, children >10% TBSA): Hartmann's, half in first 8 h from injury; infusion rate is guided by urine output, not by formula. In children, maintenance fluid is given in addition. <a className="underline" href={ACI} target="_blank" rel="noopener noreferrer">Source</a></>,
+    note: <>NSW ACI (adults &gt;20% TBSA, children &gt;10% TBSA): Hartmann's, half in first 8 h from injury; infusion rate is guided by urine output, not by formula. In children, maintenance fluid is given in addition. <a className="underline" href={ACI} target="_blank" rel="noopener noreferrer">Source</a></>,
   },
   "aba-adult": {
     label: "ABA 2024 adult start (2 mL/kg/%TBSA)",
