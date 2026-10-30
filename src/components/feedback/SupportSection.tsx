@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Heart, MessageSquare, ExternalLink, X, Send, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { DONATION_CHOICES, logDonateClick } from "@/lib/donation";
+import { DONATION_CHOICES, STRIPE_CONTRIBUTE_URL, STRIPE_SOURCE, logDonateClick } from "@/lib/donation";
 
 type FormType = "topic" | "error";
 
