@@ -23,8 +23,8 @@ export const UNIT_TARGET_UNITS = ["units/hr"] as const;
 export type TargetUnit = (typeof MASS_TARGET_UNITS)[number] | (typeof UNIT_TARGET_UNITS)[number];
 
 export type NormalisedStandard =
-  | { ok: true; kind: "mass"; amountMg: number; finalVolumeMl: number; mgPerMl: number; mcgPerMl: number; target: TargetUnit; weightBased: boolean; note?: string }
-  | { ok: true; kind: "units"; amountUnits: number; finalVolumeMl: number; unitsPerMl: number; target: TargetUnit; weightBased: boolean; note?: string }
+  | { ok: true; kind: "mass"; amountMg: number; finalVolumeMl: number; mgPerMl: number; mcgPerMl: number; target: TargetUnit; weightBased: boolean; note?: string; reason?: undefined }
+  | { ok: true; kind: "units"; amountUnits: number; finalVolumeMl: number; unitsPerMl: number; target: TargetUnit; weightBased: boolean; note?: string; reason?: undefined }
   | { ok: false; reason: string };
 
 const pos = (n: unknown): n is number => typeof n === "number" && Number.isFinite(n) && n > 0;
@@ -58,7 +58,7 @@ export function normaliseInfusionStandard(std: InfusionStandardRecord | null | u
   return { ok: true, kind: "mass", amountMg: amount, finalVolumeMl: vol, mgPerMl, mcgPerMl: mgPerMl * 1000, target, weightBased, note: std.note };
 }
 
-export type RateResult = { ok: true; mlPerHr: number; workings: string } | { ok: false; reason: string };
+export type RateResult = { ok: true; mlPerHr: number; workings: string; reason?: undefined } | { ok: false; reason: string };
 
 const f = (n: number, dp: number) => Number(n.toFixed(dp)).toString();
 
