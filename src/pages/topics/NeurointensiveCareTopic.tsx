@@ -197,8 +197,8 @@ const NeurointensiveCareTopic = () => {
         { text: "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically", cites: ["BJA Educ 2018"] },
         { text: "Cerebral microdialysis: LPR >25 = metabolic crisis. ↓ pyruvate = ischaemia; normal/↑ pyruvate = mitochondrial dysfunction (won't respond to ↑ CPP)", cites: ["BJA Educ 2014"] },
         { text: "Anti-NMDAR encephalitis: start immunotherapy empirically — do not wait for antibody results", cites: ["BTF 2017"] },
-        { text: "GBS: 20/30/40 rule for intubation — FVC <20, MIP <−30, MEP <40", cites: ["BJA Educ 2018"] },
-        { text: "GBS: suxamethonium is SAFE; steroids do NOT work; IVIg and PLEX are equivalent but do not combine", cites: ["BJA Educ 2014"] },
+        { text: "GBS: 20/30/40 respiratory warning criteria — FVC <20 mL/kg, MIP less negative than −30 cmH₂O (absolute magnitude <30), MEP <40 cmH₂O; assess trajectory, bulbar function and clinical context, not automatic intubation", cites: ["GBS respiratory review"] },
+        { text: "GBS: avoid suxamethonium because denervation increases life-threatening hyperkalaemia risk; steroids do NOT work; IVIg and PLEX are equivalent but do not combine", cites: ["GBS anaesthesia SNACC"] },
         { text: "GBS autonomic instability can cause sudden cardiac death — continuous ECG monitoring essential", cites: ["BTF 2017"] },
         { text: "Myasthenic crisis: trial NIV first if no bulbar weakness (avoids intubation in ~70%); intubate for FVC <15 mL/kg, NIF <−20, severe bulbar dysfunction or aspiration", cites: ["BJA Educ 2018"] },
         { text: "Myasthenic vs cholinergic crisis: edrophonium test improves myasthenic, worsens cholinergic; cholinergic = SLUDGE + miosis + fasciculations — stop anticholinesterases, give atropine, support ventilation", cites: ["BJA Educ 2014"] },
@@ -1253,7 +1253,7 @@ const NeurointensiveCareTopic = () => {
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Indications for ICU Admission</h3>
           <div className="space-y-2 mb-4">
             {[
-              { indication: "Respiratory", detail: "FVC <20 mL/kg or falling rapidly (the '20/30/40 rule': FVC <20, MIP <−30 cmH₂O, MEP <40 cmH₂O → intubate). Single breath count <20. Bulbar weakness with aspiration risk." },
+              { indication: "Respiratory", detail: "FVC <20 mL/kg or falling rapidly; the '20/30/40' warning criteria include MIP less negative than −30 cmH₂O (absolute magnitude <30) and MEP <40 cmH₂O. Consider respiratory trend, fatigue, bulbar function and airway protection; these are not automatic intubation clearance rules. Single breath count <20 and aspiration risk warrant urgent assessment." },
               { indication: "Autonomic", detail: "Labile BP (hyper/hypotension), tachycardia/bradycardia, arrhythmias, urinary retention, ileus. Autonomic dysfunction present in ~70% of ventilated patients." },
               { indication: "Rapid Progression", detail: "Inability to walk within 1 week of onset. Rapid deterioration of power — may need elective intubation before crisis." },
             ].map((i) => (
@@ -1267,7 +1267,7 @@ const NeurointensiveCareTopic = () => {
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">System-Based ICU Management</h3>
           <div className="space-y-2 mb-4">
             {[
-              { system: "Respiratory", management: "Serial FVC (4–6 hourly) — do NOT rely on SpO₂ (desaturation is a late sign). Intubate electively if FVC declining rapidly, bulbar dysfunction, or fatigue. Suxamethonium is SAFE in GBS (unlike MND/denervation — no upregulation of AChR). Tracheostomy if ventilation expected >2 weeks (common). SIMV/PS weaning." },
+              { system: "Respiratory", management: "Serial FVC (4–6 hourly) — do NOT rely on SpO₂ (desaturation is a late sign). Assess elective intubation for rapid decline, bulbar dysfunction or fatigue. Avoid suxamethonium in GBS: denervation-related AChR upregulation can cause life-threatening hyperkalaemia. Tracheostomy if ventilation expected >2 weeks (common). Individualised weaning." },
               { system: "Autonomic", management: "Continuous ECG monitoring — risk of asystole, VT. Short-acting agents for BP control (esmolol, GTN). Avoid long-acting antihypertensives (rapid swings). Atropine at bedside for bradycardia. Temporary pacing rarely needed. Constipation/ileus — prokinetics, avoid opioids." },
               { system: "Pain", management: "Neuropathic pain is very common (~65%) and often severe. Gabapentin or pregabalin first-line. Carbamazepine, amitriptyline. Opioids may be needed acutely but worsen ileus and mask respiratory decline." },
               { system: "VTE", management: "High risk (immobility + inflammation). LMWH prophylaxis unless contraindicated. Mechanical prophylaxis (IPC). Significant cause of mortality in GBS." },
@@ -1329,7 +1329,7 @@ const NeurointensiveCareTopic = () => {
           <div className="mt-4 p-4 rounded-lg bg-secondary/50 border border-primary/20">
             <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
             <p className="text-sm text-muted-foreground">
-              GBS is a favourite FFICM/FRCA exam topic. Key points: the 20/30/40 rule for intubation (FVC/MIP/MEP), suxamethonium is SAFE (contrast with MND/burns/denervation), steroids do NOT work (unlike CIDP), IVIg and PLEX are equivalent but should NOT be combined, and autonomic instability can cause sudden cardiac death — continuous monitoring essential.
+              GBS: assess the 20/30/40 respiratory warning criteria in clinical context; MIP weakness is less negative than −30 cmH₂O, not more negative. Avoid suxamethonium because denervation increases life-threatening hyperkalaemia risk. Steroids do NOT work (unlike CIDP), IVIg and PLEX should NOT be combined, and autonomic instability can cause sudden cardiac death — continuous monitoring essential.
             </p>
           </div>
           </CollapsibleSubsection>
