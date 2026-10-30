@@ -23,11 +23,11 @@ const drugs: DrugRow[] = [
   { name: "Ephedrine", type: "tertiary", use: "Vasopressor", pKa: "9.6", note: "Crosses BBB → CNS stimulation; crosses placenta → safe in obstetrics for maternal hypotension (now superseded by phenylephrine)." },
   { name: "Ketamine", type: "tertiary", use: "IV anaesthetic", pKa: "7.5", note: "Largely unionised at physiological pH → rapid BBB crossing → fast onset of dissociative anaesthesia." },
 
-  { name: "Glycopyrrolate", type: "quaternary", use: "Antimuscarinic", note: "Permanent +ve charge → does NOT cross BBB or placenta. First-line antisialagogue and pairing for neostigmine reversal." },
+  { name: "Glycopyrrolate", type: "quaternary", use: "Antimuscarinic", note: "Permanent +ve charge → poorly penetrates BBB and crosses placenta to a limited extent (glycopyrronium SmPC). First-line antisialagogue and pairing for neostigmine reversal." },
   { name: "Neostigmine", type: "quaternary", use: "Anticholinesterase", note: "Charged → confined to NMJ; cannot reverse central anticholinergic syndrome (use physostigmine, a tertiary amine, for that)." },
-  { name: "Suxamethonium", type: "quaternary", use: "Depolarising NMBA", note: "Two quaternary nitrogens (bis-quaternary). Cannot cross BBB or placenta — safe NMBA for foetus." },
+  { name: "Suxamethonium", type: "quaternary", use: "Depolarising NMBA", note: "Two quaternary nitrogens (bis-quaternary). Limited passive barrier transfer; quaternary charge does not establish zero placental passage or fetal safety." },
   { name: "Rocuronium", type: "quaternary", use: "Non-depolarising NMBA", note: "Aminosteroid quaternary ammonium. Confined to extracellular space → low Vd, predictable dosing on lean body weight." },
-  { name: "Vecuronium / Pancuronium", type: "quaternary", use: "Non-depolarising NMBA", note: "Same family as rocuronium. Quaternary charge prevents BBB and placental crossing — does not affect foetus or sedation level." },
+  { name: "Vecuronium / Pancuronium", type: "quaternary", use: "Non-depolarising NMBA", note: "Same family as rocuronium. Quaternary charge limits passive barrier transfer; it does not guarantee zero fetal exposure. NMBAs provide no sedation." },
   { name: "Atracurium / Cisatracurium", type: "quaternary", use: "Non-depolarising NMBA", note: "Bis-quaternary benzylisoquinoliniums. Hofmann elimination is independent of organ function." },
   { name: "Hyoscine butylbromide (Buscopan)", type: "quaternary", use: "Antispasmodic", note: "Quaternary version of hyoscine — peripheral antimuscarinic without central effects (vs. hyoscine hydrobromide, which is tertiary and crosses BBB → antiemetic, sedative)." },
 ];
@@ -177,7 +177,7 @@ export const AmineComparisonDiagram = () => {
               <Property label="Water solubility" value={mode === "tertiary" ? "Moderate — increases when protonated" : "High (always charged)"} />
               <Property label="Lipid solubility" value={mode === "tertiary" ? "Unionised form is highly lipid-soluble" : "Very low — cannot dissolve in lipid bilayer"} />
               <Property label="BBB penetration" value={mode === "tertiary" ? "Yes (via unionised form)" : "No"} />
-              <Property label="Placental crossing" value={mode === "tertiary" ? "Yes" : "No — foetus protected"} />
+              <Property label="Placental crossing" value={mode === "tertiary" ? "Yes" : "Limited; not necessarily zero"} />
               <Property label="GI absorption" value={mode === "tertiary" ? "Generally good (oral bioavailability variable)" : "Poor — must be given parenterally"} />
               <Property label="Vd" value={mode === "tertiary" ? "Often large — distributes into tissue" : "Small — confined to extracellular fluid"} />
             </div>
