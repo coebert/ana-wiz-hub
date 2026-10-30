@@ -73,7 +73,7 @@ const OrganicChemistryTopic = () => {
                 This is clinically important because isomers can have very different pharmacological properties.
               </p>
               <ul className="list-disc list-inside space-y-1">
-                <li><strong>Structural isomers:</strong> Different connectivity. e.g. enflurane vs isoflurane (same formula CHClF₂-O-CHF₂ but atoms connected differently)</li>
+                <li><strong>Structural isomers:</strong> Different connectivity. Enflurane and isoflurane share molecular formula C₃H₂ClF₅O; enflurane is CHF₂–O–CF₂–CHClF and isoflurane is CHF₂–O–CHCl–CF₃.</li>
                 <li><strong>Geometric (cis/trans) isomers:</strong> Different spatial arrangement around a double bond or ring. e.g. atracurium has cis and trans isomers</li>
                 <li><strong>Optical isomers (enantiomers):</strong> Non-superimposable mirror images at a chiral centre. e.g. S(+) and R(−) ketamine</li>
               </ul>
@@ -263,8 +263,8 @@ const OrganicChemistryTopic = () => {
                 <InlineRef topicId="organic-chemistry" refLabel="Peck & Hill Volatiles" />
               </p>
               <p>
-                The <strong>ether linkage</strong> itself confers chemical stability and non-flammability, explaining the
-                historical shift away from flammable agents such as diethyl ether and cyclopropane towards halogenated ethers.
+                The <strong>ether linkage alone does not confer non-flammability</strong>: diethyl ether is highly flammable.
+                Extensive halogenation reduces flammability in modern volatile ethers; describe properties for the specific agent, not the ether bond alone.
                 <strong> Sevoflurane</strong> is a fluorinated methyl isopropyl ether (MAC 2%, blood:gas 0.69) that is stable in
                 the body but is degraded by strong bases (soda lime, especially when desiccated) to the nephrotoxic
                 <strong> Compound A</strong>. Comparing a fully fluorinated modern agent such as desflurane or sevoflurane with

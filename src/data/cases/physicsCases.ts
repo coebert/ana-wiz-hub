@@ -17,13 +17,13 @@ const s = {
   cardiacOutput: { label: "BJA Educ: cardiac output monitoring", href: "https://doi.org/10.1016/j.bjae.2020.06.001" },
   gasLaws: { label: "BJA Educ: physical principles of gas storage", href: "https://doi.org/10.1093/bjaceaccp/mkl047" },
   breathingCircuits: { label: "BJA Educ: breathing circuits and soda lime", href: "https://doi.org/10.1093/bjaceaccp/mki063" },
-  temperature: { label: "NICE NG65: hypothermia prevention", href: "https://www.nice.org.uk/guidance/cg65" },
+  temperature: { label: "NICE CG65: hypothermia prevention", href: "https://www.nice.org.uk/guidance/cg65" },
   ultrasoundVascular: { label: "BJA Educ: ultrasound-guided vascular access", href: "https://doi.org/10.1016/j.bjae.2019.11.002" },
   humidification: { label: "BJA Educ: humidification and HMEs", href: "https://doi.org/10.1093/bjaceaccp/mkm001" },
   scavenging: { label: "APSF/HSE: anaesthetic gas scavenging", href: "https://www.hse.gov.uk/pubns/priced/hsg137.pdf" },
   defibrillation: { label: "Resuscitation Council UK: defibrillation", href: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/adult-advanced-life-support-guidelines" },
   vaporiserSafety: { label: "BJA Educ: vaporisers", href: "https://doi.org/10.1093/bjaceaccp/mki016" },
-  centralLine: { label: "NICE IPG411: ultrasound-guided catheterisation", href: "https://www.nice.org.uk/guidance/ipg411" },
+  centralLine: { label: "NICE TA49: ultrasound locating devices for central venous catheters", href: "https://www.nice.org.uk/guidance/ta49" },
 };
 
 export const physicsCaseBank: CaseBank = {
@@ -76,7 +76,7 @@ export const physicsCaseBank: CaseBank = {
         },
       ],
       detailedAnswer: [
-        { title: "Clinical reasoning", content: "The oximeter reports a calibrated estimate, not a measurement of arterial saturation. Because calibration curves are derived from volunteer desaturation studies in mostly light-skinned participants, melanin-related absorbance and low signal-to-noise conditions can bias the derived R value. The steep part of the oxyhaemoglobin dissociation curve means a small bias in saturation corresponds to a large change in PaO₂ — here 92% versus 86% represents clinically important hypoxaemia." },
+        { title: "Clinical reasoning", content: "The oximeter reports a calibrated estimate, not a measurement of arterial saturation. Because calibration curves are derived from volunteer desaturation studies in mostly light-skinned participants, melanin-related absorbance and low signal-to-noise conditions can bias the derived R value. On the steep portion of the oxyhaemoglobin dissociation curve, a relatively small fall in PaO₂ produces a disproportionately large fall in saturation and oxygen content. Positive SpO₂ bias may conceal clinically important hypoxaemia; do not infer a precise PaO₂ change from the SpO₂–SaO₂ discrepancy." },
         { title: "Management and monitoring", content: "Confirm true oxygenation with co-oximetry on a blood gas when clinical suspicion and SpO₂ disagree, and repeat sampling after any change in respiratory support. Optimise probe site and perfusion, check for methaemoglobinaemia or carboxyhaemoglobinaemia if the gap persists, and use the plethysmographic waveform quality as a signal-adequacy check. Raise the SpO₂ alarm threshold in patients known to have a positive bias." },
         { title: "Exam pitfall", content: "Do not answer that pulse oximetry is 'accurate to ±2%' without stating the conditions of that claim: accuracy degrades below 80% saturation, in poor perfusion, with motion, in the presence of dyshaemoglobins and with increased skin pigmentation. Name the AC:DC ratio and the empirical calibration explicitly." },
       ],
@@ -260,7 +260,7 @@ export const physicsCaseBank: CaseBank = {
         },
       ],
       detailedAnswer: [
-        { title: "Clinical reasoning", content: "Laser output combines high irradiance with a specific wavelength. CO₂ lasers (10.6 µm) are absorbed by water and cut superficially, while Nd:YAG (1064 µm) penetrates deeper — determining both tissue effect and eye-protection requirements. A fire needs fuel (tube, swabs, drapes), an oxidiser (oxygen or nitrous oxide) and an ignition source (the laser); anaesthetic control is mainly over the oxidiser and the fuel." },
+        { title: "Clinical reasoning", content: "Laser output combines high irradiance with a specific wavelength. CO₂ lasers (10.6 µm) are absorbed by water and cut superficially, while Nd:YAG (1064 nm, or 1.064 µm) penetrates deeper — determining both tissue effect and eye-protection requirements. A fire needs fuel (tube, swabs, drapes), an oxidiser (oxygen or nitrous oxide) and an ignition source (the laser); anaesthetic control is mainly over the oxidiser and the fuel." },
         { title: "Management and monitoring", content: "Rehearse the fire drill so the sequence is automatic: stop laser, stop gases, remove fuel, extinguish with saline, then reassess airway and ventilation. After the fire, expect airway oedema, mucosal burn and carbonaceous debris; plan bronchoscopy, consider corticosteroids case-by-case and secure critical care support. Non-technical skills — a pre-lasing brief and clear shared FiO₂ target — prevent most events." },
         { title: "Exam pitfall", content: "Do not begin with 'remove the tube' without stopping the oxygen supply, and do not omit the wider laser-safety framework (eye protection, controlled area, smoke evacuation) which examiners expect alongside fire management." },
       ],
@@ -364,7 +364,7 @@ export const physicsCaseBank: CaseBank = {
       title: "Ringing versus flattened arterial traces on the same list",
       category: "Monitoring artefact",
       difficulty: "Intermediate",
-      summary: "Distinguishing underdamped resonance from overdamping using natural frequency and the modified Allen test of the trace.",
+      summary: "Distinguishing underdamped resonance from overdamping using natural frequency and the fast-flush (square-wave) test.",
       topicIds: ["pressure-measurement", "clinical-measurement", "equipment-monitoring"],
       patient: "Two patients in the same theatre list have radial arterial lines from the same manufacturer batch. One trace shows tall, spiky systolic peaks with overshoot; the other is smooth and rounded with a low measured systolic value.",
       presentation: "Both flush tests are performed. The first shows several rapid oscillations before settling; the second shows a slow, non-oscillating return to baseline.",
@@ -428,7 +428,7 @@ export const physicsCaseBank: CaseBank = {
           title: "Identify the sources of error here",
           prompt: "Why is the reading implausible and scattered?",
           answer: [
-            "Tricuspid regurgitation causes indicator recirculation and a prolonged, distorted curve, characteristically overestimating cardiac output.",
+            "Significant tricuspid regurgitation can distort thermodilution curves; recirculation may prolong the curve and underestimate cardiac output, although error direction and magnitude vary with flow and technique. Do not infer true high or low output from TR alone.",
             "Inconsistent injectate volume, temperature or injection speed, and injection timed to the respiratory cycle, all increase beat-to-beat variability.",
             "Bolus thermodilution has an inherent imprecision of around ±20%, so isolated values should never be interpreted alone.",
           ],
@@ -445,7 +445,7 @@ export const physicsCaseBank: CaseBank = {
       ],
       detailedAnswer: [
         { title: "Clinical reasoning", content: "Thermodilution assumes a single, well-mixed passage of indicator through the right heart. Valvular regurgitation, intracardiac shunts, arrhythmia and irregular injection technique all violate this assumption. Because the percentage error concept combines the reference method's own imprecision (~20%) with that of any comparator, a 30% interchangeability threshold is conventionally used when validating newer cardiac output technologies against thermodilution." },
-        { title: "Management and monitoring", content: "Standardise injectate volume, temperature and speed, inject at a consistent point in the respiratory cycle, discard outlying curves, and average multiple measurements. In known tricuspid regurgitation, recognise thermodilution as unreliable and prefer echocardiography, an alternative calibrated technique, or trend rather than absolute values." },
+        { title: "Management and monitoring", content: "Standardise injectate volume, temperature and speed, use a technically consistent respiratory sampling method, review outlying curves, and average multiple measurements. Tricuspid regurgitation does not automatically invalidate every thermodilution result. Corroborate discordant measurements with clinical findings and an appropriate alternative such as echocardiography or direct Fick measurement; neither error direction nor true output can be inferred from TR alone." },
         { title: "Exam pitfall", content: "Do not accept a single cardiac output value at face value. Examiners expect explicit discussion of recirculation from tricuspid regurgitation, injectate technique and the inherent ±20% precision of the reference method itself." },
       ],
       takeHome: "Thermodilution cardiac output is only as reliable as its assumptions: tricuspid regurgitation and poor technique distort the curve, so average multiple boluses and correlate with the clinical picture.",
@@ -721,7 +721,7 @@ export const physicsCaseBank: CaseBank = {
       ],
       detailedAnswer: [
         { title: "Clinical reasoning", content: "Ultrasound artefacts arise from the physical assumptions built into image reconstruction: that sound travels in a straight line at a constant speed and that echoes return only from the true reflector's depth. Needle imaging is particularly prone to tip-shaft confusion in short axis, and highly reflective metal generates reverberation artefacts that can be mistaken for structures or tip position." },
-        { title: "Management and monitoring", content: "National guidance recommends real-time two-dimensional ultrasound guidance for internal jugular central venous catheterisation, with confirmation of the wire in the target vein before dilation and catheter insertion. Combining in-plane and out-of-plane views, or using dynamic needle tip tracking where available, reduces artefact-related misplacement." },
+        { title: "Management and monitoring", content: "NICE TA49 recommends 2D ultrasound as the preferred method for elective internal jugular CVC insertion in adults and children, and says it should be considered in most other clinical circumstances, including emergencies. Wire visualisation before dilation is a procedural safety step supported by vascular-access teaching, not a specific TA49 quotation. Combining views or dynamic needle-tip tracking reduces artefact-related misplacement." },
         { title: "Exam pitfall", content: "Do not simply say 'ultrasound is more accurate than landmark technique' — examiners expect specific artefact names (tip-shaft ambiguity, reverberation, vessel tenting) and how technique (in-plane view, wire confirmation) mitigates them." },
       ],
       takeHome: "A needle that looks intraluminal on ultrasound may not be: track the true tip dynamically and confirm venous placement with aspiration and wire visualisation before dilating.",
@@ -925,7 +925,7 @@ export const physicsCaseBank: CaseBank = {
           title: "Explain what determines shock success",
           prompt: "What factors govern the current actually delivered to the myocardium?",
           answer: [
-            "Delivered current depends on selected energy and transthoracic impedance (typically 70–80 ohms), which is increased by poor pad contact, hair, large chest size, low lung volume at the time of shock and incorrect pad position.",
+            "Delivered current depends on selected energy and transthoracic impedance (typically 70–80 ohms), which is increased by poor pad contact, hair, large chest size, greater lung inflation and incorrect pad position. Do not delay shocks to target a respiratory phase; prioritise pad contact and position and minimal interruptions.",
             "Biphasic defibrillators use impedance-compensated waveforms that adjust current delivery to some extent for measured impedance, generally allowing effective defibrillation at lower total energy than older monophasic devices.",
             "Even with compensation, sufficiently high impedance (hair, poor contact, very large body habitus) can reduce delivered current below the threshold needed to achieve simultaneous depolarisation of a critical mass of myocardium.",
           ],

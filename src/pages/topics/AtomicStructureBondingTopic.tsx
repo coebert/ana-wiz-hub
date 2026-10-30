@@ -90,7 +90,7 @@ const workedExamples: WorkedExample[] = [
           <ul className="list-disc list-inside space-y-1 text-foreground">
             <li>Saying 'salt dissolves because water is wet' — define the molecular mechanism.</li>
             <li>Confusing dissociation (separation of ions) with dissolution (going into solution) — both occur, but for different reasons.</li>
-            <li>Assuming all IV drugs are aqueous — propofol, etomidate (lipid), amiodarone (cosolvent), and dantrolene (alkaline) all have non-water vehicles.</li>
+            <li>Distinguish oil-in-water emulsions (propofol and some etomidate formulations) from aqueous solutions with solubilising excipients or pH adjustment. Dantrium IV is reconstituted in water for injections as an alkaline aqueous solution; the cited amiodarone injection contains water for injections, polysorbate 80 and benzyl alcohol, with product-specific dilution requirements. Neither is simply a non-water vehicle.</li>
           </ul>
         </div>
       </div>
