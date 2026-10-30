@@ -418,7 +418,7 @@ const EndocrineDiseaseTopic = () => {
             accent="clinical"
             pitfalls={[
               'Diabetes: aim CBG 6–10 mmol/L (acceptable 4–12). Variable rate insulin infusion (VRIII) for prolonged starvation or poor control; continue long-acting basal at 80%.',
-              'Omit SGLT-2 inhibitors 3–4 days depending on the agent (dapagliflozin/empagliflozin/canagliflozin 3 days, ertugliflozin 4 days) preoperatively — risk of euglycaemic DKA.',
+              'UK multidisciplinary 2025: omit SGLT2 day before/day of procedure; US FDA 3–4-day advice is separate. Continue GLP-1/GIP with individual aspiration-risk mitigation.',
               'Steroid cover: continue usual dose + perioperative hydrocortisone (25 mg minor, 50 mg + 25 mg q8h moderate, 100 mg + 50 mg q8h major) for chronic steroid users.',
               'Thyrotoxic patient: defer elective surgery until euthyroid; in emergency use β-blocker, propylthiouracil, iodine, steroids — avoid ketamine, ephedrine.',
               'Phaeochromocytoma: α-block (phenoxybenzamine/doxazosin) first, then β-block 3–14 days preoperatively — never β-block first (unopposed α → hypertensive crisis).',

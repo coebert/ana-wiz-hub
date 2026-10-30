@@ -296,7 +296,7 @@ const CardiovascularDiseaseTopic = () => {
                 <li>ACE inhibitors / ARBs: ESC/ESA 2022 and ACC/AHA 2024 both recommend <strong>withholding on the morning of surgery</strong> in patients taking them for hypertension to reduce intra-operative hypotension; POISE-3 (2023) supports a hypotension-avoidance strategy (omit ACE-I/ARB, target MAP ≥80 mmHg) over continued therapy</li>
                 <li>Restart ACE-I/ARB within 48 h post-op once euvolaemic and renal function stable</li>
                 <li>Diuretics: typically omit on the morning of major surgery to avoid hypovolaemia and electrolyte disturbance</li>
-                <li>SGLT2 inhibitors: withhold for ≥3 days (4 days for ertugliflozin) pre-op (MHRA 2024; ACC/AHA 2024) to reduce euglycaemic DKA risk</li>
+                <li>SGLT2 inhibitors: US ACC/AHA 2024 uses ≥3 days (4 days for ertugliflozin); UK multidisciplinary 2025 omits day before/day of procedure. Name the adopted protocol rather than conflating jurisdictions <InlineRef topicId="cardiovascular-disease" refLabel="UK diabetes consensus 2025" /></li>
                 <li>Continue statins and aspirin per surgical/bleeding risk</li>
               </ul>
             </div>

@@ -80,7 +80,7 @@ const workedExamples: WorkedExample[] = [
             Optimise anaemia — check haemoglobin against ESA/iron therapy record; renal anaemia target Hb 100–120 g/L; avoid unnecessary transfusion (sensitisation risk for future transplantation) unless symptomatic or actively bleeding.
           </li>
           <li>
-            Continue erythropoiesis-stimulating agent and phosphate binders as normal; hold ACE inhibitor/ARB and SGLT2 inhibitor on the day of surgery (SGLT2 inhibitors stopped 3 days prior per "sick day rules" — euglycaemic DKA/AKI risk); continue beta-blockers.
+            Continue erythropoiesis-stimulating agent and phosphate binders as normal; hold ACE inhibitor/ARB per local policy; UK multidisciplinary 2025 consensus omits SGLT2 inhibitor the day before and day of procedure (euglycaemic DKA risk); continue beta-blockers.
           </li>
           <li>
             Intraoperative plan: standard monitoring plus consideration of invasive arterial line for haemodynamic stability given autonomic neuropathy; balanced crystalloid in modest volumes (avoid potassium-containing solutions such as Hartmann's if potassium borderline — use 0.9% saline or a low-potassium balanced solution and titrate to losses); cisatracurium for neuromuscular blockade; fentanyl-based analgesia; avoid NSAIDs.
@@ -243,7 +243,7 @@ const RenalDiseaseTopic = () => {
                   <ul className="list-disc list-inside space-y-1 text-sm">
                     <li>Continue iron and erythropoiesis-stimulating agent (ESA) therapy; correct significant anaemia before major elective surgery, avoiding unnecessary transfusion which risks HLA sensitisation and reduces future transplant compatibility.</li>
                     <li><strong>ACE inhibitors/ARBs</strong>: consider omitting on the morning of surgery for major/intermediate-risk surgery to reduce refractory intraoperative hypotension, particularly with neuraxial or general anaesthesia and significant fluid shifts.</li>
-                    <li><strong>SGLT2 inhibitors</strong> ("sick day rules"): stop 3 days before major surgery (2 days for ertugliflozin/dapagliflozin per some protocols) due to the risk of euglycaemic diabetic ketoacidosis and perioperative AKI <InlineRef topicId="renal-disease" refLabel="CPOC Kidney 2023" />.</li>
+                    <li><strong>SGLT2 inhibitors</strong> UK multidisciplinary 2025: omit day before/day of procedure, stop when a very-low-energy diet begins in people with diabetes, avoid prolonged starvation; restart when eating/drinking normally and, in hospital, capillary ketones &lt;0.6 mmol/L <InlineRef topicId="renal-disease" refLabel="UK diabetes consensus 2025" />.</li>
                     <li>Avoid iodinated <strong>contrast</strong> and other nephrotoxins (aminoglycosides, NSAIDs) in the perioperative period in patients with residual renal function; if contrast unavoidable, ensure euvolaemia and use the lowest effective dose.</li>
                   </ul>
                 </div>
