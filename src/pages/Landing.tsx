@@ -29,10 +29,9 @@ const RecentExpansions = lazy(() =>
 const nf = new Intl.NumberFormat("en-GB");
 // Round down to the nearest 10 so the headline number reads cleanly while
 // staying honest as references are added.
-const roundDown = (n: number, step = 10) => Math.max(step, Math.floor(n / step) * step);
-const CITATION_COUNT = roundDown(citationStats.totalCitations);
-const SOURCE_COUNT = roundDown(citationStats.uniqueSources);
-const TOPIC_COUNT = citationStats.topicsWithRefs;
+export const roundDown = (n: number, step = 10) => Math.floor(Math.max(0, n) / step) * step;
+const REFERENCE_ENTRY_COUNT = roundDown(citationStats.totalReferenceEntries);
+const TOPIC_COUNT = citationStats.registeredTopics;
 
 const DEMO_QUESTIONS: DemoVivaQuestion[] = [
   {
@@ -244,7 +243,7 @@ const Landing = () => {
               </ul>
               <div className="mt-5 pt-4 border-t border-border">
                 <p className="text-[11px] text-muted-foreground mono">
-                  {nf.format(CITATION_COUNT)}+ citations · {nf.format(SOURCE_COUNT)}+ sources · {nf.format(TOPIC_COUNT)} topics
+                  {nf.format(REFERENCE_ENTRY_COUNT)}+ reference entries · {nf.format(TOPIC_COUNT)} topics
                 </p>
               </div>
             </aside>
@@ -302,7 +301,7 @@ const Landing = () => {
 
         {/* Evidence base — calm bordered band, no gradient */}
         <section
-          aria-label="Evidence base"
+          aria-label="References and content review"
           className="mt-10 md:mt-14 max-w-5xl mx-auto rounded-xl border border-border bg-card shadow-elev-1 px-5 py-6 md:px-8 md:py-7"
         >
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
@@ -311,24 +310,19 @@ const Landing = () => {
                 <BookMarked className="h-5 w-5" />
               </div>
               <div>
-                <p className="eyebrow text-muted-foreground">Evidence base</p>
+                <p className="eyebrow text-muted-foreground">References and content review</p>
                 <p className="h3 mt-1">
-                  <span className="text-primary mono">{nf.format(CITATION_COUNT)}+</span> inline citations across{" "}
-                  <span className="text-primary mono">{nf.format(SOURCE_COUNT)}+</span> peer-reviewed sources
+                  References across <span className="text-primary mono">{nf.format(TOPIC_COUNT)}</span> curriculum topics
                 </p>
                 <p className="small mt-1.5 leading-relaxed">
-                  BJA Education, NICE, AAGBI, DAS, SSC and the standard FRCA textbooks — every dose, threshold and recommendation links back to a named source.
+                  Topic references include guidelines, textbooks and journal articles. Citation coverage and clinical review are ongoing. See our <Link to="/trust#content-accuracy" className="underline underline-offset-2">content review information</Link> and <Link to="/errata" className="underline underline-offset-2">report corrections</Link>.
                 </p>
               </div>
             </div>
-            <dl className="grid grid-cols-3 gap-4 md:gap-6 text-center md:text-left md:border-l md:border-border md:pl-6 shrink-0">
+            <dl className="grid grid-cols-2 gap-4 md:gap-6 text-center md:text-left md:border-l md:border-border md:pl-6 shrink-0">
               <div>
-                <dt className="eyebrow text-muted-foreground">Citations</dt>
-                <dd className="mono text-xl font-semibold text-foreground mt-0.5">{nf.format(CITATION_COUNT)}+</dd>
-              </div>
-              <div>
-                <dt className="eyebrow text-muted-foreground">Sources</dt>
-                <dd className="mono text-xl font-semibold text-foreground mt-0.5">{nf.format(SOURCE_COUNT)}+</dd>
+                <dt className="eyebrow text-muted-foreground">Reference entries</dt>
+                <dd className="mono text-xl font-semibold text-foreground mt-0.5">{nf.format(REFERENCE_ENTRY_COUNT)}+</dd>
               </div>
               <div>
                 <dt className="eyebrow text-muted-foreground">Topics</dt>
