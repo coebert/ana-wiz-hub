@@ -81,7 +81,9 @@ const Index = () => {
         <meta name="twitter:description" content={pageDescription} />
       </Helmet>
 
-      <DonationNote />
+      <div className="container mx-auto px-4 pt-3">
+        <DonationNote className="text-xs" />
+      </div>
 
       {/* Hero — split editorial layout */}
       <section className="relative border-b border-border bg-surface">

@@ -1,49 +1,17 @@
-import { supabase } from "@/integrations/supabase/client";
-import { Heart, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
+import { scrollToSupport } from "@/lib/donation";
 
-export const PAYPAL_ME_HANDLE = "RCoe";
-export const PAYPAL_URL = `https://www.paypal.com/paypalme/${PAYPAL_ME_HANDLE}`;
-
-/** Fire-and-forget log of a donate-button click (no personal data). */
-export const logDonateClick = (source: string) => {
-  void (supabase as any).from("donation_clicks").insert({ source }).then(() => {});
-};
-
-
-/** Friendly, prominent donation request shown at the top of the home page. */
-export const DonationNote = () => (
-  <section aria-labelledby="donation-note-heading" className="border-b border-border bg-card">
-    <div className="container mx-auto px-4 py-5 md:py-6">
-      <div className="max-w-4xl mx-auto flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
-        <div className="flex items-start gap-3 flex-1">
-          <Heart className="h-5 w-5 text-primary shrink-0 mt-0.5" aria-hidden />
-          <div>
-            <p id="donation-note-heading" className="text-base md:text-lg font-serif font-bold text-foreground">
-              A note from the creator
-            </p>
-            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-              AnaesthesiaCore was built to help anaesthetics and intensive care trainees learn and
-              prepare for exams that are widely considered the most difficult of any medical
-              specialty — not to make a profit. It has, however, cost a considerable amount to
-              create and needs ongoing investment to maintain. I'd really love to keep it free for
-              everyone, but without donations I may eventually have to introduce a fee. If you've
-              found it helpful and are able to, any contribution — however small — makes a real
-              difference. Thank you.
-            </p>
-          </div>
-        </div>
-        <a
-          href={PAYPAL_URL}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => logDonateClick("home-note")}
-          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors shrink-0"
-        >
-          <Heart className="h-4 w-4" aria-hidden />
-          Donate via PayPal
-          <ExternalLink className="h-3.5 w-3.5 opacity-70" aria-hidden />
-        </a>
-      </div>
-    </div>
-  </section>
+/** Quiet, single-line voluntary-support note. No pop-up, no repeat prompts. */
+export const DonationNote = ({ className = "" }: { className?: string }) => (
+  <p className={`text-sm text-muted-foreground ${className}`}>
+    Free to use. If it helps, you can{" "}
+    <Link
+      to="/#support"
+      onClick={() => window.setTimeout(() => scrollToSupport(), 0)}
+      className="underline underline-offset-2 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+    >
+      support its upkeep
+    </Link>
+    .
+  </p>
 );
