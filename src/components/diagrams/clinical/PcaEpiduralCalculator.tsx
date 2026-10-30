@@ -14,10 +14,12 @@ import { RCH_EPIDURAL_URL, RCH_PCA_URL, rchPaedsPca, rchRopivacaineEpidural } fr
 type Population = "adult" | "paeds";
 type PcaOpioid = "morphine" | "fentanyl" | "oxycodone" | "hydromorphone";
 
+const BUCKS_URL = "https://www.bucksformulary.nhs.uk/docs/Guideline_332FM.pdf";
+
 const ADULT_PCA_EXAMPLES: Record<"morphine" | "fentanyl" | "oxycodone", { bolus: string; lockout: string; background: string; conc: string }> = {
-  morphine: { bolus: "1 mg", lockout: "5 min", background: "None (default)", conc: "1 mg/mL" },
-  fentanyl: { bolus: "20 micrograms", lockout: "5 min", background: "None (default)", conc: "10 micrograms/mL" },
-  oxycodone: { bolus: "1 mg", lockout: "5 min", background: "None (default)", conc: "1 mg/mL" },
+  morphine: { bolus: "1 mg", lockout: "5 min", background: "None (restricted settings only)", conc: "1 mg/mL" },
+  fentanyl: { bolus: "20 micrograms", lockout: "5 min", background: "None (restricted settings only)", conc: "10 micrograms/mL" },
+  oxycodone: { bolus: "1 mg", lockout: "5 min", background: "None (restricted settings only)", conc: "1 mg/mL" },
 };
 
 const PcaEpiduralCalculator = () => {
@@ -97,17 +99,25 @@ const PcaEpiduralCalculator = () => {
                 <PcaCard label="Background" value={adult.background} />
                 <PcaCard label="Concentration" value={adult.conc} />
               </div>
-              <p className="text-[11px] text-muted-foreground mt-2">Common UK adult examples for opioid-naive postoperative patients, not a validated universal regimen; opioid-tolerant patients need specialist review.</p>
+              <p className="text-[11px] text-muted-foreground mt-2">
+                Illustrative settings within one institution's protocol —{" "}
+                <a href={BUCKS_URL} target="_blank" rel="noopener noreferrer" className="underline">Buckinghamshire guideline 332FM.5</a>{" "}
+                (effective March 2024, review March 2027, pp. 3–4). Not a universal UK regimen: that protocol permits other boluses and lockouts
+                chosen individually, and restricts background infusion to specified settings. Opioid-tolerant patients need specialist review.
+              </p>
             </>
           ) : pca === null ? (
             <p className="text-sm text-muted-foreground" role="status">Enter a measured weight above zero to show the RCH dilution.</p>
+          ) : "boundary" in pca && pca.boundary ? (
+            <p className="text-sm text-destructive" role="status">{pca.message}</p>
           ) : (
             <>
               <div className="grid sm:grid-cols-3 gap-2">
                 <PcaCard label={`Syringe (${pca.band})`} value={pca.syringe} />
                 <PcaCard label="Bolus" value={`${pca.bolusMl} mL = ${pca.bolusDose} micrograms`} highlight />
-                <PcaCard label="Optional background (RCH)" value={`${pca.backgroundMlPerHour} mL/h`} sub={pca.backgroundDose} />
+                <PcaCard label="Background — rarely needed, specialist prescription only" value={`${pca.backgroundMlPerHour} mL/h`} sub={pca.backgroundDose} />
               </div>
+              {pca.flag && <p className="text-[11px] text-destructive mt-2" role="note">{pca.flag}</p>}
               <p className="text-[11px] text-muted-foreground mt-2">
                 Lockout, hourly/4-hourly limits and background use are set on the RCH PCA prescription by CPMS. RCH eligibility is cognitive
                 ability to understand and willingness to use PCA — not a fixed age; otherwise a nurse-controlled infusion under its own
@@ -149,9 +159,14 @@ const PcaEpiduralCalculator = () => {
             protocol; naloxone and oxygen available; anti-syphon/anti-reflux giving set. Avoid concurrent sedatives where possible.
           </div>
           <div className="p-2.5 rounded bg-secondary/30 border border-border text-muted-foreground">
-            <strong className="text-foreground">Epidural monitoring:</strong> BP, HR, sedation, <em>sensory level</em> (dermatomes) and,
-            separately, <em>motor block</em> (Bromage score) — RCH: 4-hourly and 1 h after a bolus or rate increase. Escalate dense or
-            new motor block, back pain or rising sensory level (haematoma/abscess); urgent MRI if suspected.
+            <strong className="text-foreground">Epidural monitoring (RCH, Clinical observations):</strong>
+            <ul className="list-disc list-inside mt-1 space-y-0.5">
+              <li><em>Cardiorespiratory:</em> RR, HR, BP and sedation hourly for the first 4 h; thereafter RR and HR hourly, BP and temperature 4-hourly.</li>
+              <li><em>After a bolus:</em> HR, RR and BP every 5 min for 20 min. <em>After a rate increase:</em> hourly for 4 h.</li>
+              <li><em>Sensory level and motor block (separately):</em> 4-hourly, and 1 h after a bolus or rate increase.</li>
+            </ul>
+            <p className="mt-1">Escalate urgently for unexpected neurological signs, dense or new motor block, back pain or a high/rising block (haematoma/abscess; urgent MRI if suspected).{" "}
+              <a href={RCH_EPIDURAL_URL} target="_blank" rel="noopener noreferrer" className="underline">Full RCH protocol</a></p>
           </div>
         </div>
       </div>
