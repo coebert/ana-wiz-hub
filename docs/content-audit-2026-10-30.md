@@ -96,6 +96,7 @@ https://www.nice.org.uk/guidance/cg65/chapter/Recommendations ; https://www.nice
 - Existing content check: diagrams/citation-stats pass; sources, exam-tags, safety-citations, drug-doses fail (existing reference gaps, exam-tag checker error, and contextual drug-name association false positives remain). Do not auto-accept those recommendations.
 - Browser: both lookup wrappers rendered; clopidogrel/catheter removal selected, all7 checkboxes in each checked; no clearance/timeline output. Screenshots `/tmp/browser/final-lookups/lookup-{0,1}.png`. IV lidocaine70kg with absent IBW: no result; IBW80/100 and1.5:120mg/h/12mL/h, capped;1.5001 or actual39kg: no result. Standalone heparin70kg,18units/kg/h:1260units/h, raw2.52mL/h displayed2.5mL/h (display rounding only).
 - Latest preview build signal at 12:50:09 UTC: build OK; checked again before completion.
+- Final follow-up after finite actual-weight guard: 23/23 passed across anaesthesia-dose-calculation and clinical-audit-drug-science (12:53:15 UTC); typecheck exit0; latest preview signal 12:53:06 UTC build OK.
 
 ### Residual limitations
 
