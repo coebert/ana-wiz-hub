@@ -4,17 +4,19 @@ const ok = (...n: number[]) => n.every((x) => Number.isFinite(x));
 /** MAP ≈ DBP + (SBP − DBP)/3, shock index = HR/SBP, cardiac power output = MAP × CO / 451 (W). */
 export function shockNumbers(hr: number, sbp: number, dbp: number, co?: number) {
   if (!ok(hr, sbp, dbp) || sbp <= 0 || dbp <= 0 || dbp > sbp || hr <= 0) return null;
-  const map = Math.round(dbp + (sbp - dbp) / 3);
+  const rawMap = dbp + (sbp - dbp) / 3;
   const shockIndex = Math.round((hr / sbp) * 100) / 100;
-  const cpo = co !== undefined && ok(co) && co > 0 ? Math.round(((map * co) / 451) * 100) / 100 : null;
-  return { map, shockIndex, belowSscMap: map < 65, cpo };
+  const cpo = co !== undefined && ok(co) && co > 0 ? Math.round(((rawMap * co) / 451) * 100) / 100 : null;
+  return { map: Math.round(rawMap), shockIndex, belowSscMap: rawMap < 65, cpo };
 }
 
 /** Passive leg raise: % change in cardiac output (or stroke volume); Monnet 2016 best threshold ≥10%. */
 export function plrChange(before: number, after: number) {
   if (!ok(before, after) || before <= 0 || after <= 0) return null;
-  const pct = Math.round(((after - before) / before) * 1000) / 10;
-  return { pct, responsive: pct >= 10 };
+  const rawPct = ((after - before) / before) * 100;
+  // Only absorb IEEE-754 representation error at exactly 10%, not clinical uncertainty.
+  const tolerance = 16 * Number.EPSILON * Math.max(10, Math.abs(rawPct));
+  return { pct: Math.round(rawPct * 10) / 10, responsive: rawPct >= 10 || Math.abs(rawPct - 10) <= tolerance };
 }
 
 /** NICE CG174 routine maintenance: 25–30 mL/kg/day water, ~1 mmol/kg/day Na/K/Cl. */

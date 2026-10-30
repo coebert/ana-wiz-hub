@@ -18,7 +18,7 @@ export function drivingPressure(plateau: number, peep: number) {
 /** Oxygenation band by PaO2/FiO2 (mm Hg), as in Berlin and the 2024 global definition. */
 export function pfBand(paO2mmHg: number, fio2: number) {
   if (!Number.isFinite(paO2mmHg) || !Number.isFinite(fio2) || paO2mmHg <= 0 || fio2 < 0.21 || fio2 > 1) return null;
-  const ratio = Math.round(paO2mmHg / fio2);
-  const band = ratio > 300 ? "above ARDS range" : ratio > 200 ? "mild" : ratio > 100 ? "moderate" : "severe";
-  return { ratio, band, proneThresholdMet: ratio < 150 };
+  const rawRatio = paO2mmHg / fio2;
+  const band = rawRatio > 300 ? "above ARDS range" : rawRatio > 200 ? "mild" : rawRatio > 100 ? "moderate" : "severe";
+  return { ratio: Math.round(rawRatio), band, proneThresholdMet: rawRatio < 150 };
 }
