@@ -229,7 +229,7 @@ export const adultWithdrawalFlows: AdultWithdrawalFlow[] = [
         timeframe: "First 24–48 h of improvement",
         actions: [
           "Stop cisatracurium or rocuronium once the P/F ratio is above 150–200 and prone positioning has ended; there is no evidence for continuing beyond 48 h.",
-          "Confirm full reversal with train-of-four (four equal twitches) before touching sedation — residual blockade in a lightly sedated patient is awareness.",
+          "Maintain adequate sedation/analgesia while blockade persists. Use quantitative neuromuscular monitoring at adductor pollicis and document TOF ratio ≥0.9 before extubation; four visible/equal twitches do not exclude residual block.",
           "Keep sedation deep until blockade has clearly worn off, then reduce it, not the other way round.",
           "Rocuronium can be reversed with sugammadex if urgent neurological assessment is needed; cisatracurium cannot — plan for Hofmann elimination over 30–60 min instead.",
         ],
@@ -270,7 +270,7 @@ export const adultWithdrawalFlows: AdultWithdrawalFlow[] = [
           "No taper: stop the infusion when P/F > 150–200 and proning has ended.",
           "Do not restart for asynchrony alone — treat with sedation, mode change and lung-protective settings first.",
         ],
-        monitoring: ["Train-of-four to confirm four equal twitches before lightening sedation.", "Depth-of-anaesthesia monitoring or a deep RASS target while blockade continues.", "CK and daily assessment for ICU-acquired weakness."],
+        monitoring: ["Quantitative neuromuscular monitoring at adductor pollicis; document recovery before reducing sedation and TOF ratio ≥0.9 before extubation. Four equal twitches are insufficient.", "Depth-of-anaesthesia monitoring or a deep RASS target while blockade continues.", "CK and daily assessment for ICU-acquired weakness."],
         rescue: "Persistent paralysis beyond 2 h: check acid–base, temperature and magnesium (all slow Hofmann elimination) and keep sedation deep until twitches return.",
       },
       {
