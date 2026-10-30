@@ -10,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PageJsonLd } from "@/components/layout/PageJsonLd";
+import { calculateAnaesthesiaDose } from "@/lib/anaesthesia-dose-calculation";
 import {
   Select,
   SelectContent,
@@ -59,6 +60,7 @@ function fmt(n: number, dp = 2): string {
 const AnaesthesiaDrugCalculator = () => {
   const [drugKey, setDrugKey] = useState(anaesthesiaCalcDrugs[0].drug);
   const [weight, setWeight] = useState("70");
+  const [idealWeight, setIdealWeight] = useState("");
   const [dose, setDose] = useState(String(anaesthesiaCalcDrugs[0].startDose));
   const [concentration, setConcentration] = useState(
     String(anaesthesiaCalcDrugs[0].concentrationPerMl),
@@ -75,41 +77,8 @@ const AnaesthesiaDrugCalculator = () => {
   };
 
   const result = useMemo(() => {
-    const w = parseFloat(weight);
-    const d = parseFloat(dose);
-    const c = parseFloat(concentration);
-    if (!isFinite(d) || d <= 0 || !isFinite(c) || c <= 0) return null;
-    const weightValid = isFinite(w) && w > 0;
-    if (perKg && !weightValid) return null;
-    const wkg = weightValid ? w : 70;
-
-    const outOfRange = d < drug.minDose || d > drug.maxDose;
-
-    if (drug.kind === "infusion") {
-      const perHr = amountPerHour(drug, d, wkg);
-      const mlPerHr = perHr / c;
-      return {
-        kind: "infusion" as const,
-        perHr,
-        mlPerHr,
-        mlPerDay: mlPerHr * 24,
-        syringeHours: mlPerHr > 0 ? 50 / mlPerHr : null,
-        outOfRange,
-        cappedAt: null as number | null,
-      };
-    }
-
-    const raw = totalAmount(drug, d, wkg);
-    const capped = drug.maxSingleDose !== undefined && raw > drug.maxSingleDose;
-    const amount = capped ? drug.maxSingleDose! : raw;
-    return {
-      kind: "bolus" as const,
-      amount,
-      volumeMl: amount / c,
-      outOfRange,
-      cappedAt: capped ? drug.maxSingleDose! : null,
-    };
-  }, [drug, perKg, weight, dose, concentration]);
+    return calculateAnaesthesiaDose(drug, Number(weight), Number(dose), Number(concentration), Number(idealWeight));
+  }, [drug, weight, dose, concentration, idealWeight]);
 
   const groupTitle =
     anaesthesiaCalcGroups.find((g) => g.id === drug.groupId)?.title ?? "Anaesthesia drug";
