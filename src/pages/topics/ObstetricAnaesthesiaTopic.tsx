@@ -32,7 +32,7 @@ const obstetricFaqs: Array<[string, string]> = [
   ],
   [
     "How does a labour epidural work?",
-    "A 16–18 G Tuohy needle is sited at L3/4 or L4/5 using loss-of-resistance to saline. A multi-orifice catheter is threaded 4–5 cm into the epidural space. Assess catheter position with aspiration, observation and the locally adopted obstetric test-dose/fractionated-loading protocol. A negative test cannot guarantee correct placement. Treat every dose as a potential test dose, giving the intended low-dose loading solution in cautious increments with monitoring and readiness to manage high block or systemic toxicity<InlineRef topicId="obstetric-anaesthesia" refLabel="NAP7 Ch26 2023" />. Maintenance is via patient-controlled epidural analgesia (PCEA) or programmed intermittent epidural bolus (PIEB), which gives better analgesia and lower motor block than continuous infusion.",
+    "A 16–18 G Tuohy needle is sited at L3/4 or L4/5 using loss-of-resistance to saline. A multi-orifice catheter is threaded 4–5 cm into the epidural space. Assess catheter position with aspiration, observation and the locally adopted obstetric test-dose/fractionated-loading protocol. A negative test cannot guarantee correct placement. Treat every dose as a potential test dose, giving the intended low-dose loading solution in cautious increments with monitoring and readiness to manage high block or systemic toxicity (RCoA NAP7 Ch 26, 2023). Maintenance is via patient-controlled epidural analgesia (PCEA) or programmed intermittent epidural bolus (PIEB), which gives better analgesia and lower motor block than continuous infusion.",
   ],
   [
     "What is the difference between an epidural and a spinal for childbirth?",
