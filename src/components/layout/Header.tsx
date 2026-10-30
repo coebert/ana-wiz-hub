@@ -1,3 +1,4 @@
+import { scrollToSupport } from "@/lib/donation";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network, BarChart3, Headphones, Mic, Pill, GraduationCap, Calculator, Brain, BookOpen, Sparkles, Menu } from "lucide-react";
@@ -60,8 +61,7 @@ export const Header = () => {
 
   useEffect(() => {
     if (location.pathname === "/" && location.hash === "#support") {
-      const el = document.getElementById("support");
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      scrollToSupport();
     }
   }, [location.pathname, location.hash]);
 
@@ -138,7 +138,7 @@ export const Header = () => {
   const goToSupport = (e: React.MouseEvent) => {
     e.preventDefault();
     if (location.pathname === "/") {
-      document.getElementById("support")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      scrollToSupport();
       window.history.replaceState(null, "", "/#support");
     } else {
       navigate("/#support");
