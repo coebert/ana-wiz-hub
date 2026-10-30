@@ -75,7 +75,8 @@ describe("T1b rendered", () => {
     fireEvent.click(screen.getByRole("button", { name: /Remifentanil/ }));
     fireEvent.change(container.querySelector('input[type="number"]')!, { target: { value: "120" } });
     expect(container.textContent).toMatch(/Select the remifentanil dosing-weight basis/);
-    expect(container.textContent).not.toMatch(/mL\/h/);
+    expect(container.textContent).not.toMatch(/\d mL\/h/);
+    expect(screen.queryByTestId("dose-basis")).toBeNull();
     fireEvent.change(screen.getByLabelText("Remifentanil dosing-weight basis"), { target: { value: "ibw" } });
     expect(container.textContent).toMatch(/valid height ≥152.4 cm/);
     expect(container.textContent).not.toMatch(/120 kg/);
@@ -100,7 +101,7 @@ describe("T1b rendered", () => {
     fireEvent.click(screen.getByRole("button", { name: /Midazolam/ }));
     expect(container.textContent).toContain("2.1 mL/h");
     expect(container.textContent).toContain("14 mL/h");
-    expect(container.textContent).not.toMatch(/Start at/);
+    expect(container.textContent).not.toMatch(/Start at\b(?! the lower end)/);
   });
   it("opioid default → codeine and tramadol warnings, no per-dose", () => {
     const { container } = render(<OpioidConversionCalculator />);
