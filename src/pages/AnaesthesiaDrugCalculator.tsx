@@ -77,7 +77,7 @@ const AnaesthesiaDrugCalculator = () => {
   };
 
   const result = useMemo(() => {
-    return calculateAnaesthesiaDose(drug, Number(weight), Number(dose), Number(concentration), Number(idealWeight));
+    return calculateAnaesthesiaDose(drug, Number(dose), Number(weight), Number(concentration), Number(idealWeight));
   }, [drug, weight, dose, concentration, idealWeight]);
 
   const groupTitle =
@@ -163,6 +163,7 @@ const AnaesthesiaDrugCalculator = () => {
                 min="0"
                 step="any"
                 value={dose}
+                disabled={drug.lookupOnly}
                 onChange={(e) => setDose(e.target.value)}
                 className="mt-1.5"
               />
@@ -185,11 +186,17 @@ const AnaesthesiaDrugCalculator = () => {
                 className="mt-1.5"
               />
               <p className="mt-1 text-xs text-muted-foreground">
-                {perKg
+                {drug.weightBasis === "ideal" ? "Actual weight for the <40 kg exclusion; enter ideal body weight separately below." : perKg
                   ? "Use lean or adjusted body weight in obesity for lipophilic agents."
                   : "Fixed dose — weight does not change the result."}
               </p>
             </div>
+
+            {drug.weightBasis === "ideal" && <div>
+              <Label htmlFor="anaes-ideal-weight">Ideal body weight (kg)</Label>
+              <Input id="anaes-ideal-weight" type="number" min="0" step="any" value={idealWeight} onChange={e => setIdealWeight(e.target.value)} />
+              <p className="text-xs text-muted-foreground">Explicit ideal-body-weight dosing under Foo 2021; no substitution of actual weight.</p>
+            </div>}
 
             <div className="sm:col-span-2">
               <Label htmlFor="anaes-conc">
@@ -283,8 +290,8 @@ const AnaesthesiaDrugCalculator = () => {
               {result.cappedAt !== null && (
                 <p className="mt-3 flex items-start gap-2 rounded-md border border-perioperative/40 bg-perioperative/10 p-3 text-sm text-foreground">
                   <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-perioperative" />
-                  Capped at the usual maximum single dose of {fmt(result.cappedAt, 0)}{" "}
-                  {drug.amountUnit}.
+                  Limited to the named recommendation: {fmt(result.cappedAt, 0)}{" "}
+                  {drug.amountUnit}{result.kind === "infusion" ? "/h" : " per dose"}. This is not a patient-specific safe dose.
                 </p>
               )}
 
@@ -299,7 +306,7 @@ const AnaesthesiaDrugCalculator = () => {
             </>
           ) : (
             <p className="text-sm text-muted-foreground">
-              Enter a valid dose{perKg ? " and weight" : ""} to see the calculated result.
+              {drug.lookupOnly ? "Guideline lookup only: no universal dose is calculated. Review the exact product and route below." : drug.enforceDoseRange ? "No calculation outside the named dose range or without required weights. IV lidocaine requires actual weight ≥40 kg and a valid ideal body weight." : `Enter a valid dose${perKg ? " and weight" : ""} to see the calculated result.`}
             </p>
           )}
         </section>
@@ -307,6 +314,7 @@ const AnaesthesiaDrugCalculator = () => {
         <p className="mt-4 rounded-lg border border-border bg-muted/50 p-3 text-sm text-muted-foreground">
           <strong className="text-foreground">Clinical note:</strong> {drug.notes}
         </p>
+        {drug.sourceUrl && <a className="text-sm text-primary underline" href={drug.sourceUrl} target="_blank" rel="noopener noreferrer">Named product / guideline source</a>}
 
         {drug.topicPaths?.length ? (
           <div className="mt-4 flex flex-wrap items-center gap-2">
