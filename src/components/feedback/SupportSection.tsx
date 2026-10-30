@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Heart, MessageSquare, ExternalLink, X, Send, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { DONATION_CHOICES, logDonateClick } from "@/lib/donation";
+import { DONATION_CHOICES, STRIPE_CONTRIBUTE_URL, STRIPE_SOURCE, logDonateClick } from "@/lib/donation";
 
 type FormType = "topic" | "error";
 
@@ -69,8 +69,26 @@ export const SupportSection = () => {
           </div>
         </div>
 
+        <div className="mt-5">
+          <a
+            href={STRIPE_CONTRIBUTE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contribute by card at Stripe (opens in a new tab)"
+            aria-describedby="support-stripe-note"
+            onClick={() => logDonateClick(STRIPE_SOURCE)}
+            className="min-h-11 w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            Contribute by card
+            <ExternalLink className="h-3.5 w-3.5 opacity-80 shrink-0" aria-hidden />
+          </a>
+          <p id="support-stripe-note" className="text-xs text-muted-foreground mt-2">
+            Choose your amount at Stripe. One-off contribution; no account needed. Apple Pay is available on supported devices.
+          </p>
+        </div>
+
         <p className="eyebrow text-muted-foreground mt-5 mb-2" id="support-choices-label">
-          Contribute via PayPal
+          Or contribute via PayPal
         </p>
         <ul aria-labelledby="support-choices-label" className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           {DONATION_CHOICES.map((c) => (

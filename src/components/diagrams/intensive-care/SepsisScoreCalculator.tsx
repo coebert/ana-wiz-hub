@@ -22,12 +22,12 @@ const sel = "w-full px-2 py-1 text-xs rounded-md border border-border bg-backgro
 
 const SepsisScoreCalculator = () => {
   // Contemporaneous observations (NEWS2 / qSOFA) — fictional example
-  const [obs, setObs] = useState({ rr: "24", spo2: "94", temp: "38.4", sbp: "92", hr: "108" });
+  const [obs, setObs] = useState({ rr: "24", spo2: "94", temp: "38.4", sbp: "92", hr: "108", qgcs: "14" });
   const [onO2, setOnO2] = useState<"" | "yes" | "no">("yes");
   const [acvpu, setAcvpu] = useState<Acvpu | "">("C");
   const [scale2, setScale2] = useState(false);
   // SOFA assessment period (worst values) — fictional example
-  const [lab, setLab] = useState({ pf: "280", platelets: "120", bilirubin: "28", gcs: "14", map: "62", creatinine: "140", urine: "" });
+  const [lab, setLab] = useState({ pf: "280", platelets: "120", bilirubin: "28", gcs: "14", map: "62", creatinine: "140", urine: "900" });
   const [support, setSupport] = useState<Tri>("unknown");
   const [agents, setAgents] = useState<Record<Agent, { given: boolean; dose: string }>>({
     dopamine: { given: false, dose: "" }, dobutamine: { given: false, dose: "" },
@@ -39,7 +39,7 @@ const SepsisScoreCalculator = () => {
     rr: parseNum(obs.rr), spo2: parseNum(obs.spo2), temp: parseNum(obs.temp), sbp: parseNum(obs.sbp), hr: parseNum(obs.hr),
     onO2: onO2 === "" ? null : onO2 === "yes", acvpu: acvpu || null, scale2Prescribed: scale2,
   }), [obs, onO2, acvpu, scale2]);
-  const q = useMemo(() => qsofa({ rr: parseNum(obs.rr), sbp: parseNum(obs.sbp), alteredMentation: acvpu === "" ? null : acvpu !== "A" }), [obs, acvpu]);
+  const q = useMemo(() => qsofa({ rr: parseNum(obs.rr), sbp: parseNum(obs.sbp), currentGcs: parseNum(obs.qgcs) }), [obs]);
   const s = useMemo(() => sofa({
     pf: parseNum(lab.pf), respSupport: support, platelets: parseNum(lab.platelets), bilirubin: parseNum(lab.bilirubin),
     gcs: parseNum(lab.gcs), map: parseNum(lab.map), creatinine: parseNum(lab.creatinine), urine24h: parseNum(lab.urine),
@@ -78,6 +78,8 @@ const SepsisScoreCalculator = () => {
               <option value="">Not recorded</option><option value="no">Air</option><option value="yes">Supplemental oxygen</option>
             </select>
           </div>
+          <NumField label="Current GCS for qSOFA (Sepsis-3: any GCS <15)" unit="3–15, now" value={obs.qgcs} onChange={setO("qgcs")}
+            hint="Separate from SOFA worst-period GCS and from NEWS2 ACVPU." />
           <div>
             <label htmlFor="news-acvpu" className="text-xs text-muted-foreground block mb-0.5">Consciousness (ACVPU)</label>
             <select id="news-acvpu" value={acvpu} onChange={(e) => setAcvpu(e.target.value as Acvpu | "")} className={sel}>
@@ -103,10 +105,12 @@ const SepsisScoreCalculator = () => {
           </div>
           <NumField label="Platelets" unit="×10⁹/L" value={lab.platelets} onChange={setL("platelets")} />
           <NumField label="Bilirubin" unit="µmol/L (integer)" value={lab.bilirubin} onChange={setL("bilirubin")} />
-          <NumField label="GCS" unit="3–15" value={lab.gcs} onChange={setL("gcs")} />
+          <NumField label="Worst-period GCS (SOFA)" unit="3–15" value={lab.gcs} onChange={setL("gcs")} />
           <NumField label="MAP" unit="mmHg" value={lab.map} onChange={setL("map")} />
           <NumField label="Creatinine" unit="µmol/L (integer)" value={lab.creatinine} onChange={setL("creatinine")} />
-          <NumField label="Measured 24 h urine output (optional)" unit="mL/24 h" value={lab.urine} onChange={setL("urine")} />
+          <NumField label="Measured 24 h urine output" unit="mL/24 h" value={lab.urine} onChange={setL("urine")}
+            invalid={lab.urine.trim() !== "" && !(Number.isFinite(Number(lab.urine)) && Number(lab.urine) >= 0)}
+            hint="Needed for a completed renal score unless creatinine already scores 4." />
         </div>
         <div className="rounded-md border border-border p-2 mb-4">
           <p className="text-xs text-muted-foreground mb-1">Vasoactive agents (doses in µg/kg/min; SOFA counts agents given for at least 1 h)</p>

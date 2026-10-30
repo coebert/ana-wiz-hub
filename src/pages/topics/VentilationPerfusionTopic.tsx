@@ -31,52 +31,63 @@ const objectives = [
   "Describe the regional V/Q distribution from apex to base in the upright lung.",
   "Define West's zones and predict their behaviour with PEEP and shock.",
   "Distinguish anatomical, alveolar and physiological dead space; derive the Bohr equation.",
-  "Derive the shunt equation and explain why true shunt is refractory to supplemental O₂.",
+  "Derive the shunt equation and explain why supplemental O₂ has limited effect on true shunt.",
   "Explain hypoxic pulmonary vasoconstriction and the agents that inhibit it.",
   "Describe the central and peripheral control of ventilation and the chemoreceptor response curves.",
 ];
 
 const workedExamples: WorkedExample[] = [
   {
-    title: "Calculating shunt fraction in ARDS",
+    title: "Calculating shunt fraction (fictional example)",
     scenario: (
       <p>
-        FiO₂ 1.0, PaO₂ 9 kPa (67 mmHg), Hb 100 g/L. Assume PAO₂ 90 kPa, mixed venous SO₂ 65%.
-        Calculate the shunt fraction.
+        Fictional teaching values, all supplied: FiO₂ 1.0, Hb 100 g/L (= 10 g/dL). Assumed end-capillary
+        saturation 1.0 and PAO₂ 90 kPa. Measured SaO₂ 0.90 and PaO₂ 9 kPa. Measured SvO₂ 0.65 and assumed
+        PvO₂ 5 kPa. Calculate the shunt fraction.
       </p>
     ),
     working: (
       <ul className="list-disc pl-5 space-y-1">
-        <li>CcO₂ ≈ Hb × 1.34 × 1.0 + 0.023 × 90 / 7.5 = 13.4 + 0.28 ≈ <strong>13.68 mL/dL</strong>.</li>
-        <li>CaO₂ ≈ Hb × 1.34 × ~0.90 = <strong>12.06 mL/dL</strong> (PaO₂ 9 kPa → SaO₂ ~90%).</li>
-        <li>CvO₂ ≈ Hb × 1.34 × 0.65 = <strong>8.71 mL/dL</strong>.</li>
-        <li>Qs/Qt = (CcO₂ − CaO₂) / (CcO₂ − CvO₂) = (13.68 − 12.06) / (13.68 − 8.71) = 1.62 / 4.97 ≈ <strong>33%</strong>.</li>
+        <li>Content (mL O₂/dL) = 1.34 × Hb [g/dL] × fractional saturation + 0.0225 × PO₂ [kPa]. (0.0225 = 0.003 per mmHg × 7.5 mmHg/kPa; do not divide kPa by 7.5 again.)</li>
+        <li>CcO₂ = 1.34 × 10 × 1.0 + 0.0225 × 90 = 13.4 + 2.025 = <strong>15.425 mL/dL</strong>.</li>
+        <li>CaO₂ = 1.34 × 10 × 0.90 + 0.0225 × 9 = 12.06 + 0.2025 = <strong>12.2625 mL/dL</strong> (SaO₂ is a measured value — it cannot be inferred exactly from PaO₂ alone).</li>
+        <li>CvO₂ = 1.34 × 10 × 0.65 + 0.0225 × 5 = 8.71 + 0.1125 = <strong>8.8225 mL/dL</strong>.</li>
+        <li>Qs/Qt = (15.425 − 12.2625) / (15.425 − 8.8225) = 3.1625 / 6.6025 = 0.47898523 ≈ <strong>48%</strong>.</li>
       </ul>
     ),
     answer: (
       <p>
-        Shunt &gt;30% = refractory hypoxaemia. Increasing FiO₂ further is futile — recruit (PEEP, prone),
-        consider neuromuscular blockade and ECMO referral.
+        A large calculated shunt fraction. Shunted blood bypasses ventilated alveoli, so extra oxygen has limited
+        effect on it; the whole-arterial response depends on the shunt fraction, mixed venous content and the
+        ventilated units. The number alone does not prescribe PEEP, proning, paralysis or ECMO — those decisions
+        rest on the full clinical picture and current guidance.
       </p>
     ),
     cites: ["BJA Educ 2018"],
   },
   {
-    title: "Bohr dead space in suspected PE",
+    title: "Enghoff dead-space fraction (fictional example)",
     scenario: (
       <p>
-        Vt 500 mL, RR 14, EtCO₂ 2.5 kPa, PaCO₂ 5.5 kPa. Estimate physiological dead space and
-        comment on the EtCO₂–PaCO₂ gap.
+        Fictional teaching values: VT 500 mL, PaCO₂ 5.5 kPa, and a <em>measured</em> mixed expired PĒCO₂ of
+        2.5 kPa (volume-averaged CO₂ in gas collected over whole breaths — not end-tidal CO₂). Estimate the
+        dead-space fraction.
       </p>
     ),
     working: (
       <ul className="list-disc pl-5 space-y-1">
-        <li>VD/VT (Enghoff) ≈ (PaCO₂ − PĒCO₂)/PaCO₂. Using EtCO₂ as a proxy: (5.5 − 2.5)/5.5 = <strong>0.55</strong>.</li>
-        <li>Physiological VD ≈ 0.55 × 500 = <strong>275 mL</strong> (vs normal 150 mL).</li>
-        <li>EtCO₂–PaCO₂ gap = 3.0 kPa (normal &lt;0.7 kPa) — strongly suggests alveolar dead space.</li>
+        <li>Original Bohr uses alveolar PACO₂: VD/VT = (PACO₂ − PĒCO₂)/PACO₂. The Enghoff modification substitutes arterial PaCO₂.</li>
+        <li>Enghoff VD/VT = (5.5 − 2.5)/5.5 = 0.5454545 ≈ <strong>55%</strong>.</li>
+        <li>VD = 0.5454545 × 500 = 272.727 mL ≈ <strong>273 mL</strong>.</li>
       </ul>
     ),
-    answer: <p>Markedly raised dead-space fraction with widened gap → urgent CTPA for PE.</p>,
+    answer: (
+      <p>
+        A raised Enghoff dead-space fraction. Because it uses PaCO₂, it is also increased by V/Q inequality and
+        shunt, so it is not a pure dead-space measure and does not establish PE. Suspected PE is investigated
+        through an appropriate clinical-probability pathway (e.g. NICE NG158).
+      </p>
+    ),
     cites: ["Nunn Ch.8"],
   },
   {
@@ -139,8 +150,8 @@ const VentilationPerfusionTopic = () => {
       keyPoints={[
         { text: "Normal V̇/Q̇ ≈ 0.8. Apex has highest V/Q (~3.3, dead space-like), base has lowest (~0.6, shunt-like)", cites: ["BJA Educ 2018"] },
         { text: "West's Zones: Zone 1 (PA > Pa > Pv) — dead space; Zone 3 (Pa > Pv > PA) — continuous flow", cites: ["Nunn Ch.8"] },
-        { text: "Dead space measured by Bohr equation: VD/VT = (PaCO₂ − PĒCO₂)/PaCO₂. Normal ~30%", cites: ["West Ch.5"] },
-        { text: "True shunt does NOT respond to supplemental O₂. At >30% shunt, ↑ FiO₂ has minimal effect on PaO₂", cites: ["BJA Educ 2018"] },
+        { text: "Enghoff modification of Bohr: VD/VT = (PaCO₂ − PĒCO₂)/PaCO₂, with PĒCO₂ the mixed expired (not end-tidal) value; also raised by V/Q inequality and shunt. Normal ~30%", cites: ["West Ch.5"] },
+        { text: "Shunted blood bypasses ventilated alveoli, so supplemental O₂ has limited effect on it; the arterial response depends on shunt fraction, mixed venous content and ventilated units", cites: ["BJA Educ 2018"] },
         { text: "HPV diverts blood from hypoxic alveoli — inhibited by volatiles, vasodilators, sepsis", cites: ["Nunn Ch.8"] },
         { text: "Central chemoreceptors (CO₂ via H⁺) are the main ventilatory drive; peripheral chemoreceptors detect hypoxia", cites: ["West Ch.5"] },
       ]}
@@ -172,7 +183,7 @@ const VentilationPerfusionTopic = () => {
                 <p className="mt-2 text-sm text-foreground/85 leading-relaxed">Direct measurement is complex and remains largely a research technique; at the bedside V/Q mismatch is inferred rather than measured.</p>
                 <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
                   <li><strong>MIGET (multiple inert gas elimination technique)</strong>: an infusion of six inert gases of widely differing blood solubility (e.g. SF₆, ethane, cyclopropane, enflurane, ether, acetone) reaches steady state, then arterial, mixed venous and expired concentrations are measured. Poorly soluble gases are excreted almost entirely from high-V/Q units, while highly soluble gases are retained in low-V/Q units, so the pattern of retention and excretion can be inverted mathematically into a continuous distribution of blood flow and ventilation against V/Q ratio, including true shunt and true dead space. It is the gold standard but is invasive, slow and confined to research <InlineRef topicId="ventilation-perfusion" refLabel="West Ch.5" /></li>
-                  <li><strong>Clinical surrogates</strong>: the PaO₂ response to supplemental oxygen (mismatch corrects, true shunt does not), the A–a gradient and PaO₂/FiO₂ ratio, the shunt fraction from the shunt equation, the arterial-to-end-tidal CO₂ gradient for alveolar dead space, and imaging or electrical impedance tomography for regional distribution.</li>
+                  <li><strong>Clinical surrogates</strong>: the PaO₂ response to supplemental oxygen (low V/Q units respond well; true shunt responds poorly), the A–a gradient and PaO₂/FiO₂ ratio, the shunt fraction from the shunt equation, the arterial-to-end-tidal CO₂ gradient for alveolar dead space, and imaging or electrical impedance tomography for regional distribution.</li>
                 </ul>
               </div>
             </div>
@@ -319,9 +330,9 @@ const VentilationPerfusionTopic = () => {
                   <div className="p-4 rounded-lg border border-border bg-secondary/20">
                     <p className="font-semibold text-foreground text-sm mb-2">CcO₂ calculation</p>
                     <div className="mt-2 p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
-                      CcO₂ = (Hb × 1.34 × ScO₂) + (0.023 × PAO₂)
+                      CcO₂ = (1.34 × Hb[g/dL] × ScO₂) + (0.0225 × PAO₂[kPa])
                     </div>
-                    <p className="text-xs text-muted-foreground mt-2">PAO₂ from alveolar gas equation; ScO₂ assumed 1.0 at high FiO₂.</p>
+                    <p className="text-xs text-muted-foreground mt-2">PAO₂ from alveolar gas equation; ScO₂ assumed 1.0 at high FiO₂. Use 0.003 per mmHg if PAO₂ is in mmHg.</p>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-3">
                     <div className="p-3 rounded-lg bg-secondary/30 border border-border">
@@ -330,13 +341,13 @@ const VentilationPerfusionTopic = () => {
                     </div>
                     <div className="p-3 rounded-lg bg-secondary/30 border border-border">
                       <p className="text-xs text-muted-foreground">Clinical significance</p>
-                      <p className="font-semibold text-foreground text-sm">&gt;15% significant; &gt;30% refractory hypoxaemia</p>
+                      <p className="font-semibold text-foreground text-sm">Larger fractions blunt the PaO₂ response to FiO₂</p>
                     </div>
                   </div>
                   <div className="p-4 rounded-lg border border-border bg-secondary/20">
                     <p className="font-semibold text-foreground text-sm mb-2">Iso-shunt Lines</p>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      At &gt;30% shunt, increasing FiO₂ has minimal effect on PaO₂ — focus on recruitment (PEEP, prone) rather than FiO₂.
+                      As shunt fraction rises, increasing FiO₂ produces progressively smaller rises in PaO₂ (iso-shunt lines). The fraction itself does not prescribe a specific intervention.
                     </p>
                   </div>
                 </div>
@@ -427,7 +438,7 @@ const VentilationPerfusionTopic = () => {
               <><strong>Shunt vs V/Q mismatch</strong>: shunt fails to correct with 100% O₂; V/Q mismatch does — single most tested point.</>,
               <><strong>Volatile agents abolish HPV</strong> at high doses — TIVA preferred for one-lung ventilation when oxygenation marginal.</>,
               <><strong>PEEP overshoot</strong>: too much PEEP creates West zone 1, increasing dead space and dropping cardiac output.</>,
-              <><strong>EtCO₂–PaCO₂ gradient widens</strong> with dead space — useful bedside marker of PE, low CO or air trapping.</>,
+              <><strong>EtCO₂–PaCO₂ gradient widens</strong> with dead space — seen with PE, low cardiac output or air trapping, but nonspecific and not diagnostic of PE.</>,
               <><strong>Supine + GA</strong>: FRC falls below closing capacity in the elderly and obese — atelectasis-driven hypoxaemia, mitigated by PEEP and recruitment.</>,
             ]}
           />

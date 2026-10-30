@@ -126,11 +126,26 @@ export const sofaCreat = (c: number) => (c > 440 ? 4 : c >= 300 ? 3 : c >= 171 ?
 /** Measured 24 h urine output, mL: <500 →3, <200 →4. */
 export const sofaUrine = (u: number) => (u < 200 ? 4 : u < 500 ? 3 : 0);
 
+/**
+ * Combined renal SOFA = worse of creatinine and urine criteria. A missing/invalid criterion is never
+ * normalised to zero: the combined score is determinate only when both are known, or when either
+ * known criterion already scores the maximum (4).
+ */
 export function sofaRenal(creat: number | null, urine24h: number | null): number | null {
   const c = creat === null ? null : sofaCreat(creat);
   const u = urine24h === null ? null : sofaUrine(urine24h);
-  if (c === null) return u === 4 ? 4 : null; // without creatinine only a maximal urine score is final
-  return Math.max(c, u ?? 0);
+  if (c === 4 || u === 4) return 4;
+  if (c === null || u === null) return null;
+  return Math.max(c, u);
+}
+
+function renalNote(creatRaw: Num, creat: number | null, urineRaw: Num, urine: number | null): string | undefined {
+  const bad = (raw: Num, v: number | null, name: string) =>
+    raw === null || raw === undefined ? `${name} not entered` : v === null ? `${name} entry invalid — not scored` : null;
+  const notes = [bad(creatRaw, creat, "creatinine"), bad(urineRaw, urine, "24 h urine")].filter(Boolean) as string[];
+  if (!notes.length) return undefined;
+  const partial = creat !== null ? sofaCreat(creat) : urine !== null ? sofaUrine(urine) : null;
+  return notes.join("; ") + (partial !== null && partial < 4 ? `; known criterion alone gives ≥${partial} (lower bound only)` : "");
 }
 
 export type Agent = "dopamine" | "dobutamine" | "adrenaline" | "noradrenaline";
@@ -167,13 +182,16 @@ export function sofa(i: SofaInputs): ScoreResult {
   const g = valid(i.gcs, 3, 15, true);
   const p = valid(i.platelets, 0, 2000);
   const b = valid(i.bilirubin, 0, 2000, true);
+  const cr = valid(i.creatinine, 1, 3000, true);
+  const ur = valid(i.urine24h, 0, 20000);
+  const renal = sofaRenal(cr, ur);
   return sum([
     { key: "resp", label: "Respiratory (P/F)", points: sofaResp(valid(i.pf, 10, 700), i.respSupport) },
     { key: "coag", label: "Coagulation (platelets)", points: p === null ? null : sofaCoag(p) },
     { key: "liver", label: "Liver (bilirubin)", points: b === null ? null : sofaLiver(b) },
     { key: "cv", label: "Cardiovascular", points: cv.points, note: cv.note },
     { key: "cns", label: "CNS (GCS)", points: g === null ? null : sofaCns(g) },
-    { key: "renal", label: "Renal (creatinine / urine)", points: sofaRenal(valid(i.creatinine, 1, 3000, true), valid(i.urine24h, 0, 20000)) },
+    { key: "renal", label: "Renal (creatinine / urine)", points: renal, note: renal === 4 ? undefined : renalNote(i.creatinine, cr, i.urine24h, ur) },
   ]);
 }
 
@@ -222,14 +240,17 @@ export const NEWS2_RESPONSE_TEXT: Record<News2Response, string> = {
   zero: "Aggregate 0: minimum 12-hourly observations. A zero score does not exclude illness — clinical concern should still prompt escalation.",
 };
 
-/* ───────────────────────────── qSOFA (Seymour 2016) ───────────────────────────── */
+/* ─────────────── qSOFA (Sepsis-3, Singer 2016: altered mentation = any current GCS <15) ───────────────
+ * Uses a contemporaneous GCS, distinct from the SOFA worst-period GCS and from NEWS2 ACVPU.
+ * (Seymour 2016 derivation used GCS ≤13; validation with <15 performed similarly.) */
 
-export function qsofa(i: { rr: Num; sbp: Num; alteredMentation: boolean | null }): ScoreResult {
+export function qsofa(i: { rr: Num; sbp: Num; currentGcs: Num }): ScoreResult {
   const rr = valid(i.rr, 0, 100, true);
   const sbp = valid(i.sbp, 0, 350, true);
+  const g = valid(i.currentGcs, 3, 15, true);
   return sum([
     { key: "rr", label: "RR ≥ 22/min", points: rr === null ? null : rr >= 22 ? 1 : 0 },
     { key: "sbp", label: "SBP ≤ 100 mmHg", points: sbp === null ? null : sbp <= 100 ? 1 : 0 },
-    { key: "ment", label: "Altered mentation", points: i.alteredMentation === null ? null : i.alteredMentation ? 1 : 0 },
+    { key: "ment", label: "Altered mentation (current GCS <15)", points: g === null ? null : g < 15 ? 1 : 0 },
   ]);
 }

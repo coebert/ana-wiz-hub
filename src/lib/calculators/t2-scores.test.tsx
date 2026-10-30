@@ -56,6 +56,20 @@ describe("SOFA helper", () => {
     expect([500, 499, 200, 199].map((u) => sofaRenal(80, u))).toEqual([0, 3, 3, 4]);
     expect(sofaRenal(450, 2000)).toBe(4);
     expect(sofaRenal(null, 1000)).toBeNull();
+    expect(sofaRenal(80, null)).toBeNull(); // missing urine never normalised to 0
+    expect(sofaRenal(441, null)).toBe(4);
+    expect(sofaRenal(null, 199)).toBe(4);
+    for (const u of [null, -1, NaN, Infinity]) {
+      const r = sofa({ ...sofaBase, creatinine: 80, urine24h: u });
+      const renal = r.breakdown.find((b) => b.key === "renal")!;
+      expect(renal.points).toBeNull();
+      expect(r.total).toBeNull();
+      expect(renal.note).toMatch(u === null ? /not entered/ : /invalid/);
+      expect(renal.note).toMatch(/lower bound/);
+    }
+    expect([500, 499, 200, 199].map((u) => sofa({ ...sofaBase, creatinine: 80, urine24h: u }).breakdown.find((b) => b.key === "renal")!.points)).toEqual([0, 3, 3, 4]);
+    expect(sofa({ ...sofaBase, creatinine: 441, urine24h: NaN }).breakdown.find((b) => b.key === "renal")!.points).toBe(4);
+    expect(sofa({ ...sofaBase, creatinine: null, urine24h: 199 }).breakdown.find((b) => b.key === "renal")!.points).toBe(4);
   });
   it("vasopressors", () => {
     const one = (a: "dopamine" | "dobutamine" | "adrenaline" | "noradrenaline", d: number | null) =>
@@ -79,6 +93,7 @@ describe("SOFA helper", () => {
   });
 });
 
+const sofaBase = { pf: 450, respSupport: "no" as const, platelets: 200, bilirubin: 10, gcs: 15, map: 80, agents: {}, vasoDuration: "unknown" as const, creatinine: 80, urine24h: 1000 };
 const normalNews: News2Inputs = { rr: 16, spo2: 98, onO2: false, temp: 37, sbp: 120, hr: 70, acvpu: "A", scale2Prescribed: false };
 describe("NEWS2 / qSOFA helper", () => {
   it("response priority", () => {
@@ -99,9 +114,13 @@ describe("NEWS2 / qSOFA helper", () => {
     expect(news2({ ...normalNews, onO2: null }).total).toBeNull();
     expect(news2({ ...normalNews, rr: Infinity }).total).toBeNull();
   });
+  it("qSOFA uses current GCS (<15), unknown stays incomplete", () => {
+    expect([15, 14].map((g) => qsofa({ rr: 16, sbp: 120, currentGcs: g }).total)).toEqual([0, 1]);
+    for (const g of [null, 2, 16, 14.5, NaN]) expect(qsofa({ rr: 16, sbp: 120, currentGcs: g }).total).toBeNull();
+  });
   it("qSOFA boundaries", () => {
-    expect([21, 22].map((rr) => qsofa({ rr, sbp: 120, alteredMentation: false }).total)).toEqual([0, 1]);
-    expect([100, 101].map((sbp) => qsofa({ rr: 16, sbp, alteredMentation: false }).total)).toEqual([1, 0]);
+    expect([21, 22].map((rr) => qsofa({ rr, sbp: 120, currentGcs: 15 }).total)).toEqual([0, 1]);
+    expect([100, 101].map((sbp) => qsofa({ rr: 16, sbp, currentGcs: 15 }).total)).toEqual([1, 0]);
   });
 });
 
@@ -137,7 +156,18 @@ describe("rendered components", () => {
     fireEvent.change(screen.getByLabelText(/ACVPU/), { target: { value: "A" } });
     expect(screen.getByTestId("total-news2").textContent).toMatch(/^0/);
     expect(screen.getByTestId("band-news2").textContent).toMatch(/does not exclude illness/);
+    set(/Current GCS for qSOFA/, "15");
     expect(screen.getByTestId("total-qsofa").textContent).toMatch(/^0/);
+    set(/Current GCS for qSOFA/, "14");
+    expect(screen.getByTestId("total-qsofa").textContent).toMatch(/^1/);
+    // NEWS2 ACVPU Alert does not determine qSOFA; worst-period SOFA GCS does not either
+    set(/Worst-period GCS/, "3");
+    expect(screen.getByTestId("total-qsofa").textContent).toMatch(/^1/);
+    set(/Worst-period GCS/, "15");
+    set(/Current GCS for qSOFA/, "15");
+    expect(screen.getByTestId("total-qsofa").textContent).toMatch(/^0/);
+    set(/Current GCS for qSOFA/, "");
+    expect(screen.getByTestId("total-qsofa").textContent).toMatch(/Incomplete/);
     set(/Respiration rate/, "8");
     expect(screen.getByTestId("band-news2").textContent).toMatch(/medical team/);
     set(/Respiration rate/, "");
@@ -154,5 +184,25 @@ describe("rendered components", () => {
     expect(resp()).toMatch(/2$/);
     fireEvent.change(screen.getByLabelText(/Respiratory support/), { target: { value: "yes" } });
     expect(resp()).toMatch(/4$/);
+  });
+});
+
+describe("Sepsis rendered renal completeness", () => {
+  it("creatinine 80 with blank/invalid urine is incomplete; valid urine scores", () => {
+    render(<SepsisScoreCalculator />);
+    const set = (re: RegExp, v: string) => fireEvent.change(screen.getAllByLabelText(re)[0], { target: { value: v } });
+    set(/^Creatinine/, "80");
+    const renalRow = () => screen.getByText(/^Renal \(creatinine \/ urine\)/).closest("li")!;
+    for (const u of ["", "-1", "NaN", "Infinity"]) {
+      set(/24 h urine output/, u);
+      expect(screen.getByTestId("total-sofa").textContent).toMatch(/Incomplete/);
+      expect(renalRow().textContent).toMatch(/lower bound/);
+    }
+    for (const [u, p] of [["500", "0"], ["499", "3"], ["200", "3"], ["199", "4"]]) {
+      set(/24 h urine output/, u);
+      expect(renalRow().textContent!.trim().endsWith(p)).toBe(true);
+    }
+    set(/24 h urine output/, ""); set(/^Creatinine/, "441");
+    expect(renalRow().textContent!.trim().endsWith("4")).toBe(true);
   });
 });

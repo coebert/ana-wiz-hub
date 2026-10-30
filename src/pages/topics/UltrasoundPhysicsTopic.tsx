@@ -84,7 +84,7 @@ const UltrasoundPhysicsTopic = () => {
         { text: "Speed of sound in soft tissue is assumed to be 1,540 m/s for depth calculations", cites: ["Cross & Plunkett Ch.17"] },
         { text: "Doppler equation: Δf = 2f₀v cos θ / c — angle of insonation must be <60° for accurate velocity measurement", cites: ["BJA Educ 2017"] },
         { text: "CW Doppler has no aliasing but no depth discrimination; PW Doppler is depth-specific but aliases above Nyquist limit (PRF/2)", cites: ["Middleton Ch.13"] },
-        { text: "A-lines (reverberation) = normal aerated lung; B-lines (comet tail) = interstitial oedema; absent lung sliding → pneumothorax", cites: ["Cross & Plunkett Ch.17"] },
+        { text: "A-lines (reverberation) = air-containing interface (normal lung OR pneumothorax); B-lines = interstitial syndrome of several causes; absent sliding is nonspecific and alone does not diagnose pneumothorax", cites: ["Cross & Plunkett Ch.17"] },
         { text: "Acoustic shadowing occurs behind bone/calculi; posterior enhancement occurs behind fluid-filled structures", cites: ["BJA Educ 2017"] },
       ]}
       coreConcepts={
@@ -250,7 +250,7 @@ const UltrasoundPhysicsTopic = () => {
                   diaphragmatic excursion during weaning assessment, and pericardial or pleural fluid characterisation
                   (the "sinusoid sign" of an effusion). In lung ultrasound it demonstrates the granular
                   <strong> "seashore sign"</strong> of normal sliding versus the <strong>"barcode/stratosphere sign"</strong>{" "}
-                  of pneumothorax <InlineRef topicId="ultrasound-physics" refLabel="Cross &amp; Plunkett Ch.17" />.
+                  of absent sliding — compatible with, but not specific for, pneumothorax <InlineRef topicId="ultrasound-physics" refLabel="Cross &amp; Plunkett Ch.17" />.
                 </p>
 
               </div>
@@ -345,15 +345,20 @@ const UltrasoundPhysicsTopic = () => {
               </p>
               <p>
                 <strong>Reverberation</strong> produces equidistant parallel lines (A-lines) when ultrasound bounces repeatedly
-                between two strong parallel reflectors (e.g., pleura-air interface). In lung ultrasound, A-lines indicate
-                <strong> normal aerated lung</strong>. <strong>B-lines</strong> (comet-tail artefact) are vertical hyperechoic lines
-                extending from the pleural line to the screen edge without fading — they indicate <strong>interstitial oedema</strong>
-                or fluid-thickened interlobular septa. ≥3 B-lines per rib space is pathological.
+                between two strong parallel reflectors (e.g., pleura-air interface). In lung ultrasound, A-lines indicate an
+                <strong> air-containing interface</strong> — seen in normally aerated lung and in pneumothorax. <strong>B-lines</strong> (comet-tail artefact) are vertical hyperechoic lines
+                extending from the pleural line to the screen edge without fading — they indicate <strong>interstitial syndrome</strong>
+                from multiple causes (e.g. cardiogenic or non-cardiogenic oedema, pneumonitis, fibrosis) and are not specific
+                for cardiogenic oedema. Multiple B-lines are interpreted by their number, distribution (focal vs diffuse,
+                bilateral) and clinical context, not by a single per-rib-space cut-off.
               </p>
               <p>
                 <strong>Lung sliding</strong> (the shimmering movement of the visceral pleura against the parietal pleura with
-                respiration) rules out pneumothorax at that point. On M-mode, normal lung sliding produces the
-                <strong> "seashore sign"</strong>; absent sliding produces the <strong>"barcode/stratosphere sign"</strong>.
+                respiration) or genuine B-lines exclude pneumothorax at the scanned point — not across the whole hemithorax.
+                On M-mode, normal lung sliding produces the <strong> "seashore sign"</strong>; absent sliding produces the
+                <strong>"barcode/stratosphere sign"</strong>, which is nonspecific (e.g. apnoea, mainstem intubation, pleural
+                adhesions) and alone does not diagnose pneumothorax. Interpret the whole pattern with the clinical context;
+                no intervention should follow from one sign alone.
               </p>
             </div>
             </CollapsibleSubsection>

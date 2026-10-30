@@ -7,7 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta } from "@/data/curriculum";
 import { classifyImpact as classifyImpactExternal } from "@/lib/drug-impact-classifier";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
-import { computeMlPerHr, extractMassDilutions, formatConcentration, formatMix, normaliseInfusionStandard } from "@/lib/infusion-standard";
+import { computeMlPerHr, extractMassDilutions, formatConcentration, formatMassConcentration, formatMix, normaliseInfusionStandard } from "@/lib/infusion-standard";
 
 interface InfusionStandard {
   amount_mg?: number;
@@ -536,7 +536,7 @@ export function WorkedExample({ drug }: { drug: Pick<Drug, "infusion_standard"> 
   );
 }
 
-function PreparationGuide({ raw, drug }: { raw: string; drug: Drug }) {
+export function PreparationGuide({ raw, drug }: { raw: string; drug: Drug }) {
   const steps = splitSteps(raw);
   const dilutions = extractDilutions(raw);
   const diluents = detectDiluents(raw);
@@ -576,9 +576,9 @@ function PreparationGuide({ raw, drug }: { raw: string; drug: Drug }) {
                 <span
                   key={i}
                   className="text-[11px] font-mono px-2 py-0.5 rounded-md border border-drugs/30 bg-drugs/5 text-foreground"
-                  title={`${d.mgPerMl.toFixed(3)} mg/mL = ${d.mcgPerMl.toFixed(1)} mcg/mL`}
+                  title={`${d.raw} = ${formatMassConcentration(d.mgPerMl)} (stated final volume)`}
                 >
-                  {d.raw} → {d.mgPerMl >= 1 ? `${d.mgPerMl.toFixed(2)} mg/mL` : `${d.mcgPerMl.toFixed(0)} mcg/mL`}
+                  {d.raw} → {formatMassConcentration(d.mgPerMl)}
                 </span>
               ))}
             </div>

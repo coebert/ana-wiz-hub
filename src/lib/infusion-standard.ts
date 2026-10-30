@@ -112,26 +112,35 @@ export function formatMix(n: NormalisedStandard): string {
     : `${f(n.amountMg, 3)} mg in ${f(n.finalVolumeMl, 2)} mL final volume`;
 }
 
+/** Mass concentration with an appropriate unit and ≥3 significant figures; a positive value never shows as zero. */
+export function formatMassConcentration(mgPerMl: number): string {
+  if (!pos(mgPerMl)) return "";
+  const sig = (n: number) => Number(n.toPrecision(3)).toString();
+  return mgPerMl >= 1 ? `${sig(mgPerMl)} mg/mL` : mgPerMl >= 0.0001 ? `${sig(mgPerMl * 1000)} mcg/mL` : `${sig(mgPerMl * 1e6)} ng/mL`;
+}
+
 /**
- * Mass-only concentration badges parsed from preparation prose. Biological-unit phrases are
- * deliberately NOT parsed: prose often states diluent volume (e.g. "50 units in 49.5 mL"),
- * which is not the final volume.
+ * Mass-only concentration badges parsed from preparation prose. STRICT: a badge is derived only when
+ * the prose explicitly states the final volume ("X mg in Y mL final volume", "X mg made up to Y mL").
+ * Unqualified "X in Y mL" is ambiguous (Y may be diluent, not final volume) and yields no badge.
+ * Biological-unit phrases are never parsed.
  */
 export function extractMassDilutions(text: string): Array<{ raw: string; mgPerMl: number; mcgPerMl: number }> {
   const out: Array<{ raw: string; mgPerMl: number; mcgPerMl: number }> = [];
   const seen = new Set<string>();
-  const re = /(\d+(?:\.\d+)?)\s*(mg|g|mcg|micrograms?)\s*(?:in|\/)\s*(\d+(?:\.\d+)?)\s*(?:ml|mls)\b/gi;
+  const re = /(\d+(?:\.\d+)?)\s*(mg|g|mcg|micrograms?)\s*(?:in\s*(\d+(?:\.\d+)?)\s*(?:ml|mls)\s+(?:total|final)\s+volume|made\s+up\s+to\s*(\d+(?:\.\d+)?)\s*(?:ml|mls)\b)/gi;
   let m: RegExpExecArray | null;
   while ((m = re.exec(text)) !== null) {
     const amount = parseFloat(m[1]);
     const unit = m[2].toLowerCase();
-    const ml = parseFloat(m[3]);
+    const ml = parseFloat(m[3] ?? m[4]);
     if (!pos(amount) || !pos(ml)) continue;
     const mg = unit === "g" ? amount * 1000 : unit.startsWith("mcg") || unit.startsWith("microgram") ? amount / 1000 : amount;
     const key = `${m[1]}${unit}-${ml}`;
     if (seen.has(key)) continue;
     seen.add(key);
     const mgPerMl = mg / ml;
+    if (!pos(mgPerMl)) continue;
     out.push({ raw: m[0], mgPerMl, mcgPerMl: mgPerMl * 1000 });
     if (out.length >= 6) break;
   }
