@@ -168,6 +168,7 @@ const PodcastsLibrary = () => {
         .from("podcasts")
         .select("topic_id, topic_title, audio_path, duration_seconds, updated_at, voice")
         .eq("status", "ready")
+        .eq("audit_hold", false)
         .not("audio_path", "is", null)
         .order("updated_at", { ascending: false });
 

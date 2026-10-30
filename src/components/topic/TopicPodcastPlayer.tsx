@@ -564,6 +564,16 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     );
   }
 
+  if (podcast?.audit_hold) {
+    return (
+      <div role="status" className="border border-border bg-card p-4 space-y-2">
+        <h3 className="font-serif font-semibold text-foreground">Recording temporarily withdrawn</h3>
+        <p className="text-sm text-muted-foreground">{podcast.audit_hold_reason}</p>
+        <a href="#references" className="text-sm text-primary underline">Read the current topic and its sources</a>
+      </div>
+    );
+  }
+
   // Nothing recorded yet and the visitor cannot commission recordings.
   if ((!podcast || podcast.status !== "ready" || !podcast.audio_url) && !isAdmin) {
     return (

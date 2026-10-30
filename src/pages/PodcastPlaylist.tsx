@@ -108,6 +108,7 @@ const PodcastPlaylist = () => {
       .from("podcasts")
       .select("topic_id, topic_title, audio_path, duration_seconds, voice")
       .eq("status", "ready")
+      .eq("audit_hold", false)
       .not("audio_path", "is", null)
       .order("topic_title", { ascending: true });
 
