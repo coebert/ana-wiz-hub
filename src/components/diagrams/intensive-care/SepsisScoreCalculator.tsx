@@ -27,7 +27,7 @@ const SepsisScoreCalculator = () => {
   const [acvpu, setAcvpu] = useState<Acvpu | "">("C");
   const [scale2, setScale2] = useState(false);
   // SOFA assessment period (worst values) — fictional example
-  const [lab, setLab] = useState({ pf: "280", platelets: "120", bilirubin: "28", gcs: "14", map: "62", creatinine: "140", urine: "" });
+  const [lab, setLab] = useState({ pf: "280", platelets: "120", bilirubin: "28", gcs: "14", map: "62", creatinine: "140", urine: "900" });
   const [support, setSupport] = useState<Tri>("unknown");
   const [agents, setAgents] = useState<Record<Agent, { given: boolean; dose: string }>>({
     dopamine: { given: false, dose: "" }, dobutamine: { given: false, dose: "" },
