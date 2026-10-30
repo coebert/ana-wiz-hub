@@ -9,7 +9,6 @@ import {
   type BurnFormula,
   burnFirstDayPlan,
   burnFormula24h,
-  ivyIndex,
   burnSourceScope,
   mostellerBsa,
   urineTargetMlPerHour,
@@ -50,14 +49,10 @@ export const ParklandCalculator = () => {
   const [height, setHeight] = useState("175");
   const [hours, setHours] = useState("");
   const [given, setGiven] = useState("");
-  const [otherFluids, setOtherFluids] = useState("");
 
   const w = Number(weight);
   const res = burnFormula24h(formula, w, Number(tbsa), Number(height));
   const plan = res ? burnFirstDayPlan(res.totalMl, num(hours), num(given)) : null;
-  const otherRaw = num(otherFluids);
-  const otherValid = otherRaw !== null && Number.isFinite(otherRaw) && otherRaw >= 0;
-  const ivy = res && otherValid ? ivyIndex(res.totalMl + otherRaw!, w) : null;
   const uo = urineTargetMlPerHour(population, w);
   const m2 = mostellerBsa(w, Number(height));
   const scopeReason = burnSourceScope(formula, population, Number(tbsa));
@@ -65,14 +60,14 @@ export const ParklandCalculator = () => {
 
   const load = (f: BurnFormula, p: "adult" | "child", kg: number, pct: number, cm?: number) => {
     setFormula(f); setPopulation(p); setWeight(String(kg)); setTbsa(String(pct)); if (cm) setHeight(String(cm));
-    setHours(""); setGiven(""); setOtherFluids("");
+    setHours(""); setGiven("");
   };
 
   return (
     <DiagramFigure
       id="parkland-calculator"
       title="Parkland"
-      description="Burn-fluid formula estimator: named Parkland, NSW modified Parkland, ABA adult and Galveston estimates within each source's scope, remaining formula volumes without rate instructions, and an Ivy-index check once other fluids are accounted for."
+      description="Burn-fluid formula estimator: named Parkland, NSW modified Parkland, ABA adult and Galveston estimates within each source's scope, remaining formula volumes without rate instructions, with an educational fluid-overload caution (no computed risk check)."
     >
       <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
         <figcaption className="mb-4">
@@ -111,7 +106,6 @@ export const ParklandCalculator = () => {
           )}
           <div><Label htmlFor="elapsed" className="text-xs">Hours since injury (optional)</Label><Input id="elapsed" type="number" min={0} value={hours} onChange={(e) => setHours(e.target.value)} className="mt-1" /></div>
           <div><Label htmlFor="given" className="text-xs">Resuscitation fluid given since injury (mL)</Label><Input id="given" type="number" min={0} value={given} onChange={(e) => setGiven(e.target.value)} className="mt-1" /></div>
-          <div><Label htmlFor="other" className="text-xs">Other prescribed fluids over 24 h (mL, e.g. maintenance)</Label><Input id="other" type="number" min={0} value={otherFluids} onChange={(e) => setOtherFluids(e.target.value)} className="mt-1" /></div>
         </div>
 
         {popMismatch && (
@@ -158,27 +152,16 @@ export const ParklandCalculator = () => {
             <div className="mt-3 rounded-md border border-border bg-muted/30 p-3 text-xs text-muted-foreground">
               <p><span className="font-semibold text-foreground">Maintenance:</span>{" "}
                 {res.includesMaintenance ? "already included in the Galveston total — do not add a second allowance." :
-                  population === "child" ? "children also need maintenance fluid prescribed separately (NSW ACI); enter it above so total intake is counted." :
-                  "prescribe any maintenance or other fluids separately and enter them above."}</p>
+                  population === "child" ? "children also need maintenance fluid prescribed separately (NSW ACI)." :
+                  "prescribe any maintenance or other fluids separately."}</p>
               <p className="mt-1"><span className="font-semibold text-foreground">Notes:</span> {FORMULA[formula].note}</p>
               <p className="mt-1">Electrical injury, inhalation injury, haemochromogenuria and delayed resuscitation often need more fluid and higher urine-output targets — follow the specific burns-service protocol.</p>
             </div>
 
-            {otherRaw === null ? (
-              <p className="mt-3 rounded-md border border-border p-3 text-xs text-muted-foreground" data-testid="ivy">
-                <span className="font-semibold text-foreground">Formula subtotal only:</span> {Math.round(res.totalMl / w)} mL/kg. Other fluids are unknown — enter them (or 0) before any total projected intake or Ivy index (250 mL/kg) comparison is made.
-              </p>
-            ) : !otherValid ? (
-              <p role="status" className="mt-3 text-xs text-destructive">Other fluids must be a number ≥0 mL.</p>
-            ) : ivy && (
-              <div data-testid="ivy" className={cn("mt-3 flex items-start gap-2 rounded-md border p-3 text-xs", ivy.exceeds ? "border-destructive/40 bg-destructive/10 text-destructive" : "border-border text-muted-foreground")}>
-                <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
-                <p>
-                  <span className="font-semibold">Ivy index check:</span> projected 24 h intake {Math.round(res.totalMl + otherRaw!).toLocaleString()} mL
-                  = {Math.round(ivy.mlPerKg)} mL/kg ({ivy.exceeds ? "above" : "not above"} 250 mL/kg). {ivy.exceeds ? "Higher risk of abdominal compartment syndrome — review the fluid strategy with the burns team." : "Actual intake often exceeds the estimate; recalculate with real volumes."}
-                </p>
-              </div>
-            )}
+            <p className="mt-3 rounded-md border border-border p-3 text-xs text-muted-foreground" data-testid="overload-warning">
+              Fluid overload can cause compartment syndromes. In adults with major burns, the ABA guideline identifies actual or clinically projected 24-hour fluid volumes approaching 250 mL/kg as one reason for specialist reassessment and selective pressure monitoring. The formula estimate here cannot establish actual intake or rule out fluid-overload risk.{" "}
+              <a className="underline" href="https://academic.oup.com/jbcr/article/45/3/565/7458089" target="_blank" rel="noopener noreferrer">ABA 2024</a>.
+            </p>
           </>
         )}
 
@@ -192,8 +175,8 @@ export const ParklandCalculator = () => {
           <ExampleButton title="20 kg, 110 cm child, 25% TBSA (Galveston)" onClick={() => load("galveston", "child", 20, 25, 110)}>
             BSA ≈ 0.78 m²: 5,000 × 0.78 × 0.25 + 2,000 × 0.78 ≈ <strong>2,540 mL</strong>, maintenance already included.
           </ExampleButton>
-          <ExampleButton title="100 kg adult, 60% TBSA — Ivy index" onClick={() => load("parkland", "adult", 100, 60)}>
-            4 × 100 × 60 = <strong>24,000 mL</strong> = 240 mL/kg formula subtotal; enter other fluids to compare total intake with 250 mL/kg.
+          <ExampleButton title="100 kg adult, 60% TBSA (Parkland)" onClick={() => load("parkland", "adult", 100, 60)}>
+            4 × 100 × 60 = <strong>24,000 mL</strong> = 240 mL/kg formula estimate. Actual intake usually differs and must be tracked; a formula figure does not rule out fluid-overload risk.
           </ExampleButton>
         </div>
       </figure>

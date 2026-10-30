@@ -48,14 +48,14 @@ const DRUGS: SedationDrug[] = [
   {
     id: "midazolam",
     name: "Midazolam",
-    recipe: "Diluted to 1 mg/mL for this arithmetic (e.g. 50 mg in 50 mL; stock ampoules are stronger)",
+    recipe: "Final concentration for this arithmetic: 1 mg/mL (50 mg in a final volume of 50 mL); check the supplied product strength.",
     concUgPerMl: 1000,
     unit: "micrograms/kg/h",
     cards: [
       { label: "Product range low", dose: 30 },
       { label: "Product range high", dose: 200 },
     ],
-    rangeNote: "Adult ICU maintenance 30–200 micrograms/kg/h (emc 3605). Start at the lower end and titrate individually; elderly, hypovolaemic or high-risk patients may need less (emc 5668 4.2). The 1 mg/mL calculator concentration is a dilution, not the stock strength.",
+    rangeNote: "Adult ICU maintenance 30–200 micrograms/kg/h (emc 3605). Start at the lower end and titrate individually; elderly, hypovolaemic or high-risk patients may need less (emc 5668 4.2). The calculator assumes a final concentration of 1 mg/mL. A 1 mg/mL injection is available; check the supplied strength and prepare the stated final concentration using the product and local protocol.",
     weanNote:
       "Context-sensitive half-time rises sharply after >48–72 h, especially in renal failure and obesity. Reduce according to the unit protocol, watch for delayed awakening, and screen for benzodiazepine withdrawal (agitation, tachycardia, hypertension) after prolonged use.",
     caution:
