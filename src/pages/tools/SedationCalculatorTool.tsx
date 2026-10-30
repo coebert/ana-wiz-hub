@@ -16,9 +16,6 @@ interface SedationDrug {
   start: number;
   maintenanceMin: number;
   maintenanceMax: number;
-  /** taper step size in the drug's own dose unit */
-  taperStep: number;
-  taperInterval: string;
   weanNote: string;
   caution: string;
   href: string;
@@ -34,10 +31,8 @@ const DRUGS: SedationDrug[] = [
     start: 1,
     maintenanceMin: 0.3,
     maintenanceMax: 4,
-    taperStep: 0.5,
-    taperInterval: "every 1–2 h",
     weanNote:
-      "Step down by ~0.5 mg/kg/h every 1–2 h once the RASS target holds; wake-up is usually prompt after short infusions. After days of therapy offset is slower — reduce gradually and reassess neurological status at each step.",
+      "Wake-up is usually prompt after short infusions; after days of therapy offset is slower. Reduce according to the unit protocol and reassess neurological status as the dose falls.",
     caution:
       "Keep ≤4 mg/kg/h and review after 48 h: propofol-related infusion syndrome (lactic acidosis, rhabdomyolysis, hypertriglyceridaemia). Lipid load ≈1.1 kcal/mL — count towards nutrition.",
     href: "/intensive-care/drug-safety#propofol-1",
@@ -51,10 +46,8 @@ const DRUGS: SedationDrug[] = [
     start: 30,
     maintenanceMin: 20,
     maintenanceMax: 120,
-    taperStep: 10,
-    taperInterval: "every 6–12 h",
     weanNote:
-      "Context-sensitive half-time rises sharply after >48–72 h, especially in renal failure and obesity. Reduce by ~10–20 micrograms/kg/h every 6–12 h, watch for delayed awakening, and screen for benzodiazepine withdrawal (agitation, tachycardia, hypertension) after prolonged use.",
+      "Context-sensitive half-time rises sharply after >48–72 h, especially in renal failure and obesity. Reduce according to the unit protocol, watch for delayed awakening, and screen for benzodiazepine withdrawal (agitation, tachycardia, hypertension) after prolonged use.",
     caution:
       "Accumulates with prolonged infusion — not ideal beyond 48–72 h. Avoid in renal failure where possible; metabolite (1-hydroxymidazolam) accumulates. Withdrawal risk after >1 week.",
     href: "/intensive-care/drug-safety#midazolam",
@@ -68,10 +61,8 @@ const DRUGS: SedationDrug[] = [
     start: 0.7,
     maintenanceMin: 0.2,
     maintenanceMax: 1.4,
-    taperStep: 0.2,
-    taperInterval: "every 1–2 h",
     weanNote:
-      "Infusions <24 h can usually be stopped without tapering. After longer or higher-rate infusions, step down by 0.2 micrograms/kg/h every 1–2 h to avoid rebound tachycardia and hypertension. Patients remain rousable throughout the wean.",
+      "After longer or higher-rate infusions, reduce gradually per the unit protocol and observe for rebound tachycardia, hypertension and agitation.",
     caution:
       "Bradycardia and hypotension are dose-limiting; never give a loading bolus on ICU. Useful for light, co-operative sedation (RASS 0 to −2) and peri-extubation sedation.",
     href: "/intensive-care/drug-safety#dexmedetomidine",
@@ -85,8 +76,6 @@ const DRUGS: SedationDrug[] = [
     start: 0.05,
     maintenanceMin: 0.02,
     maintenanceMax: 0.2,
-    taperStep: 0.02,
-    taperInterval: "every 5–10 min",
     weanNote:
       "Product SmPC (emc 794): no residual opioid effect 5–10 min after stopping, but withdrawal (tachycardia, hypertension, agitation) is reported after abrupt cessation, particularly after >3 days. For ICU, establish alternative analgesia and sedation in advance, titrate in stages to 0.1 micrograms/kg/min up to 1 h before extubation, then reduce in 25% decrements at intervals of at least 10 min until stopped, monitoring carefully during transition. Not recommended beyond 3 days on ICU or in ICU patients under 18; in obesity dose on ideal body weight.",
     caution:
@@ -175,7 +164,6 @@ export default function SedationCalculatorTool() {
               type="button"
               onClick={() => {
                 setDrugId(d.id);
-                setCurrentDose(null);
               }}
               aria-pressed={drugId === d.id}
               className={`rounded-xl border p-3 text-left transition-colors ${
@@ -195,7 +183,7 @@ export default function SedationCalculatorTool() {
       </div>
 
       {/* Inputs */}
-      <div className="mt-4 grid gap-4 sm:grid-cols-3">
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">
         <label className="block text-sm">
           <span className="text-muted-foreground">Adult weight (kg){drug.id === "remifentanil" ? " — actual" : ""}</span>
           <input
@@ -203,20 +191,6 @@ export default function SedationCalculatorTool() {
             onChange={(e) => setWeight(Number(e.target.value))}
             className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground"
           />
-        </label>
-        <label className="block text-sm">
-          <span className="text-muted-foreground">RASS target</span>
-          <select
-            value={rass}
-            onChange={(e) => setRass(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground"
-          >
-            <option value="0">0 — alert and calm</option>
-            <option value="-1">−1 — drowsy</option>
-            <option value="-2">−2 — light sedation</option>
-            <option value="-3">−3 — moderate sedation</option>
-            <option value="-4">−4 — deep sedation</option>
-          </select>
         </label>
         {drug.id === "remifentanil" && (
           <div className="grid grid-cols-2 gap-2 text-sm">
