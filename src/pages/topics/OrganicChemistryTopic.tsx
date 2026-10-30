@@ -2,7 +2,7 @@ import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 
 const organicChemistryFaqs: Array<[string, string]> = [
-  ["Why do ester local anaesthetics act for a shorter duration than amides?", "Esters (procaine, amethocaine) are hydrolysed rapidly by plasma cholinesterase, giving half-lives of 1–10 min. Amides (lidocaine, bupivacaine, ropivacaine) are metabolised slowly by hepatic CYP enzymes with half-lives of 1.5–3.5 h. Ester hydrolysis also liberates PABA, which explains the allergy risk that amides lack."],
+  ["Does ester versus amide chemistry determine block duration?", "Ester hydrolysis and amide hepatic metabolism differ, but plasma elimination half-life is not clinical block duration. Amethocaine/tetracaine can produce prolonged topical anaesthesia (GOSH: 4–6 hours). PABA-related ester allergy is recognised; true allergy to amide local anaesthetics is rare but possible, including anaphylaxis in the lidocaine SmPC."],
   ["What is a chiral centre and why is ropivacaine an example?", "A chiral centre is a carbon bonded to four different groups, generating two non-superimposable mirror-image enantiomers. Ropivacaine is the pure S(-)-enantiomer of its racemate; the R(+) form is more cardiotoxic. Single-enantiomer formulation gives ropivacaine a safer cardiovascular profile than racemic bupivacaine at equipotent doses."],
   ["How does pKa influence local anaesthetic onset?", "At tissue pH 7.4, Henderson–Hasselbalch dictates the proportion of un-ionised (lipid-soluble) drug. Lidocaine (pKa 7.9) has more un-ionised drug at injection and crosses the nerve membrane in 2–5 min. Higher-pKa drugs (bupivacaine 8.1, procaine 8.9) are more ionised and slower to act."],
 ];
@@ -133,13 +133,13 @@ const OrganicChemistryTopic = () => {
                 question to ask of any nitrogen-containing drug is: <strong>how many carbon substituents are on the nitrogen?</strong>
               </p>
               <ul className="list-disc list-inside space-y-1">
-                <li><strong>Tertiary amine (R₃N):</strong> three carbon substituents, one lone pair. The lone pair can accept a proton, so the drug exists in equilibrium between an unionised (lipid-soluble) form and a protonated (water-soluble) form. The ratio is set by the drug's pKa and the surrounding pH — Henderson–Hasselbalch. Only the unionised form crosses lipid membranes including the BBB and placenta.</li>
-                <li><strong>Quaternary amine (R₄N⁺):</strong> four carbon substituents and a permanent positive charge. There is no neutral form, so it cannot dissolve in the lipid bilayer at any pH. Predictable signature: poor oral absorption, small Vd, no BBB or placental crossing, renal excretion of parent compound.</li>
+                <li><strong>Tertiary amine (R₃N):</strong> three carbon substituents, one lone pair. The lone pair can accept a proton, so the drug exists in equilibrium between an unionised (lipid-soluble) form and a protonated (water-soluble) form. The ratio is set by the drug's pKa and the surrounding pH — Henderson–Hasselbalch. The unionised form generally crosses lipid membranes more readily; transfer is limited, not determined solely by this chemical feature.</li>
+                <li><strong>Quaternary amine (R₄N⁺):</strong> four carbon substituents and a permanent positive charge. There is no neutral form, so it cannot dissolve in the lipid bilayer at any pH. Predictable signature: poor oral absorption, small Vd, poor BBB penetration and greatly limited passive placental transfer, not proven zero passage, renal excretion of parent compound.</li>
               </ul>
               <p>
                 This single structural feature explains why <strong>neostigmine must be paired with glycopyrrolate</strong>
-                (both quaternary, no central effects), why <strong>suxamethonium and rocuronium are safe for the foetus</strong>
-                (don't cross placenta), and why <strong>atropine causes central anticholinergic syndrome but glycopyrrolate doesn't</strong>.
+                (both quaternary, no central effects), why <strong>suxamethonium and rocuronium have limited placental transfer</strong>
+                (limited placental transfer does not itself guarantee fetal safety), and why <strong>atropine causes central anticholinergic syndrome but glycopyrrolate doesn't</strong>.
               </p>
             </div>
             <div className="bg-card rounded-xl border border-border p-4 md:p-6 mt-4">
@@ -201,14 +201,14 @@ const OrganicChemistryTopic = () => {
                       <td className="py-1 pr-2 font-semibold text-foreground">Ester (−COO−)</td>
                       <td className="py-1 pr-2">Polar carbonyl-oxygen linkage; the C−O bond is chemically labile and readily attacked by water</td>
                       <td className="py-1 pr-2">Rapidly hydrolysed by plasma (pseudo)cholinesterase and tissue esterases — Phase I metabolism completes in the plasma itself, giving very short half-lives</td>
-                      <td className="py-1 pr-2">Short duration of action; hydrolysis products (e.g. PABA from ester local anaesthetics) can trigger true allergy</td>
+                      <td className="py-1 pr-2">Duration depends on agent, site and formulation: tetracaine can have prolonged topical action. Hydrolysis products such as PABA can contribute to allergy</td>
                       <td className="py-1"><strong>Remifentanil</strong> (ester hydrolysed by non-specific plasma/tissue esterases, context-sensitive half-time ~3 min, essentially independent of infusion duration); <strong>atracurium</strong> (partly by non-specific esterase, alongside Hofmann elimination); <strong>cocaine</strong> and <strong>tetracaine</strong> (ester local anaesthetics)</td>
                     </tr>
                     <tr className="border-b border-border/50 align-top">
                       <td className="py-1 pr-2 font-semibold text-foreground">Amide (−CONH−)</td>
                       <td className="py-1 pr-2">Resonance-stabilised C−N bond, much more resistant to hydrolysis than an ester</td>
                       <td className="py-1 pr-2">Requires hepatic microsomal (CYP) metabolism, so it is slower — half-lives of hours rather than minutes</td>
-                      <td className="py-1 pr-2">Longer duration of action; hepatic clearance is dose- and perfusion-dependent, so hepatic impairment prolongs effect</td>
+                      <td className="py-1 pr-2">Block duration is agent/site/formulation-dependent, not inferred from plasma half-life alone. Hepatic impairment can reduce clearance; amide allergy is rare but possible</td>
                       <td className="py-1"><strong>Lidocaine</strong> and <strong>bupivacaine</strong> (amide LAs, two "i"s before "-caine") contrasted with the ester LAs <strong>cocaine</strong> and <strong>tetracaine</strong></td>
                     </tr>
                     <tr className="border-b border-border/50 align-top">
@@ -349,9 +349,9 @@ const OrganicChemistryTopic = () => {
         },
       ]}
       keyPoints={[
-        { text: "Ester bonds (—COO—) are rapidly hydrolysed by plasma esterases → short-acting drugs (remifentanil, mivacurium, ester LAs)", cites: ["Peck & Hill Ch.3"] },
-        { text: "Amide bonds (—CONH—) require hepatic metabolism → longer acting. Amide LAs have 2 i's before '-caine'", cites: ["Cross & Plunkett Ch.4"] },
-        { text: "Quaternary amines (R₄N⁺) carry permanent charge → cannot cross BBB or placenta (glycopyrrolate, neostigmine)", cites: ["Peck & Hill Ch.3"] },
+        { text: "Ester hydrolysis often speeds systemic clearance; clinical duration is agent/site-dependent, with prolonged topical tetracaine as a counterexample", cites: ["Peck & Hill Ch.3"] },
+        { text: "Amide LAs commonly undergo hepatic metabolism; class/plasma half-life alone does not determine block duration. True amide allergy is rare but possible", cites: ["Cross & Plunkett Ch.4"] },
+        { text: "Quaternary amines (R₄N⁺) carry permanent charge → poorly penetrate BBB and have limited passive placental transfer, not zero passage (glycopyrronium SmPC)", cites: ["Peck & Hill Ch.3"] },
         { text: "Chirality: enantiomers can have very different potency and toxicity (levobupivacaine vs racemic bupivacaine)", cites: ["Nau & Strichartz 2002"] },
         { text: "Benzene rings increase lipophilicity → better CNS penetration (propofol, thiopentone, midazolam)", cites: ["Peck & Hill Ch.3"] },
         { text: "Halogenation (adding F, Cl, Br) increases molecular stability and alters volatility of anaesthetic agents", cites: ["Cross & Plunkett Ch.4"] },
