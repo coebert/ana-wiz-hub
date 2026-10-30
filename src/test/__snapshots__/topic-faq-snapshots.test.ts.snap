@@ -382,11 +382,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is a rapid sequence induction (RSI)?",
     },
     {
-      "a": "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Apnoeic oxygenation 15 L/min nasal cannulae (THRIVE). 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm with capnography (sustained ≥ 2 waveforms). 8. Inflate cuff, secure tube, ventilate. 9. Have a Plan B (videolaryngoscope) and Plan D (FONA) ready before induction.",
+      "a": "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Apnoeic oxygenation 15 L/min nasal cannulae (THRIVE). 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm sustained exhaled CO₂ (PUMA: rises with exhalation and falls with inspiration, consistent or increasing over at least seven breaths, peak > 1 kPa above baseline, clinically appropriate); if absent, actively exclude oesophageal intubation and remove the tube by default unless removal is judged more dangerous. Confirm tube depth separately. 8. Inflate cuff, secure tube, ventilate. 9. Have a Plan B (videolaryngoscope) and Plan D (FONA) ready before induction.",
       "q": "How do you perform a rapid sequence induction step-by-step?",
     },
     {
-      "a": "Cricoid pressure remains part of the DAS / RCoA RSI bundle but its evidence base is weak. The 2018 IRIS trial (3472 patients) showed non-inferiority of sham vs cricoid for aspiration but did not establish equivalence and was underpowered. Current UK practice: apply 10 N awake increasing to 30 N when consciousness is lost, and release immediately if it impairs laryngoscopic view, mask ventilation or supraglottic airway placement. It is not a substitute for fasting or for skilled intubation.",
+      "a": "Cricoid pressure remains part of the DAS / RCoA RSI bundle but its evidence base is weak. The 2018 IRIS trial (3472 patients) failed to demonstrate non-inferiority of sham versus cricoid pressure for aspiration: event rates were low (0.6% vs 0.5%) and the upper confidence limit (relative risk 2.00) exceeded the prespecified 1.50 margin. No significant difference is not proof of equivalence. Current UK practice: apply 10 N awake increasing to 30 N when consciousness is lost, and release immediately if it impairs laryngoscopic view, mask ventilation or supraglottic airway placement. It is not a substitute for fasting or for skilled intubation.",
       "q": "Is cricoid pressure still recommended in RSI?",
     },
     {
@@ -402,7 +402,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "When is awake fibreoptic intubation (AFOI) indicated?",
     },
     {
-      "a": "CICO = Can't Intubate, Can't Oxygenate: failed Plans A, B and C with falling SpO₂. Declare CICO out loud, stop further attempts, summon help and proceed to scalpel-bougie-tube cricothyroidotomy before SpO₂ falls below 80%. Technique: extend neck, palpate cricothyroid membrane, transverse stab with size 10 scalpel, rotate blade caudally, railroad a Frova/bougie, advance a 6.0 cuffed tube 2–3 cm, confirm with capnography. Needle cricothyroidotomy failed in > 60% of NAP4 emergencies and is no longer first-line.",
+      "a": "CICO = Can't Intubate, Can't Oxygenate: failed Plans A, B and C with falling SpO₂. Declare CICO out loud, stop further attempts, summon help and proceed immediately to scalpel-bougie-tube cricothyroidotomy — the trigger is failed oxygenation via tube, SAD and optimised facemask, not a saturation number. Technique: extend neck, palpate cricothyroid membrane, transverse stab with size 10 scalpel, rotate blade caudally, railroad a Frova/bougie, advance a 6.0 cuffed tube 2–3 cm, confirm with capnography. Needle cricothyroidotomy failed in > 60% of NAP4 emergencies and is no longer first-line.",
       "q": "What is CICO and when should front-of-neck access be performed?",
     },
     {
@@ -704,7 +704,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the AAGBI recommendations for anaesthesia in remote locations?",
     },
     {
-      "a": "Identify at-risk patients (eGFR <45 before intra-arterial first-pass contrast or <30 before IV contrast, diabetes, dehydration, NSAIDs, ACEi). Use the lowest volume of iso- or low-osmolar contrast, IV 0.9% saline 1 mL/kg/h for 3–4 h before and 4–6 h after in high-risk patients only, stop metformin at the time of contrast if eGFR <30 and restart after 48 h if renal function is stable, avoid nephrotoxins, and recheck creatinine at 48–72 h. N-acetylcysteine evidence is weak — no longer routinely recommended.",
+      "a": "Distinguish CA-AKI (association) from CI-AKI (causation). Assess AKI, stable CKD, route, urgency and fluid tolerance. ESUR uses <45 for first-pass arterial exposure/ICU and <30 for IV/second-pass exposure. Individualise saline in high-risk patients; no NAC or prophylactic dialysis. Medication decisions are not blanket holds. Do not delay essential emergency imaging. See the detailed ICU AKI & RRT contrast lesson.",
       "q": "How is contrast-induced nephropathy prevented in IR patients?",
     },
     {
@@ -1390,11 +1390,11 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "How do I prescribe regional citrate anticoagulation safely and what are the pitfalls?",
     },
     {
-      "a": "Risk-stratify with the Mehran score (hypotension, IABP, CCF, age > 75, anaemia, diabetes, eGFR < 60, contrast volume). High risk = eGFR < 60 mL/min/1.73 m², diabetes, hypovolaemia, CCF, age > 75. Prevention: pre/post-procedure IV isotonic crystalloid 1 mL/kg/h for 6–12 h before and after; use iso-osmolar (iodixanol) or low-osmolar contrast; minimise contrast volume; withhold ACE-i / ARB / NSAID / metformin on the day of the procedure. PRESERVE (Weisbord, NEJM 2018, n = 5 177) showed N-acetylcysteine offered NO benefit over placebo, and saline was non-inferior to sodium bicarbonate. Statins given peri-procedure may attenuate risk in statin-naive patients (modest evidence). The major risk factor for AKI in modern practice is procedural haemodynamic instability rather than contrast itself.",
+      "a": "CA-AKI describes AKI after contrast; CI-AKI means injury caused by it. Do not delay clinically essential emergency imaging. ACR recommends selective IV isotonic prophylaxis in AKI or eGFR <30, with individual consideration at 30–44; ESUR retains <45 for ICU or first-pass arterial exposure. Individualise fluids in congestion. PRESERVE found no benefit of bicarbonate over saline or acetylcysteine over placebo; it did not compare saline with no hydration. Medication holds depend on kidney function, exposure and illness, not a blanket rule. Mehran is a historical PCI score, not ICU CT clearance.",
       "q": "How do I prevent contrast-induced AKI and is N-acetylcysteine still recommended?",
     },
     {
-      "a": "Avoid where possible: NSAIDs, aminoglycosides (gentamicin, amikacin — therapeutic-drug monitoring mandatory if used), IV contrast in high-risk patients, ACE-i / ARB during AKI (then restart for long-term renoprotection), vancomycin without TDM, amphotericin B (use liposomal), tenofovir, calcineurin inhibitors at high trough. Opioids — avoid morphine (active metabolite M6G accumulates → respiratory depression) and pethidine (norpethidine → seizures); fentanyl, alfentanil and remifentanil are safe. Neuromuscular blockers — avoid pancuronium; cisatracurium (Hofmann elimination) and atracurium are first choice. Sugammadex is renally cleared but the sugammadex-rocuronium complex appears safe even in severe renal failure; avoid if eGFR < 30 by manufacturer label but widely used off-label. Antibiotics on CRRT need dose adjustment — meropenem, piperacillin-tazobactam, vancomycin and aminoglycosides need TDM. LMWH (dalteparin, enoxaparin) accumulates if CrCl < 30 — use UFH or anti-Xa monitoring.",
+      "a": "Avoid where possible: NSAIDs, aminoglycosides (gentamicin, amikacin — therapeutic-drug monitoring mandatory if used), unnecessary contrast exposure (do not withhold essential emergency imaging), ACE-i / ARB during AKI (then restart for long-term renoprotection), vancomycin without TDM, amphotericin B (use liposomal), tenofovir, calcineurin inhibitors at high trough. Opioids — avoid morphine (active metabolite M6G accumulates → respiratory depression) and pethidine (norpethidine → seizures); fentanyl, alfentanil and remifentanil are safe. Neuromuscular blockers — avoid pancuronium; cisatracurium (Hofmann elimination) and atracurium are first choice. Sugammadex is renally cleared but the sugammadex-rocuronium complex appears safe even in severe renal failure; avoid if eGFR < 30 by manufacturer label but widely used off-label. Antibiotics on CRRT need dose adjustment — meropenem, piperacillin-tazobactam, vancomycin and aminoglycosides need TDM. LMWH (dalteparin, enoxaparin) accumulates if CrCl < 30 — use UFH or anti-Xa monitoring.",
       "q": "Which drugs require renal dose adjustment in AKI / CRRT and which are nephrotoxic?",
     },
     {
@@ -1502,7 +1502,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the 4 Hs and 4 Ts and how do I treat each at the bedside?",
     },
     {
-      "a": "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. The ERC 2021 guidelines predate DOSE-VF; subsequent ILCOR (2023) treatment recommendations suggest vector change or DSED may be considered for refractory VF — follow local protocols, and note DOSE-VF was a single-system Canadian trial stopped early by COVID-19.",
+      "a": "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. That is trial evidence, not the UK recommendation: DOSE-VF was a single-system Canadian trial stopped early by COVID-19. RCUK 2025 advises considering a vector change (antero-posterior pads) after three failed shocks once correct antero-lateral positioning is ensured, and does not recommend routine dual (double) sequential defibrillation.",
       "q": "When should defibrillation energy be escalated and what's the role of dual sequential defibrillation?",
     },
     {
@@ -1510,7 +1510,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Does adrenaline actually improve outcome — what did PARAMEDIC2 show?",
     },
     {
-      "a": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) demonstrated equivalence of 33 °C and 36 °C — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with active normothermia (≤ 37.5 °C, fever treated aggressively) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. The 2022 ERC–ESICM temperature-control update therefore recommends continuous core-temperature monitoring and active prevention of fever (> 37.7 °C) for at least 72 hours, and states there is insufficient evidence to recommend for or against cooling to 32–36 °C in subpopulations. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
+      "a": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) found no significant difference between 33 °C and 36 °C (no superiority shown; this is not proof of equivalence) — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with normothermia and early treatment of fever (device cooling triggered at ≥ 37.8 °C) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Current UK advice (RCUK / ERC–ESICM 2025) is to actively prevent fever by targeting ≤ 37.5 °C in patients who remain comatose after ROSC; the RCUK narrative gives 36–72 h, and its March 2026 algorithm states at least 72 h, which this page follows. The superseded 2022 update used > 37.7 °C. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
       "q": "Should I cool post-arrest patients to 33 °C or aim for active normothermia? What changed after TTM2?",
     },
     {
@@ -1752,7 +1752,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Which children with acute stroke are considered for thrombolysis or thrombectomy?",
     },
     {
-      "a": "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock), with smaller 5 mL/kg boluses in DKA or trauma. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings).",
+      "a": "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock). DKA and trauma follow their own pathways: NICE NG18 uses a 10 mL/kg 0.9% saline bolus in DKA (given as soon as possible if shocked, over 30 minutes if dehydrated but not shocked), while haemorrhagic trauma needs early blood products and haemorrhage control. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings).",
       "q": "What fluid resuscitation strategy is recommended for paediatric septic shock?",
     },
     {
@@ -1816,7 +1816,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is the Surviving Sepsis Hour-1 bundle?",
     },
     {
-      "a": "Observational data (Kumar 2006; Ferrer 2014; Seymour NEJM 2017 — New York State sepsis mandate cohort) show that each hour of delay in effective antibiotic administration in septic shock is associated with a ~4–8% absolute increase in in-hospital mortality. The 2017 New York data demonstrated an OR of 1.04 per hour for the 3-hour bundle. Empirical cover should target the suspected source and local resistance patterns, be broad enough to cover MRSA and Pseudomonas where clinical features suggest it, and be de-escalated once cultures and clinical course allow.",
+      "a": "Observational data link antibiotic delay to worse outcomes: Kumar 2006 found a 7.6% average decrease in survival per hour of delay in starting effective antimicrobials over the first 6 hours of septic shock, and the 2017 New York State mandate cohort (Seymour, NEJM) found an OR of 1.04 per hour for in-hospital mortality with delayed completion of the 3-hour bundle. Empirical cover should target the suspected source and local resistance patterns, be broad enough to cover MRSA and Pseudomonas where clinical features suggest it, and be de-escalated once cultures and clinical course allow.",
       "q": "Why does every hour of delayed antibiotics matter in septic shock?",
     },
     {
@@ -2400,7 +2400,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/perioperative/genetic-syndromes": [
     {
-      "a": "Stop all volatile agents and suxamethonium, switch to TIVA, hyperventilate with 100% oxygen via a clean circuit, give IV dantrolene 2.5 mg/kg repeated up to 10 mg/kg (more if required), cool actively, and treat hyperkalaemia, acidosis and arrhythmias (AAGBI 2020).",
+      "a": "Stop all volatile agents and suxamethonium, switch to TIVA, remove the vaporiser without delaying to change the circuit or machine (charcoal filters if available), hyperventilate with 100% oxygen, give IV dantrolene 2–2.5 mg/kg (max 300 mg per dose) every 10 min to effect — totals above 10 mg/kg may be needed, cool actively, and treat hyperkalaemia, acidosis and arrhythmias (AAGBI 2020).",
       "q": "How is malignant hyperthermia treated?",
     },
     {
@@ -2874,7 +2874,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Why is sevoflurane preferred for inhalational induction in children?",
     },
     {
-      "a": "Autosomal-dominant disorder of skeletal-muscle Ca²⁺ release (RYR1/CACNA1S mutations). Triggered by all volatile anaesthetics and suxamethonium. Features (often early): masseter spasm, ↑EtCO₂ despite ↑MV, tachycardia, mottling, rigidity, hyperthermia (late), rhabdomyolysis, hyperkalaemia, DIC. Management: stop trigger, switch to TIVA, hyperventilate 100 % O₂, dantrolene 2.5 mg/kg IV repeated every 5 min (max 10 mg/kg), active cooling, treat hyperkalaemia/arrhythmias, transfer to ICU. AAGBI MH hotline available 24/7.",
+      "a": "Autosomal-dominant disorder of skeletal-muscle Ca²⁺ release (RYR1/CACNA1S mutations). Triggered by all volatile anaesthetics and suxamethonium. Features (often early): masseter spasm, ↑EtCO₂ despite ↑MV, tachycardia, mottling, rigidity, hyperthermia (late), rhabdomyolysis, hyperkalaemia, DIC. Management: stop trigger, switch to TIVA, hyperventilate 100 % O₂, dantrolene 2–2.5 mg/kg IV (max 300 mg per dose) repeated every 10 min to effect — totals above 10 mg/kg may be needed (EMHG 2024), active cooling, treat hyperkalaemia/arrhythmias, transfer to ICU. AAGBI MH hotline available 24/7.",
       "q": "What is malignant hyperthermia and how is it treated?",
     },
   ],
@@ -4185,7 +4185,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Apnoeic oxygenation 15 L/min nasal cannulae (THRIVE). 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm with capnography (sustained ≥ 2 waveforms). 8. Inflate cuff, secure tube, ventilate. 9. Have a Plan B (videolaryngoscope) and Plan D (FONA) ready before induction.",
+          "text": "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Apnoeic oxygenation 15 L/min nasal cannulae (THRIVE). 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm sustained exhaled CO₂ (PUMA: rises with exhalation and falls with inspiration, consistent or increasing over at least seven breaths, peak > 1 kPa above baseline, clinically appropriate); if absent, actively exclude oesophageal intubation and remove the tube by default unless removal is judged more dangerous. Confirm tube depth separately. 8. Inflate cuff, secure tube, ventilate. 9. Have a Plan B (videolaryngoscope) and Plan D (FONA) ready before induction.",
         },
         "name": "How do you perform a rapid sequence induction step-by-step?",
       },
@@ -4193,7 +4193,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cricoid pressure remains part of the DAS / RCoA RSI bundle but its evidence base is weak. The 2018 IRIS trial (3472 patients) showed non-inferiority of sham vs cricoid for aspiration but did not establish equivalence and was underpowered. Current UK practice: apply 10 N awake increasing to 30 N when consciousness is lost, and release immediately if it impairs laryngoscopic view, mask ventilation or supraglottic airway placement. It is not a substitute for fasting or for skilled intubation.",
+          "text": "Cricoid pressure remains part of the DAS / RCoA RSI bundle but its evidence base is weak. The 2018 IRIS trial (3472 patients) failed to demonstrate non-inferiority of sham versus cricoid pressure for aspiration: event rates were low (0.6% vs 0.5%) and the upper confidence limit (relative risk 2.00) exceeded the prespecified 1.50 margin. No significant difference is not proof of equivalence. Current UK practice: apply 10 N awake increasing to 30 N when consciousness is lost, and release immediately if it impairs laryngoscopic view, mask ventilation or supraglottic airway placement. It is not a substitute for fasting or for skilled intubation.",
         },
         "name": "Is cricoid pressure still recommended in RSI?",
       },
@@ -4225,7 +4225,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "CICO = Can't Intubate, Can't Oxygenate: failed Plans A, B and C with falling SpO₂. Declare CICO out loud, stop further attempts, summon help and proceed to scalpel-bougie-tube cricothyroidotomy before SpO₂ falls below 80%. Technique: extend neck, palpate cricothyroid membrane, transverse stab with size 10 scalpel, rotate blade caudally, railroad a Frova/bougie, advance a 6.0 cuffed tube 2–3 cm, confirm with capnography. Needle cricothyroidotomy failed in > 60% of NAP4 emergencies and is no longer first-line.",
+          "text": "CICO = Can't Intubate, Can't Oxygenate: failed Plans A, B and C with falling SpO₂. Declare CICO out loud, stop further attempts, summon help and proceed immediately to scalpel-bougie-tube cricothyroidotomy — the trigger is failed oxygenation via tube, SAD and optimised facemask, not a saturation number. Technique: extend neck, palpate cricothyroid membrane, transverse stab with size 10 scalpel, rotate blade caudally, railroad a Frova/bougie, advance a 6.0 cuffed tube 2–3 cm, confirm with capnography. Needle cricothyroidotomy failed in > 60% of NAP4 emergencies and is no longer first-line.",
         },
         "name": "What is CICO and when should front-of-neck access be performed?",
       },
@@ -4851,7 +4851,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Identify at-risk patients (eGFR <45 before intra-arterial first-pass contrast or <30 before IV contrast, diabetes, dehydration, NSAIDs, ACEi). Use the lowest volume of iso- or low-osmolar contrast, IV 0.9% saline 1 mL/kg/h for 3–4 h before and 4–6 h after in high-risk patients only, stop metformin at the time of contrast if eGFR <30 and restart after 48 h if renal function is stable, avoid nephrotoxins, and recheck creatinine at 48–72 h. N-acetylcysteine evidence is weak — no longer routinely recommended.",
+          "text": "Distinguish CA-AKI (association) from CI-AKI (causation). Assess AKI, stable CKD, route, urgency and fluid tolerance. ESUR uses <45 for first-pass arterial exposure/ICU and <30 for IV/second-pass exposure. Individualise saline in high-risk patients; no NAC or prophylactic dialysis. Medication decisions are not blanket holds. Do not delay essential emergency imaging. See the detailed ICU AKI & RRT contrast lesson.",
         },
         "name": "How is contrast-induced nephropathy prevented in IR patients?",
       },
@@ -6269,7 +6269,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Risk-stratify with the Mehran score (hypotension, IABP, CCF, age > 75, anaemia, diabetes, eGFR < 60, contrast volume). High risk = eGFR < 60 mL/min/1.73 m², diabetes, hypovolaemia, CCF, age > 75. Prevention: pre/post-procedure IV isotonic crystalloid 1 mL/kg/h for 6–12 h before and after; use iso-osmolar (iodixanol) or low-osmolar contrast; minimise contrast volume; withhold ACE-i / ARB / NSAID / metformin on the day of the procedure. PRESERVE (Weisbord, NEJM 2018, n = 5 177) showed N-acetylcysteine offered NO benefit over placebo, and saline was non-inferior to sodium bicarbonate. Statins given peri-procedure may attenuate risk in statin-naive patients (modest evidence). The major risk factor for AKI in modern practice is procedural haemodynamic instability rather than contrast itself.",
+          "text": "CA-AKI describes AKI after contrast; CI-AKI means injury caused by it. Do not delay clinically essential emergency imaging. ACR recommends selective IV isotonic prophylaxis in AKI or eGFR <30, with individual consideration at 30–44; ESUR retains <45 for ICU or first-pass arterial exposure. Individualise fluids in congestion. PRESERVE found no benefit of bicarbonate over saline or acetylcysteine over placebo; it did not compare saline with no hydration. Medication holds depend on kidney function, exposure and illness, not a blanket rule. Mehran is a historical PCI score, not ICU CT clearance.",
         },
         "name": "How do I prevent contrast-induced AKI and is N-acetylcysteine still recommended?",
       },
@@ -6277,7 +6277,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Avoid where possible: NSAIDs, aminoglycosides (gentamicin, amikacin — therapeutic-drug monitoring mandatory if used), IV contrast in high-risk patients, ACE-i / ARB during AKI (then restart for long-term renoprotection), vancomycin without TDM, amphotericin B (use liposomal), tenofovir, calcineurin inhibitors at high trough. Opioids — avoid morphine (active metabolite M6G accumulates → respiratory depression) and pethidine (norpethidine → seizures); fentanyl, alfentanil and remifentanil are safe. Neuromuscular blockers — avoid pancuronium; cisatracurium (Hofmann elimination) and atracurium are first choice. Sugammadex is renally cleared but the sugammadex-rocuronium complex appears safe even in severe renal failure; avoid if eGFR < 30 by manufacturer label but widely used off-label. Antibiotics on CRRT need dose adjustment — meropenem, piperacillin-tazobactam, vancomycin and aminoglycosides need TDM. LMWH (dalteparin, enoxaparin) accumulates if CrCl < 30 — use UFH or anti-Xa monitoring.",
+          "text": "Avoid where possible: NSAIDs, aminoglycosides (gentamicin, amikacin — therapeutic-drug monitoring mandatory if used), unnecessary contrast exposure (do not withhold essential emergency imaging), ACE-i / ARB during AKI (then restart for long-term renoprotection), vancomycin without TDM, amphotericin B (use liposomal), tenofovir, calcineurin inhibitors at high trough. Opioids — avoid morphine (active metabolite M6G accumulates → respiratory depression) and pethidine (norpethidine → seizures); fentanyl, alfentanil and remifentanil are safe. Neuromuscular blockers — avoid pancuronium; cisatracurium (Hofmann elimination) and atracurium are first choice. Sugammadex is renally cleared but the sugammadex-rocuronium complex appears safe even in severe renal failure; avoid if eGFR < 30 by manufacturer label but widely used off-label. Antibiotics on CRRT need dose adjustment — meropenem, piperacillin-tazobactam, vancomycin and aminoglycosides need TDM. LMWH (dalteparin, enoxaparin) accumulates if CrCl < 30 — use UFH or anti-Xa monitoring.",
         },
         "name": "Which drugs require renal dose adjustment in AKI / CRRT and which are nephrotoxic?",
       },
@@ -6505,7 +6505,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. The ERC 2021 guidelines predate DOSE-VF; subsequent ILCOR (2023) treatment recommendations suggest vector change or DSED may be considered for refractory VF — follow local protocols, and note DOSE-VF was a single-system Canadian trial stopped early by COVID-19.",
+          "text": "Use the manufacturer-recommended first biphasic energy (typically 120–200 J). If the manufacturer dose is unknown, default to the maximum available. Subsequent shocks should be of equal or higher energy. The DOSE-VF trial (Cheskes, NEJM 2022) randomised refractory VF after 3 standard shocks to (a) continued standard defibrillation, (b) vector-change (pad reposition anterior-posterior), or (c) double sequential external defibrillation (DSED, two defibrillators delivered ~1 second apart): DSED improved survival to hospital discharge (30.4% vs 13.3%) and survival with good neurological outcome. Vector-change was also superior to standard. That is trial evidence, not the UK recommendation: DOSE-VF was a single-system Canadian trial stopped early by COVID-19. RCUK 2025 advises considering a vector change (antero-posterior pads) after three failed shocks once correct antero-lateral positioning is ensured, and does not recommend routine dual (double) sequential defibrillation.",
         },
         "name": "When should defibrillation energy be escalated and what's the role of dual sequential defibrillation?",
       },
@@ -6521,7 +6521,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) demonstrated equivalence of 33 °C and 36 °C — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with active normothermia (≤ 37.5 °C, fever treated aggressively) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. The 2022 ERC–ESICM temperature-control update therefore recommends continuous core-temperature monitoring and active prevention of fever (> 37.7 °C) for at least 72 hours, and states there is insufficient evidence to recommend for or against cooling to 32–36 °C in subpopulations. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
+          "text": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) found no significant difference between 33 °C and 36 °C (no superiority shown; this is not proof of equivalence) — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with normothermia and early treatment of fever (device cooling triggered at ≥ 37.8 °C) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Current UK advice (RCUK / ERC–ESICM 2025) is to actively prevent fever by targeting ≤ 37.5 °C in patients who remain comatose after ROSC; the RCUK narrative gives 36–72 h, and its March 2026 algorithm states at least 72 h, which this page follows. The superseded 2022 update used > 37.7 °C. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
         },
         "name": "Should I cool post-arrest patients to 33 °C or aim for active normothermia? What changed after TTM2?",
       },
@@ -7035,7 +7035,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock), with smaller 5 mL/kg boluses in DKA or trauma. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings).",
+          "text": "10 mL/kg isotonic crystalloid boluses with reassessment after each; 20 mL/kg is reserved for specific situations (e.g. profound shock). DKA and trauma follow their own pathways: NICE NG18 uses a 10 mL/kg 0.9% saline bolus in DKA (given as soon as possible if shocked, over 30 minutes if dehydrated but not shocked), while haemorrhagic trauma needs early blood products and haemorrhage control. If shock persists after 1–2 boluses, move earlier to vasoactive infusions (adrenaline for cold shock, noradrenaline for warm) rather than escalating fluid further (SSC Paediatric 2020, APLS 2021; FEAST caution in resource-limited settings).",
         },
         "name": "What fluid resuscitation strategy is recommended for paediatric septic shock?",
       },
@@ -7171,7 +7171,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Observational data (Kumar 2006; Ferrer 2014; Seymour NEJM 2017 — New York State sepsis mandate cohort) show that each hour of delay in effective antibiotic administration in septic shock is associated with a ~4–8% absolute increase in in-hospital mortality. The 2017 New York data demonstrated an OR of 1.04 per hour for the 3-hour bundle. Empirical cover should target the suspected source and local resistance patterns, be broad enough to cover MRSA and Pseudomonas where clinical features suggest it, and be de-escalated once cultures and clinical course allow.",
+          "text": "Observational data link antibiotic delay to worse outcomes: Kumar 2006 found a 7.6% average decrease in survival per hour of delay in starting effective antimicrobials over the first 6 hours of septic shock, and the 2017 New York State mandate cohort (Seymour, NEJM) found an OR of 1.04 per hour for in-hospital mortality with delayed completion of the 3-hour bundle. Empirical cover should target the suspected source and local resistance patterns, be broad enough to cover MRSA and Pseudomonas where clinical features suggest it, and be de-escalated once cultures and clinical course allow.",
         },
         "name": "Why does every hour of delayed antibiotics matter in septic shock?",
       },
@@ -8399,7 +8399,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Stop all volatile agents and suxamethonium, switch to TIVA, hyperventilate with 100% oxygen via a clean circuit, give IV dantrolene 2.5 mg/kg repeated up to 10 mg/kg (more if required), cool actively, and treat hyperkalaemia, acidosis and arrhythmias (AAGBI 2020).",
+          "text": "Stop all volatile agents and suxamethonium, switch to TIVA, remove the vaporiser without delaying to change the circuit or machine (charcoal filters if available), hyperventilate with 100% oxygen, give IV dantrolene 2–2.5 mg/kg (max 300 mg per dose) every 10 min to effect — totals above 10 mg/kg may be needed, cool actively, and treat hyperkalaemia, acidosis and arrhythmias (AAGBI 2020).",
         },
         "name": "How is malignant hyperthermia treated?",
       },
@@ -9401,7 +9401,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Autosomal-dominant disorder of skeletal-muscle Ca²⁺ release (RYR1/CACNA1S mutations). Triggered by all volatile anaesthetics and suxamethonium. Features (often early): masseter spasm, ↑EtCO₂ despite ↑MV, tachycardia, mottling, rigidity, hyperthermia (late), rhabdomyolysis, hyperkalaemia, DIC. Management: stop trigger, switch to TIVA, hyperventilate 100 % O₂, dantrolene 2.5 mg/kg IV repeated every 5 min (max 10 mg/kg), active cooling, treat hyperkalaemia/arrhythmias, transfer to ICU. AAGBI MH hotline available 24/7.",
+          "text": "Autosomal-dominant disorder of skeletal-muscle Ca²⁺ release (RYR1/CACNA1S mutations). Triggered by all volatile anaesthetics and suxamethonium. Features (often early): masseter spasm, ↑EtCO₂ despite ↑MV, tachycardia, mottling, rigidity, hyperthermia (late), rhabdomyolysis, hyperkalaemia, DIC. Management: stop trigger, switch to TIVA, hyperventilate 100 % O₂, dantrolene 2–2.5 mg/kg IV (max 300 mg per dose) repeated every 10 min to effect — totals above 10 mg/kg may be needed (EMHG 2024), active cooling, treat hyperkalaemia/arrhythmias, transfer to ICU. AAGBI MH hotline available 24/7.",
         },
         "name": "What is malignant hyperthermia and how is it treated?",
       },
