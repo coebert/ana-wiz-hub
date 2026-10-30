@@ -2795,15 +2795,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the RSI doses of suxamethonium and rocuronium?",
     },
     {
-      "a": "Suxamethonium is contraindicated in patients with hyperkalaemia, major burns or denervation injury beyond ~48–72 hours, malignant hyperthermia susceptibility, plasma cholinesterase deficiency, and a personal/family history of suxamethonium-induced complications. In these patients rocuronium with planned sugammadex reversal is the standard alternative.",
+      "a": "Suxamethonium is contraindicated in patients with hyperkalaemia, major burns after the initial 24 hours under the Salisbury burns protocol, or denervation injury with ongoing hyperkalaemia risk, malignant hyperthermia susceptibility, plasma cholinesterase deficiency, and a personal/family history of suxamethonium-induced complications. In these patients rocuronium with planned sugammadex reversal is the standard alternative.",
       "q": "When should suxamethonium be avoided?",
     },
     {
-      "a": "After ~48–72 hours, upregulation of extrajunctional nicotinic acetylcholine receptors causes an exaggerated potassium release with suxamethonium — serum potassium can rise by 5–10 mmol/L, provoking cardiac arrest. Rocuronium does not depolarise the muscle membrane and carries no such risk.",
+      "a": "After burns or denervation injury, upregulation of extrajunctional nicotinic acetylcholine receptors causes an exaggerated potassium release with suxamethonium — serum potassium can rise by 5–10 mmol/L, provoking cardiac arrest. Rocuronium does not depolarise the muscle membrane and carries no such risk.",
       "q": "Why is suxamethonium dangerous after burns or spinal cord injury?",
     },
     {
-      "a": "Sugammadex reverses rocuronium in a dose-dependent manner: 2 mg/kg at reappearance of T2 for routine reversal; 4 mg/kg if the TOF count is 1–2 with no T2 yet; and 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose (≥3 minutes after administration). Counsel patients that sugammadex inactivates hormonal contraceptives for 7 days (Schaller & Fink, Anaesthesia 2013; Merck SmPC).",
+      "a": "Sugammadex reverses rocuronium in a dose-dependent manner: 2 mg/kg at reappearance of T2 for routine reversal; 4 mg/kg at recovery to 1–2 post-tetanic counts (PTC); and 16 mg/kg for adult immediate reversal approximately 3 minutes after rocuronium 1.2 mg/kg; paediatric immediate reversal has not been investigated. Counsel patients that sugammadex inactivates hormonal contraceptives for 7 days (Schaller & Fink, Anaesthesia 2013; Merck SmPC).",
       "q": "What dose of sugammadex reverses rocuronium?",
     },
     {
@@ -9203,7 +9203,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Suxamethonium is contraindicated in patients with hyperkalaemia, major burns or denervation injury beyond ~48–72 hours, malignant hyperthermia susceptibility, plasma cholinesterase deficiency, and a personal/family history of suxamethonium-induced complications. In these patients rocuronium with planned sugammadex reversal is the standard alternative.",
+          "text": "Suxamethonium is contraindicated in patients with hyperkalaemia, major burns after the initial 24 hours under the Salisbury burns protocol, or denervation injury with ongoing hyperkalaemia risk, malignant hyperthermia susceptibility, plasma cholinesterase deficiency, and a personal/family history of suxamethonium-induced complications. In these patients rocuronium with planned sugammadex reversal is the standard alternative.",
         },
         "name": "When should suxamethonium be avoided?",
       },
@@ -9211,7 +9211,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "After ~48–72 hours, upregulation of extrajunctional nicotinic acetylcholine receptors causes an exaggerated potassium release with suxamethonium — serum potassium can rise by 5–10 mmol/L, provoking cardiac arrest. Rocuronium does not depolarise the muscle membrane and carries no such risk.",
+          "text": "After burns or denervation injury, upregulation of extrajunctional nicotinic acetylcholine receptors causes an exaggerated potassium release with suxamethonium — serum potassium can rise by 5–10 mmol/L, provoking cardiac arrest. Rocuronium does not depolarise the muscle membrane and carries no such risk.",
         },
         "name": "Why is suxamethonium dangerous after burns or spinal cord injury?",
       },
@@ -9219,7 +9219,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sugammadex reverses rocuronium in a dose-dependent manner: 2 mg/kg at reappearance of T2 for routine reversal; 4 mg/kg if the TOF count is 1–2 with no T2 yet; and 16 mg/kg for immediate reversal of a 1.2 mg/kg intubating dose (≥3 minutes after administration). Counsel patients that sugammadex inactivates hormonal contraceptives for 7 days (Schaller & Fink, Anaesthesia 2013; Merck SmPC).",
+          "text": "Sugammadex reverses rocuronium in a dose-dependent manner: 2 mg/kg at reappearance of T2 for routine reversal; 4 mg/kg at recovery to 1–2 post-tetanic counts (PTC); and 16 mg/kg for adult immediate reversal approximately 3 minutes after rocuronium 1.2 mg/kg; paediatric immediate reversal has not been investigated. Counsel patients that sugammadex inactivates hormonal contraceptives for 7 days (Schaller & Fink, Anaesthesia 2013; Merck SmPC).",
         },
         "name": "What dose of sugammadex reverses rocuronium?",
       },
