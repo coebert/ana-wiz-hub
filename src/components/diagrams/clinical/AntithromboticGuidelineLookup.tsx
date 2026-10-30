@@ -49,6 +49,7 @@ export function AntithromboticGuidelineLookup({ restart = false }: { restart?: b
     </fieldset>
     <p className="text-sm text-muted-foreground">Record the responsible clinician’s individual decision and neurological monitoring plan. New weakness, sensory change or bladder/bowel dysfunction after neuraxial intervention requires urgent assessment.</p>
     <a href={ESAIC_ESRA_SOURCE} target="_blank" rel="noopener noreferrer" className="text-sm text-primary underline">ESAIC/ESRA 2022 — Regional anaesthesia in patients on antithrombotic drugs (full guideline)</a>
+    <p className="text-xs text-muted-foreground">Separate comparison source: <a href="https://rapm.bmj.com/content/rapm/early/2025/10/16/rapm-2024-105766.full.pdf" target="_blank" rel="noopener noreferrer" className="text-primary underline">ASRA fifth edition (2025), doi:10.1136/rapm-2024-105766</a>. Consult its own drug, dose and catheter recommendations; intervals are not merged with the European lookup.</p>
     <p className="text-xs text-muted-foreground">This lookup uses the named European guideline; it does not merge its intervals with ASRA or older AAGBI guidance. Check current local guidance and product information.</p>
   </div>;
 }

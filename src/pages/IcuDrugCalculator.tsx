@@ -6,6 +6,7 @@ import { icuInfusionGroups, type Infusion } from "@/data/icuInfusions";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PageJsonLd } from "@/components/layout/PageJsonLd";
+import { icuInfusionAmountPerHour } from "@/lib/icu-infusion-calculation";
 import {
   Select,
   SelectContent,
@@ -111,7 +112,7 @@ const IcuDrugCalculator = () => {
     if (infusion.perKg && !weightValid) return null;
 
     const wkg = weightValid ? w : 70; // fallback for non-weight-based display only
-    const perHr = amountPerHour(infusion, d, wkg); // micrograms/h or units/h
+    const perHr = icuInfusionAmountPerHour(infusion, d, wkg); // micrograms/h or activity units/h
     const mlPerHr = perHr / c;
     const mlPerDay = mlPerHr * 24;
     const mcgKgHr = toMcgKgHr(infusion, d, wkg);
