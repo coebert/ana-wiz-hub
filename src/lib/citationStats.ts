@@ -13,3 +13,6 @@ export const citationStats = stats as {
   registeredTopics: number;
   registeredTopicsWithReferences: number;
 };
+
+/** Floor to a display step; zero stays zero (never a minimum such as 10+). */
+export const roundDown = (n: number, step = 10) => Math.floor(Math.max(0, n) / step) * step;

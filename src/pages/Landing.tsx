@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { PageSection } from "@/components/layout/PageSection";
-import { citationStats } from "@/lib/citationStats";
+import { citationStats, roundDown } from "@/lib/citationStats";
 
 // Below-the-fold bands are code-split so the hero + dashboard paint without
 // waiting on the comment wall, support widgets, or the viva stepper bundle.
@@ -29,7 +29,6 @@ const RecentExpansions = lazy(() =>
 const nf = new Intl.NumberFormat("en-GB");
 // Round down to the nearest 10 so the headline number reads cleanly while
 // staying honest as references are added.
-export const roundDown = (n: number, step = 10) => Math.floor(Math.max(0, n) / step) * step;
 const REFERENCE_ENTRY_COUNT = roundDown(citationStats.totalReferenceEntries);
 const TOPIC_COUNT = citationStats.registeredTopics;
 
