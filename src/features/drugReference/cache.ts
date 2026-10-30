@@ -7,6 +7,7 @@
 
 const PREFIX = "drugref:v1:";
 const MAX_AGE_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
+const CLINICAL_CORRECTION_EPOCH = Date.UTC(2026, 9, 30, 14, 0);
 
 interface Envelope<T> {
   savedAt: number;
@@ -19,6 +20,7 @@ export function readCache<T>(key: string): { data: T; savedAt: number } | null {
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Envelope<T>;
     if (!parsed || typeof parsed.savedAt !== "number") return null;
+    if (parsed.savedAt < CLINICAL_CORRECTION_EPOCH) return null;
     if (Date.now() - parsed.savedAt > MAX_AGE_MS) return null;
     return { data: parsed.data, savedAt: parsed.savedAt };
   } catch {

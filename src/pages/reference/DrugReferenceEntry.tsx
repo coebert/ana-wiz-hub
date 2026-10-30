@@ -388,6 +388,7 @@ export default function DrugReferenceEntry() {
         </Section>
 
         <Section title="Sources" id="sources">
+          <p className="mb-3 text-sm text-muted-foreground">Sources support only the named formulation and claims reviewed. Search links are discovery aids, not independently verified evidence; the entire monograph has not been clinically verified.</p>
           <ul className="space-y-2 text-sm">
             {[...drug.sources, ...(tdm?.sources ?? [])].map((s) => (
               <li key={`${s.title}-${s.url}`}>
@@ -399,6 +400,9 @@ export default function DrugReferenceEntry() {
                 >
                   <span>
                     {s.title} — <span className="text-muted-foreground">{s.publisher}</span>
+                    {s.revision && <span className="block text-xs text-muted-foreground">Product revision: {s.revision}</span>}
+                    {s.accessed && <span className="block text-xs text-muted-foreground">Accessed: {s.accessed}</span>}
+                    {/\/search(?:[/?]|$)/i.test(s.url) && <span className="block text-xs text-muted-foreground">Search destination — not independently source-verified</span>}
                   </span>
                   <ExternalLink aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0" />
                 </a>

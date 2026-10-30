@@ -492,6 +492,7 @@ const NeurointensiveCareTopic = () => {
 
         <ExamSection id="toc-bsd" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <CollapsibleSubsection title="Brain Death & Brainstem Testing">
+          <p className="text-sm text-muted-foreground">AoMRC 2025: after therapeutic/accidental hypothermia (&lt;36°C), wait at least 24 hours after correction to ≥36°C; transient later reductions do not mandate another 24 hours. Patients &lt;24 months require the prescribed minimum 24-hour separation between complete sets. Abort apnoea testing for respiratory effort, significant cardiovascular instability, significant desaturation despite FiO₂1.0/CPAP or unstable arrhythmia. Apply the complete code and age-specific rules.</p>
           <p className="text-muted-foreground leading-relaxed mb-2">
             UK criteria: known irreversible cause of brain damage. Exclude confounders (core temperature must be ≥36 °C; sedative, opioid and neuromuscular-blocking drug effects; and significant electrolyte, glucose, metabolic or endocrine derangement — use the thresholds in the AoMRC code). Two sets of tests by at least two doctors, each fully registered for more than 5 years and at least one a consultant; the recorded <strong>time of death is ordinarily the completion of the second set</strong> of clinical tests.<InlineRef topicId="neurointensive-care" refLabel="AoMRC 2025" />
           </p>
