@@ -336,8 +336,8 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/chemistry/organic-chemistry": [
     {
-      "a": "Esters (procaine, amethocaine) are hydrolysed rapidly by plasma cholinesterase, giving half-lives of 1–10 min. Amides (lidocaine, bupivacaine, ropivacaine) are metabolised slowly by hepatic CYP enzymes with half-lives of 1.5–3.5 h. Ester hydrolysis also liberates PABA, which explains the allergy risk that amides lack.",
-      "q": "Why do ester local anaesthetics act for a shorter duration than amides?",
+      "a": "Ester hydrolysis and amide hepatic metabolism differ, but plasma elimination half-life is not clinical block duration. Amethocaine/tetracaine can produce prolonged topical anaesthesia (GOSH: 4–6 hours). PABA-related ester allergy is recognised; true allergy to amide local anaesthetics is rare but possible, including anaphylaxis in the lidocaine SmPC.",
+      "q": "Does ester versus amide chemistry determine block duration?",
     },
     {
       "a": "A chiral centre is a carbon bonded to four different groups, generating two non-superimposable mirror-image enantiomers. Ropivacaine is the pure S(-)-enantiomer of its racemate; the R(+) form is more cardiotoxic. Single-enantiomer formulation gives ropivacaine a safer cardiovascular profile than racemic bupivacaine at equipotent doses.",
@@ -802,7 +802,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is post-dural puncture headache after childbirth?",
     },
     {
-      "a": "Category 1 = immediate threat to life of mother or baby; target decision-to-delivery interval ≤ 30 min (often 15 min). If a working epidural is in situ, extend with 20 ml 2% lidocaine + 100 µg adrenaline + 100 µg fentanyl (or levobupivacaine/bupivacaine 0.5%) — onset 5–8 min. No epidural: spinal if time allows (2.2–2.5 ml heavy bupivacaine 0.5% + 15 µg fentanyl + 300 µg diamorphine) or GA-RSI. Always have plan B (GA) prepared and antacid prophylaxis (sodium citrate 30 ml + ranitidine 50 mg IV or omeprazole 40 mg IV).",
+      "a": "Category 1 = immediate threat to life of mother or baby; target decision-to-delivery interval ≤ 30 min (often 15 min). If a working epidural is in situ, extend with 20 ml 2% lidocaine + 100 µg adrenaline + 100 µg fentanyl (or levobupivacaine/bupivacaine 0.5%) — onset 5–8 min. No epidural: spinal if time allows (2.2–2.5 ml heavy bupivacaine 0.5% + 15 µg fentanyl + 300 µg diamorphine) or GA-RSI. Always have plan B (GA) prepared and antacid prophylaxis (sodium citrate 30 ml plus locally available acid suppression according to the obstetric protocol; ranitidine is not a current routine UK option).",
       "q": "How is anaesthesia given for emergency (Category 1) caesarean section?",
     },
     {
@@ -988,7 +988,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What are the key safety principles for nerve root injections?",
     },
     {
-      "a": "SCS trial and percutaneous lead placement are typically performed under local anaesthesia with conscious sedation, because intra-operative paraesthesia mapping requires a cooperative, communicating patient. The IPG pocket and tunnelling may be done under deeper sedation or short GA after lead position is confirmed. Key points: prone position with chest/pelvis bolsters; full AAGBI monitoring plus capnography (sedated prone patients are high-risk for airway obstruction); supplemental O₂ via nasal specs. Target-controlled propofol Ce 0.8–1.5 µg/mL ± remifentanil, or dexmedetomidine 0.2–0.6 µg/kg/hr (preserves cooperation, no respiratory depression). Avoid opioid or benzodiazepine boluses during paraesthesia mapping. Prophylactic IV antibiotics within 60 minutes. Post-op: watch for new neurological deficit (epidural haematoma — urgent MRI within 8 hours), restrict trunk flexion/lifting for 6 weeks to prevent lead migration, and ensure the patient has a device wallet card.",
+      "a": "SCS trial and percutaneous lead placement are typically performed under local anaesthesia with conscious sedation, because intra-operative paraesthesia mapping requires a cooperative, communicating patient. The IPG pocket and tunnelling may be done under deeper sedation or short GA after lead position is confirmed. Key points: prone position with chest/pelvis bolsters; full AAGBI monitoring plus capnography (sedated prone patients are high-risk for airway obstruction); supplemental O₂ via nasal specs. Target-controlled propofol Ce 0.8–1.5 µg/mL ± remifentanil, or dexmedetomidine 0.2–0.6 µg/kg/hr (preserves cooperation, relatively less respiratory depression, but obstruction, hypoventilation and apnoea remain possible). Avoid opioid or benzodiazepine boluses during paraesthesia mapping. Prophylactic IV antibiotics within 60 minutes. Post-op: watch for new neurological deficit (epidural haematoma — urgent MRI within 8 hours), restrict trunk flexion/lifting for 6 weeks to prevent lead migration, and ensure the patient has a device wallet card.",
       "q": "What are the anaesthetic considerations for spinal cord stimulation implantation?",
     },
   ],
@@ -1510,7 +1510,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Does adrenaline actually improve outcome — what did PARAMEDIC2 show?",
     },
     {
-      "a": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) found no significant difference between 33 °C and 36 °C (no superiority shown; this is not proof of equivalence) — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with normothermia and early treatment of fever (device cooling triggered at ≥ 37.8 °C) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Current UK advice (RCUK / ERC–ESICM 2025) is to actively prevent fever by targeting ≤ 37.5 °C in patients who remain comatose after ROSC; the RCUK narrative gives 36–72 h, and its March 2026 algorithm states at least 72 h, which this page follows. The superseded 2022 update used > 37.7 °C. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
+      "a": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) found no significant difference between 33 °C and 36 °C (no superiority shown; this is not proof of equivalence) — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with normothermia targeting ≤ 37.5 °C, with device cooling triggered at ≥ 37.8 °C and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Current UK advice (RCUK / ERC–ESICM 2025) is to actively prevent fever by targeting ≤ 37.5 °C in patients who remain comatose after ROSC; the RCUK narrative gives 36–72 h, and its March 2026 algorithm states at least 72 h, which this page follows. The superseded 2022 update used > 37.7 °C. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
       "q": "Should I cool post-arrest patients to 33 °C or aim for active normothermia? What changed after TTM2?",
     },
     {
@@ -2688,8 +2688,8 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
   ],
   "/pharmacology/local-anaesthetics": [
     {
-      "a": "Lidocaine — 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine/levobupivacaine — 2 mg/kg (with or without adrenaline; toxicity dominates). Ropivacaine — 3–4 mg/kg. Prilocaine — 6 mg/kg plain, 8 mg/kg with adrenaline (max for Bier's block). Doses should be reduced 30–50 % in the elderly, pregnant, debilitated, and infused at the lowest effective concentration. Always calculate maximum mg before drawing up.",
-      "q": "What are the maximum safe doses of common local anaesthetics?",
+      "a": "Use the exact product, route and procedure table, not a universal maximum-safe dose. Named UK lidocaine 2% (emc 15150) limits a single dose to 4.5 mg/kg and 300 mg; more conservative local policies may apply. Xylocaine with adrenaline (emc 2397) has an adult single-dose ceiling 500 mg. Named bupivacaine field-block/infiltration (emc 11611) limits 150 mg; levobupivacaine (emc 13644) has single-dose 150 mg and daily 400 mg limits. These scopes are not interchangeable with spinal, major nerve blocks or IVRA; no universal ropivacaine/prilocaine maximum is inferred. Prior doses, mixed agents, vascularity, body-weight basis and patient factors matter. Below a listed ceiling, toxicity remains possible.",
+      "q": "How should local-anaesthetic dose limits be selected?",
     },
     {
       "a": "Only the unionised form crosses the nerve membrane. The closer the pKa to physiological pH, the higher the proportion unionised, and the faster the onset. Lidocaine pKa 7.9 — ~25 % unionised → onset 2–5 min. Bupivacaine pKa 8.1 — ~15 % unionised → onset 10–15 min. In infected tissue (low pH), more drug is ionised → poor onset (textbook reason to avoid LA in abscesses). Chloroprocaine (pKa 8.7) is exception — fastest onset due to high concentration used.",
@@ -3242,7 +3242,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "State the first and second laws of thermodynamics with one anaesthetic example.",
     },
     {
-      "a": "The unique temperature and pressure (273.16 K, 611.657 Pa) at which solid, liquid and vapour water coexist in equilibrium. It defines the kelvin scale: 1 K = 1/273.16 of the temperature of the triple point. Used as the primary calibration point for thermometers because it is highly reproducible.",
+      "a": "The triple point is the condition where solid, liquid and vapour water coexist (approximately 273.16 K and 611.657 Pa). Since 20 May 2019 the kelvin has been defined by fixing the Boltzmann constant k = 1.380649 × 10⁻²³ J/K exactly. The triple point of water is a practical calibration reference in ITS-90, not the current SI definition; the fractional triple-point definition is historical.",
       "q": "What is the triple point of water and why is it important?",
     },
   ],
@@ -4087,9 +4087,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Esters (procaine, amethocaine) are hydrolysed rapidly by plasma cholinesterase, giving half-lives of 1–10 min. Amides (lidocaine, bupivacaine, ropivacaine) are metabolised slowly by hepatic CYP enzymes with half-lives of 1.5–3.5 h. Ester hydrolysis also liberates PABA, which explains the allergy risk that amides lack.",
+          "text": "Ester hydrolysis and amide hepatic metabolism differ, but plasma elimination half-life is not clinical block duration. Amethocaine/tetracaine can produce prolonged topical anaesthesia (GOSH: 4–6 hours). PABA-related ester allergy is recognised; true allergy to amide local anaesthetics is rare but possible, including anaphylaxis in the lidocaine SmPC.",
         },
-        "name": "Why do ester local anaesthetics act for a shorter duration than amides?",
+        "name": "Does ester versus amide chemistry determine block duration?",
       },
       {
         "@type": "Question",
@@ -5053,7 +5053,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Category 1 = immediate threat to life of mother or baby; target decision-to-delivery interval ≤ 30 min (often 15 min). If a working epidural is in situ, extend with 20 ml 2% lidocaine + 100 µg adrenaline + 100 µg fentanyl (or levobupivacaine/bupivacaine 0.5%) — onset 5–8 min. No epidural: spinal if time allows (2.2–2.5 ml heavy bupivacaine 0.5% + 15 µg fentanyl + 300 µg diamorphine) or GA-RSI. Always have plan B (GA) prepared and antacid prophylaxis (sodium citrate 30 ml + ranitidine 50 mg IV or omeprazole 40 mg IV).",
+          "text": "Category 1 = immediate threat to life of mother or baby; target decision-to-delivery interval ≤ 30 min (often 15 min). If a working epidural is in situ, extend with 20 ml 2% lidocaine + 100 µg adrenaline + 100 µg fentanyl (or levobupivacaine/bupivacaine 0.5%) — onset 5–8 min. No epidural: spinal if time allows (2.2–2.5 ml heavy bupivacaine 0.5% + 15 µg fentanyl + 300 µg diamorphine) or GA-RSI. Always have plan B (GA) prepared and antacid prophylaxis (sodium citrate 30 ml plus locally available acid suppression according to the obstetric protocol; ranitidine is not a current routine UK option).",
         },
         "name": "How is anaesthesia given for emergency (Category 1) caesarean section?",
       },
@@ -5435,7 +5435,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SCS trial and percutaneous lead placement are typically performed under local anaesthesia with conscious sedation, because intra-operative paraesthesia mapping requires a cooperative, communicating patient. The IPG pocket and tunnelling may be done under deeper sedation or short GA after lead position is confirmed. Key points: prone position with chest/pelvis bolsters; full AAGBI monitoring plus capnography (sedated prone patients are high-risk for airway obstruction); supplemental O₂ via nasal specs. Target-controlled propofol Ce 0.8–1.5 µg/mL ± remifentanil, or dexmedetomidine 0.2–0.6 µg/kg/hr (preserves cooperation, no respiratory depression). Avoid opioid or benzodiazepine boluses during paraesthesia mapping. Prophylactic IV antibiotics within 60 minutes. Post-op: watch for new neurological deficit (epidural haematoma — urgent MRI within 8 hours), restrict trunk flexion/lifting for 6 weeks to prevent lead migration, and ensure the patient has a device wallet card.",
+          "text": "SCS trial and percutaneous lead placement are typically performed under local anaesthesia with conscious sedation, because intra-operative paraesthesia mapping requires a cooperative, communicating patient. The IPG pocket and tunnelling may be done under deeper sedation or short GA after lead position is confirmed. Key points: prone position with chest/pelvis bolsters; full AAGBI monitoring plus capnography (sedated prone patients are high-risk for airway obstruction); supplemental O₂ via nasal specs. Target-controlled propofol Ce 0.8–1.5 µg/mL ± remifentanil, or dexmedetomidine 0.2–0.6 µg/kg/hr (preserves cooperation, relatively less respiratory depression, but obstruction, hypoventilation and apnoea remain possible). Avoid opioid or benzodiazepine boluses during paraesthesia mapping. Prophylactic IV antibiotics within 60 minutes. Post-op: watch for new neurological deficit (epidural haematoma — urgent MRI within 8 hours), restrict trunk flexion/lifting for 6 weeks to prevent lead migration, and ensure the patient has a device wallet card.",
         },
         "name": "What are the anaesthetic considerations for spinal cord stimulation implantation?",
       },
@@ -6521,7 +6521,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) found no significant difference between 33 °C and 36 °C (no superiority shown; this is not proof of equivalence) — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with normothermia and early treatment of fever (device cooling triggered at ≥ 37.8 °C) and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Current UK advice (RCUK / ERC–ESICM 2025) is to actively prevent fever by targeting ≤ 37.5 °C in patients who remain comatose after ROSC; the RCUK narrative gives 36–72 h, and its March 2026 algorithm states at least 72 h, which this page follows. The superseded 2022 update used > 37.7 °C. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
+          "text": "HACA (NEJM 2002) and Bernard (NEJM 2002) first showed benefit of 32–34 °C for 12–24 h after witnessed VF OHCA. TTM (Nielsen, NEJM 2013, n = 950) found no significant difference between 33 °C and 36 °C (no superiority shown; this is not proof of equivalence) — both were 'targeted temperature management' and both prevented fever. TTM2 (Dankiewicz, NEJM 2021, n = 1 850) compared 33 °C with normothermia targeting ≤ 37.5 °C, with device cooling triggered at ≥ 37.8 °C and found no difference in 6-month mortality (50% vs 48%) or neurological outcome. Current UK advice (RCUK / ERC–ESICM 2025) is to actively prevent fever by targeting ≤ 37.5 °C in patients who remain comatose after ROSC; the RCUK narrative gives 36–72 h, and its March 2026 algorithm states at least 72 h, which this page follows. The superseded 2022 update used > 37.7 °C. If a hypothermic target is used, rewarm slowly (TTM2 used about 0.33 °C/h).",
         },
         "name": "Should I cool post-arrest patients to 33 °C or aim for active normothermia? What changed after TTM2?",
       },
@@ -9011,9 +9011,9 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Lidocaine — 3 mg/kg plain, 7 mg/kg with adrenaline. Bupivacaine/levobupivacaine — 2 mg/kg (with or without adrenaline; toxicity dominates). Ropivacaine — 3–4 mg/kg. Prilocaine — 6 mg/kg plain, 8 mg/kg with adrenaline (max for Bier's block). Doses should be reduced 30–50 % in the elderly, pregnant, debilitated, and infused at the lowest effective concentration. Always calculate maximum mg before drawing up.",
+          "text": "Use the exact product, route and procedure table, not a universal maximum-safe dose. Named UK lidocaine 2% (emc 15150) limits a single dose to 4.5 mg/kg and 300 mg; more conservative local policies may apply. Xylocaine with adrenaline (emc 2397) has an adult single-dose ceiling 500 mg. Named bupivacaine field-block/infiltration (emc 11611) limits 150 mg; levobupivacaine (emc 13644) has single-dose 150 mg and daily 400 mg limits. These scopes are not interchangeable with spinal, major nerve blocks or IVRA; no universal ropivacaine/prilocaine maximum is inferred. Prior doses, mixed agents, vascularity, body-weight basis and patient factors matter. Below a listed ceiling, toxicity remains possible.",
         },
-        "name": "What are the maximum safe doses of common local anaesthetics?",
+        "name": "How should local-anaesthetic dose limits be selected?",
       },
       {
         "@type": "Question",
@@ -10177,7 +10177,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The unique temperature and pressure (273.16 K, 611.657 Pa) at which solid, liquid and vapour water coexist in equilibrium. It defines the kelvin scale: 1 K = 1/273.16 of the temperature of the triple point. Used as the primary calibration point for thermometers because it is highly reproducible.",
+          "text": "The triple point is the condition where solid, liquid and vapour water coexist (approximately 273.16 K and 611.657 Pa). Since 20 May 2019 the kelvin has been defined by fixing the Boltzmann constant k = 1.380649 × 10⁻²³ J/K exactly. The triple point of water is a practical calibration reference in ITS-90, not the current SI definition; the fractional triple-point definition is historical.",
         },
         "name": "What is the triple point of water and why is it important?",
       },
