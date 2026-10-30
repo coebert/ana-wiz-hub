@@ -61,6 +61,7 @@ const preoperativeAssessmentFaqs: Array<[string, string]> = [
   ["How is the Revised Cardiac Risk Index (Lee) interpreted?", "Six predictors (high-risk surgery, IHD, heart failure, cerebrovascular disease, insulin-treated diabetes, creatinine >170 µmol/L): 0 ≈ 0.4%, 1 ≈ 1%, 2 ≈ 2.4%, ≥3 ≈ 5.4% risk of a major cardiac event at 30 days."],
 ];
 
+const TOPIC_ID = "preoperative-assessment";
 const PreoperativeAssessmentTopic = () => {
   return (
     <TopicTemplate

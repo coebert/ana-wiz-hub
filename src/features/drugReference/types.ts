@@ -10,6 +10,7 @@ export interface DrugSource {
   publisher: string;
   url: string;
   accessed?: string;
+  revision?: string;
 }
 
 export interface TdmTarget {
