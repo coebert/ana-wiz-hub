@@ -1,4 +1,5 @@
 import { DonationNote } from "@/components/feedback/DonationNote";
+import { SupportSection } from "@/components/feedback/SupportSection";
 import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -15,9 +16,7 @@ import { citationStats } from "@/lib/citationStats";
 
 // Below-the-fold bands are code-split so the hero + dashboard paint without
 // waiting on the comment wall, support widgets, or the viva stepper bundle.
-const SupportSection = lazy(() =>
-  import("@/components/feedback/SupportSection").then((m) => ({ default: m.SupportSection })),
-);
+
 const CommentWall = lazy(() =>
   import("@/components/feedback/CommentWall").then((m) => ({ default: m.CommentWall })),
 );
@@ -174,8 +173,6 @@ const Landing = () => {
         />
       </Helmet>
 
-      <DonationNote />
-
       {/* Hero — split editorial layout, matches /revise */}
       <section className="relative border-b border-border bg-surface">
         <PageContainer className="py-10 md:py-16">
@@ -213,6 +210,7 @@ const Landing = () => {
                   </Link>
                 </Button>
               </div>
+              <DonationNote className="mt-4" />
             </div>
 
             {/* Right: "What you get" summary card */}
@@ -292,6 +290,9 @@ const Landing = () => {
           </div>
         </div>
 
+        {/* Voluntary support — kept eagerly mounted so /#support resolves on first load */}
+        <SupportSection />
+
         {/* Recently expanded — latest source-linked content batches */}
         <div className="max-w-6xl mx-auto mt-10 md:mt-14">
           <Suspense fallback={null}>
@@ -363,7 +364,6 @@ const Landing = () => {
 
       <Suspense fallback={null}>
         <CommentWall />
-        <SupportSection />
       </Suspense>
 
       <SiteFooter extraLinks={[{ label: "Admin", href: "/admin" }]} />

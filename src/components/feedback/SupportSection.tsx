@@ -2,13 +2,7 @@ import { useState } from "react";
 import { Heart, MessageSquare, ExternalLink, X, Send, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { logDonateClick } from "./DonationNote";
-// PayPal.me works for any personal PayPal account — no charity/business
-// enrollment required (unlike paypal.com/donate which is gated to PayPal
-// Giving Fund-enrolled organisations). Set this to your PayPal.me handle
-// (create one for free at https://paypal.me — it takes ~30 seconds).
-const PAYPAL_ME_HANDLE = "RCoe";
-const PAYPAL_URL = `https://www.paypal.com/paypalme/${PAYPAL_ME_HANDLE}`;
+import { DONATION_CHOICES, logDonateClick } from "@/lib/donation";
 
 type FormType = "topic" | "error";
 
@@ -55,58 +49,61 @@ export const SupportSection = () => {
   };
 
   return (
-    <section id="support" className="container mx-auto px-4 pb-12 scroll-mt-20">
-      <div className="max-w-3xl mx-auto rounded-xl border border-border bg-card p-6 md:p-8">
-        <div className="flex items-start gap-3 mb-4">
-          <Heart className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-          <div>
-            <h2 className="text-lg md:text-xl font-serif font-bold text-foreground">
-              Support AnaesthesiaCore
+    <section
+      id="support"
+      aria-labelledby="support-heading"
+      className="max-w-3xl mx-auto mt-10 md:mt-14 scroll-mt-20"
+    >
+      <div className="rounded-xl border border-border bg-card shadow-elev-1 p-6 md:p-8">
+        <div className="flex items-start gap-3">
+          <Heart className="h-5 w-5 text-primary shrink-0 mt-1" aria-hidden />
+          <div className="min-w-0">
+            <h2 id="support-heading" className="h3 text-foreground">
+              Help keep AnaesthesiaCore free
             </h2>
-            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-              This app is built and maintained using{" "}
-              <a
-                href="https://lovable.dev"
-                target="_blank"
-                rel="noreferrer"
-                className="underline hover:text-foreground"
-              >
-                Lovable
-              </a>
-              , which costs money to run. Any donations go{" "}
-              <span className="text-foreground font-medium">
-                solely toward the upkeep and ongoing development of the app
-              </span>{" "}
-              — no profit is taken. If you've found it useful, a small
-              contribution helps keep new topics and diagrams coming.
+            <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+              If AnaesthesiaCore has helped your revision, a small contribution helps cover running
+              costs, maintenance and continued development. Giving is entirely optional. Thank you
+              for using the app.
             </p>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-2.5 mt-5">
-          <a
-            href={PAYPAL_URL}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => logDonateClick("support-box")}
-            className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
-          >
-            <Heart className="h-4 w-4" />
-            Donate via PayPal
-            <ExternalLink className="h-3.5 w-3.5 opacity-70" />
-          </a>
+        <p className="eyebrow text-muted-foreground mt-5 mb-2" id="support-choices-label">
+          Contribute via PayPal
+        </p>
+        <ul aria-labelledby="support-choices-label" className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          {DONATION_CHOICES.map((c) => (
+            <li key={c.source}>
+              <a
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={c.ariaLabel}
+                onClick={() => logDonateClick(c.source)}
+                className="min-h-11 w-full inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg border border-border bg-background text-sm font-medium text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                {c.label}
+                <ExternalLink className="h-3.5 w-3.5 opacity-60 shrink-0" aria-hidden />
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p className="text-xs text-muted-foreground mt-3 break-words">
+          PayPal will show Robert Coe, the creator of AnaesthesiaCore. Opens in a new tab.
+        </p>
+
+        <div className="border-t border-border mt-6 pt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <p className="text-sm text-muted-foreground">Feedback is welcome too.</p>
           <button
+            type="button"
             onClick={() => setFeedbackOpen(true)}
-            className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-background text-sm font-medium text-foreground hover:bg-muted transition-colors"
+            className="min-h-11 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-background text-sm font-medium text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <MessageSquare className="h-4 w-4" />
-            Request topic / report error
+            <MessageSquare className="h-4 w-4" aria-hidden />
+            Request a topic / report an error
           </button>
         </div>
-
-        <p className="text-xs text-muted-foreground mt-3">
-          Donations sent via PayPal.me/<span className="font-mono">{PAYPAL_ME_HANDLE}</span>.
-        </p>
       </div>
 
       {feedbackOpen && (
