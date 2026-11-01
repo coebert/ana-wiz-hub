@@ -1,8 +1,8 @@
 # Admin metrics audit fixes
 
 ## Approved Phase A AI safety pause — 1 November 2026
-- [ ] Prepare isolated current-source candidate and portable 16-test gate; preserve all unrelated work.
-- [ ] Activation blocked until isolated semantic app typecheck/build/preview evidence and real-role rollback policy rehearsal are available. No watched pause files, policies or endpoints may activate before these gates pass.
+- [x] Prepared isolated current-source candidate; approved portable gate16/16 passed; metadata/count/held-fingerprint readback recorded in docs/phase-a-review/RESULTS.md.
+- [ ] Activation blocked: isolated semantic app typecheck/build/preview evidence unavailable under governing validation restrictions; actual-role rollback policy rehearsal remains required. No pause policies/endpoints/frontend activated.
 
 ## Science S2 anatomy — 1 November 2026
 - [x] SCI052–058, SCI067–072: compare current source, correct sourced text and suppress unsafe procedural/malformed anatomy where a sound redraw cannot be independently reviewed.
