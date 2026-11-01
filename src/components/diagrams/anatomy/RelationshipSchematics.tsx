@@ -26,12 +26,12 @@ export const intercostalBands = [
   { id: "visceral-pleura", x: 286, width: 10, role: "visceral", label: "Visceral pleura" },
   { id: "lung", x: 296, width: 210, role: "organ", label: "Lung" },
 ];
-export function IntercostalRelationships(props: Props) {
+export function IntercostalRelationships(props: Props & { neurovascularDetails?: boolean }) {
   return <><Canvas title="Intercostal parasagittal relationships" description="Superior up; superficial left to deep right. Muscle bands encode depth ordering only. Both ribs are in the chest wall. Principal vein, artery and nerve lie below the upper rib between internal and innermost intercostals. No needle or access point.">
     <Label x={40} y={28}>SUPERFICIAL → DEEP</Label><Label x={40} y={53}>SUPERIOR ↑</Label>
     {intercostalBands.map(b => <Pick key={b.id} id={b.id} {...props}><rect x={b.x} y={70} width={b.width} height={300} fill={tone(b.role)} fillOpacity={b.id === "int-intercostal" ? 0.4 : 0.65} /></Pick>)}
     {[{id:"rib-above", y:85, label:"Upper rib"},{id:"rib-below",y:300,label:"Lower rib"}].map(r => <Pick key={r.id} id={r.id} {...props}><rect x={73} y={r.y} width={163} height={55} rx={22} fill={tone("bone")} />{props.labels !== false && <Label x={105} y={r.y+33}>{r.label}</Label>}</Pick>)}
-    <Pick id="neurovascular" {...props}>{[{y:151,role:"vein",label:"V — vein"},{y:174,role:"artery",label:"A — artery"},{y:197,role:"nerve",label:"N — nerve"}].map(v => <g key={v.role} data-vessel={v.role}><circle cx={177} cy={v.y} r={7} fill={tone(v.role)} />{props.labels !== false && <Label x={308} y={v.y+5}>{v.label}</Label>}</g>)}</Pick>
+    {props.neurovascularDetails !== false && <Pick id="neurovascular" {...props}>{[{y:151,role:"vein",label:"V — vein"},{y:174,role:"artery",label:"A — artery"},{y:197,role:"nerve",label:"N — nerve"}].map(v => <g key={v.role} data-vessel={v.role}><circle cx={177} cy={v.y} r={7} fill={tone(v.role)} />{props.labels !== false && <g data-annotations="true"><path d={`M189 ${v.y}H298`} fill="none" stroke="hsl(var(--foreground))" strokeWidth={1} /><Label x={308} y={v.y+5}>{v.label}</Label></g>}</g>)}</Pick>}
     {props.labels !== false && <Label x={354} y={280}>Lung</Label>}
     <Label x={40} y={399}>INFERIOR ↓</Label><Label x={40} y={428}>Potential pleural space exaggerated.</Label>
   </Canvas><div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm mt-2">{intercostalBands.map(b => <div key={b.id} className="flex items-center gap-2"><svg width="16" height="16" aria-hidden="true"><rect width="16" height="16" fill={tone(b.role)} fillOpacity={b.id === "int-intercostal" ? 0.4 : 0.65} /></svg>{b.label}</div>)}</div>

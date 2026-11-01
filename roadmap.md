@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Intercostal relationship schematic
+- [ ] Add matching label and neurovascular-detail controls without changing anatomical depth order or restoring procedural paths.
+- [ ] Verify selections, toggles and narrow/wide layouts; run focused anatomy regressions.
+
 ## Thoracic paravertebral boundary schematic
 - [x] Match relationship schematic controls with working boundary visibility, labels and keyboard selections; preserve omitted anatomy and procedural withdrawal.
 - [x] Verify selected boundaries and toggles on desktop/mobile; run focused anatomy regressions (24 passed).
