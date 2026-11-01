@@ -1,5 +1,10 @@
 # Admin metrics audit fixes
 
+## Paid Apple App Store readiness
+- [x] Begin read-only assessment of existing learning value, safety residuals and Apple release requirements; preserve current work and holds.
+- [ ] Confirm app format and charging model with Rob before native packaging or payment implementation.
+- [ ] Present a prioritised readiness plan with clinical review, learner journeys, privacy, purchase compliance, device testing and submission gates.
+
 ## Epidural compartment schematic
 - [x] Add independent inset labels, catheter visibility and compartment selections; preserve catheter topology and withdrawn routes.
 - [x] Verify three keyboard selections and both toggles on narrow/wide layouts; 26 focused tests passed, automatic validation OK.
