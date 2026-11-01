@@ -1,5 +1,9 @@
 # Admin metrics audit fixes
 
+## Science S1 — 1 November 2026
+- [ ] SCI018 presentation; SCI037 oxygen; SCI046 urine; SCI059/061 osmolar units/boundary; SCI060/062 strict parsing/finite results; SCI063–065 Murray/trial/pressure safeguards; SCI066 hypotension definition.
+- [ ] Run helper/rendered regressions, refresh search/FAQ outputs and record exact results/residuals in docs/nov1-science-fixes.md. No database writes or publication.
+
 ## Clinical C3 — 1 November 2026
 - [x] Reconcile current CL-01/17/19/20/21/22/23/24/28/29/30/31/32/33/34/54/85 and ROOT-19 locators, primary sources and matching static copies.
 - [x] Inspect scoped saved claims; exact transfusion recording held with ID/exact-before guards and readback; preserve original audio/script.
