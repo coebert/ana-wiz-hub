@@ -185,8 +185,8 @@ const ParavertebralSpaceDiagram = () => {
             toggles={[{ label: "Labels", active: showLabels, onChange: () => setShowLabels(v => !v) }]}
           />
   
-        <div className="flex flex-col lg:flex-row gap-4 items-start">
-          <div className="flex-1 min-w-0 border-l-4 border-anatomy pl-4">
+        <div className="flex flex-col gap-4 items-start">
+          <div className="w-full min-w-0 border-l-4 border-anatomy pl-4">
             <h3 className="text-sm font-semibold text-foreground">Thoracic paravertebral space — abstract axial boundary map</h3>
             <ParavertebralRelationships selected={selected} onSelect={key => setSelected(key as RegionKey)} labels={showLabels} />
             <p className="text-sm text-muted-foreground">The triangle represents a compartment, not a needle target. Superior and inferior continuity is out of plane. No needle route or patient-specific access is shown.</p>
@@ -195,7 +195,7 @@ const ParavertebralSpaceDiagram = () => {
             <p className="text-sm text-muted-foreground mt-2">{PRINCIPAL_VAN}</p>
             <InlineRef topicId="thoracic-anatomy" refLabel="WFSA thoracic PVB" /><InlineRef topicId="thoracic-anatomy" refLabel="Intercostal anatomy" /><InlineRef topicId="thoracic-anatomy" refLabel="Thoracic wall VAN" />
           </div>
-          <div className="flex-1 min-w-0">
+          <div className="w-full min-w-0">
             <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
               <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
               <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{info.detail}</p>

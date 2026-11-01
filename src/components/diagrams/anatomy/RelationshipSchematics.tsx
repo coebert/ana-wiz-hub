@@ -4,7 +4,7 @@ const tone = (role: string) => `hsl(var(--anatomy-${role}))`;
 interface Props { selected: string | null; onSelect: (key: string) => void; labels?: boolean }
 function Canvas({ title, description, children }: { title: string; description: string; children: ReactNode }) {
   const id = useId();
-  return <div className="overflow-x-auto max-w-full"><svg viewBox="0 0 560 450" className="w-full min-w-[480px] h-auto" role="img" aria-labelledby={`${id}-title ${id}-desc`}>
+  return <div className="overflow-x-auto max-w-full"><svg viewBox="0 0 560 450" className="w-full h-auto" role="img" aria-labelledby={`${id}-title ${id}-desc`}>
     <title id={`${id}-title`}>{title}</title><desc id={`${id}-desc`}>{description}</desc>
     <rect width="560" height="450" fill="hsl(var(--background))" />{children}
   </svg></div>;
