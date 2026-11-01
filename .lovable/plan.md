@@ -1,0 +1,8 @@
+# Proposed CL87 and CL88 source-only follow-ups
+
+- Reconcile current paediatric bradycardia copies using one local RCUK 2025 summary: respiratory support first, conditional HR below 60/min/poor-perfusion PALS pathway, scoped adrenaline bolus and selective atropine with current maxima. Remove routine pre-intubation atropine and unsupported minimum dose. Replace FEAST dismissal with population/setting-qualified trial evidence and current UK care.
+- Explain PROPPR plasma:platelet-equivalents:RBC packs and trauma outcomes, distinguish NICE adult trauma plasma:RBC 1:1, and retain local protocol/laboratory-guided treatment rather than universal activation/ratios.
+- Replace automatic calcium schedules with frequent ionised-calcium measurement and protocol-guided normal-range replacement. Scope permissive hypotension to initial adult traumatic haemorrhage without clinical brain/spinal injury. Distinguish CRASH-3 evidence from NICE's selected-head-injury TXA pathway while preserving POISE-3 and C3 TTP wording.
+- Reconcile only linked repetitions; regenerate justified local FAQ/search copies and verify actual affected teaching/quiz/source displays on desktop/mobile. Run combined focused regression/citation checks and document exact results and limitations.
+
+No backend/database/audio/deployment/publication, broad certification or historical baseline refresh. Preserve concurrent clinical/science/DNC work. Manual production build/typecheck remain prohibited by governing tool instructions; report automatic preview validation separately.
