@@ -1,3 +1,4 @@
+import { InlineRef } from "@/components/references/InlineRef";
 import { useState } from "react";
 import { DiagramToggleBar } from "@/components/diagrams/shared/DiagramToggleBar";
 import { PlexusCard, PlexusChipRow, PlexusDetailPanel, ROOT_COLORS } from "@/components/diagrams/shared/plexusShared";
@@ -18,7 +19,7 @@ const branches: Record<BranchKey, BranchInfo> = {
     color: "hsl(210, 55%, 55%)",
     roots: "C2–C4",
     description: "Emerges at posterior border of SCM (Erb's point). Four cutaneous branches: lesser occipital (C2), great auricular (C2,3), transverse cervical (C2,3), supraclavicular (C3,4).",
-    clinical: "Superficial cervical plexus block at Erb's point (posterior SCM border, junction of upper 2/3 and lower 1/3). Single injection provides analgesia for carotid endarterectomy, thyroid surgery, clavicle fracture.",
+    clinical: "The cutaneous sensory target is near the approximate midpoint of the posterior SCM border. A superficial cervical plexus block can contribute to analgesia; additional anaesthesia depends on the indication. Carotid endarterectomy may require supplemental local anaesthetic by the surgeon. Thyroidectomy studies commonly use bilateral blocks as an adjunct to general anaesthesia, not as a universal stand-alone technique.",
   },
   deep: {
     label: "Deep Cervical Plexus",
@@ -32,7 +33,7 @@ const branches: Record<BranchKey, BranchInfo> = {
     color: "hsl(45, 70%, 50%)",
     roots: "C3, C4, C5",
     description: "Principal motor nerve to diaphragm (sole motor supply). Descends on anterior surface of scalenus anterior, crosses subclavian artery, enters thorax. Also sensory to central diaphragm, pericardium, mediastinal pleura.",
-    clinical: "C3,4,5 keeps the diaphragm alive. Phrenic nerve palsy occurs with interscalene block (~100%), deep cervical plexus block, and high epidural/spinal. Avoid bilateral blocks. Relative contraindication in patients dependent on single lung function.",
+    clinical: "C3, C4, C5 keeps the diaphragm alive. Hemidiaphragmatic paresis with traditional or high-volume interscalene techniques may approach 100%; incidence varies with technique and volume. Reduced-volume techniques do not eliminate risk. Assess respiratory reserve and seek individualised regional anaesthesia advice. Phrenic involvement can also occur with deep cervical plexus and high neuraxial blocks.",
   },
   ansa: {
     label: "Ansa Cervicalis",
@@ -258,6 +259,9 @@ const CervicalPlexusDiagram = () => {
               { label: "Clinical", value: info.clinical },
             ]}
           />
+
+          {selected === "superficial" && <p className="text-xs text-muted-foreground"><InlineRef topicId="head-neck-anatomy" refLabel="ACEP superficial cervical plexus 2022" /><InlineRef topicId="head-neck-anatomy" refLabel="Syal thyroidectomy 2020" /><InlineRef topicId="head-neck-anatomy" refLabel="Stoneham carotid 1998" /></p>}
+          {selected === "phrenic" && <p className="text-xs text-muted-foreground"><InlineRef topicId="brachial-plexus" refLabel="Urmey 1991" /><InlineRef topicId="brachial-plexus" refLabel="Riazi 2008" /></p>}
 
           <PlexusChipRow<BranchKey>
             selected={selected}

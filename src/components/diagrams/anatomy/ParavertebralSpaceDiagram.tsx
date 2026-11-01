@@ -1,4 +1,5 @@
 /** Text-only anatomy: former mixed axial/craniocaudal artwork and all needle geometry withdrawn pending review. */
+import { ParavertebralRelationships, pvsHighlights } from "./RelationshipSchematics";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { InlineRef } from "@/components/references/InlineRef";
@@ -168,6 +169,7 @@ const categories = [
 const ParavertebralSpaceDiagram = () => {
   const [selected, setSelected] = useState<RegionKey>("pvs-contents");
   const info = regions[selected];
+  const [showLabels, setShowLabels] = useState(true);
 
   return (
     <DiagramFigure
@@ -179,13 +181,16 @@ const ParavertebralSpaceDiagram = () => {
         <div className="bg-muted/30 rounded-xl border border-border p-4">
           <DiagramToggleBar
             title="Thoracic Paravertebral Space — Spatial Relationships"
-            subtitle="Textual anatomy; an axial redraw and separate parasagittal procedural stages remain pending review."
-            toggles={[]}
+            subtitle="Abstract axial boundaries; procedural stages are not depicted."
+            toggles={[{ label: "Labels", active: showLabels, onChange: () => setShowLabels(v => !v) }]}
           />
   
         <div className="flex flex-col lg:flex-row gap-4 items-start">
           <div className="flex-1 min-w-0 border-l-4 border-anatomy pl-4">
-            <p className="text-sm font-semibold text-foreground">Spatial relationships — mixed-plane figure withdrawn</p>
+            <h3 className="text-sm font-semibold text-foreground">Thoracic paravertebral space — abstract axial boundary map</h3>
+            <ParavertebralRelationships selected={selected} onSelect={key => setSelected(key as RegionKey)} labels={showLabels} />
+            <p className="text-sm text-muted-foreground">The triangle represents a compartment, not a needle target. Superior and inferior continuity is out of plane. No needle route or patient-specific access is shown.</p>
+            <InlineRef topicId="thoracic-anatomy" refLabel="WFSA ATOTW 376 boundaries" />
             <p className="text-sm text-muted-foreground mt-2">{PARAVERTEBRAL_SPATIAL}</p>
             <p className="text-sm text-muted-foreground mt-2">{PRINCIPAL_VAN}</p>
             <InlineRef topicId="thoracic-anatomy" refLabel="WFSA thoracic PVB" /><InlineRef topicId="thoracic-anatomy" refLabel="Intercostal anatomy" /><InlineRef topicId="thoracic-anatomy" refLabel="Thoracic wall VAN" />
@@ -194,6 +199,7 @@ const ParavertebralSpaceDiagram = () => {
             <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
               <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
               <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{info.detail}</p>
+              {!pvsHighlights[selected] && <p className="text-sm text-muted-foreground">Text-only detail: this structure is not illustrated in the abstract boundary map.</p>}
               <p className="text-xs mt-2 p-2 rounded bg-secondary/50 text-foreground leading-relaxed">
                 <strong>Clinical:</strong> {info.clinicalNote}
               </p>
@@ -208,6 +214,7 @@ const ParavertebralSpaceDiagram = () => {
                     {cat.keys.map((key) => (
                       <Button variant="outline" size="sm"
                         key={key}
+                        aria-pressed={selected === key}
                         onClick={() => setSelected(key)}
                         className={`text-xs px-2 py-1 rounded border transition-all ${
                           selected === key

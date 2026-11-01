@@ -1,4 +1,5 @@
 /** Text-only chest-wall teaching: depth and craniocaudal relationships are independent; mixed-plane art withdrawn. */
+import { IntercostalRelationships } from "./RelationshipSchematics";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { InlineRef } from "@/components/references/InlineRef";
@@ -35,6 +36,7 @@ const layerOrder: LayerKey[] = ["rib-above", "skin", "ext-intercostal", "int-int
 const IntercostalAnatomyDiagram = () => {
   const [selected, setSelected] = useState<LayerKey>("neurovascular");
   const info = layers[selected];
+  const [showLabels, setShowLabels] = useState(true);
 
 
   return (
@@ -48,14 +50,15 @@ const IntercostalAnatomyDiagram = () => {
           <DiagramToggleBar
             title="Intercostal space — spatial relationships"
             subtitle="Tap any layer to see its anatomy and clinical relevance for chest procedures"
-            toggles={[]}
+            toggles={[{ label: "Labels", active: showLabels, onChange: () => setShowLabels(v => !v) }]}
           />
   
           <div className="flex flex-col sm:flex-row gap-4 items-start">
             <div className="flex-1 min-w-0 border-l-4 border-anatomy pl-4">
-              <p className="text-sm font-semibold text-foreground">Spatial relationships — cross-section withdrawn</p>
+              <h3 className="text-sm font-semibold text-foreground">Intercostal parasagittal relationship schematic</h3>
+              <IntercostalRelationships selected={selected} onSelect={key => setSelected(key as LayerKey)} labels={showLabels} />
               <p className="text-sm text-muted-foreground mt-2">{INTERCOSTAL_SPATIAL}</p>
-              <InlineRef topicId="thoracic-anatomy" refLabel="BTS pleural procedures 2023" /><InlineRef topicId="thoracic-anatomy" refLabel="Intercostal anatomy" /><InlineRef topicId="thoracic-anatomy" refLabel="Thoracic wall VAN" />
+              <InlineRef topicId="thoracic-anatomy" refLabel="BTS pleural procedures 2023" /><InlineRef topicId="thoracic-anatomy" refLabel="Intercostal anatomy" /><InlineRef topicId="thoracic-anatomy" refLabel="Thoracic wall VAN" /><InlineRef topicId="thoracic-anatomy" refLabel="TTUHSC thoracic wall relationships" />
               <div className="flex flex-wrap gap-2 mt-4">{layerOrder.map(key => <Button key={key} variant="outline" size="sm" aria-pressed={selected === key} onClick={() => setSelected(key)}>{layers[key].label}</Button>)}</div>
             </div>
             <div className="flex-1 min-w-0">
