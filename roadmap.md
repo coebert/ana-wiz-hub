@@ -5,6 +5,11 @@
 - [ ] Use executed labels and retire only independently reviewed adrenal snapshot line; retain other historical debt.
 - [ ] Combined focused/governance/required-citations, desktop/mobile and one final full-suite verification; report warnings and manual-validation limitation.
 
+## Phase A activation follow-up — 1 November 2026 15:39 UTC
+- [ ] Fresh-read/reconcile nine targets and three new paths against supplied refined guards in isolated candidate; portable16 tests and available validation before activation. Host semantic/build/browser/real-role evidence supplied; future divergent changes are not covered.
+- [ ] Fresh metadata/count/held fingerprint check, then only two restrictive policies and four approved function deployments; preserve histories and all unrelated work. No website publication or Phase B.
+- [ ] Confirm deployed versions before safe authenticated tests; actual-role readback, unchanged rows/holds, focused final checks and exact evidence/gaps. Do not invoke worker or old generator.
+
 ## D30 medicine reference access — 1 November 2026
 - [x] Exposed references on both medicine views; safe URLs, provenance preservation, accurate search-tool labels and desktop/mobile keyboard access checked.
 - [x] Independently opened source candidates;56scoped appends with exact guards/readback,2coordinated root records preserved; per-record evidence/counts and exact-before differences in docs/d30/. Not66completed or208certified.
