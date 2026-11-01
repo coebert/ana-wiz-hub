@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { protonLarmor, T2_FAT } from "@/lib/physics-fluid-teaching";
+import { InlineRef } from "@/components/references/InlineRef";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { WorkedExampleCallout } from "@/components/diagrams/shared/WorkedExampleCallout";
 import { DiagramLearningPoints } from "@/components/diagrams/shared/DiagramLearningPoints";
@@ -7,7 +9,7 @@ import { DiagramFigure } from "../_shared/DiagramFigure";
 
 const NuclearSpinTab = () => (
   <div className="space-y-4">
-    <h3 className="text-lg font-semibold text-foreground">Nuclear Spin & Precession</h3>
+    <h3 className="text-lg font-semibold text-foreground">Nuclear Spin & Precession</h3><p className="text-sm text-muted-foreground">ω₀ = γB₀ in rad/s; f₀ = (γ/2π)B₀ in Hz; angular frequency is 2π × frequency in Hz.<InlineRef topicId="mri-physics" refLabel="UMich MRI Frequency" /></p>
     <p className="text-sm text-muted-foreground">
       Hydrogen nuclei (protons) possess spin and act as tiny magnets. In a strong magnetic field (B₀), they align and precess at the Larmor frequency.
     </p>
@@ -38,10 +40,10 @@ const NuclearSpinTab = () => (
       {/* Larmor equation */}
       <rect x="40" y="225" width="320" height="45" rx="8" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
       <text x="200" y="245" textAnchor="middle" fontSize="12" fill="hsl(var(--foreground))" fontWeight="bold">ω₀ = γ × B₀</text>
-      <text x="200" y="262" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">Larmor frequency (ω₀) = gyromagnetic ratio (γ) × field strength (B₀)</text>
+      <text x="200" y="262" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">Angular ω₀ (rad/s); cyclic f₀ = (γ/2π)B₀ (Hz)</text>
 
       {/* Key values */}
-      <text x="200" y="290" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))">¹H: γ = 42.58 MHz/T → at 1.5T: ω₀ = 63.87 MHz → at 3T: ω₀ = 127.74 MHz</text>
+      <text x="200" y="290" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))">¹H: γ/2π ≈ 42.58 MHz/T; f₀ = 63.87 MHz (1.5 T), 127.74 MHz (3 T)</text>
 
       {/* Parallel vs antiparallel */}
       <rect x="20" y="30" width="80" height="90" rx="6" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
@@ -88,7 +90,7 @@ const NuclearSpinTab = () => (
       <ul className="text-sm text-muted-foreground space-y-1 list-disc pl-4">
         <li><strong>Nuclear spin</strong>: protons (¹H) have spin ½ and act as tiny magnets (magnetic moment)</li>
         <li>In B₀, protons align <strong>parallel</strong> (low energy) or <strong>anti-parallel</strong> (high energy); slight parallel excess creates <strong>net magnetisation (M₀)</strong></li>
-        <li><strong>Precession</strong>: protons wobble around B₀ axis at the Larmor frequency ω₀ = γB₀</li>
+        <li><strong>Precession</strong>: protons wobble around B₀ axis at the angular rate ω₀ = γB₀ (rad/s); cyclic f₀ = (γ/2π)B₀ (Hz)</li>
         <li>An <strong>RF pulse</strong> at the Larmor frequency tips M₀ into the transverse plane (resonance)</li>
         <li>90° RF pulse → M₀ fully transverse; 180° pulse → M₀ inverted</li>
         <li>Higher field strength → stronger signal (more parallel excess) but more artefact and SAR</li>
@@ -100,6 +102,7 @@ const NuclearSpinTab = () => (
 const RelaxationTab = () => (
   <div className="space-y-4">
     <h3 className="text-lg font-semibold text-foreground">T1 & T2 Relaxation</h3>
+    <p className="text-sm text-muted-foreground">{T2_FAT}<InlineRef topicId="mri-physics" refLabel="T2 Fat Fast Spin Echo 1992" /></p>
     <ZoomableSVG><svg viewBox="0 0 400 340" className="w-full max-w-md mx-auto" role="img" aria-label="Two graphs side by side: T1 longitudinal recovery (Mz returns to M-zero after 63% recovery at one T1 time constant, faster for fat than water) and T2 transverse decay (Mxy falls to 37% remaining at one T2, with T2-star always faster than T2). Below, a tissue contrast table shows fat appears bright on T1-weighted images and water appears bright on T2-weighted images.">
       <text x="200" y="18" textAnchor="middle" fontSize="11" fill="hsl(var(--foreground))" fontWeight="bold">Relaxation After RF Pulse</text>
 
@@ -175,7 +178,7 @@ const RelaxationTab = () => (
 
       <text x="310" y="212" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))" fontWeight="bold">T2-weighted</text>
       <text x="310" y="226" textAnchor="middle" fontSize="7" fill="hsl(var(--primary))">Water = BRIGHT</text>
-      <text x="310" y="238" textAnchor="middle" fontSize="7" fill="hsl(var(--accent))">Fat = DARK</text>
+      <text x="310" y="238" textAnchor="middle" fontSize="7" fill="hsl(var(--accent))">Fat: sequence-dependent</text>
       <text x="310" y="250" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Long TR, long TE</text>
 
       {/* Mnemonic */}
@@ -191,7 +194,7 @@ const RelaxationTab = () => (
         <li><strong>T2 (spin-spin)</strong>: decay of transverse magnetisation; time to 37% remaining; loss of phase coherence between spins</li>
         <li><strong>T2*</strong>: faster than T2; includes field inhomogeneity effects (T2* &lt; T2 always)</li>
         <li><strong>T1-weighted</strong>: short TR, short TE → fat bright, water dark → best for anatomy</li>
-        <li><strong>T2-weighted</strong>: long TR, long TE → water bright, fat dark → best for pathology (oedema, inflammation)</li>
+        <li><strong>T2-weighted</strong>: long TR, long TE → water/fluid generally bright; fat depends on sequence and suppression</li>
         <li><strong>Gadolinium</strong> (contrast agent): shortens T1 → enhances signal on T1-weighted images; nephrogenic systemic fibrosis risk in renal failure</li>
       </ul>
     </div>
@@ -300,8 +303,8 @@ const MRIPhysicsDiagram = () => {
           <NuclearSpinTab />
           <WorkedExampleCallout
             title="Larmor frequency at 1.5 T vs 3 T"
-            scenario="An MRI department has both a 1.5 T and a 3 T scanner. Calculate the proton Larmor frequency at each field strength (γ for ¹H = 42.58 MHz/T)."
-            numbers="ω₀ = γ × B₀. At 1.5 T → 42.58 × 1.5 = 63.87 MHz. At 3 T → 42.58 × 3 = 127.74 MHz. SAR scales with B₀² for a given sequence, so 3 T deposits roughly 4× the RF energy per kilogram."
+            scenario="An MRI department has both a 1.5 T and a 3 T scanner. Calculate the proton Larmor frequency at each field strength (γ/2π for ¹H ≈ 42.58 MHz/T)."
+            numbers={`f₀ = (γ/2π)B₀ in Hz; ω₀ = 2πf₀ in rad/s. At 1.5 T → ${(protonLarmor(1.5)?.frequencyHz ?? 0)/1e6} MHz. At 3 T → ${(protonLarmor(3)?.frequencyHz ?? 0)/1e6} MHz. SAR scales with B₀² for a given sequence.`}
             takeaway="The RF transmit chain must be tuned to 64 MHz at 1.5 T or 128 MHz at 3 T. Higher field strengths give better SNR but a much higher SAR — tighter scanning duty cycles and a higher index of suspicion for thermal injury (loops of wire, ECG leads, tattoos)."
           />
           <DiagramLearningPoints
@@ -309,7 +312,7 @@ const MRIPhysicsDiagram = () => {
             anchorLabel="Nuclear Spin & Precession"
             points={[
               "¹H protons (spin ½) align parallel/anti-parallel in B₀; small parallel excess gives net M₀.",
-              "Larmor equation: ω₀ = γ × B₀ (γ for ¹H = 42.58 MHz/T).",
+              "Larmor equation: ω₀ = γ × B₀ (γ/2π for ¹H ≈ 42.58 MHz/T).",
               "Resonance: an RF pulse at ω₀ tips M₀ into the transverse plane (90° flip); 180° inverts M₀.",
               "Higher B₀ → higher SNR but quadratically higher SAR (∝ B₀²) and more artefact.",
             ]}
@@ -331,7 +334,7 @@ const MRIPhysicsDiagram = () => {
           <WorkedExampleCallout
             title="Choosing the sequence for a suspected stroke"
             scenario="A 65-year-old with sudden right-sided weakness comes for an MRI brain. Which weighting best demonstrates oedema and ischaemia?"
-            numbers="T1-weighted (short TR ~500 ms, short TE ~15 ms) makes fat bright and water dark — best for anatomy. T2-weighted (long TR ~3,000 ms, long TE ~90 ms) makes water bright and fat dark — best for oedema, CSF and pathology. DWI is even more sensitive in the first hours of stroke, but T2/FLAIR remains the workhorse on most curricula."
+            numbers="T1-weighted (short TR ~500 ms, short TE ~15 ms) makes fat bright and water dark — best for anatomy. T2-weighted (long TR ~3,000 ms, long TE ~90 ms) generally makes water bright; fat depends on sequence/fat suppression and is often bright on fast spin echo. DWI is even more sensitive in the first hours of stroke, but T2/FLAIR remains the workhorse on most curricula."
             takeaway="'WW2' — Water is White on T2. T1 = anatomy, T2 = pathology. Gadolinium shortens T1 and brightens enhancing lesions on post-contrast T1-weighted images."
           />
           <DiagramLearningPoints

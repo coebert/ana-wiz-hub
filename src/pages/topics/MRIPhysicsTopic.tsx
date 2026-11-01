@@ -1,3 +1,4 @@
+import { protonLarmor, T2_FAT } from "@/lib/physics-fluid-teaching";
 import { TopicTemplate } from "@/components/topic/TopicTemplate";
 import { TopicFaqs } from "@/components/topic/TopicFaqs";
 import { CollapsibleSubsection } from "@/components/topic/CollapsibleSubsection";
@@ -36,9 +37,9 @@ const workedExamples: WorkedExample[] = [
   {
     title: "Larmor frequency at 1.5 T vs 3 T",
     scenario:
-      "Calculate the Larmor frequency for ¹H protons in a 1.5 T and a 3 T scanner (γ for ¹H = 42.58 MHz/T). What does this imply for SAR and image quality?",
+      "Calculate the Larmor frequency for ¹H protons in a 1.5 T and a 3 T scanner (γ/2π for ¹H ≈ 42.58 MHz/T). What does this imply for SAR and image quality?",
     working:
-      "ω₀ = γ × B₀.\nAt 1.5 T → 42.58 × 1.5 = 63.87 MHz.\nAt 3 T → 42.58 × 3 = 127.74 MHz.\nSAR (W/kg) ∝ B₀² for a given pulse sequence, so doubling field strength quadruples SAR → greater RF heating.",
+      `ω₀ = γB₀ in rad/s; f₀ = (γ/2π)B₀ in Hz. At 1.5 T → ${(protonLarmor(1.5)?.frequencyHz ?? 0)/1e6} MHz. At 3 T → ${(protonLarmor(3)?.frequencyHz ?? 0)/1e6} MHz. Angular frequency is 2π × frequency in Hz. SAR (W/kg) ∝ B₀² for a given pulse sequence, so doubling field strength quadruples SAR → greater RF heating.`,
     answer:
       "The RF system must transmit at 64 MHz (1.5 T) or 128 MHz (3 T). The ~4× higher SAR at 3 T means tighter limits on duty cycle, longer scans for SAR-heavy sequences, and a higher index of suspicion for thermal injury — particularly around looped wires, ECG leads and tattoos.",
     cites: ["Middleton Ch.17"],
@@ -78,10 +79,10 @@ const MRIPhysicsTopic = () => {
         keyPoints: ["BJA Educ 2019", "Middleton Ch.17", "Assoc Anaesth 2024 (MRI)", "RCR GBCA"],
       }}
       keyPoints={[
-        { text: "MRI uses hydrogen protons (¹H) which precess at the Larmor frequency ω₀ = γB₀ (42.58 MHz/T × field strength)", cites: ["BJA Educ 2019"] },
+        { text: "MRI proton precession: ω₀ = γB₀ in rad/s; f₀ = (γ/2π)B₀ in Hz. For ¹H, γ/2π ≈ 42.58 MHz/T", cites: ["BJA Educ 2019"] },
         { text: "An RF pulse at the Larmor frequency tips net magnetisation into the transverse plane (resonance condition)", cites: ["Middleton Ch.17"] },
         { text: "T1 (spin-lattice) = longitudinal recovery; T2 (spin-spin) = transverse decay; T2* includes field inhomogeneity", cites: ["Assoc Anaesth 2024 (MRI)"] },
-        { text: "T1-weighted: fat bright, water dark (short TR/TE); T2-weighted: water bright, fat dark (long TR/TE) — 'WW2' mnemonic", cites: ["BJA Educ 2019"] },
+        { text: "T1-weighted: fat often bright, water dark. T2-weighted: fluid generally bright; fat signal depends on sequence and fat suppression and is often bright on fast/turbo spin echo", cites: ["BJA Educ 2019"] },
         { text: "Gadolinium-based contrast: NSF risk is highest with older linear GBCAs at eGFR <30 ml/min/1.73m² and very low with modern macrocyclic Group II agents (RCR/MHRA)", cites: ["RCR GBCA", "MHRA GBCA"] },
         { text: "Three MRI hazards: missile effect (ferromagnetic projectiles), thermal burns (RF heating/SAR), device malfunction", cites: ["Assoc Anaesth 2024 (MRI)"] },
         { text: "Equipment labels: MR Safe (green), MR Conditional (yellow), MR Unsafe (red) — all anaesthetic equipment must be checked", cites: ["BJA Educ 2019"] },
@@ -118,7 +119,7 @@ const MRIPhysicsTopic = () => {
               </p>
               <p>
                 Each proton <strong>precesses</strong> (wobbles like a gyroscope) around the B₀ axis at a frequency given by the
-                <strong> Larmor equation: ω₀ = γ × B₀</strong>. For hydrogen, γ = 42.58 MHz/T, giving a Larmor frequency of
+                <strong> Larmor equations: ω₀ = γB₀ (rad/s), f₀ = (γ/2π)B₀ (Hz)</strong>. For hydrogen, γ/2π ≈ 42.58 MHz/T, giving a cyclic frequency of
                 63.87 MHz at 1.5T and 127.74 MHz at 3T. An <strong>RF pulse</strong> at exactly the Larmor frequency transfers energy
                 to the protons (resonance), tipping M₀ away from B₀ into the transverse plane where it can be detected by receiver coils.
               </p>
@@ -147,7 +148,7 @@ const MRIPhysicsTopic = () => {
               <p>
                 <strong>Image weighting</strong> is controlled by TR (repetition time) and TE (echo time). T1-weighted images (short
                 TR, short TE) show fat as bright and water as dark — best for anatomical detail. T2-weighted images (long TR, long TE)
-                show water as bright and fat as dark — best for detecting pathology (oedema, inflammation, CSF).
+                generally show water/fluid as bright. {T2_FAT}<InlineRef topicId="mri-physics" refLabel="T2 Fat Fast Spin Echo 1992" />
               </p>
             </div>
             </CollapsibleSubsection>
