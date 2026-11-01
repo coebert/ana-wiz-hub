@@ -114,7 +114,7 @@ type Tool = {
 const tools: Tool[] = [
   {
     title: "Revise",
-    description: "Browse the full curriculum by section and dive into structured topic notes.",
+    description: "Browse curriculum topics by section and dive into structured notes.",
     icon: BookOpen,
     to: "/revise",
     dotClass: "bg-physiology",
@@ -221,7 +221,7 @@ const Landing = () => {
                 <li className="flex items-start gap-3">
                   <BookOpen className="h-4 w-4 mt-0.5 shrink-0 text-physiology" aria-hidden />
                   <span className="text-foreground/85">
-                    <strong className="font-semibold text-foreground">Full curriculum notes</strong>{" "}
+                    <strong className="font-semibold text-foreground">Curriculum topic notes</strong>{" "}
                     — mapped to Primary, Final and FFICM syllabi.
                   </span>
                 </li>

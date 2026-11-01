@@ -11,7 +11,7 @@ const s = {
   renal: { label: "BJA Educ: renal physiology", href: "https://doi.org/10.1093/bjaceaccp/mku047" },
   aki: { label: "KDIGO AKI guideline", href: "https://kdigo.org/guidelines/acute-kidney-injury/" },
   nmj: { label: "BJA Educ: neuromuscular junction", href: "https://doi.org/10.1016/j.bjae.2018.02.003" },
-  nmbGuideline: { label: "Assoc Anaesth 2023: neuromuscular blockade", href: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.16114" },
+  nmbGuideline: { label: "ASA 2023: neuromuscular blockade", href: "https://doi.org/10.1097/ALN.0000000000004379" },
   autonomic: { label: "BJA Educ: autonomic nervous system", href: "https://doi.org/10.1093/bjaceaccp/mkm023" },
   bradycardia: { label: "BJA Educ: perioperative bradycardia", href: "https://doi.org/10.1016/j.bjae.2021.05.001" },
   pericardial: { label: "ESC 2015 pericardial disease guideline", href: "https://doi.org/10.1093/eurheartj/ehv318" },

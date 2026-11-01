@@ -20,6 +20,7 @@ import { icuDrugMechanismGroups } from "@/data/icuDrugMechanisms";
 import { icuDrugPharmacokinetics } from "@/data/pk";
 import { PkTimelineChart } from "@/components/icu/PkTimelineChart";
 import { PageJsonLd } from "@/components/layout/PageJsonLd";
+import { DrugResidualSources } from "@/components/icu/DrugResidualSources";
 import {
   icuDrugWithdrawal,
   withdrawalRiskLabel,
@@ -216,6 +217,7 @@ const IcuDrugSafety = () => {
             <section key={group.id} id={group.id} className="scroll-mt-24">
               <h2 className="text-xl font-semibold tracking-tight">{group.title}</h2>
               <p className="mt-1 max-w-3xl text-sm text-muted-foreground">{group.blurb}</p>
+              <DrugResidualSources groupId={group.id} />
 
               <div className="mt-5 space-y-5">
                 {group.drugs.map((d) => (

@@ -18,6 +18,7 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync, existsSync } from "node:fs";
 import { resolve, dirname, relative } from "node:path";
+import { parseTopic } from "../../scripts/lib/topic-citations";
 
 const ROOT = resolve(__dirname, "../..");
 const SNAPSHOT = resolve(ROOT, "scripts/required-citations.snapshot.json");
@@ -51,6 +52,7 @@ describe("required-citations snapshot", () => {
         return null;
       }
       // Teaching sections retain their own citations after extraction from a topic.
+      errors.push(...parseTopic(src, rel).diagnostics.filter(d => d.startsWith("syntax ")).map(diagnostic => `${rel}: ${diagnostic}`));
       // Seed the cache before recursion to guard circular shared imports.
       fileCache.set(rel, src);
       const imported = [...src.matchAll(/from\s+["'](@\/components\/topic\/[\w/]+Teaching|(?:\.\.\/|\.\/)[\w./]+Teaching)["']/g)]

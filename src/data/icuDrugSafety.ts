@@ -425,7 +425,7 @@ export const icuDrugSafetyGroups: DrugSafetyGroup[] = [
           "Repeat doses or co-administration with other vagotonic drugs cause bradycardia, especially in children.",
         ],
         contraindications: [
-          "Hyperkalaemia, or risk of it: burns >24–48 h old, spinal cord injury, prolonged immobility, denervation, severe sepsis and critical illness myopathy.",
+          "Hyperkalaemia or conditions increasing its risk: burns after the initial 24 hours under the Salisbury protocol, spinal cord injury/denervation, prolonged immobility and critical illness myopathy. Review other contraindications even within 24 hours; there is no universal safe early or fixed late interval.",
           "Personal or family history of malignant hyperthermia; Duchenne and other myopathies (rhabdomyolysis, cardiac arrest).",
           "Penetrating eye injury and raised intraocular pressure (relative); known plasma cholinesterase deficiency.",
         ],

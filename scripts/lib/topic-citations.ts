@@ -3,6 +3,13 @@ import ts from "typescript";
 export function parseTopic(source: string, filename = "topic.tsx") {
   const sf = ts.createSourceFile(filename, source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
   const diagnostics: string[] = [];
+  // createSourceFile recovers an AST even when syntax is invalid. Recovery is
+  // useful for collecting errors, never grounds for accepting the source.
+  const syntaxDiagnostics = (sf as ts.SourceFile & { parseDiagnostics: readonly ts.Diagnostic[] }).parseDiagnostics;
+  for (const diagnostic of syntaxDiagnostics) {
+    const position = sf.getLineAndCharacterOfPosition(diagnostic.start ?? 0);
+    diagnostics.push(`syntax ${position.line + 1}:${position.character + 1}: ${ts.flattenDiagnosticMessageText(diagnostic.messageText, " ")}`);
+  }
   const constants = new Map<string, ts.Expression>();
   for (const statement of sf.statements) {
     if (!ts.isVariableStatement(statement) || !(statement.declarationList.flags & ts.NodeFlags.Const)) continue;

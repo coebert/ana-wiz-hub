@@ -382,7 +382,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "What is a rapid sequence induction (RSI)?",
     },
     {
-      "a": "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Low-flow nasal apnoeic oxygenation 15 L/min where appropriate; this is not high-flow THRIVE. 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm sustained exhaled CO₂ (PUMA: rises with exhalation and falls with inspiration, consistent or increasing over at least seven breaths, peak > 1 kPa above baseline, clinically appropriate); if absent, actively exclude oesophageal intubation and remove the tube by default unless removal is judged more dangerous. Confirm tube depth separately. 8. Inflate cuff, secure tube, ventilate. 9. Use videolaryngoscopy first-line whenever possible for Plan A; have Plan B (second-generation SAD), Plan C (optimised facemask) and Plan D (eFONA) ready before induction (DAS 2025).",
+      "a": "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Low-flow nasal apnoeic oxygenation 15 L/min where appropriate; this is not high-flow THRIVE. 5. Pre-determined induction dose + rapid-onset neuromuscular blocker; continue oxygen delivery and use gentle low-pressure facemask ventilation if required, balancing oxygenation and aspiration risk (DAS 2025). 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm sustained exhaled CO₂ (PUMA: rises with exhalation and falls with inspiration, consistent or increasing over at least seven breaths, peak > 1 kPa above baseline, clinically appropriate); if absent, actively exclude oesophageal intubation and remove the tube by default unless removal is judged more dangerous. Confirm tube depth separately. 8. Inflate cuff, secure tube, ventilate. 9. Use videolaryngoscopy first-line whenever possible for Plan A; have Plan B (second-generation SAD), Plan C (optimised facemask) and Plan D (eFONA) ready before induction (DAS 2025).",
       "q": "How do you perform a rapid sequence induction step-by-step?",
     },
     {
@@ -2838,15 +2838,15 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the full FAQ co
       "q": "Why is suxamethonium dangerous after burns or spinal cord injury?",
     },
     {
-      "a": "Sugammadex reverses rocuronium in a dose-dependent manner: 2 mg/kg at reappearance of T2 for routine reversal; 4 mg/kg at recovery to 1–2 post-tetanic counts (PTC); and 16 mg/kg for adult immediate reversal approximately 3 minutes after rocuronium 1.2 mg/kg; paediatric immediate reversal has not been investigated. Counsel patients that sugammadex inactivates hormonal contraceptives for 7 days (Schaller & Fink, Anaesthesia 2013; Merck SmPC).",
+      "a": "Sugammadex reverses rocuronium in a dose-dependent manner: 2 mg/kg at reappearance of T2 for routine reversal; 4 mg/kg at recovery to 1–2 post-tetanic counts (PTC); and 16 mg/kg for adult immediate reversal approximately 3 minutes after rocuronium 1.2 mg/kg; paediatric immediate reversal has not been investigated. Follow the named Bridion contraception advice: oral users follow their product’s missed-dose instructions; non-oral hormonal users add non-hormonal contraception for 7 days.",
       "q": "What dose of sugammadex reverses rocuronium?",
     },
     {
-      "a": "Sugammadex 16 mg/kg reverses a 1.2 mg/kg rocuronium block to a TOF ratio ≥0.9 in approximately 3 minutes — faster than spontaneous recovery from suxamethonium 1.0 mg/kg (~9–10 minutes). However, reversal does not restore upper-airway tone immediately, so it should never replace a proper difficult-airway plan (DAS 2015).",
+      "a": "Adult immediate reversal is a specific Bridion regimen after rocuronium 1.2 mg/kg, not guaranteed airway rescue. Recovery time varies; continue oxygenation and the failed-airway plan even if neuromuscular recovery is demonstrated.",
       "q": "Can sugammadex reverse rocuronium fast enough to rescue a failed RSI?",
     },
     {
-      "a": "Yes, but the clinical duration of rocuronium 1.2 mg/kg is 45–70 minutes without sugammadex. In this scenario neostigmine can only be given once four twitches have returned (T2), which may take 30–60 minutes. Suxamethonium remains an acceptable alternative when rapid spontaneous recovery is desired and there are no contraindications.",
+      "a": "Rocuronium can be used without sugammadex where the patient-specific airway and ventilation plan accounts for prolonged paralysis. Four twitches are TOF count 4, not T2. ASA 2023 supports neostigmine as an alternative at minimal block (quantitative TOF ratio 0.4 to <0.9); deeper reversal is slower and less predictable. Choice of NMBA and reversal follows the clinical context, monitoring and available expertise.",
       "q": "Can rocuronium be used for RSI if sugammadex is unavailable?",
     },
   ],
@@ -4185,7 +4185,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Low-flow nasal apnoeic oxygenation 15 L/min where appropriate; this is not high-flow THRIVE. 5. Pre-determined induction dose + neuromuscular blocker — no test dose, no bag-mask. 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm sustained exhaled CO₂ (PUMA: rises with exhalation and falls with inspiration, consistent or increasing over at least seven breaths, peak > 1 kPa above baseline, clinically appropriate); if absent, actively exclude oesophageal intubation and remove the tube by default unless removal is judged more dangerous. Confirm tube depth separately. 8. Inflate cuff, secure tube, ventilate. 9. Use videolaryngoscopy first-line whenever possible for Plan A; have Plan B (second-generation SAD), Plan C (optimised facemask) and Plan D (eFONA) ready before induction (DAS 2025).",
+          "text": "1. WHO checklist, IV access, monitoring, suction, tilting trolley. 2. Pre-oxygenate 3 min with FiO₂ 1.0 to FetO₂ ≥ 0.9 (or 8 vital-capacity breaths). 3. Position: ramped/sniffing. 4. Low-flow nasal apnoeic oxygenation 15 L/min where appropriate; this is not high-flow THRIVE. 5. Pre-determined induction dose + rapid-onset neuromuscular blocker; continue oxygen delivery and use gentle low-pressure facemask ventilation if required, balancing oxygenation and aspiration risk (DAS 2025). 6. Consider cricoid pressure (10 N awake → 30 N once asleep) — release if view is poor or ventilation difficult. 7. Intubate, confirm sustained exhaled CO₂ (PUMA: rises with exhalation and falls with inspiration, consistent or increasing over at least seven breaths, peak > 1 kPa above baseline, clinically appropriate); if absent, actively exclude oesophageal intubation and remove the tube by default unless removal is judged more dangerous. Confirm tube depth separately. 8. Inflate cuff, secure tube, ventilate. 9. Use videolaryngoscopy first-line whenever possible for Plan A; have Plan B (second-generation SAD), Plan C (optimised facemask) and Plan D (eFONA) ready before induction (DAS 2025).",
         },
         "name": "How do you perform a rapid sequence induction step-by-step?",
       },
@@ -9325,7 +9325,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sugammadex reverses rocuronium in a dose-dependent manner: 2 mg/kg at reappearance of T2 for routine reversal; 4 mg/kg at recovery to 1–2 post-tetanic counts (PTC); and 16 mg/kg for adult immediate reversal approximately 3 minutes after rocuronium 1.2 mg/kg; paediatric immediate reversal has not been investigated. Counsel patients that sugammadex inactivates hormonal contraceptives for 7 days (Schaller & Fink, Anaesthesia 2013; Merck SmPC).",
+          "text": "Sugammadex reverses rocuronium in a dose-dependent manner: 2 mg/kg at reappearance of T2 for routine reversal; 4 mg/kg at recovery to 1–2 post-tetanic counts (PTC); and 16 mg/kg for adult immediate reversal approximately 3 minutes after rocuronium 1.2 mg/kg; paediatric immediate reversal has not been investigated. Follow the named Bridion contraception advice: oral users follow their product’s missed-dose instructions; non-oral hormonal users add non-hormonal contraception for 7 days.",
         },
         "name": "What dose of sugammadex reverses rocuronium?",
       },
@@ -9333,7 +9333,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sugammadex 16 mg/kg reverses a 1.2 mg/kg rocuronium block to a TOF ratio ≥0.9 in approximately 3 minutes — faster than spontaneous recovery from suxamethonium 1.0 mg/kg (~9–10 minutes). However, reversal does not restore upper-airway tone immediately, so it should never replace a proper difficult-airway plan (DAS 2015).",
+          "text": "Adult immediate reversal is a specific Bridion regimen after rocuronium 1.2 mg/kg, not guaranteed airway rescue. Recovery time varies; continue oxygenation and the failed-airway plan even if neuromuscular recovery is demonstrated.",
         },
         "name": "Can sugammadex reverse rocuronium fast enough to rescue a failed RSI?",
       },
@@ -9341,7 +9341,7 @@ exports[`Topic FAQ source-of-truth snapshot regression > matches the synthesised
         "@type": "Question",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, but the clinical duration of rocuronium 1.2 mg/kg is 45–70 minutes without sugammadex. In this scenario neostigmine can only be given once four twitches have returned (T2), which may take 30–60 minutes. Suxamethonium remains an acceptable alternative when rapid spontaneous recovery is desired and there are no contraindications.",
+          "text": "Rocuronium can be used without sugammadex where the patient-specific airway and ventilation plan accounts for prolonged paralysis. Four twitches are TOF count 4, not T2. ASA 2023 supports neostigmine as an alternative at minimal block (quantitative TOF ratio 0.4 to <0.9); deeper reversal is slower and less predictable. Choice of NMBA and reversal follows the clinical context, monitoring and available expertise.",
         },
         "name": "Can rocuronium be used for RSI if sugammadex is unavailable?",
       },
