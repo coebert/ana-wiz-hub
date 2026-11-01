@@ -1,3 +1,25 @@
+/** Containment only: no clinical generation until the versioned source pipeline is ready. */
+const SOURCE_UNAVAILABLE =
+  "Current source material is not yet available for reliable AI answers or clinical scoring. Please read the relevant topic and original guidance. Your saved history has been kept.";
+function sourceUnavailable(headers: HeadersInit = {}): Response {
+  return new Response(
+    JSON.stringify({
+      status: "source_unavailable",
+      code: "SOURCE_UNAVAILABLE",
+      error: SOURCE_UNAVAILABLE,
+      clinicalScore: null,
+    }),
+    {
+      status: 503,
+      headers: {
+        ...Object.fromEntries(new Headers(headers)),
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store",
+      },
+    },
+  );
+}
+
 import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
 /**
  * Ask AI chat endpoint. Receives an AI SDK UIMessage[] history, embeds the
@@ -9,18 +31,10 @@ import { getAuthedUserId, isAdminUser } from "../_shared/require-user.ts";
  * Public endpoint (verify_jwt = false) — no PII is stored. The browser
  * persists chat history in localStorage; no server-side conversation log.
  */
-import {
-  convertToModelMessages,
-  streamText,
-  type UIMessage,
-} from "npm:ai";
+import { convertToModelMessages, streamText, type UIMessage } from "npm:ai";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
-import {
-  createLovableAiGatewayProvider,
-  embedTexts,
-  LOVABLE_AIG_RUN_ID_HEADER,
-} from "../_shared/ai-gateway.ts";
+import { createLovableAiGatewayProvider, embedTexts, LOVABLE_AIG_RUN_ID_HEADER } from "../_shared/ai-gateway.ts";
 import { moderateText } from "../_shared/moderation.ts";
 
 interface MatchedChunk {
@@ -39,7 +53,7 @@ function lastUserText(messages: UIMessage[]): string {
     const m = messages[i];
     if (m.role !== "user") continue;
     const text = (m.parts ?? [])
-      .map((p) => (p as { type: string; text?: string }).type === "text" ? (p as { text?: string }).text ?? "" : "")
+      .map((p) => ((p as { type: string; text?: string }).type === "text" ? ((p as { text?: string }).text ?? "") : ""))
       .join(" ")
       .trim();
     if (text) return text;
@@ -85,11 +99,19 @@ Deno.serve(async (req) => {
     .filter((m) => m && (m.role === "user" || m.role === "assistant"))
     .map((m, i) => {
       const text = (Array.isArray(m.parts) ? m.parts : [])
-        .map((p) => (p as { type?: string; text?: unknown }).type === "text" && typeof (p as { text?: unknown }).text === "string" ? (p as { text: string }).text : "")
+        .map((p) =>
+          (p as { type?: string; text?: unknown }).type === "text" && typeof (p as { text?: unknown }).text === "string"
+            ? (p as { text: string }).text
+            : "",
+        )
         .join(" ")
         .slice(0, 4000)
         .trim();
-      return { id: typeof m.id === "string" ? m.id.slice(0, 64) : `m${i}`, role: m.role, parts: [{ type: "text", text }] } as UIMessage;
+      return {
+        id: typeof m.id === "string" ? m.id.slice(0, 64) : `m${i}`,
+        role: m.role,
+        parts: [{ type: "text", text }],
+      } as UIMessage;
     })
     .filter((m) => (m.parts[0] as { text: string }).text.length > 0);
   if (messages.length === 0 || messages[messages.length - 1].role !== "user") {
@@ -98,6 +120,9 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
+
+  // Stop before clinical generation/cache/provider work. Authentication remains first.
+  return sourceUnavailable(corsHeaders);
 
   const lovableKey = Deno.env.get("LOVABLE_API_KEY");
   const supabaseUrl = Deno.env.get("SUPABASE_URL");
@@ -110,7 +135,8 @@ Deno.serve(async (req) => {
   }
 
   const userQuestion = lastUserText(messages);
-  let contextBlock = "(no relevant snippets retrieved — answer from general anaesthesia knowledge and clearly say the app doesn't have a dedicated page yet)";
+  let contextBlock =
+    "(no relevant snippets retrieved — answer from general anaesthesia knowledge and clearly say the app doesn't have a dedicated page yet)";
   const seenRoutes = new Map<string, { title: string; section: string }>();
 
   if (userQuestion) {
@@ -138,9 +164,10 @@ Deno.serve(async (req) => {
     }
   }
 
-  const routeIndex = Array.from(seenRoutes.entries())
-    .map(([route, { title, section }]) => `- ${title} (${section}) → ${route}`)
-    .join("\n") || "(none)";
+  const routeIndex =
+    Array.from(seenRoutes.entries())
+      .map(([route, { title, section }]) => `- ${title} (${section}) → ${route}`)
+      .join("\n") || "(none)";
 
   const initialRunId = req.headers.get(LOVABLE_AIG_RUN_ID_HEADER)?.trim() || undefined;
   const gateway = createLovableAiGatewayProvider(lovableKey, initialRunId);
@@ -178,9 +205,9 @@ ${routeIndex}`;
         const normalized = normalizeQuestion(userQuestion);
         if (!normalized) return;
         const answer = (responseMessage.parts ?? [])
-          .map((p) => (p as { type: string; text?: string }).type === "text"
-            ? (p as { text?: string }).text ?? ""
-            : "")
+          .map((p) =>
+            (p as { type: string; text?: string }).type === "text" ? ((p as { text?: string }).text ?? "") : "",
+          )
           .join("")
           .trim();
         if (!answer) return;
@@ -196,8 +223,6 @@ ${routeIndex}`;
           console.warn("[kb-chat] question rejected by moderation:", moderation.reason);
           return;
         }
-
-
 
         // Try to bump the ask_count on an existing entry first.
         const { data: existing, error: lookupErr } = await adminClient
@@ -220,13 +245,11 @@ ${routeIndex}`;
             .eq("id", existing.id);
           if (updateErr) console.error("[kb-chat] library update failed", updateErr);
         } else {
-          const { error: insertErr } = await adminClient
-            .from("ask_qa_library")
-            .insert({
-              normalized,
-              question: userQuestion,
-              answer,
-            });
+          const { error: insertErr } = await adminClient.from("ask_qa_library").insert({
+            normalized,
+            question: userQuestion,
+            answer,
+          });
           if (insertErr) console.error("[kb-chat] library insert failed", insertErr);
         }
       } catch (err) {
