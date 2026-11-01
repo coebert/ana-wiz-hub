@@ -28,6 +28,7 @@ export function parseTopic(source: string, filename = "topic.tsx") {
   }
   let topicId: string | null = null;
   let foundTopicTemplate = false;
+  const explicitIds = new Set<string>();
   const cites: string[] = [];
   const sections: Record<string, string[]> = {};
   const renderedDiagrams = new Set<string>();
@@ -41,6 +42,14 @@ export function parseTopic(source: string, filename = "topic.tsx") {
   function visit(node: ts.Node) {
     if (ts.isPropertyAssignment(node) && node.name.getText(sf).replace(/['"]/g, "") === "cites") cites.push(...labels(node.initializer, "cites"));
     if (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) {
+      for (const prop of node.attributes.properties) {
+        if (!ts.isJsxAttribute(prop) || prop.name.getText(sf) !== "topicId" || !prop.initializer) continue;
+        const expression = ts.isJsxExpression(prop.initializer) ? prop.initializer.expression : prop.initializer;
+        if (expression) {
+          const value = resolve(expression);
+          if (ts.isStringLiteralLike(value)) explicitIds.add(value.text);
+        }
+      }
       if (importedDiagrams.has(node.tagName.getText(sf))) renderedDiagrams.add(node.tagName.getText(sf));
       if (node.tagName.getText(sf) === "TopicTemplate") {
         foundTopicTemplate = true;
@@ -67,6 +76,10 @@ export function parseTopic(source: string, filename = "topic.tsx") {
     ts.forEachChild(node, visit);
   }
   visit(sf);
+  // Legacy hand-composed pages: only actual topicId props can establish identity.
+  // Never infer it from unrelated constants, URLs or prose.
+  if (!foundTopicTemplate && explicitIds.size === 1) topicId = [...explicitIds][0];
+  if (!foundTopicTemplate && explicitIds.size > 1) diagnostics.push("conflicting legacy topicId props");
   if (foundTopicTemplate && !topicId && !diagnostics.some(d => d.includes("topicId"))) diagnostics.push("missing topicId");
   return { topicId, foundTopicTemplate, cites, sections, diagnostics, renderedDiagrams: [...renderedDiagrams] };
 }

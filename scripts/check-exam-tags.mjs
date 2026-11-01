@@ -62,6 +62,9 @@ const linter = new Linter({ configType: "flat" });
 const config = [
   {
     files: ["**/*.{ts,tsx}"],
+    // Inline suppressions belong to the application's full lint configuration,
+    // not this isolated rule scan; do not create unknown-rule/unused noise.
+    linterOptions: { noInlineConfig: true, reportUnusedDisableDirectives: false },
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
