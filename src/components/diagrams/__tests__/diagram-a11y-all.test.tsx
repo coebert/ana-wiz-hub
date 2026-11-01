@@ -20,8 +20,9 @@
  * reported as a failing test so the allowlist stays honest.
  */
 import { describe, it, expect, afterEach } from "vitest";
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, render, fireEvent } from "@testing-library/react";
 import * as React from "react";
+import { operations } from "@/data/operativeSteps";
 
 /* ------------------------------------------------------------------ */
 /*  Shared a11y helpers (kept local so this file is self-contained)    */
@@ -108,7 +109,7 @@ const modules = import.meta.glob<Record<string, unknown>>(
   { eager: true },
 );
 
-type Renderable = React.ComponentType<Record<string, never>>;
+type Renderable = React.ComponentType<any>;
 
 /** Pick the most-likely component export from a module. */
 function pickComponent(
@@ -143,7 +144,7 @@ interface Discovered {
 
 const discovered: Discovered[] = Object.entries(modules)
   .map(([path, mod]): Discovered => {
-    const file = path.split("/").pop()!;
+    const file = path.split("/").pop() ?? path;
     const baseName = file.replace(/\.tsx$/, "");
 
     if (SKIP_FILES[file]) {
@@ -297,6 +298,13 @@ const KNOWN_LUCIDE_LEAKS = new Set<string>([
 
 const renderableEntries = discovered.filter((d) => d.Component);
 
+const OPERATION_FIXTURES: Record<string, string[]> = {
+  ColorectalOperationDiagram: ["ap-resection", "right-hemicolectomy", "left-hemicolectomy", "hartmann"],
+  PelvicSkinOperationDiagram: ["cerclage", "peripartum-hysterectomy", "ovarian-cystectomy", "vaginal-hysterectomy", "skin-excision", "mohs"],
+  UroPaedOperationDiagram: ["orchidopexy", "hypospadias", "ureteroscopy", "pcnl"],
+  SpecialtyExpansionDiagrams: ["hysteroscopy", "tur-bt", "burn-graft", "orthognathic"],
+};
+
 describe("every diagram passes basic a11y checks", () => {
   // Track which components we couldn't render so we can assert against
   // the expected list at the end and detect new regressions.
@@ -308,10 +316,18 @@ describe("every diagram passes basic a11y checks", () => {
       continue;
     }
 
-    it(`${name} has no forbidden ARIA patterns and hides decorative SVGs`, () => {
+    for (const variant of OPERATION_FIXTURES[name] ?? [undefined]) {
+    it(`${name}${variant ? ` (${variant})` : ""} has no forbidden ARIA patterns and hides decorative SVGs`, () => {
+      if (!Component) throw new Error(`Missing component ${name}`);
+      const operation = variant ? operations.find(op => op.diagram === variant) : undefined;
+      if (variant) {
+        expect(operation, `No Operation fixture for ${name}/${variant}`).toBeDefined();
+        expect(operation?.diagram).toBe(variant);
+        expect(operation?.steps.length).toBeGreaterThan(0);
+      }
       let container: HTMLElement;
       try {
-        ({ container } = render(React.createElement(Component!)));
+        ({ container } = render(React.createElement(Component, { operation, ...(name === "SpecialtyExpansionDiagrams" ? { kind: variant } : {}) })));
       } catch (err) {
         renderFailures.set(name, (err as Error).message);
         // Soft-fail with a clear message so the allowlist can be updated.
@@ -322,6 +338,7 @@ describe("every diagram passes basic a11y checks", () => {
         );
       }
 
+      const checkState = () => {
       // Cheap assertion 1 — no forbidden ARIA patterns
       const offences = findForbidden(container);
       expect(
@@ -356,7 +373,22 @@ describe("every diagram passes basic a11y checks", () => {
         ).toBe(0);
       }
 
+      };
+      checkState();
+      if (variant) {
+        expect(container.querySelector('svg[role="img"]'), `${name}/${variant} must render its drawing`).not.toBeNull();
+        // Apply the same ARIA/icon assertions to every stage and toggle state.
+        for (const stage of Array.from(container.querySelectorAll('button[aria-label^="Stage "]'))) {
+          fireEvent.click(stage); checkState();
+        }
+        const toggles = Array.from(container.querySelectorAll('button')).filter(el => /^(Labels|Detail|Sutures)\s*[✓○]?$/.test(el.textContent?.trim() ?? ''));
+        expect(toggles.length, `${name}/${variant} requires real drawing toggles`).toBeGreaterThan(0);
+        for (const toggle of toggles) {
+          fireEvent.click(toggle); checkState();
+        }
+      }
     });
+    }
   }
 });
 

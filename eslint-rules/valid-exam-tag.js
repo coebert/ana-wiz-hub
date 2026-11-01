@@ -43,14 +43,18 @@ function levenshtein(a, b) {
 function closestTag(value) {
   let best = null;
   let bestDist = Infinity;
+  let unique = true;
   for (const tag of VALID_TAGS) {
     const d = levenshtein(value.toLowerCase(), tag);
     if (d < bestDist) {
       bestDist = d;
       best = tag;
+      unique = true;
+    } else if (d === bestDist) {
+      unique = false;
     }
   }
-  return { tag: best, distance: bestDist };
+  return { tag: best, distance: bestDist, unique };
 }
 
 function isStringLiteral(node) {
@@ -61,6 +65,15 @@ function isStringLiteral(node) {
 function contextKey(node) {
   let cur = node.parent;
   while (cur) {
+    // Only value positions are tags: comparison operands, query keys and
+    // typeof/type literals do not supply an exam value.
+    if (["BinaryExpression", "CallExpression", "UnaryExpression", "TSLiteralType"].includes(cur.type)) return null;
+    if (cur.type === "ConditionalExpression" && cur.test === node) return null;
+    if (cur.type === "ConditionalExpression") {
+      let child = node;
+      while (child.parent && child.parent !== cur) child = child.parent;
+      if (cur.test === child) return null;
+    }
     if (cur.type === "Property" || cur.type === "PropertyDefinition") {
       const key = cur.key;
       if (key) {
@@ -100,6 +113,8 @@ const rule = {
     schema: [],
     messages: {
       invalidTag:
+        "'{{value}}' is not a valid ExamTag. Valid tags: {{valid}}.",
+      closeTag:
         "'{{value}}' is not a valid ExamTag. Did you mean '{{suggestion}}'? Valid tags: {{valid}}.",
     },
   },
@@ -108,12 +123,19 @@ const rule = {
       Literal(node) {
         if (!isStringLiteral(node)) return;
         const value = node.value;
-        if (!value || value.length > 12) return;
         if (VALID_TAGS.includes(value)) return;
 
-        const { tag: suggestion, distance } = closestTag(value);
+        const { tag: suggestion, distance, unique } = closestTag(value);
         const key = contextKey(node);
         const inExamContext = key && EXAM_HINT_RE.test(key);
+        // "exam" also denotes a radiological examination. Its typed row shape
+        // (dose_mSv + category) is clinical prose, not an ExamTag context.
+        if (key === "exam" && node.parent?.type === "Property" && node.parent.parent?.type === "ObjectExpression" && node.parent.parent.properties.some(p => p.key?.name === "dose_mSv")) return;
+        // Syllabus labels paired with code/topic are display labels, not tags.
+        if (key === "exam" && node.parent?.type === "Property" && node.parent.parent?.type === "ObjectExpression") {
+          const keys = node.parent.parent.properties.map(p => p.key?.name);
+          if (keys.includes("code") && keys.includes("topic")) return;
+        }
 
         // Only flag string literals that sit in an obvious exam context
         // (examTags array, `exam:` / `exams:` property, `examTags` variable).
@@ -123,21 +145,21 @@ const rule = {
 
         // Within an exam context, only suggest a fix when there's a clearly
         // close match (distance ≤ 2). Otherwise just report invalid.
-        const showSuggestion = distance <= 2;
+        const showSuggestion = unique && distance <= 2;
 
         context.report({
           node,
-          messageId: "invalidTag",
+          messageId: showSuggestion ? "closeTag" : "invalidTag",
           data: {
             value,
             suggestion,
             valid: VALID_TAGS.join(", "),
           },
-          fix(fixer) {
+          ...(showSuggestion ? { fix(fixer) {
             const raw = node.raw ?? `"${value}"`;
             const quote = raw[0] === "'" ? "'" : '"';
             return fixer.replaceText(node, `${quote}${suggestion}${quote}`);
-          },
+          } } : {}),
         });
       },
     };

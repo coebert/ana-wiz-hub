@@ -1,0 +1,818 @@
+{
+  "sourceBasis": "bf655a4c438814d8b81c2666972881d79a600f11",
+  "historicalSnapshotSha256": "d01003e46054a2391bfdc5ad4245d90cb2390b316b001760c74604b425301c2e",
+  "historicalEntries": 133,
+  "currentEntries": 134,
+  "historicalStillPresent": [
+    "[missing-diagram-sources] src/pages/topics/ABGAnalyserTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/ARDSTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AbdominalAnatomyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AcidBaseTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AcidsBasesBuffersTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AcuteLiverFailureTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AcutePancreatitisTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AirwayManagementTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AkiRrtTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AntiarrhythmicsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AnticoagulantsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AntiemeticsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AntimicrobialsIcuTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AntimicrobialsPharmTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/ArrhythmiasEcgIcuTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AtomicStructureBondingTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/AutonomicNervousTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/BariatricAnaesthesiaTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/BrachialPlexusTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/BreathingCircuitsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/BronchospasticFailureTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/BurnsIcuTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/BurnsPlasticsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/CapnographyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/CardiacAnatomyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/CardiacArrestPostResusTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/CardiacCycleTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/CardiacElectrophysiologyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/CardiacOutputMonitoringTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/CardiothoracicTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/CardiovascularDiseaseTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/CirculatoryFailureTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/ClinicalIncidentsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/ClinicalMeasurementTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/CorticosteroidsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/DefibrillationPacingTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/DepthOfAnaesthesiaMonitoringTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/ENTAnaesthesiaTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/EcmoTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/ElderlyAnaesthesiaTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/ElectricalSafetyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/ElectricityMagnetismTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/EmergencySurgeryTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/EndocrineDiseaseTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/EndocrinePhysiologyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/EquipmentMonitoringTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/FlowMeasurementTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/FoetalCirculationTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/GasLawsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/GastrointestinalPhysiologyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/GynaecologicalAnaesthesiaTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/HaematologyIcuTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/HaematologyImmunityTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/HeadNeckAnatomyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/HepaticPhysiologyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/HepatobiliaryTransplantTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/HumidityGasSamplingTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/IVAnaestheticsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/IcuEndocrineEmergenciesTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/IcuNutritionTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/IcuSedationDeliriumTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/ImmunologyIntensivistsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/InfectiousDiseaseIcuTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/InterventionalRadiologyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/LaserFibreopticsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/LocalAnaestheticsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/LowerLimbAnatomyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/LungMechanicsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/MRIPhysicsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/MassCasualtyMilitaryTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/MaternalPhysiologyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/MathConceptsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/MuscleRelaxantsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/NSAIDsParacetamolTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/NeuroanaesthesiaTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/NeuroanatomyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/NeurointensiveCareTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/NeurologicalDiseaseTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/NeuromuscularTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/NeuroprognosticationTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/ObstetricAnaesthesiaTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/OperatingTheatreEnvironmentTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/OphthalmicAnaesthesiaTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/OpioidsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/OpticsLightTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/OrganDonationTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/OrganicChemistryTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/OrthopaedicAnaesthesiaTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/OxidationReductionTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/OxygenHaemoglobinTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PaediatricAnaesthesiaTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PaediatricIcuTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PainMedicineTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PatientPositioningTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PerioperativeFluidsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PharmacodynamicsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PharmacokineticsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PlasticSurgeryTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PostopHighRiskIcuTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PreoperativeAssessmentTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PressureMeasurementTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/ProceduralSedationTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PrognosticationEthicsIcuTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PulmonaryHypertensionTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/PulseOximetryTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/RegionalAnaesthesiaTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/RenalPhysiologyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/RespiratoryDiseaseTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/RocuroniumTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/SepsisTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/SolutionsConcentrationTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/SpinalAnatomyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/StarlingForcesTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/StatisticsEBMTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/TIVATopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/TemperatureMeasurementTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/ThoracicAnatomyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/ToxicologyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/TransferMedicineTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/TransfusionCoagulationTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/UltrasoundPhysicsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/UpperLimbAnatomyTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/UrologicalAnaesthesiaTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/VaporisersTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/VascularAccessDevicesTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/VasoactiveAgentsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/VentilationPerfusionTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/VentilatorModesTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/VolatileAgentsTopic.tsx",
+    "[missing-diagram-sources] src/pages/topics/XRayRadiationSafetyTopic.tsx",
+    "[missing-topicId] src/pages/topics/CapnographyWaveformsTopic.tsx",
+    "[missing-topicId] src/pages/topics/VenturiMaskTopic.tsx"
+  ],
+  "resolvedOrRemoved": [],
+  "newlyExposedNotAccepted": [
+    "[missing-diagram-sources] src/pages/topics/OperativeStepsTopic.tsx"
+  ],
+  "issues": [
+    {
+      "file": "src/pages/topics/ABGAnalyserTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ABGAnalyserDiagram"
+    },
+    {
+      "file": "src/pages/topics/ARDSTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ARDSPathophysiologyCascadeDiagram, RefractoryHypoxaemiaFlowchart, ARDSVentModeComparisonDiagram, EOLIAMurrayCalculator, ECMOCircuitDiagram, ECMOTroubleshootingDiagram, PneumoniaSteroidDecisionTree"
+    },
+    {
+      "file": "src/pages/topics/AbdominalAnatomyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "AbdominalWallDiagram, CorPictumFolio"
+    },
+    {
+      "file": "src/pages/topics/AcidBaseTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "AcidBaseInterpretationDiagram, HendersonHasselbalchDiagram, HAGMAWorkupFlowchart, HAGMAPathophysiologyDiagram, DeltaRatioDiagram, HAGMAManagementAlgorithm, ToxicAlcoholSalicylateCalculator, OsmolarityBreakdownDiagram, OsmolarGapCalculator, ToxicAlcoholTimelineDiagram, StewartAcidBaseDiagram"
+    },
+    {
+      "file": "src/pages/topics/AcidsBasesBuffersTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "AcidsBasesDiagram"
+    },
+    {
+      "file": "src/pages/topics/AcuteLiverFailureTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ALFCerebralOedemaDiagram, CLIFCACLFDiagram"
+    },
+    {
+      "file": "src/pages/topics/AcutePancreatitisTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "PancreatitisAutodigestionDiagram, SeverePancreatitisCTDiagram, PancreatitisEvolutionTimeline, GlasgowImrieScoreDiagram, WaterfallFluidDiagram"
+    },
+    {
+      "file": "src/pages/topics/AirwayManagementTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CorPictumFolio, AirwayAssessmentDiagram, MallampatiDiagram, CormackLehaneDiagram, WilsonRiskScoreCalculator, AirwayDevicesDiagram, BreathingCircuitDiagram, DASAlgorithmDiagram, AirwayInnervationDiagram, CICODrillAnimation, PartialAirwayObstructionDiagram, BonfilsDeviceDiagram"
+    },
+    {
+      "file": "src/pages/topics/AkiRrtTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "KDIGOAKIClassifier, RRTModalitiesDiagram, RRTCircuitFlowDiagram, RRTCircuitDiagram"
+    },
+    {
+      "file": "src/pages/topics/AntiarrhythmicsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "VaughanWilliamsAPDiagram"
+    },
+    {
+      "file": "src/pages/topics/AnticoagulantsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CoagulationCascadeDiagram, BridgingAnticoagulationPathway"
+    },
+    {
+      "file": "src/pages/topics/AntiemeticsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "VomitingControlDiagram"
+    },
+    {
+      "file": "src/pages/topics/AntimicrobialsIcuTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "AntibioticPKPDPrimer"
+    },
+    {
+      "file": "src/pages/topics/AntimicrobialsPharmTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "AntibioticTargetsDiagram, AntibioticPKPDPrimer, GramNegativeEnvelopeDiagram, BetaLactamaseClassificationTable, MDRGramNegativeSelector, EmpiricalSepsisChooser, AntifungalTargetsDiagram, AntiviralCycleDiagram"
+    },
+    {
+      "file": "src/pages/topics/ArrhythmiasEcgIcuTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CoronarySelectionProvider, ExpandableEcgCard, TwelveLeadEcgDiagram, StemiLocalisationDiagram, WellensSyndromeDiagram, CardiacConductionDiagram, BradyarrhythmiaDiagram, HeartBlockDiagram, BundleBranchBlockDiagram, TachyarrhythmiaDiagram, PacingDevicesDiagram"
+    },
+    {
+      "file": "src/pages/topics/AtomicStructureBondingTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "AtomicStructureDiagram, PeriodicTableAnaestheticDiagram"
+    },
+    {
+      "file": "src/pages/topics/AutonomicNervousTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ANSDiagram, ANSPathwayDiagram"
+    },
+    {
+      "file": "src/pages/topics/BariatricAnaesthesiaTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "StopBangCalculator, BariatricProceduresDiagram"
+    },
+    {
+      "file": "src/pages/topics/BrachialPlexusTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CorPictumFolio, BrachialPlexusDiagram, BrachialPlexusUltrasoundDiagram"
+    },
+    {
+      "file": "src/pages/topics/BreathingCircuitsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "MaplesonEfficiencyDiagram, BreathingCircuitsDiagram"
+    },
+    {
+      "file": "src/pages/topics/BronchospasticFailureTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "DynamicHyperinflationDiagram, SedacondaDiagram"
+    },
+    {
+      "file": "src/pages/topics/BurnsIcuTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "BurnShockPathophysiologyDiagram, InhalationInjuryFlowchart, BurnsIcuCaseStepper, BurnResuscitationDiagram, ParklandCalculator"
+    },
+    {
+      "file": "src/pages/topics/BurnsPlasticsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "BurnDepthDiagram"
+    },
+    {
+      "file": "src/pages/topics/CapnographyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CapnographyWaveformDiagram"
+    },
+    {
+      "file": "src/pages/topics/CapnographyWaveformsTopic.tsx",
+      "kind": "missing-topicId",
+      "detail": "No TopicTemplate topicId"
+    },
+    {
+      "file": "src/pages/topics/CardiacAnatomyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CardiacAnatomyDiagram, AnteriorCardiacPlate, CoronarySelectionProvider, DiagramTabs, CoronaryTerritoryMapDiagram, CoronaryTreeDiagram, LVBullseyeDiagram, TwelveLeadEcgDiagram, CardiacConductionDiagram"
+    },
+    {
+      "file": "src/pages/topics/CardiacArrestPostResusTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "PostCardiacArrestSyndromeDiagram, TtmTargetExplorerDiagram, ExpandableEcgCard, PostCardiacArrestProgDiagram, MultimodalNeuromonitoringDiagram, EEGTraceDiagram, CerebralMicrodialysisDiagram, EcprDecisionTreeDiagram, ECMOCircuitDiagram, ECMOTroubleshootingDiagram"
+    },
+    {
+      "file": "src/pages/topics/CardiacCycleTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "WiggersDiagram, CardiacActionPotentialDiagram, JVPWaveformDiagram, PVLoopDiagram, FrankStarlingDiagram, AorticDicroticNotchDiagram, DichroticNotchComparisonPanel"
+    },
+    {
+      "file": "src/pages/topics/CardiacElectrophysiologyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CardiacActionPotentialDiagram, IonChannelTimelineDiagram, LongQTTorsadesDiagram, DiagramTabs, HeartBlockDiagram, BundleBranchBlockDiagram, TachyarrhythmiaDiagram, BradyarrhythmiaDiagram, PacingDevicesDiagram, BPControlLoopDiagram"
+    },
+    {
+      "file": "src/pages/topics/CardiacOutputMonitoringTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CardiacOutputMonitorDiagram, ThermodilutionDiagram, PACDiagram, PiCCODiagram, OesophagealDopplerDiagram, AcumenIQDiagram, EchoDiagram, TOEViewsDiagram, MModeDiagram, MModePathologyDiagram, COPitfallsChecklist"
+    },
+    {
+      "file": "src/pages/topics/CardiothoracicTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CPBCircuitDiagram, CardiacArrestPostCardiacSurgeryDiagram, ArrestTimeWindowWidget, DLTInsertionDiagram, OLVTroubleshootingDiagram"
+    },
+    {
+      "file": "src/pages/topics/CardiovascularDiseaseTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ValvularHaemodynamicsDiagram"
+    },
+    {
+      "file": "src/pages/topics/CirculatoryFailureTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "FluidResponsivenessDiagram, CPPSpiralDiagram, MechanicalCirculatorySupportDiagram, MCSPressureVolumeLoopDiagram, VAECMOCircuitDiagram"
+    },
+    {
+      "file": "src/pages/topics/ClinicalIncidentsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "AnaphylaxisPathophysiologyDiagram, AnaphylaxisCascadeDiagram, MHPathophysiologyDiagram"
+    },
+    {
+      "file": "src/pages/topics/ClinicalMeasurementTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ClinicalMeasurementDiagram"
+    },
+    {
+      "file": "src/pages/topics/CorticosteroidsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CorticosteroidPharmacodynamicsDiagram, HPAAxisSuppressionDiagram"
+    },
+    {
+      "file": "src/pages/topics/DefibrillationPacingTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "DefibrillationPacingDiagram"
+    },
+    {
+      "file": "src/pages/topics/DepthOfAnaesthesiaMonitoringTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ExpandableEcgCard, EEGTraceDiagram, DSASpectrogramDiagram, BISTrendDiagram"
+    },
+    {
+      "file": "src/pages/topics/ENTAnaesthesiaTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "LaserAirwayDiagram, JetVentilationDiagram, JetVentilationCycleAnimation, LaryngectomyAirwayHandoverDiagram, LeFortFractureDiagram"
+    },
+    {
+      "file": "src/pages/topics/EcmoTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ECMOCircuitDiagram, VAECMOCircuitDiagram, ECMOTroubleshootingDiagram"
+    },
+    {
+      "file": "src/pages/topics/ElderlyAnaesthesiaTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "FrailtyAssessmentDiagram, POCDPathophysiologyCascadeDiagram"
+    },
+    {
+      "file": "src/pages/topics/ElectricalSafetyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "IsolationTransformerDiagram, RCDDiagram, MicroshockDiagram, DiathermyDiagram, DefibrillatorCapacitorDiagram, ElectricalSafetyDiagram"
+    },
+    {
+      "file": "src/pages/topics/ElectricityMagnetismTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ElectricityMagnetismDiagram"
+    },
+    {
+      "file": "src/pages/topics/EmergencySurgeryTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "NCEPODClassificationDiagram, EmergencyRSIDiagram, EmergencyLaparotomyBundleDiagram"
+    },
+    {
+      "file": "src/pages/topics/EndocrineDiseaseTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "PerioperativeDiabetesDiagram, ThyroidStormDiagram, AddisonianCrisisDiagram, PhaeochromocytomaDiagram, CarcinoidSyndromeDiagram"
+    },
+    {
+      "file": "src/pages/topics/EndocrinePhysiologyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "HPAAxisDiagram"
+    },
+    {
+      "file": "src/pages/topics/EquipmentMonitoringTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "AnaestheticMachineDiagram, VaporizerDiagram, BreathingCircuitsDiagram, BagInBottleDiagram, ManleyMVDDiagram, RitchieWhistleDiagram, LaryngoscopeBladesDiagram, NeuraxialNeedlesDiagram"
+    },
+    {
+      "file": "src/pages/topics/FlowMeasurementTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "FlowDiagram, RotameterDiagram, PneumotachographDiagram, WrightRespirometerDiagram, BernoulliVenturiDiagram, CoandaEffectDiagram"
+    },
+    {
+      "file": "src/pages/topics/FoetalCirculationTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "FoetalCirculationDiagram"
+    },
+    {
+      "file": "src/pages/topics/GasLawsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "GasLawsDiagram, CriticalTemperatureDiagram, AndrewsIsothermsDiagram"
+    },
+    {
+      "file": "src/pages/topics/GastrointestinalPhysiologyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "VomitingControlDiagram"
+    },
+    {
+      "file": "src/pages/topics/GynaecologicalAnaesthesiaTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "PneumoperitoneumTrendelenburgDiagram, TURPSyndromeDiagram"
+    },
+    {
+      "file": "src/pages/topics/HaematologyIcuTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "TTPPathophysiologyDiagram, DICPathophysiologyDiagram, HUSPathophysiologyDiagram, HLHPathophysiologyDiagram, HITPathophysiologyDiagram, RebalancedHaemostasisDiagram"
+    },
+    {
+      "file": "src/pages/topics/HaematologyImmunityTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ImmuneCellLineageDiagram, HypersensitivityComparisonDiagram, ImmuneResponseTimelineDiagram, AntibodyKineticsDiagram, VaccineTypesDiagram, AsplenicVaccinationFlowchart"
+    },
+    {
+      "file": "src/pages/topics/HeadNeckAnatomyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CorPictumFolio, SkullBaseDiagram, OrbitAnatomyDiagram, OrbitBonyAnatomyDiagram, NeckTrianglesDiagram, NeckCrossSectionDiagram, CervicalPlexusDiagram, LaryngealCrossSectionDiagram, LaryngealNervesDiagram, TracheobronchialTreeDiagram, BronchoscopicViewDiagram"
+    },
+    {
+      "file": "src/pages/topics/HepaticPhysiologyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "HepaticAcinusDiagram, PortalFirstPassDiagram"
+    },
+    {
+      "file": "src/pages/topics/HepatobiliaryTransplantTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "LiverTransplantPhasesDiagram"
+    },
+    {
+      "file": "src/pages/topics/HumidityGasSamplingTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "HumidityGasSamplingDiagram, HygrometersDiagram, ParamagneticO2Diagram, GasSamplingSiteDiagram"
+    },
+    {
+      "file": "src/pages/topics/IVAnaestheticsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "PropofolTCISimulatorDiagram, PRISDiagram, SchniderEleveldDiagram, CSHTComparisonDiagram, KetaminePharmacologyDiagram, EtomidatePharmacologyDiagram, MidazolamPharmacologyDiagram, BenzodiazepineComparisonDiagram, FlumazenilDiagram, DexmedetomidineDiagram, IVAnaestheticStructures"
+    },
+    {
+      "file": "src/pages/topics/IcuEndocrineEmergenciesTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "EndocrineSymptomTriage, DKAAnimation, DKAvsHHSDiagram, ThyroidStormAnimation, AdrenalCrisisAnimation, EndocrineEmergencyAlgorithms, EndocrineEmergencyDrugs"
+    },
+    {
+      "file": "src/pages/topics/IcuNutritionTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "EnergyProteinTargetDiagram, RefeedingRiskCalculatorDiagram, RefeedingSyndromeAnimation"
+    },
+    {
+      "file": "src/pages/topics/IcuSedationDeliriumTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ICUSedationComparisonDiagram, CAMICUFlowchartDiagram"
+    },
+    {
+      "file": "src/pages/topics/ImmunologyIntensivistsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "AnimatedMechanism"
+    },
+    {
+      "file": "src/pages/topics/InfectiousDiseaseIcuTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "InfectionSiteMapDiagram, HAIPathogenesisCascadeDiagram, PCPHRCTDiagram, PCPManagementFlowchart"
+    },
+    {
+      "file": "src/pages/topics/InterventionalRadiologyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ContrastReactionDiagram"
+    },
+    {
+      "file": "src/pages/topics/LaserFibreopticsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "LaserFibreopticsDiagram"
+    },
+    {
+      "file": "src/pages/topics/LocalAnaestheticsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "PKaDiagram, HendersonHasselbalchDiagram, IonTrappingDiagram, PropofolLidocaineMechanismDiagram, LocalAnaestheticStructures"
+    },
+    {
+      "file": "src/pages/topics/LowerLimbAnatomyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CorPictumFolio, LowerLimbInnervationDiagram, LumbosacralPlexusDiagram, LowerLimbBranchesDiagram, LowerLimbArteriesDiagram, LowerLimbVeinsDiagram"
+    },
+    {
+      "file": "src/pages/topics/LungMechanicsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "LungVolumesDiagram, ComplianceDiagram, LaplacesLawDiagram, FlowVolumeLoopDiagram, PVLoopWOBDiagram, DeadSpaceDiagram, FowlersMethodDiagram, OxygenCascadeDiagram, AlveolarGasEquationDiagram, WestZonesDiagram, ClosingVolumeDiagram, VentilatorWaveformsDiagram, AutoPEEPDiagram, TranspulmonaryPressureDiagram, VILIDiagram, PVRecruitmentDiagram, ControlOfBreathingDiagram, DiffusionCapacityDiagram"
+    },
+    {
+      "file": "src/pages/topics/MRIPhysicsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "MRIPhysicsDiagram, MRISuiteFloorPlanDiagram"
+    },
+    {
+      "file": "src/pages/topics/MassCasualtyMilitaryTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "MajorIncidentTriageDiagram, MilitaryRolesFlowDiagram"
+    },
+    {
+      "file": "src/pages/topics/MaternalPhysiologyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "PregnancyTimelineDiagram"
+    },
+    {
+      "file": "src/pages/topics/MathConceptsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "MathConceptsDiagram, TimeConstantDiagram"
+    },
+    {
+      "file": "src/pages/topics/MuscleRelaxantsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "NMBAMechanismDiagram, SugammadexDiagram, NMBATimelineDiagram, TOFPatternDiagram, MuscleRelaxantStructures"
+    },
+    {
+      "file": "src/pages/topics/NSAIDsParacetamolTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "NSAIDMechanismDiagram, AAShuntAnimation"
+    },
+    {
+      "file": "src/pages/topics/NeuroanaesthesiaTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CBFAutoregulationDiagram, ICPVolumeCurveDiagram, RaisedICPCascadeDiagram"
+    },
+    {
+      "file": "src/pages/topics/NeuroanatomyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CorPictumFolio, BrainPlatesViewer, CircleOfWillisDiagram, CsfFlowDiagram, SkullBaseDiagram"
+    },
+    {
+      "file": "src/pages/topics/NeurointensiveCareTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ICPMonitoringDevicesDiagram, CerebralMicrodialysisDiagram, MultimodalNeuromonitoringDiagram, MyastheniaCrisisFlowchart, MyasthenicVsCholinergicComparison"
+    },
+    {
+      "file": "src/pages/topics/NeurologicalDiseaseTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "MGPathophysDiagram, PathophysDrugMapper, MGNMBASensitivityDiagram, EpilepsyPathophysDiagram, MSPathophysDiagram, PDPathophysDiagram, MNDPathophysDiagram, MDPathophysDiagram, SCIPathophysDiagram"
+    },
+    {
+      "file": "src/pages/topics/NeuromuscularTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "NMJDiagram, NeuromuscularMonitoringDiagram"
+    },
+    {
+      "file": "src/pages/topics/NeuroprognosticationTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "NeuroprognosticationFlowchart"
+    },
+    {
+      "file": "src/pages/topics/ObstetricAnaesthesiaTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "PregnancyPhysiologyDiagram, Cat1RSIAnimation, PlacentalDrugTransferDiagram, PostpartumLegWeaknessDecisionTree"
+    },
+    {
+      "file": "src/pages/topics/OperatingTheatreEnvironmentTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "TheatreZoningDiagram, CssdWasteFlowSubMap"
+    },
+    {
+      "file": "src/pages/topics/OperativeStepsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "OperativeDiagram"
+    },
+    {
+      "file": "src/pages/topics/OphthalmicAnaesthesiaTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "SubTenonsBlockIllustration, PeribulbarBlockIllustration, RetrobulbarBlockIllustration, TopicalIntracameralIllustration"
+    },
+    {
+      "file": "src/pages/topics/OpioidsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "OpioidStructures, OpioidReceptorDiagram, OpioidReceptorSignalingDiagram, OpioidSignallingCascadeAnimation, RemifentanilPKDiagram, MethadonePharmacologyDiagram, CSHTDiagram, BuprenorphinePharmacologyDiagram, OIHToleranceDiagram, KetamineToleranceReversalDiagram, NaloxoneDiagram"
+    },
+    {
+      "file": "src/pages/topics/OpticsLightTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "OpticsLightDiagram"
+    },
+    {
+      "file": "src/pages/topics/OrganDonationTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "BrainstemDeathCascadeDiagram, OrganDonationPathwayDiagram"
+    },
+    {
+      "file": "src/pages/topics/OrganicChemistryTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "OrganicChemistryDiagram, IsomerismDiagram, ChiralityAnaesthesiaDiagram, AmineComparisonDiagram"
+    },
+    {
+      "file": "src/pages/topics/OrthopaedicAnaesthesiaTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "BlockAnalgesiaProfileDiagram, LowerLimbBlocksDiagram"
+    },
+    {
+      "file": "src/pages/topics/OxidationReductionTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "RedoxElectrochemistryDiagram"
+    },
+    {
+      "file": "src/pages/topics/OxygenHaemoglobinTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "OxygenDissociationCurve"
+    },
+    {
+      "file": "src/pages/topics/PaediatricAnaesthesiaTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "PaediatricPhysiologyDiagram, PaediatricEquipmentSizer, PaediatricSurgicalProceduresDiagram, CaudalSurfaceAnatomyDiagram, CaudalBlockDiagram"
+    },
+    {
+      "file": "src/pages/topics/PaediatricIcuTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "WETFLAGDiagram, PaediatricVitalsTable"
+    },
+    {
+      "file": "src/pages/topics/PainMedicineTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "DorsalHornSynapseDiagram, PainMechanismsDiagram, OpioidConversionCalculator, PcaEpiduralCalculator, SpinalCordStimulatorDiagram"
+    },
+    {
+      "file": "src/pages/topics/PatientPositioningTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "RealismProvider, SupineIllustration, TrendelenburgIllustration, LithotomyIllustration, PeronealNerveLithotomyAnimation, LateralIllustration, ProneIllustration, ProneFaceProtectionDiagram, ProneFrameComparisonDiagram, ProneIVCFreeAbdomenAnimation, MayfieldPinSitingDiagram, ParkBenchIllustration, ParkBenchDetailedDiagram, ParkBenchArmTractionAnimation, SittingIllustration, SittingPositionDetailedDiagram, SittingHydrostaticAnimation, VAEDetectionLadderAnimation, BeachChairIllustration"
+    },
+    {
+      "file": "src/pages/topics/PerioperativeFluidsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "GlycocalyxDiagram, GlycocalyxSheddingCascadeDiagram"
+    },
+    {
+      "file": "src/pages/topics/PharmacodynamicsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "DoseResponseCurveDiagram, AgonismSpectrumDiagram, ReceptorTimescaleDiagram"
+    },
+    {
+      "file": "src/pages/topics/PharmacokineticsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ADMECascadeDiagram, CompartmentModelDiagram, CSHTComparisonDiagram"
+    },
+    {
+      "file": "src/pages/topics/PlasticSurgeryTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "FreeFlaPerfusionDiagram"
+    },
+    {
+      "file": "src/pages/topics/PostopHighRiskIcuTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "PostopRiskCalculators, GoalDirectedTherapyAnimation, ComplicationBundlesAnimation"
+    },
+    {
+      "file": "src/pages/topics/PreoperativeAssessmentTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CPETNinePanelDiagram"
+    },
+    {
+      "file": "src/pages/topics/PressureMeasurementTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ManometerDiagram, DampingCurvesDiagram, AuscultatoryNIBPDiagram, NIBPOscillometricDiagram, NIBPvsArterialDiagram, FinapresDiagram"
+    },
+    {
+      "file": "src/pages/topics/ProceduralSedationTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "SedationDeliveryProfilesDiagram"
+    },
+    {
+      "file": "src/pages/topics/PrognosticationEthicsIcuTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "PostCardiacArrestProgDiagram, APACHEIICalculator"
+    },
+    {
+      "file": "src/pages/topics/PulmonaryHypertensionTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "PHRiskStratificationCalculator, PHPathophysiologyDiagram, RVFailureSpiralDiagram"
+    },
+    {
+      "file": "src/pages/topics/PulseOximetryTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "AbsorptionSpectraDiagram, CapnographyDiagram"
+    },
+    {
+      "file": "src/pages/topics/RegionalAnaesthesiaTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "DermatomeMapDiagram, NerveDermatomeOverlayDiagram, NeuraxialNeedlesDiagram, RegionalBlocksDiagram, UpperLimbBranchesDiagram, LowerLimbBranchesDiagram, NeuraxialAnticoagRiskTool, AnticoagRestartTimeline, SpinalBlockHeightAssessmentTool"
+    },
+    {
+      "file": "src/pages/topics/RenalPhysiologyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "NephronDiagram, CorticalJuxtamedullaryDiagram, RenalBloodFlowDiagram, JGADiagram, GlomerularBarrierDiagram, TubularCellDiagram, CountercurrentMultiplierDiagram, UrineConcentrationSimulator, HyponatraemiaWorkupDiagram, EGFRCalculator, RAASCascadeDiagram"
+    },
+    {
+      "file": "src/pages/topics/RespiratoryDiseaseTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "AsthmaBronchospasmDiagram, RespiratoryDrugSafetyDiagram, CopdPathophysDiagram, OsaCycleDiagram, PulmonaryFibrosisDiagram, UrtiAirwayDiagram"
+    },
+    {
+      "file": "src/pages/topics/RocuroniumTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "NMBATimelineDiagram, TOFPatternDiagram, SugammadexDiagram"
+    },
+    {
+      "file": "src/pages/topics/SIUnitsThermodynamicsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "SIUnitsThermodynamicsDiagram, LatentHeatDiagram"
+    },
+    {
+      "file": "src/pages/topics/SepsisTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "SepsisHostResponseDiagram, SepsisScoreCalculator, LactateCRTTool, VasopressorLadderTool, AlbuminFluidShiftDiagram, SepsisBiomarkerKineticsDiagram, SepsisManagementDiagram"
+    },
+    {
+      "file": "src/pages/topics/SolutionsConcentrationTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "SolutionsConcentrationDiagram"
+    },
+    {
+      "file": "src/pages/topics/SpinalAnatomyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CorPictumFolio, SpinalCordAxialDiagram, SpinalCordCrossSectionDiagram, SpinalCordSagittalDiagram, InteractiveDermatomeMap, DermatomeMyotomeDiagram, EpiduralSpaceDiagram"
+    },
+    {
+      "file": "src/pages/topics/StarlingForcesTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "StarlingForcesDiagram, GlycocalyxDiagram"
+    },
+    {
+      "file": "src/pages/topics/StatisticsEBMTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CentralTendencyShiftDiagram, BoxPlotDiagram, NormalDistributionDiagram, SkewDistributionDiagram"
+    },
+    {
+      "file": "src/pages/topics/TIVATopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "PKCompartmentMathDiagram, TCIModelComparisonDiagram, TCISimulatorDiagram, CSHTDiagram, DecrementTimeDiagram"
+    },
+    {
+      "file": "src/pages/topics/TemperatureMeasurementTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "TemperatureMeasurementDiagram"
+    },
+    {
+      "file": "src/pages/topics/ThoracicAnatomyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CorPictumFolio, IntercostalAnatomyDiagram, DiaphragmDiagram, ParavertebralSpaceDiagram, FirstRibDiagram"
+    },
+    {
+      "file": "src/pages/topics/ToxicologyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ToxidromeComparatorDiagram, ParacetamolNomogramDiagram"
+    },
+    {
+      "file": "src/pages/topics/TransferMedicineTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "TransportVentilationDiagram"
+    },
+    {
+      "file": "src/pages/topics/TransfusionCoagulationTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CoagulationCascadeDiagram, TraliVsTacoDecisionTool, MajorHaemorrhageFlowchart, CellSalvageAnimatedDiagram, AcdCitrateChelationDiagram, CitrateWashSeparationDiagram"
+    },
+    {
+      "file": "src/pages/topics/UltrasoundPhysicsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "UltrasoundPhysicsDiagram"
+    },
+    {
+      "file": "src/pages/topics/UpperLimbAnatomyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "CorPictumFolio, BrachialPlexusDiagram, BrachialPlexusUltrasoundDiagram, UpperLimbBranchesDiagram, UpperLimbArteriesDiagram, AntecubitalFossaDiagram, UpperLimbVeinsDiagram"
+    },
+    {
+      "file": "src/pages/topics/UrologicalAnaesthesiaTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "TURPSyndromeDiagram, PropofolErectionMechanismDiagram, PropofolErectionAlgorithmDiagram"
+    },
+    {
+      "file": "src/pages/topics/VaporisersTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "VaporiserSplittingRatioDiagram, VaporizerDiagram"
+    },
+    {
+      "file": "src/pages/topics/VascularAccessDevicesTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "VascularAccessDevicesDiagram, VascularAccessCrossSectionDiagram, VascularAccessTypesDiagram, DwellTimeInfographic"
+    },
+    {
+      "file": "src/pages/topics/VasoactiveAgentsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "VasoactiveStructures, InotropeSignallingDiagram, VasoactiveReceptorDiagram"
+    },
+    {
+      "file": "src/pages/topics/VentilationPerfusionTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "WestZonesDiagram, FowlerNitrogenWashoutDiagram"
+    },
+    {
+      "file": "src/pages/topics/VentilatorModesTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "VentilatorModesDiagram"
+    },
+    {
+      "file": "src/pages/topics/VenturiMaskTopic.tsx",
+      "kind": "missing-topicId",
+      "detail": "No TopicTemplate topicId"
+    },
+    {
+      "file": "src/pages/topics/VolatileAgentsTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "VolatileAgentStructures, MACDiagram, SecondGasEffectDiagram"
+    },
+    {
+      "file": "src/pages/topics/XRayRadiationSafetyTopic.tsx",
+      "kind": "missing-diagram-sources",
+      "detail": "ElectromagneticSpectrumDiagram, XRayTubeDiagram, CTScannerDiagram, SinogramFBPWalkthrough, CTDoseExplorer, RadiationDoseUnitsDiagram"
+    }
+  ],
+  "clinicalVerification": false
+}

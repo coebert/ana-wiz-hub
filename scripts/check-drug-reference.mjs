@@ -11,6 +11,7 @@
  * Backend checks are skipped (with a warning) when the Supabase env vars are absent.
  */
 import { readFileSync } from "node:fs";
+import { validateDoseSummary } from "./lib/drug-summary.mjs";
 
 const failures = [];
 const warnings = [];
@@ -104,10 +105,9 @@ if (!url || !key) {
         const empty = value == null || (typeof value === "string" && value.trim() === "") || (Array.isArray(value) && value.length === 0);
         if (empty) failures.push(`${row.name}: missing ${field}`);
       }
-      // Every monograph needs at least one quotable dose summary for the entry page.
-      if (!row.adult_bolus_dose && !row.infusion_range) {
-        failures.push(`${row.name}: no dose summary (adult_bolus_dose or infusion_range)`);
-      }
+      const summary = validateDoseSummary(row);
+      if (summary.error) failures.push(`${row.name}: ${summary.error}`);
+      if (summary.warning) warnings.push(`${row.name}: ${summary.warning}`);
       if (!Array.isArray(row.sources) || row.sources.length === 0) {
         failures.push(`${row.name}: no sources listed`);
         continue;

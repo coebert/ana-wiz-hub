@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { isTopicRedirectFile } from "../data/topicRedirects";
 
 /**
  * Standing audit: every topic page must ship the full synthesis stack
@@ -58,7 +59,7 @@ const ALLOWED_MISSING: Record<string, string[]> = {
 };
 
 const topicFiles = readdirSync(TOPICS_DIR)
-  .filter((f) => f.endsWith(".tsx"))
+  .filter((f) => f.endsWith(".tsx") && !isTopicRedirectFile(`src/pages/topics/${f}`))
   .sort();
 
 describe("Topic synthesis sections", () => {

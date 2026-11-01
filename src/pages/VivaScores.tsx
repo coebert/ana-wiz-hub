@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { PageMeta } from "@/components/layout/PageMeta";
 import { ArrowLeft, Trash2, ExternalLink } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -67,10 +67,7 @@ const VivaScores = () => {
 
   return (
     <div className="container max-w-4xl py-8 space-y-6">
-      <Helmet>
-        <title>My viva scores | AnaesthesiaCore</title>
-        <meta name="description" content="Review your saved viva answers, examiner-style feedback and published FRCA oral exam pass rates." />
-      </Helmet>
+      <PageMeta title="My viva scores" subtitle="Review your saved viva answers, examiner-style feedback and published FRCA oral exam pass rates." />
       <Link to="/viva" className="text-sm text-muted-foreground inline-flex items-center gap-1 hover:text-foreground">
         <ArrowLeft className="h-4 w-4" /> Back to viva practice
       </Link>
